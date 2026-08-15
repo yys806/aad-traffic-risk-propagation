@@ -9,14 +9,14 @@
 ## 实现与复现
 
 - 实现：`code/real_data/spmd/profile_rv_rx.py`
-- 测试：`tests/real_data/spmd/test_profile_rv_rx.py`
+- 测试：`code/tests/real_data/spmd/test_profile_rv_rx.py`
 - 全量输出：`code/real_data/spmd/outputs/rv_rx_profile.json`
 - 输入：`docs/research/2026-08-12-parallel-work/datasets/SPMD/selected/RV_RX.csv.zip`
 
 小型 fixture 测试：
 
 ```powershell
-python -m pytest tests\real_data\spmd\test_profile_rv_rx.py -q
+python -m pytest code\tests\real_data\spmd\test_profile_rv_rx.py -q
 ```
 
 全量流式处理（单位修正后重扫耗时 273.3 秒）：

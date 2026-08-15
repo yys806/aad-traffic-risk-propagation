@@ -8,8 +8,8 @@ import zipfile
 import pytest
 
 
-PROJECT_ROOT = Path(__file__).resolve().parents[3]
-MODULE_DIR = PROJECT_ROOT / "code" / "real_data" / "spmd"
+CODE_ROOT = Path(__file__).resolve().parents[3]
+MODULE_DIR = CODE_ROOT / "real_data" / "spmd"
 sys.path.insert(0, str(MODULE_DIR))
 
 from profile_rv_rx import EXPECTED_HEADER, ProfileFormatError, profile_zip
@@ -142,7 +142,7 @@ def test_cli_writes_reproducible_json_profile(tmp_path):
             "--segment-gap-cs",
             "50",
         ],
-        cwd=PROJECT_ROOT,
+        cwd=CODE_ROOT,
         check=False,
         capture_output=True,
         text=True,

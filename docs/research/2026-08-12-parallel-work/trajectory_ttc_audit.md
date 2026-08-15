@@ -19,10 +19,10 @@
 TDD 记录：先新增测试并运行，因 `riskprop.real_trajectory` 不存在而失败；补最小实现后 5 项通过。随后新增非默认索引回归测试，真实暴露索引对齐错误并失败；修复后通过。最后补充 SI 标准字段测试，先观察 2 项失败，再实现并通过。最终：
 
 ```text
-python -m pytest tests/test_real_trajectory.py -q
+python -m pytest code/tests/test_real_trajectory.py -q
 6 passed in 0.98s
 
-python -m pytest -q
+python -m pytest code/tests -q
 75 passed in 37.86s
 ```
 

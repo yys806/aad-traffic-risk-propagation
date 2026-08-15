@@ -38,7 +38,7 @@ Braking detections are non-overlapping. `hard_braking` uses `event_severity=hard
 ## Run Example
 
 ```powershell
-cd D:\shen\research-shuqi\code
+cd D:\shen\TJU\AAD\code
 python -m pytest tests -q
 python -m riskprop.cli --input examples\sample_emissions.csv --output outputs\sample_run
 ```

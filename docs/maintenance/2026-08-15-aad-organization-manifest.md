@@ -6,7 +6,8 @@
 - 当前主项目：`D:\shen\TJU\AAD`
 - 只读上游：`D:\shen\TJU\DRIFT`
 - 迁移源目录：`D:\禹尧珅\人工智能知识库\同济科研\交通风险传播`
-- 迁移目标目录：`D:\shen\TJU\AAD\docs\周推进记录`
+- 首次迁移目标目录：`D:\shen\TJU\AAD\docs\周推进记录`
+- 当前统一目录：`D:\shen\TJU\AAD\记录`
 - 当前状态：迁移已完成。四份文件复制前后逐一通过长度和 SHA-256 校验；四个源文件随后删除，源目录在确认无剩余项目后删除，父目录保持不变。
 
 ## 2. 文件清单
@@ -39,6 +40,19 @@
 
 DRIFT 整理前基线为 HEAD `58397fb2834e238d5d4d5e72d0307f1d09674b48`，`git status --short` 无输出。本次操作不向 DRIFT 写入任何文件。
 
-## 5. 保持原位的内容
+## 5. 首次整理时保持原位的内容
 
 `code/`、`paper/`、`literature/`、`docs/research/`、`tmp/`、实验输出、失败批次、数据集和证据文件均不因本次整理移动或改写。只清理由测试或 Python 自动再生的 `.pytest_cache/`、`__pycache__/` 和其中的 `.pyc`。
+
+## 6. 后续根目录归整
+
+同日按项目统一入口要求完成第二次归整：
+
+- `docs/周推进记录/` 移至根目录并重命名为 `记录/`；
+- 根目录交接文件移入 `记录/交接/`；
+- 根目录课题固化稿、理论稿及 `task_plan.md`、`findings.md`、`progress.md` 移入 `记录/项目历史/`；
+- 根目录 `tests/` 合并到 `code/tests/`；
+- 根目录 `tmp/` 移至 `code/tmp/`，仍作为本地临时材料，不进入 GitHub；
+- 运行环境目录联接 `node_modules/` 移至 `code/node_modules/`，联接目标及其内容未修改。
+
+归整后，根目录项目内容文件夹统一为 `code/`、`paper/`、`literature/`、`docs/` 和 `记录/`；必要的 Git 元数据和根目录配置/入口文件继续保留。

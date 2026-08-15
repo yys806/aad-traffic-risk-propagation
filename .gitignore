@@ -1,14 +1,3 @@
-__pycache__/
-.pytest_cache/
-*.py[cod]
-paper/主论文/build/
-paper/主论文/validation/
-paper/**/*.aux
-paper/**/*.bbl
-paper/**/*.blg
-paper/**/*.log
-paper/**/*.out
-
 # Local Python environments and secrets
 .venv/
 venv/
@@ -40,12 +29,16 @@ code/real_data/**/*.sqlite
 docs/research/**/datasets/
 docs/research/**/nc_papers/
 docs/research/**/dataset_papers/
-tmp/
+code/tmp/
 *.log
 
 # LaTeX and document build products
 paper/**/build/
 paper/**/validation/
+paper/**/*.aux
+paper/**/*.bbl
+paper/**/*.blg
+paper/**/*.out
 paper/**/*.fls
 paper/**/*.fdb_latexmk
 paper/**/*.synctex.gz
