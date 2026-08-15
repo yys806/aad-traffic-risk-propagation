@@ -1,0 +1,624 @@
+                  ARTICLE
+                  https://doi.org/10.1038/s41467-021-23292-9                 OPEN
+
+                  Network isolators inhibit failure spreading in
+                  complex networks
+                  Franz Kaiser         1,2, Vito Latora         3,4,5,6 & Dirk Witthaut             1,2 ✉
+
+
+
+
+                  In our daily lives, we rely on the proper functioning of supply networks, from power grids to
+                  water transmission systems. A single failure in these critical infrastructures can lead to a
+1234567890():,;
+
+
+
+
+                  complete collapse through a cascading failure mechanism. Counteracting strategies are thus
+                  heavily sought after. In this article, we introduce a general framework to analyse the
+                  spreading of failures in complex networks and demostrate that not only decreasing but also
+                  increasing the connectivity of the network can be an effective method to contain damages.
+                  We rigorously prove the existence of certain subgraphs, called network isolators, that can
+                  completely inhibit any failure spreading, and we show how to create such isolators in syn-
+                  thetic and real-world networks. The addition of selected links can thus prevent large scale
+                  outages as demonstrated for power transmission grids.
+
+
+
+
+                  1 Forschungszentrum Jülich, Institute for Energy and Climate Research (IEK-STE), Jülich, Germany. 2 Institute for Theoretical Physics, University of Cologne,
+
+                  Köln, Germany. 3 School of Mathematical Sciences, Queen Mary University of London, London, UK. 4 Dipartimento di Fisica ed Astronomia, Università di
+                  Catania and INFN, Catania, Italy. 5 The Alan Turing Institute, The British Library, London, UK. 6 Complexity Science Hub Vienna, Vienna, Austria.
+                  ✉email: d.witthaut@fz-juelich.de
+
+                  NATURE COMMUNICATIONS | (2021)12:3143 | https://doi.org/10.1038/s41467-021-23292-9 | www.nature.com/naturecommunications                                   1
+ARTICLE                                                                    NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-021-23292-9
+
+
+
+
+C
+        omplex networked systems are subject to external per-                   vascular networks of leaves the suppression of failure spreading
+        turbations, damages or attacks with potentially cata-                   occurs naturally because the central vein between the left and
+        strophic consequences1,2. The loss of even a single edge                right parts has an exceptionally large weight (Fig. 1e, cf. also23).
+can cause a blackout in a power grid3,4, the dieback of a biological               Remarkably, failure spreading can be completely stopped by
+network5, or the collapse of an entire ecological network6. It is               certain subgraphs which we refer to as network isolators in the
+thus essential to understand how the structure of a network                     following, an example being shown in Fig. 1c. The failure of an
+determines its response to perturbations and its global                         edge in the right part of the network does not affect the ﬂows in
+resilience7–11. Here, we propose a general framework to model                   the left part at all. Real world networks can be made perfectly
+the redistribution of ﬂows in a complex network that follows a                  resistant to failure propagation by the ad-hoc addition of few
+small and local failure, and we suggest novel and more efﬁcient                 links to create network isolators, as demonstrated for the Scan-
+strategies to improve network resilience. Our ﬁndings reveal that               dinavian power grid in Fig. 1f consisting of three weakly coupled
+propagation of damages can be better limited by adding selected                 modules. The suppression of failure spreading is readily gen-
+links instead of removing links and can turn very useful to                     eralised to networks with more than two modules.
+construct more robust networks or to improve existing ones.
+   The division of a network into weakly coupled parts provides                 Results
+the most intuitive method to inhibit the spreading of failures, thus            A model for supply networks. Our results are based on a general
+improving system resilience12–15. An example is shown in Fig. 1a                framework that allows a theoretical analysis of the interplay of
+for an elementary supply network with two weakly connected                      network connectivity and robustness in the context of supply or
+modules. The response to an edge failure is strong locally, but it is           transportation networks. Consider a simple graph G with edge set
+reduced in the other module of the network which has only few                   E and vertex set V consisting of L = ∣E∣ edges and N = ∣V∣ ver-
+links connecting to the part where the failure happened. A similar              tices. Many such systems can in fact be modelled by linear ﬂow
+effect is observed in a real-world case: the Scandinavian power                 networks where the ﬂow over an edge e = (i, j) 2 E(G) depends
+grid in Fig. 1d. The study of community structures in both natural              linearly on the gradient of a potential function across the edge,
+and man-made systems is an integral part of network science: a
+variety of methods has been developed to deﬁne and identify the                                           F i!j ¼ Aij  ðϑi  ϑj Þ:                       ð1Þ
+weakly connected modules of a network16–18, and the important
+role of community structures in network dynamics is today well                  In particular, this description applies to power transmission
+recognised.                                                                     grids2,24–26, where F is the real power ﬂow, ϑi denotes the nodal
+   Limiting connectivity for the sake of additional security is,                voltage phase angle and Aij is given by the line susceptance. Non-
+however, not always desirable. For instance, microgrid concepts                 linear effects in electric power grids will be discussed below.
+and intentional islanding are heavily discussed in energy systems               Furthermore, the description (1) applies to hydraulic and vascular
+research19,20, but the overall demand for electric power trans-                 networks27,28, where F is the ﬂow of water or nutrients, ϑi is the
+mission actually increases21,22. Other methods to contain per-                  local pressure and Aij the edge’s weight. Equivalent problems arise
+turbations or damages in complex networks are thus needed.                      in the linearisation of general diffusively coupled networks of
+Indeed, an exceptionally strong interconnectivity between two                   dynamical systems around an equilibrium or limit cycle29. We
+modules can also suppress failure spreading as shown in Fig. 1b,                discuss these and other applications of linear ﬂow models in
+e. Notably, a strong interconnectivity can be realised in different             detail in Supplementary Note 1.
+ways. In the random network example in Fig. 1b, a high number                      Now assume that there are sources and sinks attached to the
+of links connects a subset of nodes of the two modules. In real                 nodes in the network Pi 2 R; i 2 VðGÞ where Pi > 0 represents a
+
+
+
+
+Fig. 1 Different network structures inhibit the spreading of failures in complex networks. We simulate the impact of a single failing link (red) for different
+network structures; resulting ﬂow changes are colour coded. a, b Both a weak and a strong interconnectivity can suppress the spreading of failures between
+two modules of a complex network. c Failure spreading is prevented completely by a network isolator (blue shading); ﬂow changes on the grey links are
+exactly zero. d The Scandinavian power grid consists of three weakly connected modules, which suppresses failure spreading between the modules44.
+e The vascular network of a Bursera hollickii leaf contains a strong central vein47, which suppresses failure spreading between the two sides of the leaf.
+f Same as in (d) but with the addition of two links (blue shading) to create a network isolator. See Methods and caption of Fig. 2 for further information on
+the graphs used here.
+
+2                  NATURE COMMUNICATIONS | (2021)12:3143 | https://doi.org/10.1038/s41467-021-23292-9 | www.nature.com/naturecommunications
+NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-021-23292-9                                                                            ARTICLE
+
+source and Pi < 0 a sink. Then the ﬂows at each node have to                    question how to determine them. We thus plot the ratio
+balance with the sources and sinks
+                            N                                                                                       hjΔF i!j jiði;jÞ2 O
+
+                       Pi ¼ ∑ F i!j       8i 2 VðGÞ:                     ð2Þ                            Rð‘; dÞ ¼              d
+                                                                                                                                          :        ð8Þ
+                            j¼1
+                                                                                                                    hjΔF i!j jiði;jÞ2
+                                                                                                                               d
+                                                                                                                                      S
+
+
+This equation is known as continuity equation or Kirchhoff’s                    between the module of the network G0 ¼ O without initial
+current law. If the sources and sinks Pi are given, Eqs. (2) and (1)            failures and the module G0 ¼ S containing the failing edge ℓ. If
+completely determine the potentials in the network (up to a                     this ratio approaches or reaches zero, this is indicative of a very
+constant shift to all potentials). In a power grid, the sources and             strong suppression of failure spreading into the other part of the
+sinks are the power injections or withdrawals as a result of power              network.
+production or consumption, respectively. When looking at the
+stable, operational ﬁxed point of a power grid they are balanced                The impact of network connectivity on failure spreading. To
+such that                                                                       study how the impact of failure spreading depends on the net-
+                                   N                                            work structure, we considered synthetic graphs obtained by
+                                  ∑ Pi ¼ 0;                              ð3Þ    connecting two Erdős–Rényi (ER) random graphs to each other
+                                  i¼1
+                                                                                at preselected, randomly chosen vertices with a tunable prob-
+we therefore assume this to hold in the following sections.                     ability μ 2 [0, 1]34 (see Methods). The resulting graphs have a
+  For further use, we introduce a compact vectorised notation,                  connectivity structure ranging from two weakly connected com-
+                                     !
+deﬁning the vector of injections P ¼ ðP1 ; ¼ ; PN Þ> and the                    munities for low values of μ shown in Fig. 1a to strongly con-
+                     !                                                          nected parts shown in panel b. In the limit μ = 1, the two modules
+vector of potentials ϑ ¼ ðϑ1 ; ¼ ; ϑN Þ> , where the superscript ⊤
+                                                                                are connected via a complete bipartite graph as shown in Fig. 1c.
+denotes the transpose. The coupling coefﬁcients Aij = Aji are
+                                                                                This is a possible realisation of a network isolator, since it com-
+summarised in the weighted adjacency matrix A 2 RN ´ N .                        pletely suppresses ﬂow changes. We will explain the concept of
+Furthermore, we deﬁne the diagonal matrix D 2 RN ´ N with                       network isolators and provide a rigorous deﬁnition in the next
+entries Dii = ∑jAij as well as the weighted graph Laplacian30                   section.
+                                  L ¼ D  A:                             ð4Þ       The corresponding adjacency matrices clearly indicate the
+                                                                                connectivity structure, revealing the strong or weak coupling
+Kirchhoff’s equations then assume the compact form                              between the two modules of the networks (Fig. 2a, b, d).
+                            ! !                                                 Remarkably, evaluating the quantity R(ℓ), obtained by averaging
+                           Lϑ ¼ P:                                       ð5Þ    the ratio over ﬂow changes R(ℓ, d) over all distances d for a
+Notably, the Laplacian matrix is also useful to infer the large scale           speciﬁc trigger link ℓ, for a varying connectivity structure tuned
+connectivity and the community structure of a given network31.                  by μ, we ﬁnd that the spreading of failures is largely suppressed
+                                                                                for both weak and strong connectivity between the two modules
+                                                                                as shown in Fig. 2c. Note that this ﬁnding is not limited to the
+Modelling link failures. The impact of a damage in linear
+                                                                                interconnectivity of two modules, but can be readily generalised
+ﬂow networks can be calculated analytically. Assume that an
+                                                                                to three—or more—modules as we demonstrate in Supplemen-
+edge ℓ = (r, s) fails, and summarise the response at all nodes i =
+                                                                                tary Fig. 3. Distance plays a minor role for the ratio of ﬂow
+1, …, N in terms of the vector of changes in nodal potentials
+  !                                                                             changes R(ℓ, d) as illustrated in Supplementary Fig. 2.
+Δ ϑ ¼ ðΔϑ1 ; ¼ ; ΔϑN Þ> . The response can be calculated by
+subtracting Eq. (5) for the new and the old network which yields                Network isolators inhibit failure spreading. Network symme-
+after some manipulations (Ref. 25, Supplementary Note 2)                        tries are known to play an important role for the dynamics and
+                              !                                                 synchronisability of a network35–37. Network isolators as a spe-
+                           L Δ ϑ ¼ q‘ !
+                                      ν ‘;                      ð6Þ
+                                                                                ciﬁc connectivity structure completely inhibit the spreading of
+where ! ν ‘ is a vector with +1 at position r and −1 at position s,             failures from one network module to another. They manifest also
+                                                                                as particular, symmetric patterns in the region of the adjacency
+and q ¼ 1  A !     ν L1 !
+                       >
+      ‘           rs    ‘   ν is a source strength25. We thus ﬁnd
+                                  ‘                                             matrix describing the connectivity between the two parts of the
+that the response of a network to failures is essentially determined            network as we have seen in Fig. 2d. To see this, we make use of
+by the Laplacian L.                                                             Eq. (4) to rewrite the Laplacian matrix L of the entire network as
+   To quantify the effect of connectivity on failure spreading, we              follows
+have studied the impact of different failures in a variety of
+                                                                                                                             
+synthetic networks as well as in several real-world networks. For a                                       L 1 þ D1    A12
+given initial failure of an edge ℓ, we compute the ﬂow changes                                      L¼                                         ð9Þ
+                                                                                                            A>12   L 2 þ D2
+                        ΔF i!j ¼ Aij  ðΔϑi  Δϑj Þ                      ð7Þ
+                                                                                Here, L1 and L2 are the Laplacian matrices of the two parts of the
+                                                       0
+for all edges e = (i, j) in a given subgraph G of the network.                  network which consist of N1 and N2 nodes, A12 2 RN 1 ´ N 2 is the
+Furthermore, we must take into account that the impact of a                     region of the weighted adjacency matrix encoding the con-
+failure generally decreases with distance25,32,33. As an overall                nectivity between the two parts of the network and D1 and D2 are
+measure of the impact of a failure we thus consider the expression              the degree matrices of these mutual connections, i.e. the matrices
+                  0
+hjΔF i!j jiði;jÞ2G
+           d
+                    , which gives the magnitude of ﬂow changes                  containing the nodes’ weighted degrees on the diagonals. Then
+averaged over all edges ði; jÞ 2 G0 at a given distance d to the edge           network isolators are characterised by the following theorem.
+ℓ (see Methods for details on the notion of distance used here).                  Theorem 1 Consider a linear ﬂow network composed of two
+The prime question is now whether the impact differs                            modules 1,2 and let A12 denote the weighted adjacency matrix of
+substantially between the communities or moduli of a network.                   the mutual connections as described in Eq. (9). An edge failure in
+Here, we assume that the moduli or communities are known for                    one module does not affect the ﬂows in the other module if rank
+the network under consideration and thus do not address the                     (A12) = 1. For unweighted networks this criterion is fulﬁlled if
+
+NATURE COMMUNICATIONS | (2021)12:3143 | https://doi.org/10.1038/s41467-021-23292-9 | www.nature.com/naturecommunications                            3
+ARTICLE                                                                   NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-021-23292-9
+
+
+
+                                                                                                                         isolator
+
+
+
+
+Fig. 2 Effectiveness and robustness of shielding network structures. a, b Adjacency matrices for the graphs shown in Fig. 1a, b. Two random graphs
+G(30,0.4) are inter-connected via a fraction c = 0.2 of their nodes chosen at random, and links are added with probability μ, interpolating between weak
+(a) or strong (b) interconnectivity (see Methods for details). c The average ratio of ﬂow changes R(ℓ) in the two components (Eq. (8)) is strongly
+suppressed for both high and low interconnectivity μ. The blue line represents the median value over all distances and the shaded region indicates the
+0.25- and 0.75-quantiles. d Adjacency matrix for the six-regular graph shown in Fig. 1c and containing a network isolator. Note that all nodes in the graph
+including those in the network isolator have degree equal to six, which allows us to exclude any potential impact of heterogeneity in the degree on failure
+spreading in this case. e The ratio of ﬂow changes R, now averaged over all possible trigger links ℓ and distances d, vanishes for a network isolator
+described by the condition ξ(A12) = 0 and increases algebraically with the coherence parameter ξ (cf. Eq. (10)) when perturbed (see Methods for details
+on the simulation). Again, median and 0.25- and 0.75-quantiles are shown resulting from averaging over all distances and then trigger links.
+
+A12 describes a complete bipartite graph. The subgraph connect-                Constructing network isolators in real-world graphs. Network
+ing the two modules is referred to as a network isolator.                      isolators are not limited to the particular situation shown in
+   A proof can be found in Supplementary Note 3. Note that,                    Fig. 1. In Fig. 3a–c, we identify several subgraphs that allow to
+while network isolators prevent failure spreading, we found that               easily introduce network isolators into existing topologies. For
+they do not inﬂuence network controllability as we illustrate in               subgraphs with a prior low connectivity, as measured by a small
+Supplementary Note 4 and Supplementary Fig. 8.                                 vertex cut (Fig. 3a) or a small edge cut (Fig. 3b, c), network
+   Since most real world examples of networks do not contain                   isolators may be introduced with small network modiﬁcations—
+perfect network isolators, we have studied the robustness of a                 by adding (a,b) or removing and adding (c) selected links with
+network isolator against modiﬁcations of the topology. Starting                weights adjusted such that Theorem 1 is fulﬁlled. For a given
+from a unit rank matrix, we perturb the adjacency matrix A12                   graph these recipes may thus be applied as follows: (1) Identify
+iteratively (see Methods for details). The deviation of the                    modules of the graph that are weakly connected to one another as
+perturbed matrix A12 from a unit rank matrix is then quantiﬁed                 measured by a low vertex cut or edge cut of the vertices or edges
+using its coherence statistics deﬁned as38,                                    connecting them. (2) Depending on the target—e.g. whether
+                                                                               building new edges or vertices is costly or, on the other hand, a
+                                       h!a i; !
+                                              a ji                             minimum connectivity between the modules is required after the
+                   ξðA12 Þ ¼ 1  min ! ! ;                             ð10Þ
+                                  i;j k a kk a k                               modiﬁcation—identify the optimal strategy to achieve a complete
+                                          i      j
+                                                                               bipartite connectivity between the modules by adding or
+where ! a i ; i ¼ 1; ¼ ; m are the matrix columns. Note that the               removing vertices and edges. Here, the recipes shown in the
+                                        !!                                     Figure may be applied directly if the prior connectivity has the
+latter expression cosðﬀ!  a i; !
+                                       h a ; a i
+                               a j Þ ¼ ! i !j may also be inter-               indicated edge or vertex cuts. (3) Tune the edge weights such that
+                                      k a i kk a j k                           rank(A12) = 1 is achieved, i.e. a network isolator is realised.
+preted via the angle between two matrix columns, !   a i and thus ξ               We illustrate each of the strategies in real-world power grids.
+(A12) approaches a value of unity if all columns are parallel. The             We consider the British grid (d), the Scandinavian power grid (e)
+performance of the isolator is then measured by calculating the                and the Central European power grid (f) and add a network
+ratio of ﬂow changes R, which is obtained from R(ℓ, d) by                      isolator to each of the networks by making use of the strategies
+averaging over all possible trigger links and distances. A perfect             shown in panels a–c. We then simulate the failure of a single link
+isolator is characterised by ξ(A12) = 0 and enables a complete                 to illustrate that network isolators suppress failure spreading in
+containment of failure spreading such that R = 0. For perturbed                each situation. Thus, network isolators can be used to make
+isolators, we ﬁnd that R increases approximately algebraically                 various real-world power grids more resilient to failures. In a
+with ξ(A12), see Fig. 2e and Supplementary Fig. 5. Hence, the                  Supplementary Fig. 7, we compare the situation with the isolator
+isolation effect persists for small perturbations, albeit with                 to the situation before constructing the isolator for each of the
+reduced efﬁciency. Note also that network isolators are not                    networks.
+limited to two connected modules, but can be readily generalised
+to the interconnectivity of three—or more—modules that are
+mutually shielded against failures as we demonstrate in                        Network isolators suppress cascade propagation. Perfect net-
+Supplementary Fig. 4. Finally, we illustrate that network isolators            work isolators can be easily constructed to improve the resilience
+do not increase the vulnerability of a network in case a link                  of complex networked systems. As a practical example we show
+located in the isolator fails in Supplementary Fig. 6.                         an application to electric power grids, where large scale blackouts
+
+4                  NATURE COMMUNICATIONS | (2021)12:3143 | https://doi.org/10.1038/s41467-021-23292-9 | www.nature.com/naturecommunications
+NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-021-23292-9                                                                             ARTICLE
+
+
+
+
+Fig. 3 Different ways of constructing isolators in real-world power grids. a–c Alternative methods of creating an isolator in a given network. We show the
+network structure before (top left) and after (top right) the addition of a network isolator, as well as corresponding adjacency matrices (bottom) with
+the different shades of blue representing the weight Aij of the respective edge. A lower prior connectivity simpliﬁes the creation of isolators as measured by
+the vertex cut (a) or edge cut (b, c) which is visible in the adjacency matrix (entries colored red). The creation of network isolators results in characteristic
+patterns in the adjacency matrix in terms of the capacities of the isolator edges (shades of blue). d–f Realisation of network isolators in real-world power
+grids. We construct network isolators in the British power grid (d), the Scandinavian power grid (e) and the Central European power grid (f) using the
+recipes illustrated in (a–c). For each power grid, we colour code the ﬂow changes after the failure of a single link carrying a unit ﬂow (red). In each case, the
+network isolator inhibits ﬂow changes, i.e. ΔF = 0, (light grey) in the part of the network that is shielded by the isolator.
+
+are typically triggered by the outage of a single transmission                    valid if the dynamics of a node i depends on the state of the other
+element which leads to a cascade of failures3,39. We demonstrate                  nodes xj only through the term fi(∑jLijxj), where L is the Laplacian
+the impact of network isolators against cascading failures in the                 and the function fi satisﬁes fi(0) = 0, but is arbitrary otherwise (see
+case of the Scandinavian grid.                                                    Supplementary Note 3, Corollary 2). (2) For many non-linear
+   In the original grid layout, the modules are weakly connected,                 systems of practical importance, the impact of failures or pertur-
+thus failure spreading between these modules is reduced—but it is                 bations is well described by a linearisation around an equilibrium
+possible. A failure in one area can spread to other areas and cause               or limit cycle (see ref. 29) for which an approximate isolation can
+a global cascade of failures, as demonstrated in Fig. 4a, b for a                 be achieved (see Supplementary Note 3, subsection 4).
+cascade emerging in Western Norway. This spreading may in                            To systematically analyse how non-linearity affects failure
+principle be prevented by decoupling different areas of the grid,                 spreading through network isolators we ﬁrst consider a natural
+but this is highly undesired. In fact, future energy systems will                 extension of the linear ﬂows in Eq. (1), replacing the linear
+require more connectivity, not less, to transmit an increasing                    coupling by its sinusoidal counterpart
+amount of renewable electric power21,22. In contrast, building a
+network isolator can completely inhibit failure spreading at                                               F~ i!j ¼ Aij  sinðϑi  ϑj Þ;                    ð11Þ
+increased connectivity. A perfect isolator can be realised with
+moderate effort by reconstructing two substations in Norway,                      which yields the well-known Kuramoto model40,41. If phase
+such that they effectively form two nodes each. The new nodes                     differences between neighbouring vertices are small, one can
+must be linked by internal connections and one additional two-                    expand the sine function as sinðϑi  ϑj Þ ¼ ðϑi  ϑj Þ þ
+circuit overhead line, whose parameters are optimised such that                   Oððϑi  ϑj Þ3 Þ (see Supplementary Note 1). Hence, our previous
+the condition rank(A12) = 1 is satisﬁed (Fig. 4c). A simulation for               result remain valid to linear order, whereas a higher degree of
+such an optimised grid layout shows that the spreading of the                     non-linearity may gradually weaken the effects. In particular, the
+cascade is completely suppressed (Fig. 4d). The network remains                   effectiveness of a network isolator depends on the relative load of
+connected and load shedding is no longer necessary as a
+                                                                                  the edges jF~ i!j j=Aij . We study this numerically by increasing the
+containment strategy2,3. To demonstrate that network isolators
+effectively suppress cascade propagation for different networks                   injections Pi at all nodes proportionally, thus increasing the
+and initial failure patterns, we evaluate the statistics of cascade               relative edge loads and the importance of the non-linearity of the
+sizes in networks with and without network isolators (see                         sine function.
+                                                                                     We then analyse the non-linear ﬂow changes ΔFð‘Þ     ~   after the
+Supplementary Fig. 9). To analyse how the relatively localised
+ﬂow changes involved here lead to a non-local cascade, individual                 failure of a single link for different degrees of non-linearity in
+steps of the cascade are shown in Supplementary Fig. 12.                          Fig. 5a, b (light to dark lines). To systematically evaluate the
+                                                                                  degree of non-linearity, we analyse the maximal absolute non-
+                                                                                  linear ﬂow jFj ~ max in the entire network. Due to the sinusoidal
+Network isolators beyond linear ﬂow networks. The concept of                      character of the coupling (see Eq. (11)) and since edge weights are
+network isolators has been established for linear ﬂow networks,                   set to unity for the Figure, a relative loading close to unity
+but can be extended in two ways. (1) We can rigorously prove that                 indicates a highly non-linear system. As expected, the ﬂow
+network isolators determine the response to structural damages                    changes decrease with distance independently of the non-linearity.
+for a class of non-linear networked dynamical systems with dif-                   However, even for the strongest degree of non-linearity considered
+fusive coupling. More precisely, the isolator effect is still rigorously          here, ﬂow changes in the module shielded by the isolator are still
+
+NATURE COMMUNICATIONS | (2021)12:3143 | https://doi.org/10.1038/s41467-021-23292-9 | www.nature.com/naturecommunications                                       5
+ARTICLE                                                                     NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-021-23292-9
+
+
+
+
+Fig. 4 Network isolators can contain cascading failures in power grids. a Line loading (colour code) on the Scandinavian grid in units relative to maximal
+loading before the initial failure of a single line (coloured red). b The initial failure results in a cascade of overloads (red coloured lines) until the grid
+disconnects into several parts. c Magniﬁcation of the grid structure in Eastern Norway (grey box, a). A small modiﬁcation of the grid enables the
+construction of a network isolator: adopting the recipe presented in Fig. 3a, we select two nodes (left) that are further split up into two separate nodes each
+which are mutually connected via a network isolator by adding four edges (right, green). Note that the removal of these two nodes would disconnect the
+network into two separate parts, i.e. they form a vertex cut of size two. d Introducing the network isolator completely suppresses the spreading of failures
+from Western Norway to the rest of the grid thus inhibiting the cascade observed in (b). The ﬁrst two steps of this cascade are shown in Supplementary
+Fig. 12.
+
+several orders of magnitude lower than at the same distance in the               linear system with ﬂows described by Eq. (11). On the other hand,
+module containing the trigger link. We conﬁrm this result by                     we analyse the worst-case available N − 1 weight, i.e. the overall
+evaluating the non-linear version of the ﬂow ratio (8) for different             edge weight connecting the two modules if the edge in the
+graphs, network conditions and degrees of non-linearity in                       network isolator with the largest weight fails. We ﬁnd that
+Supplementary Fig. 10. Furthermore, we demonstrate that                          network isolators with strongly heterogeneous edge weights a1
+introducing a network isolator may slightly improve the system’s                 and a2 inhibit failure spreading the most in the weakly non-linear
+resilience against dynamically induced failures due to transient                 system under consideration. However, the uniform choice ai ¼
+overloads in Supplementary Fig. 11.                                              A=4; i 2 f1; 2; 3; 4g yields the highest the available N − 1 weight,
+   We now study the robustness of this effect in several regards                 while still inhibiting failure spreading relatively strongly. Note
+and elucidate possible ways to designing robust network isolators                that other choices to estimate the impact of removing a single link
+for non-linear systems. The condition rank(A12) = 1 allows for                   in the network isolator, e.g. the size of the cascade caused by the
+different possible realisations of network isolators in terms of the             failure of the link in the isolator or the reduction in shielding
+edge weights. In linear ﬂow networks, all these realisations are                 provided by the isolator after the failure might come to a different
+equally efﬁcient: They completely suppress ﬂow changes in the                    conclusion which choice of weights yields the “bestˮ network
+module shielded by the network isolator by virtue of Theorem 1.                  isolator.
+But which combination of edge weights provides the strongest                        We now further extend the results on non-linear systems by
+isolating effect in weakly non-linear systems?                                   considering the full load ﬂow equations that describe power ﬂows
+   To examine this question systematically we consider a simple                  in power grids with line losses. The results of the numerical
+but non-trivial realisation of a network isolator where two nodes                simulations are reported in Fig. 6: First, we consider the impact of
+in one module are connected to two nodes in the other module                     a single failing line for a realistic dispatch and realistic line
+(see e.g. Fig. 3a, right). The isolator is thus formed by four edges,            weights in the British power grid without any modiﬁcation, where
+and we ﬁx the overall possible available edge weight to build the                ﬂows are now evaluated based on the full non-linear AC load
+network isolator to a constant value A 2 R. Hence, the weights                   ﬂow42. For a given vertex i 2 V(G) they are calculated as
+of the four edges in the isolator have to satisfy two conditions,                (Supplementary Note 1, Eq.(8))
+         a1 þ a2 þ a3 þ a4 ¼ A          and     a1 a4  a2 a3 ¼ 0;                            N
+                                                                                      Pi ¼ ∑ jV i jjV k jðGik cosðϑi  ϑk Þ þ Bik sinðϑi  ϑk ÞÞ;
+leaving two degrees of freedom to optimise the isolator                                      k¼1
+                                                                                                                                                          ð12Þ
+performance (see Methods for details). In Fig. 5c we examine                                  N
+the network isolator’s performance measured by the averaged,                          Qi ¼ ∑ jV i jjV k jðGik sinðϑi  ϑk Þ  Bik cosðϑi  ϑk ÞÞ:
+                                                                                             k¼1
+non-linear ﬂow changes in the module shielded by the isolator for
+all possible failing links in the other module for a weakly non-                 Note that this set of equations again reduces to the linear ﬂow
+
+6                   NATURE COMMUNICATIONS | (2021)12:3143 | https://doi.org/10.1038/s41467-021-23292-9 | www.nature.com/naturecommunications
+NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-021-23292-9                                                                                          ARTICLE
+
+                                                                                      model in Eqs. (2) and (1) in the so-called DC approximation (see
+                                                                                      Supplementary Note 1). As a result, failures spread to both the
+                                                                                      Northern part of the power grid and the Southern part equally
+                                                                                      (panel a). After introducing a network isolator by adding two
+                                                                                      links, ﬂow changes are completely suppressed in the linear
+                                                                                      approximation of power ﬂows (panel b), but also signiﬁcantly
+                                                                                      reduced when calculating the ﬂow changes based on the full non-
+                                                                                      linear AC power ﬂow: Comparing the non-linearly calculated
+                                                                                      ﬂow changes in the initial scenario and the scenario with the
+                                                                                      isolator, we observe an ~100-fold reduction at all distances to the
+                                                                                      failing link in the module shielded by the network isolator (panel
+                                                                                      d). Thus we conclude that isolators also suppress failure
+                                                                                      spreading in non-linear models.
+
+                                                                                      Discussion
+                                                                                      In conclusion, connectivity determines the resilience of complex
+                                                                                      networks in manifold ways. As expected, a division of a network
+                                                                                      into weakly coupled modules suppresses the spreading of failures
+                                                                                      from one module to the others. Remarkably, we have found that a
+                                                                                      strong interconnectivity can equally well suppress the spreading
+                                                                                      in both ﬂow networks and in networks of non-linear dynamical
+                                                                                      systems. We have demonstrated that an even stronger effect can
+                                                                                      be obtained by certain subgraphs called isolators, which com-
+Fig. 5 Robust design of network isolators in the Kuramoto model. a To                 pletely inhibit the spreading of failures in linear systems.
+study the effect of non-linearity on network isolators, we simulate the failure of       We then showed that isolators can be easily created in a net-
+a single link (red) in a network consisting of two modules that are connected         work to mitigate cascading failures, for instance in electric power
+via a network isolator. b We consider the median absolute non-linear ﬂow              grids, while enabling an arbitrary degree of connectivity between
+changes jΔ~Fð‘Þj (Eq. (11)) on a link ℓ after the removal of the link shown in (a).   the different parts of the network. These results widen our per-
+We analyse the effect of edge distance to the failing link (x-axis) and increasing    spective on the large scale organisation of complex networks in
+degree of non-linearity (colour code from light to dark). We compare the ﬂow          general, showing that very diverse structural patterns can exist
+changes in the lower module that contains the failing link (curves on the upper       that isolate functional units and improve network resilience.
+left) and the isolated module (curves on the lower right) by averaging the ﬂow           Furthermore, our results show that algebraic properties of
+changes over all links in the given module at a ﬁxed distance. As expected, ﬂow       networks can have striking effects on their function and robust-
+changes in the upper module are lowest for a weakly non-linear system (bright         ness—depending on the type of ﬂow model. Similar effects are
+line) and increase with the non-linearity, but a strong isolation effect persists     not present in simple models where ﬂows are rerouted along the
+even for a high degree of non-linearity (dark purple line). Shaded region             shortest paths only4,9, but they can become essential in physical
+indicates the 0.25- and 0.75-quantiles evaluated over the given distance. c We        supply network models where various paths contribute and
+ﬁx the overall available edge weight of the four edges forming the isolator to        interact in a non-trivial way.
+∑iai = 4 and systematically scan over the remaining degrees of freedom,
+measuring the isolator performance in terms of the mean logarithmic ﬂow
+changes hlog10 ðjΔ~FjÞi for a ﬁxed degree of (intermediate) non-linearity. We         Methods
+                                                                                      Creating graphs with strong or weak inter-module connectivity. We introduce
+observe that a heterogeneous isolator where the weights differ strongly               a model to create ensembles of graphs consisting of two subgraphs with weak or
+provides the best shielding. d We evaluate the available worst-case N − 1             strong interconnectvity similar to the approach in ref. 43, see Figs. 1 and 2. We start
+weight, i.e. the overall edge weight connecting the two modules after the failure     with two disconnected Erdős–Rényi random graphs G1(N1, p1) and G2(N2, p2),
+of a single link in the isolator, for the same set of edge weights as in (c). Here,   where N denotes the number of nodes in the graph and p the probability that two
+                                                                                      randomly chosen nodes are connected by an edge34. Then we randomly choose
+isolators with homogeneous weights perform best. Edge weights of all non-
+                                                                                      n1 = [c ⋅ N1] nodes v ¼ fv1 ; :::; vn1 g in G1 and n2 = [c ⋅ N2] nodes w ¼ fw1 ; :::; wn2 g
+isolator edges are set to unity, Aij = 1, 8ði; jÞ 2 E(G) in all panels.               in G2. Here, c 2 ½0; 1  R is a constant representing the share of nodes connecting
+
+
+
+
+Fig. 6 Network isolators suppress failure spreading in full non-linear AC load ﬂow. a An initially failing link with unit ﬂow (red) in the British power grid
+results in changes of real power ﬂow (colour code) throughout the whole network, as obtained by computing a non-linear full AC power ﬂow44. b, c After
+introducing a network isolator based on the strategy presented in panel (a of Fig. 3), failure spreading is perfectly inhibited in the linear power ﬂow
+approximation, and still signiﬁcantly reduced in the non-linear full AC load ﬂow. d We compare the median absolute ﬂow changes, calculated using the
+non-linear load ﬂow (Eq. (12)), after the failure of the link in the initial grid (dashed lines, a) and the modiﬁed grid (dotted lines, c). Whereas the ﬂow
+changes in the lower module of the power grid (dark blue nodes) stay approximately the same after the grid modiﬁcation (dark blue lines), they are
+signiﬁcantly reduced in the grid’s upper module (light blue nodes) that is shielded by the network isolator (light blue lines).
+
+NATURE COMMUNICATIONS | (2021)12:3143 | https://doi.org/10.1038/s41467-021-23292-9 | www.nature.com/naturecommunications                                                       7
+ARTICLE                                                                                      NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-021-23292-9
+
+
+to the other subgraph and [⋅] denotes the nearest integer. Out of all possible edges              by solving the continuity equation Pi = ∑jFi→j with Fi→j = Aij(ϑi − ϑj). Then we
+e ¼ fðv1 ; w1 Þ; :::; ðvn1 ; w1 Þ; :::; ðvn1 ; wn2 Þg between the two sets of nodes v and w, we   check for overloads: Any line (i, j) with jF i!j j > F max
+                                                                                                                                                         i!j undergoes an emergency
+randomly add a share of μ 2 [0, 1]. The parameter μ controls the connectivity of                  shutdown and is removed from the grid. The simulations are stopped when no
+the two subgraphs G1 and G2: They remain disconnected for μ = 0 and they are                      further overload occurs or when the grid is disconnected.
+connected via a complete bipartite graph for for μ = 1. For c = 1 and μ = p1 = p2                     Note that this mechanism for cascading failures is different from the cascading
+we recover a single Erdős–Rényi random graph with N = N1 + N2 nodes. Note that                    failure mechanism typically analysed in node capacity load models (see e.g.
+this procedure is in principal not limited to ER random graphs. We apply it to                    refs. 45,46). The redistribution of nodal loads or ﬂows after failures in such models is
+study other types of graphs as shown in Supplementary Fig. 1.                                     typically based on the neighbourhood of nodes, on shortest path betweenness
+                                                                                                  measures or on other ‘intelligent’ redistribution schemes whereas the redistribution
+Calculating the distance between edges. The notion of distance used throughout                    of ﬂows after failures in linear ﬂow networks or power grids studied using AC load
+the manuscript is the unweighted edge distance. This notion of distance measures                  ﬂow analysis are given by the physical laws governing electrical networks.
+the length of the shortest path between two edges ℓ = (r, s) and e = (m, n) and is                Furthermore, in most cases nodes—not edges—are assumed to fail, which is not the
+deﬁned as follows25                                                                               typical case in real power grids.
+
+                         distð‘; eÞ ¼         min             dðv1 ; v2 Þ þ 1;            ð13Þ    Processing leaf data. The leaf venation network is based on a microscopic
+                                        v1 2fr;sg;v2 2fm;ng
+                                                                                                  recording of a leaf of the species Bursera hollickii provided by the authors of ref. 47.
+where d(v1, v2) is the unweighted shortest-path or geodesic distance between nodes                Edge weights Aij are assumed to scale with the radius rij of the corresponding vein
+v1 and v2 and the addition of unity ensures that neighbouring edge have a non-                    (i, j) as Aij / r 4ij according to the Hagen–Poisseuille law, see ref. 28 for a detailed
+vanishing distance.
+                                                                                                  discussion. We used the radius in pixel scanned at a resolution of 6400 dpi.
+
+Perturbing network isolators. The robustness of network isolators to structural
+                                                                                                  Parametrising network isolators with four edges. Consider a network isolator
+perturbations is analysed as follows. Let G = (E, V) be a graph whose nodes are split
+                                                                                                  that connects two vertices from one module with two vertices in the other module
+into two subsets V1 and V2 consisting of N1 and N2 nodes, respectively. Further-
+                                                                                                  and consists of four edges in total (see Fig. 3a, right). Denote the weights of the four
+more, let A12 be the N1 × N2 weighted adjacency matrix that encodes the mutual
+                                                                                                  edges by a1, a2, a3, a4 and assume that we ﬁx the overall available weight to build
+connections between the two parts as described in Theorem 1. Without loss of
+                                                                                                  the network isolator. Including the rank conditions, the edge weights have to satisfy
+generality we can order the nodes of the network in such a way that the matrix has
+                                                                                                  two constraints,
+the structure
+                                                            !!
+                                                                                                                                         4
+                              !                  !
+                               a     !  a m 0  0                                                                                   ∑ a‘ ¼ A ¼ 4
+                    A12 ¼ !1               ! !              ! ;                 ð14Þ                                         
+                                                                                                                                        ‘¼1
+                                                                                                                                          
+                               0         0     0  0                                                                         a1   a2
+                                                                                                                      rank                   ¼ 1 ) a1  a4 ¼ a2  a3 ;
+where we assume that n nodes of the ﬁrst subset are connected to m nodes of the                                                   a3   a4
+other subset and thus !     a 1; ¼ ; ! a m 2 Rn . According to Theorem 1, a perfect               thus leaving two degrees of freedom. We can then solve this set of equations for
+network isolator is found if rank(A12) = 1, i.e. if all vectors ! a 1; ¼ ; !
+                                                                           a m are lin-           two variables and treat the remaining ones, a3, a4, as parameters that are varied
+early dependent.                                                                                  independently:
+     To investigate the robustness of network isolators, we start from a unit rank                                           ðA  a4  a3 Þ                ðA  a4  a3 Þ
+matrix rank (A12) = 1 and perturb it iteratively. In each step we choose one of the                                a1 ¼ a3                  ;    a2 ¼ a4                  :
+                                                                                                                                a3 þ a4                       a3 þ a4
+vectors ! a i ; i ¼ 1; ¼ ; m at random and perturb it according to
+!ai¼!
+   0
+         aiþ!     e k! a i k. The elements of the perturbation vector !e are chosen               For the simulations shown in Fig. 5c, d. we have set A ¼ 4.
+uniformly at random from the interval [−β, β], where β is a small parameter, here
+β = 0.05.                                                                                         Varying the degree of non-linearity. To vary the degree of non-linearity sys-
+     The deviation of the perturbed matrix A12 from a unit rank matrix is quantiﬁed               tematically in Fig. 5, we ﬁrst randomly assign 25% of the nodes to be identical
+using its coherence statistics38, Eq. (10),                                                       sources and the remaining ones to be identical sinks and choose their value such
+                                                                                                  that Eq. (3) is fulﬁlled. We then calculate the non-linear ﬂows by combining Eq. (2)
+                                                    a i; !
+                                                   h!    a ji                                     with the non-linear ﬂows (Eq. (11)). For sources, we set Pi = 0.09 (bright line)
+                              ξðA12 Þ ¼ 1  min !              ;
+                                             i;j k a kk ! ajk                                     initially and then systematically increase (decrease) the injections at all sources
+                                                     i
+                                                                                                  (sinks) by the factors 3.5, 6.0, 8.5, 11 (lines from light to dark) up until a maximum
+where 〈⋅, ⋅〉 denotes the standard scalar product on Rn and ∥⋅∥ denotes the ℓ2-                    value of Pi = 0.99 is reached (black line) which corresponds to a maximum ﬂow in
+norm. For a matrix A12 of unit rank we have ξ(A12) = 0 as all vectors are linearly                the network of jFj ~ max ¼ 0:89.
+dependent. For vectors deviating from linear dependence, the measure increases
+until it reaches its maximum value if two vectors are orthogonal with ξ(A12) = 1.
+    To create Fig. 2e, we repeated this process 1000 times starting from the perfect              Data availability
+isolator shown in panel c. Edge weights were randomly chosen from a normal                        The topology of the Scandinavian power grid, the Central European power grid and the
+distribution N ð10; 1Þ with mean μ = 10 and variance σ2 = 1 except for the isolator.              British power grid have been extracted from the open European energy system model
+The network isolator consists of four nodes in the left subgraph that are completely              PyPSA-Eur44, which is fully available online at https://doi.org/10.5281/zenodo.3886532.
+connected to four nodes in the other subgraph (see Fig. 1c). We select groups                     Leaf data was provided by the authors of ref. 47 and is available from the respective
+of four edges that are connected to a single node in one subgraph and to all                      authors upon reasonable request.
+four nodes in the other subgraph to have the same weight such that initially rank
+(A12) = 1. For each perturbed network, we evaluate ξ(A12) and the ratio of ﬂow
+changes R according to Eq. (3) averaged over all possible trigger links ℓ and                     Code availability
+distances d. For a perfect isolator, this ratio vanishes due to a vanishing numerator.            Computer code will be made available at https://github.com/FNKaiser/
+                                                                                                  Inhibiting_Failure_Spreading upon publication.
+Power grid data and cascade model. Power grid data has been extracted from the
+open European energy system model PyPSA-Eur, which is fully available online44.                   Received: 26 October 2020; Accepted: 19 April 2021;
+The model includes the topology as well as the susceptance bℓ and the line rating
+F max
+  i!j for each high voltage transmission line in Europe. We consider the Scandi-
+navian synchronous grid spanning Norway, Sweden, Finland and parts of Den-
+mark. This grid is coupled to other synchronous grids (central European grid,
+British grid and Baltic grid) only via high voltage DC transmission lines. Power
+ﬂow on these lines are actively controlled and can thus be considered constant, thus
+leading to constant real power injections at the coupling nodes. The Scandinavian                 References
+grid has 269 nodes and 370 edges, counting multiple-circuit lines only once.                      1.   Albert, R., Jeong, H. & Barabási, A.-L. Error and attack tolerance of complex
+    Cascading failures are simulated for ﬁxed power injections Pi for each node                        networks. Nature 406, 378–382 (2000).
+corresponding to an economic dispatch for the entire PyPSA-Eur model that                         2.   Yang, Y., Nishikawa, T. & Motter, A. E. Small vulnerable sets determine large
+includes a security margin given by the constraint jF i!j j ≤ 0:8  F max
+                                                                      i!j . The cascade is             network cascades in power grids. Science 358, eaan3184 (2017).
+triggered by the failure of a single line (r, s) which is effectively removed from the            3.   Pourbeik, P., Kundur, P. & Taylor, C. The anatomy of a power grid blackout -
+grid. The simulation then proceeds step-wise; In each step, we ﬁrst calculate the                      root causes and dynamics of recent major blackouts. IEEE Power Energy Mag.
+nodal phase angles ϑi and real power ﬂows Fi→j for all nodes and lines, respectively,                  4, 22–29 (2006).
+
+
+
+8                       NATURE COMMUNICATIONS | (2021)12:3143 | https://doi.org/10.1038/s41467-021-23292-9 | www.nature.com/naturecommunications
+NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-021-23292-9                                                                                                ARTICLE
+
+4.    Witthaut, D., Rohden, M., Zhang, X., Hallerberg, S. & Timme, M. Critical              38. Tropp, J. A. & Wright, S. J. Computational methods for sparse solution of
+      links and nonlocal rerouting in complex supply networks. Phys. Rev. Lett. 116,            linear inverse problems. Proc. IEEE 98, 948–958 (2010).
+      138701 (2016).                                                                        39. Schäfer, B., Witthaut, D., Timme, M. & Latora, V. Dynamically induced
+5.    Sack, L., Dietrich, E. M., Streeter, C. M., Sanchez-Gomez, D. & Holbrook, N.              cascading failures in power grids. Nat. Commun. 9, 1975 (2018).
+      M. Leaf palmate venation and vascular redundancy confer tolerance of                  40. Dörﬂer, F. & Bullo, F. Synchronization in complex networks of phase
+      hydraulic disruption. Proc. Natl Acad. Sci. 105, 1567–1572 (2008).                        oscillators: a survey. Automatica 50, 1539–1564 (2014).
+6.    Dunne, J. A. & Williams, R. J. Cascading extinctions and community collapse in        41. Rodrigues, F. A., Peron, T. K. D., Ji, P. & Kurths, J. The kuramoto model in
+      model food webs. Philos. Transact. Royal Soc. B: Biol. Sci. 364, 1711–1723 (2009).        complex networks. Phys. Rep. 610, 1–98 (2016).
+7.    Strogatz, S. H. Exploring complex networks. Nature 410, 268 (2001).                   42. Wood, A. J., Wollenberg, B. F. & Sheblé, G. B. Power Generation, Operation
+8.    Sahasrabudhe, S. & Motter, A. E. Rescuing ecosystems from extinction                      and Control. (John Wiley & Sons, 2014).
+      cascades through compensatory perturbations. Nat. Commun. 2, 170 (2011).              43. Nematzadeh, A., Ferrara, E., Flammini, A. & Ahn, Y.-Y. Optimal Network
+9.    Motter, A. E. Cascade Control and Defense in Complex Networks. Phys. Rev.                 Modularity for Information Diffusion. Phys. Rev. Lett. 113, 8 (2014).
+      Lett. 93, 098701 (2004).                                                              44. Hörsch, J., Hofmann, F., Schlachtberger, D. & Brown, T. PyPSA-eur: an open
+10.   D’Souza, R. M. Curtailing cascading failures. Science 358, 860–861 (2017).                optimisation model of the european transmission system. Energy Strategy Rev.
+11.   Lin, Y., Burghardt, K., Rohden, M., Noël, P.-A. & D’Souza, R. M. Self-                    22, 207–215 (2018).
+      organization of dragon king failures. Phys. Rev. E 98, 022127 (2018).                 45. Motter, A. E. & Lai, Y.-C. Cascade-based attacks on complex networks. Phys.
+12.   Stouffer, D. B. & Bascompte, J. Compartmentalization increases food-web                   Rev. E 66, 065102 (2002).
+      persistence. Proc. Natl Acad. Sci. 108, 3648–3652 (2011).                             46. Crucitti, P., Latora, V. & Marchiori, M. Model for cascading failures in
+13.   Gilarranz, L. J., Rayﬁeld, B., Liñán-Cembrano, G., Bascompte, J. & Gonzalez,              complex networks. Phys. Rev. E 69, 045104 (2004).
+      A. Effects of network modularity on the spread of perturbation impact in              47. Ronellenﬁtsch, H., Lasser, J., Daly, D. C. & Katifori, E. Topological Phenotypes
+      experimental metapopulations. Science 357, 199–201 (2017).                                Constitute a New Dimension in the Phenotypic Space of Leaf Venation
+14.   Hens, C., Harush, U., Haber, S., Cohen, R. & Barzel, B. Spatiotemporal signal             Networks. PLOS Comput. Biol. 11, e1004680 (2015).
+      propagation in complex networks. Nat. Phys. 15, 403 (2019).
+15.   Brummitt, C. D., D’Souza, R. M. & Leicht, E. A. Suppressing cascades of load
+      in interdependent networks. Proc. Natl Acad. Sci. 109, E680–E689 (2012).              Acknowledgements
+16.   Radicchi, F., Castellano, C., Cecconi, F., Loreto, V. & Parisi, D. Deﬁning and        We thank Tom Brown and Jonas Hörsch for help with the processing of power grid data,
+      identifying communities in networks. Proc. Natl Acad. Sci. 101, 2658–2663 (2004).     Eleni Katifori and Henrik Ronellenﬁtsch for providing the leaf data and Raissa D’Souza
+17.   Girvan, M. & Newman, M. E. J. Community structure in social and biological            and Jürgen Kurths for valuable discussions. We gratefully acknowledge support from the
+      networks. Proc. Natl Acad. Sci. 99, 7821–7826 (2002).                                 Federal Ministry of Education and Research (BMBF grant no. 03EK3055B D.W.), the
+18.   Newman, M. E. J. Communities, modules and large-scale structure in                    Helmholtz Association (via the joint initiative “Energy System 2050—a Contribution of
+      networks. Nat. Phys. 8, 25–31 (2012).                                                 the Research Field Energy” and grant no. VH-NG-1025 to D.W.). V.L.’s work was funded
+19.   Lasseter, R. H. Microgrids. In 2002 IEEE Power Engineering Society Winter             by the Leverhulme Trust Research Fellowship CREATE.
+      Meeting. Conference Proceedings (Cat. No. 02CH37309), vol. 1, 305–308 (IEEE,
+      2002).                                                                                Author contributions
+20.   Mureddu, M., Caldarelli, G., Damiano, A., Scala, A. & Meyer-Ortmanns, H.              D.W. conceived research and acquired funding. F.K., V.L. and D.W. designed research.
+      Islanding the power grid on the transmission level: less connections for more         F.K. carried out all numerical simulations, evaluated the results and designed all ﬁgures.
+      security. Sci. Rep. 6, 34797 (2016).                                                  All authors contributed to discussing the results and writing the paper.
+21.   Schlachtberger, D. P., Brown, T., Schramm, S. & Greiner, M. The beneﬁts of
+      cooperation in a highly renewable european electricity network. Energy 134,
+      469–481 (2017).                                                                       Funding
+22.   Tröndle, T., Lilliestam, J., Marelli, S. & Pfenninger, S. Trade-offs between          Open Access funding enabled and organized by Projekt DEAL.
+      geographic scale, cost, and infrastructure requirements for fully renewable
+      electricity in europe. Joule 4, 1929–1948 (2020).
+23.   Gavrilchenko, T. & Katifori, E. Resilience in hierarchical ﬂuid ﬂow networks.
+                                                                                            Competing interests
+                                                                                            The authors declare no competing interests.
+      Phys. Rev. E 99, 012321 (2019).
+24.   Purchala, K., Meeus, L., Dommelen, D. V. & Belmans, R. Usefulness of dc
+      power ﬂow for active power ﬂow analysis. In IEEE Power Engineering Society            Additional information
+      General Meeting, Vol. 1, 454–459 (IEEE, 2005).                                        Supplementary information The online version contains supplementary material
+25.   Strake, J., Kaiser, F., Basiri, F., Ronellenﬁtsch, H. & Witthaut, D. Non-local        available at https://doi.org/10.1038/s41467-021-23292-9.
+      impact of link failures in linear ﬂow networks. N J. Phys. 21, 053009 (2019).
+26.   Stott, B., Jardim, J. & Alsac, O. DC Power Flow Revisited. IEEE Transact.             Correspondence and requests for materials should be addressed to D.W.
+      Power Syst. 24, 1290–1300 (2009).
+27.   Katifori, E., Szöllősi, G. J. & Magnasco, M. O. Damage and ﬂuctuations induce         Peer review information Nature Communications thanks the anonymous reviewer(s) for
+      loops in optimal transport networks. Phys. Rev. Lett. 104, 048704 (2010).             their contribution to the peer review of this work. Peer reviewer reports are available.
+28.   Coomes, D. A., Heathcote, S., Godfrey, E. R., Shepherd, J. J. & Sack, L. Scaling
+      of xylem vessels and veins within the leaves of oak species. Biol. Lett. 4,           Reprints and permission information is available at http://www.nature.com/reprints
+      302–306 (2008).
+29.   Manik, D. et al. Network susceptibilities: theory and applications. Phys. Rev. E      Publisher’s note Springer Nature remains neutral with regard to jurisdictional claims in
+      95, 012319 (2017).                                                                    published maps and institutional afﬁliations.
+30.   Newman, M. E. J. Networks: An introduction (Oxford University Press, 2010).
+31.   Fortunato, S. Community detection in graphs. Phys. Rep. 486, 75–174 (2010).
+32.   Kaiser, F., Strake, J. & Witthaut, D. Collective effects of link failures in linear                     Open Access This article is licensed under a Creative Commons
+      ﬂow networks. N J. Phys. 22, 013053 (2020).
+                                                                                                              Attribution 4.0 International License, which permits use, sharing,
+33.   Kettemann, S. Delocalization of disturbances and the stability of ac electricity
+                                                                                            adaptation, distribution and reproduction in any medium or format, as long as you give
+      grids. Phys. Rev. E 94, 062311 (2015).
+                                                                                            appropriate credit to the original author(s) and the source, provide a link to the Creative
+34.   Erdős, P. On the evolution of random graphs. Publ. Math. Inst. Hungarian
+                                                                                            Commons license, and indicate if changes were made. The images or other third party
+      Acad. Sci. 5, 17–61 (1960).
+                                                                                            material in this article are included in the article’s Creative Commons license, unless
+35.   Pecora, L. M., Sorrentino, F., Hagerstrom, A. M., Murphy, T. E. & Roy, R.
+                                                                                            indicated otherwise in a credit line to the material. If material is not included in the
+      Cluster synchronization and isolated desynchronization in complex networks
+      with symmetries. Nat. Commun. 5, 1–8 (2014).                                          article’s Creative Commons license and your intended use is not permitted by statutory
+36.   Sorrentino, F., Pecora, L. M., Hagerstrom, A. M., Murphy, T. E. & Roy, R.             regulation or exceeds the permitted use, you will need to obtain permission directly from
+      Complete characterization of the stability of cluster synchronization in              the copyright holder. To view a copy of this license, visit http://creativecommons.org/
+      complex dynamical networks. Sci. Adv. 2, e1501737 (2016).                             licenses/by/4.0/.
+37.   Nicosia, V., Valencia, M., Chavez, M., Díaz-Guilera, A. & Latora, V. Remote
+      Synchronization Reveals Network Symmetries and Functional Modules. Phys.
+                                                                                            © The Author(s) 2021
+      Rev. Lett. 110, 174102 (2013).
+
+
+
+
+NATURE COMMUNICATIONS | (2021)12:3143 | https://doi.org/10.1038/s41467-021-23292-9 | www.nature.com/naturecommunications                                                             9
+

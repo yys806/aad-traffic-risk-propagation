@@ -1,0 +1,228 @@
+\documentclass[UTF8,zihao=5,a4paper]{ctexart}
+
+% 老师反馈（2026-07-15，留在源文件中供后续推进时核对）：
+% 1. 文献调研需要提取本课题的关键创新点，重点区分已有的单跳/多跳风险传播
+%    与我们拟研究的远距离作用；“超距”只能在有交通机理和统计检验支撑后使用。
+% 2. 需要明确研究对象。当前先收敛为混合交通中的碰撞/冲突风险，避免把事故、
+%    拥堵和一般运行风险混在同一个定义中。
+
+\usepackage[top=1.85cm,bottom=1.85cm,left=2.1cm,right=2.1cm]{geometry}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{float}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.12em}
+\linespread{1.08}
+\renewcommand{\arraystretch}{1.15}
+\setlist[enumerate]{leftmargin=2.2em,itemsep=1pt,topsep=2pt,parsep=0pt}
+\ctexset{
+  section={format=\large\bfseries,beforeskip=10pt,afterskip=5pt},
+  subsection={format=\normalsize\bfseries,beforeskip=7pt,afterskip=3pt}
+}
+\setlength{\textfloatsep}{7pt}
+\setlength{\intextsep}{6pt}
+\setlength{\abovecaptionskip}{4pt}
+\setlength{\belowcaptionskip}{2pt}
+
+\title{\vspace{-1.2cm}\textbf{混合自动驾驶风险传播研究\\阶段工作回顾与本周进展}}
+\author{禹尧珅}
+\date{7.9--7.14}
+
+\begin{document}
+
+\pagestyle{plain}
+\maketitle
+\vspace{-1.8em}
+
+\section{前期工作回顾}
+
+\subsection{前期文献调研与可行性判断}
+
+前期我一共整理了22篇文献，主要分为风险事件与安全指标、混合自动驾驶传播与控制、闭环仿真与场景测试、人类行为交互与轨迹预测四类。我当时主要想确认三件事：现有数据能不能识别局部风险，风险传播能不能用图来表示，以及后面能不能用闭环仿真检验干预效果。
+
+\textbf{混合交通交互建模。}Wang等~\cite{wang2024safety}将机理模型与高斯过程结合，用实车实验数据学习人工驾驶车辆的速度变化和预测不确定性，再把模型放进预测控制器中。文中还用稀疏高斯过程和动态预测降低在线计算量。\textbf{这篇文章对我最直接的帮助是：}分析风险传播时要保留自动驾驶车辆与人工驾驶车辆之间的交互，后面做干预时也要同时看安全变化和控制代价。
+
+Gong和Zhu~\cite{gong2024hinf}建立了包含不同跟驰方式和反应延迟的车辆跟驰模型，用车辆自身状态和前车加速度描述运动，并推导串稳定条件，再通过线性矩阵不等式设计鲁棒控制和$H_{\infty}$控制。数值结果表明，自动驾驶车辆占比和反应延迟都会改变扰动抑制能力。\textbf{这篇文章提醒我：}正式实验不能只跑一个车辆占比，还要更换随机种子，比较传播距离、延迟和影响范围是否发生变化。
+
+\textbf{风险图建模。}Wang等~\cite{wang2024conflict}提出冲突风险图，把路口中容易发生冲突的位置设为节点，并按空间拓扑连接这些节点；随后构建基于Transformer的图卷积网络，用图卷积提取局部空间特征，用Transformer处理较长时间范围的依赖。\textbf{我准备借用其中的图建模思路：}把文章中的“风险位置节点”改成“车辆风险事件节点”，再用车辆关系和时间顺序连接前后事件。
+
+\textbf{闭环仿真验证。}Fu等~\cite{fu2025trafficmcts}提出基于分组蒙特卡洛树搜索的闭环交通流生成框架，并用社会价值取向描述不同车辆的合作倾向和驾驶风格。车辆会根据每一步的环境状态重新决策，形成连续的多车交互过程。\textbf{这一点正好对应后面的反事实实验：}保持初始条件不变，只修改某个行为并重新运行，再比较前后两次仿真的风险链。
+
+\textbf{综合这些文献，我认为这个方向是可以继续做的。}数据方面，车辆轨迹中已经有速度、加速度、间距和前后车关系；方法方面，可以参考现有风险图来设计事件节点和传播边；验证方面，闭环仿真可以在固定初始条件下做干预对照。
+
+\subsection{前期实验基础}
+
+前期我已经在DRIFT/Flow环境中跑过混合交通合流场景。仿真可以设置自动驾驶车辆占比，并输出每辆车的时间、位置、速度、加速度、车头时距和前车关系等数据。我也完成了规则型风险检测，并跑通了一次合流场景。
+
+当时的分析主要统计风险次数和全局指标，同一个持续风险会在连续多帧中被重复记录，事件之间也没有连接起来。因此，这周我一边补充文献，一边尝试把逐帧检测整理成事件片段，再构建传播边。
+
+\section{本周工作（7.9--7.14）}
+
+\subsection{文献调研}
+
+这周我在前期调研的基础上又补了两类文献：\textbf{因果风险建模}和\textbf{传播过程量化}。主要目的是弄清楚当前传播边应该怎么解释，以及后面还要统计哪些指标。
+
+\textbf{因果风险建模。}Lyu等~\cite{lyu2025causal}给出了“因果发现、数据重构、实时预测”的完整流程：先用结构不可知模型从交通变量中寻找因果关系，再根据因果图和时空关系重构输入，最后用图注意力网络预测快速路分流区的冲突风险。\textbf{我从这篇文章里确定了一个边界：}现在根据时间、距离和车辆关系得到的边只能算候选关联，关键边还要放回闭环仿真中重新验证。
+
+\textbf{传播过程量化。}Guan等~\cite{guan2025jam}先从微观跟驰角度分析冲击波，再用随机游走描述混合交通中拥堵波的传播，并推导受影响车辆数量等指标；随后设计缓入策略，并用数值仿真检查抑制效果。\textbf{对我来说最有用的是指标设计：}除了事件数量，还要统计传播延迟、传播距离、影响车辆数和传播深度，干预时可以优先选择下游影响范围较大的事件。
+
+看完这两类工作后，后面的思路基本确定为：\textbf{先用可解释规则构建候选传播图，再把关键关系放回闭环仿真中做对照。}
+
+\subsection{小实验验证}
+
+\textbf{（1）数据与风险事件。}这次小实验用的是一次Flow合流场景产生的车辆轨迹，自动驾驶车辆占比为20\%，仿真时长为25秒。我按加速度、碰撞时间和车头时距，从每一帧车辆状态中识别急刹、严重急刹、低碰撞时间、临界碰撞时间、低车头时距和近碰事件。其中，车辆接近前车时的碰撞时间为
+\begin{equation}
+T_i=\frac{h_i}{-\Delta v_i}, \qquad \Delta v_i<0,
+\label{eq:ttc}
+\end{equation}
+式中，$h_i$为车辆$i$与前车的间距，$\Delta v_i$为相对速度。当前阈值包括：急刹加速度不高于$-3\,\mathrm{m/s^2}$、严重急刹加速度不高于$-6\,\mathrm{m/s^2}$、低碰撞时间不超过2秒、低车头时距不超过1秒。
+
+为了让不同类型的事件可以放在一起比较，代码把每条检测的风险分数$q_i$归一化到$[0,1]$。对于碰撞时间或车头时距等“数值越小越危险”的指标，分数定义为
+\begin{equation}
+q_z=\min\left\{1,\max\left(0,\frac{\theta-z}{\theta}+0.5\right)\right\},
+\label{eq:risk-inverse}
+\end{equation}
+其中，$z$是当前指标值，$\theta$是对应的风险阈值。对于急刹事件，分数按减速度相对预设上限的比例计算；急刹和严重急刹分别使用$8\,\mathrm{m/s^2}$和$10\,\mathrm{m/s^2}$作为归一化上限。分数越接近1，表示这条检测在当前规则下越严重。这个分数只用于比较相对严重程度，不是真实碰撞概率。
+
+急刹类事件的具体计算式为
+\begin{equation}
+q_a=\min\left\{1,\max\left(\frac{|a|}{a_{\mathrm{cap}}},\frac{a_{\mathrm{th}}}{a_{\mathrm{cap}}}\right)\right\},
+\label{eq:risk-braking}
+\end{equation}
+其中，$a_{\mathrm{th}}$为触发阈值的绝对值，$a_{\mathrm{cap}}$为归一化上限。近碰事件同时满足低碰撞时间和急刹条件，其风险分数取碰撞时间分数与0.8中的较大值。
+
+\textbf{（2）事件片段合并。}逐帧检测会重复记录持续风险。设第$i$个检测为$e_i=(r_i,v_i,c_i,t_i,q_i)$，分别表示运行编号、车辆编号、风险类型、发生时间和风险分数。相邻检测满足
+\begin{equation}
+r_i=r_j,\quad v_i=v_j,\quad c_i=c_j,\quad 0<t_j-t_i\leq 0.4\ \mathrm{s}
+\label{eq:merge}
+\end{equation}
+时，将其合并为同一风险片段。片段的风险分数取内部检测的最大值，并记录起止时间、持续时间和原始检测数。
+
+\textbf{（3）传播边筛选。}对时间上先后出现且满足同一车辆、前后车或同一区域关系的两个风险片段建立候选边。时间差限制为5秒，局部空间距离限制为80米。候选边$i\rightarrow j$的传播分数按现有代码计算为
+\begin{align}
+S_{ij}&=\min\left\{1,\max\left(0,w_t w_d w_r w_c\right)\right\}, \label{eq:score}\\
+w_t&=\max\left(0.1,1-\frac{\Delta t_{ij}}{5}\right),\quad
+w_d=\max\left(0.1,1-\frac{\min(d_{ij},80)}{80}\right), \notag\\
+w_r&=\max(q_i,q_j). \notag
+\end{align}
+其中，$\Delta t_{ij}$为时间差，$d_{ij}$为空间距离，$q_i$和$q_j$为两端事件的风险分数；$w_c$为关系权重，同车、前后车、同一区域和远距离同车道分别取0.9、1.0、0.7和0.5。为控制图的规模，每个源事件在每类关系中只保留得分最高的后续事件。车道字段缺失时，不保留远距离同车道边。
+
+传播分数$S_{ij}$也在$[0,1]$内。两个事件间隔越短、距离越近、风险越高，而且车辆关系越直接，得分就越高。这个分数只用来排列候选边和筛选直接边，不能当作传播概率或因果强度。
+
+\textbf{（4）节点角色与干预优先级。}设事件$i$的入边强度、出边强度和下游风险增量分别为
+\begin{equation}
+I_i=\sum_{j\rightarrow i}S_{ji},\qquad
+O_i=\sum_{i\rightarrow j}S_{ij},\qquad
+G_i=\operatorname{mean}_{i\rightarrow j}\max(q_j-q_i,0).
+\label{eq:role-base}
+\end{equation}
+令$\mathcal{N}(x_i)=x_i/\max_k x_k$表示同一次运行内的最大值归一化，则三个节点角色分数为
+\begin{align}
+R_i^{\mathrm{source}}&=\mathcal{N}(O_i), \notag\\
+R_i^{\mathrm{amplifier}}&=\mathcal{N}\!\left(\min(I_i,O_i)(1+G_i)\right), \label{eq:roles}\\
+R_i^{\mathrm{absorber}}&=\mathcal{N}\!\left(\frac{I_i}{1+O_i}\right). \notag
+\end{align}
+这三个分数主要是为了帮助我读图。风险源分数高，表示该事件后面连接了较强的传播边；放大器分数高，表示它接收了上游影响，又继续向下游传播，而且下游风险可能增加；吸收器分数高，表示它接收到的影响较强，但后续传播较弱。这些角色只针对当前这一次运行，不代表某辆车长期固定属于某一类。
+
+在直接图上向下遍历最多三层后，干预优先级定义为
+\begin{equation}
+P_i=R_i^{\mathrm{source}}(1+n_i)\left(1+\sum_{e\in E_i}S_e\right),
+\label{eq:intervention}
+\end{equation}
+其中，$n_i$是从事件$i$能够到达的下游事件数，$E_i$是遍历过程中经过的直接传播边。$P_i$越高，说明该事件连接的下游范围越大、累计传播分数越高，后面可以优先拿它做反事实实验。这个优先级只用于挑选实验对象，干预有没有效果仍要重新运行闭环仿真。
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  node distance=5mm,
+  box/.style={draw=black,rectangle,align=center,minimum width=2.18cm,minimum height=0.72cm,inner sep=3pt},
+  flow/.style={-{Latex[length=2mm]},thick}
+]
+\node[box] (data) {闭环仿真\\车辆轨迹};
+\node[box,right=of data] (event) {逐帧风险\\事件识别};
+\node[box,right=of event] (episode) {连续检测\\合并为片段};
+\node[box,right=of episode] (edge) {候选边构建\\直接边筛选};
+\node[box,right=of edge] (role) {节点角色\\干预候选};
+\draw[flow] (data) -- (event);
+\draw[flow] (event) -- (episode);
+\draw[flow] (episode) -- (edge);
+\draw[flow] (edge) -- (role);
+\end{tikzpicture}
+\caption{小实验的风险传播分析流程}
+\label{fig:flow}
+\end{figure}
+
+\textbf{（5）当前结果。}这次实验一共得到309条逐帧风险检测。按照式\eqref{eq:merge}合并后形成16个风险片段，随后生成37条候选传播边，并从中筛选出18条直接传播边。具体结果见表\ref{tab:results}。
+
+\begin{table}[H]
+\centering
+\caption{真实Flow合流数据的分析结果}
+\label{tab:results}
+\begin{tabular}{lr}
+\toprule
+指标 & 结果 \\
+\midrule
+逐帧风险检测数 & 309 \\
+风险事件片段数 & 16 \\
+候选传播边数 & 37 \\
+直接传播边数 & 18 \\
+平均传播延迟 & 1.467秒 \\
+平均传播距离 & 13.679米 \\
+平均传播分数 & 0.507 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+309条记录来自连续仿真帧，所以不能把它理解成309个独立事件。合并后的16个片段更接近完整的风险过程。37条候选边最后保留18条，保留率为48.6\%，图中的重复联系和较间接的联系明显减少。18条直接边中有9条前后车关系、5条同区域关系和4条同车关系。就这次样本来看，比较清楚的联系主要出现在前后车之间。
+
+平均传播延迟为1.467秒，平均传播距离为13.679米，说明目前筛出的关系主要发生在较短时间和局部范围内。平均传播分数0.507是18条直接边分数的算术平均，只能在同一套评分规则下比较，目前还没有设置高、中、低等级。由于现在只有一个场景、20\%自动驾驶车辆占比和一次运行，车道字段也没有完整记录，所以这组结果主要用来检查分析流程。跨车道传播、一般规律和干预效果还需要后续实验支持。
+
+\section{下周计划（7.15--7.21）}
+
+\begin{enumerate}
+\item \textbf{优化实验设计。}我准备先补全车辆类型、车道和前后车关系等字段，再确定不同自动驾驶车辆占比和随机种子的对照设置。
+\item \textbf{完善传播分析。}继续检查事件定义和传播边筛选方法，补充传播深度、影响车辆数等指标，并选出适合做反事实实验的事件。
+\item \textbf{推进文档与论文工作。}把研究问题、方法、实验设置和阶段结果整理清楚，同时列出各部分还缺少的证据。
+\end{enumerate}
+
+\begingroup
+\footnotesize
+\begin{thebibliography}{99}
+\bibitem{wang2024conflict}
+T. Wang, Y.-E. Ge, Y. Wang, C. G. Prato, W. Chen, and Y. Niu,
+``A conflict risk graph approach to modeling spatio-temporal dynamics of intersection safety,''
+\emph{Transportation Research Part C: Emerging Technologies}, 2024.
+
+\bibitem{lyu2025causal}
+N. Lyu, T. Xie, J. Wen, and Y. Wang,
+``A real-time conflict risk prediction modeling based on causal inference and graph-model: Applied to multi-configuration expressway diversion zones,''
+\emph{Transportation Research Part C: Emerging Technologies}, 2025.
+
+\bibitem{guan2025jam}
+H. Guan, X. Chen, and Q. Meng,
+``Jam propagation in mixed traffic of autonomous and human-driven vehicles: A random walk-based analysis,''
+\emph{Transportation Research Part C: Emerging Technologies}, vol. 180, p. 105310, 2025.
+
+\bibitem{wang2024safety}
+J. Wang, Y. V. Pant, L. Zhao, M. Antkiewicz, and K. Czarnecki,
+``Enhancing safety in mixed traffic: Learning-based modeling and efficient control of autonomous and human-driven vehicles,''
+\emph{IEEE Transactions on Intelligent Transportation Systems}, vol. 25, no. 9, 2024.
+
+\bibitem{fu2025trafficmcts}
+Z. Fu, L. Wen, P. Cai, D. Fu, S. Mao, and B. Shi,
+``TrafficMCTS: A closed-loop traffic flow generation framework with group-based Monte Carlo tree search,''
+\emph{IEEE Transactions on Intelligent Transportation Systems}, vol. 26, no. 10, 2025.
+
+\bibitem{gong2024hinf}
+Y. Gong and W.-X. Zhu,
+``Modeling and robust H-infinity control synthesis of the CAV-HDV heterogeneous traffic system with different car-following modes,''
+\emph{IEEE Transactions on Intelligent Transportation Systems}, vol. 25, no. 10, 2024.
+\end{thebibliography}
+\endgroup
+
+\end{document}

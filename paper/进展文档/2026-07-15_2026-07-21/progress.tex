@@ -1,0 +1,272 @@
+\documentclass[UTF8,zihao=5,a4paper]{ctexart}
+
+\usepackage[top=1.9cm,bottom=1.9cm,left=2.15cm,right=2.15cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage{cite}
+\usepackage[hidelinks]{hyperref}
+
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.28em}
+\linespread{1.08}
+\setlist[enumerate]{leftmargin=2.2em,itemsep=3pt,topsep=4pt,parsep=0pt}
+\ctexset{
+  section={format=\large\bfseries,beforeskip=10pt,afterskip=5pt},
+  subsection={format=\normalsize\bfseries,beforeskip=7pt,afterskip=3pt}
+}
+\setlength{\textfloatsep}{7pt}
+\setlength{\intextsep}{6pt}
+\setlength{\abovecaptionskip}{4pt}
+\setlength{\belowcaptionskip}{2pt}
+\renewcommand{\arraystretch}{1.12}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+\title{\vspace{-1.25cm}\textbf{混合自动驾驶碰撞冲突风险传播研究\\本周进展}}
+\author{禹尧珅}
+\date{7.15--7.21}
+
+\begin{document}
+\pagestyle{plain}
+\maketitle
+\vspace{-0.8cm}
+
+\section{前期工作}
+
+前期工作完成了三件事：梳理交通冲突风险、因果分析和非局部交通流方面的文献；确定“从车辆轨迹提取碰撞前风险事件，再分析事件之间的关系”的基本思路；跑通了一次小规模流程。Wang 等\cite{wang2024conflict}用风险图描述交通冲突的时空变化，Lyu 等\cite{lyu2025causal}把因果推断和图模型用于冲突风险预测，Luo 等\cite{luo2026crm}研究相邻车辆之间的级联风险。这些工作说明，车辆轨迹可以先转换成风险事件，再分析事件之间的先后和车辆关系。
+
+Huang 和 Du\cite{huang2022nonlocal}、Sun 和 Tan\cite{sun2020lookahead}研究车辆对一定范围外信息的响应，Friedrich 等\cite{friedrich2022network}研究非局部交通流在路网中的传播。这一类工作多以速度、密度、流量和交通稳定性为对象。它们给了我们研究“车辆之间是否存在超出相邻跟驰链的影响”的参考，但没有直接回答这种影响是否会改变另一辆车的碰撞冲突风险。Guan 等\cite{guan2025jam}讨论的是混合交通中的拥堵波传播，也不等同于碰撞冲突传播。
+
+前期小实验只用了一个合流场景和少量轨迹，流程能够运行，但数据量不足，TTC、前车和车道字段还需要修正。因此，它只能说明数据处理流程可行，不能说明远距离关系已经成立。
+
+老师提出了两个问题：第一，风险图、因果风险和相邻车辆多跳传播已经有相关研究，需要说清楚我们准备研究的独特点；第二，必须定义“风险”到底是碰撞、拥堵，还是其他交通状态，并说明为什么这样限定。前一版中部分表述过于抽象，本周改成了具体的车辆事件、局部关系和可干预的实验步骤。后续实验平台统一使用 DRIFT，不再比较其他控制方法。
+
+\section{本周工作}
+
+\subsection{文献调研与创新点凝练}
+
+本周扩大了文献调研，并按研究对象和验证方法分成四个方向，见表\ref{tab:literature-directions}。
+
+\begin{table}[H]
+\centering
+\small
+\caption{相关文献方向及其与本文的关系}
+\label{tab:literature-directions}
+\begin{tabularx}{\textwidth}{
+  >{\raggedright\arraybackslash}p{2.15cm}
+  >{\raggedright\arraybackslash}p{2.65cm}
+  Y
+  Y}
+\toprule
+研究方向 & 代表文献 & 主要内容 & 与本文的区别 \\
+\midrule
+交通冲突风险图与因果预测
+& Wang 等\cite{wang2024conflict}；Lyu 等\cite{lyu2025causal}
+& 用图结构描述冲突的时空变化，并用因果信息提高冲突风险预测能力。
+& 重点是风险表征和预测，没有验证局部传播之外的车辆关系是否具有可干预的因果作用。 \\
+\addlinespace
+相邻车辆级联风险
+& Luo 等\cite{luo2026crm}
+& 用 TTC、DRAC 等指标描述车队中相邻车辆风险的逐级累积。
+& 研究对象主要是相邻车辆和连续车队，仍属于局部逐跳传播。 \\
+\addlinespace
+非局部交通流
+& Huang 和 Du\cite{huang2022nonlocal}；Sun 和 Tan\cite{sun2020lookahead}；Friedrich 等\cite{friedrich2022network}
+& 描述车辆利用一定范围外的信息，以及这种规则对速度、密度和交通流稳定性的影响。
+& 研究尺度主要是交通流，没有落到单辆车的碰撞冲突事件，也没有做闭环反事实验证。 \\
+\addlinespace
+拥堵波传播
+& Guan 等\cite{guan2025jam}
+& 研究混合交通中低速和拥堵状态如何沿车流传播。
+& 研究的是拥堵状态，不是碰撞前冲突；两类问题的事件定义和验证目标不同。 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+从这些文献的覆盖范围看，本文准备研究的问题是：在 DRIFT 生成的混合自动驾驶场景中，车辆 A 发生风险事件后，车辆 B 是否会在没有连续相邻跟驰链的情况下出现可重复的碰撞冲突变化？“远距离”表示 A 与 B 之间没有被局部传播基线连接，不单纯按物理距离判断。
+
+本文的创新点暂时凝练为三点：
+\begin{enumerate}
+  \item \textbf{把非局部交通问题落到单车碰撞冲突事件。}本文分析带有车辆编号、起止时间、前后车状态和风险指标的追尾型冲突事件，研究尺度从速度、密度等交通流变量落到具体车辆事件。
+  \item \textbf{明确区分局部传播与远距离候选关系。}同车连续、前车到后车逐跳传播和同区域近邻关系先组成局部基线。局部基线无法解释、且没有连续中间传播链的 A--B 关系才进入远距离候选集合，避免把普通多跳传播误写成新作用。
+  \item \textbf{用闭环反事实验证候选关系。}观察数据只用于发现候选关系。后续固定初始状态和随机种子，只改变车辆 A 的信息输入或控制指令，再检查车辆 B 的风险是否稳定变化，从而判断作用方向和可能机制。
+\end{enumerate}
+
+第三点是本文与现有风险图和非局部交通流工作的主要区别。时间置换和负对照负责排除时间巧合与共同原因，闭环反事实实验再验证关系是否能够复现。候选关系还需要对应感知、通信、统一控制或其他可观察的交通机制；找不到实际机制时，不把它写成直接作用。
+
+\subsection{风险定义：只研究碰撞前的追尾型交通冲突}
+
+本文中的“风险”有明确范围：\textbf{混合自动驾驶场景中，车辆跟驰或合流时已经出现碰撞趋势、但尚未发生碰撞的追尾型交通冲突}。Lyu 等\cite{lyu2025causal}将其描述为持续接近、需要减速或改道才能避免碰撞的状态；Wang 等\cite{wang2024conflict}将冲突事件作为事故前的安全替代事件。
+
+举例来说，车辆 A 合流后减速，后车 B 与 A 的距离不断缩小，B 必须制动才能避免追尾。从两车进入持续接近状态到恢复安全间距，这一段记为一次碰撞冲突风险事件。若 B 最终撞上 A，则把碰撞记录为事故这一终止结果。碰撞后的停车、道路占用和排队属于事故造成的后续交通状态，不放进正常风险传播分析。
+
+拥堵也需要区分。车辆因为流量大而低速排队、车间距稳定、没有明显碰撞趋势时，记录为拥堵状态，不记为本文的风险事件。事故引起的拥堵同样作为事故后果处理。急刹只有在它同时造成持续的碰撞接近、满足冲突判据时才纳入风险事件；单独一次减速不自动等于碰撞风险。
+
+设车辆 $i$ 与前车的净间距为 $h_i(t)$，速度为 $v_i(t)$，闭合速度为 $\Delta v_i(t)=v_i(t)-v_{i-1}(t)$，纵向加速度为 $a_i(t)$。当存在有效前车且 $\Delta v_i(t)>0$ 时，定义
+\begin{equation}
+\mathrm{TTC}_i(t)=\frac{h_i(t)}{\Delta v_i(t)},\qquad
+\mathrm{DRAC}_i(t)=\frac{\Delta v_i^2(t)}{2h_i(t)}.
+\end{equation}
+当 $v_i(t)>0$ 时，定义
+\begin{equation}
+\mathrm{THW}_i(t)=\frac{h_i(t)}{v_i(t)},\qquad
+B_i(t)=\max\{0,-a_i(t)\}.
+\end{equation}
+
+TTC 表示按当前闭合速度继续行驶时距离碰撞还有多久；THW 表示后车按当前速度通过当前间距需要多久；DRAC 表示避免碰撞至少需要多大的减速度；$B_i(t)$ 表示当前减速度大小。TTC、THW 越小，或者 DRAC、$B_i(t)$ 越大，说明当前冲突越紧迫。Luo 等\cite{luo2026crm}也用 TTC 和 DRAC 衡量车辆碰撞接近程度。本文用这些量识别逐帧危险状态，再把连续危险帧合并成带起止时间的事件片段；它们是风险指标，不是实际事故概率。
+
+本周的检测规则为：TTC 不超过 $2\,\mathrm{s}$ 记为风险候选，TTC 不超过 $1\,\mathrm{s}$ 记为更紧急状态，THW 不超过 $1\,\mathrm{s}$ 记为近距离跟驰，纵向加速度不超过 $-3\,\mathrm{m/s^2}$ 记为明显制动。减速度低于 $-15\,\mathrm{m/s^2}$ 的片段单独标记为 SUMO 安全速度覆盖候选，暂不混入普通急刹传播分析。没有有效前车时不计算有限 TTC。
+
+\subsection{DRIFT 数据与局部传播基线}
+
+上周只有一个合流场景。本周修正 TTC、前车和车道字段，只用 DRIFT 在 3 个场景、6 种自动驾驶渗透率下的 90 个运行建立正式基线。数据处理过程见表\ref{tab:data-summary}。
+
+\begin{table}[H]
+\centering
+\small
+\caption{DRIFT 数据处理结果}
+\label{tab:data-summary}
+\begin{tabularx}{0.94\textwidth}{
+  >{\raggedright\arraybackslash}p{3.2cm}
+  >{\centering\arraybackslash}p{2.1cm}
+  Y}
+\toprule
+数据或处理阶段 & 数量 & 含义 \\
+\midrule
+轨迹文件 & 90 个 & 每个文件对应一次 DRIFT 独立运行。 \\
+车辆状态记录 & 542,644 条 & 每条记录是一辆车在某一时刻的位置、速度、加速度和前车等状态。 \\
+车辆小时 & 26.52 h & 所有车辆模拟时长相加后的总量，用于表示数据覆盖规模。 \\
+逐帧风险检测 & 1,745 条 & 低 TTC、低 THW 或明显制动等条件在某一帧被触发；同一帧可触发多项条件。 \\
+合并后的事件片段 & 508 个 & 同车、同类且时间连续的危险帧合并成一次完整事件。 \\
+安全速度覆盖候选 & 105 个 & 极端减速度可能来自 SUMO 的安全速度修正，单独保留，不作为普通急刹事件。 \\
+普通风险片段 & 403 个 & 从 508 个事件中去除 105 个安全速度覆盖候选后的结果。 \\
+边界片段 & 21 个 & 位于车辆记录首末位置，缺少完整的事件前后状态，因此删除。 \\
+\textbf{最终分析事件} & \textbf{382 个} & $403-21=382$，用于后续局部传播分析。 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+局部关系按以下规则建立：源事件先于目标事件，时间差不超过 3 s；关系包括同一车辆上的连续关系、前车到后车关系、后车到前车关系和同一区域关系；同一区域关系的纵向距离不超过 50 m。按规则先得到 355 条候选边，再为每个目标事件保留评分最高的一个局部前驱，得到 196 条一跳边。这里“一跳”只表示两个事件满足局部时间和空间条件，不表示已经证明因果。
+
+表\ref{tab:local-baseline}汇总了局部传播结果。196 条一跳边由 100 条同车连续关系、90 条前车到后车关系和 6 条同区域关系组成，其中 96 条连接不同车辆，占 49.0\%。沿一跳边继续连接得到 186 条传播链，其中 33 条至少经过两次传播，最长链包含 4 条有向边。这些结果构成后续筛选远距离候选关系的参照。
+
+\begin{table}[H]
+\centering
+\small
+\caption{DRIFT 局部传播基线结果}
+\label{tab:local-baseline}
+\begin{tabularx}{0.9\textwidth}{
+  >{\raggedright\arraybackslash}p{3.5cm}
+  >{\centering\arraybackslash}p{2.2cm}
+  Y}
+\toprule
+统计项 & 结果 & 具体含义 \\
+\midrule
+候选局部边 & 355 条 & 所有满足时间、距离和车辆关系条件的事件对。 \\
+最终一跳边 & 196 条 & 每个目标事件只保留评分最高的一个局部前驱。 \\
+同车连续关系 & 100 条 & 同一辆车前后相连的风险事件。 \\
+前车到后车关系 & 90 条 & 前车事件发生后，后车在局部时间窗内出现事件。 \\
+同区域关系 & 6 条 & 同一区域、纵向距离不超过 50 m 的局部联系。 \\
+跨车辆一跳边 & 96 条（49.0\%） & 90 条前车到后车关系与 6 条同区域关系之和。 \\
+传播链 & 186 条 & 将可以首尾连接的一跳边继续串联后的链。 \\
+多跳链 & 33 条 & 至少经过两条边，即至少发生两次局部连接。 \\
+最长链 & 4 条边 & 当前局部传播链的最大深度。 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection{时间置换：先检查是不是时间巧合}
+
+时间置换回答的是一个简单问题：如果每辆车自己的风险事件模式不变，只把这辆车的整段事件时间整体平移，跨车辆关系还会不会同样多？如果平移后也能得到很多关系，原始结果可能只是事件密集造成的巧合。Runge 等\cite{runge2019pcmci}指出，时序分析需要考虑滞后历史和共同原因，本周先用这一检验检查时间同步问题。
+
+具体做法是：保留每辆车的事件数量和事件之间的相对时间，只给该车的全部事件加一个随机偏移，并在本次运行的时间范围内循环。每次置换仍使用 3 s 时间窗、50 m 距离窗和同一套局部关系规则，重新计算跨车辆一跳边数。每个运行置换 100 次，经验 $p$ 值为“置换后跨车辆边数不少于原始边数”的次数比例，并采用加 1 修正。例如 100 次中有 3 次达到原始边数，则 $p=(1+3)/(100+1)\approx0.04$。
+
+时间置换结果见表\ref{tab:permutation-result}。其中“5/30”表示 30 次独立运行中有 5 次通过时间检验，不是 5 个事件，也不是 5 条因果关系。
+
+\begin{table}[H]
+\centering
+\small
+\caption{DRIFT 时间置换结果}
+\label{tab:permutation-result}
+\begin{tabularx}{0.88\textwidth}{
+  >{\raggedright\arraybackslash}p{2.5cm}
+  >{\centering\arraybackslash}p{2.2cm}
+  >{\centering\arraybackslash}p{2.8cm}
+  Y}
+\toprule
+场景 & DRIFT 运行数 & $p\leq0.05$ 的运行 & 结果说明 \\
+\midrule
+merge & 30 & 5 & 部分合流运行的跨车辆联系高于随机时间平移结果。 \\
+figure-eight & 30 & 0 & 当前数据中没有运行通过该时间检验。 \\
+ring & 30 & 未检验 & 当前阈值下没有保留有效风险事件。 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+本周已经明确风险范围和创新点，并完成 DRIFT 数据清洗、局部传播基线及第一轮时间置换。当前结果说明部分合流运行存在超过随机时间对齐的跨车辆联系，仍不能证明远距离因果作用。后续需要先找到局部基线解释不了的候选关系，再用负对照和闭环反事实实验检查：只改变车辆 A 后，车辆 B 的风险是否稳定变化。
+
+\section{下一周计划（7.22--7.28）}
+
+\begin{enumerate}
+  \item \textbf{整理局部基线解释不了的事件。}按场景和渗透率统计局部解释率，逐个检查密度、换道、前车变化和安全速度覆盖等共同因素。
+  \item \textbf{筛选并解释远距离候选关系。}对没有局部前驱的事件寻找可能的 A--B 联系，记录方向、距离、时延和可观察的信息或控制通道，并用匹配负对照和时间置换排除巧合。
+  \item \textbf{开展闭环反事实实验并同步论文。}固定初始状态和随机种子，只改变车辆 A 的信息输入或控制指令，重新运行 DRIFT，比较车辆 B 的 TTC、THW、DRAC、制动强度和风险事件是否稳定变化，同时整理实验设计和论文文字。
+\end{enumerate}
+
+\begingroup
+\footnotesize
+\begin{thebibliography}{99}
+\bibitem{wang2024conflict}
+T. Wang, Y.-E. Ge, Y. Wang, C. G. Prato, W. Chen, and Y. Niu,
+A conflict risk graph approach to modeling spatio-temporal dynamics of intersection safety,
+\emph{Transportation Research Part C: Emerging Technologies}, 2024,
+doi: 10.1016/j.trc.2024.104874.
+
+\bibitem{lyu2025causal}
+N. Lyu, T. Xie, J. Wen, and Y. Wang,
+A real-time conflict risk prediction modeling based on causal inference and graph-model: Applied to multi-configuration expressway diversion zones,
+\emph{Transportation Research Part C: Emerging Technologies}, 2025,
+doi: 10.1016/j.trc.2025.105219.
+
+\bibitem{luo2026crm}
+Y. Luo, X. Li, A. Bhaskar, D. Ngoduy, M. Elhenawy, and S. Glaser,
+Enhancing vehicle platoon safety assessment: A novel cascading risk measure,
+\emph{Accident Analysis \& Prevention}, 2026,
+doi: 10.1016/j.aap.2025.108360.
+
+\bibitem{guan2025jam}
+H. Guan, X. Chen, and Q. Meng,
+Jam propagation in mixed traffic of autonomous and human-driven vehicles: A random walk-based analysis,
+\emph{Transportation Research Part C: Emerging Technologies}, vol. 180, p. 105310, 2025,
+doi: 10.1016/j.trc.2025.105310.
+
+\bibitem{huang2022nonlocal}
+K. Huang and Q. Du,
+Stability of a nonlocal traffic flow model for connected vehicles,
+\emph{SIAM Journal on Applied Mathematics}, vol. 82, no. 1, pp. 221--243, 2022,
+doi: 10.1137/20M1355732.
+
+\bibitem{sun2020lookahead}
+Y. Sun and C. Tan,
+On a class of new nonlocal traffic flow models with look-ahead rules,
+\emph{Physica D: Nonlinear Phenomena}, vol. 413, p. 132663, 2020,
+doi: 10.1016/j.physd.2020.132663.
+
+\bibitem{friedrich2022network}
+J. Friedrich, S. G{"o}ttlich, and M. Osztfalk,
+Network models for nonlocal traffic flow,
+\emph{ESAIM: Mathematical Modelling and Numerical Analysis}, vol. 56, pp. 213--235, 2022,
+doi: 10.1051/m2an/2022002.
+
+\bibitem{runge2019pcmci}
+J. Runge, P. Nowack, M. Kretschmer, S. Flaxman, and D. Sejdinovic,
+Detecting and quantifying causal associations in large nonlinear time series datasets,
+\emph{Science Advances}, vol. 5, no. 11, p. eaau4996, 2019,
+doi: 10.1126/sciadv.aau4996.
+\end{thebibliography}
+\endgroup
+
+\end{document}

@@ -1,0 +1,776 @@
+                  ARTICLE
+                  https://doi.org/10.1038/s41467-021-21483-y                 OPEN
+
+                  Percolation of heterogeneous ﬂows uncovers
+                  the bottlenecks of infrastructure networks
+                  Homayoun Hamedmoghadam                        1 ✉, Mahdi Jalili         2, Hai L. Vu        1 & Lewi Stone           3✉
+
+
+
+
+                  Whether it be the passengers’ mobility demand in transportation systems, or the consumers’
+                  energy demand in power grids, the primary purpose of many infrastructure networks is to
+1234567890():,;
+
+
+
+
+                  best serve this ﬂow demand. In reality, the volume of ﬂow demand ﬂuctuates unevenly across
+                  complex networks while simultaneously being hindered by some form of congestion or
+                  overload. Nevertheless, there is little known about how the heterogeneity of ﬂow demand
+                  inﬂuences the network ﬂow dynamics under congestion. To explore this, we introduce a
+                  percolation-based network analysis framework underpinned by ﬂow heterogeneity. Thereby,
+                  we theoretically identify bottleneck links with guaranteed decisive impact on how ﬂows are
+                  passed through the network. The effectiveness of the framework is demonstrated on large-
+                  scale real transportation networks, where mitigating the congestion on a small fraction of the
+                  links identiﬁed as bottlenecks results in a signiﬁcant network improvement.
+
+
+
+
+                  1 Institute of Transport Studies, Faculty of Engineering, Monash University, Melbourne, VIC, Australia. 2 Electrical and Biomedical Engineering, School of
+
+                  Engineering, RMIT University, Melbourne, VIC, Australia. 3 Mathematical Sciences, School of Science, RMIT University, Melbourne, VIC, Australia.
+                  ✉email: homayoun.hamed@monash.edu; lewistone100@gmail.com
+
+                  NATURE COMMUNICATIONS | (2021)12:1254 | https://doi.org/10.1038/s41467-021-21483-y | www.nature.com/naturecommunications                                     1
+ARTICLE                                                                                                 NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-021-21483-y
+
+
+
+
+R
+       ecent theoretical advances in network science have con-                                                size. The percolation threshold ρc is an informative measure of
+       siderably contributed to our understanding of complex                                                  the global quality of network structure, indicating that the net-
+       systems, cutting across many disciplines from the social                                               work fails to provide global connectivity only with paths of links
+and technological sciences to the ﬁelds of ecology and biology1–12.                                           having quality above ρc24,27,28. While this generic critical phe-
+In many modern studies, percolation theory13 has been fre-                                                    nomenon is of vital importance for characterizing networks, we
+quently employed to characterize the structure, functionality, and                                            will show that limiting attention exclusively to the GC and its
+resilience of network systems. In this approach, link failure is                                              sudden fragmentation reveals only a part of the full picture when
+simulated by a percolation model which progressively removes                                                  studying real-world problems.
+links from the network14,15. The impact is usually measured via                                                  The primary goal in many critical infrastructure networks such
+a reduction in the size of the network’s largest connected                                                    as communication, power distribution, and water supply systems
+component, or giant component (GC), as links are gradually                                                    is to serve the demand for a certain amount of ﬂow between each
+removed16–18. Different strategies for simulating link failures, e.g.,                                        pair of nodes; we refer to such systems as “demand-serving net-
+random (error) or targeted (attack)19, make it possible to study a                                            works.” In reality, the ﬂow demand is often distributed hetero-
+range of different topological characteristics.                                                               geneously over the origin–destination (O–D) node pairs in the
+   In real infrastructure networks, however, pervasive phenomena                                              network. For example, in transportation networks, the passenger
+such as various forms of congestion (e.g., trafﬁc jams in trans-                                              travel demand is much larger between O–D points when one or
+portation or packet congestion in communication networks)                                                     both of them are hotspot locations29. The larger the ﬂow demand
+reduce the quality of ﬂow movement on links in a continuous                                                   between two nodes, the more crucial is their connecting paths30.
+manner rather than necessarily causing a complete failure. To                                                 When studying percolation in demand-serving networks,
+consider this, link-level ﬂow dynamics on a network G can be                                                  although the global connectivity is lost at percolation criticality,
+modeled by associating each link eij (connecting node i to node j)                                            yet a substantial proportion of the network’s ﬂow demand might
+with its own “quality” attribute qij ∈ (0, 1], which at any time                                              be between O–D node pairs that remain connected in the sub-
+indicates the link performance relative to an observed or pre-                                                critical phase. For example, if the bulk of the ﬂow demand is
+determined maximum level of performance20,21. For example, in                                                 contained within isolated small and medium-sized clusters
+a road trafﬁc network with the speed on each road changing                                                    (resulting from the GC fragmentation), the network can remain
+temporally, link quality qij can be deﬁned as the ratio of instan-                                            highly functional even after the GC collapse (see the example in
+taneous trafﬁc speed to the speed limit of the link eij22,23, or in a                                         Fig. 1b). In other words, the global dynamics in demand-serving
+communication network, quality can be deﬁned as the instanta-                                                 networks is not only controlled by the structure and organization
+neous delivery rate of packets ﬂowing along a link24.                                                         of link qualities, but also by the distribution of the ﬂow demand.
+   Percolation models have been used to study the organization of                                                The goal of the present paper is to add further realism to
+link-qualities in networks23,25,26. The basic concept requires                                                percolation-based network analysis by the inclusion of hetero-
+examining a single network G which may change in time, but at                                                 geneous ﬂow demand. We restrict our attention, ﬁrst to real
+each particular time, the structure and link qualities represent the                                          transportation networks as exemplary instances of demand-
+system’s state. The percolation process on G may be seen as a                                                 serving networks, but then demonstrate the generality of our
+function of a threshold ρ where 0 ≤ ρ ≤ 1. For any speciﬁc                                                    proposed analysis. We introduce a theoretical framework to
+threshold ρ, the idea is to delete any link in G with quality qij for                                         quantify the impact of each link’s quality (congestion) on ﬂow
+which qij ≤ ρ, leaving the subnetwork Gρ; see the process on a                                                movements through the network and use it to identify the net-
+small network in Fig. 1. We can then gain insights into the net-                                              work bottlenecks. We show that the percolation analysis sug-
+work G’s properties by monitoring the geometrical phase tran-                                                 gested here can lead to different conclusions compared to those
+sitions in Gρ as ρ varies from ρ = 0 to ρ = 1. (Note that the whole                                           obtained solely from studying structural critical phenomena.
+percolation process is performed on one network snapshot, thus
+the quality of links representing the state at that snapshot remain
+ﬁxed during the process.)                                                                                     Results
+   Of special interest is the critical percolation threshold ρ = ρc at                                        The case of real infrastructure networks. We demonstrate the
+which the GC suddenly fragments into components of smaller                                                    application of the proposed framework, on the bus and tram
+
+                                                                                                                                    G0.4
+                             a                                 b                             G0.3         0   5    8   2    9   1          2                                     Unaﬀected
+                                      G                            0   5    8   2    9   1          2     6   0    4   11   3
+                                                                                                                                                                                 Aﬀected
+                                                                                                          4   3    0   2    6              4
+                                 1               2                 6   0    4   11   3                                          3
+                                                                                                          0   10   2   0    1
+                                                         1.0
+                                                                   4   3    0   2    6
+                                                                                         3          4     6   6    5   7    0
+                                                                                                                                                                               G0.6
+                                                                   0   10   2   0    1                                              5                                  1                2
+                                                                                                                                           0   5    8   2     9
+                                 3               4       0.8
+                                                                   6   6    5   7    0
+                                                         0.6                                  5                                            6   0    4   11    3
+                                                         0.4                                                                               4   3    0   2     6                         4
+                                                                                                                                                                      3
+                                         5               0.3                                                                               0   10   2   0     1
+                                                                                                                                           6   6    5   7     0
+                                                                                                                                                                                5
+                                             F                                                                                                                                          G0.8
+                                                                                                                                                                                                2
+                                                                                                                                                        0    5    8   2    9        1
+                                 0   5       8       2   9                           α = 0.65                                                           6    0    4   11   3
+                                 6   0       4   11      3                                                                                              4    3    0   2    6
+                                                                                                                                                                                    3           4
+                                                                                                                                                        0    10   2   0    1
+                                 4   3       0       2   6
+                                                                                                                                                        6    6    5   7    0                5
+                                 0   10      2       0   1
+                                 6   6       5       7   0
+
+
+Fig. 1 Percolation on an example demand-serving network. a Network G with size n = 5, where quality qij of each link eij is color-coded (according to the
+color-bar). Matrix F quantiﬁes the ﬂow demand between all pairs of nodes which sums up to 100 units in total. b The percolation process is simulated by
+increasing a threshold ρ while removing links eij with qij ≤ ρ. Subnetwork Gρ is visualized at different ρ’s with its corresponding affected (red) and unaffected
+(blue) ﬂow demand color-coded in matrix F. In this example, by deﬁnition, the system collapses at ρc = 0.4, when the 5-nodes strongly connected GC
+disintegrates into two strongly connected components of sizes 2 and 3, while unaffected demand (UD) is still at 75%. The reliability of the network G is
+α = 0.65, found by calculating the area under the curve of UD versus ρ.
+
+2                   NATURE COMMUNICATIONS | (2021)12:1254 | https://doi.org/10.1038/s41467-021-21483-y | www.nature.com/naturecommunications
+NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-021-21483-y                                                                     ARTICLE
+
+(on-road) public transportation (PT) systems in two major                        hypothetical procedure that unpacks the organization of con-
+Australian cities, Melbourne and Brisbane, modeled using smart-                  gestion within a snapshot of the network in time. As explained
+card transaction data collected during September and October                     before, the procedure is built upon constructing the subnetwork
+2017 in Melbourne and over March 2013 in Brisbane. On-road                       Gρ which inherits all the links from the original network G except
+PT systems are in constant conﬂict with road conditions, such as                 the most congested (lowest quality) links with qualities q ≤ ρ. By
+crowds, trafﬁc, and signals, all negatively affecting the traveling              gradually increasing ρ, and at each step removing the shell of
+ﬂows by decelerating the PT vehicles. Separation of high demand                  most congested links, the procedure extracts a series of subnet-
+O–D points by local pockets of congestion is an issue of con-                    works Gρ, each providing a different level of ﬂow movement on
+siderable concern in transportation systems. The concept of travel               the actual network. The impact of different levels of congestion
+demand distribution is fundamental to transportation theory31,                   on ﬂows can then be examined by studying the properties of
+but to date, has not been considered in percolation-based analysis               subnetworks Gρ, ρ ∈ (0,1].
+of dynamical transportation networks.                                               Our approach is based on monitoring what we refer to as
+   We are ﬁrst interested in the network representation of the                   unaffected demand (UD), and requires keeping track of the ﬂow-
+transportation system (PT services with disregard to the                         demand between all O–D node pairs during the percolation
+passenger activity). In this respect, network G(V,E,t) at different              process. The network’s ﬂow-demand is represented by the matrix
+times t of each particular day, was generated using the data time-               F = [fod] of order n equal to the network size, where entry fod is
+stamped within the 2-h window centered at t (see “Methods” and                   the amount of passenger-ﬂow from origin node o to destination
+Supplementary Note 1). Each node i ∈ V corresponds to a cluster                  node d (see Fig. 1a). The matrix is normalized by dividing by the
+of closely situated bus and tram stops. A directed link eij ∈ E                  total demand 1Tn F1n , to give F=ð1Tn F1n Þ. (Here, 1n is a column
+connects its source node i to its target node j, if there is at least            vector of all n elements equal to one).
+one PT service visiting node i and then j without any intermediate                  Using F that gives the ﬂow-demand between any O–D pair, we
+stops. A directed path from node o to node d is a sequence of                    can then calculate the UD as the percolation procedure proceeds
+links (all in the same direction) joining a sequence of distinct                 and as low-quality links are removed. At any threshold ρ, the ﬂow
+nodes, where the ﬁrst node is o and the last node is d. In the                   demand between an O–D pair is said to remain “unaffected” by
+second step, for each network G, the ﬂow demand matrix F =                       link removals if there is at least one directed path from o to d
+[fod] was generated with fod counting the number of passengers                   remaining on Gρ. To assist in interpreting this, consider a link
+traveling from node o to node d, respectively, as the origin and                 that is part of a path that begins from origin node o and reaches
+destination points. Melbourne’s on-road PT network was                           destination node d. When the link is removed (because it has
+comprised of approximately an average of 5500 (2800) nodes,                      fallen below threshold in quality), then the fraction of the
+10,500 (4500) links, and a ﬂow demand derived from a part of                     demand f od =ð1Tn F1n Þ remains unaffected by the link removal if
+470,000 (210,000) trips performed during a normal weekday                        and only if there is still at least one other directed path from o to
+(weekend day). Brisbane has a relatively smaller network with                    d. We thus deﬁne UDρ as the fraction of the total ﬂow between all
+approximately 1400 nodes and 3400 links on average over a                        the O–D pairs that remain unaffected at threshold ρ of the
+regular weekday.                                                                 percolation process. In other words, UDρ is equal to the fraction
+   In order to quantify the link-level road conditions, we assign a              of the demand on G that can travel between their O–D nodes
+quality attribute to each link eij, calculated as                                without having to traverse any link with quality below the
+                                      minðτ ij ðt 0 ÞÞ                           threshold ρ. See “Methods” for the formulation of UDρ.
+                          qij ðtÞ ¼
+                                       0t
+                                                         ;               ð1Þ        It is instructive to examine how UDρ varies with increasing ρ
+                                            τ ij ðtÞ                             on the example network shown in Fig. 1a, where the total volume
+                                                                                 of ﬂow demand is 100 by some arbitrary unit of measurement
+where τij(t) is the travel time on the link eij at time t of the day.            and UD0 = 100/100 initially. When ρ = 0.3 (Fig. 1b), two links of
+The quality attribute qij(t) indicates the effect of temporal link-              the lowest quality (colored red) are removed, but this does not
+level congestion on ﬂows passing through eij. At any point in                    affect the ﬂow between any pair of nodes, and thus UD0.3 = 1.
+time, a high-quality link has relatively low travel time (or                     When ρ = 0.4, however, removal of the link 1 → 4 prevents ﬂows
+equivalently high velocity) compared to the rest of that day. In the             from reaching nodes 2 or 4 from either node 1, 3, or 5, by any
+following, for simplicity, we refer to the network and its attributes            path on G0.4. The proportions of affected ﬂows sum up to 25/100,
+without the time parameter t. Figure 2a, b shows the spatial                     thus the UD drops to UD0.4 = 0.75.
+distribution of qij on the snapshot of the on-road PT network of                    We now present our key index for assessing the reliability of
+Melbourne and Brisbane at 8:00 A.M. on a typical weekday. Note                   demand-serving networks. We deﬁne the demand-serving
+that the ﬂow-demand matrix is determined from the passengers’                    reliability α, as the area under the curve of UDρ over the domain
+activity data, while the network G and its link qualities are                    of ρ (hatched area under the curve in Fig. 1b). In compact form,
+determined from PT vehicles’ activity data.                                      this can be formulated as
+   The percolation process on a snapshot of Melbourne’s PT
+                                                                                                       Z 1             Z 1
+network is illustrated in Fig. 2c, indicating a percolation threshold                                                      tr ðRρ F T Þ
+of ρc = 0.39 when global connectivity is lost. However, as our                                    α¼       UDρ dρ ¼                     dρ;        ð2Þ
+                                                                                                        0               0   1nT F1n
+analysis shows, over 80% of trips are between O–D node pairs
+that still remain connected even though ρ has reached the                        where tr(.) is the trace of the n × n square matrix. As seen in Eq.
+percolation threshold (when only the links with quality q > ρc are               (2), it is also possible to formulate UDρ, and as a result α, in
+present). This highlights a problem with interpreting ρc as a                    simple mathematical terms making use of the network’s so-called
+reliability index (as per refs. 26,27,32) if the main interest is on             reachability matrix R and the ﬂow demand matrix F (see
+heterogeneous passenger ﬂow demand. This motivated us to                         “Methods”).
+develop a new approach to capture the reliability of hetero-                        The meaning of UDρ and α, becomes clearer from viewing
+geneous demand-serving networks.                                                 plots as in Fig. 2d. In such plots, if UDρ rapidly drops at relatively
+                                                                                 low ρ values, then most of the ﬂow demand is constrained to
+Unaffected demand and network reliability. In this study, link                   traverse low-quality (congested) links. This in turn lowers the
+removal in the percolation process should be viewed as a                         area under the curve of UDρ, and the reliability α will
+
+NATURE COMMUNICATIONS | (2021)12:1254 | https://doi.org/10.1038/s41467-021-21483-y | www.nature.com/naturecommunications                             3
+ARTICLE                                                                      NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-021-21483-y
+
+
+
+    a                                   Melbourne b                                       Brisbane c           ×103                              ×102
+
+
+
+
+                                                                                                        |GC|
+
+
+
+
+                                                                                                                                                        |SC|
+                                                                                                      d
+
+
+
+               5 km                                           5 km
+
+
+
+Fig. 2 Real on-road public transportation (PT) networks. a, b The network representation of the PT system with color-coded link qualities q at t = 8 (8:00
+A.M.), for Melbourne on 1 September 2017 (a), and for Brisbane on 1 March 2013 (b). c Percolation process on Melbourne’s network shown in (a). The size
+of the giant component ∣GC∣ and the size of the second-largest component ∣SC∣ are plotted as functions of the threshold ρ. The critical threshold ρ = ρc is
+determined as the point of maximal ∣SC∣ (vertical dashed gray line). d Percolation process on Melbourne’s network shown in (a). Unaffected demand is
+plotted as a function of ρ (UDρ) which at percolation critical threshold shows the value of UDρc  0:8 (marked by dashed gray lines). The area hatched in
+red corresponds to the reliability α of the network in (a). Streetmap layers in a and b ©OpenStreetMap contributors44.
+
+consequently be low. If UDρ does not drop rapidly until much                      ﬂows from o to d, i.e.,
+larger ρ values, then most of the demand is between node pairs
+                                                                                                                                f od
+that are connected via paths of high-quality links, and the                                                            sij ¼    T
+                                                                                                                                      :                  ð3Þ
+reliability α will be high. Hence, reliability α gives an indication of                                                        1n F1n
+how well the ﬂows pass between their O–D points given the
+                                                                                  The index relies on the feature that, for a given O–D pair, during
+organization of congestion on the network. (See Supplementary
+                                                                                  the hypothetical percolation process, as soon as the threshold ρ
+Note 2 on the relevance of the links’ ﬂow-capacity to our                         reaches the quality of the associated limiting link, removal of the
+reliability analysis.)
+                                                                                  latter causes complete rupture of all paths between the O-D pair
+   Let ∣GCρ∣ be the size (number of nodes) of the GC in Gρ. In the                on Gρ. This means the limiting link has the lowest quality, that
+“Methods”, we show that when ﬂow demand distribution is
+                                                                                  ﬂows are constrained to traverse in order to travel between their
+homogeneous (i.e., the passenger ﬂow fod is the same between all                  origin and destination nodes on the actual network G. If the link
+reachable pairs of nodes o and d), then         on any large-enough
+                                              pﬃﬃﬃﬃﬃﬃﬃﬃﬃ                          eij is the limiting link between several node pairs (see
+undirected network, we have jGCρ j  n: UDρ at any threshold                      Supplementary Fig. 3A), Eq. (3) extends to
+ρ during the percolation. Thus, only by assuming a uniform ﬂow
+                                                                                                                X         f od
+demand over the network, UD is able to replicate the percolation                                        sij ¼                   :
+analysis based on monitoring the GC; this is also conﬁrmed                                                               1T F1                    ð4Þ
+                                                                                                                       o;d2V;eod ¼eij   n   n
+numerically later in the paper. Second, with heterogeneous ﬂow
+demand, the above relation no longer holds, and the fall-off of
+UD as a function of ρ provides its unique description of the                         We have identiﬁed an important relationship that connects the
+system dynamics. By aggregating UD’s description of the system,                   link quality (qij), the link criticality score (sij), and the network
+α provides a simple and useful indication of network reliability.                 reliability (α), namely
+                                                                                                              X
+                                                                                                                  sij :qij ¼ α;
+Bottleneck identiﬁcation. Improving the infrastructure networks                                                                                     ð5Þ
+                                                                                                                      eij 2E
+via protection or enhancement of a minimal set of links is cur-
+rently receiving intense research interest20,33,34. Our framework                 as proven in “Methods” (and illustrated in Supplementary
+suggests a new approach for identifying network bottlenecks.                      Fig. 3B). It can be rigorously shown that for any link eij,
+Here, inspired by the work on the maximum capacity paths                          increasing qij within a non-empty range will increase the network
+problem35, we introduce the link criticality score sij, which                     reliability α, with the magnitude of increase being proportional to
+quantiﬁes the overall role of each link eij in impeding the                       sij (see Supplementary Note 3). (This is a nontrivial problem since
+network ﬂows.                                                                     alteration of the quality of any link in the network can change the
+   Suppose there is a set of different directed paths Ψod that                    criticality score of multiple links.) Therefore, after ranking the
+connect node o to node d (see Fig. 3a). On each path ψ ∈ Ψod, we                  links according to their criticality scores, a desired number of the
+search for the link with the minimum quality (Fig. 3b). Among                     top-ranked links can be identiﬁed as network bottlenecks.
+those particular links, we choose the link with the maximum                           Numerical simulations were used to test how accurately the
+quality (Fig. 3c), denote it by eod , and refer to it as the “limiting           ranking of links based on link criticality scores (CS ranking) can
+link” associated with the O–D node pair (o,d). For simplicity, let                identify network bottlenecks. To this end, ﬁrst, a simple intuitive
+us assume that each link quality value on the network is unique.                  method was used to ﬁnd the true bottleneck links, i.e., the ground
+Then, there will be only a single limiting link between any                       truth. The method requires perturbing the quality qij of individual
+reachable pair of nodes. For a link eij, if it is never found to be the           links by a small positive amount ε (we chose this to be ε = 0.01),
+limiting link between a node pair, it will have a criticality score of            one by one, and then ranking the links according to their ability
+zero. If eij ¼ eod for only a single pair (o,d), then the link                   to perturb the reliability score α. The link whose perturbation
+criticality score sij will be the fraction of the total demand that               increases the reliability α the most is deemed to be the most
+
+4                     NATURE COMMUNICATIONS | (2021)12:1254 | https://doi.org/10.1038/s41467-021-21483-y | www.nature.com/naturecommunications
+NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-021-21483-y                                                                                 ARTICLE
+
+              a                    f1,4                     b                    f1,4                     c                     f1,4
+
+                               2                                             2                                              2
+                                          3                                              3
+               1           5                         4       1           5                           4     1            5                          4
+                                     6                                             6                                              6
+                   7      8                                      7      8                                      7      8
+                                              9                                                9                                           9
+                                      q 0.3 0.6 0.1                              Minimum quality
+                                                                                 link on each path
+                                                                                                                            Maximum quality link
+                                                                                                                            among path minima
+
+Fig. 3 Finding the limiting link between an origin-destination node pair. a A small network with color-coded link qualities q, where as an example, we
+demonstrate the process to identify the limiting link between the O–D node pair (1,4) having a directed ﬂow demand of f1,4. b The available paths from node
+1 to node 4 (and path’s minimum-quality link) are 1 → 2 → 3 → 4 (e2,3), 1 → 5 → 2 → 3 → 4 (e2,3), 1 → 5 → 6 → 4 (e5,6), 1 → 5 → 6 → 9 → 4 (e5,6), 1 → 7 →
+8 → 9 → 4 (e7,8). c Among the minimum-quality links on these paths, e2,3 has the maximum quality. Just below the threshold ρ = 0.6, still, two paths
+connect node 1 to node 4, but then with e2,3 removed, node 4 becomes unreachable from node 1 on G0.6. The limiting link associated with node pair (1,4) is
+e2,3, thus, an increase in q2,3 will increase the lowest quality that the ﬂow from node 1 to node 4 is constrained to interfere with. The ratio of f1,4 to the total
+demand, is added to criticality score s2,3 of the link e2,3 to reﬂect the importance of its quality q2,3 for ﬂow movement over the network.
+
+                                                                                        score s of all network links can be calculated via scalable
+                                                                                        algorithms, e.g., our suggested modiﬁed Dijkstra’s algorithm (see
+                                                                                        Supplementary Note 3).
+
+
+                                                                                        Application to public transportation networks. We return now
+                                                                                        to using the above tools to study the PT networks of Melbourne
+                                                                                        and Brisbane. Figure 2c illustrates the percolation process on
+                                                                                        Melbourne’s bus and tram (on-road) PT network (at 8:00 A.M.
+                                                                                        on 1 September 2017) through ∣GC∣ and the size of the second-
+                                                                                        largest component (∣SC∣) as functions of ρ. In practice, the per-
+                                                                                        colation threshold is determined as the threshold ρ = ρc at which
+                                                                                        ∣SC∣ is maximal38. In Fig. 2c, the point of maximal ∣SC∣ captures
+                                                                                        the GC collapse, however, this was not always the case at other
+                                                                                        times and dates. The GC fragmentation during the percolation
+                                                                                        process was often blurred out rather than demonstrating a drastic
+                                                                                        change in ∣GC∣, or in other cases, appeared as multiple peaks in
+Fig. 4 Assessing the accuracy of link criticality score index in identifying            ∣SC∣ which makes it difﬁcult (if not impossible) to identify the
+the true bottlenecks. The true ranking of links (TR) in terms of their                  critical threshold (Supplementary Fig. 4); ref. 39 reports similar
+improvement effect on network reliability α, is compared to rankings based              observations in the road network of multiple cities. The index α
+on link criticality score (CS), edge betweenness centrality (EB), and                   evaluates the network according to the whole percolation process
+randomly shufﬂed rankings of links. Each curve shows the number of                      and does not depend on the existence of a clear phase transition,
+common links between the set of top-k true bottlenecks and top-k                        making the above issue irrelevant.
+bottlenecks of another ranking scheme. A ranking equal to TR leads to a line               Figure 2d demonstrates the percolation process shown in
+lying on the diagonal dashed line.                                                      Fig. 2c, but this time with UD as a function of ρ. As pointed out
+                                                                                        before, at the critical percolation threshold ρc = 0.39 where the
+critical link etc. Through this brute-force procedure, the true                         global connectivity on Gρ breaks down, we see that UD0.39 = 0.8.
+ranking (TR) of the criticality of all links are obtainable.                            Thus, 80% of all the trips on the network G are between O–D
+   We applied the ranking schemes on random geometric graphs                            node pairs that remain connected after the breakdown of the GC,
+(RGGs) with n = 100 nodes spread over the space [0,10]2                                 and only via paths of links with q > 0.39. This empirically
+uniformly at random, and links connecting any pair of nodes                             demonstrates how characterizing a network based on ρc alone
+with distance less than r0 = 1.5 (which ensures connectivity and                        can be misleading when ﬂow demand distribution is hetero-
+having over 300 links36).                                                               geneous. In effect, during the percolation process, UD does not
+   To compare CS and TR rankings, we took the set of k top-                             necessarily decline with the same rate as pairwise connectivity
+ranked links in each ranking and counted the number of common                           (see Supplementary Note 4 and Supplementary Fig. 5). For
+links between them. Figure 4 shows the number of common links                           Melbourne’s PT network, the number of connected node pairs
+between the CS and true top-bottlenecks of the network for k =                          on Gρ decreases faster than UDρ, meaning that demand is higher
+1, 2, …, 150, averaged over 500 realizations. We also compared                          within clusters of high-quality links in the network.
+against the ranking obtained by the conventional index edge                                We also examined both reliability α and ρc on Melbourne’s
+betweenness centrality37 (EB), and a randomly shufﬂed ranking.                          (Brisbane’s) PT network over the main functioning hours of the
+The set of CS bottlenecks was found to be almost exactly the same                       system during September and October 2017 (March 2013),
+as the set of true bottlenecks (TR) with (on average) 98–100% of                        separately for weekdays and weekends. Temporally, ρc had
+their elements matching for different k values. The EB and the                          relatively large ﬂuctuations over the day, and there appeared to
+shufﬂed rankings were by far inferior to the CS scheme as Fig. 4                        be no repeating pattern on a day to day comparison (see Fig. 5a, c
+shows, although as might be expected, the EB ranking had a                              for Melbourne and Brisbane networks, respectively). In contrast,
+higher accuracy compared to the shufﬂed ranking. Note that                              the proposed reliability measure α followed a clear daily pattern
+unlike the brute-force approach used to ﬁnd TR, the criticality                         (see Fig. 5b for Melbourne and Fig. 5d for Brisbane’s PT network)
+
+NATURE COMMUNICATIONS | (2021)12:1254 | https://doi.org/10.1038/s41467-021-21483-y | www.nature.com/naturecommunications                                          5
+ARTICLE                                                                   NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-021-21483-y
+
+
+
+                                Melbourne                                      is generally more likely that an alternative less congested path
+                                                                               exists. We also observed that in Melbourne’s PT network during
+       a                                   b                                   weekends a signiﬁcantly larger proportion of the trips are to/from
+                                                                               the central business district (CBD) area, where the links are often
+                                                                               subject to a higher level of congestion than elsewhere in the
+                                                                               network. Lower link density of the network together with the
+                                                                               large proportion of the passengers traveling to/from CBD on
+                                                                               weekends, results in more conﬂict between ﬂows and congestion
+                                                                               (that is what α measures) which is reﬂected with the lower
+                                                                               network reliability α during weekends. (From UD’s perspective, a
+                                                                               larger proportion of the network demand has to pass through
+                                                                               lower-quality links during weekends compared to weekdays.) In
+                                                                               Brisbane, however, although the network has more links during
+                                  Brisbane                                     weekdays, links (PT services) are supplying the transportation
+       c                                    d                                  between a larger number of nodes, which keeps the link density of
+                                                                               the network approximately the same between weekdays and
+                                                                               weekends. As a result, unlike Melbourne, α ﬂuctuated within
+                                                                               approximately the same range during both weekdays and
+                                                                               weekends for Brisbane’s PT network (Fig. 5d). Yet, similar to
+                                                                               the case of Melbourne’s PT network, the daily evolution of
+                                                                               Brisbane’s PT network reliability α on weekdays had distinct
+                                                                               patterns from that of weekends.
+
+                                                                               Bottlenecks of real transportation networks. Link criticality
+                                                                               scores vary over time in temporal on-road PT networks. There-
+                                                                               fore, we calculated the mean criticality score of each link over the
+Fig. 5 Reliability of the on-road public transportation (PT) networks.
+                                                                               course of the available data, and identiﬁed the network bottleneck
+a, b Temporal evolution of ρc (a) and α (b) for Melbourne’s PT network,
+                                                                               links as those with the largest mean criticality scores, separately
+during weekdays (green) and weekends (purple). At each time t, curves
+                                                                               for weekdays and weekends. The identiﬁed bottlenecks were
+show the mean, and shaded areas indicate the standard deviation of values
+                                                                               found to be robust, appearing with high criticality scores on most
+around the mean, over September and October 2017. c, d Temporal
+                                                                               days (Supplementary Fig. 8).
+evolution of ρc (c) and α (d) for Brisbane’s network averaged over the days
+                                                                                  The spatial distribution of link criticality scores over
+in March 2013, separately for weekdays and weekends.
+                                                                               Melbourne’s weekday PT network is portrayed in Fig. 6a (see
+                                                                               also Supplementary Fig. 9A for Melbourne’s weekends and
+with variations that have a relatively small standard deviation.               Supplementary Fig. 10A for Brisbane). Pockets of trafﬁc
+(Supplementary Note 5 and Supplementary Fig. 6A, C provide                     congestions and crowds, which decrease the quality of PT
+more details concerning ρc and α and their comparison.) The                    network links, are usually formed around the high-demand urban
+approximately 10% drops in α at 8:00 and between 16:00 and                     hotspots. As a result, links with large criticality scores were found
+18:00 are associated with weekdays’ morning and evening peak                   to be situated in urban hotspots and the areas surrounding them,
+commuting periods when high rates of congestion and large                      making the spatial distribution of link criticality scores in
+numbers of commuters predictably increase the conﬂict between                  surprising alignment with the urban morphology. Speciﬁcally,
+PT system and road conditions. Consistency of the daily                        Melbourne’s biggest urban shopping center was surrounded by
+evolution of α (for both Melbourne and Brisbane networks) with                 links with high criticality scores, and the top bottlenecks were
+the circadian rhythm of urban human mobility and its low                       mostly distributed around the single most signiﬁcant hotspot of
+variability over different days indicate its success in unraveling             Melbourne which is the CBD. Furthermore, universities are good
+the repeating daily pattern in complex interactions between major              examples of urban hotspots that are only fully active on weekdays.
+constituents of the system, namely, supply network structure,                  Among the top bottlenecks of Melbourne’s network, we observed
+link-level congestion, and passenger ﬂow demand (see Supple-                   links to and from major universities (Fig. 6b) emerging only on
+mentary Note 5 for more detail). The results also suggest that                 weekdays (see Supplementary Fig. 9B). Given that the proposed
+Melbourne’s PT network is relatively stable over a day, despite                method does not incorporate any geospatial information from the
+multiple periods of intense trafﬁc, which is partially due to more             network, the surprising alignment between the locations pinned
+available PT services during the rush hours which increase the                 by identiﬁed bottlenecks and the urban hotspots, suggests that the
+number of links and thus network density (see Supplementary                    method is capturing the actuality.
+Fig. 7).                                                                          We also observed that four out of the top ten pain points on
+   Despite the larger ﬂow demand and more extensive conges-                    Melbourne’s road network reported in the media40 are over-
+tions during weekdays, α was larger for weekdays compared to                   lapping with or in very close proximity to our identiﬁed top
+weekends in Melbourne (Fig. 5b). This is because Melbourne’s PT                bottlenecks at morning rush hour. Since almost half of the
+network is ﬁne-tuned for weekday demand, operating with a                      reported ten points do not have bus or tram services in conﬂict
+higher number of services during weekdays as compared to                       with the road conditions, the results suggest that our methodol-
+weekends. The larger number of PT services not only resulted in a              ogy does indeed work well.
+larger number of network links but also led to a signiﬁcantly
+higher link density during weekdays when compared to weekends                  Bottleneck amelioration. It is interesting to compare the effec-
+(see Supplementary Fig. 7B). Higher link density of the network                tiveness of our proposed CS-based bottleneck identiﬁcation
+on weekdays means the availability of more paths between nodes                 scheme, to other well-established bottleneck identiﬁcation
+and that if a path between two nodes includes congested links, it              schemes. In particular, we compare against the bottlenecks
+
+6                  NATURE COMMUNICATIONS | (2021)12:1254 | https://doi.org/10.1038/s41467-021-21483-y | www.nature.com/naturecommunications
+NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-021-21483-y                                                                             ARTICLE
+
+  a                                               sij
+                                                           b                                c
+
+
+
+
+                                                           d
+
+
+
+
+                                                                                   Mon
+
+
+
+
+                                                                                                                       Wed
+
+
+
+
+                                                                                                                                         Thu
+                                                                                                     Tue
+                                                                Fri
+        CBD area
+        Shopping center
+
+
+Fig. 6 Bottleneck identiﬁcation and amelioration on a real-world network. a Spatial distribution of the link criticality scores sij over Melbourne’s public
+transportation (PT) network during weekdays. The central business district (CBD) and the biggest shopping center in Melbourne are pinned on the map.
+b Top 100 weekday bottlenecks of Melbourne’s PT network, identiﬁed based on link criticality scores. Major university campuses outside Melbourne’s CBD
+area are pinned on the map. c, d The impact of ameliorating perturbations on bottlenecks identiﬁed by different approaches, i.e., criticality score (CS), edge
+betweenness centrality (EB), demand-weighted edge betweenness centrality (WEB), and percolation criticality (PC). The number of identiﬁed bottlenecks
+by each approach is equal to 2% of the average number of links that appear on the network. c Daily evolution of α calculated for the actual (yellow) and
+ameliorated networks associated with different bottleneck identiﬁcation approaches. Results show the average (solid line) and standard deviation (shaded
+area) over the weekdays of September and October 2017. d Delay per trip (in minutes) caused by road congestions, on the actual and improved networks.
+Streetmap layers in a and b ©OpenStreetMap contributors44.
+
+
+identiﬁed based on the widely used edge betweenness (EB) cen-                       The investigation was extended by verifying the impact of
+trality measure, here referred to as EB bottlenecks. We also use an              bottleneck amelioration on reducing the delay in passenger travel
+extended version of the EB scheme, which incorporates the                        times. In order to calculate the delay caused by congestion, we
+demand distribution by weighting the O–D node pairs when                         ﬁrst generated a congestion-free copy of the network at each time
+calculating the EB centrality of links, here referred to as Weighted             of a day by synthetically changing the actual travel time on each
+EB or simply WEB. Alternatively, bottlenecks can be identiﬁed                    link to the minimum travel time observed on that link during the
+among the links removed at percolation criticality as used in                    day. We assumed that each trip took place on the directed path
+ref. 26, which we refer to as PC bottlenecks. These bottlenecks                  with the minimum sum of the link travel times, between its origin
+termed “red bonds” in percolation theory41, glue the GC together                 and destination nodes. Then, for any particular network, the total
+by connecting the communities of higher-quality links. (For a                    delay was calculated as the absolute difference between the total
+more detailed description of the above approaches, see Supple-                   travel time on the actual and the congestion-free copy of the
+mentary Note 6.)                                                                 network. Delay indicates the extent of the impeding effect of link
+   To compare these approaches, we separately ameliorated the                    congestions on passenger trips.
+bottlenecks of each type and monitored the response of the                          Separately for weekdays and weekends, we simulated the
+network in terms of changes to the demand-serving reliability α.                 amelioration of the top CS, EB, WEB, and PC bottlenecks (the top
+In practice, the most obvious proposal for enhancing the                         2% most critical links based on each scheme) of Melbourne’s PT
+reliability of an on-road PT network is to reduce the conﬂict of                 network. The delay per passenger trip of 5.3 min (5.7 min)
+PT vehicles with road conditions at network bottlenecks, which                   decreased to 3.8 min (4.2 min) by ameliorating the CS bottlenecks
+can be achieved, for example, by giving signal priority to PT                    of weekdays (weekends). Figure 6d shows the delay per passenger
+vehicles or allocating segregated (exclusive) PT lanes. Here, the                trip on the actual and ameliorated networks at different times
+bottlenecks are taken to be the top 2% most critical links in                    during the ﬁrst ﬁve weekdays of September 2017; Supplementary
+the network over time, according to each approach. Let B denote                  Fig. 11B extends the results to two months of data. The time
+the set of bottlenecks identiﬁed by one of the schemes.                          saved by amelioration of CS bottlenecks was 25% more than that
+We ameliorated the bottlenecks by synthetically increasing the                   of WEB bottlenecks while it was twofold compared to those of EB
+qualities of bottleneck links eij ∈ B, to unity (qij = 1). Figure 6c             and PC bottlenecks. Ameliorating the top CS bottlenecks
+(Supplementary Fig. 9A) compares the impact of ameliorating the                  saved close to 2,000 hours of passenger travel time during a
+bottlenecks identiﬁed by the four different approaches, as                       single morning peak period (7:00–9:00 A.M.), and approximately
+functions of time during weekdays (weekends) in Melbourne;                       11,000 hours of passenger travel time over a normal weekday.
+see Supplementary Fig. 10B for Brisbane’s PT network.
+Amelioration of the CS bottlenecks resulted in more than 23%
+(26%) improvement in reliability α of Melbourne’s PT network,                    The generality of the proposed framework. In order to
+on average during weekdays (weekends). However, on average                       emphasize the generality of the proposed framework, we used
+over both weekdays and weekends, amelioration of PC, EB, and                     undirected RGGs as a generic proxy of spatial networks and
+WEB bottlenecks, only increased α by approximately 16%, 8%,                      showed that the framework is able to reﬂect the true global ﬂow-
+and 6%, respectively. See Supplementary Fig. 10B, C for                          properties of the network. Here, RGG structures were generated
+comparison between the effectiveness of different types of                       by ﬁrst distributing n = 2500 nodes uniformly at random on the
+                                                                                           pﬃﬃﬃ 2
+bottlenecks for Brisbane’s PT network.                                           plane ½0; n , and then connecting any pair of nodes with
+
+NATURE COMMUNICATIONS | (2021)12:1254 | https://doi.org/10.1038/s41467-021-21483-y | www.nature.com/naturecommunications                                    7
+ARTICLE                                                                    NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-021-21483-y
+
+
+                                                                                                                       ×10-4
+    a                                                     b                                                      d
+
+
+
+
+                                                          c
+
+
+
+
+Fig. 7 Capturing true properties of the demand-serving networks. a A sample RGG of size n = 400 with color-coded link overlap index η. b Normalized
+∣GC∣ and ∣SC∣ during the percolation process averaged over 100 realizations of RGG structure with n = 2500 nodes and random link qualities. c Unaffected
+demand (UD) versus ρ for different ﬂow demand scenarios on   theﬃ RGG structure, averaged over 100 realizations. As predicted, the evolution of the GC size
+                                                           qﬃﬃﬃﬃﬃﬃﬃﬃ
+during the percolation process is approximately equal to n: UDρ (see Methods) when the ﬂow demand is uniform, which is the reason for the similarity
+between the blue and the dashed black curves. d Link criticality score s versus link overlap η, compared for short-range and long-range ﬂow demand
+scenarios. See Supplementary Note 7 for extension of this analysis to the square grid and random graph structures.
+
+Euclidean distance pbelow      r0 = 1.6. We chose r0 to be greater than
+                       ﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃ                                         lower-quality links because each time they have to pass between
+the threshold rc0  ln ðnÞ=π  1:58 for which it is known42 that                clusters their choices become limited to a few bridging links. This
+the network will be a.a.s. connected. The quality of each link was              resulted in lower reliability (α = 0.43) compared to when the
+drawn uniformly at random from (0,1], making percolation a                      ﬂow-demand is uniformly distributed (α=0.50). In contrast,
+random link removal process depending only on the network                       short-range ﬂows are more likely to stay within the well-
+topology. RGGs are built of clusters with high intra-connectivity,              connected clusters of RGG, where there are more alternative
+glued together by bridging links (Fig. 7a). This structure                      paths available to bypass low-quality links. Hence, the network is
+demonstrates a clear phase transition during the percolation                    more reliable for a short-range ﬂow demand, which was fairly
+process, as removal of a sufﬁcient number of intercluster links                 characterized by a higher α( = 0.58).
+causes an abrupt fragmentation of the GC (Fig. 7b).                                Here, we use RGG networks with different ﬂow demand
+   Over each RGG instance, we distributed a ﬁxed volume of ﬂow                  scenarios to verify the success of link criticality score in
+demand, according to three different scenarios, namely, uniform,                identifying network bottleneck links. We use the link overlap
+short-range, and long-range. In the uniform demand scenario, the                η ∈ [0,1] to determine whether a link belongs to a community
+total ﬂow demand volume was divided equally among all                           (high overlap) or acts as an intercommunity bridge (low overlap);
+                                                                                                                           jΓðiÞ\ΓðjÞj
+reachable (o,d) node pairs; i.e., all entries of F, which correspond            overlap of a link eij is deﬁned as ηij ¼ jΓðiÞ ∪ ΓðjÞj2 where Γ(i) is the
+to a reachable node pair, are equal to a constant. Let Dod be the               neighborhood set of node i. In Fig. 7a, links are color-coded
+Euclidean distance between nodes o and d, and Dmax the distance                 according to their overlap index. The criticality score of intra-
+between the most distant node pair in the network. Then, to                     community (high overlap) links was found to be higher for the
+generate the short-range (long-range) ﬂow demand scenarios, we                  short-range ﬂow demand scenario compared to the long-range
+picked a node pair (o,d) uniformly at random and then with                      scenario (Fig. 7d). This is consistent with the fact that short-range
+probability 0:2e0:2Dod (0:2e0:2ðDmax Dod Þ ) added one unit to the           ﬂows are more likely to have their origin and destination within a
+volume of ﬂow demand between that O–D pair fod, and repeated                    community, which makes the ﬂow-carrying role of intra-
+this until the ﬁxed total ﬂow volume was completely allocated to                community links more critical. Inter-community (low overlap)
+the node pairs over the network.                                                links have a stronger role in bridging between the remote points
+   We simulated the percolation on 100 realizations of RGG                      of the network, thus, the larger the proportion of the demand
+structure for each one of the above ﬂow demand distributions.                   ﬂowing between the distant nodes, the more critical these links
+During the percolation, we monitored the GC and SC, which are                   become for the network. As expected, the criticality score of inter-
+independent of the demand distribution, and also monitored the                  community links was higher in the long-range ﬂow scenario
+UD for different demand distribution scenarios (Fig. 7b, c).                    compared to the short-range ﬂow scenario.
+Remarkably, in Fig. 7c for the case of uniform ﬂow, the
+percolation diagram as a function of ρ is the same for UD as it                 Discussion
+is for the square of ∣GC∣ (normalized by the network size). Thus,               Percolation analysis is a powerful tool for understanding the
+simulation results conﬁrm the previously discussed theoretical                  global ﬂow properties of networks. However, most conventional
+relationship UDρ  ðjGCρ j=nÞ2 between evolution of the GC and                  percolation-based analyses become less effective in the presence
+UD when demand is uniformly distributed over the network. This                  of a heterogeneous ﬂow demand between different node pairs
+shows that by assuming a uniform ﬂow demand over the                            over the network. We have developed a method that makes use of
+network, our method can provide an analogous analysis to that of                a newly introduced percolation-driven property, namely, UD, in
+monitoring the GC. Furthermore, UD shows logical sensitivity to                 order to quantify network reliability. Based on the concept of UD,
+the nonuniformity of ﬂow demand distributions over the                          we presented a bottleneck identiﬁcation scheme, that proved
+network. Long-range ﬂows are more likely to get caught up in                    more effective than other state-of-the-art methods reported in the
+
+8                   NATURE COMMUNICATIONS | (2021)12:1254 | https://doi.org/10.1038/s41467-021-21483-y | www.nature.com/naturecommunications
+NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-021-21483-y                                                                                               ARTICLE
+                                                                                                             pﬃﬃﬃﬃﬃﬃﬃﬃﬃ
+literature, in terms of both improving the reliability and reducing                        using jGCρ j  n: UDρ . This is conﬁrmed numerically in Fig. 7 and Supple-
+the delay imposed on ﬂows by congested links. Note that the                                mentary Fig. 12.
+direct effect of congestion organization on travel time delay                                  Considering the above relation, when the demand is homogeneous (or
+                                                                                           unknown but assumed to be homogeneous), instead of the deﬁnition in Eq. (2) one
+cannot be studied using the existing percolation models, because
+                                                                                           may choose to use the area under the curve of UD1=2   ρ  as a reliability indicator that
+the removal of a congested link simply cannot help quantify the
+                                                                                           reﬂects the rate at which size of the connected components decline over the
+effect of its congestion on ﬂow travel times. But it is an intriguing                      percolation process. However, our original deﬁnition in Eq. (2) has a simpler
+problem that suggests an important direction for future research.                          interpretation and it is mathematically tractable, allowing for theoretical analysis of
+   Our proposed ideas are generally applicable to demand-serving                           network links in the simplest possible way.
+networks including most physical infrastructures where there is an
+inherent demand for movement of an uneven amount of ﬂow                                    Link criticality score and its relation to network reliability. Suppose there exists
+between different pairs of nodes in the network. With the ever-                            a non-empty set of different directed paths Ψod that route between an origin node o
+                                                                                           and a reachable destination node d. During the percolation process on the network
+increasing availability of detailed data from real-world critical                          (whereby ρ is increased from zero to unity), each pathway ψ ∈ Ψod breaks up when
+infrastructure networks, this study can be a helpful starting point                        the threshold ρ reaches to the minimum link-quality on that path. The “limiting
+for new research avenues and the development of more sophis-                               link” associated with the ﬂow from o to d (eod ), when removed during the per-
+ticated theoretical tools to analyze ﬂow demand, in order to                               colation process at ρ ¼ qod , breaks the last path(s) connecting o to d and affects the
+                                                                                           ﬂow between them (fod). Using the deﬁnition of link criticality score in Eq. (4), we
+achieve a more profound understanding of these complex systems.                            can expand the left-hand-side of Eq. (5) as
+                                                                                                                      X                XX f
+Methods                                                                                                                     sij :qij ¼              od
+                                                                                                                                                       :q ;
+                                                                                                                                                1Tn F1n ij                      ð7Þ
+Smart-card data. The data used in the real-world case study, are the smart-card                                          eij 2E       eij 2E 
+                                                                                                                                         o;d2V;
+                                                                                                                                            e ¼eij
+                                                                                                                                             od
+transaction records, collected by the automated fare collection system for PT in
+Melbourne and Brisbane, Australia. Passengers are supposed to perform a scan-on            and for any pair o, d ∈ V with non-zero fod there exist a single limiting link eod 2 E
+transaction at the start and a scan-off at the end of their trip. Every smart-card         with quality qod , so
+transaction record contains multiple attributes, namely, anonymized card identi-                                              1 X
+ﬁer, PT mode (bus, tram, or train), vehicle identiﬁer (a unique number for each bus                                       ¼ T            f od :qod :                           ð8Þ
+                                                                                                                            1 F1  n   n o;d2V
+or tram vehicle), stop identiﬁer, time-stamp, and transaction type (scan-on/off).
+For Melbourne’s network, we used an average of over 2,120,000 and 912,000 daily            During the percolation process, each entry in the reachability matrix Rρ switches
+transactions associated with all PT modes on weekdays and weekends, respectively,          from 1 to 0 as soon as the last path(s) between its corresponding O-D nodes break.
+collected during 61 days of September and October 2017. Brisbane data was col-             So, we can write
+lected during March 2013. After applying a cleaning process, we used the data to                                                   
+generate the temporal network of on-road PT supply and its corresponding pas-                                                 ρ      1; ρ < qod
+                                                                                                                            r od ¼               ;                        ð9Þ
+senger travel ﬂow demand (see Supplementary Note 1 for details).                                                                     0; ρ ≥ qod
+                                                                                                   ρ
+                                                                                           where r od is the (o,d) entry of the reachability matrix Rρ associated with the
+Network and demand matrix construction. To generate the network repre-                                                                 ρ
+                                                                                           network Gρ. Note that the integral of r od with respect to ρ between the limits ρ = 0
+sentation of the on-road PT system on a particular day at time t, the structure and                                 
+                                                                                           and ρ = 1 is equal to qod . So, from Eqs. (8) and (9) we can write
+link attributes were estimated from the smart-card transactions time-stamped
+                                                                                                                   X                                    Z 1
+within the window [t − δ/2, t + δ/2]. The time window length δ, was set to 2 hours                                                    1 X                     ρ
+for experiments presented in the main article. First, we clustered the closely located                                  sij :qij ¼ T             f od :     r od dρ;        ð10Þ
+                                                                                                                   e 2E
+                                                                                                                                  1 n F1 n o;d2V         0
+PT stops and mapped each cluster to a node. Using information of smart-card                                         ij
+
+transactions we derived the trajectory of every vehicle on the network, and if there       where the right-hand-side can be simpliﬁed with matrix operations to obtain Eq.
+was at least one vehicle traveling from one of the stops associated with node i to a       (2) which is the deﬁnition of the reliability index α, so we can conclude that Eq. (5)
+stop associated with node j without stopping, we added a direct link eij starting at       holds. In Supplementary Note 3, the deﬁnition of the criticality score and the proof
+node i and pointing at node j. For each link eij the average travel time τij over the      of Eq. (5) are generalized further, requiring no assumption on the link quality
+time window was also calculated based on the information from the tracked                  values.
+vehicles. For a network of time t, demand matrix F measures the ﬂow demand
+volumes by the number of O–D trips between nodes, within the time window used
+for the construction of the network. An O–D trip is a chain of one or more trip legs       Data availability
+with transfers (but no activities) in between them. See Supplementary Note 1 on            Two weeks of Melbourne’s public transportation network data used in this study, are
+how single trip legs are chained to obtain O–D trips.                                      available at https://gitlab.com/homayoun/demand-serving-networks. Raw passenger
+                                                                                           smart-card data from Melbourne’s public transportation network were made available for
+                                                                                           research purposes by the associated transportation authority, which retains ownership
+Unaffected demand. To formulate the UD calculation, we use the so-called
+                                                                                           over the data.
+reachability matrix R = [rod] (the transitive closure of the network adjacency
+matrix) which is a square matrix of order n. Each entry rod is equal to 1 if there is at
+least one directed path from node o to node d on the network, and rod = 0                  Code availability
+otherwise. Let Rρ be the reachability matrix of network Gρ. At any threshold ρ, the        Source codes for the algorithms proposed in this study are available at https://gitlab.com/
+amount of ﬂow from o to d (fod) is deemed to be “unaffected” by link qualities q           homayoun/demand-serving-networks. Speciﬁc codes that produce the results presented
+below the threshold ρ (q ≤ ρ) if there is at least one directed path from o to d           in this paper are available upon request.
+                         ρ
+remaining on Gρ, i.e., r od ¼ 1. So, UDρ (deﬁned as the unaffected proportion of the
+                                               ρ
+demand at threshold ρ) will be the sum of r od :f od for all (o,d) pairs of nodes,
+normalized by the total ﬂow demand                                                         Received: 25 July 2020; Accepted: 13 January 2021;
+
+                                  1Tn ðRρ  FÞ1n       trðRρ F T Þ
+                          UDρ ¼                    ¼                 ;              ð6Þ
+                                      1Tn F1n           1Tn F1n
+                                                                                           References
+where  is the entry-wise product of matrices, tr(.) is the trace of the n × n square      1.   Buldyrev, S. V., Parshani, R., Paul, G., Stanley, H. E. & Havlin, S. Catastrophic
+matrix, and 1n is a column vector of all n elements equal to one.                               cascade of failures in interdependent networks. Nature 464, 1025 (2010).
+                                                                                           2.   Jalili, M. & Perc, M. Information cascades in complex networks. J. Complex
+The relation between the evolution of UD and GC during the percolation. Let                     Netw. 5, 665 (2017).
+∣GCρ∣ be the size of the GC as a function of ρ, then ∣GCρ∣/n is called the incipient       3.   Duan, D. et al. Universal behavior of cascading failures in interdependent
+order parameter which is sometimes used to describe the connectivity of a frag-                 networks. Proc. Natl Acad. Sci. USA 116, 22452 (2019).
+mented network. If we assume a uniform ﬂow demand distribution then on any                 4.   De Domenico, M. & Baronchelli, A. The fragility of decentralised trustless
+undirected network, UDρ equals the proportion of connected node pairs in Gρ,                    socio-technical systems. EPJ Data Sci. 8, 2 (2019).
+which approaches ðjGCρ j=nÞ2 as n → ∞43. So, for large enough networks, mon-               5.   Askarisichani, O. et al. Structural balance emerges and explains performance
+itoring the GC during the percolation is a special case of monitoring UD when ﬂow               in risky decision-making. Nat. Commun. 10, 1 (2019).
+demand is uniform. Therefore, we can accurately predict the evolution of ∣GC∣              6.   Barja, A. et al. Assessing the risk of default propagation in interconnected
+during the percolation by assuming a uniform ﬂow demand over the network and                    sectoral ﬁnancial networks. EPJ Data Sci. 8, 32 (2019).
+
+NATURE COMMUNICATIONS | (2021)12:1254 | https://doi.org/10.1038/s41467-021-21483-y | www.nature.com/naturecommunications                                                            9
+ARTICLE                                                                              NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-021-21483-y
+
+
+7.    Akbarzadeh, M. & Estrada, E. Communicability geometry captures trafﬁc               39. Olmos, L. E., Çolak, S., Shaﬁei, S., Saberi, M. & González, M. C. Macroscopic
+      ﬂows in cities. Nat. Hum. Behav. 2, 645 (2018).                                         dynamics and the collapse of urban trafﬁc. Proc. Natl Acad. Sci. USA 115,
+8.    Stone, L. The google matrix controls the stability of structured ecological and         12654 (2018).
+      biological networks. Nat. Commun. 7, 12857 (2016).                                  40. 2018 Redspot Survey. https://www.redspotsurvey.com.au (2018).
+9.    Hill, S. M. et al. Inferring causal molecular networks: empirical assessment        41. Ben-Avraham, D. & Havlin, S. Diffusion and Reactions in Fractals and
+      through a community-based effort. Nat. Methods 13, 310 (2016).                          Disordered Systems (Cambridge University Press, 2000).
+10.   Stone, L. The feasibility and stability of large complex biological networks: a     42. Penrose, M. Random Geometric Graphs, Vol. 5 (Oxford University Press,
+      random matrix approach. Sci. Rep. 8, 1 (2018).                                          2003).
+11.   Santolini, M. & Barabási, A.-L. Predicting perturbation patterns from the           43. Chen, Y. et al. Percolation theory applied to measures of fragmentation in
+      topology of biological networks. Proc. Natl Acad. Sci. USA 115, E6375 (2018).           social networks. Phys. Rev. E 75, 046107 (2007).
+12.   Stone, L., Simberloff, D. & Artzy-Randrup, Y. Network motifs and their              44. Openstreetmap Copyright and License. https://www.openstreetmap.org/
+      origins. PLoS Comput. Biol. 15, e1006749 (2019).                                        copyright (2021).
+13.   Stauffer, D. & Aharony, A. Introduction to Percolation Theory (Taylor &
+      Francis, 2018).
+14.   Ganin, A. A. et al. Resilience and efﬁciency in transportation networks. Sci.       Acknowledgements
+      Adv. 3, e1701079 (2017).                                                            We thank Prof. Shlomo Havlin for his extremely helpful discussions of the ideas pre-
+15.   Latora, V. & Marchiori, M. Vulnerability and protection of infrastructure           sented in this paper and for his suggestions. H.H. thanks Dr. Meead Saberi for the fruitful
+      networks. Phys. Rev. E 71, 015103 (2005).                                           discussions, Dr. Nora Estgfaeller for providing valuable feedback throughout this study,
+16.   De Domenico, M., Solé-Ribalta, A., Gómez, S. & Arenas, A. Navigability of           and Public Transport Victoria for their support and providing the access to Melbourne’s
+      interconnected networks under random failures. Proc. Natl Acad. Sci. USA            Public Transportation (PT) smart-card data. We are especially grateful to Prof. Mark
+      111, 8351 (2014).                                                                   Hickman and Dr. Zhenliang Ma for their help and running our codes on the Brisbane’s
+17.   Mirzasoleiman, B., Babaei, M., Jalili, M. & Safari, M. Cascaded failures in         PT smart-card data. M.J. and L.S. are supported by the Australian Research Council
+      weighted networks. Phys. Rev. E 84, 046114 (2011).                                  (ARC) through project No. DP170102303. M.J. is also supported by the ARC through
+18.   Jalili, M. Error and attack tolerance of small-worldness in complex networks.       project No. DP200101119. H.V. is supported by the ARC through project Nos.
+      J. Informetr. 5, 422 (2011).                                                        DP180102551 and DP190102134. L.S. is supported by the ARC through project No.
+19.   Albert, R., Jeong, H. & Barabási, A.-L. Error and attack tolerance of complex       DP150102472.
+      networks. Nature 406, 378 (2000).
+20.   Halu, A., Scala, A., Khiyami, A. & González, M. C. Data-driven modeling of          Author contributions
+      solar-powered urban microgrids. Sci. Adv. 2, e1500700 (2016).                       H.H. conceived the original idea and conducted the experiments and analyses. H.H., M.J.,
+21.   Wang, F., Li, D., Xu, X., Wu, R. & Havlin, S. Percolation properties in a trafﬁc    and H.V. designed the study. H.H. and L.S. developed the methodology and wrote the
+      model. Europhys. Lett. 112, 38001 (2015).                                           paper. All authors interpreted the results, reviewed the paper, and approved the ﬁnal
+22.   Saberi, M. et al. A simple contagion process describes spreading of trafﬁc jams     version.
+      in urban networks. Nat. Commun. 11, 1 (2020).
+23.   Zeng, G. et al. Switch between critical percolation modes in city trafﬁc
+      dynamics. Proc. Natl Acad. Sci. USA 116, 23 (2019).                                 Competing interests
+24.   Echenique, P., Gómez-Gardenes, J. & Moreno, Y. Dynamics of jamming                  The authors declare no competing interests.
+      transitions in complex networks. Europhys. Lett. 71, 325 (2005).
+25.   Gallos, L. K., Makse, H. A. & Sigman, M. A small world of weak ties provides
+      optimal global integration of self-similar modules in functional brain
+                                                                                          Additional information
+                                                                                          Supplementary information The online version contains supplementary material
+      networks. Proc. Natl Acad. Sci. USA 109, 2825 (2012).
+                                                                                          available at https://doi.org/10.1038/s41467-021-21483-y.
+26.   Li, D. et al. Percolation transition in dynamical trafﬁc network with evolving
+      critical bottlenecks. Proc. Natl Acad. Sci. USA 112, 669 (2015).
+                                                                                          Correspondence and requests for materials should be addressed to H.H. or L.S.
+27.   Li, D., Zhang, Q., Zio, E., Havlin, S. & Kang, R. Network reliability analysis
+      based on percolation theory, reliability engineering. Syst. Saf. 142, 556 (2015).
+                                                                                          Peer review information Nature Communications thanks Maksim Kitsak, and the other,
+28.   Cohen, R. & Havlin, S. Complex Networks: Structure, Robustness and Function
+                                                                                          anonymous, reviewer(s) for their contribution to the peer review of this work. Peer
+      (Cambridge University Press, 2010).
+                                                                                          reviewer reports are available.
+29.   Hamedmoghadam, H., Ramezani, M. & Saberi, M. Revealing latent
+      characteristics of mobility networks with coarse-graining. Sci. Rep. 9, 1 (2019).
+                                                                                          Reprints and permission information is available at http://www.nature.com/reprints
+30.   Smith, A. M. et al. Competitive percolation strategies for network recovery.
+      Sci. Rep. 9, 1 (2019).
+                                                                                          Publisher’s note Springer Nature remains neutral with regard to jurisdictional claims in
+31.   Oppenheim, N. Urban Travel Demand Modeling: From Individual Choices to
+                                                                                          published maps and institutional afﬁliations.
+      General Equilibrium (John Wiley and Sons, 1995).
+32.   Zhang, L., Zeng, G., Guo, S., Li, D. & Gao, Z. Comparison of trafﬁc reliability
+      index with real trafﬁc data. EPJ Data Sci. 6, 19 (2017).
+33.   Yang, Y., Nishikawa, T. & Motter, A. E. Small vulnerable sets determine large                         Open Access This article is licensed under a Creative Commons
+      network cascades in power grids. Science 358, eaan3184 (2017).                                        Attribution 4.0 International License, which permits use, sharing,
+34.   Schneider, C. M., Moreira, A. A., Andrade, J. S., Havlin, S. & Herrmann, H. J.      adaptation, distribution and reproduction in any medium or format, as long as you give
+      Mitigation of malicious attacks on networks. Proc. Natl Acad. Sci. USA 108,         appropriate credit to the original author(s) and the source, provide a link to the Creative
+      3838 (2011).                                                                        Commons license, and indicate if changes were made. The images or other third party
+35.   Pollack, M. Letter to the editor—the maximum capacity through a network.            material in this article are included in the article’s Creative Commons license, unless
+      Oper. Res. 8, 733 (1960).                                                           indicated otherwise in a credit line to the material. If material is not included in the
+36.   Estrada, E. & Sheerin, M. Random rectangular graphs. Phys. Rev. E 91, 042805        article’s Creative Commons license and your intended use is not permitted by statutory
+      (2015).                                                                             regulation or exceeds the permitted use, you will need to obtain permission directly from
+37.   Girvan, M. & Newman, M. E. Community structure in social and biological             the copyright holder. To view a copy of this license, visit http://creativecommons.org/
+      networks. Proc. Natl Acad. Sci. USA 99, 7821 (2002).                                licenses/by/4.0/.
+38.   Callaway, D. S., Newman, M. E., Strogatz, S. H. & Watts, D. J. Network
+      robustness and fragility: percolation on random graphs. Phys. Rev. Lett. 85,
+      5468 (2000).                                                                        © The Author(s) 2021
+
+
+
+
+10                     NATURE COMMUNICATIONS | (2021)12:1254 | https://doi.org/10.1038/s41467-021-21483-y | www.nature.com/naturecommunications
+

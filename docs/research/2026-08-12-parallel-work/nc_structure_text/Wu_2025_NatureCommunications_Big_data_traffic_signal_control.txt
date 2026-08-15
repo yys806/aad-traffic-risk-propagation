@@ -1,0 +1,1175 @@
+Article https://doi.org/10.1038/s41467-025-56701-4
+Big-data empowered trafﬁc signal control
+could reduce urban carbon emission
+Kan Wu1, Jianrong Ding 2, Jingli Lin2, Guanjie Zheng3,Y iS u n1,J i eF a n g1,T uX u4,5,
+Yongdong Zhu5 & Baojing Gu 6
+Urban congestion is a pressing challenge, driving up emissions and compro-
+mising transport efﬁciency. Advances in big-data collection and processing
+now enable adaptive trafﬁc signals, offering a promising strategy for conges-
+tion mitigation. In our study of China’ s 100 most congested cities, big-data
+empowered adaptive trafﬁc signals reduced peak-hour trip times by 11% and
+off-peak by 8%, yielding an estimated annual CO₂ reduction of 31.73 million
+tonnes. Despite an annual implementation cost of US$1.48 billion, societal
+beneﬁts— including CO₂ reduction, time savings, and fuel efﬁciency— amount
+to US$31.82 billion. Widespread adoption will require enhanced data collec-
+tion and processing systems, underscoring the need for policy and technolo-
+gical development. Ourﬁndings highlight the transformative potential of big-
+data-driven adaptive systems to alleviate congestion and promote urban
+sustainability.
+Road trafﬁc is a major global source of carbon emissions, generating
+approximately 5.88 billion tonnes of greenhouse gas (GHG) annually
+(measured in CO ₂-equivalent), or 11.9% of total emissions, ranking
+third among all sectors
+1. Urban congestion further exacerbates these
+emissions. In cities like London, congestion alone contributes around
+2.2 million tonnes (Mt) of CO₂ annually, equating to 15% of total road
+trafﬁc emissions, which would require a pine forest the size of Sydney
+(12,000 km²) to offset
+2. Similar congestion impacts are observed in
+Paris (2.8 Mt, 13%), Berlin (0.42 Mt, 10.5%), and Amsterdam (0.06 Mt,
+7%)2. The situation is particularly acute in rapidly growing megacities in
+China, where congestion-related emissions are ampliﬁed by high trafﬁc
+demand and infrastructure constraints. In China, transport emissions
+surged from 96 Mt in 1990 to 996 Mt in 2021 - a compound annual
+growth rate of 7.83% driven by urbanization and economic growth
+3.
+For cities like Suzhou, Chengdu, and Harbin, reducing congestion
+could potentially cut emissions by 0.95 (12.7%), 1.53 (14.2%), and 0.98
+Mt (12.9%) of CO ₂, respectively
+4.T h i sr i s ei nu r b a nt r a fﬁc emissions
+poses a challenge to China ’ s 2060 carbon neutrality target 5 and
+threatens progress on sustainable development goals (SDGs) related
+to sustainable cities, infrastructure, and climate action
+6.
+Efforts to mitigate urban congestion and transport emission can be
+classiﬁed under the“Avoid-Shift-Improve”(ASI) framework7.T h e“Avoid”
+strategies aim to reduce travel demand through compact urban plan-
+ning and policies like congestion pricing and trafﬁc restrictions
+8–10.T h e
+“Shift” strategies encourage a shift from private vehicles to sustainable
+modes such as public transit, cycling and walking, often supported by
+transit-oriented development (TOD) initiatives
+11,12. While both “Avoid”
+and “Shift” strategies require considerable investment in infrastructure
+or policy changes, which can be time- and cost-intensive, the“Improve”
+strategies focus on enhancing the efﬁciency of existing transport sys-
+tems, often offering immediate congestion relief. Adaptive trafﬁcs i g n a l
+control exempliﬁes an “Improve” strategy, optimizing trafﬁc ﬂow by
+dynamically adjusting signal timings and reducing the need for expan-
+ded road capacity. Recent advances in big-data collection and proces-
+sing techniques have enabled cities to implement adaptive signals on a
+large scale
+13,14, making real-time adjustments possible and enhancing
+overall trafﬁc management.
+Research on adaptive traf ﬁc signal control has progressed over
+decades, evolving from early heuristic methods to data-intensive
+reinforcement learning approaches
+15,16. Adaptive control methods fall
+Received: 14 June 2024
+Accepted: 27 January 2025
+Check for updates
+1City Brain Institute, Institute of Urban Development and Strategy, Hangzhou City University, Hangzhou, China.2School of Electronic Information and
+Electrical Engineering, Shanghai Jiao Tong University, Shanghai, China.3John Hopcroft Center for Computer Science, Shanghai Jiao Tong University,
+Shanghai, China. 4Laboratory of Public Safety Risk Governance, Zhejiang Police college, Hangzhou, China.5Research Center for Intelligent Transportation,
+Zhejiang Lab, Hangzhou, China.6College of Environmental and Resource Sciences, Zhejiang University, Hangzhou, China. e-mail: bjgu@zju.edu.cn
+Nature Communications|         (2025) 16:2013 1
+1234567890():,;
+1234567890():,;
+into two primary categories: cycle-based methods (e.g., Webster ’ s
+algorithm17– 19,S C A T S ,a n dS C O O T20,21) and phase-based methods (e.g.,
+max-pressure22– 24 and reinforcement learning algorithms25– 27). Cycle-
+based methods, which maintain consistent phase settings, are widely
+used because they require less data and provide straightforward rules
+for drivers to follow. Phase-based methods, which adjust phases in real
+time, offer greater adaptability but face challenges in Chinese cities
+where timely, high-quality data are often limited, and local driving and
+pedestrian behaviors require careful consideration. Although multi-
+source trafﬁc data is now available, collecting and processing this data
+remains costly and can sometimes be unreliable. Therefore, signal
+timing update methods that are less data-dependent and more robust
+to data errors are still essential. In this context, it is not the novelty of
+trafﬁc control algorithms but rather their compatibility with available
+data that becomes crucial. Consequently, simpler cycle-based algo-
+rithms like Webster’ s method have gained traction in China, particu-
+larly when integrated with platforms such as City Brain
+28,29. Pilot
+projects in Hangzhou and Nanchang have shown over 15% reductions
+in trip delays
+30, demonstrating adaptive control’ s potential in lifting
+long-standing trafﬁc restrictions without increasing congestion.
+While pilot projects and extensive research on isolated
+intersections31,32 show promise, systematic studies on the city-wide
+impacts of adaptive traf ﬁc signals - particularly considering both
+congestion and emissions reduction - are still limited. To address this,
+our study evaluates the large-scale implementation of big-data-driven
+adaptive signals in megacities, speci ﬁcally focusing on urban areas
+with populations exceeding 10 million and thousands of signalized
+intersections. We address this research gap by conducting simula-
+tions in China ’ s 100 most congested cities, using OpenStreetMap
+33
+for road data and Gaode Map for traf ﬁc speed data. Our analysis
+quantiﬁes congestion and emission reductions at both isolated
+intersection and city-wide levels, identi ﬁes key socioeconomic and
+infrastructure factors in ﬂuencing congestion mitigation, and asses-
+ses the cost-effectiveness of adaptive signal systems. Through this
+comprehensive examination of city-scale adaptive trafﬁc signals, our
+study advances the understanding of smart traf ﬁc management and
+offers insights for developing low-emission, ef ﬁcient urban mobility
+solutions aligned with China’ s sustainability targets.
+Results
+How adaptive trafﬁc signal mitigates urban congestion?
+To illustrate the potential of adaptive signals in reducing congestion and
+emissions, we begin by analyzing a s tandard four-leg intersection. At
+such intersections, each trafﬁcp h a s ei sd eﬁned by green and yellow
+intervals allocated to non-conﬂicting trafﬁc streams within a signal cycle
+(Fig.1a). Efﬁcient phase timing requires precise green time allocation and
+cycle length optimization across phases. Conventional pre-timed signals,
+which assignﬁxed green times based on historical averages (e.g., hourly
+or peak-period data), lack adaptability to real-timeﬂuctuations in trafﬁc
+demand. In contrast, adaptive signals dynamically adjust green times
+according to current trafﬁc conditions, reducingmismatches between
+green time allocation and actual trafﬁcn e e d s( F i g .1b). This ﬂexibility
+suggests that citywide implementation of adaptive signals could sig-
+niﬁcantly improve trafﬁc ﬂow and alleviate congestion.
+Fig. 1 | Comparison between pretimed and adaptive trafﬁc signal control. aFor
+a typical four-leg signalized intersection, speciﬁed trafﬁc phases are designed to
+provide right-of-way for pairs of non-conﬂicting trafﬁc streams. For example, in
+phase-1, southbound and northbound through movements are allowable. Phase
+timing is essential for improving intersection efﬁciency in each signal cycle.b With
+the pretimed method for phase timing, the lengths of green times for trafﬁc phases
+remain ﬁxed over a period of time (the horizontal solid lines). By contrast, the
+adaptive method continuously adjusts green times based on real-time trafﬁc
+volume data. Thus, the gap between demand and supply of green time (or ratio) for
+each phase could be minimized.
+Article https://doi.org/10.1038/s41467-025-56701-4
+Nature Communications|         (2025) 16:2013 2
+Adaptive trafﬁc signals also contribute to emissions reduction by
+minimizing vehicle stops and idling time. In densely populated Chinese
+cities, the frequent proximity of intersections - averaging about 500
+meters apart in urban centers - means that vehicles encounter multiple
+stops during typical trips. Furthermore, the complexity of urban traf-
+ﬁc, including interactions with pedestrians and cyclists, often leads to
+additional braking and idling at intersections, exacerbating emissions
+and reducing trafﬁce fﬁciency. This study directly compares pre-timed
+and adaptive signals in terms of their ability to smooth trafﬁc ﬂow and
+reduce emission, controlling for signal timing by applying Webster ’ s
+method to both. The key distinction lies in data input: pre-timed sig-
+nals rely on static historical data, while adaptive signals use real-time
+data to dynamically adjust green times. This dynamic adjustment
+reduces vehicle stops and decelerations, thereby lowering congestion
+and emissions.
+To quantify these advantages, we conducted a demonstration trip
+spanning 17.37 km and 20 signalized intersections in Shanghai. Using
+the Motor Vehicle Emission Simulator (MOVES) model
+34,w ea s s e s s e d
+adaptive signals ’ impact on driving patterns and CO ₂ emissions.
+Adaptive control signi ﬁcantly decreased braking and idling times,
+reducing idling from 13 min to 6.78 min and braking time from 16.47 to
+14.72 min, effectively halving idling duration. This reduction, coupled
+with an increase in cruising time under low- and medium-speed con-
+ditions, raised average travel speed by 17% and reduced trip duration
+by 7 min.
+These improvements in driving patterns yielded notable emis-
+sions reductions. Along the demonstration route, CO ₂ emissions fell
+from 4.85 kg to 4.05 kg, driven by the reduction in braking and idling.
+Overall, adaptive signals achieved a net CO₂ reduction of 16% (Fig.2b),
+demonstrating that optimized signal timing not only improves trafﬁc
+ﬂow but also mitigates emissions by reducing stops and idling at
+intersections.
+To evaluate the broader system-wide impact of adaptive sig-
+nals, we conducted simulation-based experiments to analyze the
+relationship between system performance and varying levels of
+adaptive signal deployment. Using a business-as-usual (BAU) sce-
+nario with all intersections pre-timed as a baseline, we incrementally
+increased the proportion of adaptive signals across Shanghai.
+Results show that both travel speed and trip time reductions
+increased logarithmically with the percentage of adaptive imple-
+mentation, for both peak and off-peak hours (Supplementary Fig. 1).
+Notably, deploying adaptive control at just the ﬁrst 20% of inter-
+sections reduced peak-hour trip times by 8%, with diminishing
+returns observed beyond this point. This ﬁnding aligns with prior-
+itization strategies where high-trafﬁc intersections yield the greatest
+beneﬁts
+35. Thus, cities aiming to implement adaptive signals for
+optimal congestion relief should prioritize intersections with the
+highest traf ﬁc volumes.
+Congestion mitigation potential across China
+Our study underscores that congestion mitigation potential is wide-
+spread across Chinese urban centers, extending well beyond major
+cities like Shanghai. Leveraging data from 100 most congested cities in
+China as ranked by Gaode in 2022, we simulated the transition from
+pretimed to adaptive traf ﬁc signals, observing substantial impacts.
+Notably, 97 cities exhibited meaningful increases in average speed
+c
+46 min39 min
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+0 5 10 15 20 25 30 35 40 45 50
+Travel distance (km)
+Travel time (min)
+Pretimed
+Adaptive
+a
+0
+0.5
+1
+1.5
+2
+2.5
+3
+3.5
+4
+4.5
+5
+02468 1 0 1 2 1 4 1 6 1 8
+CO2 emission (kg)
+Travel distance (km)
+Pretimed
+Adaptive
+22.68 
+26.55 
+20
+22
+24
+26
+28
+Speed (km/h)
+14.72 
+6.78 
+8.57 
+2.73 
+0.75 
+0.40 
+0.35 
+0.57 
+2.53 
+1.03 
+0.42 
+0.25 
+0.05 
+0.08 
+0.02 
+16.47
+13
+4.68
+4.27
+1.83
+0.88
+0.58
+0.18
+1.15
+0.87
+0.97
+0.67
+0.28
+0.1
+0.05
+0
+1
+3
+4
+5
+6
+7
+9
+10
+11
+12
+13
+14
+15
+16
+Travel time (min)
+Driving mode
+Pretimed Adaptive
+866 
+369 
+1012 
+449 
+156 
+99 
+105 
+75 
+409 
+214 
+115 
+91 
+25 
+56 
+14 
+969
+707
+553
+701
+380
+219
+174
+24
+186
+179
+267
+243
+139
+67
+42
+0
+1
+3
+4
+5
+6
+7
+9
+10
+11
+12
+13
+14
+15
+16
+CO2 emission (g)
+Driving mode
+Pretimed Adaptive
+4.85 
+4.05 
+3.8
+4.2
+4.6
+5.0CO2 emission (kg)
+b
+d
+Fig. 2 | Impact of adaptive trafﬁc signals on vehicle’ s travel speed, driving
+modes, and CO₂ emissions. a In Shanghai, the demo vehicle’ s travel speed
+increased from 22.68 to 26.55 km/h with adaptive trafﬁc signals. b Comparison of
+durations in various driving modes for the demo trip: adaptive signals reduce time
+spent in braking (mode-0) and idling (mode-1) at intersections, with a notable
+increase in cruising time (mode-3 and mode-10). c CO₂ emissions decreased from
+4.85 kg to 4.05 kg during the demo trip (16% reduction). d Comparison of CO₂
+emissions across driving modes shows that emission savings from reduced braking
+and idling outweigh the increase during cruising, resulting in a net 16% emission
+reduction. Refer to Supplementary Table 1 for detailed driving mode deﬁnitions.
+Article https://doi.org/10.1038/s41467-025-56701-4
+Nature Communications|         (2025) 16:2013 3
+(exceeding 1%), with 49 cities achieving peak-hour speed gains of over
+10%. Collectively, these improvements yielded an 11% reduction in trip
+time during peak hours (equivalent to 79,695 h saved) and an 8%
+reduction during off-peak hours (42,080 h saved) (Supplementary
+Fig. 2). For cities like Hangzhou and Nanchang, which have previously
+reported the integration of big data to enhance signal adaptivity, our
+baseline scenario (BAU) accounted for their existing adaptive traf ﬁc
+signals. Spatially, the highest mitigation potential appeared con-
+centrated in coastal and provincial capital cities, regions integral to
+China’ s economic network (Fig.3a–c). Ranking these cities by trip time
+reduction, we found Shanghai, Beijing, Harbin, Qingdao, and Shenzhen
+as the topﬁve, with Shanghai alone achieving a notable reduction of up
+to 6581 h during peak hours, representing an 18% decrease and an
+average savings of 9 min per trip (Fig. 3d).
+Interestingly, our analysis revealed a truncated power relationship
+between trip time change and city rank. Speci ﬁcally, we observed a
+power function for the top 50 cities and a linear function for the
+bottom 50 cities (Fig. 3d). This ﬁnding suggests that the potential for
+congestion mitigation diminishes rapidly for high-ranked cities but
+more slowly for low-ranked cities. For example, the trip time reduction
+in Beijing (4339 h) would be 66% of that in Shanghai, whereas the
+difference between Shenzhen and Shenyang (ranked 5th and 10th,
+respectively) is only 10%. We hypothesize that the differences among
+low-ranked cities are primarily due to variations in travel demand
+inﬂuenced by socioeconomic factors such as population. In contrast,
+for high-ranked cities, the sharp differences in trip time reduction are
+jointly determined by both travel demand and speed change.
+To explore the infrastructure and socioeconomic determinants of
+congestion mitigation potential in 100 cities, we conducted a multi-
+variate linear regression analysis (Table 1). Our ﬁndings reveal that
+baseline BAU speed, road length and population negatively impact
+speed improvement. Speci ﬁcally, a 1% increase in baseline speed,
+logarithms of road length and population corresponded to reductions
+of approximately 1.1%, 3.3%, and 2.3% in potential speed improvement,
+Fig. 3 | Changes of travel speed and trip time during peak hours. Geographic
+distribution of average speed under BAU scenario (all trafﬁc signals are pretimed)
+(a), target scenario (all trafﬁc signals are adaptive) (b), and the percent change (c).
+d Rank of cities by trip time reductions each hour, for top 50 cities, trip time
+reduction is ﬁtted as a power function of rank; for bottom 50 cities, trip time
+reduction is ﬁtted as a linear function of rank. The base map is applied without
+endorsement from GADM data (https://gadm.org/).
+Article https://doi.org/10.1038/s41467-025-56701-4
+Nature Communications|         (2025) 16:2013 4
+respectively. This is consistent with the expectation that higher base-
+line speeds leave less room for improvement and that higher popula-
+tion and road length, indicating greater travel demand towards
+downtown areas, make it more challenging to mitigate traf ﬁcc o n -
+gestion. In contrast, cities with more straight streets and higher gross
+domestic product based on purchasing power parity (GDP (PPP))
+exhibited greater potential for speed improvement. In summary, our
+results suggest that implementing the adaptive method would be most
+beneﬁcial in cities with high congestion levels, high economic level,
+and well-designed streets.
+Reduction of carbon emission
+The annual road trafﬁc carbon dioxide (CO₂) emissions across the 100
+cities were approximately 477 Mt in 2021, according to the Climate
+Watch Database
+3. Our analysis reveals that implementing adaptive
+trafﬁc signals could reduce CO ₂ emissions by 31.73 Mt annually — a
+6.65% reduction across these cities (Fig.4). This reduction is equivalent
+to the offset that would be achieved by replacing 9.16 million (3.30%)
+petrol vehicles with electric vehicles each year in China (seeMethods).
+The CO₂ reduction potential varied signiﬁcantly by city, from 16 Kt in
+S a n y at o1 . 6 7M ti nS h a n g h a i( F i g .4a), with the top 10 cities accounting
+for nearly 30% of the total emission reductions, while the bottom 10
+cities contributed only 1.64%. Even lower-ranked cities, such as
+Changsha, which saw a 5.09% reduction, showed meaningful potential
+for emission reduction when considering percentage improvements in
+urban air quality and health outcomes.
+Transport emissions reductions are inﬂuenced by both baseline
+emissions and the impact of adaptive signals. In 2021, baseline BAU
+CO₂ emissions across the cities ranged widely, from 0.5 Mt in Sanya to
+20.6 Mt in Chongqing. In general, cities with higher BAU emissions
+show greater absolute reduction potential; however, reductions are
+not directly proportional to BAU emissions. For example, despite
+Fig. 4 | Reduction of CO 2 emission. a Histogram of annual CO₂ reductions with
+percentage changes indicated by a broken line, labeled for typical cities.b Ranking
+of the top 10 cities by BAU annual CO ₂ emissions: dark bars represent predicted
+total emissions, while light bars show potential reductions under adaptive trafﬁc
+signals, labeled are emission reduction and percent change.c Annual transport CO₂
+emission reductions across 100 cities.
+Table 1 | Regression analysis between speed improvement
+and city indicators
+Coefﬁcient P
+BAU speed (km/h) −1.129 <0.001
+Log[road length (m)] −3.330 0.076
+Log[Population] −2.295 0.298
+Street straightness 106.770 <0.001
+Log[GDP (PPP)] 2.113 0.079
+Pseudo/adjusted R
+2 0.486
+Method OLS
+This table presents the result of a multivariate linear regression analysis of speed improvement
+(%) against baseline BAU speed, road network length, population, street straightness (ratio of
+straight-line distances between adjacent street nodes to street lengths)39,a n dG D P( P P P ) .
+Negative and positive coefﬁcients indicate that city indicators have negative and positive
+impacts on congestion mitigation potential, respectively. TheP-value indicates the signiﬁcance
+of each city indicator; the smaller the value, the more signiﬁcant it is. The method used for linear
+regression is ordinary least squares (OLS).
+Article https://doi.org/10.1038/s41467-025-56701-4
+Nature Communications|         (2025) 16:2013 5
+Shanghai’ s lower BAU emissions than Chongqing (Fig.4b), Shanghai’ s
+reduction potential was higher (1.67 Mt vs. 1.52 Mt). This underscores
+the importance for cities to evaluate their speciﬁc reduction potential
+prior to implementation, as city-speci ﬁc characteristics can sig-
+niﬁcantly affect outcomes.
+Assuming stable trip demand and route choices, emission
+reductions are primarily achieved by minimizing braking and idling
+durations and increasing individual vehicle travel speeds. In congested
+urban areas, inefﬁcient driving modes and reduced speeds contribute
+heavily to emissions. According to the MOVES model, even moderate
+improvements in these driving modes could lead to substantial
+reductions. Beyond CO₂, the adaptive signals can also mitigate emis-
+sions of air pollutants like NO ₓ,N H ₃, and VOCs, which are linked to
+PM2.5 and O ₃ pollution. Thus, adaptive trafﬁc signals contribute not
+only to CO ₂ reduction but also to public health improvements by
+reducing pollutant exposure. This positions adaptive trafﬁcc o n t r o la s
+a key strategy in China’ s pursuit of carbon neutrality and its alignment
+with the Sustainable Development Goals.
+Cost and beneﬁt
+To effectively mitigate congestion and emissions, adaptive trafﬁcs i g -
+nals require a comprehensive evaluation of both implementation costs
+and resulting beneﬁts (Fig. 5a–d). The most substantial cost compo-
+nent - real-time trafﬁcd e t e c t i o n— demands continuous trafﬁcv o l u m e
+data, which incurs considerable expense. Our estimates suggest that
+achieving the targeted congestion mitigation across 100 cities would
+necessitate a total investment of approximately US$1.48 billion, cov-
+ering initial setup and ongoing maintenance (Fig. 5f). Speci ﬁcally,
+based on an analysis of 145 recentﬁeld cases, the initial installation cost
+for traf ﬁc detectors is projected at US$1.31 billion, assuming a 71-
+month lifespan per detector
+36. Additionally, annual operation and
+maintenance costs are estimated at around US$0.17 billion. Unsur-
+prisingly, larger cities bear higher costs due to the scale of intersec-
+tions and network density.
+Integrating multiple existing data sources can possibly reduce
+implementation costs. Using a combination of inductive-loop detec-
+tors, surveillance cameras, and ﬂoating car data allows for data sub-
+stitution at intersections lacking traf ﬁc detectors (Supplementary
+Table 2). Yet, deploying these solutions is often complex due to varied
+ownership of traf ﬁc detectors and signals across public and private
+entities. We classify multi-source data integration solutions into three
+tiers: (1) Departmental solutions with low barriers using single-
+department data; (2) Cross-sector solutions requiring interdepart-
+mental collaboration and policy support; and (3) Public-private part-
+nerships, offering broader data coverage at higher implementation
+barriers. Higher-tier solutions promise less trafﬁcd e t e c t i o nc o s t sb u t
+entail coordination costs difﬁcult to quantify. Centralized smart city
+systems, such as City Brain, highlight the potential of cross-sector data-
+sharing to lower detection implementation costs while supporting
+networked governance
+37 for targeted deployment from high- to low-
+trafﬁc areas (Supplementary Fig. 4).
+The societal bene ﬁts of adaptive traf ﬁc signals are substantial,
+primarily from reductions in travel time and fuel consumption. Based
+on stated preference (SP) survey data of travelers ’ willingness to pay
+for reduced travel times in China
+38, time savings are valued at
+approximately US$1.56 billion annually. Increased travel speeds fur-
+ther contribute to reductions in fuel consumption, yielding an esti-
+mated US$15.83 billion in annual fuel savings (Fig. 5f). Additionally,
+adaptive signals generate environmental beneﬁts, with CO₂ emissions
+reductions valued at approximately US$14.44 billion annually. In
+addition to CO₂, adaptive signals help mitigate air pollutants such as
+NOₓ,N H₃,a n dV O C s ,w h i c hc o n t r i b u t et oP M 2 . 5a n dO₃ pollution, as
+well as traf ﬁc accidents and noise. The full scope of these environ-
+mental bene ﬁts is challenging to quantify accurately, meaning the
+actual value could be even higher. Nevertheless, our estimates align
+with China’ s carbon-neutral policy priorities, reinforcing the relevance
+of adaptive trafﬁc signals in environmental policy. Collectively, adap-
+tive signals can deliver societal and environmental bene ﬁts of
+approximately US$31.82 billion per year across the 100 cities, repre-
+senting a bene ﬁt-cost ratio of about 21.6. This compelling ratio
+underscores adaptive trafﬁc signals as a highly effective strategy for
+urban congestion mitigation and environmental improvement.
+Individual city assessments reveal notable variability, with beneﬁt-
+cost ratios exceeding 30 in half of the 100 cities, and nearly a quarter
+showing ratios above 50 (Fig. 5e). These high ratios are largely driven
+by fuel savings and CO ₂ reductions, while travel time bene ﬁts and
+implementation costs are relatively consistent across cities. Cities such
+as Urumqi and Yili, however, may not experience immediate net cost
+beneﬁts from travel-time savings alone, with a beneﬁt-cost ratio below
+1/3 (Supplementary Fig. 3). Yet, when broader societal and environ-
+mental gains are factored in, these cities see overall beneﬁts exceeding
+costs by more than 20 times, primarily due to emissions reductions
+and fuel savings. These ﬁndings indicate that cities focused narrowly
+on congestion alleviation may bene ﬁtf r o ma d o p t i n gam o r ec o m -
+prehensive view, as our study highlights the substantial societal and
+environmental co-beneﬁts of adaptive signals.
+Despite these promising outcomes, many pilot projects in China—
+such as those in Hangzhou and Nanchang — still concentrate pre-
+dominantly on congestion reduction, often overlooking broader
+environmental and fuel-saving beneﬁts. This gap arises partly due to
+the complexities of estimating city-wide emissions reductions. Our
+analysis provides critical insights into these co-beneﬁts, underscoring
+the strategic potential of adaptive traf ﬁcs i g n a l st os u p p o r tu r b a n
+sustainability and inform policy adjustments for broader imple-
+mentation across Chinese megacities.
+Discussion
+China’ s urbanization rate is projected to rise from 62.5% in 2021 to 80%
+by 2050, with increased migration to mega-cities posing both chal-
+lenges for congestion and opportunities for decarbonization. Advan-
+c e si nd a t ac o l l e c t i o na n dp r o c e s s i n gn o wm a k ea d a p t i v et r a fﬁcs i g n a l s
+a practical solution for managing congestion and reducing urban
+emissions. This study introduces a systematic framework for modeling
+and assessing the beneﬁts of big-data-driven adaptive trafﬁcs i g n a l sa t
+a city-wide scale, particularly in megacities with populations exceeding
+10 million. Our ﬁndings indicate that, while travel time reductions and
+implementation costs of adaptive signals are often similar, the emis-
+sions reduction beneﬁts tend to outweigh the costs. Even in smaller
+cities such as Sanya, Yili, and Urumqi, where gains in travel speed and
+emissions may be more modest, our study provides valuable insights.
+These cities can apply our framework to evaluate the broader societal
+and environmental advantages of adaptive traf ﬁcs i g n a l s ,e v e n
+potentially informing policy shifts to leverage big data for targeted
+transport emission reduction goals.
+Our beneﬁt-cost analysis may understate adaptive signals’ value
+due to limitations in data availability. First, implementation costs could
+be overestimated; cities in China increasingly utilize ﬂoating car data
+from multiple sources from navigation and ride-hailing apps (e.g.,
+Gaode Map, Didi), potentially reducing installation costs of traf ﬁc
+detectors at intersections with highﬂoating car penetration. However,
+lacking comprehensive data, we could not quantify this impact. Second,
+we did not account for co-beneﬁts such as noise reduction and accident
+mitigation associated with smoother trafﬁc ﬂow. Despite these limita-
+tions, our analysis provides a robust reference for policymakers, with
+opportunities to reﬁne beneﬁt-cost accuracy as more comprehensive
+data become available. Importantly, ourﬁndings support the adoption
+of adaptive trafﬁc signals as a valuable tool for urban sustainability and
+emission reduction, even with conservative estimates.
+With road transport contributing 11.9% of global CO
+2 emissions
+and ranking among the top three emitting sectors worldwide, data-
+Article https://doi.org/10.1038/s41467-025-56701-4
+Nature Communications|         (2025) 16:2013 6
+driven congestion mitigation solutions offer notable potential for
+supporting China’ s carbon neutrality and sustainable development
+goals (SDGs). Future research could expand on our framework by
+examining the emission reduction potential of integrated“Avoid-Shift-
+Improve” solutions. For instance, further studies could explore
+“Improve” measures like dynamic variable lanes and green wave
+coordination,“Shift” strategies such as transit-oriented development,
+and “Avoid” approaches like the 15-min city concept. Our framework
+and models provide a foundation for assessing city-wide congestion
+and emissions reduction strategies, aligning with broader efforts
+toward urban sustainability.
+Methods
+Data sources
+We sourced road network data from OpenStreetMap and adjusted
+urban boundary errors for cities like Guangzhou and Hangzhou
+(https://www.openstreetmap.org/). Urban boundaries, population,
+and GDP data were retrieved from the GHS Urban Centre Database
+(available at https://ghsl.jrc.ec.europa.eu/ghs_stat_ucdb2015mt_
+r2019a.php). The GHS Urban Centre Database (GHS-UCDB) describes
+spatial entities called “urban centers” according to a set of multi-
+temporal thematic attributes gathered from the GHSL sources inte-
+grated with other sources available in the open scientiﬁcd o m a i n .T h e
+Fig. 5 | Costs and bene ﬁts of implementing adaptive trafﬁc signal control.
+Geographic distribution of costs and beneﬁts across cities: implementation cost
+(including installation and maintenance of trafﬁc detectors) (a)b e n eﬁts from
+reduced travel time (b), reduced gasoline consumption (c), and reduced CO₂
+emissions (d). e,B e n eﬁt-cost ratios across 100 cities.f,N e tc o s t sa n db e n eﬁts in 100
+cities, with negative values representing costs and positive values representing
+beneﬁts. The base map is applied without endorsement from GADM data (https://
+gadm.org/).
+Article https://doi.org/10.1038/s41467-025-56701-4
+Nature Communications|         (2025) 16:2013 7
+Urban Centres are de ﬁned by speci ﬁcc u t - o f fv a l u e so nr e s i d e n t
+population and built-up surface share in a 1 × 1 km uniform global grid.
+Trafﬁc data, including speed and congestion levels for China’ st o p1 0 0
+cities, were collected from Gaode ( https://report.amap.com/
+diagnosis/index.do) for the period from November 2 to November 8,
+2022. Information on pilot projects in Hangzhou and Nanchang was
+obtained from online reports and studies
+28,30.
+Baseline BAU transport CO₂ emission data for 2021 were drawn
+from the Climate Watch Database (https://www.climatewatchdata.org/
+ghg-emissions). To estimate the gasoline consumption, we used the
+result of CO 2 emission from gasoline from the Engineering Toolbox
+(available at https://www.engineeringtoolbox.com/co2-emission-
+fuels-d_1085.html). The price of gasoline is retrieved from Trading
+Economics on 2022/11/08 (available athttps://tradingeconomics.com/
+commodity/gasoline). We collected data from 145 ﬁeld projects that
+were recorded in the Intelligent Transportation Systems Joint Program
+to estimate installation and maintenance costs of adaptive trafﬁcs i g -
+nals at intersections (available athttps://www.itskrs.its.dot.gov/).
+Experiment setup
+We used a series of simulation-based experiments to evaluate the
+performance of pretimed and adaptive trafﬁc signal timing methods.
+Road network query, trip generation, and simulation environment
+calibration are the three main tasks for experiment setup (Supple-
+mentary Fig 5a).
+Road network query. We used the OSMnx
+39 package to query road
+networks given a polygon boundary. When querying road networks,
+we set the “network_type” as the “drive” option to include drivable
+public streets (but not service roads) for vehicles in a city. The road
+network was then divided into 8 × 6 identical traf ﬁcz o n e sf o rg e n -
+erating synthetic trips.
+Synthetic trip generation. We used a two-step procedure to generate
+synthetic trips within a city downtown area: (1) trip demand estima-
+tion, and (2) trip route assignment. We used the gravity model
+40,41 to
+estimate the trip demands (T)b e t w e e np a i r w i s et r a fﬁc zones over the
+simulation period. A uniform random choice model was used to select
+intersection locations as origin and destination for each trip. With such
+a model, each intersection within a speciﬁed trafﬁcz o n ew a ss e l e c t e d
+at an equal probability.
+T =
+mα
+i /C1 mβ
+j
+γ /C1 rδ
+ij
+ð1Þ
+where m denotes the population of a traf ﬁcz o n e .S i n c et h er a w
+population data is at city-scale, we estimatedm by multiplying overall
+population with the proportion of road length in a traf ﬁcz o n e .T h e
+subscriptsi, j are used to denote the origin and destination trafﬁcz o n e s ,
+respectively. Andr denotes Euclidean distance between center-points
+of origin and destination traf ﬁc zones. The parameters α, β, γ, δ are
+estimated for each city at the simulation environment calibration step.
+To assign trips ( T)t ot r a v e lr o u t e s ,w eﬁrst divide the overall
+simulation period into 10-min intervals. In each interval, we use the
+expected travel time based shortest algorithm (Dijkstra ’ sa l g o r i t h m )
+for trip assignment
+42. The BPR function 43,44 is used to estimate the
+expected travel time (tt ) of a road segment.
+tt = ttf /C1 1+0 :15 /C1 x
+1000
+/C16/C17 4/C20/C21
+ð2Þ
+where,tt f is the time cost for passing a road segment when traveling at
+speed limit. And x denotes the assigned trips to a road segment in
+previous time intervals, at beginning of simulation period, x is
+set to be 0.
+Simulation environment calibration. We input the road network and
+generated synthetic trips into CBEngine45 for simulating trafﬁc in a city.
+CBEngine is a trafﬁc simulator that allows for city-scale trafﬁcs i m u l a -
+tion. To narrow the gap between simulation and real-world, we used a
+trial-and-error procedure to iteratively adjust trip demand parameters
+(i.e., parameter- α, β, γ, δ) to minimize the difference between
+observed and simulated average speed at city-scale (Supplementary
+Fig 5b). The observed speed data were retrieved from Gaode in 2022
+during peak and off-peak hours.
+Trafﬁcs i g n a lt i m i n g. We used trafﬁc volume data to compute the two
+signal timing variables: (1) cycle length and (2) length of green interval
+for each trafﬁc phase. We used the typical phase setting as shown in
+Fig. 1a for all four-leg intersections. For three-leg intersections, one of
+the four signal phases is dropped based on the intersection con ﬁg-
+uration. Here, we used Webster’ sm e t h o d
+1,17,18 to calculate signal cycle
+length. This method requires estimation of saturation ﬂow rates, cri-
+tical ﬂow ratios and lost times of each traf ﬁc phase. Here, we use
+subscript i to denote a traf ﬁcp h a s e .F o ra n yt r a fﬁc phase, saturation
+ﬂow rate ( si) is estimated as the maximum volume passed an
+unsignalized highway, averaging over 10 rounds of simulation. To
+compute critical ﬂow ratio (y
+i), we need to identify the critical traf ﬁc
+stream with maximum observed volume ( qi), in a traf ﬁcp h a s e .T h e
+critical ﬂow ratio is then calculated as follows,
+yi = qi
+si
+ð3Þ
+In each trafﬁc phase, a portion of beginning of each green interval
+(start-up lost time) and a portion of each yellow interval (clearance lost
+time) is not usable by vehicles, the sum of these two periods com-
+promises the lost timel
+i for a phase. Here, the lost time for each phase
+is assume to be 5 s. Using critical ﬂow ratios and lost times, the signal
+c y c l el e n g t hi sc o m p u t e da sb e l o w .
+C= 1:5L +5
+1 /C0 Y
+ð4Þ
+where Y = Pn
+i yi and L = Pn
+i li denote the summed critical ﬂow ratios
+and lost times over all trafﬁc phases in a signal cycle, respectively. And
+the superscriptn denotes total number of phases in a cycle, in general,
+n = 4 for typical four-leg intersections.
+Next, the length of green interval for each traf ﬁcp h a s ei sc o m -
+puted as below, and the yellow interval is assumed to be 3 s for all
+phases.
+g
+i = ðC /C0 3nÞ/C1 yi
+Y ð5Þ
+It is worth noting that the pretimed and adaptive methods differ
+in signal timing update frequency and the data used for update. Here,
+our proposed adaptive method uses real-time volume data collected in
+the previous signal cycle to update signal timings for the coming cycle.
+By contrast, the pretimed method uses historical volume data to
+update signal timing variables every 15 min. The historical volume data
+are generated by the same road network simulation but with variations
+on trip departure times.
+Scenario design . To evaluate the performance of the proposed
+adaptive method, we designed a set of baseline BAU and target trafﬁc
+scenarios for 100 cities. In the BAU scenario, all trafﬁcs i g n a l si nac i t y’ s
+downtown area were pretimed. The preset trafﬁcs i g n a lt i m i n g sw e r e
+derived from synthetic historical volume data using Webster’ sm e t h o d .
+The synthetic historical traf ﬁc volumes were comparable to target
+scenario traf ﬁc but with minor differences due to randomness in
+departure time choice of speciﬁed trips.
+Article https://doi.org/10.1038/s41467-025-56701-4
+Nature Communications|         (2025) 16:2013 8
+In our target scenarios, we implemented partial or all intersection
+signals using our proposed adaptive method. To explore congestion
+mitigation potential in a city, we used a target scenario with all adap-
+tive trafﬁc signals. To study the impact of implementation rate, we
+ranked all intersections by total traf ﬁc volumes of all traf ﬁcs t r e a m s
+over an hour and selected intersections from high to low volume ones.
+We assume that traf ﬁc management agencies would follow such a
+quasi-optimal implementation order since high volume intersections
+are often more critical.
+Urban congestion. We used total trip time, average travel speed, CO
+2
+emission reduction and fuel consumption savings to evaluate the
+beneﬁts of the proposed adaptive method. Trip time and travel speed
+were selected considering both drivers ’ and trafﬁcp o l i c e’ sp e r s p e c -
+tives, respectively. We computed average travel speed and total trip
+time by querying trip trajectories from simulator. For a trip– j,t h et r i p
+time (TT j ) is computed by substracting arrival and departure times of
+the trip. The total trip time (TTT ) is then obtained by summing over all
+trips. To compute average travel speed (v), we calculate the total trip
+distance (TTD ) and then divide it by total trip time.
+TTT =
+X
+j
+TT j ð6Þ
+TTD =
+X
+j
+TDj ð7Þ
+v = TTD
+TTT ð8Þ
+where, TT j and TDj are trip time and trip length for a trip — j.S u c ha
+quantiﬁcation makes every kilometer traveled by vehicles count and
+equitable.
+Transport emission. The baseline transport emissions data were
+derived from the Climate Watch Database, which reported China ’ s
+total transport-related emissions as 996.35 million tonnes (Mt) in
+2021. Given that road transport contributes approximately 73.46%
+to global transport emissions, China ’ s road transport emissions
+were estimated to be 731.89 Mt annually. To estimate city-speci ﬁc
+emissions, we apportioned this total according to urban population
+size, assuming that per capita emissions within cities align with
+national averages.
+To evaluate the impact of adaptive traf ﬁc signals on transport
+emissions, we utilized the Motor Vehicle Emission Simulator
+(MOVES), an on-road emission model developed by the United
+States Environmental Protection Agency. The MOVES model is
+recognized for its application in research and policy
+46– 48 due to its
+vehicle-speci ﬁc power (VSP) framework, which enables detailed
+emission analyses. In this framework, VSP is calculated for each
+vehicle at a microscopic level based on instantaneous speed,
+acceleration, road grade, and road load coef ﬁcient. The VSP is
+computed using the following equation:
+VS P =
+A /C1 vt + B /C1 v2
+t + C /C1 v3
+t + m /C1 vt /C1 at
+m
+ð9Þ
+where vt is vehicle’ s speed at timet (m/s), at is vehicle’ s acceleration at
+time t (m/s2), and m denotes vehicle mass (tonnes);A, B, C correspond
+to coef ﬁcients of rolling resistance, rotational resistance, and aero-
+dynamic drag, respectively, and vary by vehicle type. For example, for
+a passenger 39 car, A =0 :1565, B =2 :002 × 10/C0 3, C =4 :926 × 10/C0 4,a n d
+m =1 :479 tonne. Although road grade is also a factor in VSP, default
+MOVES assume zero grade.
+Using vehicle trajectory data from CBEngine, we classiﬁed vehicle
+driving modes based on instantaneous speed and calculated VSP
+values. Emissions for each vehicle were quantiﬁed according to emis-
+sion rates speciﬁc to each driving mode (see Supplementary Table 1).
+The total emissions (TE) across all vehicle trips were calculated as
+follows:
+E
+i, t = f iðVS Pt , vt Þð 10Þ
+TE =
+X
+i
+X
+t
+Ei, t ð11Þ
+where Ei, t represents the emissions of vehicle i during time period t.
+Adaptive trafﬁc signals inﬂuence vehicle driving modes by minimizing
+idle and braking times at intersections, which the MOVES model
+accounts for, enabling us to estimate CO ₂ emission reductions attri-
+butable to these adaptive trafﬁc signals.
+Adaptive trafﬁc signals can in ﬂuence vehicle driving modes by
+reducing idle time and minimizing braking at intersections. By com-
+paring emissions data under pretimed and adaptive traf ﬁcs i g n a l
+conditions, we assessed the reduction in CO
+2 emissions attributable to
+adaptive traf ﬁc signals. Using MOVES, we estimated the average
+emissions change per vehicle due to adaptive signaling and scaled this
+difference to represent city-level changes, accounting for the city ’ s
+population size. This approach allowed us to estimate the total CO
+2
+emissions reduction achievable through city-wide implementation of
+adaptive trafﬁc signals. Fuel consumption was estimated on a gasoline
+basis. Using data from The Engineering ToolBox, which indicates that
+the combustion of 1 kg of gasoline produces approximately 3.3 kg of
+CO₂, we calculated reductions in gasoline consumption by multiplying
+CO₂ emission reductions by a factor of 0.30.
+To estimate the number and proportion of petrol vehicles that
+need to be replaced by electric vehicles, we ﬁrst use data from Our
+World in Data
+49 to calculate the difference in CO ₂ emissions per
+passenger-kilometer between petrol and electric vehicles. Next, we
+apply the annual average mileage of vehicles in China50 to determine
+the annual emissions reduction when a vehicle is replaced by an
+electric engine. Finally, we divide the total emissions reduction
+achieved through adaptive signals by this annual per-vehicle reduction
+to estimate the number of vehicles that need to be replaced each year.
+The percentage is then calculated by comparing this ﬁgure with the
+total number of privately owned vehicles in China in 2022
+51.
+Implementation cost and societal beneﬁt. The implementation cost
+was estimated based on 145 ﬁeld projects recorded in the Intelligent
+Transportation Systems Joint Pr ogram. The implementation cost
+includes one-time installation cost and annual operation and main-
+tenance cost. The per-intersection installation cost varies between US
+$22,000 and US$82,300, with an av erage of US$48,069. The annual
+operation and maintenance cost is estimated at US$1079 per inter-
+s e c t i o n .T h el i f e s p a no ft h ew h o l ea d a p t i v et r a fﬁc signal control system
+was estimated to be about 71 months on average
+36. Therefore, the
+annual per-intersection implementation cost is US$9203, including
+both installation and operation costs.
+T h et r i pt i m eb e n eﬁt was estimated by investigating travelers ’
+willingness to pay for travel time savings (i.e., value of trip time). The
+results from a stated preference (SP) survey conducted in the city of
+Nanjing in 2018 were adopted
+38. According to the survey, the mean
+estimated value of trip time is about US$4.84 (or 30.39 CNY) per hour.
+The trip time bene ﬁt was then estimated by multiplying the value of
+trip time with total trip time savings during both peak and off-
+peak hours.
+Article https://doi.org/10.1038/s41467-025-56701-4
+Nature Communications|         (2025) 16:2013 9
+We adopted the results from a study that used a global atmo-
+spheric model to simulate the beneﬁts of global GHG reductions on air
+quality and human health52. According to the study, monetized emis-
+sion beneﬁt estimates are on average US$455 per ton of CO2 for China.
+Gasoline was used as a surrogate for estimating bene ﬁts from fuel
+consumption savings. The price of gasoline was retrieved from Trading
+Economics, which is US$1,646 per ton (retrieved on 2022/01/20). The
+emission and fuel consumption beneﬁts were estimated by multiplying
+the beneﬁt per unit by total reductions of CO
+2 emission and gasoline
+consumption, respectively.
+Limitations
+This study assesses the effectiveness of adaptive trafﬁcs i g n a lc o n t r o l
+in mitigating urban congestion and transport emissions. The analysis is
+limited to China ’ s top 100 congested cities (ranked by Gaode) and
+covers peak hours from 6:00 to 23:00 daily, excluding times and
+locations with minimal congestion. This restriction likely has minimal
+impact on our results, as adaptive and pre-timed signals perform
+similarly under uncongested conditions (e.g., speed changes under 1%
+in Urumqi and Yili). Trip time bene ﬁts were based on 2018 value of
+travel time saving data, and baseline BAU CO ₂ emissions were calcu-
+lated using 2021 data, assuming stable socioeconomic conditions.
+While this likely underestimates bene ﬁts due to China ’ s economic
+growth and increased travel demand, the results still substantiate the
+cost-effectiveness of adaptive signals in congestion mitigation.
+Increased speeds from adaptive signals may induce additional
+travel, as people opt to drive more or travel farther, potentially off-
+setting some congestion bene ﬁts. Our models do not fully capture
+induced demand due to data limitations, but adaptive signaling gen-
+erally supports higher traf ﬁc volumes and smoother ﬂows. Com-
+plementary measures, like improved public transit
+53,54,c o u l dc u r b
+induced demand by encouraging shifts to sustainable modes. Further
+research is necessary to evaluate the impacts of adaptive signals on
+non-motorized users, such as pedestrians and cyclists.
+Despite these limitations, this study provides insights into the role
+of adaptive traf ﬁc signals in reducing congestion and emissions,
+underscoring a cost-effective approach to urban carbon reduction.
+Our ﬁndings emphasize that adaptive signaling and other data-driven
+methods present viable pathways for cities seeking to address con-
+gestion while contributing to Sustainable Development Goals, parti-
+cularly “sustainable cities and communities” and “climate action.” This
+work also highlights the need for integrated data-sharing systems to
+support adaptive signaling and other data-driven urban governance
+initiatives, reinforcing the importance of cross-sectoral data integra-
+tion in sustainable city management.
+Data availability
+Data supporting the ﬁndings of this study are available within the
+article (see “Data sources”) and our Zenodo repository at https://doi.
+org/10.5281/zenodo.14591154.
+Code availability
+We use CBEngine for simulating city-scale trafﬁc in this study. CBEn-
+gine is freely accessible by users and can be downloaded at https://
+github.com/CityBrainLab/CityBrainLab. The code for this research is
+available at https://github.com/RafaDD/BigData-TSC.
+References
+1. Ritchie, H. & Roser, M. Sector by sector: where do global green-
+house gas emissions come from? Our Wold Data. https://
+ourworldindata.org/ghg-emissions-by-sector(2024).
+2. Beedham, M. The True Environmental Cost of Inner-city Congestion
+with TomTom TrafﬁcI n d e x .TomTom https://www.tomtom.com/
+newsroom/explainers-and-insights/the-true-environmental-cost-
+of-inner-city-congestion/(2022).
+3. Climate Watch. Greenhouse Gas (GHG) Emissions. https://www.
+climatewatchdata.org/ghg-emissions(2024).
+4. World Bank. Reducing Traf ﬁc Congestion and Emission in Chinese
+Cities. https://www.worldbank.org/en/news/feature/2018/11/16/
+reducing-trafﬁc-congestion-and-emission-in-chinese-cities
+(2018).
+5. Lu, Q. et al. Decarbonization scenarios and carbon reduction
+potential for China’s road transportation by 2060. npj Urban Sus-
+tain. 2,1 –9 (2022).
+6. Keith, M. et al. A new urban narrative for sustainable development.
+Nat. Sustain. 6, 115–117 (2023).
+7. Zhang, R. & Hanaoka, T. Cross-cutting scenarios and strategies for
+designing decarbonization pathways in the transport sector toward
+carbon neutrality.Nat. Commun. 13, 3629 (2022).
+8. Li, Y., Xiong, W. & Wang, X. Does polycentric and compact devel-
+opment alleviate urban trafﬁc congestion? A case study of 98
+Chinese cities. Cities 88,1 0 0–111 (2019).
+9. Çolak, S., Lima, A. & Gonzalez, M. C. Understanding congested
+travel in urban areas. Nat. Commun. 7, 10793 (2016).
+10. Rode, P. & Cruz, N. F. Governing urban accessibility: moving
+beyond transport and mobility.Appl. Mobil. 3,8 –33 (2018).
+11. Ratner, K. A. & Goetz, A. R. The reshaping of land use and urban
+form in Denver through transit-oriented development.Cities 30,
+31–46 (2013).
+12. Xu, W., Guthrie, A., Fan, Y. & Li, Y. Transit-oriented development in
+China: literature review and evaluation of TOD potential across 50
+Chinese cities. J. Transp. Land Use 10,7 4 3–762 (2017).
+13. Bachechi, C., Po, L. & Rollo, F. Big data analytics and visualization in
+trafﬁc monitoring. Big Data Res. 27, 100292 (2022).
+14. O ’Keeffe, K. P., Anjomshoaa, A., Strogatz, S. H., Santi, P. & Ratti, C.
+Quantifying the sensing power of vehicleﬂeets. Proc. Natl. Acad.
+Sci. USA. 116,1 2 7 5 2–12757 (2019).
+15. Wang, Y., Yang, X., Liang, H. & Liu, Y. A review of the self-adaptive
+trafﬁc signal control system based on future trafﬁc environment.J.
+Adv. Transp. 2018, 1096123 (2018).
+16. Wei, H., Zheng, G., Gayah, V. & L i, Z. Recent advances in reinfor-
+cement learning for trafﬁc signal control: a survey of models and
+evaluation.ACM SIGKDD Explor. Newsl. 22,1 2–18 (2021).
+17. Cheng, D., Messer, C. J., Tian, Z. Z. & Liu, J. Modi ﬁcation of
+Webster’s minimum delay cycle length equation based on HCM
+2000. In 82nd Annual Meeting of the Transportation Research
+Board (TRB, 2003).
+1 8 . A l i ,M .E .M . ,D u r d u ,A . ,Ç e l t e k ,S .A .&Y i l m a z ,A .A na d a p t i v em e t h o d
+for trafﬁc signal control based on fuzzy logic with webster and
+modiﬁed webster formula using SUMO trafﬁc simulator. IEEE
+Access 9,1 0 2 9 8 5–102997 (2021).
+19. Urbanik, T. et al. Signal Timing Manual 2nd edn (CreateSpace
+Independent Publishing Platform, 2015).
+20. Stevanovic, A., Kergaye, C. & Martin, P. T. SCOOT and SCATS: a
+closer look into their operations. In 88th Annual Meeting of the
+Transportation Research Board(TRB, 2009).
+21. Slavin, C., Feng, W., Figliozzi, M. & Koonce, P. Statistical study of the
+impact of adaptive trafﬁc signal control on trafﬁca n dt r a n s i tp e r -
+formance. Transp. Res. Rec. 2356, 117–126 (2013).
+2 2 . M e r c a d e r ,P . ,U w a y i d ,W .&H a d d a d ,J .M a x - p r e s s u r et r a fﬁc con-
+troller based on travel times: an experimental analysis.Transp. Res.
+Part C Emerg. Technol. 110,2 7 5–290 (2020).
+2 3 . L e v i n ,M .W .M a x - p r e s s u r et r a fﬁc signal timing: a summary of
+methodological and experimental results.J. Transp. Eng., Part A
+Syst. 149, 03123001 (2023).
+24. Boukerche, A., Zhong, D. & Sun, P. A novel reinforcement learning-
+based cooperative trafﬁc signal system through max-pressure
+control. IEEE Trans. Veh. Technol. 71, 1187–1198 (2021).
+25. Wei, H. et al. Presslight: learning max pressure control to coordinate
+trafﬁc signals in arterial network. In Proc. 25th ACM SIGKDD
+Article https://doi.org/10.1038/s41467-025-56701-4
+Nature Communications|         (2025) 16:2013 10
+International Conference on Knowledge Discovery & Data Mining
+1290–1298 (Association for Computing Machinery, 2019).
+26. Xiong, Y., Zheng, G., Xu, K. & Li, Z. Learning traf ﬁc signal control
+from demonstrations. InProc. 28th ACM International Conference
+on Information and Knowledge Management2289–2292 (Associa-
+tion for Computing Machinery, 2019).
+27. Zheng, G. et al. Learning phase competition for traf ﬁc signal con-
+trol. in Proc. 28th ACM International Conference on Information and
+Knowledge Management1963–1972. https://doi.org/10.1145/
+3357384.3357900(ACM, 2019).
+28. Zhang, J. et al. City brain: practice of large-scale arti ﬁcial intelli-
+gence in the real world. IET Smart Cities 1,2 8–37 (2019).
+29. Caprotti, F. & Liu, D. Platform ur banism and the Chinese smart city:
+the co-production and territorialisation of Hangzhou City Brain.
+GeoJournal87,1 5 5 9–1573 (2022).
+30. Erasmus, M. T. Alibaba ’s ‘City Brain’ is slashing congestion in its
+hometown | CNN Business. CNN https://www.cnn.com/2019/01/
+15/tech/alibaba-city-brain-hangzhou/index.html(2019).
+31. Lertworawanich, P. & Unhasut, P. A CO emission-based adaptive
+signal control for isolated intersections.J. Air Waste Manag. Assoc.
+71,5 6 4–585 (2021).
+3 2 . L i ,X . ,L i ,G . ,P a n g ,S . - S . ,Y a n g ,X .&T i a n ,J .S i g n a lt i m i n go fi n t e r -
+sections using integrated optimization of trafﬁc quality, emissions
+and fuel consumption: a note.Transp. Res. Part D Transp. Environ.9,
+401–407 (2004).
+33. Mooney, P. & Minghini, M. A review of OpenStreetMap data. Map-
+ping and the citizen sensor 37–59 (2017).
+34. United States Environmental Protection Agency. Overview of EPA’s
+MOtor Vehicle Emission Simulator (MOVES4)1–74 (United States
+Environmental Protection Agency, 2023).
+3 5 . H a m e d m o g h a d a m ,H . ,J a l i l i ,M . ,V u ,H .L .&S t o n e ,L .P e r c o l a t i o no f
+heterogeneousﬂows uncovers the bottlenecks of infrastructure
+networks. Nat. Commun. 12,1 –10 (2021).
+36. Jung, Y. & Oh, J. Lifespan evaluation of traf ﬁc detector for auto-
+mated traf
+ﬁc recorders based on Weibull distribution.J. Transp.
+Eng. Part A Syst. 143, 05017006 (2017).
+37. Rode, P. Urban planning and transport policy integration: the role of
+governance hierarchies and networks in London and Berlin.J. Urban
+Aff. 41,3 9–63 (2019).
+38. Yang, Z., Zhang, Y., Bai, X. & Wu, D. Estimation of Value of Travel
+Time Savings Using Willingness-to-Pay Method. In18th COTA
+International Conference of Transportation Professionals,
+2433–2445 (ASCE, 2018).
+39. Boeing, G. Street network models and indicators for every urban
+area in the world. Geogr. Anal. 54,5 1 9–535 (2022).
+40. Erlander, S. & Stewart, N. F. The Gravity Model in Transportation
+Analysis: Theory and Extensions.V o l .3( T a y l o r&F r a n c i s ,1 9 9 0 ) .
+41. Simini, F., González, M. C., Maritan, A. & Barabási, A.-L. A universal
+model for mobility and migration patterns.Nature 484,
+96–100 (2012).
+42. Fan, D. & Shi, P. Improvement of Dijkstra ’s algorithm and its appli-
+cation in route planning. In Proc. 7th International Conference on
+Fuzzy Systems and Knowledge Discovery,V o l .4 ,1 9 0 1–1904
+(IEEE, 2010).
+43. Wong, W. & Wong, S. C. Network topological effects on the mac-
+roscopic Bureau of Public Roads function.Transp. A Transp. Sci.12,
+272–296 (2016).
+44. Simon Zhou, X. et al. A meso-to-macro cross-resolution perfor-
+mance approach for connecting polynomial arrival queue model to
+volume-delay function with inﬂow demand-to-capacity ratio.Mul-
+timodal Transp. 1, 100017 (2022).
+45. Liang, C. et al. CBLab: supporting the training of large-scale traf ﬁc
+control policies with scalable trafﬁc simulation. In Proc. 29th ACM
+SIGKDD International Conference on Knowledge Discovery & Data
+Mining (ACM, 2023).
+46. Frey, H. C. & Liu, B. Development and evaluation of simpli ﬁed
+version of MOVES for coupling with traf ﬁc simulation model. In
+91st Annual Meeting of the Transportation Research Board
+(TRB, 2013).
+47. Zhou, X. et al. Integrating a simpli ﬁed emission estimation model
+and mesoscopic dynamic trafﬁc simulator to efﬁciently evaluate
+emission impacts of trafﬁc management strategies.Transp. Res.
+Part D Transp. Environ. 37,1 2 3
+–136 (2015).
+48. Xia, Y. et al. Future reductions of China ’s transport emissions
+impacted by changing driving behaviour.Nat. Sustain. 6,
+1228–1236 (2023).
+49. Ritchie, H. & Roser, M. Which form of transport has the smallest
+carbon footprint?Our World Data. https://ourworldindata.org/
+travel-carbon-footprint(2024).
+50. Statista. China: average annual mileage of vehicles in use 2020.
+51. Statista. China: number of privately-owned vehicles 2022. Statista
+https://www.statista.com/statistics/278475/privately-owned-
+vehicles-in-china/.
+52. West, J. J. et al. Co-bene ﬁts of global greenhouse gas mitigation for
+future air quality and human health. Nat. Clim. Chang 3,
+885–889 (2013).
+53. Wu, K., Lu, M. & Guler, S. I. Modeling and optimizing bus transit
+priority along an arterial: a moving bottleneck approach.Transp.
+Res. Part C Emerg. Technol. 121, 102873 (2020).
+54. Wu, K. & Guler, S. I. Estimating the impacts of transit signal priority
+on intersection operations: a moving bottleneck approach.Transp.
+Res. Part C Emerg. Technol. 105,3 4 6–358 (2019).
+Acknowledgements
+This study was supported by Hangzhou Social Science Planning Project
+(Grant No. 24JD066, K.W.), the Key R&D Project of Science Technology
+Department of Zhejiang Province (Grant No. 2022C01121, K.W.), Zhejiang
+Provincial Department of Transport research projects (Grant No. ZJXL-
+JTT-202223, K.W.), the National Natural Science Foundation of China
+(42325707 and 42261144001, B.G.), the National Key Research and
+Development Project of China (2022YFE0138200, B.G.), and Frontiers
+Planet Prize Award: International Champion Prize funded by the Frontiers
+Research Foundation (B.G.).
+Author contributions
+B.G., K.W., F.J., and G.Z. designed the study. T.X., Y.S., and G.Z. pro-
+cessed the raw data and contributed to discussion of the paper. K.W.,
+J.D., and J.L. conducted the research. K.W. wrote the ﬁrst draft of the
+paper, B.G., Y.S., Y.Z, and T.X. revised the paper.
+Competing interests
+The authors declare no competing interests.
+Additional information
+Supplementary informationThe online version contains
+supplementary material available at
+https://doi.org/10.1038/s41467-025-56701-4.
+Correspondenceand requests for materials should be addressed to
+Baojing Gu.
+Peer review informationNature Communicationsthanks the anon-
+ymous reviewers for their contribution to the peer review of this work. A
+peer review ﬁle is available.
+Reprints and permissions informationis available at
+http://www.nature.com/reprints
+Publisher’s note Springer Nature remains neutral with regard to jur-
+isdictional claims in published maps and institutional afﬁliations.
+Article https://doi.org/10.1038/s41467-025-56701-4
+Nature Communications|         (2025) 16:2013 11
+Open Access This article is licensed under a Creative Commons
+Attribution-NonCommercial-NoDerivatives 4.0 International License,
+which permits any non-commercial use, sharing, distribution and
+reproduction in any medium or format, as long as you give appropriate
+credit to the original author(s) and the source, provide a link to the
+Creative Commons licence, and indicate if you modiﬁed the licensed
+material. You do not have permission under this licence to share adapted
+material derived from this article or parts of it. The images or other third
+party material in this article are included in the article’s Creative
+Commons licence, unless indicatedotherwise in a credit line to the
+material. If material is not included in the article’s Creative Commons
+licence and your intended use is not permitted by statutory regulation or
+exceeds the permitted use, you will need to obtain permission directly
+from the copyright holder. To view a copy of this licence, visit http://
+creativecommons.org/licenses/by-nc-nd/4.0/.
+© The Author(s) 2025
+Article https://doi.org/10.1038/s41467-025-56701-4
+Nature Communications|         (2025) 16:2013 12

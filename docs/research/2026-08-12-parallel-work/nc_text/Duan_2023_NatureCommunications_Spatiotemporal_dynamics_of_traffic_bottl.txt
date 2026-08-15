@@ -1,0 +1,753 @@
+                                    Article                                                                                                    https://doi.org/10.1038/s41467-023-43591-7
+
+
+                                    Spatiotemporal dynamics of trafﬁc
+                                    bottlenecks yields an early signal of
+                                    heavy congestions
+                                    Received: 10 March 2023                             Jinxiao Duan 1,2, Guanwen Zeng2,3, Nimrod Serok4, Daqing Li3,
+                                                                                        Efrat Blumenfeld Lieberthal 4 , Hai-Jun Huang 1 & Shlomo Havlin                                2
+                                    Accepted: 14 November 2023
+
+
+                                                                                        Heavy trafﬁc jams are difﬁcult to predict due to the complexity of trafﬁc
+                                        Check for updates                               dynamics. Understanding the network dynamics of trafﬁc bottlenecks can help
+                  1234567890():,;
+1234567890():,;
+
+
+
+
+                                                                                        avoid critical large trafﬁc jams and improve overall trafﬁc conditions. Here, we
+                                                                                        develop a method to forecast heavy congestions based on their early propa-
+                                                                                        gation stage. Our framework follows the network propagation and dissipation
+                                                                                        of the trafﬁc jams originated from a bottleneck emergence, growth, and its
+                                                                                        recovery and disappearance. Based on large-scale urban trafﬁc-speed data, we
+                                                                                        ﬁnd that dissipation duration of jams follows approximately power-law dis-
+                                                                                        tributions, and typically, trafﬁc jams dissolve nearly twice slower than their
+                                                                                        growth. Importantly, we ﬁnd that the growth speed, even at the ﬁrst 15 minutes
+                                                                                        of a jam, is highly correlated with the maximal size of the jam. Our metho-
+                                                                                        dology can be applied in urban trafﬁc control systems to forecast heavy trafﬁc
+                                                                                        bottlenecks and prevent them before they propagate to large network
+                                                                                        congestions.
+
+
+                                    Urban trafﬁc congestion1,2 is an everyday troubling phenomenon                 for forecasting them and thus have the potential to prevent conges-
+                                    where many large trafﬁc jams are triggered by uncertain congestion             tions from spreading44.
+                                    sources, also known as trafﬁc bottlenecks3. The challenges of under-                A recent study of ref. 21 formulated and validated the macro-
+                                    standing complex congestion propagation have stimulated extensive              scopic propagation and dissipation of overall trafﬁc congestions by a
+                                    trafﬁc ﬂow approaches to modeling and understanding urban trafﬁc               susceptible-infected-recovered model. Since macroscopic trafﬁc con-
+                                    dynamics. Some of them investigated the spontaneous occurrences of             gestions in the overall network are comprised of numerous frag-
+                                    congestion, including the kinematic wave theory4,5, the cellular auto-         mented congestion components45 that could be created by speciﬁc
+                                    maton models6,7, and the three-phase trafﬁc theory8–10. Attention is           bottlenecks, overall trafﬁc conditions could be improved by identify-
+                                    also paid to understanding the jam formation for the known causes,             ing the spatiotemporal dynamics of bottlenecks. Identifying trafﬁc
+                                    including the queue model11, the lane-changing model12–14, and the cell        bottlenecks will not only help avoid themselves but also alleviate other
+                                    transmission model15,16 (see Supplementary Note 1). In recent years,           associated congested roads due to network propagation. However,
+                                    emerging theories from other natural systems have been borrowed                existing bottleneck methods46–50 characterizing the queues and delays
+                                    and applied to trafﬁc systems for network’s propagation of trafﬁc              associated with a speciﬁc trafﬁc bottleneck are mostly based on the
+                                    congestions, such as the cascading failure models17–20, epidemic               single-car particles in a simpliﬁed corridor51. Such methods may not be
+                                    models21–23, and congestion tree method24,25. Studies of trafﬁc condi-         suitable for describing network dynamics of urban trafﬁc bottlenecks.
+                                    tion prediction26–34 and travel demand control35–43 also considered            This is because urban congestions often exhibit strong spatial
+                                    congestion propagation and suggested that understanding such spa-              dependencies in which multiple-dimensional road segments adjacent
+                                    tiotemporal dynamics, especially their bottlenecks, could be effective         to a bottleneck have a greater risk of becoming congested1,20,21,45,52. In
+
+
+                                    1
+                                    School of Economics and Management, Beihang University, Beijing 100191, China. 2Department of Physics, Bar-Ilan University, Ramat Gan 52900, Israel.
+                                    3
+                                     School of Reliability and Systems Engineering, Beihang University, Beijing 100191, China. 4Azrieli School of Architecture, Tel Aviv University, Tel Aviv
+                                    6997801, Israel.     e-mail: efratbl@tauex.tau.ac.il; haijunhuang@buaa.edu.cn; havlins@gmail.com
+
+
+                                    Nature Communications | (2023)14:8002                                                                                                                       1
+Article                                                                                                                        https://doi.org/10.1038/s41467-023-43591-7
+
+
+the present study, we introduce a simple dynamic framework and                            distribution with very similar exponents in different days. Interest-
+demonstrate empirically that it can quantitatively capture the net-                       ingly, we observed that the recovery duration of congestion compo-
+work’s propagation and dissipation of the congested components                            nents is typically nearly twice compared to its growth duration. Our
+connected to speciﬁc trafﬁc bottlenecks.                                                  study suggests an effective early predictive method of large jams. This
+     Many studies have provided important foundations to deﬁne or                         method is based on our ﬁnding that the sizes of congestion compo-
+empirically identify urban trafﬁc bottlenecks. The primary methods                        nents are highly correlated with their growth speed. In particular, we
+are based on the congestion level of a road segment itself. For exam-                     ﬁnd that the growth speed of jams in their very early propagation
+ple, a road with an average velocity lower than 20 km/h is regarded as                    stage, is also highly correlated with the maximal size of the jams, and
+the trafﬁc bottleneck3. Network and percolation approaches24,25,45,52–55                  therefore, this early speed can be used to predict major bottlenecks
+have been recently developed to identify bottlenecks of trafﬁc con-                       with high accuracy.
+gestions by considering spatiotemporal trafﬁc dynamics. For instance,
+a recent method has combined congestion propagation into a “tree”                         Results
+structure24,25 to identify the origins of congestions and trafﬁc jams that                Dynamics of trafﬁc bottlenecks
+are likely to stem from them in real-time trafﬁc. Such methods refer-                     We analyze real-time trafﬁc datasets that include the time-dependent
+red to the earliest congested street as the “trunk” (or bottleneck), and                  velocity of each road segment for one month in two large cities in
+the neighboring congested streets that developed in the following                         China, Beijing and Shenzhen. The velocity matched to each road is
+times represent the “branches” of the trunk. They found that bottle-                      aggregated from numerous trajectory records recorded by GPS devi-
+necks associated with heavy congestion usually do not reappear on                         ces in ﬂoating cars, with a resolution of 1 min54. The studied time
+different days and hours. Luan et al.26 used Bayesian methods to infer                    periods are 00:00–24:00 for 30 days during October 2015 (for more
+the congestion propagation from a given congestion bottleneck. They                       details of the dataset, see Methods, Supplementary Note 2 and Sup-
+found that a change in the location of congestion source can lead to                      plementary Figs. 1 and 2). We identify the trafﬁc bottlenecks based on
+distinctly different congestions. Thus, a suitable forecasting method is                  the jam tree structure24 that assigned the earliest congested road
+highly necessary to identify bottlenecks that will yield large and costly                 downstream of the congestion component as the trafﬁc bottleneck.
+trafﬁc jams. However, methodologies that address the identiﬁcation of                     The new congestions in neighboring upstream roads are associated
+the most critical bottlenecks in order to stop them from growing to                       with the bottleneck if they become congested no longer than a pre-
+signiﬁcant congestion components, are still missing.                                      deﬁned time θ after the bottleneck or an existing downstream neigh-
+     In this paper, we quantitatively investigate the congestion pro-                     boring congestion in the component (see Methods).
+pagation and dissipation which originate from speciﬁc trafﬁc bottle-                           To trace the spatiotemporal propagation and dissipation of trafﬁc
+necks in trafﬁc networks, and provide an early signal for forecasting                     bottlenecks in empirical trafﬁc data, we follow a bottleneck jam from
+the oncoming signiﬁcant congestions. To this end, we follow the entire                    its emergence to disappearance and calculate the number of existing
+spatiotemporal process of each congestion component from its                              congested roads SðtÞ associated with this speciﬁc bottleneck over its
+emergence as a bottleneck until its disappearance. We distinguish the                     evolution (see Fig. 1a and Methods). This dynamic network process of
+evolution of trafﬁc bottlenecks for each congestion component                             congestions from a bottleneck can distinguish the time evolution of
+between the growth stage and recovery stage. We follow congestion                         size S between two stages: growth and recovery stages. The peak time
+dynamics that emerged from all bottlenecks in 1 month of trafﬁc net-                      t P when size SðtÞ of congestions connected to a bottleneck reaches
+works in two large cities in China, and ﬁnd that the recovery duration                    maximum SP is regarded as the end of growth stage and the beginning
+of jams associated with each bottleneck follows a power-law                               of the recovery stage, see Fig. 1. We deﬁne the entire lifespan T of a
+
+
+       G                                                                                                                             already congested roads
+                bottleneck                                      G(t) = 2 R(t) = 0                G(t) = 2 R(t) = 1
+                                  G(t) = 1 R(t) = 0                                              S(t) = S(t-1)+G(t)-R(t)             new congested roads G(t)
+                                  S(t) = S(t-1)+G(t)-R(t)       S(t) = S(t-1)+G(t)-R(t)
+                                                                     = 1+2-0 = 3                      = 3+2-1 = 4
+                                       = 0+1-0 = 1                                                                                    uncongested roads
+                                 t=1                            t=2                              t=3                                  new recovered roads R(t)
+
+
+       H                                                    I                                                              J
+
+                                                                                                                                 Bottleneck recovery
+            Bottleneck growth
+
+
+
+
+                Bottleneck                                                                                                          Bottleneck
+
+
+Fig. 1 | Demonstration of jam propagation and dissipation from a typical bot-             congestion component lasted for more than 3 h after its bottleneck emerged. Its
+tleneck in trafﬁc network. a Demonstration of congestion size S associated with a         maximal size SP reached 11 road segments at 7:50, and then the size S began to
+bottleneck in an illustrated network. b Several snapshots of the congested road           decrease until it completely vanished at 10:50. Note that the recovery duration is
+segments during the growth stage at 7:20, 7:30, and 7:50 for a speciﬁc but typical        much longer than the growth, which is a common feature of the bottleneck
+bottleneck on Monday, October 12, 2015, in Beijing. The congestions originated            dynamics (see Fig. 2). d Several snapshots of the congested road segments during
+from the bottleneck (circled red solid link), and gradually developed to more             the recovery stage at 7:50, 8:20, and 10:40. The congestion component gradually
+congestion (light red dashed links) in the upstream neighboring streets. The arrows       dissolves after its maximal size (light green dashed links) as the road segments
+of the links are the directions of trafﬁc ﬂow. c The size S changes over time. This       become no longer congested.
+
+
+
+
+Nature Communications | (2023)14:8002                                                                                                                                     2
+Article                                                                                                           https://doi.org/10.1038/s41467-023-43591-7
+
+
+      G                                                    I                                                     K
+
+
+
+
+      H                                                    J                                                     L
+
+
+
+
+Fig. 2 | Distributions of growth duration and recovery duration. The CCDF of         <r> for each day in the entire month for (e) Beijing and (f) Shenzhen. The days
+growth duration T G follows approximately an exponential distribution, and the       between October 1 and October 7 are the seven holidays of China’s National Day.
+CCDF of recovery duration T R follows approximately a power-law distribution. The    October 11, 17, 18, 24, and 25 are the regular weekends, and the other 18 days are
+data are taken for Friday, October 16, 2015, for (a) Beijing and (b) Shenzhen. We    workdays. The mean values and standard deviations in subﬁgures (c–f) are calcu-
+accumulate the data for all days in 1 month together and ﬁnd CCDF of the growth      lated for 18 workdays. As the model selection analyses (Supplementary Note 8 and
+duration above 40 min could be described by exponential distributions with           Supplementary Table 1) suggest, the p value and the well-ﬁtted curves support that
+smaller exponent λG (Supplementary Fig. 24). The exponents λG and βR for each day    the exponential distribution describes well for the main part of T G .
+in the entire month for (c) Beijing and (d) Shenzhen. The values of the mean ratio
+
+
+
+
+bottleneck dynamics as the sum of the duration T G of the growth stage               which is an extension of the classical bottleneck model37,47,56 that
+and the duration T R of the recovery stage, i.e.,                                    characterizes the queues from a bottleneck as the accumulations of
+                                                                                     single-car particles in a simpliﬁed corridor (see Supplementary Note 3
+                                  T = TG + TR                                  ð1Þ   and Supplementary Fig. 5). Here, GðtÞ and RðtÞ are respectively the
+                                                                                     number of newly developed congested roads and the number of newly
+here, the growth duration T G is the time interval between the earliest              recovered roads associated with the bottleneck at time window t (see
+time when a bottleneck emerges and the time it reaches its maximal                   Supplementary Note 4 and Supplementary Figs. 6 and 7). Therefore,
+size, SP , and the recovery duration T R is the time interval between the            the existing size SðtÞ in the congestion component at time window t is
+peak time and the time when the bottleneck jam has been completely                   the integration of the difference between GðtÞ and RðtÞ from the time t B
+dissolved and the trafﬁc ﬂows are uncongested again.                                 when a bottleneck B occurred up to current time window t, given by
+     Figure 1 demonstrates the real-time spatiotemporal dynamics of a
+typical bottleneck on Monday, October 12, 2015, in Beijing, where three
+                                                                                                                        Z t
+snapshots of the congested roads connected to the bottleneck during
+                                                                                                               SðtÞ =          ðGðuÞ  RðuÞÞdu                     ð3Þ
+growth stage are displayed in Fig. 1b and three snapshots of the con-                                                     tB
+gested roads connected to the bottleneck during recovery stage are
+displayed in Fig. 1d. During the growth stage, increasing of the newly
+congested road segments associated with the bottleneck is faster than
+the recovered road segments, and this jam component propagates to                    Distributions of growth and recovery durations
+its maximal size SP = 11 at 7:50 (Fig. 1b, c). After the peak time, the              To explore the evolution durations of growth and recovery stages, we
+congestions began to dissolve and the size of the jam component                      follow the dynamics (or lifespan) of each trafﬁc bottleneck in the entire
+started to decrease, reaching size S = 4 at 8:20, and size S = 1 at 10:40.           road networks of Beijing and Shenzhen during 1 month. To this end, we
+By 10:50, the jam component dissolved completely and resulted in                     compute the vectors of growth duration T G = fT 1G ,    ,T NG g and recov-
+uncongested trafﬁc. Once the trafﬁc congestion created by a speciﬁc                  ery duration T R = fT 1R ,    ,T NR g. Here, T iG and T iR are respectively the
+bottleneck has been dissolved, a new bottleneck may emerge from the                  growth and recovery durations of bottleneck i, and N is the total
+same place to initiate another congestion component (more patterns                   number of bottlenecks, which is over 670,000 during a typical work-
+of bottleneck dynamics are given in Supplementary Figs. 3 and 4).                    day in Beijing and over 180,000 in Shenzhen. The distributions of
+     Additionally, we ﬁnd that the network’s propagation and dis-                    durations T G and T R on Friday, October 16, 2015, in both cities are
+sipation of trafﬁc congestions originated from a speciﬁc bottleneck,                 presented in Fig. 2a, b. The results show that the distribution of T R is
+can be quantitatively described by a simple dynamical equation                       signiﬁcantly broader than that of T G . Bottlenecks spend at most
+                                                                                     100 min to reach the maximal size SP , while they might spend up to
+                              dSðtÞ                                                  1000 min to recover to an uncongested state. The complementary
+                                    = GðtÞ  RðtÞ                             ð2Þ
+                               dt                                                    cumulative distribution function (CCDF) of growth duration T G is well
+
+
+Nature Communications | (2023)14:8002                                                                                                                                3
+Article                                                                                                  https://doi.org/10.1038/s41467-023-43591-7
+
+
+approximated by the exponential distribution                                 This could be related to the fact that nonlinear mechanisms exist
+                                                                             between the congestion propagation and dissipation processes given
+                              pðT G ≥ xÞ ∼ eλG x                     ð4Þ    the complex urban trafﬁc network topologies and the travelers’ real-
+                                                                             time self-adaptive route choice behaviors58,63,64.
+with exponents λG of 0.24 for Beijing and 0.27 for Shenzhen on Oct. 16.
+The CCDF of recovery duration T R is well approximated by the power          Correlation between spatial and temporal dynamics
+law distribution                                                             We further explore the relationship between temporal and spatial
+                                                                             dynamics of trafﬁc bottlenecks, by examining the correlation between
+                              pðT R ≥ xÞ ∼ x βR                       ð5Þ   the maximal size SP and the growth speed of the congestion compo-
+                                                                             nents. For that, we deﬁne and calculate the average growth speed of
+with βR of 1.82 for Beijing and 1.92 for Shenzhen. We ﬁt both the CCDF       congestion component associated with each bottleneck. The average
+(Supplementary Figs. 8–11) and probability distribution (Supplemen-          growth speed V A is deﬁned as the maximal size SP divided by its
+tary Figs. 12 and 13) to describe the main part of T G and T R , and ﬁnd     growth duration T G , i.e.,
+that they have similar distribution patterns in different days. In addi-
+tion, CCDF of the ratio r = T R =T G of each congestion component fol-                                                  SP
+                                                                                                                VA =                                    ð7Þ
+lows also a power-law distribution pðr ≥ xÞ ∼ x βr with exponents βr                                                   TG
+around 2.1 ± 0.09 on workdays in Beijing and 2.16 ± 0.05 on workdays
+in Shenzhen (see Supplementary Figs. 14 and 15 for CCDF of r, and                   A larger V A means that a bottleneck induces more associated
+Supplementary Figs. 16, 17 and 18 for distribution of r). For sensitivity    congestions per unit time. Here, V A is calculated by the average
+analysis, we absorb very short roads into the junctions or consider          number of the increased congested road segments in every 5 min.
+congestion length in the deﬁnition of congestion size S(t), and ﬁnd that     Figure 3a, b shows the relationship between SP and V A on October 16,
+the CCDFs of the T G and T R are robust (Supplementary Note 5 and            2015, in Beijing and Shenzhen (for similar results on other days, see
+Supplementary Figs. 19, 20 and 21). We also study the bottleneck             Supplementary Figs. 25 and 26). These box plots of SP are classiﬁed
+dynamics by smoothing the trafﬁc conditions in different time                into different groups by the values of V A . It is seen that congestion
+intervals, and ﬁnd CCDFs of T G and T R follow similar distributions         components having a larger speed V A are more likely to reach a larger
+(Supplementary Fig. 22).                                                     congestion size (In Supplementary Fig. 27, the positive relationship of
+     The average ratio <r> for all the congestion components is eval-        V A and SP is also observed by plotting the density surfaces). The linear
+uated by                                                                     correlation between the maximal size SP = fS1P ,    ,SNP g and the average
+                                                                             growth speed V A = fV 1A , . . . ,V NA g of these congestion components is
+                              1 X          1 X T iR                          also characterized by the high values of Pearson correlation coefﬁ-
+                      <r> =           ri =                            ð6Þ    cients ρSP ,V A . When omitting isolated bottlenecks with SP = 1, the value
+                              N 1≤i≤N      N 1 ≤ i ≤ N T iG
+                                                                             of ρSP ,V A on Oct. 16, 2015 is 0.75 for Beijing and 0.79 for Shenzhen,
+where the values of <r> are 2.06 for Beijing and 1.74 for Shenzhen on        indicating that SP and V A have a strong positive linear correlation.
+Oct. 16. This shows that, on average the recovery duration of a con-                Figure 3c, d shows that in both cities, the values of the correlation
+gestion component is 2.06 times of its growth duration in Beijing, and       ρSP ,V A are stable for the same type of days. The correlation coefﬁcients
+1.74 times in Shenzhen. This demonstrates the strong asymmetry               are larger on holidays than on workdays, and also larger in Shenzhen
+between network’s propagation and dissipation of bottlenecks, which          than in Beijing. Note also that in the middle of holidays (days Oct. 3–5)
+could be explained by the theory of phase transition in trafﬁc network       the correlations are higher due to less trafﬁc demand. We also ﬁnd that
+ﬂows. The propagation of urban trafﬁc congestion has been regarded           the bottlenecks which create large congestions are less probable to
+as the percolation in the system54,57, and the trafﬁc systems have           sustain for a very long duration (Supplementary Figs. 28 and 29). This
+exhibited phase transitions as the trafﬁc congestion components are          could be because drivers are strongly averse to very large congestions
+close to the critical point in the self-organized process7,45. It has been   in the self-organization process of their game behavior, and would like
+found that the recovery of the systems against the perturbations can         to make adaptive choices to deviate from the long queues65,66. More-
+be slowing down, when the system is close to such critical point, also       over, well-developed trafﬁc control technologies could have also
+called “critical slowing down”58–61. As the results in our manuscript, the   focused on alleviating these heavy congestions67. Even so, as can be
+power-law distribution of the congestion dissipation indicates that the      seen in the ﬁgures (Supplementary Figs. 28 and 29), very large con-
+trafﬁc systems might be near the critical points of the self-organized       gestions can still be sustained for hours.
+process. Thus, the slower recovery of the system could be the result of
+the “critical slowing down” mechanisms62.                                    An early signal for forecasting heavy congestions
+     Comparing growth and recovery stages on different days, we ﬁnd          The average growth speed has been found in previous subsection to be
+that the exponential exponents λG of growth duration and power law           correlated with the jam size. However, this correlation can only be
+exponents βR of recovery duration are stable for the same type of days       determined at the end of the growth stage and thus it is not suitable for
+(Fig. 2c, d). This may indicate the stable self-adaptability of the trafﬁc   predicting heavy bottlenecks before their full growth.
+system in the dynamics of congestion evolutions45 (See Supplementary              In the present section, we develop an effective early signal for
+Note 6 for further discussions of the exponents). In Fig. 2e, f, we          forecasting heavy trafﬁc congestions based on the initial growth stage
+compare the average ratio <r> between the recovery duration and              of jams. For that, we explore if the maximal size SP is correlated to the
+growth duration on 30 days during October 2015 in both Beijing and           earliest attributes of the congestion propagation, i.e., the initial growth
+Shenzhen. The results show that <r> has a stable value for a speciﬁc         speed V T I , deﬁned as the value of the early size ST I divided by its initial
+type of day. In both cities, values of <r> on workdays are larger than       growth time T I at an early growth stage. Thus, V T I is expressed by
+those on holidays. This means that on workdays, the recovery stage of
+the congestion components takes much longer time than their growth                                                      ST I
+                                                                                                               V TI =                                   ð8Þ
+stage compared to holidays. The values of <r> could be inﬂuenced by                                                     TI
+the heavy tails of the recovery duration (Supplementary Note 7 and
+Supplementary Fig. 23). The “critical slowing down” effect58 becomes         where T I is the time interval between the emergence of a bottleneck
+more signiﬁcant for those bottlenecks with large recovery duration.          and a selected early time before the congestion component reaches its
+
+
+Nature Communications | (2023)14:8002                                                                                                                     4
+Article                                                                                                                 https://doi.org/10.1038/s41467-023-43591-7
+
+
+                            G                                                             H
+
+
+
+
+                                         ͣͤ      ͣͤ     ͣͤ      ͣͤ     ͣͤ                       ͣͤ        ͣͤ       ͣͤ       ͣͤ
+
+
+
+
+                           I                                                              J
+
+
+
+
+Fig. 3 | Correlation between the spatial maximal size SP and the temporal                 75–100% of SP . The outliers are not displayed in the box plots. The growth duration
+growth speed of congestion components. Box plots of size SP grouped by                    T G increases with SP on average showing very large ﬂuctuations, as shown in
+average growth speed V A on Friday, October 16, 2015, in (a) Beijing and (b)              Supplementary Fig. 30. Pearson correlation ρSP ,V A for the 30 days during October
+Shenzhen. Here, V A means the average number of increased congested road seg-             2015 in (c) Beijing and (d) Shenzhen. Holidays include the 7 days in China’s National
+ments every 5 min during the entire growth stage, the black numbers on the x-axis         Day, and the workdays include 18 days. Bottlenecks with SP ≥ 2 are counted here.
+are the range of average growth speed V A , and the red numbers in the bracket are        For sensitivity analysis, we absorb very short roads or consider congestion length in
+the median value of each group. The black lines at the bottom, middle and top of          the deﬁnition of congestion size SðtÞ, and ﬁnd that the growth speed of congestion
+the largest box are respectively 25%, 50%, and 75% percentiles of SP . The tails of the   components is still strongly and positively correlated to their maximal congestion
+distributions could be more clearly observed by more quantiles in 0–25% and               size (Supplementary Note 5 and Supplementary Fig. 31).
+
+
+
+maximal size, and ST I is the number of congested roads connected to                      Forecasting performance for major bottlenecks
+the bottleneck at the chosen early growth duration T I .                                  Before examining the performance of predicting major bottlenecks
+       As seen in Fig. 4a–c, the box plots of SP grouped by V T I (T I ranges             based on initial growth speed V T I , we evaluate the recurrence of the
+from 5 to 15 minutes) show that on October 16, 2015, Beijing, the                         bottlenecks on two different days. This is done based on the Jaccard
+maximal size SP increases with V T I at the ﬁrst 5, 10, or 15 min of the                  index J that assesses the overlap (see Supplementary Fig. 33) of bot-
+bottleneck dynamics (box plots for Shenzhen show similar patterns,                        tlenecks or their associated congestion components between 2
+see Supplementary Fig. 32). This indicates that congestion compo-                         workdays. As shown in Supplementary Figs. 34, 35, and 36, the overlap
+nents with a larger initial growth speed even at the earliest stage are                   of associated congestions is higher than the overlap of bottlenecks.
+also more likely to reach a larger congestion size. The correlation                       This could be because the congestion propagation mechanism is
+coefﬁcients ρSP ,V T between the maximal size SP = fS1P ,    ,SNP g and the            fundamental68. Thus, the overall congestion regions could include
+                     I
+initial growth speed V T I = fV 1T I ,    ,V NTI g are respectively 0.66, 0.76, and    similar propagation pathways due to the congestion propagation
+0.87 for T I = 5, T I = 10 and T I = 15, which also supports our claim that               mechanism (Supplementary Note 9). Importantly, both Jaccard
+the initial growth speed has a strong positive correlation with the                       indexes J B for bottlenecks and J C for their associated congestions
+maximal size SP (Fig. 4a–c). In addition, we calculate and compare the                    decrease rapidly with increasing jam size. J B decreases to around 0.05
+linear correlation ρSP ,V T between the maximal size SP and the initial                   and J C decreases to around 0.2 when SP is greater than or equal to 20,
+                            I
+growth speed V T I for different T I in workdays and holidays. As seen in                 meaning that only around 5% of all the heavy bottlenecks and around
+Fig. 4d, e, the values of ρSP ,V T for the two cities are around 0.65 to 0.75             20% of their associated congestions (i.e., SP ≥ 20) that appear in both
+                                  I
+for T I = 5 min, and increase to a higher plateau, around 0.85 to 0.95,                   days are the same. Note that, similarities of large congestions are still
+when V T I is obtained for 15 min and above. Note that correlations                       very low even when we relax the overlap deﬁnition (Supplementary
+ρSP ,V T in holidays are higher due to less trafﬁc demand, which may lead                 Note 10 and Supplementary Figs. 33 and 37). This could be because the
+        I
+to better prediction results. This suggests that the initial growth speed                 trafﬁc ﬂows are the result of the dynamic self-organization of the game
+in the earliest 15 min, could be an effective predictor for the maximal                   behaviors of numerous travelers69–71. In the day-by-day game process,
+size of congestions originated from a bottleneck, since the change in                     due to risk aversion, travelers have been found to make adaptive
+correlations is very little when T I is above 15 min.                                     choices and deviate from the congestions in previous days72–75. Thus,
+
+
+
+Nature Communications | (2023)14:8002                                                                                                                                        5
+Article                                                                                                                         https://doi.org/10.1038/s41467-023-43591-7
+
+
+       G                                                         H                                                          I
+
+
+
+
+                  ͣͤ      ͣͤ     ͣͤ     ͣͤ     ͣͤ               ͣͤ   ͣͤ       ͣͤ   ͣͤ   ͣͤ   ͣͤ            ͣͤ     ͣͤ    ͣͤ   ͣͤ    ͣͤ
+
+
+
+
+                              J                                                                       K
+
+
+
+
+Fig. 4 | Correlation between the maximal size SP and the initial growth speed                    between maximal size SP and the initial growth speed V T I increases with increasing
+V T I at the earliest stage. Box plots of size SP grouped by initial growth speed V T I          the initial growth duration T I , for (d) Beijing and (e) Shenzhen. The correlations
+at the earliest (a) 5, (b) 10 and (c) 15 min, on October 16, 2015, in Beijing. Here, V T I       between SP and V T I are calculated for the congestion components with growth
+means the number of increased congested road segments every 5 minutes during                     duration longer than or equal to T I (see Methods). Bottlenecks with SP ≥ 2 are
+the early growth stage, the black numbers on the x-axis are the range of initial                 counted here. Note that above 15 min the correlations almost do not increase.
+growth speed V T I , and the red numbers in the bracket are the median value of each             Holidays include the 7 days in China’s National Day, and the workdays include
+group. The outliers are not displayed in the box plots. Pearson correlation ρSP ,V T             18 days.
+                                                                                         I
+
+
+
+
+large congestion events could be less recurrent than expected, and                               Supplementary Figs. 41 and 42). We also computed the area under the
+heavy bottlenecks or their associated congestions in one day cannot                              curve (AUC) for 17 workdays in both cities, as presented in Fig. 6c. The
+represent much of those in the other days.                                                       values of AUC are stable for different days and increase when a longer
+       We deﬁne a major bottleneck (i.e., y = 1) as the bottleneck that                          duration T I is used to calculate the predictor, i.e., the initial growth
+developed into a congestion component with size SP greater than or                               speed. These results suggest that initial growth speed of the congestion
+equal to a pre-deﬁned threshold SL , and regard it as a minor bottleneck                         components within its ﬁrst 15 minutes is a very reliable predictor for
+(i.e., y = 0) otherwise. To test the power of predicting major bottlenecks                       forecasting major congestions. Beyond 15 min, the performance of the
+by V 15 , we trained the binary Probit model based on dynamics of all the                        predictions does not improve signiﬁcantly. Notably, as seen in Sup-
+bottlenecks on Monday, October 12, 2015, in Beijing (see Methods for                             plementary Note 12 and Supplementary Fig. 43, the prediction time has
+details of the prediction method). We applied the trained model to                               a trade-off with prediction accuracy. In practice, the predictors V 5 , V 10 ,
+predict whether bottlenecks on another workday, i.e., October 16, 2015,                          and V 15 could be comprehensively applied to early identify the heavy
+could yield congestion components greater than or equal to SL = 20. We                           bottlenecks before maximal size or full jam duration.
+ﬁnd that when the false positive rate (FPR) is set to 5%, the accuracy of                             To further assess the prediction performance of the growth speed
+detecting major bottlenecks is around 88%. The detected and the                                  in the earliest 15 min, we forecast whether the bottlenecks will develop
+undetected major bottlenecks displayed in Fig. 5 indicate that most of                           to be greater than or equal to different threshold size SL . As seen in
+the major bottlenecks in rush and non-rush hours are different, and an                           Fig. 6d and e, the ROC curves of predicting major bottlenecks for
+appropriate prediction framework at the early propagation stage is thus                          different SL are similar and very close to the classiﬁer (0,1) on October
+highly needed. Additionally, examples of false positive bottlenecks are                          16, 2015 in both cities. We also computed in Fig. 6f, the AUC values
+also located in signiﬁcantly different road segments in rush and non-                            versus the predeﬁned threshold size SL for 17 workdays in both cities. It
+rush hours (see Supplementary Fig. 38).                                                          is seen that the values of the AUC are stable and very high (around
+       Performances of predicting the major bottlenecks (SL = 20) are                            0.95) for all values of SL . These results strongly support that the initial
+assessed next for different values of FPR, for V 5 , V 10 , V 15 , and V 20 . In                 growth speed is a reliable and excellent measure for detecting major
+Fig. 6a, b, the receiver operating characteristic (ROC) curves76 are                             bottlenecks at their early stage of propagation. Thus, our prediction
+obtained and plotted based on the prediction results for Friday,                                 framework helps to understand, forecast, and potentially prevent
+October 16, 2015, in both Beijing and Shenzhen. The ROC curves indi-                             major bottlenecks by identifying them at their early propagation
+cate that the predictions based on initial growth speed within 15 min-                           stages. Integrating this framework into existing trafﬁc control systems,
+utes of the congestion components are close to the classiﬁer (0,1) for                           may improve trafﬁc conditions and prevent bottlenecks from reaching
+both cities (ROC curves of other days are similar and presented in                               their full potential.
+
+
+Nature Communications | (2023)14:8002                                                                                                                                              6
+Article                                                                                                                https://doi.org/10.1038/s41467-023-43591-7
+
+
+                            G                                                              H
+
+
+
+
+                                                  ^ JKZKIZKJSGPUXHUZZRKTKIQY^ [TJKZKIZKJSGPUXHUZZRKTKIQY
+
+Fig. 5 | The detected major bottlenecks (true positive) and the undetected              a major size. The green stars are the false negative bottlenecks that are predicted to
+major bottlenecks (false negative) when the FPR is set as 5%. Major bottlenecks         be minor bottlenecks but actually developed to be major. The CCDF of maximal
+(SL = 20) during (a) rush hours (7:00 a.m.–9:00 a.m.) and (b) non-rush hours            jam size SP is seen in Supplementary Note 11 and Supplementary Fig. 39. The CCDF
+(12:00 p.m.–14:00 p.m.) on October 16, 2015, in Beijing. The red stars are the true     of jam duration T for the large congestion components is seen in Supplementary
+positive bottlenecks that are predicted as major bottlenecks and actually grew to be    Note 11 and Supplementary Fig. 40.
+
+
+
+Discussion                                                                              systems90,91 or demand management strategies63,64,69,71,73,75,92. Urban
+In summary, we analyze the spatiotemporal dynamics of trafﬁc bot-                       trafﬁc control systems should be connected to navigation apps to warn
+tlenecks during 1 month in two Chinese metropolises. The empirical                      travelers, in near real-time, to avoid the roads that may lead to a heavy
+results demonstrate that our framework of dynamics of trafﬁc bot-                       trafﬁc bottleneck63,64,69,93. On one hand, warning travelers with alter-
+tlenecks can successfully characterize both the network’s propagation                   native routes to be far away from the predicted heavy congestion
+and dissipation of urban trafﬁc bottlenecks. We ﬁnd that the propa-                     regions73,75 could alleviate the trafﬁc ﬂows in predicted areas. On the
+gation and dissipation processes of congestion components develop                       other hand, rescheduling departure time of the potential travelers with
+asymmetrically and the duration of recovery stage approximately                         no alternative routes by road pricing strategies71 could reduce trafﬁc
+follows a power-law distribution. In addition, the recovery duration of                 demand in the predicted area. These methods of demand manage-
+the bottlenecks is found to be typically nearly twice the time it takes to              ment have also been found effective in alleviating congestion in earlier
+fully grow. Our ﬁndings can provide data explanations for the well-                     studies63,64,93. Moreover, coordinated management from the supply
+established models and help extend mesoscopic trafﬁc models in                          side could also help to alleviate the trafﬁc on the predicted heavy
+urban networks. For example, the scaling patterns of the jam durations                  congestions69. While such interventions may cause congestions in
+in real urban networks can well explain and expand the 1-dimensional                    other locations, our real-time updated framework can alert the control
+scaling results modeled in existing studies77,78.                                       system about new heavy bottlenecks before they emerge. Considering
+     Moreover, the empirical results suggest that our method is efﬁ-                    our propagation mechanism in the above well-established technolo-
+cient in forecasting heavy trafﬁc bottlenecks, based on the ﬁnding that                 gies, the real-time trafﬁc management and organization would be
+the spatial and temporal dynamics of trafﬁc congestions are strongly                    better developed in the near future. This will provide not only accurate
+correlated. Our empirical analysis shows that the growth speed of                       predictions but also effective mitigation of heavy congestions.
+congestion components is highly correlated with the maximal size of
+their associated congestions. Most importantly, we ﬁnd that the initial                 Methods
+growth speed, even at the earliest 15 min of the jam’s growth, is useful                Dataset
+in predicting whether a trafﬁc bottleneck will develop into a major                     The Beijing road network has over 52,000 road segments (links) and
+congestion component. Our predictive framework can provide an                           27,000 intersections (nodes), and the Shenzhen road network has
+alerting indicator that could help urban planners improve real-time                     over 22,000 road segments (links) and 12,000 intersections
+trafﬁc control by addressing the sources of destructive trafﬁc jams                     (nodes). The empirical datasets contain time-dependent velocity
+before they develop into their maximal size. The early real-time trafﬁc                 records of both cities for 30 days during October 2015 with a
+control began with the implementation of the trafﬁc signal control                      resolution of 1 minute. For a road with an outlier of velocity record,
+system SCOOT to calculate the size of the queue and time of clearance                   we handle it as congested state if it connects its upstream and
+given the cyclic ﬂow proﬁles79. With artiﬁcial intelligence technologies,               downstream roads that are congested in the predeﬁned chron-
+and connected-automated vehicles techniques80–82, the model pre-                        ological order (Supplementary Note 2 and Supplementary Fig. 1).
+dictive control framework has been proposed to sense and control                        The distribution of road velocity suggests that the road velocity
+trafﬁc conditions while agents interact with ones in the vicinity67,83–86.              records are generally stable over 5-minute interval (Supplementary
+Meantime, the spatial congestion propagation could signiﬁcantly                         Note 2 and Supplementary Fig. 2). Large-scale network topology,
+inﬂuence the coordinated control performances among different sig-                      huge trafﬁc ﬂow, serious trafﬁc jams, diverse trafﬁc bottlenecks, as
+nalized intersections87–89 (Supplementary Note 13). Based on our                        well as the high-quality datasets make these two cities ideal for the
+identiﬁed spatiotemporal propagation mechanisms, the real-time                          analysis of bottleneck dynamics.
+control systems could consider interrelations among different trafﬁc
+regions and perform better coordinated control for the most con-                        Bottlenecks and their associated congestions
+gested areas before they propagate to a global gridlock jam.                            Since trafﬁc congestion state at time t can be described by the average
+     To better alleviate trafﬁc congestions, our framework and ﬁndings                  relative velocity during a short time interval52, we use the average
+can also be applied in the well-developed real-time navigation                          relative velocity calculated in every 5 minutes to represent the
+
+
+
+Nature Communications | (2023)14:8002                                                                                                                                       7
+Article                                                                                                                       https://doi.org/10.1038/s41467-023-43591-7
+
+
+       G                                                        H                                                         I
+
+
+
+
+       J                                                         K                                                        L
+
+
+
+
+Fig. 6 | Performance of predicting major bottlenecks based on initial                       bottleneck develops into at least 10, 15, 20, and 25 congested roads. The curves are
+growth speed. ROC curves of predicting whether a bottleneck would grow up into              based on the prediction results for October 16, 2015, in (d) Beijing and (e) Shenz-
+a major congestion size of 20 road segments or above, based on V T I within the             hen. f The values of AUC for predicting major bottlenecks by V T I within 15 min with
+earliest 5, 10, 15, and 20 min of their propagation. The prediction results shown are       different size thresholds SL . The error bars are calculated based on the prediction
+for October 16, 2015, in (a) Beijing and (b) Shenzhen. c The AUC value increases            results in 17 workdays. The small standard deviations show that the prediction
+when the predictor V T I is calculated based on a longer initial duration T I . The error   performances are stable. The prediction results are also found stable when training
+bars are calculated based on the prediction results of 17 workdays. The small               the model on different days. For sensitivity analysis, we absorb very short roads or
+standard deviations show that the values are stable. Note the almost plateau seen           consider congestion length in the deﬁnition of congestion size S(t), and ﬁnd robust
+for T I ≥ 15 minutes.The ROC curves of using V T I within 15 min to predict whether a       prediction performance (Supplementary Note 5 and Supplementary Fig. 44).
+
+
+
+congestion weight W e ðtÞ of road e at time window t, i.e.,                                 of congested roads, i.e., size S(t), includes newly congested links and
+                                                                                            removes those recovered. In the recovery process, the existing size S is
+                                                U e ðtÞ                                     decreasing over time since the newly recovered congested roads occur
+                                    W e ðtÞ =                                        ð9Þ
+                                                 U 95                                       more quickly than newly developed congestions (Supplementary
+                                                   e
+                                                                                            Note 4 and Supplementary Fig. 7). In our algorithm, if the recovery of
+     Here, U e ðtÞ is the velocity of road e at time window t, and U 95                     the bottleneck is earlier than other neighboring branches, the branches
+                                                                      e is
+95% percentile of velocity records of road e, which approximates the                        that belonged to the recovered bottleneck are not considered anymore
+standard maximal velocity on this road. In this paper, road e is regar-                     to be associated with the original (recovered) bottleneck.
+ded as congested if W e ðtÞ<0:5, and non-congested otherwise26.
+     After having the congestion weight W e ðtÞ, we identify bottlenecks                    Pearson correlation
+using the jam tree structure deﬁned by ref. 24. We identiﬁed the bot-                       The Pearson coefﬁcient represents the degree of linear correlation
+tlenecks, and the newly congested or the recovered roads from them as                       between two variables. To observe the linear correlation between the
+the following steps: i) Obtaining the time-interval matrix of the con-                      maximal size SP and the average growth speed V A or the initial growth
+tinuous congestion states. ce ðtÞ is the time interval during which road e                  speed V T I , we calculated Pearson correlation between them. For two
+has been continuously congested up to the time window t. ii) Identi-                        variables X = fx 1 ,x 2 ,    ,x n g and Y = fy1 ,y2 ,    ,yn g, the Pearson correla-
+ﬁcation of bottleneck. The bottleneck is the road segment that has                          tion ρX,Y is
+been continuously congested for the longest interval ce ðtÞ in down-
+stream of a congestion component. iii) Identiﬁcation of newly con-                                                        covðX ,Y Þ E½ðX  μX ÞðY  μY Þ
+                                                                                                                 ρX,Y =             =                                           ð10Þ
+gested road segments. A neighboring upstream congested road is                                                              σX σY           σX σY
+regarded as a new congestion associated with a bottleneck at time
+window t if it became congested no later than a predeﬁned time                              where n is the number of samples, μX and μY are the mean values of X
+interval θ (set as 10 min generally) after the bottleneck or another                        and Y, and σ X and σ Y are the standard deviations of X and Y. ρX ,Y is in
+congested road connected to the bottleneck. iv) Identiﬁcation of                            the range of 1 to 1. ρX ,Y = ± 1 means variables X and Y have the highest
+recovered road segments. A road is regarded as recovered from the                           linear correlation. When calculating ρSP ,V T for congestion components
+                                                                                                                                         I
+bottleneck at time window t, if it (or another congested road that                          with growth duration longer than or equal to T I , the samples are
+connected it to the bottleneck) returned to an uncongested state (see                       downsized in a short T I and upsized in a long T I by observations
+Supplementary Note 4 and Supplementary Fig. 6). The existing number                         obtained from different resolutions.
+
+
+
+Nature Communications | (2023)14:8002                                                                                                                                               8
+Article                                                                                                                     https://doi.org/10.1038/s41467-023-43591-7
+
+
+Jaccard index                                                                                   minor bottlenecks. The curve through (0,1) and AUC = 1 represent that
+The Jaccard index is used for measuring repetition between the bot-                             the classiﬁer has the best performance to separate each bottleneck
+tlenecks or their associated congestions on different days. For two                             correctly.
+sample sets X and Y, the Jaccard index is deﬁned as the ratio between
+the size of the overlap and the size of the union of the observed sample                        Data availability
+sets, i.e.,                                                                                     The necessary data generated in this study have been deposited in the
+                                                                                                Github database https://github.com/JinxiaoDuan/DynamicsOfBottlencks
+                               jX \ Y j        jX \ Y j                                         to enable the reproducibility of the results in the paper. The raw velocity
+                          J=            =                                                ð11Þ
+                               jX ∪ Y j jX j + jY j  jX \ Y j                                  data are protected and unavailable due to data privacy laws.
+
+where J is in the range of 0 to 1. J = 1 means sets X and Y are wholly                          Code availability
+overlapped and J = 0 means sets X and Y are wholly different.                                   We provide the source codes of our algorithms in GitHub https://
+                                                                                                github.com/JinxiaoDuan/DynamicsOfBottlencks to enable the repro-
+Prediction method                                                                               ducibility of our ﬁndings.
+To conduct the prediction, we train the binary Probit model (a basic
+binary classiﬁer) based on the evolutions of trafﬁc bottlenecks on                              References
+Monday, October 12, 2015, and use the initial growth speed V T I till an                        1.    Mahmassani, H. S., Saberi, M. & Zockaie, A. Urban network gridlock:
+early growth time T I to predict the probability P i that a bottleneck on                             theory, characteristics, and dynamics. Procedia-Soc. Behav. Sci. 80,
+another workday may develop into a major congestion component.                                        79–98 (2013).
+The utility function (y*i ) of bottleneck i with the explanatory variable                       2.    Saeedmanesh, M. & Geroliminis, N. Dynamic clustering and pro-
+V T I is expressed as                                                                                 pagation of congestion in heterogeneously congested urban trafﬁc
+                                                                                                      networks. Transp. Res. Procedia 23, 962–979 (2017).
+                         y*i = a1 + a2 V iT I + εi , yi = 1 if y*i > 0                   ð12Þ   3.    Long, J., Gao, Z., Ren, H. & Lian, A. Urban trafﬁc congestion pro-
+                                                                                                      pagation and bottleneck identiﬁcation. Sci. China Ser. F Inf. Sci. 51,
+where a1 is a constant, a2 is a coefﬁcient, and εi is the error term                                  948–964 (2008).
+assumed to follow a standard normal distribution. Based on the esti-                            4.    Lighthill, M. J. & Whitham, G. B. On kinematic waves II. A theory of
+              ^ 2 , the probability for yi = 1 is expressed as
+      ^ 1 and a
+mated a                                                                                               trafﬁc ﬂow on long crowded roads. Proc. R. Soc. Lond. Ser. A. Math.
+                                                                                                      Phys. Sci. 229, 317–345 (1955).
+                                                       ^ 2 V iT ÞÞ = Φða
+                                                  ^1 + a
+   pi ðyi = 1jV T I Þ = pi ðy*i >0Þ = pi ðεi >  ða                         ^ 2 V iT Þ
+                                                                       ^1 + a            ð13Þ   5.    Richards, P. I. Shock waves on the highway. Oper. Res. 4,
+                                                               I                    I
+                                                                                                      42–51 (1956).
+where Φ is the cumulative density function (cdf) of the standard nor-                           6.    Biham, O., Middleton, A. A. & Levine, D. Self-organization and a
+mal distribution. Prediction based on V T I is conducted in the following                             dynamical transition in trafﬁc-ﬂow models. Phys. Rev. A 46,
+way: the probability P i of whether a bottleneck would become major                                   R6124 (1992).
+till the time T I , is calculated as the highest possibility that a bottleneck                  7.    Nagel, K. & Schreckenberg, M. A cellular automaton model for
+may become major based on V T I till time T I , i.e.,                                                 freeway trafﬁc. J. Phys. I 2, 2221–2229 (1992).
+P i = maxfpi ðyi = 1jV t Þg, t ≤ T I . If the probability P i reaches a threshold               8.    Kerner, B. S. Experimental features of self-organization in trafﬁc
+P thre , a bottleneck is classiﬁed as major. The prediction result γi of a                            ﬂow. Phys. Rev. Lett. 81, 3797 (1998).
+bottleneck could be true positive (TP), false positive (FP), true negative                      9.    Kerner, B. S. & Rehborn, H. Experimental properties of phase tran-
+(TN), or false negative (FN), i.e.,                                                                   sitions in trafﬁc ﬂow. Phys. Rev. Lett. 79, 4030 (1997).
+                                                                                                10.   Kerner, B. S., Klenov, S. L. & Wolf, D. E. Cellular automata approach
+                                8
+                                >
+                                > TP, P i ≥ P thre and yi = 1                                         to three-phase trafﬁc theory. J. Phys. A Math. Gen. 35, 9971 (2002).
+                                >
+                                >
+                                < FN, P <P thre and y = 1                                       11.   Arnott, R. & Small, K. The economics of trafﬁc congestion. Am. Sci.
+                                          i             i
+                           γi =                                                          ð14Þ         82, 446–455 (1994).
+                                >
+                                > TN, P i <P thre and yi = 0
+                                >
+                                >                                                               12.   Nagel, K., Wolf, D. E., Wagner, P. & Simon, P. Two-lane trafﬁc rules
+                                :
+                                  FP, P i ≥ P thre and yi = 0                                         for cellular automata: a systematic approach. Phys. Rev. E 58,
+                                                                                                      1425 (1998).
+       When obtaining the prediction results γ for different threshold                          13.   Hidas, P. Modelling lane changing and merging in microscopic
+P thre , the ROC curve can be plotted by the results of the true positive                             trafﬁc simulation. Transp. Res. Part C: Emerg. Technol. 10,
+rate (TPR) versus the false positive rate (FPR). The x-axis is the FPR,                               351–371 (2002).
+representing the ratio between the number of minor bottlenecks                                  14.   Daganzo, C. F. A behavioral theory of multi-lane trafﬁc ﬂow. Part II:
+wrongly categorized as positive and the total number of actual minor                                  merges and the onset of congestion. Transp. Res. Part B: Methodol.
+bottlenecks. The y-axis is the TPR, representing the ratio between the                                36, 159–169 (2002).
+number of major bottlenecks correctly categorized as positive and the                           15.   Daganzo, C. F. The cell transmission model: a dynamic repre-
+total number of actual major bottlenecks. i.e.,                                                       sentation of highway trafﬁc consistent with the hydrodynamic
+                                                                                                      theory. Transp. Res. Part B: Methodol. 28, 269–287 (1994).
+                                                N FP                                            16.   Daganzo, C. F. The cell transmission model, part II: network trafﬁc.
+                                   FPR =                                                 ð15Þ
+                                             N FP + N TN                                              Transp. Res. Part B: Methodol. 29, 79–93 (1995).
+                                                                                                17.   Li, D., Jiang, Y., Kang, R. & Shlomo, H. Spatial correlation analysis of
+                                            N TP                                                      cascading failures: congestions and blackouts. Sci. Rep. 4,
+                                   TPR =                                                 ð16Þ         5381 (2014).
+                                         N TP + N FN
+                                                                                                18.   Wu, J., Sun, H. & Gao, Z. Cascading failures on weighted urban
+where N FP is the number of FP observations, N TN is the number of TN                                 trafﬁc equilibrium networks. Phys. A: Stat. Mech. Appl. 386,
+observations, N TP is the number of TP observations, and N FN is the                                  407–413 (2007).
+number of FN observations. The AUC represents the performance of                                19.   Cwilich, G. & Buldyrev, S. V. Cascading trafﬁc jamming in a two-
+separability that the classiﬁer can distinguish between the major and                                 dimensional Motter and Lai model. Phys. Rev. E 106, 024303 (2022).
+
+
+Nature Communications | (2023)14:8002                                                                                                                                       9
+Article                                                                                                    https://doi.org/10.1038/s41467-023-43591-7
+
+
+20. Duan, J., Li, D. & Huang, H.-J. Reliability of the trafﬁc network against   43. Arnott, R., De Palma, A. & Lindsey, R. A structural model of peak-
+    cascading failures with individuals acting independently or col-                period congestion: a trafﬁc bottleneck with elastic demand. Am.
+    lectively. Transp. Res. Part C: Emerg. Technol. 147, 104017 (2023).             Econ. Rev. 83, 161–179 (1993).
+21. Saberi, M. et al. A simple contagion process describes spreading of         44. Kerner, B. S. & Klenov, S. L. Microscopic theory of spatial-temporal
+    trafﬁc jams in urban networks. Nat. Commun. 11, 1616 (2020).                    congested trafﬁc patterns at highway bottlenecks. Phys. Rev. E 68,
+22. Wu, J., Gao, Z. & Sun, H. Simulation of trafﬁc congestion with SIR              036130 (2003).
+    model. Mod. Phys. Lett. B 18, 1537–1542 (2004).                             45. Zhang, L. et al. Scale-free resilience of real trafﬁc jams. Proc. Natl
+23. Brockmann, D. & Helbing, D. The hidden geometry of complex,                     Acad. Sci. USA 116, 8673–8678 (2019).
+    network-driven contagion phenomena. Science 342,                            46. Kearney, M. J. Exactly solvable cellular automaton trafﬁc jam
+    1337–1342 (2013).                                                               model. Phys. Rev. E 74, 061115 (2006).
+24. Serok, N., Havlin, S. & Lieberthal, E. B. Identiﬁcation, cost evalua-       47. Arnott, R., De Palma, A. & Lindsey, R. Economics of a bottleneck. J.
+    tion, and prioritization of urban trafﬁc congestions and their origin.          Urban Econ. 27, 111–130 (1990).
+    Sci. Rep. 12, 13026 (2022).                                                 48. Daganzo, C. F. & Laval, J. A. Moving bottlenecks: a numerical
+25. Nguyen, H., Liu, W. & Chen, F. Discovering congestion propagation               method that converges in ﬂows. Transp. Res. Part B: Methodol. 39,
+    patterns in spatio-temporal trafﬁc data. IEEE Transactions on. Big              855–863 (2005).
+    Data 3, 169–180 (2016).                                                     49. Newell, G. F. A simpliﬁed theory of kinematic waves in highway
+26. Luan, S., Ke, R., Huang, Z. & Ma, X. Trafﬁc congestion propagation              trafﬁc, part I: general theory. Transp. Res. Part B: Methodol. 27,
+    inference using dynamic Bayesian graph convolution network.                     281–287 (1993).
+    Transp. Res. Part C Emerg. Technol. 135, 103526 (2022).                     50. Arnott, R., De Palma, A. & Lindsey, R. Properties of dynamic trafﬁc
+27. Asif, M. T. et al. Spatiotemporal patterns in large-scale trafﬁc speed          equilibrium involving bottlenecks, including a paradox and meter-
+    prediction. IEEE Trans. Intell. Transp. Syst. 15, 794–804 (2013).               ing. Transp. Sci. 27, 148–160 (1993).
+28. Wu, Y., Tan, H., Qin, L., Ran, B. & Jiang, Z. A hybrid deep learning        51. Li, Z.-C., Huang, H.-J. & Yang, H. Fifty years of the bottleneck model:
+    based trafﬁc ﬂow prediction method and its understanding. Transp.               a bibliometric review and future research directions. Transp. Res.
+    Res. Part C Emerg. Technol. 90, 166–180 (2018).                                 Part B: Methodol. 139, 311–342 (2020).
+29. Lei, W., Alves, L. G. & Amaral, L. A. N. Forecasting the evolution of       52. Li, D. et al. Percolation transition in dynamical trafﬁc network with
+    fast-changing transportation networks using machine learning. Nat.              evolving critical bottlenecks. Proc. Natl Acad. Sci. 112,
+    Commun. 13, 1–12 (2022).                                                        669–672 (2015).
+30. Ren, Y., Ercsey-Ravasz, M., Wang, P., González, M. C. & Toroczkai, Z.       53. Hamedmoghadam, H., Jalili, M., Vu, H. L. & Stone, L. Percolation of
+    Predicting commuter ﬂows in spatial networks using a radiation                  heterogeneous ﬂows uncovers the bottlenecks of infrastructure
+    model based on temporal ranges. Nat. Commun. 5, 5347 (2014).                    networks. Nat. Commun. 12, 1254 (2021).
+31. Anbaroglu, B., Heydecker, B. & Cheng, T. Spatio-temporal cluster-           54. Zeng, G. et al. Switch between critical percolation modes in city
+    ing for non-recurrent trafﬁc congestion detection on urban road                 trafﬁc dynamics. Proc. Natl Acad. Sci. USA 116, 23–28 (2019).
+    networks. Transp. Res. Part C: Emerg. Technol. 48, 47–65 (2014).            55. Hamedmoghadam, H., Zheng, N., Li, D. & Vu, H. L. Percolation-
+32. Avila, A. M. & Mezić, I. Data-driven analysis and forecasting of                based dynamic perimeter control for mitigating congestion pro-
+    highway trafﬁc dynamics. Nat. Commun. 11, 1–16 (2020).                          pagation in urban road networks. Transp. Res. Part C Emerg. Tech-
+33. Hanna, R., Kreindler, G. & Olken, B. A. Citywide effects of high-               nol. 145, 103922 (2022).
+    occupancy vehicle restrictions: evidence from “three-in-one” in             56. Vickrey, W. S. Congestion theory and transport investment. Am.
+    Jakarta. Science 357, 89–93 (2017).                                             Econ. Rev. 59, 251–260 (1969).
+34. Bellocchi, L. & Geroliminis, N. Unraveling reaction-diffusion-like          57. Zeng, G. et al. Multiple metastable network states in urban trafﬁc.
+    dynamics in urban congestion propagation: Insights from a large-                Proc. Natl Acad. Sci. USA 117, 17528–17534 (2020).
+    scale road network. Sci. Rep. 10, 1–11 (2020).                              58. Dakos, V. et al. Slowing down as an early warning signal for
+35. Yildirimoglu, M., Ramezani, M. & Geroliminis, N. Equilibrium analysis           abrupt climate change. Proc. Natl Acad. Sci. 105, 14308–14312
+    and route guidance in large-scale networks with MFD dynamics.                   (2008).
+    Transp. Res. Procedia 9, 185–204 (2015).                                    59. Scheffer, M. Foreseeing tipping points. Nature 467, 411–412 (2010).
+36. Olmos, L. E., Çolak, S., Shaﬁei, S., Saberi, M. & González, M. C.           60. Scheffer, M. et al. Early-warning signals for critical transitions.
+    Macroscopic dynamics and the collapse of urban trafﬁc. Proc. Natl               Nature 461, 53–59 (2009).
+    Acad. Sci. 115, 12654–12661 (2018).                                         61. Veraart, A. J. et al. Recovery rates reﬂect distance to a tipping point
+37. Ben-Akiva, M., De Palma, A. & Kanaroglou, P. Dynamic model of                   in a living system. Nature 481, 357–359 (2012).
+    peak period trafﬁc congestion with elastic arrival rates. Transp. Sci.      62. Al-Madani, H. M. Dynamic vehicular delay comparison between a
+    20, 164–181 (1986).                                                             police-controlled roundabout and a trafﬁc signal. Transp. Res. Part
+38. Huang, H.-J. & Lam, W. H. Modeling and solving the dynamic user                 A: Policy Pract. 37, 681–688 (2003).
+    equilibrium route and departure time choice problem in network              63. Akbarzadeh, M. & Estrada, E. Communicability geometry captures
+    with queues. Transp. Res. Part B: Methodol. 36, 253–273 (2002).                 trafﬁc ﬂows in cities. Nat. Hum. Behav. 2, 645–652 (2018).
+39. Ran, B. & Boyce, D. Modeling Dynamic Transportation Networks: an            64. Lee, M., Barbosa, H., Youn, H., Holme, P. & Ghoshal, G. Morphology
+    Intelligent Transportation System Oriented Approach. (Springer                  of travel routes and the organization of cities. Nat. Commun. 8,
+    Science & Business Media, 2012).                                                2229 (2017).
+40. Kasmalkar, I. G. et al. When ﬂoods hit the road: resilience to ﬂood-        65. De Palma, A., Lindsey, R. & Picard, N. Risk aversion, the value of
+    related trafﬁc disruption in the San Francisco Bay Area and beyond.             information, and trafﬁc equilibrium. Transp. Sci. 46, 1–26
+    Sci. Adv. 6, eaba2423 (2020).                                                   (2012).
+41. Tian, L.-J., Yang, H. & Huang, H.-J. Tradable credit schemes for            66. Liu, P. & Liu, Y. Optimal information provision at bottleneck equili-
+    managing bottleneck congestion and modal split with hetero-                     brium with risk-averse travelers. Transp. Res. Rec. 2672,
+    geneous users. Transp. Res. Part E: Logist. Transp. Rev. 54,                    69–78 (2018).
+    1–13 (2013).                                                                67. Thunig, T., Kühnel, N. & Nagel, K. Adaptive trafﬁc signal control for
+42. Daganzo, C. F. Queue spillovers in transportation networks with a               real-world scenarios in agent-based transport simulations. Transp.
+    route choice. Transp. Sci. 32, 3–11 (1998).                                     Res. Procedia 37, 481–488 (2019).
+
+
+Nature Communications | (2023)14:8002                                                                                                                   10
+Article                                                                                                  https://doi.org/10.1038/s41467-023-43591-7
+
+
+68. Zhao, J., Li, D., Sanhedrai, H., Cohen, R. & Havlin, S. Spatio-temporal   91. Cao, Z., Jiang, S., Zhang, J. & Guo, H. A uniﬁed framework for vehicle
+    propagation of cascading overload failures in spatially embedded              rerouting and trafﬁc light control to reduce trafﬁc congestion. IEEE
+    networks. Nat. Commun. 7, 10094 (2016).                                       Trans. Intell. Transp. Syst. 18, 1958–1973 (2016).
+69. Çolak, S., Lima, A. & González, M. C. Understanding congested             92. Schläpfer, M. et al. The universal visitation law of human mobility.
+    travel in urban areas. Nat. Commun. 7, 10793 (2016).                          Nature 593, 522–527 (2021).
+70. Roughgarden, T. Selﬁsh Routing and the Price of Anarchy. (MIT             93. Alonso-Mora, J., Samaranayake, S., Wallar, A., Frazzoli, E. & Rus, D.
+    Press, London, 2005).                                                         On-demand high-capacity ride-sharing via dynamic trip-vehicle
+71. Schröder, M., Storch, D.-M., Marszal, P. & Timme, M. Anomalous                assignment. Proc. Natl Acad. Sci. 114, 462–467 (2017).
+    supply shortages from dynamic pricing in on-demand mobility. Nat.
+    Commun. 11, 1–8 (2020).                                                   Acknowledgements
+72. Dussutour, A., Fourcassié, V., Helbing, D. & Deneubourg, J.-L.            This work was supported by the National Natural Science Foundation of
+    Optimal trafﬁc organization in ants under crowded conditions.             China (Grants 71890971/71890970, H.-J.H.; 72225012, D.L.; 72288101, H.-
+    Nature 428, 70–73 (2004).                                                 J.H. and D.L.; 71822101, D.L.; and 71890973/71890970, D.L.), the Fun-
+73. Yeung, C. H., Saad, D. & Wong, K. M. From the physics of interacting      damental Research Funds for the Central Universities (D.L.), the Israel
+    polymers to optimizing routes on the London Underground. Proc.            Science Foundation (Grant No. 189/19, S.H.), the Binational Israel-China
+    Natl Acad. Sci. 110, 13717–13722 (2013).                                  Science Foundation (Grant No. 3132/19, S.H.), and the European Union’s
+74. Cantarella, G. E. & Cascetta, E. Dynamic processes and equilibrium        Horizon 2020 research and innovation program (DIT4Tram, Grant
+    in transportation networks: towards a unifying theory. Transp. Sci.       Agreement 953783, S.H. and E.B.L.).
+    29, 305–329 (1995).
+75. Vazifeh, M. M., Santi, P., Resta, G., Strogatz, S. H. & Ratti, C.         Author contributions
+    Addressing the minimum ﬂeet problem in on-demand urban                    J.D. and S.H. designed the research. J.D., S.H., H.-J.H., N.S., E.B.L., and
+    mobility. Nature 557, 534–538 (2018).                                     D.L. developed the method. J.D. and G.Z. performed the computation.
+76. Hanley, J. A. & McNeil, B. J. The meaning and use of the area under a     All the authors analyzed the results. J.D., E.B.L., N.S, S.H., H.-J.H., and
+    receiver operating characteristic (ROC) curve. Radiology 143,             D.L. wrote the paper.
+    29–36 (1982).
+77. Nagatani, T. Self-organized criticality and scaling in lifetime of        Competing interests
+    trafﬁc jams. J. Phys. Soc. Jpn. 64, 31–34 (1995).                         The authors declare no competing interests.
+78. Petri, G., Expert, P., Jensen, H. J. & Polak, J. W. Entangled commu-
+    nities and spatial synchronization lead to criticality in urban trafﬁc.   Additional information
+    Sci. Rep. 3, 1–8 (2013).                                                  Supplementary information The online version contains
+79. Robertson, D. I. & Bretherton, R. D. Optimizing networks of trafﬁc        supplementary material available at
+    signals in real time-the SCOOT method. IEEE Trans. Veh. Technol.          https://doi.org/10.1038/s41467-023-43591-7.
+    40, 11–15 (1991).
+80. Martin, R. AV futures or futures with AVs? Bridging sociotechnical        Correspondence and requests for materials should be addressed to
+    imaginaries and a multi-level perspective of autonomous vehicle           Efrat Blumenfeld Lieberthal, Hai-Jun Huang or Shlomo Havlin.
+    visualisations in praxis. Hum. Soc. Sci. Commun. 8, 68 (2021).
+81. Gazis, D. C. Mathematical theory of automobile trafﬁc. Science 157,       Peer review information Nature Communications thanks Luis Amaral,
+    273–281 (1967).                                                           Steven Travis Waller, and the other, anonymous, reviewer(s) for their
+82. Mansourianfar, M. H., Gu, Z. & Saberi, M. Distance-based time-            contribution to the peer review of this work. A peer review ﬁle is avail-
+    dependent optimal ratio control scheme (TORCS) in congested               able.
+    mixed autonomy networks. Transp. Res. Part C Emerg. Technol. 141,
+    103760 (2022).                                                            Reprints and permissions information is available at
+83. De Oliveira, L. B. & Camponogara, E. Multi-agent model predictive         http://www.nature.com/reprints
+    control of signaling split in urban trafﬁc networks. Transp. Res. Part
+    C Emerg. Technol. 18, 120–139 (2010).                                     Publisher’s note Springer Nature remains neutral with regard to jur-
+84. Srinivasan, D., Choy, M. C. & Cheu, R. L. Neural networks for real-       isdictional claims in published maps and institutional afﬁliations.
+    time trafﬁc signal control. IEEE Trans. Intell. Transp. Syst. 7,
+    261–272 (2006).                                                           Open Access This article is licensed under a Creative Commons
+85. Feng, S. et al. Dense reinforcement learning for safety validation of     Attribution 4.0 International License, which permits use, sharing,
+    autonomous vehicles. Nature 615, 620–627 (2023).                          adaptation, distribution and reproduction in any medium or format, as
+86. Guo, Q., Li, L. & Ban, X. J. Urban trafﬁc signal control with connected   long as you give appropriate credit to the original author(s) and the
+    and automated vehicles: a survey. Transp. Res. Part C Emerg.              source, provide a link to the Creative Commons licence, and indicate if
+    Technol. 101, 313–334 (2019).                                             changes were made. The images or other third party material in this
+87. Hegyi, A. Model Predictive Control for Integrating Trafﬁc Control         article are included in the article’s Creative Commons licence, unless
+    Measures. (Netherlands TRAIL Research School, Netherlands, 2004).         indicated otherwise in a credit line to the material. If material is not
+88. Ramezani, M., de Lamberterie, N., Skabardonis, A. & Geroliminis, N.       included in the article’s Creative Commons licence and your intended
+    A link partitioning approach for real-time control of queue spillbacks    use is not permitted by statutory regulation or exceeds the permitted
+    on congested arterials. Transp. B: Transp. Dyn. 5, 177–190 (2017).        use, you will need to obtain permission directly from the copyright
+89. Barmpounakis, E. & Geroliminis, N. On the new era of urban trafﬁc         holder. To view a copy of this licence, visit http://creativecommons.org/
+    monitoring with massive drone data: The pNEUMA large-scale ﬁeld           licenses/by/4.0/.
+    experiment. Transp. Res. Part C: Emerg. Technol. 111, 50–71 (2020).
+90. Liang, X., Du, X., Wang, G. & Han, Z. A deep reinforcement learning       © The Author(s) 2023
+    network for trafﬁc light cycle control. IEEE Trans. Veh. Technol. 68,
+    1243–1253 (2019).
+
+
+
+Nature Communications | (2023)14:8002                                                                                                                  11
+

@@ -1,0 +1,51 @@
+__pycache__/
+.pytest_cache/
+*.py[cod]
+paper/主论文/build/
+paper/主论文/validation/
+paper/**/*.aux
+paper/**/*.bbl
+paper/**/*.blg
+paper/**/*.log
+paper/**/*.out
+
+# Local Python environments and secrets
+.venv/
+venv/
+env/
+.env
+.env.*
+*.pem
+*.key
+
+# Python and test caches
+__pycache__/
+.pytest_cache/
+*.py[cod]
+
+# Local JavaScript dependencies
+node_modules/
+
+# Local literature archive (kept outside GitHub)
+literature/
+
+# Generated experiments, raw data, logs, and temporary material
+code/outputs/
+code/real_data/**/*.csv
+code/real_data/**/*.json
+code/real_data/**/*.jsonl
+code/real_data/**/*.zip
+code/real_data/**/*.parquet
+code/real_data/**/*.sqlite
+docs/research/**/datasets/
+docs/research/**/nc_papers/
+docs/research/**/dataset_papers/
+tmp/
+*.log
+
+# LaTeX and document build products
+paper/**/build/
+paper/**/validation/
+paper/**/*.fls
+paper/**/*.fdb_latexmk
+paper/**/*.synctex.gz

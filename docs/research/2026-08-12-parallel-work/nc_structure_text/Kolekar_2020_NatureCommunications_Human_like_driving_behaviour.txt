@@ -1,0 +1,1615 @@
+ARTICLE
+Human-like driving behaviour emerges from a
+risk-based driver model
+Sarvesh Kolekar 1 ✉, Joost de Winter 1 & David Abbink 1
+Current driving behaviour models are designed for speci ﬁc scenarios, such as curve driving,
+obstacle avoidance, car-following, or overtaking. However, humans can drive in diverse
+scenarios. Can we ﬁnd an underlying principle from which driving behaviour in different
+scenarios emerges? We propose the Driver ’s Risk Field (DRF), a two-dimensional ﬁeld that
+represents the driver ’s belief about the probability of an event occurring. The DRF, when
+multiplied with the consequence of the event, provides an estimate of the driver ’s perceived
+risk. Through human-in-the-loop and computer simulations, we show that human-like driving
+behaviour emerges when the DRF is coupled to a controller that maintains the perceived risk
+below a threshold-level. The DRF model predictions concur with driving behaviour reported in
+literature for seven different scenarios (curve radii, lane widths, obstacle avoidance, roadside
+furniture, car-following, overtaking, oncoming traf ﬁc). We conclude that our generalizable
+DRF model is scienti ﬁcally satisfying and has applications in automated vehicles.
+https://doi.org/10.1038/s41467-020-18353-4 OPEN
+1 Department of Cognitive Robotics, Faculty of Mechanical, Maritime and Materials Engineering (3mE), Delft University of Technology, Mekelweg 2, 26 28 CD
+Delft, The Netherlands. ✉email: s.b.kolekar@tudelft.nl
+NATURE COMMUNICATIONS |         (2020) 11:4850 | https://doi.org/10.1038/s41467-020-18353-4 | www.nature.com/naturecommunications 1
+1234567890():,;
+W
+ith the introduction of automated vehicles, humans
+will increasingly need to interact with automated
+systems. One of the factors that in ﬂuence human-
+automation interaction is the trust that users have in the
+system
+1,2. Research suggests that the more technology seems to
+have human-like capacities, the more people are expected to trust
+it to perform its intended function competently 3. For example,
+when recorded vehicle trajectories were played back to drivers,
+the drivers preferred a driving style they thought was their own 4.
+To impart human-like capabilities in automated systems,
+understanding and modelling the human driver is essential.
+Despite many efforts in the ﬁeld of driver modelling (for sur-
+veys, see refs. 5–7), driver models are typically developed for
+speciﬁc scenarios. For example, longitudinal behaviour has been
+modelled using the optical edge rate on open roads 8, the time to
+extended tangent point in curves 9, time to collision (TTC) while
+approaching obstacles 10 and time headway (THW) during car
+following11. Lateral positioning has been modelled using two-
+point (i.e., anticipatory vs. compensatory) models 12,13 in normal
+driving, and open-loop steering corrections 14 in emergency sce-
+narios. To the best of our knowledge, the literature does not
+include a model of human driver behaviour that is applicable to a
+multitude of scenarios.
+Practically, a unitary model could be developed by including a
+switch that selects a sub-model (or model parameters) based on
+the current driving scenario. However, this would require a priori
+identiﬁcation of all possible scenarios, linked to appropriately
+parameterized models, and smooth transitions between them.
+Such an approach has two main problems: Firstly, the fragmented
+approach will not perform satisfactorily for driving situations
+where there is an inappropriate switch between tasks, or for
+driving situations that have not been addressed a priori, a pro-
+blem also reported for machine learning techniques 15. Secondly,
+this fragmented approach is not scienti ﬁcally satisfying since it
+does not elucidate the underlying principles governing driving
+behaviour. These principles can be seen as a ‘cost function ’ that
+human drivers try to minimise. Such cost functions have been
+proposed in the area of human motor control and have
+demonstrated emergent motor-control behaviour in different
+tasks and environments
+16. The present paper explores whether a
+similar generalizable model can be made for driving in different
+scenarios.
+Essential to generalizable models is a cost function that is based
+on existing theories that aim to explain driving behaviour in a
+uniﬁed manner. The ﬁrst attempt to such a uni ﬁed theory was
+made by Gibson and Crooks 17. They proposed that drivers per-
+ceive the qualitative concept of a ‘ﬁeld of safe travel ’, which is
+comprised of the possible paths that the car can take unimpeded.
+This theory paved the way for ‘motivational driver models ’ such
+as the risk homoeostasis and task-dif ﬁculty homeostasis theories
+by Wilde 18 and Fuller 19, respectively. However, these theories
+have two drawbacks: Firstly, they lack speci ﬁcity regarding their
+internal mechanisms, which makes it dif ﬁcult to operationalize
+and validate them 20–22. Secondly, homeostasis theories cannot
+account for an important characteristic of human-driving beha-
+viour, namely satisﬁcing. Drivers do not optimise their states (e.g.,
+they do not try to follow the centreline of the road perfectly) but
+try to maintain their state within acceptable limits (e.g., within
+lane boundaries) 23. Models based on homeostasis theories
+maintain a certain risk or task-dif ﬁculty level, and hence will
+always follow a reference trajectory (for example, centreline of the
+road), which is not coherent with satis ﬁcing behaviour.
+Näätänen and Summala 24 addressed satis ﬁcing behaviour by
+introducing the concept of a risk-threshold. According to their
+theory, drivers do not maintain a certain level of risk but make
+corrective actions only when the risk they perceive increases
+beyond a threshold. This means that any vehicle state is accep-
+table, as long as the driver ’s risk is within his/her individualised
+threshold. However, to the best of our knowledge, the risk-
+threshold theory has not been operationalized and tested in dif-
+ferent driving scenarios.
+In this paper, we propose a novel risk metric, based on pub-
+lished empirical data, that operationalizes the risk-threshold
+theory. We then formulate a driver model that utilises the pro-
+posed risk metric as a cost function, simulate it in different
+driving scenarios, and compare its predictions of driver behaviour
+with driver behaviour reported in literature. The results exemplify
+that, in driving, similar to motor-control tasks, a cost function
+that accounts for the consequence of noise (in human ’s percep-
+tion and actions) seems to be the underlying principle governing
+driving behaviour. In short, we propose a risk metric that oper-
+ationalizes human-like behaviour in a uni ﬁed manner, for dif-
+ferent driving scenarios.
+Results
+Quantifying perceived risk . According to Näätänen and Sum-
+mala
+24, perceived risk is the product of the subjective probability
+that an event will occur and the consequence of that event
+(Fig. 1a). In this paper, we operationalize these components
+(Fig. 1b).
+The consequence of an event is the dangerousness of being in a
+particular state. We quanti ﬁed this by assigning a cost to objects
+in the driving scene according to the danger they pose. These
+values need to be identi ﬁed experimentally and are independent
+of the driver. A representation of the driver ’s subjective belief
+about the probability of an event occurring was quanti ﬁed by
+Kolekar et al. 25. They measured drivers ’ subjective (self-reported)
+risk levels and objective (steering angle) steering responses in an
+obstacle avoidance task. The Driver ’s Risk Field (DRF), as
+Kolekar et al. 25 called it, has a high value near the ego car and
+decays as the lateral and longitudinal distance from the ego car
+increases. The DRF hence indicates that the driver believes that
+there is a higher probability of being in a position near their
+current position, in the next tla seconds (preview time), than at
+further away points. The DRF, in essence, captures the driver ’s
+uncertainty in his/her perception and actions.
+The quanti ﬁed perceived risk (risk metric) is a scalar value
+which is the product of the ‘cost of an event ’ and the DRF,
+summed over all the grid points. In essence, this risk metric
+quantiﬁes the ‘consequence of noise/variability in our perception
+and actions ’, which is similar to the unifying cost functions
+proposed in motor control 16,26.
+Modelling the DRF . The DRF has been previously quanti ﬁed for
+a ﬁxed speed on a straight road 25. In this section, we provide the
+mathematical formulation of a DRF that moves with the driver
+and changes its shape with the speed and steering angle. In this
+paper, the predicted vehicle path is calculated using a kinematic
+car model. The position ( xcar, ycar), heading ( ϕcar), and steering
+angle (δ) determine the radius of the arc ( Rcar) in which the car is
+predicted to travel, assuming a constant steering angle (Eq. ( 1)).
+Rcar ¼ L
+tanðδÞ ð1Þ
+L is the wheel-base of the car. Using xcar, ycar, ϕcar and Rcar, the
+centre of the turning circle ( xc, yc) is determined, which is used to
+calculate the arc length ( s), measured along the predicted path
+(Fig. 2a).
+The DRF is modelled as a torus with a Gaussian cross-section
+(Eq. ( 2)). The height ( a) and width ( σ) of the Gaussian are a
+ARTICLE NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-020-18353-4
+2 NATURE COMMUNICATIONS |         (2020) 11:4850 | https://doi.org/10.1038/s41467-020-18353-4 | www.nature.com/naturecommunications
+function of the arc length ( s) (Fig. 2b).
+zðx; yÞ¼ a exp
+/C0
+ﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃﬃ
+x /C0 xcðÞ 2 þ y /C0 yc
+/C0/C12
+q
+/C0 Rcar
+/C18/C19 2
+2σ2
+0
+BB
+B
+@
+1
+CC
+C
+A ð2Þ
+The height of the Gaussian ( a), is modelled as a parabola
+(Eq. ( 3)).
+aðsÞ¼ ps /C0 vt
+laðÞ 2 ð3Þ
+With a ﬁxed look-ahead time ( tla), the look-ahead distance is
+assumed to increase linearly with speed ( v). Parameter ( p)d eﬁnes
+the ‘steepness’ of the parabola.
+The width of the Gaussian ( σ) is modelled as a linear function
+of arc length ( s) (Eq. ( 4)), which is a simpli ﬁcation of the
+parabolic function (Supplementary Fig. 1) used in Kolekar et al. 25
+and includes the following parameters: ﬁrst, c deﬁnes the width of
+DRF at the location of the vehicle and is related to the car-width.
+In this paper, c is equal to car-width/4 (±2 σ of Gaussian
+distribution accounts for 95%). Second, m deﬁnes the slope of
+widening (or narrowing for negative values) of the DRF when
+δ = 0 (driving straight). Third, k1 and k2 increase (or decrease, for
+negative values) the width of the DRF proportional to the
+(absolute) steering angle ( δjj ). This is based on the rationale that
+variability in steering angle increases linearly with the steering
+angle11,27. It is similar to the empirically con ﬁrmed signal-
+dependent noise present in the human sensorimotor system 26,28.
+k1 and k2 represent the parameters for the inner and outer edges
+of the DRF, respectively, and allow for an asymmetric DRF. The
+expansion of DRF proportional to δ results in the accumulation of
+a higher risk for a curve with a smaller radius. The asymmetric
+expansion (k1 and k2) provides ﬂexibility to exhibit curve-cutting
+(k1 < k2), centreline ( k1 = k2), or curve overshooting ( k1 > k2)
+behaviour.
+σi ¼ m þ kijδjðÞ s þ c ð4Þ
+i ¼ 1ðinner σÞ; 2ðouter σÞ
+In short, the DRF is parameterized by p, tla, m, c, k1, k2, and is
+only dependent on driver ’s state, not the environment.
+To test if the proposed risk metric can operationalize human-
+like behaviour in a uni ﬁed manner, we used the risk metric as an
+input for a simple driver model ( ‘Methods’ section) and simulated
+it on a virtual track (Fig. 3a). The main characteristic of the DRF
+driver model is that it does not minimise the cost function.
+Instead, it tries to achieve a certain goal (in this paper, a desired
+speed Vdes), while maintaining the cost (quanti ﬁed perceived risk:
+C) below an individualised threshold ( Ct).
+To identify realistic parameter values for the driver model, we
+replicated the track used to simulate the model (Fig. 3a), in a
+driving simulator. A 25-year-old male volunteer drove ten times
+with the instruction, ‘drive as you normally would ’ and ten times
+with ‘drive faster’. This was meant to emulate ‘normal’ and ‘sport’
+driving behaviour. A section of the track (Fig. 3) was used for
+parameter estimation. The speed and lateral deviation trajectories
+estimated by the DRF model showed a close resemblance to those
+of the participant who also drove faster in sport setting than in
+normal setting. Also, the trajectories remained, for most parts,
+within the ±2 σ bound of the human trajectories. These results
+show that the DRF driver model can operationalize driving
+behaviour and remain within the human-like trajectory bounds
+(±2σ). These were necessary, but not suf ﬁcient checks. To verify if
+the proposed quanti ﬁed risk is indeed human-like, we compare
+the predictions of the DRF model with the results published in
+human-driving behaviour studies in literature.
+Validation using published literature . To validate the DRF
+model, we selected papers from literature that investigated driver
+Driver
+Consequence of events
+occurring in the driving scene
+a
+b
+Driver’s subjective belief about
+the probability of an event occurring
+Perceived risk used in
+risk-threshold theory
+Cost
+X
+Y
+* =
+Over all
+grid points
+Quantified risk
+(proposed perceived risk metric)Driver’s Risk Field (DRF)Cost assigned to events
+occurring in the driving scene
+Perceived risk according to
+Näätänen & Summala24 
+Proposed quantification of
+perceived risk (risk metric)
+Fig. 1 Visualising the quanti ﬁcation of driver ’s perceived risk. a This row illustrates Näätänen and Summala ’s24 formulation of perceived risk. The
+consequence of an event (e.g., colliding with a tree) and the driver ’s subjective belief about the probability of that event occurring, form the driver ’s
+perceived risk. The driver in the ego car is indicated using the black marker. b This row illustrates the proposed quanti ﬁcation of this perceived risk. The
+cost of each element in the driving scene is multiplied with the Driver ’s Risk Field (DRF) that represents the driver ’s belief of the probability of being in a
+position. This product summed over all grid points generates the estimate of quanti ﬁed risk.
+NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-020-18353-4 ARTICLE
+NATURE COMMUNICATIONS |         (2020) 11:4850 | https://doi.org/10.1038/s41467-020-18353-4 | www.nature.com/naturecommunications 3
+behaviour as a function of road and traf ﬁc conditions in terms of
+speed and lateral position. Since no single study fully replicates
+our scenarios, we chose different studies from literature, to
+compare with the respective DRF model predictions. Wherever
+possible, we chose a naturalistic driving study in similar condi-
+tions as simulated.
+Effect of road scenarios . We tested four road scenarios: different
+curve radii, different lane widths, obstacle avoidance and roadside
+furniture.
+Curve radius. The effect of curve radius on driving behaviour was
+examined by investigating the lateral position (curve-cutting
+behaviour) and speed while driving through curves.
+Lateral position: Research has shown that drivers exhibit
+‘curve-cutting’, that is, they do not follow the centreline of the
+lane but try to increase the effective radius of travel 29–31. For
+model validation, we selected the on-road study by Xu et al. 32
+because it provides the largest sampling of curve radii (0 –200 m).
+They found that the amount of curve-cutting reduced as the curve
+radius increased (Fig. 4-1b), which is coherent with the
+predictions of the DRF driver model (Fig. 4-1a). They quanti ﬁed
+curve-cutting behaviour using the trajectory transection rate
+(TTR), which normalises the lateral deviation from the lane
+centre with respect to the lane width, in curves. The DRF model
+exhibits curve-cutting behaviour due to its asymmetric shape
+deﬁned by parameters k1 and k2 (Fig. 2c). The DRF model also
+predicts that curve-cutting is higher in sport setting than in
+normal setting.
+Speed: Several studies report that the speed at which a curve is
+taken increases non-linearly with curve radius, in driving
+simulator33,34 and on-road tests 11,33,35. The paper from Taragin
+and Leisch 36 was chosen (Fig. 4-1d) because their on-road study
+provided data on curve radii range (60 –714 m) and lane width
+range (2.6 –4.3 m), which are similar to that simulated for the
+DRF model. The DRF model predicts that the speed increases
+with curve radius, asymptotically approaching straight road speed
+for a large radius (Fig. 4-1c), which is similar to the experimental
+results of Taragin and Leisch 36 (Fig. 4-1d). The DRF model
+exhibits this speed dependency on curvature because the width of
+the DRF changes with steering angle (Eq. ( 4)).
+Lane width . The effect of lane width was examined using the
+standard deviation of lateral position (SDLP) and speed.
+φcar
+R
+car
+X
+Y
+Predicted path
+(arc length = s)
+s = tla*v
+(xcar,y car)
+(δ,v )
+(xc,y c)
+0 la
+Arc length (s)
+(i) /afii9829 = 0°, /p10 = 0°, v = 10 ms–1 (ii) /afii9829 = 0°, /p10 = 0°, v = 15 ms–1 (iii) /afii9829 = 50°, /p10 = 0°, v = 10 ms–1 (iv) /afii9829 = 75°, /p10 = 0°, v = 10 ms–1
+Height of Gaussian (a)
+(i) Effect of p
+p2
+p1
+p2 < p1
+0 v*tv*tv *tla2 la1
+Arc length (s)
+Height of Gaussian (a)
+(ii) Effect of tla
+tla1
+tla2
+tla2 < tla1
+0 la1
+Arc length (s)
+Width of Gaussian (/afii9846)
+(iii) Effect of k1 and  k2
+k2: outer
+k1: inner
+k1 < k2
+Steering
+turned left
+Steering
+turned right
+Driver
+HighLow
+(iv)  /afii9846 /afii9846 when k1 < k2
+Outer σ
+Arc-length
+Inner σ
+x
+y
+x
+y
+x
+y
+x
+y
+(xcar,y car)
+(i) Torus with circular
+cross-section
+(ii) Torus with Gaussian
+cross-section
+(iii) Gaussian cross-section’s
+height decreases
+(iv) Gaussian cross-section’s
+height decreases and
+width increases
+ab
+c
+d
+v*t
+Fig. 2 Modelling the Driver ’s Risk Field. a The ‘predicted path’ is calculated using the trajectory of vehicle kinematics, assuming constant steering angle
+(δ) and speed ( v) for a ﬁxed look-ahead time ( tla). b The DRF is modelled as a modi ﬁed torus. Four steps are taken to form the DRF from (i) A torus that
+curves along the ‘predicted path’. (ii) Cross-section of torus is modi ﬁed to a Gaussian. (iii) Height ( a) and (iv) width ( σ) of the Gaussian become functions
+of arc length ( s), Eqs. ( 3) and ( 4), respectively. c The DRF is parameterized by six parameters: p, tla, k1, k2, m, c. The effect of p (steepness of the parabola)
+and tla are shown in (i) and (ii) and emerge from Eq. ( 3). The maximum height of the Gaussian is determined by p, tla and speed. (iv) Parameters k1 and k2
+link the steering angle to the width of the Gaussian. The DRF widens (if k1, k2 > 0) or narrows (if k1, k2 < 0). (v) k1 and k2 correspond to the inner and outer
+Gaussian widths, respectively. So, if k1 < k2, the inner Gaussian is narrower than the outer, which enables ‘corner cutting’ in curves. d The ﬁgure shows the
+shape and magnitude of DRF as a function of the position in the driving scene (global x and y coordinates). The DRF is a dynamic ﬁeld that expands with an
+increase in speed (compare (i) –(ii)) and steering angle (compare (i) –(iii) and (iii) –(iv)). MATLAB code for DRF GUI is provided in the Code availability
+section.
+ARTICLE NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-020-18353-4
+4 NATURE COMMUNICATIONS |         (2020) 11:4850 | https://doi.org/10.1038/s41467-020-18353-4 | www.nature.com/naturecommunications
+Lateral position: SDLP, which represents the swerving
+behaviour of a car, is reported to increase with lane width, in a
+simulator study by Godley et al. 37. They examined the SDLPs of
+participants on three different lane widths (2.5, 3.0, 3.6 m) (Fig. 4-
+2b). Similar results are reported in other simulator 38,39 and on-
+road studies40 which are coherent with the predictions of the DRF
+model (Fig. 4-2a). On a wider road, the DRF model has wider
+areas of low cost and hence, can use a larger width of the road
+without steering corrections (exhibit satis ﬁcing), resulting in
+higher SDLP.
+Speed: It is reported that the speed at which drivers negotiate
+roads increases as the lane width increases, in simulator 37,41–43
+and on-road studies 40,44. The DRF model also showed a similar
+increase in speed with lane width (Fig. 4-2c) and is compared to
+Speed (m s-1)Lateral deviation (m)
+0
+10
+20
+30
+-2
+0
+2
+4
+R200 m
+R200 m
+R200 m
+R200 m
+R100 m
+R300 m
+R400 m
+3.5 m
+7.0 m
+3.5 m 4.0 m
+3.0 m
+2.5 m
+3.5 m
+3.5 m 4.0 m
+Overtaking
+lane
+Overtaking
+lane
+Oncoming
+lane
+Start
+(0,0)
+Finish
+cfs
+(v=12.5 m s-1)
+ovs
+(v=7.5 m s-1)
+cff
+(v=15 m s-1)
+ovf
+(v=10 m s-1)
+ono
+(v=5 m s-1)
+onc
+(v=5 m s-1)
+Legend
+Parked car
+Moving car
+Road boundary
+Lane boundary
+Lane centre
+on
+ow
+Parameter
+estimation
+All cars parked or moving
+were 1.8 m wide, 5 m long
+–0.00112,00010,00080006000400020000
+12,00010,00080006000400020000
+0
+0.01
+0.02
+0.03
+0.04
+Curvature (m-1)
+Longitudinal distance (m)
+DRF model normal
+DRF model sport
+Experiment normal
+Experiment sport
+Experiment normal +/– 2/afii9846
+Experiment sport +/– 2/afii9846
+Right road
+boundary
+Overtaking
+lane
+Left road
+boundary
+Overtaking
+lane
+Oncoming
+lane
+Parameter
+estimation
+Curvature
+a
+b
+Fig. 3 Track used for testing the driver model. a The track contains four road and three traf ﬁc scenarios. The four road scenarios are (1) Curve radii:
+R100m, R200m, R300m and R400m, (2) Lane widths: 2.5, 3.0, 3.5 and 4.0 m, (3) Obstacle avoidance: A car was parked on a 3.5-m wide straight section
+such that 0.9 or 1.4 m of the car-width encroached on the road to simulate narrow (o n) and wide (o w) obstacles, respectively. (4) Roadside furniture: A
+200-m long row constituting of 10 cars was placed either outside the left lane boundary (asymmetric) or outside both lane boundaries (symmetric). The
+three trafﬁc scenarios are (1) Car following: Two cars travelling at a constant speeds of 12.5 m s −1 (cfs) and 15 m s−1 (cff) along the lane centre on different
+straight sections were followed. (2) Overtaking: Two cars travelling at constant speed of 7.5 m s −1 (ovs) and 10 m s −1 (ovf) were overtaken using a 3.5 m
+overtake lane. (3) Oncoming traf ﬁc: Two cars travelling at a constant speed of 5 m s −1 on the 2-m wide oncoming lane, approached the ego car. The ﬁrst
+oncoming car drove on the lane centre (on c). The second car was offset 0.3 towards the ego car. b To identify realistic values for the parameters of the DRF
+driver model, we replicated the track in a driving simulator and one volunteer drove 10 times ‘normally’ (blue) and 10 times in a ‘sporty manner ’ (red).
+Speed and lateral deviation from the lane centre are plotted as a function of the distance travelled along the lane centre of the track. The speed and lat eral
+deviation trajectories of the DRF driver model, for the most part, lie within the ± σ limits of the experimental trajectories. The ‘sport’ parameter setting
+consistently drives faster than the ‘normal’ setting and in both cases shows similar trends in acceleration braking as shown by the human. The driver model
+maintains itself within the lane boundaries, while exhibiting satis ﬁcing (i.e., not always following the lane centre), even in conditions that were not
+experienced during parameter estimation.
+NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-020-18353-4 ARTICLE
+NATURE COMMUNICATIONS |         (2020) 11:4850 | https://doi.org/10.1038/s41467-020-18353-4 | www.nature.com/naturecommunications 5
+the results from a (moving base) simulator study of Liu et al. 42.
+On a wider road, there is a larger area of ‘no risk ’, which means
+that the model can reach higher speeds before exceeding the risk
+threshold.
+On-road obstacles . Obstacle avoidance was simulated for the
+DRF model by parking cars partially on the road, which led to a
+temporary ‘narrowing’ of the street. The effect of this temporary
+narrowing was examined by analysing the lateral deviation and
+4c. Dunning et al.
+Grass
+Water
+–250
+0
+250
+Lateral deviation (pixel) Probability (−)
+Water
+Water
+100 110 120 130 140 150
+Distance (m)
+−0.5
+−0.25
+0.0
+Lateral deviation (m)
+4a. DRF model
+Asymmetric    Symmetric
+Parking
+−0.5
+−0.25
+0.0
+Mean lat deviation (m)   
+4b. DRF model 50
+ Grass Water
+water         water
+30
+40
+Completion time (s)
+4f. Dunning et al.50
+Asymmetric    Symmetric
+Parking
+10
+20
+30
+4e. DRF model
+100 110 120 130 140 150
+Distance (m)
+0
+10
+20
+30
+4d. DRF model
+4. Roadside furniture (parked cars)
+Sport: asymmetric
+Normal: asymmetric
+Sport: symmetric
+Normal: symmetric
+−100 −50 0 50 100
+Distance to obstacle (m)
+−1.75
+0
+1.75
+Lateral deviation (m)
+3a. DRF model
+Narrow obstacle
+Wide obstacle
+−100 −50 0 50 100
+Distance to obstacle (m)
+0
+10
+20
+30
+3d. DRF model
+Narrow Wide
+Obstacle
+−0.6
+−0.4
+−0.2Min lat deviation (m)
+3b. DRF model
+Empty Full
+Parking
+−0.2
+0
+0.2
+Mean lat deviation [m]
+3c. Edquist et al.
+Road centre
+Parked cars
+48
+Empty Full
+Parking
+12
+14
+16
+3f. Edquist et al.48
+Narrow Wide
+Obstacle
+10
+15
+20
+3e. DRF model
+Sport: narrow
+Normal: narrow
+Sport: wide
+Normal: wide
+3. On-road obstacles
+2.5 3.0 3.5 4.0
+Lane width (m)
+0
+0.15
+0.30
+0.45
+SDLP (m)
+2a. DRF model
+2.5 3.0 3.6
+Lane width (m)
+0
+0.15
+0.30
+SDLP (m)
+2b. Godley et al.
+2. Lane width 2.5 3.0 3.5 4.0
+Lane width (m)
+10
+15
+20
+25
+2c. DRF model
+2 2.5 3 3.5 4
+Lane width (m)
+10
+15
+20
+25
+2d. Liu et al. 37 42
+0 200 400
+Curve radius (m)
+30
+60
+TTR (%)
+1a. DRF model
+0 100 200
+Curve radius (m)
+30
+60
+TTR (%)
+1b. Xu et al.32
+02 0 0 4 0 0
+Curve radius (m)
+10
+20
+30
+1c. DRF model
+03 0 0 6 0 0
+Curve radius (m)
+10
+20
+30
+Speedcurve centre (m s−1)Speed (m s−1)Speed (m s−1)
+Speedcurve centre (m s−1)Mean speed (m s−1)
+Mean speed (m s−1)Min speed (m s−1)
+Mean speed (m s−1)
+Mean speed (m s−1)
+1d. Taragin and Leisch  36
+1. Curve radius
+Sport parameter setting
+Normal parameter setting
+Metric 1 Metric 2
+Fig. 4 Validating the model in road scenarios using literature. Each row represents one scenario and the columns compare two different metrics in that
+scenario. The DRF model results are compared to the results from literature (Supplementary Notes 1–8) in the adjacent subﬁgures (Supplementary Figures 3–6).
+In the DRF model sub ﬁgures, the black and grey markers represent the sport and normal parameter settings, respectively. 1 Curve radius: 1a and 1b show that
+the DRF model predicts the decrease in ‘curve-cutting’ (quantiﬁed using TTR) as curve radius increases. 1c and 1d show the speed at the curve centres. The
+sport setting of DRF cuts the curves more (1a) and drives at higher speeds (1c) compared to the normal setting. 2 Lane width: 2b shows that the (mean ± SE)
+standard deviation of lateral position (SDLP) of the vehicle increases as the lane width increases. The DRF model (2a) can predict this trend. 2c and 2d(mean ±
+SD) show that the speed at which drivers negotiate a road increases as the lane width increases. 3 On-road obstacles: In 3b, the ‘wide’ obstacle encroaches
+more onto the road compared to the ‘narrow’ obstacle. The minimum lateral deviation (3b) is calculated from the trajectories in 3a. Drivers moved away from
+the parked cars (3c: lane centre = 0, bars indicate 95% CIs). 3b shows that the DRF model showed a similar trend of moving away from the obstacle. Drivers
+drove slower when there were parked cars, as compared to when there were no parked cars encroaching the road (3f: bars indicate 95% CIs). 3e shows that the
+DRF model slows down for obstacles covering the road partially.4 Roadside furniture: In the asymmetric case, the mean lateral deviation from the lane centre is
+away from the parked cars (4b) and away from water (more dangerous than grass) in 4c. Sub ﬁgure 4c shows the distribution of lateral position of the
+participants. 4e and 4f show that in the symmetric condition with ‘danger’ on both sides of the lane, the DRF model correctly predicted that the drivers drove
+slower than in the asymmetric case. The mean lateral deviation (4b) and mean speed (4e) are calculated from the trajectories in 4a and 4d, respectively .
+ARTICLE NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-020-18353-4
+6 NATURE COMMUNICATIONS |         (2020) 11:4850 | https://doi.org/10.1038/s41467-020-18353-4 | www.nature.com/naturecommunications
+speed of the ego vehicle. Several researchers have reported, in on-
+road studies, that on-street parking induces ‘trafﬁc calming ’ by
+reducing the average speed 45–47. We selected the simulator study
+of Edquist et al. 48 because they measured the effect of on-street
+parking on lateral position and speed.
+Lateral deviation: Edquist et al. 48 reported that the mean lateral
+position of the vehicles shifted away from the parked cars (Fig. 4-
+3c). The DRF model yields a similar trend, where the ego car
+deviates away from the parked car (Fig. 4-3b).
+Speed: A reduction in mean speed was reported in the presence
+of parked cars (Fig. 4-3f)48, which is coherent with the behaviour
+shown by the DRF model (Fig. 4-3e). It should be noted that
+Edquist et al. 48 reported the mean speed since they had a row of
+parked cars. However, we had only one parked car, which means
+we can only report the minimum speed. The DRF model
+successfully avoided on-road obstacles by steering and braking.
+Roadside furniture . Road shoulders, guard-rails, vegetation and
+parked cars have been reported to affect a vehicle ’s lateral posi-
+tion and speed 31,49. The DRF model was simulated in an
+‘asymmetric’ case where a 200-m long row of cars was parked
+outside the left lane boundary, and a ‘symmetric’ case where they
+were parked outside both lane boundaries. Dunning et al. 50
+examined ‘asymmetric’ (with water (more risk) on one and grass
+(less risk) on the other side of the lane boundary), and ‘sym-
+metric’ (with water on both sides) conditions in their experiment.
+Lateral position: Dunning et al. 50 reported that the lateral
+position of the participants shifted towards the less dangerous
+grass in the asymmetric case and remained in the centre in the
+symmetric case (Fig. 4-4c). Similar results are seen in the
+behaviour of the DRF model, where the ego car moves away from
+the parked cars (at lateral position =+ 2.75 m) and remains in the
+centre of the lane in the symmetric case (Fig. 4-4b).
+Speed: Dunning et al. 50 reported that participants, on average,
+drove slower in the symmetric case (Fig. 4-4f). The DRF model
+also shows similar behaviour where the ego car drove faster in the
+asymmetric case as compared to the symmetric case. This is
+because in the asymmetric case, the DRF model steered away
+from the ‘risky’ parked cars and could maintain a higher speed
+without exceeding the risk threshold. In the symmetric case,
+driving on the centreline was not enough to reduce the risk below
+the threshold and hence the model had to slow down. In both
+conditions, the sport setting drove faster than the normal setting
+of the DRF model. The DRF model could react to roadside
+furniture by steering and braking since the DRF spreads beyond
+the lane boundaries.
+Effect of trafﬁcs c e n a r i o s. We tested three trafﬁc scenarios, namely:
+car following, overtaking and interaction with oncoming cars.
+Car following . We tested the effect of lead car speed on time
+headway (THW) and braking intensity during car following. We
+simulated ‘slow’ and ‘fast’ car following with lead cars that
+maintained constant speeds of 12.5 and 15 m s
+−1, respectively.
+THW: THW during car following represents the time available
+to the driver of the following vehicle to reach the same level of
+deceleration as the lead vehicle, in case the lead vehicle brakes.
+Several studies in literature examined the effect of lead vehicle
+speed on THW 51–53 and reported that (for lead car speed above
+10 m s−1) the preferred time headway under steady-state car
+following (THW pref) is almost constant and independent of the
+lead car speed. The DRF model also predicts an almost constant
+THWpref (Fig. 5-1b). The DRF model, with the current parameter
+values, behaved more conservatively (higher THW pref) than the
+average human driver, as reported by He et al. 53 in their on-road
+study (Fig. 5-1c). In addition, the THW pref for the sport
+parameterization was smaller than that for the normal para-
+meterization of the DRF model. This concurs with the ﬁndings in
+the literature, where sensation-seeking drivers were reported to
+maintain lower THW pref compared to sensation avoiding
+individuals52,54.
+Braking intensity: Another aspect of car following that is
+widely studied is the braking intensity of the car in response to
+the separation to the lead car. In a test-track study, Van der
+Horst55 reported that the braking intensity (deceleration at the
+onset of braking) increased as the approach speed increased
+(Fig. 5-1f), which corresponds to the DRF model ’s results (Fig. 5-
+1e). The study also reported that with ‘hard braking ’ instruction,
+participants’ braking intensity was higher than in normal braking
+condition. The DRF model also predicts that a sport parameter
+setting (black markers) will yield higher deceleration than the
+normal setting (grey markers: Fig. 5-1e). The DRF model exhibits
+this behaviour since the lead car encroached the DRF at a higher
+rate when the approach speed was high and at a lower rate when
+the approach speed was low. This ‘rate of encroachment ’
+translated into velocity reduction at a proportional rate.
+Overtaking. We studied the effect of lead vehicle speed on
+overtake-distance (distance covered during the overtaking man-
+oeuvre) and on the TTC at which the overtaking manoeuvre is
+initiated. To test the DRF model, we simulated a ‘ﬂying overtake
+manoeuvre’ in which there are no oncoming cars on the adjacent
+lane. Figure 5-2a illustrates one of the major drawbacks of the
+DRF model: it overtakes the car but does not return to its own
+lane after the overtake. This is the drawback of using a cost-
+threshold-based satis ﬁcing controller. Since the model perceives
+the road to be twice as wide (ego + overtaking lane), it comes
+back (to its lane) just enough to bring the risk below its threshold
+(satisﬁcing). Secondly, the DRF model would not be able to
+perform an ‘accelerative overtake’ since its speed is limited by the
+Vdes parameter.
+Overtake-distance: Crawford 56 reported that the overtake-
+distance increased with the speed of the overtaken car (Fig. 5-2c).
+This corresponds to the DRF model ’s behaviour, where the
+overtake-distance was higher for the 10 m s −1 overtaken car than
+for the 7.5 m s −1 overtaken car. In addition, note that the sport
+setting of the DRF model had larger overtake-distances than the
+normal setting.
+TTC at overtake initiation: Several studies investigate time-to-
+collision (TTC = r a t i oo fr e l a t i v ed i s t a n c et or e l a t i v es p e e d )a tt h e
+initiation of overtaking manoeuvres either to the lead car57 or with
+the oncoming car58,59 (outside of the scope of our scenarios). The
+on-road study by Chen et al. 57 reported that the TTC at (start of)
+lane change increased with the speed of the overtaken car (Fig. 5-
+2f). Similar behaviour is shown by the DRF model, but more
+interestingly, the sport setting of the DRF model maintained a lower
+TTC than the normal setting. In a driving simulator study, Farah60
+reported that young male drivers, generally considered sporty
+drivers, had smaller TTCs at lane change than adults.
+Oncoming traf ﬁc. We examined the effect of oncoming traf ﬁc’s
+lateral position on the DRF model ’s choice for speed and lateral
+position. We simulated a narrow rural road with 2-m wide ego
+and oncoming lanes, without any barrier in between. Lewis-Evans
+and Charlton 41 reported that on a two-lane rural road, drivers
+drove more towards the road centre, in the absence of oncoming
+trafﬁc. The DRF model exhibits similar behaviour, with a bias
+(≈50 cm) towards the road centre (Fig. 5-3b: ‘absent’ condition).
+NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-020-18353-4 ARTICLE
+NATURE COMMUNICATIONS |         (2020) 11:4850 | https://doi.org/10.1038/s41467-020-18353-4 | www.nature.com/naturecommunications 7
+The model shows this behaviour because the paved road to the
+left (i.e., oncoming lane with no traf ﬁc) is less ‘dangerous’ than
+the road boundary to the right.
+Lateral position: Studies that investigated the effect of
+oncoming traf ﬁc61–63 have reported that drivers ’ lateral position
+depends on the presence of oncoming vehicles in the adjacent
+lane. Rasanen 61, in an on-road study, compared driver ’s lateral
+position with and without oncoming traf ﬁc (Fig. 5-3c) and
+reported behaviour similar to DRF model predictions, where the
+lateral position moves away from the lane with oncoming traf ﬁc.
+In addition, it moves even further when the oncoming car is offset
+towards the lane position of the ego car (Fig. 5-3b).
+10 15 20 25 30
+1
+2
+3
+1c. He et al. 
+6.0 8.5 11.0 13.5
+−6
+−4
+−2
+0
+1e. DRF model
+51 0 1 5 2 0 2 5
+−6
+−4
+−2
+0
+1f. Van der Horst
+Normal braking
+Hard braking
+56 58
+1. Car-following
+Sport: slow lead car
+Normal: slow lead car
+Sport: fast lead car
+Normal: fast lead car
+0 50 100 150 200 250 300
+Distance travelled after overtaken car appeared (m)
+0
+2
+4
+Lateral deviation (m) 
+2a. DRF model
+Overtaking
+lane
+Ego (default)
+lane
+0 50 100 150 200 250 300
+Distance travelled after overtaken car appeared (m)
+0
+15
+30
+2d. DRF model
+7.5 10
+130
+150
+170
+190Overtake distance (m)
+2b. DRF model
+7.5 10
+3
+5
+7
+TTC at lane change (s)
+2e. DRF model
+10 15 20 25
+0
+100
+200Overtake distance (m)
+2c. Carwford 59 60
+2. Overtaking
+Sport: slow overtake
+Normal: slow overtake
+Sport: fast overtake
+Normal: fast overtake
+10 15 20 25 30 35 40
+0
+10
+20
+TTC at lane change (s)
+2f. Chen et al.
+50 percentile
+−20 −10 0 10 20
+Distance to passing the oncoming car (m)
+0
+0.5
+1
+Lateral deviation (m)
+3a. DRF model
+−20 −10 0 10 20
+Distance to passing the oncoming car (m)
+0
+10
+20
+30
+3d. DRF model
+Absent Centre Offset
+Oncoming traffic
+0
+0.2
+0.4
+0.6
+Min lat deviation (m)
+3b. DRF model
+Oncoming
+lane
+Road
+boundary
+Absent    Present
+Oncoming traffic
+0
+0.2
+0.4
+0.6
+Min lat deviation (m)
+3c. Räsänen
+Road
+boundary
+Oncoming
+lane
+Absent Centre Offset
+Oncoming traffic
+0
+10
+20
+30
+3e. DRF model
+Absent    Present
+Oncoming traffic
+24
+26
+28
+30
+3f. Räsänen64 64
+3. Oncoming traffic
+Sport: car on centreline
+Normal: car on centreline
+Sport: offset car
+Normal: offset car
+Metric 1 Metric 2
+0 100 200 300 400 500 600
+Distance travelled after lead car appeared (m)
+0
+2
+4
+6
+Time headway (s)
+1a. DRF model
+0 100 200 300 400 500 600
+Distance travelled after lead car appeared (m)
+0
+15
+30
+1d. DRF model
+12.5 15.0
+1
+2
+3
+1b. DRF model
+Speed (m s−1)Speed (m s−1)Speed (m s−1)
+Approach speed (m s−1)Approach speed (m s−1)Lead car speed (m s−1)Lead car speed (m s−1)
+Time headwaypref (s)
+Time Headwaypref (s)
+Accelerationbrake (m s−2)
+Overtaken car speed (m s−1) Overtaken car speed (m s −1) Overtaken car speed (m s −1) Overtaken car speed (m s −1)
+Accelerationbrake (m s−2)
+Min speed (m s−1)
+Min speed (m s−1)
+Fig. 5 Validating the model in traf ﬁc scenarios using literature. Similar to Fig. 4, each row represents one scenario and the two metrics in the two columns
+compare the DRF model results to trends shown in the literature (Supplementary Notes 9 –14). For the DRF model ﬁgures, the black and the grey markers
+represent the sport and normal parameter settings, respectively (Supplementary Figs. 7–9). 1 Car following: 1b and 1c indicate that the preferred time headway is
+independent of the speed. In 1c, the circular markers indicate the median and the whiskers indicate 25th and 75th percentile. 1e and 1f show that the bra king
+intensity (represented by the acceleration at brake initiation) increases as the approach speed to the obstacle increases.2 Overtaking: 2b and 2c show that the
+DRF model could correctly predict that the overtake-distance increases as the speed of the overtaken car increases. In the sport setting, the model covers larger
+distance than in normal setting, indicating‘smoother’ trajectories in the sport setting. However, the DRF model does not come back to its own lane sufﬁciently
+(2a). Subﬁgures 2e and 2f show that the predictions of the DRF model agree with the results in literature that show the time to collision (TTC) at the start of the
+overtake manoeuvre increases, as the speed of the overtaken car increases.3 Oncoming trafﬁc: In 3b and 3c, the minimum lateral deviation is shown on the y-
+axis. The condition where no oncoming cars were present is indicated by ‘absent’. The DRF model simulated one car that drove on the oncoming lane ’sc e n t r e
+(‘centre’ in 3b) and another car that was offset towards the ego lane (‘offset’ in 3b). In normal and sport setting the DRF model moved away from the oncoming
+trafﬁc, which is in agreement with the driver ’s behaviour. 3e and 3f show that the DRF model slowed down, like humans (3f), when it encountered oncoming
+trafﬁc. In 3c and 3f, the black markers indicate mean, and whiskers indicate the ±SD.
+ARTICLE NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-020-18353-4
+8 NATURE COMMUNICATIONS |         (2020) 11:4850 | https://doi.org/10.1038/s41467-020-18353-4 | www.nature.com/naturecommunications
+Speed: The DRF model slowed down in the presence of
+oncoming traf ﬁc, and slowed down more when the lateral
+position of the oncoming car was offset towards the ego car
+(Fig. 5-3e). Rasanen 61 (Fig. 5-3f) reported no signi ﬁcant
+difference in speed between the oncoming traf ﬁc ‘absent’ and
+‘present’ conditions. However, Rosey et al. 62 reported a signiﬁcant
+reduction in speed when drivers encountered oncoming vehicles.
+Moreover, they also reported a signi ﬁcant decrease in speed while
+encountering trucks as compared to cars 62, which is in line with
+the predictions of the DRF model.
+Discussion
+In this paper, we set out to ﬁnd the underlying principle that
+governs human-driving behaviour, implement this into a cost
+function for an operational driver model, and evaluate the gen-
+eralizability of the modelled behaviour across different traf ﬁc
+scenarios by comparing it to adaptations in speed and lateral
+position from available literature of real-world and driving
+simulator studies.
+One of the principles that emerged from qualitative driver
+behaviour theories was ‘perceived risk ’, However, to the best of
+our knowledge, ‘perceived risk’ has not been quanti ﬁed or used in
+a driver model to generate human-like driving behaviour. In this
+paper, we operationalized the ‘perceived risk ’ by multiplying the
+DRF (which accounts for the driver ’s perception-action uncer-
+tainty) with the cost map of the driving scene (which quanti ﬁes
+the consequence of a hazard/event). This makes the cost function
+‘uncertainty-aware’.
+A driver ’s ‘uncertainty-awareness’ is embedded in the DRF
+model via four features. First, the DRF widens along the ‘pre-
+dicted path ’ and hence is wider than the car-width. Without this
+feature, the DRF model would not slow down on a narrow road
+(wider than car-width). Second, the DRF widens and elongates
+with increasing speed. Without this, the DRF model would not
+maintain constant time headways in car following or slow down
+for curves. Third, the DRF widens with an increase in steering
+angle. Without this feature, the DRF model would not slow down
+more for curves with higher curvature than for curves with lower
+curvature, and would negotiate all the curves at the same speed.
+Fourth, the asymmetric widening of the DRF along the ‘predicted
+path’ (generally k
+1 < k2) lets the model exhibit ‘curve-cutting’
+behaviour. Without the asymmetric widening, the model would
+always follow the lane centre.
+Dealing with uncertainty in the ego-robot ’s and the external
+obstacles’ location has been widely studied 64,65. Several models,
+ranging from tentacle-like algorithms 66 to Rapidly-exploring
+Random Trees (RRT) 67, have been proposed for trajectory and
+speed planning. The methods that are closest to the cost function
+proposed in this paper are based on uncertainty propagation 68.
+Most of these algorithms account for the ﬁrst two points men-
+tioned in the previous paragraph, namely: widening of the
+uncertainty with predicted path and speed dependency of
+uncertainty ﬁeld. In addition, these algorithms account for the
+uncertainty in predicting the future location of the obstacles. This
+feature needs to be incorporated in the driving scene cost map of
+future versions of the DRF model (Fig. 6d). However, algorithms
+in the literature seldom incorporate the latter two features:
+widening of uncertainty with steering and asymmetric uncer-
+tainty propagation; hence, existing models cannot produce
+‘curve-cutting’ and curvature-dependent speed negotiation,
+behaviours that are seldom required in robotic applications. In
+short, to generate human-like behaviour, the underlying cost
+function has to be ‘uncertainty-aware’ and incorporate the
+(motor-control inspired) effect of signal-dependent noise to
+replicate the speed-accuracy trade-off that we see in driving
+behaviour.
+Implementing a satis ﬁcing controller in a potential ﬁeld has its
+drawbacks. The model did not return to its lane after overtaking
+the lead car because it can sense hazard only from physical objects
+(e.g., cars, road boundary) and cannot perceive the ‘tactical’ risk
+of being in an oncoming lane. Other tactical risks, such as risks
+Tactical costs Predicted path Surround DRF
+Uncertainty in
+dynamic obstacles
+(i)
+(ii)
+(ii)
+(i)
+(ii)
+(i)
+(ii)
+(i)
+(ii)
+Ego car
+DRF
+Oncoming car
+ab c d
+Fig. 6 Limitations of the model. a Tactical costs: The DRF model can only perceive physical risk from objects such as cars, trees, etc. However, it cannot
+perceive the risk from oncoming traf ﬁc which is currently not in its ﬁeld of view. Hence, at an intersection, rather than slowing down, it will speed up, since
+there is larger road-area available, which is contrary to what a human would do. This can be solved by introducing additional ‘tactical costs’ that artiﬁcially
+increase the risk of an intersection (red square). This approach can be extended to other elements such as traf ﬁc lights or zebra crossings. b Predicted
+path: For simplicity, the DRF model currently uses a circular arc for predicting the path (for preview time tla seconds). This circular path arises due to the
+assumption that the current steering angle ( δ) and speed ( v) will be held constant over the preview time. However, we can optimise for a vector of steering
+angles and speed (as is done in a Model Predictive Control). This allows for a ﬂexible DRF and better prediction of microscopic trajectories. c Surround
+DRF: In this paper, the DRF only extends in front of the vehicle (top). However, the risk ﬁeld extends on all four sides. The bottom image is merely a
+suggestion, and the shape has not been investigated. This ‘surround DRF’ will help predict human-driving behaviour in additional scenarios such as: being
+followed by another car, being overtaken, lane change manoeuvres, etc. d Uncertainty in dynamic obstacles: The DRF represents the driver ’s (self)
+perception-action uncertainty. However, the motion of dynamic obstacles is less predictable. This uncertainty was ignored in this paper, but will h ave to be
+accounted for in future iterations of this model.
+NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-020-18353-4 ARTICLE
+NATURE COMMUNICATIONS |         (2020) 11:4850 | https://doi.org/10.1038/s41467-020-18353-4 | www.nature.com/naturecommunications 9
+that may occur when approaching an intersection or a red traf ﬁc
+light, are not incorporated in the model either. However, the
+structure of the model facilitates the addition of these ‘tactical’
+costs to different road elements. Other limitations include the use
+of car-kinematic model, using a circular arc for ‘predicted path ’
+calculations, and the DRF extending only in front of the ego car.
+In future iterations, a car-dynamic model, a spline instead of a
+circular arc (Fig. 6b), and a DRF that surrounds the vehicle on all
+four sides (Fig. 6c) can help generate better microscopic trajec-
+tories and generate behaviour in more scenarios (e.g., ego car
+being overtaken).
+Satisﬁcing behaviour becomes important when developing
+advanced driver assistance systems (ADAS) that physically
+interact with the driver, e.g., the haptic shared controller (HSC)
+69,
+which guides the driver via torques on the steering wheel. If the
+HSC tries to follow a reference (e.g., the lane centre), it will exert a
+torque and bring the driver to the centreline, even if the driver
+was satis ﬁed with an off-centre lateral position. To avoid these
+undesired torques that can severely hamper the acceptance of the
+system, we need threshold-based models that can exhibit satis ﬁ-
+cing behaviour.
+An important contribution of this paper is the extensive
+literature-based validation. Note that, in this paper, we do not
+compare the trajectories of steering angle, speed and lateral
+deviation, but assess the behaviour of the model by comparing
+trends in certain metrics to those reported in the literature. Six
+out of the seven scenarios were validated using on-road studies or
+studies from driving simulators backed by on-road studies (only
+simulator studies found for roadside furniture: Supplementary
+Tables 1 –8). In Fig. 4 (road scenarios), owing to the simplicity
+and ‘static’ nature of road elements, there was abundant literature
+and consensus amongst researchers as to which metric re ﬂected
+human behaviour (e.g., curve-cutting: TTR, lane width: SDLP). In
+Fig. 5 (trafﬁc scenarios), de ﬁning a metric that could capture
+human-driving characteristics was more dif ﬁcult, owing to
+the complexity that arises due to its dynamic nature. Despite
+these limitations, as the results show (Figs. 4 and 5), the strength
+of the cost function (perceived risk) and the risk-threshold driver
+model lies in the fact that they generate human-like behaviours in
+different road and traf ﬁc conditions, including previously unseen
+scenarios. Such a generalizable model in which the behaviour
+emerges from an intrinsically motivated cost does not only pro-
+vide understanding about human motivations for driving, but
+also has applications in the design of automated systems. For
+example, it could be used to make the automated vehicle drive in
+a human-like manner, which is reported to be preferred by
+humans4,63. Machine learning algorithms could use the ‘perceived
+risk’ (cost function) as a feature that could be extracted from
+demonstrated human-driving trajectories.
+Our model has been developed for unassisted driving. However,
+since its behaviour emerges from the underlying motivations for
+driver adaptation, we hypothesise that it should be able to capture
+driver adaptations to various driving support systems. For example,
+drivers drove faster when their vehicle was equipped with lane-
+keeping assistance based on HSC than in a car without this assis-
+tance70. The DRF model should be able to predict this speeding
+behaviour, since HSC essentially provides a ‘channel’ on the road
+through which it guides the driver, reducing the driver’sp e r c e p t i o n -
+action uncertainty. This would translate to a narrower DRF, which
+allows a driver to drive faster before exceeding his/her risk threshold.
+This thought experiment illustrat es that a generalizable model in
+which behaviour emerges from underlying cost functions, not only
+predicts unassisted driver behaviour but also the effect of automated
+and assistive technologies (on driver behaviour).
+In short, maintaining the ‘consequence of the human ’s
+perception-actions noise ’ under a threshold level seems to be the
+underlying principle for driver ’s adaptations in speed and lateral
+position to a wide variety of road and traf ﬁc conditions.
+Methods
+Driver model control structure . This paper focuses on validating the DRF (the
+dynamic ﬁeld). However, to generate model predictions on human-driving beha-
+viour, the risk metric calculated using the DRF needs to be connected to a con-
+troller that converts the risk metric into control actions. We chose a simple control
+algorithm over more complex ones for two reasons. First, we wanted to avoid the
+ambiguity in attributing the driver model ’s behaviour to the complex algorithm
+instead of the DRF. Second, we wanted to avoid unnecessary complexity in for-
+malising the optimisation problem. The DRF is an analytically calculable non-
+linear function (of the driver ’s states). However, since the environment is repre-
+sented as a discretized (grid) cost map, the risk metric needs to be calculated
+numerically. Moreover, we need a controller that maintains the cost below a certain
+threshold and not one that minimises it. Hence, formulating the optimisation
+problem with the necessary constraints would itself be a separate study and is
+beyond the scope of this paper.
+The basic control structure (Fig. 7a) includes a driver model that uses the
+information from the environment and the feedback from the vehicle kinematics to
+generate control actions (vk: speed, and δk: steering angle). The inner workings of the
+driver model block are shown in Fig. 7b. The DRF is multiplied with the cost map of
+the driving scene, and summed over all points to provide us with the quanti ﬁed
+perceived risk (cost). This cost is then used by the driver model algorithm, which is
+based on the risk-threshold theory, to generate the control actions.
+Driver model algorithm . The perceived risk ( C), in combination with the risk
+threshold (Ct) and desired speed ( Vdes), is used to formulate the DRF Model. Vdes is
+the speed at which the driver wants to drive on an open straight road, uninhibited.
+In accordance to the risk-threshold theory, the model tries to maintain the risk
+(C) below the risk threshold ( Ct), and hence does not provide a speci ﬁc trajectory,
+but rather a range of safe trajectories (satis ﬁcing). To avoid the ‘bouncing’
+behaviour exhibited by satis ﬁcing controllers (Supplementary Fig. 2), the DRF
+model is complemented by a heading controller for the steering (Eq. ( 5)).
+δkþ1 ¼ δk þ kh ϕroad /C0 ϕcar
+/C0/C1
+; ð5Þ
+where ϕroad and ϕcar are the heading of the road and car tlah seconds in the future,
+respectively. The gain of the heading controller is kh. The predictions about the
+future position and orientation of the car are made using the ‘predicted path ’
+calculations explained earlier in the ‘Results’ section.
+The driver model algorithm (Fig. 7c), at each time step ( k), compares the risk
+(Ck) to risk threshold ( Ct), and speed ( v) to the goal ( Vdes). This results in four
+distinct cases of inequality. We do not consider the equality relations (e.g., if C =
+Ct) because, practically they rarely occur.
+(1) If ( Ck < Ct and vk < Vdes): This condition generally occurs when you start the
+journey. The model speeds up at a rate proportional to ( Vdes − vk). The parameter
+kv (speciﬁc for each driver) represents how aggressively the model accelerates. The
+steering is determined by the heading controller ( δhead). Hence, δk+1 = δhead and
+vkþ1 ¼ vk þ kv Vdes /C0 vkðÞ .
+(2) Else if ( Ck > Ct and vk < Vdes): In this condition, the incurred risk is more
+than the threshold ( Ct), and the goal of desired speed has also not been achieved. In
+this case, we ﬁrst check if the steering alone can help the model reduce the risk
+below the threshold. This check is performed by using the fmin_bound function,
+which ﬁnds the steering angle δop (within the bounds of δk − 180∘ to δk + 180∘) that
+minimises the risk ( Ck) assuming a speed of vk. It also calculates the risk ( Cop)a t
+this δop.
+(2a) If the model can ﬁnd a δop such that Cop < Ct, then we continue to
+accelerate (to achieve our goal) and steer using δopt that reduces Ck to Ct (and not
+δop that reduces Ck to Cop). This is done so that the model does not ‘over correct’.I f
+we were to use δop to minimise Ck to Cop, it would always take the model to the lane
+centre. Hence the model tries to apply a steering that is just enough to reduce the
+risk ( C
+k) and get it below the threshold ( Ct). Hence δk+1 = δopt and
+vkþ1 ¼ vk þ kv Vdes /C0 vkðÞ .
+(2b) If the model cannot ﬁnd a δ such that Cop > Ct, then the model slows down
+proportional to Cop − Ck (and not Cop − Ct) since the steering applied = δop is
+expected to reduce Ck to Cop. This is done so that we do not slow down more than
+what is required. Hence, δk+1 = δop and vkþ1 ¼ vk þ kvcðCop /C0 CkÞ.
+(3) Else if ( Ck < Ct and vk > Vdes): In this case the model slows down, while being
+steered by the heading controller since the risk is lower than the threshold and
+speed is higher than what is desired. Hence, δk+1 = δhead and
+vkþ1 ¼ vk þ kv Vdes /C0 vkðÞ .
+(4) Else if ( Ck > Ct and vk > Vdes): In this case both the speed and risk are over
+the desired limits and hence the model slows down while steering with δop that
+minimises Ck. Hence δk+1 = δop, and vkþ1 ¼ vk þ kvc Ct /C0 CkðÞ þ kv Vdes /C0 vkðÞ .
+Parameter estimation. The parameters of the DRF model were estimated from the
+experimental data ( n = 1; 10 trials normal, 10 trials sport driving). The experiment
+was approved by the Human Research Ethics Committee (HREC) —TU Delft, and
+a signed informed consent was obtained from the volunteer. The implementation
+ARTICLE NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-020-18353-4
+10 NATURE COMMUNICATIONS |         (2020) 11:4850 | https://doi.org/10.1038/s41467-020-18353-4 | www.nature.com/naturecommunications
+of the track in a ﬁxed base driving simulator is shown in the Supplementary
+Video 1. Simulations of the DRF model in normal and sport parameter settings are
+shown in Supplementary Videos 2 and 3.
+The parameters can be segregated into three types: ﬁrst, the DRF parameters
+that determine the shape of DRF, and are speci ﬁc to each person. Second, the
+driver model parameters that connect the risk estimated by the DRF to the control
+inputs of the vehicle. Third, the environment parameters that describe the
+consequences of being in a particular state (position, velocity, etc.).
+DRF parameters (Table 1): As explained in the ‘Results’ section, the six
+parameters ( p, tla, m, c, k1, k2)d e ﬁne the DRF. Parameter c, which represents the
+initial width of the DRF can be directly calculated from the width of the ego car
+(2.0 m). The remaining ﬁve parameters were estimated using the grid search
+algorithm.
+Driver model parameters (Table 2): The driver model parameters include the
+speed controller gains ( kvc, kv), the risk threshold ( Ct), and the desired speed ( Vdes).
+Parameters Vdes and kv can be directly estimated by driving on a long straight
+section of a wide road, where the driver reaches his/her unbounded desired speed
+(V
+des) while accelerating (proportional to kv) from a standstill. kvc and Ct were
+estimated using the grid search algorithm.
+Environment parameters (Table 3): The environment parameters de ﬁne the
+consequence of being in a particular state (restricted to position, in this study).
+These parameters are independent of the driver and hence are the same for
+everyone. Personalised driving behaviour is obtained by changing the parameters
+of the DRF and the driver model. In this paper, we assumed the cost (consequence)
+of being in the ‘ego lane ’ (Croad) = 0, and outside the lane boundary ( Cenv) = 500.
+The costs of all other objects in the environment were identi ﬁed relative to Cenv.
+Different objects have different costs; for example, a car in traf ﬁc may be assigned a
+cost of 4000, and a roadside tree may be assigned a cost of 8000. However, since the
+focus of this paper is to demonstrate the working of the model, and not identifying
+the costs of different obstacles, all the obstacles in our simulation were identical: a
+sedan (1.8-m wide and 5-m long). This ‘obstacle car’ traversed with different speeds
+(for overtaking, oncoming and car-following scenarios), or was parked alongside
+the road (for obstacle avoidance, asymmetric and symmetric road furniture). In all
+these scenarios, the same cost ( C
+obs) was assigned to the car, as identi ﬁed using the
+grid search algorithm. The overtaking lane ( Covt lane ) was ‘modelled’ as rectangular
+obstacles with a ‘very low cost ’ (identiﬁed using grid search), while the oncoming
+Table 1 Driver ’s Risk Field parameters.
+pt la mk 1 k2 c
+Normal and Sport 0.0064 3.5 0.001 0 1.3823 0.5
+Table 2 Driver model parameters.
+Ct Vdes kvc kv
+Normal 3000 21.6 1.5 × 10 −4 0.14
+Sport 5200 26.0 1.5 × 10 −4 0.30
+Vehicle
+kinematics
+Driver
+model
+Environment Parameters
+x_cark+1, y_cark+1, _cark+1, vk+1
+Cost map of
+driving scene
+Z-1
+DRF
+x_cark , y_cark ,_ c a rk, vk
+Cost map of
+driving scene
+Sum over
+all grid points
+Quantified
+perceived
+risk
+DRF
+parameters
+Driver model
+algorithm
+Ct, Vdes, kvc, kv
+Driver model
+parameters
+vk+1, k+1
+p, m, c, tla, k1, k2
+Start
+If Ck <Ct
+and
+vk <Vdes
+If Ck >Ct
+and
+vk <Vdes
+If Ck <Ct
+and
+vk >Vdes
+If Ck >Ct
+and
+vk >Vdes
+vk+1 = vk+kv(Vdes-vk)
+k+1=using fminbound find
+angle that reduces Ck+1 to Ct
+vk+1 = vk+kvc(Ct-Ck)
+k+1=using fminbound find
+angle that minimizes Ck+1
+vk+1 = vk+kvc(Ct-Ck)+ kv (Vdes-vk)
+k+1=using fminbound find
+angle that minimizes Ck+1
+v k+1 = kv (Vdes-vk)
+k+1=heading controller
+vk+1 = kv (Vdes-vk)
+k+1=heading controller
+yes
+Yes
+yes
+no
+yes
+yes
+No
+No
+δ
+φ
+φ
+vk+1, k+1δ
+x ∑ δ
+δ
+δ
+δ
+δ
+only 
+steering
+can reduce
+C    tok+1
+<Ct
+1
+2
+3
+4
+2a
+2b
+Driver model control structure
+Driver model block Driver model algorithm
+a
+bc
+Fig. 7 Driver model. A simple driver model that utilises the estimated risk metric to generate control actions is shown. a Driver model control structure:
+The driver model uses the cost map of the driving scene (information about the environment), and the vehicle states (position: xcar, ycar; heading: ϕcar; and
+speed: (v)a t kth time step to generate the steering angle ( δ) and speed ( v) for k + 1th time step. b The zoomed-in driver model block: The DRF is a dynamic
+ﬁeld and changes its shape with vehicle state, which are inputs to the driver model block. The DRF is multiplied with the cost map of the driving scene and
+summed over all grid points to generate the quanti ﬁed perceived risk (cost function). The driver model algorithm uses the computed cost function, and the
+vehicle states to generate the speed ( v) and steering angle ( δ) for next time step. The DRF model algorithm is based on the risk-threshold theory and
+compares quantiﬁed perceived risk ( C) with risk threshold ( Ct). The DRF can be individualised based on DRF parameters while the driver model parameters
+determine how the cost (perceived risk) is converted to control actions (speed and steering). c Driver model algorithm: At each time step ( k), we compare
+the risk ( Ck) to risk threshold ( Ct), and speed ( vk) to the goal ( Vdes). This results in four distinct cases of inequality.
+Table 3 Driving scene parameters.
+Croad Cenv Covt lane Ccar
+Normal and sport 0 (assumed) 500 (assumed) 3.5 2500
+NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-020-18353-4 ARTICLE
+NATURE COMMUNICATIONS |         (2020) 11:4850 | https://doi.org/10.1038/s41467-020-18353-4 | www.nature.com/naturecommunications 11
+lane was assumed to be four times as dangerous (four times the cost) as the
+overtaking lane.
+The grid search algorithm tried to minimise P3
+i¼1 ðyi model /C0 yi experimentÞ2,w h e r e
+i = 1: steering angle, i = 2: speed, i = 3: lateral deviation from the lane centre. All the
+signals were a function of the distance travelled along the lane centre. Tables 1, 2 and
+3 report the estimated parameter values for the ‘normal’ and ‘sport’ condition. It has
+to be noted that, to personalise the DRF model to an individual, only seven
+parameters need to be estimated ( p, t
+la, m, c, k1, k2, kvc and Ct). DRF parameters
+(Table 1) and the driving scene parameters (Table 3) were estimated only from the
+‘normal’ condition and were used for ‘normal’ and ‘sport’ parameter setting of the
+DRF driver model, since neither the driver nor the driving scene changed. Only the
+task instruction had changed, due to which (we assume) that the manner in which the
+driver translates his/her perceived risk into steering and speed-control action changes,
+which is dictated by the driver model parameters (Table 2).
+Reporting summary . Further information on research design is available in the Nature
+Research Reporting Summary linked to this article.
+Data availability
+The driving simulator experiment data, the simulation data that support the ﬁndings of
+this study, and the source data for Figs. 3, 4 and 5 are available in the 4TU.Centre for
+Research Data with the identi ﬁer ( https://doi.org/10.4121/uuid:8132bccd-e900-4ba0-
+942e-c3114502bda2).
+Code availability
+The DRF Model MATLAB code that supports the ﬁndings of this study and a MATLAB
+GUI that helps explain the DRF are available in the 4TU.Centre for Research Data with
+the identi ﬁers: DRF model: https://doi.org/10.4121/uuid:ec0f2742-e665-4af9-bf37-
+8fe1761a8a62 and DRF GUI: https://doi.org/10.4121/uuid:1230ca50-4120-47b2-b6de-
+35d41c0a4d8a.
+Received: 15 January 2020; Accepted: 13 August 2020;
+References
+1. Lee, J. D. & See, K. A. Trust in automation: designing for appropriate reliance.
+Hum. Factors 46,5 0 –80 (2004).
+2. Dzindolet, M. T., Peterson, S. A., Pomranky, R. A., Pierce, L. G. & Beck, H. P.
+The role of trust in automation reliance. Int. J. Hum.-Comp. Stud. 58, 697–718
+(2003).
+3. Waytz, A., Heafner, J. & Epley, N. The mind in the machine:
+anthropomorphism increases trust in an autonomous vehicle. J. Exp. Soc.
+Psychol. 52, 113 –117 (2014).
+4. Basu, C., Yang, Q., Hungerman, D., Sinahal, M. & Draqan, A. D. Do you want
+your autonomous car to drive like you? In 2017 12th ACM/IEEE International
+Conference on Human-Robot Interaction (HRI) , 417 –425 (IEEE, 2017).
+5. Cacciabue, P. C. Modelling Driver Behaviour in Automotive Environments:
+Critical Issues in Driver Interactions with Intelligent Transport Systems
+(Springer, 2007).
+6. Markkula, G., Benderius, O., Wolff, K. & Wahde, M. A review of near-
+collision driver behavior models. Hum. Factors 54, 1117 –1143 (2012).
+7. Nash, C. J., Cole, D. J. & Bigler, R. S. A review of human sensory dynamics for
+application to models of driver steering and speed control. Biol. Cybern. 110,
+91–116 (2016).
+8. Denton, G. G. The in ﬂuence of visual pattern on perceived speed. Perception 9,
+393–402 (1980).
+9. Gruppelaar, V., Van Paassen, R., Mulder, M. & Abbink, D. A perceptually
+inspired driver model for speed control in curves. In 2018 IEEE International
+Conference on Systems, Man, and Cybernetics (SMC) , 1257–1262 (IEEE, 2018).
+10. Lee, D. N. A theory of visual control of braking based on information about
+time-to-collision. Perception 5, 437 –459 (1976).
+11. Van Winsum, W. & Godthelp, H. Speed choice and steering behavior in curve
+driving. Hum. Factors 38, 434 –441 (1996).
+12. Salvucci, D. D. & Gray, R. A two-point visual control model of steering.
+Perception 33, 1233 –1248 (2004).
+13. Sentouh, C., Chevrel, P., Mars, F. & Claveau, F. A sensorimotor driver model
+for steering control. In 2009 IEEE International Conference on Systems, Man
+and Cybernetics , 2462 –2467 (IEEE, 2009).
+14. Van Auken, R. et al. Advanced Crash Avoidance Technologies Program —Final
+Report of the Honda-DRI Team Vol. vi: Appendix R (part 1 of 2). Tech. Rep.
+(2011).
+15. Koopman, P. & Wagner, M. Autonomous vehicle safety: An interdisciplinary
+challenge. IEEE Intell. Transp. Syst. Magazine 9
+,9 0 –96 (2017).
+16. Todorov, E. Optimality principles in sensorimotor control. Nat. Neurosci. 7,
+907–915 (2004).
+17. Gibson, J. J. & Crooks, L. E. A theoretical ﬁeld-analysis of automobile-driving.
+Am. J. Psychol. 51, 453 –471 (1938).
+18. Wilde, G. J. The theory of risk homeostasis: implications for safety and health.
+Risk Anal. 2, 209 –225 (1982).
+19. Fuller, R. Towards a general theory of driver behaviour. Accid. Anal. Prev. 37,
+461–472 (2005).
+20. Michon, J. A. In Human Behavior and Traf ﬁc Safety 485–524 (Springer, 1985).
+21. Van der Molen, H. H. & Bötticher, A. M. A hierarchical risk model for traf ﬁc
+participants. Ergonomics 31, 537 –555 (1988).
+22. De Winter, J. & Happee, R. Modelling driver behaviour: a rationale for
+multivariate statistics. Theor. Issues. Ergon. Science 13, 528 –545 (2012).
+23. Goodrich, M. A., Stirling, W. C. & Boer, E. R. Satis ﬁcing revisited. Mind.
+Mach. 10,7 9 –109 (2000).
+24. Näätänen, R. & Summala, H. Road-user Behaviour and Traf ﬁc Accidents
+(North-Holland Publishing Company, 1976).
+25. Kolekar, S., De Winter, J. & Abbink, D. Which parts of the road guide obstacle
+avoidance? Quantifying the driver ’s risk ﬁeld. Appl. Ergon. 89, 103196 (2020).
+26. Harris, C. M. & Wolpert, D. M. Signal-dependent noise determines motor
+planning. Nature 394, 780 –784 (1998).
+27. Kolekar, S., Mugge, W. & Abbink, D. Modeling intradriver steering variability
+based on sensorimotor control theories. IEEE Trans. Hum.-Mach. Syst. 48,
+291–303 (2018).
+28. Clamann, H. P. Statistical analysis of motor unit ﬁring patterns in a human
+skeletal muscle. Biophys. J. 9, 1233 –1251 (1969).
+29. Felipe, E. & Navin, F. Automobiles on horizontal curves: experiments and
+observations. Transp. Res. Rec. 1628,5 0 –56 (1998).
+30. Gawron, V. & Ranney, T. Curve negotiation performance in a driving
+simulator as a function of curve geometry. Appl. Ergon. 21,3 3 –38 (1990).
+31. Bella, F. Driver perception of roadside con ﬁgurations on two-lane rural
+roads: Effects on speed and lateral placement. Accid. Anal. Prev. 50,
+251–262 (2013).
+32. Xu, J., Luo, X. & Shao, Y.-M. Vehicle trajectory at curved sections of two-lane
+mountain roads: a ﬁeld study under natural driving conditions. Europ. Trans.
+Res. Rev. 10, 12 (2018).
+33. Reymond, G., Kemeny, A., Droulez, J. & Berthoz, A. Role of lateral
+acceleration in curve driving: Driver model and experiments on a real vehicle
+and a driving simulator. Hum. Factors 43, 483 –495 (2001).
+34. Odhams, A. M. & Cole, D. J. Models of driver speed choice in curves. In
+Proceedings of the 7th International Symposium on Advanced Vehicle Control
+(Citeseer, 2004).
+35. McLean, J. Driver behaviour on curves-a review. In Australian Road Research
+Board (ARRB) Conference, 7th, 1974, Adelaide , Vol. 7 (1974).
+36. Taragin, A. & Leisch, L. Driver performance on horizontal curves. In Highway
+Research Board Proceedings , Vol. 33 (1954).
+37. Godley, S. T., Triggs, T. J. & Fildes, B. N. Perceptual lane width, wide
+perceptual road centre markings and driving speeds. Ergonomics 47, 237 –256
+(2004).
+38. Green, P. Driver Workload as a Function of Road Geometry: A Pilot
+Experiment. Tech. Rep. (1994).
+39. Dijksterhuis, C., Brookhuis, K. A. & De Waard, D. Effects of steering demand
+on lane keeping behaviour, self-reports, and physiology. A simulator study.
+Accid. Anal. Prev. 43, 1074 –1081 (2011).
+40. Waard, D. D., Jessurun, M., Steyvers, F. J., Reggatt, P. T. & Brookhuis, K. A.
+Effect of road layout and road environment on driving performance, drivers ’
+physiology and road appreciation. Ergonomics 38, 1395 –1407 (1995).
+41. Lewis-Evans, B. & Charlton, S. G. Explicit and implicit processes in
+behavioural adaptation to road width. Accid. Anal. Prev. 38, 610 –617 (2006).
+42. Liu, S., Wang, J. & Fu, T. Effects of lane width, lane position and edge shoulder
+width on driving behavior in underground urban expressways: a driving
+simulator study. Int. J. Env. Res. Pub. Health 13, 1010 (2016).
+43. Melman, T., Abbink, D. A., Van Paassen, M. M., Boer, E. R. & De Winter, J. C.
+What determines drivers ’ speed? A replication of three behavioural adaptation
+experiments in a single driving simulator study. Ergonomics 61, 966 –987
+(2018).
+44. Fitzpatrick, K., Carlson, P. J., Wooldridge, M. D. & Brewer, M. A. Design
+Factors That Affect Driver Speed on Suburban Arterials. Tech. Rep. (2000).
+45. Daisa, J. M. & Peers, J. Narrow residential streets: do they really slow down
+speeds? In Institute of Transportation Engineers 67th annual Meeting Institute
+of Transportation Engineers (ITE) (1997).
+46. Ivan, J. N., Garrick, N. W. & Hanson, G. Designing Roads That Guide Drivers
+to Choose Safer Speeds. Tech. Rep. (2009).
+47. Biswas, S., Chandra, S. & Ghosh, I. Effects of on-street parking in urban
+context: a critical review. Transp. Dev. Econ. 3, 10 (2017).
+48. Edquist, J., Rudin-Brown, C. M. & Lenné, M. G. The effects of on-street
+parking and road environment visual complexity on travel speed and reaction
+time. Accid. Anal. Prev. 45, 759 –765 (2012).
+ARTICLE NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-020-18353-4
+12 NATURE COMMUNICATIONS |         (2020) 11:4850 | https://doi.org/10.1038/s41467-020-18353-4 | www.nature.com/naturecommunications
+49. Calvi, A. Does roadside vegetation affect driving performance? Driving
+simulator study on the effects of trees on drivers ’ speed and lateral position.
+Transp. Res. Rec. 2518,1 –8 (2015).
+50. Dunning, A., Ghoreyshi, A., Bertucco, M. & Sanger, T. D. The tuning of
+human motor response to risk in a dynamic environment task. PLoS ONE 10,
+e0125461 (2015).
+51. Ota, H. Distance headway behavior between vehicles from the viewpoint of
+proxemics. IATSS Res. 18,5 –14 (1994).
+52. Heino, A., Van der Molen, H. H. & Wilde, G. J. Risk perception, risk taking,
+accident involvement and the need for stimulation. Safety Sci. 22,3 5–48 (1996).
+53. He, M., Liu, X. & Rong, J. In Trafﬁc and Transportation Studies 889–894
+(2002).
+54. Evans, L. & Wasielewski, P. Risky driving related to driver and vehicle
+characteristics. Accid. Anal. Prev. 15, 121 –136 (1983).
+55. Van der Horst, R. Occlusion as a measure for visual workload: an overview of
+tno occlusion research in car driving. Appl. Ergon. 35, 189 –196 (2004).
+56. Crawford, A. The overtaking driver. Ergonomics 6, 153 –170 (1963).
+57. Chen, R., Kusano, K. D. & Gabler, H. C. Driver behavior during overtaking
+maneuvers from the 100-car naturalistic driving study. Trafﬁc Inj. Prev. 16,
+S176–S181 (2015).
+58. Leung, S. & Starmer, G. Gap acceptance and risk-taking by young and mature
+drivers, both sober and alcohol-intoxicated, in a simulated driving task. Accid.
+Anal. Prev. 37, 1056 –1065 (2005).
+59. Levulis, S. J., DeLucia, P. R. & Jupe, J. Effects of oncoming vehicle size on
+overtaking judgments. Accid. Anal. Prev. 82, 163 –170 (2015).
+60. Farah, H. Age and gender differences in overtaking maneuvers on two-lane
+rural highways. Transp. Res. Rec. 2248,3 0 –36 (2011).
+61. Räsänen, M. Effects of a rumble strip barrier line on lane keeping in a curve.
+Accid. Anal. Prev. 37, 575 –581 (2005).
+62. Rosey, F., Auberlet, J.-M., Moisan, O. & Dupré, G. Impact of narrower lane
+width: Comparison between ﬁxed-base simulator and real data. Transp. Res.
+Rec. 2138, 112 –119 (2009).
+63. Rossner, P. & Bullinger, A. C. Do you shift or not? In ﬂuence of trajectory
+behaviour on perceived safety during automated driving on rural roads. In
+International Conference on Human-Computer Interaction , 245 –254
+(Springer, 2019).
+64. LaValle, S. M. & Sharma, R. On motion planning in changing, partially
+predictable environments. Int. J. Robot. Res. 16, 775 –805 (1997).
+6 5 . A o u d e ,G .S . ,L u d e r s ,B .D . ,L e v i n e ,D .S .&H o w ,J .P .T h r e a t - a w a r ep a t h
+planning in uncertain urban environments. In 2010 IEEE/RSJ International
+Conference on Intelligent Robots and Systems ,6 0 5 8–6063 (IEEE, 2010).
+66. Von Hundelshausen, F., Himmelsbach, M., Hecker, F., Mueller, A. &
+Wuensche, H.-J. Driving with tentacles: Integral structures for sensing and
+motion. J. Field Robot. 25, 640 –673 (2008).
+67. LaValle, S. M. et al. Rapidly-exploring random trees: Progress and prospects.
+Algorithmic and Computational Robotics: New Directions 5, 293 –308 (2001).
+68. Chung, S.-Y. & Huang, H.-P. Robot motion planning in dynamic uncertain
+environments. Adv. Robot. 25, 849 –870 (2011).
+69. Abbink, D. A., Mulder, M. & Boer, E. R. Haptic shared control: smoothly
+shifting control authority? Cogn. Technol. Work 14,1 9 –28 (2012).
+70. Melman, T., De Winter, J. C. F. & Abbink, D. A. Does haptic steering guidance
+instigate speeding? A driving simulator study into causes and remedies. Accid.
+Anal. Prev. 98, 372 –387 (2017).
+Acknowledgements
+The Netherlands Organisation for Scienti ﬁc Research (NWO) funded this project. S.K.
+and D.A. were supported by the VIDI 14127 project, and J.D.W. was supported by the
+VIDI 178047 project. We also appreciate the valuable help and feedback provided by
+S.M. Petermeijer, T. Melman and J.N.P. Giltay.
+Author contributions
+S.K. conceived the study; S.K. formulated the model; S.K. piloted the study and collected
+the data; S.K., J.d.W., D.A. conceived the analysis; S.K. analysed the results and literature;
+S.K. prepared the ﬁgures; S.K., J.d.W., D.A. wrote the paper.
+Competing interests
+The authors declare no competing interests.
+Additional information
+Supplementary information is available for this paper at https://doi.org/10.1038/s41467-
+020-18353-4.
+Correspondence and requests for materials should be addressed to S.K.
+Peer review information Nature Communications thanks Mahdi Ebnali and Ting Fu for
+their contribution to the peer review of this work. Peer reviewer reports are available.
+Reprints and permission information is available at http://www.nature.com/reprints
+Publisher’s note Springer Nature remains neutral with regard to jurisdictional claims in
+published maps and institutional af ﬁliations.
+Open Access This article is licensed under a Creative Commons
+Attribution 4.0 International License, which permits use, sharing,
+adaptation, distribution and reproduction in any medium or format, as long as you give
+appropriate credit to the original author(s) and the source, provide a link to the Creative
+Commons license, and indicate if changes were made. The images or other third party
+material in this article are included in the article ’s Creative Commons license, unless
+indicated otherwise in a credit line to the material. If material is not included in the
+article’s Creative Commons license and your intended use is not permitted by statutory
+regulation or exceeds the permitted use, you will need to obtain permission directly from
+the copyright holder. To view a copy of this license, visit http://creativecommons.org/
+licenses/by/4.0/.
+© The Author(s) 2020
+NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-020-18353-4 ARTICLE
+NATURE COMMUNICATIONS |         (2020) 11:4850 | https://doi.org/10.1038/s41467-020-18353-4 | www.nature.com/naturecommunications 13

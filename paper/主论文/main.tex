@@ -1,0 +1,184 @@
+% !TeX TS-program = xelatex
+% !TeX program = xelatex
+% !TeX encoding = UTF-8
+\documentclass[12pt,a4paper]{article}
+
+% Nature Communications initial-submission manuscript framework.
+% Compile this Chinese working file with XeLaTeX.
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\setmainfont{Times New Roman}
+\setCJKmainfont[AutoFakeBold=2]{SimSun}
+\setCJKsansfont{SimHei}
+\setCJKmonofont{SimSun}
+
+\usepackage{amsmath,amssymb,bm}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{setspace}
+\usepackage[numbers]{natbib}
+\usepackage[hidelinks]{hyperref}
+
+\graphicspath{{figures/}}
+\setstretch{1.35}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0pt}
+
+\title{交通风险传播中的信息介导类超距作用}
+\author{禹尧珅}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+% 摘要待写。
+\end{abstract}
+
+\section*{Introduction}
+道路交通是由连续物理交互与日益密集的信息连接共同构成的复杂系统。局部制动、速度下降和瓶颈激活可以经由跟驰关系、车辆运动和交通波在车辆串与路网中传播，使原本局部的状态扰动产生跨越时间和空间的影响\cite{saberi2020contagion}\cite{duan2023bottlenecks}。联网与自动驾驶技术进一步改变了这种传播结构：车辆不仅响应邻近交通状态，还能够通过车际通信、路侧感知或云端控制获取并采用来自非邻近位置的信息\cite{wang2025delays}。交通风险因而不再只受单一物理交互网络塑造，而可能由物理传播与信息传播在不同拓扑和时间尺度上的共同作用所决定；厘清这两类传播如何分别改变车辆动作和风险结果，是理解联网交通系统安全机制的基础。
+
+围绕这一问题，现有研究从风险时空演化、非局部交通流建模、逐跳风险级联和联网车辆控制等方向揭示了交通状态跨空间作用的不同侧面。基于轨迹和替代安全指标的研究将冲突易发位置组织为图结构，用于刻画交叉口风险的时空依赖并推断其后续变化\cite{wang2024conflict}。非局部交通流模型将前方距离、空间邻域密度或多车状态纳入车辆运动与宏观流量关系，用以分析前视信息对交通波和均匀流稳定性的影响\cite{sun2020lookahead}\cite{huang2022nonlocal}。车队级联研究则沿连续的物理邻接关系递推临界减速度或冲突状态，解释风险如何在中间车辆参与下累积、放大或衰减\cite{luo2026crm}。联网车辆控制研究进一步考察通信资源、时延、失效和动态拓扑对闭环稳定性与安全性的影响\cite{razzaghpour2023controlaware}\cite{wang2024topology}。这些工作分别建立了风险演化的观测模型、非局部状态作用的数学模型、物理风险链模型和通信辅助控制方法，但尚未直接回答一条来源可追溯的远端消息是否被目标车辆实际采用并改变了目标风险。
+
+这些研究尚不能单独识别指定远端信息造成的风险效应。风险图描述的是风险状态之间的时空依赖，而不是对信息通道的干预；非局部交通流模型把空间邻域状态直接写入运动规律，却不区分离散消息是否生成、发送、交付并被控制器采用；通信控制模型虽然把接收信息接入车辆控制，但信息图中存在连接、消息到达目标车辆和控制器实际使用该消息仍是不同事件。更重要的是，空间上不相邻的源车辆与目标车辆之间仍可能存在多跳跟驰、交通波或车辆运动构成的物理风险传播链，共同交通状态和共享控制规则也可能使两端同步变化。因此，本文要解决的不是远端通信是否一般性地改善控制性能，而是能否在排除物理传播链和共同状态等替代解释后，识别一条来源可追溯的风险消息在源扰动的物理影响到达前对目标动作及风险结果产生的可归因效应。
+
+为刻画这一效应，本文将来源可追溯的远端风险消息经目标车辆采用后，在源扰动的物理影响到达前引起目标动作和风险结果变化的现象，定义为信息介导的非最近邻风险效应，并简称为“类超距作用”。具体而言，源区域 $A$ 与目标区域 $B$ 必须预先划定且不重叠，二者满足冻结的道路拓扑距离条件，并且不存在直接最近邻物理交互；但距离和信息连接本身都不是因果证据，若 $A$ 与 $B$ 之间仍存在逐跳物理路径，就必须进一步审计其最早物理到达时刻。类超距作用还必须形成从源风险、消息生成与发送、消息交付、控制采用到动作改变和风险变化的连续证据链，并在屏蔽指定源消息的反事实条件下得到可重复的目标结果差异。本文的理论构思受到量子理论中“超距作用”所呈现的远隔关联思想启发，并将其转译为交通系统中的一个可操作、可证伪问题；本文借鉴的是这种远隔关联的问题结构，而非量子机制本身。交通中的类超距作用具有明确的信息媒介、可追溯来源和有限传输时延，因此不涉及量子纠缠、超光速传播或无媒介作用。
+
+本文据此构建一个区分物理交通网络与显式信息网络的可证伪识别框架，并以消息生命周期和四格反事实干预估计指定远端信息的增量风险效应。证据按照识别强度与场景现实性逐层推进：首先在合流通信原型中审计消息生成、发送、交付、采用和动作响应；继而在两条物理断开的走廊中令源—目标物理路径不存在，以隔离交通波、多跳跟驰和车辆运动的影响；随后将冻结的消息与控制机制迁移到物理连通的合流路网，检验信息响应能否先于物理影响并在正常交通交互中保持一致；最后利用真实轨迹与通信数据分别校核风险测量、物理传播和消息可观测层级，而不把无法观测的控制采用解释为已经发生。这个递进设计将逐跳物理传播作为必要的竞争基线，并把本文的中心问题限定为：在什么可观测条件和因果边界内，远端风险信息能够改变目标车辆的动作与风险。
+
+
+\section*{Results}
+
+\subsection*{类超距风险作用的定义与两阶段研究框架}
+
+本文把类超距风险作用组织为相互衔接的两个研究阶段。第一阶段识别一条来源明确的远端风险消息是否在物理影响到达前改变目标车辆的动作与风险；第二阶段在该作用得到确认后，决定哪些消息应被采用，以及如何在安全、舒适和通行约束下利用这些消息进行风险控制。前者回答作用是否存在及其来源，后者回答这一作用能否被稳定、有效地利用。两者共享同一条消息与车辆响应链，但不能用控制性能代替因果识别。
+
+交通系统同时存在物理交通图和显式信息图。设 $\mathcal{V}=\{1,\ldots,N\}$ 为车辆集合。对任一车辆 $i\in\mathcal{V}$，定义 $\mathcal{N}_i^P(t)$ 为时刻 $t$ 与车辆 $i$ 存在直接物理交互的其他车辆集合，即这些车辆能够通过跟驰、合流或冲突关系直接影响车辆 $i$ 的运动状态或风险。定义 $\mathcal{N}_i^I(t)$ 为同一时刻通信协议允许其作为消息来源向车辆 $i$ 传送信息的其他车辆集合。有向序对 $(k,i)$ 的方向规定为从车辆 $k$ 指向车辆 $i$；物理边集合和信息边集合分别定义为
+\begin{equation}
+\begin{aligned}
+\mathcal{E}_P(t)&=\left\{(k,i)\in\mathcal{V}\times\mathcal{V}:k\neq i,\ k\in\mathcal{N}_i^P(t)\right\},\\
+\mathcal{E}_I(t)&=\left\{(k,i)\in\mathcal{V}\times\mathcal{V}:k\neq i,\ k\in\mathcal{N}_i^I(t)\right\}.
+\end{aligned}
+\end{equation}
+由此，时变物理交通图和显式信息图分别记为
+\begin{equation}
+G_P(t)=\bigl(\mathcal{V},\mathcal{E}_P(t)\bigr),
+\qquad
+G_I(t)=\bigl(\mathcal{V},\mathcal{E}_I(t)\bigr).
+\end{equation}
+物理边 $(k,i)\in\mathcal{E}_P(t)$ 表示车辆 $k$ 是车辆 $i$ 的直接物理作用对象，例如当前跟驰前车或与其存在直接冲突关系的车辆；沿连续物理边经过中间车辆传递的扰动属于物理风险传播链。信息边 $(k,i)\in\mathcal{E}_I(t)$ 只表示协议允许来源为 $k$ 的指定消息传向接收者 $i$，并不表示该消息已经生成、发送、交付或采用。对源车辆 $i_s$ 和目标车辆 $j$，分别预先划定互不重叠的源区域 $\mathcal{R}_S$ 和目标区域 $\mathcal{R}_T$。候选关系必须满足冻结的道路拓扑距离下限，并且在从试验触发到消息采用的时间内满足 $(i_s,j)\notin\mathcal{E}_P(t)$。若两者之间仍存在多跳物理路径，则必须估计其影响到达目标的时间，不能仅凭空间距离认定为类超距作用。
+
+一条远端风险消息只有经过完整生命周期，才可能进入控制环。对发送给目标车辆 $j$ 的第 $q$ 条消息，分别用 $D_{qj}(t)$、$Q_{qj}(t)$ 和 $Z_{qj}(t)$ 表示该消息在时刻 $t$ 是否已经交付、是否通过来源与时效校验、是否被目标控制器采用。这三个变量均取 $0$ 或 $1$，且采用必须满足
+\begin{equation}
+Z_{qj}(t)\leq D_{qj}(t)Q_{qj}(t).
+\end{equation}
+因此，信息图中存在连接、消息到达目标车辆和消息实际进入控制器是三个不同事件。已经采用的消息也不必然改变动作：安全约束、控制饱和或消息内容与本地状态一致，都可能使采用后的动作保持不变。只有继续观察到目标动作分化和风险结果变化，才能闭合从信息到风险的作用链。
+
+第一阶段利用时间顺序和配对反事实区分信息作用与物理传播。令 $t_0$ 为四个处理单元共有的试验触发时刻，$t_{\mathrm{gen}}$、$t_{\mathrm{send}}$、$t_{\mathrm{del}}$ 和 $t_{\mathrm{adopt}}$ 分别为消息生成、发送、交付和采用时刻；令 $t_{u,j}$ 为目标动作首次超过预设容差的分化时刻，$\tau_{P,j}$ 为源扰动经纯物理通道首次使目标状态超过预设容差的时刻。在存在合格源事件且消息被正确交付和采用的处理单元中，信息先行链要求
+\begin{equation}
+t_0\leq t_{\mathrm{gen}}\leq t_{\mathrm{send}}\leq t_{\mathrm{del}}
+\leq t_{\mathrm{adopt}}\leq t_{u,j}<\tau_{P,j}.
+\end{equation}
+当源与目标之间不存在时序可达的物理路径时，$\tau_{P,j}=+\infty$；当物理路径存在但在有限观察期内尚未检测到物理状态分化时，只能将其记为右删失，不能解释为路径不存在。令 $t_{\mathrm{win}}$ 为预先冻结的风险观察窗起点，$H>0$ 为窗口长度。若风险结果在 $[t_{\mathrm{win}},t_{\mathrm{win}}+H]$ 内计算，则只有在 $t_{\mathrm{win}}+H<\tau_{P,j}$ 时，整个结果窗口才能被归入物理影响到达之前。
+
+效应大小通过四格反事实识别。令 $S\in\{0,1\}$ 表示指定源风险是否存在，$C\in\{0,1\}$ 表示指定源消息是否允许进入目标通道；$C=0$ 只屏蔽该消息，不关闭目标车辆的局部感知、安全约束和其他控制功能。对配对试验 $\omega$，以 $R_j^{(\omega)}(s,c)$ 表示目标车辆在固定窗口内的风险负担，并规定数值越大表示风险越高，简记为 $r_{sc}=R_j^{(\omega)}(s,c)$。四个处理单元依次为无源风险且屏蔽消息 $r_{00}$、无源风险且开启通道 $r_{01}$、存在源风险且屏蔽消息 $r_{10}$，以及存在源风险且开启通道 $r_{11}$。指定信息的交互效应定义为
+\begin{equation}
+\Delta_{\mathrm{NL}}
+=\mathbb{E}_{\omega}\!\left[
+\bigl(R_j^{(\omega)}(1,1)-R_j^{(\omega)}(1,0)\bigr)
+-\bigl(R_j^{(\omega)}(0,1)-R_j^{(\omega)}(0,0)\bigr)
+\right].
+\end{equation}
+第二个差分扣除单纯开启通道或运行通信逻辑造成的变化。对上述风险负担，$\Delta_{\mathrm{NL}}<0$ 表示指定信息降低风险，$\Delta_{\mathrm{NL}}>0$ 表示风险被放大。该估计量首先识别指定通道在源风险条件下的增量效应；只有同时满足正确交付与采用、采用前轨迹一致、采用后动作分化、信息响应早于物理影响以及负对照不产生同类结果，才能进一步将其解释为完整的信息介导作用。
+
+第二阶段把通过校验的远端消息接入闭环控制。令 $\pi=(\pi_Z,\pi_u)$ 表示由消息采用策略 $\pi_Z$ 和车辆动作策略 $\pi_u$ 组成的控制方案，$\Pi_{\mathrm{safe}}$ 表示满足车辆动力学、消息有效性、碰撞安全、速度和加速度约束的可行策略集合。以 $J_{\mathrm{risk}}$ 表示目标车辆、目标区域或系统层面的风险代价，$J_{\mathrm{act}}$ 表示控制强度与舒适性代价，$J_{\mathrm{eff}}$ 表示通行效率损失，则第二阶段的基本问题写为
+\begin{equation}
+\pi^{\star}=\arg\min_{\pi\in\Pi_{\mathrm{safe}}}
+\mathbb{E}\!\left[
+J_{\mathrm{risk}}(\pi)
++\lambda_u J_{\mathrm{act}}(\pi)
++\lambda_e J_{\mathrm{eff}}(\pi)
+\right],
+\end{equation}
+其中 $\lambda_u\geq0$ 和 $\lambda_e\geq0$ 分别控制动作代价和效率损失的权重。通信时延、丢包和消息老化不被假定为固定常数，而作为控制可用性和鲁棒性条件检验。该表达只规定第二阶段需要同时处理的目标与约束，不预设具体控制算法；完整动力学、约束形式、权重冻结和求解过程在 Methods 中给出。控制有效也不能仅由风险指标下降判定：若收益来自碰撞增加、过度制动、显著效率损失或对错误消息的敏感响应，则第二阶段目标仍未实现。
+
+这一框架给出六个互不替代的证据任务：定义和识别条件在本节确定；物理断开实验检验指定信息效应；消息审计检验交付、采用、动作和风险是否连续发生；物理连通场景检验机制迁移及闭环控制价值；真实数据限定物理传播和消息可达性的可观察范围；跨控制器、风险类型和通信条件的实验确定作用的适用范围与失效条件。后续结果分别回答这些问题，不用某一层的证据替代另一层。
+
+\subsection*{物理断开条件下的远端信息效应}
+% 本节固定用于双走廊四格反事实、I_TTC、时间顺序和零物理路径审计。
+
+\subsection*{从消息交付到风险变化的作用链条}
+% 本节固定用于消息生命周期、负对照、通信受损和失败环节审计。
+
+\subsection*{物理连通合流场景中的风险控制}
+% 本节固定用于合流迁移、信息与物理传播的时间竞争及第二阶段控制性能。
+
+\subsection*{真实交通数据中的风险传播与消息可达性}
+% 本节固定用于真实轨迹风险、物理传播和通信数据可观测层级。
+
+\subsection*{类超距风险作用的适用范围与失效条件}
+% 本节固定用于跨控制器、风险类型、信息拓扑和通信条件的一般性检验。
+
+\section*{Discussion}
+% 正文待写；本节不设小标题。
+
+\section*{Methods}
+% 正文待写；后续使用不编号的小标题。
+
+\section*{Data availability}
+% 数据可用性声明待写。
+
+\section*{Code availability}
+% 代码可用性声明待写。
+
+\begin{thebibliography}{9}
+
+\bibitem{saberi2020contagion}
+Saberi, M. \textit{et al.} A simple contagion process describes spreading of traffic jams in urban networks. \textit{Nat. Commun.} \textbf{11}, 1616 (2020).
+
+\bibitem{duan2023bottlenecks}
+Duan, J. \textit{et al.} Spatiotemporal dynamics of traffic bottlenecks yields an early signal of heavy congestions. \textit{Nat. Commun.} \textbf{14}, 8002 (2023).
+
+\bibitem{wang2025delays}
+Wang, J. \textit{et al.} Knowledge-guided self-learning control strategy for mixed vehicle platoons with delays. \textit{Nat. Commun.} \textbf{16}, 7705 (2025).
+
+\bibitem{wang2024conflict}
+Wang, T. \textit{et al.} A conflict risk graph approach to modeling spatio-temporal dynamics of intersection safety. \textit{Transp. Res. C Emerg. Technol.} \textbf{169}, 104874 (2024).
+
+\bibitem{sun2020lookahead}
+Sun, Y. \& Tan, C. On a class of new nonlocal traffic flow models with look-ahead rules. \textit{Physica D} \textbf{413}, 132663 (2020).
+
+\bibitem{huang2022nonlocal}
+Huang, K. \& Du, Q. Stability of a nonlocal traffic flow model for connected vehicles. \textit{SIAM J. Appl. Math.} \textbf{82}, 221--243 (2022).
+
+\bibitem{razzaghpour2023controlaware}
+Razzaghpour, M., Valiente, R., Zaman, M. \& Fallah, Y. P. Predictive model-based and control-aware communication strategies for cooperative adaptive cruise control. \textit{IEEE Open J. Intell. Transp. Syst.} \textbf{4}, 232--243 (2023).
+
+\bibitem{wang2024topology}
+Wang, X., Xu, C., Zhao, X., Li, H. \& Jiang, X. Stability and safety analysis of connected and automated vehicle platoon considering dynamic communication topology. \textit{IEEE Trans. Intell. Transp. Syst.} \textbf{25}, 13442--13452 (2024).
+
+\bibitem{luo2026crm}
+Luo, Y., Li, X., Bhaskar, A., Ngoduy, D., Elhenawy, M. \& Glaser, S. Enhancing vehicle platoon safety assessment: A novel cascading risk measure. \textit{Accid. Anal. Prev.} (2026). https://doi.org/10.1016/j.aap.2025.108360.
+
+\end{thebibliography}
+
+\section*{Acknowledgements}
+% 致谢与资助信息待写。
+
+\section*{Author contributions}
+% 作者贡献声明待写。
+
+\section*{Competing interests}
+% 利益冲突声明待写。
+
+\section*{Figure legends}
+% 图题与图注待写。
+
+\section*{Tables}
+% 表格待写。
+
+\end{document}

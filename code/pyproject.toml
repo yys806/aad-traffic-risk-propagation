@@ -1,0 +1,22 @@
+[project]
+name = "riskprop-pilot"
+version = "0.1.0"
+description = "Pilot pipeline for mixed-autonomy risk event extraction and propagation analysis."
+requires-python = ">=3.10"
+dependencies = [
+    "pandas>=2.0",
+    "matplotlib>=3.8",
+    "networkx>=3.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+]
+
+[project.scripts]
+riskprop = "riskprop.cli:main"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

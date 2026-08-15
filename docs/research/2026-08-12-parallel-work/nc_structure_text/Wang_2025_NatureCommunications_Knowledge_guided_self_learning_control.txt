@@ -1,0 +1,1790 @@
+Article https://doi.org/10.1038/s41467-025-62597-x
+Knowledge-guided self-learning control
+strategy for mixed vehicle platoons
+with delays
+Jingyao Wang 1, Huinian Wang2, Jian Song1,X i n g y uC h e n1,J i n g h u aG u o2 ,
+Keqiang Li3 ,X u n r u iL i1 &B o w e nH u a n g4
+As autonomous vehicles and traditionalvehicles will coexist for several dec-
+ades, how to efﬁciently manage the mixed trafﬁc, while enhancing road
+throughput, fuel consumption and trafﬁc stability becomes a challenge. This is
+due to the randomness and heterogeneity of traditional vehicles interspersed
+among autonomous vehicles. Moreover, communication delays arising from
+the shared wireless communication network substantially degrade the per-
+formance of platooning control for connected autonomous vehicles. To
+address these challenging problems, this paper proposes a knowledge-guided
+self-learning mixed platoon control strategy. Firstly, the proposed strategy
+extracts key features of the continuous and aggregated behavior of traditional
+vehicles, such as desired time-varying time gap and standstill spacing, by
+integrating knowledge from the kinematic wave model and Newell’s car-
+following model. This helps autonomousvehicles predict traditional vehicles’
+trajectories. Secondly, to tackle delayed current state information, the study
+incorporates previous control instructions into the state representation of the
+soft actor-critic algorithm. Simulations show the proposed strategy outper-
+forms existing methods in trafﬁc stability, passenger comfort, energy con-
+sumption cost and trafﬁc oscillation dampening, with a zero collision rate in
+vehicle merging and diverging scenarios. The framework provides a general-
+izable and scalable solution for the development and adoption of connected
+autonomous vehicle systems.
+The rapid growth of autonomous vehicles is placing signiﬁcant strain
+on global traf ﬁc management systems, due to the complexities of
+mixed-trafﬁc environments and the unpredictable nature of vehicle
+behavior1,2. Research suggests that by 2050, fully autonomous vehi-
+cles, classi ﬁed as SAE (Society of Automotive Engineers) Level 5
+Autonomous Driving, may account for between 10% and 71% of total
+vehicle travel, and comprise 90% of vehicle sales
+3,4. This suggests that
+autonomous vehicles and traditional vehicles will coexist for several
+decades
+5–7. The effectiveness of future traf ﬁc and safety control
+systems will hinge on their ability to manage this mixed traf ﬁce f ﬁ-
+ciently, while also addressing traf ﬁc congestion, improving safety
+performance8,9, reducing greenhouse gas emissions and energy
+consumption10,11. Unlike autonomous vehicles, which operate based on
+predeﬁned algorithms and sensor inputs, traditional vehicles are
+controlled by human drivers whose behaviors can be highly unpre-
+dictable. Autonomous vehicles adhere to strict control protocols,
+allowing for precise and consistent actions. In contrast, human-driven
+vehicles introduce variability and complexity into trafﬁc systems due
+Received: 16 July 2024
+Accepted: 24 July 2025
+Check for updates
+1School of Aerospace Engineering, Xiamen University, Xiamen, P. R. China.2Pen-Tung Sah Institute of Micro-Nano Science and Technology, Xiamen Uni-
+versity, Xiamen, P. R. China. 3School of Vehicle and Mobility, Tsinghua University, Beijing, P. R. China.4School of Mechanical and Vehicle Engineering,
+Chongqing University, Chongqing, P. R. China. e-mail: guojh@xmu.edu.cn; likq@tsinghua.edu.cn
+Nature Communications|         (2025) 16:7705 1
+1234567890():,;
+1234567890():,;
+to their tendency to deviate from optimal driving patterns 12–15.T h i s
+difference in behavior is a signiﬁcant challenge for trafﬁc management
+systems, as it affects the stability and ef ﬁciency of traf ﬁc ﬂow. For
+instance, as shown in Fig. 1b, sudden braking or acceleration by a
+human-driven vehicle can cause traf ﬁc oscillations, impacting the
+performance of platoons and increasing the risk of collisions16–18.
+To address the challenges of mixed traf ﬁc, platooning control
+techniques have emerged as a promising solution 19. Platooning
+involves the coordination of multiple vehicles to travel closely
+together at a consistent speed, reducing the impact of individual
+vehicle actions on traf ﬁc ﬂow. The primary objective of platooning
+control is to ensure that all vehicles maintain the same velocity while
+keeping a safe inter-vehicular distance. However, implementing
+effective platooning control in mixed traf ﬁc environments is extre-
+mely complex. The integration of autonomous vehicles and tradi-
+tional vehicles requires sophisticated control algorithms that can
+accommodate the unpredictable behavior of human-driven vehicles
+and the communication delays inherent in the shared wireless
+communication system.
+As i g n iﬁcant challenge in designing platooning controllers is
+accounting for the unpredictable behavior of individual traditional
+vehicles interspersed among connected autonomous vehicles. Some
+related studies estimate the behavior of traditional vehicles using
+statistical methods
+20,21, but these methods are limited to traf ﬁcm o n -
+itoring purposes because of the lack of an explicit model. The study
+referenced in
+22 analyzes the interactions between classical vehicles and
+autonomous vehicles with the car-following experiment data, and
+highlights the importance of randomness and heterogeneity of
+human-driving behaviors when designing mixed-traf ﬁc platooning
+algorithms, but it does not incorporate controller design. In the fol-
+lowing, we limit ourselves to the literature on platooning control
+strategies for vehicle platoons only, which are most relevant to the
+current work.
+Based on methodological differences, state-of-the-art algorithms
+for mixed vehicle platooning control can be divided into those based
+on linear and nonlinear control
+23–31, optimization control15,16,32–36,a n d
+deep reinforcement learning (DRL) based control37–40.
+Researchers have designed the platooning controller based on the
+linear and nonlinear control theory, such as theH∞ control and sliding
+mode control23–31. Based on the differences in control objectives, the
+above controllers can be divided into predictive control-based
+controller
+23–28 and robust controller29–31. Predictive control optimizes
+control inputs by forecasting the future states of the system to achieve
+speciﬁc performance metrics, such as minimizing prediction errors.
+This approach prioritizes achieving high system performance through
+prediction and optimization. In contrast, robust control emphasizes
+maintaining system stability and reliability under uncertainties. For
+instance, we designed some kinds of robust controllers to guarantee
+the stability of a vehicle platoon in the presence of time delays and
+external disturbances in our paper
+29–31. While effective in simple sce-
+narios, their model-dependent nature can lead to signi ﬁcant perfor-
+mance issues in real and complex scenarios. Thus, effectively
+managing mixed trafﬁc with high variability remains a challenging task.
+Optimization control methods, such as Model Predictive Control
+(MPC), have been used to compute real-time vehicle control
+commands
+15,16,32–36. However, MPC usually requires convex problems,
+and its complex solving formulas result in a large computational load
+and poor real-time performance. To address this issue, references34–36
+propose optimal longitudinal control algorithms for connected
+autonomous vehicles in mixed platoons. These algorithms aim to
+minimize the deviations of vehicle headway and velocity in the pre-
+sence of wireless communication delays, but they are model-
+dependent and require the drivers’ behavior to be homogeneous.
+DRL offers signiﬁcant advantages, such as simplifying the need for
+complex model construction and enabling real-time operation. While
+prior research has extensively applied DRL to enhance the safety,
+energy efﬁciency, and driving comfort of vehicle platoons
+41–46,t h e s e
+methods, primarily designed for platoons consisting solely of con-
+nected autonomous vehicles, are not optimized for the current
+mixed traf ﬁc where autonomous vehicles and traditional vehicles
+share the road. In other words, the exploration of DRL in mixed pla-
+t o o n si ss t i l li nﬁrst stages. Utilizing typical DRL algorithms like Prox-
+imal Policy Optimization (PPO)
+37, and Deep Deterministic Policy
+Gradient (DDPG)38, researchers have made strides in optimizing the
+Field experimental results
+b
+Human-driven
+vehicles
+Autonomous
+ vehicles
+Stick to
+control law
+Control command
+ generated by 
+human drivers
+Control algorithms
+ and sensor input 
+Variable and
+complex 
+behavior
+a
+Affected by
+ communication delay
+Immune to
+ communication delay
+Sudden
+braking and 
+ acceleration
+Traffic
+oscillation 
+…
+Travel 
+direction
+…
+Travel 
+direction
+…
+……
+c
+A “CV-HVs-CV” sub-platoon
+Human-driven 
+Vehicle (HV)
+Connected autonomous 
+vehicle (CV)
+(I)
+(II)
+Fig. 1 | An overview of the mixed platoon composed of autonomous vehicles
+and human-driven vehicles. a Comparisons between autonomous vehicles and
+human-driven vehicles (HV).b The NGSIM data shows that the sudden breaking and
+acceleration behaviors of an HV lead to the trafﬁc oscillation of the following HVs.
+c The general mixed platoon (I) and the “CV-HVs-CV” sub-platoon (II). The general
+mixed platoon (I) can be decomposed to sub-platoons (II), which are shown in the
+dash-dotted blocks.
+Article https://doi.org/10.1038/s41467-025-62597-x
+Nature Communications|         (2025) 16:7705 2
+car-following behavior and safety of mixed platoons, and have also
+experimented with adaptive control at signalized intersections 39.
+Speciﬁcally, the PPO algorithm is selected to control the longitudinal
+motions of a leading autonomous vehicle to minimize the fuel con-
+sumption of the leading autonomous vehicle and the following pla-
+toon composed of traditional vehicles
+37. The DDPG control strategy is
+applied to drive the following connected autonomous vehicles to
+track a leading classical vehicle with the classical vehicle following
+empirical data
+38. A random selection algorithm is proposed in ref.39 to
+implement the self-learning algorithm for a mixed platoon consisting
+of a leading autonomous vehicle and its following traditional vehicles.
+However, these studies cannot guarantee the safety and robust stabi-
+lity of the mixed platoon in the presence of the communication delay.
+To address the issue of communication delay, an intelligent control
+algorithm based on DDPG is designed in ref. 40 to control an auton-
+omous vehicle following the preceding vehicle platoon consisting of
+multiple traditional vehicles. The primary distinctions between
+40 and
+our work are two-fold: ﬁrst, the assumption that the desired inter-
+vehicular distance and velocity information of each traditional vehicle
+are available has been relied upon in ref. 40. This assumption under-
+lying the algorithm in ref. 40 limits its application in practice, since
+accurately measuring these information of human-driven vehicles is
+challenging due to their limited communication capability. Second,
+whereas the communication delay considered in ref.40 is assumed to
+be constant, while the proposed algorithm in our study is designed to
+handle varying delays, making it more adaptable to real-world condi-
+tions. Therefore, developing a controller capable of managing mixed
+trafﬁc conditions, where both autonomous vehicles and traditional
+vehicles share the road, while simultaneously considering the random
+actions of human-driven vehicles and communication delays, remains
+an open problem.
+This paper aims to ﬁll this gap by presenting a knowledge-guided
+self-learning framework. This framework not only accounts for the
+unpredictable behavior of traditional vehicles but also adapts to
+varying trafﬁc conditions and random communication delays, ensur-
+ing robust performance across different scenarios. The proposed fra-
+mework is built on the vehicle-road-cloud system, as presented in
+Fig. 2, where the cloud platform and connected autonomous vehicles
+exchange real-time data through the vehicle-to-everything (V2X)
+communication network, facilitated by the roadside unites, and the
+cloud controller generates the control command for connected
+autonomous vehicles
+47. The details of this framework will be elabo-
+rated in the following section.
+Compared with the results in the published literature, the prin-
+cipal contributions of this research are outlined as follows:
+To address the limitation of current work that does not incorpo-
+rate controller design into the analysis of interactions between classi-
+cal vehicles and autonomous vehicles, we propose a generic
+knowledge-guided self-learning platooning control framework. This
+framework is designed to be robu st regardless of the number of
+human-driven vehicles and random communication delays, while also
+meeting the real-time requirements of future transportation systems.
+Aiming at the problem that current research relies on the known
+behavior of each human-driven vehicle, which are challenging to pre-
+dict due to the randomness inherent in traditional vehicles, this paper
+ﬁrst characterizes the continuous and aggregated classical vehicles
+insert among connected autonomous vehicles as a single entity. This
+characterization helps in predicting the aggregated behavior of tradi-
+tional vehicles and their impact on the overall trafﬁcd y n a m i c s .T h e n
+estimates the aggregated behavior of classical vehicles, such as desired
+time-varying time gaps and desired standstill spacing information, by
+incorporating the kinematic wave model and the Newell ’sc a r -
+following model, which presents the linear relationship between
+standstill spacing and the kinematic wave velocity-with the prior trafﬁc
+information. Moreover, by integrating prior knowledge such as the
+kinematic wave model and Newell ’s car-following model into the
+learning process, we can guide the learning more effectively and
+improve efﬁciency.
+Considering the causality of the system–where the current state is
+inﬂuenced by its previous states and previous inputs–we incorporate
+the previous control input into the state representation of the SAC
+method. This design guides the training process and leverages the high
+computational performance and storage capacity of the cloud server.
+In addition, a switching DRL-based model mechanism is designed to
+Stability & safety
+Passenger comfort
+HV −CV i CV 0HV
+…
+Roadside 
+unit
+Cloud control computing platform
+CV i update trajectory plan
+Historical Data
+Real-Time Data
+Traffic Wave Speed
+Jam density
+Model set
+DataDelayed control command
+Actuator
+Execute
+…
+HV − HV
+Data-driven 
+Previous control input of CV iModel switching mechanism
+M5…M2
+M1
+Knowledge-guided
+V2X
+Travel 
+direction
+Predicting behavior of  
+surrounding HVs
+Fig. 2 | The proposed knowledge-guided self-learning mixed platoon control framework.CV = connected vehicle. HV = human-driven vehicle. V2X = vehicle-to-
+everything. Here, CV 0 is designated as the leading vehicle.
+Article https://doi.org/10.1038/s41467-025-62597-x
+Nature Communications|         (2025) 16:7705 3
+mitigate performance degradation caused by random communication
+delays, addressing an issue not fully resolved by existing literature.
+Results in Results section demonstrate that the proposed
+knowledge-guided self-learning control framework is effective across a
+wide range of traf ﬁc conditions, including varying communication
+d e l a y s ,p l a t o o ns c a l e s ,a n dh u m a nd r i v e r s’ behavior parameters. When
+compared with existing traditional algorithms and state-of-the-art DRL
+algorithms, the proposed knowledge-guided self-learning algorithm
+exhibits superior performance in terms of traf ﬁc stability, passenger
+comfort, energy consumption cost, and trafﬁc oscillation dampening.
+In addition, it shows stronger robustness against the lane-changing
+behavior of traditional vehicles.
+Results
+Knowledge-guided self-learning control framework
+The knowledge-guided self-learning mixed platoon control frame-
+work, as depicted in Fig. 2, ﬁrstly decomposes the mixed platoon into
+distinct sub-platoons in the “CV-HVs-CV" (i.e., leading connected
+autonomous vehicles followed by traditional vehicles and then con-
+nected autonomous vehicles) formation (shown in Fig. 1c). Secondly,
+incorporates the aggregated m odel of classical vehicles as a
+knowledge-guided module, which is designed to predict the desired
+time-varying time gaps and desired standstill space of aggregated
+human-driven vehicles. Thirdly, consider the previous control
+instructions in the state representation of the SAC, and design a model
+switching mechanism to compensate for the performance degradation
+caused by random communication delays. Finally, the intelligent soft
+actor-critic (SAC) algorithm is used as the data-driven module of the
+system to maximize the car-following and comfort rewards for the
+connected autonomous vehicles and verify the effectiveness of the
+control framework in various scenarios.
+The advantages of using cloud computing are twofold: it provides
+high-performance computing resources that support real-time deci-
+sion-making for complex control algorithms, and it offers elastic sto-
+rage space capable of storing multiple neural network models,
+enabling rapid loading and access.
+Our mixed platoon control framework implements an end-to-end
+control strategy, as it maps the information gathered from roadside
+units and the V2X wireless communication network directly to control
+commands, as detailed in Fig. 2.S p e c iﬁcally, the cloud serves as the
+central processing unit, handling computational tasks such as data
+processing and control command generation. This high-performance
+capability ensures that complex control algorithms can be executed in
+real-time, providing dynamic and responsive control strategies. In
+parallel, roadside units are responsible for collecting macroscopic
+trafﬁc information (such as trafﬁc wave speed and jam density) from
+the current road segment
+47. Through V2X communication, as well as
+vehicle-mounted radar sensors, connected autonomous vehicles
+interact both with each other, the cloud and roadside units, facilitating
+real-time data exchange. Upon gathering vehicle and traf ﬁcd a t a ,
+roadside units forward this information to the cloud ’s self-learning
+controller. The controller then computes the appropriate longitudinal
+control commands for each autonomous vehicle, tailoring them to the
+speciﬁc conditions of the road and traf ﬁc. These commands are
+relayed back to the respective autonomous vehicles via the V2X net-
+work. The elastic storage space provided by the cloud allows for the
+storage of multiple neural network models, enabling the controller to
+switch between different models based on real-time conditions,
+thereby optimizing performance.
+Results in Fig. 3 show that, under the guidance of the cloud con-
+troller, the connected vehicle driving strategy integrated with the
+intelligent driver model (CVDS-IDM) strategies in ref.48, DDPG control
+in ref. 40, and the proposed strategy enables platoons consisting of
+connected autonomous vehicles and traditional vehicles to closely
+track an aggressive leading vehicle with minimal trafﬁc oscillation and
+a comfortable driving experience. Moreover, the proposed strategy
+outperforms PPO control in ref.37, DDPG control in ref.40, actor-critic
+(AC) control in ref.44, and the CVDS-IDM strategies in ref.48 in terms
+of trafﬁc stability, passenger comfort, energy consumption cost, and
+trafﬁc oscillation dampening performance. These results highlight the
+feasibility of our self-learning method, demonstrating its applicability
+across various trafﬁcs y s t e mc o n d i t i o n s .
+Comparison results between different control algorithms
+To demonstrate the practicability and effectiveness of the proposed
+control framework, this section presents numerical simulation exam-
+ples. These examples are designed to simulate the dynamic behavior of
+the mixed platoon comprising seven vehicles, as depicted in Fig. 3a,
+where the leading vehicle, as well as the 2-nd and 6-th following vehi-
+cles, are designated as connected autonomous vehicles, while the
+remaining vehicles are classi ﬁed as traditional vehicles. The leading
+vehicle serves as the tracking target. Guided by the NGSIM data
+49,i t
+follows a low-velocity aggressive driving style characterized by low
+velocity and signiﬁcant volatility in acceleration and deceleration. This
+driving style is representative of the behavior exhibited by most
+human drivers in real-world scenarios
+22,43,50. Besides the leading vehi-
+cle, all autonomous vehicles are controlled by the proposed strategy.
+And traditional vehicles are governed by the optimal velocity model
+used in refs.36,44, which is one of the most popular models to capture
+the car-following behaviors of classical vehicles. For the sake of con-
+sistency and reproducibility, the default experimental settings for this
+study are outlined in Supplementary Table 2, offering a foundation for
+the simulation parameters used.
+The initial velocity of all vehicles is set to 11m/s, and each vehicle
+maintains a speciﬁed distance from the preceding vehicle. The com-
+munication delay is set to a constant value of 20 ms by default. Due to
+the limited availability of related research, we compare the proposed
+knowledge-guided self-learning SAC strategy with several existing
+methods in the mixed platoon context, including PPO
+37, DDPG40,A C44,
+and CVDS-IDM strategies48. This comparison aims to further demon-
+strate the superiority of the proposed strategy. The signal phases and
+timing of the intersection are considered in ref.37, and the impacts of
+trafﬁc signals are incorporated into the reward function design to
+optimize the trajectories of connected autonomous vehicles. It
+requires exact desired inter-vehicular distance and velocity informa-
+tion for human-driven vehicles in ref. 40.Ac o o p e r a t i v e m u l t i - a g e n t
+actor-critic scheme is developed to optimize connected autonomous
+vehicles platoon management policies via the AC architecture in
+ref. 44. The IDM with estimation errors is utilized to model traditional
+vehicles and the CVDS-IDM is develpoed to model connected auto-
+momous vehicles
+48. It incorporates human factors such as estimation
+errors and driver compliance, which are critical for the success of
+connected autonomous vehicles. The assumptions underlying these
+methods differ from those of this paper. To address the problem
+considered in this paper, we have extended PPO
+37, DDPG40,A C44,a n d
+CVDS-IDM strategies48 to ﬁt the proposed framework and have made
+appropriate modiﬁcations to them. And the default experimental set-
+tings are the same as those of the proposed strategy.
+In order to analyze the speci ﬁc performance of the i-th autono-
+mous vehicle under the different control strategies, we will analyze the
+following four key indicators.
+The damping ratio of the acceleration
+g
+i,p = ∣aið/C22kÞ∣2
+∣a0ð/C22kÞ∣2
+=
+PNs
+/C22k =0 ∣aið/C22kÞ∣
+2/C16/C17 1
+2
+PNs
+/C22k =0 ∣a0ðtÞ∣2
+/C16/C17 1
+2
+, ð1Þ
+where Ns is the duration of the leading vehicle ’s trajectory; ai and a0
+denote the acceleration of the i-th and leading autonomous vehicles,
+Article https://doi.org/10.1038/s41467-025-62597-x
+Nature Communications|         (2025) 16:7705 4
+b
+c
+d
+e
+f
+a
+CV 6 HV 5 HV 4 HV 3 CV 2 HV 1 Leader
+Fig. 3 | The velocity, acceleration and position curves of a mixed platoon under
+different control strategies.CV = connected vehicle. HV = human-driven vehicle.
+a A schematic diagram showing the mixed platoon composed of seven vehicles.
+b Simulated results using CVDS-IDM strategy.c Simulated results using DDPG.
+d Simulated results using AC. e Simulated results using PPO. f Simulated results
+using the proposed SAC strategy. Source data are provided as a Source Data ﬁle.
+Article https://doi.org/10.1038/s41467-025-62597-x
+Nature Communications|         (2025) 16:7705 5
+respectively. This indicator serves as an indicator to quantify the
+suppression of trafﬁc oscillations, with a smaller ratio indicating better
+suppression.
+The passenger comfort cost, denoted as ji,jerk, is an acceleration
+cost function that describes the level of comfort experienced by pas-
+sengers, where a lower cost signiﬁes a smoother and more comfortable
+ride.
+j
+i, jerk =
+PNs
+/C22k =0 ζ∣aið/C22kÞ∣
+2
+Ns
+, ð2Þ
+where ζ is a positive scalar, representing the coefﬁcient of comfort.
+The energy consumption indicator, ei,eco, measures the motor
+energy consumption, providing insight into the vehicle’s energy ef ﬁ-
+ciency. A lower value of this indicator implies more ef ﬁcient energy
+use.
+ei,e c o=
+PNs
+/C22k =0 Pi,m o tðvið/C22kÞ, aið/C22kÞÞ /C1tu
+Ns
+, ð3Þ
+where vi denotes the velocity of the i-th autonomous vehicle; tu
+represents the unit time; the required power of the motor is a non-
+linear function of speed and acceleration
+Pi,m o tðvið/C22kÞ, aið/C22kÞÞ =
+X3
+/C22m =0
+X2
+/C22n =0
+p /C22m/C22nv /C22m
+i ð/C22kÞa/C22n
+i ð/C22kÞ, ð4Þ
+in which the polynomial parameters p /C22m/C22n are derived by following the
+steps given in ref. 51.
+The stability of the trafﬁc ﬂow within the system is measured by
+the indicator fi,ﬂow; a higher value indicates a more stable ﬂow.
+f i,f l o w=
+XNs
+/C22k =1
+jvið/C22kÞ/C0 við/C22k /C0 1Þj
+di, i/C0 1ð/C22kÞ + lv
+/C0/C1
+/C1Ns
+, ð5Þ
+where lv deﬁnes the length of the vehicle.
+The comparative analysis of various algorithms given in Fig. 3
+reveals signiﬁcant differences in their performance in terms of platoon
+tracking stability and control effectiveness. Traditional DRL algo-
+rithms, such as PPO and AC, exhibit considerable instability in platoon
+tracking, with abrupt changes in acceleration and inconsistent speed
+control. As shown by the position curves of Fig. 3ca n dd ,c o l l i s i o n s
+even occur during operation, highlighting the limitations of these
+algorithms in providing stable and effective control. In contrast, the
+proposed algorithm demonstrates exceptional performance (Fig.3e),
+with stable platoon progression and smooth acceleration changes,
+thereby achieving superior control stability and overall performance.
+We also use Fig.4 to illustrate the performance differences among
+various algorithms across four key metrics. Figure 4 presents an ana-
+lysis of vehicle performance based on the average value of each time
+step across various indicators. In Fig.4a, the cumulative damping ratio
+of the knowledge-guided self-learning SAC strategy exhibits a
+decreasing trend, dropping from 0.7 to 0.54. This trend indicates that
+the controller is effective at suppressing traf ﬁc oscillations under
+varying conditions and outperforms the other strategies. Fig.4ba n dc
+demonstrate that the knowledge-guided self-learning SAC strategy
+signiﬁcantly outperforms the other four strategies in terms of driving
+comfort and energy consumption, respectively. Furthermore, the
+analysis reveals that traditional vehicles (i.e., vehicles with numbers 3
+to 5) tend to exacerbate the propagation of interference within the
+trafﬁc ﬂow, while connected autonomous vehicles (i.e., the 2-nd and
+6-th vehicles) are capable of mitigating such interference. Lastly,
+Fig. 4d illustrates that the traf ﬁc ﬂow stability achieved by the pro-
+posed strategy is superior.
+To statistically verify the advantages of the proposed strategy, we
+introduce the performance improvement percentage (PIP) index,
+deﬁned as:
+PIP =
+Pother /C0 PSAC
+Pother
+, ð6Þ
+where Pother and PSAC are the generalized performance index of the
+compared strategies and the proposed knowledge-guided self-learn-
+ing SAC strategy. We ﬁrstly average the six following vehicles ’
+performance indicators in the platoon as a representation of the
+whole platoon, and then calculate the average results across 20
+datasets to ensure statistical robustness. Figure 5, highlights the
+performance improvement of SAC over other algorithms in terms of
+damping ratio, comfort, energy consumption, and traf ﬁc stability,
+providing a more intuitive visualization of SAC ’s superiority. Speciﬁ-
+cally, for the 2-nd vehicle: (1) in terms of damping ratio, SAC
+outperforms DDPG by 1.03%, CVDS-IDM by 7.68%, PPO by 21.10%,
+and AC by 13.40%; (2) in terms of ride comfort, SAC outperforms DDPG
+by 2.06%, CVDS-IDM by 14.77%, PPO by 30.04%, and AC by 25.01%;
+(3) in terms of energy consumption, SAC outperforms DDPG by 1.06%,
+CVDS-IDM by 9.14%, PPO by 15.56%, and AC by 18.72%; (4) in terms of
+trafﬁc ﬂow stability, SAC outperforms DDPG by 16.22%, CVDS-IDM by
+19.23%, PPO by 8.14%, and AC by 22.27%. For the 6-th vehicle: (1) in
+terms of damping ratio, SAC outperforms DDPG by 9.47%, CVDS-IDM
+by 16.15%, PPO by 32.06%, and AC by 26.44%; (2) in terms of ride
+comfort, SAC outperforms DDPG by 18.05%, CVDS-IDM by 29.70%,
+PPO by 53.84%, and AC by 45.89%; (3) in terms of energy consumption,
+SAC outperforms DDPG by 9.05%, CVDS-IDM by 16.54%, PPO by
+27.54%, and AC by 25.94%; (4) in terms of traf ﬁc ﬂow stability, SAC
+outperforms DDPG by 17.49%, CVDS-IDM by 25.30%, PPO by 8.46%, and
+AC by 2.55%. These results clearly demonstrate that SAC signiﬁcantly
+outperforms traditional DRL algorithms such as PPO and AC, especially
+in terms of ride comfort and damping ratio. Compared to more
+complex algorithms like DDPG, SAC also shows superior performance.
+In addition, SAC ’s consistent performance across different datasets
+highlights its robust control stability. Unlike other control algorithms
+Fig. 4 | Performance comparison among AC, PPO, CVDS-IDM, DDPG and the
+proposed knowledge-guided self-learning SAC strategies.PPO = proximal policy
+optimization. DDPG = deep deterministic policy gradient. AC = actor-critic. CVDS-
+IDM = connected vehicle driving strategy integrated with an intelligent driver
+model. SAC = soft actor-critic. Source data are provided as a Source Data ﬁle.
+Article https://doi.org/10.1038/s41467-025-62597-x
+Nature Communications|         (2025) 16:7705 6
+that exhibit signiﬁcant variability in different datasets, SAC maintains
+stable control, further underscoring its superiority in both perfor-
+mance and stability.
+Robustness validation
+Robustness against the variations of communication delay.F i g u r e6
+shows the speci ﬁc driving curve of connected autonomous vehicles
+with indexes 2 and 6 under different communication delays, with
+values in the set {0.2ΔT,0 . 5ΔT,1 . 0ΔT,2 . 0ΔT}w h e r eΔT = 0.1s. Figure 6
+demonstrates that the proposed strategy enables connected autono-
+mous vehicles to maintain robustness against changes in commu-
+nication delay. For instance, at approximately 12 s, the acceleration
+amplitude of the second vehicle reaches nearly 1.5, which is the max-
+imum amplitude observed during the vehicle ’s driving trajectory.
+Despite the large acceleration amplitude, Fig. 6b indicates that the
+acceleration amplitude remains nearly consistent across different
+delay conditions. This consistency suggests that the proposed strategy
+is well-suited to handle hard braking and acceleration scenarios that
+may arise in real-world emergencies.
+Performance comparison with different penetration rates of con-
+nected autonomous vehicles. Figure 7 illustrates the heat map of
+velocity and acceleration, showing that when the connected
+autonomous vehicle penetration rate is 0%, the following vehicle
+decelerates to 0 m/s, potentially causing traf ﬁc congestion and
+oscillation, which can severely impair traf ﬁc safety and road
+throughput. As the permeability of connected autonomous vehicles
+increases, the mixed platoon gradually stabilizes and gains the
+capacity to overcome interference, particularly in the optimal state
+at 100% permeability.
+Table 1 shows that with the increase of connected autonomous
+vehicles’ permeability, the performance indicatorsg
+p, jjerk, eeco, fﬂow are
+progressively improved. At 100% permeability, the indicators
+g
+p, jjerk, eeco, fﬂow are better than those at 0% permeability, respectively.
+The above examples directly prove the superiority and effectiveness of
+the proposed strategy.
+The switching DRL-based model mechanism
+Inﬂuenced by the ﬂuctuation of network conditions and environ-
+mental interference, the delays at various stages, denoted asϵi,a r en o t
+constant but exhibit randomness, as depicted in Supplementary Fig. 1.
+This randomness in communication delays signi ﬁcantly impacts the
+performance of control models. For instance, a comparison between
+Fig. 6b and e shows that the variation in the acceleration amplitude
+Fig. 5 | The superiority percentage of the proposed strategy compared with
+existing methods for CVs in mixed platoon. aFollowing CV 2. b Following CV 6.
+PPO = proximal policy optimization. DDPG = deep deterministic policy gradient.
+AC = actor-critic. CVDS-IDM = connected vehicle driving strategy integrated with an
+intelligent driver model. SAC = soft actor-critic. Source data are provided as a
+Source Data ﬁle.
+Fig. 6 | The velocity, acceleration and spacing curves of CVs in a mixed platoon under different communication delays. a–c Following CV 2. d–f Following CV 6.
+Source data are provided as a Source Data ﬁle.
+Article https://doi.org/10.1038/s41467-025-62597-x
+Nature Communications|         (2025) 16:7705 7
+across different delays for the 6-th vehicle is larger than that for the
+2-nd vehicle. This indicates that the control performance has been
+affected by the random communication delay.
+To effectively address this issue, this paper proposes a switching
+mechanism for the control model. Speciﬁcally, by utilizing timestamp
+measurement techniques, the receiving end’st i m e s t a m pTR and the
+sending end’st i m e s t a m pTT are obtained in real-time. The time dif-
+ference TR − TT is then computed to achieve real-time detection of
+delays.
+In light of the stability of small perturbations as considered in
+robust control theory, we have divided the distribution range of delays
+into multiple smaller intervals. Correspondingly, we have designed a
+set of models to accommodate these intervals, as drawn in Supple-
+mentary Fig. 1. Under identical state dimensions, we prioritize the
+selection of a model that closely matches the detected delay value.
+This strategy ensures that the control model maintains optimal per-
+formance within environments characterized by stochastic delays,
+thereby achieving robustness against random disturbances.
+A total of 100 simulation experiments were conducted under
+random delays, and the experimental results are shown in Fig.8. From
+Fig. 8, it can be observed that under random delays, all evaluation
+metrics exhibit only minor ﬂuctuations, and the median evaluation
+metrics of the 6-th connected autonomous vehicle are superior to
+those of the preceding traditional vehicles (i.e., vehicles with number
+Fig. 7 | The velocity and acceleration heat map based on the position trajectories for the mixed platoon with different penetration rates.Source data are provided
+as a Source Data ﬁle.
+Table 1 | Performance comparison under different
+permeability
+Permeability gp jjerk eeco fﬂow
+0% 0.7309 0.4341 2.0357 0.2238
+20% 0.5974 0.2913 1.6581 0.2275
+40% 0.5228 0.2296 1.5196 0.2311
+60% 0.4510 0.1767 1.4049 0.2354
+80% 0.4115 0.1522 1.3603 0.2393
+100% 0.3862 0.1381 1.3461 0.2433
+Article https://doi.org/10.1038/s41467-025-62597-x
+Nature Communications|         (2025) 16:7705 8
+3–5). This demonstrates the robustness of the proposed method to
+random delays.
+Extended case
+Performance comparison with varying platoon scales and human-
+driven vehicles exhibiting random behavior parameters . We also
+analyze the impact of the number of vehicles on the performance of
+the proposed knowledge-guided self-learning SAC algorithm. To cap-
+ture the randomness of traditional vehicles, white noisew
+i−j is added to
+the human-driven vehicle model parameters λi−j and δi−j,w h e r et h e
+white noise satis ﬁes ∣wi/C0 j ∣ < 1. As previously described, the leading
+vehicle (i.e., 1-st vehicle) in the platoon, as well as the 2-nd and the last
+vehicles, are designated as connected autonomous vehicles. The
+leading autonomous vehicle is guided by the NGSIM data, and the
+other connected autonomous vehicles are controlled by the proposed
+algorithm. To eliminate the impact of traditional vehicles on the con-
+trol performance, we introduce a platoon consisting solely of human-
+driven vehicles for comparison. Other parameter settings remain the
+same as before. Figure 9 shows the correlation between the averaged
+vehicle performance and the number of vehicles with two different
+platoons. From Fig.9, it can be observed that as the number of vehicles
+increases, energy consumption cost, driving comfort cost, and dam-
+pening ratio initially rise slowly and then decline. This indicates that as
+the proportion of classical vehicles in the platoon increases, a certain
+degree of performance degradation occurs. The ﬂuctuations in the
+curves for SAC are due to the random and heterogeneous behavior of
+human-driven vehicles. However, the performance degradation
+caused by the increase in the number of vehicles remains acceptable.
+Moreover, it follows from each sub-graph in Fig.9 that the inclusion of
+connected autonomous vehicles enhances overall performance for
+two different types of platoons with the same scales.
+Robustness against the disturbance induced by the lane changing
+behavior of a traditional vehicle . To compare the decision-making
+performance of four different approaches: CVDS-IDM, DDPG, PPO and
+the proposed knowledge-guided self-learning SAC algorithm when
+dealing with the merging or exiting of human-driven vehicles, it is
+necessary to retrain the models under new operating conditions. In
+this example, a human-driven vehicle (in red) merges in the mixed
+platoon composed of three connected autonomous vehicles (in dark)
+and three human-driven vehicles (in white) at 4 s, and then exits the
+platoon at 40 s, as shown in Fig. 10a and c. The position trajectory of
+the red human-driven vehicle is not included in Fig.10, since it is out of
+the focus of this manuscript. All oth er default experimental settings
+are the same as those described previously.
+In the decision-making graphs for the CVDS-IDM, DDPG, and
+PPO, as depicted in Fig. 10b, c, e and h, noticeable curve intersec-
+tions occur at multiple points. These intersections indicate colli-
+sions between vehicles, resulting in dramatic changes in their
+relative positions. For example, the position trajectory of the 6-th
+connected autonomous vehicle rapidly ascends over time in
+Fig. 10b, surpassing other vehicles, and its path crosses with others.
+This suggests that the 6-th connected autonomous vehicle engaged
+in inappropriate acceleration or path selection, leading to collisions.
+In contrast, the decision-making process of the SAC algorithm
+demonstrates clear smoothness, with no instances of curve inter-
+sections. In Fig. 10g–l, all vehicle trajectories remain stable and
+gradually increase, maintaining consistent relative positions. This
+indicates that the SAC algorithm effectively avoids collisions and
+ensures appropriate spacing between vehicles. The reasons for the
+above performance differences are attributed to the traditional
+method (CVDS-IDM) and the multiple DRL methods themselves.
+Since all of these methods have been modi ﬁed and trained to
+accommodate the random behavior of autonomous vehicles, the
+speciﬁc reasons are as follows:
+ CVDS-IDM relies on preset rules and cooperative communication
+mechanisms, with its parameter adjustments depending onﬁxed
+thresholds. When sudden disturbances occur, such as the
+merging of a traditional vehicle, these models need to rely on
+real-time sensor data for recalculations. However, due to the
+constraints of the rule-based framework, they struggle to quickly
+respond to the nonlinear behaviors of the human-driven vehicle,
+which can lead to delayed decision-making or sub-optimal
+adjustments.
+ DDPG is a deterministic policy-based reinforcement learning
+method that performs well in continuous action spaces but often
+Fig. 8 | Average dampening ratio, driver comfort cost, energy consumption
+cost and ﬂow stability of six vehicles for random delays.Center blue lines of the
+boxes represent the median. Vehicle 1 is guided by the NGSIM data, while vehicles 2
+and 6 are connected autonomous vehicles controlled by the proposed strategy.
+The remaining vehicles are traditional vehicles. Source data are provided as a
+Source Data ﬁle.
+Fig. 9 | Averaged performance indicators for different platoons with different
+number of vehicles. The oscillation dampening, driving comfort cost, energy
+consumption and ﬂow stability with the proposed knowledge-guided self-learning
+SAC algorithm of the mixed platoon are presented with the orange colored curves,
+while those of the tradition platoon are shown with the blue curves. HV = human-
+driven vehicle. Source data are provided as a Source Data ﬁle.
+Article https://doi.org/10.1038/s41467-025-62597-x
+Nature Communications|         (2025) 16:7705 9
+Fig. 10 | Position proﬁles of a mixed platoon in the presence of lane changing
+behavior of an HV (in red) under CVDS-IDM, DDPG, PPO and the proposed SAC
+strategy. CV = connected vehicle. HV = human-driven vehicle.a–c CVDS-IDM.
+d–f DDPG. g–i PPO. j–l The proposed knowledge-guided self-learning SAC strategy.
+Source data are provided as a Source Data ﬁle.
+Article https://doi.org/10.1038/s41467-025-62597-x
+Nature Communications|         (2025) 16:7705 10
+suffers from unstable strategies in multi-vehicle environments. Its
+Q-value-based policy updates can cause signi ﬁcant ﬂuctuations,
+especially during initial training or in complex environments,
+leading to over ﬁtting or local optima and potentially causing
+collisions in high-dimensional and dynamic trafﬁcs c e n a r i o s .
+ PPO relies solely on a single critic network to estimate the state
+value, lacking a mechanism to correct the Q-value bias. In complex
+mixed trafﬁc situations, the estimation error of the critic can be
+directly passed to the Actor, leading to unstable policy updates.
+ SAC is a value-based reinforcement learning algorithm that
+enhances stability through maximizing the soft value function
+and incorporating entropy regularization. This encourages
+diverse exploration and prevents overﬁtting to speciﬁc strategies,
+allowing SAC to converge smoothly and maintain stable perfor-
+mance in complex and dynamic environments. SAC ’s balanced
+exploration and exploitation reduce collision risks in multi-vehicle
+cooperation and enableﬂexible responses to sudden obstacles or
+vehicle insertions.
+Discussion
+The key challenge in the development of the platooning controller
+for mixed traf ﬁc stems from the challenge of considering the ran-
+domness of human driving behaviors and the random time delay in
+the actual communication environment. We address these chal-
+lenges with three aspects of our knowledge-guided self-learning
+SAC framework. First, this study introduces an approach by inte-
+grating the cloud to be the controller, thereby maximizing the uti-
+lization of traf ﬁc information, which holds signi ﬁcant practical
+application value. This is different from previous studies on mixed
+platoons, which have often overlooked the potential of cloud
+computing and roadside units, leading to sub-optimal use of com-
+munication resources
+15,16,36. Secondly, we embed the kinematic wave
+model and Newell ’s car-following model as a knowledge-guided
+module into the SAC algorithm to estimate the overall behavior of
+traditional vehicles. This integration aims to mitigate the inter-
+ference caused by the randomness inherent in each human-driven
+vehicle and enhance the overall stability of the platoon. Third, to
+address the inherent random delays in wireless networks, we inte-
+grated previous control instructions, which are induced by the
+delay, into the state representation and design a model switching
+mechanism. Lastly, the number of classical vehicles in training is
+variable, and the extended scenarios have been studied, enriching
+the empirical data and broadening the model ’s application
+scenarios.
+The performance of the proposed control strategy is assessed by
+benchmarking it against other DRL-based control
+37,40,44 and CVDS-IDM
+control48 methods. The evaluation criteria include traf ﬁc stability,
+driving comfort, energy consumption cost, traf ﬁc oscillation dam-
+pening performance, and robustness against disturbances caused by
+the lane-changing behavior of a human-driven vehicle. The results
+suggest that the proposed control strategy signiﬁcantly outperforms
+other strategies in every aspect and can greatly suppress the traf ﬁc
+oscillations, demonstrating its robustness and resilience against
+disturbances.
+This research demonstrates the potential of employing the pro-
+posed data-driven strategy, in conjunction with a switching model
+approach, to manage random communication delays effectively. In
+addition, the generalizability of the proposed strategy has been con-
+ﬁrmed through extensive testing with the NGSIM datasets and a variety
+of customized trafﬁc scenarios, further validating its practical applic-
+ability in real-world conditions.
+Future research could focus on applying the proposed framework
+to real-world vehicle platoons, further enhancing the robustness and
+adaptability of the control strategy.
+Methods
+Assumptions
+In this manuscript, an in ﬁnite single straight highway is considered,
+and the lateral motion of the vehicle is ignored. A connected autono-
+mous vehicle is equipped with V2X communication technology to
+c o m m u n i c a t ew i t ho t h e ra u t o n o m o u sv e h i c l e sa n dr o a d s i d eu n i t s .T h e
+basic assumptions for the concerned mixed vehicle platoon are given
+as follows:
+ Each connected autonomous vehicle is equipped with an onboard
+radar sensor to measure the real-time inter-vehicular spacing (i.e.,
+the distance between front bumpers of the connected autono-
+mous vehicle and its predecessor), and to measure the velocity
+information of its predecessor, when its predecessor is a
+traditional vehicle.
+ The traditional vehicle ’s real-time state information including
+position, velocity, acceleration or desired headway to its preced-
+ing vehicle (i.e., the desired time interval between the moment of
+the front bumper of the precedingvehicle passes a given point on
+the road and the moment the front bumper of the following
+traditional vehicle reaches the same location) cannot be broad-
+cast to other connected autonomous vehicles or human-driven
+vehicles, due to their limited communication capability.
+ Each connected autonomous vehicle’s real-time state information
+(including position, speed, and acceleration), and measurement
+information can be broadcast to the cloud platform through V2X
+communication and roadside units.
+ There exists a communication delay when the control command
+information is transmitted from the cloud platform to the actua-
+tor of the connected autonomous vehicle.
+ Roadside units collect the real-time traf ﬁc ﬂow information
+including the traf ﬁc ﬂow wave speed and jam density, and
+forward them to the cloud.
+Mixed platoon scenario
+Regulating the longitudinal behavior of connected autonomous vehi-
+cles in a mixed platoon is essential to dampen traf ﬁc oscillations
+caused by the randomness and heterogeneity of traditional vehicles ’
+behavior. To improve ride comfort and mitigate trafﬁc oscillations, the
+ﬁrst step in our study is to decompose the mixed platoon into sub-
+platoons with the car-following structure of “CV-HVs-CV". This struc-
+ture is practical for real-world scenarios where connected autonomous
+vehicles and traditional vehicles coexist, and serves as a versatile unit
+for mixed platoons with various vehicle combinations, as depicted in
+Fig. 11. In this structure, the leading autonomous vehicle (indexed by
+i − n) is guided by the real-world data, while the following connected
+autonomous vehicle (indexed by i) is the vehicle that needs to be
+controlled. In the following subsection, we present the traditional
+approaches to modeling the car-following behavior of connected
+autonomous vehicles and traditional vehicles. This presentation aims
+to highlight the necessity of developing data-driven dynamics models
+for mixed platoons.
+Classical System Dynamics Model for the Mixed Platoon
+Scenario
+Building on the general framework of“CV-HVs-CV", this paper narrows
+its focus to a speciﬁc sub-platoon consisting ofn + 1 vehicles traveling
+in a single lane, where 1 ≤ n ≤ m. This sub-platoon includes the leading
+autonomous vehicle (indexed byi − n,w h e r en ≤ i ≤ N), a series of n − 1
+human-driven vehicles, and the following connected autonomous
+vehicle (indexed by i) equipped with a self-learning controller, as
+shown in Fig. 11.
+Vehicle-following model of a traditional vehicle . The dynamics of
+human-driven vehicles (indexed by i − j,w h e r ej =1 , 2 , …, n − 1), are
+Article https://doi.org/10.1038/s41467-025-62597-x
+Nature Communications|         (2025) 16:7705 11
+deﬁned by a typical vehicle-following model36, given as follows:
+_vi/C0 j ðtÞ = λi/C0 j vd di/C0 j ðtÞ
+/C16/C17
+/C0 vi/C0 j ðtÞ
+/C16/C17
++ δi/C0 j vi/C0 j/C0 1ðtÞ/C0 vi/C0 j ðtÞ
+/C16/C17
+,
+ð7Þ
+_di/C0 j ðtÞ = vi/C0 j/C0 1ðtÞ/C0 vi/C0 j ðtÞ, ð8Þ
+where vi−j(t)a n d vi−j−1(t) represent the longitudinal speed of vehicles
+i − j and i − j − 1a tt i m et,r e s p e c t i v e l y ;di−j is the inter-vehicular distance
+between front bumpers of vehicles i − j and i − j − 1. λi−j and δi−j are
+introduced to account for the behavior of human-driven vehicles.
+Speciﬁcally, λ
+i−j is the headway gain, and δi−j denotes the relative
+velocity gain.vd(d) denotes the inter-vehicular-distance-based velocity
+policy, deﬁned as:
+vd ðdÞ =
+0, d ≤ ds ,
+vmax
+2 1 /C0 cosðπ d/C0 ds
+dg /C0 ds
+Þ
+hi
+, ds < d < dg ,
+vmax, d ≥ dg ,
+8
+>>
+<
+>>:
+ð9Þ
+where d
+s and dg denote the lower and upper bounds of inter-
+vehicular distance; within this region, traditional vehicles aim to
+reach the maximum speed v
+max; the values of ds, dg are the same for
+all classical vehicles.
+Each classical vehicle in the mixed platoon aims to achieve the
+desired inter-vehicular spacing d* between neighboring vehicles and
+desired speed v*= v d(d*). Deﬁne the error variables as follows:
+Δvi/C0 j, i/C0 j/C0 1ðtÞ = vi/C0 j ðtÞ/C0 v*, j =1 ,2 , ... , n /C0 1, ð10Þ
+Δdi/C0 j, i/C0 j/C0 1ðtÞ = di/C0 j ðtÞ/C0 d*: ð11Þ
+With equations ( 10), ( 11)a n dt h e ﬁrst-order approximation of
+the inter-vehicular-distance-based velocity policy vd ðdÞ = vd ðd*Þ +
+ðd /C0 d*Þ ∂vd
+∂d jd = d*, the dynamics of traditional vehicles’ state errors can
+be described by:
+Δ_vi/C0 j, i/C0 j/C0 1ðtÞ = λi/C0 j ðl*Δdi/C0 j, i/C0 j/C0 1ðtÞ
+/C0 Δvi/C0 j, i/C0 j/C0 1ðtÞÞ
++ δi/C0 j Δvi/C0 j/C0 1, i/C0 j/C0 2ðtÞ/C0 Δvi, i/C0 1ðtÞ
+/C16/C17
+,
+ð12Þ
+Δ_di/C0 j, i/C0 j/C0 1ðtÞ = Δvi/C0 j/C0 1, i/C0 j/C0 2ðtÞ/C0 Δvi/C0 j, i/C0 j/C0 1ðtÞ, ð13Þ
+where l*= ∂vd
+∂d jd = d* represents the derivative of the policy (9)a t d*.
+It is worthy noting that the desired inter-vehicular spacing d*, as
+well as parameters λi−j, δi−j and l* are typically determined by the
+human drivers. Consequently, this information is not available for the
+control policy design of connected autonomous vehicles, due to the
+limited communication capabilities of traditional vehicles. However,
+many existing studies such as references
+37–40,44 and48 are based on the
+assumption that the above information is accessible. While this
+assumption simpliﬁes the analysis of the mixed platoon control pro-
+blem, it makes the control strategy challenging to implement in real-
+world scenarios.
+Vehicle-following model of the following connected autonomous
+vehicle. The dynamics model of the following connected autonomous
+vehicle (indexed byi) under communication delay is described by the
+following equations:
+_v
+iðtÞ = uiðt /C0 ϵÞ, ð14Þ
+_diðtÞ = vi/C0 1ðtÞ/C0 viðtÞ, ð15Þ
+where vi−1 and vi respectively represent the longitudinal speed of
+vehiclesi − 1a n di; ui is the control strategy of connected autonomous
+vehicle i (i.e., the expected acceleration); di(t) is the inter-vehicular
+distance between front bumpers of vehiclesi and i − 1 at time t; ϵ is the
+inevitable communication delay caused by V2X wireless communica-
+tion technology.
+The objective of the following connected autonomous vehi-
+cle (indexed by i)w i t h i nt h ep l a t o o ni st oa c h i e v et h ed e s i r e d
+inter-vehicular spacing /C22d
+*
+from its predecessor (i.e., traditional
+vehicle indexed by i − 1). This spacing is calculated using the
+formula /C22d
+*
+= hiviðtÞ + li,w h e r ehi represents the time headway (i.e.,
+the time interval between the passage of the front of classical
+vehicle i − 1 and the front of connected autonomous vehicle i at a
+given point on the road), and l
+i is the standstill spacing (the ﬁnal
+distance at the end of braking). In addition, the connected
+autonomous vehicle aims to attain the desired velocity v
+*.
+Based on ( 14)a n d( 15), the state error dynamics of connected
+autonomous vehicle i are de ﬁned as follows:
+Δ_vi, i/C0 1ðtÞ = uiðt /C0 ϵÞ, ð16Þ
+Δ_di, i/C0 1ðtÞ = Δvi/C0 1, i/C0 2ðtÞ/C0 Δvi, i/C0 1ðtÞ/C0 hiuiðt /C0 ϵÞ: ð17Þ
+Follower Leader
+Predict the behavior of 
+HVs as a whole
+k HVs (0≤k≤m, k=n-1)
+HV i-1 HV i-n-1 CV i-n
+di-1,i-n
+di-1,i-n=Hi-1,i-n ·vi-1+Li-1,i-n Li-1,i-n =wv·Hi-1,i-n
+Estimation of desired time-varying time gap Hi-1,i-n 
+and desired standstill space Li-1,i-n
+Average kinematic
+wave velocity wv
+Distance di-1,i-n between
+HV i-1 and CV i-n
+Knowledge-guided
+Optimizer
+Online network Online network
+Optimizer Policy network
+Target value network Target value network
+Loss function Experience
+replay buffer
+SAC algorithm
+Data-driven
+Reward
+State
+Continuous 
+action
+(st , at , rt , st+1)
+Random delay
+Stability & 
+Safety
+Comfort
+Environment
+Space
+deviation
+State Relative
+velocity
+Previous
+instructions
+Reward of performance indicators
+CV i
+CV i CV i-nHV i-n-1HV i-1
+CV i
+Fig. 11 | The algorithm procedure of knowledge-guided self-learning mixed platoon control framework.CV = connected vehicle. HV = human-driven vehicle.
+SAC = soft actor-critic.
+Article https://doi.org/10.1038/s41467-025-62597-x
+Nature Communications|         (2025) 16:7705 12
+The state-space model of the sub-platoon system .A tt i m e t,t h e
+state vector of the subsystem in the framework of “CV-HVs-CV" is
+deﬁned as x ðtÞ = ½Δdi, i/C0 1ðtÞ, Δvi, i/C0 1ðtÞ, Δdi/C0 1, i/C0 2ðtÞ, Δvi/C0 1, i/C0 2ðtÞ, ... , Δ
+di/C0 n +1 , i/C0 nðtÞ, Δvi/C0 n +1 , i/C0 nðtÞ/C138T 2 R2n. By combining the error dynamics
+of traditional vehicles and connec ted autonomous vehicles, we give
+the error dynamics of the sub-platoon system as follows:
+_xðtÞ = ΦxðtÞ + Ψuðt /C0 ϵÞ, ð18Þ
+with
+Φ =
+0 /C0 10 1 0 0 /C1/C1/C1 00
+00 0 0 0 0 /C1/C1/C1 00
+00 0 /C0 10 1 /C1/C1/C1 00
+00 ai/C0 1 bi/C0 1 0 δi/C0 1 /C1/C1/C1 00
+..
+. .
+.
+. . .
+. . .
+. . .
+. . .
+. . .
+. .
+.
+. .
+.
+.
+00 /C1/C1/C1 /C1/C1/C100 /C0 10 1
+00 /C1/C1/C1 /C1/C1/C10 a
+i/C0 n bi/C0 n 0 δi/C0 n
+00 /C1/C1/C1 /C1/C1/C100 0 0 /C0 1
+00 /C1/C1/C1 /C1/C1/C100 0 ai/C0 n +1 bi/C0 n +1
+2
+66
+6
+6
+6
+6
+6
+666
+6
+6
+6
+6
+6
+6
+6
+4
+3
+77
+7
+7
+7
+7
+7
+777
+7
+7
+7
+7
+7
+7
+7
+5
+,
+Ψ = ½/C0 h
+i,1 ,0 , ... ,0 /C138T ,
+where ai−j = λi−jl*, bi−j = − λi−j − δi−j, j =1 ,2 , …, n − 1, and u(t − ϵ)= ui(t − ϵ).
+While the model (7) offers a framework for understanding the car-
+following behavior of classical vehicles, the unpredictable nature of
+human driving introduces a level of variability that prevents the pre-
+cise determination of key model parameters λ
+i−j, δi−j and l*. This
+uncertainty results in an unknown system matrix for equation ( 18),
+thereby rendering conventional model-based approaches to platoon-
+ing control impractical. For instance, robust control methods in
+refs. 29–31 and optimization control methods in refs. 34–36 rely on
+the precise model of the vehicle platoon system. To address this,
+our research leverages experimental data to reﬁne the model, thereby
+capturing the typical patterns of human driver behavior. This reﬁned
+model serves as the foundation for developing a control system tai-
+lored for connected autonomous vehicles. In this paper, we design an
+online data-driven approach that dynamically learns a control strategy
+from equation (18), with the objective of achieving stability within the
+mixed platoon–ensuring that vehicles reach and maintain the optimal
+speed and spacing in the presence of communication delays.
+Optimization problem under communication delay
+In actual trafﬁc scenarios, as depicted in Fig. 2, factors such as com-
+munication channel quality and network traf ﬁc congestion render
+communication delays in the V2X environment inevitable. These
+delays are further elaborated in Supplementary Fig. 1, which illustrates
+that the overall vehicle control delay consists of several distinct com-
+ponents: the delay ϵ
+1 for the cloud controller to generate the control
+instruction; the delay ϵ2 for transmitting the control signal from the
+cloud server to the roadside units; the delay ϵ3 for transmitting the
+signal from the roadside units to the actuator; and the delayϵ4 for the
+actuator to process the instruction28,34. Therefore, the total delay ϵ is
+deﬁned as the sum of these individual delays, ϵ = ϵ1 + ϵ2 + ϵ3 + ϵ4.T h i s
+total delay is typically assumed to be random due to the multitude of
+complex and interrelated in ﬂuencing factors, such as distance to
+roadside units and ﬂow density. We adopt the general way to express
+the delay as ϵ 2 zΔT, ðz +1 ÞΔT½ Þ,w h e r ez is a positive integer, repre-
+senting the variability in delay occurrence; ΔT denotes the sampling
+time interval.
+Then, during the /C22k-th sampling interval /C22kΔT, ð/C22k +1 ÞΔT
+/C2/C1
+,t h e
+error-dynamics model (18) in the discrete-time domain can be derived
+as:
+xð/C22k +1 Þ =eΦxð/C22kÞ +eΨ
+1uð/C22k /C0 zÞ +eΨ2uð/C22k /C0 z /C0 1Þ, ð19Þ
+whereeΦ = eΦΔT , eΨ1 =
+R ðz +1 ÞΔT/C0 ϵ
+0 eΦt dtΨ,a n deΨ2 =
+R ΔT
+ðz +1 ÞΔT/C0 ϵ eΦt dtΨ.
+The goal of developing an optimal control strategy for connected
+autonomous vehiclei is to ensure stability, safety, and comfort within
+the platooning system. Achieving these objectives hinges fundamen-
+tally on minimizing the state error to zero. The optimization problem
+for connected autonomous vehicle i is formulated to ensure that the
+system not only maintains its stability and safety but also provides a
+comfortable driving experience:
+min
+u
+X/C22k = /C22N
+/C22k =0
+xT ð/C22kÞQxð/C22kÞ + uT ð/C22kÞWuð/C22kÞ
+/C0/C1/C2/C3
+, ð20Þ
+s:t: xð/C22k +1 Þ =eΦxð/C22kÞ +eΨ1uð/C22k /C0 zÞ +eΨ2uð/C22k /C0 z /C0 1Þ,
+where /C22N is a ﬁnite time range; the car-following item xT ð/C22kÞQxð/C22kÞ
+corresponds to the tracking error of connected autonomous vehiclei
+during the /C22k-th sampling interval, and the smaller its value, the
+stronger the local stability of the system; the comfort item, denoted by
+u
+TWu is designed to ensure smooth control inputs, thereby improving
+driving comfort;W is a positive parameter that weights the importance
+of comfort in the control strategy. The matrixQ is characterized by its
+diagonal elements, which consist ofα1, α2 and 2k zero elements, where
+α1 and α2 are positive constants, and 2k represents the number of zero
+elements corresponding to the non-controlling human-driven vehicles
+in the platoon.
+However, the optimization problem given in ( 20) cannot be
+solved by existing algorithms. This difﬁculty arises from the inherent
+dynamic features of the mixed platoon system, including the random
+and heterogeneous behavior of human drivers, the complex traf ﬁc
+environment, and the complicated communication environment.
+These factors introduce communication delays and cause the matrices
+eΦ,eΨ
+1 and eΨ2 to be time-varying. To address these challenges, we
+design a knowledge-guided self-learning controller speci ﬁcally tai-
+lored to solve the optimization problem while accounting for the
+dynamic characteristics of the mixed platoon system.
+Control framework for the following connected autonomous
+vehicle: Knowledge-guided module
+In this sub-section, we propose a control framework for the following
+connected autonomous vehicle (indexed by i)i nt h e “CV-HVs-CV"
+platoon structure. The control objective for connected autonomous
+vehicle i is twofold: ﬁrst, to match the velocity of the leading vehicle
+(indexed by i − n); and second, to achieve and maintain a desired
+bumper-to-bumper distance from the leading vehicle (indexed by i −
+n). To formalize this concept, the de ﬁnition of the desired spacing
+/C22d
+*
+i, i/C0 n and desired velocity/C22v*
+i, i/C0 n for connected autonomous vehiclei is
+given as follows:
+/C22d
+*
+i, i/C0 n = Hi, i/C0 nviðtÞ + Li, i/C0 n, ð21Þ
+/C22v*
+i, i/C0 n = vi/C0 nðtÞ, ð22Þ
+where Hi,i−n denotes the desired time headway (i.e., the desired time
+interval between the moment of the front bumper of the traditional
+vehiclei − n passes a given point on the road and the moment the front
+bumper of connected autonomous vehicle i reaches the same loca-
+tion), and Li,i−n is the desired standstill distance (i.e., the desired ﬁnal
+distance at the end of braking) for connected autonomous vehiclei to
+ensure safe traveling. Considering the in ﬂuence of the traditional
+Article https://doi.org/10.1038/s41467-025-62597-x
+Nature Communications|         (2025) 16:7705 13
+vehicles ahead of the connected autonomous vehicle i,t h ed eﬁnition
+of the desired time headway Hi,i−n and the desired standstill distance
+Li,i−n are given as:
+Hi, i/C0 n = hi +
+Xi/C0 n +1
+k = i/C0 1
+Hk, k/C0 1, ð23Þ
+Li, i/C0 n = li +
+Xi/C0 n +1
+k = i/C0 1
+Lk, k/C0 1, ð24Þ
+where hi and li respectively denote the desired time-headway and the
+desired standstill spacing between autonomous vehicle i and tradi-
+tional vehicle i − 1; Hk,k−1 and Lk,k−1 (k = i − 1, …, i − n + 1) respectively
+denote the desired time-headway and the desired standstill spacing
+between traditional vehiclek and vehicle k − 1.
+In equations (23)a n d(24), the desired time-headway (i.e.,h
+i)a n d
+the desired standstill spacing (i.e.,li) between connected autonomous
+vehicle i and its predecessor (i.e., traditional vehicle i − 1) are kept
+constant. This is because connected autonomous vehicle i follows a
+constant time-headway policy strategy, a strategy that is not only
+widely adopted but also recognized for its robustness against dis-
+turbance propagation, as speciﬁed by the Association of Automotive
+Engineers standard
+39,43,44.
+In contrast, the corresponding parameters for traditional
+vehicles (i.e., Hk,k−1 and Lk,k−1, k = i − 1, …, i − n +1 ) e x h i b i t r a n -
+domness and signi ﬁcant variability, ﬂuctuating across different
+classical vehicles. Previous studies have often assumed that
+these parameters for human-driven vehicles are known and
+constant, neglecting the inherent randomness and complexities
+associated with modeling human-driven vehicle behavior
+8,10 ,44 .
+This assumption oversimpli ﬁes the reality, as traditional vehi-
+cles exhibit signi ﬁcant variability and unpredictability in their
+driving behaviors, which are in ﬂuenced by factors such as
+driver reactions, traf ﬁc conditions, and vehicle dynamics.
+Moreover, the limited communication capabilities of classical
+vehicles further complicate the situation, making it challenging
+to obtain precise and real-time information about their
+desired time gaps and desired standstill spacing. This gap in
+research highlights the need f or more sophisticated models
+and control strategies that can a ccount for the stochastic nat-
+ure of human-driven vehicles and the limitations of their
+communication.
+To address these challenges, our study simpliﬁes the problem by
+shifting the focus from modeling the individual behavior of each tra-
+ditional vehicle to estimating the aggregated behavior of multiple
+classical vehicles. This approach is motivated by the observation that
+while the behavior of a single human-driven vehicle can be highly
+stochastic and unpredictable, the collective behavior of multiple tra-
+ditional vehicles tends to exhibit reduced variability and more regular
+patterns. By focusing on the aggregated behavior, we can better cap-
+ture the overall trafﬁc dynamics and mitigate the impact of individual
+randomness.
+To better understand and predict the collective char-
+acteristics of these aggregated traditional vehicles, we employ
+the kinematic wave model and Newell ’sc a r - f o l l o w i n gm o d e l
+2,52 .
+These models are widely used in traf ﬁc engineering for esti-
+mating overall traf ﬁc features and have proven effective in
+addressing the inherent randomness in individual human-
+driven vehicle ’s behavior. The kinematic wave model provides
+a macroscopic view of traf ﬁc ﬂow, capturing the propagation of
+traf ﬁcd e n s i t ya n dﬂow rate, while Newell ’s car-following model
+offers a more detailed microscopic perspective on vehicle
+interactions. By combining these models, we aim to achieve a
+comprehensive understanding of the aggregated classical
+vehicles ’ behavior and develop adaptive strategies for mixed
+platoons. Both models are given as follows:
+w
+v = 1
+hcd
+, ð25Þ
+cd = 1
+l , ð26Þ
+where wv denotes the speed of traf ﬁcw a v e s ;l represents the jam
+spacing;h is the trafﬁc wave transmission time for a series of vehicles in
+a platoon, and cd is the density at which traf ﬁcj a m so c c u r ,w h i c h
+symbolizes the overall trafﬁc characteristics.
+To describe the overall behavior of the aggregated human-driven
+vehicles, the summation form can be used to estimate the desired
+time-varying time gapH
+i−1,i−n(t) and desired standstill spacingLi−1,i−n(t)
+between traditional vehiclei − 1 and the leading autonomous vehicle
+i − n in real time, based on (25)a n d(26):
+Hi/C0 1, i/C0 nðtÞ =
+Xk = i/C0 n +1
+k = i/C0 1
+dk, k/C0 1ðtÞ
+wv + vi/C0 1ðtÞ = di/C0 1, i/C0 nðtÞ
+wv + vi/C0 1ðtÞ , ð27Þ
+Li/C0 1, i/C0 nðtÞ = wvHi/C0 1, i/C0 nðtÞ, ð28Þ
+where vi−1(t) is the speed of classical vehicle i − 1, and di−1,i−n(t)i st h e
+actual distance between human-driven vehicle i − 1 and connected
+autonomous vehicle i − n; wv represents the average kinematic wave
+velocity, which is determined by the characteristics and conﬁguration
+of road infrastructure and should be updated according to the actual
+road scene.
+By substituting the e stimated parameters–namely, the desired
+time-varying time gapH
+i−1,i−n(t) and desired standstill spacingLi−1,i−n(t)
+between classical vehiclei − 1 and the leading autonomous vehiclei − n,
+which are obtained from equations (27)a n d( 28)–into the right-hand
+side of equations ( 23)a n d( 24), we can determine the desired time
+headway Hi,i−n(t) and the desired standstill distance Li,i−n(t) between
+connected autonomous vehiclesi and i − n. Subsequently, the desired
+spacing (i.e.,/C22d
+*
+i, i/C0 n) between connected autonomous vehiclesi and i − n
+can be calculated using ( 21). Based on the above, the deviation from
+the desired spacingΔdi,i−n(t) and the relative speedΔvi,i−n(t)a r ed eﬁned
+as:
+Δdi, i/C0 nðtÞ = di, i/C0 nðtÞ/C0 /C22d
+*
+i, i/C0 n, ð29Þ
+Δvi, i/C0 nðtÞ = viðtÞ/C0 vi/C0 nðtÞ: ð30Þ
+Moreover, the deviation from the desired spacingΔdi,i−1(t)a n dt h e
+relative speed Δvi,i−1(t) between connected autonomous vehicle i and
+traditional vehiclei − 1a r ed eﬁned as:
+Δdi, i/C0 1ðtÞ = di, i/C0 nðtÞ/C0 li, ð31Þ
+Δvi, i/C0 1ðtÞ = viðtÞ/C0 vi/C0 1ðtÞ: ð32Þ
+Data fusion techniques are employed to process the state devia-
+tion values, which serve to condense the state dimension of the sys-
+tem.
+Δ~d
+ið/C22kÞ = ω i, i/C0 1Δdi, i/C0 1ð/C22kÞ + ω i, i/C0 nΔdi, i/C0 nð/C22kÞ
+ω i, i/C0 1 + ω i, i/C0 n
+, ð33Þ
+Δ~við/C22kÞ = ω i, i/C0 1Δvi, i/C0 1ð/C22kÞ + ω i, i/C0 nΔvi, i/C0 nð/C22kÞ
+ω i, i/C0 1 + ω i, i/C0 n
+, ð34Þ
+Article https://doi.org/10.1038/s41467-025-62597-x
+Nature Communications|         (2025) 16:7705 14
+where ω i,i−1 and ω i,i−n play a pivotal role in determining the inﬂuence of
+neighboring vehicles on the control strategy of connected autono-
+mous vehiclei. By default, all weight coefﬁcientsω are assigned a value
+of 0.5, indicating an equal initial consideration of the neighboring
+vehicles’ impact.
+Designing SAC-based cooperative platooning longitudinal con-
+trol strategy
+Based on the control framework in the Control Framework for
+the Following Connected Autonomous Vehicle: Knowledge-
+Guided Module section, this sub-section delves into the devel-
+opment of the deep reinforcement learning-based model.
+We begin by detailing the four fundamental elements of deep
+reinforcement learning. Subsequently, we introduce the neural
+network architecture and provide detailed information on the
+Soft Actor-Critic (SAC) algorithm used for policy updates.
+We then describe the data utilized for both training and testing
+processes. Finally, the subsection concludes with a detailed
+description of the training process.
+Deep reinforcement learning (DRL) technology, as a standard
+Markov Decision Process, consists of two interactive objects: DRL
+agent (control algorithm for connected autonomous vehicle i)a n d
+environment (the environment setting is given in Classical System
+Dynamics Model for the Mixed Platoon Scenario and Optimization
+Problem under Communication Delay sections. DRL framework is
+formally described by a tupleðS, A, P, RÞ,w h e r eS represents the state
+space, A denotes the action space,P is the state transition probability
+function, and R deﬁnes the reward function.
+State. In our study, the state vector s
+i for connected autonomous
+vehicle i not only includes the fused state information Δ~di and
+Δ~vi, which are respectively de ﬁned in ( 33)a n d( 34), but also is
+augmented to incorporate the previous control instructions,
+denoted as u
+i(1), ui(2), . . . , ui(z + 1). This augmentation helps to
+compensate for the effects of communication delays, enabling
+the control strategy to adapt more effectively to the current
+operating conditions of the platoon in near real-time. Speci ﬁcally,
+the state vector is de ﬁned as:
+s
+ið/C22kÞ = Δ~dið/C22kÞ, Δ~við/C22kÞ, uið1Þ, uið2Þ, ... , uiðz +1 Þ
+hi
+: ð35Þ
+Action. To guarantee both the safety and comfort of driving, the
+action space for the control input, denoted as ui,i sm e t i c u l o u s l y
+deﬁned within the set A.S p e c iﬁcally, ui is de ﬁned to satisfy the
+constraint ui 2½ amin , amax /C138,w h e r e amin and amax represent the
+minimum and maximum bounds of acceleration, respectively.
+This de ﬁned range ensures that the control input is not only
+practical but also adheres to the physical limitations of the
+vehicle’s throttle and braking systems. By setting these bounds,
+the controller is constrained to operate within a realistic and safe
+domain, thus maintaining the vehicle ’s performance within
+acceptable limits and preventing any abrupt maneuvers that
+could compromise the driving experience.
+State transition function. After the control input u
+i(t) is applied to
+equation (19), the error dynamics of the mixed platoon system will be
+updated. Subsequently, the next state s ið/C22k +1 Þ will be determined
+based on equations (33)–(35). The state transition function, which is an
+implicit function, is updated through the training process to capture
+the variations in the states.
+Reward function. The primary task of the SAC algorithm is to
+ensure the optimal performance of the connected autonomous
+vehicle i while maintaining its acceleration within a safe and
+predeﬁned range. This task is critical for the vehicle ’so p e r a t i o n a l
+safety. In addition, the algorithm must prioritize passengers ’
+comfort by providing a smooth ride experience. To achieve these
+objectives, the SAC algorithm focuses on optimizing the long-
+term cumulative reward. By pursuing this optimization, the
+autonomous vehicle i can gradually learn and apply the most
+effective control strategies. This learning process is iterative and
+adaptive, allowing the autonomous vehicle i to re ﬁne its actions
+over time to maximize comfort and safety.
+Unlike the minimization problem ( 20) in the Classical System
+Dynamics Model for the Mixed Platoon Scenario section, the optimi-
+zation problem for the SAC algorithm is typically formulated as a
+maximization problem. The following equation illustrates the optimi-
+zation process, where the SAC algorithm is utilized to improve the
+control strategy of autonomous vehiclei:
+max π
+*
+i ðsÞ =l i m
+M!1
+E
+XM/C0 1
+/C22k =0
+γ
+/C22k riðsið/C22kÞ, uið/C22kÞÞ
+"# !
+, ð36Þ
+where π *
+i ðsÞ represents the optimal policy; γ denotes the discounted
+factor; M is the number of steps; E½/C1/C138deﬁnes the mathematical
+expectation operation; based on (18), and (20)–(35), the speciﬁcd eﬁ-
+nition of the reward function is given as follows:
+riðsið/C22kÞ, uið/C22kÞÞ = e/C0ð si ð/C22kÞCsT
+i ð/C22kÞ + Du2
+i ð/C22kÞÞ, ð37Þ
+where C is a diagonal matrix with ρ1, ρ2 and z + 1 zero elements in turn
+as its diagonal coefﬁcients, in whichρ1, ρ2 and D are positive constants;
+the car-following itemsiCsT
+i represents the tracking error of connected
+vehicle i. A smaller value of this term indicates stronger local stability
+within the system. Meanwhile, the comfort term, denoted by Du2
+i ,i s
+designed to ensure smooth control inputs, thereby enhancing driving
+comfort.
+Neural network structure . The actor network comprises an
+input layer with z + 3 units, which receives the state information,
+including Δ~d
+ið/C22kÞ, Δ~við/C22kÞ, uið1Þ, uið2Þ, ... , uiðz +1 Þ. Following the
+input layer, there are two hidden layers with 128 and 64 units,
+respectively. The output layer of the actor network is designed
+to produce the mean and standard deviation of the action dis-
+tribution, which adheres to a Gaussian distribution, thereby
+enabling the network to select actions stochastically. The critic
+network shares a similar structure to the actor network but has a
+distinct input layer consisting of z + 4 neurons. This layer
+receives both the action u
+ið/C22kÞ and the state s ið/C22kÞ.T h ep r i m a r yr o l e
+of the critic ’s output layer is to output the Q value, which serves
+as a critical evaluation metric for the quality or ‘superiority ’ of
+the action taken in a given state. This comparison allows the
+network to learn the value of actions in speci ﬁc states and to
+guide the actor network in selecting better actions over time.
+SAC algorithm. The SAC algorithm is an off-policy DRL algorithm that
+distinctively incorporates the principle of maximum entropy
+53.T h i s
+innovative approach results in a more dispersed action output, coun-
+teracting the tendency for actions to become overly concentrated. By
+doing so, the SAC algorithm enhances its exploration capabilities,
+which in turn improves the learning efﬁciency, sample efﬁciency, and
+the stability of the algorithm when adapting to new tasks. Compared
+with other DRL algorithms, these attributes provide SAC with a sig-
+niﬁcant advantage in terms of adaptability and performance. Given
+these strengths, the following optimal strategy derived from the SAC
+algorithm is designed to balance exploration and exploitation effec-
+tively:
+π
+* =a r g m a xπ
+X
+E s/C22k , u/C22kðÞ /C24 ρπ
+r + α /C1/C22H π /C1js/C22k
+/C0/C1/C0/C1/C2/C3
+ð38Þ
+Article https://doi.org/10.1038/s41467-025-62597-x
+Nature Communications|         (2025) 16:7705 15
+where α is the temperature parameter, which determines the relative
+importance of the reward entropy; for a policy π /C1js/C22k
+/C0/C1
+,i t se n t r o p yi s
+denoted by /C22H π /C1js/C22k
+/C0/C1/C0/C1
+, which quantiﬁes how much the policy explores
+different actions in a given state. A higher entropy indicates a more
+exploratory policy.
+Based on the above description, the pseudo-code of the SAC
+algorithm is presented in Supplementary Algorithm 1.
+Data preparation. I nt h i ss t u d y ,w eu t i l i z et h eN e x tG e n e r a t i o n
+Simulation (NGSIM) data from the California I-80 project for our
+tests
+49. This dataset is chosen due to the frequent traf ﬁcc o n -
+gestion and oscillation observed during peak hours, which are
+critical for our analysis. Speci ﬁcally, we focus on the vehicle
+trajectory data captured between 4: 00 pm and 4: 15 pm, a
+period characterized by relatively fewer lane change maneuvers,
+thus providing a stable dataset for our experiments. To enhance
+the quality of the data for analys is, the trajectories are recon-
+structed using a low-pass ﬁlter. This ﬁltering process is essential
+for smoothing out the noise and interference present in the
+original data. Supplementary Fig. 2 demonstrates the effective-
+ness of the low-pass ﬁlter in re ﬁning the data, ensuring that it is
+suitable for our research purposes.
+Training procedure. Figure 11 illustrates the knowledge-guided self-
+learning mixed platoon control framework based on the SAC algo-
+rithm. In the left side, the framework incorporates a prior traf ﬁc
+information as a knowledge-guided module, which is designed to
+predict the overall behavior of aggregated traditional vehicles. The
+SAC algorithm is deployed as the data-driven module, which con-
+tinuously interacts with the environment. The number of classical
+vehicles in training is variable, enriching the empirical data and
+broadening the model ’s application scenarios. Instead of a ﬁxed
+deterministic leader, NGSIM data is utilized to represent the leader ’s
+behavior, the rationality of which has been validated in previous
+studies
+43,50.S p e c iﬁcally, the number of human-driven vehicles
+(0 ≤ n − 1 ≤ m − 1) is randomly sampled in the training set simulation
+environment to enhance the model’s generalization ability across dif-
+ferent topologies.
+T h em i d d l eo fF i g .11 depicts the structure of the neural network.
+During training, the SAC algorithm continuously interacts with the
+trafﬁc environment, generating actions to apply to the system model.
+The state of the system is inﬂuenced by the current vehicle’s error state
+and previous control instructions, leading to a transition from the
+current state to the next state. In response, the model obtains a real-
+time reward that guides its learning direction. In addition, the lower
+right corner of Fig. 11 shows that the stability, safety and comfort
+rewards for connected autonomous vehicles converge gradually dur-
+ing the training process, aligning with the controller ’sd e s i g n
+objectives.
+Data availability
+All datasets used in this paper are available athttps://codeocean.com/
+capsule/7637528/tree/v1. Source data are provided in this paper.
+Code availability
+The source code is available at https://codeocean.com/capsule/
+7637528/tree/v1. DOI for our code that has been provided by Code
+Ocean is https://doi.org/10.24433/CO.4294963.v1.
+References
+1 . W a n g ,X .e ta l .T r a fﬁc light optimization with low penetration rate
+vehicle trajectory data.Nat. Commun. 15, 1306 (2024).
+2. Zhou, Y., Lin, Y., Ahn, S., Wang, P. & Wang, X. Platoon trajectory
+completion in a mixed trafﬁc environment under sparse observa-
+tion. IEEE Trans. Intell. Transp. Syst.23,1 6 2 1 7–16226 (2022).
+3. Antonakaki, A., Oikonomou, M. G., Garefalakis, T. & Yannis, G.
+Driving automation systems penetration and trafﬁcs a f e t y :I m p l i -
+cations for infrastructure design and policy.Infrastructures9,
+234 (2024).
+4. Milakis, D., Snelder, M., Van Arem, B., Van Wee, B. & Homem De
+Almeida Correia, G. Development and Transport Implications of
+Automated Vehicles in the Netherlands: Scenarios for 2030 and
+2050. Eur. J. Transp. Infrastruct. Res.17,6 3–85 (2017).
+5. Li, T., Guo, F., Krishnan, R., Sivakumar, A. & Polak, J. Right-of-way
+reallocation for mixedﬂow of autonomous vehicles and human
+driven vehicles.Transp. Res. C Emerg. Technol.115, 102630 (2020).
+6. Li, M., Li, Z., Zhou, Y. & Wu, J. A cooperative energy ef ﬁcient truck
+platoon lane-changing model preventing platoon decoupling in a
+mixed trafﬁc environment.J. Intell. Transp. Syst.28,1 7 4–188 (2022).
+7. Chen, D., Srivastava, A., Ahn, S. & Li, T. Traf ﬁcd y n a m i c su n d e r
+s p e e dd i s t u r b a n c ei nm i x e dt r a fﬁc with automated and non-
+automated vehicles.Transp. Res. C Emerg. Technol. 113,2 9 3–313
+(2020).
+8. Zhou, A., Liu, Y., Tenenboim, E., Agrawal, S. & Peeta, S. Car-
+following behavior of human-driven vehicles in mixed-ﬂow trafﬁc: A
+driving simulator study.IEEE Trans. Intell. Veh.8, 2661–2673 (2023).
+9. Tian, Y. et al. Learning to drive like human beings: A method based
+on deep reinforcement learning.IEEE Trans. Intell. Transp. Syst.23,
+6357–6367 (2022).
+10. Zhao, W., Ngoduy, D., Shepherd, S., Liu, R. & Papageorgiou, M. A
+platoon based cooperative eco-driving model for mixed automated
+and human-driven vehicles at a signalised intersection.Transp. Res.
+C Emerg. Technol. 95,8 0 2–821 (2018).
+11. Zhu, S., Li, D. & Liu, M. Hindrance-aware platoon formation for
+connected vehicles in mixed trafﬁc. IEEE Trans. Intell. Transp. Syst.
+23
+,2 4 8 7 6–24890 (2022).
+12. Wang, Y., Lin, S., Wang, Y., Schutter, B. D. & Xu, J. Robustness
+analysis of platoon control for mixed types of vehicles.IEEE Trans.
+Intell. Transp. Syst.24, 331–340 (2023).
+13. Aty, M. A. & Ding, S. A matched case-control analysis ofau-
+tonomous vs human-driven vehicle accidents. Nat. Commun.
+15, 4931 (2024).
+14. Wang, M., Daamen, W., Hoogendoorn, S. P. & Arem, B. V. Coop-
+erative car-following control: Distributed algorithm and impact on
+moving jam features. IEEE Trans. Intell. Transp. Syst.17,1 4 5 9–1471
+(2016).
+15. Wang, J., Zheng, Y., Xu, Q., Guo, J. & Li, K. Controllability analysis
+and optimal control of mixed trafﬁc ﬂow with human-driven and
+autonomous vehicles.IEEE Trans. Intell. Transp. Syst.22,
+7445–7459 (2021).
+16. Hu, Y., Chen, C., He, J. & Yang, B. Eco-platooning for cooperative
+automated vehicles under mixed trafﬁc ﬂow. IEEE Trans. Intell.
+Transp. Syst. 22,2 0 2 3–2034 (2021).
+1 7 . Z h e n g ,F . ,L i u ,C . ,L i u ,X . ,J a b a r i ,S .E .&L u ,L .A n a l y z i n gt h ei m p a c to f
+automated vehicles on uncertainty and stability of the mixed trafﬁc
+ﬂow. Transp. Res. C Emerg. Technol. 112,2 0 3–219 (2020).
+1 8 . W a n g ,J . ,L i ,X . ,G u o ,J .&L i ,K .S e l fl e a r n i n g - b a s e dp l a t o o n i n g
+control strategy for connect ed autonomous vehicles with
+switching topologies. IEEE Trans. Intell. Transp. Syst. 25,
+19842 –19851 (2024).
+19. Li, Y. et al. Longitudinal plat oon control of connected vehicles:
+Analysis and veriﬁcation. IEEE Intell. Transp. Syst. 23, 4225–4235
+(2022).
+20. Zhou, A., Peeta, S. & Wang, J. Cooperative control of a pla-
+toon of connected autonomou s vehicles and unconnected
+human-driven vehicles. Comput. Aided Civ. Infrastruct. Eng.
+38,2 5 1 3–2536 (2023).
+21. Zhang, L. & Tseng, E. Motion prediction of human-driven vehicles in
+mixed trafﬁc with connected autonomous vehicles. InProceedings
+of the 2020 American Control Conference.3 9 8–403 (ACC, 2020).
+Article https://doi.org/10.1038/s41467-025-62597-x
+Nature Communications|         (2025) 16:7705 16
+22. Wen, X., Cui, Z. & Jian, S. Characterizing car-following behaviors of
+human drivers when following automated vehicles using the real-
+world dataset. Accid. Anal. Prev. 172, 106689 (2022).
+23. Zhou, Y., Ahn, S., Wang, M. & Hoogendoorn, S. Stabilizing mixed
+vehicular platoons with connected automated vehicles: An
+H-inﬁnity approach. Transp. Res. B Meth. 132,1 5 2–170 (2020).
+24. Wang, M. Infrastructure assisted adaptive driving to stabilise het-
+erogeneous vehicle strings.Transp. Res. C Emerg. Technol. 91,
+276–295 (2018).
+25. Zhang, Y., Xu, Z., Wang, Z., Yao, X. & Xu, Z. Impacts of commu-
+nication delay on vehicle platoon string stability and its compen-
+sation strategy: A review.J. TrafﬁcT r a n s p .E n g .10,5 0 8–529 (2023).
+26. Wang, J. et al. Adaptive event-triggered platoon control under
+unreliable communication links.IEEE Trans. Intell. Transp. Syst.23,
+1924–1935 (2022).
+27. Xing, H., Ploeg, J. & Nijmeijer, H. Compensation of communication
+delays in a cooperative ACC system. IEEE Trans. Veh. Technol. 69,
+1177–1189 (2020).
+28. Pan, J., Xu, Q., Li, K. & Wang, J. C loud control of connected vehicle
+under both communication-induced sensing and control delay: A
+prediction method.IEEE Trans. Veh. Technol.72,8 4 7 1–8485 (2023).
+29. Wang, J., Guo, J., Luo, Y., Li, K. & Zheng, H. Design of switching
+controller for connected vehicles platooning with intermittent
+communication via mode-dependent average dwell-time
+approach. IEEE Internet Things J. 10,2 7 0 8–2719 (2023).
+30. Wang, J., Guo, J., Li, K. & Zheng, H. Distributed adaptive event-
+triggered control of connected automated vehicle platoon systems
+with spooﬁng cyber attacks. IEEE Trans. Veh. Technol. 73,
+18186–18197 (2024).
+31. Wang, J., Deng, X., Guo, J. & Zeng, Z. Resilient consensus control for
+multi-agent systems: A comparative survey.Sensors 23,
+2904 (2023).
+32. Chen, N., Wang, M., Alkim, T. & Arem, B. V. A robust longitudinal
+control strategy of platoons under model uncertainties and time
+delays.J. Adv. Transp. https://doi.org/10.1155/2018/9852721(2018).
+33. Zhan, J., Ma, Z. & Zhang, L. Data-driven modeling and distributed
+predictive control of mixed vehicle platoons.IEEE Trans. Intell. Veh.
+8,5 7 2–582 (2023).
+34. Wang, Z. et al. Optimal connect ed cruise control with arbitrary
+communication delays.
+IEEE Syst. J. 14,2 9 1 3–2924 (2020).
+35. Huang, M., Jiang, Z. & Ozbay, K. Learning-based adaptive optimal
+control for connected vehicles in mixed trafﬁc: Robustness to dri-
+ver reaction time. IEEE Trans. Cybern. 52,5 2 6 7–5277 (2022).
+36. Lan, J., Zhao, D. & Tian, D. Safe and robust data-driven cooperative
+control policy for mixed vehicle platoons.Int. J. Robust Nonlin. 33,
+4171–4190 (2022).
+37. Liu, C., Sheng, Z., Chen, S., Shi, H. & Ran, B. Longitudinal control of
+connected and automated vehiclesamong signalized intersections
+in mixed trafﬁc ﬂow with deep reinforcement learning approach.
+Phy. A Statist. Mechan. Appl. 629, 129189 (2023).
+3 8 . Z h u ,M . ,W a n g ,Y . ,P u ,Z . ,H u ,J .&W a n g ,X .S a f e ,e fﬁcient, and
+comfortable velocity control based on reinforcement learning for
+autonomous driving.Transp. Res. Part C Emerg. Technol. 117,
+102662 (2020).
+39. Jiang, X., Zhang, J., Shi, X. & Cheng, J. Learning the policy for mixed
+electric platoon control of automated and human-driven vehicles at
+signalized intersection: A random search approach.IEEE Trans.
+Intell. Transp. Syst.24,5 1 3 1–5143 (2023).
+40. Wang, Z. et al. Design of intelli gent connected cruise control with
+vehicle-to-vehicle communication delays.IEEE Trans. Intell. Transp.
+Syst. 71,9 0 1 1–9025 (2022).
+41. Chen, X., Leng, S., He, J., Zhou, L. & Liu, H. The upper bounds of
+cellular vehicle-to-vehicle communication latency for platoon-
+based autonomous driving.IEEE Trans. Intell. Transp. Syst.24,
+6874–6887 (2023).
+42. Ozkan, M. F. & Ma, Y. Distributed stochastic model predictive con-
+trol for human-leading heavy-duty truck platoon.IEEE Trans. Intell.
+Transp. Syst. 23,1 6 0 5 9–16071 (2022).
+43. Zhang, H. et al. Joint resource allocation and security redundancy
+for autonomous driving based on deep reinforcement learning
+algorithm.IET Intell. Transp. Syst. 18, 1109–1120 (2024).
+44. He, X. & Lv, C. Toward intelligent connected e-mobility: Energy-
+aware cooperative driving with deep multiagent reinforcement
+learning. IEEE Veh. Technol. Mag. 18,1 0 1–109 (2023).
+4 5 . G u o ,J . ,W a n g ,J . ,X u ,Q . ,W a n g ,B .&L i ,K .D e e pr e i n f o r c e m e n t
+learning-based hierarchical energy control strategy of a platoon of
+connected hybrid electric vehicles through cloud platform.IEEE
+Trans. Transp. Electrif.10,3 0 5
+–315 (2024).
+4 6 . S h i ,H .e ta l .P h y s i c s - i n f o r m e dd eep reinforcement learning-based
+integrated two-dimensional car-following control strategy for con-
+nected automated vehicles.Knowl. Based Syst.269, 110485 (2023).
+47. Liao, X. et al. Cooperative ramp merging design and ﬁeld imple-
+mentation: A digital twin approach based on vehicle-to-cloud
+communication.IEEE Trans. Intell. Transp. Syst.23,4 4 9 0–4500
+(2022).
+4 8 . S h a r m a ,A . ,Z h e n g ,Z . ,K i m ,J . ,B h a s k a r ,A .&H a q u e ,M .M .A s s e s s i n g
+trafﬁc disturbance, efﬁciency, and safety of the mixed trafﬁc ﬂow of
+connected vehicles and traditional vehicles by considering human
+factors. Transp. Res. Part C Emerg. Technol. 124, 102934 (2021).
+4 9 . C o i f m a n ,B .&L i ,L .Ac r i t i c a le v a l u a t i o no ft h en e x tg e n e r a t i o n
+simulation (NGSIM) vehicle trajectory dataset.Transp. Res. B Meth.
+105,3 6 2–377 (2017).
+50. Shi, H. et al. A distributed deep reinforcement learning-based
+integrated dynamic bus control system in a connected environ-
+ment. Comput. Aided Civ. Infrastruct. Eng.37,2 0 1 6–2032 (2022).
+51. Wang, Q. et al. Adaptive leading cruise control in mixed traf ﬁc
+considering human behavioral diversity.IEEE Trans. Intell. Transp.
+Syst. 25,5 0 5 9–5070 (2024).
+5 2 . P a r k ,M . ,K i m ,Y .&Y e o ,H .D e v e l o p m e n to fa na s y m m e t r i cc a r -
+following model and simulation validation.IEEE Trans. Intell. Transp.
+Syst. 21,3 5 1 3–3524 (2020).
+53. Li, M., Li, Z., Wang, S. & Zheng, S. Enhancing cooperation of vehicle
+merging control in heavy trafﬁc using communication-based
+soft actor-critic algorithmv.IEEE Trans. Intell. Transp. Syst.24,
+6491–6506 (2023).
+Acknowledgements
+This work was supported by the National Natural Science Foundation of
+China under Grant Nos. 62473323 (Jingyao Wang), 52372419 (Jinghua
+Guo) and 61803319 (Jingyao Wang).
+Author contributions
+J. Wang and X. Li performed a theoretical analysis of the methods and
+wrote the original manuscript, assisted by H. Wang, J. Song, and X.
+Chen implemented the algorithms, performed the experiments, and
+analyzed the results. J. Wang, H. Wang, J. Song, X. Chen, J. Guo, K.
+Li, X. Li, and B. Huang contributed to discussing the results, drawing
+pictures, writing and reviewing the paper. J. Guo and K. Li supervised
+research.
+Competing interests
+Authors declare no competing interests.
+Article https://doi.org/10.1038/s41467-025-62597-x
+Nature Communications|         (2025) 16:7705 17
+Additional information
+Supplementary informationThe online version contains
+supplementary material available at
+https://doi.org/10.1038/s41467-025-62597-x.
+Correspondenceand requests for materials should be addressed to
+Jinghua Guo or Keqiang Li.
+Peer review informationNature Communicationsthanks Daliang Shen,
+Zhengwu Wang and the other anonymous reviewer(s) for their con-
+tribution to the peer review of this work. A peer review ﬁle is available.
+Reprints and permissions informationis available at
+http://www.nature.com/reprints
+Publisher’s note Springer Nature remains neutral with regard to jur-
+isdictional claims in published maps and institutional afﬁliations.
+Open Access This article is licensed under a Creative Commons
+Attribution-NonCommercial-NoDerivatives 4.0 International License,
+which permits any non-commercial use, sharing, distribution and
+reproduction in any medium or format, as long as you give appropriate
+credit to the original author(s) and the source, provide a link to the
+Creative Commons licence, and indicate if you modiﬁed the licensed
+material. You do not have permission under this licence to share adapted
+material derived from this article or parts of it. The images or other third
+party material in this article are included in the article’s Creative
+Commons licence, unless indicatedotherwise in a credit line to the
+material. If material is not included in the article’s Creative Commons
+licence and your intended use is not permitted by statutory regulation or
+exceeds the permitted use, you will need to obtain permission directly
+from the copyright holder. To view a copy of this licence, visit http://
+creativecommons.org/licenses/by-nc-nd/4.0/.
+© The Author(s) 2025
+Article https://doi.org/10.1038/s41467-025-62597-x
+Nature Communications|         (2025) 16:7705 18

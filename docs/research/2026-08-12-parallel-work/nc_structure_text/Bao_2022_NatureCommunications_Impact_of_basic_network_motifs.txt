@@ -1,0 +1,932 @@
+nature communications
+Article https://doi.org/10.1038/s41467-022-32913-w
+Impact of basic network motifs on the
+collective response to perturbations
+Xiaoge Bao 1,2,3,12, Qitong Hu1,4,12,P e n gJ i 1,2,3 ,W e iL i n 2,3,5,6,7,
+Jürgen Kurths 3,8,9 &J a nN a g l e r10,11
+Many collective phenomena such as epidemic spreading and cascading fail-
+ures in socioeconomic systems on networks are caused by perturbations of the
+dynamics. How perturbations propagate through networks, impact and dis-
+rupt their functions may depend on thenetwork, the type and location of the
+perturbation as well as the spreading dynamics. Previous work has analyzed
+the retardation effects of the nodes along the propagation paths, suggesting a
+few transient propagation "scaling” r e g i m e sa saf u n c t i o no ft h en o d e s’ degree,
+b u tr e g a r d l e s so fm o t i f ss u c ha st r i a n g l e s .Y e t ,e m p i r i c a ln e t w o r k sc o n s i s to f
+motifs enabling the proper functioning of the system. Here, we show that basic
+motifs along the propagation path jointly determine the previously proposed
+scaling regimes of distance-limited propagation and degree-limited propaga-
+tion, or even cease their existence. Our results suggest a radical departure
+from these scaling regimes and provide a deeper understanding of the inter-
+play of self-dynamics, interaction dynamics, and topological properties.
+Signal propagation enables the proper functioning of complex sys-
+tems on all natural and technological scales. Biochemical reaction
+networks underly signaling in cellular processes
+1. Other examples of
+collective phenomena include neural spike dynamics2, gene regulatory
+dynamics3–7, and epidemic spreading of infectious diseases, opinions
+or information8–11. Networked dynamical systems have proven suitable
+models for analyzing spatiotemporal signal spreading12,13.Y e t ,d i s e n -
+tangling the effects resulting from the underlying structure and the
+collective dynamics on the networks remained conceptually difﬁcult14.
+Thus, it came as a surprise when Hens and colleagues recently
+proposed universal features in signal propagation on networks 15,
+arising from studying the consequences from small irreversible per-
+turbations of single units. They proposed a few markedly distinct types
+of propagation patterns that are determined topologically by the
+combination of the average number of nodes and their average degree
+along the propagation paths, resulting in a few fundamental asymp-
+totic “scaling” regimes based on the nodes’ degree but irrespective of
+features of motifs such as triangles. The majority of empirical net-
+works, however, consist of motifs
+16.
+Network motifs are subgraphs, which can be acyclic or cyclic,
+directed or undirected, and play an important role in the design and
+evolution of complex networks
+16. Different n-node subgraphs account
+for elementary computational circuits and play various functional
+roles in information procession17, including 13 types of directed three-
+node subgraphs16,17. Three-nodes motifs in particular may enhance the
+resilience to perturbations in power grids18,19, and play a central role in
+the emergence and maintenance of social networks20,21. A number of
+candidate motifs may serve as basic but functionally important
+building blocks of regulatory and transcription networks
+22–25.R e s e a r c h
+on the extent and function of motifs has provided a better
+Received: 22 February 2022
+Accepted: 22 August 2022
+Check for updates
+1Institute of Science and Technology for Brain-Inspired Intelligence, Fudan University, Shanghai, China.2Key Laboratory of Computational Neuroscience and
+Brain-Inspired Intelligence (Fudan University), Ministry of Education, Shanghai, China.3Research Institute of Intelligent Complex Systems and MOE Frontiers
+Center for Brain Science, Fudan University, Shanghai, China.4School of Mathematical Sciences, Shanghai Jiao Tong University, Shanghai, China.5School of
+Mathematical Sciences, SCMS, SCAM, and CCSB, Fudan University, Shanghai, China.6State Key Laboratory of Medical Neurobiology, Institutes of Brain
+Science, Fudan University, Shanghai, China.7Shanghai Artiﬁcial Intelligence Laboratory, Shanghai, China.8Potsdam Institute for Climate Impact Research,
+Potsdam, Germany.9Humboldt University, Berlin, Germany.10Deep Dynamics, Frankfurt School of Finance & Management, Frankfurt, Germany.11Centre for
+Human and Machine Intelligence, Frankfurt School of Finance & Management, Frankfurt, Germany.12These authors contributed equally: Xiaoge Bao,
+Qitong Hu. e-mail: pengji@fudan.edu.cn; jan.nagler@gmail.com
+Nature Communications|         (2022) 13:5301 1
+1234567890():,;
+1234567890():,;
+understanding of the complex operational dependencies between
+nodes23–28.
+Here, we study how basic undirected motifs, in particular edges
+and triangles, determine the response times to perturbations – as a
+function of the network structure and its dynamics. This allows us to
+identify genuine scaling regimes jointly arising from nodes’ degree and
+motifs. Our framework of response dynamics to perturbations on
+networks conceptually links the small and large scale topology of a
+network with the spatiotemporal spreading induced by a single small
+perturbation. In particular, we identify and predict the impact and
+interplay of propagation paths, degree and motif distributions, and
+interaction dynamics.
+Results
+Model
+We characterize the network dynamics by pairwise interacting nodes,
+_xiðtÞ = Fx iðtÞ
+/C0/C1
++ ∑
+N
+j =1
+Aij H1 xiðtÞ
+/C0/C1
+H2 xj ðtÞ
+/C16/C17
+, ð1Þ
+which describes the evolution of the state variablesxi of node i,w h e r e
+throughout the manuscript i =1 …N. Different dynamics on networks
+are captured by the triplet {F(xi), H1(xi), H2(xj)} comprising of (possibly)
+nonlinear functions, whereF(xi)s p e c iﬁes the self-dynamics governing
+inﬂux, leaking dynamics, degradation or reproduction29–34.T h et e r m s
+H1(xi)a n dH2(xj) determine the the adjacent interactions of nodei with
+its neighbors, such as infection, mutualism and competition29–34.T h e
+connectivity matrixA accounts for the connections.
+The unperturbed system is considered in a stationary collective
+state, which we characterize by the set of N stable equilibria,
+x*
+i = xi t =0ðÞ . We examine the signal propagation by studying the
+transient dynamics induced by a permanent perturbationΔxm on the
+steady statex*
+m of the source nodem. The perturbation forces nodes to
+transition to the shifted statesxið1Þ = x*
+i + Δxið1Þ.F o re a c hn o d ei,w e
+characterize this transition period in terms of the response time τim,
+deﬁned as the time the response ratio
+δiðtÞ = ΔxiðtÞ
+Δxið1Þ ð2Þ
+takes the ﬁxed value δi(τim)= η.
+The evolution of the collective dynamics of all states may
+exhibit a variety of intricate spatiotemporal patterns, which we
+quantify by the relationship between the response time τ
+im and the
+node degree di, the number of node i’s edges. In contrast to pre-
+vious work, our framework accounts for multipath connections
+between source and target, which are salient features of empirical
+networks. Figure 1 illustrates the main mechanisms underlying the
+impact of motifs on response times in a protein-protein network
+35,a
+small-world network, and an Erdös-Rényi network 11. Basic motifs,
+deﬁned as convex regular n-gons such as edges ( n = 2), triangles
+(n = 3), squares (n = 4), and pentagons ( n = 5) are ubiquitous units of
+random networks, as shown in Fig. 1b, c. However, as detailed in
+Fig. 1c, single edges disjoint from motifs are comparably rare,
+leading triangles to dominate networks.
+To demonstrate the dynamical role of triangles we study popu-
+lation dynamics on networks and quantify the relative response to a
+perturbation
+Δxi ðtÞ
+Δxi ð1Þ with respect to different number of triangles. As
+shown in Fig. 1d, target nodes i as part of edges respond faster than
+target nodes as part of triangles, hence impacting the response time
+qualitatively. As shown in Fig. 1e, not only the response time may
+depend on the number of triangles along a path, but also the response
+time may vary, depending on the local network structure, even for the
+same number of triangles along the path. This demonstrates the
+impact basic motifs may have on local response dynamics on
+networks.
+Fig. 1 | Prevalence and dy5gnamical impact of motifs in random networks.
+a From left to right: Schematic plot of protein-protein network (shown forN =1 0 0
+nodes from total N = 2035)35, small-world network, and Erdös-Rényi (ER) network
+with network size N = 100 and average degree 10. b Share of motifs (edges, trian-
+gles, squares, pentagons) for a network. Triangles play important roles, no matter
+for the networks with dense or random connections, or highly clustered networks.
+c Share of edges as part of basic motifs (triangles, squares, pentagons). The share is
+calculated by the number of edges as part of corresponding motif divided by the
+network size. Most edges form triangles, and for the small-world network with high
+clustering more and more edges form larger number of triangles, demonstrating
+the dominance of triangles. d Target nodes i as part of the (independent) edges
+(brown) respond faster than other target nodes i as part of triangles (blue), as
+shown by
+Δxi ðtÞ
+Δxi ð1Þ. e Histogram of average propagation time from randomly chosen
+sources to their randomly chosen adjacent target nodes, as a function of the
+number of triangles (1–5). Error bars indicate standard deviation.d and e are based
+on single ER network realizations with the linking probabilityp = 0.10 and the
+network size N = 100 (rightmost network in (a)). f Perturbation response ΔxðtÞ
+Δxð1Þ of
+nodes i, j and h of the four-node network model as shown inside the panel, with
+target node i and its neighbors j and h, to a perturbation on the source m.
+Responses ofj and h differ, mainly due to their different positions relative tom,b u t
+all nodes respond non-instantaneously on the same time scale, which motivated us
+to derive the framework, see main text. Node j r e s p o n d st h es l o w e s tb e c a u s ei ti s
+two edges apart from source m. For (d), (e)a n d(f), the system is governed by
+population dynamics _xi ðtÞ = /C0 Bxi
+a + α ∑N
+j =1 Aij xj
+b ,w h e r eB = α =0 . 0 1 ,a =1 . 2 ,b =1 . 1 .
+Article https://doi.org/10.1038/s41467-022-32913-w
+Nature Communications|         (2022) 13:5301 2
+Local propagation
+To systematically quantify the impact of basic motifs on response
+dynamics on networks, we formulate a general theoretical framework
+based on Eq. ( 1). This requires the determination of the responses
+Δx
+i(t)t ot h ep e r t u r b a t i o nΔxm.W ea r e ﬁrst concerned with the quan-
+tiﬁcation of the local propagation from node m to its neighbor i.F o r
+small perturbations, employment of linear response theory allows us
+to formulate the response dynamics,
+Δ _x
+iðtÞ = /C0 1
+Ji
+ΔxiðtÞ + H1ðx*
+i Þ ∑
+N
+j≠m
+Aij H0
+2ðx*
+j ÞΔxj ðtÞ + AimH1ðx*
+i ÞH0
+2ðx*
+mÞΔxm,
+ð3Þ
+where H0
+2ðxÞ represents the derivative dH2(x)/dx,w h i c hi se v a l u a t e da t
+the initial statesx*
+j and x*
+m,w h i l eJi represents the self-dynamics of the
+form
+Ji = /C0 1 H1ðx*
+i Þ Fðx*
+i Þ
+H1ðx*
+i Þ
+"# 0 !,
+: ð4Þ
+The right-hand side of Eq. ( 3) holds three contributions to the
+response: self-dynamics, a sum specifying the adjacent interaction
+dynamics j ≠ m, and the response of node i directly induced by source
+m. The perturbed system converges for t → ∞ to the system ’sn e w
+collective stationary state, with responses Δx
+i(∞). We quantify the
+responses in ﬁnite time by the ratio δi(t), Eq. ( 2), whose solutions are
+obtained by reformulating the linear response equation (3),
+ln 1 /C0 δiðtÞ
+/C0/C1
+= /C0 1
+Ji
+Z t
+0
+1 /C0 EimðτÞ
+/C0/C1
+dτ, ð5Þ
+where EimðtÞ represents the contribution from the neighbors ’ (adja-
+cent) dynamics and is deﬁned as
+EimðtÞ = JiH1ðx*
+i Þ ∑
+N
+j≠m
+Aij H0
+2ðx*
+j Þ Δxj ðtÞ/C0 Δxj ð1Þ
+ΔxiðtÞ/C0 Δxið1Þ ð6Þ
+and the response times are determined by the solutions δi(t = τim)= η.
+If we assumed that the states of adjacent nodes jump instantly to
+their new stationary state, Δxj(τim) ≈ Δxj(∞), the term EimðtÞ would
+vanish, EimðtÞ ≈ 0. Previous work15,36 that has hypothesized three dis-
+tinct spatiotemporal scaling regimes has implicitly assumed this pre-
+mise. However, it is important to emphasize that the premise is not
+always valid, especially for networks with prevalent motifs, and not
+even for the four-node network in Fig. 1f. To recognize this, we focus
+on this four-node network and its responses to a perturbation on node
+m, Δx
+i(t), Δxh(t)a n dΔxj(t), where nodes m, i and h form a triangle, and
+node j is adjacent to node i.N o t et h a te d g e(i–j) is referred to as an
+independent edge as it is not directly connected to the source m.T h e
+convergence behaviors of the responses Δxh(t)a n d Δxj(t)a r ec o m -
+parable with Δxi(t), which is con ﬂicting to a small EimðtÞ. We also
+observe thatΔxh(t)a n dΔxj(t) exhibit qualitatively different asymptotic
+behaviors. Also note that the response of nodej is slower than those of
+nodes h or i because j is two edges apart from source m, which has a
+stronger effect than the overall faster responses of nodes as part of
+independent edges compared to triangles.
+Apart from triangles, other motifs may also occupy a large pro-
+portion of the networks, as shown in Fig. 1b, c. To further analyze the
+impact of triangles and other basic motifs, we compare the response
+times in small synthetic networks with and without localized signal
+ﬂow disruptions (see Supplementary Material, Tables S1 & S2). We
+study n-gons, from triangles ( n =3 ) t o p e n t a g o n s (n =5 ) ﬁnding that
+differences of the response time are larger for the smaller n.T h i s
+means that the most signi ﬁcant impact on the response time can be
+attributed to independent edges and triangles, which prompt us to
+decompose networks into independent edges, that is, 2-gons such as
+the (i–j)-edge in the example in Fig. 1f, and triangles (3-gons).
+We quantify the response times from three basic perspectives:
+self-dynamics, independent edges and triangles. The unperturbed
+system is considered in a steady state, characterized by N stable
+equilibriax
+*
+i . The relationship between the intrinsic dynamics of nodei
+and its adjacent dynamics in the steady state follows immediately from
+Eq. (1)a n d _x
+i =0 ,
+Fðx*
+i Þ
+H1ðx*
+i Þ = /C0 ∑
+N
+j =1
+Aij H2ðx*
+j Þ: ð7Þ
+Averaging allows us to compute the contribution of adjacent
+dynamics in the mean-ﬁeld
+H : = 1
+N ∑
+N
+i =1
+1
+di
+∑
+N
+j =1
+Aij H2ðx*
+j Þ, ð8Þ
+which is then used to simplify the relationship ( 7)a s
+Rðx*
+i Þ : = /C0
+Fðx*
+i Þ
+H1 ðx*
+i Þ ≈ di × H, in which the degree serves as a coupling
+constant of the intrinsic dynamics of node i and its adjacent connec-
+tions. In the unperturbed steady system, the equilibria x*
+i can be
+expressed as the inverse function ofRðx*
+i Þ with respect to the degreedi,
+x*
+i = R/C0 1 diH
+/C0/C1
+: ð9Þ
+Combining Eqs. ( 5)a n d( 9) ,w ed e r i v et h er e s p o n s et i m eτim of
+node i as a function of its degree di,a s
+τim = /C0 Ji lnð1 /C0 ηÞ
+1+ 1
+lnð1/C0 ηÞ
+η
+1/C0 η Eim
+, ð10Þ
+where Eim ≈ diQiQim results from the node i’s intrinsic dynamics,
+throughQi = Jiðx*
+i ÞH1ðx*
+i ÞH0
+2ðx*
+i Þ and its adjacent nodes’ mean dynamics,
+through Qim, see the Supplementary Material. Sincex*
+i = R/C0 1 diH
+/C0/C1
+,t h e
+quantityQi is a function of degreedi, while the mean-ﬁeld quantityQim
+is independent of the degree. In the Supplementary Material, the Hahn
+expansion of Qi leads to its leading power, Qi ~ d
+ΠQ ð1Þ
+i ,w i t ht h e
+constant ΠQ(∞). In the large-degree limit, di → ∞, we obtain
+Eim ~ d
+θQ
+i , ð11Þ
+with the scaling exponent θQ = ΠQ(∞)+1 . T h e e x p o n e n tθQ is deter-
+mined by the intrinsic dynamics but is independent of di.
+In the large-degree limit, for θQ < 0 the contributions to τim from
+adjacent nodes vanish such that the response time becomes inde-
+pendent of m and is well approximated by
+τ
+i = /C0 Ji lnð1 /C0 ηÞ: ð12Þ
+This result coincides with existing literature and mechanistically
+explains the validity of previous t heoretical results for a number of
+dynamics in the large-degree limit 15,36 – although the adjacent inter-
+actions as quantiﬁed by Eim are not considered.
+The self-dynamics term Ji can be expanded as a function of the
+degree di,a s Ji ~ d
+θJ
+i , where the scaling exponentθJ is the leading power
+of the Hahn expansion. In doing so, we ﬁnd that the response time τi
+exhibits the scaling relation
+τi ~ d
+θJ
+i , ð13Þ
+where the scaling exponentθJ is determined by the intrinsic dynamics
+but independent of adjacent connections. The scaling relationship (13)
+highlights the contribution of both the structural features and system
+dynamics on the response time, yet it is a disentanglement of self-
+Article https://doi.org/10.1038/s41467-022-32913-w
+Nature Communications|         (2022) 13:5301 3
+dynamicsJi and degreedi. In that way, thisﬁnding is in agreement with
+previous work on three distinctive dynamic regimes15.
+In contrast, forθQ > 0, the contributions from adjacent nodes may
+be substantial, even for large degree. In this case, both the self-
+dynamics and the adjacent dynamics contribute to the response time,
+remarkably exhibiting a scaling relation
+τi ~ d
+θJ /C0 θQ
+i , ð14Þ
+where the scaling is affected by the adjacent dynamics, through the
+exponent θQ.
+It is important to relate the exponent θQ to prototypical network
+dynamics. As derived in the Supplementary Material, we ﬁnd that
+regulatory, human, mutualistic, biochemical and epidemics dynamics
+are characterized by θ
+Q < 0, whereas population and inhibitory neu-
+ronal dynamics show θQ > 0, as shown in Table 1.A st h em o d e lp a r a -
+meters are assumed to be non-negative but otherwise arbitrary, Table1
+characterizes a substantial range of dynamical systems. The theoretical
+derivation, Eq. (10), exactly predicts the response time τ
+i.T h es c a l i n g
+relationships, Eqs. ( 13)a n d( 14), characterize the interplay between
+network topology, the self-dynamics and its adjacent dynamics in the
+asymptotic regimed
+i → ∞.W e ﬁnd that both the theoretical derivation
+and the scaling predictions are in good agreement with simulations for
+regulatory and population dynamics, as supported by Fig. 2a–e. For
+regulatory dynamics, characterized by θ
+Q < 0, the response time τi is
+Table 1 | Scaling exponents θJ and θQ for prototypical
+dynamical models
+Model Dynamical Equation θJ θQ
+Regulatory (R) _xi ðtÞ = /C0 Bxa
+i ðtÞ + α ∑N
+j = 1 Aji
+xb
+j ðtÞ
+1 + xb
+j ðtÞ
+1
+a /C0 1 /C0 b
+a
+Human (H) _xi ðtÞ = /C0 Bxa + b
+i ðtÞ + αxb
+i ðtÞ ∑N
+j = 1 Aji y0 /C0 x/C0 c
+j ðtÞ
+/C16/C17 1/C0 b
+a /C0 1 /C0 c
+a
+Epidemics (E) _xi ðtÞ = /C0 BxiðtÞ + α 1 /C0 xi ðtÞ
+/C0/C1
+∑N
+j = 1 AjixjðtÞ − 1 − 1
+Mutualistic (M) _xi ðtÞ = BxiðtÞ 1 /C0
+xa
+i ðtÞ
+C
+/C16/C17
++ αxiðtÞ ∑N
+j = 1 Aji
+xj ðtÞ
+1 + xj ðtÞ
+− 1 /C0 1
+a
+Population (P) _xi ðtÞ = /C0 Bxa
+i ðtÞ + α ∑N
+j = 1 Ajixb
+j ðtÞ
+1
+a /C0 1 b
+a
+Biochemical
+(B)
+_xi ðtÞ = B /C0 Cxi ðtÞ/C0 αxiðtÞ ∑N
+j = 1 AjixjðtÞ − 1 − 1
+Inhibitory (I) _xi ðtÞ = /C0 BxiðtÞ 1 /C0 xi ðtÞ
+C
+/C16/C17 2
++ αxiðtÞ ∑N
+j = 1 AjixjðtÞ − 1 1
+2
+Fig. 2 | Response time scaling for local propagation. aNetwork with perturbation
+at m with target node i having di edges (referred to as independent edges).
+b Propagation time τi (time from source m to i) as a function of degree di for
+network (a) with regulatory dynamics (θJ = 1
+a /C0 1a n d θQ = /C0 b
+a <0) and scaling
+exponent θ = θJ. c Propagation time τi for network (a) with population dynamics
+(θJ = 1
+a /C0 1a n d θQ = b
+a >0) and θ = θJ >0 . d Propagation time τi for network (a)f o r
+population dynamics (θ = θJ =0 ) .e Propagation time τi for network (a)( θ = θJ −
+θQ < 0). Theory, Eq. (10), and scaling relationship, Eqs. (13)a n d(14), in comparison
+with simulation. According to Eq. (10), we predict τi ~ d
+θJ /C0 θQ
+i ,( 14), which is in good
+agreement with the simulated response time but disagrees with the prediction
+from existing literatureτ
+i ~ d
+~θ
+i = d
+θJ
+i (gray). f Network with perturbation at sourcem
+and target at node i having di triangles attached.g Propagation timeτi for network
+(f) with population dynamics (θJ = 1
+a /C0 1a n d f < 1) and the scaling exponent θ = θJ.
+The scaling prediction according to Eq. (15), τi ~ d
+θJ
+i , is in agreement with numerics.
+h Propagation timeτi versus di for network (f)w i t hr e g u l a t o r yd y n a m i c s(θJ = 1
+a /C0 1
+and f ≈ 1) and θ = θJ +1 .A c c o r d i n gt oE q .(16), scaling is predicted asτi ~ d
+θJ +1
+i ,w h i c h
+is close to the simulation response time scaling but in disagreement with the pre-
+diction from existing literature,τi ~ d
+~θ
+i = d
+θJ
+i . b and h, regulatory dynamics,
+_xi ðtÞ = /C0 Bxi
+a + α ∑N
+j =1 Aij
+xj
+b
+1+ xj b ,w h e r ea =1 . 2 ,b =2 . 0f o r(b), and a = 10.0, b = 2.0 for
+(h), and B = α =0 . 0 1 .c, d, e and g, population dynamics
+_xi ðtÞ = /C0 Bxi
+a + α ∑N
+j =1 Aij xj
+b ,w i t ha =1 . 2 ,b =1 . 0f o r(c), and a =1 . 0 ,b =0 . 2f o r(d),
+and a =1 . 2 ,b =0 . 6f o r(e), and a =1 . 2 ,b =0 . 5f o r(g), and B = α =0 . 0 1 .
+Article https://doi.org/10.1038/s41467-022-32913-w
+Nature Communications|         (2022) 13:5301 4
+determined solely by the self-dynamics, governed by the scaling rela-
+tionship Eq. (13), as shown in Fig. 2b. For population dynamics, char-
+acterized by θQ >0 , w e ﬁnd three distinctive dynamic regimes. In the
+degree-limited regime with θJ >0 i n F i g .2c and the distance-limited
+regime withθJ =0i nF i g .2d, the termEim is negligible due to the degree
+limitation, and scaling is only determined by the self-dynamics Eq. (13).
+However, in the composite dynamic regime (θJ <0 ) ,τi is determined by
+both the self-dynamics and the adjacent dynamics as predicted by Eq.
+(14) and supported by Fig.2e. While existing literature disregarded the
+effects from adjacent dynamics and predicts only ~θ = θJ
+15,l e a d i n gt o
+inaccurate scaling as shown in Fig. 2e, our prediction, θ = θJ − θQ,i s
+asymptotically exact. Taken together, we observe scaling of the
+response time that depend on both the self-dynamics and the adjacent
+dynamics, even for local tree-like networks. But how relevant is this
+composite dynamic regime?
+For a triangle-dominated topology as shown in Fig. 2f, we derive
+t h er e s p o n s et i m eτ
+i from Eqs. (5)a n d(9)a s
+τi = /C0 lnð1 /C0 ηÞJi
+1+ Cim
+1+ ð1/C0 f ÞCim
+, ð15Þ
+where Cim can be approximated by the product of the degree-
+independent mean-ﬁeld term Qim and di, Cim≈diQim.N o t et h a tf is a
+constant that depends on the system dynamics, but not ondi. Now, for
+f ≪ 1a n dal a r g ed e g r e e ,Cim drops out in Eq. (15). In this case, triangles
+have a negligible impact on the scaling and the scaling relation is well
+approximated byτ
+i ~ d
+θJ
+i ,a ss h o w ni nF i g .2g. For f ≈ 1, the presence of
+triangles, as shown in Fig. 2h, results in the extra factor di resulting
+from Cim such that
+τi ~ d
+θJ +1
+i : ð16Þ
+As shown in Fig. 2f–h for regulatory and population dynamics,
+both predictions, Eqs. (15)a n d(16) are well conﬁrmed by our computer
+simulations. This establishes that basic motifs may crucially determine
+scaling, even in simple networks.
+In the Supplementary Material, we derive the respective explicit
+solutions of the response time, not only for the asymptotic scaling
+regime but also for the regime of small degrees, which allows us to fully
+characterize the scaling regimes. In addition to regulatory and popu-
+lation dynamics, we develop the system dynamics framework for
+human
+29, epidemic 30,m u t u a l i s t i c31, biochemical and inhibitory
+dynamics32–34,37,38 (see Table 1). Our results consistently quantify the
+impact of basic motifs on local response dynamics on networks.
+Global propagation
+Thus far, we have established a versatile theoretical framework for
+local signal propagation. To formulate a framework for global signal
+propagation, it is helpful to examine a source-centric representation,
+which allows to theoretically track all possible propagation paths from
+the perturbed central node to all distant nodes. Speciﬁcally, we impose
+a layer-to-layer topology with the source node in the center and study
+the interplay of the intrinsic and adjacent dynamics, employing our
+developed framework for the local propagation as a building block.
+Denote by T(m → i
+k) the propagation time from node m to the ik-th
+node through a pathway, specifying when the signal response ratio
+Δxik ðtÞ
+Δxik ð1Þ attains the threshold η. The signal propagation is expressed
+layer-wise in terms of T(m → ik), which we compute recursively,
+Tðm ! ik Þ = Tðm ! ik/C0 1Þ/C0
+Δxik
+Tðm ! ik/C0 1Þ
+/C0/C1
+/C0 ηΔxik
+ð1Þ
+Δ _xik
+Tðm ! ik/C0 1Þ
+/C0/C1
+/C0 ηΔ _xik
+ð1Þ ð17Þ
+where the subscriptk of indexik stands for the distance (the number of
+edges along the path) to the perturbed node m.
+Based on the Gauss Iterative Method combined with the gen-
+eralization of Taylor expansion39,w es o l v eE q .(17), yielding
+Tðm ! ik Þ ~ gTD, ð18Þ
+with vectorgT = gð1Þ gð2Þ ... gðkÞðÞ , whose components are monotonic
+decreasing functions that approach 1 ask → ∞.T h ec o m p o n e n t sg(h)o f
+Fig. 3 | Impact of degree sequences on global propagation. a, b Propagation time
+as a function of average degree and degree variance for a chain of 8 nodes with
+random degree sequence and the ﬁrst node set as a perturbation source. Propa-
+gation time is averaged across different realizations. c, d Average propagation time
+versus mean degree, for sequences ofﬁxed variance 3 and 5, respectively. Response
+time and mean degree in (c) show positive correlation, while (d) shows a negative
+correlation. Response time versus maxðd
+θJ
+i Þ for θJ =0 . 2 5>0( e)a n dm i nðd
+θJ
+i Þ for
+θJ = − 0.17 < 0 (f). The linear relationship (redﬁtting line) indicate that the simulated
+response time is well described by maxðd
+θJ
+i Þ or minðd
+θJ
+i Þ. a–f Regulatory dynamics,
+_xi ðtÞ = /C0 Bxi
+a + α ∑N
+j =1 Aij
+xj
+b
+1+ xj b ,w h e r ea =0 . 8 ;b =0 . 5(a, c, e), a =1 . 2 ;b =2 . 0(b, d, f),
+and B = α =0 . 0 1 .a–d node degrees are sampled randomly. e–f the ﬁfths node's
+degree, d5, is varied from 5 to 30, while all other node degrees are kept
+ﬁxed, di≠5 =2 .
+Article https://doi.org/10.1038/s41467-022-32913-w
+Nature Communications|         (2022) 13:5301 5
+g are approximately proportional to a product,
+gðhÞ ~
+Yk
+j = h +1
+1
+1 /C0 Eij ij/C0 1
+ !
+, ð19Þ
+accounting for the accumulated dynamical effects from independent
+edges of layers higher than h. Note that the components may vary
+across different system dynamics, but are of the same order for a given
+dynamics (see Supplementary Material). The vectorD depends on the
+degree sequence d
+ik
+and the parameters characterizing the adjacent
+dynamics,
+D = D di1
+/C1/C1/C1dik
+/C16/C17
+= /C0 lnð1 /C0 ηÞ
+d
+θJ
+i1
+1 /C0 C1C2d
+θQ
+i1
+d
+θJ
+i2
+1 /C0 C2d
+θQ
+i2
+...
+d
+θJ
+ik
+1 /C0 C2d
+θQ
+ik
+0
+@
+1
+A
+T
+,
+ð20Þ
+where C1 and C2 are constants, and the exponent θJ characterizes the
+self-dynamics, while θQ depends also on the adjacent dynamics, see
+Table 1. The scalar product ( 18) is the summation of the propagation
+times through the layers, where the vector g weights the degree
+sequence along the pathway as held inD. Because the components ofg
+are given as product (19), degree ﬂuctuations do not average out as it
+would for an additive structure. This is why and how the degree
+sequence affects the global propagation time,T(m → i
+k).
+Taken together, equation (18) predicts that not only the average
+degree, as assumed in previous literature15, but also the variance and
+even the degree sequence along the propagation path may crucially
+determine the response times to a pe rturbation. To further illustrate
+this, we study how signal propagation is impacted by the average
+degree and degree variance of the nodes forming a chain. Figure3a, c
+show for regulatory dynamics with θ
+J > 0 that the propagation time
+increases with increasing mean degree, and decreases with increasing
+standard variation of the randomly chosen degree sequence. In con-
+trast, for θ
+J < 0, the propagation time decreases with the mean degree
+and the standard variation, as shown in Fig. 3b, d.
+As we expect the global signal propagation T(m → ik) to be sensi-
+tive to the degree sequence along the propagation path, in the Sup-
+plementary Material, we systematically study degree sequences with
+large standard variation, which leads us to two crucial observations.
+First, for θ
+J > 0, the propagation time is dominated by the largest
+node degree max ðd
+θJ
+i Þ along the chain, which is consistent with the
+numerics as shown in Fig. 3e. Second, for regulatory dynamics with
+θJ < 0, the propagation time is dominated by the smallest degree
+minðd
+θJ
+i Þ, which is supported by Fig. 3f.
+To study the impact basic motifs have on empirical networks, we
+analyzed a protein-protein network35, where we control the clustering
+coefﬁcient by edge rewiring. The central node is the source node
+inducing a perturbation. Nodes in the same layer (with the same radial
+distance) have the same shortest path length to the source, as shown in
+Fig. 4a. Brown nodes indicate the arrival of the perturbation in (an
+arbitrarily) ﬁxed time, for ﬁxed η. For this dynamics, triangles inhibit
+propagation. The average propagation time increases as a function of
+number of triangles and layers, as shown in Fig. 4b. Similarly, we ﬁnd
+that signal propagation is increasingly inhibited with increasing clus-
+tering coefﬁcient, as shown in Fig. 4c. For an extensive analysis of this
+empirical network, together with a detailed investigation for a number
+of prototypical networked systems, whose arbitrary parameter ranges
+are expected to characterize a wide range of empirical networked
+dynamical systems, we refer to the Supplementary Material.
+Discussion
+Triangles and other loops have always limited the understanding of the
+interplay of function and structure in networks. We have developed
+analytical tools that allow to capture the impact of simple undirected
+motifs on the system dynamics. Our developed framework not only
+helps disentangle joint effects but provides a deeper understanding of
+the interplay of self-dynamics, interaction dynamics, and topological
+properties. Our analysis suggests a radical departure from the pre-
+viously proposed concepts of distance-limited propagation and
+degree-limited propagation. In distance-limited propagation the
+response time scaling is said to be dominated by the propagation path
+length but not by the edge density along the path. Vice versa, for
+degree-limited propagation the response time scaling is said to be
+dominated by the mean degree, but not the propagation path length.
+We have demonstrated here by independent methods that when the
+propagation is drastically slowed, or accelerated, that may not neces-
+sarily result from edges or hubs but from cycles, in particular triangles.
+Our analysis is based on a network decomposition into independent
+edges and edges as part of motifs. The developed framework predicts
+genuine scaling exponents, no matter if the propagation dynamics is
+dominated by hubs, by the path length, or by basic motifs. For paths
+with large average degree, as abundant in social and other empirical
+networks, the prediction of propagation time using asymptotic scaling
+as proposed by existing literature may be orders of magnitude off, as
+the scaling exponent may fall in an unrelated universality class. We
+have overcome this inconsistency by introducing two topology-
+independent exponents that quanti fy the universality class of the
+local response dynamics on networks.
+Network motifs are abundant in synthetic and empirical networks
+and systematically impact the response dynamics to perturbations. We
+have provided a versatile toolbox that may not only help under-
+standing response dynamics on networks but also provide the math-
+ematical building blocks for extensions such as genuine universality
+classes for dynamics on directed multiplex networks. Yet, it is
+Fig. 4 | Impact of triangles on global propagation in protein-protein networks.
+a Signal propagation snapshots of protein-protein networks35. Central node is the
+source node inducing a perturbation. Nodes in the same layer (same radial dis-
+tance) have same shortest path length to the source. Brown nodes indicate the
+arrival of the perturbation in (an arbitrarily)ﬁxed time.b Average propagation time
+as a function of number of triangles and layers in ( a). For a given layer, triangles
+slow propagation. Average propagation time increases with both number of tri-
+angles and layers. c Signal propagation in rewired networks with varying the clus-
+tering coefﬁcient by edge rewiring. For all three networks, high clustering and
+triangle density slows the spreading of the perturbation across layers. Panels for
+regulatory dynamics, _x
+i ðtÞ = /C0 Bxi
+a + α ∑N
+j =1 Aij
+xj
+b
+1+ xj b , with B = α =1 , a =0 . 8 ,b =0 . 5 ,
+and N = 2035.
+Article https://doi.org/10.1038/s41467-022-32913-w
+Nature Communications|         (2022) 13:5301 6
+important to note that the developed analytical tools are built on linear
+response theory to quantify the dynamics in the steady state as a linear
+response to a small permanent perturbation of a single unit. Large
+dynamic perturbations, for instance, may force the system to transi-
+tion into steady states not predicted by linear response theory. The-
+oretical extensions covering this subject remain challenging but
+deserve future attention.
+Data availability
+The data in this study is freely accessible at https://github.com/
+QitongHu2000/Impact-of-motifs-data.
+Code availability
+Code for replicating this study is freely accessible at https://github.
+com/QitongHu2000/Impact-of-motifs-main.
+References
+1. Tyson, J. J. & Novák, B. éla Functional motifs in biochemical reaction
+networks. Annu. Rev. Phys. Chem. 61,2 1 9–240 (2010).
+2. Kumar, A., Rotter, S. & Aertsen, A. Spiking activity propagation in
+neuronal networks: reconciling different perspectives on neural
+coding. Nat. Rev. Neurosci. 11,6 1 5–627 (2010).
+3. Bornholdt, S. Boolean network mod els of cellular regulation: Pro-
+spects and limitations.J. R. Soc. Interf. 5,S 8 5–S94 (2008).
+4 . B a l a j i ,S . ,B a b u ,M .M . ,I y e r ,L .M . ,L u s c o m b e ,N .M .&A r a v i n d ,L .
+Comprehensive analysis of combinatorial regulation using the
+transcriptional regulatory network of yeast.J. Mol. Biol. 360,
+213–227 (2006).
+5. Rand, D. A., Raju, A., Sáez, M., Corson, F. & Siggia, E. D. Geometry of
+gene regulatory dynamics.Proc. Natl. Acad. Sci. 118,
+e2109729118 (2021).
+6. Karlebach, G. & Shamir, R. Modelling and analysis of gene reg-
+ulatory networks.Nat. Rev. Mol. cell Biol. 9, 770–780 (2008).
+7 . L i ,C .&W a n g ,J .L a n d s c a p ea n dﬂux reveal a new global view and
+physical quantiﬁcation of mammalian cell cycle. Proc. Natl. Acad.
+Sci. 111,1 4 1 3 0–14135 (2014).
+8. Balcan, D. et al. Multiscale mobility networks and the spatial
+spreading of infectious diseases.Proc. Natl. Acad. Sci. 106,
+21484–21489 (2009).
+9. Brockmann, D. & Helbing, D. The hidden geometry of complex,
+network-driven contagion phenomena.Science 342,
+1337–1342 (2013).
+10. Hegselmann R. et al. Opinion dynamics and bounded con ﬁdence
+models, analysis, and simulation.J. Artif. Soc. Soc. Simul. 5,
+1–33 (2002).
+11. D ’Souza, R. M., Gómez-Gardenes, J., Nagler, J. & Arenas, A. Explo-
+sive phenomena in complex networks.Adv. Phys. 68,
+123–223 (2019).
+12. Moreno, Y., Nekovee, M. & Pacheco, A. F. Dynamics of rumor
+spreading in complex networks.P h y s .R e v .E69, 066130 (2004).
+13. Moreno, Y. & Arenas, A. Diffusion dynamics on multiplex networks.
+P h y s .R e v .L e t t .110, 028701 (2013).
+14. Shandilya, SrinivasGorur & Timm e, M. Inferring network topology
+from complex dynamics.N. J. Phys. 13, 013004 (2011).
+15. Hens, C., Harush, U., Haber, S., Cohen, R. & Barzel, B. Spatio-
+temporal signal propagation in complex networks.Nat. Phys. 15,
+403–412 (2019).
+16. Milo, R. et al. Network motifs: Simple building blocks of complex
+networks. Science 298,8 2 4–827 (2002).
+17. Shen-Orr, S. S., Milo, R., Mangan, S. & Alon, U. Network motifs in the
+transcriptional regulation network of escherichia coli.Nat. Genet.
+31,6 4–68 (2002).
+18. Menck, P. J., Heitzig, J., Marwan, N. & Kurths, J. ürgen How basin
+stability complements the linear-stability paradigm.Nat. Phys. 9,
+89–92 (2013).
+19. Menck, P. J., Heitzig, J., Kurths, J. ürgen & Schellnhuber, HansJoa-
+chim How dead ends undermine power grid stability.Nat. Com-
+mun. 5,1 –8( 2 0 1 4 ) .
+2 0 . G i r v a n ,M .&N e w m a n ,M a r k E .J .C o m m u n i t ys t r u c t u r ei ns o c i a la n d
+biological networks.Proc. Natl Acad. Sci. USA 99,
+7821–7826 (2002).
+21. Bird, C., Pattison, D., D ’Souza, R., Filkov, V., & Devanbu, P. Latent
+social structure in open source projects. InProceedings of the 16th
+ACM SIGSOFT International Symposium on Foundations of software
+engineering,p a g e s2 4–35, 2008.
+22. Alon, U. Network motifs: theory and experimental approaches.Nat.
+Rev. Genet. 8,4 5 0–461 (2007).
+23. Lambiotte, R., Rosvall, M. & Scholtes, I. From networks to optimal
+higher-order models of complex systems.Nat. Phys. 15,
+313–320 (2019).
+24. Battiston, F. et al. The physics of higher-order interactions in com-
+plex systems. Nat. Phys. 17,1 0 9 3–1098 (2021).
+25. Battiston, F. et al. Networks beyond pairwise interactions: structure
+and dynamics. Phys. Rep. 874,1 –92 (2020).
+2 6 . S t - O n g e ,G . ,S u n ,H . ,A l l a r d ,A . ,H é b e r t - D u f r e s n e ,L .&B i a n c o n i ,G .
+Universal nonlinear infection kernel from heterogeneous exposure
+on higher-order networks.P h y s .R e v .L e t t .127,1 5 8 3 0 1( 2 0 2 1 ) .
+27. Bick, C., Gross, E., Harrington, H. A., & Schaub, M. T. What are
+higher-order networks? arXiv preprint arXiv:2104.11329, 2021.
+2 8 . M a j h i ,S . ,P e r c ,M a t j až. & Ghosh, D. Dynamics on higher-order net-
+works: A review. J. R. Soc. Interface 19, 20220043 (2022).
+29. Castellano, C., Fortunato, S. & Loreto, V. Statistical physics of social
+dynamics. Rev. Mod. Phys. 81, 591 (2009).
+30. Dodds, PeterSheridan & Watts, D. J. A generalized model of social
+and biological contagion.J. Theor. Biol. 232,5 8 7–604 (2005).
+31. May R. M. Simple mathematical models with very complicated
+dynamics. The Theory of Chaotic Attractors,p a g e s8 5–93, 2004.
+32. Voit E. O. Computational analysis of biochemical systems: a prac-
+tical guide for biochemistsand molecular biologists. Cambridge
+University Press, 2000.
+33. Gardiner, C., Zoller, P., & Zoller, P. Quantum noise: a handbook of
+Markovian and non-Markovian quantum stochastic methods with
+applications to quantum optics. Springer Science & Business
+Media, 2004.
+34. Harush, U. & Barzel, B. Dynamic patterns of information ﬂow in
+complex networks.Nat. Commun. 8,1 –11 (2017).
+35. Rual, Jean-François et al. Towards a proteome-scale map of the
+human protein–protein interaction network.Nature 437,
+1173–1178 (2005).
+36. Timme, M. & Schröder, M. Disentangling scaling arguments to
+empower complex systems analysis.Nat. Phys. 16,
+1086–1088 (2020).
+37. Barzel, B. & Barabási, Albert-L. ászló Universality in network
+dynamics. Nat. Phys. 9,6 7 3–681 (2013).
+38. Kirst, C., Timme, M. & Battaglia, D. Dynamic information routing in
+complex networks.Nat. Commun. 7,1 –9( 2 0 1 6 ) .
+39. Schmetterer, L., & Sigmund, K. Hans Hahn Gesammelte Abhan-
+dlungen Band 1/Hans Hahn Collected Works Volume 1: Mit einem
+Geleitwort von Karl Popper/With a Foreword by Karl Popper.
+Springer, 1995.
+Acknowledgements
+P.J. is supported by National Science and Technology Innovation 2030
+Major Program (2021ZD0204500, 2021ZD0204504), National Natural
+Science Foundation of China (62076071), and Shanghai Municipal Sci-
+ence and Technology Major Project(2018SHZDZX01). W.L. is supported
+by National Natural Science Foundation of China (11925103), STCSM
+(22JC1402500), and Shanghai Municipal Science and Technology Major
+Project (2021SHZDZX0103). J.K. was supported by the Russian Ministry
+of Science and Education (Agreement No. 075-15-2020-808).
+Article https://doi.org/10.1038/s41467-022-32913-w
+Nature Communications|         (2022) 13:5301 7
+Author contributions
+P. J. and J.N. conceived the project, designed the study and wrote the
+manuscript. Q. H. designed initialsimulations and developed the form-
+alism. X.B. re-conducted and veriﬁed Q.H.’s work. J. K and W. L. con-
+tributed to writing the paper.
+Funding
+Open Access funding enabled and organized by Projekt DEAL.
+Competing interests
+The authors declare no competing interests.
+Additional information
+Supplementary informationThe online version contains
+supplementary material available at
+https://doi.org/10.1038/s41467-022-32913-w.
+Correspondenceand requests for materials should be addressed to
+Peng Ji or Jan Nagler.
+Peer review informationNature Communicationsthanks Giulia Cencetti
+and the other anonymous reviewer(s) for their contribution to the peer
+review of this work. Peer review reports are available.
+Reprints and permission informationis available at
+http://www.nature.com/reprints
+Publisher’s note Springer Nature remains neutral with regard to jur-
+isdictional claims in published maps and institutional afﬁliations.
+Open Access This article is licensed under a Creative Commons
+Attribution 4.0 International License, which permits use, sharing,
+adaptation, distribution and reproduction in any medium or format, as
+long as you give appropriate credit to the original author(s) and the
+source, provide a link to the Creative Commons license, and indicate if
+changes were made. The images or other third party material in this
+article are included in the article’s Creative Commons license, unless
+indicated otherwise in a credit line to the material. If material is not
+included in the article’s Creative Commons license and your intended
+use is not permitted by statutory regulation or exceeds the permitted
+use, you will need to obtain permission directly from the copyright
+holder. To view a copy of this license, visithttp://creativecommons.org/
+licenses/by/4.0/.
+© The Author(s) 2022
+Article https://doi.org/10.1038/s41467-022-32913-w
+Nature Communications|         (2022) 13:5301 8

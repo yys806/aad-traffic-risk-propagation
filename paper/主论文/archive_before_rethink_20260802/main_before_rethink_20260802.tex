@@ -1,0 +1,384 @@
+\documentclass[journal]{IEEEtran}
+
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{cite}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xeCJK}
+\setCJKmainfont{SimSun}
+\setCJKsansfont{Microsoft YaHei}
+\setCJKmonofont{SimSun}
+
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\hyphenation{op-tical net-works semi-conduc-tor IEEE-Xplore}
+
+\begin{document}
+\raggedbottom
+
+\title{混合自动驾驶合流场景中通信介导的跨区域碰撞风险作用}
+
+\author{禹尧珅}
+
+\markboth{混合自动驾驶碰撞风险传播研究}%
+{通信介导的跨区域碰撞风险作用}
+
+\maketitle
+
+\begin{abstract}
+较远车辆的风险关联可能来自普通多跳跟驰、共同交通状态，也可能来自跨支路通信直接进入控制器。为区分这些机制，本文把“类超距作用”操作化为显式信息或控制通道介导的非最近邻作用，而非无通道的物理超距。研究首先在270个正式运行文件上建立局部基线，得到2,057个合格事件、1,294条局部一跳边和214条多跳链；随后在DRIFT/Flow合流场景中实现包含生成、发送、丢包、时延、交付、缓存、信息年龄、采用和动作的确定性ETA通信通道。闭环实验采用匝道需求（100/180 veh/h）与通信（关闭/理想）的$2\times2$配对设计，并加入直接信息oracle和受损通信消融，覆盖p60/p80及两个随机种子，共32个有效运行。所有运行碰撞数为0；关闭组远端机制应用为0，理想通信应用5,018次，受损通信应用2,809次，后者观测丢包率为19.24\%。初步结果显示通信对TTC冲突负担和急刹的影响随需求与渗透率改变，受损通信在高需求下增加冲突负担。由于仅有两个随机种子，本文将这些结果限定为机制与方法烟测，不作统计显著或总体安全收益声明。
+\end{abstract}
+
+\begin{IEEEkeywords}
+Mixed autonomy, collision risk, V2V communication, non-nearest-neighbor effect, closed-loop simulation, paired intervention.
+\end{IEEEkeywords}
+
+\section{引言}\label{sec:introduction}
+
+未来交通系统将在较长时期内保持人类驾驶车辆（human-driven vehicle, HV）和自动驾驶车辆（autonomous vehicle, AV）共存。AV渗透率、控制策略及其空间分布会改变单车行为，也会通过跟驰、合流、换道和瓶颈回溢影响交通系统的安全与稳定性。已有研究分析了拥堵传播\cite{guan2025jam}、局部级联碰撞风险\cite{luo2026crm}以及联网车辆的前视非局部交通模型\cite{huang2022nonlocal},\cite{hui2025lookahead}。
+
+闭环仿真通常使用碰撞率、碰撞时间（time-to-collision, TTC）、车头时距（time headway, THW）、急制动次数、平均速度和通行量评价一次运行。这些指标适合比较总体性能，却会压缩事件顺序和车辆交互结构。同样的急制动次数可能来自多个独立冲突，也可能来自一次扰动引发的连续制动链。干预设计还需要知道风险由哪个事件触发、经过哪些车辆继续传播，以及改变哪个行为可能减少后续冲突。
+
+风险图能够表示交通冲突的时空结构\cite{wang2024conflict}，因果图与图模型也已用于冲突风险预测\cite{lyu2025causal}。车队级联风险研究进一步表明，相邻车辆的临界减速度可以逐级递推\cite{luo2026crm}。这些方法为局部传播提供了直接基线。观察数据中的时空邻近仍可能由事件密集、自相关或共同交通状态造成，因此局部边和远距离边都需要负对照与干预验证。
+
+本文研究\textbf{混合自动驾驶中的碰撞或交通冲突风险}。拥堵、速度下降和通行效率作为交通背景或干预副作用记录，不单独作为风险对象。本文关注的类超距候选作用，是在控制同车延续、前后车关系、同一区域、多跳链和共同状态后，由前视感知、V2V/V2I通信或集中控制等显式通道支持的远距离风险作用。空间距离本身不是充分条件；消息必须实际进入目标车辆决策并在处理后改变风险结果。
+
+本文的主要工作包括：
+\begin{enumerate}
+    \item 建立从DRIFT资格审核、原始字段检查到碰撞风险事件提取的数据质量门，分离普通制动、SUMO安全速度覆盖和车辆边界事件；
+    \item 构建一跳与多跳局部传播基线，完成全图遍历、逐车时间置换和时间--距离阈值敏感性分析；
+    \item 实现可审计的跨支路ETA通信通道，并用源需求$\times$通信通道的配对闭环实验检验通信介导作用；
+    \item 给出局部残差与通信中介链进入正式因果讨论前需要通过的负对照、扩样和随机化推断门槛。
+\end{enumerate}
+
+当前已完成局部基线与32次通信烟测。远距离残差的正式因果发现、安慰剂和多随机种子推断仍待完成。
+
+\section{相关工作}\label{sec:related_work}
+
+\subsection{交通冲突风险与图建模}
+
+TTC、THW、避免碰撞所需减速度（deceleration rate to avoid a crash, DRAC）、急制动和near-miss是微观交通安全研究中常用的替代指标。风险图方法通过车辆、冲突或道路单元之间的关系描述风险演化\cite{wang2024conflict}，因果图方法则尝试从交通状态中提取直接风险依赖\cite{lyu2025causal}。本文将替代指标先合并为可检查的物理事件，再构建事件间的时间有向关系，并将观察图与反事实验证分开报告。
+
+\subsection{局部级联与混合交通传播}
+
+拥堵扰动可以沿交通流形成具有时间和空间结构的传播过程\cite{guan2025jam}。Luo等根据相邻车辆的临界减速度递推车队级联风险\cite{luo2026crm}。本文以同车、前后车和同一区域关系构成局部一跳边，再沿一跳边遍历多跳链，用于量化普通局部机制能够解释的风险联系。
+
+\subsection{交通非局部模型与量子理论边界}
+
+网联车辆可以利用一定空间范围内的密度、前方多车状态或通信信息作出响应。空间积分核、前视距离及局部--非局部耦合方程为这类机制提供了建模基础\cite{huang2022nonlocal},\cite{sun2020lookahead},\cite{colombo2026mixed},\cite{hui2025lookahead},\cite{friedrich2022network}。交通非局部作用因此应有明确的范围、方向、时延和信息来源。
+
+Bell非局部性讨论量子系统在特定制备和测量条件下的相关结构\cite{bell1964},\cite{brunner2014}，量子因果模型以量子态、量子通道或操作为基本对象\cite{leifer2013}。当前数据是经典车辆轨迹，不能据此推断车辆之间存在量子物理传播。量子式概率模型已用于描述自动驾驶交互中的情境依赖和非经典决策\cite{song2022quantum},\cite{asano2017selection}，本文只将其保留为行为建模备选。
+
+\subsection{通信拓扑、退化与控制安全}
+
+车辆通信的时延、瞬时中断和动态拓扑会改变车队稳定性及安全边界\cite{hasan2023outage},\cite{wang2024topology}。控制感知通信进一步说明发送频率、信息模型与控制性能需要联合设计\cite{razzaghpour2023controlaware}。本文不把可直接读取的ETA等同于真实通信，而是显式记录消息生命周期，并用零时延零丢包与受损通道进行消融。
+
+\subsection{时序因果与闭环反事实验证}
+
+滞后相关会受到自相关、共同驱动和间接路径影响。PCMCI等方法通过父集筛选和条件独立性检验识别高维时序中的直接滞后关联\cite{runge2019pcmci}。本文采用“观察图筛选候选关系、机制日志确认消息中介、负对照排除时间巧合、闭环重仿真检查方向一致性”的验证顺序。
+
+\section{问题定义}\label{sec:problem}
+
+考虑一次闭环仿真run产生的车辆状态序列
+\begin{equation}
+\mathcal{X}=\{x_{i,t}\mid i\in\mathcal{V},\ t=0,\ldots,T\},
+\end{equation}
+其中$x_{i,t}$包含车辆$i$在时刻$t$的位置、速度、加速度、车道、前车、净间距、TTC和THW等属性。本文的风险表示车辆在有限时间窗内因闭合速度、间距不足或强制动而接近碰撞状态的程度，不直接等同于真实事故概率。
+
+设车辆$i$与前车的净间距为$h_i(t)$，闭合速度为$\Delta v_i(t)=v_i(t)-v_{i-1}(t)$。当存在有效前车且$\Delta v_i(t)>0$时，
+\begin{equation}
+\mathrm{TTC}_i(t)=\frac{h_i(t)}{\Delta v_i(t)},\qquad
+\mathrm{DRAC}_i(t)=\frac{\Delta v_i^2(t)}{2h_i(t)}.
+\label{eq:ttc_drac}
+\end{equation}
+否则令$\mathrm{TTC}_i=+\infty$、$\mathrm{DRAC}_i=0$。当$v_i(t)>0$时，$\mathrm{THW}_i(t)=h_i(t)/v_i(t)$。风险检测器根据TTC、THW、DRAC和制动强度生成逐帧事件标签与分数。
+
+连续同run、同车辆、同物理事件且相邻检测间隔不超过$\Delta_{\mathrm{gap}}=0.4$ s的检测合并为事件片段$e$：
+\begin{equation}
+e=(i,q,t_e^{\mathrm{s}},t_e^{\mathrm{e}},p_e,\ell_e,r_e,R_e),
+\end{equation}
+其中$q$为事件类型，$p_e$、$\ell_e$和$r_e$分别表示代表位置、车道与道路区域，片段风险强度为
+\begin{equation}
+R_e=\max_{t\in[t_e^{\mathrm{s}},t_e^{\mathrm{e}}]}R_i(t).
+\end{equation}
+
+严重制动不再生成与普通制动重叠的独立节点，而是写入同一物理制动事件的严重程度字段。SUMO安全速度覆盖候选单独标记；车辆进入或离开边界上的事件不进入传播图。不同数据单元使用车辆运行暴露量归一化：
+\begin{equation}
+\lambda_q=\frac{N_q}{T_{\mathrm{vehicle}}}.
+\label{eq:event_rate}
+\end{equation}
+
+给定合格事件集合$\mathcal{E}$，局部基线图记为$\mathcal{G}_{L}=(\mathcal{E},\mathcal{A}_{L})$。边$e_i\rightarrow e_j$只连接同一run中更晚的事件。本文先估计局部可连接事件和多跳链，再在没有局部前驱的事件中筛选非局部候选关系。
+
+\section{方法}\label{sec:method}
+
+\subsection{DRIFT与原始数据资格门}
+
+DRIFT作为闭环演化与后续干预平台，资格审核分为三层。第一层检查正式性能表的场景、渗透率、方法和随机种子覆盖。第二层比较DRIFT与FS、PI在相同单元上的均值和95\%置信区间，并检查候选模型拟合误差。第三层回到原始emission，验证车辆、前车、道路、车道、时间、速度和加速度字段，确认TTC只在有效前车条件下计算。
+
+闭环仿真中的控制器指令与实际速度变化可能不同。当控制器减速度保持在正常范围，而相邻帧速度导数出现极端负值时，该帧标记为\texttt{safe\_speed\_override\_candidate}。该标签用于隔离SUMO安全速度约束或共享闭环执行效应，避免把仿真器强制覆盖解释为普通驾驶制动。
+
+\subsection{事件抽取与上下文分层}
+
+当前事件类型包括普通制动、低TTC、临界TTC、低THW和near-miss。TTC阈值检查采用1.0、1.5、2.0和3.0 s，制动阈值采用$-3$、$-4.5$和$-6$ m/s$^2$。事件片段同时保留前车变化、车道变化、车辆边界和相邻override标记。
+
+传播分析使用四个上下文层：稳定跟驰、仅交互关系变化、仅相邻override，以及交互变化与相邻override同时出现。分层结果用于判断局部边是否集中在换前车、换道或仿真器覆盖附近。人工复核样本保留事件前后帧的车辆、前车、车道、速度、间距、加速度、TTC和THW。
+
+\subsection{局部一跳边与多跳链}
+
+局部候选边要求$0<\Delta t_{ij}\leq3$ s、距离$d_{ij}\leq50$ m，并满足同车、前车到后车、后车到前车或同一区域关系。边评分为
+\begin{equation}
+s_{ij}=w_{r_{ij}}\sqrt{R_iR_j}
+\exp\!\left(-\frac{\Delta t_{ij}}{3}\right)
+\exp\!\left(-\frac{d_{ij}}{50}\right),
+\label{eq:local_score}
+\end{equation}
+其中同车关系的距离项取1，关系权重按同车、前车到后车、后车到前车和同区域依次设为1.0、1.0、0.9和0.65。该分数只用于候选排序。
+
+每个目标事件最多保留一个得分最高的局部前驱。由于边严格沿时间正向连接，筛选图是有向无环图，且节点入度不超过1。沿筛选边从根事件开始遍历，得到每个节点的跳数、累计距离和所属传播链。深度至少为2的连通链记为多跳链。
+
+\subsection{时间置换与阈值敏感性}
+
+逐车环形时间置换用于检验跨车边是否超过事件密集造成的随机对齐。每辆车的事件时刻在该run时间范围内独立环形平移，车辆内部事件结构保持不变。重复$B=100$次后，经验$p$值为
+\begin{equation}
+p=\frac{1+\sum_{b=1}^{B}\mathbb{I}(N_b\geq N_{\mathrm{obs}})}{B+1},
+\label{eq:null_p}
+\end{equation}
+其中$N_{\mathrm{obs}}$为实际跨车边数，$N_b$为第$b$次置换的跨车边数。阈值检查组合时间窗1、2、3和5 s与距离窗25、50和80 m，比较边数、多跳链数和最大深度。
+
+\subsection{非局部残差与反事实协议}
+
+没有局部前驱的事件构成第一版局部残差集合
+\begin{equation}
+\mathcal{E}_{\mathrm{res}}=\{e_j\in\mathcal{E}:d_{L}^{\mathrm{in}}(e_j)=0\}.
+\end{equation}
+“残差”只表示当前局部图未连接，不表示局部因果机制已经完全排除。后续在$\mathcal{E}_{\mathrm{res}}$中以80 m和120 m为候选距离，排除同车、前后车、同区域、已有多跳路径、共同交互变化和共同override，再检验
+\begin{equation}
+I\!\left(X_i^{\mathrm{past}};R_j(t)\mid
+X_{\mathrm{mid}}^{\mathrm{past}},C_t\right)>0,
+\label{eq:cmi}
+\end{equation}
+其中$X_{\mathrm{mid}}$表示中间车辆历史，$C_t$包含场景、渗透率、方法、道路区域、密度和共同控制状态。
+
+非局部候选边需要通过逐车时间置换、匹配负对照、阈值复现和人工逐帧复核。候选关系稳定后，固定场景初始状态、随机种子、其他车辆策略和仿真时长，仅改变源车辆扰动，比较基线run $\mathcal{R}^{(0)}$与干预run $\mathcal{R}^{(z)}$：
+\begin{equation}
+\Delta M(z)=M(\mathcal{R}^{(z)})-M(\mathcal{R}^{(0)}).
+\end{equation}
+只有目标风险变化与候选方向一致，并且效率副作用可解释时，才讨论直接非局部作用。
+
+\subsection{显式ETA通信通道与配对效应}
+
+源区$A$取上游匝道需求，目标区$B$固定为下游合流冲突区（道路边\texttt{bottom}、\texttt{left}或\texttt{:center\_1}，且$x\in[540,612]$ m）。消息$m$包含发送/接收车辆、远端ETA、源时间步和计划交付步。其生命周期依次为生成、按周期发送、丢包判定、延迟队列、交付、缓存、年龄检查和采用。丢包由channel seed、SUMO seed、时间步和车辆ID的哈希确定，不消耗全局随机数。
+
+四种条件为：\texttt{off}禁止采用远端信息；\texttt{oracle}直接读取当步ETA；\texttt{comm-ideal}采用0步时延、0丢包、每步更新和2步最大缓存年龄；\texttt{comm-impaired}采用3步时延、20\%丢包、每2步更新和6步最大缓存年龄。通信条件禁止在消息未交付或缓存过期时回退到原始ETA。目标区主要结果为有效leader车辆步上的TTC冲突负担
+\begin{equation}
+B_{\mathrm{TTC}}=\frac{1}{N_{\mathrm{valid}}}
+\sum_{k=1}^{N_{\mathrm{valid}}}(2-\mathrm{TTC}_k)_+.
+\label{eq:ttc_burden}
+\end{equation}
+主$2\times2$效应比较匝道需求（100/180 veh/h）与通信（off/comm-ideal），并按渗透率和随机种子配对；oracle与受损通信作为消融。
+
+\section{实验数据与资格验证}\label{sec:data_qualification}
+
+\subsection{实验矩阵}
+
+正式事件数据覆盖ring、figure-eight和merge三个场景，AV渗透率为0\%、20\%、40\%、60\%、80\%和100\%。每个场景--方法--渗透率单元包含5次运行。FS、PI和DRIFT各有90个原始文件，总计270个文件。表\ref{tab:data_matrix}给出数据范围。
+
+\begin{table}[!t]
+\caption{正式事件数据范围}
+\label{tab:data_matrix}
+\centering
+\footnotesize
+\begin{tabularx}{\columnwidth}{@{}lY@{}}
+\toprule
+维度 & 设置\\
+\midrule
+场景 & ring、figure-eight、merge\\
+AV渗透率 & 0\%、20\%、40\%、60\%、80\%、100\%\\
+方法 & FS、PI、DRIFT\\
+重复运行 & 每个单元5次\\
+原始文件 & 270\\
+轨迹帧 & 1,609,149\\
+车辆运行暴露 & 78.51 h\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+IDM、Flow-AIL和Flow-RL存在汇总级结果，但本地没有对应的逐帧emission，因此不填造这些方法的事件级结果。后续获得原始轨迹后再按同一规则补充。
+
+\subsection{DRIFT资格结果}
+
+FS、PI和DRIFT的54个场景--渗透率--方法单元均完整。380个均值层面对比中，DRIFT有203项更好、81项持平、96项更差；排除持平后的胜率为67.9\%。保守的95\%置信区间比较包含291项，其中126项确认DRIFT更好，25项确认更差，140项区间重叠。候选拟合误差方面，学习得到的$K=5$误差为0.094，固定$K=5$为0.595，单候选模型为1.228。
+
+结果支持将DRIFT用于后续闭环风险实验，也保留了明确的性能边界。DRIFT在普通制动尾部相对FS更稳定，但TTC冲突并未全面优于FS和PI。图\ref{fig:drift_comparison}按场景、渗透率和阈值汇总事件率比较，说明不同安全指标可能给出相反排序。
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.90\textwidth]{figures/drift_event_comparison.png}
+\caption{DRIFT与FS、PI的事件率比较。绿色表示DRIFT事件率更低，灰色表示持平，红色表示DRIFT更高。每项比较均匹配场景、渗透率和事件阈值。}
+\label{fig:drift_comparison}
+\end{figure*}
+
+\subsection{风险事件数据质量}
+
+270个文件包含6,933个逐帧检测，合并后得到4,131个事件片段。2,012个片段被标记为SUMO安全速度覆盖候选，单独保留且不进入普通制动传播分析。其余2,119个普通替代风险事件中，有62个位于车辆进入或离开边界，最终2,057个事件进入局部基线。图\ref{fig:event_composition}显示不同方法的事件构成。
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.90\textwidth]{figures/risk_episode_composition.png}
+\caption{全量数据中的风险事件构成。SUMO安全速度覆盖候选与普通制动、TTC、THW和near-miss事件分开统计。}
+\label{fig:event_composition}
+\end{figure*}
+
+2,057个合格事件中，稳定跟驰为778个，仅相邻override为714个，交互变化与相邻override同时出现为335个，仅交互变化为230个。分层结果表明，一半以上事件受到交互变化或相邻override影响，后续因果分析不能只使用汇总事件率。
+
+分层人工复核抽取60个事件：12个稳定事件直接保留，38个带上下文标记的事件保留但单独报告，10个override候选排除。所有复核样本均保留相邻帧，避免把车辆进入、离开或瞬时速度跳变当成普通风险传播。
+
+\section{显式通信Pilot B结果}\label{sec:communication_results}
+
+Pilot B覆盖4个条件、2个匝道需求、p60/p80及2个配置随机种子，共32个有效运行；对应实际SUMO seed为77701和66732。审计确认覆盖32/32、碰撞总数0、off应用0次、oracle应用4,711次、理想通信应用5,018次、受损通信应用2,809次。受损通信发送3,670条、丢弃706条，观测丢包率为19.24\%。
+
+\begin{table}[!t]
+\caption{Pilot B目标区TTC冲突负担（两个seed均值）}
+\label{tab:pilot_b}
+\centering
+\footnotesize
+\begin{tabular}{@{}llrrr@{}}
+\toprule
+源需求 & 渗透率 & off & comm-ideal & 差值\\
+\midrule
+名义 & p60 & 0.008066 & 0.004938 & $-0.003128$\\
+名义 & p80 & 0.002744 & 0.003107 & $+0.000363$\\
+高需求 & p60 & 0.004082 & 0.005448 & $+0.001366$\\
+高需求 & p80 & 0.002941 & 0.004872 & $+0.001931$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+四个seed--渗透率组合的源需求$\times$通信交互均为正（0.001463--0.006806），提示高匝道需求下通信效应相对更不利。受损通信相对理想通信在高需求p60/p80下使TTC冲突负担分别增加0.001732和0.008064，急刹率分别增加2.027和7.025次每千目标区车辆步。另一方面，理想通信相对off在名义p60/p80下显著减少烟测中的急刹计数，但TTC$<2$ s比例并未同步全面下降。不同指标和交通状态给出混合方向，当前证据不能归纳为通信总体提高安全。
+
+oracle只使用当步直接信息，理想通信允许短时缓存，二者不是定义上的同义条件。第一实际seed中两者四个单元逐值一致，第二seed在远端对象短暂不可见时出现分化，说明消息可用性语义必须在论文中明确。由于每个单元只有两个seed，本节只报告机制烟测和效应方向，不计算显著性或作总体外推。
+
+\section{局部传播基线结果}\label{sec:local_results}
+
+\subsection{一跳边与多跳链}
+
+2,057个合格事件产生2,315条局部候选边。每个目标保留一个最强局部前驱后，得到1,294条一跳边、763条局部链和214条多跳链，最大深度为24。跨车辆边为800条，占61.8\%。关系构成包括725条前车到后车、494条同车、41条同区域和34条后车到前车。
+
+\begin{table}[!t]
+\caption{局部传播基线汇总}
+\label{tab:local_summary}
+\centering
+\footnotesize
+\begin{tabular}{@{}lr@{}}
+\toprule
+指标 & 数值\\
+\midrule
+合格风险事件 & 2,057\\
+局部候选边 & 2,315\\
+筛选一跳边 & 1,294\\
+跨车辆边 & 800（61.8\%）\\
+局部链 & 763\\
+多跳链 & 214\\
+最大深度 & 24\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+FS、DRIFT和PI分别保留933、196和165条一跳边。merge、ring和figure-eight分别贡献726、359和209条边。图\ref{fig:relation_composition}显示FS的前车到后车关系最多，DRIFT与PI的图更稀疏。
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.88\textwidth]{figures/local_relation_composition.png}
+\caption{不同方法的一跳局部关系构成。边类型包括同车、前车到后车、后车到前车和同区域。}
+\label{fig:relation_composition}
+\end{figure*}
+
+最大深度同样具有明显的方法和场景差异。FS的最大深度为24，DRIFT为4，PI为3。深链主要出现在FS的merge和ring场景，见图\ref{fig:depth_heatmap}。这说明局部传播强度不能仅用跨场景汇总值描述。
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.88\textwidth]{figures/local_depth_heatmap.png}
+\caption{不同场景、方法和AV渗透率下的最大局部传播深度。空白表示相应组合没有可计算的局部链。}
+\label{fig:depth_heatmap}
+\end{figure*}
+
+三条最长链均来自FS merge，主要由连续低TTC事件组成，时间上呈逐步延后，如图\ref{fig:representative_chains}所示。长链能够表示局部多跳结构，也可能受到密集重复事件和单前驱选择规则影响，因此只作为后续逐帧复核对象。
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.92\textwidth]{figures/local_representative_chains.png}
+\caption{三条代表性局部传播链。横轴为仿真时间，纵轴为从根事件开始计算的跳数。}
+\label{fig:representative_chains}
+\end{figure*}
+
+\subsection{时间置换结果}
+
+逐车环形时间置换显示，显著局部时间对齐主要集中于FS merge：30次运行中18次达到$p\leq0.05$。DRIFT merge为5/30，PI merge为2/30。figure-eight的三个方法均没有显著运行，ring中FS有8/25达到显著水平。图\ref{fig:permutation_null}比较观测跨车边与置换分布。
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.90\textwidth]{figures/local_permutation_null.png}
+\caption{逐车环形时间置换检验。左图比较观测跨车边与置换均值，右图给出不同场景和方法相对零模型的平均偏离。}
+\label{fig:permutation_null}
+\end{figure*}
+
+该结果说明局部边在部分场景中超过简单时间巧合，尤其是FS合流运行。显著性并未在所有方法和场景中复现，因此当前证据只支持场景依赖的局部时间联系，不支持统一的因果传播强度。
+
+\subsection{阈值敏感性}
+
+时间窗口缩短至1 s、距离保持50 m时得到1,021条边，为默认3 s/50 m结果的79\%；时间窗口扩大至5 s时得到1,325条边，为默认结果的102\%。距离从50 m扩大到80 m对边数影响较小，但最大深度可由24增至28。图\ref{fig:threshold_sensitivity}显示边数对时间窗口更敏感，链深度则会受到距离窗口影响。
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=0.90\textwidth]{figures/local_threshold_sensitivity.png}
+\caption{局部定义的时间与距离阈值敏感性。左图为相对3 s/50 m设置的边数比例，右图为最大传播深度。}
+\label{fig:threshold_sensitivity}
+\end{figure*}
+
+\clearpage
+\section{讨论与局限}\label{sec:limitations}
+
+DRIFT资格验证解决了后续研究平台是否可用的问题。正式结果和候选拟合均支持继续使用DRIFT，但其优势集中在部分效率指标和普通制动尾部。TTC冲突结果较为混合，因此本文不把DRIFT描述为所有安全指标上的统一最优方法。
+
+局部基线解决了非局部假设的首个对照问题。相邻车辆和多跳链能够解释一部分风险事件的时间联系，FS merge的证据最明显。DRIFT和PI的边数与链深度更低，可能来自更平滑的行为，也可能来自事件率、控制策略和场景状态差异。现阶段不能仅凭图稀疏度判断安全机制。
+
+Pilot B进一步表明，显式通信边能够被实现、逐消息审计并在闭环中改变目标区结果，但“存在作用”不等于“作用更安全”。源需求、渗透率、缓存语义和通信退化共同改变TTC负担、急刹和效率；把oracle、理想通信和受损通信混为一个ETA-on条件会掩盖这些差异。
+
+当前研究仍有五项限制。第一，局部边来自物理约束和启发式评分，置换检验不能单独确认因果方向。第二，714个事件仅带相邻override标记，335个事件同时存在交互变化和相邻override。第三，事件级原始数据目前只覆盖FS、PI和DRIFT。第四，Pilot B仅有两个随机种子且无碰撞，不能估计稀有碰撞概率或统计显著性。第五，错误支路、伪源区、处理前窗口和消息置乱安慰剂尚未执行，目标区车辆步TTC负担也需要升级为连续车对冲突事件。
+
+下一阶段将把Pilot B扩展到至少20--30个seed，预注册主要结果和区域，完成配对置信区间、随机化检验及安慰剂；同时对时延、丢包、更新周期和缓存年龄做剂量曲线。远距离关联若在这些检查后消失，将归入普通多跳传播或共同状态解释；若沿真实消息中介链稳定保留，再讨论通信介导的类超距作用。
+
+\section{结论}\label{sec:conclusion}
+
+本文在局部传播基线之上实现了真实消息生命周期的跨支路ETA通信，并完成源需求$\times$通信通道的32-run闭环烟测。结果证明通信介导的非最近邻控制作用可以被操作化、记录和配对比较；同时，TTC冲突负担、急刹和效率的方向随需求、渗透率及通信退化改变，不能把远端信息概括为无条件安全收益。
+
+当前证据支持“可识别的通信介导作用”，尚不支持统计意义上的类超距因果效应或现实道路外推。正式结论需要更多seed、连续冲突事件、安慰剂和通信质量剂量实验。
+
+\section*{数据与代码可用性声明}
+
+当前工作稿使用的分析代码、配置、派生表格和结果图保存在项目工作目录中。正式投稿前将根据DRIFT/Flow代码许可、数据提供方条款和匿名审稿要求确定公开范围，并提供可复现实验配置与派生结果。
+
+\section*{利益冲突声明}
+
+作者目前未声明与本研究相关的利益冲突；正式投稿前复核确认。
+
+\section*{基金声明}
+
+基金信息将在项目归属确认后填写；本工作稿不预设基金编号。
+
+\section*{作者贡献声明}
+
+正式投稿前将按CRediT角色确认概念提出、方法设计、软件实现、实验、数据整理、可视化、论文写作与监督责任。
+
+\section*{生成式人工智能使用声明}
+
+本工作稿在研究者监督下使用生成式人工智能辅助整理项目材料、迁移LaTeX版式和改进文字表达。研究问题、方法选择、代码、实验设计、结果核验、引用准确性和最终论文内容由作者负责。正式投稿时将根据IEEE当期政策更新披露文本。
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}

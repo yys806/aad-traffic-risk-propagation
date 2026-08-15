@@ -1,0 +1,1850 @@
+Article https://doi.org/10.1038/s41467-026-69761-x
+Breaking through safety performance
+stagnation in autonomous vehicles with
+dense learning
+Shuo Feng 1, Haojie Zhu 2,H a o w e iS u n2,X i n t a oY a n2,5,L i n x u a nH e1,
+Jingxuan Yang 1,G u a n g z h e nS u1,B o q iL i2,S h uL i 1,L i n gW a n g1,
+Shengyin Shen 3 &H e n r yX .L i u 2,3,4
+Autonomous vehicles remain commercially limited largely due to safety per-
+formance stagnation. Existing deep learning, heavily reliant on failure data
+from rare safety-critical events, suffers from the seesaw effect— improvement
+in some scenarios causes regression in others. We introduce an innovative
+dense learning approach that prioritizes both informative failures and suc-
+cesses, informed by theoreticalﬁndings. Data is sampled proportionally to its
+contribution to the policy gradient and exposure frequency, excluding non-
+informative samples. This densiﬁes the training dataset’ si n f o r m a t i o n ,s i g -
+niﬁcantly reducing learning variance without bias, enabling tasks intractable
+for existing methods. To validate this, wetrained a safety-critical driving agent
+for a highly automated vehicle using mixed reality on an urban test track.
+Results demonstrate that our approachbreaks the performance stagnation,
+enhancing the model’ s overall safety performance by one to two orders of
+magnitude. This marks a signiﬁcant stride towards achieving human-level
+safety and widespread adoption for autonomous vehicles.
+The dream of autonomous vehicles (AVs) has been around for
+approximately a century 1. Enormous amounts of capital, exceeding
+$160 billion, have been invested in this vision over the past twenty
+years2. Despite witnessing signiﬁcant advancements in AV technology,
+no commercially available AVs have yet met the SAE Level 4 standard3.
+The pace of progress in AV development has been disappointingly
+slow, particularly when it comes to ensuring their safety, which has
+remained stagnant in recent times. The situation was further exacer-
+bated by the unfortunate accident involving Cruise Automation in San
+Francisco on October 2nd, 2023
+4. This safety gap presents a signiﬁcant
+obstacle to the deployment and commercialization of AVs, as they
+struggle to effectively handle a wide array of infrequent yet critical
+safety events, commonly referred to as the long-tail challenge for AV
+safety
+5,6. Existing approaches have proven inadequate in overcoming
+this challenge, resulting in a noticeable slowdown and even stagnation
+in the enhancement of AV safety performance. Consequently, the
+development and deployment of AVs have been severely hindered,
+calling for an urgent breakthrough.
+We formulate the safety challenge for AVs as the Curse of Rarity
+(CoR)
+7, which arises due to the rarity of safety-critical events in high-
+dimensional variable spaces. We recognize that this is a compounding
+effect resulting from the rarity of events combined with the high
+dimensionality of related variables. As the utilization of deep learning
+techniques is typically necessary to address the high dimensionality,
+the rarity of events dramatically increases the estimation variance of
+policy gradient, thereby impeding the ability of deep-learning models
+to learn. This challenge exists in different AV safety-related tasks, and
+we attacked it in the AV safety testing task in our prior work
+8.H o w e v e r ,
+Received: 30 March 2025
+Accepted: 4 February 2026
+Check for updates
+1Department of Automation, Beijing National Research Center for Information Science and Technology, Tsinghua University, Beijing, China.2Department of
+Civil and Environmental Engineering, University of Michigan, Ann Arbor, MI, USA.3University of Michigan Transportation Research Institute, Ann Arbor, MI,
+USA. 4Department of Mechanical Engineering, University of Michigan, Ann Arbor, MI, USA.5Present address: Department of Civil Engineering, The University
+of Hong Kong, Hong Kong, China. e-mail: henryliu@umich.edu
+Nature Communications|         (2026) 17:3163 1
+1234567890():,;
+1234567890():,;
+the main objective of AV testing is to evaluate the safety performance
+by estimating the probabilities of rare events (e.g. car collisions) given
+as p e c iﬁc AV policy, whereas the AV training task is to improve the
+safety performance by searching for a policy from the AV policy space
+that can minimize these probabilities. This fundamental distinction
+makes AV training considerably more challenging than AV testing.
+Furthermore, during the AV training process, better AV safety perfor-
+mance also means fewer safety-critical events, which, in turn, makes it
+more difﬁcult to improve the safety performance. These issues pose
+signiﬁcant obstacles to the development of AVs to ensure safety per-
+formance. It should be emphasized that previous advancements in AI
+have primarily been focused on non-safety-critical applications such as
+chatbots and games
+9– 12, where a certain level of failure is deemed
+acceptable. However, when it comes to safety-critical autonomous
+systems
+13 such as AVs, an extremely high level of safety performance is
+demanded, resulting in the CoR challenge.
+Existing approaches that attempted to tackle the CoR challenge
+primarily focus on learning from the data where AI systems exhibit
+failures
+14. For instance, Tesla had reported training their systems on
+datasets that represent scenarios where AVs struggle or deviate from
+human driver behavior15. However, it is important to note that these
+approaches lack a solid theoretical foundation, and our investigations
+have revealed that they can exhibit signi ﬁcant biases and even be
+misleading. Consequently, while these approaches may enhance the
+a
+b Data collection
+Intelligent testing environmentCollected
+data
+Episodic data densification
+Offline
+resampling
+Data
+classification
+State-level data densification
+Learned
+safety metric
+State
+reconnecting
+State
+deleting
+Informative states
+Other states
+Crashes
+Near-misses
+Collecting training data with purposely
+generated testing environment
+Re-simulated data
+Dense learning approach for training
+Retrospective data densification
+Counterfactual simulation
+Learning from
+all data
+Learning from
+crash data
+Learning from
+densified data
+Suffer from
+learning variance
+No performance
+change
+Suffer from
+learning biasedness
+Overall safety
+performance improved
+Reduce variance
+with unbiasedness
+Crash data
+All data
+Avoided
+crashes
+New
+crashes
+Stagnation in overall
+performacne
+CoR challenge
+Seesaw effect
+Overcome CoR
+and seesaw effect
+Near-miss data
+c
+Dense-Learning based SafeDriver
+Steering
+angle
+Acceleration
+Unsafe
+Safe
+Base Model
+Observation
+Ego vehicle
+Background vehicle
+Risk level
+Learned safety metric
+Rule-based policy,
+e.g., AutowareRSS
+SafeDriver learning
+Base model
+Neural
+networks
+Fig. 1 | Key challenges and our solution for AV safety training. aLearning from all
+data suffers from severe variance due to the Curse of Rarity (CoR) challenge and
+cannot learn an effective policy. Here an effective policy means that the policy
+could improve the safety performance of autonomous vehicles (AVs) with a lower
+crash rate. Existing approaches attempted to tackle the CoR challenge primarily
+focus on learning from the data where AI systems exhibit failures (such as crash
+event data), which could mislead the training process, causing the seesaw effect.
+Our approach overcomes this issue by training AVs with densiﬁed data, improving
+AVs’ overall safety performances.b Our dense learning approach densiﬁes the
+training data through three modules including episodic data densiﬁcation (selec-
+tion of informative driving episodes), driving state densiﬁcation (retain informative
+states only), and retrospective data densiﬁcation (re-selection of informative
+driving episodes through counterfactual simulation). Our approach can dramati-
+cally reduce learning variance for rare event learning without loss of unbiasedness
+and enable the learning of the SafeDriver model. c During the AV driving process,
+the SafeDriver model will only override in safety-critical situations that are identi-
+ﬁed by a learned safety metric; in all other situations, the behaviors of the AV will be
+controlled by base AV models.
+Article https://doi.org/10.1038/s41467-026-69761-x
+Nature Communications|         (2026) 17:3163 2
+safety performance of AVs in speci ﬁc scenarios, they run the risk of
+compromising performance in other safety-critical situations (Fig.1a).
+This phenomenon, known as the seesaw effect in different
+domains
+16– 18, hinders the improvement of overall safety performance
+and leads to performance stagnation. That is also a key reason why
+safety-critical driving situations are seemingly endless, despite years of
+development in AVs. Alternatively, some researchers have attempted
+to prevent unsafe behaviors of AVs based on rules or models such as
+formal methods
+19– 21 and constrained learning 22– 24.H o w e v e r ,t h i s
+approach faces challenges to handle the variability and complexity in
+high-dimensional variable spaces, because it is dif ﬁcult to rely on a
+predeﬁned set of parameters and assumptions for a wide spectrum of
+diverse driving situations
+22.
+We address the CoR challenge by developing an innovative dense
+reinforcement learning approach to overcome performance stagna-
+tion and enable AVs to continually improve their safety performance
+beyond the current state-of-the-art. The key idea is to remove the non-
+i n f o r m a t i v ed a t at od e n s i f yt h ei n formation from different perspec-
+tives including the episodic data densi ﬁcation, state-level densiﬁca-
+tion, and retrospective data densiﬁcation (see Fig.1b). For the episodic
+data densiﬁcation, we found out that the optimal episodic data dis-
+tribution for training neural networks to overcome CoR should be
+based on their contribution to the policy gradient and their exposure
+frequency, as indicated in Theorem 1 in Methods. Speci ﬁcally for the
+AV safe driving task, the training data set should include data from
+both avoidable crash episodes and episodes where crashes were suc-
+cessfully avoided, i.e., near-misses. Moreover, as each driving episode
+can span many time steps, we retained and reconnected the safety-
+critical states, which can further densify training data within each
+driving episode from the state-level, as indicated in Theorem 2 in
+Methods. Lastly, due to the changing AV policy during training,
+achieving both higher precision and recall rates for identifying infor-
+mative episodes and states has become dif ﬁcult. To address this, we
+designed a learned safety metric that serves as a real-time predictive
+evaluation tool. It also includes a retrospective evaluation component
+to re-evaluate all data for the new AV policy through counterfactual
+simulation.
+To demonstrate the ef ﬁcacy of our methodology, we trained a
+safety-critical driving agent (referred to as SafeDriver in this study) for
+a SAE Level 4 (ref.3) AV with Autoware
+25, which is widely recognized as
+the leading open-source automated driving system. As a safety ﬁlter
+system26, SafeDriver overrides Autoware only in safety-critical situa-
+tions to enhance the overall safety performance of the AV, as shown in
+Fig. 1c. As SafeDriver is decoupled from Autoware, it is applicable for
+other AV models including those developed based on large neural
+network models. We ﬁrst tested the performance of SafeDriver in
+multiple simulated naturalistic driving environments (NDEs), then
+e q u i p p e daL i n c o l nM K Zh y b r i dw i t hA u t o w a r e ,a n dt e s t e dt h eS a f e -
+Driver in a physical urban test track with mixed reality. The results
+obtained from both simulation and ﬁeld-testing clearly demonstrate
+the effectiveness of our approach in training a safety-critical driving
+agent. By employing our methodology, the overall safety performance
+of the AV models can be signi ﬁcantly enhanced, with improvements
+ranging from one to two orders of magnitude.
+Results
+Dense learning approach for AV training
+We demonstrated the seesaw effect for AVs (see Supplementary Sec-
+tion 2.3 in Supplementary Information) and then found out that it is
+essentially caused by the biasedness of learning and the severe var-
+iance caused by the CoR (see Eq. (8) in Methods). Here the biasedness
+indicates that the expectation of the gradient estimation is different
+from the ground truth, so the learning process could be misled. To
+address this issue, we develop the dense reinforcement learning
+approach for AV training. The key is to remove the non-informative
+data, thereby reducing the learning variance while maintaining the
+learning unbiasedness. Removing a larger amount of non-informative
+data leads to a greater reduction in variance. However, accurately
+deﬁning, identifying, and effectively utilizing informative data for AV
+training pose signiﬁcant challenges. We address this challenge from
+different perspectives including the episodic data densiﬁcation, state-
+level densiﬁcation, and retrospective data densiﬁcation.
+For the episodic data densi ﬁcation, we ﬁrst obtain the optimal
+training data distribution for AV training based on importance sam-
+pling theory
+27 as
+q/C3
+π XðÞ / j j ∇ π Pðω XðÞ =1 Þjj2 × Pπ XðÞ , ð1Þ
+where X denotes each driving episode of the training data,π denotes
+the AV policy, ω XðÞ = 1 denotes the objective event that is a rare event
+(for example, crash events),∇ π Pðω XðÞ =1 Þ is the policy gradient for the
+probability of the objective eventω XðÞ =1g i v e nX, ‖∙‖2 denotes the l2
+norm of the vector,Pπ XðÞ denotes the exposure frequency ofX in NDE,
+q/C3
+π XðÞ denotes the optimal probability distribution ofX for training the
+policy π, and the symbol/ means ‘ proportional to’ . Here an episode is
+a segment of recorded driving data with a predetermined time dura-
+tion or distance. It indicates that the optimal training data should
+contain both avoidable crash events (informative failures) and near-
+miss events (informative successes) where jj∇
+π Pðω XðÞ =1 Þjj2 is non-
+zero, while the data of those unavoidable crash events and safe
+situations should be removed.
+The primary obstacle in applying Eq. ( 1)i st h a tjj∇
+π Pðω XðÞ =1 Þjj2
+for each driving episode of data cannot be calculated practically,
+exacerbated by the changing AV policy during the training process. We
+note that the key to dense learning is to remove the non-informative
+data and keep the informative one, so Eq. ( 1) can be utilized as a gui-
+dance for data densi ﬁcation. Therefore, rather than attempting to
+compute the precise values of jj∇
+π Pðω XðÞ =1 Þjj2,w ea d o p ta n
+approximation through a binary classi ﬁcation task. In this task,
+jj∇π Pðω XðÞ =1 Þjj2 is approximated as one for informative data, that is,
+avoidable crash events and near-miss events. Speciﬁcally, we identiﬁed
+a crash event as avoidable if an evasive trajectory is still feasible after
+the vehicle state is identiﬁed as safety-critical and a non-crash event as
+a near-miss if the minimum relative distance between the AV and
+background vehicles is below a pre- determined threshold. Although
+these criteria are not unique, we chose these simple yet effective ones
+to demonstrate the effectiveness of our approach. By sampling
+the episodes according to P
+π XðÞ and rejecting these where
+jj∇π Pðω XðÞ =1 Þjj2 is estimated as zero, our approach realizes the
+training data distribution as in Eq. (1), dramatically reducing variance
+for rare event learning without compromising unbiasedness, as indi-
+c a t e di nT h e o r e m1i nM e t h o d s .
+We then conduct the state-level densi ﬁcation and retrospective
+data densiﬁcation. As each driving episode may last for many time
+steps, we retained and reconnected the informative states to densify
+the data from the state-level. This is challenging in AV training, as
+different AV policies during the training process could have different
+safety-critical states and we need to identify them with both high
+precision and recall rates. To address this challenge, we design a
+learned safety metric, which obtains better performances than existing
+approaches (see Supplementary Fig. 1 and Supplementary Video 2).
+Moreover, as AV policy is changed after training, a large policy gap may
+exist between the new AV policy and the policy that collected the data.
+To bridge this gap, we introduce a retrospective evaluation compo-
+nent to reidentify the informative episodes and states for the new AV
+policy through counterfactual simulation (see Supplementary Sections
+2.1.9 and 2.11 in Supplementary Information). Furthermore, to improve
+the efﬁciency of data collection, we also utilize the intelligent testing
+environment (ITE) developed in our previous study
+8. Utilizing ITE
+allows us to accelerate the collection of informative training data by
+Article https://doi.org/10.1038/s41467-026-69761-x
+Nature Communications|         (2026) 17:3163 3
+multiple orders of magnitude (see Supplementary Fig. 2, Supplemen-
+tary Video 3, and Supplementary Section 2.7 in Supplementary
+Information).
+Simulation results
+We evaluated the effectiveness of our approach by systematic simu-
+lation analysis. To measure the overall safety performances of AVs for
+quantitative comparisons, we utilized the crash rate per test of AVs in
+NDE. As NDE is generated based on naturalistic driving data, testing
+results in NDE can represent the safety performance of AVs in the real
+world
+28.S p e c iﬁcally, we selected different types of base AV models,
+and trained SafeDriver that only takes over from the base AV models in
+safety-critical states (identiﬁed by the learned safety metric), resulting
+in the integrated AV models. We then compared the safety perfor-
+mances of base AV models and integrated AV models in NDE. Although
+we refer to the baseline models as ‘ base’ AV models, they could be
+advanced commercial AV models with large-scale neural networks
+together with their own safety guards. To demonstrate the general-
+izability and applicability of our approach, we conducted experiments
+for four types of base AV models in different driving environments
+including highway, roundabout, and urban environments (Fig. 2). In
+this study, we only utilized a simple Multilayer Perceptron as
+backbone to demonstrate the effectiveness of our approach, so the
+performances could be further improved with more advanced
+backbones.
+Figure 2a shows the results of a multi-lane highway environment.
+We trained a RL-based AV model using the proximal policy optimiza-
+tion (PPO) algorithm
+28,29 (see Supplementary Section 6.7 in Supple-
+mentary Materials) and obtained its crash rate as 1 :36 × 10/C02 in NDE.
+We further implemented the responsibility-sensitive safety (RSS)
+model30 as the default safety guard. Through millions of tests of the
+b a s eA Vm o d e lw i t hR S Si nN D E ,w eo b t a i n e dt h ec r a s hr a t ea s
+2:71 × 10
+/C05 crash per test. Then, we trained SafeDriver using our
+approach without RSS (Fig. 2a, red line). The results revealed a crash
+rate of 3 :71 × 10/C06,m a k i n ga n8 6:3% reduction in comparison to the
+base AV model. When considering only avoidable crashes, our
+approach demonstrated a remarkable 91:7% reduction. This suggests
+that our approach signi ﬁcantly enhances the overall safety perfor-
+mance by approximately one order of magnitude. We also evaluated
+the AV model with SafeDriver and RSS, yielding a crash rate of
+7:79 × 10
+/C06,r e p r e s e n t i n ga7 1:3% reduction compared to the base AV
+model with RSS (Fig.2a, purple line). While not as optimal as the model
+without RSS, due to the additional constraints introduced by RSS, our
+approach still improves overall safety performance. This is signiﬁcant
+considering that many AV models may already have their safety guards
+or constraints in place. To demonstrate the effectiveness of our
+a
+c
+Base AV model
+Our approach
+Training time (x104 cpu hour)
+98.0%
+Base AV model
+86.3%
+Our approach
+0.0
+2.0
+4.0
+6.0
+0.0 0.4 0.8 1.2 1.6
+Crash rate in NDE (×10-5)
+0.0
+1.0
+2.0
+3.0
+0.0 0.7 1.4 2.1 2.8
+98.9%
+Base AV
+model
+Our
+approach
+Base AV
+model
+Our
+approach
+91.7%
+Our approach with RSS constraints
+89.5%
+Base AV
+model
+Our
+approach
+74.5%
+Base AV model
+Our approach
+0.0
+2.0
+4.0
+6.0
+0.0 1.8 3.6 5.4b
+Rear-end Sideswipe
+Our approach
+Base AV model
+Angle Head-on
+Route
+Route
+84.9%
+90.6%
+Route
+0.0
+2.0
+4.0
+6.0
+0.0
+2.0
+4.0
+6.0Avoidable crash rate in NDE (×10-5)
+7.2
+0.0
+1.0
+2.0
+3.0
+0.0
+2.0
+4.0
+6.0Crash rate in NDE (×10-5)
+0.0
+1.0
+2.0
+3.0
+Rear-end Sideswipe Angle Head-on
+Our approach
+Base AV model
+99.8%
+97.5%
+0.0
+2.0
+4.0
+6.0
+Rear-end Sideswipe Angle Head-on
+Our approach
+Base AV model
+72.1% 73.6% 79.0%
+Training time (x103 cpu hour)
+Training time (x103 cpu hour)
+Crash rate in NDE (×10-3)Crash rate in NDE (×10-7)
+Crash rate in NDE (×10-3)Crash rate in NDE (×10-7)
+Avoidable crash rate in NDE (×10-3)Avoidable crash rate in NDE (×10-7)
+8
+9999999
+7777
+777777
+777777
+999999999
+9
+Fig. 2 | Performance evaluation of the dense learning approach in simulations.
+a Performance evaluation of our dense learning approach for autonomous vehicle
+(AV) training in a multi-lane highway environment with a continuous driving dis-
+tance of 400 m. The red line in the map denotes the AV driving route. At each data
+point of our approach, we evaluated the AV’ s performance in naturalistic driving
+environment (NDE) and recollected the training data for the new AV. The shaded
+area represents the 90% conﬁdence level. Our approach could dramatically reduce
+the overall crash rate, crash rates of different crash types, and avoidable crash rate,
+compared with the base AV model. Here we adopted the crash type diagram
+deﬁned by the Fatality Analysis Reporting System
+57. We further investigated the
+evasive driving behaviors that SafeDriver learned and identiﬁed three typical ones,
+including emergency braking, rapid accelerating, and evasive lane changing (Sup-
+plementary Fig. 2). Additional case studies are provided in Supplementary Video 4.
+b Performance evaluation of our dense learning approach for AV training in
+roundabout scenarios. Additional case studies are detailed in Supplementary
+Video 5, providing comprehensive insights into our approach in roundabout sce-
+narios. c Performance evaluation of our dense learning approach for AV training in
+the simulation model of Mcity urban test track. The behaviors of background
+vehicles in NDE were constructed based on the large-scale naturalistic driving data
+from SPMD
+54 and IVBSS55 programs. Additional case studies are provided in Sup-
+plementary Video 6.
+Article https://doi.org/10.1038/s41467-026-69761-x
+Nature Communications|         (2026) 17:3163 4
+approach, we also compared our approach with the provably safe RL
+approach31,32 (see Supplementary Section 2.2.5 in Supplementary
+Information).
+Navigating through roundabouts poses a signiﬁcant challenge for
+AVs due to the intricate interactions among AVs and the diverse mix of
+surrounding vehicles. To evaluate the effectiveness of our approach in
+roundabout scenarios, we expanded our simulation experiments to a
+real-world four-armed roundabout
+33 in Germany, known for its high
+trafﬁc volume and complex intersections. We generated the realistic
+driving behaviors of background vehicles in NDE with a Transformer-
+based learning approach
+28, leveraging the naturalistic driving data in
+the RounD dataset33 (see Supplementary Section 2.6 in Supplementary
+Information). Using an advanced AV model with a sampling trajectory
+generation algorithm
+34 as our base AV model, we demonstrated that
+our approach signiﬁcantly reduces the AV’ s crash rate by 74.5%, along
+with an 89.5% reduction in avoidable crash rates (Fig. 2b).
+We further test the performance of SafeDriver when AVs navigate
+continuously through urban environments. We utilized the digital twin
+of the Mcity test track, and selected two AV models as base models,
+one is the default AV model in SUMO
+35 (the intelligent driving model
+(IDM)36 and the SL2015 model 35 in SUMO) and another one is
+Autoware25, which is widely recognized as the leading open-source
+automated driving system. Results show that our approach can reduce
+the overall crash rate of the SUMO AV model by 98:0% and reduce the
+avoidable crash rate by 98 :9% (Fig. 2c), representing a nearly two-
+orders-of-magnitude improvement. We integrated the identical Safe-
+Driver into Autoware without any additional re ﬁnement, and results
+indicate a reduction in the crash rate from 1 :07 × 10
+/C06 to 1:07 × 10/C07,
+equating to a 90 :0% enhancement in safety performance. This
+underscores the efﬁcacy and adaptability of our approach across var-
+ious AV models.
+To further investigate the contributions of our developed tech-
+niques, we conducted ablation studies on the multi-lane highway
+environment including 1) no episodic data densi ﬁcation, 2) no state-
+level data densiﬁcation, 3) no near-miss episodes, 4) no retrospective
+data densiﬁcation, 5) no near-miss and retrospective data densi ﬁca-
+tion, 6) no trajectory resampling, and 7) no state reconnection. With
+the same training steps such as 780 and 1650 steps, we compared the
+crash rates of SafeDriver in NDE as shown in Table 1.R e s u l t sd e m o n -
+strate the effectiveness of all developed techniques. Speciﬁcally, both
+the episodic data densiﬁcation and state-level data densiﬁcation con-
+tribute dramatically, while the retrospective data densi ﬁcation toge-
+ther with near-miss scenarios affects the performance signi ﬁcantly.
+Please see details in Supplementary Section 2.4 in Supplementary
+Information.
+To test the scalability and generalizability of our approach, we
+implemented a uniﬁed SafeDriver on the nuPlan benchmark
+37,r e c o g -
+nized as the world ’ s ﬁrst extensive planning benchmark for autono-
+mous vehicles, which contains 1200 h of human driving data from 4
+cities across the US and Asia with widely varying traf ﬁc patterns
+(Boston, Pittsburgh, Las Vegas and Singapore) (Fig. 3a). The goal of
+SafeDriver is to utilize a learning-based planner to assist the base
+model in navigating through safety-critical scenarios encountered in
+urban driving. We selected the state-of-the-art (SOTA) planner PDM-
+Hybrid
+38 as our base model to demonstrate the effectiveness of Safe-
+Driver over the SOTA base model. As shown in Fig. 3b, if the PDM-
+Hybrid model predicts a collision within 2 s, SafeDriver takes control;
+otherwise, the base model manages the ego vehicle. Results indicate
+that SafeDriver reduces the total number of collisions by 21.7% and
+decreases AV-responsible crashes by 29.2%, compared with the base
+model. Illustration of two examples can be found in Fig. 3c– f. Please
+see details in Supplementary Section 2.5 in Supplementary
+Information.
+Field testing results
+To demonstrate the effectiveness of our approach for real-world AVs,
+we outﬁtted a Lincoln MKZ hybrid with Autoware as the base AV model
+(Fig. 4a) and conducted the experiments in the physical test tracks at
+Mcity (Fig. 4b) with a mixed-reality testing platform (Fig. 4c). One
+additional challenge for real AV training is caused by the so-called
+simulation-to-reality gap, where AV models developed in simulations
+may not seamlessly translate to real-world performance. In this work,
+we bridged the gap by iteratively improving the simulation models.
+Speciﬁcally, we utilized the same Autoware system in simulation as
+employed in the actual AV, mimicked the delay and latency char-
+acteristics of the real AV, and compensated for acceleration and
+deceleration effects induced by road slopes (Supplementary Fig. 4).
+Results demonstrated that, with th is approach, the SafeDriver effec-
+tively reduces the crash rate of the real AV in the test track from
+1:44 × 10
+/C06 to 1:42 × 10/C07, making an impressive 90:1% improvement in
+the AV’ s safety performance (see Fig.4d, e and Supplementary Fig. 5).
+Recognizing that some crashes are unavoidable due to aggressive
+behaviors of background vehicles, we further assessed the crash rate
+of avoidable crashes, revealing a 98.8% reduction through our
+approach. For a more in-depth understanding, additional case studies
+are presented in Fig. 4f.
+Discussion
+The dense learning approach proposed in this work is theoretically
+applicable to the reinforcement learning problem that aims to mini-
+mize the expectation of a rare event with an underlying distribution,
+although further investigations are required to validate these appli-
+cations (see Problem 1 in Supplementary Information). This problem
+has been a long-standing challenge in multiple ﬁelds associated with
+safety-critical autonomous systems, such as AVs, medical robots, and
+aerospace systems. Despite the signiﬁcant advancements in AI systems
+such as AlphaGo
+10 and GPT 39, their application in safety-critical
+domains remains dif ﬁcult due to the low tolerance for issues like
+hallucinations40. The dense learning approach opens the door for
+leveraging AI techniques in the development of such systems. In this
+Table 1 | Evaluation results of ablation studies
+Episodic data
+densiﬁcation
+State-level data
+densiﬁcation
+Near-miss
+episodes
+Retrospective data
+densiﬁcation
+Trajectory
+resampling
+State
+reconnection
+C r a s hr a t ei nN D E
+after 780 training
+steps ( × 10/C05 )
+C r a s hr a t ei nN D E
+after 1650 train-
+ing steps ( × 10/C05 )
+ww w w w w 1 . 0 7 0 . 6 5
+w/o w w w w w 2.26 2.00
+w w/o w w w w 3.60 3.31
+w w w/o w w w 1.71 1.22
+w w w w/o w w 1.93 0.90
+w w w/o w/o w w 3.56 3.27
+ww w w w / o w 2 . 1 9 0 . 7 7
+ww w w w w / o 1 . 3 4 0 . 9 4
+Article https://doi.org/10.1038/s41467-026-69761-x
+Nature Communications|         (2026) 17:3163 5
+work, we demonstrate the effectiveness of our approach in the safe
+driving task of AVs and enable continuous enhancement of AVs ’ per-
+formance in rare safety-critical scenarios (see Supplementary Fig. 8).
+More research is needed to extend our approach to more generic
+safety-critical autonomous systems. We note that how to apply the
+dense learning idea to supervised learning needs to be further
+investigated.
+While AV companies have already collected a large amount of
+data, strategies for effectively utilizing this data to enhance AV safety
+performance remains unclear. Due to the rarity of safety-critical
+events, the information of these events is usually hidden within a vast
+amount of noisy data. One might think that this issue could be resolved
+by focusing on a small set of data related to these rare events. How-
+ever, prior to this study, there was no theoretical foundation sup-
+porting this intuition, which greatly limited its effectiveness and could
+even lead to misleading results. Our dense learning approach addres-
+ses this challenge with a thorough theoretical analysis for
+deﬁning, identifying, and effectively leveraging the set of informative
+data. This is particularly signi ﬁcant considering AVs rely on larger
+neural networks and require more informative data for effective
+training.
+A limitation of our work lies in the focus primarily on moving
+objects and road geometry of driving environment
+41, which are crucial
+factors in ﬂuencing AV decision-making. Addressing the CoR chal-
+lenges associated with additional driving environment factors (such as
+weather conditions) and internal AV factors
+42 necessitates further
+exploration. We are conﬁdent in the extensibility of our approach to
+consider these factors by incorporating domain knowledge from
+relevant ﬁelds. Moreover, as demonstrated in Fig. 2a, our approach
+seamlessly integrates with existing rules (such as RSS) or model-based
+approaches, offering compatibility and the potential to leverage
+established techniques for managing diverse driving environment
+factors.
+We note that our approach cannot address unknown unsafe issues
+that are not included in any training dataset or reinforcement learning
+environment. For these issues, our approach needs to be integrated
+with other techniques. For example, one potential way is to generate
+such scenarios with generative methods
+43, while another way is to
+Singaporea Las Vegas Boston Pittsburgh
+b
+PDM-Hybrid
+Input scene
+Propose trajectory Calculate offset
+Time to collision > 2.0s
+Time to collision
+Attention-based
+state dropout
+encoder
+Dense learning
+based agent
+SafeDriver
+Ego vehicle states without history
+Other traffic participants states
+Map and traffic light status
+Generate path
+Emergency path
+Yes
+No
+8.7s
+ 8.7s
+9.6s
+ 9.6sc d
+SafeDriver action:
+hard brake
+e
+ 9.2s
+ 9.2sf
+11.0s
+SafeDriver action:
+stop in advance
+11.0s
+Fig. 3 | Performance evaluation of the dense learning approach on the nuPlan
+benchmark. a Illustration of the four cities in the nuPlan benchmark where we
+evaluated the performance of our approach.b Architecture of the PDM-Hybrid with
+SafeDriver. SafeDriver uses an attention-based state dropout encoder and gen-
+erates 8-second trajectories for vehicle control.c– f Two cases to demonstrate the
+effectiveness of our approach. The ego vehicle is depicted by a white rectangle.
+When controlled by SafeDriver, the ego vehicle is highlighted with a red circle.
+Other vehicles are shown using green rectangles, while pedestrians are represented
+by blue rectangles. The expert trajectory is marked by an orange curve. c When
+controlled by the base model, the ego vehicle proceeds straight ahead and collides
+with a vehicle turning right that does not yield. d In the same scenario, SafeDriver
+executes a hard brake to avoid the potential collision.e The base model directs the
+ego vehicle through a crosswalk, resulting in a collision with pedestrians.f In the
+same scenario, when encountering pedestrians, SafeDriver executes a proactive
+yielding, providing enough space to avoid the crash.
+Article https://doi.org/10.1038/s41467-026-69761-x
+Nature Communications|         (2026) 17:3163 6
+search such scenarios with falsiﬁcation techniques14. Our approach is
+complementary to these techniques. Moreover, the falsiﬁcation tech-
+niques can also be utilized in the counterfactual simulation. There are
+also works attempting to guarantee the safety of AV for all situations,
+like provably safe reinforcement learning
+31,32, yet they usually rely upon
+assumptions with the environment model19 such as behaviors of other
+trafﬁc participants and vehicle dynamics. For example, reachable set
+calculations are often based on max vehicle acceleration/deceleration
+rate, which might be impacted by road surface conditions under dif-
+ferent weather conditions that are difﬁcult to predict precisely.
+Methods
+F o r m u l a t i o no fA Vt r a i n i n gp r o b l e m
+This section describes the formulation of the AV training problem.
+Denote the variables of the driving environment as
+X = ½Sð0Þ, Að0Þ, Sð1Þ, Að1Þ, /C1/C1/C1, SðTÞ/C138 2Ω,w h e r eSðkÞ denotes the states
+(position, speed, heading, etc.) of the AV and surrounding background
+vehicles or other road users at the k th time step, AðkÞ denotes the
+maneuvers of surrounding background vehicles or other road users at
+the k th time step, T denotes the total time steps of each driving
+episode, and Ω denotes the space of the variables X.T h eg o a lo fA V
+training is to optimize the AV policy π 2 Π as
+max
+π2Π
+EPπ
+½f ðπ, XÞ/C138, ð2Þ
+where f ð/C1Þdenotes the objective function of AV training andX follows
+an underlying joint distribution Pπ ðXÞ in NDE. To keep the notation
+simple, we leave it implicit in all cases that π is a function of neural
+network parameters θ. For safety training, the objective could be
+minimizing the overall crash rate as
+min
+π2Π
+EPπ
+½Pðω XðÞ =1 Þ/C138 ð3Þ
+where ω XðÞ = 1 denotes the objective event (e.g., vehicle crash), and
+Pðω XðÞ =1 Þ denotes the event probability of the AV policy π in the
+driving environmentX.
+f
+t=20.8s t=21.8s
+t=204.8s t=206.2s t=208.0s
+t=20.0s
+SafeDriver action:
+1. Braking hard
+2. Steering left
+SafeDriver action:
+1. Braking hard
+2. Steering right
+d
+0.0
+0.6
+1.2
+1.8Crash rate in field tests
+0.0
+0.6
+1.2
+1.8
+Our approach
+Base AV model
+Rear-end Sideswipe Angle Head-on
+97.3% 70.5%
+90.0%
+89.8%
+0.0
+0.6
+1.2
+Base AV
+model
+Our
+approach
+98.8%
+90.1%
+Base AV
+model
+Our
+approach
+Base AV
+model
+Our
+approach
+0.0
+0.4
+0.8
+1.2
+Crash rate in simulation
+90.0%
+e
+Mixed reality
+c
+Traffic lights
+Proxy
+Traffic lights
+Virtual vehicles
+Proxy
+Real world
+Lidar
+RTK GPS
+Bywire
+controller
+On-board
+computer
+a b
+Camera
+HD map
+Roundabout
+Signalized
+intersections
+Unprotected
+left-turn
+Roundabout Straightaway
+Testing route
+×10-6
+Crash rate in field tests
+Avoidable crash rate
+×10-6 ×10-6
+×10-6
+Virtual world
+AV
+Fig. 4 | Performance evaluation for a real-world AV at a physical test track.
+a Illustration of the real autonomous vehicle (AV) under test, equipped with
+Autoware, Lidar, cameras, on-board computer, by-wire controller, high-deﬁnition
+(HD) map, and RTK (Real-Time Kinematics) GPS (Global Positioning System).
+b Illustration of the Mcity test track including highways, roundabouts, intersec-
+tions, urban streets, etc.c Illustration of the mixed-reality environment combining
+the physical road infrastructures, proxy physical objects, and a simulation envir-
+onment, where information of the real world and simulation world is synchronized.
+d Safety performances of SafeDriver in the co-simulation of SUMO and Autoware at
+Mcity. e Field testing results of the real AV with SafeDriver regarding the overall
+crash rate, crash rates of different crash types, and the avoidable crash rate.f Cases
+of SafeDriver for avoiding crashes in safety-critical situations. In theﬁrst case, the
+SafeDriver (red vehicle) made emergency braking with right steering to avoid
+collisions in the situation that the background vehicle in the right lane made a
+reckless cut-in, while the vehicle from the opposite direction was approaching. In
+the second case, the SafeDriver (red vehicle) made emergency braking with left
+steering to avoid collisions in the situation that a background vehicle failed to yield
+when entering the roundabout. Additional explanations are available in Supple-
+mentary Videos 7−8.
+Article https://doi.org/10.1038/s41467-026-69761-x
+Nature Communications|         (2026) 17:3163 7
+Curse of rarity for AV training
+To solve the AV training problem, deep learning approaches have been
+widely applied to handle the high variability and complexity ofX.T h e
+key is to estimate the policy gradient at each training step for the
+current policy π as
+Ψ =
+def
+EPπ
+∇π Pðω XðÞ =1 Þ
+/C2/C3
+, ð4Þ
+where Ψ 2 Rd , d is the dimension of the gradient, and then the policy
+could be updated accordingly. For non-trivial AV policies, however,
+since the objective event ω XðÞ = 1 is a rare event, namely,
+E
+Pπ
+½Pðω XðÞ =1 Þ/C138is a near-zero value, most Pðω Xi
+/C0/C1
+=1 Þ and
+∇ π Pðω Xi
+/C0/C1
+=1 Þ are near zero. Therefore, estimating the policy gradient
+is essentially a rare-event estimation problem. If directly using the data
+collected in NDE, it is essentially a Monte Carlo estimation approach
+44
+as
+bΨMC =
+def 1
+n
+Xn
+i =1
+∇ π Pðω Xi
+/C0/C1
+=1 Þ, Xi /C24Pπ Xi
+/C0/C1
+, ð5Þ
+where n is the number of samples used at each training step, and
+∇ π Pðω Xi
+/C0/C1
+=1 Þ could be estimated through the policy gradient
+theorem45. According to the properties of Monte Carlo estimation 44,
+however, the estimator bΨMC would suffer from a large variance, which
+severely hinders the learning effectiveness. Moreover, as bΨMC is
+usually near zero, the signal-to-noise ratio is also low, which makes the
+problem even worse. We call this problem the CoR
+7.
+Let us elaborate the CoR more rigorously. Without loss of gen-
+erality, we deﬁne the set of non-informative samples asΦnon /C26Ω and
+informative samples as Φin /C26Ω, their indicator functions IΦnon
+and
+IΦin
+, and an estimator of the policy gradient Ψ that only utilizes the
+informative samples as
+bΨin =
+def 1
+n
+Xn
+i =1
+∇π Pðω Xi
+/C0/C1
+=1 ÞIΦin
+, Xi /C24Pπ Xi
+/C0/C1
+, ð6Þ
+Then we have the following Lemma 1, and the proof can be found
+in ref. 7.
+Lemma 1
+If Φnon and Φin satisfy the following conditions:
+(1) Φnon\Φin = +, Φnon ∪ Φin = Ω;
+(2) EPπ
+½∇ π Pðω ðXÞ =1 ÞIΦnon
+/C138= 0;
+then we have the following properties:
+(1) EPπ
+bΨMC
+hi
+= EPπ
+bΨin
+hi
+;
+(2) σ2
+Pπ
+ð bΨ
+ðkÞ
+MCÞ ≥ σ2
+Pπ
+ð bΨ
+ðkÞ
+in Þ, 8k =1 , ... d;a n d
+(3) σ2
+Pπ
+ð bΨ
+ðkÞ
+MCÞ ≥ ρ/C01
+Φin
+σ2
+Pπ
+ð bΨ
+ðkÞ
+in Þ, 8k =1 , ... d, with the assumption
+EPπ
+G2
+k ðω XðÞ =1 ÞIΦin
+hi
+= EPπ
+G2
+k ðω XðÞ =1 Þ
+hi
+EPπ
+IΦin
+hi
+, 8k =1 , ... , d ð7Þ
+where bΨ
+ðkÞ
+MC and bΨ
+ðkÞ
+in are k th components of bΨMC and bΨin,r e s p e c t i v e l y ,
+ρΦin
+= EPπ
+ðIΦin
+Þ2½ 0, 1/C138is the expected proportion of the informative
+samples Φin in all samples with the sampling distribution Pπ ðXÞ,
+and Gðω XðÞ =1 Þdef = ∇π Pðω XðÞ =1 Þ is a random vector with
+Gðω XðÞ =1 Þ = ½G1ðω XðÞ =1 Þ, ... , Gd ðω XðÞ =1 Þ/C138 2Rd ,w h e r e d is the
+dimension of the parameters of the policy network π.
+Remark 1. For AV safety training, the proportion of informative
+samples in all samples could be very small, in the order of 10/C04 /C2410/C06
+or fewer, due to the rarity of safety-critical events in NDE. As the policy
+gradient ∇ π Pðω XðÞ =1 Þ is mainly determined by the parameters of
+neural networks, it could exhibit a stationary uncertainty that is inde-
+pendent of the set Φ
+in. This is particularly true at the beginning of the
+learning process when the parameters are relatively random. Conse-
+quently, the assumption in Property 2 of Lemma 1 could be
+approximately satisﬁed, particularly at the beginning of the learning
+process. Therefore, the estimation variance of the traditional deep
+learning approaches based on Monte Carlo estimation could be
+very large.
+Remark 2. Lemma 1 also indicates that if the set of informative
+samples Φ
+in could be identiﬁed, estimating the policy gradient utiliz-
+ing only the informative samples has great potential to reduce the
+learning variance without loss of unbiasedness, thereby overcoming
+the CoR. However, how to de ﬁne, identify, and effectively leverage
+informative samples for AV safety training is challenging. Prior to this
+work, this process is largely intuitive, for instance, many existing
+approaches only emphasize the crash event data or falsi ﬁed cases
+14,
+discussed as follows.
+Learning from crash only
+Many existing approaches used to tackle the CoR challenge primarily
+focus on learning from the data where AVs fail. To be more speciﬁc, the
+estimator of these approaches can be represented as
+bΨ
+Fail =
+def 1
+n
+Xn
+i =1
+∇ π Pðω XðÞ =1 ÞIΦF
+, Xi /C24Pπ Xi
+/C0/C1
+ð8Þ
+where Ið/C1Þis an indicator function and ΦF is the set of data samples
+where AV fails. However, these approaches are largely intuitive without
+theoretical foundation. Consequently, the deﬁnition of the setΦ
+F does
+not satisfy the conditions of Φin in Lemma 1, resulting in a severe
+learning biasedness, that is,
+EPπ
+bΨFail
+hi
+≠EPπ
+bΨMC
+hi
+: ð9Þ
+Without the unbiasedness guaranteed, the learning process could
+become misleading. That is the reason why learning-from-crash-only
+could suffer from the seesaw effect as illustrated in Supplementary
+Section 2.3 of Supplementary Information.
+Dense learning approach for AV training
+In this work, we propose the dense learning approach to overcome the
+CoR challenge for AV training. The key to dense learning is to de ﬁne
+and identify the informative data samples for AV safety training,
+satisfying the conditions of Φ
+in in Lemma 1. To achieve this goal, we
+integrate the Lemma 1 with importance sampling theory to derive the
+optimal distribution of data samples. Although this optimal distribu-
+tion is unavailable in practice, it provides guidance of de ﬁning and
+identifying the informative data for AV training. Then, we sampled the
+data based on the distribution, rejected the non-informative samples,
+and effectively leveraged the informative ones, resulting in the dense
+learning approach for AV training.
+First, we derive the optimal sampling distribution q
+/C3
+π XðÞ and the
+corresponding policy estimatorbΨ
+/C3
+IS based on the importance sampling
+theory27,44,46 as
+bΨ
+/C3
+IS =
+def 1
+n
+Xn
+i =1
+Pπ Xi
+/C0/C1
+q/C3
+π Xi
+/C0/C1 ∇ π Pðω Xi
+/C0/C1
+=1 Þ
+"#
+, Xi /C24q/C3
+π Xi
+/C0/C1
+, ð10Þ
+q/C3
+π XðÞ / j j ∇π Pðω XðÞ =1 Þjj2Pπ XðÞ , ð11Þ
+where ‖⋅‖2 denotes thel2 norm of the vector, and the symbol/ means
+‘ proportional to’ . Equation ( 10) provides the insights that the most
+informative data for AV training should contain all safety-critical
+events, both successful and failed, with probabilities proportional to
+their contributions to the AVs’ policy gradient as well as their exposure
+frequencies in the real world. The major challenge of bΨ
+/C3
+IS is that
+jj∇π Pðω XðÞ =1 Þjj2 cannot be accurately calculated for each episodeX in
+practice and is dependent of the policyπ, which is changing during the
+Article https://doi.org/10.1038/s41467-026-69761-x
+Nature Communications|         (2026) 17:3163 8
+training process. Some existing studies tried to calculate∇ π Pðω XðÞ =1 Þ
+using the policy gradient theorem (see ref. 47 for example), which
+introduces additional constraints and severely limits the effectiveness
+and applicability of the approach.
+To address this challenge, we propose to utilize Eqs. (9)a n d(10)
+as a guidance to de ﬁne and identify the informative samples for the
+dense learning approach. Therefore, instead of trying to calculate the
+exact values with severely limited applicability, we choose to estimate
+jj∇
+π Pðω XðÞ =1 Þjj2 as a classi ﬁcation task. Speci ﬁcally, we estimate
+jj∇π Pðω XðÞ =1 Þjj2 as
+jj∇ π Pðω XðÞ =1 Þjj2 /C25IX2Φ =
+def 1, X2Φ
+0, X=2Φ
+/C26
+, ð12Þ
+Φ =
+def
+X2Ω : Iðω XðÞ =1 Þ =1 and P ðω XðÞ =1 Þ <1 orIðω XðÞ =1 Þ
+/C8
+=0 and Pðω XðÞ =1 Þ >0
+/C9
+,
+where an avoidability analysis is conducted to approximate if a crash is
+avoidable ( Pðω XðÞ =1 Þ < 1), and a safety metric was selected to
+approximate if a non-crash is a near-miss (Pðω XðÞ =1 Þ >0 ) .S p e c iﬁcally,
+we identiﬁed a crash event as avoidable if an evasive trajectory is still
+feasible after the vehicle state is being identiﬁed as safety-critical (see
+Supplementary Section 2.8 in Supplementary Information). And we
+identiﬁed a non-crash event as a near-miss if the minimum relative
+distance between the AV and background vehicles is below a pre-
+determined threshold (that is, 2.5 m). A sensitivity analysis of the
+threshold can be found in Supplementary Fig. 6.
+Then, we obtain the estimator according to Eq. (9)a s
+bΨ
+IS =
+def 1
+n
+Xn
+i =1
+∇π Pðω Xi
+/C0/C1
+=1 Þ, Xi /C24bqπ Xi
+/C0/C1
+, ð13Þ
+where
+bqπ Xi
+/C0/C1
+=
+def IXi 2Φ
+PN
+i =1 IXi 2Φ Pπ Xi
+/C0/C1 Pπ Xi
+/C0/C1
+: ð14Þ
+Here N denotes the total amount of data in the collected dataset.
+We then have Theorem 1, and the proof can be found in Supple-
+mentary Section 2.1.3 of Supplementary Information.
+Theorem 1
+The estimatorbΨIS has the following properties:
+(1) E^qπ
+½ bΨIS/C138= g/C01
+N EPπ
+½ bΨMC/C138;
+(2) bΨIS = bΨMC;
+(3) Δ2
+^qπ
+ð bΨ
+ðkÞ
+IS Þ ≤ gN Δ2
+Pπ
+ð bΨ
+ðkÞ
+MCÞ, 8k =1 , ... d;
+(4) Δ2
+^qπ
+ð bΨ
+ðkÞ
+IS Þ ≤ gN ρΦ Δ2
+Pπ
+ð bΨ
+ðkÞ
+MCÞ, 8k =1 , ... d,w i t ht h ea s s u m p t i o n
+EPπ
+G2
+k ðω XðÞ =1 ÞIX2Φ
+hi
+= EPπ
+G2
+k ðω XðÞ =1 Þ
+hi
+EPπ
+IX2Φ
+/C2/C3
+, 8k =1 , ... , d
+ð15Þ
+where gN =
+def PN
+i =1 IXi 2Φ Pπ ðXi Þ2ð 0, 1/C138, bΨ
+kðÞ
+IS is the k th components of
+bΨIS, Δbqπ
+ð bΨ
+ðkÞ
+IS Þ =
+def
+σ^qπ
+ð bΨ
+ðkÞ
+IS Þ=Ebqπ
+½ bΨ
+ðkÞ
+IS /C138and ΔPπ
+ð bΨ
+ðkÞ
+MCÞ =
+def
+σPπ
+ð bΨ
+ðkÞ
+MCÞ=EPπ
+½ bΨ
+ðkÞ
+MC/C138are coefﬁcients of variation, and ρΦ =
+def
+EPπ
+½IX2Φ /C1382½0, 1/C138is the
+expected proportion of the informative samplesΦ in all samples with
+the sampling distributionPπ ðXÞ.
+Remark 4.T h e ﬁrst property of Theorem 1 ensures the unbiased-
+ness of AV training regarding the direction of the gradient, which is
+critical for overcoming the seesaw effect. We note thatg
+N is a constant
+and as the learning rate is usually adjustable, such a constant will not
+affect the learning process.
+Remark 5. The second property indicates that the new estimator
+bΨIS has the same calculation equation as the Monte Carlo estimator
+bΨMC (see Eqs. (4)a n d(12)), and the only difference is the data sampling
+distribution. This is signi ﬁcant as our approach could leverage all
+techniques that can be used for the Monte Carlo estimator (that is
+widely used for deep learning), without introducing any additional
+limitations. Therefore, our approach could leverage the advances in
+deep learning but with a dramatically smaller learning variance, which
+ensures the effectiveness and applicability of our approach.
+Remark 6. The third and fourth properties are obtained as Φ is a
+realization of de ﬁning and identifying the informative samples for
+the AV safety training task. Therefore, as indicated in Lemma 1, the
+coefﬁcient of variation of bΨ
+IS is dramstically smaller than that of the
+Monte Carlo approach. Moreover, bΨIS is an approximation of bΨ
+/C3
+IS
+that has the minimum variance. Both indicate that bΨIS is an ef ﬁcient
+policy gradient estimator for deep learning approaches associated
+with rare events. As the parameters of neural networks are usually
+randomly initialized, the assumption in Eq. ( 14) could be approxi-
+mately satisﬁed, particularly at the beginning of the learning process,
+as discussed in Remark 1.
+Remark 7. While the following investigation focuses on the deep
+reinforcement learning (DRL) tasks of AV safety training, Theorem 1 is
+also applicable to more generic deep learning tasks. Therefore, our
+approach has the great potential to address the CoR challenge in
+generic deep learning tasks associated with rare events.
+To further integrate the estimator bΨ
+IS with DRL approaches, we
+obtain the policy gradient estimator of DRL as
+bΨDRL =
+def bQπ St , At
+/C0/C1 ∇ π At jSt
+/C0/C1
+π At jSt
+/C0/C1 , St , At
+/C0/C1
+/C24Pπ XðÞ , ð16Þ
+where St and At are samples of the state and action following the
+distribution of episodes Pπ XðÞ and under the policy π, Qπ St , At
+/C0/C1
+denotes the state-action value,bQπ St , At
+/C0/C1
+is an unbiased estimation of
+Qπ St , At
+/C0/C1
+,i . e . ,Eπ bQπ St , At
+/C0/C1hi
+= Qπ St , At
+/C0/C1
+. As discussed in Remark 5,
+our approach is compatible with existing techniques that can be used
+for the Monte Carlo estimator. Therefore, we integrate the estimator
+bΨIS with the dense deep reinforcement learning (D2RL) approach that
+was developed in our previous study for AV testing8. Although the AV
+training problem is different from the AV testing problem, the D2RL
+approach can still be beneﬁcial to further reduce the learning variance
+by removing the non-safety-critical states and connecting the safety-
+critical ones. Therefore, we obtain a new estimator as
+bΨ
+Dense =
+def bQπ St , At
+/C0/C1 ∇π At jSt
+/C0/C1
+π At jSt
+/C0/C1 ISt 2Sc
+, ðSt , At Þ/C24bqπ XðÞ , ð17Þ
+where Sc =
+def
+sjEπ qπ s, aðÞ
+/C0/C1
+≠qπ s, aðÞ , 9a
+/C8/C9
+denotes the set of safety-
+critical states as deﬁned in ref. 8 In this study, we utilized the learned
+safety metric to identify the safety-critical states.
+We then have Theorem 2, and the proof can be found in Supple-
+mentary Section 2.1.7 of Supplementary Information.
+Theorem 2
+The estimator bΨDense has the following properties:
+(1) E^qπ
+½ bΨDense/C138= g/C01
+N EPπ
+½ bΨDRL/C138;
+(2) Δ2
+^qπ
+ð bΨ
+ðkÞ
+DenseÞ ≤ gN Δ2
+Pπ
+ð bΨ
+ðkÞ
+DRLÞ, 8k =1 , ... d;
+(3) Δ2
+^qπ
+ð bΨ
+ðkÞ
+DenseÞ ≤ gN ρΦ Δ2
+Pπ
+ð bΨ
+ðkÞ
+DenseÞ, 8k =1 , ... d, with the assumption
+in Eq. (14);
+Article https://doi.org/10.1038/s41467-026-69761-x
+Nature Communications|         (2026) 17:3163 9
+(4) Δ2
+bqπ
+ð bΨ
+ðkÞ
+DenseÞ ≤ gN ρΦD
+Δ2
+Pπ
+ð bΨ
+ðkÞ
+DRLÞ, 8k =1 , ... d, with the assumption
+EPπ
+bΨ
+kðÞ
+DRL
+/C18/C19 2
+IX2ΦD
+"#
+= EPπ
+bΨ
+kðÞ
+DRL
+/C18/C19 2"#
+EPπ
+IX2ΦD
+hi
+, 8k =1 , ... , d
+ð18Þ
+where bΨ
+kðÞ
+Dense and bΨ
+kðÞ
+DRL are k th components of bΨDense and bΨDRL,
+respectively, Δbqπ
+ð bΨ
+ðkÞ
+DenseÞ =
+def
+σbqπ
+ð bΨ
+ðkÞ
+DenseÞ=Ebqπ
+½ bΨ
+ðkÞ
+Dense/C138, ΔPπ
+ð bΨ
+ðkÞ
+DRLÞ =
+def
+σPπ
+ð bΨ
+ðkÞ
+DRLÞ=EPπ
+½ bΨ
+ðkÞ
+DRL/C138, ΔPπ
+ð bΨ
+ðkÞ
+DenseÞ =
+def
+σPπ
+ð bΨ
+ðkÞ
+DenseÞ=EPπ
+½ bΨ
+ðkÞ
+Dense/C138are coefﬁ-
+cients of variance, and ρΦD
+=
+def
+EPπ
+ðIΦD
+Þ2½ 0, 1/C138is the expected pro-
+portion of the informative statesΦD =
+def
+fSt 2 X : St 2Scand X 2 Φg in all
+sampled states with the sampling distribution Pπ (X) and under the
+policy π.
+Remark 8. Theorem 2 indicates that bΨDense is an unbiased and
+efﬁcient policy gradient estimator of the DRL approaches, which is
+critical for overcoming the seesaw effect and CoR for AV training. As
+ρΦD
+is smaller than ρΦ ,t h ee s t i m a t o rbΨDense could further reduce the
+variance of policy gradient, compared with the estimator bΨDRL
+Remark 9 . As the policy gradient bΨDRL =
+def bQπ ðSt , At Þ ∇ πðAt jSt Þ
+πðAt jSt Þ is
+mainly determined by the parameters of neural networks, it could
+exhibit a stationary uncertainty that is independent of the setΦ
+D.T h i s
+is particularly true at the beginning of the learning process when the
+parameters are relatively random. Therefore, the assumptions in (17)
+could be approximately satisﬁed. We note that the assumptions are
+primarily for the theoretical analysis to be clean and are not strictly
+required in practice.
+Additional data densiﬁcation approaches
+Ofﬂine resample mechanism . To realize the estimator bΨDRL,w e
+design an ofﬂine resampling mechanism to resample and redistribute
+the collected episodic data according to the distributionbqπ Xi
+/C0/C1
+as in
+Eq. (13). An avoidability analysis was developed to help approximate
+the distribution bqπ Xi
+/C0/C1
+. This mechanism is applicable for data col-
+lected through different venues such as simulations, test tracks, and
+public roads. It also provides compatibility to integrate with purposely
+generated testing environments (such as ITE) where data is collected
+by a different distribution, and only the ofﬂine resampling distribution
+needs to be modiﬁed accordingly.
+Learned safety metric . Most existing safety metrics are primarily
+based on trajectory prediction of background road users with
+assumptions on their driving behaviors, which limit their effectiveness
+and generalization capability. This is particularly true for AV safety
+training, as the AV policy is changing during the training process. To
+address this issue, we designed a learned safety metric to identify the
+safety-critical states with both high precision and recall rates. We uti-
+lized the avoidability analysis approach to provide ground-truth labels
+for the large-scale naturalistic trajectory datasets. Speci ﬁcally, all
+snapshots where a crash is unavoidable with evasive driving behaviors
+are labeled as positive, while others are labeled as negative. Since
+unavoidable snapshots are rare, existing training approaches suffer
+from the severely unbalanced data issue
+48. Instead of rebalancing the
+data before the training, we proposed to resample positive and
+negative snapshots from all the data to create balanced training data
+batches in each training step. In this way, the training data in each
+training step is rebalanced and densiﬁed. Results demonstrate that our
+approach enables a much better precision and recall performance than
+existing safety metrics (see Supplementary Fig. 1).
+Retrospective data densiﬁcation. Ideally, as the policy π is changing
+during the training process, the episodic data should be re-collected
+according to the new policy at each training step. However, this is
+severely inefﬁcient and even infeasible in practice, particularly for on-
+road data collection. Therefore, an off-policy mechanism is needed to
+ﬁll the policy gap. In this study, we design a retrospective data densi-
+ﬁcation mechanism to re-evaluate th e collected data for SafeDriver
+through a counterfactual simulation. This mechanism could update
+the values of Iðω XðÞ =1 Þ and Pðω XðÞ =1 Þ in Eq. (11), so the data resam-
+pling distribution bq
+π Xi
+/C0/C1
+could be updated for the new AV policy,
+which reduces the overall policy gap.
+Counterfactual simulation . We utilized the counterfactual
+simulation49 to re-evaluate the safety performance of the AV policy and
+collect the training data. In each simulation, the base AV model with
+SafeDriver is responsible for the planning task of the simulated AV.
+SafeDriver handles all the safety-critical states identiﬁed by the learned
+safety metric; otherwise, the base AV model takes control. Calibrated
+non-linear bicycle models are used to simulate the motion of the AV
+with control command (i.e., steering angle and acceleration) inputs
+from the planning tasks. Speciﬁcally, we employed the dynamic bicycle
+model when AV speed is greater than 20 m/s and the kinematic bicycle
+model for other cases, leveraging their modeling strengthens for dif-
+ferent situations
+48. The trajectories of the background vehicles are
+replayed based on the recorded data until the recorded trajectories
+reach their end. For crash trajectories, if SafeDriver could avoid the
+original collision in the counterfactual simulation, we need to re-
+simulate the driving behaviors of the background vehicles after the
+original collision moment to interact with SafeDriver, until the collision
+could be avoided completely or a new collision occurs. Speciﬁcally, we
+simulated the background vehicles by a prede ﬁned driving model,
+such as the IDM and SL2015 provided by SUMO
+35.T h es i m u l a t i o nw i l l
+be terminated either upon collision or after a certain duration has
+elapsed.
+Intelligent testing environment for efﬁcient data collection
+As jj∇ π Pðω XðÞ =1 Þjj2 is zero for most episodic dataX and non-trivial AV
+policies π, most data collected in NDE has little information for AV
+training and will be rejected by the ofﬂine sampling mechanism as Eq.
+(13). To improve the data collection ef ﬁciency, we utilized the intelli-
+gent testing environment (ITE) that was developed in our previous
+study8, in that AI-based background agents are trained to test AVs in an
+accelerated mode. Speciﬁcally, ITE will provide a dataset with a new
+distribution X/C24qITEðXÞ, each episode of data with a weight
+W ITE XðÞ = Pπ ðXÞ=qITEðXÞ, which contains much more valuable safety-
+critical episodes. To leverage this dataset, the safety-critical episodes
+are resampled by the distribution proportional to their weights
+W
+ITE XðÞ and then resampled according to Eq. (13). We found out that,
+with the dense learning approach, ITE could accelerate the collection
+of safety-critical data by multiple orders of magnitude, which drama-
+tically accelerates the training process of AVs ’ overall safety perfor-
+mance (see Supplementary Fig. 2). We believe that this approach opens
+the door for integrating AV testing and training together, accelerating
+both ﬁelds, which deserves further investigation.
+Training settings of dense learning
+We implemented the dense learning approach in highways, round-
+abouts, and urban environments, respectively. To keep theﬁdelity and
+efﬁciency of the simulations, we utilized the NDE simulation and ITE as
+described in Supplementary Sections 2.6 and 2.7 of Supplementary
+Information. We applied the PPO algorithm developed on the RLLIB
+1.11.0 platform
+50 to parallelly train SafeDriver on 400 CPU cores and
+2800 GB memory high-performance computation cluster at the Uni-
+versity of Michigan, Ann Arbor. We created a three-layer fully con-
+nected neural network, consisting of 256 neurons in each layer, to
+represent the SafeDriver. The neural network received input data
+comprising the states of up to 6 background vehicles located within
+3 0 mf r o mt h eA V ,w h e r ei t so u t p u ti st h eA V’ s acceleration and
+Article https://doi.org/10.1038/s41467-026-69761-x
+Nature Communications|         (2026) 17:3163 10
+steering angle. Speciﬁcally, for the highway environment, the accel-
+eration spanned from−4 m/s² to 2 m/s², and the steering angle varied
+between -10 degrees and 10 degrees; for roundabout environments,
+the acceleration ranged from −8 m/s² to 4.5 m/s², and the steering
+angle covered a range from −45 degrees to 45 degrees; and for the
+urban environment, the acceleration exhibited a range between−7m /
+s² and 2.5 m/s², while the steering angle was within the−10 degrees to
+1 0d e g r e e sr a n g e .W es e tt h el e a r n i n gr a t ea s1 0
+−5 and the discount
+factor as 0.99. In each training iteration, a total of 50,000 timesteps
+were used to train the neural network for 30 times. For each driving
+episode, the reward function is set as−1 for an AV-involved crash and 0
+for others.
+Field testing settings
+Autonomous vehicle with SafeDriver . The vehicle under test is a
+Lincoln MKZ hybrid from Mcity at the University of Michigan, equip-
+ped with various sensors, including OTXS RT3003 RTK GPS, PointGrey
+camera, Velodyne 32 channel LiDAR, Delphi radars, Xsens MTi GPS/
+IMU, etc. The AV also had the Nuvo-8208GC computer and the
+Dataspeed drive-by-wire system installed. We applied the open-source
+full-stack autonomous driving system, Autoware
+25,a st h eb a s eA V
+model. Speci ﬁcally, after receiving the ego vehicle ’ sp o s i t i o na n d
+velocity as well as background vehicles’ information, the future path is
+generated based on OpenPlanner 1.1351. We applied the pure pursuit
+algorithm to convert the planned trajectory into the velocity and yaw
+rate and then used a proportional-integral-derivative controller pro-
+vided by DataSpeed Inc. to further convert them into the vehicle by-
+wire control commands, that is, steering angle, throttle, and brake
+percentages. When the learned safety metric alerts in safety-critical
+situations, SafeDriver receives the normalized observation and out-
+puts the steering angle and acceleration, which are further converted
+to the throttle and brake percentages.
+Mixed reality testing environment . We applied the mixed reality
+testing environment
+52 to efﬁciently evaluate the safety performance of
+AVs at Mcity, which is one of the leading testing facilities for AV
+development. We forwarded the states of the background vehicles
+from the simulation world and the signal information from the physical
+testing track to the AV through the Internet. Simultaneously, the states
+of the AV as well as proxy objects and the signal information were
+synchronized into the simulation world, and the behaviors of virtual
+background vehicles were determined according to NDE or ITE.
+Besides, the virtual background vehicles were rendered and blended
+on the front camera’ s view using pyrender
+53. To accelerate the testing
+process for evaluating the crash rates of the AV in NDE, we utilized the
+ITE that was developed in our previous study
+8.Af r a m e w o r ko ft h e
+mixed reality testing framework can be found in Supplementary Fig. 7.
+Data availability
+The raw datasets that we used for modeling the naturalistic driving
+environment come from the Safety Pilot Model Deployment (SPMD)
+program
+54 and the Integrated Vehicle Based Safety System (IVBSS)55 at
+the University of Michigan, Ann Arbor, as well as the RounD dataset33.
+These raw datasets are subject to the data access policies and licensing
+terms of their respective providers and are therefore not redistributed
+by the authors. Access to the SPMD and IVBSS datasets can be
+requested from the University of Michigan Transportation Research
+Institute, and access to the RounD dataset is available through its
+original repository, subject to the corresponding usage agreements.
+The processed data generated in this study, which constitute the
+minimum dataset necessary to interpret, verify, and extend the ﬁnd-
+ings reported in this article, have been deposited in the Zenodo
+repository and are publicly available at: https://zenodo.org/records/
+12735037. Source data supporting the ﬁgures and analyses presented
+in this paper are provided via Zenodo at: https://zenodo.org/records/
+12784827. To further illustrate the methodology and qualitative per-
+formance of the proposed approach, a collection of Supplementary
+Videos is provided. All Supplementary Videos, including high-
+resolution ﬁles, are publicly available through Zenodo at https://
+zenodo.org/records/14837884. These videos demonstrate the learning
+paradigms, the learned safety metric, the intelligent testing environ-
+ment, and the performance of SafeDriver across simulated and real-
+world scenarios, including highway, roundabout, and Mcity test track
+environments, as well as case studies on the nuPlan benchmark.
+Code availability
+The simulation software SUMO, the NDE models, the intelligent testing
+environment, the automated driving system Autoware, and the RLLib
+platform with the implemented PPO algorithm are publicly available,
+as described in the text and the relevant references
+8,25,35,50,56. The source
+codes for the dense learning approach for SafeDriver is available at:
+https://zenodo.org/records/12735669 with the https://doi.org/10.
+5281/zenodo.12735668.
+References
+1. “Science: Radio Auto”. Time Magazine. Aug 10, 1925. https://time.
+com/archive/6653944/science-radio-auto/(2013).
+2. Hirsch, J. Reality check: $160 billion can ’t get autonomous vehicles
+on road, Automotive News. Automotive News,https://www.
+autonews.com/mobility-report/autonomous-vehicle-reality-check-
+after-160-billion-spent(2022).
+3. Society of Automotive Engineers. Taxonomy and De ﬁnitions for
+Terms Related to Driving Automation Systems for On-Road Motor
+Vehicles, https://www.sae.org/standards/content/j3016_
+202104/ (2021).
+4. Thadani, T. How a robotaxi crash got Cruise ’s self-driving cars
+pulled from Californian roads, Washington Post,https://www.
+washingtonpost.com/technology/2023/10/28/robotaxi-cruise-
+crash-driverless-car-san-francisco/(2023).
+5. Shladover, S. E. & Nowakowski, C. Regulatory challenges for road
+vehicle automation: lessons from the California experience.Transp.
+Res. Part A Policy Pr. 122,1 2 5–133 (2019).
+6 . Z h a n g ,Y . ,K a n g ,B . ,H o o i ,B . ,Y a n ,S .&F e n g ,J .D e e pl o n g - t a i l e d
+learning: a survey. IEEE Trans. Pattern Anal. Mach. Intell.45,
+10795–10816 (2023).
+7. Liu, H. X. & Feng, S. Curse of rarity for autonomous vehicles. Nat.
+Commun. 15, 4808 (2024).
+8. Feng, S. et al. Dense reinforcement learning for safety validation of
+autonomous vehicles.Nature 615,6 2 0–627 (2023).
+9. Mnih, V. et al. Human-level control through deep reinforcement
+learning. Nature 518,5 2 9–533 (2015).
+10. Silver, D. et al. Mastering the game of go without human knowl-
+edge. Nature 550,3 5 4–359 (2017).
+11. Brown, N. & Sandholm, T. Superhuman AI for multiplayer poker.
+Science 365, 885–890 (2019).
+12. Wurman, P. R. et al. Outracing champion Gran Turismo drivers with
+deep reinforcement learning.Nature 602, 223–228 (2022).
+13. Cummings, M. L. Rethinking the maturity of arti ﬁcial intelligence in
+safety-critical settings.AI Mag. 42,6 –15 (2021).
+14. Menghi, C. et al. ARCH-COMP 2023 category report: falsiﬁ
+cation. In
+Proceedings of 10th International Workshop on Applied Veriﬁcation
+of Continuous and Hybrid Systems,V o l .96, (International Federa-
+tion of Automatic Control (IFAC), 2023).
+15. Karpathy, A., Tesla Inc. System and method for obtaining training
+data. U.S. Patent Application 17/250,825 (2021).
+16. Stocker, T. F. The seesaw effect. Science 282,6 1–62 (1998).
+17. Tang, H., Liu, J., Zhao, M. & Gong, X. Progressive layered extraction
+(PLE): a novel multi-task learning (MTL) model for personalized
+recommendations. InProceedings of the 14th ACM Conference on
+Recommender Systems,2 6 9–278 (ACM, 2020).
+Article https://doi.org/10.1038/s41467-026-69761-x
+Nature Communications|         (2026) 17:3163 11
+18. Zheng, S. et al. GPT-Fathom: benchmarking large language models
+to decipher Q12 the evolutionary path towards GPT-4 and beyond.
+Findings of the Association for Computational Linguistics: NAACL
+2024 (2024).
+19. Seshia, S. A., Sadigh, D. & Sastry, S. S. Toward veri ﬁed artiﬁcial
+intelligence.Commun. ACM 65,4 6–55 (2022).
+20. Pek, C., Manzinger, S., Koschi, M. & Althoff, M. Using online ver-
+iﬁcation to prevent autonomous vehicles from causing accidents.
+Nat. Mach. Intell. 2,5 1 8–528 (2020).
+21. Krasowski, H. et al. Provably safe reinforcement learning: con-
+ceptual analysis, survey, and benchmarking. Preprint athttps://
+arxiv.org/abs/2205.06750(2022).
+22. Brunke, L. et al. Safe learning in robotics: from learning-based
+control to safe reinforcement learning.Ann. Rev. Control Robot.
+Autonomous Syst.5,4 1 1–444 (2022).
+23. Cao, Z. et al. Continuous improvement of self-driving cars using
+dynamic conﬁdence-aware reinforcement learning.Nat. Mach.
+Intell. 5,1 4 5–158 (2023).
+24. Thomas, P. S. et al. Preventing undesirable behavior of intelligent
+machines. Science 366, 999–1004 (2019).
+25. Kato, S. et al. Autoware on board: enabling autonomous vehicles
+with embedded systems. In 2018 ACM/IEEE 9th International
+Conference on Cyber-Physical Systems (ICCPS),2 8 7–296
+(IEEE, 2018).
+2 6 . H s u ,K .C . ,H u ,H .&F i s a c ,J .F .T h es a f e t yﬁlter: a uniﬁed view of
+safety-critical control in autonomous systems.Ann. Rev. Control
+Robot. Autonomous Syst.7,4 7–72 (2023).
+27. Tokdar, S. T. & Kass, R. E. Importance sampling: a review. Wiley
+Interdiscip. Rev.2,5 4–60 (2010).
+28. Yan, X. et al. Learning naturalistic driving environment with statis-
+tical realism. Nat. Commun. 14, 2037 (2023).
+29. Schulman, J., Wolski, F., Dhariwal, P., Radford, A., & Klimov, O.
+Proximal policy optimization algorithms. Preprint athttps://arxiv.
+org/abs/1707.06347(2017).
+30. Kochdumper, N. et al. Provably safe reinforcement learning via
+action projection using reachability analysis and polynomial zono-
+topes. IEEE Open J. Control Syst. 2,7 9–92 (2023).
+3 1 . S h a l e v - S h w a r t z ,S . ,S h a m m a h ,S .&S h a s h u a ,A .O naf o r m a lm o d e l
+of safe and scalable self-driving cars. Preprint at
+https://arxiv.org/
+abs/1708.06374(2017).
+32. Wang, X. & Althoff, M. Safe reinforcement learning for automated
+vehicles via online reachability analysis. InIEEE Transactions on
+Intelligent Vehicles(IEEE, 2023).
+33. Krajewski, R., Moers, T., Bock, J., Vater, L. & Eckstein, L. The round
+dataset: a drone dataset of road user trajectories at roundabouts in
+Germany. In 2020 IEEE 23rd International Conference on Intelligent
+Transportation Systems (ITSC),1 −6( I E E E ,2 0 2 0 ) .
+34. Elbanhawi, M. & Simic, M. Sampling-based robot motion planning: a
+review. IEEE Access 2,5 6–77 (2014).
+35. Lopez, P. et al. Microscopic traf ﬁc simulation using sumo. In Inter-
+national Conference on IntelligentTransportation Systems (ITSC),
+2575–2582 (IEEE, 2018).
+36. Treiber, M., Hennecke, A. & Helbing, D. Congested trafﬁc states in
+empirical observations and microscopic simulations.Phys. Rev. E
+62,1 8 0 5( 2 0 0 0 ) .
+37. Caesar, H. et al. Nuplan: a closed-loop ml-based planning bench-
+mark for autonomous vehicles. InCVPR ADP3 Workshop
+(CVPR, 2021).
+38. Dauner, D., Hallgarten, M., Geiger, A. & Chitta, K. Parting with mis-
+conceptions about learning-based vehicle motion planning. In
+Conference on Robot Learning(CoRL, 2023).
+39. OpenAI. Gpt-4 technical report. Preprint at https://arxiv.org/abs/
+2303.08774(2023).
+4 0 . K a n d p a l ,N . ,D e n g ,H . ,R o b e r t s ,A . ,W a l l a c e ,E .&R a f f e l ,C .L a r g e
+language models struggle to learn long-tail knowledge. In
+International Conference on Machine Learning,1 5 6 9 6–15707
+(PMLR, 2023).
+41. Sauerbier, J., Bock, J., Weber, H. & Eckstein, L. De ﬁnition of sce-
+narios for safety validation of automated driving functions.ATZ
+Worldw. 121, 4245 (2019).
+42. Wang, J., Zhang, L., Huang, Y., Zhao, J. & Bella, F. Safety of auton-
+omous vehicles. J. Adv. Transp. 2020,1 –13 (2020).
+43. Zhu, Z. et al. Is sora a world simulator? a comprehensive survey on
+general world models and beyond. Preprint athttps://arxiv.org/
+abs/2405.03520(2024).
+44. Owen, A. B. Monte Carlo Theory, Methods and Examples. https://
+artowen.su.domains/mc/(2013).
+45. Alain, G., Lamb, A., Sankar, C., Courville, A. & Bengio, Y. Variance
+reduction in sgd by distributed importance sampling. Preprint at
+https://arxiv.org/abs/1511.06481(2015).
+46. Sutton, R. S. & Barto, A. G. Reinforcement Learning: An Introduction
+(MIT Press, 2018).
+47. Ciosek, K. & Whiteson, S. Offer: off-environment reinforcement
+learning. In Proceedings of the AAAI Conference on Artiﬁcial Intel-
+ligence,V o l .31,( A A A I ,2 0 1 7 ) .
+48. Johnson, J. M. & Khoshgoftaar, T. M. Survey on deep learning with
+class imbalance.
+J. Big Data 6,1 –54 (2019).
+49. Scanlon, J. M. et al. Waymo simulated driving behavior in recon-
+structed fatal crashes within an autonomous vehicle operating
+domain. Accid. Anal. Prev. 163, 106454 (2021).
+50. Liang, E. et al. RLlib: Abstractions for distributed reinforcement
+learning. In International Conference on Machine Learning
+(PMLR, 2018).
+51. Darweesh, H. et al. Open source integrated planner for autonomous
+navigation in highly dynamic environments.J. Robot. Mechatron.
+29,6 6 8–684 (2017).
+52. Feng, S. et al. Safety assessment of highly automated driving sys-
+tems in test tracks: a new framework. Accid. Anal. Prev. 144,
+105664 (2020).
+53. Chang A. X. et al. ShapeNet: an information-rich 3d model reposi-
+tory. Preprint at https://arxiv.org/abs/1512.03012(2015).
+54. Bezzina, D., Sayer, J. Safety Pilot Model Deployment: Test Conductor
+Team Report. Report No. DOT HS 812 171. Washington, DC: National
+Highway Trafﬁc Safety Administration (2014).
+55. Sayer, J. et al. Integrated Vehicle-based Safety Systems Field
+Operational Test: Final Program Report.N o .F H W A - J P O−11−150;
+UMTRI-2010-36. United States. Joint Program Ofﬁce for Intelligent
+Transportation Systems (2011).
+56. Feng, S., Yan, X., Sun, H., Feng, Y. & Liu, H. X. Intelligent driving
+intelligence test for autonomous vehicles with naturalistic and
+adversarial environment.Nat. Commun. 12,1 –14 (2021).
+57. National Center for Statistics and Analysis. Fatality Analysis
+Reporting System (FARS) Analytical User’s Manual, 1975-2018.
+Report No. DOT HS 812 827. Washington, DC: National Highway
+Trafﬁc Safety Administration.https://www.nhtsa.gov/research-
+data/fatality-analysis-reporting-system-fars(2019).
+Acknowledgements
+This research was partially funded by the U.S. Department of Transpor-
+tation (USDOT) Region 5 University Transportation Center: Center for
+Connected and Automated Transportation (CCAT) of the University of
+Michigan (69A3551747105) and the National Science Foundation (CMMI
+#2223517). Any opinions,ﬁndings, and conclusions or recommendations
+expressed in this material are those of the authors and do not necessarily
+reﬂect the ofﬁcial policy or position of the U.S. government.
+Author contributions
+S.F. and H.L. conceived and led the research program, developed the
+dense learning approach, and wrote the paper. S.F., H.Z., and H.S.
+developed the algorithms, designed the experiments, and performed
+Article https://doi.org/10.1038/s41467-026-69761-x
+Nature Communications|         (2026) 17:3163 12
+the results. H.Z., H.S., L.H., and S.L. implemented the algorithms in
+simulation, performed the simulation tests, and prepared the simulation
+results. H.Z., X.Y., B.L., and S.S. implemented the algorithms in the
+autonomous vehicle, performed theﬁeld tests, and prepared the testing
+results. S.F., J.Y., G.S., and L.W. developed the theoretical analysis. All
+authors provided feedback during the manuscript revision and results
+discussions. H.L. approved the submission and accepted responsibility
+for the overall integrity of the paper.
+Competing interests
+The authors declare no competing interests.
+Additional information
+Supplementary informationThe online version contains
+supplementary material available at
+https://doi.org/10.1038/s41467-026-69761-x.
+Correspondenceand requests for materials should be addressed to
+Henry X. Liu.
+Peer review informationNature Communicationsthanks Matthias
+Althoff, and Mozhgan Nasr Azadani for their contribution to the peer
+review of this work. A peer review ﬁle is available.
+Reprints and permissions informationis available at
+http://www.nature.com/reprints
+Publisher’s note Springer Nature remains neutral with regard to jur-
+isdictional claims in published maps and institutional afﬁliations.
+Open Access This article is licensed under a Creative Commons
+Attribution-NonCommercial-NoDerivatives 4.0 International License,
+which permits any non-commercial use, sharing, distribution and
+reproduction in any medium or format, as long as you give appropriate
+credit to the original author(s) and the source, provide a link to the
+Creative Commons licence, and indicate if you modiﬁed the licensed
+material. You do not have permission under this licence to share adapted
+material derived from this article or parts of it. The images or other third
+party material in this article are included in the article’s Creative
+Commons licence, unless indicatedotherwise in a credit line to the
+material. If material is not included in the article’s Creative Commons
+licence and your intended use is not permitted by statutory regulation or
+exceeds the permitted use, you will need to obtain permission directly
+from the copyright holder. To view a copy of this licence, visit http://
+creativecommons.org/licenses/by-nc-nd/4.0/.
+© The Author(s) 2026
+Article https://doi.org/10.1038/s41467-026-69761-x
+Nature Communications|         (2026) 17:3163 13

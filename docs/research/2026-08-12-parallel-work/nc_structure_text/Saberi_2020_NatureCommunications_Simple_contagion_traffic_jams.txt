@@ -1,0 +1,1002 @@
+ARTICLE
+A simple contagion process describes spreading
+of traf ﬁc jams in urban networks
+Meead Saberi 1 ✉, Homayoun Hamedmoghadam 2, Mudabber Ashfaq 1, Seyed Amir Hosseini 3,
+Ziyuan Gu 1, Sajjad Sha ﬁei4, Divya J. Nair 1, Vinayak Dixit 1, Lauren Gardner 5, S. Travis Waller 1 &
+Marta C. González 6
+The spread of traf ﬁc jams in urban networks has long been viewed as a complex spatio-
+temporal phenomenon that often requires computationally intensive microscopic models for
+analysis purposes. In this study, we present a framework to describe the dynamics of con-
+gestion propagation and dissipation of traf ﬁc in cities using a simple contagion process,
+inspired by those used to model infectious disease spread in a population. We introduce two
+macroscopic characteristics for network traf ﬁc dynamics, namely congestion propagation
+rate β and congestion dissipation rate μ. We describe the dynamics of congestion spread
+using these new parameters embedded within a system of ordinary differential equations,
+similar to the well-known susceptible-infected-recovered (SIR) model. The proposed
+contagion-based dynamics are veri ﬁed through an empirical multi-city analysis, and can be
+used to monitor, predict and control the fraction of congested links in the network over time.
+https://doi.org/10.1038/s41467-020-15353-2 OPEN
+1 Research Centre for Integrated Transport Innovation (rCITI), School of Civil and Environmental Engineering, University of New South Wales (UNSW),
+Sydney, NSW 2032, Australia. 2 Department of Civil Engineering, Institute of Transport Studies, Monash University, Melbourne, VIC 3800, Australia. 3 School
+of Electrical and Computer Engineering, K.N. Toosi University of Technology, Tehran, Iran. 4 Data61, CSIRO, Sydney 2015 NSW, Australia. 5 Department of
+Civil Engineering, Johns Hopkins University, Baltimore, MD 21218, USA. 6 College of Environmental Design, University of California, Berkeley, CA 94720, USA.
+✉email: meead.saberi@unsw.edu.au
+NATURE COMMUNICATIONS |         (2020) 11:1616 | https://doi.org/10.1038/s41467-020-15353-2 | www.nature.com/naturecommunications 1
+1234567890():,;
+T
+rafﬁc congestion in cities, also known as traf ﬁc jams,
+propagate over time and space. Existing approaches to
+model city traf ﬁc often rely on microscopic models with
+high computational burden as well as excessive parameterization
+required for calibration
+1–3. Further, the lack of available trans-
+portation network data in many countries, especially those that
+are less economically developed, poses a challenge for traf ﬁc
+modelers. However, the fast-paced development and deployment
+of mobile sensors offers the opportunity to generate continuous
+spatial data, which further enables the estimation of road traf ﬁc
+conditions in real time and at the macroscopic level.
+Numerous studies have explored different macroscopic
+approaches to model the spread of traf ﬁc jams in cities 4–9,
+including through the lens of percolation theory 10,11, machine-
+learning methods12, and queuing theory 13,14. However, machine-
+learning models 12 and models based on queuing theory 13,14 are
+unable to capture and quantitatively describe the propagation and
+dissipation patterns of congestion over time and space. They are
+instead formulated based on input (arrival) and output (depar-
+ture) rates to estimate the number of vehicles (i.e., accumulation)
+in an area, similar to conservation-based models using Macro-
+scopic or Network Fundamental Diagram (MFD or NFD) 4.I n
+this work, we show that traf ﬁc systems exhibit underlying
+spreading dynamics similar to those observed and applied in
+other network systems, for example, social networks, population
+contact networks, or technological networks. Speci ﬁcally, we
+propose and empirically demonstrate that traf ﬁc congestion in
+urban networks can be characterized using a simple contagion
+process, similar to the well-known susceptible-infected-recovered
+(SIR) model used to describe spread of infectious diseases in a
+population, wherein traf ﬁc spreads and recovers throughout the
+network over time. A previous study by Wu et al. 15 conjectured
+that trafﬁc congestion spread can be described with a SIR model,
+but provided no empirical evidence. To the best of the authors ’
+knowledge, characterizing and modeling congestion propagation
+and dissipation as a network spreading phenomenon has never
+been empirically validated.
+Urban traf ﬁc often exhibits high spatial correlation in which
+links adjacent to a congested link are more likely to become
+congested. Additionally, there is a strong temporal correlation in
+urban congestion, which is known to be driven by the time-
+dependent pro ﬁle of travel demand. The spread of congestion at
+the link level is well theorized and understood with queuing and
+kinematic wave theories 16–18. However, our understanding of
+congestion propagation dynamics at the network level is still
+incomplete. Queue spillbacks in networks are shown to be sen-
+sitive to link capacities 19, which could remain stable in both
+under- and over-saturated conditions. Congestion also exhibits
+fragmentation during recovery 20 leading to greater spatial het-
+erogeneity and thus results in a drop of network production 21–23.
+Propagation and dissipation of gridlocks can be characterized by
+the number of congested links or the length of congestion in the
+network23 with propagation occurring often at a much higher rate
+than dissipation. Also, studies have shown that the ratio of road
+supply to travel demand could explain the percentage of time lost
+in congestion as an aggregate measure 2,22.
+Unlike individual link traf ﬁc shockwaves in a two-dimensional
+time-space diagram, which are categorized as forward or back-
+ward moving, network traf ﬁc jams evolve in multiple directions
+over space. Therefore, we propose that a network ’s propagation
+and dissipation can be characterized by two average rates, namely,
+the congestion propagation rate β and the congestion recovery
+rate μ, which together can predict the number of congested links
+in the network over time. These two macroscopic characteristics
+are critical in modeling congestion propagation and dissipation as
+a simple contagion process 23.
+Despite the complex human behavior-driven nature of traf ﬁc,
+we demonstrate that urban network traf ﬁc congestion follows a
+surprisingly similar spreading pattern as in other systems,
+including the spread of infectious disease in a population or
+diffusion of ideas in a social network, and can be described using
+a similar parsimonious theoretical network framework. Speci ﬁ-
+cally, we model the spread of congestion in urban networks by
+adapting a classical epidemic model to include a propagation and
+dissipation mechanism dependent on time-varying travel demand
+and consistent with fundamentals of network traf ﬁc ﬂow theory.
+We illustrate the model to be predictive, and validate the fra-
+mework using empirical and simulation-based numerical
+experiments. The proposed model can be used for adaptive and
+predictive control of congestion in an urban network. By mon-
+itoring the network in real time and observing the number of
+congested links, the model can be applied to develop optimal
+control strategies with different objectives, such as minimizing the
+total duration of congestion, minimizing the total number of
+congested links, and minimizing the recovery time. Similar to
+other macroscopic model-based control applications
+24–26, we can
+employ the proposed SIR-based model to improve the traf ﬁc
+network performance by controlling and optimizing the network
+input through optimal metering of traf ﬁc ﬂow or by increasing
+the network recovery rate through improved signal timing, bot-
+tleneck removal, and capacity expansion.
+Results
+Identifying congested links . We use empirical data from Google
+that contains estimated time-dependent traf ﬁc speeds on every
+link in the road network across six different cities in the world,
+namely Chicago, London, Paris, Sydney, Melbourne, and Mon-
+treal (see Methods). We also use simulated data from a calibrated
+and validated mesoscopic dynamic traf ﬁc assignment model of
+Melbourne (see Methods) 1. Using both empirical and simulation
+data, we demonstrate that the proposed modeling framework can
+successfully describe the dynamics of congestion propagation and
+dissipation in urban networks.
+In the proposed network-theoretic framework, nodes represent
+the intersections (controlled and uncontrolled) and links
+represent the physical roads between any two intersections. For
+each link i in the network, we have the time-dependent speed
+vi(t). We represent the maximum speed on the link as vmax
+i .T o
+reveal how congestion propagates and dissipates in a network, we
+deﬁne
+λiðtÞ¼ viðtÞ
+vmax
+i
+; ð1Þ
+where λi(t) is the ratio of link speed vi(t) over link maximum
+speed vmax
+i . We then classify each link as in either a congested
+si = 1 or uncongested si = 0 state (also known as free ﬂow) using a
+threshold ρ as below
+siðtÞ¼ 1; λiðtÞ < ρ;
+0; λiðtÞ ≥ ρ;
+/C26
+ð2Þ
+where ρ is a pre-speci ﬁed threshold that represents different
+congestion levels 11. Figure 1 illustrates the identi ﬁed congested
+network for different values of ρ at a given t using data from the
+simulation-based dynamic traf ﬁc assignment model of Mel-
+bourne. The size of the congested network grows as ρ increases.
+Alternatively, one can also construct the congested network using
+trafﬁc density measurements or any other classi ﬁcation method.
+Modeling contagion dynamics of network traf ﬁc jams . Con-
+sider a network with N directed links. At time t = 0 every link in
+the network is in the free ﬂow or uncongested regime, F (0) = N
+ARTICLE NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-020-15353-2
+2 NATURE COMMUNICATIONS |         (2020) 11:1616 | https://doi.org/10.1038/s41467-020-15353-2 | www.nature.com/naturecommunications
+and no link is congested C(0) = 0. Let E be the set of links, j(j ∈ E)
+of length lj on which congestion later forms and propagates
+throughout the network. F(t) represents the number of links that
+are at free ﬂow regime at time t and C(t) represents the number of
+congested links at time t based on the speci ﬁed ρ. For a directed
+link in the road network with on average k “effective contacts ”
+with other links pointing at its upstream node, β is the rate of
+congestion propagating to an upstream free ﬂow link in unit time,
+and is F(t)/N is the probability of a congested link being directly
+connected downstream of a free ﬂow link. Under the assumption
+of homogeneous mixing, which refers to an assumption that each
+link in the network has the same probability of contact with a
+congested link; a congested link connects to an average of kF(t)/N
+free ﬂow links in a unit time. Although the assumption of
+homogeneous mixing is simplistic, it makes the analysis tractable
+while shown to be predictive at the macroscopic scale. See Sup-
+plementary Note 1 for the fundamentals of congestion propaga-
+tion in simpli ﬁed traf ﬁc systems. See Supplementary Note 2 for
+the extension of the framework when the homogeneous mixing
+assumption is relaxed.
+Below, we describe the dynamics of congestion propagation
+with a system of ordinary differential equations (ODEs), which is
+analogous to the well-known SIR model:
+dcðtÞ
+dt ¼/C0 μctðÞ þ βkc tðÞ 1 /C0 rtðÞ /C0 ctðÞðÞ ; ð3Þ
+drðtÞ
+dt ¼ μctðÞ ; ð4Þ
+df ðtÞ
+dt ¼/C0 βkc tðÞ 1 /C0 rtðÞ /C0 ctðÞðÞ ; ð5Þ
+where c(t) represents the fraction of congested links in the
+network, f(t) is the fraction of free ﬂow links, and r(t) is the
+fraction of recovered links. Equation 3 describes the rate in which
+c(t) changes over time given a propagation rate β and recovery
+rate μ considering that a fraction of congested links will
+eventually recover as demand for travel diminishes. Equation 4
+expresses the rate at which congested links recover given recovery
+rate μ. Equation 5 represents how the fraction of free ﬂow links f
+(t) in the network changes over time given c(t) and r (t). Note that
+c(t) + r (t) + f(t) = 1, where f(t) represents links that have
+remained in a free ﬂow state from t = 0. Also, kβ/μ represents
+the average number of newly congested links each already
+congested link potentially creates, in a fully freely ﬂowing road
+network. In epidemic modeling, this is often denoted by R0 and
+called the “basic reproductive number ”. The higher is R0, the
+faster congestion spreads throughout the network. If R0 ≤ 1,
+congestion will not spread in the network and remains a non-
+persistent local phenomenon. R0 in an urban network can be
+estimated at the onset of congestion, before congestion starts
+propagating in the network. Congestion propagation in an urban
+network often occurs over a few hours from the onset of
+congestion and recovers within a few hours after the peak point.
+If R0 is known, as soon as congestion forms and starts to
+propagate, the proposed SIR model can be used to predict when
+congestion will peak and how long it takes to recover, which can
+be used to optimize the implementation of various traf ﬁc
+management and control strategies.
+The formulated model simultaneously describes the dynamics
+of congestion propagation as well as congestion dissipation or
+recovery in a network, given estimated parameters β and μ, which
+are dependent on a de ﬁnite time-dependent travel demand pro ﬁle
+as in real-world networks. Analogous representations to the well-
+known susceptible-infected (SI) and susceptible-infected-
+susceptible (SIS) model of epidemics can also be formulated to
+describe the spread of traf ﬁc in a network as a two-state model
+(see Supplementary Note 1). If a SI model is adopted, the
+estimated c(t) describes propagation of congestion in the network
+as long as demand for travel continues and congestion eventually
+propagates to the entire network with no recovery leading to a full
+gridlock, also known as “complete jam ”27,28 or “collapse of the
+network”29. Here, gridlock is de ﬁned as a state of the system
+under which traf ﬁc in the entire network or a portion of the
+network comes to a complete standstill with zero (or minimal)
+ﬂow20 (see Fig. 2a). If an SIS model is adopted, the congestion
+propagation dynamics are described such that congestion
+continues to grow but does not propagate to the entire network
+and remains invariant after some time leading to a partial
+network gridlock (see Fig. 2b). While from a theoretical
+perspective, both SI and SIS models could also be adopted to
+describe congestion propagation in a network, they fall short of
+realism. In a partial network gridlock, the number of congested
+links can grow or shrink depending on whether the gridlock is
+propagating or resolving itself (dissipating) as what often happens
+in real-world networks. Therefore, we expect that the SIR
+model, as a three-state model, provides a more realistic
+representation as will be empirically demonstrated in the next
+section (see Fig. 2c).
+Empirical evidence . We apply the proposed contagion-based
+model to empirical data collected from six different large
+metropolitan cities around the world (see Fig. 3a–d). We explore
+changes in the fraction of congested links c(t) in the selected
+networks. The proposed dynamics in Eq. 3–5 are ﬁt to traf ﬁc data
+between the onset and offset of congestion (Fig. 3b) to estimate
+the propagation rate β and the recovery rate μ using an ordinary
+least-square (OLS) method with a pattern search algorithm (see
+Methods) for different values of ρ as in Eq. 2 and assuming an
+average k = 3 for the studied networks based on the distributions
+of the node degree.
+The applied simple contagion process successfully describes the
+congestion spreading patterns in different cities at a macroscopic
+level. While the selected cities have signi ﬁcantly different
+topology and travel demand patterns, their estimated R0 values
+are almost the same for ρ = 0.2 and only slightly vary for ρ = 0.3
+(see Fig. 3a). This suggests existence of a universal measure
+represented by R0 for the spread of congestion in urban network
+similar to what is usually observed for infectious diseases. Note
+bcda
+/afii9845 = 0.1 /afii9845 = 0.2 /afii9845 = 0.3 /afii9845 = 0.4
+Fig. 1 Spatial distribution of congestion in the Melbourne network. At a given time t = 8:30 a.m. maps indicate the congested links (coded red) on the
+network when a ρ = 0.1, b ρ = 0.2, c ρ = 0.3, and d ρ = 0.4.
+NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-020-15353-2 ARTICLE
+NATURE COMMUNICATIONS |         (2020) 11:1616 | https://doi.org/10.1038/s41467-020-15353-2 | www.nature.com/naturecommunications 3
+that cmax and the time where cmax occurs are different between
+cities. For larger ρ values, the observed difference between the
+estimated R0 grows, which is mainly due to the loose de ﬁnition of
+congestion when ρ is large. Therefore, we expect to see divergence
+between cities as ρ increases. The fraction of recovered and free
+ﬂow links in the studied networks is also illustrated in Fig. 3c, d,
+and shown to be consistent with the expected outcomes of the
+theoretical SIR model.
+Revealing the underlying dynamics with simulation . We now
+explore changes in the fraction of congested links c(t) in the
+network, given the traf ﬁc data obtained from the simulation-
+based dynamic traf ﬁc model of Melbourne (Supplementary
+Note 3) and the identi ﬁed congested links. See Supplementary
+Note 4 for a comparison between empirical and simulation-based
+data from the Melbourne network. Figure 4a shows the evolution
+of c(t) over time for different values of ρ using simulated data
+with a calibrated travel demand pro ﬁle for the morning peak
+period 6:00 –10:00 a.m., followed by a 4-h recovery period with
+zero demand. Introducing zero demand after a complete network
+loading is a common approach in network traf ﬁc analysis 2,21,
+which allows the network to go under a complete recovery. Many
+of the interesting properties of network traf ﬁc ﬂow can only be
+observed during a full recovery such as the formation of hysteresis
+in the network ﬂow-density relationship.
+The simulated congestion propagation and dissipation patterns
+follow the commonly observed spreading patterns in epidemics in
+which the propagation follows an initial exponential growth regime,
+followed by a sum of multiple exponential processes during
+recovery. Smaller values of ρ are used as they better re ﬂect
+congestion formation compared to larger values of ρ. For example,
+when ρ = 0.1 is being used, the fraction of congested links in the
+network is almost zero for the ﬁrst hour of the simulation as
+congestion has not yet formed in any link across the network.
+However, when ρ = 0.9 is used, nearly 15% of the links in the
+network are considered congested at the beginning of the
+simulation. The adopted and formulated SIR model expressed in
+Eq. 3–5 successfully describes the evolution of c(t) over time as
+s h o w ni nF i g .4b. The model is applied to traf ﬁc data between the
+congestion onset and offset times at which the traf ﬁc jam starts
+propagating and almost ﬁnishes dissipating, respectively.
+To further reveal the congestion spreading patterns, we also
+conduct a simulation with 1 h of peak demand loading followed
+by several hours of recovery with zero demand, consistent with an
+analysis previously reported by Olmos et al. 2. Here we focus on a
+target group of simulated vehicles that enter the network within
+the peak hour (8:00 –9:00 a.m.), speci ﬁed as the hour immediately
+before the peak point on the demand pro ﬁle. See Fig. 5a in which
+congestion propagation in the network can be approximated by
+an initial growth followed by a decay. Figure 5b, c illustrates the
+changes in the estimated parameters β, μ, and R0 for a range of
+ρ values. It is counter-intuitive that when ρ increases, the rates of
+congestion propagation and dissipation both decrease exponen-
+tially. However, R0 increases when ρ increases as expected. In fact,
+propagation and dissipation rates here must be interpreted
+relatively. Therefore, their individual values may not provide an
+absolute indication of the extent that congestion is spreading.
+Instead, it is the ratio of β over μ, or more accurately R0, that has a
+physical meaning. This is analogous to queuing theory in which
+the size of a queue depends on the difference between the arrival
+and departure curves rather than the individual arrival and
+departure rates. Here, R0 can also be seen as a representation of
+the rate in which the network shockwave evolves. Further, R0
+follows an interesting linear relationship with ρ, as shown in
+Fig. 5c.
+Local congestion propagation dynamics . In order to further
+investigate the spreading properties of congestion, we demonstrate
+the propagation of congestion from congested links to their
+upstream links in the network using simulated traf ﬁc data. Spe-
+ciﬁcally, we reveal the formation of congested clusters at the
+upstream of congested links. For any directed link i connecting its
+source node to its target node, let us de ﬁne the correspond-
+ing congested upstream cluster as the subset of nodes on the
+network that can reach link iʼs source node via at least one
+directed path entirely consisted of congested links; the cluster
+includes the source node. For a ﬁxed ρ, we individually consider
+each congested link, and calculate the size of its congested
+upstream cluster at different points in time. For each time step t,
+we generate a null model by randomly drawing λi(t) of each link i
+from the same distribution of the link relative speeds as in the
+simulated data at the same time step. To measure the signi ﬁcance
+of the impact of congested links on their neighborhood, we
+compare the size of the congested upstream cluster associated with
+each link on the simulated network with that of the generated null
+model, over time (see Fig. 6). Results indicate the spatial dis-
+tribution of link λ’s over the simulated network is signi ﬁcantly
+different from the null model. In particular, there are signi ﬁcantly
+more congested upstream clusters of larger size in the simulated
+trafﬁc network compared to the null model. In other words, in
+the traf ﬁc network, links with lower λi(t) tend to emerge inside
+small- to medium-sized clusters, while this phenomenon is
+not observed in the null model. Furthermore, the size of the
+congested upstream clusters in the simulated network changes
+t
+c(t)
+c(t)
+0
+1
+0
+1
+t
+Full network
+gridlock Partial network
+gridlock
+a b
+r(t)
+c(t)
+f(t)
+0
+1
+t
+Fraction of links in the network
+c
+Fig. 2 Describing temporal evolution of congestion. Two-state model of congestion propagation in a network: fraction of congested links c(t) vs. time
+resulting in a full network gridlock described by a variation of the SI model and b partial network gridlock described by a variation of the SIS model. c Three-
+state model of congestion propagation and dissipation in a network, analogous to the SIR model subject to a time-varying loading –unloading demand
+proﬁle.
+ARTICLE NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-020-15353-2
+4 NATURE COMMUNICATIONS |         (2020) 11:1616 | https://doi.org/10.1038/s41467-020-15353-2 | www.nature.com/naturecommunications
+over time. It starts from low values around t = 0, and gradually
+increases until approximately t = 200 min when it peaks for
+most of the links, and then decreases toward zero until around t =
+400 min, when the network is empty. However, for the null model
+the size of the clusters keeps ﬂuctuating over time with large
+variations, and the size of the congested upstream clusters only
+reaches half of what is observed in the simulated Melbourne traf ﬁc
+network. Consistent with the physics of traf ﬁc ﬂow and kinematic
+wave theory, this veriﬁes the hypothesis that congestion at the link
+level spreads over the network via upstream links. We illustrate
+the difference in the distribution of the congested upstream
+cluster size in the simulation network to that of the null model
+at time t = 180 min as an example (see Fig. 6cf o r ρ = 0.5 and
+Fig. 6f for ρ = 0.7). The observed difference between the dis-
+tributions of the cluster size in the simulated data versus the null
+case con ﬁrms that congestion follows a non-random spatial
+spreading pattern.
+Connection with travel demand . Here, we examine the impact of
+changing demand on the propagation and dissipation dynamics
+of congestion. For the same network with 1 h of loading followed
+by 4-h recovery, we have conducted multiple simulation runs
+with a scaling factor of ζ = 0.75, 1.0, 1.25, 1.5, 1.75, and 2.0 to
+decrease or increase demand while keeping the origin –destination
+demand patterns the same. We then solve the proposed ODE
+model and estimate the model parameters β and μ as described in
+Supplementary Note 5 and Methods section. When demand
+increases, the fraction of congested links also increases for the
+same network, and as a result, complete recovery of congestion
+takes longer while the start of the recovery phase remains the
+same. This is re ﬂected in the reduction of μ in response to the
+increase in demand for any given ρ (see Fig. 7a for the evolution
+of c(t) over time for various demand levels). Counter-intuitively,
+increasing demand also results in reduction of β for a given ρ (see
+Fig. 7b, c). This should not be interpreted as a slower propagation
+06:00 10:00
+Time
+0
+0.01
+0.02
+0.03
+Paris London
+Sydney
+Melbourne
+Chicago Montreal
+SIR model Empirical dataab
+0
+0.01
+0.02
+0.03
+0
+0.01
+0.02
+0.03
+06:00 10:00
+Time
+06:00 10:00
+Time
+06:00 10:00
+Time
+06:00 10:00
+Time
+06:00 10:00
+Time
+0 50 100 150 200
+Time (min)
+0
+0.01
+0.02
+0.03
+0.04
+0.05
+0.06
+r(t)
+f(t)
+Paris
+London
+Sydney
+Melbourne
+Chicago
+Montreal
+0 50 100 150 200
+Time (min)
+0.92
+0.94
+0.96
+0.98
+1cd
+Onset
+Onset
+Offset
+Offset
+Onset Offset Onset Offset
+Onset Offset
+Onset Offset
+0.2 0.3 0.4 0.5 0.6
+1
+2
+3
+4
+5
+6
+7
+R0
+Paris
+London
+Sydney
+Melbourne
+Chicago
+Montreal
+c(t)c(t)c(t)
+/afii9845
+Fig. 3 Empirical evidence on the congestion propagation and dissipation dynamics from six different cities. a Relationship betweenR0 and ρ. For smaller
+values of ρ, there is a consistency in the observed dynamics across different cities despite their differences in network structure, demand, and trafﬁcp a t t e r n s .R0
+remains roughly invariant for the same value ofρ for smaller ρ values, suggesting the existence of a universal measure for congestion propagation;b proportion
+of congested links in the network over time c(t) for each city from 6:00 to 10:00 a.m. when ρ = 0.2. Congestion onset and offset is marked with dashed lines.
+Note that the y-axis has a ﬁxed range [0, 0.035] and a subset of data between the congestion onset and offset times are utilized toﬁt the SIR model; c evolution
+of fraction of recovered links r(t) in the network over time; d evolution of the fraction of free ﬂow links f(t) in the network over time.
+NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-020-15353-2 ARTICLE
+NATURE COMMUNICATIONS |         (2020) 11:1616 | https://doi.org/10.1038/s41467-020-15353-2 | www.nature.com/naturecommunications 5
+of congestion. In fact, β is not independent of μ. The two mac-
+roscopic characteristics vary interdependently, so c(t) reaches its
+peak value at t = 75 min according to the demand pro ﬁle.
+However, R0 increases when demand increases for any given
+ρ with a clear indication that the size of the network shockwave
+will grow larger and it takes longer to recover. R0 has a linear
+relationship with ρ in which the slope also follows an almost
+linear relationship with demand (see Fig. 7d, e). Results suggest
+that there is also a three-dimensional relationship between R0, ρ,
+and demand as illustrated in Fig. 7f, in which for smaller values of
+ρ, the relationship between R0, and demand is almost linear. The
+relationship with demand is critical for applying the proposed
+model to travel demand management and traf ﬁc control in real
+world. The proposed model can be used for perimeter control of a
+sub-network within a larger network, in which the relationship
+with demand guides which R0 should be used given a ﬁxed
+ρ value, and vice versa. When R0 is known, the proposed model
+can then predict when the congestion will peak and when it fully
+recovers. Identifying the time of the congestion peak and recovery
+duration can be used to identify the time-optimal traf ﬁc control
+strategies (see Supplementary Note 6). What is missing here is the
+observed relationship with demand from empirical data. Travel
+demand is dif ﬁcult to observe in real world. Therefore, our ana-
+lysis here remains limited to the simulation environment. Passive
+mobile phone use data could potentially be used to obtain travel
+demand over time and relate with congestion propagation and
+dissipation in the network, which remains an interesting direction
+for future research.
+Discussion
+This study has shown that propagation and dissipation of traf ﬁc
+jams in cities can be described by a simple contagion process,
+which is formulated as a system of ODEs, analogous to the well-
+known SIR model, dependent on two macroscopic network traf ﬁc
+ﬂow characteristics, namely congestion propagation and conges-
+tion recovery rate. The paper has shown both empirically and
+simulation based that congestion propagation is indeed a
+spreading phenomenon. The extent to which congestion builds up
+in a network and how fast it recovers are shown to be dependent
+on the ratio of the propagation over recovery rates represented by
+the basic reproductive number R
+0. Using data from a simulation-
+based dynamic trafﬁc assignment model of Melbourne, we showed
+that time-dependent travel demand pro ﬁle has, as expected, an
+impact on the dynamics of congestion propagation and dissipation
+in a network. In fact, R0 increases when demand increases for any
+given ρ with a clear indication that the size of the traf ﬁc jam will
+grow larger and it takes longer to recover in response to travel
+demand. Moreover, empirical data from six different cities are
+0 100 200 300 400
+Time (min)
+0
+0.05
+0.1
+0.15
+0.2
+0.25ac(t)
+c(t)
+0 100 200 300
+Time (min)
+10–1
+10–2
+10–3
+Model
+Observation
+Onset
+Offset
+/afii9845 = 0.1
+/afii9845 = 0.2
+/afii9845 = 0.3
+/afii9845 = 0.4
+/afii9845 = 0.5
+/afii9845 = 0.6
+/afii9845 = 0.7
+/afii9845 = 0.8
+/afii9845 = 0.9
+b
+Fig. 4 Propagation and dissipation of congestion in Melbourne network. a Evolution of fraction of congested links in the network over time for various
+ρ subject to realistic and calibrated 4-h demand followed by a 4-h recovery period with zero demand starting at t = 240 min. b Fitted SIR model to
+dynamics of the system with estimated parameters β = 0.0577 and μ = 0.0812 when ρ = 0.2 and k = 2.12. Data are obtained from the simulation-based
+DTA model. The vertical axis associated with c(t) is scaled logarithmically.
+0.1 0.3 0.5 0.7 0.9
+0
+0.05
+0.1
+0.15
+0.2
+0.25
+0.3
+0.35
+Estimated model parameter
+0.1 0.3 0.5 0.7 0.9
+1.2
+1.4
+1.6
+1.8
+2
+0 50 100 150 200
+Time (min)
+0
+0.05
+0.1
+0.15
+0.2
+0.25
+/afii9845 = 0.1
+/afii9845 = 0.2
+/afii9845 = 0.3
+/afii9845 = 0.4
+/afii9845 = 0.5
+/afii9845 = 0.6
+/afii9845 = 0.7
+/afii9845 = 0.8
+/afii9845 = 0.9
+c(t)
+/afii9845 /afii9845
+R0
+/afii9826
+/afii9839
+a b c
+Fig. 5 Spread of traf ﬁc congestion in Melbourne network. Propagation and dissipation of congestion in the Melbourne network subject to 1-h peak
+demand, followed by a recovery period with zero demand starting at t = 60 min: a evolution of fraction of congested links in the network over time for
+different values of ρ, b estimated model parameters β and μ for various ρ, c sensitivity of R0 to ρ. Here, R0 > 1 suggests that congestion is spreading for
+every value of ρ >0 .
+ARTICLE NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-020-15353-2
+6 NATURE COMMUNICATIONS |         (2020) 11:1616 | https://doi.org/10.1038/s41467-020-15353-2 | www.nature.com/naturecommunications
+analyzed to verify the validity of the proposed contagion-based
+model; see also Supplementary Note 7 on the case of a very small
+urban road network. We observed that different cities surprisingly
+exhibit very similar R0 for small ρ values, indicating that at the
+macroscopic level, they tend to have consistent congestion pro-
+pagation dynamics. A limitation of this study is that in the clas-
+sical SIR model when an infected individual recovers, he/she will
+not be infected again (or removed). This clearly does not apply
+directly to traf ﬁc networks in which a link may recover and
+become congested again after a short period. However, the
+assumption may still hold if the temporal aggregation of analysis is
+large enough to prevent links to go under multiple cycles of
+loading and recovery in a short sequence of time steps. Given the
+unimodality of the travel demand pro ﬁle during a peak period
+(morning or afternoon), it may not be unreasonable to assume, at
+a macroscopic level, that when a link recovers from congestion, it
+will not become congested again until the next peak period.
+Nevertheless, relaxation of this assumption and introduction of
+other traf ﬁc states considering multiple cycles of loading and
+recovery should be an item of research priority in the future.
+Methods
+Trafﬁc simulation model . Simulation of the Melbourne network is conducted in
+AIMSUN, a commercially available traf ﬁc simulation software. The model is a
+mesoscopic simulation-based dynamic traf ﬁc assignment, which has been cali-
+brated and validated for the morning peak period 6:00 –10:00 a.m. A large number
+of input (demand and supply) parameters need to be calibrated before the simu-
+lation outcomes are used. Details of the calibration and validation process can be
+found in ref. 1 and Supplementary Note 3.
+Google traf ﬁc data . Google traf ﬁc data on 27 June 2018 are acquired and used,
+which consist of speeds in the unit of km/h for each link in the network with a
+unique identi ﬁer. The time frame for congestion modeling varies from city to city,
+which is determined based on the pro ﬁle of the fraction of congested links, so as to
+get a ﬁtted model between the onset and offset times of congestion. Nevertheless,
+the total time window remains the same as in our simulation (i.e., 6:00 –10:00 a.m.).
+Links with missing data for the entire day are discarded in our analysis, but the
+number of such links is negligible and does not affect the results. A direction for
+future research is to extend the analysis to multiple days to study the day-to-day
+spreading dynamics of network traf ﬁc.
+Google traf ﬁc data record the speeds of road sections at continuous time
+intervals. The data were estimated using ﬂoating GPS points of mobile users
+once they used Google services such as Google Maps. The sampling interval of
+the data is 10 min, which provides an appr opriate temporal resolution for our
+analysis. Cities that are selected include Melbourne, Sydney, London, Paris,
+Chicago, and Montreal, which all have a complex urban transport network with
+a dense population, thereby ensuring the availability of GPS data in large
+volumes. Note that the reliability of esti mations is directly proportional to the
+amount of data. The calculation of v
+max
+i takes into account the maximum speed
+observed on link i in a cycle of one day (i.e., 24 h). Using this measure along with
+vi(t), the ratio λi(t) is calculated for the entire network. To be consistent, only the
+morning peak of each city is considered in our analysis, which all lies in the time
+period between 6:00 and 10:00 a.m., although being subject to some differences
+from city to city.
+Parameter estimation with global pattern search . To estimate the parameters
+of the proposed model, we follow a similar approach presented in ref.
+30.T h e
+estimation is performed using an OLS met hod with a pattern search algorithm.
+The estimation is formulated as a minimization problem in which the pattern
+search seeks to ﬁnd the model parameters that minimizes the root mean-squared
+error (RMSE) calculated as the deviation between the observed and modeled c(t)
+over the study time period. We have applied the global pattern search algorithm
+as a derivative-free global optimization method in which the modeled curves for
+c(t)a r e ﬁtt ot h et r a fﬁc data with the objective function to minimize the RMSE.
+The pattern search algorithm falls under the general category of global
+a b c
+d fe
+20
+50
+40
+30
+20
+10
+0
+15
+10
+5
+0
+Time (min)0 100 200 300 400
+Time (min)0 100 200 300 400
+Time (min)0 100 200 300 400
+Time (min)0 100 200 300 400
+Cluster size
+Cluster size
+50
+40
+30
+20
+10
+0
+20
+15
+10
+5
+0
+Cluster size
+Cluster size
+Cluster size
+1
+200
+400
+600
+800
+1000
+Link rank
+1
+200
+400
+600
+800
+1000
+Link rank
+1
+200
+400
+600
+800
+1000
+Link rank
+1
+200
+400
+600
+800
+1000
+Link rank
+103
+Simulation data
+Null model
+Simulation data
+Null model
+Frequency
+102
+103
+Frequency
+102
+100 101
+Cluster size
+100 101
+Fig. 6 Evolution of the congested upstream clusters associated with congested links. Here, a and d show the change over time in the size of the
+congested clusters associated with links in Melbourne ’s trafﬁc network, while b and e depict the same results for the null model generated independently
+for each time step by drawing random λi(t)’s for each link i from the same distribution as in the simulated data; links are sorted according to the maximum
+size of their congested upstream cluster and the results only show the top 1000 links. The distribution of the size of the congested upstream clusters f or
+the Melbourne traf ﬁc simulation model and its null model counterpart at t = 180 is compared for c ρ = 0.5 and f ρ = 0.7. Larger congested upstream
+clusters are observed more frequently in the Melbourne traf ﬁc network model compared to the null model generated with the same structure and the same
+distribution of the link relative velocity.
+NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-020-15353-2 ARTICLE
+NATURE COMMUNICATIONS |         (2020) 11:1616 | https://doi.org/10.1038/s41467-020-15353-2 | www.nature.com/naturecommunications 7
+optimization methods in which an initial mesh is ﬁrst speci ﬁed in the solution
+space given an initial guessed solution. The algorithm computes the objective
+function value at each mesh point until it ﬁnds a point whose value is smaller
+than the objective function value at the initial solution point. The algorithm then
+updates the mesh size and re-computes the objective function value at each
+mesh point. This will iteratively continue until one of the stopping criteria is
+met, such as the mesh size getting smaller than a mesh tolerance threshold or if
+the maximum number of iterations is reached. For details about the pattern
+search algorithm, see ref.
+31. Also see Supplementary Table 1 in Supplementary
+Note 5 for the estimated model parameters and associated RMSE for different
+values of ρ.
+Data availability
+For contractual and privacy reasons, we cannot make the empirical data from Google
+available. However, all data from the simulation-based dynamic traf ﬁc assignment model
+that are needed to replicate the ﬁndings reported in the paper and Supplementary
+Information are available at https://github.com/meeadsaberi/trafﬁcspreading.
+Code availability
+The simulation-based dynamic traf ﬁc assignment model of Melbourne is also available as
+an open access model, which can be downloaded via https://github.com/meeadsaberi/
+dynamel.
+Received: 3 June 2019; Accepted: 2 March 2020;
+References
+1. Sha ﬁei, S., Gu, Z. & Saberi, M. Calibration and validation of a simulation-
+based dynamic traf ﬁc assignment model for a large-scale congested network.
+Simul. Modell. Pract. Theory 86, 169 –186 (2018).
+2. Olmos, L. E., Çolak, S., Sha ﬁei, S., Saberi, M. & Gonzalez, M. C. Macroscopic
+dynamics and the collapse of urban traf ﬁc. Proc. Natl. Acad. Sci. USA 115,
+12654–12661 (2018).
+3. Jiang, S., Yang, Y., Gupta, S., Veneziano, D., Athavale, S. & González, M. C.
+The TimeGeo modeling framework for urban mobility without travel surveys.
+Proc. Natl Acad. Sci. USA 113, E5370 –E5378 (2016).
+4. Geroliminis, N. & Daganzo, C. Existence of urban-scale macroscopic
+fundamental diagrams: some experimental ﬁndings. Transp. Res. B 42,
+759–770 (2008).
+5. Gayah, V. & Daganzo, C. Clockwise hysteresis loops in the macroscopic
+fundamental diagram: an effect on network instability. Transp. Res. B 45,
+643–655 (2011).
+6. Saberi, M. & Mahmassani, H. Exploring properties of network-wide ﬂow-density
+relations in a freeway network. Transp. Res. Rec. 2315,1 5 3–163 (2012).
+7. Saberi, M. & Mahmassani, H. Hysteresis and capacity drop phenomena in
+freeway networks: empirical characterization and interpretation. Transp. Res.
+Rec. 2391,4 4 –55 (2013).
+8. Ji, Y. & Geroliminis, N. On the spatial partitioning of urban transportation
+networks. Transp. Res. B 46, 1639 –1656 (2012).
+9. Saeedmanesh, M. & Geroliminis, N. Dynamic clustering and propagation of
+congestion in heterogeneously congested urban traf ﬁc networks. Transp. Res.
+Procedia 23, 962 –979 (2017).
+10. Zeng, G., Li, D., Guo, S., Gao, L., Gao, Z., Stanley, H. E. & Havlin, S. Switch
+between critical percolation modes in city traf ﬁc dynamics. Proc. Natl Acad
+Sci. USA 116,2 3 –28 (2019).
+11. Li, D., Fu, B., Wang, Y., Lu, G., Berezin, Y., Stanley, H. E. & Havlin, S.
+Percolation transition in dynamical traf ﬁc network with evolving critical
+bottlenecks. Proc. Natl Acad. Sci. USA 112, 669 –672 (2015).
+12. Asif, M. T., Dauwels, J., Goh, C. Y., Oran, A., Fathi, E., Xu, M., Dhanya, M. M.,
+Mitrovic, N. & Jaillet, P. Spatiotemporal patterns in large-scale traf ﬁc speed
+prediction. IEEE Trans. Intell. Transp. Syst. 15, 794 –804 (2014).
+13. Vickrey, W. Congestion theory and transport investment. Am. Econ. Rev. 59,
+251–260 (1969).
+14. Arnott, R. A bathtub model of downtown traf ﬁc congestion. J. Urban Econ.
+76, 110 –121 (2013).
+0 100 200 300 400
+Time (min)
+0
+0.05
+0.1
+0.15
+0.2
+0.25
+0.3ac(t)
+/afii9833 = 0.75
+/afii9833 = 1.0
+/afii9833 = 1.25
+/afii9833 = 1.5
+/afii9833 = 1.75
+/afii9833 = 2.0
+0.1 0.3 0.5 0.7 0.9
+0
+0.1
+0.2
+0.3
+0.4
+0.1 0.3 0.5 0.7 0.9
+0
+0.1
+0.2
+0.3
+0.4
+0.5
+0.6
+0.7
+0.1 0.3 0.5 0.7 0.9
+1
+1.5
+2
+2.5
+3
+3.5
+R0
+R0
+0.5 1 1.5 2
+0.6
+0.8
+1
+1.2
+1.4
+1.6
+1
+1.5
+2 1
+2
+2.5
+3
+3.5
+1.5 0.5
+1 0
+1.5
+2
+2.5
+3
+/afii9845/afii9845
+/afii9826
+/afii9839
+/afii9825
+/afii9833
+/afii9833
+/afii9845
+/afii9845
+/afii9833 = 0.75
+/afii9833 = 1.0
+/afii9833 = 1.25
+/afii9833 = 1.5
+/afii9833 = 1.75
+/afii9833 = 2.0
+b c
+d e f
+Fig. 7 Effect of travel demand on congestion dynamics. Propagation and dissipation of congestion in the Melbourne network subject to 1-h demand
+followed by a recovery period: a evolution of fraction of congested links in the network over time for various demand levels given ρ = 0.3; b and c estimated
+model parameters β and μ for various ρ and demand levels; d R0 as a function of ρ for various demand levels; e sensitivity of α to ζ. Here, α represents the
+slope of a linear ﬁt to the data shown in d. f Three-dimensional illustration of the relationship between R0, ρ, and ζ.
+ARTICLE NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-020-15353-2
+8 NATURE COMMUNICATIONS |         (2020) 11:1616 | https://doi.org/10.1038/s41467-020-15353-2 | www.nature.com/naturecommunications
+15. Wu, J., Gao, Z. & Sun, H. Simulation of traf ﬁc congestion with SIR model.
+Mod. Phys. Lett. B 18, 1537 –1542 (2004).
+16. Lighthill, M. J. & Whitham, J. B. On kinematic waves. I: Flow movement in
+long rivers; II: a theory of traf ﬁc ﬂow on long crowded roads. Proc. R. Soc. A
+229, 281 –345 (1955).
+17. Richards, P. I. Shockwaves on the highway. Oper. Res. 4,4 2 –51 (1956).
+18. Newell, G. F. A simpli ﬁed theory of kinematic waves. I: general theory; II:
+Queuing at freeway bottlenecks; III: Multi-destination ﬂows. Transp. Res. B 27,
+281–313 (1993).
+19. Daganzo, C. Queue spillovers transportation networks with a route choice.
+Transp. Sci. 32,3 –11 (1998).
+20. Daganzo, C. On the macroscopic stability of freeway traf ﬁc. Transp. Res. B. 45,
+782–788 (2011).
+21. Mahmassani, H., Saberi, M. & Zockaie, A. Urban network gridlock: theory,
+characteristics, and dynamics. Transp. Res. C 36, 480 –497 (2013).
+22. Çolak, S., Lima, A. & González, M. Understanding congested travel in urban
+areas. Nat. Commun. 7, 10793 (2016).
+23. Brockmann, D. & Helbing, D. The hidden geometry of complex, network-
+driven contagion phenomena. Science 342, 1337 –1342 (2013).
+24. Mohajerpour, R., Saberi, M., Vu. H. L., Garoni, T. & Ramezani, M. H ∞
+robust perimeter ﬂow control in urban networks with partial information
+feedback. Transport. Res. B https://doi.org/10.1016/j.trb.2019.03.010
+(2020).
+25. Han, Y., Ramezani, M., Hegyi, A., Yuan, Y. & Hoogendoorn, S. Hierarchical
+ramp metering in freeways: an aggregated modeling and control approach.
+Transp. Res. C 110,1 –19 (2020).
+26. Keyvan-Ekbatani, M., Yildirimoglu, M., Geroliminis, N. & Papageorgiou, N.
+Multiple concentric gating traf ﬁc control in large-scale urban networks. IEEE
+Trans. Intell. Transp. Syst. 16, 2141 –2154 (2015).
+27. Daganzo, C. F. The nature of freeway gridlock and how to prevent it. In Proc.
+13th International Symposium on Transportation and Traf ﬁc Theory
+629–646
+(Elsevier Science Publishing, 1996).
+28. Gayah, V. & Daganzo, C. F. Clockwise hysteresis loops in the macroscopic
+fundamental diagram: an effect of network instability. Transp. Res. B 45,
+643–655 (2011).
+29. Daganzo, C. F., Gayah, V. & Gonzales, E. Macroscopic relations of urban
+trafﬁc variables: bifurcations, multivaluedness and instability. Transp. Res. B
+41, 278 –288 (2011).
+30. Marinov, T. T., Marinova, R. S., Omojola, J. & Jackson, M. Inverse problem for
+coefﬁcient identi ﬁcation in SIR epidemic models. Comput. Math. Appl. 67,
+2218–2227 (2014).
+31. Audet, C. & Dennis, J. E. Analysis of generalized pattern searches. SIAM J.
+Optim. 13, 889 –903 (2003).
+Acknowledgements
+We are thankful for the fruitful discussions with Dr. David Rey at the University of New
+South Wales and Dr. Mohsen Ramezani from the University of Sydney.
+Author contributions
+M.S., H.H., L.G., and M.G. designed the study. M.S., H.H., M.A., and S.A.H. imple-
+mented the method. M.A., Z.G., and S.S. conducted the simulations. D.J.N. and V.D.
+supported with empirical data acquisition and analysis. M.S., H.H., M.A., S.A.H., Z.G.,
+L.G., S.T.W., and M.G. analyzed the results and wrote the manuscript.
+Competing interests
+The authors declare no competing interests.
+Additional information
+Supplementary information is available for this paper at https://doi.org/10.1038/s41467-
+020-15353-2.
+Correspondence and requests for materials should be addressed to M.S.
+Peer review information Nature Communications thanks the anonymous reviewer(s) for
+their contribution to the peer review of this work.
+Reprints and permission information is available at http://www.nature.com/reprints
+Publisher’s note Springer Nature remains neutral with regard to jurisdictional claims in
+published maps and institutional af ﬁliations.
+Open Access This article is licensed under a Creative Commons Attri-
+bution 4.0 International License, which permits use, sharing, adaptation,
+distribution and reproduction in any medium or format, as long as you give appropriate
+credit to the original author(s) and the source, provide a link to the Creative Commons
+license, and indicate if changes were made. The images or other third party material in this
+article are included in the article’s Creative Commons license, unless indicated otherwise in
+a credit line to the material. If material is not included in the article ’sC r e a t i v eC o m m o n s
+license and your intended use is not permitted by statutory regulation or exceeds the
+permitted use, you will need to obtain permission directly from the copyright holder. To
+view a copy of this license, visit http://creativecommons.org/licenses/by/4.0/.
+© The Author(s) 2020
+NATURE COMMUNICATIONS | https://doi.org/10.1038/s41467-020-15353-2 ARTICLE
+NATURE COMMUNICATIONS |         (2020) 11:1616 | https://doi.org/10.1038/s41467-020-15353-2 | www.nature.com/naturecommunications 9
