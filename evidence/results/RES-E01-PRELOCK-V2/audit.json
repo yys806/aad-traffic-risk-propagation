@@ -1,0 +1,99 @@
+{
+  "analytic_truth": {
+    "cases": [
+      {
+        "case": "uniform_closing",
+        "drac_match": true,
+        "expected_status": "valid",
+        "measured_status": "valid",
+        "pass": true,
+        "ttc_match": true
+      },
+      {
+        "case": "stationary_leader",
+        "drac_match": true,
+        "expected_status": "valid",
+        "measured_status": "valid",
+        "pass": true,
+        "ttc_match": true
+      },
+      {
+        "case": "stationary_follower",
+        "drac_match": true,
+        "expected_status": "not_applicable",
+        "measured_status": "not_applicable",
+        "pass": true,
+        "ttc_match": true
+      },
+      {
+        "case": "equal_speed",
+        "drac_match": true,
+        "expected_status": "not_applicable",
+        "measured_status": "not_applicable",
+        "pass": true,
+        "ttc_match": true
+      }
+    ],
+    "collision_case_pass": true,
+    "pass": true,
+    "pet_cases_pass": true
+  },
+  "created_at_utc": "2026-09-07T04:32:32.443524Z",
+  "experiment_id": "E01",
+  "gate_status": "pending_e15_e17_and_frozen_tolerances",
+  "note": "Truth fixtures can validate implementations, but cannot set thresholds, delta_eq, delta_R, or E02 sample size.",
+  "physical_path_truth": {
+    "cases": [
+      {
+        "actual_status": "disconnected_topology",
+        "actual_tau_p": null,
+        "case": "disconnected",
+        "expected_status": "disconnected_topology",
+        "expected_tau_p": null,
+        "pass": true
+      },
+      {
+        "actual_status": "finite_arrival",
+        "actual_tau_p": 2.0,
+        "case": "multivehicle_chain",
+        "expected_status": "finite_arrival",
+        "expected_tau_p": 2.0,
+        "pass": true
+      },
+      {
+        "actual_status": "right_censored",
+        "actual_tau_p": null,
+        "case": "right_censored",
+        "expected_status": "right_censored",
+        "expected_tau_p": null,
+        "pass": true
+      },
+      {
+        "actual_status": "uncertain_missing_vehicle",
+        "actual_tau_p": null,
+        "case": "missing_target",
+        "expected_status": "uncertain_missing_vehicle",
+        "expected_tau_p": null,
+        "pass": true
+      }
+    ],
+    "pass": true
+  },
+  "schema_version": "e01.prelock-validation.v1",
+  "scientific_claim_eligible": false,
+  "timestep_convergence": {
+    "analytic_reference": 0.583,
+    "difference_005_002": 0.0029869451697126514,
+    "direction_consistent": true,
+    "gate_status": "pending_delta_eq",
+    "horizon_s": 3.83,
+    "metric_by_step": {
+      "0.01": 0.5820000000000002,
+      "0.02": 0.5810026109660575,
+      "0.05": 0.5780156657963449,
+      "0.10": 0.5730548302872063
+    },
+    "within_zero_tolerance": null,
+    "zero_tolerance": null
+  }
+}

@@ -1,0 +1,102 @@
+{
+  "experiment_id": "E00",
+  "four_cell_audit": {
+    "baseline_cell": "s0c0",
+    "cell_ids": [
+      "s0c0",
+      "s0c1",
+      "s1c0",
+      "s1c1"
+    ],
+    "common_config_sha256": "69daf81c539ff90890a30a31afb53b666db49247fa12c2a730efc53dc5a6c4c3",
+    "pair_id": "e00_real_sumo_20260907_primary_v3",
+    "scientific_differences": [
+      "source_present",
+      "channel_enabled"
+    ]
+  },
+  "note": "Real SUMO four-cell package for E00 infrastructure validation only.",
+  "physical_path_audit": {
+    "reachable": false,
+    "status": "disconnected_topology",
+    "tau_p": null,
+    "topology_reachable": false
+  },
+  "pre_treatment_audit": {
+    "equivalence_pass": true,
+    "maximum_absolute_differences": {
+      "acceleration_mps2": 0.0,
+      "speed_mps": 0.0,
+      "x_m": 0.0,
+      "y_m": 0.0
+    },
+    "numeric_tolerances": {
+      "acceleration_mps2": 1e-06,
+      "speed_mps": 1e-06,
+      "x_m": 1e-06,
+      "y_m": 1e-06
+    },
+    "pre_treatment_rows_per_cell": 9,
+    "reference_cell_id": "s0c0",
+    "treatment_start_s": 2.0
+  },
+  "protocol_audits": {
+    "s0c0": {
+      "adopted_count": 0,
+      "delivered_count": 0,
+      "generated_count": 0,
+      "lifecycle_pass": true,
+      "record_count": 1,
+      "sent_count": 0
+    },
+    "s0c1": {
+      "adopted_count": 0,
+      "delivered_count": 1,
+      "generated_count": 1,
+      "lifecycle_pass": true,
+      "record_count": 1,
+      "sent_count": 1
+    },
+    "s1c0": {
+      "adopted_count": 0,
+      "delivered_count": 0,
+      "generated_count": 1,
+      "lifecycle_pass": true,
+      "record_count": 1,
+      "sent_count": 0
+    },
+    "s1c1": {
+      "adopted_count": 1,
+      "delivered_count": 1,
+      "generated_count": 1,
+      "lifecycle_pass": true,
+      "record_count": 1,
+      "sent_count": 1
+    }
+  },
+  "run_id": "e00_real_sumo_20260907_primary_v3",
+  "schema_version": "e00.sumo-report.v1",
+  "scientific_claim_eligible": false,
+  "state_isolation_audit": {
+    "isolation_pass": true,
+    "run_count": 4,
+    "unique_cache_namespaces": 4,
+    "unique_rng_streams": 4,
+    "unique_state_instances": 4
+  },
+  "time_alignment_audit": {
+    "alignment_tolerance_s": 1e-09,
+    "record_count": 1641,
+    "run_count": 4,
+    "stream_count": 15,
+    "time_alignment_pass": true,
+    "time_origin_s": 0.0,
+    "time_step_s": 0.2
+  },
+  "vehicle_lifecycle_audit": {
+    "event_count": 1541,
+    "run_count": 4,
+    "vehicle_count": 12,
+    "vehicle_lifecycle_pass": true
+  }
+}

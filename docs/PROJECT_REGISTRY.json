@@ -1,14 +1,19 @@
 {
-  "schema_version": "aad.project-registry.v1",
+  "schema_version": "aad.project-registry.v2",
   "last_verified": "2026-09-08",
   "project": {
     "name": "AAD",
+    "research_topic": "Connected-vehicle communication adoption and traffic-risk propagation",
     "root": ".",
-    "upstream_read_only": "D:\\shen\\TJU\\DRIFT",
-    "repository_snapshot": {
-      "branch": "main",
-      "head": "eb1bb0a62f3c42c36abb867430940953effaaebe",
-      "worktree": "dirty; commit alone does not reproduce current implementation"
+    "upstream_read_only": "D:\\shen\\TJU\\DRIFT"
+  },
+  "repository": {
+    "branch": "main",
+    "state_semantics": "derive_live",
+    "live_commands": {
+      "head": "git rev-parse HEAD",
+      "worktree": "git status --short",
+      "upstream": "git status --branch --short"
     }
   },
   "canonical_entries": [
@@ -16,16 +21,29 @@
     "AGENTS.md",
     "PROJECT_CONTEXT.md",
     "docs/PROJECT_INDEX.md",
+    "docs/PROJECT_REGISTRY.json",
     "docs/ARCHITECTURE.md",
     "docs/RESEARCH_STATUS.md",
     "docs/EXPERIMENT_INDEX.md",
     "docs/RESULTS_INDEX.md",
-    "docs/CHANGELOG.md"
+    "docs/HISTORY_INDEX.md",
+    "docs/LEARNING_PATH.md",
+    "docs/METHOD_AND_ALGORITHM_GUIDE.md",
+    "docs/CHANGELOG.md",
+    "evidence/README.md",
+    "evidence/EVIDENCE_MANIFEST.json",
+    "docs/论文实验推进/README.md"
   ],
   "current": {
     "active_experiment_id": "E15-A",
-    "active_task": "Complete the 48-item balanced pilot in pNEUMA manual QA v5 and export the Round 1 CSV.",
-    "gate_paths": [
+    "active_task": "由研究者完成 pNEUMA 人工复核 v5 的 48 条平衡 pilot，并导出 Round 1 CSV；AI 不代替人工判读。",
+    "why_now": "E15-A 的人工有效性门禁仍未通过，因而协议锁定与 E02 均不得启动。",
+    "next_decision_owner": "human_researcher",
+    "portable_gate_paths": [
+      "evidence/results/RES-E15A-PNEUMA-QA-V5/audit.json",
+      "evidence/results/RES-PROTOCOL-READINESS-V1/protocol_lock_readiness_v1.json"
+    ],
+    "local_gate_paths": [
       "code/outputs/formal/calibration/e15a_pneuma_manual_qa_v5/audit.json",
       "code/outputs/formal/calibration/protocol_lock_readiness_v1.json"
     ]
@@ -33,169 +51,545 @@
   "experiments": [
     {
       "id": "E00",
+      "name": "SUMO 四单元工程链路验收",
+      "purpose": "验证状态隔离、时间对齐、车辆生命周期和收发路径是否按设计执行。",
+      "research_question": "当前 SUMO 工程链路能否作为后续科学实验的可信执行底座？",
       "date": "2026-09-07",
       "status": "verified_engineering_only",
-      "code_version": "eb1bb0a plus dirty worktree; implementation SHA-256 is stored in provenance.json",
-      "configuration": "seed=2026080701; four cells; dt=0.2 s; treatment=2.0 s; window=0-32 s",
-      "data_version": "e00_real_sumo_20260907_primary_v3",
-      "model_checkpoint": "not_applicable",
-      "scientific_claim_eligible": false,
-      "paths": [
-        "code/src/riskprop/sumo_e00.py",
+      "code_version": "运行时基线为 eb1bb0a；执行脚本与实现的 SHA-256 固化在各单元 provenance.json；当前正式源首次归档于 ecbfc81。",
+      "code_paths": ["code/src/riskprop/sumo_e00.py"],
+      "entrypoints": [
         "code/scripts/run_e00_sumo.py",
+        "code/scripts/analyze_e00_sumo.py",
+        "code/scripts/compare_e00_sumo_runs.py"
+      ],
+      "test_paths": [
         "code/tests/test_sumo_e00.py",
-        "docs/论文实验推进/阶段0_基础设施与测量/E00/执行记录.md"
-      ]
+        "code/tests/test_formal_artifacts.py"
+      ],
+      "configuration": "四单元 2x2：seed=2026080701，dt=0.2 s，treatment=2.0 s，窗口 0-32 s。",
+      "parameters": {
+        "seed": 2026080701,
+        "cells": ["s0c0", "s0c1", "s1c0", "s1c1"],
+        "dt_seconds": 0.2,
+        "treatment_seconds": 2.0,
+        "window_seconds": [0, 32]
+      },
+      "data_version": "e00_real_sumo_20260907_primary_v3",
+      "model": "rule-based SUMO communication/risk experiment; no learned model",
+      "model_checkpoint": "not_applicable",
+      "result_ids": ["RES-E00-PRIMARY-V3", "RES-E00-ENV-COMPARE-V3"],
+      "core_metrics": [
+        "pre_equivalence_pass",
+        "state_isolation_pass",
+        "time_alignment_pass",
+        "vehicle_lifecycle_pass",
+        "physical_path_connected",
+        "adopted_count"
+      ],
+      "current_conclusion": "工程真实性与结构一致性通过；物理连通发送路径未接通，因此不能形成科学效应声明。",
+      "gate": {
+        "status": "engineering_pass_scientific_fail",
+        "portable_path": "evidence/results/RES-E00-PRIMARY-V3/e00_report.json"
+      },
+      "scientific_claim_eligible": false
     },
     {
       "id": "E15-A",
+      "name": "真实轨迹可观测性与 leader/TTC 校准",
+      "purpose": "用 NGSIM 与 pNEUMA 检查 leader 关系、风险事件与 TTC 的可构造性和人工有效性。",
+      "research_question": "真实轨迹数据是否足以形成可审计、可用于协议锁定的风险参考？",
       "date": "2026-09-07",
       "status": "active_pending_human_round1",
-      "code_version": "current dirty worktree; inputs and packages are SHA-bound",
-      "configuration": "seed=20260907; total=300; 4 strata x 75; pilot=4 x 12; radius=50 m; track=1 s",
-      "data_version": "NGSIM v2; pNEUMA mapmatch v2; manual QA v5",
-      "model_checkpoint": "not_applicable",
-      "scientific_claim_eligible": false,
-      "paths": [
+      "code_version": "正式实现首次归档于 ecbfc81；所有输入与证据包均由 manifest/provenance/SHA256SUMS 绑定。",
+      "code_paths": [
         "code/src/riskprop/e15a.py",
         "code/src/riskprop/pneuma_mapmatch.py",
-        "code/src/riskprop/pneuma_qa.py",
-        "code/outputs/formal/calibration/e15a_pneuma_manual_qa_v5/audit.json"
-      ]
+        "code/src/riskprop/pneuma_qa.py"
+      ],
+      "entrypoints": [
+        "code/scripts/run_e15a_ngsim.py",
+        "code/scripts/run_e15a_pneuma_mapmatch.py",
+        "code/scripts/prepare_pneuma_manual_qa.py"
+      ],
+      "test_paths": [
+        "code/tests/test_real_trajectory.py",
+        "code/tests/test_pneuma_mapmatch.py",
+        "code/tests/test_pneuma_qa.py"
+      ],
+      "configuration": "seed=20260907；总样本 300；四分层各 75；pilot 四分层各 12；邻域半径 50 m；轨迹窗 1 s。",
+      "parameters": {
+        "seed": 20260907,
+        "sample_total": 300,
+        "strata": 4,
+        "per_stratum": 75,
+        "pilot_per_stratum": 12,
+        "radius_m": 50,
+        "track_window_s": 1
+      },
+      "data_version": "NGSIM v2; pNEUMA mapmatch v2; pNEUMA manual QA v5",
+      "model": "deterministic trajectory processing and stratified human-validation protocol",
+      "model_checkpoint": "not_applicable",
+      "result_ids": [
+        "RES-E15A-NGSIM-V2",
+        "RES-E15A-PNEUMA-MAPMATCH-V2",
+        "RES-E15A-PNEUMA-QA-V5"
+      ],
+      "core_metrics": [
+        "event_rows",
+        "valid_ttc_rows",
+        "candidate_leader_fraction",
+        "nearest_road_distance_p95_m",
+        "human_review_completion"
+      ],
+      "current_conclusion": "NGSIM 可生成事件与 TTC；pNEUMA 已完成候选 leader 映射，但 leader 与 TTC 的科学有效性仍等待人工 Round 1。",
+      "gate": {
+        "status": "pending_human_round1",
+        "portable_path": "evidence/results/RES-E15A-PNEUMA-QA-V5/audit.json"
+      },
+      "scientific_claim_eligible": false
     },
     {
       "id": "E16-A",
+      "name": "SPMD 通信可观测性审计",
+      "purpose": "区分 RV_RX 接收状态连续性与真正的数据包传输、时延、丢包和采用事件。",
+      "research_question": "现有 SPMD 数据是否能够识别论文所需的通信事件和采用机制？",
       "date": "2026-09-07",
       "status": "active_pending_official_packet_access",
-      "code_version": "current dirty worktree; RV_RX inputs are SHA-bound",
-      "configuration": "calibration-trip RV_RX receive-state continuity only",
+      "code_version": "正式实现首次归档于 ecbfc81；RV_RX 输入由证据包哈希绑定。",
+      "code_paths": ["code/src/riskprop/e16a.py"],
+      "entrypoints": [
+        "code/scripts/profile_e16a_rv_rx.py",
+        "code/scripts/run_e16a_observability.py"
+      ],
+      "test_paths": [
+        "code/tests/test_formal_design.py"
+      ],
+      "configuration": "仅审计 calibration-trip RV_RX 的 receive-state continuity；不得把它解释为 packet-level 通信。",
+      "parameters": {
+        "scope": "calibration_trip_rv_rx",
+        "interpretation_boundary": "receive_state_continuity_only"
+      },
       "data_version": "e16a_observability_v3",
+      "model": "deterministic schema and observability audit",
       "model_checkpoint": "not_applicable",
-      "scientific_claim_eligible": false,
-      "paths": [
-        "code/src/riskprop/e16a.py",
-        "code/scripts/run_e16a_observability.py",
-        "code/outputs/formal/calibration/e16a_observability_v3/audit.json"
-      ]
+      "result_ids": ["RES-E16A-OBS-V3"],
+      "core_metrics": [
+        "row_count",
+        "device_trip_count",
+        "packet_schema_available",
+        "latency_observable",
+        "loss_observable",
+        "adoption_observable"
+      ],
+      "current_conclusion": "RV_RX 只能支持接收状态连续性描述；官方 packet 数据尚不可访问，通信时延、丢包与采用事件均不可声称已观测。",
+      "gate": {
+        "status": "pending_official_packet_access",
+        "portable_path": "evidence/results/RES-E16A-OBS-V3/audit.json"
+      },
+      "scientific_claim_eligible": false
     },
     {
       "id": "E17-A",
+      "name": "真实参考覆盖度审计",
+      "purpose": "形成真实运动学、跟驰和风险事件的冻结参考覆盖度，并暴露仍缺失的来源。",
+      "research_question": "当前真实数据参考是否覆盖后续模拟校准所需的关键变量？",
       "date": "2026-09-07",
       "status": "active_pending_pneuma_manual_and_simulation_sample",
-      "code_version": "current dirty worktree; reference inputs are SHA-bound",
-      "configuration": "seed=20260907; maximum 5000 stable-hash rows per complete site/window",
+      "code_version": "正式实现首次归档于 ecbfc81；参考输入由证据包哈希绑定。",
+      "code_paths": ["code/src/riskprop/e17a.py"],
+      "entrypoints": [
+        "code/scripts/prepare_e17a_real_reference.py",
+        "code/scripts/run_e17a_coverage.py"
+      ],
+      "test_paths": ["code/tests/test_formal_design.py"],
+      "configuration": "seed=20260907；每个完整 site/window 最多选取 5000 条稳定哈希样本。",
+      "parameters": {
+        "seed": 20260907,
+        "max_rows_per_complete_site_window": 5000,
+        "sampling": "stable_hash"
+      },
       "data_version": "e17a_real_reference_v1",
+      "model": "deterministic real-data reference assembler",
       "model_checkpoint": "not_applicable",
-      "scientific_claim_eligible": false,
-      "paths": [
-        "code/src/riskprop/e17a.py",
-        "code/scripts/run_e17a_coverage.py",
-        "code/outputs/formal/calibration/e17a_real_reference_v1/audit.json"
-      ]
+      "result_ids": ["RES-E17A-REAL-REF-V1"],
+      "core_metrics": [
+        "kinematics_rows",
+        "following_rows",
+        "risk_event_rows",
+        "pneuma_ttc_included",
+        "simulation_sample_included"
+      ],
+      "current_conclusion": "已形成部分真实参考；pNEUMA TTC 因未通过人工门禁被排除，模拟样本仍未加入。",
+      "gate": {
+        "status": "pending_pneuma_manual_and_simulation_sample",
+        "portable_path": "evidence/results/RES-E17A-REAL-REF-V1/audit.json"
+      },
+      "scientific_claim_eligible": false
     },
     {
       "id": "E01",
+      "name": "协议锁定前数值验证",
+      "purpose": "验证解析真值、物理路径真值、方向一致性和时间步差异，同时阻止未冻结容差进入正式实验。",
+      "research_question": "当前指标实现和数值离散是否满足协议锁定的最低技术条件？",
       "date": "2026-09-07",
       "status": "active_pending_e15_e17_and_frozen_tolerances",
-      "code_version": "current dirty worktree",
-      "configuration": "time steps 0.10/0.05/0.02/0.01 s; scientific tolerances not frozen",
-      "data_version": "e01_prelock_validation_v2",
-      "model_checkpoint": "not_applicable",
-      "scientific_claim_eligible": false,
-      "paths": [
+      "code_version": "正式实现首次归档于 ecbfc81；审计输入与输出由证据包绑定。",
+      "code_paths": [
         "code/src/riskprop/e01_metrics.py",
         "code/src/riskprop/e01_validation.py",
-        "code/src/riskprop/protocol_lock.py",
-        "code/outputs/formal/calibration/e01_prelock_validation_v2/audit.json"
-      ]
+        "code/src/riskprop/protocol_lock.py"
+      ],
+      "entrypoints": [
+        "code/scripts/run_e01_prelock_validation.py",
+        "code/scripts/check_protocol_lock_readiness.py"
+      ],
+      "test_paths": [
+        "code/tests/test_formal_design.py",
+        "code/tests/test_protocol_lock.py"
+      ],
+      "configuration": "时间步 0.10/0.05/0.02/0.01 s；科学容差尚未冻结，zero tolerance 保持 null。",
+      "parameters": {
+        "time_steps_s": [0.1, 0.05, 0.02, 0.01],
+        "zero_tolerance": null,
+        "scientific_tolerances_frozen": false
+      },
+      "data_version": "e01_prelock_validation_v2",
+      "model": "analytic and deterministic numerical validation",
+      "model_checkpoint": "not_applicable",
+      "result_ids": ["RES-E01-PRELOCK-V2", "RES-PROTOCOL-READINESS-V1"],
+      "core_metrics": [
+        "analytic_truth_pass",
+        "physical_path_truth_pass",
+        "direction_consistent",
+        "difference_005_002",
+        "protocol_lock_allowed",
+        "e02_allowed"
+      ],
+      "current_conclusion": "解析与工程数值检查通过，但 E15/E16/E17 和科学容差均未闭合，因此协议锁定和 E02 都被明确阻断。",
+      "gate": {
+        "status": "blocked_by_calibration_and_tolerance_freeze",
+        "portable_path": "evidence/results/RES-PROTOCOL-READINESS-V1/protocol_lock_readiness_v1.json"
+      },
+      "scientific_claim_eligible": false
     },
     {
       "id": "E02",
+      "name": "核心效应确认实验",
+      "purpose": "在协议锁定后估计通信采用对风险传播的核心效应。",
+      "research_question": "在冻结设计与有效校准下，通信采用是否改变风险传播？",
       "date": null,
       "status": "agreed_pending_blocked",
-      "code_version": "not_frozen",
+      "code_version": "not_implemented",
+      "code_paths": [],
+      "entrypoints": [],
+      "test_paths": [],
       "configuration": "not_frozen",
+      "parameters": {},
       "data_version": "not_created",
+      "model": "not_determined",
       "model_checkpoint": "not_determined",
-      "scientific_claim_eligible": false,
-      "paths": [
-        "docs/论文实验推进/阶段1_核心效应确认/README.md",
-        "code/outputs/formal/calibration/protocol_lock_readiness_v1.json"
-      ]
+      "result_ids": [],
+      "core_metrics": [],
+      "current_conclusion": "仅有经研究者确认的阶段目标；未实现、未运行、无结果。",
+      "gate": {
+        "status": "blocked_until_protocol_lock",
+        "portable_path": "evidence/results/RES-PROTOCOL-READINESS-V1/protocol_lock_readiness_v1.json"
+      },
+      "scientific_claim_eligible": false
     }
   ],
   "results": [
     {
       "id": "RES-E00-PRIMARY-V3",
       "experiment_id": "E00",
-      "scientific_claim_eligible": false,
-      "paths": [
-        "code/outputs/formal/E00/e00_real_sumo_20260907_primary_v3/e00_report.json"
-      ]
+      "name": "E00 主四单元运行 v3",
+      "status": "verified_engineering_only",
+      "portable_evidence_paths": [
+        "evidence/results/RES-E00-PRIMARY-V3/e00_report.json",
+        "evidence/results/RES-E00-PRIMARY-V3/independent_analysis.json"
+      ],
+      "local_artifact_paths": ["code/outputs/formal/E00/e00_real_sumo_20260907_primary_v3"],
+      "code_version_source": "各单元 provenance.json 的 repository.head 与 implementation_files SHA-256",
+      "configuration_source": "各单元 config_frozen.json",
+      "data_version_source": "各单元 manifest.json 与 SHA256SUMS",
+      "core_metrics": {
+        "pre_equivalence_pass": true,
+        "state_isolation_pass": true,
+        "time_alignment_pass": true,
+        "vehicle_lifecycle_pass": true,
+        "physical_path_connected": false,
+        "adopted_count_by_cell": {"s0c0": 0, "s0c1": 0, "s1c0": 0, "s1c1": 1}
+      },
+      "current_conclusion": "工程链路可审计，但物理连通路径未接通；只可作为工程验收证据。",
+      "gate_status": "engineering_pass_scientific_fail",
+      "paper_locations": ["docs/论文实验推进/阶段0_基础设施与测量/E00/执行记录.md"],
+      "scientific_claim_eligible": false
     },
     {
       "id": "RES-E00-ENV-COMPARE-V3",
       "experiment_id": "E00",
-      "scientific_claim_eligible": false,
-      "paths": [
-        "code/outputs/formal/E00/e00_real_sumo_environment_comparison_20260907_v3.json"
-      ]
+      "name": "E00 双环境结构比较 v3",
+      "status": "verified_structural_match",
+      "portable_evidence_paths": ["evidence/results/RES-E00-ENV-COMPARE-V3/environment_comparison.json"],
+      "local_artifact_paths": ["code/outputs/formal/E00/e00_real_sumo_environment_comparison_20260907_v3.json"],
+      "code_version_source": "comparison JSON 内的输入路径与实现证据",
+      "configuration_source": "comparison JSON",
+      "data_version_source": "comparison JSON",
+      "core_metrics": {"structural_match": true, "scientific_claim_eligible": false},
+      "current_conclusion": "双环境结构一致，不等于科学效应通过。",
+      "gate_status": "structural_match_only",
+      "paper_locations": ["docs/论文实验推进/阶段0_基础设施与测量/E00/执行记录.md"],
+      "scientific_claim_eligible": false
     },
     {
       "id": "RES-E15A-NGSIM-V2",
       "experiment_id": "E15-A",
-      "scientific_claim_eligible": false,
-      "paths": [
-        "code/outputs/formal/calibration/e15a_ngsim_v2/audit.json"
-      ]
+      "name": "NGSIM 轨迹校准包 v2",
+      "status": "verified_pending_cross_source_validation",
+      "portable_evidence_paths": [
+        "evidence/results/RES-E15A-NGSIM-V2/audit.json",
+        "evidence/results/RES-E15A-NGSIM-V2/config_frozen.json",
+        "evidence/results/RES-E15A-NGSIM-V2/provenance.json"
+      ],
+      "local_artifact_paths": ["code/outputs/formal/calibration/e15a_ngsim_v2"],
+      "code_version_source": "provenance.json",
+      "configuration_source": "config_frozen.json",
+      "data_version_source": "manifest.json 与 SHA256SUMS",
+      "core_metrics": {
+        "us101_event_rows": [470, 613, 898],
+        "us101_valid_ttc_rows": [411250, 450108, 453512],
+        "lankershim_event_rows": 2777,
+        "lankershim_valid_ttc_rows": 483098,
+        "locked_holdout": false
+      },
+      "current_conclusion": "NGSIM 可形成事件与 TTC 参考，但不能替代 pNEUMA 人工验证和盲重审。",
+      "gate_status": "pending_pneuma_and_blind_reaudit",
+      "paper_locations": ["docs/论文实验推进/阶段0_基础设施与测量/E15-A/执行记录.md"],
+      "scientific_claim_eligible": false
     },
     {
       "id": "RES-E15A-PNEUMA-MAPMATCH-V2",
       "experiment_id": "E15-A",
-      "scientific_claim_eligible": false,
-      "paths": [
-        "code/outputs/formal/calibration/e15a_pneuma_mapmatch_v2/audit.json"
-      ]
+      "name": "pNEUMA 路网匹配与候选 leader v2",
+      "status": "verified_engineering_pending_manual_validation",
+      "portable_evidence_paths": [
+        "evidence/results/RES-E15A-PNEUMA-MAPMATCH-V2/audit.json",
+        "evidence/results/RES-E15A-PNEUMA-MAPMATCH-V2/config_frozen.json",
+        "evidence/results/RES-E15A-PNEUMA-MAPMATCH-V2/provenance.json"
+      ],
+      "local_artifact_paths": ["code/outputs/formal/calibration/e15a_pneuma_mapmatch_v2"],
+      "code_version_source": "provenance.json",
+      "configuration_source": "config_frozen.json",
+      "data_version_source": "manifest.json 与 SHA256SUMS",
+      "core_metrics": {
+        "point_count": 1239475,
+        "candidate_leader_count": 601633,
+        "candidate_leader_fraction": 0.641332,
+        "nearest_road_distance_p95_m": 4.95366,
+        "leader_validated": false,
+        "ttc_generated": false
+      },
+      "current_conclusion": "路网匹配和 leader 候选已生成；人工有效性与 TTC 仍未通过。",
+      "gate_status": "pending_manual_validation",
+      "paper_locations": ["docs/论文实验推进/阶段0_基础设施与测量/E15-A/执行记录.md"],
+      "scientific_claim_eligible": false
     },
     {
       "id": "RES-E15A-PNEUMA-QA-V5",
       "experiment_id": "E15-A",
-      "scientific_claim_eligible": false,
-      "paths": [
-        "code/outputs/formal/calibration/e15a_pneuma_manual_qa_v5/audit.json"
-      ]
+      "name": "pNEUMA 人工复核协议 v5",
+      "status": "active_pending_human_round1",
+      "portable_evidence_paths": [
+        "evidence/results/RES-E15A-PNEUMA-QA-V5/audit.json",
+        "evidence/results/RES-E15A-PNEUMA-QA-V5/审计说明.md"
+      ],
+      "local_artifact_paths": ["code/outputs/formal/calibration/e15a_pneuma_manual_qa_v5"],
+      "code_version_source": "manifest.json 与 audit.json",
+      "configuration_source": "audit.json",
+      "data_version_source": "manifest.json 与 SHA256SUMS；sealed_sampling_key 不进入 Git",
+      "core_metrics": {
+        "sample_total": 300,
+        "pilot_total": 48,
+        "strata_count": 4,
+        "per_stratum": 75,
+        "human_round1_complete": false,
+        "leader_validated": false,
+        "ttc_validated": false
+      },
+      "current_conclusion": "复核样本与协议已准备；必须由研究者完成 Round 1，AI 不得代标。",
+      "gate_status": "pending_human_round1",
+      "paper_locations": ["docs/论文实验推进/阶段0_基础设施与测量/E15-A/执行记录.md"],
+      "scientific_claim_eligible": false
     },
     {
       "id": "RES-E16A-OBS-V3",
       "experiment_id": "E16-A",
-      "scientific_claim_eligible": false,
-      "paths": [
-        "code/outputs/formal/calibration/e16a_observability_v3/audit.json"
-      ]
+      "name": "SPMD RV_RX 可观测性审计 v3",
+      "status": "verified_boundary_pending_packet_access",
+      "portable_evidence_paths": [
+        "evidence/results/RES-E16A-OBS-V3/audit.json",
+        "evidence/results/RES-E16A-OBS-V3/provenance.json"
+      ],
+      "local_artifact_paths": ["code/outputs/formal/calibration/e16a_observability_v3"],
+      "code_version_source": "provenance.json",
+      "configuration_source": "audit.json",
+      "data_version_source": "manifest.json 与 SHA256SUMS",
+      "core_metrics": {
+        "row_count": 17481111,
+        "device_trip_count": 7601,
+        "interpretation_boundary": "receive_state_continuity_only",
+        "official_packet_http_status": 403,
+        "packet_schema_available": false,
+        "latency_observable": false,
+        "loss_observable": false,
+        "adoption_observable": false
+      },
+      "current_conclusion": "只能声明 RV_RX 接收状态连续性；packet 级通信结论没有数据支持。",
+      "gate_status": "pending_official_packet_access",
+      "paper_locations": ["docs/论文实验推进/阶段0_基础设施与测量/E16-A/执行记录.md"],
+      "scientific_claim_eligible": false
     },
     {
       "id": "RES-E17A-REAL-REF-V1",
       "experiment_id": "E17-A",
-      "scientific_claim_eligible": false,
-      "paths": [
-        "code/outputs/formal/calibration/e17a_real_reference_v1/audit.json"
-      ]
+      "name": "真实参考覆盖度 v1",
+      "status": "verified_partial_reference",
+      "portable_evidence_paths": ["evidence/results/RES-E17A-REAL-REF-V1/audit.json"],
+      "local_artifact_paths": ["code/outputs/formal/calibration/e17a_real_reference_v1"],
+      "code_version_source": "audit.json 与 manifest.json",
+      "configuration_source": "audit.json",
+      "data_version_source": "manifest.json 与 SHA256SUMS",
+      "core_metrics": {
+        "kinematics_rows": 25000,
+        "following_rows": 20000,
+        "risk_event_rows": 4758,
+        "pneuma_ttc_included": false,
+        "simulation_sample_included": false
+      },
+      "current_conclusion": "真实参考包只完成部分覆盖，未通过人工门禁的 pNEUMA TTC 被正确排除。",
+      "gate_status": "pending_pneuma_manual_and_simulation_sample",
+      "paper_locations": ["docs/论文实验推进/阶段0_基础设施与测量/E17-A/执行记录.md"],
+      "scientific_claim_eligible": false
     },
     {
       "id": "RES-E01-PRELOCK-V2",
       "experiment_id": "E01",
-      "scientific_claim_eligible": false,
-      "paths": [
-        "code/outputs/formal/calibration/e01_prelock_validation_v2/audit.json"
-      ]
+      "name": "协议锁定前数值审计 v2",
+      "status": "verified_technical_pending_scientific_freeze",
+      "portable_evidence_paths": ["evidence/results/RES-E01-PRELOCK-V2/audit.json"],
+      "local_artifact_paths": ["code/outputs/formal/calibration/e01_prelock_validation_v2"],
+      "code_version_source": "audit.json",
+      "configuration_source": "audit.json",
+      "data_version_source": "manifest.json 与 SHA256SUMS",
+      "core_metrics": {
+        "analytic_truth_pass": true,
+        "physical_path_truth_pass": true,
+        "direction_consistent": true,
+        "difference_005_002": 0.0029869451697126514,
+        "zero_tolerance": null
+      },
+      "current_conclusion": "技术数值验证通过；科学容差未冻结，不能锁协议。",
+      "gate_status": "pending_e15_e17_and_frozen_tolerances",
+      "paper_locations": ["docs/论文实验推进/阶段0_基础设施与测量/E01/执行记录.md"],
+      "scientific_claim_eligible": false
     },
     {
       "id": "RES-PROTOCOL-READINESS-V1",
       "experiment_id": "E01",
-      "scientific_claim_eligible": false,
-      "paths": [
-        "code/outputs/formal/calibration/protocol_lock_readiness_v1.json"
-      ]
+      "name": "协议锁定就绪判定 v1",
+      "status": "verified_blocked",
+      "portable_evidence_paths": ["evidence/results/RES-PROTOCOL-READINESS-V1/protocol_lock_readiness_v1.json"],
+      "local_artifact_paths": ["code/outputs/formal/calibration/protocol_lock_readiness_v1.json"],
+      "code_version_source": "code/src/riskprop/protocol_lock.py",
+      "configuration_source": "protocol_lock_readiness_v1.json",
+      "data_version_source": "E15-A/E16-A/E17-A/E01 各自冻结证据",
+      "core_metrics": {
+        "protocol_lock_allowed": false,
+        "e02_allowed": false,
+        "blockers": ["E15-A", "E16-A", "E17-A", "E01"]
+      },
+      "current_conclusion": "协议锁定和 E02 均不得启动；当前唯一前进动作是完成 E15-A 人工 Round 1。",
+      "gate_status": "blocked",
+      "paper_locations": [
+        "docs/RESEARCH_STATUS.md",
+        "docs/论文实验推进/阶段0_基础设施与测量/执行记录.md"
+      ],
+      "scientific_claim_eligible": false
+    }
+  ],
+  "history": [
+    {
+      "id": "HIST-DRIFT-QUALIFICATION",
+      "name": "上游 DRIFT 资格审计旧实现",
+      "purpose": "保留早期上游资产筛查与适配证据。",
+      "status": "archived_reference_only",
+      "code_paths": [
+        "code/src/riskprop/legacy/drift_qualification.py",
+        "code/scripts/legacy/audit_drift_qualification.py"
+      ],
+      "local_output_paths": ["code/outputs/formal/calibration/drift_qualification"],
+      "portable_summary_paths": ["docs/论文实验推进/阶段0_基础设施与测量/E00/上游DRIFT资产核验.md"],
+      "why_not_current": "属于前期资格筛查，不是当前正式实验实现或结果。",
+      "evidence_boundary": "可用于追溯上游选择，不能替代 E00-E17 的正式门禁。"
+    },
+    {
+      "id": "HIST-RISK-EVENT-DATASET",
+      "name": "早期风险事件数据集管线",
+      "purpose": "保留历史风险事件抽取与可视化实现。",
+      "status": "archived_reference_only",
+      "code_paths": [
+        "code/src/riskprop/legacy/risk_event_dataset.py",
+        "code/scripts/legacy/extract_full_risk_events.py"
+      ],
+      "local_output_paths": ["code/outputs/risk_event_dataset"],
+      "portable_summary_paths": ["code/src/riskprop/legacy/README.md"],
+      "why_not_current": "生成于正式预注册与校准门禁之前，数据口径未绑定当前协议。",
+      "evidence_boundary": "只用于历史复查和代码考古，不得直接写入当前论文结果。"
+    },
+    {
+      "id": "HIST-LOCAL-PROPAGATION",
+      "name": "局部传播基线旧实现",
+      "purpose": "保留局部传播指标与可视化探索。",
+      "status": "archived_reference_only",
+      "code_paths": [
+        "code/src/riskprop/legacy/local_propagation_baseline.py",
+        "code/scripts/legacy/build_local_propagation_baseline.py"
+      ],
+      "local_output_paths": ["code/outputs/local_propagation_baseline"],
+      "portable_summary_paths": ["code/src/riskprop/legacy/README.md"],
+      "why_not_current": "探索性口径早于当前符号、指标和协议锁定规则。",
+      "evidence_boundary": "仅供方法演化对照，不能与正式 E01/E02 指标混用。"
+    },
+    {
+      "id": "HIST-NONLOCAL-PILOTS",
+      "name": "非局部传播 A/B pilot",
+      "purpose": "保留早期非局部效应探索和汇总。",
+      "status": "archived_reference_only",
+      "code_paths": [
+        "code/src/riskprop/legacy/nonlocal_pilot_summary.py",
+        "code/scripts/legacy/summarize_nonlocal_pilot_a.py",
+        "code/scripts/legacy/summarize_nonlocal_pilot_b.py"
+      ],
+      "local_output_paths": ["code/outputs/nonlocal_pilot_a", "code/outputs/nonlocal_pilot_b"],
+      "portable_summary_paths": ["code/src/riskprop/legacy/README.md"],
+      "why_not_current": "pilot 未在当前真实数据校准与协议锁定门禁下执行。",
+      "evidence_boundary": "只证明早期工程探索存在，不构成核心效应证据。"
+    },
+    {
+      "id": "HIST-FEASIBILITY-PIPELINE",
+      "name": "早期可行性周与通用管线",
+      "purpose": "保留最初数据流、区域化与传播管线探索。",
+      "status": "archived_reference_only",
+      "code_paths": [
+        "code/src/riskprop/legacy/pipeline.py",
+        "code/src/riskprop/legacy/cli.py",
+        "code/scripts/legacy/run_feasibility_week.py"
+      ],
+      "local_output_paths": ["code/outputs/feasibility_week"],
+      "portable_summary_paths": ["code/src/riskprop/legacy/README.md", "docs/CHANGELOG.md"],
+      "why_not_current": "属于正式研究路线和证据门禁建立前的原型。",
+      "evidence_boundary": "可用于复现历史决策，不得覆盖当前正式路径。"
     }
   ]
 }

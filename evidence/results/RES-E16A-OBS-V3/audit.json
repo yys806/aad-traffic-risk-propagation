@@ -1,0 +1,28 @@
+{
+  "adoption_inferred": false,
+  "created_at_utc": "2026-09-07T04:40:50.385073Z",
+  "experiment_id": "E16-A",
+  "gate_status": "pending_official_packet_access",
+  "latency_estimated": false,
+  "limitations": [
+    "RV_RX rows are received remote-vehicle state observations, not message counts.",
+    "Observation gaps are not packet-loss events.",
+    "RV_RX has no verified controller-adoption field."
+  ],
+  "note": "An HTTP/access failure is not a Packet schema failure. RV_RX gaps are not packet loss.",
+  "observable_boundary": "receive_state_continuity_only",
+  "packet_access": {
+    "http_status": 403,
+    "source": "official_usdot",
+    "status": "official_asset_inaccessible_from_current_environment",
+    "url": "https://data.transportation.gov/download/deww-aa3r/application%2Fx-zip-compressed"
+  },
+  "packet_loss_estimated": false,
+  "packet_schema_evaluated": false,
+  "rv_rx_device_trip_count": 7601,
+  "rv_rx_profile_sha256": "81b496d059d147febc9e2b65f0c29891c759a5116b0277a4377432628b787b47",
+  "rv_rx_row_count": 17481111,
+  "rv_rx_sha256": "9e5e7a3842b15adc08366d1afe098224c912d3c593a70d4bb4071088749ab56e",
+  "schema_version": "e16a.communication-observability.v1",
+  "scientific_claim_eligible": false
+}

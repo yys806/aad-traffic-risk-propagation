@@ -1,0 +1,53 @@
+{
+  "directed_edges": [
+    {
+      "edge_id": "src_in",
+      "from_node": "src_n0",
+      "length_m": 100.0,
+      "to_node": "src_n1"
+    },
+    {
+      "edge_id": "src_road",
+      "from_node": "src_n1",
+      "length_m": 300.0,
+      "to_node": "src_n2"
+    },
+    {
+      "edge_id": "src_out",
+      "from_node": "src_n2",
+      "length_m": 100.0,
+      "to_node": "src_n3"
+    },
+    {
+      "edge_id": "tgt_in",
+      "from_node": "tgt_n0",
+      "length_m": 100.0,
+      "to_node": "tgt_n1"
+    },
+    {
+      "edge_id": "tgt_road",
+      "from_node": "tgt_n1",
+      "length_m": 300.0,
+      "to_node": "tgt_n2"
+    },
+    {
+      "edge_id": "tgt_out",
+      "from_node": "tgt_n2",
+      "length_m": 100.0,
+      "to_node": "tgt_n3"
+    }
+  ],
+  "nodes": [
+    "src_n0",
+    "src_n1",
+    "src_n2",
+    "src_n3",
+    "tgt_n0",
+    "tgt_n1",
+    "tgt_n2",
+    "tgt_n3"
+  ],
+  "schema_version": "e00.topology.v1",
+  "source_edge": "src_road",
+  "target_edge": "tgt_road"
+}
