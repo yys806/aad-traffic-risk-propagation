@@ -1,0 +1,201 @@
+{
+  "schema_version": "aad.project-registry.v1",
+  "last_verified": "2026-09-08",
+  "project": {
+    "name": "AAD",
+    "root": ".",
+    "upstream_read_only": "D:\\shen\\TJU\\DRIFT",
+    "repository_snapshot": {
+      "branch": "main",
+      "head": "eb1bb0a62f3c42c36abb867430940953effaaebe",
+      "worktree": "dirty; commit alone does not reproduce current implementation"
+    }
+  },
+  "canonical_entries": [
+    "README.md",
+    "AGENTS.md",
+    "PROJECT_CONTEXT.md",
+    "docs/PROJECT_INDEX.md",
+    "docs/ARCHITECTURE.md",
+    "docs/RESEARCH_STATUS.md",
+    "docs/EXPERIMENT_INDEX.md",
+    "docs/RESULTS_INDEX.md",
+    "docs/CHANGELOG.md"
+  ],
+  "current": {
+    "active_experiment_id": "E15-A",
+    "active_task": "Complete the 48-item balanced pilot in pNEUMA manual QA v5 and export the Round 1 CSV.",
+    "gate_paths": [
+      "code/outputs/formal/calibration/e15a_pneuma_manual_qa_v5/audit.json",
+      "code/outputs/formal/calibration/protocol_lock_readiness_v1.json"
+    ]
+  },
+  "experiments": [
+    {
+      "id": "E00",
+      "date": "2026-09-07",
+      "status": "verified_engineering_only",
+      "code_version": "eb1bb0a plus dirty worktree; implementation SHA-256 is stored in provenance.json",
+      "configuration": "seed=2026080701; four cells; dt=0.2 s; treatment=2.0 s; window=0-32 s",
+      "data_version": "e00_real_sumo_20260907_primary_v3",
+      "model_checkpoint": "not_applicable",
+      "scientific_claim_eligible": false,
+      "paths": [
+        "code/src/riskprop/sumo_e00.py",
+        "code/scripts/run_e00_sumo.py",
+        "code/tests/test_sumo_e00.py",
+        "docs/论文实验推进/阶段0_基础设施与测量/E00/执行记录.md"
+      ]
+    },
+    {
+      "id": "E15-A",
+      "date": "2026-09-07",
+      "status": "active_pending_human_round1",
+      "code_version": "current dirty worktree; inputs and packages are SHA-bound",
+      "configuration": "seed=20260907; total=300; 4 strata x 75; pilot=4 x 12; radius=50 m; track=1 s",
+      "data_version": "NGSIM v2; pNEUMA mapmatch v2; manual QA v5",
+      "model_checkpoint": "not_applicable",
+      "scientific_claim_eligible": false,
+      "paths": [
+        "code/src/riskprop/e15a.py",
+        "code/src/riskprop/pneuma_mapmatch.py",
+        "code/src/riskprop/pneuma_qa.py",
+        "code/outputs/formal/calibration/e15a_pneuma_manual_qa_v5/audit.json"
+      ]
+    },
+    {
+      "id": "E16-A",
+      "date": "2026-09-07",
+      "status": "active_pending_official_packet_access",
+      "code_version": "current dirty worktree; RV_RX inputs are SHA-bound",
+      "configuration": "calibration-trip RV_RX receive-state continuity only",
+      "data_version": "e16a_observability_v3",
+      "model_checkpoint": "not_applicable",
+      "scientific_claim_eligible": false,
+      "paths": [
+        "code/src/riskprop/e16a.py",
+        "code/scripts/run_e16a_observability.py",
+        "code/outputs/formal/calibration/e16a_observability_v3/audit.json"
+      ]
+    },
+    {
+      "id": "E17-A",
+      "date": "2026-09-07",
+      "status": "active_pending_pneuma_manual_and_simulation_sample",
+      "code_version": "current dirty worktree; reference inputs are SHA-bound",
+      "configuration": "seed=20260907; maximum 5000 stable-hash rows per complete site/window",
+      "data_version": "e17a_real_reference_v1",
+      "model_checkpoint": "not_applicable",
+      "scientific_claim_eligible": false,
+      "paths": [
+        "code/src/riskprop/e17a.py",
+        "code/scripts/run_e17a_coverage.py",
+        "code/outputs/formal/calibration/e17a_real_reference_v1/audit.json"
+      ]
+    },
+    {
+      "id": "E01",
+      "date": "2026-09-07",
+      "status": "active_pending_e15_e17_and_frozen_tolerances",
+      "code_version": "current dirty worktree",
+      "configuration": "time steps 0.10/0.05/0.02/0.01 s; scientific tolerances not frozen",
+      "data_version": "e01_prelock_validation_v2",
+      "model_checkpoint": "not_applicable",
+      "scientific_claim_eligible": false,
+      "paths": [
+        "code/src/riskprop/e01_metrics.py",
+        "code/src/riskprop/e01_validation.py",
+        "code/src/riskprop/protocol_lock.py",
+        "code/outputs/formal/calibration/e01_prelock_validation_v2/audit.json"
+      ]
+    },
+    {
+      "id": "E02",
+      "date": null,
+      "status": "agreed_pending_blocked",
+      "code_version": "not_frozen",
+      "configuration": "not_frozen",
+      "data_version": "not_created",
+      "model_checkpoint": "not_determined",
+      "scientific_claim_eligible": false,
+      "paths": [
+        "docs/论文实验推进/阶段1_核心效应确认/README.md",
+        "code/outputs/formal/calibration/protocol_lock_readiness_v1.json"
+      ]
+    }
+  ],
+  "results": [
+    {
+      "id": "RES-E00-PRIMARY-V3",
+      "experiment_id": "E00",
+      "scientific_claim_eligible": false,
+      "paths": [
+        "code/outputs/formal/E00/e00_real_sumo_20260907_primary_v3/e00_report.json"
+      ]
+    },
+    {
+      "id": "RES-E00-ENV-COMPARE-V3",
+      "experiment_id": "E00",
+      "scientific_claim_eligible": false,
+      "paths": [
+        "code/outputs/formal/E00/e00_real_sumo_environment_comparison_20260907_v3.json"
+      ]
+    },
+    {
+      "id": "RES-E15A-NGSIM-V2",
+      "experiment_id": "E15-A",
+      "scientific_claim_eligible": false,
+      "paths": [
+        "code/outputs/formal/calibration/e15a_ngsim_v2/audit.json"
+      ]
+    },
+    {
+      "id": "RES-E15A-PNEUMA-MAPMATCH-V2",
+      "experiment_id": "E15-A",
+      "scientific_claim_eligible": false,
+      "paths": [
+        "code/outputs/formal/calibration/e15a_pneuma_mapmatch_v2/audit.json"
+      ]
+    },
+    {
+      "id": "RES-E15A-PNEUMA-QA-V5",
+      "experiment_id": "E15-A",
+      "scientific_claim_eligible": false,
+      "paths": [
+        "code/outputs/formal/calibration/e15a_pneuma_manual_qa_v5/audit.json"
+      ]
+    },
+    {
+      "id": "RES-E16A-OBS-V3",
+      "experiment_id": "E16-A",
+      "scientific_claim_eligible": false,
+      "paths": [
+        "code/outputs/formal/calibration/e16a_observability_v3/audit.json"
+      ]
+    },
+    {
+      "id": "RES-E17A-REAL-REF-V1",
+      "experiment_id": "E17-A",
+      "scientific_claim_eligible": false,
+      "paths": [
+        "code/outputs/formal/calibration/e17a_real_reference_v1/audit.json"
+      ]
+    },
+    {
+      "id": "RES-E01-PRELOCK-V2",
+      "experiment_id": "E01",
+      "scientific_claim_eligible": false,
+      "paths": [
+        "code/outputs/formal/calibration/e01_prelock_validation_v2/audit.json"
+      ]
+    },
+    {
+      "id": "RES-PROTOCOL-READINESS-V1",
+      "experiment_id": "E01",
+      "scientific_claim_eligible": false,
+      "paths": [
+        "code/outputs/formal/calibration/protocol_lock_readiness_v1.json"
+      ]
+    }
+  ]
+}

@@ -1,4 +1,21 @@
-# 项目上下文与交接说明（新对话先读）
+# AAD 交通风险研究项目
+
+> 当前稳定入口已于 2026-09-08 重构。下方保留的是 2026-08-15 历史快照，不再作为当前状态的最高权威。
+
+新对话和后续 AI 工作按以下顺序进入：
+
+1. [`PROJECT_CONTEXT.md`](PROJECT_CONTEXT.md)：当前完整交接与精确继续点；
+2. [`AGENTS.md`](AGENTS.md)：长期人机协作、证据和维护规则；
+3. [`docs/PROJECT_INDEX.md`](docs/PROJECT_INDEX.md)：项目总地图；
+4. [`docs/RESEARCH_STATUS.md`](docs/RESEARCH_STATUS.md)：当前科研状态；
+5. [`docs/EXPERIMENT_INDEX.md`](docs/EXPERIMENT_INDEX.md) 与 [`docs/RESULTS_INDEX.md`](docs/RESULTS_INDEX.md)：实验—结果双向追踪；
+6. [`docs/PROJECT_REGISTRY.json`](docs/PROJECT_REGISTRY.json)：机器可读登记表。
+
+当前唯一执行任务与 Gate 必须从 `PROJECT_CONTEXT.md`、`RESEARCH_STATUS.md` 和机器 `audit.json` 交叉核对。索引用于导航，原始证据用于验证。
+
+---
+
+# 历史快照：项目上下文与交接说明（2026-08-15）
 
 > 更新时间：2026-08-15
 > 这是当前项目的入口文档。新对话应先阅读本文件，再按需要查看代码、论文和进展文档。  
@@ -279,9 +296,9 @@ DRIFT 当前可用的依据：
 
 ### 当前周进展
 
-- Word：`paper/进展文档/2026-07-15_2026-07-21/progress.docx`
-- LaTeX：`paper/进展文档/2026-07-15_2026-07-21/progress.tex`
-- PDF：`paper/进展文档/2026-07-15_2026-07-21/progress.pdf`
+- Word：`paper/历史记录/进展文档/2026-07-15_2026-07-21/progress.docx`
+- LaTeX：`paper/历史记录/进展文档/2026-07-15_2026-07-21/progress.tex`
+- PDF：`paper/历史记录/进展文档/2026-07-15_2026-07-21/progress.pdf`
 
 Word 文档是本轮与老师沟通使用的简明版本。
 
