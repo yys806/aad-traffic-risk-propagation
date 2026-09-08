@@ -1,10 +1,11 @@
 [project]
 name = "riskprop-pilot"
 version = "0.1.0"
-description = "Pilot pipeline for mixed-autonomy risk event extraction and propagation analysis."
+description = "AAD formal traffic-risk experiment tools with archived legacy Pilot pipelines."
 requires-python = ">=3.10"
 dependencies = [
     "pandas>=2.0",
+    "pyarrow>=25.0,<26",
     "matplotlib>=3.8",
     "networkx>=3.2",
 ]
@@ -15,7 +16,9 @@ dev = [
 ]
 
 [project.scripts]
-riskprop = "riskprop.cli:main"
+# Backward-compatible historical Pilot CLI; current formal experiments use scripts/.
+riskprop = "riskprop.legacy.cli:main"
+riskprop-legacy = "riskprop.legacy.cli:main"
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

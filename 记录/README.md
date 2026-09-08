@@ -1,6 +1,6 @@
 # AAD 项目记录索引
 
-本目录统一保存 AAD 的周推进、会话交接和早期项目记录。四份周推进文件于 2026-08-15 从外部知识库迁入，迁移过程和 SHA-256 见 [`docs/maintenance/2026-08-15-aad-organization-manifest.md`](../docs/maintenance/2026-08-15-aad-organization-manifest.md)。
+本目录统一保存 AAD 的周推进、会话交接和早期项目记录。四份周推进文件于 2026-08-15 从外部知识库迁入，迁移过程和 SHA-256 见 [`docs/归档/项目组织与仓库方案/2026-08-15-aad-organization-manifest.md`](../docs/归档/项目组织与仓库方案/2026-08-15-aad-organization-manifest.md)。
 
 ## 时间索引
 
@@ -21,6 +21,7 @@
 - [`项目历史/task_plan.md`](项目历史/task_plan.md)
 - [`项目历史/findings.md`](项目历史/findings.md)
 - [`项目历史/progress.md`](项目历史/progress.md)
+- [`项目历史/导师批注修订_2026-08-27_2026-08-29/`](项目历史/导师批注修订_2026-08-27_2026-08-29/)：从根目录归档的该轮 `task_plan/findings/progress` 原始工作记录；迁移哈希见 `docs/maintenance/2026-09-08-physical-refactor-manifest.json`。
 
 ## 使用边界
 

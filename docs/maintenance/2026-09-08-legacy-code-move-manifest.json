@@ -1,0 +1,111 @@
+{
+  "schema_version": "aad.legacy-code-move-manifest.v1",
+  "batch_id": "aad_physical_refactor_20260908_batch2",
+  "created_at_local": "2026-09-08",
+  "status": "completed_and_verified",
+  "reason": "Separate historical Pilot implementation, commands, and tests from current formal experiment surfaces without deleting functionality.",
+  "dependency_audit": {
+    "current_formal_modules_import_legacy": false,
+    "legacy_cluster_has_internal_dependencies": true,
+    "public_compatibility_exports_to_preserve": [
+      "riskprop.extract_risk_events",
+      "riskprop.PipelineOutputs",
+      "riskprop.run_pipeline",
+      "riskprop.build_propagation_edges",
+      "riskprop command"
+    ]
+  },
+  "groups": [
+    {
+      "source": "code/src/riskprop",
+      "destination": "code/src/riskprop/legacy",
+      "file_count": 14,
+      "total_bytes": 199317,
+      "content_set_sha256": "9376a17d4103dfd6deaac9cca0f669c47a198c484a7ad4fc8a2bca366e3cb622",
+      "files": [
+        "cli.py",
+        "communication_pilot.py",
+        "drift_qualification.py",
+        "events.py",
+        "feasibility_data.py",
+        "local_propagation_baseline.py",
+        "local_propagation_visuals.py",
+        "nonlocal_pilot_summary.py",
+        "pipeline.py",
+        "propagation.py",
+        "regions.py",
+        "risk_event_dataset.py",
+        "risk_event_visuals.py",
+        "visuals.py"
+      ]
+    },
+    {
+      "source": "code/scripts",
+      "destination": "code/scripts/legacy",
+      "file_count": 10,
+      "total_bytes": 63005,
+      "content_set_sha256": "00c011b35f0a40b0dfe5495febf4e240f181cde7d5dace2d3bc35e39a7d647d7",
+      "files": [
+        "analyse_existing_run.py",
+        "audit_drift_qualification.py",
+        "build_local_propagation_baseline.py",
+        "extract_full_risk_events.py",
+        "render_risk_event_visuals.py",
+        "run_feasibility_week.py",
+        "run_pipeline.py",
+        "run_region_scale_pilot.py",
+        "summarize_nonlocal_pilot_a.py",
+        "summarize_nonlocal_pilot_b.py"
+      ]
+    },
+    {
+      "source": "code/tests",
+      "destination": "code/tests/legacy",
+      "file_count": 9,
+      "total_bytes": 74800,
+      "content_set_sha256": "92af8458df50547b82f2e311b2babe0a46c5be4c51c3c1995c86b354ae538a7c",
+      "files": [
+        "test_communication_pilot.py",
+        "test_drift_qualification.py",
+        "test_local_propagation_baseline.py",
+        "test_local_propagation_visuals.py",
+        "test_nonlocal_pilot_summary.py",
+        "test_regions.py",
+        "test_risk_event_dataset.py",
+        "test_risk_event_visuals.py",
+        "test_risk_pipeline.py"
+      ]
+    }
+  ],
+  "verification": {
+    "old_locations_absent": true,
+    "post_move_content_sets": [
+      {
+        "path": "code/src/riskprop/legacy",
+        "file_count": 14,
+        "total_bytes": 199352,
+        "content_set_sha256": "9b415e00ed64da82fb80a7f8f027317b97813431438d780e0fd9ccea4541313d"
+      },
+      {
+        "path": "code/scripts/legacy",
+        "file_count": 10,
+        "total_bytes": 63117,
+        "content_set_sha256": "00d6847614da4cc9468044f7021ae0bc99ca1aaa5b5965ea38937102140ab614"
+      },
+      {
+        "path": "code/tests/legacy",
+        "file_count": 9,
+        "total_bytes": 74953,
+        "content_set_sha256": "510af1078f246bb42355e5d56dea7d356db34fc01a897e0d70793f7513da6fd4"
+      }
+    ],
+    "content_change_scope": "Only package imports, script/test roots, CLI paths, and compatibility exports changed after the pre-move hash.",
+    "stale_import_scan": "NO_STALE_LEGACY_IMPORTS",
+    "stale_path_scan": "NO_STALE_LEGACY_PATHS",
+    "legacy_tests": "69 passed in 36.81s",
+    "current_tests": "95 passed in 22.51s",
+    "full_regression": "164 passed in 58.20s",
+    "compatibility_imports": "LEGACY_COMPAT_IMPORTS_OK",
+    "legacy_cli_help": "passed"
+  }
+}
