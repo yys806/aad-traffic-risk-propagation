@@ -23,6 +23,7 @@
 \setCJKmonofont{SimSun}
 
 \usepackage{amsmath,amssymb,bm,bbm}
+\usepackage{xcolor}
 \usepackage{graphicx}
 \usepackage{setspace}
 \usepackage[numbers]{natbib}
@@ -33,10 +34,14 @@
 \setlength{\parindent}{2em}
 \setlength{\parskip}{0pt}
 \raggedbottom
-\setlength{\emergencystretch}{2em}
 
-% Revision wrappers are retained only for traceability; the manuscript is
-% rendered entirely in black for the current submission draft.
+% Advisor-comment revision colors; remove only after author confirmation.
+\definecolor{advisorGreen}{RGB}{106,217,40}
+\definecolor{advisorYellow}{RGB}{255,209,0}
+\definecolor{advisorBlue}{RGB}{56,229,255}
+\definecolor{advisorRed}{RGB}{230,40,55}
+% Introduction/Results/Discussion are the confirmed black-text version.
+% The advisor-color macros are re-enabled at the start of Methods below.
 \newcommand{\revGreen}[1]{#1}
 \newcommand{\revYellow}[1]{#1}
 \newcommand{\revBlue}[1]{#1}
@@ -110,16 +115,23 @@
 \section*{Discussion}
 本节解释主要发现的机制含义、适用边界、与既有研究的关系以及对联网交通安全设计的影响，并区分由仿真、真实数据校核和不可观测字段分别支持的结论。
 
+% Re-enable advisor colors for Methods and all later unconfirmed revisions.
+\renewcommand{\revGreen}[1]{\textcolor{advisorGreen}{#1}}
+\renewcommand{\revYellow}[1]{\textcolor{advisorYellow!75!black}{#1}}
+\renewcommand{\revBlue}[1]{\textcolor{advisorBlue!70!black}{#1}}
+\renewcommand{\revRed}[1]{\textcolor{advisorRed}{#1}}
 \section*{Methods}
 \subsection*{System model and two-stage framework}
 \revBlue{本文研究局部交通场景中的信息介导风险传播与因果识别机制，而不是把整个交通系统作为研究对象。车辆运动和物理交互构成背景机制，显式消息构成可干预的信息通道。设 $\mathcal V=\{v_1,\ldots,v_{|\mathcal V|}\}$ 为车辆集合，$\bm S_t=\{\bm s_{v,t}:v\in\mathcal V\}$ 为全体车辆在 $t$ 时刻的状态，$\bm X_t=\{\bm x_{v,t}^{\mathsf{act}}:v\in\mathcal V\}$ 为实际控制输入，$\mathcal G^{\mathsf P}(t)$ 和 $\mathcal G^{\mathsf I}(t)$ 分别表示物理交通图和显式信息图，$\bm M_t$ 表示截至时刻 $t$ 已生成且尚在协议生命周期内的消息状态集合。共同系统状态写为}
 \begin{equation}
+\color{advisorBlue}
 \Sigma_t=\left(\bm S_t,\bm X_t,\mathcal G^{\mathsf P}(t),\mathcal G^{\mathsf I}(t),\bm M_t\right),
 \end{equation}
 \revBlue{该模型是两个研究阶段的共同基础：Stage I 在冻结的系统和控制逻辑下识别指定消息的增量因果效应；仅当该作用达到预设证据门槛后，Stage II 才优化消息采用和车辆动作。两阶段共享状态、图、消息和风险测量，但具有不同的问题、约束和评价标准。}
 
 \revBlue{车辆驾驶模式记为 $\mu_v\in\{\mathsf{AV},\mathsf{HV}\}$；该标签只表示驾驶模式，不改变车辆索引。对每个时刻 $t$，$\mathcal{N}_v^{\mathsf P}(t)$ 表示能够通过跟驰、合流或冲突直接影响车辆 $v$ 的物理邻居，$\mathcal{N}_v^{\mathsf I}(t)$ 表示通信协议允许向车辆 $v$ 提供消息的来源集合。由有向序对 $(v',v)$ 表示从源车辆 $v'$ 指向目标车辆 $v$，物理图和信息图定义为}
 \begin{equation}
+\color{advisorBlue}
 \begin{aligned}
 \mathcal{E}^{\mathsf P}(t)&=\{(v',v):v'\in\mathcal{N}_v^{\mathsf P}(t),\ v'\neq v\},\\
 \mathcal{E}^{\mathsf I}(t)&=\{(v',v):v'\in\mathcal{N}_v^{\mathsf I}(t),\ v'\neq v\},\\
@@ -131,16 +143,19 @@
 
 车辆 $v$ 在时刻 $t$ 的状态写为
 \begin{equation}
+\color{advisorBlue}
 \bm s_{v,t}=\bigl(\mathbbm{p}_{v,t},\mathbbm{v}_{v,t},\mathbbm{a}_{v,t},\mathbbm{\ell}_{v,t}\bigr),
 \end{equation}
 其中 $\mathbbm{p}_{v,t}$ 为二维位置，$\mathbbm{v}_{v,t}$ 为速度，$\mathbbm{a}_{v,t}$ 为实际纵向加速度，$\mathbbm{\ell}_{v,t}$ 为车道和道路边等交通环境状态。$\bm x_{v,t}^{\mathsf{cmd}}$ 表示控制器请求的纵向或横向命令，$\bm x_{v,t}^{\mathsf{act}}$ 表示该命令经过车辆执行器和安全约束后实际施加的控制输入，$\boldsymbol\xi_{v,t}$ 表示外生随机输入。离散仿真时钟上的状态更新写为
 \begin{equation}
+\color{advisorBlue}
 \bm s_{v,t+1}=f_v^{\mathsf{dyn}}\!\left(\bm s_{v,t},\bm x_{v,t}^{\mathsf{act}},\boldsymbol\xi_{v,t};\mathcal G^{\mathsf P}(t)\right).
 \end{equation}
 函数 $f_v^{\mathsf{dyn}}$ 包含车辆运动学、道路边界和物理邻居作用；其具体跟驰、制动、换道和合流规则由实验配置指定，不在本节预设某一种控制器。所有车辆状态、控制输入和消息事件使用同一仿真时钟记录。
 
 前述消息状态集合 $\bm M_t$ 中的每条消息由唯一标识 $q$、来源车辆 $v'$、目标车辆 $v$、消息载荷和协议时间戳组成，记为 $m_{q,v',v,t}$。协议允许发往目标车辆 $v$ 的候选消息集合为
 \begin{equation}
+\color{advisorBlue}
 \mathcal M_{v,t}^{\mathsf{cand}}=\left\{m_{q,v',v,t}\in \bm M_t:
 (v',v)\in\mathcal{E}^{\mathsf I}(t)\right\}.
 \end{equation}
@@ -148,12 +163,7 @@
 
 系统模型沿用前文定义的源区域 $\mathcal R^{\mathsf S}$、目标区域 $\mathcal R^{\mathsf T}$ 和目标车辆集合 $\mathcal V^{\mathsf T}_{\omega}$。区域归属用于确定源风险事件和目标区域风险结果的观测范围；道路边、车道、纵向坐标范围、路线组件、拓扑距离下限及车辆资格规则，在后文的 Experimental design and data sources 中按场景给出并在确认性实验前冻结。源风险、远端消息、目标车辆动作和区域风险结果由此形成“源事件—信息传递—控制采用—区域响应”的共同分析链，物理图则给出与该链竞争的普通交通传播路径。
 
-源车辆 $v'$ 和目标车辆 $v\in\mathcal V^{\mathsf T}_{\omega}$ 的资格由区域和时刻共同定义：源车辆的合格风险事件必须在 $\mathcal R^{\mathsf S}$ 内触发，目标车辆集合由处理前规则确定，并在结果窗口内作为目标区域风险的组成单位。车辆在运行过程中离开区域不自动改变已记录的身份，但若离开导致目标状态、风险窗口或路径审计无法满足预设规则，则该配对按失败或不确定处理。物理传播路径按时序可达性审计：若扰动可沿物理边逐跳到达目标车辆 $v$，记录该车的最早物理到达时刻 $\tau_{v,\omega}^{\mathsf P}$；若不存在可达路径，则令 $\tau_{v,\omega}^{\mathsf P}=+\infty$；若观察期内无法判定，则保留为不确定或右删失，不当作路径不存在。目标区域的物理边界定义为
-\begin{equation*}
-\tau_{\mathcal R^{\mathsf T},\omega}^{\mathsf P}
- :=\min_{v\in\mathcal V^{\mathsf T}_{\omega}}\tau_{v,\omega}^{\mathsf P},
-\end{equation*}
-即目标区域内任一合格目标车辆可能首先受到物理影响的时刻；若任一必要路径无法判定，该区域边界按预先冻结的右删失或不确定规则处理。
+源车辆 $v'$ 和目标车辆 $v\in\mathcal V^{\mathsf T}_{\omega}$ 的资格由区域和时刻共同定义：源车辆的合格风险事件必须在 $\mathcal R^{\mathsf S}$ 内触发，目标车辆集合由处理前规则确定，并在结果窗口内作为目标区域风险的组成单位。车辆在运行过程中离开区域不自动改变已记录的身份，但若离开导致目标状态、风险窗口或路径审计无法满足预设规则，则该配对按失败或不确定处理。物理传播路径按时序可达性审计：若扰动可沿物理边逐跳到达 $v$，记录最早物理到达时刻 $\tau_v^{\mathsf P}$；若不存在可达路径，则令 $\tau_v^{\mathsf P}=+\infty$；若观察期内无法判定，则保留为不确定或右删失，不当作路径不存在。
 
 仿真采用统一的离散时钟 $t=n\Delta t$，其中 $n$ 为时间步索引，$\Delta t$ 在数值收敛校准后固定。每个时间步依次读取车辆状态和物理邻接关系，判定源风险事件，更新消息的生成、发送、交付、校验和采用状态，计算控制输入，并由交通仿真器推进车辆运动。风险量由同一时钟下的状态和交互关系计算。状态、消息、控制和风险记录共享运行标识、时间步和时间原点；事件先后依据仿真时间戳而非文件行序判断。
 
@@ -161,7 +171,7 @@
 
 位置以米、速度以米每秒、加速度以米每二次方秒记录；道路边、车道、前车标识和消息标识作为离散状态保存。净间距和相对速度由同一时刻的车辆状态派生。不存在有效前车或某一字段不可观测时，该量记为缺失，不以零值替代。每辆车在单次运行中使用唯一身份，其进入、活动和离开事件按时间排序；车辆离开后不得继续被物理边、消息或风险记录引用。
 
-物理传播采用时间展开的交通图审计。图中同时保留同一车辆相邻时间步之间的运动延续关系，以及由跟驰、合流或冲突产生的车辆间直接作用关系。一条从源车辆 $v'$ 到目标车辆 $v$ 的物理路径必须沿仿真时间单调前进，且每一步均满足冻结的道路拓扑、车辆在场条件和物理边建立规则。$\tau_{v,\omega}^{\mathsf P}$ 取所有合格时间路径的最早到达时刻；区域边界 $\tau_{\mathcal R^{\mathsf T},\omega}^{\mathsf P}$ 再取目标车辆中这些时刻的最小值，表示物理影响可能进入目标区域的最早保守边界，而不是事后观察到的实际传播时刻。因此，要求信息响应早于 $\tau_{\mathcal R^{\mathsf T},\omega}^{\mathsf P}$ 是区域级保守判定。双走廊设计仅在道路拓扑断开、无跨走廊车辆转移、无共享控制状态且无合格时间路径时令相应车辆时刻为 $+\infty$；物理连通场景使用经独立校准的区域边界保守下界。
+物理传播采用时间展开的交通图审计。图中同时保留同一车辆相邻时间步之间的运动延续关系，以及由跟驰、合流或冲突产生的车辆间直接作用关系。一条从源车辆 $v'$ 到目标车辆 $v$ 的物理路径必须沿仿真时间单调前进，且每一步均满足冻结的道路拓扑、车辆在场条件和物理边建立规则。$\tau_v^{\mathsf P}$ 取所有合格时间路径的最早到达时刻，表示物理影响可能到达的最早保守边界，而不是事后观察到的实际传播时刻。因此，要求信息响应早于 $\tau_v^{\mathsf P}$ 是保守判定。双走廊设计仅在道路拓扑断开、无跨走廊车辆转移、无共享控制状态且无合格时间路径时令 $\tau_v^{\mathsf P}=+\infty$；物理连通场景使用经独立校准的 $\tau_v^{\mathsf P}$ 保守下界。
 
 消息载荷包含唯一消息标识、源事件标识、源车辆和目标车辆标识、风险类型、风险摘要及生成时间。每次运行分别记录车辆状态、源事件、消息生命周期、请求命令、实际输入、实际动作和风险结果。四格运行由同一冻结快照分别启动，消息缓存和运行状态互不共享。主随机种子按背景交通、人类驾驶扰动、通信和控制器等子系统派生为相互独立的命名随机流；四格使用相同的对应随机流，某一处理触发的额外随机调用不得推进其他子系统的随机序列。这样既保持共同随机数配对，也避免跨运行状态泄漏。道路边界、区域坐标、车辆进入与退出规则及场景参数在 Experimental design and data sources 中按场景给出。
 
@@ -192,7 +202,7 @@ R_{\mathcal R^{\mathsf T},\omega}(\hat{\mathsf{scr}},\hat{\mathsf{opn}})=\sum_{v
 
 \revBlue{消息处理状态分别记为 $D_{q,v}^{\mathsf{del}}(t)$、$Q_{q,v}^{\mathsf{chk}}(t)$ 和 $Z_{q,v}^{\mathsf{adopt}}(t)$，分别表示消息 $q$ 对目标车辆 $v$ 已交付、已通过联合校验和已被控制器采用；三者均属于 $\{0,1\}$。令 $t_0$ 为配对试验的共同触发时刻，$t_q^{\mathsf{gen}}$、$t_q^{\mathsf{send}}$、$t_{q,v}^{\mathsf{del}}$ 和 $t_{q,v}^{\mathsf{adopt}}$ 分别表示消息生成、发送、交付和采用时刻。}
 
-为排除数值噪声，令 $\varepsilon^{\mathsf{input}}>0$ 和 $\varepsilon^{\mathsf{state}}>0$ 分别为实际输入差异和状态差异的判定容差。从共同触发时刻 $t_0$ 开始，$t_v^{\mathsf{input}}$ 表示“存在源风险且开放消息”和“存在相同源风险但屏蔽消息”两种条件下，目标车辆的实际施加输入 $\bm x_{v,t}^{\mathsf{act}}$ 首次出现明显差异的时刻；$t_v^{\mathsf{state}}$ 表示在两种条件均屏蔽消息时，源风险存在与否首次使目标状态 $\bm s_{v,t}$ 出现明显差异的时刻。物理影响到达时刻 $\tau_{v,\omega}^{\mathsf P}$ 沿用前文的时序物理路径审计定义，区域边界使用 $\tau_{\mathcal R^{\mathsf T},\omega}^{\mathsf P}$，不以单个状态差异替代。前者用于信息先行审计，后者只用于校核物理传播估计。两个可观测分化时刻定义为
+为排除数值噪声，令 $\varepsilon^{\mathsf{input}}>0$ 和 $\varepsilon^{\mathsf{state}}>0$ 分别为实际输入差异和状态差异的判定容差。从共同触发时刻 $t_0$ 开始，$t_v^{\mathsf{input}}$ 表示“存在源风险且开放消息”和“存在相同源风险但屏蔽消息”两种条件下，目标车辆的实际施加输入 $\bm x_{v,t}^{\mathsf{act}}$ 首次出现明显差异的时刻；$t_v^{\mathsf{state}}$ 表示在两种条件均屏蔽消息时，源风险存在与否首次使目标状态 $\bm s_{v,t}$ 出现明显差异的时刻。物理影响到达时刻 $\tau_v^{\mathsf P}$ 沿用前文的时序物理路径审计定义，不用单个状态差异替代。前者用于信息先行审计，后者只用于校核物理传播估计。两个可观测分化时刻定义为
 \begin{equation}
 \begin{aligned}
 t_v^{\mathsf{input}}&=\inf\left\{t\geq t_0:\left\|\bm x_{v,t}^{\mathsf{act}}(1,1)-\bm x_{v,t}^{\mathsf{act}}(1,0)\right\|>\varepsilon^{\mathsf{input}}\right\},\\
@@ -201,10 +211,8 @@ t_v^{\mathsf{state}}&=\inf\left\{t\geq t_0:\left\|\bm s_{v,t}(1,0)-\bm s_{v,t}(0
 \end{equation}
 其中 $\inf$ 表示从 $t_0$ 开始寻找最早满足括号内条件的时刻；在离散仿真中，它对应第一个满足条件的时间步。差异还须连续保持预先冻结的时长，以排除单个时间步的偶然波动。若观察结束时仍未检测到分化，则约定 $\inf\varnothing=+\infty$，并在时间分析中记为右删失；在固定风险窗口的机制判定中，这种运行记为“尚未通过”，但仍保留在主效应分析中。对风险窗口 $\mathcal W=[t^{\mathsf{win}},t^{\mathsf{win}}+H)$，信息先行条件为
 \begin{equation}
-\begin{aligned}
- t_{q,v}^{\mathsf{adopt}}&\leq t_v^{\mathsf{input}}<\tau_{\mathcal R^{\mathsf T},\omega}^{\mathsf P},\\
- t_{q,v}^{\mathsf{adopt}}&\leq t^{\mathsf{win}}<t^{\mathsf{win}}+H\leq\tau_{\mathcal R^{\mathsf T},\omega}^{\mathsf P}.
-\end{aligned}
+t_{q,v}^{\mathsf{adopt}}\leq t_v^{\mathsf{input}}<\tau_v^{\mathsf P},\qquad
+t_{q,v}^{\mathsf{adopt}}\leq t^{\mathsf{win}}<t^{\mathsf{win}}+H\leq\tau_v^{\mathsf P}.
 \end{equation}
 为判断源风险能否通过普通交通交互到达目标车辆，令 $\operatorname{Reach}_{\mathcal G^{\mathsf P}}(v',v;I)\in\{0,1\}$ 表示时间区间 $I$ 内是否存在从源车辆 $v'$ 到目标车辆 $v$ 的时间单调物理路径。令 $\Sigma_{\omega}^{\mathsf{pre}}(\hat{\mathsf{scr}},\hat{\mathsf{opn}})$ 表示配对单元 $\omega$ 在处理条件 $(\mathsf{scr}=\hat{\mathsf{scr}},\mathsf{opn}=\hat{\mathsf{opn}})$ 下、处理开始前的冻结系统状态，符号 $\doteq_{\varepsilon^{\mathsf{pre}}}$ 表示离散字段与身份映射完全一致、连续状态之差不超过预先冻结的数值容差 $\varepsilon^{\mathsf{pre}}$。令 $e_\omega$ 为该单元指定的源风险事件，$\mathcal M_{\omega}^{\mathsf{src}}$ 为同时携带 $e_\omega$、源车辆 $v'$、目标车辆 $v$、处理版本及有效载荷校验和的消息标识集合。令 $\mathcal K^{\mathsf{NC}}$ 表示预先指定的负对照集合，$\Delta_{k}^{\mathsf{NC}}$ 表示第 $k$ 类负对照产生的同类效应。Stage I 分别检验效应是否具有实际意义，以及该效应是否表现为安全收益；前者允许风险下降或增加，后者只允许风险下降。主问题及约束写为
 \begin{equation}\label{eq:P1}
@@ -216,7 +224,7 @@ t_v^{\mathsf{state}}&=\inf\left\{t\geq t_0:\left\|\bm s_{v,t}(1,0)-\bm s_{v,t}(0
 \end{aligned}
 \end{equation}
 \addtocounter{equation}{-1}
-除特别说明外，以下约束对所有正式配对单元 $\omega\in\Omega^{\mathsf{ITR}}$、源车辆 $v'\in\mathcal V^{\mathsf S}_{\omega}$、目标车辆 $v\in\mathcal V^{\mathsf T}_{\omega}$ 以及相关时间步 $t\in\mathcal T_{\omega}$ 成立；其中 $\mathcal V^{\mathsf S}_{\omega}$ 为该单元中符合资格的源车辆集合，$\mathcal T_{\omega}$ 为运行时间网格。下列约束中的 $q$ 表示满足约束~\eqref{eq:P1-d} 的一条已采用消息。
+下列约束中的 $q$ 表示满足约束~\eqref{eq:P1-d} 的一条已采用消息。
 \begin{subequations}
 \begin{align}
 \mathrm{s.t.}\;&\mathcal R^{\mathsf S}\cap\mathcal R^{\mathsf T}=\varnothing;
@@ -235,9 +243,9 @@ t_v^{\mathsf{state}}&=\inf\left\{t\geq t_0:\left\|\bm s_{v,t}(1,0)-\bm s_{v,t}(0
 Z_{q,v}^{\mathsf{adopt}}(t_{q,v}^{\mathsf{adopt}})&=1;
 \end{aligned}
 \label{eq:P1-d}\\
-&Z_{q,v}^{\mathsf{adopt}}(t)=1\Rightarrow D_{q,v}^{\mathsf{del}}(t)=1\quad\forall t\in\mathcal T_{\omega};
+&Z_{q,v}^{\mathsf{adopt}}(t)=1\Rightarrow D_{q,v}^{\mathsf{del}}(t)=1\quad\forall t;
 \label{eq:P1-e}\\
-&Z_{q,v}^{\mathsf{adopt}}(t)=1\Rightarrow Q_{q,v}^{\mathsf{chk}}(t)=1\quad\forall t\in\mathcal T_{\omega};
+&Z_{q,v}^{\mathsf{adopt}}(t)=1\Rightarrow Q_{q,v}^{\mathsf{chk}}(t)=1\quad\forall t;
 \label{eq:P1-f}\\
 &t_0\leq t_q^{\mathsf{gen}}\leq t_q^{\mathsf{send}};
 \label{eq:P1-g}\\
@@ -247,11 +255,11 @@ Z_{q,v}^{\mathsf{adopt}}(t_{q,v}^{\mathsf{adopt}})&=1;
 \label{eq:P1-i}\\
 &t_{q,v}^{\mathsf{adopt}}\leq t_v^{\mathsf{input}};
 \label{eq:P1-j}\\
-&t_v^{\mathsf{input}}<\tau_{\mathcal R^{\mathsf T},\omega}^{\mathsf P};
+&t_v^{\mathsf{input}}<\tau_v^{\mathsf P};
 \label{eq:P1-k}\\
 &t_{q,v}^{\mathsf{adopt}}\leq t^{\mathsf{win}};
 \label{eq:P1-l}\\
-&t^{\mathsf{win}}+H\leq\tau_{\mathcal R^{\mathsf T},\omega}^{\mathsf P};
+&t^{\mathsf{win}}+H\leq\tau_v^{\mathsf P};
 \label{eq:P1-m}\\
 &\left|\Delta_{k}^{\mathsf{NC}}\right|\leq\delta^{\mathsf{eq}}
 \quad\forall k\in\mathcal K^{\mathsf{NC}}.
@@ -277,7 +285,7 @@ A_{\omega}^{\mathsf{mech}}=\mathsf{pass}
 \subsection*{Stage II: safety-constrained control}
 Stage II 仅在 $\mathcal P_1$ 的主要效应、消息链和负对照均达到预设门槛后启动。该启动条件不表示每条远端消息都必然有效，而是表示 Stage I 已提供可重复证据，说明开放指定消息通道能够在预设条件下改变目标车辆的实际输入并改变目标区域总体风险。Stage II 随后回答控制器如何使用这类信息，并限制由此产生的安全、舒适性、效率和尾部代价。Stage II 的控制结果不能反过来证明 $\mathcal P_1$。
 
-在物理连通场景中，令 $L_{\omega}^{\mathsf P}=\tau_{\mathcal R^{\mathsf T},\omega}^{\mathsf P}-(t^{\mathsf{win}}+H)$ 表示完整风险窗口相对目标区域最早物理到达边界的领先裕度。若一条绑定指定源事件的消息在目标实际输入分化前被采用，且 $L_{\omega}^{\mathsf P}>0$，则该运行通过信息先行审计。没有通过的正式运行仍进入风险和控制结果的意向运行分析，只是不用于支持“信息先于物理影响”的归因。Result 4 只有在预先登记的全部归因运行均通过该审计，且物理到达估计的独立校准通过时，才报告信息先行结论。
+在物理连通场景中，令 $L_{\omega}^{\mathsf P}=\tau_v^{\mathsf P}-(t^{\mathsf{win}}+H)$ 表示完整风险窗口相对最早物理到达边界的领先裕度。若一条绑定指定源事件的消息在目标实际输入分化前被采用，且 $L_{\omega}^{\mathsf P}>0$，则该运行通过信息先行审计。没有通过的正式运行仍进入风险和控制结果的意向运行分析，只是不用于支持“信息先于物理影响”的归因。Result 4 只有在预先登记的全部归因运行均通过该审计，且物理到达估计的独立校准通过时，才报告信息先行结论。
 
 Stage II 沿用消息状态 $D_{q,v}^{\mathsf{del}}(t)$、$Q_{q,v}^{\mathsf{chk}}(t)$ 和 $Z_{q,v}^{\mathsf{adopt}}(t)$。消息 $q$ 在时刻 $t$ 的年龄为 $t-t_q^{\mathsf{gen}}$，$T^{\mathsf{fresh}}>0$ 为最大允许年龄。令 $\widetilde{\mathcal M}_{v,t}\subseteq\mathcal M_{v,t}^{\mathsf{cand}}$ 为已经交付、通过联合校验且未过期的消息集合。采用策略 $\pi^{\mathsf{adopt}}$ 为每条合格消息给出二元采用决定；被采用的消息组成 $\mathcal M_{v,t}^{\mathsf{adopt}}$，再经冻结的消息聚合器形成控制信息 $\bm z_{v,t}$。动作策略 $\pi^{\mathsf u}$ 根据本地状态和 $\bm z_{v,t}$ 生成请求命令 $\bm x_{v,t}^{\mathsf{cmd}}$，安全执行映射 $g_v^{\mathsf{safe}}$ 将其转化为实际输入 $\bm x_{v,t}^{\mathsf{act}}$。联合策略记为 $\pi=(\pi^{\mathsf{adopt}},\pi^{\mathsf u})$。
 具体地，合格消息集合定义为
@@ -298,7 +306,7 @@ J^{\mathsf r}(\pi)&=\mathbb E_{\omega\sim\mathbb P^{\mathsf{eval}}}
 \!\left[J_\omega^{\mathsf r}(\pi)\right].
 \end{aligned}
 \end{equation*}
-这里先说明四类代价在 $\mathcal P_2$ 中的作用；其数学定义和缺失处理统一在后文的 Risk, action and temporal metrics 小节展开，尾部风险采用条件风险价值（CVaR）聚合。主问题最小化 $J^{\mathsf{risk}}(\pi)$，约束限制 $J^{\mathsf{act}}(\pi)$、$J^{\mathsf{eff}}(\pi)$ 和 $J^{\mathsf{tail}}(\pi)$。在一组预先冻结的代价上界上重复求解 $\mathcal P_2$，得到风险、安全、舒适性和效率之间的 Pareto 前沿，即无法继续改善某一目标而不使至少另一目标恶化的候选边界。最终策略选择规则在锁定留出集解锁前固定。令 $\Omega^{\mathsf{eval}}$ 表示用于评估候选策略的正式运行集合，令 $\mathcal U_v$ 为目标车辆允许的实际输入集合，$\mathcal X_v^{\mathsf{safe}}$ 为满足道路边界和碰撞规避要求的安全状态集合；$\overline J^{\mathsf{act}}$、$\overline J^{\mathsf{eff}}$ 和 $\overline J^{\mathsf{tail}}$ 为校准后冻结的代价上界。Stage II 的主问题及约束写为
+这里先说明四类代价在 $\mathcal P_2$ 中的作用；其数学定义和缺失处理统一在后文的 Risk, action and temporal metrics 小节展开，尾部风险采用条件风险价值（CVaR）聚合。主问题最小化 $J^{\mathsf{risk}}(\pi)$，约束限制 $J^{\mathsf{act}}(\pi)$、$J^{\mathsf{eff}}(\pi)$ 和 $J^{\mathsf{tail}}(\pi)$。在一组预先冻结的代价上界上重复求解 $\mathcal P_2$，得到风险、安全、舒适性和效率之间的 Pareto 前沿，即无法继续改善某一目标而不使至少另一目标恶化的候选边界。最终策略选择规则在锁定留出集解锁前固定。令 $\mathcal U_v$ 为目标车辆允许的实际输入集合，$\mathcal X_v^{\mathsf{safe}}$ 为满足道路边界和碰撞规避要求的安全状态集合；$\overline J^{\mathsf{act}}$、$\overline J^{\mathsf{eff}}$ 和 $\overline J^{\mathsf{tail}}$ 为校准后冻结的代价上界。Stage II 的主问题及约束写为
 \begin{equation}\label{eq:P2}
 \begin{aligned}
 \mathcal P_2:\quad
@@ -308,14 +316,13 @@ J^{\mathsf{risk}}(\pi).
 \end{equation}
 \addtocounter{equation}{-1}
 \allowdisplaybreaks[4]
-除代价上界约束外，以下动力学、策略、消息和安全约束对所有 $\omega\in\Omega^{\mathsf{eval}}$、$v\in\mathcal V^{\mathsf T}_{\omega}$、$t\in\mathcal T_{\omega}$ 成立；消息约束仅对当时属于 $\widetilde{\mathcal M}_{v,t}$ 的消息 $m_{q,v',v,t}$ 施加。
 \begin{subequations}
 \begin{align}
 \mathrm{s.t.}\;&\bm s_{v,t+1}=f_v^{\mathsf{dyn}}(\bm s_{v,t},\bm x_{v,t}^{\mathsf{act}},\boldsymbol\xi_{v,t};
 \mathcal G^{\mathsf P}(t));
 \label{eq:P2-a}\\
 &\bm x_{v,t}^{\mathsf{cmd}}=\pi^{\mathsf u}(\bm s_{v,t},\bm z_{v,t})
-\quad\forall t\in\mathcal T_{\omega};
+\quad\forall t;
 \label{eq:P2-b}\\
 &\begin{aligned}
 Z_{q,v}^{\mathsf{adopt}}(t)&=\pi_{q}^{\mathsf{adopt}}(\bm s_{v,t},m_{q,v',v,t})\in\{0,1\},\\
@@ -332,27 +339,23 @@ Z_{q,v}^{\mathsf{adopt}}(t)=1\};
 \operatorname{Agg}^{\mathsf{msg}}(\varnothing)&=\bm 0;
 \end{aligned}
 \label{eq:P2-e}\\
-&Z_{q,v}^{\mathsf{adopt}}(t)=1\Rightarrow D_{q,v}^{\mathsf{del}}(t)=1
-\quad\forall m_{q,v',v,t}\in\widetilde{\mathcal M}_{v,t};
+&Z_{q,v}^{\mathsf{adopt}}(t)=1\Rightarrow D_{q,v}^{\mathsf{del}}(t)=1\quad\forall q,t;
 \label{eq:P2-f}\\
-&Z_{q,v}^{\mathsf{adopt}}(t)=1\Rightarrow Q_{q,v}^{\mathsf{chk}}(t)=1
-\quad\forall m_{q,v',v,t}\in\widetilde{\mathcal M}_{v,t};
+&Z_{q,v}^{\mathsf{adopt}}(t)=1\Rightarrow Q_{q,v}^{\mathsf{chk}}(t)=1\quad\forall q,t;
 \label{eq:P2-g}\\
-&\begin{aligned}
-Z_{q,v}^{\mathsf{adopt}}(t)&\Rightarrow
-0\leq t-t_q^{\mathsf{gen}}\leq T^{\mathsf{fresh}},\\
-&\hspace{-2em}\forall m_{q,v',v,t}\in\widetilde{\mathcal M}_{v,t};
-\end{aligned}
+&Z_{q,v}^{\mathsf{adopt}}(t)=1\Rightarrow
+0\leq t-t_q^{\mathsf{gen}}\leq T^{\mathsf{fresh}}\quad\forall q,t;
 \label{eq:P2-h}\\
 &\begin{aligned}
 \bm x_{v,t}^{\mathsf{act}}&=g_v^{\mathsf{safe}}(\bm s_{v,t},\bm x_{v,t}^{\mathsf{cmd}}),\\
-\bm x_{v,t}^{\mathsf{act}}&\in\mathcal U_v\quad\forall t\in\mathcal T_{\omega};
+\bm x_{v,t}^{\mathsf{act}}&\in\mathcal U_v\quad\forall t;
 \end{aligned}
 \label{eq:P2-i}\\
-&\bm s_{v,t}\in\mathcal X_v^{\mathsf{safe}}\quad\forall t\in\mathcal T_{\omega};
+&\bm s_{v,t}\in\mathcal X_v^{\mathsf{safe}}\quad\forall t;
 \label{eq:P2-j}\\
 &J^{\mathsf{act}}(\pi)\leq\overline J^{\mathsf{act}};
-\label{eq:P2-k}\\
+\label{eq:P2-k}
+\\
 &J^{\mathsf{eff}}(\pi)\leq\overline J^{\mathsf{eff}};
 \label{eq:P2-l}\\
 &J^{\mathsf{tail}}(\pi)\leq\overline J^{\mathsf{tail}}.
@@ -414,46 +417,29 @@ w_{+}^{\mathsf a}\left(\frac{e_{v,t}^{+}}{\bar{\mathbbm{a}}^{+}}\right)^2+
 w_{-}^{\mathsf a}\left(\frac{e_{v,t}^{-}}{\bar{\mathbbm{a}}^{-}}\right)^2+
 w^{\mathsf{jerk}}\left(\frac{\dot{\mathbbm{a}}_{v,t}}{\bar{\mathbbm{a}}^{\mathsf{jerk}}}\right)^2.
 \end{equation*}
-令 $\lambda_{v,\omega}^{\mathsf T}\geq0$ 为目标车辆 $v$ 在单元 $\omega$ 中的冻结区域权重，并满足
+动作与舒适性总体代价为
 \begin{equation*}
-\sum_{v\in\mathcal V^{\mathsf T}_{\omega}}\lambda_{v,\omega}^{\mathsf T}=1.
-\end{equation*}
-先计算单车动作代价
-\begin{equation*}
-J_{v,\omega}^{\mathsf{act}}(\pi)
+J_{\omega}^{\mathsf{act}}(\pi)
 =\frac{\sum_{t\in\mathcal W_\omega}m_{v,t}^{\mathsf a}
 c_{v,t}^{\mathsf a}\Delta t}
 {\sum_{t\in\mathcal W_\omega}m_{v,t}^{\mathsf a}\Delta t}.
 \end{equation*}
-目标区域的动作与舒适性代价为
-\begin{equation*}
-J_{\omega}^{\mathsf{act}}(\pi)
-=\sum_{v\in\mathcal V^{\mathsf T}_{\omega}}
-\lambda_{v,\omega}^{\mathsf T}J_{v,\omega}^{\mathsf{act}}(\pi).
-\end{equation*}
 边界、参考尺度、权重和动作缺失规则在校准锁定前确定，确认性结果不得按策略表现重新调整。
 
-效率代价记录每辆目标车辆的旅行时间、停车时间和平均速度相对同一初始状态下参考运行的损失。令 $T_{v,\omega}^{\mathsf{obs}}(\pi)>0$ 为目标车辆 $v$ 完成规定任务所需的旅行时间；若观察期内未完成，则取冻结的最大观察时长 $T^{\mathsf{max}}$。令 $F_{v,\omega}^{\mathsf{inc}}(\pi)\in\{0,1\}$ 表示任务未完成，$T_{v,\omega}^{\mathsf{ref}}>0$ 为冻结参考控制器的旅行时间，$T_{v,\omega}^{\mathsf{stop}}(\pi)$ 为速度低于冻结停车阈值的时长，$\bar{\mathbbm{v}}_{v,\omega}(\pi)$ 和 $\bar{\mathbbm{v}}_{v,\omega}^{\mathsf{ref}}>0$ 为对应平均速度。给定非负且和为一的权重 $w^{\mathsf{time}},w^{\mathsf{stop}},w^{\mathsf{speed}},w^{\mathsf{inc}}$，先定义单车效率代价
+效率代价记录旅行时间、停车时间和平均速度相对同一初始状态下参考运行的损失。令 $T_{\omega}^{\mathsf{obs}}(\pi)>0$ 为目标车辆完成规定任务所需的旅行时间；若观察期内未完成，则取冻结的最大观察时长 $T^{\mathsf{max}}$。令 $F_{\omega}^{\mathsf{inc}}(\pi)\in\{0,1\}$ 表示任务未完成，$T_{\omega}^{\mathsf{ref}}>0$ 为冻结参考控制器的旅行时间，$T_{\omega}^{\mathsf{stop}}(\pi)$ 为速度低于冻结停车阈值的时长，$\bar{\mathbbm{v}}_{\omega}(\pi)$ 和 $\bar{\mathbbm{v}}_{\omega}^{\mathsf{ref}}>0$ 为对应平均速度。给定非负且和为一的权重 $w^{\mathsf{time}},w^{\mathsf{stop}},w^{\mathsf{speed}},w^{\mathsf{inc}}$，
 \begin{equation*}
 \begin{aligned}
-J_{v,\omega}^{\mathsf{eff}}(\pi)
+J_{\omega}^{\mathsf{eff}}(\pi)
 ={}&w^{\mathsf{time}}\left[
- \frac{T_{v,\omega}^{\mathsf{obs}}(\pi)-T_{v,\omega}^{\mathsf{ref}}}
- {T_{v,\omega}^{\mathsf{ref}}}\right]_+\\
-&+w^{\mathsf{stop}}\frac{T_{v,\omega}^{\mathsf{stop}}(\pi)}
- {T_{v,\omega}^{\mathsf{obs}}(\pi)}
+\frac{T_{\omega}^{\mathsf{obs}}(\pi)-T_{\omega}^{\mathsf{ref}}}
+{T_{\omega}^{\mathsf{ref}}}\right]_+\\
+&+w^{\mathsf{stop}}\frac{T_{\omega}^{\mathsf{stop}}(\pi)}
+{T_{\omega}^{\mathsf{obs}}(\pi)}
 +w^{\mathsf{speed}}\left[
- 1-\frac{\bar{\mathbbm{v}}_{v,\omega}(\pi)}{\bar{\mathbbm{v}}_{v,\omega}^{\mathsf{ref}}}\right]_+\\
-&+w^{\mathsf{inc}}F_{v,\omega}^{\mathsf{inc}}(\pi).
+1-\frac{\bar{\mathbbm{v}}_{\omega}(\pi)}{\bar{\mathbbm{v}}_{\omega}^{\mathsf{ref}}}\right]_+\\
+&+w^{\mathsf{inc}}F_{\omega}^{\mathsf{inc}}(\pi).
 \end{aligned}
 \end{equation*}
-目标区域的通行效率代价使用同一组区域权重聚合：
-\begin{equation*}
-J_{\omega}^{\mathsf{eff}}(\pi)
-=\sum_{v\in\mathcal V^{\mathsf T}_{\omega}}
-\lambda_{v,\omega}^{\mathsf T}J_{v,\omega}^{\mathsf{eff}}(\pi).
-\end{equation*}
-若任一目标车辆在相应窗口内没有足够的有效观测，单车代价记为缺失，该运行按预先规定的失败或不确定规则处理，不以零值替代。
 参考运行、停车阈值、最大观察时长和权重只由校准集和开发集确定。候选策略未完成任务因此不能作为缺失而排除；若冻结参考运行本身不可重建，则整个配对记为工程失败并进入预设缺失数据界限分析。
 
 尾部风险不以平均值代替。令 $\alpha\in(0,1)$ 为预先冻结的 CVaR 置信水平，因此被聚合的上尾概率为 $1-\alpha$；令 $\eta\in\mathbb R$ 为阈值变量。直接对运行级风险暴露 $J_{\omega}^{\mathsf{risk}}(\pi)$ 做 CVaR 聚合，则总体尾部代价为
@@ -465,7 +451,7 @@ J^{\mathsf{tail}}(\pi)=
 \end{equation*}
 四类代价均在同一冻结评估分布 $\mathbb P^{\mathsf{eval}}$ 上计算并按“越小越好”解释。$\alpha$、参考运行、权重、阈值和评估分布在正式评估前冻结。
 
-时间先行判定使用消息采用时刻 $t_{q,v}^{\mathsf{adopt}}$、实际输入分化时刻 $t_v^{\mathsf{input}}$、目标区域物理到达边界 $\tau_{\mathcal R^{\mathsf T},\omega}^{\mathsf P}$ 和风险窗口 $\mathcal W=[t^{\mathsf{win}},t^{\mathsf{win}}+H)$。$\inf$ 取离散时间中第一个满足容差并持续达到规定时长的时间步；观察结束仍未分化时保留为右删失。消息采用、实际输入分化和完整风险窗口均早于 $\tau_{\mathcal R^{\mathsf T},\omega}^{\mathsf P}$ 时，该运行通过信息先行审计；未通过的正式运行保留在意向运行分母，并作为机制失败或不确定结果报告。
+时间先行判定使用消息采用时刻 $t_{q,v}^{\mathsf{adopt}}$、实际输入分化时刻 $t_v^{\mathsf{input}}$、物理到达边界 $\tau_v^{\mathsf P}$ 和风险窗口 $\mathcal W=[t^{\mathsf{win}},t^{\mathsf{win}}+H)$。$\inf$ 取离散时间中第一个满足容差并持续达到规定时长的时间步；观察结束仍未分化时保留为右删失。消息采用、实际输入分化和完整风险窗口均早于 $\tau_v^{\mathsf P}$ 时，该运行通过信息先行审计；未通过的正式运行保留在意向运行分母，并作为机制失败或不确定结果报告。
 
 \subsection*{Statistical analysis and uncertainty}
 四格配对单元 $\omega$ 是效应估计的最小分析单位。令 $\mathcal G$ 为预先登记的场景族集合，$\Omega_g\subseteq\Omega^{\mathsf{ITR}}$ 为场景族 $g$ 的全部正式配对单元，$n_g=|\Omega_g|$，$w_g^{\mathsf{scn}}\geq0$ 为冻结的场景权重且 $\sum_{g\in\mathcal G}w_g^{\mathsf{scn}}=1$。帧、消息、车辆时间步和同一运行内的多次事件只用于计算运行级结局。主要效应估计为

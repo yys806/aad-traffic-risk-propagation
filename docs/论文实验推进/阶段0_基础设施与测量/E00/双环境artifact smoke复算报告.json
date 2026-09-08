@@ -1,0 +1,44 @@
+{
+  "schema_version": "e00.dual_environment_smoke.v1",
+  "date": "2026-08-18",
+  "primary_run_id": "e00_artifact_smoke_20260818_v2",
+  "clean_run_id": "e00_artifact_smoke_clean_py313_20260818_v1",
+  "primary_environment": "code/environment/e00-primary-environment.json",
+  "clean_environment": "code/environment/e00-clean-py313.json",
+  "comparison": {
+    "same_smoke_classification": true,
+    "same_scientific_eligibility": true,
+    "same_row_counts": true,
+    "same_columns": true,
+    "same_manifest_schema": true
+  },
+  "primary": {
+    "python_version": "3.13.5",
+    "pandas": "2.2.3",
+    "pyarrow": "25.0.1",
+    "row_counts": {
+      "state.parquet": 0,
+      "emission.parquet": 0,
+      "protocol.parquet": 0,
+      "action.parquet": 0,
+      "risk.parquet": 0
+    },
+    "smoke_only": true,
+    "scientific_claim_eligible": false
+  },
+  "clean": {
+    "python_version": "3.13.5",
+    "pandas": "2.2.3",
+    "pyarrow": "25.0.1",
+    "row_counts": {
+      "state.parquet": 0,
+      "emission.parquet": 0,
+      "protocol.parquet": 0,
+      "action.parquet": 0,
+      "risk.parquet": 0
+    },
+    "smoke_only": true,
+    "scientific_claim_eligible": false
+  },
+  "interpretation": "The artifact layer is reproducible in an isolated environment. This does not pass E00 scientific gate because the smoke tables are empty and no non-empty traffic runner has been reproduced."
+}

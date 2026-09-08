@@ -82,6 +82,20 @@ def add_ngsim_leader_ttc(
     )
     ttc = pd.Series(math.inf, index=result.index, dtype=float)
     ttc.loc[valid] = net_gap_m.loc[valid] / closing_speed_mps.loc[valid]
+    drac = pd.Series(math.nan, index=result.index, dtype=float)
+    drac.loc[valid] = closing_speed_mps.loc[valid].pow(2) / (2.0 * net_gap_m.loc[valid])
+    missing_reason = pd.Series("", index=result.index, dtype="string")
+    missing_reason.loc[~has_reported_leader] = "no_reported_leader"
+    missing_reason.loc[has_reported_leader & ~leader_matched] = "leader_not_matched"
+    missing_reason.loc[leader_matched & (net_gap_m <= 0)] = "non_positive_gap"
+    missing_reason.loc[
+        leader_matched
+        & (net_gap_m > 0)
+        & ~(closing_speed_mps > closing_epsilon_mps)
+    ] = "non_closing"
+    missing_reason.loc[
+        leader_matched & (net_gap_m.isna() | closing_speed_mps.isna())
+    ] = "unobservable_input"
 
     result["run_id"] = run_id
     result["time_s"] = (time - time.min()) / 1_000.0
@@ -100,6 +114,13 @@ def add_ngsim_leader_ttc(
     result["closing_speed_mps"] = closing_speed_mps
     result["ttc_valid"] = valid.to_numpy()
     result["ttc_s"] = ttc
+    result["drac_mps2"] = drac
+    measurement_status = pd.Series("missing", index=result.index, dtype="string")
+    measurement_status.loc[valid] = "valid"
+    measurement_status.loc[missing_reason.eq("non_closing")] = "not_applicable"
+    measurement_status.loc[missing_reason.eq("non_positive_gap")] = "invalid"
+    result["measurement_status"] = measurement_status
+    result["missing_reason"] = missing_reason
     result.index = original_index
     return result
 
@@ -175,7 +196,7 @@ def _resolve_ngsim_columns(frame: pd.DataFrame) -> dict[str, str]:
         "length": ("v_Length", "v_length"),
         "speed": ("v_Vel", "v_vel"),
         "preceding": ("Preceeding", "Preceding", "preceding"),
-        "space_headway": ("Space_Hdwy", "space_headway"),
+        "space_headway": ("Space_Hdwy", "Space_Headway", "space_headway"),
     }
     resolved: dict[str, str] = {}
     for meaning, options in candidates.items():

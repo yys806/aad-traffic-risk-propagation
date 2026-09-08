@@ -1,0 +1,29 @@
+{
+  "schema_version": "e00.dual_environment_contract_fixture.v1",
+  "date": "2026-08-18",
+  "primary_fixture_id": "e00_contract_fixture_20260818_primary_v1",
+  "clean_fixture_id": "e00_contract_fixture_20260818_clean_v1",
+  "comparison": {
+    "same_non_scientific_classification": true,
+    "same_four_cell_audit": true,
+    "same_pre_treatment_audit": true,
+    "same_state_isolation_audit": true,
+    "same_time_alignment_audit": true,
+    "same_vehicle_lifecycle_audit": true,
+    "same_protocol_adoption_count": true,
+    "same_per_cell_row_counts": true,
+    "same_manifest_schema": true
+  },
+  "per_environment": {
+    "scientific_claim_eligible": false,
+    "fixture_only": true,
+    "s1c1_adopted_count": 1,
+    "cell_row_counts": {
+      "s0c0": {"state.parquet": 3, "emission.parquet": 3, "protocol.parquet": 1, "action.parquet": 3, "risk.parquet": 1},
+      "s0c1": {"state.parquet": 3, "emission.parquet": 3, "protocol.parquet": 1, "action.parquet": 3, "risk.parquet": 1},
+      "s1c0": {"state.parquet": 6, "emission.parquet": 6, "protocol.parquet": 1, "action.parquet": 3, "risk.parquet": 1},
+      "s1c1": {"state.parquet": 6, "emission.parquet": 6, "protocol.parquet": 1, "action.parquet": 3, "risk.parquet": 1}
+    }
+  },
+  "interpretation": "The complete non-empty artifact and theory-audit chain reproduces in two environments. The data are deterministic analytic fixtures, not SUMO traffic outcomes, so E00 remains in progress."
+}

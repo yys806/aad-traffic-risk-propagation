@@ -1,0 +1,37 @@
+id,type,result,priority,status,primary_question,minimum_design,compute,go_no_go
+O01,existing,prototype,P3,completed,早期管线是否可运行,单批早期pilot,CPU,仅保留provenance
+O02,existing,R1,P1,hold,DRIFT风险事件是否可靠,原始emission加人工极端值核验,CPU,未澄清伪影不作主证据
+O03,existing,R1/P5,P1,completed,是否有稳定风险事件池,270文件和4131 episodes,CPU,进入E01重算
+O04,existing,R1/P5,P0,completed,局部物理传播基线是否高于null,2057 episodes加100 permutations,CPU,保留并补敏感性
+O05,existing,R1/P5,P2,completed,DRIFT子集是否一致,382 episodes加100 permutations,CPU,作为补充
+O06,existing,R3,P3,completed,消息开关采用和动作分化是否工作,1 seed四次运行,CPU,仅smoke test
+O07,existing,R3,P2,completed,通信状态机是否可审计,32 runs和2 seeds,CPU,仅协议原型
+O08,existing,R3/P4,P1,stopped,真实风险上下文是否有可测主效应,46 rollouts,CPU,保留零结果并重设结局
+O09,existing,R2,P0,unverified,断开拓扑是否有非局部增量效应,记录80 runs但原始包缺失,CPU,不得投稿引用为已复算
+O10,existing,R4,P2,failed,旧合流是否产生可测TTC,preflight全部为零,CPU,保留失败
+O11,existing,R4,P1,failed,首轮合流是否通过预注册门槛,80 runs且12/20资格,CPU,正式失败不可覆盖
+O12,existing,R4,P0,unverified,修正版合流是否支持信息先行,记录80 runs和18/20负,CPU,必须独立重做
+O13,existing,R5,P1,partial,NGSIM能否锚定TTC测量,单文件前20万行,CPU/RAM,扩到全量多地点
+O14,existing,R5,P1,partial,pNEUMA能否锚定物理传播,785轨迹未地图匹配,CPU/RAM,匹配前不计算TTC
+O15,existing,R5,P1,partial,SPMD能否锚定通信可达性,35165270行RV_RX,CPU/RAM,完成Tx/Rx配对
+O16,existing,R5,P2,not_started,INTERACTION能否提供多场景锚定,待许可,CPU/RAM,取得数据后进入
+E00,new,all,P0,not_started,核心结果能否一键复算,统一runner测试manifest校验和,CPU,不可复算则停止正式实验
+E01,new,R1,P0,not_started,风险和路径测量是否有效,解析真值加时间步收敛加现实校准,CPU,指标不稳定则不做主试验
+E02,new,R2,P0,not_started,断开拓扑主效应是否成立,分层场景且每主层不少于100配对seed,CPU cluster,主区间未越SESOI则不支持
+E03,new,R2/R4,P0,not_started,效应是否超越保守驾驶和本地预测,8类强基线,CPU,强基线消除效应则收缩主张
+E04,new,R2,P0,not_started,效应是否独立于单一实现,离线重算加第二runner,CPU,不能复现则停在软件验证
+E05,new,R3,P0,not_started,消息到风险链是否闭合,全生命周期逐trial双重重建,CPU,链条断裂不得归因
+E06,new,R3,P0,not_started,替代解释是否被证伪,10类负对照且每类至少50配对seed,CPU,任一对照非等效则暂停解释
+E07,new,R3/R6,P1,not_started,通信损伤边界在哪里,时延丢包更新率老化渗透率跳数剂量设计,CPU cluster,输出失效阈值
+E08,new,R3/R6,P1,not_started,哪些机制模块必需,来源新鲜度采用安全盾融合等消融,CPU/GPU,跨场景解释模块贡献
+E09,new,R4,P0,not_started,效应能否迁移到多合流几何,多几何且每主几何不少于100配对seed,CPU cluster,资格必须outcome blind
+E10,new,R4,P0,not_started,信息是否先于物理到达,三种tauP估计加已知传播校准,CPU,晚于物理到达则不可归因
+E11,new,R6,P0,not_started,效应是否跨控制器,规则加MPC/CBF加学习控制器,CPU/GPU,至少两类原理不同控制器复现
+E12,new,R6,P0,not_started,效应是否跨风险类型,急刹cut-in合流瓶颈加留出类型,CPU/GPU,按风险类型使用适配指标
+E13,new,R6,P1,not_started,适用域和失效域是什么,信息图物理图需求驾驶模型矩阵,CPU cluster,形成预先预测的边界
+E14,new,R4/R6,P1,not_started,第二阶段控制是否有实际价值,多目标Pareto加尾部风险,CPU/GPU,安全收益不得靠不可接受代价
+E15,new,R5,P0,not_started,真实轨迹能否验证风险和传播测量,NGSIM pNEUMA INTERACTION全量分层,CPU/RAM,只陈述可观察层
+E16,new,R5,P0,not_started,真实通信能否验证时延丢包,SPMD Packet sender RV_RX配对,CPU/RAM,无adoption不写采用效应
+E17,new,R5,P1,not_started,仿真是否覆盖现实分布,calibration validation分割,CPU/RAM,公开不覆盖区
+E18,new,R5/P6,P1,not_started,现实控制栈闭环是否成立,HIL或同步混合现实多风险场景,CPU/GPU/HIL,无实车时明确HIL边界
+E19,new,R6,P1,not_started,尾部稀有失败是否可控,对抗生成加冻结stress suite,GPU/CPU cluster,失败进入公开failure zoo

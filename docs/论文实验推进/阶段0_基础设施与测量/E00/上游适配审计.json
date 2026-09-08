@@ -1,0 +1,38 @@
+{
+  "schema_version": "e00.upstream_adapter_audit.v1",
+  "date": "2026-08-18",
+  "upstream_repo": "D:\\shen\\TJU\\DRIFT",
+  "upstream_git_commit": "58397fb2834e238d5d4d5e72d0307f1d09674b48",
+  "drift_cell_to_aad_cell": {
+    "r00": "s0c0",
+    "r01": "s0c1",
+    "r10": "s1c0",
+    "r11": "s1c1"
+  },
+  "verified_assets": [
+    "mixed_autonomy_lab/mixlab/dual_corridor_network.py",
+    "mixed_autonomy_lab/mixlab/decisive_trial.py",
+    "mixed_autonomy_lab/scripts/run_decisive_dual_corridor.py",
+    "mixed_autonomy_lab/scripts/analyze_decisive_dual_corridor.py",
+    "mixed_autonomy_lab/tests/test_decisive_dual_corridor.py",
+    "mixed_autonomy_lab/tests/test_decisive_analysis.py"
+  ],
+  "aad_flow_dependency": {
+    "expected_path": "D:\\shen\\paper_repos\\flow",
+    "available": false,
+    "reason": "flow_repository_missing"
+  },
+  "aad_sumo_dependency": {
+    "version": "1.26.0",
+    "traci_available": true,
+    "sumolib_available": true
+  },
+  "contract_gaps": [
+    "DRIFT runner emits JSONL/CSV rather than AAD five Parquet tables",
+    "DRIFT state rows do not explicitly provide every AAD field such as lane_id/net_gap/relative_speed",
+    "DRIFT mechanism rows require explicit sent/validation/message-age conversion",
+    "DRIFT r00/r01/r10/r11 names require explicit AAD mapping",
+    "Flow absolute dependency is unavailable in the current AAD machine"
+  ],
+  "decision": "Do not modify DRIFT or import its historical outputs as results. Adapt the theory logic through the tested AAD contract, with direct SUMO as the current executable path if Flow cannot be recovered."
+}

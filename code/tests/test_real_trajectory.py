@@ -62,6 +62,9 @@ def test_ngsim_pairs_reported_leader_and_uses_positive_net_gap() -> None:
     assert follower["lane_id"] == "2"
     assert bool(follower["ttc_valid"])
     assert follower["ttc_s"] == pytest.approx(1.5)
+    assert follower["drac_mps2"] == pytest.approx((10.0 * 0.3048) ** 2 / (2 * 15.0 * 0.3048))
+    assert follower["measurement_status"] == "valid"
+    assert follower["missing_reason"] == ""
 
 
 def test_ngsim_ttc_requires_matched_leader_positive_gap_and_closing_speed() -> None:
@@ -78,6 +81,17 @@ def test_ngsim_ttc_requires_matched_leader_positive_gap_and_closing_speed() -> N
 
     assert not result["ttc_valid"].any()
     assert result["ttc_s"].map(math.isinf).all()
+    by_id = result.set_index("id")
+    assert by_id.loc["1", "measurement_status"] == "missing"
+    assert by_id.loc["2", "measurement_status"] == "missing"
+    assert by_id.loc["3", "measurement_status"] == "not_applicable"
+    assert by_id.loc["4", "measurement_status"] == "invalid"
+    assert set(result["missing_reason"]) == {
+        "no_reported_leader",
+        "leader_not_matched",
+        "non_closing",
+        "non_positive_gap",
+    }
 
 
 def test_ngsim_leader_match_preserves_nondefault_input_index() -> None:

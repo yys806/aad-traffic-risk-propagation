@@ -37,4 +37,4 @@
 
 该模板是 Springer Nature 旗下期刊共用的作者模板，不是 Nature Communications 出版成品的专用双栏模板。示例中的 Nature Portfolio 选项为 `\documentclass[pdflatex,sn-nature]{sn-jnl}`，源文件仍明确使用 `\abstract{...}` 和 `\section{Introduction}`。模板默认用于内容提交；已发表论文中摘要标题、Introduction 标题和双栏版式的显示方式由期刊生产排版决定。
 
-因此，当前中文工作稿继续使用可稳定编译的标准 `article.cls`，保留独立摘要和 Introduction 结构，不为了模仿已发表 PDF 而改成双栏。正式英文投稿前再根据当时的 Nature Communications 在线说明决定是否迁移至 `sn-jnl`；期刊专属说明与通用模板冲突时，以期刊专属说明为准。
+因此，当前中文工作稿继续使用可稳定编译的标准 `article.cls`，并设置为 `10pt,a4paper,twocolumn` 以便内部按 NC 风格进行版面预览。该双栏设置不是 Nature Communications 的官方初投稿强制模板，也不代表最终出版版式；正式英文投稿前仍应根据当时的 Nature Communications 在线说明决定是否恢复单栏或迁移至 `sn-jnl`，期刊专属说明与通用模板冲突时，以期刊专属说明为准。
