@@ -1,42 +1,35 @@
 # AAD 历史资产索引
 
-> 历史资产保留是为了追溯“曾经做过什么、为何被替代”，不是为了给当前结论补证据。代码位于 `legacy/`，原始记录位于 `记录/` 与 `docs/归档/`，本地旧输出仍按原目录保留。
+历史材料用于回答“曾做过什么、为何被替代”，不得为当前结论补证据。项目过程记录统一位于 `docs/归档/项目记录/`；旧编号材料位于 `docs/归档/旧实验编号材料/`；旧代码位于各 `legacy/`；旧输出和便携证据分别位于 `code/outputs/history/`、`evidence/history/`。
+
+## HIST-LEGACY-STAGE-ID-MIGRATION
+
+2026-09-09起，当前计划、代码入口和新运行统一使用“阶段 X.X”/`stage_X_Y`。完整旧编号映射见 `docs/归档/旧实验编号材料/README.md`。
+
+## HIST-PNEUMA-LEADER-QA
+
+pNEUMA地图匹配、候选前车和人工复核因研究分工调整而退出当前路径。NGSIM承担前车与风险测量，pNEUMA只承担城市运动学分布。原代码、输出和证据均保留。
 
 ## HIST-DRIFT-QUALIFICATION
 
-- 用途：早期上游 DRIFT 资产资格筛查和适配审计。
-- 代码：`code/src/riskprop/legacy/drift_qualification.py`、`code/scripts/legacy/audit_drift_qualification.py`。
-- 为何不是当前路径：它只回答上游资产是否可参考，不能替代 AAD 正式实验 Gate。
-- 可验证摘要：阶段 0 E00 的《上游DRIFT资产核验》；边界为历史参考。
+早期上游 DRIFT资产资格筛查，只回答资产是否可参考，不能替代 AAD当前阶段 Gate。
 
 ## HIST-RISK-EVENT-DATASET
 
-- 用途：早期风险事件抽取与可视化。
-- 代码：`legacy/risk_event_dataset.py` 与对应旧脚本。
-- 为何不是当前路径：形成于预注册和校准门禁之前，口径未与当前协议绑定。
-- 边界：可作代码考古，不能直接进入当前论文 Results。
+早期风险事件抽取与可视化，形成于当前协议门禁之前，只用于代码考古。
 
 ## HIST-LOCAL-PROPAGATION
 
-- 用途：早期局部传播指标和可视化探索。
-- 代码：`legacy/local_propagation_baseline.py` 与对应旧脚本。
-- 为何不是当前路径：符号、指标与冻结规则早于现行 E01/E02 体系。
-- 边界：只作方法演化对照，不能混用口径。
+早期局部传播指标和可视化探索，口径早于现行阶段体系，只作方法演化对照。
 
 ## HIST-NONLOCAL-PILOTS
 
-- 用途：保存非局部传播 Pilot A/B 及修正版的早期探索。
-- 代码：`legacy/nonlocal_pilot_summary.py` 与 A/B 汇总脚本。
-- 为何不是当前路径：未在现行真实校准、意向运行分母与协议锁 Gate 下执行。
-- 边界：只能证明做过探索，不能证明核心效应存在。
+早期非局部传播 pilot未在当前校准和协议锁下执行，不能证明核心效应存在。
 
 ## HIST-FEASIBILITY-PIPELINE
 
-- 用途：保存最初可行性周、区域化、传播与通用 CLI 管线。
-- 代码：`legacy/pipeline.py`、`legacy/cli.py`、旧 feasibility 脚本。
-- 为何不是当前路径：它是正式科研路线和证据门禁建立前的原型。
-- 边界：用于复现历史决策，不得覆盖当前正式模块。
+最初可行性周和通用管线原型，用于复现历史决策，不得默认接回当前正式路径。
 
 ## 归档完整性
 
-2026-09-08 的物理迁移与保留清单位于 `docs/maintenance/`。它们记录迁移前后路径、Git blob 或哈希，用于证明整理是保留式归档而不是删除。任何人恢复历史入口时，应先读清单和 `code/src/riskprop/legacy/README.md`，再决定是否建立新分支；不得把 legacy 默认接回正式路径。
+迁移清单位于 `docs/maintenance/`。归档保留原文件内容；发现旧编号不应批量改写历史文件，而应通过映射理解。

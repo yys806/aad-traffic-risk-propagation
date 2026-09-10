@@ -21,7 +21,7 @@ REQUIRED_ENTRY_PATHS = (
     "docs/PROJECT_REGISTRY.json",
     "docs/ARCHITECTURE.md",
     "docs/RESEARCH_STATUS.md",
-    "docs/EXPERIMENT_INDEX.md",
+    "docs/STAGE_INDEX.md",
     "docs/RESULTS_INDEX.md",
     "docs/HISTORY_INDEX.md",
     "docs/LEARNING_PATH.md",
@@ -388,7 +388,7 @@ def validate_project_docs(
             require_tracked=strict_git,
         )
 
-    experiment_index = _read_text(root / "docs/EXPERIMENT_INDEX.md", "EXPERIMENT_INDEX", issues)
+    experiment_index = _read_text(root / "docs/STAGE_INDEX.md", "STAGE_INDEX", issues)
     result_index = _read_text(root / "docs/RESULTS_INDEX.md", "RESULTS_INDEX", issues)
     history_index = _read_text(root / "docs/HISTORY_INDEX.md", "HISTORY_INDEX", issues)
     handoff = _read_text(root / "PROJECT_CONTEXT.md", "PROJECT_CONTEXT", issues)
@@ -424,7 +424,7 @@ def validate_project_docs(
             issues.append(f"duplicate experiment id: {experiment_id}")
         experiment_ids.add(experiment_id)
         if not _has_heading(experiment_index, experiment_id):
-            issues.append(f"{experiment_id} is not synchronized to EXPERIMENT_INDEX")
+            issues.append(f"{experiment_id} is not synchronized to STAGE_INDEX")
         allow_empty_paths = experiment.get("status") in {
             "agreed_pending_blocked",
             "not_started",

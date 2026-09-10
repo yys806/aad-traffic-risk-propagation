@@ -45,10 +45,10 @@ def test_manifest_records_hashes_and_round_trips_all_run_artifacts(tmp_path: Pat
 
     manifest = build_run_manifest(
         run_dir,
-        metadata={"run_id": "run_complete", "protocol_version": "e00.test"},
+        metadata={"run_id": "run_complete", "protocol_version": "stage_0_1.test"},
     )
 
-    assert manifest["schema_version"] == "e00.v1"
+    assert manifest["schema_version"] == "stage_0_1.v1"
     assert manifest["metadata"]["run_id"] == "run_complete"
     assert {entry["path"] for entry in manifest["files"]} == set(
         REQUIRED_RUN_ARTIFACTS
@@ -79,7 +79,7 @@ def test_provenance_records_commit_environment_command_and_exit_code():
         exit_code=0,
     )
 
-    assert provenance["schema_version"] == "e00.provenance.v1"
+    assert provenance["schema_version"] == "stage_0_1.provenance.v1"
     assert len(provenance["git_commit"]) == 40
     assert isinstance(provenance["git_dirty"], bool)
     assert provenance["command"] == ["python", "-m", "riskprop.formal_runner"]
@@ -126,33 +126,33 @@ def test_theory_schema_accepts_all_frozen_columns_even_for_an_empty_channel(
     assert result == {name: 0 for name in TABLE_REQUIRED_COLUMNS}
 
 
-def test_e00_artifact_smoke_writes_a_sealed_theory_aligned_run(tmp_path: Path):
+def test_stage_0_1_artifact_smoke_writes_a_sealed_theory_aligned_run(tmp_path: Path):
     run_dir = run_artifact_smoke(
         tmp_path,
-        run_id="e00_smoke_001",
+        run_id="stage_0_1_smoke_001",
         repo_root=Path(__file__).resolve().parents[2],
     )
 
     config = json.loads((run_dir / "config_frozen.json").read_text(encoding="utf-8"))
-    assert config["experiment_id"] == "E00"
+    assert config["experiment_id"] == "stage_0_1"
     assert config["smoke_only"] is True
-    assert validate_run_manifest(run_dir)["metadata"]["run_id"] == "e00_smoke_001"
+    assert validate_run_manifest(run_dir)["metadata"]["run_id"] == "stage_0_1_smoke_001"
     assert validate_theory_artifact_schema(run_dir) == {
         name: 0 for name in TABLE_REQUIRED_COLUMNS
     }
 
 
-def test_e00_artifact_smoke_cli_is_a_one_command_reproducibility_entrypoint(
+def test_stage_0_1_artifact_smoke_cli_is_a_one_command_reproducibility_entrypoint(
     tmp_path: Path,
 ):
     repo_root = Path(__file__).resolve().parents[2]
     command = [
         sys.executable,
-        str(repo_root / "code" / "scripts" / "run_e00_artifact_smoke.py"),
+        str(repo_root / "code" / "scripts" / "run_stage_0_1_artifact_smoke.py"),
         "--output-root",
         str(tmp_path),
         "--run-id",
-        "e00_cli_smoke",
+        "stage_0_1_cli_smoke",
         "--repo-root",
         str(repo_root),
     ]
@@ -166,22 +166,22 @@ def test_e00_artifact_smoke_cli_is_a_one_command_reproducibility_entrypoint(
     )
 
     assert process.returncode == 0, process.stderr
-    assert (tmp_path / "e00_cli_smoke" / "manifest.json").exists()
+    assert (tmp_path / "stage_0_1_cli_smoke" / "manifest.json").exists()
     provenance = json.loads(
-        (tmp_path / "e00_cli_smoke" / "provenance.json").read_text(
+        (tmp_path / "stage_0_1_cli_smoke" / "provenance.json").read_text(
             encoding="utf-8"
         )
     )
     assert provenance["command"] == command
 
 
-def test_e00_cli_records_a_failed_rerun_without_overwriting_the_first_run(
+def test_stage_0_1_cli_records_a_failed_rerun_without_overwriting_the_first_run(
     tmp_path: Path,
 ):
     repo_root = Path(__file__).resolve().parents[2]
     command = [
         sys.executable,
-        str(repo_root / "code" / "scripts" / "run_e00_artifact_smoke.py"),
+        str(repo_root / "code" / "scripts" / "run_stage_0_1_artifact_smoke.py"),
         "--output-root",
         str(tmp_path),
         "--run-id",
@@ -222,7 +222,7 @@ def test_e00_cli_records_a_failed_rerun_without_overwriting_the_first_run(
     assert ledger[-1]["exit_code"] != 0
 
 
-def test_e00_contract_fixture_writes_four_nonempty_theory_audited_runs(
+def test_stage_0_1_contract_fixture_writes_four_nonempty_theory_audited_runs(
     tmp_path: Path,
 ):
     fixture_dir = run_contract_fixture(
@@ -263,14 +263,14 @@ def test_e00_contract_fixture_writes_four_nonempty_theory_audited_runs(
             assert set(table["run_id"]) == {expected_run_id}
 
 
-def test_e00_contract_fixture_cli_is_a_one_command_nonempty_contract_entrypoint(
+def test_stage_0_1_contract_fixture_cli_is_a_one_command_nonempty_contract_entrypoint(
     tmp_path: Path,
 ):
     repo_root = Path(__file__).resolve().parents[2]
     process = subprocess.run(
         [
             sys.executable,
-            str(repo_root / "code" / "scripts" / "run_e00_contract_fixture.py"),
+            str(repo_root / "code" / "scripts" / "run_stage_0_1_contract_fixture.py"),
             "--output-root",
             str(tmp_path),
             "--fixture-id",
@@ -293,7 +293,7 @@ def test_e00_contract_fixture_cli_is_a_one_command_nonempty_contract_entrypoint(
     )
     assert provenance["command"] == [
         sys.executable,
-        str(repo_root / "code" / "scripts" / "run_e00_contract_fixture.py"),
+        str(repo_root / "code" / "scripts" / "run_stage_0_1_contract_fixture.py"),
         "--output-root",
         str(tmp_path),
         "--fixture-id",

@@ -1,4 +1,4 @@
-"""Frozen input and measurement contracts for E15-A/E17-A calibration.
+"""Frozen input and measurement contracts for Stage 0.2/Stage 0.5 calibration.
 
 This module deliberately contains no treatment-effect analysis.  Its outputs are
 calibration infrastructure and are never eligible for a scientific main claim.
@@ -72,7 +72,7 @@ def build_default_calibration_manifests(repo_root: str | Path) -> tuple[dict, di
     """Build the fixed AAD calibration inventory without opening holdout records."""
 
     repo_root = Path(repo_root).resolve()
-    data_root = repo_root / "docs" / "归档" / "真实数据与NC文献调研" / "datasets"
+    data_root = repo_root / "dataset"
     specifications = (
         (
             "ngsim_us101",
@@ -96,15 +96,7 @@ def build_default_calibration_manifests(repo_root: str | Path) -> tuple[dict, di
             "Athens-d1",
             data_root / "pNEUMA" / "20181101_d1_0800_0830.csv",
             "calibration",
-            "trajectory fields; leader-aware risk only after map-match gate",
-        ),
-        (
-            "pneuma_d1_osm_20260907",
-            "OpenStreetMap",
-            "Athens-d1",
-            data_root / "pNEUMA" / "osm" / "athens_d1_bbox_20260907.osm",
-            "calibration",
-            "frozen road-map snapshot for pNEUMA map matching; ODbL, OpenStreetMap contributors",
+            "urban kinematics only; no road, leader, TTC, or DRAC inference",
         ),
         (
             "ngsim_i80",
@@ -161,7 +153,6 @@ def build_default_calibration_manifests(repo_root: str | Path) -> tuple[dict, di
             "ngsim_us101",
             "ngsim_lankershim",
             "pneuma_d1_0800_0830",
-            "pneuma_d1_osm_20260907",
             "spmd_rv_rx_calibration_trips",
         ],
         "locked_holdout": [

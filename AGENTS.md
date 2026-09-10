@@ -38,7 +38,7 @@ AI 负责代码、测试、调试、已授权实验执行、自动化、数据�
 
 - AAD 是当前项目；`D:\shen\TJU\DRIFT` 只读。
 - 跨阶段前必须读取 `RES-PROTOCOL-READINESS-V1` 或本机 readiness 原件。
-- Gate 未通过时，不生成协议锁、不运行后续正式实验、不看 locked holdout、不降低阈值、不挑种子、不把 calibration/E00 写成科学主效应。
+- Gate 未通过时，不生成协议锁、不运行后续正式阶段、不看 locked holdout、不降低阈值、不挑种子、不把校准或阶段 0.1 写成科学主效应。
 - 缺失不补零；不可观测不推断；失败、空效应、旧结果、配置、日志和 `uncertain` 均保留。
 - pNEUMA 人工标签由研究者完成；AI 只做界面/格式校验和只读统计。
 - 不执行会丢失项目资料的 `git clean`、`git reset --hard`、批量 checkout、递归删除或覆盖；确需清理时先精确解析目标并采用可恢复方式。

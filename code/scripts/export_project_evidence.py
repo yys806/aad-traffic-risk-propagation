@@ -11,33 +11,31 @@ CODE_ROOT = Path(__file__).resolve().parents[1]
 REPO_ROOT = CODE_ROOT.parent
 EVIDENCE_ROOT = REPO_ROOT / "evidence"
 MAX_FILE_BYTES = 256 * 1024
-EXPORT_VERSION = "aad-portable-evidence-2026-09-08-v1"
+EXPORT_VERSION = "aad-portable-evidence-2026-09-09-stage-taxonomy-v2"
 
 
 def _source_pairs() -> dict[str, list[tuple[str, str]]]:
     pairs: dict[str, list[tuple[str, str]]] = {
-        "RES-E00-PRIMARY-V3": [
+        "RES-STAGE-0.1-INFRASTRUCTURE-V3": [
             (
-                "code/outputs/formal/E00/e00_real_sumo_20260907_primary_v3/e00_report.json",
-                "e00_report.json",
+                "code/outputs/formal/stage_0_1/e00_real_sumo_20260907_primary_v3/e00_report.json",
+                "stage_0_1_report.json",
             ),
             (
-                "code/outputs/formal/E00/e00_real_sumo_20260907_primary_v3/independent_analysis.json",
+                "code/outputs/formal/stage_0_1/e00_real_sumo_20260907_primary_v3/independent_analysis.json",
                 "independent_analysis.json",
             ),
         ],
-        "RES-E00-ENV-COMPARE-V3": [
+        "RES-STAGE-0.1-ENV-COMPARE-V3": [
             (
-                "code/outputs/formal/E00/e00_real_sumo_environment_comparison_20260907_v3.json",
+                "code/outputs/formal/stage_0_1/e00_real_sumo_environment_comparison_20260907_v3.json",
                 "environment_comparison.json",
             )
         ],
-        "RES-E15A-NGSIM-V2": [],
-        "RES-E15A-PNEUMA-MAPMATCH-V2": [],
-        "RES-E15A-PNEUMA-QA-V5": [],
-        "RES-E16A-OBS-V3": [],
-        "RES-E17A-REAL-REF-V1": [],
-        "RES-E01-PRELOCK-V2": [],
+        "RES-STAGE-0.2-NGSIM-V2": [],
+        "RES-STAGE-0.4-COMM-OBS-V3": [],
+        "RES-STAGE-0.5-REAL-REF-V1": [],
+        "RES-STAGE-0.6-PRELOCK-V2": [],
         "RES-PROTOCOL-READINESS-V1": [
             (
                 "code/outputs/formal/calibration/protocol_lock_readiness_v1.json",
@@ -46,7 +44,7 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         ],
     }
 
-    e00_root = "code/outputs/formal/E00/e00_real_sumo_20260907_primary_v3"
+    stage_0_1_root = "code/outputs/formal/stage_0_1/e00_real_sumo_20260907_primary_v3"
     for cell in ("s0c0", "s0c1", "s1c0", "s1c1"):
         for name in (
             "audit.json",
@@ -56,33 +54,25 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
             "SHA256SUMS",
             "topology.json",
         ):
-            pairs["RES-E00-PRIMARY-V3"].append(
-                (f"{e00_root}/{cell}/{name}", f"{cell}/{name}")
+            pairs["RES-STAGE-0.1-INFRASTRUCTURE-V3"].append(
+                (f"{stage_0_1_root}/{cell}/{name}", f"{cell}/{name}")
             )
 
     calibration_sets = {
-        "RES-E15A-NGSIM-V2": (
-            "e15a_ngsim_v2",
+        "RES-STAGE-0.2-NGSIM-V2": (
+            "stage_0_2_ngsim_v2",
             ("audit.json", "config_frozen.json", "manifest.json", "provenance.json", "SHA256SUMS"),
         ),
-        "RES-E15A-PNEUMA-MAPMATCH-V2": (
-            "e15a_pneuma_mapmatch_v2",
-            ("audit.json", "config_frozen.json", "manifest.json", "provenance.json", "SHA256SUMS"),
-        ),
-        "RES-E15A-PNEUMA-QA-V5": (
-            "e15a_pneuma_manual_qa_v5",
-            ("audit.json", "manifest.json", "SHA256SUMS", "审计说明.md"),
-        ),
-        "RES-E16A-OBS-V3": (
-            "e16a_observability_v3",
+        "RES-STAGE-0.4-COMM-OBS-V3": (
+            "stage_0_4_observability_v3",
             ("audit.json", "manifest.json", "provenance.json", "SHA256SUMS"),
         ),
-        "RES-E17A-REAL-REF-V1": (
-            "e17a_real_reference_v1",
+        "RES-STAGE-0.5-REAL-REF-V1": (
+            "stage_0_5_real_reference_v1",
             ("audit.json", "manifest.json", "SHA256SUMS"),
         ),
-        "RES-E01-PRELOCK-V2": (
-            "e01_prelock_validation_v2",
+        "RES-STAGE-0.6-PRELOCK-V2": (
+            "stage_0_6_prelock_validation_v2",
             ("audit.json", "manifest.json", "SHA256SUMS"),
         ),
     }

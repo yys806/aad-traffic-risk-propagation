@@ -1,4 +1,4 @@
-"""E00-only runner that verifies the formal artifact chain without science claims."""
+"""Stage 0.1-only runner that verifies the formal artifact chain without science claims."""
 
 from __future__ import annotations
 
@@ -45,7 +45,7 @@ def run_artifact_smoke(
     repo_root: Path,
     command: list[str] | None = None,
 ) -> Path:
-    """Create and seal an empty E00 run to test provenance and schemas end to end."""
+    """Create and seal an empty Stage 0.1 run to test provenance and schemas end to end."""
 
     if not run_id or any(character in run_id for character in "\\/:"):
         raise FormalArtifactError("run_id must be a non-empty portable path component")
@@ -67,9 +67,9 @@ def run_artifact_smoke(
         ]
 
     config = {
-        "schema_version": "e00.config.v1",
-        "experiment_id": "E00",
-        "protocol_version": "e00.artifact-smoke.v1",
+        "schema_version": "stage_0_1.config.v1",
+        "experiment_id": "stage_0_1",
+        "protocol_version": "stage_0_1.artifact-smoke.v1",
         "run_id": run_id,
         "run_kind": "artifact_smoke",
         "smoke_only": True,
@@ -81,8 +81,8 @@ def run_artifact_smoke(
     for name, columns in TABLE_REQUIRED_COLUMNS.items():
         pd.DataFrame(columns=columns).to_parquet(run_dir / name, index=False)
     audit = {
-        "schema_version": "e00.audit.v1",
-        "experiment_id": "E00",
+        "schema_version": "stage_0_1.audit.v1",
+        "experiment_id": "stage_0_1",
         "run_id": run_id,
         "smoke_only": True,
         "scientific_claim_eligible": False,
@@ -117,8 +117,8 @@ def run_artifact_smoke(
     build_run_manifest(
         run_dir,
         metadata={
-            "experiment_id": "E00",
-            "protocol_version": "e00.artifact-smoke.v1",
+            "experiment_id": "stage_0_1",
+            "protocol_version": "stage_0_1.artifact-smoke.v1",
             "run_id": run_id,
             "smoke_only": True,
             "scientific_claim_eligible": False,
@@ -200,11 +200,11 @@ def run_contract_fixture(
             cell_id = f"s{int(source_present)}c{int(channel_enabled)}"
             run_id = f"{fixture_id}_{cell_id}"
             config = {
-                "schema_version": "e00.four-cell.v1",
-                "experiment_id": "E00",
+                "schema_version": "stage_0_1.four-cell.v1",
+                "experiment_id": "stage_0_1",
                 "theory_version": "nc-prereg-v1.0",
-                "protocol_version": "e00.contract-fixture.v1",
-                "scenario_id": "e00_contract_fixture",
+                "protocol_version": "stage_0_1.contract-fixture.v1",
+                "scenario_id": "stage_0_1_contract_fixture",
                 "pair_id": fixture_id,
                 "configured_seed": 0,
                 "simulation_seed": 0,
@@ -234,8 +234,8 @@ def run_contract_fixture(
                 state_rows.append(
                     {
                         "run_id": run_id,
-                        "experiment_id": "E00",
-                        "scenario_id": "e00_contract_fixture",
+                        "experiment_id": "stage_0_1",
+                        "scenario_id": "stage_0_1_contract_fixture",
                         "cell_id": cell_id,
                         "configured_seed": 0,
                         "simulation_seed": 0,
@@ -267,8 +267,8 @@ def run_contract_fixture(
                     state_rows.append(
                         {
                             "run_id": run_id,
-                            "experiment_id": "E00",
-                            "scenario_id": "e00_contract_fixture",
+                            "experiment_id": "stage_0_1",
+                            "scenario_id": "stage_0_1_contract_fixture",
                             "cell_id": cell_id,
                             "configured_seed": 0,
                             "simulation_seed": 0,
@@ -350,8 +350,8 @@ def run_contract_fixture(
             _write_json(
                 run_dir / "audit.json",
                 {
-                    "schema_version": "e00.audit.v1",
-                    "experiment_id": "E00",
+                    "schema_version": "stage_0_1.audit.v1",
+                    "experiment_id": "stage_0_1",
                     "run_id": run_id,
                     "fixture_only": True,
                     "scientific_claim_eligible": False,
@@ -380,8 +380,8 @@ def run_contract_fixture(
             build_run_manifest(
                 run_dir,
                 metadata={
-                    "experiment_id": "E00",
-                    "protocol_version": "e00.contract-fixture.v1",
+                    "experiment_id": "stage_0_1",
+                    "protocol_version": "stage_0_1.contract-fixture.v1",
                     "run_id": run_id,
                     "cell_id": cell_id,
                     "fixture_only": True,
@@ -461,8 +461,8 @@ def run_contract_fixture(
     _write_json(
         fixture_dir / "fixture_report.json",
         {
-            "schema_version": "e00.fixture-report.v1",
-            "experiment_id": "E00",
+            "schema_version": "stage_0_1.fixture-report.v1",
+            "experiment_id": "stage_0_1",
             "fixture_id": fixture_id,
             "fixture_only": True,
             "scientific_claim_eligible": False,

@@ -1,5 +1,5 @@
 param(
-    [string]$OutputDirectory = (Join-Path $PSScriptRoot "datasets\SPMD\selected")
+    [string]$OutputDirectory = (Join-Path $PSScriptRoot "..\..\..\dataset\SPMD\selected")
 )
 
 $ErrorActionPreference = "Stop"

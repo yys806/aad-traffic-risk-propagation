@@ -44,7 +44,7 @@ def append_failure_record(
     output_root = Path(output_root).resolve()
     output_root.mkdir(parents=True, exist_ok=True)
     record = {
-        "schema_version": "e00.failure.v1",
+        "schema_version": "stage_0_1.failure.v1",
         "experiment_id": experiment_id,
         "run_id": run_id,
         "stage": stage,
@@ -64,7 +64,7 @@ def append_failure_record(
 
 MANIFEST_NAME = "manifest.json"
 CHECKSUM_NAME = "SHA256SUMS"
-SCHEMA_VERSION = "e00.v1"
+SCHEMA_VERSION = "stage_0_1.v1"
 _SEAL_FILES = frozenset({MANIFEST_NAME, CHECKSUM_NAME})
 _PARQUET_ARTIFACTS = (
     "state.parquet",
@@ -291,7 +291,7 @@ def collect_run_provenance(
         raise FormalArtifactError(f"Unexpected Git commit identifier: {commit!r}")
     status = _git_output(repo_root, "status", "--porcelain", "--untracked-files=all")
     return {
-        "schema_version": "e00.provenance.v1",
+        "schema_version": "stage_0_1.provenance.v1",
         "repo_root": str(repo_root),
         "git_commit": commit,
         "git_dirty": bool(status),

@@ -23,14 +23,13 @@ from riskprop.calibration import (
 
 
 def test_default_split_is_group_level_and_keeps_holdout_sealed(tmp_path: Path) -> None:
-    assets = tmp_path / "docs" / "归档" / "真实数据与NC文献调研" / "datasets"
+    assets = tmp_path / "dataset"
     paths = [
         assets / "NGSIM" / "US-101-LosAngeles-CA.zip",
         assets / "NGSIM" / "I-80-Emeryville-CA.zip",
         assets / "NGSIM" / "Lankershim-Boulevard-LosAngeles-CA.zip",
         assets / "NGSIM" / "Peachtree-Street-Atlanta-GA.zip",
         assets / "pNEUMA" / "20181101_d1_0800_0830.csv",
-        assets / "pNEUMA" / "osm" / "athens_d1_bbox_20260907.osm",
         assets / "SPMD" / "selected" / "RV_RX.csv.zip",
     ]
     for index, path in enumerate(paths):
@@ -44,7 +43,6 @@ def test_default_split_is_group_level_and_keeps_holdout_sealed(tmp_path: Path) -
         "ngsim_us101",
         "ngsim_lankershim",
         "pneuma_d1_0800_0830",
-        "pneuma_d1_osm_20260907",
         "spmd_rv_rx_calibration_trips",
     }
     assert set(split_manifest["locked_holdout"]) == {
@@ -146,7 +144,7 @@ def test_event_contract_rejects_frame_as_independent_event() -> None:
                 "pet_s": float("nan"),
                 "inclusion_status": "included",
                 "exclusion_reason": "",
-                "algorithm_version": "e15a.v1",
+                "algorithm_version": "stage_0_2.v1",
                 "raw_frame_count": 3,
             }
         ]

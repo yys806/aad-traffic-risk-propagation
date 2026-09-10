@@ -17,18 +17,18 @@ def main() -> int:
     parser = argparse.ArgumentParser(
         description="Report protocol-lock blockers; never creates the lock itself."
     )
-    parser.add_argument("--e15", type=Path, required=True)
-    parser.add_argument("--e16", type=Path, required=True)
-    parser.add_argument("--e17", type=Path, required=True)
-    parser.add_argument("--e01", type=Path, required=True)
+    parser.add_argument("--stage-0-2", dest="stage_0_2", type=Path, required=True)
+    parser.add_argument("--stage-0-4", dest="stage_0_4", type=Path, required=True)
+    parser.add_argument("--stage-0-5", dest="stage_0_5", type=Path, required=True)
+    parser.add_argument("--stage-0-6", dest="stage_0_6", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     reports = {}
     for name, path in (
-        ("E15-A", args.e15),
-        ("E16-A", args.e16),
-        ("E17-A", args.e17),
-        ("E01", args.e01),
+        ("stage_0_2", args.stage_0_2),
+        ("stage_0_4", args.stage_0_4),
+        ("stage_0_5", args.stage_0_5),
+        ("stage_0_6", args.stage_0_6),
     ):
         reports[name] = json.loads(path.read_text(encoding="utf-8"))
     result = protocol_lock_readiness(reports)

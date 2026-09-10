@@ -1,4 +1,4 @@
-"""Fail-closed writer for the post-E01 protocol lock."""
+"""Fail-closed writer for the post-Stage 0.6 protocol lock."""
 
 from __future__ import annotations
 
@@ -11,7 +11,7 @@ class ProtocolLockError(ValueError):
     """Raised when a protocol lock would be premature or incomplete."""
 
 
-REQUIRED_GATES = ("E15-A", "E16-A", "E17-A", "E01")
+REQUIRED_GATES = ("stage_0_2", "stage_0_4", "stage_0_5", "stage_0_6")
 REQUIRED_FROZEN_FIELDS = {
     "data_manifest_sha256",
     "split_manifest_sha256",
@@ -35,7 +35,7 @@ REQUIRED_FROZEN_FIELDS = {
     "calibration_seeds",
     "delta_plan",
     "paired_variance",
-    "e02_sample_size",
+    "stage_1_1_sample_size",
     "communication_observability",
     "simulation_applicability",
     "extrapolation_exclusions",
@@ -53,17 +53,17 @@ def protocol_lock_readiness(gate_reports: dict) -> dict:
     blockers = []
     for name in REQUIRED_GATES:
         status = gate_reports.get(name, {}).get("gate_status", "missing")
-        allowed = {"pass", "pass_limited"} if name == "E16-A" else {"pass"}
+        allowed = {"pass", "pass_limited"} if name == "stage_0_4" else {"pass"}
         if status not in allowed:
             blockers.append(f"{name}={status}")
     return {
         "schema_version": "aad.protocol-lock-readiness.v1",
         "protocol_version": "v1.1",
         "protocol_lock_allowed": not blockers,
-        "e02_allowed": False,
+        "stage_1_1_allowed": False,
         "blockers": blockers,
         "note": (
-            "E02 remains forbidden until a complete protocol lock is written and verified."
+            "Stage 1.1 remains forbidden until a complete protocol lock is written and verified."
         ),
     }
 
@@ -79,7 +79,7 @@ def write_protocol_lock(
     failed = []
     for name in REQUIRED_GATES:
         status = gate_reports[name].get("gate_status")
-        allowed = {"pass", "pass_limited"} if name == "E16-A" else {"pass"}
+        allowed = {"pass", "pass_limited"} if name == "stage_0_4" else {"pass"}
         if status not in allowed:
             failed.append(f"{name}={status}")
     if failed:

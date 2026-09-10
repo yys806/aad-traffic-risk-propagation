@@ -16,8 +16,8 @@ from riskprop.formal_design import (
 
 def _four_cell_configs() -> dict[str, dict[str, object]]:
     common = {
-        "schema_version": "e00.four-cell.v1",
-        "experiment_id": "E02",
+        "schema_version": "stage_0_1.four-cell.v1",
+        "experiment_id": "Stage 1.1",
         "theory_version": "nc-prereg-v1.0",
         "protocol_version": "dual-corridor-v1",
         "scenario_id": "dual_corridor_calibration",

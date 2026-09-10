@@ -49,7 +49,7 @@ def test_drift_state_conversion_maps_only_explicit_fields_to_frozen_schema():
     converted = convert_drift_state_rows(
         pd.DataFrame([_valid_drift_state_row()]),
         run_id="run_31_r11",
-        experiment_id="E02",
+        experiment_id="Stage 1.1",
         scenario_id="dual_corridor",
     )
 
@@ -86,7 +86,7 @@ def test_drift_state_conversion_rejects_missing_fields_instead_of_filling_zero()
         convert_drift_state_rows(
             pd.DataFrame([row]),
             run_id="run_31_r11",
-            experiment_id="E02",
+            experiment_id="Stage 1.1",
             scenario_id="dual_corridor",
         )
 

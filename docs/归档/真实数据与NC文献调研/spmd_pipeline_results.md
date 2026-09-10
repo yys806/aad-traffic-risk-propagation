@@ -11,7 +11,7 @@
 - 实现：`code/real_data/spmd/profile_rv_rx.py`
 - 测试：`code/tests/real_data/spmd/test_profile_rv_rx.py`
 - 全量输出：`code/real_data/spmd/outputs/rv_rx_profile.json`
-- 输入：`docs/归档/真实数据与NC文献调研/datasets/SPMD/selected/RV_RX.csv.zip`
+- 输入：`dataset/SPMD/selected/RV_RX.csv.zip`
 
 小型 fixture 测试：
 
@@ -23,7 +23,7 @@ python -m pytest code\tests\real_data\spmd\test_profile_rv_rx.py -q
 
 ```powershell
 python code\real_data\spmd\profile_rv_rx.py `
-  docs\归档\真实数据与NC文献调研\datasets\SPMD\selected\RV_RX.csv.zip `
+  dataset\SPMD\selected\RV_RX.csv.zip `
   --output code\real_data\spmd\outputs\rv_rx_profile.json `
   --segment-gap-cs 100
 ```

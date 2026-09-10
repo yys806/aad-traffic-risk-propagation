@@ -13,8 +13,8 @@
 
 - 实现：`code/src/riskprop/real_trajectory.py`
 - 测试：`code/tests/test_real_trajectory.py`
-- NGSIM 原始包：`docs/归档/真实数据与NC文献调研/datasets/NGSIM/US-101-LosAngeles-CA.zip`
-- pNEUMA 原始样本：`docs/归档/真实数据与NC文献调研/datasets/pNEUMA/20181101_d1_0800_0830.csv`
+- NGSIM 原始包：`dataset/NGSIM/US-101-LosAngeles-CA.zip`
+- pNEUMA 原始样本：`dataset/pNEUMA/20181101_d1_0800_0830.csv`
 
 TDD 记录：先新增测试并运行，因 `riskprop.real_trajectory` 不存在而失败；补最小实现后 5 项通过。随后新增非默认索引回归测试，真实暴露索引对齐错误并失败；修复后通过。最后补充 SI 标准字段测试，先观察 2 项失败，再实现并通过。最终：
 

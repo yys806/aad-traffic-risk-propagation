@@ -1,0 +1,41 @@
+{
+  "schema_version": "aad.stage-layout-migration.v1",
+  "date": "2026-09-09",
+  "policy": "preserve historical contents; change current names, paths, indexes and machine identifiers",
+  "moves": [
+    {
+      "source": "记录",
+      "destination": "docs/归档/项目记录",
+      "file_count": 20,
+      "total_bytes": 375460,
+      "source_absent_after_move": true
+    },
+    {
+      "source": "docs/归档/真实数据与NC文献调研/datasets",
+      "destination": "dataset",
+      "file_count": 35,
+      "total_bytes": 2047518107,
+      "source_absent_after_move": true
+    },
+    {
+      "source": "docs/论文实验推进",
+      "destination": "docs/归档/旧实验编号材料/论文实验推进_旧编号版",
+      "reason": "preserve the pre-migration plan and execution records verbatim"
+    }
+  ],
+  "current_taxonomy": {
+    "human": "阶段 X.X",
+    "machine": "stage_X_Y",
+    "index": "docs/STAGE_INDEX.md",
+    "mapping": "docs/归档/旧实验编号材料/README.md"
+  },
+  "retired_current_scope": {
+    "item": "pNEUMA leader inference and manual QA",
+    "current_pneuma_role": "urban_kinematics_only",
+    "code": "code/src/riskprop/legacy",
+    "outputs": "code/outputs/history/legacy_experiment_ids",
+    "evidence": "evidence/history/legacy_experiment_ids",
+    "decision_status": "approved_by_researcher",
+    "decision_date": "2026-09-10"
+  }
+}

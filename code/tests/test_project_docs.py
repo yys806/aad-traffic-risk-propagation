@@ -13,7 +13,7 @@ def _write(path: Path, text: str = "") -> None:
 
 def _experiment() -> dict[str, object]:
     return {
-        "id": "E00",
+        "id": "stage_0_1",
         "name": "Engineering gate",
         "purpose": "Validate the artifact chain.",
         "research_question": "Can the chain be reproduced?",
@@ -28,12 +28,12 @@ def _experiment() -> dict[str, object]:
         "data_version": "fixture-v1",
         "model": "not_applicable",
         "model_checkpoint": "not_applicable",
-        "result_ids": ["RES-E00-V1"],
+        "result_ids": ["RES-STAGE-0.1-V1"],
         "core_metrics": ["schema_valid"],
         "current_conclusion": "Engineering-only evidence.",
         "gate": {
             "status": "passed_engineering_only",
-            "portable_path": "evidence/results/RES-E00-V1/audit.json",
+            "portable_path": "evidence/results/RES-STAGE-0.1-V1/audit.json",
         },
         "scientific_claim_eligible": False,
     }
@@ -41,11 +41,11 @@ def _experiment() -> dict[str, object]:
 
 def _result() -> dict[str, object]:
     return {
-        "id": "RES-E00-V1",
-        "experiment_id": "E00",
+        "id": "RES-STAGE-0.1-V1",
+        "experiment_id": "stage_0_1",
         "name": "Fixture result",
         "status": "verified_engineering_only",
-        "portable_evidence_paths": ["evidence/results/RES-E00-V1/audit.json"],
+        "portable_evidence_paths": ["evidence/results/RES-STAGE-0.1-V1/audit.json"],
         "local_artifact_paths": ["code/outputs/example/audit.json"],
         "code_version_source": "fixture provenance",
         "configuration_source": "fixture config",
@@ -105,8 +105,8 @@ def _valid_repo(tmp_path: Path) -> Path:
         "docs/PROJECT_INDEX.md": "# Index\n",
         "docs/ARCHITECTURE.md": "# Architecture\n",
         "docs/RESEARCH_STATUS.md": "# Status\n",
-        "docs/EXPERIMENT_INDEX.md": "# Experiments\n\n### E00 Engineering\n",
-        "docs/RESULTS_INDEX.md": "# Results\n\n## RES-E00-V1 Result\n",
+        "docs/STAGE_INDEX.md": "# Stages\n\n### stage_0_1 Engineering\n",
+        "docs/RESULTS_INDEX.md": "# Results\n\n## RES-STAGE-0.1-V1 Result\n",
         "docs/HISTORY_INDEX.md": "# History\n\n## HIST-PILOT Pilot\n",
         "docs/LEARNING_PATH.md": learning_topics,
         "docs/METHOD_AND_ALGORITHM_GUIDE.md": method_topics,
@@ -120,7 +120,7 @@ def _valid_repo(tmp_path: Path) -> Path:
     for path, text in files.items():
         _write(tmp_path / path, text)
 
-    evidence_path = tmp_path / "evidence/results/RES-E00-V1/audit.json"
+    evidence_path = tmp_path / "evidence/results/RES-STAGE-0.1-V1/audit.json"
     _write(evidence_path, "{}\n")
     evidence_content = evidence_path.read_bytes()
     evidence_manifest = {
@@ -129,11 +129,11 @@ def _valid_repo(tmp_path: Path) -> Path:
         "policy": "small-portable-evidence-only",
         "results": [
             {
-                "result_id": "RES-E00-V1",
+                "result_id": "RES-STAGE-0.1-V1",
                 "files": [
                     {
                         "source_path": "code/outputs/example/audit.json",
-                        "snapshot_path": "evidence/results/RES-E00-V1/audit.json",
+                        "snapshot_path": "evidence/results/RES-STAGE-0.1-V1/audit.json",
                         "size_bytes": len(evidence_content),
                         "sha256": hashlib.sha256(evidence_content).hexdigest(),
                     }
@@ -151,7 +151,7 @@ def _valid_repo(tmp_path: Path) -> Path:
         "docs/PROJECT_REGISTRY.json",
         "docs/ARCHITECTURE.md",
         "docs/RESEARCH_STATUS.md",
-        "docs/EXPERIMENT_INDEX.md",
+        "docs/STAGE_INDEX.md",
         "docs/RESULTS_INDEX.md",
         "docs/HISTORY_INDEX.md",
         "docs/LEARNING_PATH.md",
@@ -172,9 +172,9 @@ def _valid_repo(tmp_path: Path) -> Path:
         },
         "canonical_entries": canonical_entries,
         "current": {
-            "active_experiment_id": "E00",
+            "active_experiment_id": "stage_0_1",
             "active_task": "Fixture task",
-            "portable_gate_paths": ["evidence/results/RES-E00-V1/audit.json"],
+            "portable_gate_paths": ["evidence/results/RES-STAGE-0.1-V1/audit.json"],
             "local_gate_paths": ["code/outputs/example/audit.json"],
         },
         "experiments": [_experiment()],
@@ -212,11 +212,11 @@ def test_validate_project_docs_reports_missing_registered_path(tmp_path: Path) -
 
 def test_validate_project_docs_reports_unsynchronized_ids(tmp_path: Path) -> None:
     repo = _valid_repo(tmp_path)
-    _write(repo / "docs/EXPERIMENT_INDEX.md", "# Experiments\n")
+    _write(repo / "docs/STAGE_INDEX.md", "# Experiments\n")
     _write(repo / "docs/RESULTS_INDEX.md", "# Results\n")
     issues = validate_project_docs(repo)
-    assert any("E00" in issue and "EXPERIMENT_INDEX" in issue for issue in issues)
-    assert any("RES-E00-V1" in issue and "RESULTS_INDEX" in issue for issue in issues)
+    assert any("stage_0_1" in issue and "STAGE_INDEX" in issue for issue in issues)
+    assert any("RES-STAGE-0.1-V1" in issue and "RESULTS_INDEX" in issue for issue in issues)
 
 
 def test_validate_project_docs_reports_missing_required_experiment_field(tmp_path: Path) -> None:
@@ -225,7 +225,7 @@ def test_validate_project_docs_reports_missing_required_experiment_field(tmp_pat
     del registry["experiments"][0]["status"]  # type: ignore[index]
     _save_registry(repo, registry)
     issues = validate_project_docs(repo)
-    assert any("E00" in issue and "missing required field: status" in issue for issue in issues)
+    assert any("stage_0_1" in issue and "missing required field: status" in issue for issue in issues)
 
 
 def test_validate_project_docs_reports_non_bidirectional_result_links(tmp_path: Path) -> None:
@@ -239,14 +239,14 @@ def test_validate_project_docs_reports_non_bidirectional_result_links(tmp_path: 
 
 def test_validate_project_docs_reports_evidence_hash_mismatch(tmp_path: Path) -> None:
     repo = _valid_repo(tmp_path)
-    _write(repo / "evidence/results/RES-E00-V1/audit.json", "changed\n")
+    _write(repo / "evidence/results/RES-STAGE-0.1-V1/audit.json", "changed\n")
     issues = validate_project_docs(repo)
     assert any("evidence sha256 mismatch" in issue for issue in issues)
 
 
 def test_validate_project_docs_reports_unregistered_evidence_file(tmp_path: Path) -> None:
     repo = _valid_repo(tmp_path)
-    _write(repo / "evidence/results/RES-E00-V1/stale.json", "{}\n")
+    _write(repo / "evidence/results/RES-STAGE-0.1-V1/stale.json", "{}\n")
     issues = validate_project_docs(repo)
     assert any("unregistered evidence snapshot" in issue for issue in issues)
 
