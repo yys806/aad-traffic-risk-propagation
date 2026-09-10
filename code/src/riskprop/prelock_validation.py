@@ -250,7 +250,7 @@ def write_stage_0_6_prelock_validation(output_dir: str | Path) -> Path:
         "analytic_truth": _analytic_truth_audit(),
         "physical_path_truth": _path_truth_audit(),
         "timestep_convergence": _timestep_audit(),
-        "gate_status": "pending_e15_e17_and_frozen_tolerances",
+        "gate_status": "pending_calibration_and_frozen_tolerances",
         "note": "Truth fixtures can validate implementations, but cannot set thresholds, delta_eq, delta_R, or Stage 1.1 sample size.",
     }
     (output_dir / "audit.json").write_text(

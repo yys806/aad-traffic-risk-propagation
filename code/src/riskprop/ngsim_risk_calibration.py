@@ -207,7 +207,7 @@ def write_stage_0_2_ngsim_package(
         "experiment_id": "stage_0_2",
         "scientific_claim_eligible": False,
         "locked_holdout_opened": False,
-        "gate_status": "pending_pneuma_and_blind_reaudit",
+        "gate_status": "active_audit_closure",
         "sources": source_audit,
     }
     provenance = {
@@ -292,4 +292,3 @@ def _optional_text(frame: pd.DataFrame, names: tuple[str, ...]) -> pd.Series:
 
 def _slug(value: str) -> str:
     return "".join(character.lower() if character.isalnum() else "_" for character in value).strip("_")
-

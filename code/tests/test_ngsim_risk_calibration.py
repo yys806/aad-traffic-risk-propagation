@@ -114,4 +114,4 @@ def test_stage_0_2_package_reads_only_requested_calibration_member(tmp_path: Pat
     audit = pd.read_json(output / "audit.json", typ="series")
     assert audit["scientific_claim_eligible"] is False
     assert audit["locked_holdout_opened"] is False
-
+    assert audit["gate_status"] == "active_audit_closure"
