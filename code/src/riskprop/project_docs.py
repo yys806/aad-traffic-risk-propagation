@@ -27,6 +27,15 @@ REQUIRED_ENTRY_PATHS = (
     "docs/LEARNING_PATH.md",
     "docs/METHOD_AND_ALGORITHM_GUIDE.md",
     "docs/CHANGELOG.md",
+    "AI_CONTEXT/00_PROJECT_STATE.md",
+    "AI_CONTEXT/01_RESEARCH_CONTEXT.md",
+    "AI_CONTEXT/02_ARCHITECTURE.md",
+    "AI_CONTEXT/03_DATA_FLOW.md",
+    "AI_CONTEXT/04_MODULE_MAP.md",
+    "AI_CONTEXT/05_EXPERIMENTS.md",
+    "AI_CONTEXT/06_DECISIONS.md",
+    "AI_CONTEXT/07_KNOWN_ISSUES.md",
+    "AI_CONTEXT/08_CHANGELOG.md",
     "evidence/README.md",
     "evidence/EVIDENCE_MANIFEST.json",
 )
@@ -104,6 +113,97 @@ REQUIRED_METHOD_TOPICS = (
     "实验影响",
     "变量",
 )
+REQUIRED_AGENT_TOPICS = (
+    "Research Engineer",
+    "科研决策",
+    "科研语义冻结",
+    "AI_CONTEXT",
+    "Context Consistency Check",
+    "commit",
+    "push",
+    "私人笔记",
+    "冲突处理",
+    "项目事实",
+)
+AI_CONTEXT_REQUIRED_TOPICS = {
+    "AI_CONTEXT/00_PROJECT_STATE.md": (
+        "当前研究阶段",
+        "当前主要研究目标",
+        "当前模型版本",
+        "当前主要实验",
+        "当前最重要的问题",
+        "当前下一步",
+        "最近的重要项目变化",
+        "当前 Git branch",
+        "对应的最新 commit",
+    ),
+    "AI_CONTEXT/01_RESEARCH_CONTEXT.md": (
+        "研究背景",
+        "研究问题",
+        "问题建模",
+        "现有方法",
+        "当前项目采用的方法",
+        "当前科研假设",
+        "Research Rationale",
+        "核心研究逻辑",
+    ),
+    "AI_CONTEXT/02_ARCHITECTURE.md": (
+        "模型总体结构",
+        "主要模块",
+        "模块输入输出",
+        "模块关系",
+        "重要配置",
+        "关键代码位置",
+    ),
+    "AI_CONTEXT/03_DATA_FLOW.md": (
+        "raw data",
+        "dataset",
+        "preprocessing",
+        "model input",
+        "post-processing",
+        "evaluator",
+        "metrics",
+        "数据结构",
+    ),
+    "AI_CONTEXT/04_MODULE_MAP.md": (
+        "核心文件",
+        "职责",
+        "核心类",
+        "核心函数",
+        "调用关系",
+        "主要依赖",
+        "模块分类",
+    ),
+    "AI_CONTEXT/05_EXPERIMENTS.md": (
+        "实验编号",
+        "实验目的",
+        "config",
+        "baseline",
+        "变量",
+        "数据集",
+        "主要指标",
+        "状态",
+        "客观实验结果",
+        "输出目录",
+    ),
+    "AI_CONTEXT/06_DECISIONS.md": (
+        "日期",
+        "决策内容",
+        "相关背景",
+        "影响范围",
+        "对应代码",
+        "研究者明确决定",
+    ),
+    "AI_CONTEXT/07_KNOWN_ISSUES.md": (
+        "Documented Intent",
+        "Actual Implementation",
+        "Evidence",
+        "Affected Files",
+        "Conflict",
+        "Status: Awaiting Researcher Decision",
+    ),
+    "AI_CONTEXT/08_CHANGELOG.md": ("重要变化", "AI_CONTEXT"),
+}
 FORBIDDEN_TRANSIENT_CLAIMS = (
     "当前工作树含大量未提交",
     "工作树存在大量已跟踪修改",
@@ -400,6 +500,10 @@ def validate_project_docs(
     _check_required_topics(handoff, REQUIRED_HANDOFF_SECTIONS, "PROJECT_CONTEXT", issues)
     _check_required_topics(learning, REQUIRED_LEARNING_TOPICS, "LEARNING_PATH", issues)
     _check_required_topics(method_guide, REQUIRED_METHOD_TOPICS, "METHOD_AND_ALGORITHM_GUIDE", issues)
+    _check_required_topics(agents, REQUIRED_AGENT_TOPICS, "AGENTS", issues)
+    for relative_path, topics in AI_CONTEXT_REQUIRED_TOPICS.items():
+        context_text = _read_text(root / relative_path, relative_path, issues)
+        _check_required_topics(context_text, topics, relative_path, issues)
     for phrase in FORBIDDEN_TRANSIENT_CLAIMS:
         if phrase.lower() in handoff.lower() or phrase.lower() in agents.lower():
             issues.append(f"current governance contains stale transient claim: {phrase}")

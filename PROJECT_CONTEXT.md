@@ -1,6 +1,6 @@
 # AAD 项目交接
 
-> 核对日期：2026-09-09。此文档给出稳定边界和精确继续点；实时文件状态仍需用 Git 和机器产物核验。
+> 核对日期：2026-09-10。此文档给出稳定边界和精确继续点；实时文件状态仍需用 Git 和机器产物核验。
 
 ## 1. 项目目标
 
@@ -24,7 +24,7 @@ NGSIM最终风险范围、pNEUMA运动学分布、packet级通信、仿真—现
 
 ## 6. 已确认研究分工
 
-NGSIM负责前车关系、跟驰风险指标和风险事件；pNEUMA只负责速度、纵向加速度与车型分布；SPMD负责通信可观测边界。
+NGSIM负责前车关系、跟驰风险指标和风险事件；研究者已于 2026-09-10 批准 pNEUMA 前车推断与人工复核退役，pNEUMA只负责速度、纵向加速度与车型分布；SPMD负责通信可观测边界。
 
 ## 7. 数据位置
 
@@ -59,7 +59,7 @@ Gate未通过时，不签协议锁、不看 locked holdout、不降低阈值、�
 
 ## 14. 维护入口
 
-计划与执行记录见 `docs/论文实验推进/`；机器状态见 `docs/PROJECT_REGISTRY.json`；阶段、结果、历史分别见 `docs/STAGE_INDEX.md`、`docs/RESULTS_INDEX.md`、`docs/HISTORY_INDEX.md`。
+AI 快速恢复入口见 `AI_CONTEXT/00_PROJECT_STATE.md`；计划与执行记录见 `docs/论文实验推进/`；机器状态见 `docs/PROJECT_REGISTRY.json`；阶段、结果、历史分别见 `docs/STAGE_INDEX.md`、`docs/RESULTS_INDEX.md`、`docs/HISTORY_INDEX.md`。
 
 ## 15. 完成定义
 

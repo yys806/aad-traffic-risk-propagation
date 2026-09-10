@@ -1,6 +1,6 @@
 # AAD 当前科研状态
 
-> 核对日期：2026-09-09。数字和 Gate 以 `PROJECT_REGISTRY.json`、`evidence/` 和本机原始产物为准。
+> 核对日期：2026-09-10。数字和 Gate 以 `PROJECT_REGISTRY.json`、`evidence/` 和本机原始产物为准。
 
 ## 当前研究问题
 

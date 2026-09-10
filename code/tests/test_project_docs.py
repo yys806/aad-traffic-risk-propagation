@@ -100,7 +100,7 @@ def _valid_repo(tmp_path: Path) -> Path:
     )
     files = {
         "README.md": "# Fixture\n",
-        "AGENTS.md": "# Rules\n",
+        "AGENTS.md": "# Rules\nResearch Engineer\n科研决策\n科研语义冻结\nAI_CONTEXT\nContext Consistency Check\ncommit\npush\n私人笔记\n冲突处理\n项目事实\n",
         "PROJECT_CONTEXT.md": handoff_sections,
         "docs/PROJECT_INDEX.md": "# Index\n",
         "docs/ARCHITECTURE.md": "# Architecture\n",
@@ -111,6 +111,15 @@ def _valid_repo(tmp_path: Path) -> Path:
         "docs/LEARNING_PATH.md": learning_topics,
         "docs/METHOD_AND_ALGORITHM_GUIDE.md": method_topics,
         "docs/CHANGELOG.md": "# Changes\n",
+        "AI_CONTEXT/00_PROJECT_STATE.md": "# Current State Snapshot\n当前研究阶段\n当前主要研究目标\n当前模型版本\n当前主要实验\n当前最重要的问题\n当前下一步\n最近的重要项目变化\n当前 Git branch\n对应的最新 commit\n",
+        "AI_CONTEXT/01_RESEARCH_CONTEXT.md": "# Research Context\n研究背景\n研究问题\n问题建模\n现有方法\n当前项目采用的方法\n当前科研假设\nResearch Rationale\n核心研究逻辑\n",
+        "AI_CONTEXT/02_ARCHITECTURE.md": "# Architecture\n模型总体结构\n主要模块\n模块输入输出\n模块关系\n重要配置\n关键代码位置\n",
+        "AI_CONTEXT/03_DATA_FLOW.md": "# Data Flow\nraw data\ndataset\npreprocessing\nmodel input\npost-processing\nevaluator\nmetrics\n数据结构\n",
+        "AI_CONTEXT/04_MODULE_MAP.md": "# Module Map\n核心文件\n职责\n核心类\n核心函数\n调用关系\n主要依赖\n模块分类\n",
+        "AI_CONTEXT/05_EXPERIMENTS.md": "# Experiments\n实验编号\n实验目的\nconfig\nbaseline\n变量\n数据集\n主要指标\n状态\n客观实验结果\n输出目录\n",
+        "AI_CONTEXT/06_DECISIONS.md": "# Decisions\n日期\n决策内容\n相关背景\n影响范围\n对应代码\n研究者明确决定\n",
+        "AI_CONTEXT/07_KNOWN_ISSUES.md": "# Known Issues\nDocumented Intent\nActual Implementation\nEvidence\nAffected Files\nConflict\nStatus: Awaiting Researcher Decision\n",
+        "AI_CONTEXT/08_CHANGELOG.md": "# Changelog\n重要变化\nAI_CONTEXT\n",
         "evidence/README.md": "# Evidence\n",
         "code/src/example.py": "",
         "code/src/legacy.py": "",
@@ -157,6 +166,15 @@ def _valid_repo(tmp_path: Path) -> Path:
         "docs/LEARNING_PATH.md",
         "docs/METHOD_AND_ALGORITHM_GUIDE.md",
         "docs/CHANGELOG.md",
+        "AI_CONTEXT/00_PROJECT_STATE.md",
+        "AI_CONTEXT/01_RESEARCH_CONTEXT.md",
+        "AI_CONTEXT/02_ARCHITECTURE.md",
+        "AI_CONTEXT/03_DATA_FLOW.md",
+        "AI_CONTEXT/04_MODULE_MAP.md",
+        "AI_CONTEXT/05_EXPERIMENTS.md",
+        "AI_CONTEXT/06_DECISIONS.md",
+        "AI_CONTEXT/07_KNOWN_ISSUES.md",
+        "AI_CONTEXT/08_CHANGELOG.md",
         "evidence/README.md",
         "evidence/EVIDENCE_MANIFEST.json",
     ]
@@ -256,6 +274,27 @@ def test_validate_project_docs_reports_stale_transient_claim(tmp_path: Path) -> 
     _write(repo / "AGENTS.md", "当前工作树含大量未提交科研实现")
     issues = validate_project_docs(repo)
     assert any("stale transient claim" in issue for issue in issues)
+
+
+def test_validate_project_docs_reports_missing_ai_context_file(tmp_path: Path) -> None:
+    repo = _valid_repo(tmp_path)
+    (repo / "AI_CONTEXT/03_DATA_FLOW.md").unlink()
+    issues = validate_project_docs(repo)
+    assert any("AI_CONTEXT/03_DATA_FLOW.md" in issue for issue in issues)
+
+
+def test_validate_project_docs_reports_incomplete_ai_context_topics(tmp_path: Path) -> None:
+    repo = _valid_repo(tmp_path)
+    _write(repo / "AI_CONTEXT/02_ARCHITECTURE.md", "# Architecture\n")
+    issues = validate_project_docs(repo)
+    assert any("AI_CONTEXT/02_ARCHITECTURE.md" in issue and "模型总体结构" in issue for issue in issues)
+
+
+def test_validate_project_docs_reports_incomplete_long_term_agent_rules(tmp_path: Path) -> None:
+    repo = _valid_repo(tmp_path)
+    _write(repo / "AGENTS.md", "# Rules\n")
+    issues = validate_project_docs(repo)
+    assert any("AGENTS" in issue and "Research Engineer" in issue for issue in issues)
 
 
 def test_strict_git_reports_untracked_portable_evidence(tmp_path: Path) -> None:

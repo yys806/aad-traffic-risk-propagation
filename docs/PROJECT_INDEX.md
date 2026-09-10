@@ -1,5 +1,10 @@
 # AAD 项目索引
 
+## AI 快速恢复
+
+- 当前快照：`AI_CONTEXT/00_PROJECT_STATE.md`
+- 研究、架构、数据流、模块、实验、决策、问题与重要变化：`AI_CONTEXT/01_RESEARCH_CONTEXT.md` 至 `AI_CONTEXT/08_CHANGELOG.md`
+
 | 想了解什么 | 首选入口 |
 |---|---|
 | 项目边界和下一步 | `PROJECT_CONTEXT.md` |

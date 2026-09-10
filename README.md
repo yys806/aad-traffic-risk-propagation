@@ -6,6 +6,8 @@ AAD研究联网车辆远端风险消息是否能够在普通物理影响到达�
 
 ## 常用入口
 
+- AI 快速入口：[`AI_CONTEXT/00_PROJECT_STATE.md`](AI_CONTEXT/00_PROJECT_STATE.md)
+- AI 架构、数据流与实验导航：[`AI_CONTEXT/`](AI_CONTEXT/)
 - 论文：[`paper/`](paper/)
 - 文献：[`literature/`](literature/)
 - 原始数据：`dataset/`（本机目录，不进入 Git）
