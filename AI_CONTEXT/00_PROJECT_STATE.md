@@ -35,6 +35,10 @@
 
 只读审计报告：`docs/STAGE_0_BASELINE_AUDIT_2026-10-09.md`。六个登记数据文件均存在，完整文件 SHA-256 与历史下载清单一致，总大小 1,862,308,265 bytes（1.862 GB）。I-80、Peachtree 与 SPMD holdout 只做文件级核验，未解压或查看内容。当前结论仍为 0.2/0.3/0.5/0.6 未闭合，Protocol Lock 未创建，Stage I 禁止启动。
 
+## 2026-10-09 任务 1 NGSIM 基础核验
+
+报告：`docs/STAGE_0_2_TASK_1_NGSIM_INTEGRITY_2026-10-09.md`。US-101 三窗口各 1,048,575 行，程序 parquet 与 ZIP CSV 一致，但每窗口各有一个 `Total_Frames` 不一致车辆，不能确认与官方完整窗口一致。Lankershim 有 228 个非递增车辆内时间步、936 个多 `Total_Frames` 车辆，身份/分段边界未解决。公式与单位真值夹具通过；任务 1 未验收，需任务 1.1。
+
 ## 最近的重要项目变化
 
 - 当前阶段与入口统一为“阶段 X.X”/`stage_X_Y`。

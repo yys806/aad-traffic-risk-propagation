@@ -16,6 +16,7 @@
 | 旧编号材料 | `docs/归档/旧实验编号材料/` |
 | 原始数据 | `dataset/` |
 | Stage 0 基线核查 | `docs/STAGE_0_BASELINE_AUDIT_2026-10-09.md` |
+| 任务 1 NGSIM 核验 | `docs/STAGE_0_2_TASK_1_NGSIM_INTEGRITY_2026-10-09.md` |
 | 论文与文献 | `paper/`、`literature/` |
 
 ## 当前代码入口
