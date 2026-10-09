@@ -24,13 +24,20 @@ def main() -> int:
     data_root = args.repo_root / "dataset" / "NGSIM"
     sources = []
     for window in ("0750am-0805am", "0805am-0820am", "0820am-0835am"):
+        expected_rows = {
+            "0750am-0805am": 1_180_598,
+            "0805am-0820am": 1_403_095,
+            "0820am-0835am": 1_515_240,
+        }[window]
         sources.append(
             {
                 "asset_id": "ngsim_us101",
                 "site": "US-101",
                 "path": data_root / "US-101-LosAngeles-CA.zip",
                 "inner_zip_member": "us-101-vehicle-trajectory-data.zip",
-                "csv_member": f"vehicle-trajectory-data/{window}/trajectories-{window}.csv",
+                "trajectory_member": f"vehicle-trajectory-data/{window}/trajectories-{window}.txt",
+                "format": "ngsim_us101_txt_v1",
+                "expected_rows": expected_rows,
                 "window_id": window.replace("am-", "_").replace("am", ""),
             }
         )

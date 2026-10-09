@@ -8,10 +8,57 @@ import pandas as pd
 import pytest
 
 from riskprop.ngsim_risk_calibration import (
+    _read_source,
     extract_rear_end_events,
     standardize_ngsim_states,
     write_stage_0_2_ngsim_package,
 )
+
+
+def _txt_source(tmp_path, text):
+    path = tmp_path / "source.zip"
+    inner_bytes = io.BytesIO()
+    with zipfile.ZipFile(inner_bytes, "w") as inner:
+        inner.writestr("window.txt", text)
+    with zipfile.ZipFile(path, "w") as outer:
+        outer.writestr("inner.zip", inner_bytes.getvalue())
+    return path, {"inner_zip_member": "inner.zip", "trajectory_member": "window.txt",
+                  "format": "ngsim_us101_txt_v1", "expected_rows": 2}
+
+
+def test_txt_reader_keeps_first_row_maps_units_and_source(tmp_path):
+    path, source = _txt_source(tmp_path,
+        "10 1 1 1000 12 100 0 0 12 5 2 30 -2 2 20 0 30 1\n"
+        "20 1 1 1000 12 130 0 0 15 5 2 20 0 2 0 10 0 0\n")
+    raw = _read_source(path, source)
+    assert len(raw) == 2
+    assert raw.iloc[0]["Vehicle_ID"] == 10
+    assert raw.iloc[0]["Preceeding"] == 20
+    states = standardize_ngsim_states(raw, site="US-101", window_id="fixture")
+    assert states.iloc[0]["net_gap_m"] == pytest.approx(15 * 0.3048)
+    assert states.iloc[0]["speed_mps"] == pytest.approx(30 * 0.3048)
+    assert states.iloc[0]["ttc_s"] == pytest.approx(1.5)
+    assert states.iloc[0]["source_member"] == "window.txt"
+    assert states.iloc[0]["source_format"] == "ngsim_us101_txt_v1"
+
+
+@pytest.mark.parametrize("text", [
+    "10 1 1 1000 12 100 0 0 12 5 2 30 -2 2 20 0 30\n",
+    "10 1 1 1000 12 100 0 0 12 5 2 30 -2 2 20 0 30 1 99\n",
+    "10 1 1 missing 12 100 0 0 12 5 2 30 -2 2 20 0 30 1\n",
+])
+def test_txt_reader_rejects_bad_structure_or_values(tmp_path, text):
+    path, source = _txt_source(tmp_path, text)
+    source.pop("expected_rows")
+    with pytest.raises(ValueError):
+        _read_source(path, source)
+
+
+def test_txt_reader_stops_on_expected_row_mismatch(tmp_path):
+    path, source = _txt_source(tmp_path,
+        "10 1 1 1000 12 100 0 0 12 5 2 30 -2 2 20 0 30 1\n")
+    with pytest.raises(ValueError, match="expected.*2.*read.*1"):
+        _read_source(path, source)
 
 
 def _ngsim_rows() -> pd.DataFrame:

@@ -28,6 +28,11 @@ from riskprop.real_trajectory import add_ngsim_leader_ttc
 
 
 _ALLOWED_CALIBRATION_ASSETS = frozenset({"ngsim_us101", "ngsim_lankershim"})
+_NGSIM_TXT_COLUMNS = (
+    "Vehicle_ID", "Frame_ID", "Total_Frames", "Global_Time", "Local_X", "Local_Y",
+    "Global_X", "Global_Y", "v_Length", "v_Width", "v_Class", "v_Vel", "v_Acc",
+    "Lane_ID", "Preceeding", "Following", "Space_Hdwy", "Time_Hdwy",
+)
 
 
 def standardize_ngsim_states(
@@ -73,6 +78,8 @@ def standardize_ngsim_states(
             "raw_acceleration_fps2": raw_acceleration,
             "raw_space_headway_ft": raw_headway,
             "raw_unit_system": "imperial",
+            "source_member": _optional_text(enriched, ("source_member",)),
+            "source_format": _optional_text(enriched, ("source_format",)),
         }
     )
     ordered = result.sort_values(["vehicle_id", "time_s", "frame_id"], na_position="last")
@@ -187,6 +194,9 @@ def write_stage_0_2_ngsim_package(
                 "state_rows": int(len(states)),
                 "valid_ttc_rows": int(states["ttc_valid"].sum()),
                 "event_rows": int(len(events)),
+                "source_member": str(source.get("trajectory_member", source.get("csv_member", ""))),
+                "source_format": str(source.get("format", source.get("source_format", "csv"))),
+                "expected_rows": source.get("expected_rows"),
             }
         )
     all_events = (
@@ -233,13 +243,48 @@ def write_stage_0_2_ngsim_package(
 def _read_source(path: Path, source: Mapping[str, object]) -> pd.DataFrame:
     with zipfile.ZipFile(path) as outer:
         inner_member = source.get("inner_zip_member")
-        csv_member = str(source["csv_member"])
+        source_format = str(source.get("format", source.get("source_format", "csv")))
+        member_key = "trajectory_member" if source_format.startswith("ngsim_us101_txt") else "csv_member"
+        member = str(source.get(member_key, source.get("txt_member", "")))
+        if not member:
+            raise ValueError(f"missing source member for format {source_format}")
+        def read_member(handle):
+            if source_format.startswith("ngsim_us101_txt") or source_format == "txt":
+                return _read_ngsim_txt(handle, source, member, source_format)
+            frame = pd.read_csv(handle)
+            frame["source_member"] = member
+            frame["source_format"] = source_format
+            return frame
         if inner_member:
             with zipfile.ZipFile(io.BytesIO(outer.read(str(inner_member)))) as inner:
-                with inner.open(csv_member) as handle:
-                    return pd.read_csv(handle)
-        with outer.open(csv_member) as handle:
-            return pd.read_csv(handle)
+                with inner.open(member) as handle:
+                    return read_member(handle)
+        with outer.open(member) as handle:
+            return read_member(handle)
+
+
+def _read_ngsim_txt(handle, source: Mapping[str, object], member: str, source_format: str) -> pd.DataFrame:
+    rows: list[list[str]] = []
+    for line_number, raw_line in enumerate(handle, start=1):
+        line = raw_line.decode("utf-8", errors="strict").strip()
+        if not line:
+            continue
+        fields = line.split()
+        if len(fields) != len(_NGSIM_TXT_COLUMNS):
+            raise ValueError(
+                f"invalid NGSIM TXT structure at line {line_number}: expected "
+                f"{len(_NGSIM_TXT_COLUMNS)} fields, read {len(fields)}"
+            )
+        rows.append(fields)
+    expected_rows = source.get("expected_rows")
+    if expected_rows is not None and len(rows) != int(expected_rows):
+        raise ValueError(f"expected {int(expected_rows)} rows, read {len(rows)}")
+    frame = pd.DataFrame(rows, columns=_NGSIM_TXT_COLUMNS)
+    for column in _NGSIM_TXT_COLUMNS:
+        frame[column] = pd.to_numeric(frame[column], errors="raise")
+    frame["source_member"] = member
+    frame["source_format"] = source_format
+    return frame
 
 
 def _seal_directory(output_dir: Path) -> None:
