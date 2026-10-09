@@ -39,6 +39,10 @@
 
 报告：`docs/STAGE_0_2_TASK_1_NGSIM_INTEGRITY_2026-10-09.md`。US-101 三窗口各 1,048,575 行，程序 parquet 与 ZIP CSV 一致，但每窗口各有一个 `Total_Frames` 不一致车辆，不能确认与官方完整窗口一致。Lankershim 有 228 个非递增车辆内时间步、936 个多 `Total_Frames` 车辆，身份/分段边界未解决。公式与单位真值夹具通过；任务 1 未验收，需任务 1.1。
 
+## 2026-10-09 任务 1.1 来源与分段核查
+
+报告：`docs/STAGE_0_2_TASK_1_1_NGSIM_SOURCE_SEGMENTATION_2026-10-09.md`。US-101 同 ZIP 内 TXT 已证明比 CSV 完整：TXT 数据行数分别为 1,180,597、1,403,094、1,515,239，CSV 三个窗口均为固定 1,048,575 行且末尾后仍有同车 TXT 记录。官方元数据建议使用 TXT，但不保证数据完整性。Lankershim 官方设计为两个 15 分钟源文件，当前包只有合并 CSV；编号复用主要原因仍为 Inference，未由源文件证实。建议先确认 TXT 替换和 Lankershim 源文件/分段规则，不进入正式重算。
+
 ## 最近的重要项目变化
 
 - 当前阶段与入口统一为“阶段 X.X”/`stage_X_Y`。
