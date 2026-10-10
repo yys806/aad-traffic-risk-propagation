@@ -2,7 +2,7 @@ import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 import pandas as pd
-from run_stage_0_2_task_2_2_kinematic_review import diagnose
+from run_stage_0_2_task_2_2_kinematic_review import diagnose, runs
 
 def base(rows=3):
     return pd.DataFrame({
@@ -23,3 +23,12 @@ def test_continuous_pair_is_distinguished_from_missing_frame():
 
 def test_single_frame_spike_and_non_applicable_geometry_are_explicit():
     g=base(); g.ttc_valid=[False,True,False]; g.ttc_s=[float('inf'),.2,float('inf')]; out=diagnose(g,case()); assert out['risk_state_continuity']=='single_frame_spike'; assert out['geometry_check_applicability']=='unverified_missing_fields'
+
+def test_runs_requires_adjacent_risk_and_observation_edges():
+    assert runs([True, False, True], [False, True, True])[2] == 2
+    assert runs([True, True], [False, True])[1] == 2
+    assert runs([True, True], [False, False])[1] == 1
+
+def test_different_predicates_are_counted_separately():
+    g=base(); g.ttc_s=[.2, 3, 3]; g.drac_mps2=[2, 20, 2]; out=diagnose(g,case())
+    assert out['ttc_lt_0_5_rows']==1 and out['drac_gt_10_rows']==1
