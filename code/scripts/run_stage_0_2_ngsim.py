@@ -38,6 +38,7 @@ def main() -> int:
                 "trajectory_member": f"vehicle-trajectory-data/{window}/trajectories-{window}.txt",
                 "format": "ngsim_us101_txt_v1",
                 "expected_rows": expected_rows,
+                "source_period": window,
                 "window_id": window.replace("am-", "_").replace("am", ""),
             }
         )
@@ -47,6 +48,7 @@ def main() -> int:
             "site": "Lankershim",
             "path": data_root / "Lankershim-Boulevard-LosAngeles-CA.zip",
             "csv_member": "NGSIM__Lankershim_Vehicle_Trajectories.csv",
+            "source_period": "unknown",
             "window_id": "complete",
         }
     )

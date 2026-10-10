@@ -47,6 +47,10 @@
 
 报告：`docs/STAGE_0_2_TASK_1_2_TXT_SOURCE_RECOVERY_2026-10-09.md`。US-101 三个 Stage 0.2 输入已切换到 ZIP 内原始无表头 TXT，读取器固定校验 18 列、来源标识和精确行数；9 项相关测试通过。Lankershim 当前包仍无两个独立官方源文件，正式身份/分段规则未修改，任务 1.3 仍需研究者决定源不可得时的保守方案。
 
+## 2026-10-10 任务 1.3 轨迹身份与测量链验证
+
+报告：`docs/STAGE_0_2_TASK_1_3_TRAJECTORY_IDENTITY_VALIDATION_2026-10-10.md`。US-101 三个 TXT 共 4,098,933 行，独立全量测量链产物位于 `code/outputs/formal/calibration/stage_0_2_task_1_3_us101_txt_20261010_r2/`，有效 TTC 1,728,280 行、候选事件 2,604 个。Lankershim 1,607,319 行保留，基于原始 `Frame_ID` 冲突建立 2,654 个确定性诊断片段；228 行身份不确定、1,379 行观测缺口。单帧有效 TTC 483,098 行，其中 482,470 行通过保守连续性筛选。正式科学事件单位和最终阈值仍未冻结，Protocol Lock/Stage I 继续禁止。
+
 ## 最近的重要项目变化
 
 - 当前阶段与入口统一为“阶段 X.X”/`stage_X_Y`。

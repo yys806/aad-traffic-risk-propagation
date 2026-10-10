@@ -35,9 +35,75 @@ _NGSIM_TXT_COLUMNS = (
 )
 
 
-def standardize_ngsim_states(
-    trajectories: pd.DataFrame, *, site: str, window_id: str
+def annotate_ngsim_trajectory_identity(
+    trajectories: pd.DataFrame,
+    *,
+    site: str,
+    source_period: str = "unknown",
+    source_member: str = "unknown",
 ) -> pd.DataFrame:
+    """Add deterministic, conservative segment and observation-quality fields.
+
+    A segment starts only after an observed non-increasing Frame_ID within the
+    original Vehicle_ID row order.  Time gaps are quality flags, never identity
+    boundaries.  The original row number and Vehicle_ID are retained.
+    """
+    columns = {
+        "vehicle": next(c for c in ("Vehicle_ID", "vehicle_id") if c in trajectories),
+        "frame": next(c for c in ("Frame_ID", "frame_id") if c in trajectories),
+        "time": next(c for c in ("Global_Time", "global_time") if c in trajectories),
+    }
+    result = trajectories.reset_index(drop=True).copy()
+    result["original_row_number"] = pd.RangeIndex(len(result)) + 1
+    result["original_vehicle_id"] = result[columns["vehicle"]].astype("string")
+    frame = pd.to_numeric(result[columns["frame"]], errors="coerce")
+    time = pd.to_numeric(result[columns["time"]], errors="coerce")
+    grouped = result["original_vehicle_id"]
+    frame_delta = frame.groupby(grouped, sort=False).diff()
+    time_delta = time.groupby(grouped, sort=False).diff()
+    frame_reset = frame_delta.le(0).fillna(False)
+    duplicate_time = result.duplicated(["original_vehicle_id", columns["time"]], keep=False)
+    identity_break = frame_reset
+    segment_index = identity_break.groupby(grouped, sort=False).cumsum().astype("int64")
+    segment_counts = segment_index.groupby(grouped, sort=False).transform("max") + 1
+    observation_gap = time_delta.gt(100).fillna(False)
+    time_backwards = time_delta.lt(0).fillna(False)
+    identity_uncertain = duplicate_time | time_backwards
+    result["source_period"] = str(source_period)
+    result["source_member"] = str(source_member)
+    result["segment_index"] = segment_index
+    result["trajectory_id"] = (
+        "NGSIM|" + str(site) + "|" + str(source_period) + "|" + str(source_member)
+        + "|" + result["original_vehicle_id"] + "|s" + segment_index.astype("string")
+    )
+    result["identity_break"] = identity_break.to_numpy()
+    result["observation_gap"] = observation_gap.to_numpy()
+    result["identity_uncertain"] = identity_uncertain.to_numpy()
+    result["identity_status"] = "confirmed"
+    result.loc[segment_counts.gt(1), "identity_status"] = "confirmed_segment"
+    result.loc[identity_uncertain, "identity_status"] = "identity_uncertain"
+    return result
+
+
+def standardize_ngsim_states(
+    trajectories: pd.DataFrame,
+    *,
+    site: str,
+    window_id: str,
+    source_period: str = "unknown",
+    source_member: str = "unknown",
+) -> pd.DataFrame:
+    if source_member == "unknown" and "source_member" in trajectories.columns:
+        source_member = str(trajectories["source_member"].iloc[0])
+    if source_period == "unknown" and "source_period" in trajectories.columns:
+        source_period = str(trajectories["source_period"].iloc[0])
+    if "trajectory_id" not in trajectories.columns:
+        trajectories = annotate_ngsim_trajectory_identity(
+            trajectories,
+            site=site,
+            source_period=source_period,
+            source_member=source_member,
+        )
     enriched = add_ngsim_leader_ttc(
         trajectories, run_id=f"ngsim_{_slug(site)}_{_slug(window_id)}"
     )
@@ -67,6 +133,9 @@ def standardize_ngsim_states(
             "road_id": road_id.astype("string"),
             "lane_id": enriched["lane_id"].astype("string"),
             "leader_id": enriched["leader_id"].astype("string"),
+            "leader_trajectory_id": enriched.get(
+                "leader_trajectory_id", enriched["leader_id"]
+            ).astype("string"),
             "net_gap_m": enriched["headway_m"],
             "closing_speed_mps": enriched["closing_speed_mps"],
             "ttc_valid": enriched["ttc_valid"],
@@ -80,17 +149,25 @@ def standardize_ngsim_states(
             "raw_unit_system": "imperial",
             "source_member": _optional_text(enriched, ("source_member",)),
             "source_format": _optional_text(enriched, ("source_format",)),
+            "trajectory_id": enriched["trajectory_id"].astype("string"),
+            "original_vehicle_id": enriched["original_vehicle_id"].astype("string"),
+            "source_period": enriched["source_period"].astype("string"),
+            "identity_status": enriched["identity_status"].astype("string"),
+            "identity_break": enriched["identity_break"].astype(bool),
+            "observation_gap": enriched["observation_gap"].astype(bool),
+            "identity_uncertain": enriched["identity_uncertain"].astype(bool),
+            "original_row_number": enriched["original_row_number"].astype("int64"),
         }
     )
-    ordered = result.sort_values(["vehicle_id", "time_s", "frame_id"], na_position="last")
-    previous_leader = ordered.groupby("vehicle_id", sort=False)["leader_id"].shift()
+    ordered = result.sort_values(["trajectory_id", "time_s", "frame_id"], na_position="last")
+    previous_leader = ordered.groupby("trajectory_id", sort=False)["leader_trajectory_id"].shift()
     ordered["leader_changed"] = (
         previous_leader.notna()
-        & ordered["leader_id"].notna()
-        & previous_leader.ne(ordered["leader_id"])
+        & ordered["leader_trajectory_id"].notna()
+        & previous_leader.ne(ordered["leader_trajectory_id"])
     )
-    position = ordered.groupby("vehicle_id", sort=False).cumcount()
-    group_size = ordered.groupby("vehicle_id", sort=False)["vehicle_id"].transform("size")
+    position = ordered.groupby("trajectory_id", sort=False).cumcount()
+    group_size = ordered.groupby("trajectory_id", sort=False)["trajectory_id"].transform("size")
     ordered["trajectory_boundary"] = (position == 0) | (position == group_size - 1)
     result = ordered.sort_index()
     validate_real_state_table(result)
@@ -114,22 +191,32 @@ def extract_rear_end_events(
     ].copy()
     if candidates.empty:
         return pd.DataFrame(columns=RISK_EVENT_COLUMNS)
-    candidates = candidates.sort_values(["vehicle_id", "leader_id", "time_s"])
-    time_gap = candidates.groupby(["vehicle_id", "leader_id"], dropna=False)["time_s"].diff()
-    new_segment = time_gap.isna() | (time_gap > max_gap_s + 1e-9)
-    candidates["_segment"] = new_segment.groupby(
-        [candidates["vehicle_id"], candidates["leader_id"]], dropna=False
+    follower_key = "trajectory_id" if "trajectory_id" in candidates else "vehicle_id"
+    leader_key = "leader_trajectory_id" if "leader_trajectory_id" in candidates else "leader_id"
+    candidates = candidates.sort_values([follower_key, leader_key, "time_s"])
+    time_gap = candidates.groupby([follower_key, leader_key], dropna=False)["time_s"].diff()
+    continuity_block = (
+        time_gap.isna()
+        | (time_gap > max_gap_s + 1e-9)
+        | candidates.get("identity_break", False).astype(bool)
+        | candidates.get("observation_gap", False).astype(bool)
+        | candidates.get("identity_uncertain", False).astype(bool)
+    )
+    candidates["_segment"] = continuity_block.groupby(
+        [candidates[follower_key], candidates[leader_key]], dropna=False
     ).cumsum()
     rows: list[dict[str, object]] = []
-    group_columns = ["dataset", "site", "window_id", "vehicle_id", "leader_id", "_segment"]
+    group_columns = ["dataset", "site", "window_id", follower_key, leader_key, "_segment"]
     for key, group in candidates.groupby(group_columns, dropna=False, sort=True):
         start = float(group["time_s"].min())
         end = float(group["time_s"].max())
         duration = end - start
         if duration + 1e-12 < minimum_duration_s:
             continue
-        dataset, site, window_id, vehicle_id, leader_id, segment = key
-        stable_key = f"{dataset}|{site}|{window_id}|{vehicle_id}|{leader_id}|{start:.6f}|{segment}"
+        dataset, site, window_id, _, _, segment = key
+        vehicle_id = group["vehicle_id"].iloc[0]
+        leader_id = group["leader_id"].iloc[0]
+        stable_key = f"{dataset}|{site}|{window_id}|{group[follower_key].iloc[0]}|{group[leader_key].iloc[0]}|{start:.6f}|{segment}"
         rows.append(
             {
                 "event_id": "stage_0_2_" + hashlib.sha256(stable_key.encode()).hexdigest()[:16],
@@ -178,7 +265,11 @@ def write_stage_0_2_ngsim_package(
         path = Path(source["path"])
         raw = _read_source(path, source)
         states = standardize_ngsim_states(
-            raw, site=str(source["site"]), window_id=str(source["window_id"])
+            raw,
+            site=str(source["site"]),
+            window_id=str(source["window_id"]),
+            source_period=str(source.get("source_period", source.get("window_id", "unknown"))),
+            source_member=str(source.get("trajectory_member", source.get("csv_member", "unknown"))),
         )
         state_name = f"{asset_id}__{_slug(str(source['window_id']))}.parquet"
         states.to_parquet(states_dir / state_name, index=False)
@@ -197,6 +288,19 @@ def write_stage_0_2_ngsim_package(
                 "source_member": str(source.get("trajectory_member", source.get("csv_member", ""))),
                 "source_format": str(source.get("format", source.get("source_format", "csv"))),
                 "expected_rows": source.get("expected_rows"),
+                "measurement_status_counts": {
+                    str(key): int(value)
+                    for key, value in states["measurement_status"].value_counts(dropna=False).items()
+                },
+                "identity_status_counts": {
+                    str(key): int(value)
+                    for key, value in states["identity_status"].value_counts(dropna=False).items()
+                },
+                "identity_uncertain_rows": int(states["identity_uncertain"].sum()),
+                "observation_gap_rows": int(states["observation_gap"].sum()),
+                "identity_break_rows": int(states["identity_break"].sum()),
+                "trajectory_segment_count": int(states["trajectory_id"].nunique()),
+                "raw_row_preservation": int(len(raw) == len(states)),
             }
         )
     all_events = (
@@ -211,6 +315,11 @@ def write_stage_0_2_ngsim_package(
         "provisional_ttc_threshold_s": provisional_ttc_threshold_s,
         "scientific_claim_eligible": False,
         "locked_holdout_opened": False,
+        "trajectory_identity_policy": {
+            "segment_boundary": "non_increasing_frame_id_within_original_vehicle_row_order",
+            "observation_gap_rule": "global_time_delta_gt_100ms_is_flag_only",
+            "unknown_source_period": "preserved_as_unknown",
+        },
     }
     audit = {
         "schema_version": "stage_0_2.audit.v1",
@@ -218,6 +327,7 @@ def write_stage_0_2_ngsim_package(
         "scientific_claim_eligible": False,
         "locked_holdout_opened": False,
         "gate_status": "active_audit_closure",
+        "trajectory_identity_policy": config["trajectory_identity_policy"],
         "sources": source_audit,
     }
     provenance = {

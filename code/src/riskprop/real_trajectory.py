@@ -47,6 +47,14 @@ def add_ngsim_leader_ttc(
     result = trajectories.reset_index(drop=True).copy()
     follower_id = _identifier_series(result[columns["vehicle_id"]])
     leader_id = _identifier_series(result[columns["preceding"]])
+    # A diagnostic/standardized input may provide a stable segment identity.
+    # Keep the original numeric IDs in the public fields, but use the segment
+    # key for the same-time leader lookup so reused IDs cannot cross-match.
+    lookup_follower_id = (
+        result["trajectory_id"].astype("string")
+        if "trajectory_id" in result.columns
+        else follower_id
+    )
     time = pd.to_numeric(result[columns["global_time"]], errors="coerce")
     speed_fps = pd.to_numeric(result[columns["speed"]], errors="coerce")
     space_headway_ft = pd.to_numeric(result[columns["space_headway"]], errors="coerce")
@@ -54,12 +62,22 @@ def add_ngsim_leader_ttc(
     lookup = pd.DataFrame(
         {
             "_time": time,
-            "_lookup_id": follower_id,
+            "_lookup_id": lookup_follower_id,
             "_leader_speed_fps": speed_fps,
             "_leader_length_ft": pd.to_numeric(result[columns["length"]], errors="coerce"),
         }
     ).drop_duplicates(["_time", "_lookup_id"], keep=False)
-    matches = pd.DataFrame({"_time": time, "_lookup_id": leader_id}).merge(
+    leader_lookup_id = leader_id
+    if "trajectory_id" in result.columns:
+        identity_lookup = pd.DataFrame(
+            {"_time": time, "_original_id": follower_id, "_trajectory_id": lookup_follower_id}
+        ).drop_duplicates(["_time", "_original_id"], keep=False)
+        leader_lookup_id = pd.DataFrame(
+            {"_time": time, "_original_id": leader_id}
+        ).merge(identity_lookup, on=["_time", "_original_id"], how="left", sort=False)[
+            "_trajectory_id"
+        ]
+    matches = pd.DataFrame({"_time": time, "_lookup_id": leader_lookup_id}).merge(
         lookup,
         on=["_time", "_lookup_id"],
         how="left",
@@ -101,6 +119,8 @@ def add_ngsim_leader_ttc(
     result["time_s"] = (time - time.min()) / 1_000.0
     result["id"] = follower_id
     result["leader_id"] = leader_id.where(has_reported_leader)
+    if "trajectory_id" in result.columns:
+        result["leader_trajectory_id"] = leader_lookup_id.where(has_reported_leader)
     result["leader_matched"] = leader_matched.to_numpy()
     result["reported_space_headway_m"] = reported_headway_m
     result["leader_length_m"] = leader_length_m

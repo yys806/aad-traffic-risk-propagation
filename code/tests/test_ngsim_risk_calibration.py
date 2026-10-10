@@ -8,6 +8,7 @@ import pandas as pd
 import pytest
 
 from riskprop.ngsim_risk_calibration import (
+    annotate_ngsim_trajectory_identity,
     _read_source,
     extract_rear_end_events,
     standardize_ngsim_states,
@@ -129,6 +130,33 @@ def test_lankershim_spelling_is_supported() -> None:
     )
     result = standardize_ngsim_states(rows, site="Lankershim", window_id="all")
     assert result["leader_id"].notna().any()
+
+
+def test_identity_annotation_preserves_rows_and_marks_frame_reset() -> None:
+    rows = _ngsim_rows().iloc[:4].copy()
+    rows.loc[2, "Frame_ID"] = 1
+    annotated = annotate_ngsim_trajectory_identity(
+        rows, site="Lankershim", source_period="unknown", source_member="merged.csv"
+    )
+    assert len(annotated) == len(rows)
+    assert annotated["original_row_number"].tolist() == [1, 2, 3, 4]
+    assert annotated["identity_break"].sum() == 1
+    assert annotated.loc[2, "segment_index"] == 1
+    assert annotated["trajectory_id"].nunique() == 3
+
+
+def test_events_do_not_merge_across_trajectory_segments_at_adjacent_frames() -> None:
+    rows = _ngsim_rows().copy()
+    follower = rows[rows["Vehicle_ID"] == 10].copy()
+    follower.loc[follower.index[2], "Frame_ID"] = 1
+    rows = pd.concat([follower, rows[rows["Vehicle_ID"] == 20]], ignore_index=True)
+    states = standardize_ngsim_states(rows, site="Lankershim", window_id="all")
+    events = extract_rear_end_events(
+        states, provisional_ttc_threshold_s=3.0, max_gap_s=0.11, minimum_duration_s=0.1
+    )
+    assert len(events) == 1
+    assert events.iloc[0]["raw_frame_count"] == 2
+    assert events.iloc[0]["event_duration_s"] == pytest.approx(0.1)
 
 
 def test_stage_0_2_package_reads_only_requested_calibration_member(tmp_path: Path) -> None:
