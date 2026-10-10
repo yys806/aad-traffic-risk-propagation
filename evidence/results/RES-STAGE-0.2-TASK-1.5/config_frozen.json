@@ -1,0 +1,17 @@
+{
+  "event_reliability_policy": "complete_state_sequence; unique follower_and_leader; consecutive_integer_ms_and_frames; first_frame_after_gap_allowed",
+  "experiment_id": "stage_0_2",
+  "leader_match_policy": "same_run_scope; same_global_time; same_diagnostic_clock_anchor; same_frame_id; unique_preceding_record; missing_or_conflicted_fields_unmatched",
+  "locked_holdout_opened": false,
+  "max_gap_s": 0.11,
+  "minimum_duration_s": 0.1,
+  "provisional_ttc_threshold_s": 2.0,
+  "schema_version": "stage_0_2.config.v1",
+  "scientific_claim_eligible": false,
+  "trajectory_identity_policy": {
+    "observation_gap_rule": "sorted_diagnostic_sequence_delta_gt_100ms_is_flag_only",
+    "segment_boundary": "observed_global_time_minus_100_times_frame_id_clock_anchor",
+    "uncertainty": "duplicate_time_or_frame_or_inconsistent_total_propagates_to_whole_diagnostic_sequence",
+    "unknown_source_period": "preserved_as_unknown"
+  }
+}

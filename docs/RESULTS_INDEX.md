@@ -35,3 +35,7 @@
 ## RES-STAGE-0.2-TASK-1.4
 
 Verified 工程核查，待研究者验收任务 1。US-101 4,098,933 行测量回归一致；Lankershim 1,607,319 行保留，2,442 个诊断时钟序列，483,098 个有效 TTC 帧，原始/可靠候选事件各 2,777 个、拒绝 0。官方来源时段与物理身份仍 Unverified，Stage 0.2 科学 Gate 仍 Active。报告：`docs/STAGE_0_2_TASK_1_4_RELIABILITY_CLOSURE_2026-10-10.md`；完整包 `code/outputs/formal/calibration/stage_0_2_task_1_4_20261010/`，小型证据在同名结果目录。
+
+## RES-STAGE-0.2-TASK-1.5
+
+跨时钟前车匹配工程核验 Verified。Lankershim 1,226,499 条报告前车均在时钟锚与 Frame_ID 约束下唯一，真实跨时钟匹配 0；四源核心测量和事件结果与任务 1.4 一致。建议关闭任务 1，Stage 0.2 科学 Gate 仍 Active。报告：`docs/STAGE_0_2_TASK_1_5_LEADER_MATCHING_CLOSURE_2026-10-10.md`。

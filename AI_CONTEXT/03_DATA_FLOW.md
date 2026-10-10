@@ -42,3 +42,7 @@ NGSIM 跟驰参考 + pNEUMA 运动学参考 → `write_real_reference_package()`
 - `RISK_EVENT_COLUMNS`：事件身份、车辆与 leader、时间边界、持续时间、TTC/DRAC/PET、纳入状态与算法版本。
 - 阶段 0.1 五表字段契约：`formal_artifacts.TABLE_REQUIRED_COLUMNS`。
 - 当前数据均为行式 DataFrame/Parquet；不存在已确认 tensor shape、dataloader 或 neural model input。
+
+## 2026-10-10 前车匹配收尾
+
+NGSIM leader lookup 在存在诊断字段时使用 run scope、Global_Time、diagnostic_clock_anchor_ms、Frame_ID 和唯一原始前车身份；重复或缺失字段不猜测。任务 1.5 独立核查真实 Lankershim 0 跨时钟匹配，四源回归 0 行核心差异。

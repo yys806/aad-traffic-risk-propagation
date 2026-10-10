@@ -4,7 +4,7 @@
   "project": {"name": "AAD", "research_topic": "Connected-vehicle communication adoption and traffic-risk propagation", "root": ".", "upstream_read_only": "D:\\shen\\TJU\\DRIFT"},
   "repository": {"branch": "main", "state_semantics": "derive_live", "live_commands": {"head": "git rev-parse HEAD", "worktree": "git status --short", "upstream": "git status --branch --short"}},
   "canonical_entries": [
-    "README.md", "AGENTS.md", "PROJECT_CONTEXT.md", "docs/PROJECT_INDEX.md", "docs/STAGE_0_BASELINE_AUDIT_2026-10-09.md", "docs/STAGE_0_2_TASK_1_NGSIM_INTEGRITY_2026-10-09.md", "docs/STAGE_0_2_TASK_1_1_NGSIM_SOURCE_SEGMENTATION_2026-10-09.md", "docs/STAGE_0_2_TASK_1_2_TXT_SOURCE_RECOVERY_2026-10-09.md", "docs/STAGE_0_2_TASK_1_3_TRAJECTORY_IDENTITY_VALIDATION_2026-10-10.md", "docs/STAGE_0_2_TASK_1_4_RELIABILITY_CLOSURE_2026-10-10.md",
+    "README.md", "AGENTS.md", "PROJECT_CONTEXT.md", "docs/PROJECT_INDEX.md", "docs/STAGE_0_BASELINE_AUDIT_2026-10-09.md", "docs/STAGE_0_2_TASK_1_NGSIM_INTEGRITY_2026-10-09.md", "docs/STAGE_0_2_TASK_1_1_NGSIM_SOURCE_SEGMENTATION_2026-10-09.md", "docs/STAGE_0_2_TASK_1_2_TXT_SOURCE_RECOVERY_2026-10-09.md", "docs/STAGE_0_2_TASK_1_3_TRAJECTORY_IDENTITY_VALIDATION_2026-10-10.md", "docs/STAGE_0_2_TASK_1_4_RELIABILITY_CLOSURE_2026-10-10.md", "docs/STAGE_0_2_TASK_1_5_LEADER_MATCHING_CLOSURE_2026-10-10.md",
     "docs/PROJECT_REGISTRY.json", "docs/ARCHITECTURE.md", "docs/RESEARCH_STATUS.md",
     "docs/STAGE_INDEX.md", "docs/RESULTS_INDEX.md", "docs/HISTORY_INDEX.md",
     "docs/LEARNING_PATH.md", "docs/METHOD_AND_ALGORITHM_GUIDE.md", "docs/CHANGELOG.md",
@@ -45,11 +45,11 @@
       "purpose": "审计前车关系、净间距、闭合速度、TTC、DRAC和连续风险事件的可测性与参考范围。",
       "research_question": "NGSIM 是否足以形成可审计的跟驰风险测量链和现实参考？", "date": "2026-09-07", "status": "active_audit_closure",
       "code_version": "当前实现使用 stage_0_2；迁移前结果由原始审计和哈希保留。",
-      "code_paths": ["code/src/riskprop/ngsim_risk_calibration.py"], "entrypoints": ["code/scripts/run_stage_0_2_ngsim.py", "code/scripts/verify_ngsim_task_1_4.py"],
+      "code_paths": ["code/src/riskprop/ngsim_risk_calibration.py"], "entrypoints": ["code/scripts/run_stage_0_2_ngsim.py", "code/scripts/verify_ngsim_task_1_4.py", "code/scripts/verify_ngsim_task_1_5.py"],
       "test_paths": ["code/tests/test_ngsim_risk_calibration.py", "code/tests/test_real_trajectory.py"],
       "configuration": "候选 TTC 阈值只用于审计事件；holdout 不解锁。", "parameters": {"provisional_ttc_threshold_s": 2.0, "locked_holdout": false},
       "data_version": "US-101 TXT v1 / Lankershim merged CSV; task_1_4 engineering package", "model": "deterministic trajectory measurement and event aggregation", "model_checkpoint": "not_applicable",
-      "result_ids": ["RES-STAGE-0.2-NGSIM-V2", "RES-STAGE-0.2-TASK-1.4"], "core_metrics": ["measurement_status", "valid_ttc_rows", "event_rows", "ttc_distribution", "drac_distribution"],
+      "result_ids": ["RES-STAGE-0.2-NGSIM-V2", "RES-STAGE-0.2-TASK-1.4", "RES-STAGE-0.2-TASK-1.5"], "core_metrics": ["measurement_status", "valid_ttc_rows", "event_rows", "ttc_distribution", "drac_distribution"],
       "current_conclusion": "任务 1.4 基础测量工程核查完成，建议研究者验收任务 1；科学质量审计及最终范围仍未闭合。",
       "gate": {"status": "active", "portable_path": "evidence/results/RES-STAGE-0.2-NGSIM-V2/audit.json"}, "scientific_claim_eligible": false
     },
@@ -114,6 +114,14 @@
     }
   ],
   "results": [
+    {
+      "id": "RES-STAGE-0.2-TASK-1.5", "experiment_id": "stage_0_2", "name": "任务 1.5 跨时间序列前车匹配核验与任务 1 收尾", "status": "verified_engineering_recommended_close",
+      "portable_evidence_paths": ["evidence/results/RES-STAGE-0.2-TASK-1.5/audit.json", "evidence/results/RES-STAGE-0.2-TASK-1.5/config_frozen.json", "evidence/results/RES-STAGE-0.2-TASK-1.5/cross_clock_match_audit.json", "evidence/results/RES-STAGE-0.2-TASK-1.5/regression_comparison.json", "evidence/results/RES-STAGE-0.2-TASK-1.5/provenance.json", "evidence/results/RES-STAGE-0.2-TASK-1.5/manifest.json", "evidence/results/RES-STAGE-0.2-TASK-1.5/SHA256SUMS"],
+      "local_artifact_paths": ["code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r3"], "code_version_source": "provenance.json implementation_sha256 与 git_base_commit", "configuration_source": "config_frozen.json", "data_version_source": "cross_clock_match_audit.json 输入 SHA-256 与 manifest/SHA256SUMS",
+      "core_metrics": {"lankershim_rows": 1607319, "lankershim_reported_leader_rows": 1226499, "lankershim_cross_clock_matches": 0, "lankershim_valid_ttc_rows": 483098, "lankershim_reliable_events": 2777, "us101_rows": 4098933, "us101_valid_ttc_rows": 1728280, "us101_events": 2604}, "current_conclusion": "跨时钟前车匹配工程核验 Verified，最小键修复后四源全量回归无测量或事件变化；建议关闭任务 1。", "gate_status": "active_audit_closure",
+      "paper_locations": ["docs/STAGE_0_2_TASK_1_5_LEADER_MATCHING_CLOSURE_2026-10-10.md", "docs/论文实验推进/阶段0_基础设施与测量/阶段0.2_NGSIM风险审计/执行记录.md"], "scientific_claim_eligible": false
+    },
+
     {
       "id": "RES-STAGE-0.2-TASK-1.4",
       "experiment_id": "stage_0_2",

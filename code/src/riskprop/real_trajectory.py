@@ -56,6 +56,13 @@ def add_ngsim_leader_ttc(
         else follower_id
     )
     time = pd.to_numeric(result[columns["global_time"]], errors="coerce")
+    frame = _numeric_optional(result, ("Frame_ID", "frame_id"))
+    if "diagnostic_clock_anchor_ms" in result:
+        clock_anchor = pd.to_numeric(result["diagnostic_clock_anchor_ms"], errors="coerce")
+    elif frame.notna().any():
+        clock_anchor = time - 100.0 * frame
+    else:
+        clock_anchor = pd.Series(float("nan"), index=result.index)
     scope = pd.Series(run_id, index=result.index, dtype="string")
     for name in ("source_member", "source_period"):
         if name in result:
@@ -67,6 +74,8 @@ def add_ngsim_leader_ttc(
         {
             "_time": time,
             "_scope": scope,
+            "_clock_anchor": clock_anchor,
+            "_frame_id": frame,
             "_lookup_id": lookup_follower_id,
             "_leader_speed_fps": speed_fps,
             "_leader_length_ft": pd.to_numeric(result[columns["length"]], errors="coerce"),
@@ -77,26 +86,43 @@ def add_ngsim_leader_ttc(
                 else False
             ),
         }
-    ).drop_duplicates(["_scope", "_time", "_lookup_id"], keep=False)
+    )
+    match_keys = ["_scope", "_time"]
+    if clock_anchor.notna().any():
+        match_keys.append("_clock_anchor")
+    if frame.notna().any():
+        match_keys.append("_frame_id")
+    match_keys.append("_lookup_id")
+    lookup = lookup.drop_duplicates(match_keys, keep=False)
     leader_lookup_id = leader_id
     if "trajectory_id" in result.columns:
         identity_lookup = pd.DataFrame(
-            {"_scope": scope, "_time": time, "_original_id": follower_id, "_trajectory_id": lookup_follower_id}
-        ).drop_duplicates(["_scope", "_time", "_original_id"], keep=False)
+            {"_scope": scope, "_time": time, "_clock_anchor": clock_anchor, "_frame_id": frame,
+             "_original_id": follower_id, "_trajectory_id": lookup_follower_id}
+        )
+        identity_keys = ["_scope", "_time"]
+        if clock_anchor.notna().any():
+            identity_keys.append("_clock_anchor")
+        if frame.notna().any():
+            identity_keys.append("_frame_id")
+        identity_lookup = identity_lookup.drop_duplicates([*identity_keys, "_original_id"], keep=False)
         leader_lookup_id = pd.DataFrame(
-            {"_scope": scope, "_time": time, "_original_id": leader_id}
-        ).merge(identity_lookup, on=["_scope", "_time", "_original_id"], how="left", sort=False)[
+            {"_scope": scope, "_time": time, "_clock_anchor": clock_anchor, "_frame_id": frame, "_original_id": leader_id}
+        ).merge(identity_lookup, on=[*identity_keys, "_original_id"], how="left", sort=False)[
             "_trajectory_id"
         ]
-    matches = pd.DataFrame({"_scope": scope, "_time": time, "_lookup_id": leader_lookup_id}).merge(
+    match_request = {"_scope": scope, "_time": time, "_lookup_id": leader_lookup_id,
+                     "_clock_anchor": clock_anchor, "_frame_id": frame}
+    matches = pd.DataFrame(match_request).merge(
         lookup,
-        on=["_scope", "_time", "_lookup_id"],
+        on=[*match_keys[:-1], "_lookup_id"],
         how="left",
         sort=False,
     )
 
     has_reported_leader = leader_id.notna() & (leader_id != "0")
-    leader_matched = has_reported_leader & matches["_leader_speed_fps"].notna()
+    match_fields_present = clock_anchor.notna() & frame.notna() if clock_anchor.notna().any() and frame.notna().any() else pd.Series(True, index=result.index)
+    leader_matched = has_reported_leader & matches["_leader_speed_fps"].notna() & match_fields_present
     reported_headway_m = space_headway_ft * FEET_TO_METRES
     leader_length_m = matches["_leader_length_ft"] * FEET_TO_METRES
     net_gap_m = reported_headway_m - leader_length_m

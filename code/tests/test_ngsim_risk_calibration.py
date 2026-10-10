@@ -250,6 +250,51 @@ def test_same_time_different_source_members_never_cross_match():
     assert not result.iloc[0].ttc_valid
 
 
+def test_same_time_reused_ids_match_only_same_clock_and_frame():
+    from riskprop.real_trajectory import add_ngsim_leader_ttc
+    rows = []
+    for frame, anchor in ((1, 0), (2, -100)):
+        rows.extend([
+            {"Vehicle_ID": 10, "Frame_ID": frame, "Global_Time": 1000, "diagnostic_clock_anchor_ms": anchor,
+             "trajectory_id": f"follower-{anchor}", "v_Length": 12.0, "v_Vel": 30.0,
+             "Preceeding": 20, "Space_Hdwy": 30.0},
+            {"Vehicle_ID": 20, "Frame_ID": frame, "Global_Time": 1000, "diagnostic_clock_anchor_ms": anchor,
+             "trajectory_id": f"leader-{anchor}", "v_Length": 15.0, "v_Vel": 20.0,
+             "Preceeding": 0, "Space_Hdwy": 0.0},
+        ])
+    result = add_ngsim_leader_ttc(pd.DataFrame(rows))
+    followers = result[result.Vehicle_ID.eq(10)].sort_values("Frame_ID")
+    assert followers.leader_matched.all()
+    assert followers.leader_trajectory_id.tolist() == ["leader-0", "leader--100"]
+    assert followers.ttc_valid.all()
+
+
+def test_same_clock_time_with_different_frame_does_not_match():
+    from riskprop.real_trajectory import add_ngsim_leader_ttc
+    raw = pd.DataFrame([
+        {"Vehicle_ID": 10, "Frame_ID": 1, "Global_Time": 1000, "diagnostic_clock_anchor_ms": 0,
+         "trajectory_id": "follower", "v_Length": 12.0, "v_Vel": 30.0, "Preceeding": 20, "Space_Hdwy": 30.0},
+        {"Vehicle_ID": 20, "Frame_ID": 2, "Global_Time": 1000, "diagnostic_clock_anchor_ms": 0,
+         "trajectory_id": "leader", "v_Length": 15.0, "v_Vel": 20.0, "Preceeding": 0, "Space_Hdwy": 0.0},
+    ])
+    result = add_ngsim_leader_ttc(raw)
+    assert not result.iloc[0].leader_matched
+    assert result.iloc[0].missing_reason == "leader_not_matched"
+
+
+def test_missing_diagnostic_match_fields_are_not_guessed():
+    from riskprop.real_trajectory import add_ngsim_leader_ttc
+    raw = pd.DataFrame([
+        {"Vehicle_ID": 10, "Frame_ID": 1, "Global_Time": 1000, "diagnostic_clock_anchor_ms": pd.NA,
+         "trajectory_id": "follower", "v_Length": 12.0, "v_Vel": 30.0, "Preceeding": 20, "Space_Hdwy": 30.0},
+        {"Vehicle_ID": 20, "Frame_ID": 1, "Global_Time": 1000, "diagnostic_clock_anchor_ms": 0,
+         "trajectory_id": "leader", "v_Length": 15.0, "v_Vel": 20.0, "Preceeding": 0, "Space_Hdwy": 0.0},
+    ])
+    result = add_ngsim_leader_ttc(raw)
+    assert not result.iloc[0].leader_matched
+    assert result.iloc[0].missing_reason == "leader_not_matched"
+
+
 @pytest.mark.parametrize("gap_ms", [200, 300, 5000])
 def test_missing_frames_are_observation_gaps_not_new_physical_identity(gap_ms):
     raw = _ngsim_rows()

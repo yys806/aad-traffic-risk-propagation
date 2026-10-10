@@ -34,6 +34,7 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         ],
         "RES-STAGE-0.2-NGSIM-V2": [],
         "RES-STAGE-0.2-TASK-1.4": [],
+        "RES-STAGE-0.2-TASK-1.5": [],
         "RES-STAGE-0.4-COMM-OBS-V3": [],
         "RES-STAGE-0.5-REAL-REF-V1": [],
         "RES-STAGE-0.6-PRELOCK-V2": [],
@@ -60,6 +61,10 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
             )
 
     calibration_sets = {
+        "RES-STAGE-0.2-TASK-1.5": (
+            "stage_0_2_task_1_5_20261010_r3",
+            ("audit.json", "config_frozen.json", "cross_clock_match_audit.json", "regression_comparison.json", "provenance.json", "manifest.json", "SHA256SUMS"),
+        ),
         "RES-STAGE-0.2-TASK-1.4": (
             "stage_0_2_task_1_4_20261010",
             ("audit.json", "comparison.json", "identity_evidence.json", "measurement_comparison.json", "event_boundary_comparison.json", "config_frozen.json", "manifest.json", "provenance.json", "SHA256SUMS"),

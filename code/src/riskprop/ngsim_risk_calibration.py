@@ -427,6 +427,7 @@ def write_stage_0_2_ngsim_package(
             "unknown_source_period": "preserved_as_unknown",
             "uncertainty": "duplicate_time_or_frame_or_inconsistent_total_propagates_to_whole_diagnostic_sequence",
         },
+        "leader_match_policy": "same_run_scope; same_global_time; same_diagnostic_clock_anchor; same_frame_id; unique_preceding_record; missing_or_conflicted_fields_unmatched",
         "event_reliability_policy": "complete_state_sequence; unique follower_and_leader; consecutive_integer_ms_and_frames; first_frame_after_gap_allowed",
         "max_gap_s": 0.11,
         "minimum_duration_s": 0.1,
