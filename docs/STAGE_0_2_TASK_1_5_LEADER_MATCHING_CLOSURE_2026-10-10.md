@@ -12,7 +12,7 @@
 
 ## 1. 独立核查
 
-证据：`code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r3/cross_clock_match_audit.json`。输入 Lankershim ZIP SHA-256 为 `757c693ba72b7c8ba7561ee1b5107dfa7119cc4862584a4f033aa445246c56c1`。
+证据：`code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r4/cross_clock_match_audit.json`。输入 Lankershim ZIP SHA-256 为 `757c693ba72b7c8ba7561ee1b5107dfa7119cc4862584a4f033aa445246c56c1`。
 
 | 核查量 | 数量 | 状态 |
 |---|---:|---|
@@ -41,7 +41,7 @@
 
 ## 3. 全量回归
 
-新版独立产物：`code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r3/`。包含四个状态表、原始/可靠/拒绝事件表、`cross_clock_match_audit.json`、`regression_comparison.json`、config、provenance、manifest 和 SHA-256SUMS。完整 Parquet 仅保留本机；便携证据在 `evidence/results/RES-STAGE-0.2-TASK-1.5/`。
+新版独立产物：`code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r4/`。包含四个状态表、原始/可靠/拒绝事件表、`cross_clock_match_audit.json`、`regression_comparison.json`、config、provenance、manifest 和 SHA-256SUMS。完整 Parquet 仅保留本机；便携证据在 `evidence/results/RES-STAGE-0.2-TASK-1.5/`。
 
 | 数据源 | 记录数 | 有效 TTC | 原始/可靠事件 | 与任务 1.4 核心测量差异 |
 |---|---:|---:|---:|---:|
@@ -61,12 +61,12 @@ Lankershim 全量结果仍为 1,226,499 个前车匹配、483,098 个有效 TTC�
 python code/scripts/verify_ngsim_task_1_5.py --output code/outputs/formal/calibration/<独立输出目录>
 ```
 
-脚本只读取显式列出的四个 NGSIM calibration 源，不下载数据、不访问 holdout；它保存输入哈希、独立匹配统计、状态/事件产物、provenance 和完整 SHA-256SUMS。当前 r3 provenance 绑定本轮实现提交前源码哈希；Git 便携证据只包含小型 JSON，不含原始表或 Parquet。
+脚本只读取显式列出的四个 NGSIM calibration 源，不下载数据、不访问 holdout；它保存输入哈希、独立匹配统计、状态/事件产物、provenance 和完整 SHA-256SUMS。r4 provenance 绑定最终代码运行时源码哈希；r3 是前一版全量结果，r4 对最终缺失/冲突字段边界修复重新运行，四源核心测量逐列仍为 0 行差异。Git 便携证据只包含小型 JSON，不含原始表或 Parquet。
 
 ## 5. 验证与边界
 
-- 任务 1.5 针对性测试：新增跨时钟、同帧冲突和缺失字段测试通过；任务 1.4 测试集继续通过。
-- 全量测试、compileall、项目文档验证和 portable evidence verify 在提交前执行。纯 Git 克隆用于 clean 文档检查；主工作区已有无关论文删除/未跟踪改动，继续保留不提交。
+- 任务 1.5 针对性测试 31 passed；全量 `code/tests` 为 201 passed，`compileall` 通过。新增缺失/冲突字段测试确认显式诊断时钟不可观测时不猜测；完全没有诊断字段的历史调用保留兼容行为。
+- 项目文档验证和 portable evidence verify 在提交前执行。主工作区已有无关论文删除/未跟踪改动，继续保留不提交。
 - `Verified` 只表示本机数据和工程链证据。`Unverified` 仍包括 Lankershim 官方来源时段和真实物理车辆身份；不把诊断时钟称为官方时段。
 - 不生成科学风险发生率，不冻结 TTC 阈值或事件持续时间，不创建 Protocol Lock，不启动 Stage I。
 

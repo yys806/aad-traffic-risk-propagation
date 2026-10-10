@@ -71,4 +71,4 @@
 
 ## 2026-10-10 任务 1.5 当前工程基线
 
-报告：`docs/STAGE_0_2_TASK_1_5_LEADER_MATCHING_CLOSURE_2026-10-10.md`；结果：`RES-STAGE-0.2-TASK-1.5`。Lankershim 1,226,499 条报告前车在时间、诊断时钟锚、Frame_ID 和编号约束下均唯一；真实跨时钟匹配 0，跨时钟有效 TTC 0。最小修复已加入匹配键，四源状态核心与任务 1.4 0 行差异，事件数保持 US-101 2,604、Lankershim 2,777。任务 1 建议关闭，等待研究者审核；Stage 0.2 科学 Gate 仍 Active。
+报告：`docs/STAGE_0_2_TASK_1_5_LEADER_MATCHING_CLOSURE_2026-10-10.md`；结果：`RES-STAGE-0.2-TASK-1.5`；最终产物为 `code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r4`。Lankershim 1,226,499 条报告前车在时间、诊断时钟锚、Frame_ID 和编号约束下均唯一；真实跨时钟匹配 0，跨时钟有效 TTC 0。匹配键修复并增加显式时钟缺失/冲突阻断，四源状态核心与任务 1.4 0 行差异，事件数保持 US-101 2,604、Lankershim 2,777；全量测试 201 passed。任务 1 建议关闭，等待研究者审核；Stage 0.2 科学 Gate 仍 Active。

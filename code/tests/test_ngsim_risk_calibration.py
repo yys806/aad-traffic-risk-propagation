@@ -253,7 +253,7 @@ def test_same_time_different_source_members_never_cross_match():
 def test_same_time_reused_ids_match_only_same_clock_and_frame():
     from riskprop.real_trajectory import add_ngsim_leader_ttc
     rows = []
-    for frame, anchor in ((1, 0), (2, -100)):
+    for frame, anchor in ((1, 900), (2, 800)):
         rows.extend([
             {"Vehicle_ID": 10, "Frame_ID": frame, "Global_Time": 1000, "diagnostic_clock_anchor_ms": anchor,
              "trajectory_id": f"follower-{anchor}", "v_Length": 12.0, "v_Vel": 30.0,
@@ -265,16 +265,16 @@ def test_same_time_reused_ids_match_only_same_clock_and_frame():
     result = add_ngsim_leader_ttc(pd.DataFrame(rows))
     followers = result[result.Vehicle_ID.eq(10)].sort_values("Frame_ID")
     assert followers.leader_matched.all()
-    assert followers.leader_trajectory_id.tolist() == ["leader-0", "leader--100"]
+    assert followers.leader_trajectory_id.tolist() == ["leader-900", "leader-800"]
     assert followers.ttc_valid.all()
 
 
 def test_same_clock_time_with_different_frame_does_not_match():
     from riskprop.real_trajectory import add_ngsim_leader_ttc
     raw = pd.DataFrame([
-        {"Vehicle_ID": 10, "Frame_ID": 1, "Global_Time": 1000, "diagnostic_clock_anchor_ms": 0,
+        {"Vehicle_ID": 10, "Frame_ID": 1, "Global_Time": 1000, "diagnostic_clock_anchor_ms": 900,
          "trajectory_id": "follower", "v_Length": 12.0, "v_Vel": 30.0, "Preceeding": 20, "Space_Hdwy": 30.0},
-        {"Vehicle_ID": 20, "Frame_ID": 2, "Global_Time": 1000, "diagnostic_clock_anchor_ms": 0,
+        {"Vehicle_ID": 20, "Frame_ID": 2, "Global_Time": 1000, "diagnostic_clock_anchor_ms": 900,
          "trajectory_id": "leader", "v_Length": 15.0, "v_Vel": 20.0, "Preceeding": 0, "Space_Hdwy": 0.0},
     ])
     result = add_ngsim_leader_ttc(raw)
@@ -292,7 +292,33 @@ def test_missing_diagnostic_match_fields_are_not_guessed():
     ])
     result = add_ngsim_leader_ttc(raw)
     assert not result.iloc[0].leader_matched
-    assert result.iloc[0].missing_reason == "leader_not_matched"
+    assert result.iloc[0].missing_reason == "unobservable_match_fields"
+
+
+def test_all_missing_clock_column_does_not_fall_back_to_time_only():
+    from riskprop.real_trajectory import add_ngsim_leader_ttc
+    raw = _ngsim_rows()
+    raw["diagnostic_clock_anchor_ms"] = pd.NA
+    result = add_ngsim_leader_ttc(raw)
+    assert not result.leader_matched.any()
+    assert result.loc[result.Vehicle_ID.eq(10), "missing_reason"].eq("unobservable_match_fields").all()
+
+
+def test_clock_conflicting_with_time_and_frame_is_unmatched():
+    from riskprop.real_trajectory import add_ngsim_leader_ttc
+    raw = _ngsim_rows()
+    raw["diagnostic_clock_anchor_ms"] = 0
+    result = add_ngsim_leader_ttc(raw)
+    assert not result.leader_matched.any()
+    assert result.loc[result.Vehicle_ID.eq(10), "missing_reason"].eq("conflicting_match_fields").all()
+
+
+def test_wrong_clock_only_leader_is_unmatched_without_trajectory_ids():
+    from riskprop.real_trajectory import add_ngsim_leader_ttc
+    raw = _ngsim_rows().iloc[:2].copy()
+    raw.loc[raw.Vehicle_ID.eq(20), "Frame_ID"] = 2
+    result = add_ngsim_leader_ttc(raw)
+    assert not result.iloc[0].leader_matched
 
 
 @pytest.mark.parametrize("gap_ms", [200, 300, 5000])

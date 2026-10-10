@@ -57,7 +57,8 @@ def add_ngsim_leader_ttc(
     )
     time = pd.to_numeric(result[columns["global_time"]], errors="coerce")
     frame = _numeric_optional(result, ("Frame_ID", "frame_id"))
-    if "diagnostic_clock_anchor_ms" in result:
+    explicit_clock = "diagnostic_clock_anchor_ms" in result
+    if explicit_clock:
         clock_anchor = pd.to_numeric(result["diagnostic_clock_anchor_ms"], errors="coerce")
     elif frame.notna().any():
         clock_anchor = time - 100.0 * frame
@@ -88,7 +89,7 @@ def add_ngsim_leader_ttc(
         }
     )
     match_keys = ["_scope", "_time"]
-    if clock_anchor.notna().any():
+    if explicit_clock or clock_anchor.notna().any():
         match_keys.append("_clock_anchor")
     if frame.notna().any():
         match_keys.append("_frame_id")
@@ -121,7 +122,14 @@ def add_ngsim_leader_ttc(
     )
 
     has_reported_leader = leader_id.notna() & (leader_id != "0")
-    match_fields_present = clock_anchor.notna() & frame.notna() if clock_anchor.notna().any() and frame.notna().any() else pd.Series(True, index=result.index)
+    expected_clock = time - 100.0 * frame
+    clock_conflict = explicit_clock & clock_anchor.notna() & expected_clock.notna() & clock_anchor.ne(expected_clock)
+    frame_available = any(name in result.columns for name in ("Frame_ID", "frame_id"))
+    # Legacy callers without either diagnostic clock or frame metadata retain
+    # their historical time-scoped behavior; real NGSIM inputs carry Frame_ID
+    # and therefore require it for an observable match.
+    missing_match_fields = (explicit_clock & clock_anchor.isna()) | (frame_available & frame.isna())
+    match_fields_present = ~(clock_conflict | missing_match_fields)
     leader_matched = has_reported_leader & matches["_leader_speed_fps"].notna() & match_fields_present
     reported_headway_m = space_headway_ft * FEET_TO_METRES
     leader_length_m = matches["_leader_length_ft"] * FEET_TO_METRES
@@ -142,6 +150,8 @@ def add_ngsim_leader_ttc(
     missing_reason = pd.Series("", index=result.index, dtype="string")
     missing_reason.loc[~has_reported_leader] = "no_reported_leader"
     missing_reason.loc[has_reported_leader & ~leader_matched] = "leader_not_matched"
+    missing_reason.loc[has_reported_leader & missing_match_fields] = "unobservable_match_fields"
+    missing_reason.loc[has_reported_leader & clock_conflict] = "conflicting_match_fields"
     missing_reason.loc[leader_matched & (net_gap_m <= 0)] = "non_positive_gap"
     missing_reason.loc[
         leader_matched
