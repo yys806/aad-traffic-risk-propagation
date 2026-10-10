@@ -21,3 +21,7 @@
 ## 历史实验
 
 pNEUMA 地图匹配、候选前车和人工 QA 已由研究者批准退役，代码/测试/脚本位于 `legacy/`，完整输出位于 `code/outputs/history/legacy_experiment_ids/`，小型证据位于 `evidence/history/legacy_experiment_ids/`。其他 DRIFT 与传播 Pilot 见 `docs/HISTORY_INDEX.md`。
+
+## 2026-10-10 当前 Stage 0.2 工程诊断包
+
+`RES-STAGE-0.2-TASK-1.4`（任务 1.4 报告）：5,706,252 状态行、2,211,378 有效 TTC 行、5,381 原始与可靠候选事件、拒绝 0。数据为三个 US-101 TXT 与 Lankershim CSV；工程诊断包在 `code/outputs/formal/calibration/stage_0_2_task_1_4_20261010/`，不是科学风险频率或 Gate 通过。旧 v2 及任务 1.3 不覆盖。

@@ -56,30 +56,41 @@ def add_ngsim_leader_ttc(
         else follower_id
     )
     time = pd.to_numeric(result[columns["global_time"]], errors="coerce")
+    scope = pd.Series(run_id, index=result.index, dtype="string")
+    for name in ("source_member", "source_period"):
+        if name in result:
+            scope = scope + "|" + result[name].astype("string").fillna("unknown")
     speed_fps = pd.to_numeric(result[columns["speed"]], errors="coerce")
     space_headway_ft = pd.to_numeric(result[columns["space_headway"]], errors="coerce")
 
     lookup = pd.DataFrame(
         {
             "_time": time,
+            "_scope": scope,
             "_lookup_id": lookup_follower_id,
             "_leader_speed_fps": speed_fps,
             "_leader_length_ft": pd.to_numeric(result[columns["length"]], errors="coerce"),
+            "_leader_frame_id": _numeric_optional(result, ("Frame_ID", "frame_id")),
+            "_leader_identity_uncertain": (
+                result["identity_uncertain"].fillna(True).astype(bool)
+                if "identity_uncertain" in result
+                else False
+            ),
         }
-    ).drop_duplicates(["_time", "_lookup_id"], keep=False)
+    ).drop_duplicates(["_scope", "_time", "_lookup_id"], keep=False)
     leader_lookup_id = leader_id
     if "trajectory_id" in result.columns:
         identity_lookup = pd.DataFrame(
-            {"_time": time, "_original_id": follower_id, "_trajectory_id": lookup_follower_id}
-        ).drop_duplicates(["_time", "_original_id"], keep=False)
+            {"_scope": scope, "_time": time, "_original_id": follower_id, "_trajectory_id": lookup_follower_id}
+        ).drop_duplicates(["_scope", "_time", "_original_id"], keep=False)
         leader_lookup_id = pd.DataFrame(
-            {"_time": time, "_original_id": leader_id}
-        ).merge(identity_lookup, on=["_time", "_original_id"], how="left", sort=False)[
+            {"_scope": scope, "_time": time, "_original_id": leader_id}
+        ).merge(identity_lookup, on=["_scope", "_time", "_original_id"], how="left", sort=False)[
             "_trajectory_id"
         ]
-    matches = pd.DataFrame({"_time": time, "_lookup_id": leader_lookup_id}).merge(
+    matches = pd.DataFrame({"_scope": scope, "_time": time, "_lookup_id": leader_lookup_id}).merge(
         lookup,
-        on=["_time", "_lookup_id"],
+        on=["_scope", "_time", "_lookup_id"],
         how="left",
         sort=False,
     )
@@ -121,7 +132,11 @@ def add_ngsim_leader_ttc(
     result["leader_id"] = leader_id.where(has_reported_leader)
     if "trajectory_id" in result.columns:
         result["leader_trajectory_id"] = leader_lookup_id.where(has_reported_leader)
+        result["leader_identity_uncertain"] = matches["_leader_identity_uncertain"].astype("boolean").fillna(True).astype(bool)
+    else:
+        result["leader_identity_uncertain"] = False
     result["leader_matched"] = leader_matched.to_numpy()
+    result["leader_frame_id"] = matches["_leader_frame_id"]
     result["reported_space_headway_m"] = reported_headway_m
     result["leader_length_m"] = leader_length_m
     result["headway_m"] = net_gap_m

@@ -42,11 +42,11 @@ def annotate_ngsim_trajectory_identity(
     source_period: str = "unknown",
     source_member: str = "unknown",
 ) -> pd.DataFrame:
-    """Add deterministic, conservative segment and observation-quality fields.
+    """Identify diagnostic clock/frame sequences, not physical vehicles.
 
-    A segment starts only after an observed non-increasing Frame_ID within the
-    original Vehicle_ID row order.  Time gaps are quality flags, never identity
-    boundaries.  The original row number and Vehicle_ID are retained.
+    Global_Time - 100 * Frame_ID is an observed clock anchor, not an official
+    period label. Original rows remain in file order. Conflicting sequences
+    are retained with uncertainty propagated over the whole diagnostic group.
     """
     columns = {
         "vehicle": next(c for c in ("Vehicle_ID", "vehicle_id") if c in trajectories),
@@ -54,32 +54,44 @@ def annotate_ngsim_trajectory_identity(
         "time": next(c for c in ("Global_Time", "global_time") if c in trajectories),
     }
     result = trajectories.reset_index(drop=True).copy()
+    for name, fallback in (("source_member", source_member), ("source_period", source_period)):
+        if name not in result:
+            result[name] = fallback
+        result[name] = result[name].astype("string").fillna("unknown")
     result["original_row_number"] = pd.RangeIndex(len(result)) + 1
     result["original_vehicle_id"] = result[columns["vehicle"]].astype("string")
     frame = pd.to_numeric(result[columns["frame"]], errors="coerce")
     time = pd.to_numeric(result[columns["time"]], errors="coerce")
-    grouped = result["original_vehicle_id"]
-    frame_delta = frame.groupby(grouped, sort=False).diff()
-    time_delta = time.groupby(grouped, sort=False).diff()
-    frame_reset = frame_delta.le(0).fillna(False)
-    duplicate_time = result.duplicated(["original_vehicle_id", columns["time"]], keep=False)
-    identity_break = frame_reset
-    segment_index = identity_break.groupby(grouped, sort=False).cumsum().astype("int64")
-    segment_counts = segment_index.groupby(grouped, sort=False).transform("max") + 1
-    observation_gap = time_delta.gt(100).fillna(False)
-    time_backwards = time_delta.lt(0).fillna(False)
-    identity_uncertain = duplicate_time | time_backwards
-    result["source_period"] = str(source_period)
-    result["source_member"] = str(source_member)
+    valid_fields = time.notna() & frame.notna() & time.mod(1).eq(0) & frame.mod(1).eq(0)
+    anchor = (time - frame * 100).where(valid_fields).astype("Int64")
+    result["diagnostic_clock_anchor_ms"] = anchor
+    # Rank observed anchors per ID; independent of original file row ordering.
+    identity_scope = [result[c] for c in ("source_member", "source_period", "original_vehicle_id")]
+    segment_index = anchor.groupby(identity_scope).rank(method="dense").sub(1).fillna(-1).astype("int64")
     result["segment_index"] = segment_index
     result["trajectory_id"] = (
-        "NGSIM|" + str(site) + "|" + str(source_period) + "|" + str(source_member)
-        + "|" + result["original_vehicle_id"] + "|s" + segment_index.astype("string")
+        "NGSIM|" + str(site) + "|" + result["source_period"] + "|" + result["source_member"]
+        + "|" + result["original_vehicle_id"] + "|clock" + anchor.astype("string").fillna("unknown")
     )
-    result["identity_break"] = identity_break.to_numpy()
-    result["observation_gap"] = observation_gap.to_numpy()
+    duplicate_time = result.duplicated(["source_member", "source_period", "original_vehicle_id", columns["time"]], keep=False)
+    duplicate_frame = result.duplicated(["trajectory_id", columns["frame"]], keep=False)
+    direct_uncertain = ~valid_fields | duplicate_time | duplicate_frame
+    if "Total_Frames" in result:
+        totals = pd.to_numeric(result["Total_Frames"], errors="coerce")
+        direct_uncertain |= totals.isna() | totals.groupby(result["trajectory_id"]).transform("nunique").gt(1)
+    identity_uncertain = direct_uncertain.groupby(result["trajectory_id"]).transform("any")
+    ordered = result.assign(_time=time, _frame=frame).sort_values(
+        ["trajectory_id", "_time", "_frame", "original_row_number"], kind="stable"
+    )
+    sequence = ordered.groupby("trajectory_id", sort=False)
+    identity_break = sequence.cumcount().eq(0) & segment_index.loc[ordered.index].gt(0)
+    observation_gap = sequence["_time"].diff().gt(100).fillna(False)
+    result["identity_uncertain_record"] = direct_uncertain.to_numpy()
+    result["identity_break"] = identity_break.reindex(result.index).to_numpy()
+    result["observation_gap"] = observation_gap.reindex(result.index).to_numpy()
     result["identity_uncertain"] = identity_uncertain.to_numpy()
     result["identity_status"] = "confirmed"
+    segment_counts = result.groupby(["source_member", "source_period", "original_vehicle_id"])["trajectory_id"].transform("nunique")
     result.loc[segment_counts.gt(1), "identity_status"] = "confirmed_segment"
     result.loc[identity_uncertain, "identity_status"] = "identity_uncertain"
     return result
@@ -136,6 +148,8 @@ def standardize_ngsim_states(
             "leader_trajectory_id": enriched.get(
                 "leader_trajectory_id", enriched["leader_id"]
             ).astype("string"),
+            "leader_identity_uncertain": enriched["leader_identity_uncertain"].astype(bool),
+            "leader_frame_id": enriched["leader_frame_id"],
             "net_gap_m": enriched["headway_m"],
             "closing_speed_mps": enriched["closing_speed_mps"],
             "ttc_valid": enriched["ttc_valid"],
@@ -156,6 +170,12 @@ def standardize_ngsim_states(
             "identity_break": enriched["identity_break"].astype(bool),
             "observation_gap": enriched["observation_gap"].astype(bool),
             "identity_uncertain": enriched["identity_uncertain"].astype(bool),
+            "identity_uncertain_record": enriched["identity_uncertain_record"].astype(bool),
+            "segment_index": enriched["segment_index"],
+            "global_time_ms": _optional_numeric(enriched, ("Global_Time", "global_time")).astype("Int64"),
+            "diagnostic_clock_anchor_ms": enriched["diagnostic_clock_anchor_ms"],
+            "total_frames": _optional_numeric(enriched, ("Total_Frames",)),
+            "leader_matched": enriched["leader_matched"].astype(bool),
             "original_row_number": enriched["original_row_number"].astype("int64"),
         }
     )
@@ -170,6 +190,10 @@ def standardize_ngsim_states(
     group_size = ordered.groupby("trajectory_id", sort=False)["trajectory_id"].transform("size")
     ordered["trajectory_boundary"] = (position == 0) | (position == group_size - 1)
     result = ordered.sort_index()
+    result["single_frame_reliable"] = (
+        result["ttc_valid"] & ~result["identity_uncertain"]
+        & ~result["leader_identity_uncertain"] & result["leader_matched"]
+    )
     validate_real_state_table(result)
     return result
 
@@ -180,45 +204,67 @@ def extract_rear_end_events(
     provisional_ttc_threshold_s: float = 2.0,
     max_gap_s: float = 0.11,
     minimum_duration_s: float = 0.1,
-) -> pd.DataFrame:
-    """Merge sustained low-TTC frames into calibration candidate episodes."""
+    return_diagnostics: bool = False,
+) -> pd.DataFrame | tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    """Return reliable engineering candidates; optionally raw/reliable/rejected.
+
+    Reliability is evaluated on the complete state sequence, not only on
+    threshold-positive frames. Temporary thresholds are not scientific locks.
+    Raw candidates containing any uncertain observation are rejected intact.
+    """
 
     if provisional_ttc_threshold_s <= 0 or max_gap_s <= 0 or minimum_duration_s <= 0:
         raise ValueError("threshold and duration parameters must be positive")
-    candidates = states[
-        states["ttc_valid"].fillna(False)
-        & (pd.to_numeric(states["ttc_s"], errors="coerce") < provisional_ttc_threshold_s)
+    follower_key = "trajectory_id" if "trajectory_id" in states else "vehicle_id"
+    leader_key = "leader_trajectory_id" if "leader_trajectory_id" in states else "leader_id"
+    scope_keys = ["dataset", "site", "window_id"]
+    scope_keys += [c for c in ("source_period", "source_member") if c in states]
+    sequence_keys = [*scope_keys, follower_key]
+    ordered = states.copy().sort_values([*sequence_keys, "time_s", "frame_id"], kind="stable")
+    full_sequence = ordered.groupby(sequence_keys, dropna=False, sort=False)
+    ordered["_observation_position"] = full_sequence.cumcount()
+    previous_leader = full_sequence[leader_key].shift()
+    ordered["_pair_run"] = (
+        previous_leader.isna() | ordered[leader_key].isna()
+        | previous_leader.ne(ordered[leader_key]).fillna(True)
+    ).groupby([ordered[c] for c in sequence_keys], dropna=False).cumsum()
+    candidates = ordered[
+        ordered["ttc_valid"].fillna(False)
+        & (pd.to_numeric(ordered["ttc_s"], errors="coerce") < provisional_ttc_threshold_s)
     ].copy()
     if candidates.empty:
-        return pd.DataFrame(columns=RISK_EVENT_COLUMNS)
-    follower_key = "trajectory_id" if "trajectory_id" in candidates else "vehicle_id"
-    leader_key = "leader_trajectory_id" if "leader_trajectory_id" in candidates else "leader_id"
-    candidates = candidates.sort_values([follower_key, leader_key, "time_s"])
-    time_gap = candidates.groupby([follower_key, leader_key], dropna=False)["time_s"].diff()
+        empty = pd.DataFrame(columns=RISK_EVENT_COLUMNS)
+        if return_diagnostics:
+            return empty, empty.copy(), pd.DataFrame(columns=["event_id", "rejection_reason", "raw_frame_count"])
+        return empty
+    pair_keys = [*sequence_keys, leader_key, "_pair_run"]
+    time_gap = candidates.groupby(pair_keys, dropna=False)["time_s"].diff()
+    def flag(frame, name):
+        return frame[name].fillna(True).astype(bool) if name in frame else pd.Series(False, index=frame.index)
     continuity_block = (
         time_gap.isna()
         | (time_gap > max_gap_s + 1e-9)
-        | candidates.get("identity_break", False).astype(bool)
-        | candidates.get("observation_gap", False).astype(bool)
-        | candidates.get("identity_uncertain", False).astype(bool)
+        | flag(candidates, "identity_break")
+        | flag(candidates, "observation_gap")
     )
     candidates["_segment"] = continuity_block.groupby(
-        [candidates[follower_key], candidates[leader_key]], dropna=False
+        [candidates[c] for c in pair_keys], dropna=False
     ).cumsum()
     rows: list[dict[str, object]] = []
-    group_columns = ["dataset", "site", "window_id", follower_key, leader_key, "_segment"]
+    reliable_rows: list[dict[str, object]] = []
+    rejected_rows: list[dict[str, object]] = []
+    group_columns = [*pair_keys, "_segment"]
     for key, group in candidates.groupby(group_columns, dropna=False, sort=True):
         start = float(group["time_s"].min())
         end = float(group["time_s"].max())
         duration = end - start
         if duration + 1e-12 < minimum_duration_s:
             continue
-        dataset, site, window_id, _, _, segment = key
+        dataset, site, window_id = (group[c].iloc[0] for c in ("dataset", "site", "window_id"))
         vehicle_id = group["vehicle_id"].iloc[0]
         leader_id = group["leader_id"].iloc[0]
-        stable_key = f"{dataset}|{site}|{window_id}|{group[follower_key].iloc[0]}|{group[leader_key].iloc[0]}|{start:.6f}|{segment}"
-        rows.append(
-            {
+        stable_key = f"{key}|{start:.6f}"
+        event_row = {
                 "event_id": "stage_0_2_" + hashlib.sha256(stable_key.encode()).hexdigest()[:16],
                 "dataset": dataset,
                 "site": site,
@@ -234,14 +280,54 @@ def extract_rear_end_events(
                 "pet_s": float("nan"),
                 "inclusion_status": "calibration_candidate",
                 "exclusion_reason": "",
-                "algorithm_version": "stage_0_2.ngsim.v1",
+                "algorithm_version": "stage_0_2.ngsim.reliability.v2",
                 "raw_frame_count": int(len(group)),
+                "trajectory_id": group[follower_key].iloc[0],
+                "leader_trajectory_id": group[leader_key].iloc[0],
+                "source_member": group["source_member"].iloc[0] if "source_member" in group else "unknown",
+                "source_period": group["source_period"].iloc[0] if "source_period" in group else "unknown",
+                "original_row_numbers": group["original_row_number"].tolist() if "original_row_number" in group else group.index.tolist(),
             }
-        )
-    events = pd.DataFrame(rows, columns=RISK_EVENT_COLUMNS)
+        rows.append(event_row)
+        rejection_reasons = []
+        if bool(flag(group, "identity_uncertain").any()):
+            rejection_reasons.append("identity_uncertain")
+        if bool(flag(group, "leader_identity_uncertain").any()):
+            rejection_reasons.append("leader_identity_uncertain")
+        # The first frame after a gap can begin a valid new event. Only links
+        # within this event require complete consecutive observations.
+        if group["_observation_position"].diff().iloc[1:].ne(1).any():
+            rejection_reasons.append("intervening_non_candidate_observation")
+        event_ms = (group["global_time_ms"] if "global_time_ms" in group
+                    else (group["time_s"] * 1000).round().astype("Int64"))
+        if event_ms.diff().iloc[1:].ne(100).any() or group["frame_id"].diff().iloc[1:].ne(1).any():
+            rejection_reasons.append("non_consecutive_observations")
+        if "leader_frame_id" in group and group["leader_frame_id"].diff().iloc[1:].ne(1).any():
+            rejection_reasons.append("non_consecutive_leader_observations")
+        leader_matched = group["leader_matched"].fillna(False) if "leader_matched" in group else pd.Series(True, index=group.index)
+        if not bool(leader_matched.all()):
+            rejection_reasons.append("leader_not_unique_or_matched")
+        if rejection_reasons:
+            rejected_rows.append(
+                {
+                    "event_id": event_row["event_id"],
+                    "rejection_reason": ";".join(rejection_reasons),
+                    "raw_frame_count": int(len(group)),
+                }
+            )
+        else:
+            reliable_rows.append(event_row)
+    event_columns = (*RISK_EVENT_COLUMNS, "trajectory_id", "leader_trajectory_id", "source_member", "source_period", "original_row_numbers")
+    events = pd.DataFrame(rows, columns=event_columns)
+    reliable_events = pd.DataFrame(reliable_rows, columns=event_columns)
+    rejected_events = pd.DataFrame(rejected_rows, columns=["event_id", "rejection_reason", "raw_frame_count"])
     if not events.empty:
         validate_risk_event_table(events)
-    return events
+    if not reliable_events.empty:
+        validate_risk_event_table(reliable_events)
+    if return_diagnostics:
+        return events, reliable_events, rejected_events
+    return reliable_events
 
 
 def write_stage_0_2_ngsim_package(
@@ -257,6 +343,8 @@ def write_stage_0_2_ngsim_package(
     states_dir = output_dir / "states"
     states_dir.mkdir()
     event_frames = []
+    reliable_event_frames = []
+    rejected_event_frames = []
     source_audit = []
     for source in sources:
         asset_id = str(source["asset_id"])
@@ -268,15 +356,18 @@ def write_stage_0_2_ngsim_package(
             raw,
             site=str(source["site"]),
             window_id=str(source["window_id"]),
-            source_period=str(source.get("source_period", source.get("window_id", "unknown"))),
+            source_period=str(source.get("source_period", "unknown")),
             source_member=str(source.get("trajectory_member", source.get("csv_member", "unknown"))),
         )
         state_name = f"{asset_id}__{_slug(str(source['window_id']))}.parquet"
         states.to_parquet(states_dir / state_name, index=False)
-        events = extract_rear_end_events(
-            states, provisional_ttc_threshold_s=provisional_ttc_threshold_s
+        events, reliable_events, rejected_events = extract_rear_end_events(
+            states, provisional_ttc_threshold_s=provisional_ttc_threshold_s,
+            return_diagnostics=True,
         )
         event_frames.append(events)
+        reliable_event_frames.append(reliable_events)
+        rejected_event_frames.append(rejected_events)
         source_audit.append(
             {
                 "asset_id": asset_id,
@@ -285,6 +376,12 @@ def write_stage_0_2_ngsim_package(
                 "state_rows": int(len(states)),
                 "valid_ttc_rows": int(states["ttc_valid"].sum()),
                 "event_rows": int(len(events)),
+                "reliable_event_rows": int(len(reliable_events)),
+                "rejected_event_rows": int(len(rejected_events)),
+                "rejection_reason_counts": {
+                    str(key): int(value)
+                    for key, value in rejected_events["rejection_reason"].value_counts(dropna=False).items()
+                },
                 "source_member": str(source.get("trajectory_member", source.get("csv_member", ""))),
                 "source_format": str(source.get("format", source.get("source_format", "csv"))),
                 "expected_rows": source.get("expected_rows"),
@@ -303,12 +400,21 @@ def write_stage_0_2_ngsim_package(
                 "raw_row_preservation": int(len(raw) == len(states)),
             }
         )
+        del raw, states
     all_events = (
         pd.concat(event_frames, ignore_index=True)
         if event_frames
         else pd.DataFrame(columns=RISK_EVENT_COLUMNS)
     )
     all_events.to_parquet(output_dir / "risk_events.parquet", index=False)
+    (pd.concat(reliable_event_frames, ignore_index=True) if reliable_event_frames
+     else pd.DataFrame(columns=RISK_EVENT_COLUMNS)).to_parquet(
+        output_dir / "reliable_risk_events.parquet", index=False
+    )
+    (pd.concat(rejected_event_frames, ignore_index=True) if rejected_event_frames
+     else pd.DataFrame(columns=["event_id", "rejection_reason", "raw_frame_count"])).to_parquet(
+        output_dir / "rejected_risk_events.parquet", index=False
+    )
     config = {
         "schema_version": "stage_0_2.config.v1",
         "experiment_id": "stage_0_2",
@@ -316,10 +422,14 @@ def write_stage_0_2_ngsim_package(
         "scientific_claim_eligible": False,
         "locked_holdout_opened": False,
         "trajectory_identity_policy": {
-            "segment_boundary": "non_increasing_frame_id_within_original_vehicle_row_order",
-            "observation_gap_rule": "global_time_delta_gt_100ms_is_flag_only",
+            "segment_boundary": "observed_global_time_minus_100_times_frame_id_clock_anchor",
+            "observation_gap_rule": "sorted_diagnostic_sequence_delta_gt_100ms_is_flag_only",
             "unknown_source_period": "preserved_as_unknown",
+            "uncertainty": "duplicate_time_or_frame_or_inconsistent_total_propagates_to_whole_diagnostic_sequence",
         },
+        "event_reliability_policy": "complete_state_sequence; unique follower_and_leader; consecutive_integer_ms_and_frames; first_frame_after_gap_allowed",
+        "max_gap_s": 0.11,
+        "minimum_duration_s": 0.1,
     }
     audit = {
         "schema_version": "stage_0_2.audit.v1",

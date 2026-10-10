@@ -31,3 +31,7 @@
 迁移前协议就绪哨兵，结论为未就绪。新阶段键启用后必须重新生成；它不是科学结果。
 
 每个当前结果必须登记便携证据、本机完整产物、配置、数据身份、结论边界和 Gate。旧 pNEUMA 前车复核结果已转入 `evidence/history/legacy_experiment_ids/`。
+
+## RES-STAGE-0.2-TASK-1.4
+
+Verified 工程核查，待研究者验收任务 1。US-101 4,098,933 行测量回归一致；Lankershim 1,607,319 行保留，2,442 个诊断时钟序列，483,098 个有效 TTC 帧，原始/可靠候选事件各 2,777 个、拒绝 0。官方来源时段与物理身份仍 Unverified，Stage 0.2 科学 Gate 仍 Active。报告：`docs/STAGE_0_2_TASK_1_4_RELIABILITY_CLOSURE_2026-10-10.md`；完整包 `code/outputs/formal/calibration/stage_0_2_task_1_4_20261010/`，小型证据在同名结果目录。

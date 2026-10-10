@@ -16,9 +16,9 @@ raw data
 
 ## NGSIM 数据流
 
-`dataset/NGSIM/*.zip` → `real_trajectory.read_ngsim_nested_csv()` → `add_ngsim_leader_ttc()` → `ngsim_risk_calibration.standardize_ngsim_states()` → `extract_rear_end_events()` → state/risk-event Parquet 与 audit。
+显式校准 ZIP 成员 → `_read_source()`（US-101 无表头 TXT、Lankershim CSV）→ `annotate_ngsim_trajectory_identity()` → `standardize_ngsim_states()` 内调用 `add_ngsim_leader_ttc()` → `extract_rear_end_events()` → 完整 state 与原始/可靠/拒绝 candidate Parquet、audit、配置、provenance 和校验包。
 
-净间距由报告的前向间距减去匹配 leader 车长；仅在 leader 可匹配、净间距为正且 follower 正在闭合时计算 `TTC=g/Δv` 与 `DRAC=(Δv)^2/(2g)`。连续低 TTC 帧按 vehicle/leader 和时间间隔合并成事件，不能把每帧当独立事件。
+净间距由报告的前向间距减去匹配 leader 车长；仅在 leader 可匹配、净间距为正且 follower 正在闭合时计算 `TTC=g/Δv` 与 `DRAC=(Δv)^2/(2g)`。诊断身份采用 site/source_member/source_period/原始编号/观测帧时钟锚；unknown 来源时段不推断为官方标签。记录冲突传播到整个诊断序列，保留原行号；单帧 TTC 数学有效与 identity/leader 可靠性分别标记。事件在完整状态序列上检查前车变化、片段与 100 ms/帧连续性，缺口后第一帧可以开始新事件；不确定前后车不能进入可靠事件。默认 `extract_rear_end_events()` 返回可靠工程候选，`return_diagnostics=True` 返回原始/可靠/拒绝三表；未冻结科学阈值。
 
 ## pNEUMA 数据流
 

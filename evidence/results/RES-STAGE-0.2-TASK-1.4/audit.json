@@ -1,0 +1,128 @@
+{
+  "experiment_id": "stage_0_2",
+  "gate_status": "active_audit_closure",
+  "locked_holdout_opened": false,
+  "schema_version": "stage_0_2.audit.v1",
+  "scientific_claim_eligible": false,
+  "sources": [
+    {
+      "asset_id": "ngsim_us101",
+      "event_rows": 616,
+      "expected_rows": 1180598,
+      "identity_break_rows": 0,
+      "identity_status_counts": {
+        "confirmed": 1180598
+      },
+      "identity_uncertain_rows": 0,
+      "input_sha256": "830442bb08f1f7a20a686b5879b4b82bfb7c47e526d48908db666fccc7e811dc",
+      "measurement_status_counts": {
+        "invalid": 1912,
+        "missing": 59381,
+        "not_applicable": 655171,
+        "valid": 464134
+      },
+      "observation_gap_rows": 0,
+      "raw_row_preservation": 1,
+      "rejected_event_rows": 0,
+      "rejection_reason_counts": {},
+      "reliable_event_rows": 616,
+      "source_format": "ngsim_us101_txt_v1",
+      "source_member": "vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt",
+      "state_rows": 1180598,
+      "trajectory_segment_count": 2169,
+      "valid_ttc_rows": 464134,
+      "window_id": "0750_0805"
+    },
+    {
+      "asset_id": "ngsim_us101",
+      "event_rows": 824,
+      "expected_rows": 1403095,
+      "identity_break_rows": 0,
+      "identity_status_counts": {
+        "confirmed": 1403095
+      },
+      "identity_uncertain_rows": 0,
+      "input_sha256": "830442bb08f1f7a20a686b5879b4b82bfb7c47e526d48908db666fccc7e811dc",
+      "measurement_status_counts": {
+        "invalid": 1800,
+        "missing": 61958,
+        "not_applicable": 734126,
+        "valid": 605211
+      },
+      "observation_gap_rows": 0,
+      "raw_row_preservation": 1,
+      "rejected_event_rows": 0,
+      "rejection_reason_counts": {},
+      "reliable_event_rows": 824,
+      "source_format": "ngsim_us101_txt_v1",
+      "source_member": "vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt",
+      "state_rows": 1403095,
+      "trajectory_segment_count": 2017,
+      "valid_ttc_rows": 605211,
+      "window_id": "0805_0820"
+    },
+    {
+      "asset_id": "ngsim_us101",
+      "event_rows": 1164,
+      "expected_rows": 1515240,
+      "identity_break_rows": 0,
+      "identity_status_counts": {
+        "confirmed": 1515240
+      },
+      "identity_uncertain_rows": 0,
+      "input_sha256": "830442bb08f1f7a20a686b5879b4b82bfb7c47e526d48908db666fccc7e811dc",
+      "measurement_status_counts": {
+        "invalid": 1968,
+        "missing": 62583,
+        "not_applicable": 791754,
+        "valid": 658935
+      },
+      "observation_gap_rows": 0,
+      "raw_row_preservation": 1,
+      "rejected_event_rows": 0,
+      "rejection_reason_counts": {},
+      "reliable_event_rows": 1164,
+      "source_format": "ngsim_us101_txt_v1",
+      "source_member": "vehicle-trajectory-data/0820am-0835am/trajectories-0820am-0835am.txt",
+      "state_rows": 1515240,
+      "trajectory_segment_count": 1915,
+      "valid_ttc_rows": 658935,
+      "window_id": "0820_0835"
+    },
+    {
+      "asset_id": "ngsim_lankershim",
+      "event_rows": 2777,
+      "expected_rows": null,
+      "identity_break_rows": 936,
+      "identity_status_counts": {
+        "confirmed": 369743,
+        "confirmed_segment": 1237576
+      },
+      "identity_uncertain_rows": 0,
+      "input_sha256": "757c693ba72b7c8ba7561ee1b5107dfa7119cc4862584a4f033aa445246c56c1",
+      "measurement_status_counts": {
+        "invalid": 75867,
+        "missing": 380820,
+        "not_applicable": 667534,
+        "valid": 483098
+      },
+      "observation_gap_rows": 0,
+      "raw_row_preservation": 1,
+      "rejected_event_rows": 0,
+      "rejection_reason_counts": {},
+      "reliable_event_rows": 2777,
+      "source_format": "csv",
+      "source_member": "NGSIM__Lankershim_Vehicle_Trajectories.csv",
+      "state_rows": 1607319,
+      "trajectory_segment_count": 2442,
+      "valid_ttc_rows": 483098,
+      "window_id": "complete"
+    }
+  ],
+  "trajectory_identity_policy": {
+    "observation_gap_rule": "sorted_diagnostic_sequence_delta_gt_100ms_is_flag_only",
+    "segment_boundary": "observed_global_time_minus_100_times_frame_id_clock_anchor",
+    "uncertainty": "duplicate_time_or_frame_or_inconsistent_total_propagates_to_whole_diagnostic_sequence",
+    "unknown_source_period": "preserved_as_unknown"
+  }
+}

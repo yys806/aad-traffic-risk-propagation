@@ -1,7 +1,7 @@
 # AAD Current State Snapshot
 
-> 核对日期：2026-09-10（Asia/Shanghai）
-> 事实基线：阶段化迁移与 Gate 状态同步至提交 `39c425e8ae9e915c0cd7cfea1b2454b8fbdac04d`；瞬时状态仍须实时查询。
+> 核对日期：2026-10-10（Asia/Shanghai）
+> 事实基线：任务 1.4 当前工程状态以核验报告和 `RES-STAGE-0.2-TASK-1.4` 为准；阶段 Gate 仍未闭合，瞬时状态须实时查询。
 
 ## 当前研究阶段
 
@@ -63,4 +63,8 @@
 
 ## 对应的最新 commit
 
-本快照所描述的当前源码基线为 `39c425e8ae9e915c0cd7cfea1b2454b8fbdac04d`。AI_CONTEXT 自身的最新提交用 `git log -1 --format=%H -- AI_CONTEXT` 查询，仓库实时 HEAD 用 `git rev-parse HEAD` 查询。
+任务 1.4 实现版本由文件所属 Git 提交及本轮 provenance 的实现 SHA-256 追溯；历史对照基线为 `da4072909a93c16e96e89fa436fd23127a581b69`。AI_CONTEXT 自身的最新提交用 `git log -1 --format=%H -- AI_CONTEXT` 查询，仓库实时 HEAD 用 `git rev-parse HEAD` 查询。
+
+## 2026-10-10 任务 1.4 当前工程基线
+
+报告：`docs/STAGE_0_2_TASK_1_4_RELIABILITY_CLOSURE_2026-10-10.md`；证据：`RES-STAGE-0.2-TASK-1.4`。Lankershim 两个诊断时钟锚解释 936 个旧异常编号；按字段序列建立 2,442 段，全部 1,607,319 行保留、无同编号同时间冲突，有效 TTC 483,098 行，原始/可靠候选各 2,777、拒绝 0。US-101 4,098,933 行核心测量与任务 1.3 等值，候选事件仍 2,604。任务 1.3 的 482,470 是有效 TTC 排除行级标记后的数量，不是已验证连续事件；旧实现不确定标记只切段，未可靠排除。本轮修复并区分后车/前车、完整序列和记录/段级可靠性。字段 confirmed 不代表官方物理身份；source_period=unknown。建议任务 1 工程验收，等待研究者；Stage 0.2 科学 Gate 仍 Active，不启动任务 2/协议锁/Stage I。
