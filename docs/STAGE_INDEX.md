@@ -44,3 +44,5 @@
 - 阶段 6：全文复算与投稿。
 
 新增阶段或状态变化时，同步修改本索引、`PROJECT_REGISTRY.json`、`RESEARCH_STATUS.md`和对应执行记录。
+
+任务 2.2 自动诊断报告：docs/STAGE_0_2_TASK_2_2_KINEMATIC_REVIEW_2026-10-10.md；完整案例包位于 code/outputs/formal/calibration/stage_0_2_task_2_2_kinematic_review_20261010_r6/。人工判断尚未完成。
