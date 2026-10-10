@@ -43,3 +43,7 @@ Verified 工程核查，待研究者验收任务 1。US-101 4,098,933 行测量�
 ## RES-STAGE-0.2-TASK-2
 
 NGSIM 风险测量质量、真实分布与候选事件规则描述性审计。5,706,252 条 state、2,211,378 条有效 TTC；TTC/DRAC 重尾，极端记录已追溯，6×4 阈值/持续时间网格显示事件数对规则敏感。未冻结科学规则或 Stage 0.2 Gate。报告：`docs/STAGE_0_2_TASK_2_RISK_QUALITY_AUDIT_2026-10-10.md`；完整包保留在 `code/outputs/formal/calibration/stage_0_2_task_2_risk_quality_audit_20261010_r4/`。
+
+## RES-STAGE-0.2-TASK-2.1
+
+极端风险和候选事件案例复核：固定种子抽取 447 个案例，独立前车匹配和 TTC/DRAC 重算全部一致；399 个 C 类极端/阈值敏感案例、48 个 D 类普通对照，未发现确定性 A 类计算冲突。物理真实性与 B 类几何判断仍需人工/独立复核。报告：`docs/STAGE_0_2_TASK_2_1_EXTREME_REVIEW_2026-10-10.md`。

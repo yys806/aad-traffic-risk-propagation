@@ -36,6 +36,7 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         "RES-STAGE-0.2-TASK-1.4": [],
         "RES-STAGE-0.2-TASK-1.5": [],
         "RES-STAGE-0.2-TASK-2": [],
+        "RES-STAGE-0.2-TASK-2.1": [],
         "RES-STAGE-0.4-COMM-OBS-V3": [],
         "RES-STAGE-0.5-REAL-REF-V1": [],
         "RES-STAGE-0.6-PRELOCK-V2": [],
@@ -62,6 +63,10 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
             )
 
     calibration_sets = {
+        "RES-STAGE-0.2-TASK-2.1": (
+            "stage_0_2_task_2_1_extreme_review_20261011_r4",
+            ("audit.json", "config.json", "provenance.json", "manifest.json", "SHA256SUMS"),
+        ),
         "RES-STAGE-0.2-TASK-2": (
             "stage_0_2_task_2_risk_quality_audit_20261010_r4",
             ("audit.json", "config.json", "quality_summary.json", "distribution_summary.json", "event_sensitivity.json", "continuity_summary.json", "provenance.json", "manifest.json", "SHA256SUMS"),

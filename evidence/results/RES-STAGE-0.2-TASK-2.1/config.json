@@ -1,0 +1,28 @@
+{
+  "schema_version": "stage_0_2.task_2_1.review.v1",
+  "input_dir": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_2_task_1_5_20261010_r4",
+  "seed": 20261011,
+  "cases_per_category": 12,
+  "local_window_s": 3.0,
+  "categories": [
+    "ttc_lt_0_5",
+    "drac_gt_10",
+    "nonpositive_gap",
+    "near_zero_positive_gap",
+    "closing_speed_gt_15",
+    "threshold_near_1_0",
+    "threshold_near_1_5",
+    "threshold_near_2_0",
+    "threshold_near_3_0",
+    "ordinary_valid"
+  ],
+  "quality_labels": {
+    "A": "formula_or_source_key_conflict",
+    "B": "explicit_geometry_or_motion_conflict",
+    "C": "mathematically_extreme_or_suspicious; manual review required",
+    "D": "no automated conflict in checked fields",
+    "E": "insufficient evidence"
+  },
+  "scientific_claim_eligible": false,
+  "locked_holdout_opened": false
+}

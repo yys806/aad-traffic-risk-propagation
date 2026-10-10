@@ -76,3 +76,7 @@
 ## 2026-10-10 任务 2 当前基线
 
 报告：`docs/STAGE_0_2_TASK_2_RISK_QUALITY_AUDIT_2026-10-10.md`；结果：`RES-STAGE-0.2-TASK-2`；产物：`code/outputs/formal/calibration/stage_0_2_task_2_risk_quality_audit_20261010_r4`。四个 NGSIM 校准 state 共 5,706,252 行、2,211,378 条有效 TTC；质量状态、有限值分布、极端记录追溯和完整状态序列上的 6×4 事件敏感性网格已完成。TTC/DRAC 为重尾，当前结果仅支持描述性校准和后续人工复核；最终阈值、事件规则、暴露分母和科学 Gate 仍 Active。
+
+## 2026-10-10 任务 2.1 当前基线
+
+报告：`docs/STAGE_0_2_TASK_2_1_EXTREME_REVIEW_2026-10-10.md`；结果：`RES-STAGE-0.2-TASK-2.1`；产物：`code/outputs/formal/calibration/stage_0_2_task_2_1_extreme_review_20261011_r4`。固定种子分层案例 447 个，独立前车唯一匹配 447 个，公式重算浮点误差范围内一致；自动分类 C=399、D=48、A/B=0。物理真实性仍需人工/独立几何复核，科学事件规则和 Gate 仍 Active。
