@@ -72,3 +72,7 @@
 ## 2026-10-10 任务 1.5 当前工程基线
 
 报告：`docs/STAGE_0_2_TASK_1_5_LEADER_MATCHING_CLOSURE_2026-10-10.md`；结果：`RES-STAGE-0.2-TASK-1.5`；最终产物为 `code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r4`。Lankershim 1,226,499 条报告前车在时间、诊断时钟锚、Frame_ID 和编号约束下均唯一；真实跨时钟匹配 0，跨时钟有效 TTC 0。匹配键修复并增加显式时钟缺失/冲突阻断，四源状态核心与任务 1.4 0 行差异，事件数保持 US-101 2,604、Lankershim 2,777；全量测试 201 passed。任务 1 建议关闭，等待研究者审核；Stage 0.2 科学 Gate 仍 Active。
+
+## 2026-10-10 任务 2 当前基线
+
+报告：`docs/STAGE_0_2_TASK_2_RISK_QUALITY_AUDIT_2026-10-10.md`；结果：`RES-STAGE-0.2-TASK-2`；产物：`code/outputs/formal/calibration/stage_0_2_task_2_risk_quality_audit_20261010_r4`。四个 NGSIM 校准 state 共 5,706,252 行、2,211,378 条有效 TTC；质量状态、有限值分布、极端记录追溯和完整状态序列上的 6×4 事件敏感性网格已完成。TTC/DRAC 为重尾，当前结果仅支持描述性校准和后续人工复核；最终阈值、事件规则、暴露分母和科学 Gate 仍 Active。

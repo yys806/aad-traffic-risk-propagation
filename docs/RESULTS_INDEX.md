@@ -39,3 +39,7 @@ Verified 工程核查，待研究者验收任务 1。US-101 4,098,933 行测量�
 ## RES-STAGE-0.2-TASK-1.5
 
 跨时钟前车匹配工程核验 Verified。Lankershim 1,226,499 条报告前车均在时钟锚与 Frame_ID 约束下唯一，真实跨时钟匹配 0；四源核心测量和事件结果与任务 1.4 一致。建议关闭任务 1，Stage 0.2 科学 Gate 仍 Active。报告：`docs/STAGE_0_2_TASK_1_5_LEADER_MATCHING_CLOSURE_2026-10-10.md`。
+
+## RES-STAGE-0.2-TASK-2
+
+NGSIM 风险测量质量、真实分布与候选事件规则描述性审计。5,706,252 条 state、2,211,378 条有效 TTC；TTC/DRAC 重尾，极端记录已追溯，6×4 阈值/持续时间网格显示事件数对规则敏感。未冻结科学规则或 Stage 0.2 Gate。报告：`docs/STAGE_0_2_TASK_2_RISK_QUALITY_AUDIT_2026-10-10.md`；完整包保留在 `code/outputs/formal/calibration/stage_0_2_task_2_risk_quality_audit_20261010_r4/`。
