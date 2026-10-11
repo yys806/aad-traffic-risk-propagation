@@ -49,3 +49,7 @@
 ## 2026-10-11 Formal risk measurement
 
 Added isolated formal measurement interface/config, P2 event revalidation, contribution/status fixture audit, temporal semantics audit, and four unit tests. No production default or historical artifact was overwritten. Automatic GitHub project-integrity workflow was archived and disabled in commit 4deb43d.
+
+## 2026-10-11 正式风险测量一致性修复
+
+完成三个实现修复：区域归属与 TTC 可靠性分离；车辆对键使用完整来源/后车/前车身份；连续性使用 `diagnostic_clock_anchor_ms` 并对缺失字段 fail-closed。P2 独立重算保持 4,545 事件，唯一后车 2,512，唯一车辆对 3,072。报告和 r2 审计产物已封存。

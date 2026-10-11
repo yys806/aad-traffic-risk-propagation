@@ -120,3 +120,7 @@ P1/P2/P3 定向验证已完成：成员级事件重叠图 20,171 条边，事件
 ## 2026-10-11 正式风险测量接口实现
 
 新增 `code/src/riskprop/formal_risk_measurement.py` 与版本化配置 `code/configs/stage_0_2_formal_risk_measurement_p2_v1.json`。P2 使用可靠 TTC<2.0 s、首末跨度≥0.2 s，确认时间取实际观测帧；`rho=exp(-TTC/tau)` 使用 tau=15.364279197080283，仅对可靠有效正闭合 TTC 计算。新增贡献上下界、固定窗口积分、车辆等权平均和 DID 区间算术接口；目标区域、固定车辆资格、评价窗口和消息去重仍为空配置，尚未宣称正式区域 burden 已实现。独立复算得到 P2=4545，与任务 2.5.1 参考一致；产物：`code/outputs/formal/calibration/stage_0_2_formal_risk_measurement_20261011_r1/`。旧提取器 0.1 s 默认和旧线性 TTC 指标保留不变。测试与 Stage 0.2 Gate、Protocol Lock、Stage I 状态分离。
+
+## 2026-10-11 正式风险测量一致性修复
+
+修正区域外贡献判定顺序、车辆对统计和 NGSIM 诊断时钟连续性字段；P2 仍为 4,545 个事件，唯一后车 2,512，唯一车辆对 3,072。新验证产物：`code/outputs/formal/calibration/stage_0_2_formal_risk_measurement_20261011_r2/`；报告：`docs/STAGE_0_2_FORMAL_RISK_MEASUREMENT_CONSISTENCY_REPAIR_2026-10-11.md`。

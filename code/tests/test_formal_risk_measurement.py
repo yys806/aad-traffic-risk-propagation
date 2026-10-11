@@ -13,6 +13,7 @@ def test_rho_and_status_bounds():
     assert contribution_bounds(measurement_status='not_applicable', in_region=True, ttc_s=9)[0:2] == (0.0, 0.0)
     assert contribution_bounds(measurement_status='missing', in_region=True, ttc_s=2)[0:2] == (0.0, 1.0)
     assert contribution_bounds(measurement_status='valid', in_region=None, ttc_s=2)[0:2] == (0.0, 1.0)
+    assert contribution_bounds(measurement_status='missing', in_region=False, ttc_s=None)[0:2] == (0.0, 0.0)
 
 def test_fixed_window_keeps_unknown_denominator_and_equal_vehicle_weight():
     records = pd.DataFrame([
@@ -38,3 +39,20 @@ def test_online_confirmation_uses_observed_frame():
     assert observed_confirmation_time(states, [10,11,12], 0.2) == pytest.approx(1.2)
     assert continuity_is_valid({'time_s':1.0,'frame_id':1,'diagnostic_clock':'a','follower_trajectory_id':1,'leader_trajectory_id':2}, {'time_s':1.1,'frame_id':2,'diagnostic_clock':'a','follower_trajectory_id':1,'leader_trajectory_id':2})
     assert not continuity_is_valid({'time_s':1.0,'frame_id':1,'diagnostic_clock':'a','follower_trajectory_id':1,'leader_trajectory_id':2}, {'time_s':1.2,'frame_id':3,'diagnostic_clock':'a','follower_trajectory_id':1,'leader_trajectory_id':2})
+
+def test_continuity_uses_ngsim_clock_anchor_and_fails_closed():
+    base = {'time_s': 1.0, 'frame_id': 10, 'diagnostic_clock_anchor_ms': 1000,
+            'dataset': 'd', 'site': 's', 'window_id': 'w', 'source_member': 'm',
+            'trajectory_id': 'f', 'leader_trajectory_id': 'l'}
+    nxt = dict(base, time_s=1.1, frame_id=11)
+    assert continuity_is_valid(base, nxt)
+    assert not continuity_is_valid(base, dict(nxt, diagnostic_clock_anchor_ms=2000))
+    missing = dict(nxt); missing.pop('diagnostic_clock_anchor_ms')
+    assert not continuity_is_valid(base, missing)
+
+def test_continuity_rejects_pair_switch_and_200ms_step():
+    base = {'time_s': 1.0, 'frame_id': 10, 'diagnostic_clock_anchor_ms': 1000,
+            'source_scope': 'd|s|w|m', 'trajectory_id': 'f', 'leader_trajectory_id': 'l'}
+    assert not continuity_is_valid(base, dict(base, time_s=1.1, frame_id=11, leader_trajectory_id='other'))
+    assert not continuity_is_valid(base, dict(base, time_s=1.2, frame_id=12), expected_step_s=0.1)
+    assert continuity_is_valid(base, dict(base, time_s=1.2, frame_id=12), expected_step_s=0.2)

@@ -6,7 +6,7 @@ import ast, json, hashlib, platform, subprocess
 import pandas as pd
 from riskprop.formal_risk_measurement import P2_FORMAL_CONFIG, extract_formal_source_events, rho_from_ttc, contribution_bounds, integrate_fixed_window, did_interval
 
-OUT=ROOT/'code/outputs/formal/calibration/stage_0_2_formal_risk_measurement_20261011_r1'
+OUT=ROOT/'code/outputs/formal/calibration/stage_0_2_formal_risk_measurement_20261011_r2'
 OUT.mkdir(parents=True, exist_ok=False)
 state_dir=ROOT/'code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r4/states'
 paths=sorted(state_dir.glob('*.parquet'))
@@ -17,12 +17,13 @@ for path in paths:
     for _,e in events.iterrows():
         rows.append({'source_file':path.name,'dataset':e['dataset'],'site':e['site'],'window_id':e['window_id'],'source_member':e['source_member'],'trajectory_id':e['trajectory_id'],'leader_trajectory_id':e['leader_trajectory_id'],'event_id':e['event_id'],'event_start_s':e['event_start_s'],'event_confirm_s':e['event_confirm_s'],'event_end_s':e['event_end_s'],'raw_frame_count':e['raw_frame_count'],'ttc_min_s':e['ttc_min_s'],'drac_max_mps2':e['drac_max_mps2'],'original_row_numbers_sha256':hashlib.sha256(json.dumps(list(e['original_row_numbers']),sort_keys=True).encode()).hexdigest()})
 events_df=pd.DataFrame(rows)
+events_df['pair_key'] = (events_df['source_file'].astype(str)+'|'+events_df['dataset'].astype(str)+'|'+events_df['site'].astype(str)+'|'+events_df['window_id'].astype(str)+'|'+events_df['source_member'].astype(str)+'|'+events_df['trajectory_id'].astype(str)+'|'+events_df['leader_trajectory_id'].astype(str))
 events_df.to_csv(OUT/'p2_event_revalidation.csv',index=False)
-summary=events_df.groupby(['site','window_id'],dropna=False).agg(event_count=('event_id','size'),pair_count=('trajectory_id',lambda x:x.astype(str).nunique()),min_ttc_s=('ttc_min_s','min'),median_duration_s=('event_end_s',lambda x:0)).reset_index()
+summary=events_df.groupby(['site','window_id'],dropna=False).agg(event_count=('event_id','size'),unique_follower_count=('trajectory_id',lambda x:x.astype(str).nunique()),unique_pair_count=('pair_key','nunique'),min_ttc_s=('ttc_min_s','min'),median_duration_s=('event_end_s',lambda x:0)).reset_index()
 # add duration summary
 if not events_df.empty:
     events_df['duration_s']=events_df['event_end_s']-events_df['event_start_s']
-    summary=events_df.groupby(['site','window_id'],dropna=False).agg(event_count=('event_id','size'),pair_count=('trajectory_id',lambda x:x.astype(str).nunique()),min_ttc_s=('ttc_min_s','min'),median_duration_s=('duration_s','median'),max_duration_s=('duration_s','max')).reset_index()
+    summary=events_df.groupby(['site','window_id'],dropna=False).agg(event_count=('event_id','size'),unique_follower_count=('trajectory_id',lambda x:x.astype(str).nunique()),unique_pair_count=('pair_key','nunique'),min_ttc_s=('ttc_min_s','min'),median_duration_s=('duration_s','median'),max_duration_s=('duration_s','max')).reset_index()
 summary.to_csv(OUT/'p2_source_summary.csv',index=False)
 # independent formula/status fixture audit
 fixture=[]
@@ -40,7 +41,7 @@ pd.DataFrame(sem).to_csv(OUT/'temporal_semantics_validation.csv',index=False)
 pd.DataFrame([{'metric':'p2_reliable_event_count','formal_v1':len(events_df),'task_2_5_1_p2_reference':4545,'status':'compare'}]).to_csv(OUT/'historical_comparison.csv',index=False)
 config={'schema_version':P2_FORMAL_CONFIG.schema_version,'algorithm_version':P2_FORMAL_CONFIG.algorithm_version,'p2':P2_FORMAL_CONFIG.to_dict(),'inputs':[str(p.relative_to(ROOT)) for p in paths],'target_region_status':'Unresolved','evaluation_window_status':'Unresolved','locked_holdout_opened':False}
 (OUT/'config.json').write_text(json.dumps(config,ensure_ascii=False,indent=2))
-audit={'event_count':int(len(events_df)),'source_count':len(paths),'p2_expected_reference':4545,'p2_count_matches_reference':bool(len(events_df)==4545),'target_burden_computed':False,'reason':'target region, fixed cohort, and evaluation window are not approved in config','tests':'test_formal_risk_measurement.py'}
+audit={'event_count':int(len(events_df)),'source_count':len(paths),'p2_expected_reference':4545,'p2_count_matches_reference':bool(len(events_df)==4545),'pair_definition':'source_file|dataset|site|window_id|source_member|trajectory_id|leader_trajectory_id','unique_follower_count':int(events_df['trajectory_id'].astype(str).nunique()),'unique_pair_count':int(events_df['pair_key'].nunique()),'target_burden_computed':False,'reason':'target region, fixed cohort, and evaluation window are not approved in config','tests':'test_formal_risk_measurement.py'}
 (OUT/'audit.json').write_text(json.dumps(audit,ensure_ascii=False,indent=2))
 prov={'script':'code/scripts/run_stage_0_2_formal_risk_measurement_validation.py','python':platform.python_version(),'git_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),'inputs':[str(p.relative_to(ROOT)) for p in paths]}
 (OUT/'provenance.json').write_text(json.dumps(prov,ensure_ascii=False,indent=2))

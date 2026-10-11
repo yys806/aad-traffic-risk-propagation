@@ -106,11 +106,15 @@ def contribution_bounds(*, measurement_status: str, in_region: bool | None,
                         ttc_s: Any, reliable: bool = True,
                         tau_s: float = P2_FORMAL_CONFIG.tau_s) -> tuple[float, float, float | None]:
     """Return (lower, upper, rho), preserving not-applicable and unknown semantics."""
-    status = str(measurement_status).lower()
-    if not reliable or status in {"invalid", "missing", "not_measurable", "unknown"} or in_region is None:
-        return 0.0, 1.0, None
-    if not in_region:
+    if in_region is False:
+        # Spatial exclusion is independently known; measurement quality cannot
+        # turn an out-of-region record into an unknown contribution.
         return 0.0, 0.0, None
+    if in_region is None:
+        return 0.0, 1.0, None
+    status = str(measurement_status).lower()
+    if not reliable or status in {"invalid", "missing", "not_measurable", "unknown"}:
+        return 0.0, 1.0, None
     if status == "not_applicable":
         return 0.0, 0.0, None
     if status != "valid":
@@ -185,12 +189,38 @@ def did_interval(t11: Mapping[str, float], t10: Mapping[str, float],
 
 
 def continuity_is_valid(previous: Mapping[str, Any], current: Mapping[str, Any], *, expected_step_s: float = 0.1) -> bool:
-    """Check causal adjacency without allowing clock, identity, or gap crossings."""
+    """Check causal adjacency without allowing clock, identity, or gap crossings.
+
+    NGSIM state tables use ``diagnostic_clock_anchor_ms``.  The legacy
+    ``diagnostic_clock`` alias remains accepted for small fixtures, but a
+    missing clock is always fail-closed.
+    """
+    def value(row: Mapping[str, Any], *keys: str):
+        for key in keys:
+            if key in row:
+                item = row[key]
+                if item is not None and not pd.isna(item):
+                    return item
+        return None
+    prev_clock = value(previous, "diagnostic_clock_anchor_ms", "diagnostic_clock")
+    curr_clock = value(current, "diagnostic_clock_anchor_ms", "diagnostic_clock")
+    prev_follower = value(previous, "follower_trajectory_id", "trajectory_id", "vehicle_id")
+    curr_follower = value(current, "follower_trajectory_id", "trajectory_id", "vehicle_id")
+    prev_leader = value(previous, "leader_trajectory_id", "leader_id")
+    curr_leader = value(current, "leader_trajectory_id", "leader_id")
+    if any(x is None for x in (prev_clock, curr_clock, prev_follower, curr_follower, prev_leader, curr_leader)):
+        return False
+    scope_keys = ("source_scope", "dataset", "site", "window_id", "source_member", "source_period")
+    for key in scope_keys:
+        if key in previous or key in current:
+            if value(previous, key) is None or value(current, key) is None or value(previous, key) != value(current, key):
+                return False
     dt = float(current["time_s"]) - float(previous["time_s"])
+    expected_frame_delta = max(1, int(round(expected_step_s / 0.1)))
     return (abs(dt - expected_step_s) <= 1e-9
-            and int(current["frame_id"]) - int(previous["frame_id"]) == 1
-            and current.get("diagnostic_clock") == previous.get("diagnostic_clock")
-            and current.get("follower_trajectory_id") == previous.get("follower_trajectory_id")
-            and current.get("leader_trajectory_id") == previous.get("leader_trajectory_id")
+            and int(current["frame_id"]) - int(previous["frame_id"]) == expected_frame_delta
+            and curr_clock == prev_clock
+            and curr_follower == prev_follower
+            and curr_leader == prev_leader
             and not bool(current.get("identity_break", False))
             and not bool(current.get("observation_gap", False)))

@@ -92,3 +92,7 @@ rho 时间尺度合理性诊断：tau=15.364279 s，完成四源分布、TTC 分
 ## RES-STAGE-0.2-FORMAL-RISK-MEASUREMENT
 
 隔离式正式风险测量接口与 P2 独立复核：4,545 个事件与 Task 2.5.1 参考一致；包含 rho、状态贡献上下界、固定窗口原语和 100/200 ms 语义构造审计。目标区域和评价窗口仍未决。报告：`docs/STAGE_0_2_FORMAL_RISK_MEASUREMENT_2026-10-11.md`；产物：`code/outputs/formal/calibration/stage_0_2_formal_risk_measurement_20261011_r1/`。
+
+## RES-STAGE-0.2-FORMAL-RISK-MEASUREMENT-CONSISTENCY-REPAIR
+
+正式风险测量三个确定性实现问题修复：区域外贡献顺序、完整车辆对统计、NGSIM 诊断时钟连续性。P2=4,545，唯一后车=2,512，唯一车辆对=3,072。报告：`docs/STAGE_0_2_FORMAL_RISK_MEASUREMENT_CONSISTENCY_REPAIR_2026-10-11.md`；产物：`code/outputs/formal/calibration/stage_0_2_formal_risk_measurement_20261011_r2/`。

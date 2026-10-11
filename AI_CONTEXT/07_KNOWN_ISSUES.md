@@ -59,3 +59,7 @@ Evidence：`evidence/results/RES-STAGE-0.2-NGSIM-V2/audit.json`、`code/src/risk
 ## 2026-10-11 Formal measurement implementation status
 
 P2 formal event extraction and rho/bounded contribution primitives are implemented in an isolated versioned module and independently revalidated to 4,545 reliable events. Historical 0.1 s extractor and linear TTC exposure remain unchanged. Target region, target cohort qualification, evaluation window, message de-duplication, and formal quality gate are still Decision Required/Unresolved; fixed-window burden has not been claimed as completed without those inputs. GitHub automatic project-integrity workflow is disabled; local validation remains required.
+
+## 2026-10-11 一致性修复状态
+
+正式接口的三个确定性问题已修复并回归验证。历史 0.1 s 提取器、旧线性指标和既有产物不变。目标区域/窗口等科学参数仍未决。
