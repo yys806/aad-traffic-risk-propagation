@@ -68,3 +68,8 @@ NGSIM 风险测量质量与稳健性综合收口；完成风险段 oracle、447 
 ## RES-STAGE-0.2-TASK-2.5
 
 源端风险事件阈值、最小持续时间与物理合理性联合验证。复用任务 2 的 6×4 正式网格，新增事件级特征、参数对应、因果确认时刻、采样敏感性、文献矩阵和 24 个案例。报告：`docs/STAGE_0_2_TASK_2_5_THRESHOLD_VALIDATION_2026-10-11.md`；产物：`code/outputs/formal/calibration/stage_0_2_task_2_5_20261011_r1/`。参数仍为 Proposal，科学 Gate 未通过。
+
+
+## RES-STAGE-0.2-TASK-2.5.1
+
+P1/P2/P3 源端风险事件规则针对性验证：成员级跨参数对应、24 个真实案例新图册、实际观测确认时刻、极端值压力诊断、采样公平性状态和文献元数据更正。P1=1,900、P2=4,545、P3=8,523、工程参考=5,381；参数仍为 Proposal，科学 Gate 未通过。报告：`docs/STAGE_0_2_TASK_2_5_1_TARGETED_VALIDATION_2026-10-11.md`；产物：`code/outputs/formal/calibration/stage_0_2_task_2_5_1_20261011_r2/`。

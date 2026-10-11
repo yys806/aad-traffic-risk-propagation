@@ -35,3 +35,8 @@
 3. 阶段 0.5 检查仿真样本是否处在现实参考范围。
 4. 阶段 0.6 验证数值实现并冻结协议。
 5. 只有协议锁通过后，才允许设计、实现和运行阶段 1.1。
+
+
+## Research Proposal / Pending Parameters / Not Frozen（Task 2.5.1 同步备忘）
+
+研究讨论提出：保留论文原有四格区域风险效应；负向风险效应以小于零为基本方向判据；可探索在预先规定的连续子时间窗中要求风险效应持续小于零，用于刻画 `Sustained Negative Risk Effect`。不额外引入风险改善幅度阈值；持续时间和子窗口长度仍待研究者决定。该持续性要求是 Effect、Attribution、Temporal Precedence 的补充证据，不替代核心成立条件。单次估计为负不等于具有统计支持的因果效应。此备忘与源端 TTC/DRAC 事件阈值验证属于不同科研问题，尚未实施，不构成冻结判据，也未写入 `AI_CONTEXT/06_DECISIONS.md`。
