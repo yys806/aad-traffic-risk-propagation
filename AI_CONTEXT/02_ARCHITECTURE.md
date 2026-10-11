@@ -52,3 +52,7 @@ SUMO -> 四格与五表 ----+
 - `code/src/riskprop/simulation_real_coverage.py::evaluate_simulation_coverage()`
 - `code/src/riskprop/prelock_validation.py::write_stage_0_6_prelock_validation()`
 - `code/src/riskprop/protocol_lock.py::protocol_lock_readiness()` / `write_protocol_lock()`
+
+### Formal Stage 0.2 risk measurement (2026-10-11)
+
+`riskprop.formal_risk_measurement` is a versioned, isolated interface for approved P2 events, causal observed-frame confirmation, `rho=exp(-TTC/tau)`, bounded contribution semantics, fixed-window integration, equal-vehicle aggregation, and DID interval arithmetic. It does not alter historical `ngsim_risk_calibration.extract_rear_end_events` defaults or `prelock_metrics.integrated_ttc_exposure`.

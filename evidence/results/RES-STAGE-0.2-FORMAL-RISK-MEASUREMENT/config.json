@@ -1,0 +1,28 @@
+{
+  "schema_version": "stage_0_2.formal_risk_measurement.config.v1",
+  "algorithm_version": "stage_0_2.formal_risk_measurement.v1",
+  "p2": {
+    "schema_version": "stage_0_2.formal_risk_measurement.config.v1",
+    "algorithm_version": "stage_0_2.formal_risk_measurement.v1",
+    "ttc_threshold_s": 2.0,
+    "minimum_duration_s": 0.2,
+    "max_gap_s": 0.11,
+    "tau_s": 15.364279197080283,
+    "confirmation_semantics": "first_observed_timestamp_meeting_span",
+    "missing_policy": "unknown_bounds_full_window",
+    "target_region": null,
+    "target_vehicle_qualification": null,
+    "evaluation_window": null,
+    "message_deduplication": null,
+    "scientific_defaults_frozen": false
+  },
+  "inputs": [
+    "code\\outputs\\formal\\calibration\\stage_0_2_task_1_5_20261010_r4\\states\\ngsim_lankershim__complete.parquet",
+    "code\\outputs\\formal\\calibration\\stage_0_2_task_1_5_20261010_r4\\states\\ngsim_us101__0750_0805.parquet",
+    "code\\outputs\\formal\\calibration\\stage_0_2_task_1_5_20261010_r4\\states\\ngsim_us101__0805_0820.parquet",
+    "code\\outputs\\formal\\calibration\\stage_0_2_task_1_5_20261010_r4\\states\\ngsim_us101__0820_0835.parquet"
+  ],
+  "target_region_status": "Unresolved",
+  "evaluation_window_status": "Unresolved",
+  "locked_holdout_opened": false
+}

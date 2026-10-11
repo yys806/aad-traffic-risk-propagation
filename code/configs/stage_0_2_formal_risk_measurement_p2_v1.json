@@ -1,0 +1,10 @@
+{
+  "schema_version": "stage_0_2.formal_risk_measurement.config.v1",
+  "algorithm_version": "stage_0_2.formal_risk_measurement.v1",
+  "source_event": {"ttc_threshold_s": 2.0, "minimum_duration_s": 0.2, "max_gap_s": 0.11, "confirmation": "first_observed_timestamp_meeting_span"},
+  "rho": {"formula": "exp(-TTC/tau)", "tau_s": 15.364279197080283, "scope": "reliable valid positive closing TTC only"},
+  "statuses": ["valid", "not_applicable", "invalid", "not_measurable", "missing"],
+  "unknown_contribution_bounds": [0.0, 1.0],
+  "target_region": null, "target_vehicle_qualification": null, "evaluation_window": null, "message_deduplication": null,
+  "scientific_defaults_frozen": false, "locked_holdout_opened": false
+}

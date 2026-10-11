@@ -22,3 +22,4 @@
 ## 入口与测试
 
 运行入口位于 `code/scripts/`，名称与阶段对应；测试位于 `code/tests/`。历史模块、命令和测试分别位于三个 `legacy/`，仅做历史复现。要定位具体问题，先按上表选择源码，再读取同名测试与 `docs/PROJECT_REGISTRY.json` 对应条目。
+| measurement | `code/src/riskprop/formal_risk_measurement.py` | Versioned P2 source events, causal confirmation, rho, bounded burden primitives and DID interval arithmetic | None | `extract_formal_source_events`, `rho_from_ttc`, `contribution_bounds`, `integrate_fixed_window`, `did_interval` | pandas, standard library |

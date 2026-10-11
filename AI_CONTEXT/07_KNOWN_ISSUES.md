@@ -55,3 +55,7 @@ Evidence：`evidence/results/RES-STAGE-0.2-NGSIM-V2/audit.json`、`code/src/risk
 ## 2026-10-11 决策归档后仍待处理
 
 正式提取器默认最小跨度仍为 0.1 s，而研究者已批准 P2=0.2 s；指数 rho、固定车辆/窗口、区域贡献上下界和 DID 区间实现尚缺。NGSIM 100 ms 与 SUMO 200 ms 采样语义不可直接等价。
+
+## 2026-10-11 Formal measurement implementation status
+
+P2 formal event extraction and rho/bounded contribution primitives are implemented in an isolated versioned module and independently revalidated to 4,545 reliable events. Historical 0.1 s extractor and linear TTC exposure remain unchanged. Target region, target cohort qualification, evaluation window, message de-duplication, and formal quality gate are still Decision Required/Unresolved; fixed-window burden has not been claimed as completed without those inputs. GitHub automatic project-integrity workflow is disabled; local validation remains required.

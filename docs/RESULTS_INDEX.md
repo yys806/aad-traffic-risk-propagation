@@ -88,3 +88,7 @@ P1/P2/P3 源端风险事件规则针对性验证：成员级跨参数对应、24
 ## RES-STAGE-0.2-RHO-TIMESCALE
 
 rho 时间尺度合理性诊断：tau=15.364279 s，完成四源分布、TTC 分箱暴露/贡献、tau/2/2tau 和极端压力分析；正式区域 burden 仍 Unresolved。
+
+## RES-STAGE-0.2-FORMAL-RISK-MEASUREMENT
+
+隔离式正式风险测量接口与 P2 独立复核：4,545 个事件与 Task 2.5.1 参考一致；包含 rho、状态贡献上下界、固定窗口原语和 100/200 ms 语义构造审计。目标区域和评价窗口仍未决。报告：`docs/STAGE_0_2_FORMAL_RISK_MEASUREMENT_2026-10-11.md`；产物：`code/outputs/formal/calibration/stage_0_2_formal_risk_measurement_20261011_r1/`。

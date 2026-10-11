@@ -116,3 +116,7 @@ P1/P2/P3 定向验证已完成：成员级事件重叠图 20,171 条边，事件
 ## 2026-10-11 连续风险时间尺度验证
 
 在四源任务 1.5 状态上，以可靠相邻 100 ms 闭合边计算 `rho=exp(-TTC/tau)`。tau=15.364279 s 下时间加权平均 rho 为 Lankershim 0.4390、US-101 三窗口 0.3375/0.3529/0.3833；`>=10 s` TTC 暴露占比很高但 rho 较低，风险贡献由暴露时间和条件强度共同决定。tau/2、2tau 敏感性与极端压力结果已封存；正式固定目标区域 burden 仍 Unresolved。报告：`code/outputs/formal/calibration/stage_0_2_rho_timescale_validation_20261011_r1/report.md`。
+
+## 2026-10-11 正式风险测量接口实现
+
+新增 `code/src/riskprop/formal_risk_measurement.py` 与版本化配置 `code/configs/stage_0_2_formal_risk_measurement_p2_v1.json`。P2 使用可靠 TTC<2.0 s、首末跨度≥0.2 s，确认时间取实际观测帧；`rho=exp(-TTC/tau)` 使用 tau=15.364279197080283，仅对可靠有效正闭合 TTC 计算。新增贡献上下界、固定窗口积分、车辆等权平均和 DID 区间算术接口；目标区域、固定车辆资格、评价窗口和消息去重仍为空配置，尚未宣称正式区域 burden 已实现。独立复算得到 P2=4545，与任务 2.5.1 参考一致；产物：`code/outputs/formal/calibration/stage_0_2_formal_risk_measurement_20261011_r1/`。旧提取器 0.1 s 默认和旧线性 TTC 指标保留不变。测试与 Stage 0.2 Gate、Protocol Lock、Stage I 状态分离。

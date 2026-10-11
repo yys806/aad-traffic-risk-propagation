@@ -45,3 +45,7 @@
 
 
 - 2026-10-11：完成 rho 时间尺度合理性诊断；报告 tau/2、tau、2tau、TTC 分箱风险贡献和极端压力，不修改 tau 或正式 pipeline。
+
+## 2026-10-11 Formal risk measurement
+
+Added isolated formal measurement interface/config, P2 event revalidation, contribution/status fixture audit, temporal semantics audit, and four unit tests. No production default or historical artifact was overwritten. Automatic GitHub project-integrity workflow was archived and disabled in commit 4deb43d.
