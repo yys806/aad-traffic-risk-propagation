@@ -64,3 +64,7 @@ NGSIM 风险测量质量与稳健性综合收口；完成风险段 oracle、447 
 ## RES-STAGE-0.2-TASK-2.4
 
 正式事件提取等价性与风险稳健性最终验证。四源独立重提取与正式 5,381 事件逐成员一致；S1 真实质量条件重跑不改变事件数；S2a/b/c/d 事件数为 5,366/5,353/5,263/5,235；连续暴露分段完成。报告：`docs/STAGE_0_2_TASK_2_4_EVENT_EQUIVALENCE_2026-10-11.md`；完整包：`code/outputs/formal/calibration/stage_0_2_task_2_4_20261011_r2/`。科学 Gate、Protocol Lock 和正式风险规则仍未通过/冻结。
+
+## RES-STAGE-0.2-TASK-2.5
+
+源端风险事件阈值、最小持续时间与物理合理性联合验证。复用任务 2 的 6×4 正式网格，新增事件级特征、参数对应、因果确认时刻、采样敏感性、文献矩阵和 24 个案例。报告：`docs/STAGE_0_2_TASK_2_5_THRESHOLD_VALIDATION_2026-10-11.md`；产物：`code/outputs/formal/calibration/stage_0_2_task_2_5_20261011_r1/`。参数仍为 Proposal，科学 Gate 未通过。
