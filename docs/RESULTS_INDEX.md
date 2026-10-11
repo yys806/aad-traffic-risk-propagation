@@ -83,3 +83,8 @@ P1/P2/P3 源端风险事件规则针对性验证：成员级跨参数对应、24
 ## RES-STAGE-0.2-DECISION-RATIFICATION
 
 研究者已确认的 Stage 0.2 风险设计归档及四来源 tau/P2 实证核定：tau=15.364279 s，来源中位数与实现冲突见报告；Scientific Gate 和正式实现仍未完成。报告：`docs/STAGE_0_2_DECISION_RATIFICATION_2026-10-11.md`；产物：`code/outputs/formal/calibration/stage_0_2_decision_ratification_20261011_r1/`。
+
+
+## RES-STAGE-0.2-RHO-TIMESCALE
+
+rho 时间尺度合理性诊断：tau=15.364279 s，完成四源分布、TTC 分箱暴露/贡献、tau/2/2tau 和极端压力分析；正式区域 burden 仍 Unresolved。

@@ -111,3 +111,8 @@ P1/P2/P3 定向验证已完成：成员级事件重叠图 20,171 条边，事件
 ## 2026-10-11 科研决策归档与参数核定
 
 研究者已确认 Stage 0.2 风险设计：P2=可靠 TTC<2.0 s、首末跨度≥0.2 s，P1/P3 为敏感性对照；TTC 触发、DRAC 作严重程度；连续风险使用 rho=exp(-TTC/tau)，固定车辆/区域/窗口、车辆等权、缺失上下界和四格 DID。四源时间加权 TTC 中位数为 11.378882、17.170886、16.312500、14.416058 s，tau=15.364279 s。该设计已记录但 rho burden、固定窗口和 P2 0.2 s 正式实现仍待完成；Scientific Gate、Protocol Lock 和 Stage I 未启动。报告：`docs/STAGE_0_2_DECISION_RATIFICATION_2026-10-11.md`。
+
+
+## 2026-10-11 连续风险时间尺度验证
+
+在四源任务 1.5 状态上，以可靠相邻 100 ms 闭合边计算 `rho=exp(-TTC/tau)`。tau=15.364279 s 下时间加权平均 rho 为 Lankershim 0.4390、US-101 三窗口 0.3375/0.3529/0.3833；`>=10 s` TTC 暴露占比很高但 rho 较低，风险贡献由暴露时间和条件强度共同决定。tau/2、2tau 敏感性与极端压力结果已封存；正式固定目标区域 burden 仍 Unresolved。报告：`code/outputs/formal/calibration/stage_0_2_rho_timescale_validation_20261011_r1/report.md`。

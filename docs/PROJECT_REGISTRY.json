@@ -151,7 +151,8 @@
         "RES-STAGE-0.2-TASK-2.5",
         "RES-STAGE-0.2-TASK-2.5.1",
         "RES-STAGE-0.2-TASK-2.5.2",
-        "RES-STAGE-0.2-DECISION-RATIFICATION"
+        "RES-STAGE-0.2-DECISION-RATIFICATION",
+        "RES-STAGE-0.2-RHO-TIMESCALE"
       ],
       "core_metrics": [
         "measurement_status",
@@ -832,6 +833,32 @@
         "scientific_gate_passed": false
       },
       "current_conclusion": "Researcher-approved design is archived; tau/P2 audit is reproducible, while rho burden and P2 production implementation remain pending.",
+      "gate_status": "scientific_gate_pending_researcher_decision",
+      "paper_locations": [
+        "docs/STAGE_0_2_DECISION_RATIFICATION_2026-10-11.md"
+      ],
+      "scientific_claim_eligible": false
+    },
+    {
+      "id": "RES-STAGE-0.2-RHO-TIMESCALE",
+      "experiment_id": "stage_0_2",
+      "name": "Stage 0.2 continuous-risk rho time-scale validation",
+      "status": "verified_descriptive_analysis",
+      "portable_evidence_paths": [
+        "evidence/results/RES-STAGE-0.2-RHO-TIMESCALE/audit.json"
+      ],
+      "local_artifact_paths": [
+        "code/outputs/formal/calibration/stage_0_2_rho_timescale_validation_20261011_r1"
+      ],
+      "code_version_source": "audit.json and provenance.json",
+      "configuration_source": "config.json",
+      "data_version_source": "manifest.json and SHA256SUMS",
+      "core_metrics": {
+        "tau_s": 15.364279197080283,
+        "formal_region_burden": "Unresolved",
+        "scientific_gate_passed": false
+      },
+      "current_conclusion": "rho separates short TTC intensity from long TTC exposure; tau retained as descriptive candidate only.",
       "gate_status": "scientific_gate_pending_researcher_decision",
       "paper_locations": [
         "docs/STAGE_0_2_DECISION_RATIFICATION_2026-10-11.md"
