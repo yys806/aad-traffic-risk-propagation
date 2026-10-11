@@ -73,3 +73,8 @@ NGSIM 风险测量质量与稳健性综合收口；完成风险段 oracle、447 
 ## RES-STAGE-0.2-TASK-2.5.1
 
 P1/P2/P3 源端风险事件规则针对性验证：成员级跨参数对应、24 个真实案例新图册、实际观测确认时刻、极端值压力诊断、采样公平性状态和文献元数据更正。P1=1,900、P2=4,545、P3=8,523、工程参考=5,381；参数仍为 Proposal，科学 Gate 未通过。报告：`docs/STAGE_0_2_TASK_2_5_1_TARGETED_VALIDATION_2026-10-11.md`；产物：`code/outputs/formal/calibration/stage_0_2_task_2_5_1_20261011_r2/`。
+
+
+## RES-STAGE-0.2-TASK-2.5.2
+
+关键差异案例分析：中心事件精确成员归属与附近事件分离，P2-only、P3-only 和三规则确认时刻差异案例，P2 仍为 Proposal。报告：`docs/STAGE_0_2_TASK_2_5_2_KEY_DIFFERENCE_CASES_2026-10-11.md`；产物：`code/outputs/formal/calibration/stage_0_2_task_2_5_2_20261011_r1/`。

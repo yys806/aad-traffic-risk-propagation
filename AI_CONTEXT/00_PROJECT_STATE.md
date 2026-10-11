@@ -101,3 +101,8 @@
 ## 2026-10-11 任务 2.5.1
 
 P1/P2/P3 定向验证已完成：成员级事件重叠图 20,171 条边，事件数 P1=1,900、P2=4,545、P3=8,523、工程参考=5,381；24 个案例全部重新生成记录与 24 页图册，保留 Lankershim 原始行 31,245。在线确认时刻由实际观测验证，P1/P2/P3 中位 onset→confirm 分别为 0.3/0.2/0.1 s。rejected 通过 event_id 与 raw 候选联接；公平 200 ms 采样敏感性仍 Unresolved。文献 2021 surrogate-measure 条目已更正为 Lu et al., Accident Analysis & Prevention 162, 106403, DOI 10.1016/j.aap.2021.106403。所有参数仍 Proposal / Pending Parameters / Not Frozen，科学 Gate、Protocol Lock 和 Stage I 均未启动。报告：`docs/STAGE_0_2_TASK_2_5_1_TARGETED_VALIDATION_2026-10-11.md`；产物：`code/outputs/formal/calibration/stage_0_2_task_2_5_1_20261011_r2/`。
+
+
+## 2026-10-11 任务 2.5.2
+
+基于 Task 2.5.1 成员级结果完成关键差异案例分析：中心事件按 source、车辆对和 original_row_number 成员精确匹配，附近 ±3 s 事件单独计数；选择 P2-only、P3-only 和三规则确认时刻差异案例共 11 个，生成新 PDF 和逐案例 CSV。P2 仍仅为条件性 Proposal，缺少独立安全真值、公平采样和独立几何真实性，未冻结科学规则。报告：`docs/STAGE_0_2_TASK_2_5_2_KEY_DIFFERENCE_CASES_2026-10-11.md`。

@@ -149,7 +149,8 @@
         "RES-STAGE-0.2-TASK-2.1",
         "RES-STAGE-0.2-TASK-2.4",
         "RES-STAGE-0.2-TASK-2.5",
-        "RES-STAGE-0.2-TASK-2.5.1"
+        "RES-STAGE-0.2-TASK-2.5.1",
+        "RES-STAGE-0.2-TASK-2.5.2"
       ],
       "core_metrics": [
         "measurement_status",
@@ -772,6 +773,34 @@
       "gate_status": "scientific_gate_pending_researcher_decision",
       "paper_locations": [
         "docs/STAGE_0_2_TASK_2_5_1_TARGETED_VALIDATION_2026-10-11.md"
+      ],
+      "scientific_claim_eligible": false
+    },
+    {
+      "id": "RES-STAGE-0.2-TASK-2.5.2",
+      "experiment_id": "stage_0_2",
+      "name": "Stage 0.2 Task 2.5.2 key difference case analysis",
+      "status": "verified_engineering_pending_scientific_decisions",
+      "portable_evidence_paths": [
+        "evidence/results/RES-STAGE-0.2-TASK-2.5.2/audit.json"
+      ],
+      "local_artifact_paths": [
+        "code/outputs/formal/calibration/stage_0_2_task_2_5_2_20261011_r1"
+      ],
+      "code_version_source": "audit.json and provenance.json",
+      "configuration_source": "config.json",
+      "data_version_source": "manifest.json and SHA256SUMS",
+      "core_metrics": {
+        "cases": 11,
+        "p2_without_p1": 3,
+        "p3_without_p2": 3,
+        "all_three_confirmation_spread": 5,
+        "formal_rule_frozen": false
+      },
+      "current_conclusion": "Center-event membership and absolute confirmation differences are verified; P2 has no unique scientific priority evidence.",
+      "gate_status": "scientific_gate_pending_researcher_decision",
+      "paper_locations": [
+        "docs/STAGE_0_2_TASK_2_5_2_KEY_DIFFERENCE_CASES_2026-10-11.md"
       ],
       "scientific_claim_eligible": false
     }
