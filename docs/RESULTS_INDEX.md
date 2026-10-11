@@ -57,3 +57,6 @@ NGSIM 风险测量质量、真实分布与候选事件规则描述性审计。5,
 
 ## RES-STAGE-0.2-TASK-2.2.1-FINAL-FIX
 连续风险边界与段统计修复，447 案例重新验证，48 案例人工复核包重绘。产物：`code/outputs/formal/calibration/stage_0_2_task_2_2_1_20261011_r9/`；报告：`docs/STAGE_0_2_TASK_2_2_1_FINAL_FIX_2026-10-11.md`。
+
+## RES-STAGE-0.2-TASK-2.3
+NGSIM 风险测量质量与稳健性综合收口；完成风险段 oracle、447 案例精确中心定位、四源全量质量分母与 S0/S1/S2 探索性事件重提取。报告：`docs/STAGE_0_2_TASK_2_3_QUALITY_ROBUSTNESS_2026-10-11.md`；产物：`code/outputs/formal/calibration/stage_0_2_task_2_3_20261011_r3/`。

@@ -61,7 +61,7 @@ def test_single_and_normal_and_center_frame_attribution():
 
 def test_center_frame_risk_segment_is_reported():
     g=base(3); g.ttc_s=[1,1,3]; g.loc[1,'time_s']=.1
-    out=diagnose(g,pd.Series({'leader_trajectory_id':'L','time_s':0.0})); assert out['center_frame_risk'] is True
+    out=diagnose(g,pd.Series({'leader_trajectory_id':'L','global_time_ms':0,'frame_id':0,'time_s':0.0})); assert out['center_frame_risk'] is True
     assert 'start_time_s' in out['center_frame_segment_json']
 
 def test_ttc_and_drac_masks_are_independent():

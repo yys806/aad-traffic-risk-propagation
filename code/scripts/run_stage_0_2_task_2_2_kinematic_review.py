@@ -45,27 +45,40 @@ def runs(mask, contiguous):
     if start is not None: lengths.append(len(mask)-start)
     return int(mask.sum()), max(lengths,default=0), len(lengths)
 
+def extract_risk_runs(mask, contiguous, pair=None):
+    """Canonical risk-run extraction; contiguous is an edge mask (i-1 -> i)."""
+    m=np.asarray(mask,dtype=bool); edge=np.asarray(contiguous,dtype=bool)
+    segments=[]; start=None
+    for i,active in enumerate(m):
+        joins = i>0 and m[i-1] and bool(edge[i])
+        if active and start is None: start=i
+        elif active and not joins:
+            if start is not None: segments.append((start,i-1))
+            start=i
+        elif not active and start is not None:
+            segments.append((start,i-1)); start=None
+    if start is not None: segments.append((start,len(m)-1))
+    out=[]
+    for a,b in segments:
+        item={'start_index':int(a),'end_index':int(b),'frames':int(b-a+1),
+              'time_span_s':None,'coverage_s':float((b-a+1)*DT),
+              'boundary_limited':bool(a==0 or b==len(m)-1)}
+        if pair is not None and len(pair):
+            item.update({'start_time_s':float(pair.iloc[a].time_s),'end_time_s':float(pair.iloc[b].time_s)})
+            item['time_span_s']=float(item['end_time_s']-item['start_time_s'])
+        out.append(item)
+    return out
+
 def _risk_stats(pair, mask, contiguous):
     """Statistics for one threshold risk mask, preserving boundary semantics."""
     m=np.asarray(mask,dtype=bool); edge=np.asarray(contiguous,dtype=bool)
     rows,longest,nruns=runs(m, contiguous)
     idx=np.flatnonzero(m)
-    spans=[]
-    if len(idx):
-        start=idx[0]
-        for i in idx[1:]:
-            if not edge[i]:
-                end=i-1; spans.append((start,end)); start=i
-        spans.append((start,idx[-1]))
+    spans=extract_risk_runs(m, edge, pair)
     def val(col):
         z=finite(pair[col]); return float(z[m].min()) if z[m].notna().any() else None
     return {'rows':rows,'runs':nruns,'longest_contiguous_frames':longest,
-            'run_spans': [{'start_index':int(a),'end_index':int(b),
-                           'start_time_s':float(pair.iloc[a].time_s),
-                           'end_time_s':float(pair.iloc[b].time_s),
-                           'time_span_s':float(pair.iloc[b].time_s-pair.iloc[a].time_s),
-                           'coverage_s':float((b-a+1)*DT),
-                           'boundary_limited':bool(a==0 or b==len(pair)-1)} for a,b in spans],
+            'run_spans': spans,
             'min_ttc_s':val('ttc_s'),'max_drac_mps2':(float(finite(pair.drac_mps2)[m].max()) if finite(pair.drac_mps2)[m].notna().any() else None)}
 def diagnose(local: pd.DataFrame, case: pd.Series) -> dict:
     f=local[local.local_role.eq('follower')].copy()
@@ -129,8 +142,12 @@ def diagnose(local: pd.DataFrame, case: pd.Series) -> dict:
     # Exploratory threshold flags are evidence for C/manual review, never an
     # automatic B (B requires an explicit, validated contradiction rule).
     auto='E' if len(pair)<2 else ('C' if kin_flag or geom_flag or extreme_rows else 'D')
-    center_t=float(case.time_s) if pd.notna(case.get('time_s')) else None
-    center_i=int(np.argmin(np.abs(pair.time_s-center_t))) if len(pair) and center_t is not None else None
+    exact=pair
+    if pd.notna(case.get('global_time_ms')): exact=exact[finite(exact.global_time_ms).eq(float(case.global_time_ms))]
+    if pd.notna(case.get('frame_id')): exact=exact[finite(exact.frame_id).eq(float(case.frame_id))]
+    if pd.notna(case.get('original_row_number')) and 'original_row_number' in exact: exact=exact[finite(exact.original_row_number).eq(float(case.original_row_number))]
+    center_match_status='unique' if len(exact)==1 else ('missing' if len(exact)==0 else 'non_unique')
+    center_i=int(pair.index.get_loc(exact.index[0])) if len(exact)==1 else None
     center_risk=bool(extreme.iloc[center_i]) if center_i is not None else False
     center_segment=None
     if center_risk:
@@ -139,7 +156,7 @@ def diagnose(local: pd.DataFrame, case: pd.Series) -> dict:
         end=start
         while end+1<len(pair) and extreme.iloc[end+1] and bool(contiguous.iloc[end+1]): end+=1
         center_segment={'start_time_s':float(pair.iloc[start].time_s),'end_time_s':float(pair.iloc[end].time_s),'time_span_s':float(pair.iloc[end].time_s-pair.iloc[start].time_s),'coverage_s':float((end-start+1)*DT)}
-    return {'pair_rows':len(pair),'pair_start_s':float(pair.time_s.min()) if len(pair) else None,'pair_end_s':float(pair.time_s.max()) if len(pair) else None,'observation_contiguous':not bool(obs_breaks),'observation_breaks':obs_breaks,'risk_state_continuity':continuity,'ttc_lt_0_5_rows':int(ttc05.sum()),'ttc_lt_2_0_rows':int(ttc20.sum()),'drac_gt_10_rows':int(drac10.sum()),'extreme_rows':extreme_rows,'extreme_longest_contiguous_frames':int(risk_stats['extreme']['longest_contiguous_frames']),'extreme_run_count':int(risk_stats['extreme']['runs']),'risk_contiguous':extreme_cont,'center_frame_risk':center_risk,'center_frame_segment_json':json.dumps(center_segment,ensure_ascii=False) if center_segment else '','kinematic_check_applicability':applicable,'position_speed_max_abs_error_mps':float(finite_speed.abs().max()) if len(finite_speed) else None,'speed_acceleration_max_abs_error_mps2':float(finite_acc.abs().max()) if len(finite_acc) else None,'kinematic_exploratory_flag':kin_flag,'geometry_check_applicability':'applicable' if geom_available else 'unverified_missing_fields','geometry_residual_max_abs_m':float(geom_resid.abs().dropna().max()) if geom_resid.notna().any() else None,'geometry_flag':geom_flag,'net_gap_nonpositive_rows':int((gap<=0).fillna(False).sum()),'risk_stats_json':json.dumps(risk_stats,ensure_ascii=False),'automatic_diagnostic_labels':';'.join(labels),'automatic_quality_label':auto,'manual_judgement':'','manual_basis':'','unable_to_judge_reason':'','reviewer_notes':''}
+    return {'pair_rows':len(pair),'pair_start_s':float(pair.time_s.min()) if len(pair) else None,'pair_end_s':float(pair.time_s.max()) if len(pair) else None,'observation_contiguous':not bool(obs_breaks),'observation_breaks':obs_breaks,'risk_state_continuity':continuity,'ttc_lt_0_5_rows':int(ttc05.sum()),'ttc_lt_2_0_rows':int(ttc20.sum()),'drac_gt_10_rows':int(drac10.sum()),'extreme_rows':extreme_rows,'extreme_longest_contiguous_frames':int(risk_stats['extreme']['longest_contiguous_frames']),'extreme_run_count':int(risk_stats['extreme']['runs']),'risk_contiguous':extreme_cont,'center_match_status':center_match_status,'center_frame_risk':center_risk,'center_frame_segment_json':json.dumps(center_segment,ensure_ascii=False) if center_segment else '','kinematic_check_applicability':applicable,'position_speed_max_abs_error_mps':float(finite_speed.abs().max()) if len(finite_speed) else None,'speed_acceleration_max_abs_error_mps2':float(finite_acc.abs().max()) if len(finite_acc) else None,'kinematic_exploratory_flag':kin_flag,'geometry_check_applicability':'applicable' if geom_available else 'unverified_missing_fields','geometry_residual_max_abs_m':float(geom_resid.abs().dropna().max()) if geom_resid.notna().any() else None,'geometry_flag':geom_flag,'net_gap_nonpositive_rows':int((gap<=0).fillna(False).sum()),'risk_stats_json':json.dumps(risk_stats,ensure_ascii=False),'automatic_diagnostic_labels':';'.join(labels),'automatic_quality_label':auto,'manual_judgement':'','manual_basis':'','unable_to_judge_reason':'','reviewer_notes':''}
 
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument('--repo-root',type=Path,default=ROOT); ap.add_argument('--input-dir',type=Path); ap.add_argument('--output-dir',type=Path,required=True); a=ap.parse_args(); root=a.repo_root.resolve()
@@ -210,9 +227,13 @@ def main():
         vals=diag.risk_stats_json.map(lambda s: json.loads(s)[name])
         threshold_rows.append({'threshold':name,'risk_frames_total':int(vals.map(lambda x:x['rows']).sum()),'cases_with_risk':int((vals.map(lambda x:x['rows'])>0).sum()),'risk_runs_total':int(vals.map(lambda x:x['runs']).sum()),'longest_run_frames':int(vals.map(lambda x:x['longest_contiguous_frames']).max()),'denominator_cases':len(diag)})
     pd.DataFrame(threshold_rows).to_csv(out/'risk_threshold_summary.csv',index=False)
+    def plot_pair(ax, x, y, edge, **kw):
+      x=np.asarray(x); y=np.asarray(y,dtype=float); e=np.asarray(edge,dtype=bool)
+      valid=np.isfinite(y)
+      for a,b in extract_risk_runs(valid, e): ax.plot(x[a:b+1],y[a:b+1],**kw)
     with PdfPages(out/'representative_casebook.pdf') as pdf:
       for _,x in sel.iterrows():
-        d=pd.read_parquet(inp/f"local_{x.source}_{int(x.original_row_number)}.parquet"); f=d[d.local_role.eq('follower') & d.leader_trajectory_id.astype('string').eq(str(x.leader_trajectory_id))].sort_values('time_s').copy(); l=d[d.local_role.eq('leader')]; edge=finite(f.global_time_ms).diff().eq(100)&finite(f.frame_id).diff().eq(1); f.loc[(~edge) & (np.arange(len(f)) != 0), ['ttc_s','drac_mps2','net_gap_m','closing_speed_mps']]=np.nan; fig,ax=plt.subplots(3,1,figsize=(10,8),sharex=True); ax[0].plot(f.time_s,f.ttc_s.replace([np.inf,-np.inf],np.nan),label='TTC (pair)'); ax[0].plot(f.time_s,f.drac_mps2,label='DRAC (pair)'); ax[0].legend(); ax[1].plot(f.time_s,f.net_gap_m,label='net gap (pair)'); ax[1].plot(f.time_s,f.closing_speed_mps,label='closing (pair)'); ax[1].legend(); ax[2].plot(f.time_s,f.speed_mps,label='follower speed'); ax[2].plot(l.time_s,l.speed_mps,label='leader speed'); ax[2].plot(f.time_s,f.acceleration_mps2,label='follower accel'); ax[2].legend(); [q.axvline(x.time_s,color='k',lw=.7) for q in ax]; fig.suptitle(f"{x.case_id} | {x.review_categories} | {x.risk_state_continuity} | auto {x.automatic_quality_label}"); fig.tight_layout(); pdf.savefig(fig); plt.close(fig)
+        d=pd.read_parquet(inp/f"local_{x.source}_{int(x.original_row_number)}.parquet"); f=d[d.local_role.eq('follower') & d.trajectory_id.astype('string').eq(str(x.trajectory_id)) & d.leader_trajectory_id.astype('string').eq(str(x.leader_trajectory_id))].sort_values(['global_time_ms','frame_id']).copy(); l=d[d.local_role.eq('leader') & d.trajectory_id.astype('string').eq(str(x.leader_trajectory_id))].sort_values(['global_time_ms','frame_id']).copy(); edge=finite(f.global_time_ms).diff().eq(100)&finite(f.frame_id).diff().eq(1)&f.diagnostic_clock_anchor_ms.eq(f.diagnostic_clock_anchor_ms.shift()); fig,ax=plt.subplots(3,1,figsize=(10,8),sharex=True); plot_pair(ax[0],f.time_s,f.ttc_s.replace([np.inf,-np.inf],np.nan),edge,label='TTC (pair)'); plot_pair(ax[0],f.time_s,f.drac_mps2,edge,label='DRAC (pair)'); ax[0].legend(); plot_pair(ax[1],f.time_s,f.net_gap_m,edge,label='net gap (pair)'); plot_pair(ax[1],f.time_s,f.closing_speed_mps,edge,label='closing (pair)'); ax[1].legend(); ax[2].plot(f.time_s,f.speed_mps,label='follower speed'); ax[2].plot(l.time_s,l.speed_mps,label='leader speed'); ax[2].plot(f.time_s,f.acceleration_mps2,label='follower accel'); ax[2].legend(); [q.axvline(x.time_s,color='k',lw=.7) for q in ax]; fig.suptitle(f"{x.case_id} | {x.review_categories} | {x.risk_state_continuity} | auto {x.automatic_quality_label}"); fig.tight_layout(); pdf.savefig(fig); plt.close(fig)
     inputs=[inp/'review_cases.csv',inp/'manifest.json',inp/'SHA256SUMS']; config={'schema_version':'stage_0_2.task_2_2.review.v1','seed':SEED,'cases':len(diag),'representative_cases':len(sel),'exploratory_thresholds':{'ttc_lt_0_5_s':0.5,'ttc_lt_2_s':2.0,'drac_gt_10_mps2':10.0,'position_speed_error_mps':5.0,'speed_acceleration_error_mps2':5.0},'locked_holdout_opened':False,'scientific_claim_eligible':False}; (out/'config.json').write_text(json.dumps(config,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     audit={'schema_version':'stage_0_2.task_2_2.audit.v1','created_at':datetime.now(UTC).isoformat(),'input_sha256':{str(p.relative_to(inp)):sha256(p) for p in inputs if p.exists()},'cases':len(diag),'continuity_counts':{str(k):int(v) for k,v in diag.risk_state_continuity.value_counts().items()},'automatic_quality_counts':{str(k):int(v) for k,v in diag.automatic_quality_label.value_counts().items()},'representative_cases':len(sel),'candidate_event_cases':int(diag.baseline_event_position.eq('member').sum()),'manual_review_completed':False}; (out/'audit.json').write_text(json.dumps(audit,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     prov={'schema_version':'stage_0_2.task_2_2.provenance.v1','created_at':datetime.now(UTC).isoformat(),'python':sys.version,'platform':platform.platform(),'git_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=root,text=True).strip(),'script_sha256':sha256(Path(__file__))}; (out/'provenance.json').write_text(json.dumps(prov,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
