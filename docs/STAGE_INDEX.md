@@ -48,3 +48,5 @@
 任务 2.2 自动诊断报告：docs/STAGE_0_2_TASK_2_2_KINEMATIC_REVIEW_2026-10-10.md；完整案例包位于 code/outputs/formal/calibration/stage_0_2_task_2_2_kinematic_review_20261010_r6/。人工判断尚未完成。
 
 任务 2.2.1 连续风险修复与验收：docs/STAGE_0_2_TASK_2_2_1_CONTINUITY_FIX_2026-10-10.md；产物 code/outputs/formal/calibration/stage_0_2_task_2_2_1_20261010_r5/。
+
+- 2026-10-11：任务 2.2.1 连续风险最终修复产物 `stage_0_2_task_2_2_1_20261011_r9`；447 案例分类/阈值统计、48 案例覆盖和空白复核包已重算，工程结果待研究者验收。
