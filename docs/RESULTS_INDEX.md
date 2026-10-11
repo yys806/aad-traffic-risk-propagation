@@ -60,3 +60,7 @@ NGSIM 风险测量质量、真实分布与候选事件规则描述性审计。5,
 
 ## RES-STAGE-0.2-TASK-2.3
 NGSIM 风险测量质量与稳健性综合收口；完成风险段 oracle、447 案例精确中心定位、四源全量质量分母与 S0/S1/S2 探索性事件重提取。报告：`docs/STAGE_0_2_TASK_2_3_QUALITY_ROBUSTNESS_2026-10-11.md`；产物：`code/outputs/formal/calibration/stage_0_2_task_2_3_20261011_r3/`。
+
+## RES-STAGE-0.2-TASK-2.4
+
+正式事件提取等价性与风险稳健性最终验证。四源独立重提取与正式 5,381 事件逐成员一致；S1 真实质量条件重跑不改变事件数；S2a/b/c/d 事件数为 5,366/5,353/5,263/5,235；连续暴露分段完成。报告：`docs/STAGE_0_2_TASK_2_4_EVENT_EQUIVALENCE_2026-10-11.md`；完整包：`code/outputs/formal/calibration/stage_0_2_task_2_4_20261011_r2/`。科学 Gate、Protocol Lock 和正式风险规则仍未通过/冻结。

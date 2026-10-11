@@ -1,6 +1,6 @@
 {
   "schema_version": "aad.project-registry.v2",
-  "last_verified": "2026-10-10",
+  "last_verified": "2026-10-11",
   "project": {"name": "AAD", "research_topic": "Connected-vehicle communication adoption and traffic-risk propagation", "root": ".", "upstream_read_only": "D:\\shen\\TJU\\DRIFT"},
   "repository": {"branch": "main", "state_semantics": "derive_live", "live_commands": {"head": "git rev-parse HEAD", "worktree": "git status --short", "upstream": "git status --branch --short"}},
   "canonical_entries": [
@@ -49,7 +49,7 @@
       "test_paths": ["code/tests/test_ngsim_risk_calibration.py", "code/tests/test_real_trajectory.py"],
       "configuration": "候选 TTC 阈值只用于审计事件；holdout 不解锁。", "parameters": {"provisional_ttc_threshold_s": 2.0, "locked_holdout": false},
       "data_version": "US-101 TXT v1 / Lankershim merged CSV; task_1_4 engineering package", "model": "deterministic trajectory measurement and event aggregation", "model_checkpoint": "not_applicable",
-      "result_ids": ["RES-STAGE-0.2-NGSIM-V2", "RES-STAGE-0.2-TASK-1.4", "RES-STAGE-0.2-TASK-1.5", "RES-STAGE-0.2-TASK-2", "RES-STAGE-0.2-TASK-2.1"], "core_metrics": ["measurement_status", "valid_ttc_rows", "event_rows", "ttc_distribution", "drac_distribution", "event_rule_sensitivity", "extreme_case_review"],
+      "result_ids": ["RES-STAGE-0.2-NGSIM-V2", "RES-STAGE-0.2-TASK-1.4", "RES-STAGE-0.2-TASK-1.5", "RES-STAGE-0.2-TASK-2", "RES-STAGE-0.2-TASK-2.1", "RES-STAGE-0.2-TASK-2.4"], "core_metrics": ["measurement_status", "valid_ttc_rows", "event_rows", "ttc_distribution", "drac_distribution", "event_rule_sensitivity", "extreme_case_review"],
       "current_conclusion": "任务 1 工程核验建议关闭；任务 2 已完成描述性质量、分布和候选事件参数审计，但最终科学事件规则、暴露分母和 Stage 0.2 Gate 仍未冻结。",
       "gate": {"status": "active", "portable_path": "evidence/results/RES-STAGE-0.2-NGSIM-V2/audit.json"}, "scientific_claim_eligible": false
     },
@@ -224,6 +224,22 @@
       "core_metrics": {"protocol_lock_allowed": false}, "current_conclusion": "旧快照证明当时未就绪；迁移后必须用新阶段键重新生成。", "gate_status": "blocked_requires_regeneration",
       "paper_locations": ["docs/RESEARCH_STATUS.md"], "scientific_claim_eligible": false
     }
+  ,{
+    "id": "RES-STAGE-0.2-TASK-2.4",
+    "experiment_id": "stage_0_2",
+    "name": "Stage 0.2 Task 2.4 formal event equivalence and robustness validation",
+    "status": "verified_engineering_pending_scientific_decisions",
+    "portable_evidence_paths": ["evidence/results/RES-STAGE-0.2-TASK-2.4/audit.json"],
+    "local_artifact_paths": ["code/outputs/formal/calibration/stage_0_2_task_2_4_20261011_r2"],
+    "code_version_source": "audit.json and provenance.json",
+    "configuration_source": "config.json",
+    "data_version_source": "manifest.json and SHA256SUMS",
+    "core_metrics": {"baseline_events": 5381, "independent_events": 5381, "s1_events": 5381, "s2a_events": 5366, "s2b_events": 5353, "s2c_events": 5263, "s2d_events": 5235, "locked_holdout_opened": false},
+    "current_conclusion": "Formal and independent event extraction are equivalent after applying formal minimum-duration and continuity semantics; S2 remains exploratory.",
+    "gate_status": "scientific_gate_pending_researcher_decision",
+    "paper_locations": ["docs/STAGE_0_2_TASK_2_4_EVENT_EQUIVALENCE_2026-10-11.md"],
+    "scientific_claim_eligible": false
+  }
   ],
   "history": [
     {
@@ -240,3 +256,4 @@
     }
   ]
 }
+
