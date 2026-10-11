@@ -78,3 +78,8 @@ P1/P2/P3 源端风险事件规则针对性验证：成员级跨参数对应、24
 ## RES-STAGE-0.2-TASK-2.5.2
 
 关键差异案例分析：中心事件精确成员归属与附近事件分离，P2-only、P3-only 和三规则确认时刻差异案例，P2 仍为 Proposal。报告：`docs/STAGE_0_2_TASK_2_5_2_KEY_DIFFERENCE_CASES_2026-10-11.md`；产物：`code/outputs/formal/calibration/stage_0_2_task_2_5_2_20261011_r1/`。
+
+
+## RES-STAGE-0.2-DECISION-RATIFICATION
+
+研究者已确认的 Stage 0.2 风险设计归档及四来源 tau/P2 实证核定：tau=15.364279 s，来源中位数与实现冲突见报告；Scientific Gate 和正式实现仍未完成。报告：`docs/STAGE_0_2_DECISION_RATIFICATION_2026-10-11.md`；产物：`code/outputs/formal/calibration/stage_0_2_decision_ratification_20261011_r1/`。

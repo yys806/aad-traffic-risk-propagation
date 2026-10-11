@@ -106,3 +106,8 @@ P1/P2/P3 定向验证已完成：成员级事件重叠图 20,171 条边，事件
 ## 2026-10-11 任务 2.5.2
 
 基于 Task 2.5.1 成员级结果完成关键差异案例分析：中心事件按 source、车辆对和 original_row_number 成员精确匹配，附近 ±3 s 事件单独计数；选择 P2-only、P3-only 和三规则确认时刻差异案例共 11 个，生成新 PDF 和逐案例 CSV。P2 仍仅为条件性 Proposal，缺少独立安全真值、公平采样和独立几何真实性，未冻结科学规则。报告：`docs/STAGE_0_2_TASK_2_5_2_KEY_DIFFERENCE_CASES_2026-10-11.md`。
+
+
+## 2026-10-11 科研决策归档与参数核定
+
+研究者已确认 Stage 0.2 风险设计：P2=可靠 TTC<2.0 s、首末跨度≥0.2 s，P1/P3 为敏感性对照；TTC 触发、DRAC 作严重程度；连续风险使用 rho=exp(-TTC/tau)，固定车辆/区域/窗口、车辆等权、缺失上下界和四格 DID。四源时间加权 TTC 中位数为 11.378882、17.170886、16.312500、14.416058 s，tau=15.364279 s。该设计已记录但 rho burden、固定窗口和 P2 0.2 s 正式实现仍待完成；Scientific Gate、Protocol Lock 和 Stage I 未启动。报告：`docs/STAGE_0_2_DECISION_RATIFICATION_2026-10-11.md`。
