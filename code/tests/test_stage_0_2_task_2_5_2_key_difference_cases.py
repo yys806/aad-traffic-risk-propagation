@@ -1,8 +1,10 @@
 from pathlib import Path
 import pandas as pd
+import pytest
 from pypdf import PdfReader
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'outputs/formal/calibration/stage_0_2_task_2_5_2_20261011_r1'
+pytestmark = pytest.mark.skipif(not OUT.is_dir(), reason="requires sealed local Task 2.5.2 CSV/PDF package; excluded from portable Git evidence")
 
 def test_center_event_and_nearby_are_distinct():
  d=pd.read_csv(OUT/'key_difference_cases.csv')

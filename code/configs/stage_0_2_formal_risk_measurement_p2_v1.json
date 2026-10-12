@@ -1,6 +1,6 @@
 {
   "schema_version": "stage_0_2.formal_risk_measurement.config.v1",
-  "algorithm_version": "stage_0_2.formal_risk_measurement.v1",
+  "algorithm_version": "stage_0_2.formal_risk_measurement.v2",
   "source_event": {"ttc_threshold_s": 2.0, "minimum_duration_s": 0.2, "max_gap_s": 0.11, "confirmation": "first_observed_timestamp_meeting_span"},
   "rho": {"formula": "exp(-TTC/tau)", "tau_s": 15.364279197080283, "scope": "reliable valid positive closing TTC only"},
   "statuses": ["valid", "not_applicable", "invalid", "not_measurable", "missing"],

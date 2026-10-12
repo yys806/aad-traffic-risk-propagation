@@ -53,3 +53,13 @@ Added isolated formal measurement interface/config, P2 event revalidation, contr
 ## 2026-10-11 正式风险测量一致性修复
 
 完成三个实现修复：区域归属与 TTC 可靠性分离；车辆对键使用完整来源/后车/前车身份；连续性使用 `diagnostic_clock_anchor_ms` 并对缺失字段 fail-closed。P2 独立重算保持 4,545 事件，唯一后车 2,512，唯一车辆对 3,072。报告和 r2 审计产物已封存。
+
+
+## 2026-10-12 Stage 0.2 综合收口（当前状态）
+
+报告：`docs/STAGE_0_2_FINAL_CLOSURE_2026-10-12.md`；结果：`RES-STAGE-0.2-FINAL-CLOSURE`；最终包：`code/outputs/formal/calibration/stage_0_2_final_closure_20261012_final_r1/`。四源5,706,252行状态、P2=4,545、唯一后车2,512/车辆对3,072逐事件独立复算一致；tau=15.364279197080283。可靠跟驰边512,043.2s、闭合边208,026.3s；固定分母与连续性fail-closed原语已测试。200ms两相位P2=4,155/4,162，存在消失/连接，不能证明采样等价。极端联合屏蔽P2=4,370，447中心全部唯一、125运动学探索标记，48人工判断仍空；独立物理真实性Unverified。验收准备包可提交研究者，**非Gate Pass Candidate**，Gate仍Active，正式质量标准/有限适用域与独立物理证据待研究者；Stage0.5覆盖及四格配置非本阶段阻断。无Protocol Lock/Stage I/holdout访问。
+
+本段为当前事实；前述Proposal、尚未实现与旧暴露/事件描述均为历史状态，不自动沿用为当前结论。依据：最终包audit/config/provenance、逐事件核验表和Gate矩阵。
+
+
+2026-10-12 验证环境收尾：11个历史本机产物测试显式依赖封存包，在纯Git克隆缺包时skip；本机仍全量执行，不将跳过计为通过。计算原语/独立采样单元测试不跳过。

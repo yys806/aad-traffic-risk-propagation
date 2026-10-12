@@ -1,6 +1,7 @@
 from pathlib import Path
 import json
 import pandas as pd
+import pytest
 import importlib.util
 
 ROOT=Path(__file__).resolve().parents[1]
@@ -51,6 +52,7 @@ def test_rejected_event_joins_raw_candidate_without_field_assumption(monkeypatch
     assert out.trajectory_id.iloc[0]=='f' and out.raw_frame_count.iloc[0]==3
 
 
+@pytest.mark.skipif(not (ROOT/'outputs/formal/calibration/stage_0_2_task_2_5_1_20261011_r2').is_dir(), reason="requires sealed local Task 2.5.1 CSV/PDF package; unit tests above remain portable")
 def test_new_casebook_has_24_pages_and_metrics_match_locked_counts():
     from pypdf import PdfReader
     out=ROOT/'outputs'/'formal'/'calibration'/'stage_0_2_task_2_5_1_20261011_r2'

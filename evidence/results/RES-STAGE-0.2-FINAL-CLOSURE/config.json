@@ -1,0 +1,38 @@
+{
+  "schema_version": "stage_0_2.final_closure.config.v2",
+  "formal_config": {
+    "schema_version": "stage_0_2.formal_risk_measurement.config.v1",
+    "algorithm_version": "stage_0_2.formal_risk_measurement.v2",
+    "ttc_threshold_s": 2.0,
+    "minimum_duration_s": 0.2,
+    "max_gap_s": 0.11,
+    "tau_s": 15.364279197080283,
+    "confirmation_semantics": "first_observed_timestamp_meeting_span",
+    "missing_policy": "unknown_bounds_full_window",
+    "target_region": null,
+    "target_vehicle_qualification": null,
+    "evaluation_window": null,
+    "message_deduplication": null,
+    "scientific_defaults_frozen": false
+  },
+  "rules": {
+    "P1_strict": [
+      1.5,
+      0.3
+    ],
+    "P2_middle": [
+      2.0,
+      0.2
+    ],
+    "P3_sensitive": [
+      2.5,
+      0.1
+    ]
+  },
+  "sampling": "NGSIM anchors, 200 ms phases 0/100; full 100ms identity/reliability blocks constrain discarded observations; sampled non-risk splits; no interpolation",
+  "tau_weighting": "strict reliable closing edges; .05s per endpoint; source-balanced middle median mean",
+  "exposure": "observed link spans only, no final-frame extrapolation; rates diagnostic only",
+  "region_fixed_burden": "not applicable to Stage 0.2 descriptive NGSIM scope",
+  "scientific_gate_passed": false,
+  "review_package_parent": "code/outputs/formal/calibration/stage_0_2_final_closure_20261012_r4"
+}

@@ -1,0 +1,31 @@
+{
+  "status": "Verified within stated test and evidence scope",
+  "specialized_tests": {
+    "command": "python -m pytest tests/test_formal_risk_measurement.py tests/test_stage_0_2_final_closure.py tests/test_stage_0_2_closure_sampling.py -q",
+    "result": "40 passed"
+  },
+  "full_regression": {
+    "command": "python -m pytest tests -q",
+    "result": "287 passed in 76.04s"
+  },
+  "compileall": {
+    "command": "python -m compileall -q code/src code/scripts code/tests",
+    "exit_code": 0
+  },
+  "full_source_independent_recalculation": "Verified; see final_interface_reverification.json",
+  "original_worktree_clean": "Not expected: preserved researcher paper moves/deletions and $stage; clean clone required",
+  "scientific_gate_passed": false,
+  "strict_project_docs": {
+    "command": "python code/scripts/validate_project_docs.py --strict-git",
+    "result": "PROJECT_DOCS_OK"
+  },
+  "portable_evidence": {
+    "command": "python code/scripts/export_project_evidence.py --repo-root . --verify",
+    "result": "PORTABLE_EVIDENCE_OK; 20 result packages, 124 files"
+  },
+  "project_docs_tests": {
+    "command": "python -m pytest tests/test_project_docs.py -q",
+    "result": "13 passed in 4.31s"
+  },
+  "source_worktree_postcommit_clean_check": "Expected failure due only to preexisting user changes; clean clone check will be recorded separately after commit"
+}

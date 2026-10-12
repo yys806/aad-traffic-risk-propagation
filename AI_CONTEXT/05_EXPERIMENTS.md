@@ -43,3 +43,10 @@ pNEUMA 地图匹配、候选前车和人工 QA 已由研究者批准退役，代
 ## 2026-10-11 连续风险时间尺度验证
 
 使用 tau=15.364279 s 计算四源分布、TTC 分箱暴露/贡献、tau/2/2tau、极端压力和 P2 成员重叠。正式目标区域 burden 因固定区域/车辆/窗口缺失保持 Unresolved。
+
+
+## 2026-10-12 Stage 0.2 综合收口（当前状态）
+
+报告：`docs/STAGE_0_2_FINAL_CLOSURE_2026-10-12.md`；结果：`RES-STAGE-0.2-FINAL-CLOSURE`；最终包：`code/outputs/formal/calibration/stage_0_2_final_closure_20261012_final_r1/`。四源5,706,252行状态、P2=4,545、唯一后车2,512/车辆对3,072逐事件独立复算一致；tau=15.364279197080283。可靠跟驰边512,043.2s、闭合边208,026.3s；固定分母与连续性fail-closed原语已测试。200ms两相位P2=4,155/4,162，存在消失/连接，不能证明采样等价。极端联合屏蔽P2=4,370，447中心全部唯一、125运动学探索标记，48人工判断仍空；独立物理真实性Unverified。验收准备包可提交研究者，**非Gate Pass Candidate**，Gate仍Active，正式质量标准/有限适用域与独立物理证据待研究者；Stage0.5覆盖及四格配置非本阶段阻断。无Protocol Lock/Stage I/holdout访问。
+
+本段为当前事实；前述Proposal、尚未实现与旧暴露/事件描述均为历史状态，不自动沿用为当前结论。依据：最终包audit/config/provenance、逐事件核验表和Gate矩阵。

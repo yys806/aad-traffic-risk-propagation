@@ -46,3 +46,8 @@ NGSIM 跟驰参考 + pNEUMA 运动学参考 → `write_real_reference_package()`
 ## 2026-10-10 前车匹配收尾
 
 NGSIM leader lookup 在存在诊断字段时使用 run scope、Global_Time、diagnostic_clock_anchor_ms、Frame_ID 和唯一原始前车身份；重复或缺失字段不猜测。任务 1.5 独立核查真实 Lankershim 0 跨时钟匹配，四源回归 0 行核心差异。
+
+
+## 2026-10-12 正式测量与收口接口
+
+task1.5四源状态→独立全序列/P2在线提取→r4→不可覆盖final_r1验收包；病例与抽稀产物保留成员和断点，便携证据只含小型摘要。 依据：相应源码及 `docs/STAGE_0_2_FINAL_CLOSURE_2026-10-12.md`。

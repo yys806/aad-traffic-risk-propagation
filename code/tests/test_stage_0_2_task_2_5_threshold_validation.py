@@ -1,9 +1,11 @@
 from pathlib import Path
 import json
 import pandas as pd
+import pytest
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'outputs/formal/calibration/stage_0_2_task_2_5_20261011_r1'
+pytestmark = pytest.mark.skipif(not OUT.is_dir(), reason="requires sealed local Task 2.5 outputs; excluded from portable Git evidence")
 
 def test_grid_has_complete_6x4_and_baseline():
     d=pd.read_csv(OUT/'threshold_duration_grid.csv')

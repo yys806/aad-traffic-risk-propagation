@@ -63,3 +63,14 @@ P2 formal event extraction and rho/bounded contribution primitives are implement
 ## 2026-10-11 一致性修复状态
 
 正式接口的三个确定性问题已修复并回归验证。历史 0.1 s 提取器、旧线性指标和既有产物不变。目标区域/窗口等科学参数仍未决。
+
+
+## 2026-10-12 Stage 0.2 综合收口（当前状态）
+
+报告：`docs/STAGE_0_2_FINAL_CLOSURE_2026-10-12.md`；结果：`RES-STAGE-0.2-FINAL-CLOSURE`；最终包：`code/outputs/formal/calibration/stage_0_2_final_closure_20261012_final_r1/`。四源5,706,252行状态、P2=4,545、唯一后车2,512/车辆对3,072逐事件独立复算一致；tau=15.364279197080283。可靠跟驰边512,043.2s、闭合边208,026.3s；固定分母与连续性fail-closed原语已测试。200ms两相位P2=4,155/4,162，存在消失/连接，不能证明采样等价。极端联合屏蔽P2=4,370，447中心全部唯一、125运动学探索标记，48人工判断仍空；独立物理真实性Unverified。验收准备包可提交研究者，**非Gate Pass Candidate**，Gate仍Active，正式质量标准/有限适用域与独立物理证据待研究者；Stage0.5覆盖及四格配置非本阶段阻断。无Protocol Lock/Stage I/holdout访问。
+
+本段为当前事实；前述Proposal、尚未实现与旧暴露/事件描述均为历史状态，不自动沿用为当前结论。依据：最终包audit/config/provenance、逐事件核验表和Gate矩阵。
+
+### 论文版本冲突 — Awaiting Researcher Decision
+
+Documented Intent：06_DECISIONS指数rho/固定分母/车辆等权。Actual Implementation：formal v2符合批准设计，旧main.tex:378-405仍为线性/观测分母/求和。Evidence：最新版20261010 PDF与最终包paper_version_conflict.md。Affected Files：paper/主论文/main.tex、paper/历史记录/20261010_YYS.pdf、06_DECISIONS。Conflict：论文版本与当前设计未同步。Status: Awaiting Researcher Decision；研究者指定正式版本，不修改论文、不替换批准算法。

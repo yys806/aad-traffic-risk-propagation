@@ -56,3 +56,8 @@ SUMO -> 四格与五表 ----+
 ### Formal Stage 0.2 risk measurement (2026-10-11)
 
 `riskprop.formal_risk_measurement` is a versioned, isolated interface for approved P2 events, causal observed-frame confirmation, `rho=exp(-TTC/tau)`, bounded contribution semantics, fixed-window integration, equal-vehicle aggregation, and DID interval arithmetic. It does not alter historical `ngsim_risk_calibration.extract_rear_end_events` defaults or `prelock_metrics.integrated_ttc_exposure`.
+
+
+## 2026-10-12 正式测量与收口接口
+
+formal_risk_measurement.v2与历史0.1s提取/线性指标隔离；正式固定窗口原语需完整来源/时钟/双车身份与真实连续边，区域可靠性独立。 依据：相应源码及 `docs/STAGE_0_2_FINAL_CLOSURE_2026-10-12.md`。

@@ -1,6 +1,6 @@
 {
   "schema_version": "aad.project-registry.v2",
-  "last_verified": "2026-10-11",
+  "last_verified": "2026-10-12",
   "project": {
     "name": "AAD",
     "research_topic": "Connected-vehicle communication adoption and traffic-risk propagation",
@@ -55,19 +55,23 @@
     "code/scripts/run_stage_0_2_formal_risk_measurement_validation.py",
     "code/src/riskprop/formal_risk_measurement.py",
     "code/configs/stage_0_2_formal_risk_measurement_p2_v1.json",
-    "docs/STAGE_0_2_FORMAL_RISK_MEASUREMENT_CONSISTENCY_REPAIR_2026-10-11.md"
+    "docs/STAGE_0_2_FORMAL_RISK_MEASUREMENT_CONSISTENCY_REPAIR_2026-10-11.md",
+    "docs/STAGE_0_2_FINAL_CLOSURE_2026-10-12.md",
+    "code/scripts/run_stage_0_2_final_closure.py",
+    "code/scripts/stage_0_2_closure_analysis.py",
+    "code/scripts/finalize_stage_0_2_closure.py"
   ],
   "current": {
     "active_experiment_id": "stage_0_2",
-    "active_task": "完成 NGSIM 风险测量审计，并整理 pNEUMA 城市运动学分布；不再执行 pNEUMA 前车人工复核。",
+    "active_task": "Stage 0.2 scientific acceptance preparation completed; researcher physical-evidence and quality-criteria review pending.",
     "why_now": "真实数据先确定可测字段、证据边界和现实范围；阶段 0.2 至 0.6 未闭合前不得进入阶段 1.1。",
     "next_decision_owner": "human_researcher",
     "portable_gate_paths": [
-      "evidence/results/RES-STAGE-0.2-NGSIM-V2/audit.json",
+      "evidence/results/RES-STAGE-0.2-FINAL-CLOSURE/audit.json",
       "evidence/results/RES-PROTOCOL-READINESS-V1/protocol_lock_readiness_v1.json"
     ],
     "local_gate_paths": [
-      "code/outputs/formal/calibration/stage_0_2_ngsim_v2/audit.json",
+      "code/outputs/formal/calibration/stage_0_2_final_closure_20261012_final_r1/audit.json",
       "code/outputs/formal/calibration/protocol_lock_readiness_v1.json"
     ]
   },
@@ -127,23 +131,31 @@
       "status": "active_audit_closure",
       "code_version": "当前实现使用 stage_0_2；迁移前结果由原始审计和哈希保留。",
       "code_paths": [
-        "code/src/riskprop/ngsim_risk_calibration.py"
+        "code/src/riskprop/ngsim_risk_calibration.py",
+        "code/src/riskprop/formal_risk_measurement.py"
       ],
       "entrypoints": [
         "code/scripts/run_stage_0_2_ngsim.py",
         "code/scripts/verify_ngsim_task_1_4.py",
-        "code/scripts/verify_ngsim_task_1_5.py"
+        "code/scripts/verify_ngsim_task_1_5.py",
+        "code/scripts/run_stage_0_2_final_closure.py",
+        "code/scripts/finalize_stage_0_2_closure.py"
       ],
       "test_paths": [
         "code/tests/test_ngsim_risk_calibration.py",
-        "code/tests/test_real_trajectory.py"
+        "code/tests/test_real_trajectory.py",
+        "code/tests/test_formal_risk_measurement.py",
+        "code/tests/test_stage_0_2_final_closure.py",
+        "code/tests/test_stage_0_2_closure_sampling.py"
       ],
-      "configuration": "候选 TTC 阈值只用于审计事件；holdout 不解锁。",
+      "configuration": "Approved P2 and exponential rho; full-source fail-closed measurement; scientific quality criteria not approved; holdout sealed.",
       "parameters": {
         "provisional_ttc_threshold_s": 2.0,
-        "locked_holdout": false
+        "locked_holdout": false,
+        "formal_p2_minimum_duration_s": 0.2,
+        "tau_s": 15.364279197080283
       },
-      "data_version": "US-101 TXT v1 / Lankershim merged CSV; task_1_4 engineering package",
+      "data_version": "task_1_5_r4 four approved NGSIM states; final closure parent r4 and final_r1",
       "model": "deterministic trajectory measurement and event aggregation",
       "model_checkpoint": "not_applicable",
       "result_ids": [
@@ -159,7 +171,8 @@
         "RES-STAGE-0.2-DECISION-RATIFICATION",
         "RES-STAGE-0.2-RHO-TIMESCALE",
         "RES-STAGE-0.2-FORMAL-RISK-MEASUREMENT",
-        "RES-STAGE-0.2-FORMAL-RISK-MEASUREMENT-CONSISTENCY-REPAIR"
+        "RES-STAGE-0.2-FORMAL-RISK-MEASUREMENT-CONSISTENCY-REPAIR",
+        "RES-STAGE-0.2-FINAL-CLOSURE"
       ],
       "core_metrics": [
         "measurement_status",
@@ -170,10 +183,10 @@
         "event_rule_sensitivity",
         "extreme_case_review"
       ],
-      "current_conclusion": "任务 1 工程核验建议关闭；任务 2 已完成描述性质量、分布和候选事件参数审计，但最终科学事件规则、暴露分母和 Stage 0.2 Gate 仍未冻结。",
+      "current_conclusion": "Engineering and descriptive evidence closure completed; P2=4545, tau replicated, sampling not equivalent, physical truth Unverified; no scientific Gate pass.",
       "gate": {
         "status": "active",
-        "portable_path": "evidence/results/RES-STAGE-0.2-NGSIM-V2/audit.json"
+        "portable_path": "evidence/results/RES-STAGE-0.2-FINAL-CLOSURE/audit.json"
       },
       "scientific_claim_eligible": false
     },
@@ -923,6 +936,42 @@
       "gate_status": "scientific_gate_pending_researcher_decision",
       "paper_locations": [
         "docs/STAGE_0_2_FORMAL_RISK_MEASUREMENT_CONSISTENCY_REPAIR_2026-10-11.md"
+      ],
+      "scientific_claim_eligible": false
+    },
+    {
+      "id": "RES-STAGE-0.2-FINAL-CLOSURE",
+      "experiment_id": "stage_0_2",
+      "name": "Stage 0.2 comprehensive closure and scientific acceptance preparation",
+      "status": "verified_engineering_and_descriptive_evidence_scientific_gate_pending",
+      "portable_evidence_paths": [
+        "evidence/results/RES-STAGE-0.2-FINAL-CLOSURE/audit.json",
+        "evidence/results/RES-STAGE-0.2-FINAL-CLOSURE/gate_matrix.json",
+        "evidence/results/RES-STAGE-0.2-FINAL-CLOSURE/summary.json",
+        "evidence/results/RES-STAGE-0.2-FINAL-CLOSURE/validation.json",
+        "evidence/results/RES-STAGE-0.2-FINAL-CLOSURE/manifest.json",
+        "evidence/results/RES-STAGE-0.2-FINAL-CLOSURE/SHA256SUMS"
+      ],
+      "local_artifact_paths": [
+        "code/outputs/formal/calibration/stage_0_2_final_closure_20261012_final_r1",
+        "code/outputs/formal/calibration/stage_0_2_final_closure_20261012_r4"
+      ],
+      "code_version_source": "provenance.json and final_interface_reverification.json",
+      "configuration_source": "config.json",
+      "data_version_source": "manifest.json and SHA256SUMS",
+      "core_metrics": {
+        "p2_events": 4545,
+        "unique_followers": 2512,
+        "unique_pairs": 3072,
+        "sampling_200ms_events_phase0": 4155,
+        "sampling_200ms_events_phase100": 4162,
+        "physical_truth": "Unverified",
+        "scientific_gate_passed": false
+      },
+      "current_conclusion": "Ready for researcher evidence review, not Gate Pass Candidate; independent physical evidence and approved quality criteria remain necessary. Stage0.5 and causal window configuration are separate.",
+      "gate_status": "scientific_gate_pending_researcher_decision",
+      "paper_locations": [
+        "docs/STAGE_0_2_FINAL_CLOSURE_2026-10-12.md"
       ],
       "scientific_claim_eligible": false
     }

@@ -37,6 +37,7 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         "RES-STAGE-0.2-TASK-1.5": [],
         "RES-STAGE-0.2-TASK-2": [],
         "RES-STAGE-0.2-TASK-2.1": [],
+        "RES-STAGE-0.2-FINAL-CLOSURE": [],
         "RES-STAGE-0.4-COMM-OBS-V3": [],
         "RES-STAGE-0.5-REAL-REF-V1": [],
         "RES-STAGE-0.6-PRELOCK-V2": [],
@@ -63,6 +64,10 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
             )
 
     calibration_sets = {
+        "RES-STAGE-0.2-FINAL-CLOSURE": (
+            "stage_0_2_final_closure_20261012_final_r1",
+            ("audit.json", "config.json", "provenance.json", "manifest.json", "SHA256SUMS", "gate_matrix.json", "summary.json", "validation.json", "final_interface_reverification.json", "report.md", "paper_version_conflict.md"),
+        ),
         "RES-STAGE-0.2-TASK-2.1": (
             "stage_0_2_task_2_1_extreme_review_20261011_r4",
             ("audit.json", "config.json", "provenance.json", "manifest.json", "SHA256SUMS"),
@@ -96,7 +101,19 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
             ("audit.json", "manifest.json", "SHA256SUMS"),
         ),
     }
+    for result_id, directory in {
+        "RES-STAGE-0.2-TASK-2.4": "stage_0_2_task_2_4_20261011_r2",
+        "RES-STAGE-0.2-TASK-2.5": "stage_0_2_task_2_5_20261011_r1",
+        "RES-STAGE-0.2-TASK-2.5.1": "stage_0_2_task_2_5_1_20261011_r2",
+        "RES-STAGE-0.2-TASK-2.5.2": "stage_0_2_task_2_5_2_20261011_r1",
+        "RES-STAGE-0.2-DECISION-RATIFICATION": "stage_0_2_decision_ratification_20261011_r1",
+        "RES-STAGE-0.2-RHO-TIMESCALE": "stage_0_2_rho_timescale_validation_20261011_r1",
+        "RES-STAGE-0.2-FORMAL-RISK-MEASUREMENT": "stage_0_2_formal_risk_measurement_20261011_r1",
+        "RES-STAGE-0.2-FORMAL-RISK-MEASUREMENT-CONSISTENCY-REPAIR": "stage_0_2_formal_risk_measurement_20261011_r2",
+    }.items():
+        calibration_sets[result_id] = (directory, ("audit.json", "config.json", "provenance.json", "manifest.json", "SHA256SUMS"))
     for result_id, (directory, names) in calibration_sets.items():
+        pairs.setdefault(result_id, [])
         for name in names:
             pairs[result_id].append(
                 (f"code/outputs/formal/calibration/{directory}/{name}", name)
