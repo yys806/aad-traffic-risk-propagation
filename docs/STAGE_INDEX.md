@@ -74,8 +74,8 @@
 - 正式风险测量一致性修复：P2 事件、车辆对和连续性字段完成独立回归。
 
 
-## 2026-10-12 Stage 0.2 综合收口（当前状态）
+## 2026-10-12 Stage 0.2 最终验收审计（当前状态）
 
-报告：`docs/STAGE_0_2_FINAL_CLOSURE_2026-10-12.md`；结果：`RES-STAGE-0.2-FINAL-CLOSURE`；最终包：`code/outputs/formal/calibration/stage_0_2_final_closure_20261012_final_r1/`。四源5,706,252行状态、P2=4,545、唯一后车2,512/车辆对3,072逐事件独立复算一致；tau=15.364279197080283。可靠跟驰边512,043.2s、闭合边208,026.3s；固定分母与连续性fail-closed原语已测试。200ms两相位P2=4,155/4,162，存在消失/连接，不能证明采样等价。极端联合屏蔽P2=4,370，447中心全部唯一、125运动学探索标记，48人工判断仍空；独立物理真实性Unverified。验收准备包可提交研究者，**非Gate Pass Candidate**，Gate仍Active，正式质量标准/有限适用域与独立物理证据待研究者；Stage0.5覆盖及四格配置非本阶段阻断。无Protocol Lock/Stage I/holdout访问。
+最终验收包：`code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r3/`；Gate=`Blocked`。P2=4,545、可靠跟驰暴露512,043.2s、闭合暴露208,026.3s及四源事件率均可复算；独立边级审计确认连续性和来源身份条件，但发现分母含 `invalid/non_positive_gap` 端点边（Lankershim 7,557.4s；US-101 三窗口187.4/178.7/197.5s），其P2可评价性未由批准决定定义。研究者需确认这些边是否属于正式事件率分母，确认前不得关闭。200ms两相位不等价、极端屏蔽与独立物理真实性Unverified继续披露；无Protocol Lock/Stage I/holdout访问。
 
 本段为当前事实；前述Proposal、尚未实现与旧暴露/事件描述均为历史状态，不自动沿用为当前结论。依据：最终包audit/config/provenance、逐事件核验表和Gate矩阵。

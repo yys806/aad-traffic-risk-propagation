@@ -1,0 +1,236 @@
+{
+  "schema_version": "stage_0_2.reliable_following_exposure.edge_audit.v1",
+  "rule": "adjacent 100 ms frame, same source/diagnostic clock/follower/leader pair, exact frame and time increments, no identity break or observation gap, reliable identities at both endpoints",
+  "sources": [
+    {
+      "source": "lankershim__complete",
+      "state_rows": 1607319,
+      "reliable_following_edges": 1218859,
+      "reliable_following_exposure_s": 121885.90000000001,
+      "non_100ms_edges": 0,
+      "identity_or_clock_invalid_edges": 0,
+      "status_transitions": [
+        {
+          "from_status": "invalid",
+          "to_status": "invalid",
+          "edges": 74400
+        },
+        {
+          "from_status": "invalid",
+          "to_status": "not_applicable",
+          "edges": 361
+        },
+        {
+          "from_status": "invalid",
+          "to_status": "valid",
+          "edges": 172
+        },
+        {
+          "from_status": "not_applicable",
+          "to_status": "invalid",
+          "edges": 379
+        },
+        {
+          "from_status": "not_applicable",
+          "to_status": "not_applicable",
+          "edges": 637634
+        },
+        {
+          "from_status": "not_applicable",
+          "to_status": "valid",
+          "edges": 26331
+        },
+        {
+          "from_status": "valid",
+          "to_status": "invalid",
+          "edges": 262
+        },
+        {
+          "from_status": "valid",
+          "to_status": "not_applicable",
+          "edges": 26595
+        },
+        {
+          "from_status": "valid",
+          "to_status": "valid",
+          "edges": 452725
+        }
+      ],
+      "interpretation": "Edges are reliable follower/leader/time links; TTC measurement status is not required to be valid, so non-closing and invalid-TTC states remain eligible exposure when identity and continuity are reliable."
+    },
+    {
+      "source": "us101__0750_0805",
+      "state_rows": 1180598,
+      "reliable_following_edges": 1116133,
+      "reliable_following_exposure_s": 111613.3,
+      "non_100ms_edges": 0,
+      "identity_or_clock_invalid_edges": 0,
+      "status_transitions": [
+        {
+          "from_status": "invalid",
+          "to_status": "invalid",
+          "edges": 1724
+        },
+        {
+          "from_status": "invalid",
+          "to_status": "not_applicable",
+          "edges": 72
+        },
+        {
+          "from_status": "invalid",
+          "to_status": "valid",
+          "edges": 0
+        },
+        {
+          "from_status": "not_applicable",
+          "to_status": "invalid",
+          "edges": 0
+        },
+        {
+          "from_status": "not_applicable",
+          "to_status": "not_applicable",
+          "edges": 622603
+        },
+        {
+          "from_status": "not_applicable",
+          "to_status": "valid",
+          "edges": 29623
+        },
+        {
+          "from_status": "valid",
+          "to_status": "invalid",
+          "edges": 78
+        },
+        {
+          "from_status": "valid",
+          "to_status": "not_applicable",
+          "edges": 30049
+        },
+        {
+          "from_status": "valid",
+          "to_status": "valid",
+          "edges": 431984
+        }
+      ],
+      "interpretation": "Edges are reliable follower/leader/time links; TTC measurement status is not required to be valid, so non-closing and invalid-TTC states remain eligible exposure when identity and continuity are reliable."
+    },
+    {
+      "source": "us101__0805_0820",
+      "state_rows": 1403095,
+      "reliable_following_edges": 1336843,
+      "reliable_following_exposure_s": 133684.30000000002,
+      "non_100ms_edges": 0,
+      "identity_or_clock_invalid_edges": 0,
+      "status_transitions": [
+        {
+          "from_status": "invalid",
+          "to_status": "invalid",
+          "edges": 1562
+        },
+        {
+          "from_status": "invalid",
+          "to_status": "not_applicable",
+          "edges": 116
+        },
+        {
+          "from_status": "invalid",
+          "to_status": "valid",
+          "edges": 0
+        },
+        {
+          "from_status": "not_applicable",
+          "to_status": "invalid",
+          "edges": 0
+        },
+        {
+          "from_status": "not_applicable",
+          "to_status": "not_applicable",
+          "edges": 700383
+        },
+        {
+          "from_status": "not_applicable",
+          "to_status": "valid",
+          "edges": 31275
+        },
+        {
+          "from_status": "valid",
+          "to_status": "invalid",
+          "edges": 109
+        },
+        {
+          "from_status": "valid",
+          "to_status": "not_applicable",
+          "edges": 31600
+        },
+        {
+          "from_status": "valid",
+          "to_status": "valid",
+          "edges": 571798
+        }
+      ],
+      "interpretation": "Edges are reliable follower/leader/time links; TTC measurement status is not required to be valid, so non-closing and invalid-TTC states remain eligible exposure when identity and continuity are reliable."
+    },
+    {
+      "source": "us101__0820_0835",
+      "state_rows": 1515240,
+      "reliable_following_edges": 1448597,
+      "reliable_following_exposure_s": 144859.7,
+      "non_100ms_edges": 0,
+      "identity_or_clock_invalid_edges": 0,
+      "status_transitions": [
+        {
+          "from_status": "invalid",
+          "to_status": "invalid",
+          "edges": 1805
+        },
+        {
+          "from_status": "invalid",
+          "to_status": "not_applicable",
+          "edges": 81
+        },
+        {
+          "from_status": "invalid",
+          "to_status": "valid",
+          "edges": 0
+        },
+        {
+          "from_status": "not_applicable",
+          "to_status": "invalid",
+          "edges": 0
+        },
+        {
+          "from_status": "not_applicable",
+          "to_status": "not_applicable",
+          "edges": 756370
+        },
+        {
+          "from_status": "not_applicable",
+          "to_status": "valid",
+          "edges": 33102
+        },
+        {
+          "from_status": "valid",
+          "to_status": "invalid",
+          "edges": 89
+        },
+        {
+          "from_status": "valid",
+          "to_status": "not_applicable",
+          "edges": 33394
+        },
+        {
+          "from_status": "valid",
+          "to_status": "valid",
+          "edges": 623756
+        }
+      ],
+      "interpretation": "Edges are reliable follower/leader/time links; TTC measurement status is not required to be valid, so non-closing and invalid-TTC states remain eligible exposure when identity and continuity are reliable."
+    }
+  ],
+  "total_reliable_following_edges": 5120432,
+  "total_reliable_following_exposure_s": 512043.2,
+  "matches_sealed_denominator_s": true,
+  "missing_or_identity_uncertain_edges_included": false,
+  "cross_gap_or_cross_identity_accumulation": false,
+  "endpoint_weighting": "each edge contributes 0.1 s; final frame has no extrapolated interval"
+}

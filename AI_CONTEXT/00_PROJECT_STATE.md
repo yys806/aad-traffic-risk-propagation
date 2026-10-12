@@ -128,6 +128,8 @@ P1/P2/P3 定向验证已完成：成员级事件重叠图 20,171 条边，事件
 
 ## 2026-10-12 Stage 0.2 综合收口（当前状态）
 
+**最新状态覆盖（2026-10-12 最终验收审计）：Stage 0.2 Gate=`Blocked`，尚未正式关闭。** 独立边级复算确认可靠跟驰暴露512,043.2s与封存逐源值一致且不跨身份/缺帧/时钟；但分母包含 `invalid/non_positive_gap` 端点边，四源分别7,557.4s、187.4s、178.7s、197.5s。该状态下P2不可评价，研究者需裁决是否仍计入已批准的可靠跟驰事件率分母。包：`code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r3/`。该口径阻断覆盖下方历史 Gate Active 描述；此前综合包仍为不可改写的历史证据。
+
 报告：`docs/STAGE_0_2_FINAL_CLOSURE_2026-10-12.md`；结果：`RES-STAGE-0.2-FINAL-CLOSURE`；最终包：`code/outputs/formal/calibration/stage_0_2_final_closure_20261012_final_r1/`。四源5,706,252行状态、P2=4,545、唯一后车2,512/车辆对3,072逐事件独立复算一致；tau=15.364279197080283。可靠跟驰边512,043.2s、闭合边208,026.3s；固定分母与连续性fail-closed原语已测试。200ms两相位P2=4,155/4,162，存在消失/连接，不能证明采样等价。极端联合屏蔽P2=4,370，447中心全部唯一、125运动学探索标记，48人工判断仍空；独立物理真实性Unverified。验收准备包可提交研究者，**非Gate Pass Candidate**，Gate仍Active，正式质量标准/有限适用域与独立物理证据待研究者；Stage0.5覆盖及四格配置非本阶段阻断。无Protocol Lock/Stage I/holdout访问。
 
 本段为当前事实；前述Proposal、尚未实现与旧暴露/事件描述均为历史状态，不自动沿用为当前结论。依据：最终包audit/config/provenance、逐事件核验表和Gate矩阵。
