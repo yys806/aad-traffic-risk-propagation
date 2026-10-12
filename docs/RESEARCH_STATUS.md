@@ -80,3 +80,9 @@ NGSIM 风险测量质量、分布和候选事件规则敏感性描述性审计�
 ### 2026-10-12 最终验收审计
 
 当前 Gate 保持 `Blocked`。P2=4,545、跟驰暴露512,043.2s、闭合暴露208,026.3s及四源事件率均可独立复算；但边级审计发现封存跟驰分母含 `invalid/non_positive_gap` 端点边。研究者需确认其是否属于正式 P2 事件率分母，确认前不写入 `Completed / Closed`。验收包：`code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r3/`。
+
+## Stage 0.2 最终状态（2026-10-12，覆盖此前的待裁决/Blocked状态）
+
+Stage 0.2 已在研究者批准的有限科学范围内 `Completed / Closed`，Gate=`pass`。范围为四个批准 NGSIM 来源、100 ms 连续性语义下的纵向跟驰风险代理测量与描述性现实校准。P2=4,545；可靠跟驰暴露512,043.2s；正式P2可评价跟驰暴露503,922.2s；不可评价8,121.0s；可靠闭合暴露208,026.3s。正式率以两端均为valid或not_applicable的可靠连续相邻边计时，单位events / P2-evaluable following vehicle-hour；不可评价边不代表零风险。四源分别报告，不当作iid道路样本。
+
+未验证限制：独立物理真实性/人工几何真值、缺失造成的选择偏差及极端敏感性；200 ms两相位不与100 ms等价。禁止事故概率、危险识别准确率、P2全局最优性、SUMO或AAD因果效应主张。后续阶段职责不因本Gate通过而视为完成。旧R3 Blocked记录保留历史。最终包：`code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r4/`。

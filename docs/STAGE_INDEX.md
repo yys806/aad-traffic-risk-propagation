@@ -79,3 +79,7 @@
 最终验收包：`code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r3/`；Gate=`Blocked`。P2=4,545、可靠跟驰暴露512,043.2s、闭合暴露208,026.3s及四源事件率均可复算；独立边级审计确认连续性和来源身份条件，但发现分母含 `invalid/non_positive_gap` 端点边（Lankershim 7,557.4s；US-101 三窗口187.4/178.7/197.5s），其P2可评价性未由批准决定定义。研究者需确认这些边是否属于正式事件率分母，确认前不得关闭。200ms两相位不等价、极端屏蔽与独立物理真实性Unverified继续披露；无Protocol Lock/Stage I/holdout访问。
 
 本段为当前事实；前述Proposal、尚未实现与旧暴露/事件描述均为历史状态，不自动沿用为当前结论。依据：最终包audit/config/provenance、逐事件核验表和Gate矩阵。
+
+## 2026-10-12 — Stage 0.2 最终验收已关闭
+
+Stage 0.2 Gate=`pass`，状态=`Completed / Closed`，限四个批准NGSIM来源和100ms描述性纵向跟驰风险代理测量。研究者批准P2可评价跟驰暴露分母；独立边级复算计入5,039,222条边/503,922.2s，8,121.0s不可评价暴露保留为质量统计，不解释为零风险。P2=4,545。四源事件率和逐源分母在`RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4`报告。200ms非等价、物理真实性、缺失选择偏差、极端敏感性、来源外推继续限制科学解释。R3 Blocked为历史记录，未覆盖。详见`docs/STAGE_0_2_SCIENTIFIC_ACCEPTANCE_2026-10-12.md`及最终包。

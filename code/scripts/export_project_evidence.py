@@ -38,6 +38,7 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         "RES-STAGE-0.2-TASK-2": [],
         "RES-STAGE-0.2-TASK-2.1": [],
         "RES-STAGE-0.2-FINAL-CLOSURE": [],
+        "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4": [],
         "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R3": [],
         "RES-STAGE-0.4-COMM-OBS-V3": [],
         "RES-STAGE-0.5-REAL-REF-V1": [],
@@ -68,6 +69,10 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         "RES-STAGE-0.2-FINAL-CLOSURE": (
             "stage_0_2_final_closure_20261012_final_r1",
             ("audit.json", "config.json", "provenance.json", "manifest.json", "SHA256SUMS", "gate_matrix.json", "summary.json", "validation.json", "final_interface_reverification.json", "report.md", "paper_version_conflict.md"),
+        ),
+        "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4": (
+            "stage_0_2_scientific_acceptance_20261012_r4",
+            ("audit.json", "scientific_gate_report.json", "p2_event_rates.json", "scientific_gate_matrix.json", "scope_and_claims.md", "exposure_edge_audit.json", "report.md", "provenance.json", "manifest.json", "SHA256SUMS"),
         ),
         "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R3": (
             "stage_0_2_scientific_acceptance_20261012_r3",

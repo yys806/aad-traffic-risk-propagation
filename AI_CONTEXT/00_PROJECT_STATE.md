@@ -133,3 +133,9 @@ P1/P2/P3 定向验证已完成：成员级事件重叠图 20,171 条边，事件
 报告：`docs/STAGE_0_2_FINAL_CLOSURE_2026-10-12.md`；结果：`RES-STAGE-0.2-FINAL-CLOSURE`；最终包：`code/outputs/formal/calibration/stage_0_2_final_closure_20261012_final_r1/`。四源5,706,252行状态、P2=4,545、唯一后车2,512/车辆对3,072逐事件独立复算一致；tau=15.364279197080283。可靠跟驰边512,043.2s、闭合边208,026.3s；固定分母与连续性fail-closed原语已测试。200ms两相位P2=4,155/4,162，存在消失/连接，不能证明采样等价。极端联合屏蔽P2=4,370，447中心全部唯一、125运动学探索标记，48人工判断仍空；独立物理真实性Unverified。验收准备包可提交研究者，**非Gate Pass Candidate**，Gate仍Active，正式质量标准/有限适用域与独立物理证据待研究者；Stage0.5覆盖及四格配置非本阶段阻断。无Protocol Lock/Stage I/holdout访问。
 
 本段为当前事实；前述Proposal、尚未实现与旧暴露/事件描述均为历史状态，不自动沿用为当前结论。依据：最终包audit/config/provenance、逐事件核验表和Gate矩阵。
+
+## 2026-10-12 Stage 0.2 最终科学验收与正式关闭（取代此前当前状态）
+
+Gate=`pass`；阶段状态=`Completed / Closed`，仅对四个批准 NGSIM 来源在 100 ms 连续性语义下的纵向跟驰风险代理指标测量和描述性现实校准有效。正式 P2 分母为可靠且 P2 可评价跟驰时间：相邻可靠边两端状态均为 `valid` 或 `not_applicable`；不可评价边不作为零风险，仍保留质量统计。P2=4,545；原可靠跟驰512,043.2s；P2可评价503,922.2s；不可评价8,121.0s；可靠闭合208,026.3s。逐源率见最终验收包。Lankershim不可评价比例较高，缺失/无效导致的选择偏差仍未验证。
+
+永久限制：独立物理真实性和人工/独立几何真值未验证；极端值敏感性必须披露；100/200 ms不等价；结果不外推到来源外道路、总体交通或SUMO。不得声称事故预测、危险识别准确率、P2全局最优或AAD因果效应通过。Stage 0.3/0.5/0.6及Protocol Lock、Stage I另行执行；本次未创建锁、未运行Stage I、未访问holdout。R3 Blocked 包保留为历史审计，不覆盖。依据：`code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r4/`。

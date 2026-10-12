@@ -63,15 +63,15 @@
   ],
   "current": {
     "active_experiment_id": "stage_0_2",
-    "active_task": "Stage 0.2 final acceptance blocked pending denominator semantic decision.",
+    "active_task": "Stage 0.2 completed/closed; retain as measurement and descriptive calibration baseline.",
     "why_now": "真实数据先确定可测字段、证据边界和现实范围；阶段 0.2 至 0.6 未闭合前不得进入阶段 1.1。",
-    "next_decision_owner": "human_researcher",
+    "next_decision_owner": null,
     "portable_gate_paths": [
-      "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R3/scientific_gate_report.json",
+      "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",
       "evidence/results/RES-PROTOCOL-READINESS-V1/protocol_lock_readiness_v1.json"
     ],
     "local_gate_paths": [
-      "code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r3/scientific_gate_report.json",
+      "code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r4/scientific_gate_report.json",
       "code/outputs/formal/calibration/protocol_lock_readiness_v1.json"
     ]
   },
@@ -128,7 +128,7 @@
       "purpose": "审计前车关系、净间距、闭合速度、TTC、DRAC和连续风险事件的可测性与参考范围。",
       "research_question": "NGSIM 是否足以形成可审计的跟驰风险测量链和现实参考？",
       "date": "2026-09-07",
-      "status": "active_audit_closure",
+      "status": "completed_closed",
       "code_version": "当前实现使用 stage_0_2；迁移前结果由原始审计和哈希保留。",
       "code_paths": [
         "code/src/riskprop/ngsim_risk_calibration.py",
@@ -151,7 +151,7 @@
         "code/tests/test_stage_0_2_final_closure.py",
         "code/tests/test_stage_0_2_closure_sampling.py"
       ],
-      "configuration": "Approved limited scope; denominator audit found invalid/non_positive_gap endpoint edges; researcher decision required before formal closure.",
+      "configuration": "Researcher-approved limited scope; P2 rate denominator includes reliable following exposure with both endpoints P2-evaluable (valid or not_applicable).",
       "parameters": {
         "provisional_ttc_threshold_s": 2.0,
         "locked_holdout": false,
@@ -176,7 +176,8 @@
         "RES-STAGE-0.2-FORMAL-RISK-MEASUREMENT",
         "RES-STAGE-0.2-FORMAL-RISK-MEASUREMENT-CONSISTENCY-REPAIR",
         "RES-STAGE-0.2-FINAL-CLOSURE",
-        "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R3"
+        "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R3",
+        "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4"
       ],
       "core_metrics": [
         "measurement_status",
@@ -187,13 +188,13 @@
         "event_rule_sensitivity",
         "extreme_case_review"
       ],
-      "current_conclusion": "P2=4545 and sealed exposure reproduce, but formal Gate is blocked pending denominator semantic decision.",
+      "current_conclusion": "Stage 0.2 passed and closed for descriptive longitudinal following-risk proxy calibration in four approved NGSIM sources at 100 ms only.",
       "gate": {
-        "status": "blocked",
-        "portable_path": "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R3/scientific_gate_report.json",
-        "scope": "limited_four_source_ngsim_descriptive_calibration"
+        "status": "pass",
+        "portable_path": "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",
+        "scope": "limited_four_source_ngsim_descriptive_calibration_100ms"
       },
-      "scientific_claim_eligible": false
+      "scientific_claim_eligible": true
     },
     {
       "id": "stage_0_3",
@@ -1016,6 +1017,45 @@
         "docs/STAGE_INDEX.md"
       ],
       "scientific_claim_eligible": false
+    },
+    {
+      "id": "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4",
+      "experiment_id": "stage_0_2",
+      "name": "Stage 0.2 final limited scientific acceptance",
+      "status": "verified_limited_scope_closed",
+      "portable_evidence_paths": [
+        "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/audit.json",
+        "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",
+        "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/p2_event_rates.json",
+        "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_matrix.json",
+        "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scope_and_claims.md",
+        "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/exposure_edge_audit.json",
+        "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/report.md",
+        "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/provenance.json",
+        "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/manifest.json",
+        "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/SHA256SUMS"
+      ],
+      "local_artifact_paths": [
+        "code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r4"
+      ],
+      "code_version_source": "provenance.json",
+      "configuration_source": "scientific_gate_report.json",
+      "data_version_source": "provenance.json and SHA256SUMS",
+      "core_metrics": {
+        "p2_events": 4545,
+        "reliable_following_exposure_s": 512043.2,
+        "p2_evaluable_following_exposure_s": 503922.2,
+        "not_evaluable_following_exposure_s": 8121.0,
+        "reliable_closing_exposure_s": 208026.3,
+        "p2_rate_denominator": "reliable P2-evaluable following exposure; both endpoints valid or not_applicable",
+        "scope": "four approved NGSIM sources, 100 ms"
+      },
+      "current_conclusion": "Passed and closed for limited descriptive calibration; physical truth and specified external-validity limitations remain unverified.",
+      "gate_status": "pass",
+      "paper_locations": [
+        "docs/STAGE_INDEX.md"
+      ],
+      "scientific_claim_eligible": true
     }
   ],
   "history": [

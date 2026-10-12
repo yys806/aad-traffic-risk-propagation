@@ -107,3 +107,7 @@ rho 时间尺度合理性诊断：tau=15.364279 s，完成四源分布、TTC 分
 报告：`docs/STAGE_0_2_FINAL_CLOSURE_2026-10-12.md`；结果：`RES-STAGE-0.2-FINAL-CLOSURE`；最终包：`code/outputs/formal/calibration/stage_0_2_final_closure_20261012_final_r1/`。四源5,706,252行状态、P2=4,545、唯一后车2,512/车辆对3,072逐事件独立复算一致；tau=15.364279197080283。可靠跟驰边512,043.2s、闭合边208,026.3s；固定分母与连续性fail-closed原语已测试。200ms两相位P2=4,155/4,162，存在消失/连接，不能证明采样等价。极端联合屏蔽P2=4,370，447中心全部唯一、125运动学探索标记，48人工判断仍空；独立物理真实性Unverified。验收准备包可提交研究者，**非Gate Pass Candidate**，Gate仍Active，正式质量标准/有限适用域与独立物理证据待研究者；Stage0.5覆盖及四格配置非本阶段阻断。无Protocol Lock/Stage I/holdout访问。
 
 本段为当前事实；前述Proposal、尚未实现与旧暴露/事件描述均为历史状态，不自动沿用为当前结论。依据：最终包audit/config/provenance、逐事件核验表和Gate矩阵。
+
+## RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4
+
+Stage 0.2正式Gate=`pass`、`Completed / Closed`，仅限四源NGSIM、100ms描述性纵向跟驰风险代理测量。正式P2分母按可靠相邻边双端P2可评价定义独立复算；5,039,222条边、503,922.2s，原可靠跟驰512,043.2s仍独立列示，不可评价8,121.0s无零风险含义。P2=4,545；逐源事件率、原始分子分母和新旧分母率对照见最终包。独立物理真实性、缺失选择偏差、极端敏感性、200ms迁移不等价和来源外推为未验证限制。历史R3 Blocked记录不覆盖。证据：`code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r4/`。

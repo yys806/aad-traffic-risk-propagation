@@ -49,3 +49,12 @@ Agreed：具有明确字段证据的诊断片段可作为候选事件的保守�
 - 正式事件率：`P2_event_rate = P2_event_count / reliable_following_exposure_time`，统一报告 events / reliable-following vehicle-hour；可靠闭合暴露另列，不得混用。该事件率是可靠观测条件下的代理事件频率，不是事故概率。
 - 验收原则：批准规则和统计必须可复现；来源、身份连续性、风险状态、事件时间和暴露分母必须有证据；缺失、异常和敏感性如实报告；缺少独立事故真值不自动否决有限描述性校准，但若测量缺陷足以使限定结论失效则阻断。
 - 阶段边界：Stage 0.3、Stage 0.5、目标区域/车辆/四格窗口、消息机制、Stage 0.6、Protocol Lock 和 Stage I 不因本决定完成；不得访问 locked holdout。
+
+## 2026-10-12 — Stage 0.2 最终可评价暴露分母裁决
+
+状态：`Agreed Research Design`；研究者正式批准用于 Stage 0.2 P2 代理事件率。保持 P2=4,545、P2 规则、tau、rho及历史产物不变。
+
+- 正式分母为可靠且 P2 可评价的跟驰暴露时间。可靠相邻观测边两端均须可评价，且来源、诊断时钟、前后车身份、帧号、时间戳和实际连续性符合正式规则。
+- `valid` 正闭合 TTC 与 `not_applicable` 且可靠确认正间距、非闭合均可评价并纳入；`invalid/non_positive_gap`及其他不可评价状态排除。
+- 保留所有状态、原始观测和质量统计；排除不可评价暴露不代表无风险，不插值、不补零、不改变原始状态。可靠跟驰暴露仍单独报告，不与可评价分母混称；可靠闭合暴露另行报告。
+- 正式事件率为 `P2_event_count / P2_evaluable_following_exposure_time`，单位 `events / P2-evaluable following vehicle-hour`，仅解释为可评价可靠观测下的代理事件频率，不是事故概率。

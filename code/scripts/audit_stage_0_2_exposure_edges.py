@@ -30,6 +30,8 @@ def main() -> None:
             & ~d.leader_identity_uncertain.fillna(True)
         )
         edge = adjacent & reliable & reliable.shift(fill_value=False)
+        evaluable_status = d.measurement_status.isin(["valid", "not_applicable"])
+        evaluable_edge = edge & evaluable_status & evaluable_status.shift(fill_value=False)
         transitions = (
             pd.crosstab(prev.measurement_status[edge], d.measurement_status[edge])
             .rename_axis(index="from_status", columns="to_status")
@@ -38,12 +40,18 @@ def main() -> None:
         )
         transition_records = transitions.to_dict("records")
         edge_count = int(edge.sum())
+        evaluable_count = int(evaluable_edge.sum())
         total += edge_count
+        invalid_count = edge_count - evaluable_count
         rows.append({
             "source": path.stem.removeprefix("ngsim_"),
             "state_rows": int(len(d)),
             "reliable_following_edges": edge_count,
             "reliable_following_exposure_s": edge_count * 0.1,
+            "p2_evaluable_following_edges": evaluable_count,
+            "p2_evaluable_following_exposure_s": evaluable_count * 0.1,
+            "not_evaluable_following_edges": invalid_count,
+            "not_evaluable_following_exposure_s": invalid_count * 0.1,
             "non_100ms_edges": int((d.global_time_ms.diff()[edge] != 100).sum()),
             "identity_or_clock_invalid_edges": int((~reliable[edge] | ~reliable.shift(fill_value=False)[edge]).sum()),
             "status_transitions": transition_records,
@@ -55,6 +63,10 @@ def main() -> None:
         "sources": rows,
         "total_reliable_following_edges": total,
         "total_reliable_following_exposure_s": total * 0.1,
+        "total_p2_evaluable_following_edges": sum(x["p2_evaluable_following_edges"] for x in rows),
+        "total_p2_evaluable_following_exposure_s": sum(x["p2_evaluable_following_exposure_s"] for x in rows),
+        "total_not_evaluable_following_exposure_s": sum(x["not_evaluable_following_exposure_s"] for x in rows),
+        "evaluable_rule": "both endpoints measurement_status in {valid, not_applicable}; no zero-risk interpretation assigned to excluded edges",
         "matches_sealed_denominator_s": abs(total * 0.1 - 512043.2) < 1e-9,
         "missing_or_identity_uncertain_edges_included": False,
         "cross_gap_or_cross_identity_accumulation": False,
