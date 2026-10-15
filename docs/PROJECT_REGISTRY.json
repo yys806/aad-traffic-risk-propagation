@@ -59,7 +59,11 @@
     "docs/STAGE_0_2_FINAL_CLOSURE_2026-10-12.md",
     "code/scripts/run_stage_0_2_final_closure.py",
     "code/scripts/stage_0_2_closure_analysis.py",
-    "code/scripts/finalize_stage_0_2_closure.py"
+    "code/scripts/finalize_stage_0_2_closure.py",
+    "docs/STAGE_0_3_PNEUMA_KINEMATICS_2026-10-12.md",
+    "code/src/riskprop/pneuma_urban_kinematics.py",
+    "code/scripts/run_stage_0_3_pneuma_kinematics.py",
+    "code/scripts/verify_stage_0_3_independent.py"
   ],
   "current": {
     "active_experiment_id": "stage_0_2",
@@ -201,32 +205,45 @@
       "name": "阶段 0.3 pNEUMA 城市运动学校准",
       "purpose": "提取复杂城市交通与混合车型的速度、纵向加速度和车型分布。",
       "research_question": "pNEUMA 能否补充城市交通运动学的现实参考范围？",
-      "date": null,
-      "status": "not_started",
-      "code_version": "当前边界为 urban_kinematics_only；旧地图匹配与前车复核实现已归档。",
+      "date": "2026-10-12",
+      "status": "acceptance_package_pending_researcher_review",
+      "code_version": "pneuma_urban_kinematics v1；解析审计、时间加权/车辆等权统计、敏感性与 Stage 0.5 接口适配；旧地图匹配与前车复核保持退役。",
       "code_paths": [
-        "code/src/riskprop/calibration.py"
+        "code/src/riskprop/pneuma_urban_kinematics.py",
+        "code/src/riskprop/real_trajectory.py"
       ],
-      "entrypoints": [],
+      "entrypoints": [
+        "code/scripts/run_stage_0_3_pneuma_kinematics.py",
+        "code/scripts/verify_stage_0_3_independent.py"
+      ],
       "test_paths": [
-        "code/tests/test_calibration.py"
+        "code/tests/test_pneuma_urban_kinematics.py",
+        "code/tests/test_real_trajectory.py"
       ],
-      "configuration": "不推断道路、前车、TTC或DRAC。",
+      "configuration": "时间加权主统计（左矩形，末帧零时长，不跨缺口）；车辆等权稳健性；唯一轨迹车型组成；工程锚定容差 0.043 s（未冻结）；bootstrap 2000×seed=20261012。",
       "parameters": {
-        "role": "urban_kinematics_only"
+        "role": "urban_kinematics_only",
+        "anchor_tolerance_s": 0.043,
+        "tolerance_frozen": false,
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 20261012,
+        "sampling_seed": 20260907
       },
-      "data_version": "pNEUMA d1 raw trajectory",
+      "data_version": "pNEUMA d1 20181101_0800_0830 SHA-256 F9CDE0A3... verified",
       "model": "descriptive kinematic calibration",
       "model_checkpoint": "not_applicable",
-      "result_ids": [],
+      "result_ids": [
+        "RES-STAGE-0.3-PNEUMA-KINEMATICS-R1"
+      ],
       "core_metrics": [
         "speed_mps",
         "longitudinal_acceleration_mps2",
         "vehicle_type"
       ],
-      "current_conclusion": "数据已就位，但新职责下的专用统计入口和正式分布尚未生成；旧前车人工复核不再是当前 Gate。",
+      "current_conclusion": "785 轨迹 / 1,239,475 状态全量审计与描述性统计完成，独立复算零差异，Stage 0.5 接口测试通过；Gate Pass Candidate，科学验收与未冻结参数待研究者。",
       "gate": {
-        "status": "not_started"
+        "status": "gate_pass_candidate_pending_researcher_review",
+        "portable_path": "evidence/results/RES-STAGE-0.3-PNEUMA-KINEMATICS-R1/audit.json"
       },
       "scientific_claim_eligible": false
     },
@@ -1056,6 +1073,50 @@
         "docs/STAGE_INDEX.md"
       ],
       "scientific_claim_eligible": true
+    },
+    {
+      "id": "RES-STAGE-0.3-PNEUMA-KINEMATICS-R1",
+      "experiment_id": "stage_0_3",
+      "name": "Stage 0.3 pNEUMA 城市运动学校准综合实施与验收准备",
+      "status": "verified_engineering_and_descriptive_pending_scientific_acceptance",
+      "portable_evidence_paths": [
+        "evidence/results/RES-STAGE-0.3-PNEUMA-KINEMATICS-R1/audit.json",
+        "evidence/results/RES-STAGE-0.3-PNEUMA-KINEMATICS-R1/config.json",
+        "evidence/results/RES-STAGE-0.3-PNEUMA-KINEMATICS-R1/gate_matrix_summary.json",
+        "evidence/results/RES-STAGE-0.3-PNEUMA-KINEMATICS-R1/independent_verification.json",
+        "evidence/results/RES-STAGE-0.3-PNEUMA-KINEMATICS-R1/provenance.json",
+        "evidence/results/RES-STAGE-0.3-PNEUMA-KINEMATICS-R1/manifest.json",
+        "evidence/results/RES-STAGE-0.3-PNEUMA-KINEMATICS-R1/SHA256SUMS"
+      ],
+      "local_artifact_paths": [
+        "code/outputs/formal/calibration/stage_0_3_pneuma_kinematics_20261012_r1"
+      ],
+      "code_version_source": "code/src/riskprop/pneuma_urban_kinematics.py + code/scripts/run_stage_0_3_pneuma_kinematics.py (package provenance SHA-256)",
+      "configuration_source": "code/outputs/formal/calibration/stage_0_3_pneuma_kinematics_20261012_r1/config.json",
+      "data_version_source": "dataset/pNEUMA/20181101_d1_0800_0830.csv SHA-256 F9CDE0A3CA5010E2217EA4CBC0BDF26ED87BE1EC0D8C2BE5E2CB93AAC82BA28C",
+      "core_metrics": {
+        "unique_tracks": 785,
+        "state_records": 1239475,
+        "time_weighted_exposure_s": 49547.6,
+        "speed_mean_mps_time_weighted": 4.838218,
+        "speed_mean_mps_vehicle_equal": 6.207738,
+        "accel_mean_mps2_time_weighted": -0.00441,
+        "vehicle_type_counts": {
+          "Bus": 20,
+          "Car": 443,
+          "Heavy Vehicle": 2,
+          "Medium Vehicle": 30,
+          "Motorcycle": 153,
+          "Taxi": 137
+        },
+        "independent_verification_discrepancies": 0
+      },
+      "current_conclusion": "Stage 0.3 工程与已批准统计设计完成；Gate Pass Candidate；连续性容差、描述性阈值、车型映射、适用范围与科学 Gate 待研究者决定。",
+      "gate_status": "gate_pass_candidate_pending_researcher_review",
+      "paper_locations": [
+        "docs/STAGE_0_3_PNEUMA_KINEMATICS_2026-10-12.md"
+      ],
+      "scientific_claim_eligible": false
     }
   ],
   "history": [

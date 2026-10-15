@@ -8,9 +8,9 @@ v2 便携 audit 能证明 NGSIM 生成有效跟驰测量与风险事件，但异
 
 Evidence：`evidence/results/RES-STAGE-0.2-NGSIM-V2/audit.json`、`code/src/riskprop/ngsim_risk_calibration.py`、阶段 0.2 执行记录。
 
-### KI-02 — 阶段 0.3 无正式产物
+### KI-02 — 阶段 0.3 正式产物已生成，科学参数未冻结
 
-原始 pNEUMA 数据与通用宽表读取函数存在，但没有新职责下的专用统计入口、冻结 config、分布表或 audit。Status：`Not started`。
+2026-10-12 验收准备包与独立复算已完成（`RES-STAGE-0.3-PNEUMA-KINEMATICS-R1`），但连续性容差、描述性阈值、车型映射、适用范围与科学 Gate 仍待研究者裁决；裁决前阶段 0.3 不写入 `Completed / Closed`。
 
 ### KI-03 — packet 级通信证据不可用
 
@@ -18,7 +18,7 @@ Evidence：`evidence/results/RES-STAGE-0.2-NGSIM-V2/audit.json`、`code/src/risk
 
 ### KI-04 — 阶段 0.5 需要重建
 
-现有结果是职责迁移前的部分真实参考，虽未纳入 pNEUMA TTC，但来源仍指向旧 map-match 产物；SUMO calibration 样本缺失。该结果不能作为最终 coverage Gate。
+现有结果是职责迁移前的部分真实参考，虽未纳入 pNEUMA TTC，但来源仍指向旧 map-match 产物；SUMO calibration 样本缺失。该结果不能作为最终 coverage Gate。pNEUMA 侧参考接口已由 Stage 0.3 r1 包提供并通过兼容性测试。
 
 ### KI-05 — readiness 是迁移前快照
 

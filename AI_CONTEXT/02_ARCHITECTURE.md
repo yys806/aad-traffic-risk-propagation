@@ -26,7 +26,7 @@ SUMO -> 四格与五表 ----+
 
 - 阶段 0.1 输入 SUMO 配置与固定 seed，输出每格封存目录、五表 Parquet、clock/lifecycle、audit、manifest、provenance 与 SHA256SUMS。
 - 阶段 0.2 输入显式列出的 NGSIM calibration 窗口，输出标准化 state Parquet、合并后的 risk events 及封存元数据。
-- 阶段 0.3 当前只有 `read_pneuma_wide()` 可展开原始轨迹；专用正式统计入口与输出尚未实现。
+- 阶段 0.3 输入 pNEUMA 原始 CSV，输出解析审计、状态/轨迹统计、速度/加速度分布、敏感性、bootstrap、Stage 0.5 标准化参考与不可覆盖验收包。
 - 阶段 0.4 输入 SPMD RV_RX 与访问状态，输出接收连续性 profile 和证据边界 audit。
 - 阶段 0.5 输入 NGSIM state/events、pNEUMA 运动学 state 与 SUMO 样本，输出现实参考和 coverage gate。
 - 阶段 0.6 输入解析/物理真值与前置 Gate，输出技术 audit、readiness，满足全部条件后才能写协议锁。

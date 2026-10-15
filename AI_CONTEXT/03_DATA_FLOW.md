@@ -22,7 +22,7 @@ raw data
 
 ## pNEUMA 数据流
 
-`dataset/pNEUMA/20181101_d1_0800_0830.csv` → `real_trajectory.read_pneuma_wide()`，将“每条轨迹一行、后接六字段状态块”展开为逐状态表。当前保留字段包括车辆类型、位置、速度、纵/横向加速度和时间；不推断道路、leader、TTC 或 DRAC。专用阶段 0.3 汇总入口与正式产物仍未实现。
+`dataset/pNEUMA/20181101_d1_0800_0830.csv` → `pneuma_urban_kinematics.audit_pneuma_source()` 流式审计与解析（或历史接口 `real_trajectory.read_pneuma_wide()`）→ 逐状态表（速度、纵/横向加速度、时间、车型、元数据）→ `flag_state_quality()` 时间质量标记 → 时间加权/车辆等权统计、敏感性与 bootstrap → `build_stage_0_5_reference_states()` 标准化参考 → Stage 0.5 `write_real_reference_package()`。不推断道路、leader、TTC 或 DRAC。2026-10-12 专用阶段 0.3 汇总入口与验收包已实现。
 
 ## SPMD 数据流
 
@@ -47,6 +47,10 @@ NGSIM 跟驰参考 + pNEUMA 运动学参考 → `write_real_reference_package()`
 
 NGSIM leader lookup 在存在诊断字段时使用 run scope、Global_Time、diagnostic_clock_anchor_ms、Frame_ID 和唯一原始前车身份；重复或缺失字段不猜测。任务 1.5 独立核查真实 Lankershim 0 跨时钟匹配，四源回归 0 行核心差异。
 
+
+## 2026-10-12 Stage 0.3 参考接口
+
+stage_0_3 验收包 `stage_0_5_reference_states.parquet`（含 dataset/site/window_id/vehicle_id/vehicle_type/time_s/speed_mps/acceleration_mps2/quality_status/time_weighting_eligible/source_file_sha256）可直接进入 `write_real_reference_package()`；NGSIM 与 pNEUMA 不拼接为 iid 样本。
 
 ## 2026-10-12 正式测量与收口接口
 

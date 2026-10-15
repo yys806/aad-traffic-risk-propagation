@@ -18,6 +18,8 @@
 
 只整理速度、纵向加速度和车型分布；不再推断前车，不计算 TTC/DRAC，不进行人工前车复核。
 
+2026-10-12：综合实施与验收准备完成。785 轨迹 / 1,239,475 状态全量审计、时间加权/车辆等权描述性统计、敏感性与 bootstrap、Stage 0.5 真实接口测试均通过，独立复算零差异。报告：`docs/STAGE_0_3_PNEUMA_KINEMATICS_2026-10-12.md`；结果：`RES-STAGE-0.3-PNEUMA-KINEMATICS-R1`；验收准备包：`code/outputs/formal/calibration/stage_0_3_pneuma_kinematics_20261012_r1/`。状态 **Gate Pass Candidate**，科学 Gate 与未冻结参数（连续性容差、描述性阈值、车型映射、适用范围）待研究者审核。
+
 ## stage_0_4 — SPMD 通信证据边界
 
 已确认 RV_RX 只支持接收状态连续性；packet级时延、丢包和采用仍不可观测。

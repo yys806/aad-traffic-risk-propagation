@@ -49,6 +49,7 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
                 "protocol_lock_readiness_v1.json",
             )
         ],
+        "RES-STAGE-0.3-PNEUMA-KINEMATICS-R1": [],
     }
 
     stage_0_1_root = "code/outputs/formal/stage_0_1/e00_real_sumo_20260907_primary_v3"
@@ -110,7 +111,17 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
             "stage_0_6_prelock_validation_v2",
             ("audit.json", "manifest.json", "SHA256SUMS"),
         ),
+        "RES-STAGE-0.3-PNEUMA-KINEMATICS-R1": (
+            "stage_0_3_pneuma_kinematics_20261012_r1",
+            ("audit.json", "config.json", "provenance.json", "manifest.json", "SHA256SUMS", "gate_matrix_summary.json"),
+        ),
     }
+    pairs["RES-STAGE-0.3-PNEUMA-KINEMATICS-R1"].append(
+        (
+            "code/outputs/formal/calibration/stage_0_3_pneuma_kinematics_20261012_r1_independent_verification.json",
+            "independent_verification.json",
+        )
+    )
     for result_id, directory in {
         "RES-STAGE-0.2-TASK-2.4": "stage_0_2_task_2_4_20261011_r2",
         "RES-STAGE-0.2-TASK-2.5": "stage_0_2_task_2_5_20261011_r1",

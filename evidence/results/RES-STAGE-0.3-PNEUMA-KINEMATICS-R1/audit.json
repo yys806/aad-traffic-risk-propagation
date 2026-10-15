@@ -1,0 +1,78 @@
+{
+  "anchor_tolerance_rule": "modal adjacent interval 0.040000 s + 5% relative tolerance + 1 ms; engineering anchor only, not a frozen scientific threshold",
+  "anchor_tolerance_s": 0.042999999999961805,
+  "bootstrap_accel_mean": {
+    "bootstrap_sd": 0.00203640461735851,
+    "ci_high": -0.00036371686539447877,
+    "ci_low": -0.008416018022974906,
+    "point_estimate": -0.004410235006337359,
+    "replicates": 2000,
+    "tolerance_s": 0.042999999999961805,
+    "value_column": "longitudinal_accel_mps2",
+    "vehicles": 785
+  },
+  "bootstrap_speed_mean": {
+    "bootstrap_sd": 0.22825456106528794,
+    "ci_high": 5.313696216366676,
+    "ci_low": 4.404188240147638,
+    "point_estimate": 4.838218067205407,
+    "replicates": 2000,
+    "tolerance_s": 0.042999999999961805,
+    "value_column": "speed_mps",
+    "vehicles": 785
+  },
+  "dt_stats": {
+    "gap_pairs": 0,
+    "max_dt_s": 0.04000000000007731,
+    "median_dt_s": 0.03999999999999204,
+    "min_dt_s": 0.03999999999996362,
+    "mode_dt_s": 0.03999999999996362,
+    "nonpositive_pairs": 0,
+    "p99_dt_s": 0.04000000000007731,
+    "total_pairs": 1238690
+  },
+  "duplicate_state_keys": 0,
+  "duplicate_track_ids_count": 0,
+  "experiment_id": "stage_0_3",
+  "gate_matrix_status_counts": {
+    "Decision Required": 1,
+    "Not Applicable": 1,
+    "Unverified": 1,
+    "Verified": 2,
+    "Verified (descriptive)": 2,
+    "Verified (engineering)": 1,
+    "Verified (engineering); 科学容差 Decision Required": 1
+  },
+  "gate_status": "acceptance_package_pending_researcher_review",
+  "malformed_tracks_count": 0,
+  "metadata_failures_count": 0,
+  "parse_peak_memory_mb": 1571.7998456954956,
+  "parsed_state_records": 1239475,
+  "raw_track_rows": 785,
+  "runtime_seconds": 273.6896059999708,
+  "schema_version": "aad.stage-0-3.audit.v1",
+  "scientific_claim_eligible": false,
+  "source_bytes": 73509485,
+  "source_file": "D:/shen/TJU/AAD/dataset/pNEUMA/20181101_d1_0800_0830.csv",
+  "source_sha256": "F9CDE0A3CA5010E2217EA4CBC0BDF26ED87BE1EC0D8C2BE5E2CB93AAC82BA28C",
+  "stage_0_5_interface_test": {
+    "executed": true,
+    "following_rows": 20000,
+    "gate_status": "pending_simulation_sample",
+    "kinematics_rows": 25000,
+    "package_dir": "D:/shen/TJU/AAD/code/outputs/formal/calibration/stage_0_3_pneuma_kinematics_20261012_r1_stage05_interface_test/reference_package",
+    "pneuma_ttc_included": false,
+    "risk_event_rows": 4545
+  },
+  "time_max_s": 888.0,
+  "time_min_s": 38.4,
+  "unique_tracks": 785,
+  "vehicle_type_counts": {
+    "Bus": 20,
+    "Car": 443,
+    "Heavy Vehicle": 2,
+    "Medium Vehicle": 30,
+    "Motorcycle": 153,
+    "Taxi": 137
+  }
+}

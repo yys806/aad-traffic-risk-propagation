@@ -63,3 +63,7 @@ Added isolated formal measurement interface/config, P2 event revalidation, contr
 
 
 2026-10-12 验证环境收尾：11个历史本机产物测试显式依赖封存包，在纯Git克隆缺包时skip；本机仍全量执行，不将跳过计为通过。计算原语/独立采样单元测试不跳过。
+
+## 2026-10-12 Stage 0.3 综合实施
+
+新增 `pneuma_urban_kinematics.py`（流式解析审计、时间质量标记、时间加权/车辆等权统计、连续性与极端值敏感性、轨迹簇 bootstrap、Stage 0.5 参考接口、不可覆盖验收包）、入口 `run_stage_0_3_pneuma_kinematics.py`、独立复算 `verify_stage_0_3_independent.py` 和 19 个单元测试。真实全量审计：785 轨迹 / 1,239,475 状态，零缺口/畸形/重复；时间加权速度 mean=4.8382 m/s、加速度 mean=-0.0044 m/s²；独立复算零差异；Stage 0.5 真实接口测试通过。注册表、索引、AI_CONTEXT 同步；科学参数未冻结，Gate Pass Candidate 待研究者。

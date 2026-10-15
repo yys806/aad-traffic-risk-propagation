@@ -1,0 +1,96 @@
+{
+  "schema_version": "aad.stage-0-3.gate-matrix-summary.v1",
+  "items": [
+    {
+      "item": "原始数据与字段解释可靠",
+      "basis": "SHA-256 与封存清单一致；宽表结构、单位与 Zenodo 元数据一致",
+      "method": "文件哈希 + 流式解析审计 + 结构测试",
+      "result": "785 轨迹 / 1239475 状态；畸形 0；重复 0",
+      "evidence": "audit.json, states_audit.parquet, code/tests/test_pneuma_urban_kinematics.py",
+      "status": "Verified",
+      "remaining_limitation": "字段语义依据数据提供方文档；无独立物理真值"
+    },
+    {
+      "item": "时间连续性与统计权重可审计",
+      "basis": "相邻 dt 实证分布；8 个候选容差敏感性；左矩形规则显式记录",
+      "method": "dt 分布统计 + continuity_sensitivity + 单元测试",
+      "result": "mode dt=0.040000s；缺口对 0；锚定容差 0.043000s",
+      "evidence": "continuity_sensitivity.csv, audit.json",
+      "status": "Verified (engineering); 科学容差 Decision Required",
+      "remaining_limitation": "正式连续性容差未冻结；锚定规则只是工程默认"
+    },
+    {
+      "item": "速度与纵向加速度描述性参考完整",
+      "basis": "研究者认可的时间加权主统计 + 车辆等权稳健性框架",
+      "method": "分位数/直方图/ECDF/状态份额/按速度分层条件分布",
+      "result": "速度 mean=4.8382 m/s；加速度 mean=-0.0044 m/s²",
+      "evidence": "speed_time_weighted_by_type.csv, acceleration_time_weighted_by_type.csv, fig_*.png",
+      "status": "Verified (descriptive)",
+      "remaining_limitation": "单文件 30 分钟；不代表城市总体"
+    },
+    {
+      "item": "车型分布可复算",
+      "basis": "唯一轨迹计数框架",
+      "method": "compute_vehicle_type_composition + 独立计数测试",
+      "result": "Bus=20; Car=443; Heavy Vehicle=2; Medium Vehicle=30; Motorcycle=153; Taxi=137",
+      "evidence": "vehicle_type_composition.csv",
+      "status": "Verified",
+      "remaining_limitation": "SUMO vType 映射未批准"
+    },
+    {
+      "item": "质量和敏感性分析充分",
+      "basis": "任务 C 的 7 项描述性分析",
+      "method": "运动学一致性诊断 + 极端值/连续性/权重/车型敏感性 + 轨迹簇 bootstrap",
+      "result": "速度时间加权 mean 95% CI [4.4042,5.3137]",
+      "evidence": "extreme_sensitivity.csv, bootstrap_*.csv, kinematic_consistency.json",
+      "status": "Verified (descriptive)",
+      "remaining_limitation": "异常阈值与正式质量分类需研究者批准"
+    },
+    {
+      "item": "具备进入 Stage 0.5 的有限城市运动学参考条件",
+      "basis": "Stage 0.5 接口契约与抽样审计",
+      "method": "write_real_reference_package 构造 + 真实全量接口测试",
+      "result": "接口测试通过；pNEUMA TTC 未纳入",
+      "evidence": "stage_0_5_reference_states.parquet, sampling_balance_audit.csv",
+      "status": "Verified (engineering)",
+      "remaining_limitation": "Stage 0.5 场景分层/容差/Gate 未冻结；NGSIM+pNEUMA 不视为 iid"
+    },
+    {
+      "item": "需研究者批准的阈值/容差/适用范围",
+      "basis": "任务边界",
+      "method": "本报告第 11 节与 Decision Required 清单",
+      "result": "连续性容差、低速/近零阈值、异常屏蔽、车型映射、代表性声明",
+      "evidence": "gate_matrix.csv, report.md",
+      "status": "Decision Required",
+      "remaining_limitation": "冻结前不得宣称正式质量分类或代表性"
+    },
+    {
+      "item": "pNEUMA 风险/TTC 职责",
+      "basis": "2026-09-10 研究者决定",
+      "method": "未执行任何 leader/TTC/DRAC 计算",
+      "result": "已退役职责未恢复",
+      "evidence": "AI_CONTEXT/06_DECISIONS.md",
+      "status": "Not Applicable",
+      "remaining_limitation": "无"
+    },
+    {
+      "item": "独立物理真实性验证",
+      "basis": "无视频/独立测量",
+      "method": "仅内部运动学一致性诊断",
+      "result": "未验证",
+      "evidence": "kinematic_consistency.json",
+      "status": "Unverified",
+      "remaining_limitation": "如需物理真值需独立数据"
+    }
+  ],
+  "status_counts": {
+    "Verified": 2,
+    "Verified (descriptive)": 2,
+    "Verified (engineering); 科学容差 Decision Required": 1,
+    "Verified (engineering)": 1,
+    "Decision Required": 1,
+    "Not Applicable": 1,
+    "Unverified": 1
+  },
+  "gate_candidate": "Stage 0.3 Gate Pass Candidate (pending researcher scientific acceptance)"
+}

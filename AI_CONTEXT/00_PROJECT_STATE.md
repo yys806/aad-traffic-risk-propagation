@@ -17,19 +17,19 @@
 
 ## 当前主要实验
 
-- `stage_0_2`：NGSIM 跟驰风险审计，`Active`，当前主任务。
-- `stage_0_3`：pNEUMA 城市运动学校准，数据已就位但正式产出未开始。
+- `stage_0_2`：NGSIM 跟驰风险审计，`Completed / Closed`（有限范围），作为已封存参考。
+- `stage_0_3`：pNEUMA 城市运动学校准，综合实施与验收准备完成，`Gate Pass Candidate` 待研究者审核。
 - `stage_0_4`：SPMD 接收状态连续性边界已验证，packet 级字段仍不可用。
-- `stage_0_5`：仿真—现实覆盖，缺按新分工生成的参考包和 SUMO 样本。
+- `stage_0_5`：仿真—现实覆盖，缺按新分工生成的 SUMO 样本；pNEUMA 参考接口已就位并通过兼容性测试。
 - `stage_0_6`：技术真值检查已有证据，科学容差与协议锁未完成。
 
 ## 当前最重要的问题
 
-阶段 0.2 工程、异常诊断与描述性证据已收口，独立物理真实性与科学质量验收裁决未完成；阶段 0.3 无专用正式统计产物；阶段 0.5 缺 SUMO 校准样本；科学容差和样本量未冻结。当前便携 readiness 是迁移前旧键快照，只能证明当时 `protocol_lock_allowed=false`。
+阶段 0.2 已在有限范围内关闭；阶段 0.3 工程与已批准统计设计完成、独立复算零差异，但连续性容差、描述性阈值、车型映射、适用范围与科学 Gate 待研究者裁决；阶段 0.5 缺 SUMO 校准样本；科学容差和样本量未冻结。当前便携 readiness 是迁移前旧键快照，只能证明当时 `protocol_lock_allowed=false`。
 
 ## 当前下一步
 
-按已登记顺序：研究者审阅阶段 0.2 科学验收准备包并解决两项核心阻断，收口阶段 0.3；冻结阶段 0.4 的有限证据边界；完成阶段 0.5；再完成阶段 0.6 科学参数冻结与协议锁。协议锁通过前不得进入阶段 1.1。
+按已登记顺序：研究者审阅阶段 0.3 Gate Pass Candidate 包并裁决科学适用范围与未冻结参数；冻结阶段 0.4 的有限证据边界；完成阶段 0.5（pNEUMA 参考已就位，缺 SUMO 样本）；再完成阶段 0.6 科学参数冻结与协议锁。协议锁通过前不得进入阶段 1.1。
 
 ## 2026-10-09 Stage 0 基线核查
 
@@ -134,7 +134,11 @@ P1/P2/P3 定向验证已完成：成员级事件重叠图 20,171 条边，事件
 
 本段为当前事实；前述Proposal、尚未实现与旧暴露/事件描述均为历史状态，不自动沿用为当前结论。依据：最终包audit/config/provenance、逐事件核验表和Gate矩阵。
 
-## 2026-10-12 Stage 0.2 最终科学验收与正式关闭（取代此前当前状态）
+## 2026-10-12 Stage 0.3 综合实施与验收准备（当前状态）
+
+报告：`docs/STAGE_0_3_PNEUMA_KINEMATICS_2026-10-12.md`；结果：`RES-STAGE-0.3-PNEUMA-KINEMATICS-R1`；验收准备包：`code/outputs/formal/calibration/stage_0_3_pneuma_kinematics_20261012_r1/`（不可覆盖，SHA256SUMS 校验通过）。pNEUMA 全量文件 785 条唯一轨迹、1,239,475 条状态、0.04 s 等间隔、零缺口/畸形/重复；时间加权速度 mean=4.8382 m/s、车辆等权 mean=6.2077 m/s；纵向加速度 mean=-0.0044、sd=0.7454 m/s²，极端记录保留并做敏感性；轨迹簇 bootstrap 2000 次。新增 `pneuma_urban_kinematics.py`、`run_stage_0_3_pneuma_kinematics.py`、`verify_stage_0_3_independent.py` 与 19 个单元测试；独立复算 discrepancies=0；Stage 0.5 现有 `write_real_reference_package()` 真实全量接口测试通过（25,000 kinematics、20,000 following、4,545 events，pNEUMA TTC 未纳入）。状态 **Gate Pass Candidate**；连续性容差（工程锚定 0.043 s 未冻结）、描述性阈值、车型→SUMO vType 映射、适用范围与科学 Gate 待研究者决定。未恢复 pNEUMA 地图匹配/前车/TTC/人工 QA；无 Protocol Lock/Stage I/holdout 访问。
+
+## 2026-10-12 Stage 0.2 最终科学验收与正式关闭
 
 Gate=`pass`；阶段状态=`Completed / Closed`，仅对四个批准 NGSIM 来源在 100 ms 连续性语义下的纵向跟驰风险代理指标测量和描述性现实校准有效。正式 P2 分母为可靠且 P2 可评价跟驰时间：相邻可靠边两端状态均为 `valid` 或 `not_applicable`；不可评价边不作为零风险，仍保留质量统计。P2=4,545；原可靠跟驰512,043.2s；P2可评价503,922.2s；不可评价8,121.0s；可靠闭合208,026.3s。逐源率见最终验收包。Lankershim不可评价比例较高，缺失/无效导致的选择偏差仍未验证。
 

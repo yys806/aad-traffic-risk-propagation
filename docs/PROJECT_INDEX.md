@@ -28,7 +28,7 @@
 |---|---|---|---|
 | 0.1 | `stage_0_1_sumo.py` | `run/analyze/compare_stage_0_1_*` | `test_stage_0_1_sumo.py` |
 | 0.2 | `ngsim_risk_calibration.py` | `run_stage_0_2_ngsim.py` | `test_ngsim_risk_calibration.py` |
-| 0.3 | `calibration.py` | 待补运动学统计入口 | `test_calibration.py` |
+| 0.3 | `pneuma_urban_kinematics.py` | `run_stage_0_3_pneuma_kinematics.py`、`verify_stage_0_3_independent.py` | `test_pneuma_urban_kinematics.py`、`test_real_trajectory.py` |
 | 0.4 | `communication_observability.py` | `profile/run_stage_0_4_*` | `test_communication_observability.py` |
 | 0.5 | `simulation_real_coverage.py` | `prepare/run_stage_0_5_*` | `test_simulation_real_coverage.py` |
 | 0.6 | `prelock_metrics.py`、`prelock_validation.py`、`protocol_lock.py` | `run_stage_0_6_*`、readiness | 对应三组测试 |
@@ -40,6 +40,7 @@
 | 任务 1.5 跨时钟前车匹配收尾 | `docs/STAGE_0_2_TASK_1_5_LEADER_MATCHING_CLOSURE_2026-10-10.md` |
 | 任务 2 NGSIM 风险质量与事件规则审计 | `docs/STAGE_0_2_TASK_2_RISK_QUALITY_AUDIT_2026-10-10.md` |
 | 任务 2.1 极端风险值与候选事件真实性复核 | `docs/STAGE_0_2_TASK_2_1_EXTREME_REVIEW_2026-10-10.md` |
+| Stage 0.3 pNEUMA 城市运动学校准与验收准备 | `docs/STAGE_0_3_PNEUMA_KINEMATICS_2026-10-12.md` |
 
 
 ## Stage 0.2 综合收口入口

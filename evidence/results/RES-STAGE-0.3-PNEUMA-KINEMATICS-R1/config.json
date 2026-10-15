@@ -1,0 +1,43 @@
+{
+  "anchor_tolerance_rule": "modal adjacent interval 0.040000 s + 5% relative tolerance + 1 ms; engineering anchor only, not a frozen scientific threshold",
+  "anchor_tolerance_s": 0.042999999999961805,
+  "bootstrap_replicates": 2000,
+  "bootstrap_seed": 20261012,
+  "continuity_candidates_s": [
+    0.04,
+    0.045,
+    0.05,
+    0.06,
+    0.08,
+    0.1,
+    0.12,
+    0.16
+  ],
+  "experiment_id": "stage_0_3",
+  "near_zero_accel_band_mps2": 0.05,
+  "quantile_levels": [
+    0.05,
+    0.25,
+    0.5,
+    0.75,
+    0.95,
+    0.99
+  ],
+  "sampling_max_rows_per_group": 5000,
+  "sampling_seed": 20260907,
+  "schema_version": "aad.stage-0-3.config.v1",
+  "scientific_claim_eligible": false,
+  "source_csv": "D:/shen/TJU/AAD/dataset/pNEUMA/20181101_d1_0800_0830.csv",
+  "source_sha256": "F9CDE0A3CA5010E2217EA4CBC0BDF26ED87BE1EC0D8C2BE5E2CB93AAC82BA28C",
+  "speed_strata_mps": [
+    0.0,
+    2.0,
+    5.0,
+    8.0,
+    12.0,
+    18.0,
+    25.0,
+    Infinity
+  ],
+  "weighting_framework": "time-weighted primary; vehicle-equal-weight robustness; unique-trajectory composition"
+}

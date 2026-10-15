@@ -10,6 +10,7 @@
 
 - 阶段 0.1工程基础设施可运行、封存和复算，但不是科学结果。
 - 阶段 0.2的迁移前审计证明 NGSIM能够构造跟驰风险测量与连续事件。
+- 阶段 0.3 pNEUMA 城市运动学描述性统计、质量审计与 Stage 0.5 参考接口已完成并通过独立复算；科学验收待研究者。
 - 阶段 0.4确认 RV_RX只能支持接收状态连续性。
 - 阶段 0.6解析与工程数值检查通过。
 
@@ -24,8 +25,8 @@
 | 阶段 | 状态 |
 |---|---|
 | 阶段 0.1 | `engineering_pass_scientific_fail` |
-| 阶段 0.2 | `active` |
-| 阶段 0.3 | `not_started`（数据已就位，当前职责下尚无正式产出） |
+| 阶段 0.2 | `pass`（有限范围） |
+| 阶段 0.3 | `gate_pass_candidate_pending_researcher_review` |
 | 阶段 0.4 | `pending_official_packet_access`，可冻结为有限证据边界 |
 | 阶段 0.5 | `pending_simulation_sample` |
 | 阶段 0.6 | `blocked_by_calibration_and_tolerance_freeze` |
@@ -34,8 +35,8 @@
 
 ## 尚未确认
 
-- NGSIM异常与极端风险值的最终可信范围。
-- pNEUMA城市运动学分布的最终统计。
+- NGSIM异常与极端风险值的最终可信范围（Stage 0.2 已在有限范围内关闭，物理真实性仍 Unverified）。
+- pNEUMA结果的科学适用范围、连续性容差与车型映射（Stage 0.3 描述性统计已完成，参数未冻结）。
 - SPMD packet级通信证据。
 - SUMO对现实分布的覆盖程度。
 - 科学容差、样本量以及核心效应的存在、方向和大小。
