@@ -79,3 +79,7 @@ AAD-0.3.3：五项研究者决定归档（06_DECISIONS）；`finalize_stage_0_3_
 ## 2026-10-17 — AAD-0.3.4：Zotero 分类整理与 Stage 0.3 状态修复
 
 Zotero 六主题调整经批准并官方授权执行（更名 05、新建 06、移动 21 条、NC 标签补 5、空 NC 集合删除）；计数 7/11/7/4/11/16 核验通过，56 item key/附件完整，DRIFT 与 7 对重复条目未动；执行清单 `doc/literature-notes/zotero_reorg_2026-10-17_execution.json`。Stage 0.3 一致性：注册表 scientific_claim_eligible 对齐 R3（true，范围限单文件描述性校准）、0.043 s 文本改已批准、R3 复核计数勘误 17→18（封存包未动）。Zotero 决定归档 06_DECISIONS。
+
+## 2026-10-17 — AAD-0.4.1：Stage 0.4 数据源下载前调查
+
+只读完成：SPMD 访问状态重验（302 重定向，可达性待 Range 重验）、Packet/BsmP1/RSE_BSM 官方字典结论、RSE_BSM 新识别、时延时钟同步前置、外源候选（AMCD/NYC/Tampa/Sandbox）、8×11 证据矩阵与 P0/P1/P2 下载建议（渐进 RSE_BSM+Packet → 条件性 BsmP1；完整包不必要）。交付 `docs/STAGE_0_4_TASK_0_4_1_DATASET_SURVEY.md`、`docs/research/stage_0_4_dataset_candidates.json`；KI-03 与阶段索引更新；Gate 不变。

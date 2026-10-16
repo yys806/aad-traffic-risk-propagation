@@ -64,3 +64,7 @@
 ## 2026-10-17 — AAD-0.3.4：Zotero 分类正式整理与 Stage 0.3 状态一致性修复
 
 任务 AAD-0.3.4。**Zotero**：经研究者批准与官方本机 API 授权（Zotero 10 `/api/local/authorize` 对话框确认）执行六主题调整——05 原位更名、新建 06、21 条文献按对照表移动、5 篇 NC 论文补标签、空 `NC_统一汇总` 删除；执行后核验 7/11/7/4/11/16、56 item key 与附件无丢失、11/11 NC 标签、7 对 AAD↔DRIFT 重复条目与 DRIFT 侧原样保留；逐条 before/after 见 `doc/literature-notes/zotero_reorg_2026-10-17_execution.json`。59↔56 PDF 差额 `Unverified`。**Stage 0.3 一致性**：注册表 experiment `scientific_claim_eligible` 对齐 R3（true，仅限单文件有限描述性校准范围，与 Stage 0.2 关闭先例一致）；`configuration` 文本改为 0.043 s 已批准（仅本 25 Hz 文件）；R3 复核计数勘误 17→18（封存包机器记录自始为 18，包未改动）。无 Protocol Lock/Stage I/holdout 访问；不重开 Stage 0.3 Gate。
+
+## 2026-10-17 — AAD-0.4.1：Stage 0.4 通信数据源下载前调查
+
+只读调查（未下载/未申请/未改 Gate）：SPMD 官方条目重验（DOI 10.21949/1504482；端点 403→302 变化，可达性待 Range 重验）；以官方手册字典确认 Packet/BsmP1/RSE_BSM 字段语义与时延/丢包的条件链；识别 RSE_BSM（3.23 GB）为被忽视的最低成本接收侧证据；跨设备时钟同步为时延共同未验证前置。外源候选：AMCD（同行 sent/received）、NYC IE（告警级）、Tampa 样本（RSU 接收）、ITS DataHub Sandbox。交付科研需求-证据矩阵（8 需求 × 11 候选）、P0/P1/P2 下载决策表与 8 项待真实数据确认问题。新增 `docs/STAGE_0_4_TASK_0_4_1_DATASET_SURVEY.md` 与 `docs/research/stage_0_4_dataset_candidates.json`；KI-03 更新。Zotero 无数据集论文，候选 DOI 已列待研究者决定。

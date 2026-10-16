@@ -155,3 +155,7 @@ Gate=`pass`；阶段状态=`Completed / Closed`，仅对四个批准 NGSIM 来�
 ## 2026-10-17 文献库结构（当前）
 
 Zotero `TJU → AAD`（唯一文献库）已按研究者批准完成六主题调整：01_风险事件与安全指标 7、02_混合自动驾驶传播与控制 11、03_闭环仿真与场景测试 7、04_人类行为交互与轨迹预测 4、05_非局部交通流模型 11、06_类超距与因果理论 16，共 56 条；`NC_统一汇总` 已退役，11 篇 NC 论文由 `NC` 标签追踪；7 对 AAD↔DRIFT 重复条目按决定保留不合并。执行记录：`doc/literature-notes/zotero_reorg_2026-10-17_execution.json`（item key 级 before/after，可恢复）；59 份退役 PDF 与 56 条论文的 3 份差额 `Unverified`。授权方式为 Zotero 10 官方本机 API 授权对话框，未触碰数据库文件。
+
+## 2026-10-17 Stage 0.4 数据源调查（AAD-0.4.1，下载前）
+
+只读调查完成，未下载任何数据、未提交任何申请、Gate 不变（`pending_official_packet_access`）。SPMD 官方条目 2026-01 重建（DOI 10.21949/1504482，视图无附件，本地手册继续为准）；下载端点由历史 403 变为 302→官方文件 API，最终可达性与 46 成员结构待下个授权下载任务用 Range 验证。官方字典确认：Packet= RSE 侧包捕获（捕获时间戳/PSID/信道/功率，无发送时刻，IP 轮换）；BsmP1=发送侧主表（TxRandom/MsgCount/Gentime，官方换算 /1e6−35 s）；RSE_BSM（3.23 GB，新识别）= RSE 接收 BSM 内容，4 个未文档化字段待验。时延共同前置=跨设备时钟同步（Unknown）。候选外源：AMCD BSM（2,593,113 行，唯一同行 time_sent/time_received，云接收）、NYC IE EVENT（164,131 行告警级，时空分箱，告警≠采用）、Tampa BSM 样本（34,464 行 RSU 接收）、ITS DataHub Sandbox（表单通道）。推荐：P0 渐进取 RSE_BSM+Packet（18.6 GB）→ 核验后再定 BsmP1（55.7 GB）；完整 117 GB 主包不必要。报告 `docs/STAGE_0_4_TASK_0_4_1_DATASET_SURVEY.md`；结构化清单 `docs/research/stage_0_4_dataset_candidates.json`。控制器采用在任何候选数据中均不可观察，属永久仿真/实验职责。

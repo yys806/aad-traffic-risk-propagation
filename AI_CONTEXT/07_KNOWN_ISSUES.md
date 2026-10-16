@@ -14,7 +14,7 @@ Evidence：`evidence/results/RES-STAGE-0.2-NGSIM-V2/audit.json`、`code/src/risk
 
 ### KI-03 — packet 级通信证据不可用
 
-当前快照记录官方 Packet 访问返回 HTTP 403；RV_RX 只能支持接收状态连续性，不能估计 packet 级时延、丢包或采用。外部访问状态自该快照后未在本次重构中重新联网核验。
+历史快照记录官方 Packet 下载端点返回 HTTP 403；2026-10-17（AAD-0.4.1）重验：端点现 302 重定向至官方文件 API（blob 已更换），HEAD 无法在不取内容的前提下确认最终可达性，Range 方法需重新验证。RV_RX 只能支持接收状态连续性，不能估计 packet 级时延、丢包或采用；Packet/BsmP1/RSE_BSM 尚未下载。跨设备时钟同步为全部时延主张的共同未验证前置。
 
 ### KI-04 — 阶段 0.5 需要重建
 
