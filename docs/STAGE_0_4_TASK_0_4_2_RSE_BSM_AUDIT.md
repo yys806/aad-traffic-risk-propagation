@@ -1,6 +1,6 @@
 # Stage 0.4 任务 0.4.2：RSE_BSM 最小数据获取与独立证据核验
 
-> 任务 AAD-0.4.2；执行日期 2026-10-18。结果 ID：`RES-STAGE-0.4-RSE-BSM-V1`；机器可读包：`code/outputs/formal/calibration/stage_0_4_rse_bsm_v1/`（含 audit/config/provenance/manifest/SHA256SUMS 与方法脚本）。
+> 任务 AAD-0.4.2；执行日期 2026-10-16（**勘误 2026-10-17**：原稿误记 2026-10-16；真实执行日由 git commit d9ce638=2026-10-16 22:47 +0800、文件落盘 21:03 与封存包 created_utc=2026-10-16T14:43Z 证明）。结果 ID：`RES-STAGE-0.4-RSE-BSM-V1`；机器可读包：`code/outputs/formal/calibration/stage_0_4_rse_bsm_v1/`（含 audit/config/provenance/manifest/SHA256SUMS 与方法脚本）。
 > Stage 0.4 Gate 保持 `pending_official_packet_access`；`RES-STAGE-0.4-COMM-OBS-V3` 未改动。原始数据仅存本地 `dataset/SPMD/selected/RSE_BSM.csv.zip`。
 
 ## 1. Phase A：下载前检查（全部通过）

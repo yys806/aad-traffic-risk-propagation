@@ -1,6 +1,6 @@
 # Stage 0.4 任务 0.4.1：通信数据源全面调查与下载前可行性评估
 
-> 任务编号 AAD-0.4.1；调查日期 2026-10-17（Asia/Shanghai）。本任务**只调查、不下载**：未获取任何新数据内容，未提交任何访问申请，未改动 Stage 0.4 已封存结果（`RES-STAGE-0.4-COMM-OBS-V3`，`receive_state_continuity_only`，Gate `pending_official_packet_access` 均不变）。
+> 任务编号 AAD-0.4.1；调查日期 2026-10-16（**勘误 2026-10-16**：原稿误记 2026-10-16；真实执行日由 git commit 80f92fb=2026-10-16 20:01 +0800 证明）（Asia/Shanghai）。本任务**只调查、不下载**：未获取任何新数据内容，未提交任何访问申请，未改动 Stage 0.4 已封存结果（`RES-STAGE-0.4-COMM-OBS-V3`，`receive_state_continuity_only`，Gate `pending_official_packet_access` 均不变）。
 > 结构化数据源清单：`docs/research/stage_0_4_dataset_candidates.json`（含逐数据集 8 项科研需求证据等级、下载优先级与核验日期）。
 > 外部状态核验方式：官方门户公开页面、Socrata 元数据 API（视图 JSON 与 count 聚合，无记录内容）、HEAD/重定向检查；本地已取得的官方手册（SHA-256 钉扎）与 4 个配套表（calibration 范围）。
 
@@ -14,7 +14,7 @@ Stage 0.4 已验证：SPMD `RV_RX`（17,481,111 行 / 7,601 设备-行程）支�
 
 ## 2. 任务 A：SPMD 剩余数据调查（最高优先级）
 
-### 2.1 官方来源重新核实（2026-10-17）
+### 2.1 官方来源重新核实（2026-10-16）
 
 - 官方条目：`Safety Pilot Model Deployment Data`，data.transportation.gov 视图 `deww-aa3r`，DOI **10.21949/1504482**，官方推荐引用已给出；发布方 USDOT ITS JPO；范围 Ann Arbor, MI，2012-10-01 至 2013-04-30。
 - **视图状态变化**：该视图约于 2026-01-07 重建（createdAt 1767731083），当前**无附件**（历史上挂两份 DOCX 手册——本地已持有且 SHA-256 钉扎，继续以本地版本为准）。
@@ -47,7 +47,7 @@ Stage 0.4 已验证：SPMD `RV_RX`（17,481,111 行 / 7,601 设备-行程）支�
 - **注意**：手册称 28 字段而表格仅列出/样本仅显示 24——**4 个未文档化字段**（可能含 RSE ID 或接收时间戳）必须在下载后首先核验；文档层面**没有**记录 RSE 接收时间戳。
 - 价值：**固定基础设施接收点**的 BSM 内容 + 消息身份字段，体量仅为 Packet 的 1/5、BsmP1 的 1/17；若未文档化字段含接收时间或可与 Packet 经 BSMID/PCAP 关联，将成为最便宜的"接收侧消息级"证据。
 
-### 2.5 已取得配套表的核实价值（本地实测 2026-10-17）
+### 2.5 已取得配套表的核实价值（本地实测 2026-10-16）
 
 - `TripFact` / `BsmP1Summary` / `DataWsuSummary`：逐 DeviceID-TripID 的 **Epoch 起止时间**、里程、速度（WSU 另有 BrakeCount/WiperActivated）→ 覆盖窗口、设备-行程关联、绝对时间锚。
 - `PCAPFile`：PCAPFileId → `Savari-LocID<NNNN>_dsrc1_out_<时间>.pccap` 文件名与抓包时间 → **RSE 位置/会话识别**，是 Packet.PCAPFileId 的连接目标（注意：该表无表头，首行即数据）。
@@ -63,7 +63,7 @@ Stage 0.4 已验证：SPMD `RV_RX`（17,481,111 行 / 7,601 设备-行程）支�
 
 - 官方描述：AMCD 实测项目全部 BSM；官方明确"为行添加了识别**发送方、通信时间、通信模式**等字段，使数据使用者能够准确追踪消息在系统中的传递"；所有 BSM 由 OBU 生成、最终由 **VCC 云服务器**接收。
 - 字段（42→28 列，官方 schema）：`obu_id`、**`time_sent`、`time_received`**、`mode_of_transmission`、J2735 Part I 全量、test_no、location。
-- 行数：**2,593,113**（count 聚合，2026-10-17）；公开表格、无需登录。
+- 行数：**2,593,113**（count 聚合，2026-10-16）；公开表格、无需登录。
 - 证据等级：**发送、接收、同消息配对、时延在文档层面均为 Documented**（同行的 sent/received 时间）——是唯一"每条消息自带收发时间"的公开数据集。**限制**：接收方是云服务器（非车对车）；`time_sent` 的时钟来源（OBU 自报 vs 云端记录）未文档化，直接影响时延有效性；受控实测而非自然交通。无采用字段。
 
 ### 3.2 NYC CV Pilot（Volpe IE 处理 EVENT 数据，gu5j-r7xj，DOI 10.21949/1404205）
@@ -84,7 +84,7 @@ Stage 0.4 已验证：SPMD `RV_RX`（17,481,111 行 / 7,601 设备-行程）支�
 
 ### 3.5 ITS DataHub Sandbox（通道性质）
 
-- CV Pilot 全量原始脱敏数据的官方通道；S3 桶匿名列举已验证返回 AccessDenied（2026-10-17）；申请表单免费无限制，但属研究者手动动作。
+- CV Pilot 全量原始脱敏数据的官方通道；S3 桶匿名列举已验证返回 AccessDenied（2026-10-16）；申请表单免费无限制，但属研究者手动动作。
 
 ## 4. 科研需求—数据证据矩阵（摘要）
 
@@ -145,7 +145,7 @@ Stage 0.4 已验证：SPMD `RV_RX`（17,481,111 行 / 7,601 设备-行程）支�
 
 ## 8. 文献与项目维护
 
-- Zotero `TJU → AAD`（56 条）关键词扫描（2026-10-17）：无 SPMD/CV Pilot 数据集论文（仅 1 条弱相关：ZTEPXKBA，连接车辆非局部交通流模型）。候选导入（待研究者决定，按现有规则走 Zotero，不建本地 PDF 库）：数据集 DOI（SPMD 10.21949/1504482、AMCD 10.21949/1504488、NYC IE 10.21949/1404205、NYC 消息样本 10.21949/1522485）与各项目评估报告。本任务未导入。
+- Zotero `TJU → AAD`（56 条）关键词扫描（2026-10-16）：无 SPMD/CV Pilot 数据集论文（仅 1 条弱相关：ZTEPXKBA，连接车辆非局部交通流模型）。候选导入（待研究者决定，按现有规则走 Zotero，不建本地 PDF 库）：数据集 DOI（SPMD 10.21949/1504482、AMCD 10.21949/1504488、NYC IE 10.21949/1404205、NYC 消息样本 10.21949/1522485）与各项目评估报告。本任务未导入。
 - 本任务不改变任何 Gate、统计或科研参数；Stage 0.4 状态仍为 `pending_official_packet_access`。
 
 ## 9. 边界合规声明

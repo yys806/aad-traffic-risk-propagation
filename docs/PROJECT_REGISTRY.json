@@ -70,7 +70,8 @@
     "doc/literature-notes/zotero_reorg_2026-10-17_execution.json",
     "docs/STAGE_0_4_TASK_0_4_1_DATASET_SURVEY.md",
     "docs/research/stage_0_4_dataset_candidates.json",
-    "docs/STAGE_0_4_TASK_0_4_2_RSE_BSM_AUDIT.md"
+    "docs/STAGE_0_4_TASK_0_4_2_RSE_BSM_AUDIT.md",
+    "docs/STAGE_0_4_TASK_0_4_3_IDENTITY_TIME_REVIEW.md"
   ],
   "current": {
     "active_experiment_id": "stage_0_5",
@@ -294,7 +295,7 @@
         "loss_observable",
         "adoption_observable"
       ],
-      "current_conclusion": "RSE_BSM 已获取并完成结构/身份/时间核验（RES-STAGE-0.4-RSE-BSM-V1）：25 字段（24+RxDevice）、124,115,615 行、无绝对时间字段；接收时间/时延/丢包 Not Observable、配对 Ambiguous；RxDevice 属车载设备命名空间（与 RSE LocID 零重叠），记录方身份待定；行为统计按 holdout 规则暂缓。RV_RX 接收状态连续性结论不变；Packet 未下载，Gate 保持 pending_official_packet_access。",
+      "current_conclusion": "RV_RX：接收状态连续性（V3，不变）。RSE_BSM：已获取并核验（V1）——RxDevice≡车辆设备 ID、无绝对时间、配对 Ambiguous、采样设计 Unverified（≤2 记录方/发送方 ID）。官方文档（AAD-0.4.3）裁定：Gentime=BSM 生成时间（µs 自 2004-01-01，1609.2；35 s 文档冲突待校准）、TxDevice/TxRandom=临时 ID 两半、DSecond=分钟内毫秒。硬边界：车辆侧接收时间在 SPMD 全家族不存在→V2V 端到端时延不可算；唯一时延类量=生成→RSE 捕获（需 Packet，身份匹配未证）。下一批建议 BsmMd 优先（身份钥匙）、BsmP1 次之、Packet 不为凑 Gate 项提前；mCity Rx-BSM 过滤数据集（~9 GB，Globus）为新渠道候选；均待研究者批准。holdout 隔离 4 候选待研究者。行为统计暂缓；Gate 保持 pending_official_packet_access。",
       "gate": {
         "status": "pending_official_packet_access",
         "portable_path": "evidence/results/RES-STAGE-0.4-COMM-OBS-V3/audit.json"

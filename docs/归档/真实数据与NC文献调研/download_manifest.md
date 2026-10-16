@@ -30,6 +30,14 @@
 | `dataset/SPMD/selected/PCAPFile.csv.zip` | 654994 | `1CD5958983E019EB02A5D2727F8C812F2E8CF333C5F909B504317EE2C11BE459` |
 | `dataset/SPMD/selected/TripFact.csv.zip` | 840157 | `CA269CAFFBEEE303E9EB0AA85C2FD110A17ED9DDAB8F403AA823D7917865B59F` |
 | `dataset/SPMD/selected/RSE_BSM.csv.zip` | 3228646514 | `9C40C15FAD32C470592A08556B07DDB91C8A08265E1F56683908AD0EDD47D722` |
+| `dataset/SPMD/Safety_Pilot_Model_Deployment_WSU_BSM_Codebook_ROSA_P_dot66785.pdf` | 1024016 | `898A1A7B2BEF1CCE1025981D2175662348C631CE7FE3A179275AFECE9B5BFEB3` |
+| `dataset/SPMD/mcity_documentation/BSMdocumentation.md` | 6824 | `4AD19771CBD6EF66BB89F614FF8608A86115BCE70049FE7776E68AF6B73FF491` |
+| `dataset/SPMD/mcity_documentation/BSMRxdocumentation.md` | 7710 | `97384DB3221780748CA3924476F20BB080122B2F1E259F760F4873AFCDE3DAF6` |
+| `dataset/SPMD/mcity_documentation/RSEdocumentation.md` | 5206 | `65765532680DDBCEBEF917C23DCFE0F73B72C299514441792DE30E9509B3DD9D` |
+| `dataset/SPMD/mcity_documentation/Events.md` | 12268 | `6AF7577288B07BC5B2001519CA0DCA1979A3341E05C17EC0BFAAF515D82EF8D2` |
+| `dataset/SPMD/mcity_documentation/SPaTdocumentation.md` | 3664 | `0E766EEC0598548F8998DF105880AB30059729BC03887BD0D8A25F877040B724` |
+| `dataset/SPMD/mcity_documentation/MAPdocumentation.md` | 5771 | `AF6A4573A8B84D0F976910622CFE900C9B4A623D8832CDCAA970FD7F15FB7BC` |
+| `dataset/SPMD/mcity_documentation/README.md` | 1120 | `3A1F99CCF2C5ABE9F7493160530C6D5F65C596157C9D8232C5D99DB39E140E96` |
 | `dataset_papers/INTERACTION_Dataset_2019_arXiv_1910.03088.pdf` | 4587328 | `4CE27487274AF592174D01C1A7CE94B8D81D38CA64E02ACC685C2A70AB003A81` |
 | `dataset_papers/pNEUMA_large_scale_field_experiment_2020.pdf` | 23397909 | `28C8571542EC123B907D4812E7706705B1FA01A2A36F317B13B8B78BBB66B617` |
 | `dataset/pNEUMA/20181101_d1_0800_0830.csv` | 73509485 | `F9CDE0A3CA5010E2217EA4CBC0BDF26ED87BE1EC0D8C2BE5E2CB93AAC82BA28C` |
@@ -42,7 +50,7 @@
 
 ## 尚未完成的下载
 
-- SPMD 主包：已验证支持 Range 请求并读取全部 46 个成员目录，避免盲目下载 117 GB。`RV_RX`、4 个小型配套表已完成；2026-10-18（AAD-0.4.2）经研究者批准以成员级 Range 方式新增 `RSE_BSM.csv.zip`（3,228,646,514 B；CRC32 对中央目录一致；核验见 `RES-STAGE-0.4-RSE-BSM-V1`）。官方 blob 2026-01 更换后 Range 与 ZIP64 目录已重新验证可用。剩余候选：`Packet`（约 15.33 GB，已建议为下一批）、`BsmP1`（约 55.72 GB，价值上调：RxDevice+Gentime 可能提供接收侧时间）、`BsmMd`（约 17.29 GB，身份链接候选）、`RSE_locations.kml`（520 B，建议随下批顺带）。
+- SPMD 主包：已验证支持 Range 请求并读取全部 46 个成员目录，避免盲目下载 117 GB。`RV_RX`、4 个小型配套表已完成；2026-10-16（AAD-0.4.2，日期勘误 2026-10-17）经研究者批准以成员级 Range 方式新增 `RSE_BSM.csv.zip`（3,228,646,514 B；CRC32 对中央目录一致；核验见 `RES-STAGE-0.4-RSE-BSM-V1`）。官方 blob 2026-01 更换后 Range 与 ZIP64 目录已重新验证可用。剩余候选：`Packet`（约 15.33 GB，已建议为下一批）、`BsmP1`（约 55.72 GB，价值上调：RxDevice+Gentime 可能提供接收侧时间）、`BsmMd`（约 17.29 GB，身份链接候选）、`RSE_locations.kml`（520 B，建议随下批顺带）。
 - pNEUMA 主包：已读取远程 ZIP64 目录（222 个成员）并选择性下载最小真实轨迹 `20181101_d1_0800_0830.csv`。完整包仍受服务器限速，不作为本轮完成目标；测速片段已隔离在 `_incomplete_downloads/`，不得当作数据使用。
 - INTERACTION 原始数据：必须由课题组成员用正式邮箱提交官方申请。未获下载链接前无法合法取得原始包。
 

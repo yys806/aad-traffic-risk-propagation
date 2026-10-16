@@ -65,10 +65,14 @@
 
 任务 AAD-0.3.4。**Zotero**：经研究者批准与官方本机 API 授权（Zotero 10 `/api/local/authorize` 对话框确认）执行六主题调整——05 原位更名、新建 06、21 条文献按对照表移动、5 篇 NC 论文补标签、空 `NC_统一汇总` 删除；执行后核验 7/11/7/4/11/16、56 item key 与附件无丢失、11/11 NC 标签、7 对 AAD↔DRIFT 重复条目与 DRIFT 侧原样保留；逐条 before/after 见 `doc/literature-notes/zotero_reorg_2026-10-17_execution.json`。59↔56 PDF 差额 `Unverified`。**Stage 0.3 一致性**：注册表 experiment `scientific_claim_eligible` 对齐 R3（true，仅限单文件有限描述性校准范围，与 Stage 0.2 关闭先例一致）；`configuration` 文本改为 0.043 s 已批准（仅本 25 Hz 文件）；R3 复核计数勘误 17→18（封存包机器记录自始为 18，包未改动）。无 Protocol Lock/Stage I/holdout 访问；不重开 Stage 0.3 Gate。
 
-## 2026-10-17 — AAD-0.4.1：Stage 0.4 通信数据源下载前调查
+## 2026-10-16 — AAD-0.4.1：Stage 0.4 通信数据源下载前调查（标题日期勘误 2026-10-17）
 
 只读调查（未下载/未申请/未改 Gate）：SPMD 官方条目重验（DOI 10.21949/1504482；端点 403→302 变化，可达性待 Range 重验）；以官方手册字典确认 Packet/BsmP1/RSE_BSM 字段语义与时延/丢包的条件链；识别 RSE_BSM（3.23 GB）为被忽视的最低成本接收侧证据；跨设备时钟同步为时延共同未验证前置。外源候选：AMCD（同行 sent/received）、NYC IE（告警级）、Tampa 样本（RSU 接收）、ITS DataHub Sandbox。交付科研需求-证据矩阵（8 需求 × 11 候选）、P0/P1/P2 下载决策表与 8 项待真实数据确认问题。新增 `docs/STAGE_0_4_TASK_0_4_1_DATASET_SURVEY.md` 与 `docs/research/stage_0_4_dataset_candidates.json`；KI-03 更新。Zotero 无数据集论文，候选 DOI 已列待研究者决定。
 
-## 2026-10-18 — AAD-0.4.2：RSE_BSM 条件获取与独立证据核验
+## 2026-10-16 — AAD-0.4.2：RSE_BSM 条件获取与独立证据核验（标题日期勘误 2026-10-17）
 
 经研究者批准仅获取 SPMD `RSE_BSM.csv.zip`（成员级 Range，官方新 blob 的 Range/ZIP64 重新验证；CRC32 对中央目录一致、内层 ZIP 通过、SHA-256 钉扎；磁盘余量全程 ≥5 GiB）。实测 25 字段（官方 24+RxDevice；手册 28 字段说法有误）、124,115,615 行零畸形、BSMID 逐行唯一、无绝对时间字段；RxDevice 2,008 全在 BsmP1Summary 设备命名空间且与 RSE LocID 零重叠（记录方身份 Ambiguous，成员命名与官方手册描述不符实际数据）；最佳配对键部分覆盖下重复 ≥26.9M。接收时间/时延/丢包 Not Observable、配对 Ambiguous；行为统计按 holdout 规则暂缓。Packet 建议为下一批（修正预期：与 RSE_BSM 无文档化连接键）；BsmP1 价值上调（RxDevice+Gentime 候选时间锚）；新增 BsmMd/RSE_locations.kml 候选。登记 `RES-STAGE-0.4-RSE-BSM-V1`、报告、注册表/索引/AI_CONTEXT/下载清单/候选 JSON 同步；Gate 保持 `pending_official_packet_access`，未下载 Packet/BsmP1，未改任何封存结果。
+
+## 2026-10-17 — AAD-0.4.3：SPMD 身份与时间语义核查 + 日期勘误
+
+只读核查（零下载；Gate 不变）。新获官方文档（ROSA P WSU BSM Codebook + mCity 数据集文档镜像，存 `dataset/SPMD/` 并记 SHA）：RxDevice≡车辆设备 ID、Gentime=BSM 生成时间（µs 自 2004-01-01，1609.2；与样本手册 35 s 换算存在官方文档冲突待校准）、TxDevice/TxRandom=临时 ID 静态/随机 2 字节、DSecond=分钟内毫秒（手册 §5.4 描述被样例算术否定）。核心边界：**车辆侧接收时间在 SPMD 全家族不存在→V2V 端到端时延不可算**；唯一时延类量为生成→RSE 捕获（需 Packet 且身份匹配未证）。RSE_BSM 采样设计 Unverified（≤2 记录方/发送方 ID、双记录对 102,469/102,469 全含 10106）。Holdout 4 候选方案待研究者。下一批建议：BsmMd（17.29 GB）优先、BsmP1（55.72 GB）次之、Packet 不为凑 Gate 项提前；mCity Rx-BSM 过滤数据集（~9 GB，Globus）为新渠道候选。**日期勘误**：AAD-0.4.1/0.4.2 实际均执行于 2026-10-16（git commit 与封存 created_utc 证明；原存活文档分别误记 2026-10-17/2026-10-18，已非覆盖式更正；封存包零改动）。报告：`docs/STAGE_0_4_TASK_0_4_3_IDENTITY_TIME_REVIEW.md`。

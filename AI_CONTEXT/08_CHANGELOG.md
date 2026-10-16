@@ -80,10 +80,14 @@ AAD-0.3.3：五项研究者决定归档（06_DECISIONS）；`finalize_stage_0_3_
 
 Zotero 六主题调整经批准并官方授权执行（更名 05、新建 06、移动 21 条、NC 标签补 5、空 NC 集合删除）；计数 7/11/7/4/11/16 核验通过，56 item key/附件完整，DRIFT 与 7 对重复条目未动；执行清单 `doc/literature-notes/zotero_reorg_2026-10-17_execution.json`。Stage 0.3 一致性：注册表 scientific_claim_eligible 对齐 R3（true，范围限单文件描述性校准）、0.043 s 文本改已批准、R3 复核计数勘误 17→18（封存包未动）。Zotero 决定归档 06_DECISIONS。
 
-## 2026-10-17 — AAD-0.4.1：Stage 0.4 数据源下载前调查
+## 2026-10-16 — AAD-0.4.1：Stage 0.4 数据源下载前调查（日期勘误 2026-10-17）
 
 只读完成：SPMD 访问状态重验（302 重定向，可达性待 Range 重验）、Packet/BsmP1/RSE_BSM 官方字典结论、RSE_BSM 新识别、时延时钟同步前置、外源候选（AMCD/NYC/Tampa/Sandbox）、8×11 证据矩阵与 P0/P1/P2 下载建议（渐进 RSE_BSM+Packet → 条件性 BsmP1；完整包不必要）。交付 `docs/STAGE_0_4_TASK_0_4_1_DATASET_SURVEY.md`、`docs/research/stage_0_4_dataset_candidates.json`；KI-03 与阶段索引更新；Gate 不变。
 
-## 2026-10-18 — AAD-0.4.2：RSE_BSM 条件获取与核验
+## 2026-10-16 — AAD-0.4.2：RSE_BSM 条件获取与核验（日期勘误 2026-10-17）
 
 获取 `RSE_BSM.csv.zip`（成员级 Range，完整性三重校验通过）并完成结构/身份/时间审计：25 字段、无绝对时间、BSMID 行级唯一、RxDevice 属车载命名空间（与 RSE LocID 零重叠，身份 Ambiguous）、配对键重复 ≥26.9M。证据边界（接收时间/时延/丢包 Not Observable、配对 Ambiguous）与 holdout 暂缓已记录；Packet 下一批建议、BsmP1 价值上调、BsmMd/kml 新候选已入清单。结果 `RES-STAGE-0.4-RSE-BSM-V1`；Gate 不变。
+
+## 2026-10-17 — AAD-0.4.3：身份与时间语义核查
+
+官方文档裁定 RxDevice≡车辆 ID、Gentime=生成时间（µs/1609.2，35 s 冲突待校准）、TxDevice+TxRandom=临时 ID 两半、DSecond=分钟内毫秒；**车辆侧接收时间全家族不存在→V2V 时延不可算**；RSE_BSM 采样设计 Unverified（≤2 记录方，10106 全配对）；holdout 4 候选待研究者；下一批建议 BsmMd→BsmP1，Packet 缓行，mCity Rx-BSM（~9 GB）新渠道候选。0.4.1/0.4.2 日期勘误为 2026-10-16。新官方文档存 `dataset/SPMD/`（SHA 已录）。报告 `docs/STAGE_0_4_TASK_0_4_3_IDENTITY_TIME_REVIEW.md`。

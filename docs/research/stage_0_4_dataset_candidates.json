@@ -1,7 +1,7 @@
 {
   "schema_version": "aad.stage-0-4.dataset-candidates.v1",
   "task_id": "AAD-0.4.1",
-  "survey_date": "2026-10-17",
+  "survey_date": "2026-10-16",
   "survey_scope": "pre-download investigation only; no new data downloaded in this task; evidence levels: Documented (official docs/fields), Potential (plausible via cross-table join, unverified), Verified (actual local data + reproducible results), NotObservable (fields cannot support), Unknown (insufficient information",
   "research_need_levels": [
     "message_source",
@@ -44,7 +44,7 @@
       },
       "evidence_level_note": "receive_state_continuity is Verified (RES-STAGE-0.4-COMM-OBS-V3: 17,481,111 rows, 7,601 device-trips",
       "download_priority": "obtained",
-      "verified_date": "2026-10-17",
+      "verified_date": "2026-10-16",
       "source_citation": "Safety Pilot Model Deployment. (2014). Safety Pilot Model Deployment Data. [Dataset]. ITS DataHub. doi:10.21949/1504482; local: docs/归档/真实数据与NC文献调研/spmd_field_audit.md"
     },
     {
@@ -94,7 +94,7 @@
         "PCAPFileId join to local PCAPFile table (RSE identity",
         "SourceIPAddress rotation statistics"
       ],
-      "verified_date": "2026-10-18",
+      "verified_date": "2026-10-16",
       "source_citation": "Safety Pilot Model Deployment Sample Data Handbook (local, SHA-pinned), RSE Dataset sec 6.6 Packet File, Table 98-100"
     },
     {
@@ -137,7 +137,7 @@
         "MsgCount continuity and rotation collisions per TxRandom",
         "same-message multiplicity across receivers"
       ],
-      "verified_date": "2026-10-18",
+      "verified_date": "2026-10-16",
       "source_citation": "Safety Pilot Model Deployment Sample Data Handbook, BSM Dataset sec 5.1/5.4, Tables 34-39; docs/归档/真实数据与NC文献调研/spmd_field_audit.md (UMTRI WSU/Rx codebooks"
     },
     {
@@ -147,7 +147,7 @@
       "official_url": "https://data.transportation.gov/Automobiles/Safety-Pilot-Model-Deployment-Data/deww-aa3r",
       "doi": "10.21949/1504482",
       "member": "RSE_BSM.csv.zip (3,229,630,428 B compressed; 3,228,646,514 B inner",
-      "access_status": "obtained_locally 2026-10-18 (member-level Range; CRC32 vs central directory pass; SHA-256 9C40C15FAD32C470592A08556B07DDB91C8A08265E1F56683908AD0EDD47D722)",
+      "access_status": "obtained_locally 2026-10-16 (member-level Range; CRC32 vs central directory pass; SHA-256 9C40C15FAD32C470592A08556B07DDB91C8A08265E1F56683908AD0EDD47D722)",
       "key_fields_documented": [
         "RxDevice (column 1; 2008 distinct values, all within BsmP1Summary device-ID namespace; 0 overlap with PCAPFile RSE LocIDs; physical identity Ambiguous)",
         "BSMID (unique per row, exact bitset verification; NOT a cross-receiver message identity)",
@@ -158,7 +158,7 @@
         "J2735 Part I position/motion/brake statuses",
         "NO absolute time field; NO channel/RSSI/power"
       ],
-      "semantics_documented": "ACTUAL (verified 2026-10-18): 25 fields = handbook 24 + RxDevice; data file headerless (separate head.csv); 124,115,615 rows, 0 malformed; handbook 28-field claim wrong; no receive timestamp; best in-member key (TemporaryId,MsgCount,DSeconds) has >=26,919,767 duplicates under partial exact coverage; loggers in vehicle-device namespace contradict the RSE naming - interpretation Ambiguous",
+      "semantics_documented": "ACTUAL (verified 2026-10-16): 25 fields = handbook 24 + RxDevice; data file headerless (separate head.csv); 124,115,615 rows, 0 malformed; handbook 28-field claim wrong; no receive timestamp; best in-member key (TemporaryId,MsgCount,DSeconds) has >=26,919,767 duplicates under partial exact coverage; loggers in vehicle-device namespace contradict the RSE naming - interpretation Ambiguous",
       "needs_support": {
         "message_source": "Documented (month-scale tracking Ambiguous)",
         "message_send": "NotObservable",
@@ -172,9 +172,9 @@
       "estimated_download_size_bytes": 3229630428,
       "download_priority": "obtained",
       "first_verifications": [
-        "DONE 2026-10-18: see RES-STAGE-0.4-RSE-BSM-V1"
+        "DONE 2026-10-16: see RES-STAGE-0.4-RSE-BSM-V1"
       ],
-      "verified_date": "2026-10-18",
+      "verified_date": "2026-10-16",
       "source_citation": "Safety Pilot Model Deployment Sample Data Handbook, RSE Dataset sec 6.1 BSM File, Tables 80-83"
     },
     {
@@ -207,7 +207,7 @@
         "adoption_and_response": "NotObservable"
       },
       "download_priority": "obtained",
-      "verified_date": "2026-10-17",
+      "verified_date": "2026-10-16",
       "source_citation": "local inspection of obtained members (headers verified 2026-10-17); official handbook summary-table sections"
     },
     {
@@ -246,7 +246,7 @@
         "per-obu_id send-vs-receive completeness (loss structure",
         "mode_of_transmission domain"
       ],
-      "verified_date": "2026-10-17",
+      "verified_date": "2026-10-16",
       "source_citation": "data.transportation.gov view eezi-v4pm metadata + column schema (official, 2026-10-17); doi:10.21949/1504488"
     },
     {
@@ -286,7 +286,7 @@
         "warning-type domain",
         "joinability to Event Message sample"
       ],
-      "verified_date": "2026-10-17",
+      "verified_date": "2026-10-16",
       "source_citation": "data.transportation.gov view gu5j-r7xj metadata + 42-column schema (official, 2026-10-17); doi:10.21949/1404205"
     },
     {
@@ -314,7 +314,7 @@
         "adoption_and_response": "Potential-with-strong-caution (alert active/sent/heard; alert != controller adoption"
       },
       "download_priority": "P2 (obfuscated sample; IE processed table gu5j-r7xj supersedes most uses",
-      "verified_date": "2026-10-17",
+      "verified_date": "2026-10-16",
       "source_citation": "data.transportation.gov view vxmm-9bi5 metadata + schema (official, 2026-10-17"
     },
     {
@@ -347,7 +347,7 @@
         "RSUID coverage",
         "msgCnt/id continuity"
       ],
-      "verified_date": "2026-10-17",
+      "verified_date": "2026-10-16",
       "source_citation": "data.transportation.gov view nm7w-nvbm metadata + 50-column schema (official, 2026-10-17); ITS DataHub data request: https://its.dot.gov/data/data-request"
     },
     {
@@ -371,7 +371,7 @@
         "adoption_and_response": "NotObservable"
       },
       "download_priority": "P2 (controlled LTE-V2X tests; niche value for radio-technology contrast; defer",
-      "verified_date": "2026-10-17",
+      "verified_date": "2026-10-16",
       "source_citation": "data.transportation.gov catalog search results (official, 2026-10-17"
     },
     {
@@ -395,7 +395,7 @@
         "adoption_and_response": "Potential-with-caution (warning data only; not controller adoption"
       },
       "download_priority": "P1 (as a channel: only after SPMD member analysis identifies specific gaps; submission is a researcher action",
-      "verified_date": "2026-10-17",
+      "verified_date": "2026-10-16",
       "source_citation": "https://its.dot.gov/data/data-request/ ; S3 AccessDenied response 2026-10-17; usdot-its-jpo-data-portal/sandbox (GitHub"
     }
   ],
@@ -439,5 +439,14 @@
       "compressed_bytes": 520,
       "note": "RSE LocID coordinates; near-zero cost; recommend bundling with any next batch"
     }
-  ]
+  ],
+  "date_errata": "2026-10-17 (AAD-0.4.3): the 0.4.1 survey and 0.4.2 acquisition both executed on 2026-10-16 (commits 80f92fb 20:01 +0800, d9ce638 22:47 +0800); earlier survey/verified date labels 2026-10-17/2026-10-16 corrected to 2026-10-16.",
+  "identity_time_findings_2026_10_17": {
+    "rx_device": "receiving vehicle device ID (mcity official documentation); RSE_BSM member is vehicle-side receive logs; sampling design Unverified (<=2 loggers per TemporaryId, all 2-logger pairs include device 10106)",
+    "gentime": "BSM generation time, microseconds since 2004-01-01, 1609.2 clock; documented handbook-vs-mcity 35-second conversion conflict unresolved",
+    "temporary_id": "TxDevice (static 2 bytes) + TxRandom (random 2 bytes) split documented; RSE_BSM.TemporaryId structurally mappable to BsmP1",
+    "dsecond": "milliseconds within minute (handbook 5.4 deciseconds-since-ignition description refuted by sample arithmetic)",
+    "vehicle_receive_time": "Not Observable anywhere in the SPMD family -> V2V end-to-end latency not computable",
+    "next_batch_recommendation": "BsmMd (17.29 GB) first; BsmP1 (55.72 GB) second; Packet deferred (not for the gate item alone); mCity Rx-BSM filtered dataset (~9 GB, Globus) as a new low-cost channel candidate"
+  }
 }

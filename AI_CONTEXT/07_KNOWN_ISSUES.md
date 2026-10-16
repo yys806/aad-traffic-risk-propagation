@@ -14,7 +14,7 @@ Evidence：`evidence/results/RES-STAGE-0.2-NGSIM-V2/audit.json`、`code/src/risk
 
 ### KI-03 — packet 级通信证据不可用
 
-官方 Packet 下载端点历史 403；2026-10-17（AAD-0.4.1）重验为 302→官方文件 API；2026-10-18（AAD-0.4.2）Range/ZIP64 目录在新 blob 上重新验证可用并已获取 `RSE_BSM`（`RES-STAGE-0.4-RSE-BSM-V1`）。RSE_BSM 实测无绝对时间字段、无信道条件，接收时间/时延/丢包仍 Not Observable，配对 Ambiguous；其 RxDevice 属车载设备命名空间（与 RSE LocID 零重叠），记录方物理身份待 BsmMd/设备清单裁定；行为统计按 holdout 规则暂缓。Packet/RSE_BSM 间无文档化连接键；跨设备时钟同步为全部时延主张的共同未验证前置。Packet 尚未下载（Gate `pending_official_packet_access` 不变）。
+官方 Packet 下载端点历史 403；2026-10-16（AAD-0.4.1，日期勘误 2026-10-17）重验为 302→官方文件 API；同日（AAD-0.4.2）Range/ZIP64 在新 blob 重验可用并获取 `RSE_BSM`（`RES-STAGE-0.4-RSE-BSM-V1`）。2026-10-17（AAD-0.4.3）官方文档裁定：RxDevice≡车辆设备 ID、Gentime=生成时间（µs，1609.2）；**车辆侧接收时间在 SPMD 全家族不存在→V2V 端到端时延不可算**（结构性缺失，非下载可解）；RSE_BSM 无绝对时间与信道条件，配对 Ambiguous；其采样设计（≤2 记录方/发送方 ID、双记录对全含 10106）Unverified——接收率统计前必须查明；行为统计按 holdout 规则暂缓（4 候选隔离方案待研究者）。Gentime↔UTC 35 s 官方文档冲突待经验校准；跨设备时钟同步为残余时延类主张（仅生成→RSE 捕获）的共同未验证前置。Packet 尚未下载（Gate `pending_official_packet_access` 不变）。
 
 ### KI-04 — 阶段 0.5 需要重建
 
