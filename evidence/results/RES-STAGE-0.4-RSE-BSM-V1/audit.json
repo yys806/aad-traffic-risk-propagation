@@ -1,0 +1,153 @@
+{
+  "schema_version": "aad.stage-0-4.rse-bsm.audit.v1",
+  "experiment_id": "stage_0_4",
+  "result_id": "RES-STAGE-0.4-RSE-BSM-V1",
+  "created_utc": "2026-10-16T14:43:19.468467+00:00",
+  "gate_status": "pending_official_packet_access",
+  "gate_unchanged": true,
+  "supersedes": null,
+  "acquisition": {
+    "member": "SPMD/RSE_BSM.csv.zip",
+    "outer_compressed_bytes": 3229630428,
+    "member_uncompressed_bytes": 3228646514,
+    "compressed_bytes_transferred": 3229631452,
+    "chunks": 49,
+    "elapsed_seconds": 1025.4,
+    "local_data_offset": 101092209150,
+    "zip64_catalog_members_total": 46,
+    "zip64_key_members_match_historical": true,
+    "central_directory_crc32": "41d7512f",
+    "member_crc32_check": "pass",
+    "inner_zip_integrity_testzip": "pass",
+    "inner_members": [
+      {
+        "name": "RSE BSM head.csv",
+        "uncompressed": 373,
+        "crc32": "ff3dfb68"
+      },
+      {
+        "name": "RSE BSM.csv",
+        "compressed": 3228645982,
+        "uncompressed": 16841646195,
+        "crc32": "07f72880"
+      }
+    ],
+    "final_path": "dataset/SPMD/selected/RSE_BSM.csv.zip",
+    "sha256_member_file": "9C40C15FAD32C470592A08556B07DDB91C8A08265E1F56683908AD0EDD47D722",
+    "sha256_semantics": "SHA-256 of the member file (self-contained inner zip); integrity of the member content is additionally proven by the SPMD.zip central-directory CRC32 match",
+    "no_official_sha256_available": true
+  },
+  "structure": {
+    "data_rows_total": 124115615,
+    "headerless_data_file": true,
+    "separate_header_file": "RSE BSM head.csv",
+    "field_count": 25,
+    "fields": [
+      "RxDevice",
+      "BSMID",
+      "DSRCMsgId",
+      "MsgCount",
+      "TemporaryId",
+      "DSeconds",
+      "Latitude",
+      "Longitude",
+      "Elevation",
+      "PositionalAccuracy",
+      "TransmissionState",
+      "Speed",
+      "Heading",
+      "SteeringWheelAngle",
+      "LongitudinalAcceleration",
+      "LateralAcceleration",
+      "VerticalAcceleration",
+      "YawRate",
+      "BrakeAppliedStatus",
+      "WheelBrakesUnavailable",
+      "TractionControlState",
+      "AntilockBrakeStatus",
+      "StabilityControlStatus",
+      "BrakeBoostApplied",
+      "AuxiliaryBrakeStatus"
+    ],
+    "handbook_field_count_claim": 28,
+    "handbook_tables_field_count": 24,
+    "field_delta_vs_documented": "actual = documented 24 + RxDevice (column 1); no time fields beyond sender-side DSeconds",
+    "malformed_rows": 0
+  },
+  "identity_and_time": {
+    "bsmid_unique_per_row": true,
+    "bsmid_distinct": 124115615,
+    "bsmid_span": 2046056067,
+    "bsmid_role": "per-row record ID; NOT a cross-receiver message identity (0 multi-receiver BSMIDs)",
+    "temporary_id_distinct": 155220,
+    "msgcount_range": [
+      0,
+      127
+    ],
+    "msgcount_cycles": true,
+    "senders_with_repeated_msgcount": 133799,
+    "dseconds_range": [
+      0,
+      59999
+    ],
+    "dseconds_semantics": "sender-side milliseconds within minute (J2735 secMark-style; wraps)",
+    "triple_key_duplicates_tempid_msgcount_dseconds": 26919767,
+    "triple_key_coverage": "partial (60,035,108 unique triples covered before memory cap; duplicates are a lower bound)",
+    "absolute_time_field": null,
+    "receive_timestamp": "Not Observable in this member",
+    "rx_device_distinct": 2008,
+    "rx_device_rows_top": {
+      "10106": 38882054,
+      "17101": 1819458,
+      "17103": 1447787,
+      "7179": 1342696,
+      "7165": 1248496,
+      "7264": 1128078,
+      "7267": 1084911,
+      "7199": 904222,
+      "7191": 887390,
+      "7178": 805543
+    },
+    "rx_device_namespace": {
+      "contained_in_bsm_p1_summary_device_ids": "2008 of 2008",
+      "overlap_with_data_wsu_summary_device_ids": "91 of 96",
+      "overlap_with_tripfact_device_ids": "23 of 64",
+      "overlap_with_pcapfile_rse_locids": "0 of 25",
+      "interpretation": "RxDevice uses the vehicle-device ID namespace (BsmP1Summary/DataWsuSummary), NOT the PCAPFile RSE LocID namespace; member name and handbook RSE-dataset description do not match the actual logger namespace; physical identity of the 2,008 loggers (onboard WSUs vs roadside units sharing the namespace) remains Ambiguous and requires the device inventory (e.g., BsmMd / UMTRI documentation) to resolve"
+    }
+  },
+  "holdout_and_scope": {
+    "existing_split_rule": "DeviceID|Trip hash (RV_RX calibration/holdout); not applicable to RSE_BSM (no DeviceID-Trip columns)",
+    "analysis_performed": "structural, identity and format integrity checks only",
+    "analysis_deferred": "all behavioral/distributional statistics pending researcher decision on isolation strategy",
+    "new_split_rule_invented": false
+  },
+  "evidence_levels": {
+    "message_source": "Documented (TemporaryId rotating, MsgCount sequence; identity collisions make month-scale tracking Ambiguous)",
+    "message_send": "Not Observable (no absolute time; DSeconds is sender-side and wraps at 60 s)",
+    "message_receive": "Documented-structural (receive-event logging rows exist; receive time Not Observable)",
+    "send_receive_pairing": "Ambiguous (best in-member key (TemporaryId,MsgCount,DSeconds) has >=26.9M duplicates under partial coverage; no cross-receiver shared identity)",
+    "latency": "Not Observable (no receiver timestamp; no synchronized clocks documented)",
+    "loss_and_delivery": "Not Observable (no send base, no opportunity model, no time windows)",
+    "environment_conditions": "Potential (J2735 motion/position content; no channel/RSSI/power fields)",
+    "adoption_and_response": "Not Observable"
+  },
+  "scientific_claim_eligible": false,
+  "packet_decision_inputs": {
+    "rse_bsm_time_anchor_via_packet": "Not documented - Packet is PCAP/RSE-side (PCAPFile LocID namespace) while RSE_BSM loggers are in the vehicle-device namespace (0 overlap); a documented join key between Packet and RSE_BSM does not exist",
+    "packet_standalone_value": "absolute GMT capture timestamps + PSID/channel/data-rate/power at 25 RSE sessions; resolves gate item packet_schema_evaluated",
+    "bsm_p1_revised_role": "dictionary RxDevice+Gentime structure matches the RSE_BSM logger namespace; BsmP1 may provide receive-side absolute time for the same device population - value upgraded",
+    "new_members_identified": [
+      {
+        "member": "SPMD/BsmMd.csv.zip",
+        "compressed": 17286441868,
+        "note": "BSM metadata: TxRandom/unmasked IDs, cert IDs, time and frame offsets; identity-linking candidate"
+      },
+      {
+        "member": "SPMD/RSE_locations.kml",
+        "compressed": 520,
+        "note": "RSE LocID coordinates; near-zero cost, recommend bundling with any next batch"
+      }
+    ]
+  }
+}

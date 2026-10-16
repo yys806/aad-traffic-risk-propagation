@@ -3,7 +3,16 @@
   "task_id": "AAD-0.4.1",
   "survey_date": "2026-10-17",
   "survey_scope": "pre-download investigation only; no new data downloaded in this task; evidence levels: Documented (official docs/fields), Potential (plausible via cross-table join, unverified), Verified (actual local data + reproducible results), NotObservable (fields cannot support), Unknown (insufficient information",
-  "research_need_levels": ["message_source", "message_send", "message_receive", "send_receive_pairing", "latency", "loss_and_delivery", "environment_conditions", "adoption_and_response"],
+  "research_need_levels": [
+    "message_source",
+    "message_send",
+    "message_receive",
+    "send_receive_pairing",
+    "latency",
+    "loss_and_delivery",
+    "environment_conditions",
+    "adoption_and_response"
+  ],
   "candidates": [
     {
       "dataset_id": "SPMD-RV_RX",
@@ -13,7 +22,16 @@
       "doi": "10.21949/1504482",
       "member": "RV_RX.csv.zip (783,882,525 B compressed",
       "access_status": "obtained_locally (SHA-256 pinned in download manifest",
-      "key_fields_documented": ["DeviceID (host DAS/vehicle", "Trip (ignition cycle count", "Time (centiseconds since DAS start, device-local", "RV_ID", "RV_Type", "Range", "Range_Rate", "remote motion/brake status"],
+      "key_fields_documented": [
+        "DeviceID (host DAS/vehicle",
+        "Trip (ignition cycle count",
+        "Time (centiseconds since DAS start, device-local",
+        "RV_ID",
+        "RV_Type",
+        "Range",
+        "Range_Rate",
+        "remote motion/brake status"
+      ],
       "needs_support": {
         "message_source": "NotObservable (no sender message identity; RV_ID not a message ID",
         "message_send": "NotObservable",
@@ -37,7 +55,23 @@
       "doi": "10.21949/1504482",
       "member": "Packet.csv.zip (15,332,614,985 B compressed; 15,400,825,024 B inner",
       "access_status": "not_obtained; official asset now 302-redirects to file API (blob 9a19fca6-465a-4247-ad4c-28c67cf7ef8b); HEAD inconclusive from this environment (historical state was HTTP 403); historical Range-request member download previously worked on this host",
-      "key_fields_documented": ["PacketId", "PCAPFileId", "PacketNumber", "PacketLocation", "PacketDataLength", "PacketTimestamp (GMT, 1 s resolution", "TimestampMicroseconds", "IncludedLength/OriginalLength", "SourceIPAddress (OBU IP, documented as non-constant", "EtherType", "WSMPVersion", "Channel", "DataRate (MB/s", "PowerUsed (dBm", "PSID (message type; 0x20=BSM)"],
+      "key_fields_documented": [
+        "PacketId",
+        "PCAPFileId",
+        "PacketNumber",
+        "PacketLocation",
+        "PacketDataLength",
+        "PacketTimestamp (GMT, 1 s resolution",
+        "TimestampMicroseconds",
+        "IncludedLength/OriginalLength",
+        "SourceIPAddress (OBU IP, documented as non-constant",
+        "EtherType",
+        "WSMPVersion",
+        "Channel",
+        "DataRate (MB/s",
+        "PowerUsed (dBm",
+        "PSID (message type; 0x20=BSM)"
+      ],
       "semantics_documented": "one row = one packet captured at an RSE; packets are transmitted from OBUs to the RSE; capture timestamp only, no transmit timestamp; SourceIPAddress rotates",
       "needs_support": {
         "message_source": "Potential (SourceIPAddress/PSID, but rotating IP is not a stable sender identity",
@@ -51,9 +85,16 @@
       },
       "estimated_download_size_bytes": 15332614985,
       "disk_processing_note": "~15.3 GB download; inner CSV ~15.4 GB; row-level streaming parse needed",
-      "download_priority": "P0",
-      "first_verifications": ["ZIP member integrity + size match vs historical listing", "header equals official dictionary", "PacketTimestamp+TimestampMicroseconds coverage/range", "PSID distribution (BSM share = PSID 0x20", "PCAPFileId join to local PCAPFile table (RSE identity", "SourceIPAddress rotation statistics"],
-      "verified_date": "2026-10-17",
+      "download_priority": "P0 (recommended as next batch; revised expectation: no documented join key to RSE_BSM - RxDevice namespaces are disjoint; standalone value = RSE-side absolute GMT capture time + channel/power + packet_schema_evaluated gate item)",
+      "first_verifications": [
+        "ZIP member integrity + size match vs historical listing",
+        "header equals official dictionary",
+        "PacketTimestamp+TimestampMicroseconds coverage/range",
+        "PSID distribution (BSM share = PSID 0x20",
+        "PCAPFileId join to local PCAPFile table (RSE identity",
+        "SourceIPAddress rotation statistics"
+      ],
+      "verified_date": "2026-10-18",
       "source_citation": "Safety Pilot Model Deployment Sample Data Handbook (local, SHA-pinned), RSE Dataset sec 6.6 Packet File, Table 98-100"
     },
     {
@@ -64,7 +105,17 @@
       "doi": "10.21949/1504482",
       "member": "BsmP1.csv.zip (55,723,172,322 B compressed; 55,709,318,024 B inner",
       "access_status": "not_obtained; same host/asset as SPMD-Packet",
-      "key_fields_documented": ["RxDevice (device that logs a BSM", "FileID", "TxDevice (transmitting device", "Gentime (1609.2 secured epoch ms; documented conversion /1e6 with 35 s offset vs UTC, epoch 2004-01-01", "TxRandom (rotating anonymous sender ID", "MsgCount (per-BSM incrementing sequence", "DSecond (deciseconds since ignition, sender clock", "position/motion: Latitude, Longitude, Elevation, Speed, Heading, Ax, Ay, Az, Yawrate", "PathCount, RadiusOfCurve, Confidence"],
+      "key_fields_documented": [
+        "RxDevice (device that logs a BSM",
+        "FileID",
+        "TxDevice (transmitting device",
+        "Gentime (1609.2 secured epoch ms; documented conversion /1e6 with 35 s offset vs UTC, epoch 2004-01-01",
+        "TxRandom (rotating anonymous sender ID",
+        "MsgCount (per-BSM incrementing sequence",
+        "DSecond (deciseconds since ignition, sender clock",
+        "position/motion: Latitude, Longitude, Elevation, Speed, Heading, Ax, Ay, Az, Yawrate",
+        "PathCount, RadiusOfCurve, Confidence"
+      ],
       "semantics_documented": "10 Hz BSM Part I (+ some Part II) main file; populated from CAN bus and transmitted via onboard WSU; historical UMTRI WSU/Rx codebook evidence (2026-08-12 audit): GenTime = BSM generation time, TxRandom+MsgCount+GenTime are pairing-key candidates; whether rows include BSMs received from other vehicles (vs only own transmissions logged per RxDevice) requires actual-data verification",
       "needs_support": {
         "message_source": "Documented (TxDevice + TxRandom, rotating",
@@ -78,9 +129,15 @@
       },
       "estimated_download_size_bytes": 55723172322,
       "disk_processing_note": "~55.7 GB download; multi-hour transfer; streaming parse + join keys precomputed",
-      "download_priority": "P0 (conditional: obtain after Packet/RSE_BSM verification, or together if the researcher prefers a single batch",
-      "first_verifications": ["header equals official dictionary (19 fields", "Gentime conversion formula application", "RxDevice/TxDevice/TxRandom structure: does a transmitter's BSM appear under multiple RxDevices?", "MsgCount continuity and rotation collisions per TxRandom", "same-message multiplicity across receivers"],
-      "verified_date": "2026-10-17",
+      "download_priority": "P0 (value upgraded: dictionary RxDevice+Gentime matches the RSE_BSM logger namespace; may provide receive-side absolute time for the same device population; receive semantics still unverified)",
+      "first_verifications": [
+        "header equals official dictionary (19 fields",
+        "Gentime conversion formula application",
+        "RxDevice/TxDevice/TxRandom structure: does a transmitter's BSM appear under multiple RxDevices?",
+        "MsgCount continuity and rotation collisions per TxRandom",
+        "same-message multiplicity across receivers"
+      ],
+      "verified_date": "2026-10-18",
       "source_citation": "Safety Pilot Model Deployment Sample Data Handbook, BSM Dataset sec 5.1/5.4, Tables 34-39; docs/归档/真实数据与NC文献调研/spmd_field_audit.md (UMTRI WSU/Rx codebooks"
     },
     {
@@ -90,23 +147,34 @@
       "official_url": "https://data.transportation.gov/Automobiles/Safety-Pilot-Model-Deployment-Data/deww-aa3r",
       "doi": "10.21949/1504482",
       "member": "RSE_BSM.csv.zip (3,229,630,428 B compressed; 3,228,646,514 B inner",
-      "access_status": "not_obtained; same host/asset",
-      "key_fields_documented": ["BSMID (unique per-row message ID", "DSRCMsgId (2=BSM", "MsgCount (per-sender sequence", "TemporaryID (4-byte rotating anonymous sender ID", "DSeconds (sender clock, ms within minute, wraps at 60 s", "position/motion + brake system statuses (J2735 Part I", "handbook states 28 fields while tables show 24 - 4 undocumented fields, possibly time/RSE identity, must be verified from actual header"],
-      "semantics_documented": "BSMs received by an RSE from equipped vehicles within communication range; content captured at fixed infrastructure points; no documented RSE receive timestamp or RSE ID in the field table",
+      "access_status": "obtained_locally 2026-10-18 (member-level Range; CRC32 vs central directory pass; SHA-256 9C40C15FAD32C470592A08556B07DDB91C8A08265E1F56683908AD0EDD47D722)",
+      "key_fields_documented": [
+        "RxDevice (column 1; 2008 distinct values, all within BsmP1Summary device-ID namespace; 0 overlap with PCAPFile RSE LocIDs; physical identity Ambiguous)",
+        "BSMID (unique per row, exact bitset verification; NOT a cross-receiver message identity)",
+        "DSRCMsgId (2=BSM)",
+        "MsgCount (0-127 cycling)",
+        "TemporaryID (155,220 distinct rotating sender IDs)",
+        "DSeconds (0-59999, sender-side ms within minute, wraps)",
+        "J2735 Part I position/motion/brake statuses",
+        "NO absolute time field; NO channel/RSSI/power"
+      ],
+      "semantics_documented": "ACTUAL (verified 2026-10-18): 25 fields = handbook 24 + RxDevice; data file headerless (separate head.csv); 124,115,615 rows, 0 malformed; handbook 28-field claim wrong; no receive timestamp; best in-member key (TemporaryId,MsgCount,DSeconds) has >=26,919,767 duplicates under partial exact coverage; loggers in vehicle-device namespace contradict the RSE naming - interpretation Ambiguous",
       "needs_support": {
-        "message_source": "Documented (TemporaryID, rotating",
-        "message_send": "Potential (DSeconds is sender clock without absolute time; wrap at 60 s",
-        "message_receive": "Documented (RSE reception implied by file semantics; explicit receive event/time unverified",
-        "send_receive_pairing": "Potential (TemporaryID+MsgCount identity; cross-table join keys to Packet/BsmP1 not documented",
-        "latency": "Potential (needs verified receive timestamp and sender GenTime; undocumented links make this Unknown until header verification",
-        "loss_and_delivery": "Potential (fixed-infrastructure receiver; still needs send base + range/opportunity model",
-        "environment_conditions": "Documented (fixed RSE spatial anchor via PCAPFile join; sender motion content) ",
+        "message_source": "Documented (month-scale tracking Ambiguous)",
+        "message_send": "NotObservable",
+        "message_receive": "Documented-structural (receive time NotObservable)",
+        "send_receive_pairing": "Ambiguous",
+        "latency": "NotObservable",
+        "loss_and_delivery": "NotObservable",
+        "environment_conditions": "Potential",
         "adoption_and_response": "NotObservable"
       },
       "estimated_download_size_bytes": 3229630428,
-      "download_priority": "P0 (cheapest new member; verify undocumented fields before deciding on BsmP1",
-      "first_verifications": ["actual header vs handbook (28 vs 24 fields; identify the extra 4", "TemporaryID+MsgCount sequence structure", "any RSE ID / receive timestamp field", "joinability to Packet (BSMID?) and PCAPFile"],
-      "verified_date": "2026-10-17",
+      "download_priority": "obtained",
+      "first_verifications": [
+        "DONE 2026-10-18: see RES-STAGE-0.4-RSE-BSM-V1"
+      ],
+      "verified_date": "2026-10-18",
       "source_citation": "Safety Pilot Model Deployment Sample Data Handbook, RSE Dataset sec 6.1 BSM File, Tables 80-83"
     },
     {
@@ -115,12 +183,23 @@
       "publisher": "USDOT ITS JPO (official",
       "official_url": "https://data.transportation.gov/Automobiles/Safety-Pilot-Model-Deployment-Data/deww-aa3r",
       "doi": "10.21949/1504482",
-      "members": ["BsmP1Summary.csv.zip (13,181,194 B", "DataWsuSummary.csv.zip (357,129 B", "PCAPFile.csv.zip (654,501 B", "TripFact.csv.zip (840,417 B)"],
+      "members": [
+        "BsmP1Summary.csv.zip (13,181,194 B",
+        "DataWsuSummary.csv.zip (357,129 B",
+        "PCAPFile.csv.zip (654,501 B",
+        "TripFact.csv.zip (840,417 B)"
+      ],
       "access_status": "obtained_locally (SHA-256 pinned",
-      "key_fields_documented": ["DeviceID, TripID, EpochStartTime/EpochEndTime (absolute epoch anchors per trip", "distances/durations/speeds; BrakeCount, WiperActivated (DataWsuSummary", "PCAPFile: PCAPFileId, filename (Savari-LocID<NNNN>_dsrc1_out_<timestamp>.pccap), capture time, snaplen - headerless CSV (first row is data)"],
+      "key_fields_documented": [
+        "DeviceID, TripID, EpochStartTime/EpochEndTime (absolute epoch anchors per trip",
+        "distances/durations/speeds; BrakeCount, WiperActivated (DataWsuSummary",
+        "PCAPFile: PCAPFileId, filename (Savari-LocID<NNNN>_dsrc1_out_<timestamp>.pccap), capture time, snaplen - headerless CSV (first row is data)"
+      ],
       "role_for_communication_evidence": "coverage windows, device-trip association, RSE location/session identification (PCAPFile join target for Packet.PCAPFileId); NOT send-receive evidence",
       "needs_support": {
-        "message_source": "NotObservable", "message_send": "NotObservable", "message_receive": "NotObservable",
+        "message_source": "NotObservable",
+        "message_send": "NotObservable",
+        "message_receive": "NotObservable",
         "send_receive_pairing": "Potential (join key provider: PCAPFileId; DeviceID-TripID epoch anchors",
         "latency": "Potential (time-anchor provider only",
         "loss_and_delivery": "Potential (coverage/denominator context provider",
@@ -138,7 +217,15 @@
       "official_url": "https://data.transportation.gov/Automobiles/Advanced-Messaging-Concept-Development-Basic-Safet/eezi-v4pm",
       "doi": "10.21949/1504488",
       "access_status": "public Socrata table on data.transportation.gov; row count 2,593,113 (aggregate query, 2026-10-17); no login required for the published table; no data dictionary attachment currently present",
-      "key_fields_documented": ["obu_id (sender", "time_sent (text", "time_received (number", "mode_of_transmission", "J2735 Part I content (position/motion/brakes", "test_no", "location fields"],
+      "key_fields_documented": [
+        "obu_id (sender",
+        "time_sent (text",
+        "time_received (number",
+        "mode_of_transmission",
+        "J2735 Part I content (position/motion/brakes",
+        "test_no",
+        "location fields"
+      ],
       "semantics_documented": "per-BSM row with explicit send and receive times; official description: fields added 'to identify sender, time of communication, mode of communication, allowing the consumer of this data set to accurately track messages through the system'; all BSMs generated by OBUs and ultimately received by the VCC Cloud server",
       "needs_support": {
         "message_source": "Documented (obu_id",
@@ -153,7 +240,12 @@
       "estimated_download_size_bytes": null,
       "estimated_size_note": "~2.6M rows; API export size likely low hundreds of MB as CSV; exact size Unknown until export",
       "download_priority": "P1",
-      "first_verifications": ["time_sent format and clock provenance", "time_received units/epoch", "per-obu_id send-vs-receive completeness (loss structure", "mode_of_transmission domain"],
+      "first_verifications": [
+        "time_sent format and clock provenance",
+        "time_received units/epoch",
+        "per-obu_id send-vs-receive completeness (loss structure",
+        "mode_of_transmission domain"
+      ],
       "verified_date": "2026-10-17",
       "source_citation": "data.transportation.gov view eezi-v4pm metadata + column schema (official, 2026-10-17); doi:10.21949/1504488"
     },
@@ -164,7 +256,16 @@
       "official_url": "https://data.transportation.gov/Automobiles/NYC-CV-Pilot-IE-Processed-Data/gu5j-r7xj",
       "doi": "10.21949/1404205",
       "access_status": "public Socrata table; 164,131 rows (aggregate query, 2026-10-17); created 2022-09-27, updated 2022-09-30; attachments currently absent (description referencing a data dictionary attachment is stale",
-      "key_fields_documented": ["eventid, HostVehID, TargetID, SeqNumHV, SeqNumTV", "WarningType, WarningStartTime, EventStatus", "Sent, Heard (counts", "TimeRecBefore, TimeRecordFollow (recording window", "TTC, ROI", "TimeBin, LocationBin, dummytime (binned/coarsened time and location", "WeatherCond, AirTempurature, Precipitation1hr, WindSpeed", "curve/speed warning detail fields, ExperimentGroup"],
+      "key_fields_documented": [
+        "eventid, HostVehID, TargetID, SeqNumHV, SeqNumTV",
+        "WarningType, WarningStartTime, EventStatus",
+        "Sent, Heard (counts",
+        "TimeRecBefore, TimeRecordFollow (recording window",
+        "TTC, ROI",
+        "TimeBin, LocationBin, dummytime (binned/coarsened time and location",
+        "WeatherCond, AirTempurature, Precipitation1hr, WindSpeed",
+        "curve/speed warning detail fields, ExperimentGroup"
+      ],
       "semantics_documented": "each EVENT record = one application warning on an Aftermarket Safety Device (ASD) in an equipped host vehicle, including CV messages from a defined recording time before and after the warning",
       "needs_support": {
         "message_source": "Potential (TargetID/SeqNumTV; obfuscated identifiers)",
@@ -179,7 +280,12 @@
       "estimated_download_size_bytes": null,
       "estimated_size_note": "164k rows; small (tens of MB",
       "download_priority": "P1",
-      "first_verifications": ["Sent/Heard field semantics from data dictionary (currently absent - request or locate", "TimeBin/dummytime granularity", "warning-type domain", "joinability to Event Message sample"],
+      "first_verifications": [
+        "Sent/Heard field semantics from data dictionary (currently absent - request or locate",
+        "TimeBin/dummytime granularity",
+        "warning-type domain",
+        "joinability to Event Message sample"
+      ],
       "verified_date": "2026-10-17",
       "source_citation": "data.transportation.gov view gu5j-r7xj metadata + 42-column schema (official, 2026-10-17); doi:10.21949/1404205"
     },
@@ -191,11 +297,20 @@
       "doi": null,
       "related_doi": "10.21949/1522485 (NYC CV Pilot Event Message One Month Sample",
       "access_status": "public Socrata table; heavily obfuscated per official description (precise time and location details and vehicle identifiers obfuscated); full unflattened data requires ITS DataHub Sandbox request form",
-      "key_fields_documented": ["eventtimebin, dayofweekbin, timeofdaybin, eventlocationbin, bureaubin, roadtypebin, nearrsu", "eventalertactive/sent/heard", "hostvehid, targetvehid, triggerhvseqnum, triggertvseqnum", "asdfirmwareversion, eventtype, grpid, weathercondition"],
+      "key_fields_documented": [
+        "eventtimebin, dayofweekbin, timeofdaybin, eventlocationbin, bureaubin, roadtypebin, nearrsu",
+        "eventalertactive/sent/heard",
+        "hostvehid, targetvehid, triggerhvseqnum, triggertvseqnum",
+        "asdfirmwareversion, eventtype, grpid, weathercondition"
+      ],
       "needs_support": {
-        "message_source": "Potential (obfuscated", "message_send": "NotObservable", "message_receive": "Potential (alert heard",
-        "send_receive_pairing": "NotObservable", "latency": "NotObservable (binned time",
-        "loss_and_delivery": "NotObservable", "environment_conditions": "Documented (weather, roadtype, near-RSU",
+        "message_source": "Potential (obfuscated",
+        "message_send": "NotObservable",
+        "message_receive": "Potential (alert heard",
+        "send_receive_pairing": "NotObservable",
+        "latency": "NotObservable (binned time",
+        "loss_and_delivery": "NotObservable",
+        "environment_conditions": "Documented (weather, roadtype, near-RSU",
         "adoption_and_response": "Potential-with-strong-caution (alert active/sent/heard; alert != controller adoption"
       },
       "download_priority": "P2 (obfuscated sample; IE processed table gu5j-r7xj supersedes most uses",
@@ -209,7 +324,11 @@
       "official_url": "https://data.transportation.gov/Automobiles/Tampa-CV-Pilot-Basic-Safety-Message-BSM-Sample/nm7w-nvbm",
       "doi": null,
       "access_status": "public sample table: 34,464 rows (aggregate query, 2026-10-17); full raw BSM data requires ITS DataHub Sandbox request form (free, no eligibility restrictions, but a manual request this task must not submit",
-      "key_fields_documented": ["metadata: RSUID, recordGeneratedAt, logFileName, psid, bsmSource, externalID", "coreData: msgCnt, id (temporary ID), secMark, position/motion/brakes (J2735", "part II: vehicle description, events, path history"],
+      "key_fields_documented": [
+        "metadata: RSUID, recordGeneratedAt, logFileName, psid, bsmSource, externalID",
+        "coreData: msgCnt, id (temporary ID), secMark, position/motion/brakes (J2735",
+        "part II: vehicle description, events, path history"
+      ],
       "semantics_documented": "BSMs generated by OBUs and transmitted to RSUs throughout the Tampa study area; sample rows are RSU-received BSM records",
       "needs_support": {
         "message_source": "Documented (coreData_id rotating temporary ID, msgCnt",
@@ -222,7 +341,12 @@
         "adoption_and_response": "NotObservable"
       },
       "download_priority": "P1 (sample is tiny and free; full data request is a separate researcher decision",
-      "first_verifications": ["recordGeneratedAt semantics (generation or ingestion?", "receive timestamp presence/granularity", "RSUID coverage", "msgCnt/id continuity"],
+      "first_verifications": [
+        "recordGeneratedAt semantics (generation or ingestion?",
+        "receive timestamp presence/granularity",
+        "RSUID coverage",
+        "msgCnt/id continuity"
+      ],
       "verified_date": "2026-10-17",
       "source_citation": "data.transportation.gov view nm7w-nvbm metadata + 50-column schema (official, 2026-10-17); ITS DataHub data request: https://its.dot.gov/data/data-request"
     },
@@ -233,10 +357,16 @@
       "official_url": "https://data.transportation.gov/Automobiles/LTE-V2X-Wyoming-Connected-Vehicle-Pilot-test-ID-WV/hgck-kgan (and ~11 sibling test-ID tables",
       "doi": null,
       "access_status": "public Socrata tables (controlled test IDs, e.g., WV2IMCT-1, WFCW-3, fixed vehicle speeds 70/80 mph); small per-test datasets; catalog checked 2026-10",
-      "key_fields_documented": ["per-test BSM counts and test configurations (controlled experiments, not naturalistic)"],
+      "key_fields_documented": [
+        "per-test BSM counts and test configurations (controlled experiments, not naturalistic)"
+      ],
       "needs_support": {
-        "message_source": "Unknown (per-test tables; schemas vary", "message_send": "Unknown", "message_receive": "Unknown",
-        "send_receive_pairing": "Unknown", "latency": "Unknown", "loss_and_delivery": "Unknown",
+        "message_source": "Unknown (per-test tables; schemas vary",
+        "message_send": "Unknown",
+        "message_receive": "Unknown",
+        "send_receive_pairing": "Unknown",
+        "latency": "Unknown",
+        "loss_and_delivery": "Unknown",
         "environment_conditions": "Documented (controlled test conditions, LTE-V2X profiles, speeds",
         "adoption_and_response": "NotObservable"
       },
@@ -251,12 +381,18 @@
       "official_url": "https://its.dot.gov/data/data-request",
       "doi": null,
       "access_status": "S3 bucket usdot-its-cvpilot-public-data.s3.amazonaws.com denies anonymous listing (verified 2026-10-17, AccessDenied); access via ITS DataHub request form - 'no restrictions on who can use this form' but manual submission required; this task must not submit applications",
-      "key_fields_documented": ["full unflattened NYC EVENT data, Tampa raw BSM, Wyoming Phase 3 DSRC fleet data and other CV pilot datasets (contents documented per-dataset on DataHub pages)"],
+      "key_fields_documented": [
+        "full unflattened NYC EVENT data, Tampa raw BSM, Wyoming Phase 3 DSRC fleet data and other CV pilot datasets (contents documented per-dataset on DataHub pages)"
+      ],
       "needs_support": {
-        "message_source": "Potential", "message_send": "Potential", "message_receive": "Potential",
-        "send_receive_pairing": "Unknown (depends on dataset", "latency": "Unknown",
+        "message_source": "Potential",
+        "message_send": "Potential",
+        "message_receive": "Potential",
+        "send_receive_pairing": "Unknown (depends on dataset",
+        "latency": "Unknown",
         "loss_and_delivery": "Potential (NYC message-level sample may include per-message records)",
-        "environment_conditions": "Potential", "adoption_and_response": "Potential-with-caution (warning data only; not controller adoption"
+        "environment_conditions": "Potential",
+        "adoption_and_response": "Potential-with-caution (warning data only; not controller adoption"
       },
       "download_priority": "P1 (as a channel: only after SPMD member analysis identifies specific gaps; submission is a researcher action",
       "verified_date": "2026-10-17",
@@ -264,19 +400,44 @@
     }
   ],
   "download_recommendations": {
-    "P0": ["SPMD-RSE_BSM (~3.23 GB", "SPMD-Packet (~15.33 GB", "SPMD-BsmP1 (~55.72 GB, conditional on Packet/RSE_BSM verification or researcher preference for one batch)"],
-    "P1": ["AMCD-BSM (portal export, ~2.6M rows", "Tampa-CVP-BSM-SAMPLE (free sample", "NYC-CVP-IE-EVENT (164k rows", "ITS DataHub Sandbox request (researcher action, deferred until SPMD gap analysis)"],
-    "P2": ["NYC-CVP-EVENT-1MONTH-SAMPLE (obfuscated", "Wyoming Phase 4 LTE-V2X test tables", "full SPMD.zip 117 GB (unnecessary; member-level download is the documented precedent)"]
+    "P0": [
+      "SPMD-RSE_BSM (~3.23 GB",
+      "SPMD-Packet (~15.33 GB",
+      "SPMD-BsmP1 (~55.72 GB, conditional on Packet/RSE_BSM verification or researcher preference for one batch)"
+    ],
+    "P1": [
+      "AMCD-BSM (portal export, ~2.6M rows",
+      "Tampa-CVP-BSM-SAMPLE (free sample",
+      "NYC-CVP-IE-EVENT (164k rows",
+      "ITS DataHub Sandbox request (researcher action, deferred until SPMD gap analysis)"
+    ],
+    "P2": [
+      "NYC-CVP-EVENT-1MONTH-SAMPLE (obfuscated",
+      "Wyoming Phase 4 LTE-V2X test tables",
+      "full SPMD.zip 117 GB (unnecessary; member-level download is the documented precedent)"
+    ]
   },
   "open_questions_requiring_real_data": [
-    "SPMD current asset accessibility: the download endpoint now 302-redirects to the official file API (improvement over historical 403) but HEAD verification was inconclusive; the previously-used Range-request approach must be revalidated against the new blob before any member download",
-    "SPMD.zip member structure under the new 2026 blob: is the 46-member layout and historical member sizes unchanged?",
-    "RSE_BSM undocumented fields (handbook says 28, tables show 24): is there an RSE ID and/or receive timestamp?",
-    "BsmP1 receive semantics: do rows include BSMs received from other vehicles under multiple RxDevices, or only own transmissions?",
-    "Clock synchronization between OBU 1609.2 clocks (GenTime, documented 35 s offset) and RSE GMT capture clocks; cross-WSU synchronization - undocumented, gates all latency claims",
-    "Packet-to-message pairing: can a captured packet be linked to a specific BsmP1/RSE_BSM message identity given the documented rotating SourceIPAddress and absence of MsgCount in Packet?",
+    "Physical identity of the 2008 RSE_BSM RxDevice loggers (onboard WSUs vs roadside units sharing the namespace) - needs BsmMd or the device inventory",
+    "Row-level joinability of RSE_BSM to BsmP1 via RxDevice+Gentime (dictionary-suggested, unverified)",
+    "Whether Packet rows can be matched to RSE_BSM rows positionally/count-wise within PCAP sessions (undocumented; only verifiable after Packet download)",
+    "Clock synchronization between OBU 1609.2 clocks (GenTime, documented 35 s offset) and any receiver-side clock - gates all latency claims",
+    "Holdout isolation strategy for RSE_BSM (no DeviceID-Trip columns; deferred to researcher)",
     "AMCD time_sent clock provenance and time_received units",
-    "NYC IE Sent/Heard field semantics (dictionary attachment currently absent from the view)"
+    "NYC IE Sent/Heard field semantics (dictionary attachment currently absent)",
+    "Controller adoption is not observable in any candidate dataset - permanently a simulation/experiment responsibility"
   ],
-  "zotero_literature_note": "No SPMD/CV-Pilot dataset papers are currently in the Zotero TJU->AAD collection (keyword scan 2026-10-17: 1 loosely related item, ZTEPXKBA, a nonlocal traffic-flow model paper). Candidate imports for a later decision per existing literature rules: dataset DOIs (SPMD 10.21949/1504482, AMCD 10.21949/1504488, NYC IE 10.21949/1404205, NYC event-message sample 10.21949/1522485) and program evaluation reports; not imported in this task."
+  "zotero_literature_note": "No SPMD/CV-Pilot dataset papers are currently in the Zotero TJU->AAD collection (keyword scan 2026-10-17: 1 loosely related item, ZTEPXKBA, a nonlocal traffic-flow model paper). Candidate imports for a later decision per existing literature rules: dataset DOIs (SPMD 10.21949/1504482, AMCD 10.21949/1504488, NYC IE 10.21949/1404205, NYC event-message sample 10.21949/1522485) and program evaluation reports; not imported in this task.",
+  "new_members_identified_2026_10_18": [
+    {
+      "member": "SPMD/BsmMd.csv.zip",
+      "compressed_bytes": 17286441868,
+      "note": "BSM metadata: TxRandom/unmasked device mapping, certificate IDs, time and frame offsets; identity-linking candidate; P1 consideration"
+    },
+    {
+      "member": "SPMD/RSE_locations.kml",
+      "compressed_bytes": 520,
+      "note": "RSE LocID coordinates; near-zero cost; recommend bundling with any next batch"
+    }
+  ]
 }

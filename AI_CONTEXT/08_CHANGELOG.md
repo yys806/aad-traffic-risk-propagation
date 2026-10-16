@@ -83,3 +83,7 @@ Zotero 六主题调整经批准并官方授权执行（更名 05、新建 06、�
 ## 2026-10-17 — AAD-0.4.1：Stage 0.4 数据源下载前调查
 
 只读完成：SPMD 访问状态重验（302 重定向，可达性待 Range 重验）、Packet/BsmP1/RSE_BSM 官方字典结论、RSE_BSM 新识别、时延时钟同步前置、外源候选（AMCD/NYC/Tampa/Sandbox）、8×11 证据矩阵与 P0/P1/P2 下载建议（渐进 RSE_BSM+Packet → 条件性 BsmP1；完整包不必要）。交付 `docs/STAGE_0_4_TASK_0_4_1_DATASET_SURVEY.md`、`docs/research/stage_0_4_dataset_candidates.json`；KI-03 与阶段索引更新；Gate 不变。
+
+## 2026-10-18 — AAD-0.4.2：RSE_BSM 条件获取与核验
+
+获取 `RSE_BSM.csv.zip`（成员级 Range，完整性三重校验通过）并完成结构/身份/时间审计：25 字段、无绝对时间、BSMID 行级唯一、RxDevice 属车载命名空间（与 RSE LocID 零重叠，身份 Ambiguous）、配对键重复 ≥26.9M。证据边界（接收时间/时延/丢包 Not Observable、配对 Ambiguous）与 holdout 暂缓已记录；Packet 下一批建议、BsmP1 价值上调、BsmMd/kml 新候选已入清单。结果 `RES-STAGE-0.4-RSE-BSM-V1`；Gate 不变。

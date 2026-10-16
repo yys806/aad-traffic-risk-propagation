@@ -68,3 +68,7 @@
 ## 2026-10-17 — AAD-0.4.1：Stage 0.4 通信数据源下载前调查
 
 只读调查（未下载/未申请/未改 Gate）：SPMD 官方条目重验（DOI 10.21949/1504482；端点 403→302 变化，可达性待 Range 重验）；以官方手册字典确认 Packet/BsmP1/RSE_BSM 字段语义与时延/丢包的条件链；识别 RSE_BSM（3.23 GB）为被忽视的最低成本接收侧证据；跨设备时钟同步为时延共同未验证前置。外源候选：AMCD（同行 sent/received）、NYC IE（告警级）、Tampa 样本（RSU 接收）、ITS DataHub Sandbox。交付科研需求-证据矩阵（8 需求 × 11 候选）、P0/P1/P2 下载决策表与 8 项待真实数据确认问题。新增 `docs/STAGE_0_4_TASK_0_4_1_DATASET_SURVEY.md` 与 `docs/research/stage_0_4_dataset_candidates.json`；KI-03 更新。Zotero 无数据集论文，候选 DOI 已列待研究者决定。
+
+## 2026-10-18 — AAD-0.4.2：RSE_BSM 条件获取与独立证据核验
+
+经研究者批准仅获取 SPMD `RSE_BSM.csv.zip`（成员级 Range，官方新 blob 的 Range/ZIP64 重新验证；CRC32 对中央目录一致、内层 ZIP 通过、SHA-256 钉扎；磁盘余量全程 ≥5 GiB）。实测 25 字段（官方 24+RxDevice；手册 28 字段说法有误）、124,115,615 行零畸形、BSMID 逐行唯一、无绝对时间字段；RxDevice 2,008 全在 BsmP1Summary 设备命名空间且与 RSE LocID 零重叠（记录方身份 Ambiguous，成员命名与官方手册描述不符实际数据）；最佳配对键部分覆盖下重复 ≥26.9M。接收时间/时延/丢包 Not Observable、配对 Ambiguous；行为统计按 holdout 规则暂缓。Packet 建议为下一批（修正预期：与 RSE_BSM 无文档化连接键）；BsmP1 价值上调（RxDevice+Gentime 候选时间锚）；新增 BsmMd/RSE_locations.kml 候选。登记 `RES-STAGE-0.4-RSE-BSM-V1`、报告、注册表/索引/AI_CONTEXT/下载清单/候选 JSON 同步；Gate 保持 `pending_official_packet_access`，未下载 Packet/BsmP1，未改任何封存结果。

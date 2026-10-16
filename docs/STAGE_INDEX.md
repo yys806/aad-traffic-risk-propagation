@@ -30,6 +30,8 @@
 
 2026-10-17（AAD-0.4.1）：完成下载前数据源调查（只读，未下载）。SPMD 官方条目（DOI 10.21949/1504482）2026-01 重建，下载端点由历史 403 变为 302 重定向至官方文件 API（最终可达性待下个授权下载任务验证）。官方字典确认：Packet（15.33 GB）为 RSE 侧捕获（仅捕获时间戳、IP 轮换、无发送时刻）；BsmP1（55.72 GB）具备发送侧字段（TxRandom/MsgCount/Gentime 含官方换算）；RSE_BSM（3.23 GB，此前未被重视）为 RSE 接收 BSM 内容且含 4 个未文档化字段。跨设备时钟同步是全部时延主张的共同未验证前置。其他候选：AMCD BSM（唯一同行 sent/received 时间，云接收）、NYC IE EVENT（告警级，时间空间分箱）、Tampa BSM 样本（RSU 接收）。推荐渐进下载 RSE_BSM+Packet（18.6 GB）→ 视核验结果再定 BsmP1。报告：`docs/STAGE_0_4_TASK_0_4_1_DATASET_SURVEY.md`；清单：`docs/research/stage_0_4_dataset_candidates.json`。Gate 与既有结论不变。
 
+2026-10-18（AAD-0.4.2，当前）：经研究者批准，成员级 Range 方式获取 `RSE_BSM.csv.zip`（3,228,646,514 B；CRC32/中央目录一致、内层 ZIP 校验通过、SHA-256 已钉扎）。实测 25 字段（官方 24+RxDevice）、124,115,615 行零畸形、BSMID 逐行唯一、无任何绝对时间字段；RxDevice 2,008 值全部落在 BsmP1Summary 设备命名空间、与 RSE LocID 零重叠（“RSE” 命名与实际记录方命名空间不符，Ambiguous）；成员内最佳配对键重复 ≥26.9M——配对/时延/丢包仍 Ambiguous/Not Observable。行为统计按 holdout 规则暂缓。Packet 建议为下一批（RSE 侧绝对时间+信道条件，修正预期：与 RSE_BSM 无文档化连接键）；BsmP1 价值上调（RxDevice+Gentime 时间锚候选）；新识别 BsmMd（17.29 GB）与 RSE_locations.kml（520 B）。结果 `RES-STAGE-0.4-RSE-BSM-V1`；报告 `docs/STAGE_0_4_TASK_0_4_2_RSE_BSM_AUDIT.md`。Gate 保持 `pending_official_packet_access`。
+
 ## stage_0_5 — 仿真—现实覆盖
 
 用 NGSIM 跟驰风险与 pNEUMA 城市运动学约束无消息作用的 SUMO 校准样本。当前缺仿真样本。

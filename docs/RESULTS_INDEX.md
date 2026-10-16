@@ -112,6 +112,10 @@ rho 时间尺度合理性诊断：tau=15.364279 s，完成四源分布、TTC 分
 
 Stage 0.2正式Gate=`pass`、`Completed / Closed`，仅限四源NGSIM、100ms描述性纵向跟驰风险代理测量。正式P2分母按可靠相邻边双端P2可评价定义独立复算；5,039,222条边、503,922.2s，原可靠跟驰512,043.2s仍独立列示，不可评价8,121.0s无零风险含义。P2=4,545；逐源事件率、原始分子分母和新旧分母率对照见最终包。独立物理真实性、缺失选择偏差、极端敏感性、200ms迁移不等价和来源外推为未验证限制。历史R3 Blocked记录不覆盖。证据：`code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r4/`。
 
+## RES-STAGE-0.4-RSE-BSM-V1
+
+Stage 0.4 任务 0.4.2：SPMD `RSE_BSM.csv.zip` 条件获取与独立证据核验（仅本地原始数据）。成员级 Range 下载（49 分块全部 206/Content-Range/ETag 校验），CRC32 对官方 ZIP64 中央目录一致，内层 ZIP 校验通过，SHA-256 `9C40C15F…D722` 钉扎；磁盘 182.98→179.98 GiB。实测：25 字段（官方 24+RxDevice，手册 28 字段说法有误）、124,115,615 行零畸形、表头独立于数据文件；BSMID 逐行唯一（行 ID 而非跨接收方消息身份）、TemporaryId 155,220、MsgCount 0–127 循环、DSeconds 发送端分钟内毫秒；**无绝对时间字段**；RxDevice 2,008 值全部在 BsmP1Summary 设备命名空间、与 PCAPFile RSE LocID 零重叠（记录方物理身份 Ambiguous）；(TempID,MsgCount,DSeconds) 部分精确覆盖下重复 ≥26,919,767。证据边界：接收时间/时延/丢包 Not Observable，配对 Ambiguous；行为统计按 holdout 规则暂缓。Packet 建议为下一批（修正预期），BsmP1 价值上调，新增 BsmMd/RSE_locations.kml 候选。Gate 保持 `pending_official_packet_access`。报告：`docs/STAGE_0_4_TASK_0_4_2_RSE_BSM_AUDIT.md`；包：`code/outputs/formal/calibration/stage_0_4_rse_bsm_v1/`。
+
 ## RES-STAGE-0.3-SCIENTIFIC-ACCEPTANCE-R3
 
 Stage 0.3 最终科学验收与正式关闭（AAD-0.3.3，2026-10-16）。研究者批准五项决定：①正式范围限 `20181101_d1_0800_0830.csv` 实际观测车辆的描述性城市运动学参考（不宣称 30 分钟连续覆盖、不代表城市总体、不推断时间原点）；②连续性规则 `0<Δt≤0.043 s` 为已批准科学参数（仅本 25 Hz 文件，原始记录顺序、fail-closed）；③极端观测原始保留+标记+敏感性，物理真实性 Unverified；④低速/近静止/近零阈值仅统计描述；⑤`Scientific Gate=pass`、`Completed / Closed`（有限范围）。关闭包对 R2 证据 fail-closed 复核全部通过：checksum 重验、785/1,239,475/[38.40,888.00] s/暴露 49,547.6 s、速度 TW 4.838218/VW 6.207738/加速度 -0.004410 m/s² 不变、独立复算 discrepancies=0；未重跑全量管线。验收矩阵 11 项全部 Verified。报告：`docs/STAGE_0_3_SCIENTIFIC_ACCEPTANCE_2026-10-16.md`；包：`code/outputs/formal/calibration/stage_0_3_scientific_acceptance_20261016_r3/`。

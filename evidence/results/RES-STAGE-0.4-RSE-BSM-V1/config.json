@@ -1,0 +1,25 @@
+{
+  "schema_version": "aad.stage-0-4.rse-bsm.config.v1",
+  "task_id": "AAD-0.4.2",
+  "experiment_id": "stage_0_4",
+  "result_id": "RES-STAGE-0.4-RSE-BSM-V1",
+  "authorized_member": "SPMD/RSE_BSM.csv.zip (only)",
+  "source_object": {
+    "url": "https://data.transportation.gov/api/views/deww-aa3r/files/9a19fca6-465a-4247-ad4c-28c67cf7ef8b?filename=SPMD.zip",
+    "official_entry": "https://data.transportation.gov/Automobiles/Safety-Pilot-Model-Deployment-Data/deww-aa3r",
+    "doi": "10.21949/1504482",
+    "total_bytes": 117346016961,
+    "blob_id": "9a19fca6-465a-4247-ad4c-28c67cf7ef8b",
+    "acquisition": "ZIP64 member-level Range requests (fail-closed 206/Content-Range/ETag checks, 64 MiB chunks, resumable)"
+  },
+  "constraints": {
+    "disk_free_before_gib": 182.98,
+    "disk_free_after_gib": 179.98,
+    "safety_margin_rule": ">= 5 GiB after operations",
+    "transfer_byte_cap": 3233825756,
+    "members_downloaded": [
+      "RSE_BSM only"
+    ],
+    "no_full_package_download": true
+  }
+}

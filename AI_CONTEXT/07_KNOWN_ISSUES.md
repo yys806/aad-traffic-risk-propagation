@@ -14,7 +14,7 @@ Evidence：`evidence/results/RES-STAGE-0.2-NGSIM-V2/audit.json`、`code/src/risk
 
 ### KI-03 — packet 级通信证据不可用
 
-历史快照记录官方 Packet 下载端点返回 HTTP 403；2026-10-17（AAD-0.4.1）重验：端点现 302 重定向至官方文件 API（blob 已更换），HEAD 无法在不取内容的前提下确认最终可达性，Range 方法需重新验证。RV_RX 只能支持接收状态连续性，不能估计 packet 级时延、丢包或采用；Packet/BsmP1/RSE_BSM 尚未下载。跨设备时钟同步为全部时延主张的共同未验证前置。
+官方 Packet 下载端点历史 403；2026-10-17（AAD-0.4.1）重验为 302→官方文件 API；2026-10-18（AAD-0.4.2）Range/ZIP64 目录在新 blob 上重新验证可用并已获取 `RSE_BSM`（`RES-STAGE-0.4-RSE-BSM-V1`）。RSE_BSM 实测无绝对时间字段、无信道条件，接收时间/时延/丢包仍 Not Observable，配对 Ambiguous；其 RxDevice 属车载设备命名空间（与 RSE LocID 零重叠），记录方物理身份待 BsmMd/设备清单裁定；行为统计按 holdout 规则暂缓。Packet/RSE_BSM 间无文档化连接键；跨设备时钟同步为全部时延主张的共同未验证前置。Packet 尚未下载（Gate `pending_official_packet_access` 不变）。
 
 ### KI-04 — 阶段 0.5 需要重建
 
