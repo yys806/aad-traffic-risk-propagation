@@ -9,6 +9,7 @@ import sys
 import time
 from datetime import UTC, datetime
 from pathlib import Path
+from typing import Sequence
 
 import matplotlib
 
@@ -39,9 +40,11 @@ from riskprop.pneuma_urban_kinematics import (
     compute_vehicle_equal_weight_stats,
     compute_vehicle_type_composition,
     continuity_sensitivity,
+    derive_state_quality_status,
     empirical_cdf_arrays,
     extreme_value_sensitivity,
     flag_state_quality,
+    reliable_exposure_frame,
     speed_state_shares,
     time_weighted_bootstrap,
     write_acceptance_package,
@@ -54,6 +57,14 @@ from riskprop.simulation_real_coverage import (
 
 DEFAULT_SOURCE = REPO_ROOT / "dataset" / "pNEUMA" / "20181101_d1_0800_0830.csv"
 DEFAULT_OUTPUT = (
+    REPO_ROOT
+    / "code"
+    / "outputs"
+    / "formal"
+    / "calibration"
+    / "stage_0_3_pneuma_boundary_repair_20261016_r2"
+)
+R1_PACKAGE = (
     REPO_ROOT
     / "code"
     / "outputs"
@@ -79,6 +90,7 @@ NGSIM_EVENTS_PATH = (
     / "stage_0_2_scientific_acceptance_20261012_r4"
     / "p2_formal_events.parquet"
 )
+EXPECTED_SOURCE_SHA256 = "F9CDE0A3CA5010E2217EA4CBC0BDF26ED87BE1EC0D8C2BE5E2CB93AAC82BA28C"
 
 
 def _select_tolerance(dt_stats: dict) -> tuple[float, str]:
@@ -104,18 +116,13 @@ def _plot_histograms(
     tolerance_s: float,
     figures_dir: Path,
 ) -> dict[str, Path]:
+    """Time-weighted figures on reliable raw-order intervals only."""
+
     figures: dict[str, Path] = {}
-    frame = states.sort_values(["vehicle_id", "time_s", "raw_index"]).reset_index(drop=True)
-    next_time = frame.groupby("vehicle_id", sort=False)["time_s"].shift(-1)
-    same_track = frame["vehicle_id"].eq(frame["vehicle_id"].shift(-1))
-    dt = (next_time - frame["time_s"]).where(same_track)
-    usable = (
-        same_track.to_numpy()
-        & (dt.to_numpy(float) > 0)
-        & (dt.to_numpy(float) <= tolerance_s)
+    frame, usable = reliable_exposure_frame(
+        states, tolerance_s=tolerance_s, value_column="speed_mps"
     )
     frame = frame.loc[usable].copy()
-    frame["_dt"] = dt.to_numpy()[usable]
 
     # Speed histogram per vehicle type (time-weighted density).
     fig, ax = plt.subplots(figsize=(9, 6))
@@ -167,7 +174,11 @@ def _plot_histograms(
 
     # Acceleration histogram per vehicle type.
     fig, ax = plt.subplots(figsize=(9, 6))
-    accel = frame.dropna(subset=["longitudinal_accel_mps2"])
+    accel_frame, accel_usable = reliable_exposure_frame(
+        states, tolerance_s=tolerance_s, value_column="longitudinal_accel_mps2"
+    )
+    accel_frame = accel_frame.loc[accel_usable].copy()
+    accel = accel_frame.dropna(subset=["longitudinal_accel_mps2"])
     limit = float(np.nanpercentile(np.abs(accel["longitudinal_accel_mps2"]), 99.5))
     limit = max(limit, 1.0)
     bins = np.linspace(-limit, limit, 100)
@@ -270,25 +281,32 @@ def _write_report(
     accel_vw_all = accel_vw[accel_vw["group"] == "ALL"].iloc[0]
 
     lines = [
-        "# Stage 0.3 pNEUMA 城市运动学校准综合报告",
+        "# Stage 0.3 pNEUMA 城市运动学校准 R2 边界修复与验收准备报告",
         "",
         "## 1. 任务范围与科学边界",
         "",
-        "本报告只覆盖 Stage 0.3：pNEUMA `20181101_d1_0800_0830.csv` 的城市速度、纵向加速度、车型组成、数据质量与 Stage 0.5 参考接口准备。",
-        "未恢复已退役的地图匹配、前车推断、TTC/DRAC、风险事件识别或人工前车 QA；结果不解释为真实跟驰风险、事故概率或 AAD 核心因果效应。",
+        "本报告覆盖 Stage 0.3 R2（任务标识 AAD-S0.3-T02，结果标识 RES-STAGE-0.3-BOUNDARY-REPAIR-R2）：修复 R1 发现的三项工程边界缺陷（排序掩盖原始时间顺序异常、重复 track_id 字典覆盖、Stage 0.5 参考质量字段语义失真），重新验证正式统计结果，不改变研究方法、科学参数或科学结论。",
+        "未恢复已退役的地图匹配、前车推断、TTC/DRAC、风险事件识别或人工前车 QA；结果不解释为真实跟驰风险、事故概率或 AAD 核心因果效应。R1 包保留为不可覆盖的历史证据。",
         "",
         "## 2. 数据来源与完整性 (Observation)",
         "",
         f"- 文件：`{source_csv.as_posix()}`",
         f"- 大小：{file_size:,} bytes；SHA-256：`{file_sha256}`",
         "- 来源：Zenodo pNEUMA 数据集（doi 10.5281/zenodo.10491409），下载清单 `docs/归档/真实数据与NC文献调研/download_manifest.md`；许可按更严格的 CC BY-NC 4.0 管理。",
-        f"- 原始轨迹行数：{audit['raw_track_rows']}",
+        f"- 原始轨迹行数（行级审计单位）：{audit['raw_track_rows']}；唯一 track_id：{audit['unique_track_ids']}；可靠轨迹行：{audit.get('reliable_track_rows', 'n/a')}",
         f"- 解析后状态记录数：{audit['parsed_state_records']}",
         f"- 唯一轨迹数：{audit['unique_tracks']}",
         f"- 畸形轨迹行：{len(audit['malformed_tracks'])}；元数据解析失败：{len(audit['metadata_failures'])}",
-        f"- 重复 track_id：{audit['duplicate_track_ids']}；重复 (track,time) 状态：{audit['duplicate_state_keys']}",
+        f"- 重复 track_id：{audit['duplicate_track_ids']}（涉及原始行 {audit['duplicate_track_rows']}）；身份冲突：{len(audit['identity_conflicts'])}",
+        f"- 重复 (track,time) 状态：{audit['duplicate_state_keys']}",
         f"- 观测时间范围：[{audit['time_min_s']:.2f}, {audit['time_max_s']:.2f}] s",
         f"- 车型：{', '.join(f'{k}={v}' for k, v in audit['vehicle_type_counts'].items())}",
+        "",
+        "## 2bis. 原始顺序、身份与 R1/R2 对比（R2 修复验证，Observation）",
+        "",
+        f"- 原始记录顺序审计（排序前评估，排序不得修复）：时间倒退 {audit['raw_order_time_audit']['regression_raw_order_edges']}，非正增量 {audit['raw_order_time_audit']['nonpositive_raw_order_edges']}，原始顺序异常状态 {audit['raw_order_time_audit']['raw_order_anomaly_states']}，重复 (track,time) 状态 {audit['raw_order_time_audit']['duplicate_time_states']}，超容差缺口 {audit['raw_order_time_audit']['time_gap_states']}，可靠权重资格状态 {audit['raw_order_time_audit'].get('eligible_states', 'n/a')}。",
+        "- 轨迹身份审计（行级）：重复 ID 不合并、不改名，歧义身份 fail-closed（本固定源文件上如出现重复 ID 直接中止运行，不产生部分统计）。",
+        f"- R1/R2 逐项比较：{audit['r1_r2_comparison']['metrics_compared']} 项，变化 {audit['r1_r2_comparison']['changed_metric_count']} 项（其中浮点末位 {audit['r1_r2_comparison']['float_ulp_only_changed_count']} 项，|差|≤1e-9，numpy 求和顺序/对齐效应；结构性变化 {audit['r1_r2_comparison']['structural_changed_count']} 项：{audit['r1_r2_comparison']['structural_changed_metrics']}）；明细见 `r1_r2_comparison.csv`。R1 数字是比较基准，不是必须维持的目标值。独立复算同时用 R1 代码路径在 R1 封存状态上复算验证了这些浮点差异与本次修复无关。",
         "",
         "## 3. 时间连续性与采样 (Observation)",
         "",
@@ -296,7 +314,7 @@ def _write_report(
         f"P99={dt_stats['p99_dt_s']:.6f} s，max={dt_stats['max_dt_s']:.6f} s；"
         f"dt<=0 的相邻对：{dt_stats['nonpositive_pairs']}；缺口(dt>{tolerance_s:.4f} s)对：{dt_stats['gap_pairs']}",
         f"- 工程锚定容差：{tolerance_s:.6f} s（{tolerance_rule}）。",
-        "- 规则：左矩形端点赋值 [t_i, t_i+1)，末帧零时长；不跨缺口插值、不外推末帧。局限：每段内速度视为常数，可能平滑 40 ms 内的瞬时变化；该容差不是冻结的科学阈值。",
+        f"- 规则：左矩形端点赋值 [t_i, t_i+1_raw)（原始记录顺序邻接，排序不定义区间），末帧零时长；不跨缺口插值、不外推末帧；解析/身份/原始顺序异常状态不获得可靠权重。局限：每段内速度视为常数，可能平滑 40 ms 内的瞬时变化；该容差不是冻结的科学阈值。",
         "",
         "## 4. 速度分布（时间加权主统计，SI 单位 m/s）",
         "",
@@ -351,9 +369,12 @@ def _write_report(
         f"加速度时间加权 mean {_fmt(bootstrap_accel['point_estimate'])} m/s²，95% CI [{_fmt(bootstrap_accel['ci_low'])}, {_fmt(bootstrap_accel['ci_high'])}]。"
         "车辆等权 mean/median 的 bootstrap 区间见 `bootstrap_vehicle_equal_weight.csv`。同一轨迹的帧不作为独立样本。",
         "",
-        "## 9. Stage 0.5 参考接口 (Observation)",
+        "## 9. Stage 0.5 参考接口与质量语义 (Observation)",
         "",
         "- 已输出标准化 `stage_0_5_reference_states.parquet`（dataset/site/window/vehicle_id/vehicle_type/time_s/speed_mps/acceleration_mps2/quality_status/time_weighting_eligible/source_file_sha256），并通过现有 `write_real_reference_package()` 的构造兼容性测试与真实全量接口测试。",
+        f"- 质量语义（R2 修复）：quality_status 逐状态推导（分布 {audit['stage_0_5_reference_quality_counts']}），time_weighting_eligible 由实际解析质量、轨迹身份、原始顺序连续性与可靠时间区间共同决定（eligible {audit['stage_0_5_reference_eligible_states']} / {audit['parsed_state_records']}）；缺失、异常、不可评价状态可追溯且不默认视为可靠。",
+        "- `write_real_reference_package()` 从 R2 起读取并使用质量字段：非 raw_parsed 状态 fail-closed 排除出 pNEUMA 运动学抽样池（计数入 audit），time_weighting_eligible 随 kinematics_reference 传递；稳定哈希抽样规则本身未改变。",
+        "- 三者区分：接口能读取 ≠ 质量标记正确传递 ≠ 后续统计保持预期权重。前两者已在本包验证；第三者（时间加权权重的正式使用）属 Stage 0.5 设计决定：当前按状态无界抽样不带时间权重语义，设计建议是让正式覆盖统计使用随表传递的 time_weighting_eligible 或改用轨迹整簇抽样，本任务不实现。",
         f"- 稳定哈希抽样车型保持审计：最大状态份额偏差 {sampling_audit.get('max_state_share_deviation', float('nan')):.6f}，"
         f"最低轨迹保留率 {1.0 - sampling_audit.get('max_trajectory_loss_share', float('nan')):.6f}；见 `sampling_balance_audit.csv`。",
         "- NGSIM 与 pNEUMA 道路类型、交通环境、采样语义与车型组成不同；二者不拼接为独立同分布现实样本，分层的现实—现实基准需要独立参考组。",
@@ -378,6 +399,172 @@ def _write_report(
     return "\n".join(lines) + "\n"
 
 
+def _build_r1_r2_comparison(
+    *,
+    r1_package: Path,
+    audit: dict,
+    speed_tw: pd.DataFrame,
+    accel_tw: pd.DataFrame,
+    speed_vw: pd.DataFrame,
+    accel_vw: pd.DataFrame,
+    composition: pd.DataFrame,
+) -> tuple[pd.DataFrame, dict]:
+    """Itemised R1 vs R2 comparison.
+
+    R1 is a comparison baseline, never a target: differences are reported,
+    never tuned away.  Returns the comparison table and a summary dict.
+    """
+
+    rows: list[dict[str, object]] = []
+
+    def add(metric: str, r1: object, r2: object) -> None:
+        if isinstance(r1, (int, float)) and isinstance(r2, (int, float)):
+            difference: object = float(r2) - float(r1)
+            changed = difference != 0.0
+        else:
+            difference = ""
+            changed = str(r1) != str(r2)
+        rows.append(
+            {
+                "metric": metric,
+                "r1": r1,
+                "r2": r2,
+                "difference_r2_minus_r1": difference,
+                "changed": bool(changed),
+            }
+        )
+
+    r1_audit: dict = {}
+    if (r1_package / "audit.json").is_file():
+        r1_audit = json.loads((r1_package / "audit.json").read_text(encoding="utf-8"))
+    if not r1_audit:
+        add("r1_package_available", False, False)
+        summary = {
+            "r1_package_available": False,
+            "metrics_compared": 0,
+            "changed_metric_count": 0,
+            "changed_metrics": [],
+        }
+        return pd.DataFrame.from_records(rows), summary
+    add("r1_package_available", True, True)
+
+    add("raw_track_rows", r1_audit.get("raw_track_rows"), audit["raw_track_rows"])
+    add("parsed_state_records", r1_audit.get("parsed_state_records"), audit["parsed_state_records"])
+    add("unique_tracks", r1_audit.get("unique_tracks"), audit["unique_tracks"])
+    add("anchor_tolerance_s", r1_audit.get("anchor_tolerance_s"), audit["anchor_tolerance_s"])
+    for key in ("mode_dt_s", "median_dt_s", "max_dt_s", "nonpositive_pairs", "gap_pairs"):
+        add(
+            f"dt_stats.{key}",
+            r1_audit.get("dt_stats", {}).get(key),
+            audit["dt_stats"][key],
+        )
+    add(
+        "duplicate_track_ids_count",
+        r1_audit.get("duplicate_track_ids_count", len(r1_audit.get("duplicate_track_ids", []))),
+        len(audit["duplicate_track_ids"]),
+    )
+    add("duplicate_state_keys", r1_audit.get("duplicate_state_keys"), audit["duplicate_state_keys"])
+    add(
+        "malformed_tracks_count",
+        r1_audit.get("malformed_tracks_count", len(r1_audit.get("malformed_tracks", []))),
+        len(audit["malformed_tracks"]),
+    )
+
+    r1_quality_counts: object = "not_recorded"
+    r1_eligible: object = "not_recorded"
+    r1_states_path = r1_package / "states_audit.parquet"
+    if r1_states_path.is_file():
+        eligible_column = pd.read_parquet(r1_states_path, columns=["time_weighting_eligible"])
+        r1_eligible = int(eligible_column["time_weighting_eligible"].sum())
+    add("time_weighting_eligible_states", r1_eligible, audit["stage_0_5_reference_eligible_states"])
+    add(
+        "stage_0_5_reference_quality_counts",
+        r1_quality_counts,
+        str(audit["stage_0_5_reference_quality_counts"]),
+    )
+
+    def compare_grouped_tables(
+        metric_prefix: str,
+        r1_table: pd.DataFrame,
+        r2_table: pd.DataFrame,
+        columns: Sequence[str],
+        key_column: str = "group",
+    ) -> None:
+        for row in r2_table.itertuples(index=False):
+            label = getattr(row, key_column)
+            match = r1_table.loc[r1_table[key_column] == label]
+            if match.empty:
+                add(f"{metric_prefix}[{label}]", "missing_in_r1", "present_in_r2")
+                continue
+            for column in columns:
+                add(
+                    f"{metric_prefix}[{label}].{column}",
+                    float(match.iloc[0][column]),
+                    float(getattr(row, column) if not isinstance(getattr(row, column), str) else float("nan")),
+                )
+
+    if (r1_package / "speed_time_weighted_by_type.csv").is_file():
+        compare_grouped_tables(
+            "speed_time_weighted",
+            pd.read_csv(r1_package / "speed_time_weighted_by_type.csv"),
+            speed_tw,
+            ("states_time_weighted", "exposure_time_s", "mean", "sd", "p50", "p95"),
+        )
+    if (r1_package / "acceleration_time_weighted_by_type.csv").is_file():
+        compare_grouped_tables(
+            "acceleration_time_weighted",
+            pd.read_csv(r1_package / "acceleration_time_weighted_by_type.csv"),
+            accel_tw,
+            ("states_time_weighted", "exposure_time_s", "mean", "sd", "p50", "p95"),
+        )
+    if (r1_package / "speed_vehicle_equal_weight.csv").is_file():
+        compare_grouped_tables(
+            "speed_vehicle_equal_weight",
+            pd.read_csv(r1_package / "speed_vehicle_equal_weight.csv"),
+            speed_vw,
+            ("mean", "p50"),
+        )
+    if (r1_package / "acceleration_vehicle_equal_weight.csv").is_file():
+        compare_grouped_tables(
+            "acceleration_vehicle_equal_weight",
+            pd.read_csv(r1_package / "acceleration_vehicle_equal_weight.csv"),
+            accel_vw,
+            ("mean", "p50"),
+        )
+    if (r1_package / "vehicle_type_composition.csv").is_file():
+        compare_grouped_tables(
+            "vehicle_type_composition",
+            pd.read_csv(r1_package / "vehicle_type_composition.csv"),
+            composition,
+            ("unique_trajectories", "state_records", "total_observed_duration_s"),
+            key_column="vehicle_type",
+        )
+
+    table = pd.DataFrame.from_records(rows)
+    changed_rows = table.loc[table["changed"]]
+    def _is_float_ulp(row: pd.Series) -> bool:
+        difference = row["difference_r2_minus_r1"]
+        return isinstance(difference, (int, float)) and abs(float(difference)) <= 1e-9
+    float_ulp = [str(m) for m in changed_rows[changed_rows.apply(_is_float_ulp, axis=1)]["metric"]]
+    structural = [str(m) for m in changed_rows[~changed_rows.apply(_is_float_ulp, axis=1)]["metric"]]
+    summary = {
+        "r1_package": str(r1_package.as_posix()),
+        "metrics_compared": int(len(table)),
+        "changed_metric_count": int(len(changed_rows)),
+        "float_ulp_only_changed_metrics": float_ulp,
+        "float_ulp_only_changed_count": len(float_ulp),
+        "structural_changed_metrics": structural,
+        "structural_changed_count": len(structural),
+        "note": (
+            "float-ulp entries are |difference| <= 1e-9 (numpy summation "
+            "order/alignment effects; no count, weight or record changed); "
+            "structural entries change recorded semantics, not statistics"
+        ),
+        "changed_metrics": [str(m) for m in changed_rows["metric"]],
+    }
+    return table, summary
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source-csv", type=Path, default=DEFAULT_SOURCE)
@@ -385,6 +572,17 @@ def main() -> int:
     parser.add_argument("--tolerance-s", type=float, default=None,
                         help="engineering anchor continuity tolerance; default derives from modal dt")
     parser.add_argument("--skip-stage-0-5-test", action="store_true")
+    parser.add_argument(
+        "--baseline-package",
+        type=Path,
+        default=R1_PACKAGE,
+        help="sealed R1 package used as comparison baseline (never a target)",
+    )
+    parser.add_argument(
+        "--allow-unknown-source-sha",
+        action="store_true",
+        help="smoke-test escape hatch; the run is recorded as not SHA-pinned and is not a formal package",
+    )
     args = parser.parse_args()
 
     started = time.monotonic()
@@ -396,24 +594,28 @@ def main() -> int:
     source_csv = args.source_csv.resolve()
     file_sha256 = sha256_file(source_csv).upper()
     file_size = source_csv.stat().st_size
-    if file_sha256 != "F9CDE0A3CA5010E2217EA4CBC0BDF26ED87BE1EC0D8C2BE5E2CB93AAC82BA28C":
+    source_pin_enforced = not args.allow_unknown_source_sha
+    if source_pin_enforced and file_sha256 != EXPECTED_SOURCE_SHA256:
         raise SystemExit(f"unexpected source SHA-256: {file_sha256}")
 
     output = args.output
     if output.exists():
         raise SystemExit(f"output directory already exists (immutable): {output}")
 
-    # --- Task A: integrity and parsing audit --------------------------------
+    # --- Task A: integrity, identity and raw-order time audit (R2) ----------
     states, source_audit = audit_pneuma_source(source_csv)
+    if source_audit["duplicate_track_ids"]:
+        # Fail-closed: on this pinned source file, ambiguous trajectory identity
+        # (duplicate track_id rows) must never silently enter sealed statistics.
+        raise SystemExit(
+            "duplicate track_id rows detected (identity fail-closed): "
+            + ", ".join(map(str, source_audit["duplicate_track_ids"]))
+        )
+    # Raw-order time audit FIRST (no gap tolerance yet); dt_to_next_s is the
+    # raw-record-order adjacent interval, never a time-sorted repair.
     states = flag_state_quality(states)
 
-    duplicate_track_ids = (
-        source_audit["tracks_table"]["track_id"][
-            source_audit["tracks_table"]["track_id"].duplicated(keep=False)
-        ]
-        .unique()
-        .tolist()
-    )
+    duplicate_track_ids = source_audit["duplicate_track_ids"]
     duplicate_state_keys = int(states.duplicated(subset=["vehicle_id", "time_s"], keep=False).sum())
     times = states["time_s"].to_numpy(float)
     dt_all = states["dt_to_next_s"].to_numpy(float)
@@ -434,36 +636,91 @@ def main() -> int:
         "nonpositive_pairs": int((dt_finite <= 0).sum()),
         "gap_pairs": int((dt_finite > tolerance_s).sum()),
         "total_pairs": int(len(dt_finite)),
+        "adjacency_semantics": "raw record order within each trajectory (pre-sort)",
+    }
+
+    # Re-flag with the anchored tolerance so time_gap_flag shares one rule with
+    # the eligibility computation (single source of truth).
+    states = flag_state_quality(states, gap_tolerance_s=tolerance_s)
+    states["quality_status"] = derive_state_quality_status(states)
+
+    raw_order_time_audit = {
+        "schema_version": "aad.stage-0-3.raw-order-time-audit.v1",
+        "adjacency_semantics": (
+            "time continuity evaluated on original record order before any sorting; "
+            "sorting can never repair or mask a raw-order anomaly"
+        ),
+        "nonpositive_raw_order_edges": int(states["time_increment_nonpositive"].sum()),
+        "regression_raw_order_edges": int(states["time_regression_in_raw_order"].sum()),
+        "raw_order_anomaly_states": int(states["raw_order_time_anomaly"].sum()),
+        "duplicate_time_states": int(states["duplicate_time_in_track"].sum()),
+        "time_gap_states": int(states["time_gap_flag"].sum()),
+    }
+
+    identity_audit = {
+        "schema_version": "aad.stage-0-3.identity-audit.v1",
+        "audit_unit": "raw trajectory row (source_row_number)",
+        "raw_track_rows": source_audit["raw_track_rows"],
+        "unique_track_ids": source_audit["unique_track_ids"],
+        "duplicate_track_ids": source_audit["duplicate_track_ids"],
+        "duplicate_track_rows": source_audit["duplicate_track_rows"],
+        "identity_conflicts": source_audit["identity_conflicts"],
+        "identity_ambiguous_states": int(states["identity_ambiguous"].sum()),
+        "fail_closed_rule": (
+            "duplicate ids are never merged or renamed; this pinned-source run "
+            "aborts on any ambiguous identity instead of producing partial statistics"
+        ),
     }
 
     audit = {
         "schema_version": "aad.stage-0-3.audit.v1",
         "experiment_id": "stage_0_3",
+        "result_id": "RES-STAGE-0.3-BOUNDARY-REPAIR-R2",
         "source_file": str(source_csv.as_posix()),
         "source_sha256": file_sha256,
         "source_bytes": file_size,
         "raw_track_rows": source_audit["raw_track_rows"],
+        "unique_track_ids": source_audit["unique_track_ids"],
         "parsed_state_records": source_audit["parsed_state_records"],
         "unique_tracks": int(states["vehicle_id"].nunique()),
         "malformed_tracks": source_audit["malformed_tracks"],
         "metadata_failures": source_audit["metadata_failures"],
         "duplicate_track_ids": duplicate_track_ids,
+        "duplicate_track_rows": source_audit["duplicate_track_rows"],
+        "identity_conflicts": source_audit["identity_conflicts"],
         "duplicate_state_keys": duplicate_state_keys,
         "time_min_s": float(np.nanmin(times)),
         "time_max_s": float(np.nanmax(times)),
         "vehicle_type_counts": states.groupby("vehicle_type")["vehicle_id"].nunique().to_dict(),
         "dt_stats": dt_stats,
+        "raw_order_time_audit": raw_order_time_audit,
+        "identity_audit": identity_audit,
         "anchor_tolerance_s": tolerance_s,
         "anchor_tolerance_rule": tolerance_rule,
+        "source_sha_pin_enforced": source_pin_enforced,
         "scientific_claim_eligible": False,
         "gate_status": "acceptance_package_pending_researcher_review",
     }
 
     track_stats = compute_track_stats(states)
+    # Time weighting eligibility: parse quality AND trajectory identity AND
+    # raw-order continuity AND a reliable interval, evaluated together.
     states["time_weighting_eligible"] = (
-        states["dt_to_next_s"].gt(0) & states["dt_to_next_s"].le(tolerance_s)
+        states["parse_ok"].astype(bool)
+        & ~states["identity_ambiguous"].astype(bool)
+        & ~states["raw_order_time_anomaly"].astype(bool)
+        & ~states["duplicate_time_in_track"].astype(bool)
+        & states["dt_to_next_s"].gt(0)
+        & states["dt_to_next_s"].le(tolerance_s)
     )
+    raw_order_time_audit["eligible_states"] = int(states["time_weighting_eligible"].sum())
     states["source_file_sha256"] = file_sha256
+    reliable_track_stats = track_stats
+    if "identity_ambiguous" in track_stats.columns:
+        reliable_track_stats = track_stats.loc[
+            ~track_stats["identity_ambiguous"].fillna(False).astype(bool)
+        ].reset_index(drop=True)
+    audit["reliable_track_rows"] = int(len(reliable_track_stats))
 
     # --- Task B: descriptive statistics -------------------------------------
     speed_tw = compute_descriptive_stats(
@@ -486,21 +743,21 @@ def main() -> int:
     accel_tw = pd.concat([accel_tw_all, accel_tw], ignore_index=True)
 
     speed_vw = compute_vehicle_equal_weight_stats(
-        track_stats, value_column="mean_speed_mps_unweighted", group_column=None
+        reliable_track_stats, value_column="mean_speed_mps_unweighted", group_column=None
     )
     speed_vw_by_type = compute_vehicle_equal_weight_stats(
-        track_stats, value_column="mean_speed_mps_unweighted", group_column="vehicle_type"
+        reliable_track_stats, value_column="mean_speed_mps_unweighted", group_column="vehicle_type"
     )
     speed_vw = pd.concat([speed_vw, speed_vw_by_type], ignore_index=True)
     accel_vw = compute_vehicle_equal_weight_stats(
-        track_stats, value_column="mean_accel_mps2_unweighted", group_column=None
+        reliable_track_stats, value_column="mean_accel_mps2_unweighted", group_column=None
     )
     accel_vw_by_type = compute_vehicle_equal_weight_stats(
-        track_stats, value_column="mean_accel_mps2_unweighted", group_column="vehicle_type"
+        reliable_track_stats, value_column="mean_accel_mps2_unweighted", group_column="vehicle_type"
     )
     accel_vw = pd.concat([accel_vw, accel_vw_by_type], ignore_index=True)
 
-    composition = compute_vehicle_type_composition(track_stats)
+    composition = compute_vehicle_type_composition(reliable_track_stats)
     speed_shares = speed_state_shares(states, tolerance_s=tolerance_s)
     accel_shares = acceleration_state_shares(states, tolerance_s=tolerance_s)
     accel_by_speed = acceleration_by_speed_stratum(states, tolerance_s=tolerance_s)
@@ -538,22 +795,31 @@ def main() -> int:
         states, value_column="longitudinal_accel_mps2", tolerance_s=tolerance_s
     )
     bootstrap_vw_speed = bootstrap_track_intervals(
-        track_stats, value_column="mean_speed_mps_unweighted"
+        reliable_track_stats, value_column="mean_speed_mps_unweighted"
     )
     bootstrap_vw_speed_by_type = bootstrap_track_intervals(
-        track_stats, value_column="mean_speed_mps_unweighted", group_column="vehicle_type"
+        reliable_track_stats, value_column="mean_speed_mps_unweighted", group_column="vehicle_type"
     )
     bootstrap_vw = pd.concat([bootstrap_vw_speed, bootstrap_vw_speed_by_type], ignore_index=True)
     bootstrap_vw_accel = bootstrap_track_intervals(
-        track_stats, value_column="mean_accel_mps2_unweighted"
+        reliable_track_stats, value_column="mean_accel_mps2_unweighted"
     )
     bootstrap_vw_accel_by_type = bootstrap_track_intervals(
-        track_stats, value_column="mean_accel_mps2_unweighted", group_column="vehicle_type"
+        reliable_track_stats, value_column="mean_accel_mps2_unweighted", group_column="vehicle_type"
     )
     bootstrap_vw = pd.concat([bootstrap_vw, bootstrap_vw_accel, bootstrap_vw_accel_by_type], ignore_index=True)
 
-    # --- Task D: Stage 0.5 reference interface -------------------------------
+    # --- Task D: Stage 0.5 reference interface (R2 quality semantics) -----
+    # Per-state quality_status is DERIVED from the audit flags (never a uniform
+    # label); time_weighting_eligible is the precomputed eligibility column.
     reference_states = build_stage_0_5_reference_states(states)
+    audit["stage_0_5_reference_quality_counts"] = {
+        str(key): int(value)
+        for key, value in reference_states["quality_status"].value_counts().items()
+    }
+    audit["stage_0_5_reference_eligible_states"] = int(
+        reference_states["time_weighting_eligible"].sum()
+    )
     sampled = deterministic_state_sample(
         reference_states, max_rows=5000, seed=20260907 + 2
     )
@@ -570,10 +836,18 @@ def main() -> int:
     reference_states.rename(
         columns={"vehicle_id": "id"}
     ).to_parquet(stage_0_5_test_dir / "pneuma_interface_input.parquet", index=False)
-    # write_real_reference_package expects the raw parsed schema (id +
-    # longitudinal_accel_mps2); provide exactly that view from our parse.
+    # write_real_reference_package consumes the parse view; from R2 on it also
+    # carries quality_status / time_weighting_eligible so the Stage 0.5 reader
+    # applies the fail-closed quality pool instead of ignoring quality fields.
     raw_view = states.rename(columns={"vehicle_id": "id"})[
-        ["id", "time_s", "speed_mps", "longitudinal_accel_mps2"]
+        [
+            "id",
+            "time_s",
+            "speed_mps",
+            "longitudinal_accel_mps2",
+            "quality_status",
+            "time_weighting_eligible",
+        ]
     ]
     raw_view.to_parquet(reference_parquet_path, index=False)
     if not args.skip_stage_0_5_test:
@@ -600,8 +874,29 @@ def main() -> int:
                 "following_rows": package_audit["following_rows"],
                 "risk_event_rows": package_audit["risk_event_rows"],
                 "pneuma_ttc_included": package_audit["pneuma_ttc_included"],
+                "pneuma_quality_columns_present": package_audit["sources"][-1][
+                    "pneuma_quality_semantics"
+                ]["pneuma_quality_columns_present"],
+                "pneuma_states_not_reliably_parsed_excluded": package_audit["sources"][-1][
+                    "pneuma_quality_semantics"
+                ]["pneuma_states_not_reliably_parsed_excluded"],
+                "pneuma_states_time_weighting_eligible": package_audit["sources"][-1][
+                    "pneuma_quality_semantics"
+                ]["pneuma_states_time_weighting_eligible"],
                 "gate_status": package_audit["gate_status"],
             }
+
+    # --- R1/R2 comparison (R1 is a baseline, never a target) ------------------
+    r1_r2_table, r1_r2_summary = _build_r1_r2_comparison(
+        r1_package=args.baseline_package.resolve(),
+        audit=audit,
+        speed_tw=speed_tw,
+        accel_tw=accel_tw,
+        speed_vw=speed_vw,
+        accel_vw=accel_vw,
+        composition=composition,
+    )
+    audit["r1_r2_comparison"] = r1_r2_summary
 
     # --- Figures --------------------------------------------------------------
     figures_dir = output.parent / f"{output.name}_figures_tmp"
@@ -614,11 +909,41 @@ def main() -> int:
         {
             "item": "原始数据与字段解释可靠",
             "basis": "SHA-256 与封存清单一致；宽表结构、单位与 Zenodo 元数据一致",
-            "method": "文件哈希 + 流式解析审计 + 结构测试",
-            "result": f"{audit['unique_tracks']} 轨迹 / {audit['parsed_state_records']} 状态；畸形 0；重复 0",
+            "method": "文件哈希 + 行级流式解析审计（原始行序保留）+ 结构测试",
+            "result": (
+                f"{audit['raw_track_rows']} 原始行 / {audit['unique_track_ids']} 唯一 ID / "
+                f"{audit['parsed_state_records']} 状态；畸形 0；重复 ID 0"
+            ),
             "evidence": "audit.json, states_audit.parquet, code/tests/test_pneuma_urban_kinematics.py",
             "status": "Verified",
             "remaining_limitation": "字段语义依据数据提供方文档；无独立物理真值",
+        },
+        {
+            "item": "原始记录顺序与轨迹身份审计（R2 修复）",
+            "basis": "时间连续性在排序前按原始记录顺序评估；轨迹身份按原始行审计",
+            "method": "raw-order 时间倒退/重复/非正增量/缺口标记 + 行级重复 ID 与身份冲突检测 + 构造回归测试（0.00→0.08→0.04）",
+            "result": (
+                f"时间倒退 {audit['raw_order_time_audit']['regression_raw_order_edges']}；"
+                f"非正增量 {audit['raw_order_time_audit']['nonpositive_raw_order_edges']}；"
+                f"重复 (track,time) 状态 {audit['raw_order_time_audit']['duplicate_time_states']}；"
+                f"超容差缺口 {audit['raw_order_time_audit']['time_gap_states']}；"
+                f"重复 ID {len(audit['duplicate_track_ids'])}；身份冲突 {len(audit['identity_conflicts'])}"
+            ),
+            "evidence": "states_audit.parquet, audit.json, code/tests/test_pneuma_urban_kinematics.py",
+            "status": "Verified (engineering)",
+            "remaining_limitation": "原始顺序语义约束质量标记与时间权重；正式连续性容差仍待研究者",
+        },
+        {
+            "item": "Stage 0.5 参考接口质量语义（R2 修复）",
+            "basis": "逐状态 quality_status 与 time_weighting_eligible 由解析质量、轨迹身份与可靠区间共同决定",
+            "method": "逐状态质量推导（拒绝无标志默认可靠）+ 接口契约测试 + 真实全量接口测试（质量字段传递）",
+            "result": (
+                f"quality_status 分布 {audit['stage_0_5_reference_quality_counts']}；"
+                f"eligible {audit['stage_0_5_reference_eligible_states']} / {audit['parsed_state_records']}"
+            ),
+            "evidence": "stage_0_5_reference_states.parquet, audit.json, code/tests/test_simulation_real_coverage.py",
+            "status": "Verified (engineering)",
+            "remaining_limitation": "按状态无界抽样与时间加权权重的正式使用留给 Stage 0.5 设计决定",
         },
         {
             "item": "时间连续性与统计权重可审计",
@@ -658,12 +983,16 @@ def main() -> int:
         },
         {
             "item": "具备进入 Stage 0.5 的有限城市运动学参考条件",
-            "basis": "Stage 0.5 接口契约与抽样审计",
-            "method": "write_real_reference_package 构造 + 真实全量接口测试",
-            "result": "接口测试通过；pNEUMA TTC 未纳入" if stage_0_5_test_result.get("executed") else "构造测试通过；真实接口测试未执行",
+            "basis": "Stage 0.5 接口契约、质量语义与抽样审计",
+            "method": "write_real_reference_package 构造 + 真实全量接口测试（质量字段传递）",
+            "result": (
+                "接口测试通过；质量字段 fail-closed 传递；pNEUMA TTC 未纳入"
+                if stage_0_5_test_result.get("executed")
+                else "构造测试通过；真实接口测试未执行"
+            ),
             "evidence": "stage_0_5_reference_states.parquet, sampling_balance_audit.csv",
             "status": "Verified (engineering)",
-            "remaining_limitation": "Stage 0.5 场景分层/容差/Gate 未冻结；NGSIM+pNEUMA 不视为 iid",
+            "remaining_limitation": "Stage 0.5 场景分层/容差/Gate 未冻结；时间加权权重的正式使用待 Stage 0.5 设计决定；NGSIM+pNEUMA 不视为 iid",
         },
         {
             "item": "需研究者批准的阈值/容差/适用范围",
@@ -694,6 +1023,12 @@ def main() -> int:
         },
     ]
     gate_matrix = pd.DataFrame(gate_rows)
+    gate_matrix_summary = {
+        "schema_version": "aad.stage-0-3.gate-matrix-summary.v1",
+        "result_id": "RES-STAGE-0.3-BOUNDARY-REPAIR-R2",
+        "items": gate_matrix.to_dict("records"),
+        "status_counts": {str(k): int(v) for k, v in gate_matrix["status"].value_counts().items()},
+    }
 
     runtime_s = time.monotonic() - started
     _, peak = tracemalloc.get_traced_memory()
@@ -766,7 +1101,9 @@ def main() -> int:
         "bootstrap_vehicle_equal_weight.csv": bootstrap_vw,
         "track_consistency.csv": track_consistency,
         "sampling_balance_audit.csv": sampling_table,
+        "r1_r2_comparison.csv": r1_r2_table,
         "gate_matrix.csv": gate_matrix,
+        "gate_matrix_summary.json": gate_matrix_summary,
         "stage_0_5_reference_states.parquet": reference_states,
         "kinematic_consistency_summary.json": pd.DataFrame([consistency]),
     }

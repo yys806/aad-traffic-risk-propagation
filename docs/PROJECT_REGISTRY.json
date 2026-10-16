@@ -1,6 +1,6 @@
 {
   "schema_version": "aad.project-registry.v2",
-  "last_verified": "2026-10-12",
+  "last_verified": "2026-10-16",
   "project": {
     "name": "AAD",
     "research_topic": "Connected-vehicle communication adoption and traffic-risk propagation",
@@ -63,20 +63,23 @@
     "docs/STAGE_0_3_PNEUMA_KINEMATICS_2026-10-12.md",
     "code/src/riskprop/pneuma_urban_kinematics.py",
     "code/scripts/run_stage_0_3_pneuma_kinematics.py",
-    "code/scripts/verify_stage_0_3_independent.py"
+    "code/scripts/verify_stage_0_3_independent.py",
+    "docs/STAGE_0_3_BOUNDARY_REPAIR_R2_2026-10-16.md"
   ],
   "current": {
-    "active_experiment_id": "stage_0_2",
-    "active_task": "Stage 0.2 completed/closed; retain as measurement and descriptive calibration baseline.",
-    "why_now": "真实数据先确定可测字段、证据边界和现实范围；阶段 0.2 至 0.6 未闭合前不得进入阶段 1.1。",
+    "active_experiment_id": "stage_0_3",
+    "active_task": "Stage 0.3 R2 boundary-repair acceptance package (RES-STAGE-0.3-BOUNDARY-REPAIR-R2) pending researcher review; statistics unchanged, boundary defects closed.",
+    "why_now": "真实数据先确定可测字段、证据边界和现实范围；阶段 0.2 已关闭，阶段 0.3 R2 边界修复完成待科学验收，阶段 0.4/0.5/0.6 未闭合前不得进入阶段 1.1。",
     "next_decision_owner": null,
     "portable_gate_paths": [
       "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",
-      "evidence/results/RES-PROTOCOL-READINESS-V1/protocol_lock_readiness_v1.json"
+      "evidence/results/RES-PROTOCOL-READINESS-V1/protocol_lock_readiness_v1.json",
+      "evidence/results/RES-STAGE-0.3-BOUNDARY-REPAIR-R2/audit.json"
     ],
     "local_gate_paths": [
       "code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r4/scientific_gate_report.json",
-      "code/outputs/formal/calibration/protocol_lock_readiness_v1.json"
+      "code/outputs/formal/calibration/protocol_lock_readiness_v1.json",
+      "code/outputs/formal/calibration/stage_0_3_pneuma_boundary_repair_20261016_r2/audit.json"
     ]
   },
   "experiments": [
@@ -207,7 +210,7 @@
       "research_question": "pNEUMA 能否补充城市交通运动学的现实参考范围？",
       "date": "2026-10-12",
       "status": "acceptance_package_pending_researcher_review",
-      "code_version": "pneuma_urban_kinematics v1；解析审计、时间加权/车辆等权统计、敏感性与 Stage 0.5 接口适配；旧地图匹配与前车复核保持退役。",
+      "code_version": "pneuma_urban_kinematics R2：行级轨迹审计（重复 ID fail-closed）、原始记录顺序时间审计（排序前评估，时间加权区间由原始顺序邻接定义，统一可靠性掩码）、逐状态质量推导与 Stage 0.5 接口质量传递；退役职责（地图匹配/前车/TTC/人工 QA）未恢复。",
       "code_paths": [
         "code/src/riskprop/pneuma_urban_kinematics.py",
         "code/src/riskprop/real_trajectory.py"
@@ -220,7 +223,7 @@
         "code/tests/test_pneuma_urban_kinematics.py",
         "code/tests/test_real_trajectory.py"
       ],
-      "configuration": "时间加权主统计（左矩形，末帧零时长，不跨缺口）；车辆等权稳健性；唯一轨迹车型组成；工程锚定容差 0.043 s（未冻结）；bootstrap 2000×seed=20261012。",
+      "configuration": "时间加权主统计（原始顺序左矩形区间，末帧零时长，不跨缺口插值）；车辆等权稳健；锚定容差 0.043 s（未冻结）；bootstrap 2000 次 seed=20261012；quality_status 逐状态推导；time_weighting_eligible=解析质量∧轨迹身份∧原始顺序∧可靠区间。",
       "parameters": {
         "role": "urban_kinematics_only",
         "anchor_tolerance_s": 0.043,
@@ -233,17 +236,18 @@
       "model": "descriptive kinematic calibration",
       "model_checkpoint": "not_applicable",
       "result_ids": [
-        "RES-STAGE-0.3-PNEUMA-KINEMATICS-R1"
+        "RES-STAGE-0.3-PNEUMA-KINEMATICS-R1",
+        "RES-STAGE-0.3-BOUNDARY-REPAIR-R2"
       ],
       "core_metrics": [
         "speed_mps",
         "longitudinal_acceleration_mps2",
         "vehicle_type"
       ],
-      "current_conclusion": "785 轨迹 / 1,239,475 状态全量审计与描述性统计完成，独立复算零差异，Stage 0.5 接口测试通过；Gate Pass Candidate，科学验收与未冻结参数待研究者。",
+      "current_conclusion": "R2（AAD-S0.3-T02）修复原始时间顺序被排序掩盖、重复 track_id 字典覆盖与 Stage 0.5 质量字段语义失真；785 行/785 唯一 ID/1,239,475 状态统计结果不变（速度 TW mean=4.8382、VW mean=6.2077、加速度 TW mean=-0.0044），R1/R2 145 项比较仅 30 项浮点末位与 1 项结构性记录差异；独立复算 discrepancies=0；全量测试 315 passed。Gate Pass Candidate（R2）待研究者，科学 Gate 与未冻结参数待裁决。",
       "gate": {
         "status": "gate_pass_candidate_pending_researcher_review",
-        "portable_path": "evidence/results/RES-STAGE-0.3-PNEUMA-KINEMATICS-R1/audit.json"
+        "portable_path": "evidence/results/RES-STAGE-0.3-BOUNDARY-REPAIR-R2/audit.json"
       },
       "scientific_claim_eligible": false
     },
@@ -324,7 +328,7 @@
         "risk_event_rows",
         "simulation_sample_included"
       ],
-      "current_conclusion": "迁移前参考包保留；按新分工重整输入后仍需生成 SUMO 校准样本。",
+      "current_conclusion": "迁移前参考包含旧分工产物，需按新分工重建并补 SUMO 校准样本；pNEUMA 侧参考接口由 Stage 0.3 R2 包提供并携带逐状态质量字段，write_real_reference_package 读取并 fail-closed 使用；按状态抽样是否保持时间加权权重属 Stage 0.5 设计决定，未冻结。",
       "gate": {
         "status": "pending_simulation_sample",
         "portable_path": "evidence/results/RES-STAGE-0.5-REAL-REF-V1/audit.json"
@@ -1115,6 +1119,49 @@
       "gate_status": "gate_pass_candidate_pending_researcher_review",
       "paper_locations": [
         "docs/STAGE_0_3_PNEUMA_KINEMATICS_2026-10-12.md"
+      ],
+      "scientific_claim_eligible": false
+    },
+    {
+      "id": "RES-STAGE-0.3-BOUNDARY-REPAIR-R2",
+      "experiment_id": "stage_0_3",
+      "name": "Stage 0.3 pNEUMA 城市运动学校准 R2 边界修复与验收准备",
+      "status": "verified_engineering_and_descriptive_pending_scientific_acceptance",
+      "portable_evidence_paths": [
+        "evidence/results/RES-STAGE-0.3-BOUNDARY-REPAIR-R2/audit.json",
+        "evidence/results/RES-STAGE-0.3-BOUNDARY-REPAIR-R2/config.json",
+        "evidence/results/RES-STAGE-0.3-BOUNDARY-REPAIR-R2/gate_matrix_summary.json",
+        "evidence/results/RES-STAGE-0.3-BOUNDARY-REPAIR-R2/independent_verification.json",
+        "evidence/results/RES-STAGE-0.3-BOUNDARY-REPAIR-R2/provenance.json",
+        "evidence/results/RES-STAGE-0.3-BOUNDARY-REPAIR-R2/manifest.json",
+        "evidence/results/RES-STAGE-0.3-BOUNDARY-REPAIR-R2/SHA256SUMS"
+      ],
+      "local_artifact_paths": [
+        "code/outputs/formal/calibration/stage_0_3_pneuma_boundary_repair_20261016_r2"
+      ],
+      "code_version_source": "code/src/riskprop/pneuma_urban_kinematics.py + code/scripts/run_stage_0_3_pneuma_kinematics.py (package provenance SHA-256)",
+      "configuration_source": "code/outputs/formal/calibration/stage_0_3_pneuma_boundary_repair_20261016_r2/config.json",
+      "data_version_source": "dataset/pNEUMA/20181101_d1_0800_0830.csv SHA-256 F9CDE0A3CA5010E2217EA4CBC0BDF26ED87BE1EC0D8C2BE5E2CB93AAC82BA28C",
+      "core_metrics": {
+        "raw_track_rows": 785,
+        "unique_track_ids": 785,
+        "state_records": 1239475,
+        "raw_order_time_regressions": 0,
+        "duplicate_track_ids": 0,
+        "time_weighting_eligible_states": 1238690,
+        "time_weighted_exposure_s": 49547.6,
+        "speed_mean_mps_time_weighted": 4.838218,
+        "speed_mean_mps_vehicle_equal": 6.207738,
+        "accel_mean_mps2_time_weighted": -0.00441,
+        "r1_r2_metrics_compared": 145,
+        "r1_r2_float_ulp_only_changed": 30,
+        "r1_r2_structural_changed": 1,
+        "independent_verification_discrepancies": 0
+      },
+      "current_conclusion": "Stage 0.3 R2 边界修复（AAD-S0.3-T02）完成：原始顺序/重复 ID/质量语义缺陷消除，真实统计结果不变，独立复算零差异；连续性容差、描述性阈值、车型映射、适用范围与科学 Gate 待研究者裁决。",
+      "gate_status": "gate_pass_candidate_pending_researcher_review",
+      "paper_locations": [
+        "docs/STAGE_0_3_BOUNDARY_REPAIR_R2_2026-10-16.md"
       ],
       "scientific_claim_eligible": false
     }

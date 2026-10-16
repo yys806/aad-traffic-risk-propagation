@@ -103,7 +103,19 @@ def write_real_reference_package(
     max_rows_per_group: int = 5000,
     seed: int = 20260907,
 ) -> Path:
-    """Freeze bounded real calibration references without using pNEUMA TTC."""
+    """Freeze bounded real calibration references without using pNEUMA TTC.
+
+    pNEUMA quality semantics: when the state parquet carries
+    ``quality_status`` / ``time_weighting_eligible`` columns (the Stage 0.3
+    reference adapter output), states whose observation is not reliably
+    parsed (any status other than ``raw_parsed``) are excluded from the
+    kinematics pool before sampling (fail-closed, counts recorded in the
+    audit).  ``time_weighting_eligible`` is carried through to the frozen
+    reference so later statistics can keep the expected weighting; the
+    bounded per-state sampling rule itself is unchanged.  Legacy four-column
+    parquets remain accepted for backward compatibility and are recorded as
+    ``pneuma_quality_columns_present=false``.
+    """
 
     output_dir = Path(output_dir)
     output_dir.mkdir(parents=True, exist_ok=False)
@@ -147,14 +159,17 @@ def write_real_reference_package(
             }
         )
     pneuma_path = Path(pneuma_state_path)
+    from pyarrow.parquet import ParquetFile
+
+    available_columns = set(ParquetFile(pneuma_path).schema_arrow.names)
+    base_columns = ["id", "time_s", "speed_mps", "longitudinal_accel_mps2"]
+    quality_columns = [
+        name
+        for name in ("quality_status", "time_weighting_eligible")
+        if name in available_columns
+    ]
     pneuma = pd.read_parquet(
-        pneuma_path,
-        columns=[
-            "id",
-            "time_s",
-            "speed_mps",
-            "longitudinal_accel_mps2",
-        ],
+        pneuma_path, columns=base_columns + quality_columns
     ).rename(
         columns={
             "id": "vehicle_id",
@@ -164,7 +179,42 @@ def write_real_reference_package(
     pneuma["dataset"] = "pNEUMA"
     pneuma["site"] = "Athens-d1"
     pneuma["window_id"] = "20181101_d1_0800_0830"
-    pneuma_kinematics = pneuma.dropna(subset=["speed_mps", "acceleration_mps2"])
+    if quality_columns:
+        not_reliably_parsed = pneuma["quality_status"].astype(str).ne("raw_parsed")
+        pneuma_quality_audit = {
+            "pneuma_quality_columns_present": True,
+            "pneuma_quality_status_counts": {
+                str(key): int(value)
+                for key, value in pneuma["quality_status"]
+                .value_counts(dropna=False)
+                .items()
+            },
+            "pneuma_states_total": int(len(pneuma)),
+            "pneuma_states_not_reliably_parsed_excluded": int(not_reliably_parsed.sum()),
+            "pneuma_states_time_weighting_eligible": int(
+                pneuma["time_weighting_eligible"].fillna(False).astype(bool).sum()
+            ),
+            "exclusion_rule": "fail-closed: only quality_status == raw_parsed enters the kinematics pool; sampling rule unchanged",
+            "sampling_weight_note": (
+                "bounded per-state sampling is unweighted; time-weighted statistics "
+                "must use time_weighting_eligible, which is carried through to "
+                "kinematics_reference.parquet"
+            ),
+        }
+        pneuma_kinematics = pneuma.loc[~not_reliably_parsed].dropna(
+            subset=["speed_mps", "acceleration_mps2"]
+        )
+    else:
+        pneuma_quality_audit = {
+            "pneuma_quality_columns_present": False,
+            "pneuma_states_total": int(len(pneuma)),
+            "pneuma_states_not_reliably_parsed_excluded": 0,
+            "note": (
+                "legacy raw schema: no quality fields available; states are "
+                "treated as parsed-only (NaN dropped) and quality cannot be audited"
+            ),
+        }
+        pneuma_kinematics = pneuma.dropna(subset=["speed_mps", "acceleration_mps2"])
     kinematics_frames.append(
         deterministic_state_sample(
             pneuma_kinematics, max_rows=max_rows_per_group, seed=seed + 2
@@ -175,9 +225,11 @@ def write_real_reference_package(
             "path": str(pneuma_path.resolve()),
             "sha256": sha256_file(pneuma_path),
             "state_rows": int(len(pneuma)),
+            "kinematics_pool_rows": int(len(pneuma_kinematics)),
             "kinematics_sample_rows": int(len(kinematics_frames[-1])),
             "following_sample_rows": 0,
             "pneuma_ttc_excluded": True,
+            "pneuma_quality_semantics": pneuma_quality_audit,
         }
     )
     kinematics_reference = pd.concat(kinematics_frames, ignore_index=True)

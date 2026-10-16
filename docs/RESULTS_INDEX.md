@@ -112,6 +112,10 @@ rho 时间尺度合理性诊断：tau=15.364279 s，完成四源分布、TTC 分
 
 Stage 0.2正式Gate=`pass`、`Completed / Closed`，仅限四源NGSIM、100ms描述性纵向跟驰风险代理测量。正式P2分母按可靠相邻边双端P2可评价定义独立复算；5,039,222条边、503,922.2s，原可靠跟驰512,043.2s仍独立列示，不可评价8,121.0s无零风险含义。P2=4,545；逐源事件率、原始分子分母和新旧分母率对照见最终包。独立物理真实性、缺失选择偏差、极端敏感性、200ms迁移不等价和来源外推为未验证限制。历史R3 Blocked记录不覆盖。证据：`code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r4/`。
 
+## RES-STAGE-0.3-BOUNDARY-REPAIR-R2
+
+Stage 0.3 R2 边界修复与验收准备（AAD-S0.3-T02）。修复三项工程边界缺陷：时间连续性在排序前按原始记录顺序评估（时间倒退/重复/非正增量/缺口入标记，时间加权区间由原始顺序邻接定义，异常不可经排序重获权重）；轨迹审计以原始行为单位、重复 track_id fail-closed 不合并不改名；`quality_status` 逐状态推导、`time_weighting_eligible` 由解析质量+身份+原始顺序+可靠区间共同决定，`write_real_reference_package()` 读取并使用质量字段。真实数据统计不变：785 行/785 唯一 ID/1,239,475 状态，速度 TW mean=4.8382、VW mean=6.2077，加速度 TW mean=-0.0044 m/s²；R1/R2 145 项比较仅 30 项浮点末位（≤1e-9，已归因为求和对齐效应）与 1 项结构性记录差异；独立复算 discrepancies=0；全量测试 315 passed。状态 **Gate Pass Candidate（R2）**，待研究者裁决。报告：`docs/STAGE_0_3_BOUNDARY_REPAIR_R2_2026-10-16.md`；包：`code/outputs/formal/calibration/stage_0_3_pneuma_boundary_repair_20261016_r2/`。
+
 ## RES-STAGE-0.3-PNEUMA-KINEMATICS-R1
 
 Stage 0.3 综合实施与验收准备。785 条唯一轨迹（Car 443、Motorcycle 153、Taxi 137、Medium Vehicle 30、Bus 20、Heavy Vehicle 2）、1,239,475 条状态、0.04 s 等间隔、零缺口/畸形/重复。时间加权速度 mean=4.8382 m/s（P50=4.5824、P95=12.1176）、车辆等权 mean=6.2077 m/s；纵向加速度 mean=-0.0044、sd=0.7454 m/s²，极端记录保留并做敏感性。轨迹簇 bootstrap 2000 次；独立复算零差异；Stage 0.5 现有接口真实全量测试通过（pNEUMA TTC 未纳入）。状态 **Gate Pass Candidate**，科学 Gate 与未冻结参数待研究者。报告：`docs/STAGE_0_3_PNEUMA_KINEMATICS_2026-10-12.md`；包：`code/outputs/formal/calibration/stage_0_3_pneuma_kinematics_20261012_r1/`。

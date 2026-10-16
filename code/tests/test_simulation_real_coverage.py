@@ -80,6 +80,72 @@ def test_deterministic_state_sample_is_bounded_and_reproducible() -> None:
     assert first["sample_key_hash64"].is_monotonic_increasing
 
 
+def test_real_reference_package_propagates_pneuma_quality_fields(tmp_path: Path) -> None:
+    ngsim_state = pd.DataFrame(
+        {
+            "dataset": ["NGSIM"] * 2,
+            "site": ["US-101"] * 2,
+            "window_id": ["w"] * 2,
+            "vehicle_id": ["1", "1"],
+            "time_s": [0.0, 0.1],
+            "speed_mps": [10.0, 11.0],
+            "acceleration_mps2": [0.0, 1.0],
+            "net_gap_m": [10.0, 9.0],
+            "closing_speed_mps": [1.0, 1.0],
+            "measurement_status": ["valid", "valid"],
+        }
+    )
+    ngsim_path = tmp_path / "ngsim.parquet"
+    ngsim_state.to_parquet(ngsim_path, index=False)
+    pneuma = pd.DataFrame(
+        {
+            "id": ["p1", "p1", "p1"],
+            "time_s": [0.0, 0.04, 0.08],
+            "speed_mps": [5.0, 5.1, 5.2],
+            "longitudinal_accel_mps2": [0.0, 0.1, 0.0],
+            "quality_status": ["raw_parsed", "parse_failed", "raw_parsed"],
+            "time_weighting_eligible": [True, False, True],
+        }
+    )
+    pneuma_path = tmp_path / "pneuma_quality.parquet"
+    pneuma.to_parquet(pneuma_path, index=False)
+    events = pd.DataFrame(
+        {
+            "dataset": ["NGSIM"],
+            "site": ["US-101"],
+            "window_id": ["w"],
+            "event_duration_s": [0.2],
+            "ttc_min_s": [1.0],
+            "drac_max_mps2": [2.0],
+            "conflict_type": ["rear_end"],
+        }
+    )
+    events_path = tmp_path / "events.parquet"
+    events.to_parquet(events_path, index=False)
+    output = write_real_reference_package(
+        ngsim_state_paths=[ngsim_path],
+        pneuma_state_path=pneuma_path,
+        ngsim_event_path=events_path,
+        output_dir=tmp_path / "reference_quality",
+        max_rows_per_group=10,
+        seed=7,
+    )
+    audit = json.loads((output / "audit.json").read_text(encoding="utf-8"))
+    pneuma_source = audit["sources"][-1]
+    assert pneuma_source["pneuma_quality_semantics"]["pneuma_quality_columns_present"] is True
+    assert pneuma_source["pneuma_quality_semantics"]["pneuma_states_total"] == 3
+    assert pneuma_source["pneuma_quality_semantics"]["pneuma_states_not_reliably_parsed_excluded"] == 1
+    assert pneuma_source["pneuma_quality_semantics"]["pneuma_states_time_weighting_eligible"] == 2
+    assert pneuma_source["kinematics_pool_rows"] == 2
+    kinematics = pd.read_parquet(output / "kinematics_reference.parquet")
+    pneuma_rows = kinematics[kinematics["dataset"] == "pNEUMA"]
+    # The parse-failed state never enters the frozen reference; the eligible
+    # flag is carried through so later statistics keep the expected weighting.
+    assert set(pneuma_rows["time_s"]) == {0.0, 0.08}
+    assert set(pneuma_rows["time_weighting_eligible"].astype(bool)) == {True}
+    assert "quality_status" in pneuma_rows.columns
+
+
 def test_real_reference_package_keeps_pneuma_risk_pending(tmp_path: Path) -> None:
     ngsim_state = pd.DataFrame(
         {

@@ -20,6 +20,8 @@
 
 2026-10-12：综合实施与验收准备完成。785 轨迹 / 1,239,475 状态全量审计、时间加权/车辆等权描述性统计、敏感性与 bootstrap、Stage 0.5 真实接口测试均通过，独立复算零差异。报告：`docs/STAGE_0_3_PNEUMA_KINEMATICS_2026-10-12.md`；结果：`RES-STAGE-0.3-PNEUMA-KINEMATICS-R1`；验收准备包：`code/outputs/formal/calibration/stage_0_3_pneuma_kinematics_20261012_r1/`。状态 **Gate Pass Candidate**，科学 Gate 与未冻结参数（连续性容差、描述性阈值、车型映射、适用范围）待研究者审核。
 
+2026-10-16（R2，当前）：AAD-S0.3-T02 边界修复完成。修复排序掩盖原始时间顺序、重复 track_id 字典覆盖与 Stage 0.5 质量字段语义失真三项工程缺陷；时间连续性改为排序前按原始记录顺序评估，时间加权区间由原始顺序邻接定义，轨迹审计以原始行为单位、重复 ID fail-closed，`quality_status` 逐状态推导且 `write_real_reference_package()` 实际使用质量字段。真实统计结果不变（145 项比较：30 项浮点末位、1 项结构性记录差异、无统计变化）；独立复算 discrepancies=0；全量测试 315 passed。报告：`docs/STAGE_0_3_BOUNDARY_REPAIR_R2_2026-10-16.md`；结果：`RES-STAGE-0.3-BOUNDARY-REPAIR-R2`；验收准备包：`code/outputs/formal/calibration/stage_0_3_pneuma_boundary_repair_20261016_r2/`。状态保持 **Gate Pass Candidate（R2）**，待研究者最终裁决。
+
 ## stage_0_4 — SPMD 通信证据边界
 
 已确认 RV_RX 只支持接收状态连续性；packet级时延、丢包和采用仍不可观测。

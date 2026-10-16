@@ -67,3 +67,7 @@ Added isolated formal measurement interface/config, P2 event revalidation, contr
 ## 2026-10-12 Stage 0.3 综合实施
 
 新增 `pneuma_urban_kinematics.py`（流式解析审计、时间质量标记、时间加权/车辆等权统计、连续性与极端值敏感性、轨迹簇 bootstrap、Stage 0.5 参考接口、不可覆盖验收包）、入口 `run_stage_0_3_pneuma_kinematics.py`、独立复算 `verify_stage_0_3_independent.py` 和 19 个单元测试。真实全量审计：785 轨迹 / 1,239,475 状态，零缺口/畸形/重复；时间加权速度 mean=4.8382 m/s、加速度 mean=-0.0044 m/s²；独立复算零差异；Stage 0.5 真实接口测试通过。注册表、索引、AI_CONTEXT 同步；科学参数未冻结，Gate Pass Candidate 待研究者。
+
+## 2026-10-16 Stage 0.3 R2 边界修复
+
+AAD-S0.3-T02：`pneuma_urban_kinematics.py` 时间连续性改为排序前按原始记录顺序评估，时间加权区间由原始顺序邻接定义并受统一可靠性掩码约束；`audit_pneuma_source()` 改为行级审计、重复 track_id fail-closed；`build_stage_0_5_reference_states()` 逐状态推导 `quality_status`/`time_weighting_eligible`，`write_real_reference_package()` 实际使用质量字段；新增 9 个构造回归测试，独立复算扩展身份/原始顺序/暴露语义。真实统计不变（145 项比较仅 30 项浮点末位 + 1 项结构性记录），discrepancies=0，全量 315 passed。结果 `RES-STAGE-0.3-BOUNDARY-REPAIR-R2`，包 `stage_0_3_pneuma_boundary_repair_20261016_r2/`；Gate Pass Candidate 待研究者，无 Protocol Lock/Stage I/holdout。

@@ -78,22 +78,174 @@ def test_audit_rejects_incomplete_state_block_without_dropping_metadata(tmp_path
     assert audit["malformed_tracks"] == ["7"]
     assert frame.empty
     assert audit["tracks_table"].iloc[0]["track_id"] == "7"
+    assert audit["tracks_table"].iloc[0]["source_row_number"] == 2
+    assert audit["raw_track_rows"] == 1
+    assert audit["unique_track_ids"] == 1
 
 
 def test_flag_state_quality_detects_reversal_duplicate_and_gap() -> None:
+    # Raw record order: 0.00 -> 0.04 -> 0.04 -> 0.02
     states = _states_frame(
         [
             {"vehicle_id": "a", "vehicle_type": "Car", "time_s": 0.00},
             {"vehicle_id": "a", "vehicle_type": "Car", "time_s": 0.04},
             {"vehicle_id": "a", "vehicle_type": "Car", "time_s": 0.04},  # duplicate
-            {"vehicle_id": "a", "vehicle_type": "Car", "time_s": 0.02},  # reversal vs next sort
+            {"vehicle_id": "a", "vehicle_type": "Car", "time_s": 0.02},  # raw-order reversal
             {"vehicle_id": "b", "vehicle_type": "Taxi", "time_s": 0.0},
         ]
     )
     flagged = flag_state_quality(states)
+    a = flagged[flagged["vehicle_id"] == "a"].set_index("raw_index").sort_index()
     assert flagged["duplicate_time_in_track"].sum() == 2
-    # Sorted view: times 0.00,0.02,0.04,0.04 → dt 0.02,0.02,0.00,nan; nonpositive at dt==0.
-    assert flagged["dt_to_next_s"].tolist()[:3] == pytest.approx([0.02, 0.02, 0.0])
+    # Raw-order dt (NOT sorted dt): 0.04, 0.00, -0.02, NaN for vehicle a.
+    assert a["dt_to_next_s"].tolist() == pytest.approx([0.04, 0.00, -0.02, float("nan")], nan_ok=True)
+    # The 0.02 state regressed against its raw-order predecessor and must be
+    # flagged even though a time sort would place it before 0.04.
+    assert a["time_regression_in_raw_order"].tolist() == [False, False, False, True]
+    assert a["time_increment_nonpositive"].tolist() == [False, False, True, True]
+    # States involved in a nonpositive raw-order edge (out or in) lose
+    # reliable-interval status: the first 0.04 (outgoing 0.00), the second
+    # 0.04 and the 0.02 reversal; the 0.00 state keeps a clean raw interval.
+    assert a["raw_order_time_anomaly"].tolist() == [False, True, True, True]
+
+
+def test_flag_state_quality_raw_order_regression_not_masked_by_sort() -> None:
+    # Required regression: 0.00 -> 0.08 -> 0.04 in raw record order must be
+    # identified as a time regression; sorting must not repair it.
+    states = _states_frame(
+        [
+            {"vehicle_id": "v", "vehicle_type": "Car", "time_s": 0.00, "speed_mps": 10.0},
+            {"vehicle_id": "v", "vehicle_type": "Car", "time_s": 0.08, "speed_mps": 11.0},
+            {"vehicle_id": "v", "vehicle_type": "Car", "time_s": 0.04, "speed_mps": 12.0},
+        ]
+    )
+    flagged = flag_state_quality(states, gap_tolerance_s=0.043).set_index("raw_index").sort_index().sort_index()
+    assert flagged["time_regression_in_raw_order"].tolist() == [False, False, True]
+    # The reversal edge (0.08 -> 0.04) flags both endpoints; the first state
+    # is a raw-order gap (0.08 > tolerance), not a usable 0.04 s interval.
+    assert flagged["raw_order_time_anomaly"].tolist() == [False, True, True]
+    assert flagged["time_gap_flag"].tolist() == [True, False, False]
+    # Time weighting must not let the sorted view (0.00, 0.04, 0.08) hand a
+    # reliable interval back to the anomalous observations.
+    summary = integrate_time_weighted(
+        flagged, value_column="speed_mps", tolerance_s=0.043, nominal_dt_s=None
+    )
+    assert summary["states_time_weighted"] == 0
+    assert summary["exposure_time_s"] == pytest.approx(0.0)
+
+
+def test_time_weighting_respects_raw_order_anomaly_flags() -> None:
+    # A duplicated (track, time) state must not regain reliable weight even
+    # though the time-sorted view has a well-formed interval before it.
+    states = _states_frame(
+        [
+            {"vehicle_id": "v", "vehicle_type": "Car", "time_s": 0.00, "speed_mps": 10.0},
+            {"vehicle_id": "v", "vehicle_type": "Car", "time_s": 0.04, "speed_mps": 20.0},
+            {"vehicle_id": "v", "vehicle_type": "Car", "time_s": 0.04, "speed_mps": 21.0},
+            {"vehicle_id": "v", "vehicle_type": "Car", "time_s": 0.08, "speed_mps": 30.0},
+        ]
+    )
+    flagged = flag_state_quality(states)
+    summary = integrate_time_weighted(
+        flagged, value_column="speed_mps", tolerance_s=0.043, nominal_dt_s=None
+    )
+    # Only the pre-duplicate interval [0.00, 0.04) remains reliable; the
+    # duplicated (track, time) states themselves must not regain weight from
+    # the time-sorted adjacency (the pre-repair sorted view would have handed
+    # the second 0.04 state a full 0.04 s interval).
+    assert summary["states_time_weighted"] == 1
+    assert summary["exposure_time_s"] == pytest.approx(0.04)
+    assert summary["mean"] == pytest.approx(10.0)
+
+
+def test_flag_state_quality_gap_flag_respects_tolerance() -> None:
+    states = _states_frame(
+        [
+            {"vehicle_id": "a", "vehicle_type": "Car", "time_s": 0.0},
+            {"vehicle_id": "a", "vehicle_type": "Car", "time_s": 0.04},
+            {"vehicle_id": "a", "vehicle_type": "Car", "time_s": 0.5},
+        ]
+    )
+    flagged = flag_state_quality(states, gap_tolerance_s=0.08)
+    assert flagged["time_gap_flag"].tolist() == [False, True, False]
+
+
+def test_audit_duplicate_track_rows_are_flagged_not_merged(tmp_path: Path) -> None:
+    # Same track id on two different raw rows with non-overlapping times: no
+    # dict overwrite, no silent merge into one reliable trajectory.
+    source = tmp_path / "dup.csv"
+    _write_wide(
+        source,
+        [
+            ["X", "Car", "10.0", "30.0",
+             "37.0", "23.0", "10.0", "0.0", "0.0", "0.00",
+             "37.0", "23.0", "12.0", "0.0", "0.0", "0.04"],
+            ["X", "Car", "10.0", "30.0",
+             "37.5", "23.5", "20.0", "0.0", "0.0", "10.00",
+             "37.5", "23.5", "22.0", "0.0", "0.0", "10.04"],
+            ["Y", "Taxi", "7.0", "25.0",
+             "37.9", "23.9", "15.0", "0.0", "0.0", "0.00"],
+        ],
+    )
+    frame, audit = audit_pneuma_source(source)
+    assert audit["raw_track_rows"] == 3
+    assert audit["unique_track_ids"] == 2
+    assert audit["duplicate_track_ids"] == ["X"]
+    assert audit["duplicate_track_rows"] == 2
+    assert audit["identity_conflicts"] == []  # identical type and metadata, ambiguous only by row duplication
+    x_states = frame[frame["vehicle_id"] == "X"]
+    assert len(x_states) == 4  # all raw states retained, none dropped
+    assert set(x_states["source_row_number"]) == {2, 3}
+    assert x_states["identity_status"].eq("ambiguous_duplicate_track_id").all()
+    assert x_states["identity_ambiguous"].all()
+    y_states = frame[frame["vehicle_id"] == "Y"]
+    assert y_states["identity_status"].eq("unique").all()
+    # Fail-closed: ambiguous states are excluded from reliable time weighting.
+    flagged = flag_state_quality(x_states)
+    summary = integrate_time_weighted(
+        flagged, value_column="speed_mps", tolerance_s=0.043, nominal_dt_s=None
+    )
+    assert summary["states_time_weighted"] == 0
+
+
+def test_audit_records_identity_conflicts_for_duplicate_rows(tmp_path: Path) -> None:
+    source = tmp_path / "conflict.csv"
+    _write_wide(
+        source,
+        [
+            ["Z", "Car", "10.0", "30.0",
+             "37.0", "23.0", "10.0", "0.0", "0.0", "0.00"],
+            ["Z", "Bus", "10.0", "30.0",
+             "37.0", "23.0", "10.0", "0.0", "0.0", "0.00"],
+        ],
+    )
+    frame, audit = audit_pneuma_source(source)
+    assert audit["duplicate_track_ids"] == ["Z"]
+    assert len(audit["identity_conflicts"]) == 1
+    conflict = audit["identity_conflicts"][0]
+    assert conflict["track_id"] == "Z"
+    assert conflict["source_row_numbers"] == [2, 3]
+    assert "vehicle_type_mismatch" in conflict["reasons"]
+    assert conflict["rejection_rule"] == "identity_ambiguous_fail_closed"
+    assert frame["identity_conflict"].all()
+
+
+def test_audit_flags_duplicate_track_time_within_row(tmp_path: Path) -> None:
+    source = tmp_path / "dup_time.csv"
+    _write_wide(
+        source,
+        [
+            ["D", "Car", "10.0", "30.0",
+             "37.0", "23.0", "10.0", "0.0", "0.0", "0.00",
+             "37.0", "23.0", "12.0", "0.0", "0.0", "0.04",
+             "37.0", "23.0", "14.0", "0.0", "0.0", "0.04"],
+        ],
+    )
+    frame, audit = audit_pneuma_source(source)
+    assert audit["duplicate_state_keys_count"] == 2
+    flagged = flag_state_quality(frame)
+    assert flagged["duplicate_time_in_track"].sum() == 2
+    assert flagged["time_increment_nonpositive"].sum() == 1
 
 
 def test_integrate_time_weighted_left_rectangle_and_no_gap_fill() -> None:
@@ -306,7 +458,9 @@ def test_build_stage_0_5_reference_states_schema() -> None:
     states = _states_frame(
         [
             {"vehicle_id": "a", "vehicle_type": "Car", "time_s": 0.0, "speed_mps": 10.0,
-             "longitudinal_accel_mps2": 0.1, "dt_to_next_s": 0.04},
+             "longitudinal_accel_mps2": 0.1, "dt_to_next_s": 0.04, "parse_ok": True,
+             "identity_ambiguous": False, "raw_order_time_anomaly": False,
+             "duplicate_time_in_track": False},
         ]
     )
     states["time_weighting_eligible"] = True
@@ -319,6 +473,53 @@ def test_build_stage_0_5_reference_states_schema() -> None:
     }
     assert reference.iloc[0]["dataset"] == "pNEUMA"
     assert reference.iloc[0]["site"] == "Athens-d1"
+    assert reference.iloc[0]["quality_status"] == "raw_parsed"
+    assert bool(reference.iloc[0]["time_weighting_eligible"]) is True
+
+
+def test_build_stage_0_5_reference_states_derives_per_state_quality() -> None:
+    states = _states_frame(
+        [
+            {"vehicle_id": "a", "vehicle_type": "Car", "time_s": 0.0, "speed_mps": 10.0,
+             "longitudinal_accel_mps2": 0.1, "parse_ok": True, "identity_ambiguous": False,
+             "raw_order_time_anomaly": False, "duplicate_time_in_track": False},
+            {"vehicle_id": "a", "vehicle_type": "Car", "time_s": 0.04, "speed_mps": 11.0,
+             "longitudinal_accel_mps2": 0.1, "parse_ok": False, "parse_error": "unparseable_speed_kmh",
+             "identity_ambiguous": False, "raw_order_time_anomaly": False,
+             "duplicate_time_in_track": False},
+            {"vehicle_id": "b", "vehicle_type": "Car", "time_s": 0.0, "speed_mps": 12.0,
+             "longitudinal_accel_mps2": 0.0, "parse_ok": True, "identity_ambiguous": True,
+             "raw_order_time_anomaly": False, "duplicate_time_in_track": False},
+            {"vehicle_id": "c", "vehicle_type": "Car", "time_s": 0.0, "speed_mps": 13.0,
+             "longitudinal_accel_mps2": 0.0, "parse_ok": True, "identity_ambiguous": False,
+             "raw_order_time_anomaly": True, "duplicate_time_in_track": False},
+        ]
+    )
+    states["dt_to_next_s"] = [0.04, float("nan"), 0.04, 0.04]
+    reference = build_stage_0_5_reference_states(states, gap_tolerance_s=0.043)
+    assert reference["quality_status"].tolist() == [
+        "raw_parsed",
+        "parse_failed",
+        "identity_ambiguous",
+        "raw_time_anomaly",
+    ]
+    # Fail-closed eligibility: derived from parse + identity + raw-order + interval.
+    assert reference["time_weighting_eligible"].tolist() == [True, False, False, False]
+
+
+def test_build_stage_0_5_reference_states_refuses_unaudited_states() -> None:
+    states = _states_frame(
+        [{"vehicle_id": "a", "vehicle_type": "Car", "time_s": 0.0, "speed_mps": 10.0,
+          "longitudinal_accel_mps2": 0.1}]
+    )
+    from riskprop.calibration import CalibrationContractError
+
+    with pytest.raises(CalibrationContractError):
+        build_stage_0_5_reference_states(states)
+    with pytest.raises(CalibrationContractError):
+        # Explicit uniform status without an eligibility column and without
+        # interval information must not silently default to reliable.
+        build_stage_0_5_reference_states(states, quality_status="raw_parsed")
 
 
 def test_sampling_balance_audit_detects_type_shifts() -> None:

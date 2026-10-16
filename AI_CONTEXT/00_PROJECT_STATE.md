@@ -18,18 +18,18 @@
 ## 当前主要实验
 
 - `stage_0_2`：NGSIM 跟驰风险审计，`Completed / Closed`（有限范围），作为已封存参考。
-- `stage_0_3`：pNEUMA 城市运动学校准，综合实施与验收准备完成，`Gate Pass Candidate` 待研究者审核。
+- `stage_0_3`：pNEUMA 城市运动学校准，综合实施（R1）与边界修复（R2）完成，`Gate Pass Candidate（R2）` 待研究者审核。
 - `stage_0_4`：SPMD 接收状态连续性边界已验证，packet 级字段仍不可用。
 - `stage_0_5`：仿真—现实覆盖，缺按新分工生成的 SUMO 样本；pNEUMA 参考接口已就位并通过兼容性测试。
 - `stage_0_6`：技术真值检查已有证据，科学容差与协议锁未完成。
 
 ## 当前最重要的问题
 
-阶段 0.2 已在有限范围内关闭；阶段 0.3 工程与已批准统计设计完成、独立复算零差异，但连续性容差、描述性阈值、车型映射、适用范围与科学 Gate 待研究者裁决；阶段 0.5 缺 SUMO 校准样本；科学容差和样本量未冻结。当前便携 readiness 是迁移前旧键快照，只能证明当时 `protocol_lock_allowed=false`。
+阶段 0.2 已在有限范围内关闭；阶段 0.3 工程（含 R2 边界修复：原始顺序、重复 ID、质量语义）与已批准统计设计完成、独立复算零差异，但连续性容差、描述性阈值、车型映射、适用范围与科学 Gate 待研究者裁决；阶段 0.5 缺 SUMO 校准样本；科学容差和样本量未冻结。当前便携 readiness 是迁移前旧键快照，只能证明当时 `protocol_lock_allowed=false`。
 
 ## 当前下一步
 
-按已登记顺序：研究者审阅阶段 0.3 Gate Pass Candidate 包并裁决科学适用范围与未冻结参数；冻结阶段 0.4 的有限证据边界；完成阶段 0.5（pNEUMA 参考已就位，缺 SUMO 样本）；再完成阶段 0.6 科学参数冻结与协议锁。协议锁通过前不得进入阶段 1.1。
+按已登记顺序：研究者审阅阶段 0.3 R2 边界修复验收包（RES-STAGE-0.3-BOUNDARY-REPAIR-R2）并裁决科学适用范围与未冻结参数；冻结阶段 0.4 的有限证据边界；完成阶段 0.5（pNEUMA 参考已就位并携带逐状态质量字段，缺 SUMO 样本）；再完成阶段 0.6 科学参数冻结与协议锁。协议锁通过前不得进入阶段 1.1。
 
 ## 2026-10-09 Stage 0 基线核查
 
@@ -137,6 +137,10 @@ P1/P2/P3 定向验证已完成：成员级事件重叠图 20,171 条边，事件
 ## 2026-10-12 Stage 0.3 综合实施与验收准备（当前状态）
 
 报告：`docs/STAGE_0_3_PNEUMA_KINEMATICS_2026-10-12.md`；结果：`RES-STAGE-0.3-PNEUMA-KINEMATICS-R1`；验收准备包：`code/outputs/formal/calibration/stage_0_3_pneuma_kinematics_20261012_r1/`（不可覆盖，SHA256SUMS 校验通过）。pNEUMA 全量文件 785 条唯一轨迹、1,239,475 条状态、0.04 s 等间隔、零缺口/畸形/重复；时间加权速度 mean=4.8382 m/s、车辆等权 mean=6.2077 m/s；纵向加速度 mean=-0.0044、sd=0.7454 m/s²，极端记录保留并做敏感性；轨迹簇 bootstrap 2000 次。新增 `pneuma_urban_kinematics.py`、`run_stage_0_3_pneuma_kinematics.py`、`verify_stage_0_3_independent.py` 与 19 个单元测试；独立复算 discrepancies=0；Stage 0.5 现有 `write_real_reference_package()` 真实全量接口测试通过（25,000 kinematics、20,000 following、4,545 events，pNEUMA TTC 未纳入）。状态 **Gate Pass Candidate**；连续性容差（工程锚定 0.043 s 未冻结）、描述性阈值、车型→SUMO vType 映射、适用范围与科学 Gate 待研究者决定。未恢复 pNEUMA 地图匹配/前车/TTC/人工 QA；无 Protocol Lock/Stage I/holdout 访问。
+
+## 2026-10-16 Stage 0.3 R2 边界修复与验收准备（当前状态）
+
+报告：`docs/STAGE_0_3_BOUNDARY_REPAIR_R2_2026-10-16.md`；结果：`RES-STAGE-0.3-BOUNDARY-REPAIR-R2`；验收准备包：`code/outputs/formal/calibration/stage_0_3_pneuma_boundary_repair_20261016_r2/`（不可覆盖）。任务 AAD-S0.3-T02 修复 R1 三项工程边界缺陷：时间连续性改为排序前按原始记录顺序评估（时间加权区间由原始顺序邻接定义，异常不可经排序重获权重）；轨迹审计以原始行为单位、重复 track_id fail-closed 不合并不改名；`quality_status` 逐状态推导、`time_weighting_eligible` 由解析质量+身份+原始顺序+可靠区间共同决定，`write_real_reference_package()` 读取并使用质量字段（抽样规则未变）。真实统计不变：785 行/785 唯一 ID/1,239,475 状态，速度 TW mean=4.8382、VW mean=6.2077，加速度 TW mean=-0.0044 m/s²，R1/R2 145 项比较仅 30 项浮点末位（≤1e-9，求和对齐效应）+1 项结构性记录差异；独立复算（含身份/原始顺序/暴露语义）discrepancies=0；全量测试 315 passed（287/232/315 数量差异由收集范围与新增 9 测试解释）。状态保持 **Gate Pass Candidate（R2）**；连续性容差、描述性阈值、车型映射、适用范围与科学 Gate 待研究者，未创建 Protocol Lock，未启动 Stage I/holdout 访问。
 
 ## 2026-10-12 Stage 0.2 最终科学验收与正式关闭
 

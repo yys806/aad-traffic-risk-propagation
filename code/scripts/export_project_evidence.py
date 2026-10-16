@@ -115,6 +115,10 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
             "stage_0_3_pneuma_kinematics_20261012_r1",
             ("audit.json", "config.json", "provenance.json", "manifest.json", "SHA256SUMS", "gate_matrix_summary.json"),
         ),
+        "RES-STAGE-0.3-BOUNDARY-REPAIR-R2": (
+            "stage_0_3_pneuma_boundary_repair_20261016_r2",
+            ("audit.json", "config.json", "provenance.json", "manifest.json", "SHA256SUMS", "gate_matrix_summary.json"),
+        ),
     }
     pairs["RES-STAGE-0.3-PNEUMA-KINEMATICS-R1"].append(
         (
@@ -122,6 +126,12 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
             "independent_verification.json",
         )
     )
+    pairs["RES-STAGE-0.3-BOUNDARY-REPAIR-R2"] = [
+        (
+            "code/outputs/formal/calibration/stage_0_3_pneuma_boundary_repair_20261016_r2_independent_verification.json",
+            "independent_verification.json",
+        )
+    ]
     for result_id, directory in {
         "RES-STAGE-0.2-TASK-2.4": "stage_0_2_task_2_4_20261011_r2",
         "RES-STAGE-0.2-TASK-2.5": "stage_0_2_task_2_5_20261011_r1",

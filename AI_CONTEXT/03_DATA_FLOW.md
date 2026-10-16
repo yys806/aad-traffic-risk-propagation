@@ -52,6 +52,10 @@ NGSIM leader lookup 在存在诊断字段时使用 run scope、Global_Time、dia
 
 stage_0_3 验收包 `stage_0_5_reference_states.parquet`（含 dataset/site/window_id/vehicle_id/vehicle_type/time_s/speed_mps/acceleration_mps2/quality_status/time_weighting_eligible/source_file_sha256）可直接进入 `write_real_reference_package()`；NGSIM 与 pNEUMA 不拼接为 iid 样本。
 
+## 2026-10-16 R2 质量语义（当前）
+
+R2 起 `quality_status` 逐状态推导（parse_failed/identity_ambiguous/raw_time_anomaly/duplicate_time/raw_parsed），`time_weighting_eligible` 由解析质量、轨迹身份、原始顺序连续性与可靠区间共同决定；`write_real_reference_package()` 读取 pNEUMA 质量字段并将非 raw_parsed 状态 fail-closed 排除出运动学抽样池（计数入 audit），`time_weighting_eligible` 随 kinematics_reference 传递；稳定哈希抽样规则未变。时间加权区间由原始记录顺序邻接定义，排序不定义区间。
+
 ## 2026-10-12 正式测量与收口接口
 
 task1.5四源状态→独立全序列/P2在线提取→r4→不可覆盖final_r1验收包；病例与抽稀产物保留成员和断点，便携证据只含小型摘要。 依据：相应源码及 `docs/STAGE_0_2_FINAL_CLOSURE_2026-10-12.md`。

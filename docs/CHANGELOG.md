@@ -52,3 +52,7 @@
 
 
 2026-10-12 验证环境收尾：11个历史本机产物测试显式依赖封存包，在纯Git克隆缺包时skip；本机仍全量执行，不将跳过计为通过。计算原语/独立采样单元测试不跳过。
+
+## 2026-10-16 Stage 0.3 R2 边界修复
+
+任务 AAD-S0.3-T02。修复 `pneuma_urban_kinematics.py` 排序掩盖原始时间顺序、`audit_pneuma_source()` 重复 track_id 字典覆盖、`build_stage_0_5_reference_states()`/`write_real_reference_package()` 质量字段语义失真；新增原始顺序/身份/质量状态专项审计、统一可靠性掩码（时间加权区间由原始记录顺序邻接定义）与 9 个构造回归测试；独立复算扩展覆盖身份、原始顺序与可靠暴露语义。真实统计结果不变（速度 TW mean=4.8382、VW mean=6.2077、加速度 TW mean=-0.0044），R1/R2 145 项比较仅浮点末位与新增质量记录差异；独立复算 discrepancies=0；全量测试 315 passed（数量差异 287/232/315 由收集范围与新增测试解释）。登记 `RES-STAGE-0.3-BOUNDARY-REPAIR-R2`、报告 `docs/STAGE_0_3_BOUNDARY_REPAIR_R2_2026-10-16.md`；Stage 0.3 保持 Gate Pass Candidate，科学参数未冻结，未创建 Protocol Lock，未启动 Stage I/holdout 访问。

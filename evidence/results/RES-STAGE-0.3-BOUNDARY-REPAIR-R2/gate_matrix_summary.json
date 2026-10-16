@@ -1,0 +1,114 @@
+{
+  "schema_version": "aad.stage-0-3.gate-matrix-summary.v1",
+  "result_id": "RES-STAGE-0.3-BOUNDARY-REPAIR-R2",
+  "items": [
+    {
+      "item": "原始数据与字段解释可靠",
+      "basis": "SHA-256 与封存清单一致；宽表结构、单位与 Zenodo 元数据一致",
+      "method": "文件哈希 + 行级流式解析审计（原始行序保留）+ 结构测试",
+      "result": "785 原始行 / 785 唯一 ID / 1239475 状态；畸形 0；重复 ID 0",
+      "evidence": "audit.json, states_audit.parquet, code/tests/test_pneuma_urban_kinematics.py",
+      "status": "Verified",
+      "remaining_limitation": "字段语义依据数据提供方文档；无独立物理真值"
+    },
+    {
+      "item": "原始记录顺序与轨迹身份审计（R2 修复）",
+      "basis": "时间连续性在排序前按原始记录顺序评估；轨迹身份按原始行审计",
+      "method": "raw-order 时间倒退/重复/非正增量/缺口标记 + 行级重复 ID 与身份冲突检测 + 构造回归测试（0.00→0.08→0.04）",
+      "result": "时间倒退 0；非正增量 0；重复 (track,time) 状态 0；超容差缺口 0；重复 ID 0；身份冲突 0",
+      "evidence": "states_audit.parquet, audit.json, code/tests/test_pneuma_urban_kinematics.py",
+      "status": "Verified (engineering)",
+      "remaining_limitation": "原始顺序语义约束质量标记与时间权重；正式连续性容差仍待研究者"
+    },
+    {
+      "item": "Stage 0.5 参考接口质量语义（R2 修复）",
+      "basis": "逐状态 quality_status 与 time_weighting_eligible 由解析质量、轨迹身份与可靠区间共同决定",
+      "method": "逐状态质量推导（拒绝无标志默认可靠）+ 接口契约测试 + 真实全量接口测试（质量字段传递）",
+      "result": "quality_status 分布 {'raw_parsed': 1239475}；eligible 1238690 / 1239475",
+      "evidence": "stage_0_5_reference_states.parquet, audit.json, code/tests/test_simulation_real_coverage.py",
+      "status": "Verified (engineering)",
+      "remaining_limitation": "按状态无界抽样与时间加权权重的正式使用留给 Stage 0.5 设计决定"
+    },
+    {
+      "item": "时间连续性与统计权重可审计",
+      "basis": "相邻 dt 实证分布；8 个候选容差敏感性；左矩形规则显式记录",
+      "method": "dt 分布统计 + continuity_sensitivity + 单元测试",
+      "result": "mode dt=0.040000s；缺口对 0；锚定容差 0.043000s",
+      "evidence": "continuity_sensitivity.csv, audit.json",
+      "status": "Verified (engineering); 科学容差 Decision Required",
+      "remaining_limitation": "正式连续性容差未冻结；锚定规则只是工程默认"
+    },
+    {
+      "item": "速度与纵向加速度描述性参考完整",
+      "basis": "研究者认可的时间加权主统计 + 车辆等权稳健性框架",
+      "method": "分位数/直方图/ECDF/状态份额/按速度分层条件分布",
+      "result": "速度 mean=4.8382 m/s；加速度 mean=-0.0044 m/s²",
+      "evidence": "speed_time_weighted_by_type.csv, acceleration_time_weighted_by_type.csv, fig_*.png",
+      "status": "Verified (descriptive)",
+      "remaining_limitation": "单文件 30 分钟；不代表城市总体"
+    },
+    {
+      "item": "车型分布可复算",
+      "basis": "唯一轨迹计数框架",
+      "method": "compute_vehicle_type_composition + 独立计数测试",
+      "result": "Bus=20; Car=443; Heavy Vehicle=2; Medium Vehicle=30; Motorcycle=153; Taxi=137",
+      "evidence": "vehicle_type_composition.csv",
+      "status": "Verified",
+      "remaining_limitation": "SUMO vType 映射未批准"
+    },
+    {
+      "item": "质量和敏感性分析充分",
+      "basis": "任务 C 的 7 项描述性分析",
+      "method": "运动学一致性诊断 + 极端值/连续性/权重/车型敏感性 + 轨迹簇 bootstrap",
+      "result": "速度时间加权 mean 95% CI [4.4042,5.3137]",
+      "evidence": "extreme_sensitivity.csv, bootstrap_*.csv, kinematic_consistency.json",
+      "status": "Verified (descriptive)",
+      "remaining_limitation": "异常阈值与正式质量分类需研究者批准"
+    },
+    {
+      "item": "具备进入 Stage 0.5 的有限城市运动学参考条件",
+      "basis": "Stage 0.5 接口契约、质量语义与抽样审计",
+      "method": "write_real_reference_package 构造 + 真实全量接口测试（质量字段传递）",
+      "result": "接口测试通过；质量字段 fail-closed 传递；pNEUMA TTC 未纳入",
+      "evidence": "stage_0_5_reference_states.parquet, sampling_balance_audit.csv",
+      "status": "Verified (engineering)",
+      "remaining_limitation": "Stage 0.5 场景分层/容差/Gate 未冻结；时间加权权重的正式使用待 Stage 0.5 设计决定；NGSIM+pNEUMA 不视为 iid"
+    },
+    {
+      "item": "需研究者批准的阈值/容差/适用范围",
+      "basis": "任务边界",
+      "method": "本报告第 11 节与 Decision Required 清单",
+      "result": "连续性容差、低速/近零阈值、异常屏蔽、车型映射、代表性声明",
+      "evidence": "gate_matrix.csv, report.md",
+      "status": "Decision Required",
+      "remaining_limitation": "冻结前不得宣称正式质量分类或代表性"
+    },
+    {
+      "item": "pNEUMA 风险/TTC 职责",
+      "basis": "2026-09-10 研究者决定",
+      "method": "未执行任何 leader/TTC/DRAC 计算",
+      "result": "已退役职责未恢复",
+      "evidence": "AI_CONTEXT/06_DECISIONS.md",
+      "status": "Not Applicable",
+      "remaining_limitation": "无"
+    },
+    {
+      "item": "独立物理真实性验证",
+      "basis": "无视频/独立测量",
+      "method": "仅内部运动学一致性诊断",
+      "result": "未验证",
+      "evidence": "kinematic_consistency.json",
+      "status": "Unverified",
+      "remaining_limitation": "如需物理真值需独立数据"
+    }
+  ],
+  "status_counts": {
+    "Verified (engineering)": 3,
+    "Verified": 2,
+    "Verified (descriptive)": 2,
+    "Verified (engineering); 科学容差 Decision Required": 1,
+    "Decision Required": 1,
+    "Not Applicable": 1,
+    "Unverified": 1
+  }
+}

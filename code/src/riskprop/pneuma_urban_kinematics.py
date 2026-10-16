@@ -61,20 +61,134 @@ AUDIT_OUTPUT_COLUMNS = (
     "average_speed_kmh",
     "parse_ok",
     "parse_error",
+    "identity_status",
+    "identity_ambiguous",
+    "identity_conflict",
     "dt_to_next_s",
+    "time_regression_in_raw_order",
     "time_increment_nonpositive",
+    "raw_order_time_anomaly",
     "duplicate_time_in_track",
     "time_gap_flag",
 )
 
+# Columns whose truthiness disqualifies a state from reliable time weighting
+# (fail-closed: parse quality, trajectory identity, raw record order and
+# duplicated (track, time) keys).  Absent columns are treated as "not
+# evaluated, assumed clean" for backward compatibility with minimal frames.
+_RELIABILITY_EXCLUDE_COLUMNS = (
+    "parse_ok",
+    "identity_ambiguous",
+    "raw_order_time_anomaly",
+    "duplicate_time_in_track",
+)
+
+
+def _analysis_frame(states: pd.DataFrame) -> pd.DataFrame:
+    """Return the canonical analysis view with raw-order interval dt attached.
+
+    Time weighting intervals are defined by *raw record order* (``raw_index``
+    within each trajectory, i.e. the order the provider wrote the states), not
+    by time-sorted order: sorting must never let a raw-order anomaly regain a
+    reliable interval.  The returned frame is sorted exactly like the R1
+    analysis order (``vehicle_id, time_s, raw_index``) so that on clean data
+    (raw order == time order within every track) all downstream summations
+    remain bit-identical to the sealed R1 package.  The attached column
+    ``_dt_raw_next`` is the raw-order adjacent interval of each state.
+    """
+
+    frame = states.copy()
+    if "raw_index" in frame.columns:
+        raw_order = frame.sort_values("raw_index", kind="stable")
+    else:
+        raw_order = frame
+    group = raw_order.groupby("vehicle_id", sort=False)
+    next_time = group["time_s"].shift(-1)
+    same_next = raw_order["vehicle_id"].eq(raw_order["vehicle_id"].shift(-1))
+    dt = (next_time - raw_order["time_s"]).where(same_next)
+    frame["_dt_raw_next"] = dt
+    sort_columns = ["vehicle_id", "time_s"]
+    if "raw_index" in frame.columns:
+        sort_columns.append("raw_index")
+    return frame.sort_values(sort_columns).reset_index(drop=True)
+
+
+def _reliability_excludes(frame: pd.DataFrame) -> np.ndarray | None:
+    """Boolean mask of states disqualified from reliable time weighting."""
+
+    columns = [name for name in _RELIABILITY_EXCLUDE_COLUMNS if name in frame.columns]
+    if not columns:
+        return None
+    unreliable = np.zeros(len(frame), dtype=bool)
+    for name in columns:
+        values = frame[name]
+        if name == "parse_ok":
+            # Missing/NaN parse verdicts are treated as not reliably parsed.
+            unreliable |= ~values.fillna(False).astype(bool).to_numpy()
+        else:
+            unreliable |= values.fillna(False).astype(bool).to_numpy()
+    return unreliable
+
+
+def _usable_interval_mask(
+    frame: pd.DataFrame,
+    values: np.ndarray,
+    *,
+    tolerance_s: float,
+) -> np.ndarray:
+    """States whose raw-order interval is usable for time weighting."""
+
+    same_track = frame["vehicle_id"].eq(frame["vehicle_id"].shift(-1)).to_numpy()
+    dt = frame["_dt_raw_next"].to_numpy(float)
+    usable = (
+        same_track
+        & np.isfinite(values)
+        & (dt > 0)
+        & (dt <= tolerance_s)
+    )
+    unreliable = _reliability_excludes(frame)
+    if unreliable is not None:
+        usable &= ~unreliable
+    return usable
+
+
+def reliable_exposure_frame(
+    states: pd.DataFrame,
+    *,
+    tolerance_s: float,
+    value_column: str | None = None,
+) -> tuple[pd.DataFrame, np.ndarray]:
+    """Raw-order reliable interval view for plotting and audits.
+
+    Returns the canonical analysis frame with ``_dt`` (usable interval length,
+    zero when unusable) plus the boolean usable mask.  ``value_column``
+    additionally requires a finite observed value.
+    """
+
+    frame = _analysis_frame(states)
+    if value_column is None:
+        values = np.zeros(len(frame))
+    else:
+        values = frame[value_column].to_numpy(float)
+    usable = _usable_interval_mask(frame, values, tolerance_s=tolerance_s)
+    frame = frame.copy()
+    frame["_dt"] = np.where(usable, frame["_dt_raw_next"].to_numpy(float), 0.0)
+    return frame, usable
+
 
 def audit_pneuma_source(source_csv: str | Path) -> tuple[pd.DataFrame, dict]:
-    """Stream the raw wide CSV with fail-closed per-track parsing.
+    """Stream the raw wide CSV with fail-closed per-row parsing.
+
+    The audit unit is the **raw trajectory row**: every source data row is
+    retained with its row number, even when ``track_id`` values repeat.
+    Duplicate ``track_id`` values across different rows never overwrite each
+    other; all their states are flagged ``identity_ambiguous`` (fail-closed,
+    excluded from reliable statistics by the weighting mask) and the rejection
+    reason is recorded in the audit.  States are never silently merged,
+    renamed, interpolated or dropped.
 
     Returns one row per state (including malformed fields flagged
-    ``parse_ok=False``) and a source-level audit dictionary.  Raw metadata
-    fields (traveled distance, average speed) are attached per track so the
-    state table remains self-contained.
+    ``parse_ok=False``) and a source-level audit dictionary.
     """
 
     source_csv = Path(source_csv)
@@ -82,8 +196,8 @@ def audit_pneuma_source(source_csv: str | Path) -> tuple[pd.DataFrame, dict]:
     import csv as _csv
 
     records: list[dict[str, object]] = []
-    track_meta: dict[str, dict[str, object]] = {}
-    malformed_tracks: list[str] = []
+    row_records: list[dict[str, object]] = []
+    malformed_rows: list[str] = []
     metadata_failures: list[str] = []
     with source_csv.open("r", encoding="utf-8-sig", newline="") as handle:
         reader = _csv.reader(handle, delimiter=";")
@@ -108,16 +222,22 @@ def audit_pneuma_source(source_csv: str | Path) -> tuple[pd.DataFrame, dict]:
             if len(values) < 4 or (len(values) - 4) % 6:
                 parse_ok = False
                 parse_error = "incomplete_state_block"
-            track_meta[track_id] = {
-                "track_id": track_id,
-                "vehicle_type": vehicle_type,
-                "traveled_distance_m": traveled_distance,
-                "average_speed_kmh": average_speed,
-                "source_row_number": row_number,
-                "raw_field_count": len(values),
-            }
-            if not parse_ok and parse_error == "incomplete_state_block":
-                malformed_tracks.append(track_id)
+            state_block_count = max((len(values) - 4) // 6, 0)
+            row_records.append(
+                {
+                    "track_id": track_id,
+                    "vehicle_type": vehicle_type,
+                    "traveled_distance_m": traveled_distance,
+                    "average_speed_kmh": average_speed,
+                    "source_row_number": row_number,
+                    "raw_field_count": len(values),
+                    "state_block_count": state_block_count,
+                    "row_parse_ok": parse_ok,
+                    "row_parse_error": parse_error,
+                }
+            )
+            if parse_error == "incomplete_state_block":
+                malformed_rows.append(track_id)
                 continue
             for state_offset in range(4, len(values), 6):
                 chunk = values[state_offset : state_offset + 6]
@@ -154,66 +274,157 @@ def audit_pneuma_source(source_csv: str | Path) -> tuple[pd.DataFrame, dict]:
                 row["parse_error"] = row_error
                 records.append(row)
     frame = pd.DataFrame.from_records(records)
-    tracks = pd.DataFrame.from_records(list(track_meta.values()))
+    tracks = pd.DataFrame.from_records(row_records)
+
+    # Row-based duplicate / identity audit (no dict key overwriting).
+    id_counts = tracks["track_id"].value_counts()
+    duplicate_track_ids = sorted(str(k) for k, c in id_counts.items() if c > 1)
+    ambiguous_set = set(duplicate_track_ids)
+    identity_conflicts: list[dict[str, object]] = []
+    conflict_ids: set[str] = set()
+    for track_id in duplicate_track_ids:
+        rows = tracks.loc[tracks["track_id"] == track_id]
+        reasons: list[str] = []
+        if rows["vehicle_type"].nunique(dropna=False) > 1:
+            reasons.append("vehicle_type_mismatch")
+        if (
+            rows["traveled_distance_m"].nunique(dropna=False) > 1
+            or rows["average_speed_kmh"].nunique(dropna=False) > 1
+        ):
+            reasons.append("metadata_mismatch")
+        if reasons:
+            conflict_ids.add(track_id)
+            identity_conflicts.append(
+                {
+                    "track_id": track_id,
+                    "source_row_numbers": sorted(int(r) for r in rows["source_row_number"]),
+                    "reasons": reasons,
+                    "rejection_rule": "identity_ambiguous_fail_closed",
+                }
+            )
+    if len(frame):
+        is_ambiguous = frame["vehicle_id"].isin(ambiguous_set)
+        frame["identity_status"] = np.where(
+            is_ambiguous, "ambiguous_duplicate_track_id", "unique"
+        )
+        frame["identity_ambiguous"] = is_ambiguous
+        frame["identity_conflict"] = frame["vehicle_id"].isin(conflict_ids)
+        duplicate_state_keys_count = int(
+            frame.duplicated(subset=["vehicle_id", "time_s"], keep=False).sum()
+        )
+    else:
+        duplicate_state_keys_count = 0
+
     audit = {
-        "schema_version": "aad.stage-0-3.source-audit.v1",
+        "schema_version": "aad.stage-0-3.source-audit.v2",
         "header": header,
-        "raw_track_rows": int(len(track_meta)),
+        "raw_track_rows": int(len(tracks)),
+        "unique_track_ids": int(tracks["track_id"].nunique()),
+        "duplicate_track_ids": duplicate_track_ids,
+        "duplicate_track_rows": int(tracks["track_id"].duplicated(keep=False).sum()),
+        "identity_conflicts": identity_conflicts,
         "parsed_state_records": int(len(frame)),
-        "malformed_tracks": malformed_tracks,
+        "duplicate_state_keys_count": duplicate_state_keys_count,
+        "malformed_tracks": malformed_rows,
         "metadata_failures": metadata_failures,
         "tracks_table": tracks,
+        "audit_unit": "raw trajectory row (source_row_number); duplicate ids never merged or renamed",
     }
     return frame, audit
 
 
-def flag_state_quality(states: pd.DataFrame) -> pd.DataFrame:
-    """Add per-state time-quality flags; rows are never removed or altered."""
+def flag_state_quality(
+    states: pd.DataFrame, *, gap_tolerance_s: float | None = None
+) -> pd.DataFrame:
+    """Add per-state time-quality flags computed in *raw record order*.
 
-    result = states.sort_values(["vehicle_id", "time_s", "raw_index"]).reset_index(drop=True)
-    next_time = result.groupby("vehicle_id", sort=False)["time_s"].shift(-1)
-    same_track = result["vehicle_id"].eq(result["vehicle_id"].shift(-1))
-    signed_dt = next_time - result["time_s"]
-    result["dt_to_next_s"] = signed_dt.where(same_track)
-    prev_time = result.groupby("vehicle_id", sort=False)["time_s"].shift(1)
-    same_prev = result["vehicle_id"].eq(result["vehicle_id"].shift(1))
-    result["time_increment_nonpositive"] = same_prev & (result["time_s"] <= prev_time)
-    result["duplicate_time_in_track"] = result.duplicated(
+    Rows are never removed or altered.  Time continuity (regressions,
+    duplicates, non-positive increments) is evaluated on the original record
+    order (``raw_index``) **before** any time sorting, so a raw sequence like
+    ``0.00 -> 0.08 -> 0.04`` is flagged as a time regression and can never be
+    silently repaired by sorting.  ``dt_to_next_s`` is the raw-order adjacent
+    interval.  The returned frame is sorted for downstream analysis only;
+    ``raw_order_time_anomaly`` / ``duplicate_time_in_track`` states remain
+    excluded from reliable time weighting everywhere in this module.
+    """
+
+    frame = states.copy()
+    if "raw_index" in frame.columns:
+        raw_order = frame.sort_values("raw_index", kind="stable")
+    else:
+        raw_order = frame
+    group = raw_order.groupby("vehicle_id", sort=False)
+    next_time = group["time_s"].shift(-1)
+    prev_time = group["time_s"].shift(1)
+    same_next = raw_order["vehicle_id"].eq(raw_order["vehicle_id"].shift(-1))
+    same_prev = raw_order["vehicle_id"].eq(raw_order["vehicle_id"].shift(1))
+    dt_next = (next_time - raw_order["time_s"]).where(same_next)
+    dt_prev = (raw_order["time_s"] - prev_time).where(same_prev)
+    frame["dt_to_next_s"] = dt_next
+    frame["time_regression_in_raw_order"] = (dt_prev < 0)
+    frame["time_increment_nonpositive"] = (dt_prev <= 0)
+    frame["raw_order_time_anomaly"] = ((dt_prev <= 0) | (dt_next <= 0))
+    frame["duplicate_time_in_track"] = frame.duplicated(
         subset=["vehicle_id", "time_s"], keep=False
     )
-    return result
+    if gap_tolerance_s is None:
+        frame["time_gap_flag"] = False
+    else:
+        frame["time_gap_flag"] = dt_next > float(gap_tolerance_s)
+    sort_columns = ["vehicle_id", "time_s"]
+    if "raw_index" in frame.columns:
+        sort_columns.append("raw_index")
+    return frame.sort_values(sort_columns).reset_index(drop=True)
 
 
 def compute_track_stats(states: pd.DataFrame) -> pd.DataFrame:
-    """Per-track coverage, duration and self-summary statistics."""
+    """Per-row coverage, duration and self-summary statistics.
 
+    The audit unit is the raw trajectory row: when ``source_row_number`` is
+    available the grouping key is ``(vehicle_id, source_row_number)`` so that
+    states of duplicate track ids from different raw rows are never silently
+    merged into one trajectory.  Time increments are evaluated in raw record
+    order, never on a time-sorted copy.
+    """
+
+    frame = states
+    if "raw_index" in frame.columns:
+        frame = frame.sort_values("raw_index", kind="stable")
+    group_keys = ["vehicle_id"]
+    if "source_row_number" in frame.columns:
+        group_keys.append("source_row_number")
     records = []
-    for vehicle_id, group in states.groupby("vehicle_id", sort=False):
-        group = group.sort_values("time_s")
+    for _, group in frame.groupby(group_keys, sort=False):
         times = group["time_s"].to_numpy(float)
         speeds = group["speed_mps"].to_numpy(float)
         accels = group["longitudinal_accel_mps2"].to_numpy(float)
         finite_speed = np.isfinite(speeds)
-        records.append(
-            {
-                "vehicle_id": vehicle_id,
-                "vehicle_type": group["vehicle_type"].iloc[0],
-                "state_records": int(len(group)),
-                "duration_s": float(times.max() - times.min()) if len(times) else 0.0,
-                "time_start_s": float(times.min()),
-                "time_end_s": float(times.max()),
-                "mean_speed_mps_unweighted": float(np.nanmean(speeds)) if finite_speed.any() else float("nan"),
-                "sd_speed_mps_unweighted": float(np.nanstd(speeds)) if finite_speed.sum() > 1 else float("nan"),
-                "mean_accel_mps2_unweighted": float(np.nanmean(accels)) if np.isfinite(accels).any() else float("nan"),
-                "median_speed_mps_unweighted": float(np.nanmedian(speeds)) if finite_speed.any() else float("nan"),
-                "median_accel_mps2_unweighted": float(np.nanmedian(accels)) if np.isfinite(accels).any() else float("nan"),
-                "mean_dt_s": float(np.diff(times).mean()) if len(times) > 1 else float("nan"),
-                "dt_sd_s": float(np.diff(times).std()) if len(times) > 2 else float("nan"),
-                "n_nonpositive_increments": int((np.diff(times) <= 0).sum()) if len(times) > 1 else 0,
-                "traveled_distance_m": float(group["traveled_distance_m"].iloc[0]),
-                "average_speed_kmh": float(group["average_speed_kmh"].iloc[0]),
-            }
-        )
+        increments = np.diff(times) if len(times) > 1 else np.asarray([], dtype=float)
+        record: dict[str, object] = {
+            "vehicle_id": group["vehicle_id"].iloc[0],
+            "vehicle_type": group["vehicle_type"].iloc[0],
+            "state_records": int(len(group)),
+            "duration_s": float(times.max() - times.min()) if len(times) else 0.0,
+            "time_start_s": float(times.min()),
+            "time_end_s": float(times.max()),
+            "mean_speed_mps_unweighted": float(np.nanmean(speeds)) if finite_speed.any() else float("nan"),
+            "sd_speed_mps_unweighted": float(np.nanstd(speeds)) if finite_speed.sum() > 1 else float("nan"),
+            "mean_accel_mps2_unweighted": float(np.nanmean(accels)) if np.isfinite(accels).any() else float("nan"),
+            "median_speed_mps_unweighted": float(np.nanmedian(speeds)) if finite_speed.any() else float("nan"),
+            "median_accel_mps2_unweighted": float(np.nanmedian(accels)) if np.isfinite(accels).any() else float("nan"),
+            "mean_dt_s": float(increments.mean()) if len(increments) else float("nan"),
+            "dt_sd_s": float(increments.std()) if len(increments) > 1 else float("nan"),
+            "n_nonpositive_increments": int((increments <= 0).sum()) if len(increments) else 0,
+            "traveled_distance_m": float(group["traveled_distance_m"].iloc[0]),
+            "average_speed_kmh": float(group["average_speed_kmh"].iloc[0]),
+        }
+        if "source_row_number" in group.columns:
+            record["source_row_number"] = int(group["source_row_number"].iloc[0])
+        if "identity_status" in group.columns:
+            record["identity_status"] = str(group["identity_status"].iloc[0])
+        if "identity_ambiguous" in group.columns:
+            record["identity_ambiguous"] = bool(group["identity_ambiguous"].iloc[0])
+        records.append(record)
     return pd.DataFrame.from_records(records)
 
 
@@ -226,23 +437,28 @@ def integrate_time_weighted(
 ) -> dict:
     """Rectangle (left-rule) time weighting over reliable adjacent intervals.
 
-    A state at time ``t_i`` represents the half-open interval ``[t_i, t_{i+1})``
-    when ``0 < t_{i+1} - t_i <= tolerance_s``.  The final observed state of a
-    track contributes zero duration.  ``nominal_dt_s`` is reported for context
-    only and never used to fill gaps.
+    Intervals are defined by **raw record order** within each trajectory: a
+    state at raw position ``i`` represents ``[t_i, t_{i+1_raw})`` when
+    ``0 < t_{i+1_raw} - t_i <= tolerance_s`` and neither endpoint is flagged
+    by the reliability mask (parse failure, ambiguous identity, raw-order time
+    anomaly, duplicated (track, time) key).  Sorting is used only for the
+    canonical analysis order and can never let an anomalous observation regain
+    a reliable interval.  The final observed state of a track contributes
+    zero duration.  ``nominal_dt_s`` is reported for context only and is never
+    used to fill gaps.
     """
 
-    frame = states.sort_values(["vehicle_id", "time_s", "raw_index"]).reset_index(drop=True)
-    next_time = frame.groupby("vehicle_id", sort=False)["time_s"].shift(-1)
-    same_track = frame["vehicle_id"].eq(frame["vehicle_id"].shift(-1))
-    dt = (next_time - frame["time_s"]).where(same_track)
+    frame = _analysis_frame(states)
+    dt = frame["_dt_raw_next"].to_numpy(float)
+    same_track = frame["vehicle_id"].eq(frame["vehicle_id"].shift(-1)).to_numpy()
     values = frame[value_column].to_numpy(float)
     valid_value = np.isfinite(values)
-    valid_interval = same_track.to_numpy() & (dt.to_numpy(float) > 0) & (
-        dt.to_numpy(float) <= tolerance_s
-    )
+    valid_interval = same_track & (dt > 0) & (dt <= tolerance_s)
+    unreliable = _reliability_excludes(frame)
+    if unreliable is not None:
+        valid_interval &= ~unreliable
     usable = valid_value & valid_interval
-    weights = np.where(usable, dt.to_numpy(float), 0.0)
+    weights = np.where(usable, dt, 0.0)
     total_time = float(weights.sum())
     masked_values = np.where(usable, values, np.nan)
     result = {
@@ -254,13 +470,13 @@ def integrate_time_weighted(
         "states_time_weighted": int(usable.sum()),
         "states_excluded_by_gap": int((valid_value & ~valid_interval).sum()),
         "states_excluded_by_time_gap": int(
-            (valid_value & same_track.to_numpy() & ~valid_interval).sum()
+            (valid_value & same_track & ~valid_interval).sum()
         ),
         "final_states_zero_duration": int(
-            (valid_value & ~same_track.to_numpy()).sum()
+            (valid_value & ~same_track).sum()
         ),
         "exposure_time_s": total_time,
-        "endpoint_rule": "left rectangle [t_i, t_i+1); final state zero duration; no gap fill",
+        "endpoint_rule": "left rectangle over raw record order [t_i, t_i+1_raw); final state zero duration; no gap fill; reliability mask excludes parse/identity/raw-order anomalies",
     }
     if total_time > 0:
         finite = np.isfinite(masked_values)
@@ -422,23 +638,27 @@ def compute_kinematic_consistency(states: pd.DataFrame) -> tuple[pd.DataFrame, d
     """Internal-consistency diagnostics between position, speed and acceleration.
 
     These checks are data diagnostics, not independent physical ground truth.
+    Adjacent pairs are taken in **raw record order** (the provider's own
+    consecutive records), not in time-sorted order.
     """
 
-    frame = states.sort_values(["vehicle_id", "time_s", "raw_index"]).reset_index(drop=True)
-    group = frame.groupby("vehicle_id", sort=False)
-    same_track_next = frame["vehicle_id"].eq(frame["vehicle_id"].shift(-1))
+    raw = states.copy()
+    if "raw_index" in raw.columns:
+        raw = raw.sort_values("raw_index", kind="stable")
+    group = raw.groupby("vehicle_id", sort=False)
+    same_track_next = raw["vehicle_id"].eq(raw["vehicle_id"].shift(-1))
     next_time = group["time_s"].shift(-1)
-    dt = (next_time - frame["time_s"]).where(same_track_next)
+    dt = (next_time - raw["time_s"]).where(same_track_next)
     next_speed = group["speed_mps"].shift(-1)
-    speed_change_accel = ((next_speed - frame["speed_mps"]) / dt).where(
+    speed_change_accel = ((next_speed - raw["speed_mps"]) / dt).where(
         same_track_next & (dt > 0)
     )
-    accel_deviation = (speed_change_accel - frame["longitudinal_accel_mps2"]).abs()
+    accel_deviation = (speed_change_accel - raw["longitudinal_accel_mps2"]).abs()
 
-    lat = np.deg2rad(frame["latitude"].to_numpy(float))
-    lon = np.deg2rad(frame["longitude"].to_numpy(float))
-    next_lat = np.roll(lat, -1)
-    next_lon = np.roll(lon, -1)
+    lat = np.deg2rad(raw["latitude"].to_numpy(float))
+    lon = np.deg2rad(raw["longitude"].to_numpy(float))
+    next_lat = np.deg2rad(group["latitude"].shift(-1).to_numpy(float))
+    next_lon = np.deg2rad(group["longitude"].shift(-1).to_numpy(float))
     dlat = next_lat - lat
     dlon = next_lon - lon
     haversine = 2.0 * EARTH_RADIUS_M * np.arcsin(
@@ -452,21 +672,22 @@ def compute_kinematic_consistency(states: pd.DataFrame) -> tuple[pd.DataFrame, d
         )
     )
     displacement_m = pd.Series(
-        np.where(same_track_next.to_numpy(), haversine, np.nan), index=frame.index
+        np.where(same_track_next.to_numpy(), haversine, np.nan), index=raw.index
     )
     implied_speed = (displacement_m / dt).where(same_track_next & (dt > 0))
-    speed_deviation = (implied_speed - frame["speed_mps"]).abs()
+    speed_deviation = (implied_speed - raw["speed_mps"]).abs()
 
-    frame["accel_deviation_mps2"] = accel_deviation
-    frame["speed_deviation_mps"] = speed_deviation
-    frame["displacement_to_next_m"] = displacement_m
-    frame["implied_speed_mps"] = implied_speed
+    raw["accel_deviation_mps2"] = accel_deviation
+    raw["speed_deviation_mps"] = speed_deviation
+    raw["displacement_to_next_m"] = displacement_m
+    raw["implied_speed_mps"] = implied_speed
 
     valid_accel = np.isfinite(accel_deviation.to_numpy(float))
     valid_speed = np.isfinite(speed_deviation.to_numpy(float))
     summary = {
         "schema_version": "aad.stage-0-3.kinematic-consistency.v1",
         "adjacent_pairs": int(same_track_next.sum()),
+        "adjacent_pair_order": "raw record order",
         "accel_deviation_pairs": int(valid_accel.sum()),
         "accel_deviation_mps2_median": float(np.nanmedian(accel_deviation)) if valid_accel.any() else float("nan"),
         "accel_deviation_mps2_p95": float(np.nanpercentile(accel_deviation, 95)) if valid_accel.any() else float("nan"),
@@ -480,7 +701,7 @@ def compute_kinematic_consistency(states: pd.DataFrame) -> tuple[pd.DataFrame, d
     # Track-level metadata consistency: reported traveled distance vs sum of
     # haversine displacements; reported average speed vs state-mean speed.
     track_records = []
-    for vehicle_id, group_frame in frame.groupby("vehicle_id", sort=False):
+    for vehicle_id, group_frame in raw.groupby("vehicle_id", sort=False):
         group_frame = group_frame.sort_values("time_s")
         displacements = group_frame["displacement_to_next_m"].dropna()
         integrated_distance = float(displacements.sum())
@@ -513,7 +734,10 @@ def compute_kinematic_consistency(states: pd.DataFrame) -> tuple[pd.DataFrame, d
     summary["track_avg_speed_deviation_kmh_p95"] = float(
         track_consistency["average_speed_deviation_kmh"].quantile(0.95)
     )
-    return frame, summary, track_consistency
+    sort_columns = ["vehicle_id", "time_s"]
+    if "raw_index" in raw.columns:
+        sort_columns.append("raw_index")
+    return raw.sort_values(sort_columns).reset_index(drop=True), summary, track_consistency
 
 
 def empirical_cdf_arrays(
@@ -525,19 +749,12 @@ def empirical_cdf_arrays(
 ) -> dict[str, dict[str, np.ndarray]]:
     """Weighted empirical CDF coordinates per group for plotting and export."""
 
-    frame = states.sort_values(["vehicle_id", "time_s", "raw_index"]).reset_index(drop=True)
-    next_time = frame.groupby("vehicle_id", sort=False)["time_s"].shift(-1)
-    same_track = frame["vehicle_id"].eq(frame["vehicle_id"].shift(-1))
-    dt = (next_time - frame["time_s"]).where(same_track)
+    frame = _analysis_frame(states)
     values = frame[value_column].to_numpy(float)
-    usable = (
-        np.isfinite(values)
-        & same_track.to_numpy()
-        & (dt.to_numpy(float) > 0)
-        & (dt.to_numpy(float) <= tolerance_s)
-    )
+    usable = _usable_interval_mask(frame, values, tolerance_s=tolerance_s)
+    dt_values = frame["_dt_raw_next"].to_numpy(float)
     frame = frame.loc[usable].copy()
-    frame["_w"] = dt.to_numpy(float)[usable]
+    frame["_w"] = dt_values[usable]
     result: dict[str, dict[str, np.ndarray]] = {}
     groups = [("ALL", frame)] if group_column is None else list(frame.groupby(group_column, sort=True))
     for label, group_frame in groups:
@@ -686,19 +903,12 @@ def time_weighted_bootstrap(
 ) -> dict:
     """Cluster bootstrap of the time-weighted mean by resampling whole tracks."""
 
-    frame = states.sort_values(["vehicle_id", "time_s", "raw_index"]).reset_index(drop=True)
-    next_time = frame.groupby("vehicle_id", sort=False)["time_s"].shift(-1)
-    same_track = frame["vehicle_id"].eq(frame["vehicle_id"].shift(-1))
-    dt = (next_time - frame["time_s"]).where(same_track)
+    frame = _analysis_frame(states)
     values = frame[value_column].to_numpy(float)
-    usable = (
-        np.isfinite(values)
-        & same_track.to_numpy()
-        & (dt.to_numpy(float) > 0)
-        & (dt.to_numpy(float) <= tolerance_s)
-    )
+    usable = _usable_interval_mask(frame, values, tolerance_s=tolerance_s)
+    dt_values = frame["_dt_raw_next"].to_numpy(float)
     frame = frame.loc[usable].copy()
-    frame["_dt"] = dt.to_numpy(float)[usable]
+    frame["_dt"] = dt_values[usable]
     track_ids = frame["vehicle_id"].unique()
     sums = (frame[value_column] * frame["_dt"]).groupby(frame["vehicle_id"], sort=False).sum()
     exposure = frame["_dt"].groupby(frame["vehicle_id"], sort=False).sum()
@@ -741,19 +951,12 @@ def speed_state_shares(
     safety classifications.
     """
 
-    frame = states.sort_values(["vehicle_id", "time_s", "raw_index"]).reset_index(drop=True)
-    next_time = frame.groupby("vehicle_id", sort=False)["time_s"].shift(-1)
-    same_track = frame["vehicle_id"].eq(frame["vehicle_id"].shift(-1))
-    dt = (next_time - frame["time_s"]).where(same_track)
+    frame = _analysis_frame(states)
     values = frame["speed_mps"].to_numpy(float)
-    usable = (
-        np.isfinite(values)
-        & same_track.to_numpy()
-        & (dt.to_numpy(float) > 0)
-        & (dt.to_numpy(float) <= tolerance_s)
-    )
+    usable = _usable_interval_mask(frame, values, tolerance_s=tolerance_s)
+    dt_values = frame["_dt_raw_next"].to_numpy(float)
     frame = frame.loc[usable].copy()
-    frame["_dt"] = dt.to_numpy(float)[usable]
+    frame["_dt"] = dt_values[usable]
     records = []
     for label, group_frame in [("ALL", frame), *list(frame.groupby("vehicle_type", sort=True))]:
         total = float(group_frame["_dt"].sum())
@@ -782,19 +985,12 @@ def acceleration_state_shares(
 ) -> pd.DataFrame:
     """Time-weighted shares of accelerating / decelerating / near-zero states."""
 
-    frame = states.sort_values(["vehicle_id", "time_s", "raw_index"]).reset_index(drop=True)
-    next_time = frame.groupby("vehicle_id", sort=False)["time_s"].shift(-1)
-    same_track = frame["vehicle_id"].eq(frame["vehicle_id"].shift(-1))
-    dt = (next_time - frame["time_s"]).where(same_track)
+    frame = _analysis_frame(states)
     values = frame["longitudinal_accel_mps2"].to_numpy(float)
-    usable = (
-        np.isfinite(values)
-        & same_track.to_numpy()
-        & (dt.to_numpy(float) > 0)
-        & (dt.to_numpy(float) <= tolerance_s)
-    )
+    usable = _usable_interval_mask(frame, values, tolerance_s=tolerance_s)
+    dt_values = frame["_dt_raw_next"].to_numpy(float)
     frame = frame.loc[usable].copy()
-    frame["_dt"] = dt.to_numpy(float)[usable]
+    frame["_dt"] = dt_values[usable]
     records = []
     for label, group_frame in [("ALL", frame), *list(frame.groupby("vehicle_type", sort=True))]:
         total = float(group_frame["_dt"].sum())
@@ -821,19 +1017,13 @@ def acceleration_by_speed_stratum(
 ) -> pd.DataFrame:
     """Time-weighted conditional acceleration distribution per speed stratum."""
 
-    frame = states.sort_values(["vehicle_id", "time_s", "raw_index"]).reset_index(drop=True)
-    next_time = frame.groupby("vehicle_id", sort=False)["time_s"].shift(-1)
-    same_track = frame["vehicle_id"].eq(frame["vehicle_id"].shift(-1))
-    dt = (next_time - frame["time_s"]).where(same_track)
-    usable = (
-        np.isfinite(frame["speed_mps"].to_numpy(float))
-        & np.isfinite(frame["longitudinal_accel_mps2"].to_numpy(float))
-        & same_track.to_numpy()
-        & (dt.to_numpy(float) > 0)
-        & (dt.to_numpy(float) <= tolerance_s)
-    )
+    frame = _analysis_frame(states)
+    values = frame["speed_mps"].to_numpy(float)
+    usable = _usable_interval_mask(frame, values, tolerance_s=tolerance_s)
+    usable &= np.isfinite(frame["longitudinal_accel_mps2"].to_numpy(float))
+    dt_values = frame["_dt_raw_next"].to_numpy(float)
     frame = frame.loc[usable].copy()
-    frame["_dt"] = dt.to_numpy(float)[usable]
+    frame["_dt"] = dt_values[usable]
     labels = []
     bounds = list(bins_mps)
     for low, high in zip(bounds[:-1], bounds[1:], strict=True):
@@ -857,12 +1047,99 @@ def acceleration_by_speed_stratum(
     return pd.DataFrame.from_records(records)
 
 
+def derive_state_quality_status(states: pd.DataFrame) -> pd.Series:
+    """Per-state quality label derived from the actual audit flags.
+
+    Priority: parse failure > ambiguous identity > raw-order time anomaly >
+    duplicated (track, time) key > reliably parsed observation.  States with an
+    unreliable time interval (gap to the next raw record, or final state with
+    no next record) are still ``raw_parsed`` observations; their reduced
+    statistical weight is expressed by ``time_weighting_eligible`` instead of
+    being conflated with observation quality.
+    """
+
+    status = pd.Series("raw_parsed", index=states.index, dtype="object")
+    conditions: list[pd.Series] = []
+    labels: list[str] = []
+    if "parse_ok" in states.columns:
+        conditions.append(~states["parse_ok"].fillna(False).astype(bool))
+        labels.append("parse_failed")
+    if "identity_ambiguous" in states.columns:
+        conditions.append(states["identity_ambiguous"].fillna(False).astype(bool))
+        labels.append("identity_ambiguous")
+    if "raw_order_time_anomaly" in states.columns:
+        conditions.append(states["raw_order_time_anomaly"].fillna(False).astype(bool))
+        labels.append("raw_time_anomaly")
+    if "duplicate_time_in_track" in states.columns:
+        conditions.append(states["duplicate_time_in_track"].fillna(False).astype(bool))
+        labels.append("duplicate_time")
+    if conditions:
+        status = pd.Series(
+            np.select(
+                [condition.to_numpy() for condition in conditions],
+                labels,
+                default="raw_parsed",
+            ),
+            index=states.index,
+            dtype="object",
+        )
+    return status
+
+
 def build_stage_0_5_reference_states(
     states: pd.DataFrame,
     *,
-    quality_status: str = "raw_parsed",
+    quality_status: str | None = None,
+    gap_tolerance_s: float | None = None,
 ) -> pd.DataFrame:
-    """Standardized pNEUMA state table for the Stage 0.5 reference interface."""
+    """Standardized pNEUMA state table for the Stage 0.5 reference interface.
+
+    ``quality_status`` reflects the *per-state* audit result: when ``None`` it
+    is derived from the parse / identity / raw-order flags on each state; an
+    explicit string is still accepted for backward compatibility but must be
+    understood as an operator assertion, not a measured status.
+    ``time_weighting_eligible`` is taken from the precomputed column when
+    present; otherwise it is derived fail-closed from the same flags plus the
+    raw-order interval (``0 < dt_to_next_s <= gap_tolerance_s``).  Missing,
+    anomalous or non-evaluable states are traceable through these columns and
+    are never silently defaulted to reliable.
+    """
+
+    if quality_status is None:
+        flag_columns = [
+            name
+            for name in ("parse_ok", "identity_ambiguous", "raw_order_time_anomaly", "duplicate_time_in_track")
+            if name in states.columns
+        ]
+        if not flag_columns:
+            raise CalibrationContractError(
+                "build_stage_0_5_reference_states: states carry no parse/identity/"
+                "raw-order quality flags, so per-state quality_status cannot be "
+                "derived; pass audited states or an explicit quality_status"
+            )
+        quality = derive_state_quality_status(states)
+    else:
+        quality = pd.Series(quality_status, index=states.index, dtype="object")
+
+    if "time_weighting_eligible" in states.columns:
+        eligible = states["time_weighting_eligible"].astype(bool)
+    else:
+        if "dt_to_next_s" not in states.columns or gap_tolerance_s is None:
+            raise CalibrationContractError(
+                "build_stage_0_5_reference_states: time_weighting_eligible cannot "
+                "be derived without dt_to_next_s and gap_tolerance_s; refusing to "
+                "default states to reliable"
+            )
+        eligible = (
+            states["dt_to_next_s"].gt(0)
+            & states["dt_to_next_s"].le(float(gap_tolerance_s))
+        )
+        for name in ("parse_ok", "identity_ambiguous", "raw_order_time_anomaly", "duplicate_time_in_track"):
+            if name in states.columns:
+                if name == "parse_ok":
+                    eligible &= states[name].fillna(False).astype(bool)
+                else:
+                    eligible &= ~states[name].fillna(False).astype(bool)
 
     reference = pd.DataFrame(
         {
@@ -876,8 +1153,8 @@ def build_stage_0_5_reference_states(
             "acceleration_mps2": pd.to_numeric(
                 states["longitudinal_accel_mps2"], errors="coerce"
             ),
-            "quality_status": quality_status,
-            "time_weighting_eligible": states.get("time_weighting_eligible", pd.Series(True, index=states.index)).astype(bool),
+            "quality_status": quality.astype("string"),
+            "time_weighting_eligible": eligible.astype(bool),
             "source_file_sha256": states.get("source_file_sha256", pd.Series(pd.NA, index=states.index)),
         }
     )
