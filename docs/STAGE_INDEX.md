@@ -22,6 +22,8 @@
 
 2026-10-16（R2，当前）：AAD-S0.3-T02 边界修复完成。修复排序掩盖原始时间顺序、重复 track_id 字典覆盖与 Stage 0.5 质量字段语义失真三项工程缺陷；时间连续性改为排序前按原始记录顺序评估，时间加权区间由原始顺序邻接定义，轨迹审计以原始行为单位、重复 ID fail-closed，`quality_status` 逐状态推导且 `write_real_reference_package()` 实际使用质量字段。真实统计结果不变（145 项比较：30 项浮点末位、1 项结构性记录差异、无统计变化）；独立复算 discrepancies=0；全量测试 315 passed。报告：`docs/STAGE_0_3_BOUNDARY_REPAIR_R2_2026-10-16.md`；结果：`RES-STAGE-0.3-BOUNDARY-REPAIR-R2`；验收准备包：`code/outputs/formal/calibration/stage_0_3_pneuma_boundary_repair_20261016_r2/`。状态保持 **Gate Pass Candidate（R2）**，待研究者最终裁决。
 
+2026-10-16（R3，当前）：研究者经任务 AAD-0.3.3 批准五项决定，**Stage 0.3 正式关闭**：正式范围限本文件实际观测车辆的描述性城市运动学参考；连续性规则 `0<Δt≤0.043 s` 升格为已批准科学参数（仅本 25 Hz 文件）；极端观测原始保留+标记+敏感性；描述阈值仅统计描述；`Scientific Gate=pass`、`Completed / Closed`。关闭包基于 R2 证据 fail-closed 复核（checksum、计数、统计不变性、独立复算 discrepancies=0），未重跑全量管线。报告：`docs/STAGE_0_3_SCIENTIFIC_ACCEPTANCE_2026-10-16.md`；结果：`RES-STAGE-0.3-SCIENTIFIC-ACCEPTANCE-R3`；包：`code/outputs/formal/calibration/stage_0_3_scientific_acceptance_20261016_r3/`。R1/R2 历史包保留不覆盖；Stage 0.5 的车型映射、时间权重抽样与覆盖阈值独立待决。
+
 ## stage_0_4 — SPMD 通信证据边界
 
 已确认 RV_RX 只支持接收状态连续性；packet级时延、丢包和采用仍不可观测。

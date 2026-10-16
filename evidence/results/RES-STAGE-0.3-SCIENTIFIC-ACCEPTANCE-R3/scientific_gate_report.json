@@ -1,0 +1,68 @@
+{
+  "schema_version": "aad.stage-0-3.scientific-gate-report.v1",
+  "experiment_id": "stage_0_3",
+  "result_id": "RES-STAGE-0.3-SCIENTIFIC-ACCEPTANCE-R3",
+  "status": "pass",
+  "gate_status": "pass",
+  "stage_status": "Completed / Closed",
+  "decision_date": "2026-10-16",
+  "decision_source": "researcher approval via task AAD-0.3.3; archived in AI_CONTEXT/06_DECISIONS.md",
+  "scientific_scope": "single approved pNEUMA file (20181101_d1_0800_0830.csv); observed vehicles only; descriptive urban kinematics calibration (speed, longitudinal acceleration, vehicle-type composition) at the approved 0<dt<=0.043 s continuity semantics",
+  "verified_statistics": {
+    "unique_tracks": 785,
+    "state_records": 1239475,
+    "time_range_s": [
+      38.4,
+      888.0
+    ],
+    "reliable_exposure_s": 49547.6,
+    "time_weighting_eligible_states": 1238690,
+    "speed_mean_mps_time_weighted": 4.838218067205407,
+    "speed_mean_mps_vehicle_equal": 6.207738438311219,
+    "accel_mean_mps2_time_weighted": -0.0044102350063373,
+    "accel_sd_mps2_time_weighted": 0.7453676610491337
+  },
+  "approved_parameters": {
+    "continuity_rule": "0 < dt <= 0.043 s; raw-record-order adjacency; fail-closed; this 25 Hz file only",
+    "extreme_kinematics": "retain, flag, sensitivity-only",
+    "descriptive_thresholds": "descriptive statistics only"
+  },
+  "verification": {
+    "r2_checksums_reverified": true,
+    "independent_verification_discrepancies": 0,
+    "statistics_unchanged_from_r2": true,
+    "r2_reverification_checks": {
+      "r2_checksums": true,
+      "source_sha256_pinned": true,
+      "raw_track_rows": true,
+      "unique_track_ids": true,
+      "unique_tracks": true,
+      "parsed_state_records": true,
+      "time_min_s": true,
+      "time_max_s": true,
+      "raw_order_regressions": true,
+      "duplicate_track_ids": true,
+      "eligible_states": true,
+      "independent_pass": true,
+      "independent_states": true,
+      "exposure_time_s": true,
+      "speed_tw_mean": true,
+      "speed_vw_mean": true,
+      "accel_tw_mean": true,
+      "accel_tw_sd": true
+    }
+  },
+  "scientific_claim_eligible": true,
+  "accident_probability_claim_eligible": false,
+  "aad_causal_claim_eligible": false,
+  "sumo_coverage_claim_eligible": false,
+  "physical_truth_status": "Unverified; declared permanent limitation, not a blocker for this limited descriptive gate",
+  "stage_0_5_independent_items": [
+    "vehicle-type to SUMO vType mapping",
+    "time-weighted sampling / coverage statistics design",
+    "coverage thresholds"
+  ],
+  "protocol_lock_created": false,
+  "stage_I_run": false,
+  "locked_holdout_opened": false
+}

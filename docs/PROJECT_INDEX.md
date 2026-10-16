@@ -41,7 +41,8 @@
 | 任务 2 NGSIM 风险质量与事件规则审计 | `docs/STAGE_0_2_TASK_2_RISK_QUALITY_AUDIT_2026-10-10.md` |
 | 任务 2.1 极端风险值与候选事件真实性复核 | `docs/STAGE_0_2_TASK_2_1_EXTREME_REVIEW_2026-10-10.md` |
 | Stage 0.3 pNEUMA 城市运动学校准与验收准备 | `docs/STAGE_0_3_PNEUMA_KINEMATICS_2026-10-12.md` |
-| Stage 0.3 R2 边界修复与验收准备（当前） | `docs/STAGE_0_3_BOUNDARY_REPAIR_R2_2026-10-16.md` |
+| Stage 0.3 R2 边界修复与验收准备 | `docs/STAGE_0_3_BOUNDARY_REPAIR_R2_2026-10-16.md` |
+| Stage 0.3 最终科学验收与正式关闭（当前） | `docs/STAGE_0_3_SCIENTIFIC_ACCEPTANCE_2026-10-16.md` |
 
 
 ## Stage 0.2 综合收口入口

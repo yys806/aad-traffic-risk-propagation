@@ -1,0 +1,38 @@
+{
+  "schema_version": "aad.stage-0-3.acceptance-decisions.v1",
+  "task_id": "AAD-0.3.3",
+  "decision_date": "2026-10-16",
+  "decided_by": "researcher",
+  "decisions": [
+    {
+      "id": "D1-formal-scope",
+      "decision": "formal scope limited to the observed vehicles of the single approved file",
+      "basis": "R2 audit: 785 unique tracks, 1,239,475 states, timestamps [38.40, 888.00] s, reliable exposure 49,547.6 vehicle-seconds; raw-order/identity/quality audits pass"
+    },
+    {
+      "id": "D2-continuity-rule",
+      "decision": "0 < dt <= 0.043 s approved as the scientific continuity parameter for this 25 Hz file",
+      "basis": "R2 raw-record-order continuity audit (0 regressions, 0 gaps, 0 duplicates) and sealed 8-tolerance sensitivity history; engineering anchor upgraded to approved parameter"
+    },
+    {
+      "id": "D3-extreme-kinematics",
+      "decision": "extreme kinematic observations are retained, flagged and sensitivity-checked, never auto-deleted",
+      "basis": "R2 extreme sensitivity retained; physical truth remains Unverified; |a|>2 / |a|>5 m/s^2 stay exploratory diagnostic thresholds"
+    },
+    {
+      "id": "D4-descriptive-thresholds",
+      "decision": "low-speed / near-stop / near-zero-acceleration thresholds remain descriptive statistics only",
+      "basis": "not approved as formal risk classification or quality-exclusion criteria"
+    },
+    {
+      "id": "D5-scientific-gate",
+      "decision": "Scientific Gate = pass; Stage Status = Completed / Closed",
+      "basis": "limited to descriptive urban kinematic calibration of the single approved file; excludes independent physical truth, accident prediction, AAD causal effects and SUMO reality-coverage"
+    }
+  ],
+  "stage_0_5_independent_items": [
+    "vehicle-type to SUMO vType mapping",
+    "time-weighted sampling / coverage statistics design",
+    "coverage thresholds"
+  ]
+}

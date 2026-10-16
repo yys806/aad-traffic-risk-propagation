@@ -71,3 +71,7 @@ Added isolated formal measurement interface/config, P2 event revalidation, contr
 ## 2026-10-16 Stage 0.3 R2 边界修复
 
 AAD-S0.3-T02：`pneuma_urban_kinematics.py` 时间连续性改为排序前按原始记录顺序评估，时间加权区间由原始顺序邻接定义并受统一可靠性掩码约束；`audit_pneuma_source()` 改为行级审计、重复 track_id fail-closed；`build_stage_0_5_reference_states()` 逐状态推导 `quality_status`/`time_weighting_eligible`，`write_real_reference_package()` 实际使用质量字段；新增 9 个构造回归测试，独立复算扩展身份/原始顺序/暴露语义。真实统计不变（145 项比较仅 30 项浮点末位 + 1 项结构性记录），discrepancies=0，全量 315 passed。结果 `RES-STAGE-0.3-BOUNDARY-REPAIR-R2`，包 `stage_0_3_pneuma_boundary_repair_20261016_r2/`；Gate Pass Candidate 待研究者，无 Protocol Lock/Stage I/holdout。
+
+## 2026-10-16 Stage 0.3 正式关闭与 Zotero 整理
+
+AAD-0.3.3：五项研究者决定归档（06_DECISIONS）；`finalize_stage_0_3_scientific_acceptance.py` 生成 R3 关闭包并fail-closed 复核 R2 证据（17 项全过，统计不变）；Stage 0.3 置 `completed_closed`、Gate `pass`（有限范围）。Zotero 唯一文献库只读审计：56 条元数据完整、无未分类/库内重复；发现 05 过载混杂、NC 期刊维度集合不一致、7 对 AAD↔DRIFT 跨项目重复条目；分类调整对照表与维护规范已写入 `doc/literature-notes/`，实际修改待研究者批准。注册表、索引、AI_CONTEXT 同步。

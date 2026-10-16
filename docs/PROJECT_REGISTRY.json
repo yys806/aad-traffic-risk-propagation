@@ -64,22 +64,24 @@
     "code/src/riskprop/pneuma_urban_kinematics.py",
     "code/scripts/run_stage_0_3_pneuma_kinematics.py",
     "code/scripts/verify_stage_0_3_independent.py",
-    "docs/STAGE_0_3_BOUNDARY_REPAIR_R2_2026-10-16.md"
+    "docs/STAGE_0_3_BOUNDARY_REPAIR_R2_2026-10-16.md",
+    "docs/STAGE_0_3_SCIENTIFIC_ACCEPTANCE_2026-10-16.md",
+    "code/scripts/finalize_stage_0_3_scientific_acceptance.py"
   ],
   "current": {
-    "active_experiment_id": "stage_0_3",
-    "active_task": "Stage 0.3 R2 boundary-repair acceptance package (RES-STAGE-0.3-BOUNDARY-REPAIR-R2) pending researcher review; statistics unchanged, boundary defects closed.",
-    "why_now": "真实数据先确定可测字段、证据边界和现实范围；阶段 0.2 已关闭，阶段 0.3 R2 边界修复完成待科学验收，阶段 0.4/0.5/0.6 未闭合前不得进入阶段 1.1。",
+    "active_experiment_id": "stage_0_5",
+    "active_task": "Stage 0.5 awaiting SUMO calibration samples; vType mapping, time-weighted sampling and coverage thresholds remain independent researcher decisions; Stage 0.4 limited-evidence boundary freeze pending.",
+    "why_now": "阶段 0.2 与 0.3 已在有限范围内关闭；阶段 0.5 缺 SUMO 校准样本且三项设计待决，阶段 0.4 边界待冻结，阶段 0.6 科学参数未冻结；全部完成前不得进入阶段 1.1。",
     "next_decision_owner": null,
     "portable_gate_paths": [
       "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",
       "evidence/results/RES-PROTOCOL-READINESS-V1/protocol_lock_readiness_v1.json",
-      "evidence/results/RES-STAGE-0.3-BOUNDARY-REPAIR-R2/audit.json"
+      "evidence/results/RES-STAGE-0.3-BOUNDARY-REPAIR-R2/audit.json",
+      "evidence/results/RES-STAGE-0.3-SCIENTIFIC-ACCEPTANCE-R3/scientific_gate_report.json"
     ],
     "local_gate_paths": [
       "code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r4/scientific_gate_report.json",
-      "code/outputs/formal/calibration/protocol_lock_readiness_v1.json",
-      "code/outputs/formal/calibration/stage_0_3_pneuma_boundary_repair_20261016_r2/audit.json"
+      "code/outputs/formal/calibration/stage_0_3_scientific_acceptance_20261016_r3/scientific_gate_report.json"
     ]
   },
   "experiments": [
@@ -209,7 +211,7 @@
       "purpose": "提取复杂城市交通与混合车型的速度、纵向加速度和车型分布。",
       "research_question": "pNEUMA 能否补充城市交通运动学的现实参考范围？",
       "date": "2026-10-12",
-      "status": "acceptance_package_pending_researcher_review",
+      "status": "completed_closed",
       "code_version": "pneuma_urban_kinematics R2：行级轨迹审计（重复 ID fail-closed）、原始记录顺序时间审计（排序前评估，时间加权区间由原始顺序邻接定义，统一可靠性掩码）、逐状态质量推导与 Stage 0.5 接口质量传递；退役职责（地图匹配/前车/TTC/人工 QA）未恢复。",
       "code_paths": [
         "code/src/riskprop/pneuma_urban_kinematics.py",
@@ -227,7 +229,7 @@
       "parameters": {
         "role": "urban_kinematics_only",
         "anchor_tolerance_s": 0.043,
-        "tolerance_frozen": false,
+        "tolerance_frozen": true,
         "bootstrap_replicates": 2000,
         "bootstrap_seed": 20261012,
         "sampling_seed": 20260907
@@ -237,17 +239,19 @@
       "model_checkpoint": "not_applicable",
       "result_ids": [
         "RES-STAGE-0.3-PNEUMA-KINEMATICS-R1",
-        "RES-STAGE-0.3-BOUNDARY-REPAIR-R2"
+        "RES-STAGE-0.3-BOUNDARY-REPAIR-R2",
+        "RES-STAGE-0.3-SCIENTIFIC-ACCEPTANCE-R3"
       ],
       "core_metrics": [
         "speed_mps",
         "longitudinal_acceleration_mps2",
         "vehicle_type"
       ],
-      "current_conclusion": "R2（AAD-S0.3-T02）修复原始时间顺序被排序掩盖、重复 track_id 字典覆盖与 Stage 0.5 质量字段语义失真；785 行/785 唯一 ID/1,239,475 状态统计结果不变（速度 TW mean=4.8382、VW mean=6.2077、加速度 TW mean=-0.0044），R1/R2 145 项比较仅 30 项浮点末位与 1 项结构性记录差异；独立复算 discrepancies=0；全量测试 315 passed。Gate Pass Candidate（R2）待研究者，科学 Gate 与未冻结参数待裁决。",
+      "current_conclusion": "R3（AAD-0.3.3）正式关闭：研究者批准单文件适用范围、0<Δt≤0.043 s 正式连续性参数（仅本 25 Hz 文件）、极端观测保留+敏感性、描述阈值仅描述与 Gate=pass。关闭包 fail-closed 复核 R2 证据全过，统计不变（速度 TW 4.838218、VW 6.207738、加速度 -0.004410 m/s²），独立复算 discrepancies=0。禁止外推到连续观测、城市总体、其他文件/采样率、事故概率、AAD 因果或 SUMO 覆盖；物理真实性 Unverified。",
       "gate": {
-        "status": "gate_pass_candidate_pending_researcher_review",
-        "portable_path": "evidence/results/RES-STAGE-0.3-BOUNDARY-REPAIR-R2/audit.json"
+        "status": "pass",
+        "portable_path": "evidence/results/RES-STAGE-0.3-SCIENTIFIC-ACCEPTANCE-R3/scientific_gate_report.json",
+        "scope": "single_file_pneuma_descriptive_urban_kinematics_25hz"
       },
       "scientific_claim_eligible": false
     },
@@ -1164,6 +1168,46 @@
         "docs/STAGE_0_3_BOUNDARY_REPAIR_R2_2026-10-16.md"
       ],
       "scientific_claim_eligible": false
+    },
+    {
+      "id": "RES-STAGE-0.3-SCIENTIFIC-ACCEPTANCE-R3",
+      "experiment_id": "stage_0_3",
+      "name": "Stage 0.3 最终科学验收与正式关闭",
+      "status": "verified_limited_scope_closed",
+      "portable_evidence_paths": [
+        "evidence/results/RES-STAGE-0.3-SCIENTIFIC-ACCEPTANCE-R3/scientific_gate_report.json",
+        "evidence/results/RES-STAGE-0.3-SCIENTIFIC-ACCEPTANCE-R3/decisions.json",
+        "evidence/results/RES-STAGE-0.3-SCIENTIFIC-ACCEPTANCE-R3/config.json",
+        "evidence/results/RES-STAGE-0.3-SCIENTIFIC-ACCEPTANCE-R3/scientific_gate_matrix.json",
+        "evidence/results/RES-STAGE-0.3-SCIENTIFIC-ACCEPTANCE-R3/report.md",
+        "evidence/results/RES-STAGE-0.3-SCIENTIFIC-ACCEPTANCE-R3/scope_and_claims.md",
+        "evidence/results/RES-STAGE-0.3-SCIENTIFIC-ACCEPTANCE-R3/provenance.json",
+        "evidence/results/RES-STAGE-0.3-SCIENTIFIC-ACCEPTANCE-R3/manifest.json",
+        "evidence/results/RES-STAGE-0.3-SCIENTIFIC-ACCEPTANCE-R3/SHA256SUMS"
+      ],
+      "local_artifact_paths": [
+        "code/outputs/formal/calibration/stage_0_3_scientific_acceptance_20261016_r3"
+      ],
+      "code_version_source": "code/scripts/finalize_stage_0_3_scientific_acceptance.py (package provenance SHA-256)",
+      "configuration_source": "code/outputs/formal/calibration/stage_0_3_scientific_acceptance_20261016_r3/config.json",
+      "data_version_source": "dataset/pNEUMA/20181101_d1_0800_0830.csv SHA-256 F9CDE0A3CA5010E2217EA4CBC0BDF26ED87BE1EC0D8C2BE5E2CB93AAC82BA28C",
+      "core_metrics": {
+        "unique_tracks": 785,
+        "state_records": 1239475,
+        "reliable_exposure_s": 49547.6,
+        "speed_mean_mps_time_weighted": 4.838218,
+        "speed_mean_mps_vehicle_equal": 6.207738,
+        "accel_mean_mps2_time_weighted": -0.00441,
+        "approved_continuity_rule_s": "0 < dt <= 0.043",
+        "r2_reverification_checks_passed": 17,
+        "independent_verification_discrepancies": 0
+      },
+      "current_conclusion": "Stage 0.3 passed and closed for descriptive urban kinematic calibration of the single approved pNEUMA file at the approved 0<dt<=0.043 s semantics; no extrapolation beyond the file's observed vehicles; physical truth remains Unverified.",
+      "gate_status": "pass",
+      "paper_locations": [
+        "docs/STAGE_0_3_SCIENTIFIC_ACCEPTANCE_2026-10-16.md"
+      ],
+      "scientific_claim_eligible": true
     }
   ],
   "history": [

@@ -119,6 +119,10 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
             "stage_0_3_pneuma_boundary_repair_20261016_r2",
             ("audit.json", "config.json", "provenance.json", "manifest.json", "SHA256SUMS", "gate_matrix_summary.json"),
         ),
+        "RES-STAGE-0.3-SCIENTIFIC-ACCEPTANCE-R3": (
+            "stage_0_3_scientific_acceptance_20261016_r3",
+            ("audit.json", "config.json", "decisions.json", "scientific_gate_report.json", "scientific_gate_matrix.json", "report.md", "scope_and_claims.md", "provenance.json", "manifest.json", "SHA256SUMS"),
+        ),
     }
     pairs["RES-STAGE-0.3-PNEUMA-KINEMATICS-R1"].append(
         (

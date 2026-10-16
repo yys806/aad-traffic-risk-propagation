@@ -10,7 +10,7 @@ Evidence：`evidence/results/RES-STAGE-0.2-NGSIM-V2/audit.json`、`code/src/risk
 
 ### KI-02 — 阶段 0.3 正式产物已生成，科学参数未冻结
 
-2026-10-12 验收准备包（`RES-STAGE-0.3-PNEUMA-KINEMATICS-R1`）与 2026-10-16 R2 边界修复包（`RES-STAGE-0.3-BOUNDARY-REPAIR-R2`，消除排序掩盖原始时间顺序、重复 ID 覆盖与质量语义失真，统计不变）均已完成并通过独立复算，但连续性容差、描述性阈值、车型映射、适用范围与科学 Gate 仍待研究者裁决；裁决前阶段 0.3 不写入 `Completed / Closed`。
+**已解决（2026-10-16）**：研究者经任务 AAD-0.3.3 批准适用范围、连续性参数（0<Δt≤0.043 s）、极端观测处理、描述阈值与 Gate=pass，阶段 0.3 已关闭（`RES-STAGE-0.3-SCIENTIFIC-ACCEPTANCE-R3`）。遗留但归属清晰：独立物理真实性永久 `Unverified`；车型→SUMO vType 映射、时间权重抽样与覆盖阈值属 Stage 0.5 独立待决。
 
 ### KI-03 — packet 级通信证据不可用
 
