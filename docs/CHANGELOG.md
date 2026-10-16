@@ -60,3 +60,7 @@
 ## 2026-10-16 Stage 0.3 正式关闭（R3）与 Zotero 文献管理整理
 
 任务 AAD-0.3.3。研究者批准五项决定（单文件适用范围、0<Δt≤0.043 s 正式连续性参数、极端观测保留+敏感性、描述阈值仅描述、Gate=pass）并归档于 `AI_CONTEXT/06_DECISIONS.md`。新增 `finalize_stage_0_3_scientific_acceptance.py` 生成不可覆盖 R3 关闭包 （`RES-STAGE-0.3-SCIENTIFIC-ACCEPTANCE-R3`）：对 R2 证据 fail-closed 复核（checksum/计数/统计不变性/独立复算 17 项全过），统计与 R2 完全一致，验收矩阵 11 项 Verified。注册表、索引、AI_CONTEXT 同步，Stage 0.3 置为 `completed_closed`。Zotero（唯一文献库）完成只读审计：56 条元数据完整、无未分类与库内重复，发现 05 子集合过载混杂、NC 期刊维度集合不一致与 7 对 AAD↔DRIFT 跨项目重复条目；提出分类调整对照表与维护规范，实际修改因接口只读全部留待研究者批准。无 Protocol Lock/Stage I/holdout 访问。
+
+## 2026-10-17 — AAD-0.3.4：Zotero 分类正式整理与 Stage 0.3 状态一致性修复
+
+任务 AAD-0.3.4。**Zotero**：经研究者批准与官方本机 API 授权（Zotero 10 `/api/local/authorize` 对话框确认）执行六主题调整——05 原位更名、新建 06、21 条文献按对照表移动、5 篇 NC 论文补标签、空 `NC_统一汇总` 删除；执行后核验 7/11/7/4/11/16、56 item key 与附件无丢失、11/11 NC 标签、7 对 AAD↔DRIFT 重复条目与 DRIFT 侧原样保留；逐条 before/after 见 `doc/literature-notes/zotero_reorg_2026-10-17_execution.json`。59↔56 PDF 差额 `Unverified`。**Stage 0.3 一致性**：注册表 experiment `scientific_claim_eligible` 对齐 R3（true，仅限单文件有限描述性校准范围，与 Stage 0.2 关闭先例一致）；`configuration` 文本改为 0.043 s 已批准（仅本 25 Hz 文件）；R3 复核计数勘误 17→18（封存包机器记录自始为 18，包未改动）。无 Protocol Lock/Stage I/holdout 访问；不重开 Stage 0.3 Gate。

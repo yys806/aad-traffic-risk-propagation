@@ -75,3 +75,7 @@ AAD-S0.3-T02：`pneuma_urban_kinematics.py` 时间连续性改为排序前按原
 ## 2026-10-16 Stage 0.3 正式关闭与 Zotero 整理
 
 AAD-0.3.3：五项研究者决定归档（06_DECISIONS）；`finalize_stage_0_3_scientific_acceptance.py` 生成 R3 关闭包并fail-closed 复核 R2 证据（17 项全过，统计不变）；Stage 0.3 置 `completed_closed`、Gate `pass`（有限范围）。Zotero 唯一文献库只读审计：56 条元数据完整、无未分类/库内重复；发现 05 过载混杂、NC 期刊维度集合不一致、7 对 AAD↔DRIFT 跨项目重复条目；分类调整对照表与维护规范已写入 `doc/literature-notes/`，实际修改待研究者批准。注册表、索引、AI_CONTEXT 同步。
+
+## 2026-10-17 — AAD-0.3.4：Zotero 分类整理与 Stage 0.3 状态修复
+
+Zotero 六主题调整经批准并官方授权执行（更名 05、新建 06、移动 21 条、NC 标签补 5、空 NC 集合删除）；计数 7/11/7/4/11/16 核验通过，56 item key/附件完整，DRIFT 与 7 对重复条目未动；执行清单 `doc/literature-notes/zotero_reorg_2026-10-17_execution.json`。Stage 0.3 一致性：注册表 scientific_claim_eligible 对齐 R3（true，范围限单文件描述性校准）、0.043 s 文本改已批准、R3 复核计数勘误 17→18（封存包未动）。Zotero 决定归档 06_DECISIONS。

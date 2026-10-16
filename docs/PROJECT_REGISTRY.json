@@ -66,7 +66,8 @@
     "code/scripts/verify_stage_0_3_independent.py",
     "docs/STAGE_0_3_BOUNDARY_REPAIR_R2_2026-10-16.md",
     "docs/STAGE_0_3_SCIENTIFIC_ACCEPTANCE_2026-10-16.md",
-    "code/scripts/finalize_stage_0_3_scientific_acceptance.py"
+    "code/scripts/finalize_stage_0_3_scientific_acceptance.py",
+    "doc/literature-notes/zotero_reorg_2026-10-17_execution.json"
   ],
   "current": {
     "active_experiment_id": "stage_0_5",
@@ -225,7 +226,7 @@
         "code/tests/test_pneuma_urban_kinematics.py",
         "code/tests/test_real_trajectory.py"
       ],
-      "configuration": "时间加权主统计（原始顺序左矩形区间，末帧零时长，不跨缺口插值）；车辆等权稳健；锚定容差 0.043 s（未冻结）；bootstrap 2000 次 seed=20261012；quality_status 逐状态推导；time_weighting_eligible=解析质量∧轨迹身份∧原始顺序∧可靠区间。",
+      "configuration": "时间加权主统计（原始顺序左矩形区间，末帧零时长，不跨缺口插值）；车辆等权稳健；连续性 0.043 s 已由研究者批准（2026-10-16，AAD-0.3.3），仅适用当前 pNEUMA 25 Hz 文件；历史工程锚定来源与 8 容差敏感性记录保留；bootstrap 2000 次 seed=20261012；quality_status 逐状态推导；time_weighting_eligible=解析质量∧轨迹身份∧原始顺序∧可靠区间。",
       "parameters": {
         "role": "urban_kinematics_only",
         "anchor_tolerance_s": 0.043,
@@ -247,13 +248,13 @@
         "longitudinal_acceleration_mps2",
         "vehicle_type"
       ],
-      "current_conclusion": "R3（AAD-0.3.3）正式关闭：研究者批准单文件适用范围、0<Δt≤0.043 s 正式连续性参数（仅本 25 Hz 文件）、极端观测保留+敏感性、描述阈值仅描述与 Gate=pass。关闭包 fail-closed 复核 R2 证据全过，统计不变（速度 TW 4.838218、VW 6.207738、加速度 -0.004410 m/s²），独立复算 discrepancies=0。禁止外推到连续观测、城市总体、其他文件/采样率、事故概率、AAD 因果或 SUMO 覆盖；物理真实性 Unverified。",
+      "current_conclusion": "R3（AAD-0.3.3）正式关闭：研究者批准单文件适用范围、0<Δt≤0.043 s 正式连续性参数（仅本 25 Hz 文件）、极端观测保留+敏感性、描述阈值仅描述与 Gate=pass。关闭包 fail-closed 复核 R2 证据全过，统计不变（速度 TW 4.838218、VW 6.207738、加速度 -0.004410 m/s²），独立复算 discrepancies=0。scientific_claim_eligible=true 仅指上述单文件、有限描述性城市运动学校准范围内的结论资格（与 R3 包 scientific_gate_report.json 一致）；不支持事故概率、AAD 核心因果效应、SUMO 覆盖或来源外推，物理真实性 Unverified。",
       "gate": {
         "status": "pass",
         "portable_path": "evidence/results/RES-STAGE-0.3-SCIENTIFIC-ACCEPTANCE-R3/scientific_gate_report.json",
         "scope": "single_file_pneuma_descriptive_urban_kinematics_25hz"
       },
-      "scientific_claim_eligible": false
+      "scientific_claim_eligible": true
     },
     {
       "id": "stage_0_4",
@@ -1199,7 +1200,7 @@
         "speed_mean_mps_vehicle_equal": 6.207738,
         "accel_mean_mps2_time_weighted": -0.00441,
         "approved_continuity_rule_s": "0 < dt <= 0.043",
-        "r2_reverification_checks_passed": 17,
+        "r2_reverification_checks_passed": 18,
         "independent_verification_discrepancies": 0
       },
       "current_conclusion": "Stage 0.3 passed and closed for descriptive urban kinematic calibration of the single approved pNEUMA file at the approved 0<dt<=0.043 s semantics; no extrapolation beyond the file's observed vehicles; physical truth remains Unverified.",

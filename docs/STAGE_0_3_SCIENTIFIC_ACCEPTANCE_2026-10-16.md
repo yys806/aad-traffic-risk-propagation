@@ -29,7 +29,8 @@
 - 计数/范围/资格：785/785/785、1,239,475、[38.40, 888.00] s、eligible 1,238,690。
 - 统计不变性：速度 TW mean、VW mean、加速度 TW mean/sd 与 R2 逐值一致（<1e-9）。
 - 独立复算 JSON `pass=true, discrepancies=0`。
-- 详细检查项清单见包内 `scientific_gate_report.json → verification.r2_reverification_checks`（17 项全部 true）。
+- 详细检查项清单见包内 `scientific_gate_report.json → verification.r2_reverification_checks`（18 项全部 true）。
+  - **勘误（2026-10-17，AAD-0.3.4）**：本报告初稿及部分索引曾误记为“17 项”；封存 R3 包的机器可读记录自始为 18 项且全部通过，以包内 `scientific_gate_report.json` 为准。封存包未改动（checksum 不变）。
 
 ## 3. 验收矩阵
 
