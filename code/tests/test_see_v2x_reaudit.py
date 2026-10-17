@@ -13,7 +13,7 @@ from pathlib import Path
 import pytest
 
 REPO = Path(__file__).resolve().parents[1].parent
-RESULTS = REPO / "code/outputs/formal/calibration/stage_0_4_see_v2x_reaudit_v1/reaudit_results.json"
+RESULTS = REPO / "code/tmp/reaudit_results.json"  # committed in git (verified present); sealed package keeps a copy under code/outputs
 RAW_ROOT = REPO / "dataset/.tmp_downloads/parkinglot_extracted/outdoor_parkinglot/1_tx"
 
 

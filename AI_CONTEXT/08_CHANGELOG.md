@@ -111,3 +111,11 @@ SEE-V2X 可用且首选（单设备日志内配对时延，不依赖跨设备钟
 ## 2026-10-17 — AAD-0.4.6.2：SEE-V2X 科学修正
 
 PDR 接收机会 Unverified（启停 vs 丢包不可分，完整运行 PDR 仅描述性）；跨运行时延差异=真实 PHY/MAC 序列化（包大小），非时钟偏移；Git 可复已修复（方法/结果+6 测试）。下一批 4.89 GiB 建议。Gate 不变。报告 `docs/STAGE_0_4_TASK_0_4_6_2_SCIENTIFIC_CORRECTION.md`。
+
+## 2026-10-17 — AAD-0.4.7：SEE-V2X BSM 验证
+
+下载 emulating_applications（4.89 GiB，提取 BSM+GNSS）：BSM 关联 Verified（12 对 × 4 场景）、PDR 接收机会 GNSS 证实、GNSS 对齐 Verified（距离 0–50 m 不足）、时延数值 Verified（亚毫秒时钟 Unverified）。Git 复现测试修复。受控 PC5 候选参数（非正式校准）。Gate 不变。结果 `RES-STAGE-0.4-SEE-V2X-BSM-V1`。
+
+## 2026-10-17 — AAD-0.4.7.1：SEE-V2X BSM 复核
+
+配对率（1.0）vs 接收比例（0.22–1.0）分开；GNSS≠接收机在线（室内无 GNSS、RSU 静态）→ 链路 PDR/接收机会 Unverified；时钟纪元 ×1000 歧义 → 绝对时延 Unverified；距离仅室外 ~0–10 m。GitHub 交付补齐。Gate 不变。报告 `docs/STAGE_0_4_TASK_0_4_7_1_SCIENTIFIC_REAUDIT.md`。

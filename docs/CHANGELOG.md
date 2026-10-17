@@ -96,3 +96,11 @@
 ## 2026-10-17 — AAD-0.4.6.2：SEE-V2X 科学修正与复现修复
 
 基于 0.4.6/0.4.6.1 修正：①PDR 接收机会 Unverified（parameters.csv 证 10 运行配置互异、接收端时长系统性短于发送端，Run 2 边界 [0,150] 高度符合启停而非丢包）→完整运行 PDR 仅作描述性指标；②跨运行时延差异由真实 PHY/MAC 序列化（包大小×优先级，50 Hz）解释，非时钟偏移（0.4.6.1 过强表述已纠正）；③Git 可复已修复（`code/tmp/reaudit_*` 入 Git、6 独立测试通过、封存 manifest 补充）。下一批 4.89 GiB 建议（GNSS 时钟参照+距离×时延/PDR；时钟可能仍不可解）。零下载零邮件，Gate 不变。报告：`docs/STAGE_0_4_TASK_0_4_6_2_SCIENTIFIC_CORRECTION.md`；新增 `code/tests/test_see_v2x_reaudit.py`。
+
+## 2026-10-17 — AAD-0.4.7：SEE-V2X BSM 应用场景获取与验证
+
+获取 `emulating_applications.tar.gz`（4.89 GiB，SHA-256 钉扎），提取 BSM+GNSS。BSM 消息关联 Verified（12 对 × 4 场景，配对率 0.22–1.0）；PDR 接收机会经 GNSS 证实（100% 时间戳覆盖）；GNSS 时间对齐 Verified 但距离动态范围不足（0–50 m）；时延数值 Verified、亚毫秒时钟仍 Unverified。前置修复 Git 复现测试路径（纯克隆 5 算术测试通过）。正式参数仍冻结。结果 `RES-STAGE-0.4-SEE-V2X-BSM-V1`；报告 `docs/STAGE_0_4_TASK_0_4_7_SEE_V2X_BSM_VALIDATION.md`；新增 `code/tests/test_see_v2x_reaudit.py` 路径修复。
+
+## 2026-10-17 — AAD-0.4.7.1：SEE-V2X BSM 科学复核与交付修复
+
+修正 0.4.7：①配对率（1.0）与接收比例（0.22–1.0）概念混淆已分开（48 对）；②GNSS≠接收机在线（室内无 GNSS、RSU 静态）→ 真实链路 PDR 与接收机会 Unverified；③tx_timestamp 与 GNSS 差 ×1000 → 时钟纪元歧义、绝对时延 Unverified；④距离仅室外 ~0–10 m。GitHub 交付修复：补齐报告/注册表/AI_CONTEXT、test 路径修复（纯克隆 5 算术测试通过）、新结果 `RES-STAGE-0.4-SEE-V2X-BSM-REAUDIT-V1`。Gate 不变。报告：`docs/STAGE_0_4_TASK_0_4_7_1_SCIENTIFIC_REAUDIT.md`。
