@@ -124,6 +124,28 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
             ("audit.json", "config.json", "decisions.json", "scientific_gate_report.json", "scientific_gate_matrix.json", "report.md", "scope_and_claims.md", "provenance.json", "manifest.json", "SHA256SUMS"),
         ),
     }
+    pairs["RES-STAGE-0.4-SEE-V2X-MINIMAL-V1"] = [
+        (
+            "code/outputs/formal/calibration/stage_0_4_see_v2x_minimal_v1/audit.json",
+            "audit.json",
+        ),
+        (
+            "code/outputs/formal/calibration/stage_0_4_see_v2x_minimal_v1/config.json",
+            "config.json",
+        ),
+        (
+            "code/outputs/formal/calibration/stage_0_4_see_v2x_minimal_v1/provenance.json",
+            "provenance.json",
+        ),
+        (
+            "code/outputs/formal/calibration/stage_0_4_see_v2x_minimal_v1/manifest.json",
+            "manifest.json",
+        ),
+        (
+            "code/outputs/formal/calibration/stage_0_4_see_v2x_minimal_v1/SHA256SUMS",
+            "SHA256SUMS",
+        ),
+    ]
     pairs["RES-STAGE-0.4-RSE-BSM-V1"] = [
         (
             "code/outputs/formal/calibration/stage_0_4_rse_bsm_v1/audit.json",

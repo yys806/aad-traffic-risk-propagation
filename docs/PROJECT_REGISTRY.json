@@ -73,7 +73,8 @@
     "docs/STAGE_0_4_TASK_0_4_2_RSE_BSM_AUDIT.md",
     "docs/STAGE_0_4_TASK_0_4_3_IDENTITY_TIME_REVIEW.md",
     "docs/STAGE_0_4_TASK_0_4_4_COMMUNICATION_EVIDENCE_SEARCH.md",
-    "docs/STAGE_0_4_TASK_0_4_5_DATA_ACCESS_VALIDATION.md"
+    "docs/STAGE_0_4_TASK_0_4_5_DATA_ACCESS_VALIDATION.md",
+    "docs/STAGE_0_4_TASK_0_4_6_SEE_V2X_MINIMAL_VALIDATION.md"
   ],
   "current": {
     "active_experiment_id": "stage_0_5",
@@ -289,7 +290,8 @@
       "model_checkpoint": "not_applicable",
       "result_ids": [
         "RES-STAGE-0.4-COMM-OBS-V3",
-        "RES-STAGE-0.4-RSE-BSM-V1"
+        "RES-STAGE-0.4-RSE-BSM-V1",
+        "RES-STAGE-0.4-SEE-V2X-MINIMAL-V1"
       ],
       "core_metrics": [
         "packet_schema_available",
@@ -297,7 +299,7 @@
         "loss_observable",
         "adoption_observable"
       ],
-      "current_conclusion": "RV_RX：接收状态连续性（V3）。RSE_BSM（V1）：RxDevice 为车辆设备 ID、无绝对时间、采样设计 Unverified。SPMD 边界：车辆侧接收时间不存在，V2V 端到端时延不可算。跨源裁定（AAD-0.4.5）：SEE-V2X 时延可用（单设备日志内 rx−tx 成对配对，不依赖跨设备钟；公开 Drive；最小样本 4.9 MB），PDR 分母待实证；Bristol 不可用于时延（零延迟分析/创建时刻/无同步），仅 PDR-RSSI；UCI DSRC 实测属性 Unverified；85% FCW 响应率属 WYDOT（Tampa 50%），均非因果采用。第一批建议 SEE-V2X 最小样本（<0.5 GiB），验收条件 5 项已定义；待研究者批准。行为统计暂缓；Gate 保持 pending_official_packet_access。",
+      "current_conclusion": "RV_RX：接收状态连续性（V3）。RSE_BSM（V1）：RxDevice 为车辆设备 ID、无绝对时间、采样设计 Unverified。SPMD 边界：车辆侧接收时间不存在，V2V 端到端时延不可算。SEE-V2X（0.4.6 实证）：最小样本 outdoor_parkinglot 已验证——同消息关联 Verified（10/10 配对 1.0）；latency 数值可计算 Verified（rx−tx 与 latency 列一致，P50=16.787 ms）但物理意义 Unverified（跨设备时钟偏移未证，未冻结）；PDR/PER Verified（sender-base 复算与字段一致，分母=发送数）。正式通信参数未冻结；下一批 emulating_applications（4.89 GiB，BSM 场景+GNSS）条件性建议；作者咨询邮件草稿已备未发。行为统计暂缓；Gate 保持 pending_official_packet_access。",
       "gate": {
         "status": "pending_official_packet_access",
         "portable_path": "evidence/results/RES-STAGE-0.4-COMM-OBS-V3/audit.json"
@@ -1253,6 +1255,42 @@
       "gate_status": "pending_official_packet_access",
       "paper_locations": [
         "docs/STAGE_0_4_TASK_0_4_2_RSE_BSM_AUDIT.md"
+      ],
+      "scientific_claim_eligible": false
+    },
+    {
+      "id": "RES-STAGE-0.4-SEE-V2X-MINIMAL-V1",
+      "experiment_id": "stage_0_4",
+      "name": "Stage 0.4 SEE-V2X 最小样本通信指标实证验证",
+      "status": "verified_pairing_and_pdr_latency_unverified",
+      "portable_evidence_paths": [
+        "evidence/results/RES-STAGE-0.4-SEE-V2X-MINIMAL-V1/audit.json",
+        "evidence/results/RES-STAGE-0.4-SEE-V2X-MINIMAL-V1/config.json",
+        "evidence/results/RES-STAGE-0.4-SEE-V2X-MINIMAL-V1/provenance.json",
+        "evidence/results/RES-STAGE-0.4-SEE-V2X-MINIMAL-V1/manifest.json",
+        "evidence/results/RES-STAGE-0.4-SEE-V2X-MINIMAL-V1/SHA256SUMS"
+      ],
+      "local_artifact_paths": [
+        "code/outputs/formal/calibration/stage_0_4_see_v2x_minimal_v1"
+      ],
+      "code_version_source": "code/outputs/formal/calibration/stage_0_4_see_v2x_minimal_v1/provenance.json",
+      "configuration_source": "code/outputs/formal/calibration/stage_0_4_see_v2x_minimal_v1/config.json",
+      "data_version_source": "SEE-V2X public Drive file id 133L1r_C9y08jPSyzL64_28AVGkpXAzek, 4,883,437 B, sha256 ABFE57ACC0E5F537C2B07AF84BF7998E55C589629F88A39FBA75C90F09133F89",
+      "core_metrics": {
+        "runs": 10,
+        "pairing_rate": 1.0,
+        "paired_rows": 30571,
+        "latency_col_vs_calc_abs_diff_max": 0.0,
+        "negative_latency_rows": 0,
+        "latency_ms_p50": 16.787,
+        "latency_ms_p95": 34.861,
+        "pdr_denominator": "sender-base per run",
+        "clock_offset_status": "unverified"
+      },
+      "current_conclusion": "SEE-V2X minimal sample verified: same-message pairing 1.0 in all 10 runs; latency numerically reproducible ((rx-tx)/1000 == latency column) but physical latency Unverified (inter-device clock offset undocumented); PDR/PER verified via sender-base independent recomputation. Not frozen as calibration parameters; emulating_applications (4.89 GiB, BSM+GNSS) conditionally recommended.",
+      "gate_status": "pending_official_packet_access",
+      "paper_locations": [
+        "docs/STAGE_0_4_TASK_0_4_6_SEE_V2X_MINIMAL_VALIDATION.md"
       ],
       "scientific_claim_eligible": false
     }

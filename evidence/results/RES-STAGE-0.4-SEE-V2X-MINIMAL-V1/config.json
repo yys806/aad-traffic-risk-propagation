@@ -1,0 +1,12 @@
+{
+  "schema_version": "aad.stage-0-4.see-v2x-minimal.config.v1",
+  "task_id": "AAD-0.4.6",
+  "experiment_id": "stage_0_4",
+  "result_id": "RES-STAGE-0.4-SEE-V2X-MINIMAL-V1",
+  "authorized_sample": "outdoor_parkinglot.tar.gz",
+  "rules": [
+    "exclude extra==1 rows",
+    "latency = (rx_timestamp-tx_timestamp)/1000",
+    "PDR = rx∩tx / tx_total per run"
+  ]
+}

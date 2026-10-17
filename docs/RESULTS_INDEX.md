@@ -112,6 +112,10 @@ rho 时间尺度合理性诊断：tau=15.364279 s，完成四源分布、TTC 分
 
 Stage 0.2正式Gate=`pass`、`Completed / Closed`，仅限四源NGSIM、100ms描述性纵向跟驰风险代理测量。正式P2分母按可靠相邻边双端P2可评价定义独立复算；5,039,222条边、503,922.2s，原可靠跟驰512,043.2s仍独立列示，不可评价8,121.0s无零风险含义。P2=4,545；逐源事件率、原始分子分母和新旧分母率对照见最终包。独立物理真实性、缺失选择偏差、极端敏感性、200ms迁移不等价和来源外推为未验证限制。历史R3 Blocked记录不覆盖。证据：`code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r4/`。
 
+## RES-STAGE-0.4-SEE-V2X-MINIMAL-V1
+
+Stage 0.4 任务 0.4.6：SEE-V2X 最小样本（`outdoor_parkinglot.tar.gz`，4,883,437 B，SHA-256 ABFE57AC…33F89，公开 Drive）实证验证。10 次室外停车场运行（C-V2X 侧链，1 发送方→1 接收方）。**同消息关联 Verified**：10/10 配对率 1.0，`seq_num` 0..N−1 唯一；**latency 数值可计算 Verified**：(rx−tx)/1000 与 `latency (ms)` 在 30,571 行逐行一致（abs diff max 0），0 负时延，分布 min 4.955/P50 16.787/P95 34.861/max 60.120 ms——**物理意义（真实时延）Unverified**（跨设备时钟偏移未证，分布形态可信、绝对值可能含固定偏移，未冻结为校准参数）；**PDR/PER Verified**：sender-base 独立复算与 `per_ue_loss_pct` 逐 run 一致（分母=发送数、接收机会=运行内）。信道占用 Documented（低负载 P50 5%/max 23%）。`extra=1` 插值行排除。正式校准暂不冻结；建议条件性批准 `emulating_applications`（4.89 GiB，BSM 场景+GNSS）。报告 `docs/STAGE_0_4_TASK_0_4_6_SEE_V2X_MINIMAL_VALIDATION.md`；包 `code/outputs/formal/calibration/stage_0_4_see_v2x_minimal_v1/`。Gate 保持 `pending_official_packet_access`。
+
 ## RES-STAGE-0.4-RSE-BSM-V1
 
 Stage 0.4 任务 0.4.2：SPMD `RSE_BSM.csv.zip` 条件获取与独立证据核验（仅本地原始数据）。成员级 Range 下载（49 分块全部 206/Content-Range/ETag 校验），CRC32 对官方 ZIP64 中央目录一致，内层 ZIP 校验通过，SHA-256 `9C40C15F…D722` 钉扎；磁盘 182.98→179.98 GiB。实测：25 字段（官方 24+RxDevice，手册 28 字段说法有误）、124,115,615 行零畸形、表头独立于数据文件；BSMID 逐行唯一（行 ID 而非跨接收方消息身份）、TemporaryId 155,220、MsgCount 0–127 循环、DSeconds 发送端分钟内毫秒；**无绝对时间字段**；RxDevice 2,008 值全部在 BsmP1Summary 设备命名空间、与 PCAPFile RSE LocID 零重叠（记录方物理身份 Ambiguous）；(TempID,MsgCount,DSeconds) 部分精确覆盖下重复 ≥26,919,767。证据边界：接收时间/时延/丢包 Not Observable，配对 Ambiguous；行为统计按 holdout 规则暂缓。Packet 建议为下一批（修正预期），BsmP1 价值上调，新增 BsmMd/RSE_locations.kml 候选。Gate 保持 `pending_official_packet_access`。报告：`docs/STAGE_0_4_TASK_0_4_2_RSE_BSM_AUDIT.md`；包：`code/outputs/formal/calibration/stage_0_4_rse_bsm_v1/`。

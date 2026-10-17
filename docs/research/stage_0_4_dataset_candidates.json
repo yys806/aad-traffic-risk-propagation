@@ -457,10 +457,26 @@
         "adoption_and_response": "NotObservable"
       },
       "estimated_download_size_bytes": null,
-      "download_priority": "P0 (batch A first: SEE-V2X minimal + emulating_applications; <0.5 GiB minimal, ~10 GiB full usable)",
+      "download_priority": "P0 (batch A done; batch A2 = emulating_applications.tar.gz 5,252,105,816 B recommended, conditional)",
       "verified_date": "2026-10-17",
       "source_citation": "SEE-V2X website + GitHub + DOI (2026-10-17)",
-      "latency_semantics_confirmed": "latency = rx_timestamp - tx_timestamp with tx_seq_num same-message pairing, both timestamps recorded in the SAME receiver-side log row -> latency computable WITHOUT cross-device clock alignment; clock architecture still Unverified (affects absolute offset, not distribution shape)"
+      "latency_semantics_confirmed": "latency = rx_timestamp - tx_timestamp with tx_seq_num same-message pairing, both timestamps recorded in the SAME receiver-side log row -> latency computable WITHOUT cross-device clock alignment; clock architecture still Unverified (affects absolute offset, not distribution shape)",
+      "empirical_validation_2026_10_17": {
+        "sample": "outdoor_parkinglot.tar.gz (4,883,437 B, sha256 ABFE57AC...33F89, public Drive, no application)",
+        "pairing": "Verified: 10/10 runs pairing_rate=1.0 via (tx_equipment_id, tx_seq_num); seq_num 0..N-1 unique",
+        "latency": "numerically Verified ((rx-tx)/1000 == latency column on 30,571 rows, 0 negative); physical truth Unverified (inter-device clock offset undocumented; distribution shape reliable, absolute may carry fixed offset)",
+        "pdr": "Verified: sender-base independent recomputation matches per_ue_loss_pct per run (denominator=tx count, opportunity=run scope)",
+        "environment": "Documented: channel_busy_percentage p50 5%/max 23% (low-load parking lot)",
+        "latency_distribution_ms": {
+          "min": 4.955,
+          "p50": 16.787,
+          "p95": 34.861,
+          "p99": 40.024,
+          "max": 60.12
+        },
+        "result_id": "RES-STAGE-0.4-SEE-V2X-MINIMAL-V1",
+        "calibration_status": "not frozen (clock offset unresolved; needs emulating_applications GNSS/BSM scenario)"
+      }
     },
     {
       "dataset_id": "UCI-DSRC-415",
@@ -578,6 +594,18 @@
     "scenario_mixing_prohibition": "controlled-test vs natural-traffic vs cloud-link vs driver-response metrics must not be mixed; cite per-module with scenario labels"
   },
   "batch_A_see_v2x_2026_10_17": {
+    "minimal_sample": "parameters_sweeping/outdoor_parkinglot.tar.gz (4,883,437 B; peak disk <0.5 GiB)",
+    "recommended": "emulating_applications.tar.gz (5,252,105,816 B; peak ~10 GiB)",
+    "verifications": [
+      "file/field completeness of rx csv per README",
+      "same-message pairing uniqueness via (tx_equipment_id, tx_seq_num)",
+      "latency = rx_timestamp - tx_timestamp consistency with latency column",
+      "per_ue_loss_pct denominator empirically reconciled via tx_seq_num gaps",
+      "GNSS/channel-busy usability for BSM scenario"
+    ],
+    "acceptance": "pairing unique + latency internally consistent + PDR denominator reconciled (or documented as relative-only)"
+  },
+  "batch_A1_see_v2x_done_2026_10_17": {
     "minimal_sample": "parameters_sweeping/outdoor_parkinglot.tar.gz (4,883,437 B; peak disk <0.5 GiB)",
     "recommended": "emulating_applications.tar.gz (5,252,105,816 B; peak ~10 GiB)",
     "verifications": [

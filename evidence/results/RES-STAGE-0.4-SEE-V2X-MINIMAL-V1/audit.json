@@ -1,0 +1,139 @@
+{
+  "schema_version": "aad.stage-0-4.see-v2x-minimal.audit.v1",
+  "experiment_id": "stage_0_4",
+  "result_id": "RES-STAGE-0.4-SEE-V2X-MINIMAL-V1",
+  "created_utc": "2026-10-17T05:01:59.831804+00:00",
+  "task_id": "AAD-0.4.6",
+  "gate_status": "pending_official_packet_access",
+  "gate_unchanged": true,
+  "authorized_sample": "SEE-V2X parameters_sweeping/outdoor_parkinglot.tar.gz (only)",
+  "download": {
+    "official_channel": "SEE-V2X public Google Drive share",
+    "file_id": "133L1r_C9y08jPSyzL64_28AVGkpXAzek",
+    "bytes": 4883437,
+    "sha256": "ABFE57ACC0E5F537C2B07AF84BF7998E55C589629F88A39FBA75C90F09133F89",
+    "size_match": true
+  },
+  "scenario": "C-V2X sidelink (LTE Rel.14 Mode 4) parameter sweep, outdoor parking lot; 1 sender (t1) -> 1 receiver (t3); 10 runs",
+  "acquisition_constraints": {
+    "emulating_applications_downloaded": false,
+    "peak_disk_gib": "<0.5"
+  },
+  "pairing": {
+    "runs": 10,
+    "pairing_rate_min": 1.0,
+    "pairing_rate_max": 1.0,
+    "all_runs_pairing_rate_1": true,
+    "message_identity": "(tx_equipment_id, tx_seq_num); seq_num 0..N-1 continuous, no duplicates",
+    "extra_rows_excluded": true,
+    "conclusion": "Verified"
+  },
+  "latency": {
+    "paired_rows": 30571,
+    "col_vs_calc_abs_diff_max": 0.0,
+    "negative_latency_rows": 0,
+    "distribution_ms": {
+      "min": 4.955,
+      "p50": 16.787,
+      "p95": 34.861,
+      "p99": 40.024,
+      "max": 60.12
+    },
+    "formula_verified": "latency_ms = (rx_timestamp_us - tx_timestamp_us) / 1000 == latency column, 30571/30571",
+    "conclusion_numerical": "Verified",
+    "conclusion_physical": "Unverified (inter-device clock offset undocumented; distribution shape reliable, absolute value may carry a fixed offset; not frozen as calibration parameter)"
+  },
+  "pdr_per": {
+    "runs_detail": [
+      {
+        "run": "0",
+        "tx_rows": 7918,
+        "rx_data_rows": 5304,
+        "independent_pdr": 0.701309,
+        "field_loss_pct": 29.9
+      },
+      {
+        "run": "1",
+        "tx_rows": 6656,
+        "rx_data_rows": 5327,
+        "independent_pdr": 0.849601,
+        "field_loss_pct": 15.0
+      },
+      {
+        "run": "2",
+        "tx_rows": 5742,
+        "rx_data_rows": 5591,
+        "independent_pdr": 1.0,
+        "field_loss_pct": 0.0
+      },
+      {
+        "run": "3",
+        "tx_rows": 5570,
+        "rx_data_rows": 2103,
+        "independent_pdr": 0.38765,
+        "field_loss_pct": 61.2
+      },
+      {
+        "run": "4",
+        "tx_rows": 5013,
+        "rx_data_rows": 1378,
+        "independent_pdr": 0.283714,
+        "field_loss_pct": 71.6
+      },
+      {
+        "run": "5",
+        "tx_rows": 5366,
+        "rx_data_rows": 1122,
+        "independent_pdr": 0.211978,
+        "field_loss_pct": 78.8
+      },
+      {
+        "run": "6",
+        "tx_rows": 4951,
+        "rx_data_rows": 3431,
+        "independent_pdr": 0.693271,
+        "field_loss_pct": 30.7
+      },
+      {
+        "run": "7",
+        "tx_rows": 4899,
+        "rx_data_rows": 4899,
+        "independent_pdr": 1.0,
+        "field_loss_pct": 0.0
+      },
+      {
+        "run": "8",
+        "tx_rows": 4741,
+        "rx_data_rows": 850,
+        "independent_pdr": 0.179325,
+        "field_loss_pct": 82.1
+      },
+      {
+        "run": "9",
+        "tx_rows": 4573,
+        "rx_data_rows": 566,
+        "independent_pdr": 0.123797,
+        "field_loss_pct": 87.6
+      }
+    ],
+    "denominator_semantics": "sender-base: PDR = (rx-received of tx) / tx_total; field per_ue_loss_pct ~= 100*(1-PDR); seq gaps = loss within run (no restarts)",
+    "field_vs_independent_max_abs_pdr_diff": 0.0003989999999999272,
+    "conclusion": "Verified"
+  },
+  "environment": {
+    "channel_busy_percentage_note": "low-load outdoor parking lot; p50 ~5%, p95 ~10%, max ~23% (3-run sample); usable as clean single-hop PC5 reference, not a direct SUMO urban mapping",
+    "conclusion": "Documented"
+  },
+  "scientific_claim_eligible": false,
+  "not_frozen": [
+    "latency distribution as calibration parameter",
+    "clock offset",
+    "PDR as universal V2V rate"
+  ],
+  "next_batch_recommendation": {
+    "emulating_applications": "approve conditional on clock semantics + BSM-only scenario + GNSS (possible cross-device clock reference)",
+    "size_bytes": 5252105816
+  },
+  "author_query_draft_prepared": true,
+  "author_query_sent": false
+}
