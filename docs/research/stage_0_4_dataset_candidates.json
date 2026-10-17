@@ -423,7 +423,7 @@
         "adoption_and_response": "NotObservable"
       },
       "estimated_download_size_bytes": 36836770304,
-      "download_priority": "P0 (batch A: importedData MAT subset first, full 34.3 GiB optional)",
+      "download_priority": "P2 (PDR-RSSI only; not a latency source)",
       "first_verifications": [
         "Tx/Rx CAM pairing rate via SeqNum+StationID within same-device logs",
         "per-message Tx-Rx timestamp difference distribution (declare record-time semantics)",
@@ -431,7 +431,8 @@
         "cross-device clock offset handling per paper method"
       ],
       "verified_date": "2026-10-17",
-      "source_citation": "data.bris.ac.uk dataset page + readme.txt (fetched 2026-10-17); arXiv:1903.10289"
+      "source_citation": "data.bris.ac.uk dataset page + readme.txt (fetched 2026-10-17); arXiv:1903.10289",
+      "errata_2026_10_17": "NOT usable for latency: paper has zero delay analysis; Timestamp is creation-time per-device with no cross-device sync method. Usable for PDR=f(RSSI) only. CAM rate is 100 Hz (every 10 ms), not 10 Hz."
     },
     {
       "dataset_id": "SEE-V2X",
@@ -439,7 +440,7 @@
       "publisher": "UC Riverside",
       "official_url": "https://cisl.ucr.edu/SEE-V2X/ ; https://github.com/UCR-CISL/SEE-V2X",
       "doi": "10.1145/3715014.3722077",
-      "access_status": "form-based access (GitHub 'Get Access'); size unknown",
+      "access_status": "PUBLIC Google Drive share (no form/approval); emulating_applications.tar.gz = 5,252,105,816 B (4.89 GiB); parameters_sweeping subtotal 20,139,944,998 B (18.76 GiB); outdoor_parkinglot.tar.gz = 4,883,437 B (4.9 MB, minimal sample); gzip magic verified; sizes via Range/Content-Range metadata only (no content download)",
       "tech_chain": "C-V2X sidelink PC5 (LTE Rel.14 Mode 4); commercial COTS radios; parameter sweep + real scenarios",
       "key_fields_documented": [
         "application-layer network traces from the C-V2X radio",
@@ -456,9 +457,10 @@
         "adoption_and_response": "NotObservable"
       },
       "estimated_download_size_bytes": null,
-      "download_priority": "P1 (batch B; C-V2X complement to DSRC; form required)",
+      "download_priority": "P0 (batch A first: SEE-V2X minimal + emulating_applications; <0.5 GiB minimal, ~10 GiB full usable)",
       "verified_date": "2026-10-17",
-      "source_citation": "SEE-V2X website + GitHub + DOI (2026-10-17)"
+      "source_citation": "SEE-V2X website + GitHub + DOI (2026-10-17)",
+      "latency_semantics_confirmed": "latency = rx_timestamp - tx_timestamp with tx_seq_num same-message pairing, both timestamps recorded in the SAME receiver-side log row -> latency computable WITHOUT cross-device clock alignment; clock architecture still Unverified (affects absolute offset, not distribution shape)"
     },
     {
       "dataset_id": "UCI-DSRC-415",
@@ -484,7 +486,8 @@
       "estimated_download_size_bytes": 32800000,
       "download_priority": "P1 (delivery-rate samples; tiny)",
       "verified_date": "2026-10-17",
-      "source_citation": "archive.ics.uci.edu dataset page (2026-10-17)"
+      "source_citation": "archive.ics.uci.edu dataset page (2026-10-17)",
+      "errata_2026_10_17": "real-vs-simulated provenance Unverified (UCI page silent; no public evidence of field measurement); do NOT use as real loss-rate calibration basis until verified"
     },
     {
       "dataset_id": "THEA-TAMPA-PHASE3-EVALUATION",
@@ -513,7 +516,8 @@
       "estimated_download_size_bytes": null,
       "download_priority": "P1 (adoption-behavior real-world reference; documentation-level, no large download needed for the rate figures)",
       "verified_date": "2026-10-17",
-      "source_citation": "ROSA P DOT 55818; ScienceDirect S1369847822002479; CV Pilots 2024 update (2026-10-17)"
+      "source_citation": "ROSA P DOT 55818; ScienceDirect S1369847822002479; CV Pilots 2024 update (2026-10-17)",
+      "errata_2026_10_17": "85% reduce-speed-within-3s figure belongs to WYDOT site (CV Pilots 2024 Update), not Tampa; Tampa/THEA is 50% for weather advisories. Both are driver deceleration after warning; warning != causal message adoption."
     }
   ],
   "download_recommendations": {
@@ -572,5 +576,17 @@
     "message_loss_rate": "multiple qualified candidates (UCI DSRC; Bristol SeqNum-gap; SEE-V2X PDR)",
     "message_adoption": "driver-behavior level real data only (THEA/Tampa); controller-level adoption NOT Observable in any public natural-vehicle dataset - permanent simulation/closed-test responsibility",
     "scenario_mixing_prohibition": "controlled-test vs natural-traffic vs cloud-link vs driver-response metrics must not be mixed; cite per-module with scenario labels"
+  },
+  "batch_A_see_v2x_2026_10_17": {
+    "minimal_sample": "parameters_sweeping/outdoor_parkinglot.tar.gz (4,883,437 B; peak disk <0.5 GiB)",
+    "recommended": "emulating_applications.tar.gz (5,252,105,816 B; peak ~10 GiB)",
+    "verifications": [
+      "file/field completeness of rx csv per README",
+      "same-message pairing uniqueness via (tx_equipment_id, tx_seq_num)",
+      "latency = rx_timestamp - tx_timestamp consistency with latency column",
+      "per_ue_loss_pct denominator empirically reconciled via tx_seq_num gaps",
+      "GNSS/channel-busy usability for BSM scenario"
+    ],
+    "acceptance": "pairing unique + latency internally consistent + PDR denominator reconciled (or documented as relative-only)"
   }
 }

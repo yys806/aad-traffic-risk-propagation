@@ -1,6 +1,7 @@
 # Stage 0.4 任务 0.4.4：真实车联网通信关键证据专项调查
 
-> 任务 AAD-0.4.4（下载前专项调查，2026-10-17）。**零数据下载**；未访问 locked holdout；未提交任何访问申请；Stage 0.4 Gate（`pending_official_packet_access`）、科研参数与全部封存证据未改动。
+> 任务 AAD-0.4.4（下载前专项调查，2026-10-16）。**零数据下载**；未访问 locked holdout；未提交任何访问申请；Stage 0.4 Gate（`pending_official_packet_access`）、科研参数与全部封存证据未改动。
+> **勘误（2026-10-17，AAD-0.4.5）**：①Bristol 不可用于时延（论文零延迟分析、`Timestamp`=创建时刻、无跨设备同步方法），仅为 PDR/RSSI 候选；②Bristol 发送频率为 100 Hz（每 10 ms）；③UCI DSRC 的实测/仿真属性 Unverified，不得作真实丢包率校准依据；④85% FCW 响应率为 **WYDOT** 站点（非 Tampa；Tampa 为 50% 天气告警）。详见 `docs/STAGE_0_4_TASK_0_4_5_DATA_ACCESS_VALIDATION.md`。
 > 证据等级约定：Verified＝本地实测+可复核；Documented＝官方文档/字典明确；Potential＝结构/字段支持但须下载后实证；Not Observable＝该族数据结构上不存在；Ambiguous＝存在矛盾或未证解释。
 > 链路分类：V2V＝车对车；V2I＝车对路侧；云端＝消息经应用服务器；受控试验＝封闭/半封闭环境，非自然交通。
 
@@ -74,3 +75,11 @@
 5. 采用证据采用驾驶员层面（THEA）还是将控制器采用永久归入仿真假设。
 
 **核心交付结论**：四项证据中，**接收时间与通信时延找到了可信、可获取、可复现的真实证据**（Bristol/SEE-V2X，受控条件）；**丢失率找到多个合格候选**（UCI/Bristol/SEE-V2X）；**采用仅在驾驶员行为层面有真实数据**（THEA），控制器层面为真实缺口。推荐下一批优先验证 **Bristol ITS-G5**（批次 A），理由：体量适中、公开获取、同消息双侧时间戳+SeqNum 的完整证据链、自带 RSSI/位置与 PDR 方法，最能直接支撑 Stage I 通信时延与投递率的仿真参数化；BsmMd 批次 C 并行价值最高（解 SPMD 身份死结）。
+
+## 8. 勘误记录（2026-10-17，AAD-0.4.5）
+
+1. **Bristol 时延主张不成立**：论文（arXiv:1903.10289）**无延迟分析**；`Timestamp`="CAM 创建时刻"（非接收时刻）；各设备独立时钟且**无同步/校正方法**。跨设备时延不可计算。Bristol 降级为 **PDR=f(RSSI) 候选**（配对用唯一 SeqNum+MAC，论文方法明确）。
+2. **Bristol 发送频率**：更正为 **100 Hz（每 10 ms）**（论文为准；0.4.4 沿用页面表述有误）。
+3. **UCI DSRC #415**：实测/仿真属性 **Unverified**（UCI 页面未注明；无公开证据表明 PER 来自真实实测）。在核实前不得作为真实丢包率校准依据。
+4. **THEA/WYDOT 归属**："85% FCW 后 3 s 减速"出自 **WYDOT** 站点（CV Pilots 2024 Update）；Tampa/THEA 为 50% 天气告警减速。两者均**不得认定为消息被因果采用**。
+5. **SEE-V2X 字段级确认（比 0.4.4 更完整）**：`latency = rx_timestamp − tx_timestamp` 在**接收端单设备日志内成对**（`tx_seq_num` 同消息配对），不依赖跨设备时钟对齐——故时延**可用**（分布形态可靠；绝对偏移待实证）。公开 Google Drive 免申请；最小样本 4.9 MB。

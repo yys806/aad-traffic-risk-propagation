@@ -95,3 +95,7 @@ Zotero 六主题调整经批准并官方授权执行（更名 05、新建 06、�
 ## 2026-10-17 — AAD-0.4.4：通信关键证据专项调查
 
 四证据核查 9 候选：接收时间+时延=Bristol ITS-G5/SEE-V2X（受控条件，可信可复现）；丢失率=UCI/Bristol/SEE-V2X；采用=仅驾驶员层面（THEA），控制器 Not Observable（永久缺口）；自然交通 V2V 时延不可达。新增候选入清单；批次 A（Bristol MAT 子集）验收条件已定义；5 项待研究者批准。零下载，Gate 不变。报告 `docs/STAGE_0_4_TASK_0_4_4_COMMUNICATION_EVIDENCE_SEARCH.md`。
+
+## 2026-10-17 — AAD-0.4.5：SEE-V2X/Bristol 可用性裁定
+
+SEE-V2X 可用且首选（单设备日志内配对时延，不依赖跨设备钟；公开 Drive；最小 4.9 MB）。Bristol 时延否定（零延迟分析/创建时刻/无同步）→仅 PDR-RSSI；UCI 属性 Unverified；85% FCW 属 WYDOT。第一批=SEE-V2X 最小样本（<0.5 GiB）。零下载，Gate 不变。报告 `docs/STAGE_0_4_TASK_0_4_5_DATA_ACCESS_VALIDATION.md`。

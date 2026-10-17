@@ -80,3 +80,7 @@
 ## 2026-10-17 — AAD-0.4.4：真实车联网通信关键证据专项调查
 
 只读专项调查（零下载、零申请；Gate 不变）。跨 DSRC/ITS-G5、C-V2X、V2I、CV Pilot 四方向核查 9 候选并交叉验证。结论：接收时间+同消息时延获得可信真实证据（Bristol ITS-G5 FLOURISH：同设备日志 Tx/Rx CAM 双侧时间戳+SeqNum+RSSI，公开 34.3 GiB 含 MAT 子集；SEE-V2X：C-V2X 跨层端到端时延，表单）；丢失率多候选（UCI DSRC PER 样本、Bristol SeqNum 间隙法、SEE-V2X PDR）；采用仅驾驶员行为层面有真实数据（THEA Phase 3：85% 3 s 内减速、+9.93% 接口效应），控制器层面为永久缺口。自然交通 V2V 端到端时延公开数据不可达（SPMD/mCity 同边界）。新增 4 个候选入结构化清单；定义最小验证批次 A（Bristol importedData，<=25 GiB，验收条件明确）；列出 5 项待研究者批准决定（含验收范围是否接受受控试验参考）。报告：`docs/STAGE_0_4_TASK_0_4_4_COMMUNICATION_EVIDENCE_SEARCH.md`。
+
+## 2026-10-17 — AAD-0.4.5：真实 V2X 数据最小验证与获取准备
+
+只读核查（零下载、零申请；Gate 不变）。SEE-V2X 字段级裁定：`latency=rx_timestamp−tx_timestamp` 于接收端单设备日志内成对（`tx_seq_num` 配对），**不依赖跨设备时钟**→时延可用（绝对偏移待实证）；公开 Google Drive 免申请，emulating_applications 4.89 GiB、最小样本 outdoor_parkinglot 4.9 MB、参数扫描 18.76 GiB（Range 元数据核实，无内容下载）。Bristol 时延否定（论文零延迟分析/创建时刻时间戳/无同步方法）→仅 PDR/RSSI；频率勘误 100 Hz。UCI DSRC 实测属性 Unverified。85% FCW 响应率归属 WYDOT（Tampa 为 50% 天气告警）。第一批建议 SEE-V2X 最小样本（<0.5 GiB），验收条件 5 项已定义；4 项待研究者批准。0.4.4 相关结论已非覆盖式勘误。报告：`docs/STAGE_0_4_TASK_0_4_5_DATA_ACCESS_VALIDATION.md`。
