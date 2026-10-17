@@ -1,6 +1,7 @@
 # Stage 0.4 任务 0.4.6：SEE-V2X 最小样本获取与通信指标实证验证
 
-> 任务 AAD-0.4.6（实证验证，2026-10-17）。**唯一授权样本**：`SEE-V2X/parameters_sweeping/outdoor_parkinglot.tar.gz`（4,883,437 B，公开 Google Drive，无需申请）。未下载 `emulating_applications`（4.89 GiB）或其他数据。Stage 0.4 Gate（`pending_official_packet_access`）、参数与封存证据未改动；不冻结任何正式通信参数。
+> 任务 AAD-0.4.6（实证验证，2026-10-17）。
+> **勘误（2026-10-17，AAD-0.4.6.1）**：①本报告 `independent_pdr` 采用接收窗口口径（把运行边界未接收段排除在分母外），**系统性高估 PDR**（Run 2 实为 0.974 而非 1.0）；正确口径为**完整运行 PDR**（分母=运行内全部发送）。②latency 存在跨运行固定时钟偏移（P50 8.8–32 ms），**合并分位数不可靠**；逐运行形态相对可信。详见 `docs/STAGE_0_4_TASK_0_4_6_1_SCIENTIFIC_REAUDIT.md` 与结果 `RES-STAGE-0.4-SEE-V2X-REAUDIT-V1`（本封存包未改动）。**唯一授权样本**：`SEE-V2X/parameters_sweeping/outdoor_parkinglot.tar.gz`（4,883,437 B，公开 Google Drive，无需申请）。未下载 `emulating_applications`（4.89 GiB）或其他数据。Stage 0.4 Gate（`pending_official_packet_access`）、参数与封存证据未改动；不冻结任何正式通信参数。
 > 四层次区分：**字段存在 / 数值可计算 / 物理意义有效 / 可用于现实校准**——本批验证了前三层，**第四层（正式校准）仍须等待时钟/分母语义与更大样本**。
 
 ## 1. 获取与完整性（Fact）

@@ -103,3 +103,7 @@ SEE-V2X 可用且首选（单设备日志内配对时延，不依赖跨设备钟
 ## 2026-10-17 — AAD-0.4.6：SEE-V2X 最小样本实证验证
 
 下载并验证 outdoor_parkinglot（4.9 MB）：同消息关联 Verified（10/10 配对 1.0）、latency 数值 Verified 但物理意义 Unverified（时钟偏移未证，P50=16.787 ms）、PDR/PER Verified（sender-base 复算与字段一致）、信道占用 Documented。正式校准暂不冻结；建议条件性批准 emulating_applications（4.89 GiB）。Gate 不变；结果 `RES-STAGE-0.4-SEE-V2X-MINIMAL-V1`。
+
+## 2026-10-17 — AAD-0.4.6.1：SEE-V2X 科学复核
+
+修正 0.4.6：完整运行 PDR 才是有效口径（Run 2=0.974 非 1.0）；latency 跨运行时钟偏移 8.8–32 ms 使合并分位数不可靠；逐运行形态相对可信。时钟同步 Unverified；校准仍冻结；下一批 4.89 GiB 建议。结果 `RES-STAGE-0.4-SEE-V2X-REAUDIT-V1`。

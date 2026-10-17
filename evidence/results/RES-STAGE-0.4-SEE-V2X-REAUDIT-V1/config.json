@@ -1,0 +1,11 @@
+{
+  "schema_version": "aad.stage-0-4.see-v2x-reaudit.config.v1",
+  "task_id": "AAD-0.4.6.1",
+  "experiment_id": "stage_0_4",
+  "result_id": "RES-STAGE-0.4-SEE-V2X-REAUDIT-V1",
+  "pdr_definitions": {
+    "full_run": "rx_received / tx_total (run scope; denominator=all sends)",
+    "common_window": "rx_received / tx_in_[rx_min, rx_max] (excludes boundary un-received)",
+    "field": "per_ue_loss_pct (~1-PDR, matches common_window)"
+  }
+}

@@ -74,7 +74,8 @@
     "docs/STAGE_0_4_TASK_0_4_3_IDENTITY_TIME_REVIEW.md",
     "docs/STAGE_0_4_TASK_0_4_4_COMMUNICATION_EVIDENCE_SEARCH.md",
     "docs/STAGE_0_4_TASK_0_4_5_DATA_ACCESS_VALIDATION.md",
-    "docs/STAGE_0_4_TASK_0_4_6_SEE_V2X_MINIMAL_VALIDATION.md"
+    "docs/STAGE_0_4_TASK_0_4_6_SEE_V2X_MINIMAL_VALIDATION.md",
+    "docs/STAGE_0_4_TASK_0_4_6_1_SCIENTIFIC_REAUDIT.md"
   ],
   "current": {
     "active_experiment_id": "stage_0_5",
@@ -291,7 +292,8 @@
       "result_ids": [
         "RES-STAGE-0.4-COMM-OBS-V3",
         "RES-STAGE-0.4-RSE-BSM-V1",
-        "RES-STAGE-0.4-SEE-V2X-MINIMAL-V1"
+        "RES-STAGE-0.4-SEE-V2X-MINIMAL-V1",
+        "RES-STAGE-0.4-SEE-V2X-REAUDIT-V1"
       ],
       "core_metrics": [
         "packet_schema_available",
@@ -299,7 +301,7 @@
         "loss_observable",
         "adoption_observable"
       ],
-      "current_conclusion": "RV_RX：接收状态连续性（V3）。RSE_BSM（V1）：RxDevice 为车辆设备 ID、无绝对时间、采样设计 Unverified。SPMD 边界：车辆侧接收时间不存在，V2V 端到端时延不可算。SEE-V2X（0.4.6 实证）：最小样本 outdoor_parkinglot 已验证——同消息关联 Verified（10/10 配对 1.0）；latency 数值可计算 Verified（rx−tx 与 latency 列一致，P50=16.787 ms）但物理意义 Unverified（跨设备时钟偏移未证，未冻结）；PDR/PER Verified（sender-base 复算与字段一致，分母=发送数）。正式通信参数未冻结；下一批 emulating_applications（4.89 GiB，BSM 场景+GNSS）条件性建议；作者咨询邮件草稿已备未发。行为统计暂缓；Gate 保持 pending_official_packet_access。",
+      "current_conclusion": "RV_RX：接收状态连续性（V3）。RSE_BSM（V1）：RxDevice 为车辆 ID、无绝对时间。SPMD：车辆侧接收时间不存在。SEE-V2X 复核（0.4.6.1）：同消息关联 Verified；**完整运行 PDR** 为有效口径（Run 2=0.974，0.4.6 窗口口径高估已修正）；latency 数值 Verified 但跨运行固定时钟偏移 8.8–32 ms，合并分位数不可靠、逐运行形态相对可信；时钟同步 Unverified（凭现有数据不可解）。正式通信参数仍未冻结；下一批 4.89 GiB（GNSS 时钟+轨迹绑定）建议待批准。Gate 保持 pending_official_packet_access。",
       "gate": {
         "status": "pending_official_packet_access",
         "portable_path": "evidence/results/RES-STAGE-0.4-COMM-OBS-V3/audit.json"
@@ -1291,6 +1293,42 @@
       "gate_status": "pending_official_packet_access",
       "paper_locations": [
         "docs/STAGE_0_4_TASK_0_4_6_SEE_V2X_MINIMAL_VALIDATION.md"
+      ],
+      "scientific_claim_eligible": false
+    },
+    {
+      "id": "RES-STAGE-0.4-SEE-V2X-REAUDIT-V1",
+      "experiment_id": "stage_0_4",
+      "name": "Stage 0.4 SEE-V2X 通信指标科学复核",
+      "status": "reaudit_pdr_corrected_latency_offset_confirmed",
+      "portable_evidence_paths": [
+        "evidence/results/RES-STAGE-0.4-SEE-V2X-REAUDIT-V1/audit.json",
+        "evidence/results/RES-STAGE-0.4-SEE-V2X-REAUDIT-V1/config.json",
+        "evidence/results/RES-STAGE-0.4-SEE-V2X-REAUDIT-V1/provenance.json",
+        "evidence/results/RES-STAGE-0.4-SEE-V2X-REAUDIT-V1/manifest.json",
+        "evidence/results/RES-STAGE-0.4-SEE-V2X-REAUDIT-V1/SHA256SUMS"
+      ],
+      "local_artifact_paths": [
+        "code/outputs/formal/calibration/stage_0_4_see_v2x_reaudit_v1"
+      ],
+      "code_version_source": "code/outputs/formal/calibration/stage_0_4_see_v2x_reaudit_v1/provenance.json",
+      "configuration_source": "code/outputs/formal/calibration/stage_0_4_see_v2x_reaudit_v1/config.json",
+      "data_version_source": "SEE-V2X outdoor_parkinglot.tar.gz (same sample as RES-STAGE-0.4-SEE-V2X-MINIMAL-V1)",
+      "core_metrics": {
+        "pdr_full_run_run2": 0.9737,
+        "pdr_field_run2": 1.0,
+        "pdr_definition": "full-run (denominator=all tx in run) is the valid sender-base rate",
+        "latency_cross_run_p50_range_ms": [
+          8.8,
+          32.0
+        ],
+        "latency_pooled_percentiles": "not calibration-ready (mixed fixed offsets)",
+        "clock_sync": "unverified"
+      },
+      "current_conclusion": "Re-audit corrected 0.4.6: full-run PDR is the physically meaningful rate (Run 2 = 0.974, not 1.0); field per_ue_loss_pct ~ receive-window rate. Latency numerically reproducible but cross-run fixed clock offsets (P50 8.8-32 ms) make pooled percentiles unreliable; per-run shape relatively reliable. Clock sync unresolvable from existing data; calibration remains frozen; next batch (4.89 GiB GNSS+trajectory) recommended.",
+      "gate_status": "pending_official_packet_access",
+      "paper_locations": [
+        "docs/STAGE_0_4_TASK_0_4_6_1_SCIENTIFIC_REAUDIT.md"
       ],
       "scientific_claim_eligible": false
     }

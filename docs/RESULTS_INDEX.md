@@ -112,6 +112,10 @@ rho 时间尺度合理性诊断：tau=15.364279 s，完成四源分布、TTC 分
 
 Stage 0.2正式Gate=`pass`、`Completed / Closed`，仅限四源NGSIM、100ms描述性纵向跟驰风险代理测量。正式P2分母按可靠相邻边双端P2可评价定义独立复算；5,039,222条边、503,922.2s，原可靠跟驰512,043.2s仍独立列示，不可评价8,121.0s无零风险含义。P2=4,545；逐源事件率、原始分子分母和新旧分母率对照见最终包。独立物理真实性、缺失选择偏差、极端敏感性、200ms迁移不等价和来源外推为未验证限制。历史R3 Blocked记录不覆盖。证据：`code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r4/`。
 
+## RES-STAGE-0.4-SEE-V2X-REAUDIT-V1
+
+Stage 0.4 任务 0.4.6.1：SEE-V2X 最小样本科学复核（独立复算，修正 0.4.6 PDR 口径与时延可信度）。**PDR 修正**：0.4.6 的 `independent_pdr` 为接收窗口口径（排除运行边界未接收段）系统性高估——Run 2 完整运行 PDR=**0.9737**（发送 5,742/接收 5,591），非 0.4.6 所报 1.0；字段 `per_ue_loss_pct`≈接收窗口口径。**正确口径=完整运行 PDR**（分母=运行内全部发送，物理意义可靠）。**时延**：数值复算 Verified，但跨运行固定时钟偏移 P50 8.8–32 ms（run8 32.0 vs run2 8.8）→ **合并分位数不可靠**，逐运行形态相对可信但含漂移。时钟同步凭现有数据不可解（Unverified）。正式校准仍不冻结；下一批 4.89 GiB 建议（GNSS 时钟参照+轨迹绑定）。0.4.6 封存包未改动。报告 `docs/STAGE_0_4_TASK_0_4_6_1_SCIENTIFIC_REAUDIT.md`；包 `code/outputs/formal/calibration/stage_0_4_see_v2x_reaudit_v1/`。Gate 保持 `pending_official_packet_access`。
+
 ## RES-STAGE-0.4-SEE-V2X-MINIMAL-V1
 
 Stage 0.4 任务 0.4.6：SEE-V2X 最小样本（`outdoor_parkinglot.tar.gz`，4,883,437 B，SHA-256 ABFE57AC…33F89，公开 Drive）实证验证。10 次室外停车场运行（C-V2X 侧链，1 发送方→1 接收方）。**同消息关联 Verified**：10/10 配对率 1.0，`seq_num` 0..N−1 唯一；**latency 数值可计算 Verified**：(rx−tx)/1000 与 `latency (ms)` 在 30,571 行逐行一致（abs diff max 0），0 负时延，分布 min 4.955/P50 16.787/P95 34.861/max 60.120 ms——**物理意义（真实时延）Unverified**（跨设备时钟偏移未证，分布形态可信、绝对值可能含固定偏移，未冻结为校准参数）；**PDR/PER Verified**：sender-base 独立复算与 `per_ue_loss_pct` 逐 run 一致（分母=发送数、接收机会=运行内）。信道占用 Documented（低负载 P50 5%/max 23%）。`extra=1` 插值行排除。正式校准暂不冻结；建议条件性批准 `emulating_applications`（4.89 GiB，BSM 场景+GNSS）。报告 `docs/STAGE_0_4_TASK_0_4_6_SEE_V2X_MINIMAL_VALIDATION.md`；包 `code/outputs/formal/calibration/stage_0_4_see_v2x_minimal_v1/`。Gate 保持 `pending_official_packet_access`。
