@@ -12,9 +12,11 @@ Evidence：`evidence/results/RES-STAGE-0.2-NGSIM-V2/audit.json`、`code/src/risk
 
 **已解决（2026-10-16）**：研究者经任务 AAD-0.3.3 批准适用范围、连续性参数（0<Δt≤0.043 s）、极端观测处理、描述阈值与 Gate=pass，阶段 0.3 已关闭（`RES-STAGE-0.3-SCIENTIFIC-ACCEPTANCE-R3`）。遗留但归属清晰：独立物理真实性永久 `Unverified`；车型→SUMO vType 映射、时间权重抽样与覆盖阈值属 Stage 0.5 独立待决。
 
-### KI-03 — packet 级通信证据不可用
+### KI-03 — packet 级通信证据不可用（已收束）
 
 官方 Packet 下载端点历史 403；2026-10-16（AAD-0.4.1，日期勘误 2026-10-17）重验为 302→官方文件 API；同日（AAD-0.4.2）Range/ZIP64 在新 blob 重验可用并获取 `RSE_BSM`（`RES-STAGE-0.4-RSE-BSM-V1`）。2026-10-17（AAD-0.4.3）官方文档裁定：RxDevice≡车辆设备 ID、Gentime=生成时间（µs，1609.2）；**车辆侧接收时间在 SPMD 全家族不存在→V2V 端到端时延不可算**（结构性缺失，非下载可解）；RSE_BSM 无绝对时间与信道条件，配对 Ambiguous；其采样设计（≤2 记录方/发送方 ID、双记录对全含 10106）Unverified——接收率统计前必须查明；行为统计按 holdout 规则暂缓（4 候选隔离方案待研究者）。Gentime↔UTC 35 s 官方文档冲突待经验校准；跨设备时钟同步为残余时延类主张（仅生成→RSE 捕获）的共同未验证前置。Packet 尚未下载（Gate `pending_official_packet_access` 不变）。
+
+**2026-10-17（AAD-0.4.8）收束**：Stage 0.4 以研究者批准的有限范围 `pass_limited` 关闭；Packet 未下载、packet_schema_evaluated 仍为 false，保留为历史边界而非当前阻断——研究者已决定不再以获得完整真实 V2V 时延/PDR/距离模型为本阶段目标。
 
 ### KI-04 — 阶段 0.5 需要重建
 

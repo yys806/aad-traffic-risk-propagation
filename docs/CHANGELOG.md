@@ -108,3 +108,7 @@
 ## 2026-10-17 — AAD-0.4.7.2：SEE-V2X GNSS 修复与收束
 
 修复 GNSS 匹配三缺陷（窗口外钳制/时间误差单位/轨迹独立性）。决定性发现：t1/t2/t3 GNSS 轨迹逐点相同（同一轨迹复制品）→ 设备间距离不可识别（恒 0 非重合）；RSU 静态、室内无 GNSS → 距离—通信不可识别。通信统计不受影响。**SEE-V2X 收束**：受控 PC5 候选参考（配对/接收比例/相对时延），链路 PDR/接收机会/绝对时延/距离—PDR/自然交通 V2V 保持 Unverified。新增 6 GNSS 测试全过。零下载零邮件，Gate 不变。结果 `RES-STAGE-0.4-SEE-V2X-GNSS-REPAIR-V1`；报告 `docs/STAGE_0_4_TASK_0_4_7_2_GNSS_VALIDITY_REPAIR.md`。
+
+## 2026-10-17 — AAD-0.4.8：Stage 0.4 有限科学验收与正式收口
+
+研究者批准 Limited Scientific Acceptance。Stage 0.4 收束：Gate=`pass_limited`、Stage Status=`Completed / Closed (Limited Scope)`；验收仅限可观测性边界+描述性证据+参数不确定性原则；不验收性能模型/数值校准/距离函数/采用/核心因果。通信参数未冻结未校准。RV_RX V3 与 Packet 403 保留为历史。readiness 测试锁定 pass_limited 不单独解锁（stage_1_1/protocol_lock 仍禁止）。新增 `test_stage_0_4_limited_acceptance.py`（5 测试）。零下载零邮件，Gate 契约不变。结果 `RES-STAGE-0.4-LIMITED-SCIENTIFIC-ACCEPTANCE-V1`。

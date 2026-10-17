@@ -123,3 +123,7 @@ PDR 接收机会 Unverified（启停 vs 丢包不可分，完整运行 PDR 仅�
 ## 2026-10-17 — AAD-0.4.7.2：SEE-V2X GNSS 修复与收束
 
 t1/t2/t3 GNSS 轨迹逐点相同（同一轨迹复制品）→ 设备间距离不可识别；修复窗口外钳制/时间误差/轨迹独立性。通信统计不受影响。**SEE-V2X 收束**：受控 PC5 候选参考，链路 PDR/接收机会/绝对时延/距离—PDR/自然 V2V Unverified。Gate 不变。结果 `RES-STAGE-0.4-SEE-V2X-GNSS-REPAIR-V1`。
+
+## 2026-10-17 — AAD-0.4.8：Stage 0.4 有限科学验收
+
+研究者批准 Limited Scientific Acceptance：Gate=`pass_limited`、Stage=`Completed / Closed (Limited Scope)`。范围=可观测性边界+描述性证据+参数不确定性原则；性能模型/数值校准/距离函数/采用/因果不验收。通信参数未冻结未校准。RV_RX V3 历史保留。readiness 测试锁定 pass_limited 不单独解锁（Stage I/锁仍禁止）。结果 `RES-STAGE-0.4-LIMITED-SCIENTIFIC-ACCEPTANCE-V1`。

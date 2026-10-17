@@ -79,3 +79,14 @@ Agreed：具有明确字段证据的诊断片段可作为候选事件的保守�
 - `valid` 正闭合 TTC 与 `not_applicable` 且可靠确认正间距、非闭合均可评价并纳入；`invalid/non_positive_gap`及其他不可评价状态排除。
 - 保留所有状态、原始观测和质量统计；排除不可评价暴露不代表无风险，不插值、不补零、不改变原始状态。可靠跟驰暴露仍单独报告，不与可评价分母混称；可靠闭合暴露另行报告。
 - 正式事件率为 `P2_event_count / P2_evaluable_following_exposure_time`，单位 `events / P2-evaluable following vehicle-hour`，仅解释为可评价可靠观测下的代理事件频率，不是事故概率。
+
+## 2026-10-17 — Stage 0.4 有限科学验收范围决定（AAD-0.4.8）
+
+状态：`Approved Research Decision`；研究者经任务 AAD-0.4.8 明确批准。
+
+- **决定内容**：①Stage 0.4 不再以获得完整、精确的真实 V2V 时延、PDR 与距离衰减模型为本阶段必须目标；②接受现有 SPMD/SEE-V2X 支持的有限证据范围与已确认的不可观测/不可识别限制；③停止进一步大规模通信数据集搜索、下载与重复复核；④未校准部分作为标记为不确定的实验/敏感性参数处理；⑤不授权将未经验证参数标为真实校准、不修改核心因果识别规则、不启动 Stage I；⑥以 **Limited Scientific Acceptance** 为目标验收 Stage 0.4。
+- **验收对象（仅）**：真实通信数据的可观测性边界、已验证的描述性通信证据、后续通信仿真参数的不确定性处理原则。**Gate=`pass_limited`；Stage Status=`Completed / Closed (Limited Scope)`**。
+- **不验收**：真实通信性能模型准确性、真实 PDR/时延数值校准、距离相关通信函数、信息/控制器采用、AAD 核心因果效应。
+- **边界**：RV_RX V3 的 `pending_official_packet_access` 与原始 Packet HTTP-403 记录保留为历史事实，不改写；Protocol Lock 与 Stage I 不因本验收解锁；locked holdout 不访问；Stage 0.5/0.6 其余前置条件保持未完成。
+- **影响范围**：阶段 0.4 状态与 readiness、Stage 0.5 承接、Stage 0.6 通信参数不确定性声明规则。
+- **对应证据**：`RES-STAGE-0.4-LIMITED-SCIENTIFIC-ACCEPTANCE-V1`（`code/outputs/formal/calibration/stage_0_4_limited_acceptance_v1/`）。

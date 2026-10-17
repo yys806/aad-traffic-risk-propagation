@@ -112,6 +112,18 @@ rho 时间尺度合理性诊断：tau=15.364279 s，完成四源分布、TTC 分
 
 Stage 0.2正式Gate=`pass`、`Completed / Closed`，仅限四源NGSIM、100ms描述性纵向跟驰风险代理测量。正式P2分母按可靠相邻边双端P2可评价定义独立复算；5,039,222条边、503,922.2s，原可靠跟驰512,043.2s仍独立列示，不可评价8,121.0s无零风险含义。P2=4,545；逐源事件率、原始分子分母和新旧分母率对照见最终包。独立物理真实性、缺失选择偏差、极端敏感性、200ms迁移不等价和来源外推为未验证限制。历史R3 Blocked记录不覆盖。证据：`code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r4/`。
 
+## RES-STAGE-0.4-LIMITED-SCIENTIFIC-ACCEPTANCE-V1
+
+Stage 0.4 有限科学验收与正式收口（AAD-0.4.8，研究者批准）。**Gate=`pass_limited`；Stage Status=`Completed / Closed (Limited Scope)`**。验收仅限：可观测性边界+已验证描述性通信证据+参数不确定性处理原则；不验收真实性能模型/数值校准/距离函数/采用/核心因果效应。已验证：RV_RX 接收状态连续性、RSE_BSM 车辆侧接收内容（无接收时间）、SEE-V2X 配对（48 对 1.0）与描述性接收比例（室内 0.998–1.0/室外 0.22–1.0）、时延数值复算；未验证（不升级）：真实链路 PDR、接收机会、绝对时延、距离—PDR、采用、自然交通 V2V。通信参数未冻结未校准；不足部分为标记不确定的实验/敏感性参数。RV_RX V3 与 Packet HTTP-403 保留为历史事实未改写。Stage 0.5/0.6 阻断保持，Protocol Lock 与 Stage I 未解锁（readiness 测试锁定）。报告：`docs/STAGE_0_4_LIMITED_SCIENTIFIC_ACCEPTANCE_2026-10-17.md`；包：`code/outputs/formal/calibration/stage_0_4_limited_acceptance_v1/`。
+
+## RES-STAGE-0.4-SEE-V2X-BSM-REAUDIT-V1
+
+Stage 0.4 任务 0.4.7.1：SEE-V2X BSM 通信证据科学复核（修正 0.4.7）。**配对率（1.0）与接收比例（0.22–1.0）已分开**（48 对全量）；真实链路 PDR 与接收机会 **Unverified**（GNSS≠无线在线，室内无 GNSS、RSU 静态、无无线模块状态证据）；时钟纪元 ×1000 歧义 → 绝对时延 Unverified；距离仅室外 ~0–10 m（室内无 GNSS）。受控 PC5 候选参数仅限描述性。包：`code/outputs/formal/calibration/stage_0_4_see_v2x_bsm_reaudit_v1/`。
+
+## RES-STAGE-0.4-SEE-V2X-GNSS-REPAIR-V1
+
+Stage 0.4 任务 0.4.7.2：SEE-V2X GNSS 时空匹配修复与证据收束。修复窗口外钳制/时间误差单位/轨迹独立性三缺陷。**决定性发现**：t1/t2/t3 GNSS 轨迹逐点完全相同（同一轨迹复制品，非三个独立设备）→ 室外设备间距离恒 0 m 系轨迹复制（非车辆重合）；RSU 静态、室内无 GNSS → **距离—通信关系不可识别**。消息关联（1.0）与接收比例（0.22–1.0）不受影响。SEE-V2X 阶段收束：受控 PC5 候选参考（配对/接收比例/相对时延），链路 PDR/接收机会/绝对时延/距离—PDR/自然交通 V2V 保持 Unverified。包：`code/outputs/formal/calibration/stage_0_4_see_v2x_gnss_repair_v1/`。
+
 ## RES-STAGE-0.4-SEE-V2X-REAUDIT-V1
 
 Stage 0.4 任务 0.4.6.1：SEE-V2X 最小样本科学复核（独立复算，修正 0.4.6 PDR 口径与时延可信度）。**PDR 修正**：0.4.6 的 `independent_pdr` 为接收窗口口径（排除运行边界未接收段）系统性高估——Run 2 完整运行 PDR=**0.9737**（发送 5,742/接收 5,591），非 0.4.6 所报 1.0；字段 `per_ue_loss_pct`≈接收窗口口径。**正确口径=完整运行 PDR**（分母=运行内全部发送，物理意义可靠）。**时延**：数值复算 Verified，但跨运行固定时钟偏移 P50 8.8–32 ms（run8 32.0 vs run2 8.8）→ **合并分位数不可靠**，逐运行形态相对可信但含漂移。时钟同步凭现有数据不可解（Unverified）。正式校准仍不冻结；下一批 4.89 GiB 建议（GNSS 时钟参照+轨迹绑定）。0.4.6 封存包未改动。报告 `docs/STAGE_0_4_TASK_0_4_6_1_SCIENTIFIC_REAUDIT.md`；包 `code/outputs/formal/calibration/stage_0_4_see_v2x_reaudit_v1/`。Gate 保持 `pending_official_packet_access`。

@@ -78,7 +78,8 @@
     "docs/STAGE_0_4_TASK_0_4_6_1_SCIENTIFIC_REAUDIT.md",
     "docs/STAGE_0_4_TASK_0_4_7_SEE_V2X_BSM_VALIDATION.md",
     "docs/STAGE_0_4_TASK_0_4_7_1_SCIENTIFIC_REAUDIT.md",
-    "docs/STAGE_0_4_TASK_0_4_7_2_GNSS_VALIDITY_REPAIR.md"
+    "docs/STAGE_0_4_TASK_0_4_7_2_GNSS_VALIDITY_REPAIR.md",
+    "docs/STAGE_0_4_LIMITED_SCIENTIFIC_ACCEPTANCE_2026-10-17.md"
   ],
   "current": {
     "active_experiment_id": "stage_0_5",
@@ -273,7 +274,7 @@
       "purpose": "区分接收状态连续性与数据包传输、时延、丢包和消息采用。",
       "research_question": "当前 SPMD 数据能支持到哪一层通信证据？",
       "date": "2026-09-07",
-      "status": "verified_boundary_pending_packet_access",
+      "status": "completed_closed_limited_scope",
       "code_version": "当前入口已改用 stage_0_4；历史审计由哈希绑定。",
       "code_paths": [
         "code/src/riskprop/communication_observability.py"
@@ -299,7 +300,8 @@
         "RES-STAGE-0.4-SEE-V2X-REAUDIT-V1",
         "RES-STAGE-0.4-SEE-V2X-BSM-V1",
         "RES-STAGE-0.4-SEE-V2X-BSM-REAUDIT-V1",
-        "RES-STAGE-0.4-SEE-V2X-GNSS-REPAIR-V1"
+        "RES-STAGE-0.4-SEE-V2X-GNSS-REPAIR-V1",
+        "RES-STAGE-0.4-LIMITED-SCIENTIFIC-ACCEPTANCE-V1"
       ],
       "core_metrics": [
         "packet_schema_available",
@@ -307,10 +309,11 @@
         "loss_observable",
         "adoption_observable"
       ],
-      "current_conclusion": "RV_RX：接收状态连续性（V3）。RSE_BSM（V1）：RxDevice 为车辆 ID、无绝对时间。SPMD：车辆侧接收时间不存在。SEE-V2X 收束（0.4.7.2）：消息关联 Verified（48 对配对率 1.0）；日志接收比例 0.22–1.0（描述性）；真实链路 PDR/接收机会/绝对时延/跨设备时钟 Unverified；**距离—通信不可识别**（t1/t2/t3 GNSS 轨迹逐点相同为同一轨迹复制品，RSU 静态、室内无 GNSS）。**SEE-V2X 当前阶段收束**：受控 PC5 候选参考（配对方法/接收比例/相对时延）；剩余问题仅需作者说明或未来独立证据。Gate 保持 pending_official_packet_access。",
+      "current_conclusion": "Stage 0.4 Limited Scientific Acceptance（AAD-0.4.8，研究者批准）：Gate=pass_limited、Stage Status=Completed / Closed (Limited Scope)。验收范围仅限可观测性边界+描述性通信证据+参数不确定性处理原则；不验收真实性能模型/数值校准/距离函数/采用/核心因果效应。Verified：RV_RX 连续性、RSE_BSM 车辆侧接收内容、SEE-V2X 配对/接收比例/时延数值；Unverified（不升级）：链路 PDR、接收机会、绝对时延、距离—PDR、采用、自然交通外推；通信参数未冻结未校准（不足部分为标记不确定的实验/敏感性参数）。RV_RX V3 与 Packet 403 历史保留；Protocol Lock 与 Stage I 未解锁（readiness 测试锁定）。",
       "gate": {
-        "status": "pending_official_packet_access",
-        "portable_path": "evidence/results/RES-STAGE-0.4-COMM-OBS-V3/audit.json"
+        "status": "pass_limited",
+        "portable_path": "evidence/results/RES-STAGE-0.4-LIMITED-SCIENTIFIC-ACCEPTANCE-V1/gate_report.json",
+        "scope": "observability_boundary_and_descriptive_evidence_and_parameter_uncertainty"
       },
       "scientific_claim_eligible": false
     },
@@ -1342,45 +1345,6 @@
       "scientific_claim_eligible": false
     },
     {
-      "id": "RES-STAGE-0.4-SEE-V2X-BSM-V1",
-      "experiment_id": "stage_0_4",
-      "name": "Stage 0.4 SEE-V2X BSM 应用场景通信证据验证",
-      "status": "verified_pairing_pdr_receive_opportunity_gnss_aligned",
-      "portable_evidence_paths": [
-        "evidence/results/RES-STAGE-0.4-SEE-V2X-BSM-V1/audit.json",
-        "evidence/results/RES-STAGE-0.4-SEE-V2X-BSM-V1/config.json",
-        "evidence/results/RES-STAGE-0.4-SEE-V2X-BSM-V1/provenance.json",
-        "evidence/results/RES-STAGE-0.4-SEE-V2X-BSM-V1/manifest.json",
-        "evidence/results/RES-STAGE-0.4-SEE-V2X-BSM-V1/SHA256SUMS"
-      ],
-      "local_artifact_paths": [
-        "code/outputs/formal/calibration/stage_0_4_see_v2x_bsm_v1"
-      ],
-      "code_version_source": "code/outputs/formal/calibration/stage_0_4_see_v2x_bsm_v1/provenance.json",
-      "configuration_source": "code/outputs/formal/calibration/stage_0_4_see_v2x_bsm_v1/config.json",
-      "data_version_source": "emulating_applications.tar.gz 5,252,105,816 B sha256 17AB3AC150F8965CE6BF9F1935AA294C371A6CE811C3F7454549F842D6C00861",
-      "core_metrics": {
-        "scenes": 4,
-        "pairs": 12,
-        "pairing": "Verified",
-        "pdr_indoor": "0.998-1.0",
-        "pdr_outdoor": "0.22-1.0",
-        "receive_opportunity": "GNSS-verified (100% ts coverage)",
-        "gnss_distance": "0-50m only (insufficient for distance-PDR)",
-        "latency_p50_ms": {
-          "indoor": "~10.4-11.0",
-          "outdoor": "~11.2-11.7"
-        },
-        "clock_subms": "Unverified"
-      },
-      "current_conclusion": "BSM pairing Verified across 12 device-pairs x 4 scenes; PDR receive-opportunity confirmed via GNSS (outdoor 0.22-0.90 are true deliveries); GNSS time-aligned (same UTC epoch) but distance range 0-50m only; latency numerical, sub-ms clock Unverified. Controlled-PC5 candidate parameters (not formal calibration).",
-      "gate_status": "pending_official_packet_access",
-      "paper_locations": [
-        "docs/STAGE_0_4_TASK_0_4_7_SEE_V2X_BSM_VALIDATION.md"
-      ],
-      "scientific_claim_eligible": false
-    },
-    {
       "id": "RES-STAGE-0.4-SEE-V2X-BSM-REAUDIT-V1",
       "experiment_id": "stage_0_4",
       "name": "Stage 0.4 SEE-V2X BSM 通信证据科学复核",
@@ -1445,6 +1409,87 @@
       "gate_status": "pending_official_packet_access",
       "paper_locations": [
         "docs/STAGE_0_4_TASK_0_4_7_2_GNSS_VALIDITY_REPAIR.md"
+      ],
+      "scientific_claim_eligible": false
+    },
+    {
+      "id": "RES-STAGE-0.4-LIMITED-SCIENTIFIC-ACCEPTANCE-V1",
+      "experiment_id": "stage_0_4",
+      "name": "Stage 0.4 有限科学验收与正式收口",
+      "status": "limited_scientific_acceptance_pass_limited_closed",
+      "portable_evidence_paths": [
+        "evidence/results/RES-STAGE-0.4-LIMITED-SCIENTIFIC-ACCEPTANCE-V1/gate_report.json",
+        "evidence/results/RES-STAGE-0.4-LIMITED-SCIENTIFIC-ACCEPTANCE-V1/config.json",
+        "evidence/results/RES-STAGE-0.4-LIMITED-SCIENTIFIC-ACCEPTANCE-V1/provenance.json",
+        "evidence/results/RES-STAGE-0.4-LIMITED-SCIENTIFIC-ACCEPTANCE-V1/manifest.json",
+        "evidence/results/RES-STAGE-0.4-LIMITED-SCIENTIFIC-ACCEPTANCE-V1/SHA256SUMS",
+        "evidence/results/RES-STAGE-0.4-LIMITED-SCIENTIFIC-ACCEPTANCE-V1/report.md"
+      ],
+      "local_artifact_paths": [
+        "code/outputs/formal/calibration/stage_0_4_limited_acceptance_v1"
+      ],
+      "code_version_source": "code/tmp/finalize_stage_0_4_limited.py",
+      "configuration_source": "code/outputs/formal/calibration/stage_0_4_limited_acceptance_v1/config.json",
+      "data_version_source": "references sealed results RES-STAGE-0.4-COMM-OBS-V3 / RSE-BSM-V1 / SEE-V2X-* (audit sha256 in package provenance)",
+      "core_metrics": {
+        "gate_status": "pass_limited",
+        "stage_status": "Completed / Closed (Limited Scope)",
+        "verified_evidence": [
+          "RV_RX continuity",
+          "RSE_BSM vehicle-side content",
+          "SEE-V2X pairing (48 pairs)",
+          "reception-ratio ranges",
+          "latency numerical"
+        ],
+        "unverified": [
+          "link PDR",
+          "receive opportunity",
+          "absolute latency",
+          "distance-PDR",
+          "adoption",
+          "natural-traffic V2V"
+        ],
+        "parameters_calibrated": false,
+        "protocol_lock_created": false,
+        "stage_I_run": false
+      },
+      "current_conclusion": "Stage 0.4 closed at limited scope (researcher-approved): observability boundary + verified descriptive communication evidence + parameter-uncertainty principle; no performance-model accuracy / numerical calibration / distance function / adoption / core causal effect accepted. Communication parameters not frozen or calibrated. Protocol Lock and Stage I remain blocked.",
+      "gate_status": "pass_limited",
+      "paper_locations": [
+        "docs/STAGE_0_4_LIMITED_SCIENTIFIC_ACCEPTANCE_2026-10-17.md"
+      ],
+      "scientific_claim_eligible": false
+    },
+    {
+      "id": "RES-STAGE-0.4-SEE-V2X-BSM-V1",
+      "experiment_id": "stage_0_4",
+      "name": "Stage 0.4 SEE-V2X BSM 应用场景通信证据验证",
+      "status": "verified_pairing_reception_ratio_partly_superseded",
+      "portable_evidence_paths": [
+        "evidence/results/RES-STAGE-0.4-SEE-V2X-BSM-V1/audit.json",
+        "evidence/results/RES-STAGE-0.4-SEE-V2X-BSM-V1/config.json",
+        "evidence/results/RES-STAGE-0.4-SEE-V2X-BSM-V1/provenance.json",
+        "evidence/results/RES-STAGE-0.4-SEE-V2X-BSM-V1/manifest.json",
+        "evidence/results/RES-STAGE-0.4-SEE-V2X-BSM-V1/SHA256SUMS"
+      ],
+      "local_artifact_paths": [
+        "code/outputs/formal/calibration/stage_0_4_see_v2x_bsm_v1"
+      ],
+      "code_version_source": "code/outputs/formal/calibration/stage_0_4_see_v2x_bsm_v1/provenance.json",
+      "configuration_source": "code/outputs/formal/calibration/stage_0_4_see_v2x_bsm_v1/config.json",
+      "data_version_source": "emulating_applications.tar.gz 5,252,105,816 B sha256 17AB3AC150F8965CE6BF9F1935AA294C371A6CE811C3F7454549F842D6C00861",
+      "core_metrics": {
+        "scenes": 4,
+        "pairs": 12,
+        "pairing": "Verified",
+        "reception_ratio_indoor": "0.998-1.0",
+        "reception_ratio_outdoor": "0.22-1.0",
+        "note": "parts superseded by RES-STAGE-0.4-SEE-V2X-BSM-REAUDIT-V1 (pairing vs ratio, GNSS!=online, epoch x1000)"
+      },
+      "current_conclusion": "BSM pairing Verified (48 directed pairs); reception-ratio descriptive (indoor 0.998-1.0 / outdoor 0.22-1.0). Some interpretations corrected by the re-audit (pairing vs ratio conflation, GNSS!=wireless online, clock epoch x1000). Current wording via RES-STAGE-0.4-SEE-V2X-BSM-REAUDIT-V1.",
+      "gate_status": "pending_official_packet_access",
+      "paper_locations": [
+        "docs/STAGE_0_4_TASK_0_4_7_SEE_V2X_BSM_VALIDATION.md"
       ],
       "scientific_claim_eligible": false
     }

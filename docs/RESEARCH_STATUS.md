@@ -27,7 +27,7 @@
 | 阶段 0.1 | `engineering_pass_scientific_fail` |
 | 阶段 0.2 | `pass`（有限范围） |
 | 阶段 0.3 | `pass`（有限范围） |
-| 阶段 0.4 | `pending_official_packet_access`，可冻结为有限证据边界 |
+| 阶段 0.4 | `pass_limited`（有限范围，Completed / Closed Limited Scope，2026-10-17） |
 | 阶段 0.5 | `pending_simulation_sample` |
 | 阶段 0.6 | `blocked_by_calibration_and_tolerance_freeze` |
 | 协议锁 | 未通过；需按新阶段键重新生成 |
