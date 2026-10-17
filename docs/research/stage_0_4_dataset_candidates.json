@@ -397,6 +397,123 @@
       "download_priority": "P1 (as a channel: only after SPMD member analysis identifies specific gaps; submission is a researcher action",
       "verified_date": "2026-10-16",
       "source_citation": "https://its.dot.gov/data/data-request/ ; S3 AccessDenied response 2026-10-17; usdot-its-jpo-data-portal/sandbox (GitHub"
+    },
+    {
+      "dataset_id": "BRISTOL-ITS-G5-FLOURISH",
+      "program": "University of Bristol, FLOURISH Test Track (city-scale ITS-G5 DSRC)",
+      "publisher": "University of Bristol (data.bris.ac.uk)",
+      "official_url": "https://data.bris.ac.uk/data/dataset/eupowp7h3jl525yxhm3521f57",
+      "doi": "10.5523/bris.eupowp7h3jl525yxhm3521f57",
+      "paper": "arXiv:1903.10289 (Mavromatis/Tassi/Piechocki)",
+      "access_status": "public (Non-Commercial Government Licence); full zip 34.3 GiB; importedData MAT subset available",
+      "tech_chain": "ETSI ITS-G5/802.11p; 2 OBU vehicles + 4 RSUs; CAM 10 Hz; licensed DSRC + ISM bands; controlled city testbed (not natural traffic)",
+      "key_fields_documented": [
+        "TX-REQ-CAM rows: StationID, GenDeltaTime, SeqNum, GpsLon/Lat, CamLon/Lat, GpsSpeed, CamSpeed, Timestamp",
+        "RX-REQ-CAM rows: RxMAC, Validation, Protocol, StationID, GenDeltaTime, SeqNum, Gps/Cam position, Timestamp, RSSI (importedData MAT), receiver location",
+        "rawData: per-transceiver txt logs + pcap; importedData: per-day MAT (TxCAM/RxCAM/tcpDump)"
+      ],
+      "needs_support": {
+        "message_source": "Documented (StationID + RxMAC)",
+        "message_send": "Documented (Tx Timestamp in same-device log; record-level semantics)",
+        "message_receive": "Documented (Rx Timestamp per received CAM; device-record time, not RF time - declare semantics)",
+        "send_receive_pairing": "Documented (same-device log contains all Tx and Rx CAMs; match by SeqNum+StationID; per-paper method)",
+        "latency": "Documented (Tx-Rx timestamp difference of the same message; cross-device clock alignment per paper; drift Unverified)",
+        "loss_and_delivery": "Documented (SeqNum gap method for PDR/PER; send base = Tx log; paper-documented)",
+        "environment_conditions": "Documented (RSSI, receiver GPS, band, session metadata)",
+        "adoption_and_response": "NotObservable"
+      },
+      "estimated_download_size_bytes": 36836770304,
+      "download_priority": "P0 (batch A: importedData MAT subset first, full 34.3 GiB optional)",
+      "first_verifications": [
+        "Tx/Rx CAM pairing rate via SeqNum+StationID within same-device logs",
+        "per-message Tx-Rx timestamp difference distribution (declare record-time semantics)",
+        "PDR/SeqNum-gap statistics vs paper values",
+        "cross-device clock offset handling per paper method"
+      ],
+      "verified_date": "2026-10-17",
+      "source_citation": "data.bris.ac.uk dataset page + readme.txt (fetched 2026-10-17); arXiv:1903.10289"
+    },
+    {
+      "dataset_id": "SEE-V2X",
+      "program": "UCR CISL/GeNeLa, SenSys'25",
+      "publisher": "UC Riverside",
+      "official_url": "https://cisl.ucr.edu/SEE-V2X/ ; https://github.com/UCR-CISL/SEE-V2X",
+      "doi": "10.1145/3715014.3722077",
+      "access_status": "form-based access (GitHub 'Get Access'); size unknown",
+      "tech_chain": "C-V2X sidelink PC5 (LTE Rel.14 Mode 4); commercial COTS radios; parameter sweep + real scenarios",
+      "key_fields_documented": [
+        "application-layer network traces from the C-V2X radio",
+        "MAC layer traces and Sidelink Control Information (SCI) captured by USRP B210 (cross-layer)"
+      ],
+      "needs_support": {
+        "message_source": "Documented",
+        "message_send": "Documented",
+        "message_receive": "Documented",
+        "send_receive_pairing": "Documented",
+        "latency": "Documented (paper reports end-to-end latency distributions; recomputable from traces)",
+        "loss_and_delivery": "Documented (PDR reported)",
+        "environment_conditions": "Documented (parameter sweep + scenarios)",
+        "adoption_and_response": "NotObservable"
+      },
+      "estimated_download_size_bytes": null,
+      "download_priority": "P1 (batch B; C-V2X complement to DSRC; form required)",
+      "verified_date": "2026-10-17",
+      "source_citation": "SEE-V2X website + GitHub + DOI (2026-10-17)"
+    },
+    {
+      "dataset_id": "UCI-DSRC-415",
+      "program": "UCI Machine Learning Repository #415",
+      "publisher": "UCI ML Repository",
+      "official_url": "https://archive.ics.uci.edu/dataset/415/dsrc+vehicle+communications",
+      "doi": "10.24432/c5r615",
+      "access_status": "public; download 32.8 MB zip",
+      "tech_chain": "DSRC/802.11p (simulation+measurement mix); 20-100 OBU; normal and jammer scenarios",
+      "key_fields_documented": [
+        "transmitter ID, receiver ID, RSS, packet error rate, RSSI, SNR (per feature description)"
+      ],
+      "needs_support": {
+        "message_source": "Documented (transmitter ID)",
+        "message_send": "NotObservable (no per-message time)",
+        "message_receive": "NotObservable (no per-message receive time)",
+        "send_receive_pairing": "NotObservable",
+        "latency": "NotObservable",
+        "loss_and_delivery": "Verified-fields (PER samples with tx/rx IDs; suitable for delivery-rate model training/validation)",
+        "environment_conditions": "Documented (RSSI, SNR, jammer scenarios)",
+        "adoption_and_response": "NotObservable"
+      },
+      "estimated_download_size_bytes": 32800000,
+      "download_priority": "P1 (delivery-rate samples; tiny)",
+      "verified_date": "2026-10-17",
+      "source_citation": "archive.ics.uci.edu dataset page (2026-10-17)"
+    },
+    {
+      "dataset_id": "THEA-TAMPA-PHASE3-EVALUATION",
+      "program": "THEA (Tampa) Connected Vehicle Pilot Phase 3 evaluation",
+      "publisher": "USDOT (ROSA P)",
+      "official_url": "https://rosap.ntl.bts.gov/view/dot/55818/dot_55818_DS1.pdf ; TRID 2072171",
+      "doi": null,
+      "access_status": "report PDFs public; underlying EVENT+BSM data behind ITS DataHub Sandbox request form",
+      "tech_chain": "DSRC V2V FCW/EEBL applications; >1,000 equipped vehicles; naturalistic traffic (Tampa)",
+      "key_fields_documented": [
+        "driver response rate: 85% reduced speed within 3s of FCW",
+        "warning interface enabled: +9.93% probability of reacting",
+        "manual review sample: 6 events (2 reacted, 2 not, 2 already reacting)",
+        "post-warning longitudinal deceleration, lane change checks"
+      ],
+      "needs_support": {
+        "message_source": "Potential (event-level)",
+        "message_send": "NotObservable",
+        "message_receive": "NotObservable (warning time != message receive time)",
+        "send_receive_pairing": "NotObservable",
+        "latency": "NotObservable",
+        "loss_and_delivery": "NotObservable",
+        "environment_conditions": "Documented (evaluation context)",
+        "adoption_and_response": "Documented (driver-behavior-level response to warnings; NOT controller adoption; warning != adoption)"
+      },
+      "estimated_download_size_bytes": null,
+      "download_priority": "P1 (adoption-behavior real-world reference; documentation-level, no large download needed for the rate figures)",
+      "verified_date": "2026-10-17",
+      "source_citation": "ROSA P DOT 55818; ScienceDirect S1369847822002479; CV Pilots 2024 update (2026-10-17)"
     }
   ],
   "download_recommendations": {
@@ -448,5 +565,12 @@
     "dsecond": "milliseconds within minute (handbook 5.4 deciseconds-since-ignition description refuted by sample arithmetic)",
     "vehicle_receive_time": "Not Observable anywhere in the SPMD family -> V2V end-to-end latency not computable",
     "next_batch_recommendation": "BsmMd (17.29 GB) first; BsmP1 (55.72 GB) second; Packet deferred (not for the gate item alone); mCity Rx-BSM filtered dataset (~9 GB, Globus) as a new low-cost channel candidate"
+  },
+  "four_evidence_coverage_2026_10_17": {
+    "message_receive_time": "reliable candidates found (Bristol ITS-G5; SEE-V2X; AMCD cloud-link)",
+    "communication_latency": "reliable candidates under controlled conditions (Bristol; SEE-V2X); natural-traffic V2V end-to-end latency NOT available in any surveyed public dataset",
+    "message_loss_rate": "multiple qualified candidates (UCI DSRC; Bristol SeqNum-gap; SEE-V2X PDR)",
+    "message_adoption": "driver-behavior level real data only (THEA/Tampa); controller-level adoption NOT Observable in any public natural-vehicle dataset - permanent simulation/closed-test responsibility",
+    "scenario_mixing_prohibition": "controlled-test vs natural-traffic vs cloud-link vs driver-response metrics must not be mixed; cite per-module with scenario labels"
   }
 }

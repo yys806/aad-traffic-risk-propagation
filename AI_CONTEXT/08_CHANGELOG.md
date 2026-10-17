@@ -91,3 +91,7 @@ Zotero 六主题调整经批准并官方授权执行（更名 05、新建 06、�
 ## 2026-10-17 — AAD-0.4.3：身份与时间语义核查
 
 官方文档裁定 RxDevice≡车辆 ID、Gentime=生成时间（µs/1609.2，35 s 冲突待校准）、TxDevice+TxRandom=临时 ID 两半、DSecond=分钟内毫秒；**车辆侧接收时间全家族不存在→V2V 时延不可算**；RSE_BSM 采样设计 Unverified（≤2 记录方，10106 全配对）；holdout 4 候选待研究者；下一批建议 BsmMd→BsmP1，Packet 缓行，mCity Rx-BSM（~9 GB）新渠道候选。0.4.1/0.4.2 日期勘误为 2026-10-16。新官方文档存 `dataset/SPMD/`（SHA 已录）。报告 `docs/STAGE_0_4_TASK_0_4_3_IDENTITY_TIME_REVIEW.md`。
+
+## 2026-10-17 — AAD-0.4.4：通信关键证据专项调查
+
+四证据核查 9 候选：接收时间+时延=Bristol ITS-G5/SEE-V2X（受控条件，可信可复现）；丢失率=UCI/Bristol/SEE-V2X；采用=仅驾驶员层面（THEA），控制器 Not Observable（永久缺口）；自然交通 V2V 时延不可达。新增候选入清单；批次 A（Bristol MAT 子集）验收条件已定义；5 项待研究者批准。零下载，Gate 不变。报告 `docs/STAGE_0_4_TASK_0_4_4_COMMUNICATION_EVIDENCE_SEARCH.md`。

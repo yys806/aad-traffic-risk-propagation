@@ -71,7 +71,8 @@
     "docs/STAGE_0_4_TASK_0_4_1_DATASET_SURVEY.md",
     "docs/research/stage_0_4_dataset_candidates.json",
     "docs/STAGE_0_4_TASK_0_4_2_RSE_BSM_AUDIT.md",
-    "docs/STAGE_0_4_TASK_0_4_3_IDENTITY_TIME_REVIEW.md"
+    "docs/STAGE_0_4_TASK_0_4_3_IDENTITY_TIME_REVIEW.md",
+    "docs/STAGE_0_4_TASK_0_4_4_COMMUNICATION_EVIDENCE_SEARCH.md"
   ],
   "current": {
     "active_experiment_id": "stage_0_5",
@@ -295,7 +296,7 @@
         "loss_observable",
         "adoption_observable"
       ],
-      "current_conclusion": "RV_RX：接收状态连续性（V3，不变）。RSE_BSM：已获取并核验（V1）——RxDevice≡车辆设备 ID、无绝对时间、配对 Ambiguous、采样设计 Unverified（≤2 记录方/发送方 ID）。官方文档（AAD-0.4.3）裁定：Gentime=BSM 生成时间（µs 自 2004-01-01，1609.2；35 s 文档冲突待校准）、TxDevice/TxRandom=临时 ID 两半、DSecond=分钟内毫秒。硬边界：车辆侧接收时间在 SPMD 全家族不存在→V2V 端到端时延不可算；唯一时延类量=生成→RSE 捕获（需 Packet，身份匹配未证）。下一批建议 BsmMd 优先（身份钥匙）、BsmP1 次之、Packet 不为凑 Gate 项提前；mCity Rx-BSM 过滤数据集（~9 GB，Globus）为新渠道候选；均待研究者批准。holdout 隔离 4 候选待研究者。行为统计暂缓；Gate 保持 pending_official_packet_access。",
+      "current_conclusion": "RV_RX：接收状态连续性（V3）。RSE_BSM：已获取核验（V1），RxDevice 为车辆设备 ID、无绝对时间、采样设计 Unverified。SPMD 边界：车辆侧接收时间不存在，V2V 端到端时延不可算；Gentime 为生成时间（35 s 文档冲突待校准）。跨源专项调查（AAD-0.4.4）：接收时间+同消息时延的真实证据为 Bristol ITS-G5（受控条件，公开 34.3 GiB/MAT 子集）与 SEE-V2X（C-V2X）；丢失率为 UCI DSRC/Bristol/SEE-V2X；采用仅驾驶员层面（THEA Phase 3），控制器层面永久缺口；自然交通 V2V 时延公开数据不可达。下一批建议 Bristol importedData 批次 A（验收条件已定义）；BsmMd 批次 C 并行；Globus/mCity 与 SEE-V2X 表单待研究者。行为统计暂缓（holdout 4 候选待研究者）；Gate 保持 pending_official_packet_access。",
       "gate": {
         "status": "pending_official_packet_access",
         "portable_path": "evidence/results/RES-STAGE-0.4-COMM-OBS-V3/audit.json"

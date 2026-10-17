@@ -76,3 +76,7 @@
 ## 2026-10-17 — AAD-0.4.3：SPMD 身份与时间语义核查 + 日期勘误
 
 只读核查（零下载；Gate 不变）。新获官方文档（ROSA P WSU BSM Codebook + mCity 数据集文档镜像，存 `dataset/SPMD/` 并记 SHA）：RxDevice≡车辆设备 ID、Gentime=BSM 生成时间（µs 自 2004-01-01，1609.2；与样本手册 35 s 换算存在官方文档冲突待校准）、TxDevice/TxRandom=临时 ID 静态/随机 2 字节、DSecond=分钟内毫秒（手册 §5.4 描述被样例算术否定）。核心边界：**车辆侧接收时间在 SPMD 全家族不存在→V2V 端到端时延不可算**；唯一时延类量为生成→RSE 捕获（需 Packet 且身份匹配未证）。RSE_BSM 采样设计 Unverified（≤2 记录方/发送方 ID、双记录对 102,469/102,469 全含 10106）。Holdout 4 候选方案待研究者。下一批建议：BsmMd（17.29 GB）优先、BsmP1（55.72 GB）次之、Packet 不为凑 Gate 项提前；mCity Rx-BSM 过滤数据集（~9 GB，Globus）为新渠道候选。**日期勘误**：AAD-0.4.1/0.4.2 实际均执行于 2026-10-16（git commit 与封存 created_utc 证明；原存活文档分别误记 2026-10-17/2026-10-18，已非覆盖式更正；封存包零改动）。报告：`docs/STAGE_0_4_TASK_0_4_3_IDENTITY_TIME_REVIEW.md`。
+
+## 2026-10-17 — AAD-0.4.4：真实车联网通信关键证据专项调查
+
+只读专项调查（零下载、零申请；Gate 不变）。跨 DSRC/ITS-G5、C-V2X、V2I、CV Pilot 四方向核查 9 候选并交叉验证。结论：接收时间+同消息时延获得可信真实证据（Bristol ITS-G5 FLOURISH：同设备日志 Tx/Rx CAM 双侧时间戳+SeqNum+RSSI，公开 34.3 GiB 含 MAT 子集；SEE-V2X：C-V2X 跨层端到端时延，表单）；丢失率多候选（UCI DSRC PER 样本、Bristol SeqNum 间隙法、SEE-V2X PDR）；采用仅驾驶员行为层面有真实数据（THEA Phase 3：85% 3 s 内减速、+9.93% 接口效应），控制器层面为永久缺口。自然交通 V2V 端到端时延公开数据不可达（SPMD/mCity 同边界）。新增 4 个候选入结构化清单；定义最小验证批次 A（Bristol importedData，<=25 GiB，验收条件明确）；列出 5 项待研究者批准决定（含验收范围是否接受受控试验参考）。报告：`docs/STAGE_0_4_TASK_0_4_4_COMMUNICATION_EVIDENCE_SEARCH.md`。
