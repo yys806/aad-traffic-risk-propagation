@@ -1,0 +1,546 @@
+{
+  "schema_version": "aad.stage-0-4.see-v2x-gnss-repair.audit.v1",
+  "experiment_id": "stage_0_4",
+  "result_id": "RES-STAGE-0.4-SEE-V2X-GNSS-REPAIR-V1",
+  "task_id": "AAD-0.4.7.2",
+  "created_utc": "2026-10-17T09:31:12.710851+00:00",
+  "gate_status": "pending_official_packet_access",
+  "gate_unchanged": true,
+  "fixes": "out-of-window clamp removed; time-error vs real neighbour; unit ns<->us; track-identity check",
+  "gnss_audit": {
+    "t1": {
+      "rows_raw": 962995,
+      "rows_dedup": 962995,
+      "span_s": 9631.0,
+      "monotonic": true,
+      "median_dt_ms": 10.0,
+      "max_gap_ms": 1029.99975,
+      "dup_coord_frac": 0.230722
+    },
+    "t2": {
+      "rows_raw": 962995,
+      "rows_dedup": 962995,
+      "span_s": 9631.0,
+      "monotonic": true,
+      "median_dt_ms": 10.0,
+      "max_gap_ms": 1029.99975,
+      "dup_coord_frac": 0.230722
+    },
+    "t3": {
+      "rows_raw": 962995,
+      "rows_dedup": 962995,
+      "span_s": 9631.0,
+      "monotonic": true,
+      "median_dt_ms": 10.0,
+      "max_gap_ms": 1029.99975,
+      "dup_coord_frac": 0.230722
+    },
+    "rsu": {
+      "rows": 1,
+      "note": "static single point; NOT continuous online or high-precision evidence",
+      "lat": 33.975445,
+      "lon": -117.340079
+    }
+  },
+  "key_finding": {
+    "device_tracks_identical": "t1/t2/t3 GNSS tracks are point-for-point IDENTICAL (962995/962995) - replicated track, not 3 independent devices",
+    "inter_device_distance": "NOT identifiable (all pairs d=0m from replicated track); NOT vehicle coincidence",
+    "rsu": "static single point (124-2839m from track); not continuous online evidence",
+    "indoor": "no valid GNSS (tx outside window, correctly rejected)",
+    "clock": "interpolation != clock sync; cross-device sync Unverified"
+  },
+  "distance_communication": "NOT identifiable (track replication + static RSU + indoor no GNSS); do not fit distance-PDR",
+  "unaffected": "message pairing (1.0) and reception ratios (0.22-1.0) unchanged (GNSS-independent)",
+  "see_v2x_closure": {
+    "usable": "pairing method, reception-ratio ranges, relative latency ordering (controlled-PC5 candidate reference)",
+    "unverified": [
+      "true link PDR",
+      "receive opportunity",
+      "absolute latency",
+      "distance-PDR",
+      "natural-traffic V2V"
+    ],
+    "recommendation": "close SEE-V2X stage; remaining questions need author input or future independent evidence only"
+  },
+  "scientific_claim_eligible": false,
+  "author_query_draft_prepared": true,
+  "author_query_sent": false,
+  "scenes": {
+    "indoor_1": {
+      "rsu<-t1": {
+        "tx_total": 36150,
+        "gnss_coverage_of_tx_window": "0",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {},
+        "distance_m": null
+      },
+      "rsu<-t2": {
+        "tx_total": 36145,
+        "gnss_coverage_of_tx_window": "0",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {},
+        "distance_m": null
+      },
+      "rsu<-t3": {
+        "tx_total": 36151,
+        "gnss_coverage_of_tx_window": "0",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {},
+        "distance_m": null
+      },
+      "t1<-rsu": {
+        "tx_total": 36143,
+        "gnss_coverage_of_tx_window": "no_gnss",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {},
+        "distance_m": null
+      },
+      "t1<-t2": {
+        "tx_total": 36145,
+        "gnss_coverage_of_tx_window": "0",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {
+          "outside_window": 72290
+        },
+        "distance_m": null
+      },
+      "t1<-t3": {
+        "tx_total": 36151,
+        "gnss_coverage_of_tx_window": "0",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {
+          "outside_window": 72302
+        },
+        "distance_m": null
+      },
+      "t2<-rsu": {
+        "tx_total": 36143,
+        "gnss_coverage_of_tx_window": "no_gnss",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {},
+        "distance_m": null
+      },
+      "t2<-t1": {
+        "tx_total": 36150,
+        "gnss_coverage_of_tx_window": "0",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {
+          "outside_window": 72300
+        },
+        "distance_m": null
+      },
+      "t2<-t3": {
+        "tx_total": 36151,
+        "gnss_coverage_of_tx_window": "0",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {
+          "outside_window": 72302
+        },
+        "distance_m": null
+      },
+      "t3<-rsu": {
+        "tx_total": 36143,
+        "gnss_coverage_of_tx_window": "no_gnss",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {},
+        "distance_m": null
+      },
+      "t3<-t1": {
+        "tx_total": 36150,
+        "gnss_coverage_of_tx_window": "0",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {
+          "outside_window": 72300
+        },
+        "distance_m": null
+      },
+      "t3<-t2": {
+        "tx_total": 36145,
+        "gnss_coverage_of_tx_window": "0",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {
+          "outside_window": 72290
+        },
+        "distance_m": null
+      }
+    },
+    "indoor_2": {
+      "rsu<-t1": {
+        "tx_total": 36151,
+        "gnss_coverage_of_tx_window": "0",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {},
+        "distance_m": null
+      },
+      "rsu<-t2": {
+        "tx_total": 36145,
+        "gnss_coverage_of_tx_window": "0",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {},
+        "distance_m": null
+      },
+      "rsu<-t3": {
+        "tx_total": 36151,
+        "gnss_coverage_of_tx_window": "0",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {},
+        "distance_m": null
+      },
+      "t1<-rsu": {
+        "tx_total": 36144,
+        "gnss_coverage_of_tx_window": "no_gnss",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {},
+        "distance_m": null
+      },
+      "t1<-t2": {
+        "tx_total": 36145,
+        "gnss_coverage_of_tx_window": "0",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {
+          "outside_window": 72290
+        },
+        "distance_m": null
+      },
+      "t1<-t3": {
+        "tx_total": 36151,
+        "gnss_coverage_of_tx_window": "0",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {
+          "outside_window": 72302
+        },
+        "distance_m": null
+      },
+      "t2<-rsu": {
+        "tx_total": 36144,
+        "gnss_coverage_of_tx_window": "no_gnss",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {},
+        "distance_m": null
+      },
+      "t2<-t1": {
+        "tx_total": 36151,
+        "gnss_coverage_of_tx_window": "0",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {
+          "outside_window": 72302
+        },
+        "distance_m": null
+      },
+      "t2<-t3": {
+        "tx_total": 36151,
+        "gnss_coverage_of_tx_window": "0",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {
+          "outside_window": 72302
+        },
+        "distance_m": null
+      },
+      "t3<-rsu": {
+        "tx_total": 36144,
+        "gnss_coverage_of_tx_window": "no_gnss",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {},
+        "distance_m": null
+      },
+      "t3<-t1": {
+        "tx_total": 36151,
+        "gnss_coverage_of_tx_window": "0",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {
+          "outside_window": 72302
+        },
+        "distance_m": null
+      },
+      "t3<-t2": {
+        "tx_total": 36145,
+        "gnss_coverage_of_tx_window": "0",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {
+          "outside_window": 72290
+        },
+        "distance_m": null
+      }
+    },
+    "outdoor_1": {
+      "rsu<-t1": {
+        "tx_total": 5742,
+        "gnss_coverage_of_tx_window": "5742/5742",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {},
+        "distance_m": null
+      },
+      "rsu<-t2": {
+        "tx_total": 5865,
+        "gnss_coverage_of_tx_window": "5865/5865",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {},
+        "distance_m": null
+      },
+      "rsu<-t3": {
+        "tx_total": 6101,
+        "gnss_coverage_of_tx_window": "6101/6101",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {},
+        "distance_m": null
+      },
+      "t1<-rsu": {
+        "tx_total": 6162,
+        "gnss_coverage_of_tx_window": "no_gnss",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {},
+        "distance_m": null
+      },
+      "t1<-t2": {
+        "tx_total": 5865,
+        "gnss_coverage_of_tx_window": "5865/5865",
+        "valid_sent_with_position": 5865,
+        "pos_match_rate_sent": 1.0,
+        "reject_reasons": {},
+        "distance_m": {
+          "min": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        }
+      },
+      "t1<-t3": {
+        "tx_total": 6101,
+        "gnss_coverage_of_tx_window": "6101/6101",
+        "valid_sent_with_position": 6101,
+        "pos_match_rate_sent": 1.0,
+        "reject_reasons": {},
+        "distance_m": {
+          "min": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        }
+      },
+      "t2<-rsu": {
+        "tx_total": 6162,
+        "gnss_coverage_of_tx_window": "no_gnss",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {},
+        "distance_m": null
+      },
+      "t2<-t1": {
+        "tx_total": 5742,
+        "gnss_coverage_of_tx_window": "5742/5742",
+        "valid_sent_with_position": 5742,
+        "pos_match_rate_sent": 1.0,
+        "reject_reasons": {},
+        "distance_m": {
+          "min": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        }
+      },
+      "t2<-t3": {
+        "tx_total": 6101,
+        "gnss_coverage_of_tx_window": "6101/6101",
+        "valid_sent_with_position": 6101,
+        "pos_match_rate_sent": 1.0,
+        "reject_reasons": {},
+        "distance_m": {
+          "min": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        }
+      },
+      "t3<-rsu": {
+        "tx_total": 6162,
+        "gnss_coverage_of_tx_window": "no_gnss",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {},
+        "distance_m": null
+      },
+      "t3<-t1": {
+        "tx_total": 5742,
+        "gnss_coverage_of_tx_window": "5742/5742",
+        "valid_sent_with_position": 5742,
+        "pos_match_rate_sent": 1.0,
+        "reject_reasons": {},
+        "distance_m": {
+          "min": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        }
+      },
+      "t3<-t2": {
+        "tx_total": 5865,
+        "gnss_coverage_of_tx_window": "5865/5865",
+        "valid_sent_with_position": 5865,
+        "pos_match_rate_sent": 1.0,
+        "reject_reasons": {},
+        "distance_m": {
+          "min": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        }
+      }
+    },
+    "outdoor_2": {
+      "rsu<-t1": {
+        "tx_total": 3712,
+        "gnss_coverage_of_tx_window": "3712/3712",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {},
+        "distance_m": null
+      },
+      "rsu<-t2": {
+        "tx_total": 4163,
+        "gnss_coverage_of_tx_window": "4163/4163",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {},
+        "distance_m": null
+      },
+      "rsu<-t3": {
+        "tx_total": 4487,
+        "gnss_coverage_of_tx_window": "4487/4487",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {},
+        "distance_m": null
+      },
+      "t1<-rsu": {
+        "tx_total": 5134,
+        "gnss_coverage_of_tx_window": "no_gnss",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {},
+        "distance_m": null
+      },
+      "t1<-t2": {
+        "tx_total": 4163,
+        "gnss_coverage_of_tx_window": "4163/4163",
+        "valid_sent_with_position": 4163,
+        "pos_match_rate_sent": 1.0,
+        "reject_reasons": {},
+        "distance_m": {
+          "min": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        }
+      },
+      "t1<-t3": {
+        "tx_total": 4487,
+        "gnss_coverage_of_tx_window": "4487/4487",
+        "valid_sent_with_position": 4487,
+        "pos_match_rate_sent": 1.0,
+        "reject_reasons": {},
+        "distance_m": {
+          "min": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        }
+      },
+      "t2<-rsu": {
+        "tx_total": 5134,
+        "gnss_coverage_of_tx_window": "no_gnss",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {},
+        "distance_m": null
+      },
+      "t2<-t1": {
+        "tx_total": 3712,
+        "gnss_coverage_of_tx_window": "3712/3712",
+        "valid_sent_with_position": 3712,
+        "pos_match_rate_sent": 1.0,
+        "reject_reasons": {},
+        "distance_m": {
+          "min": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        }
+      },
+      "t2<-t3": {
+        "tx_total": 4487,
+        "gnss_coverage_of_tx_window": "4487/4487",
+        "valid_sent_with_position": 4487,
+        "pos_match_rate_sent": 1.0,
+        "reject_reasons": {},
+        "distance_m": {
+          "min": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        }
+      },
+      "t3<-rsu": {
+        "tx_total": 5134,
+        "gnss_coverage_of_tx_window": "no_gnss",
+        "valid_sent_with_position": 0,
+        "pos_match_rate_sent": 0.0,
+        "reject_reasons": {},
+        "distance_m": null
+      },
+      "t3<-t1": {
+        "tx_total": 3712,
+        "gnss_coverage_of_tx_window": "3712/3712",
+        "valid_sent_with_position": 3712,
+        "pos_match_rate_sent": 1.0,
+        "reject_reasons": {},
+        "distance_m": {
+          "min": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        }
+      },
+      "t3<-t2": {
+        "tx_total": 4163,
+        "gnss_coverage_of_tx_window": "4163/4163",
+        "valid_sent_with_position": 4163,
+        "pos_match_rate_sent": 1.0,
+        "reject_reasons": {},
+        "distance_m": {
+          "min": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        }
+      }
+    }
+  }
+}
