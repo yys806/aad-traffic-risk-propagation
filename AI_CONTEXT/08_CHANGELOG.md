@@ -119,3 +119,7 @@ PDR 接收机会 Unverified（启停 vs 丢包不可分，完整运行 PDR 仅�
 ## 2026-10-17 — AAD-0.4.7.1：SEE-V2X BSM 复核
 
 配对率（1.0）vs 接收比例（0.22–1.0）分开；GNSS≠接收机在线（室内无 GNSS、RSU 静态）→ 链路 PDR/接收机会 Unverified；时钟纪元 ×1000 歧义 → 绝对时延 Unverified；距离仅室外 ~0–10 m。GitHub 交付补齐。Gate 不变。报告 `docs/STAGE_0_4_TASK_0_4_7_1_SCIENTIFIC_REAUDIT.md`。
+
+## 2026-10-17 — AAD-0.4.7.2：SEE-V2X GNSS 修复与收束
+
+t1/t2/t3 GNSS 轨迹逐点相同（同一轨迹复制品）→ 设备间距离不可识别；修复窗口外钳制/时间误差/轨迹独立性。通信统计不受影响。**SEE-V2X 收束**：受控 PC5 候选参考，链路 PDR/接收机会/绝对时延/距离—PDR/自然 V2V Unverified。Gate 不变。结果 `RES-STAGE-0.4-SEE-V2X-GNSS-REPAIR-V1`。

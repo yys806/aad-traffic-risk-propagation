@@ -77,7 +77,8 @@
     "docs/STAGE_0_4_TASK_0_4_6_SEE_V2X_MINIMAL_VALIDATION.md",
     "docs/STAGE_0_4_TASK_0_4_6_1_SCIENTIFIC_REAUDIT.md",
     "docs/STAGE_0_4_TASK_0_4_7_SEE_V2X_BSM_VALIDATION.md",
-    "docs/STAGE_0_4_TASK_0_4_7_1_SCIENTIFIC_REAUDIT.md"
+    "docs/STAGE_0_4_TASK_0_4_7_1_SCIENTIFIC_REAUDIT.md",
+    "docs/STAGE_0_4_TASK_0_4_7_2_GNSS_VALIDITY_REPAIR.md"
   ],
   "current": {
     "active_experiment_id": "stage_0_5",
@@ -297,7 +298,8 @@
         "RES-STAGE-0.4-SEE-V2X-MINIMAL-V1",
         "RES-STAGE-0.4-SEE-V2X-REAUDIT-V1",
         "RES-STAGE-0.4-SEE-V2X-BSM-V1",
-        "RES-STAGE-0.4-SEE-V2X-BSM-REAUDIT-V1"
+        "RES-STAGE-0.4-SEE-V2X-BSM-REAUDIT-V1",
+        "RES-STAGE-0.4-SEE-V2X-GNSS-REPAIR-V1"
       ],
       "core_metrics": [
         "packet_schema_available",
@@ -305,7 +307,7 @@
         "loss_observable",
         "adoption_observable"
       ],
-      "current_conclusion": "RV_RX：接收状态连续性（V3）。RSE_BSM（V1）：RxDevice 为车辆 ID、无绝对时间。SPMD：车辆侧接收时间不存在。SEE-V2X BSM 复核（0.4.7.1）：消息关联 Verified（48 对配对率 1.0）；**配对率（1.0）与接收比例（0.22–1.0）已分开**；真实链路 PDR 与接收机会 **Unverified**（GNSS≠接收机在线，室内无 GNSS、RSU 静态、无无线模块状态证据）；时钟纪元 ×1000 歧义 → 绝对时延 Unverified；距离仅室外 ~0–10 m（室内无 GNSS）。受控 PC5 候选参数仅限描述性接收比例与方法，正式校准仍冻结。Gate 保持 pending_official_packet_access。",
+      "current_conclusion": "RV_RX：接收状态连续性（V3）。RSE_BSM（V1）：RxDevice 为车辆 ID、无绝对时间。SPMD：车辆侧接收时间不存在。SEE-V2X 收束（0.4.7.2）：消息关联 Verified（48 对配对率 1.0）；日志接收比例 0.22–1.0（描述性）；真实链路 PDR/接收机会/绝对时延/跨设备时钟 Unverified；**距离—通信不可识别**（t1/t2/t3 GNSS 轨迹逐点相同为同一轨迹复制品，RSU 静态、室内无 GNSS）。**SEE-V2X 当前阶段收束**：受控 PC5 候选参考（配对方法/接收比例/相对时延）；剩余问题仅需作者说明或未来独立证据。Gate 保持 pending_official_packet_access。",
       "gate": {
         "status": "pending_official_packet_access",
         "portable_path": "evidence/results/RES-STAGE-0.4-COMM-OBS-V3/audit.json"
@@ -1410,6 +1412,39 @@
       "gate_status": "pending_official_packet_access",
       "paper_locations": [
         "docs/STAGE_0_4_TASK_0_4_7_1_SCIENTIFIC_REAUDIT.md"
+      ],
+      "scientific_claim_eligible": false
+    },
+    {
+      "id": "RES-STAGE-0.4-SEE-V2X-GNSS-REPAIR-V1",
+      "experiment_id": "stage_0_4",
+      "name": "Stage 0.4 SEE-V2X GNSS 时空匹配修复与证据收束",
+      "status": "gnss_repaired_distance_not_identifiable_closure",
+      "portable_evidence_paths": [
+        "evidence/results/RES-STAGE-0.4-SEE-V2X-GNSS-REPAIR-V1/audit.json",
+        "evidence/results/RES-STAGE-0.4-SEE-V2X-GNSS-REPAIR-V1/config.json",
+        "evidence/results/RES-STAGE-0.4-SEE-V2X-GNSS-REPAIR-V1/provenance.json",
+        "evidence/results/RES-STAGE-0.4-SEE-V2X-GNSS-REPAIR-V1/manifest.json",
+        "evidence/results/RES-STAGE-0.4-SEE-V2X-GNSS-REPAIR-V1/SHA256SUMS"
+      ],
+      "local_artifact_paths": [
+        "code/outputs/formal/calibration/stage_0_4_see_v2x_gnss_repair_v1"
+      ],
+      "code_version_source": "code/outputs/formal/calibration/stage_0_4_see_v2x_gnss_repair_v1/provenance.json",
+      "configuration_source": "code/outputs/formal/calibration/stage_0_4_see_v2x_gnss_repair_v1/config.json",
+      "data_version_source": "emulating_applications.tar.gz (same as prior SEE-V2X results)",
+      "core_metrics": {
+        "device_tracks_identical": true,
+        "inter_device_distance": "not identifiable (replicated track, d=0)",
+        "distance_communication": "not identifiable",
+        "pairing_unaffected": true,
+        "reception_ratio_unaffected": true,
+        "closure": "SEE-V2X stage closed; controlled-PC5 candidate reference only"
+      },
+      "current_conclusion": "GNSS matcher repaired (no edge clamp, real-neighbour error, track-identity check). KEY: t1/t2/t3 GNSS tracks are point-for-point identical (replicated track) -> inter-device distance NOT identifiable (d=0 is replication, not coincidence); RSU static, indoor no GNSS -> distance-communication NOT identifiable. Pairing (1.0) and reception ratios (0.22-1.0) unaffected. SEE-V2X closed: controlled-PC5 candidate reference; link PDR / opportunity / absolute latency / distance-PDR / natural-V2V remain Unverified.",
+      "gate_status": "pending_official_packet_access",
+      "paper_locations": [
+        "docs/STAGE_0_4_TASK_0_4_7_2_GNSS_VALIDITY_REPAIR.md"
       ],
       "scientific_claim_eligible": false
     }

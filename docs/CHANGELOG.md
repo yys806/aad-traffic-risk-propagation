@@ -104,3 +104,7 @@
 ## 2026-10-17 — AAD-0.4.7.1：SEE-V2X BSM 科学复核与交付修复
 
 修正 0.4.7：①配对率（1.0）与接收比例（0.22–1.0）概念混淆已分开（48 对）；②GNSS≠接收机在线（室内无 GNSS、RSU 静态）→ 真实链路 PDR 与接收机会 Unverified；③tx_timestamp 与 GNSS 差 ×1000 → 时钟纪元歧义、绝对时延 Unverified；④距离仅室外 ~0–10 m。GitHub 交付修复：补齐报告/注册表/AI_CONTEXT、test 路径修复（纯克隆 5 算术测试通过）、新结果 `RES-STAGE-0.4-SEE-V2X-BSM-REAUDIT-V1`。Gate 不变。报告：`docs/STAGE_0_4_TASK_0_4_7_1_SCIENTIFIC_REAUDIT.md`。
+
+## 2026-10-17 — AAD-0.4.7.2：SEE-V2X GNSS 修复与收束
+
+修复 GNSS 匹配三缺陷（窗口外钳制/时间误差单位/轨迹独立性）。决定性发现：t1/t2/t3 GNSS 轨迹逐点相同（同一轨迹复制品）→ 设备间距离不可识别（恒 0 非重合）；RSU 静态、室内无 GNSS → 距离—通信不可识别。通信统计不受影响。**SEE-V2X 收束**：受控 PC5 候选参考（配对/接收比例/相对时延），链路 PDR/接收机会/绝对时延/距离—PDR/自然交通 V2V 保持 Unverified。新增 6 GNSS 测试全过。零下载零邮件，Gate 不变。结果 `RES-STAGE-0.4-SEE-V2X-GNSS-REPAIR-V1`；报告 `docs/STAGE_0_4_TASK_0_4_7_2_GNSS_VALIDITY_REPAIR.md`。
