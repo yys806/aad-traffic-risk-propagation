@@ -1,0 +1,1216 @@
+{
+  "schema_version": "aad.stage-0-4.see-v2x-bsm-reaudit.audit.v1",
+  "experiment_id": "stage_0_4",
+  "result_id": "RES-STAGE-0.4-SEE-V2X-BSM-REAUDIT-V1",
+  "task_id": "AAD-0.4.7.1",
+  "created_utc": "2026-10-17T08:55:08.182536+00:00",
+  "gate_status": "pending_official_packet_access",
+  "gate_unchanged": true,
+  "corrects": "RES-STAGE-0.4-SEE-V2X-BSM-V1 (pairing-rate vs reception-ratio conflation; GNSS->receive-online overreach; clock epoch ambiguity)",
+  "pairing": {
+    "definition": "pairing_rate = unique rx rows matched to tx / total rx data rows",
+    "result": "1.000 across all 48 directed device-pairs (4 scenes x 12 pairs)",
+    "checks": "device identity verified; seq_num unique; extra=1 excluded; no dup rx/tx; no wraparound"
+  },
+  "reception_ratio": {
+    "definition": "unique_paired / tx_total (run scope); descriptive, NOT link PDR",
+    "indoor": "0.998-0.9999",
+    "outdoor_1": "0.22-0.90",
+    "outdoor_2": "0.22-1.00"
+  },
+  "receive_opportunity": {
+    "status": "Unverified for all 48 pairs",
+    "reason": "GNSS presence != wireless receiver online; no RRC/PHY/wireless-module state evidence; RSU has static point only; do not generalize mobile GNSS to RSU",
+    "note": "tx_timestamp (us) vs GNSS UTC_ns differ by x1000 -> epoch alignment is numerical scaling, not independent clock evidence"
+  },
+  "clock": {
+    "epoch": "same UTC epoch but x1000 scaling; no PPS/PTP/common-clock; inter-device error bound Unavailable",
+    "absolute_latency": "Unverified",
+    "relative_in_run": "reliable",
+    "cross_run_distribution": "descriptive only"
+  },
+  "gnss_distance": {
+    "coverage": "outdoor scenes only (indoor tx outside GNSS window)",
+    "range": "outdoor ~0-10m; insufficient for distance-PDR; RSU static; GNSS jitter",
+    "do_not": "do not fit distance-PDR curve or extrapolate long range"
+  },
+  "scenes": {
+    "indoor_1": {
+      "rsu<-t1": {
+        "tx_total": 36150,
+        "rx_data_rows": 36116,
+        "rx_extra": 397476,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 36116,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.999059,
+        "receive_opportunity_evidence": "gnss_tx_only",
+        "gnss_distance_m": {
+          "n": 0,
+          "min": null,
+          "p50": null,
+          "max": null,
+          "pos_match_rate": 0.0,
+          "mean_pos_time_err_ms": null
+        },
+        "latency_ms": {
+          "n": 36116,
+          "p50": 10.45,
+          "p95": 19.39
+        }
+      },
+      "rsu<-t2": {
+        "tx_total": 36145,
+        "rx_data_rows": 36065,
+        "rx_extra": 397476,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 36065,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.997787,
+        "receive_opportunity_evidence": "gnss_tx_only",
+        "gnss_distance_m": {
+          "n": 0,
+          "min": null,
+          "p50": null,
+          "max": null,
+          "pos_match_rate": 0.0,
+          "mean_pos_time_err_ms": null
+        },
+        "latency_ms": {
+          "n": 36065,
+          "p50": 9.59,
+          "p95": 20.57
+        }
+      },
+      "rsu<-t3": {
+        "tx_total": 36151,
+        "rx_data_rows": 36136,
+        "rx_extra": 397484,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 36136,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.999585,
+        "receive_opportunity_evidence": "gnss_tx_only",
+        "gnss_distance_m": {
+          "n": 0,
+          "min": null,
+          "p50": null,
+          "max": null,
+          "pos_match_rate": 0.0,
+          "mean_pos_time_err_ms": null
+        },
+        "latency_ms": {
+          "n": 36136,
+          "p50": 10.96,
+          "p95": 19.89
+        }
+      },
+      "t1<-rsu": {
+        "tx_total": 36143,
+        "rx_data_rows": 36123,
+        "rx_extra": 397529,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 36123,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.999447,
+        "receive_opportunity_evidence": "none",
+        "gnss_distance_m": {
+          "n": 0,
+          "min": null,
+          "p50": null,
+          "max": null,
+          "pos_match_rate": 0.0,
+          "mean_pos_time_err_ms": null
+        },
+        "latency_ms": {
+          "n": 36123,
+          "p50": 9.54,
+          "p95": 19.4
+        }
+      },
+      "t1<-t2": {
+        "tx_total": 36145,
+        "rx_data_rows": 36128,
+        "rx_extra": 397531,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 36128,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.99953,
+        "receive_opportunity_evidence": "gnss_both",
+        "gnss_distance_m": {
+          "n": 36128,
+          "min": 0.0,
+          "p50": 0.0,
+          "max": 0.0,
+          "pos_match_rate": 1.0,
+          "mean_pos_time_err_ms": 60262708257.7
+        },
+        "latency_ms": {
+          "n": 36128,
+          "p50": 9.52,
+          "p95": 19.75
+        }
+      },
+      "t1<-t3": {
+        "tx_total": 36151,
+        "rx_data_rows": 36141,
+        "rx_extra": 397539,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 36141,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.999723,
+        "receive_opportunity_evidence": "gnss_both",
+        "gnss_distance_m": {
+          "n": 36141,
+          "min": 0.0,
+          "p50": 0.0,
+          "max": 0.0,
+          "pos_match_rate": 1.0,
+          "mean_pos_time_err_ms": 60262833272.6
+        },
+        "latency_ms": {
+          "n": 36141,
+          "p50": 10.99,
+          "p95": 19.86
+        }
+      },
+      "t2<-rsu": {
+        "tx_total": 36143,
+        "rx_data_rows": 36063,
+        "rx_extra": 397496,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 36063,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.997787,
+        "receive_opportunity_evidence": "none",
+        "gnss_distance_m": {
+          "n": 0,
+          "min": null,
+          "p50": null,
+          "max": null,
+          "pos_match_rate": 0.0,
+          "mean_pos_time_err_ms": null
+        },
+        "latency_ms": {
+          "n": 36063,
+          "p50": 9.51,
+          "p95": 19.48
+        }
+      },
+      "t2<-t1": {
+        "tx_total": 36150,
+        "rx_data_rows": 36118,
+        "rx_extra": 397496,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 36118,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.999115,
+        "receive_opportunity_evidence": "gnss_both",
+        "gnss_distance_m": {
+          "n": 36118,
+          "min": 0.0,
+          "p50": 0.0,
+          "max": 0.0,
+          "pos_match_rate": 1.0,
+          "mean_pos_time_err_ms": 60263222047.4
+        },
+        "latency_ms": {
+          "n": 36118,
+          "p50": 10.42,
+          "p95": 19.41
+        }
+      },
+      "t2<-t3": {
+        "tx_total": 36151,
+        "rx_data_rows": 36137,
+        "rx_extra": 397495,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 36137,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.999613,
+        "receive_opportunity_evidence": "gnss_both",
+        "gnss_distance_m": {
+          "n": 36137,
+          "min": 0.0,
+          "p50": 0.0,
+          "max": 0.0,
+          "pos_match_rate": 1.0,
+          "mean_pos_time_err_ms": 60263233272.6
+        },
+        "latency_ms": {
+          "n": 36137,
+          "p50": 10.99,
+          "p95": 19.9
+        }
+      },
+      "t3<-rsu": {
+        "tx_total": 36143,
+        "rx_data_rows": 36123,
+        "rx_extra": 397529,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 36123,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.999447,
+        "receive_opportunity_evidence": "none",
+        "gnss_distance_m": {
+          "n": 0,
+          "min": null,
+          "p50": null,
+          "max": null,
+          "pos_match_rate": 0.0,
+          "mean_pos_time_err_ms": null
+        },
+        "latency_ms": {
+          "n": 36123,
+          "p50": 9.51,
+          "p95": 19.41
+        }
+      },
+      "t3<-t1": {
+        "tx_total": 36150,
+        "rx_data_rows": 36121,
+        "rx_extra": 397531,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 36121,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.999198,
+        "receive_opportunity_evidence": "gnss_both",
+        "gnss_distance_m": {
+          "n": 36121,
+          "min": 0.0,
+          "p50": 0.0,
+          "max": 0.0,
+          "pos_match_rate": 1.0,
+          "mean_pos_time_err_ms": 60262921882.1
+        },
+        "latency_ms": {
+          "n": 36121,
+          "p50": 10.44,
+          "p95": 19.42
+        }
+      },
+      "t3<-t2": {
+        "tx_total": 36145,
+        "rx_data_rows": 36128,
+        "rx_extra": 397531,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 36128,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.99953,
+        "receive_opportunity_evidence": "gnss_both",
+        "gnss_distance_m": {
+          "n": 36128,
+          "min": 0.0,
+          "p50": 0.0,
+          "max": 0.0,
+          "pos_match_rate": 1.0,
+          "mean_pos_time_err_ms": 60262708257.7
+        },
+        "latency_ms": {
+          "n": 36128,
+          "p50": 9.54,
+          "p95": 19.67
+        }
+      }
+    },
+    "indoor_2": {
+      "rsu<-t1": {
+        "tx_total": 36151,
+        "rx_data_rows": 36137,
+        "rx_extra": 397496,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 36137,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.999613,
+        "receive_opportunity_evidence": "gnss_tx_only",
+        "gnss_distance_m": {
+          "n": 0,
+          "min": null,
+          "p50": null,
+          "max": null,
+          "pos_match_rate": 0.0,
+          "mean_pos_time_err_ms": null
+        },
+        "latency_ms": {
+          "n": 36137,
+          "p50": 11.11,
+          "p95": 22.99
+        }
+      },
+      "rsu<-t2": {
+        "tx_total": 36145,
+        "rx_data_rows": 36121,
+        "rx_extra": 397484,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 36121,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.999336,
+        "receive_opportunity_evidence": "gnss_tx_only",
+        "gnss_distance_m": {
+          "n": 0,
+          "min": null,
+          "p50": null,
+          "max": null,
+          "pos_match_rate": 0.0,
+          "mean_pos_time_err_ms": null
+        },
+        "latency_ms": {
+          "n": 36121,
+          "p50": 12.1,
+          "p95": 23.28
+        }
+      },
+      "rsu<-t3": {
+        "tx_total": 36151,
+        "rx_data_rows": 36137,
+        "rx_extra": 397496,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 36137,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.999613,
+        "receive_opportunity_evidence": "gnss_tx_only",
+        "gnss_distance_m": {
+          "n": 0,
+          "min": null,
+          "p50": null,
+          "max": null,
+          "pos_match_rate": 0.0,
+          "mean_pos_time_err_ms": null
+        },
+        "latency_ms": {
+          "n": 36137,
+          "p50": 10.0,
+          "p95": 19.97
+        }
+      },
+      "t1<-rsu": {
+        "tx_total": 36144,
+        "rx_data_rows": 36140,
+        "rx_extra": 397531,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 36140,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.999889,
+        "receive_opportunity_evidence": "none",
+        "gnss_distance_m": {
+          "n": 0,
+          "min": null,
+          "p50": null,
+          "max": null,
+          "pos_match_rate": 0.0,
+          "mean_pos_time_err_ms": null
+        },
+        "latency_ms": {
+          "n": 36140,
+          "p50": 10.77,
+          "p95": 20.98
+        }
+      },
+      "t1<-t2": {
+        "tx_total": 36145,
+        "rx_data_rows": 36140,
+        "rx_extra": 397529,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 36140,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.999862,
+        "receive_opportunity_evidence": "gnss_both",
+        "gnss_distance_m": {
+          "n": 36140,
+          "min": 0.0,
+          "p50": 0.0,
+          "max": 0.0,
+          "pos_match_rate": 1.0,
+          "mean_pos_time_err_ms": 67518854731.1
+        },
+        "latency_ms": {
+          "n": 36140,
+          "p50": 12.05,
+          "p95": 23.14
+        }
+      },
+      "t1<-t3": {
+        "tx_total": 36151,
+        "rx_data_rows": 36134,
+        "rx_extra": 397540,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 36134,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.99953,
+        "receive_opportunity_evidence": "gnss_both",
+        "gnss_distance_m": {
+          "n": 36134,
+          "min": 0.0,
+          "p50": 0.0,
+          "max": 0.0,
+          "pos_match_rate": 1.0,
+          "mean_pos_time_err_ms": 67518639457.5
+        },
+        "latency_ms": {
+          "n": 36134,
+          "p50": 9.93,
+          "p95": 20.05
+        }
+      },
+      "t2<-rsu": {
+        "tx_total": 36144,
+        "rx_data_rows": 36121,
+        "rx_extra": 397487,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 36121,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.999364,
+        "receive_opportunity_evidence": "none",
+        "gnss_distance_m": {
+          "n": 0,
+          "min": null,
+          "p50": null,
+          "max": null,
+          "pos_match_rate": 0.0,
+          "mean_pos_time_err_ms": null
+        },
+        "latency_ms": {
+          "n": 36121,
+          "p50": 10.77,
+          "p95": 21.72
+        }
+      },
+      "t2<-t1": {
+        "tx_total": 36151,
+        "rx_data_rows": 36135,
+        "rx_extra": 397476,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 36135,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.999557,
+        "receive_opportunity_evidence": "gnss_both",
+        "gnss_distance_m": {
+          "n": 36135,
+          "min": 0.0,
+          "p50": 0.0,
+          "max": 0.0,
+          "pos_match_rate": 1.0,
+          "mean_pos_time_err_ms": 67519292879.2
+        },
+        "latency_ms": {
+          "n": 36135,
+          "p50": 11.06,
+          "p95": 22.99
+        }
+      },
+      "t2<-t3": {
+        "tx_total": 36151,
+        "rx_data_rows": 36136,
+        "rx_extra": 397485,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 36136,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.999585,
+        "receive_opportunity_evidence": "gnss_both",
+        "gnss_distance_m": {
+          "n": 36136,
+          "min": 0.0,
+          "p50": 0.0,
+          "max": 0.0,
+          "pos_match_rate": 1.0,
+          "mean_pos_time_err_ms": 67519379132.0
+        },
+        "latency_ms": {
+          "n": 36136,
+          "p50": 9.98,
+          "p95": 20.01
+        }
+      },
+      "t3<-rsu": {
+        "tx_total": 36144,
+        "rx_data_rows": 36140,
+        "rx_extra": 397531,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 36140,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.999889,
+        "receive_opportunity_evidence": "none",
+        "gnss_distance_m": {
+          "n": 0,
+          "min": null,
+          "p50": null,
+          "max": null,
+          "pos_match_rate": 0.0,
+          "mean_pos_time_err_ms": null
+        },
+        "latency_ms": {
+          "n": 36140,
+          "p50": 10.78,
+          "p95": 20.92
+        }
+      },
+      "t3<-t1": {
+        "tx_total": 36151,
+        "rx_data_rows": 36134,
+        "rx_extra": 397542,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 36134,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.99953,
+        "receive_opportunity_evidence": "gnss_both",
+        "gnss_distance_m": {
+          "n": 36134,
+          "min": 0.0,
+          "p50": 0.0,
+          "max": 0.0,
+          "pos_match_rate": 1.0,
+          "mean_pos_time_err_ms": 67518653204.7
+        },
+        "latency_ms": {
+          "n": 36134,
+          "p50": 11.12,
+          "p95": 23.06
+        }
+      },
+      "t3<-t2": {
+        "tx_total": 36145,
+        "rx_data_rows": 36140,
+        "rx_extra": 397529,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 36140,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.999862,
+        "receive_opportunity_evidence": "gnss_both",
+        "gnss_distance_m": {
+          "n": 36140,
+          "min": 0.0,
+          "p50": 0.0,
+          "max": 0.0,
+          "pos_match_rate": 1.0,
+          "mean_pos_time_err_ms": 67518854731.1
+        },
+        "latency_ms": {
+          "n": 36140,
+          "p50": 12.03,
+          "p95": 23.16
+        }
+      }
+    },
+    "outdoor_1": {
+      "rsu<-t1": {
+        "tx_total": 5742,
+        "rx_data_rows": 5182,
+        "rx_extra": 63140,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 5182,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.902473,
+        "receive_opportunity_evidence": "gnss_tx_only",
+        "gnss_distance_m": {
+          "n": 0,
+          "min": null,
+          "p50": null,
+          "max": null,
+          "pos_match_rate": 0.0,
+          "mean_pos_time_err_ms": null
+        },
+        "latency_ms": {
+          "n": 5182,
+          "p50": 10.71,
+          "p95": 20.58
+        }
+      },
+      "rsu<-t2": {
+        "tx_total": 5865,
+        "rx_data_rows": 3357,
+        "rx_extra": 64508,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 3357,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.572379,
+        "receive_opportunity_evidence": "gnss_tx_only",
+        "gnss_distance_m": {
+          "n": 0,
+          "min": null,
+          "p50": null,
+          "max": null,
+          "pos_match_rate": 0.0,
+          "mean_pos_time_err_ms": null
+        },
+        "latency_ms": {
+          "n": 3357,
+          "p50": 12.3,
+          "p95": 23.32
+        }
+      },
+      "rsu<-t3": {
+        "tx_total": 6101,
+        "rx_data_rows": 3963,
+        "rx_extra": 67099,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 3963,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.649566,
+        "receive_opportunity_evidence": "gnss_tx_only",
+        "gnss_distance_m": {
+          "n": 0,
+          "min": null,
+          "p50": null,
+          "max": null,
+          "pos_match_rate": 0.0,
+          "mean_pos_time_err_ms": null
+        },
+        "latency_ms": {
+          "n": 3963,
+          "p50": 12.8,
+          "p95": 25.81
+        }
+      },
+      "t1<-rsu": {
+        "tx_total": 6162,
+        "rx_data_rows": 5258,
+        "rx_extra": 63029,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 5258,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.853294,
+        "receive_opportunity_evidence": "none",
+        "gnss_distance_m": {
+          "n": 0,
+          "min": null,
+          "p50": null,
+          "max": null,
+          "pos_match_rate": 0.0,
+          "mean_pos_time_err_ms": null
+        },
+        "latency_ms": {
+          "n": 5258,
+          "p50": 11.17,
+          "p95": 22.99
+        }
+      },
+      "t1<-t2": {
+        "tx_total": 5865,
+        "rx_data_rows": 1513,
+        "rx_extra": 53969,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 1513,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.257971,
+        "receive_opportunity_evidence": "gnss_both",
+        "gnss_distance_m": {
+          "n": 1513,
+          "min": 0.0,
+          "p50": 0.0,
+          "max": 0.0,
+          "pos_match_rate": 1.0,
+          "mean_pos_time_err_ms": 0.0
+        },
+        "latency_ms": {
+          "n": 1513,
+          "p50": 16.41,
+          "p95": 30.42
+        }
+      },
+      "t1<-t3": {
+        "tx_total": 6101,
+        "rx_data_rows": 2305,
+        "rx_extra": 53782,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 2305,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.377807,
+        "receive_opportunity_evidence": "gnss_both",
+        "gnss_distance_m": {
+          "n": 2305,
+          "min": 0.0,
+          "p50": 0.0,
+          "max": 0.0,
+          "pos_match_rate": 1.0,
+          "mean_pos_time_err_ms": 0.0
+        },
+        "latency_ms": {
+          "n": 2305,
+          "p50": 12.86,
+          "p95": 32.55
+        }
+      },
+      "t2<-rsu": {
+        "tx_total": 6162,
+        "rx_data_rows": 3443,
+        "rx_extra": 64310,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 3443,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.558747,
+        "receive_opportunity_evidence": "none",
+        "gnss_distance_m": {
+          "n": 0,
+          "min": null,
+          "p50": null,
+          "max": null,
+          "pos_match_rate": 0.0,
+          "mean_pos_time_err_ms": null
+        },
+        "latency_ms": {
+          "n": 3443,
+          "p50": 11.31,
+          "p95": 22.22
+        }
+      },
+      "t2<-t1": {
+        "tx_total": 5742,
+        "rx_data_rows": 1561,
+        "rx_extra": 54014,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 1561,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.271856,
+        "receive_opportunity_evidence": "gnss_both",
+        "gnss_distance_m": {
+          "n": 1561,
+          "min": 0.0,
+          "p50": 0.0,
+          "max": 0.0,
+          "pos_match_rate": 1.0,
+          "mean_pos_time_err_ms": 0.0
+        },
+        "latency_ms": {
+          "n": 1561,
+          "p50": 11.6,
+          "p95": 21.7
+        }
+      },
+      "t2<-t3": {
+        "tx_total": 6101,
+        "rx_data_rows": 5053,
+        "rx_extra": 64394,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 5053,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.828225,
+        "receive_opportunity_evidence": "gnss_both",
+        "gnss_distance_m": {
+          "n": 5053,
+          "min": 0.0,
+          "p50": 0.0,
+          "max": 0.0,
+          "pos_match_rate": 1.0,
+          "mean_pos_time_err_ms": 0.0
+        },
+        "latency_ms": {
+          "n": 5053,
+          "p50": 11.86,
+          "p95": 20.87
+        }
+      },
+      "t3<-rsu": {
+        "tx_total": 6162,
+        "rx_data_rows": 4018,
+        "rx_extra": 67001,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 4018,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.652061,
+        "receive_opportunity_evidence": "none",
+        "gnss_distance_m": {
+          "n": 0,
+          "min": null,
+          "p50": null,
+          "max": null,
+          "pos_match_rate": 0.0,
+          "mean_pos_time_err_ms": null
+        },
+        "latency_ms": {
+          "n": 4018,
+          "p50": 11.26,
+          "p95": 24.25
+        }
+      },
+      "t3<-t1": {
+        "tx_total": 5742,
+        "rx_data_rows": 2262,
+        "rx_extra": 54155,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 2262,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.393939,
+        "receive_opportunity_evidence": "gnss_both",
+        "gnss_distance_m": {
+          "n": 2262,
+          "min": 0.0,
+          "p50": 0.0,
+          "max": 0.0,
+          "pos_match_rate": 1.0,
+          "mean_pos_time_err_ms": 0.0
+        },
+        "latency_ms": {
+          "n": 2262,
+          "p50": 10.66,
+          "p95": 26.75
+        }
+      },
+      "t3<-t2": {
+        "tx_total": 5865,
+        "rx_data_rows": 5035,
+        "rx_extra": 64506,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 5035,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.858483,
+        "receive_opportunity_evidence": "gnss_both",
+        "gnss_distance_m": {
+          "n": 5035,
+          "min": 0.0,
+          "p50": 0.0,
+          "max": 0.0,
+          "pos_match_rate": 1.0,
+          "mean_pos_time_err_ms": 0.0
+        },
+        "latency_ms": {
+          "n": 5035,
+          "p50": 11.4,
+          "p95": 21.37
+        }
+      }
+    },
+    "outdoor_2": {
+      "rsu<-t1": {
+        "tx_total": 3712,
+        "rx_data_rows": 3099,
+        "rx_extra": 40392,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 3099,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.83486,
+        "receive_opportunity_evidence": "gnss_tx_only",
+        "gnss_distance_m": {
+          "n": 0,
+          "min": null,
+          "p50": null,
+          "max": null,
+          "pos_match_rate": 0.0,
+          "mean_pos_time_err_ms": null
+        },
+        "latency_ms": {
+          "n": 3099,
+          "p50": 10.31,
+          "p95": 26.31
+        }
+      },
+      "rsu<-t2": {
+        "tx_total": 4163,
+        "rx_data_rows": 3105,
+        "rx_extra": 45738,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 3105,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.745856,
+        "receive_opportunity_evidence": "gnss_tx_only",
+        "gnss_distance_m": {
+          "n": 0,
+          "min": null,
+          "p50": null,
+          "max": null,
+          "pos_match_rate": 0.0,
+          "mean_pos_time_err_ms": null
+        },
+        "latency_ms": {
+          "n": 3105,
+          "p50": 12.25,
+          "p95": 24.4
+        }
+      },
+      "rsu<-t3": {
+        "tx_total": 4487,
+        "rx_data_rows": 4042,
+        "rx_extra": 49117,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 4042,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.900825,
+        "receive_opportunity_evidence": "gnss_tx_only",
+        "gnss_distance_m": {
+          "n": 0,
+          "min": null,
+          "p50": null,
+          "max": null,
+          "pos_match_rate": 0.0,
+          "mean_pos_time_err_ms": null
+        },
+        "latency_ms": {
+          "n": 4042,
+          "p50": 12.61,
+          "p95": 24.54
+        }
+      },
+      "t1<-rsu": {
+        "tx_total": 5134,
+        "rx_data_rows": 3154,
+        "rx_extra": 40513,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 3154,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.614336,
+        "receive_opportunity_evidence": "none",
+        "gnss_distance_m": {
+          "n": 0,
+          "min": null,
+          "p50": null,
+          "max": null,
+          "pos_match_rate": 0.0,
+          "mean_pos_time_err_ms": null
+        },
+        "latency_ms": {
+          "n": 3154,
+          "p50": 8.99,
+          "p95": 24.1
+        }
+      },
+      "t1<-t2": {
+        "tx_total": 4163,
+        "rx_data_rows": 924,
+        "rx_extra": 31437,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 924,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.221955,
+        "receive_opportunity_evidence": "gnss_both",
+        "gnss_distance_m": {
+          "n": 924,
+          "min": 0.0,
+          "p50": 0.0,
+          "max": 0.0,
+          "pos_match_rate": 1.0,
+          "mean_pos_time_err_ms": 0.0
+        },
+        "latency_ms": {
+          "n": 924,
+          "p50": 12.37,
+          "p95": 33.4
+        }
+      },
+      "t1<-t3": {
+        "tx_total": 4487,
+        "rx_data_rows": 1471,
+        "rx_extra": 31882,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 1471,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.327836,
+        "receive_opportunity_evidence": "gnss_both",
+        "gnss_distance_m": {
+          "n": 1471,
+          "min": 0.0,
+          "p50": 0.0,
+          "max": 0.0,
+          "pos_match_rate": 1.0,
+          "mean_pos_time_err_ms": 0.0
+        },
+        "latency_ms": {
+          "n": 1471,
+          "p50": 12.67,
+          "p95": 31.67
+        }
+      },
+      "t2<-rsu": {
+        "tx_total": 5134,
+        "rx_data_rows": 3211,
+        "rx_extra": 45617,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 3211,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.625438,
+        "receive_opportunity_evidence": "none",
+        "gnss_distance_m": {
+          "n": 0,
+          "min": null,
+          "p50": null,
+          "max": null,
+          "pos_match_rate": 0.0,
+          "mean_pos_time_err_ms": null
+        },
+        "latency_ms": {
+          "n": 3211,
+          "p50": 8.96,
+          "p95": 22.88
+        }
+      },
+      "t2<-t1": {
+        "tx_total": 3712,
+        "rx_data_rows": 1003,
+        "rx_extra": 31638,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 1003,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.270205,
+        "receive_opportunity_evidence": "gnss_both",
+        "gnss_distance_m": {
+          "n": 1003,
+          "min": 0.0,
+          "p50": 0.0,
+          "max": 0.0,
+          "pos_match_rate": 1.0,
+          "mean_pos_time_err_ms": 0.0
+        },
+        "latency_ms": {
+          "n": 1003,
+          "p50": 14.21,
+          "p95": 32.23
+        }
+      },
+      "t2<-t3": {
+        "tx_total": 4487,
+        "rx_data_rows": 4153,
+        "rx_extra": 45675,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 4153,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.925563,
+        "receive_opportunity_evidence": "gnss_both",
+        "gnss_distance_m": {
+          "n": 4153,
+          "min": 0.0,
+          "p50": 0.0,
+          "max": 0.0,
+          "pos_match_rate": 1.0,
+          "mean_pos_time_err_ms": 0.0
+        },
+        "latency_ms": {
+          "n": 4153,
+          "p50": 11.68,
+          "p95": 22.73
+        }
+      },
+      "t3<-rsu": {
+        "tx_total": 5134,
+        "rx_data_rows": 4110,
+        "rx_extra": 49227,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 4110,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.800545,
+        "receive_opportunity_evidence": "none",
+        "gnss_distance_m": {
+          "n": 0,
+          "min": null,
+          "p50": null,
+          "max": null,
+          "pos_match_rate": 0.0,
+          "mean_pos_time_err_ms": null
+        },
+        "latency_ms": {
+          "n": 4110,
+          "p50": 9.82,
+          "p95": 20.98
+        }
+      },
+      "t3<-t1": {
+        "tx_total": 3712,
+        "rx_data_rows": 1473,
+        "rx_extra": 33143,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 1473,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 0.396821,
+        "receive_opportunity_evidence": "gnss_both",
+        "gnss_distance_m": {
+          "n": 1473,
+          "min": 0.0,
+          "p50": 0.0,
+          "max": 0.0,
+          "pos_match_rate": 1.0,
+          "mean_pos_time_err_ms": 0.0
+        },
+        "latency_ms": {
+          "n": 1473,
+          "p50": 12.32,
+          "p95": 29.2
+        }
+      },
+      "t3<-t2": {
+        "tx_total": 4163,
+        "rx_data_rows": 4163,
+        "rx_extra": 45782,
+        "pairing_rate_rx_to_tx": 1.0,
+        "unique_paired": 4163,
+        "dup_rx_same_key": 0,
+        "unmatched_rx_rows": 0,
+        "reception_ratio_full_run": 1.0,
+        "receive_opportunity_evidence": "gnss_both",
+        "gnss_distance_m": {
+          "n": 4163,
+          "min": 0.0,
+          "p50": 0.0,
+          "max": 0.0,
+          "pos_match_rate": 1.0,
+          "mean_pos_time_err_ms": 0.0
+        },
+        "latency_ms": {
+          "n": 4163,
+          "p50": 11.43,
+          "p95": 23.21
+        }
+      }
+    }
+  },
+  "aad_value": {
+    "candidate_reference": "message-pairing method + reception-ratio ranges (descriptive, controlled PC5)",
+    "not_calibration": [
+      "true link PDR",
+      "absolute latency",
+      "distance-PDR curve",
+      "natural-traffic V2V"
+    ]
+  },
+  "scientific_claim_eligible": false,
+  "author_query_draft_prepared": true,
+  "author_query_sent": false,
+  "researcher_decisions_needed": [
+    "adopt descriptive reception-ratio ranges as SUMO candidate parameters (not calibration)",
+    "authorize author email (clock phase-sync / per_ue_loss_pct denominator / wireless-module online evidence)",
+    "whether longer-range/dynamic C-V2X data is needed"
+  ]
+}
