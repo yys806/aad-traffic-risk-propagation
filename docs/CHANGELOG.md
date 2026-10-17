@@ -92,3 +92,7 @@
 ## 2026-10-17 — AAD-0.4.6.1：SEE-V2X 通信指标科学复核
 
 仅复用 0.4.6 样本独立复核（零下载零邮件；Gate 不变）。**修正**：0.4.6 `independent_pdr` 为接收窗口口径系统性高估 PDR——Run 2 完整运行 PDR=0.9737（非 1.0）；正确口径=完整运行 PDR（分母=运行内全部发送），字段 `per_ue_loss_pct`≈窗口口径（高 0.3–5 pp）。**时延**：数值 Verified；跨运行固定时钟偏移 P50 8.8–32 ms → 合并分位数不可靠（降级），逐运行形态相对可信但含漂移。时钟同步不可解（Unverified）。正式校准仍不冻结；下一批 4.89 GiB 建议（GNSS 时钟+轨迹绑定）。结果 `RES-STAGE-0.4-SEE-V2X-REAUDIT-V1`；0.4.6 封存包未改动；注册表/索引/AI_CONTEXT 同步；全量 315 passed。
+
+## 2026-10-17 — AAD-0.4.6.2：SEE-V2X 科学修正与复现修复
+
+基于 0.4.6/0.4.6.1 修正：①PDR 接收机会 Unverified（parameters.csv 证 10 运行配置互异、接收端时长系统性短于发送端，Run 2 边界 [0,150] 高度符合启停而非丢包）→完整运行 PDR 仅作描述性指标；②跨运行时延差异由真实 PHY/MAC 序列化（包大小×优先级，50 Hz）解释，非时钟偏移（0.4.6.1 过强表述已纠正）；③Git 可复已修复（`code/tmp/reaudit_*` 入 Git、6 独立测试通过、封存 manifest 补充）。下一批 4.89 GiB 建议（GNSS 时钟参照+距离×时延/PDR；时钟可能仍不可解）。零下载零邮件，Gate 不变。报告：`docs/STAGE_0_4_TASK_0_4_6_2_SCIENTIFIC_CORRECTION.md`；新增 `code/tests/test_see_v2x_reaudit.py`。

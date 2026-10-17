@@ -107,3 +107,7 @@ SEE-V2X 可用且首选（单设备日志内配对时延，不依赖跨设备钟
 ## 2026-10-17 — AAD-0.4.6.1：SEE-V2X 科学复核
 
 修正 0.4.6：完整运行 PDR 才是有效口径（Run 2=0.974 非 1.0）；latency 跨运行时钟偏移 8.8–32 ms 使合并分位数不可靠；逐运行形态相对可信。时钟同步 Unverified；校准仍冻结；下一批 4.89 GiB 建议。结果 `RES-STAGE-0.4-SEE-V2X-REAUDIT-V1`。
+
+## 2026-10-17 — AAD-0.4.6.2：SEE-V2X 科学修正
+
+PDR 接收机会 Unverified（启停 vs 丢包不可分，完整运行 PDR 仅描述性）；跨运行时延差异=真实 PHY/MAC 序列化（包大小），非时钟偏移；Git 可复已修复（方法/结果+6 测试）。下一批 4.89 GiB 建议。Gate 不变。报告 `docs/STAGE_0_4_TASK_0_4_6_2_SCIENTIFIC_CORRECTION.md`。

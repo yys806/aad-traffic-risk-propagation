@@ -476,6 +476,11 @@
         },
         "result_id": "RES-STAGE-0.4-SEE-V2X-MINIMAL-V1",
         "calibration_status": "not frozen (clock offset unresolved; needs emulating_applications GNSS/BSM scenario)"
+      },
+      "scientific_correction_0_4_6_2": {
+        "pdr": "full-run PDR is a descriptive reception ratio; receive-opportunity (receiver online whole window) Unverified - Run 2 boundary likely device start/stop, not link loss; do NOT use as formal link-loss rate",
+        "latency_explanation": "cross-run latency differences driven by PHY/MAC serialization (packet size x priority, 50 Hz), NOT clock offset; clock sync Unverified but does not dominate cross-run pattern",
+        "git_reproducibility": "fixed: method+results in repo, 6 independent tests pass, sealed manifest supplemented"
       }
     },
     {
