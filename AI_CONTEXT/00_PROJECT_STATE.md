@@ -19,8 +19,8 @@
 
 - `stage_0_2`：NGSIM 跟驰风险审计，`Completed / Closed`（有限范围），作为已封存参考。
 - `stage_0_3`：pNEUMA 城市运动学校准，`Completed / Closed`（2026-10-16 R3 科学验收，`pass` 有限范围：单文件描述性城市运动学）。
-- `stage_0_4`：SPMD 接收状态连续性边界已验证，packet 级字段仍不可用。
-- `stage_0_5`：仿真—现实覆盖，缺按新分工生成的 SUMO 样本；pNEUMA 标准化参考已封存，但与当前 writer 存在字段契约冲突，现有测试仅覆盖旧字段适配视图。
+- `stage_0_4`：已在可观测性与描述证据有限范围验收，Gate=`pass_limited`；真实通信模型/参数未因此校准。
+- `stage_0_5`：R2真实参考与canonical接口已完成；SUMO工程基线和B0探索已运行，尚缺获批适用域/容差及正式校准样本，Gate=`pending_simulation_sample`。B0实验输入与根回归访问范围分开审计，后者发生历史全源产物读取例外，任务数据隔离未认证。
 
 （2026-10-18 AAD-0.5.1 更新）`RES-STAGE-0.5-REAL-REF-R2` 已完成正式真实参考重建：canonical pNEUMA 已原生接入并通过 fail-closed 质量/来源契约；US-101 三窗口、Lankershim、正式 P2=4,545 和 Stage 0.3 封存运动学统计均已绑定。旧句描述 0.5.0 历史冲突；当前仍缺 SUMO 校准样本，Gate=`pending_simulation_sample`。
 

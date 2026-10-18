@@ -100,3 +100,5 @@ Documented Intent：06_DECISIONS指数rho/固定分母/车辆等权。Actual Imp
 
 
 B0-VALIDATION-SCOPE-02：根目录全量pytest启用了历史Stage0.2本地全源事件/案例测试，未按校准角色过滤。任务级验证读取数Unknown/Not Certified，不能声称0；B0冻结实验/比较摘要输入仍仅前两窗口，未用回归数据选参。已停止根本地数据回归，纯Git452 passed/13 skipped；任务隔离验收未Accepted，等待研究者决定是否保留有限探索结果。见validation_activity_audit及B0报告。
+
+本轮发现但未修改：既有Stage0.1 `_sumo_environment()`版本查询无超时，一次`sumo.exe --version`挂起导致纯Git集成测试失败；精确终止后新查询正常，限时完整重跑452 passed/13 skipped。该环境/超时问题不属于B0状态生成，见test_record。

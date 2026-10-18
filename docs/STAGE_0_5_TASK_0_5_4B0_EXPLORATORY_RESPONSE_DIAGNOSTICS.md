@@ -196,6 +196,14 @@ Engineering Ready：基准执行与计量有条件可用，tau2与旧停止控�
 
 工作区已有5个文献索引文件删除不属于本任务，保留原状。根工作区strict/clean检查若因此失败如实记录；用纯Git克隆验证提交内容，不恢复或提交这些无关变化。
 
+## 12. 收口验证记录
+
+- 源码核验提交：`1c3aee6a1a5f9185b0561f00bbf73bb43b53fc82`。纯Git全量回归452 passed/13 skipped（120.24 s）；跳过项仅因缺本地SEE原始样本、pNEUMA封存输入及Stage0.2历史全量案例包，未补充这些文件。
+- 同一源码的上一轮纯Git回归曾在既有Stage0.1 `sumo.exe --version`查询挂起；只终止该查询后得到1 failed/451 passed/13 skipped（755.91 s），失败如实保留。新的独立查询正常，限时300 s重跑全部通过；未修改Stage0.1或新增B0配置。
+- 从GitHub新建浅克隆：strict-git+require-clean文档检查、便携证据校验、compileall通过；B0模块+文档测试41 passed（7.01 s）。根工作区B0新模块28 passed；早期定向回归127 passed/1 skipped（当时便携包未导出）。
+- 根工作区全量465 passed仅是机械通过，发生B0-VALIDATION-SCOPE-02，不能作为来源隔离合规证明。根strict/clean仍受任务前5个文献索引删除影响，未恢复/提交它们；纯Git检查通过。
+- Context Consistency Check完成，既有Stage0.2/0.3/0.4注册对象及科学测量源码与基线`bf5f63f`逐项未变。**任务数据隔离验收仍未认证；科学Gate、容差、正式校准和独立验证均未升级**。
+
 ## 附表：全部19次运行（4次未运行见run_manifest）
 
 密度单位veh/km/lane，速度与闭合m/s，间距m；全网P2均0。wall包含记录和完整P2测量。
