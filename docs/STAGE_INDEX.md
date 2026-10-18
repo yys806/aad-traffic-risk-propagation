@@ -42,6 +42,8 @@
 
 2026-10-18（AAD-0.5.3）：新增独立 SUMO 无消息工程骨架。US-101 `generic_highway_candidate`（3 主线段 × 3 车道 + 入口/出口匝道）在 SUMO 1.26.0 上以 seed=20260907、internal 0.1 s、recorded 0.1 s 完成 baseline 与 measurement probe 两个工程 fixture，输出状态、leader/net-gap、统一闭合速度、TTC 状态、暴露和两路工程 P2 适配；核验并订正 TraCI `getLeader` 净间距语义与 `closing_speed = follower − leader`，建立 internal/recorded 时间步分离与校准/验证 fail-closed 守卫。结果仅 `engineering_only`。Lankershim/pNEUMA 保持 candidate_entry_only，P2 正式等价性 pending，Stage 0.5 Gate 未升级。报告：`docs/STAGE_0_5_TASK_0_5_3_SUMO_BASELINE_ENGINEERING.md`。
 
+2026-10-18（AAD-0.5.4-A）：完成 SUMO 正式校准前的科学准入与参数协议审计。P2 测量等价性 16 项维度逐条判定（10 Equivalent/Verified、6 Engineering Consistent Only、0 阻断），16 个确定性边界用例全部符合预期，并独立复现已批准两窗口的可评价暴露、事件数与事件率。修复 6 项适配层缺陷（绝对时钟、前车帧号、退出原因、闭合 epsilon、可靠层定义、DRAC）而不改动 Stage 0.2 规则。产出校准窗口运动学/跟驰/可观测性统计、需求可识别性矩阵、候选交通状态分层、轨迹簇不确定性、时间步敏感性与成本基准、候选校准协议与研究决策矩阵。准入状态 `ready_to_start_stage_0_5_4b=false`；未读取验证窗口、未冻结容差或参数、Gate 不变。报告：`docs/STAGE_0_5_TASK_0_5_4A_CALIBRATION_READINESS.md`。
+
 ## stage_0_6 — 数值验证与协议锁定
 
 技术真值检查已有结果；待前置 Gate 和科学容差冻结后生成不可覆盖的协议锁。

@@ -1,0 +1,56 @@
+[
+  {
+    "role": "calibration",
+    "sources": [
+      "us101__0750_0805"
+    ],
+    "purpose": "stage_0_5_4a calibration-window analysis",
+    "allowed": true,
+    "reason": "allowed_by_policy",
+    "restricted_sources": [],
+    "checked_bindings": {
+      "us101__0750_0805": "684a5f0b96dc48116f16d581c278d7039c0554bf1c3cea8d6eda3e605e3e8644"
+    }
+  },
+  {
+    "role": "calibration",
+    "sources": [
+      "us101__0805_0820"
+    ],
+    "purpose": "stage_0_5_4a calibration-window analysis",
+    "allowed": true,
+    "reason": "allowed_by_policy",
+    "restricted_sources": [],
+    "checked_bindings": {
+      "us101__0805_0820": "7b0ef830c97a981da018d4e24b029e38aa2630387c728ea87b57926745880a9f"
+    }
+  },
+  {
+    "role": "calibration",
+    "sources": [
+      "p2_formal_events"
+    ],
+    "purpose": "stage_0_5_4a formal P2 events of the calibration windows only",
+    "allowed": true,
+    "reason": "allowed_by_policy",
+    "restricted_sources": [],
+    "checked_bindings": {
+      "p2_formal_events": "aa749da3c8d68521111cc59f0d0f2746fecef868121d37ae76d3c75d43c10ae1",
+      "p2_formal_events::rows": "1275",
+      "p2_formal_events::row_filter": "source in ['us101__0750_0805', 'us101__0805_0820']"
+    }
+  },
+  {
+    "role": "calibration",
+    "sources": [
+      "p2_formal_events"
+    ],
+    "purpose": "row-scoped read (source in ['us101__0750_0805', 'us101__0805_0820'])",
+    "allowed": true,
+    "reason": "row_scoped_read_allowed_by_policy",
+    "restricted_sources": [],
+    "checked_bindings": {
+      "p2_formal_events::rows": "1275"
+    }
+  }
+]

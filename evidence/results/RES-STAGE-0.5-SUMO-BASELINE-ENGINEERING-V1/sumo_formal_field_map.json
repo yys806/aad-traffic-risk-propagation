@@ -11,17 +11,19 @@
       "sumo_source": "constant 0 for every recorded state"
     },
     "drac_mps2": {
-      "note": "P2 event identity does not depend on DRAC; NaN is preserved, never fabricated",
-      "status": "not_implemented_adapter_carries_nan",
-      "sumo_source": "not computed in the Stage 0.5 adapter"
+      "note": "identical closed form to the approved NGSIM pipeline; severity/diagnostic only and never an input to P2 event identity, confirmation or the rate denominator",
+      "status": "adapter_reuses_approved_closed_form_pending_review",
+      "sumo_source": "closing_speed_mps^2 / (2 * net_gap_m), computed only on valid closing rows"
     },
     "frame_id": {
+      "note": "increments by exactly one per recorded observation of the same incarnation",
       "status": "adapter_defined_simulator_frame_index",
-      "sumo_source": "observation_index"
+      "sumo_source": "observation_index (per-incarnation recorded observation counter)"
     },
     "global_time_ms": {
+      "note": "absolute, not reset per incarnation; late entry therefore keeps real clock time",
       "status": "provided_by_sumo_adapter",
-      "sumo_source": "round(time_s * 1000)"
+      "sumo_source": "round(time_s * 1000) of the recorded simulator clock"
     },
     "identity_break": {
       "status": "provided_by_sumo_adapter",
@@ -32,8 +34,9 @@
       "sumo_source": "constant False"
     },
     "leader_frame_id": {
+      "note": "joined on the resolved leader incarnation and millisecond clock; missing join fails closed",
       "status": "provided_by_sumo_adapter",
-      "sumo_source": "leader observation_index (same-step leader lookup)"
+      "sumo_source": "the leader's own observation_index at the same recorded instant"
     },
     "leader_identity_uncertain": {
       "status": "provided_by_sumo_adapter",
@@ -85,8 +88,9 @@
       "sumo_source": "net_gap_m / closing_speed_mps"
     },
     "ttc_valid": {
+      "note": "the epsilon is inherited from add_ngsim_leader_ttc(closing_epsilon_mps=1e-3)",
       "status": "provided_by_sumo_adapter",
-      "sumo_source": "positive net gap and positive closing speed"
+      "sumo_source": "matched leader, net_gap_m > 0 and closing_speed_mps > NGSIM_CLOSING_EPSILON_MPS (1e-3 m/s)"
     },
     "window_id": {
       "status": "provided_by_sumo_adapter",

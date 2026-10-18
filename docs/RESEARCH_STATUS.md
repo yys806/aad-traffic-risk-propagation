@@ -55,6 +55,8 @@
 
 0.5.3 工程骨架已建立：US-101 `generic_highway_candidate` no-message baseline 与 measurement probe 在 SUMO 1.26.0 上运行成功，输出统一状态/跟驰/净间距/闭合速度/TTC/暴露字段，并由 SUMO-native 与 Stage 0.2 formal-alignment 两个 adapter 一致确认 1 个工程 P2 事件；校准入口对时间验证窗口 fail-closed 拒绝。Lankershim/pNEUMA 仍为 candidate_entry_only，pNEUMA 六类原始车型 `unmapped`。结果仅 `engineering_only`，SUMO P2 正式等价性 pending，未进入现实覆盖校准，Gate 继续 `pending_simulation_sample`。
 
+0.5.4-A 校准准入审计已完成（工程审计，不是 Gate 结果）：P2 测量契约 16 项维度中 10 项 Equivalent/Verified、6 项 Engineering Consistent Only、0 项阻断，16/16 边界用例一致，并精确复现已批准两窗口的可评价暴露与事件率。已修复 6 项适配层缺陷但未改动任何 Stage 0.2 规则。校准窗口的交通状态、需求可识别性、候选分层、轨迹簇不确定性与时间步敏感性已记录；准入清单 `ready_to_start_stage_0_5_4b=false`（5 项待批准、5 项阻断）。未读取时间验证窗口、未冻结网络/需求/车型/时间/容差、Gate 继续 `pending_simulation_sample`。
+
 ## 已确认的继续顺序
 
 1. 收口阶段 0.2和0.3。

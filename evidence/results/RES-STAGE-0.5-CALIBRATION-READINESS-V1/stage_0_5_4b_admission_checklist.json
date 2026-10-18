@@ -1,0 +1,101 @@
+{
+  "awaiting_researcher_approval": [
+    "p2_measurement_equivalence",
+    "calibration_reference_availability",
+    "demand_strata_approval",
+    "calibration_targets_and_ranges_approval",
+    "validation_isolation"
+  ],
+  "blocking_items": [
+    "network_plan_approval",
+    "vehicle_type_plan_approval",
+    "time_configuration_approval",
+    "scientific_tolerance_approval",
+    "run_budget_approval"
+  ],
+  "generated_by": "RES-STAGE-0.5-CALIBRATION-READINESS-V1",
+  "items": [
+    {
+      "blocks_start": true,
+      "evidence": "10 equivalent/verified and 6 engineering-consistent dimensions; 16 boundary cases all as expected; blocking items: []",
+      "item": "p2_measurement_equivalence",
+      "required_action": "researcher accepts the equivalence scope, including the inherited 1e-3 m/s closing tolerance",
+      "status": "Ready for Researcher Approval"
+    },
+    {
+      "blocks_start": true,
+      "evidence": "R2 state tables and the formal P2 event table verified by SHA-256; both calibration windows analysed",
+      "item": "calibration_reference_availability",
+      "required_action": "confirm the two calibration windows as the only calibration reference",
+      "status": "Ready for Researcher Approval"
+    },
+    {
+      "blocks_start": true,
+      "evidence": "generic_highway_candidate runs but is not approved; real geometry evidence is not part of the approved reference",
+      "item": "network_plan_approval",
+      "required_action": "choose option A, B or C and record the accompanying claim limits",
+      "status": "Blocked by Scientific Configuration"
+    },
+    {
+      "blocks_start": true,
+      "evidence": "the approved reference has no vehicle class or length field",
+      "item": "vehicle_type_plan_approval",
+      "required_action": "approve a calibration-only source or declare the fleet parameters fixed/ sensitivity-only",
+      "status": "Evidence Insufficient"
+    },
+    {
+      "blocks_start": true,
+      "evidence": "interior passage rates, local density and 60 s slice strata derived from the calibration windows",
+      "item": "demand_strata_approval",
+      "required_action": "approve the stratum definition and target levels",
+      "status": "Ready for Researcher Approval"
+    },
+    {
+      "blocks_start": true,
+      "evidence": "internal/recorded options are ready and the measured time-step probe shows the event boundaries still move when the internal step is halved; warm-up and evaluation windows have no scientific basis yet",
+      "item": "time_configuration_approval",
+      "required_action": "approve the step pair and the stability-based warm-up rule, then the window numbers",
+      "status": "Blocked by Scientific Configuration"
+    },
+    {
+      "blocks_start": true,
+      "evidence": "layer-1 to layer-5 references computed; a 6-parameter optimisable vector is proposed",
+      "item": "calibration_targets_and_ranges_approval",
+      "required_action": "approve the target set, the parameter vector and the frozen structure",
+      "status": "Ready for Researcher Approval"
+    },
+    {
+      "blocks_start": true,
+      "evidence": "clustered real uncertainty exists but no model-deviation tolerance is justified",
+      "item": "scientific_tolerance_approval",
+      "required_action": "approve tolerance forms and their components, or declare the calibration exploratory",
+      "status": "Evidence Insufficient"
+    },
+    {
+      "blocks_start": true,
+      "evidence": "fail-closed guard implemented and tested; validation window not read by this task",
+      "item": "validation_isolation",
+      "required_action": "confirm the isolation rules and the new-protocol-version rule after a failed validation",
+      "status": "Ready for Researcher Approval"
+    },
+    {
+      "blocks_start": true,
+      "evidence": "a 300 s baseline benchmark exists for three integration-step candidates (3 runs), but no density-scaled benchmark at the target stratum has been executed",
+      "item": "run_budget_approval",
+      "required_action": "approve the density-scaled benchmark, then the configuration/seed budget",
+      "status": "Evidence Insufficient"
+    }
+  ],
+  "ready_to_start_stage_0_5_4b": false,
+  "reason": "every item must be approved by the researcher before a formal calibration starts; this task never self-approves a configuration",
+  "schema_version": "stage_0_5.calibration-readiness.v1.stage-0-5-4b-admission.v1",
+  "scientific_claim_eligible": false,
+  "stage": "0.5.4-B",
+  "stage_0_5_gate": "pending_simulation_sample",
+  "statuses": [
+    "Ready for Researcher Approval",
+    "Blocked by Measurement",
+    "Blocked by Scientific Configuration",
+    "Evidence Insufficient"
+  ]
+}

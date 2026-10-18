@@ -15,6 +15,7 @@
 | evaluation | `code/src/riskprop/communication_observability.py` | SPMD trip 分割、RV_RX profile 与字段边界 | `CommunicationEvidenceError` | `spmd_trip_split`, `profile_rv_rx_calibration`, `build_stage_0_4_status_package` | 独立审计模块 | 标准库 |
 | evaluation | `code/src/riskprop/simulation_real_coverage.py` | 稳定抽样、真实参考与 sim-real 覆盖 Gate | 无 | `deterministic_state_sample`, `write_real_reference_package`, `evaluate_simulation_coverage` | 调用 `calibration` | numpy, pandas |
 | experiment | `code/src/riskprop/stage_0_5_sumo.py` | Stage 0.5 三场景候选 manifest、`generic_highway_candidate` 参数化路网与两个工程 fixture、no-message TraCI runner、SUMO-native measurement、engineering P2/exposure adapter、Stage 0.2 formal-alignment adapter、校准/验证 fail-closed 守卫 | `Stage05EngineeringError`, `Stage05AccessDenied` | `run_stage_0_5_no_message_baseline`, `compute_sumo_measurements`, `build_sumo_p2_events`, `extract_sumo_formal_p2_events`, `CalibrationValidationGuard`, `vehicle_type_mapping_candidate` | 独立于 `stage_0_1_sumo`；输出供 0.5.4 评估 | pandas, numpy, SUMO/TraCI |
+| experiment | `code/src/riskprop/stage_0_5_calibration_readiness.py` | Stage 0.5.4-A 测量等价性矩阵、校准窗口统计、需求可识别性、候选分层、簇级不确定性、时间步协议、候选校准协议与准入清单 | `CalibrationReadinessError` | `run_calibration_readiness_audit`, `measurement_equivalence_matrix`, `window_summary`, `demand_identifiability`, `clustered_uncertainty`, `stage_0_5_4b_admission_checklist`, `researcher_decision_matrix` | 调用 `stage_0_5_sumo` 的守卫与适配层；不修改 Stage 0.2 | pandas, numpy |
 | evaluation | `code/src/riskprop/prelock_metrics.py` | TTC 暴露、PET、解析真值、时间步、阈值与样本量公式 | 无 | `integrated_ttc_exposure`, `rear_end_analytic_truth`, `evaluate_timestep_convergence` | 被 prelock validation 调用 | numpy, pandas |
 | experiment | `code/src/riskprop/prelock_validation.py` | 生成阶段 0.6 技术真值审计包 | 无 | `write_stage_0_6_prelock_validation` | 调用 prelock metrics 与路径审计 | pandas |
 | evaluation | `code/src/riskprop/protocol_lock.py` | fail-closed readiness 与协议锁写入 | `ProtocolLockError` | `protocol_lock_readiness`, `write_protocol_lock` | 聚合前置 Gate | 标准库 |
@@ -30,5 +31,7 @@
 ## 2026-10-12 正式测量与收口接口
 
 run_stage_0_2_final_closure.py执行全源检查；stage_0_2_closure_analysis.py提供独立采样/对应；finalize_stage_0_2_closure.py核验当前接口与11案例并组装Gate矩阵。 依据：相应源码及 `docs/STAGE_0_2_FINAL_CLOSURE_2026-10-12.md`。
+
+2026-10-18 AAD-0.5.4-A：新增 `stage_0_5_calibration_readiness.py`、`run_stage_0_5_calibration_readiness.py`、`run_stage_0_5_timestep_sensitivity.py`、`test_stage_0_5_measurement_equivalence.py`；`CalibrationValidationGuard` 增加 `require_row_scoped_read`（行级 fail-closed + SHA 校验）。
 
 2026-10-18 AAD-0.5.3：新增 `stage_0_5_sumo.py`、`run_stage_0_5_sumo_baseline.py`、`test_stage_0_5_sumo.py` 和版本化候选配置；Lankershim/pNEUMA 仅注册入口，US-101 `generic_highway_candidate` fixture 可运行。TraCI `getLeader` 距离语义已核验并给出显式换算规则；工程 P2 与 formal-alignment P2 双路一致，正式等价性保持 pending。

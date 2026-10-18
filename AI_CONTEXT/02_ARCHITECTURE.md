@@ -37,6 +37,8 @@ SUMO -> 四格与五表 ----+
 
 2026-10-18 AAD-0.5.3 新增 `stage_0_5_sumo.py` 与 `run_stage_0_5_sumo_baseline.py`。该模块独立于 Stage 0.1，提供三场景职责 manifest、`generic_highway_candidate` 参数化走廊（3 主线段 × 3 车道 + 入口/出口匝道）、两个显式工程 fixture（baseline_mixed_demand、measurement_probe_queue_stop）、no-message TraCI runner、internal/recorded 时间步分离、SUMO-native leader/net-gap/closing-speed/TTC 状态、工程 P2/exposure adapter、Stage 0.2 formal-alignment adapter、以及 `CalibrationValidationGuard` fail-closed 访问守卫；不承载消息处理、校准寻优或 Stage I 因果逻辑。Lankershim/pNEUMA 目前仅保留 candidate_entry_only 配置与显式 `unmapped` 车型缺口。
 
+2026-10-18 AAD-0.5.4-A 新增 `stage_0_5_calibration_readiness.py` 与 `run_stage_0_5_calibration_readiness.py`、`run_stage_0_5_timestep_sensitivity.py`。该层不产生任何科学参数，只做三件事：①按 Stage 0.2 正式规范逐项审计 SUMO 测量契约并运行确定性边界矩阵；②在 `CalibrationValidationGuard` 之下只用前两个校准窗口计算运动学/跟驰/暴露/不确定性与需求可识别性；③给出候选协议与机器可读准入清单。测量适配的修复集中在 `stage_0_5_sumo.py`（绝对时钟、前车帧号、退出原因、闭合 epsilon、可靠层定义、DRAC），Stage 0.2 正式模块保持未修改。
+
 ## 重要配置
 
 - 当前代码依赖：`code/pyproject.toml`。

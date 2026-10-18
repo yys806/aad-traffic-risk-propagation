@@ -2,7 +2,15 @@
 
 这里只记录影响结构、实现、实验流程或 AI_CONTEXT 的重要变化；细节以 Git diff 和原始实验记录为准。
 
-## 2026-09-10 — 重要变化
+## 2026-10-18 — AAD-0.5.4-A 校准准入与测量等价性审计
+
+新增 `stage_0_5_calibration_readiness.py`、`run_stage_0_5_calibration_readiness.py`、`run_stage_0_5_timestep_sensitivity.py`、`test_stage_0_5_measurement_equivalence.py`（50 项）。
+
+测量等价性：16 项维度逐条判定（10 Equivalent/Verified、6 Engineering Consistent Only、0 阻断），16 个确定性边界用例全部符合预期，双适配器在事件身份/起点/终点/确认时刻/退出原因一致。修复 6 项适配层缺陷（绝对时钟、前车自身帧号、退出原因保留、闭合 epsilon 继承批准默认值、可靠层定义对齐批准边缘审计、DRAC 复用批准闭式），未修改 Stage 0.2 阈值、持续时间或分母；0.5.3 工程包用修正层重跑，baseline 数值不变，probe 有效 TTC 729→544、可靠闭合暴露 72.5→54.0 s（epsilon 修正），事件仍为 1 且两适配器含 DRAC 完全一致。
+
+校准窗口分析（仅前两个窗口，SHA 校验 + 行级过滤，验证窗口物化 0 行）：独立复现封存分母与事件率；产出运动学/跟驰/可观测性、需求可识别性矩阵、候选分层、轨迹簇不确定性（事件率 CI ±15%，逐行 i.i.d. 窄 12.7 倍）、时间步敏感性与 300 s 成本基准。准入清单 `ready_to_start_stage_0_5_4b=false`。Gate 与所有科学参数状态不变。
+
+## 2026-10-18 — AAD-0.5.3 SUMO 无消息工程基线 — 重要变化
 
 - 建立九文件 `AI_CONTEXT/`，作为 ChatGPT 从 GitHub 快速恢复项目状态的入口。
 - 重写长期 `AGENTS.md`，固化 Research Engineer 角色、科研决策边界、冲突停止规则、Context Consistency Check、验证与自动 commit/push 规则。

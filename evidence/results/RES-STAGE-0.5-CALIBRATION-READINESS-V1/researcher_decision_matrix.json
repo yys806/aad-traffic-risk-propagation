@@ -1,0 +1,148 @@
+{
+  "decisions": [
+    {
+      "alternatives": [
+        "accept only after re-deriving the closing tolerance",
+        "reject and keep SUMO P2 engineering-only"
+      ],
+      "decision": "1_p2_formal_measurement",
+      "main_risk": "a coarse (0.2 s) SUMO recording could be mistaken for 100 ms evidence - explicitly blocked by the cadence guard",
+      "missing_evidence": [
+        "an independent reviewer confirmation of the field crosswalk"
+      ],
+      "question": "Accept the SUMO-versus-Stage-0.2 measurement equivalence and its scope?",
+      "ready_for_approval": true,
+      "recommended": "accept the equivalence for P2 event identity, confirmation and rate denominator, with the crosswalk mandatory and no raw status-label comparison",
+      "scientific_reason": "the event rule, identity scope, continuity and denominator are shared; only two documented label/origin differences remain",
+      "verified_facts": [
+        "16 deterministic boundary cases agree between the two adapters",
+        "net gap conversion, closing sign, TTC rule, P2 threshold, minimum duration, continuity, confirmation and exposure denominator verified",
+        "one documented asymmetry: NGSIM labels a missing leader record as missing, SUMO labels a genuine no-leader state as not_applicable",
+        "the 1e-3 m/s closing tolerance is inherited from the approved pipeline default"
+      ]
+    },
+    {
+      "alternatives": [
+        "option A only",
+        "option B first, accepting the geometry-evidence cost"
+      ],
+      "decision": "2_road_network",
+      "main_risk": "claiming road-structure-driven dynamics or a physical propagation speed validated on US-101",
+      "missing_evidence": [
+        "approved, versioned geometry evidence if option B is chosen"
+      ],
+      "question": "Generic highway corridor or a network with verified real geometry?",
+      "ready_for_approval": true,
+      "recommended": "option C: calibrate on the generic corridor now and version a geometry upgrade later",
+      "scientific_reason": "the calibration depends on the measurement contract and the traffic state, not on reproducing road geometry; geometry changes must carry their own provenance",
+      "verified_facts": [
+        "the approved reference shows a 5-lane mainline plus three short ramp/auxiliary lanes over ~660 m",
+        "local geometry assets exist but are not part of the approved reference"
+      ]
+    },
+    {
+      "alternatives": [
+        "a single representative state",
+        "density levels taken from external evidence"
+      ],
+      "decision": "3_traffic_demand",
+      "main_risk": "treating a local density as a network density, or manufacturing an extreme state to obtain P2 events",
+      "missing_evidence": [
+        "approved target levels per stratum"
+      ],
+      "question": "Which calibration basis, strata and target flow/density levels?",
+      "ready_for_approval": true,
+      "recommended": "adopt the interior cross-section and local-density basis, with strata defined by pre-declared terciles of the calibration windows",
+      "scientific_reason": "the approved reference supports interior flow and local density, and strata must come from data rather than convenience",
+      "verified_facts": [
+        "interior cross-section passage rates and local densities are measurable inside the observed extent",
+        "boundary entry demand, ramp flows and route choice are not identifiable",
+        "60 s slice terciles give candidate low/medium/high density and free/transitional/congested speed strata"
+      ]
+    },
+    {
+      "alternatives": [
+        "pause calibration until a class source is approved",
+        "fix all vType parameters and calibrate only tau/accel/decel"
+      ],
+      "decision": "4_vehicle_fleet_and_driving_behaviour",
+      "main_risk": "silently substituting pNEUMA class proportions or engineering fixture types",
+      "missing_evidence": [
+        "approved class/length evidence"
+      ],
+      "question": "Which vTypes, model structure, parameter ranges and optimisable dimensions?",
+      "ready_for_approval": true,
+      "recommended": "keep the SUMO default Krauss structure, optimise at most 6 parameters, and treat fleet composition as fixed/sensitivity-only until an approved class source exists",
+      "scientific_reason": "a 6-parameter vector stays identifiable and attributable; class composition is simply not measurable now",
+      "verified_facts": [
+        "no vehicle class or length field exists in the approved reference",
+        "speed, acceleration, gap and closing distributions are identifiable",
+        "the engineering fixture vTypes are not scientific mappings"
+      ]
+    },
+    {
+      "alternatives": [
+        "uniform 0.1 s",
+        "keep the current engineering values as provisional"
+      ],
+      "decision": "5_time_configuration",
+      "main_risk": "freezing an arbitrary warm-up number and calling it scientific",
+      "missing_evidence": [
+        "a pre-declared stability criterion and its tolerance"
+      ],
+      "question": "Which internal/recorded step and which warm-up/evaluation window?",
+      "ready_for_approval": true,
+      "recommended": "record at 0.1 s; choose internal 0.05 s if the benchmark shows acceptable cost; derive warm-up from a stability diagnostic",
+      "scientific_reason": "recorded cadence defines comparability; internal step only affects integration accuracy",
+      "verified_facts": [
+        "0.05 s internal with 0.1 s recorded keeps exact 100 ms evidence and finer integration",
+        "cadence is audited and coarse recordings are refused",
+        "no scientific basis exists yet for a specific warm-up duration"
+      ]
+    },
+    {
+      "alternatives": [
+        "freeze numbers from clustered intervals alone",
+        "declare the calibration exploratory with no gate"
+      ],
+      "decision": "6_scientific_tolerance",
+      "main_risk": "using SUMO-inside-the-real-95%-interval as the sole acceptance rule",
+      "missing_evidence": [
+        "measurement-error, scenario-difference and allowed-deviation components"
+      ],
+      "question": "Which acceptance indicators, tolerance forms and numeric basis per layer?",
+      "ready_for_approval": false,
+      "recommended": "declare layer-wise tolerance forms now and defer the numbers until the five components are supplied; keep layer 3 and exposure structure as rule compliance",
+      "scientific_reason": "real-data uncertainty is not a model-deviation tolerance; conflating them would manufacture an easy pass",
+      "verified_facts": [
+        "clustered vehicle-level intervals exist for the calibration windows",
+        "row-level i.i.d. intervals are much narrower and inadmissible",
+        "the real-real Energy Distance upper bound remains Not Identifiable"
+      ]
+    },
+    {
+      "alternatives": [
+        "single-stage joint optimisation",
+        "sensitivity-only study without optimisation"
+      ],
+      "decision": "7_calibration_experiment",
+      "main_risk": "tuning for a P2 rate at the expense of basic traffic behaviour",
+      "missing_evidence": [
+        "the benchmark and the final configuration count"
+      ],
+      "question": "Optimisation strategy, seeds, run budget, stopping rule and failure handling?",
+      "ready_for_approval": false,
+      "recommended": "staged calibration (network/demand -> kinematics -> following -> exposure -> P2 diagnosis -> stability) with a benchmark-derived budget",
+      "scientific_reason": "staging makes a failed layer attributable instead of compensating across layers",
+      "verified_facts": [
+        "a 6-parameter optimisable vector is proposed",
+        "3 seeds per configuration with all seeds reported",
+        "no wall-clock benchmark exists yet"
+      ]
+    }
+  ],
+  "note": "no decision is pre-approved; the matrix is the researcher's approval surface",
+  "pending_count": 2,
+  "ready_count": 5,
+  "schema_version": "stage_0_5.calibration-readiness.v1.researcher-decision-matrix.v1"
+}

@@ -87,12 +87,17 @@
     "code/scripts/run_stage_0_5_sumo_baseline.py",
     "code/configs/stage_0_5_sumo_engineering_v1.json",
     "code/tests/test_stage_0_5_sumo.py",
-    "docs/STAGE_0_5_TASK_0_5_3_SUMO_BASELINE_ENGINEERING.md"
+    "docs/STAGE_0_5_TASK_0_5_3_SUMO_BASELINE_ENGINEERING.md",
+    "code/src/riskprop/stage_0_5_calibration_readiness.py",
+    "code/scripts/run_stage_0_5_calibration_readiness.py",
+    "code/scripts/run_stage_0_5_timestep_sensitivity.py",
+    "code/tests/test_stage_0_5_measurement_equivalence.py",
+    "docs/STAGE_0_5_TASK_0_5_4A_CALIBRATION_READINESS.md"
   ],
   "current": {
     "active_experiment_id": "stage_0_5",
-    "active_task": "Stage 0.5.3: no-message SUMO engineering baseline and measurement interface built and engineering-verified; researcher approval of network/demand/vType/time/tolerance parameters is pending.",
-    "why_now": "The Stage 0.5.2 six-principle decision is recorded and the engineering skeleton can now produce auditable no-message SUMO states, following measurements and P2 adapters. The next decision is whether to accept the candidate corridor, demand, vType and time settings as the Stage 0.5.4 calibration base; no scientific tolerance, Gate decision or Stage I access has been made.",
+    "active_task": "Stage 0.5.4-A calibration-readiness and parameter-protocol audit completed; the researcher must decide the P2 equivalence scope, the network option, the demand strata, the fleet/time configuration, the tolerances and the calibration budget before Stage 0.5.4-B can start.",
+    "why_now": "Measurement equivalence is audited (16/16 boundary cases, 0 blocking items), the two calibration windows are characterised, and a machine-readable admission checklist shows ready_to_start_stage_0_5_4b=false. No scientific tolerance, network, demand, vType or time parameter is frozen.",
     "next_decision_owner": null,
     "portable_gate_paths": [
       "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",
@@ -100,13 +105,15 @@
       "evidence/results/RES-STAGE-0.3-BOUNDARY-REPAIR-R2/audit.json",
       "evidence/results/RES-STAGE-0.3-SCIENTIFIC-ACCEPTANCE-R3/scientific_gate_report.json",
       "evidence/results/RES-STAGE-0.5-REAL-REF-R2/audit.json",
-      "evidence/results/RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1/audit.json"
+      "evidence/results/RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1/audit.json",
+      "evidence/results/RES-STAGE-0.5-CALIBRATION-READINESS-V1/audit.json"
     ],
     "local_gate_paths": [
       "code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r4/scientific_gate_report.json",
       "code/outputs/formal/calibration/stage_0_3_scientific_acceptance_20261016_r3/scientific_gate_report.json",
       "code/outputs/formal/calibration/stage_0_5_real_reference_r2/audit.json",
-      "code/outputs/formal/calibration/stage_0_5_sumo_baseline_engineering_v1_baseline/audit.json"
+      "code/outputs/formal/calibration/stage_0_5_sumo_baseline_engineering_v1_baseline/audit.json",
+      "code/outputs/formal/calibration/stage_0_5_calibration_readiness_v1/audit.json"
     ]
   },
   "experiments": [
@@ -335,16 +342,20 @@
       "research_question": "SUMO 基础运动与跟驰风险是否明显脱离真实交通范围？",
       "date": "2026-09-07",
       "status": "active_pending_simulation_sample",
-      "code_version": "canonical real reference R2 plus independent Stage 0.5.3 no-message SUMO engineering skeleton (scenario/network/demand/vType configs, TraCI runner, unified state contract, TTC/P2 adapters, calibration-validation access guard); no scientific calibration",
+      "code_version": "canonical real reference R2, independent Stage 0.5.3 no-message SUMO engineering skeleton, and the Stage 0.5.4-A measurement-equivalence/calibration-readiness audit; no scientific calibration and no frozen scientific parameter",
       "code_paths": [
         "code/src/riskprop/simulation_real_coverage.py",
-        "code/src/riskprop/stage_0_5_sumo.py"
+        "code/src/riskprop/stage_0_5_sumo.py",
+        "code/src/riskprop/stage_0_5_calibration_readiness.py",
+        "code/tests/test_stage_0_5_measurement_equivalence.py"
       ],
       "entrypoints": [
         "code/scripts/prepare_stage_0_5_real_reference.py",
         "code/scripts/rebuild_stage_0_5_real_reference.py",
         "code/scripts/run_stage_0_5_coverage.py",
-        "code/scripts/run_stage_0_5_sumo_baseline.py"
+        "code/scripts/run_stage_0_5_sumo_baseline.py",
+        "code/scripts/run_stage_0_5_calibration_readiness.py",
+        "code/scripts/run_stage_0_5_timestep_sensitivity.py"
       ],
       "test_paths": [
         "code/tests/test_simulation_real_coverage.py",
@@ -367,7 +378,17 @@
         "sumo_recorded_observation_step_s": 0.1,
         "sumo_engineering_network": "generic_highway_candidate",
         "formal_p2_equivalence_proven": false,
-        "reality_coverage_completed": false
+        "reality_coverage_completed": false,
+        "calibration_readiness_result_id": "RES-STAGE-0.5-CALIBRATION-READINESS-V1",
+        "measurement_equivalence_verdicts": {
+          "equivalent_or_verified": 10,
+          "engineering_consistent_only": 6,
+          "not_equivalent": 0,
+          "pending_evidence": 0
+        },
+        "p2_boundary_cases": 16,
+        "ready_to_start_stage_0_5_4b": false,
+        "scientific_tolerances_justified": false
       },
       "data_version": "RES-STAGE-0.5-REAL-REF-R2; Stage 0.2 R4 four states + final_r1 P2 + Stage 0.3 R2 canonical/R3 summaries",
       "model": "deterministic simulation-to-real coverage audit",
@@ -375,7 +396,8 @@
       "result_ids": [
         "RES-STAGE-0.5-REAL-REF-V1",
         "RES-STAGE-0.5-REAL-REF-R2",
-        "RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1"
+        "RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1",
+        "RES-STAGE-0.5-CALIBRATION-READINESS-V1"
       ],
       "core_metrics": [
         "formal_input_manifest",
@@ -396,9 +418,19 @@
         "p2_measurement_equivalence_status",
         "internal_vs_recorded_time_step",
         "calibration_validation_access_policy",
-        "engineering_reproducibility"
+        "engineering_reproducibility",
+        "measurement_equivalence_matrix",
+        "p2_boundary_case_matrix",
+        "calibration_window_kinematics",
+        "p2_evaluable_exposure_reproduction",
+        "demand_identifiability_matrix",
+        "candidate_traffic_state_strata",
+        "clustered_uncertainty_by_trajectory",
+        "time_step_sensitivity",
+        "stage_0_5_4b_admission_checklist",
+        "validation_isolation_row_scope"
       ],
-      "current_conclusion": "R2 real reference plus an independent US-101 generic-highway no-message engineering baseline are available. The baseline fixture records 8,453 unified states from 17 vehicles with exact net-gap cross-checks, audited 0.1 s cadence, 609.4 s of P2-evaluable following exposure and zero P2 events; the probe fixture confirms one P2 event in both the SUMO-native engineering adapter and the Stage 0.2 formal-alignment adapter. Formal P2 comparability, real network/demand/vType/time approval, coverage tolerance and independent validation all remain pending. Gate stays pending_simulation_sample.",
+      "current_conclusion": "Stage 0.5.4-A closes the engineering and measurement audit: 16 deterministic P2 boundary cases agree between the SUMO-native and the Stage 0.2 formal-alignment adapter, the approved calibration exposure denominators and event rates are reproduced exactly (111,425.9 s / 543 events and 133,505.6 s / 732 events), six adapter defects were corrected without touching any Stage 0.2 rule, and the readiness package contains an itemised equivalence matrix, a demand-identifiability matrix, candidate strata, clustered uncertainty and an admission checklist with ready_to_start_stage_0_5_4b=false. Calibration cannot start until the researcher decides the network option, the fleet-evidence route, the time configuration, the tolerance components and the density-scaled budget. Gate stays pending_simulation_sample; no tolerance, network, demand, vType or time parameter is frozen.",
       "gate": {
         "status": "pending_simulation_sample",
         "portable_path": "evidence/results/RES-STAGE-0.5-REAL-REF-R2/audit.json"
@@ -871,6 +903,95 @@
       "gate_status": "pending_simulation_sample",
       "paper_locations": [
         "docs/STAGE_0_5_TASK_0_5_3_SUMO_BASELINE_ENGINEERING.md"
+      ],
+      "scientific_claim_eligible": false
+    },
+    {
+      "id": "RES-STAGE-0.5-CALIBRATION-READINESS-V1",
+      "experiment_id": "stage_0_5",
+      "name": "Stage 0.5.4-A calibration readiness and measurement-equivalence audit",
+      "status": "verified_engineering_only",
+      "portable_evidence_paths": [
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-READINESS-V1/access_audit.json",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-READINESS-V1/audit.json",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-READINESS-V1/calibration_source_analysis.json",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-READINESS-V1/candidate_protocol.json",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-READINESS-V1/config.json",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-READINESS-V1/manifest.json",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-READINESS-V1/measurement_crosswalks.json",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-READINESS-V1/measurement_equivalence_matrix.json",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-READINESS-V1/provenance.json",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-READINESS-V1/researcher_decision_matrix.json",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-READINESS-V1/scientific_admission_status.json",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-READINESS-V1/stage_0_5_4b_admission_checklist.json",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-READINESS-V1/SHA256SUMS",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-READINESS-V1/timestep/SHA256SUMS",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-READINESS-V1/timestep/manifest.json",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-READINESS-V1/timestep/timestep_sensitivity.json"
+      ],
+      "local_artifact_paths": [
+        "code/outputs/formal/calibration/stage_0_5_calibration_readiness_v1",
+        "code/outputs/formal/calibration/stage_0_5_timestep_sensitivity_v1"
+      ],
+      "code_version_source": "code/src/riskprop/stage_0_5_calibration_readiness.py; code/src/riskprop/stage_0_5_sumo.py; code/scripts/run_stage_0_5_calibration_readiness.py; code/scripts/run_stage_0_5_timestep_sensitivity.py; provenance.json",
+      "configuration_source": "config.json (task scope, thresholds, bootstrap and slice settings) plus candidate_protocol.json and stage_0_5_4b_admission_checklist.json",
+      "data_version_source": "RES-STAGE-0.5-REAL-REF-R2 approved calibration windows us101__0750_0805 and us101__0805_0820 and the Stage 0.2 R4 formal P2 event table read with a calibration-window row predicate (validation_window_rows_materialised=0)",
+      "core_metrics": {
+        "measurement_equivalence_verdicts": {
+          "equivalent_or_verified": 10,
+          "engineering_consistent_only": 6,
+          "not_equivalent": 0,
+          "pending_evidence": 0
+        },
+        "p2_boundary_cases": 16,
+        "p2_boundary_cases_all_as_expected": true,
+        "blocking_measurement_items": [],
+        "reproduced_p2_evaluable_exposure_s": {
+          "us101__0750_0805": 111425.9,
+          "us101__0805_0820": 133505.6
+        },
+        "reproduced_p2_events": {
+          "us101__0750_0805": 543,
+          "us101__0805_0820": 732
+        },
+        "reproduced_p2_event_rate_per_vehicle_hour": {
+          "us101__0750_0805": 17.543497517184065,
+          "us101__0805_0820": 19.738497860763893
+        },
+        "clustered_p2_rate_ci": {
+          "us101__0750_0805": [
+            15.111,
+            20.498
+          ],
+          "us101__0805_0820": [
+            17.472,
+            22.357
+          ]
+        },
+        "iid_row_ci_narrower_by_factor": 12.7,
+        "time_step_event_boundary_shift_s": 0.2,
+        "benchmark_wall_clock_s_300s_baseline": {
+          "internal_0.1": 24.2,
+          "internal_0.05": 27.7,
+          "internal_0.025": 33.8
+        },
+        "adapter_defects_corrected": 6,
+        "ready_to_start_stage_0_5_4b": false,
+        "blocking_items": [
+          "network_plan_approval",
+          "vehicle_type_plan_approval",
+          "time_configuration_approval",
+          "scientific_tolerance_approval",
+          "run_budget_approval"
+        ],
+        "engineering_only": true,
+        "scientific_claim_eligible": false,
+        "simulation_sample_included": false
+      },
+      "current_conclusion": "The SUMO versus Stage 0.2 P2 measurement contract is audited item by item with no blocking measurement gap: event identity, confirmation, continuity and the evaluable-rate denominator are equivalent, while six dimensions stay explicitly engineering-consistent-only (closing tolerance, time origin, status vocabulary, exit-reason vocabulary, DRAC, rate-usage rule). The two approved calibration windows are characterised (kinematics, following, observability, exposure, 1,275 formal P2 events) and the demand identifiability matrix separates measurable interior flow/density from unidentifiable upstream demand, ramp flows, route choice and fleet composition. Calibration readiness is NOT reached: five researcher decisions and two evidence items are still missing.",
+      "gate_status": "pending_simulation_sample",
+      "paper_locations": [
+        "docs/STAGE_0_5_TASK_0_5_4A_CALIBRATION_READINESS.md"
       ],
       "scientific_claim_eligible": false
     },

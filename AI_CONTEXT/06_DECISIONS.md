@@ -116,3 +116,16 @@ Agreed：具有明确字段证据的诊断片段可作为候选事件的保守�
 - **参数分类**：场景参数必须显式分为 `engineering_fixture_only`、`researcher_approved_scientific`、`pending_scientific`；0.5.3 中任何网络、需求、车型映射、驾驶行为、时间步、暖机/评价窗口都不得写入 Approved。
 - **工程语义统一（工程决定，非科学参数）**：`closing_speed_mps = follower_speed_mps - leader_speed_mps`；TraCI `getLeader` 距离是「物理保险杠净间距 − 后车 minGap」，`net_gap_m = leader_traci_distance_m + follower_min_gap_m`，并以同车道独立几何残差 0.0 m 核验。Stage 0.1 的 `relative_speed_mps = leader − follower` 符号相反，不得复用其 TTC 解释。
 - **边界**：`experiment_mode=no_message_baseline` 不等同于 Stage I 正式 `(0,0)`；Stage 0.5 Gate、Protocol Lock 和 Stage I 状态不变。
+
+## 2026-10-18 — Stage 0.5.4-A 审计结果（Proposal，等待研究者批准）
+
+状态：`Proposal`；以下均为 0.5.4-A 的**建议**，未获批准前不得视为项目决定，也不得写入任何 Approved 字段。
+
+- **P2 测量等价性范围**：建议批准 SUMO 与 Stage 0.2 在「P2 事件身份 + 观测确认时刻 + 时间/身份连续性 + 可评价暴露分母」上可比；强制使用 `NGSIM_STATUS_CROSSWALK`/`MISSING_REASON_EQUIVALENCE`，禁止原始状态标签等值比较；确认继承的 `NGSIM_CLOSING_EPSILON_MPS=1e-3`；DRAC 仅作严重度辅助且不参与事件身份。
+- **网络方案**：建议方案 C（先用通用走廊校准，几何升级走独立协议版本）。真实走廊观测为 5 主线 + 3 短程匝道/辅助车道、约 660–680 m，存在车道速度梯度与汇入区；通用走廊不得用于宣称道路结构动力学或真实物理传播速度。
+- **需求依据**：建议采用内部断面通过率与局部密度口径，分层用校准窗口 60 s 片三分位；上游网络需求、匝道流入、OD 不可识别；禁止把状态行数当流量、把采样密度当密度。
+- **车型与行为**：建议冻结 Krauss 结构、仅优化 ≤6 个参数；批准参考文献无车型/长度字段，故车队组成先固定或仅作敏感性；禁止用 pNEUMA 六类或工程 fixture vType 冒充真实车队。
+- **时间配置**：建议 recorded 保持 0.1 s（= NGSIM 观测语义），internal 取 0.05 s（已测成本 +14%）；暖机由预先声明的稳定性判据决定，不冻结任意秒数；0.2 s 记录不得重标为 100 ms 证据。
+- **容差**：建议先批准各层容差**形式**，数值待五个组成部分（真实统计不确定性、共享观测量测误差、场景/窗口差异、允许模型偏差、对 AAD 传播结论影响）齐备后再定；簇级区间不是模型偏差容差；real-real Energy Distance 上界保持 `Not Identifiable`。
+- **校准实验**：建议分阶段校准 + 每配置 3 seed + 全部 seed 报告 + 密度标定基准后再定预算；验证失败必须走新协议版本。
+- **边界**：以上建议不改变 `stage_0_5.gate=pending_simulation_sample`、`protocol_lock_allowed=false`、`stage_1_1_allowed=false`。

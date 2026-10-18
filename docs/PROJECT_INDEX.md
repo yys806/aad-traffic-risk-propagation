@@ -56,4 +56,6 @@ Stage 0.5 场景设计审计：docs/STAGE_0_5_TASK_0_5_0_SCENARIO_DESIGN_AUDIT.m
 
 Stage 0.5.1 正式真实参考重建：`docs/STAGE_0_5_TASK_0_5_1_REAL_REFERENCE_REBUILD.md`、`RES-STAGE-0.5-REAL-REF-R2`。Stage 0.5.2 分场景覆盖协议候选：`docs/STAGE_0_5_TASK_0_5_2_COVERAGE_PROTOCOL_DESIGN.md`。两项均保持 `pending_simulation_sample`，未运行 SUMO、未冻结阈值或验证划分。
 
+Stage 0.5.4-A 校准准入审计：`docs/STAGE_0_5_TASK_0_5_4A_CALIBRATION_READINESS.md`、`RES-STAGE-0.5-CALIBRATION-READINESS-V1`。给出 P2 测量等价性矩阵（0 阻断）、校准窗口统计与需求可识别性、候选网络/车型/时间/容差协议与准入清单（`ready_to_start_stage_0_5_4b=false`）。未读取验证窗口、未冻结科学参数、Gate 不变。
+
 Stage 0.5.3 SUMO 工程基线：`docs/STAGE_0_5_TASK_0_5_3_SUMO_BASELINE_ENGINEERING.md`、`RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1`。US-101 `generic_highway_candidate` 完成 baseline 与 measurement probe 两个 engineering-only fixture，状态/跟驰/净间距/闭合速度/TTC/暴露/工程 P2 与校准验证隔离均已接通；正式网络、需求、车型映射、时间步、暖机窗口、P2 正式等价性、覆盖容差和独立验证仍未完成。

@@ -1,6 +1,6 @@
 {
   "communication_enabled": false,
-  "created_at_utc": "2026-10-18T11:12:24.052399Z",
+  "created_at_utc": "2026-10-18T12:26:31.185832Z",
   "engineering_only": true,
   "environment": {
     "netconvert_executable": "C:\\Program Files (x86)\\Eclipse\\Sumo\\bin\\netconvert.exe",
@@ -28,6 +28,10 @@
       "rule": "closing_speed_mps = follower_speed_mps - leader_speed_mps",
       "status": "verified_engineering"
     },
+    "drac": {
+      "rule": "closing^2 / (2 * gap) on valid closing rows (approved closed form, pending review)",
+      "status": "engineering_consistent_only"
+    },
     "formal_p2_equivalence": {
       "status": "pending_measurement_equivalence"
     },
@@ -49,7 +53,7 @@
       "status": "verified_engineering"
     },
     "p2_evaluable_exposure": {
-      "reason": "denominator interface prepared, not calibration-accepted",
+      "reason": "denominator interface prepared and aligned to the approved edge audit, not calibration-accepted",
       "status": "engineering_only"
     },
     "p2_event_extraction": {
@@ -65,7 +69,7 @@
       "status": "verified_engineering"
     },
     "ttc_status": {
-      "rule": "ttc_s = net_gap_m / closing_speed_mps when net_gap_m > 0 and closing_speed_mps > 0",
+      "rule": "ttc_s = net_gap_m / closing_speed_mps when net_gap_m > 0 and closing_speed_mps > NGSIM_CLOSING_EPSILON_MPS",
       "status": "verified_engineering"
     }
   },
@@ -130,7 +134,7 @@
       }
     },
     "normalization_note": "netconvert applies network offset/normalisation, so built lane geometry can differ from the design-intent node coordinates; audited lane facts come from the built network",
-    "source_network_sha256": "91d50adaf55dedbd3029b7b6c75ea2d13b9f3d78a209bced90d3ecab0f246265"
+    "source_network_sha256": "2358173244e2078f899c814750d9705643a730ed9115d167a47c58ce2cfdd6aa"
   },
   "p2_engineering_event_confirm_times_s": [],
   "p2_engineering_events": 0,
@@ -170,7 +174,7 @@
   "source_risk_treatment_enabled": false,
   "stage_0_5_gate": "pending_simulation_sample",
   "stage_1_1_allowed": false,
-  "started_at_utc": "2026-10-18T11:12:04.823699Z",
+  "started_at_utc": "2026-10-18T12:26:10.354512Z",
   "state_rows": 8453,
   "ttc_valid_rows": 724,
   "vehicle_count": 17,

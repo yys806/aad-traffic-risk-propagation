@@ -19,6 +19,14 @@
 - Lankershim/pNEUMA 保持候选入口且 pNEUMA 六类原始车型 `unmapped`；结果仅 engineering-only，P2 等价性 pending，Gate 不变。
 - 注册表订正：移除已被科学再审计取代的旧结果 id `RES-STAGE-0.4-SEE-V2X-BSM-V1`（权威记录 `RES-STAGE-0.4-SEE-V2X-BSM-REAUDIT-V1`），已封存历史 gate 报告保留原 id。
 
+## 2026-10-18 — Stage 0.5.4-A 校准准入与测量等价性审计
+
+- 新增 `stage_0_5_calibration_readiness.py` 与两个入口脚本：测量等价性审计、校准窗口（仅前两个）统计、需求可识别性、候选分层、轨迹簇不确定性、时间步敏感性与成本基准、候选协议与准入清单。
+- P2 测量契约 16 项维度逐条判定（10 Equivalent/Verified、6 Engineering Consistent Only、0 阻断），16 个确定性边界用例全部符合预期；独立复现封存的可评价暴露与事件率。
+- 修复 6 项适配层缺陷：`global_time_ms` 绝对时钟、`leader_frame_id` 前车自身帧号、`exit_reason` 保留、闭合 epsilon 继承已批准默认值、可靠跟驰层与正式边缘审计对齐、DRAC 复用已批准闭式；未修改 Stage 0.2 阈值/持续时间/分母。
+- 新增行级作用域 fail-closed 读取（`require_row_scoped_read`）：正式事件表只物化 543+732 行，验证窗口 0 行。
+- 结果 `RES-STAGE-0.5-CALIBRATION-READINESS-V1` 为工程审计；准入清单 `ready_to_start_stage_0_5_4b=false`，Gate 不变。
+
 ## 2026-09-10 — 建立 AI 上下文与长期协作层
 
 - 新增九文件 `AI_CONTEXT/`，覆盖当前状态、科研背景、架构、数据流、模块、实验、已确认决策、已知问题和重要变化。

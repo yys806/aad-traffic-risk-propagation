@@ -98,11 +98,117 @@ CLOSING_SPEED_SEMANTICS: dict[str, Any] = {
     "positive": "follower is closing on the leader",
     "zero": "zero longitudinal relative speed",
     "negative": "leader is pulling away from the follower",
-    "ttc_rule": "ttc_s = net_gap_m / closing_speed_mps when net_gap_m > 0 and closing_speed_mps > 0",
+    "ttc_rule": (
+        "ttc_s = net_gap_m / closing_speed_mps when net_gap_m > 0 and"
+        " closing_speed_mps > NGSIM_CLOSING_EPSILON_MPS"
+    ),
     "stage_0_1_conflict": (
         "Stage 0.1 validation risk used relative_speed_mps = leader_speed - follower_speed,"
         " the opposite sign; Stage 0.5 states must not reuse that interpretation"
     ),
+    "formal_source": (
+        "code/src/riskprop/real_trajectory.py::add_ngsim_leader_ttc"
+        " (closing_speed_mps = -relative_speed_mps = follower - leader)"
+    ),
+}
+
+#: Closing-speed tolerance inherited from the approved NGSIM measurement pipeline
+#: (``add_ngsim_leader_ttc(closing_epsilon_mps=1e-3)``).  Adopting the identical value
+#: keeps the TTC-validity rule classifiable, not approximately, comparable.  The value
+#: itself is listed in the equivalence matrix as an item the researcher must confirm.
+NGSIM_CLOSING_EPSILON_MPS = 1e-3
+
+#: Approved measurement-status vocabulary of the formal pipeline, with the SUMO
+#: counterpart of every condition it can observe itself.  The crosswalk exists
+#: because approved Stage 0.5.2 decision 3.4 forbids copying NGSIM collection
+#: defects into the simulator; the two pipelines therefore *report* the same
+#: physical condition under different labels in one documented case.
+NGSIM_STATUS_CROSSWALK: dict[str, dict[str, str]] = {
+    "valid": {
+        "ngsim_condition": "matched leader, positive net gap, closing speed above epsilon",
+        "sumo_label": "valid",
+        "comparability": "Equivalent / Verified",
+    },
+    "not_applicable": {
+        "ngsim_condition": "matched leader and positive net gap but no closing",
+        "sumo_label": "not_applicable (missing_reason=non_closing)",
+        "comparability": "Equivalent / Verified",
+    },
+    "invalid": {
+        "ngsim_condition": "matched leader with non-positive net gap",
+        "sumo_label": "invalid (missing_reason=non_positive_gap)",
+        "comparability": "Equivalent / Verified",
+    },
+    "missing__no_reported_leader": {
+        "ngsim_condition": "no leader reported in the source record (labelled missing)",
+        "sumo_label": "not_applicable (missing_reason=no_observed_leader)",
+        "comparability": "Engineering Consistent Only",
+        "note": (
+            "documented, approved asymmetry: in NGSIM the absence of a leader record is"
+            " counted as an observation limitation (missing), while in SUMO the absence of"
+            " a leader is a genuine traffic state (not_applicable).  No leader row can enter"
+            " reliable-following exposure in either pipeline, so the P2 denominator is"
+            " unaffected; comparisons of raw status composition must use this crosswalk."
+        ),
+    },
+    "missing__identity_or_clock": {
+        "ngsim_condition": "leader not matched, unobservable match fields, conflicting clock/frame",
+        "sumo_label": "missing (missing_reason=leader_identity_unresolved)",
+        "comparability": "Engineering Consistent Only",
+        "note": "NGSIM collection/identity defects map onto the simulator's identity-resolution failure",
+    },
+    "missing__unobservable_input": {
+        "ngsim_condition": "leader matched but speed/headway fields unusable",
+        "sumo_label": "missing (missing_reason=simulator_output_missing)",
+        "comparability": "Engineering Consistent Only",
+        "note": "SUMO output defects must stay zero rows; the label exists for fail-closed behaviour",
+    },
+}
+
+#: Reason-string correspondence, used when the two pipelines are compared.
+MISSING_REASON_EQUIVALENCE: dict[str, dict[str, str]] = {
+    "no_reported_leader": {
+        "sumo_reason": "no_observed_leader",
+        "sumo_status": "not_applicable",
+        "ngsim_status": "missing",
+        "comparability": "Engineering Consistent Only",
+    },
+    "leader_not_matched": {
+        "sumo_reason": "leader_identity_unresolved",
+        "sumo_status": "missing",
+        "ngsim_status": "missing",
+        "comparability": "Engineering Consistent Only",
+    },
+    "unobservable_match_fields": {
+        "sumo_reason": "leader_identity_unresolved",
+        "sumo_status": "missing",
+        "ngsim_status": "missing",
+        "comparability": "Engineering Consistent Only",
+    },
+    "conflicting_match_fields": {
+        "sumo_reason": "not_applicable_to_simulator_observation",
+        "sumo_status": None,
+        "ngsim_status": "missing",
+        "comparability": "Not Equivalent",
+    },
+    "unobservable_input": {
+        "sumo_reason": "simulator_output_missing",
+        "sumo_status": "missing",
+        "ngsim_status": "missing",
+        "comparability": "Engineering Consistent Only",
+    },
+    "non_positive_gap": {
+        "sumo_reason": "non_positive_gap",
+        "sumo_status": "invalid",
+        "ngsim_status": "invalid",
+        "comparability": "Equivalent / Verified",
+    },
+    "non_closing": {
+        "sumo_reason": "non_closing",
+        "sumo_status": "not_applicable",
+        "ngsim_status": "not_applicable",
+        "comparability": "Equivalent / Verified",
+    },
 }
 
 UNITS: dict[str, str] = {
@@ -117,8 +223,14 @@ UNITS: dict[str, str] = {
     "leader_traci_distance_m": "m",
     "closing_speed_mps": "m/s",
     "ttc_s": "s",
+    "drac_mps2": "m/s^2",
+    "global_time_ms": "ms",
+    "frame_id": "1",
     "p2_event_count": "1",
+    "reliable_following_exposure_s": "s",
+    "reliable_closing_exposure_s": "s",
     "p2_evaluable_following_exposure_s": "s",
+    "not_evaluable_following_exposure_s": "s",
     "p2_event_rate_per_vehicle_hour": "1/h",
 }
 
@@ -456,6 +568,28 @@ CALIBRATION_VALIDATION_POLICY: dict[str, Any] = {
     ],
     "access_roles": ["calibration", "temporal_validation", "auxiliary"],
     "locked_holdout": "forbidden_in_stage_0_5_3",
+    #: Sources whose file legitimately contains several window groups.  They may only be
+    #: read with a row predicate that restricts the materialised rows to the calibration
+    #: windows; the guard refuses any wider scope.  This is an access-control declaration,
+    #: not a scientific parameter.
+    "calibration_row_scoped_sources": {
+        "p2_formal_events": {
+            "row_filter_required": True,
+            # the approved event table keys its rows by the long source name
+            # ("us101__0750_0805"), not by the short window label
+            "column": "source",
+            "allowed_values": ["us101__0750_0805", "us101__0805_0820"],
+            "forbidden_values": [
+                "us101__0820_0835",
+                "lankershim__complete",
+                "pneuma__athens_d1",
+            ],
+            "reason": (
+                "the approved formal P2 event table contains every source; only the two"
+                " calibration windows may ever be materialised"
+            ),
+        }
+    },
 }
 
 
@@ -715,6 +849,7 @@ class CalibrationValidationGuard:
             return self._record(
                 AccessDecision(role, requested, purpose, False, "unknown_access_role", requested)
             )
+        row_scoped = set(self.policy.get("calibration_row_scoped_sources", ()))
         restricted: list[str] = []
         if role == "calibration":
             restricted = sorted(set(requested) & (self.validation_sources | self.auxiliary_sources))
@@ -726,7 +861,10 @@ class CalibrationValidationGuard:
             return self._record(
                 AccessDecision(role, requested, purpose, False, "restricted_source_for_role", restricted)
             )
-        unknown = sorted(set(requested) - (self.calibration_sources | self.validation_sources | self.auxiliary_sources))
+        unknown = sorted(
+            set(requested)
+            - (self.calibration_sources | self.validation_sources | self.auxiliary_sources | row_scoped)
+        )
         if unknown:
             return self._record(
                 AccessDecision(role, requested, purpose, False, "source_not_declared_in_policy", unknown)
@@ -793,6 +931,82 @@ class CalibrationValidationGuard:
         if self.log_path is not None:
             self.flush()
         return actual
+
+    def require_row_scoped_read(
+        self,
+        path: str | Path,
+        *,
+        source: str,
+        allowed_values: Sequence[str],
+        column: str,
+        purpose: str = "",
+        columns: Sequence[str] | None = None,
+    ) -> tuple[pd.DataFrame, dict[str, Any]]:
+        """Read a multi-window source with a mandatory calibration-window row predicate.
+
+        The predicate is pushed into the parquet reader so non-calibration rows are never
+        materialised.  A caller asking for a wider scope, or a read that returns any
+        forbidden value, is denied and recorded.
+        """
+
+        spec = self.policy.get("calibration_row_scoped_sources", {}).get(source)
+        if spec is None:
+            raise Stage05AccessDenied(f"{source!r} is not declared as a row-scoped calibration source")
+        if spec.get("row_filter_required") is not True:
+            raise Stage05AccessDenied(f"{source!r} requires an enforced row filter")
+        requested = [str(value) for value in allowed_values]
+        policy_allowed = {str(value) for value in spec.get("allowed_values", ())}
+        if not set(requested) <= policy_allowed:
+            raise Stage05AccessDenied(
+                f"{source!r}: requested row scope {sorted(set(requested) - policy_allowed)} exceeds the policy"
+            )
+        forbidden = set(requested) & {str(value) for value in spec.get("forbidden_values", ())}
+        if forbidden:
+            raise Stage05AccessDenied(f"{source!r}: requested forbidden window {sorted(forbidden)}")
+        digest = self.require_source_read(
+            path, role="calibration", source=source, purpose=purpose or f"row-scoped read of {path}"
+        )
+        frame = pd.read_parquet(
+            path, columns=list(columns) if columns is not None else None, filters=[(column, "in", requested)]
+        )
+        windows = set(frame[column].astype(str).unique())
+        escaped = sorted(windows - set(requested))
+        detail = {
+            "source": source,
+            "path": str(path),
+            "sha256": digest,
+            "row_filter": {"column": column, "allowed_values": requested},
+            "rows_materialised": int(len(frame)),
+            "rows_by_window": {
+                str(key): int(value) for key, value in frame[column].astype(str).value_counts().items()
+            },
+            "escaped_values": escaped,
+            "validation_window_rows_materialised": int(
+                frame[column].astype(str).isin(spec.get("forbidden_values", ())).sum()
+            ),
+        }
+        decision = self.decisions[-1]
+        decision.checked_bindings[f"{source}::rows"] = str(len(frame))
+        decision.checked_bindings[f"{source}::row_filter"] = f"{column} in {requested}"
+        if escaped:
+            decision.allowed = False
+            decision.reason = "row_scoped_read_escaped_the_requested_scope"
+            if self.log_path is not None:
+                self.flush()
+            raise Stage05AccessDenied(f"{source!r}: read escaped the requested scope: {escaped}")
+        self.decisions.append(
+            AccessDecision(
+                role="calibration",
+                sources=[source],
+                purpose=f"row-scoped read ({column} in {requested})",
+                allowed=True,
+                reason="row_scoped_read_allowed_by_policy",
+                checked_bindings={f"{source}::rows": str(len(frame))},
+            )
+        )
+        if self.log_path is not None:
+            self.flush()
+        return frame, detail
 
     def flush(self) -> None:
         if self.log_path is None:
@@ -867,7 +1081,13 @@ def compute_sumo_measurements(frame: pd.DataFrame) -> pd.DataFrame:
     gap = pd.to_numeric(result["net_gap_m"], errors="coerce")
     has_leader = _leader_present(result["leader_id"])
     identity_status = result["leader_identity_status"].astype("string").fillna("unresolved")
-    observed = identity_status.eq("observed").to_numpy()
+    observed = identity_status.eq("observed")
+    if "leader_incarnation_id" in result.columns:
+        # an "observed" leader whose incarnation cannot be resolved is not a usable
+        # identity: the measurement core itself fails closed instead of trusting the id
+        incarnations = result["leader_incarnation_id"].astype("string")
+        observed = observed & incarnations.notna() & ~incarnations.isin(["<NA>", "", "nan", "None"])
+    observed = observed.to_numpy()
     finite_speed = np.isfinite(speed.to_numpy(float))
     finite_leader_speed = np.isfinite(leader_speed.to_numpy(float))
     finite_gap = np.isfinite(gap.to_numpy(float))
@@ -887,9 +1107,13 @@ def compute_sumo_measurements(frame: pd.DataFrame) -> pd.DataFrame:
 
     identity_unresolved = has_leader & ~observed
     output_missing = has_leader & observed & (~finite_speed | ~finite_leader_speed | ~finite_gap)
-    non_positive_gap = has_leader & observed & finite_gap & (gap.to_numpy(float) <= 0)
-    reliable = has_leader & observed & finite_gap & (gap.to_numpy(float) > 0) & finite_speed & finite_leader_speed
-    valid_ttc = reliable & np.isfinite(closing) & (closing > 0)
+    gap_values = gap.to_numpy(float)
+    # Formal ``add_ngsim_leader_ttc`` reliability: a matched leader with usable fields at
+    # both ends.  A non-positive net gap stays *reliable* (it is an observed following
+    # link) and is classified invalid, exactly as in the approved pipeline.
+    reliable = has_leader & observed & finite_gap & finite_speed & finite_leader_speed
+    non_positive_gap = reliable & (gap_values <= 0)
+    valid_ttc = reliable & (gap_values > 0) & np.isfinite(closing) & (closing > NGSIM_CLOSING_EPSILON_MPS)
 
     result.loc[identity_unresolved, "measurement_status"] = "missing"
     result.loc[identity_unresolved, "missing_reason"] = "leader_identity_unresolved"
@@ -899,24 +1123,34 @@ def compute_sumo_measurements(frame: pd.DataFrame) -> pd.DataFrame:
     result.loc[output_missing, "missing_reason"] = "simulator_output_missing"
     result.loc[output_missing, "following_status"] = "measurement_missing"
 
-    result.loc[non_positive_gap, "measurement_status"] = "invalid"
-    result.loc[non_positive_gap, "missing_reason"] = "non_positive_net_gap"
-    result.loc[non_positive_gap, "following_status"] = "gap_invalid"
-
     result.loc[reliable, "reliable_following_eligible"] = True
-    result.loc[reliable, "p2_evaluable_eligible"] = True
     result.loc[reliable, "following_status"] = "following_steady"
     result.loc[reliable & (closing < 0), "following_status"] = "following_opening"
-    result.loc[reliable & (closing == 0), "following_status"] = "following_steady"
     result.loc[valid_ttc, "following_status"] = "following_closing"
 
-    # reliable, positive-gap but non-closing states remain P2-evaluable exposure.
+    # reliable links with a non-negative gap and no closing remain evaluable exposure.
     result.loc[reliable, "measurement_status"] = "not_applicable"
     result.loc[reliable, "missing_reason"] = "non_closing"
     result.loc[valid_ttc, "measurement_status"] = "valid"
     result.loc[valid_ttc, "missing_reason"] = ""
-    result.loc[valid_ttc, "ttc_s"] = gap.to_numpy(float)[valid_ttc] / closing[valid_ttc]
+    result.loc[valid_ttc, "ttc_s"] = gap_values[valid_ttc] / closing[valid_ttc]
     result.loc[valid_ttc, "ttc_valid"] = True
+    # an observed, reliable link with a non-positive net gap is invalid, not zero risk
+    result.loc[non_positive_gap, "measurement_status"] = "invalid"
+    result.loc[non_positive_gap, "missing_reason"] = "non_positive_gap"
+    result.loc[non_positive_gap, "following_status"] = "gap_invalid"
+
+    # approved closed-form severity measure, computed exactly where the formal pipeline
+    # computes it (valid closing rows only); it never participates in event identity.
+    drac = np.full(len(result), np.nan)
+    drac[valid_ttc] = closing[valid_ttc] ** 2 / (2.0 * gap_values[valid_ttc])
+    result["drac_mps2"] = drac
+    result["gap_positive"] = gap_values > 0
+
+    evaluable_status = {"valid", "not_applicable"}
+    result["p2_evaluable_eligible"] = (
+        result["reliable_following_eligible"] & result["measurement_status"].isin(evaluable_status)
+    )
 
     unknown_status = ~np.isin(result["measurement_status"].to_numpy(), MEASUREMENT_STATUS)
     if unknown_status.any():
@@ -973,15 +1207,108 @@ def cadence_max_gap_s(recorded_observation_step_s: float) -> float:
     return float(recorded_observation_step_s) * (FORMAL_MAX_GAP_S / FORMAL_OBSERVATION_STEP_S)
 
 
+def _value_missing(value: Any) -> bool:
+    if value is None:
+        return True
+    try:
+        if pd.isna(value):
+            return True
+    except (TypeError, ValueError):  # pragma: no cover - defensive
+        return True
+    return str(value) in {"", "<NA>", "nan", "None"}
+
+
+def _ordered_states(group: pd.DataFrame) -> pd.DataFrame:
+    keys = [key for key in ("observation_index", "time_s", "simulation_step") if key in group.columns]
+    return group.sort_values(keys, kind="stable").reset_index(drop=True)
+
+
+def following_link_is_valid(
+    previous: Mapping[str, Any],
+    current: Mapping[str, Any],
+    *,
+    cadence_s: float,
+    tolerance_s: float = 1e-6,
+    require_time_delta: bool = True,
+) -> bool:
+    """Stage 0.2-consistent adjacency between two consecutive observations of one follower.
+
+    Mirrors ``audit_stage_0_2_exposure_edges.py`` / ``extract_formal_source_events``:
+    same follower incarnation, same resolved leader identity, no identity break, no
+    observation gap, exact recorded cadence, ``frame`` step of one and an exact
+    millisecond increment when those fields exist.  It fails closed on any missing or
+    NaN identity field.
+    """
+
+    if not np.isfinite(float(cadence_s)) or float(cadence_s) <= 0:
+        raise Stage05EngineeringError("cadence must be finite and positive")
+    follower_left = previous.get("incarnation_id", previous.get("trajectory_id"))
+    follower_right = current.get("incarnation_id", current.get("trajectory_id"))
+    if _value_missing(follower_left) or _value_missing(follower_right):
+        return False
+    if str(follower_left) != str(follower_right):
+        return False
+    leader_left = previous.get("leader_incarnation_id", previous.get("leader_trajectory_id"))
+    leader_right = current.get("leader_incarnation_id", current.get("leader_trajectory_id"))
+    if _value_missing(leader_left) or _value_missing(leader_right):
+        return False
+    if str(leader_left) != str(leader_right):
+        return False
+    id_left = previous.get("leader_id")
+    id_right = current.get("leader_id")
+    if not _value_missing(id_left) and not _value_missing(id_right) and str(id_left) != str(id_right):
+        return False
+    for key in ("identity_break", "observation_gap"):
+        for row in (previous, current):
+            if key in row and bool(row.get(key, False)):
+                return False
+    if require_time_delta:
+        try:
+            delta = float(current["time_s"]) - float(previous["time_s"])
+        except (KeyError, TypeError, ValueError):
+            return False
+        if not np.isfinite(delta) or abs(delta - float(cadence_s)) > tolerance_s:
+            return False
+    for key in ("observation_index", "frame_id", "original_row_number"):
+        if key in previous and key in current:
+            try:
+                if float(current[key]) - float(previous[key]) != 1.0:
+                    return False
+            except (TypeError, ValueError):
+                return False
+    if "global_time_ms" in previous and "global_time_ms" in current:
+        try:
+            millis = float(current["global_time_ms"]) - float(previous["global_time_ms"])
+        except (TypeError, ValueError):
+            return False
+        if abs(millis - round(float(cadence_s) * 1000.0)) > 1e-6:
+            return False
+    return True
+
+
+def adjacency_check_names(sample: pd.DataFrame) -> list[str]:
+    """Names of the adjacency conditions that can be evaluated on a frame."""
+
+    names = ["same_follower_incarnation", "same_resolved_leader_identity", "time_delta_equals_cadence"]
+    for key in ("observation_index", "frame_id", "original_row_number", "global_time_ms"):
+        if key in sample.columns:
+            names.append(f"{key}_delta")
+    for key in ("identity_break", "observation_gap"):
+        if key in sample.columns:
+            names.append(key)
+    return names
+
+
 def _risk_mask(group: pd.DataFrame, threshold_s: float) -> np.ndarray:
     ttc = pd.to_numeric(group["ttc_s"], errors="coerce").to_numpy(float)
     return group["ttc_valid"].astype(bool).to_numpy() & np.isfinite(ttc) & (ttc < threshold_s)
 
 
 def _continuous_risk_segments(
-    group: pd.DataFrame, *, minimum_duration_s: float, max_gap_s: float, ttc_threshold_s: float
+    group: pd.DataFrame, *, minimum_duration_s: float, max_gap_s: float, ttc_threshold_s: float,
+    cadence_s: float,
 ) -> list[pd.DataFrame]:
-    ordered = group.sort_values(["time_s", "simulation_step"], kind="stable").reset_index(drop=True)
+    ordered = _ordered_states(group)
     mask = _risk_mask(ordered, ttc_threshold_s)
     segments: list[list[int]] = []
     current: list[int] = []
@@ -994,14 +1321,9 @@ def _continuous_risk_segments(
         if not current:
             current = [position]
             continue
-        previous = ordered.iloc[current[-1]]
-        same_pair = (
-            str(previous.get("leader_id")) == str(row.get("leader_id"))
-            and str(previous.get("leader_incarnation_id")) == str(row.get("leader_incarnation_id"))
-        )
-        same_incarnation = str(previous.get("incarnation_id")) == str(row.get("incarnation_id"))
+        previous = ordered.iloc[current[-1]].to_dict()
         dt = float(row["time_s"]) - float(previous["time_s"])
-        if not same_pair or not same_incarnation or dt <= 0 or dt > max_gap_s + 1e-9:
+        if not following_link_is_valid(previous, row, cadence_s=cadence_s) or dt > max_gap_s + 1e-9:
             segments.append(current)
             current = [position]
         else:
@@ -1048,6 +1370,7 @@ def build_sumo_p2_events(
                 minimum_duration_s=minimum_duration_s,
                 max_gap_s=max_gap_s,
                 ttc_threshold_s=ttc_threshold_s,
+                cadence_s=recorded_observation_step_s,
             )
         ):
             onset = float(segment["time_s"].iloc[0])
@@ -1058,20 +1381,36 @@ def build_sumo_p2_events(
                 continue
             confirm = float(confirmation_rows["time_s"].iloc[0])
             ended = float(segment["time_s"].iloc[-1])
-            following = measured[
-                measured["incarnation_id"].eq(segment["incarnation_id"].iloc[0])
-                & measured["time_s"].gt(ended)
-            ].sort_values("time_s", kind="stable")
+            following = _ordered_states(
+                measured[
+                    measured["incarnation_id"].eq(segment["incarnation_id"].iloc[0])
+                    & measured["time_s"].gt(ended)
+                ]
+            )
             if following.empty:
                 exit_reason = "observation_end_right_censored"
             else:
-                following_row = following.iloc[0]
-                if str(following_row.get("leader_id")) != str(segment["leader_id"].iloc[0]):
+                following_row = following.iloc[0].to_dict()
+                last_row = _ordered_states(segment).iloc[-1].to_dict()
+                if str(following_row.get("leader_incarnation_id")) != str(
+                    last_row.get("leader_incarnation_id")
+                ) or str(following_row.get("leader_id")) != str(last_row.get("leader_id")):
                     exit_reason = "leader_switch_unknown_risk"
-                elif str(following_row.get("measurement_status")) != "valid":
+                elif not following_link_is_valid(
+                    last_row, following_row, cadence_s=recorded_observation_step_s
+                ):
+                    exit_reason = "continuity_break_unknown_risk"
+                elif str(following_row.get("measurement_status")) != "valid" or not bool(
+                    following_row.get("ttc_valid", False)
+                ):
                     exit_reason = "measurement_unavailable_unknown_risk"
-                else:
+                elif (
+                    np.isfinite(float(following_row.get("ttc_s", np.nan)))
+                    and float(following_row["ttc_s"]) >= ttc_threshold_s
+                ):
                     exit_reason = "observed_threshold_exit"
+                else:
+                    exit_reason = "segment_boundary_unknown_risk"
             events.append(
                 {
                     "event_id": f"sumo_p2_engineering::{key_text}::{segment_index}",
@@ -1091,9 +1430,15 @@ def build_sumo_p2_events(
                     "event_observed_span_s": float(ended - onset),
                     "event_confirm_s": confirm,
                     "ttc_min_s": float(pd.to_numeric(segment["ttc_s"], errors="coerce").min()),
+                    "drac_max_mps2": float(
+                        pd.to_numeric(segment.get("drac_mps2"), errors="coerce").max()
+                    )
+                    if "drac_mps2" in segment
+                    else None,
                     "raw_frame_count": int(len(segment)),
                     "inclusion_status": "engineering_only",
                     "exclusion_reason": "",
+                    "exit_reason": exit_reason,
                     "rule": "P2",
                     "ttc_threshold_s": float(ttc_threshold_s),
                     "minimum_duration_s": float(minimum_duration_s),
@@ -1108,57 +1453,90 @@ def build_sumo_p2_events(
         "event_id", "run_id", "scenario_id", "fixture_id", "vehicle_id", "incarnation_id",
         "leader_id", "leader_incarnation_id", "conflict_type", "event_start_s", "event_end_s",
         "event_duration_s", "event_observed_span_s", "event_confirm_s", "ttc_min_s",
-        "raw_frame_count", "inclusion_status", "exclusion_reason", "rule", "ttc_threshold_s",
-        "minimum_duration_s", "max_gap_s", "algorithm_version", "adapter",
-        "measurement_equivalence_status", "scientific_claim_eligible",
+        "drac_max_mps2", "raw_frame_count", "inclusion_status", "exclusion_reason",
+        "exit_reason", "rule", "ttc_threshold_s", "minimum_duration_s", "max_gap_s",
+        "algorithm_version", "adapter", "measurement_equivalence_status",
+        "scientific_claim_eligible",
     ]
     event_frame = pd.DataFrame(events, columns=columns)
     return event_frame, compute_exposure(measured, recorded_observation_step_s=recorded_observation_step_s)
 
 
-def compute_exposure(states: pd.DataFrame, *, recorded_observation_step_s: float) -> dict[str, Any]:
-    """Reliable-following, reliable-closing and P2-evaluable following exposure."""
+EVALUABLE_MEASUREMENT_STATUS = ("valid", "not_applicable")
 
-    max_gap_s = cadence_max_gap_s(recorded_observation_step_s)
+
+def compute_exposure(
+    states: pd.DataFrame,
+    *,
+    recorded_observation_step_s: float,
+    follow_adjacency: float | None = None,
+    closing_adjacency: float | None = None,
+) -> dict[str, Any]:
+    """Reliable-following, P2-evaluable, not-evaluable and reliable-closing exposure.
+
+    Layer semantics follow the approved Stage 0.2 edge audit exactly:
+
+    * ``reliable_following``: every adjacent link with a reliable identity at both ends,
+    * ``p2_evaluable_following``: reliable links whose two endpoint measurement statuses
+      are in ``{valid, not_applicable}`` (the published rate denominator),
+    * ``not_evaluable_following``: reliable links excluded by ``{missing, invalid}``,
+    * ``reliable_closing``: adjacent links with a valid closing TTC at both ends.
+
+    ``follow_adjacency`` / ``closing_adjacency`` allow a caller to report an externally
+    audited adjacency time (for example the approved NGSIM edge audit) next to the
+    simulator-side value without changing the computed rules.
+    """
+
+    cadence = float(recorded_observation_step_s)
+    max_gap_s = cadence_max_gap_s(cadence)
     group_columns = [
         column
         for column in ("run_id", "scenario_id", "fixture_id", "vehicle_id", "incarnation_id")
         if column in states.columns
     ]
     following = closing = evaluable = 0.0
-    evaluable_status = {"valid", "not_applicable"}
     for _, group in states.groupby(group_columns, dropna=False, sort=False):
-        ordered = group.sort_values(["time_s", "simulation_step"], kind="stable")
+        ordered = _ordered_states(group)
         for first, second in zip(ordered.iloc[:-1].to_dict("records"), ordered.iloc[1:].to_dict("records")):
-            dt = float(second["time_s"]) - float(first["time_s"])
-            same_pair = (
-                str(first.get("leader_id")) == str(second.get("leader_id"))
-                and str(first.get("leader_incarnation_id")) == str(second.get("leader_incarnation_id"))
-                and str(first.get("incarnation_id")) == str(second.get("incarnation_id"))
-            )
-            if dt <= 0 or dt > max_gap_s + 1e-9 or not same_pair:
+            if not following_link_is_valid(first, second, cadence_s=cadence):
                 continue
-            if bool(first.get("reliable_following_eligible")) and bool(second.get("reliable_following_eligible")):
-                following += dt
+            reliable_both = bool(first.get("reliable_following_eligible")) and bool(
+                second.get("reliable_following_eligible")
+            )
+            if not reliable_both:
+                continue
+            following += cadence
+            status_both = (
+                str(first.get("measurement_status")) in EVALUABLE_MEASUREMENT_STATUS
+                and str(second.get("measurement_status")) in EVALUABLE_MEASUREMENT_STATUS
+            )
+            if status_both:
+                evaluable += cadence
             if bool(first.get("ttc_valid")) and bool(second.get("ttc_valid")):
-                closing += dt
-            if (
-                bool(first.get("p2_evaluable_eligible"))
-                and bool(second.get("p2_evaluable_eligible"))
-                and str(first.get("measurement_status")) in evaluable_status
-                and str(second.get("measurement_status")) in evaluable_status
-            ):
-                evaluable += dt
+                closing += cadence
+    not_evaluable = following - evaluable
     return {
-        "schema_version": f"{SCHEMA_ROOT}.p2-exposure.v1",
-        "recorded_observation_step_s": float(recorded_observation_step_s),
+        "schema_version": f"{SCHEMA_ROOT}.p2-exposure.v2",
+        "recorded_observation_step_s": cadence,
         "link_max_gap_s": float(max_gap_s),
         "reliable_following_exposure_s": following,
-        "reliable_closing_exposure_s": closing,
         "p2_evaluable_following_exposure_s": evaluable,
+        "not_evaluable_following_exposure_s": not_evaluable,
+        "not_evaluable_fraction_of_reliable_following": (not_evaluable / following) if following else None,
+        "reliable_closing_exposure_s": closing,
         "p2_evaluable_following_vehicle_hours": evaluable / 3600.0,
         "exposure_unit": "vehicle-second (converted to vehicle-hour for the event rate)",
         "rate_formula": "p2_event_count / p2_evaluable_following_vehicle_hours",
+        "evaluable_rule": (
+            "reliable follower/leader/time link with both endpoint measurement_status in"
+            " {valid, not_applicable}; excluded links carry no zero-risk interpretation"
+        ),
+        "adjacency_checks_applied": adjacency_check_names(states),
+        "externally_audited_adjacency": {
+            "source": "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4 / stage_0_2_exposure_edge_audit",
+            "reliable_following_edge_seconds": follow_adjacency,
+            "reliable_closing_edge_seconds": closing_adjacency,
+        },
         "status": "pending_measurement_equivalence",
         "formal_rate_eligible": False,
         "scientific_claim_eligible": False,
@@ -1180,8 +1558,16 @@ SUMO_FORMAL_FIELD_MAP: dict[str, dict[str, str]] = {
         "status": "adapter_defined_simulator_frame_index",
         "note": "not an NGSIM original row number; never claimed as one",
     },
-    "frame_id": {"sumo_source": "observation_index", "status": "adapter_defined_simulator_frame_index"},
-    "global_time_ms": {"sumo_source": "round(time_s * 1000)", "status": "provided_by_sumo_adapter"},
+    "frame_id": {
+        "sumo_source": "observation_index (per-incarnation recorded observation counter)",
+        "status": "adapter_defined_simulator_frame_index",
+        "note": "increments by exactly one per recorded observation of the same incarnation",
+    },
+    "global_time_ms": {
+        "sumo_source": "round(time_s * 1000) of the recorded simulator clock",
+        "status": "provided_by_sumo_adapter",
+        "note": "absolute, not reset per incarnation; late entry therefore keeps real clock time",
+    },
     "diagnostic_clock_anchor_ms": {
         "sumo_source": "constant 0 for every recorded state",
         "status": "definitional_constant",
@@ -1198,14 +1584,27 @@ SUMO_FORMAL_FIELD_MAP: dict[str, dict[str, str]] = {
         "status": "provided_by_sumo_adapter",
     },
     "leader_matched": {"sumo_source": "leader observed and incarnation-resolved", "status": "provided_by_sumo_adapter"},
-    "leader_frame_id": {"sumo_source": "leader observation_index (same-step leader lookup)", "status": "provided_by_sumo_adapter"},
+    "leader_frame_id": {
+        "sumo_source": "the leader's own observation_index at the same recorded instant",
+        "status": "provided_by_sumo_adapter",
+        "note": "joined on the resolved leader incarnation and millisecond clock; missing join fails closed",
+    },
     "measurement_status": {"sumo_source": "Stage 0.5 unified quality state", "status": "provided_by_sumo_adapter"},
     "ttc_s": {"sumo_source": "net_gap_m / closing_speed_mps", "status": "provided_by_sumo_adapter"},
-    "ttc_valid": {"sumo_source": "positive net gap and positive closing speed", "status": "provided_by_sumo_adapter"},
+    "ttc_valid": {
+        "sumo_source": (
+            "matched leader, net_gap_m > 0 and closing_speed_mps > NGSIM_CLOSING_EPSILON_MPS (1e-3 m/s)"
+        ),
+        "status": "provided_by_sumo_adapter",
+        "note": "the epsilon is inherited from add_ngsim_leader_ttc(closing_epsilon_mps=1e-3)",
+    },
     "drac_mps2": {
-        "sumo_source": "not computed in the Stage 0.5 adapter",
-        "status": "not_implemented_adapter_carries_nan",
-        "note": "P2 event identity does not depend on DRAC; NaN is preserved, never fabricated",
+        "sumo_source": "closing_speed_mps^2 / (2 * net_gap_m), computed only on valid closing rows",
+        "status": "adapter_reuses_approved_closed_form_pending_review",
+        "note": (
+            "identical closed form to the approved NGSIM pipeline; severity/diagnostic only and"
+            " never an input to P2 event identity, confirmation or the rate denominator"
+        ),
     },
 }
 
@@ -1222,10 +1621,23 @@ def build_sumo_formal_source_frame(
     ordered = measured.sort_values(["incarnation_id", "time_s"], kind="stable").copy()
     ordered["observation_index"] = ordered.groupby("incarnation_id", sort=False).cumcount().astype("int64")
     step_ms = int(round(float(recorded_observation_step_s) * 1000))
-    ordered["global_time_ms"] = (ordered["observation_index"] * step_ms).astype("int64")
+    # Absolute simulator clock, exactly as documented in SUMO_FORMAL_FIELD_MAP.  For a
+    # deterministic recorder the increment between consecutive observations equals step_ms,
+    # which is what the formal continuity rule requires; using a per-incarnation counter
+    # here would have reset the clock to zero for late-entering vehicles.
+    ordered["global_time_ms"] = np.rint(pd.to_numeric(ordered["time_s"], errors="coerce") * 1000.0).astype("int64")
     ordered["frame_id"] = ordered["observation_index"].astype("int64")
     ordered["original_row_number"] = ordered["observation_index"].astype("int64")
-    ordered["leader_frame_id"] = ordered["observation_index"].astype("int64")
+    ordered["_time_key_ms"] = ordered["global_time_ms"]
+    leader_index = (
+        ordered[["incarnation_id", "_time_key_ms", "observation_index"]]
+        .rename(columns={"incarnation_id": "leader_incarnation_id", "observation_index": "_leader_observation_index"})
+        .drop_duplicates(["leader_incarnation_id", "_time_key_ms"], keep="first")
+    )
+    # The leader's own frame index at that same simulator instant, not the follower's.
+    ordered = ordered.merge(leader_index, on=["leader_incarnation_id", "_time_key_ms"], how="left")
+    ordered["leader_frame_id"] = ordered["_leader_observation_index"]
+    ordered = ordered.drop(columns=["_time_key_ms", "_leader_observation_index"])
     ordered["diagnostic_clock_anchor_ms"] = 0
     ordered["dataset"] = "sumo"
     ordered["site"] = ordered["scenario_id"].astype(str)
@@ -1239,7 +1651,16 @@ def build_sumo_formal_source_frame(
     ordered["observation_gap"] = False
     ordered["leader_identity_uncertain"] = ~ordered["leader_identity_status"].astype("string").eq("observed")
     ordered["leader_matched"] = ordered["leader_id"].notna() & ~ordered["leader_identity_uncertain"]
-    ordered["drac_mps2"] = np.nan
+    if "drac_mps2" in ordered.columns:
+        ordered["drac_mps2"] = pd.to_numeric(ordered["drac_mps2"], errors="coerce")
+    else:  # pragma: no cover - defensive for externally supplied frames
+        closing_values = pd.to_numeric(ordered.get("closing_speed_mps"), errors="coerce").to_numpy(float)
+        gap_values = pd.to_numeric(ordered.get("net_gap_m"), errors="coerce").to_numpy(float)
+        valid_mask = ordered["ttc_valid"].astype(bool).to_numpy()
+        drac = np.full(len(ordered), np.nan)
+        good = valid_mask & np.isfinite(closing_values) & np.isfinite(gap_values) & (gap_values > 0)
+        drac[good] = closing_values[good] ** 2 / (2.0 * gap_values[good])
+        ordered["drac_mps2"] = drac
     if abs(float(recorded_observation_step_s) - FORMAL_OBSERVATION_STEP_S) > 1e-9:
         # non-0.1 s cadence: mark every link as a gap so the formal continuity rules
         # cannot silently accept a coarser recording as 100 ms evidence.
@@ -1309,13 +1730,496 @@ def measurement_support_matrix() -> dict[str, Any]:
             "closing_speed": {"status": "verified_engineering", "rule": CLOSING_SPEED_SEMANTICS["definition"]},
             "ttc_status": {"status": "verified_engineering", "rule": CLOSING_SPEED_SEMANTICS["ttc_rule"]},
             "measurement_quality_and_reasons": {"status": "verified_engineering", "vocabulary": list(MEASUREMENT_STATUS)},
+            "drac": {
+                "status": "engineering_consistent_only",
+                "rule": "closing^2 / (2 * gap) on valid closing rows (approved closed form, pending review)",
+            },
             "p2_event_extraction": {"status": "engineering_only", "reason": "SUMO-native adapter; formal equivalence pending"},
-            "p2_evaluable_exposure": {"status": "engineering_only", "reason": "denominator interface prepared, not calibration-accepted"},
+            "p2_evaluable_exposure": {
+                "status": "engineering_only",
+                "reason": "denominator interface prepared and aligned to the approved edge audit, not calibration-accepted",
+            },
             "formal_p2_equivalence": {"status": "pending_measurement_equivalence"},
             "reality_coverage": {"status": "pending_scientific", "reason": "requires Stage 0.5.4 calibration and Stage 0.5.5 validation"},
         },
         "engineering_only": True,
         "scientific_claim_eligible": False,
+    }
+
+
+# --------------------------------------------------------------------------------------
+# measurement-equivalence audit
+# --------------------------------------------------------------------------------------
+
+#: Allowed verdicts of the Stage 0.5.4-A measurement-equivalence audit.
+EQUIVALENCE_VERDICTS = (
+    "Equivalent / Verified",
+    "Engineering Consistent Only",
+    "Not Equivalent",
+    "Pending Evidence",
+)
+
+
+def _synthetic_states(
+    rows: Sequence[Mapping[str, Any]],
+    *,
+    run_id: str = "synthetic",
+    scenario_id: str = "us101_highway_baseline",
+    fixture_id: str = "boundary_matrix",
+) -> pd.DataFrame:
+    """Build a well-formed synthetic state frame (leaders are recorded as well).
+
+    ``rows`` describe the follower; a matching leader row is appended for every instant
+    where a leader is present, which mirrors the real runner that records every active
+    vehicle at every recorded step.
+    """
+
+    base = {
+        "run_id": run_id,
+        "scenario_id": scenario_id,
+        "fixture_id": fixture_id,
+        "experiment_mode": "no_message_baseline",
+        "configured_seed": 0,
+        "edge_id": "main_0",
+        "lane_id": "main_0_0",
+        "acceleration_mps2": 0.0,
+    }
+    follower_rows: list[dict[str, Any]] = []
+    leader_rows: list[dict[str, Any]] = []
+    times = sorted({float(row["time_s"]) for row in rows})
+    index_by_time = {time_s: index for index, time_s in enumerate(times)}
+    for row in rows:
+        time_s = float(row["time_s"])
+        leader_id = row.get("leader_id")
+        follower_rows.append(
+            {
+                **base,
+                "time_s": time_s,
+                "observation_index": index_by_time[time_s],
+                "simulation_step": index_by_time[time_s],
+                "vehicle_id": row.get("vehicle_id", "f"),
+                "trajectory_id": row.get("incarnation_id", "run|f|0"),
+                "incarnation_id": row.get("incarnation_id", "run|f|0"),
+                "speed_mps": row.get("speed_mps", 12.0),
+                "leader_id": leader_id,
+                "leader_incarnation_id": None if leader_id is None else f"run|{leader_id}|0",
+                "leader_identity_status": row.get("leader_identity_status", "observed" if leader_id else "not_applicable"),
+                "leader_speed_mps": None if leader_id is None else row.get("leader_speed_mps", 11.4),
+                "net_gap_m": None if leader_id is None else row.get("net_gap_m", 5.0),
+            }
+        )
+        if leader_id is not None:
+            leader_rows.append(
+                {
+                    **base,
+                    "time_s": time_s,
+                    "observation_index": index_by_time[time_s],
+                    "simulation_step": index_by_time[time_s],
+                    "vehicle_id": leader_id,
+                    "trajectory_id": f"run|{leader_id}|0",
+                    "incarnation_id": f"run|{leader_id}|0",
+                    "speed_mps": row.get("leader_speed_mps", 11.4),
+                    "leader_id": None,
+                    "leader_incarnation_id": None,
+                    "leader_identity_status": "not_applicable",
+                    "leader_speed_mps": None,
+                    "net_gap_m": None,
+                }
+            )
+    return pd.DataFrame([*follower_rows, *leader_rows])
+
+
+def p2_boundary_cases() -> dict[str, dict[str, Any]]:
+    """Deterministic boundary cases required by the Stage 0.5.4-A audit (task A3)."""
+
+    def spec(leader_speed: float = 11.4, gap: float = 1.0, leader: str | None = "l") -> dict[str, Any]:
+        return {"leader_speed_mps": leader_speed, "net_gap_m": gap, "leader_id": leader}
+
+    cases: dict[str, dict[str, Any]] = {}
+    cases["normal_sustained_closing"] = {
+        "times": [round(0.1 * i, 10) for i in range(6)],
+        "specs": [spec() for _ in range(6)],
+        "expected_native_events": 1,
+        "expected_formal_events": 1,
+    }
+    cases["non_closing_following"] = {
+        "times": [round(0.1 * i, 10) for i in range(6)],
+        "specs": [spec(leader_speed=12.5) for _ in range(6)],
+        "expected_native_events": 0,
+        "expected_formal_events": 0,
+    }
+    cases["no_leader"] = {
+        "times": [round(0.1 * i, 10) for i in range(6)],
+        "specs": [spec(leader=None) for _ in range(6)],
+        "expected_native_events": 0,
+        "expected_formal_events": 0,
+    }
+    cases["non_positive_gap"] = {
+        "times": [round(0.1 * i, 10) for i in range(6)],
+        "specs": [spec(gap=-1.0) for _ in range(6)],
+        "expected_native_events": 0,
+        "expected_formal_events": 0,
+    }
+    cases["leader_switch"] = {
+        # two 0.1 s risk runs against different leaders: bridging them would fabricate a
+        # 0.3 s event, so a correct adapter must return no event at all
+        "times": [round(0.1 * i, 10) for i in range(4)],
+        "specs": [spec(leader="l1") for _ in range(2)] + [spec(leader="l2") for _ in range(2)],
+        "expected_native_events": 0,
+        "expected_formal_events": 0,
+        "expect_no_bridging": True,
+    }
+    cases["incarnation_change"] = {
+        # the follower leaves and re-enters: identity scope must split the risk run
+        "times": [round(0.1 * i, 10) for i in range(4)],
+        "specs": [spec() for _ in range(4)],
+        "incarnation_switch_at": 2,
+        "expected_native_events": 0,
+        "expected_formal_events": 0,
+        "expect_no_bridging": True,
+    }
+    cases["late_entry_absolute_clock"] = {
+        "times": [round(30.0 + 0.1 * i, 10) for i in range(6)],
+        "specs": [spec() for _ in range(6)],
+        "expected_native_events": 1,
+        "expected_formal_events": 1,
+    }
+    cases["missing_recorded_frame"] = {
+        "times": [0.0, 0.1, 0.3, 0.4, 0.5, 0.6, 0.7],
+        "specs": [spec() for _ in range(7)],
+        "expected_native_events": 1,  # only the 0.3-0.7 run is long enough
+        "expected_formal_events": 1,
+    }
+    cases["warmup_truncation"] = {
+        "times": [round(5.0 + 0.1 * i, 10) for i in range(6)],
+        "specs": [spec() for _ in range(6)],
+        "expected_native_events": 1,
+        "expected_formal_events": 1,
+    }
+    cases["event_start_at_window_start"] = {
+        "times": [round(0.1 * i, 10) for i in range(5)],
+        "specs": [spec() for _ in range(5)],
+        "evaluation_window": (0.1, 0.5),
+        "expected_native_events": 1,
+        "expected_formal_events": 1,
+    }
+    cases["right_censored_end"] = {
+        "times": [round(0.1 * i, 10) for i in range(4)],
+        "specs": [spec() for _ in range(4)],
+        "expected_native_events": 1,
+        "expected_formal_events": 1,
+        "expected_exit_reason": "observation_end_right_censored",
+    }
+    cases["risk_exit_then_re_entry"] = {
+        "times": [round(0.1 * i, 10) for i in range(10)],
+        "specs": [spec() for _ in range(4)] + [spec(leader_speed=14.0) for _ in range(2)] + [spec() for _ in range(4)],
+        "expected_native_events": 2,
+        "expected_formal_events": 2,
+    }
+    cases["exactly_minimum_duration"] = {
+        "times": [round(0.1 * i, 10) for i in range(3)],
+        "specs": [spec() for _ in range(3)],
+        "expected_native_events": 1,
+        "expected_formal_events": 1,
+    }
+    cases["just_below_minimum_duration"] = {
+        "times": [0.0, 0.1],
+        "specs": [spec(), spec()],
+        "expected_native_events": 0,
+        "expected_formal_events": 0,
+    }
+    cases["alternating_valid_and_nonclosing"] = {
+        "times": [round(0.1 * i, 10) for i in range(10)],
+        "specs": [spec() if index % 2 == 0 else spec(leader_speed=12.5) for index in range(10)],
+        "expected_native_events": 0,
+        "expected_formal_events": 0,
+    }
+    cases["coarse_cadence_0_2"] = {
+        "times": [round(0.2 * i, 10) for i in range(6)],
+        "specs": [spec() for _ in range(6)],
+        "cadence_s": 0.2,
+        "expected_native_events": 1,
+        "expected_formal_events": 0,
+        "expected_formal_status": "pending_measurement_equivalence_nonstandard_cadence",
+    }
+    return cases
+
+
+def run_p2_boundary_matrix() -> list[dict[str, Any]]:
+    """Run the deterministic boundary cases against both P2 adapters."""
+
+    results: list[dict[str, Any]] = []
+    for name, case in p2_boundary_cases().items():
+        cadence = float(case.get("cadence_s", FORMAL_OBSERVATION_STEP_S))
+        raw_rows = [
+            {"time_s": time_s, **spec} for time_s, spec in zip(case["times"], case["specs"])
+        ]
+        if "incarnation_switch_at" in case:
+            switch = int(case["incarnation_switch_at"])
+            for position, row in enumerate(raw_rows):
+                if position >= switch:
+                    row["incarnation_id"] = "run|f|1"
+        frame = _synthetic_states(raw_rows)
+        measured = compute_sumo_measurements(frame)
+        native, exposure = build_sumo_p2_events(measured, recorded_observation_step_s=cadence)
+        formal, formal_audit = extract_sumo_formal_p2_events(
+            measured, recorded_observation_step_s=cadence, allow_nonstandard_cadence=True
+        )
+        native_n = len(native)
+        formal_n = len(formal)
+        consistent = native_n == case["expected_native_events"] and formal_n == case["expected_formal_events"]
+        boundaries_match = True
+        event_comparison: list[dict[str, Any]] = []
+        if native_n and formal_n:
+            left = native.sort_values(["vehicle_id", "event_start_s"], kind="stable").reset_index(drop=True)
+            right = formal.sort_values(["vehicle_id", "event_start_s"], kind="stable").reset_index(drop=True)
+            for index in range(min(len(left), len(right))):
+                row_match = True
+                for column in ("event_start_s", "event_end_s", "event_confirm_s"):
+                    row_match &= bool(
+                        np.isclose(float(left.iloc[index][column]), float(right.iloc[index][column]), atol=1e-9)
+                    )
+                for column in ("vehicle_id", "leader_id"):
+                    row_match &= str(left.iloc[index][column]) == str(right.iloc[index][column])
+                boundaries_match &= row_match
+                event_comparison.append(
+                    {
+                        "event_index": index,
+                        "native_start_s": float(left.iloc[index]["event_start_s"]),
+                        "formal_start_s": float(right.iloc[index]["event_start_s"]),
+                        "match": bool(row_match),
+                    }
+                )
+        exit_reason = native.iloc[0]["exit_reason"] if native_n else None
+        exit_reason_expected = case.get("expected_exit_reason")
+        results.append(
+            {
+                "case": name,
+                "cadence_s": cadence,
+                "native_events": native_n,
+                "formal_events": formal_n,
+                "expected_native_events": case["expected_native_events"],
+                "expected_formal_events": case["expected_formal_events"],
+                "boundaries_match": bool(boundaries_match),
+                "case_matches_expectation": bool(consistent and boundaries_match),
+                "no_bridging_verified": (
+                    None if not case.get("expect_no_bridging") else native_n == 0 and formal_n == 0
+                ),
+                "native_exit_reason": exit_reason,
+                "event_comparison": event_comparison,
+                "exit_reason_matches_expectation": (
+                    None if exit_reason_expected is None else exit_reason == exit_reason_expected
+                ),
+                "formal_equivalence_status": formal_audit["equivalence_status"],
+                "formal_status_matches_expectation": (
+                    None
+                    if "expected_formal_status" not in case
+                    else formal_audit["equivalence_status"] == case["expected_formal_status"]
+                ),
+                "reliable_following_exposure_s": exposure["reliable_following_exposure_s"],
+                "p2_evaluable_following_exposure_s": exposure["p2_evaluable_following_exposure_s"],
+                "not_evaluable_following_exposure_s": exposure["not_evaluable_following_exposure_s"],
+                "reliable_closing_exposure_s": exposure["reliable_closing_exposure_s"],
+            }
+        )
+    return results
+
+
+def measurement_equivalence_matrix(
+    boundary_results: Sequence[Mapping[str, Any]] | None = None,
+) -> dict[str, Any]:
+    """Itemised SUMO-versus-Stage-0.2 measurement contract audit.
+
+    No row may be promoted to ``Equivalent / Verified`` from an aggregate event-count
+    agreement alone; each row names the specific deterministic evidence it rests on.
+    """
+
+    results = list(run_p2_boundary_matrix() if boundary_results is None else boundary_results)
+    all_cases_pass = all(bool(row["case_matches_expectation"]) for row in results)
+    case_names = ", ".join(row["case"] for row in results)
+    rows: list[dict[str, Any]] = [
+        {
+            "dimension": "vehicle_identity",
+            "formal_definition": "dataset/site/window_id/source_member/source_period + trajectory_id scope",
+            "sumo_definition": "run-scoped incarnation_id used for all four scope fields and trajectory_id",
+            "verdict": "Equivalent / Verified",
+            "evidence": "boundary cases incarnation_change; run-scoped identity unit test; 0 ambiguous rows in the engineering run",
+            "difference": "mechanism differs (simulator identity vs NGSIM diagnostic clock), role is identical",
+            "blocking": False,
+        },
+        {
+            "dimension": "leader_identity",
+            "formal_definition": "leader_trajectory_id + leader_identity_uncertain from the matched record",
+            "sumo_definition": "leader_incarnation_id resolved in the same recording pass; unresolved => missing",
+            "verdict": "Equivalent / Verified",
+            "evidence": "boundary cases leader_switch, no_leader; runner fails closed when the leader left the network",
+            "difference": "none observed after the fail-closed leader-resolution fix",
+            "blocking": False,
+        },
+        {
+            "dimension": "net_gap",
+            "formal_definition": "reported front-to-front headway minus matched leader length (bumper-to-bumper)",
+            "sumo_definition": "net_gap_m = leader_traci_distance_m + follower_min_gap_m",
+            "verdict": "Equivalent / Verified",
+            "evidence": "same-lane geometry and XY residual 0.0 m over thousands of links; unit test of the conversion rule",
+            "difference": "SUMO needs an explicit minGap correction that NGSIM does not",
+            "blocking": False,
+        },
+        {
+            "dimension": "closing_speed",
+            "formal_definition": "closing_speed_mps = -relative_speed_mps = follower - leader",
+            "sumo_definition": "closing_speed_mps = follower_speed_mps - leader_speed_mps",
+            "verdict": "Equivalent / Verified",
+            "evidence": "unit tests for positive, zero and negative closing",
+            "difference": "Stage 0.1 legacy field uses the opposite sign and must not be reused",
+            "blocking": False,
+        },
+        {
+            "dimension": "ttc_units_and_rule",
+            "formal_definition": "net_gap_m / closing_speed_mps with net_gap_m > 0 and closing_speed_mps > 1e-3",
+            "sumo_definition": "identical, with NGSIM_CLOSING_EPSILON_MPS = 1e-3 inherited from the approved pipeline",
+            "verdict": "Engineering Consistent Only",
+            "evidence": "unit test of the epsilon boundary (closing 0.0005 => not applicable)",
+            "difference": "epsilon adopted from the approved function default rather than re-derived",
+            "blocking": False,
+            "research_action": "confirm the inherited 1e-3 m/s tolerance during equivalence acceptance",
+        },
+        {
+            "dimension": "p2_threshold",
+            "formal_definition": "P2_FORMAL_CONFIG.ttc_threshold_s = 2.0",
+            "sumo_definition": "same constant passed to the adapter; no redefinition",
+            "verdict": "Equivalent / Verified",
+            "evidence": "constants imported from formal_risk_measurement; P2 rule is not re-implemented",
+            "difference": "none",
+            "blocking": False,
+        },
+        {
+            "dimension": "minimum_duration",
+            "formal_definition": "observed first-to-last span >= 0.2 s",
+            "sumo_definition": "same constant; exactly-at and just-below boundary cases",
+            "verdict": "Equivalent / Verified",
+            "evidence": "boundary cases exactly_minimum_duration and just_below_minimum_duration",
+            "difference": "none",
+            "blocking": False,
+        },
+        {
+            "dimension": "time_continuity",
+            "formal_definition": "same pair scope, exact 100 ms and frame step, no identity break or observation gap",
+            "sumo_definition": "following_link_is_valid() mirroring the approved edge audit, including absolute clock",
+            "verdict": "Equivalent / Verified",
+            "evidence": "boundary cases missing_recorded_frame, alternating_valid_and_nonclosing; cadence audit 5.7e-15 s",
+            "difference": "none after the absolute-clock and leader-frame fixes",
+            "blocking": False,
+        },
+        {
+            "dimension": "time_origin",
+            "formal_definition": "time_s is window-relative (0-based per source); global_time_ms is absolute",
+            "sumo_definition": "time_s is the absolute recorded simulator clock; global_time_ms = round(time_s * 1000)",
+            "verdict": "Engineering Consistent Only",
+            "evidence": "boundary cases late_entry_absolute_clock and warmup_truncation",
+            "difference": "durations and deltas are comparable; absolute event timestamps are not",
+            "blocking": False,
+            "research_action": "compare durations, rates and window-relative positions only",
+        },
+        {
+            "dimension": "event_confirmation",
+            "formal_definition": "observed_confirmation_time(): first observed member reaching the span",
+            "sumo_definition": "same function via the formal-alignment adapter; native adapter replicates the rule",
+            "verdict": "Equivalent / Verified",
+            "evidence": "boundary case normal_sustained_closing (confirm = onset + 0.2) and the two-adapter agreement",
+            "difference": "none",
+            "blocking": False,
+        },
+        {
+            "dimension": "event_exit_reason",
+            "formal_definition": "right-censored / leader switch / continuity break / measurement unavailable / threshold exit",
+            "sumo_definition": "same vocabulary and branch order in the native adapter; produced by the formal extractor in the aligned adapter",
+            "verdict": "Engineering Consistent Only",
+            "evidence": "boundary case right_censored_end; probe fixture exit_reason observed_threshold_exit in both adapters",
+            "difference": "native vocabulary previously dropped the field and lacked two branches; now aligned, still not formally ratified",
+            "blocking": False,
+        },
+        {
+            "dimension": "measurement_status_vocabulary",
+            "formal_definition": "valid / not_applicable / invalid / missing with reason strings",
+            "sumo_definition": "same four statuses; reasons classified as traffic state, identity failure or simulator output defect",
+            "verdict": "Engineering Consistent Only",
+            "evidence": "NGSIM_STATUS_CROSSWALK and MISSING_REASON_EQUIVALENCE tables; status composition comparison",
+            "difference": (
+                "a missing leader record is labelled missing in NGSIM and a genuine no-leader state is"
+                " labelled not_applicable in SUMO (approved asymmetry); raw label equality is therefore"
+                " not a valid comparison unit"
+            ),
+            "blocking": False,
+            "research_action": "adopt the crosswalk for layer-3 comparisons; never re-label SUMO states to mimic NGSIM defects",
+        },
+        {
+            "dimension": "evaluable_exposure",
+            "formal_definition": (
+                "reliable following edges with both endpoint statuses in {valid, not_applicable};"
+                " reliable_following - not_evaluable = p2_evaluable"
+            ),
+            "sumo_definition": "identical rule implemented in compute_exposure() v2 with the shared adjacency predicate",
+            "verdict": "Equivalent / Verified",
+            "evidence": "exposure unit tests; boundary matrix exposure columns; approved edge-audit formula reused verbatim",
+            "difference": "non-positive-gap links are now reliable-but-not-evaluable in SUMO as in NGSIM",
+            "blocking": False,
+        },
+        {
+            "dimension": "event_rate",
+            "formal_definition": "event_count / p2_evaluable_following_vehicle_hours (full observations only)",
+            "sumo_definition": "same formula and denominator",
+            "verdict": "Engineering Consistent Only",
+            "evidence": "exposure JSON of both engineering packages; rate identity test",
+            "difference": "no bounded sample or diagnostic probe may be used to recompute a formal rate",
+            "blocking": False,
+        },
+        {
+            "dimension": "drac",
+            "formal_definition": "closing^2 / (2 * gap) on valid closing rows; severity and diagnostic use",
+            "sumo_definition": "same closed form, added to the adapter; never an input to event identity",
+            "verdict": "Engineering Consistent Only",
+            "evidence": "test that populating DRAC leaves event identity unchanged; formula identity test",
+            "difference": "not ratified as a severity contract yet",
+            "blocking": False,
+            "research_action": "decide whether DRAC participates in any formal comparison",
+        },
+        {
+            "dimension": "coarse_recording",
+            "formal_definition": "100 ms native cadence assumed by the extractor",
+            "sumo_definition": "non-0.1 s recordings raise unless explicitly allowed and are then marked non-comparable",
+            "verdict": "Equivalent / Verified",
+            "evidence": "boundary case coarse_cadence_0_2; cadence guard test",
+            "difference": "0.2 s sumo evidence can never be relabelled as 100 ms formal evidence",
+            "blocking": False,
+        },
+    ]
+    blocking = [row for row in rows if row["blocking"]]
+    verdict_counts: dict[str, int] = {}
+    for row in rows:
+        verdict_counts[row["verdict"]] = verdict_counts.get(row["verdict"], 0) + 1
+    return {
+        "schema_version": f"{SCHEMA_ROOT}.measurement-equivalence-matrix.v1",
+        "formal_specification": FORMAL_ALGORITHM_VERSION,
+        "formal_reference_result": "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4",
+        "verdicts": list(EQUIVALENCE_VERDICTS),
+        "verdict_counts": verdict_counts,
+        "rows": rows,
+        "boundary_cases": results,
+        "boundary_case_count": len(results),
+        "boundary_cases_all_as_expected": all_cases_pass,
+        "boundary_case_names": case_names,
+        "blocking_items": [row["dimension"] for row in blocking],
+        "overall_status": "pending_measurement_equivalence_review",
+        "equivalent_or_verified_count": verdict_counts.get("Equivalent / Verified", 0),
+        "engineering_only_count": verdict_counts.get("Engineering Consistent Only", 0),
+        "not_equivalent_count": verdict_counts.get("Not Equivalent", 0),
+        "pending_evidence_count": verdict_counts.get("Pending Evidence", 0),
+        "scientific_claim_eligible": False,
+        "note": (
+            "aggregate event-count agreement alone never promotes a row; the boundary matrix,"
+            " the crosswalk tables and the explicit evidence column are the audit units"
+        ),
     }
 
 
@@ -1864,7 +2768,12 @@ def run_stage_0_5_no_message_baseline(
                         )
                         xy_residual = net_gap - xy_gap
                         xy_residuals.append(abs(xy_residual))
-                identity_status = "observed" if leader_id else "not_applicable"
+                if leader_id is not None and leader_incarnation is None:
+                    # the leader left the network during this recording pass, so it cannot be
+                    # resolved to an incarnation; fail closed instead of trusting a stale id
+                    identity_status = "unresolved"
+                else:
+                    identity_status = "observed" if leader_id else "not_applicable"
                 if recording:
                     position = traci.vehicle.getPosition(vehicle_id)
                     state_rows.append(

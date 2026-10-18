@@ -1,0 +1,265 @@
+{
+  "comparisons": [
+    {
+      "convergence_A_to_B_start_s": 0.19999999999999973,
+      "convergence_B_to_C_start_s": 0.20000000000000018,
+      "event_confirm_s_max_abs_delta": 0.20000000000000018,
+      "event_end_s_max_abs_delta": 0.2999999999999998,
+      "event_start_s_max_abs_delta": 0.19999999999999973,
+      "events_match": true,
+      "events_match_all_three": true,
+      "exposure_relative_delta": 0.0,
+      "fixture_id": "measurement_probe_queue_stop",
+      "mean_speed_abs_delta_mps": 0.02261839236739327,
+      "min_acceleration_abs_delta_mps2": 0.0,
+      "state_rows_ratio": 1.0,
+      "wall_clock_ratio": 0.9529731972190433
+    },
+    {
+      "convergence_A_to_B_start_s": 0.0,
+      "convergence_B_to_C_start_s": 0.0,
+      "event_confirm_s_max_abs_delta": 0.0,
+      "event_end_s_max_abs_delta": 0.0,
+      "event_start_s_max_abs_delta": 0.0,
+      "events_match": true,
+      "events_match_all_three": true,
+      "exposure_relative_delta": 0.006422018348623601,
+      "fixture_id": "baseline_mixed_demand",
+      "mean_speed_abs_delta_mps": 0.007697793775989226,
+      "min_acceleration_abs_delta_mps2": 1.2434497875801753e-13,
+      "state_rows_ratio": 1.0038440417353103,
+      "wall_clock_ratio": 1.102739640099751
+    }
+  ],
+  "cost_benchmark": [
+    {
+      "configuration_id": "A_uniform_0.1",
+      "duration_s": 300.0,
+      "internal_step_s": 0.1,
+      "package": "benchmark__A_uniform_0.1",
+      "simulated_seconds_per_wall_second": 12.390482742989581,
+      "state_rows": 8453,
+      "vehicle_count": 17,
+      "wall_clock_s": 24.212131700012833
+    },
+    {
+      "configuration_id": "B_fine_internal_0.05",
+      "duration_s": 300.0,
+      "internal_step_s": 0.05,
+      "package": "benchmark__B_fine_internal_0.05",
+      "simulated_seconds_per_wall_second": 10.847813700139778,
+      "state_rows": 8453,
+      "vehicle_count": 17,
+      "wall_clock_s": 27.655342200072482
+    },
+    {
+      "configuration_id": "C_finer_internal_0.025",
+      "duration_s": 300.0,
+      "internal_step_s": 0.025,
+      "package": "benchmark__C_finer_internal_0.025",
+      "simulated_seconds_per_wall_second": 8.873234268909641,
+      "state_rows": 8447,
+      "vehicle_count": 17,
+      "wall_clock_s": 33.80954349995591
+    }
+  ],
+  "cost_benchmark_note": "one 300 s baseline run per step candidate; the 20 s sensitivity runs are dominated by process startup and cannot be used as a cost estimate",
+  "created_at_utc": "2026-10-18T12:21:18.990498Z",
+  "duration_s": 20.0,
+  "engineering_only": true,
+  "environment": {
+    "netconvert_executable": "C:\\Program Files (x86)\\Eclipse\\Sumo\\bin\\netconvert.exe",
+    "netconvert_executable_sha256": "4174c17db813d413c85cdf7ad99a5f59b537ddf80f8caac9e1dfe87a35cb6b51",
+    "platform": "Windows-11-10.0.26100-SP0",
+    "python_version": "3.13.5",
+    "sumo_executable": "C:\\Program Files (x86)\\Eclipse\\Sumo\\bin\\sumo.exe",
+    "sumo_executable_sha256": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+    "sumo_home": "C:\\Program Files (x86)\\Eclipse\\Sumo\\tools",
+    "sumo_version": "Eclipse SUMO sumo 1.26.0",
+    "traci_module": "C:\\Program Files (x86)\\Eclipse\\Sumo\\tools\\traci\\__init__.py",
+    "traci_version": "unknown"
+  },
+  "interpretation": "the recorded series stays at 100 ms in both configurations, so any difference reflects integration accuracy and cost only; this is a protocol probe, not a calibration",
+  "no_parameter_was_frozen": true,
+  "result_id": "RES-STAGE-0.5-CALIBRATION-READINESS-V1",
+  "runs": [
+    {
+      "cadence_max_abs_error_s": 2.1371793224034263e-15,
+      "collisions": 0,
+      "configuration_id": "A_uniform_0.1",
+      "event_confirm_s": [
+        3.3
+      ],
+      "event_end_s": [
+        5.5
+      ],
+      "event_start_s": [
+        3.1
+      ],
+      "events": 1,
+      "fixture_id": "measurement_probe_queue_stop",
+      "insertion_failures": [],
+      "internal_step_s": 0.1,
+      "max_acceleration_mps2": 2.0000000000000018,
+      "mean_speed_mps": 1.658999831123637,
+      "min_acceleration_mps2": -4.500000000000002,
+      "min_net_gap_m": 2.0010092712058167,
+      "net_gap_lane_position_residual_max_abs_m": 0.0,
+      "observation_decimation_factor": 1,
+      "p2_evaluable_following_exposure_s": 71.60000000000021,
+      "package": "A_uniform_0.1__measurement_probe_queue_stop",
+      "recorded_observation_step_s": 0.1,
+      "reliable_closing_exposure_s": 53.60000000000049,
+      "state_rows": 1320,
+      "ttc_min_s": [
+        1.7943103644450966
+      ],
+      "wall_clock_s": 5.181166599970311
+    },
+    {
+      "cadence_max_abs_error_s": 2.1371793224034263e-15,
+      "collisions": 0,
+      "configuration_id": "A_uniform_0.1",
+      "event_confirm_s": [],
+      "event_end_s": [],
+      "event_start_s": [],
+      "events": 0,
+      "fixture_id": "baseline_mixed_demand",
+      "insertion_failures": [],
+      "internal_step_s": 0.1,
+      "max_acceleration_mps2": 1.999999999999993,
+      "mean_speed_mps": 20.056282604266304,
+      "min_acceleration_mps2": -4.500000000000046,
+      "min_net_gap_m": 3.0797932242847423,
+      "net_gap_lane_position_residual_max_abs_m": 0.0,
+      "observation_decimation_factor": 1,
+      "p2_evaluable_following_exposure_s": 108.99999999999808,
+      "package": "A_uniform_0.1__baseline_mixed_demand",
+      "recorded_observation_step_s": 0.1,
+      "reliable_closing_exposure_s": 6.499999999999993,
+      "state_rows": 1821,
+      "ttc_min_s": [],
+      "wall_clock_s": 5.493192300084047
+    },
+    {
+      "cadence_max_abs_error_s": 2.1371793224034263e-15,
+      "collisions": 0,
+      "configuration_id": "B_fine_internal_0.05",
+      "event_confirm_s": [
+        3.5
+      ],
+      "event_end_s": [
+        5.2
+      ],
+      "event_start_s": [
+        3.3
+      ],
+      "events": 1,
+      "fixture_id": "measurement_probe_queue_stop",
+      "insertion_failures": [],
+      "internal_step_s": 0.05,
+      "max_acceleration_mps2": 2.0000000000000018,
+      "mean_speed_mps": 1.6363814387562436,
+      "min_acceleration_mps2": -4.500000000000002,
+      "min_net_gap_m": 2.0010049408514305,
+      "net_gap_lane_position_residual_max_abs_m": 0.0,
+      "observation_decimation_factor": 2,
+      "p2_evaluable_following_exposure_s": 71.60000000000021,
+      "package": "B_fine_internal_0.05__measurement_probe_queue_stop",
+      "recorded_observation_step_s": 0.1,
+      "reliable_closing_exposure_s": 54.90000000000051,
+      "state_rows": 1320,
+      "ttc_min_s": [
+        1.8681329871431456
+      ],
+      "wall_clock_s": 4.937512900098227
+    },
+    {
+      "cadence_max_abs_error_s": 2.1371793224034263e-15,
+      "collisions": 0,
+      "configuration_id": "B_fine_internal_0.05",
+      "event_confirm_s": [],
+      "event_end_s": [],
+      "event_start_s": [],
+      "events": 0,
+      "fixture_id": "baseline_mixed_demand",
+      "insertion_failures": [],
+      "internal_step_s": 0.05,
+      "max_acceleration_mps2": 2.0000000000000284,
+      "mean_speed_mps": 20.048584810490315,
+      "min_acceleration_mps2": -4.5000000000001705,
+      "min_net_gap_m": 2.512381620785817,
+      "net_gap_lane_position_residual_max_abs_m": 0.0,
+      "observation_decimation_factor": 2,
+      "p2_evaluable_following_exposure_s": 109.69999999999804,
+      "package": "B_fine_internal_0.05__baseline_mixed_demand",
+      "recorded_observation_step_s": 0.1,
+      "reliable_closing_exposure_s": 6.5999999999999925,
+      "state_rows": 1828,
+      "ttc_min_s": [],
+      "wall_clock_s": 6.057560899993405
+    },
+    {
+      "cadence_max_abs_error_s": 2.1371793224034263e-15,
+      "collisions": 0,
+      "configuration_id": "C_finer_internal_0.025",
+      "event_confirm_s": [
+        3.7
+      ],
+      "event_end_s": [
+        5.1
+      ],
+      "event_start_s": [
+        3.5
+      ],
+      "events": 1,
+      "fixture_id": "measurement_probe_queue_stop",
+      "insertion_failures": [],
+      "internal_step_s": 0.025,
+      "max_acceleration_mps2": 2.0000000000000018,
+      "mean_speed_mps": 1.624900365584392,
+      "min_acceleration_mps2": -4.500000000000002,
+      "min_net_gap_m": 2.0010024511059896,
+      "net_gap_lane_position_residual_max_abs_m": 0.0,
+      "observation_decimation_factor": 4,
+      "p2_evaluable_following_exposure_s": 71.60000000000021,
+      "package": "C_finer_internal_0.025__measurement_probe_queue_stop",
+      "recorded_observation_step_s": 0.1,
+      "reliable_closing_exposure_s": 55.70000000000052,
+      "state_rows": 1320,
+      "ttc_min_s": [
+        1.9057114623566753
+      ],
+      "wall_clock_s": 5.465098900021985
+    },
+    {
+      "cadence_max_abs_error_s": 2.1371793224034263e-15,
+      "collisions": 0,
+      "configuration_id": "C_finer_internal_0.025",
+      "event_confirm_s": [],
+      "event_end_s": [],
+      "event_start_s": [],
+      "events": 0,
+      "fixture_id": "baseline_mixed_demand",
+      "insertion_failures": [],
+      "internal_step_s": 0.025,
+      "max_acceleration_mps2": 2.0000000000000284,
+      "mean_speed_mps": 20.058844768545356,
+      "min_acceleration_mps2": -4.500000000000313,
+      "min_net_gap_m": 2.6440550222432933,
+      "net_gap_lane_position_residual_max_abs_m": 0.0,
+      "observation_decimation_factor": 4,
+      "p2_evaluable_following_exposure_s": 109.69999999999804,
+      "package": "C_finer_internal_0.025__baseline_mixed_demand",
+      "recorded_observation_step_s": 0.1,
+      "reliable_closing_exposure_s": 6.5999999999999925,
+      "state_rows": 1828,
+      "ttc_min_s": [],
+      "wall_clock_s": 6.565186600084417
+    }
+  ],
+  "schema_version": "stage_0_5.calibration-readiness.v1.timestep-sensitivity.v1",
+  "scientific_claim_eligible": false,
+  "seed": 20260907,
+  "upstream_engineering_result": "RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1"
+}

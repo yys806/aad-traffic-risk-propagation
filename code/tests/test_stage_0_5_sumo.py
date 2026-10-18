@@ -11,6 +11,7 @@ import hashlib
 import json
 from pathlib import Path
 import shutil
+import warnings
 
 import pandas as pd
 import pytest
@@ -18,6 +19,11 @@ import pytest
 from riskprop.stage_0_5_sumo import (
     CALIBRATION_VALIDATION_POLICY,
     CANDIDATE_SCENARIO_CONFIGS,
+    CLOSING_SPEED_SEMANTICS,
+    EQUIVALENCE_VERDICTS,
+    MISSING_REASON_EQUIVALENCE,
+    NGSIM_CLOSING_EPSILON_MPS,
+    NGSIM_STATUS_CROSSWALK,
     CLOSING_SPEED_SEMANTICS,
     ENGINEERING_FIXTURE_VTYPES,
     FORMAL_OBSERVATION_STEP_S,
@@ -29,9 +35,12 @@ from riskprop.stage_0_5_sumo import (
     Stage05AccessDenied,
     Stage05EngineeringError,
     VehicleIdentityTracker,
+    build_sumo_formal_source_frame,
     build_sumo_p2_events,
     cadence_max_gap_s,
     compute_exposure,
+    measurement_equivalence_matrix,
+    p2_boundary_cases,
     compute_sumo_measurements,
     extract_sumo_formal_p2_events,
     measurement_support_matrix,
@@ -84,6 +93,42 @@ def _states(rows: list[dict]) -> pd.DataFrame:
     frame["leader_incarnation_id"] = frame["leader_incarnation_id"].fillna(
         pd.Series("run|" + resolved_leader + "|0", index=frame.index).where(resolved_leader.notna())
     )
+    if "observation_index" not in frame.columns:
+        frame["observation_index"] = frame.groupby("incarnation_id").cumcount()
+    # the runner records every active vehicle at every step, so a leader referenced by a
+    # follower also has its own observation row; leader_frame_id resolution depends on it
+    present = set(zip(frame["vehicle_id"].astype(str), frame["time_s"].astype(float)))
+    extras = []
+    for row in frame.to_dict("records"):
+        leader_id = row.get("leader_id")
+        if leader_id is None or pd.isna(leader_id):
+            continue
+        key = (str(leader_id), float(row["time_s"]))
+        if key in present:
+            continue
+        present.add(key)
+        extras.append(
+            {
+                **defaults,
+                "time_s": float(row["time_s"]),
+                "observation_index": row.get("observation_index", 0),
+                "simulation_step": row.get("simulation_step", 0),
+                "vehicle_id": str(leader_id),
+                "trajectory_id": f"run|{leader_id}|0",
+                "incarnation_id": f"run|{leader_id}|0",
+                "speed_mps": row.get("leader_speed_mps") if row.get("leader_speed_mps") is not None else 0.0,
+                "leader_id": None,
+                "leader_incarnation_id": None,
+                "leader_identity_status": "not_applicable",
+                "leader_speed_mps": None,
+                "net_gap_m": None,
+            }
+        )
+    if extras:
+        with warnings.catch_warnings():
+            # leader rows legitimately carry all-NA leader columns
+            warnings.simplefilter("ignore", FutureWarning)
+            frame = pd.concat([frame, pd.DataFrame(extras)], ignore_index=True)
     return frame
 
 
@@ -315,7 +360,9 @@ def test_slower_follower_never_produces_a_finite_closing_ttc() -> None:
             ]
         )
     )
-    for _, row in measured.iterrows():
+    followers = measured[measured.vehicle_id.isin(["follower", "equal"])]
+    assert len(followers) == 2
+    for _, row in followers.iterrows():
         assert not bool(row["ttc_valid"])
         assert pd.isna(row["ttc_s"])
         assert row["missing_reason"] == "non_closing"
@@ -369,7 +416,7 @@ def test_invalid_gap_and_unresolved_identity_are_separated_from_no_leader() -> N
     )
     overlap = measured.loc[measured.vehicle_id == "overlap"].iloc[0]
     assert overlap["measurement_status"] == "invalid"
-    assert overlap["missing_reason"] == "non_positive_net_gap"
+    assert overlap["missing_reason"] == "non_positive_gap"
     assert not bool(overlap["ttc_valid"])
     unresolved = measured.loc[measured.vehicle_id == "unresolved"].iloc[0]
     assert unresolved["measurement_status"] == "missing"
@@ -537,7 +584,7 @@ def test_formal_adapter_reuses_stage_0_2_identity_and_continuity_rules() -> None
     field_map = audit["field_map"]
     assert field_map["original_row_number"]["status"] == "adapter_defined_simulator_frame_index"
     assert field_map["diagnostic_clock_anchor_ms"]["status"] == "definitional_constant"
-    assert field_map["drac_mps2"]["status"] == "not_implemented_adapter_carries_nan"
+    assert field_map["drac_mps2"]["status"] == "adapter_reuses_approved_closed_form_pending_review"
     assert audit["ngsim_only_fields"]["diagnostic_clock_conflict"] == "not_applicable_to_simulator_observation"
 
 
@@ -630,6 +677,153 @@ def test_vehicle_identity_is_run_scoped_and_re_entry_is_auditable() -> None:
     assert len({event["incarnation_id"] for event in tracker.events}) == 2
     other_run = VehicleIdentityTracker("run_b")
     assert other_run.observe(["v1"], time_s=0.1, observation_index=1)[0]["incarnation_id"] == "run_b|v1|0"
+
+
+def test_reliable_following_link_is_evaluable_only_when_the_status_allows_it() -> None:
+    """A non-positive-gap link stays reliable exposure but is not P2-evaluable."""
+
+    frame = _states(
+        [
+            {
+                "time_s": 0.0,
+                "simulation_step": 0,
+                "vehicle_id": "f",
+                "speed_mps": 12.0,
+                "acceleration_mps2": 0.0,
+                "leader_id": "l",
+                "leader_speed_mps": 11.0,
+                "net_gap_m": 5.0,
+            },
+            {
+                "time_s": 0.1,
+                "simulation_step": 1,
+                "vehicle_id": "f",
+                "speed_mps": 12.0,
+                "acceleration_mps2": 0.0,
+                "leader_id": "l",
+                "leader_speed_mps": 11.0,
+                "net_gap_m": -1.0,
+            },
+        ]
+    )
+    exposure = compute_exposure(compute_sumo_measurements(frame), recorded_observation_step_s=0.1)
+    assert exposure["reliable_following_exposure_s"] == pytest.approx(0.1)
+    assert exposure["p2_evaluable_following_exposure_s"] == pytest.approx(0.0)
+    assert exposure["not_evaluable_following_exposure_s"] == pytest.approx(0.1)
+
+
+def test_closing_epsilon_matches_the_approved_pipeline_tolerance() -> None:
+    measured = compute_sumo_measurements(
+        _states(
+            [
+                {
+                    "time_s": 0.0,
+                    "vehicle_id": "tiny",
+                    "speed_mps": 12.0,
+                    "acceleration_mps2": 0.0,
+                    "leader_id": "l",
+                    "leader_speed_mps": 11.9995,
+                    "net_gap_m": 5.0,
+                },
+                {
+                    "time_s": 0.0,
+                    "vehicle_id": "over",
+                    "speed_mps": 12.0,
+                    "acceleration_mps2": 0.0,
+                    "leader_id": "l",
+                    "leader_speed_mps": 11.998,
+                    "net_gap_m": 5.0,
+                },
+            ]
+        )
+    )
+    tiny = measured.loc[measured.vehicle_id == "tiny"].iloc[0]
+    assert tiny["closing_speed_mps"] == pytest.approx(0.0005)
+    assert not bool(tiny["ttc_valid"])
+    assert tiny["missing_reason"] == "non_closing"
+    over = measured.loc[measured.vehicle_id == "over"].iloc[0]
+    assert bool(over["ttc_valid"])
+
+
+def test_drac_is_the_approved_closed_form_and_is_severity_only() -> None:
+    frame = _following_rows(times=[0.0, 0.1, 0.2, 0.3], gaps=[1.0] * 4, leader_speed=11.4)
+    measured = compute_sumo_measurements(frame)
+    follower = measured.loc[measured.vehicle_id == "f"].iloc[0]
+    assert follower["drac_mps2"] == pytest.approx(0.6 ** 2 / (2 * 1.0))
+    with_drac, _ = build_sumo_p2_events(measured, recorded_observation_step_s=0.1)
+    without = measured.copy()
+    without["drac_mps2"] = float("nan")
+    without_drac, _ = build_sumo_p2_events(without, recorded_observation_step_s=0.1)
+    assert len(with_drac) == len(without_drac)
+    for column in ("event_start_s", "event_end_s", "event_confirm_s", "ttc_min_s"):
+        assert with_drac.iloc[0][column] == pytest.approx(without_drac.iloc[0][column])
+    formal_with, _ = extract_sumo_formal_p2_events(measured, recorded_observation_step_s=0.1)
+    formal_without, _ = extract_sumo_formal_p2_events(without, recorded_observation_step_s=0.1)
+    assert len(formal_with) == len(formal_without)
+    assert formal_with.iloc[0]["drac_max_mps2"] == pytest.approx(0.6 ** 2 / 2)
+
+
+def test_formal_source_frame_uses_an_absolute_clock_and_the_leaders_own_frame() -> None:
+    frame = _following_rows(times=[30.0, 30.1, 30.2, 30.3], gaps=[1.0] * 4)
+    measured = compute_sumo_measurements(frame)
+    formal = build_sumo_formal_source_frame(measured, recorded_observation_step_s=0.1)
+    follower = formal.loc[formal.vehicle_id == "f"].sort_values("time_s")
+    assert follower["global_time_ms"].tolist() == [30000, 30100, 30200, 30300]
+    assert follower["frame_id"].tolist() == [0, 1, 2, 3]
+    assert follower["leader_frame_id"].notna().all()
+    assert follower["leader_frame_id"].diff().dropna().eq(1.0).all()
+    assert follower["observation_index"].diff().dropna().eq(1.0).all()
+
+
+def test_native_event_table_keeps_the_exit_reason_and_drac() -> None:
+    frame = _following_rows(times=[0.0, 0.1, 0.2, 0.3], gaps=[1.0] * 4)
+    events, _ = build_sumo_p2_events(compute_sumo_measurements(frame), recorded_observation_step_s=0.1)
+    assert "exit_reason" in events.columns
+    assert "drac_max_mps2" in events.columns
+    assert events.iloc[0]["exit_reason"] == "observation_end_right_censored"
+    assert float(events.iloc[0]["drac_max_mps2"]) > 0
+
+
+def test_unresolved_leader_incarnation_cannot_produce_a_finite_ttc() -> None:
+    frame = _following_rows(times=[0.0, 0.1], gaps=[1.0, 1.0])
+    frame["leader_incarnation_id"] = None
+    measured = compute_sumo_measurements(frame)
+    follower = measured.loc[measured.vehicle_id == "f"]
+    assert follower["measurement_status"].eq("missing").all()
+    assert follower["missing_reason"].eq("leader_identity_unresolved").all()
+    assert not follower["ttc_valid"].any()
+    formal, audit = extract_sumo_formal_p2_events(measured, recorded_observation_step_s=0.1)
+    assert formal.empty and audit["reliable_candidate_events"] == 0
+
+
+def test_measurement_equivalence_matrix_is_itemised_and_never_overclaims() -> None:
+    matrix = measurement_equivalence_matrix()
+    assert matrix["boundary_case_count"] == len(p2_boundary_cases())
+    assert matrix["boundary_cases_all_as_expected"] is True
+    assert matrix["blocking_items"] == []
+    assert set(matrix["verdict_counts"]) <= set(EQUIVALENCE_VERDICTS)
+    assert matrix["equivalent_or_verified_count"] + matrix["engineering_only_count"] + matrix[
+        "not_equivalent_count"
+    ] + matrix["pending_evidence_count"] == len(matrix["rows"])
+    for row in matrix["rows"]:
+        assert row["verdict"] in EQUIVALENCE_VERDICTS
+        assert row["evidence"]
+    # an aggregate count agreement is never sufficient: the reviewed items stay explicit
+    assert matrix["overall_status"] == "pending_measurement_equivalence_review"
+    assert matrix["scientific_claim_eligible"] is False
+    by_dimension = {row["dimension"]: row for row in matrix["rows"]}
+    assert by_dimension["measurement_status_vocabulary"]["verdict"] == "Engineering Consistent Only"
+    assert by_dimension["p2_threshold"]["verdict"] == "Equivalent / Verified"
+
+
+def test_reason_crosswalk_documents_the_approved_asymmetry() -> None:
+    assert MISSING_REASON_EQUIVALENCE["non_positive_gap"]["sumo_reason"] == "non_positive_gap"
+    assert (
+        MISSING_REASON_EQUIVALENCE["no_reported_leader"]["comparability"] == "Engineering Consistent Only"
+    )
+    assert NGSIM_STATUS_CROSSWALK["missing__no_reported_leader"]["sumo_label"].startswith("not_applicable")
+    assert CLOSING_SPEED_SEMANTICS["formal_source"].endswith("follower - leader)")
+    assert NGSIM_CLOSING_EPSILON_MPS == 1e-3
 
 
 # --------------------------------------------------------------------------------------

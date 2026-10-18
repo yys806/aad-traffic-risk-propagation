@@ -13,6 +13,22 @@
       "us101__0750_0805",
       "us101__0805_0820"
     ],
+    "calibration_row_scoped_sources": {
+      "p2_formal_events": {
+        "allowed_values": [
+          "us101__0750_0805",
+          "us101__0805_0820"
+        ],
+        "column": "source",
+        "forbidden_values": [
+          "us101__0820_0835",
+          "lankershim__complete",
+          "pneuma__athens_d1"
+        ],
+        "reason": "the approved formal P2 event table contains every source; only the two calibration windows may ever be materialised",
+        "row_filter_required": true
+      }
+    },
     "cross_road_generalization_claimed": false,
     "denied_uses": [
       "calibration access to the temporal validation window",
@@ -44,11 +60,12 @@
   },
   "closing_speed_semantics": {
     "definition": "closing_speed_mps = follower_speed_mps - leader_speed_mps",
+    "formal_source": "code/src/riskprop/real_trajectory.py::add_ngsim_leader_ttc (closing_speed_mps = -relative_speed_mps = follower - leader)",
     "negative": "leader is pulling away from the follower",
     "positive": "follower is closing on the leader",
     "schema_version": "stage_0_5.sumo-engineering.v2.closing-speed-semantics.v1",
     "stage_0_1_conflict": "Stage 0.1 validation risk used relative_speed_mps = leader_speed - follower_speed, the opposite sign; Stage 0.5 states must not reuse that interpretation",
-    "ttc_rule": "ttc_s = net_gap_m / closing_speed_mps when net_gap_m > 0 and closing_speed_mps > 0",
+    "ttc_rule": "ttc_s = net_gap_m / closing_speed_mps when net_gap_m > 0 and closing_speed_mps > NGSIM_CLOSING_EPSILON_MPS",
     "zero": "zero longitudinal relative speed"
   },
   "communication_enabled": false,
@@ -110,12 +127,18 @@
   "units": {
     "acceleration_mps2": "m/s^2",
     "closing_speed_mps": "m/s",
+    "drac_mps2": "m/s^2",
+    "frame_id": "1",
+    "global_time_ms": "ms",
     "leader_traci_distance_m": "m",
     "longitudinal_position_m": "m",
     "net_gap_m": "m",
+    "not_evaluable_following_exposure_s": "s",
     "p2_evaluable_following_exposure_s": "s",
     "p2_event_count": "1",
     "p2_event_rate_per_vehicle_hour": "1/h",
+    "reliable_closing_exposure_s": "s",
+    "reliable_following_exposure_s": "s",
     "simulation_step": "1",
     "speed_mps": "m/s",
     "time_s": "s",

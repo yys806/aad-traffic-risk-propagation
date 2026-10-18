@@ -12,6 +12,22 @@
     "us101__0750_0805",
     "us101__0805_0820"
   ],
+  "calibration_row_scoped_sources": {
+    "p2_formal_events": {
+      "allowed_values": [
+        "us101__0750_0805",
+        "us101__0805_0820"
+      ],
+      "column": "source",
+      "forbidden_values": [
+        "us101__0820_0835",
+        "lankershim__complete",
+        "pneuma__athens_d1"
+      ],
+      "reason": "the approved formal P2 event table contains every source; only the two calibration windows may ever be materialised",
+      "row_filter_required": true
+    }
+  },
   "cross_road_generalization_claimed": false,
   "denied_uses": [
     "calibration access to the temporal validation window",

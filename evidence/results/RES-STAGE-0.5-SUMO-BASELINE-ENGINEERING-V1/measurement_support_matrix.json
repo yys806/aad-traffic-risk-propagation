@@ -5,6 +5,10 @@
       "rule": "closing_speed_mps = follower_speed_mps - leader_speed_mps",
       "status": "verified_engineering"
     },
+    "drac": {
+      "rule": "closing^2 / (2 * gap) on valid closing rows (approved closed form, pending review)",
+      "status": "engineering_consistent_only"
+    },
     "formal_p2_equivalence": {
       "status": "pending_measurement_equivalence"
     },
@@ -26,7 +30,7 @@
       "status": "verified_engineering"
     },
     "p2_evaluable_exposure": {
-      "reason": "denominator interface prepared, not calibration-accepted",
+      "reason": "denominator interface prepared and aligned to the approved edge audit, not calibration-accepted",
       "status": "engineering_only"
     },
     "p2_event_extraction": {
@@ -42,7 +46,7 @@
       "status": "verified_engineering"
     },
     "ttc_status": {
-      "rule": "ttc_s = net_gap_m / closing_speed_mps when net_gap_m > 0 and closing_speed_mps > 0",
+      "rule": "ttc_s = net_gap_m / closing_speed_mps when net_gap_m > 0 and closing_speed_mps > NGSIM_CLOSING_EPSILON_MPS",
       "status": "verified_engineering"
     }
   },

@@ -1,0 +1,103 @@
+{
+  "closing_speed_semantics": {
+    "definition": "closing_speed_mps = follower_speed_mps - leader_speed_mps",
+    "formal_source": "code/src/riskprop/real_trajectory.py::add_ngsim_leader_ttc (closing_speed_mps = -relative_speed_mps = follower - leader)",
+    "negative": "leader is pulling away from the follower",
+    "positive": "follower is closing on the leader",
+    "schema_version": "stage_0_5.sumo-engineering.v2.closing-speed-semantics.v1",
+    "stage_0_1_conflict": "Stage 0.1 validation risk used relative_speed_mps = leader_speed - follower_speed, the opposite sign; Stage 0.5 states must not reuse that interpretation",
+    "ttc_rule": "ttc_s = net_gap_m / closing_speed_mps when net_gap_m > 0 and closing_speed_mps > NGSIM_CLOSING_EPSILON_MPS",
+    "zero": "zero longitudinal relative speed"
+  },
+  "missing_reason_equivalence": {
+    "conflicting_match_fields": {
+      "comparability": "Not Equivalent",
+      "ngsim_status": "missing",
+      "sumo_reason": "not_applicable_to_simulator_observation",
+      "sumo_status": null
+    },
+    "leader_not_matched": {
+      "comparability": "Engineering Consistent Only",
+      "ngsim_status": "missing",
+      "sumo_reason": "leader_identity_unresolved",
+      "sumo_status": "missing"
+    },
+    "no_reported_leader": {
+      "comparability": "Engineering Consistent Only",
+      "ngsim_status": "missing",
+      "sumo_reason": "no_observed_leader",
+      "sumo_status": "not_applicable"
+    },
+    "non_closing": {
+      "comparability": "Equivalent / Verified",
+      "ngsim_status": "not_applicable",
+      "sumo_reason": "non_closing",
+      "sumo_status": "not_applicable"
+    },
+    "non_positive_gap": {
+      "comparability": "Equivalent / Verified",
+      "ngsim_status": "invalid",
+      "sumo_reason": "non_positive_gap",
+      "sumo_status": "invalid"
+    },
+    "unobservable_input": {
+      "comparability": "Engineering Consistent Only",
+      "ngsim_status": "missing",
+      "sumo_reason": "simulator_output_missing",
+      "sumo_status": "missing"
+    },
+    "unobservable_match_fields": {
+      "comparability": "Engineering Consistent Only",
+      "ngsim_status": "missing",
+      "sumo_reason": "leader_identity_unresolved",
+      "sumo_status": "missing"
+    }
+  },
+  "net_gap_semantics": {
+    "not_equivalent_to": "Stage 0.1 relative_speed_mps = leader_speed - follower_speed",
+    "physical_net_gap_definition": "leader_reference_position_m - leader_length_m - follower_reference_position_m",
+    "physical_net_gap_rule": "net_gap_m = leader_traci_distance_m + follower_min_gap_m",
+    "reference_point": "SUMO vehicle position on lane (front bumper along the lane)",
+    "schema_version": "stage_0_5.sumo-engineering.v2.net-gap-semantics.v1",
+    "traci_call": "traci.vehicle.getLeader(vehicle_id, lookahead_m)",
+    "traci_distance_definition": "(leader_reference_position_m - leader_length_m - follower_reference_position_m) - follower_min_gap_m",
+    "verification_scope": "engineering fixture only: three vType pairs plus a stopped-equilibrium probe; no reality claim",
+    "verified": true
+  },
+  "ngsim_status_crosswalk": {
+    "invalid": {
+      "comparability": "Equivalent / Verified",
+      "ngsim_condition": "matched leader with non-positive net gap",
+      "sumo_label": "invalid (missing_reason=non_positive_gap)"
+    },
+    "missing__identity_or_clock": {
+      "comparability": "Engineering Consistent Only",
+      "ngsim_condition": "leader not matched, unobservable match fields, conflicting clock/frame",
+      "note": "NGSIM collection/identity defects map onto the simulator's identity-resolution failure",
+      "sumo_label": "missing (missing_reason=leader_identity_unresolved)"
+    },
+    "missing__no_reported_leader": {
+      "comparability": "Engineering Consistent Only",
+      "ngsim_condition": "no leader reported in the source record (labelled missing)",
+      "note": "documented, approved asymmetry: in NGSIM the absence of a leader record is counted as an observation limitation (missing), while in SUMO the absence of a leader is a genuine traffic state (not_applicable).  No leader row can enter reliable-following exposure in either pipeline, so the P2 denominator is unaffected; comparisons of raw status composition must use this crosswalk.",
+      "sumo_label": "not_applicable (missing_reason=no_observed_leader)"
+    },
+    "missing__unobservable_input": {
+      "comparability": "Engineering Consistent Only",
+      "ngsim_condition": "leader matched but speed/headway fields unusable",
+      "note": "SUMO output defects must stay zero rows; the label exists for fail-closed behaviour",
+      "sumo_label": "missing (missing_reason=simulator_output_missing)"
+    },
+    "not_applicable": {
+      "comparability": "Equivalent / Verified",
+      "ngsim_condition": "matched leader and positive net gap but no closing",
+      "sumo_label": "not_applicable (missing_reason=non_closing)"
+    },
+    "valid": {
+      "comparability": "Equivalent / Verified",
+      "ngsim_condition": "matched leader, positive net gap, closing speed above epsilon",
+      "sumo_label": "valid"
+    }
+  },
+  "schema_version": "stage_0_5.calibration-readiness.v1.crosswalks.v1"
+}

@@ -1,16 +1,30 @@
 {
+  "adjacency_checks_applied": [
+    "same_follower_incarnation",
+    "same_resolved_leader_identity",
+    "time_delta_equals_cadence",
+    "observation_index_delta"
+  ],
+  "evaluable_rule": "reliable follower/leader/time link with both endpoint measurement_status in {valid, not_applicable}; excluded links carry no zero-risk interpretation",
   "exposure_unit": "vehicle-second (converted to vehicle-hour for the event rate)",
+  "externally_audited_adjacency": {
+    "reliable_closing_edge_seconds": null,
+    "reliable_following_edge_seconds": null,
+    "source": "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4 / stage_0_2_exposure_edge_audit"
+  },
   "formal_rate_eligible": false,
   "link_max_gap_s": 0.10999999999999999,
-  "p2_evaluable_following_exposure_s": 151.59999999999522,
-  "p2_evaluable_following_vehicle_hours": 0.04211111111110978,
+  "not_evaluable_following_exposure_s": 0.0,
+  "not_evaluable_fraction_of_reliable_following": 0.0,
+  "p2_evaluable_following_exposure_s": 151.59999999999567,
+  "p2_evaluable_following_vehicle_hours": 0.04211111111110991,
   "p2_event_count": 1,
-  "p2_event_rate_per_vehicle_hour": 23.74670184696645,
+  "p2_event_rate_per_vehicle_hour": 23.746701846966374,
   "rate_formula": "p2_event_count / p2_evaluable_following_vehicle_hours",
   "recorded_observation_step_s": 0.1,
-  "reliable_closing_exposure_s": 72.50000000000003,
-  "reliable_following_exposure_s": 151.59999999999522,
-  "schema_version": "stage_0_5.sumo-engineering.v2.p2-exposure.v1",
+  "reliable_closing_exposure_s": 54.0000000000005,
+  "reliable_following_exposure_s": 151.59999999999567,
+  "schema_version": "stage_0_5.sumo-engineering.v2.p2-exposure.v2",
   "scientific_claim_eligible": false,
   "status": "pending_measurement_equivalence"
 }

@@ -1,0 +1,1396 @@
+{
+  "calibration_objectives": {
+    "energy_distance_real_real_upper_bound": "Not Identifiable",
+    "layer_rule": "a failed necessary layer cannot be compensated by a better value in another layer",
+    "layers": {
+      "layer_1_basic_kinematics": [
+        {
+          "low_speed_share_below_5_mps": 0.10335778986581376,
+          "mean_acceleration_mps2": 0.1002950152380404,
+          "mean_speed_mps": 11.428907027069334,
+          "p05_acceleration_mps2": -2.996184,
+          "p85_speed_mps": 16.044672000000002,
+          "p95_acceleration_mps2": 3.26136,
+          "source_group": "us101__0750_0805"
+        },
+        {
+          "low_speed_share_below_5_mps": 0.19269614673275864,
+          "mean_acceleration_mps2": 0.03146100938853036,
+          "mean_speed_mps": 8.93924942829388,
+          "p05_acceleration_mps2": -2.563368,
+          "p85_speed_mps": 13.267944000000002,
+          "p95_acceleration_mps2": 2.7066240000000006,
+          "source_group": "us101__0805_0820"
+        }
+      ],
+      "layer_2_following_interaction": [
+        {
+          "mean_closing_speed_mps": -0.26197855457418145,
+          "median_net_gap_m": 16.867632000000004,
+          "p10_net_gap_m": 7.464552,
+          "positive_closing_share": 0.39397152968241517,
+          "source_group": "us101__0750_0805"
+        },
+        {
+          "mean_closing_speed_mps": -0.09132956958163112,
+          "median_net_gap_m": 13.959839999999998,
+          "p10_net_gap_m": 6.129528,
+          "positive_closing_share": 0.4320769441841073,
+          "source_group": "us101__0805_0820"
+        }
+      ],
+      "layer_3_risk_observability_and_eligibility": [
+        {
+          "identity_defect_rows": 59381,
+          "invalid_share": 0.0016195182441440695,
+          "missing_share": 0.050297391660836285,
+          "not_applicable_share": 0.5549484244425282,
+          "source_group": "us101__0750_0805",
+          "ttc_valid_share": 0.3931346656524914,
+          "valid_share": 0.3931346656524914
+        },
+        {
+          "identity_defect_rows": 61958,
+          "invalid_share": 0.0012828782085318527,
+          "missing_share": 0.044158093357898075,
+          "not_applicable_share": 0.5232190265092528,
+          "source_group": "us101__0805_0820",
+          "ttc_valid_share": 0.4313400019243173,
+          "valid_share": 0.4313400019243173
+        }
+      ],
+      "layer_4_p2_events_and_evaluable_exposure": [
+        {
+          "event_duration_median_s": 0.5,
+          "not_evaluable_following_exposure_s": 187.4,
+          "p2_evaluable_following_exposure_s": 111425.90000000001,
+          "p2_event_rate_per_vehicle_hour": 17.543497517184065,
+          "p2_events": 543,
+          "reliable_closing_exposure_s": 43198.4,
+          "source_group": "us101__0750_0805",
+          "ttc_min_median_s": 1.2756680731364278
+        },
+        {
+          "event_duration_median_s": 0.6999999999999886,
+          "not_evaluable_following_exposure_s": 178.70000000000002,
+          "p2_evaluable_following_exposure_s": 133505.6,
+          "p2_event_rate_per_vehicle_hour": 19.738497860763893,
+          "p2_events": 732,
+          "reliable_closing_exposure_s": 57179.8,
+          "source_group": "us101__0805_0820",
+          "ttc_min_median_s": 1.3719098715321039
+        }
+      ],
+      "layer_5_scenario_support_and_sample_quality": [
+        {
+          "observation_window_s": 952.8,
+          "source_group": "us101__0750_0805",
+          "state_rows": 1180598,
+          "trajectory_clusters": 2169,
+          "trajectory_duration_median_s": 50.60000000000002
+        },
+        {
+          "observation_window_s": 999.0,
+          "source_group": "us101__0805_0820",
+          "state_rows": 1403095,
+          "trajectory_clusters": 2017,
+          "trajectory_duration_median_s": 66.5
+        }
+      ]
+    },
+    "metrics": [
+      {
+        "class": "calibration_target",
+        "gate_role": "necessary acceptance indicator",
+        "layer": "layer_1_basic_kinematics",
+        "metric": "speed_distribution",
+        "reference": [
+          {
+            "low_speed_share_below_5_mps": 0.10335778986581376,
+            "mean_acceleration_mps2": 0.1002950152380404,
+            "mean_speed_mps": 11.428907027069334,
+            "p05_acceleration_mps2": -2.996184,
+            "p85_speed_mps": 16.044672000000002,
+            "p95_acceleration_mps2": 3.26136,
+            "source_group": "us101__0750_0805"
+          },
+          {
+            "low_speed_share_below_5_mps": 0.19269614673275864,
+            "mean_acceleration_mps2": 0.03146100938853036,
+            "mean_speed_mps": 8.93924942829388,
+            "p05_acceleration_mps2": -2.563368,
+            "p85_speed_mps": 13.267944000000002,
+            "p95_acceleration_mps2": 2.7066240000000006,
+            "source_group": "us101__0805_0820"
+          }
+        ],
+        "shared_semantics": "state-weighted longitudinal speed, m/s",
+        "tolerance": {
+          "form": "distributional (quantile bands)",
+          "status": "Tolerance Not Yet Justified",
+          "value": null
+        }
+      },
+      {
+        "class": "calibration_target",
+        "gate_role": "necessary acceptance indicator",
+        "layer": "layer_1_basic_kinematics",
+        "metric": "acceleration_distribution",
+        "reference": [
+          {
+            "low_speed_share_below_5_mps": 0.10335778986581376,
+            "mean_acceleration_mps2": 0.1002950152380404,
+            "mean_speed_mps": 11.428907027069334,
+            "p05_acceleration_mps2": -2.996184,
+            "p85_speed_mps": 16.044672000000002,
+            "p95_acceleration_mps2": 3.26136,
+            "source_group": "us101__0750_0805"
+          },
+          {
+            "low_speed_share_below_5_mps": 0.19269614673275864,
+            "mean_acceleration_mps2": 0.03146100938853036,
+            "mean_speed_mps": 8.93924942829388,
+            "p05_acceleration_mps2": -2.563368,
+            "p85_speed_mps": 13.267944000000002,
+            "p95_acceleration_mps2": 2.7066240000000006,
+            "source_group": "us101__0805_0820"
+          }
+        ],
+        "shared_semantics": "longitudinal acceleration, m/s^2, from the source acceleration field",
+        "tolerance": {
+          "form": "distributional (tail quantiles)",
+          "status": "Tolerance Not Yet Justified",
+          "value": null
+        }
+      },
+      {
+        "class": "calibration_target",
+        "gate_role": "necessary acceptance indicator",
+        "layer": "layer_2_following_interaction",
+        "metric": "net_gap_and_closing",
+        "reference": [
+          {
+            "mean_closing_speed_mps": -0.26197855457418145,
+            "median_net_gap_m": 16.867632000000004,
+            "p10_net_gap_m": 7.464552,
+            "positive_closing_share": 0.39397152968241517,
+            "source_group": "us101__0750_0805"
+          },
+          {
+            "mean_closing_speed_mps": -0.09132956958163112,
+            "median_net_gap_m": 13.959839999999998,
+            "p10_net_gap_m": 6.129528,
+            "positive_closing_share": 0.4320769441841073,
+            "source_group": "us101__0805_0820"
+          }
+        ],
+        "shared_semantics": "net_gap_m = leader_traci_distance_m + follower_min_gap_m; closing_speed_mps = follower_speed_mps - leader_speed_mps",
+        "tolerance": {
+          "form": "quantile bands on gap and closing speed",
+          "status": "Tolerance Not Yet Justified",
+          "value": null
+        }
+      },
+      {
+        "class": "measurement_validity_hard_constraint",
+        "gate_role": "hard constraint; failure blocks the layer, no compensation",
+        "layer": "layer_3_risk_observability_and_eligibility",
+        "metric": "risk_observability_composition",
+        "reference": [
+          {
+            "identity_defect_rows": 59381,
+            "invalid_share": 0.0016195182441440695,
+            "missing_share": 0.050297391660836285,
+            "not_applicable_share": 0.5549484244425282,
+            "source_group": "us101__0750_0805",
+            "ttc_valid_share": 0.3931346656524914,
+            "valid_share": 0.3931346656524914
+          },
+          {
+            "identity_defect_rows": 61958,
+            "invalid_share": 0.0012828782085318527,
+            "missing_share": 0.044158093357898075,
+            "not_applicable_share": 0.5232190265092528,
+            "source_group": "us101__0805_0820",
+            "ttc_valid_share": 0.4313400019243173,
+            "valid_share": 0.4313400019243173
+          }
+        ],
+        "shared_semantics": "measurement_status composition using the approved crosswalk",
+        "tolerance": {
+          "form": "exact rule compliance, not a fitted tolerance",
+          "status": "rule_check",
+          "value": null
+        }
+      },
+      {
+        "class": "primary_scientific_comparison",
+        "gate_role": "primary comparison, evaluated only after layers 1-3 pass",
+        "layer": "layer_4_p2_events_and_evaluable_exposure",
+        "metric": "p2_event_rate",
+        "reference": [
+          {
+            "event_duration_median_s": 0.5,
+            "not_evaluable_following_exposure_s": 187.4,
+            "p2_evaluable_following_exposure_s": 111425.90000000001,
+            "p2_event_rate_per_vehicle_hour": 17.543497517184065,
+            "p2_events": 543,
+            "reliable_closing_exposure_s": 43198.4,
+            "source_group": "us101__0750_0805",
+            "ttc_min_median_s": 1.2756680731364278
+          },
+          {
+            "event_duration_median_s": 0.6999999999999886,
+            "not_evaluable_following_exposure_s": 178.70000000000002,
+            "p2_evaluable_following_exposure_s": 133505.6,
+            "p2_event_rate_per_vehicle_hour": 19.738497860763893,
+            "p2_events": 732,
+            "reliable_closing_exposure_s": 57179.8,
+            "source_group": "us101__0805_0820",
+            "ttc_min_median_s": 1.3719098715321039
+          }
+        ],
+        "shared_semantics": "p2_events / p2_evaluable_following_vehicle_hours, full observations only",
+        "tolerance": {
+          "form": "interval difference with clustered uncertainty",
+          "status": "Tolerance Not Yet Justified",
+          "value": null
+        }
+      },
+      {
+        "class": "necessary_condition",
+        "gate_role": "necessary condition: an event rate is meaningless without its denominator",
+        "layer": "layer_4_p2_events_and_evaluable_exposure",
+        "metric": "p2_exposure_structure",
+        "reference": [
+          {
+            "event_duration_median_s": 0.5,
+            "not_evaluable_following_exposure_s": 187.4,
+            "p2_evaluable_following_exposure_s": 111425.90000000001,
+            "p2_event_rate_per_vehicle_hour": 17.543497517184065,
+            "p2_events": 543,
+            "reliable_closing_exposure_s": 43198.4,
+            "source_group": "us101__0750_0805",
+            "ttc_min_median_s": 1.2756680731364278
+          },
+          {
+            "event_duration_median_s": 0.6999999999999886,
+            "not_evaluable_following_exposure_s": 178.70000000000002,
+            "p2_evaluable_following_exposure_s": 133505.6,
+            "p2_event_rate_per_vehicle_hour": 19.738497860763893,
+            "p2_events": 732,
+            "reliable_closing_exposure_s": 57179.8,
+            "source_group": "us101__0805_0820",
+            "ttc_min_median_s": 1.3719098715321039
+          }
+        ],
+        "shared_semantics": "reliable following / evaluable / not evaluable / reliable closing exposure",
+        "tolerance": {
+          "form": "rule compliance plus descriptive comparison",
+          "status": "rule_check",
+          "value": null
+        }
+      },
+      {
+        "class": "necessary_condition",
+        "gate_role": "necessary condition",
+        "layer": "layer_5_scenario_support_and_sample_quality",
+        "metric": "sample_support",
+        "reference": [
+          {
+            "observation_window_s": 952.8,
+            "source_group": "us101__0750_0805",
+            "state_rows": 1180598,
+            "trajectory_clusters": 2169,
+            "trajectory_duration_median_s": 50.60000000000002
+          },
+          {
+            "observation_window_s": 999.0,
+            "source_group": "us101__0805_0820",
+            "state_rows": 1403095,
+            "trajectory_clusters": 2017,
+            "trajectory_duration_median_s": 66.5
+          }
+        ],
+        "shared_semantics": "cluster counts, window duration and slice coverage",
+        "tolerance": {
+          "form": "minimum support declared before running",
+          "status": "Tolerance Not Yet Justified",
+          "value": null
+        }
+      },
+      {
+        "class": "auxiliary_diagnostic",
+        "gate_role": "never a gate criterion; never fitted on validation data",
+        "layer": "auxiliary_diagnostic",
+        "metric": "energy_distance_multidimensional",
+        "reference": "real-real upper bound remains Not Identifiable",
+        "shared_semantics": "multi-dimensional distribution distance, pooled scalers",
+        "tolerance": {
+          "form": "diagnostic only",
+          "status": "not_a_scientific_threshold",
+          "value": null
+        }
+      }
+    ],
+    "prohibited_tolerance_rule": "SUMO falling inside the real-data 95% interval is not, by itself, an accepted scientific acceptance rule",
+    "schema_version": "stage_0_5.calibration-readiness.v1.calibration-objectives.v1",
+    "tolerance_components_required": [
+      "real-data estimation uncertainty (clustered)",
+      "measurement error of the shared observables",
+      "scenario and window differences",
+      "scientifically allowed model deviation",
+      "potential impact on later AAD risk-propagation conclusions"
+    ]
+  },
+  "candidate_calibration_protocol": {
+    "not_executed_by_this_task": true,
+    "p2_zero_result_interpretation": "a candidate SUMO baseline with zero P2 events is not a failure by itself: it must be interpreted against the exposure, the density/speed stratum and the SUMO safe-following behaviour, and it never justifies manufacturing events or changing the P2 rule",
+    "parameter_search": {
+      "not_recommended": "gradient-free black-box fitting of network, demand, vType and behaviour jointly",
+      "recommended": "coarse deterministic grid or low-dimensional quasi-random search over the 6 parameters, with a fixed evaluation budget",
+      "stopping_rule": "stop when the declared layer-1/2 bands are met or the budget is exhausted; record failure"
+    },
+    "parameter_space": {
+      "approval_only": [
+        "demand level per stratum",
+        "vType composition if new evidence is approved"
+      ],
+      "dimensions": 6,
+      "fixed_by_declaration": [
+        "emergencyDecel (not identifiable in normal traffic)"
+      ],
+      "frozen_before_optimisation": [
+        "network topology and lane count",
+        "car-following model structure",
+        "recorded observation cadence and evaluation window",
+        "traffic-state strata definition"
+      ],
+      "guard_against_unidentifiability": "freeze the model structure, keep the parameter vector small, and report the compensating directions (tau/minGap/decel) explicitly",
+      "optimisable": [
+        "tau",
+        "minGap",
+        "accel",
+        "decel",
+        "sigma",
+        "maxSpeed"
+      ]
+    },
+    "phases": [
+      {
+        "exit": "the approved demand strata can be injected and the corridor reaches the target density/speed range",
+        "name": "network_and_demand_loadability",
+        "phase": 1
+      },
+      {
+        "exit": "layer-1 distributions match the calibration targets inside the declared bands",
+        "name": "basic_kinematics",
+        "phase": 2
+      },
+      {
+        "exit": "layer-2 gap/closing distributions match without breaking layer 1",
+        "name": "following_interaction",
+        "phase": 3
+      },
+      {
+        "exit": "layer-3 composition and the exposure structure are reproduced by rule",
+        "name": "observability_and_exposure",
+        "phase": 4
+      },
+      {
+        "exit": "P2 rate and exposure compared with clustered real uncertainty; no rule change allowed",
+        "name": "p2_event_rate_diagnosis",
+        "phase": 5
+      },
+      {
+        "exit": "seed, stratum and parameter-perturbation stability recorded",
+        "name": "stability",
+        "phase": 6
+      }
+    ],
+    "probe_fixture_policy": "measurement_probe_queue_stop is a measurement-contract fixture only and must never be used as a traffic-risk calibration scenario",
+    "real_reference_counts_for_planning": {
+      "note": "the calibration windows contain a limited number of P2 events, so the P2 rate must be treated as a comparison with wide uncertainty, never as a tight fitting target",
+      "p2_evaluable_following_exposure_s": {
+        "us101__0750_0805": 111425.90000000001,
+        "us101__0805_0820": 133505.6
+      },
+      "p2_events": {
+        "us101__0750_0805": 543,
+        "us101__0805_0820": 732
+      }
+    },
+    "researcher_decisions_required": [
+      "network option",
+      "demand strata and target levels",
+      "vType evidence route",
+      "time configuration and warm-up rule",
+      "tolerances per layer",
+      "run budget after the benchmark"
+    ],
+    "run_budget": {
+      "benchmark_plan": [
+        "a 300 s baseline benchmark with three integration-step candidates is recorded",
+        "run the same benchmark at the target stratum density before fixing the final budget",
+        "declare the final configuration count only after the density-scaled benchmark"
+      ],
+      "indicative_structure": {
+        "configurations": "to be derived from the benchmark",
+        "runs": "configurations x seeds x strata"
+      },
+      "measured_benchmark": [
+        {
+          "configuration_id": "A_uniform_0.1",
+          "duration_s": 300.0,
+          "internal_step_s": 0.1,
+          "package": "benchmark__A_uniform_0.1",
+          "simulated_seconds_per_wall_second": 12.390482742989581,
+          "state_rows": 8453,
+          "vehicle_count": 17,
+          "wall_clock_s": 24.212131700012833
+        },
+        {
+          "configuration_id": "B_fine_internal_0.05",
+          "duration_s": 300.0,
+          "internal_step_s": 0.05,
+          "package": "benchmark__B_fine_internal_0.05",
+          "simulated_seconds_per_wall_second": 10.847813700139778,
+          "state_rows": 8453,
+          "vehicle_count": 17,
+          "wall_clock_s": 27.655342200072482
+        },
+        {
+          "configuration_id": "C_finer_internal_0.025",
+          "duration_s": 300.0,
+          "internal_step_s": 0.025,
+          "package": "benchmark__C_finer_internal_0.025",
+          "simulated_seconds_per_wall_second": 8.873234268909641,
+          "state_rows": 8447,
+          "vehicle_count": 17,
+          "wall_clock_s": 33.80954349995591
+        }
+      ],
+      "status": "Evidence Insufficient"
+    },
+    "schema_version": "stage_0_5.calibration-readiness.v1.candidate-protocol.v1",
+    "seed_policy": {
+      "required_reporting": [
+        "per-seed values",
+        "between-seed spread",
+        "failures"
+      ],
+      "seeds_per_configuration": 3,
+      "selection_rule": "report all seeds; never select the best seed for a headline number"
+    },
+    "stage": "0.5.4-B",
+    "status": "candidate_pending_researcher_approval",
+    "validation_isolation": {
+      "calibration_sources": [
+        "us101__0750_0805",
+        "us101__0805_0820"
+      ],
+      "fail_closed_entry": "CalibrationValidationGuard refuses calibration access to the validation window at the API level",
+      "rules": [
+        "the validation window participates in no parameter, stratum or tolerance choice",
+        "calibration scalers never read validation data",
+        "all seeds and candidate parameters are recorded before the validation run",
+        "a failed validation requires a new traceable protocol version, never a silent retune",
+        "the project locked holdout stays inaccessible"
+      ],
+      "validation_source": [
+        "us101__0820_0835"
+      ]
+    }
+  },
+  "following_model_options": {
+    "alternative_candidate": {
+      "model": "sumo_default_krauss_with_imperfection_split",
+      "reason": "kept only as a fallback if the primary candidate cannot match the closing behaviour",
+      "when": "only after the primary candidate is rejected with recorded evidence"
+    },
+    "explicitly_not_proposed": [
+      "multi-model ensembles or high-dimensional behaviour fits at this stage",
+      "per-vehicle parameter fitting that cannot be identified from the available fields"
+    ],
+    "primary_candidate": {
+      "calibratable_parameters": [
+        "tau (desired time headway): sets equilibrium gap and closing response",
+        "minGap: sets the residual bumper-to-bumper gap",
+        "accel / decel / emergencyDecel: set the closing and braking envelope",
+        "sigma: driver imperfection / speed noise",
+        "maxSpeed"
+      ],
+      "identifiability_notes": {
+        "accel": "constrained by the positive acceleration tail",
+        "decel": "constrained by the negative acceleration tail and P2 closing episodes",
+        "minGap": "weakly constrained: the observed low-gap tail is also affected by tau and decel",
+        "sigma": "weakly constrained once tau and accel absorb the variance",
+        "tau": "constrained by the net-gap distribution at given speeds",
+        "tau_minGap_decel": "partially compensating in the observed gap distribution"
+      },
+      "model": "sumo_default_krauss",
+      "reasons": [
+        "deterministic, low-dimensional and already exercised by the engineering baseline",
+        "its gap/closing/braking response is directly observable in the recorded state contract",
+        "few identifiable parameters keep the calibration traceable"
+      ],
+      "risks": [
+        "a static speed and gap fit can succeed while the transient closing response stays wrong",
+        "one optimal fit must never be reported as fully calibrated driver behaviour"
+      ]
+    },
+    "schema_version": "stage_0_5.calibration-readiness.v1.following-model-options.v1",
+    "structural_freeze_recommendation": "freeze the car-following model structure before optimisation and optimise only the parameter vector, so a failed calibration is attributable"
+  },
+  "network_options": {
+    "claimed_lane_structure_from_reference": {
+      "mainline_lanes_observed": 5,
+      "note": "derived from the approved state table lateral offsets and longitudinal ranges; a 5-lane mainline plus a short ramp/auxiliary group, not a uniform 3-lane corridor",
+      "ramp_or_auxiliary_lanes_observed": 3
+    },
+    "current_engineering_network": {
+      "built_lane_lengths_m": {
+        "main_0": 386.5,
+        "main_1": 312.94,
+        "main_2": 483.5,
+        "offramp": 277.51,
+        "onramp": 239.26
+      },
+      "mainline_edges": 3,
+      "mainline_lanes": 3,
+      "network_id": "generic_highway_candidate",
+      "off_ramp": 1,
+      "on_ramp": 1,
+      "status": "engineering_fixture_runnable_not_approved"
+    },
+    "options": [
+      {
+        "cannot_claim": [
+          "US-101 geometry reproduction",
+          "road-structure-driven dynamics",
+          "physical propagation speed calibrated to real US-101"
+        ],
+        "cost": "low",
+        "evidence_available_now": [
+          "3-lane, 3-segment corridor with on/off ramp already runs deterministically",
+          "cross-section flow, density and speed of the calibration windows are measurable"
+        ],
+        "name": "Generic highway corridor with an approved traffic-state envelope",
+        "option_id": "A_generic_corridor",
+        "risks": [
+          "lane count and lane-change opportunity differ from the observed corridor",
+          "ramp merge geometry is not the real merge geometry"
+        ],
+        "supports": [
+          "controlled longitudinal following experiments",
+          "explicit traffic-state strata",
+          "later causal identification with a stable, simple topology"
+        ]
+      },
+      {
+        "cannot_claim": [
+          "calibrated behaviour before the behaviour calibration is done"
+        ],
+        "cost": "high: parsing, verification and a documented geometry provenance chain",
+        "evidence_available_now": [
+          "local assets exist (CAD diagram, GIS files, detector data, aerial imagery) but are not part of the approved calibration reference",
+          "the approved state table gives the observed lane set, lateral offsets and a ~660 m longitudinal extent"
+        ],
+        "name": "US-101 corresponding network with verified geometric evidence",
+        "option_id": "B_real_geometry",
+        "risks": [
+          "geometry evidence must be approved and versioned before it can be used",
+          "geometry correctness does not imply behavioural correctness"
+        ],
+        "supports": [
+          "explicit mapping between observed lanes/ramp and modelled links",
+          "structure-sensitive comparison of following behaviour"
+        ]
+      },
+      {
+        "cannot_claim": [
+          "that the upgrade preserves previously calibrated behaviour"
+        ],
+        "cost": "medium: one extra network/protocol version",
+        "evidence_available_now": [
+          "same as option A"
+        ],
+        "name": "Generic corridor now, geometry upgrade later behind an explicit protocol version",
+        "option_id": "C_hybrid",
+        "risks": [
+          "two protocol versions must be auditable and not silently merged"
+        ],
+        "supports": [
+          "start calibration without blocking on geometry evidence",
+          "upgrade to option B without invalidating the measurement contract"
+        ]
+      }
+    ],
+    "recommendation": "C_hybrid",
+    "recommendation_reason": "the approved reference cannot yet support a verified real-geometry network, and the measurement contract (not the geometry) is what the calibration depends on; the geometry upgrade must carry its own protocol version and provenance",
+    "schema_version": "stage_0_5.calibration-readiness.v1.network-options.v1",
+    "stage_1_separation": "reality coverage in Stage 0.5 never transfers to a physical-propagation claim in Stage I/II"
+  },
+  "parameter_identifiability": {
+    "class_counts": {
+      "approval_required_not_optimisable": 2,
+      "constrained_by_current_data": 4,
+      "not_identifiable_from_approved_reference": 2,
+      "not_identifiable_must_be_fixed": 1,
+      "range_only": 2,
+      "requires_additional_experiment": 1
+    },
+    "rows": [
+      {
+        "basis": "observed lane set in the approved reference plus a network decision",
+        "class": "approval_required_not_optimisable",
+        "evidence": "5 mainline + 3 short ramp/auxiliary lanes observed",
+        "parameter": "network_lane_count"
+      },
+      {
+        "basis": "interior cross-section passage rate per stratum",
+        "class": "approval_required_not_optimisable",
+        "evidence": "measurable within the observed extent only",
+        "parameter": "demand_level"
+      },
+      {
+        "basis": "net-gap distribution conditioned on speed",
+        "class": "constrained_by_current_data",
+        "parameter": "tau"
+      },
+      {
+        "basis": "lower tail of the net-gap distribution",
+        "class": "range_only",
+        "note": "partially compensating with tau",
+        "parameter": "minGap"
+      },
+      {
+        "basis": "positive acceleration tail",
+        "class": "constrained_by_current_data",
+        "parameter": "accel"
+      },
+      {
+        "basis": "negative acceleration tail and closing episodes",
+        "class": "constrained_by_current_data",
+        "parameter": "decel"
+      },
+      {
+        "basis": "rarely exercised in normal traffic",
+        "class": "not_identifiable_must_be_fixed",
+        "parameter": "emergencyDecel"
+      },
+      {
+        "basis": "residual speed variance after tau/accel",
+        "class": "range_only",
+        "parameter": "sigma"
+      },
+      {
+        "basis": "upper speed tail, but confounded with the road speed limit",
+        "class": "constrained_by_current_data",
+        "parameter": "maxSpeed"
+      },
+      {
+        "basis": "no length field",
+        "class": "not_identifiable_from_approved_reference",
+        "parameter": "vehicle_length"
+      },
+      {
+        "basis": "no class field",
+        "class": "not_identifiable_from_approved_reference",
+        "parameter": "vehicle_class_mix"
+      },
+      {
+        "basis": "approved reference shows lane changes but no lane-change-specific fields",
+        "class": "requires_additional_experiment",
+        "parameter": "lane_change_parameters"
+      }
+    ],
+    "rule": "a single best fit must never be reported as fully calibrated driver behaviour",
+    "schema_version": "stage_0_5.calibration-readiness.v1.parameter-identifiability.v1"
+  },
+  "schema_version": "stage_0_5.calibration-readiness.v1.candidate-protocol-package.v1",
+  "target_versus_threshold": {
+    "acceptance_threshold": {
+      "purpose": "decide whether the calibrated model has enough reality consistency",
+      "requirements": [
+        "declared before the optimisation starts",
+        "never selected from the validation window",
+        "justified by the five tolerance components",
+        "evaluated per layer with hard constraints first"
+      ]
+    },
+    "calibration_target": {
+      "examples": [
+        "distance between simulated and real speed/gap/closing distributions"
+      ],
+      "may_use": [
+        "the two calibration windows",
+        "clustered uncertainty as weights or diagnostics"
+      ],
+      "purpose": "select candidate traffic-model parameters"
+    },
+    "relationship": "related but not identical; a good optimisation target does not define a bad acceptance result",
+    "schema_version": "stage_0_5.calibration-readiness.v1.target-versus-threshold.v1",
+    "status": "candidate_protocol_pending_researcher_approval"
+  },
+  "time_step_options": {
+    "evaluation_window_rules": [
+      "declare a fixed evaluation window before running anything",
+      "drop the run-in period and keep a constant post-warm-up window",
+      "assign an event to the window it starts in; never extrapolate exposure past the last observation",
+      "right-censored events at the window end keep their observed confirmation and are reported as censored",
+      "vehicles entering or leaving the corridor keep their identity scope and never bridge across it"
+    ],
+    "invariants": [
+      "internal_step_s must divide recorded_observation_step_s exactly",
+      "a 0.2 s recording must never be relabelled as 100 ms evidence",
+      "warm-up seconds are not frozen here: no scientific basis exists yet"
+    ],
+    "measured_boundary_shift_s": {
+      "baseline_mixed_demand": {
+        "events_match": true,
+        "start_shift_A_to_B_s": 0.0,
+        "start_shift_B_to_C_s": 0.0
+      },
+      "measurement_probe_queue_stop": {
+        "events_match": true,
+        "start_shift_A_to_B_s": 0.19999999999999973,
+        "start_shift_B_to_C_s": 0.20000000000000018
+      }
+    },
+    "measured_cost": [
+      {
+        "configuration_id": "A_uniform_0.1",
+        "duration_s": 300.0,
+        "internal_step_s": 0.1,
+        "package": "benchmark__A_uniform_0.1",
+        "simulated_seconds_per_wall_second": 12.390482742989581,
+        "state_rows": 8453,
+        "vehicle_count": 17,
+        "wall_clock_s": 24.212131700012833
+      },
+      {
+        "configuration_id": "B_fine_internal_0.05",
+        "duration_s": 300.0,
+        "internal_step_s": 0.05,
+        "package": "benchmark__B_fine_internal_0.05",
+        "simulated_seconds_per_wall_second": 10.847813700139778,
+        "state_rows": 8453,
+        "vehicle_count": 17,
+        "wall_clock_s": 27.655342200072482
+      },
+      {
+        "configuration_id": "C_finer_internal_0.025",
+        "duration_s": 300.0,
+        "internal_step_s": 0.025,
+        "package": "benchmark__C_finer_internal_0.025",
+        "simulated_seconds_per_wall_second": 8.873234268909641,
+        "state_rows": 8447,
+        "vehicle_count": 17,
+        "wall_clock_s": 33.80954349995591
+      }
+    ],
+    "measured_sensitivity": {
+      "available": true,
+      "comparisons": [
+        {
+          "convergence_A_to_B_start_s": 0.19999999999999973,
+          "convergence_B_to_C_start_s": 0.20000000000000018,
+          "event_confirm_s_max_abs_delta": 0.20000000000000018,
+          "event_end_s_max_abs_delta": 0.2999999999999998,
+          "event_start_s_max_abs_delta": 0.19999999999999973,
+          "events_match": true,
+          "events_match_all_three": true,
+          "exposure_relative_delta": 0.0,
+          "fixture_id": "measurement_probe_queue_stop",
+          "mean_speed_abs_delta_mps": 0.02261839236739327,
+          "min_acceleration_abs_delta_mps2": 0.0,
+          "state_rows_ratio": 1.0,
+          "wall_clock_ratio": 0.9529731972190433
+        },
+        {
+          "convergence_A_to_B_start_s": 0.0,
+          "convergence_B_to_C_start_s": 0.0,
+          "event_confirm_s_max_abs_delta": 0.0,
+          "event_end_s_max_abs_delta": 0.0,
+          "event_start_s_max_abs_delta": 0.0,
+          "events_match": true,
+          "events_match_all_three": true,
+          "exposure_relative_delta": 0.006422018348623601,
+          "fixture_id": "baseline_mixed_demand",
+          "mean_speed_abs_delta_mps": 0.007697793775989226,
+          "min_acceleration_abs_delta_mps2": 1.2434497875801753e-13,
+          "state_rows_ratio": 1.0038440417353103,
+          "wall_clock_ratio": 1.102739640099751
+        }
+      ],
+      "cost_benchmark": [
+        {
+          "configuration_id": "A_uniform_0.1",
+          "duration_s": 300.0,
+          "internal_step_s": 0.1,
+          "package": "benchmark__A_uniform_0.1",
+          "simulated_seconds_per_wall_second": 12.390482742989581,
+          "state_rows": 8453,
+          "vehicle_count": 17,
+          "wall_clock_s": 24.212131700012833
+        },
+        {
+          "configuration_id": "B_fine_internal_0.05",
+          "duration_s": 300.0,
+          "internal_step_s": 0.05,
+          "package": "benchmark__B_fine_internal_0.05",
+          "simulated_seconds_per_wall_second": 10.847813700139778,
+          "state_rows": 8453,
+          "vehicle_count": 17,
+          "wall_clock_s": 27.655342200072482
+        },
+        {
+          "configuration_id": "C_finer_internal_0.025",
+          "duration_s": 300.0,
+          "internal_step_s": 0.025,
+          "package": "benchmark__C_finer_internal_0.025",
+          "simulated_seconds_per_wall_second": 8.873234268909641,
+          "state_rows": 8447,
+          "vehicle_count": 17,
+          "wall_clock_s": 33.80954349995591
+        }
+      ],
+      "duration_s": 20.0,
+      "engineering_only": true,
+      "path": "code/outputs/formal/calibration/stage_0_5_timestep_sensitivity_v1/timestep_sensitivity.json",
+      "runs": [
+        {
+          "cadence_max_abs_error_s": 2.1371793224034263e-15,
+          "collisions": 0,
+          "configuration_id": "A_uniform_0.1",
+          "event_confirm_s": [
+            3.3
+          ],
+          "event_end_s": [
+            5.5
+          ],
+          "event_start_s": [
+            3.1
+          ],
+          "events": 1,
+          "fixture_id": "measurement_probe_queue_stop",
+          "insertion_failures": [],
+          "internal_step_s": 0.1,
+          "max_acceleration_mps2": 2.0000000000000018,
+          "mean_speed_mps": 1.658999831123637,
+          "min_acceleration_mps2": -4.500000000000002,
+          "min_net_gap_m": 2.0010092712058167,
+          "net_gap_lane_position_residual_max_abs_m": 0.0,
+          "observation_decimation_factor": 1,
+          "p2_evaluable_following_exposure_s": 71.60000000000021,
+          "package": "A_uniform_0.1__measurement_probe_queue_stop",
+          "recorded_observation_step_s": 0.1,
+          "reliable_closing_exposure_s": 53.60000000000049,
+          "state_rows": 1320,
+          "ttc_min_s": [
+            1.7943103644450966
+          ],
+          "wall_clock_s": 5.181166599970311
+        },
+        {
+          "cadence_max_abs_error_s": 2.1371793224034263e-15,
+          "collisions": 0,
+          "configuration_id": "A_uniform_0.1",
+          "event_confirm_s": [],
+          "event_end_s": [],
+          "event_start_s": [],
+          "events": 0,
+          "fixture_id": "baseline_mixed_demand",
+          "insertion_failures": [],
+          "internal_step_s": 0.1,
+          "max_acceleration_mps2": 1.999999999999993,
+          "mean_speed_mps": 20.056282604266304,
+          "min_acceleration_mps2": -4.500000000000046,
+          "min_net_gap_m": 3.0797932242847423,
+          "net_gap_lane_position_residual_max_abs_m": 0.0,
+          "observation_decimation_factor": 1,
+          "p2_evaluable_following_exposure_s": 108.99999999999808,
+          "package": "A_uniform_0.1__baseline_mixed_demand",
+          "recorded_observation_step_s": 0.1,
+          "reliable_closing_exposure_s": 6.499999999999993,
+          "state_rows": 1821,
+          "ttc_min_s": [],
+          "wall_clock_s": 5.493192300084047
+        },
+        {
+          "cadence_max_abs_error_s": 2.1371793224034263e-15,
+          "collisions": 0,
+          "configuration_id": "B_fine_internal_0.05",
+          "event_confirm_s": [
+            3.5
+          ],
+          "event_end_s": [
+            5.2
+          ],
+          "event_start_s": [
+            3.3
+          ],
+          "events": 1,
+          "fixture_id": "measurement_probe_queue_stop",
+          "insertion_failures": [],
+          "internal_step_s": 0.05,
+          "max_acceleration_mps2": 2.0000000000000018,
+          "mean_speed_mps": 1.6363814387562436,
+          "min_acceleration_mps2": -4.500000000000002,
+          "min_net_gap_m": 2.0010049408514305,
+          "net_gap_lane_position_residual_max_abs_m": 0.0,
+          "observation_decimation_factor": 2,
+          "p2_evaluable_following_exposure_s": 71.60000000000021,
+          "package": "B_fine_internal_0.05__measurement_probe_queue_stop",
+          "recorded_observation_step_s": 0.1,
+          "reliable_closing_exposure_s": 54.90000000000051,
+          "state_rows": 1320,
+          "ttc_min_s": [
+            1.8681329871431456
+          ],
+          "wall_clock_s": 4.937512900098227
+        },
+        {
+          "cadence_max_abs_error_s": 2.1371793224034263e-15,
+          "collisions": 0,
+          "configuration_id": "B_fine_internal_0.05",
+          "event_confirm_s": [],
+          "event_end_s": [],
+          "event_start_s": [],
+          "events": 0,
+          "fixture_id": "baseline_mixed_demand",
+          "insertion_failures": [],
+          "internal_step_s": 0.05,
+          "max_acceleration_mps2": 2.0000000000000284,
+          "mean_speed_mps": 20.048584810490315,
+          "min_acceleration_mps2": -4.5000000000001705,
+          "min_net_gap_m": 2.512381620785817,
+          "net_gap_lane_position_residual_max_abs_m": 0.0,
+          "observation_decimation_factor": 2,
+          "p2_evaluable_following_exposure_s": 109.69999999999804,
+          "package": "B_fine_internal_0.05__baseline_mixed_demand",
+          "recorded_observation_step_s": 0.1,
+          "reliable_closing_exposure_s": 6.5999999999999925,
+          "state_rows": 1828,
+          "ttc_min_s": [],
+          "wall_clock_s": 6.057560899993405
+        },
+        {
+          "cadence_max_abs_error_s": 2.1371793224034263e-15,
+          "collisions": 0,
+          "configuration_id": "C_finer_internal_0.025",
+          "event_confirm_s": [
+            3.7
+          ],
+          "event_end_s": [
+            5.1
+          ],
+          "event_start_s": [
+            3.5
+          ],
+          "events": 1,
+          "fixture_id": "measurement_probe_queue_stop",
+          "insertion_failures": [],
+          "internal_step_s": 0.025,
+          "max_acceleration_mps2": 2.0000000000000018,
+          "mean_speed_mps": 1.624900365584392,
+          "min_acceleration_mps2": -4.500000000000002,
+          "min_net_gap_m": 2.0010024511059896,
+          "net_gap_lane_position_residual_max_abs_m": 0.0,
+          "observation_decimation_factor": 4,
+          "p2_evaluable_following_exposure_s": 71.60000000000021,
+          "package": "C_finer_internal_0.025__measurement_probe_queue_stop",
+          "recorded_observation_step_s": 0.1,
+          "reliable_closing_exposure_s": 55.70000000000052,
+          "state_rows": 1320,
+          "ttc_min_s": [
+            1.9057114623566753
+          ],
+          "wall_clock_s": 5.465098900021985
+        },
+        {
+          "cadence_max_abs_error_s": 2.1371793224034263e-15,
+          "collisions": 0,
+          "configuration_id": "C_finer_internal_0.025",
+          "event_confirm_s": [],
+          "event_end_s": [],
+          "event_start_s": [],
+          "events": 0,
+          "fixture_id": "baseline_mixed_demand",
+          "insertion_failures": [],
+          "internal_step_s": 0.025,
+          "max_acceleration_mps2": 2.0000000000000284,
+          "mean_speed_mps": 20.058844768545356,
+          "min_acceleration_mps2": -4.500000000000313,
+          "min_net_gap_m": 2.6440550222432933,
+          "net_gap_lane_position_residual_max_abs_m": 0.0,
+          "observation_decimation_factor": 4,
+          "p2_evaluable_following_exposure_s": 109.69999999999804,
+          "package": "C_finer_internal_0.025__baseline_mixed_demand",
+          "recorded_observation_step_s": 0.1,
+          "reliable_closing_exposure_s": 6.5999999999999925,
+          "state_rows": 1828,
+          "ttc_min_s": [],
+          "wall_clock_s": 6.565186600084417
+        }
+      ],
+      "schema_version": "stage_0_5.calibration-readiness.v1.timestep-sensitivity.v1",
+      "scientific_claim_eligible": false,
+      "seed": 20260907,
+      "sha256": "5b10693e48810731f5e8f1c2162e3b071d416b3fa000ead77232f36500eb6719"
+    },
+    "options": [
+      {
+        "decimation_factor": 1,
+        "internal_step_s": 0.1,
+        "option_id": "A_uniform_0.1",
+        "rationale": "recorded cadence matches the 100 ms formal observation semantics exactly",
+        "recorded_observation_step_s": 0.1,
+        "risk": "coarser car-following integration than option B"
+      },
+      {
+        "decimation_factor": 2,
+        "internal_step_s": 0.05,
+        "option_id": "B_fine_internal_0.05",
+        "rationale": "finer integration while keeping 100 ms recorded evidence",
+        "recorded_observation_step_s": 0.1,
+        "risk": "twice the simulation cost; the recorded series still cannot exceed 100 ms evidence"
+      }
+    ],
+    "recommendation": "B_fine_internal_0.05",
+    "recommendation_reason": "the recorded series keeps exact 100 ms formal observation semantics while the finer integration reduces the transient overshoot of the closing episodes; the measured convergence probe shows the event boundaries still move when the internal step is halved, so the internal step must be frozen as part of the measurement protocol",
+    "schema_version": "stage_0_5.calibration-readiness.v1.time-step-options.v1",
+    "unapproved_numbers": [
+      "warmup_s",
+      "evaluation_window_start_s",
+      "evaluation_window_end_s"
+    ],
+    "warmup_principle": "fix the warm-up by a traffic-stability diagnostic (network inflow/flow and mean-speed stabilisation within a pre-declared tolerance window) rather than an arbitrary number of seconds; the diagnostic rule itself is a researcher decision"
+  },
+  "timestep_sensitivity": {
+    "available": true,
+    "comparisons": [
+      {
+        "convergence_A_to_B_start_s": 0.19999999999999973,
+        "convergence_B_to_C_start_s": 0.20000000000000018,
+        "event_confirm_s_max_abs_delta": 0.20000000000000018,
+        "event_end_s_max_abs_delta": 0.2999999999999998,
+        "event_start_s_max_abs_delta": 0.19999999999999973,
+        "events_match": true,
+        "events_match_all_three": true,
+        "exposure_relative_delta": 0.0,
+        "fixture_id": "measurement_probe_queue_stop",
+        "mean_speed_abs_delta_mps": 0.02261839236739327,
+        "min_acceleration_abs_delta_mps2": 0.0,
+        "state_rows_ratio": 1.0,
+        "wall_clock_ratio": 0.9529731972190433
+      },
+      {
+        "convergence_A_to_B_start_s": 0.0,
+        "convergence_B_to_C_start_s": 0.0,
+        "event_confirm_s_max_abs_delta": 0.0,
+        "event_end_s_max_abs_delta": 0.0,
+        "event_start_s_max_abs_delta": 0.0,
+        "events_match": true,
+        "events_match_all_three": true,
+        "exposure_relative_delta": 0.006422018348623601,
+        "fixture_id": "baseline_mixed_demand",
+        "mean_speed_abs_delta_mps": 0.007697793775989226,
+        "min_acceleration_abs_delta_mps2": 1.2434497875801753e-13,
+        "state_rows_ratio": 1.0038440417353103,
+        "wall_clock_ratio": 1.102739640099751
+      }
+    ],
+    "cost_benchmark": [
+      {
+        "configuration_id": "A_uniform_0.1",
+        "duration_s": 300.0,
+        "internal_step_s": 0.1,
+        "package": "benchmark__A_uniform_0.1",
+        "simulated_seconds_per_wall_second": 12.390482742989581,
+        "state_rows": 8453,
+        "vehicle_count": 17,
+        "wall_clock_s": 24.212131700012833
+      },
+      {
+        "configuration_id": "B_fine_internal_0.05",
+        "duration_s": 300.0,
+        "internal_step_s": 0.05,
+        "package": "benchmark__B_fine_internal_0.05",
+        "simulated_seconds_per_wall_second": 10.847813700139778,
+        "state_rows": 8453,
+        "vehicle_count": 17,
+        "wall_clock_s": 27.655342200072482
+      },
+      {
+        "configuration_id": "C_finer_internal_0.025",
+        "duration_s": 300.0,
+        "internal_step_s": 0.025,
+        "package": "benchmark__C_finer_internal_0.025",
+        "simulated_seconds_per_wall_second": 8.873234268909641,
+        "state_rows": 8447,
+        "vehicle_count": 17,
+        "wall_clock_s": 33.80954349995591
+      }
+    ],
+    "duration_s": 20.0,
+    "engineering_only": true,
+    "path": "code/outputs/formal/calibration/stage_0_5_timestep_sensitivity_v1/timestep_sensitivity.json",
+    "runs": [
+      {
+        "cadence_max_abs_error_s": 2.1371793224034263e-15,
+        "collisions": 0,
+        "configuration_id": "A_uniform_0.1",
+        "event_confirm_s": [
+          3.3
+        ],
+        "event_end_s": [
+          5.5
+        ],
+        "event_start_s": [
+          3.1
+        ],
+        "events": 1,
+        "fixture_id": "measurement_probe_queue_stop",
+        "insertion_failures": [],
+        "internal_step_s": 0.1,
+        "max_acceleration_mps2": 2.0000000000000018,
+        "mean_speed_mps": 1.658999831123637,
+        "min_acceleration_mps2": -4.500000000000002,
+        "min_net_gap_m": 2.0010092712058167,
+        "net_gap_lane_position_residual_max_abs_m": 0.0,
+        "observation_decimation_factor": 1,
+        "p2_evaluable_following_exposure_s": 71.60000000000021,
+        "package": "A_uniform_0.1__measurement_probe_queue_stop",
+        "recorded_observation_step_s": 0.1,
+        "reliable_closing_exposure_s": 53.60000000000049,
+        "state_rows": 1320,
+        "ttc_min_s": [
+          1.7943103644450966
+        ],
+        "wall_clock_s": 5.181166599970311
+      },
+      {
+        "cadence_max_abs_error_s": 2.1371793224034263e-15,
+        "collisions": 0,
+        "configuration_id": "A_uniform_0.1",
+        "event_confirm_s": [],
+        "event_end_s": [],
+        "event_start_s": [],
+        "events": 0,
+        "fixture_id": "baseline_mixed_demand",
+        "insertion_failures": [],
+        "internal_step_s": 0.1,
+        "max_acceleration_mps2": 1.999999999999993,
+        "mean_speed_mps": 20.056282604266304,
+        "min_acceleration_mps2": -4.500000000000046,
+        "min_net_gap_m": 3.0797932242847423,
+        "net_gap_lane_position_residual_max_abs_m": 0.0,
+        "observation_decimation_factor": 1,
+        "p2_evaluable_following_exposure_s": 108.99999999999808,
+        "package": "A_uniform_0.1__baseline_mixed_demand",
+        "recorded_observation_step_s": 0.1,
+        "reliable_closing_exposure_s": 6.499999999999993,
+        "state_rows": 1821,
+        "ttc_min_s": [],
+        "wall_clock_s": 5.493192300084047
+      },
+      {
+        "cadence_max_abs_error_s": 2.1371793224034263e-15,
+        "collisions": 0,
+        "configuration_id": "B_fine_internal_0.05",
+        "event_confirm_s": [
+          3.5
+        ],
+        "event_end_s": [
+          5.2
+        ],
+        "event_start_s": [
+          3.3
+        ],
+        "events": 1,
+        "fixture_id": "measurement_probe_queue_stop",
+        "insertion_failures": [],
+        "internal_step_s": 0.05,
+        "max_acceleration_mps2": 2.0000000000000018,
+        "mean_speed_mps": 1.6363814387562436,
+        "min_acceleration_mps2": -4.500000000000002,
+        "min_net_gap_m": 2.0010049408514305,
+        "net_gap_lane_position_residual_max_abs_m": 0.0,
+        "observation_decimation_factor": 2,
+        "p2_evaluable_following_exposure_s": 71.60000000000021,
+        "package": "B_fine_internal_0.05__measurement_probe_queue_stop",
+        "recorded_observation_step_s": 0.1,
+        "reliable_closing_exposure_s": 54.90000000000051,
+        "state_rows": 1320,
+        "ttc_min_s": [
+          1.8681329871431456
+        ],
+        "wall_clock_s": 4.937512900098227
+      },
+      {
+        "cadence_max_abs_error_s": 2.1371793224034263e-15,
+        "collisions": 0,
+        "configuration_id": "B_fine_internal_0.05",
+        "event_confirm_s": [],
+        "event_end_s": [],
+        "event_start_s": [],
+        "events": 0,
+        "fixture_id": "baseline_mixed_demand",
+        "insertion_failures": [],
+        "internal_step_s": 0.05,
+        "max_acceleration_mps2": 2.0000000000000284,
+        "mean_speed_mps": 20.048584810490315,
+        "min_acceleration_mps2": -4.5000000000001705,
+        "min_net_gap_m": 2.512381620785817,
+        "net_gap_lane_position_residual_max_abs_m": 0.0,
+        "observation_decimation_factor": 2,
+        "p2_evaluable_following_exposure_s": 109.69999999999804,
+        "package": "B_fine_internal_0.05__baseline_mixed_demand",
+        "recorded_observation_step_s": 0.1,
+        "reliable_closing_exposure_s": 6.5999999999999925,
+        "state_rows": 1828,
+        "ttc_min_s": [],
+        "wall_clock_s": 6.057560899993405
+      },
+      {
+        "cadence_max_abs_error_s": 2.1371793224034263e-15,
+        "collisions": 0,
+        "configuration_id": "C_finer_internal_0.025",
+        "event_confirm_s": [
+          3.7
+        ],
+        "event_end_s": [
+          5.1
+        ],
+        "event_start_s": [
+          3.5
+        ],
+        "events": 1,
+        "fixture_id": "measurement_probe_queue_stop",
+        "insertion_failures": [],
+        "internal_step_s": 0.025,
+        "max_acceleration_mps2": 2.0000000000000018,
+        "mean_speed_mps": 1.624900365584392,
+        "min_acceleration_mps2": -4.500000000000002,
+        "min_net_gap_m": 2.0010024511059896,
+        "net_gap_lane_position_residual_max_abs_m": 0.0,
+        "observation_decimation_factor": 4,
+        "p2_evaluable_following_exposure_s": 71.60000000000021,
+        "package": "C_finer_internal_0.025__measurement_probe_queue_stop",
+        "recorded_observation_step_s": 0.1,
+        "reliable_closing_exposure_s": 55.70000000000052,
+        "state_rows": 1320,
+        "ttc_min_s": [
+          1.9057114623566753
+        ],
+        "wall_clock_s": 5.465098900021985
+      },
+      {
+        "cadence_max_abs_error_s": 2.1371793224034263e-15,
+        "collisions": 0,
+        "configuration_id": "C_finer_internal_0.025",
+        "event_confirm_s": [],
+        "event_end_s": [],
+        "event_start_s": [],
+        "events": 0,
+        "fixture_id": "baseline_mixed_demand",
+        "insertion_failures": [],
+        "internal_step_s": 0.025,
+        "max_acceleration_mps2": 2.0000000000000284,
+        "mean_speed_mps": 20.058844768545356,
+        "min_acceleration_mps2": -4.500000000000313,
+        "min_net_gap_m": 2.6440550222432933,
+        "net_gap_lane_position_residual_max_abs_m": 0.0,
+        "observation_decimation_factor": 4,
+        "p2_evaluable_following_exposure_s": 109.69999999999804,
+        "package": "C_finer_internal_0.025__baseline_mixed_demand",
+        "recorded_observation_step_s": 0.1,
+        "reliable_closing_exposure_s": 6.5999999999999925,
+        "state_rows": 1828,
+        "ttc_min_s": [],
+        "wall_clock_s": 6.565186600084417
+      }
+    ],
+    "schema_version": "stage_0_5.calibration-readiness.v1.timestep-sensitivity.v1",
+    "scientific_claim_eligible": false,
+    "seed": 20260907,
+    "sha256": "5b10693e48810731f5e8f1c2162e3b071d416b3fa000ead77232f36500eb6719"
+  },
+  "vehicle_fleet_candidates": {
+    "approved_reference_fields_present": [
+      "speed_mps",
+      "acceleration_mps2",
+      "net_gap_m",
+      "closing_speed_mps",
+      "ttc_s",
+      "drac_mps2",
+      "lane_id",
+      "x_m",
+      "y_m"
+    ],
+    "candidate_vtypes": [
+      {
+        "accel_mps2": {
+          "evidence_strength": "none",
+          "source": "not identifiable",
+          "value": null
+        },
+        "decel_mps2": {
+          "evidence_strength": "none",
+          "source": "not identifiable",
+          "value": null
+        },
+        "length_m": {
+          "evidence_strength": "none",
+          "source": "not identifiable",
+          "value": null
+        },
+        "max_speed_mps": {
+          "evidence_strength": "none",
+          "source": "not identifiable",
+          "value": null
+        },
+        "min_gap_m": {
+          "evidence_strength": "none",
+          "source": "not identifiable",
+          "value": null
+        },
+        "raw_vehicle_type": "unresolved (no class field in the approved reference)",
+        "status": "Evidence Insufficient",
+        "sumo_vtype": "us101_passenger_candidate"
+      }
+    ],
+    "engineering_fixture_vtypes": {
+      "engineering_car": "engineering fixture only; must not be promoted to a scientific mapping",
+      "engineering_heavy_fixture": "engineering fixture only; must not be promoted",
+      "engineering_queue_fixture": "engineering fixture only; must not be promoted"
+    },
+    "identifiable_from_approved_reference": {
+      "note": "the approved canonical state table carries no vehicle class, length or performance field, so no vType composition can be calibrated from it",
+      "vehicle_class_composition": null,
+      "vehicle_length_distribution": null,
+      "vehicle_mass_or_power": null
+    },
+    "measurement_identifiable_parameters": {
+      "acceleration_distribution": "identifiable from the approved reference",
+      "closing_speed_distribution": "identifiable from the approved reference",
+      "net_gap_distribution": "identifiable from the approved reference",
+      "speed_distribution": "identifiable from the approved reference",
+      "ttc_evaluable_share": "identifiable from the approved reference"
+    },
+    "prohibited_substitutions": [
+      "pNEUMA urban class proportions must not be applied to US-101",
+      "engineering fixture vTypes must not be declared as the real fleet"
+    ],
+    "required_new_evidence": [
+      "a researcher-approved calibration-only source with vehicle class and length fields (raw NGSIM records of the two calibration windows would qualify, but must be approved and SHA-bound before use)"
+    ],
+    "schema_version": "stage_0_5.calibration-readiness.v1.vehicle-fleet-candidates.v1",
+    "windows_analysed": [
+      "us101__0750_0805",
+      "us101__0805_0820"
+    ]
+  }
+}

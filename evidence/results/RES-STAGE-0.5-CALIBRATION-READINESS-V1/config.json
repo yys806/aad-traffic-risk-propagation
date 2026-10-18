@@ -1,0 +1,47 @@
+{
+  "auxiliary_sources_not_analysed": [
+    "lankershim__complete",
+    "pneuma__athens_d1"
+  ],
+  "bootstrap": {
+    "cluster_unit": "trajectory",
+    "resamples": 2000,
+    "seed": 20261018
+  },
+  "calibration_windows": [
+    "us101__0750_0805",
+    "us101__0805_0820"
+  ],
+  "closing_epsilon_mps": 0.001,
+  "cross_section_planes_m": [
+    150.0,
+    300.0,
+    450.0
+  ],
+  "density_window_m": [
+    150.0,
+    350.0
+  ],
+  "engineering_only": true,
+  "formal_measurement_specification": "stage_0_2.formal_risk_measurement.v2",
+  "locked_holdout_accessed": false,
+  "p2_minimum_duration_s": 0.2,
+  "p2_ttc_threshold_s": 2.0,
+  "recorded_observation_step_s": 0.1,
+  "result_id": "RES-STAGE-0.5-CALIBRATION-READINESS-V1",
+  "schema_version": "stage_0_5.calibration-readiness.v1.config.v1",
+  "scientific_claim_eligible": false,
+  "stage_0_5_gate": "pending_simulation_sample",
+  "stratum_slice_s": 60.0,
+  "task": "AAD-0.5.4-A calibration readiness and parameter-protocol audit",
+  "time_slice_s": 300.0,
+  "upstream_results": [
+    "RES-STAGE-0.5-REAL-REF-R2",
+    "RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1",
+    "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4"
+  ],
+  "validation_window": [
+    "us101__0820_0835"
+  ],
+  "validation_window_read": false
+}

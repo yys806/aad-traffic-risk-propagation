@@ -44,6 +44,7 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         "RES-STAGE-0.5-REAL-REF-V1": [],
         "RES-STAGE-0.5-REAL-REF-R2": [],
         "RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1": [],
+        "RES-STAGE-0.5-CALIBRATION-READINESS-V1": [],
         "RES-STAGE-0.6-PRELOCK-V2": [],
         "RES-PROTOCOL-READINESS-V1": [
             (
@@ -164,6 +165,34 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
             ("audit.json", "config.json", "decisions.json", "scientific_gate_report.json", "scientific_gate_matrix.json", "report.md", "scope_and_claims.md", "provenance.json", "manifest.json", "SHA256SUMS"),
         ),
     }
+    for name in (
+        "access_audit.json",
+        "audit.json",
+        "calibration_source_analysis.json",
+        "candidate_protocol.json",
+        "config.json",
+        "manifest.json",
+        "measurement_crosswalks.json",
+        "measurement_equivalence_matrix.json",
+        "provenance.json",
+        "researcher_decision_matrix.json",
+        "scientific_admission_status.json",
+        "stage_0_5_4b_admission_checklist.json",
+        "SHA256SUMS",
+    ):
+        pairs["RES-STAGE-0.5-CALIBRATION-READINESS-V1"].append(
+            (
+                f"code/outputs/formal/calibration/stage_0_5_calibration_readiness_v1/{name}",
+                name,
+            )
+        )
+    for name in ("timestep_sensitivity.json", "manifest.json", "SHA256SUMS"):
+        pairs["RES-STAGE-0.5-CALIBRATION-READINESS-V1"].append(
+            (
+                f"code/outputs/formal/calibration/stage_0_5_timestep_sensitivity_v1/{name}",
+                f"timestep/{name}",
+            )
+        )
     # The Stage 0.5.3 measurement probe package is exported under the same result id
     # in its own subdirectory so that the two engineering fixtures stay distinguishable.
     for name in (

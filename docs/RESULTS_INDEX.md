@@ -26,6 +26,10 @@
 
 正式真实参考重建（AAD-0.5.1）。六项正式输入通过路径、SHA-256、来源身份、schema 和质量契约校验：NGSIM US-101 三窗口、Lankershim、Stage 0.2 最终 P2 表和 Stage 0.3 canonical pNEUMA。完整状态共 5,706,252 行；P2=4,545（543/732/1,043/2,227）；pNEUMA=785 条轨迹、1,239,475 条状态。US-101 仍为高速公路跟驰风险主线，Lankershim 独立为城市辅助，pNEUMA 仅为城市运动学。完整正式事件率和 pNEUMA 时间/车辆等权统计绑定既有封存结果；稳定哈希/轨迹簇样本仅为诊断。无 SUMO 样本、无覆盖阈值、无 Gate 升级。报告：`docs/STAGE_0_5_TASK_0_5_1_REAL_REFERENCE_REBUILD.md`；包：`code/outputs/formal/calibration/stage_0_5_real_reference_r2/`。
 
+## RES-STAGE-0.5-CALIBRATION-READINESS-V1
+
+Stage 0.5.4-A 校准准入与测量等价性审计（工程审计结果，不是 Scientific Gate 结果）。P2 测量契约按 16 项维度逐条审计：10 项 `Equivalent / Verified`、6 项 `Engineering Consistent Only`、0 项阻断；16 个确定性边界用例（含前车切换、incarnation 变化、晚进入、缺帧、暖机截断、窗口边界、右删失、0.1/0.2 s 节奏、恰好/不足 0.2 s、风险再进入、有效与可靠非闭合交替）两适配器一致。用独立实现重算已批准两窗口统计并逐项复现封存值：可评价暴露 111,425.9 / 133,505.6 s，事件 543 / 732，事件率 17.5435 / 19.7385 veh⁻¹h⁻¹。修复 6 项适配层缺陷（绝对时钟、前车自身帧号、退出原因字段、闭合 epsilon、可靠层定义、DRAC 闭式），未修改 Stage 0.2 任何规则。校准窗口特征与需求可识别性矩阵、候选分层、轨迹簇不确定性（事件率 95% CI 约 ±15%，逐行 i.i.d. 窄 12.7 倍）、时间步敏感性（内部步长减半使事件边界移动 0.2 s）与 300 s 基准成本均已记录。准入清单 `ready_to_start_stage_0_5_4b=false`，5 项待批准、5 项阻断；未读取验证窗口（materialised 0 行）、未冻结任何容差或参数。报告：`docs/STAGE_0_5_TASK_0_5_4A_CALIBRATION_READINESS.md`。
+
 ## RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1
 
 Stage 0.5.3 工程结果。US-101 `generic_highway_candidate`（3 主线段 × 3 车道 + 入口/出口匝道）在 SUMO 1.26.0、seed=20260907、internal 0.1 s、recorded 0.1 s 下完成两个无消息工程 fixture：①baseline_mixed_demand：8,453 state、17 vehicles（全部进入并驶出）、6,118 leader rows、724 valid TTC rows、min TTC 6.971 s、工程 P2=0、P2 可评价跟驰暴露 609.4 s；②measurement_probe_queue_stop：2,720 state、7 vehicles、1 个工程 P2 事件（onset 3.1 s、确认 3.3 s、持续 2.4 s、TTC min 1.794 s），Stage 0.2 formal-alignment adapter 边界完全一致。TraCI `getLeader` 距离语义已核验为「物理保险杠净间距 − 后车 minGap」，同车道残差 0.0 m；校准入口对 `us101__0820_0835` 与辅助来源 fail-closed 拒绝。P2 等价性为 `pending_measurement_equivalence_review`；Lankershim/pNEUMA 仅保留候选入口，pNEUMA 六类原始车型 `unmapped`。本结果 `engineering_only`、`scientific_claim_eligible=false`，不构成现实校准或 Stage 0.5 Gate 通过。报告：`docs/STAGE_0_5_TASK_0_5_3_SUMO_BASELINE_ENGINEERING.md`；本地包：`code/outputs/formal/calibration/stage_0_5_sumo_baseline_engineering_v1_baseline/` 与 `..._probe/`。

@@ -26,6 +26,8 @@
 
 （2026-10-18 AAD-0.5.2 更新）已完成分场景现实覆盖指标与校准—验证协议候选设计。US-101 建议按五层必要条件评价，Lankershim 独立辅助，pNEUMA 仅城市运动学；现有 pooled real-real Energy Distance 不具备直接科学容差资格。校准/验证窗口、容差、Energy Distance 角色、辅助场景范围和 0.5.3 前置契约均待研究者批准，未运行 SUMO。
 
+（2026-10-18 AAD-0.5.4-A 更新）已完成 SUMO 正式校准前的科学准入与测量等价性审计。P2 测量契约 16 项维度：10 项 `Equivalent / Verified`、6 项 `Engineering Consistent Only`、**0 项阻断**；16 个确定性边界用例两适配器一致；独立复现封存值（可评价暴露 111,425.9 / 133,505.6 s，事件 543 / 732，事件率 17.5435 / 19.7385 veh⁻¹h⁻¹）。修复 6 项适配层缺陷（绝对 `global_time_ms`、前车自身 `leader_frame_id`、`exit_reason` 保留、闭合 epsilon=1e-3、可靠跟驰层与正式边缘审计对齐、DRAC 已批准闭式），未修改任何 Stage 0.2 阈值/持续时间/分母。产出校准窗口运动学/跟驰/可观测性统计、需求可识别性矩阵（上游需求、匝道流、OD、车型组成与车辆长度不可识别）、候选交通状态分层、轨迹簇不确定性（事件率 CI 约 ±15%，逐行 i.i.d. 窄 12.7 倍）、时间步敏感性（内部步长减半使事件边界移动 0.2 s）与 300 s 基准成本。准入清单 `ready_to_start_stage_0_5_4b=false`，5 项待批准、5 项阻断；验证窗口物化 0 行，未冻结任何容差或参数，Gate 仍 `pending_simulation_sample`。结果 `RES-STAGE-0.5-CALIBRATION-READINESS-V1`（工程审计，非 Gate 结果）。
+
 （2026-10-18 AAD-0.5.3 更新）已建立独立 `stage_0_5_sumo.py` 工程骨架、`no_message_baseline` 运行入口和校准/验证 fail-closed 访问守卫。US-101 `generic_highway_candidate`（3 主线段 × 3 车道 + 入口匝道 + 出口匝道）在本地 SUMO 1.26.0 完成两个工程 fixture：baseline（8,453 state、17 vehicles、6,118 leader rows、724 valid TTC、0 个工程 P2）与 measurement probe（2,720 state、7 vehicles、1 个 P2 事件，onset 3.1 s、确认 3.3 s、TTC min 1.794 s）。TraCI `getLeader` 距离已核验为「物理保险杠净间距 − 后车 minGap」，统一换算为 `net_gap_m = traci_distance + follower_min_gap`，同车道残差 0.0 m；`closing_speed_mps = follower − leader`。工程 P2 经 SUMO-native adapter 与 Stage 0.2 formal-alignment adapter 双路确认，但正式等价性仍 `pending_measurement_equivalence_review`；Lankershim/pNEUMA 保持 candidate_entry_only，pNEUMA 六类原始车型全部 `unmapped`。结果 `RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1` 仅 engineering_only，Gate 仍 `pending_simulation_sample`。
 - `stage_0_6`：技术真值检查已有证据，科学容差与协议锁未完成。
 
