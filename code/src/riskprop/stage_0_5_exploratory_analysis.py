@@ -260,7 +260,8 @@ def finalize(repo: Path,batch: Path):
     _write_json(batch/"config.json",dict(mode=MODE,fixed=plan["fixed"],local_space=plan["local_space"],windows=plan["windows"],
         scientific_claim_eligible=False,tolerances="Tolerance Not Yet Justified",local_stratum_p2="Unresolved"))
     _write_json(batch/"fixed_parameter_manifest.json",dict(fixed=plan["fixed"],fleet=plan["fleet"],initialization=plan["initialization"],
-        engineering_candidates_only=True,source_bindings=plan["source_bindings"],single_parameter_pairs=16))
+        engineering_candidates_only=True,source_bindings=plan["source_bindings"],
+        planned_single_parameter_pairs=16,completed_single_parameter_pairs=len(paired)))
     _write_json(batch/"run_manifest.json",dict(plan_sha256=_sha256_file(batch/"experiment_plan.json"),planned_runs=plan["runs"],
         attempts=ledger["attempts"],not_attempted=[r["run_id"] for r in plan["runs"] if r["run_id"] not in {a["run_id"] for a in ledger["attempts"]}],
         measurement_version="stage_0_2.formal_risk_measurement.v2 via existing SUMO adapter",mode=MODE))
