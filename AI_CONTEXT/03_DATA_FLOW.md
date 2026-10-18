@@ -50,7 +50,7 @@ NGSIM leader lookup 在存在诊断字段时使用 run scope、Global_Time、dia
 
 ## 2026-10-12 Stage 0.3 参考接口
 
-stage_0_3 验收包 `stage_0_5_reference_states.parquet`（含 dataset/site/window_id/vehicle_id/vehicle_type/time_s/speed_mps/acceleration_mps2/quality_status/time_weighting_eligible/source_file_sha256）可直接进入 `write_real_reference_package()`；NGSIM 与 pNEUMA 不拼接为 iid 样本。
+stage_0_3 R2 验收包中的 stage_0_5_reference_states.parquet（含 dataset/site/window_id/vehicle_id/vehicle_type/time_s/speed_mps/acceleration_mps2/quality_status/time_weighting_eligible/source_file_sha256）是 canonical 参考，但当前 write_real_reference_package() 仍读取旧字段 id/longitudinal_accel_mps2；需经显式 adapter 或经批准的原生契约后接入。NGSIM 与 pNEUMA 不拼接为 iid 样本。
 
 ## 2026-10-16 R2 质量语义（当前）
 
@@ -59,3 +59,7 @@ R2 起 `quality_status` 逐状态推导（parse_failed/identity_ambiguous/raw_ti
 ## 2026-10-12 正式测量与收口接口
 
 task1.5四源状态→独立全序列/P2在线提取→r4→不可覆盖final_r1验收包；病例与抽稀产物保留成员和断点，便携证据只含小型摘要。 依据：相应源码及 `docs/STAGE_0_2_FINAL_CLOSURE_2026-10-12.md`。
+
+## 2026-10-18 Stage 0.5 场景审计
+
+Stage 0.5 场景设计审计报告为 docs/STAGE_0_5_TASK_0_5_0_SCENARIO_DESIGN_AUDIT.md。Stage 0.3 R2 标准化 pNEUMA 文件实际字段为 vehicle_id/acceleration_mps2/vehicle_type/quality_status/time_weighting_eligible；simulation_real_coverage.write_real_reference_package 当前直接读取 id/longitudinal_accel_mps2，并由 run_stage_0_3_pneuma_kinematics.py 另建旧字段 raw_view 后通过测试。故 canonical Parquet 尚不能直接进入 writer，状态为 Awaiting Researcher Decision；pNEUMA 车型字段也不会进入当前 writer 输出。NGSIM 与 pNEUMA 仍按不同职责和场景分离，旧 Stage 0.5 map-match 包不回接。

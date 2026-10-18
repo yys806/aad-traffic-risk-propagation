@@ -10,7 +10,7 @@
 | `stage_0_2` | NGSIM 跟驰风险审计 | 候选 TTC 阈值 `2.0 s`；holdout=false | 无模型 baseline | NGSIM US-101、Lankershim calibration | measurement status、有效 TTC、事件数、TTC/DRAC 分布 | `Active` | v2 旧快照共 4,753,044 state rows、1,797,968 valid-TTC rows、4,758 events；异常和最终范围未收口 | `code/outputs/formal/calibration/stage_0_2_ngsim_v2/` |
 | `stage_0_3` | 城市运动学与车型分布 | 时间加权主统计；车辆等权稳健；已批准连续性 0<Δt≤0.043 s（仅本文件）；bootstrap 2000×；R2 原始顺序/身份/质量 fail-closed 语义 | 不适用 | pNEUMA d1 | 分布与分位数 | `Completed / Closed`（2026-10-16 `pass` 有限范围） | 785 轨迹 / 1,239,475 状态；速度 TW mean=4.8382 m/s、VW mean=6.2077 m/s；R3 关闭包 fail-closed 复核全过、独立复算零差异；物理真实性 Unverified | `code/outputs/formal/calibration/stage_0_3_scientific_acceptance_20261016_r3/` |
 | `stage_0_4` | 界定通信可观测证据 | RV_RX 仅作 receive-state continuity；trip 级分割 | 不适用 | SPMD RV_RX | packet schema、latency/loss/adoption 可观测性 | `Completed / Closed (Limited Scope)`（2026-10-17 Limited Scientific Acceptance，`pass_limited`） | RV_RX 连续性 Verified；RSE_BSM 车辆侧接收内容已核验；SEE-V2X 受控 PC5 候选参考；通信参数未冻结未校准；Packet 未下载（历史边界） | `code/outputs/formal/calibration/stage_0_4_limited_acceptance_v1/` |
-| `stage_0_5` | 仿真—现实覆盖 | seed `20260907`，稳定哈希，最多每组 5,000 rows | real-real 距离作为参照 | NGSIM、pNEUMA、SUMO | energy distance、stratum coverage | `Active` | 迁移前包含 25,000 kinematics、20,000 following、4,758 events；无 SUMO 样本且需按新分工重建 | `code/outputs/formal/calibration/stage_0_5_real_reference_v1/` |
+| `stage_0_5` | 仿真—现实覆盖 | seed `20260907`，稳定哈希，最多每组 5,000 rows；场景职责/权重/阈值未冻结 | 场景内 real-real 距离候选 | NGSIM、pNEUMA、SUMO | Energy Distance、stratum coverage、场景内分层指标 | `Active` | AAD-0.5.0 只读审计完成；迁移前包含 25,000 kinematics、20,000 following、4,758 events，不能回接；无 SUMO 样本，canonical pNEUMA 与 writer 有字段冲突 | `code/outputs/formal/calibration/stage_0_5_real_reference_v1/` |
 | `stage_0_6` | 数值验证与协议锁准备 | 科学容差尚未冻结 | 解析真值/物理真值 | 合成真值与前置 Gate | analytic/path truth、方向、时间步、readiness | `Active` / blocked | 技术检查通过；迁移前 readiness 为 `protocol_lock_allowed=false` | `code/outputs/formal/calibration/stage_0_6_prelock_validation_v2/` |
 | `stage_1_1` | 核心效应确认 | `not_frozen` | `not_determined` | `not_created` | 尚未确定 | `Agreed` 但 blocked | 未实现、未运行、无结果 | 无 |
 
@@ -50,3 +50,7 @@ pNEUMA 地图匹配、候选前车和人工 QA 已由研究者批准退役，代
 报告：`docs/STAGE_0_2_FINAL_CLOSURE_2026-10-12.md`；结果：`RES-STAGE-0.2-FINAL-CLOSURE`；最终包：`code/outputs/formal/calibration/stage_0_2_final_closure_20261012_final_r1/`。四源5,706,252行状态、P2=4,545、唯一后车2,512/车辆对3,072逐事件独立复算一致；tau=15.364279197080283。可靠跟驰边512,043.2s、闭合边208,026.3s；固定分母与连续性fail-closed原语已测试。200ms两相位P2=4,155/4,162，存在消失/连接，不能证明采样等价。极端联合屏蔽P2=4,370，447中心全部唯一、125运动学探索标记，48人工判断仍空；独立物理真实性Unverified。验收准备包可提交研究者，**非Gate Pass Candidate**，Gate仍Active，正式质量标准/有限适用域与独立物理证据待研究者；Stage0.5覆盖及四格配置非本阶段阻断。无Protocol Lock/Stage I/holdout访问。
 
 本段为当前事实；前述Proposal、尚未实现与旧暴露/事件描述均为历史状态，不自动沿用为当前结论。依据：最终包audit/config/provenance、逐事件核验表和Gate矩阵。
+
+## 2026-10-18 Stage 0.5 场景设计审计
+
+只读审计报告：docs/STAGE_0_5_TASK_0_5_0_SCENARIO_DESIGN_AUDIT.md。Stage 0.5 仍为 Active / pending_simulation_sample；US-101 为高速风险主线候选，Lankershim 为独立城市风险辅助候选，pNEUMA 仅为单文件城市运动学补充。已确认标准化 pNEUMA schema 与当前 writer 直接列契约不兼容；现有迁移前 real-reference 包和旧 map-match 路径不能作为正式输入。抽样权重、车型映射、时间分辨率、场景化 Energy Distance 和覆盖阈值均未冻结，未运行 SUMO。

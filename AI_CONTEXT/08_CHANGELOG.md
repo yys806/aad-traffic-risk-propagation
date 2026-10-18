@@ -127,3 +127,7 @@ t1/t2/t3 GNSS 轨迹逐点相同（同一轨迹复制品）→ 设备间距离�
 ## 2026-10-17 — AAD-0.4.8：Stage 0.4 有限科学验收
 
 研究者批准 Limited Scientific Acceptance：Gate=`pass_limited`、Stage=`Completed / Closed (Limited Scope)`。范围=可观测性边界+描述性证据+参数不确定性原则；性能模型/数值校准/距离函数/采用/因果不验收。通信参数未冻结未校准。RV_RX V3 历史保留。readiness 测试锁定 pass_limited 不单独解锁（Stage I/锁仍禁止）。结果 `RES-STAGE-0.4-LIMITED-SCIENTIFIC-ACCEPTANCE-V1`。
+
+## 2026-10-18 — AAD-0.5.0 场景设计与技术可行性审计
+
+完成只读审计报告 docs/STAGE_0_5_TASK_0_5_0_SCENARIO_DESIGN_AUDIT.md。核验 origin/main=6ee987e、Stage 0.2 R4 NGSIM 四源和 P2=4545、Stage 0.3 R3 单文件 pNEUMA 城市运动学、Stage 0.1 最小双走廊工程能力。确认 US-101/Lankershim/pNEUMA 职责分离候选、稳定哈希抽样和 Energy Distance 的独立性/场景混杂风险，并发现 canonical pNEUMA schema 与 writer 旧字段契约冲突；该冲突和车型映射、抽样权重、时间分辨率、覆盖阈值均待研究者批准。未下载数据、未访问 holdout、未运行 SUMO、未改变 Gate 或 06_DECISIONS。

@@ -20,7 +20,7 @@ Evidence：`evidence/results/RES-STAGE-0.2-NGSIM-V2/audit.json`、`code/src/risk
 
 ### KI-04 — 阶段 0.5 需要重建
 
-现有结果是职责迁移前的部分真实参考，虽未纳入 pNEUMA TTC，但来源仍指向旧 map-match 产物；SUMO calibration 样本缺失。该结果不能作为最终 coverage Gate。pNEUMA 侧参考接口已由 Stage 0.3 r2 包提供并携带逐状态质量字段（write_real_reference_package 读取并 fail-closed 使用）；按状态抽样是否保持时间加权权重属 Stage 0.5 设计决定，未冻结。
+现有结果是职责迁移前的部分真实参考，虽未纳入 pNEUMA TTC，但来源仍指向旧 map-match 产物；SUMO calibration 样本缺失。该结果不能作为最终 coverage Gate。Stage 0.3 R2 canonical pNEUMA 参考携带逐状态质量字段，但当前 write_real_reference_package 直接列契约仍是旧 parse-view，标准化文件不能直连；按状态抽样是否保持时间加权权重属 Stage 0.5 设计决定，未冻结。详见 KI-07 和 AAD-0.5.0 审计。
 
 ### KI-05 — readiness 是迁移前快照
 
@@ -76,3 +76,7 @@ P2 formal event extraction and rho/bounded contribution primitives are implement
 ### 论文版本冲突 — Awaiting Researcher Decision
 
 Documented Intent：06_DECISIONS指数rho/固定分母/车辆等权。Actual Implementation：formal v2符合批准设计，旧main.tex:378-405仍为线性/观测分母/求和。Evidence：最新版20261010 PDF与最终包paper_version_conflict.md。Affected Files：paper/主论文/main.tex、paper/历史记录/20261010_YYS.pdf、06_DECISIONS。Conflict：论文版本与当前设计未同步。Status: Awaiting Researcher Decision；研究者指定正式版本，不修改论文、不替换批准算法。
+
+### KI-07 — Stage 0.5 canonical pNEUMA 接口与覆盖协议待决
+
+2026-10-18 场景审计确认：Stage 0.3 R2 canonical pNEUMA Parquet 使用 vehicle_id/acceleration_mps2/vehicle_type/quality_status/time_weighting_eligible；simulation_real_coverage.write_real_reference_package 直接读取 id/longitudinal_accel_mps2，并且只要发现任一质量列就访问两列。Stage 0.3 测试通过是因为脚本另建旧字段 raw_view；没有 canonical Parquet 直连测试。writer 还丢弃 vehicle_type/source_file_sha256，稳定哈希按状态抽样不保持时间权重，real-real groups 不检查独立性。报告：docs/STAGE_0_5_TASK_0_5_0_SCENARIO_DESIGN_AUDIT.md。状态：Awaiting Researcher Decision；0.5.1 前不得把接口称为端到端兼容、不得回接旧 map-match 包、不得冻结抽样和覆盖阈值。
