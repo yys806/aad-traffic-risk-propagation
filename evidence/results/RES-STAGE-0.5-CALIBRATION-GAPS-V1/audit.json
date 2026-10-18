@@ -1,0 +1,87 @@
+{
+  "all_raw_state_rows_verified": true,
+  "calibration_ready": false,
+  "engineering_only": true,
+  "engineering_ready": "conditional: high local density runnable; insertion backlog and startup anomaly retained",
+  "engineering_runs": 4,
+  "engineering_runs_completed": 4,
+  "formal_calibration_run": false,
+  "full_p2_pipeline_cost_verified": false,
+  "gate": "pending_simulation_sample",
+  "locked_holdout_accessed": false,
+  "measurement_ready": "pending researcher limited P2-adapter approval",
+  "parameters_approved": [],
+  "protocol_lock_created": false,
+  "ready_to_start_stage_0_5_4b": false,
+  "reality_coverage_accepted": false,
+  "result_id": "RES-STAGE-0.5-CALIBRATION-GAPS-V1",
+  "scientific_claim_eligible": false,
+  "source_binding_check": {
+    "all_bindings_match": true,
+    "checks": [
+      {
+        "manifest_path": "code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r4/states/ngsim_us101__0750_0805.parquet",
+        "manifest_sha256": "684a5f0b96dc48116f16d581c278d7039c0554bf1c3cea8d6eda3e605e3e8644",
+        "path": "code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r4/states/ngsim_us101__0750_0805.parquet",
+        "path_matches": true,
+        "policy_sha256": "684a5f0b96dc48116f16d581c278d7039c0554bf1c3cea8d6eda3e605e3e8644",
+        "sha256_matches": true,
+        "source": "us101__0750_0805"
+      },
+      {
+        "manifest_path": "code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r4/states/ngsim_us101__0805_0820.parquet",
+        "manifest_sha256": "7b0ef830c97a981da018d4e24b029e38aa2630387c728ea87b57926745880a9f",
+        "path": "code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r4/states/ngsim_us101__0805_0820.parquet",
+        "path_matches": true,
+        "policy_sha256": "7b0ef830c97a981da018d4e24b029e38aa2630387c728ea87b57926745880a9f",
+        "sha256_matches": true,
+        "source": "us101__0805_0820"
+      },
+      {
+        "manifest_path": "code/outputs/formal/calibration/stage_0_2_final_closure_20261012_final_r1/p2_formal_events.parquet",
+        "manifest_sha256": "aa749da3c8d68521111cc59f0d0f2746fecef868121d37ae76d3c75d43c10ae1",
+        "path": "code/outputs/formal/calibration/stage_0_2_final_closure_20261012_final_r1/p2_formal_events.parquet",
+        "path_matches": true,
+        "policy_sha256": "aa749da3c8d68521111cc59f0d0f2746fecef868121d37ae76d3c75d43c10ae1",
+        "sha256_matches": true,
+        "source": "p2_formal_events"
+      }
+    ],
+    "locked_holdout_accessed": false,
+    "manifest": "evidence/results/RES-STAGE-0.5-REAL-REF-R2/input_manifest.json",
+    "manifest_sha256": "accc6a65ce3dccdec7e424c32fcf7b38e6a5d449396c5098f6024d38dad532a3",
+    "reference_result_id": "RES-STAGE-0.5-REAL-REF-R2",
+    "schema_version": "stage_0_5.calibration-readiness.v1.source-binding-check.v1",
+    "validation_window_read": false
+  },
+  "state_reads": [
+    {
+      "analysis_purpose": "layer_1_to_layer_5 calibration statistics",
+      "path": "code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r4/states/ngsim_us101__0750_0805.parquet",
+      "rows_materialised": 1180598,
+      "sha256": "684a5f0b96dc48116f16d581c278d7039c0554bf1c3cea8d6eda3e605e3e8644",
+      "source": "us101__0750_0805",
+      "state_rows": 1180598,
+      "window_ids": [
+        "0750_0805"
+      ]
+    },
+    {
+      "analysis_purpose": "layer_1_to_layer_5 calibration statistics",
+      "path": "code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r4/states/ngsim_us101__0805_0820.parquet",
+      "rows_materialised": 1403095,
+      "sha256": "7b0ef830c97a981da018d4e24b029e38aa2630387c728ea87b57926745880a9f",
+      "source": "us101__0805_0820",
+      "state_rows": 1403095,
+      "window_ids": [
+        "0805_0820"
+      ]
+    },
+    {
+      "guard_decisions_added": 2
+    }
+  ],
+  "tolerances_frozen": false,
+  "validation_window_read": false,
+  "validation_window_rows_materialised": 0
+}

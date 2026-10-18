@@ -159,3 +159,7 @@ Stage 0.3 R2 边界修复与验收准备（AAD-S0.3-T02）。修复三项工程�
 ## RES-STAGE-0.3-PNEUMA-KINEMATICS-R1
 
 Stage 0.3 综合实施与验收准备。785 条唯一轨迹（Car 443、Motorcycle 153、Taxi 137、Medium Vehicle 30、Bus 20、Heavy Vehicle 2）、1,239,475 条状态、0.04 s 等间隔、零缺口/畸形/重复。时间加权速度 mean=4.8382 m/s（P50=4.5824、P95=12.1176）、车辆等权 mean=6.2077 m/s；纵向加速度 mean=-0.0044、sd=0.7454 m/s²，极端记录保留并做敏感性。轨迹簇 bootstrap 2000 次；独立复算零差异；Stage 0.5 现有接口真实全量测试通过（pNEUMA TTC 未纳入）。状态 **Gate Pass Candidate**，科学 Gate 与未冻结参数待研究者。报告：`docs/STAGE_0_3_PNEUMA_KINEMATICS_2026-10-12.md`；包：`code/outputs/formal/calibration/stage_0_3_pneuma_kinematics_20261012_r1/`。
+
+## RES-STAGE-0.5-CALIBRATION-GAPS-V1
+
+AAD-0.5.4-A+定向补充，verified_engineering_only。两个原始校准成员100%连接、车型/长度注记可用；主线每车道、统一阈值42.8767/48.0828、12/11内部片、源实际时钟和四个固定负载成本已量化。保留未插入/初始化/积分器限制，所有科研候选Proposal，Calibration Ready=false。报告docs/STAGE_0_5_TASK_0_5_4A_SUPPLEMENT_CALIBRATION_GAPS.md；完整包code/outputs/formal/calibration/stage_0_5_calibration_gaps_v1_final/；便携证据同ID。

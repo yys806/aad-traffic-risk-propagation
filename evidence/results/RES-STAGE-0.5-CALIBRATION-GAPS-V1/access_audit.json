@@ -1,0 +1,104 @@
+{
+  "access_roles": [
+    "calibration",
+    "temporal_validation",
+    "auxiliary"
+  ],
+  "decisions": [
+    {
+      "allowed": true,
+      "checked_bindings": {
+        "us101__0750_0805": "684a5f0b96dc48116f16d581c278d7039c0554bf1c3cea8d6eda3e605e3e8644"
+      },
+      "purpose": "stage_0_5_4a calibration-window analysis",
+      "reason": "allowed_by_policy",
+      "restricted_sources": [],
+      "role": "calibration",
+      "sources": [
+        "us101__0750_0805"
+      ]
+    },
+    {
+      "allowed": true,
+      "checked_bindings": {
+        "us101__0805_0820": "7b0ef830c97a981da018d4e24b029e38aa2630387c728ea87b57926745880a9f"
+      },
+      "purpose": "stage_0_5_4a calibration-window analysis",
+      "reason": "allowed_by_policy",
+      "restricted_sources": [],
+      "role": "calibration",
+      "sources": [
+        "us101__0805_0820"
+      ]
+    },
+    {
+      "allowed": true,
+      "checked_bindings": {
+        "us101__0750_0805::raw": "6676066e5b3e7249b7b003a906b28585202623f5d274938b579b4b836f0668c8"
+      },
+      "purpose": "class/length/time audit",
+      "reason": "allowed_by_policy",
+      "restricted_sources": [],
+      "role": "calibration",
+      "sources": [
+        "us101__0750_0805::raw"
+      ]
+    },
+    {
+      "allowed": true,
+      "checked_bindings": {
+        "us101__0805_0820::raw": "3bae26348f6d8c10ab76df85f52746ee85dea77f65a5d27f19fdfdb2e4d8cc45"
+      },
+      "purpose": "class/length/time audit",
+      "reason": "allowed_by_policy",
+      "restricted_sources": [],
+      "role": "calibration",
+      "sources": [
+        "us101__0805_0820::raw"
+      ]
+    },
+    {
+      "allowed": true,
+      "checked_bindings": {
+        "us101__0750_0805::raw": "830442bb08f1f7a20a686b5879b4b82bfb7c47e526d48908db666fccc7e811dc"
+      },
+      "purpose": "read D:\\shen\\TJU\\AAD\\dataset\\NGSIM\\US-101-LosAngeles-CA.zip",
+      "reason": "allowed_by_policy",
+      "restricted_sources": [],
+      "role": "calibration",
+      "sources": [
+        "us101__0750_0805::raw"
+      ]
+    },
+    {
+      "allowed": true,
+      "checked_bindings": {},
+      "purpose": "extract allowlisted member vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt",
+      "reason": "allowed_by_policy",
+      "restricted_sources": [],
+      "role": "calibration",
+      "sources": [
+        "us101__0750_0805::raw"
+      ]
+    },
+    {
+      "allowed": true,
+      "checked_bindings": {},
+      "purpose": "extract allowlisted member vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt",
+      "reason": "allowed_by_policy",
+      "restricted_sources": [],
+      "role": "calibration",
+      "sources": [
+        "us101__0805_0820::raw"
+      ]
+    }
+  ],
+  "denied_count": 0,
+  "denied_requests": [],
+  "fail_closed": true,
+  "locked_holdout_accessed": false,
+  "policy_schema_version": "stage_0_5.sumo-engineering.v2.calibration-validation-policy.v1",
+  "request_count": 7,
+  "schema_version": "stage_0_5.sumo-engineering.v2.access-audit.v1",
+  "validation_window_read": false
+}

@@ -45,6 +45,7 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         "RES-STAGE-0.5-REAL-REF-R2": [],
         "RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1": [],
         "RES-STAGE-0.5-CALIBRATION-READINESS-V1": [],
+        "RES-STAGE-0.5-CALIBRATION-GAPS-V1": [],
         "RES-STAGE-0.6-PRELOCK-V2": [],
         "RES-PROTOCOL-READINESS-V1": [
             (
@@ -185,6 +186,16 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
                 f"code/outputs/formal/calibration/stage_0_5_calibration_readiness_v1/{name}",
                 name,
             )
+        )
+    for name in (
+        "access_audit.json", "audit.json", "benchmark_configs.json", "benchmark_plan.json",
+        "benchmark_summary.json", "benchmark_numerical_diagnostics.json", "boundary_sensitivity.json",
+        "candidate_protocol.json", "config.json", "cost_budget_proposal.json", "diagnostics.json",
+        "source_manifest.json", "unified_strata.json", "provenance.json", "test_record.json",
+        "report.md", "manifest.json", "SHA256SUMS",
+    ):
+        pairs["RES-STAGE-0.5-CALIBRATION-GAPS-V1"].append(
+            (f"code/outputs/formal/calibration/stage_0_5_calibration_gaps_v1_final/{name}", name)
         )
     for name in ("timestep_sensitivity.json", "manifest.json", "SHA256SUMS"):
         pairs["RES-STAGE-0.5-CALIBRATION-READINESS-V1"].append(

@@ -1,0 +1,418 @@
+{
+  "high_0.05": {
+    "built_edge_lengths_m": {
+      "main_0": 386.5,
+      "main_1": 312.94,
+      "main_2": 483.5,
+      "offramp": 277.51,
+      "onramp": 239.26
+    },
+    "configuration_sha256": {
+      "demand.rou.xml": "a960f45e0f7042f929c95aa4bd9a4552ae5cd644efdfaa09b177f18256de8ec1",
+      "generic_highway_candidate.net.xml": "19b7c4359edb472ccdd554c516d3f334675024a2cc50900dd8df719a6ecadb87",
+      "simulation.sumocfg": "1e7ef1e22003ed7edd1d23c6a12d2aab8b6d1069861414cf0a56878fd445f809"
+    },
+    "plan": {
+      "benchmark_script_sha256": "37f43e164f737a1f2cf8f23bbd7219e1f49e632d910a19def72a1e59642c324f",
+      "cost_scope": "network build + SUMO + subscription recorder + unified row measurements + parquet; formal P2 extraction not included",
+      "diagnostic_window_note": "predeclared engineering summary only; not an approved warmup",
+      "diagnostic_window_s": [
+        60.0,
+        300.0
+      ],
+      "duration_s": 300.0,
+      "fixture": "distributed initial occupancy plus deterministic open-boundary throughflow; cap at observed stratum speed",
+      "fleet": [
+        {
+          "code": 1,
+          "length_m": 2.4384,
+          "share": 0.009555661729574774,
+          "vClass": "motorcycle"
+        },
+        {
+          "code": 2,
+          "length_m": 4.4196,
+          "share": 0.9672718585762065,
+          "vClass": "passenger"
+        },
+        {
+          "code": 3,
+          "length_m": 10.009694845360826,
+          "share": 0.023172479694218824,
+          "vClass": "truck"
+        }
+      ],
+      "input_sha256": {
+        "diagnostics.json": "bc9de47b3026b640d22a2d086ae445b6ce5b0049e0af75f09874860a6e031f03",
+        "unified_strata.json": "fbdd5fb8641acbd4cfdba7936151ea0477e0eb12bea1e1b19fc7cd015da090e9"
+      },
+      "limits": {
+        "collision_action": "warn",
+        "teleport_disabled": true,
+        "wall_timeout_s": 300
+      },
+      "mode": "engineering_benchmark_only",
+      "optimization": false,
+      "p2_events_computed": false,
+      "ramp_demand": 0,
+      "ramp_note": "no identifiable ramp demand; topology retained, structural behavior not tested",
+      "recorded_step_s": 0.1,
+      "runs": [
+        {
+          "id": "low_0.05",
+          "inflow_veh_h": 5174.906914217043,
+          "internal_step_s": 0.05,
+          "load": "Low-density",
+          "speed_cap_mps": 12.119078030039558,
+          "target_density_veh_km_lane": 39.5375
+        },
+        {
+          "id": "medium_0.05",
+          "inflow_veh_h": 4898.956349035747,
+          "internal_step_s": 0.05,
+          "load": "Medium-density",
+          "speed_cap_mps": 10.083144695209581,
+          "target_density_veh_km_lane": 44.98666666666667
+        },
+        {
+          "id": "medium_0.10",
+          "inflow_veh_h": 4898.956349035747,
+          "internal_step_s": 0.1,
+          "load": "Medium-density",
+          "speed_cap_mps": 10.083144695209581,
+          "target_density_veh_km_lane": 44.98666666666667
+        },
+        {
+          "id": "high_0.05",
+          "inflow_veh_h": 3820.5831958177996,
+          "internal_step_s": 0.05,
+          "load": "High-density",
+          "speed_cap_mps": 6.368753191504845,
+          "target_density_veh_km_lane": 55.545833333333334
+        }
+      ],
+      "seed": 20261018
+    },
+    "preload_vehicles": 198,
+    "run": {
+      "id": "high_0.05",
+      "inflow_veh_h": 3820.5831958177996,
+      "internal_step_s": 0.05,
+      "load": "High-density",
+      "speed_cap_mps": 6.368753191504845,
+      "target_density_veh_km_lane": 55.545833333333334
+    }
+  },
+  "low_0.05": {
+    "built_edge_lengths_m": {
+      "main_0": 386.5,
+      "main_1": 312.94,
+      "main_2": 483.5,
+      "offramp": 277.51,
+      "onramp": 239.26
+    },
+    "configuration_sha256": {
+      "demand.rou.xml": "9731ee63f02088a1c91432bcc5d7b31ee590fd7ac0f3edb905da67ca5a57b3a3",
+      "generic_highway_candidate.net.xml": "9dc3755dde6d98d8f407bd48b151b420a0e34f7749b9c21cfa1ab3fa6b0f7aec",
+      "simulation.sumocfg": "1e7ef1e22003ed7edd1d23c6a12d2aab8b6d1069861414cf0a56878fd445f809"
+    },
+    "plan": {
+      "benchmark_script_sha256": "37f43e164f737a1f2cf8f23bbd7219e1f49e632d910a19def72a1e59642c324f",
+      "cost_scope": "network build + SUMO + subscription recorder + unified row measurements + parquet; formal P2 extraction not included",
+      "diagnostic_window_note": "predeclared engineering summary only; not an approved warmup",
+      "diagnostic_window_s": [
+        60.0,
+        300.0
+      ],
+      "duration_s": 300.0,
+      "fixture": "distributed initial occupancy plus deterministic open-boundary throughflow; cap at observed stratum speed",
+      "fleet": [
+        {
+          "code": 1,
+          "length_m": 2.4384,
+          "share": 0.009555661729574774,
+          "vClass": "motorcycle"
+        },
+        {
+          "code": 2,
+          "length_m": 4.4196,
+          "share": 0.9672718585762065,
+          "vClass": "passenger"
+        },
+        {
+          "code": 3,
+          "length_m": 10.009694845360826,
+          "share": 0.023172479694218824,
+          "vClass": "truck"
+        }
+      ],
+      "input_sha256": {
+        "diagnostics.json": "bc9de47b3026b640d22a2d086ae445b6ce5b0049e0af75f09874860a6e031f03",
+        "unified_strata.json": "fbdd5fb8641acbd4cfdba7936151ea0477e0eb12bea1e1b19fc7cd015da090e9"
+      },
+      "limits": {
+        "collision_action": "warn",
+        "teleport_disabled": true,
+        "wall_timeout_s": 300
+      },
+      "mode": "engineering_benchmark_only",
+      "optimization": false,
+      "p2_events_computed": false,
+      "ramp_demand": 0,
+      "ramp_note": "no identifiable ramp demand; topology retained, structural behavior not tested",
+      "recorded_step_s": 0.1,
+      "runs": [
+        {
+          "id": "low_0.05",
+          "inflow_veh_h": 5174.906914217043,
+          "internal_step_s": 0.05,
+          "load": "Low-density",
+          "speed_cap_mps": 12.119078030039558,
+          "target_density_veh_km_lane": 39.5375
+        },
+        {
+          "id": "medium_0.05",
+          "inflow_veh_h": 4898.956349035747,
+          "internal_step_s": 0.05,
+          "load": "Medium-density",
+          "speed_cap_mps": 10.083144695209581,
+          "target_density_veh_km_lane": 44.98666666666667
+        },
+        {
+          "id": "medium_0.10",
+          "inflow_veh_h": 4898.956349035747,
+          "internal_step_s": 0.1,
+          "load": "Medium-density",
+          "speed_cap_mps": 10.083144695209581,
+          "target_density_veh_km_lane": 44.98666666666667
+        },
+        {
+          "id": "high_0.05",
+          "inflow_veh_h": 3820.5831958177996,
+          "internal_step_s": 0.05,
+          "load": "High-density",
+          "speed_cap_mps": 6.368753191504845,
+          "target_density_veh_km_lane": 55.545833333333334
+        }
+      ],
+      "seed": 20261018
+    },
+    "preload_vehicles": 141,
+    "run": {
+      "id": "low_0.05",
+      "inflow_veh_h": 5174.906914217043,
+      "internal_step_s": 0.05,
+      "load": "Low-density",
+      "speed_cap_mps": 12.119078030039558,
+      "target_density_veh_km_lane": 39.5375
+    }
+  },
+  "medium_0.05": {
+    "built_edge_lengths_m": {
+      "main_0": 386.5,
+      "main_1": 312.94,
+      "main_2": 483.5,
+      "offramp": 277.51,
+      "onramp": 239.26
+    },
+    "configuration_sha256": {
+      "demand.rou.xml": "d048f1bdbb2093775534d35dce434ed029d3f027b22b19c575686b1055093eba",
+      "generic_highway_candidate.net.xml": "05c52e943207a7e290cd1e70494f2b8e1f7a16453e308afee69c8ac470b2a374",
+      "simulation.sumocfg": "1e7ef1e22003ed7edd1d23c6a12d2aab8b6d1069861414cf0a56878fd445f809"
+    },
+    "plan": {
+      "benchmark_script_sha256": "37f43e164f737a1f2cf8f23bbd7219e1f49e632d910a19def72a1e59642c324f",
+      "cost_scope": "network build + SUMO + subscription recorder + unified row measurements + parquet; formal P2 extraction not included",
+      "diagnostic_window_note": "predeclared engineering summary only; not an approved warmup",
+      "diagnostic_window_s": [
+        60.0,
+        300.0
+      ],
+      "duration_s": 300.0,
+      "fixture": "distributed initial occupancy plus deterministic open-boundary throughflow; cap at observed stratum speed",
+      "fleet": [
+        {
+          "code": 1,
+          "length_m": 2.4384,
+          "share": 0.009555661729574774,
+          "vClass": "motorcycle"
+        },
+        {
+          "code": 2,
+          "length_m": 4.4196,
+          "share": 0.9672718585762065,
+          "vClass": "passenger"
+        },
+        {
+          "code": 3,
+          "length_m": 10.009694845360826,
+          "share": 0.023172479694218824,
+          "vClass": "truck"
+        }
+      ],
+      "input_sha256": {
+        "diagnostics.json": "bc9de47b3026b640d22a2d086ae445b6ce5b0049e0af75f09874860a6e031f03",
+        "unified_strata.json": "fbdd5fb8641acbd4cfdba7936151ea0477e0eb12bea1e1b19fc7cd015da090e9"
+      },
+      "limits": {
+        "collision_action": "warn",
+        "teleport_disabled": true,
+        "wall_timeout_s": 300
+      },
+      "mode": "engineering_benchmark_only",
+      "optimization": false,
+      "p2_events_computed": false,
+      "ramp_demand": 0,
+      "ramp_note": "no identifiable ramp demand; topology retained, structural behavior not tested",
+      "recorded_step_s": 0.1,
+      "runs": [
+        {
+          "id": "low_0.05",
+          "inflow_veh_h": 5174.906914217043,
+          "internal_step_s": 0.05,
+          "load": "Low-density",
+          "speed_cap_mps": 12.119078030039558,
+          "target_density_veh_km_lane": 39.5375
+        },
+        {
+          "id": "medium_0.05",
+          "inflow_veh_h": 4898.956349035747,
+          "internal_step_s": 0.05,
+          "load": "Medium-density",
+          "speed_cap_mps": 10.083144695209581,
+          "target_density_veh_km_lane": 44.98666666666667
+        },
+        {
+          "id": "medium_0.10",
+          "inflow_veh_h": 4898.956349035747,
+          "internal_step_s": 0.1,
+          "load": "Medium-density",
+          "speed_cap_mps": 10.083144695209581,
+          "target_density_veh_km_lane": 44.98666666666667
+        },
+        {
+          "id": "high_0.05",
+          "inflow_veh_h": 3820.5831958177996,
+          "internal_step_s": 0.05,
+          "load": "High-density",
+          "speed_cap_mps": 6.368753191504845,
+          "target_density_veh_km_lane": 55.545833333333334
+        }
+      ],
+      "seed": 20261018
+    },
+    "preload_vehicles": 159,
+    "run": {
+      "id": "medium_0.05",
+      "inflow_veh_h": 4898.956349035747,
+      "internal_step_s": 0.05,
+      "load": "Medium-density",
+      "speed_cap_mps": 10.083144695209581,
+      "target_density_veh_km_lane": 44.98666666666667
+    }
+  },
+  "medium_0.10": {
+    "built_edge_lengths_m": {
+      "main_0": 386.5,
+      "main_1": 312.94,
+      "main_2": 483.5,
+      "offramp": 277.51,
+      "onramp": 239.26
+    },
+    "configuration_sha256": {
+      "demand.rou.xml": "d048f1bdbb2093775534d35dce434ed029d3f027b22b19c575686b1055093eba",
+      "generic_highway_candidate.net.xml": "fdb2e8273f160c02108f6ca925a7f1707c69b0cb2b4f5a1ad3cddab223dee623",
+      "simulation.sumocfg": "db85ec65f8f5a6fbcaf481e3fcb71ea5f3a43deffe4af5b6b1cf18d6efdd9903"
+    },
+    "plan": {
+      "benchmark_script_sha256": "37f43e164f737a1f2cf8f23bbd7219e1f49e632d910a19def72a1e59642c324f",
+      "cost_scope": "network build + SUMO + subscription recorder + unified row measurements + parquet; formal P2 extraction not included",
+      "diagnostic_window_note": "predeclared engineering summary only; not an approved warmup",
+      "diagnostic_window_s": [
+        60.0,
+        300.0
+      ],
+      "duration_s": 300.0,
+      "fixture": "distributed initial occupancy plus deterministic open-boundary throughflow; cap at observed stratum speed",
+      "fleet": [
+        {
+          "code": 1,
+          "length_m": 2.4384,
+          "share": 0.009555661729574774,
+          "vClass": "motorcycle"
+        },
+        {
+          "code": 2,
+          "length_m": 4.4196,
+          "share": 0.9672718585762065,
+          "vClass": "passenger"
+        },
+        {
+          "code": 3,
+          "length_m": 10.009694845360826,
+          "share": 0.023172479694218824,
+          "vClass": "truck"
+        }
+      ],
+      "input_sha256": {
+        "diagnostics.json": "bc9de47b3026b640d22a2d086ae445b6ce5b0049e0af75f09874860a6e031f03",
+        "unified_strata.json": "fbdd5fb8641acbd4cfdba7936151ea0477e0eb12bea1e1b19fc7cd015da090e9"
+      },
+      "limits": {
+        "collision_action": "warn",
+        "teleport_disabled": true,
+        "wall_timeout_s": 300
+      },
+      "mode": "engineering_benchmark_only",
+      "optimization": false,
+      "p2_events_computed": false,
+      "ramp_demand": 0,
+      "ramp_note": "no identifiable ramp demand; topology retained, structural behavior not tested",
+      "recorded_step_s": 0.1,
+      "runs": [
+        {
+          "id": "low_0.05",
+          "inflow_veh_h": 5174.906914217043,
+          "internal_step_s": 0.05,
+          "load": "Low-density",
+          "speed_cap_mps": 12.119078030039558,
+          "target_density_veh_km_lane": 39.5375
+        },
+        {
+          "id": "medium_0.05",
+          "inflow_veh_h": 4898.956349035747,
+          "internal_step_s": 0.05,
+          "load": "Medium-density",
+          "speed_cap_mps": 10.083144695209581,
+          "target_density_veh_km_lane": 44.98666666666667
+        },
+        {
+          "id": "medium_0.10",
+          "inflow_veh_h": 4898.956349035747,
+          "internal_step_s": 0.1,
+          "load": "Medium-density",
+          "speed_cap_mps": 10.083144695209581,
+          "target_density_veh_km_lane": 44.98666666666667
+        },
+        {
+          "id": "high_0.05",
+          "inflow_veh_h": 3820.5831958177996,
+          "internal_step_s": 0.05,
+          "load": "High-density",
+          "speed_cap_mps": 6.368753191504845,
+          "target_density_veh_km_lane": 55.545833333333334
+        }
+      ],
+      "seed": 20261018
+    },
+    "preload_vehicles": 159,
+    "run": {
+      "id": "medium_0.10",
+      "inflow_veh_h": 4898.956349035747,
+      "internal_step_s": 0.1,
+      "load": "Medium-density",
+      "speed_cap_mps": 10.083144695209581,
+      "target_density_veh_km_lane": 44.98666666666667
+    }
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "benchmark_environment": {
+    "netconvert_executable": "C:\\Program Files (x86)\\Eclipse\\Sumo\\bin\\netconvert.exe",
+    "netconvert_executable_sha256": "4174c17db813d413c85cdf7ad99a5f59b537ddf80f8caac9e1dfe87a35cb6b51",
+    "platform": "Windows-11-10.0.26100-SP0",
+    "python_version": "3.13.5",
+    "sumo_executable": "C:\\Program Files (x86)\\Eclipse\\Sumo\\bin\\sumo.exe",
+    "sumo_executable_sha256": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+    "sumo_home": "C:\\Program Files (x86)\\Eclipse\\Sumo\\tools",
+    "sumo_version": "Eclipse SUMO sumo 1.26.0",
+    "traci_module": "C:\\Program Files (x86)\\Eclipse\\Sumo\\tools\\traci\\__init__.py",
+    "traci_version": "unknown"
+  },
+  "code_sha256": {
+    "code/scripts/benchmark_stage_0_5_calibration_loads.py": "37f43e164f737a1f2cf8f23bbd7219e1f49e632d910a19def72a1e59642c324f",
+    "code/scripts/finalize_stage_0_5_calibration_gaps.py": "7d85fe94693a1a0b1e0a899dd63ccd039e67f111dc7b3c7e6f5412a1214c9996",
+    "code/scripts/run_stage_0_5_calibration_gaps.py": "9c6b33c7e930fbf975b68f2a1c564e2c350aaa3e1665e65f1c65c7aca92c64e1",
+    "code/src/riskprop/formal_risk_measurement.py": "4e15e67e35911fdd4d50d26f41784bde05a8cd9983edc42c572fa51b00686c58",
+    "code/src/riskprop/ngsim_risk_calibration.py": "ba49f4a4d2e9762f5d31a6858b84ed5f314c16c2d5e404df93cb36b550d00a36",
+    "code/src/riskprop/stage_0_5_calibration_gaps.py": "f26822b3a0b5d420c523c3b404ba559f16271ed3d4688064d03689a994160a1a",
+    "code/src/riskprop/stage_0_5_sumo.py": "a95231972300348c86d3750af1a777e086b41a87a75506a95a290d395f2a762f"
+  },
+  "created_at_utc": "2026-10-18T13:42:28.873395Z",
+  "diagnostic_provenance": {
+    "code_sha256": {
+      "code/scripts/run_stage_0_5_calibration_gaps.py": "9c6b33c7e930fbf975b68f2a1c564e2c350aaa3e1665e65f1c65c7aca92c64e1",
+      "code/src/riskprop/stage_0_5_calibration_gaps.py": "6dc4f844f741fbbaa0bfcf230f191d4a514dd2d00f6fe401ec517f2c8f4bf079"
+    },
+    "created_at_utc": "2026-10-18T13:29:34.869097Z",
+    "git_head": "d64decb937ee360510cd37066c2d7c53688f0718",
+    "numpy": "2.3.2",
+    "pandas": "2.2.3",
+    "python": "3.13.5",
+    "result_id": "RES-STAGE-0.5-CALIBRATION-GAPS-V1",
+    "source_manifest_sha256": "cc95a9c29ca07ed44ff45471366c3bb68aa8b9d7c2e008475ad9ce533ef27401",
+    "status": "diagnostics complete; benchmark pending"
+  },
+  "local_benchmark_package": "code\\outputs\\formal\\calibration\\stage_0_5_calibration_load_benchmark_v1",
+  "local_diagnostic_package": "code\\outputs\\formal\\calibration\\stage_0_5_calibration_gaps_v1_r2",
+  "result_id": "RES-STAGE-0.5-CALIBRATION-GAPS-V1",
+  "scientific_claim_eligible": false,
+  "source_manifest_sha256": "cc95a9c29ca07ed44ff45471366c3bb68aa8b9d7c2e008475ad9ce533ef27401",
+  "source_package_sha256": {
+    "code\\outputs\\formal\\calibration\\stage_0_5_calibration_gaps_v1_r2\\manifest.json": "dc2a7a1634980def83d257458ce3143252ec9d7b2975b8940ed2b5a7cae74531",
+    "code\\outputs\\formal\\calibration\\stage_0_5_calibration_load_benchmark_v1\\manifest.json": "99295125e6c1bcaca31be65c5519b964006f00b8db5aa146d73967ecc8546459"
+  },
+  "code_lf_normalized_sha256": {
+    "code/scripts/benchmark_stage_0_5_calibration_loads.py": "37f43e164f737a1f2cf8f23bbd7219e1f49e632d910a19def72a1e59642c324f",
+    "code/scripts/finalize_stage_0_5_calibration_gaps.py": "7d85fe94693a1a0b1e0a899dd63ccd039e67f111dc7b3c7e6f5412a1214c9996",
+    "code/scripts/run_stage_0_5_calibration_gaps.py": "9c6b33c7e930fbf975b68f2a1c564e2c350aaa3e1665e65f1c65c7aca92c64e1",
+    "code/src/riskprop/formal_risk_measurement.py": "f331f038e9efaec94cea28f98cbdf9918782698744bbb905558c42a8b3cc5993",
+    "code/src/riskprop/ngsim_risk_calibration.py": "ba49f4a4d2e9762f5d31a6858b84ed5f314c16c2d5e404df93cb36b550d00a36",
+    "code/src/riskprop/stage_0_5_calibration_gaps.py": "f26822b3a0b5d420c523c3b404ba559f16271ed3d4688064d03689a994160a1a",
+    "code/src/riskprop/stage_0_5_sumo.py": "a95231972300348c86d3750af1a777e086b41a87a75506a95a290d395f2a762f"
+  },
+  "post_run_robustness_fix": "Empty local occupancy leaves speed unobserved (None); separate test-first failure/fix. Recomputed all persisted real slice summaries/thresholds and verified exact equality, no raw reanalysis required."
+}

@@ -1,0 +1,44 @@
+{
+  "allowed_members": {
+    "us101__0750_0805": "vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt",
+    "us101__0805_0820": "vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt"
+  },
+  "archive": {
+    "inner_zip_member": "us-101-vehicle-trajectory-data.zip",
+    "path": "dataset/NGSIM/US-101-LosAngeles-CA.zip",
+    "sha256": "830442bb08f1f7a20a686b5879b4b82bfb7c47e526d48908db666fccc7e811dc",
+    "source": "FHWA NGSIM US-101 public archive, existing local copy"
+  },
+  "forbidden_member_content_read": false,
+  "members": [
+    {
+      "bytes": 167644916,
+      "member": "vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt",
+      "role": "calibration",
+      "sha256": "6676066e5b3e7249b7b003a906b28585202623f5d274938b579b4b836f0668c8",
+      "source_group": "us101__0750_0805"
+    },
+    {
+      "bytes": 199239490,
+      "member": "vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt",
+      "role": "calibration",
+      "sha256": "3bae26348f6d8c10ab76df85f52746ee85dea77f65a5d27f19fdfdb2e4d8cc45",
+      "source_group": "us101__0805_0820"
+    }
+  ],
+  "metadata": {
+    "class_codes": {
+      "1": "motorcycle",
+      "2": "auto",
+      "3": "truck"
+    },
+    "length_unit": "feet; 0.3048 m/ft",
+    "missing_value_rule": "class/length sentinel not specified in official dictionary; unrecognized/nonfinite/nonpositive values flagged, never imputed",
+    "pages": [
+      11,
+      12
+    ],
+    "path": "dataset/NGSIM/1- US 101 Metadata Documentation.pdf",
+    "sha256": "3a3009e2fac9701784de9fd2768b726ab4d46f8f0faaed4310b58669419c12c8"
+  }
+}

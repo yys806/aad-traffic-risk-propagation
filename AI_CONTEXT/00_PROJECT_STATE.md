@@ -175,3 +175,11 @@ Zotero `TJU → AAD`（唯一文献库）已按研究者批准完成六主题调
 ## 2026-10-17 Stage 0.4 身份与时间语义核查（AAD-0.4.3，当前）
 
 只读核查（零下载；Gate `pending_official_packet_access` 不变）。新获官方文档（本地 `dataset/SPMD/Safety_Pilot_Model_Deployment_WSU_BSM_Codebook_ROSA_P_dot66785.pdf` 与 `dataset/SPMD/mcity_documentation/`，SHA 已录）裁定：**RxDevice≡车辆设备 ID**（接收日志；VAD 自记 Rx=Tx）、**Gentime=BSM 生成时间**（µs 自 2004-01-01，1609.2；与样本手册 /1e6−35 s 换算存在官方文档间冲突，待经验校准）、**TxDevice/TxRandom=临时 ID 静态/随机 2 字节**（RSE_BSM.TemporaryId 结构可对应）、**DSecond=分钟内毫秒**（手册 §5.4 被样例算术否定）、BsmP1 ~96% 行程 Rx==Tx。硬边界：**车辆侧接收时间在 SPMD 全家族不存在→V2V 端到端时延不可算**；唯一时延类量=生成→RSE 捕获（需 Packet，身份匹配未证）。RSE_BSM 采样设计 Unverified（每 TemporaryId ≤2 记录方、双记录对 102,469/102,469 全含 10106；10106 为有 488 次 4 月行程的已登记车辆，30 BSM/s 驾驶接收率与 7 个月跨度一致）——**接收率/丢包统计前必须查明采样设计**。Holdout 4 候选已列（结构审计专用维持；其余待研究者）。下一批建议：**BsmMd（17.29 GB）优先**（未脱敏 Tx/Rx 天线 ID+GenTimeRelOffset），BsmP1（55.72 GB）次之（生成时间锚，仍无接收时间），Packet 不为凑 Gate 项提前；新渠道候选 **mCity Rx-BSM 过滤数据集（~9 GB，136 Rx 车辆，Globus）**。日期勘误：0.4.1/0.4.2 实际均执行于 2026-10-16（commit/封存时间戳证明；存活文档已非覆盖式更正，封存包零改动）。报告：`docs/STAGE_0_4_TASK_0_4_3_IDENTITY_TIME_REVIEW.md`。
+
+## 2026-10-18 AAD-0.5.4-A+ 定向补充
+
+`RES-STAGE-0.5-CALIBRATION-GAPS-V1`：两个原始校准TXT共2,583,693行与R2状态100%连接，冲突0；来源车辆2169/2017，汽车比例96.173%/97.323%、汽车中位长4.4196m，车型/长度物理真值仍Unverified。源时钟解释952.8/999s、两源重叠89.5s，没有发现标准化时间错误。候选主线1–5、150≤y<350m；首尾按最长观测轨迹时长100.9/123.5s作候选缓冲后，保留12/11个60s片，统一密度阈值42.8767/48.0828veh/km/lane，内部覆盖720/660s；300m主线1648/1449.82veh/h/lane。局部/分层P2完整成员归属未批准，率Unresolved。
+
+四次300s工程负载完成（SUMO1.26.0，seed20261018，recorded.1s）；.05s低/中/高实际密度41.91/48.06/54.76，墙钟100.27/103.03/116.24s，峰值合计RSS271.9/297.8/327.7MB，末时未插入0/17/23，无碰撞/teleport/守恒残差。初始化积压仍在，60s不是批准暖机；.05s自动ballistic而.1s积分器未显式固定，不能声称数值收敛。完整P2提取成本未含入。Engineering Ready有条件、Measurement Ready待有限批准、Calibration Ready=false、Reality Coverage Accepted=false；所有科学容差Tolerance Not Yet Justified，推荐路径B受限探索仅Proposal，未启动。Gate继续pending_simulation_sample，无验证/holdout/下载/正式校准/锁/Stage I/II。
+
+依据：`docs/STAGE_0_5_TASK_0_5_4A_SUPPLEMENT_CALIBRATION_GAPS.md`及同ID的diagnostics、unified_strata、benchmark、candidate_protocol、audit。完整包`code/outputs/formal/calibration/stage_0_5_calibration_gaps_v1_final/`。Context Consistency Check：不将Proposal写入06_DECISIONS的Approved Research Decision。

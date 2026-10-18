@@ -97,3 +97,5 @@ NGSIM 风险测量质量、分布和候选事件规则敏感性描述性审计�
 Stage 0.2 已在研究者批准的有限科学范围内 `Completed / Closed`，Gate=`pass`。范围为四个批准 NGSIM 来源、100 ms 连续性语义下的纵向跟驰风险代理测量与描述性现实校准。P2=4,545；可靠跟驰暴露512,043.2s；正式P2可评价跟驰暴露503,922.2s；不可评价8,121.0s；可靠闭合暴露208,026.3s。正式率以两端均为valid或not_applicable的可靠连续相邻边计时，单位events / P2-evaluable following vehicle-hour；不可评价边不代表零风险。四源分别报告，不当作iid道路样本。
 
 未验证限制：独立物理真实性/人工几何真值、缺失造成的选择偏差及极端敏感性；200 ms两相位不与100 ms等价。禁止事故概率、危险识别准确率、P2全局最优性、SUMO或AAD因果效应主张。后续阶段职责不因本Gate通过而视为完成。旧R3 Blocked记录保留历史。最终包：`code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r4/`。
+
+2026-10-18 AAD-0.5.4-A+：前两原始校准源车型/长度已100%连接，主线归一化、统一分层、实际时钟和代表性负载成本已明确；仍有边界选择与初始化积压。此为工程证据，未批准科学容差/暖机/预算，Measurement Ready待有限批准，Calibration Ready=false，Reality Coverage Accepted=false；推荐受限探索仅Proposal，本次未执行。Stage0.5 Gate不变。

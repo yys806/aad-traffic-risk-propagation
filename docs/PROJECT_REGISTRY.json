@@ -92,13 +92,19 @@
     "code/scripts/run_stage_0_5_calibration_readiness.py",
     "code/scripts/run_stage_0_5_timestep_sensitivity.py",
     "code/tests/test_stage_0_5_measurement_equivalence.py",
-    "docs/STAGE_0_5_TASK_0_5_4A_CALIBRATION_READINESS.md"
+    "docs/STAGE_0_5_TASK_0_5_4A_CALIBRATION_READINESS.md",
+    "docs/STAGE_0_5_TASK_0_5_4A_SUPPLEMENT_CALIBRATION_GAPS.md",
+    "code/src/riskprop/stage_0_5_calibration_gaps.py",
+    "code/scripts/run_stage_0_5_calibration_gaps.py",
+    "code/scripts/benchmark_stage_0_5_calibration_loads.py",
+    "code/scripts/finalize_stage_0_5_calibration_gaps.py",
+    "code/tests/test_stage_0_5_calibration_gaps.py"
   ],
   "current": {
     "active_experiment_id": "stage_0_5",
-    "active_task": "Stage 0.5.4-A calibration-readiness and parameter-protocol audit completed; the researcher must decide the P2 equivalence scope, the network option, the demand strata, the fleet/time configuration, the tolerances and the calibration budget before Stage 0.5.4-B can start.",
-    "why_now": "Measurement equivalence is audited (16/16 boundary cases, 0 blocking items), the two calibration windows are characterised, and a machine-readable admission checklist shows ready_to_start_stage_0_5_4b=false. No scientific tolerance, network, demand, vType or time parameter is frozen.",
-    "next_decision_owner": null,
+    "active_task": "AAD-0.5.4-A+ targeted gap supplement completed; stopped for researcher decisions, no formal calibration started.",
+    "why_now": "Two approved raw members match sealed states 100%; fleet annotations, mainline normalization, unified strata, actual clocks and four fixed-load costs quantified. Scientific tolerances and timing/budget decisions remain unapproved.",
+    "next_decision_owner": "researcher",
     "portable_gate_paths": [
       "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",
       "evidence/results/RES-PROTOCOL-READINESS-V1/protocol_lock_readiness_v1.json",
@@ -106,14 +112,16 @@
       "evidence/results/RES-STAGE-0.3-SCIENTIFIC-ACCEPTANCE-R3/scientific_gate_report.json",
       "evidence/results/RES-STAGE-0.5-REAL-REF-R2/audit.json",
       "evidence/results/RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1/audit.json",
-      "evidence/results/RES-STAGE-0.5-CALIBRATION-READINESS-V1/audit.json"
+      "evidence/results/RES-STAGE-0.5-CALIBRATION-READINESS-V1/audit.json",
+      "evidence/results/RES-STAGE-0.5-CALIBRATION-GAPS-V1/audit.json"
     ],
     "local_gate_paths": [
       "code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r4/scientific_gate_report.json",
       "code/outputs/formal/calibration/stage_0_3_scientific_acceptance_20261016_r3/scientific_gate_report.json",
       "code/outputs/formal/calibration/stage_0_5_real_reference_r2/audit.json",
       "code/outputs/formal/calibration/stage_0_5_sumo_baseline_engineering_v1_baseline/audit.json",
-      "code/outputs/formal/calibration/stage_0_5_calibration_readiness_v1/audit.json"
+      "code/outputs/formal/calibration/stage_0_5_calibration_readiness_v1/audit.json",
+      "code/outputs/formal/calibration/stage_0_5_calibration_gaps_v1_final/audit.json"
     ]
   },
   "experiments": [
@@ -347,7 +355,8 @@
         "code/src/riskprop/simulation_real_coverage.py",
         "code/src/riskprop/stage_0_5_sumo.py",
         "code/src/riskprop/stage_0_5_calibration_readiness.py",
-        "code/tests/test_stage_0_5_measurement_equivalence.py"
+        "code/tests/test_stage_0_5_measurement_equivalence.py",
+        "code/src/riskprop/stage_0_5_calibration_gaps.py"
       ],
       "entrypoints": [
         "code/scripts/prepare_stage_0_5_real_reference.py",
@@ -355,11 +364,15 @@
         "code/scripts/run_stage_0_5_coverage.py",
         "code/scripts/run_stage_0_5_sumo_baseline.py",
         "code/scripts/run_stage_0_5_calibration_readiness.py",
-        "code/scripts/run_stage_0_5_timestep_sensitivity.py"
+        "code/scripts/run_stage_0_5_timestep_sensitivity.py",
+        "code/scripts/run_stage_0_5_calibration_gaps.py",
+        "code/scripts/benchmark_stage_0_5_calibration_loads.py",
+        "code/scripts/finalize_stage_0_5_calibration_gaps.py"
       ],
       "test_paths": [
         "code/tests/test_simulation_real_coverage.py",
-        "code/tests/test_stage_0_5_sumo.py"
+        "code/tests/test_stage_0_5_sumo.py",
+        "code/tests/test_stage_0_5_calibration_gaps.py"
       ],
       "configuration": "R2 real reference plus two no_message_baseline generic-highway engineering fixtures (baseline_mixed_demand, measurement_probe_queue_stop); US-101 primary, Lankershim auxiliary entry-only, pNEUMA urban kinematics entry-only; all network/demand/vType/behaviour/time settings are engineering_fixture_only",
       "parameters": {
@@ -388,7 +401,13 @@
         },
         "p2_boundary_cases": 16,
         "ready_to_start_stage_0_5_4b": false,
-        "scientific_tolerances_justified": false
+        "scientific_tolerances_justified": false,
+        "calibration_gaps_result_id": "RES-STAGE-0.5-CALIBRATION-GAPS-V1",
+        "unified_density_thresholds_candidate_veh_km_lane": [
+          42.87666666666667,
+          48.08277777777778
+        ],
+        "supplement_benchmark_runs": 4
       },
       "data_version": "RES-STAGE-0.5-REAL-REF-R2; Stage 0.2 R4 four states + final_r1 P2 + Stage 0.3 R2 canonical/R3 summaries",
       "model": "deterministic simulation-to-real coverage audit",
@@ -397,7 +416,8 @@
         "RES-STAGE-0.5-REAL-REF-V1",
         "RES-STAGE-0.5-REAL-REF-R2",
         "RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1",
-        "RES-STAGE-0.5-CALIBRATION-READINESS-V1"
+        "RES-STAGE-0.5-CALIBRATION-READINESS-V1",
+        "RES-STAGE-0.5-CALIBRATION-GAPS-V1"
       ],
       "core_metrics": [
         "formal_input_manifest",
@@ -428,9 +448,14 @@
         "clustered_uncertainty_by_trajectory",
         "time_step_sensitivity",
         "stage_0_5_4b_admission_checklist",
-        "validation_isolation_row_scope"
+        "validation_isolation_row_scope",
+        "raw_class_length_source_join",
+        "mainline_flow_lane_space_denominator",
+        "shared_density_strata",
+        "source_time_coverage",
+        "density_scaled_engineering_cost"
       ],
-      "current_conclusion": "Stage 0.5.4-A closes the engineering and measurement audit: 16 deterministic P2 boundary cases agree between the SUMO-native and the Stage 0.2 formal-alignment adapter, the approved calibration exposure denominators and event rates are reproduced exactly (111,425.9 s / 543 events and 133,505.6 s / 732 events), six adapter defects were corrected without touching any Stage 0.2 rule, and the readiness package contains an itemised equivalence matrix, a demand-identifiability matrix, candidate strata, clustered uncertainty and an admission checklist with ready_to_start_stage_0_5_4b=false. Calibration cannot start until the researcher decides the network option, the fleet-evidence route, the time configuration, the tolerance components and the density-scaled budget. Gate stays pending_simulation_sample; no tolerance, network, demand, vType or time parameter is frozen.",
+      "current_conclusion": "AAD-0.5.4-A+ verifies both existing raw calibration members against sealed states (100% row matches, zero join conflicts) and source-scoped fleet/length annotations. Mainline comparison and shared candidate strata are quantified. Source clocks explain 952.8/999s without demonstrated Stage 0.2 normalization error. Four fixed-load runs complete; insertion backlog, initialization and numerical-integrator caveats retained. Scientific tolerances and full P2 pipeline budget remain unjustified or unapproved. Recommend limited exploratory response diagnostics only after researcher authorization. Gate stays pending_simulation_sample; no validation content or formal calibration.",
       "gate": {
         "status": "pending_simulation_sample",
         "portable_path": "evidence/results/RES-STAGE-0.5-REAL-REF-R2/audit.json"
@@ -1741,6 +1766,77 @@
       "gate_status": "pass_limited",
       "paper_locations": [
         "docs/STAGE_0_4_LIMITED_SCIENTIFIC_ACCEPTANCE_2026-10-17.md"
+      ],
+      "scientific_claim_eligible": false
+    },
+    {
+      "id": "RES-STAGE-0.5-CALIBRATION-GAPS-V1",
+      "experiment_id": "stage_0_5",
+      "name": "AAD-0.5.4-A+ targeted calibration-gap supplement",
+      "status": "verified_engineering_only",
+      "portable_evidence_paths": [
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-GAPS-V1/access_audit.json",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-GAPS-V1/audit.json",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-GAPS-V1/benchmark_configs.json",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-GAPS-V1/benchmark_numerical_diagnostics.json",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-GAPS-V1/benchmark_plan.json",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-GAPS-V1/benchmark_summary.json",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-GAPS-V1/boundary_sensitivity.json",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-GAPS-V1/candidate_protocol.json",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-GAPS-V1/config.json",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-GAPS-V1/cost_budget_proposal.json",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-GAPS-V1/diagnostics.json",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-GAPS-V1/manifest.json",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-GAPS-V1/provenance.json",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-GAPS-V1/report.md",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-GAPS-V1/SHA256SUMS",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-GAPS-V1/source_manifest.json",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-GAPS-V1/test_record.json",
+        "evidence/results/RES-STAGE-0.5-CALIBRATION-GAPS-V1/unified_strata.json"
+      ],
+      "local_artifact_paths": [
+        "code/outputs/formal/calibration/stage_0_5_calibration_gaps_v1_final",
+        "code/outputs/formal/calibration/stage_0_5_calibration_gaps_v1_r2",
+        "code/outputs/formal/calibration/stage_0_5_calibration_load_benchmark_v1"
+      ],
+      "code_version_source": "code/src/riskprop/stage_0_5_calibration_gaps.py; code/scripts/run_stage_0_5_calibration_gaps.py; code/scripts/benchmark_stage_0_5_calibration_loads.py; code/scripts/finalize_stage_0_5_calibration_gaps.py; code/tests/test_stage_0_5_calibration_gaps.py; provenance.json",
+      "configuration_source": "config.json, candidate_protocol.json, benchmark_plan.json and benchmark_configs.json; scientific settings Proposal",
+      "data_version_source": "Existing US-101 archive SHA 830442bb08f1f7a20a686b5879b4b82bfb7c47e526d48908db666fccc7e811dc; two allowlisted calibration TXT members only; R2-bound two approved states; validation rows materialised=0",
+      "core_metrics": {
+        "raw_join_match_rate": [
+          1.0,
+          1.0
+        ],
+        "raw_vehicles": [
+          2169,
+          2017
+        ],
+        "raw_join_conflicts": 0,
+        "mainline_lanes": 5,
+        "sumo_mainline_lanes": 3,
+        "source_span_s": [
+          952.8,
+          999.0
+        ],
+        "candidate_density_thresholds_veh_km_lane": [
+          42.87666666666667,
+          48.08277777777778
+        ],
+        "eligible_slices": [
+          12,
+          11
+        ],
+        "engineering_runs_completed": 4,
+        "benchmark_main_internal_step_s": 0.05,
+        "benchmark_recorded_step_s": 0.1,
+        "validation_window_rows_materialised": 0,
+        "ready_to_start_stage_0_5_4b": false,
+        "tolerances_frozen": false
+      },
+      "current_conclusion": "AAD-0.5.4-A+ verifies both existing raw calibration members against sealed states (100% row matches, zero join conflicts) and source-scoped fleet/length annotations. Mainline comparison and shared candidate strata are quantified. Source clocks explain 952.8/999s without demonstrated Stage 0.2 normalization error. Four fixed-load runs complete; insertion backlog, initialization and numerical-integrator caveats retained. Scientific tolerances and full P2 pipeline budget remain unjustified or unapproved. Recommend limited exploratory response diagnostics only after researcher authorization. Gate stays pending_simulation_sample; no validation content or formal calibration.",
+      "gate_status": "pending_simulation_sample",
+      "paper_locations": [
+        "docs/STAGE_0_5_TASK_0_5_4A_SUPPLEMENT_CALIBRATION_GAPS.md"
       ],
       "scientific_claim_eligible": false
     }

@@ -1,0 +1,103 @@
+{
+  "approved": false,
+  "comparison": "mainline per-lane flow plus local speed/density/following; not full-network equivalence",
+  "density_thresholds_veh_km_lane": [
+    42.87666666666667,
+    48.08277777777778
+  ],
+  "desired_speed_identifiability": "Unresolved in constrained traffic; benchmark cap is not a calibrated desired speed",
+  "extension_parameters": [
+    "accel then decel separately",
+    "sigma sensitivity"
+  ],
+  "fixed_initial_parameters": {
+    "accel": 2.6,
+    "apparentDecel": 4.5,
+    "carFollowModel": "Krauss",
+    "decel": 4.5,
+    "emergencyDecel": 9,
+    "sigma": 0.5
+  },
+  "fleet": "per-window source-scoped empirical class/annotated-length constraints; mapping pending",
+  "initial_free_parameters": {
+    "minGap": {
+      "initial": 2.5,
+      "range": [
+        1,
+        3
+      ],
+      "response_points": [
+        1,
+        2.5,
+        3
+      ]
+    },
+    "tau": {
+      "initial": 1,
+      "range": [
+        0.5,
+        2
+      ],
+      "response_points": [
+        0.5,
+        1,
+        2
+      ]
+    }
+  },
+  "local_stratum_p2": "Unresolved; complete event membership/boundary policy not approved",
+  "network": "generic_highway_candidate",
+  "parameter_ranges_status": "engineering response brackets around official defaults, not empirical confidence or approved scientific bounds",
+  "path_A": "only after domain, P2 mapping, model tolerances, timing and budget approved",
+  "paths_started": [],
+  "ready_to_start_stage_0_5_4b": false,
+  "real_space": {
+    "denominator_lane_km": 1.0,
+    "lanes": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "y_m": [
+      150,
+      350
+    ]
+  },
+  "reality_coverage_accepted": false,
+  "recommendation": "Path B: bounded exploratory response/deviation diagnostics, pending researcher authorization",
+  "status": "Proposal",
+  "sumo_space": {
+    "denominator_lane_km": 0.6,
+    "edge": "main_1",
+    "lane_position_m": [
+      50,
+      250
+    ],
+    "lanes": 3
+  },
+  "time": {
+    "actionStepLength": 0.1,
+    "common_evaluation_s_candidate": 660,
+    "evaluation_s_candidates": [
+      720,
+      660
+    ],
+    "integration_method": "must explicitly choose and approve; no numerical equivalence claim",
+    "internal_step_s": 0.05,
+    "recorded_step_s": 0.1,
+    "sigmaStep": 1,
+    "warmup_s": null
+  },
+  "tolerance": {
+    "acceleration": "Tolerance Not Yet Justified",
+    "closing_speed": "Tolerance Not Yet Justified",
+    "density": "Tolerance Not Yet Justified",
+    "flow": "Tolerance Not Yet Justified",
+    "low_speed_fraction": "Tolerance Not Yet Justified",
+    "net_gap": "Tolerance Not Yet Justified",
+    "p2_event_rate": "Tolerance Not Yet Justified",
+    "speed": "Tolerance Not Yet Justified"
+  }
+}

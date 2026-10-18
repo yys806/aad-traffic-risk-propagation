@@ -153,3 +153,11 @@ t1/t2/t3 GNSS 轨迹逐点相同（同一轨迹复制品）→ 设备间距离�
 新增 `stage_0_5_sumo.py`、无消息运行入口、candidate config 和 34 项工程测试。US-101 `generic_highway_candidate`（3 主线段 × 3 车道 + 入口/出口匝道）在本地 SUMO 1.26.0 完成两个工程 fixture 并封存 `RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1`：baseline（8,453 state / 17 vehicles / 724 valid TTC / 0 工程 P2）与 measurement probe（1 个 P2 事件，onset 3.1 s、确认 3.3 s、TTC min 1.794 s）。
 
 关键工程事实与订正：①TraCI `getLeader` 距离经三组 vType 对与停驻平衡态实测核验为「物理保险杠净间距 − 后车 minGap」，旧实现直接把该值当 `net_gap_m` 会系统性高估闭合风险；现统一为 `net_gap_m = leader_traci_distance_m + follower_min_gap_m`，同车道几何残差最大 0.0 m；②`closing_speed_mps = follower − leader` 与 Stage 0.1 相反，禁止复用其 TTC 解释；③internal 与 recorded 时间步分离并可审计，0.2 s 记录不得重标为 0.1 s 正式证据；④新增 `CalibrationValidationGuard`，校准入口对 `us101__0820_0835` 与辅助来源 fail-closed 拒绝并写入 `access_audit.json`；⑤新增 Stage 0.2 formal-alignment adapter，逐项说明 SUMO 可自供的身份/时间/连续性字段，`drac_mps2` 保持 NaN，等价性 pending。Lankershim/pNEUMA 未建真实路网、六类 pNEUMA 原始车型全部 `unmapped`；未校准、未进行现实覆盖验收、未改变 Gate 或启动 Stage I。
+
+## 2026-10-18 AAD-0.5.4-A+ 定向补充
+
+`RES-STAGE-0.5-CALIBRATION-GAPS-V1`：两个原始校准TXT共2,583,693行与R2状态100%连接，冲突0；来源车辆2169/2017，汽车比例96.173%/97.323%、汽车中位长4.4196m，车型/长度物理真值仍Unverified。源时钟解释952.8/999s、两源重叠89.5s，没有发现标准化时间错误。候选主线1–5、150≤y<350m；首尾按最长观测轨迹时长100.9/123.5s作候选缓冲后，保留12/11个60s片，统一密度阈值42.8767/48.0828veh/km/lane，内部覆盖720/660s；300m主线1648/1449.82veh/h/lane。局部/分层P2完整成员归属未批准，率Unresolved。
+
+四次300s工程负载完成（SUMO1.26.0，seed20261018，recorded.1s）；.05s低/中/高实际密度41.91/48.06/54.76，墙钟100.27/103.03/116.24s，峰值合计RSS271.9/297.8/327.7MB，末时未插入0/17/23，无碰撞/teleport/守恒残差。初始化积压仍在，60s不是批准暖机；.05s自动ballistic而.1s积分器未显式固定，不能声称数值收敛。完整P2提取成本未含入。Engineering Ready有条件、Measurement Ready待有限批准、Calibration Ready=false、Reality Coverage Accepted=false；所有科学容差Tolerance Not Yet Justified，推荐路径B受限探索仅Proposal，未启动。Gate继续pending_simulation_sample，无验证/holdout/下载/正式校准/锁/Stage I/II。
+
+依据：`docs/STAGE_0_5_TASK_0_5_4A_SUPPLEMENT_CALIBRATION_GAPS.md`及同ID的diagnostics、unified_strata、benchmark、candidate_protocol、audit。完整包`code/outputs/formal/calibration/stage_0_5_calibration_gaps_v1_final/`。Context Consistency Check：不将Proposal写入06_DECISIONS的Approved Research Decision。

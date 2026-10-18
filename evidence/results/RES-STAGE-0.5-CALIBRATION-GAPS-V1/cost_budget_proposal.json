@@ -1,0 +1,28 @@
+{
+  "abort_conditions": [
+    "collision or teleport",
+    "state cadence/identity/conservation failure",
+    "unbounded pending/initialization accumulation",
+    "5 min benchmark wall cap",
+    "approved memory/storage budget exceeded"
+  ],
+  "configuration_count_is_not_authorization": true,
+  "evaluation_s_candidate": 660,
+  "example_3seed_3load_config_s": 2719.942907761666,
+  "example_3seed_single_load_s": 906.6476359205553,
+  "example_81run_state_bytes": 6210317061.0,
+  "example_9configs_3seed_3load_hours": 6.799857269404165,
+  "example_9configs_headroom_factor_2_hours": 13.59971453880833,
+  "example_run_wall_s": 302.2158786401851,
+  "example_state_bytes_per_run": 76670581.0,
+  "formula": "wall_s = (evaluation_s + W) * worst_cost; W is not yet justified",
+  "full_p2_pipeline_cost_verified": false,
+  "illustrative_W_is_not_a_warmup_recommendation": true,
+  "illustrative_W_s": 120,
+  "measured_pipeline_only": true,
+  "proposed_initial_max_configurations": 9,
+  "recommendation": "approve only a bounded next-stage pilot or exploratory batch; benchmark does not justify a full formal-calibration/P2 budget",
+  "status": "Proposal",
+  "warmup_s_approved": null,
+  "worst_wall_s_per_simulated_s": 0.387456254666904
+}

@@ -1,0 +1,363 @@
+{
+  "config_sha256": {
+    "high_0.05": "873e86bfd6746b7a66084a448e7739d2ff09fa26012a11558b778e32d0e2cd6c",
+    "low_0.05": "5602e8a795a4f70a0624a61bf2f8f5ceea5fe6cfa067257b6a5ea3b66f79d70a",
+    "medium_0.05": "87b43e3ae34f4143da10335837cc91c6515f25c186e4380f4425df050d06c211",
+    "medium_0.10": "1bbe0816e78ec9c8a1011666c3fc1b7607ffe823a4586d65e817af1ae0c6f0db"
+  },
+  "environment": {
+    "netconvert_executable": "C:\\Program Files (x86)\\Eclipse\\Sumo\\bin\\netconvert.exe",
+    "netconvert_executable_sha256": "4174c17db813d413c85cdf7ad99a5f59b537ddf80f8caac9e1dfe87a35cb6b51",
+    "platform": "Windows-11-10.0.26100-SP0",
+    "python_version": "3.13.5",
+    "sumo_executable": "C:\\Program Files (x86)\\Eclipse\\Sumo\\bin\\sumo.exe",
+    "sumo_executable_sha256": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+    "sumo_home": "C:\\Program Files (x86)\\Eclipse\\Sumo\\tools",
+    "sumo_version": "Eclipse SUMO sumo 1.26.0",
+    "traci_module": "C:\\Program Files (x86)\\Eclipse\\Sumo\\tools\\traci\\__init__.py",
+    "traci_version": "unknown"
+  },
+  "plan_sha256": "44e7a3aeffd51e8f4c51677a1bd9495224dc12630d144a659fa5a91c4c9d1171",
+  "results": [
+    {
+      "arrived_vehicles": 422,
+      "collision_vehicle_ids": [],
+      "configured_vehicles": 572,
+      "conservation_residual": 0,
+      "departed_vehicles": 572,
+      "engineering_benchmark_only": true,
+      "engineering_gridlock": false,
+      "evaluation_achieved_density_veh_km_lane": 41.90823268082743,
+      "evaluation_achieved_exit_flow_veh_h": 5115.0,
+      "evaluation_local_mean_speed_mps": 11.449969772201266,
+      "evaluation_max_halted": 0,
+      "evaluation_mean_present": 148.92669720949604,
+      "evaluation_mean_speed_mps": 11.522764215798057,
+      "failure": null,
+      "id": "low_0.05",
+      "insertion_unserved_at_end": 0,
+      "internal_step_s": 0.05,
+      "max_pending_vehicles": 1,
+      "memory": {
+        "python_rss_bytes": 243859456,
+        "sampled_combined_rss_bytes": 271851520,
+        "sumo_rss_bytes": 32030720
+      },
+      "memory_sampling_interval_s": 0.02,
+      "output_rows": 443172,
+      "output_state_bytes": 29488685,
+      "output_total_bytes": 29763635,
+      "present_at_end": 150,
+      "recorded_step_s": 0.1,
+      "scope_note": "network build + SUMO + subscription recorder + unified row measurements + parquet; formal P2 extraction not included",
+      "seed": 20261018,
+      "simulated_s": 300.0,
+      "status": "completed",
+      "teleport_vehicle_ids": [],
+      "time_bins_60s": [
+        {
+          "end_s": 60,
+          "max_halted": 0,
+          "max_pending": 1,
+          "mean_local_density_veh_km_lane": 40.06944444444445,
+          "mean_present": 142.90833333333333,
+          "mean_speed_mps": 11.514949394191229,
+          "start_s": 0
+        },
+        {
+          "end_s": 120,
+          "max_halted": 0,
+          "max_pending": 0,
+          "mean_local_density_veh_km_lane": 41.94166666666667,
+          "mean_present": 148.36833333333334,
+          "mean_speed_mps": 11.530784375077166,
+          "start_s": 60
+        },
+        {
+          "end_s": 180,
+          "max_halted": 0,
+          "max_pending": 0,
+          "mean_local_density_veh_km_lane": 41.93055555555556,
+          "mean_present": 149.15666666666667,
+          "mean_speed_mps": 11.527136332105785,
+          "start_s": 120
+        },
+        {
+          "end_s": 240,
+          "max_halted": 0,
+          "max_pending": 1,
+          "mean_local_density_veh_km_lane": 41.65277777777778,
+          "mean_present": 149.075,
+          "mean_speed_mps": 11.507141304001879,
+          "start_s": 180
+        },
+        {
+          "end_s": 300,
+          "max_halted": 0,
+          "max_pending": 1,
+          "mean_local_density_veh_km_lane": 42.111111111111114,
+          "mean_present": 149.11166666666668,
+          "mean_speed_mps": 11.525984187592659,
+          "start_s": 240
+        }
+      ],
+      "wall_s": 100.2677273999434,
+      "wall_s_per_simulated_s": 0.3342257579998113
+    },
+    {
+      "arrived_vehicles": 368,
+      "collision_vehicle_ids": [],
+      "configured_vehicles": 567,
+      "conservation_residual": 0,
+      "departed_vehicles": 550,
+      "engineering_benchmark_only": true,
+      "engineering_gridlock": false,
+      "evaluation_achieved_density_veh_km_lane": 48.06330695543523,
+      "evaluation_achieved_exit_flow_veh_h": 4710.0,
+      "evaluation_local_mean_speed_mps": 9.59677994209697,
+      "evaluation_max_halted": 0,
+      "evaluation_mean_present": 171.65597667638485,
+      "evaluation_mean_speed_mps": 9.603196622606703,
+      "failure": null,
+      "id": "medium_0.05",
+      "insertion_unserved_at_end": 17,
+      "internal_step_s": 0.05,
+      "max_pending_vehicles": 47,
+      "memory": {
+        "python_rss_bytes": 269479936,
+        "sampled_combined_rss_bytes": 297840640,
+        "sumo_rss_bytes": 33562624
+      },
+      "memory_sampling_interval_s": 0.02,
+      "output_rows": 491898,
+      "output_state_bytes": 27628778,
+      "output_total_bytes": 27900011,
+      "present_at_end": 182,
+      "recorded_step_s": 0.1,
+      "scope_note": "network build + SUMO + subscription recorder + unified row measurements + parquet; formal P2 extraction not included",
+      "seed": 20261018,
+      "simulated_s": 300.0,
+      "status": "completed",
+      "teleport_vehicle_ids": [],
+      "time_bins_60s": [
+        {
+          "end_s": 60,
+          "max_halted": 0,
+          "max_pending": 47,
+          "mean_local_density_veh_km_lane": 39.12500000000001,
+          "mean_present": 133.15333333333334,
+          "mean_speed_mps": 9.488241513195984,
+          "start_s": 0
+        },
+        {
+          "end_s": 120,
+          "max_halted": 0,
+          "max_pending": 46,
+          "mean_local_density_veh_km_lane": 40.708333333333336,
+          "mean_present": 152.22,
+          "mean_speed_mps": 9.606507653260616,
+          "start_s": 60
+        },
+        {
+          "end_s": 180,
+          "max_halted": 0,
+          "max_pending": 36,
+          "mean_local_density_veh_km_lane": 51.080555555555556,
+          "mean_present": 172.575,
+          "mean_speed_mps": 9.705051361674466,
+          "start_s": 120
+        },
+        {
+          "end_s": 240,
+          "max_halted": 0,
+          "max_pending": 28,
+          "mean_local_density_veh_km_lane": 49.475,
+          "mean_present": 181.89,
+          "mean_speed_mps": 9.600309688128236,
+          "start_s": 180
+        },
+        {
+          "end_s": 300,
+          "max_halted": 0,
+          "max_pending": 23,
+          "mean_local_density_veh_km_lane": 50.98055555555556,
+          "mean_present": 179.99166666666667,
+          "mean_speed_mps": 9.505873319093196,
+          "start_s": 240
+        }
+      ],
+      "wall_s": 103.03343549999408,
+      "wall_s_per_simulated_s": 0.34344478499998027
+    },
+    {
+      "arrived_vehicles": 347,
+      "collision_vehicle_ids": [],
+      "configured_vehicles": 567,
+      "conservation_residual": 0,
+      "departed_vehicles": 522,
+      "engineering_benchmark_only": true,
+      "engineering_gridlock": false,
+      "evaluation_achieved_density_veh_km_lane": 45.581007913369426,
+      "evaluation_achieved_exit_flow_veh_h": 4395.0,
+      "evaluation_local_mean_speed_mps": 9.373924429115524,
+      "evaluation_max_halted": 0,
+      "evaluation_mean_present": 164.07371928363182,
+      "evaluation_mean_speed_mps": 9.321853149056794,
+      "failure": null,
+      "id": "medium_0.10",
+      "insertion_unserved_at_end": 45,
+      "internal_step_s": 0.1,
+      "max_pending_vehicles": 49,
+      "memory": {
+        "python_rss_bytes": 269160448,
+        "sampled_combined_rss_bytes": 297635840,
+        "sumo_rss_bytes": 32047104
+      },
+      "memory_sampling_interval_s": 0.02,
+      "output_rows": 473650,
+      "output_state_bytes": 31838588,
+      "output_total_bytes": 32109688,
+      "present_at_end": 175,
+      "recorded_step_s": 0.1,
+      "scope_note": "network build + SUMO + subscription recorder + unified row measurements + parquet; formal P2 extraction not included",
+      "seed": 20261018,
+      "simulated_s": 300.0,
+      "status": "completed",
+      "teleport_vehicle_ids": [],
+      "time_bins_60s": [
+        {
+          "end_s": 60,
+          "max_halted": 0,
+          "max_pending": 48,
+          "mean_local_density_veh_km_lane": 38.63611111111111,
+          "mean_present": 133.07833333333335,
+          "mean_speed_mps": 9.431763404794507,
+          "start_s": 0
+        },
+        {
+          "end_s": 120,
+          "max_halted": 0,
+          "max_pending": 49,
+          "mean_local_density_veh_km_lane": 38.25,
+          "mean_present": 146.325,
+          "mean_speed_mps": 9.401059698907588,
+          "start_s": 60
+        },
+        {
+          "end_s": 180,
+          "max_halted": 0,
+          "max_pending": 45,
+          "mean_local_density_veh_km_lane": 47.43888888888889,
+          "mean_present": 161.405,
+          "mean_speed_mps": 9.309493559514085,
+          "start_s": 120
+        },
+        {
+          "end_s": 240,
+          "max_halted": 0,
+          "max_pending": 46,
+          "mean_local_density_veh_km_lane": 48.483333333333334,
+          "mean_present": 173.88166666666666,
+          "mean_speed_mps": 9.336124062360833,
+          "start_s": 180
+        },
+        {
+          "end_s": 300,
+          "max_halted": 0,
+          "max_pending": 45,
+          "mean_local_density_veh_km_lane": 48.144444444444446,
+          "mean_present": 174.72666666666666,
+          "mean_speed_mps": 9.252590303969836,
+          "start_s": 240
+        }
+      ],
+      "wall_s": 61.209369999938644,
+      "wall_s_per_simulated_s": 0.2040312333331288
+    },
+    {
+      "arrived_vehicles": 255,
+      "collision_vehicle_ids": [],
+      "configured_vehicles": 516,
+      "conservation_residual": 0,
+      "departed_vehicles": 493,
+      "engineering_benchmark_only": true,
+      "engineering_gridlock": false,
+      "evaluation_achieved_density_veh_km_lane": 54.75843398583924,
+      "evaluation_achieved_exit_flow_veh_h": 3450.0,
+      "evaluation_local_mean_speed_mps": 6.1964348807894085,
+      "evaluation_max_halted": 0,
+      "evaluation_mean_present": 199.6609745939192,
+      "evaluation_mean_speed_mps": 6.128855478358166,
+      "failure": null,
+      "id": "high_0.05",
+      "insertion_unserved_at_end": 23,
+      "internal_step_s": 0.05,
+      "max_pending_vehicles": 89,
+      "memory": {
+        "python_rss_bytes": 299171840,
+        "sampled_combined_rss_bytes": 327708672,
+        "sumo_rss_bytes": 34152448
+      },
+      "memory_sampling_interval_s": 0.02,
+      "output_rows": 562976,
+      "output_state_bytes": 19748086,
+      "output_total_bytes": 20006568,
+      "present_at_end": 238,
+      "recorded_step_s": 0.1,
+      "scope_note": "network build + SUMO + subscription recorder + unified row measurements + parquet; formal P2 extraction not included",
+      "seed": 20261018,
+      "simulated_s": 300.0,
+      "status": "completed",
+      "teleport_vehicle_ids": [],
+      "time_bins_60s": [
+        {
+          "end_s": 60,
+          "max_halted": 0,
+          "max_pending": 86,
+          "mean_local_density_veh_km_lane": 43.84444444444445,
+          "mean_present": 139.56666666666666,
+          "mean_speed_mps": 5.744790902507504,
+          "start_s": 0
+        },
+        {
+          "end_s": 120,
+          "max_halted": 0,
+          "max_pending": 89,
+          "mean_local_density_veh_km_lane": 53.86944444444445,
+          "mean_present": 158.79833333333335,
+          "mean_speed_mps": 5.84710266581484,
+          "start_s": 60
+        },
+        {
+          "end_s": 180,
+          "max_halted": 0,
+          "max_pending": 74,
+          "mean_local_density_veh_km_lane": 30.958333333333332,
+          "mean_present": 193.05833333333334,
+          "mean_speed_mps": 6.058667463234508,
+          "start_s": 120
+        },
+        {
+          "end_s": 240,
+          "max_halted": 0,
+          "max_pending": 52,
+          "mean_local_density_veh_km_lane": 67.9638888888889,
+          "mean_present": 212.61666666666667,
+          "mean_speed_mps": 6.251318618893757,
+          "start_s": 180
+        },
+        {
+          "end_s": 300,
+          "max_halted": 0,
+          "max_pending": 35,
+          "mean_local_density_veh_km_lane": 66.24722222222223,
+          "mean_present": 234.25333333333333,
+          "mean_speed_mps": 6.266958795773062,
+          "start_s": 240
+        }
+      ],
+      "wall_s": 116.2368764000712,
+      "wall_s_per_simulated_s": 0.387456254666904
+    }
+  ]
+}

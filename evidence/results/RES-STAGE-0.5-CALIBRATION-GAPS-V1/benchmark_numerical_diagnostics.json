@@ -1,0 +1,75 @@
+{
+  "affected_runs": [
+    "low_0.05",
+    "medium_0.05",
+    "high_0.05"
+  ],
+  "consequence": "cost comparison only; a future numerical sensitivity must explicitly hold integrator, actionStepLength and sigmaStep fixed",
+  "runs": [
+    {
+      "acceleration_range_mps2": [
+        -1.7645881854728884,
+        2.6000000000000156
+      ],
+      "cadence_max_abs_error_s": 3.4111602431607935e-14,
+      "id": "low_0.05",
+      "invalid_measurement_rows": 0,
+      "local_low_speed_share_below_5_mps": 0.0,
+      "missing_measurement_rows": 0,
+      "numerical_comparability": "not a convergence experiment; SUMO auto-enabled ballistic on .05s/action .1s runs, .1s integration not explicitly fixed",
+      "raw_state_sha256": "6f0043f2cc69f13f04bf820a595c90050b5286a83bd877ba8542b336ff468427",
+      "state_vehicles": 572,
+      "unserved_inflow_vehicles": 0,
+      "unserved_initial_vehicles": 0
+    },
+    {
+      "acceleration_range_mps2": [
+        -1.8787620447065478,
+        2.6000000000000156
+      ],
+      "cadence_max_abs_error_s": 3.4111602431607935e-14,
+      "id": "medium_0.05",
+      "invalid_measurement_rows": 0,
+      "local_low_speed_share_below_5_mps": 0.0,
+      "missing_measurement_rows": 0,
+      "numerical_comparability": "not a convergence experiment; SUMO auto-enabled ballistic on .05s/action .1s runs, .1s integration not explicitly fixed",
+      "raw_state_sha256": "0ca1bd2665a870ac6db41f8bbfe1ecc2dcdfe91fb2f2d2a2fae886b53eed5af7",
+      "state_vehicles": 550,
+      "unserved_inflow_vehicles": 0,
+      "unserved_initial_vehicles": 17
+    },
+    {
+      "acceleration_range_mps2": [
+        -3.9347117514245156,
+        2.5994017442222628
+      ],
+      "cadence_max_abs_error_s": 3.4111602431607935e-14,
+      "id": "medium_0.10",
+      "invalid_measurement_rows": 0,
+      "local_low_speed_share_below_5_mps": 7.614522417153996e-05,
+      "missing_measurement_rows": 0,
+      "numerical_comparability": "not a convergence experiment; SUMO auto-enabled ballistic on .05s/action .1s runs, .1s integration not explicitly fixed",
+      "raw_state_sha256": "7f714a673fed4ab8a5a1c45eeff63d8a878d8c5749034597d941b602f5e1e426",
+      "state_vehicles": 522,
+      "unserved_inflow_vehicles": 27,
+      "unserved_initial_vehicles": 18
+    },
+    {
+      "acceleration_range_mps2": [
+        -1.8989797858466417,
+        2.599999999999998
+      ],
+      "cadence_max_abs_error_s": 3.4111602431607935e-14,
+      "id": "high_0.05",
+      "invalid_measurement_rows": 0,
+      "local_low_speed_share_below_5_mps": 0.0019902389554414656,
+      "missing_measurement_rows": 0,
+      "numerical_comparability": "not a convergence experiment; SUMO auto-enabled ballistic on .05s/action .1s runs, .1s integration not explicitly fixed",
+      "raw_state_sha256": "4ad9a0b114da33077c635280a862c7530595ead09bc304289660b6fdb7ae538e",
+      "state_vehicles": 493,
+      "unserved_inflow_vehicles": 12,
+      "unserved_initial_vehicles": 11
+    }
+  ],
+  "warning": "Action step length '0.10' is used ... step-method.ballistic was not set. Setting it now to avoid collisions."
+}

@@ -137,3 +137,7 @@
 ## 2026-10-17 — AAD-0.4.8：Stage 0.4 有限科学验收与正式收口
 
 研究者批准 Limited Scientific Acceptance。Stage 0.4 收束：Gate=`pass_limited`、Stage Status=`Completed / Closed (Limited Scope)`；验收仅限可观测性边界+描述性证据+参数不确定性原则；不验收性能模型/数值校准/距离函数/采用/核心因果。通信参数未冻结未校准。RV_RX V3 与 Packet 403 保留为历史。readiness 测试锁定 pass_limited 不单独解锁（stage_1_1/protocol_lock 仍禁止）。新增 `test_stage_0_4_limited_acceptance.py`（5 测试）。零下载零邮件，Gate 契约不变。结果 `RES-STAGE-0.4-LIMITED-SCIENTIFIC-ACCEPTANCE-V1`。
+
+## 2026-10-18 AAD-0.5.4-A+
+
+新增独立原始校准车型/长度连接、主线分母、统一分层、时间覆盖与目标密度成本证据及入口/行为测试；登记RES-STAGE-0.5-CALIBRATION-GAPS-V1，不覆盖历史报告/封存结果。保留插入积压、启动异常、积分器限制和未证明容差。科研候选Proposal，无验证/holdout内容读取、无正式校准或Gate升级。
