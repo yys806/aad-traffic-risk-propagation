@@ -4,7 +4,7 @@
 
 本轮去除按交通状态设置的低速上限后，三个基准输入都形成约27.1 m/s的自由流；实际局部密度仅10.37–15.75 veh/km/lane。19次运行均无局部 `<5 m/s` 状态、持续低速或 P2。`tau=2 s` 的3次运行出现持续未服务需求，主要限制在上游插入，不能当作目标拥堵成功形成。
 
-便携证据：`evidence/results/RES-STAGE-0.5-EXPLORATORY-RESPONSE-V1/`。完整状态、日志、冻结 XML、9组 PNG/SVG 图及对应大表：`code/outputs/formal/calibration/stage_0_5_exploratory_response_v1/`。未重新读取任何真实轨迹；真实比较仅复用前两个校准窗口已封存摘要，经来源角色与 SHA 守卫。第三验证窗口及 locked holdout 未访问。
+便携证据：`evidence/results/RES-STAGE-0.5-EXPLORATORY-RESPONSE-V1/`。完整状态、日志、冻结 XML、9组 PNG/SVG 图及对应大表：`code/outputs/formal/calibration/stage_0_5_exploratory_response_v1/`。B0受控实验与描述分析未重新读取真实轨迹，只复用前两个校准窗口已封存摘要，经来源角色与SHA守卫。locked holdout未访问。**根工作区全量回归发生历史全源产物读取例外，整个任务的验证窗口零访问不能认证**，详见下文B0-VALIDATION-SCOPE-02。
 
 ## 1. 实验计划与执行偏差
 
@@ -17,6 +17,12 @@
 实际完成19次（6+1+12），其余4次高输入 seed20261019 响应未运行，均在 run_manifest 标明。**执行偏差 B0-EXEC-STOP-01**：冻结执行器仅在进程失败时自动停止；已完成 worker 返回 `persistent_unserved_demand` 时未自动停止。因此中输入首个 tau2 阻断标记后仍执行了后续预声明配置。发现后手动停止调度器，已启动的高输入 minGap3 worker 完成后不再启动任何运行。该缺陷与全部结果保留，未重试、替换负载、选择有利时间段或补跑缺失 seed。
 
 最终 worker 的全程峰值内存 `Unverified`：调度器停止后其已完成，接管监测没有取得样本；不得记作0。其墙钟时间用摘要完成时间减已记录 UTC 起点，单独注明测量方法。`execution_code_change_audit.json` 保存执行源码旧 SHA、停止后修复 SHA 与精确补丁；本机保留原执行源码快照。修复只让 completed+blocker 也停止批次，有定向失败再通过及调度器集成回归测试。**修复后未再运行 B0**，旧计划因源码哈希变化不能直接恢复。
+
+### 回归访问例外 B0-VALIDATION-SCOPE-02
+
+根工作区`python -m pytest -q`通过465项，但其中既有Stage0.2测试在本地历史输出存在时，会无来源过滤读取`stage_0_2_task_2_5_20261011_r1/event_characteristics.parquet`和历史案例CSV/PDF元数据。这些是历史全源产物，可能包含第三US-101窗口，未经过B0的两窗口守卫。发现后未再打开产物核查行数；**整个任务的validation_window_rows_materialised=Unknown/未认证，不得填0**。这与B0实验及其比较输入验证行数0是不同的审计范围。
+
+这是回归执行的隔离失误，不能用“测试通过”消除。未用这些测试产物选择负载、参数、时段、容差或分析第三窗口，B0实验设计和19次运行在根回归之前已经冻结并完成；不开展0.5.5。后续全量回归只在纯Git克隆运行，缺本地历史产物的13项测试跳过，得到452 passed/13 skipped。`validation_activity_audit.json`记录Documented Intent、Actual Implementation、受影响测试、Unknown范围、纠正措施及研究者待决状态。**本任务数据隔离验收不标为Accepted**；B0冻结实验结果是否保留为有限探索依据由研究者决定。本轮不自行补跑或抹去例外。
 
 ## 2. 固定项、输入与现实支持
 
@@ -175,6 +181,7 @@ A+没有封存同一内部局部域的正闭合比例、TTC资格及完整TTC分
 | 车型/长度 | 三类与注记长度可核验，有限样本及物理误差限制保留 | 可保持工程约束；物理真值/类别动力学不自动批准 | 分窗口比例或长度分布敏感性 | 未识别摩托穿行、货车能力和长度误差 |
 | P2 | 核心契约探索计算有效，19次全网工程事件0 | 保留有限测量授权；局部事件归属另行设计 | 仅报告TTC状态与完整全域工程率 | 空间支持不同；无真实风险覆盖证明 |
 | 科学容差/Reality Coverage | 真实CI不等于模型容差，Energy Distance上界不可识别 | **Tolerance Not Yet Justified**；不得冻结数值或宣布覆盖 | 明确收窄适用域后另立验收依据 | 缺允许偏差及AAD结论敏感性依据 |
+| 回归数据隔离 | 根回归曾无过滤打开历史全源事件/案例产物；任务级零验证访问不能认证 | 明确审阅B0-VALIDATION-SCOPE-02；决定是否保留冻结B0结果作为有限探索依据，后续只在纯Git环境做全量回归 | 不接受本批次并另行授权独立重做 | 无法撤销已发生读取；不得宣称全任务隔离验收通过 |
 | 执行停止规则 | 原调度缺陷已保留，停止后回归修复 | 后续新计划遇completed+blocker即停止批次；不恢复旧批次 | 人工逐次审批的小批次 | 本轮高输入seed证据不完整，不能隐瞒 |
 
 Engineering Ready：基准执行与计量有条件可用，tau2与旧停止控制存在已记录阻断；Measurement Ready：仅B0核心计算的有限授权，正式Gate未通过；Calibration Ready=false；Reality Coverage Accepted=false。
@@ -185,7 +192,7 @@ Engineering Ready：基准执行与计量有条件可用，tau2与旧停止控�
 
 实验计划、源访问、冻结输入、逐次运行、实际车型、数值审计、交通守恒、初态/暖机、局部运动学、跟驰、参数配对、机制矩阵、预算、执行偏差、provenance、完整数值CSV、测试记录、manifest与SHA256SUMS共同构成本结果。9组图在本机figure_index登记，Git只收录小表和轻量证据，未提交原始数据、状态表、车辆身份抽样键或日志。
 
-测试结果以随附`test_record.json`及后续纯Git验证记录为准；新停止控制经过失败再修复，既有科学测量模块未修改。Context Consistency Check同步受影响索引、模块/数据流/实验/已授权范围/已知问题；未将候选参数升级为Approved。
+测试结果以随附`test_record.json`及后续纯Git验证记录为准；新停止控制经过失败再修复，既有科学测量模块未修改。根465项通过不代表来源隔离合规；纯Git452项通过/13项缺本地资料跳过才是本轮隔离验证环境下的全量回归记录。Context Consistency Check同步受影响索引、模块/数据流/实验/已授权范围/已知问题；未将候选参数升级为Approved。
 
 工作区已有5个文献索引文件删除不属于本任务，保留原状。根工作区strict/clean检查若因此失败如实记录；用纯Git克隆验证提交内容，不恢复或提交这些无关变化。
 

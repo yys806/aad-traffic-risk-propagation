@@ -78,3 +78,5 @@ Stage 0.5 场景设计审计报告为 docs/STAGE_0_5_TASK_0_5_0_SCENARIO_DESIGN_
 ## 2026-10-18 B0数据流
 
 A/A+便携摘要→CalibrationValidationGuard来源/角色/SHA→只含两个校准窗口的real_reference_summary；不读取真实轨迹。A+三个既有工程state另按其封存SHA核对，仅用于初态组成诊断。冻结plan/网络/需求/vType/配置→SUMO1.26.0无消息worker→本地完整state/交通帧/发车记录→完整P2适配器+等价暴露→局部200m与全域分账→轻量数值证据。入口待插入与已进入低速车辆分开；局部/分层P2率Unresolved。依据：docs/STAGE_0_5_TASK_0_5_4B0_EXPLORATORY_RESPONSE_DIAGNOSTICS.md及source_access_audit、frozen_input_manifest、boundary_response_diagnostics。
+
+B0受控实验数据流与验证执行须分开：根全量pytest会启用历史全源本地事件/案例读取，本轮因此发生B0-VALIDATION-SCOPE-02；全任务验证读取Unknown，不能继承实验层0行声明。后续只在纯Git克隆做全量回归，本任务隔离验收未Accepted。

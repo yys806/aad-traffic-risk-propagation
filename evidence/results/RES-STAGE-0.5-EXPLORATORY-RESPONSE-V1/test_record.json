@@ -1,5 +1,5 @@
 {
-  "status": "local_checks_complete_pure_clone_pending",
+  "status": "mechanical_validation_complete_with_unaccepted_access_exception",
   "tests": [
     {
       "command": "python -m pytest tests/test_stage_0_5_exploratory_response.py tests/test_stage_0_5_measurement_equivalence.py tests/test_stage_0_5_calibration_gaps.py tests/test_stage_0_5_sumo.py -q",
@@ -35,19 +35,28 @@
       "command": "python code/scripts/validate_project_docs.py --strict-git",
       "exit_code": 1,
       "reason": "only pre-existing missing canonical literature-index JSON after task paths staged; untouched by this task"
+    },
+    {
+      "command": "python -m pytest -q",
+      "scope": "pure Git clone without datasets or full local outputs",
+      "result": "452 passed,13 skipped",
+      "seconds": 127.34
     }
   ],
   "sumo_experimental_runs": 19,
   "sumo_test_fixtures": "separate regression scope; no extra B0 configurations",
   "pure_git_clone": {
-    "commit": "0b09bb5",
+    "commit": "69024a6",
     "docs": "PROJECT_DOCS_OK --strict-git --require-clean",
     "evidence": "PORTABLE_EVIDENCE_OK",
     "entrypoint_help": "passed",
-    "full_tests": "pending final closeout code snapshot"
+    "compileall": "passed",
+    "full_tests": "452 passed,13 skipped",
+    "seconds": 127.34
   },
   "remote_verification": "pending",
   "context_consistency_check": "completed; state/architecture/dataflow/modules/experiments/limited decisions/issues/changelog and indices updated; no approved parameter promoted",
   "preexisting_workspace_deletions": "5 unrelated literature-index files remain untouched",
-  "export_regression": "PLAN_SHA256 and three named aggregate CSVs allowed; arbitrary state.csv still refused; red then green"
+  "export_regression": "PLAN_SHA256 and three named aggregate CSVs allowed; arbitrary state.csv still refused; red then green",
+  "root_regression_scope_exception": "B0-VALIDATION-SCOPE-02: historical all-source local event/case outputs were opened without two-window filtering; whole-task validation rows Unknown; task isolation not accepted"
 }

@@ -152,7 +152,12 @@ def test_portable_b0_evidence_retains_failures_and_never_passes_science():
     assert audit["stage_0_5_gate"]=="pending_simulation_sample"
     assert audit["ready_to_start_stage_0_5_4b"] is False
     assert audit["protocol_lock_allowed"] is False and audit["stage_1_1_allowed"] is False
-    assert audit["validation_window_rows_materialised"]==0
+    assert audit["b0_experiment_validation_window_rows_materialised"]==0
+    assert audit["b0_experiment_validation_window_read"] is False
+    # Historical root-workspace regression reads are not covered by the B0 guard.
+    assert audit["validation_window_rows_materialised"] is None
+    assert audit["validation_window_read"]=="Not Certified"
+    assert audit["task_data_isolation_accepted"] is False
     assert audit["tolerances"]=="Tolerance Not Yet Justified"
     assert audit["energy_distance_upper_bound"]=="Not Identifiable"
     assert len(runs["attempts"])<=23 and len(runs["planned_runs"])==23

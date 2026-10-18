@@ -193,6 +193,7 @@ def _make_plots(batch,rows,metrics,series,refs):
 
 def finalize(repo: Path,batch: Path):
     plan=read_plan(batch);ledger=_read(batch/"execution_ledger.json");refs=_read(batch/"real_reference_summary.json")
+    validation_activity=_read(batch/"validation_activity_audit.json") if (batch/"validation_activity_audit.json").exists() else None
     rows=[]
     for r in plan["runs"]:
         p=batch/"runs"/r["run_id"]/"summary.json"
@@ -299,7 +300,12 @@ def finalize(repo: Path,batch: Path):
     _write_json(batch/"audit.json",dict(result_id=RESULT_ID,mode=MODE,scientific_claim_eligible=False,
         stage_0_5_gate="pending_simulation_sample",ready_to_start_stage_0_5_4b=False,
         protocol_lock_allowed=False,stage_1_1_allowed=False,tolerances="Tolerance Not Yet Justified",
-        energy_distance_upper_bound="Not Identifiable",validation_window_read=False,validation_window_rows_materialised=0,
+        energy_distance_upper_bound="Not Identifiable",
+        b0_experiment_validation_window_read=False,b0_experiment_validation_window_rows_materialised=0,
+        validation_window_read="Not Certified" if validation_activity else "Unverified",
+        validation_window_rows_materialised=None,
+        validation_activity_audit="validation_activity_audit.json" if validation_activity else None,
+        task_data_isolation_accepted=False,
         locked_holdout_accessed=False,raw_real_data_read=False,formal_calibration_started=False,stage_0_5_5_run=False,
         planned_runs=23,attempted_runs=len(ledger["attempts"]),completed_summaries=len(rows),optimization=False,
         engineering_blocking_runs=[r["run_id"] for r in rows if r["engineering_blockers"]],

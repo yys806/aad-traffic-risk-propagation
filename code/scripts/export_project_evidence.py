@@ -208,7 +208,7 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
     for name in (
         "experiment_plan.json", "PLAN_SHA256", "config.json", "frozen_input_manifest.json",
         "run_manifest.json", "execution_ledger.json", "fixed_parameter_manifest.json",
-        "source_access_audit.json", "real_reference_summary.json", "phase1_checkpoint.json",
+        "source_access_audit.json", "validation_activity_audit.json", "real_reference_summary.json", "phase1_checkpoint.json",
         "PHASE1_DIAGNOSTIC.md", "numerical_method_audit.json", "traffic_input_output_audit.json",
         "initialization_warmup_diagnostics.json", "local_kinematics_comparison.json",
         "following_response_diagnostics.json", "parameter_response_matrix.json",

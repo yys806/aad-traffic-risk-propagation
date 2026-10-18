@@ -1,0 +1,37 @@
+{
+  "deviation_id": "B0-VALIDATION-SCOPE-02",
+  "status": "Not Certified; researcher review required",
+  "documented_intent": "do not read third validation window; full regressions must preserve role isolation",
+  "actual_implementation": "root python -m pytest -q also enables pre-existing tests when local historical artifacts exist",
+  "evidence": [
+    {
+      "test": "test_stage_0_2_task_2_5_threshold_validation.py::test_confirmation_is_causal_and_delayed",
+      "read": "code/outputs/formal/calibration/stage_0_2_task_2_5_20261011_r1/event_characteristics.parquet",
+      "selection": "unfiltered whole table"
+    },
+    {
+      "test": "Task2.5/2.5.1/2.5.2 tests",
+      "read": "historical threshold grid, selected review cases, key difference cases and PDF metadata",
+      "selection": "not guarded by B0 calibration role"
+    }
+  ],
+  "source_presence": "historical full-source Stage0.2 products can include third US101 window; actual window row count not re-read to establish it",
+  "validation_window_rows_materialised": null,
+  "task_zero_validation_read_claim_allowed": false,
+  "b0_experiment": {
+    "guarded_summary_sources_only": true,
+    "validation_window_rows_materialised": 0,
+    "raw_real_trajectories_read": false,
+    "design_frozen_before_tests": true,
+    "tests_used_for_parameter_selection": false
+  },
+  "affected_scope": "root regression verification only; no new simulation, source selection, parameter fitting or tolerance selection followed those reads",
+  "correction": "stop root data-bearing regression; retain exception; use pure Git clones for full regression so local historical output tests skip; no further access to those local artifacts",
+  "pure_clone": {
+    "commit": "69024a6",
+    "result": "452 passed,13 skipped",
+    "seconds": 127.34,
+    "skip_reason": "local sealed outputs and raw samples absent"
+  },
+  "acceptance": "B0 experimental source restriction evidenced; whole-task isolation requirement not certified, do not mark accepted"
+}

@@ -97,3 +97,6 @@ Documented Intent：06_DECISIONS指数rho/固定分母/车辆等权。Actual Imp
 ## 2026-10-18 B0仍未解决的准入问题
 
 真实中/高密度状态没有被本轮实现；无法用这批自由流数据排除模型结构限制或识别低速minGap。tau2通过入口服务/安全降速改变实际车队，不能视为纯在场跟驰效应。原调度停止缺陷B0-EXEC-STOP-01已在批次后修复，旧偏差及高输入seed不足保留；最后worker峰值内存Unverified。正式warmup、局部P2归属、科学容差和现实覆盖仍未定。依据：docs/STAGE_0_5_TASK_0_5_4B0_EXPLORATORY_RESPONSE_DIAGNOSTICS.md、execution_code_change_audit、机制矩阵。
+
+
+B0-VALIDATION-SCOPE-02：根目录全量pytest启用了历史Stage0.2本地全源事件/案例测试，未按校准角色过滤。任务级验证读取数Unknown/Not Certified，不能声称0；B0冻结实验/比较摘要输入仍仅前两窗口，未用回归数据选参。已停止根本地数据回归，纯Git452 passed/13 skipped；任务隔离验收未Accepted，等待研究者决定是否保留有限探索结果。见validation_activity_audit及B0报告。
