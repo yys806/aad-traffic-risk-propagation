@@ -1,12 +1,27 @@
 {
-  "clone_verification": "pending after commit",
+  "clone_verification": {
+    "strict_git_require_clean": "passed",
+    "portable_evidence": "passed",
+    "compileall": "passed",
+    "all_three_help_entrypoints": "passed",
+    "lf_normalized_source_sha256_bindings": 7,
+    "dataset_directory_present": false
+  },
   "complete_test_first_failure": "new module absent before implementation",
   "context_consistency_check": "affected context and indices updated; no Approved Decision added",
   "focused_regression": {
     "passed": 99,
     "wall_s": 38.75
   },
-  "full_suite": "pending final verification",
+  "full_suite": {
+    "mode": "pure Git clone, no dataset or code/outputs",
+    "tested_commit": "b618576",
+    "passed": 424,
+    "skipped": 13,
+    "failed": 0,
+    "wall_s": 130.76,
+    "skip_scope": "local sealed result/raw sample dependencies absent from pure Git clone; SUMO integration exercised"
+  },
   "initial_focused_interruption": "stalled SUMO --version process killed; independent bounded probes succeeded; rerun passed",
   "focused_plus_document_regression": {
     "passed": 113,
@@ -17,6 +32,6 @@
     "wall_s": 1.86
   },
   "real_summary_equivalence_check": "23 qualified slices: thresholds and summary exactly unchanged by empty-occupancy fix",
-  "root_document_validation": "blocked only by pre-existing missing doc/literature-notes/zotero_reorg_2026-10-17_execution.json; left untouched",
+  "root_document_validation": "--strict-git and --require-clean blocked by five pre-existing literature-index deletions (canonical execution.json missing); preserved, not committed; corresponding clean-clone checks passed",
   "compileall": "passed src scripts tests"
 }

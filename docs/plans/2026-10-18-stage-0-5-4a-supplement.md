@@ -1,6 +1,6 @@
 # AAD-0.5.4-A+ execution plan
 
-Status: Implementation and evidence complete; clean-clone validation pending. Scope: the two approved US-101 calibration windows only; no new data download, validation content, scientific-rule edits, calibration search, Gate change or protocol lock.
+Status: Complete. Pure-clone full suite 424 passed / 13 skipped; docs, evidence, compileall and entry points verified. Stopped at researcher decision node. Scope: the two approved US-101 calibration windows only; no new data download, validation content, scientific-rule edits, calibration search, Gate change or protocol lock.
 
 1. Bind the existing public archive and two exact TXT members to SHA-256 and calibration roles before parsing. Verify official metadata, source-row identity, class/length quality, and absolute/relative clocks against sealed Stage 0.2 states. Keep all historical artifacts immutable.
 2. Add a separate supplement diagnostic module/entry point and behavior tests for denied sources, ambiguous joins, crossing counts, lane/space denominators, coverage, and pooled strata. Use full approved states; retain prior analyses as historical evidence. Do not assign P2 rates to strata without complete event/edge membership.
