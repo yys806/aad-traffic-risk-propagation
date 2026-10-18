@@ -418,6 +418,8 @@ ready_to_start_stage_0_5_4b = false
 - **本地结果包**：`code/outputs/formal/calibration/stage_0_5_calibration_readiness_v1/`、`stage_0_5_timestep_sensitivity_v1/`、`stage_0_5_sumo_baseline_engineering_v1_{baseline,probe}/`（后者用修正后适配层重跑）。
 - **来源核实**：三处 SHA 与 `RES-STAGE-0.5-REAL-REF-R2` 的 `input_manifest.json` 及策略绑定逐项一致（`source_binding_check.all_bindings_match=true`）。
 - **无法运行的测试**：无 skipped/blocked 项（本地 SUMO 1.26.0 可用）。
+- **纯 Git 克隆核对**：`validate_project_docs.py --strict-git --require-clean` = `PROJECT_DOCS_OK`；`export_project_evidence.py --verify` = `PORTABLE_EVIDENCE_OK`；克隆内 `test_stage_0_5_measurement_equivalence.py` + `test_stage_0_5_sumo.py` = 92 passed。
+- **克隆内运行限制（如实说明）**：本审计需要 `RES-STAGE-0.5-REAL-REF-R2` 的本地状态表（`code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r4/states/`，共约 160 MB），该大表按仓库规范不入 Git。在没有这些本地产物的克隆里，入口会 fail-closed 报 `Stage05AccessDenied: file does not exist`，**不会**伪造结果；审计的可复现条件是「本地存在已批准 R2 参考 + 本次代码」。
 
 ## 12. 阻断事项
 
