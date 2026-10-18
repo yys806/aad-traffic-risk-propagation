@@ -42,6 +42,7 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R3": [],
         "RES-STAGE-0.4-COMM-OBS-V3": [],
         "RES-STAGE-0.5-REAL-REF-V1": [],
+        "RES-STAGE-0.5-REAL-REF-R2": [],
         "RES-STAGE-0.6-PRELOCK-V2": [],
         "RES-PROTOCOL-READINESS-V1": [
             (
@@ -106,6 +107,22 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         "RES-STAGE-0.5-REAL-REF-V1": (
             "stage_0_5_real_reference_v1",
             ("audit.json", "manifest.json", "SHA256SUMS"),
+        ),
+        "RES-STAGE-0.5-REAL-REF-R2": (
+            "stage_0_5_real_reference_r2",
+            (
+                "audit.json",
+                "config.json",
+                "input_manifest.json",
+                "ngsim_formal_metrics.json",
+                "pneuma_statistics_summary.json",
+                "sampling_sensitivity.json",
+                "independence_audit.json",
+                "provenance.json",
+                "report.md",
+                "manifest.json",
+                "SHA256SUMS",
+            ),
         ),
         "RES-STAGE-0.6-PRELOCK-V2": (
             "stage_0_6_prelock_validation_v2",

@@ -865,6 +865,7 @@ def main() -> int:
                 output_dir=stage_0_5_test_dir / "reference_package",
                 max_rows_per_group=5000,
                 seed=20260907,
+                pneuma_schema="legacy",
             )
             package_audit = json.loads((package_dir / "audit.json").read_text(encoding="utf-8"))
             stage_0_5_test_result = {

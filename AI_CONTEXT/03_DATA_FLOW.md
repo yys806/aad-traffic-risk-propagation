@@ -63,3 +63,5 @@ task1.5四源状态→独立全序列/P2在线提取→r4→不可覆盖final_r1
 ## 2026-10-18 Stage 0.5 场景审计
 
 Stage 0.5 场景设计审计报告为 docs/STAGE_0_5_TASK_0_5_0_SCENARIO_DESIGN_AUDIT.md。Stage 0.3 R2 标准化 pNEUMA 文件实际字段为 vehicle_id/acceleration_mps2/vehicle_type/quality_status/time_weighting_eligible；simulation_real_coverage.write_real_reference_package 当前直接读取 id/longitudinal_accel_mps2，并由 run_stage_0_3_pneuma_kinematics.py 另建旧字段 raw_view 后通过测试。故 canonical Parquet 尚不能直接进入 writer，状态为 Awaiting Researcher Decision；pNEUMA 车型字段也不会进入当前 writer 输出。NGSIM 与 pNEUMA 仍按不同职责和场景分离，旧 Stage 0.5 map-match 包不回接。
+
+2026-10-18 AAD-0.5.1 已修复并验证该接口：`write_real_reference_package(..., pneuma_schema="canonical")` 原生消费 `stage_0_5_reference_states.parquet`，保留原始车型、质量资格和来源 SHA；legacy 仅显式模式。正式 R2 包通过六项输入的 SHA/schema/来源契约，完整 P2 事件仍来自 Stage 0.2 正式表，pNEUMA 时间权重引用 Stage 0.3 封存摘要；稳定哈希/轨迹簇样本仅诊断，不计算正式 P2 率。旧段落描述的是 0.5.0 历史状态，当前事实以 `RES-STAGE-0.5-REAL-REF-R2` 和重建报告为准。

@@ -1,6 +1,6 @@
 {
   "schema_version": "aad.project-registry.v2",
-  "last_verified": "2026-10-16",
+  "last_verified": "2026-10-18",
   "project": {
     "name": "AAD",
     "research_topic": "Connected-vehicle communication adoption and traffic-risk propagation",
@@ -79,22 +79,26 @@
     "docs/STAGE_0_4_TASK_0_4_7_SEE_V2X_BSM_VALIDATION.md",
     "docs/STAGE_0_4_TASK_0_4_7_1_SCIENTIFIC_REAUDIT.md",
     "docs/STAGE_0_4_TASK_0_4_7_2_GNSS_VALIDITY_REPAIR.md",
-    "docs/STAGE_0_4_LIMITED_SCIENTIFIC_ACCEPTANCE_2026-10-17.md"
+    "docs/STAGE_0_4_LIMITED_SCIENTIFIC_ACCEPTANCE_2026-10-17.md",
+    "code/scripts/rebuild_stage_0_5_real_reference.py",
+    "docs/STAGE_0_5_TASK_0_5_1_REAL_REFERENCE_REBUILD.md"
   ],
   "current": {
     "active_experiment_id": "stage_0_5",
-    "active_task": "Stage 0.5 awaiting SUMO calibration samples; vType mapping, time-weighted sampling and coverage thresholds remain independent researcher decisions; Stage 0.4 limited-evidence boundary freeze pending.",
-    "why_now": "阶段 0.2 与 0.3 已在有限范围内关闭；阶段 0.5 缺 SUMO 校准样本且三项设计待决，阶段 0.4 边界待冻结，阶段 0.6 科学参数未冻结；全部完成前不得进入阶段 1.1。",
+    "active_task": "Stage 0.5 R2 formal real-reference package rebuilt; SUMO calibration sample, coverage thresholds and scenario mapping remain pending researcher decisions.",
+    "why_now": "Approved Stage 0.2/0.3 real references are now directly consumable with SHA/schema/quality contracts. The next decision is Stage 0.5.2 comparison and calibration/validation isolation; no SUMO sample or Gate decision has been made.",
     "next_decision_owner": null,
     "portable_gate_paths": [
       "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",
       "evidence/results/RES-PROTOCOL-READINESS-V1/protocol_lock_readiness_v1.json",
       "evidence/results/RES-STAGE-0.3-BOUNDARY-REPAIR-R2/audit.json",
-      "evidence/results/RES-STAGE-0.3-SCIENTIFIC-ACCEPTANCE-R3/scientific_gate_report.json"
+      "evidence/results/RES-STAGE-0.3-SCIENTIFIC-ACCEPTANCE-R3/scientific_gate_report.json",
+      "evidence/results/RES-STAGE-0.5-REAL-REF-R2/audit.json"
     ],
     "local_gate_paths": [
       "code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r4/scientific_gate_report.json",
-      "code/outputs/formal/calibration/stage_0_3_scientific_acceptance_20261016_r3/scientific_gate_report.json"
+      "code/outputs/formal/calibration/stage_0_3_scientific_acceptance_20261016_r3/scientific_gate_report.json",
+      "code/outputs/formal/calibration/stage_0_5_real_reference_r2/audit.json"
     ]
   },
   "experiments": [
@@ -324,39 +328,48 @@
       "research_question": "SUMO 基础运动与跟驰风险是否明显脱离真实交通范围？",
       "date": "2026-09-07",
       "status": "active_pending_simulation_sample",
-      "code_version": "当前实现已移除对 pNEUMA 地图匹配和前车人工标签的依赖。",
+      "code_version": "canonical pNEUMA direct writer and formal R2 input-contract/rebuild helpers; no SUMO sample",
       "code_paths": [
         "code/src/riskprop/simulation_real_coverage.py"
       ],
       "entrypoints": [
         "code/scripts/prepare_stage_0_5_real_reference.py",
+        "code/scripts/rebuild_stage_0_5_real_reference.py",
         "code/scripts/run_stage_0_5_coverage.py"
       ],
       "test_paths": [
         "code/tests/test_simulation_real_coverage.py"
       ],
-      "configuration": "稳定哈希抽样；pNEUMA 只进入运动学参考。",
+      "configuration": "R2 formal real reference: complete approved inputs as main evidence; bounded fixed-seed state/trajectory diagnostics only; US-101 primary, Lankershim auxiliary, pNEUMA urban kinematics only",
       "parameters": {
         "seed": 20260907,
         "max_rows_per_group": 5000,
-        "pneuma_role": "urban_kinematics_only"
+        "pneuma_role": "urban_kinematics_only",
+        "formal_reference_result_id": "RES-STAGE-0.5-REAL-REF-R2",
+        "formal_thresholds_frozen": false
       },
-      "data_version": "stage_0_5_real_reference_v1",
+      "data_version": "RES-STAGE-0.5-REAL-REF-R2; Stage 0.2 R4 four states + final_r1 P2 + Stage 0.3 R2 canonical/R3 summaries",
       "model": "deterministic simulation-to-real coverage audit",
       "model_checkpoint": "not_applicable",
       "result_ids": [
-        "RES-STAGE-0.5-REAL-REF-V1"
+        "RES-STAGE-0.5-REAL-REF-V1",
+        "RES-STAGE-0.5-REAL-REF-R2"
       ],
       "core_metrics": [
-        "kinematics_rows",
-        "following_rows",
-        "risk_event_rows",
+        "formal_input_manifest",
+        "p2_events",
+        "p2_evaluable_exposure",
+        "pneuma_canonical_states",
+        "time_weighted_statistics_reference",
+        "vehicle_equal_statistics_reference",
+        "sampling_sensitivity",
+        "source_independence_audit",
         "simulation_sample_included"
       ],
-      "current_conclusion": "迁移前参考包含旧分工产物，需按新分工重建并补 SUMO 校准样本；pNEUMA 侧参考接口由 Stage 0.3 R2 包提供并携带逐状态质量字段，write_real_reference_package 读取并 fail-closed 使用；按状态抽样是否保持时间加权权重属 Stage 0.5 设计决定，未冻结。",
+      "current_conclusion": "R2 formal real-reference package rebuilt and SHA/schema/source validated. Complete formal P2 and sealed Stage 0.3 summaries are retained; bounded samples are diagnostics only. No SUMO sample or scientific coverage threshold is present; Gate remains pending_simulation_sample.",
       "gate": {
         "status": "pending_simulation_sample",
-        "portable_path": "evidence/results/RES-STAGE-0.5-REAL-REF-V1/audit.json"
+        "portable_path": "evidence/results/RES-STAGE-0.5-REAL-REF-R2/audit.json"
       },
       "scientific_claim_eligible": false
     },
@@ -708,6 +721,47 @@
       "gate_status": "pending_simulation_sample",
       "paper_locations": [
         "docs/论文实验推进/阶段0_基础设施与测量/阶段0.5_仿真现实覆盖/执行记录.md"
+      ],
+      "scientific_claim_eligible": false
+    },
+    {
+      "id": "RES-STAGE-0.5-REAL-REF-R2",
+      "experiment_id": "stage_0_5",
+      "name": "Stage 0.5 formal real reference rebuild R2",
+      "status": "verified_formal_reference_no_simulation_sample",
+      "portable_evidence_paths": [
+        "evidence/results/RES-STAGE-0.5-REAL-REF-R2/audit.json",
+        "evidence/results/RES-STAGE-0.5-REAL-REF-R2/config.json",
+        "evidence/results/RES-STAGE-0.5-REAL-REF-R2/input_manifest.json",
+        "evidence/results/RES-STAGE-0.5-REAL-REF-R2/ngsim_formal_metrics.json",
+        "evidence/results/RES-STAGE-0.5-REAL-REF-R2/pneuma_statistics_summary.json",
+        "evidence/results/RES-STAGE-0.5-REAL-REF-R2/sampling_sensitivity.json",
+        "evidence/results/RES-STAGE-0.5-REAL-REF-R2/independence_audit.json",
+        "evidence/results/RES-STAGE-0.5-REAL-REF-R2/provenance.json",
+        "evidence/results/RES-STAGE-0.5-REAL-REF-R2/report.md",
+        "evidence/results/RES-STAGE-0.5-REAL-REF-R2/manifest.json",
+        "evidence/results/RES-STAGE-0.5-REAL-REF-R2/SHA256SUMS"
+      ],
+      "local_artifact_paths": [
+        "code/outputs/formal/calibration/stage_0_5_real_reference_r2"
+      ],
+      "code_version_source": "code/src/riskprop/simulation_real_coverage.py; code/scripts/rebuild_stage_0_5_real_reference.py; provenance.json",
+      "configuration_source": "code/outputs/formal/calibration/stage_0_5_real_reference_r2/config.json",
+      "data_version_source": "code/outputs/formal/calibration/stage_0_5_real_reference_r2/input_manifest.json and SHA256SUMS",
+      "core_metrics": {
+        "ngsim_state_rows": 5706252,
+        "p2_events": 4545,
+        "pneuma_unique_vehicles": 785,
+        "pneuma_state_rows": 1239475,
+        "kinematics_preview_rows": 25000,
+        "following_preview_rows": 20000,
+        "simulation_sample_included": false,
+        "formal_thresholds_frozen": false
+      },
+      "current_conclusion": "Canonical pNEUMA direct ingestion and formal six-input validation passed. US-101, Lankershim and pNEUMA remain independently scoped. Formal P2 rates and pNEUMA time/vehicle-weighted statistics are inherited from approved sealed results; bounded samples are sensitivity diagnostics. Stage 0.5 Gate remains pending_simulation_sample.",
+      "gate_status": "pending_simulation_sample",
+      "paper_locations": [
+        "docs/STAGE_0_5_TASK_0_5_1_REAL_REFERENCE_REBUILD.md"
       ],
       "scientific_claim_eligible": false
     },

@@ -1,0 +1,116 @@
+{
+  "Lankershim_source_period": "unknown",
+  "groups": [
+    "ngsim_lankershim__complete.parquet",
+    "ngsim_us101__0750_0805.parquet",
+    "ngsim_us101__0805_0820.parquet",
+    "ngsim_us101__0820_0835.parquet"
+  ],
+  "interpretation": "US-101 windows and Lankershim remain separately scoped; this audit does not create real-real iid groups or authorize coverage thresholds",
+  "pNEUMA_single_file_no_independent_real_group": true,
+  "schema_version": "stage_0_5.source-independence-audit.v1",
+  "vehicle_id_overlap_pairs": [
+    {
+      "first": "ngsim_lankershim__complete.parquet",
+      "second": "ngsim_us101__0750_0805.parquet",
+      "vehicle_id_overlap_count": 1057,
+      "vehicle_id_overlap_examples": [
+        "10",
+        "100",
+        "1000",
+        "1001",
+        "1002",
+        "1003",
+        "1005",
+        "1006",
+        "1007",
+        "1008"
+      ]
+    },
+    {
+      "first": "ngsim_lankershim__complete.parquet",
+      "second": "ngsim_us101__0805_0820.parquet",
+      "vehicle_id_overlap_count": 1256,
+      "vehicle_id_overlap_examples": [
+        "10",
+        "100",
+        "1000",
+        "1001",
+        "1003",
+        "1004",
+        "1007",
+        "1008",
+        "1009",
+        "101"
+      ]
+    },
+    {
+      "first": "ngsim_lankershim__complete.parquet",
+      "second": "ngsim_us101__0820_0835.parquet",
+      "vehicle_id_overlap_count": 1478,
+      "vehicle_id_overlap_examples": [
+        "10",
+        "100",
+        "1000",
+        "1001",
+        "1002",
+        "1003",
+        "1004",
+        "1005",
+        "1006",
+        "1007"
+      ]
+    },
+    {
+      "first": "ngsim_us101__0750_0805.parquet",
+      "second": "ngsim_us101__0805_0820.parquet",
+      "vehicle_id_overlap_count": 1430,
+      "vehicle_id_overlap_examples": [
+        "10",
+        "100",
+        "1000",
+        "1001",
+        "1003",
+        "1007",
+        "1008",
+        "1009",
+        "1011",
+        "1012"
+      ]
+    },
+    {
+      "first": "ngsim_us101__0750_0805.parquet",
+      "second": "ngsim_us101__0820_0835.parquet",
+      "vehicle_id_overlap_count": 1376,
+      "vehicle_id_overlap_examples": [
+        "10",
+        "100",
+        "1000",
+        "1001",
+        "1002",
+        "1003",
+        "1005",
+        "1006",
+        "1007",
+        "1008"
+      ]
+    },
+    {
+      "first": "ngsim_us101__0805_0820.parquet",
+      "second": "ngsim_us101__0820_0835.parquet",
+      "vehicle_id_overlap_count": 1524,
+      "vehicle_id_overlap_examples": [
+        "1",
+        "10",
+        "100",
+        "1000",
+        "1001",
+        "1003",
+        "1004",
+        "1007",
+        "1008",
+        "1009"
+      ]
+    }
+  ]
+}

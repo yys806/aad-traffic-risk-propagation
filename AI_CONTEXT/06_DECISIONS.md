@@ -90,3 +90,13 @@ Agreed：具有明确字段证据的诊断片段可作为候选事件的保守�
 - **边界**：RV_RX V3 的 `pending_official_packet_access` 与原始 Packet HTTP-403 记录保留为历史事实，不改写；Protocol Lock 与 Stage I 不因本验收解锁；locked holdout 不访问；Stage 0.5/0.6 其余前置条件保持未完成。
 - **影响范围**：阶段 0.4 状态与 readiness、Stage 0.5 承接、Stage 0.6 通信参数不确定性声明规则。
 - **对应证据**：`RES-STAGE-0.4-LIMITED-SCIENTIFIC-ACCEPTANCE-V1`（`code/outputs/formal/calibration/stage_0_4_limited_acceptance_v1/`）。
+
+## 2026-10-18 — Stage 0.5.1 真实参考职责与统计口径授权
+
+状态：`Approved Research Decision`；研究者在 AAD-0.5.1 开始前明确批准，以下仅记录已批准范围，不冻结后续 SUMO 校准参数。
+
+- **场景职责**：US-101 三个窗口承担高速公路跟驰风险主要参考；Lankershim 作为独立城市道路跟驰风险辅助参考，不与 US-101 合并为 iid 总体，也不是 US-101 主 Gate 的必要条件；pNEUMA 仅承担单文件城市混合交通运动学（速度、纵向加速度、原始车型和分车型统计）。pNEUMA 不承担前车推断、TTC、DRAC、P2 或风险事件。
+- **canonical 接口**：Stage 0.5 正式入口直接消费 Stage 0.3 canonical schema，保留 `vehicle_id`、原始 `vehicle_type`、速度/加速度、`quality_status`、`time_weighting_eligible`、来源指纹以及来源/站点/窗口；缺字段、类型/身份/数值/质量契约错误 fail-closed。legacy 输入若保留只能显式标识，不得静默接入正式路径。
+- **统计口径**：完整可靠观测及已有时间加权语义为主统计；车辆等权为并列补充；轨迹簇抽样用于连续性/车辆代表性敏感性；稳定哈希状态抽样仅用于有界工程预览或诊断。任何有界抽样不得冒充完整分布或用于重算正式 P2 事件率。
+- **边界**：以上授权不决定真实车型到 SUMO `vType` 映射、SUMO 时间步、覆盖阈值、校准/验证划分或 real-real 科学上界；Stage 0.5 Gate 仍 `pending_simulation_sample`，Protocol Lock 和 Stage I 继续阻断。
+- **证据**：`RES-STAGE-0.5-REAL-REF-R2`、`docs/STAGE_0_5_TASK_0_5_1_REAL_REFERENCE_REBUILD.md`。

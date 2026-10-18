@@ -22,6 +22,10 @@
 
 阶段 0.5迁移前部分真实参考。pNEUMA风险指标未纳入、SUMO样本未纳入；按当前“pNEUMA只做运动学”的边界需要重新生成。
 
+## RES-STAGE-0.5-REAL-REF-R2
+
+正式真实参考重建（AAD-0.5.1）。六项正式输入通过路径、SHA-256、来源身份、schema 和质量契约校验：NGSIM US-101 三窗口、Lankershim、Stage 0.2 最终 P2 表和 Stage 0.3 canonical pNEUMA。完整状态共 5,706,252 行；P2=4,545（543/732/1,043/2,227）；pNEUMA=785 条轨迹、1,239,475 条状态。US-101 仍为高速公路跟驰风险主线，Lankershim 独立为城市辅助，pNEUMA 仅为城市运动学。完整正式事件率和 pNEUMA 时间/车辆等权统计绑定既有封存结果；稳定哈希/轨迹簇样本仅为诊断。无 SUMO 样本、无覆盖阈值、无 Gate 升级。报告：`docs/STAGE_0_5_TASK_0_5_1_REAL_REFERENCE_REBUILD.md`；包：`code/outputs/formal/calibration/stage_0_5_real_reference_r2/`。
+
 ## RES-STAGE-0.6-PRELOCK-V2
 
 阶段 0.6数值审计：解析和工程真值检查通过，科学容差仍未冻结。

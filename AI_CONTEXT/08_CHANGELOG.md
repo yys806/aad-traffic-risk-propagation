@@ -131,3 +131,7 @@ t1/t2/t3 GNSS 轨迹逐点相同（同一轨迹复制品）→ 设备间距离�
 ## 2026-10-18 — AAD-0.5.0 场景设计与技术可行性审计
 
 完成只读审计报告 docs/STAGE_0_5_TASK_0_5_0_SCENARIO_DESIGN_AUDIT.md。核验 origin/main=6ee987e、Stage 0.2 R4 NGSIM 四源和 P2=4545、Stage 0.3 R3 单文件 pNEUMA 城市运动学、Stage 0.1 最小双走廊工程能力。确认 US-101/Lankershim/pNEUMA 职责分离候选、稳定哈希抽样和 Energy Distance 的独立性/场景混杂风险，并发现 canonical pNEUMA schema 与 writer 旧字段契约冲突；该冲突和车型映射、抽样权重、时间分辨率、覆盖阈值均待研究者批准。未下载数据、未访问 holdout、未运行 SUMO、未改变 Gate 或 06_DECISIONS。
+
+## 2026-10-18 — AAD-0.5.1 正式真实参考重建
+
+实现 canonical pNEUMA 直连、质量契约 fail-closed 校验、显式 legacy 模式和正式 Stage 0.5 R2 输入 manifest。使用已批准的四个 NGSIM state、Stage 0.2 final_r1 P2 表和 Stage 0.3 canonical pNEUMA 重建 `RES-STAGE-0.5-REAL-REF-R2`；SHA/schema/来源验证通过，正式 P2=4,545，pNEUMA=785/1,239,475。完整时间/车辆等权统计引用封存 R3/R2 摘要；稳定哈希和轨迹簇抽样只作诊断；real-real 独立性不足。新增报告、重建脚本、测试和便携证据索引。未运行 SUMO、未校准、未访问 holdout、未冻结阈值，Gate 仍 `pending_simulation_sample`，Protocol Lock/Stage I 继续阻断。
