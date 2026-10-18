@@ -1,0 +1,156 @@
+{
+  "approval_table": [
+    {
+      "basis": "allows lane composition variation; US-101 lane count is not confirmed as 3",
+      "candidate": 3,
+      "parameter": "number_of_mainline_lanes",
+      "status": "pending_scientific"
+    },
+    {
+      "basis": "100 km/h engineering assumption; not derived from the US-101 reference",
+      "candidate": 27.78,
+      "parameter": "mainline_speed_limit_mps",
+      "status": "pending_scientific"
+    },
+    {
+      "basis": "long enough for stable following; not a measured corridor length",
+      "candidate": 1200.0,
+      "parameter": "mainline_total_length_m",
+      "status": "pending_scientific"
+    },
+    {
+      "basis": "required for reproducible entry/exit behaviour",
+      "candidate": "one_on_ramp_and_one_off_ramp",
+      "parameter": "ramp_presence",
+      "status": "pending_scientific"
+    },
+    {
+      "basis": "engineering ramp assumption",
+      "candidate": 13.89,
+      "parameter": "ramp_speed_limit_mps",
+      "status": "pending_scientific"
+    },
+    {
+      "basis": "freeway mainline following risk scope",
+      "candidate": "none",
+      "parameter": "signal_control",
+      "status": "pending_scientific"
+    }
+  ],
+  "claim": "not_us101_geometry",
+  "classification": "generic_highway_candidate",
+  "design_basis": [
+    "sustained longitudinal car-following on a continuous mainline",
+    "multiple mainline lanes so that lane occupancy and lateral position are variable",
+    "one on-ramp and one off-ramp so that entering, driving and exiting are reproducible",
+    "no traffic signals and no intersections, matching a freeway mainline risk scope"
+  ],
+  "edges": [
+    {
+      "from": "hwy_w",
+      "id": "main_0",
+      "lanes": 3,
+      "priority": 2,
+      "speed_mps": 27.78,
+      "to": "hwy_j1"
+    },
+    {
+      "from": "hwy_j1",
+      "id": "main_1",
+      "lanes": 3,
+      "priority": 2,
+      "speed_mps": 27.78,
+      "to": "hwy_j2"
+    },
+    {
+      "from": "hwy_j2",
+      "id": "main_2",
+      "lanes": 3,
+      "priority": 2,
+      "speed_mps": 27.78,
+      "to": "hwy_e"
+    },
+    {
+      "from": "hwy_on",
+      "id": "onramp",
+      "lanes": 1,
+      "priority": 1,
+      "speed_mps": 13.89,
+      "to": "hwy_j1"
+    },
+    {
+      "from": "hwy_j2",
+      "id": "offramp",
+      "lanes": 1,
+      "priority": 1,
+      "speed_mps": 13.89,
+      "to": "hwy_off"
+    }
+  ],
+  "lane_change_enabled": true,
+  "lengths_m": {
+    "main_0": 400.0,
+    "main_1": 300.0,
+    "main_2": 500.0,
+    "mainline_total": 1200.0
+  },
+  "network_id": "generic_highway_candidate",
+  "nodes": [
+    {
+      "id": "hwy_w",
+      "x": 0.0,
+      "y": 0.0
+    },
+    {
+      "id": "hwy_j1",
+      "x": 400.0,
+      "y": 0.0
+    },
+    {
+      "id": "hwy_j2",
+      "x": 700.0,
+      "y": 0.0
+    },
+    {
+      "id": "hwy_e",
+      "x": 1200.0,
+      "y": 0.0
+    },
+    {
+      "id": "hwy_on",
+      "x": 200.0,
+      "y": -160.0
+    },
+    {
+      "id": "hwy_off",
+      "x": 950.0,
+      "y": -160.0
+    }
+  ],
+  "routes": {
+    "entering": [
+      "onramp",
+      "main_1",
+      "main_2"
+    ],
+    "exiting": [
+      "main_0",
+      "main_1",
+      "offramp"
+    ],
+    "mainline": [
+      "main_0",
+      "main_1",
+      "main_2"
+    ]
+  },
+  "schema_version": "stage_0_5.sumo-engineering.v2.network-candidate.v1",
+  "supports": [
+    "multi_vehicle_longitudinal_following",
+    "continuous_traffic",
+    "multiple_lane_occupancy",
+    "leader_relation_and_net_gap_measurement",
+    "ordinary_deceleration_and_following_response",
+    "reproducible_entry_drive_and_exit"
+  ]
+}

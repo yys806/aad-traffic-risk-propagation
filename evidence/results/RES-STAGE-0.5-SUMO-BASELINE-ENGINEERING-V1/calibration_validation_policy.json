@@ -1,0 +1,43 @@
+{
+  "access_roles": [
+    "calibration",
+    "temporal_validation",
+    "auxiliary"
+  ],
+  "auxiliary": [
+    "lankershim__complete",
+    "pneuma__athens_d1"
+  ],
+  "calibration": [
+    "us101__0750_0805",
+    "us101__0805_0820"
+  ],
+  "cross_road_generalization_claimed": false,
+  "denied_uses": [
+    "calibration access to the temporal validation window",
+    "fitting calibration normalisers on validation-window statistics",
+    "selecting calibration parameters from validation outputs",
+    "creating new favourable acceptance thresholds from published validation summaries",
+    "labelling internal window isolation as the project locked holdout"
+  ],
+  "internal_window_isolation_is_not_project_locked_holdout": true,
+  "leave_one_window_analysis_role": "preregistered_sensitivity_diagnostic_only",
+  "locked_holdout": "forbidden_in_stage_0_5_3",
+  "locked_holdout_accessed": false,
+  "reference_result_id": "RES-STAGE-0.5-REAL-REF-R2",
+  "reference_version": "R2",
+  "schema_version": "stage_0_5.sumo-engineering.v2.calibration-validation-policy.v1",
+  "source_bindings": {
+    "lankershim__complete": "650969c29bfe0e604694dc9d4cc5a47076a6d10188bcd81443b55628a713356c",
+    "p2_formal_events": "aa749da3c8d68521111cc59f0d0f2746fecef868121d37ae76d3c75d43c10ae1",
+    "pneuma__athens_d1": "15893115824c43b00069b13308d9bff5048b92d7d217ac0c38c14523c7d42d65",
+    "us101__0750_0805": "684a5f0b96dc48116f16d581c278d7039c0554bf1c3cea8d6eda3e605e3e8644",
+    "us101__0805_0820": "7b0ef830c97a981da018d4e24b029e38aa2630387c728ea87b57926745880a9f",
+    "us101__0820_0835": "a673217765b9a57ed3ea2c743b56fae0c5f538c7517e8e78685721c750082abb"
+  },
+  "temporal_validation": [
+    "us101__0820_0835"
+  ],
+  "validation_is_same_site_time_extrapolation_only": true,
+  "validation_window_previously_published": true
+}

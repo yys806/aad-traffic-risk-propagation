@@ -86,3 +86,5 @@ Documented Intent：06_DECISIONS指数rho/固定分母/车辆等权。Actual Imp
 2026-10-18 AAD-0.5.1 更新：canonical 接口、车型/质量/来源保留和正式六输入 manifest 已实现并通过测试，旧字段冲突不再是当前阻断。仍保留的科学问题是：`time_weighting_eligible` 不是时长权重；canonical 表不含逐行可靠区间长度，正式时间加权统计必须引用 Stage 0.3 封存摘要；哈希状态样本只作诊断；real-real 独立性不足；SUMO 车型映射、时间步、校准/验证隔离和覆盖阈值待 0.5.2 决定。
 
 2026-10-18 AAD-0.5.2 更新：协议设计审计确认 `evaluate_simulation_coverage()` 的 pooled scaler、行级 real-real Energy Distance 和集合型 stratum coverage 不能直接提供科学容差。US-101 窗口隔离、五层必要指标、块级不确定性、Lankershim/pNEUMA 辅助职责及 0.5.3 输出契约仍为 Awaiting Researcher Decision；未改函数、阈值或 Gate。
+
+2026-10-18 AAD-0.5.3 更新：SUMO `generic_highway_candidate` engineering fixture 与 no-message 状态链已可运行；正式网络/需求/vType/行为/时间步/暖机窗口仍未批准。已核验并修复 TraCI `getLeader` 距离语义（必须加回后车 minGap 才是物理净间距），若沿用旧值会系统性高估闭合风险、低估净间距。SUMO P2 适配因缺少 NGSIM source/member/diagnostic-clock 契约而保持 `pending_sumo_adapter_review`，formal-alignment adapter 亦为 `pending_measurement_equivalence_review`；工程 P2 不能进入正式事件率或现实覆盖 Gate。工程 baseline fixture 在高速度下未产生 TTC<2 s 连续状态（min TTC 6.971 s），说明 SUMO 默认安全跟驰在自由流条件下不会自发产生 P2 事件；P2 适配行为需由显式低速度/停驻队列工程 probe 触发，该 probe 是建模刺激、不是真实交通证据。

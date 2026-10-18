@@ -1,0 +1,127 @@
+{
+  "calibration_validation_policy": {
+    "access_roles": [
+      "calibration",
+      "temporal_validation",
+      "auxiliary"
+    ],
+    "auxiliary": [
+      "lankershim__complete",
+      "pneuma__athens_d1"
+    ],
+    "calibration": [
+      "us101__0750_0805",
+      "us101__0805_0820"
+    ],
+    "cross_road_generalization_claimed": false,
+    "denied_uses": [
+      "calibration access to the temporal validation window",
+      "fitting calibration normalisers on validation-window statistics",
+      "selecting calibration parameters from validation outputs",
+      "creating new favourable acceptance thresholds from published validation summaries",
+      "labelling internal window isolation as the project locked holdout"
+    ],
+    "internal_window_isolation_is_not_project_locked_holdout": true,
+    "leave_one_window_analysis_role": "preregistered_sensitivity_diagnostic_only",
+    "locked_holdout": "forbidden_in_stage_0_5_3",
+    "locked_holdout_accessed": false,
+    "reference_result_id": "RES-STAGE-0.5-REAL-REF-R2",
+    "reference_version": "R2",
+    "schema_version": "stage_0_5.sumo-engineering.v2.calibration-validation-policy.v1",
+    "source_bindings": {
+      "lankershim__complete": "650969c29bfe0e604694dc9d4cc5a47076a6d10188bcd81443b55628a713356c",
+      "p2_formal_events": "aa749da3c8d68521111cc59f0d0f2746fecef868121d37ae76d3c75d43c10ae1",
+      "pneuma__athens_d1": "15893115824c43b00069b13308d9bff5048b92d7d217ac0c38c14523c7d42d65",
+      "us101__0750_0805": "684a5f0b96dc48116f16d581c278d7039c0554bf1c3cea8d6eda3e605e3e8644",
+      "us101__0805_0820": "7b0ef830c97a981da018d4e24b029e38aa2630387c728ea87b57926745880a9f",
+      "us101__0820_0835": "a673217765b9a57ed3ea2c743b56fae0c5f538c7517e8e78685721c750082abb"
+    },
+    "temporal_validation": [
+      "us101__0820_0835"
+    ],
+    "validation_is_same_site_time_extrapolation_only": true,
+    "validation_window_previously_published": true
+  },
+  "closing_speed_semantics": {
+    "definition": "closing_speed_mps = follower_speed_mps - leader_speed_mps",
+    "negative": "leader is pulling away from the follower",
+    "positive": "follower is closing on the leader",
+    "schema_version": "stage_0_5.sumo-engineering.v2.closing-speed-semantics.v1",
+    "stage_0_1_conflict": "Stage 0.1 validation risk used relative_speed_mps = leader_speed - follower_speed, the opposite sign; Stage 0.5 states must not reuse that interpretation",
+    "ttc_rule": "ttc_s = net_gap_m / closing_speed_mps when net_gap_m > 0 and closing_speed_mps > 0",
+    "zero": "zero longitudinal relative speed"
+  },
+  "communication_enabled": false,
+  "configured_seed": 20260907,
+  "duration_s": 40.0,
+  "engineering_only": true,
+  "evaluation_window": {
+    "end_s": 40.0,
+    "start_s": 0.0
+  },
+  "experiment_mode": "no_message_baseline",
+  "fixture": {
+    "lane_change_enabled": false,
+    "notes": "engineering probe fixture: the queue tail is a modelled stationary vehicle, not calibrated real traffic and not a remote-risk treatment",
+    "purpose": "exercise the TTC/P2 adapter with a stopped multi-lane queue tail that is approached by faster followers",
+    "stimulus": "declarative_stop_element_on_queue_tail_vehicles",
+    "stimulus_note": "no message, adoption, treatment or scripted remote-risk response"
+  },
+  "fixture_id": "measurement_probe_queue_stop",
+  "gate_status": "pending_simulation_sample",
+  "information_adoption_enabled": false,
+  "internal_step_s": 0.1,
+  "locked_holdout_accessed": false,
+  "net_gap_semantics": {
+    "not_equivalent_to": "Stage 0.1 relative_speed_mps = leader_speed - follower_speed",
+    "physical_net_gap_definition": "leader_reference_position_m - leader_length_m - follower_reference_position_m",
+    "physical_net_gap_rule": "net_gap_m = leader_traci_distance_m + follower_min_gap_m",
+    "reference_point": "SUMO vehicle position on lane (front bumper along the lane)",
+    "schema_version": "stage_0_5.sumo-engineering.v2.net-gap-semantics.v1",
+    "traci_call": "traci.vehicle.getLeader(vehicle_id, lookahead_m)",
+    "traci_distance_definition": "(leader_reference_position_m - leader_length_m - follower_reference_position_m) - follower_min_gap_m",
+    "verification_scope": "engineering fixture only: three vType pairs plus a stopped-equilibrium probe; no reality claim",
+    "verified": true
+  },
+  "network_claim": "not_us101_geometry",
+  "network_classification": "generic_highway_candidate",
+  "network_id": "generic_highway_candidate",
+  "observation_decimation_factor": 1,
+  "parameter_status": {
+    "demand": "engineering_fixture_only",
+    "driver_behavior": "engineering_fixture_only",
+    "gate_criteria": "pending_scientific",
+    "network": "engineering_fixture_only",
+    "scientific_tolerances": "pending_scientific",
+    "time_step": "engineering_fixture_only",
+    "vtype_mapping": "engineering_fixture_only",
+    "warmup_and_evaluation_window": "engineering_fixture_only"
+  },
+  "recorded_observation_step_s": 0.1,
+  "result_id": "RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1",
+  "scenario_id": "us101_highway_baseline",
+  "scenario_role": "highway_following_risk_primary",
+  "schema_version": "stage_0_5.sumo-engineering.v2.config.v1",
+  "scientific_claim_eligible": false,
+  "simulation_seed": 20260907,
+  "source_risk_treatment_enabled": false,
+  "stage_0_5_status_for_stage_1_reference": "no_message_baseline_is_not_the_stage_1_zero_zero_cell",
+  "time_config_status": "engineering_candidate",
+  "units": {
+    "acceleration_mps2": "m/s^2",
+    "closing_speed_mps": "m/s",
+    "leader_traci_distance_m": "m",
+    "longitudinal_position_m": "m",
+    "net_gap_m": "m",
+    "p2_evaluable_following_exposure_s": "s",
+    "p2_event_count": "1",
+    "p2_event_rate_per_vehicle_hour": "1/h",
+    "simulation_step": "1",
+    "speed_mps": "m/s",
+    "time_s": "s",
+    "ttc_s": "s",
+    "x_m": "m",
+    "y_m": "m"
+  },
+  "warmup_s": 0.0
+}

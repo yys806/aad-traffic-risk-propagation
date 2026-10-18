@@ -1,0 +1,133 @@
+{
+  "engineering_fixtures": {
+    "engineering_car": {
+      "accel_mps2": 2.0,
+      "car_following_model": "sumo_default_krauss",
+      "decel_mps2": 4.5,
+      "emergency_decel_mps2": 9.0,
+      "length_m": 5.0,
+      "mapping_status": "engineering_fixture_only",
+      "max_speed_mps": 27.78,
+      "min_gap_m": 2.0,
+      "raw_vehicle_type": "engineering_car",
+      "sumo_vtype": "engineering_car",
+      "tau_s": 1.0,
+      "vehicle_class": "passenger"
+    },
+    "engineering_heavy_fixture": {
+      "accel_mps2": 1.2,
+      "car_following_model": "sumo_default_krauss",
+      "decel_mps2": 4.0,
+      "emergency_decel_mps2": 7.0,
+      "length_m": 10.0,
+      "mapping_status": "engineering_fixture_only",
+      "max_speed_mps": 22.0,
+      "min_gap_m": 3.0,
+      "raw_vehicle_type": "engineering_heavy_fixture",
+      "sumo_vtype": "engineering_heavy_fixture",
+      "tau_s": 1.2,
+      "vehicle_class": "heavy"
+    },
+    "engineering_queue_fixture": {
+      "accel_mps2": 2.0,
+      "car_following_model": "sumo_default_krauss",
+      "decel_mps2": 4.5,
+      "emergency_decel_mps2": 9.0,
+      "lane_change_disabled": true,
+      "length_m": 5.0,
+      "mapping_status": "engineering_fixture_only",
+      "max_speed_mps": 10.0,
+      "min_gap_m": 2.0,
+      "raw_vehicle_type": "engineering_queue_fixture",
+      "sumo_vtype": "engineering_queue_fixture",
+      "tau_s": 1.0,
+      "vehicle_class": "passenger"
+    }
+  },
+  "mapping_gaps": [
+    "Car",
+    "Taxi",
+    "Motorcycle",
+    "Bus",
+    "Medium Vehicle",
+    "Heavy Vehicle"
+  ],
+  "mapping_version": "candidate-v1",
+  "real_reference_raw_types": {
+    "Bus": {
+      "acceleration_capability": null,
+      "car_following_model": null,
+      "deceleration_capability": null,
+      "mapping_status": "unmapped",
+      "mapping_version": "candidate-v1",
+      "model_parameters": null,
+      "raw_vehicle_type": "Bus",
+      "reason": "no researcher-approved scientific mapping exists for this raw class",
+      "sumo_vtype": null,
+      "vehicle_length_m": null
+    },
+    "Car": {
+      "acceleration_capability": null,
+      "car_following_model": null,
+      "deceleration_capability": null,
+      "mapping_status": "unmapped",
+      "mapping_version": "candidate-v1",
+      "model_parameters": null,
+      "raw_vehicle_type": "Car",
+      "reason": "no researcher-approved scientific mapping exists for this raw class",
+      "sumo_vtype": null,
+      "vehicle_length_m": null
+    },
+    "Heavy Vehicle": {
+      "acceleration_capability": null,
+      "car_following_model": null,
+      "deceleration_capability": null,
+      "mapping_status": "unmapped",
+      "mapping_version": "candidate-v1",
+      "model_parameters": null,
+      "raw_vehicle_type": "Heavy Vehicle",
+      "reason": "no researcher-approved scientific mapping exists for this raw class",
+      "sumo_vtype": null,
+      "vehicle_length_m": null
+    },
+    "Medium Vehicle": {
+      "acceleration_capability": null,
+      "car_following_model": null,
+      "deceleration_capability": null,
+      "mapping_status": "unmapped",
+      "mapping_version": "candidate-v1",
+      "model_parameters": null,
+      "raw_vehicle_type": "Medium Vehicle",
+      "reason": "no researcher-approved scientific mapping exists for this raw class",
+      "sumo_vtype": null,
+      "vehicle_length_m": null
+    },
+    "Motorcycle": {
+      "acceleration_capability": null,
+      "car_following_model": null,
+      "deceleration_capability": null,
+      "mapping_status": "unmapped",
+      "mapping_version": "candidate-v1",
+      "model_parameters": null,
+      "raw_vehicle_type": "Motorcycle",
+      "reason": "no researcher-approved scientific mapping exists for this raw class",
+      "sumo_vtype": null,
+      "vehicle_length_m": null
+    },
+    "Taxi": {
+      "acceleration_capability": null,
+      "car_following_model": null,
+      "deceleration_capability": null,
+      "mapping_status": "unmapped",
+      "mapping_version": "candidate-v1",
+      "model_parameters": null,
+      "raw_vehicle_type": "Taxi",
+      "reason": "no researcher-approved scientific mapping exists for this raw class",
+      "sumo_vtype": null,
+      "vehicle_length_m": null
+    }
+  },
+  "reporting_rule": "unmapped classes must be reported as gaps; they must never be silently converted to a passenger-car type and never used for scientific vehicle-class calibration",
+  "schema_version": "stage_0_5.sumo-engineering.v2.vehicle-type-mapping-candidate.v1",
+  "scientific_mapping_approved": false
+}

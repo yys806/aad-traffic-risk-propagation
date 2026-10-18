@@ -25,6 +25,8 @@
 （2026-10-18 AAD-0.5.1 更新）`RES-STAGE-0.5-REAL-REF-R2` 已完成正式真实参考重建：canonical pNEUMA 已原生接入并通过 fail-closed 质量/来源契约；US-101 三窗口、Lankershim、正式 P2=4,545 和 Stage 0.3 封存运动学统计均已绑定。旧句描述 0.5.0 历史冲突；当前仍缺 SUMO 校准样本，Gate=`pending_simulation_sample`。
 
 （2026-10-18 AAD-0.5.2 更新）已完成分场景现实覆盖指标与校准—验证协议候选设计。US-101 建议按五层必要条件评价，Lankershim 独立辅助，pNEUMA 仅城市运动学；现有 pooled real-real Energy Distance 不具备直接科学容差资格。校准/验证窗口、容差、Energy Distance 角色、辅助场景范围和 0.5.3 前置契约均待研究者批准，未运行 SUMO。
+
+（2026-10-18 AAD-0.5.3 更新）已建立独立 `stage_0_5_sumo.py` 工程骨架、`no_message_baseline` 运行入口和校准/验证 fail-closed 访问守卫。US-101 `generic_highway_candidate`（3 主线段 × 3 车道 + 入口匝道 + 出口匝道）在本地 SUMO 1.26.0 完成两个工程 fixture：baseline（8,453 state、17 vehicles、6,118 leader rows、724 valid TTC、0 个工程 P2）与 measurement probe（2,720 state、7 vehicles、1 个 P2 事件，onset 3.1 s、确认 3.3 s、TTC min 1.794 s）。TraCI `getLeader` 距离已核验为「物理保险杠净间距 − 后车 minGap」，统一换算为 `net_gap_m = traci_distance + follower_min_gap`，同车道残差 0.0 m；`closing_speed_mps = follower − leader`。工程 P2 经 SUMO-native adapter 与 Stage 0.2 formal-alignment adapter 双路确认，但正式等价性仍 `pending_measurement_equivalence_review`；Lankershim/pNEUMA 保持 candidate_entry_only，pNEUMA 六类原始车型全部 `unmapped`。结果 `RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1` 仅 engineering_only，Gate 仍 `pending_simulation_sample`。
 - `stage_0_6`：技术真值检查已有证据，科学容差与协议锁未完成。
 
 ## 当前最重要的问题

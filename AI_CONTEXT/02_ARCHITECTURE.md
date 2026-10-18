@@ -35,6 +35,8 @@ SUMO -> 四格与五表 ----+
 
 `real_trajectory.py` 为 NGSIM/pNEUMA 读取层；`ngsim_risk_calibration.py` 调用 NGSIM 读取与 `calibration.py` 表契约；`simulation_real_coverage.py` 调用 `calibration.py` 的稳健缩放和 energy distance；`protocol_lock.py` 聚合阶段 0.2/0.4/0.5/0.6 Gate。阶段 0.3 的产物通过阶段 0.5 间接进入准入链。
 
+2026-10-18 AAD-0.5.3 新增 `stage_0_5_sumo.py` 与 `run_stage_0_5_sumo_baseline.py`。该模块独立于 Stage 0.1，提供三场景职责 manifest、`generic_highway_candidate` 参数化走廊（3 主线段 × 3 车道 + 入口/出口匝道）、两个显式工程 fixture（baseline_mixed_demand、measurement_probe_queue_stop）、no-message TraCI runner、internal/recorded 时间步分离、SUMO-native leader/net-gap/closing-speed/TTC 状态、工程 P2/exposure adapter、Stage 0.2 formal-alignment adapter、以及 `CalibrationValidationGuard` fail-closed 访问守卫；不承载消息处理、校准寻优或 Stage I 因果逻辑。Lankershim/pNEUMA 目前仅保留 candidate_entry_only 配置与显式 `unmapped` 车型缺口。
+
 ## 重要配置
 
 - 当前代码依赖：`code/pyproject.toml`。

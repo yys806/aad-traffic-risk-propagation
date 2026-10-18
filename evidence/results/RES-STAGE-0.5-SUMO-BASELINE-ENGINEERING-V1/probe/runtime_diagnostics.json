@@ -1,0 +1,104 @@
+{
+  "arrived_vehicles": 0,
+  "collisions": 0,
+  "configured_vehicles": 7,
+  "departed_vehicles": 7,
+  "fixture_id": "measurement_probe_queue_stop",
+  "insertion_failures": [],
+  "internal_step_s": 0.1,
+  "max_pending_vehicles": 0,
+  "net_gap_crosscheck": {
+    "lane_position_residual_max_abs_m": 0.0,
+    "residual_definition": "net_gap_m minus the independently derived same-lane physical gap",
+    "rule": "net_gap_m = leader_traci_distance_m + follower_min_gap_m",
+    "same_lane_pair_count": 1520,
+    "xy_gap_residual_max_abs_m": 0.0
+  },
+  "network_facts": {
+    "edges": {
+      "main_0": {
+        "lane_count": 3,
+        "lane_length_m": [
+          386.5,
+          386.5,
+          386.5
+        ],
+        "speed_limit_mps": [
+          27.78,
+          27.78,
+          27.78
+        ]
+      },
+      "main_1": {
+        "lane_count": 3,
+        "lane_length_m": [
+          312.94,
+          312.94,
+          312.94
+        ],
+        "speed_limit_mps": [
+          27.78,
+          27.78,
+          27.78
+        ]
+      },
+      "main_2": {
+        "lane_count": 3,
+        "lane_length_m": [
+          483.5,
+          483.5,
+          483.5
+        ],
+        "speed_limit_mps": [
+          27.78,
+          27.78,
+          27.78
+        ]
+      },
+      "offramp": {
+        "lane_count": 1,
+        "lane_length_m": [
+          277.51
+        ],
+        "speed_limit_mps": [
+          13.89
+        ]
+      },
+      "onramp": {
+        "lane_count": 1,
+        "lane_length_m": [
+          239.26
+        ],
+        "speed_limit_mps": [
+          13.89
+        ]
+      }
+    },
+    "normalization_note": "netconvert applies network offset/normalisation, so built lane geometry can differ from the design-intent node coordinates; audited lane facts come from the built network",
+    "source_network_sha256": "5c574c7453332216d8b9e7839e62b57db90614b363a6a2b8155bc5641a128efc"
+  },
+  "not_departed_within_window": [],
+  "observation_cadence_check": {
+    "declared_step_s": 0.1,
+    "link_count": 399,
+    "max_abs_error_s": 5.689893001203927e-15,
+    "observed_max_step_s": 0.10000000000000142,
+    "observed_min_step_s": 0.09999999999999432
+  },
+  "observation_decimation_factor": 1,
+  "recorded_observation_step_s": 0.1,
+  "run_id": "stage_0_5_no_message_measurement_probe_queue_stop_20260907",
+  "schema_version": "stage_0_5.sumo-engineering.v2.runtime-diagnostics.v1",
+  "seed": 20260907,
+  "simulation_step_length_s": 0.1,
+  "sumo_command": [
+    "C:\\Program Files (x86)\\Eclipse\\Sumo\\bin\\sumo.exe",
+    "-c",
+    "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_sumo_baseline_engineering_v1_probe\\simulation.sumocfg",
+    "--seed",
+    "20260907",
+    "--no-step-log",
+    "true"
+  ],
+  "sumo_time_s": 40.0
+}

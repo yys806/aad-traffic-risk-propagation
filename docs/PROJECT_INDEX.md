@@ -55,3 +55,5 @@
 Stage 0.5 场景设计审计：docs/STAGE_0_5_TASK_0_5_0_SCENARIO_DESIGN_AUDIT.md。只读审计确认真实职责分离、正式输入候选、pNEUMA schema 接口冲突、SUMO 工程缺口和覆盖统计限制；未生成 SUMO 样本、未通过 Stage 0.5 Gate。
 
 Stage 0.5.1 正式真实参考重建：`docs/STAGE_0_5_TASK_0_5_1_REAL_REFERENCE_REBUILD.md`、`RES-STAGE-0.5-REAL-REF-R2`。Stage 0.5.2 分场景覆盖协议候选：`docs/STAGE_0_5_TASK_0_5_2_COVERAGE_PROTOCOL_DESIGN.md`。两项均保持 `pending_simulation_sample`，未运行 SUMO、未冻结阈值或验证划分。
+
+Stage 0.5.3 SUMO 工程基线：`docs/STAGE_0_5_TASK_0_5_3_SUMO_BASELINE_ENGINEERING.md`、`RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1`。US-101 `generic_highway_candidate` 完成 baseline 与 measurement probe 两个 engineering-only fixture，状态/跟驰/净间距/闭合速度/TTC/暴露/工程 P2 与校准验证隔离均已接通；正式网络、需求、车型映射、时间步、暖机窗口、P2 正式等价性、覆盖容差和独立验证仍未完成。

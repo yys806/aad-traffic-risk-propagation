@@ -1,0 +1,146 @@
+{
+  "access_roles": [
+    "calibration",
+    "temporal_validation",
+    "auxiliary"
+  ],
+  "decisions": [
+    {
+      "allowed": true,
+      "checked_bindings": {},
+      "purpose": "stage_0_5_3 policy self-check",
+      "reason": "allowed_by_policy",
+      "restricted_sources": [],
+      "role": "calibration",
+      "sources": [
+        "us101__0750_0805",
+        "us101__0805_0820"
+      ]
+    },
+    {
+      "allowed": false,
+      "checked_bindings": {},
+      "purpose": "stage_0_5_3 denial self-check",
+      "reason": "restricted_source_for_role",
+      "restricted_sources": [
+        "us101__0820_0835"
+      ],
+      "role": "calibration",
+      "sources": [
+        "us101__0820_0835"
+      ]
+    },
+    {
+      "allowed": false,
+      "checked_bindings": {},
+      "purpose": "stage_0_5_3 denial self-check",
+      "reason": "restricted_source_for_role",
+      "restricted_sources": [
+        "lankershim__complete",
+        "pneuma__athens_d1"
+      ],
+      "role": "calibration",
+      "sources": [
+        "lankershim__complete",
+        "pneuma__athens_d1"
+      ]
+    },
+    {
+      "allowed": false,
+      "checked_bindings": {},
+      "purpose": "stage_0_5_3 denial self-check",
+      "reason": "restricted_source_for_role",
+      "restricted_sources": [
+        "us101__0750_0805",
+        "us101__0805_0820"
+      ],
+      "role": "temporal_validation",
+      "sources": [
+        "us101__0750_0805",
+        "us101__0805_0820"
+      ]
+    },
+    {
+      "allowed": false,
+      "checked_bindings": {},
+      "purpose": "stage_0_5_3 denial self-check",
+      "reason": "unknown_access_role",
+      "restricted_sources": [
+        "us101__0750_0805",
+        "us101__0805_0820"
+      ],
+      "role": "locked_holdout",
+      "sources": [
+        "us101__0750_0805",
+        "us101__0805_0820"
+      ]
+    }
+  ],
+  "denied_count": 4,
+  "denied_requests": [
+    {
+      "allowed": false,
+      "checked_bindings": {},
+      "purpose": "stage_0_5_3 denial self-check",
+      "reason": "restricted_source_for_role",
+      "restricted_sources": [
+        "us101__0820_0835"
+      ],
+      "role": "calibration",
+      "sources": [
+        "us101__0820_0835"
+      ]
+    },
+    {
+      "allowed": false,
+      "checked_bindings": {},
+      "purpose": "stage_0_5_3 denial self-check",
+      "reason": "restricted_source_for_role",
+      "restricted_sources": [
+        "lankershim__complete",
+        "pneuma__athens_d1"
+      ],
+      "role": "calibration",
+      "sources": [
+        "lankershim__complete",
+        "pneuma__athens_d1"
+      ]
+    },
+    {
+      "allowed": false,
+      "checked_bindings": {},
+      "purpose": "stage_0_5_3 denial self-check",
+      "reason": "restricted_source_for_role",
+      "restricted_sources": [
+        "us101__0750_0805",
+        "us101__0805_0820"
+      ],
+      "role": "temporal_validation",
+      "sources": [
+        "us101__0750_0805",
+        "us101__0805_0820"
+      ]
+    },
+    {
+      "allowed": false,
+      "checked_bindings": {},
+      "purpose": "stage_0_5_3 denial self-check",
+      "reason": "unknown_access_role",
+      "restricted_sources": [
+        "us101__0750_0805",
+        "us101__0805_0820"
+      ],
+      "role": "locked_holdout",
+      "sources": [
+        "us101__0750_0805",
+        "us101__0805_0820"
+      ]
+    }
+  ],
+  "fail_closed": true,
+  "locked_holdout_accessed": false,
+  "policy_schema_version": "stage_0_5.sumo-engineering.v2.calibration-validation-policy.v1",
+  "request_count": 5,
+  "schema_version": "stage_0_5.sumo-engineering.v2.access-audit.v1",
+  "validation_window_read": false
+}

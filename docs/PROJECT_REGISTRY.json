@@ -82,24 +82,31 @@
     "docs/STAGE_0_4_LIMITED_SCIENTIFIC_ACCEPTANCE_2026-10-17.md",
     "code/scripts/rebuild_stage_0_5_real_reference.py",
     "docs/STAGE_0_5_TASK_0_5_1_REAL_REFERENCE_REBUILD.md",
-    "docs/STAGE_0_5_TASK_0_5_2_COVERAGE_PROTOCOL_DESIGN.md"
+    "docs/STAGE_0_5_TASK_0_5_2_COVERAGE_PROTOCOL_DESIGN.md",
+    "code/src/riskprop/stage_0_5_sumo.py",
+    "code/scripts/run_stage_0_5_sumo_baseline.py",
+    "code/configs/stage_0_5_sumo_engineering_v1.json",
+    "code/tests/test_stage_0_5_sumo.py",
+    "docs/STAGE_0_5_TASK_0_5_3_SUMO_BASELINE_ENGINEERING.md"
   ],
   "current": {
     "active_experiment_id": "stage_0_5",
-    "active_task": "Stage 0.5.2 coverage protocol candidates prepared; researcher approval is pending for US-101 isolation, metric hierarchy, tolerances, Energy Distance role, auxiliary scope and Stage 0.5.3 contract.",
-    "why_now": "R2 real references are directly consumable with SHA/schema/quality contracts. The next decision is the scenario-specific coverage protocol and calibration/validation isolation; no SUMO sample, scientific threshold or Gate decision has been made.",
+    "active_task": "Stage 0.5.3: no-message SUMO engineering baseline and measurement interface built and engineering-verified; researcher approval of network/demand/vType/time/tolerance parameters is pending.",
+    "why_now": "The Stage 0.5.2 six-principle decision is recorded and the engineering skeleton can now produce auditable no-message SUMO states, following measurements and P2 adapters. The next decision is whether to accept the candidate corridor, demand, vType and time settings as the Stage 0.5.4 calibration base; no scientific tolerance, Gate decision or Stage I access has been made.",
     "next_decision_owner": null,
     "portable_gate_paths": [
       "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",
       "evidence/results/RES-PROTOCOL-READINESS-V1/protocol_lock_readiness_v1.json",
       "evidence/results/RES-STAGE-0.3-BOUNDARY-REPAIR-R2/audit.json",
       "evidence/results/RES-STAGE-0.3-SCIENTIFIC-ACCEPTANCE-R3/scientific_gate_report.json",
-      "evidence/results/RES-STAGE-0.5-REAL-REF-R2/audit.json"
+      "evidence/results/RES-STAGE-0.5-REAL-REF-R2/audit.json",
+      "evidence/results/RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1/audit.json"
     ],
     "local_gate_paths": [
       "code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r4/scientific_gate_report.json",
       "code/outputs/formal/calibration/stage_0_3_scientific_acceptance_20261016_r3/scientific_gate_report.json",
-      "code/outputs/formal/calibration/stage_0_5_real_reference_r2/audit.json"
+      "code/outputs/formal/calibration/stage_0_5_real_reference_r2/audit.json",
+      "code/outputs/formal/calibration/stage_0_5_sumo_baseline_engineering_v1_baseline/audit.json"
     ]
   },
   "experiments": [
@@ -303,7 +310,6 @@
         "RES-STAGE-0.4-RSE-BSM-V1",
         "RES-STAGE-0.4-SEE-V2X-MINIMAL-V1",
         "RES-STAGE-0.4-SEE-V2X-REAUDIT-V1",
-        "RES-STAGE-0.4-SEE-V2X-BSM-V1",
         "RES-STAGE-0.4-SEE-V2X-BSM-REAUDIT-V1",
         "RES-STAGE-0.4-SEE-V2X-GNSS-REPAIR-V1",
         "RES-STAGE-0.4-LIMITED-SCIENTIFIC-ACCEPTANCE-V1"
@@ -314,7 +320,7 @@
         "loss_observable",
         "adoption_observable"
       ],
-      "current_conclusion": "Stage 0.4 Limited Scientific Acceptance（AAD-0.4.8，研究者批准）：Gate=pass_limited、Stage Status=Completed / Closed (Limited Scope)。验收范围仅限可观测性边界+描述性通信证据+参数不确定性处理原则；不验收真实性能模型/数值校准/距离函数/采用/核心因果效应。Verified：RV_RX 连续性、RSE_BSM 车辆侧接收内容、SEE-V2X 配对/接收比例/时延数值；Unverified（不升级）：链路 PDR、接收机会、绝对时延、距离—PDR、采用、自然交通外推；通信参数未冻结未校准（不足部分为标记不确定的实验/敏感性参数）。RV_RX V3 与 Packet 403 历史保留；Protocol Lock 与 Stage I 未解锁（readiness 测试锁定）。",
+      "current_conclusion": "Stage 0.4 Limited Scientific Acceptance（AAD-0.4.8，研究者批准）：Gate=pass_limited、Stage Status=Completed / Closed (Limited Scope)。验收范围仅限可观测性边界+描述性通信证据+参数不确定性处理原则；不验收真实性能模型/数值校准/距离函数/采用/核心因果效应。Verified：RV_RX 连续性、RSE_BSM 车辆侧接收内容、SEE-V2X 配对/接收比例/时延数值；Unverified（不升级）：链路 PDR、接收机会、绝对时延、距离—PDR、采用、自然交通外推；通信参数未冻结未校准（不足部分为标记不确定的实验/敏感性参数）。RV_RX V3 与 Packet 403 历史保留；Protocol Lock 与 Stage I 未解锁（readiness 测试锁定）。 注册表订正（2026-10-18）：已被科学再审计取代的旧结果 id RES-STAGE-0.4-SEE-V2X-BSM-V1 从结果索引移除，权威记录为 RES-STAGE-0.4-SEE-V2X-BSM-REAUDIT-V1；已封存的历史 gate 报告保留其当时的 id。",
       "gate": {
         "status": "pass_limited",
         "portable_path": "evidence/results/RES-STAGE-0.4-LIMITED-SCIENTIFIC-ACCEPTANCE-V1/gate_report.json",
@@ -329,32 +335,47 @@
       "research_question": "SUMO 基础运动与跟驰风险是否明显脱离真实交通范围？",
       "date": "2026-09-07",
       "status": "active_pending_simulation_sample",
-      "code_version": "canonical pNEUMA direct writer and formal R2 input-contract/rebuild helpers; no SUMO sample",
+      "code_version": "canonical real reference R2 plus independent Stage 0.5.3 no-message SUMO engineering skeleton (scenario/network/demand/vType configs, TraCI runner, unified state contract, TTC/P2 adapters, calibration-validation access guard); no scientific calibration",
       "code_paths": [
-        "code/src/riskprop/simulation_real_coverage.py"
+        "code/src/riskprop/simulation_real_coverage.py",
+        "code/src/riskprop/stage_0_5_sumo.py"
       ],
       "entrypoints": [
         "code/scripts/prepare_stage_0_5_real_reference.py",
         "code/scripts/rebuild_stage_0_5_real_reference.py",
-        "code/scripts/run_stage_0_5_coverage.py"
+        "code/scripts/run_stage_0_5_coverage.py",
+        "code/scripts/run_stage_0_5_sumo_baseline.py"
       ],
       "test_paths": [
-        "code/tests/test_simulation_real_coverage.py"
+        "code/tests/test_simulation_real_coverage.py",
+        "code/tests/test_stage_0_5_sumo.py"
       ],
-      "configuration": "R2 formal real reference: complete approved inputs as main evidence; bounded fixed-seed state/trajectory diagnostics only; US-101 primary, Lankershim auxiliary, pNEUMA urban kinematics only",
+      "configuration": "R2 real reference plus two no_message_baseline generic-highway engineering fixtures (baseline_mixed_demand, measurement_probe_queue_stop); US-101 primary, Lankershim auxiliary entry-only, pNEUMA urban kinematics entry-only; all network/demand/vType/behaviour/time settings are engineering_fixture_only",
       "parameters": {
         "seed": 20260907,
         "max_rows_per_group": 5000,
         "pneuma_role": "urban_kinematics_only",
         "formal_reference_result_id": "RES-STAGE-0.5-REAL-REF-R2",
-        "formal_thresholds_frozen": false
+        "formal_thresholds_frozen": false,
+        "sumo_engineering_result_id": "RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1",
+        "scientific_calibration_started": false,
+        "sumo_engineering_fixtures": [
+          "baseline_mixed_demand",
+          "measurement_probe_queue_stop"
+        ],
+        "sumo_internal_step_s": 0.1,
+        "sumo_recorded_observation_step_s": 0.1,
+        "sumo_engineering_network": "generic_highway_candidate",
+        "formal_p2_equivalence_proven": false,
+        "reality_coverage_completed": false
       },
       "data_version": "RES-STAGE-0.5-REAL-REF-R2; Stage 0.2 R4 four states + final_r1 P2 + Stage 0.3 R2 canonical/R3 summaries",
       "model": "deterministic simulation-to-real coverage audit",
       "model_checkpoint": "not_applicable",
       "result_ids": [
         "RES-STAGE-0.5-REAL-REF-V1",
-        "RES-STAGE-0.5-REAL-REF-R2"
+        "RES-STAGE-0.5-REAL-REF-R2",
+        "RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1"
       ],
       "core_metrics": [
         "formal_input_manifest",
@@ -365,9 +386,19 @@
         "vehicle_equal_statistics_reference",
         "sampling_sensitivity",
         "source_independence_audit",
-        "simulation_sample_included"
+        "simulation_sample_included",
+        "no_message_mode",
+        "state_schema",
+        "leader_following_measurement",
+        "net_gap_conversion_crosscheck",
+        "ttc_status",
+        "p2_engineering_adapter",
+        "p2_measurement_equivalence_status",
+        "internal_vs_recorded_time_step",
+        "calibration_validation_access_policy",
+        "engineering_reproducibility"
       ],
-      "current_conclusion": "R2 formal real-reference package rebuilt and SHA/schema/source validated. Complete formal P2 and sealed Stage 0.3 summaries are retained; bounded samples are diagnostics only. No SUMO sample or scientific coverage threshold is present; Gate remains pending_simulation_sample.",
+      "current_conclusion": "R2 real reference plus an independent US-101 generic-highway no-message engineering baseline are available. The baseline fixture records 8,453 unified states from 17 vehicles with exact net-gap cross-checks, audited 0.1 s cadence, 609.4 s of P2-evaluable following exposure and zero P2 events; the probe fixture confirms one P2 event in both the SUMO-native engineering adapter and the Stage 0.2 formal-alignment adapter. Formal P2 comparability, real network/demand/vType/time approval, coverage tolerance and independent validation all remain pending. Gate stays pending_simulation_sample.",
       "gate": {
         "status": "pending_simulation_sample",
         "portable_path": "evidence/results/RES-STAGE-0.5-REAL-REF-R2/audit.json"
@@ -763,6 +794,83 @@
       "gate_status": "pending_simulation_sample",
       "paper_locations": [
         "docs/STAGE_0_5_TASK_0_5_1_REAL_REFERENCE_REBUILD.md"
+      ],
+      "scientific_claim_eligible": false
+    },
+    {
+      "id": "RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1",
+      "experiment_id": "stage_0_5",
+      "name": "Stage 0.5 SUMO no-message baseline engineering V1",
+      "status": "verified_engineering_only",
+      "portable_evidence_paths": [
+        "evidence/results/RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1/access_audit.json",
+        "evidence/results/RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1/audit.json",
+        "evidence/results/RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1/calibration_validation_policy.json",
+        "evidence/results/RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1/config.json",
+        "evidence/results/RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1/demand_config.json",
+        "evidence/results/RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1/formal_adapter_audit.json",
+        "evidence/results/RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1/manifest.json",
+        "evidence/results/RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1/measurement_status_summary.json",
+        "evidence/results/RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1/measurement_support_matrix.json",
+        "evidence/results/RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1/network_design_candidate.json",
+        "evidence/results/RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1/p2_exposure_summary.json",
+        "evidence/results/RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1/provenance.json",
+        "evidence/results/RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1/runtime_diagnostics.json",
+        "evidence/results/RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1/scenario_manifest.json",
+        "evidence/results/RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1/SHA256SUMS",
+        "evidence/results/RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1/sumo_formal_field_map.json",
+        "evidence/results/RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1/vehicle_type_config.json",
+        "evidence/results/RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1/probe/SHA256SUMS",
+        "evidence/results/RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1/probe/audit.json",
+        "evidence/results/RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1/probe/config.json",
+        "evidence/results/RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1/probe/formal_adapter_audit.json",
+        "evidence/results/RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1/probe/manifest.json",
+        "evidence/results/RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1/probe/measurement_status_summary.json",
+        "evidence/results/RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1/probe/p2_exposure_summary.json",
+        "evidence/results/RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1/probe/provenance.json",
+        "evidence/results/RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1/probe/runtime_diagnostics.json"
+      ],
+      "local_artifact_paths": [
+        "code/outputs/formal/calibration/stage_0_5_sumo_baseline_engineering_v1_baseline",
+        "code/outputs/formal/calibration/stage_0_5_sumo_baseline_engineering_v1_probe"
+      ],
+      "code_version_source": "code/src/riskprop/stage_0_5_sumo.py; code/scripts/run_stage_0_5_sumo_baseline.py; code/configs/stage_0_5_sumo_engineering_v1.json; provenance.json",
+      "configuration_source": "code/configs/stage_0_5_sumo_engineering_v1.json plus per-package config.json, network_design_candidate.json, demand_config.json and vehicle_type_config.json",
+      "data_version_source": "RES-STAGE-0.5-REAL-REF-R2 role binding only (US-101 primary, Lankershim auxiliary entry-only, pNEUMA urban kinematics entry-only); the engineering runner reads no real-reference state",
+      "core_metrics": {
+        "scenario_id": "us101_highway_baseline",
+        "sumo_version": "Eclipse SUMO sumo 1.26.0",
+        "seed": 20260907,
+        "network": "generic_highway_candidate",
+        "internal_step_s": 0.1,
+        "recorded_observation_step_s": 0.1,
+        "baseline_state_rows": 8453,
+        "baseline_vehicles": 17,
+        "baseline_arrived_vehicles": 17,
+        "baseline_leader_observed_rows": 6118,
+        "baseline_ttc_valid_rows": 724,
+        "baseline_min_ttc_s": 6.971,
+        "baseline_p2_engineering_events": 0,
+        "baseline_p2_evaluable_following_exposure_s": 609.4,
+        "baseline_reliable_closing_exposure_s": 71.7,
+        "probe_state_rows": 2720,
+        "probe_vehicles": 7,
+        "probe_p2_engineering_events": 1,
+        "probe_formal_alignment_events": 1,
+        "probe_event_start_s": 3.1,
+        "probe_event_confirm_s": 3.3,
+        "probe_event_ttc_min_s": 1.79431,
+        "net_gap_lane_position_residual_max_abs_m": 0.0,
+        "observation_cadence_max_abs_error_s": 5.7e-15,
+        "p2_measurement_equivalence_status": "pending_measurement_equivalence_review",
+        "engineering_only": true,
+        "scientific_claim_eligible": false,
+        "simulation_sample_included": false
+      },
+      "current_conclusion": "The independent no-message SUMO fixture reproduces the required state/leader/net-gap/closing-speed/TTC/exposure contract, converts the TraCI getLeader distance into the physical bumper-to-bumper net gap with an exact cross-check, keeps the recorded cadence auditable, refuses calibration access to the temporal validation window and confirms one P2 event in both adapters on the probe fixture. Network, demand, vType, behaviour and time settings stay engineering fixtures; formal P2 equivalence and reality coverage remain pending.",
+      "gate_status": "pending_simulation_sample",
+      "paper_locations": [
+        "docs/STAGE_0_5_TASK_0_5_3_SUMO_BASELINE_ENGINEERING.md"
       ],
       "scientific_claim_eligible": false
     },
@@ -1416,7 +1524,7 @@
       ],
       "code_version_source": "code/outputs/formal/calibration/stage_0_4_see_v2x_bsm_reaudit_v1/provenance.json",
       "configuration_source": "code/outputs/formal/calibration/stage_0_4_see_v2x_bsm_reaudit_v1/config.json",
-      "data_version_source": "emulating_applications.tar.gz (same as RES-STAGE-0.4-SEE-V2X-BSM-V1)",
+      "data_version_source": "emulating_applications.tar.gz (same as RES-STAGE-0.4-SEE-V2X-BSM-REAUDIT-V1)",
       "core_metrics": {
         "pairs": 48,
         "pairing_rate": 1.0,
@@ -1512,39 +1620,6 @@
       "gate_status": "pass_limited",
       "paper_locations": [
         "docs/STAGE_0_4_LIMITED_SCIENTIFIC_ACCEPTANCE_2026-10-17.md"
-      ],
-      "scientific_claim_eligible": false
-    },
-    {
-      "id": "RES-STAGE-0.4-SEE-V2X-BSM-V1",
-      "experiment_id": "stage_0_4",
-      "name": "Stage 0.4 SEE-V2X BSM 应用场景通信证据验证",
-      "status": "verified_pairing_reception_ratio_partly_superseded",
-      "portable_evidence_paths": [
-        "evidence/results/RES-STAGE-0.4-SEE-V2X-BSM-V1/audit.json",
-        "evidence/results/RES-STAGE-0.4-SEE-V2X-BSM-V1/config.json",
-        "evidence/results/RES-STAGE-0.4-SEE-V2X-BSM-V1/provenance.json",
-        "evidence/results/RES-STAGE-0.4-SEE-V2X-BSM-V1/manifest.json",
-        "evidence/results/RES-STAGE-0.4-SEE-V2X-BSM-V1/SHA256SUMS"
-      ],
-      "local_artifact_paths": [
-        "code/outputs/formal/calibration/stage_0_4_see_v2x_bsm_v1"
-      ],
-      "code_version_source": "code/outputs/formal/calibration/stage_0_4_see_v2x_bsm_v1/provenance.json",
-      "configuration_source": "code/outputs/formal/calibration/stage_0_4_see_v2x_bsm_v1/config.json",
-      "data_version_source": "emulating_applications.tar.gz 5,252,105,816 B sha256 17AB3AC150F8965CE6BF9F1935AA294C371A6CE811C3F7454549F842D6C00861",
-      "core_metrics": {
-        "scenes": 4,
-        "pairs": 12,
-        "pairing": "Verified",
-        "reception_ratio_indoor": "0.998-1.0",
-        "reception_ratio_outdoor": "0.22-1.0",
-        "note": "parts superseded by RES-STAGE-0.4-SEE-V2X-BSM-REAUDIT-V1 (pairing vs ratio, GNSS!=online, epoch x1000)"
-      },
-      "current_conclusion": "BSM pairing Verified (48 directed pairs); reception-ratio descriptive (indoor 0.998-1.0 / outdoor 0.22-1.0). Some interpretations corrected by the re-audit (pairing vs ratio conflation, GNSS!=wireless online, clock epoch x1000). Current wording via RES-STAGE-0.4-SEE-V2X-BSM-REAUDIT-V1.",
-      "gate_status": "pending_official_packet_access",
-      "paper_locations": [
-        "docs/STAGE_0_4_TASK_0_4_7_SEE_V2X_BSM_VALIDATION.md"
       ],
       "scientific_claim_eligible": false
     }

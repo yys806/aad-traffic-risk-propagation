@@ -1,0 +1,142 @@
+{
+  "schema_version": "stage_0_5.sumo-engineering-candidate-config.v2",
+  "result_id": "RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1",
+  "experiment_mode": "no_message_baseline",
+  "communication_enabled": false,
+  "source_risk_treatment_enabled": false,
+  "information_adoption_enabled": false,
+  "engineering_only": true,
+  "scientific_claim_eligible": false,
+  "gate_status": "pending_simulation_sample",
+  "protocol_lock_allowed": false,
+  "stage_1_1_allowed": false,
+  "no_message_baseline_is_not_stage_1_zero_zero_cell": true,
+  "calibration_validation_policy": {
+    "schema_version": "stage_0_5.sumo-engineering.v2.calibration-validation-policy.v1",
+    "calibration": [
+      "us101__0750_0805",
+      "us101__0805_0820"
+    ],
+    "temporal_validation": [
+      "us101__0820_0835"
+    ],
+    "auxiliary": [
+      "lankershim__complete",
+      "pneuma__athens_d1"
+    ],
+    "reference_result_id": "RES-STAGE-0.5-REAL-REF-R2",
+    "locked_holdout_accessed": false,
+    "internal_window_isolation_is_not_project_locked_holdout": true,
+    "validation_window_previously_published": true,
+    "validation_is_same_site_time_extrapolation_only": true,
+    "cross_road_generalization_claimed": false,
+    "leave_one_window_analysis_role": "preregistered_sensitivity_diagnostic_only",
+    "denied_uses": [
+      "calibration access to the temporal validation window",
+      "fitting calibration normalisers on validation-window statistics",
+      "selecting calibration parameters from validation outputs",
+      "creating new favourable acceptance thresholds from published validation summaries",
+      "labelling internal window isolation as the project locked holdout"
+    ],
+    "access_roles": [
+      "calibration",
+      "temporal_validation",
+      "auxiliary"
+    ],
+    "locked_holdout": "forbidden_in_stage_0_5_3"
+  },
+  "scenarios": {
+    "us101_highway_baseline": {
+      "role": "highway_following_risk_primary",
+      "network_status": "generic_highway_candidate",
+      "reference_result_ids": [
+        "RES-STAGE-0.5-REAL-REF-R2"
+      ],
+      "engineering_status": "engineering_fixture_runnable",
+      "scientific_status": "pending_network_demand_vtype_time_and_tolerance_approval"
+    },
+    "lankershim_urban_auxiliary": {
+      "role": "urban_following_risk_auxiliary",
+      "network_status": "candidate_entry_only",
+      "reference_result_ids": [
+        "RES-STAGE-0.5-REAL-REF-R2"
+      ],
+      "engineering_status": "candidate_entry_only",
+      "scientific_status": "auxiliary_network_not_built_in_stage_0_5_3"
+    },
+    "pneuma_urban_kinematics": {
+      "role": "urban_kinematics_only",
+      "network_status": "candidate_entry_only",
+      "reference_result_ids": [
+        "RES-STAGE-0.5-REAL-REF-R2"
+      ],
+      "forbidden_scope": [
+        "ttc",
+        "drac",
+        "leader",
+        "p2",
+        "risk_events"
+      ],
+      "engineering_status": "candidate_entry_only",
+      "scientific_status": "urban_kinematics_only_network_not_built_in_stage_0_5_3"
+    }
+  },
+  "network_candidate": {
+    "network_id": "generic_highway_candidate",
+    "classification": "generic_highway_candidate",
+    "claim": "not_us101_geometry",
+    "mainline_edges": 3,
+    "mainline_lanes": 3,
+    "on_ramp": 1,
+    "off_ramp": 1,
+    "built_lane_lengths_note": "audited from the built network in runtime_diagnostics.network_facts; netconvert offset/normalisation changes node coordinates"
+  },
+  "time_config_candidate": {
+    "internal_step_s": 0.1,
+    "recorded_observation_step_s": 0.1,
+    "observation_decimation_factor": 1,
+    "status": "engineering_candidate_not_frozen",
+    "rule": "a coarser recording must never be relabelled as 0.1 s formal evidence"
+  },
+  "engineering_fixtures": {
+    "baseline_mixed_demand": {
+      "purpose": "no-message baseline state / leader / gap / closing-speed / TTC chain",
+      "stimulus": "none"
+    },
+    "measurement_probe_queue_stop": {
+      "purpose": "exercise the TTC/P2 adapter with a stopped multi-lane queue tail",
+      "stimulus": "declarative_stop_element_on_queue_tail_vehicles"
+    }
+  },
+  "parameter_status": {
+    "network": "engineering_fixture_only",
+    "demand": "engineering_fixture_only",
+    "vtype_mapping": "engineering_fixture_only",
+    "driver_behavior": "engineering_fixture_only",
+    "time_step": "engineering_fixture_only",
+    "warmup_and_evaluation_window": "engineering_fixture_only",
+    "scientific_tolerances": "pending_scientific",
+    "gate_criteria": "pending_scientific"
+  },
+  "vehicle_type_mapping": {
+    "scientific_mapping_approved": false,
+    "mapping_version": "candidate-v1",
+    "engineering_fixture_vtypes": [
+      "engineering_car",
+      "engineering_heavy_fixture",
+      "engineering_queue_fixture"
+    ],
+    "unmapped_real_classes": [
+      "Car",
+      "Taxi",
+      "Motorcycle",
+      "Bus",
+      "Medium Vehicle",
+      "Heavy Vehicle"
+    ]
+  },
+  "closing_speed_convention": "closing_speed_mps = follower_speed_mps - leader_speed_mps",
+  "net_gap_convention": "net_gap_m = leader_traci_distance_m + follower_min_gap_m",
+  "stage_0_1_code_reuse": "none; Stage 0.5 owns a separate scenario, runner and measurement contract",
+  "credential_free_engineering_scope": "no locked holdout, no validation-window read, no calibration, no Stage I"
+}

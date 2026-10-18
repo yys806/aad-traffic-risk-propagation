@@ -12,6 +12,13 @@
 - 新增分场景指标、校准/验证隔离、Energy Distance 角色、候选容差语义和 Stage 0.5.3 最低契约报告。
 - 仅更新设计索引与状态；未修改评价代码、科学阈值、Gate 或 SUMO 场景。
 
+## 2026-10-18 — Stage 0.5.3 SUMO 工程基线
+
+- 新增独立 no-message SUMO 工程骨架、候选配置、统一状态契约、SUMO-native 与 Stage 0.2 formal-alignment P2 adapter、校准/验证 fail-closed 守卫和 34 项工程测试。
+- US-101 `generic_highway_candidate` 完成 baseline 与 measurement probe 两个工程 fixture；核验并订正 TraCI `getLeader` 净间距语义，统一 `closing_speed_mps = follower − leader`，分离 internal/recorded 时间步。
+- Lankershim/pNEUMA 保持候选入口且 pNEUMA 六类原始车型 `unmapped`；结果仅 engineering-only，P2 等价性 pending，Gate 不变。
+- 注册表订正：移除已被科学再审计取代的旧结果 id `RES-STAGE-0.4-SEE-V2X-BSM-V1`（权威记录 `RES-STAGE-0.4-SEE-V2X-BSM-REAUDIT-V1`），已封存历史 gate 报告保留原 id。
+
 ## 2026-09-10 — 建立 AI 上下文与长期协作层
 
 - 新增九文件 `AI_CONTEXT/`，覆盖当前状态、科研背景、架构、数据流、模块、实验、已确认决策、已知问题和重要变化。

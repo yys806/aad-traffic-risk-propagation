@@ -40,6 +40,8 @@
 
 2026-10-18（AAD-0.5.2）：完成分场景现实覆盖指标与校准—验证协议候选设计。建议 US-101 以速度/加速度、净间距/闭合速度、风险可观测性、P2 暴露/事件率五层必要条件评价；Lankershim 独立辅助；pNEUMA 仅城市运动学。当前 Energy Distance 仅具场景内描述性/辅助价值，real-real 科学上界因来源独立性不足仍 `Not Identifiable`。报告：`docs/STAGE_0_5_TASK_0_5_2_COVERAGE_PROTOCOL_DESIGN.md`。未冻结容差、时间步、车型映射、验证划分或 Gate。
 
+2026-10-18（AAD-0.5.3）：新增独立 SUMO 无消息工程骨架。US-101 `generic_highway_candidate`（3 主线段 × 3 车道 + 入口/出口匝道）在 SUMO 1.26.0 上以 seed=20260907、internal 0.1 s、recorded 0.1 s 完成 baseline 与 measurement probe 两个工程 fixture，输出状态、leader/net-gap、统一闭合速度、TTC 状态、暴露和两路工程 P2 适配；核验并订正 TraCI `getLeader` 净间距语义与 `closing_speed = follower − leader`，建立 internal/recorded 时间步分离与校准/验证 fail-closed 守卫。结果仅 `engineering_only`。Lankershim/pNEUMA 保持 candidate_entry_only，P2 正式等价性 pending，Stage 0.5 Gate 未升级。报告：`docs/STAGE_0_5_TASK_0_5_3_SUMO_BASELINE_ENGINEERING.md`。
+
 ## stage_0_6 — 数值验证与协议锁定
 
 技术真值检查已有结果；待前置 Gate 和科学容差冻结后生成不可覆盖的协议锁。

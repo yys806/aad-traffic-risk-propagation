@@ -53,6 +53,8 @@
 
 0.5.2 协议设计候选已完成：US-101 采用基础运动学、跟驰交互、风险可观测性、正式 P2 和场景支持五层必要条件；Lankershim 独立辅助；pNEUMA 仅城市运动学；Energy Distance 仅作场景内辅助诊断。校准/验证划分、数值容差、辅助场景范围和 0.5.3 工程契约等待研究者批准，未运行 SUMO。
 
+0.5.3 工程骨架已建立：US-101 `generic_highway_candidate` no-message baseline 与 measurement probe 在 SUMO 1.26.0 上运行成功，输出统一状态/跟驰/净间距/闭合速度/TTC/暴露字段，并由 SUMO-native 与 Stage 0.2 formal-alignment 两个 adapter 一致确认 1 个工程 P2 事件；校准入口对时间验证窗口 fail-closed 拒绝。Lankershim/pNEUMA 仍为 candidate_entry_only，pNEUMA 六类原始车型 `unmapped`。结果仅 `engineering_only`，SUMO P2 正式等价性 pending，未进入现实覆盖校准，Gate 继续 `pending_simulation_sample`。
+
 ## 已确认的继续顺序
 
 1. 收口阶段 0.2和0.3。

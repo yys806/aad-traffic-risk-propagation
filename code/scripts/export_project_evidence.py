@@ -43,6 +43,7 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         "RES-STAGE-0.4-COMM-OBS-V3": [],
         "RES-STAGE-0.5-REAL-REF-V1": [],
         "RES-STAGE-0.5-REAL-REF-R2": [],
+        "RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1": [],
         "RES-STAGE-0.6-PRELOCK-V2": [],
         "RES-PROTOCOL-READINESS-V1": [
             (
@@ -124,6 +125,28 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
                 "SHA256SUMS",
             ),
         ),
+        "RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1": (
+            "stage_0_5_sumo_baseline_engineering_v1_baseline",
+            (
+                "access_audit.json",
+                "audit.json",
+                "calibration_validation_policy.json",
+                "config.json",
+                "demand_config.json",
+                "formal_adapter_audit.json",
+                "manifest.json",
+                "measurement_status_summary.json",
+                "measurement_support_matrix.json",
+                "network_design_candidate.json",
+                "p2_exposure_summary.json",
+                "provenance.json",
+                "runtime_diagnostics.json",
+                "scenario_manifest.json",
+                "SHA256SUMS",
+                "sumo_formal_field_map.json",
+                "vehicle_type_config.json",
+            ),
+        ),
         "RES-STAGE-0.6-PRELOCK-V2": (
             "stage_0_6_prelock_validation_v2",
             ("audit.json", "manifest.json", "SHA256SUMS"),
@@ -141,6 +164,25 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
             ("audit.json", "config.json", "decisions.json", "scientific_gate_report.json", "scientific_gate_matrix.json", "report.md", "scope_and_claims.md", "provenance.json", "manifest.json", "SHA256SUMS"),
         ),
     }
+    # The Stage 0.5.3 measurement probe package is exported under the same result id
+    # in its own subdirectory so that the two engineering fixtures stay distinguishable.
+    for name in (
+        "audit.json",
+        "config.json",
+        "formal_adapter_audit.json",
+        "manifest.json",
+        "measurement_status_summary.json",
+        "p2_exposure_summary.json",
+        "provenance.json",
+        "runtime_diagnostics.json",
+        "SHA256SUMS",
+    ):
+        pairs["RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1"].append(
+            (
+                f"code/outputs/formal/calibration/stage_0_5_sumo_baseline_engineering_v1_probe/{name}",
+                f"probe/{name}",
+            )
+        )
     pairs["RES-STAGE-0.4-LIMITED-SCIENTIFIC-ACCEPTANCE-V1"] = [
         (
             "code/outputs/formal/calibration/stage_0_4_limited_acceptance_v1/gate_report.json",

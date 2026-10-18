@@ -1,0 +1,110 @@
+{
+  "algorithm_version": "stage_0_2.formal_risk_measurement.v2",
+  "equivalence_status": "pending_measurement_equivalence_review",
+  "field_map": {
+    "dataset": {
+      "status": "provided_by_sumo_adapter",
+      "sumo_source": "constant 'sumo'"
+    },
+    "diagnostic_clock_anchor_ms": {
+      "note": "SUMO has one monotonic simulator clock per process; NGSIM clock-conflict categories are not_applicable_to_simulator_observation",
+      "status": "definitional_constant",
+      "sumo_source": "constant 0 for every recorded state"
+    },
+    "drac_mps2": {
+      "note": "P2 event identity does not depend on DRAC; NaN is preserved, never fabricated",
+      "status": "not_implemented_adapter_carries_nan",
+      "sumo_source": "not computed in the Stage 0.5 adapter"
+    },
+    "frame_id": {
+      "status": "adapter_defined_simulator_frame_index",
+      "sumo_source": "observation_index"
+    },
+    "global_time_ms": {
+      "status": "provided_by_sumo_adapter",
+      "sumo_source": "round(time_s * 1000)"
+    },
+    "identity_break": {
+      "status": "provided_by_sumo_adapter",
+      "sumo_source": "incarnation change detection"
+    },
+    "identity_uncertain": {
+      "status": "provided_by_sumo_adapter",
+      "sumo_source": "constant False"
+    },
+    "leader_frame_id": {
+      "status": "provided_by_sumo_adapter",
+      "sumo_source": "leader observation_index (same-step leader lookup)"
+    },
+    "leader_identity_uncertain": {
+      "status": "provided_by_sumo_adapter",
+      "sumo_source": "leader_identity_status != 'observed'"
+    },
+    "leader_matched": {
+      "status": "provided_by_sumo_adapter",
+      "sumo_source": "leader observed and incarnation-resolved"
+    },
+    "leader_trajectory_id": {
+      "status": "provided_by_sumo_adapter",
+      "sumo_source": "leader_incarnation_id"
+    },
+    "measurement_status": {
+      "status": "provided_by_sumo_adapter",
+      "sumo_source": "Stage 0.5 unified quality state"
+    },
+    "observation_gap": {
+      "status": "provided_by_sumo_adapter",
+      "sumo_source": "recorded cadence break detection"
+    },
+    "original_row_number": {
+      "note": "not an NGSIM original row number; never claimed as one",
+      "status": "adapter_defined_simulator_frame_index",
+      "sumo_source": "observation_index (adapter-defined recorded observation counter)"
+    },
+    "site": {
+      "status": "provided_by_sumo_adapter",
+      "sumo_source": "scenario_id"
+    },
+    "source_member": {
+      "status": "provided_by_sumo_adapter",
+      "sumo_source": "incarnation_id (run-scoped vehicle identity)"
+    },
+    "source_period": {
+      "status": "provided_by_sumo_adapter",
+      "sumo_source": "experiment_mode"
+    },
+    "time_s": {
+      "status": "provided_by_sumo_adapter",
+      "sumo_source": "traci.simulation.getTime()"
+    },
+    "trajectory_id": {
+      "status": "provided_by_sumo_adapter",
+      "sumo_source": "incarnation_id"
+    },
+    "ttc_s": {
+      "status": "provided_by_sumo_adapter",
+      "sumo_source": "net_gap_m / closing_speed_mps"
+    },
+    "ttc_valid": {
+      "status": "provided_by_sumo_adapter",
+      "sumo_source": "positive net gap and positive closing speed"
+    },
+    "window_id": {
+      "status": "provided_by_sumo_adapter",
+      "sumo_source": "run_id"
+    }
+  },
+  "formal_comparability": false,
+  "ngsim_only_fields": {
+    "camera_occlusion_or_dropout": "not_applicable_to_simulator_observation",
+    "diagnostic_clock_conflict": "not_applicable_to_simulator_observation",
+    "original_frame_identity_break": "not_applicable_to_simulator_observation",
+    "original_row_ambiguity": "not_applicable_to_simulator_observation"
+  },
+  "raw_candidate_events": 1,
+  "recorded_observation_step_s": 0.1,
+  "rejected_candidate_events": 0,
+  "reliable_candidate_events": 1,
+  "schema_version": "stage_0_5.sumo-engineering.v2.formal-adapter-audit.v1",
+  "scientific_claim_eligible": false
+}

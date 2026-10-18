@@ -100,3 +100,19 @@ Agreed：具有明确字段证据的诊断片段可作为候选事件的保守�
 - **统计口径**：完整可靠观测及已有时间加权语义为主统计；车辆等权为并列补充；轨迹簇抽样用于连续性/车辆代表性敏感性；稳定哈希状态抽样仅用于有界工程预览或诊断。任何有界抽样不得冒充完整分布或用于重算正式 P2 事件率。
 - **边界**：以上授权不决定真实车型到 SUMO `vType` 映射、SUMO 时间步、覆盖阈值、校准/验证划分或 real-real 科学上界；Stage 0.5 Gate 仍 `pending_simulation_sample`，Protocol Lock 和 Stage I 继续阻断。
 - **证据**：`RES-STAGE-0.5-REAL-REF-R2`、`docs/STAGE_0_5_TASK_0_5_1_REAL_REFERENCE_REBUILD.md`。
+
+## 2026-10-18 — Stage 0.5.2/0.5.3 工程范围与协议原则授权
+
+状态：`Approved Research Decision`；研究者批准以下原则用于 Stage 0.5.3 工程建设。具体网络、需求、车型、驾驶行为、时间步、容差和 Gate 判据仍未冻结。
+
+- **US-101 分区**：07:50–08:05 与 08:05–08:20 作为 calibration，08:20–08:35 作为预先指定的 temporal validation；第三窗口已有公开摘要，不能称为完全盲化；三窗口同站点，只支持有限同道路时间外推，不能宣称跨道路泛化；跨窗口字符串车辆 ID 不等于物理身份；validation 失败必须进入可追溯新协议版本。
+- **五层必要条件**：基础运动学、跟驰交互、风险可观测性与评价资格、正式 P2 事件/可评价暴露、场景支持与样本质量。各层不能用综合分数互相补偿。
+- **风险可观测性**：区分交通状态导致的不可评价、真实采集/身份缺陷和 SUMO 输出工程错误。SUMO 不人为复制 NGSIM 采集缺陷；缺失原因必须分别记录。
+- **P2 关系**：P2 数量、暴露和事件率不是互相独立的精确匹配目标；事件率继续为完整 P2 事件数除以 P2 可评价跟驰 vehicle-hour。事件定义、连续性、身份和暴露分母正确属于必要条件；事件率是代理频率，不是事故概率。
+- **容差方法**：以完整可靠观测为主，按车辆/轨迹簇处理相关性，结合来源内变化、窗口差异和未来 AAD 风险敏感性形成候选容差；任何具体数值仍未批准，不得由未来 SUMO 结果倒推。
+- **Energy Distance**：仅作场景内多维辅助诊断；`minimum_stratum_coverage=0.90` 与 `real_real_quantile=0.95` 仍是工程默认值，不是科学阈值；当前 real-real 上界保持 `Not Identifiable`。
+- **辅助场景职责**：Lankershim 是独立城市道路跟驰风险辅助，不进入 US-101 主 Gate；pNEUMA 仅承担速度、纵向加速度、车型组成和分车型运动学，不承担 TTC、DRAC、前车、P2 或风险事件。
+- **Stage 0.5.3 工程范围**：允许建立分场景配置、候选网络/需求结构、可配置 vType、无消息基线入口、统一状态输出、TTC/P2 适配接口和校准/验证隔离。网络、需求、车型映射、驾驶行为、时间步、暖机/评价窗口、容差和 Gate 判据必须继续标记为 engineering fixture 或 pending，未获批准前不得写成科学冻结。
+- **参数分类**：场景参数必须显式分为 `engineering_fixture_only`、`researcher_approved_scientific`、`pending_scientific`；0.5.3 中任何网络、需求、车型映射、驾驶行为、时间步、暖机/评价窗口都不得写入 Approved。
+- **工程语义统一（工程决定，非科学参数）**：`closing_speed_mps = follower_speed_mps - leader_speed_mps`；TraCI `getLeader` 距离是「物理保险杠净间距 − 后车 minGap」，`net_gap_m = leader_traci_distance_m + follower_min_gap_m`，并以同车道独立几何残差 0.0 m 核验。Stage 0.1 的 `relative_speed_mps = leader − follower` 符号相反，不得复用其 TTC 解释。
+- **边界**：`experiment_mode=no_message_baseline` 不等同于 Stage I 正式 `(0,0)`；Stage 0.5 Gate、Protocol Lock 和 Stage I 状态不变。

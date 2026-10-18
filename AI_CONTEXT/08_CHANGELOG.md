@@ -139,3 +139,9 @@ t1/t2/t3 GNSS 轨迹逐点相同（同一轨迹复制品）→ 设备间距离�
 ## 2026-10-18 — AAD-0.5.2 分场景覆盖协议候选
 
 新增 `docs/STAGE_0_5_TASK_0_5_2_COVERAGE_PROTOCOL_DESIGN.md`。核对 `evaluate_simulation_coverage()` 的 pooled scaler、real-real Energy Distance 和集合型 stratum coverage 实现，提出 US-101 五层必要指标、固定完整窗口校准/验证候选、Lankershim/pNEUMA 有限职责、块级不确定性和 Stage 0.5.3 最低输出契约。未修改评价函数、未冻结数值容差、未改变 Gate、未运行 SUMO；全部候选留待研究者批准。
+
+## 2026-10-18 — AAD-0.5.3 SUMO 无消息工程基线
+
+新增 `stage_0_5_sumo.py`、无消息运行入口、candidate config 和 34 项工程测试。US-101 `generic_highway_candidate`（3 主线段 × 3 车道 + 入口/出口匝道）在本地 SUMO 1.26.0 完成两个工程 fixture 并封存 `RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1`：baseline（8,453 state / 17 vehicles / 724 valid TTC / 0 工程 P2）与 measurement probe（1 个 P2 事件，onset 3.1 s、确认 3.3 s、TTC min 1.794 s）。
+
+关键工程事实与订正：①TraCI `getLeader` 距离经三组 vType 对与停驻平衡态实测核验为「物理保险杠净间距 − 后车 minGap」，旧实现直接把该值当 `net_gap_m` 会系统性高估闭合风险；现统一为 `net_gap_m = leader_traci_distance_m + follower_min_gap_m`，同车道几何残差最大 0.0 m；②`closing_speed_mps = follower − leader` 与 Stage 0.1 相反，禁止复用其 TTC 解释；③internal 与 recorded 时间步分离并可审计，0.2 s 记录不得重标为 0.1 s 正式证据；④新增 `CalibrationValidationGuard`，校准入口对 `us101__0820_0835` 与辅助来源 fail-closed 拒绝并写入 `access_audit.json`；⑤新增 Stage 0.2 formal-alignment adapter，逐项说明 SUMO 可自供的身份/时间/连续性字段，`drac_mps2` 保持 NaN，等价性 pending。Lankershim/pNEUMA 未建真实路网、六类 pNEUMA 原始车型全部 `unmapped`；未校准、未进行现实覆盖验收、未改变 Gate 或启动 Stage I。

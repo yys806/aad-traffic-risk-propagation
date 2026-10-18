@@ -1,0 +1,51 @@
+{
+  "engineering_only": true,
+  "items": {
+    "closing_speed": {
+      "rule": "closing_speed_mps = follower_speed_mps - leader_speed_mps",
+      "status": "verified_engineering"
+    },
+    "formal_p2_equivalence": {
+      "status": "pending_measurement_equivalence"
+    },
+    "leader_identity": {
+      "source": "traci.vehicle.getLeader + incarnation scope",
+      "status": "verified_engineering"
+    },
+    "measurement_quality_and_reasons": {
+      "status": "verified_engineering",
+      "vocabulary": [
+        "valid",
+        "not_applicable",
+        "missing",
+        "invalid"
+      ]
+    },
+    "net_gap": {
+      "rule": "net_gap_m = leader_traci_distance_m + follower_min_gap_m",
+      "status": "verified_engineering"
+    },
+    "p2_evaluable_exposure": {
+      "reason": "denominator interface prepared, not calibration-accepted",
+      "status": "engineering_only"
+    },
+    "p2_event_extraction": {
+      "reason": "SUMO-native adapter; formal equivalence pending",
+      "status": "engineering_only"
+    },
+    "reality_coverage": {
+      "reason": "requires Stage 0.5.4 calibration and Stage 0.5.5 validation",
+      "status": "pending_scientific"
+    },
+    "speed_and_acceleration": {
+      "source": "traci.vehicle.getSpeed/getAcceleration",
+      "status": "verified_engineering"
+    },
+    "ttc_status": {
+      "rule": "ttc_s = net_gap_m / closing_speed_mps when net_gap_m > 0 and closing_speed_mps > 0",
+      "status": "verified_engineering"
+    }
+  },
+  "schema_version": "stage_0_5.sumo-engineering.v2.measurement-support.v1",
+  "scientific_claim_eligible": false
+}

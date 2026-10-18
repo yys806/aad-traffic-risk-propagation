@@ -1,0 +1,181 @@
+{
+  "communication_enabled": false,
+  "created_at_utc": "2026-10-18T11:12:34.785805Z",
+  "engineering_only": true,
+  "environment": {
+    "netconvert_executable": "C:\\Program Files (x86)\\Eclipse\\Sumo\\bin\\netconvert.exe",
+    "netconvert_executable_sha256": "4174c17db813d413c85cdf7ad99a5f59b537ddf80f8caac9e1dfe87a35cb6b51",
+    "platform": "Windows-11-10.0.26100-SP0",
+    "python_version": "3.13.5",
+    "sumo_executable": "C:\\Program Files (x86)\\Eclipse\\Sumo\\bin\\sumo.exe",
+    "sumo_executable_sha256": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+    "sumo_home": "C:\\Program Files (x86)\\Eclipse\\Sumo\\tools",
+    "sumo_version": "Eclipse SUMO sumo 1.26.0",
+    "traci_module": "C:\\Program Files (x86)\\Eclipse\\Sumo\\tools\\traci\\__init__.py",
+    "traci_version": "unknown"
+  },
+  "experiment_mode": "no_message_baseline",
+  "fixture_id": "measurement_probe_queue_stop",
+  "formal_adapter_equivalence_status": "pending_measurement_equivalence_review",
+  "formal_adapter_reliable_candidate_events": 1,
+  "formal_p2_comparability_proven": false,
+  "incarnation_count": 7,
+  "independent_validation_performed": false,
+  "information_adoption_enabled": false,
+  "leader_observed_rows": 1520,
+  "measurement_support": {
+    "closing_speed": {
+      "rule": "closing_speed_mps = follower_speed_mps - leader_speed_mps",
+      "status": "verified_engineering"
+    },
+    "formal_p2_equivalence": {
+      "status": "pending_measurement_equivalence"
+    },
+    "leader_identity": {
+      "source": "traci.vehicle.getLeader + incarnation scope",
+      "status": "verified_engineering"
+    },
+    "measurement_quality_and_reasons": {
+      "status": "verified_engineering",
+      "vocabulary": [
+        "valid",
+        "not_applicable",
+        "missing",
+        "invalid"
+      ]
+    },
+    "net_gap": {
+      "rule": "net_gap_m = leader_traci_distance_m + follower_min_gap_m",
+      "status": "verified_engineering"
+    },
+    "p2_evaluable_exposure": {
+      "reason": "denominator interface prepared, not calibration-accepted",
+      "status": "engineering_only"
+    },
+    "p2_event_extraction": {
+      "reason": "SUMO-native adapter; formal equivalence pending",
+      "status": "engineering_only"
+    },
+    "reality_coverage": {
+      "reason": "requires Stage 0.5.4 calibration and Stage 0.5.5 validation",
+      "status": "pending_scientific"
+    },
+    "speed_and_acceleration": {
+      "source": "traci.vehicle.getSpeed/getAcceleration",
+      "status": "verified_engineering"
+    },
+    "ttc_status": {
+      "rule": "ttc_s = net_gap_m / closing_speed_mps when net_gap_m > 0 and closing_speed_mps > 0",
+      "status": "verified_engineering"
+    }
+  },
+  "network_facts": {
+    "edges": {
+      "main_0": {
+        "lane_count": 3,
+        "lane_length_m": [
+          386.5,
+          386.5,
+          386.5
+        ],
+        "speed_limit_mps": [
+          27.78,
+          27.78,
+          27.78
+        ]
+      },
+      "main_1": {
+        "lane_count": 3,
+        "lane_length_m": [
+          312.94,
+          312.94,
+          312.94
+        ],
+        "speed_limit_mps": [
+          27.78,
+          27.78,
+          27.78
+        ]
+      },
+      "main_2": {
+        "lane_count": 3,
+        "lane_length_m": [
+          483.5,
+          483.5,
+          483.5
+        ],
+        "speed_limit_mps": [
+          27.78,
+          27.78,
+          27.78
+        ]
+      },
+      "offramp": {
+        "lane_count": 1,
+        "lane_length_m": [
+          277.51
+        ],
+        "speed_limit_mps": [
+          13.89
+        ]
+      },
+      "onramp": {
+        "lane_count": 1,
+        "lane_length_m": [
+          239.26
+        ],
+        "speed_limit_mps": [
+          13.89
+        ]
+      }
+    },
+    "normalization_note": "netconvert applies network offset/normalisation, so built lane geometry can differ from the design-intent node coordinates; audited lane facts come from the built network",
+    "source_network_sha256": "5c574c7453332216d8b9e7839e62b57db90614b363a6a2b8155bc5641a128efc"
+  },
+  "p2_engineering_event_confirm_times_s": [
+    3.3
+  ],
+  "p2_engineering_events": 1,
+  "p2_measurement_equivalence_status": "pending_sumo_adapter_review",
+  "parameter_status": {
+    "demand": "engineering_fixture_only",
+    "driver_behavior": "engineering_fixture_only",
+    "gate_criteria": "pending_scientific",
+    "network": "engineering_fixture_only",
+    "scientific_tolerances": "pending_scientific",
+    "time_step": "engineering_fixture_only",
+    "vtype_mapping": "engineering_fixture_only",
+    "warmup_and_evaluation_window": "engineering_fixture_only"
+  },
+  "protocol_lock_allowed": false,
+  "real_network_geometry_confirmed": false,
+  "reality_coverage_tolerance_approved": false,
+  "result_id": "RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1",
+  "run_id": "stage_0_5_no_message_measurement_probe_queue_stop_20260907",
+  "runtime_diagnostics": {
+    "arrived_vehicles": 0,
+    "collisions": 0,
+    "configured_vehicles": 7,
+    "departed_vehicles": 7,
+    "insertion_failures": [],
+    "max_pending_vehicles": 0,
+    "not_departed_within_window": [],
+    "simulation_step_length_s": 0.1,
+    "sumo_time_s": 40.0
+  },
+  "scenario_id": "us101_highway_baseline",
+  "schema_version": "stage_0_5.sumo-engineering.v2.audit.v1",
+  "scientific_claim_eligible": false,
+  "scientific_demand_approved": false,
+  "scientific_time_step_frozen": false,
+  "seed": 20260907,
+  "source_risk_treatment_enabled": false,
+  "stage_0_5_gate": "pending_simulation_sample",
+  "stage_1_1_allowed": false,
+  "started_at_utc": "2026-10-18T11:12:28.258626Z",
+  "state_rows": 2720,
+  "ttc_valid_rows": 729,
+  "vehicle_count": 7,
+  "vtype_mapping_approved": false,
+  "warmup_and_evaluation_window_fixed": false
+}

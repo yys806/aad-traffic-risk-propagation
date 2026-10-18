@@ -1,0 +1,206 @@
+{
+  "candidate_scenario_configs": {
+    "lankershim_urban_auxiliary": {
+      "blocking_decisions": [
+        "urban network geometry and real road correspondence",
+        "auxiliary measurement scope inside/outside the US-101 primary gate"
+      ],
+      "build_status": "not_built",
+      "demand": {
+        "spec": null,
+        "status": "pending_scientific"
+      },
+      "engineering_status": "candidate_entry_only",
+      "forbidden_scope": [],
+      "measurement_scope": [
+        "speed_mps",
+        "acceleration_mps2",
+        "following_risk_auxiliary"
+      ],
+      "network": {
+        "required_evidence": "urban arterial/intersection geometry, signal control and lane connections",
+        "spec": null,
+        "status": "pending_scientific"
+      },
+      "reference_source": {
+        "groups": [
+          "lankershim__complete"
+        ],
+        "result_id": "RES-STAGE-0.5-REAL-REF-R2",
+        "role": "urban_following_risk",
+        "version": "R2"
+      },
+      "role": "urban_following_risk_auxiliary",
+      "scenario_id": "lankershim_urban_auxiliary",
+      "schema_version": "stage_0_5.sumo-engineering.v2.candidate-scenario.v1",
+      "scientific_status": "auxiliary_network_not_built_in_stage_0_5_3",
+      "time_config": {
+        "spec": null,
+        "status": "pending_scientific"
+      },
+      "vehicle_types": {
+        "mapping": null,
+        "status": "pending_scientific"
+      }
+    },
+    "pneuma_urban_kinematics": {
+      "blocking_decisions": [
+        "urban network geometry and real road correspondence",
+        "approved raw vehicle-class to SUMO vType mapping"
+      ],
+      "build_status": "not_built",
+      "demand": {
+        "spec": null,
+        "status": "pending_scientific"
+      },
+      "engineering_status": "candidate_entry_only",
+      "forbidden_scope": [
+        "ttc",
+        "drac",
+        "leader",
+        "p2",
+        "risk_events"
+      ],
+      "measurement_scope": [
+        "speed_mps",
+        "acceleration_mps2",
+        "vehicle_type"
+      ],
+      "network": {
+        "required_evidence": "urban mixed-traffic geometry with the approved vehicle-class composition",
+        "spec": null,
+        "status": "pending_scientific"
+      },
+      "reference_source": {
+        "groups": [
+          "pneuma__athens_d1"
+        ],
+        "result_id": "RES-STAGE-0.5-REAL-REF-R2",
+        "role": "urban_kinematics_only",
+        "version": "R2"
+      },
+      "role": "urban_kinematics_only",
+      "scenario_id": "pneuma_urban_kinematics",
+      "schema_version": "stage_0_5.sumo-engineering.v2.candidate-scenario.v1",
+      "scientific_status": "urban_kinematics_only_network_not_built_in_stage_0_5_3",
+      "time_config": {
+        "spec": null,
+        "status": "pending_scientific"
+      },
+      "vehicle_types": {
+        "mapping": null,
+        "status": "pending_scientific"
+      }
+    }
+  },
+  "scenarios": {
+    "lankershim_urban_auxiliary": {
+      "demand_config_version": "not_built",
+      "engineering_status": "candidate_entry_only",
+      "forbidden_scope": [],
+      "measurement_scope": [
+        "speed_mps",
+        "acceleration_mps2",
+        "following_risk_auxiliary"
+      ],
+      "network_config_version": "not_built",
+      "reference_source": {
+        "groups": [
+          "lankershim__complete"
+        ],
+        "result_id": "RES-STAGE-0.5-REAL-REF-R2",
+        "role": "urban_following_risk",
+        "version": "R2"
+      },
+      "role": "urban_following_risk_auxiliary",
+      "scenario_id": "lankershim_urban_auxiliary",
+      "scientific_parameter_status": {
+        "demand": "pending_scientific",
+        "driver_behavior": "pending_scientific",
+        "network": "pending_scientific",
+        "time_step": "pending_scientific",
+        "vehicle_type_mapping": "pending_scientific",
+        "warmup_and_evaluation_window": "pending_scientific"
+      },
+      "scientific_status": "auxiliary_network_not_built_in_stage_0_5_3",
+      "time_config_version": "not_built",
+      "vehicle_type_config_version": "not_built"
+    },
+    "pneuma_urban_kinematics": {
+      "demand_config_version": "not_built",
+      "engineering_status": "candidate_entry_only",
+      "forbidden_scope": [
+        "ttc",
+        "drac",
+        "leader",
+        "p2",
+        "risk_events"
+      ],
+      "measurement_scope": [
+        "speed_mps",
+        "acceleration_mps2",
+        "vehicle_type"
+      ],
+      "network_config_version": "not_built",
+      "reference_source": {
+        "groups": [
+          "pneuma__athens_d1"
+        ],
+        "result_id": "RES-STAGE-0.5-REAL-REF-R2",
+        "role": "urban_kinematics_only",
+        "version": "R2"
+      },
+      "role": "urban_kinematics_only",
+      "scenario_id": "pneuma_urban_kinematics",
+      "scientific_parameter_status": {
+        "demand": "pending_scientific",
+        "driver_behavior": "not_applicable_kinematics_only",
+        "network": "pending_scientific",
+        "time_step": "pending_scientific",
+        "vehicle_type_mapping": "pending_scientific",
+        "warmup_and_evaluation_window": "pending_scientific"
+      },
+      "scientific_status": "urban_kinematics_only_network_not_built_in_stage_0_5_3",
+      "time_config_version": "not_built",
+      "vehicle_type_config_version": "not_built"
+    },
+    "us101_highway_baseline": {
+      "demand_config_version": "engineering_fixture.v1",
+      "engineering_status": "engineering_fixture_runnable",
+      "forbidden_scope": [],
+      "measurement_scope": [
+        "speed_mps",
+        "acceleration_mps2",
+        "net_gap_m",
+        "closing_speed_mps",
+        "ttc_status",
+        "p2_engineering_adapter"
+      ],
+      "network_config_version": "generic_highway_candidate.v1",
+      "reference_source": {
+        "groups": [
+          "us101__0750_0805",
+          "us101__0805_0820",
+          "us101__0820_0835"
+        ],
+        "result_id": "RES-STAGE-0.5-REAL-REF-R2",
+        "role": "highway_following_risk",
+        "version": "R2"
+      },
+      "role": "highway_following_risk_primary",
+      "scenario_id": "us101_highway_baseline",
+      "scientific_parameter_status": {
+        "demand": "pending_scientific",
+        "driver_behavior": "pending_scientific",
+        "network": "pending_scientific",
+        "time_step": "pending_scientific",
+        "vehicle_type_mapping": "pending_scientific",
+        "warmup_and_evaluation_window": "pending_scientific"
+      },
+      "scientific_status": "pending_network_demand_vtype_time_and_tolerance_approval",
+      "time_config_version": "engineering_candidate.v1",
+      "vehicle_type_config_version": "engineering_fixture.v1"
+    }
+  },
+  "schema_version": "stage_0_5.sumo-engineering.v2.scenario-manifest.v1"
+}
