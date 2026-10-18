@@ -163,3 +163,8 @@ Stage 0.3 综合实施与验收准备。785 条唯一轨迹（Car 443、Motorcyc
 ## RES-STAGE-0.5-CALIBRATION-GAPS-V1
 
 AAD-0.5.4-A+定向补充，verified_engineering_only。两个原始校准成员100%连接、车型/长度注记可用；主线每车道、统一阈值42.8767/48.0828、12/11内部片、源实际时钟和四个固定负载成本已量化。保留未插入/初始化/积分器限制，所有科研候选Proposal，Calibration Ready=false。报告docs/STAGE_0_5_TASK_0_5_4A_SUPPLEMENT_CALIBRATION_GAPS.md；完整包code/outputs/formal/calibration/stage_0_5_calibration_gaps_v1_final/；便携证据同ID。
+
+
+## RES-STAGE-0.5-EXPLORATORY-RESPONSE-V1
+
+2026-10-18 AAD-0.5.4-B0（RES-STAGE-0.5-EXPLORATORY-RESPONSE-V1）：受限探索完成19/23次，4次高输入seed20261019响应未运行。统一27.78m/s上限、空初态、ballistic显式、internal.05/recorded.1、action.1、sigmaStep1；三个基准输入1087.364/1449.818/1648veh/h/lane仅实现局部密度10.37–15.75、均速约27.1，局部低速/P2均0。tau2三次末期未服务21/22/71，入口main0约2.5–20.1m有低速插入/加速，局部段无拥堵。B0-EXEC-STOP-01：原调度器未因completed+blocker停止，发现后人工停止，源码停止后修复并测试；最后worker峰值内存Unverified。推荐先批准需求边界/最小结构对照，不继续参数搜索掩盖状态支持缺口。所有结果exploratory_diagnostic_only、scientific_claim_eligible=false；Gate=pending_simulation_sample、Calibration Ready=false、Reality Coverage Accepted=false、正式容差Tolerance Not Yet Justified、Energy Distance上界Not Identifiable；无验证/holdout/正式校准/锁/Stage I。依据：docs/STAGE_0_5_TASK_0_5_4B0_EXPLORATORY_RESPONSE_DIAGNOSTICS.md、同ID证据和execution_ledger。

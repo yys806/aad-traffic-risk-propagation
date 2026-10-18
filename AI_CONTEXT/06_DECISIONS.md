@@ -129,3 +129,16 @@ Agreed：具有明确字段证据的诊断片段可作为候选事件的保守�
 - **容差**：建议先批准各层容差**形式**，数值待五个组成部分（真实统计不确定性、共享观测量测误差、场景/窗口差异、允许模型偏差、对 AAD 传播结论影响）齐备后再定；簇级区间不是模型偏差容差；real-real Energy Distance 上界保持 `Not Identifiable`。
 - **校准实验**：建议分阶段校准 + 每配置 3 seed + 全部 seed 报告 + 密度标定基准后再定预算；验证失败必须走新协议版本。
 - **边界**：以上建议不改变 `stage_0_5.gate=pending_simulation_sample`、`protocol_lock_allowed=false`、`stage_1_1_allowed=false`。
+
+
+## 2026-10-18 — AAD-0.5.4-B0有限探索授权
+
+状态：`Approved Research Decision`，仅指研究者明确授权的**探索范围**。本条不批准任何新科学参数、诊断结论或正式校准。
+
+- 允许generic_highway_candidate无消息探索；复用两个校准窗口已核验车型/长度注记、局部主线200m候选口径及共同密度阈值42.8767/48.0828作为描述分层。第三验证窗口与locked holdout禁止读取。
+- 允许P2核心计算契约（TTC、事件/确认时刻、身份连续性、可评价暴露、closing epsilon1e-3及NGSIM–SUMO crosswalk）用于B0计算可比诊断；局部P2归属、正式测量Gate、现实风险率与容差不因此批准。
+- 仅允许tau/minGap有限单参数响应；不批准六维联合优化、按真实速度设置低速上限来验证拥堵、P2拟合或参数择优。输入强度、响应点、数值及资源配置均为本轮预声明工程候选。
+- 最多6次第一阶段+16次条件响应+1次数值对照，每次300s；实际冻结批次采用同配置重复性对照，没有步长搜索。所有新结果exploratory_diagnostic_only、scientific_claim_eligible=false。
+- 正式Stage0.5.4-B/0.5.5、Protocol Lock、Stage I均未授权；Gate/readiness/科学容差状态不变。诊断建议停在研究者决策节点。
+
+授权依据：研究者本轮AAD-0.5.4-B0任务书；执行事实另见报告与结果，不写入本条作为批准参数。

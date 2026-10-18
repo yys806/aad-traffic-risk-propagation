@@ -1,0 +1,53 @@
+{
+  "all_attempts_engineering_valid": false,
+  "attempted_runs": 19,
+  "completed_summaries": 19,
+  "energy_distance_upper_bound": "Not Identifiable",
+  "engineering_blocking_runs": [
+    "b0_medium_tau2_s20261018",
+    "b0_medium_tau2_s20261019",
+    "b0_high_tau2_s20261018"
+  ],
+  "execution_design_deviations": [
+    {
+      "action": "stopped scheduler; let already-started worker finish under existing240s budget; all remaining planned runs not attempted",
+      "actual_implementation": "phase2 scheduler stopped on worker exit failure only; completed workers with engineering blockers did not trigger stop",
+      "affected_runs": [
+        "b0_medium_tau0.5_s20261018",
+        "b0_medium_tau2_s20261018",
+        "b0_medium_minGap1_s20261018",
+        "b0_medium_minGap3_s20261018",
+        "b0_medium_tau0.5_s20261019",
+        "b0_medium_tau2_s20261019",
+        "b0_medium_minGap1_s20261019",
+        "b0_medium_minGap3_s20261019",
+        "b0_high_tau0.5_s20261018",
+        "b0_high_tau2_s20261018",
+        "b0_high_minGap1_s20261018",
+        "b0_high_minGap3_s20261018"
+      ],
+      "documented_intent": "persistent backlog stops affected load; budget/blocking failures stop batch",
+      "id": "B0-EXEC-STOP-01",
+      "scientific_effect": "blocked tau2 responses are boundary-confounded; no formal comparison or favorable selection; reduced high-input seed coverage",
+      "status": "retained_and_stopped"
+    }
+  ],
+  "formal_calibration_started": false,
+  "local_stratum_p2": "Unresolved",
+  "locked_holdout_accessed": false,
+  "mode": "exploratory_diagnostic_only",
+  "not_attempted_retained_in_manifest": true,
+  "optimization": false,
+  "planned_runs": 23,
+  "protocol_lock_allowed": false,
+  "raw_real_data_read": false,
+  "ready_to_start_stage_0_5_4b": false,
+  "result_id": "RES-STAGE-0.5-EXPLORATORY-RESPONSE-V1",
+  "scientific_claim_eligible": false,
+  "stage_0_5_5_run": false,
+  "stage_0_5_gate": "pending_simulation_sample",
+  "stage_1_1_allowed": false,
+  "tolerances": "Tolerance Not Yet Justified",
+  "validation_window_read": false,
+  "validation_window_rows_materialised": 0
+}

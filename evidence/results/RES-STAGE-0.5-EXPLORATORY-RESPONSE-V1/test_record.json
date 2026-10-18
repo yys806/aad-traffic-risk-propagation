@@ -1,0 +1,47 @@
+{
+  "status": "local_checks_complete_pure_clone_pending",
+  "tests": [
+    {
+      "command": "python -m pytest tests/test_stage_0_5_exploratory_response.py tests/test_stage_0_5_measurement_equivalence.py tests/test_stage_0_5_calibration_gaps.py tests/test_stage_0_5_sumo.py -q",
+      "result": "127 passed,1 skipped",
+      "seconds": 41.57,
+      "skip_reason": "portable result not yet finalized"
+    },
+    {
+      "command": "python -m compileall -q code/src code/scripts code/tests",
+      "exit_code": 0
+    },
+    {
+      "test": "scheduler stop regression",
+      "red": "ImportError before stop_after_attempt added",
+      "green": "helper and executor no-next-launch regression pass"
+    },
+    {
+      "command": "python -m pytest -q",
+      "scope": "root workspace code; all tests including SUMO regression fixtures",
+      "result": "465 passed",
+      "seconds": 165.35
+    },
+    {
+      "command": "python -m pytest tests/test_stage_0_5_exploratory_response.py -q",
+      "result": "28 passed",
+      "seconds": 3.15
+    },
+    {
+      "command": "python code/scripts/export_project_evidence.py --repo-root . --verify",
+      "result": "PORTABLE_EVIDENCE_OK"
+    },
+    {
+      "command": "python code/scripts/validate_project_docs.py --strict-git",
+      "exit_code": 1,
+      "reason": "only pre-existing missing canonical literature-index JSON after task paths staged; untouched by this task"
+    }
+  ],
+  "sumo_experimental_runs": 19,
+  "sumo_test_fixtures": "separate regression scope; no extra B0 configurations",
+  "pure_git_clone": "pending",
+  "remote_verification": "pending",
+  "context_consistency_check": "completed; state/architecture/dataflow/modules/experiments/limited decisions/issues/changelog and indices updated; no approved parameter promoted",
+  "preexisting_workspace_deletions": "5 unrelated literature-index files remain untouched",
+  "export_regression": "PLAN_SHA256 and three named aggregate CSVs allowed; arbitrary state.csv still refused; red then green"
+}

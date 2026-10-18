@@ -1,0 +1,646 @@
+{
+  "budget": {
+    "artifact_bytes": 4294967296,
+    "batch_wall_s": 7200,
+    "expected_from_prior_s": "23*116s=2668s recorder upper context; new full P2 cost not previously measured",
+    "max_runs": 23,
+    "per_run_wall_s": 240,
+    "process_tree_memory_bytes": 2147483648,
+    "regression_fixtures": "separate testing, not B0 experimental configurations"
+  },
+  "created_at_utc": "2026-10-18T14:49:30.340127Z",
+  "density_strata": {
+    "low_upper": 42.8767,
+    "medium_upper": 48.0828,
+    "status": "descriptive exploration only"
+  },
+  "descriptive_low_speed": {
+    "bin_s": 10.0,
+    "not_acceptance": true,
+    "sustained_window_s": 30.0,
+    "threshold_mps": 5.0
+  },
+  "duration_s": 300.0,
+  "energy_distance_upper_bound": "Not Identifiable",
+  "execution_order": [
+    "phase1",
+    "checkpoint",
+    "control",
+    "checkpoint",
+    "phase2"
+  ],
+  "fixed": {
+    "accel": 2.6,
+    "actionStepLength": 0.1,
+    "apparentDecel": 4.5,
+    "carFollowModel": "Krauss",
+    "communication_enabled": false,
+    "decel": 4.5,
+    "emergencyDecel": 9.0,
+    "information_adoption_enabled": false,
+    "internal_step_s": 0.05,
+    "laneChangeModel": "LC2013",
+    "maxSpeed": 27.78,
+    "ramp_demand": 0,
+    "recorded_step_s": 0.1,
+    "sigma": 0.5,
+    "sigmaStep": 1.0,
+    "source_risk_treatment_enabled": false,
+    "speedDev": 0.0,
+    "speedFactor": 1.0,
+    "step_method_ballistic": true,
+    "threads": 1
+  },
+  "fleet": [
+    {
+      "code": 1,
+      "length_m": 2.4384,
+      "share": 0.009555661729574774,
+      "vClass": "motorcycle"
+    },
+    {
+      "code": 2,
+      "length_m": 4.4196,
+      "share": 0.9672718585762065,
+      "vClass": "passenger"
+    },
+    {
+      "code": 3,
+      "length_m": 10.009694845360826,
+      "share": 0.023172479694218824,
+      "vClass": "truck"
+    }
+  ],
+  "gate": "pending_simulation_sample",
+  "initialization": {
+    "demand": "deterministic equally spaced total 3-lane arrival stream",
+    "depart_position": "base",
+    "departure_lane": "round robin 0,1,2",
+    "departure_speed": "max (free-speed upstream boundary, same for all conditions)",
+    "initial_gap": null,
+    "initial_speed": null,
+    "initial_type_mix": null,
+    "initial_vehicles": 0,
+    "space_distribution": "empty network"
+  },
+  "loads": {
+    "high": {
+      "basis": "0750_0805 interior plane300m mainline per-lane passage rate",
+      "flow_veh_h_lane": 1648.0
+    },
+    "low": {
+      "basis": "75% of lower observed mainline flow; engineering contrast",
+      "flow_veh_h_lane": 1087.3636363636363
+    },
+    "medium": {
+      "basis": "0805_0820 interior plane300m mainline per-lane passage rate",
+      "flow_veh_h_lane": 1449.8181818181818
+    }
+  },
+  "local_space": {
+    "edge": "main_1",
+    "end_m": 250.0,
+    "lane_km": 0.6,
+    "lanes": 3,
+    "start_m": 50.0
+  },
+  "mode": "exploratory_diagnostic_only",
+  "network_id": "generic_highway_candidate",
+  "network_path": "inputs/generic_highway_candidate.net.xml",
+  "numerical_control": "one identical .05s middle-baseline repeat; no .1s comparison or step search",
+  "p2_scope": "SUMO full-network exploratory rate; real sealed full-source rates separate; local/stratum formal P2 Unresolved",
+  "phase2_conditions": {
+    "backlog_block": "last3 60s end queues nondecreasing, end>max(10,5%scheduled); stop affected load, no replacement",
+    "complete_simulation": true,
+    "max_abs_conservation_residual": 0,
+    "max_cadence_error_s": 1e-06,
+    "max_gap_geometry_error_m": 1e-06,
+    "no_collisions": true,
+    "no_teleport": true,
+    "runtime_settings_match": true,
+    "source_bindings_match": true
+  },
+  "protocol_lock_allowed": false,
+  "ready_to_start_stage_0_5_4b": false,
+  "result_id": "RES-STAGE-0.5-EXPLORATORY-RESPONSE-V1",
+  "runs": [
+    {
+      "changed_parameter": null,
+      "config_path": "inputs/b0_low_base_s20261018.sumocfg",
+      "demand_path": "inputs/demand_low_20261018.rou.xml",
+      "input_sha256": {
+        "inputs/b0_low_base_s20261018.sumocfg": "fbe019c4d8e27b0c962991a20abb9cdb83b50f747e8319df27e1a42215a7c492",
+        "inputs/demand_low_20261018.rou.xml": "6fdc0f11bd79fc88c75e2bbfe76c19f4ffe5fd0757f4ea668bf8fe8dfe6fc930",
+        "inputs/generic_highway_candidate.net.xml": "5d6bd92f46b28001240c3b780713d1094b98eaefba227a3a5615fe66fcf1fb81",
+        "inputs/types_tau1_gap2.5.rou.xml": "7c59430be997c2502ee92eb324fb3cf1ec2e8c2ec6b13f789bbca82fed7da728"
+      },
+      "internal_step_s": 0.05,
+      "load": "low",
+      "minGap": 2.5,
+      "phase": "phase1",
+      "run_id": "b0_low_base_s20261018",
+      "seed": 20261018,
+      "tau": 1.0,
+      "vtype_path": "inputs/types_tau1_gap2.5.rou.xml"
+    },
+    {
+      "changed_parameter": null,
+      "config_path": "inputs/b0_low_base_s20261019.sumocfg",
+      "demand_path": "inputs/demand_low_20261019.rou.xml",
+      "input_sha256": {
+        "inputs/b0_low_base_s20261019.sumocfg": "19af3e11eb84f20e9f122149fcde56c7ad872eda67d3a3b33e55b16c3b19890a",
+        "inputs/demand_low_20261019.rou.xml": "65c3a06e054160d1ace820e65ca5c5d88f9bb3e7b8736e1ec636d52bf5759cb3",
+        "inputs/generic_highway_candidate.net.xml": "5d6bd92f46b28001240c3b780713d1094b98eaefba227a3a5615fe66fcf1fb81",
+        "inputs/types_tau1_gap2.5.rou.xml": "7c59430be997c2502ee92eb324fb3cf1ec2e8c2ec6b13f789bbca82fed7da728"
+      },
+      "internal_step_s": 0.05,
+      "load": "low",
+      "minGap": 2.5,
+      "phase": "phase1",
+      "run_id": "b0_low_base_s20261019",
+      "seed": 20261019,
+      "tau": 1.0,
+      "vtype_path": "inputs/types_tau1_gap2.5.rou.xml"
+    },
+    {
+      "changed_parameter": null,
+      "config_path": "inputs/b0_medium_base_s20261018.sumocfg",
+      "demand_path": "inputs/demand_medium_20261018.rou.xml",
+      "input_sha256": {
+        "inputs/b0_medium_base_s20261018.sumocfg": "b813628ff365fe5071b2f6da278a46dcaefe29366af447034614f56734cefb01",
+        "inputs/demand_medium_20261018.rou.xml": "9fcb50fa36ddb42b185a3118644390c293da507db4f9420977da5e5cd8edec25",
+        "inputs/generic_highway_candidate.net.xml": "5d6bd92f46b28001240c3b780713d1094b98eaefba227a3a5615fe66fcf1fb81",
+        "inputs/types_tau1_gap2.5.rou.xml": "7c59430be997c2502ee92eb324fb3cf1ec2e8c2ec6b13f789bbca82fed7da728"
+      },
+      "internal_step_s": 0.05,
+      "load": "medium",
+      "minGap": 2.5,
+      "phase": "phase1",
+      "run_id": "b0_medium_base_s20261018",
+      "seed": 20261018,
+      "tau": 1.0,
+      "vtype_path": "inputs/types_tau1_gap2.5.rou.xml"
+    },
+    {
+      "changed_parameter": null,
+      "config_path": "inputs/b0_medium_base_s20261019.sumocfg",
+      "demand_path": "inputs/demand_medium_20261019.rou.xml",
+      "input_sha256": {
+        "inputs/b0_medium_base_s20261019.sumocfg": "4a5994d395fc7491e09887d28a421a2541c026737f8d4ac4be1ab7106df8dabe",
+        "inputs/demand_medium_20261019.rou.xml": "00d1e1f27962c9b0b84e24b02d7f7cd2070bf6a83c7eff5cdc8dc647cab1d435",
+        "inputs/generic_highway_candidate.net.xml": "5d6bd92f46b28001240c3b780713d1094b98eaefba227a3a5615fe66fcf1fb81",
+        "inputs/types_tau1_gap2.5.rou.xml": "7c59430be997c2502ee92eb324fb3cf1ec2e8c2ec6b13f789bbca82fed7da728"
+      },
+      "internal_step_s": 0.05,
+      "load": "medium",
+      "minGap": 2.5,
+      "phase": "phase1",
+      "run_id": "b0_medium_base_s20261019",
+      "seed": 20261019,
+      "tau": 1.0,
+      "vtype_path": "inputs/types_tau1_gap2.5.rou.xml"
+    },
+    {
+      "changed_parameter": null,
+      "config_path": "inputs/b0_high_base_s20261018.sumocfg",
+      "demand_path": "inputs/demand_high_20261018.rou.xml",
+      "input_sha256": {
+        "inputs/b0_high_base_s20261018.sumocfg": "3740ccd7f1cc46782f756d2a498178927c92449296311108450b72fb00faaeb5",
+        "inputs/demand_high_20261018.rou.xml": "2767f272d58f1173bd2353a6ac2f9f42c25ecc2562d7af21b029d382f9ad2598",
+        "inputs/generic_highway_candidate.net.xml": "5d6bd92f46b28001240c3b780713d1094b98eaefba227a3a5615fe66fcf1fb81",
+        "inputs/types_tau1_gap2.5.rou.xml": "7c59430be997c2502ee92eb324fb3cf1ec2e8c2ec6b13f789bbca82fed7da728"
+      },
+      "internal_step_s": 0.05,
+      "load": "high",
+      "minGap": 2.5,
+      "phase": "phase1",
+      "run_id": "b0_high_base_s20261018",
+      "seed": 20261018,
+      "tau": 1.0,
+      "vtype_path": "inputs/types_tau1_gap2.5.rou.xml"
+    },
+    {
+      "changed_parameter": null,
+      "config_path": "inputs/b0_high_base_s20261019.sumocfg",
+      "demand_path": "inputs/demand_high_20261019.rou.xml",
+      "input_sha256": {
+        "inputs/b0_high_base_s20261019.sumocfg": "0a5ed1f8b203b90f64d9d50a81ae0ad1756e0f654296185f329772a06170f5fa",
+        "inputs/demand_high_20261019.rou.xml": "62f8c58d0c656416db41205fa7ced5e3e47a90b67f352ff1ac2160d1ffe6d200",
+        "inputs/generic_highway_candidate.net.xml": "5d6bd92f46b28001240c3b780713d1094b98eaefba227a3a5615fe66fcf1fb81",
+        "inputs/types_tau1_gap2.5.rou.xml": "7c59430be997c2502ee92eb324fb3cf1ec2e8c2ec6b13f789bbca82fed7da728"
+      },
+      "internal_step_s": 0.05,
+      "load": "high",
+      "minGap": 2.5,
+      "phase": "phase1",
+      "run_id": "b0_high_base_s20261019",
+      "seed": 20261019,
+      "tau": 1.0,
+      "vtype_path": "inputs/types_tau1_gap2.5.rou.xml"
+    },
+    {
+      "baseline_run_id": "b0_medium_base_s20261018",
+      "changed_parameter": "tau",
+      "config_path": "inputs/b0_medium_tau0.5_s20261018.sumocfg",
+      "demand_path": "inputs/demand_medium_20261018.rou.xml",
+      "input_sha256": {
+        "inputs/b0_medium_tau0.5_s20261018.sumocfg": "59b046c26d21b27c9ca297f1dbeb9f8bd5a86e52e34edc42676ec65b78869fd2",
+        "inputs/demand_medium_20261018.rou.xml": "9fcb50fa36ddb42b185a3118644390c293da507db4f9420977da5e5cd8edec25",
+        "inputs/generic_highway_candidate.net.xml": "5d6bd92f46b28001240c3b780713d1094b98eaefba227a3a5615fe66fcf1fb81",
+        "inputs/types_tau0.5_gap2.5.rou.xml": "6de824716d7ea2cb382237a145d4161a3a6db211e7856ec2cf98dd6f3eb91261"
+      },
+      "internal_step_s": 0.05,
+      "load": "medium",
+      "minGap": 2.5,
+      "phase": "phase2",
+      "run_id": "b0_medium_tau0.5_s20261018",
+      "seed": 20261018,
+      "tau": 0.5,
+      "vtype_path": "inputs/types_tau0.5_gap2.5.rou.xml"
+    },
+    {
+      "baseline_run_id": "b0_medium_base_s20261018",
+      "changed_parameter": "tau",
+      "config_path": "inputs/b0_medium_tau2_s20261018.sumocfg",
+      "demand_path": "inputs/demand_medium_20261018.rou.xml",
+      "input_sha256": {
+        "inputs/b0_medium_tau2_s20261018.sumocfg": "12b129f121f37dc5fbc1a58374badcab315a03a59dff2afd93fdfda70df67a61",
+        "inputs/demand_medium_20261018.rou.xml": "9fcb50fa36ddb42b185a3118644390c293da507db4f9420977da5e5cd8edec25",
+        "inputs/generic_highway_candidate.net.xml": "5d6bd92f46b28001240c3b780713d1094b98eaefba227a3a5615fe66fcf1fb81",
+        "inputs/types_tau2_gap2.5.rou.xml": "4eb54e096b5fb6aae8e9c7eb9a6fb1a10656f72073af04115d98d6c52756b272"
+      },
+      "internal_step_s": 0.05,
+      "load": "medium",
+      "minGap": 2.5,
+      "phase": "phase2",
+      "run_id": "b0_medium_tau2_s20261018",
+      "seed": 20261018,
+      "tau": 2.0,
+      "vtype_path": "inputs/types_tau2_gap2.5.rou.xml"
+    },
+    {
+      "baseline_run_id": "b0_medium_base_s20261018",
+      "changed_parameter": "minGap",
+      "config_path": "inputs/b0_medium_minGap1_s20261018.sumocfg",
+      "demand_path": "inputs/demand_medium_20261018.rou.xml",
+      "input_sha256": {
+        "inputs/b0_medium_minGap1_s20261018.sumocfg": "a3dadfff5ded578a4d16097b1e32e1fc5feeab82863ca7e3984d5221caa091cc",
+        "inputs/demand_medium_20261018.rou.xml": "9fcb50fa36ddb42b185a3118644390c293da507db4f9420977da5e5cd8edec25",
+        "inputs/generic_highway_candidate.net.xml": "5d6bd92f46b28001240c3b780713d1094b98eaefba227a3a5615fe66fcf1fb81",
+        "inputs/types_tau1_gap1.rou.xml": "bfd3a9d4022ea59af5e838a6e22320a1de951dfebb5c6982c623fba47607a98d"
+      },
+      "internal_step_s": 0.05,
+      "load": "medium",
+      "minGap": 1.0,
+      "phase": "phase2",
+      "run_id": "b0_medium_minGap1_s20261018",
+      "seed": 20261018,
+      "tau": 1.0,
+      "vtype_path": "inputs/types_tau1_gap1.rou.xml"
+    },
+    {
+      "baseline_run_id": "b0_medium_base_s20261018",
+      "changed_parameter": "minGap",
+      "config_path": "inputs/b0_medium_minGap3_s20261018.sumocfg",
+      "demand_path": "inputs/demand_medium_20261018.rou.xml",
+      "input_sha256": {
+        "inputs/b0_medium_minGap3_s20261018.sumocfg": "bfeb44cf56368a99d8a5737423bc2e4ed2754975119bca17d4c1785e70f2e9be",
+        "inputs/demand_medium_20261018.rou.xml": "9fcb50fa36ddb42b185a3118644390c293da507db4f9420977da5e5cd8edec25",
+        "inputs/generic_highway_candidate.net.xml": "5d6bd92f46b28001240c3b780713d1094b98eaefba227a3a5615fe66fcf1fb81",
+        "inputs/types_tau1_gap3.rou.xml": "af3adf69efcaa80f62ff4f6378c16751e12597ffbdca2fa4c124d3d383eba7af"
+      },
+      "internal_step_s": 0.05,
+      "load": "medium",
+      "minGap": 3.0,
+      "phase": "phase2",
+      "run_id": "b0_medium_minGap3_s20261018",
+      "seed": 20261018,
+      "tau": 1.0,
+      "vtype_path": "inputs/types_tau1_gap3.rou.xml"
+    },
+    {
+      "baseline_run_id": "b0_medium_base_s20261019",
+      "changed_parameter": "tau",
+      "config_path": "inputs/b0_medium_tau0.5_s20261019.sumocfg",
+      "demand_path": "inputs/demand_medium_20261019.rou.xml",
+      "input_sha256": {
+        "inputs/b0_medium_tau0.5_s20261019.sumocfg": "2137731a860f1643ad1218fd507ee3a0357d63ecd99129e2571b60ce093e82c6",
+        "inputs/demand_medium_20261019.rou.xml": "00d1e1f27962c9b0b84e24b02d7f7cd2070bf6a83c7eff5cdc8dc647cab1d435",
+        "inputs/generic_highway_candidate.net.xml": "5d6bd92f46b28001240c3b780713d1094b98eaefba227a3a5615fe66fcf1fb81",
+        "inputs/types_tau0.5_gap2.5.rou.xml": "6de824716d7ea2cb382237a145d4161a3a6db211e7856ec2cf98dd6f3eb91261"
+      },
+      "internal_step_s": 0.05,
+      "load": "medium",
+      "minGap": 2.5,
+      "phase": "phase2",
+      "run_id": "b0_medium_tau0.5_s20261019",
+      "seed": 20261019,
+      "tau": 0.5,
+      "vtype_path": "inputs/types_tau0.5_gap2.5.rou.xml"
+    },
+    {
+      "baseline_run_id": "b0_medium_base_s20261019",
+      "changed_parameter": "tau",
+      "config_path": "inputs/b0_medium_tau2_s20261019.sumocfg",
+      "demand_path": "inputs/demand_medium_20261019.rou.xml",
+      "input_sha256": {
+        "inputs/b0_medium_tau2_s20261019.sumocfg": "6bef83560ce0ac9d47adf29f34e036b37833750211fe7a9e270748d46d80ec57",
+        "inputs/demand_medium_20261019.rou.xml": "00d1e1f27962c9b0b84e24b02d7f7cd2070bf6a83c7eff5cdc8dc647cab1d435",
+        "inputs/generic_highway_candidate.net.xml": "5d6bd92f46b28001240c3b780713d1094b98eaefba227a3a5615fe66fcf1fb81",
+        "inputs/types_tau2_gap2.5.rou.xml": "4eb54e096b5fb6aae8e9c7eb9a6fb1a10656f72073af04115d98d6c52756b272"
+      },
+      "internal_step_s": 0.05,
+      "load": "medium",
+      "minGap": 2.5,
+      "phase": "phase2",
+      "run_id": "b0_medium_tau2_s20261019",
+      "seed": 20261019,
+      "tau": 2.0,
+      "vtype_path": "inputs/types_tau2_gap2.5.rou.xml"
+    },
+    {
+      "baseline_run_id": "b0_medium_base_s20261019",
+      "changed_parameter": "minGap",
+      "config_path": "inputs/b0_medium_minGap1_s20261019.sumocfg",
+      "demand_path": "inputs/demand_medium_20261019.rou.xml",
+      "input_sha256": {
+        "inputs/b0_medium_minGap1_s20261019.sumocfg": "358e6666b46c0481c830c7d54e67e1f03b07c9f6799e496031827294dc3f4a48",
+        "inputs/demand_medium_20261019.rou.xml": "00d1e1f27962c9b0b84e24b02d7f7cd2070bf6a83c7eff5cdc8dc647cab1d435",
+        "inputs/generic_highway_candidate.net.xml": "5d6bd92f46b28001240c3b780713d1094b98eaefba227a3a5615fe66fcf1fb81",
+        "inputs/types_tau1_gap1.rou.xml": "bfd3a9d4022ea59af5e838a6e22320a1de951dfebb5c6982c623fba47607a98d"
+      },
+      "internal_step_s": 0.05,
+      "load": "medium",
+      "minGap": 1.0,
+      "phase": "phase2",
+      "run_id": "b0_medium_minGap1_s20261019",
+      "seed": 20261019,
+      "tau": 1.0,
+      "vtype_path": "inputs/types_tau1_gap1.rou.xml"
+    },
+    {
+      "baseline_run_id": "b0_medium_base_s20261019",
+      "changed_parameter": "minGap",
+      "config_path": "inputs/b0_medium_minGap3_s20261019.sumocfg",
+      "demand_path": "inputs/demand_medium_20261019.rou.xml",
+      "input_sha256": {
+        "inputs/b0_medium_minGap3_s20261019.sumocfg": "dd6c00b7c4a245f5bcd2b5ce0152d28d756a1d9ab8fc0e8fe66d1ba13c245aa4",
+        "inputs/demand_medium_20261019.rou.xml": "00d1e1f27962c9b0b84e24b02d7f7cd2070bf6a83c7eff5cdc8dc647cab1d435",
+        "inputs/generic_highway_candidate.net.xml": "5d6bd92f46b28001240c3b780713d1094b98eaefba227a3a5615fe66fcf1fb81",
+        "inputs/types_tau1_gap3.rou.xml": "af3adf69efcaa80f62ff4f6378c16751e12597ffbdca2fa4c124d3d383eba7af"
+      },
+      "internal_step_s": 0.05,
+      "load": "medium",
+      "minGap": 3.0,
+      "phase": "phase2",
+      "run_id": "b0_medium_minGap3_s20261019",
+      "seed": 20261019,
+      "tau": 1.0,
+      "vtype_path": "inputs/types_tau1_gap3.rou.xml"
+    },
+    {
+      "baseline_run_id": "b0_high_base_s20261018",
+      "changed_parameter": "tau",
+      "config_path": "inputs/b0_high_tau0.5_s20261018.sumocfg",
+      "demand_path": "inputs/demand_high_20261018.rou.xml",
+      "input_sha256": {
+        "inputs/b0_high_tau0.5_s20261018.sumocfg": "93d0607122cb6ad2894b1e9843318d40d6e0f4271a8ef09d8c9d3083f70855a7",
+        "inputs/demand_high_20261018.rou.xml": "2767f272d58f1173bd2353a6ac2f9f42c25ecc2562d7af21b029d382f9ad2598",
+        "inputs/generic_highway_candidate.net.xml": "5d6bd92f46b28001240c3b780713d1094b98eaefba227a3a5615fe66fcf1fb81",
+        "inputs/types_tau0.5_gap2.5.rou.xml": "6de824716d7ea2cb382237a145d4161a3a6db211e7856ec2cf98dd6f3eb91261"
+      },
+      "internal_step_s": 0.05,
+      "load": "high",
+      "minGap": 2.5,
+      "phase": "phase2",
+      "run_id": "b0_high_tau0.5_s20261018",
+      "seed": 20261018,
+      "tau": 0.5,
+      "vtype_path": "inputs/types_tau0.5_gap2.5.rou.xml"
+    },
+    {
+      "baseline_run_id": "b0_high_base_s20261018",
+      "changed_parameter": "tau",
+      "config_path": "inputs/b0_high_tau2_s20261018.sumocfg",
+      "demand_path": "inputs/demand_high_20261018.rou.xml",
+      "input_sha256": {
+        "inputs/b0_high_tau2_s20261018.sumocfg": "a6785e60ee1a4c42fb0c51bd61615ef7681a0696076cfec5b9261f17591994e8",
+        "inputs/demand_high_20261018.rou.xml": "2767f272d58f1173bd2353a6ac2f9f42c25ecc2562d7af21b029d382f9ad2598",
+        "inputs/generic_highway_candidate.net.xml": "5d6bd92f46b28001240c3b780713d1094b98eaefba227a3a5615fe66fcf1fb81",
+        "inputs/types_tau2_gap2.5.rou.xml": "4eb54e096b5fb6aae8e9c7eb9a6fb1a10656f72073af04115d98d6c52756b272"
+      },
+      "internal_step_s": 0.05,
+      "load": "high",
+      "minGap": 2.5,
+      "phase": "phase2",
+      "run_id": "b0_high_tau2_s20261018",
+      "seed": 20261018,
+      "tau": 2.0,
+      "vtype_path": "inputs/types_tau2_gap2.5.rou.xml"
+    },
+    {
+      "baseline_run_id": "b0_high_base_s20261018",
+      "changed_parameter": "minGap",
+      "config_path": "inputs/b0_high_minGap1_s20261018.sumocfg",
+      "demand_path": "inputs/demand_high_20261018.rou.xml",
+      "input_sha256": {
+        "inputs/b0_high_minGap1_s20261018.sumocfg": "651a93123281202b70af0e3f036fe816f9291be93e6c3e187bb250d224b7888c",
+        "inputs/demand_high_20261018.rou.xml": "2767f272d58f1173bd2353a6ac2f9f42c25ecc2562d7af21b029d382f9ad2598",
+        "inputs/generic_highway_candidate.net.xml": "5d6bd92f46b28001240c3b780713d1094b98eaefba227a3a5615fe66fcf1fb81",
+        "inputs/types_tau1_gap1.rou.xml": "bfd3a9d4022ea59af5e838a6e22320a1de951dfebb5c6982c623fba47607a98d"
+      },
+      "internal_step_s": 0.05,
+      "load": "high",
+      "minGap": 1.0,
+      "phase": "phase2",
+      "run_id": "b0_high_minGap1_s20261018",
+      "seed": 20261018,
+      "tau": 1.0,
+      "vtype_path": "inputs/types_tau1_gap1.rou.xml"
+    },
+    {
+      "baseline_run_id": "b0_high_base_s20261018",
+      "changed_parameter": "minGap",
+      "config_path": "inputs/b0_high_minGap3_s20261018.sumocfg",
+      "demand_path": "inputs/demand_high_20261018.rou.xml",
+      "input_sha256": {
+        "inputs/b0_high_minGap3_s20261018.sumocfg": "50949e3690973c1380834090b4e96c32b46e79cd043142cf85d056ce2bb379bb",
+        "inputs/demand_high_20261018.rou.xml": "2767f272d58f1173bd2353a6ac2f9f42c25ecc2562d7af21b029d382f9ad2598",
+        "inputs/generic_highway_candidate.net.xml": "5d6bd92f46b28001240c3b780713d1094b98eaefba227a3a5615fe66fcf1fb81",
+        "inputs/types_tau1_gap3.rou.xml": "af3adf69efcaa80f62ff4f6378c16751e12597ffbdca2fa4c124d3d383eba7af"
+      },
+      "internal_step_s": 0.05,
+      "load": "high",
+      "minGap": 3.0,
+      "phase": "phase2",
+      "run_id": "b0_high_minGap3_s20261018",
+      "seed": 20261018,
+      "tau": 1.0,
+      "vtype_path": "inputs/types_tau1_gap3.rou.xml"
+    },
+    {
+      "baseline_run_id": "b0_high_base_s20261019",
+      "changed_parameter": "tau",
+      "config_path": "inputs/b0_high_tau0.5_s20261019.sumocfg",
+      "demand_path": "inputs/demand_high_20261019.rou.xml",
+      "input_sha256": {
+        "inputs/b0_high_tau0.5_s20261019.sumocfg": "47eb726bd4b693f3183b3716b3e9e188f6c4c510a7c1f883cf69d741bc9a4086",
+        "inputs/demand_high_20261019.rou.xml": "62f8c58d0c656416db41205fa7ced5e3e47a90b67f352ff1ac2160d1ffe6d200",
+        "inputs/generic_highway_candidate.net.xml": "5d6bd92f46b28001240c3b780713d1094b98eaefba227a3a5615fe66fcf1fb81",
+        "inputs/types_tau0.5_gap2.5.rou.xml": "6de824716d7ea2cb382237a145d4161a3a6db211e7856ec2cf98dd6f3eb91261"
+      },
+      "internal_step_s": 0.05,
+      "load": "high",
+      "minGap": 2.5,
+      "phase": "phase2",
+      "run_id": "b0_high_tau0.5_s20261019",
+      "seed": 20261019,
+      "tau": 0.5,
+      "vtype_path": "inputs/types_tau0.5_gap2.5.rou.xml"
+    },
+    {
+      "baseline_run_id": "b0_high_base_s20261019",
+      "changed_parameter": "tau",
+      "config_path": "inputs/b0_high_tau2_s20261019.sumocfg",
+      "demand_path": "inputs/demand_high_20261019.rou.xml",
+      "input_sha256": {
+        "inputs/b0_high_tau2_s20261019.sumocfg": "79702b2480c33729cad72d3a3b1480c07a970cd6104c571a68e08924f7fdc02a",
+        "inputs/demand_high_20261019.rou.xml": "62f8c58d0c656416db41205fa7ced5e3e47a90b67f352ff1ac2160d1ffe6d200",
+        "inputs/generic_highway_candidate.net.xml": "5d6bd92f46b28001240c3b780713d1094b98eaefba227a3a5615fe66fcf1fb81",
+        "inputs/types_tau2_gap2.5.rou.xml": "4eb54e096b5fb6aae8e9c7eb9a6fb1a10656f72073af04115d98d6c52756b272"
+      },
+      "internal_step_s": 0.05,
+      "load": "high",
+      "minGap": 2.5,
+      "phase": "phase2",
+      "run_id": "b0_high_tau2_s20261019",
+      "seed": 20261019,
+      "tau": 2.0,
+      "vtype_path": "inputs/types_tau2_gap2.5.rou.xml"
+    },
+    {
+      "baseline_run_id": "b0_high_base_s20261019",
+      "changed_parameter": "minGap",
+      "config_path": "inputs/b0_high_minGap1_s20261019.sumocfg",
+      "demand_path": "inputs/demand_high_20261019.rou.xml",
+      "input_sha256": {
+        "inputs/b0_high_minGap1_s20261019.sumocfg": "5b8e9694ebe60b87b3d6f587e18bdc383f2ca82b18a81ecca4284843b848fec9",
+        "inputs/demand_high_20261019.rou.xml": "62f8c58d0c656416db41205fa7ced5e3e47a90b67f352ff1ac2160d1ffe6d200",
+        "inputs/generic_highway_candidate.net.xml": "5d6bd92f46b28001240c3b780713d1094b98eaefba227a3a5615fe66fcf1fb81",
+        "inputs/types_tau1_gap1.rou.xml": "bfd3a9d4022ea59af5e838a6e22320a1de951dfebb5c6982c623fba47607a98d"
+      },
+      "internal_step_s": 0.05,
+      "load": "high",
+      "minGap": 1.0,
+      "phase": "phase2",
+      "run_id": "b0_high_minGap1_s20261019",
+      "seed": 20261019,
+      "tau": 1.0,
+      "vtype_path": "inputs/types_tau1_gap1.rou.xml"
+    },
+    {
+      "baseline_run_id": "b0_high_base_s20261019",
+      "changed_parameter": "minGap",
+      "config_path": "inputs/b0_high_minGap3_s20261019.sumocfg",
+      "demand_path": "inputs/demand_high_20261019.rou.xml",
+      "input_sha256": {
+        "inputs/b0_high_minGap3_s20261019.sumocfg": "35071d9baacd3dcc03af4ce617489f10f7197f9706230ec32e35825a9e6a411b",
+        "inputs/demand_high_20261019.rou.xml": "62f8c58d0c656416db41205fa7ced5e3e47a90b67f352ff1ac2160d1ffe6d200",
+        "inputs/generic_highway_candidate.net.xml": "5d6bd92f46b28001240c3b780713d1094b98eaefba227a3a5615fe66fcf1fb81",
+        "inputs/types_tau1_gap3.rou.xml": "af3adf69efcaa80f62ff4f6378c16751e12597ffbdca2fa4c124d3d383eba7af"
+      },
+      "internal_step_s": 0.05,
+      "load": "high",
+      "minGap": 3.0,
+      "phase": "phase2",
+      "run_id": "b0_high_minGap3_s20261019",
+      "seed": 20261019,
+      "tau": 1.0,
+      "vtype_path": "inputs/types_tau1_gap3.rou.xml"
+    },
+    {
+      "baseline_run_id": "b0_medium_base_s20261018",
+      "changed_parameter": null,
+      "config_path": "inputs/b0_medium_repeat_s20261018.sumocfg",
+      "demand_path": "inputs/demand_medium_20261018.rou.xml",
+      "input_sha256": {
+        "inputs/b0_medium_repeat_s20261018.sumocfg": "b813628ff365fe5071b2f6da278a46dcaefe29366af447034614f56734cefb01",
+        "inputs/demand_medium_20261018.rou.xml": "9fcb50fa36ddb42b185a3118644390c293da507db4f9420977da5e5cd8edec25",
+        "inputs/generic_highway_candidate.net.xml": "5d6bd92f46b28001240c3b780713d1094b98eaefba227a3a5615fe66fcf1fb81",
+        "inputs/types_tau1_gap2.5.rou.xml": "7c59430be997c2502ee92eb324fb3cf1ec2e8c2ec6b13f789bbca82fed7da728"
+      },
+      "internal_step_s": 0.05,
+      "load": "medium",
+      "minGap": 2.5,
+      "phase": "control",
+      "run_id": "b0_medium_repeat_s20261018",
+      "seed": 20261018,
+      "tau": 1.0,
+      "vtype_path": "inputs/types_tau1_gap2.5.rou.xml"
+    }
+  ],
+  "scientific_claim_eligible": false,
+  "seeds": [
+    20261018,
+    20261019
+  ],
+  "source_bindings": {
+    "diagnostics": {
+      "path": "D:\\shen\\TJU\\AAD\\evidence\\results\\RES-STAGE-0.5-CALIBRATION-GAPS-V1\\diagnostics.json",
+      "sha256": "bc9de47b3026b640d22a2d086ae445b6ce5b0049e0af75f09874860a6e031f03",
+      "source": "b0_summary::diagnostics"
+    },
+    "fleet": {
+      "path": "D:\\shen\\TJU\\AAD\\evidence\\results\\RES-STAGE-0.5-CALIBRATION-GAPS-V1\\benchmark_plan.json",
+      "sha256": "44e7a3aeffd51e8f4c51677a1bd9495224dc12630d144a659fa5a91c4c9d1171",
+      "source": "b0_summary::fleet"
+    },
+    "prior_numerics": {
+      "path": "D:\\shen\\TJU\\AAD\\evidence\\results\\RES-STAGE-0.5-CALIBRATION-GAPS-V1\\benchmark_numerical_diagnostics.json",
+      "sha256": "ee9f92d63d02aa86a9be402cf733c20d0f2a42cf4f9ee92e74dd703c4a105120",
+      "source": "b0_summary::prior_numerics"
+    },
+    "prior_runs": {
+      "path": "D:\\shen\\TJU\\AAD\\evidence\\results\\RES-STAGE-0.5-CALIBRATION-GAPS-V1\\benchmark_summary.json",
+      "sha256": "fa3219e35448aaf7a14fdabe0b4c2979526fa8001bc87025b2f408ef6c0538b9",
+      "source": "b0_summary::prior_runs"
+    },
+    "real_full": {
+      "path": "D:\\shen\\TJU\\AAD\\evidence\\results\\RES-STAGE-0.5-CALIBRATION-READINESS-V1\\calibration_source_analysis.json",
+      "sha256": "e8aaaf63167b72b1aaca0f27602ec11141af37df7f3d38288abf6e019679d1a0",
+      "source": "b0_summary::real_full"
+    },
+    "strata": {
+      "path": "D:\\shen\\TJU\\AAD\\evidence\\results\\RES-STAGE-0.5-CALIBRATION-GAPS-V1\\unified_strata.json",
+      "sha256": "fbdd5fb8641acbd4cfdba7936151ea0477e0eb12bea1e1b19fc7cd015da090e9",
+      "source": "b0_summary::strata"
+    }
+  },
+  "source_code_sha256": {
+    "code/scripts/run_stage_0_5_exploratory_response.py": "dd30773beb668c5a12750f3f7b4332fef9d7375ebfba69069e3eedd044f62280",
+    "code/src/riskprop/formal_risk_measurement.py": "4e15e67e35911fdd4d50d26f41784bde05a8cd9983edc42c572fa51b00686c58",
+    "code/src/riskprop/ngsim_risk_calibration.py": "ba49f4a4d2e9762f5d31a6858b84ed5f314c16c2d5e404df93cb36b550d00a36",
+    "code/src/riskprop/stage_0_5_exploratory_response.py": "e17f9cc9a894d620d89ed84b3a854f89c7646d7ccb5e0e0fa0dfb99cb6b2f8e6",
+    "code/src/riskprop/stage_0_5_sumo.py": "a95231972300348c86d3750af1a777e086b41a87a75506a95a290d395f2a762f"
+  },
+  "stage_1_1_allowed": false,
+  "tolerances": "Tolerance Not Yet Justified",
+  "validation_window_read": false,
+  "windows": {
+    "all_slices_retained": true,
+    "bins_s": 60,
+    "early": [
+      0,
+      60
+    ],
+    "late": [
+      240,
+      300
+    ],
+    "primary": [
+      0,
+      300
+    ],
+    "warmup_s_approved": null
+  }
+}

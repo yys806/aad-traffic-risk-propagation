@@ -1,0 +1,129 @@
+{
+  "access_audit": {
+    "access_roles": [
+      "calibration",
+      "temporal_validation",
+      "auxiliary"
+    ],
+    "decisions": [
+      {
+        "allowed": true,
+        "checked_bindings": {
+          "b0_summary::diagnostics": "bc9de47b3026b640d22a2d086ae445b6ce5b0049e0af75f09874860a6e031f03"
+        },
+        "purpose": "B0 existing calibration summary only",
+        "reason": "allowed_by_policy",
+        "restricted_sources": [],
+        "role": "calibration",
+        "sources": [
+          "b0_summary::diagnostics"
+        ]
+      },
+      {
+        "allowed": true,
+        "checked_bindings": {
+          "b0_summary::strata": "fbdd5fb8641acbd4cfdba7936151ea0477e0eb12bea1e1b19fc7cd015da090e9"
+        },
+        "purpose": "B0 existing calibration summary only",
+        "reason": "allowed_by_policy",
+        "restricted_sources": [],
+        "role": "calibration",
+        "sources": [
+          "b0_summary::strata"
+        ]
+      },
+      {
+        "allowed": true,
+        "checked_bindings": {
+          "b0_summary::fleet": "44e7a3aeffd51e8f4c51677a1bd9495224dc12630d144a659fa5a91c4c9d1171"
+        },
+        "purpose": "B0 existing calibration summary only",
+        "reason": "allowed_by_policy",
+        "restricted_sources": [],
+        "role": "calibration",
+        "sources": [
+          "b0_summary::fleet"
+        ]
+      },
+      {
+        "allowed": true,
+        "checked_bindings": {
+          "b0_summary::prior_runs": "fa3219e35448aaf7a14fdabe0b4c2979526fa8001bc87025b2f408ef6c0538b9"
+        },
+        "purpose": "B0 existing calibration summary only",
+        "reason": "allowed_by_policy",
+        "restricted_sources": [],
+        "role": "calibration",
+        "sources": [
+          "b0_summary::prior_runs"
+        ]
+      },
+      {
+        "allowed": true,
+        "checked_bindings": {
+          "b0_summary::prior_numerics": "ee9f92d63d02aa86a9be402cf733c20d0f2a42cf4f9ee92e74dd703c4a105120"
+        },
+        "purpose": "B0 existing calibration summary only",
+        "reason": "allowed_by_policy",
+        "restricted_sources": [],
+        "role": "calibration",
+        "sources": [
+          "b0_summary::prior_numerics"
+        ]
+      },
+      {
+        "allowed": true,
+        "checked_bindings": {
+          "b0_summary::real_full": "e8aaaf63167b72b1aaca0f27602ec11141af37df7f3d38288abf6e019679d1a0"
+        },
+        "purpose": "B0 existing calibration summary only",
+        "reason": "allowed_by_policy",
+        "restricted_sources": [],
+        "role": "calibration",
+        "sources": [
+          "b0_summary::real_full"
+        ]
+      }
+    ],
+    "denied_count": 0,
+    "denied_requests": [],
+    "fail_closed": true,
+    "locked_holdout_accessed": false,
+    "policy_schema_version": "stage_0_5.sumo-engineering.v2.calibration-validation-policy.v1",
+    "request_count": 6,
+    "schema_version": "stage_0_5.sumo-engineering.v2.access-audit.v1",
+    "validation_window_read": false
+  },
+  "bindings": {
+    "diagnostics": {
+      "path": "D:\\shen\\TJU\\AAD\\evidence\\results\\RES-STAGE-0.5-CALIBRATION-GAPS-V1\\diagnostics.json",
+      "sha256": "bc9de47b3026b640d22a2d086ae445b6ce5b0049e0af75f09874860a6e031f03",
+      "source": "b0_summary::diagnostics"
+    },
+    "fleet": {
+      "path": "D:\\shen\\TJU\\AAD\\evidence\\results\\RES-STAGE-0.5-CALIBRATION-GAPS-V1\\benchmark_plan.json",
+      "sha256": "44e7a3aeffd51e8f4c51677a1bd9495224dc12630d144a659fa5a91c4c9d1171",
+      "source": "b0_summary::fleet"
+    },
+    "prior_numerics": {
+      "path": "D:\\shen\\TJU\\AAD\\evidence\\results\\RES-STAGE-0.5-CALIBRATION-GAPS-V1\\benchmark_numerical_diagnostics.json",
+      "sha256": "ee9f92d63d02aa86a9be402cf733c20d0f2a42cf4f9ee92e74dd703c4a105120",
+      "source": "b0_summary::prior_numerics"
+    },
+    "prior_runs": {
+      "path": "D:\\shen\\TJU\\AAD\\evidence\\results\\RES-STAGE-0.5-CALIBRATION-GAPS-V1\\benchmark_summary.json",
+      "sha256": "fa3219e35448aaf7a14fdabe0b4c2979526fa8001bc87025b2f408ef6c0538b9",
+      "source": "b0_summary::prior_runs"
+    },
+    "real_full": {
+      "path": "D:\\shen\\TJU\\AAD\\evidence\\results\\RES-STAGE-0.5-CALIBRATION-READINESS-V1\\calibration_source_analysis.json",
+      "sha256": "e8aaaf63167b72b1aaca0f27602ec11141af37df7f3d38288abf6e019679d1a0",
+      "source": "b0_summary::real_full"
+    },
+    "strata": {
+      "path": "D:\\shen\\TJU\\AAD\\evidence\\results\\RES-STAGE-0.5-CALIBRATION-GAPS-V1\\unified_strata.json",
+      "sha256": "fbdd5fb8641acbd4cfdba7936151ea0477e0eb12bea1e1b19fc7cd015da090e9",
+      "source": "b0_summary::strata"
+    }
+  }
+}

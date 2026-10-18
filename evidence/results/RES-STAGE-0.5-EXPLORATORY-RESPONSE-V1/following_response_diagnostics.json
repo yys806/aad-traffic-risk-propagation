@@ -1,0 +1,533 @@
+{
+  "missing_reason_equivalence": {
+    "conflicting_match_fields": {
+      "comparability": "Not Equivalent",
+      "ngsim_status": "missing",
+      "sumo_reason": "not_applicable_to_simulator_observation",
+      "sumo_status": null
+    },
+    "leader_not_matched": {
+      "comparability": "Engineering Consistent Only",
+      "ngsim_status": "missing",
+      "sumo_reason": "leader_identity_unresolved",
+      "sumo_status": "missing"
+    },
+    "no_reported_leader": {
+      "comparability": "Engineering Consistent Only",
+      "ngsim_status": "missing",
+      "sumo_reason": "no_observed_leader",
+      "sumo_status": "not_applicable"
+    },
+    "non_closing": {
+      "comparability": "Equivalent / Verified",
+      "ngsim_status": "not_applicable",
+      "sumo_reason": "non_closing",
+      "sumo_status": "not_applicable"
+    },
+    "non_positive_gap": {
+      "comparability": "Equivalent / Verified",
+      "ngsim_status": "invalid",
+      "sumo_reason": "non_positive_gap",
+      "sumo_status": "invalid"
+    },
+    "unobservable_input": {
+      "comparability": "Engineering Consistent Only",
+      "ngsim_status": "missing",
+      "sumo_reason": "simulator_output_missing",
+      "sumo_status": "missing"
+    },
+    "unobservable_match_fields": {
+      "comparability": "Engineering Consistent Only",
+      "ngsim_status": "missing",
+      "sumo_reason": "leader_identity_unresolved",
+      "sumo_status": "missing"
+    }
+  },
+  "ngsim_sumo_status_crosswalk": {
+    "invalid": {
+      "comparability": "Equivalent / Verified",
+      "ngsim_condition": "matched leader with non-positive net gap",
+      "sumo_label": "invalid (missing_reason=non_positive_gap)"
+    },
+    "missing__identity_or_clock": {
+      "comparability": "Engineering Consistent Only",
+      "ngsim_condition": "leader not matched, unobservable match fields, conflicting clock/frame",
+      "note": "NGSIM collection/identity defects map onto the simulator's identity-resolution failure",
+      "sumo_label": "missing (missing_reason=leader_identity_unresolved)"
+    },
+    "missing__no_reported_leader": {
+      "comparability": "Engineering Consistent Only",
+      "ngsim_condition": "no leader reported in the source record (labelled missing)",
+      "note": "documented, approved asymmetry: in NGSIM the absence of a leader record is counted as an observation limitation (missing), while in SUMO the absence of a leader is a genuine traffic state (not_applicable).  No leader row can enter reliable-following exposure in either pipeline, so the P2 denominator is unaffected; comparisons of raw status composition must use this crosswalk.",
+      "sumo_label": "not_applicable (missing_reason=no_observed_leader)"
+    },
+    "missing__unobservable_input": {
+      "comparability": "Engineering Consistent Only",
+      "ngsim_condition": "leader matched but speed/headway fields unusable",
+      "note": "SUMO output defects must stay zero rows; the label exists for fail-closed behaviour",
+      "sumo_label": "missing (missing_reason=simulator_output_missing)"
+    },
+    "not_applicable": {
+      "comparability": "Equivalent / Verified",
+      "ngsim_condition": "matched leader and positive net gap but no closing",
+      "sumo_label": "not_applicable (missing_reason=non_closing)"
+    },
+    "valid": {
+      "comparability": "Equivalent / Verified",
+      "ngsim_condition": "matched leader, positive net gap, closing speed above epsilon",
+      "sumo_label": "valid"
+    }
+  },
+  "no_missing_as_zero_risk": true,
+  "real_full_source_p2_uncertainty": {
+    "cluster_unit": "trajectory (one physical vehicle across its whole observed record)",
+    "iid_row_bootstrap_warning": "row-level i.i.d. resampling is reported only to show how much narrower it is; it must not be used for scientific tolerance",
+    "reason": "clustered intervals describe real-data estimation uncertainty only.  They are not a permissible SUMO model-deviation tolerance (see the tolerance protocol).",
+    "resamples": 2000,
+    "schema_version": "stage_0_5.calibration-readiness.v1.clustered-uncertainty.v1",
+    "seed": 20261018,
+    "sources": [
+      {
+        "cluster_ci_width_speed_mps": 0.24007717575000243,
+        "clusters": 2169,
+        "event_share_of_vehicles": 0.16274781005071462,
+        "exposure_concentration": {
+          "top_10pct_share": 0.16216337494245056
+        },
+        "iid_narrower_by_factor": 12.71527578061644,
+        "iid_row_ci_width_speed_mps": 0.018881004226112306,
+        "iid_row_se_speed_mps": 0.0024082913553714674,
+        "mean_acceleration_mps2": {
+          "bootstrap_mean": 0.10036966581227293,
+          "lower_95": 0.09593065359450313,
+          "point": 0.1002950152380404,
+          "sd": 0.0021547916891100642,
+          "upper_95": 0.10448759985784087
+        },
+        "mean_speed_mps": {
+          "bootstrap_mean": 11.430837929503028,
+          "lower_95": 11.30596439244152,
+          "point": 11.428907027069334,
+          "sd": 0.06196338737924312,
+          "upper_95": 11.546041568191523
+        },
+        "p2_evaluable_following_exposure_s": 111425.90000000002,
+        "p2_event_rate_per_vehicle_hour": {
+          "bootstrap_mean": 17.549363503387465,
+          "lower_95": 15.111013685395534,
+          "point": 17.54349751718406,
+          "sd": 1.413890538987239,
+          "upper_95": 20.49823654996825
+        },
+        "p2_events": 543,
+        "reliable_following_exposure_s": 111613.3,
+        "source_group": "us101__0750_0805",
+        "state_rows": 1180598,
+        "vehicles_with_events": 353
+      },
+      {
+        "cluster_ci_width_speed_mps": 0.20515626609162396,
+        "clusters": 2017,
+        "event_share_of_vehicles": 0.22062469013386218,
+        "exposure_concentration": {
+          "top_10pct_share": 0.1542998945362591
+        },
+        "iid_narrower_by_factor": 12.816690751932418,
+        "iid_row_ci_width_speed_mps": 0.01600696077188972,
+        "iid_row_se_speed_mps": 0.0020417041800879746,
+        "mean_acceleration_mps2": {
+          "bootstrap_mean": 0.031460935752100364,
+          "lower_95": 0.028748012881217814,
+          "point": 0.03146100938853036,
+          "sd": 0.0014088762879087232,
+          "upper_95": 0.03419598463458226
+        },
+        "mean_speed_mps": {
+          "bootstrap_mean": 8.938360572637624,
+          "lower_95": 8.833075471680502,
+          "point": 8.939249428293879,
+          "sd": 0.052750263587002244,
+          "upper_95": 9.038231737772126
+        },
+        "p2_evaluable_following_exposure_s": 133505.60000000003,
+        "p2_event_rate_per_vehicle_hour": {
+          "bootstrap_mean": 19.77361176143168,
+          "lower_95": 17.471869068832838,
+          "point": 19.73849786076389,
+          "sd": 1.2715958403995513,
+          "upper_95": 22.356609440087055
+        },
+        "p2_events": 732,
+        "reliable_following_exposure_s": 133684.30000000002,
+        "source_group": "us101__0805_0820",
+        "state_rows": 1403095,
+        "vehicles_with_events": 445
+      }
+    ],
+    "usable_for_tolerance": false
+  },
+  "runs": [
+    {
+      "following": 0.988060180971248,
+      "full_network_p2": {
+        "authorization": "B0 exploratory computation only; no measurement Gate",
+        "event_rate_per_evaluable_vehicle_hour": 0.0,
+        "events": 0,
+        "formal_adapter_status": "pending_measurement_equivalence_review",
+        "method": "vectorized core adjacency equivalence tested",
+        "not_evaluable_following_exposure_s": 0.0,
+        "p2_evaluable_following_exposure_s": 10147.5,
+        "p2_evaluable_following_vehicle_hours": 2.81875,
+        "reliable_closing_exposure_s": 4906.8,
+        "reliable_following_exposure_s": 10147.5
+      },
+      "local_stratum_p2": "Unresolved",
+      "positive_closing": 0.4866695567356671,
+      "run_id": "b0_low_base_s20261018",
+      "ttc_valid": 0.4808588103014403
+    },
+    {
+      "following": 0.9880550645455033,
+      "full_network_p2": {
+        "authorization": "B0 exploratory computation only; no measurement Gate",
+        "event_rate_per_evaluable_vehicle_hour": 0.0,
+        "events": 0,
+        "formal_adapter_status": "pending_measurement_equivalence_review",
+        "method": "vectorized core adjacency equivalence tested",
+        "not_evaluable_following_exposure_s": 0.0,
+        "p2_evaluable_following_exposure_s": 10146.300000000001,
+        "p2_evaluable_following_vehicle_hours": 2.818416666666667,
+        "reliable_closing_exposure_s": 4919.900000000001,
+        "reliable_following_exposure_s": 10146.300000000001
+      },
+      "local_stratum_p2": "Unresolved",
+      "positive_closing": 0.5045538328092811,
+      "run_id": "b0_low_base_s20261019",
+      "ttc_valid": 0.49852696984305533
+    },
+    {
+      "following": 0.9911284171651078,
+      "full_network_p2": {
+        "authorization": "B0 exploratory computation only; no measurement Gate",
+        "event_rate_per_evaluable_vehicle_hour": 0.0,
+        "events": 0,
+        "formal_adapter_status": "pending_measurement_equivalence_review",
+        "method": "vectorized core adjacency equivalence tested",
+        "not_evaluable_following_exposure_s": 0.0,
+        "p2_evaluable_following_exposure_s": 13833.2,
+        "p2_evaluable_following_vehicle_hours": 3.8425555555555557,
+        "reliable_closing_exposure_s": 6726.6,
+        "reliable_following_exposure_s": 13833.2
+      },
+      "local_stratum_p2": "Unresolved",
+      "positive_closing": 0.5019441069258809,
+      "run_id": "b0_medium_base_s20261018",
+      "ttc_valid": 0.497491068202802
+    },
+    {
+      "following": 0.99113197704747,
+      "full_network_p2": {
+        "authorization": "B0 exploratory computation only; no measurement Gate",
+        "event_rate_per_evaluable_vehicle_hour": 0.0,
+        "events": 0,
+        "formal_adapter_status": "pending_measurement_equivalence_review",
+        "method": "vectorized core adjacency equivalence tested",
+        "not_evaluable_following_exposure_s": 0.0,
+        "p2_evaluable_following_exposure_s": 13831.2,
+        "p2_evaluable_following_vehicle_hours": 3.842,
+        "reliable_closing_exposure_s": 6717.0,
+        "reliable_following_exposure_s": 13831.2
+      },
+      "local_stratum_p2": "Unresolved",
+      "positive_closing": 0.4936842105263158,
+      "run_id": "b0_medium_base_s20261019",
+      "ttc_valid": 0.48930620761606675
+    },
+    {
+      "following": 0.992159632703514,
+      "full_network_p2": {
+        "authorization": "B0 exploratory computation only; no measurement Gate",
+        "event_rate_per_evaluable_vehicle_hour": 0.0,
+        "events": 0,
+        "formal_adapter_status": "pending_measurement_equivalence_review",
+        "method": "vectorized core adjacency equivalence tested",
+        "not_evaluable_following_exposure_s": 0.0,
+        "p2_evaluable_following_exposure_s": 15854.7,
+        "p2_evaluable_following_vehicle_hours": 4.404083333333333,
+        "reliable_closing_exposure_s": 7726.400000000001,
+        "reliable_following_exposure_s": 15854.7
+      },
+      "local_stratum_p2": "Unresolved",
+      "positive_closing": 0.4946427935784715,
+      "run_id": "b0_high_base_s20261018",
+      "ttc_valid": 0.4907646123962564
+    },
+    {
+      "following": 0.9922379423490809,
+      "full_network_p2": {
+        "authorization": "B0 exploratory computation only; no measurement Gate",
+        "event_rate_per_evaluable_vehicle_hour": 0.0,
+        "events": 0,
+        "formal_adapter_status": "pending_measurement_equivalence_review",
+        "method": "vectorized core adjacency equivalence tested",
+        "not_evaluable_following_exposure_s": 0.0,
+        "p2_evaluable_following_exposure_s": 15856.400000000001,
+        "p2_evaluable_following_vehicle_hours": 4.404555555555556,
+        "reliable_closing_exposure_s": 7694.6,
+        "reliable_following_exposure_s": 15856.400000000001
+      },
+      "local_stratum_p2": "Unresolved",
+      "positive_closing": 0.4996977562848914,
+      "run_id": "b0_high_base_s20261019",
+      "ttc_valid": 0.49581907349257315
+    },
+    {
+      "following": 0.9911234285255252,
+      "full_network_p2": {
+        "authorization": "B0 exploratory computation only; no measurement Gate",
+        "event_rate_per_evaluable_vehicle_hour": 0.0,
+        "events": 0,
+        "formal_adapter_status": "pending_measurement_equivalence_review",
+        "method": "vectorized core adjacency equivalence tested",
+        "not_evaluable_following_exposure_s": 0.0,
+        "p2_evaluable_following_exposure_s": 13831.2,
+        "p2_evaluable_following_vehicle_hours": 3.842,
+        "reliable_closing_exposure_s": 6719.5,
+        "reliable_following_exposure_s": 13831.2
+      },
+      "local_stratum_p2": "Unresolved",
+      "positive_closing": 0.4999189495866429,
+      "run_id": "b0_medium_tau0.5_s20261018",
+      "ttc_valid": 0.49548138329919267
+    },
+    {
+      "following": 0.9908416559612118,
+      "full_network_p2": {
+        "authorization": "B0 exploratory computation only; no measurement Gate",
+        "event_rate_per_evaluable_vehicle_hour": 0.0,
+        "events": 0,
+        "formal_adapter_status": "pending_measurement_equivalence_review",
+        "method": "vectorized core adjacency equivalence tested",
+        "not_evaluable_following_exposure_s": 0.0,
+        "p2_evaluable_following_exposure_s": 14922.6,
+        "p2_evaluable_following_vehicle_hours": 4.145166666666666,
+        "reliable_closing_exposure_s": 4208.400000000001,
+        "reliable_following_exposure_s": 14922.6
+      },
+      "local_stratum_p2": "Unresolved",
+      "positive_closing": 0.4453366792137181,
+      "run_id": "b0_medium_tau2_s20261018",
+      "ttc_valid": 0.4412581326923874
+    },
+    {
+      "following": 0.9911266361519313,
+      "full_network_p2": {
+        "authorization": "B0 exploratory computation only; no measurement Gate",
+        "event_rate_per_evaluable_vehicle_hour": 0.0,
+        "events": 0,
+        "formal_adapter_status": "pending_measurement_equivalence_review",
+        "method": "vectorized core adjacency equivalence tested",
+        "not_evaluable_following_exposure_s": 0.0,
+        "p2_evaluable_following_exposure_s": 13832.800000000001,
+        "p2_evaluable_following_vehicle_hours": 3.8424444444444448,
+        "reliable_closing_exposure_s": 6712.900000000001,
+        "reliable_following_exposure_s": 13832.800000000001
+      },
+      "local_stratum_p2": "Unresolved",
+      "positive_closing": 0.49750860846668016,
+      "run_id": "b0_medium_minGap1_s20261018",
+      "ttc_valid": 0.49309403356620896
+    },
+    {
+      "following": 0.9911287732819525,
+      "full_network_p2": {
+        "authorization": "B0 exploratory computation only; no measurement Gate",
+        "event_rate_per_evaluable_vehicle_hour": 0.0,
+        "events": 0,
+        "formal_adapter_status": "pending_measurement_equivalence_review",
+        "method": "vectorized core adjacency equivalence tested",
+        "not_evaluable_following_exposure_s": 0.0,
+        "p2_evaluable_following_exposure_s": 13833.5,
+        "p2_evaluable_following_vehicle_hours": 3.8426388888888887,
+        "reliable_closing_exposure_s": 6728.8,
+        "reliable_following_exposure_s": 13833.5
+      },
+      "local_stratum_p2": "Unresolved",
+      "positive_closing": 0.502126280831072,
+      "run_id": "b0_medium_minGap3_s20261018",
+      "ttc_valid": 0.4976718047527296
+    },
+    {
+      "following": 0.9911287732819525,
+      "full_network_p2": {
+        "authorization": "B0 exploratory computation only; no measurement Gate",
+        "event_rate_per_evaluable_vehicle_hour": 0.0,
+        "events": 0,
+        "formal_adapter_status": "pending_measurement_equivalence_review",
+        "method": "vectorized core adjacency equivalence tested",
+        "not_evaluable_following_exposure_s": 0.0,
+        "p2_evaluable_following_exposure_s": 13829.6,
+        "p2_evaluable_following_vehicle_hours": 3.841555555555556,
+        "reliable_closing_exposure_s": 6719.3,
+        "reliable_following_exposure_s": 13829.6
+      },
+      "local_stratum_p2": "Unresolved",
+      "positive_closing": 0.5009517638005752,
+      "run_id": "b0_medium_tau0.5_s20261019",
+      "ttc_valid": 0.4965077071290944
+    },
+    {
+      "following": 0.9906778588602523,
+      "full_network_p2": {
+        "authorization": "B0 exploratory computation only; no measurement Gate",
+        "event_rate_per_evaluable_vehicle_hour": 0.0,
+        "events": 0,
+        "formal_adapter_status": "pending_measurement_equivalence_review",
+        "method": "vectorized core adjacency equivalence tested",
+        "not_evaluable_following_exposure_s": 0.0,
+        "p2_evaluable_following_exposure_s": 14808.6,
+        "p2_evaluable_following_vehicle_hours": 4.1135,
+        "reliable_closing_exposure_s": 4116.7,
+        "reliable_following_exposure_s": 14808.6
+      },
+      "local_stratum_p2": "Unresolved",
+      "positive_closing": 0.43570637826790426,
+      "run_id": "b0_medium_tau2_s20261019",
+      "ttc_valid": 0.43164466191420253
+    },
+    {
+      "following": 0.9911323328785812,
+      "full_network_p2": {
+        "authorization": "B0 exploratory computation only; no measurement Gate",
+        "event_rate_per_evaluable_vehicle_hour": 0.0,
+        "events": 0,
+        "formal_adapter_status": "pending_measurement_equivalence_review",
+        "method": "vectorized core adjacency equivalence tested",
+        "not_evaluable_following_exposure_s": 0.0,
+        "p2_evaluable_following_exposure_s": 13831.900000000001,
+        "p2_evaluable_following_vehicle_hours": 3.842194444444445,
+        "reliable_closing_exposure_s": 6727.0,
+        "reliable_following_exposure_s": 13831.900000000001
+      },
+      "local_stratum_p2": "Unresolved",
+      "positive_closing": 0.48848224768228005,
+      "run_id": "b0_medium_minGap1_s20261019",
+      "ttc_valid": 0.4841505497151111
+    },
+    {
+      "following": 0.9911291293702084,
+      "full_network_p2": {
+        "authorization": "B0 exploratory computation only; no measurement Gate",
+        "event_rate_per_evaluable_vehicle_hour": 0.0,
+        "events": 0,
+        "formal_adapter_status": "pending_measurement_equivalence_review",
+        "method": "vectorized core adjacency equivalence tested",
+        "not_evaluable_following_exposure_s": 0.0,
+        "p2_evaluable_following_exposure_s": 13831.800000000001,
+        "p2_evaluable_following_vehicle_hours": 3.842166666666667,
+        "reliable_closing_exposure_s": 6734.400000000001,
+        "reliable_following_exposure_s": 13831.800000000001
+      },
+      "local_stratum_p2": "Unresolved",
+      "positive_closing": 0.49987850315891785,
+      "run_id": "b0_medium_minGap3_s20261019",
+      "ttc_valid": 0.4954441456267812
+    },
+    {
+      "following": 0.9921582479689156,
+      "full_network_p2": {
+        "authorization": "B0 exploratory computation only; no measurement Gate",
+        "event_rate_per_evaluable_vehicle_hour": 0.0,
+        "events": 0,
+        "formal_adapter_status": "pending_measurement_equivalence_review",
+        "method": "vectorized core adjacency equivalence tested",
+        "not_evaluable_following_exposure_s": 0.0,
+        "p2_evaluable_following_exposure_s": 15843.800000000001,
+        "p2_evaluable_following_vehicle_hours": 4.401055555555556,
+        "reliable_closing_exposure_s": 7729.1,
+        "reliable_following_exposure_s": 15843.800000000001
+      },
+      "local_stratum_p2": "Unresolved",
+      "positive_closing": 0.5035246368555967,
+      "run_id": "b0_high_tau0.5_s20261018",
+      "ttc_valid": 0.4995761215118333
+    },
+    {
+      "following": 0.9905072806150939,
+      "full_network_p2": {
+        "authorization": "B0 exploratory computation only; no measurement Gate",
+        "event_rate_per_evaluable_vehicle_hour": 0.0,
+        "events": 0,
+        "formal_adapter_status": "pending_measurement_equivalence_review",
+        "method": "vectorized core adjacency equivalence tested",
+        "not_evaluable_following_exposure_s": 0.0,
+        "p2_evaluable_following_exposure_s": 14962.300000000001,
+        "p2_evaluable_following_vehicle_hours": 4.156194444444445,
+        "reliable_closing_exposure_s": 4334.2,
+        "reliable_following_exposure_s": 14962.300000000001
+      },
+      "local_stratum_p2": "Unresolved",
+      "positive_closing": 0.4803989592367736,
+      "run_id": "b0_high_tau2_s20261018",
+      "ttc_valid": 0.475838666723938
+    },
+    {
+      "following": 0.9921612937396278,
+      "full_network_p2": {
+        "authorization": "B0 exploratory computation only; no measurement Gate",
+        "event_rate_per_evaluable_vehicle_hour": 0.0,
+        "events": 0,
+        "formal_adapter_status": "pending_measurement_equivalence_review",
+        "method": "vectorized core adjacency equivalence tested",
+        "not_evaluable_following_exposure_s": 0.0,
+        "p2_evaluable_following_exposure_s": 15850.800000000001,
+        "p2_evaluable_following_vehicle_hours": 4.4030000000000005,
+        "reliable_closing_exposure_s": 7740.5,
+        "reliable_following_exposure_s": 15850.800000000001
+      },
+      "local_stratum_p2": "Unresolved",
+      "positive_closing": 0.49247304174525786,
+      "run_id": "b0_high_minGap1_s20261018",
+      "ttc_valid": 0.48861269022986475
+    },
+    {
+      "following": 0.9921626773988562,
+      "full_network_p2": {
+        "authorization": "B0 exploratory computation only; no measurement Gate",
+        "event_rate_per_evaluable_vehicle_hour": 0.0,
+        "events": 0,
+        "formal_adapter_status": "pending_measurement_equivalence_review",
+        "method": "vectorized core adjacency equivalence tested",
+        "not_evaluable_following_exposure_s": 0.0,
+        "p2_evaluable_following_exposure_s": 15857.1,
+        "p2_evaluable_following_vehicle_hours": 4.40475,
+        "reliable_closing_exposure_s": 7741.0,
+        "reliable_following_exposure_s": 15857.1
+      },
+      "local_stratum_p2": "Unresolved",
+      "positive_closing": 0.49790065471107314,
+      "run_id": "b0_high_minGap3_s20261018",
+      "ttc_valid": 0.4939984466567818
+    },
+    {
+      "following": 0.9911284171651078,
+      "full_network_p2": {
+        "authorization": "B0 exploratory computation only; no measurement Gate",
+        "event_rate_per_evaluable_vehicle_hour": 0.0,
+        "events": 0,
+        "formal_adapter_status": "pending_measurement_equivalence_review",
+        "method": "vectorized core adjacency equivalence tested",
+        "not_evaluable_following_exposure_s": 0.0,
+        "p2_evaluable_following_exposure_s": 13833.2,
+        "p2_evaluable_following_vehicle_hours": 3.8425555555555557,
+        "reliable_closing_exposure_s": 6726.6,
+        "reliable_following_exposure_s": 13833.2
+      },
+      "local_stratum_p2": "Unresolved",
+      "positive_closing": 0.5019441069258809,
+      "run_id": "b0_medium_repeat_s20261018",
+      "ttc_valid": 0.497491068202802
+    }
+  ],
+  "space_denominators_not_equated": true
+}

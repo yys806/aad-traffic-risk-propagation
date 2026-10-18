@@ -92,3 +92,8 @@ Documented Intent：06_DECISIONS指数rho/固定分母/车辆等权。Actual Imp
 2026-10-18 AAD-0.5.3 更新：SUMO `generic_highway_candidate` engineering fixture 与 no-message 状态链已可运行；正式网络/需求/vType/行为/时间步/暖机窗口仍未批准。已核验并修复 TraCI `getLeader` 距离语义（必须加回后车 minGap 才是物理净间距），若沿用旧值会系统性高估闭合风险、低估净间距。SUMO P2 适配因缺少 NGSIM source/member/diagnostic-clock 契约而保持 `pending_sumo_adapter_review`，formal-alignment adapter 亦为 `pending_measurement_equivalence_review`；工程 P2 不能进入正式事件率或现实覆盖 Gate。工程 baseline fixture 在高速度下未产生 TTC<2 s 连续状态（min TTC 6.971 s），说明 SUMO 默认安全跟驰在自由流条件下不会自发产生 P2 事件；P2 适配行为需由显式低速度/停驻队列工程 probe 触发，该 probe 是建模刺激、不是真实交通证据。
 
 2026-10-18 AAD-0.5.4-A+：车型/长度字段可得缺口已补，独立物理真值/注记误差仍Unverified；摩托30/10、货车53/44有限。完整轨迹边界选择、原文件时间重叠、跨成员物理身份、局部分层P2归属均不得忽略。generic不验收真实匝道/织入/波传播。中高负载插入积压、.05s自动ballistic对照限制、完整P2成本未测；暖机和科学容差未批准。Status: Awaiting Researcher Decision。证据见补充报告、benchmark_numerical_diagnostics、candidate_protocol、cost_budget_proposal。
+
+
+## 2026-10-18 B0仍未解决的准入问题
+
+真实中/高密度状态没有被本轮实现；无法用这批自由流数据排除模型结构限制或识别低速minGap。tau2通过入口服务/安全降速改变实际车队，不能视为纯在场跟驰效应。原调度停止缺陷B0-EXEC-STOP-01已在批次后修复，旧偏差及高输入seed不足保留；最后worker峰值内存Unverified。正式warmup、局部P2归属、科学容差和现实覆盖仍未定。依据：docs/STAGE_0_5_TASK_0_5_4B0_EXPLORATORY_RESPONSE_DIAGNOSTICS.md、execution_code_change_audit、机制矩阵。

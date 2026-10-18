@@ -46,6 +46,7 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         "RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1": [],
         "RES-STAGE-0.5-CALIBRATION-READINESS-V1": [],
         "RES-STAGE-0.5-CALIBRATION-GAPS-V1": [],
+        "RES-STAGE-0.5-EXPLORATORY-RESPONSE-V1": [],
         "RES-STAGE-0.6-PRELOCK-V2": [],
         "RES-PROTOCOL-READINESS-V1": [
             (
@@ -203,6 +204,20 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
                 f"code/outputs/formal/calibration/stage_0_5_timestep_sensitivity_v1/{name}",
                 f"timestep/{name}",
             )
+        )
+    for name in (
+        "experiment_plan.json", "PLAN_SHA256", "config.json", "frozen_input_manifest.json",
+        "run_manifest.json", "execution_ledger.json", "fixed_parameter_manifest.json",
+        "source_access_audit.json", "real_reference_summary.json", "phase1_checkpoint.json",
+        "PHASE1_DIAGNOSTIC.md", "numerical_method_audit.json", "traffic_input_output_audit.json",
+        "initialization_warmup_diagnostics.json", "local_kinematics_comparison.json",
+        "following_response_diagnostics.json", "parameter_response_matrix.json",
+        "mechanism_hypothesis_matrix.json", "network_facts.json", "fleet_and_state_support_audit.json", "boundary_response_diagnostics.json", "runtime_budget_audit.json",
+        "run_metrics.csv", "time_bins_60s.csv", "time_series_5s.csv", "figure_index.json",
+        "audit.json", "provenance.json", "execution_code_change_audit.json", "test_record.json", "report.md", "manifest.json", "SHA256SUMS",
+    ):
+        pairs["RES-STAGE-0.5-EXPLORATORY-RESPONSE-V1"].append(
+            (f"code/outputs/formal/calibration/stage_0_5_exploratory_response_v1/{name}", name)
         )
     # The Stage 0.5.3 measurement probe package is exported under the same result id
     # in its own subdirectory so that the two engineering fixtures stay distinguishable.
@@ -412,7 +427,9 @@ def _validate_source(source: Path) -> None:
     lowered = source.name.lower()
     if "sealed_sampling_key" in lowered:
         raise ValueError(f"refusing sealed sampling key: {source}")
-    if source.suffix.lower() not in {".json", ".md", ".txt", ".sha256"} and source.name != "SHA256SUMS":
+    # B0 exports only these aggregate tables, never arbitrary trajectory CSVs.
+    aggregate_names={"SHA256SUMS","PLAN_SHA256","run_metrics.csv","time_bins_60s.csv","time_series_5s.csv"}
+    if source.suffix.lower() not in {".json", ".md", ".txt", ".sha256"} and source.name not in aggregate_names:
         raise ValueError(f"unsupported evidence file type: {source}")
 
 

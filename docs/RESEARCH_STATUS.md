@@ -99,3 +99,6 @@ Stage 0.2 已在研究者批准的有限科学范围内 `Completed / Closed`，G
 未验证限制：独立物理真实性/人工几何真值、缺失造成的选择偏差及极端敏感性；200 ms两相位不与100 ms等价。禁止事故概率、危险识别准确率、P2全局最优性、SUMO或AAD因果效应主张。后续阶段职责不因本Gate通过而视为完成。旧R3 Blocked记录保留历史。最终包：`code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r4/`。
 
 2026-10-18 AAD-0.5.4-A+：前两原始校准源车型/长度已100%连接，主线归一化、统一分层、实际时钟和代表性负载成本已明确；仍有边界选择与初始化积压。此为工程证据，未批准科学容差/暖机/预算，Measurement Ready待有限批准，Calibration Ready=false，Reality Coverage Accepted=false；推荐受限探索仅Proposal，本次未执行。Stage0.5 Gate不变。
+
+
+2026-10-18 AAD-0.5.4-B0（RES-STAGE-0.5-EXPLORATORY-RESPONSE-V1）：受限探索完成19/23次，4次高输入seed20261019响应未运行。统一27.78m/s上限、空初态、ballistic显式、internal.05/recorded.1、action.1、sigmaStep1；三个基准输入1087.364/1449.818/1648veh/h/lane仅实现局部密度10.37–15.75、均速约27.1，局部低速/P2均0。tau2三次末期未服务21/22/71，入口main0约2.5–20.1m有低速插入/加速，局部段无拥堵。B0-EXEC-STOP-01：原调度器未因completed+blocker停止，发现后人工停止，源码停止后修复并测试；最后worker峰值内存Unverified。推荐先批准需求边界/最小结构对照，不继续参数搜索掩盖状态支持缺口。所有结果exploratory_diagnostic_only、scientific_claim_eligible=false；Gate=pending_simulation_sample、Calibration Ready=false、Reality Coverage Accepted=false、正式容差Tolerance Not Yet Justified、Energy Distance上界Not Identifiable；无验证/holdout/正式校准/锁/Stage I。依据：docs/STAGE_0_5_TASK_0_5_4B0_EXPLORATORY_RESPONSE_DIAGNOSTICS.md、同ID证据和execution_ledger。

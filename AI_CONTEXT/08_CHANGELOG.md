@@ -161,3 +161,8 @@ t1/t2/t3 GNSS 轨迹逐点相同（同一轨迹复制品）→ 设备间距离�
 四次300s工程负载完成（SUMO1.26.0，seed20261018，recorded.1s）；.05s低/中/高实际密度41.91/48.06/54.76，墙钟100.27/103.03/116.24s，峰值合计RSS271.9/297.8/327.7MB，末时未插入0/17/23，无碰撞/teleport/守恒残差。初始化积压仍在，60s不是批准暖机；.05s自动ballistic而.1s积分器未显式固定，不能声称数值收敛。完整P2提取成本未含入。Engineering Ready有条件、Measurement Ready待有限批准、Calibration Ready=false、Reality Coverage Accepted=false；所有科学容差Tolerance Not Yet Justified，推荐路径B受限探索仅Proposal，未启动。Gate继续pending_simulation_sample，无验证/holdout/下载/正式校准/锁/Stage I/II。
 
 依据：`docs/STAGE_0_5_TASK_0_5_4A_SUPPLEMENT_CALIBRATION_GAPS.md`及同ID的diagnostics、unified_strata、benchmark、candidate_protocol、audit。完整包`code/outputs/formal/calibration/stage_0_5_calibration_gaps_v1_final/`。Context Consistency Check：不将Proposal写入06_DECISIONS的Approved Research Decision。
+
+
+## 2026-10-18 — AAD-0.5.4-B0
+
+2026-10-18 AAD-0.5.4-B0（RES-STAGE-0.5-EXPLORATORY-RESPONSE-V1）：受限探索完成19/23次，4次高输入seed20261019响应未运行。统一27.78m/s上限、空初态、ballistic显式、internal.05/recorded.1、action.1、sigmaStep1；三个基准输入1087.364/1449.818/1648veh/h/lane仅实现局部密度10.37–15.75、均速约27.1，局部低速/P2均0。tau2三次末期未服务21/22/71，入口main0约2.5–20.1m有低速插入/加速，局部段无拥堵。B0-EXEC-STOP-01：原调度器未因completed+blocker停止，发现后人工停止，源码停止后修复并测试；最后worker峰值内存Unverified。推荐先批准需求边界/最小结构对照，不继续参数搜索掩盖状态支持缺口。所有结果exploratory_diagnostic_only、scientific_claim_eligible=false；Gate=pending_simulation_sample、Calibration Ready=false、Reality Coverage Accepted=false、正式容差Tolerance Not Yet Justified、Energy Distance上界Not Identifiable；无验证/holdout/正式校准/锁/Stage I。依据：docs/STAGE_0_5_TASK_0_5_4B0_EXPLORATORY_RESPONSE_DIAGNOSTICS.md、同ID证据和execution_ledger。 Context Consistency Check已覆盖当前状态、架构/模块、数据流、实验、决策授权、已知问题与索引；06仅登记用户有限授权，没有批准结果或参数。

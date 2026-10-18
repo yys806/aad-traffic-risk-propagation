@@ -65,3 +65,8 @@ SUMO -> 四格与五表 ----+
 ## 2026-10-12 正式测量与收口接口
 
 formal_risk_measurement.v2与历史0.1s提取/线性指标隔离；正式固定窗口原语需完整来源/时钟/双车身份与真实连续边，区域可靠性独立。 依据：相应源码及 `docs/STAGE_0_2_FINAL_CLOSURE_2026-10-12.md`。
+
+
+## 2026-10-18 B0独立探索层
+
+新增隔离的B0执行/分析模块，不修改既有Stage0.2/0.3/0.4测量模块或封存包。执行层冻结计划/输入/源码、逐worker资源监测、两阶段checkpoint；分析层只生成描述表图与机制证据。旧执行器completed+blocker未停止缺陷已保留，批次关闭后修复；新源码不可恢复旧计划。正式覆盖Gate仍由原协议readiness约束。依据：`code/src/riskprop/stage_0_5_exploratory_response.py`、`code/src/riskprop/stage_0_5_exploratory_analysis.py`、docs/STAGE_0_5_TASK_0_5_4B0_EXPLORATORY_RESPONSE_DIAGNOSTICS.md。

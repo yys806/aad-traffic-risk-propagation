@@ -1,0 +1,52 @@
+{
+  "attempts": 19,
+  "batch_elapsed_wall_s": 1809.3587713241577,
+  "design_deviations": [
+    {
+      "action": "stopped scheduler; let already-started worker finish under existing240s budget; all remaining planned runs not attempted",
+      "actual_implementation": "phase2 scheduler stopped on worker exit failure only; completed workers with engineering blockers did not trigger stop",
+      "affected_runs": [
+        "b0_medium_tau0.5_s20261018",
+        "b0_medium_tau2_s20261018",
+        "b0_medium_minGap1_s20261018",
+        "b0_medium_minGap3_s20261018",
+        "b0_medium_tau0.5_s20261019",
+        "b0_medium_tau2_s20261019",
+        "b0_medium_minGap1_s20261019",
+        "b0_medium_minGap3_s20261019",
+        "b0_high_tau0.5_s20261018",
+        "b0_high_tau2_s20261018",
+        "b0_high_minGap1_s20261018",
+        "b0_high_minGap3_s20261018"
+      ],
+      "documented_intent": "persistent backlog stops affected load; budget/blocking failures stop batch",
+      "id": "B0-EXEC-STOP-01",
+      "scientific_effect": "blocked tau2 responses are boundary-confounded; no formal comparison or favorable selection; reduced high-input seed coverage",
+      "status": "retained_and_stopped"
+    }
+  ],
+  "disk_bytes": 223604077,
+  "engineering_blocking_runs": [
+    "b0_medium_tau2_s20261018",
+    "b0_medium_tau2_s20261019",
+    "b0_high_tau2_s20261018"
+  ],
+  "failures": [],
+  "incomplete_memory_attempts": [
+    "b0_high_minGap3_s20261018"
+  ],
+  "limits": {
+    "artifact_bytes": 4294967296,
+    "batch_wall_s": 7200,
+    "expected_from_prior_s": "23*116s=2668s recorder upper context; new full P2 cost not previously measured",
+    "max_runs": 23,
+    "per_run_wall_s": 240,
+    "process_tree_memory_bytes": 2147483648,
+    "regression_fixtures": "separate testing, not B0 experimental configurations"
+  },
+  "memory_scope": "maximum of fully monitored attempts; final handoff attempt peak Unverified",
+  "no_budget_expansion": true,
+  "peak_sampled_process_tree_rss_bytes": 595177472,
+  "stop_reason": "manual stop: persistent_unserved_demand flags did not stop the phase2 executor; no new runs or retries",
+  "total_run_wall_s": 541.1045920973411
+}

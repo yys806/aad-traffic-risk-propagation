@@ -73,3 +73,8 @@ Stage 0.5 场景设计审计报告为 docs/STAGE_0_5_TASK_0_5_0_SCENARIO_DESIGN_
 2026-10-18 AAD-0.5.3：新增 SUMO 无消息数据流：候选场景配置 → `generic_highway_candidate` net/route fixture → TraCI state/lifecycle（run-scoped incarnation 身份） → SUMO-native leader、`net_gap_m = leader_traci_distance_m + follower_min_gap_m`、`closing_speed_mps = follower − leader`、TTC/status/missing_reason → engineering P2/exposure adapter 与 Stage 0.2 formal-alignment adapter → `state_canonical_projection.parquet`（对准 Stage 0.3 canonical real-state 契约） → audit/provenance/runtime diagnostics/manifest/SHA256SUMS。输出字段不伪造 NGSIM source/member/diagnostic clock（`drac_mps2` 保持 NaN）；P2 适配明确 `pending_sumo_adapter_review`/`pending_measurement_equivalence_review`，不进入正式 Stage 0.2 事件率。运行标志固定 `no_message_baseline` 且通信、source treatment、adoption 全关闭；校准入口对 `us101__0820_0835` 与辅助来源 fail-closed 拒绝并记录 `access_audit.json`。
 
 2026-10-18 AAD-0.5.4-A+：已登记archive SHA→两个成员allowlist/校准角色→成员SHA→CalibrationValidationGuard→18列解析→source_member+original_row_number连接→ID/绝对时间/帧/纵向坐标核查→车型/时钟独立摘要，不修改R2。完整批准状态→200m主线每车道逐帧密度（局部空帧0，整源缺帧不补0）→60s覆盖与候选边界资格→合并等片权三分位；完整源连续性先于局部跟驰边筛选，不重归属P2事件。小型摘要→四个预声明工程负载→订阅TraCI+原统一逐行测量+Parquet，不运行正式校准。
+
+
+## 2026-10-18 B0数据流
+
+A/A+便携摘要→CalibrationValidationGuard来源/角色/SHA→只含两个校准窗口的real_reference_summary；不读取真实轨迹。A+三个既有工程state另按其封存SHA核对，仅用于初态组成诊断。冻结plan/网络/需求/vType/配置→SUMO1.26.0无消息worker→本地完整state/交通帧/发车记录→完整P2适配器+等价暴露→局部200m与全域分账→轻量数值证据。入口待插入与已进入低速车辆分开；局部/分层P2率Unresolved。依据：docs/STAGE_0_5_TASK_0_5_4B0_EXPLORATORY_RESPONSE_DIAGNOSTICS.md及source_access_audit、frozen_input_manifest、boundary_response_diagnostics。

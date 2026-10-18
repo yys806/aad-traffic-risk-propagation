@@ -1,0 +1,252 @@
+{
+  "active_route": [
+    "main_0",
+    "main_1",
+    "main_2"
+  ],
+  "connections": [
+    {
+      "dir": "s",
+      "from": "main_0",
+      "fromLane": "0",
+      "state": "M",
+      "to": "main_1",
+      "toLane": "0",
+      "via": ":hwy_j1_1_0"
+    },
+    {
+      "dir": "s",
+      "from": "main_0",
+      "fromLane": "1",
+      "state": "M",
+      "to": "main_1",
+      "toLane": "1",
+      "via": ":hwy_j1_1_1"
+    },
+    {
+      "dir": "s",
+      "from": "main_0",
+      "fromLane": "2",
+      "state": "M",
+      "to": "main_1",
+      "toLane": "2",
+      "via": ":hwy_j1_1_2"
+    },
+    {
+      "dir": "R",
+      "from": "main_1",
+      "fromLane": "0",
+      "state": "M",
+      "to": "offramp",
+      "toLane": "0",
+      "via": ":hwy_j2_0_0"
+    },
+    {
+      "dir": "s",
+      "from": "main_1",
+      "fromLane": "0",
+      "state": "M",
+      "to": "main_2",
+      "toLane": "0",
+      "via": ":hwy_j2_1_0"
+    },
+    {
+      "dir": "s",
+      "from": "main_1",
+      "fromLane": "1",
+      "state": "M",
+      "to": "main_2",
+      "toLane": "1",
+      "via": ":hwy_j2_1_1"
+    },
+    {
+      "dir": "s",
+      "from": "main_1",
+      "fromLane": "2",
+      "state": "M",
+      "to": "main_2",
+      "toLane": "2",
+      "via": ":hwy_j2_1_2"
+    },
+    {
+      "dir": "s",
+      "from": "onramp",
+      "fromLane": "0",
+      "state": "m",
+      "to": "main_1",
+      "toLane": "0",
+      "via": ":hwy_j1_0_0"
+    },
+    {
+      "dir": "s",
+      "from": ":hwy_j1_0",
+      "fromLane": "0",
+      "state": "M",
+      "to": "main_1",
+      "toLane": "0"
+    },
+    {
+      "dir": "s",
+      "from": ":hwy_j1_1",
+      "fromLane": "0",
+      "state": "M",
+      "to": "main_1",
+      "toLane": "0"
+    },
+    {
+      "dir": "s",
+      "from": ":hwy_j1_1",
+      "fromLane": "1",
+      "state": "M",
+      "to": "main_1",
+      "toLane": "1"
+    },
+    {
+      "dir": "s",
+      "from": ":hwy_j1_1",
+      "fromLane": "2",
+      "state": "M",
+      "to": "main_1",
+      "toLane": "2"
+    },
+    {
+      "dir": "R",
+      "from": ":hwy_j2_0",
+      "fromLane": "0",
+      "state": "M",
+      "to": "offramp",
+      "toLane": "0"
+    },
+    {
+      "dir": "s",
+      "from": ":hwy_j2_1",
+      "fromLane": "0",
+      "state": "M",
+      "to": "main_2",
+      "toLane": "0"
+    },
+    {
+      "dir": "s",
+      "from": ":hwy_j2_1",
+      "fromLane": "1",
+      "state": "M",
+      "to": "main_2",
+      "toLane": "1"
+    },
+    {
+      "dir": "s",
+      "from": ":hwy_j2_1",
+      "fromLane": "2",
+      "state": "M",
+      "to": "main_2",
+      "toLane": "2"
+    }
+  ],
+  "interpretation": "three continuing mainline lanes; unused onramp/offramp; no lane drop or downstream restriction in this design; capacity not identified",
+  "network_sha256": "5d6bd92f46b28001240c3b780713d1094b98eaefba227a3a5615fe66fcf1fb81",
+  "normal_edges": [
+    {
+      "id": "main_0",
+      "lanes": [
+        {
+          "id": "main_0_0",
+          "index": "0",
+          "length": "386.50",
+          "shape": "0.00,152.00 386.50,152.00",
+          "speed": "27.78"
+        },
+        {
+          "id": "main_0_1",
+          "index": "1",
+          "length": "386.50",
+          "shape": "0.00,155.20 386.50,155.20",
+          "speed": "27.78"
+        },
+        {
+          "id": "main_0_2",
+          "index": "2",
+          "length": "386.50",
+          "shape": "0.00,158.40 386.50,158.40",
+          "speed": "27.78"
+        }
+      ]
+    },
+    {
+      "id": "main_1",
+      "lanes": [
+        {
+          "id": "main_1_0",
+          "index": "0",
+          "length": "312.94",
+          "shape": "394.62,152.00 707.56,152.00",
+          "speed": "27.78"
+        },
+        {
+          "id": "main_1_1",
+          "index": "1",
+          "length": "312.94",
+          "shape": "394.62,155.20 707.56,155.20",
+          "speed": "27.78"
+        },
+        {
+          "id": "main_1_2",
+          "index": "2",
+          "length": "312.94",
+          "shape": "394.62,158.40 707.56,158.40",
+          "speed": "27.78"
+        }
+      ]
+    },
+    {
+      "id": "main_2",
+      "lanes": [
+        {
+          "id": "main_2_0",
+          "index": "0",
+          "length": "483.50",
+          "shape": "716.50,152.00 1200.00,152.00",
+          "speed": "27.78"
+        },
+        {
+          "id": "main_2_1",
+          "index": "1",
+          "length": "483.50",
+          "shape": "716.50,155.20 1200.00,155.20",
+          "speed": "27.78"
+        },
+        {
+          "id": "main_2_2",
+          "index": "2",
+          "length": "483.50",
+          "shape": "716.50,158.40 1200.00,158.40",
+          "speed": "27.78"
+        }
+      ]
+    },
+    {
+      "id": "offramp",
+      "lanes": [
+        {
+          "id": "offramp_0",
+          "index": "0",
+          "length": "277.51",
+          "shape": "715.40,148.24 949.14,-1.35",
+          "speed": "13.89"
+        }
+      ]
+    },
+    {
+      "id": "onramp",
+      "lanes": [
+        {
+          "id": "onramp_0",
+          "index": "0",
+          "length": "239.26",
+          "shape": "201.00,-1.25 387.83,148.21",
+          "speed": "13.89"
+        }
+      ]
+    }
+  ],
+  "ramp_demand": 0
+}

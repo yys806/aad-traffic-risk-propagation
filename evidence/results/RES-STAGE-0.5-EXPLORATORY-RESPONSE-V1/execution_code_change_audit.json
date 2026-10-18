@@ -1,0 +1,11 @@
+{
+  "batch_closed_before_patch": true,
+  "bug_id": "B0-EXEC-STOP-01",
+  "current_patched_sha256": "594a2a518de5bd70ae7957a4303ac6d452d2c59e97311ada9b87b237be5ffdf1",
+  "frozen_execution_sha256": "e17f9cc9a894d620d89ed84b3a854f89c7646d7ccb5e0e0fa0dfb99cb6b2f8e6",
+  "no_further_B0_runs": true,
+  "patch_diff": "--- frozen-executed\n+++ post-batch-patched\n@@ -538,6 +538,11 @@\n     return result\n \n \n+def stop_after_attempt(attempt: dict) -> bool:\n+    \"\"\"A successful process exit does not clear blocking engineering evidence.\"\"\"\n+    return attempt[\"status\"]!=\"completed\" or bool(attempt.get(\"engineering_blockers\"))\n+\n+\n def execute_phase(batch: Path, phase: str) -> None:\n     import psutil\n     plan=read_plan(batch)\n@@ -605,6 +610,6 @@\n             attempt[\"failure\"]=reason or \"worker_failed_or_summary_missing\"\n             print(json.dumps(attempt),flush=True)\n         _write_json(batch/\"execution_ledger.json\",ledger)\n-        if not success:\n-            ledger[\"stop_reason\"]=\"implementation/run failure: stop affected batch; version plan before retry\"\n+        if stop_after_attempt(attempt):\n+            ledger[\"stop_reason\"]=\"run failure or engineering blocker: stop batch; version plan before retry\"\n             _write_json(batch/\"execution_ledger.json\",ledger);break\n",
+  "patch_scope": "scheduler termination on engineering blockers only; state generation, measurement, plan and input files unchanged",
+  "patched_at_utc": "2026-10-18T15:03:19.153837+00:00",
+  "snapshot_path": "execution_source_snapshot/stage_0_5_exploratory_response.py"
+}

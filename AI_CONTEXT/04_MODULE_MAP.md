@@ -37,3 +37,8 @@ run_stage_0_2_final_closure.py执行全源检查；stage_0_2_closure_analysis.py
 2026-10-18 AAD-0.5.3：新增 `stage_0_5_sumo.py`、`run_stage_0_5_sumo_baseline.py`、`test_stage_0_5_sumo.py` 和版本化候选配置；Lankershim/pNEUMA 仅注册入口，US-101 `generic_highway_candidate` fixture 可运行。TraCI `getLeader` 距离语义已核验并给出显式换算规则；工程 P2 与 formal-alignment P2 双路一致，正式等价性保持 pending。
 
 2026-10-18：新增独立stage_0_5_calibration_gaps.py，负责raw policy binding、受控来源行连接、车型/时间、断面相邻跨越、局部连续暴露和统一分层。入口run_stage_0_5_calibration_gaps.py、benchmark_stage_0_5_calibration_loads.py、finalize_stage_0_5_calibration_gaps.py；测试test_stage_0_5_calibration_gaps.py。工程RSS测量依赖psutil（dev依赖）。既有已批准测量模块未修改。
+
+
+## 2026-10-18 B0模块
+
+`stage_0_5_exploratory_response.py`负责有界计划、SHA冻结、守卫摘要输入、TraCI观测、单参数配对、资源/守恒/测量检查与停止；`stage_0_5_exploratory_analysis.py`负责固定时片、全批次表图、原A+初态复用与来源追踪。入口`code/scripts/run_stage_0_5_exploratory_response.py`；测试`code/tests/test_stage_0_5_exploratory_response.py`。16个边界暴露与原compute_exposure等价，停止调度修复有集成回归。未改变既有科学测量模块。

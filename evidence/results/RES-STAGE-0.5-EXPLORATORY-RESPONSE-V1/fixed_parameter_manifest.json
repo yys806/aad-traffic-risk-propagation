@@ -1,0 +1,89 @@
+{
+  "engineering_candidates_only": true,
+  "fixed": {
+    "accel": 2.6,
+    "actionStepLength": 0.1,
+    "apparentDecel": 4.5,
+    "carFollowModel": "Krauss",
+    "communication_enabled": false,
+    "decel": 4.5,
+    "emergencyDecel": 9.0,
+    "information_adoption_enabled": false,
+    "internal_step_s": 0.05,
+    "laneChangeModel": "LC2013",
+    "maxSpeed": 27.78,
+    "ramp_demand": 0,
+    "recorded_step_s": 0.1,
+    "sigma": 0.5,
+    "sigmaStep": 1.0,
+    "source_risk_treatment_enabled": false,
+    "speedDev": 0.0,
+    "speedFactor": 1.0,
+    "step_method_ballistic": true,
+    "threads": 1
+  },
+  "fleet": [
+    {
+      "code": 1,
+      "length_m": 2.4384,
+      "share": 0.009555661729574774,
+      "vClass": "motorcycle"
+    },
+    {
+      "code": 2,
+      "length_m": 4.4196,
+      "share": 0.9672718585762065,
+      "vClass": "passenger"
+    },
+    {
+      "code": 3,
+      "length_m": 10.009694845360826,
+      "share": 0.023172479694218824,
+      "vClass": "truck"
+    }
+  ],
+  "initialization": {
+    "demand": "deterministic equally spaced total 3-lane arrival stream",
+    "depart_position": "base",
+    "departure_lane": "round robin 0,1,2",
+    "departure_speed": "max (free-speed upstream boundary, same for all conditions)",
+    "initial_gap": null,
+    "initial_speed": null,
+    "initial_type_mix": null,
+    "initial_vehicles": 0,
+    "space_distribution": "empty network"
+  },
+  "single_parameter_pairs": 16,
+  "source_bindings": {
+    "diagnostics": {
+      "path": "D:\\shen\\TJU\\AAD\\evidence\\results\\RES-STAGE-0.5-CALIBRATION-GAPS-V1\\diagnostics.json",
+      "sha256": "bc9de47b3026b640d22a2d086ae445b6ce5b0049e0af75f09874860a6e031f03",
+      "source": "b0_summary::diagnostics"
+    },
+    "fleet": {
+      "path": "D:\\shen\\TJU\\AAD\\evidence\\results\\RES-STAGE-0.5-CALIBRATION-GAPS-V1\\benchmark_plan.json",
+      "sha256": "44e7a3aeffd51e8f4c51677a1bd9495224dc12630d144a659fa5a91c4c9d1171",
+      "source": "b0_summary::fleet"
+    },
+    "prior_numerics": {
+      "path": "D:\\shen\\TJU\\AAD\\evidence\\results\\RES-STAGE-0.5-CALIBRATION-GAPS-V1\\benchmark_numerical_diagnostics.json",
+      "sha256": "ee9f92d63d02aa86a9be402cf733c20d0f2a42cf4f9ee92e74dd703c4a105120",
+      "source": "b0_summary::prior_numerics"
+    },
+    "prior_runs": {
+      "path": "D:\\shen\\TJU\\AAD\\evidence\\results\\RES-STAGE-0.5-CALIBRATION-GAPS-V1\\benchmark_summary.json",
+      "sha256": "fa3219e35448aaf7a14fdabe0b4c2979526fa8001bc87025b2f408ef6c0538b9",
+      "source": "b0_summary::prior_runs"
+    },
+    "real_full": {
+      "path": "D:\\shen\\TJU\\AAD\\evidence\\results\\RES-STAGE-0.5-CALIBRATION-READINESS-V1\\calibration_source_analysis.json",
+      "sha256": "e8aaaf63167b72b1aaca0f27602ec11141af37df7f3d38288abf6e019679d1a0",
+      "source": "b0_summary::real_full"
+    },
+    "strata": {
+      "path": "D:\\shen\\TJU\\AAD\\evidence\\results\\RES-STAGE-0.5-CALIBRATION-GAPS-V1\\unified_strata.json",
+      "sha256": "fbdd5fb8641acbd4cfdba7936151ea0477e0eb12bea1e1b19fc7cd015da090e9",
+      "source": "b0_summary::strata"
+    }
+  }
+}
