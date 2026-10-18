@@ -242,7 +242,7 @@ p2_event_rate_per_vehicle_hour = p2_event_count / p2_evaluable_following_vehicle
 
 ### 9.1 测试范围与结果
 
-`code/tests/test_stage_0_5_sumo.py`：**34 项**，全部通过（有 SUMO 时 0 skipped；无 SUMO 时 8 项集成测试标记 skipped，不伪造通过）。
+`code/tests/test_stage_0_5_sumo.py`：**34 项**（28 项确定性解析/契约测试 + 6 项 SUMO 集成测试），全部通过；本地无 SUMO 时 6 项集成测试标记 skipped，不伪造通过。
 
 确定性解析测试覆盖任务要求的六条断言：
 
