@@ -135,3 +135,7 @@ t1/t2/t3 GNSS 轨迹逐点相同（同一轨迹复制品）→ 设备间距离�
 ## 2026-10-18 — AAD-0.5.1 正式真实参考重建
 
 实现 canonical pNEUMA 直连、质量契约 fail-closed 校验、显式 legacy 模式和正式 Stage 0.5 R2 输入 manifest。使用已批准的四个 NGSIM state、Stage 0.2 final_r1 P2 表和 Stage 0.3 canonical pNEUMA 重建 `RES-STAGE-0.5-REAL-REF-R2`；SHA/schema/来源验证通过，正式 P2=4,545，pNEUMA=785/1,239,475。完整时间/车辆等权统计引用封存 R3/R2 摘要；稳定哈希和轨迹簇抽样只作诊断；real-real 独立性不足。新增报告、重建脚本、测试和便携证据索引。未运行 SUMO、未校准、未访问 holdout、未冻结阈值，Gate 仍 `pending_simulation_sample`，Protocol Lock/Stage I 继续阻断。
+
+## 2026-10-18 — AAD-0.5.2 分场景覆盖协议候选
+
+新增 `docs/STAGE_0_5_TASK_0_5_2_COVERAGE_PROTOCOL_DESIGN.md`。核对 `evaluate_simulation_coverage()` 的 pooled scaler、real-real Energy Distance 和集合型 stratum coverage 实现，提出 US-101 五层必要指标、固定完整窗口校准/验证候选、Lankershim/pNEUMA 有限职责、块级不确定性和 Stage 0.5.3 最低输出契约。未修改评价函数、未冻结数值容差、未改变 Gate、未运行 SUMO；全部候选留待研究者批准。

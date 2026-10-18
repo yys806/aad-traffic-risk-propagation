@@ -51,6 +51,8 @@
 
 `RES-STAGE-0.5-REAL-REF-R2` 已完成正式真实参考重建。US-101 三窗口、Lankershim 和 pNEUMA 已按批准职责分离；canonical pNEUMA 接口、输入 SHA/schema/质量契约和正式 P2=4,545 已核验。完整时间/车辆等权统计继续引用 Stage 0.3 封存摘要，哈希状态/轨迹簇样本仅作诊断。Stage 0.5 仍缺 SUMO 校准样本，`pending_simulation_sample` 不变；覆盖阈值、车型映射、SUMO 时间步和验证隔离未冻结，Protocol Lock 与 Stage I 未解锁。
 
+0.5.2 协议设计候选已完成：US-101 采用基础运动学、跟驰交互、风险可观测性、正式 P2 和场景支持五层必要条件；Lankershim 独立辅助；pNEUMA 仅城市运动学；Energy Distance 仅作场景内辅助诊断。校准/验证划分、数值容差、辅助场景范围和 0.5.3 工程契约等待研究者批准，未运行 SUMO。
+
 ## 已确认的继续顺序
 
 1. 收口阶段 0.2和0.3。

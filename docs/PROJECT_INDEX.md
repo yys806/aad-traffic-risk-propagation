@@ -53,3 +53,5 @@
 本段为当前事实；前述Proposal、尚未实现与旧暴露/事件描述均为历史状态，不自动沿用为当前结论。依据：最终包audit/config/provenance、逐事件核验表和Gate矩阵。
 
 Stage 0.5 场景设计审计：docs/STAGE_0_5_TASK_0_5_0_SCENARIO_DESIGN_AUDIT.md。只读审计确认真实职责分离、正式输入候选、pNEUMA schema 接口冲突、SUMO 工程缺口和覆盖统计限制；未生成 SUMO 样本、未通过 Stage 0.5 Gate。
+
+Stage 0.5.1 正式真实参考重建：`docs/STAGE_0_5_TASK_0_5_1_REAL_REFERENCE_REBUILD.md`、`RES-STAGE-0.5-REAL-REF-R2`。Stage 0.5.2 分场景覆盖协议候选：`docs/STAGE_0_5_TASK_0_5_2_COVERAGE_PROTOCOL_DESIGN.md`。两项均保持 `pending_simulation_sample`，未运行 SUMO、未冻结阈值或验证划分。

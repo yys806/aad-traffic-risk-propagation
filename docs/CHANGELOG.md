@@ -7,6 +7,11 @@
 - 新增 `RES-STAGE-0.5-REAL-REF-R2`、输入 manifest、canonical pNEUMA 直连 writer、显式 legacy 适配和重建入口。
 - 新增真实参考重建报告与便携证据；US-101、Lankershim、pNEUMA 职责保持分离，Stage 0.5 Gate 未升级。
 
+## 2026-10-18 — Stage 0.5.2 覆盖协议候选
+
+- 新增分场景指标、校准/验证隔离、Energy Distance 角色、候选容差语义和 Stage 0.5.3 最低契约报告。
+- 仅更新设计索引与状态；未修改评价代码、科学阈值、Gate 或 SUMO 场景。
+
 ## 2026-09-10 — 建立 AI 上下文与长期协作层
 
 - 新增九文件 `AI_CONTEXT/`，覆盖当前状态、科研背景、架构、数据流、模块、实验、已确认决策、已知问题和重要变化。

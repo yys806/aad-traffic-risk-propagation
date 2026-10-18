@@ -84,3 +84,5 @@ Documented Intent：06_DECISIONS指数rho/固定分母/车辆等权。Actual Imp
 2026-10-18 场景审计确认：Stage 0.3 R2 canonical pNEUMA Parquet 使用 vehicle_id/acceleration_mps2/vehicle_type/quality_status/time_weighting_eligible；simulation_real_coverage.write_real_reference_package 直接读取 id/longitudinal_accel_mps2，并且只要发现任一质量列就访问两列。Stage 0.3 测试通过是因为脚本另建旧字段 raw_view；没有 canonical Parquet 直连测试。writer 还丢弃 vehicle_type/source_file_sha256，稳定哈希按状态抽样不保持时间权重，real-real groups 不检查独立性。报告：docs/STAGE_0_5_TASK_0_5_0_SCENARIO_DESIGN_AUDIT.md。状态：Awaiting Researcher Decision；0.5.1 前不得把接口称为端到端兼容、不得回接旧 map-match 包、不得冻结抽样和覆盖阈值。
 
 2026-10-18 AAD-0.5.1 更新：canonical 接口、车型/质量/来源保留和正式六输入 manifest 已实现并通过测试，旧字段冲突不再是当前阻断。仍保留的科学问题是：`time_weighting_eligible` 不是时长权重；canonical 表不含逐行可靠区间长度，正式时间加权统计必须引用 Stage 0.3 封存摘要；哈希状态样本只作诊断；real-real 独立性不足；SUMO 车型映射、时间步、校准/验证隔离和覆盖阈值待 0.5.2 决定。
+
+2026-10-18 AAD-0.5.2 更新：协议设计审计确认 `evaluate_simulation_coverage()` 的 pooled scaler、行级 real-real Energy Distance 和集合型 stratum coverage 不能直接提供科学容差。US-101 窗口隔离、五层必要指标、块级不确定性、Lankershim/pNEUMA 辅助职责及 0.5.3 输出契约仍为 Awaiting Researcher Decision；未改函数、阈值或 Gate。

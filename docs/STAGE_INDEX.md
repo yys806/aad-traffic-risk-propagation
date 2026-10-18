@@ -38,6 +38,8 @@
 
 2026-10-18（AAD-0.5.1）：`RES-STAGE-0.5-REAL-REF-R2` 正式真实参考重建完成。canonical pNEUMA 已由 writer 原生消费并保留车型、质量和来源指纹；四个 NGSIM 状态源、正式 4,545 条 P2 事件和 Stage 0.3 时间/车辆等权摘要通过 SHA/schema/来源契约。稳定哈希状态样本和轨迹簇样本只作诊断，real-real 独立性不足，覆盖阈值未冻结。Stage 0.5 仍 `pending_simulation_sample`，未运行 SUMO。
 
+2026-10-18（AAD-0.5.2）：完成分场景现实覆盖指标与校准—验证协议候选设计。建议 US-101 以速度/加速度、净间距/闭合速度、风险可观测性、P2 暴露/事件率五层必要条件评价；Lankershim 独立辅助；pNEUMA 仅城市运动学。当前 Energy Distance 仅具场景内描述性/辅助价值，real-real 科学上界因来源独立性不足仍 `Not Identifiable`。报告：`docs/STAGE_0_5_TASK_0_5_2_COVERAGE_PROTOCOL_DESIGN.md`。未冻结容差、时间步、车型映射、验证划分或 Gate。
+
 ## stage_0_6 — 数值验证与协议锁定
 
 技术真值检查已有结果；待前置 Gate 和科学容差冻结后生成不可覆盖的协议锁。

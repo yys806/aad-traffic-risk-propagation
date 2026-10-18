@@ -56,3 +56,5 @@ pNEUMA 地图匹配、候选前车和人工 QA 已由研究者批准退役，代
 只读审计报告：docs/STAGE_0_5_TASK_0_5_0_SCENARIO_DESIGN_AUDIT.md。Stage 0.5 仍为 Active / pending_simulation_sample；US-101 为高速风险主线候选，Lankershim 为独立城市风险辅助候选，pNEUMA 仅为单文件城市运动学补充。已确认标准化 pNEUMA schema 与当前 writer 直接列契约不兼容；现有迁移前 real-reference 包和旧 map-match 路径不能作为正式输入。抽样权重、车型映射、时间分辨率、场景化 Energy Distance 和覆盖阈值均未冻结，未运行 SUMO。
 
 2026-10-18 AAD-0.5.1：`RES-STAGE-0.5-REAL-REF-R2` 已重建。canonical pNEUMA 直连 writer 的 11 字段、质量契约、原始车型和 source SHA 测试通过；四个 NGSIM state、正式 P2=4,545 和 Stage 0.3 R2/R3 统计摘要已进入版本化输入 manifest 与便携证据。完整可靠/时间加权/车辆等权语义保持既有批准结果；哈希状态和轨迹簇只作敏感性。real-real 独立性不足，覆盖阈值、车型映射、SUMO 时间步和校准/验证隔离仍待 0.5.2 决定，未运行 SUMO，Gate 未升级。
+
+2026-10-18 AAD-0.5.2：新增候选覆盖协议报告 `docs/STAGE_0_5_TASK_0_5_2_COVERAGE_PROTOCOL_DESIGN.md`。候选主协议为 US-101 五层必要条件（基础运动学、跟驰交互、风险可观测性、P2 暴露/事件率、场景支持），无综合分数补偿；Lankershim 为独立辅助，pNEUMA 为单文件城市运动学补充。Energy Distance 保持辅助诊断，默认 0.90/0.95 未升级为阈值；校准/验证窗口、统计不确定性、辅助范围和 0.5.3 工程契约待研究者批准。
