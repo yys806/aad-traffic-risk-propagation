@@ -1,0 +1,87 @@
+{
+  "pinned_commit": "fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3",
+  "manifest": {
+    "tools_traci_connection.py": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/tools/traci/connection.py",
+      "sha256": "05820ab615a2ab18411e9722ebbc7056856f2de155383a8b58120d2b2feac572",
+      "bytes": 17094
+    },
+    "tools_traci_domain.py": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/tools/traci/domain.py",
+      "sha256": "69e28e03cc7844c63049a7f177f73f927ea2ebef7065c47fcfbd388d52b7b8bd",
+      "bytes": 11719
+    },
+    "tools_traci_storage.py": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/tools/traci/storage.py",
+      "sha256": "a84677fc7253f62c078e25cdd987e5c761fc6d633ae37d875735c06d1e71c105",
+      "bytes": 3111
+    },
+    "tools_traci_constants.py": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/tools/traci/constants.py",
+      "sha256": "38c54a14cf57dba8f45e67b3927d0b4a2663733fc5fc2fe41a1c9f41914cf891",
+      "bytes": 44991
+    },
+    "src_traci-server_TraCIServer.cpp": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/traci-server/TraCIServer.cpp",
+      "sha256": "be6a4ed81700bf917b9e7321ced8032d6e3752c84f7f4157875f8a37c35edd6b",
+      "bytes": 91235
+    },
+    "src_traci-server_TraCIServerAPI_Vehicle.cpp": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/traci-server/TraCIServerAPI_Vehicle.cpp",
+      "sha256": "37e629814142230677a55d1243f50227caf335e76cfbf261d2581205087865d6",
+      "bytes": 45427
+    }
+  },
+  "installed_tools": {
+    "connection": {
+      "path": "C:\\Program Files (x86)\\Eclipse\\Sumo\\tools\\traci\\connection.py",
+      "canonical_sha256": "05820ab615a2ab18411e9722ebbc7056856f2de155383a8b58120d2b2feac572"
+    },
+    "domain": {
+      "path": "C:\\Program Files (x86)\\Eclipse\\Sumo\\tools\\traci\\domain.py",
+      "canonical_sha256": "69e28e03cc7844c63049a7f177f73f927ea2ebef7065c47fcfbd388d52b7b8bd"
+    },
+    "storage": {
+      "path": "C:\\Program Files (x86)\\Eclipse\\Sumo\\tools\\traci\\storage.py",
+      "canonical_sha256": "a84677fc7253f62c078e25cdd987e5c761fc6d633ae37d875735c06d1e71c105"
+    },
+    "constants": {
+      "path": "C:\\Program Files (x86)\\Eclipse\\Sumo\\tools\\traci\\constants.py",
+      "canonical_sha256": "38c54a14cf57dba8f45e67b3927d0b4a2663733fc5fc2fe41a1c9f41914cf891"
+    },
+    "_vehicle": {
+      "path": "C:\\Program Files (x86)\\Eclipse\\Sumo\\tools\\traci\\_vehicle.py",
+      "canonical_sha256": "998b5579fc6df5380af5a315a2677d396460a9e8ecc58a8ba971d6f085b206eb"
+    }
+  },
+  "server_line_references": {
+    "while (myInputStorage.valid_pos()": [
+      875,
+      1291
+    ],
+    "cmd == libsumo::CMD_SIMSTEP": [
+      877
+    ],
+    "writeStatusCmd(commandID, libsumo::RTYPE_OK": [
+      1061
+    ],
+    "writeResponseWithLength(outputStorage, getWrapperStorage())": [
+      1062
+    ]
+  },
+  "source_verified": true,
+  "allowed_commands": [
+    164
+  ],
+  "allowed_variables": [
+    126,
+    84,
+    116
+  ],
+  "order": "GET requests dispatched without advancing simulation; each status precedes corresponding typed variable reply",
+  "no_cache": true,
+  "no_setter": true,
+  "no_time_advance": true,
+  "one_client_and_microsim_verified_at_runtime": true,
+  "limitation": "Private client transport attributes pinned; fail closed on source/schema/response changes; paired real-run proof still required"
+}

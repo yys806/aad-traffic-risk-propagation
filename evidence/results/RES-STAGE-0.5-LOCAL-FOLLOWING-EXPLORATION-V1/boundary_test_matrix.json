@@ -1,0 +1,887 @@
+{
+  "cases": [
+    {
+      "test": "tests.test_stage_0_5_local_following::test_full_risk_span_and_actual_confirmation_are_distinct_from_point_count",
+      "seconds": 0.2,
+      "actual": "Passed",
+      "input_conditions": "def test_full_risk_span_and_actual_confirmation_are_distinct_from_point_count():\n    r=analyse(source())\n    assert r['point']['ttc_below_2_samples']==3\n    assert r['engineering_core']['confirmed_events']==1\n    assert r['engineering_events'][0]['event_confirm_s']==pytest.approx(.2)\n    assert r['engineering_core']['exposure']['p2_evaluable_following_exposure_s']==pytest.approx(.2)\n    assert r['local_formal']['events']=='Unresolved' and r['local_formal']['rate']=='Not Calculated'",
+      "parameter_case": "test_full_risk_span_and_actual_confirmation_are_distinct_from_point_count",
+      "expected_assertions": [
+        "r['point']['ttc_below_2_samples'] == 3",
+        "r['engineering_core']['confirmed_events'] == 1",
+        "r['engineering_events'][0]['event_confirm_s'] == pytest.approx(0.2)",
+        "r['engineering_core']['exposure']['p2_evaluable_following_exposure_s'] == pytest.approx(0.2)",
+        "r['local_formal']['events'] == 'Unresolved' and r['local_formal']['rate'] == 'Not Calculated'"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_local_following.py",
+      "fixture_source_sha256": "3ddf297bc4431a1a0288b37ac3edfc6c377bdb1ca5683ea157d12e7569506410",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_local_following::test_entry_boundary_has_two_distinct_event_assignment_candidates",
+      "seconds": 0.137,
+      "actual": "Passed",
+      "input_conditions": "def test_entry_boundary_has_two_distinct_event_assignment_candidates():\n    r=analyse(source(positions=(49.,50.,51.)))\n    assert r['point']['ttc_below_2_samples']==2\n    assert r['local_candidates']['event_onset_inside']==0\n    assert r['local_candidates']['event_confirmation_inside']==1\n    assert r['local_candidates']['endpoint_contained_evaluable_exposure_s']==pytest.approx(.1)\n    assert r['local_candidates']['risk_fragments']==1 and r['local_candidates']['fragments_meeting_02_span']==0",
+      "parameter_case": "test_entry_boundary_has_two_distinct_event_assignment_candidates",
+      "expected_assertions": [
+        "r['point']['ttc_below_2_samples'] == 2",
+        "r['local_candidates']['event_onset_inside'] == 0",
+        "r['local_candidates']['event_confirmation_inside'] == 1",
+        "r['local_candidates']['endpoint_contained_evaluable_exposure_s'] == pytest.approx(0.1)",
+        "r['local_candidates']['risk_fragments'] == 1 and r['local_candidates']['fragments_meeting_02_span'] == 0"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_local_following.py",
+      "fixture_source_sha256": "3ddf297bc4431a1a0288b37ac3edfc6c377bdb1ca5683ea157d12e7569506410",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_local_following::test_leader_outside_region_remains_resolved_at_same_clock",
+      "seconds": 0.021,
+      "actual": "Passed",
+      "input_conditions": "def test_leader_outside_region_remains_resolved_at_same_clock():\n    df=source(positions=(249.,249.,249.));m=decorate(df)\n    f=m[m.vehicle_id=='f']\n    assert f.in_local.all() and f.leader_identity_status.eq('observed').all()\n    assert f.measurement_status.eq('valid').all()",
+      "parameter_case": "test_leader_outside_region_remains_resolved_at_same_clock",
+      "expected_assertions": [
+        "f.in_local.all() and f.leader_identity_status.eq('observed').all()",
+        "f.measurement_status.eq('valid').all()"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_local_following.py",
+      "fixture_source_sha256": "3ddf297bc4431a1a0288b37ac3edfc6c377bdb1ca5683ea157d12e7569506410",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_local_following::test_leader_break_and_return_never_bridge_risk_or_exposure[leaders0]",
+      "seconds": 0.11,
+      "actual": "Passed",
+      "input_conditions": "def test_leader_break_and_return_never_bridge_risk_or_exposure(leaders):\n    r=analyse(source(leaders=leaders))\n    assert r['engineering_core']['confirmed_events']==0\n    assert r['engineering_core']['exposure']['p2_evaluable_following_exposure_s']==0.",
+      "parameter_case": "test_leader_break_and_return_never_bridge_risk_or_exposure[leaders0]",
+      "expected_assertions": [
+        "r['engineering_core']['confirmed_events'] == 0",
+        "r['engineering_core']['exposure']['p2_evaluable_following_exposure_s'] == 0.0"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_local_following.py",
+      "fixture_source_sha256": "3ddf297bc4431a1a0288b37ac3edfc6c377bdb1ca5683ea157d12e7569506410",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_local_following::test_leader_break_and_return_never_bridge_risk_or_exposure[leaders1]",
+      "seconds": 0.109,
+      "actual": "Passed",
+      "input_conditions": "def test_leader_break_and_return_never_bridge_risk_or_exposure(leaders):\n    r=analyse(source(leaders=leaders))\n    assert r['engineering_core']['confirmed_events']==0\n    assert r['engineering_core']['exposure']['p2_evaluable_following_exposure_s']==0.",
+      "parameter_case": "test_leader_break_and_return_never_bridge_risk_or_exposure[leaders1]",
+      "expected_assertions": [
+        "r['engineering_core']['confirmed_events'] == 0",
+        "r['engineering_core']['exposure']['p2_evaluable_following_exposure_s'] == 0.0"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_local_following.py",
+      "fixture_source_sha256": "3ddf297bc4431a1a0288b37ac3edfc6c377bdb1ca5683ea157d12e7569506410",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_local_following::test_leader_break_and_return_never_bridge_risk_or_exposure[leaders2]",
+      "seconds": 0.103,
+      "actual": "Passed",
+      "input_conditions": "def test_leader_break_and_return_never_bridge_risk_or_exposure(leaders):\n    r=analyse(source(leaders=leaders))\n    assert r['engineering_core']['confirmed_events']==0\n    assert r['engineering_core']['exposure']['p2_evaluable_following_exposure_s']==0.",
+      "parameter_case": "test_leader_break_and_return_never_bridge_risk_or_exposure[leaders2]",
+      "expected_assertions": [
+        "r['engineering_core']['confirmed_events'] == 0",
+        "r['engineering_core']['exposure']['p2_evaluable_following_exposure_s'] == 0.0"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_local_following.py",
+      "fixture_source_sha256": "3ddf297bc4431a1a0288b37ac3edfc6c377bdb1ca5683ea157d12e7569506410",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_local_following::test_missing_frame_and_short_risk_do_not_confirm",
+      "seconds": 0.204,
+      "actual": "Passed",
+      "input_conditions": "def test_missing_frame_and_short_risk_do_not_confirm():\n    r=analyse(source(times=(0.,.2,.3)))\n    assert r['engineering_core']['confirmed_events']==0\n    assert r['engineering_core']['exposure']['p2_evaluable_following_exposure_s']==pytest.approx(.1)\n    assert analyse(source(times=(0.,.1),positions=(100.,101.)))['engineering_core']['confirmed_events']==0",
+      "parameter_case": "test_missing_frame_and_short_risk_do_not_confirm",
+      "expected_assertions": [
+        "r['engineering_core']['confirmed_events'] == 0",
+        "r['engineering_core']['exposure']['p2_evaluable_following_exposure_s'] == pytest.approx(0.1)",
+        "analyse(source(times=(0.0, 0.1), positions=(100.0, 101.0)))['engineering_core']['confirmed_events'] == 0"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_local_following.py",
+      "fixture_source_sha256": "3ddf297bc4431a1a0288b37ac3edfc6c377bdb1ca5683ea157d12e7569506410",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_local_following::test_real_lane_change_is_not_membership_change_and_does_not_redefine_P2",
+      "seconds": 0.114,
+      "actual": "Passed",
+      "input_conditions": "def test_real_lane_change_is_not_membership_change_and_does_not_redefine_P2():\n    df=source();df.loc[(df.vehicle_id=='f')&(df.time_s>=.1),'lane_id']='main_1_1'\n    r=analyse(df)\n    assert r['continuity']['actual_same_edge_lane_changes']==1 and r['engineering_core']['confirmed_events']==1",
+      "parameter_case": "test_real_lane_change_is_not_membership_change_and_does_not_redefine_P2",
+      "expected_assertions": [
+        "r['continuity']['actual_same_edge_lane_changes'] == 1 and r['engineering_core']['confirmed_events'] == 1"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_local_following.py",
+      "fixture_source_sha256": "3ddf297bc4431a1a0288b37ac3edfc6c377bdb1ca5683ea157d12e7569506410",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_local_following::test_legal_edge_progression_keeps_global_identity_but_leaves_local_support",
+      "seconds": 0.126,
+      "actual": "Passed",
+      "input_conditions": "def test_legal_edge_progression_keeps_global_identity_but_leaves_local_support():\n    df=source();df.loc[(df.vehicle_id=='f')&(df.time_s==.2),['edge_id','lane_id','position_m']]=['main_2','main_2_0',1.]\n    r=analyse(df)\n    assert r['continuity']['edge_changes']==1 and r['engineering_core']['confirmed_events']==1\n    assert r['local_candidates']['event_fully_inside']==0",
+      "parameter_case": "test_legal_edge_progression_keeps_global_identity_but_leaves_local_support",
+      "expected_assertions": [
+        "r['continuity']['edge_changes'] == 1 and r['engineering_core']['confirmed_events'] == 1",
+        "r['local_candidates']['event_fully_inside'] == 0"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_local_following.py",
+      "fixture_source_sha256": "3ddf297bc4431a1a0288b37ac3edfc6c377bdb1ca5683ea157d12e7569506410",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_local_following::test_quality_vocabulary_preserves_approved_status[net_gap_m-0.0-invalid-invalid]",
+      "seconds": 0.02,
+      "actual": "Passed",
+      "input_conditions": "def test_quality_vocabulary_preserves_approved_status(field,value,status,quality):\n    df=source();df.loc[df.vehicle_id=='f',field]=value;m=decorate(df);f=m[m.vehicle_id=='f']\n    assert f.measurement_status.eq(status).all() and f.observation_quality.eq(quality).all()\n    if status!='valid':assert f.ttc_s.isna().all()",
+      "parameter_case": "test_quality_vocabulary_preserves_approved_status[net_gap_m-0.0-invalid-invalid]",
+      "expected_assertions": [
+        "f.measurement_status.eq(status).all() and f.observation_quality.eq(quality).all()",
+        "f.ttc_s.isna().all()"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_local_following.py",
+      "fixture_source_sha256": "3ddf297bc4431a1a0288b37ac3edfc6c377bdb1ca5683ea157d12e7569506410",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_local_following::test_quality_vocabulary_preserves_approved_status[leader_speed_mps-None-missing-not_measurable]",
+      "seconds": 0.028,
+      "actual": "Passed",
+      "input_conditions": "def test_quality_vocabulary_preserves_approved_status(field,value,status,quality):\n    df=source();df.loc[df.vehicle_id=='f',field]=value;m=decorate(df);f=m[m.vehicle_id=='f']\n    assert f.measurement_status.eq(status).all() and f.observation_quality.eq(quality).all()\n    if status!='valid':assert f.ttc_s.isna().all()",
+      "parameter_case": "test_quality_vocabulary_preserves_approved_status[leader_speed_mps-None-missing-not_measurable]",
+      "expected_assertions": [
+        "f.measurement_status.eq(status).all() and f.observation_quality.eq(quality).all()",
+        "f.ttc_s.isna().all()"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_local_following.py",
+      "fixture_source_sha256": "3ddf297bc4431a1a0288b37ac3edfc6c377bdb1ca5683ea157d12e7569506410",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_local_following::test_quality_vocabulary_preserves_approved_status[leader_speed_mps-10.0-not_applicable-not_applicable]",
+      "seconds": 0.028,
+      "actual": "Passed",
+      "input_conditions": "def test_quality_vocabulary_preserves_approved_status(field,value,status,quality):\n    df=source();df.loc[df.vehicle_id=='f',field]=value;m=decorate(df);f=m[m.vehicle_id=='f']\n    assert f.measurement_status.eq(status).all() and f.observation_quality.eq(quality).all()\n    if status!='valid':assert f.ttc_s.isna().all()",
+      "parameter_case": "test_quality_vocabulary_preserves_approved_status[leader_speed_mps-10.0-not_applicable-not_applicable]",
+      "expected_assertions": [
+        "f.measurement_status.eq(status).all() and f.observation_quality.eq(quality).all()",
+        "f.ttc_s.isna().all()"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_local_following.py",
+      "fixture_source_sha256": "3ddf297bc4431a1a0288b37ac3edfc6c377bdb1ca5683ea157d12e7569506410",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_local_following::test_quality_vocabulary_preserves_approved_status[leader_speed_mps-9.0-valid-valid]",
+      "seconds": 0.027,
+      "actual": "Passed",
+      "input_conditions": "def test_quality_vocabulary_preserves_approved_status(field,value,status,quality):\n    df=source();df.loc[df.vehicle_id=='f',field]=value;m=decorate(df);f=m[m.vehicle_id=='f']\n    assert f.measurement_status.eq(status).all() and f.observation_quality.eq(quality).all()\n    if status!='valid':assert f.ttc_s.isna().all()",
+      "parameter_case": "test_quality_vocabulary_preserves_approved_status[leader_speed_mps-9.0-valid-valid]",
+      "expected_assertions": [
+        "f.measurement_status.eq(status).all() and f.observation_quality.eq(quality).all()",
+        "f.ttc_s.isna().all()"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_local_following.py",
+      "fixture_source_sha256": "3ddf297bc4431a1a0288b37ac3edfc6c377bdb1ca5683ea157d12e7569506410",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_local_following::test_nonclosing_counts_evaluable_exposure_but_invalid_gap_does_not",
+      "seconds": 0.19,
+      "actual": "Passed",
+      "input_conditions": "def test_nonclosing_counts_evaluable_exposure_but_invalid_gap_does_not():\n    df=source();df.loc[df.vehicle_id=='f','leader_speed_mps']=10.\n    r=analyse(df);assert r['engineering_core']['exposure']['p2_evaluable_following_exposure_s']==pytest.approx(.2)\n    df.loc[df.vehicle_id=='f','net_gap_m']=0.\n    r=analyse(df);assert r['engineering_core']['exposure']['reliable_following_exposure_s']==pytest.approx(.2)\n    assert r['engineering_core']['exposure']['p2_evaluable_following_exposure_s']==0.",
+      "parameter_case": "test_nonclosing_counts_evaluable_exposure_but_invalid_gap_does_not",
+      "expected_assertions": [
+        "r['engineering_core']['exposure']['p2_evaluable_following_exposure_s'] == pytest.approx(0.2)",
+        "r['engineering_core']['exposure']['reliable_following_exposure_s'] == pytest.approx(0.2)",
+        "r['engineering_core']['exposure']['p2_evaluable_following_exposure_s'] == 0.0"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_local_following.py",
+      "fixture_source_sha256": "3ddf297bc4431a1a0288b37ac3edfc6c377bdb1ca5683ea157d12e7569506410",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_local_following::test_explicit_identity_break_must_reach_formal_core_not_be_erased",
+      "seconds": 0.115,
+      "actual": "Passed",
+      "input_conditions": "def test_explicit_identity_break_must_reach_formal_core_not_be_erased():\n    df=source();df['identity_break']=False;df.loc[(df.vehicle_id=='f')&(df.time_s==.1),'identity_break']=True\n    assert analyse(df)['engineering_core']['confirmed_events']==0",
+      "parameter_case": "test_explicit_identity_break_must_reach_formal_core_not_be_erased",
+      "expected_assertions": [
+        "analyse(df)['engineering_core']['confirmed_events'] == 0"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_local_following.py",
+      "fixture_source_sha256": "3ddf297bc4431a1a0288b37ac3edfc6c377bdb1ca5683ea157d12e7569506410",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_local_following::test_window_and_local_end_truncation_are_not_observed_risk_exit",
+      "seconds": 0.105,
+      "actual": "Passed",
+      "input_conditions": "def test_window_and_local_end_truncation_are_not_observed_risk_exit():\n    r=analyse(source(positions=(248.,249.,250.)))\n    assert r['engineering_events'][0]['exit_reason']=='observation_end_right_censored'\n    assert r['local_candidates']['event_confirmation_inside']==0\n    assert r['point']['local_samples']==2",
+      "parameter_case": "test_window_and_local_end_truncation_are_not_observed_risk_exit",
+      "expected_assertions": [
+        "r['engineering_events'][0]['exit_reason'] == 'observation_end_right_censored'",
+        "r['local_candidates']['event_confirmation_inside'] == 0",
+        "r['point']['local_samples'] == 2"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_local_following.py",
+      "fixture_source_sha256": "3ddf297bc4431a1a0288b37ac3edfc6c377bdb1ca5683ea157d12e7569506410",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_local_following::test_duplicate_identity_clock_is_rejected",
+      "seconds": 0.003,
+      "actual": "Passed",
+      "input_conditions": "def test_duplicate_identity_clock_is_rejected():\n    df=source()\n    with pytest.raises(ValueError,match='duplicate'):decorate(pd.concat([df,df.iloc[:1]]))",
+      "parameter_case": "test_duplicate_identity_clock_is_rejected",
+      "expected_assertions": [],
+      "expected_rejections": [
+        "pytest.raises(ValueError, match='duplicate')"
+      ],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_local_following.py",
+      "fixture_source_sha256": "3ddf297bc4431a1a0288b37ac3edfc6c377bdb1ca5683ea157d12e7569506410",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_lf_transport::test_request_is_only_vehicle_get_literal_wire",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_request_is_only_vehicle_get_literal_wire():\n    assert encode_get(0x7e,'v',bytes.fromhex('0c0000000178'))==bytes.fromhex('0e a4 7e 00000001 76 0c0000000178')",
+      "parameter_case": "test_request_is_only_vehicle_get_literal_wire",
+      "expected_assertions": [
+        "encode_get(126, 'v', bytes.fromhex('0c0000000178')) == bytes.fromhex('0e a4 7e 00000001 76 0c0000000178')"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_lf_transport.py",
+      "fixture_source_sha256": "03a992d0e8b1f552dd0793b257f57b98fc00714fcabda23d3484305ef2df113a",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_lf_transport::test_two_separate_status_and_value_pairs",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_two_separate_status_and_value_pairs():\n    r=parse_replies(reply()+reply('w',value='true'),[(0x7e,'v'),(0x7e,'w')],decode)\n    assert r==['false','true']",
+      "parameter_case": "test_two_separate_status_and_value_pairs",
+      "expected_assertions": [
+        "r == ['false', 'true']"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_lf_transport.py",
+      "fixture_source_sha256": "03a992d0e8b1f552dd0793b257f57b98fc00714fcabda23d3484305ef2df113a",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_lf_transport::test_reply_identity_error_truncation_or_trailer_fails_closed[\\x07\\xa4\\x00\\x00\\x00\\x00\\x00\\x16\\xb4~\\x00\\x00\\x00\\x05wrong\\x0c\\x00\\x00\\x00\\x05false]",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_reply_identity_error_truncation_or_trailer_fails_closed(raw):\n    with pytest.raises((ValueError,AssertionError)):parse_replies(raw,[(0x7e,'v')],decode)",
+      "parameter_case": "test_reply_identity_error_truncation_or_trailer_fails_closed[\\x07\\xa4\\x00\\x00\\x00\\x00\\x00\\x16\\xb4~\\x00\\x00\\x00\\x05wrong\\x0c\\x00\\x00\\x00\\x05false]",
+      "expected_assertions": [],
+      "expected_rejections": [
+        "pytest.raises((ValueError, AssertionError))"
+      ],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_lf_transport.py",
+      "fixture_source_sha256": "03a992d0e8b1f552dd0793b257f57b98fc00714fcabda23d3484305ef2df113a",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_lf_transport::test_reply_identity_error_truncation_or_trailer_fails_closed[\\x07\\xa4\\x00\\x00\\x00\\x00\\x00\\x12\\xb4T\\x00\\x00\\x00\\x01v\\x0c\\x00\\x00\\x00\\x05false]",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_reply_identity_error_truncation_or_trailer_fails_closed(raw):\n    with pytest.raises((ValueError,AssertionError)):parse_replies(raw,[(0x7e,'v')],decode)",
+      "parameter_case": "test_reply_identity_error_truncation_or_trailer_fails_closed[\\x07\\xa4\\x00\\x00\\x00\\x00\\x00\\x12\\xb4T\\x00\\x00\\x00\\x01v\\x0c\\x00\\x00\\x00\\x05false]",
+      "expected_assertions": [],
+      "expected_rejections": [
+        "pytest.raises((ValueError, AssertionError))"
+      ],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_lf_transport.py",
+      "fixture_source_sha256": "03a992d0e8b1f552dd0793b257f57b98fc00714fcabda23d3484305ef2df113a",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_lf_transport::test_reply_identity_error_truncation_or_trailer_fails_closed[\\x07\\xc4\\x00\\x00\\x00\\x00\\x00\\x12\\xb4~\\x00\\x00\\x00\\x01v\\x0c\\x00\\x00\\x00\\x05false]",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_reply_identity_error_truncation_or_trailer_fails_closed(raw):\n    with pytest.raises((ValueError,AssertionError)):parse_replies(raw,[(0x7e,'v')],decode)",
+      "parameter_case": "test_reply_identity_error_truncation_or_trailer_fails_closed[\\x07\\xc4\\x00\\x00\\x00\\x00\\x00\\x12\\xb4~\\x00\\x00\\x00\\x01v\\x0c\\x00\\x00\\x00\\x05false]",
+      "expected_assertions": [],
+      "expected_rejections": [
+        "pytest.raises((ValueError, AssertionError))"
+      ],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_lf_transport.py",
+      "fixture_source_sha256": "03a992d0e8b1f552dd0793b257f57b98fc00714fcabda23d3484305ef2df113a",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_lf_transport::test_reply_identity_error_truncation_or_trailer_fails_closed[\\x07\\xa4\\x01\\x00\\x00\\x00\\x00\\x12\\xb4~\\x00\\x00\\x00\\x01v\\x0c\\x00\\x00\\x00\\x05false]",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_reply_identity_error_truncation_or_trailer_fails_closed(raw):\n    with pytest.raises((ValueError,AssertionError)):parse_replies(raw,[(0x7e,'v')],decode)",
+      "parameter_case": "test_reply_identity_error_truncation_or_trailer_fails_closed[\\x07\\xa4\\x01\\x00\\x00\\x00\\x00\\x12\\xb4~\\x00\\x00\\x00\\x01v\\x0c\\x00\\x00\\x00\\x05false]",
+      "expected_assertions": [],
+      "expected_rejections": [
+        "pytest.raises((ValueError, AssertionError))"
+      ],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_lf_transport.py",
+      "fixture_source_sha256": "03a992d0e8b1f552dd0793b257f57b98fc00714fcabda23d3484305ef2df113a",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_lf_transport::test_reply_identity_error_truncation_or_trailer_fails_closed[\\x07\\xa4\\x00\\x00\\x00\\x00\\x00\\x12\\xb4~\\x00\\x00\\x00\\x01v\\x0c\\x00\\x00\\x00\\x05fals]",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_reply_identity_error_truncation_or_trailer_fails_closed(raw):\n    with pytest.raises((ValueError,AssertionError)):parse_replies(raw,[(0x7e,'v')],decode)",
+      "parameter_case": "test_reply_identity_error_truncation_or_trailer_fails_closed[\\x07\\xa4\\x00\\x00\\x00\\x00\\x00\\x12\\xb4~\\x00\\x00\\x00\\x01v\\x0c\\x00\\x00\\x00\\x05fals]",
+      "expected_assertions": [],
+      "expected_rejections": [
+        "pytest.raises((ValueError, AssertionError))"
+      ],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_lf_transport.py",
+      "fixture_source_sha256": "03a992d0e8b1f552dd0793b257f57b98fc00714fcabda23d3484305ef2df113a",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_lf_transport::test_reply_identity_error_truncation_or_trailer_fails_closed[\\x07\\xa4\\x00\\x00\\x00\\x00\\x00\\x12\\xb4~\\x00\\x00\\x00\\x01v\\x0c\\x00\\x00\\x00\\x05falsex]",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_reply_identity_error_truncation_or_trailer_fails_closed(raw):\n    with pytest.raises((ValueError,AssertionError)):parse_replies(raw,[(0x7e,'v')],decode)",
+      "parameter_case": "test_reply_identity_error_truncation_or_trailer_fails_closed[\\x07\\xa4\\x00\\x00\\x00\\x00\\x00\\x12\\xb4~\\x00\\x00\\x00\\x01v\\x0c\\x00\\x00\\x00\\x05falsex]",
+      "expected_assertions": [],
+      "expected_rejections": [
+        "pytest.raises((ValueError, AssertionError))"
+      ],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_lf_transport.py",
+      "fixture_source_sha256": "03a992d0e8b1f552dd0793b257f57b98fc00714fcabda23d3484305ef2df113a",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_lf_transport::test_long_object_uses_official_extended_length",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_long_object_uses_official_extended_length():\n    raw=encode_get(0x7e,'x'*300,b'')\n    assert raw[0]==0 and struct.unpack('!i',raw[1:5])[0]==len(raw) and raw[5:7]==bytes([0xa4,0x7e])",
+      "parameter_case": "test_long_object_uses_official_extended_length",
+      "expected_assertions": [
+        "raw[0] == 0 and struct.unpack('!i', raw[1:5])[0] == len(raw) and (raw[5:7] == bytes([164, 126]))"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_lf_transport.py",
+      "fixture_source_sha256": "03a992d0e8b1f552dd0793b257f57b98fc00714fcabda23d3484305ef2df113a",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_lf_transport::test_unapproved_or_control_variable_rejected[64]",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_unapproved_or_control_variable_rejected(var):\n    with pytest.raises(ValueError):encode_get(var,'v',b'')",
+      "parameter_case": "test_unapproved_or_control_variable_rejected[64]",
+      "expected_assertions": [],
+      "expected_rejections": [
+        "pytest.raises(ValueError)"
+      ],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_lf_transport.py",
+      "fixture_source_sha256": "03a992d0e8b1f552dd0793b257f57b98fc00714fcabda23d3484305ef2df113a",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_lf_transport::test_unapproved_or_control_variable_rejected[114]",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_unapproved_or_control_variable_rejected(var):\n    with pytest.raises(ValueError):encode_get(var,'v',b'')",
+      "parameter_case": "test_unapproved_or_control_variable_rejected[114]",
+      "expected_assertions": [],
+      "expected_rejections": [
+        "pytest.raises(ValueError)"
+      ],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_lf_transport.py",
+      "fixture_source_sha256": "03a992d0e8b1f552dd0793b257f57b98fc00714fcabda23d3484305ef2df113a",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_lf_transport::test_unapproved_or_control_variable_rejected[255]",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_unapproved_or_control_variable_rejected(var):\n    with pytest.raises(ValueError):encode_get(var,'v',b'')",
+      "parameter_case": "test_unapproved_or_control_variable_rejected[255]",
+      "expected_assertions": [],
+      "expected_rejections": [
+        "pytest.raises(ValueError)"
+      ],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_lf_transport.py",
+      "fixture_source_sha256": "03a992d0e8b1f552dd0793b257f57b98fc00714fcabda23d3484305ef2df113a",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_lf_transport::test_unapproved_or_control_variable_rejected[None]",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_unapproved_or_control_variable_rejected(var):\n    with pytest.raises(ValueError):encode_get(var,'v',b'')",
+      "parameter_case": "test_unapproved_or_control_variable_rejected[None]",
+      "expected_assertions": [],
+      "expected_rejections": [
+        "pytest.raises(ValueError)"
+      ],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_lf_transport.py",
+      "fixture_source_sha256": "03a992d0e8b1f552dd0793b257f57b98fc00714fcabda23d3484305ef2df113a",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_lf_guards::test_scope_errors_rejected[seed]",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_scope_errors_rejected(change):\n    p=plan()\n    if change=='seed':p['runs'][1]['seed']=1\n    elif change=='duration':p['runs'][2]['duration_s']=601\n    elif change=='matrix':p['main_matrix_allowed']=True\n    elif change=='micro':p['budget']['new_integration_micro_allowed']=1\n    elif change=='demand':p['runs'][1]['demand']='different'\n    else:p['runs'][0]['reader_mode']='batch'\n    with pytest.raises(PermissionError):assert_scope(p)",
+      "parameter_case": "test_scope_errors_rejected[seed]",
+      "expected_assertions": [],
+      "expected_rejections": [
+        "pytest.raises(PermissionError)"
+      ],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_lf_guards.py",
+      "fixture_source_sha256": "984ae0a2b8285dc209789361cce73a80187b3925213fe008f5b203b4b601285f",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_lf_guards::test_scope_errors_rejected[duration]",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_scope_errors_rejected(change):\n    p=plan()\n    if change=='seed':p['runs'][1]['seed']=1\n    elif change=='duration':p['runs'][2]['duration_s']=601\n    elif change=='matrix':p['main_matrix_allowed']=True\n    elif change=='micro':p['budget']['new_integration_micro_allowed']=1\n    elif change=='demand':p['runs'][1]['demand']='different'\n    else:p['runs'][0]['reader_mode']='batch'\n    with pytest.raises(PermissionError):assert_scope(p)",
+      "parameter_case": "test_scope_errors_rejected[duration]",
+      "expected_assertions": [],
+      "expected_rejections": [
+        "pytest.raises(PermissionError)"
+      ],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_lf_guards.py",
+      "fixture_source_sha256": "984ae0a2b8285dc209789361cce73a80187b3925213fe008f5b203b4b601285f",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_lf_guards::test_scope_errors_rejected[matrix]",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_scope_errors_rejected(change):\n    p=plan()\n    if change=='seed':p['runs'][1]['seed']=1\n    elif change=='duration':p['runs'][2]['duration_s']=601\n    elif change=='matrix':p['main_matrix_allowed']=True\n    elif change=='micro':p['budget']['new_integration_micro_allowed']=1\n    elif change=='demand':p['runs'][1]['demand']='different'\n    else:p['runs'][0]['reader_mode']='batch'\n    with pytest.raises(PermissionError):assert_scope(p)",
+      "parameter_case": "test_scope_errors_rejected[matrix]",
+      "expected_assertions": [],
+      "expected_rejections": [
+        "pytest.raises(PermissionError)"
+      ],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_lf_guards.py",
+      "fixture_source_sha256": "984ae0a2b8285dc209789361cce73a80187b3925213fe008f5b203b4b601285f",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_lf_guards::test_scope_errors_rejected[micro]",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_scope_errors_rejected(change):\n    p=plan()\n    if change=='seed':p['runs'][1]['seed']=1\n    elif change=='duration':p['runs'][2]['duration_s']=601\n    elif change=='matrix':p['main_matrix_allowed']=True\n    elif change=='micro':p['budget']['new_integration_micro_allowed']=1\n    elif change=='demand':p['runs'][1]['demand']='different'\n    else:p['runs'][0]['reader_mode']='batch'\n    with pytest.raises(PermissionError):assert_scope(p)",
+      "parameter_case": "test_scope_errors_rejected[micro]",
+      "expected_assertions": [],
+      "expected_rejections": [
+        "pytest.raises(PermissionError)"
+      ],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_lf_guards.py",
+      "fixture_source_sha256": "984ae0a2b8285dc209789361cce73a80187b3925213fe008f5b203b4b601285f",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_lf_guards::test_scope_errors_rejected[demand]",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_scope_errors_rejected(change):\n    p=plan()\n    if change=='seed':p['runs'][1]['seed']=1\n    elif change=='duration':p['runs'][2]['duration_s']=601\n    elif change=='matrix':p['main_matrix_allowed']=True\n    elif change=='micro':p['budget']['new_integration_micro_allowed']=1\n    elif change=='demand':p['runs'][1]['demand']='different'\n    else:p['runs'][0]['reader_mode']='batch'\n    with pytest.raises(PermissionError):assert_scope(p)",
+      "parameter_case": "test_scope_errors_rejected[demand]",
+      "expected_assertions": [],
+      "expected_rejections": [
+        "pytest.raises(PermissionError)"
+      ],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_lf_guards.py",
+      "fixture_source_sha256": "984ae0a2b8285dc209789361cce73a80187b3925213fe008f5b203b4b601285f",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_lf_guards::test_scope_errors_rejected[mode]",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_scope_errors_rejected(change):\n    p=plan()\n    if change=='seed':p['runs'][1]['seed']=1\n    elif change=='duration':p['runs'][2]['duration_s']=601\n    elif change=='matrix':p['main_matrix_allowed']=True\n    elif change=='micro':p['budget']['new_integration_micro_allowed']=1\n    elif change=='demand':p['runs'][1]['demand']='different'\n    else:p['runs'][0]['reader_mode']='batch'\n    with pytest.raises(PermissionError):assert_scope(p)",
+      "parameter_case": "test_scope_errors_rejected[mode]",
+      "expected_assertions": [],
+      "expected_rejections": [
+        "pytest.raises(PermissionError)"
+      ],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_lf_guards.py",
+      "fixture_source_sha256": "984ae0a2b8285dc209789361cce73a80187b3925213fe008f5b203b4b601285f",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_lf_guards::test_summary_missing_fields_or_wrong_SHA_blocks",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_summary_missing_fields_or_wrong_SHA_blocks():\n    p=plan();assert_scope(p)\n    s=dict(status='completed_valid',global_blockers=[],scenario_blockers=[],engineering_blockers=[],evidence_insufficient=[],run_id='lf1_LF1',plan_sha256='sha')\n    assert summary_stop(s,'lf1_LF1','sha') is None\n    assert summary_stop(s,'lf1_LF1','wrong')=='summary_plan_SHA'\n    assert summary_stop(s,'different','sha')=='summary_run_identity'\n    del s['global_blockers']\n    assert summary_stop(s,'lf1_LF1','sha') is not None",
+      "parameter_case": "test_summary_missing_fields_or_wrong_SHA_blocks",
+      "expected_assertions": [
+        "summary_stop(s, 'lf1_LF1', 'sha') is None",
+        "summary_stop(s, 'lf1_LF1', 'wrong') == 'summary_plan_SHA'",
+        "summary_stop(s, 'different', 'sha') == 'summary_run_identity'",
+        "summary_stop(s, 'lf1_LF1', 'sha') is not None"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_lf_guards.py",
+      "fixture_source_sha256": "984ae0a2b8285dc209789361cce73a80187b3925213fe008f5b203b4b601285f",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_cd_observation::test_lane_mismatch_never_supports_entry_spillback",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_lane_mismatch_never_supports_entry_spillback():\n    tracker=QueueContinuity(step=1.)\n    for t in [0.,1.,2.]: r=tracker.update(frame(t,blocked_path='1'))\n    assert r['entry_spillback_supported'] is False\n    assert r['supported_entry_paths']==[]",
+      "parameter_case": "test_lane_mismatch_never_supports_entry_spillback",
+      "expected_assertions": [
+        "r['entry_spillback_supported'] is False",
+        "r['supported_entry_paths'] == []"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_cd_observation.py",
+      "fixture_source_sha256": "f502dd427723463a91d04eff74c1c9b42654495718a0b753c2cf9d2abf3d6514",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_cd_observation::test_same_path_support_needs_continuous_physical_demand_evidence",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_same_path_support_needs_continuous_physical_demand_evidence():\n    tracker=QueueContinuity(step=1.)\n    for t in [0.,1.,2.]:r=tracker.update(frame(t))\n    assert r['entry_spillback_supported'] is True and r['supported_entry_paths']==['0']\n    f=frame(3.);f['entry_by_path']={};r=tracker.update(f)\n    assert not r['entry_spillback_supported']",
+      "parameter_case": "test_same_path_support_needs_continuous_physical_demand_evidence",
+      "expected_assertions": [
+        "r['entry_spillback_supported'] is True and r['supported_entry_paths'] == ['0']",
+        "not r['entry_spillback_supported']"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_cd_observation.py",
+      "fixture_source_sha256": "f502dd427723463a91d04eff74c1c9b42654495718a0b753c2cf9d2abf3d6514",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_cd_observation::test_invalid_current_frame_cannot_bridge_persistence[observation_valid]",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_invalid_current_frame_cannot_bridge_persistence(field):\n    tracker=QueueContinuity(step=1.)\n    tracker.update(frame(0.));bad=frame(1.);bad[field]=False\n    assert tracker.update(bad)['state']=='Evidence Insufficient'\n    r=tracker.update(frame(2.))\n    assert r['continuous_inlet_duration_s']==0. and not r['entry_spillback_supported']",
+      "parameter_case": "test_invalid_current_frame_cannot_bridge_persistence[observation_valid]",
+      "expected_assertions": [
+        "tracker.update(bad)['state'] == 'Evidence Insufficient'",
+        "r['continuous_inlet_duration_s'] == 0.0 and (not r['entry_spillback_supported'])"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_cd_observation.py",
+      "fixture_source_sha256": "f502dd427723463a91d04eff74c1c9b42654495718a0b753c2cf9d2abf3d6514",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_cd_observation::test_invalid_current_frame_cannot_bridge_persistence[support_complete]",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_invalid_current_frame_cannot_bridge_persistence(field):\n    tracker=QueueContinuity(step=1.)\n    tracker.update(frame(0.));bad=frame(1.);bad[field]=False\n    assert tracker.update(bad)['state']=='Evidence Insufficient'\n    r=tracker.update(frame(2.))\n    assert r['continuous_inlet_duration_s']==0. and not r['entry_spillback_supported']",
+      "parameter_case": "test_invalid_current_frame_cannot_bridge_persistence[support_complete]",
+      "expected_assertions": [
+        "tracker.update(bad)['state'] == 'Evidence Insufficient'",
+        "r['continuous_inlet_duration_s'] == 0.0 and (not r['entry_spillback_supported'])"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_cd_observation.py",
+      "fixture_source_sha256": "f502dd427723463a91d04eff74c1c9b42654495718a0b753c2cf9d2abf3d6514",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_cd_observation::test_verified_same_path_edge_progression_is_not_lane_change",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_verified_same_path_edge_progression_is_not_lane_change():\n    tracker=QueueContinuity(step=1.)\n    tracker.update(frame(0.))\n    tracker.update(frame(1.,lane=':j_0'))\n    r=tracker.update(frame(2.,lane='main_1_0'))\n    assert r['entry_spillback_supported'] and r['lane_change_member_resets']==0",
+      "parameter_case": "test_verified_same_path_edge_progression_is_not_lane_change",
+      "expected_assertions": [
+        "r['entry_spillback_supported'] and r['lane_change_member_resets'] == 0"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_cd_observation.py",
+      "fixture_source_sha256": "f502dd427723463a91d04eff74c1c9b42654495718a0b753c2cf9d2abf3d6514",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_cd_observation::test_real_path_change_resets_component_continuity",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_real_path_change_resets_component_continuity():\n    tracker=QueueContinuity(step=1.)\n    tracker.update(frame(0.));tracker.update(frame(1.))\n    r=tracker.update(frame(2.,path='1',lane='main_0_1',blocked_path='1'))\n    assert r['continuous_inlet_duration_s']==0. and r['lane_change_member_resets']==2",
+      "parameter_case": "test_real_path_change_resets_component_continuity",
+      "expected_assertions": [
+        "r['continuous_inlet_duration_s'] == 0.0 and r['lane_change_member_resets'] == 2"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_cd_observation.py",
+      "fixture_source_sha256": "f502dd427723463a91d04eff74c1c9b42654495718a0b753c2cf9d2abf3d6514",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_cd_observation::test_release_between_one_second_outputs_resets_duration",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_release_between_one_second_outputs_resets_duration():\n    tracker=QueueContinuity()\n    for i in range(41):\n        f=frame(i*.05)\n        if i==19:f['components']=[]\n        r=tracker.update(f)\n    assert r['continuous_inlet_duration_s']==pytest.approx(1.)\n    assert not r['entry_spillback_supported']",
+      "parameter_case": "test_release_between_one_second_outputs_resets_duration",
+      "expected_assertions": [
+        "r['continuous_inlet_duration_s'] == pytest.approx(1.0)",
+        "not r['entry_spillback_supported']"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_cd_observation.py",
+      "fixture_source_sha256": "f502dd427723463a91d04eff74c1c9b42654495718a0b753c2cf9d2abf3d6514",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_cd_observation::test_missing_frame_resets_and_component_split_is_conservative",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_missing_frame_resets_and_component_split_is_conservative():\n    tracker=QueueContinuity(step=1.)\n    tracker.update(frame(0.));r=tracker.update(frame(2.))\n    assert r['temporal_breaks']==1 and r['continuous_inlet_duration_s']==0.",
+      "parameter_case": "test_missing_frame_resets_and_component_split_is_conservative",
+      "expected_assertions": [
+        "r['temporal_breaks'] == 1 and r['continuous_inlet_duration_s'] == 0.0"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_cd_observation.py",
+      "fixture_source_sha256": "f502dd427723463a91d04eff74c1c9b42654495718a0b753c2cf9d2abf3d6514",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_cd_observation::test_edge_change_not_counted_as_real_same_edge_lane_change",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_edge_change_not_counted_as_real_same_edge_lane_change():\n    a=dict(edge_id='main_0',lane_id='main_0_2');b=dict(edge_id='main_1',lane_id='main_1_2')\n    assert movement(a,b)=='edge_transition'\n    b.update(edge_id='main_0',lane_id='main_0_1')\n    assert movement(a,b)=='lane_change'",
+      "parameter_case": "test_edge_change_not_counted_as_real_same_edge_lane_change",
+      "expected_assertions": [
+        "movement(a, b) == 'edge_transition'",
+        "movement(a, b) == 'lane_change'"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_cd_observation.py",
+      "fixture_source_sha256": "f502dd427723463a91d04eff74c1c9b42654495718a0b753c2cf9d2abf3d6514",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_cd_observation::test_entry_blockage_is_per_pending_lane_and_physical_rear",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_entry_blockage_is_per_pending_lane_and_physical_rear():\n    rows=[dict(lane_id='main_0_0',position_m=8.,length_m=5.)]\n    defs={'p':dict(assigned_lane='0',type='car'),'q':dict(assigned_lane='1',type='car')}\n    types={'car':dict(length='5',minGap='2.5')}\n    r=entry_evidence(rows,{'p','q'},defs,types)\n    assert r['0']['nearest_rear_m']==3. and r['0']['blocked']\n    assert r['1']['nearest_rear_m'] is None and not r['1']['blocked']",
+      "parameter_case": "test_entry_blockage_is_per_pending_lane_and_physical_rear",
+      "expected_assertions": [
+        "r['0']['nearest_rear_m'] == 3.0 and r['0']['blocked']",
+        "r['1']['nearest_rear_m'] is None and (not r['1']['blocked'])"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_cd_observation.py",
+      "fixture_source_sha256": "f502dd427723463a91d04eff74c1c9b42654495718a0b753c2cf9d2abf3d6514",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_cd_observation::test_each_mandatory_vehicle_must_actually_merge_and_exit",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_each_mandatory_vehicle_must_actually_merge_and_exit():\n    defs={v:dict(assigned_lane='2') for v in ['a','b']}\n    first={'a':'main_0_2','b':'main_0_2'}\n    events=[dict(vehicle_id='a',edge='main_1',from_lane='main_1_2',to_lane='main_1_1')]\n    exits=[dict(vehicle_id=v,last_edge='main_2') for v in defs]\n    r=journey_audit(defs,first,events,exits)\n    assert not r['verified'] and r['vehicles']['b']['actual_required_merge'] is False\n    events.append(dict(events[0],vehicle_id='b'))\n    assert journey_audit(defs,first,events,exits)['verified']",
+      "parameter_case": "test_each_mandatory_vehicle_must_actually_merge_and_exit",
+      "expected_assertions": [
+        "not r['verified'] and r['vehicles']['b']['actual_required_merge'] is False",
+        "journey_audit(defs, first, events, exits)['verified']"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_cd_observation.py",
+      "fixture_source_sha256": "f502dd427723463a91d04eff74c1c9b42654495718a0b753c2cf9d2abf3d6514",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_cd_observation::test_legitimate_upstream_lane_change_fulfils_path_duty_without_forcing_location",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_legitimate_upstream_lane_change_fulfils_path_duty_without_forcing_location():\n    r=journey_audit({'a':dict(assigned_lane='2')},{'a':'main_0_2'},\n        [dict(vehicle_id='a',edge='main_0',from_lane='main_0_2',to_lane='main_0_1')],\n        [dict(vehicle_id='a',last_edge='main_2')])\n    assert r['verified'] and r['vehicles']['a']['actual_required_merge']",
+      "parameter_case": "test_legitimate_upstream_lane_change_fulfils_path_duty_without_forcing_location",
+      "expected_assertions": [
+        "r['verified'] and r['vehicles']['a']['actual_required_merge']"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_cd_observation.py",
+      "fixture_source_sha256": "f502dd427723463a91d04eff74c1c9b42654495718a0b753c2cf9d2abf3d6514",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_cd_observation::test_missing_severity_schema_is_global_blocker[value0]",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_missing_severity_schema_is_global_blocker(value):\n    assert validate_summary(value) is not None",
+      "parameter_case": "test_missing_severity_schema_is_global_blocker[value0]",
+      "expected_assertions": [
+        "validate_summary(value) is not None"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_cd_observation.py",
+      "fixture_source_sha256": "f502dd427723463a91d04eff74c1c9b42654495718a0b753c2cf9d2abf3d6514",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_cd_observation::test_missing_severity_schema_is_global_blocker[value1]",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_missing_severity_schema_is_global_blocker(value):\n    assert validate_summary(value) is not None",
+      "parameter_case": "test_missing_severity_schema_is_global_blocker[value1]",
+      "expected_assertions": [
+        "validate_summary(value) is not None"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_cd_observation.py",
+      "fixture_source_sha256": "f502dd427723463a91d04eff74c1c9b42654495718a0b753c2cf9d2abf3d6514",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_cd_observation::test_missing_severity_schema_is_global_blocker[value2]",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_missing_severity_schema_is_global_blocker(value):\n    assert validate_summary(value) is not None",
+      "parameter_case": "test_missing_severity_schema_is_global_blocker[value2]",
+      "expected_assertions": [
+        "validate_summary(value) is not None"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_cd_observation.py",
+      "fixture_source_sha256": "f502dd427723463a91d04eff74c1c9b42654495718a0b753c2cf9d2abf3d6514",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    },
+    {
+      "test": "tests.test_stage_0_5_cd_observation::test_scenario_failure_does_not_become_global_but_inconsistent_schema_does",
+      "seconds": 0.001,
+      "actual": "Passed",
+      "input_conditions": "def test_scenario_failure_does_not_become_global_but_inconsistent_schema_does():\n    value=dict(global_blockers=[],scenario_blockers=['D_no_exit'],engineering_blockers=['D_no_exit'],evidence_insufficient=[],\n               status='completed_with_engineering_blocker')\n    assert validate_summary(value) is None\n    value['engineering_blockers']=[]\n    assert validate_summary(value) is not None",
+      "parameter_case": "test_scenario_failure_does_not_become_global_but_inconsistent_schema_does",
+      "expected_assertions": [
+        "validate_summary(value) is None",
+        "validate_summary(value) is not None"
+      ],
+      "expected_rejections": [],
+      "fixture_source_path": "runtime/code/tests/test_stage_0_5_cd_observation.py",
+      "fixture_source_sha256": "f502dd427723463a91d04eff74c1c9b42654495718a0b753c2cf9d2abf3d6514",
+      "failure_reason": "None",
+      "formal_effect": "No promotion of scientific Gate or local attribution policy"
+    }
+  ],
+  "source_test_sha256": {
+    "test_stage_0_5_lf_guards.py": "984ae0a2b8285dc209789361cce73a80187b3925213fe008f5b203b4b601285f",
+    "test_stage_0_5_lf_transport.py": "03a992d0e8b1f552dd0793b257f57b98fc00714fcabda23d3484305ef2df113a"
+  },
+  "earlier_harness_failure": {
+    "command": [
+      "D:\\miniconda\\python.exe",
+      "-S",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_local_following_v1\\runtime\\code\\scripts\\b1_test_entry.py",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_local_following_v1\\runtime\\code\\tests\\test_stage_0_5_local_following.py",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_local_following_v1\\runtime\\code\\tests\\test_stage_0_5_lf_transport.py",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_local_following_v1\\runtime\\code\\tests\\test_stage_0_5_lf_guards.py",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_local_following_v1\\runtime\\code\\tests\\test_stage_0_5_cd_observation.py",
+      "-q",
+      "-c",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_local_following_v1\\runtime\\code\\pytest.ini",
+      "--rootdir",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_local_following_v1\\runtime\\code",
+      "--basetemp",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_local_following_v1\\test_tmp\\1792418428553058500",
+      "-o",
+      "cache_dir=D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_local_following_v1\\runtime_cache\\pytest",
+      "--junitxml",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_local_following_v1\\boundary_tests.xml"
+    ],
+    "exit_code": 1,
+    "output": "Traceback (most recent call last):\n  File \"D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_local_following_v1\\runtime\\code\\scripts\\b1_test_entry.py\", line 6, in <module>\n    from riskprop.stage_0_5_b1_isolation import install_guard\nModuleNotFoundError: No module named 'riskprop'\n"
+  },
+  "controlled_corrected_run": {
+    "command": [
+      "D:\\miniconda\\python.exe",
+      "-S",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_local_following_v1\\runtime\\code\\scripts\\b1_test_entry.py",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_local_following_v1\\runtime\\code\\tests\\test_stage_0_5_local_following.py",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_local_following_v1\\runtime\\code\\tests\\test_stage_0_5_lf_transport.py",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_local_following_v1\\runtime\\code\\tests\\test_stage_0_5_lf_guards.py",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_local_following_v1\\runtime\\code\\tests\\test_stage_0_5_cd_observation.py",
+      "-q",
+      "-c",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_local_following_v1\\runtime\\code\\pytest.ini",
+      "--rootdir",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_local_following_v1\\runtime\\code",
+      "--basetemp",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_local_following_v1\\test_tmp\\1792418717877448100",
+      "-o",
+      "cache_dir=D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_local_following_v1\\runtime_cache\\pytest",
+      "--junitxml",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_local_following_v1\\boundary_tests.xml"
+    ],
+    "exit_code": 0,
+    "output": ".....................................................                    [100%]\n- generated xml file: D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_local_following_v1\\boundary_tests.xml -\n53 passed in 4.86s\n"
+  },
+  "note": "First detailed-report invocation omitted capsule PYTHONPATH and ran no tests. Failure retained; corrected -S environment passed. Original frozen204-test preflight passed."
+}

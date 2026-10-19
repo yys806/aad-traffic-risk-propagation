@@ -1,0 +1,138 @@
+{
+  "logs": [
+    {
+      "file": "close_35088.json",
+      "sha256": "b19eec3de1f94b14abf077c5b0da3a63246567f02e2bcd9b8a2f5301124303ef",
+      "denied": []
+    },
+    {
+      "file": "freeze_28924.json",
+      "sha256": "75ddccfe7fa43a458ab4be1684fe4fc05708c9c411b3ec3c805d8cec59705dd1",
+      "denied": []
+    },
+    {
+      "file": "offline_30044.json",
+      "sha256": "20d7049c31ad048b95d2427b5f0511fc16a2c79269079f3db14e3be4e6f49ac6",
+      "denied": []
+    },
+    {
+      "file": "paired_11152.json",
+      "sha256": "0fee28de8684928404d556d6bd8c434b904e04bfc195d111a9bf757a095ca443",
+      "denied": []
+    },
+    {
+      "file": "run_lf1_LF1.json",
+      "sha256": "a61c4bf9c9e44cad7631b37e0d9924942941991695bc5c85d27ed98b4345e7d1",
+      "denied": []
+    },
+    {
+      "file": "run_lf1_LF2.json",
+      "sha256": "a61c4bf9c9e44cad7631b37e0d9924942941991695bc5c85d27ed98b4345e7d1",
+      "denied": []
+    },
+    {
+      "file": "run_lf1_LF3.json",
+      "sha256": "70626c99983c5529df9b0790da28971331e5279d13b9d5a008349a2ca25debba",
+      "denied": []
+    },
+    {
+      "file": "tests_36800.json",
+      "sha256": "e7a61356f1ed7a047d04bba3603c246ab114e937acad5776a406374382d97200",
+      "denied": []
+    },
+    {
+      "file": "worker_lf1_LF1.json",
+      "sha256": "55183a2b78835f088d286c2c0329ad93350c90aadcf3297122642e2bd88dafaf",
+      "denied": []
+    },
+    {
+      "file": "worker_lf1_LF2.json",
+      "sha256": "9f1e810084049e4330ae14a3a079261966e017cfc9cfa5637c3553f142756571",
+      "denied": []
+    },
+    {
+      "file": "worker_lf1_LF3.json",
+      "sha256": "d559a8132903668b7780468144ad04965aca3b7cff1413d4cead2d6954e768e3",
+      "denied": []
+    }
+  ],
+  "unexpected_denials": 0,
+  "no_real_trajectory_inputs": true,
+  "old_B1_C_state_inputs": [],
+  "prior_CD_C_offline_role": {
+    "role": "Authorized previous CD task C, NOT historic B1 C",
+    "source": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_cd_integration_v2\\runs\\cd1_C_micro",
+    "files": {
+      "internal_states.parquet": {
+        "bytes": 1236234,
+        "sha256": "c2396d1dc7bea7e6b2bff35fcca7bb7ea6225385df989a813297f2ae71faf902"
+      },
+      "queue_frames.jsonl": {
+        "bytes": 6889515,
+        "sha256": "ffb924aa8ba1f6b39b5026665cde8fbd6c94dae47f7ddb3941098406f061acbb"
+      }
+    },
+    "declared_before_read": true
+  },
+  "guard_probe": {
+    "cases": [
+      {
+        "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_us101__0820_0835.json",
+        "refused": true,
+        "before_filesystem_read": true
+      },
+      {
+        "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_locked_holdout.json",
+        "refused": true,
+        "before_filesystem_read": true
+      },
+      {
+        "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_historical_event_characteristics.parquet",
+        "refused": true,
+        "before_filesystem_read": true
+      }
+    ],
+    "audit": {
+      "scope": "controlled Python entrypoints",
+      "allowed_open_events": 0,
+      "denied": [
+        {
+          "event": "open",
+          "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_us101__0820_0835.json",
+          "write": false
+        },
+        {
+          "event": "open",
+          "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_locked_holdout.json",
+          "write": false
+        },
+        {
+          "event": "open",
+          "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_historical_event_characteristics.parquet",
+          "write": false
+        }
+      ],
+      "os_complete_monitoring": false,
+      "native_file_access_monitored": false,
+      "python_no_site": true,
+      "sanitized_sys_path": [
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_local_following_v1\\runtime\\code\\src",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_local_following_v1\\dependency_links",
+        "D:\\miniconda\\Lib\\site-packages",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_local_following_v1\\runtime\\code\\scripts",
+        "D:\\miniconda\\python313.zip",
+        "D:\\miniconda\\DLLs",
+        "D:\\miniconda\\Lib",
+        "D:\\miniconda"
+      ],
+      "limitations": [
+        "Python audit events only; native extensions and SUMO reads not OS-traced",
+        "standard-library/package/SUMO/Windows runtime roots are broader than individual dependency files",
+        "same-user administrator can bypass this policy; it is not an adversarial security boundary"
+      ]
+    }
+  },
+  "Python_only": true,
+  "os_complete_monitoring": false,
+  "native_access_monitored": false
+}

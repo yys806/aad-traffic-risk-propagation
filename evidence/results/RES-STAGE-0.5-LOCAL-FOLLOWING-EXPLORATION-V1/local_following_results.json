@@ -1,0 +1,1223 @@
+[
+  {
+    "version": "local-following-engineering-v1",
+    "local_space": {
+      "edge": "main_1",
+      "lanes": [
+        "main_1_0",
+        "main_1_1",
+        "main_1_2"
+      ],
+      "start_m": 50.0,
+      "end_m": 250.0,
+      "lane_km": 0.6,
+      "position_reference": "follower front",
+      "interval": "[start,end)"
+    },
+    "point": {
+      "local_samples": 34133,
+      "ttc_below_2_samples": 1203,
+      "measurement_status_counts": {
+        "valid": 19216,
+        "not_applicable": 14917
+      },
+      "quality_counts": {
+        "valid": 19216,
+        "not_applicable": 14917
+      },
+      "speed_quantiles_mps": [
+        0.0,
+        4.0377876838308595e-05,
+        2.5828750127996654,
+        19.793017278288886,
+        27.78
+      ],
+      "acceleration_quantiles_mps2": [
+        -4.5000000000000995,
+        -3.0508407915305824,
+        -0.00700228081553525,
+        1.1611704623453356,
+        2.59999999999998
+      ],
+      "net_gap_quantiles_m": [
+        2.5010001249468985,
+        2.501218934716195,
+        5.538466384253468,
+        33.34110480600874,
+        63.51739143753457
+      ],
+      "closing_quantiles_mps": [
+        -5.674612724701941,
+        -1.374400587198233,
+        0.022624350159988323,
+        5.643874372852706,
+        8.199817625506029
+      ],
+      "TTC_quantiles_s": [
+        1.2123418380249256,
+        2.3642183418690754,
+        7.503775584746655,
+        206.37965704820647,
+        17087.764676823834
+      ],
+      "low_speed_share": 0.5902792019453315
+    },
+    "engineering_core": {
+      "scope": "Full-network engineering only; Stage0.2 core directly reused",
+      "confirmed_events": 127,
+      "rejected_candidates": 0,
+      "exposure": {
+        "schema_version": "stage_0_5.sumo-engineering.v2.p2-exposure.v2",
+        "recorded_observation_step_s": 0.1,
+        "link_max_gap_s": 0.10999999999999999,
+        "reliable_following_exposure_s": 8411.300000013069,
+        "p2_evaluable_following_exposure_s": 8411.300000013069,
+        "not_evaluable_following_exposure_s": 0.0,
+        "not_evaluable_fraction_of_reliable_following": 0.0,
+        "reliable_closing_exposure_s": 4153.999999997581,
+        "p2_evaluable_following_vehicle_hours": 2.3364722222258525,
+        "exposure_unit": "vehicle-second (converted to vehicle-hour for the event rate)",
+        "rate_formula": "p2_event_count / p2_evaluable_following_vehicle_hours",
+        "evaluable_rule": "reliable follower/leader/time link with both endpoint measurement_status in {valid, not_applicable}; excluded links carry no zero-risk interpretation",
+        "adjacency_checks_applied": [
+          "same_follower_incarnation",
+          "same_resolved_leader_identity",
+          "time_delta_equals_cadence",
+          "observation_index_delta",
+          "identity_break",
+          "observation_gap"
+        ],
+        "externally_audited_adjacency": {
+          "source": "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4 / stage_0_2_exposure_edge_audit",
+          "reliable_following_edge_seconds": null,
+          "reliable_closing_edge_seconds": null
+        },
+        "status": "pending_measurement_equivalence",
+        "formal_rate_eligible": false,
+        "scientific_claim_eligible": false
+      },
+      "independent_event_recomputed": true,
+      "independent_event_count": 127,
+      "independent_evaluable_exposure_s": 8411.300000013069,
+      "scientific_claim_eligible": false
+    },
+    "engineering_events": [
+      {
+        "vehicle_id": "v00004",
+        "incarnation_id": "lf1_LF1|v00004",
+        "leader_incarnation_id": "lf1_LF1|v00001",
+        "event_start_s": 29.9,
+        "event_confirm_s": 30.1,
+        "event_end_s": 32.3,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 25
+      },
+      {
+        "vehicle_id": "v00005",
+        "incarnation_id": "lf1_LF1|v00005",
+        "leader_incarnation_id": "lf1_LF1|v00002",
+        "event_start_s": 30.7,
+        "event_confirm_s": 30.9,
+        "event_end_s": 32.8,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 22
+      },
+      {
+        "vehicle_id": "v00006",
+        "incarnation_id": "lf1_LF1|v00006",
+        "leader_incarnation_id": "lf1_LF1|v00003",
+        "event_start_s": 31.7,
+        "event_confirm_s": 31.9,
+        "event_end_s": 34.0,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 24
+      },
+      {
+        "vehicle_id": "v00007",
+        "incarnation_id": "lf1_LF1|v00007",
+        "leader_incarnation_id": "lf1_LF1|v00004",
+        "event_start_s": 32.3,
+        "event_confirm_s": 32.5,
+        "event_end_s": 34.4,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 22
+      },
+      {
+        "vehicle_id": "v00008",
+        "incarnation_id": "lf1_LF1|v00008",
+        "leader_incarnation_id": "lf1_LF1|v00005",
+        "event_start_s": 32.8,
+        "event_confirm_s": 33.0,
+        "event_end_s": 35.3,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 26
+      },
+      {
+        "vehicle_id": "v00009",
+        "incarnation_id": "lf1_LF1|v00009",
+        "leader_incarnation_id": "lf1_LF1|v00006",
+        "event_start_s": 33.9,
+        "event_confirm_s": 34.1,
+        "event_end_s": 36.1,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 23
+      },
+      {
+        "vehicle_id": "v00010",
+        "incarnation_id": "lf1_LF1|v00010",
+        "leader_incarnation_id": "lf1_LF1|v00007",
+        "event_start_s": 34.4,
+        "event_confirm_s": 34.6,
+        "event_end_s": 36.2,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 19
+      },
+      {
+        "vehicle_id": "v00011",
+        "incarnation_id": "lf1_LF1|v00011",
+        "leader_incarnation_id": "lf1_LF1|v00008",
+        "event_start_s": 35.0,
+        "event_confirm_s": 35.2,
+        "event_end_s": 36.7,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 18
+      },
+      {
+        "vehicle_id": "v00012",
+        "incarnation_id": "lf1_LF1|v00012",
+        "leader_incarnation_id": "lf1_LF1|v00009",
+        "event_start_s": 36.0,
+        "event_confirm_s": 36.2,
+        "event_end_s": 38.1,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 22
+      },
+      {
+        "vehicle_id": "v00013",
+        "incarnation_id": "lf1_LF1|v00013",
+        "leader_incarnation_id": "lf1_LF1|v00010",
+        "event_start_s": 36.6,
+        "event_confirm_s": 36.8,
+        "event_end_s": 38.2,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 17
+      },
+      {
+        "vehicle_id": "v00014",
+        "incarnation_id": "lf1_LF1|v00014",
+        "leader_incarnation_id": "lf1_LF1|v00011",
+        "event_start_s": 36.8,
+        "event_confirm_s": 37.0,
+        "event_end_s": 38.9,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 22
+      },
+      {
+        "vehicle_id": "v00015",
+        "incarnation_id": "lf1_LF1|v00015",
+        "leader_incarnation_id": "lf1_LF1|v00012",
+        "event_start_s": 38.2,
+        "event_confirm_s": 38.4,
+        "event_end_s": 40.1,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 20
+      },
+      {
+        "vehicle_id": "v00016",
+        "incarnation_id": "lf1_LF1|v00016",
+        "leader_incarnation_id": "lf1_LF1|v00013",
+        "event_start_s": 38.6,
+        "event_confirm_s": 38.8,
+        "event_end_s": 40.4,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 19
+      },
+      {
+        "vehicle_id": "v00017",
+        "incarnation_id": "lf1_LF1|v00017",
+        "leader_incarnation_id": "lf1_LF1|v00014",
+        "event_start_s": 38.8,
+        "event_confirm_s": 39.0,
+        "event_end_s": 41.1,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 24
+      },
+      {
+        "vehicle_id": "v00018",
+        "incarnation_id": "lf1_LF1|v00018",
+        "leader_incarnation_id": "lf1_LF1|v00015",
+        "event_start_s": 40.1,
+        "event_confirm_s": 40.3,
+        "event_end_s": 41.8,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 18
+      },
+      {
+        "vehicle_id": "v00019",
+        "incarnation_id": "lf1_LF1|v00019",
+        "leader_incarnation_id": "lf1_LF1|v00016",
+        "event_start_s": 40.4,
+        "event_confirm_s": 40.6,
+        "event_end_s": 42.2,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 19
+      },
+      {
+        "vehicle_id": "v00020",
+        "incarnation_id": "lf1_LF1|v00020",
+        "leader_incarnation_id": "lf1_LF1|v00017",
+        "event_start_s": 41.3,
+        "event_confirm_s": 41.5,
+        "event_end_s": 43.0,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 18
+      },
+      {
+        "vehicle_id": "v00021",
+        "incarnation_id": "lf1_LF1|v00021",
+        "leader_incarnation_id": "lf1_LF1|v00018",
+        "event_start_s": 42.1,
+        "event_confirm_s": 42.3,
+        "event_end_s": 43.7,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 17
+      },
+      {
+        "vehicle_id": "v00022",
+        "incarnation_id": "lf1_LF1|v00022",
+        "leader_incarnation_id": "lf1_LF1|v00019",
+        "event_start_s": 42.5,
+        "event_confirm_s": 42.7,
+        "event_end_s": 44.3,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 19
+      },
+      {
+        "vehicle_id": "v00023",
+        "incarnation_id": "lf1_LF1|v00023",
+        "leader_incarnation_id": "lf1_LF1|v00020",
+        "event_start_s": 43.1,
+        "event_confirm_s": 43.3,
+        "event_end_s": 44.6,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 16
+      }
+    ],
+    "continuity": {
+      "edge_changes": 358,
+      "actual_same_edge_lane_changes": 0,
+      "time_gap_links": 0,
+      "leader_switch_links": 40
+    },
+    "local_candidates": {
+      "event_onset_inside": 85,
+      "event_confirmation_inside": 86,
+      "event_fully_inside": 82,
+      "risk_fragments": 87,
+      "fragments_meeting_02_span": 87,
+      "endpoint_contained_evaluable_exposure_s": 3378.299999998023,
+      "policy_status": "Unapproved audit alternatives; none chosen as formal local attribution"
+    },
+    "local_formal": {
+      "events": "Unresolved",
+      "evaluable_exposure": "Unresolved",
+      "rate": "Not Calculated",
+      "reason": "Local event and exposure attribution policy not approved",
+      "core_threshold_s": 2.0,
+      "core_minimum_span_s": 0.2,
+      "closing_epsilon_mps": 0.001,
+      "core_config": {
+        "schema_version": "stage_0_2.formal_risk_measurement.config.v1",
+        "algorithm_version": "stage_0_2.formal_risk_measurement.v2",
+        "ttc_threshold_s": 2.0,
+        "minimum_duration_s": 0.2,
+        "max_gap_s": 0.11,
+        "tau_s": 15.364279197080283,
+        "confirmation_semantics": "first_observed_timestamp_meeting_span",
+        "missing_policy": "unknown_bounds_full_window",
+        "target_region": null,
+        "target_vehicle_qualification": null,
+        "evaluation_window": null,
+        "message_deduplication": null,
+        "scientific_defaults_frozen": false
+      },
+      "no_new_P2_definition": true
+    },
+    "run_id": "lf1_LF1",
+    "all_event_details_local": "local_following_analysis.json; first20 portable"
+  },
+  {
+    "version": "local-following-engineering-v1",
+    "local_space": {
+      "edge": "main_1",
+      "lanes": [
+        "main_1_0",
+        "main_1_1",
+        "main_1_2"
+      ],
+      "start_m": 50.0,
+      "end_m": 250.0,
+      "lane_km": 0.6,
+      "position_reference": "follower front",
+      "interval": "[start,end)"
+    },
+    "point": {
+      "local_samples": 34133,
+      "ttc_below_2_samples": 1203,
+      "measurement_status_counts": {
+        "valid": 19216,
+        "not_applicable": 14917
+      },
+      "quality_counts": {
+        "valid": 19216,
+        "not_applicable": 14917
+      },
+      "speed_quantiles_mps": [
+        0.0,
+        4.0377876838308595e-05,
+        2.5828750127996654,
+        19.793017278288886,
+        27.78
+      ],
+      "acceleration_quantiles_mps2": [
+        -4.5000000000000995,
+        -3.0508407915305824,
+        -0.00700228081553525,
+        1.1611704623453356,
+        2.59999999999998
+      ],
+      "net_gap_quantiles_m": [
+        2.5010001249468985,
+        2.501218934716195,
+        5.538466384253468,
+        33.34110480600874,
+        63.51739143753457
+      ],
+      "closing_quantiles_mps": [
+        -5.674612724701941,
+        -1.374400587198233,
+        0.022624350159988323,
+        5.643874372852706,
+        8.199817625506029
+      ],
+      "TTC_quantiles_s": [
+        1.2123418380249256,
+        2.3642183418690754,
+        7.503775584746655,
+        206.37965704820647,
+        17087.764676823834
+      ],
+      "low_speed_share": 0.5902792019453315
+    },
+    "engineering_core": {
+      "scope": "Full-network engineering only; Stage0.2 core directly reused",
+      "confirmed_events": 127,
+      "rejected_candidates": 0,
+      "exposure": {
+        "schema_version": "stage_0_5.sumo-engineering.v2.p2-exposure.v2",
+        "recorded_observation_step_s": 0.1,
+        "link_max_gap_s": 0.10999999999999999,
+        "reliable_following_exposure_s": 8411.300000013069,
+        "p2_evaluable_following_exposure_s": 8411.300000013069,
+        "not_evaluable_following_exposure_s": 0.0,
+        "not_evaluable_fraction_of_reliable_following": 0.0,
+        "reliable_closing_exposure_s": 4153.999999997581,
+        "p2_evaluable_following_vehicle_hours": 2.3364722222258525,
+        "exposure_unit": "vehicle-second (converted to vehicle-hour for the event rate)",
+        "rate_formula": "p2_event_count / p2_evaluable_following_vehicle_hours",
+        "evaluable_rule": "reliable follower/leader/time link with both endpoint measurement_status in {valid, not_applicable}; excluded links carry no zero-risk interpretation",
+        "adjacency_checks_applied": [
+          "same_follower_incarnation",
+          "same_resolved_leader_identity",
+          "time_delta_equals_cadence",
+          "observation_index_delta",
+          "identity_break",
+          "observation_gap"
+        ],
+        "externally_audited_adjacency": {
+          "source": "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4 / stage_0_2_exposure_edge_audit",
+          "reliable_following_edge_seconds": null,
+          "reliable_closing_edge_seconds": null
+        },
+        "status": "pending_measurement_equivalence",
+        "formal_rate_eligible": false,
+        "scientific_claim_eligible": false
+      },
+      "independent_event_recomputed": true,
+      "independent_event_count": 127,
+      "independent_evaluable_exposure_s": 8411.300000013069,
+      "scientific_claim_eligible": false
+    },
+    "engineering_events": [
+      {
+        "vehicle_id": "v00004",
+        "incarnation_id": "lf1_LF2|v00004",
+        "leader_incarnation_id": "lf1_LF2|v00001",
+        "event_start_s": 29.9,
+        "event_confirm_s": 30.1,
+        "event_end_s": 32.3,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 25
+      },
+      {
+        "vehicle_id": "v00005",
+        "incarnation_id": "lf1_LF2|v00005",
+        "leader_incarnation_id": "lf1_LF2|v00002",
+        "event_start_s": 30.7,
+        "event_confirm_s": 30.9,
+        "event_end_s": 32.8,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 22
+      },
+      {
+        "vehicle_id": "v00006",
+        "incarnation_id": "lf1_LF2|v00006",
+        "leader_incarnation_id": "lf1_LF2|v00003",
+        "event_start_s": 31.7,
+        "event_confirm_s": 31.9,
+        "event_end_s": 34.0,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 24
+      },
+      {
+        "vehicle_id": "v00007",
+        "incarnation_id": "lf1_LF2|v00007",
+        "leader_incarnation_id": "lf1_LF2|v00004",
+        "event_start_s": 32.3,
+        "event_confirm_s": 32.5,
+        "event_end_s": 34.4,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 22
+      },
+      {
+        "vehicle_id": "v00008",
+        "incarnation_id": "lf1_LF2|v00008",
+        "leader_incarnation_id": "lf1_LF2|v00005",
+        "event_start_s": 32.8,
+        "event_confirm_s": 33.0,
+        "event_end_s": 35.3,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 26
+      },
+      {
+        "vehicle_id": "v00009",
+        "incarnation_id": "lf1_LF2|v00009",
+        "leader_incarnation_id": "lf1_LF2|v00006",
+        "event_start_s": 33.9,
+        "event_confirm_s": 34.1,
+        "event_end_s": 36.1,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 23
+      },
+      {
+        "vehicle_id": "v00010",
+        "incarnation_id": "lf1_LF2|v00010",
+        "leader_incarnation_id": "lf1_LF2|v00007",
+        "event_start_s": 34.4,
+        "event_confirm_s": 34.6,
+        "event_end_s": 36.2,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 19
+      },
+      {
+        "vehicle_id": "v00011",
+        "incarnation_id": "lf1_LF2|v00011",
+        "leader_incarnation_id": "lf1_LF2|v00008",
+        "event_start_s": 35.0,
+        "event_confirm_s": 35.2,
+        "event_end_s": 36.7,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 18
+      },
+      {
+        "vehicle_id": "v00012",
+        "incarnation_id": "lf1_LF2|v00012",
+        "leader_incarnation_id": "lf1_LF2|v00009",
+        "event_start_s": 36.0,
+        "event_confirm_s": 36.2,
+        "event_end_s": 38.1,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 22
+      },
+      {
+        "vehicle_id": "v00013",
+        "incarnation_id": "lf1_LF2|v00013",
+        "leader_incarnation_id": "lf1_LF2|v00010",
+        "event_start_s": 36.6,
+        "event_confirm_s": 36.8,
+        "event_end_s": 38.2,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 17
+      },
+      {
+        "vehicle_id": "v00014",
+        "incarnation_id": "lf1_LF2|v00014",
+        "leader_incarnation_id": "lf1_LF2|v00011",
+        "event_start_s": 36.8,
+        "event_confirm_s": 37.0,
+        "event_end_s": 38.9,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 22
+      },
+      {
+        "vehicle_id": "v00015",
+        "incarnation_id": "lf1_LF2|v00015",
+        "leader_incarnation_id": "lf1_LF2|v00012",
+        "event_start_s": 38.2,
+        "event_confirm_s": 38.4,
+        "event_end_s": 40.1,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 20
+      },
+      {
+        "vehicle_id": "v00016",
+        "incarnation_id": "lf1_LF2|v00016",
+        "leader_incarnation_id": "lf1_LF2|v00013",
+        "event_start_s": 38.6,
+        "event_confirm_s": 38.8,
+        "event_end_s": 40.4,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 19
+      },
+      {
+        "vehicle_id": "v00017",
+        "incarnation_id": "lf1_LF2|v00017",
+        "leader_incarnation_id": "lf1_LF2|v00014",
+        "event_start_s": 38.8,
+        "event_confirm_s": 39.0,
+        "event_end_s": 41.1,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 24
+      },
+      {
+        "vehicle_id": "v00018",
+        "incarnation_id": "lf1_LF2|v00018",
+        "leader_incarnation_id": "lf1_LF2|v00015",
+        "event_start_s": 40.1,
+        "event_confirm_s": 40.3,
+        "event_end_s": 41.8,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 18
+      },
+      {
+        "vehicle_id": "v00019",
+        "incarnation_id": "lf1_LF2|v00019",
+        "leader_incarnation_id": "lf1_LF2|v00016",
+        "event_start_s": 40.4,
+        "event_confirm_s": 40.6,
+        "event_end_s": 42.2,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 19
+      },
+      {
+        "vehicle_id": "v00020",
+        "incarnation_id": "lf1_LF2|v00020",
+        "leader_incarnation_id": "lf1_LF2|v00017",
+        "event_start_s": 41.3,
+        "event_confirm_s": 41.5,
+        "event_end_s": 43.0,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 18
+      },
+      {
+        "vehicle_id": "v00021",
+        "incarnation_id": "lf1_LF2|v00021",
+        "leader_incarnation_id": "lf1_LF2|v00018",
+        "event_start_s": 42.1,
+        "event_confirm_s": 42.3,
+        "event_end_s": 43.7,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 17
+      },
+      {
+        "vehicle_id": "v00022",
+        "incarnation_id": "lf1_LF2|v00022",
+        "leader_incarnation_id": "lf1_LF2|v00019",
+        "event_start_s": 42.5,
+        "event_confirm_s": 42.7,
+        "event_end_s": 44.3,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 19
+      },
+      {
+        "vehicle_id": "v00023",
+        "incarnation_id": "lf1_LF2|v00023",
+        "leader_incarnation_id": "lf1_LF2|v00020",
+        "event_start_s": 43.1,
+        "event_confirm_s": 43.3,
+        "event_end_s": 44.6,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 16
+      }
+    ],
+    "continuity": {
+      "edge_changes": 358,
+      "actual_same_edge_lane_changes": 0,
+      "time_gap_links": 0,
+      "leader_switch_links": 40
+    },
+    "local_candidates": {
+      "event_onset_inside": 85,
+      "event_confirmation_inside": 86,
+      "event_fully_inside": 82,
+      "risk_fragments": 87,
+      "fragments_meeting_02_span": 87,
+      "endpoint_contained_evaluable_exposure_s": 3378.299999998023,
+      "policy_status": "Unapproved audit alternatives; none chosen as formal local attribution"
+    },
+    "local_formal": {
+      "events": "Unresolved",
+      "evaluable_exposure": "Unresolved",
+      "rate": "Not Calculated",
+      "reason": "Local event and exposure attribution policy not approved",
+      "core_threshold_s": 2.0,
+      "core_minimum_span_s": 0.2,
+      "closing_epsilon_mps": 0.001,
+      "core_config": {
+        "schema_version": "stage_0_2.formal_risk_measurement.config.v1",
+        "algorithm_version": "stage_0_2.formal_risk_measurement.v2",
+        "ttc_threshold_s": 2.0,
+        "minimum_duration_s": 0.2,
+        "max_gap_s": 0.11,
+        "tau_s": 15.364279197080283,
+        "confirmation_semantics": "first_observed_timestamp_meeting_span",
+        "missing_policy": "unknown_bounds_full_window",
+        "target_region": null,
+        "target_vehicle_qualification": null,
+        "evaluation_window": null,
+        "message_deduplication": null,
+        "scientific_defaults_frozen": false
+      },
+      "no_new_P2_definition": true
+    },
+    "run_id": "lf1_LF2",
+    "all_event_details_local": "local_following_analysis.json; first20 portable"
+  },
+  {
+    "version": "local-following-engineering-v1",
+    "local_space": {
+      "edge": "main_1",
+      "lanes": [
+        "main_1_0",
+        "main_1_1",
+        "main_1_2"
+      ],
+      "start_m": 50.0,
+      "end_m": 250.0,
+      "lane_km": 0.6,
+      "position_reference": "follower front",
+      "interval": "[start,end)"
+    },
+    "point": {
+      "local_samples": 146825,
+      "ttc_below_2_samples": 1222,
+      "measurement_status_counts": {
+        "not_applicable": 81349,
+        "valid": 65476
+      },
+      "quality_counts": {
+        "not_applicable": 81349,
+        "valid": 65476
+      },
+      "speed_quantiles_mps": [
+        0.0,
+        0.0,
+        0.6331370518163805,
+        8.695076093885874,
+        27.78
+      ],
+      "acceleration_quantiles_mps2": [
+        -4.5000000000000995,
+        -1.348791638641078,
+        0.0,
+        1.0815031468548508,
+        2.59999999999998
+      ],
+      "net_gap_quantiles_m": [
+        2.5010001249468985,
+        2.50100950415424,
+        3.2565433869028766,
+        13.1208079636483,
+        63.51739143753457
+      ],
+      "closing_quantiles_mps": [
+        -5.674612724701941,
+        -1.2541074612848222,
+        9.050032434511582e-05,
+        1.508148061596456,
+        8.199817625506029
+      ],
+      "TTC_quantiles_s": [
+        1.2123418380249256,
+        3.732568126750161,
+        11.815765603926788,
+        486.5451996537533,
+        17087.764676823834
+      ],
+      "low_speed_share": 0.7703388387536183
+    },
+    "engineering_core": {
+      "scope": "Full-network engineering only; Stage0.2 core directly reused",
+      "confirmed_events": 266,
+      "rejected_candidates": 0,
+      "exposure": {
+        "schema_version": "stage_0_5.sumo-engineering.v2.p2-exposure.v2",
+        "recorded_observation_step_s": 0.1,
+        "link_max_gap_s": 0.10999999999999999,
+        "reliable_following_exposure_s": 42404.29999966343,
+        "p2_evaluable_following_exposure_s": 42404.29999966343,
+        "not_evaluable_following_exposure_s": 0.0,
+        "not_evaluable_fraction_of_reliable_following": 0.0,
+        "reliable_closing_exposure_s": 18914.800000005245,
+        "p2_evaluable_following_vehicle_hours": 11.778972222128731,
+        "exposure_unit": "vehicle-second (converted to vehicle-hour for the event rate)",
+        "rate_formula": "p2_event_count / p2_evaluable_following_vehicle_hours",
+        "evaluable_rule": "reliable follower/leader/time link with both endpoint measurement_status in {valid, not_applicable}; excluded links carry no zero-risk interpretation",
+        "adjacency_checks_applied": [
+          "same_follower_incarnation",
+          "same_resolved_leader_identity",
+          "time_delta_equals_cadence",
+          "observation_index_delta",
+          "identity_break",
+          "observation_gap"
+        ],
+        "externally_audited_adjacency": {
+          "source": "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4 / stage_0_2_exposure_edge_audit",
+          "reliable_following_edge_seconds": null,
+          "reliable_closing_edge_seconds": null
+        },
+        "status": "pending_measurement_equivalence",
+        "formal_rate_eligible": false,
+        "scientific_claim_eligible": false
+      },
+      "independent_event_recomputed": true,
+      "independent_event_count": 266,
+      "independent_evaluable_exposure_s": 42404.29999966343,
+      "scientific_claim_eligible": false
+    },
+    "engineering_events": [
+      {
+        "vehicle_id": "v00004",
+        "incarnation_id": "lf1_LF3|v00004",
+        "leader_incarnation_id": "lf1_LF3|v00001",
+        "event_start_s": 29.9,
+        "event_confirm_s": 30.1,
+        "event_end_s": 32.3,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 25
+      },
+      {
+        "vehicle_id": "v00005",
+        "incarnation_id": "lf1_LF3|v00005",
+        "leader_incarnation_id": "lf1_LF3|v00002",
+        "event_start_s": 30.7,
+        "event_confirm_s": 30.9,
+        "event_end_s": 32.8,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 22
+      },
+      {
+        "vehicle_id": "v00006",
+        "incarnation_id": "lf1_LF3|v00006",
+        "leader_incarnation_id": "lf1_LF3|v00003",
+        "event_start_s": 31.7,
+        "event_confirm_s": 31.9,
+        "event_end_s": 34.0,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 24
+      },
+      {
+        "vehicle_id": "v00007",
+        "incarnation_id": "lf1_LF3|v00007",
+        "leader_incarnation_id": "lf1_LF3|v00004",
+        "event_start_s": 32.3,
+        "event_confirm_s": 32.5,
+        "event_end_s": 34.4,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 22
+      },
+      {
+        "vehicle_id": "v00008",
+        "incarnation_id": "lf1_LF3|v00008",
+        "leader_incarnation_id": "lf1_LF3|v00005",
+        "event_start_s": 32.8,
+        "event_confirm_s": 33.0,
+        "event_end_s": 35.3,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 26
+      },
+      {
+        "vehicle_id": "v00009",
+        "incarnation_id": "lf1_LF3|v00009",
+        "leader_incarnation_id": "lf1_LF3|v00006",
+        "event_start_s": 33.9,
+        "event_confirm_s": 34.1,
+        "event_end_s": 36.1,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 23
+      },
+      {
+        "vehicle_id": "v00010",
+        "incarnation_id": "lf1_LF3|v00010",
+        "leader_incarnation_id": "lf1_LF3|v00007",
+        "event_start_s": 34.4,
+        "event_confirm_s": 34.6,
+        "event_end_s": 36.2,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 19
+      },
+      {
+        "vehicle_id": "v00011",
+        "incarnation_id": "lf1_LF3|v00011",
+        "leader_incarnation_id": "lf1_LF3|v00008",
+        "event_start_s": 35.0,
+        "event_confirm_s": 35.2,
+        "event_end_s": 36.7,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 18
+      },
+      {
+        "vehicle_id": "v00012",
+        "incarnation_id": "lf1_LF3|v00012",
+        "leader_incarnation_id": "lf1_LF3|v00009",
+        "event_start_s": 36.0,
+        "event_confirm_s": 36.2,
+        "event_end_s": 38.1,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 22
+      },
+      {
+        "vehicle_id": "v00013",
+        "incarnation_id": "lf1_LF3|v00013",
+        "leader_incarnation_id": "lf1_LF3|v00010",
+        "event_start_s": 36.6,
+        "event_confirm_s": 36.8,
+        "event_end_s": 38.2,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 17
+      },
+      {
+        "vehicle_id": "v00014",
+        "incarnation_id": "lf1_LF3|v00014",
+        "leader_incarnation_id": "lf1_LF3|v00011",
+        "event_start_s": 36.8,
+        "event_confirm_s": 37.0,
+        "event_end_s": 38.9,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 22
+      },
+      {
+        "vehicle_id": "v00015",
+        "incarnation_id": "lf1_LF3|v00015",
+        "leader_incarnation_id": "lf1_LF3|v00012",
+        "event_start_s": 38.2,
+        "event_confirm_s": 38.4,
+        "event_end_s": 40.1,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 20
+      },
+      {
+        "vehicle_id": "v00016",
+        "incarnation_id": "lf1_LF3|v00016",
+        "leader_incarnation_id": "lf1_LF3|v00013",
+        "event_start_s": 38.6,
+        "event_confirm_s": 38.8,
+        "event_end_s": 40.4,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 19
+      },
+      {
+        "vehicle_id": "v00017",
+        "incarnation_id": "lf1_LF3|v00017",
+        "leader_incarnation_id": "lf1_LF3|v00014",
+        "event_start_s": 38.8,
+        "event_confirm_s": 39.0,
+        "event_end_s": 41.1,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 24
+      },
+      {
+        "vehicle_id": "v00018",
+        "incarnation_id": "lf1_LF3|v00018",
+        "leader_incarnation_id": "lf1_LF3|v00015",
+        "event_start_s": 40.1,
+        "event_confirm_s": 40.3,
+        "event_end_s": 41.8,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 18
+      },
+      {
+        "vehicle_id": "v00019",
+        "incarnation_id": "lf1_LF3|v00019",
+        "leader_incarnation_id": "lf1_LF3|v00016",
+        "event_start_s": 40.4,
+        "event_confirm_s": 40.6,
+        "event_end_s": 42.2,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 19
+      },
+      {
+        "vehicle_id": "v00020",
+        "incarnation_id": "lf1_LF3|v00020",
+        "leader_incarnation_id": "lf1_LF3|v00017",
+        "event_start_s": 41.3,
+        "event_confirm_s": 41.5,
+        "event_end_s": 43.0,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 18
+      },
+      {
+        "vehicle_id": "v00021",
+        "incarnation_id": "lf1_LF3|v00021",
+        "leader_incarnation_id": "lf1_LF3|v00018",
+        "event_start_s": 42.1,
+        "event_confirm_s": 42.3,
+        "event_end_s": 43.7,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 17
+      },
+      {
+        "vehicle_id": "v00022",
+        "incarnation_id": "lf1_LF3|v00022",
+        "leader_incarnation_id": "lf1_LF3|v00019",
+        "event_start_s": 42.5,
+        "event_confirm_s": 42.7,
+        "event_end_s": 44.3,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 19
+      },
+      {
+        "vehicle_id": "v00023",
+        "incarnation_id": "lf1_LF3|v00023",
+        "leader_incarnation_id": "lf1_LF3|v00020",
+        "event_start_s": 43.1,
+        "event_confirm_s": 43.3,
+        "event_end_s": 44.6,
+        "exit_reason": "observed_threshold_exit",
+        "onset_inside": false,
+        "confirmation_inside": false,
+        "fully_inside": false,
+        "raw_frame_count": 16
+      }
+    ],
+    "continuity": {
+      "edge_changes": 813,
+      "actual_same_edge_lane_changes": 1,
+      "time_gap_links": 0,
+      "leader_switch_links": 152
+    },
+    "local_candidates": {
+      "event_onset_inside": 86,
+      "event_confirmation_inside": 87,
+      "event_fully_inside": 83,
+      "risk_fragments": 96,
+      "fragments_meeting_02_span": 88,
+      "endpoint_contained_evaluable_exposure_s": 14636.200000035715,
+      "policy_status": "Unapproved audit alternatives; none chosen as formal local attribution"
+    },
+    "local_formal": {
+      "events": "Unresolved",
+      "evaluable_exposure": "Unresolved",
+      "rate": "Not Calculated",
+      "reason": "Local event and exposure attribution policy not approved",
+      "core_threshold_s": 2.0,
+      "core_minimum_span_s": 0.2,
+      "closing_epsilon_mps": 0.001,
+      "core_config": {
+        "schema_version": "stage_0_2.formal_risk_measurement.config.v1",
+        "algorithm_version": "stage_0_2.formal_risk_measurement.v2",
+        "ttc_threshold_s": 2.0,
+        "minimum_duration_s": 0.2,
+        "max_gap_s": 0.11,
+        "tau_s": 15.364279197080283,
+        "confirmation_semantics": "first_observed_timestamp_meeting_span",
+        "missing_policy": "unknown_bounds_full_window",
+        "target_region": null,
+        "target_vehicle_qualification": null,
+        "evaluation_window": null,
+        "message_deduplication": null,
+        "scientific_defaults_frozen": false
+      },
+      "no_new_P2_definition": true
+    },
+    "run_id": "lf1_LF3",
+    "all_event_details_local": "local_following_analysis.json; first20 portable"
+  }
+]

@@ -1,0 +1,72 @@
+{
+  "passed": true,
+  "rows_compared": 175679,
+  "columns_compared": [
+    "vehicle_id",
+    "time_s",
+    "edge_id",
+    "lane_id",
+    "position_m",
+    "speed_mps",
+    "acceleration_mps2",
+    "last_action_time_s",
+    "length_m",
+    "traveled_distance_m",
+    "x_m",
+    "y_m",
+    "traci_vehicle_control",
+    "numerical_config_verified",
+    "input_has_stops",
+    "route_index",
+    "public_stop_state",
+    "remaining_stops_json",
+    "route_edges_json",
+    "leader_id",
+    "net_gap_m",
+    "leader_speed_mps",
+    "devices_json",
+    "leader_lane_id",
+    "leader_edge_id",
+    "leader_position_m",
+    "leader_length_m",
+    "raw_traci_leader_distance_m"
+  ],
+  "ignored_only_run_identity_labels": [
+    "run_id",
+    "incarnation_id"
+  ],
+  "mismatches": [],
+  "source_plan_sha256": "68ca9c3b187ae1de3d9a8e59af2afc220b2edcee55c707f99500be11d0f1c34e",
+  "all_numeric_values_exact_equal": true,
+  "baseline": {
+    "mode": "sequential",
+    "getter_requests": 1932469,
+    "socket_round_trips": 1932469,
+    "read_wall_s": 239.72724879971065,
+    "internal_frames": 2400,
+    "caching_used": false,
+    "variables_per_vehicle": 11,
+    "no_simulation_step_between_reads": true,
+    "installed_traci_modified": false
+  },
+  "optimized": {
+    "mode": "batch",
+    "getter_requests": 1932469,
+    "socket_round_trips": 5114,
+    "read_wall_s": 26.73823869987973,
+    "internal_frames": 2400,
+    "caching_used": false,
+    "variables_per_vehicle": 11,
+    "no_simulation_step_between_reads": true,
+    "installed_traci_modified": false
+  },
+  "worker_wall_s": [
+    283.3072209999955,
+    68.62652049999451
+  ],
+  "conservative_forecast_300_wall_s": 481.4946587590391,
+  "conservative_forecast_600_wall_s": 1928.641209184051,
+  "forecast_not_measurement": true,
+  "LF3_allowed": true,
+  "zero_micro_budget_reused": true
+}

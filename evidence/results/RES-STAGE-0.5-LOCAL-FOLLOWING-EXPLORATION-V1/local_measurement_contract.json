@@ -1,0 +1,32 @@
+{
+  "version": "local-following-engineering-v1",
+  "space": {
+    "edge": "main_1",
+    "lanes": [
+      "main_1_0",
+      "main_1_1",
+      "main_1_2"
+    ],
+    "start_m": 50.0,
+    "end_m": 250.0,
+    "lane_km": 0.6,
+    "position_reference": "follower front",
+    "interval": "[start,end)"
+  },
+  "internal_step_s": 0.05,
+  "recorded_point_s": 0.1,
+  "local_filter_after_full_network_leader_resolution": true,
+  "identity": "Run-scoped fresh unique incarnation; actual same-clock leader row",
+  "closing": "follower minus leader, m/s; epsilon1e-3 inherited",
+  "gap": "TraCI distance + follower minGap; independently same-lane physical rear minus follower front",
+  "sampling": "Every .05s numerical/state audit, even ticks .1s P2 core; full global context retained",
+  "edge_or_lane_change": "Record actual edge vs same-edge lane transition; does not itself redefine P2 identity rule",
+  "quality": "Approved measurement_status valid/not_applicable/invalid/missing; missing is aliased not_measurable only in observation_quality",
+  "exposure": "Stage0.2 inherited reliable adjacent same follower/leader/time .1s; evaluable endpoints statuses valid/not_applicable",
+  "local_attribution": "Unresolved: event onset vs confirmation vs fully-contained; endpoint containment exposure is audit alternative only",
+  "formal_local_P2": "Unresolved",
+  "formal_local_rate": "Not Calculated",
+  "scientific_evaluation_window": "Not Approved",
+  "warmup": "None applied; entire engineering acquisition support described",
+  "old_C_entry_spillback": "Evidence Insufficient; no retrospective upgrade"
+}

@@ -1,0 +1,92 @@
+{
+  "test_first": [
+    "Transport13 / Local17 / Guards7 failed collection for not-yet-implemented interfaces then passed; fixed meaningful independent expected assertions",
+    "No live traffic before source audit, capsule204 tests, plan andSHA freeze"
+  ],
+  "pre_freeze": {
+    "passed": 204,
+    "failed": 0,
+    "skipped": 0
+  },
+  "detailed_boundary": {
+    "passed": 53,
+    "failed": 0,
+    "skipped": 0,
+    "record": "boundary_test_matrix.json"
+  },
+  "independent_recomputation": "Gap geometry, same-lane gaps, minGap conversion, local counts, primitive exposure and native event confirmation, paired/extended prefix states",
+  "harness_failures": [
+    {
+      "stage": "Detailed JUnit first call",
+      "reason": "Missing capsule PYTHONPATH; riskprop import failed before tests",
+      "resolution": "Preserved failure record, -S environment corrected;53passed"
+    },
+    {
+      "stage": "Extra offline audit first bootstrap",
+      "reason": "Runtime imported before guard installed, numpy unavailable under -S",
+      "resolution": "Failed source snapshot preserved; guard installed first; offline audit then passed"
+    }
+  ],
+  "final_validation": {
+    "status": "Passed within recorded scope",
+    "full_pytest": {
+      "execution": "Pure Git detached snapshot clone; no local datasets or historical raw outputs",
+      "passed": 817,
+      "failed": 0,
+      "skipped": 14,
+      "wall_s": 134.52,
+      "skip_records": [
+        "SKIPPED [1] tests\\test_see_v2x_reaudit.py:75: raw sample not present (pure-clone mode)",
+        "SKIPPED [1] tests\\test_simulation_real_coverage.py:377: sealed Stage 0.3 canonical pNEUMA input is not available in this clone",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_1_targeted_validation.py:55: requires sealed local Task 2.5.1 CSV/PDF package; unit tests above remain portable",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_2_key_difference_cases.py:9: requires sealed local Task 2.5.2 CSV/PDF package; excluded from portable Git evidence",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_2_key_difference_cases.py:15: requires sealed local Task 2.5.2 CSV/PDF package; excluded from portable Git evidence",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_2_key_difference_cases.py:23: requires sealed local Task 2.5.2 CSV/PDF package; excluded from portable Git evidence",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_2_key_difference_cases.py:28: requires sealed local Task 2.5.2 CSV/PDF package; excluded from portable Git evidence",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_threshold_validation.py:10: requires sealed local Task 2.5 outputs; excluded from portable Git evidence",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_threshold_validation.py:17: requires sealed local Task 2.5 outputs; excluded from portable Git evidence",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_threshold_validation.py:24: requires sealed local Task 2.5 outputs; excluded from portable Git evidence",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_threshold_validation.py:31: requires sealed local Task 2.5 outputs; excluded from portable Git evidence",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_threshold_validation.py:38: requires sealed local Task 2.5 outputs; excluded from portable Git evidence",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_threshold_validation.py:44: requires sealed local Task 2.5 outputs; excluded from portable Git evidence",
+        "SKIPPED [1] tests\\test_stage_0_5_boundary_bottleneck.py:72: bootstrap contract is exercised by the dedicated -S capsule preflight"
+      ],
+      "log_sha256": "75f1c3f99c838868539c15c133b0da88fb81c32ebe157f680f19b2335fdfbd2d",
+      "snapshot_commit": "414775f71ad508bcfe804143d752bb27f457ee6a",
+      "tested_code_tree": "595f8264f1665d84cbc223aefefc68636cc2b40e",
+      "snapshot_is_validation_artifact_not_remote_task_commit": true,
+      "pre_existing_sumo_software_smokes": {
+        "runs": 7,
+        "durations_s": [
+          20,
+          8,
+          10,
+          10,
+          10,
+          10,
+          8
+        ],
+        "total_simulated_s": 76,
+        "not_targeted_traffic_or_new_micro_fixtures": true,
+        "test_warmup_option_not_scientific_approval": true
+      }
+    },
+    "targeted_and_portable_and_docs": {
+      "passed": 62,
+      "failed": 0,
+      "skipped": 0
+    },
+    "pure_git_strict_docs_require_clean": "Passed",
+    "compileall": "Passed",
+    "portable_evidence_sha": "Passed",
+    "frozen_git_source_files_verified": 45,
+    "analysis_and_additional_audit_source_bindings": "Passed",
+    "root_strict_docs_exception": "Existing five literature deletions untouched; strict check detects missing registered JSON. No task files cause the exception.",
+    "post_push_exact_sha_checks": "Recorded in local post_commit_verification.json after push; final code tree must match tested tree"
+  },
+  "data_skips_not_scientific_pass": true,
+  "harness_failure_bindings": {
+    "boundary_test_record.json": "b47b91db8f9f8f00278e3597e00f7dab1cbb0e21661d8e5082b6b5dfb07ab465",
+    "lf_extension_audit_failed_bootstrap.py": "c85a103353b769ac44e66aadcbf649cec9cbc67a15d4cc1d9f732288dcb88030"
+  }
+}

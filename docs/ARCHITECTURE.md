@@ -40,3 +40,8 @@ B1.2独立观测/执行层stage_0_5_b12_{observation,network,runtime,worker}.py�
 ## 2026-10-19 C/D接入
 
 C/D有限接入新增独立cd_observation/cd_runtime/cd_worker，沿用N数值域和P源码证明，修复队列路径关联及持续性。不接回历史全源数据，详情见STAGE_0_5_TASK_CD_INTEGRATION_AND_ISSUE_DISCOVERY.md。
+
+
+## 2026-10-19 LF局部探索
+
+局部跟驰入口与只读批处理新增独立LF模块；全域前车和事件上下文保留，局部仅归域候选，正式P2政策不选。详细调用链、协议源和验证见STAGE_0_5_LOCAL_FOLLOWING_EXPLORATION.md。

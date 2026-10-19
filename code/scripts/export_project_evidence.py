@@ -523,6 +523,56 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         pairs.setdefault("RES-STAGE-0.5-CD-INTEGRATION-V1", []).append(
             (f"code/outputs/formal/calibration/stage_0_5_cd_integration_v2/summary/{name}", name)
         )
+    for name in (
+        'PLAN_SHA256',
+        'SHA256SUMS',
+        'admission.json',
+        'analysis_access_audit.json',
+        'analysis_output_bindings.json',
+        'audit.json',
+        'boundary_test_matrix.json',
+        'budget_audit.json',
+        'controlled_access_audit.json',
+        'dependency_before_after_audit.json',
+        'dependency_fingerprints.json',
+        'engineering_input_bundle.json',
+        'event_boundary_computability.json',
+        'execution_ledger.json',
+        'experiment_plan.json',
+        'extension_access_audit.json',
+        'formal_adapter_break_counterexample.json',
+        'full600_forecast_scenarios.json',
+        'gap_offline_analysis.json',
+        'git_source_binding_audit.json',
+        'historical_status_preservation.json',
+        'issue_discovery_report.json',
+        'lf_preparation.json',
+        'lf_source_staging.json',
+        'local_following_results.json',
+        'local_global_accounting_audit.json',
+        'local_measurement_contract.json',
+        'local_measurement_support_matrix.json',
+        'local_traffic_diagnostics.json',
+        'manifest.json',
+        'numerical_branch_coverage.json',
+        'offline_CD_C_staging.json',
+        'paired_equivalence.json',
+        'performance_audit.json',
+        'point_gap_independent_audit.json',
+        'prefix_consistency_audit.json',
+        'preflight.json',
+        'preparation_manifest.json',
+        'protocol_source_audit.json',
+        'provenance.json',
+        'report.md',
+        'researcher_decision_matrix.json',
+        'run_manifest.json',
+        'source_audit.json',
+        'test_record.json',
+):
+        pairs.setdefault("RES-STAGE-0.5-LOCAL-FOLLOWING-EXPLORATION-V1", []).append(
+            (f"code/outputs/formal/calibration/stage_0_5_local_following_v1/summary/{name}", name)
+        )
     return pairs
 
 

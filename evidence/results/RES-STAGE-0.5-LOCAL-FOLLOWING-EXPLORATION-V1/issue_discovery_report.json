@@ -1,0 +1,111 @@
+{
+  "P0_confirmed": 0,
+  "issues": [
+    {
+      "id": "LF-P1-01",
+      "severity": "P1",
+      "status": "Fixed in independent LF interface",
+      "title": "通用SUMO正式适配器会抹去外部传入的连续性标志",
+      "files": [
+        "stage_0_5_sumo.build_sumo_formal_source_frame",
+        "stage_0_5_local_following.formal_frame_preserving_flags"
+      ],
+      "fact": "源码无条件设置identity_break和observation_gap=False；六行合成中已知中间断裂，旧器仍确认1事件，新接口0",
+      "impact": "超出原生无错误recorder适用域复用时可能错误桥接；无证据说明已封存原生运行被污染",
+      "verification": "formal_adapter_break_counterexample.json / test_explicit_identity_break_must_reach_formal_core_not_be_erased",
+      "resolution": "旧适配器和Stage0.2核心不改，新接口保留原始标志；历史不重判",
+      "scientific_decision_required": false
+    },
+    {
+      "id": "LF-P1-02",
+      "severity": "P1",
+      "status": "Prevented by full-context interface",
+      "title": "局部先裁切会丢失区外前车和完整事件边界",
+      "fact": "同刻前车可位于250m之外而后车仍在域内；测试独立证明可测量；当前新接口先测全网再归域",
+      "files": [
+        "stage_0_5_local_following.decorate",
+        "stage_0_5_local_following.analyse"
+      ],
+      "impact": "错误missing/暴露截断或假局部事件起始",
+      "verification": "test_leader_outside_region_remains_resolved_at_same_clock / entry boundary alternatives",
+      "resolution": "保留全域同刻incarnation及事件序列，局部正式归属不作默认",
+      "scientific_decision_required": false
+    },
+    {
+      "id": "LF-P1-03",
+      "severity": "P1",
+      "status": "Awaiting Researcher Decision",
+      "title": "局部事件和暴露归属选择会改变计数",
+      "fact": "实际LF3全网核心266；局部起始86/确认87/全程83，端点同时在域暴露14636.2s仅候选；未选择正式政策",
+      "files": [
+        "event_boundary_computability.json",
+        "local_measurement_contract.json"
+      ],
+      "impact": "阻断正式局部事件数、暴露量及事件率；不阻断点态描述",
+      "verification": "六行进入反例0/1归属差异，真实运行独立边界复核",
+      "resolution": "正式值Unresolved/Not Calculated；待共同冻结目标估计量与分母",
+      "scientific_decision_required": true
+    },
+    {
+      "id": "LF-P2-04",
+      "severity": "P2",
+      "status": "Optimized and paired verified",
+      "title": "逐车逐步同步getter造成大量往返",
+      "fact": "120s两次175679行完全相等；相同1932469请求，往返1932469→5114；worker283.31→68.63s",
+      "files": [
+        "stage_0_5_lf_transport.VehicleReader",
+        "paired_equivalence.json"
+      ],
+      "impact": "原计划较长运行成本高；优化不省略状态观测、不改变时刻",
+      "verification": "13独立协议用例、19具名源码/客户端指纹、所有28非标签字段/数值/交通逐项相等",
+      "resolution": "采用受限只读批处理，无生命周期缓存；非空停车任务/特殊设备不外推",
+      "scientific_decision_required": false
+    },
+    {
+      "id": "LF-P2-05",
+      "severity": "P2",
+      "status": "Diagnosed offline; causal branch unresolved",
+      "title": "14.35m间隙含真实junction长度，不能用正常edge长度直接拼接",
+      "fact": "1.001m上游余量+8.12m显式内部路径+5.23392957m下游车尾=14.35492957m；若漏内部路径会错误变为6.23m",
+      "files": [
+        "gap_offline_analysis.json",
+        "microsim_MSVehicle.cpp::keepClear"
+      ],
+      "impact": "冻结10m候选下无法连接；不影响新的固定局部跟驰范围",
+      "verification": "旧CD C原始位置/长度与冻结路网独立重算；priority junction有foes上下文",
+      "resolution": "保留EI；keep-clear条件源码兼容但未记录私有分支，不能单因果确认；不做消融或新交通运行",
+      "scientific_decision_required": false
+    },
+    {
+      "id": "LF-P1-06",
+      "severity": "P1",
+      "status": "Awaiting Researcher Decision",
+      "title": "风险点主要出现在采集前段，正式初始化/评价支持未批准",
+      "fact": "LF3局部1222个TTC<2点中1203在前120s；后180s更密低速而仅新增19点。120s原为性能诊断采集上限",
+      "files": [
+        "prefix_consistency_audit.json",
+        "local_traffic_diagnostics.json",
+        "local_following_results.json"
+      ],
+      "impact": "不能事后把120s选为暖机；不能用全域事件替代局部风险或均速选择供给",
+      "verification": "LF3前120s逐字段等于LF2，全程60s分段保留",
+      "resolution": "只描述全采集支持，提出独立初始化协议与正式窗口决定",
+      "scientific_decision_required": true
+    },
+    {
+      "id": "LF-P2-07",
+      "severity": "P2",
+      "status": "Forecast only; no full600 execution",
+      "title": "优化后仍不能宣称600s完整运行可在预算内完成",
+      "fact": "实测300s worker320.84s；600s情景预测268.07/641.69/1928.64s，不是置信界或实测",
+      "files": [
+        "full600_forecast_scenarios.json"
+      ],
+      "impact": "不能把4.13倍加速外推为正式全尺度准入",
+      "verification": "按实际行成本、驻留假设、同均值/无驶出边界分开计算",
+      "resolution": "不扩大worker预算、不额外执行600s；后续性能或资源计划另行冻结，普通工程优化可自主",
+      "scientific_decision_required": false
+    }
+  ],
+  "no_historical_result_rewrite": true
+}

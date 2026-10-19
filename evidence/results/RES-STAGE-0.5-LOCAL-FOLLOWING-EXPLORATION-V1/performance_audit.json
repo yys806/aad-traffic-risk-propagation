@@ -1,0 +1,204 @@
+{
+  "paired": {
+    "passed": true,
+    "rows_compared": 175679,
+    "columns_compared": [
+      "vehicle_id",
+      "time_s",
+      "edge_id",
+      "lane_id",
+      "position_m",
+      "speed_mps",
+      "acceleration_mps2",
+      "last_action_time_s",
+      "length_m",
+      "traveled_distance_m",
+      "x_m",
+      "y_m",
+      "traci_vehicle_control",
+      "numerical_config_verified",
+      "input_has_stops",
+      "route_index",
+      "public_stop_state",
+      "remaining_stops_json",
+      "route_edges_json",
+      "leader_id",
+      "net_gap_m",
+      "leader_speed_mps",
+      "devices_json",
+      "leader_lane_id",
+      "leader_edge_id",
+      "leader_position_m",
+      "leader_length_m",
+      "raw_traci_leader_distance_m"
+    ],
+    "ignored_only_run_identity_labels": [
+      "run_id",
+      "incarnation_id"
+    ],
+    "mismatches": [],
+    "source_plan_sha256": "68ca9c3b187ae1de3d9a8e59af2afc220b2edcee55c707f99500be11d0f1c34e",
+    "all_numeric_values_exact_equal": true,
+    "baseline": {
+      "mode": "sequential",
+      "getter_requests": 1932469,
+      "socket_round_trips": 1932469,
+      "read_wall_s": 239.72724879971065,
+      "internal_frames": 2400,
+      "caching_used": false,
+      "variables_per_vehicle": 11,
+      "no_simulation_step_between_reads": true,
+      "installed_traci_modified": false
+    },
+    "optimized": {
+      "mode": "batch",
+      "getter_requests": 1932469,
+      "socket_round_trips": 5114,
+      "read_wall_s": 26.73823869987973,
+      "internal_frames": 2400,
+      "caching_used": false,
+      "variables_per_vehicle": 11,
+      "no_simulation_step_between_reads": true,
+      "installed_traci_modified": false
+    },
+    "worker_wall_s": [
+      283.3072209999955,
+      68.62652049999451
+    ],
+    "conservative_forecast_300_wall_s": 481.4946587590391,
+    "conservative_forecast_600_wall_s": 1928.641209184051,
+    "forecast_not_measurement": true,
+    "LF3_allowed": true,
+    "zero_micro_budget_reused": true
+  },
+  "analysis_cost": [
+    {
+      "run_id": "lf1_LF1",
+      "wall_s": 24.997092099991278,
+      "RSS_at_end_bytes": 379162624,
+      "recorded_point_rows": 87829,
+      "not_absolute_peak": true
+    },
+    {
+      "run_id": "lf1_LF2",
+      "wall_s": 23.76379630000156,
+      "RSS_at_end_bytes": 461811712,
+      "recorded_point_rows": 87829,
+      "not_absolute_peak": true
+    },
+    {
+      "run_id": "lf1_LF3",
+      "wall_s": 103.43511379999109,
+      "RSS_at_end_bytes": 1204252672,
+      "recorded_point_rows": 433372,
+      "not_absolute_peak": true
+    }
+  ],
+  "supervisor_runs": [
+    {
+      "run_id": "lf1_LF1",
+      "status": "completed_with_diagnostic_warning",
+      "started_utc": "2026-10-19T14:01:41.718711Z",
+      "exit_code": 0,
+      "failure": null,
+      "wall_s": 290.43369879999955,
+      "peak_sampled_tree_rss_bytes": 186638336,
+      "blockers": [],
+      "warnings": [
+        "descriptive_low_speed_or_pending"
+      ],
+      "bytes": 20733686
+    },
+    {
+      "run_id": "lf1_LF2",
+      "status": "completed_with_diagnostic_warning",
+      "started_utc": "2026-10-19T14:08:11.938682Z",
+      "exit_code": 0,
+      "failure": null,
+      "wall_s": 73.855381699992,
+      "peak_sampled_tree_rss_bytes": 166813696,
+      "blockers": [],
+      "warnings": [
+        "descriptive_low_speed_or_pending"
+      ],
+      "bytes": 20733706
+    },
+    {
+      "run_id": "lf1_LF3",
+      "status": "completed_with_diagnostic_warning",
+      "started_utc": "2026-10-19T14:10:43.963142Z",
+      "exit_code": 0,
+      "failure": null,
+      "wall_s": 325.0512357999978,
+      "peak_sampled_tree_rss_bytes": 228253696,
+      "blockers": [],
+      "warnings": [
+        "descriptive_low_speed_or_pending"
+      ],
+      "bytes": 108030631
+    }
+  ],
+  "actual_worker_summaries": [
+    {
+      "run_id": "lf1_LF1",
+      "rows": 175679,
+      "worker_wall_s": 283.3072209999955,
+      "transport": {
+        "mode": "sequential",
+        "getter_requests": 1932469,
+        "socket_round_trips": 1932469,
+        "read_wall_s": 239.72724879971065,
+        "internal_frames": 2400,
+        "caching_used": false,
+        "variables_per_vehicle": 11,
+        "no_simulation_step_between_reads": true,
+        "installed_traci_modified": false
+      }
+    },
+    {
+      "run_id": "lf1_LF2",
+      "rows": 175679,
+      "worker_wall_s": 68.62652049999451,
+      "transport": {
+        "mode": "batch",
+        "getter_requests": 1932469,
+        "socket_round_trips": 5114,
+        "read_wall_s": 26.73823869987973,
+        "internal_frames": 2400,
+        "caching_used": false,
+        "variables_per_vehicle": 11,
+        "no_simulation_step_between_reads": true,
+        "installed_traci_modified": false
+      }
+    },
+    {
+      "run_id": "lf1_LF3",
+      "rows": 866816,
+      "worker_wall_s": 320.84488989999227,
+      "transport": {
+        "mode": "batch",
+        "getter_requests": 9534976,
+        "socket_round_trips": 21944,
+        "read_wall_s": 137.4255836000375,
+        "internal_frames": 6000,
+        "caching_used": false,
+        "variables_per_vehicle": 11,
+        "no_simulation_step_between_reads": true,
+        "installed_traci_modified": false
+      }
+    }
+  ],
+  "micro_budget_reused": false,
+  "total_analysis_wall_s": 156.14690609999525,
+  "full600_simulated": false,
+  "full600_cost": "Forecast only; conservative scheduled residence upper bound, not measured validation",
+  "no_cache_or_skipped_state_getters": true,
+  "resource_sampling_not_absolute_peak": true,
+  "measurement_environment_note": {
+    "single_paired_measurement": true,
+    "exclusive_system_benchmark": false,
+    "known_overlap": "LF1 active while detailed synthetic boundary tests ran4.86s; LF2 no corresponding test workload. Background load not OS-profiled.",
+    "interpretation": "Reported4.13 is this observed worker wall ratio, not a statistical or guaranteed speedup; exact state equality/request count proof unaffected",
+    "no_additional_traffic_for_cosmetic_benchmark": true
+  }
+}

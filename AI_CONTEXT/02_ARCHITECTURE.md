@@ -102,3 +102,8 @@ B1.2新增独立b12_observation/network/runtime/worker：全边.05s分层审计�
 ## 2026-10-19 C/D接入
 
 独立cd_observation.QueueContinuity逐已验证path关联队列/pending/入口几何，.05s处理/1Hz留存，真实path变更和缺帧重置。旧B12/N模块与证据保留。cd_runtime分场景ledger、schema/plan SHA防御；cd_worker只读。
+
+
+## 2026-10-19 LF局部探索
+
+独立local_following量测接口保留全网leader上下文再标局部归域；formal_frame_preserving_flags防止旧SUMO通用适配器擦除外来break标志，Stage0.2核心不变。lf_transport只读GET批处理，每车每步仍11项；lf_runtime独立冻结/预算/配对门槛，lf_worker沿用数值和计数。

@@ -1,0 +1,54 @@
+{
+  "metrics": [
+    {
+      "metric": "follower local membership",
+      "status": "Independently Recomputed",
+      "basis": "edge+lane set+front50<=x<250; same-clock counts; .6lane-km; external pending excluded"
+    },
+    {
+      "metric": "leader identity outside local domain",
+      "status": "Computable",
+      "basis": "Full-network same-clock incarnation join before follower filtering; unresolved remainsmissing"
+    },
+    {
+      "metric": "physical gap",
+      "status": "Independent same-lane / Engineering API elsewhere",
+      "basis": "Direct positions/length vs converted getLeader; other route gaps not all rebuilt"
+    },
+    {
+      "metric": "closing/TTC/quality",
+      "status": "Computable within stated endpoint support",
+      "basis": "Inherited Stage0.5 point implementation plus analytical tests/independent gap; missing neverzero"
+    },
+    {
+      "metric": "temporal following exposure",
+      "status": "Core engineering computable",
+      "basis": "Actual .1s clock/follower/leader links; valid+not_applicable statuses; independent primitive-edge recomputation"
+    },
+    {
+      "metric": "global confirmed P2 core",
+      "status": "Engineering Diagnostic Only",
+      "basis": "Stage0.2 core reused without thresholds changed; explicit flags preserved; independent native no-error scan"
+    },
+    {
+      "metric": "local candidate fragments",
+      "status": "Computable descriptive only",
+      "basis": "Local observed risk fragments, threshold points distinct from .2s confirmed spans; truncated by local/time support"
+    },
+    {
+      "metric": "local formal P2 count/exposure/rate",
+      "status": "Unresolved / Not Calculated",
+      "basis": "Onset/confirmation/fully-contained and exposure boundary allocation not scientificallyapproved; no policy selected"
+    }
+  ],
+  "scientific_evaluation_window": "Not Approved",
+  "engineering_acquisition": "Entire0..120/300, empty startup, no removed warmup;60s bins descriptive only",
+  "not_measurable_alias": "observation_quality only; approved measurement_status remainsmissing",
+  "C_entry_spillback": "Evidence Insufficient",
+  "C_D_comparison": false,
+  "leader_lookahead_support": {
+    "query_distance_m": 1000.0,
+    "no_observed_leader_not_network_absence": true,
+    "unobserved_leader_excluded_from_reliable_exposure": true
+  }
+}

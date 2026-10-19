@@ -84,3 +84,8 @@ code/src/riskprop/stage_0_5_positive_near_zero.py（classify_edge/admission/chec
 ## 2026-10-19 C/D接入
 
 新增stage_0_5_cd_observation.py（QueueContinuity/entry_evidence/movement/journey_audit/validate_summary）、stage_0_5_cd_runtime.py（胶囊/冻结/执行/分范围停止）、stage_0_5_cd_worker.py（只读）。入口run/finalize/verify_stage_0_5_cd_integration.py；测试test_stage_0_5_cd_observation.py/test_stage_0_5_cd_evidence.py。
+
+
+## 2026-10-19 LF局部探索
+
+新增stage_0_5_local_following.py（decorate/formal_frame_preserving_flags/analyse）、stage_0_5_lf_transport.py（只读协议/VehicleReader）、stage_0_5_lf_runtime.py（准备/冻结/配对/预算）、stage_0_5_lf_worker.py。run/finalize/verify_stage_0_5_local_following.py、audit_stage_0_5_lf_extension.py；4个LF测试模块。旧正式核心/旧适配器/CD/P/N代码不改。
