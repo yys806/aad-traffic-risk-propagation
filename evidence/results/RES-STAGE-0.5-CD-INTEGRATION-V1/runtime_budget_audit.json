@@ -1,0 +1,55 @@
+{
+  "historical_B12_micro_attempted": 1,
+  "historical_N_numerical": 3,
+  "historical_P_numerical": 5,
+  "current_authorized_new_micro": 2,
+  "current_actual_new_micro": 2,
+  "current_targeted_authorized": 8,
+  "current_targeted_actual": 0,
+  "current_main_matrix_authorized": false,
+  "no_retry_or_parameter_search": true,
+  "original_limits": {
+    "per_run_wall_s": 600,
+    "batch_wall_s": 7200,
+    "memory_bytes": 3221225472,
+    "artifact_bytes": 2147483648
+  },
+  "current_actual_micro_simulated_s": 120.0,
+  "actual_controller": [
+    {
+      "run_id": "cd1_D_micro",
+      "status": "completed_with_engineering_blocker",
+      "started_utc": "2026-10-19T12:57:49.079018Z",
+      "exit_code": 0,
+      "failure": null,
+      "wall_s": 25.083875099997385,
+      "peak_sampled_tree_rss_bytes": 132096000,
+      "blockers": [
+        "D_required_journey_unverified"
+      ],
+      "warnings": [],
+      "bytes": 1611128
+    },
+    {
+      "run_id": "cd1_C_micro",
+      "status": "completed_with_diagnostic_warning",
+      "started_utc": "2026-10-19T13:01:41.541947Z",
+      "exit_code": 0,
+      "failure": null,
+      "wall_s": 87.3808538000012,
+      "peak_sampled_tree_rss_bytes": 147660800,
+      "blockers": [],
+      "warnings": [
+        "descriptive_low_speed_or_pending"
+      ],
+      "bytes": 9321253
+    }
+  ],
+  "forecast_full600_D_wall_s_by_observed_per_state_cost": {
+    "D": 1696.202940221829,
+    "C": 1086.5134492496666
+  },
+  "forecast_assumptions": "823 vehicles *44s approximate residence *20 states/s; linear cost from actual micros. Not an observed full run and not exact performance prediction",
+  "future_engineering": "Reduce redundant synchronous read calls only after source-supported lifecycle invariants or batching audit; no weakening of observation proof",
+  "memory_sampling_not_absolute_peak": true
+}

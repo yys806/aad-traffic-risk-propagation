@@ -1,0 +1,154 @@
+{
+  "P0_confirmed": 0,
+  "issues": [
+    {
+      "id": "CD-P1-01",
+      "severity": "P1",
+      "title": "入口待插入/几何阻塞与队列路径未关联",
+      "fact": "独立三帧反例：path0队列+path1 pending和阻塞，旧器true，新器false",
+      "files": [
+        "stage_0_5_b12_observation.QueueTracker",
+        "stage_0_5_b12n_worker.run_worker"
+      ],
+      "impact": "可能错误支持入口回溢；无证据追溯更改历史结果",
+      "verification": "independent_counterexamples.json / test_lane_mismatch_never_supports_entry_spillback",
+      "resolution": "独立新版本逐路径关联，合成负例与真实C全部帧检查",
+      "status": "Fixed in new contract",
+      "researcher_decision_required": false
+    },
+    {
+      "id": "CD-P1-02",
+      "severity": "P1",
+      "title": "空间支持不完整帧可桥接持续时间",
+      "fact": "valid t0, support_complete=false t1, valid t2，旧器仍支持2s，新器重置",
+      "files": [
+        "stage_0_5_b12_observation.QueueTracker.update"
+      ],
+      "impact": "支持缺口可错误累积队列持续资格；不表示旧真实运行实际发生该反例",
+      "verification": "independent_counterexamples.json / test_invalid_current_frame_cannot_bridge_persistence",
+      "resolution": "当前或前一帧无效/不完整均清除；失帧也重置",
+      "status": "Fixed in new contract",
+      "researcher_decision_required": false
+    },
+    {
+      "id": "CD-P2-03",
+      "severity": "P2",
+      "title": "合法跨edge通行被计作换道重置",
+      "fact": "旧器按raw lane_id变更计数，main0_0→junction→main1_0也重置；新器用已验证path",
+      "files": [
+        "stage_0_5_b12_observation.QueueTracker.update",
+        "stage_0_5_cd_observation.QueueContinuity"
+      ],
+      "impact": "保守假阴性/错误换道归因；不能把成员变化等同真实换道",
+      "verification": "test_verified_same_path_edge_progression_is_not_lane_change / D的11次真实同edge事件",
+      "resolution": "同验证路径可延续，真实路径变更重置；独立同edge换道日志",
+      "status": "Fixed in new contract",
+      "researcher_decision_required": false
+    },
+    {
+      "id": "CD-P2-04",
+      "severity": "P2",
+      "title": "1s快照无法排除步间释放再形成",
+      "fact": "源代码仅1Hz更新资格，而已有.05s状态；合成.95s释放反例",
+      "files": [
+        "stage_0_5_b12n_worker.run_worker"
+      ],
+      "impact": "原资格只具1s采样支持，不应宣称未采样时间严格连续；未证明旧结果被污染",
+      "verification": "test_release_between_one_second_outputs_resets_duration",
+      "resolution": "新版本.05s流式检查，1s留存快照；同路径、至少2共同成员和耦合条件持续2s",
+      "status": "Fixed within discrete .05s support",
+      "researcher_decision_required": false
+    },
+    {
+      "id": "CD-P2-05",
+      "severity": "P2",
+      "title": "本轮新增main_1-only验收假设误阻断D",
+      "fact": "v1 D真实9辆全退出，但6辆在main0提前换道；v1误报工程阻断",
+      "files": [
+        "stage_0_5_cd_observation.journey_audit"
+      ],
+      "impact": "场景验收假阴性；不是网络或车辆行为失败",
+      "verification": "test_legitimate_upstream_lane_change_fulfils_path_duty_without_forcing_location / prior_D_revalidation.json",
+      "resolution": "保留v1计划/ledger/错误状态，v2冻结修正；由原始.05s状态独立重建11事件和9出口，无重跑",
+      "status": "Fixed prospectively; original failure preserved",
+      "researcher_decision_required": false
+    },
+    {
+      "id": "CD-P1-06",
+      "severity": "P1",
+      "title": "C入口与下游锚定空间组件不能连成同一候选队列",
+      "fact": "实际60s见同path入口组件前端65.499m、锚定组件后沿约79.85393m，净距约14.35m>冻结10m",
+      "files": [
+        "queue_integration_diagnostics.json",
+        "stage_0_5_cd_observation.QueueContinuity"
+      ],
+      "impact": "阻断本计划C持续入口回溢资格及后续C原尺度准入；局部密集低速点状态仍可描述",
+      "verification": "独立坐标/物理净距核查、完整.05s队列帧、便携不桥接witness",
+      "resolution": "保留Evidence Insufficient，不调阈值，不把pending等同回溢。下一计划需明确是否只研究局部跟驰，或另设计队列拓扑证据",
+      "status": "Evidence Insufficient",
+      "researcher_decision_required": true
+    },
+    {
+      "id": "CD-P2-07",
+      "severity": "P2",
+      "title": "同步公开getter成本使原600s墙钟估计偏乐观",
+      "fact": "D 7930状态/18.57s worker，C54849状态/82.29s worker；44s驻留外推823辆约1087–1696s",
+      "files": [
+        "stage_0_5_cd_worker.run_worker",
+        "runtime_budget_audit.json"
+      ],
+      "impact": "未实测全尺度超时；增加资源阻断风险，不影响已完成微型测量",
+      "verification": "实际controller和worker资源/行数；外推仅工程预测",
+      "resolution": "本轮不启动无必要D600；后续可自主验证只读批处理/生命周期缓存，先保留证明等价再冻结新性能计划",
+      "status": "Forecast risk; no actual resource violation",
+      "researcher_decision_required": false
+    },
+    {
+      "id": "CD-P1-08",
+      "severity": "P1",
+      "title": "科学容差/评价时间/需求识别/局部正式P2仍未决",
+      "fact": "现有Gate仍pending；微型压缩C和稀疏D不构成校准样本，也无成对A基准",
+      "files": [
+        "docs/PROJECT_REGISTRY.json",
+        "admission.json",
+        "following_state_diagnostics.json"
+      ],
+      "impact": "禁止正式校准、现实覆盖验收、主矩阵和Protocol Lock",
+      "verification": "注册表和历史封存审计，无新增真实数据访问",
+      "resolution": "合并科研决策：先定义目标局部状态与评价支持，再设计正式协议；无需为非核心未知私有停车状态无限扩展验证",
+      "status": "Awaiting Researcher Decision",
+      "researcher_decision_required": true
+    },
+    {
+      "id": "CD-P2-09",
+      "severity": "P2",
+      "title": "旧controller可把缺失severity字段的summary当作有效",
+      "fact": "execute_commands使用get默认空列表；外层N有二次防御，新入口也必须保留",
+      "files": [
+        "stage_0_5_boundary_bottleneck.execute_commands",
+        "stage_0_5_cd_observation.validate_summary"
+      ],
+      "impact": "新调用链若省略外层检查可错误放行后续；旧N实际已有防御",
+      "verification": "缺失/不一致severity/status合成测试",
+      "resolution": "新入口显式fail-closed验证schema和plan SHA；Global Blocker阻止所有后续",
+      "status": "Guarded in new executor; historical supervisor unchanged",
+      "researcher_decision_required": false
+    },
+    {
+      "id": "CD-P3-10",
+      "severity": "P3",
+      "title": "历史协议readiness仍使用legacy编号",
+      "fact": "RES-PROTOCOL-READINESS-V1阻断引用E15/E16/E17/E01历史标签，当前锁状态false正确",
+      "files": [
+        "evidence/results/RES-PROTOCOL-READINESS-V1/protocol_lock_readiness_v1.json"
+      ],
+      "impact": "可能导航困惑，无锁误放行",
+      "verification": "只读取封存轻量readiness审计",
+      "resolution": "留作下一次当前readiness重建，不改历史审计",
+      "status": "Recorded; not changed",
+      "researcher_decision_required": false
+    }
+  ],
+  "observation_interpretation_separated": true,
+  "no_retroactive_reclassification": true
+}

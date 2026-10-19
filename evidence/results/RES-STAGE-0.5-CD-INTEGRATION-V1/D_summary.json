@@ -1,0 +1,879 @@
+{
+  "run_id": "cd1_D_micro",
+  "kind": "D",
+  "status": "completed_with_engineering_blocker",
+  "engineering_blockers": [
+    "D_required_journey_unverified"
+  ],
+  "global_blockers": [],
+  "scenario_blockers": [
+    "D_required_journey_unverified"
+  ],
+  "diagnostic_warnings": [],
+  "evidence_insufficient": [],
+  "failure": null,
+  "plan_sha256": "bae20b06faad332c0d3f970ab2172ee35a674066bc0301c95c4e3fe64effe42d",
+  "observed_s": 60.0,
+  "planned_s": 60.0,
+  "numerical": {
+    "version": "b12n-near-zero-observability-v1",
+    "all_adjacent_edges": 7921,
+    "classifications": {
+      "Exact After Verified Postprocessing": {
+        "count": 0,
+        "fraction": 0.0
+      },
+      "Exact Without Postprocessing": {
+        "count": 7874,
+        "fraction": 0.9940664057568489
+      },
+      "Bounded Consistency Only": {
+        "count": 0,
+        "fraction": 0.0
+      },
+      "Near-Zero Context Unresolved": {
+        "count": 0,
+        "fraction": 0.0
+      },
+      "Not Evaluable": {
+        "count": 47,
+        "fraction": 0.005933594243151118
+      },
+      "Engineering Blocker": {
+        "count": 0,
+        "fraction": 0.0
+      }
+    },
+    "exact_checked": 7874,
+    "exact_passed": 7874,
+    "exact_pass_fraction": 1.0,
+    "max_abs_residual_m": 2.842170943040401e-14,
+    "tolerance_m": 1e-06,
+    "blockers": {},
+    "reasons": {
+      "decision_positive_final_observable_no_overrides": 3938,
+      "outside_strict_snap_interval": 3936,
+      "legal_lane_change": 11,
+      "legal_edge_transition": 36
+    },
+    "context_bases": {
+      "fresh_no_stops_stopdist_doublemax_invariant": 7921
+    },
+    "branch_counts": {
+      "action": 3963,
+      "nonaction": 3958,
+      "positive_pre": 3958
+    },
+    "locations": {
+      "legal_lane_change|main_0|main_0_2": {
+        "count": 6,
+        "first_s": 3.8,
+        "last_s": 25.4,
+        "vehicle_step_s": 0.3
+      },
+      "legal_edge_transition|main_0|main_0_2": {
+        "count": 3,
+        "first_s": 14.15,
+        "last_s": 18.6,
+        "vehicle_step_s": 0.15000000000000002
+      },
+      "legal_edge_transition|:hwy_j1_1|:hwy_j1_1_2": {
+        "count": 3,
+        "first_s": 14.45,
+        "last_s": 18.9,
+        "vehicle_step_s": 0.15000000000000002
+      },
+      "legal_lane_change|main_1|main_1_2": {
+        "count": 3,
+        "first_s": 15.4,
+        "last_s": 19.0,
+        "vehicle_step_s": 0.15000000000000002
+      },
+      "legal_edge_transition|main_0|main_0_1": {
+        "count": 5,
+        "first_s": 17.25,
+        "last_s": 26.25,
+        "vehicle_step_s": 0.25
+      },
+      "legal_edge_transition|:hwy_j1_1|:hwy_j1_1_1": {
+        "count": 5,
+        "first_s": 17.55,
+        "last_s": 26.55,
+        "vehicle_step_s": 0.25
+      },
+      "legal_lane_change|main_0|main_0_1": {
+        "count": 1,
+        "first_s": 18.8,
+        "last_s": 18.8,
+        "vehicle_step_s": 0.05
+      },
+      "legal_edge_transition|main_0|main_0_0": {
+        "count": 1,
+        "first_s": 20.15,
+        "last_s": 20.15,
+        "vehicle_step_s": 0.05
+      },
+      "legal_edge_transition|:hwy_j1_1|:hwy_j1_1_0": {
+        "count": 1,
+        "first_s": 20.45,
+        "last_s": 20.45,
+        "vehicle_step_s": 0.05
+      },
+      "legal_edge_transition|main_1|main_1_1": {
+        "count": 8,
+        "first_s": 25.95,
+        "last_s": 38.05,
+        "vehicle_step_s": 0.39999999999999997
+      },
+      "legal_edge_transition|:hwy_j2_1|:hwy_j2_1_1": {
+        "count": 8,
+        "first_s": 26.15,
+        "last_s": 38.25,
+        "vehicle_step_s": 0.39999999999999997
+      },
+      "legal_edge_transition|main_1|main_1_0": {
+        "count": 1,
+        "first_s": 32.0,
+        "last_s": 32.0,
+        "vehicle_step_s": 0.05
+      },
+      "legal_edge_transition|:hwy_j2_1|:hwy_j2_1_0": {
+        "count": 1,
+        "first_s": 32.2,
+        "last_s": 32.2,
+        "vehicle_step_s": 0.05
+      },
+      "legal_lane_change|main_2|main_2_1": {
+        "count": 1,
+        "first_s": 39.4,
+        "last_s": 39.4,
+        "vehicle_step_s": 0.05
+      }
+    },
+    "examples": {
+      "Exact Without Postprocessing|decision_positive_final_observable_no_overrides": {
+        "before": {
+          "run_id": "cd1_D_micro",
+          "vehicle_id": "v00000",
+          "incarnation_id": "cd1_D_micro|v00000",
+          "time_s": 0.15,
+          "edge_id": "main_0",
+          "lane_id": "main_0_2",
+          "position_m": 4.5196,
+          "speed_mps": 27.78,
+          "acceleration_mps2": 0.0,
+          "last_action_time_s": 0.15,
+          "length_m": 4.4196,
+          "traveled_distance_m": 0.0,
+          "x_m": 4.5196,
+          "y_m": 158.4,
+          "traci_vehicle_control": false,
+          "numerical_config_verified": true,
+          "remaining_stops": [],
+          "input_has_stops": false,
+          "route_edges": [
+            "main_0",
+            "main_1",
+            "main_2"
+          ],
+          "route_index": 0,
+          "public_stop_state": 0
+        },
+        "after": {
+          "run_id": "cd1_D_micro",
+          "vehicle_id": "v00000",
+          "incarnation_id": "cd1_D_micro|v00000",
+          "time_s": 0.2,
+          "edge_id": "main_0",
+          "lane_id": "main_0_2",
+          "position_m": 5.9086,
+          "speed_mps": 27.78,
+          "acceleration_mps2": 0.0,
+          "last_action_time_s": 0.15,
+          "length_m": 4.4196,
+          "traveled_distance_m": 1.3890000000000002,
+          "x_m": 5.9086,
+          "y_m": 158.4,
+          "traci_vehicle_control": false,
+          "numerical_config_verified": true,
+          "remaining_stops": [],
+          "input_has_stops": false,
+          "route_edges": [
+            "main_0",
+            "main_1",
+            "main_2"
+          ],
+          "route_index": 0,
+          "public_stop_state": 0
+        },
+        "version": "b12n-near-zero-observability-v1",
+        "classification": "Exact Without Postprocessing",
+        "u_pre": null,
+        "u_final": 27.78,
+        "context": true,
+        "context_evidence": {
+          "predicate": true,
+          "basis": "fresh_no_stops_stopdist_doublemax_invariant",
+          "missing": []
+        },
+        "is_action": true,
+        "reason": "decision_positive_final_observable_no_overrides",
+        "blocker": null,
+        "scope": null,
+        "exact_pass": true,
+        "residual_m": 0.0,
+        "actual_dx_m": 1.3890000000000002,
+        "expected_dx_m": 1.3890000000000002,
+        "dx_support_m": null,
+        "within_support": null,
+        "near_zero_threshold_mps": 5e-06,
+        "possible_final_candidates": null
+      },
+      "Exact Without Postprocessing|outside_strict_snap_interval": {
+        "before": {
+          "run_id": "cd1_D_micro",
+          "vehicle_id": "v00000",
+          "incarnation_id": "cd1_D_micro|v00000",
+          "time_s": 0.2,
+          "edge_id": "main_0",
+          "lane_id": "main_0_2",
+          "position_m": 5.9086,
+          "speed_mps": 27.78,
+          "acceleration_mps2": 0.0,
+          "last_action_time_s": 0.15,
+          "length_m": 4.4196,
+          "traveled_distance_m": 1.3890000000000002,
+          "x_m": 5.9086,
+          "y_m": 158.4,
+          "traci_vehicle_control": false,
+          "numerical_config_verified": true,
+          "remaining_stops": [],
+          "input_has_stops": false,
+          "route_edges": [
+            "main_0",
+            "main_1",
+            "main_2"
+          ],
+          "route_index": 0,
+          "public_stop_state": 0
+        },
+        "after": {
+          "run_id": "cd1_D_micro",
+          "vehicle_id": "v00000",
+          "incarnation_id": "cd1_D_micro|v00000",
+          "time_s": 0.25,
+          "edge_id": "main_0",
+          "lane_id": "main_0_2",
+          "position_m": 7.2976,
+          "speed_mps": 27.78,
+          "acceleration_mps2": 0.0,
+          "last_action_time_s": 0.15,
+          "length_m": 4.4196,
+          "traveled_distance_m": 2.7780000000000005,
+          "x_m": 7.2976,
+          "y_m": 158.4,
+          "traci_vehicle_control": false,
+          "numerical_config_verified": true,
+          "remaining_stops": [],
+          "input_has_stops": false,
+          "route_edges": [
+            "main_0",
+            "main_1",
+            "main_2"
+          ],
+          "route_index": 0,
+          "public_stop_state": 0
+        },
+        "version": "b12n-near-zero-observability-v1",
+        "classification": "Exact Without Postprocessing",
+        "u_pre": 27.78,
+        "u_final": 27.78,
+        "context": true,
+        "context_evidence": {
+          "predicate": true,
+          "basis": "fresh_no_stops_stopdist_doublemax_invariant",
+          "missing": []
+        },
+        "is_action": false,
+        "reason": "outside_strict_snap_interval",
+        "blocker": null,
+        "scope": null,
+        "exact_pass": true,
+        "residual_m": 0.0,
+        "actual_dx_m": 1.3890000000000002,
+        "expected_dx_m": 1.3890000000000002,
+        "dx_support_m": null,
+        "within_support": null,
+        "near_zero_threshold_mps": 5e-06,
+        "possible_final_candidates": null
+      },
+      "Not Evaluable|legal_lane_change": {
+        "before": {
+          "run_id": "cd1_D_micro",
+          "vehicle_id": "v00002",
+          "incarnation_id": "cd1_D_micro|v00002",
+          "time_s": 3.75,
+          "edge_id": "main_0",
+          "lane_id": "main_0_2",
+          "position_m": 21.001108629628,
+          "speed_mps": 27.158362098759966,
+          "acceleration_mps2": -1.036063168733392,
+          "last_action_time_s": 3.65,
+          "length_m": 4.4196,
+          "traveled_distance_m": 16.481508629628,
+          "x_m": 21.001108629628,
+          "y_m": 158.4,
+          "traci_vehicle_control": false,
+          "numerical_config_verified": true,
+          "remaining_stops": [],
+          "input_has_stops": false,
+          "route_edges": [
+            "main_0",
+            "main_1",
+            "main_2"
+          ],
+          "route_index": 0,
+          "public_stop_state": 0
+        },
+        "after": {
+          "run_id": "cd1_D_micro",
+          "vehicle_id": "v00002",
+          "incarnation_id": "cd1_D_micro|v00002",
+          "time_s": 3.8,
+          "edge_id": "main_0",
+          "lane_id": "main_0_1",
+          "position_m": 22.357731655605082,
+          "speed_mps": 27.106558940323296,
+          "acceleration_mps2": -1.036063168733392,
+          "last_action_time_s": 3.75,
+          "length_m": 4.4196,
+          "traveled_distance_m": 17.838131655605082,
+          "x_m": 22.357731655605082,
+          "y_m": 155.2,
+          "traci_vehicle_control": false,
+          "numerical_config_verified": true,
+          "remaining_stops": [],
+          "input_has_stops": false,
+          "route_edges": [
+            "main_0",
+            "main_1",
+            "main_2"
+          ],
+          "route_index": 0,
+          "public_stop_state": 0
+        },
+        "version": "b12n-near-zero-observability-v1",
+        "classification": "Not Evaluable",
+        "u_pre": null,
+        "u_final": 27.106558940323296,
+        "context": true,
+        "context_evidence": {
+          "predicate": true,
+          "basis": "fresh_no_stops_stopdist_doublemax_invariant",
+          "missing": []
+        },
+        "is_action": true,
+        "reason": "legal_lane_change",
+        "blocker": null,
+        "scope": "Diagnostic Warning",
+        "exact_pass": null,
+        "residual_m": null,
+        "actual_dx_m": null,
+        "expected_dx_m": null,
+        "dx_support_m": null,
+        "within_support": null,
+        "near_zero_threshold_mps": 5e-06,
+        "possible_final_candidates": null
+      },
+      "Not Evaluable|legal_edge_transition": {
+        "before": {
+          "run_id": "cd1_D_micro",
+          "vehicle_id": "v00000",
+          "incarnation_id": "cd1_D_micro|v00000",
+          "time_s": 14.1,
+          "edge_id": "main_0",
+          "lane_id": "main_0_2",
+          "position_m": 386.23550943228497,
+          "speed_mps": 27.04170175826061,
+          "acceleration_mps2": -0.19118542487269963,
+          "last_action_time_s": 14.05,
+          "length_m": 4.4196,
+          "traveled_distance_m": 381.71590943228495,
+          "x_m": 386.23550943228497,
+          "y_m": 158.4,
+          "traci_vehicle_control": false,
+          "numerical_config_verified": true,
+          "remaining_stops": [],
+          "input_has_stops": false,
+          "route_edges": [
+            "main_0",
+            "main_1",
+            "main_2"
+          ],
+          "route_index": 0,
+          "public_stop_state": 0
+        },
+        "after": {
+          "run_id": "cd1_D_micro",
+          "vehicle_id": "v00000",
+          "incarnation_id": "cd1_D_micro|v00000",
+          "time_s": 14.15,
+          "edge_id": ":hwy_j1_1",
+          "lane_id": ":hwy_j1_1_2",
+          "position_m": 1.0873555384168867,
+          "speed_mps": 27.032142487016976,
+          "acceleration_mps2": -0.19118542487269963,
+          "last_action_time_s": 14.05,
+          "length_m": 4.4196,
+          "traveled_distance_m": 383.06775553841686,
+          "x_m": 387.5873555384169,
+          "y_m": 158.4,
+          "traci_vehicle_control": false,
+          "numerical_config_verified": true,
+          "remaining_stops": [],
+          "input_has_stops": false,
+          "route_edges": [
+            "main_0",
+            "main_1",
+            "main_2"
+          ],
+          "route_index": 0,
+          "public_stop_state": 0
+        },
+        "version": "b12n-near-zero-observability-v1",
+        "classification": "Not Evaluable",
+        "u_pre": 27.032142487016976,
+        "u_final": 27.032142487016976,
+        "context": true,
+        "context_evidence": {
+          "predicate": true,
+          "basis": "fresh_no_stops_stopdist_doublemax_invariant",
+          "missing": []
+        },
+        "is_action": false,
+        "reason": "legal_edge_transition",
+        "blocker": null,
+        "scope": "Diagnostic Warning",
+        "exact_pass": null,
+        "residual_m": null,
+        "actual_dx_m": null,
+        "expected_dx_m": null,
+        "dx_support_m": null,
+        "within_support": null,
+        "near_zero_threshold_mps": 5e-06,
+        "possible_final_candidates": null
+      }
+    },
+    "worst_exact_edge": {
+      "before": {
+        "run_id": "cd1_D_micro",
+        "vehicle_id": "v00000",
+        "incarnation_id": "cd1_D_micro|v00000",
+        "time_s": 11.25,
+        "edge_id": "main_0",
+        "lane_id": "main_0_2",
+        "position_m": 308.3439406081898,
+        "speed_mps": 27.222728115320194,
+        "acceleration_mps2": -0.024947472359073686,
+        "last_action_time_s": 11.15,
+        "length_m": 4.4196,
+        "traveled_distance_m": 303.8243406081898,
+        "x_m": 308.3439406081898,
+        "y_m": 158.4,
+        "traci_vehicle_control": false,
+        "numerical_config_verified": true,
+        "remaining_stops": [],
+        "input_has_stops": false,
+        "route_edges": [
+          "main_0",
+          "main_1",
+          "main_2"
+        ],
+        "route_index": 0,
+        "public_stop_state": 0
+      },
+      "after": {
+        "run_id": "cd1_D_micro",
+        "vehicle_id": "v00000",
+        "incarnation_id": "cd1_D_micro|v00000",
+        "time_s": 11.3,
+        "edge_id": "main_0",
+        "lane_id": "main_0_2",
+        "position_m": 309.7050458296154,
+        "speed_mps": 27.22148074170224,
+        "acceleration_mps2": -0.024947472359073686,
+        "last_action_time_s": 11.25,
+        "length_m": 4.4196,
+        "traveled_distance_m": 305.1854458296154,
+        "x_m": 309.7050458296154,
+        "y_m": 158.4,
+        "traci_vehicle_control": false,
+        "numerical_config_verified": true,
+        "remaining_stops": [],
+        "input_has_stops": false,
+        "route_edges": [
+          "main_0",
+          "main_1",
+          "main_2"
+        ],
+        "route_index": 0,
+        "public_stop_state": 0
+      },
+      "version": "b12n-near-zero-observability-v1",
+      "classification": "Exact Without Postprocessing",
+      "u_pre": null,
+      "u_final": 27.22148074170224,
+      "context": true,
+      "context_evidence": {
+        "predicate": true,
+        "basis": "fresh_no_stops_stopdist_doublemax_invariant",
+        "missing": []
+      },
+      "is_action": true,
+      "reason": "decision_positive_final_observable_no_overrides",
+      "blocker": null,
+      "scope": null,
+      "exact_pass": true,
+      "residual_m": 2.842170943040401e-14,
+      "actual_dx_m": 1.3611052214255892,
+      "expected_dx_m": 1.3611052214255608,
+      "dx_support_m": null,
+      "within_support": null,
+      "near_zero_threshold_mps": 5e-06,
+      "possible_final_candidates": null
+    },
+    "context_unknown_is_exact": false,
+    "threshold_is_internal_SUMO_constant_not_scientific_tolerance": true
+  },
+  "planned_vehicles": 9,
+  "actual_inserted": 9,
+  "actual_exited": 9,
+  "present": 0,
+  "pending_end": 0,
+  "max_pending": 0,
+  "local_entered": 9,
+  "local_exited": 9,
+  "local_vehicle_s": 66.29999999999986,
+  "local_space": {
+    "edge": "main_1",
+    "start_m": 50.0,
+    "end_m": 250.0,
+    "lanes": 3,
+    "lane_km": 0.6
+  },
+  "first_times": {
+    "internal_low": null,
+    "external_pending": null,
+    "internal_queue": null,
+    "upstream_extension": null,
+    "inlet_adjacent": null,
+    "entry_spillback_supported": null
+  },
+  "queue_state_counts": {
+    "No On-Road Queue": 1200
+  },
+  "queue_temporal_resets": 0,
+  "queue_real_path_member_resets": 0,
+  "queue_frames_processed": 1200,
+  "queue_max_component_duration_s": 0.0,
+  "queue_max_coupled_entry_duration_s": 0.0,
+  "queue_all_paths_frames": 0,
+  "queue_supported_frames": 0,
+  "journey": {
+    "verified": false,
+    "all_planned_exit_required": true,
+    "vehicles": {
+      "v00000": {
+        "mandatory": true,
+        "actual_departure_lane": "main_0_2",
+        "entered_assigned_lane": true,
+        "actual_required_merge": true,
+        "arrived": true,
+        "downstream_exit": true
+      },
+      "v00001": {
+        "mandatory": true,
+        "actual_departure_lane": "main_0_2",
+        "entered_assigned_lane": true,
+        "actual_required_merge": true,
+        "arrived": true,
+        "downstream_exit": true
+      },
+      "v00002": {
+        "mandatory": true,
+        "actual_departure_lane": "main_0_2",
+        "entered_assigned_lane": true,
+        "actual_required_merge": false,
+        "arrived": true,
+        "downstream_exit": true
+      },
+      "v00003": {
+        "mandatory": true,
+        "actual_departure_lane": "main_0_2",
+        "entered_assigned_lane": true,
+        "actual_required_merge": true,
+        "arrived": true,
+        "downstream_exit": true
+      },
+      "v00004": {
+        "mandatory": true,
+        "actual_departure_lane": "main_0_2",
+        "entered_assigned_lane": true,
+        "actual_required_merge": false,
+        "arrived": true,
+        "downstream_exit": true
+      },
+      "v00005": {
+        "mandatory": true,
+        "actual_departure_lane": "main_0_2",
+        "entered_assigned_lane": true,
+        "actual_required_merge": false,
+        "arrived": true,
+        "downstream_exit": true
+      },
+      "v00006": {
+        "mandatory": true,
+        "actual_departure_lane": "main_0_2",
+        "entered_assigned_lane": true,
+        "actual_required_merge": false,
+        "arrived": true,
+        "downstream_exit": true
+      },
+      "v00007": {
+        "mandatory": true,
+        "actual_departure_lane": "main_0_2",
+        "entered_assigned_lane": true,
+        "actual_required_merge": false,
+        "arrived": true,
+        "downstream_exit": true
+      },
+      "v00008": {
+        "mandatory": true,
+        "actual_departure_lane": "main_0_2",
+        "entered_assigned_lane": true,
+        "actual_required_merge": false,
+        "arrived": true,
+        "downstream_exit": true
+      }
+    },
+    "mandatory_planned": 9,
+    "mandatory_arrived": 9,
+    "mandatory_actual_merges": 3
+  },
+  "route_observation_checks": 7930,
+  "lane_changes": 11,
+  "lane_change_vehicle_ids": [
+    "v00000",
+    "v00001",
+    "v00002",
+    "v00003",
+    "v00004",
+    "v00005",
+    "v00006",
+    "v00007",
+    "v00008"
+  ],
+  "first_lanes": {
+    "v00000": "main_0_2",
+    "v00001": "main_0_2",
+    "v00002": "main_0_2",
+    "v00003": "main_0_2",
+    "v00004": "main_0_2",
+    "v00005": "main_0_2",
+    "v00006": "main_0_2",
+    "v00007": "main_0_2",
+    "v00008": "main_0_2"
+  },
+  "exit_last_edges": {
+    "main_2": 9
+  },
+  "edge_transitions": 36,
+  "junction_states": 88,
+  "lanes_seen": [
+    ":hwy_j1_1_0",
+    ":hwy_j1_1_1",
+    ":hwy_j1_1_2",
+    ":hwy_j2_1_0",
+    ":hwy_j2_1_1",
+    "main_0_0",
+    "main_0_1",
+    "main_0_2",
+    "main_1_0",
+    "main_1_1",
+    "main_1_2",
+    "main_2_0",
+    "main_2_1"
+  ],
+  "mapping_checks": {
+    "same_edge": 4621,
+    "cross_edge": 18
+  },
+  "max_mapping_residual_m": 1.1368683772161603e-13,
+  "physical_gap_checks": 5194,
+  "max_gap_residual_m": 0.0,
+  "traffic": {
+    "local_mean_speed_mps": 27.148341856933033,
+    "local_density_veh_km_lane": 1.8416666666666666,
+    "low_share": 0.0,
+    "speed_quantiles_mps": [
+      26.31635028102871,
+      26.744975817639762,
+      27.125901567614818,
+      27.599591092622727,
+      27.767826286582263
+    ],
+    "acceleration_quantiles_mps2": [
+      -1.1162950076395362,
+      -0.6980592013973563,
+      0.0036096537951380014,
+      0.8623017865232896,
+      1.3273118706191411
+    ],
+    "min_onroad_leader_gap_m": 31.564344469109827,
+    "time_bins": {
+      "0": {
+        "frames": 1200,
+        "n": 1326,
+        "speed": 35998.7013022932,
+        "low": 0,
+        "inserted": 9,
+        "exited": 9
+      }
+    },
+    "initialization": "Empty startup included; no scientific warmup fixed"
+  },
+  "runtime_settings": {
+    "verified": true,
+    "checks": 58,
+    "options": {
+      "step-method.ballistic": "true",
+      "step-length": ".05",
+      "seed": "20261019",
+      "threads": "1",
+      "time-to-teleport": "-1",
+      "random": "false"
+    },
+    "types": {
+      "t0": {
+        "tau": 1.0,
+        "minGap": 2.5,
+        "actionStepLength": 0.1,
+        "maxSpeed": 27.78,
+        "length": 2.4384,
+        "vClass": "motorcycle",
+        "sigma": 0.5,
+        "accel": 2.6,
+        "decel": 4.5,
+        "apparentDecel": 4.5,
+        "emergencyDecel": 9.0,
+        "speedFactor": 1.0,
+        "speedDev": 0.0
+      },
+      "t1": {
+        "tau": 1.0,
+        "minGap": 2.5,
+        "actionStepLength": 0.1,
+        "maxSpeed": 27.78,
+        "length": 4.4196,
+        "vClass": "passenger",
+        "sigma": 0.5,
+        "accel": 2.6,
+        "decel": 4.5,
+        "apparentDecel": 4.5,
+        "emergencyDecel": 9.0,
+        "speedFactor": 1.0,
+        "speedDev": 0.0
+      },
+      "t2": {
+        "tau": 1.0,
+        "minGap": 2.5,
+        "actionStepLength": 0.1,
+        "maxSpeed": 27.78,
+        "length": 10.009694845360826,
+        "vClass": "truck",
+        "sigma": 0.5,
+        "accel": 2.6,
+        "decel": 4.5,
+        "apparentDecel": 4.5,
+        "emergencyDecel": 9.0,
+        "speedFactor": 1.0,
+        "speedDev": 0.0
+      }
+    },
+    "type_echo": {
+      "t0": {
+        "id": "t0",
+        "length": "2.44",
+        "minGap": "2.50",
+        "maxSpeed": "27.78",
+        "speedFactor": "normc(1.00,0.00)",
+        "actionStepLength": "0.10",
+        "vClass": "motorcycle",
+        "laneChangeModel": "LC2013",
+        "carFollowModel": "Krauss",
+        "accel": "2.6",
+        "decel": "4.5",
+        "emergencyDecel": "9.0",
+        "apparentDecel": "4.5",
+        "sigma": "0.5",
+        "sigmaStep": "1.0",
+        "tau": "1.0"
+      },
+      "t1": {
+        "id": "t1",
+        "length": "4.42",
+        "minGap": "2.50",
+        "maxSpeed": "27.78",
+        "speedFactor": "normc(1.00,0.00)",
+        "actionStepLength": "0.10",
+        "vClass": "passenger",
+        "laneChangeModel": "LC2013",
+        "carFollowModel": "Krauss",
+        "accel": "2.6",
+        "decel": "4.5",
+        "emergencyDecel": "9.0",
+        "apparentDecel": "4.5",
+        "sigma": "0.5",
+        "sigmaStep": "1.0",
+        "tau": "1.0"
+      },
+      "t2": {
+        "id": "t2",
+        "length": "10.01",
+        "minGap": "2.50",
+        "maxSpeed": "27.78",
+        "speedFactor": "normc(1.00,0.00)",
+        "actionStepLength": "0.10",
+        "vClass": "truck",
+        "laneChangeModel": "LC2013",
+        "carFollowModel": "Krauss",
+        "accel": "2.6",
+        "decel": "4.5",
+        "emergencyDecel": "9.0",
+        "apparentDecel": "4.5",
+        "sigma": "0.5",
+        "sigmaStep": "1.0",
+        "tau": "1.0"
+      }
+    },
+    "sumo_version": [
+      22,
+      "SUMO 1.26.0"
+    ],
+    "tls": {},
+    "started_empty_fresh": true,
+    "vehicle_control": false,
+    "state_load": false,
+    "P2_calculated": false,
+    "mesosim": "false",
+    "num_clients": "1"
+  },
+  "runtime": {
+    "total_worker_wall_s": 18.57241980000981,
+    "queue_compute_wall_s": 0.10580290031793993,
+    "internal_state_rows": 7930
+  },
+  "P2_calculated": false,
+  "main_matrix_allowed": false,
+  "scientific_claim_eligible": false
+}

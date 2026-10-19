@@ -1,0 +1,76 @@
+{
+  "test_first": [
+    "新增模块缺失导致collection失败，后15项通过",
+    "上游提前换道独立负例先失败，修复后16项通过"
+  ],
+  "pre_freeze_v1": {
+    "passed": 190,
+    "failed": 0,
+    "skipped": 0
+  },
+  "pre_freeze_v2": {
+    "passed": 191,
+    "failed": 0,
+    "skipped": 0
+  },
+  "postrun_independent_analysis": "Passed; raw counts/crossings/connections/gaps recomputed under -S guard",
+  "final_validation": "Passed within stated scope",
+  "data_skips_not_scientific_pass": true,
+  "pure_git_full_regression": {
+    "passed": 768,
+    "failed": 0,
+    "skipped": 14,
+    "seconds": 125.69,
+    "command": "python -m pytest tests -q -rs",
+    "snapshot": "72000ec1b9ef3b8ce32ef26d56330a018e98e03e",
+    "log_sha256": "b1b1e3ec15ebcff4db6808538b93e5657075f7de232eaa66ad654e0ac7b4eedd",
+    "skips": [
+      "SKIPPED [1] tests\\test_see_v2x_reaudit.py:75: raw sample not present (pure-clone mode)",
+      "SKIPPED [1] tests\\test_simulation_real_coverage.py:377: sealed Stage 0.3 canonical pNEUMA input is not available in this clone",
+      "SKIPPED [1] tests\\test_stage_0_2_task_2_5_1_targeted_validation.py:55: requires sealed local Task 2.5.1 CSV/PDF package; unit tests above remain portable",
+      "SKIPPED [1] tests\\test_stage_0_2_task_2_5_2_key_difference_cases.py:9: requires sealed local Task 2.5.2 CSV/PDF package; excluded from portable Git evidence",
+      "SKIPPED [1] tests\\test_stage_0_2_task_2_5_2_key_difference_cases.py:15: requires sealed local Task 2.5.2 CSV/PDF package; excluded from portable Git evidence",
+      "SKIPPED [1] tests\\test_stage_0_2_task_2_5_2_key_difference_cases.py:23: requires sealed local Task 2.5.2 CSV/PDF package; excluded from portable Git evidence",
+      "SKIPPED [1] tests\\test_stage_0_2_task_2_5_2_key_difference_cases.py:28: requires sealed local Task 2.5.2 CSV/PDF package; excluded from portable Git evidence",
+      "SKIPPED [1] tests\\test_stage_0_2_task_2_5_threshold_validation.py:10: requires sealed local Task 2.5 outputs; excluded from portable Git evidence",
+      "SKIPPED [1] tests\\test_stage_0_2_task_2_5_threshold_validation.py:17: requires sealed local Task 2.5 outputs; excluded from portable Git evidence",
+      "SKIPPED [1] tests\\test_stage_0_2_task_2_5_threshold_validation.py:24: requires sealed local Task 2.5 outputs; excluded from portable Git evidence",
+      "SKIPPED [1] tests\\test_stage_0_2_task_2_5_threshold_validation.py:31: requires sealed local Task 2.5 outputs; excluded from portable Git evidence",
+      "SKIPPED [1] tests\\test_stage_0_2_task_2_5_threshold_validation.py:38: requires sealed local Task 2.5 outputs; excluded from portable Git evidence",
+      "SKIPPED [1] tests\\test_stage_0_2_task_2_5_threshold_validation.py:44: requires sealed local Task 2.5 outputs; excluded from portable Git evidence",
+      "SKIPPED [1] tests\\test_stage_0_5_boundary_bottleneck.py:72: bootstrap contract is exercised by the dedicated -S capsule preflight"
+    ]
+  },
+  "focused_postrun": {
+    "passed": 40,
+    "failed": 0,
+    "skipped": 0,
+    "includes": "16 new observation +11 portable adversarial +13 project docs"
+  },
+  "pure_git_strict_docs": true,
+  "pure_git_require_clean": true,
+  "pure_git_export_verify": true,
+  "pure_git_compileall": true,
+  "frozen_source_files_verified": 78,
+  "existing_SUMO_smoke_regression": {
+    "test_file": "code/tests/test_stage_0_5_sumo.py",
+    "existing_unmodified_runs": 7,
+    "durations_s": [
+      20,
+      8,
+      10,
+      10,
+      10,
+      10,
+      8
+    ],
+    "total_s": 76,
+    "scope": "Pre-existing synthetic software regression explicitly requested by full pytest; not new C/D fixtures or targeted scientific trials; no role in selection/admission",
+    "warmup_unit_test": "Existing4s warmup option test only; no scientific warmup approval"
+  },
+  "invalid_harness_attempt": {
+    "reason": "Clone checkout had not finished when initial checks were dispatched; missing entry files / empty compile paths. Not counted as validation. Waited for clone completion then ran all checks successfully"
+  },
+  "root_strict_git": "Fails only pre-existing missing literature registry path after authorized files staged; preserved",
+  "post_push_validation": "Run after push; exact remote SHA recorded locally to avoid self-referential commit"
+}

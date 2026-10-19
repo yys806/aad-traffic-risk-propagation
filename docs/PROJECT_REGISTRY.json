@@ -140,12 +140,22 @@
     "docs/STAGE_0_5_TASK_0_5_4B1_1S_STOPPING_OBSERVABILITY.md",
     "docs/plans/2026-10-19-stage-0-5-4b1-1s.md",
     "docs/STAGE_0_5_TASK_0_5_4B1_2N_NEAR_ZERO_AND_INTEGRATION.md",
-    "docs/STAGE_0_5_TASK_0_5_4B1_2P_POSITIVE_NEAR_ZERO.md"
+    "docs/STAGE_0_5_TASK_0_5_4B1_2P_POSITIVE_NEAR_ZERO.md",
+    "code/src/riskprop/stage_0_5_cd_observation.py",
+    "code/src/riskprop/stage_0_5_cd_runtime.py",
+    "code/src/riskprop/stage_0_5_cd_worker.py",
+    "code/scripts/run_stage_0_5_cd_integration.py",
+    "code/scripts/finalize_stage_0_5_cd_integration.py",
+    "code/scripts/verify_stage_0_5_cd_integration.py",
+    "code/tests/test_stage_0_5_cd_observation.py",
+    "code/tests/test_stage_0_5_cd_evidence.py",
+    "docs/STAGE_0_5_TASK_CD_INTEGRATION_AND_ISSUE_DISCOVERY.md",
+    "docs/plans/2026-10-19-cd-integration.md"
   ],
   "current": {
     "active_experiment_id": "stage_0_5",
-    "active_task": "AAD-0.5.4-B1.2-P restricted positive near-zero branch verified; stop at researcher decision; C/D and main matrix not authorized.",
-    "why_now": "B1.2-P: five predeclared native-red braking probes completed. Two actual positive nonaction near-zero snap edges independently qualified and exact, three above-threshold controls retained positive final speeds;192 general exact/3 bounded/195 edges,0 unresolved/not-evaluable/blocker. Restricted fresh no-stop domain only. No C/D or main matrix authorized/executed; old B1.2-N admission false preserved.",
+    "active_task": "Stage0.5 C/D integration closed; C persistent entry topology insufficient, D actual journeys verified; next scientific scope/protocol decision; no ABCD authorization",
+    "why_now": "C/D有限接入2次各60s；62707边中62513精确全过、63 bounded、131合法坐标不可评价、0数值阻断。C内部队列/上游扩展/入口邻近与87 pending可观测，但入口与下游锚定组件约14.35m>10m，持续回溢EI。D9辆实际换道和main2出口由原始状态独立验证；v1 main_1-only假阻断保留，v2修复无重试。定向0/8、主矩阵0次；正式Gate和全部历史不变。",
     "next_decision_owner": "researcher",
     "portable_gate_paths": [
       "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",
@@ -162,7 +172,8 @@
       "evidence/results/RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1/audit.json",
       "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/audit.json",
       "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/audit.json",
-      "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/audit.json"
+      "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/audit.json",
+      "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/audit.json"
     ],
     "local_gate_paths": [
       "code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r4/scientific_gate_report.json",
@@ -177,7 +188,8 @@
       "code/outputs/formal/calibration/stage_0_5_stopping_observability_v3/summary/audit.json",
       "code/outputs/formal/calibration/stage_0_5_boundary_revalidation_b12_v2/summary/audit.json",
       "code/outputs/formal/calibration/stage_0_5_near_zero_integration_v1/summary/audit.json",
-      "code/outputs/formal/calibration/stage_0_5_positive_near_zero_v1/summary/audit.json"
+      "code/outputs/formal/calibration/stage_0_5_positive_near_zero_v1/summary/audit.json",
+      "code/outputs/formal/calibration/stage_0_5_cd_integration_v2/summary/audit.json"
     ]
   },
   "experiments": [
@@ -432,7 +444,13 @@
         "code/src/riskprop/stage_0_5_b12n_worker.py",
         "code/src/riskprop/stage_0_5_positive_near_zero.py",
         "code/src/riskprop/stage_0_5_positive_runtime.py",
-        "code/src/riskprop/stage_0_5_positive_worker.py"
+        "code/src/riskprop/stage_0_5_positive_worker.py",
+        "code/src/riskprop/stage_0_5_cd_observation.py",
+        "code/src/riskprop/stage_0_5_cd_runtime.py",
+        "code/src/riskprop/stage_0_5_cd_worker.py",
+        "code/scripts/run_stage_0_5_cd_integration.py",
+        "code/scripts/finalize_stage_0_5_cd_integration.py",
+        "code/scripts/verify_stage_0_5_cd_integration.py"
       ],
       "entrypoints": [
         "code/scripts/prepare_stage_0_5_real_reference.py",
@@ -481,7 +499,9 @@
         "code/tests/test_stage_0_5_b12n_runtime.py",
         "code/tests/test_stage_0_5_b12n_evidence.py",
         "code/tests/test_stage_0_5_positive_near_zero.py",
-        "code/tests/test_stage_0_5_positive_evidence.py"
+        "code/tests/test_stage_0_5_positive_evidence.py",
+        "code/tests/test_stage_0_5_cd_observation.py",
+        "code/tests/test_stage_0_5_cd_evidence.py"
       ],
       "configuration": "R2 real reference plus two no_message_baseline generic-highway engineering fixtures (baseline_mixed_demand, measurement_probe_queue_stop); US-101 primary, Lankershim auxiliary entry-only, pNEUMA urban kinematics entry-only; all network/demand/vType/behaviour/time settings are engineering_fixture_only",
       "parameters": {
@@ -567,7 +587,22 @@
         "b1_2p_micro_runs": 5,
         "b1_2p_C_D_allowed": false,
         "b1_2p_main_matrix_allowed": false,
-        "b1_2p_future_numerical_policy_approved": false
+        "b1_2p_future_numerical_policy_approved": false,
+        "cd_integration_result_id": "RES-STAGE-0.5-CD-INTEGRATION-V1",
+        "cd_layered_engineering_authorized": true,
+        "cd_new_micro_authorized": 2,
+        "cd_new_micro_actual": 2,
+        "cd_targeted_validation_authorized": 8,
+        "cd_targeted_validation_actual": 0,
+        "cd_C_persistent_entry_qualified": false,
+        "cd_D_actual_journeys_verified": 9,
+        "cd_main_matrix_authorized": false,
+        "cd_internal_step_s": 0.05,
+        "cd_point_descriptor_step_s": 0.1,
+        "cd_action_step_s": 0.1,
+        "cd_queue_continuity_step_s": 0.05,
+        "cd_queue_snapshot_s": 1.0,
+        "cd_numerical_proof_scope": "restricted fresh/no-stop/no control/restore/special devices; previous generic sumo_internal_step_s=.1 is historical baseline, not current CD"
       },
       "data_version": "RES-STAGE-0.5-REAL-REF-R2; Stage 0.2 R4 four states + final_r1 P2 + Stage 0.3 R2 canonical/R3 summaries",
       "model": "deterministic simulation-to-real coverage audit",
@@ -584,7 +619,8 @@
         "RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1",
         "RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2",
         "RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1",
-        "RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1"
+        "RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1",
+        "RES-STAGE-0.5-CD-INTEGRATION-V1"
       ],
       "core_metrics": [
         "formal_input_manifest",
@@ -622,7 +658,7 @@
         "source_time_coverage",
         "density_scaled_engineering_cost"
       ],
-      "current_conclusion": "B1.2-P: five predeclared native-red braking probes completed. Two actual positive nonaction near-zero snap edges independently qualified and exact, three above-threshold controls retained positive final speeds;192 general exact/3 bounded/195 edges,0 unresolved/not-evaluable/blocker. Restricted fresh no-stop domain only. No C/D or main matrix authorized/executed; old B1.2-N admission false preserved.",
+      "current_conclusion": "C/D有限接入2次各60s；62707边中62513精确全过、63 bounded、131合法坐标不可评价、0数值阻断。C内部队列/上游扩展/入口邻近与87 pending可观测，但入口与下游锚定组件约14.35m>10m，持续回溢EI。D9辆实际换道和main2出口由原始状态独立验证；v1 main_1-only假阻断保留，v2修复无重试。定向0/8、主矩阵0次；正式Gate和全部历史不变。",
       "gate": {
         "status": "pending_simulation_sample",
         "portable_path": "evidence/results/RES-STAGE-0.5-REAL-REF-R2/audit.json"
@@ -2526,6 +2562,95 @@
       "gate_status": "pending_simulation_sample",
       "paper_locations": [
         "docs/STAGE_0_5_TASK_0_5_4B1_2P_POSITIVE_NEAR_ZERO.md"
+      ],
+      "scientific_claim_eligible": false
+    },
+    {
+      "id": "RES-STAGE-0.5-CD-INTEGRATION-V1",
+      "experiment_id": "stage_0_5",
+      "name": "C/D有限接入与主动问题发现",
+      "purpose": "分层数值准入和队列/路径工程观测验证；不是主矩阵或校准",
+      "date": "2026-10-19",
+      "status": "engineering_integration_with_qualification_limit",
+      "portable_evidence_paths": [
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/C_checkpoint.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/C_departures.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/C_exits.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/C_lane_changes.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/C_summary.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/D_checkpoint.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/D_departures.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/D_exits.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/D_lane_changes.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/D_summary.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/PLAN_SHA256",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/SHA256SUMS",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/admission.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/analysis_access_audit.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/audit.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/budget_authorization.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/capsule_copy_audit.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/cd_source_staging.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/controlled_access_audit.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/coordinate_support_audit.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/engineering_input_bundle.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/execution_ledger.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/execution_scope_audit.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/experiment_plan.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/following_state_diagnostics.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/git_source_binding_audit.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/historical_status_preservation.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/independent_counterexamples.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/input_lineage.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/issue_discovery_report.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/local_global_accounting_audit.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/manifest.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/next_task_plan.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/numerical_admission_policy.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/numerical_branch_coverage.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/preflight.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/preparation_manifest.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/prior_D_revalidation.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/provenance.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/queue_integration_diagnostics.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/raw_local_bindings.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/report.md",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/researcher_decision_matrix.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/run_manifest.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/runtime_budget_audit.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/source_audit.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/test_record.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/traffic_state_comparison.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/v1_controlled_access_audit.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/v1_execution_ledger.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/v1_experiment_plan.json",
+        "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/v1_preflight.json"
+      ],
+      "local_artifact_paths": [
+        "code/outputs/formal/calibration/stage_0_5_cd_integration_v1",
+        "code/outputs/formal/calibration/stage_0_5_cd_integration_v2"
+      ],
+      "code_version_source": "code/src/riskprop/stage_0_5_cd_observation.py; code/src/riskprop/stage_0_5_cd_runtime.py; code/src/riskprop/stage_0_5_cd_worker.py; code/scripts/run_stage_0_5_cd_integration.py; code/scripts/finalize_stage_0_5_cd_integration.py; code/scripts/verify_stage_0_5_cd_integration.py; code/tests/test_stage_0_5_cd_observation.py; code/tests/test_stage_0_5_cd_evidence.py",
+      "configuration_source": "v1/v2 frozen plan SHA + numerical_admission_policy + execution_scope_audit",
+      "data_version_source": "Official pinned sources, SHA-bound sealed engineering inputs, own newly authorized micro states only; no real trajectories",
+      "core_metrics": {
+        "micro_runs": 2,
+        "targeted_runs": 0,
+        "main_matrix_runs": 0,
+        "all_adjacent_edges": 62707,
+        "exact_checked": 62513,
+        "exact_passed": 62513,
+        "bounded": 63,
+        "not_evaluable": 131,
+        "unresolved": 0,
+        "numerical_blockers": 0,
+        "D_actual_journeys": 9,
+        "C_persistent_entry_qualified": false
+      },
+      "current_conclusion": "C/D有限接入2次各60s；62707边中62513精确全过、63 bounded、131合法坐标不可评价、0数值阻断。C内部队列/上游扩展/入口邻近与87 pending可观测，但入口与下游锚定组件约14.35m>10m，持续回溢EI。D9辆实际换道和main2出口由原始状态独立验证；v1 main_1-only假阻断保留，v2修复无重试。定向0/8、主矩阵0次；正式Gate和全部历史不变。",
+      "gate_status": "pending_simulation_sample",
+      "paper_locations": [
+        "docs/STAGE_0_5_TASK_CD_INTEGRATION_AND_ISSUE_DISCOVERY.md"
       ],
       "scientific_claim_eligible": false
     }

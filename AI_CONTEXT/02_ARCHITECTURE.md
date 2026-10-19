@@ -97,3 +97,8 @@ B1.2新增独立b12_observation/network/runtime/worker：全边.05s分层审计�
 ## 2026-10-19 B1.2-P
 
 新增独立positive_near_zero目标七项链条分类（一般精确与target Exact Pass分开），positive_runtime仅prepare/tests/freeze/run/worker/checkpoint，positive_worker只读原生信号探针。复用旧数值/监督/胶囊，不改B1.2-N或正式TTC/P2。
+
+
+## 2026-10-19 C/D接入
+
+独立cd_observation.QueueContinuity逐已验证path关联队列/pending/入口几何，.05s处理/1Hz留存，真实path变更和缺帧重置。旧B12/N模块与证据保留。cd_runtime分场景ledger、schema/plan SHA防御；cd_worker只读。

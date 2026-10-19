@@ -1,0 +1,28 @@
+{
+  "declared_before_runs": true,
+  "Global_Blocker": [
+    "source/config/binary/plan SHA",
+    "identity/time/control/proof",
+    "exact displacement or source bounds",
+    "collision/teleport",
+    "conservation",
+    "shared coordinate/gap consistency",
+    "resource/worker/severity schema"
+  ],
+  "Scenario_Specific_Blocker": [
+    "missing required D merge/exit",
+    "scenario network defect"
+  ],
+  "Evidence_Insufficient": [
+    "queue continuity or same-path entry linkage missing",
+    "unresolved near-zero context",
+    "unsupported topology"
+  ],
+  "Diagnostic_Warning": [
+    "legal edge/lane dx Not Evaluable",
+    "on-road queue or finite pending within frozen demand"
+  ],
+  "no_traffic_threshold_tuning": true,
+  "scenario_C_EI_does_not_block_D": true,
+  "global_error_stops_all": true
+}

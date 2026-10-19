@@ -519,6 +519,10 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         pairs.setdefault("RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1", []).append(
             (f"code/outputs/formal/calibration/stage_0_5_positive_near_zero_v1/summary/{name}", name)
         )
+    for name in ('C_checkpoint.json', 'C_departures.json', 'C_exits.json', 'C_lane_changes.json', 'C_summary.json', 'D_checkpoint.json', 'D_departures.json', 'D_exits.json', 'D_lane_changes.json', 'D_summary.json', 'PLAN_SHA256', 'SHA256SUMS', 'admission.json', 'analysis_access_audit.json', 'audit.json', 'budget_authorization.json', 'capsule_copy_audit.json', 'cd_source_staging.json', 'controlled_access_audit.json', 'coordinate_support_audit.json', 'engineering_input_bundle.json', 'execution_ledger.json', 'execution_scope_audit.json', 'experiment_plan.json', 'following_state_diagnostics.json', 'git_source_binding_audit.json', 'historical_status_preservation.json', 'independent_counterexamples.json', 'input_lineage.json', 'issue_discovery_report.json', 'local_global_accounting_audit.json', 'manifest.json', 'next_task_plan.json', 'numerical_admission_policy.json', 'numerical_branch_coverage.json', 'preflight.json', 'preparation_manifest.json', 'prior_D_revalidation.json', 'provenance.json', 'queue_integration_diagnostics.json', 'raw_local_bindings.json', 'report.md', 'researcher_decision_matrix.json', 'run_manifest.json', 'runtime_budget_audit.json', 'source_audit.json', 'test_record.json', 'traffic_state_comparison.json', 'v1_controlled_access_audit.json', 'v1_execution_ledger.json', 'v1_experiment_plan.json', 'v1_preflight.json'):
+        pairs.setdefault("RES-STAGE-0.5-CD-INTEGRATION-V1", []).append(
+            (f"code/outputs/formal/calibration/stage_0_5_cd_integration_v2/summary/{name}", name)
+        )
     return pairs
 
 

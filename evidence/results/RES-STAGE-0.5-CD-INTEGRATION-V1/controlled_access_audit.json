@@ -1,0 +1,194 @@
+{
+  "logs": [
+    {
+      "file": "checkpoint_C.json",
+      "sha256": "4ae3176873483220b56e6a7f74ae46b9d2ee934d78e365cfb41663fd13a08748",
+      "denied": [],
+      "allowed_open_events": 567
+    },
+    {
+      "file": "checkpoint_D.json",
+      "sha256": "2b67847334918ab803a4a94e6e0b9f58dbb12906ca0205c86bcd73deca7b9a79",
+      "denied": [],
+      "allowed_open_events": 568
+    },
+    {
+      "file": "close_33516.json",
+      "sha256": "5dea5214782edbdccc5f34657a075da38dbe479534f9269ed6ca18e621452192",
+      "denied": [],
+      "allowed_open_events": 458
+    },
+    {
+      "file": "freeze_31252.json",
+      "sha256": "5d8af19fe97311234b3f71f4e821f70194d74652e31ec97b63a8fc4b386d05ca",
+      "denied": [],
+      "allowed_open_events": 622
+    },
+    {
+      "file": "run_cd1_C_micro.json",
+      "sha256": "f0ce1dfd163e20e3de7417d560e192afa25333b9a041919159738fa38ba40cf1",
+      "denied": [],
+      "allowed_open_events": 582
+    },
+    {
+      "file": "tests_18984.json",
+      "sha256": "0de50ba438b02ab524574a6fa6b3c99dfc964ee474712baff9ea82af6c653f2a",
+      "denied": [],
+      "allowed_open_events": 501
+    },
+    {
+      "file": "worker_cd1_C_micro.json",
+      "sha256": "59634ffe43f6fcc5792319a1e62e2712b3dac98261d19c85833ff7faae1d652d",
+      "denied": [],
+      "allowed_open_events": 2148
+    }
+  ],
+  "unexpected_denials": 0,
+  "negative_probe": {
+    "cases": [
+      {
+        "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_us101__0820_0835.json",
+        "refused": true,
+        "before_filesystem_read": true
+      },
+      {
+        "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_locked_holdout.json",
+        "refused": true,
+        "before_filesystem_read": true
+      },
+      {
+        "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_historical_event_characteristics.parquet",
+        "refused": true,
+        "before_filesystem_read": true
+      }
+    ],
+    "audit": {
+      "scope": "controlled Python entrypoints",
+      "allowed_open_events": 0,
+      "denied": [
+        {
+          "event": "open",
+          "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_us101__0820_0835.json",
+          "write": false
+        },
+        {
+          "event": "open",
+          "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_locked_holdout.json",
+          "write": false
+        },
+        {
+          "event": "open",
+          "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_historical_event_characteristics.parquet",
+          "write": false
+        }
+      ],
+      "os_complete_monitoring": false,
+      "native_file_access_monitored": false,
+      "python_no_site": true,
+      "sanitized_sys_path": [
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_cd_integration_v2\\runtime\\code\\src",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_cd_integration_v2\\dependency_links",
+        "D:\\miniconda\\Lib\\site-packages",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_cd_integration_v2\\runtime\\code\\scripts",
+        "D:\\miniconda\\python313.zip",
+        "D:\\miniconda\\DLLs",
+        "D:\\miniconda\\Lib",
+        "D:\\miniconda"
+      ],
+      "limitations": [
+        "Python audit events only; native extensions and SUMO reads not OS-traced",
+        "standard-library/package/SUMO/Windows runtime roots are broader than individual dependency files",
+        "same-user administrator can bypass this policy; it is not an adversarial security boundary"
+      ]
+    }
+  },
+  "v1": {
+    "logs": [
+      {
+        "file": "freeze_19776.json",
+        "sha256": "67a3b81c66adea89fd25182f63c5b21003cb7cf94bf0f09d6aad32618f787abf",
+        "denied": []
+      },
+      {
+        "file": "run_cd1_D_micro.json",
+        "sha256": "d9d88bd5b71a59631e59fe4e98b9cb224df146a34ddc5b2ddc5e544fea50973e",
+        "denied": []
+      },
+      {
+        "file": "tests_22640.json",
+        "sha256": "0a696cb43fae851b639ad5bb70e7bcf54ac06a65af9d3098f273e6e9fba5bb8b",
+        "denied": []
+      },
+      {
+        "file": "worker_cd1_D_micro.json",
+        "sha256": "a0ac33eb1c4f4f53a4222e13c55ac04ee62f4ce7ed89bcf9743a69648125776d",
+        "denied": []
+      }
+    ],
+    "guard_probe": {
+      "cases": [
+        {
+          "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_us101__0820_0835.json",
+          "refused": true,
+          "before_filesystem_read": true
+        },
+        {
+          "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_locked_holdout.json",
+          "refused": true,
+          "before_filesystem_read": true
+        },
+        {
+          "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_historical_event_characteristics.parquet",
+          "refused": true,
+          "before_filesystem_read": true
+        }
+      ],
+      "audit": {
+        "scope": "controlled Python entrypoints",
+        "allowed_open_events": 0,
+        "denied": [
+          {
+            "event": "open",
+            "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_us101__0820_0835.json",
+            "write": false
+          },
+          {
+            "event": "open",
+            "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_locked_holdout.json",
+            "write": false
+          },
+          {
+            "event": "open",
+            "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_historical_event_characteristics.parquet",
+            "write": false
+          }
+        ],
+        "os_complete_monitoring": false,
+        "native_file_access_monitored": false,
+        "python_no_site": true,
+        "sanitized_sys_path": [
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_cd_integration_v1\\runtime\\code\\src",
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_cd_integration_v1\\dependency_links",
+          "D:\\miniconda\\Lib\\site-packages",
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_cd_integration_v1\\runtime\\code\\scripts",
+          "D:\\miniconda\\python313.zip",
+          "D:\\miniconda\\DLLs",
+          "D:\\miniconda\\Lib",
+          "D:\\miniconda"
+        ],
+        "limitations": [
+          "Python audit events only; native extensions and SUMO reads not OS-traced",
+          "standard-library/package/SUMO/Windows runtime roots are broader than individual dependency files",
+          "same-user administrator can bypass this policy; it is not an adversarial security boundary"
+        ]
+      }
+    },
+    "Python_audit_only": true,
+    "os_complete_monitoring": false
+  },
+  "Python_audit_only": true,
+  "os_complete_monitoring": false,
+  "native_access_monitored": false,
+  "no_real_trajectory_inputs": true,
+  "old_B1_C_state_inputs": []
+}

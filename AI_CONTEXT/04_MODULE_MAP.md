@@ -79,3 +79,8 @@ run_stage_0_2_final_closure.py执行全源检查；stage_0_2_closure_analysis.py
 ## 2026-10-19 B1.2-P
 
 code/src/riskprop/stage_0_5_positive_near_zero.py（classify_edge/admission/check_plan）；stage_0_5_positive_runtime.py（源码/准备/冻结/执行/checkpoint）；stage_0_5_positive_worker.py（只读观测）。入口run/finalize/verify_stage_0_5_positive_near_zero.py；测试test_stage_0_5_positive_near_zero.py及test_stage_0_5_positive_evidence.py。无C/D或主矩阵命令。
+
+
+## 2026-10-19 C/D接入
+
+新增stage_0_5_cd_observation.py（QueueContinuity/entry_evidence/movement/journey_audit/validate_summary）、stage_0_5_cd_runtime.py（胶囊/冻结/执行/分范围停止）、stage_0_5_cd_worker.py（只读）。入口run/finalize/verify_stage_0_5_cd_integration.py；测试test_stage_0_5_cd_observation.py/test_stage_0_5_cd_evidence.py。

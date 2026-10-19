@@ -1,0 +1,31 @@
+{
+  "all_adjacent_edges": 62707,
+  "classifications": {
+    "Exact After Verified Postprocessing": 25,
+    "Exact Without Postprocessing": 62488,
+    "Bounded Consistency Only": 63,
+    "Near-Zero Context Unresolved": 0,
+    "Not Evaluable": 131,
+    "Engineering Blocker": 0
+  },
+  "exact_checked": 62513,
+  "exact_passed": 62513,
+  "exact_pass_fraction": 1.0,
+  "exact_tolerance_m": 1e-06,
+  "max_abs_exact_residual_m": 2.842170943040401e-14,
+  "reasons": {
+    "decision_positive_final_observable_no_overrides": 13490,
+    "outside_strict_snap_interval": 13533,
+    "legal_edge_transition": 120,
+    "decision_terminal_zero_hidden_signed_candidate": 63,
+    "stationary_displacement_identified_independent_of_hidden_final": 17752,
+    "zero_is_postprocessing_fixed_point": 17713,
+    "independently_verified_stop_context_snap": 25,
+    "legal_lane_change": 11
+  },
+  "bounded_is_exact": false,
+  "unknown_is_exact": false,
+  "not_evaluable_is_zero_residual": false,
+  "source_scope": "restricted fresh/no-stop/no restore/control/devices/noncyclic only",
+  "metric_admission": "Public positions/speed/gaps may describe point states independently of hidden substep stopping time. No Exact promotion, derived substep trajectories excluded"
+}
