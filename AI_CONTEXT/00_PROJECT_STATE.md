@@ -1,5 +1,14 @@
 # AAD Current State Snapshot
 
+## 当前补充：B1.2（2026-10-19，优先于下文历史更新）
+
+`RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2`：研究者已批准方案B仅用于工程探索、队列候选接入和条件性新A/B/C/D。严格布尔/时钟防御已修复；受控合成回归142 passed。首个压缩C接入fixture在19.70→19.75s遇到非决策步终速不一致，执行器自动停止；D fixture未启动、主矩阵0/8、主计划未冻结、`B1_2_MAIN_MATRIX_ALLOWED=false`。数值已审计10145边：10047精确全过、14 bounded、84不可评价（83合法edge转换+1阻断）；最大精确残差7.1054e-15m。
+
+固定SUMO源码在加速度延续后有近零清零，预测4.658e-6m/s低于5e-6内部阈值、实际终速0，与反例相符；私有条件未经仪器化。旧“非决策步任意情形最终候选精确”等广泛叙述不能无条件外推。冲突`Awaiting Researcher Decision`，未改公式/容差或追溯放行；B1.1-S的947/948封存结果原样保留。压缩fixture仅部分计数/坐标/队列证据，不能替代主C机制或现实样本。下一步只建议独立近零适用域和剩余接入验证的新计划。
+
+历史B0隔离false/验证Unknown、旧B1 C两阻断/D未运行、B1.1 Pending均保留。科学Gate=pending_simulation_sample，所有校准ready/现实覆盖/锁/StageI资格false，Tolerance Not Yet Justified、ED上界Not Identifiable、局部P2 Unresolved。报告：`docs/STAGE_0_5_TASK_0_5_4B1_2_BOUNDARY_BOTTLENECK_REVALIDATION.md`；证据同ID目录。下文B1.2“未授权/待另批”为历史记录，本节授权和实际停止状态为当前事实。
+
+
 ## 当前补充：B1.1-S（2026-10-19，优先于下文历史更新）
 
 `RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1`：固定SUMO1.26.0源码审计确认，非决策步延续公开加速度（`vSafe=v0+a_pub_start*h`），因此内部带符号候选终速可由公开TraCI独立重建`u=v0+a_pub_start*h`，对任意符号精确成立，包括`u<0`的真实步内停车；决策步`v1=0`（含`h=actionStep`的停车步）仍被`max(u,0)`钳制，仅可范围一致。决策步判定：步[`t_prev`→`t_now`]为决策步当且仅当`t_now`读到的`lastActionTime`等于`t_prev`。3个微型运行、948条相邻边：947精确核验且全过，最大残差`1.4210854715202004e-14m`，1条决策步停车仅范围，0不可评价，0异常；未用位移反推、未用调试二进制、未改官方二进制。因此“全部停车边精确等价”仍未成立；B1.1精确停车`Pending`记录与B1 C/D、B0均不变。

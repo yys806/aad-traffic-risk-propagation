@@ -16,3 +16,8 @@ dataset/
 正式代码、入口和测试分别位于 `code/src/riskprop/`、`code/scripts/`、`code/tests/`；本机完整输出位于 `code/outputs/`；小型便携证据位于 `evidence/`。
 
 2026-10-18：独立stage_0_5_calibration_gaps.py只连接两个SHA/角色受控原始校准成员与封存状态，输出车型/时钟/局部归一化/统一分层摘要；独立订阅式工程基准消费小型摘要，不调用正式校准/Gate evaluator，旧Stage0.2/0.3/0.4及P2语义不变。
+
+
+## 2026-10-19 B1.2 分层准入与机制再验证
+
+B1.2独立观测/执行层stage_0_5_b12_{observation,network,runtime,worker}.py：内部步全边分层数值、身份守恒与局部穿越分账、显式junction路径与分车道队列。主矩阵由observability_integration_audit准入，首个fixture终速不一致使准入false；未执行的主入口不代表动态验证完成。

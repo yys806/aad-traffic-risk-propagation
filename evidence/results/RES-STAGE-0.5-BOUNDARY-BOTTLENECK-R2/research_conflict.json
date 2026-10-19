@@ -1,0 +1,67 @@
+{
+  "Documented_Intent": "Nonaction final signed vNext always equals v0+a_pub_start*h without vehicle control",
+  "Actual_Implementation": "Official source has conditional near-zero snap after continuation; actual nonaction positive candidate != reported zero speed",
+  "Evidence": {
+    "anomaly": {
+      "before": {
+        "run_id": "b12_integration_C",
+        "vehicle_id": "v00010",
+        "incarnation_id": "b12_integration_C|v00010",
+        "time_s": 19.7,
+        "edge_id": "main_1",
+        "lane_id": "main_1_1",
+        "position_m": 65.01839861712263,
+        "speed_mps": 6.4835987978100174e-06,
+        "acceleration_mps2": -3.651175106531166e-05,
+        "last_action_time_s": 19.65,
+        "length_m": 4.4196,
+        "traveled_distance_m": 135.11879861712265,
+        "x_m": 139.63839861712262,
+        "y_m": 27.2,
+        "traci_vehicle_control": false,
+        "numerical_config_verified": true
+      },
+      "after": {
+        "run_id": "b12_integration_C",
+        "vehicle_id": "v00010",
+        "incarnation_id": "b12_integration_C|v00010",
+        "time_s": 19.75,
+        "edge_id": "main_1",
+        "lane_id": "main_1_1",
+        "position_m": 65.0183987792126,
+        "speed_mps": 0.0,
+        "acceleration_mps2": -0.00012967197595620034,
+        "last_action_time_s": 19.65,
+        "length_m": 4.4196,
+        "traveled_distance_m": 135.11879877921263,
+        "x_m": 139.6383987792126,
+        "y_m": 27.2,
+        "traci_vehicle_control": false,
+        "numerical_config_verified": true
+      },
+      "classification": "Not Evaluable",
+      "candidate": null,
+      "residual_m": null,
+      "actual_dx_m": null,
+      "expected_dx_m": null,
+      "bounds_m": null,
+      "passed": null,
+      "blocker": "candidate_terminal_speed_inconsistent",
+      "reason": "candidate_terminal_speed_inconsistent",
+      "is_action": false
+    },
+    "presnap_prediction_mps": 4.6580112445444345e-06,
+    "reported_terminal_mps": 0.0,
+    "measured_dx_m": 1.620899752197147e-07,
+    "hypothetical_post_snap_dx_m": 1.6208996994525045e-07,
+    "hypothesis_residual_m": 5.2744642363851776e-15,
+    "not_retrospective_acceptance": true
+  },
+  "Affected_Files": [
+    "stage_0_5_stopping_observability.py::reconstruct_signed_vnext",
+    "stage_0_5_b12_observation.py::audit_transition"
+  ],
+  "Conflict": "Previous observed micro domain does not cover all near-zero postprocessing; thresholds unchanged",
+  "Status": "Awaiting Researcher Decision",
+  "no_formula_or_policy_change_after_stop": true
+}

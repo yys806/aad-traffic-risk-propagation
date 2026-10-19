@@ -76,3 +76,8 @@ B0入口：`docs/STAGE_0_5_TASK_0_5_4B0_EXPLORATORY_RESPONSE_DIAGNOSTICS.md`、`
 ## B1.1-S 停车可观测性入口
 
 报告：`docs/STAGE_0_5_TASK_0_5_4B1_1S_STOPPING_OBSERVABILITY.md`；计划：`docs/plans/2026-10-19-stage-0-5-4b1-1s.md`；入口：`code/scripts/run_stage_0_5_stopping_observability.py`；便携校验：`code/scripts/verify_stage_0_5_observability_evidence.py`。结果`RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1`；非决策步停车精确可核验、决策步停车仍Bounded、无调试二进制、旧B1/B1.1状态不变。
+
+
+## 2026-10-19 B1.2 分层准入与机制再验证
+
+报告docs/STAGE_0_5_TASK_0_5_4B1_2_BOUNDARY_BOTTLENECK_REVALIDATION.md；计划docs/plans/2026-10-19-stage-0-5-4b1-2.md；入口code/scripts/run_stage_0_5_boundary_revalidation.py；便携校验code/scripts/verify_stage_0_5_revalidation_evidence.py；结果RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2。前置近零终速异常阻断，主矩阵0/8。

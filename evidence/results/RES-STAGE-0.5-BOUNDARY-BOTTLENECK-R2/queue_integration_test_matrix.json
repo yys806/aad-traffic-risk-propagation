@@ -1,0 +1,173 @@
+{
+  "checks": [
+    {
+      "run_id": "b12_integration_C",
+      "check": "completed_without_engineering_blocker",
+      "passed": false,
+      "evidence": {
+        "run_id": "b12_integration_C",
+        "status": "completed_with_engineering_blocker",
+        "started_utc": "2026-10-19T07:40:53.113953Z",
+        "exit_code": 0,
+        "failure": null,
+        "wall_s": 8.388672599998245,
+        "peak_sampled_tree_rss_bytes": 136077312,
+        "blockers": [
+          "ValueError: candidate_terminal_speed_inconsistent"
+        ],
+        "warnings": [],
+        "bytes": 1018370
+      }
+    },
+    {
+      "run_id": "b12_integration_C",
+      "check": "full_duration",
+      "passed": false,
+      "evidence": 19.7
+    },
+    {
+      "run_id": "b12_integration_C",
+      "check": "numerical_layered_admission",
+      "passed": false,
+      "evidence": {
+        "all_adjacent_edges": 10145,
+        "classifications": {
+          "Exact Observable": {
+            "count": 5028,
+            "fraction": 0.4956136027599803
+          },
+          "Exact Reconstructable Under Verified Conditions": {
+            "count": 5019,
+            "fraction": 0.4947264662395269
+          },
+          "Bounded Consistency Only": {
+            "count": 14,
+            "fraction": 0.0013799901429275504
+          },
+          "Not Evaluable": {
+            "count": 84,
+            "fraction": 0.008279940857565303
+          }
+        },
+        "max_abs_residual_m": 7.105427357601002e-15,
+        "blockers": {
+          "candidate_terminal_speed_inconsistent": 1
+        }
+      }
+    },
+    {
+      "run_id": "b12_integration_C",
+      "check": "local_entry_and_exit_measured",
+      "passed": true,
+      "evidence": [
+        32,
+        21
+      ]
+    },
+    {
+      "run_id": "b12_integration_C",
+      "check": "cross_edge_and_junction_actual",
+      "passed": true,
+      "evidence": {
+        "same_edge": 9662,
+        "cross_edge": 71
+      }
+    },
+    {
+      "run_id": "b12_integration_C",
+      "check": "downstream_exit",
+      "passed": true,
+      "evidence": 6
+    },
+    {
+      "run_id": "b12_integration_C",
+      "check": "physical_gap",
+      "passed": true,
+      "evidence": 0.0
+    },
+    {
+      "run_id": "b12_integration_C",
+      "check": "internal_queue",
+      "passed": true,
+      "evidence": {
+        "internal_queue": 11.0,
+        "inlet_queue": 12.0,
+        "supported_spillback": null,
+        "upstream_extension": 12.0
+      }
+    },
+    {
+      "run_id": "b12_integration_C",
+      "check": "inlet_and_physical_pending",
+      "passed": false,
+      "evidence": {
+        "No On-Road Queue": 10,
+        "On-Road Queue Observed": 1,
+        "Inlet-Adjacent Queue Observed": 1,
+        "Upstream Queue Extension Observed": 7
+      }
+    },
+    {
+      "run_id": "b12_integration_D",
+      "check": "completed_without_engineering_blocker",
+      "passed": false,
+      "evidence": {
+        "run_id": "b12_integration_D",
+        "status": "not_attempted"
+      }
+    },
+    {
+      "run_id": "b12_integration_D",
+      "check": "full_duration",
+      "passed": false,
+      "evidence": null
+    },
+    {
+      "run_id": "b12_integration_D",
+      "check": "numerical_layered_admission",
+      "passed": false,
+      "evidence": {
+        "all_adjacent_edges": null,
+        "classifications": null,
+        "max_abs_residual_m": null,
+        "blockers": null
+      }
+    },
+    {
+      "run_id": "b12_integration_D",
+      "check": "local_entry_and_exit_measured",
+      "passed": false,
+      "evidence": [
+        null,
+        null
+      ]
+    },
+    {
+      "run_id": "b12_integration_D",
+      "check": "cross_edge_and_junction_actual",
+      "passed": false,
+      "evidence": null
+    },
+    {
+      "run_id": "b12_integration_D",
+      "check": "downstream_exit",
+      "passed": false,
+      "evidence": null
+    },
+    {
+      "run_id": "b12_integration_D",
+      "check": "physical_gap",
+      "passed": false,
+      "evidence": null
+    },
+    {
+      "run_id": "b12_integration_D",
+      "check": "mandatory_lane_change",
+      "passed": false,
+      "evidence": null
+    }
+  ],
+  "candidate_software_behavior": "Verified by synthetic tests",
+  "actual_SUMO_integration_verified": false,
+  "scientific_traffic_validity": "Not Established"
+}

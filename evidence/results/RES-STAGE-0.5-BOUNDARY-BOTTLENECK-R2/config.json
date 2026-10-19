@@ -1,0 +1,92 @@
+{
+  "fixed": {
+    "maxSpeed": 27.78,
+    "speedFactor": 1.0,
+    "speedDev": 0.0,
+    "carFollowModel": "Krauss",
+    "tau": 1.0,
+    "minGap": 2.5,
+    "accel": 2.6,
+    "decel": 4.5,
+    "apparentDecel": 4.5,
+    "emergencyDecel": 9.0,
+    "sigma": 0.5,
+    "actionStepLength": 0.1,
+    "sigmaStep": 1.0,
+    "laneChangeModel": "LC2013"
+  },
+  "queue_candidate": {
+    "status": "engineering_candidate_for_B1_2",
+    "speed_low_mps": 5.0,
+    "stopped_speed_mps": 0.1,
+    "minimum_queue_vehicles": 2,
+    "max_net_gap_m": 10.0,
+    "grid_m": 50.0,
+    "cell_low_fraction": 0.5,
+    "inlet_zone_m": 50.0,
+    "anchor_zone_m": 50.0,
+    "duration_s": 2.0,
+    "snapshot_step_s": 1.0,
+    "position_uncertainty_m": "Unknown"
+  },
+  "runs": [
+    {
+      "run_id": "b12_integration_C",
+      "condition": "C",
+      "network": "inputs/b12_integration_C/b12.net.xml",
+      "config": "inputs/b12_integration_C.sumocfg",
+      "demand": "inputs/b12_integration_C.rou.xml",
+      "duration_s": 60.0,
+      "seed": 20261019,
+      "local_space": {
+        "edge": "main_1",
+        "start_m": 10.0,
+        "end_m": 40.0,
+        "lanes": 3,
+        "lane_km": 0.09
+      },
+      "expected": {
+        "conservation": true,
+        "local_crossings": true,
+        "edge_transition": true,
+        "junction": true,
+        "all_three_lanes": true,
+        "queue_to_inlet": true,
+        "mandatory_lane_change": false,
+        "downstream_exit": true
+      }
+    },
+    {
+      "run_id": "b12_integration_D",
+      "condition": "D",
+      "network": "inputs/b12_integration_D/b12.net.xml",
+      "config": "inputs/b12_integration_D.sumocfg",
+      "demand": "inputs/b12_integration_D.rou.xml",
+      "duration_s": 60.0,
+      "seed": 20261019,
+      "local_space": {
+        "edge": "main_1",
+        "start_m": 50.0,
+        "end_m": 250.0,
+        "lanes": 3,
+        "lane_km": 0.6
+      },
+      "expected": {
+        "conservation": true,
+        "local_crossings": true,
+        "edge_transition": true,
+        "junction": true,
+        "all_three_lanes": true,
+        "queue_to_inlet": false,
+        "mandatory_lane_change": true,
+        "downstream_exit": true
+      }
+    }
+  ],
+  "internal_step_s": 0.05,
+  "recorded_step_s": 0.1,
+  "ballistic": true,
+  "threads": 1,
+  "traci_vehicle_control": false,
+  "formal_main_plan": null
+}

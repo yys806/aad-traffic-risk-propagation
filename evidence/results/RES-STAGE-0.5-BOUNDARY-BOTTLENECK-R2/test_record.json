@@ -1,0 +1,158 @@
+{
+  "pre_freeze": {
+    "passed": 142,
+    "failed": 0,
+    "skipped": 0,
+    "command": [
+      "D:\\miniconda\\python.exe",
+      "-S",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_boundary_revalidation_b12_v2\\runtime\\code\\scripts\\b1_test_entry.py",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_boundary_revalidation_b12_v2\\runtime\\code\\tests\\test_stage_0_5_b12_integration.py",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_boundary_revalidation_b12_v2\\runtime\\code\\tests\\test_stage_0_5_boundary_bottleneck.py",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_boundary_revalidation_b12_v2\\runtime\\code\\tests\\test_stage_0_5_queue_contract.py",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_boundary_revalidation_b12_v2\\runtime\\code\\tests\\test_stage_0_5_stopping_contract.py",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_boundary_revalidation_b12_v2\\runtime\\code\\tests\\test_stage_0_5_stopping_observability.py",
+      "-q",
+      "-c",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_boundary_revalidation_b12_v2\\runtime\\code\\pytest.ini",
+      "--rootdir",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_boundary_revalidation_b12_v2\\runtime\\code",
+      "--basetemp",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_boundary_revalidation_b12_v2\\test_tmp\\1792395614958142100",
+      "-o",
+      "cache_dir=D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_boundary_revalidation_b12_v2\\runtime_cache\\pytest"
+    ],
+    "record_sha256": "b4a3f5e112c028cf381a19762ca21bcdbd409c7fa3341fe8d73f051c9f90a9e5"
+  },
+  "TDD_before_fix": {
+    "failed": 16,
+    "passed": 11
+  },
+  "targeted_after_fix": {
+    "passed": 27
+  },
+  "final_validation": "Completed for actual closure scope; no scientific admission",
+  "data_skips_are_not_scientific_pass": true,
+  "targeted_closure": {
+    "passed": 74,
+    "failed": 0,
+    "skipped": 0
+  },
+  "pure_git_full": {
+    "passed": 626,
+    "failed": 0,
+    "skipped": 14,
+    "wall_s": 139.34,
+    "command": "python -m pytest tests -q -rs",
+    "snapshot": {
+      "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_boundary_revalidation_b12_v2\\git_validation_precommit",
+      "tree": "d60feafa801899a5b39adc01bc36b8e27f722d36",
+      "commit": "ba6b7bedc45e915fcc4453d1386a64f0bb83e2bd",
+      "tracked_files_only": true
+    },
+    "skip_records": [
+      {
+        "file": "test_see_v2x_reaudit.py",
+        "line": 75,
+        "reason": "raw sample not present (pure-clone mode)"
+      },
+      {
+        "file": "test_simulation_real_coverage.py",
+        "line": 377,
+        "reason": "sealed Stage0.3 canonical pNEUMA unavailable"
+      },
+      {
+        "file": "test_stage_0_2_task_2_5_1_targeted_validation.py",
+        "line": 55,
+        "reason": "sealed local Task2.5.1 CSV/PDF unavailable"
+      },
+      {
+        "file": "test_stage_0_2_task_2_5_2_key_difference_cases.py",
+        "line": 9,
+        "reason": "sealed local Task2.5.2 CSV/PDF unavailable"
+      },
+      {
+        "file": "test_stage_0_2_task_2_5_2_key_difference_cases.py",
+        "line": 15,
+        "reason": "sealed local Task2.5.2 CSV/PDF unavailable"
+      },
+      {
+        "file": "test_stage_0_2_task_2_5_2_key_difference_cases.py",
+        "line": 23,
+        "reason": "sealed local Task2.5.2 CSV/PDF unavailable"
+      },
+      {
+        "file": "test_stage_0_2_task_2_5_2_key_difference_cases.py",
+        "line": 28,
+        "reason": "sealed local Task2.5.2 CSV/PDF unavailable"
+      },
+      {
+        "file": "test_stage_0_2_task_2_5_threshold_validation.py",
+        "line": 10,
+        "reason": "sealed local Task2.5 outputs unavailable"
+      },
+      {
+        "file": "test_stage_0_2_task_2_5_threshold_validation.py",
+        "line": 17,
+        "reason": "sealed local Task2.5 outputs unavailable"
+      },
+      {
+        "file": "test_stage_0_2_task_2_5_threshold_validation.py",
+        "line": 24,
+        "reason": "sealed local Task2.5 outputs unavailable"
+      },
+      {
+        "file": "test_stage_0_2_task_2_5_threshold_validation.py",
+        "line": 31,
+        "reason": "sealed local Task2.5 outputs unavailable"
+      },
+      {
+        "file": "test_stage_0_2_task_2_5_threshold_validation.py",
+        "line": 38,
+        "reason": "sealed local Task2.5 outputs unavailable"
+      },
+      {
+        "file": "test_stage_0_2_task_2_5_threshold_validation.py",
+        "line": 44,
+        "reason": "sealed local Task2.5 outputs unavailable"
+      },
+      {
+        "file": "test_stage_0_5_boundary_bottleneck.py",
+        "line": 72,
+        "reason": "dedicated -S capsule bootstrap test; exercised in preflight"
+      }
+    ],
+    "local_data_skips": 13,
+    "capsule_only_skips": 1
+  },
+  "compileall": {
+    "passed": true,
+    "scope": [
+      "code/src",
+      "code/scripts",
+      "code/tests"
+    ]
+  },
+  "pure_git_docs": {
+    "passed": true,
+    "command": "python code/scripts/validate_project_docs.py --strict-git --require-clean"
+  },
+  "portable_verify": {
+    "passed": true,
+    "bundled_inputs": 12,
+    "frozen_runtime_files": 31
+  },
+  "root_docs": {
+    "passed": false,
+    "reason": "Pre-existing unmodified literature index deletion; researcher explicitly excludes repair"
+  },
+  "visual_QA": {
+    "passed": true,
+    "figures": 3,
+    "local_only": true
+  },
+  "controlled_data_regression": {
+    "passed": true,
+    "scope": "142 capsule synthetic/stop/approved two-window projection preflight; not historical full-source real-data regression"
+  }
+}

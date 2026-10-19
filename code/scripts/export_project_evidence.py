@@ -50,6 +50,7 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         "RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1": [],
         "RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1": [],
         "RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1": [],
+        "RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2": [],
         "RES-STAGE-0.6-PRELOCK-V2": [],
         "RES-PROTOCOL-READINESS-V1": [
             (
@@ -269,6 +270,24 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
     ):
         pairs["RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1"].append(
             (f"code/outputs/formal/calibration/stage_0_5_stopping_observability_v3/summary/{name}", name)
+        )
+    for name in (
+        "analysis_access_audit.json", "audit.json", "boundary_condition_manifest.json", "config.json",
+        "controlled_access_audit.json", "coordinate_support_audit.json", "data_isolation_preflight.json",
+        "empty_network_prechecks.json", "engineering_input_bundle.json", "execution_guard_audit.json",
+        "execution_ledger.json", "execution_stop_observation.json", "experiment_plan.json", "following_risk_diagnostics.json",
+        "git_source_binding_audit.json", "historical_status_preservation.json", "integration_ledger.json", "integration_plan.json",
+        "local_global_accounting_audit.json", "manifest.json", "mechanism_hypothesis_matrix.json", "near_zero_source_audit.json",
+        "network_variant_manifest.json", "numerical_admission_policy.json", "numerical_branch_coverage.json",
+        "observability_integration_audit.json", "official_source_manifest.json", "PLAN_SHA256", "preparation_manifest.json",
+        "prior_unexecuted_ledger.json", "prior_unexecuted_plan.json", "provenance.json", "queue_integration_contract.json",
+        "queue_integration_test_matrix.json", "queue_spillback_diagnostics.json", "renderer_revision_audit.json", "report.md",
+        "research_conflict.json", "researcher_decision_matrix.json", "run_manifest.json", "runtime_budget_audit.json",
+        "SHA256SUMS", "source_manifest.json", "source_staging_manifest.json", "spacetime_diagnostics.json",
+        "test_record.json", "traffic_state_comparison.json",
+    ):
+        pairs["RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2"].append(
+            (f"code/outputs/formal/calibration/stage_0_5_boundary_revalidation_b12_v2/summary/{name}", name)
         )
     # The Stage 0.5.3 measurement probe package is exported under the same result id
     # in its own subdirectory so that the two engineering fixtures stay distinguishable.

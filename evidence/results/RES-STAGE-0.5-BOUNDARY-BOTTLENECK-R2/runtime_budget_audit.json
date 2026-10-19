@@ -1,0 +1,44 @@
+{
+  "integration_limits": {
+    "max_runs": 2,
+    "per_run_wall_s": 180,
+    "batch_wall_s": 600,
+    "memory_bytes": 3221225472,
+    "artifact_bytes": 1073741824
+  },
+  "actual": [
+    {
+      "run_id": "b12_integration_C",
+      "status": "completed_with_engineering_blocker",
+      "started_utc": "2026-10-19T07:40:53.113953Z",
+      "exit_code": 0,
+      "failure": null,
+      "wall_s": 8.388672599998245,
+      "peak_sampled_tree_rss_bytes": 136077312,
+      "blockers": [
+        "ValueError: candidate_terminal_speed_inconsistent"
+      ],
+      "warnings": [],
+      "bytes": 1018370
+    },
+    {
+      "run_id": "b12_integration_D",
+      "status": "not_attempted"
+    }
+  ],
+  "traffic_attempts": 1,
+  "additional_fixture_attempts": 0,
+  "total_fixture_limit": 2,
+  "main_runs": 0,
+  "main_budget_frozen": false,
+  "main_estimate_only": {
+    "freeflow_wall_s": 150,
+    "constrained_wall_s": 450,
+    "per_run_cap_s": 600,
+    "batch_cap_s": 7200,
+    "memory_GiB": 6,
+    "artifact_GiB": 4
+  },
+  "full_P2_cost": "Not Measured; no main run",
+  "queue_cost": "Included in partial worker wall; not separately timed"
+}

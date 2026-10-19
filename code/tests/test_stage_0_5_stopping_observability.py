@@ -18,8 +18,8 @@ def test_action_step_detection_uses_step_start_alignment():
     assert step_is_action(7.05, 7.1, 0.05, 0.1) is False
     # Step [7.15 -> 7.2]: lastAction read at 7.2 equals 7.15 -> action step
     assert step_is_action(7.15, 7.15, 0.05, 0.1) is True
-    # lastAction one full action period earlier -> non-action
-    assert step_is_action(7.1, 7.25, 0.05, 0.1) is False
+    # A timestamp older than an action period is inconsistent, not non-action.
+    assert step_is_action(7.1, 7.25, 0.05, 0.1) is None
     # floating-point tolerance near the grid
     assert step_is_action(7.15 + 1e-9, 7.15, 0.05, 0.1) is True
 
@@ -106,3 +106,19 @@ def test_reconstruct_rejects_nonfinite_and_nonpositive():
 
 def test_tolerance_is_fixed_not_result_derived():
     assert TOLERANCE_M == 1e-6
+
+
+@pytest.mark.parametrize("bad", [None, 0, 1, "false", "True", [], {}, 0.0])
+def test_unknown_or_non_boolean_action_never_reconstructs(bad):
+    r = reconstruct_signed_vnext(.1, -4.5, .05, is_action=bad, v1=0.)
+    assert r == dict(candidate=None, classification="Not Evaluable",
+                     reason="action_step_identity_not_boolean")
+
+
+@pytest.mark.parametrize("last,start,h,action", [
+    (0., .15, .05, .1), (.03, .05, .05, .1), (0., .05, 0., .1),
+    (0., .05, float("nan"), .1), (0., .05, .2, .1),
+    (0., .05, .05, .075), (False, .05, .05, .1),
+])
+def test_inconsistent_action_clock_is_unknown(last, start, h, action):
+    assert step_is_action(last, start, h, action) is None

@@ -1,0 +1,23 @@
+{
+  "version": "b12-integration-v1",
+  "policy": "B researcher approved for B1.2 engineering only",
+  "tolerance_m": 1e-06,
+  "exact": "positive decision endpoint; nondecision v0+a_start*h including negative; stationary zero",
+  "bounded": "decision v1=0 with v0>0; 0<=dx<=.5*v0*h; never Exact Pass",
+  "legal_not_evaluable": [
+    "edge transition",
+    "lane change"
+  ],
+  "unknown_action": "blocker; never treated nondecision",
+  "blockers": [
+    "identity",
+    "clock",
+    "control unknown",
+    "config",
+    "exact residual",
+    "bounded range",
+    "interface inconsistency"
+  ],
+  "arbitrary_unevaluable_fraction_limit": null,
+  "critical_location_policy": "Evidence Insufficient; do not qualify mechanism if its essential position/continuity is unsupported"
+}

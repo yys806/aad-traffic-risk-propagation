@@ -46,10 +46,17 @@ def step_is_action(last_action_time_at_end, step_start_time, step_s, action_step
     The step is an action step iff that value equals the step-start time (the
     action was taken at the step start). Returns None on unusable inputs.
     """
-    if not all(isinstance(x, (int, float)) and math.isfinite(x)
-               for x in (last_action_time_at_end, step_start_time, action_step_s)):
+    if not all(type(x) in (int, float) and math.isfinite(x)
+               for x in (last_action_time_at_end, step_start_time, step_s, action_step_s)):
         return None
-    if action_step_s <= 0:
+    if step_s <= 0 or action_step_s < step_s:
+        return None
+    if abs(action_step_s / step_s - round(action_step_s / step_s)) > _TIME_TOL_S:
+        return None
+    age = step_start_time - last_action_time_at_end
+    if age < -_TIME_TOL_S or age >= action_step_s - _TIME_TOL_S:
+        return None
+    if abs(age / step_s - round(age / step_s)) > _TIME_TOL_S:
         return None
     if abs(last_action_time_at_end - step_start_time) <= _TIME_TOL_S:
         return True
@@ -76,6 +83,9 @@ def reconstruct_signed_vnext(v0, a_pub_start, step_s, *, is_action, v1):
     - is_action False: u = v0 + a_pub_start*h EXACTLY, any sign, including a
       within-step stop u<0 (the carried acceleration may drive vSafe negative).
     """
+    if type(is_action) is not bool:
+        return dict(candidate=None, classification="Not Evaluable",
+                    reason="action_step_identity_not_boolean")
     for x in (v0, a_pub_start, step_s, v1):
         if not isinstance(x, (int, float)) or not math.isfinite(x):
             return dict(candidate=None, classification="Not Evaluable", reason="nonfinite_input")

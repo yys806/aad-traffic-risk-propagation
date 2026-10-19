@@ -1,0 +1,48 @@
+{
+  "passed": false,
+  "global_accounting": "departed identities minus arrived identities == all present identities at every internal step",
+  "local": "independent consecutive local identity-set enters/exits; causes from positions; not global insertion flux",
+  "density": "only observed on-road vehicles / declared fixed lane-km",
+  "external": "scheduled executable due - actual inserted; independently checked against TraCI pending",
+  "raw_evidence": "runs/*/traffic_frames.csv + internal_states.parquet",
+  "checks": [
+    {
+      "run_id": "b12_integration_C",
+      "check": "local_entry_and_exit_measured",
+      "passed": true,
+      "evidence": [
+        32,
+        21
+      ]
+    },
+    {
+      "run_id": "b12_integration_D",
+      "check": "local_entry_and_exit_measured",
+      "passed": false,
+      "evidence": [
+        null,
+        null
+      ]
+    }
+  ],
+  "last_complete_frame_s": 19.7,
+  "last_global": {
+    "inserted": 49,
+    "exited": 6,
+    "present": 43,
+    "pending": 17
+  },
+  "max_global_residual": 0,
+  "max_local_set_residual": 0,
+  "local_entered": 32,
+  "local_exited": 21,
+  "local_vehicle_s": 89.19999999999987,
+  "scope": {
+    "edge": "main_1",
+    "start_m": 10.0,
+    "end_m": 40.0,
+    "lanes": 3,
+    "lane_km": 0.09
+  },
+  "qualification": "Partial fixture Verified; entire integration blocked; local flux never derived from global totals"
+}

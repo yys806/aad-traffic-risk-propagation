@@ -1,0 +1,26 @@
+{
+  "version": "b12-integration-v1",
+  "config": {
+    "status": "engineering_candidate_for_B1_2",
+    "speed_low_mps": 5.0,
+    "stopped_speed_mps": 0.1,
+    "minimum_queue_vehicles": 2,
+    "max_net_gap_m": 10.0,
+    "grid_m": 50.0,
+    "cell_low_fraction": 0.5,
+    "inlet_zone_m": 50.0,
+    "anchor_zone_m": 50.0,
+    "duration_s": 2.0,
+    "snapshot_step_s": 1.0,
+    "position_uncertainty_m": "Unknown"
+  },
+  "main_method": "lane_path_vehicle_graph",
+  "auxiliary": "lane-separated grid",
+  "historical_sensitivity": "pooled grid only; cannot override graph",
+  "lane_change": "reset any component containing a changed member",
+  "missing_frame": "reset; no interpolation",
+  "entry_support": "persistent anchored connected component AND actual pending AND independently blocked assigned insertion lane",
+  "not_evaluable_policy": "legal coordinate changes retained; critical coordinate support/identity/time/control/config mismatch blocks main admission",
+  "science": "Candidate software behavior != Actual SUMO integration verified != Scientific traffic validity",
+  "threshold_adaptation_allowed": false
+}

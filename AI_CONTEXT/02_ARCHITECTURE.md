@@ -82,3 +82,8 @@ formal_risk_measurement.v2与历史0.1s提取/线性指标隔离；正式固定�
 ## B1.1-S 公开接口停车可观测性层（2026-10-19）
 
 `stage_0_5_stopping_observability.py`只读观测：`step_is_action`按步初对齐（`lastActionTime`在步末读数`==t_prev`才为决策步），`reconstruct_signed_vnext`对非决策步给出`u=v0+a_pub_start*h`（任意符号，含步内停车`u<0`），对决策步`v1>0`给出`u=v1`、对决策步`v1==0`只给范围。`run_stage_0_5_stopping_observability`复用B1胶囊/白名单/冻结，3个微型fixture；`stage_0_5_observability_analysis.py`仅描述打包。未用调试二进制、未改官方SUMO与正式TTC/P2；决策步停车仍Bounded。
+
+
+## 2026-10-19 B1.2 分层准入与机制再验证
+
+B1.2新增独立b12_observation/network/runtime/worker：全边.05s分层审计、全网身份与局部边界分账、显式internal lane路径坐标、分车道队列观测/资格、-S胶囊与分阶段准入。旧B1/B1.1执行与P2核心不变。首个真实fixture近零终速不一致使主矩阵阻断；新执行入口不是已验证可用的主机制实验。

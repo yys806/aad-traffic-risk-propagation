@@ -142,8 +142,8 @@
   ],
   "current": {
     "active_experiment_id": "stage_0_5",
-    "active_task": "AAD-0.5.4-B1.1-S public-interface stopping observability completed; non-action-step within-step stop exactly verified, decision-step stop still bounded; researcher decision node.",
-    "why_now": "Non-action-step stopping displacement is now independently exact (u=v0+a_pub_start*h); decision-step stop remains Bounded only. 3 micro runs, 947/948 exact, max1.4211e-14m. Resume B1 C blocker/D not attempted and B0 false/Unknown; no B1.2 or formal calibration.",
+    "active_task": "AAD-0.5.4-B1.2 blocked at numerical integration; no main mechanism runs; awaiting researcher decision on near-zero postprocessing domain and new integration plan.",
+    "why_now": "B1.2 blocked at integration: 10047/10047 exact edges pass,14 bounded,84 not-evaluable (83 legal edge changes +1 candidate terminal mismatch). Fixed SUMO source contains post-continuation near-zero snap; candidate4.658e-6 versus reported0 requires independent domain review. One partial compressed C fixture; D integration and all8 main runs not attempted. No retrospective B1/B1.1/B1.1-S reclassification; no formal calibration or scientific readiness.",
     "next_decision_owner": "researcher",
     "portable_gate_paths": [
       "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",
@@ -157,7 +157,8 @@
       "evidence/results/RES-STAGE-0.5-EXPLORATORY-RESPONSE-V1/audit.json",
       "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/audit.json",
       "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/audit.json",
-      "evidence/results/RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1/audit.json"
+      "evidence/results/RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1/audit.json",
+      "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/audit.json"
     ],
     "local_gate_paths": [
       "code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r4/scientific_gate_report.json",
@@ -169,7 +170,8 @@
       "code/outputs/formal/calibration/stage_0_5_exploratory_response_v1/audit.json",
       "code/outputs/formal/calibration/stage_0_5_boundary_bottleneck_v2/summary/audit.json",
       "code/outputs/formal/calibration/stage_0_5_stopping_spillback_v1/summary/audit.json",
-      "code/outputs/formal/calibration/stage_0_5_stopping_observability_v3/summary/audit.json"
+      "code/outputs/formal/calibration/stage_0_5_stopping_observability_v3/summary/audit.json",
+      "code/outputs/formal/calibration/stage_0_5_boundary_revalidation_b12_v2/summary/audit.json"
     ]
   },
   "experiments": [
@@ -398,7 +400,7 @@
       "research_question": "SUMO 基础运动与跟驰风险是否明显脱离真实交通范围？",
       "date": "2026-09-07",
       "status": "active_pending_simulation_sample",
-      "code_version": "canonical real reference R2, independent Stage 0.5.3 no-message SUMO engineering skeleton, and the Stage 0.5.4-A measurement-equivalence/calibration-readiness audit; no scientific calibration and no frozen scientific parameter; B0 bounded exploration with explicit ballistic and guarded batch inputs; no formal calibration; B1 capsule -S whitelist/stop supervisor with fixed-behaviour boundary mechanisms (closed early)",
+      "code_version": "canonical real reference R2, independent Stage 0.5.3 no-message SUMO engineering skeleton, and the Stage 0.5.4-A measurement-equivalence/calibration-readiness audit; no scientific calibration and no frozen scientific parameter; B0 bounded exploration with explicit ballistic and guarded batch inputs; no formal calibration; B1 capsule -S whitelist/stop supervisor with fixed-behaviour boundary mechanisms (closed early); B1.2 independent layered numerical/queue integration blocked before main matrix",
       "code_paths": [
         "code/src/riskprop/simulation_real_coverage.py",
         "code/src/riskprop/stage_0_5_sumo.py",
@@ -413,7 +415,12 @@
         "code/src/riskprop/stage_0_5_stopping_contract.py",
         "code/src/riskprop/stage_0_5_queue_contract.py",
         "code/src/riskprop/stage_0_5_contract_fixtures.py",
-        "code/src/riskprop/stage_0_5_contract_analysis.py"
+        "code/src/riskprop/stage_0_5_contract_analysis.py",
+        "code/src/riskprop/stage_0_5_b12_observation.py",
+        "code/src/riskprop/stage_0_5_b12_network.py",
+        "code/src/riskprop/stage_0_5_b12_runtime.py",
+        "code/src/riskprop/stage_0_5_b12_worker.py",
+        "code/src/riskprop/stage_0_5_stopping_observability.py"
       ],
       "entrypoints": [
         "code/scripts/prepare_stage_0_5_real_reference.py",
@@ -434,7 +441,10 @@
         "code/scripts/verify_stage_0_5_boundary_evidence.py",
         "code/scripts/run_stage_0_5_stopping_spillback.py",
         "code/scripts/verify_stage_0_5_stopping_evidence.py",
-        "code/scripts/finalize_stage_0_5_stopping_spillback.py"
+        "code/scripts/finalize_stage_0_5_stopping_spillback.py",
+        "code/scripts/run_stage_0_5_boundary_revalidation.py",
+        "code/scripts/finalize_stage_0_5_boundary_revalidation.py",
+        "code/scripts/verify_stage_0_5_revalidation_evidence.py"
       ],
       "test_paths": [
         "code/tests/test_simulation_real_coverage.py",
@@ -445,7 +455,10 @@
         "code/tests/test_stage_0_5_b1_evidence.py",
         "code/tests/test_stage_0_5_stopping_contract.py",
         "code/tests/test_stage_0_5_queue_contract.py",
-        "code/tests/test_stage_0_5_b11_evidence.py"
+        "code/tests/test_stage_0_5_b11_evidence.py",
+        "code/tests/test_stage_0_5_b12_integration.py",
+        "code/tests/test_stage_0_5_b12_evidence.py",
+        "code/tests/test_stage_0_5_stopping_observability.py"
       ],
       "configuration": "R2 real reference plus two no_message_baseline generic-highway engineering fixtures (baseline_mixed_demand, measurement_probe_queue_stop); US-101 primary, Lankershim auxiliary entry-only, pNEUMA urban kinematics entry-only; all network/demand/vType/behaviour/time settings are engineering_fixture_only",
       "parameters": {
@@ -510,7 +523,14 @@
         "b11s_decision_step_stop_exact": false,
         "b11s_decision_step_stop_status": "Bounded Consistency Only",
         "b11s_debug_binary_used": false,
-        "b1_2_started": false
+        "b1_2_started": true,
+        "b1_2_result_id": "RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2",
+        "b1_2_numerical_policy": "B engineering only",
+        "b1_2_main_matrix_allowed": false,
+        "b1_2_main_runs": 0,
+        "b1_2_integration_attempts": 1,
+        "b1_2_integration_blocker": "candidate_terminal_speed_inconsistent: near-zero post-continuation source branch",
+        "b1_2_queue_candidate_scientifically_approved": false
       },
       "data_version": "RES-STAGE-0.5-REAL-REF-R2; Stage 0.2 R4 four states + final_r1 P2 + Stage 0.3 R2 canonical/R3 summaries",
       "model": "deterministic simulation-to-real coverage audit",
@@ -524,7 +544,8 @@
         "RES-STAGE-0.5-EXPLORATORY-RESPONSE-V1",
         "RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1",
         "RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1",
-        "RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1"
+        "RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1",
+        "RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2"
       ],
       "core_metrics": [
         "formal_input_manifest",
@@ -562,7 +583,7 @@
         "source_time_coverage",
         "density_scaled_engineering_cost"
       ],
-      "current_conclusion": "B1.1-S: non-action-step ballistic stopping (incl. u<0 within-step stop) exactly reconstructed from public TraCI (u=v0+a_pub_start*h); decision-step terminal stop remains Bounded only. 3 micro runs,947/948 exact(max1.4211e-14m),1 bounded,0 not-evaluable,0 anomaly; no debug binary. B1.1 exact normal branches and queue candidates unchanged. B1 C/D preserved; B0 isolation false/Unknown preserved. No formal calibration readiness.",
+      "current_conclusion": "B1.2 blocked at integration: 10047/10047 exact edges pass,14 bounded,84 not-evaluable (83 legal edge changes +1 candidate terminal mismatch). Fixed SUMO source contains post-continuation near-zero snap; candidate4.658e-6 versus reported0 requires independent domain review. One partial compressed C fixture; D integration and all8 main runs not attempted. No retrospective B1/B1.1/B1.1-S reclassification; no formal calibration or scientific readiness.",
       "gate": {
         "status": "pending_simulation_sample",
         "portable_path": "evidence/results/RES-STAGE-0.5-REAL-REF-R2/audit.json"
@@ -2240,6 +2261,91 @@
       "gate_status": "pending_simulation_sample",
       "paper_locations": [
         "docs/STAGE_0_5_TASK_0_5_4B1_1S_STOPPING_OBSERVABILITY.md"
+      ],
+      "scientific_claim_eligible": false
+    },
+    {
+      "id": "RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2",
+      "experiment_id": "stage_0_5",
+      "name": "AAD-0.5.4-B1.2 layered numerical admission and boundary bottleneck revalidation",
+      "purpose": "Integrate layered numerical and queue contracts before a separately frozen mechanism matrix; stop on engineering inconsistencies.",
+      "date": "2026-10-19",
+      "status": "blocked_at_integration_precondition",
+      "portable_evidence_paths": [
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/analysis_access_audit.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/audit.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/boundary_condition_manifest.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/config.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/controlled_access_audit.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/coordinate_support_audit.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/data_isolation_preflight.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/empty_network_prechecks.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/engineering_input_bundle.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/execution_guard_audit.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/execution_ledger.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/execution_stop_observation.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/experiment_plan.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/following_risk_diagnostics.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/git_source_binding_audit.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/historical_status_preservation.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/integration_ledger.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/integration_plan.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/local_global_accounting_audit.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/manifest.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/mechanism_hypothesis_matrix.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/near_zero_source_audit.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/network_variant_manifest.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/numerical_admission_policy.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/numerical_branch_coverage.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/observability_integration_audit.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/official_source_manifest.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/PLAN_SHA256",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/preparation_manifest.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/prior_unexecuted_ledger.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/prior_unexecuted_plan.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/provenance.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/queue_integration_contract.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/queue_integration_test_matrix.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/queue_spillback_diagnostics.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/renderer_revision_audit.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/report.md",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/research_conflict.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/researcher_decision_matrix.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/run_manifest.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/runtime_budget_audit.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/SHA256SUMS",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/source_manifest.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/source_staging_manifest.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/spacetime_diagnostics.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/test_record.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/traffic_state_comparison.json"
+      ],
+      "local_artifact_paths": [
+        "code/outputs/formal/calibration/stage_0_5_boundary_revalidation_b12_v1",
+        "code/outputs/formal/calibration/stage_0_5_boundary_revalidation_b12_v2"
+      ],
+      "code_version_source": "code/src/riskprop/stage_0_5_b12_observation.py; code/src/riskprop/stage_0_5_b12_network.py; code/src/riskprop/stage_0_5_b12_runtime.py; code/src/riskprop/stage_0_5_b12_worker.py; code/src/riskprop/stage_0_5_stopping_observability.py; code/scripts/run_stage_0_5_boundary_revalidation.py; code/scripts/finalize_stage_0_5_boundary_revalidation.py; code/scripts/verify_stage_0_5_revalidation_evidence.py; code/tests/test_stage_0_5_b12_integration.py; code/tests/test_stage_0_5_b12_evidence.py; code/tests/test_stage_0_5_stopping_observability.py; frozen capsule source SHA in experiment_plan/provenance",
+      "configuration_source": "experiment_plan.json is the integration plan only; main plan NOT frozen; numerical_admission_policy.json and queue_integration_contract.json",
+      "data_version_source": "one partial compressed SUMO fixture;SHA-bound existing two-window aggregate and A+ fleet;fixed official SUMO source audit;no real trajectories,third window,holdout or old C states",
+      "core_metrics": {
+        "integration_attempts": 1,
+        "main_matrix_runs": 0,
+        "main_matrix_allowed": false,
+        "exact_checked": 10047,
+        "exact_passed": 10047,
+        "bounded_edges": 14,
+        "not_evaluable": 84,
+        "legal_coordinate_transitions": 83,
+        "terminal_speed_inconsistencies": 1,
+        "max_exact_abs_residual_m": 7.105427357601002e-15,
+        "queue_scientific_validity": "Not Established",
+        "B1_C_status": "completed_with_engineering_blocker",
+        "B1_D_status": "not_attempted"
+      },
+      "current_conclusion": "B1.2 blocked at integration: 10047/10047 exact edges pass,14 bounded,84 not-evaluable (83 legal edge changes +1 candidate terminal mismatch). Fixed SUMO source contains post-continuation near-zero snap; candidate4.658e-6 versus reported0 requires independent domain review. One partial compressed C fixture; D integration and all8 main runs not attempted. No retrospective B1/B1.1/B1.1-S reclassification; no formal calibration or scientific readiness.",
+      "gate_status": "pending_simulation_sample",
+      "paper_locations": [
+        "docs/STAGE_0_5_TASK_0_5_4B1_2_BOUNDARY_BOTTLENECK_REVALIDATION.md"
       ],
       "scientific_claim_eligible": false
     }

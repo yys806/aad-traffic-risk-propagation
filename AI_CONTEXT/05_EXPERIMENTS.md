@@ -101,3 +101,8 @@ B1 C两阻断和D not_attempted永久保留；B0隔离false/验证物化Unknown�
 B1.1精确停车Pending记录与B1 C/D、B0不变。Gate=pending_simulation_sample，scientific_claim_eligible=false、ready_to_start_stage_0_5_4b=false、reality_coverage_accepted=false；容差Tolerance Not Yet Justified、ED上界Not Identifiable、锁/StageI禁止。方案A/B准入与B1.2前置条件待研究者决定；B1.2不自动执行。
 
 依据：`docs/STAGE_0_5_TASK_0_5_4B1_1S_STOPPING_OBSERVABILITY.md`及同ID便携证据；协议/源码/输入冻结SHA见experiment_plan、PLAN_SHA256和provenance。
+
+
+## 2026-10-19 B1.2 分层准入与机制再验证
+
+RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2：B1.2前置阻断；v1冻结零尝试后被源副本完整性检查替代；v2仅压缩C接入fixture部分运行，最后完整帧19.7s，19.75s一条终速不一致阻断。10047精确全过、14 bounded、84不可评价；D fixture/8主项均not_attempted。局部计数32进入/21离开、全网49进入/6驶出/43在场，71跨edge里程交叉核查。未获完整接入资格，无新原尺度机制/真实覆盖/P2运行结论。

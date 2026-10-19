@@ -1,0 +1,467 @@
+{
+  "version": "b12-integration-v1",
+  "all_adjacent_edges": 10145,
+  "classifications": {
+    "Exact Observable": {
+      "count": 5028,
+      "fraction": 0.4956136027599803
+    },
+    "Exact Reconstructable Under Verified Conditions": {
+      "count": 5019,
+      "fraction": 0.4947264662395269
+    },
+    "Bounded Consistency Only": {
+      "count": 14,
+      "fraction": 0.0013799901429275504
+    },
+    "Not Evaluable": {
+      "count": 84,
+      "fraction": 0.008279940857565303
+    }
+  },
+  "exact_checked": 10047,
+  "exact_passed": 10047,
+  "exact_pass_fraction": 1.0,
+  "max_abs_residual_m": 7.105427357601002e-15,
+  "nonaction_negative_candidates": 25,
+  "action_counts": {
+    "True": 5088,
+    "False": 5057
+  },
+  "reasons": {
+    "action_step_positive_terminal_speed_no_clamp": 4683,
+    "non_action_acceleration_continuation": 5019,
+    "legal_edge_transition": 83,
+    "action_step_terminal_stop_clamped_public_acceleration": 14,
+    "stationary_zero_displacement": 345,
+    "candidate_terminal_speed_inconsistent": 1
+  },
+  "not_evaluable_locations": {
+    "legal_edge_transition|main_0|main_0_0": {
+      "count": 12,
+      "first_s": 2.45,
+      "last_s": 17.55,
+      "vehicle_step_s": 0.6
+    },
+    "legal_edge_transition|main_0|main_0_1": {
+      "count": 12,
+      "first_s": 2.7,
+      "last_s": 18.4,
+      "vehicle_step_s": 0.6
+    },
+    "legal_edge_transition|:hwy_j1_1|:hwy_j1_1_0": {
+      "count": 12,
+      "first_s": 2.75,
+      "last_s": 18.8,
+      "vehicle_step_s": 0.6
+    },
+    "legal_edge_transition|:hwy_j1_1|:hwy_j1_1_1": {
+      "count": 12,
+      "first_s": 3.0,
+      "last_s": 19.7,
+      "vehicle_step_s": 0.6
+    },
+    "legal_edge_transition|main_0|main_0_2": {
+      "count": 12,
+      "first_s": 3.05,
+      "last_s": 19.35,
+      "vehicle_step_s": 0.6
+    },
+    "legal_edge_transition|:hwy_j1_1|:hwy_j1_1_2": {
+      "count": 11,
+      "first_s": 3.35,
+      "last_s": 18.4,
+      "vehicle_step_s": 0.5499999999999999
+    },
+    "legal_edge_transition|main_1|main_1_0": {
+      "count": 2,
+      "first_s": 5.4,
+      "last_s": 6.6,
+      "vehicle_step_s": 0.1
+    },
+    "legal_edge_transition|main_1|main_1_1": {
+      "count": 2,
+      "first_s": 5.65,
+      "last_s": 6.8,
+      "vehicle_step_s": 0.1
+    },
+    "legal_edge_transition|:hwy_j2_1|:hwy_j2_1_0": {
+      "count": 2,
+      "first_s": 5.75,
+      "last_s": 6.9,
+      "vehicle_step_s": 0.1
+    },
+    "legal_edge_transition|:hwy_j2_1|:hwy_j2_1_1": {
+      "count": 2,
+      "first_s": 6.0,
+      "last_s": 7.15,
+      "vehicle_step_s": 0.1
+    },
+    "legal_edge_transition|main_1|main_1_2": {
+      "count": 2,
+      "first_s": 6.0,
+      "last_s": 7.15,
+      "vehicle_step_s": 0.1
+    },
+    "legal_edge_transition|:hwy_j2_1|:hwy_j2_1_2": {
+      "count": 2,
+      "first_s": 6.3,
+      "last_s": 7.5,
+      "vehicle_step_s": 0.1
+    },
+    "candidate_terminal_speed_inconsistent|main_1|main_1_1": {
+      "count": 1,
+      "first_s": 19.75,
+      "last_s": 19.75,
+      "vehicle_step_s": 0.05
+    }
+  },
+  "blockers": {
+    "candidate_terminal_speed_inconsistent": 1
+  },
+  "examples": {
+    "action_step_positive_terminal_speed_no_clamp": {
+      "before": {
+        "run_id": "b12_integration_C",
+        "vehicle_id": "v00000",
+        "incarnation_id": "b12_integration_C|v00000",
+        "time_s": 0.15,
+        "edge_id": "main_0",
+        "lane_id": "main_0_0",
+        "position_m": 4.5196,
+        "speed_mps": 27.78,
+        "acceleration_mps2": 0.0,
+        "last_action_time_s": 0.15,
+        "length_m": 4.4196,
+        "traveled_distance_m": 0.0,
+        "x_m": 4.5196,
+        "y_m": 24.0,
+        "traci_vehicle_control": false,
+        "numerical_config_verified": true
+      },
+      "after": {
+        "run_id": "b12_integration_C",
+        "vehicle_id": "v00000",
+        "incarnation_id": "b12_integration_C|v00000",
+        "time_s": 0.2,
+        "edge_id": "main_0",
+        "lane_id": "main_0_0",
+        "position_m": 5.9086,
+        "speed_mps": 27.78,
+        "acceleration_mps2": 0.0,
+        "last_action_time_s": 0.15,
+        "length_m": 4.4196,
+        "traveled_distance_m": 1.3890000000000002,
+        "x_m": 5.9086,
+        "y_m": 24.0,
+        "traci_vehicle_control": false,
+        "numerical_config_verified": true
+      },
+      "classification": "Exact Observable",
+      "candidate": 27.78,
+      "residual_m": 0.0,
+      "actual_dx_m": 1.3890000000000002,
+      "expected_dx_m": 1.3890000000000002,
+      "bounds_m": null,
+      "passed": true,
+      "blocker": null,
+      "reason": "action_step_positive_terminal_speed_no_clamp",
+      "is_action": true
+    },
+    "non_action_acceleration_continuation": {
+      "before": {
+        "run_id": "b12_integration_C",
+        "vehicle_id": "v00000",
+        "incarnation_id": "b12_integration_C|v00000",
+        "time_s": 0.2,
+        "edge_id": "main_0",
+        "lane_id": "main_0_0",
+        "position_m": 5.9086,
+        "speed_mps": 27.78,
+        "acceleration_mps2": 0.0,
+        "last_action_time_s": 0.15,
+        "length_m": 4.4196,
+        "traveled_distance_m": 1.3890000000000002,
+        "x_m": 5.9086,
+        "y_m": 24.0,
+        "traci_vehicle_control": false,
+        "numerical_config_verified": true
+      },
+      "after": {
+        "run_id": "b12_integration_C",
+        "vehicle_id": "v00000",
+        "incarnation_id": "b12_integration_C|v00000",
+        "time_s": 0.25,
+        "edge_id": "main_0",
+        "lane_id": "main_0_0",
+        "position_m": 7.2976,
+        "speed_mps": 27.78,
+        "acceleration_mps2": 0.0,
+        "last_action_time_s": 0.15,
+        "length_m": 4.4196,
+        "traveled_distance_m": 2.7780000000000005,
+        "x_m": 7.2976,
+        "y_m": 24.0,
+        "traci_vehicle_control": false,
+        "numerical_config_verified": true
+      },
+      "classification": "Exact Reconstructable Under Verified Conditions",
+      "candidate": 27.78,
+      "residual_m": 0.0,
+      "actual_dx_m": 1.3890000000000002,
+      "expected_dx_m": 1.3890000000000002,
+      "bounds_m": null,
+      "passed": true,
+      "blocker": null,
+      "reason": "non_action_acceleration_continuation",
+      "is_action": false
+    },
+    "legal_edge_transition": {
+      "before": {
+        "run_id": "b12_integration_C",
+        "vehicle_id": "v00000",
+        "incarnation_id": "b12_integration_C|v00000",
+        "time_s": 2.4,
+        "edge_id": "main_0",
+        "lane_id": "main_0_0",
+        "position_m": 66.41312177563036,
+        "speed_mps": 27.01404696700981,
+        "acceleration_mps2": -0.16754223776516142,
+        "last_action_time_s": 2.35,
+        "length_m": 4.4196,
+        "traveled_distance_m": 61.89352177563036,
+        "x_m": 66.41312177563036,
+        "y_m": 24.0,
+        "traci_vehicle_control": false,
+        "numerical_config_verified": true
+      },
+      "after": {
+        "run_id": "b12_integration_C",
+        "vehicle_id": "v00000",
+        "incarnation_id": "b12_integration_C|v00000",
+        "time_s": 2.45,
+        "edge_id": ":hwy_j1_1",
+        "lane_id": ":hwy_j1_1_0",
+        "position_m": 1.2636146961836374,
+        "speed_mps": 27.005669855121553,
+        "acceleration_mps2": -0.16754223776516142,
+        "last_action_time_s": 2.35,
+        "length_m": 4.4196,
+        "traveled_distance_m": 63.24401469618364,
+        "x_m": 67.76361469618364,
+        "y_m": 24.0,
+        "traci_vehicle_control": false,
+        "numerical_config_verified": true
+      },
+      "classification": "Not Evaluable",
+      "candidate": null,
+      "residual_m": null,
+      "actual_dx_m": null,
+      "expected_dx_m": null,
+      "bounds_m": null,
+      "passed": null,
+      "blocker": null,
+      "reason": "legal_edge_transition",
+      "is_action": false
+    },
+    "action_step_terminal_stop_clamped_public_acceleration": {
+      "before": {
+        "run_id": "b12_integration_C",
+        "vehicle_id": "v00006",
+        "incarnation_id": "b12_integration_C|v00006",
+        "time_s": 10.45,
+        "edge_id": "main_1",
+        "lane_id": "main_1_0",
+        "position_m": 71.93772964012348,
+        "speed_mps": 0.10692632457403439,
+        "acceleration_mps2": -4.499999999999999,
+        "last_action_time_s": 10.35,
+        "length_m": 4.4196,
+        "traveled_distance_m": 142.0381296401235,
+        "x_m": 146.55772964012348,
+        "y_m": 24.0,
+        "traci_vehicle_control": false,
+        "numerical_config_verified": true
+      },
+      "after": {
+        "run_id": "b12_integration_C",
+        "vehicle_id": "v00006",
+        "incarnation_id": "b12_integration_C|v00006",
+        "time_s": 10.5,
+        "edge_id": "main_1",
+        "lane_id": "main_1_0",
+        "position_m": 71.93899999999981,
+        "speed_mps": 0.0,
+        "acceleration_mps2": -2.138526491480688,
+        "last_action_time_s": 10.45,
+        "length_m": 4.4196,
+        "traveled_distance_m": 142.03939999999983,
+        "x_m": 146.5589999999998,
+        "y_m": 24.0,
+        "traci_vehicle_control": false,
+        "numerical_config_verified": true
+      },
+      "classification": "Bounded Consistency Only",
+      "candidate": null,
+      "residual_m": null,
+      "actual_dx_m": 0.0012703598763295076,
+      "expected_dx_m": null,
+      "bounds_m": [
+        0.0,
+        0.00267315811435086
+      ],
+      "passed": true,
+      "blocker": null,
+      "reason": "action_step_terminal_stop_clamped_public_acceleration",
+      "is_action": true,
+      "bound_violation_m": 0.0
+    },
+    "stationary_zero_displacement": {
+      "before": {
+        "run_id": "b12_integration_C",
+        "vehicle_id": "v00006",
+        "incarnation_id": "b12_integration_C|v00006",
+        "time_s": 10.55,
+        "edge_id": "main_1",
+        "lane_id": "main_1_0",
+        "position_m": 71.93899999999981,
+        "speed_mps": 0.0,
+        "acceleration_mps2": 0.0,
+        "last_action_time_s": 10.45,
+        "length_m": 4.4196,
+        "traveled_distance_m": 142.03939999999983,
+        "x_m": 146.5589999999998,
+        "y_m": 24.0,
+        "traci_vehicle_control": false,
+        "numerical_config_verified": true
+      },
+      "after": {
+        "run_id": "b12_integration_C",
+        "vehicle_id": "v00006",
+        "incarnation_id": "b12_integration_C|v00006",
+        "time_s": 10.6,
+        "edge_id": "main_1",
+        "lane_id": "main_1_0",
+        "position_m": 71.93899999999981,
+        "speed_mps": 0.0,
+        "acceleration_mps2": 0.0,
+        "last_action_time_s": 10.55,
+        "length_m": 4.4196,
+        "traveled_distance_m": 142.03939999999983,
+        "x_m": 146.5589999999998,
+        "y_m": 24.0,
+        "traci_vehicle_control": false,
+        "numerical_config_verified": true
+      },
+      "classification": "Exact Observable",
+      "candidate": null,
+      "residual_m": 0.0,
+      "actual_dx_m": 0.0,
+      "expected_dx_m": 0.0,
+      "bounds_m": null,
+      "passed": true,
+      "blocker": null,
+      "reason": "stationary_zero_displacement",
+      "is_action": true
+    },
+    "candidate_terminal_speed_inconsistent": {
+      "before": {
+        "run_id": "b12_integration_C",
+        "vehicle_id": "v00010",
+        "incarnation_id": "b12_integration_C|v00010",
+        "time_s": 19.7,
+        "edge_id": "main_1",
+        "lane_id": "main_1_1",
+        "position_m": 65.01839861712263,
+        "speed_mps": 6.4835987978100174e-06,
+        "acceleration_mps2": -3.651175106531166e-05,
+        "last_action_time_s": 19.65,
+        "length_m": 4.4196,
+        "traveled_distance_m": 135.11879861712265,
+        "x_m": 139.63839861712262,
+        "y_m": 27.2,
+        "traci_vehicle_control": false,
+        "numerical_config_verified": true
+      },
+      "after": {
+        "run_id": "b12_integration_C",
+        "vehicle_id": "v00010",
+        "incarnation_id": "b12_integration_C|v00010",
+        "time_s": 19.75,
+        "edge_id": "main_1",
+        "lane_id": "main_1_1",
+        "position_m": 65.0183987792126,
+        "speed_mps": 0.0,
+        "acceleration_mps2": -0.00012967197595620034,
+        "last_action_time_s": 19.65,
+        "length_m": 4.4196,
+        "traveled_distance_m": 135.11879877921263,
+        "x_m": 139.6383987792126,
+        "y_m": 27.2,
+        "traci_vehicle_control": false,
+        "numerical_config_verified": true
+      },
+      "classification": "Not Evaluable",
+      "candidate": null,
+      "residual_m": null,
+      "actual_dx_m": null,
+      "expected_dx_m": null,
+      "bounds_m": null,
+      "passed": null,
+      "blocker": "candidate_terminal_speed_inconsistent",
+      "reason": "candidate_terminal_speed_inconsistent",
+      "is_action": false
+    }
+  },
+  "worst_exact_edge": {
+    "before": {
+      "run_id": "b12_integration_C",
+      "vehicle_id": "v00002",
+      "incarnation_id": "b12_integration_C|v00002",
+      "time_s": 5.7,
+      "edge_id": "main_1",
+      "lane_id": "main_1_2",
+      "position_m": 65.53818525040211,
+      "speed_mps": 27.78,
+      "acceleration_mps2": -0.5090536786246957,
+      "last_action_time_s": 5.65,
+      "length_m": 4.4196,
+      "traveled_distance_m": 135.63858525040212,
+      "x_m": 140.1581852504021,
+      "y_m": 30.4,
+      "traci_vehicle_control": false,
+      "numerical_config_verified": true
+    },
+    "after": {
+      "run_id": "b12_integration_C",
+      "vehicle_id": "v00002",
+      "incarnation_id": "b12_integration_C|v00002",
+      "time_s": 5.75,
+      "edge_id": "main_1",
+      "lane_id": "main_1_2",
+      "position_m": 66.92654893330382,
+      "speed_mps": 27.754547316068766,
+      "acceleration_mps2": -0.5090536786246957,
+      "last_action_time_s": 5.65,
+      "length_m": 4.4196,
+      "traveled_distance_m": 137.02694893330383,
+      "x_m": 141.54654893330382,
+      "y_m": 30.4,
+      "traci_vehicle_control": false,
+      "numerical_config_verified": true
+    },
+    "classification": "Exact Reconstructable Under Verified Conditions",
+    "candidate": 27.754547316068766,
+    "residual_m": -7.105427357601002e-15,
+    "actual_dx_m": 1.388363682901712,
+    "expected_dx_m": 1.3883636829017192,
+    "bounds_m": null,
+    "passed": true,
+    "blocker": null,
+    "reason": "non_action_acceleration_continuation",
+    "is_action": false
+  },
+  "tolerance_m": 1e-06,
+  "fresh_departures_and_arrivals": "No invented transition outside jointly observed endpoints",
+  "unknown_fraction_threshold": null
+}

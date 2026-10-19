@@ -128,3 +128,8 @@ B1 C两阻断和D not_attempted永久保留；B0隔离false/验证物化Unknown�
 决策步停车仍`Bounded Consistency Only`，未无条件放行全部停车测量；未修改B1.1结果`Pending Numerical Equivalence`。方案A（严格精确）需另批调试构建；方案B（分层准入）待研究者批准。B1 C两阻断和D not_attempted永久保留。Gate=pending_simulation_sample，scientific_claim_eligible=false；容差Tolerance Not Yet Justified、ED上界Not Identifiable、锁/StageI禁止。B1.2需另批，不自动执行。
 
 依据：`docs/STAGE_0_5_TASK_0_5_4B1_1S_STOPPING_OBSERVABILITY.md`及同ID便携证据；协议/源码/输入冻结SHA见experiment_plan、PLAN_SHA256和provenance。
+
+
+## 2026-10-19 B1.2 分层准入与机制再验证
+
+B1.2（RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2）工程接入阻断：10047精确边通过、14范围、84不可评价（含1近零终速不一致）。固定源码后处理与原非决策步最终候选广泛叙述冲突，Awaiting Researcher Decision。仅1个压缩fixture部分运行；D接入和A/B/C/D主矩阵未执行、B1_2_MAIN_MATRIX_ALLOWED=false。Gate/ready/现实覆盖/锁等不变；报告见docs/STAGE_0_5_TASK_0_5_4B1_2_BOUNDARY_BOTTLENECK_REVALIDATION.md。

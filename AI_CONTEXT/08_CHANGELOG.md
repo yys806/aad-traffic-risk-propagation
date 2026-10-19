@@ -196,3 +196,8 @@ B1 C两阻断和D not_attempted永久保留；B0隔离false/验证物化Unknown�
 B1.1精确停车`Pending Numerical Equivalence`记录与B1 C阻断/D未尝试、B0隔离false/验证物化Unknown均不变。Gate=pending_simulation_sample，scientific_claim_eligible=false、ready_to_start_stage_0_5_4b=false、reality_coverage_accepted=false；容差Tolerance Not Yet Justified、ED上界Not Identifiable、锁/StageI禁止。B1.2需另批，不自动执行。
 
 依据：`docs/STAGE_0_5_TASK_0_5_4B1_1S_STOPPING_OBSERVABILITY.md`及同ID便携证据；协议/源码/输入冻结SHA见experiment_plan、PLAN_SHA256和provenance。
+
+
+## 2026-10-19 B1.2 分层准入与机制再验证
+
+B1.2完成严格布尔/时钟防御、独立分层数值/分域计数/路径队列工程接入与停止验证；首个压缩C遇近零终速不一致自动停止。新增RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2、报告/便携反例，主矩阵0/8未冻结。Context Consistency Check同步状态、架构、数据流、模块、实验、已批准决定、问题与索引；科学/历史边界不变。

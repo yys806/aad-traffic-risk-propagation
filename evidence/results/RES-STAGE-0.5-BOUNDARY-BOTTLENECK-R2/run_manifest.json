@@ -1,0 +1,827 @@
+{
+  "integration": [
+    {
+      "run_id": "b12_integration_C",
+      "status": "completed_with_engineering_blocker",
+      "started_utc": "2026-10-19T07:40:53.113953Z",
+      "exit_code": 0,
+      "failure": null,
+      "wall_s": 8.388672599998245,
+      "peak_sampled_tree_rss_bytes": 136077312,
+      "blockers": [
+        "ValueError: candidate_terminal_speed_inconsistent"
+      ],
+      "warnings": [],
+      "bytes": 1018370
+    },
+    {
+      "run_id": "b12_integration_D",
+      "status": "not_attempted"
+    }
+  ],
+  "main": [
+    {
+      "run_id": "b12_A_s20261019",
+      "condition": "A",
+      "seed": 20261019,
+      "status": "not_attempted",
+      "reason": "B1.2 numerical integration blocker; main plan never frozen",
+      "network_hash": null,
+      "boundary_hash": null,
+      "demand_hash": null,
+      "fleet_hash": null,
+      "duration_s": 600,
+      "planned_vehicles_candidate": 823
+    },
+    {
+      "run_id": "b12_B_s20261019",
+      "condition": "B",
+      "seed": 20261019,
+      "status": "not_attempted",
+      "reason": "B1.2 numerical integration blocker; main plan never frozen",
+      "network_hash": null,
+      "boundary_hash": null,
+      "demand_hash": null,
+      "fleet_hash": null,
+      "duration_s": 600,
+      "planned_vehicles_candidate": 823
+    },
+    {
+      "run_id": "b12_C_s20261019",
+      "condition": "C",
+      "seed": 20261019,
+      "status": "not_attempted",
+      "reason": "B1.2 numerical integration blocker; main plan never frozen",
+      "network_hash": null,
+      "boundary_hash": null,
+      "demand_hash": null,
+      "fleet_hash": null,
+      "duration_s": 600,
+      "planned_vehicles_candidate": 823
+    },
+    {
+      "run_id": "b12_D_s20261019",
+      "condition": "D",
+      "seed": 20261019,
+      "status": "not_attempted",
+      "reason": "B1.2 numerical integration blocker; main plan never frozen",
+      "network_hash": null,
+      "boundary_hash": null,
+      "demand_hash": null,
+      "fleet_hash": null,
+      "duration_s": 600,
+      "planned_vehicles_candidate": 823
+    },
+    {
+      "run_id": "b12_A_s20261020",
+      "condition": "A",
+      "seed": 20261020,
+      "status": "not_attempted",
+      "reason": "B1.2 numerical integration blocker; main plan never frozen",
+      "network_hash": null,
+      "boundary_hash": null,
+      "demand_hash": null,
+      "fleet_hash": null,
+      "duration_s": 600,
+      "planned_vehicles_candidate": 823
+    },
+    {
+      "run_id": "b12_B_s20261020",
+      "condition": "B",
+      "seed": 20261020,
+      "status": "not_attempted",
+      "reason": "B1.2 numerical integration blocker; main plan never frozen",
+      "network_hash": null,
+      "boundary_hash": null,
+      "demand_hash": null,
+      "fleet_hash": null,
+      "duration_s": 600,
+      "planned_vehicles_candidate": 823
+    },
+    {
+      "run_id": "b12_C_s20261020",
+      "condition": "C",
+      "seed": 20261020,
+      "status": "not_attempted",
+      "reason": "B1.2 numerical integration blocker; main plan never frozen",
+      "network_hash": null,
+      "boundary_hash": null,
+      "demand_hash": null,
+      "fleet_hash": null,
+      "duration_s": 600,
+      "planned_vehicles_candidate": 823
+    },
+    {
+      "run_id": "b12_D_s20261020",
+      "condition": "D",
+      "seed": 20261020,
+      "status": "not_attempted",
+      "reason": "B1.2 numerical integration blocker; main plan never frozen",
+      "network_hash": null,
+      "boundary_hash": null,
+      "demand_hash": null,
+      "fleet_hash": null,
+      "duration_s": 600,
+      "planned_vehicles_candidate": 823
+    }
+  ],
+  "main_runs_attempted": 0,
+  "integration_runs_attempted": 1,
+  "per_run_input_bindings": [
+    {
+      "run_id": "b12_integration_C",
+      "seed": 20261019,
+      "duration_s": 60.0,
+      "inputs": {
+        "network": {
+          "path": "inputs/b12_integration_C/b12.net.xml",
+          "sha256": "8f5465c2831ef75124f6df9c3e6a365e42c3752f608dbb7d1695b5ffa8c15ef8"
+        },
+        "config": {
+          "path": "inputs/b12_integration_C.sumocfg",
+          "sha256": "4defe54f2c5cb8f6d48a7a37f254bfd72f03b63450ea8c6a6500a4d48b9ca8bc"
+        },
+        "demand": {
+          "path": "inputs/b12_integration_C.rou.xml",
+          "sha256": "97beaf1121f5ed29cad7dac3b65423602fa39e69e0b346ef2d1a12f1ee44c229"
+        }
+      }
+    },
+    {
+      "run_id": "b12_integration_D",
+      "seed": 20261019,
+      "duration_s": 60.0,
+      "inputs": {
+        "network": {
+          "path": "inputs/b12_integration_D/b12.net.xml",
+          "sha256": "fec78c7e36ba22df3f0bd79720c28dfb3329c70a56a347af98d4f40ce94a8597"
+        },
+        "config": {
+          "path": "inputs/b12_integration_D.sumocfg",
+          "sha256": "a051ae0f2f5911c489f1082924a92ad98a2a922feb3530321702d37169dea86a"
+        },
+        "demand": {
+          "path": "inputs/b12_integration_D.rou.xml",
+          "sha256": "9ff5e7d5ff9a84380cc0d8b7d2418c3929f691af7beaf5fbc3913c768ed8424f"
+        }
+      }
+    }
+  ],
+  "completed_summary": {
+    "run_id": "b12_integration_C",
+    "condition": "C",
+    "status": "failed",
+    "engineering_blockers": [
+      "ValueError: candidate_terminal_speed_inconsistent"
+    ],
+    "diagnostic_warnings": [],
+    "plan_sha256": "8789f7336e68548e9fe43d743534124b16122c3e0376b12f3f8b137acc55aa16",
+    "numerical": {
+      "version": "b12-integration-v1",
+      "all_adjacent_edges": 10145,
+      "classifications": {
+        "Exact Observable": {
+          "count": 5028,
+          "fraction": 0.4956136027599803
+        },
+        "Exact Reconstructable Under Verified Conditions": {
+          "count": 5019,
+          "fraction": 0.4947264662395269
+        },
+        "Bounded Consistency Only": {
+          "count": 14,
+          "fraction": 0.0013799901429275504
+        },
+        "Not Evaluable": {
+          "count": 84,
+          "fraction": 0.008279940857565303
+        }
+      },
+      "exact_checked": 10047,
+      "exact_passed": 10047,
+      "exact_pass_fraction": 1.0,
+      "max_abs_residual_m": 7.105427357601002e-15,
+      "nonaction_negative_candidates": 25,
+      "action_counts": {
+        "True": 5088,
+        "False": 5057
+      },
+      "reasons": {
+        "action_step_positive_terminal_speed_no_clamp": 4683,
+        "non_action_acceleration_continuation": 5019,
+        "legal_edge_transition": 83,
+        "action_step_terminal_stop_clamped_public_acceleration": 14,
+        "stationary_zero_displacement": 345,
+        "candidate_terminal_speed_inconsistent": 1
+      },
+      "not_evaluable_locations": {
+        "legal_edge_transition|main_0|main_0_0": {
+          "count": 12,
+          "first_s": 2.45,
+          "last_s": 17.55,
+          "vehicle_step_s": 0.6
+        },
+        "legal_edge_transition|main_0|main_0_1": {
+          "count": 12,
+          "first_s": 2.7,
+          "last_s": 18.4,
+          "vehicle_step_s": 0.6
+        },
+        "legal_edge_transition|:hwy_j1_1|:hwy_j1_1_0": {
+          "count": 12,
+          "first_s": 2.75,
+          "last_s": 18.8,
+          "vehicle_step_s": 0.6
+        },
+        "legal_edge_transition|:hwy_j1_1|:hwy_j1_1_1": {
+          "count": 12,
+          "first_s": 3.0,
+          "last_s": 19.7,
+          "vehicle_step_s": 0.6
+        },
+        "legal_edge_transition|main_0|main_0_2": {
+          "count": 12,
+          "first_s": 3.05,
+          "last_s": 19.35,
+          "vehicle_step_s": 0.6
+        },
+        "legal_edge_transition|:hwy_j1_1|:hwy_j1_1_2": {
+          "count": 11,
+          "first_s": 3.35,
+          "last_s": 18.4,
+          "vehicle_step_s": 0.5499999999999999
+        },
+        "legal_edge_transition|main_1|main_1_0": {
+          "count": 2,
+          "first_s": 5.4,
+          "last_s": 6.6,
+          "vehicle_step_s": 0.1
+        },
+        "legal_edge_transition|main_1|main_1_1": {
+          "count": 2,
+          "first_s": 5.65,
+          "last_s": 6.8,
+          "vehicle_step_s": 0.1
+        },
+        "legal_edge_transition|:hwy_j2_1|:hwy_j2_1_0": {
+          "count": 2,
+          "first_s": 5.75,
+          "last_s": 6.9,
+          "vehicle_step_s": 0.1
+        },
+        "legal_edge_transition|:hwy_j2_1|:hwy_j2_1_1": {
+          "count": 2,
+          "first_s": 6.0,
+          "last_s": 7.15,
+          "vehicle_step_s": 0.1
+        },
+        "legal_edge_transition|main_1|main_1_2": {
+          "count": 2,
+          "first_s": 6.0,
+          "last_s": 7.15,
+          "vehicle_step_s": 0.1
+        },
+        "legal_edge_transition|:hwy_j2_1|:hwy_j2_1_2": {
+          "count": 2,
+          "first_s": 6.3,
+          "last_s": 7.5,
+          "vehicle_step_s": 0.1
+        },
+        "candidate_terminal_speed_inconsistent|main_1|main_1_1": {
+          "count": 1,
+          "first_s": 19.75,
+          "last_s": 19.75,
+          "vehicle_step_s": 0.05
+        }
+      },
+      "blockers": {
+        "candidate_terminal_speed_inconsistent": 1
+      },
+      "examples": {
+        "action_step_positive_terminal_speed_no_clamp": {
+          "before": {
+            "run_id": "b12_integration_C",
+            "vehicle_id": "v00000",
+            "incarnation_id": "b12_integration_C|v00000",
+            "time_s": 0.15,
+            "edge_id": "main_0",
+            "lane_id": "main_0_0",
+            "position_m": 4.5196,
+            "speed_mps": 27.78,
+            "acceleration_mps2": 0.0,
+            "last_action_time_s": 0.15,
+            "length_m": 4.4196,
+            "traveled_distance_m": 0.0,
+            "x_m": 4.5196,
+            "y_m": 24.0,
+            "traci_vehicle_control": false,
+            "numerical_config_verified": true
+          },
+          "after": {
+            "run_id": "b12_integration_C",
+            "vehicle_id": "v00000",
+            "incarnation_id": "b12_integration_C|v00000",
+            "time_s": 0.2,
+            "edge_id": "main_0",
+            "lane_id": "main_0_0",
+            "position_m": 5.9086,
+            "speed_mps": 27.78,
+            "acceleration_mps2": 0.0,
+            "last_action_time_s": 0.15,
+            "length_m": 4.4196,
+            "traveled_distance_m": 1.3890000000000002,
+            "x_m": 5.9086,
+            "y_m": 24.0,
+            "traci_vehicle_control": false,
+            "numerical_config_verified": true
+          },
+          "classification": "Exact Observable",
+          "candidate": 27.78,
+          "residual_m": 0.0,
+          "actual_dx_m": 1.3890000000000002,
+          "expected_dx_m": 1.3890000000000002,
+          "bounds_m": null,
+          "passed": true,
+          "blocker": null,
+          "reason": "action_step_positive_terminal_speed_no_clamp",
+          "is_action": true
+        },
+        "non_action_acceleration_continuation": {
+          "before": {
+            "run_id": "b12_integration_C",
+            "vehicle_id": "v00000",
+            "incarnation_id": "b12_integration_C|v00000",
+            "time_s": 0.2,
+            "edge_id": "main_0",
+            "lane_id": "main_0_0",
+            "position_m": 5.9086,
+            "speed_mps": 27.78,
+            "acceleration_mps2": 0.0,
+            "last_action_time_s": 0.15,
+            "length_m": 4.4196,
+            "traveled_distance_m": 1.3890000000000002,
+            "x_m": 5.9086,
+            "y_m": 24.0,
+            "traci_vehicle_control": false,
+            "numerical_config_verified": true
+          },
+          "after": {
+            "run_id": "b12_integration_C",
+            "vehicle_id": "v00000",
+            "incarnation_id": "b12_integration_C|v00000",
+            "time_s": 0.25,
+            "edge_id": "main_0",
+            "lane_id": "main_0_0",
+            "position_m": 7.2976,
+            "speed_mps": 27.78,
+            "acceleration_mps2": 0.0,
+            "last_action_time_s": 0.15,
+            "length_m": 4.4196,
+            "traveled_distance_m": 2.7780000000000005,
+            "x_m": 7.2976,
+            "y_m": 24.0,
+            "traci_vehicle_control": false,
+            "numerical_config_verified": true
+          },
+          "classification": "Exact Reconstructable Under Verified Conditions",
+          "candidate": 27.78,
+          "residual_m": 0.0,
+          "actual_dx_m": 1.3890000000000002,
+          "expected_dx_m": 1.3890000000000002,
+          "bounds_m": null,
+          "passed": true,
+          "blocker": null,
+          "reason": "non_action_acceleration_continuation",
+          "is_action": false
+        },
+        "legal_edge_transition": {
+          "before": {
+            "run_id": "b12_integration_C",
+            "vehicle_id": "v00000",
+            "incarnation_id": "b12_integration_C|v00000",
+            "time_s": 2.4,
+            "edge_id": "main_0",
+            "lane_id": "main_0_0",
+            "position_m": 66.41312177563036,
+            "speed_mps": 27.01404696700981,
+            "acceleration_mps2": -0.16754223776516142,
+            "last_action_time_s": 2.35,
+            "length_m": 4.4196,
+            "traveled_distance_m": 61.89352177563036,
+            "x_m": 66.41312177563036,
+            "y_m": 24.0,
+            "traci_vehicle_control": false,
+            "numerical_config_verified": true
+          },
+          "after": {
+            "run_id": "b12_integration_C",
+            "vehicle_id": "v00000",
+            "incarnation_id": "b12_integration_C|v00000",
+            "time_s": 2.45,
+            "edge_id": ":hwy_j1_1",
+            "lane_id": ":hwy_j1_1_0",
+            "position_m": 1.2636146961836374,
+            "speed_mps": 27.005669855121553,
+            "acceleration_mps2": -0.16754223776516142,
+            "last_action_time_s": 2.35,
+            "length_m": 4.4196,
+            "traveled_distance_m": 63.24401469618364,
+            "x_m": 67.76361469618364,
+            "y_m": 24.0,
+            "traci_vehicle_control": false,
+            "numerical_config_verified": true
+          },
+          "classification": "Not Evaluable",
+          "candidate": null,
+          "residual_m": null,
+          "actual_dx_m": null,
+          "expected_dx_m": null,
+          "bounds_m": null,
+          "passed": null,
+          "blocker": null,
+          "reason": "legal_edge_transition",
+          "is_action": false
+        },
+        "action_step_terminal_stop_clamped_public_acceleration": {
+          "before": {
+            "run_id": "b12_integration_C",
+            "vehicle_id": "v00006",
+            "incarnation_id": "b12_integration_C|v00006",
+            "time_s": 10.45,
+            "edge_id": "main_1",
+            "lane_id": "main_1_0",
+            "position_m": 71.93772964012348,
+            "speed_mps": 0.10692632457403439,
+            "acceleration_mps2": -4.499999999999999,
+            "last_action_time_s": 10.35,
+            "length_m": 4.4196,
+            "traveled_distance_m": 142.0381296401235,
+            "x_m": 146.55772964012348,
+            "y_m": 24.0,
+            "traci_vehicle_control": false,
+            "numerical_config_verified": true
+          },
+          "after": {
+            "run_id": "b12_integration_C",
+            "vehicle_id": "v00006",
+            "incarnation_id": "b12_integration_C|v00006",
+            "time_s": 10.5,
+            "edge_id": "main_1",
+            "lane_id": "main_1_0",
+            "position_m": 71.93899999999981,
+            "speed_mps": 0.0,
+            "acceleration_mps2": -2.138526491480688,
+            "last_action_time_s": 10.45,
+            "length_m": 4.4196,
+            "traveled_distance_m": 142.03939999999983,
+            "x_m": 146.5589999999998,
+            "y_m": 24.0,
+            "traci_vehicle_control": false,
+            "numerical_config_verified": true
+          },
+          "classification": "Bounded Consistency Only",
+          "candidate": null,
+          "residual_m": null,
+          "actual_dx_m": 0.0012703598763295076,
+          "expected_dx_m": null,
+          "bounds_m": [
+            0.0,
+            0.00267315811435086
+          ],
+          "passed": true,
+          "blocker": null,
+          "reason": "action_step_terminal_stop_clamped_public_acceleration",
+          "is_action": true,
+          "bound_violation_m": 0.0
+        },
+        "stationary_zero_displacement": {
+          "before": {
+            "run_id": "b12_integration_C",
+            "vehicle_id": "v00006",
+            "incarnation_id": "b12_integration_C|v00006",
+            "time_s": 10.55,
+            "edge_id": "main_1",
+            "lane_id": "main_1_0",
+            "position_m": 71.93899999999981,
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "last_action_time_s": 10.45,
+            "length_m": 4.4196,
+            "traveled_distance_m": 142.03939999999983,
+            "x_m": 146.5589999999998,
+            "y_m": 24.0,
+            "traci_vehicle_control": false,
+            "numerical_config_verified": true
+          },
+          "after": {
+            "run_id": "b12_integration_C",
+            "vehicle_id": "v00006",
+            "incarnation_id": "b12_integration_C|v00006",
+            "time_s": 10.6,
+            "edge_id": "main_1",
+            "lane_id": "main_1_0",
+            "position_m": 71.93899999999981,
+            "speed_mps": 0.0,
+            "acceleration_mps2": 0.0,
+            "last_action_time_s": 10.55,
+            "length_m": 4.4196,
+            "traveled_distance_m": 142.03939999999983,
+            "x_m": 146.5589999999998,
+            "y_m": 24.0,
+            "traci_vehicle_control": false,
+            "numerical_config_verified": true
+          },
+          "classification": "Exact Observable",
+          "candidate": null,
+          "residual_m": 0.0,
+          "actual_dx_m": 0.0,
+          "expected_dx_m": 0.0,
+          "bounds_m": null,
+          "passed": true,
+          "blocker": null,
+          "reason": "stationary_zero_displacement",
+          "is_action": true
+        },
+        "candidate_terminal_speed_inconsistent": {
+          "before": {
+            "run_id": "b12_integration_C",
+            "vehicle_id": "v00010",
+            "incarnation_id": "b12_integration_C|v00010",
+            "time_s": 19.7,
+            "edge_id": "main_1",
+            "lane_id": "main_1_1",
+            "position_m": 65.01839861712263,
+            "speed_mps": 6.4835987978100174e-06,
+            "acceleration_mps2": -3.651175106531166e-05,
+            "last_action_time_s": 19.65,
+            "length_m": 4.4196,
+            "traveled_distance_m": 135.11879861712265,
+            "x_m": 139.63839861712262,
+            "y_m": 27.2,
+            "traci_vehicle_control": false,
+            "numerical_config_verified": true
+          },
+          "after": {
+            "run_id": "b12_integration_C",
+            "vehicle_id": "v00010",
+            "incarnation_id": "b12_integration_C|v00010",
+            "time_s": 19.75,
+            "edge_id": "main_1",
+            "lane_id": "main_1_1",
+            "position_m": 65.0183987792126,
+            "speed_mps": 0.0,
+            "acceleration_mps2": -0.00012967197595620034,
+            "last_action_time_s": 19.65,
+            "length_m": 4.4196,
+            "traveled_distance_m": 135.11879877921263,
+            "x_m": 139.6383987792126,
+            "y_m": 27.2,
+            "traci_vehicle_control": false,
+            "numerical_config_verified": true
+          },
+          "classification": "Not Evaluable",
+          "candidate": null,
+          "residual_m": null,
+          "actual_dx_m": null,
+          "expected_dx_m": null,
+          "bounds_m": null,
+          "passed": null,
+          "blocker": "candidate_terminal_speed_inconsistent",
+          "reason": "candidate_terminal_speed_inconsistent",
+          "is_action": false
+        }
+      },
+      "worst_exact_edge": {
+        "before": {
+          "run_id": "b12_integration_C",
+          "vehicle_id": "v00002",
+          "incarnation_id": "b12_integration_C|v00002",
+          "time_s": 5.7,
+          "edge_id": "main_1",
+          "lane_id": "main_1_2",
+          "position_m": 65.53818525040211,
+          "speed_mps": 27.78,
+          "acceleration_mps2": -0.5090536786246957,
+          "last_action_time_s": 5.65,
+          "length_m": 4.4196,
+          "traveled_distance_m": 135.63858525040212,
+          "x_m": 140.1581852504021,
+          "y_m": 30.4,
+          "traci_vehicle_control": false,
+          "numerical_config_verified": true
+        },
+        "after": {
+          "run_id": "b12_integration_C",
+          "vehicle_id": "v00002",
+          "incarnation_id": "b12_integration_C|v00002",
+          "time_s": 5.75,
+          "edge_id": "main_1",
+          "lane_id": "main_1_2",
+          "position_m": 66.92654893330382,
+          "speed_mps": 27.754547316068766,
+          "acceleration_mps2": -0.5090536786246957,
+          "last_action_time_s": 5.65,
+          "length_m": 4.4196,
+          "traveled_distance_m": 137.02694893330383,
+          "x_m": 141.54654893330382,
+          "y_m": 30.4,
+          "traci_vehicle_control": false,
+          "numerical_config_verified": true
+        },
+        "classification": "Exact Reconstructable Under Verified Conditions",
+        "candidate": 27.754547316068766,
+        "residual_m": -7.105427357601002e-15,
+        "actual_dx_m": 1.388363682901712,
+        "expected_dx_m": 1.3883636829017192,
+        "bounds_m": null,
+        "passed": true,
+        "blocker": null,
+        "reason": "non_action_acceleration_continuation",
+        "is_action": false
+      },
+      "tolerance_m": 1e-06,
+      "fresh_departures_and_arrivals": "No invented transition outside jointly observed endpoints",
+      "unknown_fraction_threshold": null
+    },
+    "runtime_settings": {
+      "options": {
+        "step-method.ballistic": "true",
+        "step-length": "0.05",
+        "seed": "20261019",
+        "threads": "1",
+        "time-to-teleport": "-1",
+        "random": "false"
+      },
+      "actual_types": {
+        "t0": {
+          "tau": 1.0,
+          "minGap": 2.5,
+          "actionStepLength": 0.1,
+          "maxSpeed": 27.78,
+          "length": 2.4384,
+          "vClass": "motorcycle",
+          "sigma": 0.5,
+          "accel": 2.6,
+          "decel": 4.5,
+          "apparentDecel": 4.5,
+          "emergencyDecel": 9.0,
+          "speedFactor": 1.0,
+          "speedDev": 0.0
+        },
+        "t1": {
+          "tau": 1.0,
+          "minGap": 2.5,
+          "actionStepLength": 0.1,
+          "maxSpeed": 27.78,
+          "length": 4.4196,
+          "vClass": "passenger",
+          "sigma": 0.5,
+          "accel": 2.6,
+          "decel": 4.5,
+          "apparentDecel": 4.5,
+          "emergencyDecel": 9.0,
+          "speedFactor": 1.0,
+          "speedDev": 0.0
+        },
+        "t2": {
+          "tau": 1.0,
+          "minGap": 2.5,
+          "actionStepLength": 0.1,
+          "maxSpeed": 27.78,
+          "length": 10.009694845360826,
+          "vClass": "truck",
+          "sigma": 0.5,
+          "accel": 2.6,
+          "decel": 4.5,
+          "apparentDecel": 4.5,
+          "emergencyDecel": 9.0,
+          "speedFactor": 1.0,
+          "speedDev": 0.0
+        }
+      },
+      "runtime_echo": {
+        "t0": {
+          "id": "t0",
+          "length": "2.44",
+          "minGap": "2.50",
+          "maxSpeed": "27.78",
+          "speedFactor": "normc(1.00,0.00)",
+          "actionStepLength": "0.10",
+          "vClass": "motorcycle",
+          "laneChangeModel": "LC2013",
+          "carFollowModel": "Krauss",
+          "accel": "2.6",
+          "decel": "4.5",
+          "emergencyDecel": "9.0",
+          "apparentDecel": "4.5",
+          "sigma": "0.5",
+          "sigmaStep": "1.0",
+          "tau": "1.0"
+        },
+        "t1": {
+          "id": "t1",
+          "length": "4.42",
+          "minGap": "2.50",
+          "maxSpeed": "27.78",
+          "speedFactor": "normc(1.00,0.00)",
+          "actionStepLength": "0.10",
+          "vClass": "passenger",
+          "laneChangeModel": "LC2013",
+          "carFollowModel": "Krauss",
+          "accel": "2.6",
+          "decel": "4.5",
+          "emergencyDecel": "9.0",
+          "apparentDecel": "4.5",
+          "sigma": "0.5",
+          "sigmaStep": "1.0",
+          "tau": "1.0"
+        },
+        "t2": {
+          "id": "t2",
+          "length": "10.01",
+          "minGap": "2.50",
+          "maxSpeed": "27.78",
+          "speedFactor": "normc(1.00,0.00)",
+          "actionStepLength": "0.10",
+          "vClass": "truck",
+          "laneChangeModel": "LC2013",
+          "carFollowModel": "Krauss",
+          "accel": "2.6",
+          "decel": "4.5",
+          "emergencyDecel": "9.0",
+          "apparentDecel": "4.5",
+          "sigma": "0.5",
+          "sigmaStep": "1.0",
+          "tau": "1.0"
+        }
+      },
+      "sumo_version": [
+        22,
+        "SUMO 1.26.0"
+      ],
+      "tls": [
+        {
+          "duration": 5.0,
+          "state": "GGGG"
+        },
+        {
+          "duration": 6.2,
+          "state": "yyyy"
+        },
+        {
+          "duration": 48.8,
+          "state": "rrrr"
+        }
+      ],
+      "verified": true,
+      "checks": 57,
+      "traci_vehicle_control": false,
+      "control_basis": "Frozen read-only worker API; route/vType inputs checked; no vehicle setter or dynamic control called"
+    },
+    "observed_s": 19.7,
+    "planned_s": 60.0,
+    "actual_inserted": 49,
+    "actual_exited": 6,
+    "present": 43,
+    "pending_end": 17,
+    "max_pending": 17,
+    "local_entered": 32,
+    "local_exited": 21,
+    "local_vehicle_s": 89.19999999999987,
+    "lane_changes": 0,
+    "edge_transitions": 83,
+    "junction_states": 439,
+    "coordinate_crosschecks": {
+      "same_edge": 9662,
+      "cross_edge": 71
+    },
+    "max_coordinate_residual_m": 4.263256414560601e-14,
+    "max_gap_residual_m": 0.0,
+    "gap_checks": 7332,
+    "queue_state_counts": {
+      "No On-Road Queue": 10,
+      "On-Road Queue Observed": 1,
+      "Inlet-Adjacent Queue Observed": 1,
+      "Upstream Queue Extension Observed": 7
+    },
+    "first_times": {
+      "internal_queue": 11.0,
+      "inlet_queue": 12.0,
+      "supported_spillback": null,
+      "upstream_extension": 12.0
+    },
+    "first_internal_low_s": 9.4,
+    "first_pending_s": 9.8,
+    "collisions": [],
+    "teleports": [],
+    "failure": "ValueError: candidate_terminal_speed_inconsistent",
+    "runtime": {
+      "total_worker_wall_s": 2.575660999995307,
+      "rows": {
+        "internal_states": 10194,
+        "state": 5098
+      }
+    },
+    "scientific_claim_eligible": false
+  }
+}

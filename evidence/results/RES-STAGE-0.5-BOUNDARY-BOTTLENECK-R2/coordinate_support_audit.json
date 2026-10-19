@@ -1,0 +1,521 @@
+{
+  "networks": {
+    "C": {
+      "lanes": {
+        "main_0_0": {
+          "path": "0",
+          "offset_m": 0.0,
+          "length_m": 66.5,
+          "edge": "main_0"
+        },
+        ":hwy_j1_1_0": {
+          "path": "0",
+          "offset_m": 66.5,
+          "length_m": 8.12,
+          "edge": ":hwy_j1_1"
+        },
+        "main_1_0": {
+          "path": "0",
+          "offset_m": 74.62,
+          "length_m": 72.94,
+          "edge": "main_1"
+        },
+        "main_0_1": {
+          "path": "1",
+          "offset_m": 0.0,
+          "length_m": 66.5,
+          "edge": "main_0"
+        },
+        ":hwy_j1_1_1": {
+          "path": "1",
+          "offset_m": 66.5,
+          "length_m": 8.12,
+          "edge": ":hwy_j1_1"
+        },
+        "main_1_1": {
+          "path": "1",
+          "offset_m": 74.62,
+          "length_m": 72.94,
+          "edge": "main_1"
+        },
+        "main_0_2": {
+          "path": "2",
+          "offset_m": 0.0,
+          "length_m": 66.5,
+          "edge": "main_0"
+        },
+        ":hwy_j1_1_2": {
+          "path": "2",
+          "offset_m": 66.5,
+          "length_m": 8.12,
+          "edge": ":hwy_j1_1"
+        },
+        "main_1_2": {
+          "path": "2",
+          "offset_m": 74.62,
+          "length_m": 72.94,
+          "edge": "main_1"
+        }
+      },
+      "path_lengths": {
+        "0": 147.56,
+        "1": 147.56,
+        "2": 147.56
+      },
+      "path_checks": [
+        {
+          "path": "0",
+          "lanes": [
+            "main_0_0",
+            ":hwy_j1_1_0",
+            "main_1_0"
+          ],
+          "length_m": 147.56,
+          "junction_included": true,
+          "endpoint_gaps_m": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "path": "1",
+          "lanes": [
+            "main_0_1",
+            ":hwy_j1_1_1",
+            "main_1_1"
+          ],
+          "length_m": 147.56,
+          "junction_included": true,
+          "endpoint_gaps_m": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "path": "2",
+          "lanes": [
+            "main_0_2",
+            ":hwy_j1_1_2",
+            "main_1_2"
+          ],
+          "length_m": 147.56,
+          "junction_included": true,
+          "endpoint_gaps_m": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "geometry_checks": [
+        {
+          "lane": "main_0_0",
+          "declared_length_m": 66.5,
+          "polyline_length_m": 66.5,
+          "absolute_difference_m": 0.0,
+          "shape": "0.00,24.00 66.50,24.00"
+        },
+        {
+          "lane": ":hwy_j1_1_0",
+          "declared_length_m": 8.12,
+          "polyline_length_m": 8.120000000000005,
+          "absolute_difference_m": 5.329070518200751e-15,
+          "shape": "66.50,24.00 74.62,24.00"
+        },
+        {
+          "lane": "main_1_0",
+          "declared_length_m": 72.94,
+          "polyline_length_m": 72.94,
+          "absolute_difference_m": 0.0,
+          "shape": "74.62,24.00 147.56,24.00"
+        },
+        {
+          "lane": "main_0_1",
+          "declared_length_m": 66.5,
+          "polyline_length_m": 66.5,
+          "absolute_difference_m": 0.0,
+          "shape": "0.00,27.20 66.50,27.20"
+        },
+        {
+          "lane": ":hwy_j1_1_1",
+          "declared_length_m": 8.12,
+          "polyline_length_m": 8.120000000000005,
+          "absolute_difference_m": 5.329070518200751e-15,
+          "shape": "66.50,27.20 74.62,27.20"
+        },
+        {
+          "lane": "main_1_1",
+          "declared_length_m": 72.94,
+          "polyline_length_m": 72.94,
+          "absolute_difference_m": 0.0,
+          "shape": "74.62,27.20 147.56,27.20"
+        },
+        {
+          "lane": "main_0_2",
+          "declared_length_m": 66.5,
+          "polyline_length_m": 66.5,
+          "absolute_difference_m": 0.0,
+          "shape": "0.00,30.40 66.50,30.40"
+        },
+        {
+          "lane": ":hwy_j1_1_2",
+          "declared_length_m": 8.12,
+          "polyline_length_m": 8.120000000000005,
+          "absolute_difference_m": 5.329070518200751e-15,
+          "shape": "66.50,30.40 74.62,30.40"
+        },
+        {
+          "lane": "main_1_2",
+          "declared_length_m": 72.94,
+          "polyline_length_m": 72.94,
+          "absolute_difference_m": 0.0,
+          "shape": "74.62,30.40 147.56,30.40"
+        }
+      ],
+      "coordinate_verified": true,
+      "cross_edge_verified": true,
+      "engineering_position_uncertainty_m": 0.0,
+      "real_world_position_uncertainty_m": "Unknown",
+      "precision_basis": "Logical route distance in loaded SUMO lane-length units; no sensor precision claim; runtime cross-check required before main admission",
+      "geometry_length_disagreement_max_m": 5.329070518200751e-15,
+      "unknown_paths": [],
+      "errors": [],
+      "main2_lanes": 3,
+      "mandatory_lane_change_from": [],
+      "downstream_connections": {
+        "0": [
+          {
+            "from": "main_1",
+            "to": "main_2",
+            "fromLane": "0",
+            "toLane": "0",
+            "via": ":hwy_j2_1_0",
+            "tl": "hwy_j2",
+            "linkIndex": "1",
+            "dir": "s",
+            "state": "O"
+          }
+        ],
+        "1": [
+          {
+            "from": "main_1",
+            "to": "main_2",
+            "fromLane": "1",
+            "toLane": "1",
+            "via": ":hwy_j2_1_1",
+            "tl": "hwy_j2",
+            "linkIndex": "2",
+            "dir": "s",
+            "state": "O"
+          }
+        ],
+        "2": [
+          {
+            "from": "main_1",
+            "to": "main_2",
+            "fromLane": "2",
+            "toLane": "2",
+            "via": ":hwy_j2_1_2",
+            "tl": "hwy_j2",
+            "linkIndex": "3",
+            "dir": "s",
+            "state": "O"
+          }
+        ]
+      },
+      "all_lane_lengths": {
+        ":hwy_j1_0_0": 8.07,
+        ":hwy_j1_1_0": 8.12,
+        ":hwy_j1_1_1": 8.12,
+        ":hwy_j1_1_2": 8.12,
+        ":hwy_j2_0_0": 8.93,
+        ":hwy_j2_1_0": 8.94,
+        ":hwy_j2_1_1": 8.94,
+        ":hwy_j2_1_2": 8.94,
+        "main_0_0": 66.5,
+        "main_0_1": 66.5,
+        "main_0_2": 66.5,
+        "main_1_0": 72.94,
+        "main_1_1": 72.94,
+        "main_1_2": 72.94,
+        "main_2_0": 83.5,
+        "main_2_1": 83.5,
+        "main_2_2": 83.5,
+        "offramp_0": 40.05,
+        "onramp_0": 34.36
+      },
+      "all_lane_edges": {
+        ":hwy_j1_0_0": ":hwy_j1_0",
+        ":hwy_j1_1_0": ":hwy_j1_1",
+        ":hwy_j1_1_1": ":hwy_j1_1",
+        ":hwy_j1_1_2": ":hwy_j1_1",
+        ":hwy_j2_0_0": ":hwy_j2_0",
+        ":hwy_j2_1_0": ":hwy_j2_1",
+        ":hwy_j2_1_1": ":hwy_j2_1",
+        ":hwy_j2_1_2": ":hwy_j2_1",
+        "main_0_0": "main_0",
+        "main_0_1": "main_0",
+        "main_0_2": "main_0",
+        "main_1_0": "main_1",
+        "main_1_1": "main_1",
+        "main_1_2": "main_1",
+        "main_2_0": "main_2",
+        "main_2_1": "main_2",
+        "main_2_2": "main_2",
+        "offramp_0": "offramp",
+        "onramp_0": "onramp"
+      },
+      "comparison_rule": "Only the same checked lane path; no joining between lateral paths; main_2 outside upstream queue domain"
+    },
+    "D": {
+      "lanes": {
+        "main_0_0": {
+          "path": "0",
+          "offset_m": 0.0,
+          "length_m": 386.5,
+          "edge": "main_0"
+        },
+        ":hwy_j1_1_0": {
+          "path": "0",
+          "offset_m": 386.5,
+          "length_m": 8.12,
+          "edge": ":hwy_j1_1"
+        },
+        "main_1_0": {
+          "path": "0",
+          "offset_m": 394.62,
+          "length_m": 312.94,
+          "edge": "main_1"
+        },
+        "main_0_1": {
+          "path": "1",
+          "offset_m": 0.0,
+          "length_m": 386.5,
+          "edge": "main_0"
+        },
+        ":hwy_j1_1_1": {
+          "path": "1",
+          "offset_m": 386.5,
+          "length_m": 8.12,
+          "edge": ":hwy_j1_1"
+        },
+        "main_1_1": {
+          "path": "1",
+          "offset_m": 394.62,
+          "length_m": 312.94,
+          "edge": "main_1"
+        },
+        "main_0_2": {
+          "path": "2",
+          "offset_m": 0.0,
+          "length_m": 386.5,
+          "edge": "main_0"
+        },
+        ":hwy_j1_1_2": {
+          "path": "2",
+          "offset_m": 386.5,
+          "length_m": 8.12,
+          "edge": ":hwy_j1_1"
+        },
+        "main_1_2": {
+          "path": "2",
+          "offset_m": 394.62,
+          "length_m": 312.94,
+          "edge": "main_1"
+        }
+      },
+      "path_lengths": {
+        "0": 707.56,
+        "1": 707.56,
+        "2": 707.56
+      },
+      "path_checks": [
+        {
+          "path": "0",
+          "lanes": [
+            "main_0_0",
+            ":hwy_j1_1_0",
+            "main_1_0"
+          ],
+          "length_m": 707.56,
+          "junction_included": true,
+          "endpoint_gaps_m": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "path": "1",
+          "lanes": [
+            "main_0_1",
+            ":hwy_j1_1_1",
+            "main_1_1"
+          ],
+          "length_m": 707.56,
+          "junction_included": true,
+          "endpoint_gaps_m": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "path": "2",
+          "lanes": [
+            "main_0_2",
+            ":hwy_j1_1_2",
+            "main_1_2"
+          ],
+          "length_m": 707.56,
+          "junction_included": true,
+          "endpoint_gaps_m": [
+            0.0,
+            0.0
+          ]
+        }
+      ],
+      "geometry_checks": [
+        {
+          "lane": "main_0_0",
+          "declared_length_m": 386.5,
+          "polyline_length_m": 386.5,
+          "absolute_difference_m": 0.0,
+          "shape": "0.00,152.00 386.50,152.00"
+        },
+        {
+          "lane": ":hwy_j1_1_0",
+          "declared_length_m": 8.12,
+          "polyline_length_m": 8.120000000000005,
+          "absolute_difference_m": 5.329070518200751e-15,
+          "shape": "386.50,152.00 394.62,152.00"
+        },
+        {
+          "lane": "main_1_0",
+          "declared_length_m": 312.94,
+          "polyline_length_m": 312.93999999999994,
+          "absolute_difference_m": 5.684341886080802e-14,
+          "shape": "394.62,152.00 707.56,152.00"
+        },
+        {
+          "lane": "main_0_1",
+          "declared_length_m": 386.5,
+          "polyline_length_m": 386.5,
+          "absolute_difference_m": 0.0,
+          "shape": "0.00,155.20 386.50,155.20"
+        },
+        {
+          "lane": ":hwy_j1_1_1",
+          "declared_length_m": 8.12,
+          "polyline_length_m": 8.120000000000005,
+          "absolute_difference_m": 5.329070518200751e-15,
+          "shape": "386.50,155.20 394.62,155.20"
+        },
+        {
+          "lane": "main_1_1",
+          "declared_length_m": 312.94,
+          "polyline_length_m": 312.93999999999994,
+          "absolute_difference_m": 5.684341886080802e-14,
+          "shape": "394.62,155.20 707.56,155.20"
+        },
+        {
+          "lane": "main_0_2",
+          "declared_length_m": 386.5,
+          "polyline_length_m": 386.5,
+          "absolute_difference_m": 0.0,
+          "shape": "0.00,158.40 386.50,158.40"
+        },
+        {
+          "lane": ":hwy_j1_1_2",
+          "declared_length_m": 8.12,
+          "polyline_length_m": 8.120000000000005,
+          "absolute_difference_m": 5.329070518200751e-15,
+          "shape": "386.50,158.40 394.62,158.40"
+        },
+        {
+          "lane": "main_1_2",
+          "declared_length_m": 312.94,
+          "polyline_length_m": 312.93999999999994,
+          "absolute_difference_m": 5.684341886080802e-14,
+          "shape": "394.62,158.40 707.56,158.40"
+        }
+      ],
+      "coordinate_verified": true,
+      "cross_edge_verified": true,
+      "engineering_position_uncertainty_m": 0.0,
+      "real_world_position_uncertainty_m": "Unknown",
+      "precision_basis": "Logical route distance in loaded SUMO lane-length units; no sensor precision claim; runtime cross-check required before main admission",
+      "geometry_length_disagreement_max_m": 5.684341886080802e-14,
+      "unknown_paths": [],
+      "errors": [],
+      "main2_lanes": 2,
+      "mandatory_lane_change_from": [
+        "main_1_2"
+      ],
+      "downstream_connections": {
+        "0": [
+          {
+            "from": "main_1",
+            "to": "main_2",
+            "fromLane": "0",
+            "toLane": "0",
+            "via": ":hwy_j2_1_0",
+            "dir": "s",
+            "state": "M"
+          }
+        ],
+        "1": [
+          {
+            "from": "main_1",
+            "to": "main_2",
+            "fromLane": "1",
+            "toLane": "1",
+            "via": ":hwy_j2_1_1",
+            "dir": "s",
+            "state": "M"
+          }
+        ],
+        "2": []
+      },
+      "all_lane_lengths": {
+        ":hwy_j1_0_0": 8.07,
+        ":hwy_j1_1_0": 8.12,
+        ":hwy_j1_1_1": 8.12,
+        ":hwy_j1_1_2": 8.12,
+        ":hwy_j2_0_0": 3.87,
+        ":hwy_j2_1_0": 5.07,
+        ":hwy_j2_1_1": 5.07,
+        "main_0_0": 386.5,
+        "main_0_1": 386.5,
+        "main_0_2": 386.5,
+        "main_1_0": 312.94,
+        "main_1_1": 312.94,
+        "main_1_2": 312.94,
+        "main_2_0": 488.5,
+        "main_2_1": 488.5,
+        "offramp_0": 282.51,
+        "onramp_0": 239.26
+      },
+      "all_lane_edges": {
+        ":hwy_j1_0_0": ":hwy_j1_0",
+        ":hwy_j1_1_0": ":hwy_j1_1",
+        ":hwy_j1_1_1": ":hwy_j1_1",
+        ":hwy_j1_1_2": ":hwy_j1_1",
+        ":hwy_j2_0_0": ":hwy_j2_0",
+        ":hwy_j2_1_0": ":hwy_j2_1",
+        ":hwy_j2_1_1": ":hwy_j2_1",
+        "main_0_0": "main_0",
+        "main_0_1": "main_0",
+        "main_0_2": "main_0",
+        "main_1_0": "main_1",
+        "main_1_1": "main_1",
+        "main_1_2": "main_1",
+        "main_2_0": "main_2",
+        "main_2_1": "main_2",
+        "offramp_0": "offramp",
+        "onramp_0": "onramp"
+      },
+      "comparison_rule": "Only the same checked lane path; no joining between lateral paths; main_2 outside upstream queue domain"
+    }
+  },
+  "runtime_crosscheck_required": true,
+  "no_simple_normal_edge_sum": true,
+  "physical_world_precision": "Unknown"
+}
