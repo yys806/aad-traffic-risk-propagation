@@ -1,0 +1,103 @@
+{
+  "accessible_windows": [
+    "us101__0750_0805",
+    "us101__0805_0820"
+  ],
+  "actual_input_directory": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_boundary_bottleneck_v2\\inputs",
+  "forbidden_sources": [
+    "us101__0820_0835",
+    "locked_holdout",
+    "unknown",
+    "historical full-source"
+  ],
+  "guard_probe": {
+    "audit": {
+      "allowed_open_events": 0,
+      "denied": [
+        {
+          "event": "open",
+          "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_us101__0820_0835.json",
+          "write": false
+        },
+        {
+          "event": "open",
+          "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_locked_holdout.json",
+          "write": false
+        },
+        {
+          "event": "open",
+          "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_historical_event_characteristics.parquet",
+          "write": false
+        }
+      ],
+      "limitations": [
+        "Python audit events only; native extensions and SUMO reads not OS-traced",
+        "standard-library/package/SUMO/Windows runtime roots are broader than individual dependency files",
+        "same-user administrator can bypass this policy; it is not an adversarial security boundary"
+      ],
+      "native_file_access_monitored": false,
+      "os_complete_monitoring": false,
+      "python_no_site": true,
+      "sanitized_sys_path": [
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_boundary_bottleneck_v2\\runtime\\code\\src",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_boundary_bottleneck_v2\\dependency_links",
+        "D:\\miniconda\\Lib\\site-packages",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_boundary_bottleneck_v2\\runtime\\code\\scripts",
+        "D:\\miniconda\\python313.zip",
+        "D:\\miniconda\\DLLs",
+        "D:\\miniconda\\Lib",
+        "D:\\miniconda"
+      ],
+      "scope": "controlled Python entrypoints"
+    },
+    "cases": [
+      {
+        "before_filesystem_read": true,
+        "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_us101__0820_0835.json",
+        "refused": true
+      },
+      {
+        "before_filesystem_read": true,
+        "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_locked_holdout.json",
+        "refused": true
+      },
+      {
+        "before_filesystem_read": true,
+        "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_historical_event_characteristics.parquet",
+        "refused": true
+      }
+    ]
+  },
+  "historical_source_data_loaded": false,
+  "limitations": "Python entrypoint audit plus code/data-minimal capsule; native extensions/SUMO filesystem accesses are not OS-traced; no absolute adversarial security claim",
+  "os_complete_monitoring": false,
+  "passed": true,
+  "python_no_site": true,
+  "source_sha256": "1d1c42a3a472b0e9f655532288839cf33a49ae33e1e24f208a7734d78ffd6a81",
+  "summary_sources": {
+    "calibration_reference": {
+      "kind": "two_window_aggregate",
+      "path": "calibration_reference.json",
+      "role": "calibration",
+      "sha256": "1d1c42a3a472b0e9f655532288839cf33a49ae33e1e24f208a7734d78ffd6a81"
+    }
+  },
+  "synthetic_test_unexpected_denials": 0,
+  "test_environment": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_boundary_bottleneck_v2\\runtime",
+  "test_set": [
+    "D:\\miniconda\\python.exe",
+    "-S",
+    "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_boundary_bottleneck_v2\\runtime\\code\\scripts\\b1_test_entry.py",
+    "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_boundary_bottleneck_v2\\runtime\\code\\tests\\test_stage_0_5_boundary_bottleneck.py",
+    "-q",
+    "-c",
+    "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_boundary_bottleneck_v2\\runtime\\code\\pytest.ini",
+    "--rootdir",
+    "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_boundary_bottleneck_v2\\runtime\\code",
+    "--basetemp",
+    "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_boundary_bottleneck_v2\\test_tmp\\1792378483337696500",
+    "-o",
+    "cache_dir=D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_boundary_bottleneck_v2\\runtime_cache\\pytest"
+  ],
+  "validation_window_rows_materialised": 0
+}

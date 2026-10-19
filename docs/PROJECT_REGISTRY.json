@@ -1,6 +1,6 @@
 {
   "schema_version": "aad.project-registry.v2",
-  "last_verified": "2026-10-18",
+  "last_verified": "2026-10-19",
   "project": {
     "name": "AAD",
     "research_topic": "Connected-vehicle communication adoption and traffic-risk propagation",
@@ -104,12 +104,25 @@
     "code/scripts/run_stage_0_5_exploratory_response.py",
     "code/tests/test_stage_0_5_exploratory_response.py",
     "docs/STAGE_0_5_TASK_0_5_4B0_EXPLORATORY_RESPONSE_DIAGNOSTICS.md",
-    "docs/plans/2026-10-18-stage-0-5-4b0.md"
+    "docs/plans/2026-10-18-stage-0-5-4b0.md",
+    "code/src/riskprop/stage_0_5_boundary_bottleneck.py",
+    "code/src/riskprop/stage_0_5_b1_isolation.py",
+    "code/src/riskprop/stage_0_5_b1_analysis.py",
+    "code/scripts/run_stage_0_5_boundary_bottleneck.py",
+    "code/scripts/b1_synthetic_worker.py",
+    "code/scripts/b1_guard_probe.py",
+    "code/scripts/b1_test_entry.py",
+    "code/scripts/finalize_stage_0_5_boundary_bottleneck.py",
+    "code/scripts/verify_stage_0_5_boundary_evidence.py",
+    "code/tests/test_stage_0_5_boundary_bottleneck.py",
+    "code/tests/test_stage_0_5_b1_evidence.py",
+    "docs/STAGE_0_5_TASK_0_5_4B1_BOUNDARY_BOTTLENECK_CONTRAST.md",
+    "docs/plans/2026-10-19-stage-0-5-4b1.md"
   ],
   "current": {
     "active_experiment_id": "stage_0_5",
-    "active_task": "AAD-0.5.4-B0 bounded exploration completed with retained stop-policy deviation; researcher decision node, formal calibration not ready.",
-    "why_now": "19/23 planned runs completed; all local traffic remains free-flow at low actual density. tau2 causes inlet slow acceleration and growing unserved demand. Recommend boundary/structure contrasts before calibration; scientific tolerances remain unjustified. Whole-task isolation not certified after root historical-artifact regression exception; review required.",
+    "active_task": "AAD-0.5.4-B1 closed early under engineering stop rules; A/B valid, C blocked, D not attempted; researcher decision node.",
+    "why_now": "B1 guarded capsule and stop tests pass. Fixed-parameter C records internal congestion but fails stopping displacement and frozen spillback qualification. Do not start formal calibration; first review stopping/queue observation contract. B0 retained limited descriptive only, task isolation false/Unknown.",
     "next_decision_owner": "researcher",
     "portable_gate_paths": [
       "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",
@@ -120,7 +133,8 @@
       "evidence/results/RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1/audit.json",
       "evidence/results/RES-STAGE-0.5-CALIBRATION-READINESS-V1/audit.json",
       "evidence/results/RES-STAGE-0.5-CALIBRATION-GAPS-V1/audit.json",
-      "evidence/results/RES-STAGE-0.5-EXPLORATORY-RESPONSE-V1/audit.json"
+      "evidence/results/RES-STAGE-0.5-EXPLORATORY-RESPONSE-V1/audit.json",
+      "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/audit.json"
     ],
     "local_gate_paths": [
       "code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r4/scientific_gate_report.json",
@@ -129,7 +143,8 @@
       "code/outputs/formal/calibration/stage_0_5_sumo_baseline_engineering_v1_baseline/audit.json",
       "code/outputs/formal/calibration/stage_0_5_calibration_readiness_v1/audit.json",
       "code/outputs/formal/calibration/stage_0_5_calibration_gaps_v1_final/audit.json",
-      "code/outputs/formal/calibration/stage_0_5_exploratory_response_v1/audit.json"
+      "code/outputs/formal/calibration/stage_0_5_exploratory_response_v1/audit.json",
+      "code/outputs/formal/calibration/stage_0_5_boundary_bottleneck_v2/summary/audit.json"
     ]
   },
   "experiments": [
@@ -358,7 +373,7 @@
       "research_question": "SUMO 基础运动与跟驰风险是否明显脱离真实交通范围？",
       "date": "2026-09-07",
       "status": "active_pending_simulation_sample",
-      "code_version": "canonical real reference R2, independent Stage 0.5.3 no-message SUMO engineering skeleton, and the Stage 0.5.4-A measurement-equivalence/calibration-readiness audit; no scientific calibration and no frozen scientific parameter; B0 bounded exploration with explicit ballistic and guarded batch inputs; no formal calibration",
+      "code_version": "canonical real reference R2, independent Stage 0.5.3 no-message SUMO engineering skeleton, and the Stage 0.5.4-A measurement-equivalence/calibration-readiness audit; no scientific calibration and no frozen scientific parameter; B0 bounded exploration with explicit ballistic and guarded batch inputs; no formal calibration; B1 capsule -S whitelist/stop supervisor with fixed-behaviour boundary mechanisms (closed early)",
       "code_paths": [
         "code/src/riskprop/simulation_real_coverage.py",
         "code/src/riskprop/stage_0_5_sumo.py",
@@ -366,7 +381,10 @@
         "code/tests/test_stage_0_5_measurement_equivalence.py",
         "code/src/riskprop/stage_0_5_calibration_gaps.py",
         "code/src/riskprop/stage_0_5_exploratory_response.py",
-        "code/src/riskprop/stage_0_5_exploratory_analysis.py"
+        "code/src/riskprop/stage_0_5_exploratory_analysis.py",
+        "code/src/riskprop/stage_0_5_boundary_bottleneck.py",
+        "code/src/riskprop/stage_0_5_b1_isolation.py",
+        "code/src/riskprop/stage_0_5_b1_analysis.py"
       ],
       "entrypoints": [
         "code/scripts/prepare_stage_0_5_real_reference.py",
@@ -378,13 +396,21 @@
         "code/scripts/run_stage_0_5_calibration_gaps.py",
         "code/scripts/benchmark_stage_0_5_calibration_loads.py",
         "code/scripts/finalize_stage_0_5_calibration_gaps.py",
-        "code/scripts/run_stage_0_5_exploratory_response.py"
+        "code/scripts/run_stage_0_5_exploratory_response.py",
+        "code/scripts/run_stage_0_5_boundary_bottleneck.py",
+        "code/scripts/b1_synthetic_worker.py",
+        "code/scripts/b1_guard_probe.py",
+        "code/scripts/b1_test_entry.py",
+        "code/scripts/finalize_stage_0_5_boundary_bottleneck.py",
+        "code/scripts/verify_stage_0_5_boundary_evidence.py"
       ],
       "test_paths": [
         "code/tests/test_simulation_real_coverage.py",
         "code/tests/test_stage_0_5_sumo.py",
         "code/tests/test_stage_0_5_calibration_gaps.py",
-        "code/tests/test_stage_0_5_exploratory_response.py"
+        "code/tests/test_stage_0_5_exploratory_response.py",
+        "code/tests/test_stage_0_5_boundary_bottleneck.py",
+        "code/tests/test_stage_0_5_b1_evidence.py"
       ],
       "configuration": "R2 real reference plus two no_message_baseline generic-highway engineering fixtures (baseline_mixed_demand, measurement_probe_queue_stop); US-101 primary, Lankershim auxiliary entry-only, pNEUMA urban kinematics entry-only; all network/demand/vType/behaviour/time settings are engineering_fixture_only",
       "parameters": {
@@ -424,7 +450,19 @@
         "b0_completed_runs": 19,
         "b0_planned_max_runs": 23,
         "b0_scientific_claim_eligible": false,
-        "b0_p2_core_authorized_for_exploration_only": true
+        "b0_p2_core_authorized_for_exploration_only": true,
+        "boundary_bottleneck_result_id": "RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1",
+        "b1_task_attempts": 4,
+        "b1_effective_valid_conditions": [
+          "A",
+          "B"
+        ],
+        "b1_blocked_condition": "C",
+        "b1_not_attempted_condition": "D",
+        "b1_scientific_claim_eligible": false,
+        "b0_task_data_isolation_accepted": false,
+        "b0_validation_rows_materialised": "Unknown",
+        "reality_coverage_accepted": false
       },
       "data_version": "RES-STAGE-0.5-REAL-REF-R2; Stage 0.2 R4 four states + final_r1 P2 + Stage 0.3 R2 canonical/R3 summaries",
       "model": "deterministic simulation-to-real coverage audit",
@@ -435,7 +473,8 @@
         "RES-STAGE-0.5-SUMO-BASELINE-ENGINEERING-V1",
         "RES-STAGE-0.5-CALIBRATION-READINESS-V1",
         "RES-STAGE-0.5-CALIBRATION-GAPS-V1",
-        "RES-STAGE-0.5-EXPLORATORY-RESPONSE-V1"
+        "RES-STAGE-0.5-EXPLORATORY-RESPONSE-V1",
+        "RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1"
       ],
       "core_metrics": [
         "formal_input_manifest",
@@ -473,7 +512,7 @@
         "source_time_coverage",
         "density_scaled_engineering_cost"
       ],
-      "current_conclusion": "AAD-0.5.4-A+ verifies both existing raw calibration members against sealed states (100% row matches, zero join conflicts) and source-scoped fleet/length annotations. Mainline comparison and shared candidate strata are quantified. Source clocks explain 952.8/999s without demonstrated Stage 0.2 normalization error. Four fixed-load runs complete; insertion backlog, initialization and numerical-integrator caveats retained. Scientific tolerances and full P2 pipeline budget remain unjustified or unapproved. Recommend limited exploratory response diagnostics only after researcher authorization. Gate stays pending_simulation_sample; no validation content or formal calibration. B0:19 runs retained, actual low-density free-flow; tau2 inlet backlog and boundary low-speed only; stop-policy defect recorded and repaired after batch close; no formal calibration readiness.",
+      "current_conclusion": "B1 controlled-summary access and synthetic stop/isolation tests pass. A/B free-flow; C600s records dense low-speed on-road queue before outside backlog, but is engineering-blocked by stopping displacement audit and frozen spillback qualification; D not attempted. No structural contrast or formal calibration readiness. Researcher retains B0 limited descriptive evidence without accepting B0 isolation. Formal Gate remains pending_simulation_sample.",
       "gate": {
         "status": "pending_simulation_sample",
         "portable_path": "evidence/results/RES-STAGE-0.5-REAL-REF-R2/audit.json"
@@ -1924,10 +1963,108 @@
         "whole_task_validation_window_rows_materialised": null,
         "task_data_isolation_accepted": false
       },
-      "current_conclusion": "All completed runs lack local congestion or target density support. tau2 response is confounded by reduced actual insertions and slow entry acceleration. H1/H2/H3 partially supported, H4 inconclusive. Do not start formal calibration; first approve boundary/minimum-structure contrasts. Stop-policy defect retained and patched only after closing batch; high-input response seed incomplete. B0-VALIDATION-SCOPE-02: root legacy regression read historical whole-source event/case artifacts without role filtering; whole-task zero validation access Not Certified. Experimental inputs are separately guarded; researcher must review retention of exploratory results. Pure Git regressions avoid local artifacts.",
+      "current_conclusion": "Researcher decision2026-10-19: retain19 completed B0 runs as limited descriptive exploration only; do not accept task-level data isolation. B0-VALIDATION-SCOPE-02 remains task_data_isolation_accepted=false, validation_window_rows_materialised=Unknown; no retrospective repair or reopening historical full-source artifacts. Frozen experimental runs preceded the legacy-root-regression exception; no later parameter/tolerance selection. B0-EXEC-STOP-01 and4 not-attempted runs retained, no reruns. Free-flow state support and inlet backlog limitations remain; no formal calibration or scientific acceptance. See B1 report and06_DECISIONS.",
       "gate_status": "pending_simulation_sample",
       "paper_locations": [
         "docs/STAGE_0_5_TASK_0_5_4B0_EXPLORATORY_RESPONSE_DIAGNOSTICS.md"
+      ],
+      "scientific_claim_eligible": false
+    },
+    {
+      "id": "RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1",
+      "experiment_id": "stage_0_5",
+      "name": "AAD-0.5.4-B1 isolated fixed-behaviour boundary/bottleneck diagnostics",
+      "status": "exploratory_closed_with_engineering_blocker",
+      "portable_evidence_paths": [
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/analysis_reference_access_audit.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/audit.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/boundary_condition_manifest.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/config.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/controlled_access_audit.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/data_isolation_preflight.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/engineering_input_bundle.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/execution_guard_audit.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/execution_ledger.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/execution_stop_observation.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/experiment_plan.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/figure_index.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/fixed_parameter_manifest.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/fleet_and_initialization_audit.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/following_risk_diagnostics.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/manifest.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/mechanism_hypothesis_matrix.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/network_variant_manifest.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/numerical_method_audit.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/numerical_stop_diagnostic.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/paired_input_contract_audit.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/phase1_checkpoint.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/plan_revision_audit.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/PLAN_SHA256",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/preparation_manifest.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/prior_v1_execution_ledger.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/prior_v1_experiment_plan.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/prior_v1_summary.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/prior_v1_worker_b1_A_s20261019.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/provenance.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/queue_diagnostics.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/real_reference_summary.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/real_strata_summary.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/report.md",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/researcher_decision_matrix.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/run_manifest.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/run_metrics.csv",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/runtime_budget_audit.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/SHA256SUMS",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/source_access_audit.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/source_manifest.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/source_staging_manifest.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/test_record.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/test_scope_audit.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/time_bins_60s.csv",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/time_series_5s.csv",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/traffic_conservation_audit.json",
+        "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/traffic_state_comparison.json"
+      ],
+      "local_artifact_paths": [
+        "code/outputs/formal/calibration/stage_0_5_boundary_bottleneck_v1",
+        "code/outputs/formal/calibration/stage_0_5_boundary_bottleneck_v2"
+      ],
+      "code_version_source": "code/src/riskprop/stage_0_5_boundary_bottleneck.py; code/src/riskprop/stage_0_5_b1_isolation.py; code/src/riskprop/stage_0_5_b1_analysis.py; code/scripts/run_stage_0_5_boundary_bottleneck.py; code/scripts/b1_synthetic_worker.py; code/scripts/b1_guard_probe.py; code/scripts/b1_test_entry.py; code/scripts/finalize_stage_0_5_boundary_bottleneck.py; code/scripts/verify_stage_0_5_boundary_evidence.py; code/tests/test_stage_0_5_boundary_bottleneck.py; code/tests/test_stage_0_5_b1_evidence.py",
+      "configuration_source": "V1 and V2 frozen experiment_plan/PLAN_SHA256; V2 source/input hashes; engineering_input_bundle exact XML bytes",
+      "data_version_source": "SHA-bound A+ two calibration-window summaries and fleet only; no real trajectories or old full-source test artifacts; Python whitelist scope, no complete OS/native monitoring",
+      "core_metrics": {
+        "task_attempts": 4,
+        "prior_failed_attempts": 1,
+        "v2_completed_valid": 1,
+        "v2_completed_with_warning": 1,
+        "v2_completed_with_blocker": 1,
+        "v2_not_attempted": 1,
+        "input_veh_h_lane": 1648,
+        "duration_s": 600,
+        "local_mean_speed_mps": [
+          27.108823752370306,
+          26.515194348899627,
+          2.4006566028539744
+        ],
+        "local_density_veh_km_lane": [
+          16.320833333333333,
+          16.81972222222222,
+          93.86527777777778
+        ],
+        "local_low_speed_fraction": [
+          0,
+          0,
+          0.8017193672965095
+        ],
+        "C_unserved": 252,
+        "C_engineering_p2": 372,
+        "calibration_ready": false,
+        "reality_coverage_accepted": false
+      },
+      "current_conclusion": "B1 controlled-summary access and synthetic stop/isolation tests pass. A/B free-flow; C600s records dense low-speed on-road queue before outside backlog, but is engineering-blocked by stopping displacement audit and frozen spillback qualification; D not attempted. No structural contrast or formal calibration readiness. Researcher retains B0 limited descriptive evidence without accepting B0 isolation. Formal Gate remains pending_simulation_sample.",
+      "gate_status": "pending_simulation_sample",
+      "paper_locations": [
+        "docs/STAGE_0_5_TASK_0_5_4B1_BOUNDARY_BOTTLENECK_CONTRAST.md"
       ],
       "scientific_claim_eligible": false
     }

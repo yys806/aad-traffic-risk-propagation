@@ -1,0 +1,3768 @@
+{
+  "missing_reason_equivalence": {
+    "conflicting_match_fields": {
+      "comparability": "Not Equivalent",
+      "ngsim_status": "missing",
+      "sumo_reason": "not_applicable_to_simulator_observation",
+      "sumo_status": null
+    },
+    "leader_not_matched": {
+      "comparability": "Engineering Consistent Only",
+      "ngsim_status": "missing",
+      "sumo_reason": "leader_identity_unresolved",
+      "sumo_status": "missing"
+    },
+    "no_reported_leader": {
+      "comparability": "Engineering Consistent Only",
+      "ngsim_status": "missing",
+      "sumo_reason": "no_observed_leader",
+      "sumo_status": "not_applicable"
+    },
+    "non_closing": {
+      "comparability": "Equivalent / Verified",
+      "ngsim_status": "not_applicable",
+      "sumo_reason": "non_closing",
+      "sumo_status": "not_applicable"
+    },
+    "non_positive_gap": {
+      "comparability": "Equivalent / Verified",
+      "ngsim_status": "invalid",
+      "sumo_reason": "non_positive_gap",
+      "sumo_status": "invalid"
+    },
+    "unobservable_input": {
+      "comparability": "Engineering Consistent Only",
+      "ngsim_status": "missing",
+      "sumo_reason": "simulator_output_missing",
+      "sumo_status": "missing"
+    },
+    "unobservable_match_fields": {
+      "comparability": "Engineering Consistent Only",
+      "ngsim_status": "missing",
+      "sumo_reason": "leader_identity_unresolved",
+      "sumo_status": "missing"
+    }
+  },
+  "ngsim_sumo_crosswalk": {
+    "invalid": {
+      "comparability": "Equivalent / Verified",
+      "ngsim_condition": "matched leader with non-positive net gap",
+      "sumo_label": "invalid (missing_reason=non_positive_gap)"
+    },
+    "missing__identity_or_clock": {
+      "comparability": "Engineering Consistent Only",
+      "ngsim_condition": "leader not matched, unobservable match fields, conflicting clock/frame",
+      "note": "NGSIM collection/identity defects map onto the simulator's identity-resolution failure",
+      "sumo_label": "missing (missing_reason=leader_identity_unresolved)"
+    },
+    "missing__no_reported_leader": {
+      "comparability": "Engineering Consistent Only",
+      "ngsim_condition": "no leader reported in the source record (labelled missing)",
+      "note": "documented, approved asymmetry: in NGSIM the absence of a leader record is counted as an observation limitation (missing), while in SUMO the absence of a leader is a genuine traffic state (not_applicable).  No leader row can enter reliable-following exposure in either pipeline, so the P2 denominator is unaffected; comparisons of raw status composition must use this crosswalk.",
+      "sumo_label": "not_applicable (missing_reason=no_observed_leader)"
+    },
+    "missing__unobservable_input": {
+      "comparability": "Engineering Consistent Only",
+      "ngsim_condition": "leader matched but speed/headway fields unusable",
+      "note": "SUMO output defects must stay zero rows; the label exists for fail-closed behaviour",
+      "sumo_label": "missing (missing_reason=simulator_output_missing)"
+    },
+    "not_applicable": {
+      "comparability": "Equivalent / Verified",
+      "ngsim_condition": "matched leader and positive net gap but no closing",
+      "sumo_label": "not_applicable (missing_reason=non_closing)"
+    },
+    "valid": {
+      "comparability": "Equivalent / Verified",
+      "ngsim_condition": "matched leader, positive net gap, closing speed above epsilon",
+      "sumo_label": "valid"
+    }
+  },
+  "no_real_missingness_target": true,
+  "no_spatial_rate_comparison": true,
+  "runs": [
+    {
+      "condition": "A",
+      "following_fraction": 0.996255637818058,
+      "full_network_p2": {
+        "authorization": "B0 exploratory computation only; no measurement Gate",
+        "event_boundaries": [],
+        "event_rate_per_evaluable_vehicle_hour": 0.0,
+        "events": 0,
+        "formal_adapter_status": "pending_measurement_equivalence_review",
+        "method": "vectorized core adjacency equivalence tested",
+        "not_evaluable_following_exposure_s": 0.0,
+        "p2_evaluable_following_exposure_s": 33066.700000000004,
+        "p2_evaluable_following_vehicle_hours": 9.185194444444445,
+        "reliable_closing_exposure_s": 16077.300000000001,
+        "reliable_following_exposure_s": 33066.700000000004
+      },
+      "local_stratum_formal_p2": "Unresolved",
+      "metrics": {
+        "acceleration_mps2": {
+          "mean": 0.000734629778990564,
+          "n": 58755,
+          "quantiles": {
+            "0": -1.258134761499221,
+            "0.01": -1.069985706615384,
+            "0.05": -0.8377337766112447,
+            "0.1": -0.6621380592463311,
+            "0.5": 0.005426190011448284,
+            "0.9": 0.6481553631368797,
+            "0.95": 0.8288294352358605,
+            "0.99": 1.0840748525225052,
+            "1": 1.2574502625503214
+          },
+          "sd": 0.49224566294687233
+        },
+        "closing_speed_mps": {
+          "mean": 0.00015957431766343356,
+          "n": 58535,
+          "quantiles": {
+            "0": -1.2088781012193053,
+            "0.01": -0.9140436295517824,
+            "0.05": -0.6834565271462854,
+            "0.1": -0.5414091191580326,
+            "0.5": -0.0019474726100625617,
+            "0.9": 0.5354586911148089,
+            "0.95": 0.6821626990639112,
+            "0.99": 0.920030532320272,
+            "1": 1.2674393354693834
+          },
+          "sd": 0.40979569392616455
+        },
+        "low_speed_gap_m": {
+          "mean": null,
+          "n": 0,
+          "quantiles": {},
+          "sd": null
+        },
+        "net_gap_m": {
+          "mean": 54.582595178059876,
+          "n": 58535,
+          "quantiles": {
+            "0": 44.098642257368766,
+            "0.01": 48.172332097456504,
+            "0.05": 50.515452157100434,
+            "0.1": 51.58553742395009,
+            "0.5": 54.63695453019662,
+            "0.9": 57.60325141309016,
+            "0.95": 58.44570134865595,
+            "0.99": 59.974991425203676,
+            "1": 62.262301559731384
+          },
+          "sd": 2.406880316306215
+        },
+        "speed_mps": {
+          "mean": 27.108823752370306,
+          "n": 58755,
+          "quantiles": {
+            "0": 26.48379252676269,
+            "0.01": 26.54441757598101,
+            "0.05": 26.635098045132985,
+            "0.1": 26.708765742769938,
+            "0.5": 27.1141888046148,
+            "0.9": 27.50606185000596,
+            "0.95": 27.5846479883244,
+            "0.99": 27.694973349361657,
+            "1": 27.773207205468818
+          },
+          "sd": 0.29234918861382997
+        },
+        "ttc_s": {
+          "mean": 627.054246098473,
+          "n": 29101,
+          "quantiles": {
+            "0": 44.38340663336369,
+            "0.01": 54.38239274914553,
+            "0.05": 67.94075854172242,
+            "0.1": 79.22484615134812,
+            "0.5": 189.4176435346587,
+            "0.9": 998.3623289420248,
+            "0.95": 2000.9328985715874,
+            "0.99": 8061.300935452731,
+            "1": 53290.576573257626
+          },
+          "sd": 2311.001575395328
+        }
+      },
+      "positive_closing": 0.49715554796275735,
+      "ttc_valid": 0.49529401753042296
+    },
+    {
+      "condition": "B",
+      "following_fraction": 0.9963501841422933,
+      "full_network_p2": {
+        "authorization": "B0 exploratory computation only; no measurement Gate",
+        "event_boundaries": [],
+        "event_rate_per_evaluable_vehicle_hour": 0.0,
+        "events": 0,
+        "formal_adapter_status": "pending_measurement_equivalence_review",
+        "method": "vectorized core adjacency equivalence tested",
+        "not_evaluable_following_exposure_s": 0.0,
+        "p2_evaluable_following_exposure_s": 35631.0,
+        "p2_evaluable_following_vehicle_hours": 9.8975,
+        "reliable_closing_exposure_s": 12048.800000000001,
+        "reliable_following_exposure_s": 35631.0
+      },
+      "local_stratum_formal_p2": "Unresolved",
+      "metrics": {
+        "acceleration_mps2": {
+          "mean": 0.026191739962335876,
+          "n": 60551,
+          "quantiles": {
+            "0": -4.401158219531354,
+            "0.01": -1.4680149022965594,
+            "0.05": -1.010366824149358,
+            "0.1": -0.7875514852074872,
+            "0.5": -0.001091045623340392,
+            "0.9": 0.8928650290852858,
+            "0.95": 1.1161109162452476,
+            "0.99": 1.5498543183230495,
+            "1": 2.569939124270846
+          },
+          "sd": 0.6582593805532394
+        },
+        "closing_speed_mps": {
+          "mean": -0.05246542399674784,
+          "n": 60330,
+          "quantiles": {
+            "0": -2.109587223913465,
+            "0.01": -1.1676133399732649,
+            "0.05": -0.8448376119558823,
+            "0.1": -0.6645241459870899,
+            "0.5": -0.05982933816298264,
+            "0.9": 0.5636425270175134,
+            "0.95": 0.7635693022831539,
+            "0.99": 1.1157298669752118,
+            "1": 2.434987443089007
+          },
+          "sd": 0.48465915537275833
+        },
+        "low_speed_gap_m": {
+          "mean": null,
+          "n": 0,
+          "quantiles": {},
+          "sd": null
+        },
+        "net_gap_m": {
+          "mean": 52.694409819735625,
+          "n": 60330,
+          "quantiles": {
+            "0": 28.618187996744297,
+            "0.01": 31.949137502190993,
+            "0.05": 32.730868494467714,
+            "0.1": 33.05851481373512,
+            "0.5": 34.38262939353089,
+            "0.9": 44.95034202630786,
+            "0.95": 278.72458733192246,
+            "0.99": 305.1572876466596,
+            "1": 340.6312607035018
+          },
+          "sd": 64.8622726583333
+        },
+        "speed_mps": {
+          "mean": 26.515194348899627,
+          "n": 60551,
+          "quantiles": {
+            "0": 24.47577872634841,
+            "0.01": 25.267939321219387,
+            "0.05": 25.653359526069472,
+            "0.1": 25.857516268411587,
+            "0.5": 26.555952378386376,
+            "0.9": 27.12003319360997,
+            "0.95": 27.27110081432034,
+            "0.99": 27.53051895296528,
+            "1": 27.769507869484368
+          },
+          "sd": 0.48885645769111136
+        },
+        "ttc_s": {
+          "mean": 595.1204124569722,
+          "n": 27062,
+          "quantiles": {
+            "0": 18.856278605889642,
+            "0.01": 30.852944590556096,
+            "0.05": 40.96795145393809,
+            "0.1": 50.47830488658242,
+            "0.5": 144.7367120806503,
+            "0.9": 890.8484612861407,
+            "0.95": 1811.9968247194477,
+            "0.99": 7940.763640217968,
+            "1": 277567.7126639735
+          },
+          "sd": 3559.8104263663568
+        }
+      },
+      "positive_closing": 0.4485662191281286,
+      "ttc_valid": 0.4469290350283232
+    },
+    {
+      "condition": "C",
+      "following_fraction": 0.9993459893760265,
+      "full_network_p2": {
+        "authorization": "B0 exploratory computation only; no measurement Gate",
+        "event_boundaries": [
+          {
+            "event_confirm_s": 30.1,
+            "event_end_s": 32.3,
+            "event_start_s": 29.9,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00001",
+            "ttc_min_s": 1.2486298152508766,
+            "vehicle_id": "v00004"
+          },
+          {
+            "event_confirm_s": 30.9,
+            "event_end_s": 32.8,
+            "event_start_s": 30.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00002",
+            "ttc_min_s": 1.1998683761802178,
+            "vehicle_id": "v00005"
+          },
+          {
+            "event_confirm_s": 31.9,
+            "event_end_s": 34.0,
+            "event_start_s": 31.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00003",
+            "ttc_min_s": 1.207231190516683,
+            "vehicle_id": "v00006"
+          },
+          {
+            "event_confirm_s": 32.5,
+            "event_end_s": 34.4,
+            "event_start_s": 32.3,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00004",
+            "ttc_min_s": 1.347395933307302,
+            "vehicle_id": "v00007"
+          },
+          {
+            "event_confirm_s": 33.0,
+            "event_end_s": 35.3,
+            "event_start_s": 32.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00005",
+            "ttc_min_s": 1.297816595225596,
+            "vehicle_id": "v00008"
+          },
+          {
+            "event_confirm_s": 34.1,
+            "event_end_s": 36.1,
+            "event_start_s": 33.9,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00006",
+            "ttc_min_s": 1.143723049863675,
+            "vehicle_id": "v00009"
+          },
+          {
+            "event_confirm_s": 34.6,
+            "event_end_s": 36.2,
+            "event_start_s": 34.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00007",
+            "ttc_min_s": 1.504555582112404,
+            "vehicle_id": "v00010"
+          },
+          {
+            "event_confirm_s": 35.2,
+            "event_end_s": 36.7,
+            "event_start_s": 35.0,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00008",
+            "ttc_min_s": 1.2150040659763954,
+            "vehicle_id": "v00011"
+          },
+          {
+            "event_confirm_s": 36.2,
+            "event_end_s": 38.1,
+            "event_start_s": 36.0,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00009",
+            "ttc_min_s": 1.2897762189387458,
+            "vehicle_id": "v00012"
+          },
+          {
+            "event_confirm_s": 36.8,
+            "event_end_s": 38.2,
+            "event_start_s": 36.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00010",
+            "ttc_min_s": 1.7065329702134615,
+            "vehicle_id": "v00013"
+          },
+          {
+            "event_confirm_s": 37.0,
+            "event_end_s": 38.9,
+            "event_start_s": 36.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00011",
+            "ttc_min_s": 1.4161898121045084,
+            "vehicle_id": "v00014"
+          },
+          {
+            "event_confirm_s": 38.4,
+            "event_end_s": 40.1,
+            "event_start_s": 38.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00012",
+            "ttc_min_s": 1.411152258285792,
+            "vehicle_id": "v00015"
+          },
+          {
+            "event_confirm_s": 38.8,
+            "event_end_s": 40.4,
+            "event_start_s": 38.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00013",
+            "ttc_min_s": 1.4496615670303221,
+            "vehicle_id": "v00016"
+          },
+          {
+            "event_confirm_s": 39.0,
+            "event_end_s": 41.1,
+            "event_start_s": 38.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00014",
+            "ttc_min_s": 1.5171573866261,
+            "vehicle_id": "v00017"
+          },
+          {
+            "event_confirm_s": 40.3,
+            "event_end_s": 41.8,
+            "event_start_s": 40.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00015",
+            "ttc_min_s": 1.3703719285251,
+            "vehicle_id": "v00018"
+          },
+          {
+            "event_confirm_s": 40.6,
+            "event_end_s": 42.2,
+            "event_start_s": 40.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00016",
+            "ttc_min_s": 1.4477242367489043,
+            "vehicle_id": "v00019"
+          },
+          {
+            "event_confirm_s": 41.5,
+            "event_end_s": 43.0,
+            "event_start_s": 41.3,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00017",
+            "ttc_min_s": 1.3406875378415593,
+            "vehicle_id": "v00020"
+          },
+          {
+            "event_confirm_s": 42.3,
+            "event_end_s": 43.7,
+            "event_start_s": 42.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00018",
+            "ttc_min_s": 1.7685417646777017,
+            "vehicle_id": "v00021"
+          },
+          {
+            "event_confirm_s": 42.7,
+            "event_end_s": 44.3,
+            "event_start_s": 42.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00019",
+            "ttc_min_s": 1.4918506259779591,
+            "vehicle_id": "v00022"
+          },
+          {
+            "event_confirm_s": 43.3,
+            "event_end_s": 44.6,
+            "event_start_s": 43.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00020",
+            "ttc_min_s": 1.2540617312593751,
+            "vehicle_id": "v00023"
+          },
+          {
+            "event_confirm_s": 44.2,
+            "event_end_s": 46.4,
+            "event_start_s": 44.0,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00021",
+            "ttc_min_s": 1.7426445059678792,
+            "vehicle_id": "v00024"
+          },
+          {
+            "event_confirm_s": 44.7,
+            "event_end_s": 45.6,
+            "event_start_s": 44.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00022",
+            "ttc_min_s": 1.5887020358986845,
+            "vehicle_id": "v00025"
+          },
+          {
+            "event_confirm_s": 44.9,
+            "event_end_s": 46.3,
+            "event_start_s": 44.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00023",
+            "ttc_min_s": 1.6334900685289993,
+            "vehicle_id": "v00026"
+          },
+          {
+            "event_confirm_s": 47.0,
+            "event_end_s": 48.3,
+            "event_start_s": 46.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00024",
+            "ttc_min_s": 1.321209474263698,
+            "vehicle_id": "v00027"
+          },
+          {
+            "event_confirm_s": 47.8,
+            "event_end_s": 48.3,
+            "event_start_s": 47.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00025",
+            "ttc_min_s": 1.8179937145838259,
+            "vehicle_id": "v00028"
+          },
+          {
+            "event_confirm_s": 47.5,
+            "event_end_s": 48.9,
+            "event_start_s": 47.3,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00026",
+            "ttc_min_s": 1.7274584572552598,
+            "vehicle_id": "v00029"
+          },
+          {
+            "event_confirm_s": 48.7,
+            "event_end_s": 50.0,
+            "event_start_s": 48.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00027",
+            "ttc_min_s": 1.477772082937854,
+            "vehicle_id": "v00030"
+          },
+          {
+            "event_confirm_s": 49.3,
+            "event_end_s": 50.2,
+            "event_start_s": 49.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00028",
+            "ttc_min_s": 1.6792633166288289,
+            "vehicle_id": "v00031"
+          },
+          {
+            "event_confirm_s": 49.3,
+            "event_end_s": 50.9,
+            "event_start_s": 49.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00029",
+            "ttc_min_s": 1.5625322662477983,
+            "vehicle_id": "v00032"
+          },
+          {
+            "event_confirm_s": 50.4,
+            "event_end_s": 51.5,
+            "event_start_s": 50.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00030",
+            "ttc_min_s": 1.5363040995332478,
+            "vehicle_id": "v00033"
+          },
+          {
+            "event_confirm_s": 51.3,
+            "event_end_s": 52.3,
+            "event_start_s": 51.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00031",
+            "ttc_min_s": 1.6068655206171152,
+            "vehicle_id": "v00034"
+          },
+          {
+            "event_confirm_s": 51.6,
+            "event_end_s": 53.0,
+            "event_start_s": 51.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00032",
+            "ttc_min_s": 1.5981823977643779,
+            "vehicle_id": "v00035"
+          },
+          {
+            "event_confirm_s": 52.8,
+            "event_end_s": 53.6,
+            "event_start_s": 52.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00033",
+            "ttc_min_s": 1.8526266667666431,
+            "vehicle_id": "v00036"
+          },
+          {
+            "event_confirm_s": 53.3,
+            "event_end_s": 54.2,
+            "event_start_s": 53.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00034",
+            "ttc_min_s": 1.6890808020671273,
+            "vehicle_id": "v00037"
+          },
+          {
+            "event_confirm_s": 53.5,
+            "event_end_s": 54.4,
+            "event_start_s": 53.3,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00035",
+            "ttc_min_s": 1.5487156710111645,
+            "vehicle_id": "v00038"
+          },
+          {
+            "event_confirm_s": 54.6,
+            "event_end_s": 55.6,
+            "event_start_s": 54.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00036",
+            "ttc_min_s": 1.6482360708689079,
+            "vehicle_id": "v00039"
+          },
+          {
+            "event_confirm_s": 54.7,
+            "event_end_s": 56.1,
+            "event_start_s": 54.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00037",
+            "ttc_min_s": 1.3268991512122974,
+            "vehicle_id": "v00040"
+          },
+          {
+            "event_confirm_s": 54.9,
+            "event_end_s": 55.7,
+            "event_start_s": 54.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00038",
+            "ttc_min_s": 1.7895921606972092,
+            "vehicle_id": "v00041"
+          },
+          {
+            "event_confirm_s": 56.5,
+            "event_end_s": 57.3,
+            "event_start_s": 56.3,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00039",
+            "ttc_min_s": 1.4620170928964231,
+            "vehicle_id": "v00042"
+          },
+          {
+            "event_confirm_s": 56.4,
+            "event_end_s": 57.6,
+            "event_start_s": 56.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00040",
+            "ttc_min_s": 1.3052526040716765,
+            "vehicle_id": "v00043"
+          },
+          {
+            "event_confirm_s": 87.9,
+            "event_end_s": 89.4,
+            "event_start_s": 87.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00040",
+            "ttc_min_s": 1.214750213138704,
+            "vehicle_id": "v00043"
+          },
+          {
+            "event_confirm_s": 57.0,
+            "event_end_s": 57.1,
+            "event_start_s": 56.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00041",
+            "ttc_min_s": 1.9473782588810284,
+            "vehicle_id": "v00044"
+          },
+          {
+            "event_confirm_s": 88.0,
+            "event_end_s": 90.0,
+            "event_start_s": 87.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00041",
+            "ttc_min_s": 1.3208329956027243,
+            "vehicle_id": "v00044"
+          },
+          {
+            "event_confirm_s": 57.8,
+            "event_end_s": 59.2,
+            "event_start_s": 57.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00042",
+            "ttc_min_s": 1.5971818240066304,
+            "vehicle_id": "v00045"
+          },
+          {
+            "event_confirm_s": 88.0,
+            "event_end_s": 89.5,
+            "event_start_s": 87.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00042",
+            "ttc_min_s": 1.2938041636192132,
+            "vehicle_id": "v00045"
+          },
+          {
+            "event_confirm_s": 57.9,
+            "event_end_s": 59.9,
+            "event_start_s": 57.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00043",
+            "ttc_min_s": 1.58637424985474,
+            "vehicle_id": "v00046"
+          },
+          {
+            "event_confirm_s": 89.6,
+            "event_end_s": 91.0,
+            "event_start_s": 89.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00043",
+            "ttc_min_s": 1.5954625342100874,
+            "vehicle_id": "v00046"
+          },
+          {
+            "event_confirm_s": 59.6,
+            "event_end_s": 60.1,
+            "event_start_s": 59.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00044",
+            "ttc_min_s": 1.7077617075007085,
+            "vehicle_id": "v00047"
+          },
+          {
+            "event_confirm_s": 90.0,
+            "event_end_s": 91.0,
+            "event_start_s": 89.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00044",
+            "ttc_min_s": 1.4416044388579226,
+            "vehicle_id": "v00047"
+          },
+          {
+            "event_confirm_s": 60.5,
+            "event_end_s": 62.0,
+            "event_start_s": 60.3,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00045",
+            "ttc_min_s": 1.4877381283373077,
+            "vehicle_id": "v00048"
+          },
+          {
+            "event_confirm_s": 89.3,
+            "event_end_s": 91.0,
+            "event_start_s": 89.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00045",
+            "ttc_min_s": 1.2879984953399133,
+            "vehicle_id": "v00048"
+          },
+          {
+            "event_confirm_s": 60.4,
+            "event_end_s": 61.7,
+            "event_start_s": 60.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00046",
+            "ttc_min_s": 1.3859316471545788,
+            "vehicle_id": "v00049"
+          },
+          {
+            "event_confirm_s": 91.9,
+            "event_end_s": 92.0,
+            "event_start_s": 91.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00046",
+            "ttc_min_s": 1.9414820074270884,
+            "vehicle_id": "v00049"
+          },
+          {
+            "event_confirm_s": 60.6,
+            "event_end_s": 61.5,
+            "event_start_s": 60.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00047",
+            "ttc_min_s": 1.4716534704994602,
+            "vehicle_id": "v00050"
+          },
+          {
+            "event_confirm_s": 62.3,
+            "event_end_s": 63.7,
+            "event_start_s": 62.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00048",
+            "ttc_min_s": 1.4936706510709872,
+            "vehicle_id": "v00051"
+          },
+          {
+            "event_confirm_s": 91.3,
+            "event_end_s": 92.3,
+            "event_start_s": 91.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00048",
+            "ttc_min_s": 1.38046165868991,
+            "vehicle_id": "v00051"
+          },
+          {
+            "event_confirm_s": 62.3,
+            "event_end_s": 63.6,
+            "event_start_s": 62.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00049",
+            "ttc_min_s": 1.3147515920890236,
+            "vehicle_id": "v00052"
+          },
+          {
+            "event_confirm_s": 62.1,
+            "event_end_s": 63.6,
+            "event_start_s": 61.9,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00050",
+            "ttc_min_s": 1.5706323440305927,
+            "vehicle_id": "v00053"
+          },
+          {
+            "event_confirm_s": 93.6,
+            "event_end_s": 94.0,
+            "event_start_s": 93.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00050",
+            "ttc_min_s": 1.7289688265540164,
+            "vehicle_id": "v00053"
+          },
+          {
+            "event_confirm_s": 64.2,
+            "event_end_s": 65.5,
+            "event_start_s": 64.0,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00051",
+            "ttc_min_s": 1.281180814780819,
+            "vehicle_id": "v00054"
+          },
+          {
+            "event_confirm_s": 93.0,
+            "event_end_s": 93.4,
+            "event_start_s": 92.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00051",
+            "ttc_min_s": 1.8675085207205897,
+            "vehicle_id": "v00054"
+          },
+          {
+            "event_confirm_s": 64.0,
+            "event_end_s": 65.3,
+            "event_start_s": 63.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00052",
+            "ttc_min_s": 1.3042196263511154,
+            "vehicle_id": "v00055"
+          },
+          {
+            "event_confirm_s": 65.3,
+            "event_end_s": 66.4,
+            "event_start_s": 65.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00053",
+            "ttc_min_s": 1.5419648133156445,
+            "vehicle_id": "v00056"
+          },
+          {
+            "event_confirm_s": 94.4,
+            "event_end_s": 95.7,
+            "event_start_s": 94.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00053",
+            "ttc_min_s": 1.5176570135908891,
+            "vehicle_id": "v00056"
+          },
+          {
+            "event_confirm_s": 66.0,
+            "event_end_s": 67.4,
+            "event_start_s": 65.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00054",
+            "ttc_min_s": 1.5949182687634282,
+            "vehicle_id": "v00057"
+          },
+          {
+            "event_confirm_s": 65.5,
+            "event_end_s": 66.6,
+            "event_start_s": 65.3,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00055",
+            "ttc_min_s": 1.2958811737073024,
+            "vehicle_id": "v00058"
+          },
+          {
+            "event_confirm_s": 66.7,
+            "event_end_s": 68.1,
+            "event_start_s": 66.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00056",
+            "ttc_min_s": 1.347766439406977,
+            "vehicle_id": "v00059"
+          },
+          {
+            "event_confirm_s": 96.6,
+            "event_end_s": 97.0,
+            "event_start_s": 96.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00056",
+            "ttc_min_s": 1.7288373211415426,
+            "vehicle_id": "v00059"
+          },
+          {
+            "event_confirm_s": 67.9,
+            "event_end_s": 68.5,
+            "event_start_s": 67.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00057",
+            "ttc_min_s": 1.8244117768091845,
+            "vehicle_id": "v00060"
+          },
+          {
+            "event_confirm_s": 69.7,
+            "event_end_s": 69.9,
+            "event_start_s": 69.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00057",
+            "ttc_min_s": 1.9559192992728593,
+            "vehicle_id": "v00060"
+          },
+          {
+            "event_confirm_s": 94.8,
+            "event_end_s": 95.0,
+            "event_start_s": 94.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00057",
+            "ttc_min_s": 1.7470470068886879,
+            "vehicle_id": "v00060"
+          },
+          {
+            "event_confirm_s": 67.4,
+            "event_end_s": 69.3,
+            "event_start_s": 67.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00058",
+            "ttc_min_s": 1.2711056494251058,
+            "vehicle_id": "v00061"
+          },
+          {
+            "event_confirm_s": 68.2,
+            "event_end_s": 69.5,
+            "event_start_s": 68.0,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00059",
+            "ttc_min_s": 1.2453730107335435,
+            "vehicle_id": "v00062"
+          },
+          {
+            "event_confirm_s": 97.8,
+            "event_end_s": 98.1,
+            "event_start_s": 97.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00059",
+            "ttc_min_s": 1.7155063971329163,
+            "vehicle_id": "v00062"
+          },
+          {
+            "event_confirm_s": 70.4,
+            "event_end_s": 71.5,
+            "event_start_s": 70.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00060",
+            "ttc_min_s": 1.3345415260298341,
+            "vehicle_id": "v00063"
+          },
+          {
+            "event_confirm_s": 69.5,
+            "event_end_s": 71.1,
+            "event_start_s": 69.3,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00061",
+            "ttc_min_s": 1.2854251252515179,
+            "vehicle_id": "v00064"
+          },
+          {
+            "event_confirm_s": 69.9,
+            "event_end_s": 71.3,
+            "event_start_s": 69.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00062",
+            "ttc_min_s": 1.4957997479220042,
+            "vehicle_id": "v00065"
+          },
+          {
+            "event_confirm_s": 99.0,
+            "event_end_s": 99.3,
+            "event_start_s": 98.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00062",
+            "ttc_min_s": 1.8230448117715958,
+            "vehicle_id": "v00065"
+          },
+          {
+            "event_confirm_s": 71.8,
+            "event_end_s": 72.9,
+            "event_start_s": 71.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00063",
+            "ttc_min_s": 1.6124506795748796,
+            "vehicle_id": "v00066"
+          },
+          {
+            "event_confirm_s": 71.4,
+            "event_end_s": 72.5,
+            "event_start_s": 71.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00064",
+            "ttc_min_s": 1.3800121197635928,
+            "vehicle_id": "v00067"
+          },
+          {
+            "event_confirm_s": 71.8,
+            "event_end_s": 73.7,
+            "event_start_s": 71.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00065",
+            "ttc_min_s": 1.6212859694864976,
+            "vehicle_id": "v00068"
+          },
+          {
+            "event_confirm_s": 100.6,
+            "event_end_s": 101.1,
+            "event_start_s": 100.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00065",
+            "ttc_min_s": 1.5005801673760717,
+            "vehicle_id": "v00068"
+          },
+          {
+            "event_confirm_s": 73.6,
+            "event_end_s": 74.9,
+            "event_start_s": 73.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00066",
+            "ttc_min_s": 1.4700186749574464,
+            "vehicle_id": "v00069"
+          },
+          {
+            "event_confirm_s": 73.0,
+            "event_end_s": 74.3,
+            "event_start_s": 72.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00067",
+            "ttc_min_s": 1.8540217343874124,
+            "vehicle_id": "v00070"
+          },
+          {
+            "event_confirm_s": 74.2,
+            "event_end_s": 75.5,
+            "event_start_s": 74.0,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00068",
+            "ttc_min_s": 1.611733540072725,
+            "vehicle_id": "v00071"
+          },
+          {
+            "event_confirm_s": 75.3,
+            "event_end_s": 76.8,
+            "event_start_s": 75.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00069",
+            "ttc_min_s": 1.3441405690767776,
+            "vehicle_id": "v00072"
+          },
+          {
+            "event_confirm_s": 76.2,
+            "event_end_s": 77.1,
+            "event_start_s": 76.0,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00070",
+            "ttc_min_s": 1.8141213649151062,
+            "vehicle_id": "v00073"
+          },
+          {
+            "event_confirm_s": 76.7,
+            "event_end_s": 77.9,
+            "event_start_s": 76.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00071",
+            "ttc_min_s": 1.6450202924559232,
+            "vehicle_id": "v00074"
+          },
+          {
+            "event_confirm_s": 77.4,
+            "event_end_s": 79.0,
+            "event_start_s": 77.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00072",
+            "ttc_min_s": 1.5352619922540558,
+            "vehicle_id": "v00075"
+          },
+          {
+            "event_confirm_s": 77.9,
+            "event_end_s": 78.4,
+            "event_start_s": 77.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00073",
+            "ttc_min_s": 1.8781538046812707,
+            "vehicle_id": "v00076"
+          },
+          {
+            "event_confirm_s": 78.2,
+            "event_end_s": 79.4,
+            "event_start_s": 78.0,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00074",
+            "ttc_min_s": 1.5190443861884089,
+            "vehicle_id": "v00077"
+          },
+          {
+            "event_confirm_s": 79.6,
+            "event_end_s": 80.6,
+            "event_start_s": 79.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00075",
+            "ttc_min_s": 1.5656906205122127,
+            "vehicle_id": "v00078"
+          },
+          {
+            "event_confirm_s": 80.5,
+            "event_end_s": 81.3,
+            "event_start_s": 80.3,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00076",
+            "ttc_min_s": 1.5080762625152553,
+            "vehicle_id": "v00079"
+          },
+          {
+            "event_confirm_s": 147.3,
+            "event_end_s": 148.6,
+            "event_start_s": 147.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00076",
+            "ttc_min_s": 1.2274523373539235,
+            "vehicle_id": "v00079"
+          },
+          {
+            "event_confirm_s": 79.8,
+            "event_end_s": 81.2,
+            "event_start_s": 79.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00077",
+            "ttc_min_s": 1.3254195026410422,
+            "vehicle_id": "v00080"
+          },
+          {
+            "event_confirm_s": 147.1,
+            "event_end_s": 148.6,
+            "event_start_s": 146.9,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00077",
+            "ttc_min_s": 1.1889574437201051,
+            "vehicle_id": "v00080"
+          },
+          {
+            "event_confirm_s": 81.5,
+            "event_end_s": 82.4,
+            "event_start_s": 81.3,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00078",
+            "ttc_min_s": 1.453460849982283,
+            "vehicle_id": "v00081"
+          },
+          {
+            "event_confirm_s": 147.0,
+            "event_end_s": 148.9,
+            "event_start_s": 146.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00078",
+            "ttc_min_s": 1.2781261117817895,
+            "vehicle_id": "v00081"
+          },
+          {
+            "event_confirm_s": 81.8,
+            "event_end_s": 82.6,
+            "event_start_s": 81.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00079",
+            "ttc_min_s": 1.6412044480185615,
+            "vehicle_id": "v00082"
+          },
+          {
+            "event_confirm_s": 148.9,
+            "event_end_s": 149.2,
+            "event_start_s": 148.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00079",
+            "ttc_min_s": 1.7541069584173627,
+            "vehicle_id": "v00082"
+          },
+          {
+            "event_confirm_s": 81.5,
+            "event_end_s": 82.6,
+            "event_start_s": 81.3,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00080",
+            "ttc_min_s": 1.476550826546564,
+            "vehicle_id": "v00083"
+          },
+          {
+            "event_confirm_s": 148.7,
+            "event_end_s": 150.1,
+            "event_start_s": 148.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00080",
+            "ttc_min_s": 1.4259040494908972,
+            "vehicle_id": "v00083"
+          },
+          {
+            "event_confirm_s": 83.0,
+            "event_end_s": 83.4,
+            "event_start_s": 82.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00081",
+            "ttc_min_s": 1.895142315508771,
+            "vehicle_id": "v00084"
+          },
+          {
+            "event_confirm_s": 84.8,
+            "event_end_s": 84.8,
+            "event_start_s": 84.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00081",
+            "ttc_min_s": 1.9515517727673588,
+            "vehicle_id": "v00084"
+          },
+          {
+            "event_confirm_s": 149.4,
+            "event_end_s": 150.2,
+            "event_start_s": 149.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00081",
+            "ttc_min_s": 1.4612204662216934,
+            "vehicle_id": "v00084"
+          },
+          {
+            "event_confirm_s": 83.0,
+            "event_end_s": 84.5,
+            "event_start_s": 82.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00082",
+            "ttc_min_s": 1.792959785124135,
+            "vehicle_id": "v00085"
+          },
+          {
+            "event_confirm_s": 149.9,
+            "event_end_s": 150.2,
+            "event_start_s": 149.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00082",
+            "ttc_min_s": 1.7600631134821585,
+            "vehicle_id": "v00085"
+          },
+          {
+            "event_confirm_s": 83.6,
+            "event_end_s": 85.3,
+            "event_start_s": 83.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00083",
+            "ttc_min_s": 1.535854243728508,
+            "vehicle_id": "v00086"
+          },
+          {
+            "event_confirm_s": 150.4,
+            "event_end_s": 151.1,
+            "event_start_s": 150.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00083",
+            "ttc_min_s": 1.7442260800018001,
+            "vehicle_id": "v00086"
+          },
+          {
+            "event_confirm_s": 85.4,
+            "event_end_s": 86.5,
+            "event_start_s": 85.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00084",
+            "ttc_min_s": 1.4782680945203899,
+            "vehicle_id": "v00087"
+          },
+          {
+            "event_confirm_s": 150.7,
+            "event_end_s": 151.3,
+            "event_start_s": 150.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00084",
+            "ttc_min_s": 1.4873991647652864,
+            "vehicle_id": "v00087"
+          },
+          {
+            "event_confirm_s": 85.5,
+            "event_end_s": 86.6,
+            "event_start_s": 85.3,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00085",
+            "ttc_min_s": 1.3798474157150658,
+            "vehicle_id": "v00088"
+          },
+          {
+            "event_confirm_s": 85.6,
+            "event_end_s": 87.0,
+            "event_start_s": 85.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00086",
+            "ttc_min_s": 1.7748695543585788,
+            "vehicle_id": "v00089"
+          },
+          {
+            "event_confirm_s": 151.7,
+            "event_end_s": 152.4,
+            "event_start_s": 151.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00086",
+            "ttc_min_s": 1.7122583377691465,
+            "vehicle_id": "v00089"
+          },
+          {
+            "event_confirm_s": 87.3,
+            "event_end_s": 88.6,
+            "event_start_s": 87.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00087",
+            "ttc_min_s": 1.7001026211779697,
+            "vehicle_id": "v00090"
+          },
+          {
+            "event_confirm_s": 86.9,
+            "event_end_s": 88.3,
+            "event_start_s": 86.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00088",
+            "ttc_min_s": 1.6949972281472376,
+            "vehicle_id": "v00091"
+          },
+          {
+            "event_confirm_s": 87.2,
+            "event_end_s": 88.7,
+            "event_start_s": 87.0,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00089",
+            "ttc_min_s": 1.6912883769151303,
+            "vehicle_id": "v00092"
+          },
+          {
+            "event_confirm_s": 89.2,
+            "event_end_s": 90.7,
+            "event_start_s": 89.0,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00090",
+            "ttc_min_s": 1.4656847731883866,
+            "vehicle_id": "v00093"
+          },
+          {
+            "event_confirm_s": 88.8,
+            "event_end_s": 89.4,
+            "event_start_s": 88.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00091",
+            "ttc_min_s": 1.7571028104326816,
+            "vehicle_id": "v00094"
+          },
+          {
+            "event_confirm_s": 88.9,
+            "event_end_s": 90.4,
+            "event_start_s": 88.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00092",
+            "ttc_min_s": 1.5544148660174362,
+            "vehicle_id": "v00095"
+          },
+          {
+            "event_confirm_s": 91.0,
+            "event_end_s": 92.3,
+            "event_start_s": 90.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00093",
+            "ttc_min_s": 1.2123418380249256,
+            "vehicle_id": "v00096"
+          },
+          {
+            "event_confirm_s": 90.6,
+            "event_end_s": 92.5,
+            "event_start_s": 90.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00094",
+            "ttc_min_s": 1.6831405232909047,
+            "vehicle_id": "v00097"
+          },
+          {
+            "event_confirm_s": 90.8,
+            "event_end_s": 92.5,
+            "event_start_s": 90.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00095",
+            "ttc_min_s": 1.5309745369706744,
+            "vehicle_id": "v00098"
+          },
+          {
+            "event_confirm_s": 92.6,
+            "event_end_s": 93.6,
+            "event_start_s": 92.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00096",
+            "ttc_min_s": 1.491990564143601,
+            "vehicle_id": "v00099"
+          },
+          {
+            "event_confirm_s": 92.7,
+            "event_end_s": 94.1,
+            "event_start_s": 92.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00097",
+            "ttc_min_s": 1.4428534402624371,
+            "vehicle_id": "v00100"
+          },
+          {
+            "event_confirm_s": 93.0,
+            "event_end_s": 94.5,
+            "event_start_s": 92.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00098",
+            "ttc_min_s": 1.4505694431344063,
+            "vehicle_id": "v00101"
+          },
+          {
+            "event_confirm_s": 94.4,
+            "event_end_s": 95.5,
+            "event_start_s": 94.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00100",
+            "ttc_min_s": 1.4009185340134316,
+            "vehicle_id": "v00103"
+          },
+          {
+            "event_confirm_s": 95.0,
+            "event_end_s": 96.3,
+            "event_start_s": 94.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00101",
+            "ttc_min_s": 1.5151891162367725,
+            "vehicle_id": "v00104"
+          },
+          {
+            "event_confirm_s": 98.0,
+            "event_end_s": 98.0,
+            "event_start_s": 97.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00102",
+            "ttc_min_s": 1.9059820488946466,
+            "vehicle_id": "v00105"
+          },
+          {
+            "event_confirm_s": 96.0,
+            "event_end_s": 97.1,
+            "event_start_s": 95.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00103",
+            "ttc_min_s": 1.7875843429952352,
+            "vehicle_id": "v00106"
+          },
+          {
+            "event_confirm_s": 96.8,
+            "event_end_s": 97.5,
+            "event_start_s": 96.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00104",
+            "ttc_min_s": 1.6948204199624215,
+            "vehicle_id": "v00107"
+          },
+          {
+            "event_confirm_s": 98.8,
+            "event_end_s": 99.4,
+            "event_start_s": 98.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00106",
+            "ttc_min_s": 1.759072373842037,
+            "vehicle_id": "v00109"
+          },
+          {
+            "event_confirm_s": 100.7,
+            "event_end_s": 101.0,
+            "event_start_s": 100.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00107",
+            "ttc_min_s": 1.6864701530848136,
+            "vehicle_id": "v00110"
+          },
+          {
+            "event_confirm_s": 100.8,
+            "event_end_s": 101.2,
+            "event_start_s": 100.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00108",
+            "ttc_min_s": 1.7894705912328541,
+            "vehicle_id": "v00111"
+          },
+          {
+            "event_confirm_s": 101.8,
+            "event_end_s": 102.2,
+            "event_start_s": 101.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00110",
+            "ttc_min_s": 1.6667619887244893,
+            "vehicle_id": "v00113"
+          },
+          {
+            "event_confirm_s": 102.6,
+            "event_end_s": 103.1,
+            "event_start_s": 102.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00111",
+            "ttc_min_s": 1.6905382777885256,
+            "vehicle_id": "v00114"
+          },
+          {
+            "event_confirm_s": 103.0,
+            "event_end_s": 103.2,
+            "event_start_s": 102.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00113",
+            "ttc_min_s": 1.8863250337662358,
+            "vehicle_id": "v00116"
+          },
+          {
+            "event_confirm_s": 208.2,
+            "event_end_s": 209.7,
+            "event_start_s": 208.0,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00115",
+            "ttc_min_s": 1.308477182145213,
+            "vehicle_id": "v00118"
+          },
+          {
+            "event_confirm_s": 208.4,
+            "event_end_s": 209.9,
+            "event_start_s": 208.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00116",
+            "ttc_min_s": 1.1970218528736343,
+            "vehicle_id": "v00119"
+          },
+          {
+            "event_confirm_s": 207.7,
+            "event_end_s": 209.1,
+            "event_start_s": 207.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00117",
+            "ttc_min_s": 1.2779548464502861,
+            "vehicle_id": "v00120"
+          },
+          {
+            "event_confirm_s": 209.9,
+            "event_end_s": 211.4,
+            "event_start_s": 209.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00118",
+            "ttc_min_s": 1.5997920881271999,
+            "vehicle_id": "v00121"
+          },
+          {
+            "event_confirm_s": 210.2,
+            "event_end_s": 211.4,
+            "event_start_s": 210.0,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00119",
+            "ttc_min_s": 1.3316649147609572,
+            "vehicle_id": "v00122"
+          },
+          {
+            "event_confirm_s": 209.3,
+            "event_end_s": 210.1,
+            "event_start_s": 209.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00120",
+            "ttc_min_s": 1.5537024022241626,
+            "vehicle_id": "v00123"
+          },
+          {
+            "event_confirm_s": 211.7,
+            "event_end_s": 212.8,
+            "event_start_s": 211.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00122",
+            "ttc_min_s": 1.4511522084826622,
+            "vehicle_id": "v00125"
+          },
+          {
+            "event_confirm_s": 213.0,
+            "event_end_s": 213.3,
+            "event_start_s": 212.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00124",
+            "ttc_min_s": 1.9274153514943215,
+            "vehicle_id": "v00127"
+          },
+          {
+            "event_confirm_s": 213.4,
+            "event_end_s": 214.2,
+            "event_start_s": 213.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00125",
+            "ttc_min_s": 1.4094125331846832,
+            "vehicle_id": "v00128"
+          },
+          {
+            "event_confirm_s": 214.7,
+            "event_end_s": 214.9,
+            "event_start_s": 214.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00127",
+            "ttc_min_s": 1.9485983005897078,
+            "vehicle_id": "v00130"
+          },
+          {
+            "event_confirm_s": 214.7,
+            "event_end_s": 215.3,
+            "event_start_s": 214.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00128",
+            "ttc_min_s": 1.4715456263773643,
+            "vehicle_id": "v00131"
+          },
+          {
+            "event_confirm_s": 266.8,
+            "event_end_s": 268.2,
+            "event_start_s": 266.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00151",
+            "ttc_min_s": 1.2285810379232418,
+            "vehicle_id": "v00154"
+          },
+          {
+            "event_confirm_s": 267.4,
+            "event_end_s": 268.5,
+            "event_start_s": 267.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00152",
+            "ttc_min_s": 1.314400350166905,
+            "vehicle_id": "v00155"
+          },
+          {
+            "event_confirm_s": 266.6,
+            "event_end_s": 267.8,
+            "event_start_s": 266.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00153",
+            "ttc_min_s": 1.2231785256043708,
+            "vehicle_id": "v00156"
+          },
+          {
+            "event_confirm_s": 268.0,
+            "event_end_s": 269.2,
+            "event_start_s": 267.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00154",
+            "ttc_min_s": 1.5692201789950173,
+            "vehicle_id": "v00157"
+          },
+          {
+            "event_confirm_s": 268.7,
+            "event_end_s": 269.6,
+            "event_start_s": 268.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00155",
+            "ttc_min_s": 1.5427488725688239,
+            "vehicle_id": "v00158"
+          },
+          {
+            "event_confirm_s": 267.9,
+            "event_end_s": 269.6,
+            "event_start_s": 267.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00156",
+            "ttc_min_s": 1.6617524464471953,
+            "vehicle_id": "v00159"
+          },
+          {
+            "event_confirm_s": 269.7,
+            "event_end_s": 270.5,
+            "event_start_s": 269.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00157",
+            "ttc_min_s": 1.5757052771130164,
+            "vehicle_id": "v00160"
+          },
+          {
+            "event_confirm_s": 270.4,
+            "event_end_s": 271.2,
+            "event_start_s": 270.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00159",
+            "ttc_min_s": 1.5560560068705045,
+            "vehicle_id": "v00162"
+          },
+          {
+            "event_confirm_s": 271.8,
+            "event_end_s": 272.1,
+            "event_start_s": 271.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00160",
+            "ttc_min_s": 1.7140250831013701,
+            "vehicle_id": "v00163"
+          },
+          {
+            "event_confirm_s": 271.9,
+            "event_end_s": 272.8,
+            "event_start_s": 271.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00162",
+            "ttc_min_s": 1.74463216357803,
+            "vehicle_id": "v00165"
+          },
+          {
+            "event_confirm_s": 272.9,
+            "event_end_s": 273.0,
+            "event_start_s": 272.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00163",
+            "ttc_min_s": 1.7727957690389569,
+            "vehicle_id": "v00166"
+          },
+          {
+            "event_confirm_s": 273.7,
+            "event_end_s": 274.2,
+            "event_start_s": 273.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00165",
+            "ttc_min_s": 1.6321475714061686,
+            "vehicle_id": "v00168"
+          },
+          {
+            "event_confirm_s": 141.6,
+            "event_end_s": 142.6,
+            "event_start_s": 141.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00166",
+            "ttc_min_s": 1.4601114227098426,
+            "vehicle_id": "v00169"
+          },
+          {
+            "event_confirm_s": 144.0,
+            "event_end_s": 145.0,
+            "event_start_s": 143.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00167",
+            "ttc_min_s": 1.4464203398529414,
+            "vehicle_id": "v00170"
+          },
+          {
+            "event_confirm_s": 275.0,
+            "event_end_s": 275.3,
+            "event_start_s": 274.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00168",
+            "ttc_min_s": 1.8503469830150197,
+            "vehicle_id": "v00171"
+          },
+          {
+            "event_confirm_s": 143.2,
+            "event_end_s": 144.0,
+            "event_start_s": 143.0,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00169",
+            "ttc_min_s": 1.7639052583892882,
+            "vehicle_id": "v00172"
+          },
+          {
+            "event_confirm_s": 145.6,
+            "event_end_s": 146.0,
+            "event_start_s": 145.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00170",
+            "ttc_min_s": 1.736312073478459,
+            "vehicle_id": "v00173"
+          },
+          {
+            "event_confirm_s": 168.8,
+            "event_end_s": 169.0,
+            "event_start_s": 168.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00171",
+            "ttc_min_s": 1.9169649712685575,
+            "vehicle_id": "v00174"
+          },
+          {
+            "event_confirm_s": 146.9,
+            "event_end_s": 147.2,
+            "event_start_s": 146.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00173",
+            "ttc_min_s": 1.742303044172924,
+            "vehicle_id": "v00176"
+          },
+          {
+            "event_confirm_s": 146.6,
+            "event_end_s": 148.2,
+            "event_start_s": 146.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00174",
+            "ttc_min_s": 1.4559496757590158,
+            "vehicle_id": "v00177"
+          },
+          {
+            "event_confirm_s": 148.4,
+            "event_end_s": 149.6,
+            "event_start_s": 148.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00177",
+            "ttc_min_s": 1.3443350005819343,
+            "vehicle_id": "v00180"
+          },
+          {
+            "event_confirm_s": 279.9,
+            "event_end_s": 279.9,
+            "event_start_s": 279.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00178",
+            "ttc_min_s": 1.8507969530409725,
+            "vehicle_id": "v00181"
+          },
+          {
+            "event_confirm_s": 150.0,
+            "event_end_s": 150.4,
+            "event_start_s": 149.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00179",
+            "ttc_min_s": 1.9537318771497045,
+            "vehicle_id": "v00182"
+          },
+          {
+            "event_confirm_s": 150.3,
+            "event_end_s": 151.4,
+            "event_start_s": 150.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00180",
+            "ttc_min_s": 1.740027530030528,
+            "vehicle_id": "v00183"
+          },
+          {
+            "event_confirm_s": 151.0,
+            "event_end_s": 151.9,
+            "event_start_s": 150.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00182",
+            "ttc_min_s": 1.824239942884509,
+            "vehicle_id": "v00185"
+          },
+          {
+            "event_confirm_s": 152.4,
+            "event_end_s": 153.5,
+            "event_start_s": 152.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00183",
+            "ttc_min_s": 1.7222238006067694,
+            "vehicle_id": "v00186"
+          },
+          {
+            "event_confirm_s": 152.4,
+            "event_end_s": 153.4,
+            "event_start_s": 152.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00185",
+            "ttc_min_s": 1.3422673384199584,
+            "vehicle_id": "v00188"
+          },
+          {
+            "event_confirm_s": 153.8,
+            "event_end_s": 154.6,
+            "event_start_s": 153.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00186",
+            "ttc_min_s": 1.6770095481746043,
+            "vehicle_id": "v00189"
+          },
+          {
+            "event_confirm_s": 154.0,
+            "event_end_s": 154.9,
+            "event_start_s": 153.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00188",
+            "ttc_min_s": 1.8181738345652032,
+            "vehicle_id": "v00191"
+          },
+          {
+            "event_confirm_s": 156.3,
+            "event_end_s": 157.3,
+            "event_start_s": 156.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00189",
+            "ttc_min_s": 1.7418605499708248,
+            "vehicle_id": "v00192"
+          },
+          {
+            "event_confirm_s": 156.7,
+            "event_end_s": 157.1,
+            "event_start_s": 156.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00190",
+            "ttc_min_s": 1.8690335428836684,
+            "vehicle_id": "v00193"
+          },
+          {
+            "event_confirm_s": 328.0,
+            "event_end_s": 329.4,
+            "event_start_s": 327.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00190",
+            "ttc_min_s": 1.250754107106057,
+            "vehicle_id": "v00193"
+          },
+          {
+            "event_confirm_s": 157.7,
+            "event_end_s": 157.9,
+            "event_start_s": 157.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00191",
+            "ttc_min_s": 1.7698693066203108,
+            "vehicle_id": "v00194"
+          },
+          {
+            "event_confirm_s": 328.1,
+            "event_end_s": 329.5,
+            "event_start_s": 327.9,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00191",
+            "ttc_min_s": 1.3665144501394662,
+            "vehicle_id": "v00194"
+          },
+          {
+            "event_confirm_s": 157.8,
+            "event_end_s": 158.7,
+            "event_start_s": 157.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00192",
+            "ttc_min_s": 1.7106709852861612,
+            "vehicle_id": "v00195"
+          },
+          {
+            "event_confirm_s": 327.8,
+            "event_end_s": 329.1,
+            "event_start_s": 327.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00192",
+            "ttc_min_s": 1.20309485825023,
+            "vehicle_id": "v00195"
+          },
+          {
+            "event_confirm_s": 158.0,
+            "event_end_s": 158.7,
+            "event_start_s": 157.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00193",
+            "ttc_min_s": 1.8279247767019307,
+            "vehicle_id": "v00196"
+          },
+          {
+            "event_confirm_s": 329.5,
+            "event_end_s": 330.5,
+            "event_start_s": 329.3,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00193",
+            "ttc_min_s": 1.2434622739637677,
+            "vehicle_id": "v00196"
+          },
+          {
+            "event_confirm_s": 158.7,
+            "event_end_s": 159.2,
+            "event_start_s": 158.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00194",
+            "ttc_min_s": 1.591497031739012,
+            "vehicle_id": "v00197"
+          },
+          {
+            "event_confirm_s": 330.0,
+            "event_end_s": 331.5,
+            "event_start_s": 329.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00194",
+            "ttc_min_s": 1.5640183400409389,
+            "vehicle_id": "v00197"
+          },
+          {
+            "event_confirm_s": 160.4,
+            "event_end_s": 161.1,
+            "event_start_s": 160.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00195",
+            "ttc_min_s": 1.6590123960588465,
+            "vehicle_id": "v00198"
+          },
+          {
+            "event_confirm_s": 329.2,
+            "event_end_s": 330.4,
+            "event_start_s": 329.0,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00195",
+            "ttc_min_s": 1.2346858580232103,
+            "vehicle_id": "v00198"
+          },
+          {
+            "event_confirm_s": 159.7,
+            "event_end_s": 161.1,
+            "event_start_s": 159.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00196",
+            "ttc_min_s": 1.3638875755466306,
+            "vehicle_id": "v00199"
+          },
+          {
+            "event_confirm_s": 330.8,
+            "event_end_s": 331.4,
+            "event_start_s": 330.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00196",
+            "ttc_min_s": 1.6033819657815056,
+            "vehicle_id": "v00199"
+          },
+          {
+            "event_confirm_s": 159.8,
+            "event_end_s": 160.3,
+            "event_start_s": 159.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00197",
+            "ttc_min_s": 1.6970086190323048,
+            "vehicle_id": "v00200"
+          },
+          {
+            "event_confirm_s": 332.0,
+            "event_end_s": 333.0,
+            "event_start_s": 331.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00197",
+            "ttc_min_s": 1.447463873051596,
+            "vehicle_id": "v00200"
+          },
+          {
+            "event_confirm_s": 161.5,
+            "event_end_s": 162.3,
+            "event_start_s": 161.3,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00198",
+            "ttc_min_s": 1.5132743358089928,
+            "vehicle_id": "v00201"
+          },
+          {
+            "event_confirm_s": 330.6,
+            "event_end_s": 331.4,
+            "event_start_s": 330.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00198",
+            "ttc_min_s": 1.420826496053624,
+            "vehicle_id": "v00201"
+          },
+          {
+            "event_confirm_s": 161.5,
+            "event_end_s": 162.8,
+            "event_start_s": 161.3,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00199",
+            "ttc_min_s": 1.3973095456733655,
+            "vehicle_id": "v00202"
+          },
+          {
+            "event_confirm_s": 162.5,
+            "event_end_s": 163.1,
+            "event_start_s": 162.3,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00200",
+            "ttc_min_s": 1.8120746642730063,
+            "vehicle_id": "v00203"
+          },
+          {
+            "event_confirm_s": 333.6,
+            "event_end_s": 334.3,
+            "event_start_s": 333.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00200",
+            "ttc_min_s": 1.5232825205227856,
+            "vehicle_id": "v00203"
+          },
+          {
+            "event_confirm_s": 162.8,
+            "event_end_s": 163.5,
+            "event_start_s": 162.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00201",
+            "ttc_min_s": 1.645100375540444,
+            "vehicle_id": "v00204"
+          },
+          {
+            "event_confirm_s": 331.8,
+            "event_end_s": 332.2,
+            "event_start_s": 331.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00201",
+            "ttc_min_s": 1.5572433640330219,
+            "vehicle_id": "v00204"
+          },
+          {
+            "event_confirm_s": 163.1,
+            "event_end_s": 164.5,
+            "event_start_s": 162.9,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00202",
+            "ttc_min_s": 1.2141736985973681,
+            "vehicle_id": "v00205"
+          },
+          {
+            "event_confirm_s": 227.9,
+            "event_end_s": 228.0,
+            "event_start_s": 227.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00202",
+            "ttc_min_s": 1.9240057743132857,
+            "vehicle_id": "v00205"
+          },
+          {
+            "event_confirm_s": 163.7,
+            "event_end_s": 164.4,
+            "event_start_s": 163.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00203",
+            "ttc_min_s": 1.6699596694031913,
+            "vehicle_id": "v00206"
+          },
+          {
+            "event_confirm_s": 227.8,
+            "event_end_s": 227.9,
+            "event_start_s": 227.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00203",
+            "ttc_min_s": 1.9622249833519898,
+            "vehicle_id": "v00206"
+          },
+          {
+            "event_confirm_s": 335.0,
+            "event_end_s": 335.0,
+            "event_start_s": 334.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00203",
+            "ttc_min_s": 1.951741752511195,
+            "vehicle_id": "v00206"
+          },
+          {
+            "event_confirm_s": 165.3,
+            "event_end_s": 166.3,
+            "event_start_s": 165.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00204",
+            "ttc_min_s": 1.3514939928680048,
+            "vehicle_id": "v00207"
+          },
+          {
+            "event_confirm_s": 332.8,
+            "event_end_s": 333.2,
+            "event_start_s": 332.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00204",
+            "ttc_min_s": 1.6164399179628894,
+            "vehicle_id": "v00207"
+          },
+          {
+            "event_confirm_s": 164.8,
+            "event_end_s": 166.3,
+            "event_start_s": 164.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00205",
+            "ttc_min_s": 1.3516962166059892,
+            "vehicle_id": "v00208"
+          },
+          {
+            "event_confirm_s": 202.9,
+            "event_end_s": 203.0,
+            "event_start_s": 202.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00205",
+            "ttc_min_s": 1.7839554595640024,
+            "vehicle_id": "v00208"
+          },
+          {
+            "event_confirm_s": 334.7,
+            "event_end_s": 335.1,
+            "event_start_s": 334.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00205",
+            "ttc_min_s": 1.705032214733862,
+            "vehicle_id": "v00208"
+          },
+          {
+            "event_confirm_s": 203.0,
+            "event_end_s": 203.6,
+            "event_start_s": 202.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00206",
+            "ttc_min_s": 1.842173436903036,
+            "vehicle_id": "v00209"
+          },
+          {
+            "event_confirm_s": 166.7,
+            "event_end_s": 167.6,
+            "event_start_s": 166.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00207",
+            "ttc_min_s": 1.5793802421562866,
+            "vehicle_id": "v00210"
+          },
+          {
+            "event_confirm_s": 229.9,
+            "event_end_s": 229.9,
+            "event_start_s": 229.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00207",
+            "ttc_min_s": 1.9509074644908275,
+            "vehicle_id": "v00210"
+          },
+          {
+            "event_confirm_s": 166.7,
+            "event_end_s": 167.6,
+            "event_start_s": 166.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00208",
+            "ttc_min_s": 1.4821259653457683,
+            "vehicle_id": "v00211"
+          },
+          {
+            "event_confirm_s": 335.9,
+            "event_end_s": 336.1,
+            "event_start_s": 335.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00208",
+            "ttc_min_s": 1.800248986679897,
+            "vehicle_id": "v00211"
+          },
+          {
+            "event_confirm_s": 168.0,
+            "event_end_s": 169.0,
+            "event_start_s": 167.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00209",
+            "ttc_min_s": 1.6418492045547608,
+            "vehicle_id": "v00212"
+          },
+          {
+            "event_confirm_s": 168.4,
+            "event_end_s": 169.9,
+            "event_start_s": 168.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00210",
+            "ttc_min_s": 1.5400383585917339,
+            "vehicle_id": "v00213"
+          },
+          {
+            "event_confirm_s": 169.2,
+            "event_end_s": 170.4,
+            "event_start_s": 169.0,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00212",
+            "ttc_min_s": 1.2841881625774763,
+            "vehicle_id": "v00215"
+          },
+          {
+            "event_confirm_s": 170.3,
+            "event_end_s": 171.5,
+            "event_start_s": 170.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00213",
+            "ttc_min_s": 1.4133658818514134,
+            "vehicle_id": "v00216"
+          },
+          {
+            "event_confirm_s": 171.0,
+            "event_end_s": 171.4,
+            "event_start_s": 170.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00214",
+            "ttc_min_s": 1.906385870318232,
+            "vehicle_id": "v00217"
+          },
+          {
+            "event_confirm_s": 172.5,
+            "event_end_s": 172.6,
+            "event_start_s": 172.3,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00214",
+            "ttc_min_s": 1.905317061529924,
+            "vehicle_id": "v00217"
+          },
+          {
+            "event_confirm_s": 170.7,
+            "event_end_s": 171.7,
+            "event_start_s": 170.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00215",
+            "ttc_min_s": 1.524989064172268,
+            "vehicle_id": "v00218"
+          },
+          {
+            "event_confirm_s": 172.2,
+            "event_end_s": 173.9,
+            "event_start_s": 172.0,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00216",
+            "ttc_min_s": 1.702641661462766,
+            "vehicle_id": "v00219"
+          },
+          {
+            "event_confirm_s": 173.0,
+            "event_end_s": 174.4,
+            "event_start_s": 172.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00217",
+            "ttc_min_s": 1.3616171010531637,
+            "vehicle_id": "v00220"
+          },
+          {
+            "event_confirm_s": 172.7,
+            "event_end_s": 173.4,
+            "event_start_s": 172.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00218",
+            "ttc_min_s": 1.8509584427522219,
+            "vehicle_id": "v00221"
+          },
+          {
+            "event_confirm_s": 174.4,
+            "event_end_s": 175.0,
+            "event_start_s": 174.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00218",
+            "ttc_min_s": 1.6443369132046182,
+            "vehicle_id": "v00221"
+          },
+          {
+            "event_confirm_s": 174.5,
+            "event_end_s": 176.1,
+            "event_start_s": 174.3,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00219",
+            "ttc_min_s": 1.383586381275435,
+            "vehicle_id": "v00222"
+          },
+          {
+            "event_confirm_s": 174.7,
+            "event_end_s": 175.8,
+            "event_start_s": 174.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00220",
+            "ttc_min_s": 1.5446813801779609,
+            "vehicle_id": "v00223"
+          },
+          {
+            "event_confirm_s": 175.2,
+            "event_end_s": 176.4,
+            "event_start_s": 175.0,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00221",
+            "ttc_min_s": 1.635471119366657,
+            "vehicle_id": "v00224"
+          },
+          {
+            "event_confirm_s": 176.3,
+            "event_end_s": 177.7,
+            "event_start_s": 176.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00222",
+            "ttc_min_s": 1.2852212408119124,
+            "vehicle_id": "v00225"
+          },
+          {
+            "event_confirm_s": 176.5,
+            "event_end_s": 177.7,
+            "event_start_s": 176.3,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00223",
+            "ttc_min_s": 1.9106221866001682,
+            "vehicle_id": "v00226"
+          },
+          {
+            "event_confirm_s": 178.3,
+            "event_end_s": 178.7,
+            "event_start_s": 178.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00223",
+            "ttc_min_s": 1.935409180268687,
+            "vehicle_id": "v00226"
+          },
+          {
+            "event_confirm_s": 176.8,
+            "event_end_s": 177.7,
+            "event_start_s": 176.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00224",
+            "ttc_min_s": 1.721278412377909,
+            "vehicle_id": "v00227"
+          },
+          {
+            "event_confirm_s": 178.0,
+            "event_end_s": 180.0,
+            "event_start_s": 177.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00225",
+            "ttc_min_s": 1.4863867935419626,
+            "vehicle_id": "v00228"
+          },
+          {
+            "event_confirm_s": 178.5,
+            "event_end_s": 180.4,
+            "event_start_s": 178.3,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00226",
+            "ttc_min_s": 1.3516531321943026,
+            "vehicle_id": "v00229"
+          },
+          {
+            "event_confirm_s": 386.8,
+            "event_end_s": 387.8,
+            "event_start_s": 386.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00226",
+            "ttc_min_s": 1.3412647565311528,
+            "vehicle_id": "v00229"
+          },
+          {
+            "event_confirm_s": 178.6,
+            "event_end_s": 180.4,
+            "event_start_s": 178.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00227",
+            "ttc_min_s": 1.586689670182666,
+            "vehicle_id": "v00230"
+          },
+          {
+            "event_confirm_s": 387.3,
+            "event_end_s": 388.8,
+            "event_start_s": 387.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00227",
+            "ttc_min_s": 1.3862820785227905,
+            "vehicle_id": "v00230"
+          },
+          {
+            "event_confirm_s": 180.3,
+            "event_end_s": 181.6,
+            "event_start_s": 180.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00228",
+            "ttc_min_s": 1.2808721958315235,
+            "vehicle_id": "v00231"
+          },
+          {
+            "event_confirm_s": 387.1,
+            "event_end_s": 388.5,
+            "event_start_s": 386.9,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00228",
+            "ttc_min_s": 1.1868695144523171,
+            "vehicle_id": "v00231"
+          },
+          {
+            "event_confirm_s": 180.4,
+            "event_end_s": 182.1,
+            "event_start_s": 180.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00229",
+            "ttc_min_s": 1.2765532854176127,
+            "vehicle_id": "v00232"
+          },
+          {
+            "event_confirm_s": 388.1,
+            "event_end_s": 389.4,
+            "event_start_s": 387.9,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00229",
+            "ttc_min_s": 1.5190645440097332,
+            "vehicle_id": "v00232"
+          },
+          {
+            "event_confirm_s": 180.6,
+            "event_end_s": 182.2,
+            "event_start_s": 180.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00230",
+            "ttc_min_s": 1.3794624078306745,
+            "vehicle_id": "v00233"
+          },
+          {
+            "event_confirm_s": 389.4,
+            "event_end_s": 390.5,
+            "event_start_s": 389.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00230",
+            "ttc_min_s": 1.4610563371174945,
+            "vehicle_id": "v00233"
+          },
+          {
+            "event_confirm_s": 182.1,
+            "event_end_s": 183.8,
+            "event_start_s": 181.9,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00231",
+            "ttc_min_s": 1.5291462219570806,
+            "vehicle_id": "v00234"
+          },
+          {
+            "event_confirm_s": 388.7,
+            "event_end_s": 389.9,
+            "event_start_s": 388.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00231",
+            "ttc_min_s": 1.4940579000245793,
+            "vehicle_id": "v00234"
+          },
+          {
+            "event_confirm_s": 182.3,
+            "event_end_s": 183.7,
+            "event_start_s": 182.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00232",
+            "ttc_min_s": 1.2338688575139618,
+            "vehicle_id": "v00235"
+          },
+          {
+            "event_confirm_s": 182.3,
+            "event_end_s": 184.0,
+            "event_start_s": 182.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00233",
+            "ttc_min_s": 1.2418934236364434,
+            "vehicle_id": "v00236"
+          },
+          {
+            "event_confirm_s": 390.9,
+            "event_end_s": 391.4,
+            "event_start_s": 390.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00233",
+            "ttc_min_s": 1.780999000707016,
+            "vehicle_id": "v00236"
+          },
+          {
+            "event_confirm_s": 184.0,
+            "event_end_s": 185.5,
+            "event_start_s": 183.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00234",
+            "ttc_min_s": 1.3891792359295803,
+            "vehicle_id": "v00237"
+          },
+          {
+            "event_confirm_s": 390.6,
+            "event_end_s": 391.4,
+            "event_start_s": 390.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00234",
+            "ttc_min_s": 1.6760487052601767,
+            "vehicle_id": "v00237"
+          },
+          {
+            "event_confirm_s": 184.0,
+            "event_end_s": 185.7,
+            "event_start_s": 183.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00235",
+            "ttc_min_s": 1.2895035518057572,
+            "vehicle_id": "v00238"
+          },
+          {
+            "event_confirm_s": 184.4,
+            "event_end_s": 186.1,
+            "event_start_s": 184.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00236",
+            "ttc_min_s": 1.5178720796797254,
+            "vehicle_id": "v00239"
+          },
+          {
+            "event_confirm_s": 186.3,
+            "event_end_s": 187.4,
+            "event_start_s": 186.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00237",
+            "ttc_min_s": 1.5131172676996665,
+            "vehicle_id": "v00240"
+          },
+          {
+            "event_confirm_s": 186.2,
+            "event_end_s": 187.5,
+            "event_start_s": 186.0,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00238",
+            "ttc_min_s": 1.2928836667114134,
+            "vehicle_id": "v00241"
+          },
+          {
+            "event_confirm_s": 186.6,
+            "event_end_s": 187.6,
+            "event_start_s": 186.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00239",
+            "ttc_min_s": 1.4077893974005182,
+            "vehicle_id": "v00242"
+          },
+          {
+            "event_confirm_s": 188.2,
+            "event_end_s": 189.2,
+            "event_start_s": 188.0,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00240",
+            "ttc_min_s": 1.3985229544335813,
+            "vehicle_id": "v00243"
+          },
+          {
+            "event_confirm_s": 393.1,
+            "event_end_s": 393.7,
+            "event_start_s": 392.9,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00240",
+            "ttc_min_s": 1.9294516590488842,
+            "vehicle_id": "v00243"
+          },
+          {
+            "event_confirm_s": 187.8,
+            "event_end_s": 188.5,
+            "event_start_s": 187.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00241",
+            "ttc_min_s": 1.6979747755735146,
+            "vehicle_id": "v00244"
+          },
+          {
+            "event_confirm_s": 189.7,
+            "event_end_s": 190.1,
+            "event_start_s": 189.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00241",
+            "ttc_min_s": 1.7523727064902777,
+            "vehicle_id": "v00244"
+          },
+          {
+            "event_confirm_s": 188.5,
+            "event_end_s": 190.1,
+            "event_start_s": 188.3,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00242",
+            "ttc_min_s": 1.6638240751612556,
+            "vehicle_id": "v00245"
+          },
+          {
+            "event_confirm_s": 394.8,
+            "event_end_s": 395.2,
+            "event_start_s": 394.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00242",
+            "ttc_min_s": 1.6894101164541222,
+            "vehicle_id": "v00245"
+          },
+          {
+            "event_confirm_s": 189.8,
+            "event_end_s": 190.6,
+            "event_start_s": 189.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00243",
+            "ttc_min_s": 1.679813434560436,
+            "vehicle_id": "v00246"
+          },
+          {
+            "event_confirm_s": 287.0,
+            "event_end_s": 287.4,
+            "event_start_s": 286.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00243",
+            "ttc_min_s": 1.9382875302923872,
+            "vehicle_id": "v00246"
+          },
+          {
+            "event_confirm_s": 190.8,
+            "event_end_s": 192.0,
+            "event_start_s": 190.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00244",
+            "ttc_min_s": 1.4300410696980688,
+            "vehicle_id": "v00247"
+          },
+          {
+            "event_confirm_s": 190.6,
+            "event_end_s": 191.7,
+            "event_start_s": 190.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00245",
+            "ttc_min_s": 1.6534139552831024,
+            "vehicle_id": "v00248"
+          },
+          {
+            "event_confirm_s": 396.5,
+            "event_end_s": 397.0,
+            "event_start_s": 396.3,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00245",
+            "ttc_min_s": 1.5386678781488508,
+            "vehicle_id": "v00248"
+          },
+          {
+            "event_confirm_s": 191.4,
+            "event_end_s": 192.1,
+            "event_start_s": 191.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00246",
+            "ttc_min_s": 1.7392365166145134,
+            "vehicle_id": "v00249"
+          },
+          {
+            "event_confirm_s": 263.7,
+            "event_end_s": 264.1,
+            "event_start_s": 263.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00246",
+            "ttc_min_s": 1.6108581109377902,
+            "vehicle_id": "v00249"
+          },
+          {
+            "event_confirm_s": 192.4,
+            "event_end_s": 193.6,
+            "event_start_s": 192.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00247",
+            "ttc_min_s": 1.3383679155388801,
+            "vehicle_id": "v00250"
+          },
+          {
+            "event_confirm_s": 266.4,
+            "event_end_s": 266.9,
+            "event_start_s": 266.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00247",
+            "ttc_min_s": 1.7892658741078107,
+            "vehicle_id": "v00250"
+          },
+          {
+            "event_confirm_s": 192.6,
+            "event_end_s": 193.2,
+            "event_start_s": 192.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00248",
+            "ttc_min_s": 1.6439928673157562,
+            "vehicle_id": "v00251"
+          },
+          {
+            "event_confirm_s": 397.7,
+            "event_end_s": 398.2,
+            "event_start_s": 397.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00248",
+            "ttc_min_s": 1.5590523223832116,
+            "vehicle_id": "v00251"
+          },
+          {
+            "event_confirm_s": 264.9,
+            "event_end_s": 265.0,
+            "event_start_s": 264.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00249",
+            "ttc_min_s": 1.6774668754846866,
+            "vehicle_id": "v00252"
+          },
+          {
+            "event_confirm_s": 194.0,
+            "event_end_s": 195.2,
+            "event_start_s": 193.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00250",
+            "ttc_min_s": 1.4750584570424812,
+            "vehicle_id": "v00253"
+          },
+          {
+            "event_confirm_s": 196.0,
+            "event_end_s": 197.1,
+            "event_start_s": 195.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00253",
+            "ttc_min_s": 1.812384825243919,
+            "vehicle_id": "v00256"
+          },
+          {
+            "event_confirm_s": 197.5,
+            "event_end_s": 198.1,
+            "event_start_s": 197.3,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00254",
+            "ttc_min_s": 1.4207497276501126,
+            "vehicle_id": "v00257"
+          },
+          {
+            "event_confirm_s": 198.0,
+            "event_end_s": 198.4,
+            "event_start_s": 197.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00256",
+            "ttc_min_s": 1.8581367922798908,
+            "vehicle_id": "v00259"
+          },
+          {
+            "event_confirm_s": 198.3,
+            "event_end_s": 199.5,
+            "event_start_s": 198.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00257",
+            "ttc_min_s": 1.2326141740801082,
+            "vehicle_id": "v00260"
+          },
+          {
+            "event_confirm_s": 200.8,
+            "event_end_s": 201.2,
+            "event_start_s": 200.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00259",
+            "ttc_min_s": 1.7336886007335877,
+            "vehicle_id": "v00262"
+          },
+          {
+            "event_confirm_s": 200.0,
+            "event_end_s": 201.2,
+            "event_start_s": 199.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00260",
+            "ttc_min_s": 1.5043731326822172,
+            "vehicle_id": "v00263"
+          },
+          {
+            "event_confirm_s": 201.9,
+            "event_end_s": 201.9,
+            "event_start_s": 201.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00261",
+            "ttc_min_s": 1.933251816511014,
+            "vehicle_id": "v00264"
+          },
+          {
+            "event_confirm_s": 202.7,
+            "event_end_s": 203.2,
+            "event_start_s": 202.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00262",
+            "ttc_min_s": 1.6089489465582856,
+            "vehicle_id": "v00265"
+          },
+          {
+            "event_confirm_s": 447.0,
+            "event_end_s": 448.7,
+            "event_start_s": 446.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00262",
+            "ttc_min_s": 1.152067625671978,
+            "vehicle_id": "v00265"
+          },
+          {
+            "event_confirm_s": 446.7,
+            "event_end_s": 448.3,
+            "event_start_s": 446.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00263",
+            "ttc_min_s": 1.267515629669029,
+            "vehicle_id": "v00266"
+          },
+          {
+            "event_confirm_s": 446.8,
+            "event_end_s": 447.9,
+            "event_start_s": 446.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00264",
+            "ttc_min_s": 1.2660107687145221,
+            "vehicle_id": "v00267"
+          },
+          {
+            "event_confirm_s": 204.3,
+            "event_end_s": 205.0,
+            "event_start_s": 204.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00265",
+            "ttc_min_s": 1.5827322145077174,
+            "vehicle_id": "v00268"
+          },
+          {
+            "event_confirm_s": 448.7,
+            "event_end_s": 449.7,
+            "event_start_s": 448.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00265",
+            "ttc_min_s": 1.4632781543058822,
+            "vehicle_id": "v00268"
+          },
+          {
+            "event_confirm_s": 448.3,
+            "event_end_s": 449.4,
+            "event_start_s": 448.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00266",
+            "ttc_min_s": 1.653911937399182,
+            "vehicle_id": "v00269"
+          },
+          {
+            "event_confirm_s": 448.0,
+            "event_end_s": 449.0,
+            "event_start_s": 447.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00267",
+            "ttc_min_s": 1.761142237617087,
+            "vehicle_id": "v00270"
+          },
+          {
+            "event_confirm_s": 205.8,
+            "event_end_s": 206.3,
+            "event_start_s": 205.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00268",
+            "ttc_min_s": 1.628448061049953,
+            "vehicle_id": "v00271"
+          },
+          {
+            "event_confirm_s": 449.9,
+            "event_end_s": 451.1,
+            "event_start_s": 449.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00268",
+            "ttc_min_s": 1.5894249726634027,
+            "vehicle_id": "v00271"
+          },
+          {
+            "event_confirm_s": 449.7,
+            "event_end_s": 450.8,
+            "event_start_s": 449.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00269",
+            "ttc_min_s": 1.5117248603308482,
+            "vehicle_id": "v00272"
+          },
+          {
+            "event_confirm_s": 208.9,
+            "event_end_s": 208.9,
+            "event_start_s": 208.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00270",
+            "ttc_min_s": 1.852827957460749,
+            "vehicle_id": "v00273"
+          },
+          {
+            "event_confirm_s": 449.6,
+            "event_end_s": 449.9,
+            "event_start_s": 449.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00270",
+            "ttc_min_s": 1.8920026778804315,
+            "vehicle_id": "v00273"
+          },
+          {
+            "event_confirm_s": 208.7,
+            "event_end_s": 209.0,
+            "event_start_s": 208.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00271",
+            "ttc_min_s": 1.6761931081189936,
+            "vehicle_id": "v00274"
+          },
+          {
+            "event_confirm_s": 451.5,
+            "event_end_s": 452.2,
+            "event_start_s": 451.3,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00271",
+            "ttc_min_s": 1.335749223324171,
+            "vehicle_id": "v00274"
+          },
+          {
+            "event_confirm_s": 451.2,
+            "event_end_s": 452.5,
+            "event_start_s": 451.0,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00272",
+            "ttc_min_s": 1.2794245643035955,
+            "vehicle_id": "v00275"
+          },
+          {
+            "event_confirm_s": 209.9,
+            "event_end_s": 210.2,
+            "event_start_s": 209.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00273",
+            "ttc_min_s": 1.8562513933126175,
+            "vehicle_id": "v00276"
+          },
+          {
+            "event_confirm_s": 450.7,
+            "event_end_s": 451.3,
+            "event_start_s": 450.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00273",
+            "ttc_min_s": 1.600323732767944,
+            "vehicle_id": "v00276"
+          },
+          {
+            "event_confirm_s": 210.0,
+            "event_end_s": 210.1,
+            "event_start_s": 209.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00274",
+            "ttc_min_s": 1.917328810219662,
+            "vehicle_id": "v00277"
+          },
+          {
+            "event_confirm_s": 452.7,
+            "event_end_s": 453.3,
+            "event_start_s": 452.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00274",
+            "ttc_min_s": 1.5399473310851985,
+            "vehicle_id": "v00277"
+          },
+          {
+            "event_confirm_s": 453.0,
+            "event_end_s": 453.5,
+            "event_start_s": 452.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00275",
+            "ttc_min_s": 1.8879817141402961,
+            "vehicle_id": "v00278"
+          },
+          {
+            "event_confirm_s": 213.1,
+            "event_end_s": 213.2,
+            "event_start_s": 212.9,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00278",
+            "ttc_min_s": 1.806990103442652,
+            "vehicle_id": "v00281"
+          },
+          {
+            "event_confirm_s": 347.9,
+            "event_end_s": 348.3,
+            "event_start_s": 347.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00279",
+            "ttc_min_s": 1.8006721864045647,
+            "vehicle_id": "v00282"
+          },
+          {
+            "event_confirm_s": 214.0,
+            "event_end_s": 214.2,
+            "event_start_s": 213.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00280",
+            "ttc_min_s": 1.8510593552571384,
+            "vehicle_id": "v00283"
+          },
+          {
+            "event_confirm_s": 322.4,
+            "event_end_s": 322.7,
+            "event_start_s": 322.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00282",
+            "ttc_min_s": 1.9394952192013624,
+            "vehicle_id": "v00285"
+          },
+          {
+            "event_confirm_s": 456.0,
+            "event_end_s": 456.1,
+            "event_start_s": 455.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00282",
+            "ttc_min_s": 1.8059681750454708,
+            "vehicle_id": "v00285"
+          },
+          {
+            "event_confirm_s": 323.9,
+            "event_end_s": 324.0,
+            "event_start_s": 323.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00285",
+            "ttc_min_s": 1.9166753163617507,
+            "vehicle_id": "v00288"
+          },
+          {
+            "event_confirm_s": 325.9,
+            "event_end_s": 326.2,
+            "event_start_s": 325.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00286",
+            "ttc_min_s": 1.9199495096659882,
+            "vehicle_id": "v00289"
+          },
+          {
+            "event_confirm_s": 325.1,
+            "event_end_s": 325.1,
+            "event_start_s": 324.9,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00288",
+            "ttc_min_s": 1.8885753141307864,
+            "vehicle_id": "v00291"
+          },
+          {
+            "event_confirm_s": 460.1,
+            "event_end_s": 460.2,
+            "event_start_s": 459.9,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00290",
+            "ttc_min_s": 1.8000688615251135,
+            "vehicle_id": "v00293"
+          },
+          {
+            "event_confirm_s": 222.0,
+            "event_end_s": 222.3,
+            "event_start_s": 221.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00292",
+            "ttc_min_s": 1.752995695500748,
+            "vehicle_id": "v00295"
+          },
+          {
+            "event_confirm_s": 506.7,
+            "event_end_s": 508.2,
+            "event_start_s": 506.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00298",
+            "ttc_min_s": 1.1548292713829762,
+            "vehicle_id": "v00301"
+          },
+          {
+            "event_confirm_s": 507.4,
+            "event_end_s": 508.7,
+            "event_start_s": 507.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00299",
+            "ttc_min_s": 1.2736792619899755,
+            "vehicle_id": "v00302"
+          },
+          {
+            "event_confirm_s": 508.2,
+            "event_end_s": 509.6,
+            "event_start_s": 508.0,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00301",
+            "ttc_min_s": 1.3549941854453564,
+            "vehicle_id": "v00304"
+          },
+          {
+            "event_confirm_s": 509.0,
+            "event_end_s": 509.9,
+            "event_start_s": 508.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00302",
+            "ttc_min_s": 1.7236874367593116,
+            "vehicle_id": "v00305"
+          },
+          {
+            "event_confirm_s": 507.9,
+            "event_end_s": 509.2,
+            "event_start_s": 507.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00303",
+            "ttc_min_s": 1.30152958875891,
+            "vehicle_id": "v00306"
+          },
+          {
+            "event_confirm_s": 510.5,
+            "event_end_s": 511.2,
+            "event_start_s": 510.3,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00304",
+            "ttc_min_s": 1.6207811106356262,
+            "vehicle_id": "v00307"
+          },
+          {
+            "event_confirm_s": 511.2,
+            "event_end_s": 512.0,
+            "event_start_s": 511.0,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00305",
+            "ttc_min_s": 1.8740744196121502,
+            "vehicle_id": "v00308"
+          },
+          {
+            "event_confirm_s": 509.5,
+            "event_end_s": 511.1,
+            "event_start_s": 509.3,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00306",
+            "ttc_min_s": 1.339741713288752,
+            "vehicle_id": "v00309"
+          },
+          {
+            "event_confirm_s": 512.1,
+            "event_end_s": 512.3,
+            "event_start_s": 511.9,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00307",
+            "ttc_min_s": 1.8885424024427917,
+            "vehicle_id": "v00310"
+          },
+          {
+            "event_confirm_s": 511.7,
+            "event_end_s": 512.5,
+            "event_start_s": 511.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00309",
+            "ttc_min_s": 1.5261733770267218,
+            "vehicle_id": "v00312"
+          },
+          {
+            "event_confirm_s": 513.7,
+            "event_end_s": 513.9,
+            "event_start_s": 513.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00310",
+            "ttc_min_s": 1.7907330596786113,
+            "vehicle_id": "v00313"
+          },
+          {
+            "event_confirm_s": 513.2,
+            "event_end_s": 513.6,
+            "event_start_s": 513.0,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00312",
+            "ttc_min_s": 1.8619364181542353,
+            "vehicle_id": "v00315"
+          },
+          {
+            "event_confirm_s": 514.7,
+            "event_end_s": 515.2,
+            "event_start_s": 514.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00313",
+            "ttc_min_s": 1.5814985595522417,
+            "vehicle_id": "v00316"
+          },
+          {
+            "event_confirm_s": 515.1,
+            "event_end_s": 515.2,
+            "event_start_s": 514.9,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00314",
+            "ttc_min_s": 1.8316764018319316,
+            "vehicle_id": "v00317"
+          },
+          {
+            "event_confirm_s": 514.8,
+            "event_end_s": 515.2,
+            "event_start_s": 514.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00315",
+            "ttc_min_s": 1.6022727095529785,
+            "vehicle_id": "v00318"
+          },
+          {
+            "event_confirm_s": 516.1,
+            "event_end_s": 516.2,
+            "event_start_s": 515.9,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00316",
+            "ttc_min_s": 1.7440714431401763,
+            "vehicle_id": "v00319"
+          },
+          {
+            "event_confirm_s": 516.1,
+            "event_end_s": 516.2,
+            "event_start_s": 515.9,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00318",
+            "ttc_min_s": 1.7698783456810876,
+            "vehicle_id": "v00321"
+          },
+          {
+            "event_confirm_s": 517.2,
+            "event_end_s": 517.2,
+            "event_start_s": 517.0,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00319",
+            "ttc_min_s": 1.8437331215517625,
+            "vehicle_id": "v00322"
+          },
+          {
+            "event_confirm_s": 517.0,
+            "event_end_s": 517.2,
+            "event_start_s": 516.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00321",
+            "ttc_min_s": 1.63249467469376,
+            "vehicle_id": "v00324"
+          },
+          {
+            "event_confirm_s": 408.6,
+            "event_end_s": 409.2,
+            "event_start_s": 408.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00322",
+            "ttc_min_s": 1.8029615542286968,
+            "vehicle_id": "v00325"
+          },
+          {
+            "event_confirm_s": 385.4,
+            "event_end_s": 386.0,
+            "event_start_s": 385.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00323",
+            "ttc_min_s": 1.7937934585598454,
+            "vehicle_id": "v00326"
+          },
+          {
+            "event_confirm_s": 518.1,
+            "event_end_s": 518.2,
+            "event_start_s": 517.9,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00324",
+            "ttc_min_s": 1.7078889449554844,
+            "vehicle_id": "v00327"
+          },
+          {
+            "event_confirm_s": 520.1,
+            "event_end_s": 520.2,
+            "event_start_s": 519.9,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00328",
+            "ttc_min_s": 1.819614787777208,
+            "vehicle_id": "v00331"
+          },
+          {
+            "event_confirm_s": 567.4,
+            "event_end_s": 568.6,
+            "event_start_s": 567.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00337",
+            "ttc_min_s": 1.2172388205945657,
+            "vehicle_id": "v00340"
+          },
+          {
+            "event_confirm_s": 567.5,
+            "event_end_s": 568.9,
+            "event_start_s": 567.3,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00338",
+            "ttc_min_s": 1.3456153029582483,
+            "vehicle_id": "v00341"
+          },
+          {
+            "event_confirm_s": 568.8,
+            "event_end_s": 569.8,
+            "event_start_s": 568.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00340",
+            "ttc_min_s": 1.4167010897679448,
+            "vehicle_id": "v00343"
+          },
+          {
+            "event_confirm_s": 567.9,
+            "event_end_s": 569.6,
+            "event_start_s": 567.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00342",
+            "ttc_min_s": 1.1908465323719304,
+            "vehicle_id": "v00345"
+          },
+          {
+            "event_confirm_s": 570.3,
+            "event_end_s": 571.4,
+            "event_start_s": 570.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00343",
+            "ttc_min_s": 1.5956941377492577,
+            "vehicle_id": "v00346"
+          },
+          {
+            "event_confirm_s": 569.4,
+            "event_end_s": 570.9,
+            "event_start_s": 569.2,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00345",
+            "ttc_min_s": 1.3827612576298258,
+            "vehicle_id": "v00348"
+          },
+          {
+            "event_confirm_s": 573.0,
+            "event_end_s": 573.1,
+            "event_start_s": 572.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00346",
+            "ttc_min_s": 1.8175779759570152,
+            "vehicle_id": "v00349"
+          },
+          {
+            "event_confirm_s": 571.3,
+            "event_end_s": 572.6,
+            "event_start_s": 571.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00348",
+            "ttc_min_s": 1.3868036091701303,
+            "vehicle_id": "v00351"
+          },
+          {
+            "event_confirm_s": 574.0,
+            "event_end_s": 574.5,
+            "event_start_s": 573.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00349",
+            "ttc_min_s": 1.6400759767606425,
+            "vehicle_id": "v00352"
+          },
+          {
+            "event_confirm_s": 573.0,
+            "event_end_s": 573.9,
+            "event_start_s": 572.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00351",
+            "ttc_min_s": 1.7042030914722799,
+            "vehicle_id": "v00354"
+          },
+          {
+            "event_confirm_s": 575.9,
+            "event_end_s": 576.0,
+            "event_start_s": 575.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00352",
+            "ttc_min_s": 1.8971825867031127,
+            "vehicle_id": "v00355"
+          },
+          {
+            "event_confirm_s": 574.6,
+            "event_end_s": 575.2,
+            "event_start_s": 574.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00354",
+            "ttc_min_s": 1.4232849020953122,
+            "vehicle_id": "v00357"
+          },
+          {
+            "event_confirm_s": 575.5,
+            "event_end_s": 576.3,
+            "event_start_s": 575.3,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00357",
+            "ttc_min_s": 1.3131601691081656,
+            "vehicle_id": "v00360"
+          },
+          {
+            "event_confirm_s": 443.8,
+            "event_end_s": 444.2,
+            "event_start_s": 443.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00359",
+            "ttc_min_s": 1.6901528226615297,
+            "vehicle_id": "v00362"
+          },
+          {
+            "event_confirm_s": 576.5,
+            "event_end_s": 577.4,
+            "event_start_s": 576.3,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00360",
+            "ttc_min_s": 1.4687949081600866,
+            "vehicle_id": "v00363"
+          },
+          {
+            "event_confirm_s": 577.8,
+            "event_end_s": 578.6,
+            "event_start_s": 577.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00363",
+            "ttc_min_s": 1.2650128123221667,
+            "vehicle_id": "v00366"
+          },
+          {
+            "event_confirm_s": 580.2,
+            "event_end_s": 580.2,
+            "event_start_s": 580.0,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00369",
+            "ttc_min_s": 1.8612027270458058,
+            "vehicle_id": "v00372"
+          },
+          {
+            "event_confirm_s": 586.1,
+            "event_end_s": 586.2,
+            "event_start_s": 585.9,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00380",
+            "ttc_min_s": 1.8102674652274722,
+            "vehicle_id": "v00383"
+          },
+          {
+            "event_confirm_s": 527.2,
+            "event_end_s": 528.0,
+            "event_start_s": 527.0,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00392",
+            "ttc_min_s": 1.8190331980174954,
+            "vehicle_id": "v00395"
+          },
+          {
+            "event_confirm_s": 499.8,
+            "event_end_s": 500.4,
+            "event_start_s": 499.6,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00393",
+            "ttc_min_s": 1.6279604544367012,
+            "vehicle_id": "v00396"
+          },
+          {
+            "event_confirm_s": 502.7,
+            "event_end_s": 503.3,
+            "event_start_s": 502.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00394",
+            "ttc_min_s": 1.527554955417324,
+            "vehicle_id": "v00397"
+          },
+          {
+            "event_confirm_s": 501.7,
+            "event_end_s": 502.1,
+            "event_start_s": 501.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00395",
+            "ttc_min_s": 1.6663000952851352,
+            "vehicle_id": "v00398"
+          },
+          {
+            "event_confirm_s": 501.2,
+            "event_end_s": 501.2,
+            "event_start_s": 501.0,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00396",
+            "ttc_min_s": 1.9271806306358077,
+            "vehicle_id": "v00399"
+          },
+          {
+            "event_confirm_s": 504.2,
+            "event_end_s": 504.3,
+            "event_start_s": 504.0,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00397",
+            "ttc_min_s": 1.9390011165687109,
+            "vehicle_id": "v00400"
+          },
+          {
+            "event_confirm_s": 504.2,
+            "event_end_s": 504.5,
+            "event_start_s": 504.0,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00401",
+            "ttc_min_s": 1.770628891809566,
+            "vehicle_id": "v00404"
+          },
+          {
+            "event_confirm_s": 505.7,
+            "event_end_s": 505.8,
+            "event_start_s": 505.5,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00404",
+            "ttc_min_s": 1.855673240248036,
+            "vehicle_id": "v00407"
+          },
+          {
+            "event_confirm_s": 506.9,
+            "event_end_s": 507.0,
+            "event_start_s": 506.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00407",
+            "ttc_min_s": 1.854665906583405,
+            "vehicle_id": "v00410"
+          },
+          {
+            "event_confirm_s": 507.9,
+            "event_end_s": 508.0,
+            "event_start_s": 507.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00410",
+            "ttc_min_s": 1.8265452471936439,
+            "vehicle_id": "v00413"
+          },
+          {
+            "event_confirm_s": 560.9,
+            "event_end_s": 561.4,
+            "event_start_s": 560.7,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00430",
+            "ttc_min_s": 1.6068945508351082,
+            "vehicle_id": "v00433"
+          },
+          {
+            "event_confirm_s": 589.1,
+            "event_end_s": 589.1,
+            "event_start_s": 588.9,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00430",
+            "ttc_min_s": 1.791546325881537,
+            "vehicle_id": "v00433"
+          },
+          {
+            "event_confirm_s": 560.6,
+            "event_end_s": 561.3,
+            "event_start_s": 560.4,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00432",
+            "ttc_min_s": 1.5061464556893962,
+            "vehicle_id": "v00435"
+          },
+          {
+            "event_confirm_s": 562.3,
+            "event_end_s": 562.4,
+            "event_start_s": 562.1,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00433",
+            "ttc_min_s": 1.8511967950586425,
+            "vehicle_id": "v00436"
+          },
+          {
+            "event_confirm_s": 561.1,
+            "event_end_s": 561.6,
+            "event_start_s": 560.9,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00434",
+            "ttc_min_s": 1.49461739180617,
+            "vehicle_id": "v00437"
+          },
+          {
+            "event_confirm_s": 562.0,
+            "event_end_s": 562.2,
+            "event_start_s": 561.8,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00435",
+            "ttc_min_s": 1.7876027243763062,
+            "vehicle_id": "v00438"
+          },
+          {
+            "event_confirm_s": 562.2,
+            "event_end_s": 562.3,
+            "event_start_s": 562.0,
+            "exit_reason": "observed_threshold_exit",
+            "leader_id": "v00437",
+            "ttc_min_s": 1.856657075889302,
+            "vehicle_id": "v00440"
+          }
+        ],
+        "event_rate_per_evaluable_vehicle_hour": 11.917061098964464,
+        "events": 372,
+        "formal_adapter_status": "pending_measurement_equivalence_review",
+        "method": "vectorized core adjacency equivalence tested",
+        "not_evaluable_following_exposure_s": 0.0,
+        "p2_evaluable_following_exposure_s": 112376.70000000001,
+        "p2_evaluable_following_vehicle_hours": 31.215750000000003,
+        "reliable_closing_exposure_s": 45459.9,
+        "reliable_following_exposure_s": 112376.70000000001
+      },
+      "local_stratum_formal_p2": "Unresolved",
+      "metrics": {
+        "acceleration_mps2": {
+          "mean": -0.030750373777835478,
+          "n": 337915,
+          "quantiles": {
+            "0": -4.5000000000000995,
+            "0.01": -3.1214917627881036,
+            "0.05": -1.666877998757137,
+            "0.1": -1.046966076436755,
+            "0.5": 0.0,
+            "0.9": 1.0306680695445536,
+            "0.95": 1.5460204621092455,
+            "0.99": 2.188918182721933,
+            "1": 2.59999999999998
+          },
+          "sd": 0.891375178791564
+        },
+        "closing_speed_mps": {
+          "mean": 0.06972147111894775,
+          "n": 337694,
+          "quantiles": {
+            "0": -5.674612724701941,
+            "0.01": -2.5110234189818583,
+            "0.05": -1.7364591989021274,
+            "0.1": -1.1889361629989883,
+            "0.5": 1.5896981723837726e-05,
+            "0.9": 1.1524721082955667,
+            "0.95": 1.810406532182773,
+            "0.99": 5.650352383584351,
+            "1": 8.199817625506029
+          },
+          "sd": 1.171368227014416
+        },
+        "low_speed_gap_m": {
+          "mean": 3.522615151172001,
+          "n": 270913,
+          "quantiles": {
+            "0": 2.500999930820285,
+            "0.01": 2.501000310239988,
+            "0.05": 2.5010014333812762,
+            "0.1": 2.50100401442657,
+            "0.5": 2.5759807925483926,
+            "0.9": 6.07715034214158,
+            "0.95": 7.245433985377468,
+            "0.99": 8.919752236381587,
+            "1": 12.576836945607653
+          },
+          "sd": 1.6159599399468583
+        },
+        "net_gap_m": {
+          "mean": 5.609593040745382,
+          "n": 337694,
+          "quantiles": {
+            "0": 2.500999930820285,
+            "0.01": 2.5010003632774556,
+            "0.05": 2.5010018145572133,
+            "0.1": 2.501006876638087,
+            "0.5": 3.005113997516432,
+            "0.9": 11.918300164097401,
+            "0.95": 13.79062775230318,
+            "0.99": 33.42571065923081,
+            "1": 63.51739143753457
+          },
+          "sd": 5.826387657079791
+        },
+        "speed_mps": {
+          "mean": 2.4006566028539744,
+          "n": 337915,
+          "quantiles": {
+            "0": 0.0,
+            "0.01": 0.0,
+            "0.05": 0.0,
+            "0.1": 0.0,
+            "0.5": 0.4285262048233118,
+            "0.9": 7.778334482826332,
+            "0.95": 9.233995075213906,
+            "0.99": 19.938804518111077,
+            "1": 27.78
+          },
+          "sd": 3.917355104127698
+        },
+        "ttc_s": {
+          "mean": 168.21123093813782,
+          "n": 140856,
+          "quantiles": {
+            "0": 1.2123418380249256,
+            "0.01": 2.0695752242114045,
+            "0.05": 3.3549868819565893,
+            "0.1": 4.163535522347425,
+            "0.5": 13.018812412260175,
+            "0.9": 510.52925426907103,
+            "0.95": 1123.8415220839743,
+            "0.99": 2135.9610429314207,
+            "1": 17087.764676823834
+          },
+          "sd": 424.3311563622065
+        }
+      },
+      "positive_closing": 0.4171113493280899,
+      "ttc_valid": 0.41683855407424947
+    }
+  ]
+}

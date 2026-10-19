@@ -80,3 +80,7 @@ Stage 0.5 场景设计审计报告为 docs/STAGE_0_5_TASK_0_5_0_SCENARIO_DESIGN_
 A/A+便携摘要→CalibrationValidationGuard来源/角色/SHA→只含两个校准窗口的real_reference_summary；不读取真实轨迹。A+三个既有工程state另按其封存SHA核对，仅用于初态组成诊断。冻结plan/网络/需求/vType/配置→SUMO1.26.0无消息worker→本地完整state/交通帧/发车记录→完整P2适配器+等价暴露→局部200m与全域分账→轻量数值证据。入口待插入与已进入低速车辆分开；局部/分层P2率Unresolved。依据：docs/STAGE_0_5_TASK_0_5_4B0_EXPLORATORY_RESPONSE_DIAGNOSTICS.md及source_access_audit、frozen_input_manifest、boundary_response_diagnostics。
 
 B0受控实验数据流与验证执行须分开：根全量pytest会启用历史全源本地事件/案例读取，本轮因此发生B0-VALIDATION-SCOPE-02；全任务验证读取Unknown，不能继承实验层0行声明。后续只在纯Git克隆做全量回归，本任务隔离验收未Accepted。
+
+## 2026-10-19 B1数据流
+
+A+三个封存摘要→预声明来源/SHA→CalibrationValidationGuard→两窗口投影及车型候选→-S胶囊→冻结A/B/C/D输入→无消息SUMO→本地全状态/交通帧/完整TTC/P2→内外队列分账/200m三车道局部量→轻量摘要与工程XML压缩bundle。额外描述分层摘要另有分析用途守卫。无第三窗口/holdout/历史全源产物复制或读取；OS绝对零访问不能认证。B1（RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1）按阻断提前结束：V1失败A后7次未启动，V2 A有效/B警告/C阻断/D未启动，累计4次尝试；无补跑或新seed。A/B局部均速27.1088/26.5152m/s、密度16.3208/16.8197、低速0；C记录2.4007m/s、93.8653veh/km/lane、低速80.1719%、末期未服务252，但停车位移检查与冻结回溢资格阻断，不能作为有效校准样本。D只有静态/空加载检查，动态未知。 依据：`docs/STAGE_0_5_TASK_0_5_4B1_BOUNDARY_BOTTLENECK_CONTRAST.md`、`evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/`中的preflight、execution_stop_observation、numerical_stop_diagnostic、queue_diagnostics、run_manifest和SHA256SUMS。

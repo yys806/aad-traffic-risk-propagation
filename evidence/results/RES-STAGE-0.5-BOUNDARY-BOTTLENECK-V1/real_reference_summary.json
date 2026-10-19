@@ -1,0 +1,388 @@
+{
+  "density_thresholds": [
+    42.87666666666667,
+    48.08277777777778
+  ],
+  "fleet": [
+    {
+      "code": 1,
+      "length_m": 2.4384,
+      "share": 0.009555661729574774,
+      "vClass": "motorcycle"
+    },
+    {
+      "code": 2,
+      "length_m": 4.4196,
+      "share": 0.9672718585762065,
+      "vClass": "passenger"
+    },
+    {
+      "code": 3,
+      "length_m": 10.009694845360826,
+      "share": 0.023172479694218824,
+      "vClass": "truck"
+    }
+  ],
+  "kind": "two_window_aggregate",
+  "scope": "two existing calibration summaries only; no trajectory/event table read",
+  "source_bindings": {
+    "benchmark_plan.json": {
+      "purpose": "B1 two calibration-window aggregate projection",
+      "sha256": "44e7a3aeffd51e8f4c51677a1bd9495224dc12630d144a659fa5a91c4c9d1171",
+      "source": "b1_allowlisted_summary::benchmark_plan.json"
+    },
+    "diagnostics.json": {
+      "purpose": "B1 two calibration-window aggregate projection",
+      "sha256": "bc9de47b3026b640d22a2d086ae445b6ce5b0049e0af75f09874860a6e031f03",
+      "source": "b1_allowlisted_summary::diagnostics.json"
+    },
+    "unified_strata.json": {
+      "purpose": "B1 two calibration-window aggregate projection",
+      "sha256": "fbdd5fb8641acbd4cfdba7936151ea0477e0eb12bea1e1b19fc7cd015da090e9",
+      "source": "b1_allowlisted_summary::unified_strata.json"
+    }
+  },
+  "windows": {
+    "us101__0750_0805": {
+      "crossings": [
+        {
+          "all_lane_veh_h": 8350.0,
+          "backward_crossings": 0,
+          "crossing_lane_change_edges": 2,
+          "duration_s": 720.0,
+          "forward_crossings": 1670,
+          "lane_assignment": "downstream endpoint; lane-changing edges separately flagged",
+          "lane_counts": {
+            "1": 314,
+            "2": 345,
+            "3": 338,
+            "4": 339,
+            "5": 332,
+            "7": 2
+          },
+          "mainline_crossings": 1668,
+          "mainline_veh_h": 8340.0,
+          "mainline_veh_h_lane": 1668.0,
+          "plane_m": 150.0
+        },
+        {
+          "all_lane_veh_h": 8700.0,
+          "backward_crossings": 0,
+          "crossing_lane_change_edges": 1,
+          "duration_s": 720.0,
+          "forward_crossings": 1740,
+          "lane_assignment": "downstream endpoint; lane-changing edges separately flagged",
+          "lane_counts": {
+            "1": 310,
+            "2": 337,
+            "3": 337,
+            "4": 328,
+            "5": 336,
+            "6": 92
+          },
+          "mainline_crossings": 1648,
+          "mainline_veh_h": 8240.0,
+          "mainline_veh_h_lane": 1648.0,
+          "plane_m": 300.0
+        },
+        {
+          "all_lane_veh_h": 8355.0,
+          "backward_crossings": 0,
+          "crossing_lane_change_edges": 1,
+          "duration_s": 720.0,
+          "forward_crossings": 1671,
+          "lane_assignment": "downstream endpoint; lane-changing edges separately flagged",
+          "lane_counts": {
+            "1": 309,
+            "2": 351,
+            "3": 340,
+            "4": 329,
+            "5": 342
+          },
+          "mainline_crossings": 1671,
+          "mainline_veh_h": 8355.0,
+          "mainline_veh_h_lane": 1671.0,
+          "plane_m": 450.0
+        }
+      ],
+      "interior_coverage_s": 720.0,
+      "interior_metrics": {
+        "acceleration_mps2": {
+          "clusters": 1790,
+          "distribution": {
+            "mean": 0.06702616301664359,
+            "n": 313514,
+            "quantiles": {
+              "0": -3.41376,
+              "0.01": -3.41376,
+              "0.05": -2.6670000000000003,
+              "0.1": -1.780032,
+              "0.5": 0.0,
+              "0.9": 1.917192,
+              "0.95": 2.8133040000000005,
+              "0.99": 3.41376,
+              "1": 3.41376
+            },
+            "sd": 1.404252097172564
+          },
+          "mean_cluster_ci95": [
+            0.05768567375430679,
+            0.07607803170476964
+          ],
+          "model_tolerance": "Tolerance Not Yet Justified",
+          "resamples": 2000,
+          "seed": 20261018
+        },
+        "closing_speed_mps": {
+          "clusters": 1790,
+          "distribution": {
+            "mean": -0.17137596169868013,
+            "n": 313514,
+            "quantiles": {
+              "0": -19.90344,
+              "0.01": -4.437888000000001,
+              "0.05": -2.7706319999999995,
+              "0.1": -1.9354800000000005,
+              "0.5": -0.030480000000000434,
+              "0.9": 1.578864,
+              "0.95": 2.325624000000001,
+              "0.99": 3.916680000000001,
+              "1": 18.37944
+            },
+            "sd": 1.6039870327293217
+          },
+          "mean_cluster_ci95": [
+            -0.2042494351602354,
+            -0.13812451481664278
+          ],
+          "model_tolerance": "Tolerance Not Yet Justified",
+          "resamples": 2000,
+          "seed": 20261018
+        },
+        "net_gap_m": {
+          "clusters": 1789,
+          "distribution": {
+            "mean": 18.853805489945927,
+            "n": 312908,
+            "quantiles": {
+              "0": 0.0030480000000006058,
+              "0.01": 3.0327599999999997,
+              "0.05": 5.733288,
+              "0.1": 7.623048,
+              "0.5": 16.172688,
+              "0.9": 32.586168,
+              "0.95": 40.032432,
+              "0.99": 60.088272,
+              "1": 172.827696
+            },
+            "sd": 11.896959488262567
+          },
+          "mean_cluster_ci95": [
+            18.370812336684953,
+            19.367650342874082
+          ],
+          "model_tolerance": "Tolerance Not Yet Justified",
+          "resamples": 2000,
+          "seed": 20261018
+        },
+        "speed_mps": {
+          "clusters": 1790,
+          "distribution": {
+            "mean": 10.506118382234925,
+            "n": 313514,
+            "quantiles": {
+              "0": 0.0,
+              "0.01": 0.0,
+              "0.05": 2.752344,
+              "0.1": 5.3340000000000005,
+              "0.5": 11.074908,
+              "0.9": 14.328648,
+              "0.95": 15.24,
+              "0.99": 16.764,
+              "1": 29.04744
+            },
+            "sd": 3.638561856472785
+          },
+          "mean_cluster_ci95": [
+            10.348702125291483,
+            10.661679934135552
+          ],
+          "model_tolerance": "Tolerance Not Yet Justified",
+          "resamples": 2000,
+          "seed": 20261018
+        }
+      }
+    },
+    "us101__0805_0820": {
+      "crossings": [
+        {
+          "all_lane_veh_h": 7260.0,
+          "backward_crossings": 0,
+          "crossing_lane_change_edges": 0,
+          "duration_s": 660.0,
+          "forward_crossings": 1331,
+          "lane_assignment": "downstream endpoint; lane-changing edges separately flagged",
+          "lane_counts": {
+            "1": 251,
+            "2": 275,
+            "3": 259,
+            "4": 273,
+            "5": 266,
+            "7": 7
+          },
+          "mainline_crossings": 1324,
+          "mainline_veh_h": 7221.818181818182,
+          "mainline_veh_h_lane": 1444.3636363636365,
+          "plane_m": 150.0
+        },
+        {
+          "all_lane_veh_h": 7696.363636363636,
+          "backward_crossings": 0,
+          "crossing_lane_change_edges": 0,
+          "duration_s": 660.0,
+          "forward_crossings": 1411,
+          "lane_assignment": "downstream endpoint; lane-changing edges separately flagged",
+          "lane_counts": {
+            "1": 257,
+            "2": 277,
+            "3": 261,
+            "4": 267,
+            "5": 267,
+            "6": 82
+          },
+          "mainline_crossings": 1329,
+          "mainline_veh_h": 7249.090909090909,
+          "mainline_veh_h_lane": 1449.8181818181818,
+          "plane_m": 300.0
+        },
+        {
+          "all_lane_veh_h": 7494.545454545455,
+          "backward_crossings": 0,
+          "crossing_lane_change_edges": 1,
+          "duration_s": 660.0,
+          "forward_crossings": 1374,
+          "lane_assignment": "downstream endpoint; lane-changing edges separately flagged",
+          "lane_counts": {
+            "1": 264,
+            "2": 282,
+            "3": 265,
+            "4": 274,
+            "5": 267,
+            "8": 22
+          },
+          "mainline_crossings": 1352,
+          "mainline_veh_h": 7374.545454545455,
+          "mainline_veh_h_lane": 1474.909090909091,
+          "plane_m": 450.0
+        }
+      ],
+      "interior_coverage_s": 660.0,
+      "interior_metrics": {
+        "acceleration_mps2": {
+          "clusters": 1431,
+          "distribution": {
+            "mean": 0.04522132680538557,
+            "n": 333336,
+            "quantiles": {
+              "0": -3.41376,
+              "0.01": -3.41376,
+              "0.05": -2.3835360000000003,
+              "0.1": -1.438656,
+              "0.5": 0.0,
+              "0.9": 1.69164,
+              "0.95": 2.520696,
+              "0.99": 3.41376,
+              "1": 3.41376
+            },
+            "sd": 1.2658855724286908
+          },
+          "mean_cluster_ci95": [
+            0.03730887221256037,
+            0.0531384053798122
+          ],
+          "model_tolerance": "Tolerance Not Yet Justified",
+          "resamples": 2000,
+          "seed": 20261018
+        },
+        "closing_speed_mps": {
+          "clusters": 1431,
+          "distribution": {
+            "mean": -0.1094413104615163,
+            "n": 333336,
+            "quantiles": {
+              "0": -19.744944,
+              "0.01": -3.6758879999999996,
+              "0.05": -2.356104,
+              "0.1": -1.688592000000001,
+              "0.5": -0.030479999999999893,
+              "0.9": 1.530096,
+              "0.95": 2.2189439999999996,
+              "0.99": 3.8526720000000005,
+              "1": 18.391632
+            },
+            "sd": 1.4549410235195357
+          },
+          "mean_cluster_ci95": [
+            -0.13426026199194857,
+            -0.0841526325970611
+          ],
+          "model_tolerance": "Tolerance Not Yet Justified",
+          "resamples": 2000,
+          "seed": 20261018
+        },
+        "net_gap_m": {
+          "clusters": 1431,
+          "distribution": {
+            "mean": 15.405899964198264,
+            "n": 332833,
+            "quantiles": {
+              "0": 0.006096000000000323,
+              "0.01": 1.9476719999999998,
+              "0.05": 3.9898320000000007,
+              "0.1": 5.4955440000000015,
+              "0.5": 13.124688000000003,
+              "0.9": 27.276552000000002,
+              "0.95": 34.052256,
+              "0.99": 52.75685663999998,
+              "1": 161.428176
+            },
+            "sd": 10.503623598425609
+          },
+          "mean_cluster_ci95": [
+            14.963638391722467,
+            15.831744746378407
+          ],
+          "model_tolerance": "Tolerance Not Yet Justified",
+          "resamples": 2000,
+          "seed": 20261018
+        },
+        "speed_mps": {
+          "clusters": 1431,
+          "distribution": {
+            "mean": 7.915276152134783,
+            "n": 333336,
+            "quantiles": {
+              "0": 0.0,
+              "0.01": 0.0,
+              "0.05": 0.813816,
+              "0.1": 1.917192,
+              "0.5": 8.135112000000001,
+              "0.9": 13.002768,
+              "0.95": 13.801344,
+              "0.99": 15.364968,
+              "1": 29.04744
+            },
+            "sd": 3.9858620484023257
+          },
+          "mean_cluster_ci95": [
+            7.744284910569197,
+            8.089209602716123
+          ],
+          "model_tolerance": "Tolerance Not Yet Justified",
+          "resamples": 2000,
+          "seed": 20261018
+        }
+      }
+    }
+  }
+}

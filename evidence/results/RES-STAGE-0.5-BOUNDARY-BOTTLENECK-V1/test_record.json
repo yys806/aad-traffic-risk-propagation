@@ -1,0 +1,107 @@
+{
+  "capsule_preflight": {
+    "passed": 45,
+    "failed": 0,
+    "negative_path_refusals": 3,
+    "unexpected_test_denials": 0,
+    "python_no_site": true
+  },
+  "full_regression": {
+    "environment": "pure Git clone of staged tree, no local historical outputs or datasets copied",
+    "snapshot_commit": "b262edca2b1bd53b9f9b756242c71e37074ea20c",
+    "command": "PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python -m pytest -q -rs (cwd code)",
+    "passed": 500,
+    "skipped": 14,
+    "failed": 0,
+    "wall_s": 120.16,
+    "skip_breakdown": {
+      "raw_see_v2x_sample": 1,
+      "sealed_pneuma_canonical": 1,
+      "Stage0.2_case_and_event_packages": 11,
+      "capsule_no_site_bootstrap_already_passed_in_preflight": 1
+    },
+    "data_related_skips_not_validated": true,
+    "legacy_full_source_data_unavailable": true
+  },
+  "checks": {
+    "compileall": true,
+    "strict_git_docs_clean_clone": true,
+    "require_clean_after_full_tests": true,
+    "portable_evidence_verify": true,
+    "exact_engineering_bundle_inputs_verified": 17,
+    "all_four_scientific_figures_visually_reviewed": true
+  },
+  "root_scope": {
+    "full_pytest_executed": false,
+    "strict_docs_passed": false,
+    "known_preexisting_missing_canonical_path": "doc/literature-notes/zotero_reorg_2026-10-17_execution.json",
+    "unrelated_five_deletions_not_staged": true
+  },
+  "scoped_positive_reference_reads": true,
+  "real_validation_or_holdout_not_used_for_negative_tests": true,
+  "os_native_complete_monitoring": false,
+  "context_consistency_check": {
+    "completed": true,
+    "updated": [
+      "00_PROJECT_STATE",
+      "02_ARCHITECTURE",
+      "03_DATA_FLOW",
+      "04_MODULE_MAP",
+      "05_EXPERIMENTS",
+      "06_DECISIONS",
+      "07_KNOWN_ISSUES",
+      "08_CHANGELOG",
+      "PROJECT_REGISTRY",
+      "RESULTS_INDEX",
+      "STAGE_INDEX",
+      "RESEARCH_STATUS",
+      "PROJECT_INDEX"
+    ],
+    "unchanged": [
+      "01_RESEARCH_CONTEXT research objective",
+      "approved Stage0.2/0.3/0.4 definitions/results",
+      "B0 sealed results and plan",
+      "AGENTS.md"
+    ],
+    "no_scientific_proposals_promoted": true
+  },
+  "verification_entry": "python code/scripts/verify_stage_0_5_boundary_evidence.py evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1",
+  "new_portable_verifier_tests": {
+    "passed": 4,
+    "synthetic_only": true
+  },
+  "pre_freeze_development_failures_retained": [
+    {
+      "scope": "V1 preparation/bootstrap",
+      "issues": [
+        "threshold metadata key",
+        "absolute import closure dependency",
+        "Windows implicit-executable audit parsing",
+        "null device and pytest temp parent"
+      ],
+      "counts": "not aggregated; occurred before matrix freeze",
+      "resolution": "43-test V1 preflight passed before V1 plan"
+    },
+    {
+      "scope": "V2 preflight",
+      "rounds": [
+        {
+          "passed": 44,
+          "failed": 1,
+          "wall_s": 16.25
+        },
+        {
+          "passed": 44,
+          "failed": 1,
+          "wall_s": 8.07
+        }
+      ],
+      "issue": "synthetic Parquet roundtrip exposed missing approved pyarrow DLL sibling link under -S",
+      "resolution": "exact pyarrow.libs dependency link, final45-test preflight passed before freeze"
+    }
+  ],
+  "rendering_failures_retained": {
+    "first_attempt": "4 optional font opens denied; no source data read",
+    "fix": "package-font-only cache; successful rerenders without new simulation"
+  }
+}

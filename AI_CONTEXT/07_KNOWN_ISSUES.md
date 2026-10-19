@@ -102,3 +102,9 @@ Documented Intent：06_DECISIONS指数rho/固定分母/车辆等权。Actual Imp
 B0-VALIDATION-SCOPE-02：根目录全量pytest启用了历史Stage0.2本地全源事件/案例测试，未按校准角色过滤。任务级验证读取数Unknown/Not Certified，不能声称0；B0冻结实验/比较摘要输入仍仅前两窗口，未用回归数据选参。已停止根本地数据回归，纯Git452 passed/13 skipped；任务隔离验收未Accepted，等待研究者决定是否保留有限探索结果。见validation_activity_audit及B0报告。
 
 本轮发现但未修改：既有Stage0.1 `_sumo_environment()`版本查询无超时，一次`sumo.exe --version`挂起导致纯Git集成测试失败；精确终止后新查询正常，限时完整重跑452 passed/13 skipped。该环境/超时问题不属于B0状态生成，见test_record。
+
+## 2026-10-19 B1未解决问题
+
+B1（RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1）按阻断提前结束：V1失败A后7次未启动，V2 A有效/B警告/C阻断/D未启动，累计4次尝试；无补跑或新seed。A/B局部均速27.1088/26.5152m/s、密度16.3208/16.8197、低速0；C记录2.4007m/s、93.8653veh/km/lane、低速80.1719%、末期未服务252，但停车位移检查与冻结回溢资格阻断，不能作为有效校准样本。D只有静态/空加载检查，动态未知。
+
+停车步内截断使观测终速梯形核验可能不适用，但保留信息不足以证明本次残差成因；不降低阈值。末期入口低速存在但连续50m低速前沿资格未通过，不能事后改写。C供给人工且过强、实际进入差异、D未运行、单seed、正式warmup/容差/P2局部归属均未解决。首次绘图被拒绝的4个可选系统字体路径保留，renderer改为包内字体；矩阵worker无拒绝。研究者保留B0有限描述证据，B0任务隔离false/验证物化Unknown不变。B1用两校准摘要白名单、SHA/角色守卫、-S最小胶囊、Python路径/子进程审计；冻结前45测试通过、假路径拒绝3/3，矩阵worker拒绝0；不声称OS/native全监控。根工作区不跑全量pytest，全量只在无本地历史数据的Git检出执行，数据skip不算通过。 依据：`docs/STAGE_0_5_TASK_0_5_4B1_BOUNDARY_BOTTLENECK_CONTRAST.md`、`evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/`中的preflight、execution_stop_observation、numerical_stop_diagnostic、queue_diagnostics、run_manifest和SHA256SUMS。

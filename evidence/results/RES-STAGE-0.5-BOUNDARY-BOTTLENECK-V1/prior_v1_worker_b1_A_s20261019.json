@@ -1,0 +1,31 @@
+{
+  "scope": "controlled Python entrypoints",
+  "allowed_open_events": 909,
+  "denied": [
+    {
+      "event": "os.listdir",
+      "path": "C:\\Users\\Lenovo\\AppData\\Roaming\\Python\\Python313\\site-packages"
+    },
+    {
+      "event": "open",
+      "path": "C:\\Users\\Lenovo\\AppData\\Roaming\\Python\\Python313\\site-packages",
+      "write": false
+    },
+    {
+      "event": "os.listdir",
+      "path": "D:\\shen\\THU\\VLM\\src"
+    },
+    {
+      "event": "open",
+      "path": "D:\\shen\\THU\\VLM\\src",
+      "write": false
+    }
+  ],
+  "os_complete_monitoring": false,
+  "native_file_access_monitored": false,
+  "limitations": [
+    "Python audit events only; native extensions and SUMO reads not OS-traced",
+    "standard-library/package/SUMO/Windows runtime roots are broader than individual dependency files",
+    "same-user administrator can bypass this policy; it is not an adversarial security boundary"
+  ]
+}

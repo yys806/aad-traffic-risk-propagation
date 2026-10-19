@@ -1,0 +1,54 @@
+{
+  "authorization": "V2 four-condition single-seed plan closed; no second seed scheduled within cumulative budget",
+  "created_utc": "2026-10-19T03:01:39.438500Z",
+  "first_batch": [
+    {
+      "blockers": [],
+      "condition": "A",
+      "density": 16.320833333333333,
+      "low_speed": 0.0,
+      "pending": 0,
+      "run_id": "b1_A_s20261019",
+      "speed": 27.108823752370306,
+      "warnings": []
+    },
+    {
+      "blockers": [],
+      "condition": "B",
+      "density": 16.81972222222222,
+      "low_speed": 0.0,
+      "pending": 0,
+      "run_id": "b1_B_s20261019",
+      "speed": 26.515194348899627,
+      "warnings": [
+        "onroad_low_speed_observed",
+        "external_pending_observed"
+      ]
+    },
+    {
+      "blockers": [
+        "runtime_settings",
+        "persistent_external_demand_without_documented_spillback"
+      ],
+      "condition": "C",
+      "density": 93.86527777777778,
+      "low_speed": 0.8017193672965095,
+      "pending": 252,
+      "run_id": "b1_C_s20261019",
+      "speed": 2.4006566028539744,
+      "warnings": [
+        "onroad_low_speed_observed",
+        "external_pending_observed"
+      ]
+    },
+    {
+      "run_id": "b1_D_s20261019",
+      "status": "not_attempted"
+    }
+  ],
+  "first_batch_engineering_valid": false,
+  "isolation_preflight_passed": true,
+  "phase2_allowed": false,
+  "plan_sha256": "13db11847d406b3fd2f30f83b52640ee4d5f43a3aff2692933dc04cdf636b135",
+  "scientific_claim_eligible": false
+}

@@ -1,0 +1,77 @@
+{
+  "accesses": {
+    "access_roles": [
+      "calibration",
+      "temporal_validation",
+      "auxiliary"
+    ],
+    "decisions": [
+      {
+        "allowed": true,
+        "checked_bindings": {
+          "b1_allowlisted_summary::diagnostics.json": "bc9de47b3026b640d22a2d086ae445b6ce5b0049e0af75f09874860a6e031f03"
+        },
+        "purpose": "B1 two calibration-window aggregate projection",
+        "reason": "allowed_by_policy",
+        "restricted_sources": [],
+        "role": "calibration",
+        "sources": [
+          "b1_allowlisted_summary::diagnostics.json"
+        ]
+      },
+      {
+        "allowed": true,
+        "checked_bindings": {
+          "b1_allowlisted_summary::unified_strata.json": "fbdd5fb8641acbd4cfdba7936151ea0477e0eb12bea1e1b19fc7cd015da090e9"
+        },
+        "purpose": "B1 two calibration-window aggregate projection",
+        "reason": "allowed_by_policy",
+        "restricted_sources": [],
+        "role": "calibration",
+        "sources": [
+          "b1_allowlisted_summary::unified_strata.json"
+        ]
+      },
+      {
+        "allowed": true,
+        "checked_bindings": {
+          "b1_allowlisted_summary::benchmark_plan.json": "44e7a3aeffd51e8f4c51677a1bd9495224dc12630d144a659fa5a91c4c9d1171"
+        },
+        "purpose": "B1 two calibration-window aggregate projection",
+        "reason": "allowed_by_policy",
+        "restricted_sources": [],
+        "role": "calibration",
+        "sources": [
+          "b1_allowlisted_summary::benchmark_plan.json"
+        ]
+      }
+    ],
+    "denied_count": 0,
+    "denied_requests": [],
+    "fail_closed": true,
+    "locked_holdout_accessed": false,
+    "policy_schema_version": "stage_0_5.sumo-engineering.v2.calibration-validation-policy.v1",
+    "request_count": 3,
+    "schema_version": "stage_0_5.sumo-engineering.v2.access-audit.v1",
+    "validation_window_read": false
+  },
+  "historical_full_source_files_opened": false,
+  "original_summary_bindings": {
+    "benchmark_plan.json": {
+      "purpose": "B1 two calibration-window aggregate projection",
+      "sha256": "44e7a3aeffd51e8f4c51677a1bd9495224dc12630d144a659fa5a91c4c9d1171",
+      "source": "b1_allowlisted_summary::benchmark_plan.json"
+    },
+    "diagnostics.json": {
+      "purpose": "B1 two calibration-window aggregate projection",
+      "sha256": "bc9de47b3026b640d22a2d086ae445b6ce5b0049e0af75f09874860a6e031f03",
+      "source": "b1_allowlisted_summary::diagnostics.json"
+    },
+    "unified_strata.json": {
+      "purpose": "B1 two calibration-window aggregate projection",
+      "sha256": "fbdd5fb8641acbd4cfdba7936151ea0477e0eb12bea1e1b19fc7cd015da090e9",
+      "source": "b1_allowlisted_summary::unified_strata.json"
+    }
+  },
+  "validation_rows_materialised": 0
+}

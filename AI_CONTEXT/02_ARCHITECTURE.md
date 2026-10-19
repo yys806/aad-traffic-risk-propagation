@@ -70,3 +70,7 @@ formal_risk_measurement.v2与历史0.1s提取/线性指标隔离；正式固定�
 ## 2026-10-18 B0独立探索层
 
 新增隔离的B0执行/分析模块，不修改既有Stage0.2/0.3/0.4测量模块或封存包。执行层冻结计划/输入/源码、逐worker资源监测、两阶段checkpoint；分析层只生成描述表图与机制证据。旧执行器completed+blocker未停止缺陷已保留，批次关闭后修复；新源码不可恢复旧计划。正式覆盖Gate仍由原协议readiness约束。依据：`code/src/riskprop/stage_0_5_exploratory_response.py`、`code/src/riskprop/stage_0_5_exploratory_analysis.py`、docs/STAGE_0_5_TASK_0_5_4B0_EXPLORATORY_RESPONSE_DIAGNOSTICS.md。
+
+## 2026-10-19 B1隔离执行层
+
+独立胶囊复制最小代码闭包与摘要白名单；-S避免环境.pth，Python审计限制文件/进程/网络，native/OS覆盖有限。父监督器以退出码+工程blocker及资源/SHA决定停止，全部后续not_attempted。冻结执行/测量与可修复描述renderer分离；不修改旧B0/正式测量层。依据：`docs/STAGE_0_5_TASK_0_5_4B1_BOUNDARY_BOTTLENECK_CONTRAST.md`、`evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/`中的preflight、execution_stop_observation、numerical_stop_diagnostic、queue_diagnostics、run_manifest和SHA256SUMS。

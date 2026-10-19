@@ -1,0 +1,21 @@
+{
+  "actual_implementation": "all changing-speed same-edge/lane .05s edges included, including stopping edges",
+  "affected_files": [
+    "code/src/riskprop/stage_0_5_boundary_bottleneck.py::run_worker"
+  ],
+  "blocker_retained": true,
+  "conflict": "signed internal vNext stopping branch cannot universally be reconstructed from nonnegative observed terminal speed; actual residual cause not proven from retained max-only .05s audit",
+  "documented_intent": "independent ballistic displacement check using observed endpoint speeds",
+  "evidence": {
+    "checks": 78495,
+    "frozen_threshold_m": 1e-06,
+    "max_abs_residual_m": 0.0013318918382596158,
+    "official_source": "https://github.com/eclipse-sumo/sumo/blob/v1_26_0/src/microsim/MSVehicle.cpp#L3510",
+    "run_id": "b1_C_s20261019",
+    "runtime_option_ballistic": true
+  },
+  "needed": "record anomalous .05s edges and stop-branch information; prospectively validate stopping-aware audit before next plan",
+  "no_rerun": true,
+  "status": "Awaiting Researcher Decision",
+  "threshold_not_relaxed": true
+}

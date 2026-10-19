@@ -47,6 +47,7 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         "RES-STAGE-0.5-CALIBRATION-READINESS-V1": [],
         "RES-STAGE-0.5-CALIBRATION-GAPS-V1": [],
         "RES-STAGE-0.5-EXPLORATORY-RESPONSE-V1": [],
+        "RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1": [],
         "RES-STAGE-0.6-PRELOCK-V2": [],
         "RES-PROTOCOL-READINESS-V1": [
             (
@@ -218,6 +219,26 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
     ):
         pairs["RES-STAGE-0.5-EXPLORATORY-RESPONSE-V1"].append(
             (f"code/outputs/formal/calibration/stage_0_5_exploratory_response_v1/{name}", name)
+        )
+    for name in (
+        "analysis_reference_access_audit.json", "audit.json", "boundary_condition_manifest.json",
+        "config.json", "controlled_access_audit.json", "data_isolation_preflight.json",
+        "engineering_input_bundle.json", "execution_guard_audit.json", "execution_ledger.json",
+        "execution_stop_observation.json", "experiment_plan.json", "figure_index.json",
+        "fixed_parameter_manifest.json", "fleet_and_initialization_audit.json", "following_risk_diagnostics.json",
+        "manifest.json", "mechanism_hypothesis_matrix.json", "network_variant_manifest.json",
+        "numerical_method_audit.json", "numerical_stop_diagnostic.json", "paired_input_contract_audit.json",
+        "phase1_checkpoint.json", "plan_revision_audit.json", "PLAN_SHA256", "preparation_manifest.json",
+        "prior_v1_execution_ledger.json", "prior_v1_experiment_plan.json", "prior_v1_summary.json",
+        "prior_v1_worker_b1_A_s20261019.json", "provenance.json", "queue_diagnostics.json",
+        "real_reference_summary.json", "real_strata_summary.json", "report.md", "researcher_decision_matrix.json",
+        "run_manifest.json", "run_metrics.csv", "runtime_budget_audit.json", "SHA256SUMS",
+        "source_access_audit.json", "source_manifest.json", "source_staging_manifest.json",
+        "test_record.json", "test_scope_audit.json", "time_bins_60s.csv", "time_series_5s.csv",
+        "traffic_conservation_audit.json", "traffic_state_comparison.json",
+    ):
+        pairs["RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1"].append(
+            (f"code/outputs/formal/calibration/stage_0_5_boundary_bottleneck_v2/summary/{name}", name)
         )
     # The Stage 0.5.3 measurement probe package is exported under the same result id
     # in its own subdirectory so that the two engineering fixtures stay distinguishable.

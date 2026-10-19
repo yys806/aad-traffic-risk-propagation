@@ -142,3 +142,14 @@ Agreed：具有明确字段证据的诊断片段可作为候选事件的保守�
 - 正式Stage0.5.4-B/0.5.5、Protocol Lock、Stage I均未授权；Gate/readiness/科学容差状态不变。诊断建议停在研究者决策节点。
 
 授权依据：研究者本轮AAD-0.5.4-B0任务书；执行事实另见报告与结果，不写入本条作为批准参数。
+
+
+## 2026-10-19 — B0有限证据保留与B1机制对照授权
+
+状态：`Approved Research Decision`，依据研究者AAD-0.5.4-B1任务书，仅批准以下范围。
+
+- 保留B0的19次运行作为有限、描述性探索证据；不接受B0任务级数据隔离验收。B0 `task_data_isolation_accepted=false`、验证窗口物化数`Unknown`历史状态不变，不追溯改成0，不重新打开历史全源产物核查行数。
+- B0计划/19次运行早于违规回归，之后没有新的参数或容差选择；该时间顺序支持有限保留，不授予正式校准或科学验收资格。4次未运行保留，不补跑，不覆盖B0计划/封存结果。
+- 先完成B1白名单执行环境、来源拒绝负面测试、预检查和停止机制整改，再执行独立计划的固定驾驶参数机制对照。允许开放基准、到达过程、下游供给和最小3→2结构；新结果ID和网络/边界版本独立，默认最多8次，每次最多600s，条件性第二seed。
+- 本轮Krauss/车型/时间/需求/瓶颈数值属于工程候选固定项，不批准为真实驾驶参数或真实US-101道路模型。不得根据输出调整瓶颈、P2规则或参数，不自动执行第二需求矩阵。
+- Stage0.5 Gate仍pending_simulation_sample，scientific_claim_eligible=false、正式0.5.4-B readiness=false、reality coverage=false；科学容差Tolerance Not Yet Justified、Energy Distance上界Not Identifiable；Protocol Lock、0.5.5、Stage I/II均未授权。

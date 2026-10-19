@@ -1,0 +1,84 @@
+{
+  "engineering_candidates_only": true,
+  "fixed": {
+    "accel": 2.6,
+    "actionStepLength": 0.1,
+    "apparentDecel": 4.5,
+    "carFollowModel": "Krauss",
+    "communication_enabled": false,
+    "decel": 4.5,
+    "emergencyDecel": 9.0,
+    "information_adoption_enabled": false,
+    "internal_step_s": 0.05,
+    "laneChangeModel": "LC2013",
+    "maxSpeed": 27.78,
+    "minGap": 2.5,
+    "ramp_demand": 0,
+    "recorded_step_s": 0.1,
+    "sigma": 0.5,
+    "sigmaStep": 1.0,
+    "source_risk_treatment_enabled": false,
+    "speedDev": 0.0,
+    "speedFactor": 1.0,
+    "step_method_ballistic": true,
+    "tau": 1.0,
+    "threads": 1
+  },
+  "fleet": [
+    {
+      "code": 1,
+      "length_m": 2.4384,
+      "share": 0.009555661729574774,
+      "vClass": "motorcycle"
+    },
+    {
+      "code": 2,
+      "length_m": 4.4196,
+      "share": 0.9672718585762065,
+      "vClass": "passenger"
+    },
+    {
+      "code": 3,
+      "length_m": 10.009694845360826,
+      "share": 0.023172479694218824,
+      "vClass": "truck"
+    }
+  ],
+  "paired_input_contract": {
+    "actual_insertions_not_assumed_equal": true,
+    "capacity_matched": false,
+    "observation_three_lanes_verified": true,
+    "passed": true,
+    "plan_sha256": "13db11847d406b3fd2f30f83b52640ee4d5f43a3aff2692933dc04cdf636b135",
+    "runs": [
+      {
+        "changed_arrival_only": false,
+        "planned_vehicles": 823,
+        "run_id": "b1_A_s20261019",
+        "same_desired_speed_and_behaviour": true,
+        "same_ids_types_lengths_rules": true
+      },
+      {
+        "changed_arrival_only": true,
+        "planned_vehicles": 823,
+        "run_id": "b1_B_s20261019",
+        "same_desired_speed_and_behaviour": true,
+        "same_ids_types_lengths_rules": true
+      },
+      {
+        "changed_arrival_only": false,
+        "planned_vehicles": 823,
+        "run_id": "b1_C_s20261019",
+        "same_desired_speed_and_behaviour": true,
+        "same_ids_types_lengths_rules": true
+      },
+      {
+        "changed_arrival_only": false,
+        "planned_vehicles": 823,
+        "run_id": "b1_D_s20261019",
+        "same_desired_speed_and_behaviour": true,
+        "same_ids_types_lengths_rules": true
+      }
+    ]
+  }
+}

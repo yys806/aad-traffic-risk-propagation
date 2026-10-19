@@ -42,3 +42,7 @@ run_stage_0_2_final_closure.py执行全源检查；stage_0_2_closure_analysis.py
 ## 2026-10-18 B0模块
 
 `stage_0_5_exploratory_response.py`负责有界计划、SHA冻结、守卫摘要输入、TraCI观测、单参数配对、资源/守恒/测量检查与停止；`stage_0_5_exploratory_analysis.py`负责固定时片、全批次表图、原A+初态复用与来源追踪。入口`code/scripts/run_stage_0_5_exploratory_response.py`；测试`code/tests/test_stage_0_5_exploratory_response.py`。16个边界暴露与原compute_exposure等价，停止调度修复有集成回归。未改变既有科学测量模块。
+
+## 2026-10-19 B1模块
+
+`stage_0_5_b1_isolation.py`为摘要/路径/角色/SHA与Python审计；`stage_0_5_boundary_bottleneck.py`为胶囊、固定机制、TraCI、守恒及停止；`stage_0_5_b1_analysis.py`为分域表图、内外队列和便携包。入口run/finalize_stage_0_5_boundary_bottleneck.py，verify_stage_0_5_boundary_evidence.py纯Git核验；两个B1测试文件。依据：`docs/STAGE_0_5_TASK_0_5_4B1_BOUNDARY_BOTTLENECK_CONTRAST.md`、`evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/`中的preflight、execution_stop_observation、numerical_stop_diagnostic、queue_diagnostics、run_manifest和SHA256SUMS。
