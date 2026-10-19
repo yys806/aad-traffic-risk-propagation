@@ -1,0 +1,70 @@
+{
+  "runs": [
+    {
+      "run_id": "motion_005",
+      "config": "inputs/motion_005.sumocfg",
+      "network": "inputs/straight/micro.net.xml",
+      "demand": "inputs/motion_005.rou.xml",
+      "step_s": 0.05,
+      "duration_s": 30.0,
+      "seed": 20261019,
+      "expected_ordinary_stop": false,
+      "expected_coordinate_transition": false
+    },
+    {
+      "run_id": "stop_restart_005",
+      "config": "inputs/stop_restart_005.sumocfg",
+      "network": "inputs/straight/micro.net.xml",
+      "demand": "inputs/stop_restart_005.rou.xml",
+      "step_s": 0.05,
+      "duration_s": 30.0,
+      "seed": 20261019,
+      "expected_ordinary_stop": true,
+      "expected_coordinate_transition": false
+    },
+    {
+      "run_id": "stop_restart_010",
+      "config": "inputs/stop_restart_010.sumocfg",
+      "network": "inputs/straight/micro.net.xml",
+      "demand": "inputs/stop_restart_010.rou.xml",
+      "step_s": 0.1,
+      "duration_s": 30.0,
+      "seed": 20261019,
+      "expected_ordinary_stop": true,
+      "expected_coordinate_transition": false
+    },
+    {
+      "run_id": "transition_005",
+      "config": "inputs/transition_005.sumocfg",
+      "network": "inputs/transition/micro.net.xml",
+      "demand": "inputs/transition_005.rou.xml",
+      "step_s": 0.05,
+      "duration_s": 30.0,
+      "seed": 20261019,
+      "expected_ordinary_stop": false,
+      "expected_coordinate_transition": true
+    }
+  ],
+  "fixed": {
+    "carFollowModel": "Krauss",
+    "tau": 1.0,
+    "minGap": 2.5,
+    "accel": 2.6,
+    "decel": 4.5,
+    "apparentDecel": 4.5,
+    "emergencyDecel": 9.0,
+    "sigma": 0.5,
+    "maxSpeed": 27.78,
+    "speedFactor": 1.0,
+    "speedDev": 0.0,
+    "actionStepLength": 0.1,
+    "sigmaStep": 1.0,
+    "laneChangeModel": "LC2013",
+    "length": 5.0
+  },
+  "mode": "numerical_observation_fixture_only",
+  "no_risk_experiment": true,
+  "P2_computed": false,
+  "driving_parameter_search": false,
+  "real_data_inputs": false
+}

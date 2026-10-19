@@ -74,3 +74,7 @@ formal_risk_measurement.v2与历史0.1s提取/线性指标隔离；正式固定�
 ## 2026-10-19 B1隔离执行层
 
 独立胶囊复制最小代码闭包与摘要白名单；-S避免环境.pth，Python审计限制文件/进程/网络，native/OS覆盖有限。父监督器以退出码+工程blocker及资源/SHA决定停止，全部后续not_attempted。冻结执行/测量与可修复描述renderer分离；不修改旧B0/正式测量层。依据：`docs/STAGE_0_5_TASK_0_5_4B1_BOUNDARY_BOTTLENECK_CONTRAST.md`、`evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/`中的preflight、execution_stop_observation、numerical_stop_diagnostic、queue_diagnostics、run_manifest和SHA256SUMS。
+
+## B1.1 独立测量层（2026-10-19）
+
+新增stopping_contract分支/全边轻筛，queue_contract观测与资格分层；contract_fixtures提供先验合成真值，contract_analysis只打包描述。run_stage_0_5_stopping_spillback复用B1最小-S胶囊和停止控制，冻结源码/输入后运行至多4个微型fixture。旧B1执行器、正式TTC/P2和封存状态均未修改。精确停车仍Pending，队列候选未获科学批准；见B1.1报告。

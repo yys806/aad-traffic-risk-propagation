@@ -84,3 +84,7 @@ B0受控实验数据流与验证执行须分开：根全量pytest会启用历史
 ## 2026-10-19 B1数据流
 
 A+三个封存摘要→预声明来源/SHA→CalibrationValidationGuard→两窗口投影及车型候选→-S胶囊→冻结A/B/C/D输入→无消息SUMO→本地全状态/交通帧/完整TTC/P2→内外队列分账/200m三车道局部量→轻量摘要与工程XML压缩bundle。额外描述分层摘要另有分析用途守卫。无第三窗口/holdout/历史全源产物复制或读取；OS绝对零访问不能认证。B1（RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1）按阻断提前结束：V1失败A后7次未启动，V2 A有效/B警告/C阻断/D未启动，累计4次尝试；无补跑或新seed。A/B局部均速27.1088/26.5152m/s、密度16.3208/16.8197、低速0；C记录2.4007m/s、93.8653veh/km/lane、低速80.1719%、末期未服务252，但停车位移检查与冻结回溢资格阻断，不能作为有效校准样本。D只有静态/空加载检查，动态未知。 依据：`docs/STAGE_0_5_TASK_0_5_4B1_BOUNDARY_BOTTLENECK_CONTRAST.md`、`evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/`中的preflight、execution_stop_observation、numerical_stop_diagnostic、queue_diagnostics、run_manifest和SHA256SUMS。
+
+## B1.1 数据流（2026-10-19）
+
+具名六个历史B1元数据+固定官方SUMO1.26源码→角色/SHA核验→独立胶囊；无NGSIM状态/历史全源/旧C完整状态输入。先解析/合成测试→冻结protocol/测试真值/源码/XML SHA→4个30s上限微型fixture→全边位移统计与有界异常→本地完整状态、Git轻量summary。队列真值独立合成，不在旧C上调阈值；全量回归只在无本地数据的Git克隆，skip不是数据验证通过。

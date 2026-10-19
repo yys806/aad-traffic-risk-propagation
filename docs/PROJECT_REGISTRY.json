@@ -117,12 +117,24 @@
     "code/tests/test_stage_0_5_boundary_bottleneck.py",
     "code/tests/test_stage_0_5_b1_evidence.py",
     "docs/STAGE_0_5_TASK_0_5_4B1_BOUNDARY_BOTTLENECK_CONTRAST.md",
-    "docs/plans/2026-10-19-stage-0-5-4b1.md"
+    "docs/plans/2026-10-19-stage-0-5-4b1.md",
+    "code/src/riskprop/stage_0_5_stopping_contract.py",
+    "code/src/riskprop/stage_0_5_queue_contract.py",
+    "code/src/riskprop/stage_0_5_contract_fixtures.py",
+    "code/src/riskprop/stage_0_5_contract_analysis.py",
+    "code/scripts/run_stage_0_5_stopping_spillback.py",
+    "code/scripts/verify_stage_0_5_stopping_evidence.py",
+    "code/tests/test_stage_0_5_stopping_contract.py",
+    "code/tests/test_stage_0_5_queue_contract.py",
+    "code/tests/test_stage_0_5_b11_evidence.py",
+    "docs/STAGE_0_5_TASK_0_5_4B1_1_STOPPING_AND_SPILLBACK_CONTRACT.md",
+    "docs/plans/2026-10-19-stage-0-5-4b1-1.md",
+    "code/scripts/finalize_stage_0_5_stopping_spillback.py"
   ],
   "current": {
     "active_experiment_id": "stage_0_5",
-    "active_task": "AAD-0.5.4-B1 closed early under engineering stop rules; A/B valid, C blocked, D not attempted; researcher decision node.",
-    "why_now": "B1 guarded capsule and stop tests pass. Fixed-parameter C records internal congestion but fails stopping displacement and frozen spillback qualification. Do not start formal calibration; first review stopping/queue observation contract. B0 retained limited descriptive only, task isolation false/Unknown.",
+    "active_task": "AAD-0.5.4-B1.1 independent stopping/queue measurement repair completed; exact terminal-stop equivalence pending; researcher decision node.",
+    "why_now": "Official SUMO1.26.0 source and 4 micro fixtures validate exact normal branches and expose stop observability limits. Queue candidates tested on14 independent truths, thresholds unapproved. Preserve B1 C blockers/D not attempted; no B1.2 or formal calibration.",
     "next_decision_owner": "researcher",
     "portable_gate_paths": [
       "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",
@@ -134,7 +146,8 @@
       "evidence/results/RES-STAGE-0.5-CALIBRATION-READINESS-V1/audit.json",
       "evidence/results/RES-STAGE-0.5-CALIBRATION-GAPS-V1/audit.json",
       "evidence/results/RES-STAGE-0.5-EXPLORATORY-RESPONSE-V1/audit.json",
-      "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/audit.json"
+      "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/audit.json",
+      "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/audit.json"
     ],
     "local_gate_paths": [
       "code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r4/scientific_gate_report.json",
@@ -144,7 +157,8 @@
       "code/outputs/formal/calibration/stage_0_5_calibration_readiness_v1/audit.json",
       "code/outputs/formal/calibration/stage_0_5_calibration_gaps_v1_final/audit.json",
       "code/outputs/formal/calibration/stage_0_5_exploratory_response_v1/audit.json",
-      "code/outputs/formal/calibration/stage_0_5_boundary_bottleneck_v2/summary/audit.json"
+      "code/outputs/formal/calibration/stage_0_5_boundary_bottleneck_v2/summary/audit.json",
+      "code/outputs/formal/calibration/stage_0_5_stopping_spillback_v1/summary/audit.json"
     ]
   },
   "experiments": [
@@ -384,7 +398,11 @@
         "code/src/riskprop/stage_0_5_exploratory_analysis.py",
         "code/src/riskprop/stage_0_5_boundary_bottleneck.py",
         "code/src/riskprop/stage_0_5_b1_isolation.py",
-        "code/src/riskprop/stage_0_5_b1_analysis.py"
+        "code/src/riskprop/stage_0_5_b1_analysis.py",
+        "code/src/riskprop/stage_0_5_stopping_contract.py",
+        "code/src/riskprop/stage_0_5_queue_contract.py",
+        "code/src/riskprop/stage_0_5_contract_fixtures.py",
+        "code/src/riskprop/stage_0_5_contract_analysis.py"
       ],
       "entrypoints": [
         "code/scripts/prepare_stage_0_5_real_reference.py",
@@ -402,7 +420,10 @@
         "code/scripts/b1_guard_probe.py",
         "code/scripts/b1_test_entry.py",
         "code/scripts/finalize_stage_0_5_boundary_bottleneck.py",
-        "code/scripts/verify_stage_0_5_boundary_evidence.py"
+        "code/scripts/verify_stage_0_5_boundary_evidence.py",
+        "code/scripts/run_stage_0_5_stopping_spillback.py",
+        "code/scripts/verify_stage_0_5_stopping_evidence.py",
+        "code/scripts/finalize_stage_0_5_stopping_spillback.py"
       ],
       "test_paths": [
         "code/tests/test_simulation_real_coverage.py",
@@ -410,7 +431,10 @@
         "code/tests/test_stage_0_5_calibration_gaps.py",
         "code/tests/test_stage_0_5_exploratory_response.py",
         "code/tests/test_stage_0_5_boundary_bottleneck.py",
-        "code/tests/test_stage_0_5_b1_evidence.py"
+        "code/tests/test_stage_0_5_b1_evidence.py",
+        "code/tests/test_stage_0_5_stopping_contract.py",
+        "code/tests/test_stage_0_5_queue_contract.py",
+        "code/tests/test_stage_0_5_b11_evidence.py"
       ],
       "configuration": "R2 real reference plus two no_message_baseline generic-highway engineering fixtures (baseline_mixed_demand, measurement_probe_queue_stop); US-101 primary, Lankershim auxiliary entry-only, pNEUMA urban kinematics entry-only; all network/demand/vType/behaviour/time settings are engineering_fixture_only",
       "parameters": {
@@ -462,7 +486,13 @@
         "b1_scientific_claim_eligible": false,
         "b0_task_data_isolation_accepted": false,
         "b0_validation_rows_materialised": "Unknown",
-        "reality_coverage_accepted": false
+        "reality_coverage_accepted": false,
+        "stopping_spillback_contract_result_id": "RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1",
+        "b11_micro_runs": 4,
+        "b11_exact_normal_motion_verified": true,
+        "b11_exact_stopping_equivalence": "Pending Numerical Equivalence",
+        "b11_queue_thresholds_scientifically_approved": false,
+        "b1_2_started": false
       },
       "data_version": "RES-STAGE-0.5-REAL-REF-R2; Stage 0.2 R4 four states + final_r1 P2 + Stage 0.3 R2 canonical/R3 summaries",
       "model": "deterministic simulation-to-real coverage audit",
@@ -474,7 +504,8 @@
         "RES-STAGE-0.5-CALIBRATION-READINESS-V1",
         "RES-STAGE-0.5-CALIBRATION-GAPS-V1",
         "RES-STAGE-0.5-EXPLORATORY-RESPONSE-V1",
-        "RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1"
+        "RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1",
+        "RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1"
       ],
       "core_metrics": [
         "formal_input_manifest",
@@ -512,7 +543,7 @@
         "source_time_coverage",
         "density_scaled_engineering_cost"
       ],
-      "current_conclusion": "B1 controlled-summary access and synthetic stop/isolation tests pass. A/B free-flow; C600s records dense low-speed on-road queue before outside backlog, but is engineering-blocked by stopping displacement audit and frozen spillback qualification; D not attempted. No structural contrast or formal calibration readiness. Researcher retains B0 limited descriptive evidence without accepting B0 isolation. Formal Gate remains pending_simulation_sample.",
+      "current_conclusion": "B1.1 exact normal branches verified (1363 edges,max1.4211e-14m);2 stop edges interval-only,1 coordinate transition not evaluable.14 synthetic queue cases distinguish observations/qualifications with candidate thresholds. B1 C blockers/D not attempted and B0 isolation false/Unknown preserved. No formal calibration readiness.",
       "gate": {
         "status": "pending_simulation_sample",
         "portable_path": "evidence/results/RES-STAGE-0.5-REAL-REF-R2/audit.json"
@@ -2065,6 +2096,69 @@
       "gate_status": "pending_simulation_sample",
       "paper_locations": [
         "docs/STAGE_0_5_TASK_0_5_4B1_BOUNDARY_BOTTLENECK_CONTRAST.md"
+      ],
+      "scientific_claim_eligible": false
+    },
+    {
+      "id": "RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1",
+      "experiment_id": "stage_0_5",
+      "name": "AAD-0.5.4-B1.1 independent stopping/spillback measurement contract",
+      "status": "verified_scoped_contract_candidates_exact_stopping_pending",
+      "portable_evidence_paths": [
+        "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/audit.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/controlled_access_audit.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/data_isolation_preflight.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/displacement_branch_contract.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/displacement_test_matrix.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/execution_ledger.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/experiment_plan.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/future_experiment_preconditions.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/git_source_binding_audit.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/historical_b1_status_preservation.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/historical_source_manifest.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/manifest.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/micro_fixture_manifest.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/micro_input_bundle.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/micro_sumo_numerical_audit.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/official_source_manifest.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/old_new_method_comparison.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/PLAN_SHA256",
+        "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/provenance.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/queue_observation_contract.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/report.md",
+        "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/runtime_budget_audit.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/SHA256SUMS",
+        "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/source_staging_manifest.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/spillback_qualification_candidates.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/stopping_source_audit.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/synthetic_queue_test_matrix.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/synthetic_queue_truth.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/test_record.json"
+      ],
+      "local_artifact_paths": [
+        "code/outputs/formal/calibration/stage_0_5_stopping_spillback_v1"
+      ],
+      "code_version_source": "code/src/riskprop/stage_0_5_stopping_contract.py; code/src/riskprop/stage_0_5_queue_contract.py; code/src/riskprop/stage_0_5_contract_fixtures.py; code/src/riskprop/stage_0_5_contract_analysis.py; code/scripts/run_stage_0_5_stopping_spillback.py; code/scripts/verify_stage_0_5_stopping_evidence.py; code/tests/test_stage_0_5_stopping_contract.py; code/tests/test_stage_0_5_queue_contract.py; code/tests/test_stage_0_5_b11_evidence.py; frozen source hashes in experiment_plan/provenance; code/scripts/finalize_stage_0_5_stopping_spillback.py",
+      "configuration_source": "displacement_branch_contract.json;queue_observation_contract.json;experiment_plan.json/PLAN_SHA256",
+      "data_version_source": "independent synthetic truth;four micro fixtures;SHA-bound official SUMO1.26 source and six historical B1 metadata only;no real trajectory inputs",
+      "core_metrics": {
+        "micro_runs": 4,
+        "observed_adjacent_edges": 1366,
+        "exact_evaluable_edges": 1363,
+        "bounded_stop_edges": 2,
+        "coordinate_transition_not_evaluable": 1,
+        "max_exact_abs_residual_m": 1.4210854715202004e-14,
+        "retained_exact_tolerance_m": 1e-06,
+        "synthetic_queue_cases": 14,
+        "exact_stopping": "Pending Numerical Equivalence",
+        "scientific_thresholds_approved": false,
+        "B1_C_status": "completed_with_engineering_blocker",
+        "B1_D_status": "not_attempted"
+      },
+      "current_conclusion": "B1.1 exact normal branches verified (1363 edges,max1.4211e-14m);2 stop edges interval-only,1 coordinate transition not evaluable.14 synthetic queue cases distinguish observations/qualifications with candidate thresholds. B1 C blockers/D not attempted and B0 isolation false/Unknown preserved. No formal calibration readiness.",
+      "gate_status": "pending_simulation_sample",
+      "paper_locations": [
+        "docs/STAGE_0_5_TASK_0_5_4B1_1_STOPPING_AND_SPILLBACK_CONTRACT.md"
       ],
       "scientific_claim_eligible": false
     }

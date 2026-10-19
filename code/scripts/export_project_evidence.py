@@ -48,6 +48,7 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         "RES-STAGE-0.5-CALIBRATION-GAPS-V1": [],
         "RES-STAGE-0.5-EXPLORATORY-RESPONSE-V1": [],
         "RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1": [],
+        "RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1": [],
         "RES-STAGE-0.6-PRELOCK-V2": [],
         "RES-PROTOCOL-READINESS-V1": [
             (
@@ -239,6 +240,20 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
     ):
         pairs["RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1"].append(
             (f"code/outputs/formal/calibration/stage_0_5_boundary_bottleneck_v2/summary/{name}", name)
+        )
+    for name in (
+        "audit.json", "controlled_access_audit.json", "data_isolation_preflight.json",
+        "displacement_branch_contract.json", "displacement_test_matrix.json", "execution_ledger.json",
+        "experiment_plan.json", "future_experiment_preconditions.json", "git_source_binding_audit.json", "historical_b1_status_preservation.json",
+        "historical_source_manifest.json", "micro_fixture_manifest.json", "micro_input_bundle.json",
+        "micro_sumo_numerical_audit.json", "official_source_manifest.json", "old_new_method_comparison.json",
+        "PLAN_SHA256", "provenance.json", "queue_observation_contract.json", "runtime_budget_audit.json",
+        "source_staging_manifest.json", "spillback_qualification_candidates.json", "stopping_source_audit.json",
+        "synthetic_queue_test_matrix.json", "synthetic_queue_truth.json", "test_record.json",
+        "report.md", "manifest.json", "SHA256SUMS",
+    ):
+        pairs["RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1"].append(
+            (f"code/outputs/formal/calibration/stage_0_5_stopping_spillback_v1/summary/{name}", name)
         )
     # The Stage 0.5.3 measurement probe package is exported under the same result id
     # in its own subdirectory so that the two engineering fixtures stay distinguishable.

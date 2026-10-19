@@ -153,3 +153,12 @@ Agreed：具有明确字段证据的诊断片段可作为候选事件的保守�
 - 先完成B1白名单执行环境、来源拒绝负面测试、预检查和停止机制整改，再执行独立计划的固定驾驶参数机制对照。允许开放基准、到达过程、下游供给和最小3→2结构；新结果ID和网络/边界版本独立，默认最多8次，每次最多600s，条件性第二seed。
 - 本轮Krauss/车型/时间/需求/瓶颈数值属于工程候选固定项，不批准为真实驾驶参数或真实US-101道路模型。不得根据输出调整瓶颈、P2规则或参数，不自动执行第二需求矩阵。
 - Stage0.5 Gate仍pending_simulation_sample，scientific_claim_eligible=false、正式0.5.4-B readiness=false、reality coverage=false；科学容差Tolerance Not Yet Justified、Energy Distance上界Not Identifiable；Protocol Lock、0.5.5、Stage I/II均未授权。
+
+## 2026-10-19 — B1.1有限测量整改授权
+
+状态：`Approved Research Decision`仅指研究者B1.1任务书中的授权范围，非新阈值或模型批准。
+
+- B1 A/B保留；C带两项原阻断保留；D not_attempted；B0有限描述、隔离false/验证物化Unknown不变。不得覆盖封存包、重跑C、补D/第二seed或追溯验收。
+- 允许官方SUMO1.26源码审计、独立解析/合成测量测试、最多4个每次不超过60s微型工程fixture；继续B1胶囊/白名单/SHA/分范围测试，无受限真实数据访问。
+- 未来位移/队列契约可以形成Candidate；不因测试通过批准容差、间距、持续时间、道路/边界方案。精确停车缺口和实际执行事实见报告，不作为本条已批准结论。
+- B1.2网络/供给/seed/时长/矩阵另批；正式0.5.4-B、0.5.5、Protocol Lock及StageI/II未授权，Stage0.5各科学状态不变。

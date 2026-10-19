@@ -68,3 +68,7 @@ B0入口：`docs/STAGE_0_5_TASK_0_5_4B0_EXPLORATORY_RESPONSE_DIAGNOSTICS.md`、`
 ## B1隔离与边界机制入口
 
 报告`docs/STAGE_0_5_TASK_0_5_4B1_BOUNDARY_BOTTLENECK_CONTRAST.md`；执行`code/scripts/run_stage_0_5_boundary_bottleneck.py`；隔离/停止/分析模块`code/src/riskprop/stage_0_5_boundary_bottleneck.py`、`code/src/riskprop/stage_0_5_b1_isolation.py`、`code/src/riskprop/stage_0_5_b1_analysis.py`；便携验证`code/scripts/verify_stage_0_5_boundary_evidence.py`。旧批次封闭，仅已授权新计划可执行。B1（RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1）按阻断提前结束：V1失败A后7次未启动，V2 A有效/B警告/C阻断/D未启动，累计4次尝试；无补跑或新seed。A/B局部均速27.1088/26.5152m/s、密度16.3208/16.8197、低速0；C记录2.4007m/s、93.8653veh/km/lane、低速80.1719%、末期未服务252，但停车位移检查与冻结回溢资格阻断，不能作为有效校准样本。D只有静态/空加载检查，动态未知。
+
+## B1.1 独立测量契约入口
+
+报告：`docs/STAGE_0_5_TASK_0_5_4B1_1_STOPPING_AND_SPILLBACK_CONTRACT.md`；计划：`docs/plans/2026-10-19-stage-0-5-4b1-1.md`；入口：`code/scripts/run_stage_0_5_stopping_spillback.py`；便携校验：`code/scripts/verify_stage_0_5_stopping_evidence.py`。结果`RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1`；精确停车Pending、队列阈值Candidate、旧B1状态不变。

@@ -1,0 +1,522 @@
+{
+  "preflight": {
+    "passed": true,
+    "last_test": "test_1792383804517403400"
+  },
+  "all_preflight_attempts": [
+    {
+      "command": [
+        "D:\\miniconda\\python.exe",
+        "-S",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\scripts\\b1_test_entry.py",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_stopping_contract.py",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_boundary_bottleneck.py",
+        "-q",
+        "-c",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\pytest.ini",
+        "--rootdir",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code",
+        "--basetemp",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\test_tmp\\1792383117669501500",
+        "-o",
+        "cache_dir=D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime_cache\\pytest"
+      ],
+      "exit_code": 2,
+      "output": "\n=================================== ERRORS ====================================\n_________ ERROR collecting tests/test_stage_0_5_stopping_contract.py __________\nImportError while importing test module 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_stopping_contract.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nD:\\miniconda\\Lib\\importlib\\__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests\\test_stage_0_5_stopping_contract.py:4: in <module>\n    from riskprop.stage_0_5_stopping_contract import audit_edge, AuditAccumulator, cohort_member\nE   ModuleNotFoundError: No module named 'riskprop.stage_0_5_stopping_contract'\n=========================== short test summary info ===========================\nERROR tests/test_stage_0_5_stopping_contract.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n1 error in 9.39s\n",
+      "test_sha256": {
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_stopping_contract.py": "7c4050bd76842fa4aa7ffb569d59bd263507f920cef61b0058b66dc19f1a6eef",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_boundary_bottleneck.py": "6259c3799fb6fb67e1b2bf1a4c1ec701d2afd582ad6860f398cc8680d191b035"
+      },
+      "access_audit": {
+        "scope": "controlled Python entrypoints",
+        "allowed_open_events": 1799,
+        "denied": [],
+        "os_complete_monitoring": false,
+        "native_file_access_monitored": false,
+        "python_no_site": true,
+        "sanitized_sys_path": [
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\src",
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\dependency_links",
+          "D:\\miniconda\\Lib\\site-packages",
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\scripts",
+          "D:\\miniconda\\python313.zip",
+          "D:\\miniconda\\DLLs",
+          "D:\\miniconda\\Lib",
+          "D:\\miniconda"
+        ],
+        "limitations": [
+          "Python audit events only; native extensions and SUMO reads not OS-traced",
+          "standard-library/package/SUMO/Windows runtime roots are broader than individual dependency files",
+          "same-user administrator can bypass this policy; it is not an adversarial security boundary"
+        ]
+      }
+    },
+    {
+      "command": [
+        "D:\\miniconda\\python.exe",
+        "-S",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\scripts\\b1_test_entry.py",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_stopping_contract.py",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_boundary_bottleneck.py",
+        "-q",
+        "-c",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\pytest.ini",
+        "--rootdir",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code",
+        "--basetemp",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\test_tmp\\1792383221239898700",
+        "-o",
+        "cache_dir=D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime_cache\\pytest"
+      ],
+      "exit_code": 1,
+      "output": ".......F..........................................................       [100%]\n================================== FAILURES ===================================\n_______ test_known_within_step_stop_uses_half_triangle_until_stop[0.05] _______\n\ndt = 0.05\n\n    @pytest.mark.parametrize(\"dt\",[.05,.1,.2])\n    def test_known_within_step_stop_uses_half_triangle_until_stop(dt):\n        # v0=.2, actual braking4 m/s^2 -> stop at.05s and distance.005m.\n        a,b=edge(.2,0,.005,dt)\n        r=audit_edge(a,b,dt,signed_candidate=dict(value=.2-4*dt,origin=\"analytic_input\"))\n        assert r[\"expected_dx_m\"]==pytest.approx(.005)\n>       assert r[\"stop_time_s\"]==pytest.approx(.05)\nE       assert None == 0.05 ± 5.0e-08\nE         \nE         comparison failed\nE         Obtained: None\nE         Expected: 0.05 ± 5.0e-08\n\ntests\\test_stage_0_5_stopping_contract.py:35: AssertionError\n=========================== short test summary info ===========================\nFAILED tests/test_stage_0_5_stopping_contract.py::test_known_within_step_stop_uses_half_triangle_until_stop[0.05]\n1 failed, 65 passed in 10.08s\n",
+      "test_sha256": {
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_stopping_contract.py": "7c4050bd76842fa4aa7ffb569d59bd263507f920cef61b0058b66dc19f1a6eef",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_boundary_bottleneck.py": "6259c3799fb6fb67e1b2bf1a4c1ec701d2afd582ad6860f398cc8680d191b035"
+      },
+      "access_audit": {
+        "scope": "controlled Python entrypoints",
+        "allowed_open_events": 746,
+        "denied": [],
+        "os_complete_monitoring": false,
+        "native_file_access_monitored": false,
+        "python_no_site": true,
+        "sanitized_sys_path": [
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\src",
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\dependency_links",
+          "D:\\miniconda\\Lib\\site-packages",
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\scripts",
+          "D:\\miniconda\\python313.zip",
+          "D:\\miniconda\\DLLs",
+          "D:\\miniconda\\Lib",
+          "D:\\miniconda"
+        ],
+        "limitations": [
+          "Python audit events only; native extensions and SUMO reads not OS-traced",
+          "standard-library/package/SUMO/Windows runtime roots are broader than individual dependency files",
+          "same-user administrator can bypass this policy; it is not an adversarial security boundary"
+        ]
+      }
+    },
+    {
+      "command": [
+        "D:\\miniconda\\python.exe",
+        "-S",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\scripts\\b1_test_entry.py",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_stopping_contract.py",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_queue_contract.py",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_boundary_bottleneck.py",
+        "-q",
+        "-c",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\pytest.ini",
+        "--rootdir",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code",
+        "--basetemp",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\test_tmp\\1792383295276515900",
+        "-o",
+        "cache_dir=D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime_cache\\pytest"
+      ],
+      "exit_code": 2,
+      "output": "\n=================================== ERRORS ====================================\n___________ ERROR collecting tests/test_stage_0_5_queue_contract.py ___________\nImportError while importing test module 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_queue_contract.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\nD:\\miniconda\\Lib\\importlib\\__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests\\test_stage_0_5_queue_contract.py:5: in <module>\n    from riskprop.stage_0_5_queue_contract import observe_queue,qualify_series\nE   ModuleNotFoundError: No module named 'riskprop.stage_0_5_queue_contract'\n=========================== short test summary info ===========================\nERROR tests/test_stage_0_5_queue_contract.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n1 error in 3.16s\n",
+      "test_sha256": {
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_stopping_contract.py": "7c4050bd76842fa4aa7ffb569d59bd263507f920cef61b0058b66dc19f1a6eef",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_queue_contract.py": "2bbe83baa2c548cda7330cca68a014848cd86b5c0d98b90debe182b2642d8601",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_boundary_bottleneck.py": "6259c3799fb6fb67e1b2bf1a4c1ec701d2afd582ad6860f398cc8680d191b035"
+      },
+      "access_audit": {
+        "scope": "controlled Python entrypoints",
+        "allowed_open_events": 641,
+        "denied": [],
+        "os_complete_monitoring": false,
+        "native_file_access_monitored": false,
+        "python_no_site": true,
+        "sanitized_sys_path": [
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\src",
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\dependency_links",
+          "D:\\miniconda\\Lib\\site-packages",
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\scripts",
+          "D:\\miniconda\\python313.zip",
+          "D:\\miniconda\\DLLs",
+          "D:\\miniconda\\Lib",
+          "D:\\miniconda"
+        ],
+        "limitations": [
+          "Python audit events only; native extensions and SUMO reads not OS-traced",
+          "standard-library/package/SUMO/Windows runtime roots are broader than individual dependency files",
+          "same-user administrator can bypass this policy; it is not an adversarial security boundary"
+        ]
+      }
+    },
+    {
+      "command": [
+        "D:\\miniconda\\python.exe",
+        "-S",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\scripts\\b1_test_entry.py",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_stopping_contract.py",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_queue_contract.py",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_boundary_bottleneck.py",
+        "-q",
+        "-c",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\pytest.ini",
+        "--rootdir",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code",
+        "--basetemp",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\test_tmp\\1792383351381907700",
+        "-o",
+        "cache_dir=D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime_cache\\pytest"
+      ],
+      "exit_code": 0,
+      "output": "........................................................................ [ 83%]\n..............                                                           [100%]\n86 passed in 7.90s\n",
+      "test_sha256": {
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_stopping_contract.py": "7c4050bd76842fa4aa7ffb569d59bd263507f920cef61b0058b66dc19f1a6eef",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_queue_contract.py": "2bbe83baa2c548cda7330cca68a014848cd86b5c0d98b90debe182b2642d8601",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_boundary_bottleneck.py": "6259c3799fb6fb67e1b2bf1a4c1ec701d2afd582ad6860f398cc8680d191b035"
+      },
+      "access_audit": {
+        "scope": "controlled Python entrypoints",
+        "allowed_open_events": 718,
+        "denied": [],
+        "os_complete_monitoring": false,
+        "native_file_access_monitored": false,
+        "python_no_site": true,
+        "sanitized_sys_path": [
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\src",
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\dependency_links",
+          "D:\\miniconda\\Lib\\site-packages",
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\scripts",
+          "D:\\miniconda\\python313.zip",
+          "D:\\miniconda\\DLLs",
+          "D:\\miniconda\\Lib",
+          "D:\\miniconda"
+        ],
+        "limitations": [
+          "Python audit events only; native extensions and SUMO reads not OS-traced",
+          "standard-library/package/SUMO/Windows runtime roots are broader than individual dependency files",
+          "same-user administrator can bypass this policy; it is not an adversarial security boundary"
+        ]
+      }
+    },
+    {
+      "command": [
+        "D:\\miniconda\\python.exe",
+        "-S",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\scripts\\b1_test_entry.py",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_stopping_contract.py",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_queue_contract.py",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_boundary_bottleneck.py",
+        "-q",
+        "-c",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\pytest.ini",
+        "--rootdir",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code",
+        "--basetemp",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\test_tmp\\1792383455226992700",
+        "-o",
+        "cache_dir=D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime_cache\\pytest"
+      ],
+      "exit_code": 0,
+      "output": "........................................................................ [ 80%]\n.................                                                        [100%]\n89 passed in 9.19s\n",
+      "test_sha256": {
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_stopping_contract.py": "7c4050bd76842fa4aa7ffb569d59bd263507f920cef61b0058b66dc19f1a6eef",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_queue_contract.py": "fd20b3de949cf8389e6e440fd254510fbe593e587b86a906b85ad3f6c738da3c",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_boundary_bottleneck.py": "6259c3799fb6fb67e1b2bf1a4c1ec701d2afd582ad6860f398cc8680d191b035"
+      },
+      "access_audit": {
+        "scope": "controlled Python entrypoints",
+        "allowed_open_events": 717,
+        "denied": [],
+        "os_complete_monitoring": false,
+        "native_file_access_monitored": false,
+        "python_no_site": true,
+        "sanitized_sys_path": [
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\src",
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\dependency_links",
+          "D:\\miniconda\\Lib\\site-packages",
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\scripts",
+          "D:\\miniconda\\python313.zip",
+          "D:\\miniconda\\DLLs",
+          "D:\\miniconda\\Lib",
+          "D:\\miniconda"
+        ],
+        "limitations": [
+          "Python audit events only; native extensions and SUMO reads not OS-traced",
+          "standard-library/package/SUMO/Windows runtime roots are broader than individual dependency files",
+          "same-user administrator can bypass this policy; it is not an adversarial security boundary"
+        ]
+      }
+    },
+    {
+      "command": [
+        "D:\\miniconda\\python.exe",
+        "-S",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\scripts\\b1_test_entry.py",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_stopping_contract.py",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_queue_contract.py",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_boundary_bottleneck.py",
+        "-q",
+        "-c",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\pytest.ini",
+        "--rootdir",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code",
+        "--basetemp",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\test_tmp\\1792383633450973000",
+        "-o",
+        "cache_dir=D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime_cache\\pytest"
+      ],
+      "exit_code": 0,
+      "output": "........................................................................ [ 80%]\n.................                                                        [100%]\n89 passed in 8.53s\n",
+      "test_sha256": {
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_stopping_contract.py": "7c4050bd76842fa4aa7ffb569d59bd263507f920cef61b0058b66dc19f1a6eef",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_queue_contract.py": "fd20b3de949cf8389e6e440fd254510fbe593e587b86a906b85ad3f6c738da3c",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_boundary_bottleneck.py": "6259c3799fb6fb67e1b2bf1a4c1ec701d2afd582ad6860f398cc8680d191b035"
+      },
+      "access_audit": {
+        "scope": "controlled Python entrypoints",
+        "allowed_open_events": 717,
+        "denied": [],
+        "os_complete_monitoring": false,
+        "native_file_access_monitored": false,
+        "python_no_site": true,
+        "sanitized_sys_path": [
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\src",
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\dependency_links",
+          "D:\\miniconda\\Lib\\site-packages",
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\scripts",
+          "D:\\miniconda\\python313.zip",
+          "D:\\miniconda\\DLLs",
+          "D:\\miniconda\\Lib",
+          "D:\\miniconda"
+        ],
+        "limitations": [
+          "Python audit events only; native extensions and SUMO reads not OS-traced",
+          "standard-library/package/SUMO/Windows runtime roots are broader than individual dependency files",
+          "same-user administrator can bypass this policy; it is not an adversarial security boundary"
+        ]
+      }
+    },
+    {
+      "command": [
+        "D:\\miniconda\\python.exe",
+        "-S",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\scripts\\b1_test_entry.py",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_stopping_contract.py",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_queue_contract.py",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_boundary_bottleneck.py",
+        "-q",
+        "-c",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\pytest.ini",
+        "--rootdir",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code",
+        "--basetemp",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\test_tmp\\1792383673473463200",
+        "-o",
+        "cache_dir=D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime_cache\\pytest"
+      ],
+      "exit_code": 0,
+      "output": "........................................................................ [ 80%]\n.................                                                        [100%]\n89 passed in 8.32s\n",
+      "test_sha256": {
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_stopping_contract.py": "7c4050bd76842fa4aa7ffb569d59bd263507f920cef61b0058b66dc19f1a6eef",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_queue_contract.py": "fd20b3de949cf8389e6e440fd254510fbe593e587b86a906b85ad3f6c738da3c",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_boundary_bottleneck.py": "6259c3799fb6fb67e1b2bf1a4c1ec701d2afd582ad6860f398cc8680d191b035"
+      },
+      "access_audit": {
+        "scope": "controlled Python entrypoints",
+        "allowed_open_events": 717,
+        "denied": [],
+        "os_complete_monitoring": false,
+        "native_file_access_monitored": false,
+        "python_no_site": true,
+        "sanitized_sys_path": [
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\src",
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\dependency_links",
+          "D:\\miniconda\\Lib\\site-packages",
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\scripts",
+          "D:\\miniconda\\python313.zip",
+          "D:\\miniconda\\DLLs",
+          "D:\\miniconda\\Lib",
+          "D:\\miniconda"
+        ],
+        "limitations": [
+          "Python audit events only; native extensions and SUMO reads not OS-traced",
+          "standard-library/package/SUMO/Windows runtime roots are broader than individual dependency files",
+          "same-user administrator can bypass this policy; it is not an adversarial security boundary"
+        ]
+      }
+    },
+    {
+      "command": [
+        "D:\\miniconda\\python.exe",
+        "-S",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\scripts\\b1_test_entry.py",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_stopping_contract.py",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_queue_contract.py",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_boundary_bottleneck.py",
+        "-q",
+        "-c",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\pytest.ini",
+        "--rootdir",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code",
+        "--basetemp",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\test_tmp\\1792383748005475400",
+        "-o",
+        "cache_dir=D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime_cache\\pytest"
+      ],
+      "exit_code": 0,
+      "output": "........................................................................ [ 80%]\n..................                                                       [100%]\n90 passed in 9.51s\n",
+      "test_sha256": {
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_stopping_contract.py": "7c4050bd76842fa4aa7ffb569d59bd263507f920cef61b0058b66dc19f1a6eef",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_queue_contract.py": "85f4e0d37c8a609333012bd1faa4114a568d83d515f3cb0cfebd4cb81d7750ae",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_boundary_bottleneck.py": "6259c3799fb6fb67e1b2bf1a4c1ec701d2afd582ad6860f398cc8680d191b035"
+      },
+      "access_audit": {
+        "scope": "controlled Python entrypoints",
+        "allowed_open_events": 717,
+        "denied": [],
+        "os_complete_monitoring": false,
+        "native_file_access_monitored": false,
+        "python_no_site": true,
+        "sanitized_sys_path": [
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\src",
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\dependency_links",
+          "D:\\miniconda\\Lib\\site-packages",
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\scripts",
+          "D:\\miniconda\\python313.zip",
+          "D:\\miniconda\\DLLs",
+          "D:\\miniconda\\Lib",
+          "D:\\miniconda"
+        ],
+        "limitations": [
+          "Python audit events only; native extensions and SUMO reads not OS-traced",
+          "standard-library/package/SUMO/Windows runtime roots are broader than individual dependency files",
+          "same-user administrator can bypass this policy; it is not an adversarial security boundary"
+        ]
+      }
+    },
+    {
+      "command": [
+        "D:\\miniconda\\python.exe",
+        "-S",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\scripts\\b1_test_entry.py",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_stopping_contract.py",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_queue_contract.py",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_boundary_bottleneck.py",
+        "-q",
+        "-c",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\pytest.ini",
+        "--rootdir",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code",
+        "--basetemp",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\test_tmp\\1792383793830955300",
+        "-o",
+        "cache_dir=D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime_cache\\pytest"
+      ],
+      "exit_code": 0,
+      "output": "........................................................................ [ 79%]\n...................                                                      [100%]\n91 passed in 9.05s\n",
+      "test_sha256": {
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_stopping_contract.py": "894f91524c7b477f0c044c8fa1a714a7716b76f656a714820c5c2d66036abd2e",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_queue_contract.py": "85f4e0d37c8a609333012bd1faa4114a568d83d515f3cb0cfebd4cb81d7750ae",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\tests\\test_stage_0_5_boundary_bottleneck.py": "6259c3799fb6fb67e1b2bf1a4c1ec701d2afd582ad6860f398cc8680d191b035"
+      },
+      "access_audit": {
+        "scope": "controlled Python entrypoints",
+        "allowed_open_events": 717,
+        "denied": [],
+        "os_complete_monitoring": false,
+        "native_file_access_monitored": false,
+        "python_no_site": true,
+        "sanitized_sys_path": [
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\src",
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\dependency_links",
+          "D:\\miniconda\\Lib\\site-packages",
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\scripts",
+          "D:\\miniconda\\python313.zip",
+          "D:\\miniconda\\DLLs",
+          "D:\\miniconda\\Lib",
+          "D:\\miniconda"
+        ],
+        "limitations": [
+          "Python audit events only; native extensions and SUMO reads not OS-traced",
+          "standard-library/package/SUMO/Windows runtime roots are broader than individual dependency files",
+          "same-user administrator can bypass this policy; it is not an adversarial security boundary"
+        ]
+      }
+    }
+  ],
+  "audited_tests": [
+    "test_stage_0_5_stopping_contract.py",
+    "test_stage_0_5_queue_contract.py",
+    "test_stage_0_5_boundary_bottleneck.py"
+  ],
+  "tests_scope": "synthetic fixtures/B1 named metadata and approved code only; no old traffic data",
+  "root_full_pytest_run": false,
+  "full_regression": "Passed in pure Git clone; skipped data tests not passes",
+  "data_related_skips_not_passes": true,
+  "portable_verifier_tests": {
+    "scope": "one explicitly audited synthetic package test file, no traffic lookups",
+    "red_rounds": [
+      "8 failed before verifier existed",
+      "3 failed,8 passed before source binding implementation"
+    ],
+    "final": "11 passed in 0.48s"
+  },
+  "full_regression_attempts": [
+    {
+      "environment": "pure Git snapshot659e58ec, no local datasets/historical outputs",
+      "status": "failed_environment",
+      "passed": 547,
+      "failed": 7,
+      "skipped": 14,
+      "wall_s": 117.75,
+      "reason": "Windows D:/Git/cmd/git.exe launcher failed in nested clone; direct mingw64/bin Git works",
+      "failed_tests": []
+    },
+    {
+      "environment": "pure Git snapshot8c04031d71f6321f2f82f582aa5ca6d2a8e03334; no local data; core.autocrlf=false; direct mingw64/bin Git on PATH",
+      "status": "passed",
+      "passed": 557,
+      "skipped": 14,
+      "wall_s": 132.9,
+      "skips": [
+        "SKIPPED [1] tests\\test_see_v2x_reaudit.py:75: raw sample not present (pure-clone mode)",
+        "SKIPPED [1] tests\\test_simulation_real_coverage.py:377: sealed Stage 0.3 canonical pNEUMA input is not available in this clone",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_1_targeted_validation.py:55: requires sealed local Task 2.5.1 CSV/PDF package; unit tests above remain portable",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_2_key_difference_cases.py:9: requires sealed local Task 2.5.2 CSV/PDF package; excluded from portable Git evidence",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_2_key_difference_cases.py:15: requires sealed local Task 2.5.2 CSV/PDF package; excluded from portable Git evidence",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_2_key_difference_cases.py:23: requires sealed local Task 2.5.2 CSV/PDF package; excluded from portable Git evidence",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_2_key_difference_cases.py:28: requires sealed local Task 2.5.2 CSV/PDF package; excluded from portable Git evidence",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_threshold_validation.py:10: requires sealed local Task 2.5 outputs; excluded from portable Git evidence",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_threshold_validation.py:17: requires sealed local Task 2.5 outputs; excluded from portable Git evidence",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_threshold_validation.py:24: requires sealed local Task 2.5 outputs; excluded from portable Git evidence",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_threshold_validation.py:31: requires sealed local Task 2.5 outputs; excluded from portable Git evidence",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_threshold_validation.py:38: requires sealed local Task 2.5 outputs; excluded from portable Git evidence",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_threshold_validation.py:44: requires sealed local Task 2.5 outputs; excluded from portable Git evidence",
+        "SKIPPED [1] tests\\test_stage_0_5_boundary_bottleneck.py:72: bootstrap contract is exercised by the dedicated -S capsule preflight"
+      ],
+      "skip_interpretation": "13 missing-data test cases not validated;1 bootstrap case instead covered by dedicated -S preflight"
+    }
+  ],
+  "compileall": {
+    "command": "python -m compileall -q code/src code/scripts code/tests",
+    "exit_code": 0
+  },
+  "root_strict_docs": {
+    "status": "blocked_by_preexisting_unrelated_deletion",
+    "path": "doc/literature-notes/zotero_reorg_2026-10-17_execution.json",
+    "untouched": true
+  },
+  "context_consistency_check": {
+    "completed": true,
+    "history_preserved": true,
+    "updated": "state/architecture/data flow/module/experiments/authorization/issues/changelog/registry/indexes",
+    "no_candidate_scientific_approval": true
+  },
+  "pure_git_checks": {
+    "project_docs_strict_require_clean": "passed",
+    "project_docs_pytest": "13 passed in3.72s",
+    "portable_export_verify": "passed",
+    "stopping_package_verify": "passed;24 frozen runtime files +14 XML/config inputs",
+    "compileall": "passed"
+  },
+  "historical_B1_evidence_git_tree": "39524c88a2606709341f3c1b64d1e57f2ff80436",
+  "historical_B1_evidence_unchanged": true
+}

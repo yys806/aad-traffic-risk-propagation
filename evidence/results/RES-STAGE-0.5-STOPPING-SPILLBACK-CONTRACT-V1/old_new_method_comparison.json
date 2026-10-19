@@ -1,0 +1,39 @@
+{
+  "method_counts": {
+    "legacy_grid": {
+      "queue_false_positive": 1,
+      "queue_false_negative": 0,
+      "component_count_mismatch": 3,
+      "front_unknown": 1,
+      "spillback_false_positive": 1,
+      "spillback_false_negative": 0,
+      "spillback_unknown": 1
+    },
+    "grid_candidate": {
+      "queue_false_positive": 0,
+      "queue_false_negative": 0,
+      "component_count_mismatch": 1,
+      "front_unknown": 10,
+      "spillback_false_positive": 0,
+      "spillback_false_negative": 0,
+      "spillback_unknown": 1
+    },
+    "vehicle_graph": {
+      "queue_false_positive": 0,
+      "queue_false_negative": 0,
+      "component_count_mismatch": 0,
+      "front_unknown": 1,
+      "spillback_false_positive": 0,
+      "spillback_false_negative": 0,
+      "spillback_unknown": 1
+    }
+  },
+  "scope": "old instantaneous pooled50m/2vehicle spatial detector versus new candidates; common prospective qualification used for comparison",
+  "original_B1_last60s_25percent_acceptance_not_recomputed": true,
+  "limitations": [
+    "grid candidate still merges separate groups inside one cell",
+    "sparse front legacy point is50m versus synthetic physical rear40m",
+    "zero false negatives in this finite test set is not proof of necessity/sufficiency",
+    "vehicle graph requires exact lane/order/length/gap and conservatively refuses unverified topology"
+  ]
+}

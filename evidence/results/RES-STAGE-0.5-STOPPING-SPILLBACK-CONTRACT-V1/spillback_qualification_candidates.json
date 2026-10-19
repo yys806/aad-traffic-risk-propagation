@@ -1,0 +1,52 @@
+{
+  "config": {
+    "version": "b11-queue-candidate-v1",
+    "status": "Candidate; synthetic demonstration only",
+    "speed_low_mps": 5.0,
+    "stopped_speed_mps": 0.1,
+    "grid_m": 50.0,
+    "cell_low_fraction": 0.5,
+    "minimum_queue_vehicles": 2,
+    "max_net_gap_m": 10.0,
+    "inlet_zone_m": 50.0,
+    "anchor_zone_m": 50.0,
+    "duration_s": 2.0,
+    "snapshot_step_s": 1.0,
+    "position_uncertainty_m": 0.01,
+    "empty_cell_bridging": false,
+    "time_gap_smoothing": false,
+    "cross_lane_merging": false,
+    "threshold_scientific_approval": false,
+    "basis": {
+      "speed": "inherited B1 descriptive5m/s, not a scientific congestion threshold",
+      "grid": "legacy50m retained for comparison, not selected on C",
+      "count": "at least two vehicles to observe a spatial following relation",
+      "gap": "10m=two synthetic5m vehicle lengths; no empirical queue-gap identification",
+      "duration": "two1s intervals/three snapshots; test-scale candidate, not a traffic persistence claim",
+      "inlet": "same physical first50m support as B1; inclusion now uses observed bodies and uncertainty",
+      "uncertainty": "0.01m synthetic coordinate assumption; future mapping precision must be verified"
+    }
+  },
+  "states": [
+    "No On-Road Queue",
+    "On-Road Queue Observed",
+    "Upstream Queue Extension Observed",
+    "Inlet-Adjacent Queue Observed",
+    "Entry Spillback Supported",
+    "Evidence Insufficient"
+  ],
+  "observation": "raw position/speed/lane/incarnation/order/gap/density/stopped/arrival/exit/pending separated from qualification",
+  "entry_support_requires": [
+    "downstream anchored physical queue in same lane/path",
+    "fully observed inlet support",
+    "continuous inlet duration candidate2s",
+    "pending due demand",
+    "independently supplied physical entry-space evidence",
+    "valid arrival manifest/service context/identity/coordinate/time"
+  ],
+  "no_temporal_or_empty_cell_imputation": true,
+  "no_default_cross_lane_merge": true,
+  "absence_of_queue_qualification": "mechanism finding or warning, not itself a physics failure",
+  "quality_error": "measurement invalid; can be an engineering blocker under a future approved plan",
+  "future_thresholds_need_approval": true
+}

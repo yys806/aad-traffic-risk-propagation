@@ -1,0 +1,21 @@
+{
+  "version": "b11-displacement-v1",
+  "status": "Candidate for future scoped audit",
+  "integration": "explicit ballistic",
+  "tolerance_m": 1e-06,
+  "exact_branches": [
+    "normal_motion",
+    "decelerating_without_stop",
+    "starting_from_rest",
+    "already_stopped"
+  ],
+  "stop_exact_requires": "independent signed internal vNext; TraCI mean acceleration cannot supply it",
+  "observed_terminal_stop": "0<=dx<=v0*dt/2 is a necessary consistency interval only; exact Pending Numerical Equivalence",
+  "no_internal_speed_inferred_from_tested_displacement": true,
+  "all_vehicle_lightweight_screen": true,
+  "cohort_modulus": 1,
+  "anomaly_limit": 16,
+  "quantile_limit": 2048,
+  "coordinate_transitions": "not_evaluable",
+  "old_B1_unchanged": true
+}

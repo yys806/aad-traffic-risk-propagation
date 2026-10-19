@@ -46,3 +46,13 @@ run_stage_0_2_final_closure.py执行全源检查；stage_0_2_closure_analysis.py
 ## 2026-10-19 B1模块
 
 `stage_0_5_b1_isolation.py`为摘要/路径/角色/SHA与Python审计；`stage_0_5_boundary_bottleneck.py`为胶囊、固定机制、TraCI、守恒及停止；`stage_0_5_b1_analysis.py`为分域表图、内外队列和便携包。入口run/finalize_stage_0_5_boundary_bottleneck.py，verify_stage_0_5_boundary_evidence.py纯Git核验；两个B1测试文件。依据：`docs/STAGE_0_5_TASK_0_5_4B1_BOUNDARY_BOTTLENECK_CONTRAST.md`、`evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/`中的preflight、execution_stop_observation、numerical_stop_diagnostic、queue_diagnostics、run_manifest和SHA256SUMS。
+
+## B1.1 测量模块与入口
+
+- `code/src/riskprop/stage_0_5_stopping_contract.py`：ballistic分支、终点停车范围、身份/坐标资格、全边最大值与有界异常/哈希分位。
+- `code/src/riskprop/stage_0_5_queue_contract.py`：旧网格/候选分车道网格/车辆物理连接，观测与时间/入口资格分离。
+- `code/src/riskprop/stage_0_5_contract_fixtures.py`：14个独立合成案例与Candidate配置。
+- `code/src/riskprop/stage_0_5_contract_analysis.py`：描述性证据打包，不改变冻结规则。
+- `code/scripts/run_stage_0_5_stopping_spillback.py`：prepare/tests/freeze/run/worker/finalize受控入口。
+- `code/scripts/verify_stage_0_5_stopping_evidence.py`：纯Git协议/SHA/微型输入及历史/科学边界校验。
+- 测试：`test_stage_0_5_stopping_contract.py`、`test_stage_0_5_queue_contract.py`、`test_stage_0_5_b11_evidence.py`。

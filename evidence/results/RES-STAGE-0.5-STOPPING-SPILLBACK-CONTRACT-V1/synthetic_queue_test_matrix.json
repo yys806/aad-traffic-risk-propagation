@@ -1,0 +1,3299 @@
+{
+  "cases": [
+    {
+      "case": "01_free_flow",
+      "method": "legacy_grid",
+      "independent_truth": {
+        "queue": false,
+        "inlet": false,
+        "spillback": false,
+        "components": 0
+      },
+      "observed_component_count": 0,
+      "components": [],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "No On-Road Queue",
+        "inlet_adjacent_queue_observed": false,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 0.0,
+        "method": "legacy_grid",
+        "onroad_queue_observed": false,
+        "onroad_spatial_cluster_observed": false,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 0,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Unresolved",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "02_external_only",
+      "method": "legacy_grid",
+      "independent_truth": {
+        "queue": false,
+        "inlet": false,
+        "spillback": false,
+        "components": 0
+      },
+      "observed_component_count": 0,
+      "components": [],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "No On-Road Queue",
+        "inlet_adjacent_queue_observed": false,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 0.0,
+        "method": "legacy_grid",
+        "onroad_queue_observed": false,
+        "onroad_spatial_cluster_observed": false,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 10,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Unresolved",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "03_downstream_local_queue",
+      "method": "legacy_grid",
+      "independent_truth": {
+        "queue": true,
+        "inlet": false,
+        "spillback": false,
+        "components": 1
+      },
+      "observed_component_count": 1,
+      "components": [
+        {
+          "lane": "pooled",
+          "members": [
+            "synthetic|x175",
+            "synthetic|x185",
+            "synthetic|x195"
+          ],
+          "vehicles": 3,
+          "upstream_boundary_m": 150.0,
+          "upstream_interval_m": [
+            150.0,
+            150.0
+          ],
+          "front_left_censored": false,
+          "downstream_m": 195.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": false,
+          "spatial_resolution_limited": true
+        }
+      ],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "On-Road Queue Observed",
+        "inlet_adjacent_queue_observed": false,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 0.0,
+        "method": "legacy_grid",
+        "onroad_queue_observed": true,
+        "onroad_spatial_cluster_observed": true,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 0,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Unresolved",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "On-Road Queue Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "On-Road Queue Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "On-Road Queue Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "04_upstream_extension",
+      "method": "legacy_grid",
+      "independent_truth": {
+        "queue": true,
+        "inlet": false,
+        "spillback": false,
+        "extension": true,
+        "components": 1
+      },
+      "observed_component_count": 1,
+      "components": [
+        {
+          "lane": "pooled",
+          "members": [
+            "synthetic|x155",
+            "synthetic|x170",
+            "synthetic|x185",
+            "synthetic|x195"
+          ],
+          "vehicles": 4,
+          "upstream_boundary_m": 150.0,
+          "upstream_interval_m": [
+            150.0,
+            150.0
+          ],
+          "front_left_censored": false,
+          "downstream_m": 195.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": false,
+          "spatial_resolution_limited": true
+        }
+      ],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "On-Road Queue Observed",
+        "inlet_adjacent_queue_observed": false,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 0.0,
+        "method": "legacy_grid",
+        "onroad_queue_observed": true,
+        "onroad_spatial_cluster_observed": true,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 0,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Unresolved",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "On-Road Queue Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "On-Road Queue Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "On-Road Queue Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "05_queue_reaches_inlet",
+      "method": "legacy_grid",
+      "independent_truth": {
+        "queue": true,
+        "inlet": true,
+        "spillback": true,
+        "components": 1
+      },
+      "observed_component_count": 1,
+      "components": [
+        {
+          "lane": "pooled",
+          "members": [
+            "synthetic|x10",
+            "synthetic|x100",
+            "synthetic|x115",
+            "synthetic|x130",
+            "synthetic|x145",
+            "synthetic|x160",
+            "synthetic|x175",
+            "synthetic|x190",
+            "synthetic|x25",
+            "synthetic|x40",
+            "synthetic|x55",
+            "synthetic|x70",
+            "synthetic|x85"
+          ],
+          "vehicles": 13,
+          "upstream_boundary_m": 0.0,
+          "upstream_interval_m": [
+            0.0,
+            0.0
+          ],
+          "front_left_censored": false,
+          "downstream_m": 190.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": true,
+          "spatial_resolution_limited": true
+        }
+      ],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "Entry Spillback Supported",
+        "inlet_adjacent_queue_observed": true,
+        "entry_spillback_supported": true,
+        "continuous_inlet_duration_s": 2.0,
+        "method": "legacy_grid",
+        "onroad_queue_observed": true,
+        "onroad_spatial_cluster_observed": true,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 10,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Observed physical entry-space constraint",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 1.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "Entry Spillback Supported",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": true,
+            "continuous_inlet_duration_s": 2.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "06_sparse_front",
+      "method": "legacy_grid",
+      "independent_truth": {
+        "queue": true,
+        "inlet": true,
+        "spillback": true,
+        "front_m": 40.0,
+        "components": 1
+      },
+      "observed_component_count": 1,
+      "components": [
+        {
+          "lane": "pooled",
+          "members": [
+            "synthetic|x105",
+            "synthetic|x120",
+            "synthetic|x135",
+            "synthetic|x150",
+            "synthetic|x165",
+            "synthetic|x180",
+            "synthetic|x195",
+            "synthetic|x60",
+            "synthetic|x75",
+            "synthetic|x90"
+          ],
+          "vehicles": 10,
+          "upstream_boundary_m": 50.0,
+          "upstream_interval_m": [
+            50.0,
+            50.0
+          ],
+          "front_left_censored": false,
+          "downstream_m": 195.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": true,
+          "spatial_resolution_limited": true
+        }
+      ],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "Entry Spillback Supported",
+        "inlet_adjacent_queue_observed": true,
+        "entry_spillback_supported": true,
+        "continuous_inlet_duration_s": 2.0,
+        "method": "legacy_grid",
+        "onroad_queue_observed": true,
+        "onroad_spatial_cluster_observed": true,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 10,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Observed physical entry-space constraint",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 1.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "Entry Spillback Supported",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": true,
+            "continuous_inlet_duration_s": 2.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "07_periodic_release",
+      "method": "legacy_grid",
+      "independent_truth": {
+        "queue": true,
+        "inlet": true,
+        "spillback": false,
+        "components": 1,
+        "continuous_support": false
+      },
+      "observed_component_count": 1,
+      "components": [
+        {
+          "lane": "pooled",
+          "members": [
+            "synthetic|x10",
+            "synthetic|x100",
+            "synthetic|x115",
+            "synthetic|x130",
+            "synthetic|x145",
+            "synthetic|x160",
+            "synthetic|x175",
+            "synthetic|x190",
+            "synthetic|x25",
+            "synthetic|x40",
+            "synthetic|x55",
+            "synthetic|x70",
+            "synthetic|x85"
+          ],
+          "vehicles": 13,
+          "upstream_boundary_m": 0.0,
+          "upstream_interval_m": [
+            0.0,
+            0.0
+          ],
+          "front_left_censored": false,
+          "downstream_m": 190.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": true,
+          "spatial_resolution_limited": true
+        }
+      ],
+      "qualification": {
+        "time_s": 4.0,
+        "state": "Inlet-Adjacent Queue Observed",
+        "inlet_adjacent_queue_observed": true,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 1.0,
+        "method": "legacy_grid",
+        "onroad_queue_observed": true,
+        "onroad_spatial_cluster_observed": true,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 10,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Observed physical entry-space constraint",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 1.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 3.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 4.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 1.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "08_disconnected_groups",
+      "method": "legacy_grid",
+      "independent_truth": {
+        "queue": true,
+        "inlet": true,
+        "spillback": false,
+        "components": 2
+      },
+      "observed_component_count": 1,
+      "components": [
+        {
+          "lane": "pooled",
+          "members": [
+            "synthetic|x180",
+            "synthetic|x190"
+          ],
+          "vehicles": 2,
+          "upstream_boundary_m": 150.0,
+          "upstream_interval_m": [
+            150.0,
+            150.0
+          ],
+          "front_left_censored": false,
+          "downstream_m": 190.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": false,
+          "spatial_resolution_limited": true
+        }
+      ],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "On-Road Queue Observed",
+        "inlet_adjacent_queue_observed": false,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 0.0,
+        "method": "legacy_grid",
+        "onroad_queue_observed": true,
+        "onroad_spatial_cluster_observed": true,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 10,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Observed physical entry-space constraint",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "On-Road Queue Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "On-Road Queue Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "On-Road Queue Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "09_two_lanes_isolated",
+      "method": "legacy_grid",
+      "independent_truth": {
+        "queue": false,
+        "inlet": false,
+        "spillback": false,
+        "components": 0
+      },
+      "observed_component_count": 1,
+      "components": [
+        {
+          "lane": "pooled",
+          "members": [
+            "synthetic|a",
+            "synthetic|b"
+          ],
+          "vehicles": 2,
+          "upstream_boundary_m": 150.0,
+          "upstream_interval_m": [
+            150.0,
+            150.0
+          ],
+          "front_left_censored": false,
+          "downstream_m": 195.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": false,
+          "spatial_resolution_limited": true
+        }
+      ],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "On-Road Queue Observed",
+        "inlet_adjacent_queue_observed": false,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 0.0,
+        "method": "legacy_grid",
+        "onroad_queue_observed": true,
+        "onroad_spatial_cluster_observed": true,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 0,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Unresolved",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "On-Road Queue Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "On-Road Queue Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "On-Road Queue Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "10_partial_observation",
+      "method": "legacy_grid",
+      "independent_truth": {
+        "queue": true,
+        "inlet": null,
+        "spillback": null,
+        "components": 1,
+        "front_censored": true
+      },
+      "observed_component_count": 1,
+      "components": [
+        {
+          "lane": "pooled",
+          "members": [
+            "synthetic|x115",
+            "synthetic|x130",
+            "synthetic|x145",
+            "synthetic|x160",
+            "synthetic|x175",
+            "synthetic|x190"
+          ],
+          "vehicles": 6,
+          "upstream_boundary_m": null,
+          "upstream_interval_m": [
+            null,
+            null
+          ],
+          "front_left_censored": true,
+          "downstream_m": 190.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": null,
+          "spatial_resolution_limited": true
+        }
+      ],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "Evidence Insufficient",
+        "inlet_adjacent_queue_observed": null,
+        "entry_spillback_supported": null,
+        "continuous_inlet_duration_s": 0.0,
+        "method": "legacy_grid",
+        "onroad_queue_observed": true,
+        "onroad_spatial_cluster_observed": true,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 10,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Unresolved",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "Evidence Insufficient",
+            "inlet_adjacent_queue_observed": null,
+            "entry_spillback_supported": null,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "Evidence Insufficient",
+            "inlet_adjacent_queue_observed": null,
+            "entry_spillback_supported": null,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "Evidence Insufficient",
+            "inlet_adjacent_queue_observed": null,
+            "entry_spillback_supported": null,
+            "continuous_inlet_duration_s": 0.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "11_same_cell_disconnected",
+      "method": "legacy_grid",
+      "independent_truth": {
+        "queue": true,
+        "inlet": false,
+        "spillback": false,
+        "components": 2
+      },
+      "observed_component_count": 1,
+      "components": [
+        {
+          "lane": "pooled",
+          "members": [
+            "synthetic|x155",
+            "synthetic|x161",
+            "synthetic|x185",
+            "synthetic|x191"
+          ],
+          "vehicles": 4,
+          "upstream_boundary_m": 150.0,
+          "upstream_interval_m": [
+            150.0,
+            150.0
+          ],
+          "front_left_censored": false,
+          "downstream_m": 191.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": false,
+          "spatial_resolution_limited": true
+        }
+      ],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "On-Road Queue Observed",
+        "inlet_adjacent_queue_observed": false,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 0.0,
+        "method": "legacy_grid",
+        "onroad_queue_observed": true,
+        "onroad_spatial_cluster_observed": true,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 0,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Unresolved",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "On-Road Queue Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "On-Road Queue Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "On-Road Queue Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "12_isolated_slow",
+      "method": "legacy_grid",
+      "independent_truth": {
+        "queue": false,
+        "inlet": false,
+        "spillback": false,
+        "components": 0
+      },
+      "observed_component_count": 0,
+      "components": [],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "No On-Road Queue",
+        "inlet_adjacent_queue_observed": false,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 0.0,
+        "method": "legacy_grid",
+        "onroad_queue_observed": false,
+        "onroad_spatial_cluster_observed": false,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 0,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Unresolved",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "13_lane_change_no_temporal_bridge",
+      "method": "legacy_grid",
+      "independent_truth": {
+        "queue": true,
+        "inlet": true,
+        "spillback": false,
+        "components": 1,
+        "continuous_support": false
+      },
+      "observed_component_count": 1,
+      "components": [
+        {
+          "lane": "pooled",
+          "members": [
+            "synthetic|x10",
+            "synthetic|x100",
+            "synthetic|x115",
+            "synthetic|x130",
+            "synthetic|x145",
+            "synthetic|x160",
+            "synthetic|x175",
+            "synthetic|x190",
+            "synthetic|x25",
+            "synthetic|x40",
+            "synthetic|x55",
+            "synthetic|x70",
+            "synthetic|x85"
+          ],
+          "vehicles": 13,
+          "upstream_boundary_m": 0.0,
+          "upstream_interval_m": [
+            0.0,
+            0.0
+          ],
+          "front_left_censored": false,
+          "downstream_m": 190.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": true,
+          "spatial_resolution_limited": true
+        }
+      ],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "Entry Spillback Supported",
+        "inlet_adjacent_queue_observed": true,
+        "entry_spillback_supported": true,
+        "continuous_inlet_duration_s": 2.0,
+        "method": "legacy_grid",
+        "onroad_queue_observed": true,
+        "onroad_spatial_cluster_observed": true,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 10,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Observed physical entry-space constraint",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 1.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "Entry Spillback Supported",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": true,
+            "continuous_inlet_duration_s": 2.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "14_slow_cluster_unknown_cause",
+      "method": "legacy_grid",
+      "independent_truth": {
+        "queue": true,
+        "inlet": false,
+        "spillback": false,
+        "components": 1,
+        "causal_queue": null
+      },
+      "observed_component_count": 1,
+      "components": [
+        {
+          "lane": "pooled",
+          "members": [
+            "synthetic|x175",
+            "synthetic|x185",
+            "synthetic|x195"
+          ],
+          "vehicles": 3,
+          "upstream_boundary_m": 150.0,
+          "upstream_interval_m": [
+            150.0,
+            150.0
+          ],
+          "front_left_censored": false,
+          "downstream_m": 195.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": false,
+          "spatial_resolution_limited": true
+        }
+      ],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "Evidence Insufficient",
+        "inlet_adjacent_queue_observed": false,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 0.0,
+        "method": "legacy_grid",
+        "onroad_queue_observed": null,
+        "onroad_spatial_cluster_observed": true,
+        "queue_cause_status": "Unresolved",
+        "upstream_extension_observed": false,
+        "external_pending": 0,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Unresolved",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "Evidence Insufficient",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "Evidence Insufficient",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "Evidence Insufficient",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "01_free_flow",
+      "method": "grid_candidate",
+      "independent_truth": {
+        "queue": false,
+        "inlet": false,
+        "spillback": false,
+        "components": 0
+      },
+      "observed_component_count": 0,
+      "components": [],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "No On-Road Queue",
+        "inlet_adjacent_queue_observed": false,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 0.0,
+        "method": "grid_candidate",
+        "onroad_queue_observed": false,
+        "onroad_spatial_cluster_observed": false,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 0,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Unresolved",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "02_external_only",
+      "method": "grid_candidate",
+      "independent_truth": {
+        "queue": false,
+        "inlet": false,
+        "spillback": false,
+        "components": 0
+      },
+      "observed_component_count": 0,
+      "components": [],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "No On-Road Queue",
+        "inlet_adjacent_queue_observed": false,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 0.0,
+        "method": "grid_candidate",
+        "onroad_queue_observed": false,
+        "onroad_spatial_cluster_observed": false,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 10,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Unresolved",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "03_downstream_local_queue",
+      "method": "grid_candidate",
+      "independent_truth": {
+        "queue": true,
+        "inlet": false,
+        "spillback": false,
+        "components": 1
+      },
+      "observed_component_count": 1,
+      "components": [
+        {
+          "lane": "e_0",
+          "members": [
+            "synthetic|x175",
+            "synthetic|x185",
+            "synthetic|x195"
+          ],
+          "vehicles": 3,
+          "upstream_boundary_m": null,
+          "upstream_interval_m": [
+            145.0,
+            195.0
+          ],
+          "front_left_censored": false,
+          "downstream_m": 195.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": false,
+          "spatial_resolution_limited": true
+        }
+      ],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "On-Road Queue Observed",
+        "inlet_adjacent_queue_observed": false,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 0.0,
+        "method": "grid_candidate",
+        "onroad_queue_observed": true,
+        "onroad_spatial_cluster_observed": true,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 0,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Unresolved",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "On-Road Queue Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "On-Road Queue Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "On-Road Queue Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "04_upstream_extension",
+      "method": "grid_candidate",
+      "independent_truth": {
+        "queue": true,
+        "inlet": false,
+        "spillback": false,
+        "extension": true,
+        "components": 1
+      },
+      "observed_component_count": 1,
+      "components": [
+        {
+          "lane": "e_0",
+          "members": [
+            "synthetic|x155",
+            "synthetic|x170",
+            "synthetic|x185",
+            "synthetic|x195"
+          ],
+          "vehicles": 4,
+          "upstream_boundary_m": null,
+          "upstream_interval_m": [
+            145.0,
+            195.0
+          ],
+          "front_left_censored": false,
+          "downstream_m": 195.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": false,
+          "spatial_resolution_limited": true
+        }
+      ],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "On-Road Queue Observed",
+        "inlet_adjacent_queue_observed": false,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 0.0,
+        "method": "grid_candidate",
+        "onroad_queue_observed": true,
+        "onroad_spatial_cluster_observed": true,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 0,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Unresolved",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "On-Road Queue Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "On-Road Queue Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "On-Road Queue Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "05_queue_reaches_inlet",
+      "method": "grid_candidate",
+      "independent_truth": {
+        "queue": true,
+        "inlet": true,
+        "spillback": true,
+        "components": 1
+      },
+      "observed_component_count": 1,
+      "components": [
+        {
+          "lane": "e_0",
+          "members": [
+            "synthetic|x10",
+            "synthetic|x100",
+            "synthetic|x115",
+            "synthetic|x130",
+            "synthetic|x145",
+            "synthetic|x160",
+            "synthetic|x175",
+            "synthetic|x190",
+            "synthetic|x25",
+            "synthetic|x40",
+            "synthetic|x55",
+            "synthetic|x70",
+            "synthetic|x85"
+          ],
+          "vehicles": 13,
+          "upstream_boundary_m": null,
+          "upstream_interval_m": [
+            0.0,
+            45.0
+          ],
+          "front_left_censored": false,
+          "downstream_m": 190.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": true,
+          "spatial_resolution_limited": true
+        }
+      ],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "Entry Spillback Supported",
+        "inlet_adjacent_queue_observed": true,
+        "entry_spillback_supported": true,
+        "continuous_inlet_duration_s": 2.0,
+        "method": "grid_candidate",
+        "onroad_queue_observed": true,
+        "onroad_spatial_cluster_observed": true,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 10,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Observed physical entry-space constraint",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 1.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "Entry Spillback Supported",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": true,
+            "continuous_inlet_duration_s": 2.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "06_sparse_front",
+      "method": "grid_candidate",
+      "independent_truth": {
+        "queue": true,
+        "inlet": true,
+        "spillback": true,
+        "front_m": 40.0,
+        "components": 1
+      },
+      "observed_component_count": 1,
+      "components": [
+        {
+          "lane": "e_0",
+          "members": [
+            "synthetic|x105",
+            "synthetic|x120",
+            "synthetic|x135",
+            "synthetic|x150",
+            "synthetic|x165",
+            "synthetic|x180",
+            "synthetic|x195",
+            "synthetic|x45",
+            "synthetic|x60",
+            "synthetic|x75",
+            "synthetic|x90"
+          ],
+          "vehicles": 11,
+          "upstream_boundary_m": null,
+          "upstream_interval_m": [
+            0.0,
+            45.0
+          ],
+          "front_left_censored": false,
+          "downstream_m": 195.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": true,
+          "spatial_resolution_limited": true
+        }
+      ],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "Entry Spillback Supported",
+        "inlet_adjacent_queue_observed": true,
+        "entry_spillback_supported": true,
+        "continuous_inlet_duration_s": 2.0,
+        "method": "grid_candidate",
+        "onroad_queue_observed": true,
+        "onroad_spatial_cluster_observed": true,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 10,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Observed physical entry-space constraint",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 1.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "Entry Spillback Supported",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": true,
+            "continuous_inlet_duration_s": 2.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "07_periodic_release",
+      "method": "grid_candidate",
+      "independent_truth": {
+        "queue": true,
+        "inlet": true,
+        "spillback": false,
+        "components": 1,
+        "continuous_support": false
+      },
+      "observed_component_count": 1,
+      "components": [
+        {
+          "lane": "e_0",
+          "members": [
+            "synthetic|x10",
+            "synthetic|x100",
+            "synthetic|x115",
+            "synthetic|x130",
+            "synthetic|x145",
+            "synthetic|x160",
+            "synthetic|x175",
+            "synthetic|x190",
+            "synthetic|x25",
+            "synthetic|x40",
+            "synthetic|x55",
+            "synthetic|x70",
+            "synthetic|x85"
+          ],
+          "vehicles": 13,
+          "upstream_boundary_m": null,
+          "upstream_interval_m": [
+            0.0,
+            45.0
+          ],
+          "front_left_censored": false,
+          "downstream_m": 190.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": true,
+          "spatial_resolution_limited": true
+        }
+      ],
+      "qualification": {
+        "time_s": 4.0,
+        "state": "Inlet-Adjacent Queue Observed",
+        "inlet_adjacent_queue_observed": true,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 1.0,
+        "method": "grid_candidate",
+        "onroad_queue_observed": true,
+        "onroad_spatial_cluster_observed": true,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 10,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Observed physical entry-space constraint",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 1.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 3.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 4.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 1.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "08_disconnected_groups",
+      "method": "grid_candidate",
+      "independent_truth": {
+        "queue": true,
+        "inlet": true,
+        "spillback": false,
+        "components": 2
+      },
+      "observed_component_count": 2,
+      "components": [
+        {
+          "lane": "e_0",
+          "members": [
+            "synthetic|x20",
+            "synthetic|x30"
+          ],
+          "vehicles": 2,
+          "upstream_boundary_m": null,
+          "upstream_interval_m": [
+            0.0,
+            45.0
+          ],
+          "front_left_censored": false,
+          "downstream_m": 30.0,
+          "downstream_anchored": false,
+          "inlet_adjacent": true,
+          "spatial_resolution_limited": true
+        },
+        {
+          "lane": "e_0",
+          "members": [
+            "synthetic|x180",
+            "synthetic|x190"
+          ],
+          "vehicles": 2,
+          "upstream_boundary_m": null,
+          "upstream_interval_m": [
+            145.0,
+            195.0
+          ],
+          "front_left_censored": false,
+          "downstream_m": 190.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": false,
+          "spatial_resolution_limited": true
+        }
+      ],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "Inlet-Adjacent Queue Observed",
+        "inlet_adjacent_queue_observed": true,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 2.0,
+        "method": "grid_candidate",
+        "onroad_queue_observed": true,
+        "onroad_spatial_cluster_observed": true,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 10,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Observed physical entry-space constraint",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 1.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 2.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "09_two_lanes_isolated",
+      "method": "grid_candidate",
+      "independent_truth": {
+        "queue": false,
+        "inlet": false,
+        "spillback": false,
+        "components": 0
+      },
+      "observed_component_count": 0,
+      "components": [],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "No On-Road Queue",
+        "inlet_adjacent_queue_observed": false,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 0.0,
+        "method": "grid_candidate",
+        "onroad_queue_observed": false,
+        "onroad_spatial_cluster_observed": false,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 0,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Unresolved",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "10_partial_observation",
+      "method": "grid_candidate",
+      "independent_truth": {
+        "queue": true,
+        "inlet": null,
+        "spillback": null,
+        "components": 1,
+        "front_censored": true
+      },
+      "observed_component_count": 1,
+      "components": [
+        {
+          "lane": "e_0",
+          "members": [
+            "synthetic|x115",
+            "synthetic|x130",
+            "synthetic|x145",
+            "synthetic|x160",
+            "synthetic|x175",
+            "synthetic|x190"
+          ],
+          "vehicles": 6,
+          "upstream_boundary_m": null,
+          "upstream_interval_m": [
+            null,
+            null
+          ],
+          "front_left_censored": true,
+          "downstream_m": 190.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": null,
+          "spatial_resolution_limited": true
+        }
+      ],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "Evidence Insufficient",
+        "inlet_adjacent_queue_observed": null,
+        "entry_spillback_supported": null,
+        "continuous_inlet_duration_s": 0.0,
+        "method": "grid_candidate",
+        "onroad_queue_observed": true,
+        "onroad_spatial_cluster_observed": true,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 10,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Unresolved",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "Evidence Insufficient",
+            "inlet_adjacent_queue_observed": null,
+            "entry_spillback_supported": null,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "Evidence Insufficient",
+            "inlet_adjacent_queue_observed": null,
+            "entry_spillback_supported": null,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "Evidence Insufficient",
+            "inlet_adjacent_queue_observed": null,
+            "entry_spillback_supported": null,
+            "continuous_inlet_duration_s": 0.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "11_same_cell_disconnected",
+      "method": "grid_candidate",
+      "independent_truth": {
+        "queue": true,
+        "inlet": false,
+        "spillback": false,
+        "components": 2
+      },
+      "observed_component_count": 1,
+      "components": [
+        {
+          "lane": "e_0",
+          "members": [
+            "synthetic|x155",
+            "synthetic|x161",
+            "synthetic|x185",
+            "synthetic|x191"
+          ],
+          "vehicles": 4,
+          "upstream_boundary_m": null,
+          "upstream_interval_m": [
+            145.0,
+            195.0
+          ],
+          "front_left_censored": false,
+          "downstream_m": 191.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": false,
+          "spatial_resolution_limited": true
+        }
+      ],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "On-Road Queue Observed",
+        "inlet_adjacent_queue_observed": false,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 0.0,
+        "method": "grid_candidate",
+        "onroad_queue_observed": true,
+        "onroad_spatial_cluster_observed": true,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 0,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Unresolved",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "On-Road Queue Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "On-Road Queue Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "On-Road Queue Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "12_isolated_slow",
+      "method": "grid_candidate",
+      "independent_truth": {
+        "queue": false,
+        "inlet": false,
+        "spillback": false,
+        "components": 0
+      },
+      "observed_component_count": 0,
+      "components": [],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "No On-Road Queue",
+        "inlet_adjacent_queue_observed": false,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 0.0,
+        "method": "grid_candidate",
+        "onroad_queue_observed": false,
+        "onroad_spatial_cluster_observed": false,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 0,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Unresolved",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "13_lane_change_no_temporal_bridge",
+      "method": "grid_candidate",
+      "independent_truth": {
+        "queue": true,
+        "inlet": true,
+        "spillback": false,
+        "components": 1,
+        "continuous_support": false
+      },
+      "observed_component_count": 1,
+      "components": [
+        {
+          "lane": "e_0",
+          "members": [
+            "synthetic|x10",
+            "synthetic|x100",
+            "synthetic|x115",
+            "synthetic|x130",
+            "synthetic|x145",
+            "synthetic|x160",
+            "synthetic|x175",
+            "synthetic|x190",
+            "synthetic|x25",
+            "synthetic|x40",
+            "synthetic|x55",
+            "synthetic|x70",
+            "synthetic|x85"
+          ],
+          "vehicles": 13,
+          "upstream_boundary_m": null,
+          "upstream_interval_m": [
+            0.0,
+            45.0
+          ],
+          "front_left_censored": false,
+          "downstream_m": 190.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": true,
+          "spatial_resolution_limited": true
+        }
+      ],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "Inlet-Adjacent Queue Observed",
+        "inlet_adjacent_queue_observed": true,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 0.0,
+        "method": "grid_candidate",
+        "onroad_queue_observed": true,
+        "onroad_spatial_cluster_observed": true,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 10,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Observed physical entry-space constraint",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "14_slow_cluster_unknown_cause",
+      "method": "grid_candidate",
+      "independent_truth": {
+        "queue": true,
+        "inlet": false,
+        "spillback": false,
+        "components": 1,
+        "causal_queue": null
+      },
+      "observed_component_count": 1,
+      "components": [
+        {
+          "lane": "e_0",
+          "members": [
+            "synthetic|x175",
+            "synthetic|x185",
+            "synthetic|x195"
+          ],
+          "vehicles": 3,
+          "upstream_boundary_m": null,
+          "upstream_interval_m": [
+            145.0,
+            195.0
+          ],
+          "front_left_censored": false,
+          "downstream_m": 195.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": false,
+          "spatial_resolution_limited": true
+        }
+      ],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "Evidence Insufficient",
+        "inlet_adjacent_queue_observed": false,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 0.0,
+        "method": "grid_candidate",
+        "onroad_queue_observed": null,
+        "onroad_spatial_cluster_observed": true,
+        "queue_cause_status": "Unresolved",
+        "upstream_extension_observed": false,
+        "external_pending": 0,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Unresolved",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "Evidence Insufficient",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "Evidence Insufficient",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "Evidence Insufficient",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "01_free_flow",
+      "method": "vehicle_graph",
+      "independent_truth": {
+        "queue": false,
+        "inlet": false,
+        "spillback": false,
+        "components": 0
+      },
+      "observed_component_count": 0,
+      "components": [],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "No On-Road Queue",
+        "inlet_adjacent_queue_observed": false,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 0.0,
+        "method": "vehicle_graph",
+        "onroad_queue_observed": false,
+        "onroad_spatial_cluster_observed": false,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 0,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Unresolved",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "02_external_only",
+      "method": "vehicle_graph",
+      "independent_truth": {
+        "queue": false,
+        "inlet": false,
+        "spillback": false,
+        "components": 0
+      },
+      "observed_component_count": 0,
+      "components": [],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "No On-Road Queue",
+        "inlet_adjacent_queue_observed": false,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 0.0,
+        "method": "vehicle_graph",
+        "onroad_queue_observed": false,
+        "onroad_spatial_cluster_observed": false,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 10,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Unresolved",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "03_downstream_local_queue",
+      "method": "vehicle_graph",
+      "independent_truth": {
+        "queue": true,
+        "inlet": false,
+        "spillback": false,
+        "components": 1
+      },
+      "observed_component_count": 1,
+      "components": [
+        {
+          "lane": "e_0",
+          "members": [
+            "synthetic|x175",
+            "synthetic|x185",
+            "synthetic|x195"
+          ],
+          "vehicles": 3,
+          "upstream_boundary_m": 170.0,
+          "upstream_interval_m": [
+            169.99,
+            170.01
+          ],
+          "front_left_censored": false,
+          "downstream_m": 195.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": false,
+          "spatial_resolution_limited": false
+        }
+      ],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "On-Road Queue Observed",
+        "inlet_adjacent_queue_observed": false,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 0.0,
+        "method": "vehicle_graph",
+        "onroad_queue_observed": true,
+        "onroad_spatial_cluster_observed": true,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 0,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Unresolved",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "On-Road Queue Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "On-Road Queue Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "On-Road Queue Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "04_upstream_extension",
+      "method": "vehicle_graph",
+      "independent_truth": {
+        "queue": true,
+        "inlet": false,
+        "spillback": false,
+        "extension": true,
+        "components": 1
+      },
+      "observed_component_count": 1,
+      "components": [
+        {
+          "lane": "e_0",
+          "members": [
+            "synthetic|x155",
+            "synthetic|x170",
+            "synthetic|x185",
+            "synthetic|x195"
+          ],
+          "vehicles": 4,
+          "upstream_boundary_m": 150.0,
+          "upstream_interval_m": [
+            149.99,
+            150.01
+          ],
+          "front_left_censored": false,
+          "downstream_m": 195.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": false,
+          "spatial_resolution_limited": false
+        }
+      ],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "Upstream Queue Extension Observed",
+        "inlet_adjacent_queue_observed": false,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 0.0,
+        "method": "vehicle_graph",
+        "onroad_queue_observed": true,
+        "onroad_spatial_cluster_observed": true,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": true,
+        "external_pending": 0,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Unresolved",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "On-Road Queue Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "Upstream Queue Extension Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "Upstream Queue Extension Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "05_queue_reaches_inlet",
+      "method": "vehicle_graph",
+      "independent_truth": {
+        "queue": true,
+        "inlet": true,
+        "spillback": true,
+        "components": 1
+      },
+      "observed_component_count": 1,
+      "components": [
+        {
+          "lane": "e_0",
+          "members": [
+            "synthetic|x10",
+            "synthetic|x100",
+            "synthetic|x115",
+            "synthetic|x130",
+            "synthetic|x145",
+            "synthetic|x160",
+            "synthetic|x175",
+            "synthetic|x190",
+            "synthetic|x25",
+            "synthetic|x40",
+            "synthetic|x55",
+            "synthetic|x70",
+            "synthetic|x85"
+          ],
+          "vehicles": 13,
+          "upstream_boundary_m": 5.0,
+          "upstream_interval_m": [
+            4.99,
+            5.01
+          ],
+          "front_left_censored": false,
+          "downstream_m": 190.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": true,
+          "spatial_resolution_limited": false
+        }
+      ],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "Entry Spillback Supported",
+        "inlet_adjacent_queue_observed": true,
+        "entry_spillback_supported": true,
+        "continuous_inlet_duration_s": 2.0,
+        "method": "vehicle_graph",
+        "onroad_queue_observed": true,
+        "onroad_spatial_cluster_observed": true,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 10,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Observed physical entry-space constraint",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 1.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "Entry Spillback Supported",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": true,
+            "continuous_inlet_duration_s": 2.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "06_sparse_front",
+      "method": "vehicle_graph",
+      "independent_truth": {
+        "queue": true,
+        "inlet": true,
+        "spillback": true,
+        "front_m": 40.0,
+        "components": 1
+      },
+      "observed_component_count": 1,
+      "components": [
+        {
+          "lane": "e_0",
+          "members": [
+            "synthetic|x105",
+            "synthetic|x120",
+            "synthetic|x135",
+            "synthetic|x150",
+            "synthetic|x165",
+            "synthetic|x180",
+            "synthetic|x195",
+            "synthetic|x45",
+            "synthetic|x60",
+            "synthetic|x75",
+            "synthetic|x90"
+          ],
+          "vehicles": 11,
+          "upstream_boundary_m": 40.0,
+          "upstream_interval_m": [
+            39.99,
+            40.01
+          ],
+          "front_left_censored": false,
+          "downstream_m": 195.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": true,
+          "spatial_resolution_limited": false
+        }
+      ],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "Entry Spillback Supported",
+        "inlet_adjacent_queue_observed": true,
+        "entry_spillback_supported": true,
+        "continuous_inlet_duration_s": 2.0,
+        "method": "vehicle_graph",
+        "onroad_queue_observed": true,
+        "onroad_spatial_cluster_observed": true,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 10,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Observed physical entry-space constraint",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 1.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "Entry Spillback Supported",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": true,
+            "continuous_inlet_duration_s": 2.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "07_periodic_release",
+      "method": "vehicle_graph",
+      "independent_truth": {
+        "queue": true,
+        "inlet": true,
+        "spillback": false,
+        "components": 1,
+        "continuous_support": false
+      },
+      "observed_component_count": 1,
+      "components": [
+        {
+          "lane": "e_0",
+          "members": [
+            "synthetic|x10",
+            "synthetic|x100",
+            "synthetic|x115",
+            "synthetic|x130",
+            "synthetic|x145",
+            "synthetic|x160",
+            "synthetic|x175",
+            "synthetic|x190",
+            "synthetic|x25",
+            "synthetic|x40",
+            "synthetic|x55",
+            "synthetic|x70",
+            "synthetic|x85"
+          ],
+          "vehicles": 13,
+          "upstream_boundary_m": 5.0,
+          "upstream_interval_m": [
+            4.99,
+            5.01
+          ],
+          "front_left_censored": false,
+          "downstream_m": 190.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": true,
+          "spatial_resolution_limited": false
+        }
+      ],
+      "qualification": {
+        "time_s": 4.0,
+        "state": "Inlet-Adjacent Queue Observed",
+        "inlet_adjacent_queue_observed": true,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 1.0,
+        "method": "vehicle_graph",
+        "onroad_queue_observed": true,
+        "onroad_spatial_cluster_observed": true,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 10,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Observed physical entry-space constraint",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 1.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 3.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 4.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 1.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "08_disconnected_groups",
+      "method": "vehicle_graph",
+      "independent_truth": {
+        "queue": true,
+        "inlet": true,
+        "spillback": false,
+        "components": 2
+      },
+      "observed_component_count": 2,
+      "components": [
+        {
+          "lane": "e_0",
+          "members": [
+            "synthetic|x20",
+            "synthetic|x30"
+          ],
+          "vehicles": 2,
+          "upstream_boundary_m": 15.0,
+          "upstream_interval_m": [
+            14.99,
+            15.01
+          ],
+          "front_left_censored": false,
+          "downstream_m": 30.0,
+          "downstream_anchored": false,
+          "inlet_adjacent": true,
+          "spatial_resolution_limited": false
+        },
+        {
+          "lane": "e_0",
+          "members": [
+            "synthetic|x180",
+            "synthetic|x190"
+          ],
+          "vehicles": 2,
+          "upstream_boundary_m": 175.0,
+          "upstream_interval_m": [
+            174.99,
+            175.01
+          ],
+          "front_left_censored": false,
+          "downstream_m": 190.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": false,
+          "spatial_resolution_limited": false
+        }
+      ],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "Inlet-Adjacent Queue Observed",
+        "inlet_adjacent_queue_observed": true,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 2.0,
+        "method": "vehicle_graph",
+        "onroad_queue_observed": true,
+        "onroad_spatial_cluster_observed": true,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 10,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Observed physical entry-space constraint",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 1.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 2.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "09_two_lanes_isolated",
+      "method": "vehicle_graph",
+      "independent_truth": {
+        "queue": false,
+        "inlet": false,
+        "spillback": false,
+        "components": 0
+      },
+      "observed_component_count": 0,
+      "components": [],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "No On-Road Queue",
+        "inlet_adjacent_queue_observed": false,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 0.0,
+        "method": "vehicle_graph",
+        "onroad_queue_observed": false,
+        "onroad_spatial_cluster_observed": false,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 0,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Unresolved",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "10_partial_observation",
+      "method": "vehicle_graph",
+      "independent_truth": {
+        "queue": true,
+        "inlet": null,
+        "spillback": null,
+        "components": 1,
+        "front_censored": true
+      },
+      "observed_component_count": 1,
+      "components": [
+        {
+          "lane": "e_0",
+          "members": [
+            "synthetic|x115",
+            "synthetic|x130",
+            "synthetic|x145",
+            "synthetic|x160",
+            "synthetic|x175",
+            "synthetic|x190"
+          ],
+          "vehicles": 6,
+          "upstream_boundary_m": null,
+          "upstream_interval_m": [
+            null,
+            null
+          ],
+          "front_left_censored": true,
+          "downstream_m": 190.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": null,
+          "spatial_resolution_limited": false
+        }
+      ],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "Evidence Insufficient",
+        "inlet_adjacent_queue_observed": null,
+        "entry_spillback_supported": null,
+        "continuous_inlet_duration_s": 0.0,
+        "method": "vehicle_graph",
+        "onroad_queue_observed": true,
+        "onroad_spatial_cluster_observed": true,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 10,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Unresolved",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "Evidence Insufficient",
+            "inlet_adjacent_queue_observed": null,
+            "entry_spillback_supported": null,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "Evidence Insufficient",
+            "inlet_adjacent_queue_observed": null,
+            "entry_spillback_supported": null,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "Evidence Insufficient",
+            "inlet_adjacent_queue_observed": null,
+            "entry_spillback_supported": null,
+            "continuous_inlet_duration_s": 0.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "11_same_cell_disconnected",
+      "method": "vehicle_graph",
+      "independent_truth": {
+        "queue": true,
+        "inlet": false,
+        "spillback": false,
+        "components": 2
+      },
+      "observed_component_count": 2,
+      "components": [
+        {
+          "lane": "e_0",
+          "members": [
+            "synthetic|x155",
+            "synthetic|x161"
+          ],
+          "vehicles": 2,
+          "upstream_boundary_m": 150.0,
+          "upstream_interval_m": [
+            149.99,
+            150.01
+          ],
+          "front_left_censored": false,
+          "downstream_m": 161.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": false,
+          "spatial_resolution_limited": false
+        },
+        {
+          "lane": "e_0",
+          "members": [
+            "synthetic|x185",
+            "synthetic|x191"
+          ],
+          "vehicles": 2,
+          "upstream_boundary_m": 180.0,
+          "upstream_interval_m": [
+            179.99,
+            180.01
+          ],
+          "front_left_censored": false,
+          "downstream_m": 191.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": false,
+          "spatial_resolution_limited": false
+        }
+      ],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "On-Road Queue Observed",
+        "inlet_adjacent_queue_observed": false,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 0.0,
+        "method": "vehicle_graph",
+        "onroad_queue_observed": true,
+        "onroad_spatial_cluster_observed": true,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 0,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Unresolved",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "On-Road Queue Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "On-Road Queue Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "On-Road Queue Observed",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "12_isolated_slow",
+      "method": "vehicle_graph",
+      "independent_truth": {
+        "queue": false,
+        "inlet": false,
+        "spillback": false,
+        "components": 0
+      },
+      "observed_component_count": 0,
+      "components": [],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "No On-Road Queue",
+        "inlet_adjacent_queue_observed": false,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 0.0,
+        "method": "vehicle_graph",
+        "onroad_queue_observed": false,
+        "onroad_spatial_cluster_observed": false,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 0,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Unresolved",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "No On-Road Queue",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "13_lane_change_no_temporal_bridge",
+      "method": "vehicle_graph",
+      "independent_truth": {
+        "queue": true,
+        "inlet": true,
+        "spillback": false,
+        "components": 1,
+        "continuous_support": false
+      },
+      "observed_component_count": 1,
+      "components": [
+        {
+          "lane": "e_0",
+          "members": [
+            "synthetic|x10",
+            "synthetic|x100",
+            "synthetic|x115",
+            "synthetic|x130",
+            "synthetic|x145",
+            "synthetic|x160",
+            "synthetic|x175",
+            "synthetic|x190",
+            "synthetic|x25",
+            "synthetic|x40",
+            "synthetic|x55",
+            "synthetic|x70",
+            "synthetic|x85"
+          ],
+          "vehicles": 13,
+          "upstream_boundary_m": 5.0,
+          "upstream_interval_m": [
+            4.99,
+            5.01
+          ],
+          "front_left_censored": false,
+          "downstream_m": 190.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": true,
+          "spatial_resolution_limited": false
+        }
+      ],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "Inlet-Adjacent Queue Observed",
+        "inlet_adjacent_queue_observed": true,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 0.0,
+        "method": "vehicle_graph",
+        "onroad_queue_observed": true,
+        "onroad_spatial_cluster_observed": true,
+        "queue_cause_status": "service context supplied; unique causation not proven",
+        "upstream_extension_observed": false,
+        "external_pending": 10,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Observed physical entry-space constraint",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "Inlet-Adjacent Queue Observed",
+            "inlet_adjacent_queue_observed": true,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    },
+    {
+      "case": "14_slow_cluster_unknown_cause",
+      "method": "vehicle_graph",
+      "independent_truth": {
+        "queue": true,
+        "inlet": false,
+        "spillback": false,
+        "components": 1,
+        "causal_queue": null
+      },
+      "observed_component_count": 1,
+      "components": [
+        {
+          "lane": "e_0",
+          "members": [
+            "synthetic|x175",
+            "synthetic|x185",
+            "synthetic|x195"
+          ],
+          "vehicles": 3,
+          "upstream_boundary_m": 170.0,
+          "upstream_interval_m": [
+            169.99,
+            170.01
+          ],
+          "front_left_censored": false,
+          "downstream_m": 195.0,
+          "downstream_anchored": true,
+          "inlet_adjacent": false,
+          "spatial_resolution_limited": false
+        }
+      ],
+      "qualification": {
+        "time_s": 2.0,
+        "state": "Evidence Insufficient",
+        "inlet_adjacent_queue_observed": false,
+        "entry_spillback_supported": false,
+        "continuous_inlet_duration_s": 0.0,
+        "method": "vehicle_graph",
+        "onroad_queue_observed": null,
+        "onroad_spatial_cluster_observed": true,
+        "queue_cause_status": "Unresolved",
+        "upstream_extension_observed": false,
+        "external_pending": 0,
+        "temporal_breaks": 0,
+        "entry_cause_status": "Unresolved",
+        "observation_history": [
+          {
+            "time_s": 0.0,
+            "state": "Evidence Insufficient",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 1.0,
+            "state": "Evidence Insufficient",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          },
+          {
+            "time_s": 2.0,
+            "state": "Evidence Insufficient",
+            "inlet_adjacent_queue_observed": false,
+            "entry_spillback_supported": false,
+            "continuous_inlet_duration_s": 0.0
+          }
+        ],
+        "qualification_status": "Candidate; no scientific approval",
+        "scientific_claim_eligible": false,
+        "limitations": [
+          "Slow connected vehicles are an observed candidate queue, not proof of a unique downstream cause",
+          "No joining across unverified edge/path coordinates or different lanes; lane changes reset continuity",
+          "No smoothing through release/missing frames; sparse/noisy fronts can remain unresolved",
+          "Pending alone cannot identify insertion cause; physical entry-space evidence must be supplied independently"
+        ]
+      }
+    }
+  ],
+  "independent_case_count": 14,
+  "truth_frozen_before_micro": true,
+  "universal_real_world_validity": false
+}

@@ -108,3 +108,9 @@ B0-VALIDATION-SCOPE-02：根目录全量pytest启用了历史Stage0.2本地全�
 B1（RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1）按阻断提前结束：V1失败A后7次未启动，V2 A有效/B警告/C阻断/D未启动，累计4次尝试；无补跑或新seed。A/B局部均速27.1088/26.5152m/s、密度16.3208/16.8197、低速0；C记录2.4007m/s、93.8653veh/km/lane、低速80.1719%、末期未服务252，但停车位移检查与冻结回溢资格阻断，不能作为有效校准样本。D只有静态/空加载检查，动态未知。
 
 停车步内截断使观测终速梯形核验可能不适用，但保留信息不足以证明本次残差成因；不降低阈值。末期入口低速存在但连续50m低速前沿资格未通过，不能事后改写。C供给人工且过强、实际进入差异、D未运行、单seed、正式warmup/容差/P2局部归属均未解决。首次绘图被拒绝的4个可选系统字体路径保留，renderer改为包内字体；矩阵worker无拒绝。研究者保留B0有限描述证据，B0任务隔离false/验证物化Unknown不变。B1用两校准摘要白名单、SHA/角色守卫、-S最小胶囊、Python路径/子进程审计；冻结前45测试通过、假路径拒绝3/3，矩阵worker拒绝0；不声称OS/native全监控。根工作区不跑全量pytest，全量只在无本地历史数据的Git检出执行，数据skip不算通过。 依据：`docs/STAGE_0_5_TASK_0_5_4B1_BOUNDARY_BOTTLENECK_CONTRAST.md`、`evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/`中的preflight、execution_stop_observation、numerical_stop_diagnostic、queue_diagnostics、run_manifest和SHA256SUMS。
+
+## B1.1 剩余观测缺口（2026-10-19）
+
+官方源码证明公开终速+平均加速度不能一般性识别步内停车；正常分支1e-6验证通过，真实停车仅必要范围检查，精确等价Pending。非决策步可观测性重建未独立验证，不能据此前停车位移反解隐藏速度。旧C最大边端点未保留、prefix10不是固定cohort，旧C具体归因仍Unresolved。
+
+队列软件通过独立合成测试，但10m净距/2s持续/.01m精度等仅测试尺度；真实多edge坐标、域分账、lane change/释放间隙和原因证据接入仍待批准/验证。网格同格误连与严格图连接漏检风险保留。B1.2未授权；五项既有文献索引删除未处理，根严格文档检查因此受限，纯Git克隆单独验证。

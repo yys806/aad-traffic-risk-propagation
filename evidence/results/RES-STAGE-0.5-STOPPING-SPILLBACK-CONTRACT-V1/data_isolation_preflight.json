@@ -1,0 +1,141 @@
+{
+  "passed": true,
+  "history_metadata_manifest": {
+    "numerical_stop_diagnostic.json": {
+      "path": "numerical_stop_diagnostic.json",
+      "role": "engineering_metadata",
+      "kind": "historical_b1_metadata",
+      "sha256": "89bdb1ebdd32850b982aa93a9e8b2a154ef761bb0b2e6627b50729a5e00a5215"
+    },
+    "queue_diagnostics.json": {
+      "path": "queue_diagnostics.json",
+      "role": "engineering_metadata",
+      "kind": "historical_b1_metadata",
+      "sha256": "e19a25490c15abfae6795ca404884d32336755a07cdd176ad33e2dc4df39727d"
+    },
+    "execution_stop_observation.json": {
+      "path": "execution_stop_observation.json",
+      "role": "engineering_metadata",
+      "kind": "historical_b1_metadata",
+      "sha256": "ff3a7a9e0474538bab89282a168a5aac94983da765cbf1a29c912b8c6bfc9fb1"
+    },
+    "data_isolation_preflight.json": {
+      "path": "data_isolation_preflight.json",
+      "role": "engineering_metadata",
+      "kind": "historical_b1_metadata",
+      "sha256": "563834dcaae9d070d5dcff7105d1f74af4df22f020f90db6db8b1e6bf581197a"
+    },
+    "experiment_plan.json": {
+      "path": "experiment_plan.json",
+      "role": "engineering_metadata",
+      "kind": "historical_b1_metadata",
+      "sha256": "13db11847d406b3fd2f30f83b52640ee4d5f43a3aff2692933dc04cdf636b135"
+    },
+    "run_manifest.json": {
+      "path": "run_manifest.json",
+      "role": "engineering_metadata",
+      "kind": "historical_b1_metadata",
+      "sha256": "4ffa2408b76a47a72182dd1fa25885e7a351f84665592001a6733a8b3deade02"
+    }
+  },
+  "official_code_manifest": {
+    "microsim_MSVehicle.cpp": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/microsim/MSVehicle.cpp",
+      "tag": "v1_26_0",
+      "resolved_commit": "fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3",
+      "purpose": "official implementation audit only",
+      "sha256": "8499ebe445906b19395d5c70945b012f320a439327e9cb3c20f0abd26d15a6a4",
+      "bytes": 381688
+    },
+    "microsim_MSVehicle.h": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/microsim/MSVehicle.h",
+      "tag": "v1_26_0",
+      "resolved_commit": "fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3",
+      "purpose": "official implementation audit only",
+      "sha256": "0732c3019037c0171d58c0d231ba68183c971cccb726eef7efd2394b33c794e1",
+      "bytes": 86425
+    },
+    "libsumo_Vehicle.cpp": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/libsumo/Vehicle.cpp",
+      "tag": "v1_26_0",
+      "resolved_commit": "fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3",
+      "purpose": "official implementation audit only",
+      "sha256": "9ef12f97fe72aa3daed0740d37de1bbb702012e4a250b82abdc66e8138c37fc8",
+      "bytes": 121128
+    },
+    "utils_common_SUMOTime.h": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/utils/common/SUMOTime.h",
+      "tag": "v1_26_0",
+      "resolved_commit": "fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3",
+      "purpose": "official implementation audit only",
+      "sha256": "e7897a565fe9def68e838881a9687f6cec4332fd572b25e0fb9a08066b58b13b",
+      "bytes": 3540
+    }
+  },
+  "real_data_inputs": [],
+  "old_C_state_access": false,
+  "historical_Stage0_2_full_source_access": false,
+  "synthetic_path_probe": {
+    "cases": [
+      {
+        "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_us101__0820_0835.json",
+        "refused": true,
+        "before_filesystem_read": true
+      },
+      {
+        "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_locked_holdout.json",
+        "refused": true,
+        "before_filesystem_read": true
+      },
+      {
+        "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_historical_event_characteristics.parquet",
+        "refused": true,
+        "before_filesystem_read": true
+      }
+    ],
+    "audit": {
+      "scope": "controlled Python entrypoints",
+      "allowed_open_events": 0,
+      "denied": [
+        {
+          "event": "open",
+          "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_us101__0820_0835.json",
+          "write": false
+        },
+        {
+          "event": "open",
+          "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_locked_holdout.json",
+          "write": false
+        },
+        {
+          "event": "open",
+          "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_historical_event_characteristics.parquet",
+          "write": false
+        }
+      ],
+      "os_complete_monitoring": false,
+      "native_file_access_monitored": false,
+      "python_no_site": true,
+      "sanitized_sys_path": [
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\src",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\dependency_links",
+        "D:\\miniconda\\Lib\\site-packages",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_spillback_v1\\runtime\\code\\scripts",
+        "D:\\miniconda\\python313.zip",
+        "D:\\miniconda\\DLLs",
+        "D:\\miniconda\\Lib",
+        "D:\\miniconda"
+      ],
+      "limitations": [
+        "Python audit events only; native extensions and SUMO reads not OS-traced",
+        "standard-library/package/SUMO/Windows runtime roots are broader than individual dependency files",
+        "same-user administrator can bypass this policy; it is not an adversarial security boundary"
+      ]
+    }
+  },
+  "controlled_python_no_site": true,
+  "unexpected_test_denials": 0,
+  "os_complete_monitoring": false,
+  "native_access_monitored": false,
+  "test_log": "test_1792383804517403400"
+}
