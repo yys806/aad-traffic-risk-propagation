@@ -1,0 +1,218 @@
+[
+  {
+    "before": {
+      "run_id": "b12p_P1",
+      "vehicle_id": "probe",
+      "incarnation_id": "b12p_P1|probe",
+      "time_s": 0.1,
+      "speed_mps": 0.5000009999999547,
+      "acceleration_mps2": -9.999980000000905,
+      "position_m": 98.9864999249999,
+      "edge_id": "e0",
+      "lane_id": "e0_0",
+      "last_action_time_s": 0.05,
+      "length_m": 5.0,
+      "traveled_distance_m": 0.03750002499999994,
+      "route_index": 0,
+      "route_edges": [
+        "e0",
+        "e1"
+      ],
+      "remaining_stops": [],
+      "input_has_stops": false,
+      "traci_vehicle_control": false,
+      "numerical_config_verified": true
+    },
+    "after": {
+      "run_id": "b12p_P1",
+      "vehicle_id": "probe",
+      "incarnation_id": "b12p_P1|probe",
+      "time_s": 0.15,
+      "speed_mps": 0.0,
+      "acceleration_mps2": -10.000019999999093,
+      "position_m": 98.9989999499999,
+      "edge_id": "e0",
+      "lane_id": "e0_0",
+      "last_action_time_s": 0.05,
+      "length_m": 5.0,
+      "traveled_distance_m": 0.05000004999999419,
+      "route_index": 0,
+      "route_edges": [
+        "e0",
+        "e1"
+      ],
+      "remaining_stops": [],
+      "input_has_stops": false,
+      "traci_vehicle_control": false,
+      "numerical_config_verified": true
+    },
+    "lifecycle_proof": {
+      "official_source_contract_verified": true,
+      "fresh_vehicle_lifecycle": true,
+      "no_state_restore": true,
+      "no_dynamic_stop_mutation": true,
+      "no_route_mutation": true,
+      "no_collision_or_teleport": true,
+      "no_special_devices": true,
+      "noncyclic_route_verified": true,
+      "ordinary_stop_definition_verified": true
+    },
+    "postprocessing_exclusion_devices": {
+      "elecHybrid": "false",
+      "driverstate": "false",
+      "rerouting": "false",
+      "taxi": "false",
+      "bluelight": "false",
+      "toc": "false",
+      "glosa": "false",
+      "friction": "false",
+      "stationfinder": "false"
+    },
+    "source_audit_sha256": "8636a4352f61038bad848958713f5aa71101537879b33edff08c07e23aa59d6f",
+    "plan_sha256": "38c469c7daf299ddd98bd1faa66ac03256a38f3db71b39542b979a56a4f1d74d",
+    "result": {
+      "version": "b12n-near-zero-observability-v1",
+      "classification": "Exact Pass",
+      "u_pre": 1.9999999094633125e-06,
+      "u_final": 0.0,
+      "context": true,
+      "context_evidence": {
+        "predicate": true,
+        "basis": "fresh_no_stops_stopdist_doublemax_invariant",
+        "missing": []
+      },
+      "is_action": false,
+      "reason": "independently_verified_stop_context_snap",
+      "blocker": null,
+      "scope": null,
+      "exact_pass": true,
+      "residual_m": -4.616099169574284e-15,
+      "actual_dx_m": 0.012500024999994253,
+      "expected_dx_m": 0.012500024999998869,
+      "dx_support_m": null,
+      "within_support": null,
+      "near_zero_threshold_mps": 5e-06,
+      "possible_final_candidates": null,
+      "numerical_classification": "Exact After Verified Postprocessing",
+      "target_exact_pass": true,
+      "target_candidate": true,
+      "admission_links": {
+        "actual_positive_below_strict_threshold": true,
+        "nonaction_step": true,
+        "context_independently_proven": true,
+        "no_control_or_postprocessing_override": true,
+        "actual_public_terminal_zero": true,
+        "source_final_branch_and_displacement_exact": true,
+        "source_input_SHA_verified": true
+      }
+    }
+  },
+  {
+    "before": {
+      "run_id": "b12p_P2",
+      "vehicle_id": "probe",
+      "incarnation_id": "b12p_P2|probe",
+      "time_s": 0.1,
+      "speed_mps": 0.5000024000000003,
+      "acceleration_mps2": -9.999951999999993,
+      "position_m": 98.98649981999942,
+      "edge_id": "e0",
+      "lane_id": "e0_0",
+      "last_action_time_s": 0.05,
+      "length_m": 5.0,
+      "traveled_distance_m": 0.03750005999999928,
+      "route_index": 0,
+      "route_edges": [
+        "e0",
+        "e1"
+      ],
+      "remaining_stops": [],
+      "input_has_stops": false,
+      "traci_vehicle_control": false,
+      "numerical_config_verified": true
+    },
+    "after": {
+      "run_id": "b12p_P2",
+      "vehicle_id": "probe",
+      "incarnation_id": "b12p_P2|probe",
+      "time_s": 0.15,
+      "speed_mps": 0.0,
+      "acceleration_mps2": -10.000048000000005,
+      "position_m": 98.99899987999942,
+      "edge_id": "e0",
+      "lane_id": "e0_0",
+      "last_action_time_s": 0.05,
+      "length_m": 5.0,
+      "traveled_distance_m": 0.050000119999992876,
+      "route_index": 0,
+      "route_edges": [
+        "e0",
+        "e1"
+      ],
+      "remaining_stops": [],
+      "input_has_stops": false,
+      "traci_vehicle_control": false,
+      "numerical_config_verified": true
+    },
+    "lifecycle_proof": {
+      "official_source_contract_verified": true,
+      "fresh_vehicle_lifecycle": true,
+      "no_state_restore": true,
+      "no_dynamic_stop_mutation": true,
+      "no_route_mutation": true,
+      "no_collision_or_teleport": true,
+      "no_special_devices": true,
+      "noncyclic_route_verified": true,
+      "ordinary_stop_definition_verified": true
+    },
+    "postprocessing_exclusion_devices": {
+      "elecHybrid": "false",
+      "driverstate": "false",
+      "rerouting": "false",
+      "taxi": "false",
+      "bluelight": "false",
+      "toc": "false",
+      "glosa": "false",
+      "friction": "false",
+      "stationfinder": "false"
+    },
+    "source_audit_sha256": "8636a4352f61038bad848958713f5aa71101537879b33edff08c07e23aa59d6f",
+    "plan_sha256": "38c469c7daf299ddd98bd1faa66ac03256a38f3db71b39542b979a56a4f1d74d",
+    "result": {
+      "version": "b12n-near-zero-observability-v1",
+      "classification": "Exact Pass",
+      "u_pre": 4.800000000582116e-06,
+      "u_final": 0.0,
+      "context": true,
+      "context_evidence": {
+        "predicate": true,
+        "basis": "fresh_no_stops_stopdist_doublemax_invariant",
+        "missing": []
+      },
+      "is_action": false,
+      "reason": "independently_verified_stop_context_snap",
+      "blocker": null,
+      "scope": null,
+      "exact_pass": true,
+      "residual_m": -6.411537967210279e-15,
+      "actual_dx_m": 0.012500059999993596,
+      "expected_dx_m": 0.012500060000000007,
+      "dx_support_m": null,
+      "within_support": null,
+      "near_zero_threshold_mps": 5e-06,
+      "possible_final_candidates": null,
+      "numerical_classification": "Exact After Verified Postprocessing",
+      "target_exact_pass": true,
+      "target_candidate": true,
+      "admission_links": {
+        "actual_positive_below_strict_threshold": true,
+        "nonaction_step": true,
+        "context_independently_proven": true,
+        "no_control_or_postprocessing_override": true,
+        "actual_public_terminal_zero": true,
+        "source_final_branch_and_displacement_exact": true,
+        "source_input_SHA_verified": true
+      }
+    }
+  }
+]

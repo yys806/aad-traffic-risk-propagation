@@ -1,0 +1,24 @@
+{
+  "scope": "controlled Python entrypoints",
+  "allowed_open_events": 576,
+  "denied": [],
+  "os_complete_monitoring": false,
+  "native_file_access_monitored": false,
+  "python_no_site": true,
+  "sanitized_sys_path": [
+    "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_positive_near_zero_v1\\runtime\\code\\src",
+    "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_positive_near_zero_v1\\dependency_links",
+    "D:\\miniconda\\Lib\\site-packages",
+    "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_positive_near_zero_v1",
+    "C:\\Program Files (x86)\\Eclipse\\Sumo\\tools",
+    "D:\\miniconda\\python313.zip",
+    "D:\\miniconda\\DLLs",
+    "D:\\miniconda\\Lib",
+    "D:\\miniconda"
+  ],
+  "limitations": [
+    "Python audit events only; native extensions and SUMO reads not OS-traced",
+    "standard-library/package/SUMO/Windows runtime roots are broader than individual dependency files",
+    "same-user administrator can bypass this policy; it is not an adversarial security boundary"
+  ]
+}

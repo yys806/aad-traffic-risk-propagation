@@ -139,12 +139,13 @@
     "code/tests/test_stage_0_5_b11s_evidence.py",
     "docs/STAGE_0_5_TASK_0_5_4B1_1S_STOPPING_OBSERVABILITY.md",
     "docs/plans/2026-10-19-stage-0-5-4b1-1s.md",
-    "docs/STAGE_0_5_TASK_0_5_4B1_2N_NEAR_ZERO_AND_INTEGRATION.md"
+    "docs/STAGE_0_5_TASK_0_5_4B1_2N_NEAR_ZERO_AND_INTEGRATION.md",
+    "docs/STAGE_0_5_TASK_0_5_4B1_2P_POSITIVE_NEAR_ZERO.md"
   ],
   "current": {
     "active_experiment_id": "stage_0_5",
-    "active_task": "AAD-0.5.4-B1.2-N closed at predeclared missing positive-snap runtime coverage; C/D Not Attempted; no main matrix authorized.",
-    "why_now": "Restricted source proofs and synthetic truth tables established;1 negative near-zero postprocessing edge passes. Predeclared positive nonaction snap coverage absent, integration checkpoint false. C/D not frozen or run. No retrospective acceptance or scientific readiness.",
+    "active_task": "AAD-0.5.4-B1.2-P restricted positive near-zero branch verified; stop at researcher decision; C/D and main matrix not authorized.",
+    "why_now": "B1.2-P: five predeclared native-red braking probes completed. Two actual positive nonaction near-zero snap edges independently qualified and exact, three above-threshold controls retained positive final speeds;192 general exact/3 bounded/195 edges,0 unresolved/not-evaluable/blocker. Restricted fresh no-stop domain only. No C/D or main matrix authorized/executed; old B1.2-N admission false preserved.",
     "next_decision_owner": "researcher",
     "portable_gate_paths": [
       "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",
@@ -160,7 +161,8 @@
       "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/audit.json",
       "evidence/results/RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1/audit.json",
       "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/audit.json",
-      "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/audit.json"
+      "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/audit.json",
+      "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/audit.json"
     ],
     "local_gate_paths": [
       "code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r4/scientific_gate_report.json",
@@ -174,7 +176,8 @@
       "code/outputs/formal/calibration/stage_0_5_stopping_spillback_v1/summary/audit.json",
       "code/outputs/formal/calibration/stage_0_5_stopping_observability_v3/summary/audit.json",
       "code/outputs/formal/calibration/stage_0_5_boundary_revalidation_b12_v2/summary/audit.json",
-      "code/outputs/formal/calibration/stage_0_5_near_zero_integration_v1/summary/audit.json"
+      "code/outputs/formal/calibration/stage_0_5_near_zero_integration_v1/summary/audit.json",
+      "code/outputs/formal/calibration/stage_0_5_positive_near_zero_v1/summary/audit.json"
     ]
   },
   "experiments": [
@@ -403,7 +406,7 @@
       "research_question": "SUMO 基础运动与跟驰风险是否明显脱离真实交通范围？",
       "date": "2026-09-07",
       "status": "active_pending_simulation_sample",
-      "code_version": "canonical real reference R2, independent Stage 0.5.3 no-message SUMO engineering skeleton, and the Stage 0.5.4-A measurement-equivalence/calibration-readiness audit; no scientific calibration and no frozen scientific parameter; B0 bounded exploration with explicit ballistic and guarded batch inputs; no formal calibration; B1 capsule -S whitelist/stop supervisor with fixed-behaviour boundary mechanisms (closed early); B1.2 independent layered numerical/queue integration blocked before main matrix; B1.2-N restricted source-qualified near-zero contract;3 micro probes closed at missing positive-snap runtime coverage, C/D not admitted",
+      "code_version": "canonical real reference R2, independent Stage 0.5.3 no-message SUMO engineering skeleton, and the Stage 0.5.4-A measurement-equivalence/calibration-readiness audit; no scientific calibration and no frozen scientific parameter; B0 bounded exploration with explicit ballistic and guarded batch inputs; no formal calibration; B1 capsule -S whitelist/stop supervisor with fixed-behaviour boundary mechanisms (closed early); B1.2 independent layered numerical/queue integration blocked before main matrix; B1.2-N restricted source-qualified near-zero contract;3 micro probes closed at missing positive-snap runtime coverage, C/D not admitted; B1.2-P positive-only native braking probes with independent seven-link admission; no integration/main command",
       "code_paths": [
         "code/src/riskprop/simulation_real_coverage.py",
         "code/src/riskprop/stage_0_5_sumo.py",
@@ -426,7 +429,10 @@
         "code/src/riskprop/stage_0_5_stopping_observability.py",
         "code/src/riskprop/stage_0_5_near_zero_observability.py",
         "code/src/riskprop/stage_0_5_b12n_runtime.py",
-        "code/src/riskprop/stage_0_5_b12n_worker.py"
+        "code/src/riskprop/stage_0_5_b12n_worker.py",
+        "code/src/riskprop/stage_0_5_positive_near_zero.py",
+        "code/src/riskprop/stage_0_5_positive_runtime.py",
+        "code/src/riskprop/stage_0_5_positive_worker.py"
       ],
       "entrypoints": [
         "code/scripts/prepare_stage_0_5_real_reference.py",
@@ -453,7 +459,10 @@
         "code/scripts/verify_stage_0_5_revalidation_evidence.py",
         "code/scripts/run_stage_0_5_near_zero_integration.py",
         "code/scripts/finalize_stage_0_5_near_zero_integration.py",
-        "code/scripts/verify_stage_0_5_near_zero_evidence.py"
+        "code/scripts/verify_stage_0_5_near_zero_evidence.py",
+        "code/scripts/run_stage_0_5_positive_near_zero.py",
+        "code/scripts/finalize_stage_0_5_positive_near_zero.py",
+        "code/scripts/verify_stage_0_5_positive_near_zero.py"
       ],
       "test_paths": [
         "code/tests/test_simulation_real_coverage.py",
@@ -470,7 +479,9 @@
         "code/tests/test_stage_0_5_stopping_observability.py",
         "code/tests/test_stage_0_5_near_zero_observability.py",
         "code/tests/test_stage_0_5_b12n_runtime.py",
-        "code/tests/test_stage_0_5_b12n_evidence.py"
+        "code/tests/test_stage_0_5_b12n_evidence.py",
+        "code/tests/test_stage_0_5_positive_near_zero.py",
+        "code/tests/test_stage_0_5_positive_evidence.py"
       ],
       "configuration": "R2 real reference plus two no_message_baseline generic-highway engineering fixtures (baseline_mixed_demand, measurement_probe_queue_stop); US-101 primary, Lankershim auxiliary entry-only, pNEUMA urban kinematics entry-only; all network/demand/vType/behaviour/time settings are engineering_fixture_only",
       "parameters": {
@@ -549,7 +560,14 @@
         "b1_2n_integration_allowed": false,
         "b1_2n_C": "not_attempted",
         "b1_2n_D": "not_attempted",
-        "b1_2n_main_matrix_authorized": false
+        "b1_2n_main_matrix_authorized": false,
+        "b1_2p_result_id": "RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1",
+        "b1_2p_target_branch_verified": true,
+        "b1_2p_target_exact_edges": 2,
+        "b1_2p_micro_runs": 5,
+        "b1_2p_C_D_allowed": false,
+        "b1_2p_main_matrix_allowed": false,
+        "b1_2p_future_numerical_policy_approved": false
       },
       "data_version": "RES-STAGE-0.5-REAL-REF-R2; Stage 0.2 R4 four states + final_r1 P2 + Stage 0.3 R2 canonical/R3 summaries",
       "model": "deterministic simulation-to-real coverage audit",
@@ -565,7 +583,8 @@
         "RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1",
         "RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1",
         "RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2",
-        "RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1"
+        "RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1",
+        "RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1"
       ],
       "core_metrics": [
         "formal_input_manifest",
@@ -603,7 +622,7 @@
         "source_time_coverage",
         "density_scaled_engineering_cost"
       ],
-      "current_conclusion": "Restricted source proofs and synthetic truth tables established;1 negative near-zero postprocessing edge passes. Predeclared positive nonaction snap coverage absent, integration checkpoint false. C/D not frozen or run. No retrospective acceptance or scientific readiness.",
+      "current_conclusion": "B1.2-P: five predeclared native-red braking probes completed. Two actual positive nonaction near-zero snap edges independently qualified and exact, three above-threshold controls retained positive final speeds;192 general exact/3 bounded/195 edges,0 unresolved/not-evaluable/blocker. Restricted fresh no-stop domain only. No C/D or main matrix authorized/executed; old B1.2-N admission false preserved.",
       "gate": {
         "status": "pending_simulation_sample",
         "portable_path": "evidence/results/RES-STAGE-0.5-REAL-REF-R2/audit.json"
@@ -2440,6 +2459,73 @@
       "gate_status": "pending_simulation_sample",
       "paper_locations": [
         "docs/STAGE_0_5_TASK_0_5_4B1_2N_NEAR_ZERO_AND_INTEGRATION.md"
+      ],
+      "scientific_claim_eligible": false
+    },
+    {
+      "id": "RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1",
+      "experiment_id": "stage_0_5",
+      "name": "AAD-0.5.4-B1.2-P positive near-zero nonaction snap verification",
+      "purpose": "Independently verify positive near-zero branch with native deterministic probes; no integration or scientific calibration",
+      "date": "2026-10-19",
+      "status": "restricted_positive_branch_verified",
+      "portable_evidence_paths": [
+        "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/PLAN_SHA256",
+        "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/SHA256SUMS",
+        "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/admission.json",
+        "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/analysis_access_audit.json",
+        "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/audit.json",
+        "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/control_edges.json",
+        "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/controlled_access_audit.json",
+        "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/debug_build_feasibility.json",
+        "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/execution_ledger.json",
+        "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/experiment_plan.json",
+        "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/git_source_binding_audit.json",
+        "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/historical_status_preservation.json",
+        "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/manifest.json",
+        "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/micro_input_bundle.json",
+        "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/numerical_branch_coverage.json",
+        "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/preflight.json",
+        "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/preparation_manifest.json",
+        "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/provenance.json",
+        "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/report.md",
+        "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/researcher_decision_matrix.json",
+        "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/run_manifest.json",
+        "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/runtime_budget_audit.json",
+        "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/runtime_settings_audit.json",
+        "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/source_audit.json",
+        "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/source_observability_audit.json",
+        "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/source_staging_manifest.json",
+        "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/target_edges.json",
+        "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/test_record.json",
+        "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/unresolved_edges.json",
+        "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/vehicle_conservation_audit.json"
+      ],
+      "local_artifact_paths": [
+        "code/outputs/formal/calibration/stage_0_5_positive_near_zero_v1"
+      ],
+      "code_version_source": "code/src/riskprop/stage_0_5_positive_near_zero.py; code/src/riskprop/stage_0_5_positive_runtime.py; code/src/riskprop/stage_0_5_positive_worker.py; code/scripts/run_stage_0_5_positive_near_zero.py; code/scripts/finalize_stage_0_5_positive_near_zero.py; code/scripts/verify_stage_0_5_positive_near_zero.py; code/tests/test_stage_0_5_positive_near_zero.py; code/tests/test_stage_0_5_positive_evidence.py",
+      "configuration_source": "experiment_plan.json/PLAN_SHA256 and source_audit.json; five inputs frozen before traffic",
+      "data_version_source": "13 official pinned sources;four SHA-bound B1.2-N portable metadata;new synthetic micro inputs only;no real trajectory or old state inputs",
+      "core_metrics": {
+        "micro_runs": 5,
+        "all_adjacent_edges": 195,
+        "exact_checked": 192,
+        "exact_passed": 192,
+        "target_exact_edges": 2,
+        "bounded": 3,
+        "unresolved": 0,
+        "not_evaluable": 0,
+        "engineering_blockers": 0,
+        "target_branch_verified": true,
+        "C_D_allowed": false,
+        "main_matrix_runs": 0,
+        "max_abs_exact_residual_m": 6.411537967210279e-15
+      },
+      "current_conclusion": "B1.2-P: five predeclared native-red braking probes completed. Two actual positive nonaction near-zero snap edges independently qualified and exact, three above-threshold controls retained positive final speeds;192 general exact/3 bounded/195 edges,0 unresolved/not-evaluable/blocker. Restricted fresh no-stop domain only. No C/D or main matrix authorized/executed; old B1.2-N admission false preserved.",
+      "gate_status": "pending_simulation_sample",
+      "paper_locations": [
+        "docs/STAGE_0_5_TASK_0_5_4B1_2P_POSITIVE_NEAR_ZERO.md"
       ],
       "scientific_claim_eligible": false
     }

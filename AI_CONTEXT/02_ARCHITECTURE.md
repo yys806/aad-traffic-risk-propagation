@@ -92,3 +92,8 @@ B1.2新增独立b12_observation/network/runtime/worker：全边.05s分层审计�
 ## 2026-10-19 B1.2-N
 
 独立near_zero_observability模块只负责分支候选/独立上下文充分条件/audit_transition/Coverage；b12n_runtime负责最多3+2运行与micro checkpoint；b12n_worker只读TraCI。旧B1.1-S/B1.2实现不改。实际3微型运行后缺正近零覆盖，未进入C/D。
+
+
+## 2026-10-19 B1.2-P
+
+新增独立positive_near_zero目标七项链条分类（一般精确与target Exact Pass分开），positive_runtime仅prepare/tests/freeze/run/worker/checkpoint，positive_worker只读原生信号探针。复用旧数值/监督/胶囊，不改B1.2-N或正式TTC/P2。

@@ -1,0 +1,112 @@
+{
+  "passed": true,
+  "command": [
+    "D:\\miniconda\\python.exe",
+    "-S",
+    "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_positive_near_zero_v1\\runtime\\code\\scripts\\b1_test_entry.py",
+    "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_positive_near_zero_v1\\runtime\\code\\tests\\test_stage_0_5_boundary_bottleneck.py",
+    "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_positive_near_zero_v1\\runtime\\code\\tests\\test_stage_0_5_near_zero_observability.py",
+    "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_positive_near_zero_v1\\runtime\\code\\tests\\test_stage_0_5_positive_near_zero.py",
+    "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_positive_near_zero_v1\\runtime\\code\\tests\\test_stage_0_5_stopping_observability.py",
+    "-q",
+    "-c",
+    "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_positive_near_zero_v1\\runtime\\code\\pytest.ini",
+    "--rootdir",
+    "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_positive_near_zero_v1\\runtime\\code",
+    "--basetemp",
+    "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_positive_near_zero_v1\\test_tmp\\1792408887512048100",
+    "-o",
+    "cache_dir=D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_positive_near_zero_v1\\runtime_cache\\pytest"
+  ],
+  "output": "........................................................................ [ 47%]\n........................................................................ [ 95%]\n.......                                                                  [100%]\n151 passed in 19.23s\n",
+  "exit_code": 0,
+  "test_sha256": {
+    "test_stage_0_5_boundary_bottleneck.py": "6259c3799fb6fb67e1b2bf1a4c1ec701d2afd582ad6860f398cc8680d191b035",
+    "test_stage_0_5_near_zero_observability.py": "151df84c56fea5f36fdff27b020f4e5140a49c6c0d173bc2e1fb93aa67159f43",
+    "test_stage_0_5_positive_near_zero.py": "1c0b298eb029cebaf8cd684b599093690a7d8e2d517034a3626eb90ab016ba88",
+    "test_stage_0_5_stopping_observability.py": "06bfbe9fb9e37b27b663e3443f3e0d1a15ed814550e2aa29ba1a7b130af8ee64"
+  },
+  "access_audit": {
+    "scope": "controlled Python entrypoints",
+    "allowed_open_events": 1945,
+    "denied": [],
+    "os_complete_monitoring": false,
+    "native_file_access_monitored": false,
+    "python_no_site": true,
+    "sanitized_sys_path": [
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_positive_near_zero_v1\\runtime\\code\\src",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_positive_near_zero_v1\\dependency_links",
+      "D:\\miniconda\\Lib\\site-packages",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_positive_near_zero_v1\\runtime\\code\\scripts",
+      "D:\\miniconda\\python313.zip",
+      "D:\\miniconda\\DLLs",
+      "D:\\miniconda\\Lib",
+      "D:\\miniconda"
+    ],
+    "limitations": [
+      "Python audit events only; native extensions and SUMO reads not OS-traced",
+      "standard-library/package/SUMO/Windows runtime roots are broader than individual dependency files",
+      "same-user administrator can bypass this policy; it is not an adversarial security boundary"
+    ]
+  },
+  "guard_probe": {
+    "cases": [
+      {
+        "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_us101__0820_0835.json",
+        "refused": true,
+        "before_filesystem_read": true
+      },
+      {
+        "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_locked_holdout.json",
+        "refused": true,
+        "before_filesystem_read": true
+      },
+      {
+        "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_historical_event_characteristics.parquet",
+        "refused": true,
+        "before_filesystem_read": true
+      }
+    ],
+    "audit": {
+      "scope": "controlled Python entrypoints",
+      "allowed_open_events": 0,
+      "denied": [
+        {
+          "event": "open",
+          "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_us101__0820_0835.json",
+          "write": false
+        },
+        {
+          "event": "open",
+          "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_locked_holdout.json",
+          "write": false
+        },
+        {
+          "event": "open",
+          "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_historical_event_characteristics.parquet",
+          "write": false
+        }
+      ],
+      "os_complete_monitoring": false,
+      "native_file_access_monitored": false,
+      "python_no_site": true,
+      "sanitized_sys_path": [
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_positive_near_zero_v1\\runtime\\code\\src",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_positive_near_zero_v1\\dependency_links",
+        "D:\\miniconda\\Lib\\site-packages",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_positive_near_zero_v1\\runtime\\code\\scripts",
+        "D:\\miniconda\\python313.zip",
+        "D:\\miniconda\\DLLs",
+        "D:\\miniconda\\Lib",
+        "D:\\miniconda"
+      ],
+      "limitations": [
+        "Python audit events only; native extensions and SUMO reads not OS-traced",
+        "standard-library/package/SUMO/Windows runtime roots are broader than individual dependency files",
+        "same-user administrator can bypass this policy; it is not an adversarial security boundary"
+      ]
+    }
+  },
+  "real_data_inputs": [],
+  "os_complete_monitoring": false
+}

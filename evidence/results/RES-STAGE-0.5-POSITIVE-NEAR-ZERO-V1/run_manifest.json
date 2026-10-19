@@ -1,0 +1,1122 @@
+{
+  "runs": [
+    {
+      "run_id": "b12p_P1",
+      "status": "completed_valid",
+      "started_utc": "2026-10-19T11:22:44.488709Z",
+      "exit_code": 0,
+      "failure": null,
+      "wall_s": 6.1129994000075385,
+      "peak_sampled_tree_rss_bytes": 127098880,
+      "blockers": [],
+      "warnings": [],
+      "bytes": 133277
+    },
+    {
+      "run_id": "b12p_P2",
+      "status": "completed_valid",
+      "started_utc": "2026-10-19T11:22:50.617462Z",
+      "exit_code": 0,
+      "failure": null,
+      "wall_s": 5.561308299991651,
+      "peak_sampled_tree_rss_bytes": 124903424,
+      "blockers": [],
+      "warnings": [],
+      "bytes": 133514
+    },
+    {
+      "run_id": "b12p_P3",
+      "status": "completed_valid",
+      "started_utc": "2026-10-19T11:22:56.193831Z",
+      "exit_code": 0,
+      "failure": null,
+      "wall_s": 5.504871400000411,
+      "peak_sampled_tree_rss_bytes": 125087744,
+      "blockers": [],
+      "warnings": [],
+      "bytes": 132054
+    },
+    {
+      "run_id": "b12p_P4",
+      "status": "completed_valid",
+      "started_utc": "2026-10-19T11:23:01.714832Z",
+      "exit_code": 0,
+      "failure": null,
+      "wall_s": 4.908827499995823,
+      "peak_sampled_tree_rss_bytes": 120188928,
+      "blockers": [],
+      "warnings": [],
+      "bytes": 133144
+    },
+    {
+      "run_id": "b12p_P5",
+      "status": "completed_valid",
+      "started_utc": "2026-10-19T11:23:06.638911Z",
+      "exit_code": 0,
+      "failure": null,
+      "wall_s": 5.0100664000055986,
+      "peak_sampled_tree_rss_bytes": 121847808,
+      "blockers": [],
+      "warnings": [],
+      "bytes": 133118
+    }
+  ],
+  "summaries": [
+    {
+      "run_id": "b12p_P1",
+      "kind": "P1",
+      "status": "completed_valid",
+      "failure": null,
+      "engineering_blockers": [],
+      "warnings": [],
+      "planned_s": 2.0,
+      "observed_s": 2.0,
+      "target_exact_count": 1,
+      "target_status": "Exact Pass",
+      "target_classifications": {
+        "Not Target Branch": 38,
+        "Exact Pass": 1
+      },
+      "general_numerical_classifications": {
+        "Exact Without Postprocessing": 38,
+        "Exact After Verified Postprocessing": 1
+      },
+      "reasons": {
+        "decision_positive_final_observable_no_overrides": 1,
+        "independently_verified_stop_context_snap": 1,
+        "stationary_displacement_identified_independent_of_hidden_final": 19,
+        "zero_is_postprocessing_fixed_point": 18
+      },
+      "all_adjacent_edges": 39,
+      "max_abs_exact_residual_m": 4.616099169574284e-15,
+      "exact_tolerance_m": 1e-06,
+      "control_edges": 0,
+      "unresolved_edges": 0,
+      "positive_candidates": [
+        1.9999999094633125e-06
+      ],
+      "inserted": 1,
+      "exited": 0,
+      "present": 1,
+      "max_conservation_residual": 0,
+      "runtime_settings": {
+        "verified": true,
+        "checks": 26,
+        "options": {
+          "step-method.ballistic": "true",
+          "step-length": ".05",
+          "seed": "20261019",
+          "threads": "1",
+          "time-to-teleport": "-1",
+          "random": "false"
+        },
+        "types": {
+          "probe": {
+            "tau": 1.0,
+            "minGap": 2.5,
+            "actionStepLength": 0.1,
+            "maxSpeed": 27.78,
+            "length": 5.0,
+            "vClass": "passenger",
+            "sigma": 0.0,
+            "accel": 2.6,
+            "decel": 20.0,
+            "apparentDecel": 20.0,
+            "emergencyDecel": 20.0,
+            "speedFactor": 1.0,
+            "speedDev": 0.0
+          }
+        },
+        "type_echo": {
+          "probe": {
+            "id": "probe",
+            "length": "5.00",
+            "minGap": "2.50",
+            "maxSpeed": "27.78",
+            "speedFactor": "normc(1.00,0.00)",
+            "actionStepLength": "0.10",
+            "vClass": "passenger",
+            "laneChangeModel": "LC2013",
+            "jmStoplineGap": "1",
+            "carFollowModel": "Krauss",
+            "accel": "2.6",
+            "decel": "20",
+            "emergencyDecel": "20",
+            "apparentDecel": "20",
+            "sigma": "0",
+            "sigmaStep": "1",
+            "tau": "1"
+          }
+        },
+        "sumo_version": [
+          22,
+          "SUMO 1.26.0"
+        ],
+        "tls": [],
+        "started_empty_fresh": true,
+        "vehicle_control": false,
+        "state_load": false,
+        "P2_calculated": false,
+        "mesosim": "false",
+        "num_clients": "1",
+        "trafficlight_programs": [
+          {
+            "program": "b12p_all_red",
+            "phases": [
+              {
+                "duration": 30.0,
+                "state": "r"
+              }
+            ]
+          }
+        ],
+        "jmStoplineGap_echo": "1"
+      },
+      "wall_s": 1.1619914000038989,
+      "state_rows": 40,
+      "plan_sha256": "38c469c7daf299ddd98bd1faa66ac03256a38f3db71b39542b979a56a4f1d74d",
+      "C_D_allowed": false,
+      "main_matrix_allowed": false,
+      "scientific_claim_eligible": false
+    },
+    {
+      "run_id": "b12p_P2",
+      "kind": "P2",
+      "status": "completed_valid",
+      "failure": null,
+      "engineering_blockers": [],
+      "warnings": [],
+      "planned_s": 2.0,
+      "observed_s": 2.0,
+      "target_exact_count": 1,
+      "target_status": "Exact Pass",
+      "target_classifications": {
+        "Not Target Branch": 38,
+        "Exact Pass": 1
+      },
+      "general_numerical_classifications": {
+        "Exact Without Postprocessing": 38,
+        "Exact After Verified Postprocessing": 1
+      },
+      "reasons": {
+        "decision_positive_final_observable_no_overrides": 1,
+        "independently_verified_stop_context_snap": 1,
+        "stationary_displacement_identified_independent_of_hidden_final": 19,
+        "zero_is_postprocessing_fixed_point": 18
+      },
+      "all_adjacent_edges": 39,
+      "max_abs_exact_residual_m": 6.411537967210279e-15,
+      "exact_tolerance_m": 1e-06,
+      "control_edges": 0,
+      "unresolved_edges": 0,
+      "positive_candidates": [
+        4.800000000582116e-06
+      ],
+      "inserted": 1,
+      "exited": 0,
+      "present": 1,
+      "max_conservation_residual": 0,
+      "runtime_settings": {
+        "verified": true,
+        "checks": 26,
+        "options": {
+          "step-method.ballistic": "true",
+          "step-length": ".05",
+          "seed": "20261019",
+          "threads": "1",
+          "time-to-teleport": "-1",
+          "random": "false"
+        },
+        "types": {
+          "probe": {
+            "tau": 1.0,
+            "minGap": 2.5,
+            "actionStepLength": 0.1,
+            "maxSpeed": 27.78,
+            "length": 5.0,
+            "vClass": "passenger",
+            "sigma": 0.0,
+            "accel": 2.6,
+            "decel": 20.0,
+            "apparentDecel": 20.0,
+            "emergencyDecel": 20.0,
+            "speedFactor": 1.0,
+            "speedDev": 0.0
+          }
+        },
+        "type_echo": {
+          "probe": {
+            "id": "probe",
+            "length": "5.00",
+            "minGap": "2.50",
+            "maxSpeed": "27.78",
+            "speedFactor": "normc(1.00,0.00)",
+            "actionStepLength": "0.10",
+            "vClass": "passenger",
+            "laneChangeModel": "LC2013",
+            "jmStoplineGap": "1",
+            "carFollowModel": "Krauss",
+            "accel": "2.6",
+            "decel": "20",
+            "emergencyDecel": "20",
+            "apparentDecel": "20",
+            "sigma": "0",
+            "sigmaStep": "1",
+            "tau": "1"
+          }
+        },
+        "sumo_version": [
+          22,
+          "SUMO 1.26.0"
+        ],
+        "tls": [],
+        "started_empty_fresh": true,
+        "vehicle_control": false,
+        "state_load": false,
+        "P2_calculated": false,
+        "mesosim": "false",
+        "num_clients": "1",
+        "trafficlight_programs": [
+          {
+            "program": "b12p_all_red",
+            "phases": [
+              {
+                "duration": 30.0,
+                "state": "r"
+              }
+            ]
+          }
+        ],
+        "jmStoplineGap_echo": "1"
+      },
+      "wall_s": 1.116987200002768,
+      "state_rows": 40,
+      "plan_sha256": "38c469c7daf299ddd98bd1faa66ac03256a38f3db71b39542b979a56a4f1d74d",
+      "C_D_allowed": false,
+      "main_matrix_allowed": false,
+      "scientific_claim_eligible": false
+    },
+    {
+      "run_id": "b12p_P3",
+      "kind": "P3",
+      "status": "completed_valid",
+      "failure": null,
+      "engineering_blockers": [],
+      "warnings": [],
+      "planned_s": 2.0,
+      "observed_s": 2.0,
+      "target_exact_count": 0,
+      "target_status": "Not Observed",
+      "target_classifications": {
+        "Not Target Branch": 38,
+        "Bounded Consistency Only": 1
+      },
+      "general_numerical_classifications": {
+        "Exact Without Postprocessing": 38,
+        "Bounded Consistency Only": 1
+      },
+      "reasons": {
+        "decision_positive_final_observable_no_overrides": 1,
+        "outside_strict_snap_interval": 2,
+        "decision_terminal_zero_hidden_signed_candidate": 1,
+        "stationary_displacement_identified_independent_of_hidden_final": 18,
+        "zero_is_postprocessing_fixed_point": 17
+      },
+      "all_adjacent_edges": 39,
+      "max_abs_exact_residual_m": 5.920611223508843e-15,
+      "exact_tolerance_m": 1e-06,
+      "control_edges": 1,
+      "unresolved_edges": 0,
+      "positive_candidates": [
+        5.00000003156309e-06
+      ],
+      "inserted": 1,
+      "exited": 0,
+      "present": 1,
+      "max_conservation_residual": 0,
+      "runtime_settings": {
+        "verified": true,
+        "checks": 26,
+        "options": {
+          "step-method.ballistic": "true",
+          "step-length": ".05",
+          "seed": "20261019",
+          "threads": "1",
+          "time-to-teleport": "-1",
+          "random": "false"
+        },
+        "types": {
+          "probe": {
+            "tau": 1.0,
+            "minGap": 2.5,
+            "actionStepLength": 0.1,
+            "maxSpeed": 27.78,
+            "length": 5.0,
+            "vClass": "passenger",
+            "sigma": 0.0,
+            "accel": 2.6,
+            "decel": 20.0,
+            "apparentDecel": 20.0,
+            "emergencyDecel": 20.0,
+            "speedFactor": 1.0,
+            "speedDev": 0.0
+          }
+        },
+        "type_echo": {
+          "probe": {
+            "id": "probe",
+            "length": "5.00",
+            "minGap": "2.50",
+            "maxSpeed": "27.78",
+            "speedFactor": "normc(1.00,0.00)",
+            "actionStepLength": "0.10",
+            "vClass": "passenger",
+            "laneChangeModel": "LC2013",
+            "jmStoplineGap": "1",
+            "carFollowModel": "Krauss",
+            "accel": "2.6",
+            "decel": "20",
+            "emergencyDecel": "20",
+            "apparentDecel": "20",
+            "sigma": "0",
+            "sigmaStep": "1",
+            "tau": "1"
+          }
+        },
+        "sumo_version": [
+          22,
+          "SUMO 1.26.0"
+        ],
+        "tls": [],
+        "started_empty_fresh": true,
+        "vehicle_control": false,
+        "state_load": false,
+        "P2_calculated": false,
+        "mesosim": "false",
+        "num_clients": "1",
+        "trafficlight_programs": [
+          {
+            "program": "b12p_all_red",
+            "phases": [
+              {
+                "duration": 30.0,
+                "state": "r"
+              }
+            ]
+          }
+        ],
+        "jmStoplineGap_echo": "1"
+      },
+      "wall_s": 1.0847484000114491,
+      "state_rows": 40,
+      "plan_sha256": "38c469c7daf299ddd98bd1faa66ac03256a38f3db71b39542b979a56a4f1d74d",
+      "C_D_allowed": false,
+      "main_matrix_allowed": false,
+      "scientific_claim_eligible": false
+    },
+    {
+      "run_id": "b12p_P4",
+      "kind": "P4",
+      "status": "completed_valid",
+      "failure": null,
+      "engineering_blockers": [],
+      "warnings": [],
+      "planned_s": 2.0,
+      "observed_s": 2.0,
+      "target_exact_count": 0,
+      "target_status": "Not Observed",
+      "target_classifications": {
+        "Not Target Branch": 38,
+        "Bounded Consistency Only": 1
+      },
+      "general_numerical_classifications": {
+        "Exact Without Postprocessing": 38,
+        "Bounded Consistency Only": 1
+      },
+      "reasons": {
+        "decision_positive_final_observable_no_overrides": 1,
+        "outside_strict_snap_interval": 2,
+        "decision_terminal_zero_hidden_signed_candidate": 1,
+        "stationary_displacement_identified_independent_of_hidden_final": 18,
+        "zero_is_postprocessing_fixed_point": 17
+      },
+      "all_adjacent_edges": 39,
+      "max_abs_exact_residual_m": 2.9559688030644793e-15,
+      "exact_tolerance_m": 1e-06,
+      "control_edges": 1,
+      "unresolved_edges": 0,
+      "positive_candidates": [
+        5.200000023020124e-06
+      ],
+      "inserted": 1,
+      "exited": 0,
+      "present": 1,
+      "max_conservation_residual": 0,
+      "runtime_settings": {
+        "verified": true,
+        "checks": 26,
+        "options": {
+          "step-method.ballistic": "true",
+          "step-length": ".05",
+          "seed": "20261019",
+          "threads": "1",
+          "time-to-teleport": "-1",
+          "random": "false"
+        },
+        "types": {
+          "probe": {
+            "tau": 1.0,
+            "minGap": 2.5,
+            "actionStepLength": 0.1,
+            "maxSpeed": 27.78,
+            "length": 5.0,
+            "vClass": "passenger",
+            "sigma": 0.0,
+            "accel": 2.6,
+            "decel": 20.0,
+            "apparentDecel": 20.0,
+            "emergencyDecel": 20.0,
+            "speedFactor": 1.0,
+            "speedDev": 0.0
+          }
+        },
+        "type_echo": {
+          "probe": {
+            "id": "probe",
+            "length": "5.00",
+            "minGap": "2.50",
+            "maxSpeed": "27.78",
+            "speedFactor": "normc(1.00,0.00)",
+            "actionStepLength": "0.10",
+            "vClass": "passenger",
+            "laneChangeModel": "LC2013",
+            "jmStoplineGap": "1",
+            "carFollowModel": "Krauss",
+            "accel": "2.6",
+            "decel": "20",
+            "emergencyDecel": "20",
+            "apparentDecel": "20",
+            "sigma": "0",
+            "sigmaStep": "1",
+            "tau": "1"
+          }
+        },
+        "sumo_version": [
+          22,
+          "SUMO 1.26.0"
+        ],
+        "tls": [],
+        "started_empty_fresh": true,
+        "vehicle_control": false,
+        "state_load": false,
+        "P2_calculated": false,
+        "mesosim": "false",
+        "num_clients": "1",
+        "trafficlight_programs": [
+          {
+            "program": "b12p_all_red",
+            "phases": [
+              {
+                "duration": 30.0,
+                "state": "r"
+              }
+            ]
+          }
+        ],
+        "jmStoplineGap_echo": "1"
+      },
+      "wall_s": 1.0849461000034353,
+      "state_rows": 40,
+      "plan_sha256": "38c469c7daf299ddd98bd1faa66ac03256a38f3db71b39542b979a56a4f1d74d",
+      "C_D_allowed": false,
+      "main_matrix_allowed": false,
+      "scientific_claim_eligible": false
+    },
+    {
+      "run_id": "b12p_P5",
+      "kind": "P5",
+      "status": "completed_valid",
+      "failure": null,
+      "engineering_blockers": [],
+      "warnings": [],
+      "planned_s": 2.0,
+      "observed_s": 2.0,
+      "target_exact_count": 0,
+      "target_status": "Not Observed",
+      "target_classifications": {
+        "Not Target Branch": 38,
+        "Bounded Consistency Only": 1
+      },
+      "general_numerical_classifications": {
+        "Exact Without Postprocessing": 38,
+        "Bounded Consistency Only": 1
+      },
+      "reasons": {
+        "decision_positive_final_observable_no_overrides": 1,
+        "outside_strict_snap_interval": 2,
+        "decision_terminal_zero_hidden_signed_candidate": 1,
+        "stationary_displacement_identified_independent_of_hidden_final": 18,
+        "zero_is_postprocessing_fixed_point": 17
+      },
+      "all_adjacent_edges": 39,
+      "max_abs_exact_residual_m": 3.0253577421035516e-15,
+      "exact_tolerance_m": 1e-06,
+      "control_edges": 1,
+      "unresolved_edges": 0,
+      "positive_candidates": [
+        7.999999964480864e-06
+      ],
+      "inserted": 1,
+      "exited": 0,
+      "present": 1,
+      "max_conservation_residual": 0,
+      "runtime_settings": {
+        "verified": true,
+        "checks": 26,
+        "options": {
+          "step-method.ballistic": "true",
+          "step-length": ".05",
+          "seed": "20261019",
+          "threads": "1",
+          "time-to-teleport": "-1",
+          "random": "false"
+        },
+        "types": {
+          "probe": {
+            "tau": 1.0,
+            "minGap": 2.5,
+            "actionStepLength": 0.1,
+            "maxSpeed": 27.78,
+            "length": 5.0,
+            "vClass": "passenger",
+            "sigma": 0.0,
+            "accel": 2.6,
+            "decel": 20.0,
+            "apparentDecel": 20.0,
+            "emergencyDecel": 20.0,
+            "speedFactor": 1.0,
+            "speedDev": 0.0
+          }
+        },
+        "type_echo": {
+          "probe": {
+            "id": "probe",
+            "length": "5.00",
+            "minGap": "2.50",
+            "maxSpeed": "27.78",
+            "speedFactor": "normc(1.00,0.00)",
+            "actionStepLength": "0.10",
+            "vClass": "passenger",
+            "laneChangeModel": "LC2013",
+            "jmStoplineGap": "1",
+            "carFollowModel": "Krauss",
+            "accel": "2.6",
+            "decel": "20",
+            "emergencyDecel": "20",
+            "apparentDecel": "20",
+            "sigma": "0",
+            "sigmaStep": "1",
+            "tau": "1"
+          }
+        },
+        "sumo_version": [
+          22,
+          "SUMO 1.26.0"
+        ],
+        "tls": [],
+        "started_empty_fresh": true,
+        "vehicle_control": false,
+        "state_load": false,
+        "P2_calculated": false,
+        "mesosim": "false",
+        "num_clients": "1",
+        "trafficlight_programs": [
+          {
+            "program": "b12p_all_red",
+            "phases": [
+              {
+                "duration": 30.0,
+                "state": "r"
+              }
+            ]
+          }
+        ],
+        "jmStoplineGap_echo": "1"
+      },
+      "wall_s": 1.131620700005442,
+      "state_rows": 40,
+      "plan_sha256": "38c469c7daf299ddd98bd1faa66ac03256a38f3db71b39542b979a56a4f1d74d",
+      "C_D_allowed": false,
+      "main_matrix_allowed": false,
+      "scientific_claim_eligible": false
+    }
+  ],
+  "input_bindings": [
+    {
+      "run_id": "b12p_P1",
+      "kind": "P1",
+      "nominal_w_mps": 2e-06,
+      "expected_role": "strict interior",
+      "seed": 20261019,
+      "duration_s": 2.0,
+      "inputs": {
+        "network": {
+          "path": "inputs/network/probe.net.xml",
+          "sha256": "84c99c3bcc929f48a0ee6063a343dd25ab1c99b8b5e83c050ed84d1fc10c2e3c"
+        },
+        "demand": {
+          "path": "inputs/b12p_P1.rou.xml",
+          "sha256": "bc85952e9084326b31e12268267886e27b586c004857612d87c97b67ebc66cbe"
+        },
+        "config": {
+          "path": "inputs/b12p_P1.sumocfg",
+          "sha256": "9116f05db78725db7c5076359825167ca04e803a298b8f3c732f7168e2214c09"
+        }
+      }
+    },
+    {
+      "run_id": "b12p_P2",
+      "kind": "P2",
+      "nominal_w_mps": 4.8e-06,
+      "expected_role": "near but strictly below",
+      "seed": 20261019,
+      "duration_s": 2.0,
+      "inputs": {
+        "network": {
+          "path": "inputs/network/probe.net.xml",
+          "sha256": "84c99c3bcc929f48a0ee6063a343dd25ab1c99b8b5e83c050ed84d1fc10c2e3c"
+        },
+        "demand": {
+          "path": "inputs/b12p_P2.rou.xml",
+          "sha256": "a7bd4ce41df018a343e815981ed698fb135ade96eaaddcc521ebc027a1d0f2a8"
+        },
+        "config": {
+          "path": "inputs/b12p_P2.sumocfg",
+          "sha256": "187c5e04c28012f38a0b31a7c48a1d0c7c430c06ac26c7fc662fad81b64db75c"
+        }
+      }
+    },
+    {
+      "run_id": "b12p_P3",
+      "kind": "P3",
+      "nominal_w_mps": 5e-06,
+      "expected_role": "nominal equality; actual floating comparison only",
+      "seed": 20261019,
+      "duration_s": 2.0,
+      "inputs": {
+        "network": {
+          "path": "inputs/network/probe.net.xml",
+          "sha256": "84c99c3bcc929f48a0ee6063a343dd25ab1c99b8b5e83c050ed84d1fc10c2e3c"
+        },
+        "demand": {
+          "path": "inputs/b12p_P3.rou.xml",
+          "sha256": "0b351df5cfa5afecce3e801b2ccb2833eb0eb68a09cbfec7df622fe0076a129e"
+        },
+        "config": {
+          "path": "inputs/b12p_P3.sumocfg",
+          "sha256": "48f87eac91d389f48f6c03431bd26f3f00498900a5379e115ffdb23a8036287e"
+        }
+      }
+    },
+    {
+      "run_id": "b12p_P4",
+      "kind": "P4",
+      "nominal_w_mps": 5.2e-06,
+      "expected_role": "near above control",
+      "seed": 20261019,
+      "duration_s": 2.0,
+      "inputs": {
+        "network": {
+          "path": "inputs/network/probe.net.xml",
+          "sha256": "84c99c3bcc929f48a0ee6063a343dd25ab1c99b8b5e83c050ed84d1fc10c2e3c"
+        },
+        "demand": {
+          "path": "inputs/b12p_P4.rou.xml",
+          "sha256": "b89f471f04fad7eb682b4298fd36411f787cac0bd2d3a2a538a54da75bcfe34e"
+        },
+        "config": {
+          "path": "inputs/b12p_P4.sumocfg",
+          "sha256": "670ad8e2a7bb8f380036bf0a25c9309e9c6b5376d76e0073b600c8094c408748"
+        }
+      }
+    },
+    {
+      "run_id": "b12p_P5",
+      "kind": "P5",
+      "nominal_w_mps": 8e-06,
+      "expected_role": "above control",
+      "seed": 20261019,
+      "duration_s": 2.0,
+      "inputs": {
+        "network": {
+          "path": "inputs/network/probe.net.xml",
+          "sha256": "84c99c3bcc929f48a0ee6063a343dd25ab1c99b8b5e83c050ed84d1fc10c2e3c"
+        },
+        "demand": {
+          "path": "inputs/b12p_P5.rou.xml",
+          "sha256": "ac56909650588b195d236d241235e99aae2e6ee7da3b026fb4d3efd93db2944a"
+        },
+        "config": {
+          "path": "inputs/b12p_P5.sumocfg",
+          "sha256": "e6fde51d16f54416ad80dd0df4dae199e83136e6b49056dd6a7813d7bb6cb8fb"
+        }
+      }
+    }
+  ],
+  "actual_runs": 5,
+  "C_D_runs": 0,
+  "main_matrix_runs": 0,
+  "main_matrix_authorized": false,
+  "raw_local_file_bindings": [
+    {
+      "run_id": "b12p_P1",
+      "local_files": [
+        {
+          "path": "runs/b12p_P1/accounting.json",
+          "sha256": "f2b76cef569760d966f19cae09d84d1a6d7f49f8f71188ede8400322f8ebcd7c",
+          "bytes": 5065
+        },
+        {
+          "path": "runs/b12p_P1/control_edges.json",
+          "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+          "bytes": 4
+        },
+        {
+          "path": "runs/b12p_P1/device_proofs.json",
+          "sha256": "028dbb6d982d8e5e4eaf6a0baa449150b1b5b6625abcab3a87ee7ebac8baebc3",
+          "bytes": 258
+        },
+        {
+          "path": "runs/b12p_P1/edge_audit.jsonl",
+          "sha256": "52fc76aabe153b84b633a6fc386365006f623ba2adb7d63bb11668267b165a4e",
+          "bytes": 92945
+        },
+        {
+          "path": "runs/b12p_P1/runtime_initial_state.xml",
+          "sha256": "8380a81a3c1b18786a90417c973092264bc9e13940ea826758d703db71106767",
+          "bytes": 2322
+        },
+        {
+          "path": "runs/b12p_P1/runtime_settings.json",
+          "sha256": "7a583ccdfb1f038f22815c4752d1301e7c76cd2d8cd6d3954379faac8c16afd3",
+          "bytes": 1567
+        },
+        {
+          "path": "runs/b12p_P1/run_config.json",
+          "sha256": "1f96a2858472e102bab7b798fc87ba35c16cc3f475988eb47f5a02d94614b19d",
+          "bytes": 1122
+        },
+        {
+          "path": "runs/b12p_P1/states.json",
+          "sha256": "b60023e7b51b4b293477879aa7bb1c58b0f1d8a9eddaae162a9124d3c2f10ad5",
+          "bytes": 23215
+        },
+        {
+          "path": "runs/b12p_P1/summary.json",
+          "sha256": "eaf4bf3c38752b675c63f368fdbb33659ebb935b563eb5e8f3b984c7d97c4760",
+          "bytes": 3012
+        },
+        {
+          "path": "runs/b12p_P1/sumo_errors.log",
+          "sha256": "773c2aee84b0776610cea5e25de22fc367c1af724bd446cb2247064807d337d8",
+          "bytes": 85
+        },
+        {
+          "path": "runs/b12p_P1/target_edges.json",
+          "sha256": "2e2030371f166d03c3f9e6fe84214f8a59792c9b356644cffcef58952db0551b",
+          "bytes": 3534
+        },
+        {
+          "path": "runs/b12p_P1/unresolved_edges.json",
+          "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+          "bytes": 4
+        },
+        {
+          "path": "runs/b12p_P1/worker.log",
+          "sha256": "5954be91838aac3c2fac4d4e080c84551db178dc68f1ef3181444ae91697f1f5",
+          "bytes": 144
+        }
+      ]
+    },
+    {
+      "run_id": "b12p_P2",
+      "local_files": [
+        {
+          "path": "runs/b12p_P2/accounting.json",
+          "sha256": "f2b76cef569760d966f19cae09d84d1a6d7f49f8f71188ede8400322f8ebcd7c",
+          "bytes": 5065
+        },
+        {
+          "path": "runs/b12p_P2/control_edges.json",
+          "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+          "bytes": 4
+        },
+        {
+          "path": "runs/b12p_P2/device_proofs.json",
+          "sha256": "028dbb6d982d8e5e4eaf6a0baa449150b1b5b6625abcab3a87ee7ebac8baebc3",
+          "bytes": 258
+        },
+        {
+          "path": "runs/b12p_P2/edge_audit.jsonl",
+          "sha256": "e0e7e73737d09f031564f0a73952f34f2a717888a0dd1f1e38e247586722768e",
+          "bytes": 93096
+        },
+        {
+          "path": "runs/b12p_P2/runtime_initial_state.xml",
+          "sha256": "418d595186abe3da6a59d856951d590ff21abbd63a7fd172082d6d976de7d3fb",
+          "bytes": 2322
+        },
+        {
+          "path": "runs/b12p_P2/runtime_settings.json",
+          "sha256": "7a583ccdfb1f038f22815c4752d1301e7c76cd2d8cd6d3954379faac8c16afd3",
+          "bytes": 1567
+        },
+        {
+          "path": "runs/b12p_P2/run_config.json",
+          "sha256": "50260d3e862406a8430653e707599d0c75764584c6451159ae44a855a29fdc86",
+          "bytes": 1130
+        },
+        {
+          "path": "runs/b12p_P2/states.json",
+          "sha256": "2514f74ac89b7d926921469a3fa080dfc8fcabf02991e9204f706d175cc99b01",
+          "bytes": 23293
+        },
+        {
+          "path": "runs/b12p_P2/summary.json",
+          "sha256": "5b79c9b01c203dc4254341523f53d5c05e586ec866d2ba28d7facb1cece55e50",
+          "bytes": 3010
+        },
+        {
+          "path": "runs/b12p_P2/sumo_errors.log",
+          "sha256": "773c2aee84b0776610cea5e25de22fc367c1af724bd446cb2247064807d337d8",
+          "bytes": 85
+        },
+        {
+          "path": "runs/b12p_P2/target_edges.json",
+          "sha256": "c31038c3719b51cf7ccc61a1e6b4a49684328025b9c5b0e9dfbd01c72902024c",
+          "bytes": 3536
+        },
+        {
+          "path": "runs/b12p_P2/unresolved_edges.json",
+          "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+          "bytes": 4
+        },
+        {
+          "path": "runs/b12p_P2/worker.log",
+          "sha256": "0ab4f5d67df95587199bea12f5bef0365590c14b9052054f16786f0bea907808",
+          "bytes": 144
+        }
+      ]
+    },
+    {
+      "run_id": "b12p_P3",
+      "local_files": [
+        {
+          "path": "runs/b12p_P3/accounting.json",
+          "sha256": "f2b76cef569760d966f19cae09d84d1a6d7f49f8f71188ede8400322f8ebcd7c",
+          "bytes": 5065
+        },
+        {
+          "path": "runs/b12p_P3/control_edges.json",
+          "sha256": "34dafce32de86526846fe01aad4a3adeab67bcd7b7cf2ea6331a4a1c49987fa5",
+          "bytes": 3206
+        },
+        {
+          "path": "runs/b12p_P3/device_proofs.json",
+          "sha256": "028dbb6d982d8e5e4eaf6a0baa449150b1b5b6625abcab3a87ee7ebac8baebc3",
+          "bytes": 258
+        },
+        {
+          "path": "runs/b12p_P3/edge_audit.jsonl",
+          "sha256": "80edfc075671b490fedb20b6af03643fe9bd1483e6cc329ebeccfdd5915b985b",
+          "bytes": 92261
+        },
+        {
+          "path": "runs/b12p_P3/runtime_initial_state.xml",
+          "sha256": "61dfb62dedad838be6925c8e3935b9d22bec98dcc5df30d50087c93e66f804d4",
+          "bytes": 2322
+        },
+        {
+          "path": "runs/b12p_P3/runtime_settings.json",
+          "sha256": "7a583ccdfb1f038f22815c4752d1301e7c76cd2d8cd6d3954379faac8c16afd3",
+          "bytes": 1567
+        },
+        {
+          "path": "runs/b12p_P3/run_config.json",
+          "sha256": "fb4e5384e2be0c0e8ea26cc481c83d2ae4d64b0058d1a54b3f48b7e75466e5b5",
+          "bytes": 1157
+        },
+        {
+          "path": "runs/b12p_P3/states.json",
+          "sha256": "4c583828876cb71eff8f47d8d90696cf4b0f236b891ae9d31dfa19aceed2e369",
+          "bytes": 22920
+        },
+        {
+          "path": "runs/b12p_P3/summary.json",
+          "sha256": "06cb7e662d52f4e84dfa99ad9dc91098a0a57a1a6300b1ccc4be9775fde283c4",
+          "bytes": 3061
+        },
+        {
+          "path": "runs/b12p_P3/sumo_errors.log",
+          "sha256": "773c2aee84b0776610cea5e25de22fc367c1af724bd446cb2247064807d337d8",
+          "bytes": 85
+        },
+        {
+          "path": "runs/b12p_P3/target_edges.json",
+          "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+          "bytes": 4
+        },
+        {
+          "path": "runs/b12p_P3/unresolved_edges.json",
+          "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+          "bytes": 4
+        },
+        {
+          "path": "runs/b12p_P3/worker.log",
+          "sha256": "0dea30270001f654529ae2080a74298897714890106602a3a39430a7e44658f0",
+          "bytes": 144
+        }
+      ]
+    },
+    {
+      "run_id": "b12p_P4",
+      "local_files": [
+        {
+          "path": "runs/b12p_P4/accounting.json",
+          "sha256": "f2b76cef569760d966f19cae09d84d1a6d7f49f8f71188ede8400322f8ebcd7c",
+          "bytes": 5065
+        },
+        {
+          "path": "runs/b12p_P4/control_edges.json",
+          "sha256": "f682726e3b4bd6a039844c9030e480a851d152d6c2145b169022b5cd5da4a363",
+          "bytes": 3210
+        },
+        {
+          "path": "runs/b12p_P4/device_proofs.json",
+          "sha256": "028dbb6d982d8e5e4eaf6a0baa449150b1b5b6625abcab3a87ee7ebac8baebc3",
+          "bytes": 258
+        },
+        {
+          "path": "runs/b12p_P4/edge_audit.jsonl",
+          "sha256": "bc9df9b8a4511c2d5f48f5b4d92ff1de503a8ccda2c9b50c6bbb0373efd9b425",
+          "bytes": 93003
+        },
+        {
+          "path": "runs/b12p_P4/runtime_initial_state.xml",
+          "sha256": "19e1c26b30eb821b0f7563b683b505a4bc6324ccf38df91cb09026ddc467b7fd",
+          "bytes": 2323
+        },
+        {
+          "path": "runs/b12p_P4/runtime_settings.json",
+          "sha256": "7a583ccdfb1f038f22815c4752d1301e7c76cd2d8cd6d3954379faac8c16afd3",
+          "bytes": 1567
+        },
+        {
+          "path": "runs/b12p_P4/run_config.json",
+          "sha256": "dc4a7cfbf33e9cfd6f2c61ef503ecea04b047bf067bdc0415c83dc93691202b5",
+          "bytes": 1125
+        },
+        {
+          "path": "runs/b12p_P4/states.json",
+          "sha256": "7aaac2ff9419e0cfa3c2d3f03245df01ac8abd4e29cc944cce178aed6e2a05b1",
+          "bytes": 23293
+        },
+        {
+          "path": "runs/b12p_P4/summary.json",
+          "sha256": "a32e5fc0280697a6f97fec51c30363ccf45a82b74933bd562cbcffec623fcc6b",
+          "bytes": 3063
+        },
+        {
+          "path": "runs/b12p_P4/sumo_errors.log",
+          "sha256": "773c2aee84b0776610cea5e25de22fc367c1af724bd446cb2247064807d337d8",
+          "bytes": 85
+        },
+        {
+          "path": "runs/b12p_P4/target_edges.json",
+          "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+          "bytes": 4
+        },
+        {
+          "path": "runs/b12p_P4/unresolved_edges.json",
+          "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+          "bytes": 4
+        },
+        {
+          "path": "runs/b12p_P4/worker.log",
+          "sha256": "5bda16edc3c725f40a79ebeb6ffb2af68db8f1857942e9eb0e3c8ade025d5288",
+          "bytes": 144
+        }
+      ]
+    },
+    {
+      "run_id": "b12p_P5",
+      "local_files": [
+        {
+          "path": "runs/b12p_P5/accounting.json",
+          "sha256": "f2b76cef569760d966f19cae09d84d1a6d7f49f8f71188ede8400322f8ebcd7c",
+          "bytes": 5065
+        },
+        {
+          "path": "runs/b12p_P5/control_edges.json",
+          "sha256": "b4e146a975c56db94d4984bd3687bc0d6b21a42987f3197b848afc96e6fbd9d5",
+          "bytes": 3206
+        },
+        {
+          "path": "runs/b12p_P5/device_proofs.json",
+          "sha256": "028dbb6d982d8e5e4eaf6a0baa449150b1b5b6625abcab3a87ee7ebac8baebc3",
+          "bytes": 258
+        },
+        {
+          "path": "runs/b12p_P5/edge_audit.jsonl",
+          "sha256": "7d57083ca8f3f62d4a74fa0ea914e86ddb84ee7237843505de82847efc4393ac",
+          "bytes": 92996
+        },
+        {
+          "path": "runs/b12p_P5/runtime_initial_state.xml",
+          "sha256": "34d806ce51dd734f99cdbad66b1e1824db14826987e1631d6591b108c240c5b6",
+          "bytes": 2322
+        },
+        {
+          "path": "runs/b12p_P5/runtime_settings.json",
+          "sha256": "7a583ccdfb1f038f22815c4752d1301e7c76cd2d8cd6d3954379faac8c16afd3",
+          "bytes": 1567
+        },
+        {
+          "path": "runs/b12p_P5/run_config.json",
+          "sha256": "3addee57eba54f7d1109ffa962843d56b8498d9adb20354baf2f0dcad084fc49",
+          "bytes": 1116
+        },
+        {
+          "path": "runs/b12p_P5/states.json",
+          "sha256": "8f3e6d10bc838a332b5de79ae27cdb998b9530d6cda89dd9cbd1fb566a2e7b76",
+          "bytes": 23289
+        },
+        {
+          "path": "runs/b12p_P5/summary.json",
+          "sha256": "38389eb5e0eac84c61e852007128c96557ef17cfdd78dbb5d18f0acf10a9629a",
+          "bytes": 3062
+        },
+        {
+          "path": "runs/b12p_P5/sumo_errors.log",
+          "sha256": "773c2aee84b0776610cea5e25de22fc367c1af724bd446cb2247064807d337d8",
+          "bytes": 85
+        },
+        {
+          "path": "runs/b12p_P5/target_edges.json",
+          "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+          "bytes": 4
+        },
+        {
+          "path": "runs/b12p_P5/unresolved_edges.json",
+          "sha256": "a5338d955b09046ec0b16f3a9625b7955c763aae07dc722e474e6078745f932f",
+          "bytes": 4
+        },
+        {
+          "path": "runs/b12p_P5/worker.log",
+          "sha256": "73dc855bbdd621a308c697d20db5afe17e136b5168d7ece5efe9c91f15d9b92e",
+          "bytes": 144
+        }
+      ]
+    }
+  ]
+}

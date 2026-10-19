@@ -483,6 +483,42 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         pairs.setdefault("RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1", []).append(
             (f"code/outputs/formal/calibration/stage_0_5_near_zero_integration_v1/summary/{name}", name)
         )
+    # Independent positive-only numerical micro evidence; never raw states.
+    for name in (
+        'PLAN_SHA256',
+        'SHA256SUMS',
+        'admission.json',
+        'analysis_access_audit.json',
+        'audit.json',
+        'control_edges.json',
+        'controlled_access_audit.json',
+        'debug_build_feasibility.json',
+        'execution_ledger.json',
+        'experiment_plan.json',
+        'git_source_binding_audit.json',
+        'historical_status_preservation.json',
+        'manifest.json',
+        'micro_input_bundle.json',
+        'numerical_branch_coverage.json',
+        'preflight.json',
+        'preparation_manifest.json',
+        'provenance.json',
+        'report.md',
+        'researcher_decision_matrix.json',
+        'run_manifest.json',
+        'runtime_budget_audit.json',
+        'runtime_settings_audit.json',
+        'source_audit.json',
+        'source_observability_audit.json',
+        'source_staging_manifest.json',
+        'target_edges.json',
+        'test_record.json',
+        'unresolved_edges.json',
+        'vehicle_conservation_audit.json',
+    ):
+        pairs.setdefault("RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1", []).append(
+            (f"code/outputs/formal/calibration/stage_0_5_positive_near_zero_v1/summary/{name}", name)
+        )
     return pairs
 
 
