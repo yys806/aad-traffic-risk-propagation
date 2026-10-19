@@ -16,7 +16,7 @@
 
 ## 正在进行
 
-- 当前节点：阶段0.5 B1.1独立测量契约整改交付，精确停车仍Pending，队列规则Candidate；旧B1 C阻断、D未运行。
+- 当前节点：阶段0.5 B1.1-S公开接口停车可观测性交付，非决策步步内停车已精确核验、决策步停车仍Bounded；B1.1精确停车Pending记录不变，队列规则Candidate；旧B1 C阻断、D未运行。
 - 主线待决：独立停车可观测性证据与未来B1.2授权；正式0.5.4-B、现实覆盖验收和科学容差未获批准。
 - 阶段0.2/0.3已有限范围关闭、0.4已有限验收；阶段0.6科学参数和协议锁仍未完成。
 
@@ -120,3 +120,11 @@ Gate=pending_simulation_sample、scientific_claim_eligible=false、ready_to_star
 B1 C两阻断和D not_attempted永久保留；B0隔离false/验证物化Unknown不变。无旧C状态读取、无新交通矩阵/参数搜索/校准。胶囊路径白名单与SHA、受审计91项测试通过；完整OS/native文件监控未证明。Gate=pending_simulation_sample，scientific_claim_eligible=false、ready_to_start_stage_0_5_4b=false、reality_coverage_accepted=false；容差Tolerance Not Yet Justified、ED上界Not Identifiable、锁/StageI禁止。下一项只建议独立停车分支可观测性最小验证；B1.2需另批，不自动执行。
 
 依据：`docs/STAGE_0_5_TASK_0_5_4B1_1_STOPPING_AND_SPILLBACK_CONTRACT.md`及同ID便携证据；协议/源码/输入冻结SHA见experiment_plan、PLAN_SHA256和provenance。
+
+## RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1
+
+`RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1`：固定SUMO1.26.0源码审计确认，非决策步的公开加速度被延续（`vSafe=v0+a_pub_start*h`），因此内部带符号候选终速可由公开TraCI独立重建 `u=v0+a_pub_start*h`，对任意符号精确成立，包括`u<0`的真实步内停车；决策步`v1=0`仍被`max(u,0)`钳制，仅可做范围一致检查。步[`t_prev`→`t_now`]为决策步当且仅当在`t_now`读到的`lastActionTime`等于`t_prev`。3个独立微型运行共948条相邻边：947精确核验且全部通过，最大绝对残差`1.4210854715202004e-14m`，1条决策步停车仅范围，0不可评价，0异常；未使用位移反推，未使用调试二进制。
+
+决策步停车仍`Bounded Consistency Only`，未无条件放行全部停车测量；未修改B1.1结果`Pending Numerical Equivalence`。方案A（严格精确）需另批调试构建；方案B（分层准入）待研究者批准。B1 C两阻断和D not_attempted永久保留。Gate=pending_simulation_sample，scientific_claim_eligible=false；容差Tolerance Not Yet Justified、ED上界Not Identifiable、锁/StageI禁止。B1.2需另批，不自动执行。
+
+依据：`docs/STAGE_0_5_TASK_0_5_4B1_1S_STOPPING_OBSERVABILITY.md`及同ID便携证据；协议/源码/输入冻结SHA见experiment_plan、PLAN_SHA256和provenance。

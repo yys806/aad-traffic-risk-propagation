@@ -1,0 +1,61 @@
+{
+  "runs": [
+    {
+      "run_id": "motion_005",
+      "config": "inputs/motion_005.sumocfg",
+      "network": "inputs/straight/micro.net.xml",
+      "demand": "inputs/motion_005.rou.xml",
+      "step_s": 0.05,
+      "action_step_s": 0.1,
+      "duration_s": 30.0,
+      "seed": 20261019,
+      "expected_ordinary_stop": false
+    },
+    {
+      "run_id": "stop_restart_005",
+      "config": "inputs/stop_restart_005.sumocfg",
+      "network": "inputs/straight/micro.net.xml",
+      "demand": "inputs/stop_restart_005.rou.xml",
+      "step_s": 0.05,
+      "action_step_s": 0.1,
+      "duration_s": 30.0,
+      "seed": 20261019,
+      "expected_ordinary_stop": true
+    },
+    {
+      "run_id": "stop_restart_010",
+      "config": "inputs/stop_restart_010.sumocfg",
+      "network": "inputs/straight/micro.net.xml",
+      "demand": "inputs/stop_restart_010.rou.xml",
+      "step_s": 0.1,
+      "action_step_s": 0.1,
+      "duration_s": 30.0,
+      "seed": 20261019,
+      "expected_ordinary_stop": true
+    }
+  ],
+  "fixed": {
+    "carFollowModel": "Krauss",
+    "tau": 1.0,
+    "minGap": 2.5,
+    "accel": 2.6,
+    "decel": 4.5,
+    "apparentDecel": 4.5,
+    "emergencyDecel": 9.0,
+    "sigma": 0.5,
+    "maxSpeed": 27.78,
+    "speedFactor": 1.0,
+    "speedDev": 0.0,
+    "actionStepLength": 0.1,
+    "sigmaStep": 1.0,
+    "laneChangeModel": "LC2013",
+    "length": 5.0
+  },
+  "mode": "public_interface_observability_only",
+  "no_debug_binary": true,
+  "no_risk_experiment": true,
+  "P2_computed": false,
+  "driving_parameter_search": false,
+  "real_data_inputs": false,
+  "note": "free/probe instances only; no vehicle control (myInfluencer None)"
+}

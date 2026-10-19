@@ -1,0 +1,126 @@
+{
+  "result_id": "RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1",
+  "base_commit": "ffb2575942bee163aead68bc1aecf7e6ce86ec2c",
+  "plan_sha256": "303dec464438eac4c3ad7c0f9a1096e9e692c6bb0101ba654a58f6e48847709c",
+  "executed_source_and_input_sha256": {
+    "runtime/code/pytest.ini": "0373a64ba5018ac05f4e9556ea17d86b16ecbe5d852312c40ce8d80a5255e8b4",
+    "runtime/code/scripts/b1_guard_probe.py": "f871ddc991ebe8f560e92241bafabfcc8b2ef9973d751611eca745fc6b608169",
+    "runtime/code/scripts/b1_synthetic_worker.py": "0e70093e12a46d5ea17b8060a10e1f6073438dae458b3447d058ed2a13cea96d",
+    "runtime/code/scripts/b1_test_entry.py": "99bb1df06f1699c076e0cfacc78b13f31e448a7d2b883ec68138b35bedad2e23",
+    "runtime/code/scripts/run_stage_0_5_boundary_bottleneck.py": "8ee23325ab2a03eae74f1edfe22c81487edf1bf9b27fc10f2ecbd65f70618c42",
+    "runtime/code/scripts/run_stage_0_5_stopping_observability.py": "fa3cdacf806adee42003f927f831ac98b87ccf7ef9cdf8a3bdc86845c48a1e1e",
+    "runtime/code/src/riskprop/__init__.py": "2fa792846418307466b666a9ca62266c19f2fb191466c52e5c037ece0bffc81a",
+    "runtime/code/src/riskprop/calibration.py": "9dac386d1e80ba1d97499713498cdfde36aa94b816faf0a7053511a557435043",
+    "runtime/code/src/riskprop/formal_risk_measurement.py": "4e15e67e35911fdd4d50d26f41784bde05a8cd9983edc42c572fa51b00686c58",
+    "runtime/code/src/riskprop/ngsim_risk_calibration.py": "ba49f4a4d2e9762f5d31a6858b84ed5f314c16c2d5e404df93cb36b550d00a36",
+    "runtime/code/src/riskprop/real_trajectory.py": "9acbc515004dcf5e531c547b97bb6a9c1b7bb6e8d186262fdc8e3edccd01120f",
+    "runtime/code/src/riskprop/stage_0_5_b1_analysis.py": "7d858eaf88718750a1fa33151153619f23d2689d69cece14f60f76873b8e35fc",
+    "runtime/code/src/riskprop/stage_0_5_b1_isolation.py": "27523530f4ca2db2aa6b48768466a0769a9077848ede531869121d72bbebabfe",
+    "runtime/code/src/riskprop/stage_0_5_boundary_bottleneck.py": "b1d72f56c6e18759b063849328290b614944a0bdf7729a224a355f21c4ac2b70",
+    "runtime/code/src/riskprop/stage_0_5_calibration_readiness.py": "f78a39a679fe009906272fbffb244d4cdcd9c7558065666f16fff79a877e181d",
+    "runtime/code/src/riskprop/stage_0_5_exploratory_response.py": "594a2a518de5bd70ae7957a4303ac6d452d2c59e97311ada9b87b237be5ffdf1",
+    "runtime/code/src/riskprop/stage_0_5_stopping_contract.py": "414df02944c59da032941beea7f69169339ebb327060d0d77494c434f04b6e2f",
+    "runtime/code/src/riskprop/stage_0_5_stopping_observability.py": "a043690a6e7db780c801ad4cfd2437f2d4c4bed4d40064c3c5a811d431a565c9",
+    "runtime/code/src/riskprop/stage_0_5_sumo.py": "a95231972300348c86d3750af1a777e086b41a87a75506a95a290d395f2a762f",
+    "runtime/code/src/sitecustomize.py": "45d39c019a0973ed9f18c3840b317e4b77697cf62ce42c80b93a8098dd673053",
+    "runtime/code/tests/test_stage_0_5_boundary_bottleneck.py": "6259c3799fb6fb67e1b2bf1a4c1ec701d2afd582ad6860f398cc8680d191b035",
+    "runtime/code/tests/test_stage_0_5_stopping_contract.py": "894f91524c7b477f0c044c8fa1a714a7716b76f656a714820c5c2d66036abd2e",
+    "runtime/code/tests/test_stage_0_5_stopping_observability.py": "e652e6d50ca96cbcb5241e474dba6e968c56ed716b477372ebc994797fb66031",
+    "inputs/history/displacement_branch_contract.json": "09da79d884ce84b58d88131e6506f78d8ecfef61ab781b100ade55425ebc2bb6",
+    "inputs/history/future_experiment_preconditions.json": "bc418746a1ea5296d02c8882995d2488b137085689a40acda639abf72882758c",
+    "inputs/history/micro_sumo_numerical_audit.json": "38ab7d70ede61d03e105a2a5fdfc9084cb8964372bde909eee6f436b132727fe",
+    "inputs/history/stopping_source_audit.json": "d0f9cd8b0605bd9a84926d04e23714f35806f2bd30816638e383e0fa8ffd857d",
+    "inputs/motion_005.rou.xml": "eae3a1ac6c13a0ba1b93950857491874973da157dab8ddf115a64faf1d29c6e3",
+    "inputs/motion_005.sumocfg": "bdf02c0a6a314d134f7ab55a5cedb5081d935f7d0c84b791a4de2f799e37f6cc",
+    "inputs/stop_restart_005.rou.xml": "4899fdc4fae15bcbb174c40962141c75bae94b0bee482f7299d3962671dadbd7",
+    "inputs/stop_restart_005.sumocfg": "34b153912e0d6f5e2b0f4608f2e8726b3850b5da2cf0031b11dd21ceddb3fe30",
+    "inputs/stop_restart_010.rou.xml": "4899fdc4fae15bcbb174c40962141c75bae94b0bee482f7299d3962671dadbd7",
+    "inputs/stop_restart_010.sumocfg": "5df1d2be3f4a46c168ac21af128d7451bd3b590db3e113417184644c6ac073b3",
+    "inputs/straight/build.log": "1ee456262d7aaf011c85ff7c16892a3cc6e545dbe212e9869045160174d5ec42",
+    "inputs/straight/edges.edg.xml": "ae83439c5ca6e8e3aefa13e0659ee20e82e7bfe26a8c0971f53e2418546bec75",
+    "inputs/straight/micro.net.xml": "96e4c42e9ffe202c26f943345cf06bfb3444b14d0e8e90898464f2c132336908",
+    "inputs/straight/nodes.nod.xml": "1b91cf67566fe2811aa2be33e761eb6a76dd86357375b1a2ec1a9d077b1a03af",
+    "official_source/immutable_verified.json": "972e0093bee2e40aeb9d974b0dc2dc2a6e4845b7eacb60ae78c9be36b4a02488",
+    "official_source/libsumo_Vehicle.cpp": "9ef12f97fe72aa3daed0740d37de1bbb702012e4a250b82abdc66e8138c37fc8",
+    "official_source/microsim_MSVehicle.cpp": "8499ebe445906b19395d5c70945b012f320a439327e9cb3c20f0abd26d15a6a4",
+    "official_source/microsim_MSVehicle.h": "0732c3019037c0171d58c0d231ba68183c971cccb726eef7efd2394b33c794e1",
+    "official_source/utils_common_SUMOTime.h": "e7897a565fe9def68e838881a9687f6cec4332fd572b25e0fb9a08066b58b13b",
+    "isolation_policy.json": "d0989912bf2d26e1957a210a49cdfe8aa03e661a20d7f4d8887a7009df9b205d",
+    "official_source_manifest.json": "472961598a53940d1560ff1f8ac6cb27dd2818080ab20c4e984fca9265b63d79",
+    "historical_source_manifest.json": "18bef27b6eeab9c02f99f2c0d6d422f967761918db148fca00413aed285f37dc",
+    "preflight.json": "130bbce392b1de724596fd73a605946ae2caaee5dc106ef0f9526ac0f2ee811a",
+    "data_isolation_preflight.json": "69064e785a1828643dea91451edd18273684c7cb50972da41cab6e3a06ad3fe0",
+    "micro_fixture_manifest.json": "4b2aa755c633d166bb9cb10e6513e87b8c07d1de712426602987299aee1e0bec"
+  },
+  "external_code_sources": {
+    "microsim_MSVehicle.cpp": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/microsim/MSVehicle.cpp",
+      "tag": "v1_26_0",
+      "resolved_commit": "fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3",
+      "purpose": "official implementation audit only",
+      "initial_tag_fetch_sha256": null,
+      "tag_and_immutable_fetch_equal": null,
+      "sha256": "8499ebe445906b19395d5c70945b012f320a439327e9cb3c20f0abd26d15a6a4",
+      "bytes": 381688
+    },
+    "microsim_MSVehicle.h": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/microsim/MSVehicle.h",
+      "tag": "v1_26_0",
+      "resolved_commit": "fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3",
+      "purpose": "official implementation audit only",
+      "initial_tag_fetch_sha256": null,
+      "tag_and_immutable_fetch_equal": null,
+      "sha256": "0732c3019037c0171d58c0d231ba68183c971cccb726eef7efd2394b33c794e1",
+      "bytes": 86425
+    },
+    "libsumo_Vehicle.cpp": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/libsumo/Vehicle.cpp",
+      "tag": "v1_26_0",
+      "resolved_commit": "fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3",
+      "purpose": "official implementation audit only",
+      "initial_tag_fetch_sha256": null,
+      "tag_and_immutable_fetch_equal": null,
+      "sha256": "9ef12f97fe72aa3daed0740d37de1bbb702012e4a250b82abdc66e8138c37fc8",
+      "bytes": 121128
+    },
+    "utils_common_SUMOTime.h": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/utils/common/SUMOTime.h",
+      "tag": "v1_26_0",
+      "resolved_commit": "fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3",
+      "purpose": "official implementation audit only",
+      "initial_tag_fetch_sha256": null,
+      "tag_and_immutable_fetch_equal": null,
+      "sha256": "e7897a565fe9def68e838881a9687f6cec4332fd572b25e0fb9a08066b58b13b",
+      "bytes": 3540
+    }
+  },
+  "analysis_source_sha256": "74cd21e6aafc6ebaf6b0ee90264e978e5aedca59b361d51305c51609058229ed",
+  "historical_metadata_only": {
+    "stopping_source_audit.json": {
+      "path": "stopping_source_audit.json",
+      "role": "engineering_metadata",
+      "kind": "historical_b11_summary",
+      "sha256": "d0f9cd8b0605bd9a84926d04e23714f35806f2bd30816638e383e0fa8ffd857d"
+    },
+    "displacement_branch_contract.json": {
+      "path": "displacement_branch_contract.json",
+      "role": "engineering_metadata",
+      "kind": "historical_b11_summary",
+      "sha256": "09da79d884ce84b58d88131e6506f78d8ecfef61ab781b100ade55425ebc2bb6"
+    },
+    "micro_sumo_numerical_audit.json": {
+      "path": "micro_sumo_numerical_audit.json",
+      "role": "engineering_metadata",
+      "kind": "historical_b11_summary",
+      "sha256": "38ab7d70ede61d03e105a2a5fdfc9084cb8964372bde909eee6f436b132727fe"
+    },
+    "future_experiment_preconditions.json": {
+      "path": "future_experiment_preconditions.json",
+      "role": "engineering_metadata",
+      "kind": "historical_b11_summary",
+      "sha256": "bc418746a1ea5296d02c8882995d2488b137085689a40acda639abf72882758c"
+    }
+  },
+  "no_old_C_detail_access_after_freeze": true,
+  "b11_git_tree": "c9e9cf1c6a8a228532faa1c7f2cf49707e8ed962"
+}

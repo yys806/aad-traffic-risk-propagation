@@ -1,0 +1,47 @@
+{
+  "categories": [
+    "Exact Observable",
+    "Exact Reconstructable Under Verified Conditions",
+    "Bounded Consistency Only",
+    "Not Evaluable"
+  ],
+  "matrix": [
+    {
+      "case": "action step, v1>0 (no within-step stop)",
+      "classification": "Exact Observable",
+      "method": "u = v1 (no clamp triggered)",
+      "limits": "none in free/probe instances"
+    },
+    {
+      "case": "action step, v1==0 (within-step or step-end stop)",
+      "classification": "Bounded Consistency Only",
+      "method": "0 <= dx <= v0*h/2",
+      "limits": "public a_pub clamps u<=0 to 0; cannot recover exact u"
+    },
+    {
+      "case": "non-action step (any motion, incl. u<0 within-step stop)",
+      "classification": "Exact Reconstructable Under Verified Conditions",
+      "method": "u = v0 + a_pub_start*h; dx from official getDeltaPos formula",
+      "limits": "requires myInfluencer None and verified action grid"
+    },
+    {
+      "case": "rest-to-rest (v0==v1==0)",
+      "classification": "Exact Observable",
+      "method": "dx == 0 exactly regardless of hidden u",
+      "limits": "none"
+    },
+    {
+      "case": "edge/lane transition or identity/clock discontinuity",
+      "classification": "Not Evaluable",
+      "method": "none",
+      "limits": "no local lanePosition subtraction across discontinuity"
+    },
+    {
+      "case": "vehicle under TraCI speed control",
+      "classification": "Not Evaluable",
+      "method": "none",
+      "limits": "processTraCISpeedControl may override vNext; excluded from instances"
+    }
+  ],
+  "displacement_back_inference": "FORBIDDEN (circular)"
+}

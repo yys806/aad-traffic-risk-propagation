@@ -129,12 +129,21 @@
     "code/tests/test_stage_0_5_b11_evidence.py",
     "docs/STAGE_0_5_TASK_0_5_4B1_1_STOPPING_AND_SPILLBACK_CONTRACT.md",
     "docs/plans/2026-10-19-stage-0-5-4b1-1.md",
-    "code/scripts/finalize_stage_0_5_stopping_spillback.py"
+    "code/scripts/finalize_stage_0_5_stopping_spillback.py",
+    "code/src/riskprop/stage_0_5_stopping_observability.py",
+    "code/scripts/run_stage_0_5_stopping_observability.py",
+    "code/scripts/stage_0_5_observability_analysis.py",
+    "code/scripts/finalize_stage_0_5_stopping_observability.py",
+    "code/scripts/verify_stage_0_5_observability_evidence.py",
+    "code/tests/test_stage_0_5_stopping_observability.py",
+    "code/tests/test_stage_0_5_b11s_evidence.py",
+    "docs/STAGE_0_5_TASK_0_5_4B1_1S_STOPPING_OBSERVABILITY.md",
+    "docs/plans/2026-10-19-stage-0-5-4b1-1s.md"
   ],
   "current": {
     "active_experiment_id": "stage_0_5",
-    "active_task": "AAD-0.5.4-B1.1 independent stopping/queue measurement repair completed; exact terminal-stop equivalence pending; researcher decision node.",
-    "why_now": "Official SUMO1.26.0 source and 4 micro fixtures validate exact normal branches and expose stop observability limits. Queue candidates tested on14 independent truths, thresholds unapproved. Preserve B1 C blockers/D not attempted; no B1.2 or formal calibration.",
+    "active_task": "AAD-0.5.4-B1.1-S public-interface stopping observability completed; non-action-step within-step stop exactly verified, decision-step stop still bounded; researcher decision node.",
+    "why_now": "Non-action-step stopping displacement is now independently exact (u=v0+a_pub_start*h); decision-step stop remains Bounded only. 3 micro runs, 947/948 exact, max1.4211e-14m. Resume B1 C blocker/D not attempted and B0 false/Unknown; no B1.2 or formal calibration.",
     "next_decision_owner": "researcher",
     "portable_gate_paths": [
       "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",
@@ -147,7 +156,8 @@
       "evidence/results/RES-STAGE-0.5-CALIBRATION-GAPS-V1/audit.json",
       "evidence/results/RES-STAGE-0.5-EXPLORATORY-RESPONSE-V1/audit.json",
       "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/audit.json",
-      "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/audit.json"
+      "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/audit.json",
+      "evidence/results/RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1/audit.json"
     ],
     "local_gate_paths": [
       "code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r4/scientific_gate_report.json",
@@ -158,7 +168,8 @@
       "code/outputs/formal/calibration/stage_0_5_calibration_gaps_v1_final/audit.json",
       "code/outputs/formal/calibration/stage_0_5_exploratory_response_v1/audit.json",
       "code/outputs/formal/calibration/stage_0_5_boundary_bottleneck_v2/summary/audit.json",
-      "code/outputs/formal/calibration/stage_0_5_stopping_spillback_v1/summary/audit.json"
+      "code/outputs/formal/calibration/stage_0_5_stopping_spillback_v1/summary/audit.json",
+      "code/outputs/formal/calibration/stage_0_5_stopping_observability_v3/summary/audit.json"
     ]
   },
   "experiments": [
@@ -492,6 +503,13 @@
         "b11_exact_normal_motion_verified": true,
         "b11_exact_stopping_equivalence": "Pending Numerical Equivalence",
         "b11_queue_thresholds_scientifically_approved": false,
+        "stopping_observability_result_id": "RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1",
+        "b11s_micro_runs": 3,
+        "b11s_exact_applicable_fraction": 0.9989451476793249,
+        "b11s_non_action_step_stop_exactly_verified": true,
+        "b11s_decision_step_stop_exact": false,
+        "b11s_decision_step_stop_status": "Bounded Consistency Only",
+        "b11s_debug_binary_used": false,
         "b1_2_started": false
       },
       "data_version": "RES-STAGE-0.5-REAL-REF-R2; Stage 0.2 R4 four states + final_r1 P2 + Stage 0.3 R2 canonical/R3 summaries",
@@ -505,7 +523,8 @@
         "RES-STAGE-0.5-CALIBRATION-GAPS-V1",
         "RES-STAGE-0.5-EXPLORATORY-RESPONSE-V1",
         "RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1",
-        "RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1"
+        "RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1",
+        "RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1"
       ],
       "core_metrics": [
         "formal_input_manifest",
@@ -543,7 +562,7 @@
         "source_time_coverage",
         "density_scaled_engineering_cost"
       ],
-      "current_conclusion": "B1.1 exact normal branches verified (1363 edges,max1.4211e-14m);2 stop edges interval-only,1 coordinate transition not evaluable.14 synthetic queue cases distinguish observations/qualifications with candidate thresholds. B1 C blockers/D not attempted and B0 isolation false/Unknown preserved. No formal calibration readiness.",
+      "current_conclusion": "B1.1-S: non-action-step ballistic stopping (incl. u<0 within-step stop) exactly reconstructed from public TraCI (u=v0+a_pub_start*h); decision-step terminal stop remains Bounded only. 3 micro runs,947/948 exact(max1.4211e-14m),1 bounded,0 not-evaluable,0 anomaly; no debug binary. B1.1 exact normal branches and queue candidates unchanged. B1 C/D preserved; B0 isolation false/Unknown preserved. No formal calibration readiness.",
       "gate": {
         "status": "pending_simulation_sample",
         "portable_path": "evidence/results/RES-STAGE-0.5-REAL-REF-R2/audit.json"
@@ -2155,10 +2174,72 @@
         "B1_C_status": "completed_with_engineering_blocker",
         "B1_D_status": "not_attempted"
       },
-      "current_conclusion": "B1.1 exact normal branches verified (1363 edges,max1.4211e-14m);2 stop edges interval-only,1 coordinate transition not evaluable.14 synthetic queue cases distinguish observations/qualifications with candidate thresholds. B1 C blockers/D not attempted and B0 isolation false/Unknown preserved. No formal calibration readiness.",
+      "current_conclusion": "B1.1-S: non-action-step ballistic stopping (incl. u<0 within-step stop) exactly reconstructed from public TraCI; decision-step terminal stop remains Bounded only. 3 micro runs,947/948 exact(max1.4211e-14m). No debug binary; no B1.2. B1.1 exact normal branches and 14 synthetic queue cases unchanged. B1 C blockers/D not attempted and B0 isolation false/Unknown preserved. No formal calibration readiness.",
       "gate_status": "pending_simulation_sample",
       "paper_locations": [
         "docs/STAGE_0_5_TASK_0_5_4B1_1_STOPPING_AND_SPILLBACK_CONTRACT.md"
+      ],
+      "scientific_claim_eligible": false
+    },
+    {
+      "id": "RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1",
+      "experiment_id": "stage_0_5",
+      "name": "AAD-0.5.4-B1.1-S public-interface stopping observability",
+      "purpose": "Independently identify the SUMO ballistic signed candidate terminal speed from public TraCI for stopping branches without using the tested displacement.",
+      "date": "2026-10-19",
+      "status": "completed_limited_engineering_verification",
+      "portable_evidence_paths": [
+        "evidence/results/RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1/audit.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1/official_observability_source_audit.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1/action_step_semantics.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1/stopping_identifiability_matrix.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1/independent_observation_audit.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1/debug_feasibility_audit.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1/non_intrusiveness_audit.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1/numerical_admission_options.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1/future_b1_2_preconditions.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1/historical_status_preservation.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1/experiment_plan.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1/PLAN_SHA256",
+        "evidence/results/RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1/provenance.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1/git_source_binding_audit.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1/micro_input_bundle.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1/micro_fixture_manifest.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1/test_record.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1/controlled_access_audit.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1/data_isolation_preflight.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1/report.md",
+        "evidence/results/RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1/manifest.json",
+        "evidence/results/RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1/SHA256SUMS"
+      ],
+      "local_artifact_paths": [
+        "code/outputs/formal/calibration/stage_0_5_stopping_observability_v3"
+      ],
+      "code_version_source": "code/src/riskprop/stage_0_5_stopping_observability.py; code/scripts/run_stage_0_5_stopping_observability.py; code/scripts/stage_0_5_observability_analysis.py; code/scripts/finalize_stage_0_5_stopping_observability.py; code/scripts/verify_stage_0_5_observability_evidence.py; code/tests/test_stage_0_5_stopping_observability.py; code/tests/test_stage_0_5_b11s_evidence.py; frozen source hashes in experiment_plan/provenance",
+      "configuration_source": "stopping_identifiability_matrix.json;action_step_semantics.json;experiment_plan.json/PLAN_SHA256",
+      "data_version_source": "three independent micro fixtures;SHA-bound official SUMO1.26 source and four historical B1.1 metadata only;no real trajectory inputs;no debug binary",
+      "core_metrics": {
+        "micro_runs": 3,
+        "observed_adjacent_edges": 948,
+        "exact_evaluable_edges": 947,
+        "exact_passed_edges": 947,
+        "bounded_stop_edges": 1,
+        "not_evaluable_edges": 0,
+        "anomaly_edges": 0,
+        "max_exact_abs_residual_m": 1.4210854715202004e-14,
+        "retained_exact_tolerance_m": 1e-06,
+        "non_action_step_stop_exactly_verified": true,
+        "decision_step_stop_exact": false,
+        "decision_step_stop_status": "Bounded Consistency Only",
+        "debug_binary_used": false,
+        "scientific_thresholds_approved": false,
+        "B1_C_status": "completed_with_engineering_blocker",
+        "B1_D_status": "not_attempted"
+      },
+      "current_conclusion": "Public TraCI reconstructs the signed candidate terminal speed for non-action steps exactly (u=v0+a_pub_start*h), including a true within-step stop (u<0); decision-step terminal stops remain bounded only. 947/948 edges exact (max1.4211e-14m), 1 bounded,0 not-evaluable,0 anomaly. No debug binary. B1 C blockers/D not attempted and B0 isolation false/Unknown preserved; no B1.2 or formal calibration readiness.",
+      "gate_status": "pending_simulation_sample",
+      "paper_locations": [
+        "docs/STAGE_0_5_TASK_0_5_4B1_1S_STOPPING_OBSERVABILITY.md"
       ],
       "scientific_claim_eligible": false
     }

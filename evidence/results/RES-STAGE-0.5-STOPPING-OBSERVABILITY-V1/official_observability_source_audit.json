@@ -1,0 +1,86 @@
+{
+  "source_files": {
+    "microsim_MSVehicle.cpp": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/microsim/MSVehicle.cpp",
+      "tag": "v1_26_0",
+      "resolved_commit": "fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3",
+      "purpose": "official implementation audit only",
+      "initial_tag_fetch_sha256": null,
+      "tag_and_immutable_fetch_equal": null,
+      "sha256": "8499ebe445906b19395d5c70945b012f320a439327e9cb3c20f0abd26d15a6a4",
+      "bytes": 381688
+    },
+    "microsim_MSVehicle.h": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/microsim/MSVehicle.h",
+      "tag": "v1_26_0",
+      "resolved_commit": "fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3",
+      "purpose": "official implementation audit only",
+      "initial_tag_fetch_sha256": null,
+      "tag_and_immutable_fetch_equal": null,
+      "sha256": "0732c3019037c0171d58c0d231ba68183c971cccb726eef7efd2394b33c794e1",
+      "bytes": 86425
+    },
+    "libsumo_Vehicle.cpp": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/libsumo/Vehicle.cpp",
+      "tag": "v1_26_0",
+      "resolved_commit": "fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3",
+      "purpose": "official implementation audit only",
+      "initial_tag_fetch_sha256": null,
+      "tag_and_immutable_fetch_equal": null,
+      "sha256": "9ef12f97fe72aa3daed0740d37de1bbb702012e4a250b82abdc66e8138c37fc8",
+      "bytes": 121128
+    },
+    "utils_common_SUMOTime.h": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/utils/common/SUMOTime.h",
+      "tag": "v1_26_0",
+      "resolved_commit": "fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3",
+      "purpose": "official implementation audit only",
+      "initial_tag_fetch_sha256": null,
+      "tag_and_immutable_fetch_equal": null,
+      "sha256": "e7897a565fe9def68e838881a9687f6cec4332fd572b25e0fb9a08066b58b13b",
+      "bytes": 3540
+    }
+  },
+  "function_line_locations": {
+    "microsim_MSVehicle.cpp": {
+      "MSVehicle::executeMove(": 4569,
+      "MSVehicle::updateState(": 4895,
+      "MSVehicle::getDeltaPos(": 3658,
+      "MSVehicle::checkActionStep(": 2072,
+      "continues with constant accel": 4604,
+      "vSafe = getSpeed() + ACCEL2SPEED(myAcceleration)": 4600,
+      "myAcceleration = SPEED2ACCEL(MAX2": 4908,
+      "myState.mySpeed = MAX2(vNext": 4935,
+      "vNext = getCarFollowModel().finalizeSpeed(this, vSafe)": 4636,
+      "MSVehicle::processTraCISpeedControl(": 3960
+    },
+    "microsim_MSVehicle.h": {
+      "bool isActionStep(SUMOTime t) const": 635,
+      "double getAcceleration() const": 514,
+      "SUMOTime getLastActionTime() const": 541
+    },
+    "libsumo_Vehicle.cpp": {
+      "Vehicle::getSpeed(": 113,
+      "Vehicle::getAcceleration(": 126,
+      "Vehicle::getLastActionTime(": 1039
+    },
+    "utils_common_SUMOTime.h": {
+      "#define SPEED2DIST": 45,
+      "#define ACCEL2SPEED": 51,
+      "#define SPEED2ACCEL": 53
+    }
+  },
+  "reported_version": "SUMO1.26.0",
+  "pinned_commit": "fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3",
+  "findings": {
+    "public_speed": "myState.mySpeed = max(u,0)",
+    "public_acceleration": "myAcceleration = (max(u,0)-v0)/h ; OVERWRITTEN on action steps, CARRIED on non-action steps",
+    "non_action_vSafe": "vSafe = v0 + myAcceleration*h ; vNext NOT recomputed",
+    "action_vNext": "vNext = finalizeSpeed(...) then clamp/override; hidden signed candidate u",
+    "action_step_timing": "step [t_prev->t_now] is an action step iff getLastActionTime() read at t_now equals t_prev",
+    "traci_speed_control": "inert without vehicle control (myInfluencer None) in free/probe instances",
+    "decision_stop_identifiability": "action step with v1==0 clamps u<=0 to 0; NOT recoverable from public v,a (non-injective)",
+    "non_action_identifiability": "u = v0 + a_pub_start*h exact for ANY sign incl. u<0 within-step stop (verified live)"
+  },
+  "binary_source_build_equivalence": "not rebuilt; installed release label and behaviour checked"
+}

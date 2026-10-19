@@ -56,3 +56,11 @@ run_stage_0_2_final_closure.py执行全源检查；stage_0_2_closure_analysis.py
 - `code/scripts/run_stage_0_5_stopping_spillback.py`：prepare/tests/freeze/run/worker/finalize受控入口。
 - `code/scripts/verify_stage_0_5_stopping_evidence.py`：纯Git协议/SHA/微型输入及历史/科学边界校验。
 - 测试：`test_stage_0_5_stopping_contract.py`、`test_stage_0_5_queue_contract.py`、`test_stage_0_5_b11_evidence.py`。
+
+## B1.1-S 停车可观测性模块与入口
+
+- `code/src/riskprop/stage_0_5_stopping_observability.py`：`step_is_action`（步初对齐）、`reconstruct_signed_vnext`（非决策步任意符号精确、决策步v1>0精确/停车bounded）、`expected_displacement`（官方getDeltaPos）、`prove_clamp_non_injective`；不提供任何位移反推API。
+- `code/scripts/run_stage_0_5_stopping_observability.py`：prepare/tests/freeze/run/worker/finalize受控入口，最多3运行。
+- `code/scripts/stage_0_5_observability_analysis.py`：描述性证据打包，不改变冻结规则。
+- `code/scripts/finalize_stage_0_5_stopping_observability.py`、`code/scripts/verify_stage_0_5_observability_evidence.py`：冻结源绑定与纯Git便携校验。
+- 测试：`test_stage_0_5_stopping_observability.py`、`test_stage_0_5_b11s_evidence.py`。

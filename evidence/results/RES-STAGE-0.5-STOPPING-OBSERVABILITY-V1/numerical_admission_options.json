@@ -1,0 +1,17 @@
+{
+  "option_A": {
+    "name": "strict exact admission",
+    "requirement": "every observed stopping edge exactly reconstructable",
+    "pros": "strongest numerical evidence; cleanly separates numeric vs physics",
+    "cons": "needs debug output for decision-step stops; extra engineering dependency; not portable across environments",
+    "feasible_now": false
+  },
+  "option_B": {
+    "name": "tiered admission",
+    "requirement": "exact for normal/non-action; bounded for decision-stop; not-evaluable for discontinuity; pre-declared anomaly stop rule",
+    "pros": "preserves observational uncertainty explicitly; unblocks B1.2 engineering; no hidden circular inference",
+    "cons": "cannot claim all stopping edges exactly equivalent; needs pre-approved non-evaluable fraction and stop policy; insufficient if conclusions are sensitive to exact stopping displacement"
+  },
+  "recommendation": "Option B is the defensible engineering path IF the researcher pre-approves the bounded/not-evaluable policy; Option A remains available as a separately authorised debug-instrumentation task. Codex does NOT approve Option B unilaterally.",
+  "researcher_decision_required": true
+}

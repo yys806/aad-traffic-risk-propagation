@@ -1,15 +1,15 @@
 # AAD Current State Snapshot
 
-## 当前补充：B1.1（2026-10-19，优先于下文历史更新）
+## 当前补充：B1.1-S（2026-10-19，优先于下文历史更新）
 
-`RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1`：已核对固定SUMO1.26.0源码；内部负vNext不同于TraCI非负终速和当步平均加速度。4个独立微型fixture、1366条全量相邻边，其中1363精确核对最大残差1.4210854715202004e-14m，2条停车仅必要范围一致，1条edge转换不可评价。保留1e-6m，精确停车仍`Pending Numerical Equivalence`。14个先冻结真值的合成队列案例比较旧网格/新网格/车辆连接；观测与资格、内外排队分开，阈值均Candidate，未批准现实适用性。
+`RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1`：固定SUMO1.26.0源码审计确认，非决策步延续公开加速度（`vSafe=v0+a_pub_start*h`），因此内部带符号候选终速可由公开TraCI独立重建`u=v0+a_pub_start*h`，对任意符号精确成立，包括`u<0`的真实步内停车；决策步`v1=0`（含`h=actionStep`的停车步）仍被`max(u,0)`钳制，仅可范围一致。决策步判定：步[`t_prev`→`t_now`]为决策步当且仅当`t_now`读到的`lastActionTime`等于`t_prev`。3个微型运行、948条相邻边：947精确核验且全过，最大残差`1.4210854715202004e-14m`，1条决策步停车仅范围，0不可评价，0异常；未用位移反推、未用调试二进制、未改官方二进制。因此“全部停车边精确等价”仍未成立；B1.1精确停车`Pending`记录与B1 C/D、B0均不变。
 
-B1 C两阻断和D not_attempted永久保留；B0隔离false/验证物化Unknown不变。无旧C状态读取、无新交通矩阵/参数搜索/校准。胶囊路径白名单与SHA、受审计91项测试通过；完整OS/native文件监控未证明。Gate=pending_simulation_sample，scientific_claim_eligible=false、ready_to_start_stage_0_5_4b=false、reality_coverage_accepted=false；容差Tolerance Not Yet Justified、ED上界Not Identifiable、锁/StageI禁止。下一项只建议独立停车分支可观测性最小验证；B1.2需另批，不自动执行。
+Gate=pending_simulation_sample，scientific_claim_eligible=false、ready_to_start_stage_0_5_4b=false、reality_coverage_accepted=false；容差Tolerance Not Yet Justified、ED上界Not Identifiable、锁/StageI禁止。方案A/B数值准入与B1.2前置条件待研究者决定；B1.2需另批，不自动执行。
 
-依据：`docs/STAGE_0_5_TASK_0_5_4B1_1_STOPPING_AND_SPILLBACK_CONTRACT.md`及同ID便携证据；协议/源码/输入冻结SHA见experiment_plan、PLAN_SHA256和provenance。
+依据：`docs/STAGE_0_5_TASK_0_5_4B1_1S_STOPPING_OBSERVABILITY.md`及同ID便携证据；协议/源码/输入冻结SHA见experiment_plan、PLAN_SHA256和provenance。
 
 > 核对日期：2026-10-19（Asia/Shanghai）
-> 当前任务：AAD-0.5.4-B1.1独立测量整改完成；正常分支已测、精确停车Pending、队列阈值Candidate；B1 C阻断/D未启动保留，停在研究者决策节点。
+> 当前任务：AAD-0.5.4-B1.1-S公开接口停车可观测性完成；非决策步停车已精确、决策步停车仍Bounded；B1 C阻断/D未启动保留，停在研究者决策节点。
 
 ## 当前研究阶段
 

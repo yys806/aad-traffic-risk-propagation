@@ -1,0 +1,137 @@
+{
+  "passed": true,
+  "history_metadata_manifest": {
+    "stopping_source_audit.json": {
+      "path": "stopping_source_audit.json",
+      "role": "engineering_metadata",
+      "kind": "historical_b11_summary",
+      "sha256": "d0f9cd8b0605bd9a84926d04e23714f35806f2bd30816638e383e0fa8ffd857d"
+    },
+    "displacement_branch_contract.json": {
+      "path": "displacement_branch_contract.json",
+      "role": "engineering_metadata",
+      "kind": "historical_b11_summary",
+      "sha256": "09da79d884ce84b58d88131e6506f78d8ecfef61ab781b100ade55425ebc2bb6"
+    },
+    "micro_sumo_numerical_audit.json": {
+      "path": "micro_sumo_numerical_audit.json",
+      "role": "engineering_metadata",
+      "kind": "historical_b11_summary",
+      "sha256": "38ab7d70ede61d03e105a2a5fdfc9084cb8964372bde909eee6f436b132727fe"
+    },
+    "future_experiment_preconditions.json": {
+      "path": "future_experiment_preconditions.json",
+      "role": "engineering_metadata",
+      "kind": "historical_b11_summary",
+      "sha256": "bc418746a1ea5296d02c8882995d2488b137085689a40acda639abf72882758c"
+    }
+  },
+  "official_code_manifest": {
+    "microsim_MSVehicle.cpp": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/microsim/MSVehicle.cpp",
+      "tag": "v1_26_0",
+      "resolved_commit": "fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3",
+      "purpose": "official implementation audit only",
+      "initial_tag_fetch_sha256": null,
+      "tag_and_immutable_fetch_equal": null,
+      "sha256": "8499ebe445906b19395d5c70945b012f320a439327e9cb3c20f0abd26d15a6a4",
+      "bytes": 381688
+    },
+    "microsim_MSVehicle.h": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/microsim/MSVehicle.h",
+      "tag": "v1_26_0",
+      "resolved_commit": "fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3",
+      "purpose": "official implementation audit only",
+      "initial_tag_fetch_sha256": null,
+      "tag_and_immutable_fetch_equal": null,
+      "sha256": "0732c3019037c0171d58c0d231ba68183c971cccb726eef7efd2394b33c794e1",
+      "bytes": 86425
+    },
+    "libsumo_Vehicle.cpp": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/libsumo/Vehicle.cpp",
+      "tag": "v1_26_0",
+      "resolved_commit": "fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3",
+      "purpose": "official implementation audit only",
+      "initial_tag_fetch_sha256": null,
+      "tag_and_immutable_fetch_equal": null,
+      "sha256": "9ef12f97fe72aa3daed0740d37de1bbb702012e4a250b82abdc66e8138c37fc8",
+      "bytes": 121128
+    },
+    "utils_common_SUMOTime.h": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/utils/common/SUMOTime.h",
+      "tag": "v1_26_0",
+      "resolved_commit": "fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3",
+      "purpose": "official implementation audit only",
+      "initial_tag_fetch_sha256": null,
+      "tag_and_immutable_fetch_equal": null,
+      "sha256": "e7897a565fe9def68e838881a9687f6cec4332fd572b25e0fb9a08066b58b13b",
+      "bytes": 3540
+    }
+  },
+  "real_data_inputs": [],
+  "old_C_state_access": false,
+  "historical_Stage0_2_full_source_access": false,
+  "synthetic_path_probe": {
+    "cases": [
+      {
+        "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_us101__0820_0835.json",
+        "refused": true,
+        "before_filesystem_read": true
+      },
+      {
+        "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_locked_holdout.json",
+        "refused": true,
+        "before_filesystem_read": true
+      },
+      {
+        "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_historical_event_characteristics.parquet",
+        "refused": true,
+        "before_filesystem_read": true
+      }
+    ],
+    "audit": {
+      "scope": "controlled Python entrypoints",
+      "allowed_open_events": 0,
+      "denied": [
+        {
+          "event": "open",
+          "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_us101__0820_0835.json",
+          "write": false
+        },
+        {
+          "event": "open",
+          "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_locked_holdout.json",
+          "write": false
+        },
+        {
+          "event": "open",
+          "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\B1_SYNTHETIC_FORBIDDEN_historical_event_characteristics.parquet",
+          "write": false
+        }
+      ],
+      "os_complete_monitoring": false,
+      "native_file_access_monitored": false,
+      "python_no_site": true,
+      "sanitized_sys_path": [
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_observability_v3\\runtime\\code\\src",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_observability_v3\\dependency_links",
+        "D:\\miniconda\\Lib\\site-packages",
+        "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_stopping_observability_v3\\runtime\\code\\scripts",
+        "D:\\miniconda\\python313.zip",
+        "D:\\miniconda\\DLLs",
+        "D:\\miniconda\\Lib",
+        "D:\\miniconda"
+      ],
+      "limitations": [
+        "Python audit events only; native extensions and SUMO reads not OS-traced",
+        "standard-library/package/SUMO/Windows runtime roots are broader than individual dependency files",
+        "same-user administrator can bypass this policy; it is not an adversarial security boundary"
+      ]
+    }
+  },
+  "controlled_python_no_site": true,
+  "unexpected_test_denials": 0,
+  "os_complete_monitoring": false,
+  "native_access_monitored": false,
+  "test_log": "test_1792392496853038400"
+}

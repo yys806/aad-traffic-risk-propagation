@@ -1,0 +1,8 @@
+{
+  "getLastActionTime": "myLastActionTime, set to t on each action step; also reset on depart (now+dt) and on actionStepLength change",
+  "isActionStep": "(t - myLastActionTime) % actionStepLength == 0 on the integer-ms grid",
+  "decision_step": "myActionStep true: processLinkApproaches + finalizeSpeed recompute vNext; myAcceleration overwritten",
+  "non_decision_step": "myActionStep false: skips processLinkApproaches/finalizeSpeed; vSafe=v0+myAcceleration*h",
+  "actionStepLength_vs_internal_step": "actionStepLength 0.1s is an integer multiple (2x / 1x) of internal 0.05/0.1s",
+  "caveat": "integer ratio alone does NOT guarantee reconstruction; the clamp on negative u is the decisive limit"
+}

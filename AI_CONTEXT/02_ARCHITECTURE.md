@@ -78,3 +78,7 @@ formal_risk_measurement.v2与历史0.1s提取/线性指标隔离；正式固定�
 ## B1.1 独立测量层（2026-10-19）
 
 新增stopping_contract分支/全边轻筛，queue_contract观测与资格分层；contract_fixtures提供先验合成真值，contract_analysis只打包描述。run_stage_0_5_stopping_spillback复用B1最小-S胶囊和停止控制，冻结源码/输入后运行至多4个微型fixture。旧B1执行器、正式TTC/P2和封存状态均未修改。精确停车仍Pending，队列候选未获科学批准；见B1.1报告。
+
+## B1.1-S 公开接口停车可观测性层（2026-10-19）
+
+`stage_0_5_stopping_observability.py`只读观测：`step_is_action`按步初对齐（`lastActionTime`在步末读数`==t_prev`才为决策步），`reconstruct_signed_vnext`对非决策步给出`u=v0+a_pub_start*h`（任意符号，含步内停车`u<0`），对决策步`v1>0`给出`u=v1`、对决策步`v1==0`只给范围。`run_stage_0_5_stopping_observability`复用B1胶囊/白名单/冻结，3个微型fixture；`stage_0_5_observability_analysis.py`仅描述打包。未用调试二进制、未改官方SUMO与正式TTC/P2；决策步停车仍Bounded。

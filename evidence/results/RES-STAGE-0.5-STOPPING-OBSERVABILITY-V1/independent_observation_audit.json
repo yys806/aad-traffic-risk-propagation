@@ -1,0 +1,282 @@
+{
+  "runs": [
+    {
+      "execution": {
+        "run_id": "motion_005",
+        "status": "completed_valid",
+        "started_utc": "2026-10-19T06:48:33.219565Z",
+        "exit_code": 0,
+        "failure": null,
+        "wall_s": 6.100272199997562,
+        "peak_sampled_tree_rss_bytes": 121028608,
+        "blockers": [],
+        "warnings": [],
+        "bytes": 64760
+      },
+      "measurement": {
+        "run_id": "motion_005",
+        "engineering_blockers": [],
+        "status": "completed_valid",
+        "edges": 236,
+        "exact_checked": 236,
+        "exact_passed": 236,
+        "bounded_consistency_only": 0,
+        "not_evaluable": 0,
+        "max_abs_residual_m": 1.4210854715202004e-14,
+        "anomalies": 0,
+        "branches": {
+          "normal_motion": {
+            "count": 196,
+            "exact": 196,
+            "exact_pass": 196,
+            "bounded": 0,
+            "not_evaluable": 0,
+            "max_abs_residual_m": 1.3766765505351941e-14,
+            "anomalies": 0
+          },
+          "decelerating_without_stop": {
+            "count": 40,
+            "exact": 40,
+            "exact_pass": 40,
+            "bounded": 0,
+            "not_evaluable": 0,
+            "max_abs_residual_m": 1.4210854715202004e-14,
+            "anomalies": 0
+          }
+        },
+        "runtime_settings": {
+          "step-method.ballistic": "true",
+          "step-length": "0.05",
+          "seed": "20261019",
+          "threads": "1",
+          "time-to-teleport": "-1",
+          "sumo_version": [
+            22,
+            "SUMO 1.26.0"
+          ],
+          "actual_action_step_s": 0.1,
+          "verified": true
+        },
+        "observed_states": 237,
+        "vehicles": 1,
+        "arrived": 1,
+        "collisions": [],
+        "teleports": [],
+        "numerical_tolerance_m": 1e-06,
+        "no_debug_binary": true,
+        "no_P2_calculation": true,
+        "scientific_claim_eligible": false,
+        "plan_sha256": "303dec464438eac4c3ad7c0f9a1096e9e692c6bb0101ba654a58f6e48847709c"
+      }
+    },
+    {
+      "execution": {
+        "run_id": "stop_restart_005",
+        "status": "completed_valid",
+        "started_utc": "2026-10-19T06:48:39.334528Z",
+        "exit_code": 0,
+        "failure": null,
+        "wall_s": 5.525008399999933,
+        "peak_sampled_tree_rss_bytes": 118591488,
+        "blockers": [],
+        "warnings": [],
+        "bytes": 135363
+      },
+      "measurement": {
+        "run_id": "stop_restart_005",
+        "engineering_blockers": [],
+        "status": "completed_valid",
+        "edges": 483,
+        "exact_checked": 483,
+        "exact_passed": 483,
+        "bounded_consistency_only": 0,
+        "not_evaluable": 0,
+        "max_abs_residual_m": 1.3766765505351941e-14,
+        "anomalies": 0,
+        "branches": {
+          "normal_motion": {
+            "count": 332,
+            "exact": 332,
+            "exact_pass": 332,
+            "bounded": 0,
+            "not_evaluable": 0,
+            "max_abs_residual_m": 1.3766765505351941e-14,
+            "anomalies": 0
+          },
+          "decelerating_without_stop": {
+            "count": 71,
+            "exact": 71,
+            "exact_pass": 71,
+            "bounded": 0,
+            "not_evaluable": 0,
+            "max_abs_residual_m": 6.994405055138486e-15,
+            "anomalies": 0
+          },
+          "terminal_stop": {
+            "count": 1,
+            "exact": 1,
+            "exact_pass": 1,
+            "bounded": 0,
+            "not_evaluable": 0,
+            "max_abs_residual_m": 6.454255532806208e-15,
+            "anomalies": 0
+          },
+          "already_stopped": {
+            "count": 78,
+            "exact": 78,
+            "exact_pass": 78,
+            "bounded": 0,
+            "not_evaluable": 0,
+            "max_abs_residual_m": 0.0,
+            "anomalies": 0
+          },
+          "starting_from_rest": {
+            "count": 1,
+            "exact": 1,
+            "exact_pass": 1,
+            "bounded": 0,
+            "not_evaluable": 0,
+            "max_abs_residual_m": 7.025630077706069e-15,
+            "anomalies": 0
+          }
+        },
+        "runtime_settings": {
+          "step-method.ballistic": "true",
+          "step-length": "0.05",
+          "seed": "20261019",
+          "threads": "1",
+          "time-to-teleport": "-1",
+          "sumo_version": [
+            22,
+            "SUMO 1.26.0"
+          ],
+          "actual_action_step_s": 0.1,
+          "verified": true
+        },
+        "observed_states": 484,
+        "vehicles": 1,
+        "arrived": 1,
+        "collisions": [],
+        "teleports": [],
+        "numerical_tolerance_m": 1e-06,
+        "no_debug_binary": true,
+        "no_P2_calculation": true,
+        "scientific_claim_eligible": false,
+        "plan_sha256": "303dec464438eac4c3ad7c0f9a1096e9e692c6bb0101ba654a58f6e48847709c"
+      }
+    },
+    {
+      "execution": {
+        "run_id": "stop_restart_010",
+        "status": "completed_valid",
+        "started_utc": "2026-10-19T06:48:44.882462Z",
+        "exit_code": 0,
+        "failure": null,
+        "wall_s": 4.597204300000158,
+        "peak_sampled_tree_rss_bytes": 118431744,
+        "blockers": [],
+        "warnings": [],
+        "bytes": 65165
+      },
+      "measurement": {
+        "run_id": "stop_restart_010",
+        "engineering_blockers": [],
+        "status": "completed_valid",
+        "edges": 229,
+        "exact_checked": 228,
+        "exact_passed": 228,
+        "bounded_consistency_only": 1,
+        "not_evaluable": 0,
+        "max_abs_residual_m": 1.3766765505351941e-14,
+        "anomalies": 0,
+        "branches": {
+          "normal_motion": {
+            "count": 163,
+            "exact": 163,
+            "exact_pass": 163,
+            "bounded": 0,
+            "not_evaluable": 0,
+            "max_abs_residual_m": 1.3766765505351941e-14,
+            "anomalies": 0
+          },
+          "decelerating_without_stop": {
+            "count": 35,
+            "exact": 35,
+            "exact_pass": 35,
+            "bounded": 0,
+            "not_evaluable": 0,
+            "max_abs_residual_m": 6.8833827526759706e-15,
+            "anomalies": 0
+          },
+          "terminal_stop": {
+            "count": 1,
+            "exact": 0,
+            "exact_pass": 0,
+            "bounded": 1,
+            "not_evaluable": 0,
+            "max_abs_residual_m": null,
+            "anomalies": 0
+          },
+          "already_stopped": {
+            "count": 29,
+            "exact": 29,
+            "exact_pass": 29,
+            "bounded": 0,
+            "not_evaluable": 0,
+            "max_abs_residual_m": 0.0,
+            "anomalies": 0
+          },
+          "starting_from_rest": {
+            "count": 1,
+            "exact": 1,
+            "exact_pass": 1,
+            "bounded": 0,
+            "not_evaluable": 0,
+            "max_abs_residual_m": 3.3410774147313305e-15,
+            "anomalies": 0
+          }
+        },
+        "runtime_settings": {
+          "step-method.ballistic": "true",
+          "step-length": "0.1",
+          "seed": "20261019",
+          "threads": "1",
+          "time-to-teleport": "-1",
+          "sumo_version": [
+            22,
+            "SUMO 1.26.0"
+          ],
+          "actual_action_step_s": 0.1,
+          "verified": true
+        },
+        "observed_states": 230,
+        "vehicles": 1,
+        "arrived": 1,
+        "collisions": [],
+        "teleports": [],
+        "numerical_tolerance_m": 1e-06,
+        "no_debug_binary": true,
+        "no_P2_calculation": true,
+        "scientific_claim_eligible": false,
+        "plan_sha256": "303dec464438eac4c3ad7c0f9a1096e9e692c6bb0101ba654a58f6e48847709c"
+      }
+    }
+  ],
+  "totals": {
+    "edges": 948,
+    "exact_checked": 947,
+    "exact_passed": 947,
+    "bounded": 1,
+    "not_evaluable": 0,
+    "anomalies": 0
+  },
+  "max_abs_residual_m": 1.4210854715202004e-14,
+  "exact_applicable_fraction": 0.9989451476793249,
+  "exact_pass_fraction_of_applicable": 1.0,
+  "note": "exact-pass fraction is reported ONLY over exact-applicable edges, never over all edges",
+  "decision_stop_edges_bounded_only": 1,
+  "all_active_vehicle_edges_screened": true,
+  "displacement_back_inference_used": false,
+  "no_debug_binary": true,
+  "tolerance_m": 1e-06
+}
