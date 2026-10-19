@@ -87,3 +87,8 @@ formal_risk_measurement.v2与历史0.1s提取/线性指标隔离；正式固定�
 ## 2026-10-19 B1.2 分层准入与机制再验证
 
 B1.2新增独立b12_observation/network/runtime/worker：全边.05s分层审计、全网身份与局部边界分账、显式internal lane路径坐标、分车道队列观测/资格、-S胶囊与分阶段准入。旧B1/B1.1执行与P2核心不变。首个真实fixture近零终速不一致使主矩阵阻断；新执行入口不是已验证可用的主机制实验。
+
+
+## 2026-10-19 B1.2-N
+
+独立near_zero_observability模块只负责分支候选/独立上下文充分条件/audit_transition/Coverage；b12n_runtime负责最多3+2运行与micro checkpoint；b12n_worker只读TraCI。旧B1.1-S/B1.2实现不改。实际3微型运行后缺正近零覆盖，未进入C/D。

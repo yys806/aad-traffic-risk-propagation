@@ -1,0 +1,120 @@
+{
+  "runs": [
+    {
+      "run_id": "b12n_N1",
+      "status": "completed_with_diagnostic_warning",
+      "started_utc": "2026-10-19T08:46:29.345878Z",
+      "exit_code": 0,
+      "failure": null,
+      "wall_s": 6.388025699998252,
+      "peak_sampled_tree_rss_bytes": 130035712,
+      "blockers": [],
+      "warnings": [
+        "descriptive_low_speed_or_pending"
+      ],
+      "bytes": 151352
+    },
+    {
+      "run_id": "b12n_N2",
+      "status": "completed_with_diagnostic_warning",
+      "started_utc": "2026-10-19T08:46:35.750721Z",
+      "exit_code": 0,
+      "failure": null,
+      "wall_s": 5.39709959999891,
+      "peak_sampled_tree_rss_bytes": 126599168,
+      "blockers": [],
+      "warnings": [
+        "descriptive_low_speed_or_pending"
+      ],
+      "bytes": 149776
+    },
+    {
+      "run_id": "b12n_N3",
+      "status": "completed_with_diagnostic_warning",
+      "started_utc": "2026-10-19T08:46:41.161301Z",
+      "exit_code": 0,
+      "failure": null,
+      "wall_s": 5.468848299999081,
+      "peak_sampled_tree_rss_bytes": 126935040,
+      "blockers": [],
+      "warnings": [
+        "descriptive_low_speed_or_pending"
+      ],
+      "bytes": 177490
+    },
+    {
+      "run_id": "b12n_C",
+      "status": "not_attempted"
+    },
+    {
+      "run_id": "b12n_D",
+      "status": "not_attempted"
+    }
+  ],
+  "input_bindings": [
+    {
+      "run_id": "b12n_N1",
+      "seed": 20261019,
+      "duration_s": 30.0,
+      "inputs": {
+        "network": {
+          "path": "inputs/N1/micro.net.xml",
+          "sha256": "26f06f358973750eeb79edc0a4ff14693937f2ffbdf2b9862ffb32a4653d709b"
+        },
+        "demand": {
+          "path": "inputs/N1/demand.rou.xml",
+          "sha256": "453d6920340284cafcf265c074670759f28745ee94fe9d50f22b5355e6d1d647"
+        },
+        "config": {
+          "path": "inputs/b12n_N1.sumocfg",
+          "sha256": "75402d933c247d5a53a459bb48f0b96dd8ce24b422f1612c07c8a26d988fcdc4"
+        }
+      }
+    },
+    {
+      "run_id": "b12n_N2",
+      "seed": 20261019,
+      "duration_s": 30.0,
+      "inputs": {
+        "network": {
+          "path": "inputs/N2/micro.net.xml",
+          "sha256": "c09b6a22604c23f60b0e3c8a9f57e6f61a58d74484109e942fe1099ae1aae655"
+        },
+        "demand": {
+          "path": "inputs/N2/demand.rou.xml",
+          "sha256": "e85f95a768994ed20c6d929970b9712c8ab0caf3640f0976d5166468f72bd7b8"
+        },
+        "config": {
+          "path": "inputs/b12n_N2.sumocfg",
+          "sha256": "8c9e9321eec1a999cd836bcf943149b8af0a524cb5eb47817f28f91fa08d4404"
+        }
+      }
+    },
+    {
+      "run_id": "b12n_N3",
+      "seed": 20261019,
+      "duration_s": 30.0,
+      "inputs": {
+        "network": {
+          "path": "inputs/N3/micro.net.xml",
+          "sha256": "ba92fc7756ab310b96758391b807e5dfd1b055431f7c3be7041fd35fc35d702f"
+        },
+        "demand": {
+          "path": "inputs/N3/demand.rou.xml",
+          "sha256": "e81fd44fc2c8e698d1db81f2eea327ac5b837a2ca3a1aa937912069d283aeafc"
+        },
+        "config": {
+          "path": "inputs/b12n_N3.sumocfg",
+          "sha256": "253f159e80d370b00e870a427f2b02241d704ae6dcad60d5f3c83c0b4a8abacf"
+        }
+      }
+    }
+  ],
+  "micro_runs": 3,
+  "integration_runs": 0,
+  "main_matrix_runs": 0,
+  "main_plan_frozen": false,
+  "main_matrix_authorized": false,
+  "C_D_plans_frozen": false,
+  "closure_reason": "Predeclared positive-snap runtime branch Not Observed; integration admission false; no additional runs"
+}

@@ -1,5 +1,11 @@
 # AAD Current State Snapshot
 
+## 当前补充：B1.2-N（2026-10-19，优先于下文历史更新）
+
+`RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1`：独立B1.2-N工程任务。固定SUMO1.26源码完整谓词和调用顺序已审计；无停车任务的fresh/immutable生命周期可用doubleMax不变量，同edge常规停车仅非决策步可作充分条件。一般myStopDist不能由公开getter等价恢复。新候选`b12n-near-zero-observability-v1`不以位移/终速选择上下文，1e-6m不变。3个30s微型运行：2879边，2876精确全过（其中1负近零后处理），3 bounded，0近零未决/不可评价/工程错误；最大残差1.3988810110276972e-14m。冻结前203项受控合成通过。
+
+正近零非决策步清零运行边未出现（Not Observed），未满足运行前冻结的共同准入条件；integration_allowed=false，C/D计划冻结被拒绝，均Not Attempted，未追加试验/搜索。新主矩阵禁止且0次。旧B1.2阻断/0-8/D未运行和所有历史证据不变。下一步由研究者决定正近零覆盖设计与未来政策，再另批接入/主矩阵；不自动继续。报告：`docs/STAGE_0_5_TASK_0_5_4B1_2N_NEAR_ZERO_AND_INTEGRATION.md`；证据同ID目录。科研Gate/ready/现实覆盖/锁/StageI状态不变，科学阈值未批准。
+
 ## 当前补充：B1.2（2026-10-19，优先于下文历史更新）
 
 `RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2`：研究者已批准方案B仅用于工程探索、队列候选接入和条件性新A/B/C/D。严格布尔/时钟防御已修复；受控合成回归142 passed。首个压缩C接入fixture在19.70→19.75s遇到非决策步终速不一致，执行器自动停止；D fixture未启动、主矩阵0/8、主计划未冻结、`B1_2_MAIN_MATRIX_ALLOWED=false`。数值已审计10145边：10047精确全过、14 bounded、84不可评价（83合法edge转换+1阻断）；最大精确残差7.1054e-15m。
@@ -18,7 +24,7 @@ Gate=pending_simulation_sample，scientific_claim_eligible=false、ready_to_star
 依据：`docs/STAGE_0_5_TASK_0_5_4B1_1S_STOPPING_OBSERVABILITY.md`及同ID便携证据；协议/源码/输入冻结SHA见experiment_plan、PLAN_SHA256和provenance。
 
 > 核对日期：2026-10-19（Asia/Shanghai）
-> 当前任务：AAD-0.5.4-B1.1-S公开接口停车可观测性完成；非决策步停车已精确、决策步停车仍Bounded；B1 C阻断/D未启动保留，停在研究者决策节点。
+> 当前任务：AAD-0.5.4-B1.2-N独立观测收口；正近零非决策步运行分支未覆盖，共同准入false，C/D均Not Attempted；历史封存不变，停在研究者决策节点。
 
 ## 当前研究阶段
 

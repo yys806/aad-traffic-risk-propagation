@@ -106,3 +106,10 @@ B1.1精确停车Pending记录与B1 C/D、B0不变。Gate=pending_simulation_samp
 ## 2026-10-19 B1.2 分层准入与机制再验证
 
 RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2：B1.2前置阻断；v1冻结零尝试后被源副本完整性检查替代；v2仅压缩C接入fixture部分运行，最后完整帧19.7s，19.75s一条终速不一致阻断。10047精确全过、14 bounded、84不可评价；D fixture/8主项均not_attempted。局部计数32进入/21离开、全网49进入/6驶出/43在场，71跨edge里程交叉核查。未获完整接入资格，无新原尺度机制/真实覆盖/P2运行结论。
+
+
+## 2026-10-19 B1.2-N
+
+`RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1`：独立B1.2-N工程任务。固定SUMO1.26源码完整谓词和调用顺序已审计；无停车任务的fresh/immutable生命周期可用doubleMax不变量，同edge常规停车仅非决策步可作充分条件。一般myStopDist不能由公开getter等价恢复。新候选`b12n-near-zero-observability-v1`不以位移/终速选择上下文，1e-6m不变。3个30s微型运行：2879边，2876精确全过（其中1负近零后处理），3 bounded，0近零未决/不可评价/工程错误；最大残差1.3988810110276972e-14m。冻结前203项受控合成通过。
+
+正近零非决策步清零运行边未出现（Not Observed），未满足运行前冻结的共同准入条件；integration_allowed=false，C/D计划冻结被拒绝，均Not Attempted，未追加试验/搜索。新主矩阵禁止且0次。旧B1.2阻断/0-8/D未运行和所有历史证据不变。下一步由研究者决定正近零覆盖设计与未来政策，再另批接入/主矩阵；不自动继续。报告：`docs/STAGE_0_5_TASK_0_5_4B1_2N_NEAR_ZERO_AND_INTEGRATION.md`；证据同ID目录。科研Gate/ready/现实覆盖/锁/StageI状态不变，科学阈值未批准。

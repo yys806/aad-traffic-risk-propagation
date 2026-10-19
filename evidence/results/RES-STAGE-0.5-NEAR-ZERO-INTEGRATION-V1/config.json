@@ -1,0 +1,87 @@
+{
+  "fixed_engineering_candidate": {
+    "maxSpeed": 27.78,
+    "speedFactor": 1.0,
+    "speedDev": 0.0,
+    "carFollowModel": "Krauss",
+    "tau": 1.0,
+    "minGap": 2.5,
+    "accel": 2.6,
+    "decel": 4.5,
+    "apparentDecel": 4.5,
+    "emergencyDecel": 9.0,
+    "sigma": 0.5,
+    "actionStepLength": 0.1,
+    "sigmaStep": 1.0,
+    "laneChangeModel": "LC2013"
+  },
+  "actual_micro_overrides": "N3 sigma0 and three nominal maxSpeeds3e-6/5e-6/7e-6, probe only; all runtime types echoed",
+  "runs": [
+    {
+      "run_id": "b12n_N1",
+      "kind": "N1",
+      "network": "inputs/N1/micro.net.xml",
+      "demand": "inputs/N1/demand.rou.xml",
+      "config": "inputs/b12n_N1.sumocfg",
+      "seed": 20261019,
+      "duration_s": 30.0,
+      "local_space": {
+        "edge": "e0",
+        "start_m": 0.0,
+        "end_m": 250.0,
+        "lanes": 1,
+        "lane_km": 0.25
+      },
+      "probe_overrides": {},
+      "expected_role": "ordinary stop on current edge + early stop/restart"
+    },
+    {
+      "run_id": "b12n_N2",
+      "kind": "N2",
+      "network": "inputs/N2/micro.net.xml",
+      "demand": "inputs/N2/demand.rou.xml",
+      "config": "inputs/b12n_N2.sumocfg",
+      "seed": 20261019,
+      "duration_s": 30.0,
+      "local_space": {
+        "edge": "e0",
+        "start_m": 0.0,
+        "end_m": 150.0,
+        "lanes": 1,
+        "lane_km": 0.15
+      },
+      "probe_overrides": {},
+      "expected_role": "no scheduled stop; native red signal; near-zero context invariant"
+    },
+    {
+      "run_id": "b12n_N3",
+      "kind": "N3",
+      "network": "inputs/N3/micro.net.xml",
+      "demand": "inputs/N3/demand.rou.xml",
+      "config": "inputs/b12n_N3.sumocfg",
+      "seed": 20261019,
+      "duration_s": 30.0,
+      "local_space": {
+        "edge": "e0",
+        "start_m": 0.0,
+        "end_m": 250.0,
+        "lanes": 3,
+        "lane_km": 0.75
+      },
+      "probe_overrides": {
+        "sigma": 0.0,
+        "maxSpeed_per_type": [
+          3e-06,
+          5e-06,
+          7e-06
+        ]
+      },
+      "expected_role": "fixed deterministic threshold probe; no search; missing branches Not Observed"
+    }
+  ],
+  "C_D_inputs": "engineering candidates only; not frozen or run",
+  "P2_calculated": false,
+  "scientific_tolerance": "Tolerance Not Yet Justified",
+  "Energy_Distance_real_real_upper_bound": "Not Identifiable",
+  "local_formal_P2": "Unresolved"
+}

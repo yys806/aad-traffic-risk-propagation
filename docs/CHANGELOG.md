@@ -175,3 +175,12 @@ B1 C两阻断和D not_attempted永久保留；B0隔离false/验证物化Unknown�
 ## 2026-10-19 B1.2 分层准入与机制再验证
 
 B1.2新增分层数值、分域计数、显式internal路径和队列接入；严格is_action布尔/时钟防御。真实压缩fixture近零候选终速不一致触发自动停止，独立封存反例/计划/未执行项；旧B1/B1.1/B1.1-S证据无变化，主矩阵未启动。
+
+
+## 2026-10-19 B1.2-N（独立工程观测）
+
+`RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1`：独立B1.2-N工程任务。固定SUMO1.26源码完整谓词和调用顺序已审计；无停车任务的fresh/immutable生命周期可用doubleMax不变量，同edge常规停车仅非决策步可作充分条件。一般myStopDist不能由公开getter等价恢复。新候选`b12n-near-zero-observability-v1`不以位移/终速选择上下文，1e-6m不变。3个30s微型运行：2879边，2876精确全过（其中1负近零后处理），3 bounded，0近零未决/不可评价/工程错误；最大残差1.3988810110276972e-14m。冻结前203项受控合成通过。
+
+正近零非决策步清零运行边未出现（Not Observed），未满足运行前冻结的共同准入条件；integration_allowed=false，C/D计划冻结被拒绝，均Not Attempted，未追加试验/搜索。新主矩阵禁止且0次。旧B1.2阻断/0-8/D未运行和所有历史证据不变。下一步由研究者决定正近零覆盖设计与未来政策，再另批接入/主矩阵；不自动继续。报告：`docs/STAGE_0_5_TASK_0_5_4B1_2N_NEAR_ZERO_AND_INTEGRATION.md`；证据同ID目录。科研Gate/ready/现实覆盖/锁/StageI状态不变，科学阈值未批准。
+
+B1.2-N收口验证：纯Git全量698 passed/14 skipped；严格文档/便携/36源文件绑定/compileall通过，skip逐项列证；根目录文献缺失例外保留。

@@ -478,6 +478,11 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
             pairs[result_id].append(
                 (f"code/outputs/formal/calibration/{directory}/{name}", name)
             )
+    # B1.2-N exports only this explicit closed micro-observability summary.
+    for name in ('PLAN_SHA256', 'SHA256SUMS', 'analysis_access_audit.json', 'audit.json', 'config.json', 'controlled_access_audit.json', 'engineering_input_bundle.json', 'engineering_input_lineage.json', 'execution_scope_audit.json', 'experiment_plan.json', 'git_source_binding_audit.json', 'historical_status_preservation.json', 'integration_C_audit.json', 'integration_D_audit.json', 'integration_preflight.json', 'lane_change_and_exit_diagnostics.json', 'local_global_accounting_audit.json', 'manifest.json', 'micro_checkpoint.json', 'micro_ledger.json', 'micro_plan.json', 'near_zero_observability_matrix.json', 'near_zero_runtime_diagnostics.json', 'near_zero_source_contract.json', 'near_zero_test_matrix.json', 'numerical_admission_candidate.json', 'numerical_branch_coverage.json', 'preparation_manifest.json', 'provenance.json', 'queue_integration_diagnostics.json', 'report.md', 'researcher_decision_matrix.json', 'run_manifest.json', 'runtime_budget_audit.json', 'source_staging_manifest.json', 'task_ledger.json', 'test_record.json', 'unresolved_context_audit.json'):
+        pairs.setdefault("RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1", []).append(
+            (f"code/outputs/formal/calibration/stage_0_5_near_zero_integration_v1/summary/{name}", name)
+        )
     return pairs
 
 

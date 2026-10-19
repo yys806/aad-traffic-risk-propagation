@@ -1,0 +1,247 @@
+{
+  "pinned_commit": "fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3",
+  "manifest": {
+    "microsim_MSVehicle.cpp": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/microsim/MSVehicle.cpp",
+      "purpose": "B1.2-N immutable official source audit; no real traffic data",
+      "sha256": "8499ebe445906b19395d5c70945b012f320a439327e9cb3c20f0abd26d15a6a4",
+      "bytes": 381688
+    },
+    "microsim_MSVehicle.h": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/microsim/MSVehicle.h",
+      "purpose": "B1.2-N immutable official source audit; no real traffic data",
+      "sha256": "0732c3019037c0171d58c0d231ba68183c971cccb726eef7efd2394b33c794e1",
+      "bytes": 86425
+    },
+    "microsim_MSBaseVehicle.cpp": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/microsim/MSBaseVehicle.cpp",
+      "purpose": "B1.2-N immutable official source audit; no real traffic data",
+      "sha256": "9e46ef6907cd293b2b3a629f27709da042c35f61cd9d57a5081d966d9d4f22d3",
+      "bytes": 117477
+    },
+    "microsim_MSBaseVehicle.h": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/microsim/MSBaseVehicle.h",
+      "purpose": "B1.2-N immutable official source audit; no real traffic data",
+      "sha256": "6615e9a51560a0d9ad3333937701751a6f36a64d9003345551cceea580efd73c",
+      "bytes": 44483
+    },
+    "libsumo_Vehicle.cpp": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/libsumo/Vehicle.cpp",
+      "purpose": "B1.2-N immutable official source audit; no real traffic data",
+      "sha256": "9ef12f97fe72aa3daed0740d37de1bbb702012e4a250b82abdc66e8138c37fc8",
+      "bytes": 121128
+    },
+    "utils_common_SUMOTime.h": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/utils/common/SUMOTime.h",
+      "purpose": "B1.2-N immutable official source audit; no real traffic data",
+      "sha256": "e7897a565fe9def68e838881a9687f6cec4332fd572b25e0fb9a08066b58b13b",
+      "bytes": 3540
+    },
+    "config.h.cmake": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/config.h.cmake",
+      "purpose": "B1.2-N immutable official source audit; no real traffic data",
+      "sha256": "e849e676b62539154d42497ffd117a471e30d03c5899532f9e2230048652ab95",
+      "bytes": 7046
+    },
+    "src_microsim_cfmodels_MSCFModel.cpp": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/microsim/cfmodels/MSCFModel.cpp",
+      "purpose": "Call sequence and public stop getter semantics",
+      "sha256": "b4a2b50b679c7772dc81ec5585410cedfdea2110961cc445731627ef3cb1d769",
+      "bytes": 49766
+    },
+    "tools_traci__vehicle.py": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/tools/traci/_vehicle.py",
+      "purpose": "Call sequence and public stop getter semantics",
+      "sha256": "998b5579fc6df5380af5a315a2677d396460a9e8ecc58a8ba971d6f085b206eb",
+      "bytes": 71786
+    },
+    "microsim_MSLaneChanger.cpp": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/microsim/MSLaneChanger.cpp",
+      "purpose": "Verify declared MSVehicle friend classes do not write myStopDist",
+      "sha256": "86e1cd80a9499066ba95ee19ef1336c6524287f053776df42a468a5d640fb452",
+      "bytes": 126927,
+      "myStopDist_mentions": 0
+    },
+    "microsim_MSLaneChangerSublane.cpp": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/microsim/MSLaneChangerSublane.cpp",
+      "purpose": "Verify declared MSVehicle friend classes do not write myStopDist",
+      "sha256": "47e2fdcac55186ce47ab1b43b6bf3a969542f4241cd40b6003a16cc7e1c07435",
+      "bytes": 47362,
+      "myStopDist_mentions": 0
+    }
+  },
+  "line_locations": {
+    "microsim_MSVehicle.cpp": {
+      "myStopDist(std::numeric_limits<double>::max())": [
+        1014
+      ],
+      "planMoveInternal(t, ahead, myLFLinkLanes, myStopDist": [
+        2149
+      ],
+      "newStopDist = std::numeric_limits<double>::max()": [
+        2223
+      ],
+      "newStopDist = stopDist": [
+        2620
+      ],
+      "vSafe = getSpeed() + ACCEL2SPEED(myAcceleration)": [
+        4600
+      ],
+      "fabs(vNext) < NUMERICAL_EPS_SPEED": [
+        4644
+      ],
+      "vNext = processTraCISpeedControl": [
+        4673
+      ],
+      "updateState(vNext)": [
+        4704
+      ],
+      "deltaPos = getDeltaPos": [
+        4903
+      ],
+      "myAcceleration = SPEED2ACCEL(MAX2(vNext": [
+        4908
+      ],
+      "myState.mySpeed = MAX2(vNext": [
+        4935
+      ],
+      "myStopDist = 0;": [
+        7830
+      ]
+    },
+    "microsim_MSBaseVehicle.h": {
+      "bool hasStops() const": [
+        685
+      ],
+      "return !myStops.empty()": [
+        686
+      ]
+    },
+    "microsim_MSBaseVehicle.cpp": {
+      "MSBaseVehicle::getNextStop() const": [
+        1914
+      ],
+      "return myStops.front()": [
+        1916,
+        1922,
+        1928
+      ],
+      "MSBaseVehicle::getPrefixedParameter": [
+        2759
+      ]
+    },
+    "libsumo_Vehicle.cpp": {
+      "Vehicle::getStops(": [
+        649
+      ],
+      "if (!stop.pars.collision)": [
+        661
+      ],
+      "Vehicle::getDrivingDistance(": [
+        704
+      ],
+      "Vehicle::getStopState(": [
+        676
+      ]
+    },
+    "src_microsim_cfmodels_MSCFModel.cpp": {
+      "MSCFModel::finalizeSpeed(": [
+        189
+      ],
+      "veh->processNextStop(vPos)": [
+        193
+      ]
+    },
+    "config.h.cmake": {
+      "#define NUMERICAL_EPS 0.001": [
+        230
+      ],
+      "#define POSITION_EPS 0.1": [
+        233
+      ]
+    },
+    "utils_common_SUMOTime.h": {
+      "#define TS": [
+        42
+      ]
+    },
+    "tools_traci__vehicle.py": {
+      "def getStops(self, vehID, limit=0)": [
+        785
+      ]
+    }
+  },
+  "stop_distance_assignments": [
+    {
+      "line": 1143,
+      "text": "myStopDist = std::numeric_limits<double>::max();"
+    },
+    {
+      "line": 2223,
+      "text": "newStopDist = std::numeric_limits<double>::max();"
+    },
+    {
+      "line": 2620,
+      "text": "newStopDist = stopDist;"
+    },
+    {
+      "line": 5829,
+      "text": "myStopDist = std::numeric_limits<double>::max();"
+    },
+    {
+      "line": 5869,
+      "text": "myStopDist = std::numeric_limits<double>::max();"
+    },
+    {
+      "line": 7409,
+      "text": "myStopDist = std::numeric_limits<double>::max();"
+    },
+    {
+      "line": 7830,
+      "text": "myStopDist = 0;"
+    }
+  ],
+  "load_state_zero_assignment": {
+    "load_state_line": 7770,
+    "zero_line": 7830,
+    "excluded": true
+  },
+  "numerical_epsilon": 0.001,
+  "position_epsilon_m": 0.1,
+  "near_zero_threshold_formula": "0.1*NUMERICAL_EPS*internal_step_s",
+  "threshold_at_005_mps": 5e-06,
+  "predicate": "abs(u_pre)<eps_speed AND (myStopDist>POSITION_EPS OR (hasStops AND current route iterator==next stop iterator))",
+  "pipeline": [
+    "action:processLinkApproaches/finalizeSpeed/processNextStop OR nonaction:v0+a_start*h",
+    "strict near-zero conditional snap",
+    "TraCI/hybrid postprocessing (excluded by runtime proof)",
+    "updateState/getDeltaPos using signed u_final",
+    "public speed=max(u_final,0), acceleration=(public-v0)/h"
+  ],
+  "sufficient_context_proofs": [
+    "fresh immutable no-stop lifecycle => stopdist=doubleMax => first disjunct true",
+    "stable ordinary first stop on same noncyclic route edge during NON-action => second disjunct true"
+  ],
+  "public_getter_limits": [
+    "getStops omits collision stops; require collision-free known ordinary input",
+    "getDrivingDistance is current route geometry, not cached myStopDist from last action",
+    "getStopState reports reached-state flags, not complete future-stop context",
+    "No public general-purpose myStopDist getter in audited TraCI/libsumo dispatch"
+  ],
+  "generic_stop_context_identifiable": false,
+  "private_variables_instrumented": false,
+  "installed_binary_modified": false,
+  "historical_reclassification": false,
+  "proof_requirements": [
+    "official_source_contract_verified",
+    "fresh_vehicle_lifecycle",
+    "no_state_restore",
+    "no_dynamic_stop_mutation",
+    "no_route_mutation",
+    "no_collision_or_teleport",
+    "no_special_devices",
+    "noncyclic_route_verified",
+    "ordinary_stop_definition_verified"
+  ],
+  "source_audit_verified": true
+}

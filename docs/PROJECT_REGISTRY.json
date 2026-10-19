@@ -138,12 +138,13 @@
     "code/tests/test_stage_0_5_stopping_observability.py",
     "code/tests/test_stage_0_5_b11s_evidence.py",
     "docs/STAGE_0_5_TASK_0_5_4B1_1S_STOPPING_OBSERVABILITY.md",
-    "docs/plans/2026-10-19-stage-0-5-4b1-1s.md"
+    "docs/plans/2026-10-19-stage-0-5-4b1-1s.md",
+    "docs/STAGE_0_5_TASK_0_5_4B1_2N_NEAR_ZERO_AND_INTEGRATION.md"
   ],
   "current": {
     "active_experiment_id": "stage_0_5",
-    "active_task": "AAD-0.5.4-B1.2 blocked at numerical integration; no main mechanism runs; awaiting researcher decision on near-zero postprocessing domain and new integration plan.",
-    "why_now": "B1.2 blocked at integration: 10047/10047 exact edges pass,14 bounded,84 not-evaluable (83 legal edge changes +1 candidate terminal mismatch). Fixed SUMO source contains post-continuation near-zero snap; candidate4.658e-6 versus reported0 requires independent domain review. One partial compressed C fixture; D integration and all8 main runs not attempted. No retrospective B1/B1.1/B1.1-S reclassification; no formal calibration or scientific readiness.",
+    "active_task": "AAD-0.5.4-B1.2-N closed at predeclared missing positive-snap runtime coverage; C/D Not Attempted; no main matrix authorized.",
+    "why_now": "Restricted source proofs and synthetic truth tables established;1 negative near-zero postprocessing edge passes. Predeclared positive nonaction snap coverage absent, integration checkpoint false. C/D not frozen or run. No retrospective acceptance or scientific readiness.",
     "next_decision_owner": "researcher",
     "portable_gate_paths": [
       "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",
@@ -158,7 +159,8 @@
       "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/audit.json",
       "evidence/results/RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1/audit.json",
       "evidence/results/RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1/audit.json",
-      "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/audit.json"
+      "evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2/audit.json",
+      "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/audit.json"
     ],
     "local_gate_paths": [
       "code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r4/scientific_gate_report.json",
@@ -171,7 +173,8 @@
       "code/outputs/formal/calibration/stage_0_5_boundary_bottleneck_v2/summary/audit.json",
       "code/outputs/formal/calibration/stage_0_5_stopping_spillback_v1/summary/audit.json",
       "code/outputs/formal/calibration/stage_0_5_stopping_observability_v3/summary/audit.json",
-      "code/outputs/formal/calibration/stage_0_5_boundary_revalidation_b12_v2/summary/audit.json"
+      "code/outputs/formal/calibration/stage_0_5_boundary_revalidation_b12_v2/summary/audit.json",
+      "code/outputs/formal/calibration/stage_0_5_near_zero_integration_v1/summary/audit.json"
     ]
   },
   "experiments": [
@@ -400,7 +403,7 @@
       "research_question": "SUMO 基础运动与跟驰风险是否明显脱离真实交通范围？",
       "date": "2026-09-07",
       "status": "active_pending_simulation_sample",
-      "code_version": "canonical real reference R2, independent Stage 0.5.3 no-message SUMO engineering skeleton, and the Stage 0.5.4-A measurement-equivalence/calibration-readiness audit; no scientific calibration and no frozen scientific parameter; B0 bounded exploration with explicit ballistic and guarded batch inputs; no formal calibration; B1 capsule -S whitelist/stop supervisor with fixed-behaviour boundary mechanisms (closed early); B1.2 independent layered numerical/queue integration blocked before main matrix",
+      "code_version": "canonical real reference R2, independent Stage 0.5.3 no-message SUMO engineering skeleton, and the Stage 0.5.4-A measurement-equivalence/calibration-readiness audit; no scientific calibration and no frozen scientific parameter; B0 bounded exploration with explicit ballistic and guarded batch inputs; no formal calibration; B1 capsule -S whitelist/stop supervisor with fixed-behaviour boundary mechanisms (closed early); B1.2 independent layered numerical/queue integration blocked before main matrix; B1.2-N restricted source-qualified near-zero contract;3 micro probes closed at missing positive-snap runtime coverage, C/D not admitted",
       "code_paths": [
         "code/src/riskprop/simulation_real_coverage.py",
         "code/src/riskprop/stage_0_5_sumo.py",
@@ -420,7 +423,10 @@
         "code/src/riskprop/stage_0_5_b12_network.py",
         "code/src/riskprop/stage_0_5_b12_runtime.py",
         "code/src/riskprop/stage_0_5_b12_worker.py",
-        "code/src/riskprop/stage_0_5_stopping_observability.py"
+        "code/src/riskprop/stage_0_5_stopping_observability.py",
+        "code/src/riskprop/stage_0_5_near_zero_observability.py",
+        "code/src/riskprop/stage_0_5_b12n_runtime.py",
+        "code/src/riskprop/stage_0_5_b12n_worker.py"
       ],
       "entrypoints": [
         "code/scripts/prepare_stage_0_5_real_reference.py",
@@ -444,7 +450,10 @@
         "code/scripts/finalize_stage_0_5_stopping_spillback.py",
         "code/scripts/run_stage_0_5_boundary_revalidation.py",
         "code/scripts/finalize_stage_0_5_boundary_revalidation.py",
-        "code/scripts/verify_stage_0_5_revalidation_evidence.py"
+        "code/scripts/verify_stage_0_5_revalidation_evidence.py",
+        "code/scripts/run_stage_0_5_near_zero_integration.py",
+        "code/scripts/finalize_stage_0_5_near_zero_integration.py",
+        "code/scripts/verify_stage_0_5_near_zero_evidence.py"
       ],
       "test_paths": [
         "code/tests/test_simulation_real_coverage.py",
@@ -458,7 +467,10 @@
         "code/tests/test_stage_0_5_b11_evidence.py",
         "code/tests/test_stage_0_5_b12_integration.py",
         "code/tests/test_stage_0_5_b12_evidence.py",
-        "code/tests/test_stage_0_5_stopping_observability.py"
+        "code/tests/test_stage_0_5_stopping_observability.py",
+        "code/tests/test_stage_0_5_near_zero_observability.py",
+        "code/tests/test_stage_0_5_b12n_runtime.py",
+        "code/tests/test_stage_0_5_b12n_evidence.py"
       ],
       "configuration": "R2 real reference plus two no_message_baseline generic-highway engineering fixtures (baseline_mixed_demand, measurement_probe_queue_stop); US-101 primary, Lankershim auxiliary entry-only, pNEUMA urban kinematics entry-only; all network/demand/vType/behaviour/time settings are engineering_fixture_only",
       "parameters": {
@@ -530,7 +542,14 @@
         "b1_2_main_runs": 0,
         "b1_2_integration_attempts": 1,
         "b1_2_integration_blocker": "candidate_terminal_speed_inconsistent: near-zero post-continuation source branch",
-        "b1_2_queue_candidate_scientifically_approved": false
+        "b1_2_queue_candidate_scientifically_approved": false,
+        "b1_2n_result_id": "RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1",
+        "b1_2n_micro_runs": 3,
+        "b1_2n_positive_snap_runtime": "Not Observed",
+        "b1_2n_integration_allowed": false,
+        "b1_2n_C": "not_attempted",
+        "b1_2n_D": "not_attempted",
+        "b1_2n_main_matrix_authorized": false
       },
       "data_version": "RES-STAGE-0.5-REAL-REF-R2; Stage 0.2 R4 four states + final_r1 P2 + Stage 0.3 R2 canonical/R3 summaries",
       "model": "deterministic simulation-to-real coverage audit",
@@ -545,7 +564,8 @@
         "RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1",
         "RES-STAGE-0.5-STOPPING-SPILLBACK-CONTRACT-V1",
         "RES-STAGE-0.5-STOPPING-OBSERVABILITY-V1",
-        "RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2"
+        "RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2",
+        "RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1"
       ],
       "core_metrics": [
         "formal_input_manifest",
@@ -583,7 +603,7 @@
         "source_time_coverage",
         "density_scaled_engineering_cost"
       ],
-      "current_conclusion": "B1.2 blocked at integration: 10047/10047 exact edges pass,14 bounded,84 not-evaluable (83 legal edge changes +1 candidate terminal mismatch). Fixed SUMO source contains post-continuation near-zero snap; candidate4.658e-6 versus reported0 requires independent domain review. One partial compressed C fixture; D integration and all8 main runs not attempted. No retrospective B1/B1.1/B1.1-S reclassification; no formal calibration or scientific readiness.",
+      "current_conclusion": "Restricted source proofs and synthetic truth tables established;1 negative near-zero postprocessing edge passes. Predeclared positive nonaction snap coverage absent, integration checkpoint false. C/D not frozen or run. No retrospective acceptance or scientific readiness.",
       "gate": {
         "status": "pending_simulation_sample",
         "portable_path": "evidence/results/RES-STAGE-0.5-REAL-REF-R2/audit.json"
@@ -2346,6 +2366,80 @@
       "gate_status": "pending_simulation_sample",
       "paper_locations": [
         "docs/STAGE_0_5_TASK_0_5_4B1_2_BOUNDARY_BOTTLENECK_REVALIDATION.md"
+      ],
+      "scientific_claim_eligible": false
+    },
+    {
+      "id": "RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1",
+      "experiment_id": "stage_0_5",
+      "name": "AAD-0.5.4-B1.2-N near-zero postprocessing observability and integration admission",
+      "purpose": "Source-qualified near-zero domains and independently gated C/D integration; no main matrix",
+      "date": "2026-10-19",
+      "status": "closed_at_positive_snap_admission_gap",
+      "portable_evidence_paths": [
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/PLAN_SHA256",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/SHA256SUMS",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/analysis_access_audit.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/audit.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/config.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/controlled_access_audit.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/engineering_input_bundle.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/engineering_input_lineage.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/execution_scope_audit.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/experiment_plan.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/git_source_binding_audit.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/historical_status_preservation.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/integration_C_audit.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/integration_D_audit.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/integration_preflight.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/lane_change_and_exit_diagnostics.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/local_global_accounting_audit.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/manifest.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/micro_checkpoint.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/micro_ledger.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/micro_plan.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/near_zero_observability_matrix.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/near_zero_runtime_diagnostics.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/near_zero_source_contract.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/near_zero_test_matrix.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/numerical_admission_candidate.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/numerical_branch_coverage.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/preparation_manifest.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/provenance.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/queue_integration_diagnostics.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/report.md",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/researcher_decision_matrix.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/run_manifest.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/runtime_budget_audit.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/source_staging_manifest.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/task_ledger.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/test_record.json",
+        "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/unresolved_context_audit.json"
+      ],
+      "local_artifact_paths": [
+        "code/outputs/formal/calibration/stage_0_5_near_zero_integration_v1"
+      ],
+      "code_version_source": "code/src/riskprop/stage_0_5_near_zero_observability.py; code/src/riskprop/stage_0_5_b12n_runtime.py; code/src/riskprop/stage_0_5_b12n_worker.py; code/scripts/run_stage_0_5_near_zero_integration.py; code/scripts/finalize_stage_0_5_near_zero_integration.py; code/scripts/verify_stage_0_5_near_zero_evidence.py; code/tests/test_stage_0_5_near_zero_observability.py; code/tests/test_stage_0_5_b12n_runtime.py; code/tests/test_stage_0_5_b12n_evidence.py",
+      "configuration_source": "experiment_plan.json/micro_plan.json and PLAN_SHA256; C/D not frozen",
+      "data_version_source": "Three new SUMO micros;11 SHA-bound official sources and named sealed engineering metadata/XML inputs; no real trajectories",
+      "core_metrics": {
+        "micro_runs": 3,
+        "integration_runs": 0,
+        "main_matrix_runs": 0,
+        "exact_checked": 2876,
+        "exact_passed": 2876,
+        "bounded": 3,
+        "near_zero_unresolved": 0,
+        "not_evaluable": 0,
+        "engineering_blockers": 0,
+        "positive_snap_runtime": "Not Observed",
+        "negative_snap_edges": 1,
+        "integration_allowed": false
+      },
+      "current_conclusion": "Restricted source proofs and synthetic truth tables established;1 negative near-zero postprocessing edge passes. Predeclared positive nonaction snap coverage absent, integration checkpoint false. C/D not frozen or run. No retrospective acceptance or scientific readiness.",
+      "gate_status": "pending_simulation_sample",
+      "paper_locations": [
+        "docs/STAGE_0_5_TASK_0_5_4B1_2N_NEAR_ZERO_AND_INTEGRATION.md"
       ],
       "scientific_claim_eligible": false
     }

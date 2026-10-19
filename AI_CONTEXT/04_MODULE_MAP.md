@@ -69,3 +69,8 @@ run_stage_0_2_final_closure.py执行全源检查；stage_0_2_closure_analysis.py
 ## 2026-10-19 B1.2 分层准入与机制再验证
 
 新增code/src/riskprop/stage_0_5_b12_observation.py（audit_transition/NumericalCoverage/ScopedAccounting/queue_snapshot/QueueTracker）、stage_0_5_b12_network.py（coordinate_support）、stage_0_5_b12_runtime.py（胶囊/冻结/准入/停止）、stage_0_5_b12_worker.py（只读订阅）。入口run/finalize_stage_0_5_boundary_revalidation.py，纯Gitverify_stage_0_5_revalidation_evidence.py，测试test_stage_0_5_b12_integration.py/test_stage_0_5_b12_evidence.py。stopping_observability仅严格布尔/时钟防御，近零适用域未修复且fail-closed。
+
+
+## 2026-10-19 B1.2-N
+
+新增code/src/riskprop/stage_0_5_near_zero_observability.py（context_from_public/candidate_speeds/audit_transition/Coverage），stage_0_5_b12n_runtime.py（prepare/tests/freeze_micro/micro_checkpoint/分范围停止），stage_0_5_b12n_worker.py（只读.05s运行）；run/finalize_stage_0_5_near_zero_integration.py及verify_stage_0_5_near_zero_evidence.py；测试test_stage_0_5_near_zero_observability.py、test_stage_0_5_b12n_runtime.py、test_stage_0_5_b12n_evidence.py。旧模块广泛适用域叙述保留历史，当前接口使用独立版本。

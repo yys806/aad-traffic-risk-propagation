@@ -1,0 +1,67 @@
+{
+  "pre_freeze": {
+    "passed": 203,
+    "failed": 0,
+    "skipped": 0,
+    "command": [
+      "D:\\miniconda\\python.exe",
+      "-S",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_near_zero_integration_v1\\runtime\\code\\scripts\\b1_test_entry.py",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_near_zero_integration_v1\\runtime\\code\\tests\\test_stage_0_5_b12_integration.py",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_near_zero_integration_v1\\runtime\\code\\tests\\test_stage_0_5_b12n_runtime.py",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_near_zero_integration_v1\\runtime\\code\\tests\\test_stage_0_5_boundary_bottleneck.py",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_near_zero_integration_v1\\runtime\\code\\tests\\test_stage_0_5_near_zero_observability.py",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_near_zero_integration_v1\\runtime\\code\\tests\\test_stage_0_5_queue_contract.py",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_near_zero_integration_v1\\runtime\\code\\tests\\test_stage_0_5_stopping_contract.py",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_near_zero_integration_v1\\runtime\\code\\tests\\test_stage_0_5_stopping_observability.py",
+      "-q",
+      "-c",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_near_zero_integration_v1\\runtime\\code\\pytest.ini",
+      "--rootdir",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_near_zero_integration_v1\\runtime\\code",
+      "--basetemp",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_near_zero_integration_v1\\test_tmp\\1792399542404972500",
+      "-o",
+      "cache_dir=D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_near_zero_integration_v1\\runtime_cache\\pytest"
+    ],
+    "record_sha256": "6681fe1111fbcebb5a6dc8651fd8318f7728a31833f53cfcc7e07d1a1da7e3fa"
+  },
+  "preparation_failure_retained": "test-only capsule dependency omissions repaired before freeze; no SUMO consumed",
+  "final_validation": {
+    "pure_git_snapshot": "a9580263ddacaca9b5dbc3aa74282c35ba8e93b8",
+    "full_pytest": {
+      "command": "python -m pytest tests -q -rs",
+      "passed": 698,
+      "failed": 0,
+      "skipped": 14,
+      "duration_s": 116.36,
+      "skip_records": [
+        "SKIPPED [1] tests\\test_see_v2x_reaudit.py:75: raw sample not present (pure-clone mode)",
+        "SKIPPED [1] tests\\test_simulation_real_coverage.py:377: sealed Stage 0.3 canonical pNEUMA input is not available in this clone",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_1_targeted_validation.py:55: requires sealed local Task 2.5.1 CSV/PDF package; unit tests above remain portable",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_2_key_difference_cases.py:9: requires sealed local Task 2.5.2 CSV/PDF package; excluded from portable Git evidence",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_2_key_difference_cases.py:15: requires sealed local Task 2.5.2 CSV/PDF package; excluded from portable Git evidence",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_2_key_difference_cases.py:23: requires sealed local Task 2.5.2 CSV/PDF package; excluded from portable Git evidence",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_2_key_difference_cases.py:28: requires sealed local Task 2.5.2 CSV/PDF package; excluded from portable Git evidence",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_threshold_validation.py:10: requires sealed local Task 2.5 outputs; excluded from portable Git evidence",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_threshold_validation.py:17: requires sealed local Task 2.5 outputs; excluded from portable Git evidence",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_threshold_validation.py:24: requires sealed local Task 2.5 outputs; excluded from portable Git evidence",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_threshold_validation.py:31: requires sealed local Task 2.5 outputs; excluded from portable Git evidence",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_threshold_validation.py:38: requires sealed local Task 2.5 outputs; excluded from portable Git evidence",
+        "SKIPPED [1] tests\\test_stage_0_2_task_2_5_threshold_validation.py:44: requires sealed local Task 2.5 outputs; excluded from portable Git evidence",
+        "SKIPPED [1] tests\\test_stage_0_5_boundary_bottleneck.py:72: bootstrap contract is exercised by the dedicated -S capsule preflight"
+      ],
+      "log_sha256": "4809c3285bebb302eb5f0b25cca2eeaafeb70dd52e172019c5b29165ec4f5b7c",
+      "no_local_data_in_clone": true
+    },
+    "compileall": "Passed: code/src code/scripts code/tests",
+    "strict_docs_require_clean": "Passed in pure Git clone",
+    "portable_evidence": "Passed",
+    "frozen_git_source_binding_files": 36,
+    "historical_results_and_registry_records": "Unchanged relative aa2beb0",
+    "root_worktree_docs_exception": "Pre-existing missing literature index; five deletions excluded from task/staging",
+    "full_pytest_in_data_bearing_root": false,
+    "final_commit_recheck": "Required after commit; local post_commit_verification.json retains final SHA"
+  },
+  "data_skips_are_not_scientific_pass": true
+}

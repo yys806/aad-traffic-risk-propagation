@@ -1,0 +1,33 @@
+{
+  "rows": [
+    {
+      "context": "fresh immutable no-stop lifecycle",
+      "source": "constructor/reset doubleMax; only first stop makes finite value; state load excluded",
+      "observable": "frozen inputs + public stops/routes/devices + collision/time proof",
+      "predicate": true,
+      "qualification": "restricted sufficient proof; negative snap observed; positive nonaction snap Not Observed"
+    },
+    {
+      "context": "stable same-edge ordinary stop on nonaction",
+      "source": "second disjunct; nonaction skips finalizeSpeed/processNextStop",
+      "observable": "stable public first stop, route index/noncyclic route, current edge",
+      "predicate": true,
+      "qualification": "101 ordinary-stop context edges in N1; near-zero snap Not Observed there"
+    },
+    {
+      "context": "general stop-distance / first-stop mutation / state load",
+      "source": "private myStopDist; filtered public stops/current geometric distance not equivalent",
+      "observable": "Incomplete",
+      "predicate": null,
+      "qualification": "Near-Zero Context Unresolved when candidate nonzero within strict threshold"
+    },
+    {
+      "context": "independently false context",
+      "source": "full OR predicate false",
+      "observable": "analytic truth-table fixtures only",
+      "predicate": false,
+      "qualification": "No live False proof claimed"
+    }
+  ],
+  "terminal_speed_and_displacement_never_select_context": true
+}

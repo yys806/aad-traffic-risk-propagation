@@ -97,3 +97,8 @@ A+三个封存摘要→预声明来源/SHA→CalibrationValidationGuard→两窗
 ## 2026-10-19 B1.2 分层准入与机制再验证
 
 SHA绑定既有两校准窗口便携摘要及A+车型→独立B1.2胶囊→142合成/停止测试→冻结两个≤60s接入fixture→.05s订阅状态/步初加速度/lastActionTime→分层数值与分域计数/路径坐标/队列快照→19.75s终速不一致自动阻断→D及主矩阵未执行→本地全状态/三图，Git小型协议、反例和统计。停止后官方固定源码请求/哈希独立登记；无新真实轨迹或历史全源读取。
+
+
+## 2026-10-19 B1.2-N
+
+具名官方源码(11文件SHA)+B1.2具名便携元数据/工程XML bundle→新-S白名单胶囊→203合成→冻结micro→3次30s→checkpoint false→封存。未decode calibration_reference，未读真实轨迹/旧C状态。u_pre→独立后处理上下文→u_final→ballistic→公开钳制；位移仅用于检查，不能反推分支。
