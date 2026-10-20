@@ -1,0 +1,329 @@
+{
+ "result_id": "RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1",
+ "version": "stage-0.5-trajectory-reconstruction-v1",
+ "windows": {
+  "us101__0750_0805": {
+   "local": {
+    "status": "Observation",
+    "region_m": [
+     150.0,
+     350.0
+    ],
+    "lanes": [
+     "1",
+     "2",
+     "3",
+     "4",
+     "5"
+    ],
+    "lane_km": 1.0,
+    "coverage_s": 720.0,
+    "local_vehicle_s": 31351.4,
+    "density_veh_km_lane": 43.54361111111111,
+    "speed_mean_mps": 10.506118382234924,
+    "flow_veh_h_lane_consistency": 1646.907599244,
+    "low_speed_share": 0.09689200482275113,
+    "speed_sd_mps": 3.638561856472785,
+    "speed_quantiles_mps": [
+     0.0,
+     2.752344,
+     9.043416,
+     11.074908,
+     12.963144000000002,
+     15.24,
+     29.04744
+    ],
+    "acceleration_mean_mps2": 0.06702616301664359,
+    "acceleration_sd_mps2": 1.404252097172564,
+    "states": 313514
+   },
+   "boundary": {
+    "status": "Derived",
+    "window_s": [
+     120.0,
+     840.0
+    ],
+    "region_m": [
+     150.0,
+     350.0
+    ],
+    "entry_lanes": [
+     "1",
+     "2",
+     "3",
+     "4",
+     "5"
+    ],
+    "exit_lanes": [
+     "1",
+     "2",
+     "3",
+     "4",
+     "5",
+     "6"
+    ],
+    "entered_vehicles": 1669,
+    "exited_vehicles": 1739,
+    "entry_flow_veh_h": 8345.0,
+    "exit_flow_veh_h": 8695.0,
+    "entry_flow_veh_h_lane": 1669.0,
+    "entry_speed_mean_mps": 10.789410478130616,
+    "exit_speed_mean_mps": 12.610228016101209,
+    "entry_by_lane": {
+     "2": 345,
+     "4": 339,
+     "3": 338,
+     "5": 333,
+     "1": 314
+    },
+    "exit_by_lane": {
+     "2": 342,
+     "3": 340,
+     "5": 333,
+     "4": 332,
+     "1": 308,
+     "6": 84
+    }
+   },
+   "conservation_closed": {
+    "status": "Derived",
+    "label": "closed_six_lane_cross_section",
+    "region_m": [
+     200.0,
+     350.0
+    ],
+    "window_s": [
+     120.0,
+     840.0
+    ],
+    "lanes_in": [
+     "1",
+     "2",
+     "3",
+     "4",
+     "5",
+     "6"
+    ],
+    "lanes_out": [
+     "1",
+     "2",
+     "3",
+     "4",
+     "5",
+     "6"
+    ],
+    "cross_section_identical": true,
+    "occupancy_start_mean": 24.403333333333332,
+    "occupancy_end_mean": 24.336666666666666,
+    "occupancy_edge_average_s": 30.0,
+    "occupancy_delta": -0.06666666666666643,
+    "entered": 1767,
+    "exited": 1739,
+    "in_minus_out": 28,
+    "conservation_residual_vehicles": -28,
+    "entering_flow_veh_h": 8835.0,
+    "exiting_flow_veh_h": 8695.0,
+    "entering_speed_mean_mps": 11.968467925297114,
+    "exiting_speed_mean_mps": null
+   },
+   "ramp": {
+    "status": "Derived",
+    "window_s": [
+     120.0,
+     840.0
+    ],
+    "onramp_lane": "7",
+    "onramp_support_m": [
+     128.7350232,
+     187.5797112
+    ],
+    "onramp_entry_vehicles_in_window": 138,
+    "onramp_entry_flow_veh_h": 690.0,
+    "offramp_lane": "8",
+    "offramp_support_m": [
+     399.21972480000005,
+     450.8400432
+    ],
+    "offramp_entry_vehicles_in_window": 71,
+    "offramp_entry_flow_veh_h": 355.0,
+    "offramp_last_observed_y_mean_m": 429.9338484533333,
+    "caveat": "Entry instants on the dedicated lanes are the first observation on that lane, so they are lower bounds of the true ramp arrival times when a vehicle was already on the lane before the window."
+   },
+   "slow_cell_fraction": 0.23511904761904762,
+   "largest_slow_component": {
+    "cells": 28,
+    "duration_s": 90.0,
+    "first_time_s": 750.0,
+    "first_y_min_m": 500.0,
+    "first_y_max_m": 650.0,
+    "last_time_s": 810.0,
+    "last_y_min_m": 0.0,
+    "last_y_max_m": 600.0,
+    "growth": "upstream"
+   }
+  },
+  "us101__0805_0820": {
+   "local": {
+    "status": "Observation",
+    "region_m": [
+     150.0,
+     350.0
+    ],
+    "lanes": [
+     "1",
+     "2",
+     "3",
+     "4",
+     "5"
+    ],
+    "lane_km": 1.0,
+    "coverage_s": 660.0,
+    "local_vehicle_s": 33333.6,
+    "density_veh_km_lane": 50.50545454545454,
+    "speed_mean_mps": 7.915276152134783,
+    "flow_veh_h_lane_consistency": 1439.152631698909,
+    "low_speed_share": 0.25297297621619025,
+    "speed_sd_mps": 3.9858620484023257,
+    "speed_quantiles_mps": [
+     0.0,
+     0.813816,
+     4.949952,
+     8.135112000000001,
+     10.72896,
+     13.801344,
+     29.04744
+    ],
+    "acceleration_mean_mps2": 0.045221326805385556,
+    "acceleration_sd_mps2": 1.2658855724286906,
+    "states": 333336
+   },
+   "boundary": {
+    "status": "Derived",
+    "window_s": [
+     180.0,
+     840.0
+    ],
+    "region_m": [
+     150.0,
+     350.0
+    ],
+    "entry_lanes": [
+     "1",
+     "2",
+     "3",
+     "4",
+     "5"
+    ],
+    "exit_lanes": [
+     "1",
+     "2",
+     "3",
+     "4",
+     "5",
+     "6"
+    ],
+    "entered_vehicles": 1325,
+    "exited_vehicles": 1412,
+    "entry_flow_veh_h": 7227.272727272728,
+    "exit_flow_veh_h": 7701.818181818181,
+    "entry_flow_veh_h_lane": 1445.4545454545455,
+    "entry_speed_mean_mps": 9.301637959245284,
+    "exit_speed_mean_mps": 10.81922785835694,
+    "entry_by_lane": {
+     "2": 275,
+     "4": 274,
+     "5": 266,
+     "3": 259,
+     "1": 251
+    },
+    "exit_by_lane": {
+     "4": 280,
+     "2": 277,
+     "1": 261,
+     "5": 260,
+     "3": 258,
+     "6": 76
+    }
+   },
+   "conservation_closed": {
+    "status": "Derived",
+    "label": "closed_six_lane_cross_section",
+    "region_m": [
+     200.0,
+     350.0
+    ],
+    "window_s": [
+     180.0,
+     840.0
+    ],
+    "lanes_in": [
+     "1",
+     "2",
+     "3",
+     "4",
+     "5",
+     "6"
+    ],
+    "lanes_out": [
+     "1",
+     "2",
+     "3",
+     "4",
+     "5",
+     "6"
+    ],
+    "cross_section_identical": true,
+    "occupancy_start_mean": 24.516666666666666,
+    "occupancy_end_mean": 26.96,
+    "occupancy_edge_average_s": 30.0,
+    "occupancy_delta": 2.443333333333335,
+    "entered": 1342,
+    "exited": 1412,
+    "in_minus_out": -70,
+    "conservation_residual_vehicles": 72,
+    "entering_flow_veh_h": 7320.0,
+    "exiting_flow_veh_h": 7701.818181818181,
+    "entering_speed_mean_mps": 9.835546229508196,
+    "exiting_speed_mean_mps": null
+   },
+   "ramp": {
+    "status": "Derived",
+    "window_s": [
+     180.0,
+     840.0
+    ],
+    "onramp_lane": "7",
+    "onramp_support_m": [
+     129.1516848,
+     199.84974
+    ],
+    "onramp_entry_vehicles_in_window": 122,
+    "onramp_entry_flow_veh_h": 665.4545454545455,
+    "offramp_lane": "8",
+    "offramp_support_m": [
+     411.4839624,
+     489.26221680000003
+    ],
+    "offramp_entry_vehicles_in_window": 66,
+    "offramp_entry_flow_veh_h": 360.0,
+    "offramp_last_observed_y_mean_m": 447.7226104085106,
+    "caveat": "Entry instants on the dedicated lanes are the first observation on that lane, so they are lower bounds of the true ramp arrival times when a vehicle was already on the lane before the window."
+   },
+   "slow_cell_fraction": 0.5551948051948052,
+   "largest_slow_component": {
+    "cells": 91,
+    "duration_s": 300.0,
+    "first_time_s": 180.0,
+    "first_y_min_m": 550.0,
+    "first_y_max_m": 650.0,
+    "last_time_s": 450.0,
+    "last_y_min_m": 0.0,
+    "last_y_max_m": 50.0,
+    "growth": "upstream"
+   }
+  }
+ },
+ "scientific_claim_eligible": false,
+ "gate_status": "pending_simulation_sample",
+ "reality_coverage_accepted": false
+}

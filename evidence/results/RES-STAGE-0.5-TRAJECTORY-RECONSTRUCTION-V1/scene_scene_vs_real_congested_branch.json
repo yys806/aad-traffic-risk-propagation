@@ -1,0 +1,22 @@
+{
+ "condition": "us101__0750_0805",
+ "status": "Derived from frozen parameters plus Observation; the parameter conclusion is Hypothesis",
+ "frozen_parameters": {
+  "tau_s": 1.0,
+  "min_gap_m": 2.5,
+  "passenger_length_m": 4.4196
+ },
+ "observed_congested_point": {
+  "density_veh_km_lane": 43.54361111111111,
+  "speed_mean_mps": 10.506118382234924,
+  "flow_veh_h_lane": 1646.907599244,
+  "mean_net_gap_m": 18.81037762141404
+ },
+ "krauss_equilibrium_speed_at_observed_density_mps": 16.045881605287164,
+ "implied_tau_s_from_observed_density": 1.527289244372077,
+ "implied_tau_s_from_observed_net_gap": 1.5524646713474783,
+ "agreement_between_two_implied_tau_s": 0.025175426975401427,
+ "conclusion": "At the frozen Krauss parameters the equilibrium speed at the observed congested density is far above the observed speed, so the observed congested branch is not on the frozen model's equilibrium branch. Both the observed density and the observed net gap independently imply an effective time-gap parameter near 1.5-1.6 s instead of the frozen 1.0 s. This is the quantitative reason why the same observed flow is reachable only on the free-flow branch in the tested scenarios.",
+ "not_a_science_tolerance": true,
+ "requires_controlled_probe": true
+}

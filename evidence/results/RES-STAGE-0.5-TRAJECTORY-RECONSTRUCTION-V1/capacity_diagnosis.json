@@ -1,0 +1,46 @@
+{
+ "status": "Derived",
+ "sumo_krauss_parameters": {
+  "car_follow_model": "Krauss",
+  "tau_s": 1.0,
+  "min_gap_m": 2.5,
+  "length_m": {
+   "motorcycle": 2.4384,
+   "passenger": 4.4196,
+   "truck": 10.009694845360826
+  },
+  "accel_mps2": 2.6,
+  "decel_mps2": 4.5,
+  "emergency_decel_mps2": 9.0,
+  "sigma": 0.5,
+  "speed_factor": 1.0,
+  "max_speed_mps": 27.78,
+  "action_step_length_s": 0.1
+ },
+ "analytic_saturation_capacity_veh_h_lane": {
+  "motorcycle": 3056.628685999315,
+  "passenger": 2882.1081511026064,
+  "truck": 2482.2228210923136
+ },
+ "sumo_passenger_capacity_veh_h_lane": 2882.1081511026064,
+ "observed_congested_branch": {
+  "us101__0750_0805": {
+   "density_veh_km_lane": 43.54361111111111,
+   "speed_mean_mps": 10.506118382234924,
+   "flow_veh_h_lane": 1646.907599244,
+   "implied_free_flow_density_at_same_flow_veh_km_lane": 16.46775857175426
+  },
+  "us101__0805_0820": {
+   "density_veh_km_lane": 50.50545454545454,
+   "speed_mean_mps": 7.915276152134783,
+   "flow_veh_h_lane": 1439.152631698909,
+   "implied_free_flow_density_at_same_flow_veh_km_lane": 14.39037508698213
+  }
+ },
+ "ratio_capacity_to_observed_flow": {
+  "us101__0750_0805": 1.7500120543651723,
+  "us101__0805_0820": 2.002642449189214
+ },
+ "conclusion": "The two real windows sit on the congested branch: the same measured cross-section flow is compatible with a free-flow state at about 16.5 veh/km/lane and with the observed congested state at 43.5-50.5 veh/km/lane. The Krauss parameters actually used by the failed conditional candidate give an analytic lane capacity far above the observed congested flow, so at the observed demand that scenario has no binding supply and can only reach the free-flow branch. Matching the observed flow therefore cannot identify the observed state; the state has to be supported by the initial condition, by the demand history, or by a supply restriction whose capacity is on the order of the observed congested flow.",
+ "not_a_science_tolerance": true
+}

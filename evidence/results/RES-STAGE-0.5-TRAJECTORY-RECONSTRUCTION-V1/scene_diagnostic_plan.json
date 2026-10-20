@@ -1,0 +1,428 @@
+{
+ "result_id": "RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1",
+ "version": "stage-0.5-scene-reconstruction-v1",
+ "mode": "pre-declared targeted SUMO diagnostics; diagnostic evidence only, never Gate acceptance",
+ "condition": "us101__0750_0805",
+ "specification": {
+  "condition": "us101__0750_0805",
+  "mainline_flow_veh_h": 8345.0,
+  "onramp_flow_veh_h": 516.0,
+  "offramp_flow_veh_h": 355.0,
+  "analytic_downstream_capacity_veh_h": 8646.32445330782,
+  "demand_over_capacity": 0.9651499946670933,
+  "real_target": {
+   "mean_speed_mps": 10.506118382234925,
+   "density_veh_km_lane": 43.54361111111111
+  }
+ },
+ "duration_s": 300.0,
+ "internal_step_s": 0.05,
+ "evaluation_window_s": [
+  180.0,
+  299.7
+ ],
+ "evaluation_window_basis": "inherited from the frozen 2026-10-20 conditional candidate window; fixed before any trajectory of this batch is produced",
+ "block_s": 30.0,
+ "variants": [
+  {
+   "variant": "RC1",
+   "seed": 20261021,
+   "use_initial_state": false,
+   "conditional_supply": false,
+   "question": "Can the observed geometry (five mainline lanes, on-ramp merge, auxiliary lane, off-ramp diverge) and the observed boundary demand alone reproduce the observed congested local state?",
+   "predicted_outcome": "free-flow branch: local speed near 20-23 m/s and density near 19-21 veh/km/lane, i.e. the same flow on the free-flow branch, because the Krauss lane capacity far exceeds the observed congested flow",
+   "supports_if": "mean speed within the predeclared block envelope of the real target and mean density within it",
+   "refutes_if": "mean speed and density both outside the real-target block envelope"
+  },
+  {
+   "variant": "RC2",
+   "seed": 20261022,
+   "use_initial_state": true,
+   "conditional_supply": false,
+   "question": "Does the observed congested state persist under SUMO dynamics at the observed boundary demand, i.e. was the free-flow outcome only an initial-condition artefact?",
+   "predicted_outcome": "the injected congested state relaxes towards free flow because the network has no binding downstream supply at the observed demand",
+   "supports_if": "the late evaluation window still lies inside the real-target block envelope",
+   "refutes_if": "the late evaluation window has moved outside the envelope towards free flow"
+  },
+  {
+   "variant": "RC3",
+   "seed": 20261023,
+   "use_initial_state": true,
+   "conditional_supply": true,
+   "question": "If a downstream supply restriction is admitted as a declared conditional assumption, does the local state land in the observed congested envelope?",
+   "predicted_outcome": "congested branch: a 3-lane downstream exit has analytic capacity close to the observed congested through-flow, so a queue forms and the local state approaches the real target",
+   "supports_if": "the late evaluation window lies inside the real-target block envelope",
+   "refutes_if": "the late evaluation window stays on the free-flow branch or over-congests beyond the envelope"
+  }
+ ],
+ "stop_rules": [
+  "any engineering failure (non-zero SUMO exit, teleport, collision) stops the batch",
+  "if RC2 and RC3 both fail the state-support envelope, stop and report Evidence Insufficient rather than search parameters",
+  "independent seed repeats are only run for a variant that achieves state support, and are reported separately from the construction run"
+ ],
+ "resource_limits": {
+  "per_run_wall_s": 600,
+  "batch_wall_s": 3600,
+  "threads": 1
+ },
+ "budget": {
+  "construction_runs": 3,
+  "reserved_independent_repeats": 2,
+  "total": 5,
+  "note": "diagnostic budget re-planned under the 2026-10-21 task authorisation; still no ABCD, no protocol lock, no third window, no locked holdout"
+ },
+ "sumo_binary_sha256": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+ "netconvert_binary_sha256": "4174c17db813d413c85cdf7ad99a5f59b537ddf80f8caac9e1dfe87a35cb6b51",
+ "source_files": {
+  "us101__0750_0805": {
+   "path": "code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r4/states/ngsim_us101__0750_0805.parquet",
+   "sha256": "684a5f0b96dc48116f16d581c278d7039c0554bf1c3cea8d6eda3e605e3e8644"
+  },
+  "us101__0805_0820": {
+   "path": "code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r4/states/ngsim_us101__0805_0820.parquet",
+   "sha256": "7b0ef830c97a981da018d4e24b029e38aa2630387c728ea87b57926745880a9f"
+  }
+ },
+ "sealed_windows_not_read": [
+  "us101__0820_0835",
+  "nsgim_lankershim__complete"
+ ],
+ "scientific_claim_eligible": false,
+ "gate_status": "pending_simulation_sample",
+ "network_specs": {
+  "RC1": {
+   "schema_version": "stage_0_5.sumo-engineering.v2.network-candidate.v1",
+   "network_id": "observed_geometry_candidate",
+   "classification": "conditional_observed_geometry_candidate",
+   "claim": "observed_geometry_from_ngsim_us101_lane_support_not_full_facility_replication",
+   "design_basis": [
+    "five mainline lanes over the observed 669 m, matching the official site description",
+    "a dedicated lane starts exactly where the observed on-ramp lane ends (merge at 187.6 m)",
+    "the added lane ends exactly where the observed off-ramp lane starts (diverge at 399.2 m)",
+    "no traffic signal and no lane closure anywhere in the observed segment"
+   ],
+   "nodes": [
+    {
+     "id": "hwy_w",
+     "x": 0.0,
+     "y": 0.0
+    },
+    {
+     "id": "hwy_m1",
+     "x": 187.58,
+     "y": 0.0
+    },
+    {
+     "id": "hwy_m2",
+     "x": 399.22,
+     "y": 0.0
+    },
+    {
+     "id": "hwy_e",
+     "x": 669.18,
+     "y": 0.0
+    },
+    {
+     "id": "hwy_on",
+     "x": 60.0,
+     "y": -160.0
+    },
+    {
+     "id": "hwy_off",
+     "x": 560.0,
+     "y": -160.0
+    }
+   ],
+   "edges": [
+    {
+     "id": "main_0",
+     "from": "hwy_w",
+     "to": "hwy_m1",
+     "lanes": 5,
+     "speed_mps": 27.78,
+     "priority": 2
+    },
+    {
+     "id": "main_1",
+     "from": "hwy_m1",
+     "to": "hwy_m2",
+     "lanes": 6,
+     "speed_mps": 27.78,
+     "priority": 2
+    },
+    {
+     "id": "main_2",
+     "from": "hwy_m2",
+     "to": "hwy_e",
+     "lanes": 5,
+     "speed_mps": 27.78,
+     "priority": 2
+    },
+    {
+     "id": "onramp",
+     "from": "hwy_on",
+     "to": "hwy_m1",
+     "lanes": 1,
+     "speed_mps": 13.89,
+     "priority": 1
+    },
+    {
+     "id": "offramp",
+     "from": "hwy_m2",
+     "to": "hwy_off",
+     "lanes": 1,
+     "speed_mps": 13.89,
+     "priority": 1
+    }
+   ],
+   "routes": {
+    "through": [
+     "main_0",
+     "main_1",
+     "main_2"
+    ],
+    "entering": [
+     "onramp",
+     "main_1",
+     "main_2"
+    ],
+    "exiting": [
+     "main_0",
+     "main_1",
+     "offramp"
+    ]
+   },
+   "lane_change_enabled": true
+  },
+  "RC2": {
+   "schema_version": "stage_0_5.sumo-engineering.v2.network-candidate.v1",
+   "network_id": "observed_geometry_candidate",
+   "classification": "conditional_observed_geometry_candidate",
+   "claim": "observed_geometry_from_ngsim_us101_lane_support_not_full_facility_replication",
+   "design_basis": [
+    "five mainline lanes over the observed 669 m, matching the official site description",
+    "a dedicated lane starts exactly where the observed on-ramp lane ends (merge at 187.6 m)",
+    "the added lane ends exactly where the observed off-ramp lane starts (diverge at 399.2 m)",
+    "no traffic signal and no lane closure anywhere in the observed segment"
+   ],
+   "nodes": [
+    {
+     "id": "hwy_w",
+     "x": 0.0,
+     "y": 0.0
+    },
+    {
+     "id": "hwy_m1",
+     "x": 187.58,
+     "y": 0.0
+    },
+    {
+     "id": "hwy_m2",
+     "x": 399.22,
+     "y": 0.0
+    },
+    {
+     "id": "hwy_e",
+     "x": 669.18,
+     "y": 0.0
+    },
+    {
+     "id": "hwy_on",
+     "x": 60.0,
+     "y": -160.0
+    },
+    {
+     "id": "hwy_off",
+     "x": 560.0,
+     "y": -160.0
+    }
+   ],
+   "edges": [
+    {
+     "id": "main_0",
+     "from": "hwy_w",
+     "to": "hwy_m1",
+     "lanes": 5,
+     "speed_mps": 27.78,
+     "priority": 2
+    },
+    {
+     "id": "main_1",
+     "from": "hwy_m1",
+     "to": "hwy_m2",
+     "lanes": 6,
+     "speed_mps": 27.78,
+     "priority": 2
+    },
+    {
+     "id": "main_2",
+     "from": "hwy_m2",
+     "to": "hwy_e",
+     "lanes": 5,
+     "speed_mps": 27.78,
+     "priority": 2
+    },
+    {
+     "id": "onramp",
+     "from": "hwy_on",
+     "to": "hwy_m1",
+     "lanes": 1,
+     "speed_mps": 13.89,
+     "priority": 1
+    },
+    {
+     "id": "offramp",
+     "from": "hwy_m2",
+     "to": "hwy_off",
+     "lanes": 1,
+     "speed_mps": 13.89,
+     "priority": 1
+    }
+   ],
+   "routes": {
+    "through": [
+     "main_0",
+     "main_1",
+     "main_2"
+    ],
+    "entering": [
+     "onramp",
+     "main_1",
+     "main_2"
+    ],
+    "exiting": [
+     "main_0",
+     "main_1",
+     "offramp"
+    ]
+   },
+   "lane_change_enabled": true
+  },
+  "RC3": {
+   "schema_version": "stage_0_5.sumo-engineering.v2.network-candidate.v1",
+   "network_id": "observed_geometry_conditional_supply_candidate",
+   "classification": "conditional_synthetic_downstream_supply",
+   "claim": "downstream_capacity_restriction_is_a_declared_scenario_assumption_not_an_observed_mechanism",
+   "design_basis": [
+    "five mainline lanes over the observed 669 m, matching the official site description",
+    "a dedicated lane starts exactly where the observed on-ramp lane ends (merge at 187.6 m)",
+    "the added lane ends exactly where the observed off-ramp lane starts (diverge at 399.2 m)",
+    "no traffic signal and no lane closure anywhere in the observed segment"
+   ],
+   "nodes": [
+    {
+     "id": "hwy_w",
+     "x": 0.0,
+     "y": 0.0
+    },
+    {
+     "id": "hwy_m1",
+     "x": 187.58,
+     "y": 0.0
+    },
+    {
+     "id": "hwy_m2",
+     "x": 399.22,
+     "y": 0.0
+    },
+    {
+     "id": "hwy_e",
+     "x": 669.18,
+     "y": 0.0
+    },
+    {
+     "id": "hwy_on",
+     "x": 60.0,
+     "y": -160.0
+    },
+    {
+     "id": "hwy_off",
+     "x": 560.0,
+     "y": -160.0
+    },
+    {
+     "id": "hwy_x",
+     "x": 789.18,
+     "y": 0.0
+    }
+   ],
+   "edges": [
+    {
+     "id": "main_0",
+     "from": "hwy_w",
+     "to": "hwy_m1",
+     "lanes": 5,
+     "speed_mps": 27.78,
+     "priority": 2
+    },
+    {
+     "id": "main_1",
+     "from": "hwy_m1",
+     "to": "hwy_m2",
+     "lanes": 6,
+     "speed_mps": 27.78,
+     "priority": 2
+    },
+    {
+     "id": "main_2",
+     "from": "hwy_m2",
+     "to": "hwy_e",
+     "lanes": 5,
+     "speed_mps": 27.78,
+     "priority": 2
+    },
+    {
+     "id": "onramp",
+     "from": "hwy_on",
+     "to": "hwy_m1",
+     "lanes": 1,
+     "speed_mps": 13.89,
+     "priority": 1
+    },
+    {
+     "id": "offramp",
+     "from": "hwy_m2",
+     "to": "hwy_off",
+     "lanes": 1,
+     "speed_mps": 13.89,
+     "priority": 1
+    },
+    {
+     "id": "exit",
+     "from": "hwy_e",
+     "to": "hwy_x",
+     "lanes": 3,
+     "speed_mps": 27.78,
+     "priority": 2
+    }
+   ],
+   "routes": {
+    "through": [
+     "main_0",
+     "main_1",
+     "main_2",
+     "exit"
+    ],
+    "entering": [
+     "onramp",
+     "main_1",
+     "main_2",
+     "exit"
+    ],
+    "exiting": [
+     "main_0",
+     "main_1",
+     "offramp"
+    ]
+   },
+   "lane_change_enabled": true
+  }
+ },
+ "environment": {
+  "python": "3.13.5",
+  "platform": "Windows-11-10.0.26100-SP0",
+  "pandas": "2.2.3",
+  "numpy": "2.3.2"
+ },
+ "git_head": "e52ed1ef2eb88648cf5b8e664b94f81053553ecd"
+}

@@ -1,0 +1,169 @@
+{
+ "variant": "RC3",
+ "condition": "us101__0750_0805",
+ "seed": 20261023,
+ "use_initial_state": true,
+ "conditional_supply": true,
+ "network_spec_id": "observed_geometry_conditional_supply_candidate",
+ "network_sha256": "5d1581e89d244cd092568fe2299dd1220de6fc30bf42456aaae17e03d196e846",
+ "route_sha256": "d9f7141583d7e8a5b3423a3c4387fba9cd005e865f827b8e23b671104f685aa0",
+ "config_sha256": "42ac1508375aa0f867a3575d63066a5398f8734d0bac44fde5f5386306bdc591",
+ "initial_state": {
+  "clock_s": 120.0,
+  "accepted_count": 117,
+  "dropped_count": 3,
+  "minimum_spacing_m": 1.0
+ },
+ "run": {
+  "returncode": 0,
+  "wall_s": 7.885459500015713,
+  "log_tail": "Loading net-file from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_scene_reconstruction_v1\\runs\\RC3\\RC3\\network/observed_geometry_conditional_supply_candidate.net.xml' ... done (5ms).\nLoading route-files incrementally from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_scene_reconstruction_v1\\runs\\RC3\\RC3\\RC3.rou.xml'\nLoading done.\nSimulation version 1.26.0 started with time: 0.00.\nSimulation ended at time: 300.00.\nReason: The final simulation step has been reached.\nPerformance:\n Duration: 7.57s\n Real time factor: 39.6458\n UPS: 130898.506674\nVehicles:\n Inserted: 771 (Loaded: 855)\n Running: 207\n Waiting: 81\nStatistics (avg of 564):\n RouteLength: 730.45\n Speed: 16.04\n Duration: 60.54\n WaitingTime: 0.93\n TimeLoss: 33.58\n DepartDelay: 1.42\nError: Vehicle 'i0077' will not be able to depart on lane 'main_2_1' with speed 18.30 (junction 'hwy_e' too close), time=0.00.\nError: Vehicle 'i0098' will not be able to depart on lane 'main_2_0' with speed 18.28 (too many lane changes required on lane 'main_2_0'), time=0.00.\nError: Vehicle 'i0099' will not be able to depart on lane 'main_2_0' with speed 18.56 (too many lane changes required on lane 'main_2_0'), time=0.05.\n",
+  "teleports": 0,
+  "collisions": 0
+ },
+ "evaluation_window_s": [
+  180.0,
+  299.7
+ ],
+ "metrics": {
+  "status": "Observation",
+  "window_s": [
+   180.0,
+   299.7
+  ],
+  "region_m": [
+   150.0,
+   350.0
+  ],
+  "lanes": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ],
+  "lane_km": 1.0,
+  "local_vehicle_s": 7343.5,
+  "speed_mean_mps": 6.75548430584871,
+  "density_veh_km_lane": 61.349206349206355,
+  "flow_veh_h_lane_consistency": 1491.9969624060154,
+  "low_speed_share": 0.5930959351807721,
+  "speed_quantiles_mps": [
+   0.0,
+   0.36,
+   2.12,
+   3.97,
+   8.17,
+   26.63,
+   27.77
+  ],
+  "blocks": [
+   {
+    "block_start_s": 180.0,
+    "speed_mean_mps": 7.212925802879291,
+    "density_veh_km_lane": 60.2,
+    "low_speed_share": 0.536046511627907,
+    "vehicles": 127
+   },
+   {
+    "block_start_s": 210.0,
+    "speed_mean_mps": 7.552347357318645,
+    "density_veh_km_lane": 56.88666666666666,
+    "low_speed_share": 0.5847298722606352,
+    "vehicles": 121
+   },
+   {
+    "block_start_s": 240.0,
+    "speed_mean_mps": 6.127592876183994,
+    "density_veh_km_lane": 58.769999999999996,
+    "low_speed_share": 0.6594067267880438,
+    "vehicles": 114
+   },
+   {
+    "block_start_s": 270.0,
+    "speed_mean_mps": 6.233658961214818,
+    "density_veh_km_lane": 68.92666666666668,
+    "low_speed_share": 0.5932875519876197,
+    "vehicles": 135
+   }
+  ]
+ },
+ "first_30s_metrics": {
+  "status": "Observation",
+  "window_s": [
+   0.0,
+   30.0
+  ],
+  "region_m": [
+   150.0,
+   350.0
+  ],
+  "lanes": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ],
+  "lane_km": 1.0,
+  "local_vehicle_s": 1041.0,
+  "speed_mean_mps": 14.199001921229586,
+  "density_veh_km_lane": 34.7,
+  "flow_veh_h_lane_consistency": 1773.7393200000001,
+  "low_speed_share": 0.01239193083573487,
+  "speed_quantiles_mps": [
+   1.5,
+   7.76,
+   10.16,
+   13.89,
+   16.9,
+   22.64,
+   27.57
+  ],
+  "blocks": [
+   {
+    "block_start_s": 0.0,
+    "speed_mean_mps": 14.199001921229586,
+    "density_veh_km_lane": 34.7,
+    "low_speed_share": 0.01239193083573487,
+    "vehicles": 108
+   }
+  ]
+ },
+ "state_support": {
+  "condition": "us101__0750_0805",
+  "real_target": {
+   "mean_speed_mps": 10.506118382234925,
+   "density_veh_km_lane": 43.54361111111111
+  },
+  "simulated_mean_speed_mps": 6.75548430584871,
+  "simulated_density_veh_km_lane": 61.349206349206355,
+  "predeclared_block_speed_envelope": [
+   6.127592876183994,
+   7.552347357318645
+  ],
+  "predeclared_block_density_envelope": [
+   56.88666666666666,
+   68.92666666666668
+  ],
+  "target_speed_inside_block_envelope": false,
+  "target_density_inside_block_envelope": false,
+  "state_supported": false,
+  "rule": "each real target mean speed and density must lie inside the envelope of the predeclared 30 s evaluation blocks of the simulated run; a necessary state-support check only, not a science tolerance and not an equivalence test",
+  "not_a_science_tolerance": true
+ },
+ "fcd_rows": 495334,
+ "on_network_rows": 458538,
+ "lane_share": {
+  "3": 151984,
+  "4": 114127,
+  "2": 76852,
+  "5": 51501,
+  "1": 51235,
+  "7": 5737,
+  "6": 3695,
+  "8": 3407
+ },
+ "question": "If a downstream supply restriction is admitted as a declared conditional assumption, does the local state land in the observed congested envelope?",
+ "predicted_outcome": "congested branch: a 3-lane downstream exit has analytic capacity close to the observed congested through-flow, so a queue forms and the local state approaches the real target"
+}

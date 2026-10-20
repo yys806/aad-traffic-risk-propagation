@@ -200,3 +200,16 @@ Stage0.5新增RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2（B1.2前置工程阻断）�
 条件候选 FC1/FC2 各 300 s 完成且工程无阻断，但预声明 30 s 块状态包络不含各自真实目标：模拟复现内部断面流量却处于自由流分支，真实窗口处于拥堵分支。按冻结规则停止搜索，未执行第 3 次构造与保留的 2 次独立 seed 重复，第三窗口未访问。五层合取 = Evidence Insufficient，δ/h 无独立依据，集中决策包 R1–R5。Gate 保持 `pending_simulation_sample`。
 
 报告 `docs/STAGE_0_5_FINAL_CLOSURE_2026-10-20.md`；计划 `docs/plans/2026-10-20-stage-0-5-final-closure.md`；证据 `evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/`。
+
+
+## 2026-10-21 Stage 0.5 真实交通重建与场景重建（AAD-0.5-TR-RECON）
+
+结果 `RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1`。只读重建两个已批准校准窗口的交通过程：识别出 5 主线车道 + 驶入匝道 + 辅助车道 + 驶出匝道，并证明已批准 D1 局域内部含第六车道（非闭合控制体）；两窗口均在拥堵分支（43.544/50.505 veh/km/lane、10.506/7.915 m/s、q=1,646.9/1,439.2 veh/h/lane）；规模最大的低速波最先出现在观测段下游端 y=500–650 m 并向上游扩张，说明拥堵由覆盖之外的下游供给带入。
+
+运行前冻结的 3 项条件场景诊断：观测几何 + 观测需求 → 自由流（23.90 m/s / 21.05）；注入真实拥堵初始状态 → 180 s 内退化为自由流（23.81 / 21.20）；声明条件 3 车道下游供给 → 过堵（6.76 / 61.35）。三者均未落入真实目标 30 s 块包络 → `EvidenceInsufficient_StateSupport`，按预声明停止规则停止，未搜索参数、未做独立 seed 重复、未加第 4 次构造。
+
+拥堵分支诊断：观测密度与观测净间距两条独立路径一致给出有效 Krauss 时间间隔约 1.53–1.63 s（冻结值 1.0 s），为「同一流量只在自由流支可达」的定量原因，属 Hypothesis。
+
+第三窗口读取 0 行、holdout 0 次；Gate 保持 `pending_simulation_sample`；协议锁 / Stage 1.1 / ABCD 未启动。
+
+报告 `docs/STAGE_0_5_TRAJECTORY_RECONSTRUCTION.md`、`docs/STAGE_0_5_SUMO_SCENE_RECONSTRUCTION.md`；计划 `docs/plans/2026-10-21-stage-0-5-trajectory-reconstruction.md`；证据 `evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/`。

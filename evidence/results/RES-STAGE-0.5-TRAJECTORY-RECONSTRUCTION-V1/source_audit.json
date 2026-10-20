@@ -1,0 +1,41 @@
+{
+ "result_id": "RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1",
+ "version": "stage-0.5-trajectory-reconstruction-v1",
+ "measured_at_utc": "2026-10-20T12:16:21.660500+00:00",
+ "source_files": {
+  "us101__0750_0805": {
+   "path": "code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r4/states/ngsim_us101__0750_0805.parquet",
+   "sha256": "684a5f0b96dc48116f16d581c278d7039c0554bf1c3cea8d6eda3e605e3e8644",
+   "bytes": 45460444
+  },
+  "us101__0805_0820": {
+   "path": "code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r4/states/ngsim_us101__0805_0820.parquet",
+   "sha256": "7b0ef830c97a981da018d4e24b029e38aa2630387c728ea87b57926745880a9f",
+   "bytes": 53932888
+  }
+ },
+ "approved_windows": [
+  "us101__0750_0805",
+  "us101__0805_0820"
+ ],
+ "sealed_windows_not_read": [
+  "us101__0820_0835",
+  "ngsim_lankershim__complete",
+  "locked_holdout"
+ ],
+ "sealed_window_rows_materialised": 0,
+ "validation_window_read": false,
+ "canonical_region_m": [
+  150.0,
+  350.0
+ ],
+ "canonical_mainline_lanes": [
+  "1",
+  "2",
+  "3",
+  "4",
+  "5"
+ ],
+ "p2_semantics_modified": false,
+ "identity_clock_quality_semantics_modified": false
+}

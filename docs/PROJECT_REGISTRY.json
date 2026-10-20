@@ -1,6 +1,6 @@
 {
   "schema_version": "aad.project-registry.v2",
-  "last_verified": "2026-10-20",
+  "last_verified": "2026-10-21",
   "project": {
     "name": "AAD",
     "research_topic": "Connected-vehicle communication adoption and traffic-risk propagation",
@@ -189,8 +189,8 @@
   ],
   "current": {
     "active_experiment_id": "stage_0_5",
-    "active_task": "AAD-0.5-FINAL-CLOSURE complete: real local P2 and exposure calculated for both approved calibration windows under the approved D1 attribution; conditional candidate runs failed the pre-declared state support rule; Stage 0.5 remains pending_simulation_sample with one consolidated decision package R1-R5",
-    "why_now": "按已批准D1重算两真实校准窗口局部P2：0750=147件/31051.6veh-s/17.0426，0805=216件/33091.1veh-s/23.4988；全源543/732与111425.9/133505.6s及A+切片分母逐位复现，拒绝0。条件候选FC1/FC2各300s完成、数值精确100%、守恒0、待插入0；但预声明30s块包络不含各自目标（模拟20-22m/s、约20veh/km/lane对真实8-10.5m/s、43-50veh/km/lane），虽复现内部断面流量却落在自由流分支。按冻结规则停止，未用第3次构造、未执行保留的2次独立seed重复、未访问第三窗口。五层合取=Evidence Insufficient（阻断层1/2/5，层4测量已闭合）；δ/h无独立依据，集中决策包R1–R5。新增2次运行，剩3。",
+    "active_task": "AAD-0.5-TR-RECON complete: real traffic formation reconstructed and the SUMO state mismatch diagnosed; three pre-declared diagnostics executed; state support still Evidence Insufficient; Stage 0.5 remains pending_simulation_sample with the 2026-10-20 decision package R1-R5 still open",
+    "why_now": "Two approved calibration windows are on the congested branch (43.5/50.5 veh/km/lane at 10.51/7.92 m/s) while matching the observed cross-section flow is not sufficient to identify the state. The observed region contains an on-ramp merge and an auxiliary lane and sits upstream of an off-ramp diverge; the largest low-speed waves start at the downstream end and expand upstream, so the state comes from an unobserved downstream supply. Pre-declared diagnostics: observed geometry + observed demand -> free flow (23.90 m/s / 21.05); real initial state -> decays to free flow within 180 s; conditional 3-lane downstream supply -> over-congested (6.76 m/s / 61.35). No variant reached the target envelope, so the frozen stop rule was executed with no parameter search. The observed density and net gap independently imply an effective Krauss tau of about 1.53-1.63 s versus the frozen 1.0 s.",
     "next_decision_owner": "researcher",
     "portable_gate_paths": [
       "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",
@@ -459,7 +459,7 @@
       "research_question": "SUMO 基础运动与跟驰风险是否明显脱离真实交通范围？",
       "date": "2026-09-07",
       "status": "active_pending_simulation_sample",
-      "code_version": "canonical real reference R2, independent Stage 0.5.3 no-message SUMO engineering skeleton, and the Stage 0.5.4-A measurement-equivalence/calibration-readiness audit; no scientific calibration and no frozen scientific parameter; B0 bounded exploration with explicit ballistic and guarded batch inputs; no formal calibration; B1 capsule -S whitelist/stop supervisor with fixed-behaviour boundary mechanisms (closed early); B1.2 independent layered numerical/queue integration blocked before main matrix; B1.2-N restricted source-qualified near-zero contract;3 micro probes closed at missing positive-snap runtime coverage, C/D not admitted; B1.2-P positive-only native braking probes with independent seven-link admission; no integration/main command; AAD-0.5-FINAL-CLOSURE adds approved-D1 local attribution (stage_0_5_final_closure.py), the independent reference/candidate capsule runners with a finite process-tree supervisor, and the portable assembler/verifier; Stage 0.2 event core unchanged",
+      "code_version": "canonical real reference R2, independent Stage 0.5.3 no-message SUMO engineering skeleton, and the Stage 0.5.4-A measurement-equivalence/calibration-readiness audit; no scientific calibration and no frozen scientific parameter; B0 bounded exploration with explicit ballistic and guarded batch inputs; no formal calibration; B1 capsule -S whitelist/stop supervisor with fixed-behaviour boundary mechanisms (closed early); B1.2 independent layered numerical/queue integration blocked before main matrix; B1.2-N restricted source-qualified near-zero contract;3 micro probes closed at missing positive-snap runtime coverage, C/D not admitted; B1.2-P positive-only native braking probes with independent seven-link admission; no integration/main command; AAD-0.5-FINAL-CLOSURE adds approved-D1 local attribution (stage_0_5_final_closure.py), the independent reference/candidate capsule runners with a finite process-tree supervisor, and the portable assembler/verifier; Stage 0.2 event core unchanged; AAD-0.5-TR-RECON adds the read-only real-traffic reconstruction module (lane geometry, boundary flows, conservation, space-time surfaces, jam-wave localisation, fundamental diagram, official NGSIM cross-check) and the conditional observed-geometry SUMO scene module with real-initial-state injection and native FCD recording",
       "code_paths": [
         "code/src/riskprop/simulation_real_coverage.py",
         "code/src/riskprop/stage_0_5_sumo.py",
@@ -503,7 +503,14 @@
         "code/src/riskprop/stage_0_5_lf_protocol.py",
         "code/scripts/design_stage_0_5_lf_protocol.py",
         "code/scripts/package_stage_0_5_lf_protocol.py",
-        "code/src/riskprop/stage_0_5_final_closure.py"
+        "code/src/riskprop/stage_0_5_final_closure.py",
+        "code/src/riskprop/stage_0_5_trajectory_reconstruction.py",
+        "code/src/riskprop/stage_0_5_scene_reconstruction.py",
+        "code/scripts/run_stage_0_5_trajectory_reconstruction.py",
+        "code/scripts/run_stage_0_5_scene_reconstruction.py",
+        "code/tests/test_stage_0_5_trajectory_reconstruction.py",
+        "code/tests/test_stage_0_5_scene_reconstruction.py",
+        "code/configs/stage_0_5_ngsim_official_reference_v1.json"
       ],
       "entrypoints": [
         "code/scripts/prepare_stage_0_5_real_reference.py",
@@ -757,7 +764,8 @@
         "RES-STAGE-0.5-CD-INTEGRATION-V1",
         "RES-STAGE-0.5-LOCAL-FOLLOWING-EXPLORATION-V1",
         "RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1",
-        "RES-STAGE-0.5-FINAL-CLOSURE-V1"
+        "RES-STAGE-0.5-FINAL-CLOSURE-V1",
+        "RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1"
       ],
       "core_metrics": [
         "formal_input_manifest",
@@ -818,9 +826,24 @@
         "closure_delta_h_basis_status",
         "closure_candidate_run_status",
         "closure_budget_remaining",
-        "closure_validation_isolation"
+        "closure_validation_isolation",
+        "holdout_reads",
+        "implied_krauss_tau_from_real_density_s",
+        "implied_krauss_tau_from_real_net_gap_s",
+        "independent_seed_repeats_executed",
+        "jam_wave_origin",
+        "real_boundary_entry_flow_veh_h",
+        "real_closed_cross_section_conservation_residual_vehicles",
+        "real_reconstruction_local_state",
+        "scene_diagnostic_variants_run",
+        "scene_rc1_evaluation",
+        "scene_rc2_evaluation",
+        "scene_rc3_evaluation",
+        "scene_state_support_verdict",
+        "scene_state_supported_variants",
+        "validation_window_rows_materialised"
       ],
-      "current_conclusion": "按已批准D1完成两个真实校准窗口的局部P2与暴露重算（147/31051.6/17.0426；216/33091.1/23.4988，全源543/732与111425.9/133505.6s逐位复现）；条件候选FC1/FC2工程完成但状态支持未达标，五层合取=Evidence Insufficient；δ/h无独立依据，Stage 0.5保持pending_simulation_sample，决策包R1–R5。",
+      "current_conclusion": "AAD-0.5-TR-RECON reconstructed the real traffic process and diagnosed the state mismatch. The observed local region sits just downstream of a Ventura Blvd on-ramp merge and just upstream of a Cahuenga Blvd off-ramp diverge, with a sixth auxiliary lane physically present inside the approved five-lane D1 region; both windows are on the congested branch (43.5/50.5 veh/km/lane at 10.51/7.92 m/s) while the same measured cross-section flow also exists on the free-flow branch. The largest low-speed waves first appear at the downstream end of the observation (y=500-650 m) and expand upstream, so the congested state is imported from an unobserved downstream supply. Three pre-declared SUMO diagnostics were executed: observed geometry plus observed boundary demand stays on the free-flow branch (23.90 m/s, 21.05 veh/km/lane, 1811 veh/h/lane); injecting the real observed congested state decays to free flow within 180 s; an admitted conditional 3-lane downstream supply reaches the congested branch but overshoots (6.76 m/s, 61.35 veh/km/lane, 1492 veh/h/lane). None reached the observed target envelope, so state support is Evidence Insufficient and the pre-declared stop rule was executed with no parameter search, no independent-seed repeat and no fourth construction. The congested-branch diagnosis shows the observed density and the observed net gap independently imply an effective Krauss time gap of about 1.53-1.63 s versus the frozen 1.0 s, which is the quantitative reason the same flow is reachable only on the free-flow branch; this is a Hypothesis requiring a controlled probe and a researcher decision.",
       "gate": {
         "status": "pending_simulation_sample",
         "portable_path": "evidence/results/RES-STAGE-0.5-REAL-REF-R2/audit.json"
@@ -3102,6 +3125,115 @@
       "gate_status": "pending_simulation_sample",
       "paper_locations": [
         "docs/STAGE_0_5_FINAL_CLOSURE_2026-10-20.md"
+      ],
+      "scientific_claim_eligible": false
+    },
+    {
+      "id": "RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1",
+      "experiment_id": "stage_0_5",
+      "name": "Stage 0.5 real traffic formation reconstruction and conditional observed-geometry SUMO scene diagnostics",
+      "status": "closed_evidence_insufficient_state_support",
+      "portable_evidence_paths": [
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/PLAN_SHA256",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/SHA256SUMS",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/boundary_flow_30s.csv",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/boundary_flows.json",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/capacity_diagnosis.json",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/cluster_uncertainty.json",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/conservation.json",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/experiment_plan.json",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/fundamental_diagram_30s.csv",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/hypothesis_register.json",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/interaction_stats.json",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/jam_waves.json",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/lane_geometry.json",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/local_state.json",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/manifest.json",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/occupancy_30s.csv",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/official_crosscheck.json",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/ramp_flows.json",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/reconstruction_summary.json",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/runs_RC1_summary.json",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/runs_RC2_summary.json",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/runs_RC3_summary.json",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/scene_PLAN_SHA256",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/scene_SHA256SUMS",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/scene_diagnostic_plan.json",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/scene_manifest.json",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/scene_real_local_context.json",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/scene_run_ledger.json",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/scene_run_metadata.json",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/scene_scene_vs_real_congested_branch.json",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/scene_state_support_verdict.json",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/sectional_minimum_300s.csv",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/source_audit.json",
+        "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/space_time_60s.csv"
+      ],
+      "local_artifact_paths": [
+        "code/outputs/formal/calibration/stage_0_5_trajectory_reconstruction_v1",
+        "code/outputs/formal/calibration/stage_0_5_scene_reconstruction_v1"
+      ],
+      "code_version_source": "code/src/riskprop/stage_0_5_trajectory_reconstruction.py; code/src/riskprop/stage_0_5_scene_reconstruction.py; code/scripts/run_stage_0_5_trajectory_reconstruction.py; code/scripts/run_stage_0_5_scene_reconstruction.py; experiment_plan.json / PLAN_SHA256",
+      "configuration_source": "code/configs/stage_0_5_ngsim_official_reference_v1.json (SHA-bound in experiment_plan.json)",
+      "data_version_source": "Two SHA-bound canonical calibration states 684a5f0b96dc4811... and 7b0ef830c97a981d...; bundled official NGSIM US-101 data-analysis reports; third window and locked holdout not read",
+      "core_metrics": {
+        "real_reconstruction_local_state": {
+          "us101__0750_0805": {
+            "density_veh_km_lane": 43.54361111111111,
+            "speed_mps": 10.506118382234925,
+            "flow_veh_h_lane": 1646.907599244
+          },
+          "us101__0805_0820": {
+            "density_veh_km_lane": 50.50545454545454,
+            "speed_mps": 7.915276152134783,
+            "flow_veh_h_lane": 1439.152631698909
+          }
+        },
+        "real_boundary_entry_flow_veh_h": {
+          "us101__0750_0805": 8345.0,
+          "us101__0805_0820": 7227.272727272728
+        },
+        "real_closed_cross_section_conservation_residual_vehicles": {
+          "us101__0750_0805": -28,
+          "us101__0805_0820": 72
+        },
+        "jam_wave_origin": "largest low-speed components first appear at y=500-650 m and expand upstream in both windows",
+        "scene_diagnostic_variants_run": 3,
+        "scene_state_supported_variants": 0,
+        "scene_rc1_evaluation": {
+          "speed_mps": 23.899,
+          "density_veh_km_lane": 21.053,
+          "flow_veh_h_lane": 1811.3
+        },
+        "scene_rc2_evaluation": {
+          "speed_mps": 23.812,
+          "density_veh_km_lane": 21.203,
+          "flow_veh_h_lane": 1817.6
+        },
+        "scene_rc3_evaluation": {
+          "speed_mps": 6.755,
+          "density_veh_km_lane": 61.349,
+          "flow_veh_h_lane": 1492.0
+        },
+        "scene_state_support_verdict": "EvidenceInsufficient_StateSupport",
+        "implied_krauss_tau_from_real_density_s": {
+          "us101__0750_0805": 1.527289244372077,
+          "us101__0805_0820": 1.6275
+        },
+        "implied_krauss_tau_from_real_net_gap_s": {
+          "us101__0750_0805": 1.5524646713474783,
+          "us101__0805_0820": 1.627
+        },
+        "independent_seed_repeats_executed": 0,
+        "validation_window_rows_materialised": 0,
+        "holdout_reads": 0
+      },
+      "current_conclusion": "AAD-0.5-TR-RECON reconstructed the real traffic process and diagnosed the state mismatch. The observed local region sits just downstream of a Ventura Blvd on-ramp merge and just upstream of a Cahuenga Blvd off-ramp diverge, with a sixth auxiliary lane physically present inside the approved five-lane D1 region; both windows are on the congested branch (43.5/50.5 veh/km/lane at 10.51/7.92 m/s) while the same measured cross-section flow also exists on the free-flow branch. The largest low-speed waves first appear at the downstream end of the observation (y=500-650 m) and expand upstream, so the congested state is imported from an unobserved downstream supply. Three pre-declared SUMO diagnostics were executed: observed geometry plus observed boundary demand stays on the free-flow branch (23.90 m/s, 21.05 veh/km/lane, 1811 veh/h/lane); injecting the real observed congested state decays to free flow within 180 s; an admitted conditional 3-lane downstream supply reaches the congested branch but overshoots (6.76 m/s, 61.35 veh/km/lane, 1492 veh/h/lane). None reached the observed target envelope, so state support is Evidence Insufficient and the pre-declared stop rule was executed with no parameter search, no independent-seed repeat and no fourth construction. The congested-branch diagnosis shows the observed density and the observed net gap independently imply an effective Krauss time gap of about 1.53-1.63 s versus the frozen 1.0 s, which is the quantitative reason the same flow is reachable only on the free-flow branch; this is a Hypothesis requiring a controlled probe and a researcher decision.",
+      "gate_status": "pending_simulation_sample",
+      "paper_locations": [
+        "docs/STAGE_0_5_TRAJECTORY_RECONSTRUCTION.md",
+        "docs/STAGE_0_5_SUMO_SCENE_RECONSTRUCTION.md",
+        "docs/plans/2026-10-21-stage-0-5-trajectory-reconstruction.md"
       ],
       "scientific_claim_eligible": false
     }

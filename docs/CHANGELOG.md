@@ -223,3 +223,14 @@ B1.2-P收口：纯Git全量741 passed/14 skipped/0 failed；严格文档/compile
 - 新增装配与校验入口 `code/scripts/package_stage_0_5_final_closure.py`、`code/scripts/verify_stage_0_5_final_closure.py` 与证据回归测试 `code/tests/test_stage_0_5_final_closure_evidence.py`；`export_project_evidence.py` 增补本结果的导出映射与聚合文件白名单。
 - 研究者批准 D1–D5 记入 `AI_CONTEXT/06_DECISIONS.md`；真实局部 P2 由 Unresolved/Not Calculated 变为已计算，但 Gate 未升级。
 - 历史状态与旧包字节未改写：LF 候选协议包仅在政策上被 D1 批准取代，B0/B1/B1.1/B1.1-S/B1.2/B1.2-N/B1.2-P/CD/LF 全部保留。
+
+
+## 2026-10-21 — AAD-0.5-TR-RECON 真实交通重建与条件场景诊断
+
+- 新增结果 `RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1`，便携证据 34 个文件，登记入 `PROJECT_REGISTRY.json`、`RESULTS_INDEX.md`、`STAGE_INDEX.md` 与 `RESEARCH_STATUS.md`。
+- 新增只读真实重建模块 `code/src/riskprop/stage_0_5_trajectory_reconstruction.py`（车道几何、边界流量、守恒、时空面、慢速连通域、基本图、观测净间距统计、轨迹簇 bootstrap）与入口 `code/scripts/run_stage_0_5_trajectory_reconstruction.py`；13 项测试。
+- 新增条件观测几何场景模块 `code/src/riskprop/stage_0_5_scene_reconstruction.py`（5 车道 + 匝道 + 辅助车道拓扑、观测边界需求、真实初始状态注入、SUMO 原生 FCD 记录与真实米制反缩放）与入口 `code/scripts/run_stage_0_5_scene_reconstruction.py`；10 项测试。
+- 新增官方 NGSIM 聚合旁证配置 `code/configs/stage_0_5_ngsim_official_reference_v1.json`（PDF 光栅化 OCR 转录 + 回读核对，标为 Unverified 直至交叉核对）。
+- `export_project_evidence.py` 增补本结果的导出映射、`scene_*` 与 `runs_RC*` 命名以及 CSV 聚合文件白名单。
+- 冻结的 3 项诊断全部执行（构造 3 次、独立重复 0 次）；三者均未达状态支持，按预声明停止规则报 `EvidenceInsufficient_StateSupport`。未搜索行为参数、未访问第三窗口、未启动协议锁或 Stage 1.1。
+- 历史证据字节未改写：FC1/FC2、LF、CD、B1/B1.1/B1.1-S/B1.2/B1.2-N/B1.2-P 与 Stage 0.2/0.3 全部保留。

@@ -1,0 +1,169 @@
+{
+ "variant": "RC2",
+ "condition": "us101__0750_0805",
+ "seed": 20261022,
+ "use_initial_state": true,
+ "conditional_supply": false,
+ "network_spec_id": "observed_geometry_candidate",
+ "network_sha256": "bf954abdba194d69f9a9aa880af488a84e5ded7cf799445882eea52e16e8296a",
+ "route_sha256": "aa2b924553da8106736f297030327d27bbf050a1da47a828b7cb84a0c6896fff",
+ "config_sha256": "95123ec25357d635e609ba2cbfb3b7efe13b94d0b31a21cc9f6713f2682b9d36",
+ "initial_state": {
+  "clock_s": 120.0,
+  "accepted_count": 117,
+  "dropped_count": 3,
+  "minimum_spacing_m": 1.0
+ },
+ "run": {
+  "returncode": 0,
+  "wall_s": 3.891789199988125,
+  "log_tail": "Loading net-file from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_scene_reconstruction_v1\\runs\\RC2\\RC2\\network/observed_geometry_candidate.net.xml' ... done (5ms).\nLoading route-files incrementally from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_scene_reconstruction_v1\\runs\\RC2\\RC2\\RC2.rou.xml'\nLoading done.\nSimulation version 1.26.0 started with time: 0.00.\nSimulation ended at time: 300.00.\nReason: The final simulation step has been reached.\nPerformance:\n Duration: 3.57s\n Real time factor: 84.1043\n UPS: 123915.054668\nVehicles:\n Inserted: 855\n Running: 64\n Waiting: 0\nStatistics (avg of 791):\n RouteLength: 619.22\n Speed: 23.47\n Duration: 26.86\n WaitingTime: 0.00\n TimeLoss: 3.93\n DepartDelay: 0.26\n",
+  "teleports": 0,
+  "collisions": 0
+ },
+ "evaluation_window_s": [
+  180.0,
+  299.7
+ ],
+ "metrics": {
+  "status": "Observation",
+  "window_s": [
+   180.0,
+   299.7
+  ],
+  "region_m": [
+   150.0,
+   350.0
+  ],
+  "lanes": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ],
+  "lane_km": 1.0,
+  "local_vehicle_s": 2538.0,
+  "speed_mean_mps": 23.811942868400315,
+  "density_veh_km_lane": 21.203007518796994,
+  "flow_veh_h_lane_consistency": 1817.585293233083,
+  "low_speed_share": 0.0,
+  "speed_quantiles_mps": [
+   6.08,
+   11.58,
+   22.0,
+   26.88,
+   27.23,
+   27.59,
+   27.78
+  ],
+  "blocks": [
+   {
+    "block_start_s": 180.0,
+    "speed_mean_mps": 23.661171899285044,
+    "density_veh_km_lane": 21.446666666666665,
+    "low_speed_share": 0.0,
+    "vehicles": 98
+   },
+   {
+    "block_start_s": 210.0,
+    "speed_mean_mps": 23.599304051964122,
+    "density_veh_km_lane": 21.553333333333335,
+    "low_speed_share": 0.0,
+    "vehicles": 97
+   },
+   {
+    "block_start_s": 240.0,
+    "speed_mean_mps": 23.97450742027155,
+    "density_veh_km_lane": 21.113333333333333,
+    "low_speed_share": 0.0,
+    "vehicles": 98
+   },
+   {
+    "block_start_s": 270.0,
+    "speed_mean_mps": 24.025951838594207,
+    "density_veh_km_lane": 20.486666666666668,
+    "low_speed_share": 0.0,
+    "vehicles": 95
+   }
+  ]
+ },
+ "first_30s_metrics": {
+  "status": "Observation",
+  "window_s": [
+   0.0,
+   30.0
+  ],
+  "region_m": [
+   150.0,
+   350.0
+  ],
+  "lanes": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ],
+  "lane_km": 1.0,
+  "local_vehicle_s": 1024.2,
+  "speed_mean_mps": 16.71156414762742,
+  "density_veh_km_lane": 34.14,
+  "flow_veh_h_lane_consistency": 2053.918080000001,
+  "low_speed_share": 0.009373169302870533,
+  "speed_quantiles_mps": [
+   1.5,
+   10.4105,
+   15.74,
+   16.68,
+   18.1,
+   22.86949999999999,
+   27.57
+  ],
+  "blocks": [
+   {
+    "block_start_s": 0.0,
+    "speed_mean_mps": 16.71156414762742,
+    "density_veh_km_lane": 34.14,
+    "low_speed_share": 0.009373169302870533,
+    "vehicles": 119
+   }
+  ]
+ },
+ "state_support": {
+  "condition": "us101__0750_0805",
+  "real_target": {
+   "mean_speed_mps": 10.506118382234925,
+   "density_veh_km_lane": 43.54361111111111
+  },
+  "simulated_mean_speed_mps": 23.811942868400315,
+  "simulated_density_veh_km_lane": 21.203007518796994,
+  "predeclared_block_speed_envelope": [
+   23.599304051964122,
+   24.025951838594207
+  ],
+  "predeclared_block_density_envelope": [
+   20.486666666666668,
+   21.553333333333335
+  ],
+  "target_speed_inside_block_envelope": false,
+  "target_density_inside_block_envelope": false,
+  "state_supported": false,
+  "rule": "each real target mean speed and density must lie inside the envelope of the predeclared 30 s evaluation blocks of the simulated run; a necessary state-support check only, not a science tolerance and not an equivalence test",
+  "not_a_science_tolerance": true
+ },
+ "fcd_rows": 221183,
+ "on_network_rows": 217231,
+ "lane_share": {
+  "5": 48701,
+  "4": 40791,
+  "1": 38395,
+  "2": 37807,
+  "3": 36636,
+  "7": 5727,
+  "8": 4826,
+  "6": 4348
+ },
+ "question": "Does the observed congested state persist under SUMO dynamics at the observed boundary demand, i.e. was the free-flow outcome only an initial-condition artefact?",
+ "predicted_outcome": "the injected congested state relaxes towards free flow because the network has no binding downstream supply at the observed demand"
+}

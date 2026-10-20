@@ -1,0 +1,133 @@
+{
+  "schema_version": "aad.stage-0.5.ngsim-official-reference.v1",
+  "purpose": "Official NGSIM aggregate reference for the two approved US-101 calibration windows, used only as an independent cross-check of the trajectory-derived boundary flows, sectional speeds and vehicle accumulation. Never a substitute for the sealed Stage 0.2 canonical states.",
+  "source_files": [
+    "dataset/NGSIM/US-101-LosAngeles-CA.zip :: us-101-data-analysis.zip :: data-analysis/0750am-0805am/data-analysis-report-0750-0805.pdf",
+    "dataset/NGSIM/US-101-LosAngeles-CA.zip :: us-101-data-analysis.zip :: data-analysis/0805am-0820am/data-analysis-report-0805-0820.pdf",
+    "dataset/NGSIM/1- US 101 Metadata Documentation.pdf"
+  ],
+  "transcription_method": "Vector text of the bundled PDFs carries no usable ToUnicode mapping, so pages were rasterised and transcribed by local OCR (rapidocr_onnxruntime) plus manual reading of the rasterised pages. Every number below was read back against the rendered page before being recorded; residual transcription risk is disclosed as Unverified until it agrees with the independently computed trajectory aggregates.",
+  "transcription_status": "Unverified until cross-checked against trajectory-derived aggregates",
+  "site_metadata": {
+    "site": "US-101 (Hollywood Freeway), Los Angeles, CA, southbound",
+    "collection_date": "2005-06-15",
+    "segment_length_m": 640.0,
+    "segment_length_ft": 2100,
+    "mainline_lanes": 5,
+    "auxiliary_lane": "present through a portion of the corridor between the Ventura Boulevard on-ramp and the Cahuenga Boulevard off-ramp",
+    "windows": {
+      "0750_0805": "buildup of congestion / transition between uncongested and congested conditions",
+      "0805_0820": "full congestion during the peak period",
+      "0820_0835": "full congestion during the peak period (sealed; not used)"
+    }
+  },
+  "windows": {
+    "us101__0750_0805": {
+      "vehicle_type": {"motorcycle": 30, "automobile": 2086, "truck_and_bus": 53, "sum": 2169, "motorcycle_pct": 1.4, "automobile_pct": 96.2, "truck_and_bus_pct": 2.4},
+      "aggregate_by_time": [
+        {"period": "7:50-7:55", "flow_vph": 9156, "tms_fps": 46.34, "tms_mph": 31.60, "sms_fps": 44.05, "sms_mph": 30.03},
+        {"period": "7:55-8:00", "flow_vph": 8820, "tms_fps": 39.02, "tms_mph": 26.60, "sms_fps": 36.76, "sms_mph": 25.06},
+        {"period": "8:00-8:05", "flow_vph": 7860, "tms_fps": 37.53, "tms_mph": 25.59, "sms_fps": 31.12, "sms_mph": 21.22},
+        {"period": "average", "flow_vph": 8612, "tms_fps": 41.16, "tms_mph": 28.06, "sms_fps": 37.63, "sms_mph": 25.66}
+      ],
+      "aggregate_by_lane": {
+        "lane_1": {"flow_vph": 1528, "tms_fps": 34.85, "tms_mph": 23.76, "sms_fps": 31.46, "sms_mph": 21.45},
+        "lane_2": {"flow_vph": 1676, "tms_fps": 40.08, "tms_mph": 27.33, "sms_fps": 37.32, "sms_mph": 25.45},
+        "lane_3": {"flow_vph": 1660, "tms_fps": 40.00, "tms_mph": 27.27, "sms_fps": 39.13, "sms_mph": 26.68},
+        "lane_4": {"flow_vph": 1620, "tms_fps": 41.98, "tms_mph": 28.62, "sms_fps": 38.53, "sms_mph": 26.27},
+        "lane_5": {"flow_vph": 1664, "tms_fps": 43.61, "tms_mph": 29.73, "sms_fps": 40.62, "sms_mph": 27.70},
+        "auxiliary_lane": {"flow_vph": 464, "tms_fps": 58.31, "tms_mph": 39.76, "sms_fps": 54.93, "sms_mph": 37.45},
+        "average": {"flow_vph": 8612, "tms_fps": 41.16, "tms_mph": 28.06, "sms_fps": 38.44, "sms_mph": 26.21}
+      },
+      "input_output": {
+        "periods": ["7:49:39-7:50", "7:50-7:55", "7:55-8:00", "8:00-8:05", "8:05-8:05:34"],
+        "on_ramp_flow_vehicles": [4, 53, 41, 39, 0],
+        "entering_freeway_lanes_vehicles": [27, 717, 710, 578, 0],
+        "exiting_freeway_lanes_vehicles": [0, 746, 735, 655, 33],
+        "entering_vehicles": [31, 770, 751, 617, 0],
+        "exiting_vehicles": [0, 746, 735, 655, 33],
+        "net_entering_minus_exiting": [31, 24, 16, -38, -33],
+        "on_ramp_flow_sum_vehicles": 137,
+        "entering_freeway_lanes_sum_vehicles": 2032,
+        "exiting_freeway_lanes_sum_vehicles": 2169,
+        "note": "the first partial period value 4 is derived from sum minus the listed full periods and is Unverified"
+      },
+      "sectional_sms_fps_by_5min": {
+        "periods": ["7:50-7:55", "7:55-8:00", "8:00-8:05"],
+        "sections_ft": [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000],
+        "values": [
+          [33.72, 29.65, 29.82],
+          [33.79, 30.27, 29.36],
+          [34.40, 32.08, 29.18],
+          [35.38, 32.79, 27.16],
+          [36.75, 33.99, 27.33],
+          [37.54, 35.42, 27.51],
+          [37.51, 36.66, 27.46],
+          [39.03, 36.71, 27.09],
+          [39.42, 35.39, 27.37],
+          [40.59, 34.70, 27.87],
+          [42.90, 34.99, 28.80],
+          [43.38, 37.58, 29.92],
+          [47.02, 42.88, 31.53],
+          [49.65, 46.28, 32.75],
+          [52.29, 50.05, 33.04],
+          [54.67, 53.14, 33.61],
+          [56.01, 54.67, 31.78],
+          [57.45, 55.75, 32.55],
+          [60.71, 57.86, 33.69],
+          [60.64, 54.90, 30.78],
+          [61.35, 53.70, 32.07]
+        ]
+      },
+      "average_headway_s_by_period_and_lane": {
+        "periods": ["7:49:39-7:50", "7:50-7:55", "7:55-8:00", "8:00-8:05", "8:05-8:05:34", "weighted_average"],
+        "lane_1": [1.55, 2.73, 2.97, 3.65, 2.33, 3.13],
+        "lane_2": [1.97, 1.96, 2.24, 3.05, 2.21, 2.46],
+        "lane_3": [2.64, 2.15, 2.06, 3.04, 2.30, 2.45],
+        "lane_4": [1.71, 2.14, 2.13, 2.98, 1.80, 2.44],
+        "lane_5": [1.75, 2.21, 2.07, 2.85, 2.17, 2.39],
+        "auxiliary_lane": [1.70, 3.35, 3.90, 4.19, 3.92, 3.71],
+        "weighted_average": [1.86, 2.26, 2.32, 3.12, 2.16, 2.59]
+      }
+    },
+    "us101__0805_0820": {
+      "vehicle_type": {"motorcycle": 10, "automobile": 1963, "truck_and_bus": 44, "sum": 2017, "motorcycle_pct": 0.5, "automobile_pct": 97.3, "truck_and_bus_pct": 2.2},
+      "aggregate_by_time": [
+        {"period": "8:05-8:10", "flow_vph": 8136, "tms_fps": 39.16, "tms_mph": 26.70, "sms_fps": 31.40, "sms_mph": 21.41},
+        {"period": "8:10-8:15", "flow_vph": 8484, "tms_fps": 39.21, "tms_mph": 26.73, "sms_fps": 36.62, "sms_mph": 24.97},
+        {"period": "8:15-8:20", "flow_vph": 7428, "tms_fps": 30.21, "tms_mph": 20.60, "sms_fps": 26.31, "sms_mph": 17.94},
+        {"period": "average", "flow_vph": 8016, "tms_fps": 36.41, "tms_mph": 24.83, "sms_fps": 31.67, "sms_mph": 21.59}
+      ],
+      "aggregate_by_lane": {
+        "lane_1": {"flow_vph": 1474, "tms_fps": 34.63, "tms_mph": 23.61, "sms_fps": 32.03, "sms_mph": 21.84},
+        "lane_2": {"flow_vph": 1574, "tms_fps": 34.31, "tms_mph": 23.39, "sms_fps": 30.62, "sms_mph": 20.88},
+        "lane_3": {"flow_vph": 1474, "tms_fps": 34.80, "tms_mph": 23.73, "sms_fps": 30.65, "sms_mph": 20.90},
+        "lane_4": {"flow_vph": 1518, "tms_fps": 35.76, "tms_mph": 24.38, "sms_fps": 31.08, "sms_mph": 21.19},
+        "lane_5": {"flow_vph": 1512, "tms_fps": 37.30, "tms_mph": 25.43, "sms_fps": 34.05, "sms_mph": 23.22},
+        "auxiliary_lane": {"flow_vph": 464, "tms_fps": 54.00, "tms_mph": 36.82, "sms_fps": 50.62, "sms_mph": 34.51},
+        "average": {"flow_vph": 8016, "tms_fps": 36.44, "tms_mph": 24.85, "sms_fps": 32.78, "sms_mph": 22.35}
+      },
+      "input_output": {
+        "periods": ["8:04:02-8:05", "8:05-8:10", "8:10-8:15", "8:15-8:20", "8:20-8:20:43"],
+        "on_ramp_flow_vehicles": [0, 45, 44, 41, 0],
+        "entering_freeway_lanes_vehicles": [36, 652, 652, 547, 0],
+        "exiting_freeway_lanes_vehicles": [0, 646, 721, 620, 30],
+        "entering_vehicles": [36, 697, 696, 588, 0],
+        "exiting_vehicles": [0, 646, 721, 620, 30],
+        "net_entering_minus_exiting": [36, 51, -25, -32, -30],
+        "on_ramp_flow_sum_vehicles": 130,
+        "entering_freeway_lanes_sum_vehicles": 1887,
+        "exiting_freeway_lanes_sum_vehicles": 2017
+      },
+      "sectional_flow_tms_sms_by_section": {
+        "sections_ft": [0, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000],
+        "flow_vph": [7456, 7508, 7508, 7508, 7528, 8016, 8016, 8016, 8016, 8016, 8016, 8016, 8016, 8016, 8016, 7754, 7702, 7702, 7702, 7702, 7702],
+        "tms_fps": [30.65, 29.16, 30.39, 31.13, 31.39, 32.90, 34.15, 34.61, 37.35, 34.55, 37.57, 37.08, 37.19, 38.49, 39.06, 38.10, 36.99, 37.10, 37.50, 37.40, 36.96],
+        "tms_mph": [20.90, 19.88, 20.72, 21.23, 21.40, 22.43, 23.28, 23.60, 25.47, 23.56, 25.62, 25.28, 25.36, 26.24, 26.63, 25.98, 25.22, 25.30, 25.57, 25.50, 25.20],
+        "sms_fps": [24.10, 24.43, 25.21, 26.58, 26.41, 26.51, 27.32, 27.30, 28.53, 27.30, 29.46, 29.74, 30.41, 31.25, 31.18, 31.53, 31.07, 30.45, 30.89, 31.77, 30.23],
+        "sms_mph": [16.43, 16.66, 17.19, 18.12, 18.01, 18.08, 18.63, 18.61, 19.45, 18.61, 20.09, 20.28, 20.73, 21.31, 21.26, 21.50, 21.18, 20.76, 21.06, 21.66, 20.61]
+      }
+    }
+  },
+  "interpretation": "Official NGSIM aggregates for 7:50-8:05 show the lowest cross-section flows and lowest speeds upstream of the on-ramp merge and monotonically improving speeds downstream, while the input-output analysis shows the section accumulating vehicles early in the window and draining late. For 8:05-8:20 the whole cross-section is congested with 24-21 mph space mean speed and 7,456-8,016 veh/h."
+}

@@ -1,0 +1,164 @@
+{
+ "variant": "RC1",
+ "condition": "us101__0750_0805",
+ "seed": 20261021,
+ "use_initial_state": false,
+ "conditional_supply": false,
+ "network_spec_id": "observed_geometry_candidate",
+ "network_sha256": "2501200d01ea09614dedc43bfc47dcc97a5f89cdcec3cdb86ec03a47d894f514",
+ "route_sha256": "506eb1a812709aeed1e388ff8bc77f519e742423b87943d424fe3d198a75a54d",
+ "config_sha256": "5d082d2d9fdfcd2ad4ca0f5ea49426d5afac67f23cdc3ba668e2af25da92bd48",
+ "initial_state": null,
+ "run": {
+  "returncode": 0,
+  "wall_s": 3.2665276999759953,
+  "log_tail": "Loading net-file from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_scene_reconstruction_v1\\runs\\RC1\\RC1\\network/observed_geometry_candidate.net.xml' ... done (3ms).\nLoading route-files incrementally from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_scene_reconstruction_v1\\runs\\RC1\\RC1\\RC1.rou.xml'\nLoading done.\nSimulation version 1.26.0 started with time: 0.00.\nSimulation ended at time: 300.00.\nReason: The final simulation step has been reached.\nPerformance:\n Duration: 2.84s\n Real time factor: 105.82\n UPS: 133483.950617\nVehicles:\n Inserted: 738\n Running: 64\n Waiting: 0\nStatistics (avg of 674):\n RouteLength: 662.92\n Speed: 25.19\n Duration: 26.81\n WaitingTime: 0.00\n TimeLoss: 2.23\n DepartDelay: 0.00\n",
+  "teleports": 0,
+  "collisions": 0
+ },
+ "evaluation_window_s": [
+  180.0,
+  299.7
+ ],
+ "metrics": {
+  "status": "Observation",
+  "window_s": [
+   180.0,
+   299.7
+  ],
+  "region_m": [
+   150.0,
+   350.0
+  ],
+  "lanes": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ],
+  "lane_km": 1.0,
+  "local_vehicle_s": 2520.0,
+  "speed_mean_mps": 23.899317460317462,
+  "density_veh_km_lane": 21.05263157894737,
+  "flow_veh_h_lane_consistency": 1811.3166917293236,
+  "low_speed_share": 0.0,
+  "speed_quantiles_mps": [
+   6.78,
+   12.579500000000001,
+   21.62,
+   26.83,
+   27.21,
+   27.58,
+   27.78
+  ],
+  "blocks": [
+   {
+    "block_start_s": 180.0,
+    "speed_mean_mps": 23.740068514977693,
+    "density_veh_km_lane": 20.92,
+    "low_speed_share": 0.0,
+    "vehicles": 95
+   },
+   {
+    "block_start_s": 210.0,
+    "speed_mean_mps": 23.71499224325163,
+    "density_veh_km_lane": 21.486666666666668,
+    "low_speed_share": 0.0,
+    "vehicles": 98
+   },
+   {
+    "block_start_s": 240.0,
+    "speed_mean_mps": 24.05841158682158,
+    "density_veh_km_lane": 20.94333333333333,
+    "low_speed_share": 0.0,
+    "vehicles": 96
+   },
+   {
+    "block_start_s": 270.0,
+    "speed_mean_mps": 24.091087974172716,
+    "density_veh_km_lane": 20.65,
+    "low_speed_share": 0.0,
+    "vehicles": 95
+   }
+  ]
+ },
+ "first_30s_metrics": {
+  "status": "Observation",
+  "window_s": [
+   0.0,
+   30.0
+  ],
+  "region_m": [
+   150.0,
+   350.0
+  ],
+  "lanes": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ],
+  "lane_km": 1.0,
+  "local_vehicle_s": 371.1,
+  "speed_mean_mps": 26.334104015090272,
+  "density_veh_km_lane": 12.370000000000001,
+  "flow_veh_h_lane_consistency": 1172.7103200000001,
+  "low_speed_share": 0.0,
+  "speed_quantiles_mps": [
+   10.85,
+   19.655,
+   26.8,
+   27.07,
+   27.35,
+   27.615000000000002,
+   27.78
+  ],
+  "blocks": [
+   {
+    "block_start_s": 0.0,
+    "speed_mean_mps": 26.334104015090272,
+    "density_veh_km_lane": 12.370000000000001,
+    "low_speed_share": 0.0,
+    "vehicles": 60
+   }
+  ]
+ },
+ "state_support": {
+  "condition": "us101__0750_0805",
+  "real_target": {
+   "mean_speed_mps": 10.506118382234925,
+   "density_veh_km_lane": 43.54361111111111
+  },
+  "simulated_mean_speed_mps": 23.899317460317462,
+  "simulated_density_veh_km_lane": 21.05263157894737,
+  "predeclared_block_speed_envelope": [
+   23.71499224325163,
+   24.091087974172716
+  ],
+  "predeclared_block_density_envelope": [
+   20.65,
+   21.486666666666668
+  ],
+  "target_speed_inside_block_envelope": false,
+  "target_density_inside_block_envelope": false,
+  "state_supported": false,
+  "rule": "each real target mean speed and density must lie inside the envelope of the predeclared 30 s evaluation blocks of the simulated run; a necessary state-support check only, not a science tolerance and not an equivalence test",
+  "not_a_science_tolerance": true
+ },
+ "fcd_rows": 189378,
+ "on_network_rows": 186005,
+ "lane_share": {
+  "5": 42716,
+  "4": 36090,
+  "1": 31319,
+  "2": 31070,
+  "3": 30572,
+  "7": 5730,
+  "8": 4521,
+  "6": 3987
+ },
+ "question": "Can the observed geometry (five mainline lanes, on-ramp merge, auxiliary lane, off-ramp diverge) and the observed boundary demand alone reproduce the observed congested local state?",
+ "predicted_outcome": "free-flow branch: local speed near 20-23 m/s and density near 19-21 veh/km/lane, i.e. the same flow on the free-flow branch, because the Krauss lane capacity far exceeds the observed congested flow"
+}

@@ -1,0 +1,37 @@
+{
+ "result_id": "RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1",
+ "version": "stage-0.5-trajectory-reconstruction-v1",
+ "mode": "read-only trajectory reconstruction; no SUMO run; no Gate mutation",
+ "inputs": {
+  "us101__0750_0805": {
+   "path": "code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r4/states/ngsim_us101__0750_0805.parquet",
+   "sha256": "684a5f0b96dc48116f16d581c278d7039c0554bf1c3cea8d6eda3e605e3e8644",
+   "bytes": 45460444
+  },
+  "us101__0805_0820": {
+   "path": "code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r4/states/ngsim_us101__0805_0820.parquet",
+   "sha256": "7b0ef830c97a981da018d4e24b029e38aa2630387c728ea87b57926745880a9f",
+   "bytes": 53932888
+  }
+ },
+ "official_reference": {
+  "path": "code/configs/stage_0_5_ngsim_official_reference_v1.json",
+  "sha256": "1c9f6bd851561a2dfb4394ea3edd072ad17bcc1499e5f7915115c1bba9018015"
+ },
+ "code": {
+  "module": "code/src/riskprop/stage_0_5_trajectory_reconstruction.py",
+  "entrypoint": "code/scripts/run_stage_0_5_trajectory_reconstruction.py",
+  "module_sha256": "eea41f92167c2e10b1b2160ce600c15342df05e828c1be25c7dffa9c4364a5b8"
+ },
+ "environment": {
+  "python": "3.13.5",
+  "platform": "Windows-11-10.0.26100-SP0",
+  "pandas": "2.2.3",
+  "numpy": "2.3.2"
+ },
+ "git_head": "e52ed1ef2eb88648cf5b8e664b94f81053553ecd",
+ "sealed_windows_not_read": [
+  "us101__0820_0835",
+  "nsgim_lankershim__complete"
+ ]
+}

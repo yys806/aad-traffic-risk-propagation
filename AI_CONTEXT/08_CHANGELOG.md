@@ -240,3 +240,11 @@ B1.2-P收口：纯Git全量741 passed/14 skipped/0 failed；严格文档/compile
 ## 2026-10-20 — AAD-0.5-FINAL-CLOSURE
 
 新增 `stage_0_5_final_closure.py`（D1 归属、局部 P2/暴露、误差判据、计划守卫）与真实参考/候选/监督/统计/装配/校验六个入口，以及三个测试模块；`export_project_evidence.py` 增补本结果导出映射与聚合文件白名单。研究者批准 D1–D5 记入 `06_DECISIONS.md`；真实局部 P2 首次计算完成（147/31051.6/17.0426 与 216/33091.1/23.4988），条件候选状态支持未通过、五层合取 Evidence Insufficient，δ/h 无独立依据，集中决策包 R1–R5。Gate 未升级，历史状态与旧包字节未改写。
+
+## 2026-10-21 — AAD-0.5-TR-RECON 真实交通重建与条件场景诊断
+
+新增模块 `stage_0_5_trajectory_reconstruction.py`（只读真实重建）与 `stage_0_5_scene_reconstruction.py`（条件观测几何场景 + 真实初始状态注入 + 原生 FCD 记录），入口 `run_stage_0_5_trajectory_reconstruction.py` 与 `run_stage_0_5_scene_reconstruction.py`，测试 13 + 10 项，旁证配置 `stage_0_5_ngsim_official_reference_v1.json`。
+
+结果 `RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1`，便携证据 34 个文件；`export_project_evidence.py` 增补映射与 CSV 白名单。3 项预声明诊断全部执行且均未达状态支持，报 `EvidenceInsufficient_StateSupport`；未搜索参数、未访问第三窗口、未启动协议锁或 Stage 1.1。Gate、δ/h 状态、R1–R5 决策包与全部历史证据不变。
+
+同步更新：`00_PROJECT_STATE.md`（新当前段）、`03_DATA_FLOW.md`、`04_MODULE_MAP.md`、`05_EXPERIMENTS.md`、`07_KNOWN_ISSUES.md`、`docs/RESULTS_INDEX.md`、`docs/STAGE_INDEX.md`、`docs/CHANGELOG.md`、`docs/PROJECT_INDEX.md`、`docs/RESEARCH_STATUS.md`、`docs/PROJECT_REGISTRY.json`。

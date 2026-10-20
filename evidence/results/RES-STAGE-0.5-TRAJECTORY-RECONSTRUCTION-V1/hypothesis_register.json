@@ -1,0 +1,65 @@
+{
+ "status": "Mixed; each entry carries its own evidence class",
+ "classes": [
+  "Observation",
+  "Derived",
+  "Hypothesis",
+  "Unidentifiable"
+ ],
+ "entries": [
+  {
+   "id": "R1",
+   "statement": "The observed local region sits immediately downstream of an on-ramp merge and just upstream of an off-ramp diverge, and a dedicated auxiliary lane exists inside the region from the merge to the diverge.",
+   "class": "Observation",
+   "evidence": "lane_geometry.json + lane_geometry per lane 6/7/8 support; official NGSIM metadata states five mainline lanes throughout plus one auxiliary lane between the Ventura Boulevard on-ramp and the Cahuenga Boulevard off-ramp."
+  },
+  {
+   "id": "R2",
+   "statement": "Both approved windows are on the congested branch of the fundamental diagram, not the free-flow branch.",
+   "class": "Observation",
+   "evidence": "local_state.json (10.51 m/s / 43.54 and 7.92 m/s / 50.51) with measured cross-section flows 1,647 and 1,451-1,474 veh/h/lane; official Table 3 SMS 21.45-27.70 mph and 20.88-23.22 mph."
+  },
+  {
+   "id": "R3",
+   "statement": "The observed cross-section flow does not identify the traffic state: one flow value maps to two density/speed combinations.",
+   "class": "Derived",
+   "evidence": "capacity_diagnosis.json (implied free-flow density at the same flow is about 16.5 veh/km/lane versus the observed 43.5-50.5) and the failed conditional runs that reproduced the same flow on the free-flow branch."
+  },
+  {
+   "id": "R4",
+   "statement": "During 7:50-8:05 the whole study cross-section is congested and gets worse over time in every section, while the section first accumulates then drains vehicles.",
+   "class": "Observation",
+   "evidence": "official Table 8 (space mean speed by section and 5-minute period: 45.44 fps then 41.88 fps then 30.03 fps) and Table 4 (net entering minus exiting +31, +24, +16, -38, -33 vehicles)."
+  },
+  {
+   "id": "R5",
+   "statement": "The on-ramp contributes a measurable inflow that the failed SUMO candidate did not contain at all.",
+   "class": "Observation",
+   "evidence": "official Table 4 on-ramp sum 137 vehicles per 15 minutes (548 veh/h) for 0750 and 130 (520 veh/h) for 0805; trajectory lane-7 entries and official Table 6 flow step 8,064 -> 8,612 veh/h across the merge."
+  },
+  {
+   "id": "R6",
+   "statement": "The upstream boundary demand of the real segment is directly observable; the true upstream demand of the freeway beyond the observed segment is not.",
+   "class": "Unidentifiable",
+   "evidence": "the canonical states start at the segment boundary, so arrivals are observed only from that boundary inward; congestion upstream of the boundary is not observable."
+  },
+  {
+   "id": "R7",
+   "statement": "The on-ramp arrival process is only partially observed because the ramp lane is observed over about 59 m immediately before the merge.",
+   "class": "Unidentifiable",
+   "evidence": "lane_geometry on-ramp support (128.7-187.6 m) and ramp_flows.json first-observation caveat."
+  },
+  {
+   "id": "R8",
+   "statement": "Which mechanism holds the region on the congested branch (initial condition / hysteresis, demand transient, or a downstream capacity restriction) cannot be identified from the observed windows alone.",
+   "class": "Unidentifiable",
+   "evidence": "the windows are already congested at their start and the net in-out difference is small compared with the accumulation needed to build the queue, so the queue-forming event lies outside the observed time interval."
+  },
+  {
+   "id": "R9",
+   "statement": "A SUMO scenario whose only capacity limit is the Krauss car-following model at the recorded parameters cannot be made to reproduce the observed congested state at the observed flow by adding the observed ramp or by matching the observed flow.",
+   "class": "Derived",
+   "evidence": "capacity_diagnosis.json plus the failed conditional candidate that reproduced the internal cross-section flow on the free-flow branch."
+  }
+ ]
+}

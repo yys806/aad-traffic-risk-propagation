@@ -1,0 +1,61 @@
+{
+ "status": "Derived",
+ "purpose": "Independent comparison between the bundled official NGSIM aggregates and the trajectory-derived boundary flows, so that neither alone carries the reconstruction.",
+ "checks": [
+  {
+   "window": "us101__0750_0805",
+   "official_entering_freeway_lanes_vehicles": 2032,
+   "derived_upstream_crossings_vehicles": 1669,
+   "official_entering_flow_veh_h": 8128.0,
+   "derived_upstream_flow_veh_h_at_150m": 8345.0,
+   "derived_upstream_flow_veh_h_lane": 1669.0,
+   "official_average_section_flow_vph": 8612,
+   "derived_exit_flow_veh_h_at_350m": 8695.0,
+   "official_average_sms_mps": 11.469624000000001,
+   "derived_local_speed_mps": 10.506118382234924,
+   "derived_local_density_veh_km_lane": 43.54361111111111,
+   "official_on_ramp_sum_vehicles": 137,
+   "derived_on_ramp_entry_flow_veh_h": 690.0,
+   "lane_roles": {
+    "mainline": [
+     "1",
+     "2",
+     "3",
+     "4",
+     "5"
+    ],
+    "auxiliary": "6",
+    "onramp": "7",
+    "offramp": "8"
+   }
+  },
+  {
+   "window": "us101__0805_0820",
+   "official_entering_freeway_lanes_vehicles": 1887,
+   "derived_upstream_crossings_vehicles": 1325,
+   "official_entering_flow_veh_h": 7548.0,
+   "derived_upstream_flow_veh_h_at_150m": 7227.272727272728,
+   "derived_upstream_flow_veh_h_lane": 1445.4545454545455,
+   "official_average_section_flow_vph": 8016,
+   "derived_exit_flow_veh_h_at_350m": 7701.818181818181,
+   "official_average_sms_mps": 9.653016000000001,
+   "derived_local_speed_mps": 7.915276152134783,
+   "derived_local_density_veh_km_lane": 50.50545454545454,
+   "official_on_ramp_sum_vehicles": 130,
+   "derived_on_ramp_entry_flow_veh_h": 665.4545454545455,
+   "lane_roles": {
+    "mainline": [
+     "1",
+     "2",
+     "3",
+     "4",
+     "5"
+    ],
+    "auxiliary": "6",
+    "onramp": "7",
+    "offramp": "8"
+   }
+  }
+ ],
+ "agreement_note": "The official section flow table is measured at section midpoints over the whole 2,100 ft cross-section (including the auxiliary lane) and over 15 minutes; the trajectory-derived numbers are 720 s crossings of one interior plane. Agreement is expected in magnitude, not to the digit."
+}

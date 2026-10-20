@@ -151,3 +151,15 @@ RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2：B1.2前置阻断；v1冻结零尝试后�
 条件候选用例（`candidate_experiment_plan.json`，SHA 绑定）：通用三车道网络、60 s 周期信号（绿 48.0/42.2 s）、内部断面流量 1648.0/1449.818 veh/h/lane 作为条件排班流入、A+ 车型长度候选、Krauss/LC2013 固定、内部 0.05 s / 记录 0.1 s、评价窗 [180.0, 299.7] 运行前冻结。FC1（0750 条件）与 FC2（0805 条件）各 300 s、seed 20261019：状态 `completed_with_diagnostic_warning`、工程阻断 0、数值精确 381,560/381,560 与 355,458/355,458、范围一致 36/86、不可评价 1,511/1,318、最大残差 2.84e-14 m、守恒与局部平衡残差 0、期末待插入 0。
 
 状态支持判定（冻结规则）：两次运行的速度与密度全部落在预声明 30 s 块包络之外，低速/闭合状态也未按真实参考出现，故 `EvidenceInsufficient_StateSupport`；按失败分支停止，未执行第 3 次构造与保留的 2 次独立 seed 重复。五层合取 = Evidence Insufficient（阻断层 1/2/5）。本地胶囊：`stage_0_5_final_closure_v4`（参考）与 `stage_0_5_final_candidate_v1`（候选）；v1–v3 为被取代的准备尝试，保留但不作结果。
+
+## 2026-10-21 AAD-0.5-TR-RECON 真实交通重建与条件场景诊断
+
+实验编号 `stage_0_5`（结果 `RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1`）。实验目的：解释「断面流量匹配但不匹配拥堵状态」，并构造有观测证据支撑或明确标记为条件性的 SUMO 场景。
+
+- config / 变量：真实侧只读（无变量）；场景侧 3 个运行前冻结变体 RC1（观测几何 + 观测需求、空网、下游开放）、RC2（+ 真实拥堵初始状态）、RC3（+ 声明的条件 3 车道下游供给）。SUMO 1.26.0，内部 0.05 s / 记录 0.1 s、单线程、300 s，评估窗 `[180.0, 299.7]`。
+- baseline：2026-10-20 冻结的 FC1/FC2（3 车道、无匝道流量、80% 绿信号、空初态）作为自由流分支对照，未重跑，逐字节复用。
+- 数据集：两个已批准校准窗口 canonical 状态（SHA 绑定）+ 数据集内官方 NGSIM 聚合报告。第三窗口与 holdout 零读取。
+- 主要指标：局部 `k`/`v`/`q=k·v·3.6`/低速份额/30 s 块包络；守恒残差；边界流量；慢速连通域起点与扩张方向；净间距、闭合速度符号；观测反推的有效 Krauss 时间间隔。
+- 状态：`closed_evidence_insufficient_state_support`。
+- 客观实验结果：真实两窗口 43.544/10.506 与 50.505/7.915；RC1 23.899/21.053/q=1,811；RC2 23.812/21.203（前 30 s 16.71/34.14，180 s 内退化）；RC3 6.755/61.349/q=1,492。三者均未落入真实目标包络 → `EvidenceInsufficient_StateSupport`，按预声明停止规则停止（构造 3 次、独立重复 0 次、未加第 4 次）。有效 tau 反推 1.527/1.628 s（密度）与 1.552/1.627 s（净间距），冻结值 1.0 s。
+- 输出目录：`code/outputs/formal/calibration/stage_0_5_trajectory_reconstruction_v1/`、`code/outputs/formal/calibration/stage_0_5_scene_reconstruction_v1/`；证据 `evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/`。

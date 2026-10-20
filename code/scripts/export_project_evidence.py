@@ -61,6 +61,37 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         "RES-STAGE-0.3-PNEUMA-KINEMATICS-R1": [],
     }
 
+    # Stage 0.5 real-traffic reconstruction and conditional scene diagnostics.
+    pairs.setdefault("RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1", [])
+    for name in (
+        "PLAN_SHA256", "SHA256SUMS", "boundary_flow_30s.csv", "boundary_flows.json",
+        "capacity_diagnosis.json", "cluster_uncertainty.json", "conservation.json",
+        "experiment_plan.json", "fundamental_diagram_30s.csv", "hypothesis_register.json",
+        "interaction_stats.json", "jam_waves.json", "lane_geometry.json", "local_state.json",
+        "manifest.json", "occupancy_30s.csv", "official_crosscheck.json",
+        "official_reference_provenance.json", "ramp_flows.json",
+        "reconstruction_summary.json", "sectional_minimum_300s.csv", "source_audit.json",
+        "space_time_60s.csv",
+    ):
+        pairs["RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1"].append(
+            (f"code/outputs/formal/calibration/stage_0_5_trajectory_reconstruction_v1/{name}", name)
+        )
+    for name in (
+        "PLAN_SHA256", "SHA256SUMS", "diagnostic_plan.json", "manifest.json",
+        "real_local_context.json", "run_ledger.json", "run_metadata.json",
+        "scene_vs_real_congested_branch.json", "state_support_verdict.json",
+    ):
+        pairs["RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1"].append(
+            (f"code/outputs/formal/calibration/stage_0_5_scene_reconstruction_v1/{name}", f"scene_{name}")
+        )
+    for run_id in ("RC1", "RC2", "RC3"):
+        pairs["RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1"].append(
+            (
+                f"code/outputs/formal/calibration/stage_0_5_scene_reconstruction_v1/runs/{run_id}/summary.json",
+                f"runs_{run_id}_summary.json",
+            )
+        )
+
     stage_0_1_root = "code/outputs/formal/stage_0_1/e00_real_sumo_20260907_primary_v3"
     for cell in ("s0c0", "s0c1", "s1c0", "s1c1"):
         for name in (
@@ -639,7 +670,9 @@ def _validate_source(source: Path) -> None:
     aggregate_names={"SHA256SUMS","PLAN_SHA256","run_metrics.csv","time_bins_60s.csv","time_series_5s.csv",
         "event_attribution_audit.csv","traffic_state_1s.csv","traffic_state_30s.csv",
         "member_support_audit.csv","cluster_exposure_audit.csv",
-        "candidate_PLAN_SHA256","reference_REFERENCE_PLAN_SHA256"}
+        "candidate_PLAN_SHA256","reference_REFERENCE_PLAN_SHA256",
+        "boundary_flow_30s.csv","fundamental_diagram_30s.csv","occupancy_30s.csv",
+        "sectional_minimum_300s.csv","space_time_60s.csv"}
     if source.suffix.lower() not in {".json", ".md", ".txt", ".sha256"} and source.name not in aggregate_names:
         raise ValueError(f"unsupported evidence file type: {source}")
 

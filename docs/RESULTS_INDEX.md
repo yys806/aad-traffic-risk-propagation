@@ -240,3 +240,18 @@ B1.2前置接入工程阻断，主矩阵未冻结/未运行；报告`docs/STAGE_
 五层合取判定 **Evidence Insufficient**（阻断层 1/2/5，层 4 测量已闭合）；δ 与 h 无独立依据，保持 Awaiting Researcher Decision；集中决策包 R1–R5。新增 2 次轨迹运行、剩 3 次；Gate 保持 `pending_simulation_sample`，未创建协议锁、未启动 Stage 1.1。
 
 报告 `docs/STAGE_0_5_FINAL_CLOSURE_2026-10-20.md`；计划 `docs/plans/2026-10-20-stage-0-5-final-closure.md`；证据 `evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/`。
+
+
+## RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1
+
+真实交通过程只读重建 + 条件观测几何 SUMO 场景定向诊断（AAD-0.5-TR-RECON）。**无新增科学 Gate**。
+
+真实侧（两个已批准校准窗口，区域 `[150,350) m`、主线 1–5 车道）：0750–0805 = **43.544 veh/km/lane / 10.506 m/s / q=1,646.9 veh/h/lane**（低速份额 0.0969）；0805–0820 = **50.505 / 7.915 / 1,439.2**（低速份额 0.2530）。几何由轨迹独立识别：5 主线车道 + 驶入匝道（128.74–187.58 m）+ **辅助车道（187.58–399.22 m）** + 驶出匝道（399.22–450.84 m），与官方 NGSIM 元数据一致；已批准 D1 区域**内部含第六车道**，因此该区域不是闭合控制体。六车道断面闭合区域守恒残差 1.6%（0750）/ 5.1%（0805）。边界需求 8,345 / 7,227 veh/h；官方输入—输出表显示断面**先积累后释放**（+24、+16、−38）。**规模最大的低速波都最先出现在观测段下游端（y=500–650 m）并向上游扩张**，说明拥堵来自覆盖之外的下游供给。同一流量在自由流速度为 27.78 m/s 时对应密度仅 16.5 / 14.4 veh/km/lane——**断面流量不能识别状态**。
+
+场景侧：运行前冻结 3 项定向诊断（各 300 s、内部步长 0.05 s、评估窗 `[180,299.7]`）。RC1（观测几何 + 观测需求、空网）→ 23.90 m/s / 21.05 veh/km/lane / q=1,811（自由流）；RC2（注入真实拥堵初始状态、下游开放）→ 180 s 内完全退化为 23.81 / 21.20；RC3（RC2 + 声明的条件 3 车道下游供给）→ 6.76 / 61.35 / q=1,492（比目标更深）。**三者均未落入真实目标 30 s 块包络**，按预声明停止规则报 `EvidenceInsufficient_StateSupport`，未做参数搜索、未执行独立 seed 重复、未加第 4 次构造。
+
+拥堵分支诊断（Derived + Hypothesis）：冻结 Krauss 参数下观测密度对应的平衡速度为 16.05 / 12.88 m/s，远高于观测 10.51 / 7.92 m/s；观测**密度**与观测**净间距**两条独立路径一致给出有效时间间隔 **1.53/1.63 s** 与 **1.55/1.63 s**，而冻结值为 1.0 s。这是「同一流量只在自由流支可达」的定量原因，属需要受控探针与研究者决定的 Hypothesis。
+
+第三窗口读取 0 行、holdout 0 次。Gate 保持 `pending_simulation_sample`；`scientific_claim_eligible=false`、`reality_coverage_accepted=false`、`protocol_lock_allowed=false`。
+
+报告 `docs/STAGE_0_5_TRAJECTORY_RECONSTRUCTION.md`、`docs/STAGE_0_5_SUMO_SCENE_RECONSTRUCTION.md`；计划 `docs/plans/2026-10-21-stage-0-5-trajectory-reconstruction.md`；证据 `evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/`。

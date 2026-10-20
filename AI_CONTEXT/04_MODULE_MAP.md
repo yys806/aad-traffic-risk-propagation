@@ -102,3 +102,12 @@ code/src/riskprop/stage_0_5_positive_near_zero.py（classify_edge/admission/chec
 新增 `code/src/riskprop/stage_0_5_final_closure.py`：已批准 D1 的局部归属与暴露（`local_p2`/`links`/`checked`/`real_region_mask`）、误差判据 `equivalence`（δ 未批准时返回 Awaiting Researcher Decision，不默认通过）与运行计划守卫 `check_run_plan`（构造 ≤3、独立重复 ≥2 且 seed 不重复、资源上限不得提高、验证访问需完整协议）。
 
 入口：`run_stage_0_5_final_closure.py`（prepare/refresh/tests/freeze-reference/reference，参考重算按完整后车轨迹分批，逐批复核原分母）、`run_stage_0_5_closure_candidate.py`（prepare/empty/probe/freeze/worker/analyse，条件候选与负例角色探针）、`supervise_stage_0_5_closure.py`（有限进程树监督：墙钟/内存/产物上限、不重试、控制器哈希守卫）、`audit_stage_0_5_closure_statistics.py`（统计计划冻结与车辆簇/时间块区间）、`package_stage_0_5_final_closure.py`（装配、封存、独立校验与反晋升检查）、`verify_stage_0_5_final_closure.py`（便携复核入口）。测试：`test_stage_0_5_final_closure.py`、`test_stage_0_5_closure_supervisor.py`、`test_stage_0_5_final_closure_evidence.py`。Stage 0.2 事件核心、旧 SUMO 适配器与 LF/CD/P/N 模块未改。
+
+## 2026-10-21 真实交通重建与条件场景模块
+
+- `code/src/riskprop/stage_0_5_trajectory_reconstruction.py`：只读真实重建。`load_calibration_states`（窗口白名单 + schema/source fail-closed）、`lane_geometry`、`classify_lanes`（匝道→辅助→出口链条规则校验）、`real_region_mask`、`boundary_crossings`、`vehicle_conservation`、`ramp_flows`、`local_state`、`space_time`、`fundamental_diagram`、`occupancy_series`、`jam_waves`、`sectional_minimum`、`interaction_stats`、`cluster_bootstrap`。不修改 Stage 0.2 身份/时钟/质量/P2 语义，不运行 SUMO。
+- `code/src/riskprop/stage_0_5_scene_reconstruction.py`：条件观测几何场景。`OBSERVED_GEOMETRY` 网络规格、`CONDITIONS`（观测边界/匝道需求与真实目标）、`build_route_file`、`real_lane_to_sumo` + `scale_position` + `start_edge_routes`/`route_chain_from`（SUMO 起点边路由一致性）、`build_initial_state` + `write_initial_state_route_file`（真实初始状态注入与去重叠）、`write_sumo_config`（`--fcd-output` + `device.fcd.period`）、`run_sumo`、`parse_fcd`（反缩放回真实米制）、`scene_metrics`、`state_support`。
+- 入口：`code/scripts/run_stage_0_5_trajectory_reconstruction.py`、`code/scripts/run_stage_0_5_scene_reconstruction.py`（后者写 `diagnostic_plan.json` + `PLAN_SHA256` 后才运行，含 RC1/RC2/RC3 预声明问题/预测/停止规则与 `conditional_network_spec`）。
+- 配置：`code/configs/stage_0_5_ngsim_official_reference_v1.json`（官方 NGSIM 聚合转录 + 站点元数据）。
+- 测试：`code/tests/test_stage_0_5_trajectory_reconstruction.py`（13）、`code/tests/test_stage_0_5_scene_reconstruction.py`（10）。
+- 证据导出：`export_project_evidence.py` 增补 `RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1` 映射与 `scene_*`/`runs_RC*` 命名及 5 个 CSV 白名单。

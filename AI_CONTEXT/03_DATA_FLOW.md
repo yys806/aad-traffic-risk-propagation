@@ -121,3 +121,9 @@ SHA绑定既有两校准窗口便携摘要及A+车型→独立B1.2胶囊→142�
 ## 2026-10-20 LF候选协议整合
 
 LF3点态/事件/交通帧和两个批准校准窗口轻量摘要→SHA/角色白名单→Python -S离线胶囊→逐事件/分母/时间窗审计→五层必要目标与候选协议。无新真实轨迹/第三窗口/holdout；所有新数值只候选，不回写历史。报告 `docs/STAGE_0_5_LOCAL_FOLLOWING_PROTOCOL_DESIGN.md`；计划 `docs/plans/2026-10-20-lf-protocol-consolidation.md`；证据 `evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/`。
+
+## 2026-10-21 真实交通重建与条件场景数据流
+
+只读重建：两个已批准校准窗口的 canonical 状态 parquet（SHA `684a5f0b96dc4811…` / `7b0ef830c97a981d…`，仅列 21 个字段）→ `stage_0_5_trajectory_reconstruction.load_calibration_states()`（fail-closed 拒绝 `0820_0835`/Lankershim/未批准窗口）→ 车道纵向/横向支撑识别（5 主线 + 匝道 7 + 辅助 6 + 出口 8，规则校验不过即报错）→ 边界跨越（相邻 10 Hz 观测线性插值）→ 守恒（六车道断面闭合区域）→ 50 m × 60 s 与 100 m × 30 s 时空面 → 慢速连通域（阈值 10 m/s）→ 基本图 `(k, q, v)` → 轨迹簇 bootstrap。官方旁证来自数据集内 `us-101-data-analysis.zip` 的两份 PDF（矢量文本缺 ToUnicode，经光栅化 + 本地 OCR + 回读核对，标为 Unverified 直至交叉核对），配置为 `code/configs/stage_0_5_ngsim_official_reference_v1.json`。第三窗口与 holdout 零读取。
+
+条件场景：`stage_0_5_scene_reconstruction` 的观测几何规格 → `netconvert` 建网（`main_0` 5 车道 → `main_1` 6 车道 ← 匝道 → `main_2` 5 车道 + `offramp`）→ 边界需求（观测跨越流量 + 官方匝道流量 + 官方车型比例）→ 初始状态注入（窗口起点真实位置/车道/速度，按边长反缩放，重叠车辆丢弃并计数）→ SUMO 原生 `--fcd-output`（0.1 s 周期）+ `--summary-output` → `parse_fcd()` 用显式反缩放映回真实米制 → 与真实目标同口径的局部指标（`k`/`v`/`q=k·v·3.6`/低速份额/30 s 块）→ 状态支持判定与停止规则。全过程无 TraCI，运行前冻结 `diagnostic_plan.json` + `PLAN_SHA256`；数值分支微审计沿用 2026-10-20 胶囊，不在本批重跑（报告已披露）。

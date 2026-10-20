@@ -1,0 +1,100 @@
+{
+ "construction_seeds": {
+  "RC1": 20261021,
+  "RC2": 20261022,
+  "RC3": 20261023
+ },
+ "repeat_seeds": {
+  "RC1r": 20261024,
+  "RC2r": 20261025,
+  "RC3r": 20261026
+ },
+ "duration_s": 300.0,
+ "variants": [
+  {
+   "variant": "RC1",
+   "seed": 20261021,
+   "condition": "us101__0750_0805",
+   "network_spec_id": "observed_geometry_candidate",
+   "state_support": {
+    "condition": "us101__0750_0805",
+    "real_target": {
+     "mean_speed_mps": 10.506118382234925,
+     "density_veh_km_lane": 43.54361111111111
+    },
+    "simulated_mean_speed_mps": 23.899317460317462,
+    "simulated_density_veh_km_lane": 21.05263157894737,
+    "predeclared_block_speed_envelope": [
+     23.71499224325163,
+     24.091087974172716
+    ],
+    "predeclared_block_density_envelope": [
+     20.65,
+     21.486666666666668
+    ],
+    "target_speed_inside_block_envelope": false,
+    "target_density_inside_block_envelope": false,
+    "state_supported": false,
+    "rule": "each real target mean speed and density must lie inside the envelope of the predeclared 30 s evaluation blocks of the simulated run; a necessary state-support check only, not a science tolerance and not an equivalence test",
+    "not_a_science_tolerance": true
+   }
+  },
+  {
+   "variant": "RC2",
+   "seed": 20261022,
+   "condition": "us101__0750_0805",
+   "network_spec_id": "observed_geometry_candidate",
+   "state_support": {
+    "condition": "us101__0750_0805",
+    "real_target": {
+     "mean_speed_mps": 10.506118382234925,
+     "density_veh_km_lane": 43.54361111111111
+    },
+    "simulated_mean_speed_mps": 23.811942868400315,
+    "simulated_density_veh_km_lane": 21.203007518796994,
+    "predeclared_block_speed_envelope": [
+     23.599304051964122,
+     24.025951838594207
+    ],
+    "predeclared_block_density_envelope": [
+     20.486666666666668,
+     21.553333333333335
+    ],
+    "target_speed_inside_block_envelope": false,
+    "target_density_inside_block_envelope": false,
+    "state_supported": false,
+    "rule": "each real target mean speed and density must lie inside the envelope of the predeclared 30 s evaluation blocks of the simulated run; a necessary state-support check only, not a science tolerance and not an equivalence test",
+    "not_a_science_tolerance": true
+   }
+  },
+  {
+   "variant": "RC3",
+   "seed": 20261023,
+   "condition": "us101__0750_0805",
+   "network_spec_id": "observed_geometry_conditional_supply_candidate",
+   "state_support": {
+    "condition": "us101__0750_0805",
+    "real_target": {
+     "mean_speed_mps": 10.506118382234925,
+     "density_veh_km_lane": 43.54361111111111
+    },
+    "simulated_mean_speed_mps": 6.75548430584871,
+    "simulated_density_veh_km_lane": 61.349206349206355,
+    "predeclared_block_speed_envelope": [
+     6.127592876183994,
+     7.552347357318645
+    ],
+    "predeclared_block_density_envelope": [
+     56.88666666666666,
+     68.92666666666668
+    ],
+    "target_speed_inside_block_envelope": false,
+    "target_density_inside_block_envelope": false,
+    "state_supported": false,
+    "rule": "each real target mean speed and density must lie inside the envelope of the predeclared 30 s evaluation blocks of the simulated run; a necessary state-support check only, not a science tolerance and not an equivalence test",
+    "not_a_science_tolerance": true
+   }
+  }
+ ],
+ "sumo_binary_sha256": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926"
+}
