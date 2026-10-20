@@ -139,3 +139,58 @@
 ## 日期勘误（2026-10-20）
 
 本文件、`docs/STAGE_0_5_TRAJECTORY_RECONSTRUCTION.md`、`docs/STAGE_0_5_SUMO_SCENE_RECONSTRUCTION.md` 与 `docs/plans/2026-10-21-stage-0-5-trajectory-reconstruction.md` 曾将执行日期标为 2026-10-21。核对提交时间（`afdc3d0` 的 author/committer date 为 2026-10-20 20:20:17 +08:00）与本地时区（Asia/Shanghai，+08:00）后确认：**实际执行日为 2026-10-20**，原标注为撰写时的人工日期错误。文件名与已提交正文按项目惯例保留不改，勘误在此显式登记。
+
+---
+
+# 附录 A（2026-10-20 AAD-0.5-METHOD-EXPANSION 增补）
+
+本次在原有 12 条基础上新增 3 条，并把全部方法按 **Adopt / Adapt / Explore / Reject / Blocked** 分级，附实际实施结果。机器可读版本见 `doc/literature-notes/stage_0_5_method_index.json` 的 `entries` 与 `method_status_matrix`。
+
+## A.1 新增文献
+
+### L13. Wang, Delle Monache & Work (2022)
+
+- 题名：Identifiability of car-following dynamics
+- 出处：Physica D: Nonlinear Phenomena **430**:133090（2022-02）
+- DOI：10.1016/j.physd.2021.133090 · Zotero `4J5V4A3I` · 开放全文：https://lab-work.github.io/download/wang2021identifiability.pdf
+- 数据/模型：CTH-RV、最优速度（OV）、follow-the-leader（FTL）、IDM。
+- 实测方法（**全文已读**）：
+  - **Definition 1**（结构全局可辨识）：对所有 `t>0`，`y(t,θ,x0,u) ≡ y(t,θ*,x0,u) ⇒ θ=θ*`，对几乎所有 θ、几乎所有初值 x0 与每个允许输入成立。
+  - **Definition 2**（结构局部可辨识）：对几乎所有 θ 存在邻域 N(θ)，使 θ1,θ2∈N(θ) 时该蕴含成立。
+  - 结构分析用**微分几何**方法；实用分析提出**基于优化的数值直接检验**，针对具体实验设置（给定初值与已知输入）判断参数是否唯一。
+- 作者报告的主要结论：① 所测模型**全部**是结构局部可辨识的；② 在给定具体设置下，**CTH-RV 与 FTL 不可辨识**（存在不同参数产生相同输出）；③ **在存在测量误差时，所有模型都不是实用可辨识的**（存在不同参数在小误差界内产生相同输出）。
+- **本项目借鉴**：实用不可辨识性的表述框架；用经验直接比较（同一设置下不同参数是否给出近似相同输出）代替符号分析。
+- **迁移必须修改**：不运行微分几何工具；Krauss 不在该文四模型之列，故该文结论**不能**直接套到 Krauss 上。
+- **不能推出**：不能声称本项目某个参数组合是唯一可恢复的。
+
+### L14. Rhoades, Wang & Ouyang (2016)
+
+- 题名：Calibration of nonlinear car-following laws for traffic oscillation prediction
+- 出处：Transportation Research Part C: Emerging Technologies **69**:1-23（2016-08）
+- DOI：10.1016/j.trc.2016.05.018 · Zotero `4ABZDRVU` · 开放会议版：Transportation Research Procedia 9 (2015) 21-35，DOI 10.1016/j.trpro.2015.07.002
+- **全文未获取（paywalled）**：**未**采用其频域校准方法或振荡幅值结论。仅作为"交通振荡传播"背景；本项目的扰动传播指标（制动事件→后车降幅与滞后）是**项目自定义**定义，已在报告中标明。
+
+### L15. Newell (2002)
+
+- 题名：A simplified car-following theory: a lower order model
+- 出处：Transportation Research Part B: Methodological **36**(3):195-205（2002-03）
+- DOI：10.1016/S0191-2615(00)00044-8 · Zotero `DIVRKX7J`
+- **全文未获取（paywalled）**：本项目的 Newell 原型（`stage_0_5_newell_prototype.py`）**自带明确离散化**，不复制该文公式，也不得被称为该文方程。
+
+## A.2 方法状态矩阵（Adopt / Adapt / Explore / Reject / Blocked）
+
+| 方法 | 来源 | 状态 | 实施与结果 |
+|---|---|---|---|
+| 前车轨迹重放（TraCI 驱动前车） | L3, L4 | **Adopt** | `stage_0_5_leader_replay.replay_pair`，两条受验证初始化路线；前车偏差 0.013–0.112 m |
+| Brockfeld 归一化间距误差（Eq. 2） | L3 | **Adopt** | 全部配置的主指标 |
+| NRMSE(spacing)/NRMSE(velocity)（Eq. 5–6） | L4 | **Adapt** | 加速度项**保留为空**（差分派生量未验证） |
+| 相对速度拥堵定义 | L1, L2 | **Adapt** | 方向稳健；24 h/30 天参考速度在 12–16 min 窗口不可复现 |
+| 逐时间片空间置换零模型 | L2 | **Adapt** | 相对速度族显著；0750 绝对 10 m/s 不显著（0.999） |
+| FHWA 四条可接受性准则 | L5 | **Blocked** | 需要同一条件多日样本算 σ(t) 与 BDAE；本项目只有两个不同条件窗口 |
+| 结构可辨识性（微分几何） | L13 | **Reject** | 需模型 ODE 符号分析；SUMO 实现不以 ODE 形式可得，且经验问题不依赖它 |
+| 实用不可辨识性框架 + 经验直接比较 | L13 | **Adapt** | 参数相关 r=−0.94/+0.82；信号/噪声 ≈13.5 |
+| Brockfeld 式标定优化（downhill simplex） | L3 | **Reject** | 本任务禁止参数搜索，只做单因素有界对照 |
+| 频域振荡标定 | L14 | **Explore** | 全文未获取；改用自定义时域扰动指标 |
+| Newell 简化跟驰 | L15 | **Explore** | 独立原型（非 SUMO 原生）：τ=1.0 → 50.94%，τ=1.6 → 85.42% |
+| IDM 对照 | L13, L3 | **Adopt** | `carFollowModel=IDM`，δ 冻结；T=1.0 为目录内最佳（−5.5 pp） |
+| 异质参数 | L3, L13 | **Blocked** | 用同一轨迹构造参数再评价该轨迹属循环拟合；构造/评价划分需更多样本 |

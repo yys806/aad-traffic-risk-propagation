@@ -1,0 +1,124 @@
+{
+ "result_id": "RES-STAGE-0.5-METHOD-EXPANSION-V1",
+ "rules": {
+  "stationary_band_mps2": 0.3,
+  "stationary_min_s": 1.0,
+  "accel_threshold_mps2": 0.3,
+  "decel_threshold_mps2": -0.3,
+  "low_speed_mps": 5.0,
+  "close_gap_m": 10.0,
+  "closing_threshold_mps": -0.5,
+  "min_phase_s": 1.0
+ },
+ "rule_status": "exploratory project choice; no source is claimed to define these thresholds",
+ "phase_definition_note": "phase time shares are computed over all reliable continuous following runs of the window; they are descriptive and use exploratory project thresholds",
+ "windows": {
+  "us101__0750_0805": {
+   "run_count": 3224,
+   "total_run_seconds": 87466.20000000001,
+   "phase_seconds": {
+    "stationary": 35331.4,
+    "accelerating": 28044.5,
+    "decelerating": 24090.3,
+    "low_speed": 8018.4000000000015,
+    "close_gap": 15701.6,
+    "closing": 34822.5
+   },
+   "phase_time_share": {
+    "stationary": 0.4039434661617859,
+    "accelerating": 0.320632427154718,
+    "decelerating": 0.275424106683496,
+    "low_speed": 0.09167426960357258,
+    "close_gap": 0.17951620168705165,
+    "closing": 0.3981252186558922
+   },
+   "duration_s": {
+    "min": 1.9999999999999774,
+    "median": 21.250000000000007,
+    "max": 91.99999999999997
+   },
+   "share_with_sustained_stationary": 0.7475186104218362,
+   "share_with_sustained_close_following": 0.4137717121588089,
+   "share_with_low_speed_episode": 0.2149503722084367,
+   "share_with_deceleration_episode": 0.4174937965260546,
+   "time_gap_quantiles_s": [
+    0.11983720895940547,
+    0.8627282046285105,
+    1.1817601517479865,
+    1.6306696007800074,
+    2.294879794821804,
+    3.1452402723985933,
+    22.483414837250688
+   ],
+   "speed_change_quantiles_mps": [
+    0.0853439999999992,
+    2.1201888,
+    3.699510000000002,
+    6.9646799999999995,
+    11.192256,
+    15.018715200000003,
+    29.04744
+   ],
+   "time_gap_stratum_counts": {
+    "0.0-1.0": 498,
+    "1.0-1.5": 909,
+    "1.5-2.5": 1175,
+    "2.5-1000000000.0": 642
+   }
+  },
+  "us101__0805_0820": {
+   "run_count": 2591,
+   "total_run_seconds": 99063.3,
+   "phase_seconds": {
+    "stationary": 51470.3,
+    "accelerating": 24315.4,
+    "decelerating": 23277.600000000002,
+    "low_speed": 25092.500000000004,
+    "close_gap": 31498.600000000006,
+    "closing": 34036.399999999994
+   },
+   "phase_time_share": {
+    "stationary": 0.5195698104141494,
+    "accelerating": 0.24545315974735346,
+    "decelerating": 0.23497702983849722,
+    "low_speed": 0.2532976389843666,
+    "close_gap": 0.31796437227510094,
+    "closing": 0.3435823357388659
+   },
+   "duration_s": {
+    "min": 1.9999999999999774,
+    "median": 30.1,
+    "max": 116.79999999999998
+   },
+   "share_with_sustained_stationary": 0.8930914704747202,
+   "share_with_sustained_close_following": 0.5978386723272867,
+   "share_with_low_speed_episode": 0.43419529139328444,
+   "share_with_deceleration_episode": 0.49170204554226166,
+   "time_gap_quantiles_s": [
+    0.1602419564651808,
+    0.948751211662003,
+    1.2952115538649993,
+    1.7683130853542222,
+    2.3925414567531,
+    3.2529425398462393,
+    140.37055999999998
+   ],
+   "speed_change_quantiles_mps": [
+    0.0,
+    2.0756879999999995,
+    3.7795200000000024,
+    6.800087999999999,
+    12.044172,
+    14.008607999999999,
+    24.664416000000003
+   ],
+   "time_gap_stratum_counts": {
+    "0.0-1.0": 298,
+    "1.0-1.5": 630,
+    "1.5-2.5": 1098,
+    "2.5-1000000000.0": 565
+   }
+  }
+ },
+ "full_matrix_local_path": "code/outputs/formal/calibration/stage_0_5_method_expansion_v1/trajectory_coverage_matrix.json"
+}

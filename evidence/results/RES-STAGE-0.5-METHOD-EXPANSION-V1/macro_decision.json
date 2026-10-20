@@ -1,0 +1,29 @@
+{
+ "result_id": "RES-STAGE-0.5-METHOD-EXPANSION-V1",
+ "phase": "macro",
+ "executed": false,
+ "gate": "a bounded macro contrast is only run when the micro-level diagnostic identifies a configuration supported by the pair-level evidence",
+ "gate_open": false,
+ "observed_tau1.6_paired_difference": {
+  "mean_difference": 40.7028543534198,
+  "ci95": [
+   28.56364520785025,
+   52.5974799057918
+  ],
+  "improved": 6,
+  "worsened": 30,
+  "n": 36
+ },
+ "reason": "no micro configuration in the bounded catalogue is supported by the pair-level evidence, so a new macro contrast would tune the boundary supply to compensate for an unresolved behaviour/structure mismatch, which the task forbids",
+ "existing_scenes_preserved": [
+  "RC1",
+  "RC2",
+  "RC3"
+ ],
+ "no_scene_rerun": true,
+ "researcher_decision_required": [
+  "whether to run a heterogeneous-parameter structural diagnostic",
+  "whether to run an IDM/Newell structural comparison under an independently frozen protocol",
+  "whether a conditional downstream supply may be revisited after either of the above"
+ ]
+}

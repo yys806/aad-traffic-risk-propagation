@@ -220,3 +220,10 @@ Stage0.5新增RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2（B1.2前置工程阻断）�
 结果 `RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1`。状态定义阈值敏感性（10 种定义 × 2 窗口）显示低速波方向与起始位置稳健（16/16 非饱和规则向上游、起始 y=500–650 m），但最大连通域规模在 0750 的绝对 10 m/s 定义下不可区分于逐时间片置换零模型（0.999），故规模结论收窄为依赖相对速度定义。前车轨迹重放（每窗口 12 对 × 2 配置 = 48 次微型运行）显示候选 `tau=1.6` 未改善间距响应：配对 Brockfeld 误差 +19.57 pp、间距偏差 20/20 对变大；44% 观测初始状态被 Krauss 插入包络拒绝。按预声明门控**主线 C 未执行**，RC1/RC2/RC3 保留。8 篇文献经 DOI 核验补入 Zotero。Gate 保持 `pending_simulation_sample`。
 
 报告 `docs/STAGE_0_5_TRAFFIC_STATE_DEFINITION_SENSITIVITY.md`、`docs/STAGE_0_5_LEADER_REPLAY_BEHAVIOUR_DIAGNOSTICS.md`、`doc/literature-notes/STAGE_0_5_METHOD_EVIDENCE_MAP.md`；证据同结果 ID 目录。
+
+
+## 2026-10-20 Stage 0.5 方法扩展（AAD-0.5-METHOD-EXPANSION）
+
+结果 `RES-STAGE-0.5-METHOD-EXPANSION-V1`。覆盖与可辨识性：5,815 段 / 186,529 s，各行为阶段均存在（稳定 40%/52%、低速 9%/25%、贴近 18%/32%），H1 大部分被反驳；`tau` 与 `minGap` 效应高度相关（r=−0.94/+0.82）不可分别辨识。初始化：更正上一任务「插入被拒绝」的误判（实为延迟插入），验证两条原生路线并用控制实验证明 `insertion-checks=none` 不改变后续动力学。响应诊断：324 次独立运行（12 对 × 9 配置 × 3 共同 seed，0 失败）——`tau` 单调有害（+18.3/+40.7/+72.5 pp，三 seed 同号）、`minGap`↓与 `sigma=0` 改善、IDM(T=1.0) 最佳（−5.5 pp，增益在长期窗）、Newell 原型同量级。宏观阶段门控未开，未执行。Gate 保持 `pending_simulation_sample`。
+
+报告 `docs/STAGE_0_5_METHOD_EXPANSION_SUMMARY.md` 等四份；文献 `doc/literature-notes/STAGE_0_5_METHOD_EVIDENCE_MAP.md`（18 条 + 方法状态矩阵）；证据同结果 ID 目录。

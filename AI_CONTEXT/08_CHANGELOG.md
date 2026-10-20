@@ -258,3 +258,13 @@ B1.2-P收口：纯Git全量741 passed/14 skipped/0 failed；严格文档/compile
 新增 `doc/literature-notes/`（方法证据表 + 结构化索引 + RIS）；Zotero 新建 3 个专题集合与 8 条文献，Duan/Saberi 加入 08 并补标签。三处重放缺陷已修复并回归。日期勘误显式登记。`export_project_evidence.py` 增补映射与白名单。
 
 同步更新：`00_PROJECT_STATE.md`、`03_DATA_FLOW.md`、`04_MODULE_MAP.md`、`05_EXPERIMENTS.md`、`07_KNOWN_ISSUES.md`、`docs/RESULTS_INDEX.md`、`docs/STAGE_INDEX.md`、`docs/CHANGELOG.md`、`docs/PROJECT_REGISTRY.json`、`docs/literature/*`。
+
+## 2026-10-20 — AAD-0.5-METHOD-EXPANSION 方法扩展与行为诊断
+
+扩展 `stage_0_5_leader_replay`（单因素配置目录与守卫、局部/长期切片、扰动传播、分层选择、共享网络、插入延迟处理与两条初始化路线）、新增 `stage_0_5_newell_prototype`（非 SUMO 原生原型）、新增入口 `run_stage_0_5_method_expansion.py` 与 `zotero_add_method_expansion_refs.py`、测试 10 项；结果 `RES-STAGE-0.5-METHOD-EXPANSION-V1`（便携证据 20 文件）。
+
+核心结果：`tau` 单调有害（+18.31/+40.70/+72.51 pp，三 seed 同号）、`minGap`↓与 `sigma=0` 改善、IDM(T=1.0) 最佳（−5.52 pp，增益在长期窗）、Newell 同量级；`tau`/`minGap` 效应高度相关不可分别辨识；覆盖矩阵显示各行为阶段均存在。**并更正上一任务「插入被拒绝」的误判**（实为延迟插入）。
+
+Zotero 新增 3 条、集合 07/08/09 = 10/2/1；方法索引 18 条 + 状态矩阵；新增 Zotero 整理清单并记录附件上传失败。`export_project_evidence.py` 增补映射与白名单。
+
+同步更新：`00_PROJECT_STATE.md`、`03_DATA_FLOW.md`（未改，本次无新数据流）、`04_MODULE_MAP.md`、`05_EXPERIMENTS.md`、`07_KNOWN_ISSUES.md`、`docs/RESULTS_INDEX.md`、`docs/STAGE_INDEX.md`、`docs/CHANGELOG.md`、`docs/PROJECT_REGISTRY.json`、`doc/literature-notes/*`。

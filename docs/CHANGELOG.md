@@ -246,3 +246,13 @@ B1.2-P收口：纯Git全量741 passed/14 skipped/0 failed；严格文档/compile
 - 日期勘误：2026-10-21 的三份文档改为显式标注执行日 2026-10-20，文件名与正文原状保留。
 - 修复三处重放实现缺陷（后车 `setSpeed` 导致速度冻结、前车位置每样本领先、模拟/观测时钟错一拍），均有回归测试。
 - 历史证据字节未改写：FC1/FC2、RC1/RC2/RC3、LF、CD、B1 系列与 Stage 0.2/0.3 全部保留；主线 C 未执行。
+
+
+## 2026-10-20 — AAD-0.5-METHOD-EXPANSION 方法扩展与行为诊断
+
+- 新增结果 `RES-STAGE-0.5-METHOD-EXPANSION-V1`（便携证据 20 个文件），登记注册表、结果/阶段索引、研究状态与 AI_CONTEXT。
+- 新增模块 `code/src/riskprop/stage_0_5_newell_prototype.py`（独立非 SUMO 原型）；扩展 `stage_0_5_leader_replay.py`（配置目录 + 单因素守卫、局部/长期切片、扰动传播指标、分层选择、共享网络、插入延迟处理与两条初始化路线）；新增入口 `code/scripts/run_stage_0_5_method_expansion.py` 与 `zotero_add_method_expansion_refs.py`；测试 10 项。
+- 文献：Zotero 新增 3 条（`4J5V4A3I` Wang 2022、`4ABZDRVU` Rhoades 2016、`DIVRKX7J` Newell 2002），集合 07/08/09 复核为 10/2/1；方法索引扩到 18 条并新增 `method_status_matrix`（Adopt/Adapt/Explore/Reject/Blocked）。新增 `doc/literature-notes/STAGE_0_5_ZOTERO_METHOD_EXPANSION_LOG.md` 记录查重、元数据核验与**附件上传失败**（本机 API 返回 `MD5 hash not provided`）及待办链接。
+- **结论更正**：上一任务「26/48 插入被拒绝」被证明是实现等待窗过短造成的误判（实为延迟插入）；已在 `docs/STAGE_0_5_INITIALIZATION_FIDELITY.md` 与 `AI_CONTEXT/07_KNOWN_ISSUES.md` 显式登记，旧报告正文不追溯改写。
+- `export_project_evidence.py` 增补本结果映射与 6 个新白名单文件。
+- 历史证据字节未改写：FC1/FC2、RC1/RC2/RC3、LF、CD、B1 系列与 Stage 0.2/0.3 全部保留；宏观阶段未执行。

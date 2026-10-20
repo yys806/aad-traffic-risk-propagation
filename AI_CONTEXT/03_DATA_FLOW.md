@@ -133,3 +133,11 @@ LF3点态/事件/交通帧和两个批准校准窗口轻量摘要→SHA/角色�
 主线 A：两个已批准 canonical 状态 parquet → `stage_0_5_jam_definition.cell_speed_grid()`（50 m × 30 s 时空速度格）→ `reference_speeds()`（窗口 p95 / 窗口最大值 / 27.78 工程值）→ `congestion_mask()`（绝对阈值 + Duan `W<0.5` + Saberi `λ<ρ`）→ `describe_mask()`（最大连通域规模/持续/最早位置/方向/反向速度）→ `null_model()`（每时间片内按有效格重排掩码，保留边际、破坏空间排列，1000 次，种子 20261031；缺测格不参与置换且不计为不拥堵）。全部离线，无 SUMO。
 
 主线 B：canonical 状态 → `stage_0_5_leader_replay.prepare_pairs()`（沿用 Stage 0.2 连续性/身份/质量语义切成可靠跟驰段）→ `select_pairs()`（冻结规则：≥8 s、按时长降序、同长按 `trajectory_id`）→ `pair_observations()`（从**后车**行取位置/速度，从前车自身行取前车位置/速度，车长由 `(y_leader − y_follower) − net_gap` 反推取中位数）→ `replay_pair()`（单车道长直边；TraCI 每 0.05 s `moveTo`+`setSpeed` 施加前车并按步长预补偿；后车**不调用** `setSpeed`；记录点用观测时钟标签按索引对齐）→ `pair_metrics()`（Brockfeld Eq. 2、NRMSE(gap)/NRMSE(speed)、偏差/MAE、车头时距、闭合速度；加速度保留为空并附理由）→ `summarise()`（按配置、窗口、口径、车头时距分层，配对 bootstrap 以「对」为重采样单位）。运行前写 `replay_plan.json` + `REPLAY_PLAN_SHA256`。主线 C 由 `phase_c_decision.json` 记录为未执行。
+
+## 2026-10-20 方法扩展数据流
+
+P2 覆盖：canonical 状态 → `leader_replay.prepare_pairs`（沿用 Stage 0.2 连续性/身份/质量语义）→ 逐段阶段时长与标志（探索性阈值）→ `trajectory_coverage_summary.json`（小型便携）+ 本地完整矩阵。样本选择：`stratified_selection`（按 gap/speed 四层轮流取，替换此前「最长优先」）。
+
+P3 初始化：同一批 12 对 × 两条路线（`native` 等待并记录插入延迟后按后车自身时间对齐 / `none` 使用官方 `--insertion-checks none` 在观测时刻精确进入）→ `init_routes.csv`（含每对轨迹 SHA 以支持逐字节一致性对照）→ `init_summary.json`。
+
+P4 响应：9 个单因素配置 × 3 个共同 seed × 12 对 → `replay_pair`（共享 1200 m 单车道网络，TraCI 驱动前车、后车纯模型、记录点用观测时钟标签对齐）→ `pair_metrics` + `slice_record`（局部 5 s / 长期 ≥10 s）+ `response_metrics`（制动事件幅值与滞后）→ `response_metrics.csv`/`response_summary.json`（含 seed 变异、配对差异、seed 稳定性）→ `identifiability_summary.json`（局部灵敏度、参数相关、信号/噪声、tau 剖面）。Newell 原型离线复用同一指标。P5 由 `macro_decision.json` 记录为门控未开。三批运行前各自写 `response_plan.json`/`init_plan.json`/`newell_plan.json` 并绑定 SHA；插入检查与等待策略、配置目录与单因素守卫、共享网络、局部/长期窗与扰动指标定义都在计划中冻结。

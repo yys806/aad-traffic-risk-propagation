@@ -1,0 +1,428 @@
+{
+ "result_id": "RES-STAGE-0.5-METHOD-EXPANSION-V1",
+ "phase": "response",
+ "configurations": {
+  "K_tau1.0": {
+   "model": "Krauss",
+   "overrides": {},
+   "status": "frozen baseline",
+   "source": "sealed Stage 0.5 candidate vType",
+   "vtype": {
+    "maxSpeed": 27.78,
+    "speedFactor": 1.0,
+    "speedDev": 0.0,
+    "carFollowModel": "Krauss",
+    "tau": 1.0,
+    "minGap": 2.5,
+    "accel": 2.6,
+    "decel": 4.5,
+    "apparentDecel": 4.5,
+    "emergencyDecel": 9.0,
+    "sigma": 0.5,
+    "actionStepLength": 0.1,
+    "sigmaStep": 1.0,
+    "laneChangeModel": "LC2013"
+   },
+   "single_factor_check": {
+    "changed": [],
+    "reason": "frozen baseline"
+   }
+  },
+  "K_tau1.3": {
+   "model": "Krauss",
+   "overrides": {
+    "tau": 1.3
+   },
+   "status": "engineering exploration",
+   "source": "lower bracket of the macro-implied 1.53-1.63 s equivalent",
+   "vtype": {
+    "maxSpeed": 27.78,
+    "speedFactor": 1.0,
+    "speedDev": 0.0,
+    "carFollowModel": "Krauss",
+    "tau": 1.3,
+    "minGap": 2.5,
+    "accel": 2.6,
+    "decel": 4.5,
+    "apparentDecel": 4.5,
+    "emergencyDecel": 9.0,
+    "sigma": 0.5,
+    "actionStepLength": 0.1,
+    "sigmaStep": 1.0,
+    "laneChangeModel": "LC2013"
+   },
+   "single_factor_check": {
+    "changed": [
+     "tau"
+    ]
+   }
+  },
+  "K_tau1.6": {
+   "model": "Krauss",
+   "overrides": {
+    "tau": 1.6
+   },
+   "status": "engineering exploration",
+   "source": "previously declared candidate from the macro-implied equivalent",
+   "vtype": {
+    "maxSpeed": 27.78,
+    "speedFactor": 1.0,
+    "speedDev": 0.0,
+    "carFollowModel": "Krauss",
+    "tau": 1.6,
+    "minGap": 2.5,
+    "accel": 2.6,
+    "decel": 4.5,
+    "apparentDecel": 4.5,
+    "emergencyDecel": 9.0,
+    "sigma": 0.5,
+    "actionStepLength": 0.1,
+    "sigmaStep": 1.0,
+    "laneChangeModel": "LC2013"
+   },
+   "single_factor_check": {
+    "changed": [
+     "tau"
+    ]
+   }
+  },
+  "K_tau2.0": {
+   "model": "Krauss",
+   "overrides": {
+    "tau": 2.0
+   },
+   "status": "engineering exploration",
+   "source": "upper bracket of the same equivalent",
+   "vtype": {
+    "maxSpeed": 27.78,
+    "speedFactor": 1.0,
+    "speedDev": 0.0,
+    "carFollowModel": "Krauss",
+    "tau": 2.0,
+    "minGap": 2.5,
+    "accel": 2.6,
+    "decel": 4.5,
+    "apparentDecel": 4.5,
+    "emergencyDecel": 9.0,
+    "sigma": 0.5,
+    "actionStepLength": 0.1,
+    "sigmaStep": 1.0,
+    "laneChangeModel": "LC2013"
+   },
+   "single_factor_check": {
+    "changed": [
+     "tau"
+    ]
+   }
+  },
+  "K_tau1.0_minGap1.0": {
+   "model": "Krauss",
+   "overrides": {
+    "minGap": 1.0
+   },
+   "status": "engineering exploration",
+   "source": "one-factor minGap profile; the real standstill gap is not identifiable",
+   "vtype": {
+    "maxSpeed": 27.78,
+    "speedFactor": 1.0,
+    "speedDev": 0.0,
+    "carFollowModel": "Krauss",
+    "tau": 1.0,
+    "minGap": 1.0,
+    "accel": 2.6,
+    "decel": 4.5,
+    "apparentDecel": 4.5,
+    "emergencyDecel": 9.0,
+    "sigma": 0.5,
+    "actionStepLength": 0.1,
+    "sigmaStep": 1.0,
+    "laneChangeModel": "LC2013"
+   },
+   "single_factor_check": {
+    "changed": [
+     "minGap"
+    ]
+   }
+  },
+  "K_tau1.0_minGap5.0": {
+   "model": "Krauss",
+   "overrides": {
+    "minGap": 5.0
+   },
+   "status": "engineering exploration",
+   "source": "one-factor minGap profile; the real standstill gap is not identifiable",
+   "vtype": {
+    "maxSpeed": 27.78,
+    "speedFactor": 1.0,
+    "speedDev": 0.0,
+    "carFollowModel": "Krauss",
+    "tau": 1.0,
+    "minGap": 5.0,
+    "accel": 2.6,
+    "decel": 4.5,
+    "apparentDecel": 4.5,
+    "emergencyDecel": 9.0,
+    "sigma": 0.5,
+    "actionStepLength": 0.1,
+    "sigmaStep": 1.0,
+    "laneChangeModel": "LC2013"
+   },
+   "single_factor_check": {
+    "changed": [
+     "minGap"
+    ]
+   }
+  },
+  "K_tau1.0_sigma0.0": {
+   "model": "Krauss",
+   "overrides": {
+    "sigma": 0.0
+   },
+   "status": "engineering exploration",
+   "source": "removes the dawdling term to bound randomness without removing the model",
+   "vtype": {
+    "maxSpeed": 27.78,
+    "speedFactor": 1.0,
+    "speedDev": 0.0,
+    "carFollowModel": "Krauss",
+    "tau": 1.0,
+    "minGap": 2.5,
+    "accel": 2.6,
+    "decel": 4.5,
+    "apparentDecel": 4.5,
+    "emergencyDecel": 9.0,
+    "sigma": 0.0,
+    "actionStepLength": 0.1,
+    "sigmaStep": 1.0,
+    "laneChangeModel": "LC2013"
+   },
+   "single_factor_check": {
+    "changed": [
+     "sigma"
+    ]
+   }
+  },
+  "IDM_T1.0": {
+   "model": "IDM",
+   "overrides": {
+    "tau": 1.0,
+    "delta": 4.0
+   },
+   "status": "model comparison",
+   "source": "IDM desired time headway T; an equal numeric value to Krauss tau is NOT an equivalence claim",
+   "vtype": {
+    "maxSpeed": 27.78,
+    "speedFactor": 1.0,
+    "speedDev": 0.0,
+    "carFollowModel": "IDM",
+    "tau": 1.0,
+    "minGap": 2.5,
+    "accel": 2.6,
+    "decel": 4.5,
+    "apparentDecel": 4.5,
+    "emergencyDecel": 9.0,
+    "sigma": 0.5,
+    "actionStepLength": 0.1,
+    "sigmaStep": 1.0,
+    "laneChangeModel": "LC2013",
+    "delta": 4.0
+   },
+   "single_factor_check": {
+    "changed": []
+   }
+  },
+  "IDM_T1.6": {
+   "model": "IDM",
+   "overrides": {
+    "tau": 1.6,
+    "delta": 4.0
+   },
+   "status": "model comparison",
+   "source": "IDM at the same numeric T as the falsified Krauss candidate",
+   "vtype": {
+    "maxSpeed": 27.78,
+    "speedFactor": 1.0,
+    "speedDev": 0.0,
+    "carFollowModel": "IDM",
+    "tau": 1.6,
+    "minGap": 2.5,
+    "accel": 2.6,
+    "decel": 4.5,
+    "apparentDecel": 4.5,
+    "emergencyDecel": 9.0,
+    "sigma": 0.5,
+    "actionStepLength": 0.1,
+    "sigmaStep": 1.0,
+    "laneChangeModel": "LC2013",
+    "delta": 4.0
+   },
+   "single_factor_check": {
+    "changed": [
+     "tau"
+    ]
+   }
+  }
+ },
+ "seeds": [
+  20261101,
+  20261102,
+  20261103
+ ],
+ "seed_design": "the same seed set is used for every configuration so that a configuration difference is not confounded with a seed difference; sigma=0.0 bounds the deterministic part of the model",
+ "internal_step_s": 0.05,
+ "local_window_s": 5.0,
+ "long_run_start_s": 10.0,
+ "response_horizon_s": 5.0,
+ "pairs_per_window": 6,
+ "strata": [
+  0.0,
+  1.0,
+  1.5,
+  2.5,
+  1000000000.0
+ ],
+ "selection_rule": "declared gap-over-speed strata, round-robin by duration inside each stratum",
+ "pairs": {
+  "us101__0750_0805": [
+   {
+    "run_id": 28879,
+    "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|2572|clock1118846978900",
+    "leader_trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|2568|clock1118846978900",
+    "lane_id": "3",
+    "duration_s": 86.49999999999997,
+    "gap_mean_m": 6.834673109826589,
+    "speed_mean_mps": 7.191215112138729
+   },
+   {
+    "run_id": 30141,
+    "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|2633|clock1118846978900",
+    "leader_trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|2623|clock1118846978900",
+    "lane_id": "1",
+    "duration_s": 91.99999999999997,
+    "gap_mean_m": 9.324438286956523,
+    "speed_mean_mps": 6.798156495652174
+   },
+   {
+    "run_id": 30249,
+    "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|2641|clock1118846978900",
+    "leader_trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|2633|clock1118846978900",
+    "lane_id": "1",
+    "duration_s": 91.40000000000006,
+    "gap_mean_m": 13.924714634573304,
+    "speed_mean_mps": 6.736100008752736
+   },
+   {
+    "run_id": 30467,
+    "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|2658|clock1118846978900",
+    "leader_trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|2650|clock1118846978900",
+    "lane_id": "1",
+    "duration_s": 90.1,
+    "gap_mean_m": 17.528378184239735,
+    "speed_mean_mps": 6.744185447280799
+   },
+   {
+    "run_id": 28942,
+    "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|2575|clock1118846978900",
+    "leader_trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|2573|clock1118846978900",
+    "lane_id": "4",
+    "duration_s": 70.30000000000004,
+    "gap_mean_m": 7.999647260312945,
+    "speed_mean_mps": 8.938925530583214
+   },
+   {
+    "run_id": 29032,
+    "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|2581|clock1118846978900",
+    "leader_trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|2578|clock1118846978900",
+    "lane_id": "2",
+    "duration_s": 91.50000000000009,
+    "gap_mean_m": 8.743542767213116,
+    "speed_mean_mps": 6.8011040000000005
+   }
+  ],
+  "us101__0805_0820": [
+   {
+    "run_id": 31351,
+    "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|692|clock1118847842000",
+    "leader_trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|688|clock1118847842000",
+    "lane_id": "2",
+    "duration_s": 98.4,
+    "gap_mean_m": 5.101605487804879,
+    "speed_mean_mps": 6.387368975609756
+   },
+   {
+    "run_id": 27642,
+    "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|507|clock1118847842000",
+    "leader_trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|504|clock1118847842000",
+    "lane_id": "1",
+    "duration_s": 116.19999999999999,
+    "gap_mean_m": 6.3662463820998285,
+    "speed_mean_mps": 5.3919828227194495
+   },
+   {
+    "run_id": 28080,
+    "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|524|clock1118847842000",
+    "leader_trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|521|clock1118847842000",
+    "lane_id": "1",
+    "duration_s": 116.79999999999998,
+    "gap_mean_m": 9.635881438356165,
+    "speed_mean_mps": 5.298295602739727
+   },
+   {
+    "run_id": 27790,
+    "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|514|clock1118847842000",
+    "leader_trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|507|clock1118847842000",
+    "lane_id": "1",
+    "duration_s": 115.69999999999999,
+    "gap_mean_m": 15.724184152117546,
+    "speed_mean_mps": 5.3390317026793435
+   },
+   {
+    "run_id": 18714,
+    "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|2046|clock1118847842000",
+    "leader_trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|2038|clock1118847842000",
+    "lane_id": "3",
+    "duration_s": 97.00000000000009,
+    "gap_mean_m": 5.564909567010309,
+    "speed_mean_mps": 6.447644931958765
+   },
+   {
+    "run_id": 26903,
+    "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|484|clock1118847842000",
+    "leader_trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|477|clock1118847842000",
+    "lane_id": "1",
+    "duration_s": 112.29999999999998,
+    "gap_mean_m": 8.277404473731076,
+    "speed_mean_mps": 5.587564829919858
+   }
+  ]
+ },
+ "metrics": [
+  "brockfeld_gap_error_pct",
+  "nrmse_gap",
+  "nrmse_speed",
+  "gap_bias_m",
+  "gap_mae_m",
+  "speed_bias_mps",
+  "speed_mae_mps",
+  "closing sign share",
+  "time headway",
+  "local-window and long-run splits",
+  "perturbation propagation (amplitude ratio, lag)"
+ ],
+ "budget": {
+  "sumo_process_invocations": 324,
+  "components": {
+   "configurations": 9,
+   "seeds": 3,
+   "pairs": 12
+  },
+  "note": "each pair replay is its own SUMO process; the count is declared and not wrapped as one run"
+ },
+ "stop_rules": [
+  "leader tracking deviation above tolerance",
+  "SHA mismatch",
+  "insertion not achieved within the declared wait",
+  "resource risk"
+ ],
+ "sensitivity_scope": "single-factor, bounded; no grid search and no joint adjustment"
+}

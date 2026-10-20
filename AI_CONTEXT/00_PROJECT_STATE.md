@@ -1,6 +1,28 @@
 # AAD Current State Snapshot
 
-## 2026-10-20 文献依据的行为诊断（当前）
+## 2026-10-20 方法扩展与行为诊断（当前）
+
+`RES-STAGE-0.5-METHOD-EXPANSION-V1`（AAD-0.5-METHOD-EXPANSION）：在**更正一处初始化误判**之后，用 324 次有界诊断运行把「`tau` 能不能修复错配」这件事在微观层面彻底否证，并给出可出资的替代方向。**Gate 不变**，结论等级 **Level 2 + Level 3**。
+
+**更正（必须先读）**：上一任务报告「48 个对×配置组合中 26 个被 Krauss 插入安全包络**拒绝**」是**错误结论**。源码与探针证明 SUMO 对失败的插入会在后续步**重试**（`MSLane::isInsertionSuccess()` 失败后车辆保持等待），旧重放实现只等 0.25 s 就中止并把延迟误记为拒绝。实测延迟 0.05–0.70 s（中位 ≈0.45 s）。已登记显式更正（`docs/STAGE_0_5_INITIALIZATION_FIDELITY.md`、`AI_CONTEXT/07_KNOWN_ISSUES.md`），旧报告正文按惯例不追溯改写。仍然成立的**弱化**结论：观测拥堵跟驰状态常落在冻结模型安全包络之外，表现为插入延迟。
+
+**初始化（P3）**：两条**原生**路线均通过保真度与控制链核验——`native`（等待并记录延迟、按后车自身时间对齐）与 `none`（官方 `--insertion-checks none`，观测时刻精确进入）；**控制实验证明 `none` 不改变后续动力学**（原生即可插入的车辆对在两条路线下轨迹逐字节相同）。后车全程无 `setSpeed` 覆盖。
+
+**覆盖与可辨识性（P2）**：5,815 个可靠连续跟驰段 / 186,529 s；近似稳定 40.4%/52.0%、加速 32.1%/24.6%、减速 27.5%/23.5%、低速 9.2%/25.3%、贴近跟驰 18.0%/31.8%；21–43% 的段含 ≥1 s 低速段 → **H1（缺行为阶段）大部分被反驳**，缺的是长连续段与完整排队循环。样本选择从「最长优先」改为**声明式车头时距分层**。`tau` 与 `minGap` 的效应在同一批车辆对上高度相关（r = **−0.944** / **+0.818**），**不可分别辨识**，与 Wang et al. (2022) 的实用不可辨识性结论方向一致；参数效应约为 seed 噪声的 **13.5 倍**。
+
+**响应诊断（P4，324 次独立 SUMO 运行，0 失败；12 对 × 9 配置 × 同一 seed 集 3 个）**：配对差异（vs `K_tau1.0`）——**`tau` 单调有害** +18.31（1.3）/ +40.70（1.6）/ +72.51 pp（2.0），**三个 seed 符号一致**；`minGap`→1.0 改善 **−7.31**、→5.0 恶化 **+29.75**；`sigma=0` 改善 **−6.34**；**IDM(T=1.0) 最好 −5.52**（18/18 对改善），增益集中在**长期窗 −8.09** 而局部窗仅 −0.09；IDM(T=1.6) 恶化 +26.50。独立 **Newell 原型**（非 SUMO 原生）τ=1.0 → 50.94%、τ=1.6 → 85.42%，与 Krauss(53.08)/IDM(47.56) 同量级且随 τ 增大而恶化。seed 波动中位 1.5–5.2 pp，随 `tau` 增大。
+
+**解读**：真实 US-101 车辆对的间距水平**低于**冻结 Krauss 的平衡式 `v·tau + minGap`，所以抬高平衡间距（增大 `tau` 或 `minGap`）必然变差，减小静止间距或去掉抖动才会改善。宏观反推的「有效 `tau`≈1.53–1.63 s」是**密度层面的等效量**，不是驾驶员的期望时距；把它当微观参数用，方向正好相反。**不同模型结构收敛到相近误差**（47.6/50.9/53.1%），说明剩余差距不是"选错模型"能一步解决的。
+
+**P5 宏观**：门控未开（无配置获得配对证据支持），**未执行**新宏观对照；RC1/RC2/RC3 原样保留。
+
+**文献**：Zotero 新增 3 条（Wang 2022 `4J5V4A3I`、Rhoades 2016 `4ABZDRVU`、Newell 2002 `DIVRKX7J`），集合 07/08/09 = 10/2/1；方法索引扩到 18 条并新增 `method_status_matrix`（Adopt/Adapt/Explore/Reject/Blocked，逐条记实施结果）。**附件上传失败**：本机 API `/items/<key>/file` 返回 `HTTP 400 MD5 hash not provided`（即使提供 `md5` 字段与 `Content-MD5`），已记录为待研究者用 Zotero 客户端挂接，并给出 4 个开放 PDF 链接；两个空附件条目已删除。
+
+第三窗口 0 行、holdout 0 次。Gate=`pending_simulation_sample`、`scientific_claim_eligible=false`、`reality_coverage_accepted=false`、`protocol_lock_allowed=false`、`stage_1_1_allowed=false`。δ/h 仍 `Tolerance Not Yet Justified`。
+
+报告 `docs/STAGE_0_5_METHOD_EXPANSION_SUMMARY.md`（综合）、`docs/STAGE_0_5_METHOD_EXPANSION_RESULTS.md`、`docs/STAGE_0_5_TRAJECTORY_COVERAGE_AND_IDENTIFIABILITY.md`、`docs/STAGE_0_5_INITIALIZATION_FIDELITY.md`；计划 `docs/plans/2026-10-20-method-expansion-baseline.md`；证据 `evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/`。
+
+## 2026-10-20 文献依据的行为诊断（历史）
 
 `RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1`（AAD-0.5-LIT-CAL）：把每个方法绑定到经原文核验的文献，并在**逐对微观层面**检验「有效 `tau` ≈1.6 s 能否修复错配」。**未新增科学结论支持，Gate 不变。**
 

@@ -175,3 +175,15 @@ RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2：B1.2前置阻断；v1冻结零尝试后�
 - 状态：`closed_evidence_behaviour_candidate_not_supported`。
 - 客观实验结果：A 阶段 16/16 非饱和规则向上游、起始 y=500–650 m，反向速度 2.0–8.3 m/s；0750 绝对 10 m/s 零模型超越率 0.999（不可区分），相对速度定义 0.000–0.142（显著）。B 阶段 24 对选中、23 对重放、43/48 组合有指标、26 次插入拒绝（44%）；配对 Brockfeld 差 +19.57 pp（CI [4.25, 35.51]）、间距偏差 20/20 变差（+5.62 m）、`NRMSE(speed)` +0.00；分层 <1.0 s +56.7 pp、1.0–1.5 s +63.8 pp、1.5–10 s −2.60 pp。
 - 输出目录：`code/outputs/formal/calibration/stage_0_5_method_diagnostics_v1/`；证据 `evidence/results/RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1/`。
+
+## 2026-10-20 AAD-0.5-METHOD-EXPANSION 方法扩展与行为诊断
+
+实验编号 `stage_0_5`（结果 `RES-STAGE-0.5-METHOD-EXPANSION-V1`）。目的：查明真实交通—SUMO 错配来自初始化、模型结构、参数还是随机性，并给出可实施的文献方法。
+
+- config / 变量：P2 只读覆盖矩阵（探索性阈值）；P3 两条初始化路线 × 12 对 × 1 seed = 24 次；P4 9 个单因素配置 × 12 对（分层选取）× 3 个共同 seed = **324 次独立 SUMO 进程**；P5 门控未开。
+- baseline：`K_tau1.0`（冻结 Stage 0.5 候选 vType）；同 seed 集跨配置以分离参数与随机性。
+- 数据集：两个已批准校准窗口 canonical 状态（SHA 绑定）；第三窗口/holdout 零读取。
+- 主要指标：Brockfeld Eq. 2、NRMSE(gap)/NRMSE(speed)（加速度留空并附理由）、间距/速度偏差与 MAE、局部窗与长期窗分列、扰动传播幅值比与滞后、seed 内波动、参数相关与信号/噪声比。
+- 状态：`closed_level2_partial_plus_level3_unidentifiable`。
+- 客观实验结果：`tau` 配对恶化 +18.31/+40.70/+72.51 pp（1.3/1.6/2.0），三 seed 同号；`minGap`→1.0 −7.31、→5.0 +29.75；`sigma=0` −6.34；IDM(T=1.0) −5.52（长期窗 −8.09、局部窗 −0.09）；IDM(T=1.6) +26.50；Newell 原型 50.94/85.42%。`tau` 与 `minGap` 效应 r=−0.944/+0.818；seed 波动中位 2.35 pp，信号/噪声 13.5。
+- 输出目录：`code/outputs/formal/calibration/stage_0_5_method_expansion_v1/`；证据 `evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/`。

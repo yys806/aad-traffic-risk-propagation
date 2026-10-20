@@ -190,12 +190,18 @@
     "docs/STAGE_0_5_LEADER_REPLAY_BEHAVIOUR_DIAGNOSTICS.md",
     "doc/literature-notes/STAGE_0_5_METHOD_EVIDENCE_MAP.md",
     "doc/literature-notes/stage_0_5_method_index.json",
-    "docs/plans/2026-10-20-stage-0-5-literature-calibration.md"
+    "docs/plans/2026-10-20-stage-0-5-literature-calibration.md",
+    "docs/STAGE_0_5_METHOD_EXPANSION_SUMMARY.md",
+    "docs/STAGE_0_5_METHOD_EXPANSION_RESULTS.md",
+    "docs/STAGE_0_5_TRAJECTORY_COVERAGE_AND_IDENTIFIABILITY.md",
+    "docs/STAGE_0_5_INITIALIZATION_FIDELITY.md",
+    "docs/plans/2026-10-20-method-expansion-baseline.md",
+    "doc/literature-notes/STAGE_0_5_ZOTERO_METHOD_EXPANSION_LOG.md"
   ],
   "current": {
     "active_experiment_id": "stage_0_5",
-    "active_task": "AAD-0.5-LIT-CAL complete: literature-verified state-definition sensitivity and null model, plus a 48-run leader-replay diagnostic; the tau=1.6 candidate does not fix the following behaviour, so Phase C is not executed and Stage 0.5 remains pending_simulation_sample",
-    "why_now": "The congested-state definition had no threshold or null-model robustness, and the macro-derived tau of about 1.53-1.63 s had never been tested at the individual-pair level. Phase A shows the wave direction and origin are robust across ten definitions (16/16 non-saturated rules up-stream from y=500-650 m) while the largest-component size under the absolute 10 m/s rule is not distinguishable from a permutation null in 0750. Phase B shows the candidate tau=1.6 increases the paired Brockfeld gap error by 19.6 pp (CI [4.3, 35.5]) and the gap bias for all 20 pairs, with clear stratification (much worse below 1.5 s observed time gap); 44% of observed initial states are rejected by SUMO's own Krauss insertion envelope. The macro tau is therefore an equilibrium equivalent, not a single micro parameter.",
+    "active_task": "AAD-0.5-METHOD-EXPANSION complete: behavioural coverage, two verified initialization routes (with an explicit correction of the earlier insertion claim), and 324 bounded structure/parameter/randomness diagnostic runs. Raising tau is monotonically harmful; minGap down and sigma=0 help; IDM(T=1.0) is best and gains only in the long run; Newell agrees in direction. Phase 5 stayed gated shut.",
+    "why_now": "The macro-derived effective tau had been falsified only on a truncated sample. After correcting the initialization handling the full stratified sample shows the same direction much more strongly (+18.3/+40.7/+72.5 pp for tau = 1.3/1.6/2.0, sign-consistent across three shared seeds), while reducing minGap (-7.3 pp), removing dawdling (-6.3 pp) and switching to IDM at T=1.0 (-5.5 pp, gains concentrated in the long run) all improve. tau and minGap effects are strongly correlated across pairs, so they are not separately identifiable here. Different model structures converge to similar error levels, so the remaining gap is not a model-choice problem that a bounded single-factor search can solve.",
     "next_decision_owner": "researcher",
     "portable_gate_paths": [
       "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",
@@ -522,7 +528,11 @@
         "code/scripts/write_stage_0_5_method_index.py",
         "code/scripts/zotero_add_stage05_method_refs.py",
         "code/tests/test_stage_0_5_jam_definition.py",
-        "code/tests/test_stage_0_5_leader_replay.py"
+        "code/tests/test_stage_0_5_leader_replay.py",
+        "code/src/riskprop/stage_0_5_newell_prototype.py",
+        "code/scripts/run_stage_0_5_method_expansion.py",
+        "code/scripts/zotero_add_method_expansion_refs.py",
+        "code/tests/test_stage_0_5_method_expansion.py"
       ],
       "entrypoints": [
         "code/scripts/prepare_stage_0_5_real_reference.py",
@@ -778,7 +788,8 @@
         "RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1",
         "RES-STAGE-0.5-FINAL-CLOSURE-V1",
         "RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1",
-        "RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1"
+        "RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1",
+        "RES-STAGE-0.5-METHOD-EXPANSION-V1"
       ],
       "core_metrics": [
         "formal_input_manifest",
@@ -872,9 +883,28 @@
         "third_window_rows_materialised",
         "wave_direction_robust_non_saturated_rules",
         "zotero_collections_created",
-        "zotero_items_created"
+        "zotero_items_created",
+        "coverage_runs",
+        "coverage_total_seconds",
+        "holdout_reads",
+        "initialization_routes_verified",
+        "insertion_route_control_identical_trajectories",
+        "macro_phase_executed",
+        "median_within_pair_seed_std_pp",
+        "native_insertion_delay_s",
+        "newell_prototype_brockfeld_pct",
+        "paired_brockfeld_pp_vs_baseline",
+        "paired_difference_sign_consistent_across_seeds",
+        "parameter_effect_correlation_tau_vs_minGap",
+        "phase_time_share_0750",
+        "phase_time_share_0805",
+        "response_runs_failed",
+        "response_sumo_runs_executed",
+        "signal_to_seed_noise_ratio",
+        "third_window_rows_materialised",
+        "zotero_items_added"
       ],
-      "current_conclusion": "AAD-0.5-LIT-CAL grounded every method in a full-text-verified source and tested the behaviour hypothesis at the individual-pair level. Phase A: the low-speed wave direction and origin are robust to ten state definitions (16/16 non-saturated rules grow upstream from y=500-650 m, backward speed 2.0-8.3 m/s), and the relative-speed definitions show spatial clustering beyond a per-time-step permutation null model in both windows; however the largest-component size under the absolute 10 m/s rule is NOT distinguishable from the null in 0750 (exceedance 0.999), so the earlier size claim is narrowed to the relative-speed definitions. Phase B replayed 24 leader-follower pairs (12 per window) through SUMO with TraCI-controlled leaders: leader tracking stayed within 0.013-0.112 m, but 26 of 48 pair-configuration initial states were rejected by SUMO's own Krauss insertion safety envelope (44%), which is itself a quantified behaviour-state mismatch concentrated in the congested window. tau=1.6 did not fix the following behaviour: paired Brockfeld gap error changed by +19.6 pp (95% CI [4.3, 35.5], 7 improved / 13 worsened) and the gap bias increased for 20/20 pairs (+5.6 m); NRMSE(speed) was essentially unchanged (+0.00). Stratified by observed time gap the candidate is much worse below 1.5 s (+56.7 and +63.8 pp) and neutral-to-slightly-better on speed in the 1.5-10 s stratum. The macro-derived 1.53-1.63 s is therefore narrowed to a congested-region equilibrium equivalent, not a usable single micro tau. Phase C was not executed under the pre-declared gate; RC1/RC2/RC3 are preserved unchanged. Gate stays pending_simulation_sample.",
+      "current_conclusion": "AAD-0.5-METHOD-EXPANSION executed the literature-verified method expansion and diagnosed the real-to-SUMO mismatch across initialization, structure, parameters and randomness. Phase P2: all behavioural phases are present in the trajectories (stationary 40/52 %, accelerating 32/25 %, decelerating 28/24 %, low-speed 9/25 %, close-following 18/32 % of following time over 5,815 runs and 186,529 s), so H1 is largely refuted; what is missing is long continuous runs and a full queue cycle. Sample selection was corrected from longest-first to declared time-gap stratification. Phase P3: the previous '26/48 insertions rejected' statement was wrong - SUMO retries a blocked insertion on later steps; the old implementation stopped waiting after 0.25 s. Two verified native routes now load the observed state without distortion (leader tracking 0.013-0.112 m), and a control experiment shows the insertion-check-free route leaves the subsequent dynamics bit-identical. The weaker claim survives: observed congested following states often lie outside the frozen Krauss safety envelope, visible as a 0.05-0.70 s insertion delay. Phase P4 (324 independent SUMO runs, 12 pairs x 9 configurations x 3 shared seeds, 0 failures): raising tau is monotonically harmful (+18.3/+40.7/+72.5 pp paired, sign-consistent across all seeds), reducing minGap helps (-7.3 pp) while raising it hurts (+29.8), switching off the dawdling term helps (-6.3), and IDM at T=1.0 is the best configuration (-5.5 pp, 18/18 pairs) with its gain concentrated in the long-run window (-8.1 pp) rather than the local response (-0.09 pp). The independent Newell prototype lands at the same level (50.9 %) and degrades with tau in the same way, so the direction does not depend on model structure. Seed variability is 1.5-5.2 pp and grows with tau; the parameter effect is about 13.5x that noise. tau and minGap effects are strongly correlated across pairs (r = -0.94 and +0.82), so they are not separately identifiable on this sample, consistent with the practical-non-identifiability result of Wang et al. (2022). Phase P5 was gated shut because no configuration earned pair-level support, so no new macro contrast was run and RC1/RC2/RC3 are preserved. Gate stays pending_simulation_sample.",
       "gate": {
         "status": "pending_simulation_sample",
         "portable_path": "evidence/results/RES-STAGE-0.5-REAL-REF-R2/audit.json"
@@ -3340,6 +3370,109 @@
         "docs/STAGE_0_5_LEADER_REPLAY_BEHAVIOUR_DIAGNOSTICS.md",
         "doc/literature-notes/STAGE_0_5_METHOD_EVIDENCE_MAP.md",
         "docs/plans/2026-10-20-stage-0-5-literature-calibration.md"
+      ],
+      "scientific_claim_eligible": false
+    },
+    {
+      "id": "RES-STAGE-0.5-METHOD-EXPANSION-V1",
+      "experiment_id": "stage_0_5",
+      "name": "Literature-grounded method expansion: behavioural coverage, initialization fidelity, and bounded structure/parameter/randomness diagnostics",
+      "status": "closed_level2_partial_plus_level3_unidentifiable",
+      "portable_evidence_paths": [
+        "evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/INIT_PLAN_SHA256",
+        "evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/NEWELL_PLAN_SHA256",
+        "evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/RESPONSE_PLAN_SHA256",
+        "evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/SHA256SUMS",
+        "evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/identifiability_summary.json",
+        "evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/init_plan.json",
+        "evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/init_routes.csv",
+        "evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/init_summary.json",
+        "evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/macro_decision.json",
+        "evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/manifest.json",
+        "evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/newell_metrics.csv",
+        "evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/newell_plan.json",
+        "evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/newell_summary.json",
+        "evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/response_metrics.csv",
+        "evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/response_plan.json",
+        "evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/response_summary.json",
+        "evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/run_metadata.json",
+        "evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/selection_manifest.json",
+        "evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/source_audit.json",
+        "evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/trajectory_coverage_summary.json"
+      ],
+      "local_artifact_paths": [
+        "code/outputs/formal/calibration/stage_0_5_method_expansion_v1"
+      ],
+      "code_version_source": "code/src/riskprop/stage_0_5_leader_replay.py; code/src/riskprop/stage_0_5_newell_prototype.py; code/scripts/run_stage_0_5_method_expansion.py; response_plan.json / RESPONSE_PLAN_SHA256",
+      "configuration_source": "response_plan.json, init_plan.json, newell_plan.json (each SHA-bound before its batch); doc/literature-notes/stage_0_5_method_index.json",
+      "data_version_source": "Two SHA-bound canonical calibration states 684a5f0b96dc4811... and 7b0ef830c97a981d...; third window and locked holdout not read",
+      "core_metrics": {
+        "coverage_runs": 5815,
+        "coverage_total_seconds": 186529,
+        "phase_time_share_0750": {
+          "stationary": 0.4039,
+          "accelerating": 0.3206,
+          "decelerating": 0.2754,
+          "low_speed": 0.0917,
+          "close_gap": 0.1795,
+          "closing": 0.3981
+        },
+        "phase_time_share_0805": {
+          "stationary": 0.5196,
+          "accelerating": 0.2455,
+          "decelerating": 0.235,
+          "low_speed": 0.2533,
+          "close_gap": 0.318,
+          "closing": 0.3436
+        },
+        "initialization_routes_verified": [
+          "native",
+          "none"
+        ],
+        "native_insertion_delay_s": {
+          "min": 0.05,
+          "max": 0.7,
+          "median": 0.45
+        },
+        "insertion_route_control_identical_trajectories": true,
+        "response_sumo_runs_executed": 324,
+        "response_runs_failed": 0,
+        "paired_brockfeld_pp_vs_baseline": {
+          "IDM_T1.0": -5.52,
+          "K_minGap1.0": -7.31,
+          "K_sigma0.0": -6.34,
+          "K_tau1.3": 18.31,
+          "K_minGap5.0": 29.75,
+          "K_tau1.6": 40.7,
+          "K_tau2.0": 72.51,
+          "IDM_T1.6": 26.5
+        },
+        "paired_difference_sign_consistent_across_seeds": true,
+        "median_within_pair_seed_std_pp": 2.3502942899131716,
+        "signal_to_seed_noise_ratio": 13.53450584553424,
+        "parameter_effect_correlation_tau_vs_minGap": {
+          "minGap1.0": -0.943588806309405,
+          "minGap5.0": 0.8177765903298402
+        },
+        "newell_prototype_brockfeld_pct": {
+          "tau1.0": 50.935,
+          "tau1.6": 85.415
+        },
+        "macro_phase_executed": false,
+        "zotero_items_added": 3,
+        "third_window_rows_materialised": 0,
+        "holdout_reads": 0
+      },
+      "current_conclusion": "AAD-0.5-METHOD-EXPANSION executed the literature-verified method expansion and diagnosed the real-to-SUMO mismatch across initialization, structure, parameters and randomness. Phase P2: all behavioural phases are present in the trajectories (stationary 40/52 %, accelerating 32/25 %, decelerating 28/24 %, low-speed 9/25 %, close-following 18/32 % of following time over 5,815 runs and 186,529 s), so H1 is largely refuted; what is missing is long continuous runs and a full queue cycle. Sample selection was corrected from longest-first to declared time-gap stratification. Phase P3: the previous '26/48 insertions rejected' statement was wrong - SUMO retries a blocked insertion on later steps; the old implementation stopped waiting after 0.25 s. Two verified native routes now load the observed state without distortion (leader tracking 0.013-0.112 m), and a control experiment shows the insertion-check-free route leaves the subsequent dynamics bit-identical. The weaker claim survives: observed congested following states often lie outside the frozen Krauss safety envelope, visible as a 0.05-0.70 s insertion delay. Phase P4 (324 independent SUMO runs, 12 pairs x 9 configurations x 3 shared seeds, 0 failures): raising tau is monotonically harmful (+18.3/+40.7/+72.5 pp paired, sign-consistent across all seeds), reducing minGap helps (-7.3 pp) while raising it hurts (+29.8), switching off the dawdling term helps (-6.3), and IDM at T=1.0 is the best configuration (-5.5 pp, 18/18 pairs) with its gain concentrated in the long-run window (-8.1 pp) rather than the local response (-0.09 pp). The independent Newell prototype lands at the same level (50.9 %) and degrades with tau in the same way, so the direction does not depend on model structure. Seed variability is 1.5-5.2 pp and grows with tau; the parameter effect is about 13.5x that noise. tau and minGap effects are strongly correlated across pairs (r = -0.94 and +0.82), so they are not separately identifiable on this sample, consistent with the practical-non-identifiability result of Wang et al. (2022). Phase P5 was gated shut because no configuration earned pair-level support, so no new macro contrast was run and RC1/RC2/RC3 are preserved. Gate stays pending_simulation_sample.",
+      "gate_status": "pending_simulation_sample",
+      "paper_locations": [
+        "docs/STAGE_0_5_METHOD_EXPANSION_SUMMARY.md",
+        "docs/STAGE_0_5_METHOD_EXPANSION_RESULTS.md",
+        "docs/STAGE_0_5_TRAJECTORY_COVERAGE_AND_IDENTIFIABILITY.md",
+        "docs/STAGE_0_5_INITIALIZATION_FIDELITY.md",
+        "docs/plans/2026-10-20-method-expansion-baseline.md",
+        "doc/literature-notes/STAGE_0_5_METHOD_EVIDENCE_MAP.md",
+        "doc/literature-notes/STAGE_0_5_ZOTERO_METHOD_EXPANSION_LOG.md"
       ],
       "scientific_claim_eligible": false
     }

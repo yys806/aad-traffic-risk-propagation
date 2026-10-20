@@ -272,3 +272,20 @@ B1.2前置接入工程阻断，主矩阵未冻结/未运行；报告`docs/STAGE_
 第三窗口读取 0 行、holdout 0 次。Gate 保持 `pending_simulation_sample`；`scientific_claim_eligible=false`。
 
 报告 `docs/STAGE_0_5_TRAFFIC_STATE_DEFINITION_SENSITIVITY.md`、`docs/STAGE_0_5_LEADER_REPLAY_BEHAVIOUR_DIAGNOSTICS.md`；计划 `docs/plans/2026-10-20-stage-0-5-literature-calibration.md`；证据 `evidence/results/RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1/`。
+
+
+## RES-STAGE-0.5-METHOD-EXPANSION-V1
+
+基于文献的方法扩展、轨迹可辨识性与真实交通—SUMO 错配诊断（AAD-0.5-METHOD-EXPANSION）。**无新增科学 Gate；结论等级为 Level 2（有效部分成果）+ Level 3（明确的不可识别）。**
+
+**P2 覆盖与可辨识性**：5,815 个可靠连续跟驰段、186,529 s。各行为阶段**都存在且占比不低**——0750/0805 的近似稳定跟驰占 40.4%/52.0%、加速 32.1%/24.6%、减速 27.5%/23.5%、低速（<5 m/s）9.2%/25.3%、贴近跟驰（<10 m）18.0%/31.8%；21–43% 的段含 ≥1 s 低速段。故 **H1（缺行为阶段）大部分被反驳**，缺的是长连续段与完整「排队形成—消散」循环。样本选择从「最长优先」改为**声明式车头时距分层**。可辨识性：`tau` 与 `minGap` 的效应在同一批车辆对上高度相关（r = **−0.944** / **+0.818**），二者在本样本上**不可分别辨识**；参数效应约为 seed 噪声的 **13.5 倍**。
+
+**P3 初始化（含对上一任务的显式更正）**：上一报告称「26/48 组合被 Krauss 插入安全包络**拒绝**」是**错误**——SUMO 对失败的插入会在后续步**重试**；旧实现只等待 0.25 s 就中止。源码审计确认 `MSLane::isInsertionSuccess()` 与可关闭的 `insertionChecks` 参数、以及 `setSpeed` 的持久覆盖语义。两条**原生**路线均通过保真度核验：`native`（等待并记录 0.05–0.70 s 延迟后对齐）与 `none`（`--insertion-checks none`，观测时刻精确进入）；**控制实验证明 `none` 不改变后续动力学**（原生即可插入的车辆对在两条路线下轨迹逐字节相同）。仍然成立的弱化结论：观测拥堵跟驰状态常落在冻结模型安全包络之外，表现为插入延迟。
+
+**P4 结构/参数/随机性（324 次独立 SUMO 运行，0 失败）**：12 对 × 9 配置 × 同一 seed 集（3 个）。配对差异（vs `K_tau1.0`）：**`tau` 单调有害** +18.3（1.3）/ +40.7（1.6）/ +72.5 pp（2.0），三个 seed 符号一致；`minGap`→1.0 改善 **−7.31**、→5.0 恶化 **+29.75**；`sigma=0` 改善 **−6.34**；**IDM(T=1.0) 最好 −5.52**（18/18 对改善），且增益集中在**长期窗**（−8.09）而非局部窗（−0.09）；IDM(T=1.6) 恶化 +26.50。独立 **Newell 原型**（非 SUMO 原生）τ=1.0 → 50.94%、τ=1.6 → 85.42%，与 Krauss/IDM 同量级且方向一致。seed 波动中位 1.5–5.2 pp，随 `tau` 增大。
+
+**P5 宏观**：门控未开（无配置获得配对证据支持），**未执行**新宏观对照，RC1/RC2/RC3 原样保留。
+
+第三窗口 0 行、holdout 0 次。Gate 保持 `pending_simulation_sample`；`scientific_claim_eligible=false`。
+
+报告 `docs/STAGE_0_5_METHOD_EXPANSION_SUMMARY.md`、`docs/STAGE_0_5_METHOD_EXPANSION_RESULTS.md`、`docs/STAGE_0_5_TRAJECTORY_COVERAGE_AND_IDENTIFIABILITY.md`、`docs/STAGE_0_5_INITIALIZATION_FIDELITY.md`；文献 `doc/literature-notes/STAGE_0_5_METHOD_EVIDENCE_MAP.md`、`STAGE_0_5_ZOTERO_METHOD_EXPANSION_LOG.md`；计划 `docs/plans/2026-10-20-method-expansion-baseline.md`；证据 `evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/`。

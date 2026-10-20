@@ -184,3 +184,18 @@ P1：历史83是开始到结束而非确认；全源543/732不能作局部率目
 7. **加速度指标留空**（差分派生量噪声未验证），故不能与 Schrader 的 `NRMSE(s,v,a)` 数值直接比较。
 8. **样本量**：每窗口 12 对，配对区间只反映来源内抽样波动，不是科学容差。
 9. 日期勘误已显式登记；根工作区 `doc/literature-notes/` 五项既有删除仍未处理。
+
+## 2026-10-20 AAD-0.5-METHOD-EXPANSION 结论更正与未解决问题
+
+**更正（已生效，旧正文不追溯改写）**：`RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1` 报告中的「26/48 组合被 SUMO Krauss 插入安全包络**拒绝**（44%）」是**实现缺陷造成的误判**。SUMO 对失败的插入在后续步重试（`MSLane::isInsertionSuccess()` 失败后车辆保持等待），旧重放只等待 0.25 s 即中止。实测原生延迟 0.05–0.70 s（中位 ≈0.45 s）。证据与更正记录见 `docs/STAGE_0_5_INITIALIZATION_FIDELITY.md`（Conflict Record 表）与 `code/outputs/.../stage_0_5_method_expansion_v1/init_routes.csv`。仍然成立的弱化结论：观测拥堵跟驰状态常落在冻结模型安全包络之外（表现为延迟）。
+
+**未解决**：
+1. **异质参数不可检验（Blocked）**：用同一轨迹构造其自身参数再评价该轨迹属循环拟合；按车辆对划分构造/评价集需要 ≥60 对量级的样本，当前 12 对不够。
+2. **宏观机制仍未判定**：P5 门控未开（无配置获得配对支持），需求历史/下游容量/滞回仍未检验。
+3. **真实自由流速度与真实静止间距不可辨识**：只有方向信息，无绝对量。
+4. **Brockfeld 量级差距未解释**：本项目 45–53% 对原文 12–17%；差异来自自然交通（换道、异质驾驶员）与前车由外部轨迹驱动，尚未逐项分解。
+5. **`minGap`→1.0 的改善余量仅约 3× seed 噪声**，不能作为参数结论，只能作为方向提示。
+6. **Zotero 附件上传失败**（本机 API `HTTP 400 MD5 hash not provided`）：4 份开放 PDF 已下载到本地 `local_research/litpdf/`（不提交 Git），需研究者用客户端挂接；链接已记录在 `STAGE_0_5_ZOTERO_METHOD_EXPANSION_LOG.md`。
+7. **11 篇文献仅元数据核验**（Kesting 2008、Punzo 2012、Krauss 1997、Krauß 1998、Sharma 2019、Kolekar 2020、Rhoades 2016、Newell 2002 等），未据其采用任何公式。
+8. **加速度指标仍留空**（差分噪声未验证）。
+9. `doc/literature-notes/` 五项既有删除仍未处理。

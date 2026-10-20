@@ -103,6 +103,20 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
             (f"code/outputs/formal/calibration/stage_0_5_method_diagnostics_v1/{name}", name)
         )
 
+    # AAD-0.5-METHOD-EXPANSION: coverage, initialization, response, identifiability.
+    pairs.setdefault("RES-STAGE-0.5-METHOD-EXPANSION-V1", [])
+    for name in (
+        "INIT_PLAN_SHA256", "NEWELL_PLAN_SHA256", "RESPONSE_PLAN_SHA256", "SHA256SUMS",
+        "identifiability_summary.json", "init_plan.json", "init_routes.csv", "init_summary.json",
+        "macro_decision.json", "manifest.json", "newell_metrics.csv", "newell_plan.json",
+        "newell_summary.json", "response_metrics.csv", "response_plan.json", "response_summary.json",
+        "run_metadata.json", "selection_manifest.json", "source_audit.json",
+        "trajectory_coverage_summary.json",
+    ):
+        pairs["RES-STAGE-0.5-METHOD-EXPANSION-V1"].append(
+            (f"code/outputs/formal/calibration/stage_0_5_method_expansion_v1/{name}", name)
+        )
+
     stage_0_1_root = "code/outputs/formal/stage_0_1/e00_real_sumo_20260907_primary_v3"
     for cell in ("s0c0", "s0c1", "s1c0", "s1c1"):
         for name in (
@@ -684,7 +698,8 @@ def _validate_source(source: Path) -> None:
         "candidate_PLAN_SHA256","reference_REFERENCE_PLAN_SHA256",
         "boundary_flow_30s.csv","fundamental_diagram_30s.csv","occupancy_30s.csv",
         "sectional_minimum_300s.csv","space_time_60s.csv","jam_definition_rules.csv",
-        "REPLAY_PLAN_SHA256"}
+        "REPLAY_PLAN_SHA256","INIT_PLAN_SHA256","RESPONSE_PLAN_SHA256","NEWELL_PLAN_SHA256",
+        "init_routes.csv","newell_metrics.csv","response_metrics.csv"}
     if source.suffix.lower() not in {".json", ".md", ".txt", ".sha256"} and source.name not in aggregate_names:
         raise ValueError(f"unsupported evidence file type: {source}")
 

@@ -120,3 +120,12 @@ code/src/riskprop/stage_0_5_positive_near_zero.py（classify_edge/admission/chec
 - 测试：`code/tests/test_stage_0_5_jam_definition.py`（8）、`code/tests/test_stage_0_5_leader_replay.py`（10）。
 - 文献：`doc/literature-notes/STAGE_0_5_METHOD_EVIDENCE_MAP.md`、`stage_0_5_method_index.json`、`stage_0_5_method_references.ris`。
 - 证据导出：`export_project_evidence.py` 增补 `RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1` 映射、`REPLAY_PLAN_SHA256` 与 `jam_definition_rules.csv` 白名单。
+
+## 2026-10-20 方法扩展模块
+
+- `code/src/riskprop/stage_0_5_leader_replay.py`（扩展）：`CONFIGURATIONS`（9 个单因素配置）与 `build_vtype`/`assert_single_factor`（多因素改动 fail-closed）；`slice_record`（局部/长期窗）；`brake_episodes`/`response_metrics`（扰动传播：幅值比与滞后，项目自定义定义）；`stratified_selection`（声明式车头时距分层）；`replay_pair` 新增 `insertion_checks`（`native`/`none`）、`max_insert_wait_s`、`shared_network`（每对只建一次网），并记录插入延迟与起始索引。
+- `code/src/riskprop/stage_0_5_newell_prototype.py`：独立**非 SUMO 原生**的 Newell 简化跟驰原型（自带明确离散化），`simulate_newell`/`newell_record`，可直接复用 SUMO 侧指标。
+- 入口 `code/scripts/run_stage_0_5_method_expansion.py`：`--phases coverage|init|response|newell|identify|macro`；每批先写冻结计划与 SHA（`response_plan.json`/`init_plan.json`/`newell_plan.json`）；产出 `trajectory_coverage_summary.json`（小型便携版，完整矩阵 4.9 MB 留本地）、`identifiability_summary.json`、`macro_decision.json`。
+- 入口 `code/scripts/zotero_add_method_expansion_refs.py`：Zotero 本地 API 建条目；附件上传因 `HTTP 400 MD5 hash not provided` 失败，已记录。
+- 文献：`doc/literature-notes/STAGE_0_5_METHOD_EVIDENCE_MAP.md`（附录 A）、`stage_0_5_method_index.json`（`entries` + `method_status_matrix`）、`STAGE_0_5_ZOTERO_METHOD_EXPANSION_LOG.md`。
+- 测试：`code/tests/test_stage_0_5_method_expansion.py`（10）。
