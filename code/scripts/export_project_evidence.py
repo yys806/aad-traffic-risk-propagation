@@ -611,7 +611,7 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         'reference_tests_tests_access_audit.json','report.md','researcher_decision_package.json',
         'sim_FC1_P2.json','sim_FC1_state_support_blocks.json','sim_FC1_traffic_metrics.json',
         'sim_FC2_P2.json','sim_FC2_state_support_blocks.json','sim_FC2_traffic_metrics.json',
-        'stage_0_6_handoff.json','state_support_verdict.json','manifest.json','SHA256SUMS',
+        'stage_0_6_handoff.json','state_support_verdict.json','test_record.json','manifest.json','SHA256SUMS',
     ):
         pairs.setdefault('RES-STAGE-0.5-FINAL-CLOSURE-V1', []).append(
             (f'code/outputs/formal/calibration/stage_0_5_final_closure_package/summary/{name}', name)

@@ -1,0 +1,147 @@
+{
+  "result_id": "RES-STAGE-0.5-FINAL-CLOSURE-V1",
+  "recorded": "2026-10-20",
+  "targeted_controlled_tests": {
+    "command": "python -m pytest tests/test_stage_0_5_final_closure.py tests/test_stage_0_5_closure_supervisor.py tests/test_stage_0_5_final_closure_evidence.py tests/test_stage_0_5_lf_guards.py tests/test_stage_0_5_lf_protocol.py tests/test_stage_0_5_lf_transport.py tests/test_stage_0_5_lf_protocol_evidence.py -q",
+    "passed": 82,
+    "failed": 0,
+    "per_file": {
+      "tests/test_stage_0_5_final_closure.py": 13,
+      "tests/test_stage_0_5_closure_supervisor.py": 4,
+      "tests/test_stage_0_5_final_closure_evidence.py": 13,
+      "tests/test_stage_0_5_lf_guards.py": 7,
+      "tests/test_stage_0_5_lf_protocol.py": 19,
+      "tests/test_stage_0_5_lf_transport.py": 13,
+      "tests/test_stage_0_5_lf_protocol_evidence.py": 13
+    },
+    "what_they_cover": [
+      "hand-computed D1 expected values independent of the new implementation (onset versus confirmation attribution, no left cut restart, original incoming-link break semantics, complete-follower partition equivalence, real string lane_id storage, zero-exposure guard)",
+      "run-plan guards: construction budget, reserved independent-repeat seeds, resource caps, unapproved-scope refusal",
+      "finite process-tree supervisor: real subprocess timeout, memory cap, output cap, exit failure, no retry, controller hash guard, D1 partition/schema/semantics",
+      "portable evidence verification including 10 resealed promotion attempts that must be rejected"
+    ],
+    "capsule_freeze_time": {
+      "closure_entry_tests": {
+        "tests": 52,
+        "failures": 0,
+        "errors": 0,
+        "seconds": 5.042,
+        "source": "code/outputs/formal/calibration/stage_0_5_final_closure_v4/tests_1792479380913882500.xml"
+      },
+      "candidate_execution_guard": {
+        "tests": 17,
+        "failures": 0,
+        "errors": 0,
+        "seconds": 4.804,
+        "scope": [
+          "real subprocess timeout",
+          "memory",
+          "output",
+          "exit failure",
+          "no retry",
+          "controller SHA",
+          "D1 partition/schema/semantics"
+        ]
+      }
+    }
+  },
+  "candidate_run_tests": {
+    "software_smoke_records": 4,
+    "zero_simulation_steps": true,
+    "new_trajectory_runs": 0,
+    "note": "Empty-network preflight smoke tests are registered separately and are not counted as trajectory runs or research evidence."
+  },
+  "full_pure_git_suite": {
+    "command": "python -m pytest -q (in a pure Git clone of the committed tree, no local datasets)",
+    "passed": 882,
+    "skipped": 14,
+    "failed": 0,
+    "wall_s": 134.9,
+    "note": "The 14 skips are missing local sealed data or a dedicated capsule preflight; a skip never counts as a scientific pass."
+  },
+  "pure_git_checks": {
+    "strict_docs_require_clean": "PROJECT_DOCS_OK",
+    "portable_evidence_export": "results=47 files=718",
+    "portable_evidence_verify": "PORTABLE_EVIDENCE_OK",
+    "repo_bound_closure_verify": "passed",
+    "compileall": "code/src/riskprop, code/scripts, code/tests - ok"
+  },
+  "root_workspace_limits": {
+    "strict_docs_root": "affected by five pre-existing literature-index deletions that this task must not stage, restore or modify",
+    "root_full_pytest": "not run; the full suite runs only in a data-free pure Git clone",
+    "root_clean_check": "not applicable until those pre-existing deletions are resolved outside this task"
+  },
+  "skips": [
+    {
+      "test": "tests/test_see_v2x_reaudit.py:75",
+      "reason": "raw sample not present in pure-clone mode"
+    },
+    {
+      "test": "tests/test_simulation_real_coverage.py:377",
+      "reason": "sealed Stage 0.3 canonical pNEUMA input unavailable in this clone"
+    },
+    {
+      "test": "tests/test_stage_0_2_task_2_5_1_targeted_validation.py:55",
+      "reason": "requires sealed local Task 2.5.1 CSV/PDF package"
+    },
+    {
+      "test": "tests/test_stage_0_2_task_2_5_2_key_difference_cases.py:9",
+      "reason": "requires sealed local Task 2.5.2 CSV/PDF package"
+    },
+    {
+      "test": "tests/test_stage_0_2_task_2_5_2_key_difference_cases.py:15",
+      "reason": "requires sealed local Task 2.5.2 CSV/PDF package"
+    },
+    {
+      "test": "tests/test_stage_0_2_task_2_5_2_key_difference_cases.py:23",
+      "reason": "requires sealed local Task 2.5.2 CSV/PDF package"
+    },
+    {
+      "test": "tests/test_stage_0_2_task_2_5_2_key_difference_cases.py:28",
+      "reason": "requires sealed local Task 2.5.2 CSV/PDF package"
+    },
+    {
+      "test": "tests/test_stage_0_2_task_2_5_threshold_validation.py:10",
+      "reason": "requires sealed local Task 2.5 outputs excluded from portable Git evidence"
+    },
+    {
+      "test": "tests/test_stage_0_2_task_2_5_threshold_validation.py:17",
+      "reason": "requires sealed local Task 2.5 outputs excluded from portable Git evidence"
+    },
+    {
+      "test": "tests/test_stage_0_2_task_2_5_threshold_validation.py:24",
+      "reason": "requires sealed local Task 2.5 outputs excluded from portable Git evidence"
+    },
+    {
+      "test": "tests/test_stage_0_2_task_2_5_threshold_validation.py:31",
+      "reason": "requires sealed local Task 2.5 outputs excluded from portable Git evidence"
+    },
+    {
+      "test": "tests/test_stage_0_2_task_2_5_threshold_validation.py:38",
+      "reason": "requires sealed local Task 2.5 outputs excluded from portable Git evidence"
+    },
+    {
+      "test": "tests/test_stage_0_2_task_2_5_threshold_validation.py:44",
+      "reason": "requires sealed local Task 2.5 outputs excluded from portable Git evidence"
+    },
+    {
+      "test": "tests/test_stage_0_5_boundary_bottleneck.py:72",
+      "reason": "bootstrap contract is exercised by the dedicated -S capsule preflight"
+    }
+  ],
+  "remote_clone_recheck": {
+    "sha256_commit": "recorded in the local post_commit_verification.json after push",
+    "strict_docs_require_clean": "PROJECT_DOCS_OK",
+    "portable_evidence_verify": "PORTABLE_EVIDENCE_OK",
+    "repo_bound_closure_verify": "passed",
+    "targeted_tests": "30 passed"
+  },
+  "what_these_checks_do_not_prove": [
+    "A passing test run is not a scientific acceptance and does not upgrade the Stage 0.5 Gate.",
+    "Python audit hooks cover controlled entrypoints only; they are not an OS or native access boundary.",
+    "Skips caused by absent local sealed data are not passes.",
+    "The 1e-6 m exactness, conservation zero and 100% exact-branch rate describe engineering correctness inside the verified fresh/no-stop domain, not simulator-to-reality agreement."
+  ],
+  "scientific_thresholds_approved": false,
+  "gate": "pending_simulation_sample"
+}
