@@ -1,6 +1,6 @@
 {
   "schema_version": "aad.project-registry.v2",
-  "last_verified": "2026-10-19",
+  "last_verified": "2026-10-20",
   "project": {
     "name": "AAD",
     "research_topic": "Connected-vehicle communication adoption and traffic-risk propagation",
@@ -164,12 +164,21 @@
     "code/tests/test_stage_0_5_lf_guards.py",
     "code/tests/test_stage_0_5_lf_evidence.py",
     "docs/STAGE_0_5_LOCAL_FOLLOWING_EXPLORATION.md",
-    "docs/plans/2026-10-19-local-following-exploration.md"
+    "docs/plans/2026-10-19-local-following-exploration.md",
+    "docs/STAGE_0_5_LOCAL_FOLLOWING_PROTOCOL_DESIGN.md",
+    "docs/plans/2026-10-20-lf-protocol-consolidation.md",
+    "code/src/riskprop/stage_0_5_lf_protocol.py",
+    "code/scripts/design_stage_0_5_lf_protocol.py",
+    "code/scripts/package_stage_0_5_lf_protocol.py",
+    "code/tests/test_stage_0_5_lf_protocol.py",
+    "code/tests/test_stage_0_5_lf_protocol_evidence.py",
+    "code/scripts/prepare_stage_0_5_lf_protocol_summaries.py",
+    "code/tests/test_stage_0_5_lf_protocol_preparation.py"
   ],
   "current": {
     "active_experiment_id": "stage_0_5",
-    "active_task": "AAD-0.5-LF-EXPLORATION engineering closure; formal local P2 attribution / initialization / calibration protocol pending; no ABCD authorization",
-    "why_now": "方案A局部探索已独立执行3/8次（120s同步、120s批处理、300s延长），剩5；接入额度不复用。175679行/28非标签字段及延长前缀完全相等，worker283.31→68.63s约4.13倍，无缓存/观测降频。固定原尺度C main1[50,250)m局部可测；LF3均速2.964/density81.558/低速77.03%，1222个TTC<2点中1203在前120s。全网核心266工程事件/42404.3veh-s；局部归属起始86/确认87/全程83，正式局部P2/暴露Unresolved、率Not Calculated。14.35m间隙离线分解，C回溢EI不变；正式Gate/历史不变。",
+    "active_task": "AAD-0.5-LF-PROTOCOL-CONSOLIDATION candidate complete; awaiting researcher protocol approval; no calibration or ABCD",
+    "why_now": "266个原核心工程事件独立重建、逐成员核对；历史86/87/83重现，开始至确认全在域为86，差异4件。共同候选分母14636.2veh-s，局部正式P2仍Unresolved/Not Calculated。相位周期5/10/20%敏感性均到300s才完成，后评价0s；局部平台而全网/pending增长。五层必要目标、需求可识别性和科学误差/精度候选已整合为D1–D5待决；无新增SUMO，累计3/8剩5。C回溢EI与全部历史、Gate/Lock/I-II状态不变。",
     "next_decision_owner": "researcher",
     "portable_gate_paths": [
       "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",
@@ -188,7 +197,8 @@
       "evidence/results/RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1/audit.json",
       "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/audit.json",
       "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/audit.json",
-      "evidence/results/RES-STAGE-0.5-LOCAL-FOLLOWING-EXPLORATION-V1/audit.json"
+      "evidence/results/RES-STAGE-0.5-LOCAL-FOLLOWING-EXPLORATION-V1/audit.json",
+      "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/audit.json"
     ],
     "local_gate_paths": [
       "code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r4/scientific_gate_report.json",
@@ -205,7 +215,8 @@
       "code/outputs/formal/calibration/stage_0_5_near_zero_integration_v1/summary/audit.json",
       "code/outputs/formal/calibration/stage_0_5_positive_near_zero_v1/summary/audit.json",
       "code/outputs/formal/calibration/stage_0_5_cd_integration_v2/summary/audit.json",
-      "code/outputs/formal/calibration/stage_0_5_local_following_v1/summary/audit.json"
+      "code/outputs/formal/calibration/stage_0_5_local_following_v1/summary/audit.json",
+      "code/outputs/formal/calibration/stage_0_5_lf_protocol_v1/summary/audit.json"
     ]
   },
   "experiments": [
@@ -474,7 +485,10 @@
         "code/scripts/run_stage_0_5_local_following.py",
         "code/scripts/finalize_stage_0_5_local_following.py",
         "code/scripts/verify_stage_0_5_local_following.py",
-        "code/scripts/audit_stage_0_5_lf_extension.py"
+        "code/scripts/audit_stage_0_5_lf_extension.py",
+        "code/src/riskprop/stage_0_5_lf_protocol.py",
+        "code/scripts/design_stage_0_5_lf_protocol.py",
+        "code/scripts/package_stage_0_5_lf_protocol.py"
       ],
       "entrypoints": [
         "code/scripts/prepare_stage_0_5_real_reference.py",
@@ -504,7 +518,10 @@
         "code/scripts/verify_stage_0_5_near_zero_evidence.py",
         "code/scripts/run_stage_0_5_positive_near_zero.py",
         "code/scripts/finalize_stage_0_5_positive_near_zero.py",
-        "code/scripts/verify_stage_0_5_positive_near_zero.py"
+        "code/scripts/verify_stage_0_5_positive_near_zero.py",
+        "code/scripts/design_stage_0_5_lf_protocol.py",
+        "code/scripts/package_stage_0_5_lf_protocol.py",
+        "code/scripts/prepare_stage_0_5_lf_protocol_summaries.py"
       ],
       "test_paths": [
         "code/tests/test_simulation_real_coverage.py",
@@ -529,7 +546,10 @@
         "code/tests/test_stage_0_5_local_following.py",
         "code/tests/test_stage_0_5_lf_transport.py",
         "code/tests/test_stage_0_5_lf_guards.py",
-        "code/tests/test_stage_0_5_lf_evidence.py"
+        "code/tests/test_stage_0_5_lf_evidence.py",
+        "code/tests/test_stage_0_5_lf_protocol.py",
+        "code/tests/test_stage_0_5_lf_protocol_evidence.py",
+        "code/tests/test_stage_0_5_lf_protocol_preparation.py"
       ],
       "configuration": "R2 real reference plus two no_message_baseline generic-highway engineering fixtures (baseline_mixed_demand, measurement_probe_queue_stop); US-101 primary, Lankershim auxiliary entry-only, pNEUMA urban kinematics entry-only; all network/demand/vType/behaviour/time settings are engineering_fixture_only",
       "parameters": {
@@ -666,7 +686,8 @@
         "RES-STAGE-0.5-NEAR-ZERO-INTEGRATION-V1",
         "RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1",
         "RES-STAGE-0.5-CD-INTEGRATION-V1",
-        "RES-STAGE-0.5-LOCAL-FOLLOWING-EXPLORATION-V1"
+        "RES-STAGE-0.5-LOCAL-FOLLOWING-EXPLORATION-V1",
+        "RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1"
       ],
       "core_metrics": [
         "formal_input_manifest",
@@ -702,9 +723,23 @@
         "mainline_flow_lane_space_denominator",
         "shared_density_strata",
         "source_time_coverage",
-        "density_scaled_engineering_cost"
+        "density_scaled_engineering_cost",
+        "lf_protocol_result_id",
+        "lf_protocol_status",
+        "lf_protocol_targeted_runs",
+        "lf_protocol_remaining_runs",
+        "lf_protocol_onset_events",
+        "lf_protocol_confirmation_events",
+        "lf_protocol_through_confirmation_events",
+        "lf_protocol_historical_through_end_events",
+        "lf_protocol_candidate_local_evaluable_s",
+        "lf_protocol_scientific_warmup_approved",
+        "lf_protocol_tolerance_approved",
+        "lf_protocol_formal_local_P2",
+        "lf_protocol_actual_validation_window_reads",
+        "lf_protocol_formal_calibration_started"
       ],
-      "current_conclusion": "方案A局部探索已独立执行3/8次（120s同步、120s批处理、300s延长），剩5；接入额度不复用。175679行/28非标签字段及延长前缀完全相等，worker283.31→68.63s约4.13倍，无缓存/观测降频。固定原尺度C main1[50,250)m局部可测；LF3均速2.964/density81.558/低速77.03%，1222个TTC<2点中1203在前120s。全网核心266工程事件/42404.3veh-s；局部归属起始86/确认87/全程83，正式局部P2/暴露Unresolved、率Not Calculated。14.35m间隙离线分解，C回溢EI不变；正式Gate/历史不变。",
+      "current_conclusion": "266个原核心工程事件独立重建、逐成员核对；历史86/87/83重现，开始至确认全在域为86，差异4件。共同候选分母14636.2veh-s，局部正式P2仍Unresolved/Not Calculated。相位周期5/10/20%敏感性均到300s才完成，后评价0s；局部平台而全网/pending增长。五层必要目标、需求可识别性和科学误差/精度候选已整合为D1–D5待决；无新增SUMO，累计3/8剩5。C回溢EI与全部历史、Gate/Lock/I-II状态不变。",
       "gate": {
         "status": "pending_simulation_sample",
         "portable_path": "evidence/results/RES-STAGE-0.5-REAL-REF-R2/audit.json"
@@ -2790,6 +2825,80 @@
       "gate_status": "pending_simulation_sample",
       "paper_locations": [
         "docs/STAGE_0_5_LOCAL_FOLLOWING_EXPLORATION.md"
+      ],
+      "scientific_claim_eligible": false
+    },
+    {
+      "id": "RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1",
+      "experiment_id": "stage_0_5",
+      "name": "局部风险测量与现实校准候选协议整合",
+      "purpose": "Candidate protocol, event/exposure audit, initialization and identifiability; no calibration",
+      "date": "2026-10-20",
+      "status": "candidate_complete_awaiting_researcher_approval",
+      "portable_evidence_paths": [
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/analyse_access_audit.json",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/analyse_execution.json",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/approved_reference_support.json",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/attribution_summary.json",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/audit.json",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/conditional_cluster_uncertainty.json",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/demand_identifiability_matrix.json",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/denominator_audit.json",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/event_attribution_audit.csv",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/execution_ledger.json",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/experiment_plan.json",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/git_source_bindings.json",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/historical_status_preservation.json",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/independent_recomputation.json",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/isolation_preflight.json",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/issue_discovery_report.json",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/local_measurement_candidate.json",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/manifest.json",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/method_sources.json",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/PLAN_SHA256",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/preparation.json",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/provenance.json",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/report.md",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/researcher_decision_matrix.json",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/scientific_admission_table.json",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/SHA256SUMS",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/source_manifest.json",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/temporal_boundary_audit.json",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/test_record.json",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/tests_access_audit.json",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/tests_execution.json",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/traffic_cycle_audit.json",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/traffic_state_1s.csv",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/traffic_state_30s.csv",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/warmup_candidate_analysis.json",
+        "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/window_sensitivity.json"
+      ],
+      "local_artifact_paths": [
+        "code/outputs/formal/calibration/stage_0_5_lf_protocol_v1"
+      ],
+      "code_version_source": "code/src/riskprop/stage_0_5_lf_protocol.py; code/scripts/design_stage_0_5_lf_protocol.py; code/scripts/package_stage_0_5_lf_protocol.py; code/tests/test_stage_0_5_lf_protocol.py; code/tests/test_stage_0_5_lf_protocol_evidence.py; provenance.json; code/scripts/prepare_stage_0_5_lf_protocol_summaries.py; code/tests/test_stage_0_5_lf_protocol_preparation.py",
+      "configuration_source": "Frozen offline experiment_plan.json/PLAN_SHA256; proposed local_measurement_candidate/scientific_admission_table; no approved scientific parameters",
+      "data_version_source": "Sealed LF3 engineering outputs plus approved two-window B1/A/A+ lightweight summaries only; zero new real raw/validation/holdout reads",
+      "core_metrics": {
+        "lf_protocol_result_id": "RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1",
+        "lf_protocol_status": "Candidate Complete / Awaiting Researcher Decision",
+        "lf_protocol_targeted_runs": 0,
+        "lf_protocol_remaining_runs": 5,
+        "lf_protocol_onset_events": 86,
+        "lf_protocol_confirmation_events": 87,
+        "lf_protocol_through_confirmation_events": 86,
+        "lf_protocol_historical_through_end_events": 83,
+        "lf_protocol_candidate_local_evaluable_s": 14636.2,
+        "lf_protocol_scientific_warmup_approved": false,
+        "lf_protocol_tolerance_approved": false,
+        "lf_protocol_formal_local_P2": "Unresolved",
+        "lf_protocol_actual_validation_window_reads": 0,
+        "lf_protocol_formal_calibration_started": false
+      },
+      "current_conclusion": "266个原核心工程事件独立重建、逐成员核对；历史86/87/83重现，开始至确认全在域为86，差异4件。共同候选分母14636.2veh-s，局部正式P2仍Unresolved/Not Calculated。相位周期5/10/20%敏感性均到300s才完成，后评价0s；局部平台而全网/pending增长。五层必要目标、需求可识别性和科学误差/精度候选已整合为D1–D5待决；无新增SUMO，累计3/8剩5。C回溢EI与全部历史、Gate/Lock/I-II状态不变。",
+      "gate_status": "pending_simulation_sample",
+      "paper_locations": [
+        "docs/STAGE_0_5_LOCAL_FOLLOWING_PROTOCOL_DESIGN.md"
       ],
       "scientific_claim_eligible": false
     }

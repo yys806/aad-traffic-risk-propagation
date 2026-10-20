@@ -143,3 +143,9 @@ B1.2-N正近零非决策步清零未在3个冻结微型运行中出现，C/D共�
 ## 2026-10-19 LF局部探索
 
 LF新发现：旧通用SUMO source-frame adapter会把外来identity_break/observation_gap清false，合成旧1事件/新0；仅新LF防御接口保留，原生历史无污染证据。先裁局部会丢前车/事件上下文，已防止。实际300s局部事件候选86/87/83不同，正式归属/暴露仍未决；1222个风险点1203在前120s，不能事后选暖机。600s仅预测268/642/1929s情景，未运行/未保证资源内。间隙1.001+8.12+5.23393m，keep-clear因果仍未观测；C回溢EI不影响已授权局部探索。
+
+## 2026-10-20 LF候选协议整合
+
+P1：历史83是开始到结束而非确认；全源543/732不能作局部率目标；局部平台不等于全网稳态；no-leader真实missing/SUMO not_applicable需按共同语义比较。19边界/新便携反例保护候选分母/时间窗/批准状态；正式局部真实P2仍待同域重算，300s规则确认后无评价支持，δ/h仍未定。历史AGENTS/五项文献删除不动。报告 `docs/STAGE_0_5_LOCAL_FOLLOWING_PROTOCOL_DESIGN.md`；计划 `docs/plans/2026-10-20-lf-protocol-consolidation.md`；证据 `evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/`。
+
+收口补充：prepare_stage_0_5_lf_protocol_summaries.py封装v1已记录的冻结前A+两摘要补入步骤，3合成准备测试验证；冻结分析未重跑。有限周期精确平衡非统计稳态必要/充分条件，v1辅助标签不能作正式准入，候选协议已澄清。

@@ -1,0 +1,35 @@
+{
+  "result_id": "RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1",
+  "base_commit": "d700f158496545ed76dfd7aba9956737926a8ca6",
+  "plan_sha256": "658c18f5706d1fef13c9a813f117d9b4b5a1b85c982bfea4b0230980325666d4",
+  "analysis_script": {
+    "path": "code/scripts/design_stage_0_5_lf_protocol.py",
+    "sha256": "f7a02e86bd961b9c58eb6a0dc83803ae5d2a6e40edfd5b247adcd23b4052e85a"
+  },
+  "analysis_module": {
+    "path": "code/src/riskprop/stage_0_5_lf_protocol.py",
+    "sha256": "2d3c669ef69d9824aeee7254748aae3283a1bcbb9f13e0a483e23f67064668fd"
+  },
+  "candidate_metadata_script": {
+    "path": "code/scripts/package_stage_0_5_lf_protocol.py",
+    "sha256": "2b8c3bfc171c6b279cf7cb4df29bbd1be3a877bd5eeeedb5b8cad4af2120b74f"
+  },
+  "full_raw_state_exported": false,
+  "only_existing_approved_real_summaries_used": true,
+  "editorial_review_after_generation": {
+    "date": "2026-10-20",
+    "files": [
+      "warmup_candidate_analysis.json",
+      "scientific_admission_table.json",
+      "issue_discovery_report.json",
+      "report.md"
+    ],
+    "scope": "Clarify exact finite-window balance heuristic; no computed observation, frozen program, threshold, count, exposure or approval changed."
+  },
+  "preparation_replay_added_after_analysis": {
+    "path": "code/scripts/prepare_stage_0_5_lf_protocol_summaries.py",
+    "sha256": "79952d033a2f2c0467b11189e2522a8586cb8eaec4d94fb6ed05a37eea793527",
+    "original_v1_execution": false,
+    "role": "Reproduce recorded pre-freeze A+ supplement in NEW capsule; three synthetic tests passed; no new real or engineering state read"
+  }
+}

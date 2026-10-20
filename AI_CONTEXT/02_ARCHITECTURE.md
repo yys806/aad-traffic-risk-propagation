@@ -107,3 +107,7 @@ B1.2新增独立b12_observation/network/runtime/worker：全边.05s分层审计�
 ## 2026-10-19 LF局部探索
 
 独立local_following量测接口保留全网leader上下文再标局部归域；formal_frame_preserving_flags防止旧SUMO通用适配器擦除外来break标志，Stage0.2核心不变。lf_transport只读GET批处理，每车每步仍11项；lf_runtime独立冻结/预算/配对门槛，lf_worker沿用数值和计数。
+
+## 2026-10-20 LF候选协议整合
+
+新增独立候选分析模块stage_0_5_lf_protocol与design/package入口。正式Stage0.2/SUMO/LF核心不改；分析从封存全网点态和事件开始，不能先裁局部重提事件。报告 `docs/STAGE_0_5_LOCAL_FOLLOWING_PROTOCOL_DESIGN.md`；计划 `docs/plans/2026-10-20-lf-protocol-consolidation.md`；证据 `evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/`。

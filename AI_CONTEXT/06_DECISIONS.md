@@ -198,3 +198,7 @@ Agreed：研究者仅批准B1.2-P最多5个≤30s数值探针，允许预先冻�
 ## 2026-10-19 LF局部探索
 
 Agreed：研究者本轮方案A允许固定局部状态/跟驰/测量探索，不要求完整入口回溢资格；沿用剩8次定向额度，本轮3次剩5，旧2微型额度不复用。未批准新科学容差、暖机/评价窗口、需求/校准目标、局部正式P2归属、ABCD或后续阶段。Verified：受限只读批处理观测相同/4.13倍worker加速；不是新的科学参数批准。
+
+## 2026-10-20 LF候选协议整合
+
+Agreed：本次获准协议设计、现有证据整合及必要有限诊断；既有方案A与通用路网优先不变。Verified：266事件及86/87/83/新86与分母、周期事实。Proposed/Awaiting Researcher Decision：开始归属+共同可评价边分母、局部周期/动态目标、两窗口现实条件、科学margin/精度h与后续执行选项。没有新科学参数或正式测量政策获批；普通剩余额度内工程诊断仍可自主冻结，无需重复请示。报告 `docs/STAGE_0_5_LOCAL_FOLLOWING_PROTOCOL_DESIGN.md`；计划 `docs/plans/2026-10-20-lf-protocol-consolidation.md`；证据 `evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/`。

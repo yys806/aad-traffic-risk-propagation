@@ -573,6 +573,21 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         pairs.setdefault("RES-STAGE-0.5-LOCAL-FOLLOWING-EXPLORATION-V1", []).append(
             (f"code/outputs/formal/calibration/stage_0_5_local_following_v1/summary/{name}", name)
         )
+    for name in (
+        'PLAN_SHA256','SHA256SUMS','analyse_access_audit.json','analyse_execution.json',
+        'approved_reference_support.json','attribution_summary.json','audit.json',
+        'conditional_cluster_uncertainty.json','demand_identifiability_matrix.json','denominator_audit.json',
+        'event_attribution_audit.csv','execution_ledger.json','experiment_plan.json','git_source_bindings.json',
+        'historical_status_preservation.json','independent_recomputation.json','isolation_preflight.json',
+        'issue_discovery_report.json','local_measurement_candidate.json','manifest.json','method_sources.json',
+        'preparation.json','provenance.json','report.md','researcher_decision_matrix.json',
+        'scientific_admission_table.json','source_manifest.json','temporal_boundary_audit.json','test_record.json',
+        'tests_access_audit.json','tests_execution.json','traffic_cycle_audit.json','traffic_state_1s.csv',
+        'traffic_state_30s.csv','warmup_candidate_analysis.json','window_sensitivity.json',
+    ):
+        pairs.setdefault('RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1', []).append(
+            (f'code/outputs/formal/calibration/stage_0_5_lf_protocol_v1/summary/{name}',name)
+        )
     return pairs
 
 
@@ -593,7 +608,8 @@ def _validate_source(source: Path) -> None:
     if "sealed_sampling_key" in lowered:
         raise ValueError(f"refusing sealed sampling key: {source}")
     # B0 exports only these aggregate tables, never arbitrary trajectory CSVs.
-    aggregate_names={"SHA256SUMS","PLAN_SHA256","run_metrics.csv","time_bins_60s.csv","time_series_5s.csv"}
+    aggregate_names={"SHA256SUMS","PLAN_SHA256","run_metrics.csv","time_bins_60s.csv","time_series_5s.csv",
+        "event_attribution_audit.csv","traffic_state_1s.csv","traffic_state_30s.csv"}
     if source.suffix.lower() not in {".json", ".md", ".txt", ".sha256"} and source.name not in aggregate_names:
         raise ValueError(f"unsupported evidence file type: {source}")
 

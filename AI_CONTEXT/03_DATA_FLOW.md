@@ -117,3 +117,7 @@ SHA绑定既有两校准窗口便携摘要及A+车型→独立B1.2胶囊→142�
 ## 2026-10-19 LF局部探索
 
 19具名官方源/已安装客户端指纹+封存原尺度C输入→204预检→SHA冻结→120同步/120批处理全字段比较→成本门槛→300局部采集→.1s全网leader/质量→正式核心工程事件/暴露和独立复算→局部归属候选。旧CD C只离线间隙，不重跑/不作比较。原始状态/完整事件本地，Git43轻量文件与封装校验。
+
+## 2026-10-20 LF候选协议整合
+
+LF3点态/事件/交通帧和两个批准校准窗口轻量摘要→SHA/角色白名单→Python -S离线胶囊→逐事件/分母/时间窗审计→五层必要目标与候选协议。无新真实轨迹/第三窗口/holdout；所有新数值只候选，不回写历史。报告 `docs/STAGE_0_5_LOCAL_FOLLOWING_PROTOCOL_DESIGN.md`；计划 `docs/plans/2026-10-20-lf-protocol-consolidation.md`；证据 `evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/`。

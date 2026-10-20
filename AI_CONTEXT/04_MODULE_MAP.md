@@ -89,3 +89,9 @@ code/src/riskprop/stage_0_5_positive_near_zero.py（classify_edge/admission/chec
 ## 2026-10-19 LF局部探索
 
 新增stage_0_5_local_following.py（decorate/formal_frame_preserving_flags/analyse）、stage_0_5_lf_transport.py（只读协议/VehicleReader）、stage_0_5_lf_runtime.py（准备/冻结/配对/预算）、stage_0_5_lf_worker.py。run/finalize/verify_stage_0_5_local_following.py、audit_stage_0_5_lf_extension.py；4个LF测试模块。旧正式核心/旧适配器/CD/P/N代码不改。
+
+## 2026-10-20 LF候选协议整合
+
+候选模块code/src/riskprop/stage_0_5_lf_protocol.py；执行design_stage_0_5_lf_protocol.py仅prepare/tests/freeze/inspect/analyse，无SUMO运行命令；package_stage_0_5_lf_protocol.py负责轻量协议与便携语义复核；新protocol和protocol_evidence测试。报告 `docs/STAGE_0_5_LOCAL_FOLLOWING_PROTOCOL_DESIGN.md`；计划 `docs/plans/2026-10-20-lf-protocol-consolidation.md`；证据 `evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/`。
+
+收口补充：prepare_stage_0_5_lf_protocol_summaries.py封装v1已记录的冻结前A+两摘要补入步骤，3合成准备测试验证；冻结分析未重跑。有限周期精确平衡非统计稳态必要/充分条件，v1辅助标签不能作正式准入，候选协议已澄清。

@@ -45,3 +45,7 @@ C/D有限接入新增独立cd_observation/cd_runtime/cd_worker，沿用N数值�
 ## 2026-10-19 LF局部探索
 
 局部跟驰入口与只读批处理新增独立LF模块；全域前车和事件上下文保留，局部仅归域候选，正式P2政策不选。详细调用链、协议源和验证见STAGE_0_5_LOCAL_FOLLOWING_EXPLORATION.md。
+
+## 2026-10-20 LF候选协议整合
+
+独立LF候选协议离线模块和胶囊新增；正式测量链未修改，归属/窗口/margin均待科研审批。报告 `docs/STAGE_0_5_LOCAL_FOLLOWING_PROTOCOL_DESIGN.md`；计划 `docs/plans/2026-10-20-lf-protocol-consolidation.md`；证据 `evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/`。

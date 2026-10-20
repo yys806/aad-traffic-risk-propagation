@@ -1,0 +1,95 @@
+{
+  "P0_found": 0,
+  "issues": [
+    {
+      "id": "LFPC-P1-01",
+      "severity": "P1",
+      "fact": "旧fully_inside83定义为开始至结束，本任务辅助为开始至确认；新值86。",
+      "files": [
+        "stage_0_5_local_following.py::analyse",
+        "stage_0_5_lf_protocol.py::event_audit"
+      ],
+      "impact": "误把83重命名会错误排除3个确认后驶出事件，并增加未来依赖。",
+      "validation": "266事件CSV和4差异；独立边界用例。",
+      "resolution": "本轮独立候选明确两定义，历史83不改。",
+      "researcher_decision": "D1，仅正式口径待批"
+    },
+    {
+      "id": "LFPC-P1-02",
+      "severity": "P1",
+      "fact": "参考543/732事件和111425.9/133505.6s暴露为全来源；局部720/660s支持不同。",
+      "files": [
+        "approved_reference_support.json",
+        "candidate_protocol.json historical A"
+      ],
+      "impact": "21.15局部候选与17.54/19.74全源率接近不能判现实覆盖；局部真实P2仍缺同域分子。",
+      "validation": "读取两窗口封存summary、A+空间切片支持交叉核对。",
+      "resolution": "五层表阻断该比较，未读全源事件表。",
+      "researcher_decision": "D1/D3：同域重算及目标"
+    },
+    {
+      "id": "LFPC-P1-03",
+      "severity": "P1",
+      "fact": "本地三个晚期周期近平台但网络及pending仍增长，300s确认暖机候选后剩余评价0。",
+      "files": [
+        "traffic_cycle_audit.json",
+        "warmup_candidate_analysis.json"
+      ],
+      "impact": "不能用局部平台或风险早期集中宣称全网稳态/任意暖机。",
+      "validation": "6000帧守恒/周期剖面/三档冻结漂移敏感性；P2不参与暖机判断。",
+      "resolution": "候选规则与作用域分开，正式窗口留空。",
+      "researcher_decision": "D2"
+    },
+    {
+      "id": "LFPC-P1-04",
+      "severity": "P1",
+      "fact": "真实no_reported_leader词汇missing；SUMO无观测前车not_applicable且reliable=False。",
+      "files": [
+        "stage_0_5_sumo.py::compute_sumo_measurements",
+        "approved_reference_support.json"
+      ],
+      "impact": "直接比较missing词频会伪造SUMO观测质量优势；无前车均不进入可靠跟驰暴露。",
+      "validation": "原始标签/质量依据、合成分母反例和共同语义交叉表。",
+      "resolution": "协议要求按原因映射，未改历史标签/核心规则。",
+      "researcher_decision": "采用共同语义审查方法，不批准任意缺失率上限"
+    },
+    {
+      "id": "LFPC-P2-01",
+      "severity": "P2",
+      "fact": "窗口[0,300)点数比旧含300s采集少67；旧A候选曾称车型不可识别，A+已补足观测车型。",
+      "files": [
+        "temporal_boundary_audit.json",
+        "demand_identifiability_matrix.json"
+      ],
+      "impact": "混用窗口/历史版本会误报结果或可识别性。",
+      "validation": "端点/时间窗测试；已批准A+摘要和生成代码范围审计。",
+      "resolution": "明确点/边积分差别与当前观测车型事实；旧证据不改。",
+      "researcher_decision": false
+    },
+    {
+      "id": "LFPC-P2-02",
+      "severity": "P2",
+      "fact": "Frozen v1 exact_balance_is_only_necessary_not_sufficient label is misleading. Exact finite-cycle balance is NEITHER necessary NOR sufficient for statistical stationarity.",
+      "files": [
+        "stage_0_5_lf_protocol.py::cycle_diagnostics"
+      ],
+      "impact": "Finite-count heuristic could be mistaken for a necessary stationarity condition.",
+      "validation": "Primitive finite-window count arithmetic; stochastic stationary systems can have nonzero sample balance, exact balance cannot establish stationarity.",
+      "resolution": "Candidate protocol explicitly rejects formal use of this frozen v1 helper label; review clarification appended while original output/code retained.",
+      "remaining_scope": "New formal stationarity method requires researcher-approved drift/uncertainty rules, no scientific rule selected here."
+    },
+    {
+      "id": "LFPC-P2-03",
+      "severity": "P2",
+      "fact": "Frozen v1 source manifest includes a pre-freeze A+ supplement beyond the initial prepare command.",
+      "impact": "Reconstruction using initial prepare alone would omit two required summaries and fail closed.",
+      "files": [
+        "code/scripts/prepare_stage_0_5_lf_protocol_summaries.py",
+        "code/tests/test_stage_0_5_lf_protocol_preparation.py"
+      ],
+      "validation": "Three independent synthetic preparation cases: complete step, frozen/duplicate refusal, source SHA failure.",
+      "resolution": "Added explicit tested supplement entry; documented two-step preparation. No original analysis/frozen source was modified or rerun."
+    }
+  ],
+  "absence_of_findings_not_proof_of_universal_correctness": true
+}

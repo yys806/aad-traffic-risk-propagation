@@ -1,0 +1,55 @@
+{
+  "windows": [
+    {
+      "start_s": 0.0,
+      "end_s": 300.0,
+      "onset_spatial_and_onset_time_count": 86,
+      "confirmation_spatial_same_onset_time_count": 87,
+      "confirmation_spatial_confirmation_time_count": 87,
+      "crosses_window_start_ids": [],
+      "crosses_window_end_ids": []
+    },
+    {
+      "start_s": 60.0,
+      "end_s": 300.0,
+      "onset_spatial_and_onset_time_count": 63,
+      "confirmation_spatial_same_onset_time_count": 64,
+      "confirmation_spatial_confirmation_time_count": 64,
+      "crosses_window_start_ids": [],
+      "crosses_window_end_ids": []
+    },
+    {
+      "start_s": 120.0,
+      "end_s": 300.0,
+      "onset_spatial_and_onset_time_count": 1,
+      "confirmation_spatial_same_onset_time_count": 1,
+      "confirmation_spatial_confirmation_time_count": 1,
+      "crosses_window_start_ids": [],
+      "crosses_window_end_ids": []
+    },
+    {
+      "start_s": 180.0,
+      "end_s": 300.0,
+      "onset_spatial_and_onset_time_count": 1,
+      "confirmation_spatial_same_onset_time_count": 1,
+      "confirmation_spatial_confirmation_time_count": 1,
+      "crosses_window_start_ids": [],
+      "crosses_window_end_ids": []
+    },
+    {
+      "start_s": 240.0,
+      "end_s": 300.0,
+      "onset_spatial_and_onset_time_count": 1,
+      "confirmation_spatial_same_onset_time_count": 1,
+      "confirmation_spatial_confirmation_time_count": 1,
+      "crosses_window_start_ids": [],
+      "crosses_window_end_ids": []
+    }
+  ],
+  "reporting_recommendation": "Hold onset time W fixed when comparing three spatial policies; confirmation-time W reported as separate temporal sensitivity",
+  "point_support_difference": "Historical acquisition includes t=300 (146825 local points); [0,300) point sensitivity has146758, excluding67 endpoint rows. Full eligible .1s links ending300 are included in integrated [0,300) exposure; point endpoints have zero measure.",
+  "required_future_context_s": 0.2,
+  "event_end_future_not_required_for_onset_or_confirmation_policies": true,
+  "left_context": "Process full observed sequence before filtering W; do not relabel an ongoing risk as a new local onset at W start. Unknown preceding context stays censored.",
+  "near_end_unconfirmed_candidates": "Do not treat absence of confirmation beyond available context as zero events; classify unconfirmed/right-censored separately. No extrapolation."
+}

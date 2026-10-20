@@ -1,0 +1,94 @@
+{
+  "result_id": "RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1",
+  "status": "Proposed protocol / frozen offline analysis only",
+  "version": 1,
+  "frozen_files": {
+    "inputs/departures.json": "1dba43b5c99735abd6dfa5d7321913968408f226572c1cf4bed1719594f3de88",
+    "inputs/exits.json": "ac821f9f96881dd6d8902670b116436797a22df67fcca21a0cb0f8beb1884100",
+    "inputs/historical_status.json": "3f74cfae16720eb7bb626bef03c2ec4b20f57bca9ca298aa5ad6c6eb34390a5f",
+    "inputs/LF_plan.json": "68ca9c3b187ae1de3d9a8e59af2afc220b2edcee55c707f99500be11d0f1c34e",
+    "inputs/LF_results.json": "eb2bb48d5664681822f1539081dfdcaa118403518e5e01d5e8d862f2cca8ab0b",
+    "inputs/local_following_analysis.json": "67890508d04c5643e15e71f8ed9f738c496ba6080fb07f2d63fd4b80f3bd0f61",
+    "inputs/measured_points.parquet": "7d6ba69bba1d1df3caf86718cdf6ab01a4d899f7ef5c0580c439bee5ee7b24a9",
+    "inputs/queue_snapshots.json": "ea01190f548863437a43f54c423c2ef7613e50977a6a805b1ef37a684f83c3d3",
+    "inputs/real_Aplus_diagnostics.json": "bc9de47b3026b640d22a2d086ae445b6ce5b0049e0af75f09874860a6e031f03",
+    "inputs/real_Aplus_strata.json": "fbdd5fb8641acbd4cfdba7936151ea0477e0eb12bea1e1b19fc7cd015da090e9",
+    "inputs/real_local_reference.json": "1d1c42a3a472b0e9f655532288839cf33a49ae33e1e24f208a7734d78ffd6a81",
+    "inputs/real_source_reference.json": "e8aaaf63167b72b1aaca0f27602ec11141af37df7f3d38288abf6e019679d1a0",
+    "inputs/runtime_settings.json": "0cbe31d5d0ffe8c5d06ac7656982636acc3f7193cdcfac65b40d66c2c6249b41",
+    "inputs/run_config.json": "c3d04d45809cd9183a27dd72c5b5ff53b68e65869fd32a34b7be7cf16f4b1aab",
+    "inputs/summary.json": "42eec35c33835338ebc3705445ecd869ddaaed268ce3739f904fd958a0bc6740",
+    "inputs/traffic_frames.csv": "96e119203943a2b4ecf678bb939f3afb15a699368e36c4933e141d9723660f50",
+    "runtime/code/pytest.ini": "182226de0b57ff186b0f0b2e1ccde0dcdfcb630952b34a7f09f83d1989ce8adf",
+    "runtime/code/.pytest_cache/.gitignore": "e7c6bb30148cf667606dcd63e7ca77acaa3cfb0c8303bf09e6419e1e1669dc6d",
+    "runtime/code/.pytest_cache/CACHEDIR.TAG": "37dc88ef9a0abeddbe81053a6dd8fdfb13afb613045ea1eb4a5c815a74a3bde4",
+    "runtime/code/.pytest_cache/README.md": "420e808d79a6c25d3cda0af33bc4782314a14949866682c68ce8149e89b66b70",
+    "runtime/code/tests/test_stage_0_5_lf_protocol.py": "a4af68ec92158fffb7775fd15fd750d8bd9532ea9673e76bf533beabf290812f",
+    "runtime/code/src/riskprop/stage_0_5_b1_isolation.py": "27523530f4ca2db2aa6b48768466a0769a9077848ede531869121d72bbebabfe",
+    "runtime/code/src/riskprop/stage_0_5_lf_protocol.py": "2d3c669ef69d9824aeee7254748aae3283a1bcbb9f13e0a483e23f67064668fd",
+    "runtime/code/src/riskprop/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runtime/code/.pytest_cache/v/cache/nodeids": "94df5009f0fd2282ce4e5cfca29e1bee3f6078c3397d9e03d4c8e115b61aca74",
+    "source_manifest.json": "7c394daad9056147d75d76da2b9a78f63fe50c8884560de4e5a53811a55576f9",
+    "isolation_policy.json": "002e6ce9562e8ec804eeec992a2b6b701aaf9d092618a78d6dc571a8d0347919",
+    "protocol_entry.py": "f7a02e86bd961b9c58eb6a0dc83803ae5d2a6e40edfd5b247adcd23b4052e85a"
+  },
+  "new_SUMO_runs": 0,
+  "targeted_budget_remaining": 5,
+  "analysis_scope": "LF3 only; no repeated same-seed pooling; two approved real summaries",
+  "windows_s": [
+    [
+      0.0,
+      300.0
+    ],
+    [
+      60.0,
+      300.0
+    ],
+    [
+      120.0,
+      300.0
+    ],
+    [
+      180.0,
+      300.0
+    ],
+    [
+      240.0,
+      300.0
+    ]
+  ],
+  "cycle_s": 60.0,
+  "bin_s": [
+    30.0,
+    60.0
+  ],
+  "candidate_cycle_relative_margins": [
+    0.05,
+    0.1,
+    0.2
+  ],
+  "candidate_only": true,
+  "scientific_tolerance": null,
+  "scientific_warmup_s": null,
+  "cluster_resamples": 2000,
+  "statistical_seed": 20261020,
+  "P2_threshold_s": 2.0,
+  "minimum_span_s": 0.2,
+  "recorded_step_s": 0.1,
+  "exact_numerical_tolerance_m": 1e-06,
+  "offline_budget": {
+    "worker_wall_s": 900,
+    "tree_RSS_bytes": 3221225472,
+    "output_bytes": 1073741824
+  },
+  "stop": [
+    "source/plan SHA mismatch",
+    "unknown roles/identity/clock/quality",
+    "event/reference disagreement",
+    "resource excess"
+  ],
+  "no_new_traffic_reason": "Local policy and scientific margins require approval; existing 5 signal cycles answer descriptive questions. Another <=300s seed does not establish unique demand, margins or steady state; preserve remaining budget.",
+  "ABCD_allowed": false,
+  "calibration_allowed": false,
+  "scientific_claim_eligible": false
+}

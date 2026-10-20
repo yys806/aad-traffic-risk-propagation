@@ -1,0 +1,926 @@
+{
+  "windows": [
+    {
+      "window": "us101__0750_0805",
+      "local_space": "mainline1-5 /150<=Local_Y<350m /1.0lane-km",
+      "interior_coverage_s": 720.0,
+      "mean_speed_mps": 10.506118382234925,
+      "mean_density_veh_km_lane": 43.54361111111111,
+      "eligible_slices": 12,
+      "interior_metric_summaries": {
+        "acceleration_mps2": {
+          "clusters": 1790,
+          "distribution": {
+            "mean": 0.06702616301664359,
+            "n": 313514,
+            "quantiles": {
+              "0": -3.41376,
+              "0.01": -3.41376,
+              "0.05": -2.6670000000000003,
+              "0.1": -1.780032,
+              "0.5": 0.0,
+              "0.9": 1.917192,
+              "0.95": 2.8133040000000005,
+              "0.99": 3.41376,
+              "1": 3.41376
+            },
+            "sd": 1.404252097172564
+          },
+          "mean_cluster_ci95": [
+            0.05768567375430679,
+            0.07607803170476964
+          ],
+          "model_tolerance": "Tolerance Not Yet Justified",
+          "resamples": 2000,
+          "seed": 20261018
+        },
+        "closing_speed_mps": {
+          "clusters": 1790,
+          "distribution": {
+            "mean": -0.17137596169868013,
+            "n": 313514,
+            "quantiles": {
+              "0": -19.90344,
+              "0.01": -4.437888000000001,
+              "0.05": -2.7706319999999995,
+              "0.1": -1.9354800000000005,
+              "0.5": -0.030480000000000434,
+              "0.9": 1.578864,
+              "0.95": 2.325624000000001,
+              "0.99": 3.916680000000001,
+              "1": 18.37944
+            },
+            "sd": 1.6039870327293217
+          },
+          "mean_cluster_ci95": [
+            -0.2042494351602354,
+            -0.13812451481664278
+          ],
+          "model_tolerance": "Tolerance Not Yet Justified",
+          "resamples": 2000,
+          "seed": 20261018
+        },
+        "net_gap_m": {
+          "clusters": 1789,
+          "distribution": {
+            "mean": 18.853805489945927,
+            "n": 312908,
+            "quantiles": {
+              "0": 0.0030480000000006058,
+              "0.01": 3.0327599999999997,
+              "0.05": 5.733288,
+              "0.1": 7.623048,
+              "0.5": 16.172688,
+              "0.9": 32.586168,
+              "0.95": 40.032432,
+              "0.99": 60.088272,
+              "1": 172.827696
+            },
+            "sd": 11.896959488262567
+          },
+          "mean_cluster_ci95": [
+            18.370812336684953,
+            19.367650342874082
+          ],
+          "model_tolerance": "Tolerance Not Yet Justified",
+          "resamples": 2000,
+          "seed": 20261018
+        },
+        "speed_mps": {
+          "clusters": 1790,
+          "distribution": {
+            "mean": 10.506118382234925,
+            "n": 313514,
+            "quantiles": {
+              "0": 0.0,
+              "0.01": 0.0,
+              "0.05": 2.752344,
+              "0.1": 5.3340000000000005,
+              "0.5": 11.074908,
+              "0.9": 14.328648,
+              "0.95": 15.24,
+              "0.99": 16.764,
+              "1": 29.04744
+            },
+            "sd": 3.638561856472785
+          },
+          "mean_cluster_ci95": [
+            10.348702125291483,
+            10.661679934135552
+          ],
+          "model_tolerance": "Tolerance Not Yet Justified",
+          "resamples": 2000,
+          "seed": 20261018
+        }
+      },
+      "crossings": [
+        {
+          "all_lane_veh_h": 8350.0,
+          "backward_crossings": 0,
+          "crossing_lane_change_edges": 2,
+          "duration_s": 720.0,
+          "forward_crossings": 1670,
+          "lane_assignment": "downstream endpoint; lane-changing edges separately flagged",
+          "lane_counts": {
+            "1": 314,
+            "2": 345,
+            "3": 338,
+            "4": 339,
+            "5": 332,
+            "7": 2
+          },
+          "mainline_crossings": 1668,
+          "mainline_veh_h": 8340.0,
+          "mainline_veh_h_lane": 1668.0,
+          "plane_m": 150.0
+        },
+        {
+          "all_lane_veh_h": 8700.0,
+          "backward_crossings": 0,
+          "crossing_lane_change_edges": 1,
+          "duration_s": 720.0,
+          "forward_crossings": 1740,
+          "lane_assignment": "downstream endpoint; lane-changing edges separately flagged",
+          "lane_counts": {
+            "1": 310,
+            "2": 337,
+            "3": 337,
+            "4": 328,
+            "5": 336,
+            "6": 92
+          },
+          "mainline_crossings": 1648,
+          "mainline_veh_h": 8240.0,
+          "mainline_veh_h_lane": 1648.0,
+          "plane_m": 300.0
+        },
+        {
+          "all_lane_veh_h": 8355.0,
+          "backward_crossings": 0,
+          "crossing_lane_change_edges": 1,
+          "duration_s": 720.0,
+          "forward_crossings": 1671,
+          "lane_assignment": "downstream endpoint; lane-changing edges separately flagged",
+          "lane_counts": {
+            "1": 309,
+            "2": 351,
+            "3": 340,
+            "4": 329,
+            "5": 342
+          },
+          "mainline_crossings": 1671,
+          "mainline_veh_h": 8355.0,
+          "mainline_veh_h_lane": 1671.0,
+          "plane_m": 450.0
+        }
+      ],
+      "local_reliable_following_s": 31111.0,
+      "candidate_local_evaluable_following_s": 31051.6,
+      "formal_local_event_count": "Not Calculated",
+      "formal_local_rate": "Not Calculated",
+      "full_source_P2": {
+        "duration_s": {
+          "max": 2.8000000000000114,
+          "median": 0.5,
+          "p90": 1.4000000000000283
+        },
+        "event_rate_per_vehicle_hour": 17.543497517184065,
+        "events": 543,
+        "exit_reason_counts": {
+          "leader_switch_unknown_risk": 76,
+          "measurement_unavailable_unknown_risk": 93,
+          "observed_threshold_exit": 374
+        },
+        "rule": "stage_0_2.formal_risk_measurement.v2 / P2 (TTC < 2.0 s, span >= 0.2 s)",
+        "ttc_min_s": {
+          "median": 1.2756680731364278,
+          "min": 0.0016304347826087027,
+          "p05": 0.03218236055014392
+        },
+        "unique_followers_with_events": 353,
+        "unique_pairs_with_events": 416
+      },
+      "full_source_exposure": {
+        "not_evaluable_following_exposure_s": 187.4,
+        "p2_evaluable_following_edges": 1114259,
+        "p2_evaluable_following_exposure_s": 111425.90000000001,
+        "reliable_closing_exposure_s": 43198.4,
+        "reliable_following_edges": 1116133,
+        "reliable_following_exposure_s": 111613.3
+      },
+      "full_source_observability": {
+        "diagnostic_clock_missing_rows": 0,
+        "identity_defect_rows": 59381,
+        "measurement_status_counts": {
+          "invalid": 1912,
+          "missing": 59381,
+          "not_applicable": 655171,
+          "valid": 464134
+        },
+        "measurement_status_shares": {
+          "invalid": 0.0016195182441440695,
+          "missing": 0.050297391660836285,
+          "not_applicable": 0.5549484244425282,
+          "valid": 0.3931346656524914
+        },
+        "missing_reason_counts": {
+          "": 464134,
+          "no_reported_leader": 59381,
+          "non_closing": 655171,
+          "non_positive_gap": 1912
+        }
+      },
+      "full_source_kinematics": {
+        "acceleration_mps2": {
+          "max": 3.41376,
+          "mean": 0.1002950152380404,
+          "median": 0.0,
+          "min": -3.41376,
+          "p05": -2.996184,
+          "p95": 3.26136,
+          "sd": 1.5378029945202756
+        },
+        "low_speed_fractions": {
+          "below_1_mps": 0.02236663114794367,
+          "below_2_mps": 0.041205389133303634,
+          "below_5_mps": 0.10335778986581376
+        },
+        "speed_mps": {
+          "max": 29.04744,
+          "mean": 11.428907027069334,
+          "median": 11.9634,
+          "p05": 2.999232,
+          "p85": 16.044672000000002,
+          "p95": 18.330672,
+          "sd": 4.534186874823912
+        }
+      },
+      "fleet_observed": {
+        "all_vehicle_length_m": {
+          "mean": 4.501891784232365,
+          "n": 2169,
+          "quantiles": {
+            "0": 1.2192,
+            "0.01": 2.5908,
+            "0.05": 2.8956,
+            "0.1": 3.2004,
+            "0.5": 4.4196,
+            "0.9": 5.486400000000001,
+            "0.95": 5.7912,
+            "0.99": 10.820400000000001,
+            "1": 23.19528
+          },
+          "sd": 1.575485576538546
+        },
+        "class_conflict_trajectories": 0,
+        "classes": [
+          {
+            "candidate_vClass": "motorcycle",
+            "code": 1,
+            "duration_s": {
+              "mean": 49.73000000000001,
+              "n": 30,
+              "quantiles": {
+                "0": 25.400000000000006,
+                "0.01": 26.009000000000004,
+                "0.05": 27.63499999999998,
+                "0.1": 33.55999999999994,
+                "0.5": 50.599999999999994,
+                "0.9": 67.27000000000004,
+                "0.95": 68.285,
+                "0.99": 71.01400000000001,
+                "1": 72.0
+              },
+              "sd": 12.285964798683203
+            },
+            "length_m": {
+              "mean": 2.54508,
+              "n": 30,
+              "quantiles": {
+                "0": 1.2192,
+                "0.01": 1.351788,
+                "0.05": 1.6764000000000001,
+                "0.1": 1.8135600000000003,
+                "0.5": 2.5908,
+                "0.9": 3.0632400000000004,
+                "0.95": 3.2004,
+                "0.99": 3.849624000000001,
+                "1": 4.1148
+              },
+              "sd": 0.5676243065437828
+            },
+            "mapping_status": "Proposal",
+            "official_label": "motorcycle",
+            "physical_length_truth": "Unverified; annotation only",
+            "reliable_trajectories": 30,
+            "share": 0.013831258644536652,
+            "vehicles": 30
+          },
+          {
+            "candidate_vClass": "passenger",
+            "code": 2,
+            "duration_s": {
+              "mean": 54.502828379674014,
+              "n": 2086,
+              "quantiles": {
+                "0": 17.600000000000023,
+                "0.01": 26.785,
+                "0.05": 31.5,
+                "0.1": 40.19999999999999,
+                "0.5": 50.7,
+                "0.9": 78.94999999999999,
+                "0.95": 84.70000000000005,
+                "0.99": 95.015,
+                "1": 100.89999999999998
+              },
+              "sd": 15.126814112227336
+            },
+            "length_m": {
+              "mean": 4.34792962607862,
+              "n": 2086,
+              "quantiles": {
+                "0": 2.1336,
+                "0.01": 2.7432000000000003,
+                "0.05": 3.048,
+                "0.1": 3.2004,
+                "0.5": 4.4196,
+                "0.9": 5.3340000000000005,
+                "0.95": 5.638800000000001,
+                "0.99": 6.096,
+                "1": 6.8580000000000005
+              },
+              "sd": 0.8109957205661142
+            },
+            "mapping_status": "Proposal",
+            "official_label": "auto",
+            "physical_length_truth": "Unverified; annotation only",
+            "reliable_trajectories": 2086,
+            "share": 0.9617335177501153,
+            "vehicles": 2086
+          },
+          {
+            "candidate_vClass": "truck",
+            "code": 3,
+            "duration_s": {
+              "mean": 50.15283018867925,
+              "n": 53,
+              "quantiles": {
+                "0": 30.5,
+                "0.01": 34.763999999999996,
+                "0.05": 41.86,
+                "0.1": 43.18,
+                "0.5": 48.70000000000002,
+                "0.9": 59.400000000000034,
+                "0.95": 61.919999999999966,
+                "0.99": 81.31199999999997,
+                "1": 84.89999999999998
+              },
+              "sd": 8.488829849903318
+            },
+            "length_m": {
+              "mean": 11.669239245283018,
+              "n": 53,
+              "quantiles": {
+                "0": 6.5532,
+                "0.01": 6.5532,
+                "0.05": 6.7056000000000004,
+                "0.1": 7.193280000000001,
+                "0.5": 9.906,
+                "0.9": 19.232880000000005,
+                "0.95": 20.60448,
+                "0.99": 22.7831904,
+                "1": 23.19528
+              },
+              "sd": 4.627795096364777
+            },
+            "mapping_status": "Proposal",
+            "official_label": "truck",
+            "physical_length_truth": "Unverified; annotation only",
+            "reliable_trajectories": 53,
+            "share": 0.024435223605348087,
+            "vehicles": 53
+          }
+        ],
+        "identity_uncertain_trajectories": 0,
+        "length_conflict_trajectories": 0,
+        "missing_or_invalid_class_rows": 0,
+        "missing_or_nonpositive_length_rows": 0,
+        "reliable_trajectories": 2169,
+        "unit": "source-scoped trajectory/vehicle; one vote per trajectory",
+        "unresolved_trajectories": 0,
+        "vehicles": 2169
+      },
+      "source_P2_scope_not_local": true,
+      "reference_boundary_guard": "Previously frozen descriptive A+ proposal, not a newly approved scientific evaluation window",
+      "simulation_vs_real_local_speed_difference_mps": -8.510709119343966,
+      "difference_is_description_not_a_pass_decision": true
+    },
+    {
+      "window": "us101__0805_0820",
+      "local_space": "mainline1-5 /150<=Local_Y<350m /1.0lane-km",
+      "interior_coverage_s": 660.0,
+      "mean_speed_mps": 7.915276152134783,
+      "mean_density_veh_km_lane": 50.50545454545454,
+      "eligible_slices": 11,
+      "interior_metric_summaries": {
+        "acceleration_mps2": {
+          "clusters": 1431,
+          "distribution": {
+            "mean": 0.04522132680538557,
+            "n": 333336,
+            "quantiles": {
+              "0": -3.41376,
+              "0.01": -3.41376,
+              "0.05": -2.3835360000000003,
+              "0.1": -1.438656,
+              "0.5": 0.0,
+              "0.9": 1.69164,
+              "0.95": 2.520696,
+              "0.99": 3.41376,
+              "1": 3.41376
+            },
+            "sd": 1.2658855724286908
+          },
+          "mean_cluster_ci95": [
+            0.03730887221256037,
+            0.0531384053798122
+          ],
+          "model_tolerance": "Tolerance Not Yet Justified",
+          "resamples": 2000,
+          "seed": 20261018
+        },
+        "closing_speed_mps": {
+          "clusters": 1431,
+          "distribution": {
+            "mean": -0.1094413104615163,
+            "n": 333336,
+            "quantiles": {
+              "0": -19.744944,
+              "0.01": -3.6758879999999996,
+              "0.05": -2.356104,
+              "0.1": -1.688592000000001,
+              "0.5": -0.030479999999999893,
+              "0.9": 1.530096,
+              "0.95": 2.2189439999999996,
+              "0.99": 3.8526720000000005,
+              "1": 18.391632
+            },
+            "sd": 1.4549410235195357
+          },
+          "mean_cluster_ci95": [
+            -0.13426026199194857,
+            -0.0841526325970611
+          ],
+          "model_tolerance": "Tolerance Not Yet Justified",
+          "resamples": 2000,
+          "seed": 20261018
+        },
+        "net_gap_m": {
+          "clusters": 1431,
+          "distribution": {
+            "mean": 15.405899964198264,
+            "n": 332833,
+            "quantiles": {
+              "0": 0.006096000000000323,
+              "0.01": 1.9476719999999998,
+              "0.05": 3.9898320000000007,
+              "0.1": 5.4955440000000015,
+              "0.5": 13.124688000000003,
+              "0.9": 27.276552000000002,
+              "0.95": 34.052256,
+              "0.99": 52.75685663999998,
+              "1": 161.428176
+            },
+            "sd": 10.503623598425609
+          },
+          "mean_cluster_ci95": [
+            14.963638391722467,
+            15.831744746378407
+          ],
+          "model_tolerance": "Tolerance Not Yet Justified",
+          "resamples": 2000,
+          "seed": 20261018
+        },
+        "speed_mps": {
+          "clusters": 1431,
+          "distribution": {
+            "mean": 7.915276152134783,
+            "n": 333336,
+            "quantiles": {
+              "0": 0.0,
+              "0.01": 0.0,
+              "0.05": 0.813816,
+              "0.1": 1.917192,
+              "0.5": 8.135112000000001,
+              "0.9": 13.002768,
+              "0.95": 13.801344,
+              "0.99": 15.364968,
+              "1": 29.04744
+            },
+            "sd": 3.9858620484023257
+          },
+          "mean_cluster_ci95": [
+            7.744284910569197,
+            8.089209602716123
+          ],
+          "model_tolerance": "Tolerance Not Yet Justified",
+          "resamples": 2000,
+          "seed": 20261018
+        }
+      },
+      "crossings": [
+        {
+          "all_lane_veh_h": 7260.0,
+          "backward_crossings": 0,
+          "crossing_lane_change_edges": 0,
+          "duration_s": 660.0,
+          "forward_crossings": 1331,
+          "lane_assignment": "downstream endpoint; lane-changing edges separately flagged",
+          "lane_counts": {
+            "1": 251,
+            "2": 275,
+            "3": 259,
+            "4": 273,
+            "5": 266,
+            "7": 7
+          },
+          "mainline_crossings": 1324,
+          "mainline_veh_h": 7221.818181818182,
+          "mainline_veh_h_lane": 1444.3636363636365,
+          "plane_m": 150.0
+        },
+        {
+          "all_lane_veh_h": 7696.363636363636,
+          "backward_crossings": 0,
+          "crossing_lane_change_edges": 0,
+          "duration_s": 660.0,
+          "forward_crossings": 1411,
+          "lane_assignment": "downstream endpoint; lane-changing edges separately flagged",
+          "lane_counts": {
+            "1": 257,
+            "2": 277,
+            "3": 261,
+            "4": 267,
+            "5": 267,
+            "6": 82
+          },
+          "mainline_crossings": 1329,
+          "mainline_veh_h": 7249.090909090909,
+          "mainline_veh_h_lane": 1449.8181818181818,
+          "plane_m": 300.0
+        },
+        {
+          "all_lane_veh_h": 7494.545454545455,
+          "backward_crossings": 0,
+          "crossing_lane_change_edges": 1,
+          "duration_s": 660.0,
+          "forward_crossings": 1374,
+          "lane_assignment": "downstream endpoint; lane-changing edges separately flagged",
+          "lane_counts": {
+            "1": 264,
+            "2": 282,
+            "3": 265,
+            "4": 274,
+            "5": 267,
+            "8": 22
+          },
+          "mainline_crossings": 1352,
+          "mainline_veh_h": 7374.545454545455,
+          "mainline_veh_h_lane": 1474.909090909091,
+          "plane_m": 450.0
+        }
+      ],
+      "local_reliable_following_s": 33141.5,
+      "candidate_local_evaluable_following_s": 33091.1,
+      "formal_local_event_count": "Not Calculated",
+      "formal_local_rate": "Not Calculated",
+      "full_source_P2": {
+        "duration_s": {
+          "max": 3.2000000000000455,
+          "median": 0.6999999999999886,
+          "p90": 1.799999999999993
+        },
+        "event_rate_per_vehicle_hour": 19.738497860763893,
+        "events": 732,
+        "exit_reason_counts": {
+          "leader_switch_unknown_risk": 80,
+          "measurement_unavailable_unknown_risk": 121,
+          "observed_threshold_exit": 531
+        },
+        "rule": "stage_0_2.formal_risk_measurement.v2 / P2 (TTC < 2.0 s, span >= 0.2 s)",
+        "ttc_min_s": {
+          "median": 1.3719098715321039,
+          "min": 0.0025862068965517354,
+          "p05": 0.03619398839834746
+        },
+        "unique_followers_with_events": 445,
+        "unique_pairs_with_events": 550
+      },
+      "full_source_exposure": {
+        "not_evaluable_following_exposure_s": 178.70000000000002,
+        "p2_evaluable_following_edges": 1335056,
+        "p2_evaluable_following_exposure_s": 133505.6,
+        "reliable_closing_exposure_s": 57179.8,
+        "reliable_following_edges": 1336843,
+        "reliable_following_exposure_s": 133684.30000000002
+      },
+      "full_source_observability": {
+        "diagnostic_clock_missing_rows": 0,
+        "identity_defect_rows": 61958,
+        "measurement_status_counts": {
+          "invalid": 1800,
+          "missing": 61958,
+          "not_applicable": 734126,
+          "valid": 605211
+        },
+        "measurement_status_shares": {
+          "invalid": 0.0012828782085318527,
+          "missing": 0.044158093357898075,
+          "not_applicable": 0.5232190265092528,
+          "valid": 0.4313400019243173
+        },
+        "missing_reason_counts": {
+          "": 605211,
+          "no_reported_leader": 61958,
+          "non_closing": 734126,
+          "non_positive_gap": 1800
+        }
+      },
+      "full_source_kinematics": {
+        "acceleration_mps2": {
+          "max": 3.41376,
+          "mean": 0.03146100938853036,
+          "median": 0.0,
+          "min": -3.41376,
+          "p05": -2.563368,
+          "p95": 2.7066240000000006,
+          "sd": 1.339991175796846
+        },
+        "low_speed_fractions": {
+          "below_1_mps": 0.037717332040952324,
+          "below_2_mps": 0.06920914121994591,
+          "below_5_mps": 0.19269614673275864
+        },
+        "speed_mps": {
+          "max": 29.04744,
+          "mean": 8.93924942829388,
+          "median": 9.153144000000001,
+          "p05": 1.524,
+          "p85": 13.267944000000002,
+          "p95": 15.218664,
+          "sd": 4.089734278468095
+        }
+      },
+      "fleet_observed": {
+        "all_vehicle_length_m": {
+          "mean": 4.599880813088746,
+          "n": 2017,
+          "quantiles": {
+            "0": 1.524,
+            "0.01": 3.2004,
+            "0.05": 3.6576000000000004,
+            "0.1": 3.81,
+            "0.5": 4.4196,
+            "0.9": 5.1816,
+            "0.95": 5.516879999999973,
+            "0.99": 10.338815999999989,
+            "1": 22.098000000000003
+          },
+          "sd": 1.315273591187903
+        },
+        "class_conflict_trajectories": 0,
+        "classes": [
+          {
+            "candidate_vClass": "motorcycle",
+            "code": 1,
+            "duration_s": {
+              "mean": 43.769999999999996,
+              "n": 10,
+              "quantiles": {
+                "0": 29.599999999999994,
+                "0.01": 30.122000000000003,
+                "0.05": 32.210000000000036,
+                "0.1": 34.82000000000008,
+                "0.5": 43.55000000000001,
+                "0.9": 55.08,
+                "0.95": 56.78999999999999,
+                "0.99": 58.158,
+                "1": 58.5
+              },
+              "sd": 8.73562946914657
+            },
+            "length_m": {
+              "mean": 1.9202400000000004,
+              "n": 10,
+              "quantiles": {
+                "0": 1.524,
+                "0.01": 1.537716,
+                "0.05": 1.59258,
+                "0.1": 1.6611600000000002,
+                "0.5": 1.9812,
+                "0.9": 2.04216,
+                "0.95": 2.3164799999999994,
+                "0.99": 2.5359360000000004,
+                "1": 2.5908
+              },
+              "sd": 0.28915866924579664
+            },
+            "mapping_status": "Proposal",
+            "official_label": "motorcycle",
+            "physical_length_truth": "Unverified; annotation only",
+            "reliable_trajectories": 10,
+            "share": 0.00495785820525533,
+            "vehicles": 10
+          },
+          {
+            "candidate_vClass": "passenger",
+            "code": 2,
+            "duration_s": {
+              "mean": 69.70422822210901,
+              "n": 1963,
+              "quantiles": {
+                "0": 16.200000000000045,
+                "0.01": 29.46200000000003,
+                "0.05": 39.820000000000014,
+                "0.1": 47.32000000000001,
+                "0.5": 66.70000000000005,
+                "0.9": 98.56,
+                "0.95": 103.80000000000001,
+                "0.99": 111.88999999999994,
+                "1": 123.5
+              },
+              "sd": 20.56702891380678
+            },
+            "length_m": {
+              "mean": 4.46113540499236,
+              "n": 1963,
+              "quantiles": {
+                "0": 2.8956,
+                "0.01": 3.3528000000000002,
+                "0.05": 3.6576000000000004,
+                "0.1": 3.81,
+                "0.5": 4.4196,
+                "0.9": 5.1816,
+                "0.95": 5.3340000000000005,
+                "0.99": 5.849111999999982,
+                "1": 7.010400000000001
+              },
+              "sd": 0.523280382510527
+            },
+            "mapping_status": "Proposal",
+            "official_label": "auto",
+            "physical_length_truth": "Unverified; annotation only",
+            "reliable_trajectories": 1963,
+            "share": 0.9732275656916212,
+            "vehicles": 1963
+          },
+          {
+            "candidate_vClass": "truck",
+            "code": 3,
+            "duration_s": {
+              "mean": 64.56136363636364,
+              "n": 44,
+              "quantiles": {
+                "0": 28.399999999999977,
+                "0.01": 31.19499999999998,
+                "0.05": 36.12000000000004,
+                "0.1": 40.13000000000004,
+                "0.5": 61.49999999999996,
+                "0.9": 92.83,
+                "0.95": 98.29499999999999,
+                "0.99": 106.121,
+                "1": 108.39999999999998
+              },
+              "sd": 19.352281470081284
+            },
+            "length_m": {
+              "mean": 11.398827272727274,
+              "n": 44,
+              "quantiles": {
+                "0": 6.7056000000000004,
+                "0.01": 6.771132000000001,
+                "0.05": 6.903720000000001,
+                "0.1": 7.51332,
+                "0.5": 10.1346,
+                "0.9": 18.150840000000002,
+                "0.95": 21.168360000000003,
+                "0.99": 22.098000000000003,
+                "1": 22.098000000000003
+              },
+              "sd": 4.329599841349735
+            },
+            "mapping_status": "Proposal",
+            "official_label": "truck",
+            "physical_length_truth": "Unverified; annotation only",
+            "reliable_trajectories": 44,
+            "share": 0.02181457610312345,
+            "vehicles": 44
+          }
+        ],
+        "identity_uncertain_trajectories": 0,
+        "length_conflict_trajectories": 0,
+        "missing_or_invalid_class_rows": 0,
+        "missing_or_nonpositive_length_rows": 0,
+        "reliable_trajectories": 2017,
+        "unit": "source-scoped trajectory/vehicle; one vote per trajectory",
+        "unresolved_trajectories": 0,
+        "vehicles": 2017
+      },
+      "source_P2_scope_not_local": true,
+      "reference_boundary_guard": "Previously frozen descriptive A+ proposal, not a newly approved scientific evaluation window",
+      "simulation_vs_real_local_speed_difference_mps": -5.919866889243824,
+      "difference_is_description_not_a_pass_decision": true
+    }
+  ],
+  "source_cluster_uncertainty": {
+    "cluster_unit": "trajectory (one physical vehicle across its whole observed record)",
+    "iid_row_bootstrap_warning": "row-level i.i.d. resampling is reported only to show how much narrower it is; it must not be used for scientific tolerance",
+    "reason": "clustered intervals describe real-data estimation uncertainty only.  They are not a permissible SUMO model-deviation tolerance (see the tolerance protocol).",
+    "resamples": 2000,
+    "schema_version": "stage_0_5.calibration-readiness.v1.clustered-uncertainty.v1",
+    "seed": 20261018,
+    "sources": [
+      {
+        "cluster_ci_width_speed_mps": 0.24007717575000243,
+        "clusters": 2169,
+        "event_share_of_vehicles": 0.16274781005071462,
+        "exposure_concentration": {
+          "top_10pct_share": 0.16216337494245056
+        },
+        "iid_narrower_by_factor": 12.71527578061644,
+        "iid_row_ci_width_speed_mps": 0.018881004226112306,
+        "iid_row_se_speed_mps": 0.0024082913553714674,
+        "mean_acceleration_mps2": {
+          "bootstrap_mean": 0.10036966581227293,
+          "lower_95": 0.09593065359450313,
+          "point": 0.1002950152380404,
+          "sd": 0.0021547916891100642,
+          "upper_95": 0.10448759985784087
+        },
+        "mean_speed_mps": {
+          "bootstrap_mean": 11.430837929503028,
+          "lower_95": 11.30596439244152,
+          "point": 11.428907027069334,
+          "sd": 0.06196338737924312,
+          "upper_95": 11.546041568191523
+        },
+        "p2_evaluable_following_exposure_s": 111425.90000000002,
+        "p2_event_rate_per_vehicle_hour": {
+          "bootstrap_mean": 17.549363503387465,
+          "lower_95": 15.111013685395534,
+          "point": 17.54349751718406,
+          "sd": 1.413890538987239,
+          "upper_95": 20.49823654996825
+        },
+        "p2_events": 543,
+        "reliable_following_exposure_s": 111613.3,
+        "source_group": "us101__0750_0805",
+        "state_rows": 1180598,
+        "vehicles_with_events": 353
+      },
+      {
+        "cluster_ci_width_speed_mps": 0.20515626609162396,
+        "clusters": 2017,
+        "event_share_of_vehicles": 0.22062469013386218,
+        "exposure_concentration": {
+          "top_10pct_share": 0.1542998945362591
+        },
+        "iid_narrower_by_factor": 12.816690751932418,
+        "iid_row_ci_width_speed_mps": 0.01600696077188972,
+        "iid_row_se_speed_mps": 0.0020417041800879746,
+        "mean_acceleration_mps2": {
+          "bootstrap_mean": 0.031460935752100364,
+          "lower_95": 0.028748012881217814,
+          "point": 0.03146100938853036,
+          "sd": 0.0014088762879087232,
+          "upper_95": 0.03419598463458226
+        },
+        "mean_speed_mps": {
+          "bootstrap_mean": 8.938360572637624,
+          "lower_95": 8.833075471680502,
+          "point": 8.939249428293879,
+          "sd": 0.052750263587002244,
+          "upper_95": 9.038231737772126
+        },
+        "p2_evaluable_following_exposure_s": 133505.60000000003,
+        "p2_event_rate_per_vehicle_hour": {
+          "bootstrap_mean": 19.77361176143168,
+          "lower_95": 17.471869068832838,
+          "point": 19.73849786076389,
+          "sd": 1.2715958403995513,
+          "upper_95": 22.356609440087055
+        },
+        "p2_events": 732,
+        "reliable_following_exposure_s": 133684.30000000002,
+        "source_group": "us101__0805_0820",
+        "state_rows": 1403095,
+        "vehicles_with_events": 445
+      }
+    ],
+    "usable_for_tolerance": false
+  },
+  "fleet": "Observed trajectory composition/length identified in two approved A+ raw joins; upstream demand fleet and behavior parameters remain unidentified",
+  "actual_real_trajectory_reads_this_task": 0,
+  "actual_validation_window_reads": 0,
+  "real_real_ED_upper_bound": "Not Identifiable"
+}

@@ -1,0 +1,160 @@
+{
+  "sensitivity": [
+    {
+      "relative_margin_engineering_sensitivity": 0.05,
+      "changes": [
+        {
+          "end_s": 120.0,
+          "speed_relative_change": 0.7770412880489566,
+          "density_relative_change": 3.724198691055547,
+          "candidate_within_margin": false
+        },
+        {
+          "end_s": 180.0,
+          "speed_relative_change": 0.46411851189124115,
+          "density_relative_change": 0.31426389357583095,
+          "candidate_within_margin": false
+        },
+        {
+          "end_s": 240.0,
+          "speed_relative_change": 0.0033134084213136453,
+          "density_relative_change": 0.014243820695433453,
+          "candidate_within_margin": true
+        },
+        {
+          "end_s": 300.0,
+          "speed_relative_change": 0.01917382453782511,
+          "density_relative_change": 0.017148339129391958,
+          "candidate_within_margin": true
+        }
+      ],
+      "local_candidate_end_s": 300.0,
+      "network_stationarity_supported": false,
+      "exact_balance_is_only_necessary_not_sufficient": true,
+      "risk_used_to_choose_warmup": false,
+      "scientific_warmup_approved": false,
+      "confirmation_rule": "Two consecutive phase-aligned cycle-to-cycle speed AND density changes; candidate burn-in ends at third cycle end, not retrospectively at first cycle start"
+    },
+    {
+      "relative_margin_engineering_sensitivity": 0.1,
+      "changes": [
+        {
+          "end_s": 120.0,
+          "speed_relative_change": 0.7770412880489566,
+          "density_relative_change": 3.724198691055547,
+          "candidate_within_margin": false
+        },
+        {
+          "end_s": 180.0,
+          "speed_relative_change": 0.46411851189124115,
+          "density_relative_change": 0.31426389357583095,
+          "candidate_within_margin": false
+        },
+        {
+          "end_s": 240.0,
+          "speed_relative_change": 0.0033134084213136453,
+          "density_relative_change": 0.014243820695433453,
+          "candidate_within_margin": true
+        },
+        {
+          "end_s": 300.0,
+          "speed_relative_change": 0.01917382453782511,
+          "density_relative_change": 0.017148339129391958,
+          "candidate_within_margin": true
+        }
+      ],
+      "local_candidate_end_s": 300.0,
+      "network_stationarity_supported": false,
+      "exact_balance_is_only_necessary_not_sufficient": true,
+      "risk_used_to_choose_warmup": false,
+      "scientific_warmup_approved": false,
+      "confirmation_rule": "Two consecutive phase-aligned cycle-to-cycle speed AND density changes; candidate burn-in ends at third cycle end, not retrospectively at first cycle start"
+    },
+    {
+      "relative_margin_engineering_sensitivity": 0.2,
+      "changes": [
+        {
+          "end_s": 120.0,
+          "speed_relative_change": 0.7770412880489566,
+          "density_relative_change": 3.724198691055547,
+          "candidate_within_margin": false
+        },
+        {
+          "end_s": 180.0,
+          "speed_relative_change": 0.46411851189124115,
+          "density_relative_change": 0.31426389357583095,
+          "candidate_within_margin": false
+        },
+        {
+          "end_s": 240.0,
+          "speed_relative_change": 0.0033134084213136453,
+          "density_relative_change": 0.014243820695433453,
+          "candidate_within_margin": true
+        },
+        {
+          "end_s": 300.0,
+          "speed_relative_change": 0.01917382453782511,
+          "density_relative_change": 0.017148339129391958,
+          "candidate_within_margin": true
+        }
+      ],
+      "local_candidate_end_s": 300.0,
+      "network_stationarity_supported": false,
+      "exact_balance_is_only_necessary_not_sufficient": true,
+      "risk_used_to_choose_warmup": false,
+      "scientific_warmup_approved": false,
+      "confirmation_rule": "Two consecutive phase-aligned cycle-to-cycle speed AND density changes; candidate burn-in ends at third cycle end, not retrospectively at first cycle start"
+    }
+  ],
+  "thresholds_status": "Engineering sensitivity only; no evidence yet for approved acceptable drift margins",
+  "local_plateau_does_not_resolve_global_pending": true,
+  "all_acquisition_retained": true,
+  "recommendations": [
+    "Phase-aligned local traffic-state candidate plus separately reported network/pending trend; no P2 threshold used to select warmup",
+    "If demand exceeds supply and backlog keeps growing, steady-network warmup may not exist; choose a time-dynamic finite-horizon target rather than deleting the growth"
+  ],
+  "formal_warmup_s": null,
+  "formal_evaluation_window": null,
+  "observed_cycles": 5,
+  "queue_state_counts": {
+    "No On-Road Queue": 31,
+    "On-Road Queue Observed": 176,
+    "Upstream Queue Extension Observed": 41,
+    "Inlet-Adjacent Queue Observed": 52
+  },
+  "queue_first_times": {
+    "onroad_queue_observed": 32.0,
+    "inlet_adjacent_queue_observed": 248.0,
+    "upstream_extension_observed": 34.0
+  },
+  "queue_candidate_not_whole_spillback_admission": true,
+  "independent_review_clarification": {
+    "fact": "Frozen v1 exact_balance_is_only_necessary_not_sufficient label is misleading. Exact finite-cycle balance is NEITHER necessary NOR sufficient for statistical stationarity.",
+    "actual_computation": "All observed cycles inserted==exited and no cycle-to-cycle pending growth; a descriptive exact-balance flag only.",
+    "candidate_protocol_use": "Do not use this boolean as a formal stationarity test; preapprove uncertainty-aware drift/trend limits instead.",
+    "original_data_unchanged": true
+  },
+  "phase_half_observation": {
+    "first_half_speed_mps": [
+      0.963200805117144,
+      1.042187614409758
+    ],
+    "second_half_speed_mps": [
+      3.253682697127906,
+      3.4758846617398333
+    ],
+    "first_half_density": [
+      117.85000000000001,
+      120.65000000000002
+    ],
+    "second_half_density": [
+      87.69722222222224,
+      91.4
+    ],
+    "support_s": [
+      120,
+      300
+    ],
+    "interpretation": "Phase-aligned periodic-state candidate; does not demonstrate constant-state stationarity or identify local light/wave causation."
+  }
+}

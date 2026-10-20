@@ -1,0 +1,47 @@
+{
+  "items": [
+    {
+      "quantity": "内部断面实际通行率/局部密度速度",
+      "status": "Directly supported in approved observed support",
+      "evidence": "1648及1449.818veh/h/lane是内部300m断面；不是未服务需求或路网入口需求",
+      "proposal": "固定为工程约束可用；不要改称上游真实需求"
+    },
+    {
+      "quantity": "上游到达需求",
+      "status": "Not uniquely identifiable",
+      "evidence": "观测已通过车辆，缺少观察域外等待/未插入及上游服务状态",
+      "proposal": "固定候选并标条件；独立敏感性须新计划；唯一识别需额外上游观测"
+    },
+    {
+      "quantity": "匝道流入/驶出",
+      "status": "Indirectly constrained, not uniquely identified",
+      "evidence": "不同断面通量和lane6/7存在间接约束，但不提供完整路网/未服务到达",
+      "proposal": "无活动匝道候选仅适用于有限局部；不声称真实匝道机制"
+    },
+    {
+      "quantity": "OD/路线选择",
+      "status": "Not identifiable",
+      "evidence": "短区段边界观察不是完整旅程或OD",
+      "proposal": "固定不可变路线只支持条件实验；不能优化OD来补偿行为参数"
+    },
+    {
+      "quantity": "观测车型组成/长度",
+      "status": "Directly supported for observed trajectories only",
+      "evidence": "A+两个窗口原始join已核验，不沿用更早A无车型字段的历史结论",
+      "proposal": "保留A+类型/长度注记候选；上游车型流入分布仍不识别"
+    },
+    {
+      "quantity": "Krauss行为参数",
+      "status": "Not uniquely identifiable from these summaries",
+      "evidence": "净距/闭合/速度同时受需求、供给、几何、车长和采样影响；现参数是固定工程候选",
+      "proposal": "先固定边界/目标并做独立可识别性设计，再另批参数集合/范围；本轮不拟合"
+    },
+    {
+      "quantity": "人工信号/真实瓶颈供给",
+      "status": "Engineering input, not a real fact",
+      "evidence": "C23.8/6.2/30是压力机制；通用三车道不等于真实US101设施/容量",
+      "proposal": "保留测量压力用途；正式校准供给需研究者单独选择"
+    }
+  ],
+  "geometry_scope": "Density/lane/time units comparable after explicit support matching, not a claim of identical geometry, capacity, lane interactions or wave propagation"
+}

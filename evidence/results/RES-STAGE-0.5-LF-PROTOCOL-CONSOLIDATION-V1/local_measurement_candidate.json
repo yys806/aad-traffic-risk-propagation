@@ -1,0 +1,31 @@
+{
+  "version": "lf-protocol-candidate-v1",
+  "status": "Proposed / Awaiting Researcher Decision",
+  "primary": "Observed risk-onset position AND onset time attribution",
+  "auxiliary": [
+    "Confirmation position, same onset-time support",
+    "All observed onset-to-confirmation members inside, same onset-time support"
+  ],
+  "extra_sensitivities": [
+    "Historical all observed event to end",
+    "Confirmation-time window",
+    "Left/right endpoint local exposure"
+  ],
+  "numerator": "Confirmed original Stage0.2 core event, no local re-extraction; N_onset=sum 1{s_e in W} 1{x_e(s_e) in R}",
+  "denominator": "E_R,W=sum h*1{original reliable same-follower/same-leader continuous link AND both endpoint status valid/not_applicable}*1{both follower endpoints in R AND full link in W}",
+  "rate": "N / (E_R,W /3600), events per P2-evaluable following vehicle-hour",
+  "different_event_subtypes_share_standardized_exposure": "Auxiliary rates are different attributed/subtype event intensities per the SAME evaluable local time, not estimates of an identical hazard; do not redefine denominator by event duration or eventual residence",
+  "core_unchanged": {
+    "TTC_threshold_s": 2.0,
+    "minimum_span_s": 0.2,
+    "closing_epsilon_mps": 0.001,
+    "recorded_step_s": 0.1
+  },
+  "extra_lane_change_break": false,
+  "full_network_leader_context_required": true,
+  "unknown_not_zero": true,
+  "numerical_exact_tolerance_m": 1e-06,
+  "scientific_claim_eligible": false,
+  "formal_local_P2": "Unresolved",
+  "formal_local_rate": "Not Calculated"
+}

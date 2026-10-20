@@ -1,0 +1,78 @@
+{
+  "expected_negative_probes": [
+    {
+      "path": "D:/shen/TJU/AAD/dataset/us101__0820_0835/probe",
+      "rejected_before_content": true
+    },
+    {
+      "path": "D:/shen/TJU/AAD/dataset/locked_holdout/probe",
+      "rejected_before_content": true
+    },
+    {
+      "path": "D:/shen/TJU/AAD/code/outputs/history/stage_0_2_full_source_events/probe",
+      "rejected_before_content": true
+    }
+  ],
+  "passed": true,
+  "audit": {
+    "scope": "controlled Python entrypoints",
+    "allowed_open_events": 557,
+    "denied": [
+      {
+        "event": "open",
+        "path": "D:/shen/TJU/AAD/dataset/us101__0820_0835/probe",
+        "write": false
+      },
+      {
+        "event": "open",
+        "path": "D:/shen/TJU/AAD/dataset/locked_holdout/probe",
+        "write": false
+      },
+      {
+        "event": "open",
+        "path": "D:/shen/TJU/AAD/code/outputs/history/stage_0_2_full_source_events/probe",
+        "write": false
+      }
+    ],
+    "os_complete_monitoring": false,
+    "native_file_access_monitored": false,
+    "python_no_site": true,
+    "sanitized_sys_path": [
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_lf_protocol_v1\\runtime\\code\\src",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_lf_protocol_v1\\dependency_links",
+      "D:\\miniconda\\Lib\\site-packages",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_lf_protocol_v1",
+      "D:\\miniconda\\python313.zip",
+      "D:\\miniconda\\DLLs",
+      "D:\\miniconda\\Lib",
+      "D:\\miniconda"
+    ],
+    "limitations": [
+      "Python audit events only; native extensions and SUMO reads not OS-traced",
+      "standard-library/package/SUMO/Windows runtime roots are broader than individual dependency files",
+      "same-user administrator can bypass this policy; it is not an adversarial security boundary"
+    ]
+  },
+  "dependency_fingerprints": {
+    "numpy": {
+      "version": "2.3.2",
+      "entry_sha256": "94f02573d9fa211fb10a7c57356cae89112b9c09d892c8aca0b19660b503b63e"
+    },
+    "pandas": {
+      "version": "2.2.3",
+      "entry_sha256": "755b7c4dc96dc69da85a32fad32513cdcbe67061b1322de2bd2759db3a6690be"
+    },
+    "pyarrow": {
+      "version": "25.0.1",
+      "entry_sha256": "2a591a82529e87bc084bf333e16560c66f3c5ac0cc033e7208556ef55fb93e7c"
+    },
+    "pytest": {
+      "version": "8.4.1",
+      "entry_sha256": "66993a5e3905005e0981159b4794d10b1adacf341a58a44d696ad2c4442dcdc6"
+    }
+  },
+  "python_version": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 16:37:03) [MSC v.1929 64 bit (AMD64)]",
+  "dependency_timing": "Post-analysis environment observation; does not prove all dependencies/DLLs immutable before and after",
+  "source_sha256": "e121736691d3ed84ef521e1798c1ba44c3476fcff771a8e3645f2558bd808293",
+  "probe_source": "import hashlib,json,sys\nfrom pathlib import Path\nb=Path(__file__).resolve().parent\nsys.path.insert(0,str(b/'runtime/code/src'))\nfrom riskprop.stage_0_5_b1_isolation import install_guard\nguard=install_guard(b)\ntests=[]\nfor value in sys.argv[1:]:\n    try:\n        with open(value,'rb') as f:f.read(1)\n    except PermissionError:tests.append(dict(path=value,rejected_before_content=True))\n    else:raise AssertionError('denied_path_was_opened')\nimport numpy,pandas,pyarrow,pytest\ndeps={}\nfor m in [numpy,pandas,pyarrow,pytest]:\n    p=Path(m.__file__);deps[m.__name__]=dict(version=m.__version__,entry_sha256=hashlib.sha256(p.read_bytes()).hexdigest())\nresult=dict(expected_negative_probes=tests,passed=len(tests)==3,audit=guard,dependency_fingerprints=deps,python_version=sys.version,\n    dependency_timing='Post-analysis environment observation; does not prove all dependencies/DLLs immutable before and after',source_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest())\n(b/'guard_probe_result.json').write_text(json.dumps(result,indent=2)+'\\n',encoding='utf-8')\nassert len(guard['denied'])==len(tests)==3\n"
+}
