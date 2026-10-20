@@ -1,0 +1,43 @@
+{
+ "result_id": "RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1",
+ "ledgers": {
+  "RES-STAGE-0.5-FINAL-CLOSURE-V1": {
+   "path": "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/candidate_experiment_plan.json",
+   "granted": "at most 5 runs in that task: <=3 construction, >=2 reserved independent-seed repeats",
+   "executed": [
+    "FC1 (construction)",
+    "FC2 (construction)"
+   ],
+   "reserved_unused": [
+    "FR1",
+    "FR2"
+   ],
+   "status": "reserved repeats remain with the closure candidate protocol and are not transferred"
+  },
+  "RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1": {
+   "path": "evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/scene_diagnostic_plan.json",
+   "granted": "3 construction runs plus 2 reserved repeats under that task's own authorisation",
+   "executed": [
+    "RC1",
+    "RC2",
+    "RC3"
+   ],
+   "reserved_unused": [
+    "RC1r",
+    "RC2r"
+   ],
+   "status": "unused; not transferred; the batch stopped under its own pre-declared rule"
+  },
+  "this_task": {
+   "granted": "48 micro-runs declared in replay_plan.json (2 windows x 12 pairs x 2 configurations)",
+   "executed": 43,
+   "insertion_rejections": 26
+  }
+ },
+ "no_budget_transfer": true,
+ "date_discrepancy": {
+  "finding": "documents from commit afdc3d0 were labelled 2026-10-21 but the commit timestamp is 2026-10-20 20:20:17 +08:00 and the local timezone is +08:00",
+  "cause": "authoring date error, not a timezone artefact: the work was executed on 2026-10-20 (Asia/Shanghai)",
+  "action": "explicit erratum recorded in the documents and in AI_CONTEXT; committed text and filenames preserved"
+ }
+}

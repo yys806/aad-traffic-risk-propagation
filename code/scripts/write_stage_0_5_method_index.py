@@ -1,0 +1,291 @@
+"""Write the structured Stage 0.5 method-literature index and a RIS export.
+
+Bibliographic fields come from Crossref DOI records or the publisher/official page,
+verified on 2026-10-20. Zotero item keys are the ones actually created/updated by
+`zotero_add_stage05_method_refs.py`.
+"""
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parents[2]
+OUT = REPO / "doc/literature-notes"
+RESULT = "RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1"
+
+ENTRIES = [
+    {
+        "id": "L1", "zotero_key": "5DE6L9RS", "collections": ["WCC9X92Q", "LHV4VHW7"],
+        "tags": ["AAD/Stage0.5", "AAD/Method/space-time-propagation", "AAD/Role/primary-method"],
+        "item_type": "journalArticle",
+        "title": "Spatiotemporal dynamics of traffic bottlenecks yields an early signal of heavy congestions",
+        "authors": ["Duan, Jinxiao", "Zeng, Guanwen", "Serok, Nimrod", "Li, Daqing",
+                    "Blumenfeld-Lieberthal, Efrat", "Huang, Hai-Jun", "Havlin, Shlomo"],
+        "container": "Nature Communications", "volume": "14", "pages": "8111", "year": 2023,
+        "doi": "10.1038/s41467-023-43591-7", "access": "open",
+        "full_text_read": True,
+        "method_extracted": [
+            "Eq. 9: W_e(t) = U_e(t)/U_e95, congested if W_e(t) < 0.5",
+            "U_e95 = 95th percentile of that road's velocity records",
+            "jam-tree component assembly with theta = 10 min association window",
+            "Eq. 7 V_A = S_P/T_G and Eq. 8 V_TI = S_TI/T_I growth-speed definitions",
+        ],
+        "project_borrowing": ["relative-speed congestion definition", "component size/duration/origin/direction descriptors"],
+        "project_adaptation": ["U95 taken from the same 12-16 min window instead of a 30-day record", "1-D longitudinal cells instead of a directed road network"],
+        "not_inferable": ["the 15-minute prediction model", "theta = 10 min as an acceptance condition", "any V_TI numeric target"],
+        "used_by": ["A1", "A2"],
+        "paper_slot": "拥堵状态定义与时空传播（方法章节来源）",
+    },
+    {
+        "id": "L2", "zotero_key": "YA2ACMZV", "collections": ["WCC9X92Q", "LHV4VHW7"],
+        "tags": ["AAD/Stage0.5", "AAD/Method/space-time-propagation", "AAD/Method/null-model", "AAD/Role/primary-method"],
+        "item_type": "journalArticle",
+        "title": "A simple contagion process describes spreading of traffic jams in urban networks",
+        "authors": ["Saberi, Meead", "Hamedmoghadam, Homayoun", "Ashfaq, Mudabber", "Hosseini, Seyed Amir",
+                    "Gu, Ziyuan", "Shafiei, Sajjad", "Nair, Divya J.", "Dixon, Michael", "Gardner, Lauren",
+                    "Waller, S. Travis", "Gonzalez, Marta C."],
+        "container": "Nature Communications", "volume": "11", "pages": "1619", "year": 2020,
+        "doi": "10.1038/s41467-020-15353-2", "access": "open",
+        "full_text_read": True,
+        "method_extracted": [
+            "Eq. 1: lambda_i(t) = v_i(t)/v_max_i with v_max_i = maximum speed observed in a 24 h cycle",
+            "Eq. 2: congested if lambda_i(t) < rho, with rho a pre-specified threshold (0.1-0.7 illustrated; none fixed)",
+            "null model: for each time step, redraw lambda_i(t) for each link from that time step's distribution",
+            "congested upstream cluster = nodes reaching link i's source via congested links only",
+        ],
+        "project_borrowing": ["relative-speed definition family", "per-time-step spatial permutation null model"],
+        "project_adaptation": ["24 h v_max unavailable; window maximum used and disclosed", "permutation count is a project choice", "1-D corridor columns instead of network links"],
+        "not_inferable": ["SIR parameter fits", "verified universal jam-spreading mechanism"],
+        "used_by": ["A1", "A2"],
+        "paper_slot": "拥堵状态定义与零模型（方法章节来源）",
+    },
+    {
+        "id": "L3", "zotero_key": "GMF4LZDC", "collections": ["PWZDPXEE"],
+        "tags": ["AAD/Stage0.5", "AAD/Method/leader-replay", "AAD/Role/primary-method"],
+        "item_type": "journalArticle",
+        "title": "Calibration and Validation of Microscopic Traffic Flow Models",
+        "authors": ["Brockfeld, Elmar", "Kuhne, Reinhart D.", "Wagner, Peter"],
+        "container": "Transportation Research Record: Journal of the Transportation Research Board",
+        "volume": "1876", "issue": "1", "pages": "62-70", "year": 2004,
+        "doi": "10.3141/1876-07", "access": "open (DLR elib)",
+        "full_text_read": True,
+        "method_extracted": [
+            "leader trajectory fed into the model; model generates the follower; measured vs simulated gap series compared",
+            "Eq. 2: e = sum_t |g_sim(t) - g_obs(t)| / sum_t g_obs(t), t in {0, 0.1, ..., T}",
+            "36 leader-follower pairs from 4 DGPS experiments, 0.1 s resolution",
+            "downhill simplex calibration with many restarts (not used in this project)",
+            "reported calibration error 12-17 %, validation 17-22 %, overfitting up to 40-60 %",
+        ],
+        "project_borrowing": ["leader replay design", "Brockfeld Eq. 2 as the primary gap metric"],
+        "project_adaptation": ["naturalistic data with lane changes and heterogeneous drivers", "no optimisation", "pair is the resampling unit"],
+        "not_inferable": ["12-17 % as this project's acceptance threshold", "comparability with test-track errors"],
+        "used_by": ["B1", "B2", "B3"],
+        "paper_slot": "微观跟驰校准方法（主方法来源）",
+    },
+    {
+        "id": "L4", "zotero_key": "LIUYDEMK", "collections": ["PWZDPXEE"],
+        "tags": ["AAD/Stage0.5", "AAD/Method/trajectory-calibration", "AAD/Role/primary-method"],
+        "item_type": "journalArticle",
+        "title": "Calibrating Car-Following Models Using SUMO-in-the-Loop and Vehicle Trajectories From Roadside Radar",
+        "authors": ["Schrader, Maxwell", "Karnik, Arya", "Hainen, Alexander", "Bittle, Joshua"],
+        "container": "SUMO Conference Proceedings", "volume": "5", "pages": "209-233", "year": 2024,
+        "doi": "10.52825/scp.v5i.1127", "access": "open",
+        "full_text_read": True,
+        "method_extracted": [
+            "single 1.8 km edge network; 22.35 m/s speed limit",
+            "each leader-follower pair enters via TraCI; TraCI controls the leader's position and velocity",
+            "Eq. 5: NRMSE(s,v,a) = NRMSE(s)+NRMSE(v)+NRMSE(a); Eq. 6: NRMSE(X) = RMSE(X,Xhat)/sqrt(mean(X^2))",
+            "time headway limited to 0-10 s and low-speed cases excluded; 6th-order Butterworth 0.25 Hz on velocity",
+        ],
+        "project_borrowing": ["TraCI leader control", "NRMSE definition", "separate indicator reporting"],
+        "project_adaptation": ["acceleration not scored (differenced noise not validated here)", "NGSIM trajectory provenance instead of radar"],
+        "not_inferable": ["having reached that paper's accuracy"],
+        "used_by": ["B1", "B3"],
+        "paper_slot": "SUMO-in-the-loop 轨迹标定（主方法来源）",
+    },
+    {
+        "id": "L5", "zotero_key": "IQR7YZBZ", "collections": ["2BMKNCD3"],
+        "tags": ["AAD/Stage0.5", "AAD/Method/validation", "AAD/Role/primary-method"],
+        "item_type": "report",
+        "title": "Traffic Analysis Toolbox Volume III: Guidelines for Applying Traffic Microsimulation Modeling Software - 2019 Update to the 2004 Version",
+        "authors": ["Federal Highway Administration (FHWA), Office of Operations"],
+        "container": "FHWA-HOP-18-036", "year": 2019,
+        "doi": None, "url": "https://ops.fhwa.dot.gov/publications/fhwahop18036/", "access": "open",
+        "full_text_read": True,
+        "method_extracted": [
+            "at least two KPIs: one travel-time or speed profile on key paths, one bottleneck dynamic",
+            "congestion speed threshold rule of thumb: one third of observed free-flow speed",
+            "single representative day per travel condition; 15-min onset/duration resolution",
+            "Criterion I 95 % within cr(t)+-1.96 sigma(t); Criterion II 2/3 within cr(t)+-sigma(t); Criterion III BDAE; Criterion IV systematic error <= 1/3 BDAE",
+            "calibration is one run per travel condition; multiple random seeds are not needed",
+        ],
+        "project_borrowing": ["separate microscopic and network-level diagnostics", "joint evaluation of time-varying state and bottleneck dynamics", "one-third free-flow anchor as a literature reference"],
+        "project_adaptation": ["sigma(t) and BDAE need multi-day clusters, which this project does not have; the four criteria are therefore not used", "27.78 m/s is an engineering setting, not a measured free-flow speed"],
+        "not_inferable": ["FHWA envelopes as this project's scientific tolerance"],
+        "used_by": ["A1", "C"],
+        "paper_slot": "仿真校准规范（验收边界讨论来源）",
+    },
+    {
+        "id": "L6", "zotero_key": None, "collections": [],
+        "tags": ["AAD/Stage0.5", "AAD/Method/implementation-reference"],
+        "item_type": "software source", "title": "Eclipse SUMO 1.26.0 car-following implementation",
+        "authors": ["Eclipse SUMO maintainers"], "container": "SUMO source tree", "year": 2026,
+        "url": "code/outputs/formal/calibration/stage_0_5_final_candidate_v1/official_source/",
+        "full_text_read": True,
+        "method_extracted": [
+            "MSCFModel::maximumSafeFollowSpeed uses myHeadwayTime (tau) as the headway in the safe-stop speed",
+            "MSCFModel_Krauss::dawdle2 applies sigma * speed * random (low-speed branch) or sigma * accel * random",
+            "libsumo::Vehicle::setSpeed installs a speed timeline valid until SUMOTime_MAX; release requires setSpeed(-1)",
+        ],
+        "project_borrowing": ["all numerical behaviour is taken from the shipped source, not from papers"],
+        "project_adaptation": ["the replay never calls setSpeed on the follower because that would freeze its speed"],
+        "not_inferable": ["any claim that a paper overrides the implementation"],
+        "used_by": ["A1", "B1", "B2"],
+        "paper_slot": "实现依据（非文献）",
+    },
+    {
+        "id": "L7", "zotero_key": "GSJPFHJK", "collections": ["PWZDPXEE"],
+        "tags": ["AAD/Stage0.5", "AAD/Method/trajectory-calibration", "AAD/Role/primary-method"],
+        "item_type": "journalArticle",
+        "title": "Calibrating Car-Following Models by Using Trajectory Data: Methodological Study",
+        "authors": ["Kesting, Arne", "Treiber, Martin"],
+        "container": "Transportation Research Record: Journal of the Transportation Research Board",
+        "volume": "2088", "issue": "1", "pages": "148-156", "year": 2008,
+        "doi": "10.3141/2088-16", "access": "paywalled",
+        "full_text_read": False,
+        "method_extracted": [],
+        "not_inferable": ["any formula, metric or threshold from this paper"],
+        "used_by": ["context only"],
+        "paper_slot": "方法背景（未用于实现）",
+    },
+    {
+        "id": "L8", "zotero_key": "ZJGB2X68", "collections": ["PWZDPXEE"],
+        "tags": ["AAD/Stage0.5", "AAD/Method/trajectory-calibration", "AAD/Method/validation", "AAD/Role/primary-method"],
+        "item_type": "journalArticle",
+        "title": "Can Results of Car-Following Model Calibration Based on Trajectory Data be Trusted?",
+        "authors": ["Punzo, Vincenzo", "Ciuffo, Biagio", "Montanino, Marcello"],
+        "container": "Transportation Research Record: Journal of the Transportation Research Board",
+        "volume": "2315", "issue": "1", "pages": "11-24", "year": 2012,
+        "doi": "10.3141/2315-02", "access": "paywalled",
+        "full_text_read": False,
+        "method_extracted": [],
+        "not_inferable": ["cobweb-plot procedure details", "recommended MoP ranking"],
+        "used_by": ["context only"],
+        "paper_slot": "方法背景（未用于实现）",
+    },
+    {
+        "id": "L9", "zotero_key": "I4NU8C5G", "collections": ["PWZDPXEE"],
+        "tags": ["AAD/Stage0.5", "AAD/Role/contextual"],
+        "item_type": "journalArticle",
+        "title": "Metastable states in a microscopic model of traffic flow",
+        "authors": ["Krauss, S.", "Wagner, P.", "Gawron, C."],
+        "container": "Physical Review E", "volume": "55", "issue": "5", "pages": "5597-5602", "year": 1997,
+        "doi": "10.1103/PhysRevE.55.5597", "access": "paywalled",
+        "full_text_read": False, "method_extracted": [],
+        "not_inferable": ["metastability thresholds from the paper"],
+        "used_by": ["context only"], "paper_slot": "模型理论背景",
+    },
+    {
+        "id": "L10", "zotero_key": "XHLWGAC3", "collections": ["PWZDPXEE"],
+        "tags": ["AAD/Stage0.5", "AAD/Role/contextual"],
+        "item_type": "thesis",
+        "title": "Microscopic Modeling of Traffic Flow: Investigation of Collision Free Vehicle Dynamics",
+        "authors": ["Krauss, Stefan"],
+        "container": "DLR-Forschungsbericht 98-08, Universitat zu Koln", "year": 1998,
+        "url": "https://eclipse.dev/sumo/documents/KraussDiss.pdf", "access": "open (DLR/SUMO mirror)",
+        "full_text_read": False, "method_extracted": [],
+        "not_inferable": ["model derivations read from the thesis; the shipped source is authoritative here"],
+        "used_by": ["context only"], "paper_slot": "模型理论背景",
+    },
+    {
+        "id": "L11", "zotero_key": "B8J8W6P2", "collections": ["PWZDPXEE"],
+        "tags": ["AAD/Stage0.5", "AAD/Method/trajectory-calibration", "AAD/Method/validation", "AAD/Role/contextual"],
+        "item_type": "journalArticle",
+        "title": "Is more always better? The impact of vehicular trajectory completeness on car-following model calibration and validation",
+        "authors": ["Sharma, Anshuman", "Zheng, Zuduo", "Bhaskar, Ashish"],
+        "container": "Transportation Research Part B: Methodological", "volume": "120", "pages": "49-75", "year": 2019,
+        "doi": "10.1016/j.trb.2018.12.016", "access": "paywalled",
+        "full_text_read": False, "method_extracted": [],
+        "not_inferable": ["completeness thresholds from the paper"],
+        "used_by": ["context only"], "paper_slot": "轨迹完整性背景",
+    },
+    {
+        "id": "L12", "zotero_key": "9XZTIZ2S", "collections": ["8PR6RF36"],
+        "tags": ["AAD/Stage0.5", "AAD/Role/contextual"],
+        "item_type": "journalArticle",
+        "title": "Human-like driving behaviour emerges from a risk-based driver model",
+        "authors": ["Kolekar, Sarvesh", "de Winter, Joost", "van Arem, Bart"],
+        "container": "Nature Communications", "volume": "11", "pages": "4850", "year": 2020,
+        "doi": "10.1038/s41467-020-18353-4", "access": "open",
+        "full_text_read": False, "method_extracted": [],
+        "not_inferable": ["risk-based driver model parameters"],
+        "used_by": ["context only"], "paper_slot": "驾驶行为机制背景",
+    },
+]
+
+
+def ris(entries):
+    lines = []
+    for entry in entries:
+        if entry["item_type"] not in {"journalArticle", "thesis", "report"}:
+            continue
+        lines.append("TY  - " + {"journalArticle": "JOUR", "thesis": "THES", "report": "RPRT"}[entry["item_type"]])
+        lines.append(f"TI  - {entry['title']}")
+        for author in entry["authors"]:
+            if "," in author:
+                family, given = author.split(",", 1)
+                lines.append(f"AU  - {family.strip()}, {given.strip()}")
+            else:
+                lines.append(f"AU  - {author}")
+        lines.append(f"PY  - {entry['year']}")
+        if entry["item_type"] == "journalArticle":
+            lines.append(f"T2  - {entry['container']}")
+            if entry.get("volume"):
+                lines.append(f"VL  - {entry['volume']}")
+            if entry.get("issue"):
+                lines.append(f"IS  - {entry['issue']}")
+            if entry.get("pages"):
+                lines.append(f"SP  - {entry['pages'].split('-')[0]}")
+                if "-" in entry["pages"]:
+                    lines.append(f"EP  - {entry['pages'].split('-')[-1]}")
+        elif entry["item_type"] == "report":
+            lines.append(f"PB  - {entry['container']}")
+        else:
+            lines.append(f"PB  - {entry['container']}")
+        if entry.get("doi"):
+            lines.append(f"DO  - {entry['doi']}")
+        if entry.get("url"):
+            lines.append(f"UR  - {entry['url']}")
+        for tag in entry["tags"]:
+            lines.append(f"KW  - {tag}")
+        lines.append(f"N1  - Zotero key: {entry['zotero_key'] or 'not in Zotero (software source)'}")
+        lines.append("ER  - ")
+        lines.append("")
+    return "\n".join(lines)
+
+
+def main():
+    OUT.mkdir(parents=True, exist_ok=True)
+    index = {
+        "schema_version": "aad.stage-0.5.method-index.v1",
+        "result_id": RESULT,
+        "verified_date": "2026-10-20",
+        "zotero_library": "TJU -> AAD",
+        "zotero_collections": {
+            "PWZDPXEE": "07_微观跟驰校准与轨迹重放",
+            "LHV4VHW7": "08_拥堵状态识别与时空传播",
+            "2BMKNCD3": "09_仿真校准规范与验证",
+        },
+        "verification_rule": "bibliographic fields verified against Crossref DOI records or the publisher/official page; full_text_read distinguishes what was actually read",
+        "entries": ENTRIES,
+    }
+    (OUT / "stage_0_5_method_index.json").write_text(
+        json.dumps(index, ensure_ascii=False, indent=1) + "\n", encoding="utf-8"
+    )
+    (OUT / "stage_0_5_method_references.ris").write_text(ris(ENTRIES), encoding="utf-8")
+    print("wrote", OUT / "stage_0_5_method_index.json")
+    print("wrote", OUT / "stage_0_5_method_references.ris")
+
+
+if __name__ == "__main__":
+    main()

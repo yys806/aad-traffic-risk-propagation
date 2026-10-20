@@ -1,6 +1,26 @@
 # AAD Current State Snapshot
 
-## 2026-10-21 真实交通重建与条件场景诊断（当前）
+## 2026-10-20 文献依据的行为诊断（当前）
+
+`RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1`（AAD-0.5-LIT-CAL）：把每个方法绑定到经原文核验的文献，并在**逐对微观层面**检验「有效 `tau` ≈1.6 s 能否修复错配」。**未新增科学结论支持，Gate 不变。**
+
+主线 A（只读，20 个「窗口 × 规则」组合）：低速波的**方向与起始位置稳健**——10 种状态定义中除 2 条饱和规则（绝对 15 m/s；以工程值 27.78 m/s 为参考的 `λ<0.5`）外，**16/16** 均为向上游扩张，最早位置一律 **y=500–650 m**，反向传播速度 2.0–8.3 m/s。逐时间片空间置换零模型（1000 次、种子 20261031）：Duan `W<0.5`（窗口 p95）与 Saberi `λ<0.3–0.6` 下最大连通域显著超出随机排列（超越率 0.000–0.142，两窗口一致）；但 **0750 在绝对 10 m/s 下不可区分于随机（0.999）**，因此 TR-RECON 的「规模」结论收窄为**依赖相对速度定义**。饱和规则失效的原因是把工程配置速度当成实测自由流速度——两条源的参考速度本应来自 30 天 / 24 h 记录，本项目窗口只有 12–16 分钟，属**不可消除的口径差异**（Unidentifiable）。
+
+主线 B（48 次独立微型 SUMO 运行，每窗口 12 对 × 2 配置，内部 0.05 s / 记录 0.1 s / ≤25 s）：前车由 TraCI 逐 0.05 s 施加并预补偿，**前车跟随偏差 0.013–0.112 m**（全部达标），后车完全由模型驱动。**26/48 组合的观测初始状态被 SUMO 自身 Krauss 插入安全包络拒绝（44%）**，集中在拥堵窗口（例：0750 观测净间距 10.65 m、速度 11.36 m/s，`tau=1.0` 下允许的插入速度仅 10.31 m/s）。候选 `tau=1.6` **未改善**跟驰行为：配对 Brockfeld 间距误差 **+19.57 pp**（95% CI [4.25, 35.51]，7 改善 / 13 恶化），间距偏差 **20/20 对变大**（+5.62 m，CI [4.90, 6.33]），`NRMSE(speed)` 基本不变（+0.00）。按观测车头时距分层：<1.0 s 与 1.0–1.5 s 分层显著恶化（+56.7、+63.8 pp）；1.5–10 s 分层接近中性（−2.60 pp，CI [−12.95, 8.56]）且速度指标略改善（−0.01，CI [−0.02, −0.00]）→ **指标冲突 + 状态异质性**。
+
+**结论收窄（Derived）**：TR-RECON 的「有效 `tau` ≈1.53–1.63 s」是**拥堵区宏观平衡等效量**，不能当作单一微观 `tau` 使用。按预声明门控（「候选须在两窗口均改善间距误差且核心指标不恶化」）→ 判定为**不支持**，**主线 C 未执行**，RC1/RC2/RC3 原样保留。三处重放实现缺陷（后车 `setSpeed` 冻结速度、前车位置每样本领先、模拟/观测时钟错一拍）已修复并有回归测试，缺陷版本中间结果未进入任何报告数值。
+
+文献（P0）：Zotero `TJU → AAD` 新建 `07_微观跟驰校准与轨迹重放`、`08_拥堵状态识别与时空传播`、`09_仿真校准规范与验证` 三个专题集合；补入 8 条经 DOI 核验的条目（Brockfeld、Kesting、Punzo、Krauss PRE、Krauß 博士论文、Sharma、Schrader、FHWA-HOP-18-036），Duan 2023 与 Saberi 2020 加入 08 并补方法标签，**未新建重复条目**。方法表区分「全文已读 6 篇（含公式与章节号）」与「仅元数据核验 6 篇（未据其采用任何公式）」。
+
+日期勘误：`afdc3d0` 中三份文档原标 2026-10-21，核对 author/committer date（2026-10-20 20:20:17 +08:00）与本地时区后确认**实际执行日为 2026-10-20**，已在文档与 `budget_ledger_audit.json` 显式登记勘误，文件名与已提交正文按惯例保留。
+
+预算台账：`RES-STAGE-0.5-FINAL-CLOSURE-V1` 的 FR1/FR2 与本任务的 48 次微型重放分属不同授权；RC1r/RC2r 亦未转移（`budget_ledger_audit.json`）。
+
+第三窗口读取 0 行、holdout 0 次。Gate=`pending_simulation_sample`、`scientific_claim_eligible=false`、`reality_coverage_accepted=false`、`protocol_lock_allowed=false`、`stage_1_1_allowed=false`。
+
+报告 `docs/STAGE_0_5_TRAFFIC_STATE_DEFINITION_SENSITIVITY.md`、`docs/STAGE_0_5_LEADER_REPLAY_BEHAVIOUR_DIAGNOSTICS.md`、`doc/literature-notes/STAGE_0_5_METHOD_EVIDENCE_MAP.md`；计划 `docs/plans/2026-10-20-stage-0-5-literature-calibration.md`；证据 `evidence/results/RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1/`。
+
+## 2026-10-21 真实交通重建与条件场景诊断（历史；原标注日期见文末勘误）
 
 `RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1`（AAD-0.5-TR-RECON）：只读重建两个已批准校准窗口的交通过程，并按任务书 §3.2 重新规划诊断预算执行 3 项运行前冻结的 SUMO 诊断。**未新增科学结论，Gate 不变。**
 

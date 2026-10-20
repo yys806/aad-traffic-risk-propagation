@@ -1,0 +1,1197 @@
+{
+ "rules": [
+  {
+   "name": "absolute_5mps",
+   "kind": "absolute",
+   "threshold_mps": 5.0,
+   "source": "project descriptive threshold (10 m/s) and a finite neighbourhood"
+  },
+  {
+   "name": "absolute_10mps",
+   "kind": "absolute",
+   "threshold_mps": 10.0,
+   "source": "project descriptive threshold (10 m/s) and a finite neighbourhood"
+  },
+  {
+   "name": "absolute_15mps",
+   "kind": "absolute",
+   "threshold_mps": 15.0,
+   "source": "project descriptive threshold (10 m/s) and a finite neighbourhood"
+  },
+  {
+   "name": "duan_w_lt_0.5_p95_reference",
+   "kind": "relative",
+   "reference": "p95_of_window",
+   "rho": 0.5,
+   "source": "Duan et al. (2023) Eq. 9: W=U/U95, congested if W<0.5",
+   "adaptation": "U95 computed over the same observation window, not a 24 h record"
+  },
+  {
+   "name": "saberi_lambda_lt_0.3_max_reference",
+   "kind": "relative",
+   "reference": "max_of_window",
+   "rho": 0.3,
+   "source": "Saberi et al. (2020) Eq. 1-2: lambda=v/v_max, congested if lambda<rho",
+   "adaptation": "v_max computed from the same observation window, not a 24 h cycle"
+  },
+  {
+   "name": "saberi_lambda_lt_0.4_max_reference",
+   "kind": "relative",
+   "reference": "max_of_window",
+   "rho": 0.4,
+   "source": "Saberi et al. (2020) Eq. 1-2: lambda=v/v_max, congested if lambda<rho",
+   "adaptation": "v_max computed from the same observation window, not a 24 h cycle"
+  },
+  {
+   "name": "saberi_lambda_lt_0.5_max_reference",
+   "kind": "relative",
+   "reference": "max_of_window",
+   "rho": 0.5,
+   "source": "Saberi et al. (2020) Eq. 1-2: lambda=v/v_max, congested if lambda<rho",
+   "adaptation": "v_max computed from the same observation window, not a 24 h cycle"
+  },
+  {
+   "name": "saberi_lambda_lt_0.6_max_reference",
+   "kind": "relative",
+   "reference": "max_of_window",
+   "rho": 0.6,
+   "source": "Saberi et al. (2020) Eq. 1-2: lambda=v/v_max, congested if lambda<rho",
+   "adaptation": "v_max computed from the same observation window, not a 24 h cycle"
+  },
+  {
+   "name": "saberi_lambda_lt_0.5_engineering_reference",
+   "kind": "relative",
+   "reference": "engineering_max_speed",
+   "rho": 0.5,
+   "source": "Saberi et al. (2020) Eq. 1-2 with a fixed reference speed",
+   "adaptation": "27.78 m/s is the frozen SUMO vType maxSpeed, an engineering setting and NOT a measured free-flow speed"
+  },
+  {
+   "name": "fhwa_one_third_engineering_reference",
+   "kind": "absolute",
+   "threshold_mps": 9.26,
+   "source": "FHWA (2019) Chapter 5: congestion speed threshold ~1/3 of observed free-flow speed",
+   "adaptation": "the reference is the engineering maxSpeed, so this is a rule-of-thumb anchor, not an observation-anchored threshold"
+  }
+ ],
+ "windows": {
+  "us101__0750_0805": {
+   "grid_cells": [
+    24,
+    14
+   ],
+   "missing_cells": 15,
+   "per_rule": {
+    "absolute_5mps": {
+     "description": {
+      "slow_cell_fraction": 0.026785714285714284,
+      "component_count": 3,
+      "largest_cells": 4,
+      "largest_duration_s": 30.0,
+      "largest_first_time_s": 780.0,
+      "largest_first_position_m": [
+       400.0,
+       550.0
+      ],
+      "largest_last_position_m": [
+       400.0,
+       550.0
+      ],
+      "growth": "stationary",
+      "backward_speed_mps": null,
+      "y_step_m": 50.0,
+      "t_step_s": 30.0
+     },
+     "null": {
+      "largest_cells": {
+       "observed": 4.0,
+       "null_mean": 3.207,
+       "null_p95": 5.0,
+       "exceedance": 0.322
+      },
+      "slow_cell_fraction": {
+       "observed": 0.026785714285714284,
+       "null_mean": 0.026785714285714284,
+       "null_p95": 0.026785714285714284,
+       "exceedance": 1.0
+      },
+      "component_count": {
+       "observed": 3.0,
+       "null_mean": 5.753,
+       "null_p95": 8.0,
+       "exceedance": 0.994
+      },
+      "largest_duration_s": {
+       "observed": 30.0,
+       "null_mean": 58.41,
+       "null_p95": 90.0,
+       "exceedance": 1.0
+      }
+     },
+     "exceedance_largest_cells": 0.322
+    },
+    "absolute_10mps": {
+     "description": {
+      "slow_cell_fraction": 0.23511904761904762,
+      "component_count": 9,
+      "largest_cells": 28,
+      "largest_duration_s": 90.0,
+      "largest_first_time_s": 750.0,
+      "largest_first_position_m": [
+       500.0,
+       650.0
+      ],
+      "largest_last_position_m": [
+       0.0,
+       600.0
+      ],
+      "growth": "upstream",
+      "backward_speed_mps": 8.333333333333334,
+      "y_step_m": 50.0,
+      "t_step_s": 30.0
+     },
+     "null": {
+      "largest_cells": {
+       "observed": 28.0,
+       "null_mean": 32.138,
+       "null_p95": 35.0,
+       "exceedance": 0.999
+      },
+      "slow_cell_fraction": {
+       "observed": 0.23511904761904762,
+       "null_mean": 0.23511904761904756,
+       "null_p95": 0.23511904761904762,
+       "exceedance": 1.0
+      },
+      "component_count": {
+       "observed": 9.0,
+       "null_mean": 30.723,
+       "null_p95": 36.0,
+       "exceedance": 1.0
+      },
+      "largest_duration_s": {
+       "observed": 90.0,
+       "null_mean": 118.77,
+       "null_p95": 120.0,
+       "exceedance": 1.0
+      }
+     },
+     "exceedance_largest_cells": 0.999
+    },
+    "absolute_15mps": {
+     "description": {
+      "slow_cell_fraction": 0.7023809523809523,
+      "component_count": 1,
+      "largest_cells": 236,
+      "largest_duration_s": 720.0,
+      "largest_first_time_s": 120.0,
+      "largest_first_position_m": [
+       0.0,
+       250.0
+      ],
+      "largest_last_position_m": [
+       0.0,
+       600.0
+      ],
+      "growth": "downstream",
+      "backward_speed_mps": 0.5072463768115942,
+      "y_step_m": 50.0,
+      "t_step_s": 30.0
+     },
+     "null": {
+      "largest_cells": {
+       "observed": 236.0,
+       "null_mean": 205.421,
+       "null_p95": 226.0,
+       "exceedance": 0.0
+      },
+      "slow_cell_fraction": {
+       "observed": 0.7023809523809523,
+       "null_mean": 0.7023809523809524,
+       "null_p95": 0.7023809523809523,
+       "exceedance": 1.0
+      },
+      "component_count": {
+       "observed": 1.0,
+       "null_mean": 10.535,
+       "null_p95": 15.0,
+       "exceedance": 1.0
+      },
+      "largest_duration_s": {
+       "observed": 720.0,
+       "null_mean": 681.15,
+       "null_p95": 720.0,
+       "exceedance": 0.5
+      }
+     },
+     "exceedance_largest_cells": 0.0
+    },
+    "duan_w_lt_0.5_p95_reference": {
+     "description": {
+      "slow_cell_fraction": 0.05952380952380952,
+      "component_count": 1,
+      "largest_cells": 20,
+      "largest_duration_s": 90.0,
+      "largest_first_time_s": 750.0,
+      "largest_first_position_m": [
+       500.0,
+       650.0
+      ],
+      "largest_last_position_m": [
+       150.0,
+       600.0
+      ],
+      "growth": "upstream",
+      "backward_speed_mps": 5.833333333333333,
+      "y_step_m": 50.0,
+      "t_step_s": 30.0
+     },
+     "null": {
+      "largest_cells": {
+       "observed": 20.0,
+       "null_mean": 10.458,
+       "null_p95": 16.0,
+       "exceedance": 0.0
+      },
+      "slow_cell_fraction": {
+       "observed": 0.05952380952380952,
+       "null_mean": 0.05952380952380953,
+       "null_p95": 0.05952380952380952,
+       "exceedance": 1.0
+      },
+      "component_count": {
+       "observed": 1.0,
+       "null_mean": 5.094,
+       "null_p95": 8.0,
+       "exceedance": 1.0
+      },
+      "largest_duration_s": {
+       "observed": 90.0,
+       "null_mean": 82.41,
+       "null_p95": 90.0,
+       "exceedance": 0.747
+      }
+     },
+     "exceedance_largest_cells": 0.0
+    },
+    "saberi_lambda_lt_0.3_max_reference": {
+     "description": {
+      "slow_cell_fraction": 0.03273809523809524,
+      "component_count": 2,
+      "largest_cells": 7,
+      "largest_duration_s": 60.0,
+      "largest_first_time_s": 750.0,
+      "largest_first_position_m": [
+       550.0,
+       650.0
+      ],
+      "largest_last_position_m": [
+       400.0,
+       550.0
+      ],
+      "growth": "upstream",
+      "backward_speed_mps": 5.0,
+      "y_step_m": 50.0,
+      "t_step_s": 30.0
+     },
+     "null": {
+      "largest_cells": {
+       "observed": 7.0,
+       "null_mean": 3.626,
+       "null_p95": 6.0,
+       "exceedance": 0.027
+      },
+      "slow_cell_fraction": {
+       "observed": 0.03273809523809524,
+       "null_mean": 0.03273809523809524,
+       "null_p95": 0.03273809523809524,
+       "exceedance": 1.0
+      },
+      "component_count": {
+       "observed": 2.0,
+       "null_mean": 6.809,
+       "null_p95": 9.0,
+       "exceedance": 1.0
+      },
+      "largest_duration_s": {
+       "observed": 60.0,
+       "null_mean": 66.12,
+       "null_p95": 90.0,
+       "exceedance": 0.897
+      }
+     },
+     "exceedance_largest_cells": 0.027
+    },
+    "saberi_lambda_lt_0.4_max_reference": {
+     "description": {
+      "slow_cell_fraction": 0.041666666666666664,
+      "component_count": 1,
+      "largest_cells": 14,
+      "largest_duration_s": 90.0,
+      "largest_first_time_s": 750.0,
+      "largest_first_position_m": [
+       550.0,
+       650.0
+      ],
+      "largest_last_position_m": [
+       200.0,
+       400.0
+      ],
+      "growth": "upstream",
+      "backward_speed_mps": 5.833333333333333,
+      "y_step_m": 50.0,
+      "t_step_s": 30.0
+     },
+     "null": {
+      "largest_cells": {
+       "observed": 14.0,
+       "null_mean": 5.305,
+       "null_p95": 9.0,
+       "exceedance": 0.0
+      },
+      "slow_cell_fraction": {
+       "observed": 0.041666666666666664,
+       "null_mean": 0.04166666666666666,
+       "null_p95": 0.041666666666666664,
+       "exceedance": 1.0
+      },
+      "component_count": {
+       "observed": 1.0,
+       "null_mean": 6.519,
+       "null_p95": 9.0,
+       "exceedance": 1.0
+      },
+      "largest_duration_s": {
+       "observed": 90.0,
+       "null_mean": 75.81,
+       "null_p95": 90.0,
+       "exceedance": 0.538
+      }
+     },
+     "exceedance_largest_cells": 0.0
+    },
+    "saberi_lambda_lt_0.5_max_reference": {
+     "description": {
+      "slow_cell_fraction": 0.0625,
+      "component_count": 2,
+      "largest_cells": 20,
+      "largest_duration_s": 90.0,
+      "largest_first_time_s": 750.0,
+      "largest_first_position_m": [
+       500.0,
+       650.0
+      ],
+      "largest_last_position_m": [
+       150.0,
+       600.0
+      ],
+      "growth": "upstream",
+      "backward_speed_mps": 5.833333333333333,
+      "y_step_m": 50.0,
+      "t_step_s": 30.0
+     },
+     "null": {
+      "largest_cells": {
+       "observed": 20.0,
+       "null_mean": 10.937,
+       "null_p95": 17.0,
+       "exceedance": 0.003
+      },
+      "slow_cell_fraction": {
+       "observed": 0.0625,
+       "null_mean": 0.0625,
+       "null_p95": 0.0625,
+       "exceedance": 1.0
+      },
+      "component_count": {
+       "observed": 2.0,
+       "null_mean": 5.195,
+       "null_p95": 8.0,
+       "exceedance": 1.0
+      },
+      "largest_duration_s": {
+       "observed": 90.0,
+       "null_mean": 85.05,
+       "null_p95": 90.0,
+       "exceedance": 0.835
+      }
+     },
+     "exceedance_largest_cells": 0.003
+    },
+    "saberi_lambda_lt_0.6_max_reference": {
+     "description": {
+      "slow_cell_fraction": 0.13095238095238096,
+      "component_count": 14,
+      "largest_cells": 23,
+      "largest_duration_s": 90.0,
+      "largest_first_time_s": 750.0,
+      "largest_first_position_m": [
+       500.0,
+       650.0
+      ],
+      "largest_last_position_m": [
+       50.0,
+       600.0
+      ],
+      "growth": "upstream",
+      "backward_speed_mps": 7.5,
+      "y_step_m": 50.0,
+      "t_step_s": 30.0
+     },
+     "null": {
+      "largest_cells": {
+       "observed": 23.0,
+       "null_mean": 17.994,
+       "null_p95": 24.0,
+       "exceedance": 0.142
+      },
+      "slow_cell_fraction": {
+       "observed": 0.13095238095238096,
+       "null_mean": 0.13095238095238096,
+       "null_p95": 0.13095238095238096,
+       "exceedance": 1.0
+      },
+      "component_count": {
+       "observed": 14.0,
+       "null_mean": 18.895,
+       "null_p95": 22.0,
+       "exceedance": 0.997
+      },
+      "largest_duration_s": {
+       "observed": 90.0,
+       "null_mean": 94.53,
+       "null_p95": 120.0,
+       "exceedance": 0.952
+      }
+     },
+     "exceedance_largest_cells": 0.142
+    },
+    "saberi_lambda_lt_0.5_engineering_reference": {
+     "description": {
+      "slow_cell_fraction": 0.6190476190476191,
+      "component_count": 2,
+      "largest_cells": 197,
+      "largest_duration_s": 720.0,
+      "largest_first_time_s": 120.0,
+      "largest_first_position_m": [
+       0.0,
+       200.0
+      ],
+      "largest_last_position_m": [
+       0.0,
+       600.0
+      ],
+      "growth": "downstream",
+      "backward_speed_mps": 0.5797101449275363,
+      "y_step_m": 50.0,
+      "t_step_s": 30.0
+     },
+     "null": {
+      "largest_cells": {
+       "observed": 197.0,
+       "null_mean": 161.238,
+       "null_p95": 191.0,
+       "exceedance": 0.01
+      },
+      "slow_cell_fraction": {
+       "observed": 0.6190476190476191,
+       "null_mean": 0.6190476190476188,
+       "null_p95": 0.6190476190476191,
+       "exceedance": 1.0
+      },
+      "component_count": {
+       "observed": 2.0,
+       "null_mean": 14.452,
+       "null_p95": 20.0,
+       "exceedance": 1.0
+      },
+      "largest_duration_s": {
+       "observed": 720.0,
+       "null_mean": 615.96,
+       "null_p95": 720.0,
+       "exceedance": 0.121
+      }
+     },
+     "exceedance_largest_cells": 0.01
+    },
+    "fhwa_one_third_engineering_reference": {
+     "description": {
+      "slow_cell_fraction": 0.18452380952380953,
+      "component_count": 10,
+      "largest_cells": 24,
+      "largest_duration_s": 90.0,
+      "largest_first_time_s": 750.0,
+      "largest_first_position_m": [
+       500.0,
+       650.0
+      ],
+      "largest_last_position_m": [
+       0.0,
+       600.0
+      ],
+      "growth": "upstream",
+      "backward_speed_mps": 8.333333333333334,
+      "y_step_m": 50.0,
+      "t_step_s": 30.0
+     },
+     "null": {
+      "largest_cells": {
+       "observed": 24.0,
+       "null_mean": 25.811,
+       "null_p95": 29.0,
+       "exceedance": 0.849
+      },
+      "slow_cell_fraction": {
+       "observed": 0.18452380952380953,
+       "null_mean": 0.18452380952380945,
+       "null_p95": 0.18452380952380953,
+       "exceedance": 1.0
+      },
+      "component_count": {
+       "observed": 10.0,
+       "null_mean": 26.716,
+       "null_p95": 31.0,
+       "exceedance": 1.0
+      },
+      "largest_duration_s": {
+       "observed": 90.0,
+       "null_mean": 113.73,
+       "null_p95": 120.0,
+       "exceedance": 0.997
+      }
+     },
+     "exceedance_largest_cells": 0.849
+    }
+   }
+  },
+  "us101__0805_0820": {
+   "grid_cells": [
+    22,
+    14
+   ],
+   "missing_cells": 0,
+   "per_rule": {
+    "absolute_5mps": {
+     "description": {
+      "slow_cell_fraction": 0.16883116883116883,
+      "component_count": 8,
+      "largest_cells": 33,
+      "largest_duration_s": 180.0,
+      "largest_first_time_s": 630.0,
+      "largest_first_position_m": [
+       650.0,
+       650.0
+      ],
+      "largest_last_position_m": [
+       0.0,
+       100.0
+      ],
+      "growth": "upstream",
+      "backward_speed_mps": 4.333333333333333,
+      "y_step_m": 50.0,
+      "t_step_s": 30.0
+     },
+     "null": {
+      "largest_cells": {
+       "observed": 33.0,
+       "null_mean": 15.519,
+       "null_p95": 24.0,
+       "exceedance": 0.0
+      },
+      "slow_cell_fraction": {
+       "observed": 0.16883116883116883,
+       "null_mean": 0.16883116883116883,
+       "null_p95": 0.16883116883116883,
+       "exceedance": 1.0
+      },
+      "component_count": {
+       "observed": 8.0,
+       "null_mean": 18.787,
+       "null_p95": 23.0,
+       "exceedance": 1.0
+      },
+      "largest_duration_s": {
+       "observed": 180.0,
+       "null_mean": 137.22,
+       "null_p95": 180.0,
+       "exceedance": 0.107
+      }
+     },
+     "exceedance_largest_cells": 0.0
+    },
+    "absolute_10mps": {
+     "description": {
+      "slow_cell_fraction": 0.5551948051948052,
+      "component_count": 5,
+      "largest_cells": 91,
+      "largest_duration_s": 300.0,
+      "largest_first_time_s": 180.0,
+      "largest_first_position_m": [
+       550.0,
+       650.0
+      ],
+      "largest_last_position_m": [
+       0.0,
+       50.0
+      ],
+      "growth": "upstream",
+      "backward_speed_mps": 2.037037037037037,
+      "y_step_m": 50.0,
+      "t_step_s": 30.0
+     },
+     "null": {
+      "largest_cells": {
+       "observed": 91.0,
+       "null_mean": 86.365,
+       "null_p95": 90.0,
+       "exceedance": 0.019
+      },
+      "slow_cell_fraction": {
+       "observed": 0.5551948051948052,
+       "null_mean": 0.5551948051948052,
+       "null_p95": 0.5551948051948052,
+       "exceedance": 1.0
+      },
+      "component_count": {
+       "observed": 5.0,
+       "null_mean": 10.411,
+       "null_p95": 14.0,
+       "exceedance": 0.998
+      },
+      "largest_duration_s": {
+       "observed": 300.0,
+       "null_mean": 271.74,
+       "null_p95": 300.0,
+       "exceedance": 0.234
+      }
+     },
+     "exceedance_largest_cells": 0.019
+    },
+    "absolute_15mps": {
+     "description": {
+      "slow_cell_fraction": 1.0,
+      "component_count": 1,
+      "largest_cells": 308,
+      "largest_duration_s": 660.0,
+      "largest_first_time_s": 180.0,
+      "largest_first_position_m": [
+       0.0,
+       650.0
+      ],
+      "largest_last_position_m": [
+       0.0,
+       650.0
+      ],
+      "growth": "stationary",
+      "backward_speed_mps": null,
+      "y_step_m": 50.0,
+      "t_step_s": 30.0
+     },
+     "null": {
+      "largest_cells": {
+       "observed": 308.0,
+       "null_mean": 308.0,
+       "null_p95": 308.0,
+       "exceedance": 1.0
+      },
+      "slow_cell_fraction": {
+       "observed": 1.0,
+       "null_mean": 1.0,
+       "null_p95": 1.0,
+       "exceedance": 1.0
+      },
+      "component_count": {
+       "observed": 1.0,
+       "null_mean": 1.0,
+       "null_p95": 1.0,
+       "exceedance": 1.0
+      },
+      "largest_duration_s": {
+       "observed": 660.0,
+       "null_mean": 660.0,
+       "null_p95": 660.0,
+       "exceedance": 1.0
+      }
+     },
+     "exceedance_largest_cells": 1.0
+    },
+    "duan_w_lt_0.5_p95_reference": {
+     "description": {
+      "slow_cell_fraction": 0.275974025974026,
+      "component_count": 4,
+      "largest_cells": 45,
+      "largest_duration_s": 180.0,
+      "largest_first_time_s": 630.0,
+      "largest_first_position_m": [
+       500.0,
+       650.0
+      ],
+      "largest_last_position_m": [
+       0.0,
+       200.0
+      ],
+      "growth": "upstream",
+      "backward_speed_mps": 3.3333333333333335,
+      "y_step_m": 50.0,
+      "t_step_s": 30.0
+     },
+     "null": {
+      "largest_cells": {
+       "observed": 45.0,
+       "null_mean": 29.146,
+       "null_p95": 42.0,
+       "exceedance": 0.001
+      },
+      "slow_cell_fraction": {
+       "observed": 0.275974025974026,
+       "null_mean": 0.27597402597402604,
+       "null_p95": 0.275974025974026,
+       "exceedance": 1.0
+      },
+      "component_count": {
+       "observed": 4.0,
+       "null_mean": 19.487,
+       "null_p95": 25.0,
+       "exceedance": 1.0
+      },
+      "largest_duration_s": {
+       "observed": 180.0,
+       "null_mean": 173.43,
+       "null_p95": 180.0,
+       "exceedance": 0.781
+      }
+     },
+     "exceedance_largest_cells": 0.001
+    },
+    "saberi_lambda_lt_0.3_max_reference": {
+     "description": {
+      "slow_cell_fraction": 0.07467532467532467,
+      "component_count": 8,
+      "largest_cells": 9,
+      "largest_duration_s": 90.0,
+      "largest_first_time_s": 630.0,
+      "largest_first_position_m": [
+       650.0,
+       650.0
+      ],
+      "largest_last_position_m": [
+       350.0,
+       500.0
+      ],
+      "growth": "upstream",
+      "backward_speed_mps": 5.0,
+      "y_step_m": 50.0,
+      "t_step_s": 30.0
+     },
+     "null": {
+      "largest_cells": {
+       "observed": 9.0,
+       "null_mean": 4.251,
+       "null_p95": 7.0,
+       "exceedance": 0.012
+      },
+      "slow_cell_fraction": {
+       "observed": 0.07467532467532467,
+       "null_mean": 0.07467532467532467,
+       "null_p95": 0.07467532467532467,
+       "exceedance": 1.0
+      },
+      "component_count": {
+       "observed": 8.0,
+       "null_mean": 15.711,
+       "null_p95": 19.0,
+       "exceedance": 1.0
+      },
+      "largest_duration_s": {
+       "observed": 90.0,
+       "null_mean": 75.93,
+       "null_p95": 120.0,
+       "exceedance": 0.486
+      }
+     },
+     "exceedance_largest_cells": 0.012
+    },
+    "saberi_lambda_lt_0.4_max_reference": {
+     "description": {
+      "slow_cell_fraction": 0.2077922077922078,
+      "component_count": 8,
+      "largest_cells": 37,
+      "largest_duration_s": 180.0,
+      "largest_first_time_s": 630.0,
+      "largest_first_position_m": [
+       600.0,
+       650.0
+      ],
+      "largest_last_position_m": [
+       0.0,
+       150.0
+      ],
+      "growth": "upstream",
+      "backward_speed_mps": 4.0,
+      "y_step_m": 50.0,
+      "t_step_s": 30.0
+     },
+     "null": {
+      "largest_cells": {
+       "observed": 37.0,
+       "null_mean": 18.542,
+       "null_p95": 28.049999999999955,
+       "exceedance": 0.0
+      },
+      "slow_cell_fraction": {
+       "observed": 0.2077922077922078,
+       "null_mean": 0.2077922077922078,
+       "null_p95": 0.2077922077922078,
+       "exceedance": 1.0
+      },
+      "component_count": {
+       "observed": 8.0,
+       "null_mean": 21.397,
+       "null_p95": 27.0,
+       "exceedance": 1.0
+      },
+      "largest_duration_s": {
+       "observed": 180.0,
+       "null_mean": 151.08,
+       "null_p95": 180.0,
+       "exceedance": 0.268
+      }
+     },
+     "exceedance_largest_cells": 0.0
+    },
+    "saberi_lambda_lt_0.5_max_reference": {
+     "description": {
+      "slow_cell_fraction": 0.2922077922077922,
+      "component_count": 5,
+      "largest_cells": 47,
+      "largest_duration_s": 210.0,
+      "largest_first_time_s": 630.0,
+      "largest_first_position_m": [
+       500.0,
+       650.0
+      ],
+      "largest_last_position_m": [
+       0.0,
+       0.0
+      ],
+      "growth": "upstream",
+      "backward_speed_mps": 2.7777777777777777,
+      "y_step_m": 50.0,
+      "t_step_s": 30.0
+     },
+     "null": {
+      "largest_cells": {
+       "observed": 47.0,
+       "null_mean": 33.963,
+       "null_p95": 45.0,
+       "exceedance": 0.013
+      },
+      "slow_cell_fraction": {
+       "observed": 0.2922077922077922,
+       "null_mean": 0.2922077922077922,
+       "null_p95": 0.2922077922077922,
+       "exceedance": 1.0
+      },
+      "component_count": {
+       "observed": 5.0,
+       "null_mean": 19.507,
+       "null_p95": 25.0,
+       "exceedance": 1.0
+      },
+      "largest_duration_s": {
+       "observed": 210.0,
+       "null_mean": 182.7,
+       "null_p95": 210.0,
+       "exceedance": 0.211
+      }
+     },
+     "exceedance_largest_cells": 0.013
+    },
+    "saberi_lambda_lt_0.6_max_reference": {
+     "description": {
+      "slow_cell_fraction": 0.39285714285714285,
+      "component_count": 3,
+      "largest_cells": 64,
+      "largest_duration_s": 270.0,
+      "largest_first_time_s": 180.0,
+      "largest_first_position_m": [
+       600.0,
+       650.0
+      ],
+      "largest_last_position_m": [
+       0.0,
+       50.0
+      ],
+      "growth": "upstream",
+      "backward_speed_mps": 2.5,
+      "y_step_m": 50.0,
+      "t_step_s": 30.0
+     },
+     "null": {
+      "largest_cells": {
+       "observed": 64.0,
+       "null_mean": 51.591,
+       "null_p95": 60.0,
+       "exceedance": 0.001
+      },
+      "slow_cell_fraction": {
+       "observed": 0.39285714285714285,
+       "null_mean": 0.39285714285714296,
+       "null_p95": 0.39285714285714285,
+       "exceedance": 1.0
+      },
+      "component_count": {
+       "observed": 3.0,
+       "null_mean": 13.044,
+       "null_p95": 18.0,
+       "exceedance": 1.0
+      },
+      "largest_duration_s": {
+       "observed": 270.0,
+       "null_mean": 233.46,
+       "null_p95": 270.0,
+       "exceedance": 0.199
+      }
+     },
+     "exceedance_largest_cells": 0.001
+    },
+    "saberi_lambda_lt_0.5_engineering_reference": {
+     "description": {
+      "slow_cell_fraction": 0.961038961038961,
+      "component_count": 1,
+      "largest_cells": 296,
+      "largest_duration_s": 660.0,
+      "largest_first_time_s": 180.0,
+      "largest_first_position_m": [
+       0.0,
+       650.0
+      ],
+      "largest_last_position_m": [
+       0.0,
+       650.0
+      ],
+      "growth": "stationary",
+      "backward_speed_mps": null,
+      "y_step_m": 50.0,
+      "t_step_s": 30.0
+     },
+     "null": {
+      "largest_cells": {
+       "observed": 296.0,
+       "null_mean": 296.0,
+       "null_p95": 296.0,
+       "exceedance": 1.0
+      },
+      "slow_cell_fraction": {
+       "observed": 0.961038961038961,
+       "null_mean": 0.9610389610389608,
+       "null_p95": 0.961038961038961,
+       "exceedance": 1.0
+      },
+      "component_count": {
+       "observed": 1.0,
+       "null_mean": 1.0,
+       "null_p95": 1.0,
+       "exceedance": 1.0
+      },
+      "largest_duration_s": {
+       "observed": 660.0,
+       "null_mean": 660.0,
+       "null_p95": 660.0,
+       "exceedance": 1.0
+      }
+     },
+     "exceedance_largest_cells": 1.0
+    },
+    "fhwa_one_third_engineering_reference": {
+     "description": {
+      "slow_cell_fraction": 0.4805194805194805,
+      "component_count": 4,
+      "largest_cells": 78,
+      "largest_duration_s": 270.0,
+      "largest_first_time_s": 180.0,
+      "largest_first_position_m": [
+       600.0,
+       650.0
+      ],
+      "largest_last_position_m": [
+       0.0,
+       100.0
+      ],
+      "growth": "upstream",
+      "backward_speed_mps": 2.5,
+      "y_step_m": 50.0,
+      "t_step_s": 30.0
+     },
+     "null": {
+      "largest_cells": {
+       "observed": 78.0,
+       "null_mean": 73.303,
+       "null_p95": 77.0,
+       "exceedance": 0.019
+      },
+      "slow_cell_fraction": {
+       "observed": 0.4805194805194805,
+       "null_mean": 0.4805194805194804,
+       "null_p95": 0.4805194805194805,
+       "exceedance": 1.0
+      },
+      "component_count": {
+       "observed": 4.0,
+       "null_mean": 9.284,
+       "null_p95": 13.0,
+       "exceedance": 0.998
+      },
+      "largest_duration_s": {
+       "observed": 270.0,
+       "null_mean": 259.53,
+       "null_p95": 270.0,
+       "exceedance": 0.667
+      }
+     },
+     "exceedance_largest_cells": 0.019
+    }
+   }
+  }
+ },
+ "robustness": {
+  "us101__0750_0805": {
+   "growth_by_rule": {
+    "absolute_5mps": "stationary",
+    "absolute_10mps": "upstream",
+    "absolute_15mps": "downstream",
+    "duan_w_lt_0.5_p95_reference": "upstream",
+    "saberi_lambda_lt_0.3_max_reference": "upstream",
+    "saberi_lambda_lt_0.4_max_reference": "upstream",
+    "saberi_lambda_lt_0.5_max_reference": "upstream",
+    "saberi_lambda_lt_0.6_max_reference": "upstream",
+    "saberi_lambda_lt_0.5_engineering_reference": "downstream",
+    "fhwa_one_third_engineering_reference": "upstream"
+   },
+   "rules_with_upstream_growth": 7,
+   "rules_total": 10,
+   "largest_first_position_by_rule": {
+    "absolute_5mps": [
+     400.0,
+     550.0
+    ],
+    "absolute_10mps": [
+     500.0,
+     650.0
+    ],
+    "absolute_15mps": [
+     0.0,
+     250.0
+    ],
+    "duan_w_lt_0.5_p95_reference": [
+     500.0,
+     650.0
+    ],
+    "saberi_lambda_lt_0.3_max_reference": [
+     550.0,
+     650.0
+    ],
+    "saberi_lambda_lt_0.4_max_reference": [
+     550.0,
+     650.0
+    ],
+    "saberi_lambda_lt_0.5_max_reference": [
+     500.0,
+     650.0
+    ],
+    "saberi_lambda_lt_0.6_max_reference": [
+     500.0,
+     650.0
+    ],
+    "saberi_lambda_lt_0.5_engineering_reference": [
+     0.0,
+     200.0
+    ],
+    "fhwa_one_third_engineering_reference": [
+     500.0,
+     650.0
+    ]
+   },
+   "direction_stable": false
+  },
+  "us101__0805_0820": {
+   "growth_by_rule": {
+    "absolute_5mps": "upstream",
+    "absolute_10mps": "upstream",
+    "absolute_15mps": "stationary",
+    "duan_w_lt_0.5_p95_reference": "upstream",
+    "saberi_lambda_lt_0.3_max_reference": "upstream",
+    "saberi_lambda_lt_0.4_max_reference": "upstream",
+    "saberi_lambda_lt_0.5_max_reference": "upstream",
+    "saberi_lambda_lt_0.6_max_reference": "upstream",
+    "saberi_lambda_lt_0.5_engineering_reference": "stationary",
+    "fhwa_one_third_engineering_reference": "upstream"
+   },
+   "rules_with_upstream_growth": 8,
+   "rules_total": 10,
+   "largest_first_position_by_rule": {
+    "absolute_5mps": [
+     650.0,
+     650.0
+    ],
+    "absolute_10mps": [
+     550.0,
+     650.0
+    ],
+    "absolute_15mps": [
+     0.0,
+     650.0
+    ],
+    "duan_w_lt_0.5_p95_reference": [
+     500.0,
+     650.0
+    ],
+    "saberi_lambda_lt_0.3_max_reference": [
+     650.0,
+     650.0
+    ],
+    "saberi_lambda_lt_0.4_max_reference": [
+     600.0,
+     650.0
+    ],
+    "saberi_lambda_lt_0.5_max_reference": [
+     500.0,
+     650.0
+    ],
+    "saberi_lambda_lt_0.6_max_reference": [
+     600.0,
+     650.0
+    ],
+    "saberi_lambda_lt_0.5_engineering_reference": [
+     0.0,
+     650.0
+    ],
+    "fhwa_one_third_engineering_reference": [
+     600.0,
+     650.0
+    ]
+   },
+   "direction_stable": false
+  }
+ },
+ "design": {
+  "permutations": 1000,
+  "null_seed": 20261031,
+  "grid": {
+   "y_step_m": 50.0,
+   "t_step_s": 30.0
+  },
+  "note": "permutation count, seed and grid are project implementation choices, not paper values"
+ },
+ "result_id": "RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1",
+ "source_files": {
+  "us101__0750_0805": {
+   "path": "code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r4/states/ngsim_us101__0750_0805.parquet",
+   "sha256": "684a5f0b96dc48116f16d581c278d7039c0554bf1c3cea8d6eda3e605e3e8644"
+  },
+  "us101__0805_0820": {
+   "path": "code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r4/states/ngsim_us101__0805_0820.parquet",
+   "sha256": "7b0ef830c97a981da018d4e24b029e38aa2630387c728ea87b57926745880a9f"
+  }
+ }
+}

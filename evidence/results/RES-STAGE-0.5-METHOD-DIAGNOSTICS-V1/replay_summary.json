@@ -1,0 +1,1950 @@
+{
+ "configs": {
+  "1.00": {
+   "pairs": 23,
+   "brockfeld_gap_error_pct": {
+    "mean": 29.27142132383342,
+    "median": 24.393257949198336,
+    "min": 4.8611287270043535,
+    "max": 65.94692249104118
+   },
+   "nrmse_gap": {
+    "mean": 0.3215209970065289,
+    "median": 0.25802797491238677,
+    "min": 0.05778250982829455,
+    "max": 0.7089834351754962
+   },
+   "nrmse_speed": {
+    "mean": 0.09388678723165063,
+    "median": 0.08834593315320091,
+    "min": 0.05571570642431689,
+    "max": 0.18655327593133073
+   },
+   "gap_bias_m": {
+    "mean": -0.9835225514424938,
+    "median": -0.7617261560440365,
+    "min": -11.456662329626175,
+    "max": 5.259340684705767
+   },
+   "gap_mae_m": {
+    "mean": 4.234999185740423,
+    "median": 4.179318975673597,
+    "min": 0.5990942534181064,
+    "max": 11.474041126119863
+   },
+   "speed_bias_mps": {
+    "mean": 0.14206635643061202,
+    "median": 0.11223317881477748,
+    "min": -0.44829900256087907,
+    "max": 1.3288669092109509
+   },
+   "speed_mae_mps": {
+    "mean": 0.6965945100151739,
+    "median": 0.6886645592330324,
+    "min": 0.36214496294936,
+    "max": 1.6079102281373943
+   },
+   "observed_time_gap_mean_s": {
+    "mean": 1.9856210404450085,
+    "median": 1.6646195381093334,
+    "min": 0.9514588167110881,
+    "max": 8.955679578452738
+   }
+  },
+  "1.60": {
+   "pairs": 20,
+   "brockfeld_gap_error_pct": {
+    "mean": 49.68435367105564,
+    "median": 24.047892536881143,
+    "min": 2.7752095955715275,
+    "max": 117.77387569360786
+   },
+   "nrmse_gap": {
+    "mean": 0.5210135894574535,
+    "median": 0.27629849247245947,
+    "min": 0.033446223902342656,
+    "max": 1.2772379809194987
+   },
+   "nrmse_speed": {
+    "mean": 0.09886790666257002,
+    "median": 0.0937804696917482,
+    "min": 0.04566062368640786,
+    "max": 0.19356163634885207
+   },
+   "gap_bias_m": {
+    "mean": 4.2744939540591265,
+    "median": 3.25646274023961,
+    "min": -5.117731889665946,
+    "max": 13.27189419048391
+   },
+   "gap_mae_m": {
+    "mean": 5.800669617208273,
+    "median": 4.876564742877847,
+    "min": 0.49296977093434163,
+    "max": 13.27189419048391
+   },
+   "speed_bias_mps": {
+    "mean": -0.07419168133618677,
+    "median": -0.05896409389805374,
+    "min": -0.8544429302325222,
+    "max": 0.9785469629090225
+   },
+   "speed_mae_mps": {
+    "mean": 0.7349306362148409,
+    "median": 0.710219264813826,
+    "min": 0.3538091043616228,
+    "max": 1.3201846781500273
+   },
+   "observed_time_gap_mean_s": {
+    "mean": 2.090514693537913,
+    "median": 1.796714423907142,
+    "min": 0.9514588167110881,
+    "max": 8.955679578452738
+   }
+  }
+ },
+ "cluster_unit": "leader-follower trajectory pair",
+ "paired_difference": {
+  "paired_pairs": 20,
+  "baseline_tau": 1.0,
+  "candidate_tau": 1.6,
+  "brockfeld_gap_error_pct": {
+   "mean_difference": 19.573641792176595,
+   "ci95": [
+    4.254330537462512,
+    35.505329149601316
+   ],
+   "improved_pairs": 7,
+   "worsened_pairs": 13,
+   "direction": "lower_is_better"
+  },
+  "nrmse_gap": {
+   "mean_difference": 0.19278409321358989,
+   "ci95": [
+    0.045230519491969885,
+    0.35604435829640635
+   ],
+   "improved_pairs": 7,
+   "worsened_pairs": 13,
+   "direction": "lower_is_better"
+  },
+  "nrmse_speed": {
+   "mean_difference": 0.003044232716781544,
+   "ci95": [
+    -0.010197655813122966,
+    0.016782175108899625
+   ],
+   "improved_pairs": 11,
+   "worsened_pairs": 9,
+   "direction": "lower_is_better"
+  },
+  "gap_bias_m": {
+   "mean_difference": 5.622753529002795,
+   "ci95": [
+    4.900658348235836,
+    6.325824548096676
+   ],
+   "improved_pairs": 0,
+   "worsened_pairs": 20,
+   "direction": "lower_is_better"
+  },
+  "gap_mae_m": {
+   "mean_difference": 1.283838763509955,
+   "ci95": [
+    -0.8530497321817326,
+    3.4394461056956147
+   ],
+   "improved_pairs": 7,
+   "worsened_pairs": 13,
+   "direction": "lower_is_better"
+  },
+  "speed_bias_mps": {
+   "mean_difference": -0.25165983172192896,
+   "ci95": [
+    -0.31617826931834,
+    -0.17918926539987876
+   ],
+   "improved_pairs": 18,
+   "worsened_pairs": 2,
+   "direction": "lower_is_better"
+  },
+  "speed_mae_mps": {
+   "mean_difference": 0.019928318762730036,
+   "ci95": [
+    -0.07789204703446329,
+    0.12256819619645228
+   ],
+   "improved_pairs": 11,
+   "worsened_pairs": 9,
+   "direction": "lower_is_better"
+  },
+  "observed_time_gap_mean_s": {
+   "mean_difference": 0.002301014758655795,
+   "ci95": [
+    -0.0009548207152086152,
+    0.006846279682929336
+   ],
+   "improved_pairs": 1,
+   "worsened_pairs": 3,
+   "direction": "lower_is_better"
+  },
+  "interval_note": "paired bootstrap over leader-follower pairs, within-source sampling sensitivity only; this is not a science tolerance and not a validation result"
+ },
+ "per_window": {
+  "us101__0750_0805": {
+   "configs": {
+    "1.00": {
+     "pairs": 12,
+     "brockfeld_gap_error_pct": {
+      "mean": 33.09784674565384,
+      "median": 29.177772905150743,
+      "min": 4.8611287270043535,
+      "max": 65.94692249104118
+     },
+     "nrmse_gap": {
+      "mean": 0.3603740167158027,
+      "median": 0.3093827511225884,
+      "min": 0.05778250982829455,
+      "max": 0.7089834351754962
+     },
+     "nrmse_speed": {
+      "mean": 0.09686388182797014,
+      "median": 0.08956008141622976,
+      "min": 0.058229098545371755,
+      "max": 0.18655327593133073
+     },
+     "gap_bias_m": {
+      "mean": -0.7499882691807356,
+      "median": -0.15440238368059844,
+      "min": -11.456662329626175,
+      "max": 5.259340684705767
+     },
+     "gap_mae_m": {
+      "mean": 4.716699681157638,
+      "median": 4.54966666039623,
+      "min": 0.5990942534181064,
+      "max": 11.474041126119863
+     },
+     "speed_bias_mps": {
+      "mean": 0.19759406209862154,
+      "median": 0.0733561158688105,
+      "min": -0.1699685191090973,
+      "max": 1.3288669092109509
+     },
+     "speed_mae_mps": {
+      "mean": 0.7873865349772936,
+      "median": 0.7348670396302838,
+      "min": 0.46290010251987423,
+      "max": 1.6079102281373943
+     },
+     "observed_time_gap_mean_s": {
+      "mean": 1.6352163979052474,
+      "median": 1.654363658879571,
+      "min": 0.9514588167110881,
+      "max": 2.5691440001493997
+     }
+    },
+    "1.60": {
+     "pairs": 12,
+     "brockfeld_gap_error_pct": {
+      "mean": 59.01551526222286,
+      "median": 49.298041003059225,
+      "min": 8.889890979905195,
+      "max": 117.77387569360786
+     },
+     "nrmse_gap": {
+      "mean": 0.6139397125284369,
+      "median": 0.4949542053606109,
+      "min": 0.10271909772864586,
+      "max": 1.2772379809194987
+     },
+     "nrmse_speed": {
+      "mean": 0.10498617385889335,
+      "median": 0.09722771802464918,
+      "min": 0.05708088100875671,
+      "max": 0.19356163634885207
+     },
+     "gap_bias_m": {
+      "mean": 5.0104975100559,
+      "median": 5.528155615472289,
+      "min": -5.117731889665946,
+      "max": 13.27189419048391
+     },
+     "gap_mae_m": {
+      "mean": 6.692708389019271,
+      "median": 5.86714349077462,
+      "min": 2.0991505040808724,
+      "max": 13.27189419048391
+     },
+     "speed_bias_mps": {
+      "mean": 0.0019137845785610608,
+      "median": -0.011492332403150965,
+      "min": -0.4905805249271155,
+      "max": 0.9785469629090225
+     },
+     "speed_mae_mps": {
+      "mean": 0.832861164998239,
+      "median": 0.8184031125227897,
+      "min": 0.4962795768269271,
+      "max": 1.3201846781500273
+     },
+     "observed_time_gap_mean_s": {
+      "mean": 1.6399689089800347,
+      "median": 1.6814170947560498,
+      "min": 0.9514588167110881,
+      "max": 2.5691440001493997
+     }
+    }
+   },
+   "cluster_unit": "leader-follower trajectory pair",
+   "paired_difference": {
+    "paired_pairs": 12,
+    "baseline_tau": 1.0,
+    "candidate_tau": 1.6,
+    "brockfeld_gap_error_pct": {
+     "mean_difference": 25.917668516569012,
+     "ci95": [
+      6.70834711472134,
+      44.75841274571371
+     ],
+     "improved_pairs": 4,
+     "worsened_pairs": 8,
+     "direction": "lower_is_better"
+    },
+    "nrmse_gap": {
+     "mean_difference": 0.2535656958126343,
+     "ci95": [
+      0.05604964051972624,
+      0.4367815740957748
+     ],
+     "improved_pairs": 4,
+     "worsened_pairs": 8,
+     "direction": "lower_is_better"
+    },
+    "nrmse_speed": {
+     "mean_difference": 0.008122292030923177,
+     "ci95": [
+      -0.008742233481984829,
+      0.027155304087431345
+     ],
+     "improved_pairs": 6,
+     "worsened_pairs": 6,
+     "direction": "lower_is_better"
+    },
+    "gap_bias_m": {
+     "mean_difference": 5.760485779236635,
+     "ci95": [
+      4.817303877619112,
+      6.603725997453929
+     ],
+     "improved_pairs": 0,
+     "worsened_pairs": 12,
+     "direction": "lower_is_better"
+    },
+    "gap_mae_m": {
+     "mean_difference": 1.976008707861635,
+     "ci95": [
+      -0.787119681123273,
+      4.548276813503397
+     ],
+     "improved_pairs": 4,
+     "worsened_pairs": 8,
+     "direction": "lower_is_better"
+    },
+    "speed_bias_mps": {
+     "mean_difference": -0.19568027752006048,
+     "ci95": [
+      -0.2933325035178991,
+      -0.09686006383046096
+     ],
+     "improved_pairs": 10,
+     "worsened_pairs": 2,
+     "direction": "lower_is_better"
+    },
+    "speed_mae_mps": {
+     "mean_difference": 0.04547463002094543,
+     "ci95": [
+      -0.09198693064643007,
+      0.18328281822156642
+     ],
+     "improved_pairs": 6,
+     "worsened_pairs": 6,
+     "direction": "lower_is_better"
+    },
+    "observed_time_gap_mean_s": {
+     "mean_difference": 0.004752511074787173,
+     "ci95": [
+      0.0,
+      0.011910313473521039
+     ],
+     "improved_pairs": 0,
+     "worsened_pairs": 3,
+     "direction": "lower_is_better"
+    },
+    "interval_note": "paired bootstrap over leader-follower pairs, within-source sampling sensitivity only; this is not a science tolerance and not a validation result"
+   }
+  },
+  "us101__0805_0820": {
+   "configs": {
+    "1.00": {
+     "pairs": 11,
+     "brockfeld_gap_error_pct": {
+      "mean": 25.097139045483868,
+      "median": 18.274991376819003,
+      "min": 7.088497511723794,
+      "max": 47.148478454391565
+     },
+     "nrmse_gap": {
+      "mean": 0.27913588459641214,
+      "median": 0.20423590689597346,
+      "min": 0.11016498883259933,
+      "max": 0.5159921105443214
+     },
+     "nrmse_speed": {
+      "mean": 0.09063904767202925,
+      "median": 0.0813918295139245,
+      "min": 0.05571570642431689,
+      "max": 0.1668326830162609
+     },
+     "gap_bias_m": {
+      "mean": -1.2382872230007755,
+      "median": -1.3736793662604379,
+      "min": -10.449933750132493,
+      "max": 4.900049594357568
+     },
+     "gap_mae_m": {
+      "mean": 3.709507736194371,
+      "median": 2.451794576255567,
+      "min": 0.8382016717988185,
+      "max": 10.451769104156703
+     },
+     "speed_bias_mps": {
+      "mean": 0.08149067752005612,
+      "median": 0.14076602253463696,
+      "min": -0.44829900256087907,
+      "max": 0.6367259650826902
+     },
+     "speed_mae_mps": {
+      "mean": 0.597548664601952,
+      "median": 0.6043949775621772,
+      "min": 0.36214496294936,
+      "max": 0.7661048571138113
+     },
+     "observed_time_gap_mean_s": {
+      "mean": 2.3678806504883836,
+      "median": 1.8859387388934228,
+      "min": 1.0180195086301582,
+      "max": 8.955679578452738
+     }
+    },
+    "1.60": {
+     "pairs": 8,
+     "brockfeld_gap_error_pct": {
+      "mean": 35.68761128430481,
+      "median": 18.495579373362684,
+      "min": 2.7752095955715275,
+      "max": 115.60130744493846
+     },
+     "nrmse_gap": {
+      "mean": 0.38162440485097815,
+      "median": 0.2099393925652205,
+      "min": 0.033446223902342656,
+      "max": 1.2141675873868871
+     },
+     "nrmse_speed": {
+      "mean": 0.08969050586808501,
+      "median": 0.07511159616642127,
+      "min": 0.04566062368640786,
+      "max": 0.15002129928961608
+     },
+     "gap_bias_m": {
+      "mean": 3.170488620063966,
+      "median": 1.6723638383290718,
+      "min": -4.234808195215403,
+      "max": 12.683391716526824
+     },
+     "gap_mae_m": {
+      "mean": 4.462611459491773,
+      "median": 2.446320010221848,
+      "min": 0.49296977093434163,
+      "max": 12.683391716526824
+     },
+     "speed_bias_mps": {
+      "mean": -0.1883498802083085,
+      "median": -0.16779276700848422,
+      "min": -0.8544429302325222,
+      "max": 0.26776290127611696
+     },
+     "speed_mae_mps": {
+      "mean": 0.5880348430397434,
+      "median": 0.5426312266682609,
+      "min": 0.3538091043616228,
+      "max": 0.8920827755912458
+     },
+     "observed_time_gap_mean_s": {
+      "mean": 2.7663333703747304,
+      "median": 2.069487362185048,
+      "min": 1.0237344318789174,
+      "max": 8.955679578452738
+     }
+    }
+   },
+   "cluster_unit": "leader-follower trajectory pair",
+   "paired_difference": {
+    "paired_pairs": 8,
+    "baseline_tau": 1.0,
+    "candidate_tau": 1.6,
+    "brockfeld_gap_error_pct": {
+     "mean_difference": 10.057601705587956,
+     "ci95": [
+      -12.170514865996555,
+      38.73407766571997
+     ],
+     "improved_pairs": 3,
+     "worsened_pairs": 5,
+     "direction": "lower_is_better"
+    },
+    "nrmse_gap": {
+     "mean_difference": 0.10161168931502326,
+     "ci95": [
+      -0.12764327704503042,
+      0.3816534674265957
+     ],
+     "improved_pairs": 3,
+     "worsened_pairs": 5,
+     "direction": "lower_is_better"
+    },
+    "nrmse_speed": {
+     "mean_difference": -0.004572856254430905,
+     "ci95": [
+      -0.023128305975059157,
+      0.015449746172350887
+     ],
+     "improved_pairs": 5,
+     "worsened_pairs": 3,
+     "direction": "lower_is_better"
+    },
+    "gap_bias_m": {
+     "mean_difference": 5.416155153652032,
+     "ci95": [
+      4.241276351782647,
+      6.557897893407041
+     ],
+     "improved_pairs": 0,
+     "worsened_pairs": 8,
+     "direction": "lower_is_better"
+    },
+    "gap_mae_m": {
+     "mean_difference": 0.24558384698243574,
+     "ci95": [
+      -2.740013363016746,
+      3.7189394047245545
+     ],
+     "improved_pairs": 3,
+     "worsened_pairs": 5,
+     "direction": "lower_is_better"
+    },
+    "speed_bias_mps": {
+     "mean_difference": -0.33562916302473156,
+     "ci95": [
+      -0.38125511745818097,
+      -0.28664615349579764
+     ],
+     "improved_pairs": 8,
+     "worsened_pairs": 0,
+     "direction": "lower_is_better"
+    },
+    "speed_mae_mps": {
+     "mean_difference": -0.018391148124593054,
+     "ci95": [
+      -0.14240848644707588,
+      0.1250341543502456
+     ],
+     "improved_pairs": 5,
+     "worsened_pairs": 3,
+     "direction": "lower_is_better"
+    },
+    "observed_time_gap_mean_s": {
+     "mean_difference": -0.0013762297155412717,
+     "ci95": [
+      -0.004128689146623815,
+      0.0
+     ],
+     "improved_pairs": 1,
+     "worsened_pairs": 0,
+     "direction": "lower_is_better"
+    },
+    "interval_note": "paired bootstrap over leader-follower pairs, within-source sampling sensitivity only; this is not a science tolerance and not a validation result"
+   }
+  }
+ },
+ "per_stratum": {
+  "time_gap_0.0_1.0s": {
+   "configs": {
+    "1.00": {
+     "pairs": 3,
+     "brockfeld_gap_error_pct": {
+      "mean": 54.57852185902967,
+      "median": 53.88586965113552,
+      "min": 43.90277343491229,
+      "max": 65.94692249104118
+     },
+     "nrmse_gap": {
+      "mean": 0.569114934322719,
+      "median": 0.5546264295495537,
+      "min": 0.4437349382431072,
+      "max": 0.7089834351754962
+     },
+     "nrmse_speed": {
+      "mean": 0.08993156569901288,
+      "median": 0.09908662598704561,
+      "min": 0.0715867676397666,
+      "max": 0.09912130347022642
+     },
+     "gap_bias_m": {
+      "mean": 5.125623569524937,
+      "median": 5.195392189153035,
+      "min": 4.922137834716009,
+      "max": 5.259340684705767
+     },
+     "gap_mae_m": {
+      "mean": 5.139843084237149,
+      "median": 5.195392189153035,
+      "min": 4.964207973171335,
+      "max": 5.259929090387074
+     },
+     "speed_bias_mps": {
+      "mean": -0.0005845367758204554,
+      "median": 0.03447905292284352,
+      "min": -0.16866163928230624,
+      "max": 0.13242897603200135
+     },
+     "speed_mae_mps": {
+      "mean": 0.7367484018642502,
+      "median": 0.7501718749709961,
+      "min": 0.6886645592330324,
+      "max": 0.7714087713887218
+     },
+     "observed_time_gap_mean_s": {
+      "mean": 0.96836001080077,
+      "median": 0.9598329359703872,
+      "min": 0.9514588167110881,
+      "max": 0.9937882797208345
+     }
+    },
+    "1.60": {
+     "pairs": 3,
+     "brockfeld_gap_error_pct": {
+      "mean": 111.28580701756356,
+      "median": 112.15187275244614,
+      "min": 103.93167260663667,
+      "max": 117.77387569360786
+     },
+     "nrmse_gap": {
+      "mean": 1.1183900604649046,
+      "median": 1.1169647667359002,
+      "min": 1.080781940643187,
+      "max": 1.157423474015627
+     },
+     "nrmse_speed": {
+      "mean": 0.11504858308274668,
+      "median": 0.11536369043360328,
+      "min": 0.09667143276920495,
+      "max": 0.1331106260454318
+     },
+     "gap_bias_m": {
+      "mean": 10.803782009134745,
+      "median": 10.84985760709863,
+      "min": 8.289594229821697,
+      "max": 13.27189419048391
+     },
+     "gap_mae_m": {
+      "mean": 10.803782009134745,
+      "median": 10.84985760709863,
+      "min": 8.289594229821697,
+      "max": 13.27189419048391
+     },
+     "speed_bias_mps": {
+      "mean": -0.20073347477212608,
+      "median": -0.14032364063634767,
+      "min": -0.4905805249271155,
+      "max": 0.028703741247084955
+     },
+     "speed_mae_mps": {
+      "mean": 0.9108257019955084,
+      "median": 0.8570360880786209,
+      "min": 0.8441629645559511,
+      "max": 1.0312780533519534
+     },
+     "observed_time_gap_mean_s": {
+      "mean": 0.96836001080077,
+      "median": 0.9598329359703872,
+      "min": 0.9514588167110881,
+      "max": 0.9937882797208345
+     }
+    }
+   },
+   "cluster_unit": "leader-follower trajectory pair",
+   "paired_difference": {
+    "paired_pairs": 3,
+    "baseline_tau": 1.0,
+    "candidate_tau": 1.6,
+    "brockfeld_gap_error_pct": {
+     "mean_difference": 56.70728515853389,
+     "ci95": [
+      37.98475011559549,
+      68.24909931753385
+     ],
+     "improved_pairs": 0,
+     "worsened_pairs": 3,
+     "direction": "lower_is_better"
+    },
+    "nrmse_gap": {
+     "mean_difference": 0.5492751261421857,
+     "ci95": [
+      0.37179850546769067,
+      0.673229828492793
+     ],
+     "improved_pairs": 0,
+     "worsened_pairs": 3,
+     "direction": "lower_is_better"
+    },
+    "nrmse_speed": {
+     "mean_difference": 0.025117017383733804,
+     "ci95": [
+      0.016242386963376862,
+      0.0340240000583862
+     ],
+     "improved_pairs": 0,
+     "worsened_pairs": 3,
+     "direction": "lower_is_better"
+    },
+    "gap_bias_m": {
+     "mean_difference": 5.678158439609809,
+     "ci95": [
+      3.0302535451159307,
+      8.076502001330875
+     ],
+     "improved_pairs": 0,
+     "worsened_pairs": 3,
+     "direction": "lower_is_better"
+    },
+    "gap_mae_m": {
+     "mean_difference": 5.6639389248975975,
+     "ci95": [
+      3.029665139434622,
+      8.076502001330875
+     ],
+     "improved_pairs": 0,
+     "worsened_pairs": 3,
+     "direction": "lower_is_better"
+    },
+    "speed_bias_mps": {
+     "mean_difference": -0.20014893799630565,
+     "ci95": [
+      -0.3219188856448093,
+      -0.005775311675758565
+     ],
+     "improved_pairs": 3,
+     "worsened_pairs": 0,
+     "direction": "lower_is_better"
+    },
+    "speed_mae_mps": {
+     "mean_difference": 0.17407730013125836,
+     "ci95": [
+      0.08562731668989909,
+      0.2811061783809573
+     ],
+     "improved_pairs": 0,
+     "worsened_pairs": 3,
+     "direction": "lower_is_better"
+    },
+    "observed_time_gap_mean_s": {
+     "mean_difference": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "improved_pairs": 0,
+     "worsened_pairs": 0,
+     "direction": "lower_is_better"
+    },
+    "interval_note": "paired bootstrap over leader-follower pairs, within-source sampling sensitivity only; this is not a science tolerance and not a validation result"
+   }
+  },
+  "time_gap_1.0_1.5s": {
+   "configs": {
+    "1.00": {
+     "pairs": 6,
+     "brockfeld_gap_error_pct": {
+      "mean": 34.806413674577165,
+      "median": 33.420078717214906,
+      "min": 16.79147690447234,
+      "max": 53.66511130497096
+     },
+     "nrmse_gap": {
+      "mean": 0.3863510025161647,
+      "median": 0.36729444865341543,
+      "min": 0.20423590689597346,
+      "max": 0.6102414807371417
+     },
+     "nrmse_speed": {
+      "mean": 0.0756153934075223,
+      "median": 0.07025212085202122,
+      "min": 0.05571570642431689,
+      "max": 0.11397918667436445
+     },
+     "gap_bias_m": {
+      "mean": 3.0625222453831067,
+      "median": 3.574667058211013,
+      "min": -0.38135037067297184,
+      "max": 4.900049594357568
+     },
+     "gap_mae_m": {
+      "mean": 3.640092684578459,
+      "median": 3.7647301218176983,
+      "min": 1.8723755721244268,
+      "max": 5.72492567631248
+     },
+     "speed_bias_mps": {
+      "mean": -0.13499484281623733,
+      "median": -0.16027049287160744,
+      "min": -0.44829900256087907,
+      "max": 0.1704616096481434
+     },
+     "speed_mae_mps": {
+      "mean": 0.6040416434790649,
+      "median": 0.6096299526287063,
+      "min": 0.36214496294936,
+      "max": 0.8105918174150236
+     },
+     "observed_time_gap_mean_s": {
+      "mean": 1.1645164894705442,
+      "median": 1.0790699222911093,
+      "min": 1.0180195086301582,
+      "max": 1.420125061685508
+     }
+    },
+    "1.60": {
+     "pairs": 4,
+     "brockfeld_gap_error_pct": {
+      "mean": 100.01444640156855,
+      "median": 101.14482606961076,
+      "min": 82.16682602211421,
+      "max": 115.60130744493846
+     },
+     "nrmse_gap": {
+      "mean": 1.0533944176699217,
+      "median": 1.0541718247818617,
+      "min": 0.8279960401964644,
+      "max": 1.2772379809194987
+     },
+     "nrmse_speed": {
+      "mean": 0.116388196186114,
+      "median": 0.09746446778709227,
+      "min": 0.0770622128214194,
+      "max": 0.19356163634885207
+     },
+     "gap_bias_m": {
+      "mean": 10.704303011279904,
+      "median": 10.572201550240624,
+      "min": 8.989417228111545,
+      "max": 12.683391716526824
+     },
+     "gap_mae_m": {
+      "mean": 10.704303011279904,
+      "median": 10.572201550240624,
+      "min": 8.989417228111545,
+      "max": 12.683391716526824
+     },
+     "speed_bias_mps": {
+      "mean": -0.44184654090968145,
+      "median": -0.5149609000310019,
+      "min": -0.8544429302325222,
+      "max": 0.11697856665580034
+     },
+     "speed_mae_mps": {
+      "mean": 0.9413533380391621,
+      "median": 0.8728092606043112,
+      "min": 0.6996101527979989,
+      "max": 1.3201846781500273
+     },
+     "observed_time_gap_mean_s": {
+      "mean": 1.1477473751055784,
+      "median": 1.0735650034289443,
+      "min": 1.0237344318789174,
+      "max": 1.420125061685508
+     }
+    }
+   },
+   "cluster_unit": "leader-follower trajectory pair",
+   "paired_difference": {
+    "paired_pairs": 4,
+    "baseline_tau": 1.0,
+    "candidate_tau": 1.6,
+    "brockfeld_gap_error_pct": {
+     "mean_difference": 63.78981472941878,
+     "ci95": [
+      51.18148900482282,
+      80.41881213017854
+     ],
+     "improved_pairs": 0,
+     "worsened_pairs": 4,
+     "direction": "lower_is_better"
+    },
+    "nrmse_gap": {
+     "mean_difference": 0.6539249182557483,
+     "ci95": [
+      0.5195935351177059,
+      0.8212087592664887
+     ],
+     "improved_pairs": 0,
+     "worsened_pairs": 4,
+     "direction": "lower_is_better"
+    },
+    "nrmse_speed": {
+     "mean_difference": 0.041213430174356955,
+     "ci95": [
+      0.01847377424368201,
+      0.06518352020447325
+     ],
+     "improved_pairs": 0,
+     "worsened_pairs": 4,
+     "direction": "lower_is_better"
+    },
+    "gap_bias_m": {
+     "mean_difference": 7.104628789072036,
+     "ci95": [
+      5.838503815280803,
+      7.896750789634524
+     ],
+     "improved_pairs": 0,
+     "worsened_pairs": 4,
+     "direction": "lower_is_better"
+    },
+    "gap_mae_m": {
+     "mean_difference": 6.801704615978358,
+     "ci95": [
+      5.483498812446342,
+      7.71912708563057
+     ],
+     "improved_pairs": 0,
+     "worsened_pairs": 4,
+     "direction": "lower_is_better"
+    },
+    "speed_bias_mps": {
+     "mean_difference": -0.27769483853735233,
+     "ci95": [
+      -0.4068320346172315,
+      -0.09797694103714363
+     ],
+     "improved_pairs": 3,
+     "worsened_pairs": 1,
+     "direction": "lower_is_better"
+    },
+    "speed_mae_mps": {
+     "mean_difference": 0.31459897375671575,
+     "ci95": [
+      0.20566892222161032,
+      0.4337510724684768
+     ],
+     "improved_pairs": 0,
+     "worsened_pairs": 4,
+     "direction": "lower_is_better"
+    },
+    "observed_time_gap_mean_s": {
+     "mean_difference": -0.0027524594310825434,
+     "ci95": [
+      -0.00825737829324763,
+      0.0
+     ],
+     "improved_pairs": 1,
+     "worsened_pairs": 0,
+     "direction": "lower_is_better"
+    },
+    "interval_note": "paired bootstrap over leader-follower pairs, within-source sampling sensitivity only; this is not a science tolerance and not a validation result"
+   }
+  },
+  "time_gap_1.5_10.0s": {
+   "configs": {
+    "1.00": {
+     "pairs": 14,
+     "brockfeld_gap_error_pct": {
+      "mean": 21.476331630258333,
+      "median": 18.172631869421004,
+      "min": 4.8611287270043535,
+      "max": 44.50439575140629
+     },
+     "nrmse_gap": {
+      "mean": 0.24068086522035856,
+      "median": 0.2010618458966194,
+      "min": 0.05778250982829455,
+      "max": 0.5195516290237194
+     },
+     "nrmse_speed": {
+      "mean": 0.10256493205612795,
+      "median": 0.09035178034667377,
+      "min": 0.058229098545371755,
+      "max": 0.18655327593133073
+     },
+     "gap_bias_m": {
+      "mean": -4.0266444902893435,
+      "median": -2.848749153242572,
+      "min": -11.456662329626175,
+      "max": 0.4529213886828396
+     },
+     "gap_mae_m": {
+      "mean": 4.296063993703395,
+      "median": 2.8490212365375633,
+      "min": 0.5990942534181064,
+      "max": 11.474041126119863
+     },
+     "speed_bias_mps": {
+      "mean": 0.291374918937783,
+      "median": 0.18069266080737345,
+      "min": -0.1284745624026595,
+      "max": 1.3288669092109509
+     },
+     "speed_mae_mps": {
+      "mean": 0.7276556188487042,
+      "median": 0.7094940086728483,
+      "min": 0.4257071140336016,
+      "max": 1.6079102281373943
+     },
+     "observed_time_gap_mean_s": {
+      "mean": 2.5555074972149723,
+      "median": 2.050397672690271,
+      "min": 1.5199107559734244,
+      "max": 8.955679578452738
+     }
+    },
+    "1.60": {
+     "pairs": 13,
+     "brockfeld_gap_error_pct": {
+      "mean": 19.982451289396003,
+      "median": 18.119296306636976,
+      "min": 2.7752095955715275,
+      "max": 52.698729308051995
+     },
+     "nrmse_gap": {
+      "mean": 0.2193479951595898,
+      "median": 0.20868328742656156,
+      "min": 0.033446223902342656,
+      "max": 0.5326758482027043
+     },
+     "nrmse_speed": {
+      "mean": 0.08974304609682339,
+      "median": 0.07316097951142314,
+      "min": 0.04566062368640786,
+      "max": 0.15512075586442442
+     },
+     "gap_bias_m": {
+      "mean": 0.7893323852814358,
+      "median": 1.371924465591555,
+      "min": -5.117731889665946,
+      "max": 5.540666480550625
+     },
+     "gap_mae_m": {
+      "mean": 3.1372949439724303,
+      "median": 2.349988092782192,
+      "min": 0.49296977093434163,
+      "max": 6.193620500998614
+     },
+     "speed_bias_mps": {
+      "mean": 0.06813484317164374,
+      "median": 0.006652912469744304,
+      "min": -0.25363132276311356,
+      "max": 0.9785469629090225
+     },
+     "speed_mae_mps": {
+      "mean": 0.6308247897041264,
+      "median": 0.552575782736953,
+      "min": 0.3538091043616228,
+      "max": 1.2753480393336618
+     },
+     "observed_time_gap_mean_s": {
+      "mean": 2.639555718302587,
+      "median": 2.1414623348987916,
+      "min": 1.6614362712770876,
+      "max": 8.955679578452738
+     }
+    }
+   },
+   "cluster_unit": "leader-follower trajectory pair",
+   "paired_difference": {
+    "paired_pairs": 13,
+    "baseline_tau": 1.0,
+    "candidate_tau": 1.6,
+    "brockfeld_gap_error_pct": {
+     "mean_difference": -2.6006368115188385,
+     "ci95": [
+      -12.948823292186683,
+      8.5597019127539
+     ],
+     "improved_pairs": 7,
+     "worsened_pairs": 6,
+     "direction": "lower_is_better"
+    },
+    "nrmse_gap": {
+     "mean_difference": -0.03137255285982715,
+     "ci95": [
+      -0.13788406134448813,
+      0.0876022359741889
+     ],
+     "improved_pairs": 7,
+     "worsened_pairs": 6,
+     "direction": "lower_is_better"
+    },
+    "nrmse_speed": {
+     "mean_difference": -0.013793855270230646,
+     "ci95": [
+      -0.023946849553538867,
+      -0.0011945969639432592
+     ],
+     "improved_pairs": 11,
+     "worsened_pairs": 2,
+     "direction": "lower_is_better"
+    },
+    "gap_bias_m": {
+     "mean_difference": 5.154006161918331,
+     "ci95": [
+      4.381516487571943,
+      5.914149847331548
+     ],
+     "improved_pairs": 0,
+     "worsened_pairs": 13,
+     "direction": "lower_is_better"
+    },
+    "gap_mae_m": {
+     "mean_difference": -1.4247584591082403,
+     "ci95": [
+      -3.1783077714753225,
+      0.5662970185927217
+     ],
+     "improved_pairs": 7,
+     "worsened_pairs": 6,
+     "direction": "lower_is_better"
+    },
+    "speed_bias_mps": {
+     "mean_difference": -0.25553618971540404,
+     "ci95": [
+      -0.3376856023923261,
+      -0.16468563604139294
+     ],
+     "improved_pairs": 12,
+     "worsened_pairs": 1,
+     "direction": "lower_is_better"
+    },
+    "speed_mae_mps": {
+     "mean_difference": -0.10631241693584906,
+     "ci95": [
+      -0.1909284930499333,
+      -0.015863657256019938
+     ],
+     "improved_pairs": 11,
+     "worsened_pairs": 2,
+     "direction": "lower_is_better"
+    },
+    "observed_time_gap_mean_s": {
+     "mean_difference": 0.004386933299803544,
+     "ci95": [
+      0.0,
+      0.011153240279353441
+     ],
+     "improved_pairs": 0,
+     "worsened_pairs": 3,
+     "direction": "lower_is_better"
+    },
+    "interval_note": "paired bootstrap over leader-follower pairs, within-source sampling sensitivity only; this is not a science tolerance and not a validation result"
+   }
+  }
+ },
+ "pairs_selected": 24,
+ "distinct_pairs_replayed": 23,
+ "pair_config_combinations_replayed": 43,
+ "insertion_rejections": [
+  {
+   "window": "us101__0750_0805",
+   "pair_index": 0,
+   "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1001|clock1118846978900",
+   "tau_s": 1.0,
+   "reason": "insertion_failed:['leader']:gap=15.170:safe=11.637:depart=12.503"
+  },
+  {
+   "window": "us101__0750_0805",
+   "pair_index": 0,
+   "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1001|clock1118846978900",
+   "tau_s": 1.6,
+   "reason": "insertion_failed:['leader']:gap=15.170:safe=9.888:depart=12.503"
+  },
+  {
+   "window": "us101__0750_0805",
+   "pair_index": 1,
+   "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1002|clock1118846978900",
+   "tau_s": 1.0,
+   "reason": "insertion_failed:['leader']:gap=10.647:safe=10.312:depart=11.357"
+  },
+  {
+   "window": "us101__0750_0805",
+   "pair_index": 1,
+   "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1002|clock1118846978900",
+   "tau_s": 1.6,
+   "reason": "insertion_failed:['leader']:gap=10.647:safe=8.643:depart=11.357"
+  },
+  {
+   "window": "us101__0750_0805",
+   "pair_index": 2,
+   "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1003|clock1118846978900",
+   "tau_s": 1.0,
+   "reason": "insertion_failed:['leader']:gap=9.011:safe=10.250:depart=12.192"
+  },
+  {
+   "window": "us101__0750_0805",
+   "pair_index": 2,
+   "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1003|clock1118846978900",
+   "tau_s": 1.6,
+   "reason": "insertion_failed:['leader']:gap=9.011:safe=8.585:depart=12.192"
+  },
+  {
+   "window": "us101__0750_0805",
+   "pair_index": 3,
+   "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1005|clock1118846978900",
+   "tau_s": 1.6,
+   "reason": "insertion_failed:['leader']:gap=19.712:safe=14.828:depart=16.154"
+  },
+  {
+   "window": "us101__0750_0805",
+   "pair_index": 4,
+   "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1006|clock1118846978900",
+   "tau_s": 1.0,
+   "reason": "insertion_failed:['leader']:gap=10.615:safe=13.937:depart=15.240"
+  },
+  {
+   "window": "us101__0750_0805",
+   "pair_index": 4,
+   "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1006|clock1118846978900",
+   "tau_s": 1.6,
+   "reason": "insertion_failed:['leader']:gap=10.615:safe=12.075:depart=15.240"
+  },
+  {
+   "window": "us101__0750_0805",
+   "pair_index": 6,
+   "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1008|clock1118846978900",
+   "tau_s": 1.6,
+   "reason": "insertion_failed:['leader']:gap=23.387:safe=13.083:depart=13.820"
+  },
+  {
+   "window": "us101__0750_0805",
+   "pair_index": 8,
+   "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1011|clock1118846978900",
+   "tau_s": 1.0,
+   "reason": "insertion_failed:['leader']:gap=11.828:safe=13.248:depart=14.490"
+  },
+  {
+   "window": "us101__0750_0805",
+   "pair_index": 8,
+   "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1011|clock1118846978900",
+   "tau_s": 1.6,
+   "reason": "insertion_failed:['leader']:gap=11.828:safe=11.417:depart=14.490"
+  },
+  {
+   "window": "us101__0750_0805",
+   "pair_index": 9,
+   "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1012|clock1118846978900",
+   "tau_s": 1.0,
+   "reason": "insertion_failed:['leader']:gap=8.679:safe=14.311:depart=16.764"
+  },
+  {
+   "window": "us101__0750_0805",
+   "pair_index": 9,
+   "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1012|clock1118846978900",
+   "tau_s": 1.6,
+   "reason": "insertion_failed:['leader']:gap=8.679:safe=12.432:depart=16.764"
+  },
+  {
+   "window": "us101__0750_0805",
+   "pair_index": 11,
+   "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1016|clock1118846978900",
+   "tau_s": 1.6,
+   "reason": "insertion_failed:['leader']:gap=11.280:safe=13.630:depart=15.240"
+  },
+  {
+   "window": "us101__0805_0820",
+   "pair_index": 2,
+   "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1003|clock1118847842000",
+   "tau_s": 1.6,
+   "reason": "insertion_failed:['leader']:gap=8.371:safe=5.210:depart=4.923"
+  },
+  {
+   "window": "us101__0805_0820",
+   "pair_index": 2,
+   "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1003|clock1118847842000",
+   "tau_s": 1.6,
+   "pass": "secondary",
+   "reason": "insertion_failed:['leader']:gap=8.371:safe=5.210:depart=4.923"
+  },
+  {
+   "window": "us101__0805_0820",
+   "pair_index": 4,
+   "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1007|clock1118847842000",
+   "tau_s": 1.6,
+   "reason": "insertion_failed:['leader']:gap=8.548:safe=5.682:depart=6.459"
+  },
+  {
+   "window": "us101__0805_0820",
+   "pair_index": 9,
+   "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1012|clock1118847842000",
+   "tau_s": 1.6,
+   "reason": "insertion_failed:['leader']:gap=6.942:safe=4.866:depart=5.206"
+  },
+  {
+   "window": "us101__0805_0820",
+   "pair_index": 9,
+   "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1012|clock1118847842000",
+   "tau_s": 1.6,
+   "pass": "secondary",
+   "reason": "insertion_failed:['leader']:gap=6.942:safe=4.866:depart=4.623"
+  },
+  {
+   "window": "us101__0805_0820",
+   "pair_index": 10,
+   "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1014|clock1118847842000",
+   "tau_s": 1.6,
+   "reason": "insertion_failed:['leader']:gap=7.745:safe=5.399:depart=5.605"
+  },
+  {
+   "window": "us101__0805_0820",
+   "pair_index": 10,
+   "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1014|clock1118847842000",
+   "tau_s": 1.6,
+   "pass": "secondary",
+   "reason": "insertion_failed:['leader']:gap=7.745:safe=5.399:depart=5.129"
+  },
+  {
+   "window": "us101__0805_0820",
+   "pair_index": 11,
+   "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1015|clock1118847842000",
+   "tau_s": 1.0,
+   "reason": "insertion_failed:['leader']:gap=3.382:safe=3.961:depart=4.191"
+  },
+  {
+   "window": "us101__0805_0820",
+   "pair_index": 11,
+   "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1015|clock1118847842000",
+   "tau_s": 1.0,
+   "pass": "secondary",
+   "reason": "insertion_failed:['leader']:gap=3.382:safe=3.961:depart=3.763"
+  },
+  {
+   "window": "us101__0805_0820",
+   "pair_index": 11,
+   "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1015|clock1118847842000",
+   "tau_s": 1.6,
+   "reason": "insertion_failed:['leader']:gap=3.382:safe=2.958:depart=4.191"
+  },
+  {
+   "window": "us101__0805_0820",
+   "pair_index": 11,
+   "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1015|clock1118847842000",
+   "tau_s": 1.6,
+   "pass": "secondary",
+   "reason": "insertion_failed:['leader']:gap=3.382:safe=2.958:depart=2.810"
+  }
+ ],
+ "insertion_rejection_count": 26,
+ "insertion_rejection_share": 0.5416666666666666,
+ "failures": [
+  {
+   "window": "us101__0750_0805",
+   "pair_index": 0,
+   "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1001|clock1118846978900",
+   "tau_s": 1.0,
+   "reason": "insertion_failed:['leader']:gap=15.170:safe=11.637:depart=12.503"
+  },
+  {
+   "window": "us101__0750_0805",
+   "pair_index": 0,
+   "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1001|clock1118846978900",
+   "tau_s": 1.6,
+   "reason": "insertion_failed:['leader']:gap=15.170:safe=9.888:depart=12.503"
+  },
+  {
+   "window": "us101__0750_0805",
+   "pair_index": 1,
+   "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1002|clock1118846978900",
+   "tau_s": 1.0,
+   "reason": "insertion_failed:['leader']:gap=10.647:safe=10.312:depart=11.357"
+  },
+  {
+   "window": "us101__0750_0805",
+   "pair_index": 1,
+   "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1002|clock1118846978900",
+   "tau_s": 1.6,
+   "reason": "insertion_failed:['leader']:gap=10.647:safe=8.643:depart=11.357"
+  },
+  {
+   "window": "us101__0750_0805",
+   "pair_index": 2,
+   "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1003|clock1118846978900",
+   "tau_s": 1.0,
+   "reason": "insertion_failed:['leader']:gap=9.011:safe=10.250:depart=12.192"
+  },
+  {
+   "window": "us101__0750_0805",
+   "pair_index": 2,
+   "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1003|clock1118846978900",
+   "tau_s": 1.6,
+   "reason": "insertion_failed:['leader']:gap=9.011:safe=8.585:depart=12.192"
+  },
+  {
+   "window": "us101__0750_0805",
+   "pair_index": 3,
+   "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1005|clock1118846978900",
+   "tau_s": 1.6,
+   "reason": "insertion_failed:['leader']:gap=19.712:safe=14.828:depart=16.154"
+  },
+  {
+   "window": "us101__0750_0805",
+   "pair_index": 4,
+   "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1006|clock1118846978900",
+   "tau_s": 1.0,
+   "reason": "insertion_failed:['leader']:gap=10.615:safe=13.937:depart=15.240"
+  },
+  {
+   "window": "us101__0750_0805",
+   "pair_index": 4,
+   "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1006|clock1118846978900",
+   "tau_s": 1.6,
+   "reason": "insertion_failed:['leader']:gap=10.615:safe=12.075:depart=15.240"
+  },
+  {
+   "window": "us101__0750_0805",
+   "pair_index": 6,
+   "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1008|clock1118846978900",
+   "tau_s": 1.6,
+   "reason": "insertion_failed:['leader']:gap=23.387:safe=13.083:depart=13.820"
+  },
+  {
+   "window": "us101__0750_0805",
+   "pair_index": 8,
+   "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1011|clock1118846978900",
+   "tau_s": 1.0,
+   "reason": "insertion_failed:['leader']:gap=11.828:safe=13.248:depart=14.490"
+  },
+  {
+   "window": "us101__0750_0805",
+   "pair_index": 8,
+   "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1011|clock1118846978900",
+   "tau_s": 1.6,
+   "reason": "insertion_failed:['leader']:gap=11.828:safe=11.417:depart=14.490"
+  },
+  {
+   "window": "us101__0750_0805",
+   "pair_index": 9,
+   "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1012|clock1118846978900",
+   "tau_s": 1.0,
+   "reason": "insertion_failed:['leader']:gap=8.679:safe=14.311:depart=16.764"
+  },
+  {
+   "window": "us101__0750_0805",
+   "pair_index": 9,
+   "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1012|clock1118846978900",
+   "tau_s": 1.6,
+   "reason": "insertion_failed:['leader']:gap=8.679:safe=12.432:depart=16.764"
+  },
+  {
+   "window": "us101__0750_0805",
+   "pair_index": 11,
+   "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1016|clock1118846978900",
+   "tau_s": 1.6,
+   "reason": "insertion_failed:['leader']:gap=11.280:safe=13.630:depart=15.240"
+  },
+  {
+   "window": "us101__0805_0820",
+   "pair_index": 2,
+   "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1003|clock1118847842000",
+   "tau_s": 1.6,
+   "reason": "insertion_failed:['leader']:gap=8.371:safe=5.210:depart=4.923"
+  },
+  {
+   "window": "us101__0805_0820",
+   "pair_index": 2,
+   "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1003|clock1118847842000",
+   "tau_s": 1.6,
+   "pass": "secondary",
+   "reason": "insertion_failed:['leader']:gap=8.371:safe=5.210:depart=4.923"
+  },
+  {
+   "window": "us101__0805_0820",
+   "pair_index": 4,
+   "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1007|clock1118847842000",
+   "tau_s": 1.6,
+   "reason": "insertion_failed:['leader']:gap=8.548:safe=5.682:depart=6.459"
+  },
+  {
+   "window": "us101__0805_0820",
+   "pair_index": 9,
+   "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1012|clock1118847842000",
+   "tau_s": 1.6,
+   "reason": "insertion_failed:['leader']:gap=6.942:safe=4.866:depart=5.206"
+  },
+  {
+   "window": "us101__0805_0820",
+   "pair_index": 9,
+   "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1012|clock1118847842000",
+   "tau_s": 1.6,
+   "pass": "secondary",
+   "reason": "insertion_failed:['leader']:gap=6.942:safe=4.866:depart=4.623"
+  },
+  {
+   "window": "us101__0805_0820",
+   "pair_index": 10,
+   "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1014|clock1118847842000",
+   "tau_s": 1.6,
+   "reason": "insertion_failed:['leader']:gap=7.745:safe=5.399:depart=5.605"
+  },
+  {
+   "window": "us101__0805_0820",
+   "pair_index": 10,
+   "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1014|clock1118847842000",
+   "tau_s": 1.6,
+   "pass": "secondary",
+   "reason": "insertion_failed:['leader']:gap=7.745:safe=5.399:depart=5.129"
+  },
+  {
+   "window": "us101__0805_0820",
+   "pair_index": 11,
+   "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1015|clock1118847842000",
+   "tau_s": 1.0,
+   "reason": "insertion_failed:['leader']:gap=3.382:safe=3.961:depart=4.191"
+  },
+  {
+   "window": "us101__0805_0820",
+   "pair_index": 11,
+   "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1015|clock1118847842000",
+   "tau_s": 1.0,
+   "pass": "secondary",
+   "reason": "insertion_failed:['leader']:gap=3.382:safe=3.961:depart=3.763"
+  },
+  {
+   "window": "us101__0805_0820",
+   "pair_index": 11,
+   "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1015|clock1118847842000",
+   "tau_s": 1.6,
+   "reason": "insertion_failed:['leader']:gap=3.382:safe=2.958:depart=4.191"
+  },
+  {
+   "window": "us101__0805_0820",
+   "pair_index": 11,
+   "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1015|clock1118847842000",
+   "tau_s": 1.6,
+   "pass": "secondary",
+   "reason": "insertion_failed:['leader']:gap=3.382:safe=2.958:depart=2.810"
+  }
+ ],
+ "passes": {
+  "primary_exact_initial_state": {
+   "configs": {
+    "1.00": {
+     "pairs": 17,
+     "brockfeld_gap_error_pct": {
+      "mean": 22.76143293326495,
+      "median": 18.274991376819003,
+      "min": 4.8611287270043535,
+      "max": 47.148478454391565
+     },
+     "nrmse_gap": {
+      "mean": 0.25322337640049564,
+      "median": 0.20423590689597346,
+      "min": 0.05778250982829455,
+      "max": 0.5159921105443214
+     },
+     "nrmse_speed": {
+      "mean": 0.08942153951796286,
+      "median": 0.08634608583053888,
+      "min": 0.05571570642431689,
+      "max": 0.1668326830162609
+     },
+     "gap_bias_m": {
+      "mean": -1.9817977163851774,
+      "median": -1.694096026351776,
+      "min": -10.449933750132493,
+      "max": 4.900049594357568
+     },
+     "gap_mae_m": {
+      "mean": 3.704820626444884,
+      "median": 2.451794576255567,
+      "min": 0.5990942534181064,
+      "max": 10.451769104156703
+     },
+     "speed_bias_mps": {
+      "mean": 0.11753813172440628,
+      "median": 0.14076602253463696,
+      "min": -0.44829900256087907,
+      "max": 0.6367259650826902
+     },
+     "speed_mae_mps": {
+      "mean": 0.6320950847797264,
+      "median": 0.6628588977145368,
+      "min": 0.36214496294936,
+      "max": 0.8621578707530844
+     },
+     "observed_time_gap_mean_s": {
+      "mean": 2.2194070980257457,
+      "median": 1.8859387388934228,
+      "min": 1.0180195086301582,
+      "max": 8.955679578452738
+     }
+    },
+    "1.60": {
+     "pairs": 10,
+     "brockfeld_gap_error_pct": {
+      "mean": 19.993982248292376,
+      "median": 13.64153708800727,
+      "min": 2.7752095955715275,
+      "max": 86.85982280065654
+     },
+     "nrmse_gap": {
+      "mean": 0.22031946035853633,
+      "median": 0.1574439389396855,
+      "min": 0.033446223902342656,
+      "max": 0.8941760621768364
+     },
+     "nrmse_speed": {
+      "mean": 0.08123737638191678,
+      "median": 0.07088280007262039,
+      "min": 0.04566062368640786,
+      "max": 0.15002129928961608
+     },
+     "gap_bias_m": {
+      "mean": 1.3333847720511476,
+      "median": 1.0108914971350136,
+      "min": -4.234808195215403,
+      "max": 12.683391716526824
+     },
+     "gap_mae_m": {
+      "mean": 3.2546008592829843,
+      "median": 2.177418488921653,
+      "min": 0.49296977093434163,
+      "max": 12.683391716526824
+     },
+     "speed_bias_mps": {
+      "mean": -0.0756695985233748,
+      "median": -0.03818654337019981,
+      "min": -0.8544429302325222,
+      "max": 0.26776290127611696
+     },
+     "speed_mae_mps": {
+      "mean": 0.574007707001039,
+      "median": 0.5466981959616363,
+      "min": 0.3538091043616228,
+      "max": 0.8920827755912458
+     },
+     "observed_time_gap_mean_s": {
+      "mean": 2.7763275212007725,
+      "median": 2.176783873825399,
+      "min": 1.0237344318789174,
+      "max": 8.955679578452738
+     }
+    }
+   },
+   "cluster_unit": "leader-follower trajectory pair",
+   "paired_difference": {
+    "paired_pairs": 10,
+    "baseline_tau": 1.0,
+    "candidate_tau": 1.6,
+    "brockfeld_gap_error_pct": {
+     "mean_difference": -5.5629116642833765,
+     "ci95": [
+      -16.12454303802633,
+      8.712877995937848
+     ],
+     "improved_pairs": 6,
+     "worsened_pairs": 4,
+     "direction": "lower_is_better"
+    },
+    "nrmse_gap": {
+     "mean_difference": -0.05746175897787505,
+     "ci95": [
+      -0.1713193874125504,
+      0.08358297535936718
+     ],
+     "improved_pairs": 6,
+     "worsened_pairs": 4,
+     "direction": "lower_is_better"
+    },
+    "nrmse_speed": {
+     "mean_difference": -0.015148367539964114,
+     "ci95": [
+      -0.02618402860535123,
+      -0.0038245641103846605
+     ],
+     "improved_pairs": 8,
+     "worsened_pairs": 2,
+     "direction": "lower_is_better"
+    },
+    "gap_bias_m": {
+     "mean_difference": 5.171499409909439,
+     "ci95": [
+      4.152205063617579,
+      6.208666066459457
+     ],
+     "improved_pairs": 0,
+     "worsened_pairs": 10,
+     "direction": "lower_is_better"
+    },
+    "gap_mae_m": {
+     "mean_difference": -1.6911260219800908,
+     "ci95": [
+      -3.7971858844987825,
+      0.7859294158105954
+     ],
+     "improved_pairs": 6,
+     "worsened_pairs": 4,
+     "direction": "lower_is_better"
+    },
+    "speed_bias_mps": {
+     "mean_difference": -0.32977909080453427,
+     "ci95": [
+      -0.3921632862130553,
+      -0.2659138013380551
+     ],
+     "improved_pairs": 10,
+     "worsened_pairs": 0,
+     "direction": "lower_is_better"
+    },
+    "speed_mae_mps": {
+     "mean_difference": -0.09811033945848055,
+     "ci95": [
+      -0.18080311561583778,
+      -0.003958838346837
+     ],
+     "improved_pairs": 8,
+     "worsened_pairs": 2,
+     "direction": "lower_is_better"
+    },
+    "observed_time_gap_mean_s": {
+     "mean_difference": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "improved_pairs": 0,
+     "worsened_pairs": 0,
+     "direction": "lower_is_better"
+    },
+    "interval_note": "paired bootstrap over leader-follower pairs, within-source sampling sensitivity only; this is not a science tolerance and not a validation result"
+   }
+  },
+  "secondary_clamped_initial_speed": {
+   "configs": {
+    "1.00": {
+     "pairs": 6,
+     "brockfeld_gap_error_pct": {
+      "mean": 47.71638843044409,
+      "median": 49.08475352818863,
+      "min": 24.393257949198336,
+      "max": 65.94692249104118
+     },
+     "nrmse_gap": {
+      "mean": 0.5150309220569566,
+      "median": 0.5370890292866366,
+      "min": 0.2530476196127209,
+      "max": 0.7089834351754962
+     },
+     "nrmse_speed": {
+      "mean": 0.10653832242043253,
+      "median": 0.09910396472863602,
+      "min": 0.06890277481986133,
+      "max": 0.18655327593133073
+     },
+     "gap_bias_m": {
+      "mean": 1.8449237492284436,
+      "median": 4.360665341588119,
+      "min": -11.456662329626175,
+      "max": 5.259340684705767
+     },
+     "gap_mae_m": {
+      "mean": 5.737171770411117,
+      "median": 5.079800081162185,
+      "min": 3.3501412679617992,
+      "max": 11.474041126119863
+     },
+     "speed_bias_mps": {
+      "mean": 0.21156299309819493,
+      "median": 0.0733561158688105,
+      "min": -0.1699685191090973,
+      "max": 1.3288669092109509
+     },
+     "speed_mae_mps": {
+      "mean": 0.879342881515608,
+      "median": 0.760790323179859,
+      "min": 0.6473100379484804,
+      "max": 1.6079102281373943
+     },
+     "observed_time_gap_mean_s": {
+      "mean": 1.3232272106329188,
+      "median": 1.0517935950293322,
+      "min": 0.9514588167110881,
+      "max": 2.504359259371866
+     }
+    },
+    "1.60": {
+     "pairs": 10,
+     "brockfeld_gap_error_pct": {
+      "mean": 79.37472509381891,
+      "median": 93.04924931437543,
+      "min": 24.023213345730706,
+      "max": 117.77387569360786
+     },
+     "nrmse_gap": {
+      "mean": 0.8217077185563705,
+      "median": 0.9543889904198257,
+      "min": 0.23867259428793988,
+      "max": 1.2772379809194987
+     },
+     "nrmse_speed": {
+      "mean": 0.11649843694322326,
+      "median": 0.10765606634265526,
+      "min": 0.06717058539102051,
+      "max": 0.19356163634885207
+     },
+     "gap_bias_m": {
+      "mean": 7.215603136067105,
+      "median": 8.639505728966622,
+      "min": -5.117731889665946,
+      "max": 13.27189419048391
+     },
+     "gap_mae_m": {
+      "mean": 8.34673837513356,
+      "median": 8.639505728966622,
+      "min": 3.672285663395381,
+      "max": 13.27189419048391
+     },
+     "speed_bias_mps": {
+      "mean": -0.07271376414899874,
+      "median": -0.08761291461115561,
+      "min": -0.5580926081969375,
+      "max": 0.9785469629090225
+     },
+     "speed_mae_mps": {
+      "mean": 0.8958535654286426,
+      "median": 0.8488493550866638,
+      "min": 0.4962795768269271,
+      "max": 1.3201846781500273
+     },
+     "observed_time_gap_mean_s": {
+      "mean": 1.4047018658750532,
+      "median": 1.2649619860116688,
+      "min": 0.9514588167110881,
+      "max": 2.504359259371866
+     }
+    }
+   },
+   "cluster_unit": "leader-follower trajectory pair",
+   "paired_difference": {
+    "paired_pairs": 6,
+    "baseline_tau": 1.0,
+    "candidate_tau": 1.6,
+    "brockfeld_gap_error_pct": {
+     "mean_difference": 44.86315986273933,
+     "ci95": [
+      17.02347412906886,
+      63.61486813627399
+     ],
+     "improved_pairs": 1,
+     "worsened_pairs": 5,
+     "direction": "lower_is_better"
+    },
+    "nrmse_gap": {
+     "mean_difference": 0.4473571768043196,
+     "ci95": [
+      0.16718250657400102,
+      0.6383915830862978
+     ],
+     "improved_pairs": 1,
+     "worsened_pairs": 5,
+     "direction": "lower_is_better"
+    },
+    "nrmse_speed": {
+     "mean_difference": 0.024247952258868808,
+     "ci95": [
+      -0.0036740735640876216,
+      0.05085984437428607
+     ],
+     "improved_pairs": 1,
+     "worsened_pairs": 5,
+     "direction": "lower_is_better"
+    },
+    "gap_bias_m": {
+     "mean_difference": 6.083030636205097,
+     "ci95": [
+      4.6845919925380795,
+      7.3814602620973035
+     ],
+     "improved_pairs": 0,
+     "worsened_pairs": 6,
+     "direction": "lower_is_better"
+    },
+    "gap_mae_m": {
+     "mean_difference": 4.0760080134665175,
+     "ci95": [
+      0.012500586306616764,
+      7.1196432077677025
+     ],
+     "improved_pairs": 1,
+     "worsened_pairs": 5,
+     "direction": "lower_is_better"
+    },
+    "speed_bias_mps": {
+     "mean_difference": -0.20798034086763192,
+     "ci95": [
+      -0.3186047204004496,
+      -0.09611218951563161
+     ],
+     "improved_pairs": 5,
+     "worsened_pairs": 1,
+     "direction": "lower_is_better"
+    },
+    "speed_mae_mps": {
+     "mean_difference": 0.15091471333232373,
+     "ci95": [
+      -0.07078789394524082,
+      0.3363337769892996
+     ],
+     "improved_pairs": 1,
+     "worsened_pairs": 5,
+     "direction": "lower_is_better"
+    },
+    "observed_time_gap_mean_s": {
+     "mean_difference": 0.0,
+     "ci95": [
+      0.0,
+      0.0
+     ],
+     "improved_pairs": 0,
+     "worsened_pairs": 0,
+     "direction": "lower_is_better"
+    },
+    "interval_note": "paired bootstrap over leader-follower pairs, within-source sampling sensitivity only; this is not a science tolerance and not a validation result"
+   }
+  }
+ },
+ "leader_tracking_failures": [],
+ "leader_tracking_tolerance_m": 0.25,
+ "budget_used": {
+  "sumo_process_invocations_planned": 48,
+  "sumo_process_invocations_executed": 43
+ },
+ "result_id": "RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1",
+ "source_files": {
+  "us101__0750_0805": {
+   "path": "code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r4/states/ngsim_us101__0750_0805.parquet",
+   "sha256": "684a5f0b96dc48116f16d581c278d7039c0554bf1c3cea8d6eda3e605e3e8644"
+  },
+  "us101__0805_0820": {
+   "path": "code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r4/states/ngsim_us101__0805_0820.parquet",
+   "sha256": "7b0ef830c97a981da018d4e24b029e38aa2630387c728ea87b57926745880a9f"
+  }
+ }
+}

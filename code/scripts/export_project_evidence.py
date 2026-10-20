@@ -92,6 +92,17 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
             )
         )
 
+    # Stage 0.5 method diagnostics: jam-definition sensitivity, null model, leader replay.
+    pairs.setdefault("RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1", [])
+    for name in (
+        "REPLAY_PLAN_SHA256", "SHA256SUMS", "budget_ledger_audit.json",
+        "jam_definition_rules.csv", "jam_definition_sensitivity.json", "manifest.json",
+        "phase_c_decision.json", "replay_plan.json", "replay_summary.json", "run_metadata.json",
+    ):
+        pairs["RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1"].append(
+            (f"code/outputs/formal/calibration/stage_0_5_method_diagnostics_v1/{name}", name)
+        )
+
     stage_0_1_root = "code/outputs/formal/stage_0_1/e00_real_sumo_20260907_primary_v3"
     for cell in ("s0c0", "s0c1", "s1c0", "s1c1"):
         for name in (
@@ -672,7 +683,8 @@ def _validate_source(source: Path) -> None:
         "member_support_audit.csv","cluster_exposure_audit.csv",
         "candidate_PLAN_SHA256","reference_REFERENCE_PLAN_SHA256",
         "boundary_flow_30s.csv","fundamental_diagram_30s.csv","occupancy_30s.csv",
-        "sectional_minimum_300s.csv","space_time_60s.csv"}
+        "sectional_minimum_300s.csv","space_time_60s.csv","jam_definition_rules.csv",
+        "REPLAY_PLAN_SHA256"}
     if source.suffix.lower() not in {".json", ".md", ".txt", ".sha256"} and source.name not in aggregate_names:
         raise ValueError(f"unsupported evidence file type: {source}")
 

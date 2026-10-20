@@ -1,6 +1,6 @@
 # 计划：Stage 0.5 真实交通轨迹与交通过程重建（AAD-0.5-TR-RECON）
 
-日期：2026-10-21。结果 `RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1`。
+日期：2026-10-20（原文误标 2026-10-21，见文末勘误）。结果 `RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1`。
 
 ## 目标
 
@@ -41,3 +41,5 @@
 - `python code/scripts/validate_project_docs.py --strict-git`
 - `python code/scripts/export_project_evidence.py --repo-root .`
 - `python code/scripts/export_project_evidence.py --repo-root . --verify`
+
+> **日期勘误（2026-10-20）**：本文原标注执行日为 2026-10-21。核对提交时间（`afdc3d0` 的 author/committer date 为 2026-10-20 20:20:17 +08:00）与本地时区（Asia/Shanghai，+08:00）后确认实际执行日为 **2026-10-20**，原标注为撰写时的人工日期错误。文件名与正文按项目惯例保留不改，勘误在此显式登记；详见 `docs/literature/STAGE_0_5_METHOD_EVIDENCE_MAP.md` 文末。

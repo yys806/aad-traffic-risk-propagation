@@ -234,3 +234,15 @@ B1.2-P收口：纯Git全量741 passed/14 skipped/0 failed；严格文档/compile
 - `export_project_evidence.py` 增补本结果的导出映射、`scene_*` 与 `runs_RC*` 命名以及 CSV 聚合文件白名单。
 - 冻结的 3 项诊断全部执行（构造 3 次、独立重复 0 次）；三者均未达状态支持，按预声明停止规则报 `EvidenceInsufficient_StateSupport`。未搜索行为参数、未访问第三窗口、未启动协议锁或 Stage 1.1。
 - 历史证据字节未改写：FC1/FC2、LF、CD、B1/B1.1/B1.1-S/B1.2/B1.2-N/B1.2-P 与 Stage 0.2/0.3 全部保留。
+
+
+## 2026-10-20 — AAD-0.5-LIT-CAL 文献依据的微观行为诊断
+
+- 新增结果 `RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1`（便携证据 10 个文件），登记入注册表、结果索引、阶段索引、研究状态与 AI_CONTEXT。
+- 新增模块 `code/src/riskprop/stage_0_5_jam_definition.py`（绝对/相对速度状态定义族 + 逐时间片置换零模型）与 `code/src/riskprop/stage_0_5_leader_replay.py`（前车轨迹重放、车长由观测反推、Brockfeld/Schrader 指标、配对 bootstrap），入口 `run_stage_0_5_method_diagnostics.py`，测试 18 项。
+- 新增 `doc/literature-notes/`：`STAGE_0_5_METHOD_EVIDENCE_MAP.md`、`stage_0_5_method_index.json`、`stage_0_5_method_references.ris`；`write_stage_0_5_method_index.py` 生成后两者。
+- Zotero（`TJU → AAD`）新建 3 个专题集合（07 微观跟驰校准与轨迹重放 / 08 拥堵状态识别与时空传播 / 09 仿真校准规范与验证）与 8 条文献，Duan 2023 与 Saberi 2020 加入 08 并补方法标签，未新建重复条目。
+- `export_project_evidence.py` 增补本结果映射、`REPLAY_PLAN_SHA256` 与 `jam_definition_rules.csv` 白名单。
+- 日期勘误：2026-10-21 的三份文档改为显式标注执行日 2026-10-20，文件名与正文原状保留。
+- 修复三处重放实现缺陷（后车 `setSpeed` 导致速度冻结、前车位置每样本领先、模拟/观测时钟错一拍），均有回归测试。
+- 历史证据字节未改写：FC1/FC2、RC1/RC2/RC3、LF、CD、B1 系列与 Stage 0.2/0.3 全部保留；主线 C 未执行。

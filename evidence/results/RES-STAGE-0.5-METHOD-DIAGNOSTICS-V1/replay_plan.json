@@ -1,0 +1,293 @@
+{
+ "result_id": "RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1",
+ "version": "stage-0.5-leader-replay-v1",
+ "mode": "bounded leader-replay diagnostics; no parameter search; no Gate mutation",
+ "clone_shape": "naturalistic US-101 following with lane changes and varying drivers",
+ "configurations": {
+  "1.00": {
+   "maxSpeed": 27.78,
+   "speedFactor": 1.0,
+   "speedDev": 0.0,
+   "carFollowModel": "Krauss",
+   "tau": 1.0,
+   "minGap": 2.5,
+   "accel": 2.6,
+   "decel": 4.5,
+   "apparentDecel": 4.5,
+   "emergencyDecel": 9.0,
+   "sigma": 0.5,
+   "actionStepLength": 0.1,
+   "sigmaStep": 1.0,
+   "laneChangeModel": "LC2013"
+  },
+  "1.60": {
+   "maxSpeed": 27.78,
+   "speedFactor": 1.0,
+   "speedDev": 0.0,
+   "carFollowModel": "Krauss",
+   "tau": 1.6,
+   "minGap": 2.5,
+   "accel": 2.6,
+   "decel": 4.5,
+   "apparentDecel": 4.5,
+   "emergencyDecel": 9.0,
+   "sigma": 0.5,
+   "actionStepLength": 0.1,
+   "sigmaStep": 1.0,
+   "laneChangeModel": "LC2013"
+  }
+ },
+ "only_difference": "tau (minGap, accel, decel, sigma, maxSpeed, actionStepLength all frozen)",
+ "seeds": {
+  "1.00": 20261101,
+  "1.60": 20261102
+ },
+ "internal_step_s": 0.05,
+ "record_step_s": 0.1,
+ "leader_tracking_tolerance_m": 0.25,
+ "pairs_per_window": 12,
+ "min_pair_duration_s": 8.0,
+ "max_pair_duration_s": 25.0,
+ "time_gap_strata": [
+  [
+   0.0,
+   1.0
+  ],
+  [
+   1.0,
+   1.5
+  ],
+  [
+   1.5,
+   10.0
+  ]
+ ],
+ "secondary_pass": {
+  "trigger": "primary insertion rejected by SUMO's Krauss safety envelope",
+  "policy": "clamp the initial speed to 0.95x safe speed and exclude the first 1.0 s",
+  "reporting": "reported separately per pair; never pooled with the primary pass"
+ },
+ "sample": {
+  "us101__0750_0805": [
+   {
+    "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1001|clock1118846978900",
+    "leader_trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|991|clock1118846978900",
+    "lane_id": "2",
+    "start_s": 248.2,
+    "duration_s": 32.6
+   },
+   {
+    "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1002|clock1118846978900",
+    "leader_trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|998|clock1118846978900",
+    "lane_id": "5",
+    "start_s": 245.5,
+    "duration_s": 43.6
+   },
+   {
+    "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1003|clock1118846978900",
+    "leader_trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1002|clock1118846978900",
+    "lane_id": "5",
+    "start_s": 246.5,
+    "duration_s": 42.6
+   },
+   {
+    "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1005|clock1118846978900",
+    "leader_trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|997|clock1118846978900",
+    "lane_id": "1",
+    "start_s": 235.7,
+    "duration_s": 58.700000000000024
+   },
+   {
+    "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1006|clock1118846978900",
+    "leader_trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1001|clock1118846978900",
+    "lane_id": "2",
+    "start_s": 242.7,
+    "duration_s": 47.200000000000024
+   },
+   {
+    "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1007|clock1118846978900",
+    "leader_trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1000|clock1118846978900",
+    "lane_id": "4",
+    "start_s": 244.9,
+    "duration_s": 32.199999999999996
+   },
+   {
+    "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1008|clock1118846978900",
+    "leader_trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|996|clock1118846978900",
+    "lane_id": "3",
+    "start_s": 242.5,
+    "duration_s": 29.700000000000024
+   },
+   {
+    "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1008|clock1118846978900",
+    "leader_trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|989|clock1118846978900",
+    "lane_id": "3",
+    "start_s": 272.2,
+    "duration_s": 28.1
+   },
+   {
+    "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1011|clock1118846978900",
+    "leader_trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1008|clock1118846978900",
+    "lane_id": "3",
+    "start_s": 242.4,
+    "duration_s": 60.59999999999997
+   },
+   {
+    "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1012|clock1118846978900",
+    "leader_trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1005|clock1118846978900",
+    "lane_id": "1",
+    "start_s": 236.5,
+    "duration_s": 61.1
+   },
+   {
+    "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1014|clock1118846978900",
+    "leader_trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1006|clock1118846978900",
+    "lane_id": "2",
+    "start_s": 244.8,
+    "duration_s": 27.400000000000013
+   },
+   {
+    "trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1016|clock1118846978900",
+    "leader_trajectory_id": "NGSIM|US-101|0750am-0805am|vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.txt|1012|clock1118846978900",
+    "lane_id": "1",
+    "start_s": 237.4,
+    "duration_s": 61.00000000000001
+   }
+  ],
+  "us101__0805_0820": [
+   {
+    "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1000|clock1118847842000",
+    "leader_trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|993|clock1118847842000",
+    "lane_id": "3",
+    "start_s": 429.7,
+    "duration_s": 52.6
+   },
+   {
+    "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1001|clock1118847842000",
+    "leader_trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|995|clock1118847842000",
+    "lane_id": "1",
+    "start_s": 420.0,
+    "duration_s": 61.6
+   },
+   {
+    "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1003|clock1118847842000",
+    "leader_trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|996|clock1118847842000",
+    "lane_id": "5",
+    "start_s": 426.5,
+    "duration_s": 52.200000000000024
+   },
+   {
+    "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1004|clock1118847842000",
+    "leader_trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|999|clock1118847842000",
+    "lane_id": "4",
+    "start_s": 427.6,
+    "duration_s": 59.49999999999998
+   },
+   {
+    "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1007|clock1118847842000",
+    "leader_trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1004|clock1118847842000",
+    "lane_id": "4",
+    "start_s": 429.7,
+    "duration_s": 29.1
+   },
+   {
+    "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1007|clock1118847842000",
+    "leader_trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1000|clock1118847842000",
+    "lane_id": "3",
+    "start_s": 458.8,
+    "duration_s": 26.1
+   },
+   {
+    "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1008|clock1118847842000",
+    "leader_trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1001|clock1118847842000",
+    "lane_id": "1",
+    "start_s": 422.8,
+    "duration_s": 60.69999999999997
+   },
+   {
+    "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1009|clock1118847842000",
+    "leader_trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|998|clock1118847842000",
+    "lane_id": "2",
+    "start_s": 431.1,
+    "duration_s": 51.29999999999999
+   },
+   {
+    "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1011|clock1118847842000",
+    "leader_trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1000|clock1118847842000",
+    "lane_id": "3",
+    "start_s": 432.7,
+    "duration_s": 26.1
+   },
+   {
+    "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1012|clock1118847842000",
+    "leader_trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1003|clock1118847842000",
+    "lane_id": "5",
+    "start_s": 428.7,
+    "duration_s": 35.79999999999999
+   },
+   {
+    "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1014|clock1118847842000",
+    "leader_trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1009|clock1118847842000",
+    "lane_id": "2",
+    "start_s": 432.5,
+    "duration_s": 52.79999999999999
+   },
+   {
+    "trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1015|clock1118847842000",
+    "leader_trajectory_id": "NGSIM|US-101|0805am-0820am|vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.txt|1008|clock1118847842000",
+    "lane_id": "1",
+    "start_s": 424.2,
+    "duration_s": 61.40000000000001
+   }
+  ]
+ },
+ "metrics": [
+  "brockfeld_gap_error_pct (Brockfeld et al. 2004 Eq. 2)",
+  "nrmse_gap and nrmse_speed (Schrader et al. 2024 Eqs. 5-6); acceleration withheld",
+  "gap/speed bias and MAE",
+  "observed vs simulated time headway",
+  "closing speed distribution and sign"
+ ],
+ "predictions": {
+  "baseline_tau_1.0": "systematically keeps a larger gap than observed where the observed time gap is short, because SUMO's Krauss enforces v*tau + minGap",
+  "candidate_tau_1.6": "reduces the gap bias for pairs whose observed time gap exceeds about 1.5 s, and increases it for pairs observed following more closely",
+  "falsifier_of_candidate": "no improvement in either window, or improvement confined to a single window"
+ },
+ "interpretation_rules": [
+  "candidate improves gap error in both windows with no stable worsening of the core metrics -> the behaviour-parameter hypothesis gains support",
+  "gap improves but speed worsens, or the effect is single-window -> report indicator conflict / state heterogeneity",
+  "both configurations show systematic error -> inspect model structure, replay implementation and data quality rather than scanning parameters"
+ ],
+ "insertion_policy": "the observed initial speed is inserted as-is; if SUMO's Krauss insertion safety check rejects that state the pair/configuration is recorded as a representability finding (the observed initial state is not representable under the model's own safety envelope) instead of being masked by clamping the initial speed, because a clamped initial speed changes the response being measured",
+ "stop_rules": [
+  "leader tracking deviation above tolerance on any pair stops the batch",
+  "SHA mismatch, insertion failure or missing observed leader rows stops the batch",
+  "no tau search, no joint minGap adjustment, no P2-based selection of pairs"
+ ],
+ "budget": {
+  "sumo_process_invocations": 48,
+  "windows": 2,
+  "pairs_per_window": 12,
+  "configurations": [
+   1.0,
+   1.6
+  ],
+  "note": "each leader-follower pair is replayed in its own SUMO process; the invocation count is declared explicitly and is not wrapped as a single run. These are micro-runs of at most 25 s simulated time. This budget is separate from the sealed Stage 0.5 closure repeats and from the RC diagnostic budget."
+ },
+ "reserved_runs_not_used": {
+  "RES-STAGE-0.5-FINAL-CLOSURE-V1": "FR1/FR2 independent-seed repeats remain reserved to the closure candidate protocol",
+  "RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1": "RC1r/RC2r reserved repeats remain unused and are not transferred"
+ },
+ "third_window_or_holdout_access": false,
+ "sumo_binary_sha256": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+ "netconvert_binary_sha256": "4174c17db813d413c85cdf7ad99a5f59b537ddf80f8caac9e1dfe87a35cb6b51",
+ "scientific_claim_eligible": false,
+ "gate_status": "pending_simulation_sample",
+ "environment": {
+  "python": "3.13.5",
+  "platform": "Windows-11-10.0.26100-SP0",
+  "pandas": "2.2.3",
+  "numpy": "2.3.2"
+ },
+ "git_head": "afdc3d019276c7bfc9629fc4ee8aac57abe333fc"
+}

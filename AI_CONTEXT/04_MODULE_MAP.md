@@ -111,3 +111,12 @@ code/src/riskprop/stage_0_5_positive_near_zero.py（classify_edge/admission/chec
 - 配置：`code/configs/stage_0_5_ngsim_official_reference_v1.json`（官方 NGSIM 聚合转录 + 站点元数据）。
 - 测试：`code/tests/test_stage_0_5_trajectory_reconstruction.py`（13）、`code/tests/test_stage_0_5_scene_reconstruction.py`（10）。
 - 证据导出：`export_project_evidence.py` 增补 `RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1` 映射与 `scene_*`/`runs_RC*` 命名及 5 个 CSV 白名单。
+
+## 2026-10-20 状态定义与行为诊断模块
+
+- `code/src/riskprop/stage_0_5_jam_definition.py`：状态定义族与零模型。`cell_speed_grid`、`reference_speeds`（窗口 p95 / 窗口最大 / 工程 27.78）、`congestion_mask`（absolute / relative）、`describe_mask`（连通域规模、持续、最早时刻与位置、方向、反向速度）、`null_model`（逐时间片空间置换，保留速度边际）、`rule_catalogue`（10 条规则，逐条标注来源与「迁移适配」）。
+- `code/src/riskprop/stage_0_5_leader_replay.py`：前车轨迹重放。`prepare_pairs`、`select_pairs`、`pair_observations`（车长由观测反推并做稳定性校验）、`insertion_safe_speed`、`replay_pair`（TraCI 驱动前车、后车纯模型、`clamp_initial_speed` 仅用于次口径）、`brockfeld_error`（Brockfeld 2004 Eq. 2）、`nrmse`（Schrader 2024 Eq. 6）、`pair_metrics`、`summarise`（配对 bootstrap，以对为单位）。
+- 入口：`code/scripts/run_stage_0_5_method_diagnostics.py`（`--phase A|B|both`；先写冻结计划再运行；产出 `phase_c_decision.json`、`budget_ledger_audit.json`）；`code/scripts/write_stage_0_5_method_index.py`（生成结构化文献索引与 RIS）；`code/scripts/zotero_add_stage05_method_refs.py`（Zotero 本地 API 建集合/条目，幂等性靠 DOI 预检）。
+- 测试：`code/tests/test_stage_0_5_jam_definition.py`（8）、`code/tests/test_stage_0_5_leader_replay.py`（10）。
+- 文献：`doc/literature-notes/STAGE_0_5_METHOD_EVIDENCE_MAP.md`、`stage_0_5_method_index.json`、`stage_0_5_method_references.ris`。
+- 证据导出：`export_project_evidence.py` 增补 `RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1` 映射、`REPLAY_PLAN_SHA256` 与 `jam_definition_rules.csv` 白名单。

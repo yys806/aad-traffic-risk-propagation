@@ -1,6 +1,6 @@
 {
   "schema_version": "aad.project-registry.v2",
-  "last_verified": "2026-10-21",
+  "last_verified": "2026-10-20",
   "project": {
     "name": "AAD",
     "research_topic": "Connected-vehicle communication adoption and traffic-risk propagation",
@@ -185,12 +185,17 @@
     "code/scripts/verify_stage_0_5_final_closure.py",
     "code/tests/test_stage_0_5_final_closure.py",
     "code/tests/test_stage_0_5_closure_supervisor.py",
-    "code/tests/test_stage_0_5_final_closure_evidence.py"
+    "code/tests/test_stage_0_5_final_closure_evidence.py",
+    "docs/STAGE_0_5_TRAFFIC_STATE_DEFINITION_SENSITIVITY.md",
+    "docs/STAGE_0_5_LEADER_REPLAY_BEHAVIOUR_DIAGNOSTICS.md",
+    "doc/literature-notes/STAGE_0_5_METHOD_EVIDENCE_MAP.md",
+    "doc/literature-notes/stage_0_5_method_index.json",
+    "docs/plans/2026-10-20-stage-0-5-literature-calibration.md"
   ],
   "current": {
     "active_experiment_id": "stage_0_5",
-    "active_task": "AAD-0.5-TR-RECON complete: real traffic formation reconstructed and the SUMO state mismatch diagnosed; three pre-declared diagnostics executed; state support still Evidence Insufficient; Stage 0.5 remains pending_simulation_sample with the 2026-10-20 decision package R1-R5 still open",
-    "why_now": "Two approved calibration windows are on the congested branch (43.5/50.5 veh/km/lane at 10.51/7.92 m/s) while matching the observed cross-section flow is not sufficient to identify the state. The observed region contains an on-ramp merge and an auxiliary lane and sits upstream of an off-ramp diverge; the largest low-speed waves start at the downstream end and expand upstream, so the state comes from an unobserved downstream supply. Pre-declared diagnostics: observed geometry + observed demand -> free flow (23.90 m/s / 21.05); real initial state -> decays to free flow within 180 s; conditional 3-lane downstream supply -> over-congested (6.76 m/s / 61.35). No variant reached the target envelope, so the frozen stop rule was executed with no parameter search. The observed density and net gap independently imply an effective Krauss tau of about 1.53-1.63 s versus the frozen 1.0 s.",
+    "active_task": "AAD-0.5-LIT-CAL complete: literature-verified state-definition sensitivity and null model, plus a 48-run leader-replay diagnostic; the tau=1.6 candidate does not fix the following behaviour, so Phase C is not executed and Stage 0.5 remains pending_simulation_sample",
+    "why_now": "The congested-state definition had no threshold or null-model robustness, and the macro-derived tau of about 1.53-1.63 s had never been tested at the individual-pair level. Phase A shows the wave direction and origin are robust across ten definitions (16/16 non-saturated rules up-stream from y=500-650 m) while the largest-component size under the absolute 10 m/s rule is not distinguishable from a permutation null in 0750. Phase B shows the candidate tau=1.6 increases the paired Brockfeld gap error by 19.6 pp (CI [4.3, 35.5]) and the gap bias for all 20 pairs, with clear stratification (much worse below 1.5 s observed time gap); 44% of observed initial states are rejected by SUMO's own Krauss insertion envelope. The macro tau is therefore an equilibrium equivalent, not a single micro parameter.",
     "next_decision_owner": "researcher",
     "portable_gate_paths": [
       "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",
@@ -510,7 +515,14 @@
         "code/scripts/run_stage_0_5_scene_reconstruction.py",
         "code/tests/test_stage_0_5_trajectory_reconstruction.py",
         "code/tests/test_stage_0_5_scene_reconstruction.py",
-        "code/configs/stage_0_5_ngsim_official_reference_v1.json"
+        "code/configs/stage_0_5_ngsim_official_reference_v1.json",
+        "code/src/riskprop/stage_0_5_jam_definition.py",
+        "code/src/riskprop/stage_0_5_leader_replay.py",
+        "code/scripts/run_stage_0_5_method_diagnostics.py",
+        "code/scripts/write_stage_0_5_method_index.py",
+        "code/scripts/zotero_add_stage05_method_refs.py",
+        "code/tests/test_stage_0_5_jam_definition.py",
+        "code/tests/test_stage_0_5_leader_replay.py"
       ],
       "entrypoints": [
         "code/scripts/prepare_stage_0_5_real_reference.py",
@@ -765,7 +777,8 @@
         "RES-STAGE-0.5-LOCAL-FOLLOWING-EXPLORATION-V1",
         "RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1",
         "RES-STAGE-0.5-FINAL-CLOSURE-V1",
-        "RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1"
+        "RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1",
+        "RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1"
       ],
       "core_metrics": [
         "formal_input_manifest",
@@ -841,9 +854,27 @@
         "scene_rc3_evaluation",
         "scene_state_support_verdict",
         "scene_state_supported_variants",
-        "validation_window_rows_materialised"
+        "validation_window_rows_materialised",
+        "holdout_reads",
+        "jam_definition_rules_evaluated",
+        "leader_tracking_max_abs_deviation_m",
+        "null_exceedance_0750_absolute_10mps",
+        "null_exceedance_0750_duan_p95",
+        "null_exceedance_0805_absolute_10mps",
+        "paired_brockfeld_difference_pp",
+        "paired_gap_bias_difference_m",
+        "paired_nrmse_speed_difference",
+        "phase_c_executed",
+        "replay_distinct_pairs_replayed",
+        "replay_insertion_rejections",
+        "replay_pair_config_combinations",
+        "replay_pairs_selected",
+        "third_window_rows_materialised",
+        "wave_direction_robust_non_saturated_rules",
+        "zotero_collections_created",
+        "zotero_items_created"
       ],
-      "current_conclusion": "AAD-0.5-TR-RECON reconstructed the real traffic process and diagnosed the state mismatch. The observed local region sits just downstream of a Ventura Blvd on-ramp merge and just upstream of a Cahuenga Blvd off-ramp diverge, with a sixth auxiliary lane physically present inside the approved five-lane D1 region; both windows are on the congested branch (43.5/50.5 veh/km/lane at 10.51/7.92 m/s) while the same measured cross-section flow also exists on the free-flow branch. The largest low-speed waves first appear at the downstream end of the observation (y=500-650 m) and expand upstream, so the congested state is imported from an unobserved downstream supply. Three pre-declared SUMO diagnostics were executed: observed geometry plus observed boundary demand stays on the free-flow branch (23.90 m/s, 21.05 veh/km/lane, 1811 veh/h/lane); injecting the real observed congested state decays to free flow within 180 s; an admitted conditional 3-lane downstream supply reaches the congested branch but overshoots (6.76 m/s, 61.35 veh/km/lane, 1492 veh/h/lane). None reached the observed target envelope, so state support is Evidence Insufficient and the pre-declared stop rule was executed with no parameter search, no independent-seed repeat and no fourth construction. The congested-branch diagnosis shows the observed density and the observed net gap independently imply an effective Krauss time gap of about 1.53-1.63 s versus the frozen 1.0 s, which is the quantitative reason the same flow is reachable only on the free-flow branch; this is a Hypothesis requiring a controlled probe and a researcher decision.",
+      "current_conclusion": "AAD-0.5-LIT-CAL grounded every method in a full-text-verified source and tested the behaviour hypothesis at the individual-pair level. Phase A: the low-speed wave direction and origin are robust to ten state definitions (16/16 non-saturated rules grow upstream from y=500-650 m, backward speed 2.0-8.3 m/s), and the relative-speed definitions show spatial clustering beyond a per-time-step permutation null model in both windows; however the largest-component size under the absolute 10 m/s rule is NOT distinguishable from the null in 0750 (exceedance 0.999), so the earlier size claim is narrowed to the relative-speed definitions. Phase B replayed 24 leader-follower pairs (12 per window) through SUMO with TraCI-controlled leaders: leader tracking stayed within 0.013-0.112 m, but 26 of 48 pair-configuration initial states were rejected by SUMO's own Krauss insertion safety envelope (44%), which is itself a quantified behaviour-state mismatch concentrated in the congested window. tau=1.6 did not fix the following behaviour: paired Brockfeld gap error changed by +19.6 pp (95% CI [4.3, 35.5], 7 improved / 13 worsened) and the gap bias increased for 20/20 pairs (+5.6 m); NRMSE(speed) was essentially unchanged (+0.00). Stratified by observed time gap the candidate is much worse below 1.5 s (+56.7 and +63.8 pp) and neutral-to-slightly-better on speed in the 1.5-10 s stratum. The macro-derived 1.53-1.63 s is therefore narrowed to a congested-region equilibrium equivalent, not a usable single micro tau. Phase C was not executed under the pre-declared gate; RC1/RC2/RC3 are preserved unchanged. Gate stays pending_simulation_sample.",
       "gate": {
         "status": "pending_simulation_sample",
         "portable_path": "evidence/results/RES-STAGE-0.5-REAL-REF-R2/audit.json"
@@ -3234,6 +3265,81 @@
         "docs/STAGE_0_5_TRAJECTORY_RECONSTRUCTION.md",
         "docs/STAGE_0_5_SUMO_SCENE_RECONSTRUCTION.md",
         "docs/plans/2026-10-21-stage-0-5-trajectory-reconstruction.md"
+      ],
+      "scientific_claim_eligible": false
+    },
+    {
+      "id": "RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1",
+      "experiment_id": "stage_0_5",
+      "name": "Literature-grounded traffic-state definition sensitivity, spatial null model and leader-replay behaviour diagnostics",
+      "status": "closed_evidence_behaviour_candidate_not_supported",
+      "portable_evidence_paths": [
+        "evidence/results/RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1/REPLAY_PLAN_SHA256",
+        "evidence/results/RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1/SHA256SUMS",
+        "evidence/results/RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1/budget_ledger_audit.json",
+        "evidence/results/RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1/jam_definition_rules.csv",
+        "evidence/results/RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1/jam_definition_sensitivity.json",
+        "evidence/results/RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1/manifest.json",
+        "evidence/results/RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1/phase_c_decision.json",
+        "evidence/results/RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1/replay_plan.json",
+        "evidence/results/RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1/replay_summary.json",
+        "evidence/results/RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1/run_metadata.json"
+      ],
+      "local_artifact_paths": [
+        "code/outputs/formal/calibration/stage_0_5_method_diagnostics_v1"
+      ],
+      "code_version_source": "code/src/riskprop/stage_0_5_jam_definition.py; code/src/riskprop/stage_0_5_leader_replay.py; code/scripts/run_stage_0_5_method_diagnostics.py; replay_plan.json / REPLAY_PLAN_SHA256",
+      "configuration_source": "replay_plan.json (SHA-bound before any simulation step); doc/literature-notes/stage_0_5_method_index.json",
+      "data_version_source": "Two SHA-bound canonical calibration states 684a5f0b96dc4811... and 7b0ef830c97a981d...; third window and locked holdout not read",
+      "core_metrics": {
+        "jam_definition_rules_evaluated": 20,
+        "wave_direction_robust_non_saturated_rules": "16/16 upstream, first appearance y=500-650 m",
+        "null_exceedance_0750_absolute_10mps": 0.999,
+        "null_exceedance_0750_duan_p95": 0.0,
+        "null_exceedance_0805_absolute_10mps": 0.019,
+        "replay_pairs_selected": 24,
+        "replay_distinct_pairs_replayed": 23,
+        "replay_pair_config_combinations": 43,
+        "replay_insertion_rejections": 26,
+        "leader_tracking_max_abs_deviation_m": 0.112,
+        "paired_brockfeld_difference_pp": {
+          "mean": 19.57,
+          "ci95": [
+            4.25,
+            35.51
+          ],
+          "improved_pairs": 7,
+          "worsened_pairs": 13
+        },
+        "paired_gap_bias_difference_m": {
+          "mean": 5.62,
+          "ci95": [
+            4.9,
+            6.33
+          ],
+          "improved_pairs": 0,
+          "worsened_pairs": 20
+        },
+        "paired_nrmse_speed_difference": {
+          "mean": 0.0,
+          "ci95": [
+            -0.01,
+            0.02
+          ]
+        },
+        "phase_c_executed": false,
+        "zotero_items_created": 8,
+        "zotero_collections_created": 3,
+        "third_window_rows_materialised": 0,
+        "holdout_reads": 0
+      },
+      "current_conclusion": "AAD-0.5-LIT-CAL grounded every method in a full-text-verified source and tested the behaviour hypothesis at the individual-pair level. Phase A: the low-speed wave direction and origin are robust to ten state definitions (16/16 non-saturated rules grow upstream from y=500-650 m, backward speed 2.0-8.3 m/s), and the relative-speed definitions show spatial clustering beyond a per-time-step permutation null model in both windows; however the largest-component size under the absolute 10 m/s rule is NOT distinguishable from the null in 0750 (exceedance 0.999), so the earlier size claim is narrowed to the relative-speed definitions. Phase B replayed 24 leader-follower pairs (12 per window) through SUMO with TraCI-controlled leaders: leader tracking stayed within 0.013-0.112 m, but 26 of 48 pair-configuration initial states were rejected by SUMO's own Krauss insertion safety envelope (44%), which is itself a quantified behaviour-state mismatch concentrated in the congested window. tau=1.6 did not fix the following behaviour: paired Brockfeld gap error changed by +19.6 pp (95% CI [4.3, 35.5], 7 improved / 13 worsened) and the gap bias increased for 20/20 pairs (+5.6 m); NRMSE(speed) was essentially unchanged (+0.00). Stratified by observed time gap the candidate is much worse below 1.5 s (+56.7 and +63.8 pp) and neutral-to-slightly-better on speed in the 1.5-10 s stratum. The macro-derived 1.53-1.63 s is therefore narrowed to a congested-region equilibrium equivalent, not a usable single micro tau. Phase C was not executed under the pre-declared gate; RC1/RC2/RC3 are preserved unchanged. Gate stays pending_simulation_sample.",
+      "gate_status": "pending_simulation_sample",
+      "paper_locations": [
+        "docs/STAGE_0_5_TRAFFIC_STATE_DEFINITION_SENSITIVITY.md",
+        "docs/STAGE_0_5_LEADER_REPLAY_BEHAVIOUR_DIAGNOSTICS.md",
+        "doc/literature-notes/STAGE_0_5_METHOD_EVIDENCE_MAP.md",
+        "docs/plans/2026-10-20-stage-0-5-literature-calibration.md"
       ],
       "scientific_claim_eligible": false
     }

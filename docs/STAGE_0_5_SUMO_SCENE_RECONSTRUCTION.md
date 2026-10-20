@@ -1,6 +1,6 @@
 # Stage 0.5 SUMO 场景重建与定向诊断（AAD-0.5-TR-RECON）
 
-日期：2026-10-21。任务 `AAD-0.5-TR-RECON`。结果 `RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1`。
+日期：2026-10-20（原文误标 2026-10-21，见文末勘误）。任务 `AAD-0.5-TR-RECON`。结果 `RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1`。
 
 本报告记录：(1) 对既有 SUMO 候选场景的审计；(2) 依据真实证据重建的条件场景；(3) 运行前冻结的三项定向诊断及其结果；(4) 状态支持判定与失败分类。
 
@@ -208,3 +208,5 @@ Krauss 平衡态（σ = 0）满足 `v · tau + L + minGap = 间距`。用冻结�
 - 五层必要条件在批准范围内全部满足；δ 与 h 及其独立依据；独立 seed 变异性；冻结代码的第三窗口验证；用当前 `stage_X_Y` 键重新生成协议锁 readiness。
 
 **Protocol Lock、Stage 1.1、ABCD 主矩阵与通信干预实验均未启动。**
+
+> **日期勘误（2026-10-20）**：本文原标注执行日为 2026-10-21。核对提交时间（`afdc3d0` 的 author/committer date 为 2026-10-20 20:20:17 +08:00）与本地时区（Asia/Shanghai，+08:00）后确认实际执行日为 **2026-10-20**，原标注为撰写时的人工日期错误。文件名与正文按项目惯例保留不改，勘误在此显式登记；详见 `docs/literature/STAGE_0_5_METHOD_EVIDENCE_MAP.md` 文末。

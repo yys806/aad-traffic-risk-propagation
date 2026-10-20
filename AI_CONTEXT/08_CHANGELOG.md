@@ -248,3 +248,13 @@ B1.2-P收口：纯Git全量741 passed/14 skipped/0 failed；严格文档/compile
 结果 `RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1`，便携证据 34 个文件；`export_project_evidence.py` 增补映射与 CSV 白名单。3 项预声明诊断全部执行且均未达状态支持，报 `EvidenceInsufficient_StateSupport`；未搜索参数、未访问第三窗口、未启动协议锁或 Stage 1.1。Gate、δ/h 状态、R1–R5 决策包与全部历史证据不变。
 
 同步更新：`00_PROJECT_STATE.md`（新当前段）、`03_DATA_FLOW.md`、`04_MODULE_MAP.md`、`05_EXPERIMENTS.md`、`07_KNOWN_ISSUES.md`、`docs/RESULTS_INDEX.md`、`docs/STAGE_INDEX.md`、`docs/CHANGELOG.md`、`docs/PROJECT_INDEX.md`、`docs/RESEARCH_STATUS.md`、`docs/PROJECT_REGISTRY.json`。
+
+## 2026-10-20 — AAD-0.5-LIT-CAL 文献依据的微观行为诊断
+
+新增 `stage_0_5_jam_definition.py`（状态定义族 + 逐时间片置换零模型）与 `stage_0_5_leader_replay.py`（前车轨迹重放 + Brockfeld/Schrader 指标 + 配对 bootstrap），入口 `run_stage_0_5_method_diagnostics.py`、`write_stage_0_5_method_index.py`、`zotero_add_stage05_method_refs.py`，测试 18 项。
+
+结果 `RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1`；A 阶段 16/16 非饱和规则方向稳健但 0750 绝对阈值下规模不超零模型；B 阶段 48 次微型重放显示 `tau=1.6` 未改善（+19.57 pp，间距偏差 20/20 变差），44% 观测初始状态被插入包络拒绝；主线 C 按预声明门控未执行。
+
+新增 `doc/literature-notes/`（方法证据表 + 结构化索引 + RIS）；Zotero 新建 3 个专题集合与 8 条文献，Duan/Saberi 加入 08 并补标签。三处重放缺陷已修复并回归。日期勘误显式登记。`export_project_evidence.py` 增补映射与白名单。
+
+同步更新：`00_PROJECT_STATE.md`、`03_DATA_FLOW.md`、`04_MODULE_MAP.md`、`05_EXPERIMENTS.md`、`07_KNOWN_ISSUES.md`、`docs/RESULTS_INDEX.md`、`docs/STAGE_INDEX.md`、`docs/CHANGELOG.md`、`docs/PROJECT_REGISTRY.json`、`docs/literature/*`。

@@ -49,7 +49,8 @@ STATE_COLUMNS = (
     "acceleration_mps2", "lane_id", "net_gap_m", "closing_speed_mps",
     "measurement_status", "identity_break", "observation_gap",
     "original_row_number", "source_member", "missing_reason", "ttc_s",
-    "leader_matched",
+    "leader_matched", "leader_trajectory_id", "leader_identity_uncertain",
+    "frame_id", "global_time_ms",
 )
 REQUIRED_STATE_COLUMNS = STATE_COLUMNS
 

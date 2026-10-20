@@ -255,3 +255,20 @@ B1.2前置接入工程阻断，主矩阵未冻结/未运行；报告`docs/STAGE_
 第三窗口读取 0 行、holdout 0 次。Gate 保持 `pending_simulation_sample`；`scientific_claim_eligible=false`、`reality_coverage_accepted=false`、`protocol_lock_allowed=false`。
 
 报告 `docs/STAGE_0_5_TRAJECTORY_RECONSTRUCTION.md`、`docs/STAGE_0_5_SUMO_SCENE_RECONSTRUCTION.md`；计划 `docs/plans/2026-10-21-stage-0-5-trajectory-reconstruction.md`；证据 `evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/`。
+
+
+## RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1
+
+基于文献证据的微观行为校准与条件场景诊断（AAD-0.5-LIT-CAL）。**无新增科学 Gate。**
+
+**主线 A（只读，20 个「窗口 × 规则」组合）**：低速波的方向与起始位置对状态定义稳健——10 种定义中除 2 条饱和规则（绝对 15 m/s、以 27.78 m/s 工程值为参考的 `λ<0.5`）外，**16/16** 均为「向上游扩张」，最早位置一律落在 **y=500–650 m**（观测段下游端），反向传播速度 2.0–8.3 m/s。逐时间片空间置换零模型（1000 次、种子冻结）显示：Duan `W<0.5`（窗口 p95 参考）与 Saberi `λ<0.3–0.6` 下最大连通域显著超出随机排列（超越率 0.000–0.142，两窗口一致）；但 **0750 在绝对 10 m/s 下不可区分于随机（0.999）**，故此前「最大低速连通域规模」的结论收窄为**依赖相对速度定义**。
+
+**主线 B（48 次独立微型 SUMO 重放）**：每窗口 12 个前后车对，基准 `tau=1.0` vs 候选 `tau=1.6`（其余参数冻结）。前车跟随偏差 0.013–0.112 m，前车输入保真。**26/48 组合的观测初始状态被 SUMO 自身的 Krauss 插入安全包络拒绝（44%）**，集中于拥堵窗口——本身即行为—状态错配的量化表现。候选**未改善**跟驰行为：配对 Brockfeld 间距误差 **+19.57 pp**（95% CI [4.25, 35.51]，7 改善 / 13 恶化），间距偏差 **20/20 对全部变大**（+5.62 m，CI [4.90, 6.33]），`NRMSE(speed)` 基本不变（+0.00）。分层后更清楚：观测车头时距 <1.0 s 与 1.0–1.5 s 显著恶化（+56.7、+63.8 pp），1.5–10 s 接近中性（−2.60 pp，CI [−12.95, 8.56]）且速度指标略改善。
+
+**结论收窄**：`RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1` 的「有效 `tau` ≈ 1.53–1.63 s」是**拥堵区宏观平衡等效量**，不能当作单一微观 `tau` 使用。按预声明门控，**主线 C 未执行**，RC1/RC2/RC3 原样保留。
+
+**文献**：8 篇经 DOI 元数据核验补入 Zotero（07 号集合 7 篇、09 号集合 1 篇），Duan 2023 与 Saberi 2020 加入 08 号集合并补标签（不新建重复条目）；另建 3 个专题集合。方法表 `doc/literature-notes/STAGE_0_5_METHOD_EVIDENCE_MAP.md` 区分「全文已读」（6 篇，含公式/章节号）与「仅元数据核验」（6 篇，未据其采用任何公式）。
+
+第三窗口读取 0 行、holdout 0 次。Gate 保持 `pending_simulation_sample`；`scientific_claim_eligible=false`。
+
+报告 `docs/STAGE_0_5_TRAFFIC_STATE_DEFINITION_SENSITIVITY.md`、`docs/STAGE_0_5_LEADER_REPLAY_BEHAVIOUR_DIAGNOSTICS.md`；计划 `docs/plans/2026-10-20-stage-0-5-literature-calibration.md`；证据 `evidence/results/RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1/`。

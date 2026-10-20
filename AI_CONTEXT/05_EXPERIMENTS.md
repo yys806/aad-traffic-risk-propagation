@@ -163,3 +163,15 @@ RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2：B1.2前置阻断；v1冻结零尝试后�
 - 状态：`closed_evidence_insufficient_state_support`。
 - 客观实验结果：真实两窗口 43.544/10.506 与 50.505/7.915；RC1 23.899/21.053/q=1,811；RC2 23.812/21.203（前 30 s 16.71/34.14，180 s 内退化）；RC3 6.755/61.349/q=1,492。三者均未落入真实目标包络 → `EvidenceInsufficient_StateSupport`，按预声明停止规则停止（构造 3 次、独立重复 0 次、未加第 4 次）。有效 tau 反推 1.527/1.628 s（密度）与 1.552/1.627 s（净间距），冻结值 1.0 s。
 - 输出目录：`code/outputs/formal/calibration/stage_0_5_trajectory_reconstruction_v1/`、`code/outputs/formal/calibration/stage_0_5_scene_reconstruction_v1/`；证据 `evidence/results/RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1/`。
+
+## 2026-10-20 AAD-0.5-LIT-CAL 文献依据的行为诊断
+
+实验编号 `stage_0_5`（结果 `RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1`）。实验目的：把每个方法绑定到经原文核验的文献，并在逐对微观层面检验「有效 `tau`≈1.6 s 能否修复断面流量匹配但状态不匹配」的错配。
+
+- config / 变量：A 阶段只读（10 条状态定义 × 2 窗口，零模型 1000 次置换）；B 阶段 2 窗口 × 12 对 × 2 配置（`tau=1.0` 基准 vs `tau=1.6` 候选，其余冻结），内部 0.05 s / 记录 0.1 s / ≤25 s，种子 20261101 与 20261102。
+- baseline：既有 RC1/RC2/RC3 与 FC1/FC2 保留不改，本任务不重跑；B 阶段的 baseline 是同一批样本上的 `tau=1.0`。
+- 数据集：两个已批准校准窗口 canonical 状态（SHA 绑定）。第三窗口与 holdout 零读取。
+- 主要指标：连通域规模/持续/最早位置/方向/反向速度/零模型超越率；Brockfeld Eq. 2 间距误差、`NRMSE(gap)`、`NRMSE(speed)`、间距与速度偏差/MAE、车头时距、闭合速度。
+- 状态：`closed_evidence_behaviour_candidate_not_supported`。
+- 客观实验结果：A 阶段 16/16 非饱和规则向上游、起始 y=500–650 m，反向速度 2.0–8.3 m/s；0750 绝对 10 m/s 零模型超越率 0.999（不可区分），相对速度定义 0.000–0.142（显著）。B 阶段 24 对选中、23 对重放、43/48 组合有指标、26 次插入拒绝（44%）；配对 Brockfeld 差 +19.57 pp（CI [4.25, 35.51]）、间距偏差 20/20 变差（+5.62 m）、`NRMSE(speed)` +0.00；分层 <1.0 s +56.7 pp、1.0–1.5 s +63.8 pp、1.5–10 s −2.60 pp。
+- 输出目录：`code/outputs/formal/calibration/stage_0_5_method_diagnostics_v1/`；证据 `evidence/results/RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1/`。

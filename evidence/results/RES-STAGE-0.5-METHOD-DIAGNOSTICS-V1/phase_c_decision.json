@@ -1,0 +1,29 @@
+{
+ "result_id": "RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1",
+ "phase_c_executed": false,
+ "gate_condition": "phase B must support the behaviour candidate before a conditional downstream supply is constructed",
+ "observed_paired_gap_error_difference": {
+  "mean_difference": 19.573641792176595,
+  "ci95": [
+   4.254330537462512,
+   35.505329149601316
+  ],
+  "improved_pairs": 7,
+  "worsened_pairs": 13,
+  "direction": "lower_is_better"
+ },
+ "gate_satisfied": false,
+ "reason": "the pre-declared interpretation rule was not met: the candidate tau=1.6 does not reduce the gap error in both windows and it increases the gap bias for every paired sample, so the behaviour-parameter hypothesis is not supported and a new conditional supply would mask a behaviour-model discrepancy",
+ "existing_scenes_preserved": [
+  "RC1",
+  "RC2",
+  "RC3"
+ ],
+ "no_rerun_of_existing_runs": true,
+ "new_supply_candidate_created": false,
+ "researcher_decision_required": [
+  "whether to run a heterogeneous-tau structural diagnostic (observation-driven per-pair tau, no search)",
+  "whether to run an IDM comparison under the same leader replay and metrics",
+  "whether a conditional downstream supply may be revisited after either of the above"
+ ]
+}
