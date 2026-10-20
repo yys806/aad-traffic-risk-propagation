@@ -1,0 +1,40 @@
+{
+  "result_id": "RES-STAGE-0.5-FINAL-CLOSURE-V1",
+  "base_commit": "a76e6c5d93eb97c6d1d0f25776c4bb755bf6ce8e",
+  "reference_plan_sha256": "d29664d72b7ad3e9f122c1b4e9cc2485e05ae8769b9911092ff8c73d26b6c7bf",
+  "statistics_plan_sha256": "c8fe53453e6afb49e33d188f3ba4a33e1054328ba138ecd8963c445da54a29bb",
+  "candidate_plan_sha256": "9ba4397a61aac0d9269cdeaf6f8f3c76e42c08f1de9d9e77bd0d3049a5920e25",
+  "implementation": {
+    "path": "code/src/riskprop/stage_0_5_final_closure.py",
+    "sha256": "aab5fa44fe1c0f18eeed727947f80c6d4d6211281b729091e9265af858c3fb02"
+  },
+  "reference_entry": {
+    "path": "code/scripts/run_stage_0_5_final_closure.py",
+    "sha256": "cc6a471b010dba8211893e39969ca28c5eba5eb6c13c2798b566fce26c33587a"
+  },
+  "candidate_entry": {
+    "path": "code/scripts/run_stage_0_5_closure_candidate.py",
+    "sha256": "ba7d02c3296b605e6aafd019265c374f234e5ba7df0304e73d8d747f985e78af"
+  },
+  "supervisor": {
+    "path": "code/scripts/supervise_stage_0_5_closure.py",
+    "sha256": "9b17f00fe41b52974863281438cfd8c45e0aa773ab75587e157bf13c391f137a"
+  },
+  "assembler": {
+    "path": "code/scripts/package_stage_0_5_final_closure.py",
+    "sha256": "1ec49e143dc7aec6efe0e6a68c60cdf801c447b9645ec0c692b62241407bcb21"
+  },
+  "sumo_binary_sha256": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+  "capsules": {
+    "reference": "code/outputs/formal/calibration/stage_0_5_final_closure_v4",
+    "candidate": "code/outputs/formal/calibration/stage_0_5_final_candidate_v1",
+    "superseded_preparation_attempts": [
+      "stage_0_5_final_closure_v1",
+      "stage_0_5_final_closure_v2",
+      "stage_0_5_final_closure_v3"
+    ]
+  },
+  "raw_state_exported": false,
+  "third_window_accessed": false,
+  "holdout_accessed": false
+}

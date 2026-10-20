@@ -140,3 +140,14 @@ RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2：B1.2前置阻断；v1冻结零尝试后�
 266个原核心工程事件独立重建、逐成员核对；历史86/87/83重现，开始至确认全在域为86，差异4件。共同候选分母14636.2veh-s，局部正式P2仍Unresolved/Not Calculated。相位周期5/10/20%敏感性均到300s才完成，后评价0s；局部平台而全网/pending增长。五层必要目标、需求可识别性和科学误差/精度候选已整合为D1–D5待决；无新增SUMO，累计3/8剩5。C回溢EI与全部历史、Gate/Lock/I-II状态不变。
 
 报告 `docs/STAGE_0_5_LOCAL_FOLLOWING_PROTOCOL_DESIGN.md`；计划 `docs/plans/2026-10-20-lf-protocol-consolidation.md`；证据 `evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/`。
+
+
+## 2026-10-20 Stage 0.5 最终收口（AAD-0.5-FINAL-CLOSURE）
+
+结果 `RES-STAGE-0.5-FINAL-CLOSURE-V1`（`evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/`）。
+
+真实局部参考（按已批准 D1）：0750–0805 内部窗 [120,840) 起始 147 件、可评价暴露 31,051.6 veh-s、17.0426 events·veh-h⁻¹（车辆簇条件区间 [13.604, 21.131]）；0805–0820 内部窗 [180,840) 起始 216 件、33,091.1 veh-s、23.4988（[19.621, 27.806]）。全采集敏感口径 174/39,065.8/16.0345 与 252/43,522.0/20.8446。全源确认事件 543/732、全源可评价暴露 111,425.9/133,505.6 s 与 A+ 合格切片求和逐位复现；四个口径逐事件差异 0750 全网 3 件、0805 全网 7 件，均有位置与时钟依据。
+
+条件候选用例（`candidate_experiment_plan.json`，SHA 绑定）：通用三车道网络、60 s 周期信号（绿 48.0/42.2 s）、内部断面流量 1648.0/1449.818 veh/h/lane 作为条件排班流入、A+ 车型长度候选、Krauss/LC2013 固定、内部 0.05 s / 记录 0.1 s、评价窗 [180.0, 299.7] 运行前冻结。FC1（0750 条件）与 FC2（0805 条件）各 300 s、seed 20261019：状态 `completed_with_diagnostic_warning`、工程阻断 0、数值精确 381,560/381,560 与 355,458/355,458、范围一致 36/86、不可评价 1,511/1,318、最大残差 2.84e-14 m、守恒与局部平衡残差 0、期末待插入 0。
+
+状态支持判定（冻结规则）：两次运行的速度与密度全部落在预声明 30 s 块包络之外，低速/闭合状态也未按真实参考出现，故 `EvidenceInsufficient_StateSupport`；按失败分支停止，未执行第 3 次构造与保留的 2 次独立 seed 重复。五层合取 = Evidence Insufficient（阻断层 1/2/5）。本地胶囊：`stage_0_5_final_closure_v4`（参考）与 `stage_0_5_final_candidate_v1`（候选）；v1–v3 为被取代的准备尝试，保留但不作结果。

@@ -1,0 +1,89 @@
+{
+  "status": "Awaiting Researcher Decision",
+  "consolidated": true,
+  "no_further_interruption_intended": true,
+  "decisions": [
+    {
+      "id": "R1",
+      "title": "Scientific margin delta and precision h, with or without a system-error bound B",
+      "why_irreplaceable": "D4 approved the error rule but no numeric value; no independent basis exists in the closed stages (see delta_h_basis_audit.json).",
+      "evidence": [
+        "Real local rates us101__0750_0805 17.0426 [[13.604100708795242, 21.130862388378628]]; us101__0805_0820 23.4988 [[19.621289728841777, 27.805661306814184]]",
+        "interval semantics exclude shared supply, interaction dependence, between-seed variation and model bias",
+        "Stage 0.2 physical truth permanently Unverified; Energy Distance real-real upper bound Not Identifiable"
+      ],
+      "options": [
+        "approve a numeric delta and h with a stated basis",
+        "authorise a separate task to establish an independent measurement-error bound first",
+        "restrict the accepted scope explicitly and record the consequence"
+      ],
+      "blocks": "Any scientific acceptance of Stage 0.5, regardless of simulator state support."
+    },
+    {
+      "id": "R2",
+      "title": "Target-condition and boundary-supply design able to reach the observed congested branch",
+      "why_irreplaceable": "D3 requires the supply/demand/network condition to be frozen before any driving-parameter work; the observed internal flow alone selects the free-flow branch.",
+      "evidence": [
+        "predeclared block envelopes exclude every target: FC1 v[19.425,25.942] k[17.921,23.186] vs target v=10.51 k=43.54; FC2 v[16.990,25.195] k[16.269,23.289] vs target v=7.915 k=50.51",
+        "internal cross-section flow is reproduced on the wrong fundamental-diagram branch",
+        "driving-parameter tuning is explicitly not an allowed remedy for a supply mismatch"
+      ],
+      "options": [
+        "approve a downstream capacity/bottleneck construction as a conditional supply input",
+        "approve a different approved target condition or a narrower accepted scope",
+        "stop Stage 0.5 at the current measured-reference boundary"
+      ],
+      "blocks": "Layer 5 state support, and therefore the whole five-layer conjunction."
+    },
+    {
+      "id": "R3",
+      "title": "Evaluation window and warmup definition for a finite-time dynamic target",
+      "why_irreplaceable": "D2 approved local finite-time state support but the 300 s runs leave no approved post-warmup support; window choice must be fixed before runs and never on P2 outcomes.",
+      "evidence": [
+        "candidate evaluation window [180.0, 299.7] is a 119.7 s slice",
+        "local exposure per run 1458.1 and 1408.4 veh-s against real 31051.6 and 33091.1",
+        "the 450 s extension was not admitted and no resource cap was raised"
+      ],
+      "options": [
+        "freeze a longer acquisition with a pre-declared warmup and evaluation rule",
+        "accept a finite-time dynamic target with a pre-declared profile",
+        "defer until R2 fixes the supply design"
+      ],
+      "blocks": "Valid sample support and therefore any precision statement."
+    },
+    {
+      "id": "R4",
+      "title": "Reuse of the remaining three authorised trajectory runs",
+      "why_irreplaceable": "D5 reserves at least two runs for independent-seed repeats after freeze; the third construction run cannot cover both target conditions.",
+      "evidence": [
+        "2 of 5 used (FC1, FC2), 0 repeats attempted, 3 preserved",
+        "the frozen pre-declared rule forbids further search after an envelope failure"
+      ],
+      "options": [
+        "keep the budget reserved until R2 and R3 are decided",
+        "authorise a new pre-declared candidate plan together with an explicit resource change"
+      ],
+      "blocks": "Independent-seed uncertainty and the third-window validation."
+    },
+    {
+      "id": "R5",
+      "title": "Third-window validation protocol",
+      "why_irreplaceable": "Task E only permits the third real window after code, parameters, configuration, metrics and statistics are all frozen; that precondition is unmet.",
+      "evidence": [
+        "third-window rows materialised 0; locked holdout readings 0; validation window never opened",
+        "no frozen acceptance protocol exists because delta, h and layer 5 remain open"
+      ],
+      "options": [
+        "defer the validation protocol to a separate authorised task",
+        "freeze the protocol together with R1-R3 and then run it once"
+      ],
+      "blocks": "Any claim of independent validation, and therefore Stage 0.5.5."
+    }
+  ],
+  "explicitly_not_requested": [
+    "permission for ordinary engineering fixes",
+    "permission to keep documenting evidence",
+    "any change to Stage 0.2 or Stage 0.3 semantics"
+  ],
+  "note": "This is the only decision request produced by this task. No numeric threshold was invented and no failure was hidden."
+}

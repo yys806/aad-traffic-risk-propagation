@@ -1,0 +1,44 @@
+{
+  "source": "us101__0805_0820",
+  "rows": 1403095,
+  "trajectories": 2017,
+  "partitions": 22,
+  "sha256": "7b0ef830c97a981da018d4e24b029e38aa2630387c728ea87b57926745880a9f",
+  "window_ids": [
+    "0805_0820"
+  ],
+  "original_exposure_independently_reproduced": true,
+  "old_formal_events_read": false,
+  "third_window_rows_materialised": 0,
+  "source_access": {
+    "schema_version": "stage_0_5.sumo-engineering.v2.access-audit.v1",
+    "policy_schema_version": "stage_0_5.sumo-engineering.v2.calibration-validation-policy.v1",
+    "access_roles": [
+      "calibration",
+      "temporal_validation",
+      "auxiliary"
+    ],
+    "request_count": 1,
+    "denied_count": 0,
+    "denied_requests": [],
+    "decisions": [
+      {
+        "role": "calibration",
+        "sources": [
+          "us101__0805_0820"
+        ],
+        "purpose": "Approved D1 full-context local re-extraction",
+        "allowed": true,
+        "reason": "allowed_by_policy",
+        "restricted_sources": [],
+        "checked_bindings": {
+          "us101__0805_0820": "7b0ef830c97a981da018d4e24b029e38aa2630387c728ea87b57926745880a9f"
+        }
+      }
+    ],
+    "fail_closed": true,
+    "locked_holdout_accessed": false,
+    "validation_window_read": false
+  },
+  "reference_plan_sha256": "d29664d72b7ad3e9f122c1b4e9cc2485e05ae8769b9911092ff8c73d26b6c7bf"
+}

@@ -31,10 +31,10 @@ def settings(conn,spec,types,out):
     return runtime
 
 
-def run_worker(batch,run_id):
+def run_worker(batch,run_id,*,plan_loader=None):
     import pyarrow as pa
     import pyarrow.parquet as pq
-    plan=load_plan(batch);name='experiment_plan.json';spec=next(r for r in plan["runs"] if r["run_id"]==run_id)
+    plan=(load_plan if plan_loader is None else plan_loader)(batch);name='experiment_plan.json';spec=next(r for r in plan["runs"] if r["run_id"]==run_id)
     out=batch/"runs"/run_id;out.mkdir(exist_ok=True)
     if (out/"summary.json").exists():raise PermissionError("no run overwrite")
     _ensure_traci_importable();import traci;import traci.constants as c
@@ -44,7 +44,7 @@ def run_worker(batch,run_id):
     net=ET.parse(batch/spec["network"]).getroot()
     lane_edges={l.attrib["id"]:e.attrib["id"] for e in net.findall("edge") for l in e.findall("lane")}
     lane_lengths={l.attrib["id"]:float(l.attrib["length"]) for e in net.findall("edge") for l in e.findall("lane")}
-    support=coordinate_support(batch/spec["network"]) if spec["kind"] in ["C","D"] else None
+    support=coordinate_support(batch/spec["network"]) if spec["kind"] in ["C","D","LF"] else None
     scenario_network_issue=bool(support and not support["coordinate_verified"])
     if any(v['input_stops'] for v in vehicle_defs.values()):raise PermissionError('fresh no-stop domain only')
     coverage=Coverage();accounting=ScopedAccounting(spec["local_space"]);tracker=QueueContinuity()

@@ -1,0 +1,39 @@
+{
+  "global_stop": null,
+  "closed": false,
+  "actual_new_attempts": 2,
+  "runs": [
+    {
+      "run_id": "FC1",
+      "role": "construction",
+      "condition": "us101__0750_0805",
+      "seed": 20261019,
+      "status": "completed_with_diagnostic_warning",
+      "observed_s": 300.0,
+      "plan_sha256": "9ba4397a61aac0d9269cdeaf6f8f3c76e42c08f1de9d9e77bd0d3049a5920e25"
+    },
+    {
+      "run_id": "FC2",
+      "role": "construction",
+      "condition": "us101__0805_0820",
+      "seed": 20261019,
+      "status": "completed_with_diagnostic_warning",
+      "observed_s": 300.0,
+      "plan_sha256": "9ba4397a61aac0d9269cdeaf6f8f3c76e42c08f1de9d9e77bd0d3049a5920e25"
+    },
+    {
+      "run_id": "FR1",
+      "role": "repeat",
+      "condition": "us101__0750_0805",
+      "seed": 20261020,
+      "status": "not_attempted"
+    },
+    {
+      "run_id": "FR2",
+      "role": "repeat",
+      "condition": "us101__0805_0820",
+      "seed": 20261021,
+      "status": "not_attempted"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "status": "Awaiting Researcher Decision",
+  "question": "Which numeric scientific margin delta and precision h may be approved?",
+  "independent_evidence_available": {
+    "measurement_system_error_bound": false,
+    "physical_truth_independent_of_project_sources": false,
+    "between_seed_variance_available": false,
+    "downstream_effect_allowance_decided": false
+  },
+  "facts": [
+    "Stage 0.2 closed with independent physical truth and manual geometric truth permanently Unverified, so its residual measurement error has no demonstrated bound.",
+    "Stage 0.2 inherits closing epsilon 1e-3 m/s and 100 ms semantics, and the earlier time-step sensitivity showed halving the internal step moves an event boundary by 0.2 s: both describe processing resolution, not an accepted model bias.",
+    "The recorded 95% intervals quantify sampling error within one source and one trajectory-cluster structure only. They exclude shared supply, interaction dependence, between-seed variation and model bias.",
+    "Two same-day calibration windows cannot identify a road population, so their spread is not an acceptable deviation envelope.",
+    "The Energy Distance real-real upper bound remains Not Identifiable and 0.90/0.95 stay engineering defaults.",
+    "No independent-seed repeat was executed, so between-seed variance is unobserved rather than shown to be small.",
+    "Stage 0.1 numerical checks, the 1e-6 m displacement tolerance and Stage 0.6 analytic truths are engineering correctness, not a simulator-to-reality allowance.",
+    "No AAD effect-size requirement has been recorded, so the downstream-impact component of a margin is absent."
+  ],
+  "forbidden_substitutes": [
+    "real statistical fluctuation as delta",
+    "engineering default as delta",
+    "closest simulator result as delta",
+    "overlapping confidence intervals as equivalence",
+    "non-significant difference as equivalence",
+    "small Energy Distance as equivalence"
+  ],
+  "minimum_inputs_for_a_decision": [
+    "the maximum model bias later AAD conclusions can tolerate, or an external measurement-study bound",
+    "whether a system-error bound B is claimed at all (currently none is demonstrable)",
+    "the required precision h for each necessary scalar, with the sample-support consequence stated",
+    "confirmation of the target-condition and evaluation-window design that produces a state-supported sample"
+  ],
+  "note": "No numeric delta or h was invented. All work independent of this decision was completed."
+}

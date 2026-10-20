@@ -1,0 +1,69 @@
+{
+  "necessary_layers": 5,
+  "all_layers_required": true,
+  "no_compensation_by_weighted_score": true,
+  "layers": [
+    {
+      "layer": 1,
+      "name": "basic kinematics",
+      "engineering_status": "Computed",
+      "evidence": "Both real windows and both candidate runs carry full state, kinematic and quality statistics with independently reproduced denominators. FC1 sim 22.29 vs real 10.51; FC2 sim 20.35 vs real 7.915. FC1 sim 20.53 vs real 43.54; FC2 sim 19.81 vs real 50.51. FC1 sim 0.00047471 vs real 0.096892; FC2 sim 0.0421 vs real 0.25297.",
+      "necessary_metric_status": "Comparable under the frozen common semantics; no approved margin exists",
+      "blocking": "Without an independent measurement-error bound and an approved delta no pass may be recorded for any kinematic statistic.",
+      "status": "Evidence Insufficient"
+    },
+    {
+      "layer": 2,
+      "name": "following and physical interaction",
+      "engineering_status": "Computed",
+      "evidence": "net_gap = getLeader distance + follower minGap with the prior 0.0 m same-lane cross-check; closing = follower - leader; the exact step-displacement chain is retained: FC1 exact 381560/381560, bounded 36, not-evaluable 1511, blockers 0, max residual 2.84e-14 m against 1e-6 m; FC2 exact 355458/355458, bounded 86, not-evaluable 1318, blockers 0, max residual 2.84e-14 m against 1e-6 m. FC1 sim 2.73 vs real -0.1714; FC2 sim 3.67 vs real -0.1094. FC1 sim 41.19 vs real 18.81; FC2 sim 41.39 vs real 15.38.",
+      "necessary_metric_status": "Distributions and gap/closing means produced on both sides; no approved margin",
+      "blocking": "Simulated closing-speed means are positive while both real windows are negative, so the interaction regime differs in sign, not only magnitude.",
+      "status": "Evidence Insufficient"
+    },
+    {
+      "layer": 3,
+      "name": "risk observability, identity, clock and quality",
+      "engineering_status": "Verified",
+      "evidence": "Stage 0.2 identity, clock, continuity and quality rules inherited unchanged; 0 rejected formal candidates and 0 right-censored events on every window and run; unknown is never zero-filled; the real missing/no-leader vocabulary and the SUMO not_applicable vocabulary stay separate and neither adds to reliable following exposure.",
+      "necessary_metric_status": "Common-semantic mapping required before any label-frequency comparison",
+      "blocking": null,
+      "status": "Engineering Consistent (not a scientific pass)"
+    },
+    {
+      "layer": 4,
+      "name": "formal P2 events and evaluable exposure",
+      "engineering_status": "Verified",
+      "evidence": "Approved D1 attribution implemented and independently recounted; both real windows recomputed on the full follower context before any window cut; global exposure reproduces the sealed Stage 0.2 denominators exactly. us101__0750_0805 interior onset 147, exposure 31051.6 veh-s, rate 17.0426 per evaluable vehicle-hour, interval [13.604100708795242, 21.130862388378628]; us101__0805_0820 interior onset 216, exposure 33091.1 veh-s, rate 23.4988 per evaluable vehicle-hour, interval [19.621289728841777, 27.805661306814184]",
+      "necessary_metric_status": "Real local P2 and rate are now Calculated (previously Unresolved / Not Calculated)",
+      "blocking": "Comparison with the simulator still requires delta and a state-supported simulator sample.",
+      "status": "Measurement Closed"
+    },
+    {
+      "layer": 5,
+      "name": "target state support, valid sample and precision",
+      "engineering_status": "Not Satisfied",
+      "evidence": "Every pre-declared 30 s block envelope excludes its own target: FC1 blocks v[19.425,25.942] k[17.921,23.186] vs target v=10.51 k=43.54; FC2 blocks v[16.990,25.195] k[16.269,23.289] vs target v=7.915 k=50.51. The observed internal cross-section flow is reproduced (FC1 sim 1647.4 vs real 1646.9 veh/h/lane; FC2 sim 1451.4 vs real 1439.2 veh/h/lane) but on the free-flow branch, not the observed congested branch. One simulator trajectory per condition and no independent-seed repeat executed; local exposure FC1 1458.1 veh-s; FC2 1408.4 veh-s against real interior 31051.6 and 33091.1.",
+      "necessary_metric_status": "State support absent and precision h unapproved",
+      "blocking": "A conjunctive layer 5 failure cannot be offset by other layers.",
+      "status": "Evidence Insufficient"
+    }
+  ],
+  "comparison_ready": false,
+  "conjunctive_verdict": "Evidence Insufficient",
+  "blocking_layers": [
+    1,
+    2,
+    5
+  ],
+  "closed_layers": [
+    4
+  ],
+  "scientific_delta_status": "Awaiting Researcher Decision",
+  "approved_during_task": false,
+  "stage_0_5_gate": "pending_simulation_sample",
+  "protocol_lock_allowed": false,
+  "stage_1_1_allowed": false,
+  "reality_coverage_accepted": false,
+  "scientific_claim_eligible": false
+}

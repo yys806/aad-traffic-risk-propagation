@@ -1,0 +1,55 @@
+{
+  "previous_targeted_used": 3,
+  "authorized_new_trajectory_runs": 5,
+  "actual_new_trajectory_runs": 2,
+  "runs": [
+    {
+      "run_id": "FC1",
+      "role": "construction",
+      "condition": "us101__0750_0805",
+      "seed": 20261019,
+      "status": "completed_with_diagnostic_warning",
+      "observed_s": 300.0
+    },
+    {
+      "run_id": "FC2",
+      "role": "construction",
+      "condition": "us101__0805_0820",
+      "seed": 20261019,
+      "status": "completed_with_diagnostic_warning",
+      "observed_s": 300.0
+    },
+    {
+      "run_id": "FR1",
+      "role": "repeat",
+      "condition": "us101__0750_0805",
+      "seed": 20261020,
+      "status": "not_attempted",
+      "observed_s": null
+    },
+    {
+      "run_id": "FR2",
+      "role": "repeat",
+      "condition": "us101__0805_0820",
+      "seed": 20261021,
+      "status": "not_attempted",
+      "observed_s": null
+    }
+  ],
+  "remaining_after_task": 3,
+  "reserved_independent_repeats": "Preserved, not attempted",
+  "unallocated": 1,
+  "micro_budget_remaining": 0,
+  "third_construction_run": "Available but deliberately not used: one changed-boundary run cannot satisfy both target conditions and the frozen rule forbids further search",
+  "ABCD_runs": 0,
+  "formal_calibration_runs": 0,
+  "validation_window_rows_materialised": 0,
+  "holdout_rows_materialised": 0,
+  "new_real_raw_trajectory_reads": 0,
+  "software_smoke_records": {
+    "empty_preflight_software_smokes": 4,
+    "counted_separately": true,
+    "included_in_trajectory_budget": false
+  },
+  "scientific_claim_eligible": false
+}

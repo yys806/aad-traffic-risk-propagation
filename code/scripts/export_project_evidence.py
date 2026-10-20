@@ -588,6 +588,34 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         pairs.setdefault('RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1', []).append(
             (f'code/outputs/formal/calibration/stage_0_5_lf_protocol_v1/summary/{name}',name)
         )
+    for name in (
+        'audit.json','candidate_analyse_FC1_access_audit.json','candidate_analyse_FC2_access_audit.json',
+        'candidate_empty_all_access_audit.json','candidate_empty_preflight.json','candidate_execution_guard_audit.json',
+        'candidate_experiment_plan.json','candidate_isolation_probe.json','candidate_PLAN_SHA256',
+        'candidate_probe_all_access_audit.json','candidate_run_ledger.json','candidate_run_summary.json',
+        'candidate_worker_FC1_access_audit.json','candidate_worker_FC2_access_audit.json','cluster_exposure_audit.csv',
+        'delta_h_basis_audit.json','event_attribution_audit.csv','execution_ledger.json','five_layer_admission.json',
+        'historical_status_preservation.json','isolation_evidence.json','issue_discovery_report.json',
+        'member_support_audit.csv','provenance.json','real_local_reference_summary.json',
+        'real_us101__0750_0805_full_acquisition_P2.json','real_us101__0750_0805_interior_P2.json',
+        'real_us101__0750_0805_joint_uncertainty.json','real_us101__0750_0805_P2_cluster_uncertainty.json',
+        'real_us101__0750_0805_source_audit.json','real_us101__0750_0805_traffic_metrics.json',
+        'real_us101__0805_0820_full_acquisition_P2.json','real_us101__0805_0820_interior_P2.json',
+        'real_us101__0805_0820_joint_uncertainty.json','real_us101__0805_0820_P2_cluster_uncertainty.json',
+        'real_us101__0805_0820_source_audit.json','real_us101__0805_0820_traffic_metrics.json',
+        'reference_REFERENCE_PLAN_SHA256','reference_isolation_policy.json','reference_preparation.json',
+        'reference_reference_plan.json','reference_reference_us101__0750_0805_access_audit.json',
+        'reference_reference_us101__0805_0820_access_audit.json','reference_source_manifest.json',
+        'reference_statistics_plan.json','reference_statistics_us101__0750_0805_access_audit.json',
+        'reference_statistics_us101__0805_0820_access_audit.json','reference_test_pass.json',
+        'reference_tests_tests_access_audit.json','report.md','researcher_decision_package.json',
+        'sim_FC1_P2.json','sim_FC1_state_support_blocks.json','sim_FC1_traffic_metrics.json',
+        'sim_FC2_P2.json','sim_FC2_state_support_blocks.json','sim_FC2_traffic_metrics.json',
+        'stage_0_6_handoff.json','state_support_verdict.json','manifest.json','SHA256SUMS',
+    ):
+        pairs.setdefault('RES-STAGE-0.5-FINAL-CLOSURE-V1', []).append(
+            (f'code/outputs/formal/calibration/stage_0_5_final_closure_package/summary/{name}', name)
+        )
     return pairs
 
 
@@ -609,7 +637,9 @@ def _validate_source(source: Path) -> None:
         raise ValueError(f"refusing sealed sampling key: {source}")
     # B0 exports only these aggregate tables, never arbitrary trajectory CSVs.
     aggregate_names={"SHA256SUMS","PLAN_SHA256","run_metrics.csv","time_bins_60s.csv","time_series_5s.csv",
-        "event_attribution_audit.csv","traffic_state_1s.csv","traffic_state_30s.csv"}
+        "event_attribution_audit.csv","traffic_state_1s.csv","traffic_state_30s.csv",
+        "member_support_audit.csv","cluster_exposure_audit.csv",
+        "candidate_PLAN_SHA256","reference_REFERENCE_PLAN_SHA256"}
     if source.suffix.lower() not in {".json", ".md", ".txt", ".sha256"} and source.name not in aggregate_names:
         raise ValueError(f"unsupported evidence file type: {source}")
 

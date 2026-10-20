@@ -235,3 +235,8 @@ B1.2-P收口：纯Git全量741 passed/14 skipped/0 failed；严格文档/compile
 266个原核心工程事件独立重建、逐成员核对；历史86/87/83重现，开始至确认全在域为86，差异4件。共同候选分母14636.2veh-s，局部正式P2仍Unresolved/Not Calculated。相位周期5/10/20%敏感性均到300s才完成，后评价0s；局部平台而全网/pending增长。五层必要目标、需求可识别性和科学误差/精度候选已整合为D1–D5待决；无新增SUMO，累计3/8剩5。C回溢EI与全部历史、Gate/Lock/I-II状态不变。
 
 报告 `docs/STAGE_0_5_LOCAL_FOLLOWING_PROTOCOL_DESIGN.md`；计划 `docs/plans/2026-10-20-lf-protocol-consolidation.md`；证据 `evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/`。
+
+
+## 2026-10-20 — AAD-0.5-FINAL-CLOSURE
+
+新增 `stage_0_5_final_closure.py`（D1 归属、局部 P2/暴露、误差判据、计划守卫）与真实参考/候选/监督/统计/装配/校验六个入口，以及三个测试模块；`export_project_evidence.py` 增补本结果导出映射与聚合文件白名单。研究者批准 D1–D5 记入 `06_DECISIONS.md`；真实局部 P2 首次计算完成（147/31051.6/17.0426 与 216/33091.1/23.4988），条件候选状态支持未通过、五层合取 Evidence Insufficient，δ/h 无独立依据，集中决策包 R1–R5。Gate 未升级，历史状态与旧包字节未改写。

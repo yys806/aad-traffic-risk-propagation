@@ -1,0 +1,1534 @@
+{
+  "us101__0750_0805": {
+    "interior": {
+      "window_s": [
+        120.0,
+        840.0
+      ],
+      "event_rows": 543,
+      "counts": {
+        "onset": 147,
+        "confirmation": 146,
+        "through_confirmation": 145,
+        "through_end": 145
+      },
+      "confirmation_time_window_sensitivity": 146,
+      "local_evaluable_vehicle_s": 31051.6,
+      "cluster_count": 1789,
+      "cluster_onset_total": 147,
+      "rate_per_evaluable_vehicle_hour": 17.042600059256205,
+      "cluster_interval": [
+        13.604100708795242,
+        21.130862388378628
+      ],
+      "onset_in_window_events": 420,
+      "attribution_differing_events": 3,
+      "rejected_formal_candidates": 0,
+      "right_censored_unconfirmed": 0,
+      "full_source_evaluable_exposure_s": 111425.9,
+      "whole_window_evaluable_exposure_s": 88846.3,
+      "boundary_crossing_evaluable_s": 330.4
+    },
+    "full_acquisition": {
+      "window_s": [
+        0.0,
+        952.8
+      ],
+      "event_rows": 543,
+      "counts": {
+        "onset": 174,
+        "confirmation": 173,
+        "through_confirmation": 172,
+        "through_end": 172
+      },
+      "confirmation_time_window_sensitivity": 173,
+      "local_evaluable_vehicle_s": 39065.8,
+      "cluster_count": 2138,
+      "cluster_onset_total": 174,
+      "rate_per_evaluable_vehicle_hour": 16.034485406672843,
+      "cluster_interval": null,
+      "onset_in_window_events": 543,
+      "attribution_differing_events": 3,
+      "rejected_formal_candidates": 0,
+      "right_censored_unconfirmed": 0,
+      "full_source_evaluable_exposure_s": 111425.9,
+      "whole_window_evaluable_exposure_s": 111425.9,
+      "boundary_crossing_evaluable_s": 406.5
+    },
+    "provenance": {
+      "state_sha256": "684a5f0b96dc48116f16d581c278d7039c0554bf1c3cea8d6eda3e605e3e8644",
+      "rows": 1180598,
+      "trajectories": 2169,
+      "partitions": 23,
+      "original_exposure_independently_reproduced": true,
+      "old_formal_events_read": false,
+      "third_window_rows_materialised": 0,
+      "validation_window_read": false,
+      "denied_requests": 0,
+      "locked_holdout_accessed": false,
+      "reference_plan_sha256": "d29664d72b7ad3e9f122c1b4e9cc2485e05ae8769b9911092ff8c73d26b6c7bf"
+    },
+    "uncertainty": {
+      "source": "us101__0750_0805",
+      "window_s": [
+        120.0,
+        840.0
+      ],
+      "metrics": {
+        "speed": {
+          "vehicle": {
+            "point": 10.506118382234925,
+            "ci95": [
+              10.349380627419883,
+              10.655477998162944
+            ],
+            "simultaneous_ci": [
+              10.275061108678399,
+              10.741396338536555
+            ],
+            "clusters": 2169,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          },
+          "time_block": {
+            "point": 10.506118382234927,
+            "ci95": [
+              9.276247123953656,
+              11.673457742340979
+            ],
+            "simultaneous_ci": [
+              8.646391241040092,
+              12.139741457795836
+            ],
+            "clusters": 12,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          }
+        },
+        "acceleration": {
+          "vehicle": {
+            "point": 0.0670261630166436,
+            "ci95": [
+              0.057638733717711735,
+              0.07657262152668917
+            ],
+            "simultaneous_ci": [
+              0.053092496745355516,
+              0.08053820871937721
+            ],
+            "clusters": 2169,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          },
+          "time_block": {
+            "point": 0.06702616301664359,
+            "ci95": [
+              -0.012645272087124543,
+              0.15467138760332383
+            ],
+            "simultaneous_ci": [
+              -0.0408995605563976,
+              0.18379444388823216
+            ],
+            "clusters": 12,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          }
+        },
+        "gap": {
+          "vehicle": {
+            "point": 18.853805489945927,
+            "ci95": [
+              18.380848596538126,
+              19.336624763652893
+            ],
+            "simultaneous_ci": [
+              18.172006993554852,
+              19.508895182573244
+            ],
+            "clusters": 2169,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          },
+          "time_block": {
+            "point": 18.853805489945927,
+            "ci95": [
+              17.023581584915362,
+              20.577780443359636
+            ],
+            "simultaneous_ci": [
+              16.211778050408345,
+              21.32992717834063
+            ],
+            "clusters": 12,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          }
+        },
+        "closing": {
+          "vehicle": {
+            "point": -0.17289506963069018,
+            "ci95": [
+              -0.20558916386064685,
+              -0.14030150453870302
+            ],
+            "simultaneous_ci": [
+              -0.2185941656366896,
+              -0.1253757448376632
+            ],
+            "clusters": 2169,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          },
+          "time_block": {
+            "point": -0.17289506963069018,
+            "ci95": [
+              -0.3170923230232341,
+              -0.04257738154141639
+            ],
+            "simultaneous_ci": [
+              -0.3739132093981878,
+              0.003580823514722619
+            ],
+            "clusters": 12,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          }
+        },
+        "low_speed_share": {
+          "vehicle": {
+            "point": 0.09689200482275113,
+            "ci95": [
+              0.08652783749457181,
+              0.10793844080808793
+            ],
+            "simultaneous_ci": [
+              0.08093037089580893,
+              0.11230590498256461
+            ],
+            "clusters": 2169,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          },
+          "time_block": {
+            "point": 0.09689200482275113,
+            "ci95": [
+              0.039209837831738606,
+              0.1777083282046792
+            ],
+            "simultaneous_ci": [
+              0.02748451874669076,
+              0.2164319529181732
+            ],
+            "clusters": 12,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          }
+        },
+        "density": {
+          "vehicle": {
+            "point": 43.54361111111112,
+            "ci95": [
+              42.38296875,
+              44.71544791666667
+            ],
+            "simultaneous_ci": [
+              41.853130642361116,
+              45.12157465277778
+            ],
+            "clusters": 2169,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          },
+          "time_block": {
+            "point": 43.54361111111111,
+            "ci95": [
+              40.45245138888889,
+              47.044062499999995
+            ],
+            "simultaneous_ci": [
+              39.24776388888888,
+              48.992299045138886
+            ],
+            "clusters": 12,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          }
+        },
+        "flow": {
+          "vehicle": {
+            "point": 1647.0,
+            "ci95": [
+              1606.975,
+              1684.0
+            ],
+            "simultaneous_ci": [
+              1593.1234375,
+              1706.6296874999996
+            ],
+            "clusters": 2169,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          },
+          "time_block": {
+            "point": 1647.0,
+            "ci95": [
+              1551.0,
+              1735.0
+            ],
+            "simultaneous_ci": [
+              1495.246875,
+              1772.5062499999995
+            ],
+            "clusters": 12,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          }
+        },
+        "P2_rate": {
+          "vehicle": {
+            "point": 17.042600059256202,
+            "ci95": [
+              13.604100708795242,
+              21.130862388378624
+            ],
+            "simultaneous_ci": [
+              11.856073983880675,
+              22.976326442590906
+            ],
+            "clusters": 1789,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          },
+          "time_block": {
+            "point": 17.042600059256202,
+            "ci95": [
+              8.672144532369366,
+              28.513790445507354
+            ],
+            "simultaneous_ci": [
+              6.944952168016506,
+              34.26941931155172
+            ],
+            "clusters": 12,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          }
+        }
+      },
+      "confidence": 0.95,
+      "family_size": 16,
+      "system_error_bounds": null,
+      "scientific_delta": null,
+      "precision_h": null,
+      "independent_seed_uncertainty": "Not Applicable to single real observation window; cannot identify road population",
+      "complete_joint_equivalence_test_available": false,
+      "known_limits": "Vehicle clusters and nonoverlapping60s blocks reported separately; conservative interval envelope is sensitivity, not proof that unknown cross-block interactions vanish",
+      "zero_event_interval_not_zero_risk": true
+    },
+    "traffic_metrics": {
+      "window_s": [
+        120.0,
+        840.0
+      ],
+      "lane_km": 1.0,
+      "coverage_s": 720.0,
+      "local_vehicle_s": 31351.4,
+      "density_veh_km_lane": 43.54361111111111,
+      "low_speed_share": 0.09689200482275113,
+      "metrics": {
+        "speed_mps": {
+          "n": 313514,
+          "mean": 10.506118382234925,
+          "sd": 3.638561856472785,
+          "quantiles": [
+            0.0,
+            5.3340000000000005,
+            11.074908,
+            14.328648,
+            16.764
+          ]
+        },
+        "acceleration_mps2": {
+          "n": 313514,
+          "mean": 0.06702616301664359,
+          "sd": 1.404252097172564,
+          "quantiles": [
+            -3.41376,
+            -1.780032,
+            0.0,
+            1.917192,
+            3.41376
+          ]
+        },
+        "net_gap_m": {
+          "n": 313514,
+          "mean": 18.810377621414037,
+          "sd": 11.927681767755798,
+          "quantiles": [
+            2.7645360000000005,
+            7.586472,
+            16.154400000000003,
+            32.57001360000003,
+            60.06269927999996
+          ]
+        },
+        "closing_speed_mps": {
+          "n": 313514,
+          "mean": -0.17137596169868013,
+          "sd": 1.6039870327293217,
+          "quantiles": [
+            -4.437888000000001,
+            -1.9354800000000005,
+            -0.030480000000000434,
+            1.578864,
+            3.916680000000001
+          ]
+        },
+        "ttc_s": {
+          "n": 133069,
+          "mean": 178.4115044178923,
+          "sd": 783.3041132119263,
+          "quantiles": [
+            2.0520286693017127,
+            5.429363170163171,
+            17.71333333333333,
+            200.39999999999768,
+            3921.119999999727
+          ]
+        }
+      },
+      "quality_counts": {
+        "not_applicable": 179839,
+        "valid": 133069,
+        "invalid": 606
+      },
+      "spatial_support": "Follower front; all sources retained for leader/event history",
+      "no_row_iid_intervals": true
+    },
+    "time_blocks": [
+      {
+        "start_s": "120.0",
+        "end_s": "180.0",
+        "vehicle_s": "2000.3000000000002",
+        "speed_sum": "27602.124729600004",
+        "density": "33.33833333333334",
+        "mean_speed_mps": "13.798992515922613",
+        "evaluable_s": "1973.0",
+        "onset_events": "2",
+        "low_share": "0.015897615357696345"
+      },
+      {
+        "start_s": "180.0",
+        "end_s": "240.0",
+        "vehicle_s": "2449.3",
+        "speed_sum": "32189.819796000003",
+        "density": "40.82166666666667",
+        "mean_speed_mps": "13.142456945249664",
+        "evaluable_s": "2426.0",
+        "onset_events": "4",
+        "low_share": "0.0014698077001592293"
+      },
+      {
+        "start_s": "240.0",
+        "end_s": "300.0",
+        "vehicle_s": "2761.1000000000004",
+        "speed_sum": "25777.5641928",
+        "density": "46.01833333333334",
+        "mean_speed_mps": "9.335976311180326",
+        "evaluable_s": "2740.0",
+        "onset_events": "10",
+        "low_share": "0.13411321574734708"
+      },
+      {
+        "start_s": "300.0",
+        "end_s": "360.0",
+        "vehicle_s": "2415.6",
+        "speed_sum": "28720.816929600005",
+        "density": "40.26",
+        "mean_speed_mps": "11.889723848981621",
+        "evaluable_s": "2394.4",
+        "onset_events": "7",
+        "low_share": "0.0"
+      },
+      {
+        "start_s": "360.0",
+        "end_s": "420.0",
+        "vehicle_s": "2771.5",
+        "speed_sum": "27118.571112",
+        "density": "46.19166666666667",
+        "mean_speed_mps": "9.784799246617355",
+        "evaluable_s": "2729.7",
+        "onset_events": "14",
+        "low_share": "0.07609597690781165"
+      },
+      {
+        "start_s": "420.0",
+        "end_s": "480.0",
+        "vehicle_s": "2562.0",
+        "speed_sum": "27830.1763944",
+        "density": "42.7",
+        "mean_speed_mps": "10.862676188290399",
+        "evaluable_s": "2541.7",
+        "onset_events": "5",
+        "low_share": "0.05160031225604996"
+      },
+      {
+        "start_s": "480.0",
+        "end_s": "540.0",
+        "vehicle_s": "2533.8",
+        "speed_sum": "28247.200401600003",
+        "density": "42.230000000000004",
+        "mean_speed_mps": "11.148157076959508",
+        "evaluable_s": "2513.5",
+        "onset_events": "2",
+        "low_share": "0.10387560186281475"
+      },
+      {
+        "start_s": "540.0",
+        "end_s": "600.0",
+        "vehicle_s": "2743.3",
+        "speed_sum": "27950.820806400003",
+        "density": "45.72166666666667",
+        "mean_speed_mps": "10.18875835905661",
+        "evaluable_s": "2724.6",
+        "onset_events": "12",
+        "low_share": "0.05781358218204352"
+      },
+      {
+        "start_s": "600.0",
+        "end_s": "660.0",
+        "vehicle_s": "2593.8",
+        "speed_sum": "27507.331929600008",
+        "density": "43.230000000000004",
+        "mean_speed_mps": "10.605031972241502",
+        "evaluable_s": "2568.8",
+        "onset_events": "11",
+        "low_share": "0.04865448376898759"
+      },
+      {
+        "start_s": "660.0",
+        "end_s": "720.0",
+        "vehicle_s": "2285.2000000000003",
+        "speed_sum": "28218.6372888",
+        "density": "38.08666666666667",
+        "mean_speed_mps": "12.348432211097496",
+        "evaluable_s": "2262.0",
+        "onset_events": "5",
+        "low_share": "0.03373884123927884"
+      },
+      {
+        "start_s": "720.0",
+        "end_s": "780.0",
+        "vehicle_s": "2672.0",
+        "speed_sum": "26942.1626256",
+        "density": "44.53333333333333",
+        "mean_speed_mps": "10.083144695209581",
+        "evaluable_s": "2653.0",
+        "onset_events": "12",
+        "low_share": "0.055202095808383235"
+      },
+      {
+        "start_s": "780.0",
+        "end_s": "840.0",
+        "vehicle_s": "3563.5",
+        "speed_sum": "21276.293642400004",
+        "density": "59.391666666666666",
+        "mean_speed_mps": "5.970616989588888",
+        "evaluable_s": "3524.9",
+        "onset_events": "63",
+        "low_share": "0.42550862915672794"
+      }
+    ],
+    "statistics_time_blocks": [
+      {
+        "speed_numerator": "276021.247296",
+        "speed_denominator": "20003",
+        "acceleration_numerator": "6042.382632",
+        "acceleration_denominator": "20003",
+        "gap_numerator": "512035.53168",
+        "gap_denominator": "19959",
+        "closing_numerator": "-11269.617288000001",
+        "closing_denominator": "19959",
+        "low_speed_share_numerator": "318.0",
+        "low_speed_share_denominator": "20003",
+        "duration_s": "60.0",
+        "vehicle_s": "2000.3000000000002",
+        "actual_crossings": "136.0",
+        "P2_events": "2",
+        "P2_evaluable_s": "1973.0"
+      },
+      {
+        "speed_numerator": "321898.19796",
+        "speed_denominator": "24493",
+        "acceleration_numerator": "371.58472800000004",
+        "acceleration_denominator": "24493",
+        "gap_numerator": "477404.68908000004",
+        "gap_denominator": "24492",
+        "closing_numerator": "-3460.3791600000004",
+        "closing_denominator": "24492",
+        "low_speed_share_numerator": "36.0",
+        "low_speed_share_denominator": "24493",
+        "duration_s": "60.0",
+        "vehicle_s": "2449.3",
+        "actual_crossings": "161.0",
+        "P2_events": "4",
+        "P2_evaluable_s": "2426.0"
+      },
+      {
+        "speed_numerator": "257775.64192800003",
+        "speed_denominator": "27611",
+        "acceleration_numerator": "4081.6590960000003",
+        "acceleration_denominator": "27611",
+        "gap_numerator": "490419.60336",
+        "gap_denominator": "27605",
+        "closing_numerator": "-10977.704232",
+        "closing_denominator": "27605",
+        "low_speed_share_numerator": "3703.0",
+        "low_speed_share_denominator": "27611",
+        "duration_s": "60.0",
+        "vehicle_s": "2761.1000000000004",
+        "actual_crossings": "130.0",
+        "P2_events": "10",
+        "P2_evaluable_s": "2740.0"
+      },
+      {
+        "speed_numerator": "287208.16929600004",
+        "speed_denominator": "24156",
+        "acceleration_numerator": "-197.69327999999996",
+        "acceleration_denominator": "24156",
+        "gap_numerator": "511183.298688",
+        "gap_denominator": "24139",
+        "closing_numerator": "1132.429536",
+        "closing_denominator": "24139",
+        "low_speed_share_numerator": "0.0",
+        "low_speed_share_denominator": "24156",
+        "duration_s": "60.0",
+        "vehicle_s": "2415.6",
+        "actual_crossings": "146.0",
+        "P2_events": "7",
+        "P2_evaluable_s": "2394.4"
+      },
+      {
+        "speed_numerator": "271185.71112",
+        "speed_denominator": "27715",
+        "acceleration_numerator": "2972.449224",
+        "acceleration_denominator": "27715",
+        "gap_numerator": "497609.579328",
+        "gap_denominator": "27492",
+        "closing_numerator": "-7284.62856",
+        "closing_denominator": "27492",
+        "low_speed_share_numerator": "2109.0",
+        "low_speed_share_denominator": "27715",
+        "duration_s": "60.0",
+        "vehicle_s": "2771.5",
+        "actual_crossings": "138.0",
+        "P2_events": "14",
+        "P2_evaluable_s": "2729.7"
+      },
+      {
+        "speed_numerator": "278301.763944",
+        "speed_denominator": "25620",
+        "acceleration_numerator": "-1016.8158480000001",
+        "acceleration_denominator": "25620",
+        "gap_numerator": "495996.138816",
+        "gap_denominator": "25620",
+        "closing_numerator": "923.2239599999999",
+        "closing_denominator": "25620",
+        "low_speed_share_numerator": "1322.0",
+        "low_speed_share_denominator": "25620",
+        "duration_s": "60.0",
+        "vehicle_s": "2562.0",
+        "actual_crossings": "134.0",
+        "P2_events": "5",
+        "P2_evaluable_s": "2541.7"
+      },
+      {
+        "speed_numerator": "282472.004016",
+        "speed_denominator": "25338",
+        "acceleration_numerator": "5637.151032",
+        "acceleration_denominator": "25338",
+        "gap_numerator": "525373.847904",
+        "gap_denominator": "25311",
+        "closing_numerator": "-9825.200568",
+        "closing_denominator": "25311",
+        "low_speed_share_numerator": "2632.0",
+        "low_speed_share_denominator": "25338",
+        "duration_s": "60.0",
+        "vehicle_s": "2533.8",
+        "actual_crossings": "146.0",
+        "P2_events": "2",
+        "P2_evaluable_s": "2513.5"
+      },
+      {
+        "speed_numerator": "279508.208064",
+        "speed_denominator": "27433",
+        "acceleration_numerator": "-1968.56604",
+        "acceleration_denominator": "27433",
+        "gap_numerator": "488817.766584",
+        "gap_denominator": "27428",
+        "closing_numerator": "844.710528",
+        "closing_denominator": "27428",
+        "low_speed_share_numerator": "1586.0",
+        "low_speed_share_denominator": "27433",
+        "duration_s": "60.0",
+        "vehicle_s": "2743.3",
+        "actual_crossings": "136.0",
+        "P2_events": "12",
+        "P2_evaluable_s": "2724.6"
+      },
+      {
+        "speed_numerator": "275073.319296",
+        "speed_denominator": "25938",
+        "acceleration_numerator": "8221.443552",
+        "acceleration_denominator": "25938",
+        "gap_numerator": "494665.73863200005",
+        "gap_denominator": "25916",
+        "closing_numerator": "-14313.167208",
+        "closing_denominator": "25916",
+        "low_speed_share_numerator": "1262.0",
+        "low_speed_share_denominator": "25938",
+        "duration_s": "60.0",
+        "vehicle_s": "2593.8",
+        "actual_crossings": "146.0",
+        "P2_events": "11",
+        "P2_evaluable_s": "2568.8"
+      },
+      {
+        "speed_numerator": "282186.37288800004",
+        "speed_denominator": "22852",
+        "acceleration_numerator": "271.83588000000003",
+        "acceleration_denominator": "22852",
+        "gap_numerator": "485723.25410400005",
+        "gap_denominator": "22826",
+        "closing_numerator": "-2419.401816",
+        "closing_denominator": "22826",
+        "low_speed_share_numerator": "771.0",
+        "low_speed_share_denominator": "22852",
+        "duration_s": "60.0",
+        "vehicle_s": "2285.2000000000003",
+        "actual_crossings": "140.0",
+        "P2_events": "5",
+        "P2_evaluable_s": "2262.0"
+      },
+      {
+        "speed_numerator": "269421.626256",
+        "speed_denominator": "26720",
+        "acceleration_numerator": "2494.04124",
+        "acceleration_denominator": "26720",
+        "gap_numerator": "489826.282728",
+        "gap_denominator": "26709",
+        "closing_numerator": "-4810.618776",
+        "closing_denominator": "26709",
+        "low_speed_share_numerator": "1475.0",
+        "low_speed_share_denominator": "26720",
+        "duration_s": "60.0",
+        "vehicle_s": "2672.0",
+        "actual_crossings": "135.0",
+        "P2_events": "12",
+        "P2_evaluable_s": "2653.0"
+      },
+      {
+        "speed_numerator": "212762.936424",
+        "speed_denominator": "35635",
+        "acceleration_numerator": "-5895.831744",
+        "acceleration_denominator": "35635",
+        "gap_numerator": "430450.83734400006",
+        "gap_denominator": "35411",
+        "closing_numerator": "7360.103136000001",
+        "closing_denominator": "35411",
+        "low_speed_share_numerator": "15163.0",
+        "low_speed_share_denominator": "35635",
+        "duration_s": "60.0",
+        "vehicle_s": "3563.5",
+        "actual_crossings": "99.0",
+        "P2_events": "63",
+        "P2_evaluable_s": "3524.9"
+      }
+    ]
+  },
+  "us101__0805_0820": {
+    "interior": {
+      "window_s": [
+        180.0,
+        840.0
+      ],
+      "event_rows": 732,
+      "counts": {
+        "onset": 216,
+        "confirmation": 217,
+        "through_confirmation": 216,
+        "through_end": 215
+      },
+      "confirmation_time_window_sensitivity": 217,
+      "local_evaluable_vehicle_s": 33091.1,
+      "cluster_count": 1431,
+      "cluster_onset_total": 216,
+      "rate_per_evaluable_vehicle_hour": 23.49876552909997,
+      "cluster_interval": [
+        19.621289728841777,
+        27.805661306814184
+      ],
+      "onset_in_window_events": 650,
+      "attribution_differing_events": 7,
+      "rejected_formal_candidates": 0,
+      "right_censored_unconfirmed": 0,
+      "full_source_evaluable_exposure_s": 133505.6,
+      "whole_window_evaluable_exposure_s": 100714.7,
+      "boundary_crossing_evaluable_s": 265.3
+    },
+    "full_acquisition": {
+      "window_s": [
+        0.0,
+        999.0
+      ],
+      "event_rows": 732,
+      "counts": {
+        "onset": 252,
+        "confirmation": 254,
+        "through_confirmation": 251,
+        "through_end": 248
+      },
+      "confirmation_time_window_sensitivity": 254,
+      "local_evaluable_vehicle_s": 43522.0,
+      "cluster_count": 1976,
+      "cluster_onset_total": 252,
+      "rate_per_evaluable_vehicle_hour": 20.844630301916272,
+      "cluster_interval": null,
+      "onset_in_window_events": 732,
+      "attribution_differing_events": 7,
+      "rejected_formal_candidates": 0,
+      "right_censored_unconfirmed": 0,
+      "full_source_evaluable_exposure_s": 133505.6,
+      "whole_window_evaluable_exposure_s": 133505.6,
+      "boundary_crossing_evaluable_s": 377.6
+    },
+    "provenance": {
+      "state_sha256": "7b0ef830c97a981da018d4e24b029e38aa2630387c728ea87b57926745880a9f",
+      "rows": 1403095,
+      "trajectories": 2017,
+      "partitions": 22,
+      "original_exposure_independently_reproduced": true,
+      "old_formal_events_read": false,
+      "third_window_rows_materialised": 0,
+      "validation_window_read": false,
+      "denied_requests": 0,
+      "locked_holdout_accessed": false,
+      "reference_plan_sha256": "d29664d72b7ad3e9f122c1b4e9cc2485e05ae8769b9911092ff8c73d26b6c7bf"
+    },
+    "uncertainty": {
+      "source": "us101__0805_0820",
+      "window_s": [
+        180.0,
+        840.0
+      ],
+      "metrics": {
+        "speed": {
+          "vehicle": {
+            "point": 7.915276152134783,
+            "ci95": [
+              7.748045534363115,
+              8.09152899714695
+            ],
+            "simultaneous_ci": [
+              7.666474980905654,
+              8.182063762604336
+            ],
+            "clusters": 2017,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          },
+          "time_block": {
+            "point": 7.915276152134783,
+            "ci95": [
+              6.524605323800222,
+              9.702566266773344
+            ],
+            "simultaneous_ci": [
+              5.7578659459800585,
+              10.598667367714302
+            ],
+            "clusters": 11,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          }
+        },
+        "acceleration": {
+          "vehicle": {
+            "point": 0.04522132680538556,
+            "ci95": [
+              0.03741340744702644,
+              0.05331808236566197
+            ],
+            "simultaneous_ci": [
+              0.03269633597584127,
+              0.05694495305356813
+            ],
+            "clusters": 2017,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          },
+          "time_block": {
+            "point": 0.045221326805385556,
+            "ci95": [
+              -0.03292480827041945,
+              0.12099566945850096
+            ],
+            "simultaneous_ci": [
+              -0.06443008250675977,
+              0.15378603079663478
+            ],
+            "clusters": 11,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          }
+        },
+        "gap": {
+          "vehicle": {
+            "point": 15.405899964198262,
+            "ci95": [
+              14.974851525566327,
+              15.863545437262701
+            ],
+            "simultaneous_ci": [
+              14.822037752692156,
+              16.147746841594124
+            ],
+            "clusters": 2017,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          },
+          "time_block": {
+            "point": 15.405899964198262,
+            "ci95": [
+              13.491440726917244,
+              17.823347121066885
+            ],
+            "simultaneous_ci": [
+              12.360833578846194,
+              19.0870476175157
+            ],
+            "clusters": 11,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          }
+        },
+        "closing": {
+          "vehicle": {
+            "point": -0.11040602118179388,
+            "ci95": [
+              -0.13438024975285906,
+              -0.08581579275144635
+            ],
+            "simultaneous_ci": [
+              -0.14303521199453378,
+              -0.07257420248423475
+            ],
+            "clusters": 2017,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          },
+          "time_block": {
+            "point": -0.11040602118179388,
+            "ci95": [
+              -0.24483511312245246,
+              0.021776994957520193
+            ],
+            "simultaneous_ci": [
+              -0.3016396136614239,
+              0.07406563016869237
+            ],
+            "clusters": 11,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          }
+        },
+        "low_speed_share": {
+          "vehicle": {
+            "point": 0.25297297621619025,
+            "ci95": [
+              0.2365983753080833,
+              0.2686917318878029
+            ],
+            "simultaneous_ci": [
+              0.22645953731352997,
+              0.27435194801140583
+            ],
+            "clusters": 2017,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          },
+          "time_block": {
+            "point": 0.25297297621619025,
+            "ci95": [
+              0.11655977386890892,
+              0.36957939864047046
+            ],
+            "simultaneous_ci": [
+              0.06319919706129236,
+              0.4561903317048394
+            ],
+            "clusters": 11,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          }
+        },
+        "density": {
+          "vehicle": {
+            "point": 50.505454545454555,
+            "ci95": [
+              48.613121212121214,
+              52.36483333333333
+            ],
+            "simultaneous_ci": [
+              47.60871354166667,
+              53.5615381155303
+            ],
+            "clusters": 2017,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          },
+          "time_block": {
+            "point": 50.505454545454555,
+            "ci95": [
+              45.11565151515152,
+              55.77366666666667
+            ],
+            "simultaneous_ci": [
+              42.9492616003788,
+              59.53136245265147
+            ],
+            "clusters": 11,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          }
+        },
+        "flow": {
+          "vehicle": {
+            "point": 1449.8181818181818,
+            "ci95": [
+              1407.2727272727273,
+              1494.5454545454545
+            ],
+            "simultaneous_ci": [
+              1377.952840909091,
+              1521.8181818181818
+            ],
+            "clusters": 2017,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          },
+          "time_block": {
+            "point": 1449.8181818181818,
+            "ci95": [
+              1303.6363636363637,
+              1596.0
+            ],
+            "simultaneous_ci": [
+              1224.6732954545455,
+              1654.2357954545448
+            ],
+            "clusters": 11,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          }
+        },
+        "P2_rate": {
+          "vehicle": {
+            "point": 23.498765529099966,
+            "ci95": [
+              19.621289728841777,
+              27.805661306814184
+            ],
+            "simultaneous_ci": [
+              17.86015256790931,
+              30.076292021708394
+            ],
+            "clusters": 1431,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          },
+          "time_block": {
+            "point": 23.49876552909997,
+            "ci95": [
+              11.259862145194376,
+              33.92018412096551
+            ],
+            "simultaneous_ci": [
+              7.009091100925658,
+              40.920167164733094
+            ],
+            "clusters": 11,
+            "resamples": 2000,
+            "status": "Conditional bootstrap sensitivity",
+            "tail_order_statistics_expected": 3.125,
+            "small_tail_Monte_Carlo_precision_limited": true
+          }
+        }
+      },
+      "confidence": 0.95,
+      "family_size": 16,
+      "system_error_bounds": null,
+      "scientific_delta": null,
+      "precision_h": null,
+      "independent_seed_uncertainty": "Not Applicable to single real observation window; cannot identify road population",
+      "complete_joint_equivalence_test_available": false,
+      "known_limits": "Vehicle clusters and nonoverlapping60s blocks reported separately; conservative interval envelope is sensitivity, not proof that unknown cross-block interactions vanish",
+      "zero_event_interval_not_zero_risk": true
+    },
+    "traffic_metrics": {
+      "window_s": [
+        180.0,
+        840.0
+      ],
+      "lane_km": 1.0,
+      "coverage_s": 660.0,
+      "local_vehicle_s": 33333.6,
+      "density_veh_km_lane": 50.50545454545454,
+      "low_speed_share": 0.25297297621619025,
+      "metrics": {
+        "speed_mps": {
+          "n": 333336,
+          "mean": 7.915276152134783,
+          "sd": 3.9858620484023257,
+          "quantiles": [
+            0.0,
+            1.917192,
+            8.135112000000001,
+            13.002768,
+            15.364968
+          ]
+        },
+        "acceleration_mps2": {
+          "n": 333336,
+          "mean": 0.04522132680538557,
+          "sd": 1.2658855724286908,
+          "quantiles": [
+            -3.41376,
+            -1.438656,
+            0.0,
+            1.69164,
+            3.41376
+          ]
+        },
+        "net_gap_m": {
+          "n": 333336,
+          "mean": 15.379875307365541,
+          "sd": 10.517148671296361,
+          "quantiles": [
+            1.8196560000000002,
+            5.480303999999999,
+            13.112496000000004,
+            27.264360000000003,
+            52.72628520000008
+          ]
+        },
+        "closing_speed_mps": {
+          "n": 333336,
+          "mean": -0.1094413104615163,
+          "sd": 1.4549410235195357,
+          "quantiles": [
+            -3.6758879999999996,
+            -1.688592000000001,
+            -0.030479999999999893,
+            1.530096,
+            3.8526720000000005
+          ]
+        },
+        "ttc_s": {
+          "n": 145184,
+          "mean": 130.70344657648798,
+          "sd": 625.422666803687,
+          "quantiles": [
+            1.6951276171908118,
+            4.547506112881741,
+            16.370479302832234,
+            140.83333333333306,
+            2800.00000000006
+          ]
+        }
+      },
+      "quality_counts": {
+        "not_applicable": 187649,
+        "valid": 145184,
+        "invalid": 503
+      },
+      "spatial_support": "Follower front; all sources retained for leader/event history",
+      "no_row_iid_intervals": true
+    },
+    "time_blocks": [
+      {
+        "start_s": "180.0",
+        "end_s": "240.0",
+        "vehicle_s": "2699.2000000000003",
+        "speed_sum": "26649.863692800005",
+        "density": "44.98666666666667",
+        "mean_speed_mps": "9.873245292234737",
+        "evaluable_s": "2679.1",
+        "onset_events": "5",
+        "low_share": "0.14222732661529341"
+      },
+      {
+        "start_s": "240.0",
+        "end_s": "300.0",
+        "vehicle_s": "3510.1000000000004",
+        "speed_sum": "20186.6549784",
+        "density": "58.50166666666667",
+        "mean_speed_mps": "5.751019907808894",
+        "evaluable_s": "3482.7",
+        "onset_events": "49",
+        "low_share": "0.4261986837981824"
+      },
+      {
+        "start_s": "300.0",
+        "end_s": "360.0",
+        "vehicle_s": "3110.0",
+        "speed_sum": "21806.638632000006",
+        "density": "51.833333333333336",
+        "mean_speed_mps": "7.011780910610934",
+        "evaluable_s": "3094.7",
+        "onset_events": "19",
+        "low_share": "0.2521864951768489"
+      },
+      {
+        "start_s": "360.0",
+        "end_s": "420.0",
+        "vehicle_s": "3606.2000000000003",
+        "speed_sum": "20348.100832800003",
+        "density": "60.10333333333334",
+        "mean_speed_mps": "5.642532536409518",
+        "evaluable_s": "3582.0",
+        "onset_events": "29",
+        "low_share": "0.3953191725361877"
+      },
+      {
+        "start_s": "420.0",
+        "end_s": "480.0",
+        "vehicle_s": "2328.9",
+        "speed_sum": "26903.963260800003",
+        "density": "38.815000000000005",
+        "mean_speed_mps": "11.552219185366482",
+        "evaluable_s": "2307.6",
+        "onset_events": "0",
+        "low_share": "0.0"
+      },
+      {
+        "start_s": "480.0",
+        "end_s": "540.0",
+        "vehicle_s": "2183.7000000000003",
+        "speed_sum": "29323.4031768",
+        "density": "36.395",
+        "mean_speed_mps": "13.428311204286302",
+        "evaluable_s": "2160.0",
+        "onset_events": "2",
+        "low_share": "0.0"
+      },
+      {
+        "start_s": "540.0",
+        "end_s": "600.0",
+        "vehicle_s": "2614.0",
+        "speed_sum": "28855.012749600006",
+        "density": "43.56666666666667",
+        "mean_speed_mps": "11.038642979954094",
+        "evaluable_s": "2594.1",
+        "onset_events": "0",
+        "low_share": "0.0"
+      },
+      {
+        "start_s": "600.0",
+        "end_s": "660.0",
+        "vehicle_s": "2941.7000000000003",
+        "speed_sum": "26620.640688000003",
+        "density": "49.028333333333336",
+        "mean_speed_mps": "9.049407039466976",
+        "evaluable_s": "2923.8",
+        "onset_events": "9",
+        "low_share": "0.09487711187408641"
+      },
+      {
+        "start_s": "660.0",
+        "end_s": "720.0",
+        "vehicle_s": "3155.4",
+        "speed_sum": "21352.242792",
+        "density": "52.59",
+        "mean_speed_mps": "6.766889393420802",
+        "evaluable_s": "3138.5",
+        "onset_events": "31",
+        "low_share": "0.3291817202256449"
+      },
+      {
+        "start_s": "720.0",
+        "end_s": "780.0",
+        "vehicle_s": "4170.7",
+        "speed_sum": "16805.332099200004",
+        "density": "69.51166666666667",
+        "mean_speed_mps": "4.029379264679791",
+        "evaluable_s": "4140.8",
+        "onset_events": "58",
+        "low_share": "0.6394610017503057"
+      },
+      {
+        "start_s": "780.0",
+        "end_s": "840.0",
+        "vehicle_s": "3013.7000000000003",
+        "speed_sum": "24992.796242400003",
+        "density": "50.22833333333334",
+        "mean_speed_mps": "8.293060438132528",
+        "evaluable_s": "2987.8",
+        "onset_events": "14",
+        "low_share": "0.11875767329196668"
+      }
+    ],
+    "statistics_time_blocks": [
+      {
+        "speed_numerator": "266498.636928",
+        "speed_denominator": "26992",
+        "acceleration_numerator": "-154.49092799999997",
+        "acceleration_denominator": "26992",
+        "gap_numerator": "480712.939512",
+        "gap_denominator": "26991",
+        "closing_numerator": "-3498.6346080000003",
+        "closing_denominator": "26991",
+        "low_speed_share_numerator": "3839.0",
+        "low_speed_share_denominator": "26992",
+        "duration_s": "60.0",
+        "vehicle_s": "2699.2000000000003",
+        "actual_crossings": "131.0",
+        "P2_events": "5",
+        "P2_evaluable_s": "2679.1"
+      },
+      {
+        "speed_numerator": "201866.549784",
+        "speed_denominator": "35101",
+        "acceleration_numerator": "-3032.062008",
+        "acceleration_denominator": "35101",
+        "gap_numerator": "443488.04469600006",
+        "gap_denominator": "34999",
+        "closing_numerator": "2349.294768",
+        "closing_denominator": "34999",
+        "low_speed_share_numerator": "14960.0",
+        "low_speed_share_denominator": "35101",
+        "duration_s": "60.0",
+        "vehicle_s": "3510.1000000000004",
+        "actual_crossings": "97.0",
+        "P2_events": "49",
+        "P2_evaluable_s": "3482.7"
+      },
+      {
+        "speed_numerator": "218066.38632000002",
+        "speed_denominator": "31100",
+        "acceleration_numerator": "823.7646720000001",
+        "acceleration_denominator": "31100",
+        "gap_numerator": "454606.86828000005",
+        "gap_denominator": "31086",
+        "closing_numerator": "-758.680728",
+        "closing_denominator": "31086",
+        "low_speed_share_numerator": "7843.0",
+        "low_speed_share_denominator": "31100",
+        "duration_s": "60.0",
+        "vehicle_s": "3110.0",
+        "actual_crossings": "107.0",
+        "P2_events": "19",
+        "P2_evaluable_s": "3094.7"
+      },
+      {
+        "speed_numerator": "203481.008328",
+        "speed_denominator": "36062",
+        "acceleration_numerator": "6251.237688",
+        "acceleration_denominator": "36062",
+        "gap_numerator": "451773.572448",
+        "gap_denominator": "35967",
+        "closing_numerator": "-12178.738152",
+        "closing_denominator": "35967",
+        "low_speed_share_numerator": "14256.0",
+        "low_speed_share_denominator": "36062",
+        "duration_s": "60.0",
+        "vehicle_s": "3606.2000000000003",
+        "actual_crossings": "111.0",
+        "P2_events": "29",
+        "P2_evaluable_s": "3582.0"
+      },
+      {
+        "speed_numerator": "269039.632608",
+        "speed_denominator": "23289",
+        "acceleration_numerator": "5645.816496",
+        "acceleration_denominator": "23289",
+        "gap_numerator": "502200.751248",
+        "gap_denominator": "23289",
+        "closing_numerator": "-9226.878168000001",
+        "closing_denominator": "23289",
+        "low_speed_share_numerator": "0.0",
+        "low_speed_share_denominator": "23289",
+        "duration_s": "60.0",
+        "vehicle_s": "2328.9",
+        "actual_crossings": "140.0",
+        "P2_events": "0",
+        "P2_evaluable_s": "2307.6"
+      },
+      {
+        "speed_numerator": "293234.031768",
+        "speed_denominator": "21837",
+        "acceleration_numerator": "1268.97384",
+        "acceleration_denominator": "21837",
+        "gap_numerator": "508266.646152",
+        "gap_denominator": "21822",
+        "closing_numerator": "-840.132432",
+        "closing_denominator": "21822",
+        "low_speed_share_numerator": "0.0",
+        "low_speed_share_denominator": "21837",
+        "duration_s": "60.0",
+        "vehicle_s": "2183.7000000000003",
+        "actual_crossings": "146.0",
+        "P2_events": "2",
+        "P2_evaluable_s": "2160.0"
+      },
+      {
+        "speed_numerator": "288550.12749600003",
+        "speed_denominator": "26140",
+        "acceleration_numerator": "-2571.5762640000003",
+        "acceleration_denominator": "26140",
+        "gap_numerator": "480235.125888",
+        "gap_denominator": "26140",
+        "closing_numerator": "2790.029472",
+        "closing_denominator": "26140",
+        "low_speed_share_numerator": "0.0",
+        "low_speed_share_denominator": "26140",
+        "duration_s": "60.0",
+        "vehicle_s": "2614.0",
+        "actual_crossings": "143.0",
+        "P2_events": "0",
+        "P2_evaluable_s": "2594.1"
+      },
+      {
+        "speed_numerator": "266206.40688",
+        "speed_denominator": "29417",
+        "acceleration_numerator": "4051.148616",
+        "acceleration_denominator": "29417",
+        "gap_numerator": "483364.52882400004",
+        "gap_denominator": "29404",
+        "closing_numerator": "-10521.455208000001",
+        "closing_denominator": "29404",
+        "low_speed_share_numerator": "2791.0",
+        "low_speed_share_denominator": "29417",
+        "duration_s": "60.0",
+        "vehicle_s": "2941.7000000000003",
+        "actual_crossings": "137.0",
+        "P2_events": "9",
+        "P2_evaluable_s": "2923.8"
+      },
+      {
+        "speed_numerator": "213522.42792000002",
+        "speed_denominator": "31554",
+        "acceleration_numerator": "-6010.332912",
+        "acceleration_denominator": "31554",
+        "gap_numerator": "447407.891568",
+        "gap_denominator": "31513",
+        "closing_numerator": "9915.656064",
+        "closing_denominator": "31513",
+        "low_speed_share_numerator": "10387.0",
+        "low_speed_share_denominator": "31554",
+        "duration_s": "60.0",
+        "vehicle_s": "3155.4",
+        "actual_crossings": "103.0",
+        "P2_events": "31",
+        "P2_evaluable_s": "3138.5"
+      },
+      {
+        "speed_numerator": "168053.320992",
+        "speed_denominator": "41707",
+        "acceleration_numerator": "1592.30568",
+        "acceleration_denominator": "41707",
+        "gap_numerator": "405246.95887200005",
+        "gap_denominator": "41534",
+        "closing_numerator": "-2701.9758",
+        "closing_denominator": "41534",
+        "low_speed_share_numerator": "26670.0",
+        "low_speed_share_denominator": "41707",
+        "duration_s": "60.0",
+        "vehicle_s": "4170.7",
+        "actual_crossings": "81.0",
+        "P2_events": "58",
+        "P2_evaluable_s": "4140.8"
+      },
+      {
+        "speed_numerator": "249927.96242400003",
+        "speed_denominator": "30137",
+        "acceleration_numerator": "7209.111312",
+        "acceleration_denominator": "30137",
+        "gap_numerator": "470288.57529600005",
+        "gap_denominator": "30088",
+        "closing_numerator": "-12075.252456",
+        "closing_denominator": "30088",
+        "low_speed_share_numerator": "3579.0",
+        "low_speed_share_denominator": "30137",
+        "duration_s": "60.0",
+        "vehicle_s": "3013.7000000000003",
+        "actual_crossings": "133.0",
+        "P2_events": "14",
+        "P2_evaluable_s": "2987.8"
+      }
+    ]
+  }
+}

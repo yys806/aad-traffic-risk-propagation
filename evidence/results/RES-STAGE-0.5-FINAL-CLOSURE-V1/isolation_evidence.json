@@ -1,0 +1,25 @@
+{
+  "calibration_sources": [
+    "us101__0750_0805",
+    "us101__0805_0820"
+  ],
+  "validation_source": "us101__0820_0835",
+  "third_window_access": false,
+  "third_window_rows_materialised": 0,
+  "locked_holdout_access": false,
+  "old_full_source_event_table_access": false,
+  "guard_fail_closed": true,
+  "negative_role_probe": {
+    "passed": true,
+    "expected_denials": 3,
+    "denials": [
+      "calibration role asked for the third window",
+      "locked-holdout role asked for a calibration source",
+      "path outside the capsule"
+    ]
+  },
+  "real_data_read_by_type": "Only the two SHA-bound canonical calibration state files, staged into a fresh Python -S capsule",
+  "python_audit_scope": "Controlled Python entrypoints only; os_complete_monitoring=false, native_file_access_monitored=false, same-user administrator bypass possible; not an adversarial security boundary",
+  "validation_after_freeze": "Not performed: the acceptance protocol is not frozen because delta, h and layer 5 remain open, so opening the third window would be unauthorized",
+  "failure_preserved": "FC1 and FC2 records, access audits and logs retained; nothing rerun or overwritten"
+}

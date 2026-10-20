@@ -1,0 +1,84 @@
+{
+  "P0_found": 0,
+  "issues": [
+    {
+      "id": "FC-P1-01",
+      "severity": "P1",
+      "fact": "Both candidate runs reproduce the observed internal cross-section flow (FC1 sim 1647.4 vs real 1646.9 veh/h/lane; FC2 sim 1451.4 vs real 1439.2 veh/h/lane) yet sit on the free-flow branch: 20-22 m/s at about 20 veh/km/lane instead of 8-10.5 m/s at 43-50 veh/km/lane.",
+      "files": [
+        "code/scripts/run_stage_0_5_closure_candidate.py::prepare",
+        "state_support_verdict.json"
+      ],
+      "impact": "Layer 5 state support fails for both target conditions, so no five-layer conjunction can be evaluated and the simulated local P2 is not comparable to the real local P2.",
+      "validation": "Both runs completed with zero engineering blockers, zero numerical blockers, zero conservation and local-balance residuals, no pending vehicles and a 100% exact-branch pass rate inside the verified fresh/no-stop domain.",
+      "resolution": "Stopped per the frozen pre-declared rule; no third construction run and no independent-seed repeat executed. The cause is the conditional-supply design, not a numerical failure.",
+      "researcher_decision": "D3 target-condition and boundary-supply design, then D5 budget reuse"
+    },
+    {
+      "id": "FC-P1-02",
+      "severity": "P1",
+      "fact": "Simulated closing-speed means are positive (2.73 and 3.67 m/s) while both real windows are negative (-0.17 and -0.11 m/s); simulated low-speed share is 0.00047 and 0.04210 against 0.09689 and 0.25297 real.",
+      "files": [
+        "sim_*_traffic_metrics.json",
+        "real_*_traffic_metrics.json"
+      ],
+      "impact": "Layer 2 interaction regime and layer 1 speed distribution differ in sign, not only magnitude, so a margin discussion is not yet meaningful.",
+      "validation": "Recomputed from the archived metric files on both sides.",
+      "resolution": "Recorded as a factual difference; no behaviour-parameter search was run to force agreement.",
+      "researcher_decision": "D3"
+    },
+    {
+      "id": "FC-P1-03",
+      "severity": "P1",
+      "fact": "FC1 produced zero local onset events inside the frozen evaluation window although its global confirmed-event count is 84; FC2 produced 22 onset events at 56.23 per evaluable vehicle-hour against real 17.04 and 23.50.",
+      "files": [
+        "sim_FC1_P2.json",
+        "sim_FC2_P2.json"
+      ],
+      "impact": "A zero numerator with a non-zero global count is a state-support artefact, not evidence of a safe state; the non-zero run is not rescued by being closer in magnitude either.",
+      "validation": "Event and cluster tables recounted independently; interval semantics preserved.",
+      "resolution": "No window shortened, no seed swapped, no event rule altered, no run hidden.",
+      "researcher_decision": "D2 and D4"
+    },
+    {
+      "id": "FC-P1-04",
+      "severity": "P1",
+      "fact": "No independent measurement-error bound exists anywhere in the closed stages, so the approved error rule cannot be evaluated even in principle at present.",
+      "files": [
+        "code/src/riskprop/stage_0_5_final_closure.py::equivalence",
+        "delta_h_basis_audit.json"
+      ],
+      "impact": "Scientific delta and precision h stay unapproved, so Stage 0.5 cannot pass regardless of simulator state support.",
+      "validation": "The basis audit lists every candidate source and states why each fails to constitute a bound.",
+      "resolution": "equivalence() returns Awaiting Researcher Decision rather than defaulting; no numeric threshold invented.",
+      "researcher_decision": "D4"
+    },
+    {
+      "id": "FC-P2-01",
+      "severity": "P2",
+      "fact": "Three earlier work capsules remain on disk recording superseded preparation attempts: a pytest basetemp collision, a memory-limit stop at 3.23 GB against the unchanged 3 GiB cap, and a string lane_id region filter that produced an empty local set caught by the zero-exposure guard.",
+      "files": [
+        "code/outputs/formal/calibration/stage_0_5_final_closure_v1",
+        "stage_0_5_final_closure_v2",
+        "stage_0_5_final_closure_v3"
+      ],
+      "impact": "Only the v4 capsule is the executed and verified reference run; earlier attempts must not be read as results.",
+      "validation": "All v4 frozen-file hashes verified; v1-v3 excluded from the evidence export.",
+      "resolution": "Kept locally as history, excluded from portable evidence, and disclosed here.",
+      "researcher_decision": "None"
+    },
+    {
+      "id": "FC-P2-02",
+      "severity": "P2",
+      "fact": "The candidate plan fixes window_s [180.0, 299.7] while the real reference windows are [120.0, 840.0] and [180.0, 840.0]; they are different objects, a 300 s finite-time simulator sample versus 720/660 s of real interior support.",
+      "files": [
+        "candidate_experiment_plan.json"
+      ],
+      "impact": "Exposure per run is 1458.1 and 1408.4 vehicle-seconds against real 31051.6 and 33091.1, an order of magnitude lower, so even with state support the interval width would dominate.",
+      "validation": "Recorded in the budget and handoff files.",
+      "resolution": "Reported as the minimum resource change required, without raising any authorized cap.",
+      "researcher_decision": "D2, D4 and D5"
+    }
+  ],
+  "absence_of_findings_not_proof_of_universal_correctness": true
+}

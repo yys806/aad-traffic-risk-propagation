@@ -167,3 +167,14 @@ B1.2（RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2）工程接入阻断：10047精确�
 266个原核心工程事件独立重建、逐成员核对；历史86/87/83重现，开始至确认全在域为86，差异4件。共同候选分母14636.2veh-s，局部正式P2仍Unresolved/Not Calculated。相位周期5/10/20%敏感性均到300s才完成，后评价0s；局部平台而全网/pending增长。五层必要目标、需求可识别性和科学误差/精度候选已整合为D1–D5待决；无新增SUMO，累计3/8剩5。C回溢EI与全部历史、Gate/Lock/I-II状态不变。
 
 报告 `docs/STAGE_0_5_LOCAL_FOLLOWING_PROTOCOL_DESIGN.md`；计划 `docs/plans/2026-10-20-lf-protocol-consolidation.md`；证据 `evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/`。
+
+
+## 2026-10-20 Stage 0.5 最终收口
+
+`RES-STAGE-0.5-FINAL-CLOSURE-V1`：研究者批准 D1–D5 后，按 D1 主口径（风险开始位置/开始时间，共用开始时间窗；确认时间窗另作敏感性）重算两个真实校准窗口，正式局部 P2 与暴露首次计算完成——0750–0805 **147 件 / 31,051.6 veh-s / 17.0426**（车辆簇条件区间 [13.604, 21.131]），0805–0820 **216 件 / 33,091.1 veh-s / 23.4988**（[19.621, 27.806]）。全源确认事件 543/732、全源可评价暴露 111,425.9/133,505.6 s 与 A+ 合格切片求和逐位复现，拒绝 0、右截断 0，未读旧全源事件表、未访问第三窗口与 holdout。
+
+条件候选两次 300 s 运行（seed 20261019）工程完成：数值精确 100%、范围一致与不可评价按域分类、守恒与局部平衡残差 0、期末待插入 0。但**预声明的 30 s 块状态支持规则未通过**：模拟 20–22 m/s、约 20 veh/km/lane，真实目标 8–10.5 m/s、43–50 veh/km/lane；模拟平均闭合速度为正（净接近）而真实为负（净拉开），模拟低速份额 0.0005/0.042 对真实 0.097/0.253。两次运行都复现观测内部断面流量（q=k·v·3.6：1647.4 对 1646.9、1451.4 对 1439.2 veh/h/lane），说明匹配内部流量落在基本图自由流分支而非观测拥堵分支——属边界供给/需求的结构性条件失配，D3 禁止用 Krauss 等行为参数补偿。
+
+按冻结失败分支停止：不追加第 3 次构造（单次变更边界无法覆盖两个目标条件）、不动用保留的 2 次独立 seed 重复、不访问第三窗口。五层必要条件合取 = **Evidence Insufficient**（阻断层 1/2/5，层 3 Engineering Consistent，层 4 Measurement Closed）。δ 与 h 的独立依据审计结论为"无依据"，保持 Awaiting Researcher Decision，未编造数值；集中决策包 R1–R5 一次性提交。
+
+Gate 保持 `pending_simulation_sample`；`scientific_claim_eligible=false`、`ready_to_start_stage_0_5_4b=false`、`reality_coverage_accepted=false`、`protocol_lock_allowed=false`、`stage_1_1_allowed=false`；容差 `Tolerance Not Yet Justified`；ED real-real 上界 `Not Identifiable`；C 完整入口回溢 `Evidence Insufficient`。新增 2 次轨迹运行（累计 5/8，剩 3），4 次空网软件冒烟单独登记。报告 `docs/STAGE_0_5_FINAL_CLOSURE_2026-10-20.md`；证据 `evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/`。

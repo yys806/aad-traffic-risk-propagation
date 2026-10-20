@@ -1,0 +1,414 @@
+{
+  "FC1": {
+    "condition": "us101__0750_0805",
+    "seed": 20261019,
+    "role": "construction",
+    "status": "completed_with_diagnostic_warning",
+    "observed_s": 300.0,
+    "engineering_blockers": [],
+    "diagnostic_warnings": [
+      "descriptive_low_speed_or_pending"
+    ],
+    "evidence_insufficient": [],
+    "inserted": 411,
+    "exited": 351,
+    "present": 60,
+    "pending_end": 0,
+    "max_pending": 0,
+    "counts": {
+      "onset": 0,
+      "confirmation": 0,
+      "through_confirmation": 0,
+      "through_end": 0
+    },
+    "confirmation_time_window_sensitivity": 0,
+    "local_evaluable_vehicle_s": 1458.1,
+    "cluster_count": 175,
+    "cluster_onset_total": 0,
+    "rate_per_evaluable_vehicle_hour": 0.0,
+    "evaluation_window_s": [
+      180.0,
+      299.7
+    ],
+    "global_confirmed_events": 84,
+    "local_points": 14746,
+    "local_ttc_below_2": 0,
+    "right_censored_unconfirmed": 0,
+    "numerical": {
+      "all_adjacent_edges": 383107,
+      "exact_checked": 381560,
+      "exact_passed": 381560,
+      "bounded": 36,
+      "not_evaluable": 1511,
+      "blockers": 0,
+      "max_abs_residual_m": 2.842170943040401e-14,
+      "tolerance_m": 1e-06,
+      "context_bases": {
+        "fresh_no_stops_stopdist_doublemax_invariant": 383107
+      }
+    },
+    "conservation": {
+      "global_max": 0.0,
+      "local_balance_max": 0.0
+    },
+    "thirty_second_blocks": [
+      {
+        "start_s": 180.0,
+        "end_s": 210.0,
+        "mean_speed_mps": 19.424575546227402,
+        "density": 23.186111111111114,
+        "inserted": 41,
+        "exited": 25,
+        "local_in": 42,
+        "local_out": 39,
+        "present_end": 80,
+        "pending_end": 0
+      },
+      {
+        "start_s": 210.0,
+        "end_s": 240.0,
+        "mean_speed_mps": 25.28535971475211,
+        "density": 18.372222222222224,
+        "inserted": 41,
+        "exited": 59,
+        "local_in": 41,
+        "local_out": 43,
+        "present_end": 62,
+        "pending_end": 0
+      },
+      {
+        "start_s": 240.0,
+        "end_s": 270.0,
+        "mean_speed_mps": 19.931082133572573,
+        "density": 22.641666666666666,
+        "inserted": 41,
+        "exited": 24,
+        "local_in": 41,
+        "local_out": 40,
+        "present_end": 79,
+        "pending_end": 0
+      },
+      {
+        "start_s": 270.0,
+        "end_s": 299.7,
+        "mean_speed_mps": 25.942328228562097,
+        "density": 17.920875420875433,
+        "inserted": 41,
+        "exited": 60,
+        "local_in": 41,
+        "local_out": 43,
+        "present_end": 60,
+        "pending_end": 0
+      }
+    ],
+    "time_blocks": [
+      {
+        "start_s": "180.0",
+        "end_s": "240.0",
+        "vehicle_s": "747.6",
+        "speed_sum": "16457.856415393715",
+        "density": "20.766666666666666",
+        "mean_speed_mps": "22.014254167193304",
+        "evaluable_s": "739.4",
+        "onset_events": "0",
+        "low_share": "0.0009363295880149813"
+      },
+      {
+        "start_s": "240.0",
+        "end_s": "299.7",
+        "vehicle_s": "727.0",
+        "speed_sum": "16407.18034448697",
+        "density": "20.29592406476829",
+        "mean_speed_mps": "22.56833609970697",
+        "evaluable_s": "718.7",
+        "onset_events": "0",
+        "low_share": "0.0"
+      }
+    ],
+    "traffic_metrics": {
+      "window_s": [
+        180.0,
+        299.7
+      ],
+      "lane_km": 0.6,
+      "coverage_s": 119.7,
+      "local_vehicle_s": 1474.6000000000001,
+      "density_veh_km_lane": 20.53188526872738,
+      "low_speed_share": 0.00047470500474705005,
+      "metrics": {
+        "speed_mps": {
+          "n": 14746,
+          "mean": 22.287424901587332,
+          "sd": 5.653734099081795,
+          "quantiles": [
+            7.575218851008916,
+            13.391825363728188,
+            24.827657129177567,
+            27.298949477678974,
+            27.637174309310492
+          ]
+        },
+        "acceleration_mps2": {
+          "n": 14746,
+          "mean": -1.0894337311953965,
+          "sd": 1.4794172714356992,
+          "quantiles": [
+            -4.33765736749848,
+            -3.2641716436803137,
+            -0.7267968428786986,
+            0.5479761927478854,
+            1.7758069669827847
+          ]
+        },
+        "net_gap_m": {
+          "n": 14746,
+          "mean": 41.1867776279873,
+          "sd": 12.94178181905648,
+          "quantiles": [
+            12.277262076701273,
+            21.692410602179592,
+            43.81184740621638,
+            55.72388765922456,
+            59.94185074464674
+          ]
+        },
+        "closing_speed_mps": {
+          "n": 14746,
+          "mean": 2.7299855984957864,
+          "sd": 2.5623106214851776,
+          "quantiles": [
+            -1.0129013984141295,
+            -0.2267314762960062,
+            2.3356189538773364,
+            6.330544684487471,
+            7.778429671165995
+          ]
+        },
+        "ttc_s": {
+          "n": 12493,
+          "mean": 120.79570154072239,
+          "sd": 1106.5648979251403,
+          "quantiles": [
+            2.8687057862377943,
+            4.771734384612447,
+            12.099700691282536,
+            144.19206962496938,
+            1488.713620031591
+          ]
+        }
+      },
+      "quality_counts": {
+        "valid": 12493,
+        "not_applicable": 2253
+      },
+      "spatial_support": "Follower front; all sources retained for leader/event history",
+      "no_row_iid_intervals": true
+    }
+  },
+  "FC2": {
+    "condition": "us101__0805_0820",
+    "seed": 20261019,
+    "role": "construction",
+    "status": "completed_with_diagnostic_warning",
+    "observed_s": 300.0,
+    "engineering_blockers": [],
+    "diagnostic_warnings": [
+      "descriptive_low_speed_or_pending"
+    ],
+    "evidence_insufficient": [],
+    "inserted": 362,
+    "exited": 308,
+    "present": 54,
+    "pending_end": 0,
+    "max_pending": 0,
+    "counts": {
+      "onset": 22,
+      "confirmation": 20,
+      "through_confirmation": 20,
+      "through_end": 13
+    },
+    "confirmation_time_window_sensitivity": 20,
+    "local_evaluable_vehicle_s": 1408.4,
+    "cluster_count": 155,
+    "cluster_onset_total": 22,
+    "rate_per_evaluable_vehicle_hour": 56.234024424879294,
+    "evaluation_window_s": [
+      180.0,
+      299.7
+    ],
+    "global_confirmed_events": 139,
+    "local_points": 14228,
+    "local_ttc_below_2": 267,
+    "right_censored_unconfirmed": 0,
+    "numerical": {
+      "all_adjacent_edges": 356862,
+      "exact_checked": 355458,
+      "exact_passed": 355458,
+      "bounded": 86,
+      "not_evaluable": 1318,
+      "blockers": 0,
+      "max_abs_residual_m": 2.842170943040401e-14,
+      "tolerance_m": 1e-06,
+      "context_bases": {
+        "fresh_no_stops_stopdist_doublemax_invariant": 356862
+      }
+    },
+    "conservation": {
+      "global_max": 0.0,
+      "local_balance_max": 0.0
+    },
+    "thirty_second_blocks": [
+      {
+        "start_s": 180.0,
+        "end_s": 210.0,
+        "mean_speed_mps": 17.128864932998678,
+        "density": 23.138888888888893,
+        "inserted": 36,
+        "exited": 15,
+        "local_in": 37,
+        "local_out": 35,
+        "present_end": 76,
+        "pending_end": 0
+      },
+      {
+        "start_s": 210.0,
+        "end_s": 240.0,
+        "mean_speed_mps": 25.194902128048668,
+        "density": 16.269444444444446,
+        "inserted": 36,
+        "exited": 59,
+        "local_in": 36,
+        "local_out": 38,
+        "present_end": 53,
+        "pending_end": 0
+      },
+      {
+        "start_s": 240.0,
+        "end_s": 270.0,
+        "mean_speed_mps": 16.990004142643006,
+        "density": 23.28888888888889,
+        "inserted": 37,
+        "exited": 13,
+        "local_in": 36,
+        "local_out": 34,
+        "present_end": 77,
+        "pending_end": 0
+      },
+      {
+        "start_s": 270.0,
+        "end_s": 299.7,
+        "mean_speed_mps": 24.85969778279661,
+        "density": 16.470258136924812,
+        "inserted": 35,
+        "exited": 57,
+        "local_in": 36,
+        "local_out": 37,
+        "present_end": 55,
+        "pending_end": 0
+      }
+    ],
+    "time_blocks": [
+      {
+        "start_s": "180.0",
+        "end_s": "240.0",
+        "vehicle_s": "709.8000000000001",
+        "speed_sum": "14527.639903684867",
+        "density": "19.716666666666672",
+        "mean_speed_mps": "20.4672300699984",
+        "evaluable_s": "702.5",
+        "onset_events": "11",
+        "low_share": "0.03930684699915469"
+      },
+      {
+        "start_s": "240.0",
+        "end_s": "299.7",
+        "vehicle_s": "713.0",
+        "speed_sum": "14427.573492348916",
+        "density": "19.90508096035735",
+        "mean_speed_mps": "20.235025935973233",
+        "evaluable_s": "705.9",
+        "onset_events": "11",
+        "low_share": "0.04488078541374474"
+      }
+    ],
+    "traffic_metrics": {
+      "window_s": [
+        180.0,
+        299.7
+      ],
+      "lane_km": 0.6,
+      "coverage_s": 119.7,
+      "local_vehicle_s": 1422.8000000000002,
+      "density_veh_km_lane": 19.810637705374553,
+      "low_speed_share": 0.042100084340736574,
+      "metrics": {
+        "speed_mps": {
+          "n": 14228,
+          "mean": 20.350866879416493,
+          "sd": 7.4760796116834465,
+          "quantiles": [
+            2.5140668024460737,
+            8.325439280858513,
+            23.145984068449657,
+            27.30484586096764,
+            27.641592952537575
+          ]
+        },
+        "acceleration_mps2": {
+          "n": 14228,
+          "mean": -1.2577998758427247,
+          "sd": 1.651741762593596,
+          "quantiles": [
+            -4.499999999999993,
+            -3.573386038906108,
+            -0.896787279407647,
+            0.694867865722162,
+            1.9222139124546445
+          ]
+        },
+        "net_gap_m": {
+          "n": 14228,
+          "mean": 41.386233948819935,
+          "sd": 18.565526298083178,
+          "quantiles": [
+            5.333483454787482,
+            13.311549433666613,
+            44.001029248868015,
+            63.12244168676133,
+            66.59483114868631
+          ]
+        },
+        "closing_speed_mps": {
+          "n": 14228,
+          "mean": 3.6696394531917598,
+          "sd": 3.252352164217878,
+          "quantiles": [
+            -1.9272093332932907,
+            -0.33920332549037885,
+            3.551887685208926,
+            7.987761836883871,
+            9.13693658396562
+          ]
+        },
+        "ttc_s": {
+          "n": 12070,
+          "mean": 76.33779884724602,
+          "sd": 549.361045536282,
+          "quantiles": [
+            1.6833636067008901,
+            3.425091698949283,
+            9.030638323118207,
+            103.87956702111528,
+            1099.1226681261023
+          ]
+        }
+      },
+      "quality_counts": {
+        "valid": 12070,
+        "not_applicable": 2158
+      },
+      "spatial_support": "Follower front; all sources retained for leader/event history",
+      "no_row_iid_intervals": true
+    }
+  }
+}

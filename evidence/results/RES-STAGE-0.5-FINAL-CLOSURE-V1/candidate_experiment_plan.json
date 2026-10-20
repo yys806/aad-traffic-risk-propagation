@@ -1,0 +1,323 @@
+{
+  "result_id": "RES-STAGE-0.5-FINAL-CLOSURE-V1",
+  "version": "closure-conditional-candidate-v1",
+  "contract_version": "verified-fresh-no-stop-layered-plus-approved-D1",
+  "mode": "Authorized finite calibration candidate construction; conditional supply not real facility",
+  "runs": [
+    {
+      "run_id": "FC1",
+      "kind": "LF",
+      "tier": "local_candidate",
+      "role": "construction",
+      "condition": "us101__0750_0805",
+      "seed": 20261019,
+      "duration_s": 300.0,
+      "network": "inputs/us101__0750_0805/b12.net.xml",
+      "demand": "inputs/us101__0750_0805.rou.xml",
+      "config": "inputs/FC1.sumocfg",
+      "declared_vehicles": 411,
+      "fleet_counts": [
+        5,
+        397,
+        9
+      ],
+      "flow_veh_h_lane": 1648.0,
+      "expected_tls_durations": [
+        [
+          48.0,
+          6.2,
+          5.8
+        ]
+      ],
+      "reader_mode": "batch",
+      "local_space": {
+        "edge": "main_1",
+        "start_m": 50.0,
+        "end_m": 250.0,
+        "lanes": 3,
+        "lane_km": 0.6
+      }
+    },
+    {
+      "run_id": "FC2",
+      "kind": "LF",
+      "tier": "local_candidate",
+      "role": "construction",
+      "condition": "us101__0805_0820",
+      "seed": 20261019,
+      "duration_s": 300.0,
+      "network": "inputs/us101__0805_0820/b12.net.xml",
+      "demand": "inputs/us101__0805_0820.rou.xml",
+      "config": "inputs/FC2.sumocfg",
+      "declared_vehicles": 362,
+      "fleet_counts": [
+        4,
+        349,
+        9
+      ],
+      "flow_veh_h_lane": 1449.8181818181818,
+      "expected_tls_durations": [
+        [
+          42.2,
+          6.2,
+          11.6
+        ]
+      ],
+      "reader_mode": "batch",
+      "local_space": {
+        "edge": "main_1",
+        "start_m": 50.0,
+        "end_m": 250.0,
+        "lanes": 3,
+        "lane_km": 0.6
+      }
+    },
+    {
+      "run_id": "FR1",
+      "kind": "LF",
+      "tier": "local_candidate",
+      "role": "repeat",
+      "condition": "us101__0750_0805",
+      "seed": 20261020,
+      "duration_s": 300.0,
+      "network": "inputs/us101__0750_0805/b12.net.xml",
+      "demand": "inputs/us101__0750_0805.rou.xml",
+      "config": "inputs/FR1.sumocfg",
+      "declared_vehicles": 411,
+      "fleet_counts": [
+        5,
+        397,
+        9
+      ],
+      "flow_veh_h_lane": 1648.0,
+      "expected_tls_durations": [
+        [
+          48.0,
+          6.2,
+          5.8
+        ]
+      ],
+      "reader_mode": "batch",
+      "local_space": {
+        "edge": "main_1",
+        "start_m": 50.0,
+        "end_m": 250.0,
+        "lanes": 3,
+        "lane_km": 0.6
+      }
+    },
+    {
+      "run_id": "FR2",
+      "kind": "LF",
+      "tier": "local_candidate",
+      "role": "repeat",
+      "condition": "us101__0805_0820",
+      "seed": 20261021,
+      "duration_s": 300.0,
+      "network": "inputs/us101__0805_0820/b12.net.xml",
+      "demand": "inputs/us101__0805_0820.rou.xml",
+      "config": "inputs/FR2.sumocfg",
+      "declared_vehicles": 362,
+      "fleet_counts": [
+        4,
+        349,
+        9
+      ],
+      "flow_veh_h_lane": 1449.8181818181818,
+      "expected_tls_durations": [
+        [
+          42.2,
+          6.2,
+          11.6
+        ]
+      ],
+      "reader_mode": "batch",
+      "local_space": {
+        "edge": "main_1",
+        "start_m": 50.0,
+        "end_m": 250.0,
+        "lanes": 3,
+        "lane_km": 0.6
+      }
+    }
+  ],
+  "scientific_delta": null,
+  "precision_h": null,
+  "validation_access": false,
+  "ABCD_allowed": false,
+  "limits": {
+    "per_run_wall_s": 600,
+    "batch_wall_s": 7200,
+    "memory_bytes": 3221225472,
+    "artifact_bytes": 2147483648
+  },
+  "budget": {
+    "previous_targeted_used": 3,
+    "new_max": 5,
+    "max_construction": 3,
+    "planned_construction": 2,
+    "reserved_independent_repeats": 2,
+    "unallocated": 1,
+    "micro_remaining": 0
+  },
+  "evaluation": {
+    "mode": "finite_time_dynamic",
+    "window_s": [
+      180.0,
+      299.7
+    ],
+    "initialization": "Fresh empty network;0..180s retained and described, not an approved steady-state warmup",
+    "basis": "180s exceeds free travel to and across R at both real mean speeds including native junction lengths; last0.3s reserves actual confirmation. Fixed before trajectories/P2. No stationarity claim.",
+    "blocks_s": 30.0,
+    "full_network_pending_and_occupancy_retained": true
+  },
+  "boundary": {
+    "origin": "Independent new supply candidate, not retrospective oldC upgrade",
+    "cycle_s": 60.0,
+    "yellow_s": 6.2,
+    "construction": "Green48s at first observed internal flow,42.2s proportional to second;80% first duty is an engineering interior between open and old39.7% stress supply, not a scientific traffic fact or fitted P2 setting",
+    "demand": "Observed internal mainline plane300 mean passage used only as conditional scheduled inflow, not true upstream demand",
+    "driving": "Krauss/LC2013 FIXED unchanged; no driver parameter search",
+    "fleet": "A+ observed class/length candidate; fixed conditional systematic sequence"
+  },
+  "repeat_activation": {
+    "require_all_conditions": true,
+    "rule": "All engineering checks complete; each target mean speed and density must lie within the envelope of predeclared30s evaluation blocks, and low-speed/closing states observed if present in real reference. This is necessary state support only, not a science tolerance or equivalence test.",
+    "otherwise": "No further search or repeat; report Evidence Insufficient, preserve reserved runs"
+  },
+  "stop": [
+    "SHA/source/config/binary/identity/clock/control",
+    "collision/teleport/conservation",
+    "exact1e-6m or source necessary range failure",
+    "resource cap",
+    "unexplained terminal-speed conflict"
+  ],
+  "uncertainty": {
+    "level": 0.95,
+    "statistical_seed": 20261020,
+    "resamples": 2000,
+    "time_block_s": 60,
+    "family_metrics": [
+      "speed",
+      "density",
+      "flow",
+      "acceleration",
+      "gap",
+      "closing",
+      "low_speed_share",
+      "P2_rate"
+    ],
+    "family_conditions": 2,
+    "multiplicity": "Bonferroni across16 scalar condition-metric decisions; retain vehicle-cluster and60s-block marginal sensitivity separately. No row-iid CI. Small independent-seed intervals must be reported separately; no complete uncertainty claimed from one source.",
+    "system_error_bounds": null,
+    "scientific_delta": null,
+    "precision_h": null
+  },
+  "cost_preflight": {
+    "old300_worker_s": 320.84488989999227,
+    "observed_cost_s_per_row": 0.00037014186390190335,
+    "no_exit_bound_s": {
+      "FC1": 456.2339003105748,
+      "FC2": 401.23600132084664,
+      "FR1": 456.2339003105748,
+      "FR2": 401.23600132084664
+    },
+    "estimate_not_guarantee": true,
+    "actual_same_scale300_verified_before": true,
+    "per_worker_cap_s": 600,
+    "extension450_admitted": false,
+    "output_forecast_bytes_per_run": 178257920,
+    "tree_memory_reference_bytes": 228253696,
+    "full_P2_postprocessing_wall_budget_s": 900
+  },
+  "sumo_binary_sha256": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+  "reference_plan_sha256": "d29664d72b7ad3e9f122c1b4e9cc2485e05ae8769b9911092ff8c73d26b6c7bf",
+  "scientific_claim_eligible": false,
+  "reality_coverage_accepted": false,
+  "protocol_lock_allowed": false,
+  "stage_1_1_allowed": false,
+  "frozen_files": {
+    "inputs/FC1.sumocfg": "010b200f440e02e73a3a5c1f3ad00c6bc19fd3ef062859cd12a3382ba580062e",
+    "inputs/FC2.sumocfg": "e4c4d6d2c16b9b90fc0fccfe61add9ebe8fa9b93cc7eebeff0d76d5fb247e02f",
+    "inputs/FR1.sumocfg": "ca081c5950fd23e443d7c5dec314131e475210f62a086e1f946257cff8963e50",
+    "inputs/FR2.sumocfg": "e354ad863a23a25ce700020b9a1e8fea51ebb45376bed9686a089499a84c9e71",
+    "inputs/target_summary.json": "db024e29f181fa86b3ed558f6dfcc440d451a419d87f8fc49d6216abccac21c5",
+    "inputs/us101__0750_0805.rou.xml": "8fdd491b0ca328745470f7733fc08971c3143f67613087f4c4b8f32e80f392a0",
+    "inputs/us101__0805_0820.rou.xml": "0bb6823f67e51bbd25069b478891fa149e136ad810f8b5db253a2bbbbfedf7e5",
+    "inputs/us101__0750_0805/b12.net.xml": "57023e2319f8d6cd9fe4deacf5d66eff0bbe58ad95b3209c35511d893ee86ff7",
+    "inputs/us101__0750_0805/build.log": "cda9b1d1f7f9287a2828c9f18b01887e19820bc58e857544f4138a83573a1d63",
+    "inputs/us101__0750_0805/edges.edg.xml": "129b5b4054a0f5ff4fdbc0c8cb52e6908af8ffc25baba16bc40bd08881a4fa70",
+    "inputs/us101__0750_0805/nodes.nod.xml": "b765807cebd28ba05535a1dca97e1fa3ff9cb82c0b76017385545a6fe53cc52e",
+    "inputs/us101__0805_0820/b12.net.xml": "12d8a00abbb2976a11eacdd27ca2605786f472041e5713394d86126acc93726d",
+    "inputs/us101__0805_0820/build.log": "cda9b1d1f7f9287a2828c9f18b01887e19820bc58e857544f4138a83573a1d63",
+    "inputs/us101__0805_0820/edges.edg.xml": "129b5b4054a0f5ff4fdbc0c8cb52e6908af8ffc25baba16bc40bd08881a4fa70",
+    "inputs/us101__0805_0820/nodes.nod.xml": "b765807cebd28ba05535a1dca97e1fa3ff9cb82c0b76017385545a6fe53cc52e",
+    "runtime/code/pytest.ini": "182226de0b57ff186b0f0b2e1ccde0dcdfcb630952b34a7f09f83d1989ce8adf",
+    "runtime/code/src/sitecustomize.py": "45d39c019a0973ed9f18c3840b317e4b77697cf62ce42c80b93a8098dd673053",
+    "runtime/code/tests/test_stage_0_5_final_closure.py": "35034310aef6c872982cf0327c21fac9430e0b485c3716c48348f42010901aab",
+    "runtime/code/tests/test_stage_0_5_lf_guards.py": "984ae0a2b8285dc209789361cce73a80187b3925213fe008f5b203b4b601285f",
+    "runtime/code/tests/test_stage_0_5_lf_protocol.py": "a4af68ec92158fffb7775fd15fd750d8bd9532ea9673e76bf533beabf290812f",
+    "runtime/code/tests/test_stage_0_5_lf_transport.py": "03a992d0e8b1f552dd0793b257f57b98fc00714fcabda23d3484305ef2df113a",
+    "runtime/code/src/riskprop/calibration.py": "9dac386d1e80ba1d97499713498cdfde36aa94b816faf0a7053511a557435043",
+    "runtime/code/src/riskprop/formal_risk_measurement.py": "4e15e67e35911fdd4d50d26f41784bde05a8cd9983edc42c572fa51b00686c58",
+    "runtime/code/src/riskprop/ngsim_risk_calibration.py": "ba49f4a4d2e9762f5d31a6858b84ed5f314c16c2d5e404df93cb36b550d00a36",
+    "runtime/code/src/riskprop/real_trajectory.py": "9acbc515004dcf5e531c547b97bb6a9c1b7bb6e8d186262fdc8e3edccd01120f",
+    "runtime/code/src/riskprop/stage_0_5_b12n_runtime.py": "8db701cc74934364d37b0db9ec01278ac767fe6a7b74ede8bf2d762758c49a86",
+    "runtime/code/src/riskprop/stage_0_5_b12n_worker.py": "824d54a1e4c8f5483be354339f5db0973b77c571961af426a6d83fc27c79d480",
+    "runtime/code/src/riskprop/stage_0_5_b12_network.py": "a6214593b71889b6b52ba86d7a528baaef816eaa4406dff6b5e1ad258a7a14d4",
+    "runtime/code/src/riskprop/stage_0_5_b12_observation.py": "32ac1ba5c33b525b8694acfe322c49eb561fdbd763f53c66fd0bb9999283e235",
+    "runtime/code/src/riskprop/stage_0_5_b12_runtime.py": "04024e468f2339d31c40a48f062333256d7627dccdbd99061186b851b67827a9",
+    "runtime/code/src/riskprop/stage_0_5_b12_worker.py": "1630be51355aeb25f357a3a951bb3b36f9c106022f378115ebdedd2577bb8420",
+    "runtime/code/src/riskprop/stage_0_5_b1_analysis.py": "7d858eaf88718750a1fa33151153619f23d2689d69cece14f60f76873b8e35fc",
+    "runtime/code/src/riskprop/stage_0_5_b1_isolation.py": "27523530f4ca2db2aa6b48768466a0769a9077848ede531869121d72bbebabfe",
+    "runtime/code/src/riskprop/stage_0_5_boundary_bottleneck.py": "b1d72f56c6e18759b063849328290b614944a0bdf7729a224a355f21c4ac2b70",
+    "runtime/code/src/riskprop/stage_0_5_calibration_readiness.py": "f78a39a679fe009906272fbffb244d4cdcd9c7558065666f16fff79a877e181d",
+    "runtime/code/src/riskprop/stage_0_5_cd_observation.py": "4d0b0d46a0116b59f40d2de26580530f5e2aa0e84dd71706e572c57cd1f194c7",
+    "runtime/code/src/riskprop/stage_0_5_cd_runtime.py": "2c2f6f30722a95530b64205887e702c7f3a7ae40eae21fb296429dcc145cfa2e",
+    "runtime/code/src/riskprop/stage_0_5_cd_worker.py": "4543eeb455103954412c5a2ef26a8bd74f0cfc1ba2dc413ee44ce9d556f5c74f",
+    "runtime/code/src/riskprop/stage_0_5_exploratory_response.py": "594a2a518de5bd70ae7957a4303ac6d452d2c59e97311ada9b87b237be5ffdf1",
+    "runtime/code/src/riskprop/stage_0_5_final_closure.py": "aab5fa44fe1c0f18eeed727947f80c6d4d6211281b729091e9265af858c3fb02",
+    "runtime/code/src/riskprop/stage_0_5_lf_protocol.py": "2d3c669ef69d9824aeee7254748aae3283a1bcbb9f13e0a483e23f67064668fd",
+    "runtime/code/src/riskprop/stage_0_5_lf_runtime.py": "c2063996e5eb45d9cf09546c9ade73a11aff11751fd23a8c5007577a8cd8a334",
+    "runtime/code/src/riskprop/stage_0_5_lf_transport.py": "77f28b7fe01181c715773d899cdc923a4bcf6345c4bd4ad10120ecd8603a4d6a",
+    "runtime/code/src/riskprop/stage_0_5_lf_worker.py": "cfe4017320a0a102f65425f8a02963437d3826cff1e3c8e34f79b3d6df578a91",
+    "runtime/code/src/riskprop/stage_0_5_local_following.py": "8a976ef68018e7977e04a71bb10615d302393186cdbd42ba0e888b2e5e5b8d99",
+    "runtime/code/src/riskprop/stage_0_5_near_zero_observability.py": "48b47cf54fc4b764506b1959bd4ecc1c3cba102c20864c25a55f4c6aa5cf41cd",
+    "runtime/code/src/riskprop/stage_0_5_positive_near_zero.py": "ff8076b67d62d1b96602a22d5f60a49aa2dc65044a68ee8a0e31f23407642278",
+    "runtime/code/src/riskprop/stage_0_5_positive_runtime.py": "4854020780a27fb26bea5f6c148a73ed792c96ca524d5022f0239a5dbaf744b1",
+    "runtime/code/src/riskprop/stage_0_5_positive_worker.py": "0e5e30fc64e6e2bd929f16821a45c6c5b7c176959b81b533ce8980269016f24d",
+    "runtime/code/src/riskprop/stage_0_5_stopping_observability.py": "0ea7166c77838583d3e8b0e4d0f05849f160c3ca40a8aea73929bacbcb13f1fa",
+    "runtime/code/src/riskprop/stage_0_5_sumo.py": "a95231972300348c86d3750af1a777e086b41a87a75506a95a290d395f2a762f",
+    "runtime/code/src/riskprop/__init__.py": "2fa792846418307466b666a9ca62266c19f2fb191466c52e5c037ece0bffc81a",
+    "official_source/additional_source_manifest.json": "10b8e5f14fdcba375a3327034b4324e8a91e44d057133169fd2caeecd3c19aa0",
+    "official_source/additional_source_staging.json": "fa5655aadaebf1a513afb52a5419bba78766d6f0382e84e2296ef4cdba8aff2b",
+    "official_source/config.h.cmake": "e849e676b62539154d42497ffd117a471e30d03c5899532f9e2230048652ab95",
+    "official_source/libsumo_Vehicle.cpp": "9ef12f97fe72aa3daed0740d37de1bbb702012e4a250b82abdc66e8138c37fc8",
+    "official_source/microsim_MSBaseVehicle.cpp": "9e46ef6907cd293b2b3a629f27709da042c35f61cd9d57a5081d966d9d4f22d3",
+    "official_source/microsim_MSBaseVehicle.h": "6615e9a51560a0d9ad3333937701751a6f36a64d9003345551cceea580efd73c",
+    "official_source/microsim_MSLaneChanger.cpp": "86e1cd80a9499066ba95ee19ef1336c6524287f053776df42a468a5d640fb452",
+    "official_source/microsim_MSLaneChangerSublane.cpp": "47e2fdcac55186ce47ab1b43b6bf3a969542f4241cd40b6003a16cc7e1c07435",
+    "official_source/microsim_MSVehicle.cpp": "8499ebe445906b19395d5c70945b012f320a439327e9cb3c20f0abd26d15a6a4",
+    "official_source/microsim_MSVehicle.h": "0732c3019037c0171d58c0d231ba68183c971cccb726eef7efd2394b33c794e1",
+    "official_source/source_manifest.json": "a5a7f7f259a5d4406015cf4d9092665e00d45f50626e95415a8c96392e636dde",
+    "official_source/src_microsim_cfmodels_MSCFModel.cpp": "b4a2b50b679c7772dc81ec5585410cedfdea2110961cc445731627ef3cb1d769",
+    "official_source/src_microsim_cfmodels_MSCFModel_Krauss.cpp": "0722e1a44c56e430e40c2b661d1ccfb74df1095cd9f6ffeb4e4ceb4da983af36",
+    "official_source/src_microsim_MSLane.cpp": "f3594649417bc0e2e94ae0e9c8d16b1f5811c4df17cac0a18d078d97af9099bf",
+    "official_source/src_traci-server_TraCIServer.cpp": "be6a4ed81700bf917b9e7321ced8032d6e3752c84f7f4157875f8a37c35edd6b",
+    "official_source/src_traci-server_TraCIServerAPI_Vehicle.cpp": "37e629814142230677a55d1243f50227caf335e76cfbf261d2581205087865d6",
+    "official_source/tools_traci_connection.py": "05820ab615a2ab18411e9722ebbc7056856f2de155383a8b58120d2b2feac572",
+    "official_source/tools_traci_constants.py": "38c54a14cf57dba8f45e67b3927d0b4a2663733fc5fc2fe41a1c9f41914cf891",
+    "official_source/tools_traci_domain.py": "69e28e03cc7844c63049a7f177f73f927ea2ebef7065c47fcfbd388d52b7b8bd",
+    "official_source/tools_traci_storage.py": "a84677fc7253f62c078e25cdd987e5c761fc6d633ae37d875735c06d1e71c105",
+    "official_source/tools_traci__vehicle.py": "998b5579fc6df5380af5a315a2677d396460a9e8ecc58a8ba971d6f085b206eb",
+    "official_source/utils_common_SUMOTime.h": "e7897a565fe9def68e838881a9687f6cec4332fd572b25e0fb9a08066b58b13b",
+    "candidate_entry.py": "ba7d02c3296b605e6aafd019265c374f234e5ba7df0304e73d8d747f985e78af",
+    "closure_analysis.py": "cc6a471b010dba8211893e39969ca28c5eba5eb6c13c2798b566fce26c33587a",
+    "source_audit.json": "8636a4352f61038bad848958713f5aa71101537879b33edff08c07e23aa59d6f",
+    "isolation_policy.json": "0f8a5d3d850e00451b157fdb3c8ba78cbc735c0787346e9fffcd0d73f5eff748",
+    "empty_preflight.json": "13502bfc335c5a7fe4fa101935f10e0105bd77fe697d1dc3d749c22d3d3a9376",
+    "isolation_probe.json": "fe5f1590e4ac126a18d2e54a6d4229502272ccee7c3587f0bee3de2bc0ee0131",
+    "execution_guard_audit.json": "8e1f1a765db861cbb0fbd23b49ada5fc54758e4aea999016883beeaa05fd1ca6"
+  },
+  "controller_sha256": "9b17f00fe41b52974863281438cfd8c45e0aa773ab75587e157bf13c391f137a"
+}

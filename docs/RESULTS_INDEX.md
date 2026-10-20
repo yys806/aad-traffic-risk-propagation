@@ -229,3 +229,14 @@ B1.2前置接入工程阻断，主矩阵未冻结/未运行；报告`docs/STAGE_
 266个原核心工程事件独立重建、逐成员核对；历史86/87/83重现，开始至确认全在域为86，差异4件。共同候选分母14636.2veh-s，局部正式P2仍Unresolved/Not Calculated。相位周期5/10/20%敏感性均到300s才完成，后评价0s；局部平台而全网/pending增长。五层必要目标、需求可识别性和科学误差/精度候选已整合为D1–D5待决；无新增SUMO，累计3/8剩5。C回溢EI与全部历史、Gate/Lock/I-II状态不变。
 
 报告 `docs/STAGE_0_5_LOCAL_FOLLOWING_PROTOCOL_DESIGN.md`；计划 `docs/plans/2026-10-20-lf-protocol-consolidation.md`；证据 `evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/`。
+
+
+## RES-STAGE-0.5-FINAL-CLOSURE-V1
+
+按已批准 D1 完成两个真实校准窗口的局部 P2 与可评价暴露重算：0750–0805 = **147 件 / 31,051.6 veh-s / 17.0426 events·veh-h⁻¹**（车辆簇条件区间 [13.604, 21.131]，1,789 簇）；0805–0820 = **216 件 / 33,091.1 veh-s / 23.4988**（区间 [19.621, 27.806]，1,431 簇）。全源确认事件 543/732、全源可评价暴露 111,425.9/133,505.6 s 与 A+ 封存合格切片分母逐位复现，拒绝 0、右截断 0。此前"正式局部 P2 Unresolved / Not Calculated"的计算缺口由此关闭；这不等于现实覆盖通过。
+
+条件候选 FC1/FC2 各 300 s 完成（seed 20261019），数值精确 100%、守恒与局部平衡残差 0、期末待插入 0；但预声明 30 s 块包络不含各自目标（模拟 20–22 m/s、约 20 veh/km/lane 对真实 8–10.5 m/s、43–50 veh/km/lane）。两次运行都复现观测内部断面流量（1647.4 对 1646.9、1451.4 对 1439.2 veh/h/lane）却落在**自由流分支**，属结构性条件供给失配。按冻结规则停止：未用第 3 次构造、未执行保留的 2 次独立 seed 重复、未访问第三窗口。
+
+五层合取判定 **Evidence Insufficient**（阻断层 1/2/5，层 4 测量已闭合）；δ 与 h 无独立依据，保持 Awaiting Researcher Decision；集中决策包 R1–R5。新增 2 次轨迹运行、剩 3 次；Gate 保持 `pending_simulation_sample`，未创建协议锁、未启动 Stage 1.1。
+
+报告 `docs/STAGE_0_5_FINAL_CLOSURE_2026-10-20.md`；计划 `docs/plans/2026-10-20-stage-0-5-final-closure.md`；证据 `evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/`。

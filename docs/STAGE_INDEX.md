@@ -191,3 +191,12 @@ Stage0.5新增RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2（B1.2前置工程阻断）�
 266个原核心工程事件独立重建、逐成员核对；历史86/87/83重现，开始至确认全在域为86，差异4件。共同候选分母14636.2veh-s，局部正式P2仍Unresolved/Not Calculated。相位周期5/10/20%敏感性均到300s才完成，后评价0s；局部平台而全网/pending增长。五层必要目标、需求可识别性和科学误差/精度候选已整合为D1–D5待决；无新增SUMO，累计3/8剩5。C回溢EI与全部历史、Gate/Lock/I-II状态不变。
 
 报告 `docs/STAGE_0_5_LOCAL_FOLLOWING_PROTOCOL_DESIGN.md`；计划 `docs/plans/2026-10-20-lf-protocol-consolidation.md`；证据 `evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/`。
+
+
+## 2026-10-20 Stage 0.5 最终收口（AAD-0.5-FINAL-CLOSURE）
+
+结果 `RES-STAGE-0.5-FINAL-CLOSURE-V1`。按研究者批准的 D1 主口径（风险开始位置与开始时间）重算两个真实校准窗口的正式局部 P2 与可评价暴露：0750–0805 147 件 / 31,051.6 veh-s / 17.0426；0805–0820 216 件 / 33,091.1 veh-s / 23.4988（单位 events / P2-evaluable following vehicle-hour）。全源 543/732 事件与 111,425.9/133,505.6 s 分母逐位复现，先前 Unresolved / Not Calculated 的计算缺口关闭。
+
+条件候选 FC1/FC2 各 300 s 完成且工程无阻断，但预声明 30 s 块状态包络不含各自真实目标：模拟复现内部断面流量却处于自由流分支，真实窗口处于拥堵分支。按冻结规则停止搜索，未执行第 3 次构造与保留的 2 次独立 seed 重复，第三窗口未访问。五层合取 = Evidence Insufficient，δ/h 无独立依据，集中决策包 R1–R5。Gate 保持 `pending_simulation_sample`。
+
+报告 `docs/STAGE_0_5_FINAL_CLOSURE_2026-10-20.md`；计划 `docs/plans/2026-10-20-stage-0-5-final-closure.md`；证据 `evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/`。

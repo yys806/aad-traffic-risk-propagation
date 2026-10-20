@@ -95,3 +95,10 @@ code/src/riskprop/stage_0_5_positive_near_zero.py（classify_edge/admission/chec
 候选模块code/src/riskprop/stage_0_5_lf_protocol.py；执行design_stage_0_5_lf_protocol.py仅prepare/tests/freeze/inspect/analyse，无SUMO运行命令；package_stage_0_5_lf_protocol.py负责轻量协议与便携语义复核；新protocol和protocol_evidence测试。报告 `docs/STAGE_0_5_LOCAL_FOLLOWING_PROTOCOL_DESIGN.md`；计划 `docs/plans/2026-10-20-lf-protocol-consolidation.md`；证据 `evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/`。
 
 收口补充：prepare_stage_0_5_lf_protocol_summaries.py封装v1已记录的冻结前A+两摘要补入步骤，3合成准备测试验证；冻结分析未重跑。有限周期精确平衡非统计稳态必要/充分条件，v1辅助标签不能作正式准入，候选协议已澄清。
+
+
+## 2026-10-20 Stage 0.5 最终收口
+
+新增 `code/src/riskprop/stage_0_5_final_closure.py`：已批准 D1 的局部归属与暴露（`local_p2`/`links`/`checked`/`real_region_mask`）、误差判据 `equivalence`（δ 未批准时返回 Awaiting Researcher Decision，不默认通过）与运行计划守卫 `check_run_plan`（构造 ≤3、独立重复 ≥2 且 seed 不重复、资源上限不得提高、验证访问需完整协议）。
+
+入口：`run_stage_0_5_final_closure.py`（prepare/refresh/tests/freeze-reference/reference，参考重算按完整后车轨迹分批，逐批复核原分母）、`run_stage_0_5_closure_candidate.py`（prepare/empty/probe/freeze/worker/analyse，条件候选与负例角色探针）、`supervise_stage_0_5_closure.py`（有限进程树监督：墙钟/内存/产物上限、不重试、控制器哈希守卫）、`audit_stage_0_5_closure_statistics.py`（统计计划冻结与车辆簇/时间块区间）、`package_stage_0_5_final_closure.py`（装配、封存、独立校验与反晋升检查）、`verify_stage_0_5_final_closure.py`（便携复核入口）。测试：`test_stage_0_5_final_closure.py`、`test_stage_0_5_closure_supervisor.py`、`test_stage_0_5_final_closure_evidence.py`。Stage 0.2 事件核心、旧 SUMO 适配器与 LF/CD/P/N 模块未改。

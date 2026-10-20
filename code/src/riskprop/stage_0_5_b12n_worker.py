@@ -35,7 +35,7 @@ def definitions(path):
 def settings(conn,spec,types,out):
     options={k:conn.simulation.getOption(k) for k in ["step-method.ballistic","step-length","seed","threads","time-to-teleport","random"]}
     checks=[options["step-method.ballistic"].lower() in ["true","1"],abs(float(options["step-length"])-.05)<1e-10,
-            int(options["seed"])==20261019,int(options["threads"])==1,options["time-to-teleport"]=="-1",options["random"].lower() in ["false","0"],
+            int(options["seed"])==int(spec.get("seed",20261019)),int(options["threads"])==1,options["time-to-teleport"]=="-1",options["random"].lower() in ["false","0"],
             abs(conn.simulation.getDeltaT()-.05)<1e-10,conn.simulation.getTime()==0.,len(conn.vehicle.getIDList())==0]
     conn.simulation.saveState(str(out/"runtime_initial_state.xml"))
     echo={t.attrib["id"]:dict(t.attrib) for t in ET.parse(out/"runtime_initial_state.xml").getroot().iter("vType")}

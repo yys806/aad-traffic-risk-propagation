@@ -1,0 +1,74 @@
+{
+  "predeclared_rule": "All engineering checks complete; each target mean speed and density must lie within the envelope of predeclared30s evaluation blocks, and low-speed/closing states observed if present in real reference. This is necessary state support only, not a science tolerance or equivalence test.",
+  "per_run": [
+    {
+      "run_id": "FC1",
+      "condition": "us101__0750_0805",
+      "evaluation_window_s": [
+        180.0,
+        299.7
+      ],
+      "predeclared_block_envelope": {
+        "speed_mps": [
+          19.424575546227402,
+          25.942328228562097
+        ],
+        "density_veh_km_lane": [
+          17.920875420875433,
+          23.186111111111114
+        ]
+      },
+      "real_target": {
+        "mean_speed_mps": 10.506118382234925,
+        "density_veh_km_lane": 43.54361111111111
+      },
+      "speed_inside_envelope": false,
+      "density_inside_envelope": false,
+      "low_speed_share_sim": 0.00047470500474705005,
+      "low_speed_share_real": 0.09689200482275113,
+      "closing_speed_mean_sim": 2.7299855984957864,
+      "closing_speed_mean_real": -0.17137596169868013,
+      "net_gap_mean_sim": 41.1867776279873,
+      "net_gap_mean_real": 18.810377621414037,
+      "full_network_pending": 0,
+      "observed_no_pending_backlog": true
+    },
+    {
+      "run_id": "FC2",
+      "condition": "us101__0805_0820",
+      "evaluation_window_s": [
+        180.0,
+        299.7
+      ],
+      "predeclared_block_envelope": {
+        "speed_mps": [
+          16.990004142643006,
+          25.194902128048668
+        ],
+        "density_veh_km_lane": [
+          16.269444444444446,
+          23.28888888888889
+        ]
+      },
+      "real_target": {
+        "mean_speed_mps": 7.915276152134783,
+        "density_veh_km_lane": 50.50545454545454
+      },
+      "speed_inside_envelope": false,
+      "density_inside_envelope": false,
+      "low_speed_share_sim": 0.042100084340736574,
+      "low_speed_share_real": 0.25297297621619025,
+      "closing_speed_mean_sim": 3.6696394531917598,
+      "closing_speed_mean_real": -0.1094413104615163,
+      "net_gap_mean_sim": 41.386233948819935,
+      "net_gap_mean_real": 15.379875307365541,
+      "full_network_pending": 0,
+      "observed_no_pending_backlog": true
+    }
+  ],
+  "all_targets_inside_envelope": false,
+  "verdict": "EvidenceInsufficient_StateSupport",
+  "consequence": "Per the frozen rule: no further search or repeat; reserved runs preserved; report Evidence Insufficient",
+  "note": "Envelope membership is a necessary pre-declared state-support check only. It is not a science tolerance, not an equivalence test and not a Gate.",
+  "not_a_science_tolerance": true
+}

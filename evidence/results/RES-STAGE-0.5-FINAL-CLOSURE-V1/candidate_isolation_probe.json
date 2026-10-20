@@ -1,0 +1,105 @@
+{
+  "passed": true,
+  "expected_denials": 3,
+  "guard": {
+    "scope": "controlled Python entrypoints",
+    "allowed_open_events": 436,
+    "denied": [
+      {
+        "event": "open",
+        "path": "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\forbidden_probe.txt",
+        "write": false
+      }
+    ],
+    "os_complete_monitoring": false,
+    "native_file_access_monitored": false,
+    "python_no_site": true,
+    "sanitized_sys_path": [
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_final_candidate_v1\\runtime\\code\\src",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_final_candidate_v1\\dependency_links",
+      "D:\\miniconda\\Lib\\site-packages",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_final_candidate_v1",
+      "C:\\Program Files (x86)\\Eclipse\\Sumo\\tools",
+      "D:\\miniconda\\python313.zip",
+      "D:\\miniconda\\DLLs",
+      "D:\\miniconda\\Lib",
+      "D:\\miniconda"
+    ],
+    "limitations": [
+      "Python audit events only; native extensions and SUMO reads not OS-traced",
+      "standard-library/package/SUMO/Windows runtime roots are broader than individual dependency files",
+      "same-user administrator can bypass this policy; it is not an adversarial security boundary"
+    ]
+  },
+  "role_audit": {
+    "schema_version": "stage_0_5.sumo-engineering.v2.access-audit.v1",
+    "policy_schema_version": "stage_0_5.sumo-engineering.v2.calibration-validation-policy.v1",
+    "access_roles": [
+      "calibration",
+      "temporal_validation",
+      "auxiliary"
+    ],
+    "request_count": 2,
+    "denied_count": 2,
+    "denied_requests": [
+      {
+        "role": "calibration",
+        "sources": [
+          "us101__0820_0835"
+        ],
+        "purpose": "negative role probe; no file read",
+        "allowed": false,
+        "reason": "restricted_source_for_role",
+        "restricted_sources": [
+          "us101__0820_0835"
+        ],
+        "checked_bindings": {}
+      },
+      {
+        "role": "locked_holdout",
+        "sources": [
+          "us101__0750_0805"
+        ],
+        "purpose": "negative role probe; no file read",
+        "allowed": false,
+        "reason": "unknown_access_role",
+        "restricted_sources": [
+          "us101__0750_0805"
+        ],
+        "checked_bindings": {}
+      }
+    ],
+    "decisions": [
+      {
+        "role": "calibration",
+        "sources": [
+          "us101__0820_0835"
+        ],
+        "purpose": "negative role probe; no file read",
+        "allowed": false,
+        "reason": "restricted_source_for_role",
+        "restricted_sources": [
+          "us101__0820_0835"
+        ],
+        "checked_bindings": {}
+      },
+      {
+        "role": "locked_holdout",
+        "sources": [
+          "us101__0750_0805"
+        ],
+        "purpose": "negative role probe; no file read",
+        "allowed": false,
+        "reason": "unknown_access_role",
+        "restricted_sources": [
+          "us101__0750_0805"
+        ],
+        "checked_bindings": {}
+      }
+    ],
+    "fail_closed": true,
+    "locked_holdout_accessed": false,
+    "validation_window_read": false
+  },
+  "no_forbidden_content_read": true
+}

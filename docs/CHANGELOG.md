@@ -213,3 +213,13 @@ B1.2-P收口：纯Git全量741 passed/14 skipped/0 failed；严格文档/compile
 266个原核心工程事件独立重建、逐成员核对；历史86/87/83重现，开始至确认全在域为86，差异4件。共同候选分母14636.2veh-s，局部正式P2仍Unresolved/Not Calculated。相位周期5/10/20%敏感性均到300s才完成，后评价0s；局部平台而全网/pending增长。五层必要目标、需求可识别性和科学误差/精度候选已整合为D1–D5待决；无新增SUMO，累计3/8剩5。C回溢EI与全部历史、Gate/Lock/I-II状态不变。
 
 报告 `docs/STAGE_0_5_LOCAL_FOLLOWING_PROTOCOL_DESIGN.md`；计划 `docs/plans/2026-10-20-lf-protocol-consolidation.md`；证据 `evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/`。
+
+
+## 2026-10-20 — AAD-0.5-FINAL-CLOSURE Stage 0.5 最终收口
+
+- 新增结果 `RES-STAGE-0.5-FINAL-CLOSURE-V1`，便携证据 59 个文件（含事件级、成员支持级与簇级表），登记入 `PROJECT_REGISTRY.json`、`RESULTS_INDEX.md`、`STAGE_INDEX.md` 与 `RESEARCH_STATUS.md`。
+- 新增 `code/src/riskprop/stage_0_5_final_closure.py`（已批准 D1 归属、局部 P2/暴露、误差判据与运行计划守卫）与 12 项手算期望值测试。
+- 新增真实参考重算入口 `code/scripts/run_stage_0_5_final_closure.py`、条件候选入口 `code/scripts/run_stage_0_5_closure_candidate.py`、有限进程树监督器 `code/scripts/supervise_stage_0_5_closure.py`、统计冻结/分析脚本 `code/scripts/audit_stage_0_5_closure_statistics.py`。
+- 新增装配与校验入口 `code/scripts/package_stage_0_5_final_closure.py`、`code/scripts/verify_stage_0_5_final_closure.py` 与证据回归测试 `code/tests/test_stage_0_5_final_closure_evidence.py`；`export_project_evidence.py` 增补本结果的导出映射与聚合文件白名单。
+- 研究者批准 D1–D5 记入 `AI_CONTEXT/06_DECISIONS.md`；真实局部 P2 由 Unresolved/Not Calculated 变为已计算，但 Gate 未升级。
+- 历史状态与旧包字节未改写：LF 候选协议包仅在政策上被 D1 批准取代，B0/B1/B1.1/B1.1-S/B1.2/B1.2-N/B1.2-P/CD/LF 全部保留。

@@ -1,0 +1,60 @@
+{
+  "version": "closure-statistics-v1",
+  "script_sha256": "21cddae5964c6f01bdbdc837814a4f4121dbf92f50d8eb599caeb9eef57e37df",
+  "entries": [
+    {
+      "label": "us101__0750_0805",
+      "kind": "real",
+      "state_path": "inputs/us101__0750_0805.parquet",
+      "state_sha256": "684a5f0b96dc48116f16d581c278d7039c0554bf1c3cea8d6eda3e605e3e8644",
+      "events_path": "summary/us101__0750_0805/interior_events.csv",
+      "events_sha256": "3b38482c8f4635580c56b07dce77559860e783d69574b7365f1a0e25b1809a57",
+      "clusters_path": "summary/us101__0750_0805/interior_clusters.csv",
+      "clusters_sha256": "971ad39dc98e9fe2fe0576896b572e8105044a7d6ac93eb0e96782d6069f2cbd",
+      "window_s": [
+        120.0,
+        840.0
+      ],
+      "lane_km": 1.0,
+      "lanes": 5
+    },
+    {
+      "label": "us101__0805_0820",
+      "kind": "real",
+      "state_path": "inputs/us101__0805_0820.parquet",
+      "state_sha256": "7b0ef830c97a981da018d4e24b029e38aa2630387c728ea87b57926745880a9f",
+      "events_path": "summary/us101__0805_0820/interior_events.csv",
+      "events_sha256": "2d9ec699ecd2b34f6a38927e6292b7d049ede31402d7917ae1dafd1b25173803",
+      "clusters_path": "summary/us101__0805_0820/interior_clusters.csv",
+      "clusters_sha256": "824ab2ed4666c465805744b3cf1a6c2ea4a7f8e5595d4563b5d442e6fed0a962",
+      "window_s": [
+        180.0,
+        840.0
+      ],
+      "lane_km": 1.0,
+      "lanes": 5
+    }
+  ],
+  "confidence": 0.95,
+  "resamples": 2000,
+  "seed": 20261020,
+  "primary_time_block_s": 60.0,
+  "metrics": [
+    "speed",
+    "density",
+    "flow",
+    "acceleration",
+    "gap",
+    "closing",
+    "low_speed_share",
+    "P2_rate"
+  ],
+  "family_size": 16,
+  "multiplicity": "Bonferroni across8 scalars x2 target conditions",
+  "dependence": "Vehicle clusters and nonoverlapping60s blocks reported separately; conservative interval envelope is sensitivity, not proof that unknown cross-block interactions vanish",
+  "seed_uncertainty": "Report separately only after frozen engineering-qualified candidate repeats; insufficient repetitions never silently zero",
+  "system_error_bound": null,
+  "scientific_delta": null,
+  "precision_h": null,
+  "third_window_access": false
+}

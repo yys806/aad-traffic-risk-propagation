@@ -173,12 +173,24 @@
     "code/tests/test_stage_0_5_lf_protocol.py",
     "code/tests/test_stage_0_5_lf_protocol_evidence.py",
     "code/scripts/prepare_stage_0_5_lf_protocol_summaries.py",
-    "code/tests/test_stage_0_5_lf_protocol_preparation.py"
+    "code/tests/test_stage_0_5_lf_protocol_preparation.py",
+    "docs/STAGE_0_5_FINAL_CLOSURE_2026-10-20.md",
+    "docs/plans/2026-10-20-stage-0-5-final-closure.md",
+    "code/src/riskprop/stage_0_5_final_closure.py",
+    "code/scripts/run_stage_0_5_final_closure.py",
+    "code/scripts/run_stage_0_5_closure_candidate.py",
+    "code/scripts/supervise_stage_0_5_closure.py",
+    "code/scripts/audit_stage_0_5_closure_statistics.py",
+    "code/scripts/package_stage_0_5_final_closure.py",
+    "code/scripts/verify_stage_0_5_final_closure.py",
+    "code/tests/test_stage_0_5_final_closure.py",
+    "code/tests/test_stage_0_5_closure_supervisor.py",
+    "code/tests/test_stage_0_5_final_closure_evidence.py"
   ],
   "current": {
     "active_experiment_id": "stage_0_5",
-    "active_task": "AAD-0.5-LF-PROTOCOL-CONSOLIDATION candidate complete; awaiting researcher protocol approval; no calibration or ABCD",
-    "why_now": "266个原核心工程事件独立重建、逐成员核对；历史86/87/83重现，开始至确认全在域为86，差异4件。共同候选分母14636.2veh-s，局部正式P2仍Unresolved/Not Calculated。相位周期5/10/20%敏感性均到300s才完成，后评价0s；局部平台而全网/pending增长。五层必要目标、需求可识别性和科学误差/精度候选已整合为D1–D5待决；无新增SUMO，累计3/8剩5。C回溢EI与全部历史、Gate/Lock/I-II状态不变。",
+    "active_task": "AAD-0.5-FINAL-CLOSURE complete: real local P2 and exposure calculated for both approved calibration windows under the approved D1 attribution; conditional candidate runs failed the pre-declared state support rule; Stage 0.5 remains pending_simulation_sample with one consolidated decision package R1-R5",
+    "why_now": "按已批准D1重算两真实校准窗口局部P2：0750=147件/31051.6veh-s/17.0426，0805=216件/33091.1veh-s/23.4988；全源543/732与111425.9/133505.6s及A+切片分母逐位复现，拒绝0。条件候选FC1/FC2各300s完成、数值精确100%、守恒0、待插入0；但预声明30s块包络不含各自目标（模拟20-22m/s、约20veh/km/lane对真实8-10.5m/s、43-50veh/km/lane），虽复现内部断面流量却落在自由流分支。按冻结规则停止，未用第3次构造、未执行保留的2次独立seed重复、未访问第三窗口。五层合取=Evidence Insufficient（阻断层1/2/5，层4测量已闭合）；δ/h无独立依据，集中决策包R1–R5。新增2次运行，剩3。",
     "next_decision_owner": "researcher",
     "portable_gate_paths": [
       "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",
@@ -198,7 +210,8 @@
       "evidence/results/RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1/audit.json",
       "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/audit.json",
       "evidence/results/RES-STAGE-0.5-LOCAL-FOLLOWING-EXPLORATION-V1/audit.json",
-      "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/audit.json"
+      "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/audit.json",
+      "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/audit.json"
     ],
     "local_gate_paths": [
       "code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r4/scientific_gate_report.json",
@@ -216,7 +229,8 @@
       "code/outputs/formal/calibration/stage_0_5_positive_near_zero_v1/summary/audit.json",
       "code/outputs/formal/calibration/stage_0_5_cd_integration_v2/summary/audit.json",
       "code/outputs/formal/calibration/stage_0_5_local_following_v1/summary/audit.json",
-      "code/outputs/formal/calibration/stage_0_5_lf_protocol_v1/summary/audit.json"
+      "code/outputs/formal/calibration/stage_0_5_lf_protocol_v1/summary/audit.json",
+      "code/outputs/formal/calibration/stage_0_5_final_closure_package/summary/audit.json"
     ]
   },
   "experiments": [
@@ -445,7 +459,7 @@
       "research_question": "SUMO 基础运动与跟驰风险是否明显脱离真实交通范围？",
       "date": "2026-09-07",
       "status": "active_pending_simulation_sample",
-      "code_version": "canonical real reference R2, independent Stage 0.5.3 no-message SUMO engineering skeleton, and the Stage 0.5.4-A measurement-equivalence/calibration-readiness audit; no scientific calibration and no frozen scientific parameter; B0 bounded exploration with explicit ballistic and guarded batch inputs; no formal calibration; B1 capsule -S whitelist/stop supervisor with fixed-behaviour boundary mechanisms (closed early); B1.2 independent layered numerical/queue integration blocked before main matrix; B1.2-N restricted source-qualified near-zero contract;3 micro probes closed at missing positive-snap runtime coverage, C/D not admitted; B1.2-P positive-only native braking probes with independent seven-link admission; no integration/main command",
+      "code_version": "canonical real reference R2, independent Stage 0.5.3 no-message SUMO engineering skeleton, and the Stage 0.5.4-A measurement-equivalence/calibration-readiness audit; no scientific calibration and no frozen scientific parameter; B0 bounded exploration with explicit ballistic and guarded batch inputs; no formal calibration; B1 capsule -S whitelist/stop supervisor with fixed-behaviour boundary mechanisms (closed early); B1.2 independent layered numerical/queue integration blocked before main matrix; B1.2-N restricted source-qualified near-zero contract;3 micro probes closed at missing positive-snap runtime coverage, C/D not admitted; B1.2-P positive-only native braking probes with independent seven-link admission; no integration/main command; AAD-0.5-FINAL-CLOSURE adds approved-D1 local attribution (stage_0_5_final_closure.py), the independent reference/candidate capsule runners with a finite process-tree supervisor, and the portable assembler/verifier; Stage 0.2 event core unchanged",
       "code_paths": [
         "code/src/riskprop/simulation_real_coverage.py",
         "code/src/riskprop/stage_0_5_sumo.py",
@@ -488,7 +502,8 @@
         "code/scripts/audit_stage_0_5_lf_extension.py",
         "code/src/riskprop/stage_0_5_lf_protocol.py",
         "code/scripts/design_stage_0_5_lf_protocol.py",
-        "code/scripts/package_stage_0_5_lf_protocol.py"
+        "code/scripts/package_stage_0_5_lf_protocol.py",
+        "code/src/riskprop/stage_0_5_final_closure.py"
       ],
       "entrypoints": [
         "code/scripts/prepare_stage_0_5_real_reference.py",
@@ -521,7 +536,13 @@
         "code/scripts/verify_stage_0_5_positive_near_zero.py",
         "code/scripts/design_stage_0_5_lf_protocol.py",
         "code/scripts/package_stage_0_5_lf_protocol.py",
-        "code/scripts/prepare_stage_0_5_lf_protocol_summaries.py"
+        "code/scripts/prepare_stage_0_5_lf_protocol_summaries.py",
+        "code/scripts/run_stage_0_5_final_closure.py",
+        "code/scripts/run_stage_0_5_closure_candidate.py",
+        "code/scripts/supervise_stage_0_5_closure.py",
+        "code/scripts/audit_stage_0_5_closure_statistics.py",
+        "code/scripts/package_stage_0_5_final_closure.py",
+        "code/scripts/verify_stage_0_5_final_closure.py"
       ],
       "test_paths": [
         "code/tests/test_simulation_real_coverage.py",
@@ -549,7 +570,10 @@
         "code/tests/test_stage_0_5_lf_evidence.py",
         "code/tests/test_stage_0_5_lf_protocol.py",
         "code/tests/test_stage_0_5_lf_protocol_evidence.py",
-        "code/tests/test_stage_0_5_lf_protocol_preparation.py"
+        "code/tests/test_stage_0_5_lf_protocol_preparation.py",
+        "code/tests/test_stage_0_5_final_closure.py",
+        "code/tests/test_stage_0_5_closure_supervisor.py",
+        "code/tests/test_stage_0_5_final_closure_evidence.py"
       ],
       "configuration": "R2 real reference plus two no_message_baseline generic-highway engineering fixtures (baseline_mixed_demand, measurement_probe_queue_stop); US-101 primary, Lankershim auxiliary entry-only, pNEUMA urban kinematics entry-only; all network/demand/vType/behaviour/time settings are engineering_fixture_only",
       "parameters": {
@@ -667,7 +691,52 @@
         "lf_C_entry_spillback": "Evidence Insufficient",
         "lf_main_matrix_allowed": false,
         "lf_full600_run_performed": false,
-        "lf_scientific_warmup_or_window_approved": false
+        "lf_scientific_warmup_or_window_approved": false,
+        "closure_result_id": "RES-STAGE-0.5-FINAL-CLOSURE-V1",
+        "closure_gate": "pending_simulation_sample",
+        "closure_real_local_P2": {
+          "us101__0750_0805": {
+            "onset_events": 147,
+            "evaluable_vehicle_s": 31051.6,
+            "rate_per_evaluable_vehicle_hour": 17.042600059256205,
+            "cluster_interval_95": [
+              13.604100708795242,
+              21.130862388378628
+            ]
+          },
+          "us101__0805_0820": {
+            "onset_events": 216,
+            "evaluable_vehicle_s": 33091.1,
+            "rate_per_evaluable_vehicle_hour": 23.49876552909997,
+            "cluster_interval_95": [
+              19.621289728841777,
+              27.805661306814184
+            ]
+          }
+        },
+        "closure_real_local_P2_status": "Calculated under approved D1 for both calibration windows; not a reality-coverage acceptance",
+        "closure_d1_policy": "Approved Research Decision 2026-10-20: onset position and onset time primary; confirmation position and onset-to-confirmation auxiliary on the same onset window; confirmation-time window reported as separate sensitivity",
+        "closure_five_layer_verdict": "Evidence Insufficient",
+        "closure_blocking_layers": [
+          1,
+          2,
+          5
+        ],
+        "closure_closed_layers": [
+          4
+        ],
+        "closure_state_support": "EvidenceInsufficient_StateSupport",
+        "closure_candidate_runs_actual": 2,
+        "closure_candidate_runs_authorized": 5,
+        "closure_targeted_runs_remaining": 3,
+        "closure_reserved_repeats": "Preserved, not attempted",
+        "closure_third_construction_run": "Not used; the frozen rule forbids further search and one run cannot cover both target conditions",
+        "closure_scientific_delta_approved": false,
+        "closure_precision_h_approved": false,
+        "closure_validation_window_reads": 0,
+        "closure_holdout_reads": 0,
+        "closure_reality_coverage_accepted": false,
+        "closure_ABCD_runs": 0
       },
       "data_version": "RES-STAGE-0.5-REAL-REF-R2; Stage 0.2 R4 four states + final_r1 P2 + Stage 0.3 R2 canonical/R3 summaries",
       "model": "deterministic simulation-to-real coverage audit",
@@ -687,7 +756,8 @@
         "RES-STAGE-0.5-POSITIVE-NEAR-ZERO-V1",
         "RES-STAGE-0.5-CD-INTEGRATION-V1",
         "RES-STAGE-0.5-LOCAL-FOLLOWING-EXPLORATION-V1",
-        "RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1"
+        "RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1",
+        "RES-STAGE-0.5-FINAL-CLOSURE-V1"
       ],
       "core_metrics": [
         "formal_input_manifest",
@@ -737,9 +807,20 @@
         "lf_protocol_tolerance_approved",
         "lf_protocol_formal_local_P2",
         "lf_protocol_actual_validation_window_reads",
-        "lf_protocol_formal_calibration_started"
+        "lf_protocol_formal_calibration_started",
+        "closure_real_local_p2_onset_events",
+        "closure_real_local_evaluable_exposure_s",
+        "closure_real_local_rate",
+        "closure_real_local_cluster_interval",
+        "closure_state_support_verdict",
+        "closure_five_layer_conjunctive_verdict",
+        "closure_blocking_layers",
+        "closure_delta_h_basis_status",
+        "closure_candidate_run_status",
+        "closure_budget_remaining",
+        "closure_validation_isolation"
       ],
-      "current_conclusion": "266个原核心工程事件独立重建、逐成员核对；历史86/87/83重现，开始至确认全在域为86，差异4件。共同候选分母14636.2veh-s，局部正式P2仍Unresolved/Not Calculated。相位周期5/10/20%敏感性均到300s才完成，后评价0s；局部平台而全网/pending增长。五层必要目标、需求可识别性和科学误差/精度候选已整合为D1–D5待决；无新增SUMO，累计3/8剩5。C回溢EI与全部历史、Gate/Lock/I-II状态不变。",
+      "current_conclusion": "按已批准D1完成两个真实校准窗口的局部P2与暴露重算（147/31051.6/17.0426；216/33091.1/23.4988，全源543/732与111425.9/133505.6s逐位复现）；条件候选FC1/FC2工程完成但状态支持未达标，五层合取=Evidence Insufficient；δ/h无独立依据，Stage 0.5保持pending_simulation_sample，决策包R1–R5。",
       "gate": {
         "status": "pending_simulation_sample",
         "portable_path": "evidence/results/RES-STAGE-0.5-REAL-REF-R2/audit.json"
@@ -2899,6 +2980,127 @@
       "gate_status": "pending_simulation_sample",
       "paper_locations": [
         "docs/STAGE_0_5_LOCAL_FOLLOWING_PROTOCOL_DESIGN.md"
+      ],
+      "scientific_claim_eligible": false
+    },
+    {
+      "id": "RES-STAGE-0.5-FINAL-CLOSURE-V1",
+      "experiment_id": "stage_0_5",
+      "name": "Stage 0.5 final closure: approved-D1 real local reference and conditional candidate admission",
+      "status": "closed_evidence_insufficient_for_acceptance",
+      "portable_evidence_paths": [
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/SHA256SUMS",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/audit.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/candidate_PLAN_SHA256",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/candidate_analyse_FC1_access_audit.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/candidate_analyse_FC2_access_audit.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/candidate_empty_all_access_audit.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/candidate_empty_preflight.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/candidate_execution_guard_audit.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/candidate_experiment_plan.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/candidate_isolation_probe.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/candidate_probe_all_access_audit.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/candidate_run_ledger.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/candidate_run_summary.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/candidate_worker_FC1_access_audit.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/candidate_worker_FC2_access_audit.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/cluster_exposure_audit.csv",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/delta_h_basis_audit.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/event_attribution_audit.csv",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/execution_ledger.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/five_layer_admission.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/historical_status_preservation.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/isolation_evidence.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/issue_discovery_report.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/manifest.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/member_support_audit.csv",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/provenance.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/real_local_reference_summary.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/real_us101__0750_0805_P2_cluster_uncertainty.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/real_us101__0750_0805_full_acquisition_P2.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/real_us101__0750_0805_interior_P2.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/real_us101__0750_0805_joint_uncertainty.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/real_us101__0750_0805_source_audit.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/real_us101__0750_0805_traffic_metrics.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/real_us101__0805_0820_P2_cluster_uncertainty.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/real_us101__0805_0820_full_acquisition_P2.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/real_us101__0805_0820_interior_P2.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/real_us101__0805_0820_joint_uncertainty.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/real_us101__0805_0820_source_audit.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/real_us101__0805_0820_traffic_metrics.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/reference_REFERENCE_PLAN_SHA256",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/reference_isolation_policy.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/reference_preparation.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/reference_reference_plan.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/reference_reference_us101__0750_0805_access_audit.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/reference_reference_us101__0805_0820_access_audit.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/reference_source_manifest.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/reference_statistics_plan.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/reference_statistics_us101__0750_0805_access_audit.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/reference_statistics_us101__0805_0820_access_audit.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/reference_test_pass.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/reference_tests_tests_access_audit.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/report.md",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/researcher_decision_package.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/sim_FC1_P2.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/sim_FC1_state_support_blocks.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/sim_FC1_traffic_metrics.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/sim_FC2_P2.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/sim_FC2_state_support_blocks.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/sim_FC2_traffic_metrics.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/stage_0_6_handoff.json",
+        "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/state_support_verdict.json"
+      ],
+      "local_artifact_paths": [
+        "code/outputs/formal/calibration/stage_0_5_final_closure_v4",
+        "code/outputs/formal/calibration/stage_0_5_final_candidate_v1",
+        "code/outputs/formal/calibration/stage_0_5_final_closure_package"
+      ],
+      "code_version_source": "code/src/riskprop/stage_0_5_final_closure.py; code/scripts/run_stage_0_5_final_closure.py; code/scripts/run_stage_0_5_closure_candidate.py; code/scripts/supervise_stage_0_5_closure.py; code/scripts/package_stage_0_5_final_closure.py; provenance.json",
+      "configuration_source": "reference_reference_plan.json (REFERENCE_PLAN_SHA256) and candidate_experiment_plan.json (candidate_PLAN_SHA256), both byte-bound in provenance.json",
+      "data_version_source": "Two SHA-bound canonical calibration states 684a5f0b96dc4811... and 7b0ef830c97a981d...; sealed Stage 0.2 denominators 111425.9/133505.6 s and confirmed events 543/732; third window and locked holdout not read",
+      "core_metrics": {
+        "real_local_onset_events": {
+          "us101__0750_0805": 147,
+          "us101__0805_0820": 216
+        },
+        "real_local_evaluable_exposure_s": {
+          "us101__0750_0805": 31051.6,
+          "us101__0805_0820": 33091.1
+        },
+        "real_local_rate_per_evaluable_vehicle_hour": {
+          "us101__0750_0805": 17.042600059256205,
+          "us101__0805_0820": 23.49876552909997
+        },
+        "real_local_cluster_interval_95": {
+          "us101__0750_0805": [
+            13.604100708795242,
+            21.130862388378628
+          ],
+          "us101__0805_0820": [
+            19.621289728841777,
+            27.805661306814184
+          ]
+        },
+        "candidate_runs_completed": 2,
+        "candidate_numerical_exact_fraction": 1.0,
+        "candidate_conservation_residual": 0.0,
+        "state_support_verdict": "EvidenceInsufficient_StateSupport",
+        "five_layer_conjunctive_verdict": "Evidence Insufficient",
+        "blocking_layers": [
+          1,
+          2,
+          5
+        ],
+        "targeted_runs_remaining": 3,
+        "independent_seed_repeats_executed": 0,
+        "validation_window_rows_materialised": 0,
+        "holdout_reads": 0
+      },
+      "current_conclusion": "Approved-D1 local P2 and exposure are now calculated for both real calibration windows and reproduce every sealed global denominator; the conditional candidate reproduced the observed internal cross-section flow on the free-flow branch only, so layer 5 state support failed and the five-layer conjunction is Evidence Insufficient. No third construction run, no independent-seed repeat and no third-window access. Stage 0.5 remains pending; one consolidated decision package R1-R5 asks for delta, h, the target-condition/boundary-supply design, the finite-time evaluation window and the validation protocol.",
+      "gate_status": "pending_simulation_sample",
+      "paper_locations": [
+        "docs/STAGE_0_5_FINAL_CLOSURE_2026-10-20.md"
       ],
       "scientific_claim_eligible": false
     }
