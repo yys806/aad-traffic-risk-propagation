@@ -384,17 +384,15 @@ h_{v,t}/\Delta \mathbbm{v}_{v,t},&\Delta \mathbbm{v}_{v,t}>0,\\
 \end{cases}
 \end{equation*}
 
-令 $\theta^{\mathsf{TTC}}>0$ 为校准后冻结的风险阈值，令 $[y]_+=\max(y,0)$。单个时间步的归一化风险暴露为
+令 $\tau^{\mathsf{TTC}}>0$ 为校准后冻结的 TTC 风险时间尺度（正式值 $\tau^{\mathsf{TTC}}=15.364279197080283$ s，取四个批准 NGSIM 来源可靠闭合 TTC 的来源内时间加权中位数的排序中间两源平均），令 $[y]_+=\max(y,0)$。单个时间步的归一化风险暴露取指数映射，且不以事件阈值截断：
 \begin{equation*}
-\rho_{v,t}^{\mathsf{TTC}}=
-\begin{cases}
-1,&\text{发生碰撞或 }\operatorname{TTC}_{v,t}=0,\\
-1-\operatorname{TTC}_{v,t}/\theta^{\mathsf{TTC}},
-&0<\operatorname{TTC}_{v,t}<\theta^{\mathsf{TTC}},\\
-0,&\operatorname{TTC}_{v,t}\geq\theta^{\mathsf{TTC}}.
-\end{cases}
+\rho_{v,t}^{\mathsf{TTC}}
+=\exp\!\left(-\operatorname{TTC}_{v,t}\big/\tau^{\mathsf{TTC}}\right)
+\quad\text{仅在可作用的有效闭合观测上计算。}
 \end{equation*}
-在采用 TTC 主终点的运行中，$R_{v,\omega}(\hat{\mathsf{scr}},\hat{\mathsf{opn}})$ 就是对应处理格下的 $I_{v,\omega}^{\mathsf{TTC}}$；目标区域总体风险 $R_{\mathcal R^{\mathsf T},\omega}(\hat{\mathsf{scr}},\hat{\mathsf{opn}})$ 为目标车辆集合内单车风险暴露之和。其他风险类型只在预先指定的指标替换后同步替换 $R$。若目标车辆 $v$ 的结果窗口内 $\sum_t m_{v,t}^{\mathsf{TTC}}\Delta t>0$，则
+
+因为 $\operatorname{TTC}_{v,t}\to 0$ 时 $\rho_{v,t}^{\mathsf{TTC}}\to 1$，碰撞与近碰撞被连续覆盖，不需要单独的碰撞分支；该映射不假设一个可截断的风险阈值。早期的阈值线性映射（$1-\operatorname{TTC}_{v,t}/\theta^{\mathsf{TTC}}$，仅当 $0<\operatorname{TTC}_{v,t}<\theta^{\mathsf{TTC}}$）属于正式记录确认之前的历史基线，仅作为明确标记的历史对照保留，不再作为主定义；未知贡献不补零，而是进入区间算术的 $[0,1]$ 上下界。
+在采用 TTC 主终点的运行中，$R_{v,\omega}(\hat{\mathsf{scr}},\hat{\mathsf{opn}})$ 就是对应处理格下的 $I_{v,\omega}^{\mathsf{TTC}}$；目标区域总体风险 $R_{\mathcal R^{\mathsf T},\omega}(\hat{\mathsf{scr}},\hat{\mathsf{opn}})$ 为目标车辆集合内的车辆等权平均，而不是求和，以免区域风险随目标车辆数变化；评价窗口 $\mathcal W_\omega$ 与目标车辆资格在运行前冻结，且横跨缺帧不插值。
 \begin{equation*}
 \begin{aligned}
 I_{v,\omega}^{\mathsf{TTC}}(\pi)
@@ -402,7 +400,7 @@ I_{v,\omega}^{\mathsf{TTC}}(\pi)
 \rho_{v,t}^{\mathsf{TTC}}\Delta t}
 {\sum_{t\in\mathcal W_\omega}m_{v,t}^{\mathsf{TTC}}\Delta t},\\
 J_{\omega}^{\mathsf{risk}}(\pi)
-&:=\sum_{v\in\mathcal V^{\mathsf T}_{\omega}}I_{v,\omega}^{\mathsf{TTC}}(\pi).
+&:=\frac{1}{\left|\mathcal V^{\mathsf T}_{\omega}\right|}\sum_{v\in\mathcal V^{\mathsf T}_{\omega}}I_{v,\omega}^{\mathsf{TTC}}(\pi).
 \end{aligned}
 \end{equation*}
 无有效观测的运行记为不确定，不赋予零风险。碰撞、越界和不可恢复的安全事件同时作为硬安全结果记录，不因风险暴露的平均值下降而被抵消。其他风险类型使用相同的“有效观测掩码—单位内归一化—预先冻结聚合”结构，并在跨类型比较前只比较标准化效应。

@@ -289,3 +289,21 @@ B1.2前置接入工程阻断，主矩阵未冻结/未运行；报告`docs/STAGE_
 第三窗口 0 行、holdout 0 次。Gate 保持 `pending_simulation_sample`；`scientific_claim_eligible=false`。
 
 报告 `docs/STAGE_0_5_METHOD_EXPANSION_SUMMARY.md`、`docs/STAGE_0_5_METHOD_EXPANSION_RESULTS.md`、`docs/STAGE_0_5_TRAJECTORY_COVERAGE_AND_IDENTIFIABILITY.md`、`docs/STAGE_0_5_INITIALIZATION_FIDELITY.md`；文献 `doc/literature-notes/STAGE_0_5_METHOD_EVIDENCE_MAP.md`、`STAGE_0_5_ZOTERO_METHOD_EXPANSION_LOG.md`；计划 `docs/plans/2026-10-20-method-expansion-baseline.md`；证据 `evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/`。
+
+## RES-STAGE-0.5-STATE-SUPPORT-V1
+
+条件性交通状态验证（AAD-0.5-CLOSURE，2026-10-21）。**检查点而非通过**：把阻断层中的「状态支持」从 `Evidence Insufficient` 提升为可复现正向证据，并定位唯一剩余缺口到「交互相容」。
+
+- **修正**：真实跟驰**总体**（829,382 条局部观测）的等效时距 `tau_eff = 1.5393 / 1.5687 s`（留出窗口 1.5570），解析车道能力 1,981–2,013 veh/h/lane，与观测**最大 30 s 块流量 1,996.4** 一致；冻结 `tau=1.0`（2,882）比观测上界高 44%。上一轮"抬 tau 必然有害"来自 12 对**分层**样本与相对间距指标，被过度推广；仍成立的是"单一 tau 无法拟合总体两侧尾部"（每车 `tau_eff` p05 0.58–0.61、p95 2.97–3.04）。
+- **真实状态域**：30 s×100 m 块云 `k ∈ [14.52, 76.10]`、`v ∈ [2.75, 15.79] m/s`，k 分带 2.5/97.5 速度包络 + 同构造闭合速度包络；跨窗口基线由数据给出（0.833 / 0.636），不使用任意阈值。
+- **网格（30 次）**：`B_frozen` 在全部 5 个声明供给水平都出域；`B_mean` / `B_het` 在 `vlim=10 m/s`（声明能力 7,971 / 8,130 veh/h 对穿越需求 8,506）**同时通过两个校准窗口**，落点 `k=48.4/41.8` 与 `k=43.4/43.4`、`v=8.3/10.0` 与 `9.8/9.7`。
+- **独立 seed（5×4=20 次）**：`B_het` 0750 为 `k=43.98±1.10`、`v=9.70±0.27`、`tau_eff=1.565±0.012`，seed 波动远小于与真实值的差距；工程层 20/20 运行 0 teleport、0 collision。
+- **失败层**：局部 P2 率仅 **0.9–1.5 events/veh-h**，真实 **17.0 / 23.5**（低 12–25 倍）；速度离散 2.33–2.61 对 3.64–3.99 m/s；净拉开份额 0.395–0.432 对 0.530–0.537。低速波在本轮**无判别性证据**（继承的绝对 10 m/s 阈值几乎等于该配置平均速度），已登记为度量局限。
+- **结构变体（4 次，匹配能力 8,130 / 7,933 veh/h）**：4 车道缩减（能力下降约 18%）把离散度 5.09–6.02、净拉开份额 0.563–0.623 与局部 P2 率 **18.2–25.5** 带进真实范围，但平均状态越界（`k=51–55`、低速份额 0.445–0.505 对 0.097/0.253）。→ 供给的**水平**决定平均状态、**形式**决定相对运动与风险事件；两种编码各满足一半。
+- **留出窗口（冻结后 4 次）**：真实留出窗口 `k=47.57`、`v=7.37`、`tau_eff=1.557` **落在校准域内**（域覆盖率 0.851 ≥ 基线 0.636），**状态域可迁移**；但同一 `vlim=10` 供给在其较低需求（6,135 veh/h）下欠拥堵——**具体供给值不可迁移**，因为下游供给在观测段内不可识别。
+- **四项必要条件**：测量可信 Met；状态有支持 Partially Met；交互相容 **Not Met**；独立证据 Met（仅状态层）。合取 **不满足**，Stage 0.5 **未通过**；`protocol_lock_allowed=false`、`stage_1_1_allowed=false`。δ/h 仍未获批，但不影响本判定。
+- 风险测量定义一致性：指数 `rho=exp(-TTC/tau)` 已被正式批准，实现/配置/测试本已一致，论文原为阈值线性 + 求和，**已同步**并新增定义测试。
+
+第三窗口读取 4 次（冻结后，留出验证），locked holdout 0 次。Gate 保持 `pending_simulation_sample`。
+
+报告 `docs/STAGE_0_5_CONDITIONAL_STATE_SUPPORT.md`、`docs/STAGE_0_5_FORMAL_RISK_DEFINITION_CONSISTENCY.md`；计划 `docs/plans/2026-10-21-stage-0-5-state-support.md`；证据 `evidence/results/RES-STAGE-0.5-STATE-SUPPORT-V1/`。

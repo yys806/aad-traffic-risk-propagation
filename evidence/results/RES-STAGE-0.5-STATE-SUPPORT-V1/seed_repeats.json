@@ -1,0 +1,3076 @@
+{
+ "executed": true,
+ "seeds": [
+  20261201,
+  20261202,
+  20261203,
+  20261204,
+  20261205
+ ],
+ "cells": [
+  "B_het|vlim10.00",
+  "B_mean|vlim10.00"
+ ],
+ "results": [
+  {
+   "cell": {
+    "cell_id": "B_mean|us101__0750_0805|vlim10.00",
+    "behaviour": "B_mean",
+    "condition": "us101__0750_0805",
+    "downstream_free_speed_mps": 10.0
+   },
+   "seed": 20261201,
+   "wall_s": 63.409131599999455,
+   "sumo": {
+    "returncode": 0,
+    "wall_s": 7.364263400000709,
+    "teleports": 0,
+    "collisions": 0
+   },
+   "log_tail": "Loading net-file from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_mean_us101__0750_0805_vlim10.00_s20261201\\network/observed_geometry_supply_10p0_l5.net.xml' ... done (2ms).\nLoading route-files incrementally from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_mean_us101__0750_0805_vlim10.00_s20261201\\routes.rou.xml'\nLoading done.\nSimulation version 1.26.0 started with time: 0.00.\nSimulation ended at time: 420.00.\nReason: The final simulation step has been reached.\nPerformance:\n Duration: 7.10s\n Real time factor: 59.1299\n UPS: 181801.492327\nVehicles:\n Inserted: 936 (Loaded: 1150)\n Running: 158\n Waiting: 213\nStatistics (avg of 778):\n RouteLength: 622.52\n Speed: 8.82\n Duration: 74.71\n WaitingTime: 0.15\n TimeLoss: 36.30\n DepartDelay: 24.82\nError: Vehicle 'i0007_i0007' will not be able to depart using the given velocity (slow lane ahead), time=0.00.\n",
+   "edge_lengths": {
+    "main_0": 172.9,
+    "main_1": 234.04,
+    "main_2": 252.23,
+    "offramp": 201.17,
+    "onramp": 180.71
+   },
+   "vtypes": [
+    {
+     "id": "B_mean_c0_passenger",
+     "tau": 1.5661533927145428,
+     "share": 1.0,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 0,
+     "kind": "passenger"
+    }
+   ],
+   "initial_state": {
+    "accepted": 117,
+    "dropped": 3,
+    "clock_s": 120.0,
+    "speed_clamped": 38,
+    "lane_clamped": 0
+   },
+   "analytic_capacity_veh_h": 7971.256030841607,
+   "descriptors": {
+    "status": "Observation",
+    "window_s": [
+     300.0,
+     420.0
+    ],
+    "states": 58130,
+    "local_vehicle_s": 5813.0,
+    "density_veh_km_lane": 48.44166666666667,
+    "speed_mean_mps": 8.258163598830208,
+    "speed_sd_mps": 2.508212514685154,
+    "flow_veh_h_lane_consistency": 1440.1411500000002,
+    "low_speed_share": 0.1614140719077929,
+    "closing_speed_mean_mps": 0.07291863065542749,
+    "closing_speed_negative_share": 0.43234130397385173,
+    "net_gap_mean_m": 15.869141409201317,
+    "net_gap_median_m": 15.510948624166815,
+    "tau_eff_ratio_s": 1.618900043478806,
+    "p2_evaluable_exposure_veh_s": 5813.0,
+    "blocks": [
+     {
+      "block_start_s": 300.0,
+      "speed_mean_mps": 8.530091877218625,
+      "density_veh_km_lane": 47.89,
+      "low_speed_share": 0.13621493700842208,
+      "closing_speed_mean_mps": 0.05457089162664439,
+      "closing_speed_negative_share": 0.4493631238254333
+     },
+     {
+      "block_start_s": 330.0,
+      "speed_mean_mps": 7.8596356357714745,
+      "density_veh_km_lane": 49.12666666666667,
+      "low_speed_share": 0.24542000271407247,
+      "closing_speed_mean_mps": 0.13038879088071653,
+      "closing_speed_negative_share": 0.40018998507260145
+     },
+     {
+      "block_start_s": 360.0,
+      "speed_mean_mps": 8.1304194023851,
+      "density_veh_km_lane": 49.75333333333334,
+      "low_speed_share": 0.14310598954843898,
+      "closing_speed_mean_mps": 0.08348720353745144,
+      "closing_speed_negative_share": 0.4348787350931261
+     },
+     {
+      "block_start_s": 390.0,
+      "speed_mean_mps": 8.532893822256897,
+      "density_veh_km_lane": 46.99666666666667,
+      "low_speed_share": 0.11866089793602383,
+      "closing_speed_mean_mps": 0.020351797999858146,
+      "closing_speed_negative_share": 0.4459181502234201
+     }
+    ]
+   },
+   "initial_window_descriptors": {
+    "status": "Observation",
+    "window_s": [
+     0.0,
+     30.0
+    ],
+    "states": 8816,
+    "local_vehicle_s": 881.6,
+    "density_veh_km_lane": 29.386666666666667,
+    "speed_mean_mps": 14.311338475499092,
+    "speed_sd_mps": 2.6428604324800835,
+    "flow_veh_h_lane_consistency": 1514.02512,
+    "low_speed_share": 0.013838475499092558,
+    "closing_speed_mean_mps": -0.008046733212341204,
+    "closing_speed_negative_share": 0.5091878402903811,
+    "net_gap_mean_m": 30.226530092478534,
+    "net_gap_median_m": 25.09642119295843,
+    "tau_eff_ratio_s": 1.937382037322795,
+    "p2_evaluable_exposure_veh_s": 881.6,
+    "blocks": [
+     {
+      "block_start_s": 0.0,
+      "speed_mean_mps": 14.311338475499092,
+      "density_veh_km_lane": 29.386666666666667,
+      "low_speed_share": 0.013838475499092558,
+      "closing_speed_mean_mps": -0.008046733212341204,
+      "closing_speed_negative_share": 0.5091878402903811
+     }
+    ]
+   },
+   "p2_events_eval_window": 13,
+   "p2_events_eval_window_local": 1,
+   "p2_local_rate_per_vehicle_hour": 0.6193015654567349,
+   "p2_network_rate_per_vehicle_hour": 8.050920350937554,
+   "states": 645656
+  },
+  {
+   "cell": {
+    "cell_id": "B_mean|us101__0750_0805|vlim10.00",
+    "behaviour": "B_mean",
+    "condition": "us101__0750_0805",
+    "downstream_free_speed_mps": 10.0
+   },
+   "seed": 20261202,
+   "wall_s": 54.82819230000132,
+   "sumo": {
+    "returncode": 0,
+    "wall_s": 7.025091900000916,
+    "teleports": 0,
+    "collisions": 0
+   },
+   "log_tail": "Loading net-file from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_mean_us101__0750_0805_vlim10.00_s20261202\\network/observed_geometry_supply_10p0_l5.net.xml' ... done (2ms).\nLoading route-files incrementally from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_mean_us101__0750_0805_vlim10.00_s20261202\\routes.rou.xml'\nLoading done.\nSimulation version 1.26.0 started with time: 0.00.\nSimulation ended at time: 420.00.\nReason: The final simulation step has been reached.\nPerformance:\n Duration: 6.76s\n Real time factor: 62.1026\n UPS: 178327.369511\nVehicles:\n Inserted: 980 (Loaded: 1150)\n Running: 151\n Waiting: 169\nStatistics (avg of 829):\n RouteLength: 624.64\n Speed: 9.69\n Duration: 65.81\n WaitingTime: 0.00\n TimeLoss: 27.33\n DepartDelay: 21.83\nError: Vehicle 'i0007_i0007' will not be able to depart using the given velocity (slow lane ahead), time=0.00.\n",
+   "edge_lengths": {
+    "main_0": 172.9,
+    "main_1": 234.04,
+    "main_2": 252.23,
+    "offramp": 201.17,
+    "onramp": 180.71
+   },
+   "vtypes": [
+    {
+     "id": "B_mean_c0_passenger",
+     "tau": 1.5661533927145428,
+     "share": 1.0,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 0,
+     "kind": "passenger"
+    }
+   ],
+   "initial_state": {
+    "accepted": 117,
+    "dropped": 3,
+    "clock_s": 120.0,
+    "speed_clamped": 38,
+    "lane_clamped": 0
+   },
+   "analytic_capacity_veh_h": 7971.256030841607,
+   "descriptors": {
+    "status": "Observation",
+    "window_s": [
+     300.0,
+     420.0
+    ],
+    "states": 55635,
+    "local_vehicle_s": 5563.5,
+    "density_veh_km_lane": 46.3625,
+    "speed_mean_mps": 8.778937539318774,
+    "speed_sd_mps": 2.5304701585081117,
+    "flow_veh_h_lane_consistency": 1465.2485699999997,
+    "low_speed_share": 0.10937359575806596,
+    "closing_speed_mean_mps": 0.09703657769389773,
+    "closing_speed_negative_share": 0.4448997932955873,
+    "net_gap_mean_m": 16.71867092507262,
+    "net_gap_median_m": 15.619463407964474,
+    "tau_eff_ratio_s": 1.6196345926133513,
+    "p2_evaluable_exposure_veh_s": 5563.400000000001,
+    "blocks": [
+     {
+      "block_start_s": 300.0,
+      "speed_mean_mps": 8.890210045009646,
+      "density_veh_km_lane": 46.656666666666666,
+      "low_speed_share": 0.1013074230192184,
+      "closing_speed_mean_mps": 0.30484175180395806,
+      "closing_speed_negative_share": 0.352289776380653
+     },
+     {
+      "block_start_s": 330.0,
+      "speed_mean_mps": 8.454486478912708,
+      "density_veh_km_lane": 47.580000000000005,
+      "low_speed_share": 0.11559478772593526,
+      "closing_speed_mean_mps": 0.1413710242398767,
+      "closing_speed_negative_share": 0.4695950679557237
+     },
+     {
+      "block_start_s": 360.0,
+      "speed_mean_mps": 8.706435411945318,
+      "density_veh_km_lane": 45.59666666666667,
+      "low_speed_share": 0.1512537466189049,
+      "closing_speed_mean_mps": -0.021048322245778198,
+      "closing_speed_negative_share": 0.48921704802982674
+     },
+     {
+      "block_start_s": 390.0,
+      "speed_mean_mps": 9.076013883814396,
+      "density_veh_km_lane": 45.61666666666667,
+      "low_speed_share": 0.06927292656192911,
+      "closing_speed_mean_mps": -0.043715747168432594,
+      "closing_speed_negative_share": 0.46956521739130436
+     }
+    ]
+   },
+   "initial_window_descriptors": {
+    "status": "Observation",
+    "window_s": [
+     0.0,
+     30.0
+    ],
+    "states": 8678,
+    "local_vehicle_s": 867.8000000000001,
+    "density_veh_km_lane": 28.92666666666667,
+    "speed_mean_mps": 14.665489744180686,
+    "speed_sd_mps": 2.6207858607925925,
+    "flow_veh_h_lane_consistency": 1527.2054400000002,
+    "low_speed_share": 0.014173772758700161,
+    "closing_speed_mean_mps": -0.03514404240608437,
+    "closing_speed_negative_share": 0.509103480064531,
+    "net_gap_mean_m": 30.64395521073304,
+    "net_gap_median_m": 25.625430763971977,
+    "tau_eff_ratio_s": 1.919060031520642,
+    "p2_evaluable_exposure_veh_s": 867.8000000000001,
+    "blocks": [
+     {
+      "block_start_s": 0.0,
+      "speed_mean_mps": 14.665489744180686,
+      "density_veh_km_lane": 28.92666666666667,
+      "low_speed_share": 0.014173772758700161,
+      "closing_speed_mean_mps": -0.03514404240608437,
+      "closing_speed_negative_share": 0.509103480064531
+     }
+    ]
+   },
+   "p2_events_eval_window": 3,
+   "p2_events_eval_window_local": 2,
+   "p2_local_rate_per_vehicle_hour": 1.2941726282489123,
+   "p2_network_rate_per_vehicle_hour": 1.9412240496090591,
+   "states": 603004
+  },
+  {
+   "cell": {
+    "cell_id": "B_mean|us101__0750_0805|vlim10.00",
+    "behaviour": "B_mean",
+    "condition": "us101__0750_0805",
+    "downstream_free_speed_mps": 10.0
+   },
+   "seed": 20261203,
+   "wall_s": 55.49531599999864,
+   "sumo": {
+    "returncode": 0,
+    "wall_s": 7.060635400001047,
+    "teleports": 0,
+    "collisions": 0
+   },
+   "log_tail": "Loading net-file from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_mean_us101__0750_0805_vlim10.00_s20261203\\network/observed_geometry_supply_10p0_l5.net.xml' ... done (2ms).\nLoading route-files incrementally from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_mean_us101__0750_0805_vlim10.00_s20261203\\routes.rou.xml'\nLoading done.\nSimulation version 1.26.0 started with time: 0.00.\nSimulation ended at time: 420.00.\nReason: The final simulation step has been reached.\nPerformance:\n Duration: 6.80s\n Real time factor: 61.792\n UPS: 178868.912756\nVehicles:\n Inserted: 973 (Loaded: 1150)\n Running: 155\n Waiting: 176\nStatistics (avg of 818):\n RouteLength: 625.13\n Speed: 9.56\n Duration: 67.07\n WaitingTime: 0.00\n TimeLoss: 28.57\n DepartDelay: 22.44\nError: Vehicle 'i0007_i0007' will not be able to depart using the given velocity (slow lane ahead), time=0.00.\n",
+   "edge_lengths": {
+    "main_0": 172.9,
+    "main_1": 234.04,
+    "main_2": 252.23,
+    "offramp": 201.17,
+    "onramp": 180.71
+   },
+   "vtypes": [
+    {
+     "id": "B_mean_c0_passenger",
+     "tau": 1.5661533927145428,
+     "share": 1.0,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 0,
+     "kind": "passenger"
+    }
+   ],
+   "initial_state": {
+    "accepted": 117,
+    "dropped": 3,
+    "clock_s": 120.0,
+    "speed_clamped": 38,
+    "lane_clamped": 0
+   },
+   "analytic_capacity_veh_h": 7971.256030841607,
+   "descriptors": {
+    "status": "Observation",
+    "window_s": [
+     300.0,
+     420.0
+    ],
+    "states": 54866,
+    "local_vehicle_s": 5486.6,
+    "density_veh_km_lane": 45.72166666666667,
+    "speed_mean_mps": 9.010060511063317,
+    "speed_sd_mps": 2.4711836562800764,
+    "flow_veh_h_lane_consistency": 1483.0379400000002,
+    "low_speed_share": 0.09909597929500966,
+    "closing_speed_mean_mps": 0.11449513359822112,
+    "closing_speed_negative_share": 0.4228483942696752,
+    "net_gap_mean_m": 17.01981608116599,
+    "net_gap_median_m": 16.487581678345578,
+    "tau_eff_ratio_s": 1.6115114946605884,
+    "p2_evaluable_exposure_veh_s": 5486.6,
+    "blocks": [
+     {
+      "block_start_s": 300.0,
+      "speed_mean_mps": 8.949783430232559,
+      "density_veh_km_lane": 45.86666666666667,
+      "low_speed_share": 0.11598837209302326,
+      "closing_speed_mean_mps": 0.2518553779069767,
+      "closing_speed_negative_share": 0.3751453488372093
+     },
+     {
+      "block_start_s": 330.0,
+      "speed_mean_mps": 8.739935185185185,
+      "density_veh_km_lane": 46.8,
+      "low_speed_share": 0.099002849002849,
+      "closing_speed_mean_mps": 0.13481267806267805,
+      "closing_speed_negative_share": 0.4336182336182336
+     },
+     {
+      "block_start_s": 360.0,
+      "speed_mean_mps": 8.809094733787902,
+      "density_veh_km_lane": 45.95333333333334,
+      "low_speed_share": 0.10227767300159582,
+      "closing_speed_mean_mps": -0.04574713477440882,
+      "closing_speed_negative_share": 0.487015813143769
+     },
+     {
+      "block_start_s": 390.0,
+      "speed_mean_mps": 9.566723644578314,
+      "density_veh_km_lane": 44.266666666666666,
+      "low_speed_share": 0.07838855421686747,
+      "closing_speed_mean_mps": 0.11703765060240962,
+      "closing_speed_negative_share": 0.3942771084337349
+     }
+    ]
+   },
+   "initial_window_descriptors": {
+    "status": "Observation",
+    "window_s": [
+     0.0,
+     30.0
+    ],
+    "states": 8803,
+    "local_vehicle_s": 880.3000000000001,
+    "density_veh_km_lane": 29.343333333333337,
+    "speed_mean_mps": 14.392050437350903,
+    "speed_sd_mps": 2.589427359069736,
+    "flow_veh_h_lane_consistency": 1520.3186400000004,
+    "low_speed_share": 0.014654095194819947,
+    "closing_speed_mean_mps": -0.10399863682835397,
+    "closing_speed_negative_share": 0.5511757355447007,
+    "net_gap_mean_m": 30.268488478728973,
+    "net_gap_median_m": 24.79800553751494,
+    "tau_eff_ratio_s": 1.9294324043405886,
+    "p2_evaluable_exposure_veh_s": 880.3000000000001,
+    "blocks": [
+     {
+      "block_start_s": 0.0,
+      "speed_mean_mps": 14.392050437350903,
+      "density_veh_km_lane": 29.343333333333337,
+      "low_speed_share": 0.014654095194819947,
+      "closing_speed_mean_mps": -0.10399863682835397,
+      "closing_speed_negative_share": 0.5511757355447007
+     }
+    ]
+   },
+   "p2_events_eval_window": 2,
+   "p2_events_eval_window_local": 2,
+   "p2_local_rate_per_vehicle_hour": 1.3122881201472678,
+   "p2_network_rate_per_vehicle_hour": 1.3122881201472678,
+   "states": 607874
+  },
+  {
+   "cell": {
+    "cell_id": "B_mean|us101__0750_0805|vlim10.00",
+    "behaviour": "B_mean",
+    "condition": "us101__0750_0805",
+    "downstream_free_speed_mps": 10.0
+   },
+   "seed": 20261204,
+   "wall_s": 55.1323038999999,
+   "sumo": {
+    "returncode": 0,
+    "wall_s": 6.752471199999491,
+    "teleports": 0,
+    "collisions": 0
+   },
+   "log_tail": "Loading net-file from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_mean_us101__0750_0805_vlim10.00_s20261204\\network/observed_geometry_supply_10p0_l5.net.xml' ... done (3ms).\nLoading route-files incrementally from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_mean_us101__0750_0805_vlim10.00_s20261204\\routes.rou.xml'\nLoading done.\nSimulation version 1.26.0 started with time: 0.00.\nSimulation ended at time: 420.00.\nReason: The final simulation step has been reached.\nPerformance:\n Duration: 6.50s\n Real time factor: 64.5856\n UPS: 179944.025834\nVehicles:\n Inserted: 979 (Loaded: 1150)\n Running: 149\n Waiting: 170\nStatistics (avg of 830):\n RouteLength: 626.39\n Speed: 9.96\n Duration: 63.99\n WaitingTime: 0.00\n TimeLoss: 25.46\n DepartDelay: 22.69\nError: Vehicle 'i0007_i0007' will not be able to depart using the given velocity (slow lane ahead), time=0.00.\n",
+   "edge_lengths": {
+    "main_0": 172.9,
+    "main_1": 234.04,
+    "main_2": 252.23,
+    "offramp": 201.17,
+    "onramp": 180.71
+   },
+   "vtypes": [
+    {
+     "id": "B_mean_c0_passenger",
+     "tau": 1.5661533927145428,
+     "share": 1.0,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 0,
+     "kind": "passenger"
+    }
+   ],
+   "initial_state": {
+    "accepted": 117,
+    "dropped": 3,
+    "clock_s": 120.0,
+    "speed_clamped": 38,
+    "lane_clamped": 0
+   },
+   "analytic_capacity_veh_h": 7971.256030841607,
+   "descriptors": {
+    "status": "Observation",
+    "window_s": [
+     300.0,
+     420.0
+    ],
+    "states": 51857,
+    "local_vehicle_s": 5185.700000000001,
+    "density_veh_km_lane": 43.21416666666667,
+    "speed_mean_mps": 9.707684979848429,
+    "speed_sd_mps": 2.8602689684450238,
+    "flow_veh_h_lane_consistency": 1510.2342600000002,
+    "low_speed_share": 0.07136934261526891,
+    "closing_speed_mean_mps": 0.36147501783751473,
+    "closing_speed_negative_share": 0.3655822743313342,
+    "net_gap_mean_m": 17.84930935665323,
+    "net_gap_median_m": 16.776954435139317,
+    "tau_eff_ratio_s": 1.5811503348652014,
+    "p2_evaluable_exposure_veh_s": 5185.5,
+    "blocks": [
+     {
+      "block_start_s": 300.0,
+      "speed_mean_mps": 10.02427608092027,
+      "density_veh_km_lane": 42.016666666666666,
+      "low_speed_share": 0.12130107100357002,
+      "closing_speed_mean_mps": 0.4088298294327647,
+      "closing_speed_negative_share": 0.33772312574375246
+     },
+     {
+      "block_start_s": 330.0,
+      "speed_mean_mps": 9.815399257562593,
+      "density_veh_km_lane": 42.20333333333334,
+      "low_speed_share": 0.04541505410315141,
+      "closing_speed_mean_mps": 0.4301516467893532,
+      "closing_speed_negative_share": 0.3550272490324619
+     },
+     {
+      "block_start_s": 360.0,
+      "speed_mean_mps": 9.751392230480423,
+      "density_veh_km_lane": 43.50333333333334,
+      "low_speed_share": 0.028733430388475978,
+      "closing_speed_mean_mps": 0.3283012795954333,
+      "closing_speed_negative_share": 0.3668684392000613
+     },
+     {
+      "block_start_s": 390.0,
+      "speed_mean_mps": 9.270105612998524,
+      "density_veh_km_lane": 45.13333333333333,
+      "low_speed_share": 0.09025110782865584,
+      "closing_speed_mean_mps": 0.28514771048744464,
+      "closing_speed_negative_share": 0.40014771048744463
+     }
+    ]
+   },
+   "initial_window_descriptors": {
+    "status": "Observation",
+    "window_s": [
+     0.0,
+     30.0
+    ],
+    "states": 8928,
+    "local_vehicle_s": 892.8000000000001,
+    "density_veh_km_lane": 29.76,
+    "speed_mean_mps": 14.251750672043011,
+    "speed_sd_mps": 2.5478880466062876,
+    "flow_veh_h_lane_consistency": 1526.8755600000002,
+    "low_speed_share": 0.014336917562724014,
+    "closing_speed_mean_mps": 0.003244847670250899,
+    "closing_speed_negative_share": 0.4958557347670251,
+    "net_gap_mean_m": 29.903099837436834,
+    "net_gap_median_m": 24.47246118612202,
+    "tau_eff_ratio_s": 1.9227883274152562,
+    "p2_evaluable_exposure_veh_s": 892.8000000000001,
+    "blocks": [
+     {
+      "block_start_s": 0.0,
+      "speed_mean_mps": 14.251750672043011,
+      "density_veh_km_lane": 29.76,
+      "low_speed_share": 0.014336917562724014,
+      "closing_speed_mean_mps": 0.003244847670250899,
+      "closing_speed_negative_share": 0.4958557347670251
+     }
+    ]
+   },
+   "p2_events_eval_window": 1,
+   "p2_events_eval_window_local": 1,
+   "p2_local_rate_per_vehicle_hour": 0.6942435637836274,
+   "p2_network_rate_per_vehicle_hour": 0.6942167884760012,
+   "states": 585075
+  },
+  {
+   "cell": {
+    "cell_id": "B_mean|us101__0750_0805|vlim10.00",
+    "behaviour": "B_mean",
+    "condition": "us101__0750_0805",
+    "downstream_free_speed_mps": 10.0
+   },
+   "seed": 20261205,
+   "wall_s": 53.30629299999964,
+   "sumo": {
+    "returncode": 0,
+    "wall_s": 6.653786199998649,
+    "teleports": 0,
+    "collisions": 0
+   },
+   "log_tail": "Loading net-file from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_mean_us101__0750_0805_vlim10.00_s20261205\\network/observed_geometry_supply_10p0_l5.net.xml' ... done (3ms).\nLoading route-files incrementally from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_mean_us101__0750_0805_vlim10.00_s20261205\\routes.rou.xml'\nLoading done.\nSimulation version 1.26.0 started with time: 0.00.\nSimulation ended at time: 420.00.\nReason: The final simulation step has been reached.\nPerformance:\n Duration: 6.40s\n Real time factor: 65.6147\n UPS: 183676.300578\nVehicles:\n Inserted: 978 (Loaded: 1150)\n Running: 149\n Waiting: 171\nStatistics (avg of 829):\n RouteLength: 625.51\n Speed: 9.87\n Duration: 64.30\n WaitingTime: 0.00\n TimeLoss: 25.78\n DepartDelay: 22.93\nError: Vehicle 'i0007_i0007' will not be able to depart using the given velocity (slow lane ahead), time=0.00.\n",
+   "edge_lengths": {
+    "main_0": 172.9,
+    "main_1": 234.04,
+    "main_2": 252.23,
+    "offramp": 201.17,
+    "onramp": 180.71
+   },
+   "vtypes": [
+    {
+     "id": "B_mean_c0_passenger",
+     "tau": 1.5661533927145428,
+     "share": 1.0,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 0,
+     "kind": "passenger"
+    }
+   ],
+   "initial_state": {
+    "accepted": 117,
+    "dropped": 3,
+    "clock_s": 120.0,
+    "speed_clamped": 38,
+    "lane_clamped": 0
+   },
+   "analytic_capacity_veh_h": 7971.256030841607,
+   "descriptors": {
+    "status": "Observation",
+    "window_s": [
+     300.0,
+     420.0
+    ],
+    "states": 51705,
+    "local_vehicle_s": 5170.5,
+    "density_veh_km_lane": 43.0875,
+    "speed_mean_mps": 9.672819069722463,
+    "speed_sd_mps": 2.3765495954232407,
+    "flow_veh_h_lane_consistency": 1500.39933,
+    "low_speed_share": 0.049492312155497535,
+    "closing_speed_mean_mps": 0.18754801276472294,
+    "closing_speed_negative_share": 0.42026883280146987,
+    "net_gap_mean_m": 18.193274035272292,
+    "net_gap_median_m": 17.211013570329897,
+    "tau_eff_ratio_s": 1.6224095501170754,
+    "p2_evaluable_exposure_veh_s": 5170.400000000001,
+    "blocks": [
+     {
+      "block_start_s": 300.0,
+      "speed_mean_mps": 9.978097273753832,
+      "density_veh_km_lane": 41.326666666666675,
+      "low_speed_share": 0.045491208259396676,
+      "closing_speed_mean_mps": 0.3262098725600903,
+      "closing_speed_negative_share": 0.36344571705113726
+     },
+     {
+      "block_start_s": 330.0,
+      "speed_mean_mps": 9.675118279569894,
+      "density_veh_km_lane": 43.4,
+      "low_speed_share": 0.029953917050691243,
+      "closing_speed_mean_mps": 0.2592672811059908,
+      "closing_speed_negative_share": 0.42672811059907834
+     },
+     {
+      "block_start_s": 360.0,
+      "speed_mean_mps": 9.561471228149149,
+      "density_veh_km_lane": 44.43,
+      "low_speed_share": 0.047565458774101586,
+      "closing_speed_mean_mps": 0.10392902693375347,
+      "closing_speed_negative_share": 0.4400930302348263
+     },
+     {
+      "block_start_s": 390.0,
+      "speed_mean_mps": 9.492959561660749,
+      "density_veh_km_lane": 43.19333333333334,
+      "low_speed_share": 0.07493440345732366,
+      "closing_speed_mean_mps": 0.06882929464423522,
+      "closing_speed_negative_share": 0.4477542830683747
+     }
+    ]
+   },
+   "initial_window_descriptors": {
+    "status": "Observation",
+    "window_s": [
+     0.0,
+     30.0
+    ],
+    "states": 8854,
+    "local_vehicle_s": 885.4000000000001,
+    "density_veh_km_lane": 29.513333333333335,
+    "speed_mean_mps": 14.316154280551164,
+    "speed_sd_mps": 2.6790935124143744,
+    "flow_veh_h_lane_consistency": 1521.0627600000003,
+    "low_speed_share": 0.020329794443189518,
+    "closing_speed_mean_mps": -0.04269821549582112,
+    "closing_speed_negative_share": 0.504856562005873,
+    "net_gap_mean_m": 29.672191853038342,
+    "net_gap_median_m": 25.521437429499258,
+    "tau_eff_ratio_s": 1.8980091524965201,
+    "p2_evaluable_exposure_veh_s": 885.4000000000001,
+    "blocks": [
+     {
+      "block_start_s": 0.0,
+      "speed_mean_mps": 14.316154280551164,
+      "density_veh_km_lane": 29.513333333333335,
+      "low_speed_share": 0.020329794443189518,
+      "closing_speed_mean_mps": -0.04269821549582112,
+      "closing_speed_negative_share": 0.504856562005873
+     }
+    ]
+   },
+   "p2_events_eval_window": 1,
+   "p2_events_eval_window_local": 1,
+   "p2_local_rate_per_vehicle_hour": 0.69627108154108,
+   "p2_network_rate_per_vehicle_hour": 0.6962576153176675,
+   "states": 587857
+  },
+  {
+   "cell": {
+    "cell_id": "B_mean|us101__0805_0820|vlim10.00",
+    "behaviour": "B_mean",
+    "condition": "us101__0805_0820",
+    "downstream_free_speed_mps": 10.0
+   },
+   "seed": 20261201,
+   "wall_s": 53.096137000000454,
+   "sumo": {
+    "returncode": 0,
+    "wall_s": 6.66228190000038,
+    "teleports": 0,
+    "collisions": 0
+   },
+   "log_tail": "Loading net-file from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_mean_us101__0805_0820_vlim10.00_s20261201\\network/observed_geometry_supply_10p0_l5.net.xml' ... done (3ms).\nLoading route-files incrementally from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_mean_us101__0805_0820_vlim10.00_s20261201\\routes.rou.xml'\nLoading done.\nSimulation version 1.26.0 started with time: 0.00.\nSimulation ended at time: 420.00.\nReason: The final simulation step has been reached.\nPerformance:\n Duration: 6.41s\n Real time factor: 65.5738\n UPS: 182419.203747\nVehicles:\n Inserted: 981 (Loaded: 1031)\n Running: 147\n Waiting: 50\nStatistics (avg of 834):\n RouteLength: 615.10\n Speed: 9.81\n Duration: 63.63\n WaitingTime: 0.00\n TimeLoss: 25.71\n DepartDelay: 4.29\n",
+   "edge_lengths": {
+    "main_0": 172.9,
+    "main_1": 234.04,
+    "main_2": 252.23,
+    "offramp": 201.17,
+    "onramp": 180.71
+   },
+   "vtypes": [
+    {
+     "id": "B_mean_c0_passenger",
+     "tau": 1.5661533927145428,
+     "share": 1.0,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 0,
+     "kind": "passenger"
+    }
+   ],
+   "initial_state": {
+    "accepted": 131,
+    "dropped": 0,
+    "clock_s": 180.0,
+    "speed_clamped": 44,
+    "lane_clamped": 0
+   },
+   "analytic_capacity_veh_h": 7971.256030841607,
+   "descriptors": {
+    "status": "Observation",
+    "window_s": [
+     300.0,
+     420.0
+    ],
+    "states": 50213,
+    "local_vehicle_s": 5021.3,
+    "density_veh_km_lane": 41.844166666666666,
+    "speed_mean_mps": 9.958837352876746,
+    "speed_sd_mps": 2.5349368076756953,
+    "flow_veh_h_lane_consistency": 1500.1893,
+    "low_speed_share": 0.042459124131201086,
+    "closing_speed_mean_mps": 0.14643419034911279,
+    "closing_speed_negative_share": 0.41240316252763226,
+    "net_gap_mean_m": 18.931137262877712,
+    "net_gap_median_m": 17.355699948726738,
+    "tau_eff_ratio_s": 1.6499051727289589,
+    "p2_evaluable_exposure_veh_s": 5021.1,
+    "blocks": [
+     {
+      "block_start_s": 300.0,
+      "speed_mean_mps": 10.129052843888665,
+      "density_veh_km_lane": 41.31666666666667,
+      "low_speed_share": 0.04219443323920936,
+      "closing_speed_mean_mps": 0.07856070996369506,
+      "closing_speed_negative_share": 0.4351754739814441
+     },
+     {
+      "block_start_s": 330.0,
+      "speed_mean_mps": 9.939141309542777,
+      "density_veh_km_lane": 41.84666666666667,
+      "low_speed_share": 0.05567946471244225,
+      "closing_speed_mean_mps": 0.20497052732196908,
+      "closing_speed_negative_share": 0.4027401624980086
+     },
+     {
+      "block_start_s": 360.0,
+      "speed_mean_mps": 9.923781184015015,
+      "density_veh_km_lane": 42.623333333333335,
+      "low_speed_share": 0.04113552827090013,
+      "closing_speed_mean_mps": 0.1946406506608274,
+      "closing_speed_negative_share": 0.4017361382654258
+     },
+     {
+      "block_start_s": 390.0,
+      "speed_mean_mps": 9.845485292939008,
+      "density_veh_km_lane": 41.59,
+      "low_speed_share": 0.030776628997355133,
+      "closing_speed_mean_mps": 0.10555983008736075,
+      "closing_speed_negative_share": 0.4104352007694157
+     }
+    ]
+   },
+   "initial_window_descriptors": {
+    "status": "Observation",
+    "window_s": [
+     0.0,
+     30.0
+    ],
+    "states": 8195,
+    "local_vehicle_s": 819.5,
+    "density_veh_km_lane": 27.316666666666666,
+    "speed_mean_mps": 15.578064673581453,
+    "speed_sd_mps": 2.341313051096944,
+    "flow_veh_h_lane_consistency": 1531.9468800000002,
+    "low_speed_share": 0.0,
+    "closing_speed_mean_mps": 0.7221915802318487,
+    "closing_speed_negative_share": 0.2966442953020134,
+    "net_gap_mean_m": 30.711441371940886,
+    "net_gap_median_m": 27.48374643650658,
+    "tau_eff_ratio_s": 1.8109721562386463,
+    "p2_evaluable_exposure_veh_s": 819.5,
+    "blocks": [
+     {
+      "block_start_s": 0.0,
+      "speed_mean_mps": 15.578064673581453,
+      "density_veh_km_lane": 27.316666666666666,
+      "low_speed_share": 0.0,
+      "closing_speed_mean_mps": 0.7221915802318487,
+      "closing_speed_negative_share": 0.2966442953020134
+     }
+    ]
+   },
+   "p2_events_eval_window": 1,
+   "p2_events_eval_window_local": 0,
+   "p2_local_rate_per_vehicle_hour": 0.0,
+   "p2_network_rate_per_vehicle_hour": 0.7169458108457969,
+   "states": 584254
+  },
+  {
+   "cell": {
+    "cell_id": "B_mean|us101__0805_0820|vlim10.00",
+    "behaviour": "B_mean",
+    "condition": "us101__0805_0820",
+    "downstream_free_speed_mps": 10.0
+   },
+   "seed": 20261202,
+   "wall_s": 53.47003609999956,
+   "sumo": {
+    "returncode": 0,
+    "wall_s": 6.4300141999992775,
+    "teleports": 0,
+    "collisions": 0
+   },
+   "log_tail": "Loading net-file from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_mean_us101__0805_0820_vlim10.00_s20261202\\network/observed_geometry_supply_10p0_l5.net.xml' ... done (2ms).\nLoading route-files incrementally from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_mean_us101__0805_0820_vlim10.00_s20261202\\routes.rou.xml'\nLoading done.\nSimulation version 1.26.0 started with time: 0.00.\nSimulation ended at time: 420.00.\nReason: The final simulation step has been reached.\nPerformance:\n Duration: 6.19s\n Real time factor: 67.8843\n UPS: 188974.785841\nVehicles:\n Inserted: 983 (Loaded: 1031)\n Running: 146\n Waiting: 48\nStatistics (avg of 837):\n RouteLength: 615.32\n Speed: 9.87\n Duration: 63.34\n WaitingTime: 0.00\n TimeLoss: 25.43\n DepartDelay: 3.78\n",
+   "edge_lengths": {
+    "main_0": 172.9,
+    "main_1": 234.04,
+    "main_2": 252.23,
+    "offramp": 201.17,
+    "onramp": 180.71
+   },
+   "vtypes": [
+    {
+     "id": "B_mean_c0_passenger",
+     "tau": 1.5661533927145428,
+     "share": 1.0,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 0,
+     "kind": "passenger"
+    }
+   ],
+   "initial_state": {
+    "accepted": 131,
+    "dropped": 0,
+    "clock_s": 180.0,
+    "speed_clamped": 44,
+    "lane_clamped": 0
+   },
+   "analytic_capacity_veh_h": 7971.256030841607,
+   "descriptors": {
+    "status": "Observation",
+    "window_s": [
+     300.0,
+     420.0
+    ],
+    "states": 50994,
+    "local_vehicle_s": 5099.400000000001,
+    "density_veh_km_lane": 42.495000000000005,
+    "speed_mean_mps": 9.782344393458054,
+    "speed_sd_mps": 2.5609880991679397,
+    "flow_veh_h_lane_consistency": 1496.5226100000002,
+    "low_speed_share": 0.04839785072753657,
+    "closing_speed_mean_mps": 0.19790896968270777,
+    "closing_speed_negative_share": 0.4113621210338471,
+    "net_gap_mean_m": 18.493959853462417,
+    "net_gap_median_m": 17.003026901384374,
+    "tau_eff_ratio_s": 1.6349822915822083,
+    "p2_evaluable_exposure_veh_s": 5099.0,
+    "blocks": [
+     {
+      "block_start_s": 300.0,
+      "speed_mean_mps": 9.88438510808647,
+      "density_veh_km_lane": 41.63333333333333,
+      "low_speed_share": 0.014651721377101681,
+      "closing_speed_mean_mps": 0.08443955164131306,
+      "closing_speed_negative_share": 0.455244195356285
+     },
+     {
+      "block_start_s": 330.0,
+      "speed_mean_mps": 9.804665372670808,
+      "density_veh_km_lane": 42.93333333333333,
+      "low_speed_share": 0.05908385093167702,
+      "closing_speed_mean_mps": 0.14717546583850932,
+      "closing_speed_negative_share": 0.4173136645962733
+     },
+     {
+      "block_start_s": 360.0,
+      "speed_mean_mps": 9.777510408635312,
+      "density_veh_km_lane": 43.233333333333334,
+      "low_speed_share": 0.04942174248265228,
+      "closing_speed_mean_mps": 0.23714417887432535,
+      "closing_speed_negative_share": 0.3915188897455667
+     },
+     {
+      "block_start_s": 390.0,
+      "speed_mean_mps": 9.663861229650703,
+      "density_veh_km_lane": 42.18,
+      "low_speed_share": 0.06978030662241189,
+      "closing_speed_mean_mps": 0.32133238501659556,
+      "closing_speed_negative_share": 0.3823296981191718
+     }
+    ]
+   },
+   "initial_window_descriptors": {
+    "status": "Observation",
+    "window_s": [
+     0.0,
+     30.0
+    ],
+    "states": 8403,
+    "local_vehicle_s": 840.3000000000001,
+    "density_veh_km_lane": 28.01,
+    "speed_mean_mps": 15.187392597881711,
+    "speed_sd_mps": 2.4590547804417597,
+    "flow_veh_h_lane_consistency": 1531.4359200000004,
+    "low_speed_share": 0.0,
+    "closing_speed_mean_mps": 0.7109591812447935,
+    "closing_speed_negative_share": 0.30988932524098534,
+    "net_gap_mean_m": 29.961147774125163,
+    "net_gap_median_m": 26.579456571526237,
+    "tau_eff_ratio_s": 1.8081542040307401,
+    "p2_evaluable_exposure_veh_s": 840.3000000000001,
+    "blocks": [
+     {
+      "block_start_s": 0.0,
+      "speed_mean_mps": 15.187392597881711,
+      "density_veh_km_lane": 28.01,
+      "low_speed_share": 0.0,
+      "closing_speed_mean_mps": 0.7109591812447935,
+      "closing_speed_negative_share": 0.30988932524098534
+     }
+    ]
+   },
+   "p2_events_eval_window": 1,
+   "p2_events_eval_window_local": 1,
+   "p2_local_rate_per_vehicle_hour": 0.7060207883898804,
+   "p2_network_rate_per_vehicle_hour": 0.7059654076950229,
+   "states": 584653
+  },
+  {
+   "cell": {
+    "cell_id": "B_mean|us101__0805_0820|vlim10.00",
+    "behaviour": "B_mean",
+    "condition": "us101__0805_0820",
+    "downstream_free_speed_mps": 10.0
+   },
+   "seed": 20261203,
+   "wall_s": 53.74110419999852,
+   "sumo": {
+    "returncode": 0,
+    "wall_s": 6.499889499998972,
+    "teleports": 0,
+    "collisions": 0
+   },
+   "log_tail": "Loading net-file from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_mean_us101__0805_0820_vlim10.00_s20261203\\network/observed_geometry_supply_10p0_l5.net.xml' ... done (2ms).\nLoading route-files incrementally from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_mean_us101__0805_0820_vlim10.00_s20261203\\routes.rou.xml'\nLoading done.\nSimulation version 1.26.0 started with time: 0.00.\nSimulation ended at time: 420.00.\nReason: The final simulation step has been reached.\nPerformance:\n Duration: 6.26s\n Real time factor: 67.1141\n UPS: 187334.451902\nVehicles:\n Inserted: 985 (Loaded: 1031)\n Running: 150\n Waiting: 46\nStatistics (avg of 835):\n RouteLength: 615.60\n Speed: 9.80\n Duration: 63.61\n WaitingTime: 0.00\n TimeLoss: 25.67\n DepartDelay: 3.97\n",
+   "edge_lengths": {
+    "main_0": 172.9,
+    "main_1": 234.04,
+    "main_2": 252.23,
+    "offramp": 201.17,
+    "onramp": 180.71
+   },
+   "vtypes": [
+    {
+     "id": "B_mean_c0_passenger",
+     "tau": 1.5661533927145428,
+     "share": 1.0,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 0,
+     "kind": "passenger"
+    }
+   ],
+   "initial_state": {
+    "accepted": 131,
+    "dropped": 0,
+    "clock_s": 180.0,
+    "speed_clamped": 44,
+    "lane_clamped": 0
+   },
+   "analytic_capacity_veh_h": 7971.256030841607,
+   "descriptors": {
+    "status": "Observation",
+    "window_s": [
+     300.0,
+     420.0
+    ],
+    "states": 50152,
+    "local_vehicle_s": 5015.200000000001,
+    "density_veh_km_lane": 41.79333333333334,
+    "speed_mean_mps": 10.0316402137502,
+    "speed_sd_mps": 2.609333351546152,
+    "flow_veh_h_lane_consistency": 1509.3204600000001,
+    "low_speed_share": 0.03983888977508374,
+    "closing_speed_mean_mps": 0.09129267028234168,
+    "closing_speed_negative_share": 0.4252671877492423,
+    "net_gap_mean_m": 19.14286686432803,
+    "net_gap_median_m": 17.13867038113142,
+    "tau_eff_ratio_s": 1.6590374564586094,
+    "p2_evaluable_exposure_veh_s": 5015.200000000001,
+    "blocks": [
+     {
+      "block_start_s": 300.0,
+      "speed_mean_mps": 10.313813034009048,
+      "density_veh_km_lane": 39.79333333333333,
+      "low_speed_share": 0.028145417992963644,
+      "closing_speed_mean_mps": 0.1173940358519015,
+      "closing_speed_negative_share": 0.37610990115597254
+     },
+     {
+      "block_start_s": 330.0,
+      "speed_mean_mps": 10.101313834363024,
+      "density_veh_km_lane": 42.623333333333335,
+      "low_speed_share": 0.02854461562524439,
+      "closing_speed_mean_mps": 0.07162899820129821,
+      "closing_speed_negative_share": 0.4504574958942676
+     },
+     {
+      "block_start_s": 360.0,
+      "speed_mean_mps": 9.951611620795108,
+      "density_veh_km_lane": 43.6,
+      "low_speed_share": 0.04426605504587156,
+      "closing_speed_mean_mps": 0.10561162079510704,
+      "closing_speed_negative_share": 0.4160550458715596
+     },
+     {
+      "block_start_s": 390.0,
+      "speed_mean_mps": 9.77143759617721,
+      "density_veh_km_lane": 41.156666666666666,
+      "low_speed_share": 0.058151777759779706,
+      "closing_speed_mean_mps": 0.07125131610917632,
+      "closing_speed_negative_share": 0.4564671580140925
+     }
+    ]
+   },
+   "initial_window_descriptors": {
+    "status": "Observation",
+    "window_s": [
+     0.0,
+     30.0
+    ],
+    "states": 8111,
+    "local_vehicle_s": 811.1,
+    "density_veh_km_lane": 27.03666666666667,
+    "speed_mean_mps": 15.662992232770312,
+    "speed_sd_mps": 2.311166008838011,
+    "flow_veh_h_lane_consistency": 1524.5103600000002,
+    "low_speed_share": 0.0,
+    "closing_speed_mean_mps": 0.7631204537048453,
+    "closing_speed_negative_share": 0.28652447293798544,
+    "net_gap_mean_m": 31.03637763236899,
+    "net_gap_median_m": 27.266716868911317,
+    "tau_eff_ratio_s": 1.8218982176767486,
+    "p2_evaluable_exposure_veh_s": 811.1,
+    "blocks": [
+     {
+      "block_start_s": 0.0,
+      "speed_mean_mps": 15.662992232770312,
+      "density_veh_km_lane": 27.03666666666667,
+      "low_speed_share": 0.0,
+      "closing_speed_mean_mps": 0.7631204537048453,
+      "closing_speed_negative_share": 0.28652447293798544
+     }
+    ]
+   },
+   "p2_events_eval_window": 2,
+   "p2_events_eval_window_local": 2,
+   "p2_local_rate_per_vehicle_hour": 1.435635667570585,
+   "p2_network_rate_per_vehicle_hour": 1.435635667570585,
+   "states": 586210
+  },
+  {
+   "cell": {
+    "cell_id": "B_mean|us101__0805_0820|vlim10.00",
+    "behaviour": "B_mean",
+    "condition": "us101__0805_0820",
+    "downstream_free_speed_mps": 10.0
+   },
+   "seed": 20261204,
+   "wall_s": 53.43420639999931,
+   "sumo": {
+    "returncode": 0,
+    "wall_s": 6.369335900000806,
+    "teleports": 0,
+    "collisions": 0
+   },
+   "log_tail": "Loading net-file from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_mean_us101__0805_0820_vlim10.00_s20261204\\network/observed_geometry_supply_10p0_l5.net.xml' ... done (2ms).\nLoading route-files incrementally from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_mean_us101__0805_0820_vlim10.00_s20261204\\routes.rou.xml'\nLoading done.\nSimulation version 1.26.0 started with time: 0.00.\nSimulation ended at time: 420.00.\nReason: The final simulation step has been reached.\nPerformance:\n Duration: 6.12s\n Real time factor: 68.605\n UPS: 189521.398236\nVehicles:\n Inserted: 985 (Loaded: 1031)\n Running: 142\n Waiting: 46\nStatistics (avg of 843):\n RouteLength: 615.11\n Speed: 9.90\n Duration: 62.92\n WaitingTime: 0.00\n TimeLoss: 25.01\n DepartDelay: 4.55\n",
+   "edge_lengths": {
+    "main_0": 172.9,
+    "main_1": 234.04,
+    "main_2": 252.23,
+    "offramp": 201.17,
+    "onramp": 180.71
+   },
+   "vtypes": [
+    {
+     "id": "B_mean_c0_passenger",
+     "tau": 1.5661533927145428,
+     "share": 1.0,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 0,
+     "kind": "passenger"
+    }
+   ],
+   "initial_state": {
+    "accepted": 131,
+    "dropped": 0,
+    "clock_s": 180.0,
+    "speed_clamped": 44,
+    "lane_clamped": 0
+   },
+   "analytic_capacity_veh_h": 7971.256030841607,
+   "descriptors": {
+    "status": "Observation",
+    "window_s": [
+     300.0,
+     420.0
+    ],
+    "states": 47198,
+    "local_vehicle_s": 4719.8,
+    "density_veh_km_lane": 39.33166666666667,
+    "speed_mean_mps": 10.544307385906182,
+    "speed_sd_mps": 3.0131277639928107,
+    "flow_veh_h_lane_consistency": 1493.0106600000001,
+    "low_speed_share": 0.04930293656510869,
+    "closing_speed_mean_mps": 0.46465994321793297,
+    "closing_speed_negative_share": 0.34656129497012583,
+    "net_gap_mean_m": 19.81022197885483,
+    "net_gap_median_m": 17.889230969065125,
+    "tau_eff_ratio_s": 1.6416651511878493,
+    "p2_evaluable_exposure_veh_s": 4719.7,
+    "blocks": [
+     {
+      "block_start_s": 300.0,
+      "speed_mean_mps": 10.674432135380322,
+      "density_veh_km_lane": 38.21333333333334,
+      "low_speed_share": 0.058007676203768316,
+      "closing_speed_mean_mps": 0.4342018492672714,
+      "closing_speed_negative_share": 0.35380321004884857
+     },
+     {
+      "block_start_s": 330.0,
+      "speed_mean_mps": 10.68821806278328,
+      "density_veh_km_lane": 39.71333333333334,
+      "low_speed_share": 0.003861003861003861,
+      "closing_speed_mean_mps": 0.4700663085445694,
+      "closing_speed_negative_share": 0.34975658888702366
+     },
+     {
+      "block_start_s": 360.0,
+      "speed_mean_mps": 10.356535232136977,
+      "density_veh_km_lane": 40.49333333333333,
+      "low_speed_share": 0.05498847546921304,
+      "closing_speed_mean_mps": 0.44703325650312803,
+      "closing_speed_negative_share": 0.3479585116891669
+     },
+     {
+      "block_start_s": 390.0,
+      "speed_mean_mps": 10.465036840301577,
+      "density_veh_km_lane": 38.906666666666666,
+      "low_speed_share": 0.08122001370801919,
+      "closing_speed_mean_mps": 0.5074023303632624,
+      "closing_speed_negative_share": 0.33473269362577107
+     }
+    ]
+   },
+   "initial_window_descriptors": {
+    "status": "Observation",
+    "window_s": [
+     0.0,
+     30.0
+    ],
+    "states": 8108,
+    "local_vehicle_s": 810.8000000000001,
+    "density_veh_km_lane": 27.026666666666667,
+    "speed_mean_mps": 15.404953132708437,
+    "speed_sd_mps": 2.281643186654394,
+    "flow_veh_h_lane_consistency": 1498.84032,
+    "low_speed_share": 0.0,
+    "closing_speed_mean_mps": 0.6831376418352244,
+    "closing_speed_negative_share": 0.3045140601874692,
+    "net_gap_mean_m": 31.25124752169381,
+    "net_gap_median_m": 26.588499470176032,
+    "tau_eff_ratio_s": 1.8663638424610307,
+    "p2_evaluable_exposure_veh_s": 810.8000000000001,
+    "blocks": [
+     {
+      "block_start_s": 0.0,
+      "speed_mean_mps": 15.404953132708437,
+      "density_veh_km_lane": 27.026666666666667,
+      "low_speed_share": 0.0,
+      "closing_speed_mean_mps": 0.6831376418352244,
+      "closing_speed_negative_share": 0.3045140601874692
+     }
+    ]
+   },
+   "p2_events_eval_window": 2,
+   "p2_events_eval_window_local": 2,
+   "p2_local_rate_per_vehicle_hour": 1.5255206898743565,
+   "p2_network_rate_per_vehicle_hour": 1.5254883681511928,
+   "states": 580158
+  },
+  {
+   "cell": {
+    "cell_id": "B_mean|us101__0805_0820|vlim10.00",
+    "behaviour": "B_mean",
+    "condition": "us101__0805_0820",
+    "downstream_free_speed_mps": 10.0
+   },
+   "seed": 20261205,
+   "wall_s": 60.34097429999929,
+   "sumo": {
+    "returncode": 0,
+    "wall_s": 6.4282359999997425,
+    "teleports": 0,
+    "collisions": 0
+   },
+   "log_tail": "Loading net-file from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_mean_us101__0805_0820_vlim10.00_s20261205\\network/observed_geometry_supply_10p0_l5.net.xml' ... done (3ms).\nLoading route-files incrementally from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_mean_us101__0805_0820_vlim10.00_s20261205\\routes.rou.xml'\nLoading done.\nSimulation version 1.26.0 started with time: 0.00.\nSimulation ended at time: 420.00.\nReason: The final simulation step has been reached.\nPerformance:\n Duration: 6.18s\n Real time factor: 67.9722\n UPS: 187539.407671\nVehicles:\n Inserted: 977 (Loaded: 1031)\n Running: 148\n Waiting: 54\nStatistics (avg of 829):\n RouteLength: 615.15\n Speed: 9.84\n Duration: 63.43\n WaitingTime: 0.00\n TimeLoss: 25.51\n DepartDelay: 4.38\n",
+   "edge_lengths": {
+    "main_0": 172.9,
+    "main_1": 234.04,
+    "main_2": 252.23,
+    "offramp": 201.17,
+    "onramp": 180.71
+   },
+   "vtypes": [
+    {
+     "id": "B_mean_c0_passenger",
+     "tau": 1.5661533927145428,
+     "share": 1.0,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 0,
+     "kind": "passenger"
+    }
+   ],
+   "initial_state": {
+    "accepted": 131,
+    "dropped": 0,
+    "clock_s": 180.0,
+    "speed_clamped": 44,
+    "lane_clamped": 0
+   },
+   "analytic_capacity_veh_h": 7971.256030841607,
+   "descriptors": {
+    "status": "Observation",
+    "window_s": [
+     300.0,
+     420.0
+    ],
+    "states": 49975,
+    "local_vehicle_s": 4997.5,
+    "density_veh_km_lane": 41.645833333333336,
+    "speed_mean_mps": 9.911008904452228,
+    "speed_sd_mps": 2.3522105466428243,
+    "flow_veh_h_lane_consistency": 1485.9080100000003,
+    "low_speed_share": 0.02369184592296148,
+    "closing_speed_mean_mps": 0.0504008004002001,
+    "closing_speed_negative_share": 0.42989494747373685,
+    "net_gap_mean_m": 19.125883866031224,
+    "net_gap_median_m": 17.419000239275363,
+    "tau_eff_ratio_s": 1.6775167923179382,
+    "p2_evaluable_exposure_veh_s": 4996.700000000001,
+    "blocks": [
+     {
+      "block_start_s": 300.0,
+      "speed_mean_mps": 9.810417980434957,
+      "density_veh_km_lane": 41.230000000000004,
+      "low_speed_share": 0.032177217236639986,
+      "closing_speed_mean_mps": -0.013142533753739192,
+      "closing_speed_negative_share": 0.46665049721076884
+     },
+     {
+      "block_start_s": 330.0,
+      "speed_mean_mps": 10.100350946999841,
+      "density_veh_km_lane": 41.88666666666667,
+      "low_speed_share": 0.007241763488779245,
+      "closing_speed_mean_mps": -0.004820149610058893,
+      "closing_speed_negative_share": 0.44079261499283784
+     },
+     {
+      "block_start_s": 360.0,
+      "speed_mean_mps": 9.808435309866919,
+      "density_veh_km_lane": 42.330000000000005,
+      "low_speed_share": 0.022285219308606975,
+      "closing_speed_mean_mps": 0.0893739664540515,
+      "closing_speed_negative_share": 0.39018820379557445
+     },
+     {
+      "block_start_s": 390.0,
+      "speed_mean_mps": 9.92458309699376,
+      "density_veh_km_lane": 41.13666666666667,
+      "low_speed_share": 0.03338465278340491,
+      "closing_speed_mean_mps": 0.13021230046187504,
+      "closing_speed_negative_share": 0.42281824811603597
+     }
+    ]
+   },
+   "initial_window_descriptors": {
+    "status": "Observation",
+    "window_s": [
+     0.0,
+     30.0
+    ],
+    "states": 8230,
+    "local_vehicle_s": 823.0,
+    "density_veh_km_lane": 27.433333333333334,
+    "speed_mean_mps": 15.34153948967193,
+    "speed_sd_mps": 2.4451224246916476,
+    "flow_veh_h_lane_consistency": 1515.13044,
+    "low_speed_share": 0.0,
+    "closing_speed_mean_mps": 0.7010947752126367,
+    "closing_speed_negative_share": 0.2968408262454435,
+    "net_gap_mean_m": 30.51196664853359,
+    "net_gap_median_m": 27.022558605366612,
+    "tau_eff_ratio_s": 1.8258902027004207,
+    "p2_evaluable_exposure_veh_s": 823.0,
+    "blocks": [
+     {
+      "block_start_s": 0.0,
+      "speed_mean_mps": 15.34153948967193,
+      "density_veh_km_lane": 27.433333333333334,
+      "low_speed_share": 0.0,
+      "closing_speed_mean_mps": 0.7010947752126367,
+      "closing_speed_negative_share": 0.2968408262454435
+     }
+    ]
+   },
+   "p2_events_eval_window": 1,
+   "p2_events_eval_window_local": 1,
+   "p2_local_rate_per_vehicle_hour": 0.7204755138391338,
+   "p2_network_rate_per_vehicle_hour": 0.720360180090045,
+   "states": 579469
+  },
+  {
+   "cell": {
+    "cell_id": "B_het|us101__0750_0805|vlim10.00",
+    "behaviour": "B_het",
+    "condition": "us101__0750_0805",
+    "downstream_free_speed_mps": 10.0
+   },
+   "seed": 20261201,
+   "wall_s": 56.5171535999998,
+   "sumo": {
+    "returncode": 0,
+    "wall_s": 7.793893599999137,
+    "teleports": 0,
+    "collisions": 0
+   },
+   "log_tail": "Loading net-file from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_het_us101__0750_0805_vlim10.00_s20261201\\network/observed_geometry_supply_10p0_l5.net.xml' ... done (4ms).\nLoading route-files incrementally from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_het_us101__0750_0805_vlim10.00_s20261201\\routes.rou.xml'\nLoading done.\nSimulation version 1.26.0 started with time: 0.00.\nSimulation ended at time: 420.00.\nReason: The final simulation step has been reached.\nPerformance:\n Duration: 7.46s\n Real time factor: 56.2927\n UPS: 161564.669615\nVehicles:\n Inserted: 1002 (Loaded: 1150)\n Running: 149\n Waiting: 147\nStatistics (avg of 853):\n RouteLength: 625.85\n Speed: 9.87\n Duration: 64.25\n WaitingTime: 0.00\n TimeLoss: 25.73\n DepartDelay: 18.91\nError: Vehicle 'i0007_i0007' will not be able to depart using the given velocity (slow lane ahead), time=0.00.\n",
+   "edge_lengths": {
+    "main_0": 172.9,
+    "main_1": 234.04,
+    "main_2": 252.23,
+    "offramp": 201.17,
+    "onramp": 180.71
+   },
+   "vtypes": [
+    {
+     "id": "B_het_c0_passenger",
+     "tau": 0.7389146576529666,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 0,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c1_passenger",
+     "tau": 1.093342856277335,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 1,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c2_passenger",
+     "tau": 1.3877275660721775,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 2,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c3_passenger",
+     "tau": 1.8288599276236361,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 3,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c4_passenger",
+     "tau": 2.5614676647488244,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 4,
+     "kind": "passenger"
+    }
+   ],
+   "initial_state": {
+    "accepted": 117,
+    "dropped": 3,
+    "clock_s": 120.0,
+    "speed_clamped": 38,
+    "lane_clamped": 0
+   },
+   "analytic_capacity_veh_h": 12579.718219012293,
+   "descriptors": {
+    "status": "Observation",
+    "window_s": [
+     300.0,
+     420.0
+    ],
+    "states": 52117,
+    "local_vehicle_s": 5211.700000000001,
+    "density_veh_km_lane": 43.43083333333334,
+    "speed_mean_mps": 9.837231037857128,
+    "speed_sd_mps": 2.3021479186524743,
+    "flow_veh_h_lane_consistency": 1538.0609100000001,
+    "low_speed_share": 0.04050501755665138,
+    "closing_speed_mean_mps": 0.11258763934992422,
+    "closing_speed_negative_share": 0.4043594220695742,
+    "net_gap_mean_m": 18.074297424287725,
+    "net_gap_median_m": 16.216294718851486,
+    "tau_eff_ratio_s": 1.583199313338514,
+    "p2_evaluable_exposure_veh_s": 5209.400000000001,
+    "blocks": [
+     {
+      "block_start_s": 300.0,
+      "speed_mean_mps": 9.878452197971104,
+      "density_veh_km_lane": 43.373333333333335,
+      "low_speed_share": 0.06486320319704887,
+      "closing_speed_mean_mps": 0.1729188441438672,
+      "closing_speed_negative_share": 0.3721948970181371
+     },
+     {
+      "block_start_s": 330.0,
+      "speed_mean_mps": 9.60635302250557,
+      "density_veh_km_lane": 43.39666666666667,
+      "low_speed_share": 0.025962055457408404,
+      "closing_speed_mean_mps": 0.08963822106152544,
+      "closing_speed_negative_share": 0.4349028343190721
+     },
+     {
+      "block_start_s": 360.0,
+      "speed_mean_mps": 9.870248345659789,
+      "density_veh_km_lane": 42.81666666666667,
+      "low_speed_share": 0.04040482678084858,
+      "closing_speed_mean_mps": 0.026066952121448033,
+      "closing_speed_negative_share": 0.40007785130400936
+     },
+     {
+      "block_start_s": 390.0,
+      "speed_mean_mps": 9.9917000226569,
+      "density_veh_km_lane": 44.13666666666667,
+      "low_speed_share": 0.030964428668529567,
+      "closing_speed_mean_mps": 0.15979759836870328,
+      "closing_speed_negative_share": 0.4100898723661355
+     }
+    ]
+   },
+   "initial_window_descriptors": {
+    "status": "Observation",
+    "window_s": [
+     0.0,
+     30.0
+    ],
+    "states": 8916,
+    "local_vehicle_s": 891.6,
+    "density_veh_km_lane": 29.720000000000002,
+    "speed_mean_mps": 15.099491924629879,
+    "speed_sd_mps": 2.712339216754337,
+    "flow_veh_h_lane_consistency": 1615.52484,
+    "low_speed_share": 0.009533423059668013,
+    "closing_speed_mean_mps": -0.029263122476446822,
+    "closing_speed_negative_share": 0.5188425302826379,
+    "net_gap_mean_m": 29.106360785979547,
+    "net_gap_median_m": 25.440051341651014,
+    "tau_eff_ratio_s": 1.7620699371069548,
+    "p2_evaluable_exposure_veh_s": 891.6,
+    "blocks": [
+     {
+      "block_start_s": 0.0,
+      "speed_mean_mps": 15.099491924629879,
+      "density_veh_km_lane": 29.720000000000002,
+      "low_speed_share": 0.009533423059668013,
+      "closing_speed_mean_mps": -0.029263122476446822,
+      "closing_speed_negative_share": 0.5188425302826379
+     }
+    ]
+   },
+   "p2_events_eval_window": 2,
+   "p2_events_eval_window_local": 2,
+   "p2_local_rate_per_vehicle_hour": 1.382116942450186,
+   "p2_network_rate_per_vehicle_hour": 1.3815069938791564,
+   "states": 602723
+  },
+  {
+   "cell": {
+    "cell_id": "B_het|us101__0750_0805|vlim10.00",
+    "behaviour": "B_het",
+    "condition": "us101__0750_0805",
+    "downstream_free_speed_mps": 10.0
+   },
+   "seed": 20261202,
+   "wall_s": 56.811628100000235,
+   "sumo": {
+    "returncode": 0,
+    "wall_s": 6.691995499999393,
+    "teleports": 0,
+    "collisions": 0
+   },
+   "log_tail": "Loading net-file from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_het_us101__0750_0805_vlim10.00_s20261202\\network/observed_geometry_supply_10p0_l5.net.xml' ... done (3ms).\nLoading route-files incrementally from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_het_us101__0750_0805_vlim10.00_s20261202\\routes.rou.xml'\nLoading done.\nSimulation version 1.26.0 started with time: 0.00.\nSimulation ended at time: 420.00.\nReason: The final simulation step has been reached.\nPerformance:\n Duration: 6.45s\n Real time factor: 65.1365\n UPS: 188400.744417\nVehicles:\n Inserted: 997 (Loaded: 1150)\n Running: 148\n Waiting: 152\nStatistics (avg of 849):\n RouteLength: 626.91\n Speed: 9.78\n Duration: 64.97\n WaitingTime: 0.00\n TimeLoss: 26.41\n DepartDelay: 17.64\nError: Vehicle 'i0007_i0007' will not be able to depart using the given velocity (slow lane ahead), time=0.00.\n",
+   "edge_lengths": {
+    "main_0": 172.9,
+    "main_1": 234.04,
+    "main_2": 252.23,
+    "offramp": 201.17,
+    "onramp": 180.71
+   },
+   "vtypes": [
+    {
+     "id": "B_het_c0_passenger",
+     "tau": 0.7389146576529666,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 0,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c1_passenger",
+     "tau": 1.093342856277335,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 1,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c2_passenger",
+     "tau": 1.3877275660721775,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 2,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c3_passenger",
+     "tau": 1.8288599276236361,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 3,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c4_passenger",
+     "tau": 2.5614676647488244,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 4,
+     "kind": "passenger"
+    }
+   ],
+   "initial_state": {
+    "accepted": 117,
+    "dropped": 3,
+    "clock_s": 120.0,
+    "speed_clamped": 38,
+    "lane_clamped": 0
+   },
+   "analytic_capacity_veh_h": 12579.718219012293,
+   "descriptors": {
+    "status": "Observation",
+    "window_s": [
+     300.0,
+     420.0
+    ],
+    "states": 54167,
+    "local_vehicle_s": 5416.700000000001,
+    "density_veh_km_lane": 45.139166666666675,
+    "speed_mean_mps": 9.435550611996234,
+    "speed_sd_mps": 2.2535663004786715,
+    "flow_veh_h_lane_consistency": 1533.2864100000004,
+    "low_speed_share": 0.048793545885871474,
+    "closing_speed_mean_mps": 0.0732301955064892,
+    "closing_speed_negative_share": 0.42590507135340705,
+    "net_gap_mean_m": 17.203292703536864,
+    "net_gap_median_m": 15.55616311741585,
+    "tau_eff_ratio_s": 1.5582866658404964,
+    "p2_evaluable_exposure_veh_s": 5416.5,
+    "blocks": [
+     {
+      "block_start_s": 300.0,
+      "speed_mean_mps": 9.215732913024787,
+      "density_veh_km_lane": 46.52666666666667,
+      "low_speed_share": 0.03904570855423413,
+      "closing_speed_mean_mps": -0.034944118068491195,
+      "closing_speed_negative_share": 0.4679037111334002
+     },
+     {
+      "block_start_s": 330.0,
+      "speed_mean_mps": 9.151327375283861,
+      "density_veh_km_lane": 45.50333333333334,
+      "low_speed_share": 0.057138671159622005,
+      "closing_speed_mean_mps": 0.12497179693795327,
+      "closing_speed_negative_share": 0.3993114057578199
+     },
+     {
+      "block_start_s": 360.0,
+      "speed_mean_mps": 9.61782569428765,
+      "density_veh_km_lane": 44.29,
+      "low_speed_share": 0.06871378038684428,
+      "closing_speed_mean_mps": 0.06460149017836983,
+      "closing_speed_negative_share": 0.44803191089034394
+     },
+     {
+      "block_start_s": 390.0,
+      "speed_mean_mps": 9.776614422424835,
+      "density_veh_km_lane": 44.23666666666667,
+      "low_speed_share": 0.030517670107753747,
+      "closing_speed_mean_mps": 0.1424203149724964,
+      "closing_speed_negative_share": 0.38693391605756916
+     }
+    ]
+   },
+   "initial_window_descriptors": {
+    "status": "Observation",
+    "window_s": [
+     0.0,
+     30.0
+    ],
+    "states": 8768,
+    "local_vehicle_s": 876.8000000000001,
+    "density_veh_km_lane": 29.22666666666667,
+    "speed_mean_mps": 15.226468978102188,
+    "speed_sd_mps": 2.7329124746731326,
+    "flow_veh_h_lane_consistency": 1602.06816,
+    "low_speed_share": 0.014256386861313869,
+    "closing_speed_mean_mps": 0.0002144160583941471,
+    "closing_speed_negative_share": 0.49760492700729925,
+    "net_gap_mean_m": 30.046795313779917,
+    "net_gap_median_m": 25.14284259729692,
+    "tau_eff_ratio_s": 1.8091387670638608,
+    "p2_evaluable_exposure_veh_s": 876.8000000000001,
+    "blocks": [
+     {
+      "block_start_s": 0.0,
+      "speed_mean_mps": 15.226468978102188,
+      "density_veh_km_lane": 29.22666666666667,
+      "low_speed_share": 0.014256386861313869,
+      "closing_speed_mean_mps": 0.0002144160583941471,
+      "closing_speed_negative_share": 0.49760492700729925
+     }
+    ]
+   },
+   "p2_events_eval_window": 3,
+   "p2_events_eval_window_local": 3,
+   "p2_local_rate_per_vehicle_hour": 1.9939075048463029,
+   "p2_network_rate_per_vehicle_hour": 1.9938338840991745,
+   "states": 607406
+  },
+  {
+   "cell": {
+    "cell_id": "B_het|us101__0750_0805|vlim10.00",
+    "behaviour": "B_het",
+    "condition": "us101__0750_0805",
+    "downstream_free_speed_mps": 10.0
+   },
+   "seed": 20261203,
+   "wall_s": 54.603548899998714,
+   "sumo": {
+    "returncode": 0,
+    "wall_s": 6.700471100000868,
+    "teleports": 0,
+    "collisions": 0
+   },
+   "log_tail": "Loading net-file from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_het_us101__0750_0805_vlim10.00_s20261203\\network/observed_geometry_supply_10p0_l5.net.xml' ... done (3ms).\nLoading route-files incrementally from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_het_us101__0750_0805_vlim10.00_s20261203\\routes.rou.xml'\nLoading done.\nSimulation version 1.26.0 started with time: 0.00.\nSimulation ended at time: 420.00.\nReason: The final simulation step has been reached.\nPerformance:\n Duration: 6.46s\n Real time factor: 65.0356\n UPS: 185075.565190\nVehicles:\n Inserted: 999 (Loaded: 1150)\n Running: 149\n Waiting: 150\nStatistics (avg of 850):\n RouteLength: 626.85\n Speed: 9.90\n Duration: 64.08\n WaitingTime: 0.00\n TimeLoss: 25.54\n DepartDelay: 19.73\nError: Vehicle 'i0007_i0007' will not be able to depart using the given velocity (slow lane ahead), time=0.00.\n",
+   "edge_lengths": {
+    "main_0": 172.9,
+    "main_1": 234.04,
+    "main_2": 252.23,
+    "offramp": 201.17,
+    "onramp": 180.71
+   },
+   "vtypes": [
+    {
+     "id": "B_het_c0_passenger",
+     "tau": 0.7389146576529666,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 0,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c1_passenger",
+     "tau": 1.093342856277335,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 1,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c2_passenger",
+     "tau": 1.3877275660721775,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 2,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c3_passenger",
+     "tau": 1.8288599276236361,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 3,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c4_passenger",
+     "tau": 2.5614676647488244,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 4,
+     "kind": "passenger"
+    }
+   ],
+   "initial_state": {
+    "accepted": 117,
+    "dropped": 3,
+    "clock_s": 120.0,
+    "speed_clamped": 38,
+    "lane_clamped": 0
+   },
+   "analytic_capacity_veh_h": 12579.718219012293,
+   "descriptors": {
+    "status": "Observation",
+    "window_s": [
+     300.0,
+     420.0
+    ],
+    "states": 52602,
+    "local_vehicle_s": 5260.200000000001,
+    "density_veh_km_lane": 43.83500000000001,
+    "speed_mean_mps": 9.781102049351736,
+    "speed_sd_mps": 2.3319203421562062,
+    "flow_veh_h_lane_consistency": 1543.5165900000004,
+    "low_speed_share": 0.034371316679974145,
+    "closing_speed_mean_mps": 0.21341907151819323,
+    "closing_speed_negative_share": 0.39028934261054715,
+    "net_gap_mean_m": 17.68869876733718,
+    "net_gap_median_m": 15.803021168305392,
+    "tau_eff_ratio_s": 1.5528617011355936,
+    "p2_evaluable_exposure_veh_s": 5259.1,
+    "blocks": [
+     {
+      "block_start_s": 300.0,
+      "speed_mean_mps": 10.132753262427396,
+      "density_veh_km_lane": 44.190000000000005,
+      "low_speed_share": 0.04903070076186166,
+      "closing_speed_mean_mps": 0.24879761635362452,
+      "closing_speed_negative_share": 0.36938975635513316
+     },
+     {
+      "block_start_s": 330.0,
+      "speed_mean_mps": 9.63719525186425,
+      "density_veh_km_lane": 43.806666666666665,
+      "low_speed_share": 0.036219753462182314,
+      "closing_speed_mean_mps": 0.13631106376502816,
+      "closing_speed_negative_share": 0.41919038198143355
+     },
+     {
+      "block_start_s": 360.0,
+      "speed_mean_mps": 9.890027675276752,
+      "density_veh_km_lane": 43.36000000000001,
+      "low_speed_share": 0.01683579335793358,
+      "closing_speed_mean_mps": 0.20001076260762607,
+      "closing_speed_negative_share": 0.38038130381303814
+     },
+     {
+      "block_start_s": 390.0,
+      "speed_mean_mps": 9.463745358090184,
+      "density_veh_km_lane": 43.983333333333334,
+      "low_speed_share": 0.03508904888215233,
+      "closing_speed_mean_mps": 0.2678908677529367,
+      "closing_speed_negative_share": 0.3922697991663509
+     }
+    ]
+   },
+   "initial_window_descriptors": {
+    "status": "Observation",
+    "window_s": [
+     0.0,
+     30.0
+    ],
+    "states": 8898,
+    "local_vehicle_s": 889.8000000000001,
+    "density_veh_km_lane": 29.660000000000004,
+    "speed_mean_mps": 14.966260957518545,
+    "speed_sd_mps": 2.667220513835147,
+    "flow_veh_h_lane_consistency": 1598.0374800000004,
+    "low_speed_share": 0.009103169251517195,
+    "closing_speed_mean_mps": -0.003748033265902478,
+    "closing_speed_negative_share": 0.517644414475163,
+    "net_gap_mean_m": 29.3879077440204,
+    "net_gap_median_m": 23.806451787205702,
+    "tau_eff_ratio_s": 1.7965681488744067,
+    "p2_evaluable_exposure_veh_s": 889.8000000000001,
+    "blocks": [
+     {
+      "block_start_s": 0.0,
+      "speed_mean_mps": 14.966260957518545,
+      "density_veh_km_lane": 29.660000000000004,
+      "low_speed_share": 0.009103169251517195,
+      "closing_speed_mean_mps": -0.003748033265902478,
+      "closing_speed_negative_share": 0.517644414475163
+     }
+    ]
+   },
+   "p2_events_eval_window": 2,
+   "p2_events_eval_window_local": 2,
+   "p2_local_rate_per_vehicle_hour": 1.3690555418227452,
+   "p2_network_rate_per_vehicle_hour": 1.3687692483175542,
+   "states": 597631
+  },
+  {
+   "cell": {
+    "cell_id": "B_het|us101__0750_0805|vlim10.00",
+    "behaviour": "B_het",
+    "condition": "us101__0750_0805",
+    "downstream_free_speed_mps": 10.0
+   },
+   "seed": 20261204,
+   "wall_s": 57.45885939999971,
+   "sumo": {
+    "returncode": 0,
+    "wall_s": 6.787338600001021,
+    "teleports": 0,
+    "collisions": 0
+   },
+   "log_tail": "Loading net-file from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_het_us101__0750_0805_vlim10.00_s20261204\\network/observed_geometry_supply_10p0_l5.net.xml' ... done (2ms).\nLoading route-files incrementally from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_het_us101__0750_0805_vlim10.00_s20261204\\routes.rou.xml'\nLoading done.\nSimulation version 1.26.0 started with time: 0.00.\nSimulation ended at time: 420.00.\nReason: The final simulation step has been reached.\nPerformance:\n Duration: 6.54s\n Real time factor: 64.2202\n UPS: 185347.400612\nVehicles:\n Inserted: 1000 (Loaded: 1150)\n Running: 149\n Waiting: 149\nStatistics (avg of 851):\n RouteLength: 625.81\n Speed: 9.80\n Duration: 64.73\n WaitingTime: 0.00\n TimeLoss: 26.21\n DepartDelay: 19.41\nError: Vehicle 'i0007_i0007' will not be able to depart using the given velocity (slow lane ahead), time=0.00.\n",
+   "edge_lengths": {
+    "main_0": 172.9,
+    "main_1": 234.04,
+    "main_2": 252.23,
+    "offramp": 201.17,
+    "onramp": 180.71
+   },
+   "vtypes": [
+    {
+     "id": "B_het_c0_passenger",
+     "tau": 0.7389146576529666,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 0,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c1_passenger",
+     "tau": 1.093342856277335,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 1,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c2_passenger",
+     "tau": 1.3877275660721775,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 2,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c3_passenger",
+     "tau": 1.8288599276236361,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 3,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c4_passenger",
+     "tau": 2.5614676647488244,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 4,
+     "kind": "passenger"
+    }
+   ],
+   "initial_state": {
+    "accepted": 117,
+    "dropped": 3,
+    "clock_s": 120.0,
+    "speed_clamped": 38,
+    "lane_clamped": 0
+   },
+   "analytic_capacity_veh_h": 12579.718219012293,
+   "descriptors": {
+    "status": "Observation",
+    "window_s": [
+     300.0,
+     420.0
+    ],
+    "states": 53988,
+    "local_vehicle_s": 5398.8,
+    "density_veh_km_lane": 44.99,
+    "speed_mean_mps": 9.4101741127658,
+    "speed_sd_mps": 2.155503008559972,
+    "flow_veh_h_lane_consistency": 1524.1094400000002,
+    "low_speed_share": 0.06179150922427206,
+    "closing_speed_mean_mps": 0.17568533748240353,
+    "closing_speed_negative_share": 0.40277469067200117,
+    "net_gap_mean_m": 17.17692332820713,
+    "net_gap_median_m": 15.583291813365278,
+    "tau_eff_ratio_s": 1.5596866914817744,
+    "p2_evaluable_exposure_veh_s": 5398.6,
+    "blocks": [
+     {
+      "block_start_s": 300.0,
+      "speed_mean_mps": 9.39919426374926,
+      "density_veh_km_lane": 45.09333333333334,
+      "low_speed_share": 0.05107924305144885,
+      "closing_speed_mean_mps": 0.12403385570668242,
+      "closing_speed_negative_share": 0.40013305736250737
+     },
+     {
+      "block_start_s": 330.0,
+      "speed_mean_mps": 9.403622502628812,
+      "density_veh_km_lane": 44.38,
+      "low_speed_share": 0.07022682890190776,
+      "closing_speed_mean_mps": 0.2280824695808923,
+      "closing_speed_negative_share": 0.40446146913023884
+     },
+     {
+      "block_start_s": 360.0,
+      "speed_mean_mps": 9.46671147419235,
+      "density_veh_km_lane": 44.88333333333333,
+      "low_speed_share": 0.061864092090605276,
+      "closing_speed_mean_mps": 0.18603713330857782,
+      "closing_speed_negative_share": 0.4129223913850724
+     },
+     {
+      "block_start_s": 390.0,
+      "speed_mean_mps": 9.371762298077625,
+      "density_veh_km_lane": 45.60333333333334,
+      "low_speed_share": 0.06410350120605218,
+      "closing_speed_mean_mps": 0.16557927052116073,
+      "closing_speed_negative_share": 0.3937577662451575
+     }
+    ]
+   },
+   "initial_window_descriptors": {
+    "status": "Observation",
+    "window_s": [
+     0.0,
+     30.0
+    ],
+    "states": 9021,
+    "local_vehicle_s": 902.1,
+    "density_veh_km_lane": 30.07,
+    "speed_mean_mps": 15.053603813324465,
+    "speed_sd_mps": 2.377767411827365,
+    "flow_veh_h_lane_consistency": 1629.5827199999999,
+    "low_speed_share": 0.008646491519787164,
+    "closing_speed_mean_mps": 0.0803879835938366,
+    "closing_speed_negative_share": 0.47001441081919965,
+    "net_gap_mean_m": 28.84912976102482,
+    "net_gap_median_m": 23.351141753546386,
+    "tau_eff_ratio_s": 1.7503536088615734,
+    "p2_evaluable_exposure_veh_s": 902.1,
+    "blocks": [
+     {
+      "block_start_s": 0.0,
+      "speed_mean_mps": 15.053603813324465,
+      "density_veh_km_lane": 30.07,
+      "low_speed_share": 0.008646491519787164,
+      "closing_speed_mean_mps": 0.0803879835938366,
+      "closing_speed_negative_share": 0.47001441081919965
+     }
+    ]
+   },
+   "p2_events_eval_window": 0,
+   "p2_events_eval_window_local": 0,
+   "p2_local_rate_per_vehicle_hour": 0.0,
+   "p2_network_rate_per_vehicle_hour": 0.0,
+   "states": 606092
+  },
+  {
+   "cell": {
+    "cell_id": "B_het|us101__0750_0805|vlim10.00",
+    "behaviour": "B_het",
+    "condition": "us101__0750_0805",
+    "downstream_free_speed_mps": 10.0
+   },
+   "seed": 20261205,
+   "wall_s": 56.12177320000046,
+   "sumo": {
+    "returncode": 0,
+    "wall_s": 6.65077950000159,
+    "teleports": 0,
+    "collisions": 0
+   },
+   "log_tail": "Loading net-file from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_het_us101__0750_0805_vlim10.00_s20261205\\network/observed_geometry_supply_10p0_l5.net.xml' ... done (3ms).\nLoading route-files incrementally from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_het_us101__0750_0805_vlim10.00_s20261205\\routes.rou.xml'\nLoading done.\nSimulation version 1.26.0 started with time: 0.00.\nSimulation ended at time: 420.00.\nReason: The final simulation step has been reached.\nPerformance:\n Duration: 6.40s\n Real time factor: 65.6147\n UPS: 185204.499297\nVehicles:\n Inserted: 1000 (Loaded: 1150)\n Running: 152\n Waiting: 149\nStatistics (avg of 848):\n RouteLength: 626.47\n Speed: 10.01\n Duration: 63.37\n WaitingTime: 0.00\n TimeLoss: 24.83\n DepartDelay: 19.18\nError: Vehicle 'i0007_i0007' will not be able to depart using the given velocity (slow lane ahead), time=0.00.\n",
+   "edge_lengths": {
+    "main_0": 172.9,
+    "main_1": 234.04,
+    "main_2": 252.23,
+    "offramp": 201.17,
+    "onramp": 180.71
+   },
+   "vtypes": [
+    {
+     "id": "B_het_c0_passenger",
+     "tau": 0.7389146576529666,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 0,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c1_passenger",
+     "tau": 1.093342856277335,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 1,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c2_passenger",
+     "tau": 1.3877275660721775,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 2,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c3_passenger",
+     "tau": 1.8288599276236361,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 3,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c4_passenger",
+     "tau": 2.5614676647488244,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 4,
+     "kind": "passenger"
+    }
+   ],
+   "initial_state": {
+    "accepted": 117,
+    "dropped": 3,
+    "clock_s": 120.0,
+    "speed_clamped": 38,
+    "lane_clamped": 0
+   },
+   "analytic_capacity_veh_h": 12579.718219012293,
+   "descriptors": {
+    "status": "Observation",
+    "window_s": [
+     300.0,
+     420.0
+    ],
+    "states": 51008,
+    "local_vehicle_s": 5100.8,
+    "density_veh_km_lane": 42.50666666666667,
+    "speed_mean_mps": 10.042014193851946,
+    "speed_sd_mps": 2.6215629012936774,
+    "flow_veh_h_lane_consistency": 1536.6691800000003,
+    "low_speed_share": 0.03877823086574655,
+    "closing_speed_mean_mps": 0.3107675266624843,
+    "closing_speed_negative_share": 0.35155269761606023,
+    "net_gap_mean_m": 18.27108707228367,
+    "net_gap_median_m": 16.116822833703623,
+    "tau_eff_ratio_s": 1.5705103346636626,
+    "p2_evaluable_exposure_veh_s": 5099.200000000001,
+    "blocks": [
+     {
+      "block_start_s": 300.0,
+      "speed_mean_mps": 10.359032072368421,
+      "density_veh_km_lane": 40.53333333333333,
+      "low_speed_share": 0.003947368421052632,
+      "closing_speed_mean_mps": 0.38193832236842096,
+      "closing_speed_negative_share": 0.33182565789473684
+     },
+     {
+      "block_start_s": 330.0,
+      "speed_mean_mps": 10.285713378828758,
+      "density_veh_km_lane": 42.00666666666667,
+      "low_speed_share": 0.02388509760355499,
+      "closing_speed_mean_mps": 0.3218100301539438,
+      "closing_speed_negative_share": 0.33375654657990794
+     },
+     {
+      "block_start_s": 360.0,
+      "speed_mean_mps": 9.749890101503473,
+      "density_veh_km_lane": 43.67666666666667,
+      "low_speed_share": 0.06227581469892391,
+      "closing_speed_mean_mps": 0.2652995497214378,
+      "closing_speed_negative_share": 0.3430512096466458
+     },
+     {
+      "block_start_s": 390.0,
+      "speed_mean_mps": 9.806274062238453,
+      "density_veh_km_lane": 43.81000000000001,
+      "low_speed_share": 0.06185802328235563,
+      "closing_speed_mean_mps": 0.2796614167237313,
+      "closing_speed_negative_share": 0.39534352887468616
+     }
+    ]
+   },
+   "initial_window_descriptors": {
+    "status": "Observation",
+    "window_s": [
+     0.0,
+     30.0
+    ],
+    "states": 8834,
+    "local_vehicle_s": 883.4000000000001,
+    "density_veh_km_lane": 29.44666666666667,
+    "speed_mean_mps": 15.092416798732168,
+    "speed_sd_mps": 2.6457212102645875,
+    "flow_veh_h_lane_consistency": 1599.91692,
+    "low_speed_share": 0.014829069504188363,
+    "closing_speed_mean_mps": 0.007213040525243355,
+    "closing_speed_negative_share": 0.49411365179986416,
+    "net_gap_mean_m": 29.601706068829284,
+    "net_gap_median_m": 25.449094240300838,
+    "tau_eff_ratio_s": 1.7957167781839916,
+    "p2_evaluable_exposure_veh_s": 883.4000000000001,
+    "blocks": [
+     {
+      "block_start_s": 0.0,
+      "speed_mean_mps": 15.092416798732168,
+      "density_veh_km_lane": 29.44666666666667,
+      "low_speed_share": 0.014829069504188363,
+      "closing_speed_mean_mps": 0.007213040525243355,
+      "closing_speed_negative_share": 0.49411365179986416
+     }
+    ]
+   },
+   "p2_events_eval_window": 0,
+   "p2_events_eval_window_local": 0,
+   "p2_local_rate_per_vehicle_hour": 0.0,
+   "p2_network_rate_per_vehicle_hour": 0.0,
+   "states": 592770
+  },
+  {
+   "cell": {
+    "cell_id": "B_het|us101__0805_0820|vlim10.00",
+    "behaviour": "B_het",
+    "condition": "us101__0805_0820",
+    "downstream_free_speed_mps": 10.0
+   },
+   "seed": 20261201,
+   "wall_s": 54.465860900001644,
+   "sumo": {
+    "returncode": 0,
+    "wall_s": 6.6441922999983944,
+    "teleports": 0,
+    "collisions": 0
+   },
+   "log_tail": "Loading net-file from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_het_us101__0805_0820_vlim10.00_s20261201\\network/observed_geometry_supply_10p0_l5.net.xml' ... done (3ms).\nLoading route-files incrementally from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_het_us101__0805_0820_vlim10.00_s20261201\\routes.rou.xml'\nLoading done.\nSimulation version 1.26.0 started with time: 0.00.\nSimulation ended at time: 420.00.\nReason: The final simulation step has been reached.\nPerformance:\n Duration: 6.40s\n Real time factor: 65.6353\n UPS: 186827.316768\nVehicles:\n Inserted: 987 (Loaded: 1031)\n Running: 153\n Waiting: 44\nStatistics (avg of 834):\n RouteLength: 613.84\n Speed: 9.63\n Duration: 64.97\n WaitingTime: 0.00\n TimeLoss: 27.10\n DepartDelay: 4.41\n",
+   "edge_lengths": {
+    "main_0": 172.9,
+    "main_1": 234.04,
+    "main_2": 252.23,
+    "offramp": 201.17,
+    "onramp": 180.71
+   },
+   "vtypes": [
+    {
+     "id": "B_het_c0_passenger",
+     "tau": 0.7389146576529666,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 0,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c1_passenger",
+     "tau": 1.093342856277335,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 1,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c2_passenger",
+     "tau": 1.3877275660721775,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 2,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c3_passenger",
+     "tau": 1.8288599276236361,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 3,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c4_passenger",
+     "tau": 2.5614676647488244,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 4,
+     "kind": "passenger"
+    }
+   ],
+   "initial_state": {
+    "accepted": 131,
+    "dropped": 0,
+    "clock_s": 180.0,
+    "speed_clamped": 44,
+    "lane_clamped": 0
+   },
+   "analytic_capacity_veh_h": 12579.718219012293,
+   "descriptors": {
+    "status": "Observation",
+    "window_s": [
+     300.0,
+     420.0
+    ],
+    "states": 52078,
+    "local_vehicle_s": 5207.8,
+    "density_veh_km_lane": 43.39833333333333,
+    "speed_mean_mps": 9.678939091362956,
+    "speed_sd_mps": 2.2710876734457717,
+    "flow_veh_h_lane_consistency": 1512.17937,
+    "low_speed_share": 0.03427550981220477,
+    "closing_speed_mean_mps": 0.05201716655785553,
+    "closing_speed_negative_share": 0.4284534736357003,
+    "net_gap_mean_m": 18.225360435403218,
+    "net_gap_median_m": 16.496624576995387,
+    "tau_eff_ratio_s": 1.6246987698719804,
+    "p2_evaluable_exposure_veh_s": 5206.400000000001,
+    "blocks": [
+     {
+      "block_start_s": 300.0,
+      "speed_mean_mps": 9.463405887879736,
+      "density_veh_km_lane": 42.57333333333334,
+      "low_speed_share": 0.025916066395239586,
+      "closing_speed_mean_mps": -0.09279909176323207,
+      "closing_speed_negative_share": 0.4603037895396179
+     },
+     {
+      "block_start_s": 330.0,
+      "speed_mean_mps": 9.840443701919343,
+      "density_veh_km_lane": 42.89666666666667,
+      "low_speed_share": 0.02999456057191701,
+      "closing_speed_mean_mps": 0.02792835496153548,
+      "closing_speed_negative_share": 0.41557230554044605
+     },
+     {
+      "block_start_s": 360.0,
+      "speed_mean_mps": 9.698780857186128,
+      "density_veh_km_lane": 44.02,
+      "low_speed_share": 0.04179918218991367,
+      "closing_speed_mean_mps": 0.11934878085718612,
+      "closing_speed_negative_share": 0.412994093593821
+     },
+     {
+      "block_start_s": 390.0,
+      "speed_mean_mps": 9.710105056307157,
+      "density_veh_km_lane": 44.10333333333334,
+      "low_speed_share": 0.03899931977930617,
+      "closing_speed_mean_mps": 0.14803491799561636,
+      "closing_speed_negative_share": 0.42566699418033405
+     }
+    ]
+   },
+   "initial_window_descriptors": {
+    "status": "Observation",
+    "window_s": [
+     0.0,
+     30.0
+    ],
+    "states": 7864,
+    "local_vehicle_s": 786.4000000000001,
+    "density_veh_km_lane": 26.213333333333335,
+    "speed_mean_mps": 15.989978382502544,
+    "speed_sd_mps": 2.7572266831200603,
+    "flow_veh_h_lane_consistency": 1508.9422800000002,
+    "low_speed_share": 0.0019074262461851476,
+    "closing_speed_mean_mps": 0.8102339776195321,
+    "closing_speed_negative_share": 0.2904374364191251,
+    "net_gap_mean_m": 32.19044801791212,
+    "net_gap_median_m": 27.402360348658362,
+    "tau_eff_ratio_s": 1.8568160198641466,
+    "p2_evaluable_exposure_veh_s": 786.4000000000001,
+    "blocks": [
+     {
+      "block_start_s": 0.0,
+      "speed_mean_mps": 15.989978382502544,
+      "density_veh_km_lane": 26.213333333333335,
+      "low_speed_share": 0.0019074262461851476,
+      "closing_speed_mean_mps": 0.8102339776195321,
+      "closing_speed_negative_share": 0.2904374364191251
+     }
+    ]
+   },
+   "p2_events_eval_window": 3,
+   "p2_events_eval_window_local": 3,
+   "p2_local_rate_per_vehicle_hour": 2.0743700061462813,
+   "p2_network_rate_per_vehicle_hour": 2.073812358385499,
+   "states": 597843
+  },
+  {
+   "cell": {
+    "cell_id": "B_het|us101__0805_0820|vlim10.00",
+    "behaviour": "B_het",
+    "condition": "us101__0805_0820",
+    "downstream_free_speed_mps": 10.0
+   },
+   "seed": 20261202,
+   "wall_s": 54.51522360000126,
+   "sumo": {
+    "returncode": 0,
+    "wall_s": 6.508059399999183,
+    "teleports": 0,
+    "collisions": 0
+   },
+   "log_tail": "Loading net-file from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_het_us101__0805_0820_vlim10.00_s20261202\\network/observed_geometry_supply_10p0_l5.net.xml' ... done (3ms).\nLoading route-files incrementally from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_het_us101__0805_0820_vlim10.00_s20261202\\routes.rou.xml'\nLoading done.\nSimulation version 1.26.0 started with time: 0.00.\nSimulation ended at time: 420.00.\nReason: The final simulation step has been reached.\nPerformance:\n Duration: 6.26s\n Real time factor: 67.1141\n UPS: 188944.231384\nVehicles:\n Inserted: 987 (Loaded: 1031)\n Running: 153\n Waiting: 44\nStatistics (avg of 834):\n RouteLength: 615.32\n Speed: 9.79\n Duration: 64.05\n WaitingTime: 0.00\n TimeLoss: 26.13\n DepartDelay: 3.76\n",
+   "edge_lengths": {
+    "main_0": 172.9,
+    "main_1": 234.04,
+    "main_2": 252.23,
+    "offramp": 201.17,
+    "onramp": 180.71
+   },
+   "vtypes": [
+    {
+     "id": "B_het_c0_passenger",
+     "tau": 0.7389146576529666,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 0,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c1_passenger",
+     "tau": 1.093342856277335,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 1,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c2_passenger",
+     "tau": 1.3877275660721775,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 2,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c3_passenger",
+     "tau": 1.8288599276236361,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 3,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c4_passenger",
+     "tau": 2.5614676647488244,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 4,
+     "kind": "passenger"
+    }
+   ],
+   "initial_state": {
+    "accepted": 131,
+    "dropped": 0,
+    "clock_s": 180.0,
+    "speed_clamped": 44,
+    "lane_clamped": 0
+   },
+   "analytic_capacity_veh_h": 12579.718219012293,
+   "descriptors": {
+    "status": "Observation",
+    "window_s": [
+     300.0,
+     420.0
+    ],
+    "states": 51597,
+    "local_vehicle_s": 5159.700000000001,
+    "density_veh_km_lane": 42.99750000000001,
+    "speed_mean_mps": 9.585877861115955,
+    "speed_sd_mps": 2.4378751800462544,
+    "flow_veh_h_lane_consistency": 1483.8076200000003,
+    "low_speed_share": 0.0390138961567533,
+    "closing_speed_mean_mps": -0.07232280946566662,
+    "closing_speed_negative_share": 0.4732639494544256,
+    "net_gap_mean_m": 18.62690843615609,
+    "net_gap_median_m": 16.487581678345578,
+    "tau_eff_ratio_s": 1.6823611431116907,
+    "p2_evaluable_exposure_veh_s": 5159.5,
+    "blocks": [
+     {
+      "block_start_s": 300.0,
+      "speed_mean_mps": 9.487986049867715,
+      "density_veh_km_lane": 41.576666666666675,
+      "low_speed_share": 0.03583740880301451,
+      "closing_speed_mean_mps": -0.12215264972340256,
+      "closing_speed_negative_share": 0.5141505652208771
+     },
+     {
+      "block_start_s": 330.0,
+      "speed_mean_mps": 9.698952973183054,
+      "density_veh_km_lane": 42.88333333333333,
+      "low_speed_share": 0.004508356004663817,
+      "closing_speed_mean_mps": -0.07211348620287603,
+      "closing_speed_negative_share": 0.4766420520792849
+     },
+     {
+      "block_start_s": 360.0,
+      "speed_mean_mps": 9.745637885599132,
+      "density_veh_km_lane": 43.00666666666667,
+      "low_speed_share": 0.037591071151759414,
+      "closing_speed_mean_mps": 0.050483645946364904,
+      "closing_speed_negative_share": 0.4293907921252519
+     },
+     {
+      "block_start_s": 390.0,
+      "speed_mean_mps": 9.41406303810736,
+      "density_veh_km_lane": 44.52333333333333,
+      "low_speed_share": 0.0765890544283896,
+      "closing_speed_mean_mps": -0.1446155573856405,
+      "closing_speed_negative_share": 0.47420828030246315
+     }
+    ]
+   },
+   "initial_window_descriptors": {
+    "status": "Observation",
+    "window_s": [
+     0.0,
+     30.0
+    ],
+    "states": 7675,
+    "local_vehicle_s": 767.5,
+    "density_veh_km_lane": 25.583333333333332,
+    "speed_mean_mps": 16.288196742671012,
+    "speed_sd_mps": 2.8498004777449326,
+    "flow_veh_h_lane_consistency": 1500.1429200000002,
+    "low_speed_share": 0.0,
+    "closing_speed_mean_mps": 0.7302175895765473,
+    "closing_speed_negative_share": 0.3322475570032573,
+    "net_gap_mean_m": 33.38297985163679,
+    "net_gap_median_m": 28.107706443343005,
+    "tau_eff_ratio_s": 1.8960343087415619,
+    "p2_evaluable_exposure_veh_s": 767.5,
+    "blocks": [
+     {
+      "block_start_s": 0.0,
+      "speed_mean_mps": 16.288196742671012,
+      "density_veh_km_lane": 25.583333333333332,
+      "low_speed_share": 0.0,
+      "closing_speed_mean_mps": 0.7302175895765473,
+      "closing_speed_negative_share": 0.3322475570032573
+     }
+    ]
+   },
+   "p2_events_eval_window": 1,
+   "p2_events_eval_window_local": 1,
+   "p2_local_rate_per_vehicle_hour": 0.6977420292664018,
+   "p2_network_rate_per_vehicle_hour": 0.6977149834292691,
+   "states": 591287
+  },
+  {
+   "cell": {
+    "cell_id": "B_het|us101__0805_0820|vlim10.00",
+    "behaviour": "B_het",
+    "condition": "us101__0805_0820",
+    "downstream_free_speed_mps": 10.0
+   },
+   "seed": 20261203,
+   "wall_s": 55.26850089999971,
+   "sumo": {
+    "returncode": 0,
+    "wall_s": 6.631740000000718,
+    "teleports": 0,
+    "collisions": 0
+   },
+   "log_tail": "Loading net-file from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_het_us101__0805_0820_vlim10.00_s20261203\\network/observed_geometry_supply_10p0_l5.net.xml' ... done (2ms).\nLoading route-files incrementally from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_het_us101__0805_0820_vlim10.00_s20261203\\routes.rou.xml'\nLoading done.\nSimulation version 1.26.0 started with time: 0.00.\nSimulation ended at time: 420.00.\nReason: The final simulation step has been reached.\nPerformance:\n Duration: 6.38s\n Real time factor: 65.7895\n UPS: 187207.393484\nVehicles:\n Inserted: 983 (Loaded: 1031)\n Running: 152\n Waiting: 48\nStatistics (avg of 831):\n RouteLength: 616.07\n Speed: 9.65\n Duration: 65.17\n WaitingTime: 0.00\n TimeLoss: 27.23\n DepartDelay: 4.27\n",
+   "edge_lengths": {
+    "main_0": 172.9,
+    "main_1": 234.04,
+    "main_2": 252.23,
+    "offramp": 201.17,
+    "onramp": 180.71
+   },
+   "vtypes": [
+    {
+     "id": "B_het_c0_passenger",
+     "tau": 0.7389146576529666,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 0,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c1_passenger",
+     "tau": 1.093342856277335,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 1,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c2_passenger",
+     "tau": 1.3877275660721775,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 2,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c3_passenger",
+     "tau": 1.8288599276236361,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 3,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c4_passenger",
+     "tau": 2.5614676647488244,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 4,
+     "kind": "passenger"
+    }
+   ],
+   "initial_state": {
+    "accepted": 131,
+    "dropped": 0,
+    "clock_s": 180.0,
+    "speed_clamped": 44,
+    "lane_clamped": 0
+   },
+   "analytic_capacity_veh_h": 12579.718219012293,
+   "descriptors": {
+    "status": "Observation",
+    "window_s": [
+     300.0,
+     420.0
+    ],
+    "states": 51973,
+    "local_vehicle_s": 5197.3,
+    "density_veh_km_lane": 43.310833333333335,
+    "speed_mean_mps": 9.51293941084794,
+    "speed_sd_mps": 2.2315072007719334,
+    "flow_veh_h_lane_consistency": 1483.248,
+    "low_speed_share": 0.04065572508802648,
+    "closing_speed_mean_mps": 0.0796515498431878,
+    "closing_speed_negative_share": 0.42735651203509517,
+    "net_gap_mean_m": 18.227173352147176,
+    "net_gap_median_m": 16.089694137754236,
+    "tau_eff_ratio_s": 1.6532401472265161,
+    "p2_evaluable_exposure_veh_s": 5196.5,
+    "blocks": [
+     {
+      "block_start_s": 300.0,
+      "speed_mean_mps": 9.455373729476154,
+      "density_veh_km_lane": 42.63333333333333,
+      "low_speed_share": 0.04222048475371384,
+      "closing_speed_mean_mps": 0.06169820172009383,
+      "closing_speed_negative_share": 0.46770914777169664
+     },
+     {
+      "block_start_s": 330.0,
+      "speed_mean_mps": 9.51709194254551,
+      "density_veh_km_lane": 43.39666666666667,
+      "low_speed_share": 0.015746217067363084,
+      "closing_speed_mean_mps": 0.03718257930716645,
+      "closing_speed_negative_share": 0.4409708887011291
+     },
+     {
+      "block_start_s": 360.0,
+      "speed_mean_mps": 9.63449734244495,
+      "density_veh_km_lane": 43.9,
+      "low_speed_share": 0.06955201214882309,
+      "closing_speed_mean_mps": 0.10607061503416856,
+      "closing_speed_negative_share": 0.39802581624905087
+     },
+     {
+      "block_start_s": 390.0,
+      "speed_mean_mps": 9.442236416807757,
+      "density_veh_km_lane": 43.31333333333334,
+      "low_speed_share": 0.03478528551639218,
+      "closing_speed_mean_mps": 0.1130968139141142,
+      "closing_speed_negative_share": 0.4037247960597199
+     }
+    ]
+   },
+   "initial_window_descriptors": {
+    "status": "Observation",
+    "window_s": [
+     0.0,
+     30.0
+    ],
+    "states": 7633,
+    "local_vehicle_s": 763.3000000000001,
+    "density_veh_km_lane": 25.443333333333335,
+    "speed_mean_mps": 15.909959386872789,
+    "speed_sd_mps": 2.480375736762511,
+    "flow_veh_h_lane_consistency": 1457.2886400000002,
+    "low_speed_share": 0.0,
+    "closing_speed_mean_mps": 0.7742683086597668,
+    "closing_speed_negative_share": 0.3200576444386218,
+    "net_gap_mean_m": 33.46204324556345,
+    "net_gap_median_m": 28.135278732202522,
+    "tau_eff_ratio_s": 1.9460793389020241,
+    "p2_evaluable_exposure_veh_s": 763.3000000000001,
+    "blocks": [
+     {
+      "block_start_s": 0.0,
+      "speed_mean_mps": 15.909959386872789,
+      "density_veh_km_lane": 25.443333333333335,
+      "low_speed_share": 0.0,
+      "closing_speed_mean_mps": 0.7742683086597668,
+      "closing_speed_negative_share": 0.3200576444386218
+     }
+    ]
+   },
+   "p2_events_eval_window": 6,
+   "p2_events_eval_window_local": 6,
+   "p2_local_rate_per_vehicle_hour": 4.156643894929279,
+   "p2_network_rate_per_vehicle_hour": 4.156004079041041,
+   "states": 597643
+  },
+  {
+   "cell": {
+    "cell_id": "B_het|us101__0805_0820|vlim10.00",
+    "behaviour": "B_het",
+    "condition": "us101__0805_0820",
+    "downstream_free_speed_mps": 10.0
+   },
+   "seed": 20261204,
+   "wall_s": 55.21746840000014,
+   "sumo": {
+    "returncode": 0,
+    "wall_s": 6.545135200000004,
+    "teleports": 0,
+    "collisions": 0
+   },
+   "log_tail": "Loading net-file from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_het_us101__0805_0820_vlim10.00_s20261204\\network/observed_geometry_supply_10p0_l5.net.xml' ... done (2ms).\nLoading route-files incrementally from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_het_us101__0805_0820_vlim10.00_s20261204\\routes.rou.xml'\nLoading done.\nSimulation version 1.26.0 started with time: 0.00.\nSimulation ended at time: 420.00.\nReason: The final simulation step has been reached.\nPerformance:\n Duration: 6.30s\n Real time factor: 66.6878\n UPS: 186982.692918\nVehicles:\n Inserted: 992 (Loaded: 1031)\n Running: 149\n Waiting: 39\nStatistics (avg of 843):\n RouteLength: 617.12\n Speed: 9.87\n Duration: 63.46\n WaitingTime: 0.00\n TimeLoss: 25.48\n DepartDelay: 3.05\n",
+   "edge_lengths": {
+    "main_0": 172.9,
+    "main_1": 234.04,
+    "main_2": 252.23,
+    "offramp": 201.17,
+    "onramp": 180.71
+   },
+   "vtypes": [
+    {
+     "id": "B_het_c0_passenger",
+     "tau": 0.7389146576529666,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 0,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c1_passenger",
+     "tau": 1.093342856277335,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 1,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c2_passenger",
+     "tau": 1.3877275660721775,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 2,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c3_passenger",
+     "tau": 1.8288599276236361,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 3,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c4_passenger",
+     "tau": 2.5614676647488244,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 4,
+     "kind": "passenger"
+    }
+   ],
+   "initial_state": {
+    "accepted": 131,
+    "dropped": 0,
+    "clock_s": 180.0,
+    "speed_clamped": 44,
+    "lane_clamped": 0
+   },
+   "analytic_capacity_veh_h": 12579.718219012293,
+   "descriptors": {
+    "status": "Observation",
+    "window_s": [
+     300.0,
+     420.0
+    ],
+    "states": 50841,
+    "local_vehicle_s": 5084.1,
+    "density_veh_km_lane": 42.3675,
+    "speed_mean_mps": 9.915473928522255,
+    "speed_sd_mps": 2.4170915843423453,
+    "flow_veh_h_lane_consistency": 1512.33783,
+    "low_speed_share": 0.024468440825318148,
+    "closing_speed_mean_mps": 0.10379123148639878,
+    "closing_speed_negative_share": 0.4097480380008261,
+    "net_gap_mean_m": 18.70518961837719,
+    "net_gap_median_m": 16.677482549991453,
+    "tau_eff_ratio_s": 1.6343333395050654,
+    "p2_evaluable_exposure_veh_s": 5084.1,
+    "blocks": [
+     {
+      "block_start_s": 300.0,
+      "speed_mean_mps": 10.075388517594009,
+      "density_veh_km_lane": 41.39666666666667,
+      "low_speed_share": 0.025605926403092037,
+      "closing_speed_mean_mps": 0.11190192447056929,
+      "closing_speed_negative_share": 0.4352202270714228
+     },
+     {
+      "block_start_s": 330.0,
+      "speed_mean_mps": 10.043188324670133,
+      "density_veh_km_lane": 41.68333333333333,
+      "low_speed_share": 0.01135545781687325,
+      "closing_speed_mean_mps": 0.0749940023990404,
+      "closing_speed_negative_share": 0.37081167532986803
+     },
+     {
+      "block_start_s": 360.0,
+      "speed_mean_mps": 9.834730789734218,
+      "density_veh_km_lane": 43.77,
+      "low_speed_share": 0.01903891554337065,
+      "closing_speed_mean_mps": 0.11037011651816313,
+      "closing_speed_negative_share": 0.41108826441245905
+     },
+     {
+      "block_start_s": 390.0,
+      "speed_mean_mps": 9.718163616455499,
+      "density_veh_km_lane": 42.620000000000005,
+      "low_speed_share": 0.04176442984514313,
+      "closing_speed_mean_mps": 0.11732128890974505,
+      "closing_speed_negative_share": 0.4217112466760519
+     }
+    ]
+   },
+   "initial_window_descriptors": {
+    "status": "Observation",
+    "window_s": [
+     0.0,
+     30.0
+    ],
+    "states": 7596,
+    "local_vehicle_s": 759.6,
+    "density_veh_km_lane": 25.32,
+    "speed_mean_mps": 15.994748551869405,
+    "speed_sd_mps": 3.0418113782406824,
+    "flow_veh_h_lane_consistency": 1457.95332,
+    "low_speed_share": 0.0,
+    "closing_speed_mean_mps": 0.7656806213796736,
+    "closing_speed_negative_share": 0.3451816745655608,
+    "net_gap_mean_m": 33.94203015849247,
+    "net_gap_median_m": 28.3699505041873,
+    "tau_eff_ratio_s": 1.9657720817885347,
+    "p2_evaluable_exposure_veh_s": 759.6,
+    "blocks": [
+     {
+      "block_start_s": 0.0,
+      "speed_mean_mps": 15.994748551869405,
+      "density_veh_km_lane": 25.32,
+      "low_speed_share": 0.0,
+      "closing_speed_mean_mps": 0.7656806213796736,
+      "closing_speed_negative_share": 0.3451816745655608
+     }
+    ]
+   },
+   "p2_events_eval_window": 1,
+   "p2_events_eval_window_local": 1,
+   "p2_local_rate_per_vehicle_hour": 0.7080899274207825,
+   "p2_network_rate_per_vehicle_hour": 0.7080899274207825,
+   "states": 588892
+  },
+  {
+   "cell": {
+    "cell_id": "B_het|us101__0805_0820|vlim10.00",
+    "behaviour": "B_het",
+    "condition": "us101__0805_0820",
+    "downstream_free_speed_mps": 10.0
+   },
+   "seed": 20261205,
+   "wall_s": 53.539501200000814,
+   "sumo": {
+    "returncode": 0,
+    "wall_s": 6.397464800000307,
+    "teleports": 0,
+    "collisions": 0
+   },
+   "log_tail": "Loading net-file from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_het_us101__0805_0820_vlim10.00_s20261205\\network/observed_geometry_supply_10p0_l5.net.xml' ... done (3ms).\nLoading route-files incrementally from 'D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_state_support_v1\\seeds\\B_het_us101__0805_0820_vlim10.00_s20261205\\routes.rou.xml'\nLoading done.\nSimulation version 1.26.0 started with time: 0.00.\nSimulation ended at time: 420.00.\nReason: The final simulation step has been reached.\nPerformance:\n Duration: 6.14s\n Real time factor: 68.3816\n UPS: 186520.188864\nVehicles:\n Inserted: 984 (Loaded: 1031)\n Running: 146\n Waiting: 47\nStatistics (avg of 838):\n RouteLength: 618.27\n Speed: 10.10\n Duration: 61.93\n WaitingTime: 0.00\n TimeLoss: 23.90\n DepartDelay: 2.73\n",
+   "edge_lengths": {
+    "main_0": 172.9,
+    "main_1": 234.04,
+    "main_2": 252.23,
+    "offramp": 201.17,
+    "onramp": 180.71
+   },
+   "vtypes": [
+    {
+     "id": "B_het_c0_passenger",
+     "tau": 0.7389146576529666,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 0,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c1_passenger",
+     "tau": 1.093342856277335,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 1,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c2_passenger",
+     "tau": 1.3877275660721775,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 2,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c3_passenger",
+     "tau": 1.8288599276236361,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 3,
+     "kind": "passenger"
+    },
+    {
+     "id": "B_het_c4_passenger",
+     "tau": 2.5614676647488244,
+     "share": 0.2,
+     "length_m": 4.4196,
+     "sigma": 0.5,
+     "vClass": "passenger",
+     "class_index": 4,
+     "kind": "passenger"
+    }
+   ],
+   "initial_state": {
+    "accepted": 131,
+    "dropped": 0,
+    "clock_s": 180.0,
+    "speed_clamped": 44,
+    "lane_clamped": 0
+   },
+   "analytic_capacity_veh_h": 12579.718219012293,
+   "descriptors": {
+    "status": "Observation",
+    "window_s": [
+     300.0,
+     420.0
+    ],
+    "states": 49850,
+    "local_vehicle_s": 4985.0,
+    "density_veh_km_lane": 41.541666666666664,
+    "speed_mean_mps": 10.035277833500501,
+    "speed_sd_mps": 2.5251133607113836,
+    "flow_veh_h_lane_consistency": 1500.7758,
+    "low_speed_share": 0.04030090270812437,
+    "closing_speed_mean_mps": 0.11655586760280844,
+    "closing_speed_negative_share": 0.41981945837512535,
+    "net_gap_mean_m": 19.071530298964824,
+    "net_gap_median_m": 16.930683712185896,
+    "tau_eff_ratio_s": 1.6513275042216096,
+    "p2_evaluable_exposure_veh_s": 4983.3,
+    "blocks": [
+     {
+      "block_start_s": 300.0,
+      "speed_mean_mps": 10.364512932482365,
+      "density_veh_km_lane": 39.693333333333335,
+      "low_speed_share": 0.04845482028888142,
+      "closing_speed_mean_mps": 0.08691467920725562,
+      "closing_speed_negative_share": 0.4140913671481357
+     },
+     {
+      "block_start_s": 330.0,
+      "speed_mean_mps": 9.976325478645066,
+      "density_veh_km_lane": 40.74,
+      "low_speed_share": 0.013336606120111274,
+      "closing_speed_mean_mps": 0.230055637375225,
+      "closing_speed_negative_share": 0.3834887907052856
+     },
+     {
+      "block_start_s": 360.0,
+      "speed_mean_mps": 9.713351272391789,
+      "density_veh_km_lane": 43.35666666666667,
+      "low_speed_share": 0.05235642346428846,
+      "closing_speed_mean_mps": 0.025730760359806253,
+      "closing_speed_negative_share": 0.47236103636503424
+     },
+     {
+      "block_start_s": 390.0,
+      "speed_mean_mps": 10.112937150947849,
+      "density_veh_km_lane": 42.37666666666667,
+      "low_speed_share": 0.0462518681664438,
+      "closing_speed_mean_mps": 0.12812947376701014,
+      "closing_speed_negative_share": 0.40635569889089906
+     }
+    ]
+   },
+   "initial_window_descriptors": {
+    "status": "Observation",
+    "window_s": [
+     0.0,
+     30.0
+    ],
+    "states": 7627,
+    "local_vehicle_s": 762.7,
+    "density_veh_km_lane": 25.423333333333336,
+    "speed_mean_mps": 16.407515405795202,
+    "speed_sd_mps": 2.930762229499606,
+    "flow_veh_h_lane_consistency": 1501.6814400000003,
+    "low_speed_share": 0.0,
+    "closing_speed_mean_mps": 0.7780555919758751,
+    "closing_speed_negative_share": 0.3403697390848302,
+    "net_gap_mean_m": 33.767875496698785,
+    "net_gap_median_m": 28.921567321825336,
+    "tau_eff_ratio_s": 1.90570447282072,
+    "p2_evaluable_exposure_veh_s": 762.7,
+    "blocks": [
+     {
+      "block_start_s": 0.0,
+      "speed_mean_mps": 16.407515405795202,
+      "density_veh_km_lane": 25.423333333333336,
+      "low_speed_share": 0.0,
+      "closing_speed_mean_mps": 0.7780555919758751,
+      "closing_speed_negative_share": 0.3403697390848302
+     }
+    ]
+   },
+   "p2_events_eval_window": 0,
+   "p2_events_eval_window_local": 0,
+   "p2_local_rate_per_vehicle_hour": 0.0,
+   "p2_network_rate_per_vehicle_hour": 0.0,
+   "states": 572889
+  }
+ ]
+}

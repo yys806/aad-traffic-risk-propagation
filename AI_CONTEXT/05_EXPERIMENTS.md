@@ -2,6 +2,10 @@
 
 > 这里只记录客观状态。完整字段以 `docs/PROJECT_REGISTRY.json` 为准，原始数字以 audit/manifest/表为准。
 
+## 最近一次 Stage 0.5 实验（2026-10-21）
+
+`RES-STAGE-0.5-STATE-SUPPORT-V1`（AAD-0.5-CLOSURE）。条件 / 变量：观测几何网络；初始状态=观测真实初始状态；边界需求=观测穿越需求（8,345/7,227 veh/h）+ 匝道；**声明的下游供给**（`main_2` 自由速度 27.78/15/12/10/8 m/s，或 4 车道缩减）；行为臂 `B_frozen`（tau=1.0）/`B_mean`（tau=1.5662）/`B_het`（每车 tau 取自真实每车分布分位）。评价窗 `[300.0,420.0)` s，内部 0.05 s，记录 0.1 s，SUMO 1.26.0。规模 58 次：网格 30 + 独立 seed 20 + 结构变体 4 + 留出窗口 4。主要指标：局部 30 s 块 (k, v)、速度离散、低速份额、闭合速度均值/净拉开份额、`tau_eff`、局部 P2 率、状态域成员（含数据派生跨窗口基线）。客观结果：状态层在两窗口与留出窗口成立；交互相容不成立（P2 率 0.9–1.5 对 17.0/23.5）。状态：`closed_conditional_state_support_established_interaction_not_established`。输出：`code/outputs/formal/calibration/stage_0_5_state_support_v1/`。
+
 ## 当前实验表
 
 | 实验编号 | 实验目的 | config / 变量 | baseline | 数据集 | 主要指标 | 状态 | 客观实验结果 | 输出目录 |

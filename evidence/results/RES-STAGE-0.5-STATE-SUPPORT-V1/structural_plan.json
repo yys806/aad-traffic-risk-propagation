@@ -1,0 +1,51 @@
+{
+ "result_id": "RES-STAGE-0.5-STATE-SUPPORT-V1",
+ "step": "structural_supply_variant",
+ "hypothesis": "the real local state carries back-propagating low-speed waves and a wide relative-motion dispersion; a smooth speed limit produces a homogeneous synchronized flow, whereas a discrete lane drop at the observed diverge produces the waves. If so, the lane-drop encoding reproduces the observed relative-motion dispersion and a positive P2 event rate at matched capacity.",
+ "falsification_rule": "if, at matched analytic capacity, the lane-drop encoding still yields a closing-speed distribution and a P2 event rate outside the real block envelopes, the wave-generation hypothesis is rejected and no further supply encoding is tried in this task",
+ "declared_cells": [
+  {
+   "cell_id": "B_het|us101__0750_0805|lane_drop_4lane",
+   "behaviour": "B_het",
+   "condition": "us101__0750_0805",
+   "downstream_free_speed_mps": 27.78,
+   "downstream_lanes": 4,
+   "matched_speed_limit_combination": "B_het|vlim10.00",
+   "matched_speed_limit_free_speed_mps": 10.0
+  },
+  {
+   "cell_id": "B_het|us101__0805_0820|lane_drop_4lane",
+   "behaviour": "B_het",
+   "condition": "us101__0805_0820",
+   "downstream_free_speed_mps": 27.78,
+   "downstream_lanes": 4,
+   "matched_speed_limit_combination": "B_het|vlim10.00",
+   "matched_speed_limit_free_speed_mps": 10.0
+  },
+  {
+   "cell_id": "B_mean|us101__0750_0805|lane_drop_4lane",
+   "behaviour": "B_mean",
+   "condition": "us101__0750_0805",
+   "downstream_free_speed_mps": 27.78,
+   "downstream_lanes": 4,
+   "matched_speed_limit_combination": "B_mean|vlim10.00",
+   "matched_speed_limit_free_speed_mps": 10.0
+  },
+  {
+   "cell_id": "B_mean|us101__0805_0820|lane_drop_4lane",
+   "behaviour": "B_mean",
+   "condition": "us101__0805_0820",
+   "downstream_free_speed_mps": 27.78,
+   "downstream_lanes": 4,
+   "matched_speed_limit_combination": "B_mean|vlim10.00",
+   "matched_speed_limit_free_speed_mps": 10.0
+  }
+ ],
+ "capacity_matching": "the lane drop removes one of five downstream lanes at 27.78 m/s; the analytic capacity of that variant is reported next to the speed-limit variant it replaces",
+ "evaluation_window_s": [
+  300.0,
+  420.0
+ ],
+ "seed": 20261201,
+ "written_before_execution_of_this_batch": true
+}

@@ -77,7 +77,7 @@ P2 formal event extraction and rho/bounded contribution primitives are implement
 
 ### 论文版本冲突 — Awaiting Researcher Decision
 
-Documented Intent：06_DECISIONS指数rho/固定分母/车辆等权。Actual Implementation：formal v2符合批准设计，旧main.tex:378-405仍为线性/观测分母/求和。Evidence：最新版20261010 PDF与最终包paper_version_conflict.md。Affected Files：paper/主论文/main.tex、paper/历史记录/20261010_YYS.pdf、06_DECISIONS。Conflict：论文版本与当前设计未同步。Status: Awaiting Researcher Decision；研究者指定正式版本，不修改论文、不替换批准算法。
+Documented Intent：06_DECISIONS指数rho/固定分母/车辆等权。Actual Implementation：formal v2符合批准设计，旧main.tex:378-405仍为线性/观测分母/求和。Evidence：最新版20261010 PDF与最终包paper_version_conflict.md。Affected Files：paper/主论文/main.tex、paper/历史记录/20261010_YYS.pdf、06_DECISIONS。Conflict：论文版本与当前设计未同步。Status: **Resolved（2026-10-21，AAD-0.5-CLOSURE）**。核查确认三条事实：(1) 指数 `rho=exp(-TTC/tau)` 已由 2026-10-11 `Agreed Research Design` 与 2026-10-12 分母裁决批准为**主定义**；(2) 实现/配置/测试本已一致（`formal_risk_measurement.py`、`stage_0_2_formal_risk_measurement_p2_v1.json`、`test_formal_risk_measurement.py`），`legacy/` 无残留线性实现；(3) 冲突只在论文——原为阈值线性 `1-TTC/θ` 且区域风险为**求和**。已按批准定义同步 `paper/主论文/main.tex`（指数映射 + 车辆等权平均），并把线性版本明确标记为历史基线；新增 `test_rho_is_the_approved_exponential_mapping_without_threshold_truncation` 断言指数形状、单调性、无截断且不复现线性映射；论文以 XeLaTeX 重编译 9 页 0 错误。原记录保留为历史。核查报告：`docs/STAGE_0_5_FORMAL_RISK_DEFINITION_CONSISTENCY.md`。
 
 ### KI-07 — Stage 0.5 canonical pNEUMA 接口与覆盖协议待决
 
@@ -199,3 +199,15 @@ P1：历史83是开始到结束而非确认；全源543/732不能作局部率目
 7. **11 篇文献仅元数据核验**（Kesting 2008、Punzo 2012、Krauss 1997、Krauß 1998、Sharma 2019、Kolekar 2020、Rhoades 2016、Newell 2002 等），未据其采用任何公式。
 8. **加速度指标仍留空**（差分噪声未验证）。
 9. `doc/literature-notes/` 五项既有删除仍未处理。
+
+## 2026-10-21 Stage 0.5 剩余阻断：交互相容层
+
+`RES-STAGE-0.5-STATE-SUPPORT-V1` 之后，Stage 0.5 的唯一剩余阻断从「状态支持未达成」改为「**交互相容未达成**」：
+
+- **已达成**：真实总体等效时距（1.539–1.569 s）及其解析能力与观测最大块流量一致；声明供给下的平均局部状态在真实状态域内（两校准窗口、5 独立 seed、留出窗口域迁移）。
+- **未达成**：状态匹配配置的局部 P2 率为 0.9–1.5 events/veh-h（真实 17.0/23.5），速度离散低约 35%，净拉开份额 0.395–0.432（真实 0.530–0.537）。
+- **已定位的机制**：供给的**水平**控制平均状态，**形式**控制相对运动与风险事件生成。匹配解析能力下的 4 车道缩减把 P2 率带到 18.2–25.5，同时把密度推到 51–55（真实 43.5/50.5），低速份额 0.445–0.505（真实 0.097/0.253）。
+- **停止与未做**：预声明判伪规则已触发，未尝试第三种供给编码；未运行任何 AAD 处理；未读 locked holdout。
+- **度量局限（已登记）**：`jam_waves` 的继承绝对 10 m/s 阈值在平均速度 9.7 m/s 的配置上无判别力，因此本任务未以低速波份额作为通过或失败的单独依据；需要相对速度定义的波诊断才能补上这一项。
+- **工程缺陷（已修）**：`run_cell` 曾把声明能力算在 `vtypes[0]` 的 τ 上，异质臂因此上报 12,580 而非 8,130；代码已改为按份额加权，已存结果的更正值由 `step_analysis` 写入 `mechanism_analysis.json`。判据不依赖该字段。
+- **冻结后执行缺陷（已登记）**：`temporal` 首次执行时 `derive_demand()` 因 canonical 表无 `vehicle_id` 列抛 `AttributeError`；修复仅限脚本内列适配，随后重写 freeze manifest（4 个科学产物 SHA 未变，仅两个源码 SHA 变化），留出窗口的数值读取全部发生在 freeze 之后，未用于任何参数或判据调整。

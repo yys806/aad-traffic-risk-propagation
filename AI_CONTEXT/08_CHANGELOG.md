@@ -2,6 +2,18 @@
 
 这里只记录影响结构、实现、实验流程或 AI_CONTEXT 的重要变化；细节以 Git diff 和原始实验记录为准。
 
+## 2026-10-21 — AAD-0.5-CLOSURE 条件性交通状态验证与风险定义同步
+
+新增 `stage_0_5_state_support.py`、`run_stage_0_5_state_support.py`、`sync_paper_formal_risk_definition.py`、`test_stage_0_5_state_support.py`（11 项）；`test_formal_risk_measurement.py` 增 1 项指数定义测试。
+
+实现要点：(a) 真实跟驰总体的比例估计（`tau_eff`）与速度分箱 OLS 并存、并明确记录 `(tau, minGap)` 只能联合辨识；(b) 由真实块云构造 k 分带速度包络与同构造闭合速度包络，成员判据用**数据派生的跨窗口基线**而非任意阈值；(c) 声明式条件构造：观测几何网络 + 观测初始状态 + 观测边界需求 + 声明的下游供给（限速/车道缩减两种编码）+ 三行为臂；(d) 同车道前车关系与净间距的向量化重建（修复"前车被排在后车之后"的排序缺陷，含回归测试）；(e) 冻结清单与留出窗口读取守卫。
+
+统计事实：`tau_eff = 1.5393/1.5687/1.5570` s（两校准窗口 + 留出窗口）；解析能力 1,981–2,013 veh/h/lane 对观测最大 30 s 块流量 1,996.4；冻结 `tau=1.0` 为 2,882。网格 30 次中 `B_frozen` 全部出域，`B_mean`/`B_het` 在 `vlim=10` 同时通过两窗口；5 独立 seed 复现；局部 P2 率 0.9–1.5 对 17.0/23.5。4 次车道缩变体把 P2 率带到 18.2–25.5 但平均状态越界。留出窗口真实状态落在校准域内（覆盖率 0.851）。
+
+论文同步：`rho` 由阈值线性改为已批准的指数映射、区域风险由求和改为车辆等权平均，线性版本标记为历史基线；XeLaTeX 重编译 9 页 0 错误。
+
+`export_project_evidence.py` 增加该结果的文件映射与三个聚合 CSV/PLAN 白名单项；`validate_project_docs.py --strict-git` 通过。Gate 与所有科学容差状态不变。
+
 ## 2026-10-18 — AAD-0.5.4-A 校准准入与测量等价性审计
 
 新增 `stage_0_5_calibration_readiness.py`、`run_stage_0_5_calibration_readiness.py`、`run_stage_0_5_timestep_sensitivity.py`、`test_stage_0_5_measurement_equivalence.py`（50 项）。

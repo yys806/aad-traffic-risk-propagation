@@ -1,0 +1,117 @@
+{
+ "result_id": "RES-STAGE-0.5-STATE-SUPPORT-V1",
+ "version": "stage-0.5-state-support-v1",
+ "mode": "pre-declared conditional state-support mapping; diagnostic evidence, not Gate acceptance",
+ "region_m": [
+  150.0,
+  350.0
+ ],
+ "lanes": [
+  "1",
+  "2",
+  "3",
+  "4",
+  "5"
+ ],
+ "duration_s": 420.0,
+ "internal_step_s": 0.05,
+ "recorded_step_s": 0.1,
+ "evaluation_window_s": [
+  300.0,
+  420.0
+ ],
+ "evaluation_window_basis": "300-420 s is the last third of the declared 420 s run: it is far enough from the injected real initial state for the boundary conditions to act, identical for every cell, and written here before any trajectory of this batch existed",
+ "block_s": 30.0,
+ "supply_axis": {
+  "quantity": "downstream edge (main_2, 399.22-669.18 m) free speed",
+  "values_mps": [
+   27.78,
+   15.0,
+   12.0,
+   10.0,
+   8.0
+  ],
+  "rationale": "the real corridor is congested with low-speed waves that originate downstream of the observed segment, so the downstream boundary must be a capacity restriction; 27.78 m/s reproduces the observed geometry without restriction; the same declared values are used in every behaviour arm so that the supply axis is not confounded with the behaviour axis",
+  "analytic_capacity_formula": "3600 * v_lim / (v_lim * tau + length + minGap) per lane, 5 lanes"
+ },
+ "behaviour_axis": {
+  "arms": {
+   "B_frozen": {
+    "tau_mode": "frozen",
+    "sigma": 0.5,
+    "status": "sealed Stage 0.5 baseline"
+   },
+   "B_mean": {
+    "tau_mode": "mean",
+    "sigma": 0.5,
+    "status": "declared conditional behaviour"
+   },
+   "B_het": {
+    "tau_mode": "heterogeneous",
+    "sigma": 0.5,
+    "status": "declared conditional behaviour"
+   }
+  },
+  "tau_source": "ratio estimator of net_gap = minGap + tau * v over the full local following population of the two calibration windows, computed in step 1 before any SUMO run",
+  "tau_values_s": {
+   "B_frozen": [
+    1.0
+   ],
+   "B_mean": [
+    1.5661533927145428
+   ],
+   "B_het": [
+    0.7389146576529666,
+    1.093342856277335,
+    1.3877275660721775,
+    1.8288599276236361,
+    2.5614676647488244
+   ]
+  },
+  "single_factor_rule": "an arm may differ from the sealed baseline in tau only"
+ },
+ "initial_state": "each arm is initialised at t=0 with the observed real local state of its window (lanes, positions and speeds taken from the sealed canonical states); the experiment therefore measures whether the observed state is preserved by the simulated dynamics under the declared boundary supply",
+ "membership_rules": {
+  "primary_state_support": "the simulated evaluation-window mean (density, speed) lies inside the real pooled k-band envelope, and the fraction of simulated 30 s blocks inside that envelope is at least the data-derived cross-window baseline coverage",
+  "mechanism_compatibility": "the fraction of simulated 30 s blocks whose density and mean closing speed lie inside the real closing-speed k-band envelope is at least the data-derived cross-window baseline, and the simulated low-speed share does not exceed the maximum observed real 30 s block low-speed share",
+  "not_a_science_tolerance": true,
+  "baseline_definition": "minimum over the two directions of 'fraction of one real window's blocks inside the other real window's envelope' -- a property of the real data, not a chosen threshold"
+ },
+ "stop_rules": [
+  "any engineering failure (non-zero SUMO exit, teleport, collision) stops the batch",
+  "no cell is added to the grid after the grid has been executed",
+  "independent-seed repetition is executed only for cells that pass the primary rule",
+  "the validation window is read only after the freeze manifest exists"
+ ],
+ "seeds": {
+  "grid": 20261201,
+  "independent": [
+   20261201,
+   20261202,
+   20261203,
+   20261204,
+   20261205
+  ],
+  "temporal": [
+   20261211,
+   20261212
+  ]
+ },
+ "sumo_environment": {
+  "sumo_version": "Eclipse SUMO sumo 1.26.0",
+  "sumo_executable": "C:\\Program Files (x86)\\Eclipse\\Sumo\\bin\\sumo.exe",
+  "sumo_executable_sha256": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+  "netconvert_executable": "C:\\Program Files (x86)\\Eclipse\\Sumo\\bin\\netconvert.exe",
+  "netconvert_executable_sha256": "4174c17db813d413c85cdf7ad99a5f59b537ddf80f8caac9e1dfe87a35cb6b51",
+  "traci_module": "C:\\Program Files (x86)\\Eclipse\\Sumo\\tools\\traci\\__init__.py",
+  "traci_version": "unknown",
+  "python_version": "3.13.5",
+  "platform": "Windows-11-10.0.26100-SP0",
+  "sumo_home": "C:\\Program Files (x86)\\Eclipse\\Sumo\\tools"
+ },
+ "sealed_windows_not_read": [
+  "us101__0820_0835",
+  "lankershim",
+  "locked holdout"
+ ]
+}

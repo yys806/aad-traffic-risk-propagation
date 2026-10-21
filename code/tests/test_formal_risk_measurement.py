@@ -15,6 +15,24 @@ def test_rho_and_status_bounds():
     assert contribution_bounds(measurement_status='valid', in_region=None, ttc_s=2)[0:2] == (0.0, 1.0)
     assert contribution_bounds(measurement_status='missing', in_region=False, ttc_s=None)[0:2] == (0.0, 0.0)
 
+def test_rho_is_the_approved_exponential_mapping_without_threshold_truncation():
+    """The approved main definition is exp(-TTC/tau); no linear or truncated form."""
+    tau = P2_FORMAL_CONFIG.tau_s
+    for ttc in (0.1, 0.5, 1.0, 2.0, 5.0, 15.0, 60.0):
+        value = rho_from_ttc(ttc)
+        assert value is not None
+        assert math.isclose(value, math.exp(-ttc / tau), rel_tol=1e-12)
+        # the linear pre-ratification mapping 1 - TTC/theta must not be reproduced
+        assert not math.isclose(value, max(0.0, 1.0 - ttc / 2.0), abs_tol=1e-6)
+    # strictly decreasing and strictly positive: no truncation at the P2 threshold
+    series = [rho_from_ttc(x) for x in (0.5, 1.0, 2.0, 5.0, 30.0, 120.0)]
+    assert all(b < a for a, b in zip(series, series[1:]))
+    assert all(value > 0 for value in series)
+    assert rho_from_ttc(0) is None
+    assert rho_from_ttc(-1.0) is None
+    assert rho_from_ttc(float('nan')) is None
+
+
 def test_fixed_window_keeps_unknown_denominator_and_equal_vehicle_weight():
     records = pd.DataFrame([
         {'time_s': 0.0, 'global_time_ms': 0, 'frame_id': 0, 'diagnostic_clock_anchor_ms': 1, 'dataset':'d', 'site':'s', 'window_id':'w', 'source_member':'m', 'source_period':'p', 'trajectory_id':'f', 'leader_trajectory_id':'l', 'leader_matched':True, 'identity_uncertain':False, 'leader_identity_uncertain':False, 'identity_break':False, 'observation_gap':False, 'lower': 0.2, 'upper': 0.2},

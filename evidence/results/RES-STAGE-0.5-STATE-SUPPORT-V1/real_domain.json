@@ -1,0 +1,408 @@
+{
+ "result_id": "RES-STAGE-0.5-STATE-SUPPORT-V1",
+ "version": "stage-0.5-state-support-v1",
+ "step": "real_domain",
+ "windows": {
+  "us101__0750_0805": {
+   "status": "Observation",
+   "region_m": [
+    150.0,
+    350.0
+   ],
+   "lanes": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+   ],
+   "span_s": 720.0,
+   "states": 313514,
+   "local_vehicle_s": 31351.4,
+   "density_veh_km_lane": 43.54361111111111,
+   "speed_mean_mps": 10.506118382234924,
+   "speed_sd_mps": 3.638561856472785,
+   "flow_veh_h_lane_consistency": 1646.907599244,
+   "low_speed_share": 0.09689200482275113,
+   "closing_speed_mean_mps": -0.17137596169868013,
+   "closing_speed_negative_share": 0.5311756412791774,
+   "net_gap_mean_m": 18.81037762141404,
+   "net_gap_median_m": 16.154400000000003
+  },
+  "us101__0805_0820": {
+   "status": "Observation",
+   "region_m": [
+    150.0,
+    350.0
+   ],
+   "lanes": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5"
+   ],
+   "span_s": 660.0,
+   "states": 333336,
+   "local_vehicle_s": 33333.6,
+   "density_veh_km_lane": 50.50545454545454,
+   "speed_mean_mps": 7.915276152134783,
+   "speed_sd_mps": 3.9858620484023257,
+   "flow_veh_h_lane_consistency": 1439.152631698909,
+   "low_speed_share": 0.25297297621619025,
+   "closing_speed_mean_mps": -0.1094413104615163,
+   "closing_speed_negative_share": 0.5230548155614755,
+   "net_gap_mean_m": 15.379875307365541,
+   "net_gap_median_m": 13.112496000000004
+  }
+ },
+ "status": "Observation",
+ "following_relation": {
+  "us101__0750_0805": {
+   "status": "Derived",
+   "sample_states": 312093,
+   "gap_cap_m": 80.0,
+   "min_gap_m": 2.5,
+   "tau_eff_ratio_s": 1.5339040438179363,
+   "ols_binned_slope_s": 1.4037507711585622,
+   "ols_binned_intercept_m": 4.017229979523668,
+   "ols_binned_bins": 9,
+   "analytic_lane_capacity_ratio_veh_h": 2019.0806294327697,
+   "analytic_lane_capacity_ols_veh_h": 2108.4043668597265,
+   "vehicles": 1701,
+   "vehicle_tau_eff_mean_s": 1.5401726999157714,
+   "vehicle_tau_eff_quantiles_s": [
+    0.5854419224200411,
+    0.7270698183235847,
+    0.9990722264957166,
+    1.3647210492106165,
+    1.9382401680489796,
+    2.5201106731348375,
+    3.0400041344244424
+   ],
+   "vehicle_tau_eff_quantile_levels": [
+    0.05,
+    0.1,
+    0.25,
+    0.5,
+    0.75,
+    0.9,
+    0.95
+   ],
+   "identifiability_note": "only the pair (tau, minGap) is jointly identifiable from this relation; tau_eff is a population-equivalent headway, not an identified driver parameter",
+   "not_a_science_tolerance": true
+  },
+  "us101__0805_0820": {
+   "status": "Derived",
+   "sample_states": 331974,
+   "gap_cap_m": 80.0,
+   "min_gap_m": 2.5,
+   "tau_eff_ratio_s": 1.6064393100293013,
+   "ols_binned_slope_s": 1.2384223685029456,
+   "ols_binned_intercept_m": 5.066059256639041,
+   "ols_binned_bins": 8,
+   "analytic_lane_capacity_ratio_veh_h": 1940.1517266769138,
+   "analytic_lane_capacity_ols_veh_h": 2278.6558270538894,
+   "vehicles": 1367,
+   "vehicle_tau_eff_mean_s": 1.591825145995782,
+   "vehicle_tau_eff_quantiles_s": [
+    0.6233526174860985,
+    0.7628006726168616,
+    1.040655543964792,
+    1.4194102120787253,
+    1.9402532259515508,
+    2.5797431947604506,
+    3.103096319279517
+   ],
+   "vehicle_tau_eff_quantile_levels": [
+    0.05,
+    0.1,
+    0.25,
+    0.5,
+    0.75,
+    0.9,
+    0.95
+   ],
+   "identifiability_note": "only the pair (tau, minGap) is jointly identifiable from this relation; tau_eff is a population-equivalent headway, not an identified driver parameter",
+   "not_a_science_tolerance": true
+  }
+ },
+ "pooled_following_relation": {
+  "status": "Derived",
+  "sample_states": 644067,
+  "gap_cap_m": 80.0,
+  "min_gap_m": 2.5,
+  "tau_eff_ratio_s": 1.5661533927145428,
+  "ols_binned_slope_s": 1.353264795459127,
+  "ols_binned_intercept_m": 4.400401794998471,
+  "ols_binned_bins": 9,
+  "analytic_lane_capacity_ratio_veh_h": 1983.209852468148,
+  "analytic_lane_capacity_ols_veh_h": 2154.708732823815,
+  "vehicles": 3068,
+  "vehicle_tau_eff_mean_s": 1.5631873328334294,
+  "vehicle_tau_eff_quantiles_s": [
+   0.6027334861874937,
+   0.7389146576529666,
+   1.0197466788286245,
+   1.3877275660721775,
+   1.939143018011501,
+   2.5614676647488244,
+   3.063192243865164
+  ],
+  "vehicle_tau_eff_quantile_levels": [
+   0.05,
+   0.1,
+   0.25,
+   0.5,
+   0.75,
+   0.9,
+   0.95
+  ],
+  "identifiability_note": "only the pair (tau, minGap) is jointly identifiable from this relation; tau_eff is a population-equivalent headway, not an identified driver parameter",
+  "not_a_science_tolerance": true
+ },
+ "pooled_envelope": {
+  "status": "Observation",
+  "band_veh_km_lane": 7.5,
+  "quantiles": [
+   0.025,
+   0.975
+  ],
+  "density_min_veh_km_lane": 14.520000000000001,
+  "density_max_veh_km_lane": 76.1,
+  "band_centres_veh_km_lane": [
+   15.0,
+   22.5,
+   30.0,
+   37.5,
+   45.0,
+   52.5,
+   67.5
+  ],
+  "band_speed_lower_mps": [
+   9.693448308974354,
+   5.676815325741424,
+   3.8236988509332153,
+   3.44026975353073,
+   6.511022648249578,
+   6.8937473143456245,
+   3.2530492167640577
+  ],
+  "band_speed_upper_mps": [
+   15.088698315168381,
+   14.422067078227231,
+   13.702292292668904,
+   14.263246873860437,
+   13.714774158229437,
+   10.1362314406129,
+   4.825774835989299
+  ],
+  "block_count": 138
+ },
+ "pooled_closing_envelope": {
+  "status": "Observation",
+  "band_veh_km_lane": 7.5,
+  "quantiles": [
+   0.025,
+   0.975
+  ],
+  "band_centres_veh_km_lane": [
+   15.0,
+   22.5,
+   30.0,
+   37.5,
+   45.0,
+   52.5,
+   67.5
+  ],
+  "band_closing_lower_mps": [
+   -0.8611158501222889,
+   -0.8333681776371294,
+   -0.7531180243949557,
+   -0.6956765610690536,
+   -0.689846713579469,
+   -0.7947340434004099,
+   -0.16990466438709048
+  ],
+  "band_closing_upper_mps": [
+   0.44515682001684814,
+   0.6309331764641736,
+   0.623426800781508,
+   0.5732259134386597,
+   0.5882070943755865,
+   0.5333268444013861,
+   0.10495903832411231
+  ],
+  "block_count": 138
+ },
+ "cross_window_coverage": {
+  "us101__0750_0805": {
+   "coverage_inside_pooled_envelope": 0.9027777777777778,
+   "own_envelope": {
+    "status": "Observation",
+    "band_veh_km_lane": 7.5,
+    "quantiles": [
+     0.025,
+     0.975
+    ],
+    "density_min_veh_km_lane": 14.520000000000001,
+    "density_max_veh_km_lane": 76.1,
+    "band_centres_veh_km_lane": [
+     15.0,
+     22.5,
+     30.0,
+     37.5,
+     45.0,
+     52.5
+    ],
+    "band_speed_lower_mps": [
+     10.163305340227147,
+     7.559565844591897,
+     6.890929782919084,
+     5.574002027140798,
+     5.222576450699223,
+     8.307697925148634
+    ],
+    "band_speed_upper_mps": [
+     15.248911021018442,
+     14.994349546982376,
+     14.188130664344508,
+     14.458546389507022,
+     13.344670676204482,
+     9.951974698618022
+    ],
+    "block_count": 72
+   }
+  },
+  "us101__0805_0820": {
+   "coverage_inside_pooled_envelope": 0.9696969696969697,
+   "own_envelope": {
+    "status": "Observation",
+    "band_veh_km_lane": 7.5,
+    "quantiles": [
+     0.025,
+     0.975
+    ],
+    "density_min_veh_km_lane": 16.273333333333333,
+    "density_max_veh_km_lane": 73.79333333333334,
+    "band_centres_veh_km_lane": [
+     15.0,
+     22.5,
+     30.0,
+     37.5,
+     45.0,
+     52.5,
+     67.5
+    ],
+    "band_speed_lower_mps": [
+     9.170336989281045,
+     5.592121654902856,
+     3.686681452387873,
+     3.645283769632065,
+     7.674307243259595,
+     6.892653126415811,
+     3.2530492167640577
+    ],
+    "band_speed_upper_mps": [
+     13.8173721986472,
+     13.804689088206745,
+     12.083170230879848,
+     13.532389173925525,
+     13.118126800948446,
+     10.11622572347937,
+     4.825774835989299
+    ],
+    "block_count": 66
+   }
+  }
+ },
+ "cross_window_baseline_coverage_min": 0.6363636363636364,
+ "cross_window_baseline_detail": {
+  "us101__0805_0820_inside_envelope_of_us101__0750_0805": 0.6363636363636364,
+  "us101__0750_0805_inside_envelope_of_us101__0805_0820": 0.8333333333333334
+ },
+ "per_window_envelopes": {
+  "us101__0750_0805": {
+   "status": "Observation",
+   "band_veh_km_lane": 7.5,
+   "quantiles": [
+    0.025,
+    0.975
+   ],
+   "density_min_veh_km_lane": 14.520000000000001,
+   "density_max_veh_km_lane": 76.1,
+   "band_centres_veh_km_lane": [
+    15.0,
+    22.5,
+    30.0,
+    37.5,
+    45.0,
+    52.5
+   ],
+   "band_speed_lower_mps": [
+    10.163305340227147,
+    7.559565844591897,
+    6.890929782919084,
+    5.574002027140798,
+    5.222576450699223,
+    8.307697925148634
+   ],
+   "band_speed_upper_mps": [
+    15.248911021018442,
+    14.994349546982376,
+    14.188130664344508,
+    14.458546389507022,
+    13.344670676204482,
+    9.951974698618022
+   ],
+   "block_count": 72
+  },
+  "us101__0805_0820": {
+   "status": "Observation",
+   "band_veh_km_lane": 7.5,
+   "quantiles": [
+    0.025,
+    0.975
+   ],
+   "density_min_veh_km_lane": 16.273333333333333,
+   "density_max_veh_km_lane": 73.79333333333334,
+   "band_centres_veh_km_lane": [
+    15.0,
+    22.5,
+    30.0,
+    37.5,
+    45.0,
+    52.5,
+    67.5
+   ],
+   "band_speed_lower_mps": [
+    9.170336989281045,
+    5.592121654902856,
+    3.686681452387873,
+    3.645283769632065,
+    7.674307243259595,
+    6.892653126415811,
+    3.2530492167640577
+   ],
+   "band_speed_upper_mps": [
+    13.8173721986472,
+    13.804689088206745,
+    12.083170230879848,
+    13.532389173925525,
+    13.118126800948446,
+    10.11622572347937,
+    4.825774835989299
+   ],
+   "block_count": 66
+  }
+ },
+ "observed_block_flow_max_veh_h_lane": 1996.3673112960007,
+ "observed_block_density_range": [
+  14.520000000000001,
+  76.1
+ ],
+ "observed_block_speed_range": [
+  2.7503299304259294,
+  15.789055636363639
+ ]
+}
