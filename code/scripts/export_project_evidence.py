@@ -132,6 +132,19 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
             (f"code/outputs/formal/calibration/stage_0_5_state_support_v1/{name}", name)
         )
 
+    # AAD-0.5-ARRIVAL-TIMING: boundary event reconstruction, parity audit, relative-speed
+    # wave diagnostic, paired U/E contrast and the realised-arrival fidelity audit.
+    pairs.setdefault("RES-STAGE-0.5-ARRIVAL-TIMING-V1", [])
+    for name in (
+        "PLAN_SHA256", "SHA256SUMS", "experiment_plan.json", "phase_a_audit_summary.json",
+        "arrival_summary.json", "phase_b_wave_diagnostic.json", "event_manifest.json",
+        "run_results.json", "run_metrics.csv", "paired_analysis.json",
+        "fidelity_metrics.csv", "verdict.json",
+    ):
+        pairs["RES-STAGE-0.5-ARRIVAL-TIMING-V1"].append(
+            (f"code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/{name}", name)
+        )
+
     stage_0_1_root = "code/outputs/formal/stage_0_1/e00_real_sumo_20260907_primary_v3"
     for cell in ("s0c0", "s0c1", "s1c0", "s1c1"):
         for name in (
@@ -716,7 +729,9 @@ def _validate_source(source: Path) -> None:
         "REPLAY_PLAN_SHA256","INIT_PLAN_SHA256","RESPONSE_PLAN_SHA256","NEWELL_PLAN_SHA256",
         "init_routes.csv","newell_metrics.csv","response_metrics.csv",
         "STRUCTURAL_PLAN_SHA256","real_block_cloud.csv",
-        "real_block_cloud_us101__0750_0805.csv","real_block_cloud_us101__0805_0820.csv"}
+        "real_block_cloud_us101__0750_0805.csv","real_block_cloud_us101__0805_0820.csv",
+        "fidelity_metrics.csv",
+        }
     if source.suffix.lower() not in {".json", ".md", ".txt", ".sha256"} and source.name not in aggregate_names:
         raise ValueError(f"unsupported evidence file type: {source}")
 

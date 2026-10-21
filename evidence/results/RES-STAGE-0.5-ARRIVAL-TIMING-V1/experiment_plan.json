@@ -1,0 +1,110 @@
+{
+ "result_id": "RES-STAGE-0.5-ARRIVAL-TIMING-V1",
+ "version": "stage-0.5-boundary-timing-v1",
+ "mode": "pre-declared paired arrival-timing contrast; diagnostic evidence, not Gate acceptance",
+ "question": "holding the network, behaviour, boundary supply, initial state, vehicle identity, route, type, lane and event count fixed, does restoring the real boundary arrival structure change relative motion, low-speed wave structure and the P2 diagnostic?",
+ "frozen_base_conditions": {
+  "behaviour": "B_het",
+  "tau_values_source": [
+   0.6027334861874937,
+   0.7389146576529666,
+   1.0197466788286245,
+   1.3877275660721775,
+   1.939143018011501,
+   2.5614676647488244,
+   3.063192243865164
+  ],
+  "downstream_free_speed_mps": 10.0,
+  "region_m": [
+   150.0,
+   350.0
+  ],
+  "lanes": [
+   "1",
+   "2",
+   "3",
+   "4",
+   "5"
+  ],
+  "duration_s": 420.0,
+  "internal_step_s": 0.05,
+  "recorded_step_s": 0.1,
+  "evaluation_window_s": [
+   300.0,
+   420.0
+  ],
+  "initial_state": "observed real state at the window start, identical in both arms"
+ },
+ "arms": {
+  "E": "real reconstructed arrival times",
+  "U": "same events, arrival times uniformised per stream: t_i = (i+0.5)T/N",
+  "pairing_rule": "the i-th uniform slot of a stream goes to the i-th earliest real arrival of the same stream; vehicle identity, route, type, lane, initial speed and per-stream event count are identical"
+ },
+ "entry_rule": {
+  "entry_y_max_m": 30.0,
+  "mainline": "first canonical observation inside the approved span, lanes 1-5, y <= 30 m",
+  "onramp": "first canonical observation on the observed on-ramp lane",
+  "excluded": "initial-state vehicles, first observation downstream of the entry plane, events beyond the simulation horizon"
+ },
+ "seeds": {
+  "set": [
+   20261201,
+   20261202,
+   20261203,
+   20261204,
+   20261205
+  ],
+  "design": "paired across arms; no arm-specific seed"
+ },
+ "budget": {
+  "cells": 20,
+  "note": "2 windows x 2 arms x 5 seeds = 20 runs"
+ },
+ "metrics": {
+  "state_support": "the previous task's frozen domain and membership rules, read from RES-STAGE-0.5-STATE-SUPPORT-V1/real_domain.json, not re-derived",
+  "interaction": [
+   "local P2 count and rate",
+   "speed dispersion",
+   "closing-speed negative share",
+   "closing-speed envelope coverage",
+   "effective time headway"
+  ],
+  "waves": [
+   "relative-speed anomaly level",
+   "largest component",
+   "cross-correlation upstream share and median implied speed",
+   "permutation-null exceedance"
+  ],
+  "insertion_audit": "declared departure time versus realised first appearance in the FCD"
+ },
+ "reading_rules": {
+  "H1_supported": "E improves relative-motion or fluctuation metrics in the paired comparison, direction consistent across both windows or explained by the observed demand conditions, not driven by one seed, and state support is not lost",
+  "H2_supported": "H1 holds and the existing interaction-compatibility rules show a material advance under their frozen definitions",
+  "H1_not_supported": "no stable paired improvement, or E is worse for reasons not explained by input-construction defects",
+  "indeterminate": "arrival timing not reliably reconstructed, arms not timing-only, engineering failure, or conflicting windows without a discriminating explanation",
+  "no_arbitrary_threshold": true
+ },
+ "stop_rules": [
+  "any engineering failure (non-zero exit, teleport, collision) stops the batch",
+  "the grid is not extended after execution",
+  "if the arms cannot be made timing-only, report and stop",
+  "no third supply encoding and no new behaviour parameters in this task"
+ ],
+ "sumo_environment": {
+  "sumo_version": "Eclipse SUMO sumo 1.26.0",
+  "sumo_executable": "C:\\Program Files (x86)\\Eclipse\\Sumo\\bin\\sumo.exe",
+  "sumo_executable_sha256": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+  "netconvert_executable": "C:\\Program Files (x86)\\Eclipse\\Sumo\\bin\\netconvert.exe",
+  "netconvert_executable_sha256": "4174c17db813d413c85cdf7ad99a5f59b537ddf80f8caac9e1dfe87a35cb6b51",
+  "traci_module": "C:\\Program Files (x86)\\Eclipse\\Sumo\\tools\\traci\\__init__.py",
+  "traci_version": "unknown",
+  "python_version": "3.13.5",
+  "platform": "Windows-11-10.0.26100-SP0",
+  "sumo_home": "C:\\Program Files (x86)\\Eclipse\\Sumo\\tools"
+ },
+ "sealed_windows_not_read": [
+  "us101__0820_0835",
+  "lankershim",
+  "locked holdout"
+ ]
+}

@@ -307,3 +307,18 @@ B1.2前置接入工程阻断，主矩阵未冻结/未运行；报告`docs/STAGE_
 第三窗口读取 4 次（冻结后，留出验证），locked holdout 0 次。Gate 保持 `pending_simulation_sample`。
 
 报告 `docs/STAGE_0_5_CONDITIONAL_STATE_SUPPORT.md`、`docs/STAGE_0_5_FORMAL_RISK_DEFINITION_CONSISTENCY.md`；计划 `docs/plans/2026-10-21-stage-0-5-state-support.md`；证据 `evidence/results/RES-STAGE-0.5-STATE-SUPPORT-V1/`。
+
+## RES-STAGE-0.5-ARRIVAL-TIMING-V1
+
+边界到达时序与车辆交互动态诊断（AAD-0.5-ARRIVAL-TIMING，2026-10-21）。**结论：到达时间结构不是交互相容缺口的充分解释，主线部分且根本无法施加。**
+
+- **阶段 A（只读审计）**：主线入口对应真实 `y ≈ 0 m`，而此前需求取自 `y = 150 m` 穿越率并施加在入口，**错配 150 m**；本轮改用真实**首次观测**事件并声明入口带 `y ≤ 30 m`。事件：0750 = 989 主线 + 57 匝道；0805 = 873 + 66；排除项逐条记录（超出时域 732/479、初始状态 120/131、首现在下游 3/11）；**与初始状态的身份交集为空**，被重叠过滤器丢弃的车辆不会被重新引入。车型不可逐车获得（canonical schema 无逐车长度/类别），沿用总体份额并在两臂一致。
+- **阶段 B（波诊断修正）**：旧绝对 10 m/s 份额在平均 9.7 m/s 的配置上无判别力，降级为历史描述。新 `temporal_position` 相对定义（单元格 ≤ 同位置自身时间分布 15% 分位）+ 互相关滞后独立裁决 + 置换零模型：**真实两窗口均 `propagating_structure`**（互相关上游份额 1.00、中位隐含速度 −5.0 m/s、零模型超越 0.000、敏感性全网格不变）；上一轮周期到达运行同一诊断下为 `uncorroborated_structure`（份额 0.31/0.23）。合成验收区分上游/静止/下游/无异常/含缺口。任务书建议的密度条件基线形式**不具判别力**（异常全部落在上游位置、无波前），作为否定结果记录。
+- **阶段 C/D（20 次配对运行，0 teleport / 0 collision）**：**主线到达结构不可施加**——声明主线间隔 CV 0.25 vs 0.86（0750）/ 0.20 vs 0.91（0805），实现后为 0.820 vs 0.831 / 0.788 vs 0.851，平均入队延迟 25–30 s / 4.5–5.6 s；**匝道可施加**——实现 CV 0.006 vs 1.397 / 0.008 vs 1.412，延迟 0.05–0.45 s。故有效对照为**仅匝道到达时序**。配对差异（E−U）：速度离散 **+0.25（5/5）/ +1.78（5/5）**，朝真实值上升；净拉开份额 −0.004（2/5）/ **−0.112（0/5）**，反向恶化；局部 P2 率 **−0.23（2/5）/ +0.80（5/5）**，两窗口方向相反且绝对值仍低一个数量级；最大异常连通域 −24.4 / −5.6（均 0/5 为正）。状态支持 20/20 保持。
+- **判读**：H1 **Partially Supported**（因果归因只能落在匝道流）；H2 **Not Supported**；H3 **Supported**。Stage 0.5 仍被交互相容层阻断，Gate 不变；不因 0805 的 P2 上升而宣布通过。
+- **停止规则**：无工程失败、无身份冲突、两臂输入逐项一致、哈希已冻结；新增的"实现到达结构是否仍可比"判据在**主线**触发，据此把主线的因果归因判为不能成立，并按规则未追加第三种供给编码或新参数搜索。
+- **下一步（Proposal，需另行授权）**：P1 汇入/车道缩减区的横向交互作为离散度与风险事件的来源；P2 显式上游存储段使到达时序真正可施加（本轮 `never_inserted` 达 13%）。
+
+第三窗口读取 0 次、locked holdout 0 次。Gate 保持 `pending_simulation_sample`；`protocol_lock_allowed=false`、`stage_1_1_allowed=false`。
+
+报告 `docs/STAGE_0_5_ARRIVAL_TIMING_DIAGNOSTICS.md`；计划 `docs/plans/2026-10-21-stage-0-5-arrival-timing.md`；证据 `evidence/results/RES-STAGE-0.5-ARRIVAL-TIMING-V1/`。

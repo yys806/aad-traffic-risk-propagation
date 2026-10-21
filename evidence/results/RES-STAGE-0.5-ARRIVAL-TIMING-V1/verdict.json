@@ -1,0 +1,342 @@
+{
+ "result_id": "RES-STAGE-0.5-ARRIVAL-TIMING-V1",
+ "plan_sha256": "20735ee3c91cff75af1f6b186da9fb40201509c75b5a4e6bf06c96809594cde0",
+ "engineering_ok": true,
+ "inputs_are_timing_only": true,
+ "state_support_kept": {
+  "us101__0750_0805": {
+   "U": true,
+   "E": true
+  },
+  "us101__0805_0820": {
+   "U": true,
+   "E": true
+  }
+ },
+ "realised_fidelity": {
+  "us101__0750_0805": {
+   "U": {
+    "declared_gap_cv": 0.25306168953831853,
+    "realised_gap_cv": 0.8197044522156725,
+    "delay_mean_s": 24.897470872424556,
+    "delay_gt_one_gap_share": 0.9246894911050203,
+    "never_inserted": null
+   },
+   "E": {
+    "declared_gap_cv": 0.8621766998249993,
+    "realised_gap_cv": 0.8310268954508004,
+    "delay_mean_s": 30.031882617951048,
+    "delay_gt_one_gap_share": 0.920578087852685,
+    "never_inserted": null
+   },
+   "timing_survives": false
+  },
+  "us101__0805_0820": {
+   "U": {
+    "declared_gap_cv": 0.20156356932210245,
+    "realised_gap_cv": 0.7884456588492803,
+    "delay_mean_s": 5.589747364909892,
+    "delay_gt_one_gap_share": 0.6094959720962194,
+    "never_inserted": null
+   },
+   "E": {
+    "declared_gap_cv": 0.9099366810254812,
+    "realised_gap_cv": 0.851232204792025,
+    "delay_mean_s": 4.5278389783120545,
+    "delay_gt_one_gap_share": 0.6469969011903246,
+    "never_inserted": null
+   },
+   "timing_survives": false
+  }
+ },
+ "stream_fidelity": {
+  "us101__0750_0805": {
+   "mainline": {
+    "U": {
+     "declared_gap_cv": 0.25306168953831853,
+     "realised_gap_cv": 0.8197044522156725,
+     "delay_mean_s": 24.897470872424556,
+     "delay_gt_one_gap_share": 0.9246894911050203
+    },
+    "E": {
+     "declared_gap_cv": 0.8621766998249993,
+     "realised_gap_cv": 0.8310268954508004,
+     "delay_mean_s": 30.031882617951048,
+     "delay_gt_one_gap_share": 0.920578087852685
+    },
+    "realised_cv_ratio_E_over_U": 1.0138128360832044,
+    "manipulation_survives": false,
+    "declared_cv_ratio_E_over_U": 3.4069823109058506
+   },
+   "onramp": {
+    "U": {
+     "declared_gap_cv": 4.621915991735601e-15,
+     "realised_gap_cv": 0.0062955686503727935,
+     "delay_mean_s": 0.04736842105262877,
+     "delay_gt_one_gap_share": 0.0
+    },
+    "E": {
+     "declared_gap_cv": 1.426009288024557,
+     "realised_gap_cv": 1.39709922600644,
+     "delay_mean_s": 0.3228571428571402,
+     "delay_gt_one_gap_share": 0.0
+    },
+    "realised_cv_ratio_E_over_U": 221.9178764612011,
+    "manipulation_survives": true,
+    "declared_cv_ratio_E_over_U": 308532065613998.4
+   }
+  },
+  "us101__0805_0820": {
+   "mainline": {
+    "U": {
+     "declared_gap_cv": 0.20156356932210245,
+     "realised_gap_cv": 0.7884456588492803,
+     "delay_mean_s": 5.589747364909892,
+     "delay_gt_one_gap_share": 0.6094959720962194
+    },
+    "E": {
+     "declared_gap_cv": 0.9099366810254812,
+     "realised_gap_cv": 0.851232204792025,
+     "delay_mean_s": 4.5278389783120545,
+     "delay_gt_one_gap_share": 0.6469969011903246
+    },
+    "realised_cv_ratio_E_over_U": 1.0796333206201938,
+    "manipulation_survives": false,
+    "declared_cv_ratio_E_over_U": 4.514390591939682
+   },
+   "onramp": {
+    "U": {
+     "declared_gap_cv": 3.679983227178618e-15,
+     "realised_gap_cv": 0.007571287429186832,
+     "delay_mean_s": 0.045454545454544755,
+     "delay_gt_one_gap_share": 0.0
+    },
+    "E": {
+     "declared_gap_cv": 1.45002903253141,
+     "realised_gap_cv": 1.412193947934866,
+     "delay_mean_s": 0.45242424242424006,
+     "delay_gt_one_gap_share": 0.0
+    },
+    "realised_cv_ratio_E_over_U": 186.51965879553694,
+    "manipulation_survives": true,
+    "declared_cv_ratio_E_over_U": 394031424334268.8
+   }
+  }
+ },
+ "mainline_timing_imposable": false,
+ "onramp_timing_imposable": true,
+ "effective_contrast": "on-ramp arrival timing only",
+ "fidelity_ok": false,
+ "wave_baseline_source": {
+  "primary": "temporal_position",
+  "alpha": 0.15,
+  "cell_y_m": 50.0,
+  "cell_t_s": 10.0,
+  "min_obs": 30,
+  "connectivity": 8,
+  "definition_choice_basis": "fixed on the real calibration windows only, before any simulator run of this task: at 30 s cells the independent lag estimate is unresolved (every adjacent pair peaks at lag 0), while at 10 s cells both real windows give a concordant upstream front near 5 m/s whose structure exceeds the permutation null",
+  "sensitivity_grid": {
+   "t_step_s": [
+    10.0,
+    15.0
+   ],
+   "alpha": [
+    0.1,
+    0.15,
+    0.2
+   ]
+  }
+ },
+ "wave_levels": {
+  "us101__0750_0805|U": {
+   "levels": [
+    "propagating_structure",
+    "propagating_structure",
+    "uncorroborated_structure",
+    "propagating_structure",
+    "propagating_structure"
+   ],
+   "all_propagating": false
+  },
+  "us101__0750_0805|E": {
+   "levels": [
+    "propagating_structure",
+    "propagating_structure",
+    "uncorroborated_structure",
+    "propagating_structure",
+    "local_anomaly_no_propagation"
+   ],
+   "all_propagating": false
+  },
+  "us101__0805_0820|U": {
+   "levels": [
+    "uncorroborated_structure",
+    "uncorroborated_structure",
+    "uncorroborated_structure",
+    "uncorroborated_structure",
+    "uncorroborated_structure"
+   ],
+   "all_propagating": false
+  },
+  "us101__0805_0820|E": {
+   "levels": [
+    "uncorroborated_structure",
+    "uncorroborated_structure",
+    "uncorroborated_structure",
+    "uncorroborated_structure",
+    "uncorroborated_structure"
+   ],
+   "all_propagating": false
+  }
+ },
+ "paired_differences": {
+  "speed_sd": {
+   "us101__0750_0805": {
+    "difference": 0.25418538087301823,
+    "positive_seeds": 5,
+    "seeds": 5,
+    "U_mean": 1.168683377605377,
+    "E_mean": 1.4228687584783952
+   },
+   "us101__0805_0820": {
+    "difference": 1.7748397302321042,
+    "positive_seeds": 5,
+    "seeds": 5,
+    "U_mean": 1.778625733985993,
+    "E_mean": 3.553465464218097
+   }
+  },
+  "closing_negative_share": {
+   "us101__0750_0805": {
+    "difference": -0.004459572075700269,
+    "positive_seeds": 2,
+    "seeds": 5,
+    "U_mean": 0.4855511033274877,
+    "E_mean": 0.48109153125178744
+   },
+   "us101__0805_0820": {
+    "difference": -0.11196149467362729,
+    "positive_seeds": 0,
+    "seeds": 5,
+    "U_mean": 0.4709601370161847,
+    "E_mean": 0.3589986423425574
+   }
+  },
+  "p2_local_rate": {
+   "us101__0750_0805": {
+    "difference": -0.2332434725061127,
+    "positive_seeds": 2,
+    "seeds": 5,
+    "U_mean": 1.3897373734447356,
+    "E_mean": 1.156493900938623
+   },
+   "us101__0805_0820": {
+    "difference": 0.7995989189902885,
+    "positive_seeds": 5,
+    "seeds": 5,
+    "U_mean": 1.012189728895061,
+    "E_mean": 1.8117886478853495
+   }
+  },
+  "wave_largest": {
+   "us101__0750_0805": {
+    "difference": -24.4,
+    "positive_seeds": 0,
+    "seeds": 5,
+    "U_mean": 48.8,
+    "E_mean": 24.4
+   },
+   "us101__0805_0820": {
+    "difference": -5.6,
+    "positive_seeds": 0,
+    "seeds": 5,
+    "U_mean": 42.0,
+    "E_mean": 36.4
+   }
+  },
+  "density": {
+   "us101__0750_0805": {
+    "difference": -0.8286666666666704,
+    "positive_seeds": 0,
+    "seeds": 5,
+    "U_mean": 47.539500000000004,
+    "E_mean": 46.71083333333333
+   },
+   "us101__0805_0820": {
+    "difference": -4.476333333333331,
+    "positive_seeds": 0,
+    "seeds": 5,
+    "U_mean": 47.439166666666665,
+    "E_mean": 42.962833333333336
+   }
+  },
+  "speed": {
+   "us101__0750_0805": {
+    "difference": 0.14585503204455746,
+    "positive_seeds": 4,
+    "seeds": 5,
+    "U_mean": 8.890520491701116,
+    "E_mean": 9.036375523745674
+   },
+   "us101__0805_0820": {
+    "difference": 0.9971491538927075,
+    "positive_seeds": 5,
+    "seeds": 5,
+    "U_mean": 8.777970971560588,
+    "E_mean": 9.775120125453295
+   }
+  },
+  "tau_eff": {
+   "us101__0750_0805": {
+    "difference": 0.012755920403051402,
+    "positive_seeds": 4,
+    "seeds": 5,
+    "U_mean": 1.5657980083272753,
+    "E_mean": 1.5785539287303267
+   },
+   "us101__0805_0820": {
+    "difference": 0.021976936568906202,
+    "positive_seeds": 4,
+    "seeds": 5,
+    "U_mean": 1.5803292319209568,
+    "E_mean": 1.602306168489863
+   }
+  },
+  "delay_p50": {
+   "us101__0750_0805": {
+    "difference": 5.905753286147634,
+    "positive_seeds": 5,
+    "seeds": 5,
+    "U_mean": 17.98424671385237,
+    "E_mean": 23.890000000000008
+   },
+   "us101__0805_0820": {
+    "difference": 1.0751890034364386,
+    "positive_seeds": 5,
+    "seeds": 5,
+    "U_mean": 1.0648109965635704,
+    "E_mean": 2.140000000000009
+   }
+  }
+ },
+ "improvement_checks": {
+  "speed_dispersion_toward_real": true,
+  "closing_negative_share_toward_real": false,
+  "p2_rate_toward_real": false,
+  "wave_structure_restored": false
+ },
+ "improvements_met": [
+  "speed_dispersion_toward_real"
+ ],
+ "H1_arrival_structure_matters": "Partially Supported",
+ "H1_causal_attribution": "Established for the stream whose declared timing survives insertion",
+ "H2_interaction_compatibility_recovered": "Not Supported",
+ "H2_rules_met": {
+  "state_support_kept": true,
+  "closing_negative_share_toward_real": false,
+  "wave_structure_restored": false,
+  "p2_rate_toward_real": false
+ },
+ "note": "H1 and H2 are read only from the paired contrast under the declared rules. A P2 change alone is never treated as evidence that the real mechanism has been reproduced, and a failed manipulation fidelity is reported as such rather than as a scientific result.",
+ "runs": 20
+}

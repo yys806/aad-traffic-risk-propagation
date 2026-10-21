@@ -1,0 +1,279 @@
+{
+ "result_id": "RES-STAGE-0.5-ARRIVAL-TIMING-V1",
+ "step": "phase_B_wave_diagnostic",
+ "status": "Observation",
+ "declared_definition": {
+  "primary": "temporal_position",
+  "alpha": 0.15,
+  "cell_y_m": 50.0,
+  "cell_t_s": 10.0,
+  "min_obs": 30,
+  "connectivity": 8,
+  "definition_choice_basis": "fixed on the real calibration windows only, before any simulator run of this task: at 30 s cells the independent lag estimate is unresolved (every adjacent pair peaks at lag 0), while at 10 s cells both real windows give a concordant upstream front near 5 m/s whose structure exceeds the permutation null",
+  "sensitivity_grid": {
+   "t_step_s": [
+    10.0,
+    15.0
+   ],
+   "alpha": [
+    0.1,
+    0.15,
+    0.2
+   ]
+  }
+ },
+ "density_conditioned_baseline": {
+  "status": "Observation",
+  "band_veh_km_lane": 7.5,
+  "centres_veh_km_lane": [
+   7.5,
+   15.0,
+   22.5,
+   30.0,
+   37.5,
+   45.0,
+   52.5,
+   60.0,
+   67.5,
+   75.0,
+   82.5
+  ],
+  "median_speed_mps": [
+   11.434657344000001,
+   11.434657344000001,
+   17.311398331716777,
+   14.178157683764308,
+   12.027582230420347,
+   10.564616989455807,
+   8.272114405545928,
+   5.752002222313456,
+   4.528297619909514,
+   3.71527985704372,
+   3.0978722315789478
+  ],
+  "cell_counts": [
+   21,
+   23,
+   77,
+   205,
+   302,
+   278,
+   151,
+   76,
+   60,
+   37,
+   9
+  ],
+  "density_min_veh_km_lane": 7.5,
+  "density_max_veh_km_lane": 82.5
+ },
+ "density_conditioned_threshold_mps": -1.8311120907749965,
+ "density_conditioned_variant_verdict": "non-discriminating for wave structure on the real frames: all 0750 anomalies and the largest 0805 component sit at the upstream boundary position, and no front slope can be estimated, so this variant is reported but is not the primary definition",
+ "synthetic_acceptance": {
+  "upstream": {
+   "level": "propagating_structure",
+   "largest_component_cells": 40,
+   "front_direction": "upstream",
+   "front_slope_mps": -1.7074527252502785,
+   "cross_correlation_upstream_share": 0.9090909090909091,
+   "cross_correlation_median_speed_mps": -1.6666666666666667,
+   "null_exceedance_rate": 0.0
+  },
+  "stationary": {
+   "level": "local_anomaly_no_propagation",
+   "largest_component_cells": 8,
+   "front_direction": "upstream",
+   "front_slope_mps": -8.750000000000037,
+   "cross_correlation_upstream_share": 0.5454545454545454,
+   "cross_correlation_median_speed_mps": -1.125,
+   "null_exceedance_rate": 0.398
+  },
+  "downstream": {
+   "level": "uncorroborated_structure",
+   "largest_component_cells": 34,
+   "front_direction": "downstream",
+   "front_slope_mps": 1.6134593993325916,
+   "cross_correlation_upstream_share": 0.0,
+   "cross_correlation_median_speed_mps": 1.6666666666666667,
+   "null_exceedance_rate": 0.0
+  },
+  "none": {
+   "level": "local_anomaly_no_propagation",
+   "largest_component_cells": 8,
+   "front_direction": "upstream",
+   "front_slope_mps": -8.750000000000037,
+   "cross_correlation_upstream_share": 0.5454545454545454,
+   "cross_correlation_median_speed_mps": -1.125,
+   "null_exceedance_rate": 0.398
+  },
+  "gappy": {
+   "level": "propagating_structure",
+   "largest_component_cells": 26,
+   "front_direction": "upstream",
+   "front_slope_mps": -1.6428571428571443,
+   "cross_correlation_upstream_share": 0.9090909090909091,
+   "cross_correlation_median_speed_mps": -1.6666666666666667,
+   "null_exceedance_rate": 0.0
+  }
+ },
+ "real_frames": {
+  "us101__0750_0805": {
+   "level": "propagating_structure",
+   "largest_component_cells": 66,
+   "front_slope_mps": -2.787802265074989,
+   "front_direction": "upstream",
+   "cross_correlation_upstream_share": 1.0,
+   "cross_correlation_median_speed_mps": -5.0,
+   "null_exceedance_rate": 0.0,
+   "sensitivity_invariant": true,
+   "sensitivity_min_upstream_share": 0.6666666666666666,
+   "sensitivity_grid": [
+    {
+     "t_step_s": 10.0,
+     "alpha": 0.1,
+     "cells": 936,
+     "level": "propagating_structure",
+     "largest_component_cells": 61,
+     "front_slope_mps": -3.217171717171712,
+     "cross_correlation_upstream_share": 1.0,
+     "cross_correlation_median_speed_mps": -5.0
+    },
+    {
+     "t_step_s": 10.0,
+     "alpha": 0.15,
+     "cells": 936,
+     "level": "propagating_structure",
+     "largest_component_cells": 66,
+     "front_slope_mps": -2.787802265074989,
+     "cross_correlation_upstream_share": 1.0,
+     "cross_correlation_median_speed_mps": -5.0
+    },
+    {
+     "t_step_s": 10.0,
+     "alpha": 0.2,
+     "cells": 936,
+     "level": "propagating_structure",
+     "largest_component_cells": 76,
+     "front_slope_mps": -2.261707988980713,
+     "cross_correlation_upstream_share": 1.0,
+     "cross_correlation_median_speed_mps": -5.0
+    },
+    {
+     "t_step_s": 15.0,
+     "alpha": 0.1,
+     "cells": 624,
+     "level": "propagating_structure",
+     "largest_component_cells": 39,
+     "front_slope_mps": -3.476190476190464,
+     "cross_correlation_upstream_share": 0.6666666666666666,
+     "cross_correlation_median_speed_mps": -3.3333333333333335
+    },
+    {
+     "t_step_s": 15.0,
+     "alpha": 0.15,
+     "cells": 624,
+     "level": "propagating_structure",
+     "largest_component_cells": 46,
+     "front_slope_mps": -2.2190476190476085,
+     "cross_correlation_upstream_share": 0.6666666666666666,
+     "cross_correlation_median_speed_mps": -3.3333333333333335
+    },
+    {
+     "t_step_s": 15.0,
+     "alpha": 0.2,
+     "cells": 624,
+     "level": "propagating_structure",
+     "largest_component_cells": 48,
+     "front_slope_mps": -1.8690476190476135,
+     "cross_correlation_upstream_share": 0.6666666666666666,
+     "cross_correlation_median_speed_mps": -3.3333333333333335
+    }
+   ]
+  },
+  "us101__0805_0820": {
+   "level": "propagating_structure",
+   "largest_component_cells": 72,
+   "front_slope_mps": -5.202472527472526,
+   "front_direction": "upstream",
+   "cross_correlation_upstream_share": 1.0,
+   "cross_correlation_median_speed_mps": -5.0,
+   "null_exceedance_rate": 0.0,
+   "sensitivity_invariant": true,
+   "sensitivity_min_upstream_share": 0.6923076923076923,
+   "sensitivity_grid": [
+    {
+     "t_step_s": 10.0,
+     "alpha": 0.1,
+     "cells": 924,
+     "level": "propagating_structure",
+     "largest_component_cells": 54,
+     "front_slope_mps": -5.37328623757195,
+     "cross_correlation_upstream_share": 1.0,
+     "cross_correlation_median_speed_mps": -5.0
+    },
+    {
+     "t_step_s": 10.0,
+     "alpha": 0.15,
+     "cells": 924,
+     "level": "propagating_structure",
+     "largest_component_cells": 72,
+     "front_slope_mps": -5.202472527472526,
+     "cross_correlation_upstream_share": 1.0,
+     "cross_correlation_median_speed_mps": -5.0
+    },
+    {
+     "t_step_s": 10.0,
+     "alpha": 0.2,
+     "cells": 924,
+     "level": "propagating_structure",
+     "largest_component_cells": 109,
+     "front_slope_mps": -3.503968253968255,
+     "cross_correlation_upstream_share": 1.0,
+     "cross_correlation_median_speed_mps": -5.0
+    },
+    {
+     "t_step_s": 15.0,
+     "alpha": 0.1,
+     "cells": 616,
+     "level": "propagating_structure",
+     "largest_component_cells": 41,
+     "front_slope_mps": -5.1403439153439106,
+     "cross_correlation_upstream_share": 0.6923076923076923,
+     "cross_correlation_median_speed_mps": -3.3333333333333335
+    },
+    {
+     "t_step_s": 15.0,
+     "alpha": 0.15,
+     "cells": 616,
+     "level": "propagating_structure",
+     "largest_component_cells": 55,
+     "front_slope_mps": -4.355892255892252,
+     "cross_correlation_upstream_share": 0.6923076923076923,
+     "cross_correlation_median_speed_mps": -3.3333333333333335
+    },
+    {
+     "t_step_s": 15.0,
+     "alpha": 0.2,
+     "cells": 616,
+     "level": "propagating_structure",
+     "largest_component_cells": 70,
+     "front_slope_mps": -3.8271173271173287,
+     "cross_correlation_upstream_share": 0.6923076923076923,
+     "cross_correlation_median_speed_mps": -3.3333333333333335
+    }
+   ]
+  }
+ },
+ "inherited_absolute_descriptor": {
+  "us101__0750_0805": {
+   "absolute_10mps_slow_share": 0.3457772220698278,
+   "mean_speed_mps": 10.506118382234924,
+   "limitation": "the absolute 10 m/s threshold sits within one standard error of the simulated mean speed of the state-matching configuration (9.7 m/s), so the slow share is not comparable between real and simulated frames; it is reported as history only"
+  },
+  "us101__0805_0820": {
+   "absolute_10mps_slow_share": 0.6603337173302614,
+   "mean_speed_mps": 7.915276152134783,
+   "limitation": "the absolute 10 m/s threshold sits within one standard error of the simulated mean speed of the state-matching configuration (9.7 m/s), so the slow share is not comparable between real and simulated frames; it is reported as history only"
+  }
+ }
+}

@@ -200,8 +200,8 @@
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-0.5-CLOSURE complete: the real following population implies tau_eff 1.539-1.569 s whose analytic capacity (1981-2013 veh/h/lane) matches the observed maximum 30 s block flow (1996), so the frozen tau=1.0 is 44% too high. With the evidence-derived headway and a declared downstream supply the simulated local state enters the real observed state domain on both calibration windows with five independent seeds and the domain transfers to the held-out window; but the same configuration produces 0.9-1.5 local P2 events per vehicle-hour against 17.0/23.5 observed. At matched declared capacity a discrete lane drop restores dispersion and the P2 rate but overshoots the mean state. Interaction compatibility is therefore not established and Stage 0.5 stays unaccepted.",
-  "why_now": "Stage 0.5's blocking layer has moved from 'state support unknown' to a single, reproduced, quantified gap: supply level controls the mean local state while supply form controls relative motion and risk-event generation, and no declared encoding gives both. Reporting a pass would require claiming an interaction domain that the evidence does not support.",
+  "active_task": "AAD-0.5-ARRIVAL-TIMING complete: the real boundary arrival sequence was reconstructed and tested against a timing-only uniform control (20 paired runs). The mainline entry is queue-limited, so the declared mainline arrival structure is destroyed by insertion (realised inter-arrival CV identical across arms, mean delay 25-30 s / 4.5-5.6 s) and mainline arrival timing cannot be imposed; on-ramp arrival timing is imposed almost exactly, so the effective contrast is on-ramp-only. Under it, speed dispersion rises toward the real value (5/5 both windows) but the closing-speed regime, the wave structure and a consistent P2 change are not recovered. The inherited absolute-threshold wave descriptor was replaced by a validated relative-speed anomaly diagnostic that now separates real from simulated frames.",
+  "why_now": "The arrival-timing hypothesis was the most plausible remaining explanation for the interaction gap left by the previous task. It is now tested and bounded: the mainline part is not even manipulable, and the on-ramp part is insufficient. This narrows the remaining explanation to merge/lane-change interaction structure and to explicit upstream storage, which are the only two directions with evidence behind them.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
    "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",
@@ -790,7 +790,8 @@
     "RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1",
     "RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1",
     "RES-STAGE-0.5-METHOD-EXPANSION-V1",
-    "RES-STAGE-0.5-STATE-SUPPORT-V1"
+    "RES-STAGE-0.5-STATE-SUPPORT-V1",
+    "RES-STAGE-0.5-ARRIVAL-TIMING-V1"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -3597,6 +3598,124 @@
     "locked_holdout_reads": 0
    },
    "current_conclusion": "Conditional state support is established at the aggregate level (density, speed, flow, mean time headway) for both calibration windows with five independent seeds and it transfers to the held-out window, but interaction compatibility is NOT established: the state-matching configuration produces 0.9-1.5 local P2 events per vehicle-hour against 17.0/23.5 observed, with 35% less speed dispersion. At matched declared capacity a discrete lane drop restores the dispersion and the P2 rate (18.2-25.5) but overshoots the mean state. Supply level controls the mean state, supply form controls relative motion; no single declared encoding satisfies both. Stage 0.5 is therefore not accepted; the single remaining blocker is the interaction-compatibility layer.",
+   "gate_status": "pending_simulation_sample",
+   "paper_locations": [
+    "paper/主论文/main.tex"
+   ],
+   "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-STAGE-0.5-ARRIVAL-TIMING-V1",
+   "experiment_id": "stage_0_5",
+   "name": "Boundary arrival-timing audit, relative-speed wave diagnostic and paired uniform-vs-real arrival contrast",
+   "status": "closed_arrival_timing_partially_supported_mainline_not_imposable",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-ARRIVAL-TIMING-V1/PLAN_SHA256",
+    "evidence/results/RES-STAGE-0.5-ARRIVAL-TIMING-V1/SHA256SUMS",
+    "evidence/results/RES-STAGE-0.5-ARRIVAL-TIMING-V1/arrival_summary.json",
+    "evidence/results/RES-STAGE-0.5-ARRIVAL-TIMING-V1/event_manifest.json",
+    "evidence/results/RES-STAGE-0.5-ARRIVAL-TIMING-V1/experiment_plan.json",
+    "evidence/results/RES-STAGE-0.5-ARRIVAL-TIMING-V1/fidelity_metrics.csv",
+    "evidence/results/RES-STAGE-0.5-ARRIVAL-TIMING-V1/paired_analysis.json",
+    "evidence/results/RES-STAGE-0.5-ARRIVAL-TIMING-V1/phase_a_audit_summary.json",
+    "evidence/results/RES-STAGE-0.5-ARRIVAL-TIMING-V1/phase_b_wave_diagnostic.json",
+    "evidence/results/RES-STAGE-0.5-ARRIVAL-TIMING-V1/run_metrics.csv",
+    "evidence/results/RES-STAGE-0.5-ARRIVAL-TIMING-V1/run_results.json",
+    "evidence/results/RES-STAGE-0.5-ARRIVAL-TIMING-V1/verdict.json"
+   ],
+   "local_artifact_paths": [
+    "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1"
+   ],
+   "code_version_source": "code/src/riskprop/stage_0_5_boundary_timing.py, code/scripts/run_stage_0_5_boundary_timing.py",
+   "configuration_source": "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/experiment_plan.json (PLAN_SHA256 9d0ec439…)",
+   "data_version_source": "sealed Stage 0.2 canonical states of us101__0750_0805 and us101__0805_0820; the held-out us101__0820_0835 window was not read",
+   "core_metrics": {
+    "entry_events": {
+     "us101__0750_0805": {
+      "mainline": 989,
+      "onramp": 57
+     },
+     "us101__0805_0820": {
+      "mainline": 873,
+      "onramp": 66
+     }
+    },
+    "event_id_overlap_with_initial_state": 0,
+    "declared_mainline_gap_cv": {
+     "U": [
+      0.0,
+      0.0
+     ],
+     "E": [
+      0.824,
+      0.909
+     ]
+    },
+    "realised_mainline_gap_cv": {
+     "us101__0750_0805": {
+      "U": 0.82,
+      "E": 0.831
+     },
+     "us101__0805_0820": {
+      "U": 0.788,
+      "E": 0.851
+     }
+    },
+    "realised_onramp_gap_cv": {
+     "us101__0750_0805": {
+      "U": 0.006,
+      "E": 1.397
+     },
+     "us101__0805_0820": {
+      "U": 0.008,
+      "E": 1.412
+     }
+    },
+    "mainline_insertion_delay_mean_s": {
+     "us101__0750_0805": {
+      "U": 24.9,
+      "E": 30.0
+     },
+     "us101__0805_0820": {
+      "U": 5.6,
+      "E": 4.5
+     }
+    },
+    "mainline_timing_imposable": false,
+    "onramp_timing_imposable": true,
+    "effective_contrast": "on-ramp arrival timing only",
+    "real_wave_level": {
+     "us101__0750_0805": "propagating_structure",
+     "us101__0805_0820": "propagating_structure"
+    },
+    "real_wave_cross_correlation": {
+     "upstream_share": 1.0,
+     "median_implied_speed_mps": -5.0,
+     "null_exceedance": 0.0
+    },
+    "paired_E_minus_U_speed_sd": {
+     "us101__0750_0805": 0.254,
+     "us101__0805_0820": 1.775
+    },
+    "paired_E_minus_U_closing_negative_share": {
+     "us101__0750_0805": -0.004,
+     "us101__0805_0820": -0.112
+    },
+    "paired_E_minus_U_local_p2_rate": {
+     "us101__0750_0805": -0.233,
+     "us101__0805_0820": 0.8
+    },
+    "state_support_runs": "20/20",
+    "engineering_runs_clean": "20/20",
+    "trajectory_runs": 20,
+    "validation_window_reads": 0,
+    "locked_holdout_reads": 0,
+    "H1_reading": "Partially Supported",
+    "H1_causal_attribution": "on-ramp stream only",
+    "H2_reading": "Not Supported",
+    "H3_reading": "Supported"
+   },
+   "current_conclusion": "Restoring the real boundary arrival times does not close the interaction-compatibility gap. The mainline entry is queue-limited: declared mainline inter-arrival CV 0.25 vs 0.86 (0750) and 0.20 vs 0.91 (0805) collapses to realised 0.820 vs 0.831 and 0.788 vs 0.851, with mean insertion delays of 25-30 s and 4.5-5.6 s, so mainline arrival timing cannot be imposed at all. On-ramp arrival timing is imposed almost exactly (realised CV 1.397/1.412 vs 0.006/0.008). Under that de facto on-ramp-only contrast, speed dispersion moves toward the real value consistently (5/5 in both windows) but the closing-speed negative share worsens, the local P2 rate conflicts across windows, and no run reaches a corroborated upstream wave. Stage 0.5 therefore remains blocked by the interaction-compatibility layer, and boundary arrival structure is removed from the list of sufficient explanations. The corrected relative-speed wave diagnostic is validated and now discriminates real from simulated frames.",
    "gate_status": "pending_simulation_sample",
    "paper_locations": [
     "paper/主论文/main.tex"
