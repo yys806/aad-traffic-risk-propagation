@@ -1,14 +1,16 @@
 # AAD 项目交接
 
-> 核对日期：2026-10-12。此文档给出稳定边界和精确继续点；实时文件状态仍需用 Git 和机器产物核验。
+> 状态快照日期：2026-10-12（**历史交接信息**，部分阶段描述已过时）。当前阶段、Gate 与下一步以 `AI_CONTEXT/00_PROJECT_STATE.md` 和 `docs/RESEARCH_STATUS.md` 为准；本文件只保留稳定边界和当时的精确继续点，实时文件状态仍需用 Git 和机器产物核验。
 
 ## 1. 项目目标
 
 验证来源可追溯且被控制器采用的远端风险消息，能否在普通物理影响到达目标区域前改变车辆动作与区域总体风险。
 
-## 2. 当前阶段
+## 2. 当前阶段（2026-10-12 快照，历史）
 
 当前位于阶段 0。主任务是阶段 0.2 NGSIM风险审计，阶段 0.3 pNEUMA城市运动学分布同步整理；阶段 1.1未启动。
+
+本段为 2026-10-12 快照时点的事实；其后进展（阶段 0.3 已关闭、阶段 0.5 现被交互相容层阻断）不在此追写，请读 `AI_CONTEXT/00_PROJECT_STATE.md`。
 
 ## 3. 当前事实
 
@@ -29,6 +31,12 @@ NGSIM负责前车关系、跟驰风险指标和风险事件；研究者已于 20
 ## 7. 数据位置
 
 原始数据统一位于根目录 `dataset/`，包含 NGSIM、pNEUMA和SPMD。该目录本机保留且不进入 Git。
+
+## 7.1 论文与研究材料位置（2026-10-23 更新）
+
+- 当前最新版论文只在 **Overleaf**，仓库不保留活动 `.tex` 论文源；根目录 `paper/`（`paper/主论文/main.tex`）已于 2026-10-23 退役，不得恢复本地论文编辑流程，未登记真实链接前不写 Overleaf URL。
+- 历史论文 PDF、图稿、组会 PPT 与辅助笔记位于本机 `D:\shen\OB\科研\TJU\AAD`：`AAD\`（00–05 辅助笔记）、`历史Paper\paper\`（历史 PDF）、`历史Paper\figure\`（图稿/PPT）、`组会PPT\`、`组会笔记\`。这些材料仅提供历史与辅助上下文，不进入 Git，也不得当作最新版正文或当前状态。
+- 当前实现、实验结果与阶段状态仍以本 GitHub 仓库为准；OB 笔记不能覆盖仓库当前状态。导航入口：`docs/PAPER_AND_MATERIAL_SOURCES.md`。
 
 ## 8. 当前代码
 
@@ -58,7 +66,7 @@ Gate未通过时，不签协议锁、不看 locked holdout、不降低阈值、�
 
 ## 14. 维护入口
 
-AI 快速恢复入口见 `AI_CONTEXT/00_PROJECT_STATE.md`；计划与执行记录见 `docs/论文实验推进/`；机器状态见 `docs/PROJECT_REGISTRY.json`；阶段、结果、历史分别见 `docs/STAGE_INDEX.md`、`docs/RESULTS_INDEX.md`、`docs/HISTORY_INDEX.md`。
+AI 快速恢复入口见 `AI_CONTEXT/00_PROJECT_STATE.md`；计划与执行记录见 `docs/论文实验推进/`；机器状态见 `docs/PROJECT_REGISTRY.json`；阶段、结果、历史分别见 `docs/STAGE_INDEX.md`、`docs/RESULTS_INDEX.md`、`docs/HISTORY_INDEX.md`；论文与材料位置见 `docs/PAPER_AND_MATERIAL_SOURCES.md`。
 
 ## 15. 完成定义
 

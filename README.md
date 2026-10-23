@@ -8,7 +8,8 @@ AAD研究联网车辆远端风险消息是否能够在普通物理影响到达�
 
 - AI 快速入口：[`AI_CONTEXT/00_PROJECT_STATE.md`](AI_CONTEXT/00_PROJECT_STATE.md)
 - AI 架构、数据流与实验导航：[`AI_CONTEXT/`](AI_CONTEXT/)
-- 论文：[`paper/`](paper/)
+- 当前论文：Overleaf（唯一正式编辑源；本仓库不保存活动论文源，规则见 [`docs/PAPER_AND_MATERIAL_SOURCES.md`](docs/PAPER_AND_MATERIAL_SOURCES.md)）
+- 历史论文 PDF、图稿、组会 PPT 与辅助笔记：本机 `D:\shen\OB\科研\TJU\AAD`（不进入 Git）
 - 文献：Zotero 集合 `TJU → AAD`（本地不再保存 PDF；索引见 [`doc/literature-notes/`](doc/literature-notes/)）
 - 原始数据：`dataset/`（本机目录，不进入 Git）
 - 总计划：[`docs/论文实验推进/总计划.md`](docs/论文实验推进/总计划.md)

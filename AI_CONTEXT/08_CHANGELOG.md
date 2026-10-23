@@ -2,6 +2,18 @@
 
 这里只记录影响结构、实现、实验流程或 AI_CONTEXT 的重要变化；细节以 Git diff 和原始实验记录为准。
 
+## 2026-10-23 — 论文与组会材料位置重组（文件来源规则同步）
+
+论文与组会材料已在仓库外重新组织，本轮只同步长期规则、AI_CONTEXT 与导航，**不涉及算法、实验结果或科学结论**。
+
+- 当前最新版论文以 **Overleaf** 为唯一正式编辑源；仓库不保留活动 `.tex` 论文编辑流，根目录 `paper/`（`paper/主论文/main.tex` 等）已于本日退役并删除旧 `.tex`。未登记真实 Overleaf 链接前不写 URL。
+- 历史论文 PDF、图稿与组会 PPT 迁移至本机 `D:\shen\OB\科研\TJU\AAD`（`AAD\` 00–05 辅助笔记、`历史Paper\paper\`、`历史Paper\figure\`、`组会PPT\`、`组会笔记\`），仅作历史与辅助上下文，不进入 Git。
+- GitHub 仓库仍是当前实现、配置、实验产物、正式决策与 Gate 的事实源；OB 笔记不得覆盖当前状态。
+- 新增 `docs/PAPER_AND_MATERIAL_SOURCES.md` 作为唯一位置导航；`README.md`、`PROJECT_CONTEXT.md`、`docs/PROJECT_INDEX.md`、`AI_CONTEXT/00_PROJECT_STATE.md` 同步；`docs/PROJECT_REGISTRY.json` 中两处指向已删除 `paper/主论文/main.tex` 的 `paper_locations` 改为指向该导航文件（路径存在性与 `--strict-git` 跟踪要求不变）。`AI_CONTEXT/07_KNOWN_ISSUES.md` 已关闭的「论文版本冲突」条目追加路径迁移备注，未重开、未批量替换历史路径。
+- `PROJECT_CONTEXT.md` 顶部 2026-10-12 快照已明确标记为历史交接信息，当前状态入口指向 `AI_CONTEXT/00_PROJECT_STATE.md`。
+
+Gate 与所有科学参数状态不变（`pending_simulation_sample`、`scientific_claim_eligible=false`、`protocol_lock_allowed=false`、`stage_1_1_allowed=false`）。
+
 ## 2026-10-21 — AAD-0.5-ARRIVAL-TIMING 边界到达时序与波诊断修正
 
 新增 `stage_0_5_boundary_timing.py`、`run_stage_0_5_boundary_timing.py`、`test_stage_0_5_boundary_timing.py`（13 项）。

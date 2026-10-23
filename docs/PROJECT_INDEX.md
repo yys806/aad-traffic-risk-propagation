@@ -3,6 +3,7 @@
 ## AI 快速恢复
 
 - 当前快照：`AI_CONTEXT/00_PROJECT_STATE.md`
+- 论文与材料位置：`docs/PAPER_AND_MATERIAL_SOURCES.md`（当前论文在 Overleaf；历史 PDF/PPT/笔记在本机 `D:\shen\OB\科研\TJU\AAD`）
 - 研究、架构、数据流、模块、实验、决策、问题与重要变化：`AI_CONTEXT/01_RESEARCH_CONTEXT.md` 至 `AI_CONTEXT/08_CHANGELOG.md`
 
 | 想了解什么 | 首选入口 |
@@ -20,7 +21,7 @@
 | 任务 1.1 NGSIM 来源与分段核查 | `docs/STAGE_0_2_TASK_1_1_NGSIM_SOURCE_SEGMENTATION_2026-10-09.md` |
 | 任务 1.2 US-101 TXT 接入与 Lankershim 源恢复 | `docs/STAGE_0_2_TASK_1_2_TXT_SOURCE_RECOVERY_2026-10-09.md` |
 | 任务 1.3 轨迹身份与完整测量链验证 | `docs/STAGE_0_2_TASK_1_3_TRAJECTORY_IDENTITY_VALIDATION_2026-10-10.md` |
-| 论文与文献 | `paper/`；文献在 Zotero（`TJU → AAD`），索引见 `doc/literature-notes/` |
+| 论文与文献 | 当前论文在 Overleaf（本仓库无活动 `paper/`，见 `docs/PAPER_AND_MATERIAL_SOURCES.md`）；历史 PDF/图稿/组会 PPT 在本机 `D:\shen\OB\科研\TJU\AAD`；文献在 Zotero（`TJU → AAD`），索引见 `doc/literature-notes/` |
 
 ## 当前代码入口
 

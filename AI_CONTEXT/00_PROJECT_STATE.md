@@ -1,5 +1,12 @@
 # AAD Current State Snapshot
 
+## 论文及研究材料位置（2026-10-23）
+
+- **当前最新版论文在 Overleaf**：正文、公式、符号与正式表述以 Overleaf 当前版本为准；本仓库不保留活动 `.tex` 论文源，根目录 `paper/` 已于 2026-10-23 退役。未登记真实项目链接前不写 URL。
+- **GitHub 仓库负责当前实现与实验状态**：代码、配置、实验产物、正式决策与 Gate 以本仓库为准；新会话先读本文件，再核查源码、config、experiment、audit、manifest 与正式结果。
+- **历史 PDF、图稿、组会 PPT 与辅助笔记在本机** `D:\shen\OB\科研\TJU\AAD`（`AAD\` 00–05、`历史Paper\paper\`、`历史Paper\figure\`、`组会PPT\`、`组会笔记\`）；仅作历史与辅助上下文，不进入 Git。
+- **OB 笔记只提供辅助上下文**，不能覆盖本文件与仓库当前状态；当前科研状态仍以本文件及最新源码、实验结果为准。导航：`docs/PAPER_AND_MATERIAL_SOURCES.md`。
+
 ## 2026-10-21 边界到达时序与交互动态诊断（当前）
 
 `RES-STAGE-0.5-ARRIVAL-TIMING-V1`（AAD-0.5-ARRIVAL-TIMING）：检验「等间隔到达丢失真实时间结构」是否是上一轮交互相容缺口的解释。**Gate 不变。**
