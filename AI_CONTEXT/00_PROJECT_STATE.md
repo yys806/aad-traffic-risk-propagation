@@ -1,5 +1,13 @@
 # AAD Current State Snapshot
 
+## 2026-10-24 Issue #1：工作包1证据审计与冻结候选（优先入口）
+
+新增 [证据审计与非覆盖式更正](../docs/STAGE_0_5_WP1_EVIDENCE_AUDIT.md) 和 [冻结候选 WP1-FC-v1](../docs/STAGE_0_5_ACCEPTANCE_FREEZE_CANDIDATE_V1.md)，状态 **Proposed / Awaiting Researcher Decision，未正式冻结**。在基线 `c94e6cc` 上离线核验2个已访问真实校准源与74份既有模拟输出，无新轨迹/额度消耗、第三窗轨迹/locked holdout访问。
+
+**Verified Fact**：真实D1 N/E=147/31051.6、216/33091.1独立复现；44个历史模拟局部N、74个点分母复现，边分母影响有新版本聚合表；30份早期grid缺显式前车incarnation，不认证正式等价。C4的829382与644067及tau/closing差异由全采集/内部窗混用精确解释，追加erratum、历史包不改。C2三种共同分块和C5文字计划/执行判据反事实已量化；C3错误字段实际g/closing已确认。**C4（所审计两源）Resolved by evidence；C1/C2/C3/C5 Partially resolved，科学选择及生产修复仍Awaiting Researcher Decision。** 当前runner与freeze源码SHA不同，完整历史源码冻结合规Unknown；不能只凭哈希存在声称一致。
+
+R1–R5压缩为候选§4的五项选择，delta/h/B、窗口/分块、条件输入、预算/seed和独立验证仍未批准。第三窗已使用的时间迁移角色、B0隔离Unknown、原剩3次保留全部保留。历史“唯一剩余阻断为交互相容”不足以表示正式准入；测量/支持/计划一致性也未齐。Gate=`pending_simulation_sample`、现实覆盖/科学资格false、Protocol Lock/Stage1.1禁止不变。验证见 [执行记录](../docs/STAGE_0_5_WP1_VALIDATION.md)。
+
 ## 2026-10-24 Stage 0.5 验收协议草案与审计提醒
 
 新增 `docs/STAGE_0_5_ACCEPTANCE_PROTOCOL_DRAFT.md`（**Proposed / Awaiting Researcher Decision，未冻结**）：汇总已批准 D1–D5、R1–R5、指标矩阵、delta/h/B、三类判定与验证资源边界。当前 Gate 与既有决定不变，无新实验。

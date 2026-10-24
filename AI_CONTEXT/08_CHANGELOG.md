@@ -1,5 +1,15 @@
 # AAD AI Context Changelog
 
+## 2026-10-24 — Issue #1 工作包1证据审计与冻结候选
+
+新增离线审计入口/7项合成边界测试、新版本聚合审计（104输入SHA，2真实+74既有模拟表），C1真实N/E和既有模拟N/点E复现、C2三种共同分块敏感性、C3公式映射、C4全采集/内部窗混用erratum、C5计划/执行反事实。C4两源Resolved by evidence；其他四项Partially resolved，科研选择/生产修复待决。补充源码freeze SHA不一致与48/43历史进程计数不确定性，不覆盖旧产物。
+
+形成 `WP1-FC-v1` 未批准冻结候选：继承D1–D5、指标责任/误差与delta/h缺口、三类判定伪代码、五项最小审批表、工作包2 fail-closed清单；无新数值/窗口/预算/seed/验证资源许可。无新轨迹，不重读第三窗轨迹或locked holdout，Gate不变。
+
+Context Consistency Check：更新00优先状态、07冲突状态及过时“无重大冲突”句、08本条、注册表current活动/导航、研究状态/项目索引/docs changelog；原草案§10区分历史记录与本任务最终核验。01–06背景/架构/数据流/核心模块/正式实验与决定未变，无新科学结果ID或正式证据修改，不重导出既有便携结果；新增审计脚本在scripts而非科研核心目录。验证记录在 `docs/STAGE_0_5_WP1_VALIDATION.md`，跳过/排除不作科学通过。
+
+`.gitattributes`仅对新审计文件及被绑定SHA的具体源码规定字节/换行策略，保证纯Git克隆可核验；未改这些生产源码的内容或数学语义。
+
 ## 2026-10-24 — Stage 0.5 验收标准审计与协议草案
 
 新增 `docs/STAGE_0_5_ACCEPTANCE_PROTOCOL_DRAFT.md`：逐项核对 D1–D5、R1–R5、正式风险定义、评价支持、容差/精度缺口和实验资源角色；指标按必要责任/待批准/辅助分级，三类判定是未冻结草案。登记五项源码/文档/产物冲突（诊断P2分母、空间分块、时距字段、真实参考数值、计划与执行判据），全部 Awaiting Researcher Decision，不修改代码、配置、实验结果、既有决定或 Gate。

@@ -11,6 +11,7 @@
 | 项目边界和下一步 | `PROJECT_CONTEXT.md` |
 | 总体排期 | `docs/论文实验推进/总计划.md` |
 | 当前科研状态 | `docs/RESEARCH_STATUS.md` |
+| Stage 0.5 工作包1冻结候选（未批准） | [冻结候选v1](STAGE_0_5_ACCEPTANCE_FREEZE_CANDIDATE_V1.md)、[C1–C5证据审计](STAGE_0_5_WP1_EVIDENCE_AUDIT.md)、[验证记录](STAGE_0_5_WP1_VALIDATION.md) |
 | Stage 0.5 验收草案与 R1–R5 审计（未冻结） | [STAGE_0_5_ACCEPTANCE_PROTOCOL_DRAFT.md](STAGE_0_5_ACCEPTANCE_PROTOCOL_DRAFT.md)，含源码/证据冲突与待决事项 |
 | 阶段与 Gate | `docs/STAGE_INDEX.md`、`docs/PROJECT_REGISTRY.json` |
 | 结果和证据 | `docs/RESULTS_INDEX.md`、`evidence/` |

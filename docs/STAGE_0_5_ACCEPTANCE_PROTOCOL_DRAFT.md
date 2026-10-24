@@ -1,5 +1,7 @@
 # Stage 0.5 验收标准审计与协议草案
 
+> Issue #1后续（2026-10-24）：当前交接入口为 [冻结候选v1](STAGE_0_5_ACCEPTANCE_FREEZE_CANDIDATE_V1.md)和[证据审计/非覆盖式更正](STAGE_0_5_WP1_EVIDENCE_AUDIT.md)。C4两个校准源的混用支持域已由证据解决，其他C项部分解决但科学选择/生产修复待决；本文各项“未复算/全部待决”保留为原审计时点。候选仍未批准，Gate不变。
+
 日期：2026-10-24（Asia/Shanghai）。审计基线：`e73c6de9029e4ceb2c1b792f9b9c401b1773c23c`，开始时 `main...origin/main`、工作区干净。
 
 **状态：Proposed / Awaiting Researcher Decision。本文不是冻结协议，不批准实验，不改变任何 Gate、风险定义或已有决定。** 本任务仅阅读当前源码、配置、已登记报告和机器摘要；未重新读取真实轨迹、未运行科学实验、未访问 locked holdout。第三窗口只核查已发布的验证摘要，不重新物化其数据。
@@ -241,4 +243,4 @@
 - 同一克隆严格文档与证据校验通过，`python -m compileall -q code/src code/scripts code/tests` 通过。随后仅修正草案表格分隔符并登记验证结果，未改变代码或测试。
 - 58个Markdown文件链接存在，表格列数检查通过，两个正式P2率从封存N/E复算相符；三个关键封存包中87个现存文件与各自SHA256SUMS相符；全项目便携清单另经上述verify覆盖。`git diff --check`通过，改动仅8个文档/导航文件。
 
-提交后还需执行 `--strict-git --require-clean` 并在最终提交的纯Git克隆核验入口；Commit/Push和该最终检查结果见本任务交付报告。哈希正确、测试通过均不解除C1–C5或构成科学验收。
+§10收尾状态勘误（Issue #1）：上列是原任务已保存的验证记录；原“提交后还需执行”仅为当时待办，不能据此声称原最终核验已执行。本Issue的严格检查、受权限约束的回归与纯Git核验另记于 [工作包1验证记录](STAGE_0_5_WP1_VALIDATION.md)，最终提交后的实际clean/clone检查以本Issue交付报告的SHA和结果为准。历史验证记录不追认成当前验证；哈希/测试通过不构成科学验收。

@@ -197,12 +197,18 @@
   "docs/STAGE_0_5_TRAJECTORY_COVERAGE_AND_IDENTIFIABILITY.md",
   "docs/STAGE_0_5_INITIALIZATION_FIDELITY.md",
   "docs/plans/2026-10-20-method-expansion-baseline.md",
-  "doc/literature-notes/STAGE_0_5_ZOTERO_METHOD_EXPANSION_LOG.md"
+  "doc/literature-notes/STAGE_0_5_ZOTERO_METHOD_EXPANSION_LOG.md",
+  "docs/STAGE_0_5_WP1_EVIDENCE_AUDIT.md",
+  "docs/STAGE_0_5_ACCEPTANCE_FREEZE_CANDIDATE_V1.md",
+  "docs/STAGE_0_5_WP1_VALIDATION.md",
+  "docs/audits/stage_0_5_wp1_v1/provenance.json",
+  "code/scripts/audit_stage_0_5_work_package_1.py",
+  "code/tests/test_stage_0_5_wp1_audit.py"
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-0.5-ARRIVAL-TIMING complete: the real boundary arrival sequence was reconstructed and tested against a timing-only uniform control (20 paired runs). The mainline entry is queue-limited, so the declared mainline arrival structure is destroyed by insertion (realised inter-arrival CV identical across arms, mean delay 25-30 s / 4.5-5.6 s) and mainline arrival timing cannot be imposed; on-ramp arrival timing is imposed almost exactly, so the effective contrast is on-ramp-only. Under it, speed dispersion rises toward the real value (5/5 both windows) but the closing-speed regime, the wave structure and a consistent P2 change are not recovered. The inherited absolute-threshold wave descriptor was replaced by a validated relative-speed anomaly diagnostic that now separates real from simulated frames.",
-  "why_now": "The arrival-timing hypothesis was the most plausible remaining explanation for the interaction gap left by the previous task. It is now tested and bounded: the mainline part is not even manipulable, and the on-ramp part is insufficient. This narrows the remaining explanation to merge/lane-change interaction structure and to explicit upstream storage, which are the only two directions with evidence behind them.",
+  "active_task": "Issue #1 work package 1: evidence audit and WP1-FC-v1 freeze candidate prepared, Proposed / Awaiting Researcher Decision. Offline audit of two previously accessed calibration sources and 74 existing simulation tables; formal real D1 N/E reproduced. C4 support-window mixing resolved by evidence for the two sources; C1/C2/C3/C5 partially resolved with scientific choices and production repairs pending. No new trajectories, validation-trajectory reads, Gate changes or budget transfer.",
+  "why_now": "Measurement/support/plan consistency must be resolved before formal acceptance. R1-R5 remain open; the third window is an already-used temporal-transfer reference. Historical diagnostic results are preserved; the new audit and candidate delimit their reuse without rewriting scientific decisions.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
    "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",

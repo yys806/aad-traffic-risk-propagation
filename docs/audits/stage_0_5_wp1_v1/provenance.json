@@ -1,0 +1,1271 @@
+{
+  "schema": "aad.wp1.offline-audit.v1",
+  "issue": "https://github.com/yys806/aad-traffic-risk-propagation/issues/1",
+  "baseline_sha": "c94e6cccb89349845b8ad905b7f65376a3c2f9c4",
+  "worktree_at_run": [
+    "?? code/scripts/audit_stage_0_5_work_package_1.py",
+    "?? code/tests/test_stage_0_5_wp1_audit.py",
+    "?? docs/audits/"
+  ],
+  "command": "python code/scripts/audit_stage_0_5_work_package_1.py --output docs/audits/stage_0_5_wp1_v1",
+  "environment": {
+    "python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 16:37:03) [MSC v.1929 64 bit (AMD64)]",
+    "executable": "D:\\miniconda\\python.exe",
+    "platform": "Windows-11-10.0.26100-SP0",
+    "pandas": "2.2.3",
+    "numpy": "2.3.2"
+  },
+  "seed": "not applicable; deterministic offline recomputation",
+  "source_functions": {
+    "code/src/riskprop/stage_0_5_state_support.py": {
+      "StateSupportError": [
+        71,
+        72
+      ],
+      "sha256_file": [
+        75,
+        80
+      ],
+      "_assert_not_holdout": [
+        83,
+        86
+      ],
+      "load_real_states": [
+        92,
+        109
+      ],
+      "local_region_mask": [
+        112,
+        117
+      ],
+      "local_summary": [
+        120,
+        150
+      ],
+      "following_relation": [
+        153,
+        207
+      ],
+      "block_cloud": [
+        213,
+        244
+      ],
+      "support_envelope": [
+        247,
+        286
+      ],
+      "envelope_membership": [
+        289,
+        304
+      ],
+      "envelope_coverage": [
+        307,
+        313
+      ],
+      "closing_envelope": [
+        316,
+        348
+      ],
+      "closing_membership": [
+        351,
+        360
+      ],
+      "declared_behaviour_vtypes": [
+        394,
+        426
+      ],
+      "supply_capacity_veh_h": [
+        429,
+        433
+      ],
+      "observed_geometry_spec": [
+        448,
+        489
+      ],
+      "initial_state_records": [
+        530,
+        578
+      ],
+      "_quasi_rank": [
+        581,
+        583
+      ],
+      "depart_times": [
+        586,
+        591
+      ],
+      "build_conditional_route_file": [
+        594,
+        691
+      ],
+      "route_length_map": [
+        694,
+        702
+      ],
+      "write_conditional_config": [
+        705,
+        722
+      ],
+      "run_sumo": [
+        725,
+        739
+      ],
+      "fcd_to_state_frame": [
+        745,
+        788
+      ],
+      "measure_state_frame": [
+        791,
+        797
+      ],
+      "block_descriptors": [
+        800,
+        847
+      ]
+    },
+    "code/src/riskprop/stage_0_5_final_closure.py": {
+      "real_region_mask": [
+        16,
+        20
+      ],
+      "checked": [
+        23,
+        35
+      ],
+      "links": [
+        38,
+        59
+      ],
+      "local_p2": [
+        62,
+        118
+      ],
+      "equivalence": [
+        121,
+        128
+      ],
+      "check_run_plan": [
+        131,
+        140
+      ]
+    },
+    "code/src/riskprop/stage_0_5_sumo.py": {
+      "vehicle_type_mapping_candidate": [
+        506,
+        537
+      ],
+      "Stage05EngineeringError": [
+        596,
+        597
+      ],
+      "Stage05AccessDenied": [
+        600,
+        601
+      ],
+      "_utc_now": [
+        604,
+        605
+      ],
+      "_sha256_file": [
+        608,
+        613
+      ],
+      "_write_json": [
+        616,
+        621
+      ],
+      "validate_scenario_manifest": [
+        629,
+        651
+      ],
+      "validate_scenario_candidate_config": [
+        654,
+        675
+      ],
+      "validate_vehicle_type_mapping": [
+        678,
+        688
+      ],
+      "validate_parameter_classification": [
+        691,
+        700
+      ],
+      "validate_no_message_config": [
+        703,
+        714
+      ],
+      "validate_demand_config": [
+        717,
+        754
+      ],
+      "validate_observation_cadence": [
+        757,
+        791
+      ],
+      "AccessDecision": [
+        800,
+        818
+      ],
+      "CalibrationValidationGuard": [
+        821,
+        1034
+      ],
+      "validate_state_contract": [
+        1042,
+        1062
+      ],
+      "_leader_present": [
+        1065,
+        1067
+      ],
+      "compute_sumo_measurements": [
+        1070,
+        1162
+      ],
+      "to_canonical_real_state": [
+        1165,
+        1194
+      ],
+      "cadence_max_gap_s": [
+        1202,
+        1207
+      ],
+      "_value_missing": [
+        1210,
+        1218
+      ],
+      "_ordered_states": [
+        1221,
+        1223
+      ],
+      "following_link_is_valid": [
+        1226,
+        1286
+      ],
+      "adjacency_check_names": [
+        1289,
+        1299
+      ],
+      "_risk_mask": [
+        1302,
+        1304
+      ],
+      "_continuous_risk_segments": [
+        1307,
+        1338
+      ],
+      "build_sumo_p2_events": [
+        1341,
+        1462
+      ],
+      "compute_exposure": [
+        1468,
+        1543
+      ],
+      "build_sumo_formal_source_frame": [
+        1614,
+        1668
+      ],
+      "extract_sumo_formal_p2_events": [
+        1671,
+        1718
+      ],
+      "measurement_support_matrix": [
+        1721,
+        1747
+      ],
+      "_synthetic_states": [
+        1763,
+        1829
+      ],
+      "p2_boundary_cases": [
+        1832,
+        1945
+      ],
+      "run_p2_boundary_matrix": [
+        1948,
+        2025
+      ],
+      "measurement_equivalence_matrix": [
+        2028,
+        2223
+      ],
+      "VehicleIdentityTracker": [
+        2231,
+        2287
+      ],
+      "_sumo_binary": [
+        2295,
+        2299
+      ],
+      "_netconvert_binary": [
+        2302,
+        2306
+      ],
+      "sumo_environment": [
+        2309,
+        2330
+      ],
+      "_ensure_traci_importable": [
+        2333,
+        2340
+      ],
+      "build_candidate_network": [
+        2343,
+        2374
+      ],
+      "FixtureVehicle": [
+        2378,
+        2401
+      ],
+      "_vt_attributes": [
+        2404,
+        2417
+      ],
+      "engineering_fixture": [
+        2420,
+        2511
+      ],
+      "_write_route_file": [
+        2514,
+        2526
+      ],
+      "_write_sumo_config": [
+        2529,
+        2550
+      ],
+      "_stride_for": [
+        2553,
+        2562
+      ],
+      "run_stage_0_5_no_message_baseline": [
+        2570,
+        3025
+      ],
+      "_seal_engineering_package": [
+        3028,
+        3048
+      ]
+    },
+    "code/src/riskprop/formal_risk_measurement.py": {
+      "FormalRiskConfig": [
+        22,
+        38
+      ],
+      "rho_from_ttc": [
+        46,
+        54
+      ],
+      "extract_formal_source_events": [
+        61,
+        129
+      ],
+      "observed_confirmation_time": [
+        132,
+        168
+      ],
+      "contribution_bounds": [
+        171,
+        186
+      ],
+      "_validate_bounds": [
+        189,
+        191
+      ],
+      "integrate_fixed_window": [
+        194,
+        230
+      ],
+      "equal_vehicle_average": [
+        233,
+        241
+      ],
+      "did_interval": [
+        244,
+        251
+      ],
+      "_present": [
+        254,
+        255
+      ],
+      "_reliable_record": [
+        258,
+        261
+      ],
+      "_boolean_evidence": [
+        264,
+        266
+      ],
+      "continuity_is_valid": [
+        269,
+        298
+      ]
+    },
+    "code/src/riskprop/stage_0_5_leader_replay.py": {
+      "LeaderReplayError": [
+        62,
+        63
+      ],
+      "configuration": [
+        66,
+        74
+      ],
+      "prepare_pairs": [
+        77,
+        130
+      ],
+      "select_pairs": [
+        133,
+        142
+      ],
+      "pair_observations": [
+        145,
+        177
+      ],
+      "insertion_safe_speed": [
+        180,
+        190
+      ],
+      "replay_pair": [
+        193,
+        394
+      ],
+      "brockfeld_error": [
+        397,
+        404
+      ],
+      "nrmse": [
+        407,
+        414
+      ],
+      "pair_metrics": [
+        417,
+        467
+      ],
+      "summarise": [
+        470,
+        515
+      ],
+      "build_vtype": [
+        559,
+        568
+      ],
+      "assert_single_factor": [
+        571,
+        585
+      ],
+      "slice_record": [
+        588,
+        605
+      ],
+      "brake_episodes": [
+        608,
+        625
+      ],
+      "response_metrics": [
+        628,
+        685
+      ],
+      "stratified_selection": [
+        688,
+        722
+      ]
+    },
+    "code/src/riskprop/stage_0_5_trajectory_reconstruction.py": {
+      "TrajectoryReconstructionError": [
+        58,
+        59
+      ],
+      "_sha256_file": [
+        65,
+        70
+      ],
+      "load_calibration_states": [
+        73,
+        102
+      ],
+      "window_clock_span": [
+        105,
+        106
+      ],
+      "real_region_mask": [
+        109,
+        115
+      ],
+      "lane_geometry": [
+        121,
+        133
+      ],
+      "classify_lanes": [
+        136,
+        185
+      ],
+      "boundary_crossings": [
+        191,
+        223
+      ],
+      "flow_table": [
+        226,
+        241
+      ],
+      "vehicle_conservation": [
+        244,
+        288
+      ],
+      "_occupancy_counts": [
+        291,
+        310
+      ],
+      "_crossings_from_subset": [
+        313,
+        333
+      ],
+      "ramp_flows": [
+        336,
+        370
+      ],
+      "local_state": [
+        376,
+        406
+      ],
+      "space_time": [
+        409,
+        442
+      ],
+      "fundamental_diagram": [
+        445,
+        469
+      ],
+      "occupancy_series": [
+        472,
+        493
+      ],
+      "jam_waves": [
+        496,
+        572
+      ],
+      "sectional_minimum": [
+        575,
+        592
+      ],
+      "interaction_stats": [
+        598,
+        626
+      ],
+      "_describe": [
+        629,
+        638
+      ],
+      "ClusterInterval": [
+        645,
+        651
+      ],
+      "cluster_bootstrap": [
+        654,
+        704
+      ]
+    },
+    "code/src/riskprop/stage_0_5_boundary_timing.py": {
+      "BoundaryTimingError": [
+        88,
+        89
+      ],
+      "sha256_file": [
+        92,
+        97
+      ],
+      "entry_events": [
+        103,
+        196
+      ],
+      "uniform_arrivals": [
+        199,
+        206
+      ],
+      "paired_arrival_tables": [
+        209,
+        229
+      ],
+      "arrival_summary": [
+        232,
+        264
+      ],
+      "arrival_difference": [
+        267,
+        271
+      ],
+      "event_lane_index": [
+        277,
+        285
+      ],
+      "write_arrival_route_file": [
+        288,
+        370
+      ],
+      "space_time_cells": [
+        376,
+        412
+      ],
+      "density_speed_baseline": [
+        415,
+        435
+      ],
+      "speed_residuals": [
+        438,
+        442
+      ],
+      "anomaly_threshold": [
+        445,
+        448
+      ],
+      "anomalous_cells": [
+        451,
+        456
+      ],
+      "_components": [
+        459,
+        490
+      ],
+      "_mask_grid": [
+        493,
+        502
+      ],
+      "wave_structure": [
+        505,
+        574
+      ],
+      "temporal_position_anomaly": [
+        577,
+        593
+      ],
+      "anomaly_table": [
+        596,
+        604
+      ],
+      "cross_correlation_propagation": [
+        607,
+        665
+      ],
+      "permutation_null": [
+        668,
+        716
+      ],
+      "synthetic_wave_scenarios": [
+        719,
+        777
+      ],
+      "classify_wave_structure": [
+        780,
+        824
+      ],
+      "anomaly_report": [
+        827,
+        854
+      ],
+      "wave_sensitivity": [
+        857,
+        887
+      ]
+    },
+    "code/scripts/run_stage_0_5_state_support.py": {
+      "_write_json": [
+        45,
+        48
+      ],
+      "_read_json": [
+        51,
+        52
+      ],
+      "calibration_states": [
+        55,
+        59
+      ],
+      "step_real_domain": [
+        65,
+        111
+      ],
+      "build_plan": [
+        117,
+        206
+      ],
+      "step_plan": [
+        209,
+        215
+      ],
+      "derive_demand": [
+        221,
+        244
+      ],
+      "run_cell": [
+        247,
+        335
+      ],
+      "step_grid": [
+        338,
+        361
+      ],
+      "_membership": [
+        364,
+        410
+      ],
+      "step_verdict": [
+        413,
+        453
+      ],
+      "step_seeds": [
+        456,
+        481
+      ],
+      "step_structural": [
+        484,
+        563
+      ],
+      "step_temporal": [
+        569,
+        622
+      ],
+      "_wave_descriptor": [
+        625,
+        640
+      ],
+      "_real_wave_descriptor": [
+        643,
+        659
+      ],
+      "step_analysis": [
+        662,
+        722
+      ],
+      "step_freeze": [
+        725,
+        738
+      ],
+      "main": [
+        741,
+        770
+      ]
+    },
+    "code/scripts/run_stage_0_5_boundary_timing.py": {
+      "_write_json": [
+        48,
+        51
+      ],
+      "_read_json": [
+        54,
+        55
+      ],
+      "calibration_states": [
+        58,
+        60
+      ],
+      "frozen_domain": [
+        63,
+        65
+      ],
+      "step_audit": [
+        71,
+        172
+      ],
+      "step_wave_baseline": [
+        178,
+        264
+      ],
+      "build_plan": [
+        270,
+        339
+      ],
+      "step_plan": [
+        342,
+        360
+      ],
+      "_membership": [
+        366,
+        393
+      ],
+      "run_arrival": [
+        396,
+        493
+      ],
+      "step_runs": [
+        496,
+        529
+      ],
+      "step_analysis": [
+        532,
+        610
+      ],
+      "step_verdict": [
+        613,
+        793
+      ],
+      "main": [
+        796,
+        817
+      ]
+    },
+    "code/scripts/audit_stage_0_5_work_package_1.py": {
+      "sha": [
+        32,
+        37
+      ],
+      "Reader": [
+        40,
+        64
+      ],
+      "region": [
+        67,
+        68
+      ],
+      "edge_and_event_audit": [
+        71,
+        165
+      ],
+      "cloud": [
+        168,
+        189
+      ],
+      "reference_stats": [
+        192,
+        206
+      ],
+      "plan_counterfactual": [
+        209,
+        225
+      ],
+      "run": [
+        228,
+        335
+      ],
+      "verify": [
+        338,
+        355
+      ]
+    }
+  },
+  "inputs": {
+    "evidence/results/RES-STAGE-0.5-STATE-SUPPORT-V1/real_domain.json": {
+      "sha256": "6a8ca3ef5faebf177b4c01e4e47125509d95821798650721dc00a24399a5417c",
+      "bytes": 9865
+    },
+    "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/real_local_reference_summary.json": {
+      "sha256": "e38b4964f4b7376929b9cbfaab7c962895121934da8b68e539c88b65d50ee58f",
+      "bytes": 49643
+    },
+    "code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r4/states/ngsim_us101__0750_0805.parquet": {
+      "sha256": "684a5f0b96dc48116f16d581c278d7039c0554bf1c3cea8d6eda3e605e3e8644",
+      "bytes": 45460444
+    },
+    "code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r4/states/ngsim_us101__0805_0820.parquet": {
+      "sha256": "7b0ef830c97a981da018d4e24b029e38aa2630387c728ea87b57926745880a9f",
+      "bytes": 53932888
+    },
+    "evidence/results/RES-STAGE-0.5-STATE-SUPPORT-V1/grid_results.json": {
+      "sha256": "1fbbb5a8dc18b057ec73cabefa757299c4dc541a4a8eb59ee572d44e9a2095f3",
+      "bytes": 151731
+    },
+    "evidence/results/RES-STAGE-0.5-STATE-SUPPORT-V1/seed_repeats.json": {
+      "sha256": "f93f1754fd19036aab1e58bcc0ff9287b18560cdcb435a2a9fb3fb342e864418",
+      "bytes": 109222
+    },
+    "evidence/results/RES-STAGE-0.5-STATE-SUPPORT-V1/structural_results.json": {
+      "sha256": "ae7ea6b3503e87b06637c6c5dcc330d14fad41714954215aea61b016c67c5b01",
+      "bytes": 25702
+    },
+    "evidence/results/RES-STAGE-0.5-ARRIVAL-TIMING-V1/run_results.json": {
+      "sha256": "dbc8afd27f790f0ce0889d17476c5a25a9677233a55789abbecbe3431a170ac5",
+      "bytes": 73003
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/grid/B_frozen_us101__0750_0805_vlim27.78/measured_state.parquet": {
+      "sha256": "454b44d82c2cd62164773322c8b3ad828670c88291cceca2b98abb47174b547f",
+      "bytes": 9091312
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/grid/B_frozen_us101__0805_0820_vlim27.78/measured_state.parquet": {
+      "sha256": "c5b177e9c2e911e613cfa89cf1ccddce80fb3b60ccea1034faf10fb8f98247c4",
+      "bytes": 8081091
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/grid/B_frozen_us101__0750_0805_vlim15.00/measured_state.parquet": {
+      "sha256": "78225e348a11f0ef38cb1cd5a8fe20db3f4b6fd5a0450cf7e34a248b5361d142",
+      "bytes": 12591853
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/grid/B_frozen_us101__0805_0820_vlim15.00/measured_state.parquet": {
+      "sha256": "ce1d88909100bdb6879531cab9d6f9908e74cff804ab8789c1ca516c06e35f44",
+      "bytes": 10738545
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/grid/B_frozen_us101__0750_0805_vlim12.00/measured_state.parquet": {
+      "sha256": "09aedf87359b883120105ba0070c0a836b3522e05b7d8ecd40d33d7b934ce219",
+      "bytes": 14249891
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/grid/B_frozen_us101__0805_0820_vlim12.00/measured_state.parquet": {
+      "sha256": "d73d57d6f0cdcf509437a06acae6cd5dc5fd935286c0fe14ec65ea49b232330a",
+      "bytes": 12031837
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/grid/B_frozen_us101__0750_0805_vlim10.00/measured_state.parquet": {
+      "sha256": "f3ec2461d112c96f8d9a6b8e4f9a41e094ff09011c1c728c73b87824bc0bfd0f",
+      "bytes": 17385568
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/grid/B_frozen_us101__0805_0820_vlim10.00/measured_state.parquet": {
+      "sha256": "b50258ebc90c84f0684466237b6686ceddabc03bb9e8946fcd3fb318e8fe30ef",
+      "bytes": 13297325
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/grid/B_frozen_us101__0750_0805_vlim8.00/measured_state.parquet": {
+      "sha256": "e10d9207b75a1157b03cae590373d81d302f63fef468c432ab61cad712a97a20",
+      "bytes": 21126550
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/grid/B_frozen_us101__0805_0820_vlim8.00/measured_state.parquet": {
+      "sha256": "029bddcc9e2eedd6a548df83a388869746b0c6785e428ca381ee80caf22112de",
+      "bytes": 15454988
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/grid/B_mean_us101__0750_0805_vlim27.78/measured_state.parquet": {
+      "sha256": "e71442aaf0a21065d62f39f832971cd3628640f626252fb878628d92f98517bc",
+      "bytes": 8800580
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/grid/B_mean_us101__0805_0820_vlim27.78/measured_state.parquet": {
+      "sha256": "c12ecc00ecf28707a8e0db7e21294dce6079d12c0c2872ad7788203116abb23a",
+      "bytes": 8949599
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/grid/B_mean_us101__0750_0805_vlim15.00/measured_state.parquet": {
+      "sha256": "b98895c3c48c13cf887e28b47367738a7d8d7888313ff07c522879ed63bdafca",
+      "bytes": 12557895
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/grid/B_mean_us101__0805_0820_vlim15.00/measured_state.parquet": {
+      "sha256": "976c66db468e2d43dfcf634429a64068e335fe6df5152ba381d6f02897945fd0",
+      "bytes": 12519663
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/grid/B_mean_us101__0750_0805_vlim12.00/measured_state.parquet": {
+      "sha256": "119af1bb123a5c7d61f7b1b365bb172cd3270a818085c90e64550de4a6005299",
+      "bytes": 14239645
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/grid/B_mean_us101__0805_0820_vlim12.00/measured_state.parquet": {
+      "sha256": "338ac99f4de6a7c9093efc0f37ba923eba4f6bf7e230f9527c1395e060e5f311",
+      "bytes": 14264065
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/grid/B_mean_us101__0750_0805_vlim10.00/measured_state.parquet": {
+      "sha256": "9ff94cf40c8c1051acbffd57f9d4485ddf4a0277f782ab1d2aa66b6d85636260",
+      "bytes": 17241726
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/grid/B_mean_us101__0805_0820_vlim10.00/measured_state.parquet": {
+      "sha256": "7a998cec35b78b8192b8753147e899625cb6ff3be6cb8e73e09c079311030b53",
+      "bytes": 15900488
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/grid/B_mean_us101__0750_0805_vlim8.00/measured_state.parquet": {
+      "sha256": "ce4347b4d1a7d8ee2becccf4e03d8962c73b46933a3a817348f50d63d276001e",
+      "bytes": 18362323
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/grid/B_mean_us101__0805_0820_vlim8.00/measured_state.parquet": {
+      "sha256": "98aafdd510ec4c5afa49f8c554ad32e6bfed641fdad523a8a092402175944101",
+      "bytes": 18530217
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/grid/B_het_us101__0750_0805_vlim27.78/measured_state.parquet": {
+      "sha256": "1e819cd4a1752d3db5ffebfec6ae0cc0b2cc6d89a53a4063efa8ddf8681e51b7",
+      "bytes": 9270125
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/grid/B_het_us101__0805_0820_vlim27.78/measured_state.parquet": {
+      "sha256": "17a7d39452a88f196f9783c19abc7a3e6b1dd9d6ad857a6ad185a41b3a07a4b7",
+      "bytes": 9026668
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/grid/B_het_us101__0750_0805_vlim15.00/measured_state.parquet": {
+      "sha256": "8410b957f800c3efe3a6740c99a9144c5cc7121e84a8122092fc001efa13d2bf",
+      "bytes": 12900818
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/grid/B_het_us101__0805_0820_vlim15.00/measured_state.parquet": {
+      "sha256": "00712f13c4b593a05ea16398e8187f866b7b8a290abf613147eb1fca386e58d5",
+      "bytes": 12582228
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/grid/B_het_us101__0750_0805_vlim12.00/measured_state.parquet": {
+      "sha256": "26bfba261d24361a60f724d833a4bd9908d887bc368d2d00c156e3b998465855",
+      "bytes": 14175679
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/grid/B_het_us101__0805_0820_vlim12.00/measured_state.parquet": {
+      "sha256": "52929a975687bef721fe91fc14e49f14532eb1c955d1db2d80e81eee3c4c9360",
+      "bytes": 14384774
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/grid/B_het_us101__0750_0805_vlim10.00/measured_state.parquet": {
+      "sha256": "cea552ad07f1e06703da79ac52b446f651ad00a7b6e9726036c5bef674c543a8",
+      "bytes": 16237503
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/grid/B_het_us101__0805_0820_vlim10.00/measured_state.parquet": {
+      "sha256": "7e7d7b211396f6e3883854700d17c59fd77d0ab0d89da256e065c4682daae09b",
+      "bytes": 16361320
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/grid/B_het_us101__0750_0805_vlim8.00/measured_state.parquet": {
+      "sha256": "c4a3619b05cc13d9c92a335cbfbb52f69c89660586efab63c444f098a1da8731",
+      "bytes": 18816377
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/grid/B_het_us101__0805_0820_vlim8.00/measured_state.parquet": {
+      "sha256": "c8042179c4697e0a34c407eafab0151465f0b198014d09324a49f9328cd9208d",
+      "bytes": 19535895
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_mean_us101__0750_0805_vlim10.00_s20261201/measured_state.parquet": {
+      "sha256": "1e199ac86a37d37acf79832a9545e3df4409faefe09fcaed24a0deaadf155d51",
+      "bytes": 17595278
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_mean_us101__0750_0805_vlim10.00_s20261202/measured_state.parquet": {
+      "sha256": "f9f2eb3364d0ed80884a8798ecdb6d22fa2ffb1665c34f668a1c45da07567b70",
+      "bytes": 16222107
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_mean_us101__0750_0805_vlim10.00_s20261203/measured_state.parquet": {
+      "sha256": "c310bc510787e9769bc9dd5201bd817b398f7adf0b2815559585bbca58f919d2",
+      "bytes": 16558069
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_mean_us101__0750_0805_vlim10.00_s20261204/measured_state.parquet": {
+      "sha256": "0675e9f6e626e8098da228ec2a0bcb77c36a69fdedb675dd8e197212f1f8f1af",
+      "bytes": 15976938
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_mean_us101__0750_0805_vlim10.00_s20261205/measured_state.parquet": {
+      "sha256": "5e7b803e933228e0122f28c1bdad62f9869e659dc19746a654de96a0ec8d4c21",
+      "bytes": 15991041
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_mean_us101__0805_0820_vlim10.00_s20261201/measured_state.parquet": {
+      "sha256": "f899962858cb008215e88bb5737d263825f659c533388d48dca30cb2e5d6beb0",
+      "bytes": 16223548
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_mean_us101__0805_0820_vlim10.00_s20261202/measured_state.parquet": {
+      "sha256": "3bda9e92651031d873f4b9b401a4585994c9659ce477ed0c3eebc36d09ce79a8",
+      "bytes": 16155049
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_mean_us101__0805_0820_vlim10.00_s20261203/measured_state.parquet": {
+      "sha256": "dd578d4f444bfd13e95d3981dee8e6d2ea10d0c283bb3959ebbd1de690990f1f",
+      "bytes": 16160842
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_mean_us101__0805_0820_vlim10.00_s20261204/measured_state.parquet": {
+      "sha256": "ea3cd3d430079a6d86e98323b2f08bff21320a0750469fbffb223ede4d300556",
+      "bytes": 15971348
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_mean_us101__0805_0820_vlim10.00_s20261205/measured_state.parquet": {
+      "sha256": "95f013a4f9d33cf002e8c8898560f034d2ef4c3d3a458576db0b22636739766c",
+      "bytes": 16008880
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_het_us101__0750_0805_vlim10.00_s20261201/measured_state.parquet": {
+      "sha256": "2ea9e464fcb4da6f4e508c4072273e1b4fbebb12275b3a64e9ecf9ff75028599",
+      "bytes": 16570193
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_het_us101__0750_0805_vlim10.00_s20261202/measured_state.parquet": {
+      "sha256": "cf1e9a788d51bb236643887b3072d4f348f68d2cd75168a85f4e2637d24e36ef",
+      "bytes": 16620571
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_het_us101__0750_0805_vlim10.00_s20261203/measured_state.parquet": {
+      "sha256": "b3ac678fc04f0258b1d1531f7d0bb83cb40141a3bd1e96b7f797ddf086a1ec2a",
+      "bytes": 16479453
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_het_us101__0750_0805_vlim10.00_s20261204/measured_state.parquet": {
+      "sha256": "98aeb220828849173d4895fcae5aee69ab4027d0c6ba0c1e0bbdf74bd7c1b7b0",
+      "bytes": 16681546
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_het_us101__0750_0805_vlim10.00_s20261205/measured_state.parquet": {
+      "sha256": "102bd2479224e25850c4a5769c70c11c26ac35607272b2d82457b63706d56f1a",
+      "bytes": 16417999
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_het_us101__0805_0820_vlim10.00_s20261201/measured_state.parquet": {
+      "sha256": "d47648aa66ffdab25fb28873ded819aff87a1ce97c511dc3ab63515418d86168",
+      "bytes": 16685668
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_het_us101__0805_0820_vlim10.00_s20261202/measured_state.parquet": {
+      "sha256": "d4633272f769f475836808d18dd803d47e87e0890ef806242612ae1d28e27bac",
+      "bytes": 16585995
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_het_us101__0805_0820_vlim10.00_s20261203/measured_state.parquet": {
+      "sha256": "dc1214024708ea50d860e29f35784fc5d5e4f01d84d2f987762ba261ac3484ec",
+      "bytes": 16763592
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_het_us101__0805_0820_vlim10.00_s20261204/measured_state.parquet": {
+      "sha256": "b0e4007ada650cbe1966dcc00eea5aa62870150b45f3c88b9be6db63f709b3f8",
+      "bytes": 16559580
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_het_us101__0805_0820_vlim10.00_s20261205/measured_state.parquet": {
+      "sha256": "8a8674b54b74639eda7cbb6ec1ca7cecf8e73f5c0c67b50913c4909643981cd3",
+      "bytes": 16157974
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/structural/B_het_us101__0750_0805_lane_drop_4lane/measured_state.parquet": {
+      "sha256": "3a44f00b2e86fee7cefc4b205ef15cb10697ebac71efa0d44842764b1b4c7335",
+      "bytes": 13394271
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/structural/B_het_us101__0805_0820_lane_drop_4lane/measured_state.parquet": {
+      "sha256": "96fdb765ce0292c218bc90b0fb7f0f0213f379b987f4e52c86a9f211259ca8ca",
+      "bytes": 13724864
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/structural/B_mean_us101__0750_0805_lane_drop_4lane/measured_state.parquet": {
+      "sha256": "01a24b65c1e3110e861badd02be795486bdf4209b4f6c771ba316cf100861996",
+      "bytes": 13310811
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/structural/B_mean_us101__0805_0820_lane_drop_4lane/measured_state.parquet": {
+      "sha256": "b3fdb527041742cf9f270755e298564902a67de5ea331939e89dee397bfd669c",
+      "bytes": 13950621
+    },
+    "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0750_0805_U_s20261201/measured_state.parquet": {
+      "sha256": "a01ac55b30d5829e1f987ba70f30b78f6165cfab7bdfd26e6d60053af999e28b",
+      "bytes": 16922298
+    },
+    "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0750_0805_E_s20261201/measured_state.parquet": {
+      "sha256": "15600262930ada402dfad34edb7446be47e3325209a33022096e1ccf0892882e",
+      "bytes": 17085304
+    },
+    "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0750_0805_U_s20261202/measured_state.parquet": {
+      "sha256": "11200f8663d8aeba3e172ecc933136affad8b6c19a7ad99dbb08365f816c8f0f",
+      "bytes": 16906876
+    },
+    "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0750_0805_E_s20261202/measured_state.parquet": {
+      "sha256": "18499f04436e01cb6e9c78973c95d23c3e0f3ad78e5285862d30f386419bf0f7",
+      "bytes": 17079690
+    },
+    "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0750_0805_U_s20261203/measured_state.parquet": {
+      "sha256": "bafd347481f020546c0e7d2c24fdec714c4b2ec0010ea8bf916a15c1f0ce4a6b",
+      "bytes": 16941351
+    },
+    "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0750_0805_E_s20261203/measured_state.parquet": {
+      "sha256": "c576f8e44465a8b26d9e0348ac187c6d2c0361cbc3f278f7362a1e0dd0f01571",
+      "bytes": 16966169
+    },
+    "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0750_0805_U_s20261204/measured_state.parquet": {
+      "sha256": "117e542a15330b2e9032627fbc44d5c1ed346c9dd9de6cd56fe6896dd3337ccf",
+      "bytes": 16991184
+    },
+    "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0750_0805_E_s20261204/measured_state.parquet": {
+      "sha256": "6970e8231f798cd9234e4b0d3ed0c927040e5c9910fec40d5278e16f93f82b93",
+      "bytes": 17068242
+    },
+    "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0750_0805_U_s20261205/measured_state.parquet": {
+      "sha256": "10d3b93dd738b95e5a75960dda3e1ad2b3a7b618be9ee3074cc5044f9dcc9428",
+      "bytes": 16886838
+    },
+    "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0750_0805_E_s20261205/measured_state.parquet": {
+      "sha256": "b7f80fe651b0c5f4303d8ee1377eaf96ac1aedc0c30febe514f028d461e2e802",
+      "bytes": 17021148
+    },
+    "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0805_0820_U_s20261201/measured_state.parquet": {
+      "sha256": "cd85f4f7f2b18a6606df1fadcc45de1d7032192b489eb1c7694cd209da0f2069",
+      "bytes": 16494891
+    },
+    "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0805_0820_E_s20261201/measured_state.parquet": {
+      "sha256": "b25aae87158cca6b9a871ec788fb8b12c92f2c90ce1f7bca26a06878f19280e5",
+      "bytes": 15924704
+    },
+    "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0805_0820_U_s20261202/measured_state.parquet": {
+      "sha256": "8955be50249bb70bb5adc5f6cff20ae02a9b96457f8799d7af30546b361309c9",
+      "bytes": 16377494
+    },
+    "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0805_0820_E_s20261202/measured_state.parquet": {
+      "sha256": "0c27859702c51ca171b53e09c5a5610a280800693289dc402c390bcc3cf0d7cc",
+      "bytes": 16186140
+    },
+    "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0805_0820_U_s20261203/measured_state.parquet": {
+      "sha256": "e4e94bb55601a57e0dd5ef662963b4df077b069ee5a50de1f9b31a35a11437c0",
+      "bytes": 16409948
+    },
+    "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0805_0820_E_s20261203/measured_state.parquet": {
+      "sha256": "89c9a77943f2ba15a1a09926b96dcb9387e9838ae5157c30034c36f3f94e18a3",
+      "bytes": 16189710
+    },
+    "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0805_0820_U_s20261204/measured_state.parquet": {
+      "sha256": "437fd57944fa6fa2f0e45618d48b88a7cf48b547c11b51ff2e2ed39ba6dbf8f4",
+      "bytes": 16666795
+    },
+    "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0805_0820_E_s20261204/measured_state.parquet": {
+      "sha256": "5a8dde84c5cf045b3f7dfe49cadfb8032e9c888908041f5e5da2c2465a67dcef",
+      "bytes": 16192971
+    },
+    "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0805_0820_U_s20261205/measured_state.parquet": {
+      "sha256": "ea10fdebfe2f7afa877ba2efa2cb1544c11402707b859f269a82263e9c1457c8",
+      "bytes": 16466600
+    },
+    "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0805_0820_E_s20261205/measured_state.parquet": {
+      "sha256": "3bae1e3e222e9f618579d1979f08c82a820313e8ecb40b0a9b5400329ddf8137",
+      "bytes": 15964376
+    },
+    "code/src/riskprop/stage_0_5_state_support.py": {
+      "sha256": "68c79d6b6c99cf68eeeab684782a72069c60842d5b2978e12dd1c07b6bad3987",
+      "bytes": 42322
+    },
+    "code/src/riskprop/stage_0_5_final_closure.py": {
+      "sha256": "aab5fa44fe1c0f18eeed727947f80c6d4d6211281b729091e9265af858c3fb02",
+      "bytes": 9971
+    },
+    "code/src/riskprop/stage_0_5_sumo.py": {
+      "sha256": "a95231972300348c86d3750af1a777e086b41a87a75506a95a290d395f2a762f",
+      "bytes": 144311
+    },
+    "code/src/riskprop/formal_risk_measurement.py": {
+      "sha256": "4e15e67e35911fdd4d50d26f41784bde05a8cd9983edc42c572fa51b00686c58",
+      "bytes": 15961
+    },
+    "code/src/riskprop/stage_0_5_leader_replay.py": {
+      "sha256": "dfa9511f74a2b240bdbfa4cba0b56e31bd7c6ce256c6fc6558ba24add4518bae",
+      "bytes": 38951
+    },
+    "code/src/riskprop/stage_0_5_trajectory_reconstruction.py": {
+      "sha256": "ad20e4bcad239bd14d0797c8fd311972a2c8bd56260dbba2b9b28226e47c222a",
+      "bytes": 31497
+    },
+    "code/src/riskprop/stage_0_5_boundary_timing.py": {
+      "sha256": "490894438c02dcaf6000467a2aed784aba4674aa06c433ecbd54760c26a402eb",
+      "bytes": 44290
+    },
+    "code/scripts/run_stage_0_5_state_support.py": {
+      "sha256": "832634d5713769a4afb60048c3e4b6e7959ad6b85cf7272245571a6b1ab5cd3b",
+      "bytes": 42170
+    },
+    "code/scripts/run_stage_0_5_boundary_timing.py": {
+      "sha256": "029a72dc001d515b7b4f506755ef2e584a1540eece9fbf2a138e8e6a8d09814f",
+      "bytes": 45768
+    },
+    "code/scripts/audit_stage_0_5_work_package_1.py": {
+      "sha256": "4e9b79d1057922d953b1f09a8cede2032c2c254a223995d4e13bc023f6f12518",
+      "bytes": 21284
+    },
+    "evidence/results/RES-STAGE-0.5-STATE-SUPPORT-V1/SHA256SUMS": {
+      "sha256": "7fcf30192b5cb014a38bdea4c2dd43b02c6a7e8eb5c6594ec8c5a7caaf837a8b",
+      "bytes": 1353
+    },
+    "evidence/results/RES-STAGE-0.5-STATE-SUPPORT-V1/experiment_plan.json": {
+      "sha256": "6e19b530a0050fb5343fc3d35bacd0564b8a8802d419e38a17f4aad77960ec1e",
+      "bytes": 4709
+    },
+    "evidence/results/RES-STAGE-0.5-STATE-SUPPORT-V1/freeze_manifest.json": {
+      "sha256": "442b24a8bc0609fe5e0c9c24d12d1bd50a2b472c399a7f7eef7d2b80f047c7af",
+      "bytes": 719
+    },
+    "evidence/results/RES-STAGE-0.5-STATE-SUPPORT-V1/temporal_validation.json": {
+      "sha256": "232c6fc6fee4113f2cae05120c77ef0f2bfccecd649e3698623500aec06df165",
+      "bytes": 23993
+    },
+    "evidence/results/RES-STAGE-0.5-STATE-SUPPORT-V1/state_support_verdict.json": {
+      "sha256": "923f7d35250220ef23088f2c614c413f5756dd03423e420378f167904dadc111",
+      "bytes": 35027
+    },
+    "evidence/results/RES-STAGE-0.5-ARRIVAL-TIMING-V1/SHA256SUMS": {
+      "sha256": "15592fc5b61b75823c0b5e3c483a9a2c5b975ec6afcf78cc8ab6e193c540112c",
+      "bytes": 955
+    },
+    "evidence/results/RES-STAGE-0.5-ARRIVAL-TIMING-V1/experiment_plan.json": {
+      "sha256": "20735ee3c91cff75af1f6b186da9fb40201509c75b5a4e6bf06c96809594cde0",
+      "bytes": 4472
+    },
+    "evidence/results/RES-STAGE-0.5-ARRIVAL-TIMING-V1/verdict.json": {
+      "sha256": "5a40aaddd7c2dbce7cbf0732b1455a689bb895abf2fe9a99e90becb14eec4f0f",
+      "bytes": 9534
+    },
+    "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/SHA256SUMS": {
+      "sha256": "b5d81b53ac5dca04a90c60bd4c218d4fb51dded62b3752493d1be31d5331fc7f",
+      "bytes": 6047
+    },
+    "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/candidate_experiment_plan.json": {
+      "sha256": "9ba4397a61aac0d9269cdeaf6f8f3c76e42c08f1de9d9e77bd0d3049a5920e25",
+      "bytes": 17266
+    },
+    "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/candidate_run_ledger.json": {
+      "sha256": "c71e076623eefec289527a5a3c42e33c4b4eac36fabecbd4a34a65896d8f364f",
+      "bytes": 1032
+    },
+    "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/state_support_verdict.json": {
+      "sha256": "a493024bde1313333c6733bab5ef4d26be59fff973fee8ce75b77f9f89839671",
+      "bytes": 2672
+    }
+  },
+  "limits": [
+    "aggregate audit only; not Gate acceptance",
+    "no SUMO process or new experiment",
+    "two calibration sources only; no temporal trajectories, sealed data or locked holdout",
+    "candidate partitions and plan counterfactual are unapproved sensitivity analyses",
+    "simulator measurement equivalence is not physical validation",
+    "no new delta/h/B/window/seed/budget approval"
+  ]
+}

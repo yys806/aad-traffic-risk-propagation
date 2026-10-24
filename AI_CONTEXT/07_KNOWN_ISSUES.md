@@ -1,8 +1,20 @@
 # AAD Known Issues
 
-## 2026-10-24 验收标准审计新增冲突（未修复）
+## 2026-10-24 Issue #1：C1–C5当前处置（覆盖下方原审计时态）
 
-完整 `Documented Intent / Actual Implementation / Evidence / Affected Files / Conflict / Status` 记录见 [Stage 0.5 验收协议草案 §3](../docs/STAGE_0_5_ACCEPTANCE_PROTOCOL_DRAFT.md)。全部为 `Status: Awaiting Researcher Decision`，不覆盖历史结果、原决定或 Gate：
+[证据审计](../docs/STAGE_0_5_WP1_EVIDENCE_AUDIT.md)记录逐项完整冲突与影响；[冻结候选](../docs/STAGE_0_5_ACCEPTANCE_FREEZE_CANDIDATE_V1.md)集中R1–R5，未批准新科研口径：
+
+- C1 **Partially resolved**：真实D1与44个历史模拟局部N、74个点E复现；模拟边E影响已量化，30份grid只有观测前车ID、缺显式incarnation。生产入口仍用点分母，正式测量接纳待决。
+- C2 **Partially resolved**：50/100/50m却按100m归一化及模拟200m事实确认；三种统一支持候选有离线敏感性，正式分块待决。
+- C3 **Partially resolved**：误标字段实际g/closing确认；两源dropna索引对齐，未见实际错位，通用对齐风险仍在；时距主辅/近零与迁移未批准。
+- C4 **Resolved by evidence（两校准源）**：全采集829382拟合点与内部644067拟合点分别精确复现，tau/closing冲突由支持域混用解释；非覆盖式erratum已记录，第三窗轨迹未复核。
+- C5 **Partially resolved**：旧分块不变下，文字计划/执行primary为grid11/8、structural4/1，历史判定保留；当前runner SHA不等于freeze源SHA，完整冻结源码快照不可用，历史完整合规Unknown；未来规则与偏离处理待研究者。
+
+额外账本限制：METHOD-DIAGNOSTICS报告称48次进程，而机器budget/executed=43并有26失败及primary/secondary尝试，确切进程总数Evidence Insufficient，不修写历史。R1–R5全部开放，Gate与原剩3次、B0隔离Unknown、第三窗已使用不变。本任务不修生产科研代码、不启动任何新轨迹。
+
+## 2026-10-24 原验收标准审计新增冲突（历史审计时点）
+
+原审计时点的完整 `Documented Intent / Actual Implementation / Evidence / Affected Files / Conflict / Status` 记录见 [Stage 0.5 验收协议草案 §3](../docs/STAGE_0_5_ACCEPTANCE_PROTOCOL_DRAFT.md)。当时全部为 `Status: Awaiting Researcher Decision`；本次处置以顶部Issue #1记录为准，不覆盖历史结果、原决定或Gate：
 
 - C1：`stage_0_5_state_support.py::block_descriptors` 的模拟 P2 分母为状态点数×0.1，包含无前车 `not_applicable` 且未验证连续边；两个后续 runner 直接使用，未执行 D1 两端可靠可评价跟驰时间契约。正式率影响未重算。
 - C2：真实 `block_cloud` 的局部两侧块实际50m却按100m归一化，仿真 `block_descriptors` 用200m整体块；共同支持与域成员结论适用性待裁决。
@@ -46,7 +58,7 @@ Evidence：`evidence/results/RES-STAGE-0.2-NGSIM-V2/audit.json`、`code/src/risk
 
 ## 当前冲突状态
 
-2026-09-10 发现的 pNEUMA 职责冲突已由研究者批准退役决定解决。当前没有尚待研究者决定的已知重大科研冲突。
+历史记录：2026-09-10发现的pNEUMA职责冲突已由研究者批准退役决定解决；保留该解决事实。原“当前没有尚待研究者决定的已知重大科研冲突”已过时。当前C1/C2/C3/C5仍有Awaiting Researcher Decision的科学选择与实施冲突，C4仅所审计两校准源的支持域混用已由证据解决，详见本文件顶部Issue #1记录。
 
 ## 冲突记录模板
 

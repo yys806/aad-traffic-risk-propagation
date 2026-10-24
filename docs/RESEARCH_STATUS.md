@@ -1,5 +1,7 @@
 # AAD 当前科研状态
 
+> 2026-10-24 Issue #1最新：[工作包1证据审计](STAGE_0_5_WP1_EVIDENCE_AUDIT.md)与[冻结候选v1](STAGE_0_5_ACCEPTANCE_FREEZE_CANDIDATE_V1.md)已形成，未批准/未正式冻结。C4两校准源数值差异由全采集/内部窗混用解决并追加更正；C1/C2/C3/C5部分解决、科学选择与生产修复仍待决。真实D1 N/E复现，历史模拟诊断率与状态域不得直接升格验收；R1–R5全部开放，Gate不变。无新轨迹、无第三窗轨迹或locked holdout读取；原3次余额不转移。下方原草案“全部冲突未解决”是其历史审计时点。
+
 > 2026-10-24审计提醒：[Stage 0.5验收协议草案](STAGE_0_5_ACCEPTANCE_PROTOCOL_DRAFT.md)为未冻结提案，R1–R5仍全部开放。草案§3新增五项未解决冲突：模拟P2分母未执行D1边契约、真实/仿真空间分块不同、时距字段公式不符、真实参考报告与机器值不同、覆盖判据计划与执行不同。`Status: Awaiting Researcher Decision`；下文历史诊断结论与结果保留，不直接升格正式验收。第三窗口已使用，不能再称未接触holdout。无代码/配置/实验/决定/Gate变化。
 
 > 核对日期：2026-10-21。数字和 Gate 以 `PROJECT_REGISTRY.json`、`evidence/` 和本机原始产物为准。
