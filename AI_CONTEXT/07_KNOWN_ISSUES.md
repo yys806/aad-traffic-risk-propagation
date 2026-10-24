@@ -1,5 +1,17 @@
 # AAD Known Issues
 
+## 2026-10-24 验收标准审计新增冲突（未修复）
+
+完整 `Documented Intent / Actual Implementation / Evidence / Affected Files / Conflict / Status` 记录见 [Stage 0.5 验收协议草案 §3](../docs/STAGE_0_5_ACCEPTANCE_PROTOCOL_DRAFT.md)。全部为 `Status: Awaiting Researcher Decision`，不覆盖历史结果、原决定或 Gate：
+
+- C1：`stage_0_5_state_support.py::block_descriptors` 的模拟 P2 分母为状态点数×0.1，包含无前车 `not_applicable` 且未验证连续边；两个后续 runner 直接使用，未执行 D1 两端可靠可评价跟驰时间契约。正式率影响未重算。
+- C2：真实 `block_cloud` 的局部两侧块实际50m却按100m归一化，仿真 `block_descriptors` 用200m整体块；共同支持与域成员结论适用性待裁决。
+- C3：`stage_0_5_leader_replay.py::pair_metrics` 的 `time_headway_mean_*` 与重建 `interaction_stats::net_gap_over_speed_s` 实际用gap/closing，不可按字段名视为已验证车头时距。
+- C4：状态支持报告的829382条、tau_eff=1.5393/1.5687及闭合统计，与当前 `real_domain.json` 的644067条、1.533904/1.606439及对应闭合统计不同；时间/质量口径原因未验证，不自行改成已确认勘误。
+- C5：状态支持计划文字写最小双向基线/pooled覆盖，执行对校准条件用方向性基线/另一窗口包络覆盖；哈希存在不证明判据一致。
+
+现有五seed集合包含构造seed；第三窗口已被使用。两者是正式验证独立性限制，不应沿用历史“尚无seed证据/从未打开第三窗”的当前时态。未触及代码或实验；本次只记录冲突与建议，不借此修改科研方案。
+
 ## 已确认问题
 
 ### KI-01 — 阶段 0.2 尚未收口

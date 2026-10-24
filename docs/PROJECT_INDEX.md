@@ -11,6 +11,7 @@
 | 项目边界和下一步 | `PROJECT_CONTEXT.md` |
 | 总体排期 | `docs/论文实验推进/总计划.md` |
 | 当前科研状态 | `docs/RESEARCH_STATUS.md` |
+| Stage 0.5 验收草案与 R1–R5 审计（未冻结） | [STAGE_0_5_ACCEPTANCE_PROTOCOL_DRAFT.md](STAGE_0_5_ACCEPTANCE_PROTOCOL_DRAFT.md)，含源码/证据冲突与待决事项 |
 | 阶段与 Gate | `docs/STAGE_INDEX.md`、`docs/PROJECT_REGISTRY.json` |
 | 结果和证据 | `docs/RESULTS_INDEX.md`、`evidence/` |
 | 历史记录 | `docs/HISTORY_INDEX.md`、`docs/归档/项目记录/` |
