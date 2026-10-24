@@ -1,5 +1,11 @@
 # AAD Current State Snapshot
 
+## 执行环境导航（2026-10-24）
+
+- **默认环境**：Windows 原生环境；WSL（Ubuntu）是可选 Linux 任务执行与临时实验环境。完整长期规则以 `AGENTS.md` §13 为唯一入口，WSL 不新增项目事实来源。
+- **唯一 AAD WSL 工作区**：Windows `\\wsl.localhost\Ubuntu\home\shen\AAD`；Ubuntu `/home/shen/AAD`。
+- **待核验**：容量目标约 20 GB，缩减由其他执行者独立负责；当前容量、实际可用空间、工作区可用性均为 `Pending Verification`。本次只登记文档，未执行任何 WSL 操作，未验证可用性或容量目标达成。
+
 ## 论文及研究材料位置（2026-10-23）
 
 - **当前最新版论文在 Overleaf**：正文、公式、符号与正式表述以 Overleaf 当前版本为准；本仓库不保留活动 `.tex` 论文源，根目录 `paper/` 已于 2026-10-23 退役。未登记真实项目链接前不写 URL。
