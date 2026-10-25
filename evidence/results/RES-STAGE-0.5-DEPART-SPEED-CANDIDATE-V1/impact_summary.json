@@ -1,0 +1,1303 @@
+{
+  "status": "Proposed / Awaiting Researcher Decision",
+  "candidate_policy": "initial_numeric_10_only_to_max",
+  "input_audits": {
+    "ID1_SUPPLY_0750": {
+      "initial_count": 117,
+      "numeric_10_candidate_count": 38,
+      "numeric_speed_range_mps": [
+        0.1,
+        16.74
+      ],
+      "scheduled_depart_s": [
+        0.0
+      ],
+      "by_route": {
+        "from_main_2_through": 38,
+        "from_main_1_through": 37,
+        "from_main_0_through": 40,
+        "from_main_0_exiting": 2
+      },
+      "by_type": {
+        "B_het_c3_passenger": 24,
+        "B_het_c2_passenger": 25,
+        "B_het_c4_passenger": 19,
+        "B_het_c1_passenger": 20,
+        "B_het_c0_passenger": 29
+      },
+      "by_lane": {
+        "main_2_4": 7,
+        "main_1_5": 8,
+        "main_0_4": 12,
+        "main_2_3": 8,
+        "main_1_4": 10,
+        "main_0_3": 9,
+        "main_2_2": 11,
+        "main_1_3": 6,
+        "main_0_2": 6,
+        "main_2_1": 6,
+        "main_1_2": 7,
+        "main_0_1": 8,
+        "main_2_0": 6,
+        "main_1_1": 4,
+        "main_0_0": 7,
+        "main_1_0": 2
+      },
+      "numeric_10_candidate_by_lane": {
+        "main_2_4": 7,
+        "main_2_3": 8,
+        "main_2_2": 11,
+        "main_2_1": 6,
+        "main_2_0": 6
+      },
+      "vtypes": {
+        "B_het_c0_passenger": {
+          "id": "B_het_c0_passenger",
+          "vClass": "passenger",
+          "length": "4.4196",
+          "tau": "0.7389146576529666",
+          "sigma": "0.5",
+          "maxSpeed": "27.78",
+          "speedFactor": "1.0",
+          "speedDev": "0.0",
+          "carFollowModel": "Krauss",
+          "minGap": "2.5",
+          "accel": "2.6",
+          "decel": "4.5",
+          "apparentDecel": "4.5",
+          "emergencyDecel": "9.0",
+          "actionStepLength": "0.1",
+          "sigmaStep": "1.0",
+          "laneChangeModel": "LC2013"
+        },
+        "B_het_c1_passenger": {
+          "id": "B_het_c1_passenger",
+          "vClass": "passenger",
+          "length": "4.4196",
+          "tau": "1.093342856277335",
+          "sigma": "0.5",
+          "maxSpeed": "27.78",
+          "speedFactor": "1.0",
+          "speedDev": "0.0",
+          "carFollowModel": "Krauss",
+          "minGap": "2.5",
+          "accel": "2.6",
+          "decel": "4.5",
+          "apparentDecel": "4.5",
+          "emergencyDecel": "9.0",
+          "actionStepLength": "0.1",
+          "sigmaStep": "1.0",
+          "laneChangeModel": "LC2013"
+        },
+        "B_het_c2_passenger": {
+          "id": "B_het_c2_passenger",
+          "vClass": "passenger",
+          "length": "4.4196",
+          "tau": "1.3877275660721775",
+          "sigma": "0.5",
+          "maxSpeed": "27.78",
+          "speedFactor": "1.0",
+          "speedDev": "0.0",
+          "carFollowModel": "Krauss",
+          "minGap": "2.5",
+          "accel": "2.6",
+          "decel": "4.5",
+          "apparentDecel": "4.5",
+          "emergencyDecel": "9.0",
+          "actionStepLength": "0.1",
+          "sigmaStep": "1.0",
+          "laneChangeModel": "LC2013"
+        },
+        "B_het_c3_passenger": {
+          "id": "B_het_c3_passenger",
+          "vClass": "passenger",
+          "length": "4.4196",
+          "tau": "1.8288599276236361",
+          "sigma": "0.5",
+          "maxSpeed": "27.78",
+          "speedFactor": "1.0",
+          "speedDev": "0.0",
+          "carFollowModel": "Krauss",
+          "minGap": "2.5",
+          "accel": "2.6",
+          "decel": "4.5",
+          "apparentDecel": "4.5",
+          "emergencyDecel": "9.0",
+          "actionStepLength": "0.1",
+          "sigmaStep": "1.0",
+          "laneChangeModel": "LC2013"
+        },
+        "B_het_c4_passenger": {
+          "id": "B_het_c4_passenger",
+          "vClass": "passenger",
+          "length": "4.4196",
+          "tau": "2.5614676647488244",
+          "sigma": "0.5",
+          "maxSpeed": "27.78",
+          "speedFactor": "1.0",
+          "speedDev": "0.0",
+          "carFollowModel": "Krauss",
+          "minGap": "2.5",
+          "accel": "2.6",
+          "decel": "4.5",
+          "apparentDecel": "4.5",
+          "emergencyDecel": "9.0",
+          "actionStepLength": "0.1",
+          "sigmaStep": "1.0",
+          "laneChangeModel": "LC2013"
+        }
+      },
+      "all_native_lanes": {
+        ":hwy_m1_0_0": {
+          "id": ":hwy_m1_0_0",
+          "index": "0",
+          "speed": "6.92",
+          "length": "5.03",
+          "shape": "173.91,140.29 174.82,141.21 175.85,141.87 177.00,142.27 178.29,142.40"
+        },
+        ":hwy_m1_1_0": {
+          "id": ":hwy_m1_1_0",
+          "index": "0",
+          "speed": "27.78",
+          "length": "5.39",
+          "shape": "172.90,145.60 178.29,145.60"
+        },
+        ":hwy_m1_1_1": {
+          "id": ":hwy_m1_1_1",
+          "index": "1",
+          "speed": "27.78",
+          "length": "5.39",
+          "shape": "172.90,148.80 178.29,148.80"
+        },
+        ":hwy_m1_1_2": {
+          "id": ":hwy_m1_1_2",
+          "index": "2",
+          "speed": "27.78",
+          "length": "5.39",
+          "shape": "172.90,152.00 178.29,152.00"
+        },
+        ":hwy_m1_1_3": {
+          "id": ":hwy_m1_1_3",
+          "index": "3",
+          "speed": "27.78",
+          "length": "5.39",
+          "shape": "172.90,155.20 178.29,155.20"
+        },
+        ":hwy_m1_1_4": {
+          "id": ":hwy_m1_1_4",
+          "index": "4",
+          "speed": "27.78",
+          "length": "5.39",
+          "shape": "172.90,158.40 178.29,158.40"
+        },
+        ":hwy_m2_0_0": {
+          "id": ":hwy_m2_0_0",
+          "index": "0",
+          "speed": "7.18",
+          "length": "4.47",
+          "shape": "412.33,142.40 413.63,142.36 414.53,142.15 415.32,141.66 416.28,140.77"
+        },
+        ":hwy_m2_1_0": {
+          "id": ":hwy_m2_1_0",
+          "index": "0",
+          "speed": "18.89",
+          "length": "4.62",
+          "shape": "412.33,145.60 416.95,145.60"
+        },
+        ":hwy_m2_1_1": {
+          "id": ":hwy_m2_1_1",
+          "index": "1",
+          "speed": "18.89",
+          "length": "4.62",
+          "shape": "412.33,148.80 416.95,148.80"
+        },
+        ":hwy_m2_1_2": {
+          "id": ":hwy_m2_1_2",
+          "index": "2",
+          "speed": "18.89",
+          "length": "4.62",
+          "shape": "412.33,152.00 416.95,152.00"
+        },
+        ":hwy_m2_1_3": {
+          "id": ":hwy_m2_1_3",
+          "index": "3",
+          "speed": "18.89",
+          "length": "4.62",
+          "shape": "412.33,155.20 416.95,155.20"
+        },
+        ":hwy_m2_1_4": {
+          "id": ":hwy_m2_1_4",
+          "index": "4",
+          "speed": "18.89",
+          "length": "4.62",
+          "shape": "412.33,158.40 416.95,158.40"
+        },
+        "main_0_0": {
+          "id": "main_0_0",
+          "index": "0",
+          "speed": "27.78",
+          "length": "172.90",
+          "shape": "0.00,145.60 172.90,145.60"
+        },
+        "main_0_1": {
+          "id": "main_0_1",
+          "index": "1",
+          "speed": "27.78",
+          "length": "172.90",
+          "shape": "0.00,148.80 172.90,148.80"
+        },
+        "main_0_2": {
+          "id": "main_0_2",
+          "index": "2",
+          "speed": "27.78",
+          "length": "172.90",
+          "shape": "0.00,152.00 172.90,152.00"
+        },
+        "main_0_3": {
+          "id": "main_0_3",
+          "index": "3",
+          "speed": "27.78",
+          "length": "172.90",
+          "shape": "0.00,155.20 172.90,155.20"
+        },
+        "main_0_4": {
+          "id": "main_0_4",
+          "index": "4",
+          "speed": "27.78",
+          "length": "172.90",
+          "shape": "0.00,158.40 172.90,158.40"
+        },
+        "main_1_0": {
+          "id": "main_1_0",
+          "index": "0",
+          "speed": "27.78",
+          "length": "234.04",
+          "acceleration": "1",
+          "shape": "178.29,142.40 412.33,142.40"
+        },
+        "main_1_1": {
+          "id": "main_1_1",
+          "index": "1",
+          "speed": "27.78",
+          "length": "234.04",
+          "shape": "178.29,145.60 412.33,145.60"
+        },
+        "main_1_2": {
+          "id": "main_1_2",
+          "index": "2",
+          "speed": "27.78",
+          "length": "234.04",
+          "shape": "178.29,148.80 412.33,148.80"
+        },
+        "main_1_3": {
+          "id": "main_1_3",
+          "index": "3",
+          "speed": "27.78",
+          "length": "234.04",
+          "shape": "178.29,152.00 412.33,152.00"
+        },
+        "main_1_4": {
+          "id": "main_1_4",
+          "index": "4",
+          "speed": "27.78",
+          "length": "234.04",
+          "shape": "178.29,155.20 412.33,155.20"
+        },
+        "main_1_5": {
+          "id": "main_1_5",
+          "index": "5",
+          "speed": "27.78",
+          "length": "234.04",
+          "shape": "178.29,158.40 412.33,158.40"
+        },
+        "main_2_0": {
+          "id": "main_2_0",
+          "index": "0",
+          "speed": "10.00",
+          "length": "252.23",
+          "shape": "416.95,145.60 669.18,145.60"
+        },
+        "main_2_1": {
+          "id": "main_2_1",
+          "index": "1",
+          "speed": "10.00",
+          "length": "252.23",
+          "shape": "416.95,148.80 669.18,148.80"
+        },
+        "main_2_2": {
+          "id": "main_2_2",
+          "index": "2",
+          "speed": "10.00",
+          "length": "252.23",
+          "shape": "416.95,152.00 669.18,152.00"
+        },
+        "main_2_3": {
+          "id": "main_2_3",
+          "index": "3",
+          "speed": "10.00",
+          "length": "252.23",
+          "shape": "416.95,155.20 669.18,155.20"
+        },
+        "main_2_4": {
+          "id": "main_2_4",
+          "index": "4",
+          "speed": "10.00",
+          "length": "252.23",
+          "shape": "416.95,158.40 669.18,158.40"
+        },
+        "offramp_0": {
+          "id": "offramp_0",
+          "index": "0",
+          "speed": "13.89",
+          "length": "201.17",
+          "shape": "416.28,140.77 558.87,-1.13"
+        },
+        "onramp_0": {
+          "id": "onramp_0",
+          "index": "0",
+          "speed": "13.89",
+          "length": "180.71",
+          "shape": "61.25,-1.00 173.91,140.29"
+        }
+      },
+      "all_initial_geometry_and_permissions_checked": true,
+      "max_depart_delay": "Not set in config; installed runtime default not independently verified; no discard guarantee",
+      "noninitial_count": 1033
+    },
+    "ID2_SUPPLY_0805": {
+      "initial_count": 131,
+      "numeric_10_candidate_count": 44,
+      "numeric_speed_range_mps": [
+        4.73,
+        16.76
+      ],
+      "scheduled_depart_s": [
+        0.0
+      ],
+      "by_route": {
+        "from_main_2_through": 52,
+        "from_main_1_through": 44,
+        "from_main_0_through": 32,
+        "from_main_0_exiting": 3
+      },
+      "by_type": {
+        "B_het_c3_passenger": 27,
+        "B_het_c2_passenger": 35,
+        "B_het_c0_passenger": 20,
+        "B_het_c1_passenger": 21,
+        "B_het_c4_passenger": 28
+      },
+      "by_lane": {
+        "main_2_4": 9,
+        "main_1_5": 11,
+        "main_0_4": 7,
+        "main_2_3": 10,
+        "main_1_4": 10,
+        "main_0_3": 6,
+        "main_2_2": 12,
+        "main_1_3": 7,
+        "main_0_2": 8,
+        "main_2_1": 11,
+        "main_1_2": 8,
+        "main_0_1": 5,
+        "main_2_0": 10,
+        "main_1_1": 7,
+        "main_0_0": 9,
+        "main_1_0": 1
+      },
+      "numeric_10_candidate_by_lane": {
+        "main_2_4": 7,
+        "main_2_3": 8,
+        "main_2_2": 9,
+        "main_2_1": 10,
+        "main_2_0": 10
+      },
+      "vtypes": {
+        "B_het_c0_passenger": {
+          "id": "B_het_c0_passenger",
+          "vClass": "passenger",
+          "length": "4.4196",
+          "tau": "0.7389146576529666",
+          "sigma": "0.5",
+          "maxSpeed": "27.78",
+          "speedFactor": "1.0",
+          "speedDev": "0.0",
+          "carFollowModel": "Krauss",
+          "minGap": "2.5",
+          "accel": "2.6",
+          "decel": "4.5",
+          "apparentDecel": "4.5",
+          "emergencyDecel": "9.0",
+          "actionStepLength": "0.1",
+          "sigmaStep": "1.0",
+          "laneChangeModel": "LC2013"
+        },
+        "B_het_c1_passenger": {
+          "id": "B_het_c1_passenger",
+          "vClass": "passenger",
+          "length": "4.4196",
+          "tau": "1.093342856277335",
+          "sigma": "0.5",
+          "maxSpeed": "27.78",
+          "speedFactor": "1.0",
+          "speedDev": "0.0",
+          "carFollowModel": "Krauss",
+          "minGap": "2.5",
+          "accel": "2.6",
+          "decel": "4.5",
+          "apparentDecel": "4.5",
+          "emergencyDecel": "9.0",
+          "actionStepLength": "0.1",
+          "sigmaStep": "1.0",
+          "laneChangeModel": "LC2013"
+        },
+        "B_het_c2_passenger": {
+          "id": "B_het_c2_passenger",
+          "vClass": "passenger",
+          "length": "4.4196",
+          "tau": "1.3877275660721775",
+          "sigma": "0.5",
+          "maxSpeed": "27.78",
+          "speedFactor": "1.0",
+          "speedDev": "0.0",
+          "carFollowModel": "Krauss",
+          "minGap": "2.5",
+          "accel": "2.6",
+          "decel": "4.5",
+          "apparentDecel": "4.5",
+          "emergencyDecel": "9.0",
+          "actionStepLength": "0.1",
+          "sigmaStep": "1.0",
+          "laneChangeModel": "LC2013"
+        },
+        "B_het_c3_passenger": {
+          "id": "B_het_c3_passenger",
+          "vClass": "passenger",
+          "length": "4.4196",
+          "tau": "1.8288599276236361",
+          "sigma": "0.5",
+          "maxSpeed": "27.78",
+          "speedFactor": "1.0",
+          "speedDev": "0.0",
+          "carFollowModel": "Krauss",
+          "minGap": "2.5",
+          "accel": "2.6",
+          "decel": "4.5",
+          "apparentDecel": "4.5",
+          "emergencyDecel": "9.0",
+          "actionStepLength": "0.1",
+          "sigmaStep": "1.0",
+          "laneChangeModel": "LC2013"
+        },
+        "B_het_c4_passenger": {
+          "id": "B_het_c4_passenger",
+          "vClass": "passenger",
+          "length": "4.4196",
+          "tau": "2.5614676647488244",
+          "sigma": "0.5",
+          "maxSpeed": "27.78",
+          "speedFactor": "1.0",
+          "speedDev": "0.0",
+          "carFollowModel": "Krauss",
+          "minGap": "2.5",
+          "accel": "2.6",
+          "decel": "4.5",
+          "apparentDecel": "4.5",
+          "emergencyDecel": "9.0",
+          "actionStepLength": "0.1",
+          "sigmaStep": "1.0",
+          "laneChangeModel": "LC2013"
+        }
+      },
+      "all_native_lanes": {
+        ":hwy_m1_0_0": {
+          "id": ":hwy_m1_0_0",
+          "index": "0",
+          "speed": "6.92",
+          "length": "5.03",
+          "shape": "173.91,140.29 174.82,141.21 175.85,141.87 177.00,142.27 178.29,142.40"
+        },
+        ":hwy_m1_1_0": {
+          "id": ":hwy_m1_1_0",
+          "index": "0",
+          "speed": "27.78",
+          "length": "5.39",
+          "shape": "172.90,145.60 178.29,145.60"
+        },
+        ":hwy_m1_1_1": {
+          "id": ":hwy_m1_1_1",
+          "index": "1",
+          "speed": "27.78",
+          "length": "5.39",
+          "shape": "172.90,148.80 178.29,148.80"
+        },
+        ":hwy_m1_1_2": {
+          "id": ":hwy_m1_1_2",
+          "index": "2",
+          "speed": "27.78",
+          "length": "5.39",
+          "shape": "172.90,152.00 178.29,152.00"
+        },
+        ":hwy_m1_1_3": {
+          "id": ":hwy_m1_1_3",
+          "index": "3",
+          "speed": "27.78",
+          "length": "5.39",
+          "shape": "172.90,155.20 178.29,155.20"
+        },
+        ":hwy_m1_1_4": {
+          "id": ":hwy_m1_1_4",
+          "index": "4",
+          "speed": "27.78",
+          "length": "5.39",
+          "shape": "172.90,158.40 178.29,158.40"
+        },
+        ":hwy_m2_0_0": {
+          "id": ":hwy_m2_0_0",
+          "index": "0",
+          "speed": "7.18",
+          "length": "4.47",
+          "shape": "412.33,142.40 413.63,142.36 414.53,142.15 415.32,141.66 416.28,140.77"
+        },
+        ":hwy_m2_1_0": {
+          "id": ":hwy_m2_1_0",
+          "index": "0",
+          "speed": "18.89",
+          "length": "4.62",
+          "shape": "412.33,145.60 416.95,145.60"
+        },
+        ":hwy_m2_1_1": {
+          "id": ":hwy_m2_1_1",
+          "index": "1",
+          "speed": "18.89",
+          "length": "4.62",
+          "shape": "412.33,148.80 416.95,148.80"
+        },
+        ":hwy_m2_1_2": {
+          "id": ":hwy_m2_1_2",
+          "index": "2",
+          "speed": "18.89",
+          "length": "4.62",
+          "shape": "412.33,152.00 416.95,152.00"
+        },
+        ":hwy_m2_1_3": {
+          "id": ":hwy_m2_1_3",
+          "index": "3",
+          "speed": "18.89",
+          "length": "4.62",
+          "shape": "412.33,155.20 416.95,155.20"
+        },
+        ":hwy_m2_1_4": {
+          "id": ":hwy_m2_1_4",
+          "index": "4",
+          "speed": "18.89",
+          "length": "4.62",
+          "shape": "412.33,158.40 416.95,158.40"
+        },
+        "main_0_0": {
+          "id": "main_0_0",
+          "index": "0",
+          "speed": "27.78",
+          "length": "172.90",
+          "shape": "0.00,145.60 172.90,145.60"
+        },
+        "main_0_1": {
+          "id": "main_0_1",
+          "index": "1",
+          "speed": "27.78",
+          "length": "172.90",
+          "shape": "0.00,148.80 172.90,148.80"
+        },
+        "main_0_2": {
+          "id": "main_0_2",
+          "index": "2",
+          "speed": "27.78",
+          "length": "172.90",
+          "shape": "0.00,152.00 172.90,152.00"
+        },
+        "main_0_3": {
+          "id": "main_0_3",
+          "index": "3",
+          "speed": "27.78",
+          "length": "172.90",
+          "shape": "0.00,155.20 172.90,155.20"
+        },
+        "main_0_4": {
+          "id": "main_0_4",
+          "index": "4",
+          "speed": "27.78",
+          "length": "172.90",
+          "shape": "0.00,158.40 172.90,158.40"
+        },
+        "main_1_0": {
+          "id": "main_1_0",
+          "index": "0",
+          "speed": "27.78",
+          "length": "234.04",
+          "acceleration": "1",
+          "shape": "178.29,142.40 412.33,142.40"
+        },
+        "main_1_1": {
+          "id": "main_1_1",
+          "index": "1",
+          "speed": "27.78",
+          "length": "234.04",
+          "shape": "178.29,145.60 412.33,145.60"
+        },
+        "main_1_2": {
+          "id": "main_1_2",
+          "index": "2",
+          "speed": "27.78",
+          "length": "234.04",
+          "shape": "178.29,148.80 412.33,148.80"
+        },
+        "main_1_3": {
+          "id": "main_1_3",
+          "index": "3",
+          "speed": "27.78",
+          "length": "234.04",
+          "shape": "178.29,152.00 412.33,152.00"
+        },
+        "main_1_4": {
+          "id": "main_1_4",
+          "index": "4",
+          "speed": "27.78",
+          "length": "234.04",
+          "shape": "178.29,155.20 412.33,155.20"
+        },
+        "main_1_5": {
+          "id": "main_1_5",
+          "index": "5",
+          "speed": "27.78",
+          "length": "234.04",
+          "shape": "178.29,158.40 412.33,158.40"
+        },
+        "main_2_0": {
+          "id": "main_2_0",
+          "index": "0",
+          "speed": "10.00",
+          "length": "252.23",
+          "shape": "416.95,145.60 669.18,145.60"
+        },
+        "main_2_1": {
+          "id": "main_2_1",
+          "index": "1",
+          "speed": "10.00",
+          "length": "252.23",
+          "shape": "416.95,148.80 669.18,148.80"
+        },
+        "main_2_2": {
+          "id": "main_2_2",
+          "index": "2",
+          "speed": "10.00",
+          "length": "252.23",
+          "shape": "416.95,152.00 669.18,152.00"
+        },
+        "main_2_3": {
+          "id": "main_2_3",
+          "index": "3",
+          "speed": "10.00",
+          "length": "252.23",
+          "shape": "416.95,155.20 669.18,155.20"
+        },
+        "main_2_4": {
+          "id": "main_2_4",
+          "index": "4",
+          "speed": "10.00",
+          "length": "252.23",
+          "shape": "416.95,158.40 669.18,158.40"
+        },
+        "offramp_0": {
+          "id": "offramp_0",
+          "index": "0",
+          "speed": "13.89",
+          "length": "201.17",
+          "shape": "416.28,140.77 558.87,-1.13"
+        },
+        "onramp_0": {
+          "id": "onramp_0",
+          "index": "0",
+          "speed": "13.89",
+          "length": "180.71",
+          "shape": "61.25,-1.00 173.91,140.29"
+        }
+      },
+      "all_initial_geometry_and_permissions_checked": true,
+      "max_depart_delay": "Not set in config; installed runtime default not independently verified; no discard guarantee",
+      "noninitial_count": 900
+    },
+    "ID3_RAMP_0750": {
+      "initial_count": 117,
+      "numeric_10_candidate_count": 38,
+      "numeric_speed_range_mps": [
+        0.1,
+        16.74
+      ],
+      "scheduled_depart_s": [
+        0.0
+      ],
+      "by_route": {
+        "from_main_2_through": 38,
+        "from_main_1_through": 37,
+        "from_main_0_through": 40,
+        "from_main_0_exiting": 2
+      },
+      "by_type": {
+        "B_het_c3_passenger": 24,
+        "B_het_c2_passenger": 25,
+        "B_het_c4_passenger": 19,
+        "B_het_c1_passenger": 20,
+        "B_het_c0_passenger": 29
+      },
+      "by_lane": {
+        "main_2_4": 7,
+        "main_1_5": 8,
+        "main_0_4": 12,
+        "main_2_3": 8,
+        "main_1_4": 10,
+        "main_0_3": 9,
+        "main_2_2": 11,
+        "main_1_3": 6,
+        "main_0_2": 6,
+        "main_2_1": 6,
+        "main_1_2": 7,
+        "main_0_1": 8,
+        "main_2_0": 6,
+        "main_1_1": 4,
+        "main_0_0": 7,
+        "main_1_0": 2
+      },
+      "numeric_10_candidate_by_lane": {
+        "main_2_4": 7,
+        "main_2_3": 8,
+        "main_2_2": 11,
+        "main_2_1": 6,
+        "main_2_0": 6
+      },
+      "vtypes": {
+        "B_het_c0_passenger": {
+          "id": "B_het_c0_passenger",
+          "vClass": "passenger",
+          "length": "4.4196",
+          "tau": "0.7389146576529666",
+          "sigma": "0.5",
+          "maxSpeed": "27.78",
+          "speedFactor": "1.0",
+          "speedDev": "0.0",
+          "carFollowModel": "Krauss",
+          "minGap": "2.5",
+          "accel": "2.6",
+          "decel": "4.5",
+          "apparentDecel": "4.5",
+          "emergencyDecel": "9.0",
+          "actionStepLength": "0.1",
+          "sigmaStep": "1.0",
+          "laneChangeModel": "LC2013"
+        },
+        "B_het_c1_passenger": {
+          "id": "B_het_c1_passenger",
+          "vClass": "passenger",
+          "length": "4.4196",
+          "tau": "1.093342856277335",
+          "sigma": "0.5",
+          "maxSpeed": "27.78",
+          "speedFactor": "1.0",
+          "speedDev": "0.0",
+          "carFollowModel": "Krauss",
+          "minGap": "2.5",
+          "accel": "2.6",
+          "decel": "4.5",
+          "apparentDecel": "4.5",
+          "emergencyDecel": "9.0",
+          "actionStepLength": "0.1",
+          "sigmaStep": "1.0",
+          "laneChangeModel": "LC2013"
+        },
+        "B_het_c2_passenger": {
+          "id": "B_het_c2_passenger",
+          "vClass": "passenger",
+          "length": "4.4196",
+          "tau": "1.3877275660721775",
+          "sigma": "0.5",
+          "maxSpeed": "27.78",
+          "speedFactor": "1.0",
+          "speedDev": "0.0",
+          "carFollowModel": "Krauss",
+          "minGap": "2.5",
+          "accel": "2.6",
+          "decel": "4.5",
+          "apparentDecel": "4.5",
+          "emergencyDecel": "9.0",
+          "actionStepLength": "0.1",
+          "sigmaStep": "1.0",
+          "laneChangeModel": "LC2013"
+        },
+        "B_het_c3_passenger": {
+          "id": "B_het_c3_passenger",
+          "vClass": "passenger",
+          "length": "4.4196",
+          "tau": "1.8288599276236361",
+          "sigma": "0.5",
+          "maxSpeed": "27.78",
+          "speedFactor": "1.0",
+          "speedDev": "0.0",
+          "carFollowModel": "Krauss",
+          "minGap": "2.5",
+          "accel": "2.6",
+          "decel": "4.5",
+          "apparentDecel": "4.5",
+          "emergencyDecel": "9.0",
+          "actionStepLength": "0.1",
+          "sigmaStep": "1.0",
+          "laneChangeModel": "LC2013"
+        },
+        "B_het_c4_passenger": {
+          "id": "B_het_c4_passenger",
+          "vClass": "passenger",
+          "length": "4.4196",
+          "tau": "2.5614676647488244",
+          "sigma": "0.5",
+          "maxSpeed": "27.78",
+          "speedFactor": "1.0",
+          "speedDev": "0.0",
+          "carFollowModel": "Krauss",
+          "minGap": "2.5",
+          "accel": "2.6",
+          "decel": "4.5",
+          "apparentDecel": "4.5",
+          "emergencyDecel": "9.0",
+          "actionStepLength": "0.1",
+          "sigmaStep": "1.0",
+          "laneChangeModel": "LC2013"
+        }
+      },
+      "all_native_lanes": {
+        ":hwy_m1_0_0": {
+          "id": ":hwy_m1_0_0",
+          "index": "0",
+          "speed": "6.92",
+          "length": "5.03",
+          "shape": "173.91,140.29 174.82,141.21 175.85,141.87 177.00,142.27 178.29,142.40"
+        },
+        ":hwy_m1_1_0": {
+          "id": ":hwy_m1_1_0",
+          "index": "0",
+          "speed": "27.78",
+          "length": "5.39",
+          "shape": "172.90,145.60 178.29,145.60"
+        },
+        ":hwy_m1_1_1": {
+          "id": ":hwy_m1_1_1",
+          "index": "1",
+          "speed": "27.78",
+          "length": "5.39",
+          "shape": "172.90,148.80 178.29,148.80"
+        },
+        ":hwy_m1_1_2": {
+          "id": ":hwy_m1_1_2",
+          "index": "2",
+          "speed": "27.78",
+          "length": "5.39",
+          "shape": "172.90,152.00 178.29,152.00"
+        },
+        ":hwy_m1_1_3": {
+          "id": ":hwy_m1_1_3",
+          "index": "3",
+          "speed": "27.78",
+          "length": "5.39",
+          "shape": "172.90,155.20 178.29,155.20"
+        },
+        ":hwy_m1_1_4": {
+          "id": ":hwy_m1_1_4",
+          "index": "4",
+          "speed": "27.78",
+          "length": "5.39",
+          "shape": "172.90,158.40 178.29,158.40"
+        },
+        ":hwy_m2_0_0": {
+          "id": ":hwy_m2_0_0",
+          "index": "0",
+          "speed": "7.18",
+          "length": "4.47",
+          "shape": "412.33,142.40 413.63,142.36 414.53,142.15 415.32,141.66 416.28,140.77"
+        },
+        ":hwy_m2_1_0": {
+          "id": ":hwy_m2_1_0",
+          "index": "0",
+          "speed": "18.89",
+          "length": "4.62",
+          "shape": "412.33,145.60 416.95,145.60"
+        },
+        ":hwy_m2_1_1": {
+          "id": ":hwy_m2_1_1",
+          "index": "1",
+          "speed": "18.89",
+          "length": "4.62",
+          "shape": "412.33,148.80 416.95,148.80"
+        },
+        ":hwy_m2_1_2": {
+          "id": ":hwy_m2_1_2",
+          "index": "2",
+          "speed": "18.89",
+          "length": "4.62",
+          "shape": "412.33,152.00 416.95,152.00"
+        },
+        ":hwy_m2_1_3": {
+          "id": ":hwy_m2_1_3",
+          "index": "3",
+          "speed": "18.89",
+          "length": "4.62",
+          "shape": "412.33,155.20 416.95,155.20"
+        },
+        ":hwy_m2_1_4": {
+          "id": ":hwy_m2_1_4",
+          "index": "4",
+          "speed": "18.89",
+          "length": "4.62",
+          "shape": "412.33,158.40 416.95,158.40"
+        },
+        "main_0_0": {
+          "id": "main_0_0",
+          "index": "0",
+          "speed": "27.78",
+          "length": "172.90",
+          "shape": "0.00,145.60 172.90,145.60"
+        },
+        "main_0_1": {
+          "id": "main_0_1",
+          "index": "1",
+          "speed": "27.78",
+          "length": "172.90",
+          "shape": "0.00,148.80 172.90,148.80"
+        },
+        "main_0_2": {
+          "id": "main_0_2",
+          "index": "2",
+          "speed": "27.78",
+          "length": "172.90",
+          "shape": "0.00,152.00 172.90,152.00"
+        },
+        "main_0_3": {
+          "id": "main_0_3",
+          "index": "3",
+          "speed": "27.78",
+          "length": "172.90",
+          "shape": "0.00,155.20 172.90,155.20"
+        },
+        "main_0_4": {
+          "id": "main_0_4",
+          "index": "4",
+          "speed": "27.78",
+          "length": "172.90",
+          "shape": "0.00,158.40 172.90,158.40"
+        },
+        "main_1_0": {
+          "id": "main_1_0",
+          "index": "0",
+          "speed": "27.78",
+          "length": "234.04",
+          "acceleration": "1",
+          "shape": "178.29,142.40 412.33,142.40"
+        },
+        "main_1_1": {
+          "id": "main_1_1",
+          "index": "1",
+          "speed": "27.78",
+          "length": "234.04",
+          "shape": "178.29,145.60 412.33,145.60"
+        },
+        "main_1_2": {
+          "id": "main_1_2",
+          "index": "2",
+          "speed": "27.78",
+          "length": "234.04",
+          "shape": "178.29,148.80 412.33,148.80"
+        },
+        "main_1_3": {
+          "id": "main_1_3",
+          "index": "3",
+          "speed": "27.78",
+          "length": "234.04",
+          "shape": "178.29,152.00 412.33,152.00"
+        },
+        "main_1_4": {
+          "id": "main_1_4",
+          "index": "4",
+          "speed": "27.78",
+          "length": "234.04",
+          "shape": "178.29,155.20 412.33,155.20"
+        },
+        "main_1_5": {
+          "id": "main_1_5",
+          "index": "5",
+          "speed": "27.78",
+          "length": "234.04",
+          "shape": "178.29,158.40 412.33,158.40"
+        },
+        "main_2_0": {
+          "id": "main_2_0",
+          "index": "0",
+          "speed": "10.00",
+          "length": "252.23",
+          "shape": "416.95,145.60 669.18,145.60"
+        },
+        "main_2_1": {
+          "id": "main_2_1",
+          "index": "1",
+          "speed": "10.00",
+          "length": "252.23",
+          "shape": "416.95,148.80 669.18,148.80"
+        },
+        "main_2_2": {
+          "id": "main_2_2",
+          "index": "2",
+          "speed": "10.00",
+          "length": "252.23",
+          "shape": "416.95,152.00 669.18,152.00"
+        },
+        "main_2_3": {
+          "id": "main_2_3",
+          "index": "3",
+          "speed": "10.00",
+          "length": "252.23",
+          "shape": "416.95,155.20 669.18,155.20"
+        },
+        "main_2_4": {
+          "id": "main_2_4",
+          "index": "4",
+          "speed": "10.00",
+          "length": "252.23",
+          "shape": "416.95,158.40 669.18,158.40"
+        },
+        "offramp_0": {
+          "id": "offramp_0",
+          "index": "0",
+          "speed": "13.89",
+          "length": "201.17",
+          "shape": "416.28,140.77 558.87,-1.13"
+        },
+        "onramp_0": {
+          "id": "onramp_0",
+          "index": "0",
+          "speed": "13.89",
+          "length": "180.71",
+          "shape": "61.25,-1.00 173.91,140.29"
+        }
+      },
+      "all_initial_geometry_and_permissions_checked": true,
+      "max_depart_delay": "Not set in config; installed runtime default not independently verified; no discard guarantee",
+      "noninitial_count": 1033
+    }
+  },
+  "historical_observations": {
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_het_us101__0750_0805_vlim10.00_s20261201/fcd.xml": {
+      "last_FCD_s": 419.9,
+      "initial_observed": 108,
+      "initial_not_observed": [
+        "i0007_i0007",
+        "i0039_i0039",
+        "i0040_i0040",
+        "i0041_i0041",
+        "i0042_i0042",
+        "i0043_i0043",
+        "i0044_i0044",
+        "i0063_i0063",
+        "i0064_i0064"
+      ],
+      "first_observation_range_s": [
+        0.0,
+        119.3
+      ],
+      "first_after_0_count": 70,
+      "first_at_or_after_120_count": 0,
+      "global_initial_present_at_120": 2,
+      "identities_pending": "Unknown; absence in FCD is not evidence of pending or discard",
+      "timing_semantics": "first FCD is 100ms observation proxy; exact insertion/departDelay unavailable",
+      "groups": {
+        "numeric10": {
+          "declared_count": 38,
+          "observed_count": 36,
+          "not_observed": [
+            "i0063_i0063",
+            "i0064_i0064"
+          ],
+          "first_observation_range_s": [
+            0.0,
+            4.9
+          ],
+          "first_speed_range_mps": [
+            10.0,
+            10.0
+          ]
+        },
+        "other_numeric": {
+          "declared_count": 79,
+          "observed_count": 72,
+          "not_observed": [
+            "i0007_i0007",
+            "i0039_i0039",
+            "i0040_i0040",
+            "i0041_i0041",
+            "i0042_i0042",
+            "i0043_i0043",
+            "i0044_i0044"
+          ],
+          "first_observation_range_s": [
+            0.0,
+            119.3
+          ],
+          "first_speed_range_mps": [
+            0.21,
+            16.74
+          ]
+        }
+      }
+    },
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_het_us101__0805_0820_vlim10.00_s20261201/fcd.xml": {
+      "last_FCD_s": 419.9,
+      "initial_observed": 118,
+      "initial_not_observed": [
+        "i0008_i0008",
+        "i0015_i0015",
+        "i0016_i0016",
+        "i0017_i0017",
+        "i0018_i0018",
+        "i0019_i0019",
+        "i0035_i0035",
+        "i0036_i0036",
+        "i0044_i0044",
+        "i0045_i0045",
+        "i0046_i0046",
+        "i0070_i0070",
+        "i0071_i0071"
+      ],
+      "first_observation_range_s": [
+        0.0,
+        98.4
+      ],
+      "first_after_0_count": 96,
+      "first_at_or_after_120_count": 0,
+      "global_initial_present_at_120": 4,
+      "identities_pending": "Unknown; absence in FCD is not evidence of pending or discard",
+      "timing_semantics": "first FCD is 100ms observation proxy; exact insertion/departDelay unavailable",
+      "groups": {
+        "numeric10": {
+          "declared_count": 44,
+          "observed_count": 42,
+          "not_observed": [
+            "i0035_i0035",
+            "i0036_i0036"
+          ],
+          "first_observation_range_s": [
+            0.0,
+            98.4
+          ],
+          "first_speed_range_mps": [
+            10.0,
+            10.0
+          ]
+        },
+        "other_numeric": {
+          "declared_count": 87,
+          "observed_count": 76,
+          "not_observed": [
+            "i0008_i0008",
+            "i0015_i0015",
+            "i0016_i0016",
+            "i0017_i0017",
+            "i0018_i0018",
+            "i0019_i0019",
+            "i0044_i0044",
+            "i0045_i0045",
+            "i0046_i0046",
+            "i0070_i0070",
+            "i0071_i0071"
+          ],
+          "first_observation_range_s": [
+            0.0,
+            95.4
+          ],
+          "first_speed_range_mps": [
+            4.73,
+            15.37
+          ]
+        }
+      }
+    },
+    "code/outputs/formal/calibration/stage_0_5_interaction_diagnostics_v1/ID1_SUPPLY_0750/fcd.xml": {
+      "last_FCD_s": 179.9,
+      "initial_observed": 108,
+      "initial_not_observed": [
+        "i0007_i0007",
+        "i0039_i0039",
+        "i0040_i0040",
+        "i0041_i0041",
+        "i0042_i0042",
+        "i0043_i0043",
+        "i0044_i0044",
+        "i0063_i0063",
+        "i0064_i0064"
+      ],
+      "first_observation_range_s": [
+        0.0,
+        119.3
+      ],
+      "first_after_0_count": 70,
+      "first_at_or_after_120_count": 0,
+      "global_initial_present_at_120": 2,
+      "identities_pending": "Unknown; absence in FCD is not evidence of pending or discard",
+      "timing_semantics": "first FCD is 100ms observation proxy; exact insertion/departDelay unavailable",
+      "groups": {
+        "numeric10": {
+          "declared_count": 38,
+          "observed_count": 36,
+          "not_observed": [
+            "i0063_i0063",
+            "i0064_i0064"
+          ],
+          "first_observation_range_s": [
+            0.0,
+            4.9
+          ],
+          "first_speed_range_mps": [
+            10.0,
+            10.0
+          ]
+        },
+        "other_numeric": {
+          "declared_count": 79,
+          "observed_count": 72,
+          "not_observed": [
+            "i0007_i0007",
+            "i0039_i0039",
+            "i0040_i0040",
+            "i0041_i0041",
+            "i0042_i0042",
+            "i0043_i0043",
+            "i0044_i0044"
+          ],
+          "first_observation_range_s": [
+            0.0,
+            119.3
+          ],
+          "first_speed_range_mps": [
+            0.21,
+            16.74
+          ]
+        }
+      }
+    }
+  },
+  "pair_only_existing_ramp_depart_differences": 60,
+  "all_noninitial_inputs_unchanged_relative_to_each_parent": true,
+  "unchanged_initial_0750_count": 79,
+  "remaining_initial_conflict": "i0007_i0007 speed15.23 and other non-10 initial inputs retained; t0 warning not fixed or hidden",
+  "scope_conflict_status": "Awaiting Researcher Decision: confirm 38-only candidate or separately authorize all117; no automatic expansion",
+  "counterfactual_limits": "Historical baseline has different initialization policy. Pair shares declared initial input, not guaranteed realized initial state; supply and ramp both differ. No matched new initialization-only control.",
+  "new_insertion_speeds_delays_and_common_support": "Unknown; no new simulation",
+  "new_trajectory_attempts_this_preparation": 0,
+  "cumulative_attempts": 1,
+  "remaining": 2,
+  "isolation_status": "Not Accepted; existing incident preserved",
+  "Gate_changed": false
+}

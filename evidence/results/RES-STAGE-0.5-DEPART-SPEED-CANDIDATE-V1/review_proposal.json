@@ -1,0 +1,181 @@
+{
+  "schema": "aad.depart-speed-candidate.v1",
+  "task_id": "AAD-0.5-INTERACTION-DIAGNOSTICS-V1",
+  "status": "Proposed / Awaiting exact researcher confirmation",
+  "execution_allowed": false,
+  "researcher_confirmed": false,
+  "protocol_frozen": false,
+  "plan_path": "docs/plans/2026-10-25-stage-0-5-depart-speed-candidate-v1.md",
+  "plan_sha256": "6a81e1a7bf34ccb81a13418f84e8d5a6138cc51b7ec9d09c554977380b47bc6e",
+  "policy": "initial_numeric_10_only_to_max",
+  "runs": [
+    {
+      "id": "ID1_SUPPLY_0750_DS10MAX_V1",
+      "parent_id": "ID1_SUPPLY_0750",
+      "proposed_cumulative_attempt": 2,
+      "seed": 20261201,
+      "duration_s": 420,
+      "evaluation_elapsed_s": [
+        120,
+        390
+      ],
+      "supply_pulse_s": [
+        180,
+        240
+      ],
+      "supply_mps": [
+        10,
+        5,
+        10
+      ],
+      "ramp": "unchanged original schedule",
+      "changed_initial_vehicle_count": 38,
+      "attempt_status": "not_attempted",
+      "inputs": {
+        "code/outputs/formal/calibration/stage_0_5_depart_speed_candidate_v1/prepared_inputs/ID1_SUPPLY_0750_DS10MAX_V1/network.net.xml": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+        "code/outputs/formal/calibration/stage_0_5_depart_speed_candidate_v1/prepared_inputs/ID1_SUPPLY_0750_DS10MAX_V1/routes.rou.xml": "db9e2ea2250a00d3b0dded552d6aedbaf62a46a3dcbb2d778e9b43d71eaf9128",
+        "code/outputs/formal/calibration/stage_0_5_depart_speed_candidate_v1/prepared_inputs/ID1_SUPPLY_0750_DS10MAX_V1/run.sumocfg": "2eb1cc9ec8a306cd497d43cfd856d965bf7af77b8c3382992e24bba8d538617a"
+      }
+    },
+    {
+      "id": "ID3_RAMP_0750_DS10MAX_V1",
+      "parent_id": "ID3_RAMP_0750",
+      "proposed_cumulative_attempt": 3,
+      "seed": 20261201,
+      "duration_s": 420,
+      "evaluation_elapsed_s": [
+        120,
+        390
+      ],
+      "supply_pulse_s": null,
+      "supply_mps": [
+        10
+      ],
+      "ramp": "original 60 vehicle repeated 20–25s pulse",
+      "changed_initial_vehicle_count": 38,
+      "attempt_status": "not_attempted",
+      "inputs": {
+        "code/outputs/formal/calibration/stage_0_5_depart_speed_candidate_v1/prepared_inputs/ID3_RAMP_0750_DS10MAX_V1/network.net.xml": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+        "code/outputs/formal/calibration/stage_0_5_depart_speed_candidate_v1/prepared_inputs/ID3_RAMP_0750_DS10MAX_V1/routes.rou.xml": "eb624356e6f86da922e1cda4ba73479a0dbf3b0bc4ba33b667913ab41fca65c1",
+        "code/outputs/formal/calibration/stage_0_5_depart_speed_candidate_v1/prepared_inputs/ID3_RAMP_0750_DS10MAX_V1/run.sumocfg": "2eb1cc9ec8a306cd497d43cfd856d965bf7af77b8c3382992e24bba8d538617a"
+      }
+    }
+  ],
+  "impact_summary_sha256": "47665abdb1a42d99cdbd31ff2d3580b1c828ab15a7213395fb1a713e26e36de2",
+  "official_semantics_sha256": "c6118d72b6e5ecc92f27a9f2a8bb50ca8defc2d450557ce131430ce8111a01f7",
+  "local_initial_audit_sha256": "48e2f8a6d4fa89b37e79d8d550fff866afaf58210a18057559cfe4f030d7434f",
+  "budget": {
+    "cap": 3,
+    "already_spent": 1,
+    "failed_attempt_retained": "ID1_SUPPLY_0750",
+    "remaining": 2,
+    "ID2_SUPPLY_0805": "deferred_not_reallocated_as_extra_budget"
+  },
+  "spatial_support": {
+    "lanes": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "offset100_m": [
+      [
+        150,
+        250
+      ],
+      [
+        250,
+        350
+      ]
+    ],
+    "required_cells": 18
+  },
+  "phases_s": [
+    [
+      120,
+      180
+    ],
+    [
+      180,
+      240
+    ],
+    [
+      240,
+      300
+    ],
+    [
+      300,
+      360
+    ],
+    [
+      360,
+      390
+    ]
+  ],
+  "risk_definition_changed": false,
+  "Gate_changed": false,
+  "isolation_status": "Not Accepted",
+  "source_sha256": {
+    "code/scripts/audit_stage_0_5_work_package_1.py": "4e9b79d1057922d953b1f09a8cede2032c2c254a223995d4e13bc023f6f12518",
+    "code/scripts/export_depart_speed_candidate_evidence.py": "4334a37b12781fe6b097e1905e55a82386fbc4e77f4799595501a03026f356c9",
+    "code/scripts/export_project_evidence.py": "c3a72956a916c18ab3bc3107075fcfcd8871b9424ca84d975656a307e139cec6",
+    "code/scripts/interaction_diagnostic_worker.py": "5593588a5fe09cb4b5bf1a1e666a128ea35cd24f46bfcab0af061f3f74e33d3c",
+    "code/scripts/interaction_task_boundary.py": "e779af5ca4bb39efb4bd9308d6a0010704fc3480e3ab939f8e1b7e1dd9df1804",
+    "code/scripts/prepare_stage_0_5_depart_speed_candidate.py": "63ee43e2bde0889bd7f067b81a9e7282b43c79bf16ed3cdfb7b60f76ae212d2e",
+    "code/scripts/prepare_stage_0_5_policy_a.py": "aa012f6d08cb5bab91a6f3724745f36bc9afb21bf55af905de63a2d62d4d80ac",
+    "code/scripts/review_stage_0_5_interaction_failure.py": "5348b7d5128b897d534ff3b5c97ab85b2c8089684e869d27c83fe10c1592a97c",
+    "code/scripts/run_stage_0_5_policy_a_confirmed.py": "a99c197387061a75d57f7db81f956c675c125a21061f7c23890772f64f9a9d59",
+    "code/scripts/supervise_stage_0_5_diagnostic.py": "611be4d9c7a67eb919a3df03e388207016fb0a34a9b5ec3a4838bb4689db8365",
+    "code/scripts/verify_stage_0_5_interaction_stop.py": "e9f912b3d70670e5b5bafda65319eaad5979e9f19ef5444c7d39ef085ab36ded",
+    "code/scripts/verify_stage_0_5_policy_a.py": "73ef81622103391cdb65a1c0266b4659bb4a9a0d9147dff1371678953386deda",
+    "code/src/riskprop/formal_risk_measurement.py": "4e15e67e35911fdd4d50d26f41784bde05a8cd9983edc42c572fa51b00686c58",
+    "code/src/riskprop/ngsim_risk_calibration.py": "ba49f4a4d2e9762f5d31a6858b84ed5f314c16c2d5e404df93cb36b550d00a36",
+    "code/src/riskprop/stage_0_5_d1_measurement.py": "affaf9984055b8673e6616310e4b0560f61b721747c33b47824f26172d36ad9c",
+    "code/src/riskprop/stage_0_5_final_closure.py": "aab5fa44fe1c0f18eeed727947f80c6d4d6211281b729091e9265af858c3fb02",
+    "code/src/riskprop/stage_0_5_scene_reconstruction.py": "01ca2361ba1f5c53e626a830d5ef41c83dd6c68f5c756ce21e0c4084e5c3813a",
+    "code/src/riskprop/stage_0_5_state_support.py": "153f2672a01a17cc578b2d32ad49b8936239640cd065a0ed20bb8796f493c301",
+    "code/src/riskprop/stage_0_5_sumo.py": "83f866f9647dc40e6f2012f759a3cad99d1e122b8933b2910afff594be7a797b",
+    "code/tests/test_depart_speed_candidate.py": "e7cf1f0d990ff38df971b1a8a7bd7194b4963004940e0adfda532b0734f6af26",
+    "docs/plans/2026-10-25-stage-0-5-depart-speed-candidate-v1.md": "6a81e1a7bf34ccb81a13418f84e8d5a6138cc51b7ec9d09c554977380b47bc6e",
+    "docs/plans/2026-10-25-stage-0-5-interaction-diagnostics-policy-a-final.md": "ba79b36733fcb93b37898250c5c12dbe074efa36af8798ac0cc3644a7bbd39a7"
+  },
+  "preserved_sha256": {
+    "evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/review_ready_plan.json": "0f0d84aec6881c957d10331a96dfd22c809980e53f8726af72599a27d2219f97",
+    "docs/plans/2026-10-25-stage-0-5-interaction-diagnostics-policy-a-final.md": "ba79b36733fcb93b37898250c5c12dbe074efa36af8798ac0cc3644a7bbd39a7"
+  },
+  "approved_input_sha256": {
+    "code/outputs/formal/calibration/stage_0_5_policy_a_preflight_v1/prepared_inputs/ID1_SUPPLY_0750/network.net.xml": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+    "code/outputs/formal/calibration/stage_0_5_policy_a_preflight_v1/prepared_inputs/ID1_SUPPLY_0750/routes.rou.xml": "4b1ee23fa4745d6c6b928f4a0f27bd752a6e057c4f8a50cf0221e1480167756e",
+    "code/outputs/formal/calibration/stage_0_5_policy_a_preflight_v1/prepared_inputs/ID1_SUPPLY_0750/run.sumocfg": "2eb1cc9ec8a306cd497d43cfd856d965bf7af77b8c3382992e24bba8d538617a",
+    "code/outputs/formal/calibration/stage_0_5_policy_a_preflight_v1/prepared_inputs/ID2_SUPPLY_0805/network.net.xml": "a2ceaa9e6cd26fe7269400fb51ee5e200d5af63c72ce2ecc266e91100ea76683",
+    "code/outputs/formal/calibration/stage_0_5_policy_a_preflight_v1/prepared_inputs/ID2_SUPPLY_0805/routes.rou.xml": "c51e1d4e5347bc860498b623441f8743aebc48378343344aec31f9b5cdbebaf3",
+    "code/outputs/formal/calibration/stage_0_5_policy_a_preflight_v1/prepared_inputs/ID2_SUPPLY_0805/run.sumocfg": "2eb1cc9ec8a306cd497d43cfd856d965bf7af77b8c3382992e24bba8d538617a",
+    "code/outputs/formal/calibration/stage_0_5_policy_a_preflight_v1/prepared_inputs/ID3_RAMP_0750/network.net.xml": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+    "code/outputs/formal/calibration/stage_0_5_policy_a_preflight_v1/prepared_inputs/ID3_RAMP_0750/routes.rou.xml": "90a8927fd96c6982ba3b6d88e4e76637d97b6f4dda9451b850d22ea66df04600",
+    "code/outputs/formal/calibration/stage_0_5_policy_a_preflight_v1/prepared_inputs/ID3_RAMP_0750/run.sumocfg": "2eb1cc9ec8a306cd497d43cfd856d965bf7af77b8c3382992e24bba8d538617a",
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_het_us101__0750_0805_vlim10.00_s20261201/fcd.xml": "247b30d2772007c856daa21622c7b7022ffa96989f0dc15c5852d54aad8b0e99",
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_het_us101__0805_0820_vlim10.00_s20261201/fcd.xml": "b832275b153a8fe8a66723796afa87b24fdbe6ef9b3189a8dc6e9286dbcb04a4",
+    "code/outputs/formal/calibration/stage_0_5_interaction_diagnostics_v1/ID1_SUPPLY_0750/fcd.xml": "f98bd2e4d4990f3c9af9fe730598db646c243f099766455668a0ca10d17ed4af"
+  },
+  "sumo_binary": {
+    "path": "C:\\Program Files (x86)\\Eclipse\\Sumo\\bin\\sumo.EXE",
+    "sha256": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+    "launched": false
+  },
+  "prior_tool_dependency_binding": {
+    "proposal_path": "evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/review_ready_plan.json",
+    "sha256": "0f0d84aec6881c957d10331a96dfd22c809980e53f8726af72599a27d2219f97",
+    "current_tools_other_than_binary": "Not rechecked; must recheck exact prior allowlist before launch"
+  },
+  "preparation_has_no_launch_API": true,
+  "future_execution": "Old supervisor intentionally blocks after failed attempt. No reset/ledger mutation. Any new cumulative-budget adapter/source change needs new exact hash binding and researcher confirmation before launch.",
+  "post_run_stop_checks": [
+    "input imposition",
+    "actual initialization including pending identity",
+    "D1 eligibility",
+    "all18 common cells",
+    "resource and isolation evidence"
+  ],
+  "no_retry_seed_window_threshold_budget_change": true
+}

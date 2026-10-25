@@ -1,5 +1,12 @@
 # AAD Data Flow
 
+## 2026-10-25 DS10MAX离线流
+
+精确已批准prepared XML、两历史基线FCD及失败FCD→逐车初始化本机审计→仅初态数值10属性替换→独立两候选XML→聚合便携/计划与提案SHA。官方HTML仅本机。无真实原始样本/P2重测、无轨迹生成；不将FCD缺失补成pending或0。
+
+依据：`docs/STAGE_0_5_DEPART_SPEED_CANDIDATE_2026-10-25.md`；`docs/plans/2026-10-25-stage-0-5-depart-speed-candidate-v1.md`；`evidence/results/RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1/`。以下原内容保留。
+
+
 ## 2026-10-25 政策A失败证据数据流
 
 批准提案→只读输入哈希→独立运行capsule→SUMO在180s失败→保留FCD/getter/summary→D1离线v2/18单元缺失→便携汇总。未观测未来不能补零；完整率不可评价。

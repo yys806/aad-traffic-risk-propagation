@@ -1,5 +1,12 @@
 # AAD AI Context Changelog
 
+## 2026-10-25 DS10MAX-V1
+
+新增离线最小候选准备/限定导出/验证与定向测试、官方当前及1.26.0语义审计、全初态原生输入与历史首现审计、独立候选与哈希。原计划、历史结果和失败账本不变；本轮无SUMO或新轨迹。
+
+依据：`docs/STAGE_0_5_DEPART_SPEED_CANDIDATE_2026-10-25.md`；`docs/plans/2026-10-25-stage-0-5-depart-speed-candidate-v1.md`；`evidence/results/RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1/`。以下原内容保留。
+
+
 ## 2026-10-25 政策A精确确认、隔离及失败归档
 
 新增任务白名单、精确确认/只读哈希绑定、首次失败的原始与便携证据、D1端点完整性离线v2及范围限定证据导出。43项定向测试通过，沿用既有有效无数据克隆全量记录。1/3失败停止，Gate不变。

@@ -1,5 +1,12 @@
 # AAD 当前科研状态
 
+## 2026-10-25 初态修订候选（当前）
+
+当前只形成38辆10→max的最小候选，未批准执行；累计1/3、余2，ID2暂缓。插入和初始化可变、其他79辆未改，旧基线非同初始化对照。等待新精确提案确认，隔离Not Accepted与Gate不变；旧状态块保留其历史时点。
+
+依据：`docs/STAGE_0_5_DEPART_SPEED_CANDIDATE_2026-10-25.md`；`docs/plans/2026-10-25-stage-0-5-depart-speed-candidate-v1.md`；`evidence/results/RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1/`。以下原内容保留。
+
+
 ## 2026-10-25 政策A执行停止（当前）
 
 有限科学设计已获批准；首次尝试180s失败，累计1/3，剩余停止。共同18单元支持未达成，无法比较三种机制。隔离偏差Not Accepted保留，WP2–WP5未整体完成，Gate不变。

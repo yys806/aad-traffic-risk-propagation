@@ -1,6 +1,6 @@
 {
  "schema_version": "aad.project-registry.v2",
- "last_verified": "2026-10-21",
+ "last_verified": "2026-10-25",
  "project": {
   "name": "AAD",
   "research_topic": "Connected-vehicle communication adoption and traffic-risk propagation",
@@ -207,8 +207,8 @@
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "Issue #1 work package 1: evidence audit and WP1-FC-v1 freeze candidate prepared, Proposed / Awaiting Researcher Decision. Offline audit of two previously accessed calibration sources and 74 existing simulation tables; formal real D1 N/E reproduced. C4 support-window mixing resolved by evidence for the two sources; C1/C2/C3/C5 partially resolved with scientific choices and production repairs pending. No new trajectories, validation-trajectory reads, Gate changes or budget transfer.",
-  "why_now": "Measurement/support/plan consistency must be resolved before formal acceptance. R1-R5 remain open; the third window is an already-used temporal-transfer reference. Historical diagnostic results are preserved; the new audit and candidate delimit their reuse without rewriting scientific decisions.",
+  "active_task": "AAD-0.5-INTERACTION-DIAGNOSTICS-V1: DS10MAX-V1 offline candidate prepared, exact researcher confirmation pending; only38/117 initial numeric10 speeds changed. Zero new trajectories this preparation; cumulative1/3, remaining2. ID2 deferred. Isolation Not Accepted, Gate unchanged.",
+  "why_now": "Failed first run exposed numerical initial speed versus dynamic lane limit conflict. Assess minimal policy without silently expanding all initial vehicles or assuming identical initialization.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
    "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",
@@ -539,7 +539,9 @@
     "code/src/riskprop/stage_0_5_newell_prototype.py",
     "code/scripts/run_stage_0_5_method_expansion.py",
     "code/scripts/zotero_add_method_expansion_refs.py",
-    "code/tests/test_stage_0_5_method_expansion.py"
+    "code/tests/test_stage_0_5_method_expansion.py",
+    "code/scripts/prepare_stage_0_5_depart_speed_candidate.py",
+    "code/scripts/export_depart_speed_candidate_evidence.py"
    ],
    "entrypoints": [
     "code/scripts/prepare_stage_0_5_real_reference.py",
@@ -582,7 +584,8 @@
     "code/scripts/interaction_task_boundary.py",
     "code/scripts/run_stage_0_5_policy_a_confirmed.py",
     "code/scripts/review_stage_0_5_interaction_failure.py",
-    "code/scripts/verify_stage_0_5_interaction_stop.py"
+    "code/scripts/verify_stage_0_5_interaction_stop.py",
+    "code/scripts/prepare_stage_0_5_depart_speed_candidate.py"
    ],
    "test_paths": [
     "code/tests/test_simulation_real_coverage.py",
@@ -615,7 +618,8 @@
     "code/tests/test_stage_0_5_closure_supervisor.py",
     "code/tests/test_stage_0_5_final_closure_evidence.py",
     "code/tests/test_interaction_task_boundary.py",
-    "code/tests/test_project_evidence_scope.py"
+    "code/tests/test_project_evidence_scope.py",
+    "code/tests/test_depart_speed_candidate.py"
    ],
    "configuration": "R2 real reference plus two no_message_baseline generic-highway engineering fixtures (baseline_mixed_demand, measurement_probe_queue_stop); US-101 primary, Lankershim auxiliary entry-only, pNEUMA urban kinematics entry-only; all network/demand/vType/behaviour/time settings are engineering_fixture_only",
    "parameters": {
@@ -807,7 +811,8 @@
     "RES-STAGE-0.5-ARRIVAL-TIMING-V1",
     "RES-STAGE-0.5-C6-C7-OFFLINE-V1",
     "RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1",
-    "RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1"
+    "RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1",
+    "RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -922,7 +927,7 @@
     "third_window_rows_materialised",
     "zotero_items_added"
    ],
-   "current_conclusion": "AAD-0.5-METHOD-EXPANSION executed the literature-verified method expansion and diagnosed the real-to-SUMO mismatch across initialization, structure, parameters and randomness. Phase P2: all behavioural phases are present in the trajectories (stationary 40/52 %, accelerating 32/25 %, decelerating 28/24 %, low-speed 9/25 %, close-following 18/32 % of following time over 5,815 runs and 186,529 s), so H1 is largely refuted; what is missing is long continuous runs and a full queue cycle. Sample selection was corrected from longest-first to declared time-gap stratification. Phase P3: the previous '26/48 insertions rejected' statement was wrong - SUMO retries a blocked insertion on later steps; the old implementation stopped waiting after 0.25 s. Two verified native routes now load the observed state without distortion (leader tracking 0.013-0.112 m), and a control experiment shows the insertion-check-free route leaves the subsequent dynamics bit-identical. The weaker claim survives: observed congested following states often lie outside the frozen Krauss safety envelope, visible as a 0.05-0.70 s insertion delay. Phase P4 (324 independent SUMO runs, 12 pairs x 9 configurations x 3 shared seeds, 0 failures): raising tau is monotonically harmful (+18.3/+40.7/+72.5 pp paired, sign-consistent across all seeds), reducing minGap helps (-7.3 pp) while raising it hurts (+29.8), switching off the dawdling term helps (-6.3), and IDM at T=1.0 is the best configuration (-5.5 pp, 18/18 pairs) with its gain concentrated in the long-run window (-8.1 pp) rather than the local response (-0.09 pp). The independent Newell prototype lands at the same level (50.9 %) and degrades with tau in the same way, so the direction does not depend on model structure. Seed variability is 1.5-5.2 pp and grows with tau; the parameter effect is about 13.5x that noise. tau and minGap effects are strongly correlated across pairs (r = -0.94 and +0.82), so they are not separately identifiable on this sample, consistent with the practical-non-identifiability result of Wang et al. (2022). Phase P5 was gated shut because no configuration earned pair-level support, so no new macro contrast was run and RC1/RC2/RC3 are preserved. Gate stays pending_simulation_sample. 2026-10-21 AAD-0.5-CLOSURE: state support established at the aggregate level with the evidence-derived headway and a declared downstream supply (both calibration windows, five independent seeds, held-out domain transfer 0.851), but interaction compatibility is not established (local P2 rate 0.9-1.5 vs 17.0/23.5 per vehicle-hour); a discrete lane drop at matched declared capacity restores the P2 rate (18.2-25.5) but overshoots the mean state. Stage 0.5 not accepted.",
+   "current_conclusion": "First approved policy A trajectory failed at180s; one of three attempts spent. DS10MAX-V1 minimal offline candidate prepared for38 of117 initial vehicles; new input policy and exact hashes awaiting researcher decision. ID2 deferred; two attempts remain unspent. Isolation Not Accepted, scientific Gate unchanged.",
    "gate": {
     "status": "pending_simulation_sample",
     "portable_path": "evidence/results/RES-STAGE-0.5-REAL-REF-R2/audit.json"
@@ -3885,6 +3890,42 @@
     "full_window_rate": null
    },
    "current_conclusion": "Plan approved; ID1 failed at180 due pending initial numerical departure speed incompatible with dynamic lane limit. No full pulse/recovery or three-run contrast. Remaining stopped; isolation incident Not Accepted; no scientific equivalence.",
+   "gate_status": "pending_simulation_sample",
+   "paper_locations": [
+    "docs/PAPER_AND_MATERIAL_SOURCES.md"
+   ],
+   "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1",
+   "experiment_id": "stage_0_5",
+   "name": "Offline minimal initial departSpeed10 to max candidate; not executed",
+   "status": "proposed_awaiting_exact_researcher_confirmation",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1/impact_summary.json",
+    "evidence/results/RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1/official_semantics.json",
+    "evidence/results/RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1/review_proposal.json",
+    "evidence/results/RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1/provenance.json",
+    "evidence/results/RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1/validation_record.json",
+    "evidence/results/RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1/boundary_summary.json",
+    "evidence/results/RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1/PROPOSAL_SHA256",
+    "evidence/results/RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1/SHA256SUMS"
+   ],
+   "local_artifact_paths": [
+    "code/outputs/formal/calibration/stage_0_5_depart_speed_candidate_v1"
+   ],
+   "code_version_source": "review_proposal.json source_sha256; original execution code unchanged",
+   "configuration_source": "docs/plans/2026-10-25-stage-0-5-depart-speed-candidate-v1.md",
+   "data_version_source": "Exact approved prepared XML and two baseline FCDs plus failed ID1 FCD; no raw real data",
+   "core_metrics": {
+    "new_trajectory_attempts": 0,
+    "cumulative_attempts": 1,
+    "remaining": 2,
+    "initial_0750": 117,
+    "candidate_changed": 38,
+    "unchanged_initial": 79
+   },
+   "current_conclusion": "Candidate only, other79 initial remain numeric, no guarantee all initialization conflicts resolved. No same-initialization historical control. Exact scope/hash confirmation pending.",
    "gate_status": "pending_simulation_sample",
    "paper_locations": [
     "docs/PAPER_AND_MATERIAL_SOURCES.md"

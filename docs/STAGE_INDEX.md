@@ -1,5 +1,12 @@
 # AAD 阶段索引
 
+## 2026-10-25 Stage 0.5 离线候选
+
+首次失败后只准备DS10MAX最小输入修订，计划未获精确确认。WP2–WP5仍未整体完成，Stage0.5/Protocol Lock/Stage1.1不变。
+
+依据：`docs/STAGE_0_5_DEPART_SPEED_CANDIDATE_2026-10-25.md`；`docs/plans/2026-10-25-stage-0-5-depart-speed-candidate-v1.md`；`evidence/results/RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1/`。以下原内容保留。
+
+
 ## 2026-10-25 Stage0.5政策A首次失败
 
 诊断设计已批准并任务绑定；ID1在180s失败，1/3，ID2/ID3按停止规则未执行；不代表科学Gate或三次对照完成。

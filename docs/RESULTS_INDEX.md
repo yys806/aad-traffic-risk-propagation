@@ -1,5 +1,12 @@
 # AAD 结果索引
 
+## RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1
+
+离线输入政策候选：官方语义、全初态输入/时序审计、两个独立输入及精确绑定；不是轨迹结果。0次新轨迹、累计1/3、剩2，Proposed / Awaiting Researcher Decision。
+
+依据：`docs/STAGE_0_5_DEPART_SPEED_CANDIDATE_2026-10-25.md`；`docs/plans/2026-10-25-stage-0-5-depart-speed-candidate-v1.md`；`evidence/results/RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1/`。以下原内容保留。
+
+
 ## RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1
 
 Stopped / Evidence Insufficient；一次失败、两次未尝试；便携证据为精确授权、账本、失败测量/18单元、来源SHA及验证记录。

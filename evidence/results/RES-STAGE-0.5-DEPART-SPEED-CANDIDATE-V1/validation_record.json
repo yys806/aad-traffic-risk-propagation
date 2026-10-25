@@ -1,0 +1,41 @@
+{
+  "status": "offline_candidate_software_checks",
+  "targeted_tests": {
+    "command": "python -m pytest code/tests/test_depart_speed_candidate.py code/tests/test_interaction_task_boundary.py code/tests/test_stage_0_5_policy_a_preflight.py code/tests/test_stage_0_5_d1_measurement.py code/tests/test_project_evidence_scope.py code/tests/test_project_docs.py -q --basetemp=D:/shen/TJU/AAD/code/tmp/ds_candidate_final_tests_v1 -p no:cacheprovider",
+    "passed": 55,
+    "failed": 0,
+    "duration_s": 5.54
+  },
+  "compileall": {
+    "command": "python -m compileall -q code/src code/scripts",
+    "exit_code": 0
+  },
+  "full_regression": "Not rerun in main workspace; existing valid pure-Git987 pass record retained only within its original scope",
+  "invalid_prior_regression": "998 passed is not valid isolation validation; incident remains Not Accepted",
+  "postcommit_verification_record": "code/outputs/formal/calibration/stage_0_5_depart_speed_candidate_v1/postcommit_verification.json; generated separately after commit, not asserted here",
+  "new_SUMO_processes": 0,
+  "new_trajectory_attempts": 0,
+  "cumulative_attempts": 1,
+  "remaining": 2,
+  "isolation_status": "Not Accepted",
+  "Gate_changed": false,
+  "validation_limits": "Synthetic tests and Python scoped file audit do not prove OS/native complete isolation, safe insertion or scientific equivalence.",
+  "strict_git_document_validation": {
+    "command": "python code/scripts/validate_project_docs.py --strict-git",
+    "exit_code": 0,
+    "note": "Initial check caught registry entrypoint formatted as command and files not yet tracked; path corrected and explicit files staged, rerun passed."
+  },
+  "local_hash_and_scope_validation": {
+    "command": "python code/scripts/prepare_stage_0_5_depart_speed_candidate.py verify --local",
+    "exit_code": 0,
+    "includes": "both candidate input sets; exact approved old inputs and two baseline/failed FCD hashes; old plan/proposal and source; current SUMO binary hash, no launch"
+  },
+  "old_failure_evidence_source_validation": {
+    "command": "python code/scripts/verify_stage_0_5_interaction_stop.py --portable evidence/results/RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1",
+    "exit_code": 0,
+    "limit": "portable and source; old local raw files only task-relevant failed FCD rehashed in preparation"
+  },
+  "git_diff_check": {
+    "exit_code": 0
+  }
+}

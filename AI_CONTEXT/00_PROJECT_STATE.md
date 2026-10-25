@@ -1,5 +1,12 @@
 # AAD Current State Snapshot
 
+## 2026-10-25 初态速度候选（当前待确认）
+
+研究者只授权离线准备。核查0750初态117辆仅38辆为10；独立DS10MAX-V1只将这38辆改max，另外79辆和全部非初态不改。ID1、ID3候选已准备，ID2暂缓；新的精确计划/提案及38辆范围待研究者确认。未启动SUMO，本轮0次、累计1/3、剩2；原失败/原账本保留。max会影响插入速度/时序/初始化，i0007原警告仍未解决；新支持Unknown，旧基线仅作不同初始化历史参考。隔离Not Accepted、Gate和δ/h/B/后续阶段均不变，WP2–WP5未整体完成。
+
+依据：`docs/STAGE_0_5_DEPART_SPEED_CANDIDATE_2026-10-25.md`；`docs/plans/2026-10-25-stage-0-5-depart-speed-candidate-v1.md`；`evidence/results/RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1/`。以下原内容保留。
+
+
 ## 2026-10-25 政策A首次尝试失败，后续停止
 
 研究者已批准最终诊断设计，精确计划/提案及隔离工程哈希已绑定。ID1_SUPPLY_0750在180s因待插入初态departSpeed=10与main_2限速5冲突退出，累计1/3；ID2/ID3未执行，余2未动用。18单元仅2个完整D1支持，另2个仅状态完整；完整270s比较不可评价。POLICY-A-VALIDATION-SCOPE-01仍Not Accepted，研究者允许有限继续的裁决保留；不重跑主工作区全量。Gate不变，WP2–WP5不标整体完成。

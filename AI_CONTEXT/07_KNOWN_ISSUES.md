@@ -1,5 +1,12 @@
 # AAD Known Issues
 
+## 2026-10-25 候选初始化局限
+
+0750并非全体初态为10，最小候选只改38/117辆；i0007=15.23与原t0警告保留，不能保证消除全部初态冲突。首现只是100ms代理，未观测身份不能推定pending。旧基线初始化不同；ID1/ID3供给与匝道同时不同，剩2次无法独立识别初始化政策作用。旧监督器仍拒绝失败后续跑；后续适配器若改码必须重绑确认。POLICY-A-VALIDATION-SCOPE-01仍Not Accepted。
+
+依据：`docs/STAGE_0_5_DEPART_SPEED_CANDIDATE_2026-10-25.md`；`docs/plans/2026-10-25-stage-0-5-depart-speed-candidate-v1.md`；`evidence/results/RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1/`。以下原内容保留。
+
+
 ## 2026-10-25 供给脉冲与待插入初态冲突（新阻断）
 
 Documented Intent：原routes不变、180s将main_2降至5m/s。Actual Implementation：i0063_i0063声明depart=0/speed10，直到180仍未出现在FCD；降速后SUMO报出发速度过高并退出。Evidence：新结果failure_review.json、原生日志/SHA。Affected Files：冻结输入/输入政策及三次对照。Conflict：完整输入不能实现，18单元不可用。Status: Awaiting Researcher Decision；停止余2次，不自动改departSpeed/初始化/窗口。原隔离偏差仍Not Accepted。

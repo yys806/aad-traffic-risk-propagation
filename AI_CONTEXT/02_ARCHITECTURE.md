@@ -1,5 +1,12 @@
 # AAD Architecture
 
+## 2026-10-25 离线输入候选
+
+新增prepare_stage_0_5_depart_speed_candidate.py，仅prepare/verify，无launch入口；复用既有Boundary并拒绝所有子进程。旧执行/测量/监督源字节不改，候选准备不代表执行适配器已获准。
+
+依据：`docs/STAGE_0_5_DEPART_SPEED_CANDIDATE_2026-10-25.md`；`docs/plans/2026-10-25-stage-0-5-depart-speed-candidate-v1.md`；`evidence/results/RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1/`。以下原内容保留。
+
+
 ## 2026-10-25 任务级隔离入口
 
 run_stage_0_5_policy_a_confirmed.py经interaction_task_boundary.py限制文件/写入/单一进程；原批准执行和测量源码保持字节，新增入口绑定隔离工程。Python审计不等于OS/native完整隔离。review_stage_0_5_interaction_failure.py只离线核验失败轨迹。

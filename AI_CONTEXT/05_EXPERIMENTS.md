@@ -1,5 +1,12 @@
 # AAD Experiments
 
+## 2026-10-25 DS10MAX-V1 离线准备
+
+独立ID1_SUPPLY_0750_DS10MAX_V1与ID3_RAMP_0750_DS10MAX_V1，候选累计第2/3次，未执行；ID2暂缓。既有两校准基线与首次失败FCD仅用于初始化时序审计，不重算P2或重选支持。seed20261201/420s/elapsed[120,390)与原分块保持；预算仍已用1/3。
+
+依据：`docs/STAGE_0_5_DEPART_SPEED_CANDIDATE_2026-10-25.md`；`docs/plans/2026-10-25-stage-0-5-depart-speed-candidate-v1.md`；`evidence/results/RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1/`。以下原内容保留。
+
+
 ## 2026-10-25 政策A执行停止事实
 
 RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1：1次失败/3次上限，ID1原始FCD至179.9s、getter180s；P2部分N=0/E=1933.0veh-s，非完整窗风险率。局部初态t120为1、全网在场初态2、局部106条/10.6veh-s；pending初态身份Unknown。ID2/ID3停止未执行。

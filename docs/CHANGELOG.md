@@ -1,5 +1,12 @@
 # AAD 项目信息结构变更记录
 
+## 2026-10-25 DS10MAX最小候选
+
+新增官方语义/全初态时序影响审查、独立ID1/ID3输入与暂停提案、工程测试和限定便携验证。未运行SUMO，未修改历史失败、旧计划或Gate。
+
+依据：`docs/STAGE_0_5_DEPART_SPEED_CANDIDATE_2026-10-25.md`；`docs/plans/2026-10-25-stage-0-5-depart-speed-candidate-v1.md`；`evidence/results/RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1/`。以下原内容保留。
+
+
 ## 2026-10-25 政策A首次运行与停止归档
 
 精确批准方案不变；增加任务文件白名单、只读哈希和按次预算。首次SUMO在180s输入冲突失败，停止余下两次；保留历史和隔离偏差，软件验证不作科学通过。

@@ -1,5 +1,12 @@
 # AAD Module Map
 
+## 2026-10-25 输入候选工具
+
+code/scripts/prepare_stage_0_5_depart_speed_candidate.py：离线白名单准备和portable/local校验；export_depart_speed_candidate_evidence.py：限定复用旧导出器、保留其他manifest条目；code/tests/test_depart_speed_candidate.py：范围/身份/时间/外部实体/观测缺失/导出隔离测试。
+
+依据：`docs/STAGE_0_5_DEPART_SPEED_CANDIDATE_2026-10-25.md`；`docs/plans/2026-10-25-stage-0-5-depart-speed-candidate-v1.md`；`evidence/results/RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1/`。以下原内容保留。
+
+
 ## 2026-10-25 政策A隔离与核验入口
 
 新增code/scripts/interaction_task_boundary.py、run_stage_0_5_policy_a_confirmed.py、review_stage_0_5_interaction_failure.py、verify_stage_0_5_interaction_stop.py；测试test_interaction_task_boundary.py、test_project_evidence_scope.py。export_project_evidence.py支持--result-id避免读取无关历史源。

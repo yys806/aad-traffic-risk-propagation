@@ -1,5 +1,12 @@
 # AAD Confirmed Decisions
 
+## 2026-10-25 初态输入修订边界
+
+Agreed：研究者只批准候选评估与独立离线准备，禁止启动轨迹；保留失败1/3、优先修订ID1与ID3、暂缓ID2。Proposed：仅0750的38辆数值10→max；不是所有117辆。其他79辆改max未授权，范围差异记录Awaiting Researcher Decision。旧科学设计批准不迁移至新输入政策/提案；需要新的精确确认。
+
+依据：`docs/STAGE_0_5_DEPART_SPEED_CANDIDATE_2026-10-25.md`；`docs/plans/2026-10-25-stage-0-5-depart-speed-candidate-v1.md`；`evidence/results/RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1/`。以下原内容保留。
+
+
 ## 2026-10-25 研究者批准最终政策A计划并裁决隔离偏差
 
 Agreed：2026-10-25研究者确认最终计划及确切机器提案，隔离整改/哈希绑定后允许逐次执行；偏差保留Not Accepted，998 passed无隔离效力，缺少完整追踪不证明全范围零访问；无需重跑全量/全面历史审计。科学Gate、δ/h/B和后续阶段不变。ID1失败后按既定规则停止，并未批准替代输入或重试。

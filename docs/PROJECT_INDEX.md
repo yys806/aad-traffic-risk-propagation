@@ -1,5 +1,12 @@
 # AAD 项目索引
 
+## 2026-10-25 初态修订决策入口
+
+本轮入口为独立输入政策候选、影响报告和精确机器提案。代码prepare/verify无launch；范围为38/117辆，等待研究者确认。
+
+依据：`docs/STAGE_0_5_DEPART_SPEED_CANDIDATE_2026-10-25.md`；`docs/plans/2026-10-25-stage-0-5-depart-speed-candidate-v1.md`；`evidence/results/RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1/`。以下原内容保留。
+
+
 ## 2026-10-25 政策A执行入口
 
 当前停止报告、隔离入口、离线核验、便携验证见下方依据；历史最终计划保持批准字节，其Proposed措辞是批准前快照。
