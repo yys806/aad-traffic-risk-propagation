@@ -1,5 +1,12 @@
 # AAD 当前科研状态
 
+## 2026-10-25 Stage 0.5 V2（当前）
+
+新预算无累计次数上限已获研究者授权，独立追加账本0次；旧一次失败保留。四臂候选与初始化/隔离/重复规则待确认，不启动SUMO。交互相容、原生隔离和实际初始化仍未解决；Gate不变。
+
+依据：`docs/STAGE_0_5_RESEARCH_V2_AUDIT_2026-10-25.md`；`docs/STAGE_0_5_RESEARCH_V2_BUDGET.md`；`docs/plans/2026-10-25-stage-0-5-interaction-research-v2.md`；`evidence/results/RES-STAGE-0.5-INTERACTION-RESEARCH-V2/`。以下内容保留其历史时点。
+
+
 ## 2026-10-25 初态修订候选（当前）
 
 当前只形成38辆10→max的最小候选，未批准执行；累计1/3、余2，ID2暂缓。插入和初始化可变、其他79辆未改，旧基线非同初始化对照。等待新精确提案确认，隔离Not Accepted与Gate不变；旧状态块保留其历史时点。

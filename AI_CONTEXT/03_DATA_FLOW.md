@@ -1,5 +1,12 @@
 # AAD Data Flow
 
+## 2026-10-25 V2离线审计与追加账本
+
+明确列举的便携摘要、C6源码、两份已绑定prepared routes→历史数量/旧窗seed波动/初始化范围审计；无原始真实/第三窗轨迹读取。新预算config→task_created→未来逐次reserved/running/terminal/measurement事件，当前0尝试；失败须追加明确复核。候选四臂矩阵/未批准提案→限定聚合证据导出；尚无新FCD。
+
+依据：`docs/STAGE_0_5_RESEARCH_V2_AUDIT_2026-10-25.md`；`docs/STAGE_0_5_RESEARCH_V2_BUDGET.md`；`docs/plans/2026-10-25-stage-0-5-interaction-research-v2.md`；`evidence/results/RES-STAGE-0.5-INTERACTION-RESEARCH-V2/`。以下内容保留其历史时点。
+
+
 ## 2026-10-25 DS10MAX离线流
 
 精确已批准prepared XML、两历史基线FCD及失败FCD→逐车初始化本机审计→仅初态数值10属性替换→独立两候选XML→聚合便携/计划与提案SHA。官方HTML仅本机。无真实原始样本/P2重测、无轨迹生成；不将FCD缺失补成pending或0。

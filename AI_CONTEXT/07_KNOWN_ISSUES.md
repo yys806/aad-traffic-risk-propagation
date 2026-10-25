@@ -1,5 +1,12 @@
 # AAD Known Issues
 
+## 2026-10-25 V2当前阻断
+
+交互相容未解决；历史结构/时序P2未整体经C6重测。0750 DS38实际插入未验证、i0007警告保留；0805 main2共52辆而44辆为10，另8辆7.71–9.92>5。旧worker只保存depart/pending数量，不能完成逐车契约；新预算API无launch，执行适配器待完成。旧隔离事故Not Accepted；纯Git软件审计不能证明原生实验隔离，新完整批次阻断。预算不再是V2阻断。
+
+依据：`docs/STAGE_0_5_RESEARCH_V2_AUDIT_2026-10-25.md`；`docs/STAGE_0_5_RESEARCH_V2_BUDGET.md`；`docs/plans/2026-10-25-stage-0-5-interaction-research-v2.md`；`evidence/results/RES-STAGE-0.5-INTERACTION-RESEARCH-V2/`。以下内容保留其历史时点。
+
+
 ## 2026-10-25 候选初始化局限
 
 0750并非全体初态为10，最小候选只改38/117辆；i0007=15.23与原t0警告保留，不能保证消除全部初态冲突。首现只是100ms代理，未观测身份不能推定pending。旧基线初始化不同；ID1/ID3供给与匝道同时不同，剩2次无法独立识别初始化政策作用。旧监督器仍拒绝失败后续跑；后续适配器若改码必须重绑确认。POLICY-A-VALIDATION-SCOPE-01仍Not Accepted。

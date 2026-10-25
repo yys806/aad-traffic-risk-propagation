@@ -1,0 +1,348 @@
+{
+  "task_id": "AAD-0.5-INTERACTION-RESEARCH-V2",
+  "status": "Verified engineering facts; scientific plan Proposed",
+  "counts": {
+    "micro_response": {
+      "attempts": 324,
+      "unique_pair_configuration_seed_keys": 324,
+      "failures": 0,
+      "pairs": 12,
+      "configurations": 9,
+      "seeds": [
+        20261101,
+        20261102,
+        20261103
+      ],
+      "separate_initialization_runs": 24,
+      "newell": "24 non-SUMO prototypes, separate from 324; see newell_summary.json"
+    },
+    "conditional_state": {
+      "attempts": 58,
+      "grid": 30,
+      "seed_repetitions": 20,
+      "structural": 4,
+      "historical_third_window_aggregate_only": 4,
+      "returncode_zero_first54": 54,
+      "grid_seed_same_cell_seed_overlap": 4,
+      "overlap_limit": "Four matching condition/behaviour/supply/seed keys are attempts, not additional independent seeds; byte equivalence not asserted"
+    },
+    "arrival_timing": {
+      "attempts": 20,
+      "returncode_zero": 20,
+      "unique_window_arm_seed_keys": 20
+    }
+  },
+  "noise_planning_only": {
+    "evaluation_window_s": [
+      300,
+      420
+    ],
+    "state_seed_summary": {
+      "us101__0750_0805": {
+        "n": 5,
+        "seeds": [
+          20261201,
+          20261202,
+          20261203,
+          20261204,
+          20261205
+        ],
+        "state_metrics": {
+          "density_veh_km_lane": {
+            "mean": 43.98033333333334,
+            "sample_sd": 1.1019399875270495
+          },
+          "speed_mean_mps": {
+            "mean": 9.701214401164568,
+            "sample_sd": 0.2721712507008719
+          },
+          "speed_sd_mps": {
+            "mean": 2.3329400942282,
+            "sample_sd": 0.17466857275563147
+          }
+        },
+        "arrival_E_minus_U": {
+          "density_veh_km_lane": {
+            "mean": -0.8286666666666704,
+            "sample_sd": 0.5715338159529837
+          },
+          "speed_mean_mps": {
+            "mean": 0.14585503204455746,
+            "sample_sd": 0.13887658757050592
+          },
+          "speed_sd_mps": {
+            "mean": 0.25418538087301823,
+            "sample_sd": 0.1582602083098981
+          }
+        }
+      },
+      "us101__0805_0820": {
+        "n": 5,
+        "seeds": [
+          20261201,
+          20261202,
+          20261203,
+          20261204,
+          20261205
+        ],
+        "state_metrics": {
+          "density_veh_km_lane": {
+            "mean": 42.72316666666667,
+            "sample_sd": 0.774419451015478
+          },
+          "speed_mean_mps": {
+            "mean": 9.745701625069922,
+            "sample_sd": 0.2218423625626135
+          },
+          "speed_sd_mps": {
+            "mean": 2.3765349998635377,
+            "sample_sd": 0.12210158139811
+          }
+        },
+        "arrival_E_minus_U": {
+          "density_veh_km_lane": {
+            "mean": -4.476333333333331,
+            "sample_sd": 1.293527235249933
+          },
+          "speed_mean_mps": {
+            "mean": 0.9971491538927075,
+            "sample_sd": 0.41859101831519546
+          },
+          "speed_sd_mps": {
+            "mean": 1.774839730232104,
+            "sample_sd": 0.2406418194313682
+          }
+        }
+      }
+    },
+    "micro_seed_variability": {
+      "IDM_T1.0": {
+        "pairs_with_multiple_seeds": 12,
+        "median_within_pair_std_pct": 0.0,
+        "max_within_pair_range_pct": 0.0
+      },
+      "IDM_T1.6": {
+        "pairs_with_multiple_seeds": 12,
+        "median_within_pair_std_pct": 0.0,
+        "max_within_pair_range_pct": 0.0
+      },
+      "K_tau1.0": {
+        "pairs_with_multiple_seeds": 12,
+        "median_within_pair_std_pct": 1.471318526431086,
+        "max_within_pair_range_pct": 7.359880657975637
+      },
+      "K_tau1.0_minGap1.0": {
+        "pairs_with_multiple_seeds": 12,
+        "median_within_pair_std_pct": 1.8310769248872432,
+        "max_within_pair_range_pct": 7.721306876693475
+      },
+      "K_tau1.0_minGap5.0": {
+        "pairs_with_multiple_seeds": 12,
+        "median_within_pair_std_pct": 2.1397708351564373,
+        "max_within_pair_range_pct": 6.724604615154902
+      },
+      "K_tau1.0_sigma0.0": {
+        "pairs_with_multiple_seeds": 12,
+        "median_within_pair_std_pct": 0.0,
+        "max_within_pair_range_pct": 0.0
+      },
+      "K_tau1.3": {
+        "pairs_with_multiple_seeds": 12,
+        "median_within_pair_std_pct": 2.5608177446699054,
+        "max_within_pair_range_pct": 10.477938773470981
+      },
+      "K_tau1.6": {
+        "pairs_with_multiple_seeds": 12,
+        "median_within_pair_std_pct": 3.670126925085314,
+        "max_within_pair_range_pct": 14.009593694586727
+      },
+      "K_tau2.0": {
+        "pairs_with_multiple_seeds": 12,
+        "median_within_pair_std_pct": 5.151251925649107,
+        "max_within_pair_range_pct": 18.879326494033222
+      }
+    },
+    "limits": "Old window/initialization differ. Old gap/closing/P2 and denominators are not C6-certified for new inference. No automatic h/delta/B or repeat count derived."
+  },
+  "C6": {
+    "status": "Offline engineering evidence; initialization policy awaiting decision",
+    "new_trajectory_attempts": 0,
+    "comparisons": [
+      {
+        "window": "us101__0750_0805",
+        "scope": "two historical matched baselines only; other historical tables not upgraded",
+        "before": {
+          "onset_events": 7,
+          "local_evaluable_s": 10904.0,
+          "local_links": 109040,
+          "rate_per_evaluable_vehicle_hour": 2.3110785033015406,
+          "right_censored_unconfirmed": 2,
+          "left_continuing_risk_segments": 0,
+          "confirmation_after_window": 0
+        },
+        "after": {
+          "onset_events": 0,
+          "local_evaluable_s": 9754.800000000001,
+          "local_links": 97548,
+          "rate_per_evaluable_vehicle_hour": 0.0,
+          "right_censored_unconfirmed": 0,
+          "left_continuing_risk_segments": 0,
+          "confirmation_after_window": 0
+        },
+        "full_context_event_members": {
+          "identical": 0,
+          "old_only": 11,
+          "new_only": 0
+        },
+        "all_context_TTC": {
+          "both_valid": 238272,
+          "changed": 235159,
+          "mean_delta_s": -3.297459642337518,
+          "max_abs_delta_s": 948.0088873696986,
+          "valid_to_unavailable": 25024,
+          "unavailable_to_valid": 0
+        },
+        "physical_support": {
+          "observed_same_native_lane": 518901,
+          "unresolved_lane_boundary": 74377,
+          "unresolved_internal_connection": 9445
+        },
+        "independent_edge_match": true,
+        "scientific_claim_eligible": false
+      },
+      {
+        "window": "us101__0805_0820",
+        "scope": "two historical matched baselines only; other historical tables not upgraded",
+        "before": {
+          "onset_events": 5,
+          "local_evaluable_s": 11633.0,
+          "local_links": 116330,
+          "rate_per_evaluable_vehicle_hour": 1.5473222728444942,
+          "right_censored_unconfirmed": 1,
+          "left_continuing_risk_segments": 0,
+          "confirmation_after_window": 0
+        },
+        "after": {
+          "onset_events": 0,
+          "local_evaluable_s": 10456.7,
+          "local_links": 104567,
+          "rate_per_evaluable_vehicle_hour": 0.0,
+          "right_censored_unconfirmed": 0,
+          "left_continuing_risk_segments": 0,
+          "confirmation_after_window": 0
+        },
+        "full_context_event_members": {
+          "identical": 0,
+          "old_only": 8,
+          "new_only": 1
+        },
+        "all_context_TTC": {
+          "both_valid": 245197,
+          "changed": 242172,
+          "mean_delta_s": -2.887269379000109,
+          "max_abs_delta_s": 854.9786361304423,
+          "valid_to_unavailable": 24365,
+          "unavailable_to_valid": 0
+        },
+        "physical_support": {
+          "observed_same_native_lane": 513544,
+          "unresolved_lane_boundary": 74721,
+          "unresolved_internal_connection": 9578
+        },
+        "independent_edge_match": true,
+        "scientific_claim_eligible": false
+      }
+    ],
+    "Gate_changed": false
+  },
+  "C6_source_sha256_matches": {
+    "code/scripts/review_stage_0_5_c6_c7_offline.py": "ffdaac8d58cde31eeef731ba7adf6f312169d2034c8a531172ff725d17df5e2a",
+    "code/src/riskprop/stage_0_5_state_support.py": "153f2672a01a17cc578b2d32ad49b8936239640cd065a0ed20bb8796f493c301",
+    "code/src/riskprop/stage_0_5_scene_reconstruction.py": "01ca2361ba1f5c53e626a830d5ef41c83dd6c68f5c756ce21e0c4084e5c3813a",
+    "code/src/riskprop/stage_0_5_d1_measurement.py": "affaf9984055b8673e6616310e4b0560f61b721747c33b47824f26172d36ad9c",
+    "code/src/riskprop/stage_0_5_sumo.py": "83f866f9647dc40e6f2012f759a3cad99d1e122b8933b2910afff594be7a797b"
+  },
+  "historical_budget": {
+    "task_id": "AAD-0.5-INTERACTION-DIAGNOSTICS-V1",
+    "original_cap": 3,
+    "preflight_snapshot_attempts": 0,
+    "actual_execution_attempts": [
+      {
+        "run_id": "ID1_SUPPLY_0750",
+        "status": "failed_stop",
+        "attempt": 1,
+        "failure": "RuntimeError:worker_failed:1",
+        "wall_s": 14.34005659999093,
+        "peak_process_tree_rss_bytes": 70836224
+      }
+    ],
+    "unattempted": [
+      "ID2_SUPPLY_0805",
+      "ID3_RAMP_0750"
+    ],
+    "snapshot_explanation": "preflight is a preserved earlier snapshot, not the live execution ledger"
+  },
+  "candidate_flags": {
+    "execution_allowed": false,
+    "researcher_confirmed": false,
+    "protocol_frozen": false
+  },
+  "local_input_scope": {
+    "ID1_SUPPLY_0750": {
+      "initial_count": 117,
+      "initial_start_edge_counts": {
+        "main_2": 38,
+        "main_1": 37,
+        "main_0": 42
+      },
+      "numeric10_count": 38,
+      "main2_non10_count": 0,
+      "main2_non10_gt5_count": 0,
+      "main2_non10_speed_range_mps": null,
+      "dynamic_effect": "Unknown; static input audit only, no simulation"
+    },
+    "ID2_SUPPLY_0805": {
+      "initial_count": 131,
+      "initial_start_edge_counts": {
+        "main_2": 52,
+        "main_1": 44,
+        "main_0": 35
+      },
+      "numeric10_count": 44,
+      "main2_non10_count": 8,
+      "main2_non10_gt5_count": 8,
+      "main2_non10_speed_range_mps": [
+        7.71,
+        9.92
+      ],
+      "dynamic_effect": "Unknown; static input audit only, no simulation"
+    }
+  },
+  "new_trajectories": 0,
+  "raw_validation_or_holdout_reads": 0,
+  "Gate_changed": false,
+  "scientific_claim_eligible": false,
+  "read_sha256": {
+    "evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/response_summary.json": "4b56918d132ad27623f17a8cf5f7ad03b5436d40faaae1b1524dd5f1f227b4bb",
+    "evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/init_summary.json": "2e5ed6f2d71fb03b64f29a32b943af744afc3b2bfba0803028423d65f9a06eff",
+    "evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/response_metrics.csv": "ddaf4e8de556624c4db749574dd932128462e3aba326a5b7d73b9f8dbd9ff19e",
+    "evidence/results/RES-STAGE-0.5-STATE-SUPPORT-V1/grid_results.json": "1fbbb5a8dc18b057ec73cabefa757299c4dc541a4a8eb59ee572d44e9a2095f3",
+    "evidence/results/RES-STAGE-0.5-STATE-SUPPORT-V1/seed_repeats.json": "f93f1754fd19036aab1e58bcc0ff9287b18560cdcb435a2a9fb3fb342e864418",
+    "evidence/results/RES-STAGE-0.5-STATE-SUPPORT-V1/structural_results.json": "ae7ea6b3503e87b06637c6c5dcc330d14fad41714954215aea61b016c67c5b01",
+    "evidence/results/RES-STAGE-0.5-STATE-SUPPORT-V1/temporal_validation.json": "232c6fc6fee4113f2cae05120c77ef0f2bfccecd649e3698623500aec06df165",
+    "evidence/results/RES-STAGE-0.5-ARRIVAL-TIMING-V1/run_results.json": "dbc8afd27f790f0ce0889d17476c5a25a9677233a55789abbecbe3431a170ac5",
+    "docs/audits/stage_0_5_interaction_preflight_v1/execution_ledger.json": "7192996ce0f2a143ea0239108ae48223f07322ae0a48de5d70d23524cd7f8950",
+    "evidence/results/RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1/execution_ledger.json": "295339b23daba074317c1dac19f2261b546025e32ba4a47ffe34885af7835b91",
+    "evidence/results/RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1/failure_review.json": "6e946984d9becbca153e5b8fe48d492ccb117aaf50483d3e634beebd9d1c0eec",
+    "evidence/results/RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1/review_proposal.json": "69646b039177e43d874701b2ada548717cdf4bdfeda5cc4f231aecf9193bcaff",
+    "evidence/results/RES-STAGE-0.5-C6-C7-OFFLINE-V1/comparison_summary.json": "b0f4dc7ba09be4f134585a6f45b328ca88bea1baa3b9d91ba684ffa621fac8e3",
+    "evidence/results/RES-STAGE-0.5-C6-C7-OFFLINE-V1/provenance.json": "8ab73bd44eaca10eb40fb7c55a4d6dad0de58e2f2f8b506456d3db71f20f21cb",
+    "code/scripts/review_stage_0_5_c6_c7_offline.py": "ffdaac8d58cde31eeef731ba7adf6f312169d2034c8a531172ff725d17df5e2a",
+    "code/src/riskprop/stage_0_5_state_support.py": "153f2672a01a17cc578b2d32ad49b8936239640cd065a0ed20bb8796f493c301",
+    "code/src/riskprop/stage_0_5_scene_reconstruction.py": "01ca2361ba1f5c53e626a830d5ef41c83dd6c68f5c756ce21e0c4084e5c3813a",
+    "code/src/riskprop/stage_0_5_d1_measurement.py": "affaf9984055b8673e6616310e4b0560f61b721747c33b47824f26172d36ad9c",
+    "code/src/riskprop/stage_0_5_sumo.py": "83f866f9647dc40e6f2012f759a3cad99d1e122b8933b2910afff594be7a797b",
+    "code/outputs/formal/calibration/stage_0_5_policy_a_preflight_v1/prepared_inputs/ID1_SUPPLY_0750/routes.rou.xml": "4b1ee23fa4745d6c6b928f4a0f27bd752a6e057c4f8a50cf0221e1480167756e",
+    "code/outputs/formal/calibration/stage_0_5_policy_a_preflight_v1/prepared_inputs/ID2_SUPPLY_0805/routes.rou.xml": "c51e1d4e5347bc860498b623441f8743aebc48378343344aec31f9b5cdbebaf3"
+  }
+}

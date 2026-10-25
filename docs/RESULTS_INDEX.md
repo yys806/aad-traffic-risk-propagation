@@ -1,5 +1,12 @@
 # AAD 结果索引
 
+## RES-STAGE-0.5-INTERACTION-RESEARCH-V2
+
+离线事实审计、独立追加预算/账本、四臂候选与工程测试记录；不是新科学实验。
+
+依据：`docs/STAGE_0_5_RESEARCH_V2_AUDIT_2026-10-25.md`；`docs/STAGE_0_5_RESEARCH_V2_BUDGET.md`；`docs/plans/2026-10-25-stage-0-5-interaction-research-v2.md`；`evidence/results/RES-STAGE-0.5-INTERACTION-RESEARCH-V2/`。以下内容保留其历史时点。
+
+
 ## RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1
 
 离线输入政策候选：官方语义、全初态输入/时序审计、两个独立输入及精确绑定；不是轨迹结果。0次新轨迹、累计1/3、剩2，Proposed / Awaiting Researcher Decision。

@@ -1,5 +1,12 @@
 # AAD Current State Snapshot
 
+## 2026-10-25 V2追加式研究任务（当前）
+
+Agreed：研究者取消新研究累计次数上限；新任务AAD-0.5-INTERACTION-RESEARCH-V2独立hash链追加账本，实际0次。旧任务一次failed_stop/3次上限及历史余2原字节保留，不再限制V2。已审计324响应、58条件状态、20到达时序；C6只重测两份旧FCD，其他旧P2未升级。四臂同政策基线/供给/匝道/联合为Proposed，未冻结、不执行。0750 DS38未获批，i0007未解决；0805 main_2另有8辆非10速度>5，不能照搬44辆策略。身份采集、实际执行适配器和新批次隔离证明尚缺，POLICY-A-VALIDATION-SCOPE-01仍Not Accepted。Gate、δ/h/B/Stage1.1不变，WP2–WP5未整体完成。
+
+依据：`docs/STAGE_0_5_RESEARCH_V2_AUDIT_2026-10-25.md`；`docs/STAGE_0_5_RESEARCH_V2_BUDGET.md`；`docs/plans/2026-10-25-stage-0-5-interaction-research-v2.md`；`evidence/results/RES-STAGE-0.5-INTERACTION-RESEARCH-V2/`。以下内容保留其历史时点。
+
+
 ## 2026-10-25 初态速度候选（当前待确认）
 
 研究者只授权离线准备。核查0750初态117辆仅38辆为10；独立DS10MAX-V1只将这38辆改max，另外79辆和全部非初态不改。ID1、ID3候选已准备，ID2暂缓；新的精确计划/提案及38辆范围待研究者确认。未启动SUMO，本轮0次、累计1/3、剩2；原失败/原账本保留。max会影响插入速度/时序/初始化，i0007原警告仍未解决；新支持Unknown，旧基线仅作不同初始化历史参考。隔离Not Accepted、Gate和δ/h/B/后续阶段均不变，WP2–WP5未整体完成。

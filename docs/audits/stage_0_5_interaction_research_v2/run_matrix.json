@@ -1,0 +1,234 @@
+{
+  "schema": "aad.interaction-factorial-candidate.v2",
+  "task_id": "AAD-0.5-INTERACTION-RESEARCH-V2",
+  "status": "Proposed / Awaiting Researcher Decision",
+  "initial_seed_block": 20261201,
+  "candidate_ordered_seed_queue": [
+    20261201,
+    20261202,
+    20261203,
+    20261204,
+    20261205
+  ],
+  "seed_queue_is_total_budget_cap": false,
+  "maximum_new_trajectory_attempts": null,
+  "initial_block_candidate_count": 8,
+  "runs": [
+    {
+      "id": "R2_0750_B00_s20261201",
+      "task_id": "AAD-0.5-INTERACTION-RESEARCH-V2",
+      "condition": "us101__0750_0805",
+      "arm": "B00",
+      "seed": 20261201,
+      "factors": {
+        "supply": false,
+        "ramp": false
+      },
+      "question": "matched initialization reference",
+      "contrast": "reference",
+      "initialization_policy": "Pending researcher decision; 0750 DS38 candidate, 0805 requires scope decision",
+      "duration_s": 420,
+      "evaluation_elapsed_s": [
+        120,
+        390
+      ],
+      "input_sha256": {},
+      "artifact_path": "code/outputs/formal/calibration/stage_0_5_interaction_research_v2/runs/R2_0750_B00_s20261201",
+      "status": "candidate_not_prepared_not_attempted",
+      "execution_allowed": false
+    },
+    {
+      "id": "R2_0750_S10_s20261201",
+      "task_id": "AAD-0.5-INTERACTION-RESEARCH-V2",
+      "condition": "us101__0750_0805",
+      "arm": "S10",
+      "seed": 20261201,
+      "factors": {
+        "supply": true,
+        "ramp": false
+      },
+      "question": "supply response at original ramp timing",
+      "contrast": "S10-B00",
+      "initialization_policy": "Pending researcher decision; 0750 DS38 candidate, 0805 requires scope decision",
+      "duration_s": 420,
+      "evaluation_elapsed_s": [
+        120,
+        390
+      ],
+      "input_sha256": {},
+      "artifact_path": "code/outputs/formal/calibration/stage_0_5_interaction_research_v2/runs/R2_0750_S10_s20261201",
+      "status": "candidate_not_prepared_not_attempted",
+      "execution_allowed": false
+    },
+    {
+      "id": "R2_0750_R01_s20261201",
+      "task_id": "AAD-0.5-INTERACTION-RESEARCH-V2",
+      "condition": "us101__0750_0805",
+      "arm": "R01",
+      "seed": 20261201,
+      "factors": {
+        "supply": false,
+        "ramp": true
+      },
+      "question": "ramp timing response at constant supply",
+      "contrast": "R01-B00",
+      "initialization_policy": "Pending researcher decision; 0750 DS38 candidate, 0805 requires scope decision",
+      "duration_s": 420,
+      "evaluation_elapsed_s": [
+        120,
+        390
+      ],
+      "input_sha256": {},
+      "artifact_path": "code/outputs/formal/calibration/stage_0_5_interaction_research_v2/runs/R2_0750_R01_s20261201",
+      "status": "candidate_not_prepared_not_attempted",
+      "execution_allowed": false
+    },
+    {
+      "id": "R2_0750_SR11_s20261201",
+      "task_id": "AAD-0.5-INTERACTION-RESEARCH-V2",
+      "condition": "us101__0750_0805",
+      "arm": "SR11",
+      "seed": 20261201,
+      "factors": {
+        "supply": true,
+        "ramp": true
+      },
+      "question": "joint response and factorial interaction",
+      "contrast": "(SR11-R01)-(S10-B00)",
+      "initialization_policy": "Pending researcher decision; 0750 DS38 candidate, 0805 requires scope decision",
+      "duration_s": 420,
+      "evaluation_elapsed_s": [
+        120,
+        390
+      ],
+      "input_sha256": {},
+      "artifact_path": "code/outputs/formal/calibration/stage_0_5_interaction_research_v2/runs/R2_0750_SR11_s20261201",
+      "status": "candidate_not_prepared_not_attempted",
+      "execution_allowed": false
+    },
+    {
+      "id": "R2_0805_B00_s20261201",
+      "task_id": "AAD-0.5-INTERACTION-RESEARCH-V2",
+      "condition": "us101__0805_0820",
+      "arm": "B00",
+      "seed": 20261201,
+      "factors": {
+        "supply": false,
+        "ramp": false
+      },
+      "question": "matched initialization reference",
+      "contrast": "reference",
+      "initialization_policy": "Pending researcher decision; 0750 DS38 candidate, 0805 requires scope decision",
+      "duration_s": 420,
+      "evaluation_elapsed_s": [
+        120,
+        390
+      ],
+      "input_sha256": {},
+      "artifact_path": "code/outputs/formal/calibration/stage_0_5_interaction_research_v2/runs/R2_0805_B00_s20261201",
+      "status": "candidate_not_prepared_not_attempted",
+      "execution_allowed": false
+    },
+    {
+      "id": "R2_0805_S10_s20261201",
+      "task_id": "AAD-0.5-INTERACTION-RESEARCH-V2",
+      "condition": "us101__0805_0820",
+      "arm": "S10",
+      "seed": 20261201,
+      "factors": {
+        "supply": true,
+        "ramp": false
+      },
+      "question": "supply response at original ramp timing",
+      "contrast": "S10-B00",
+      "initialization_policy": "Pending researcher decision; 0750 DS38 candidate, 0805 requires scope decision",
+      "duration_s": 420,
+      "evaluation_elapsed_s": [
+        120,
+        390
+      ],
+      "input_sha256": {},
+      "artifact_path": "code/outputs/formal/calibration/stage_0_5_interaction_research_v2/runs/R2_0805_S10_s20261201",
+      "status": "candidate_not_prepared_not_attempted",
+      "execution_allowed": false
+    },
+    {
+      "id": "R2_0805_R01_s20261201",
+      "task_id": "AAD-0.5-INTERACTION-RESEARCH-V2",
+      "condition": "us101__0805_0820",
+      "arm": "R01",
+      "seed": 20261201,
+      "factors": {
+        "supply": false,
+        "ramp": true
+      },
+      "question": "ramp timing response at constant supply",
+      "contrast": "R01-B00",
+      "initialization_policy": "Pending researcher decision; 0750 DS38 candidate, 0805 requires scope decision",
+      "duration_s": 420,
+      "evaluation_elapsed_s": [
+        120,
+        390
+      ],
+      "input_sha256": {},
+      "artifact_path": "code/outputs/formal/calibration/stage_0_5_interaction_research_v2/runs/R2_0805_R01_s20261201",
+      "status": "candidate_not_prepared_not_attempted",
+      "execution_allowed": false
+    },
+    {
+      "id": "R2_0805_SR11_s20261201",
+      "task_id": "AAD-0.5-INTERACTION-RESEARCH-V2",
+      "condition": "us101__0805_0820",
+      "arm": "SR11",
+      "seed": 20261201,
+      "factors": {
+        "supply": true,
+        "ramp": true
+      },
+      "question": "joint response and factorial interaction",
+      "contrast": "(SR11-R01)-(S10-B00)",
+      "initialization_policy": "Pending researcher decision; 0750 DS38 candidate, 0805 requires scope decision",
+      "duration_s": 420,
+      "evaluation_elapsed_s": [
+        120,
+        390
+      ],
+      "input_sha256": {},
+      "artifact_path": "code/outputs/formal/calibration/stage_0_5_interaction_research_v2/runs/R2_0805_SR11_s20261201",
+      "status": "candidate_not_prepared_not_attempted",
+      "execution_allowed": false
+    }
+  ],
+  "supply_candidate": {
+    "lanes": "main_2_0 through main_2_4",
+    "baseline_mps": 10,
+    "pulse_mps": 5,
+    "pulse_interval_s": [
+      180,
+      240
+    ]
+  },
+  "ramp_candidate": {
+    "block_s": 60,
+    "within_block_interval_s": [
+      20,
+      25
+    ],
+    "static_count_0750": 60,
+    "static_count_0805": 57,
+    "manipulation_first_FCD_s": [
+      20,
+      35
+    ],
+    "entered_fraction_check": 0.9,
+    "complete_pulse_accounting_contract": "Pending decision; entered-only percentage is insufficient"
+  },
+  "scientific_thresholds": {
+    "delta": null,
+    "h": null,
+    "B": null
+  },
+  "execution_allowed": false,
+  "researcher_confirmed": false,
+  "protocol_frozen": false
+}

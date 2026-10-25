@@ -1,5 +1,12 @@
 # AAD 项目索引
 
+## 2026-10-25 V2当前入口
+
+当前入口为Stage0.5审计、追加式预算、新四臂配对计划及工程验证。预算解除已批准，科学矩阵未批准。旧“余2”仅为旧任务余额。
+
+依据：`docs/STAGE_0_5_RESEARCH_V2_AUDIT_2026-10-25.md`；`docs/STAGE_0_5_RESEARCH_V2_BUDGET.md`；`docs/plans/2026-10-25-stage-0-5-interaction-research-v2.md`；`evidence/results/RES-STAGE-0.5-INTERACTION-RESEARCH-V2/`。以下内容保留其历史时点。
+
+
 ## 2026-10-25 初态修订决策入口
 
 本轮入口为独立输入政策候选、影响报告和精确机器提案。代码prepare/verify无launch；范围为38/117辆，等待研究者确认。

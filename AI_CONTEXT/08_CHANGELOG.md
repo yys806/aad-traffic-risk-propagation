@@ -1,5 +1,12 @@
 # AAD AI Context Changelog
 
+## 2026-10-25 追加式预算与四臂候选
+
+本轮建立独立V2任务、无累计cap预算配置、hash链追加账本和合成软件测试；核对三类历史规模/有效范围，记录0805额外8辆潜在限速冲突；新审计/预算/候选计划/矩阵/验证记录及限定证据。旧测量/执行/候选源码与旧账本保留。0次新轨迹，科学计划未批准，Gate不变。
+
+依据：`docs/STAGE_0_5_RESEARCH_V2_AUDIT_2026-10-25.md`；`docs/STAGE_0_5_RESEARCH_V2_BUDGET.md`；`docs/plans/2026-10-25-stage-0-5-interaction-research-v2.md`；`evidence/results/RES-STAGE-0.5-INTERACTION-RESEARCH-V2/`。以下内容保留其历史时点。
+
+
 ## 2026-10-25 DS10MAX-V1
 
 新增离线最小候选准备/限定导出/验证与定向测试、官方当前及1.26.0语义审计、全初态原生输入与历史首现审计、独立候选与哈希。原计划、历史结果和失败账本不变；本轮无SUMO或新轨迹。

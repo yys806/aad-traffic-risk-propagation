@@ -1,5 +1,12 @@
 # AAD Architecture
 
+## 2026-10-25 V2预算基础设施
+
+新增ResearchLedger，仅工程准入与追加式事件状态机，无累计attempt/wall上限、无launch API；精确提案/研究者确认/输入源码哈希/隔离/资源守卫。旧确认入口→旧监督器→worker调用链及三次限制保留，不接V2。当前未实现新SUMO执行器，不宣称实验隔离或动态初始化已验收。
+
+依据：`docs/STAGE_0_5_RESEARCH_V2_AUDIT_2026-10-25.md`；`docs/STAGE_0_5_RESEARCH_V2_BUDGET.md`；`docs/plans/2026-10-25-stage-0-5-interaction-research-v2.md`；`evidence/results/RES-STAGE-0.5-INTERACTION-RESEARCH-V2/`。以下内容保留其历史时点。
+
+
 ## 2026-10-25 离线输入候选
 
 新增prepare_stage_0_5_depart_speed_candidate.py，仅prepare/verify，无launch入口；复用既有Boundary并拒绝所有子进程。旧执行/测量/监督源字节不改，候选准备不代表执行适配器已获准。

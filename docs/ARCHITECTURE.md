@@ -1,5 +1,12 @@
 # AAD 架构
 
+## 2026-10-25 V2预算与执行边界
+
+独立追加式ResearchLedger管理准入与状态；无累计cap、逐次核验、失败不改成功。旧监督器保留历史绑定，V2不调用旧三次运行入口；新SUMO执行适配器尚未完成。
+
+依据：`docs/STAGE_0_5_RESEARCH_V2_AUDIT_2026-10-25.md`；`docs/STAGE_0_5_RESEARCH_V2_BUDGET.md`；`docs/plans/2026-10-25-stage-0-5-interaction-research-v2.md`；`evidence/results/RES-STAGE-0.5-INTERACTION-RESEARCH-V2/`。以下内容保留其历史时点。
+
+
 ```text
 dataset/
   NGSIM ──> 阶段 0.2 跟驰风险测量 ─┐

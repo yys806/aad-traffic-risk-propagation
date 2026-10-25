@@ -1,5 +1,12 @@
 # AAD 项目信息结构变更记录
 
+## 2026-10-25 Stage 0.5 V2预算重构
+
+新增研究者无累计cap授权、独立追加账本与软件准入、历史审计和四臂计划；未改核心算法、历史证据、初始化政策或Gate。
+
+依据：`docs/STAGE_0_5_RESEARCH_V2_AUDIT_2026-10-25.md`；`docs/STAGE_0_5_RESEARCH_V2_BUDGET.md`；`docs/plans/2026-10-25-stage-0-5-interaction-research-v2.md`；`evidence/results/RES-STAGE-0.5-INTERACTION-RESEARCH-V2/`。以下内容保留其历史时点。
+
+
 ## 2026-10-25 DS10MAX最小候选
 
 新增官方语义/全初态时序影响审查、独立ID1/ID3输入与暂停提案、工程测试和限定便携验证。未运行SUMO，未修改历史失败、旧计划或Gate。

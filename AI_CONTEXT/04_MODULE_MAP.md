@@ -1,5 +1,12 @@
 # AAD Module Map
 
+## 2026-10-25 V2工程模块
+
+code/scripts/stage_0_5_research_ledger.py::ResearchLedger/resource_reason；audit_stage_0_5_research_v2.py::audit；validate_stage_0_5_research_v2.py（拒绝主工作区、无数据克隆软件审计）；export_stage_0_5_research_v2_evidence.py（限定导出，不改旧导出器）；code/tests/test_stage_0_5_research_ledger.py；code/configs/stage_0_5_interaction_research_v2.json。无科学算法更改。
+
+依据：`docs/STAGE_0_5_RESEARCH_V2_AUDIT_2026-10-25.md`；`docs/STAGE_0_5_RESEARCH_V2_BUDGET.md`；`docs/plans/2026-10-25-stage-0-5-interaction-research-v2.md`；`evidence/results/RES-STAGE-0.5-INTERACTION-RESEARCH-V2/`。以下内容保留其历史时点。
+
+
 ## 2026-10-25 输入候选工具
 
 code/scripts/prepare_stage_0_5_depart_speed_candidate.py：离线白名单准备和portable/local校验；export_depart_speed_candidate_evidence.py：限定复用旧导出器、保留其他manifest条目；code/tests/test_depart_speed_candidate.py：范围/身份/时间/外部实体/观测缺失/导出隔离测试。

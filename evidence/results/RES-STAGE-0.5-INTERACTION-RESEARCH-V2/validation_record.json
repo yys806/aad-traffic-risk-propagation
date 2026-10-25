@@ -1,0 +1,49 @@
+{
+  "status": "passed_engineering_software_checks_not_scientific_acceptance",
+  "validation_workspace": "code/tmp/interaction_research_v2_validation_20261025",
+  "main_workspace_pytest_runs": 0,
+  "targeted": {
+    "passed": 57,
+    "duration_s": 11.53,
+    "note": "prior to 3 additional tests; final full regression includes them",
+    "audit_denied": 0,
+    "sumo_launches": 0
+  },
+  "full": {
+    "command": "python -B code/scripts/validate_stage_0_5_research_v2.py --source-workspace D:/shen/TJU/AAD --full",
+    "passed": 1030,
+    "skipped": 14,
+    "deselected_simulation_tests": 7,
+    "warnings": 2,
+    "duration_s": 152.7,
+    "exit_code": 0,
+    "audit_sha256": "9c51257043c23eaa092b2b4c5ff85410fb95454fd77c2ca47490517809b5facb",
+    "audit_denied": 0,
+    "sumo_launches": 0
+  },
+  "compileall": {
+    "targets": [
+      "code/src",
+      "code/scripts",
+      "code/tests"
+    ],
+    "exit_code": 0
+  },
+  "historical_source_bindings": "22 match; no core science changes",
+  "historical_manifest_entries_unchanged": true,
+  "early_failures_retained": [
+    "strict docs untracked files and heading; fixed",
+    "export rejected JSONL; use JSON snapshot",
+    "guard rejected Windows NUL; fixed",
+    "57 assertions passed but ambient plugin/temp audit rejected; excluded from valid isolation",
+    "1027 assertions passed but224 runtime font/cache audit denials; excluded from valid isolation"
+  ],
+  "postcommit_verification_record": "code/outputs/formal/calibration/stage_0_5_interaction_research_v2/postcommit_verification.json; not asserted before commit",
+  "new_trajectory_attempts": 0,
+  "current_new_task_attempts": 0,
+  "cumulative_cap": null,
+  "full_batch_isolation_accepted": false,
+  "historical_incident_status": "Not Accepted",
+  "scientific_plan_approved": false,
+  "Gate_changed": false
+}

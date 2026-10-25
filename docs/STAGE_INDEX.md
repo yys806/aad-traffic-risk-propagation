@@ -1,5 +1,12 @@
 # AAD 阶段索引
 
+## 2026-10-25 Stage 0.5 V2研究任务
+
+预算重构与四臂候选为工程准备，0次新轨迹；交互相容未通过，pending_simulation_sample不变。
+
+依据：`docs/STAGE_0_5_RESEARCH_V2_AUDIT_2026-10-25.md`；`docs/STAGE_0_5_RESEARCH_V2_BUDGET.md`；`docs/plans/2026-10-25-stage-0-5-interaction-research-v2.md`；`evidence/results/RES-STAGE-0.5-INTERACTION-RESEARCH-V2/`。以下内容保留其历史时点。
+
+
 ## 2026-10-25 Stage 0.5 离线候选
 
 首次失败后只准备DS10MAX最小输入修订，计划未获精确确认。WP2–WP5仍未整体完成，Stage0.5/Protocol Lock/Stage1.1不变。
