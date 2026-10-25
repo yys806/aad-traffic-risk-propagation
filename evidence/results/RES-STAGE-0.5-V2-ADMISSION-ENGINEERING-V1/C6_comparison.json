@@ -1,0 +1,538 @@
+{
+  "schema": "aad.c6-admission-review.v1",
+  "allowlist_sha256": "81d176f4de15c84ee44bdd4eb43e25021830befe44f990d2fbe98369185f5b01",
+  "reuses": [
+    {
+      "window": "us101__0750_0805",
+      "status": "verified_current_C6_reused",
+      "window_s": [
+        120,
+        390
+      ],
+      "result": {
+        "eligibility": "D1_contract_implemented",
+        "onset_events": 0,
+        "local_evaluable_s": 9754.800000000001,
+        "rate_per_evaluable_vehicle_hour": 0.0,
+        "rate_status": "evaluable_zero_events",
+        "left_continuing_risk_segments": 0,
+        "right_censored_unconfirmed": 0,
+        "confirmation_after_window": 0,
+        "unavailable_point_counts": {
+          "valid": 61002,
+          "not_applicable": 37655,
+          "missing": 12521
+        }
+      }
+    },
+    {
+      "window": "us101__0805_0820",
+      "status": "verified_current_C6_reused",
+      "window_s": [
+        120,
+        390
+      ],
+      "result": {
+        "eligibility": "D1_contract_implemented",
+        "onset_events": 0,
+        "local_evaluable_s": 10456.7,
+        "rate_per_evaluable_vehicle_hour": 0.0,
+        "rate_status": "evaluable_zero_events",
+        "left_continuing_risk_segments": 0,
+        "right_censored_unconfirmed": 0,
+        "confirmation_after_window": 0,
+        "unavailable_point_counts": {
+          "valid": 60237,
+          "not_applicable": 45402,
+          "missing": 12785
+        }
+      }
+    }
+  ],
+  "results": [
+    {
+      "id": "structural_us101__0750_0805_L4_s20261201",
+      "window": "us101__0750_0805",
+      "kind": "structural",
+      "arm": null,
+      "seed": 20261201,
+      "status": "rechecked_current_interface_changed",
+      "published_legacy": {
+        "N": 33,
+        "rate": 18.177923309973377,
+        "point_exposure_s": 6535.400000000001
+      },
+      "old_table_current_D1": {
+        "eligibility": "D1_contract_implemented",
+        "onset_events": 33,
+        "local_evaluable_s": 6401.5,
+        "rate_per_evaluable_vehicle_hour": 18.558150433492152,
+        "rate_status": "evaluable",
+        "left_continuing_risk_segments": 0,
+        "right_censored_unconfirmed": 2,
+        "confirmation_after_window": 0,
+        "unavailable_point_counts": {
+          "not_applicable": 39118,
+          "valid": 26236,
+          "invalid": 237
+        }
+      },
+      "repaired_frozen_window": {
+        "eligibility": "D1_contract_implemented",
+        "onset_events": 14,
+        "local_evaluable_s": 5882.8,
+        "rate_per_evaluable_vehicle_hour": 8.567348881485007,
+        "rate_status": "evaluable",
+        "left_continuing_risk_segments": 0,
+        "right_censored_unconfirmed": 0,
+        "confirmation_after_window": 0,
+        "unavailable_point_counts": {
+          "not_applicable": 35678,
+          "valid": 23679,
+          "missing": 6234
+        }
+      },
+      "candidate_window_separate_descriptive": {
+        "eligibility": "D1_contract_implemented",
+        "onset_events": 49,
+        "local_evaluable_s": 12959.400000000001,
+        "rate_per_evaluable_vehicle_hour": 13.611741284318716,
+        "rate_status": "evaluable",
+        "left_continuing_risk_segments": 0,
+        "right_censored_unconfirmed": 0,
+        "confirmation_after_window": 0,
+        "unavailable_point_counts": {
+          "not_applicable": 82716,
+          "valid": 48020,
+          "missing": 14177
+        }
+      },
+      "event_member_sets": {
+        "common": 0,
+        "old_only": 132,
+        "new_only": 87
+      },
+      "physical_support_counts": {
+        "observed_same_native_lane": 59357,
+        "unresolved_lane_boundary": 6234
+      },
+      "measured_states": 506606,
+      "max_FCD_time_s": 419.9,
+      "resource": {
+        "wall_s": 25.10840099999041,
+        "observed_rss_bytes": 653168640
+      },
+      "output_sha256": {
+        "current_candidate_window_events.json": "6c31adec7c9b6423cd658bb522cf9a0b0cbf405b659e8ba3ca22e87e7b93da1c",
+        "current_frozen_window_events.json": "bf71116347b60458093b0f33e053c06c4dd09877c4f423259a2bf6b02b115a5b",
+        "repaired_measured_state.parquet": "1f7e396739667d44e96b64630e3d059f68c4870f91590a57c43ed66d7b44ad20"
+      },
+      "interpretation": "Geometry, leader support and edge qualification may change together; event decrease is not risk disappearance",
+      "scientific_claim_eligible": false
+    },
+    {
+      "id": "structural_us101__0805_0820_L4_s20261201",
+      "window": "us101__0805_0820",
+      "kind": "structural",
+      "arm": null,
+      "seed": 20261201,
+      "status": "rechecked_current_interface_changed",
+      "published_legacy": {
+        "N": 32,
+        "rate": 18.75824336866787,
+        "point_exposure_s": 6141.3
+      },
+      "old_table_current_D1": {
+        "eligibility": "D1_contract_implemented",
+        "onset_events": 32,
+        "local_evaluable_s": 5969.5,
+        "rate_per_evaluable_vehicle_hour": 19.29809866823017,
+        "rate_status": "evaluable",
+        "left_continuing_risk_segments": 0,
+        "right_censored_unconfirmed": 5,
+        "confirmation_after_window": 0,
+        "unavailable_point_counts": {
+          "not_applicable": 38529,
+          "valid": 22884,
+          "invalid": 194
+        }
+      },
+      "repaired_frozen_window": {
+        "eligibility": "D1_contract_implemented",
+        "onset_events": 10,
+        "local_evaluable_s": 5433.6,
+        "rate_per_evaluable_vehicle_hour": 6.625441696113073,
+        "rate_status": "evaluable",
+        "left_continuing_risk_segments": 0,
+        "right_censored_unconfirmed": 2,
+        "confirmation_after_window": 0,
+        "unavailable_point_counts": {
+          "not_applicable": 34293,
+          "valid": 20693,
+          "missing": 6621
+        }
+      },
+      "candidate_window_separate_descriptive": {
+        "eligibility": "D1_contract_implemented",
+        "onset_events": 41,
+        "local_evaluable_s": 13068.300000000001,
+        "rate_per_evaluable_vehicle_hour": 11.294506554027684,
+        "rate_status": "evaluable",
+        "left_continuing_risk_segments": 0,
+        "right_censored_unconfirmed": 1,
+        "confirmation_after_window": 0,
+        "unavailable_point_counts": {
+          "not_applicable": 85371,
+          "valid": 46556,
+          "missing": 14595
+        }
+      },
+      "event_member_sets": {
+        "common": 1,
+        "old_only": 179,
+        "new_only": 107
+      },
+      "physical_support_counts": {
+        "observed_same_native_lane": 54986,
+        "unresolved_lane_boundary": 6621
+      },
+      "measured_states": 524756,
+      "max_FCD_time_s": 419.9,
+      "resource": {
+        "wall_s": 26.869768600008683,
+        "observed_rss_bytes": 722669568
+      },
+      "output_sha256": {
+        "current_candidate_window_events.json": "2dc684cb0e14ee75f1fc3130d884ab615c6ea8833deaf38b2b0f8fc7ff0d7892",
+        "current_frozen_window_events.json": "6462c0ba8f5cc116eaad3adef4da76d5f9ea532477f5616ee611677650a6e2ff",
+        "repaired_measured_state.parquet": "b31a1838f714e4e31ec36dd008d2bfc2d8b8ae9686bb835b707f4cb3f55760a9"
+      },
+      "interpretation": "Geometry, leader support and edge qualification may change together; event decrease is not risk disappearance",
+      "scientific_claim_eligible": false
+    },
+    {
+      "id": "timing_us101__0750_0805_U_s20261201",
+      "window": "us101__0750_0805",
+      "kind": "timing",
+      "arm": "U",
+      "seed": 20261201,
+      "status": "rechecked_current_interface_changed",
+      "published_legacy": {
+        "N": 1,
+        "rate": 0.629458665547629,
+        "point_exposure_s": 5719.200000000001
+      },
+      "old_table_current_D1": {
+        "eligibility": "D1_contract_implemented",
+        "onset_events": 1,
+        "local_evaluable_s": 5618.1,
+        "rate_per_evaluable_vehicle_hour": 0.6407860308645271,
+        "rate_status": "evaluable",
+        "left_continuing_risk_segments": 0,
+        "right_censored_unconfirmed": 0,
+        "confirmation_after_window": 0,
+        "unavailable_point_counts": {
+          "not_applicable": 28962,
+          "valid": 28230,
+          "invalid": 4
+        }
+      },
+      "repaired_frozen_window": {
+        "eligibility": "D1_contract_implemented",
+        "onset_events": 0,
+        "local_evaluable_s": 5071.200000000001,
+        "rate_per_evaluable_vehicle_hour": 0.0,
+        "rate_status": "evaluable_zero_events",
+        "left_continuing_risk_segments": 0,
+        "right_censored_unconfirmed": 0,
+        "confirmation_after_window": 0,
+        "unavailable_point_counts": {
+          "valid": 25663,
+          "not_applicable": 25578,
+          "missing": 5955
+        }
+      },
+      "candidate_window_separate_descriptive": {
+        "eligibility": "D1_contract_implemented",
+        "onset_events": 0,
+        "local_evaluable_s": 11209.900000000001,
+        "rate_per_evaluable_vehicle_hour": 0.0,
+        "rate_status": "evaluable_zero_events",
+        "left_continuing_risk_segments": 0,
+        "right_censored_unconfirmed": 0,
+        "confirmation_after_window": 0,
+        "unavailable_point_counts": {
+          "not_applicable": 56717,
+          "valid": 56455,
+          "missing": 13414
+        }
+      },
+      "event_member_sets": {
+        "common": 0,
+        "old_only": 9,
+        "new_only": 0
+      },
+      "physical_support_counts": {
+        "observed_same_native_lane": 51241,
+        "unresolved_lane_boundary": 5955
+      },
+      "measured_states": 615123,
+      "max_FCD_time_s": 419.9,
+      "resource": {
+        "wall_s": 30.18782680000004,
+        "observed_rss_bytes": 818601984
+      },
+      "output_sha256": {
+        "current_candidate_window_events.json": "2b2e648beb1188293dcec175d33fcad3d3d7f5225c589370b0b05ae219785caa",
+        "current_frozen_window_events.json": "1037d973ae63e8b1d02008f2fbb884dbf04bfa4967044e9034549b18fe8f5880",
+        "repaired_measured_state.parquet": "953ca7ba41a6282bf6e6f211d95253ccc8f85514cdb6a9697fd01de71a9edb1a"
+      },
+      "interpretation": "Geometry, leader support and edge qualification may change together; event decrease is not risk disappearance",
+      "scientific_claim_eligible": false
+    },
+    {
+      "id": "timing_us101__0750_0805_E_s20261201",
+      "window": "us101__0750_0805",
+      "kind": "timing",
+      "arm": "E",
+      "seed": 20261201,
+      "status": "rechecked_current_interface_changed",
+      "published_legacy": {
+        "N": 2,
+        "rate": 1.2987012987012987,
+        "point_exposure_s": 5544.0
+      },
+      "old_table_current_D1": {
+        "eligibility": "D1_contract_implemented",
+        "onset_events": 2,
+        "local_evaluable_s": 5446.400000000001,
+        "rate_per_evaluable_vehicle_hour": 1.3219741480611045,
+        "rate_status": "evaluable",
+        "left_continuing_risk_segments": 0,
+        "right_censored_unconfirmed": 0,
+        "confirmation_after_window": 0,
+        "unavailable_point_counts": {
+          "valid": 27998,
+          "not_applicable": 27442,
+          "invalid": 25
+        }
+      },
+      "repaired_frozen_window": {
+        "eligibility": "D1_contract_implemented",
+        "onset_events": 0,
+        "local_evaluable_s": 4903.0,
+        "rate_per_evaluable_vehicle_hour": 0.0,
+        "rate_status": "evaluable_zero_events",
+        "left_continuing_risk_segments": 0,
+        "right_censored_unconfirmed": 0,
+        "confirmation_after_window": 0,
+        "unavailable_point_counts": {
+          "valid": 25569,
+          "not_applicable": 23964,
+          "missing": 5932
+        }
+      },
+      "candidate_window_separate_descriptive": {
+        "eligibility": "D1_contract_implemented",
+        "onset_events": 0,
+        "local_evaluable_s": 11378.7,
+        "rate_per_evaluable_vehicle_hour": 0.0,
+        "rate_status": "evaluable_zero_events",
+        "left_continuing_risk_segments": 0,
+        "right_censored_unconfirmed": 0,
+        "confirmation_after_window": 0,
+        "unavailable_point_counts": {
+          "not_applicable": 57849,
+          "valid": 57003,
+          "missing": 13344
+        }
+      },
+      "event_member_sets": {
+        "common": 0,
+        "old_only": 9,
+        "new_only": 1
+      },
+      "physical_support_counts": {
+        "observed_same_native_lane": 49533,
+        "unresolved_lane_boundary": 5932
+      },
+      "measured_states": 619397,
+      "max_FCD_time_s": 419.9,
+      "resource": {
+        "wall_s": 29.704126699987683,
+        "observed_rss_bytes": 815464448
+      },
+      "output_sha256": {
+        "current_candidate_window_events.json": "1e06697249392abd375c1849ab03afd9090ed3483c0dc4b4fea2bbda7fc63ebc",
+        "current_frozen_window_events.json": "bbab9f30d09a3703f0a876a37dbb41833cdd9d63562ea63cf4a67fa3b3271906",
+        "repaired_measured_state.parquet": "51e98ab4ff71ac3c67f429b4950b001ce2f2a8e4dd5f047ac3ca7f2dc20f10aa"
+      },
+      "interpretation": "Geometry, leader support and edge qualification may change together; event decrease is not risk disappearance",
+      "scientific_claim_eligible": false
+    },
+    {
+      "id": "timing_us101__0805_0820_U_s20261201",
+      "window": "us101__0805_0820",
+      "kind": "timing",
+      "arm": "U",
+      "seed": 20261201,
+      "status": "rechecked_current_interface_changed",
+      "published_legacy": {
+        "N": 1,
+        "rate": 0.6266536694053753,
+        "point_exposure_s": 5744.8
+      },
+      "old_table_current_D1": {
+        "eligibility": "D1_contract_implemented",
+        "onset_events": 1,
+        "local_evaluable_s": 5649.700000000001,
+        "rate_per_evaluable_vehicle_hour": 0.6372019753261234,
+        "rate_status": "evaluable",
+        "left_continuing_risk_segments": 0,
+        "right_censored_unconfirmed": 1,
+        "confirmation_after_window": 0,
+        "unavailable_point_counts": {
+          "valid": 30173,
+          "not_applicable": 27275
+        }
+      },
+      "repaired_frozen_window": {
+        "eligibility": "D1_contract_implemented",
+        "onset_events": 0,
+        "local_evaluable_s": 5109.400000000001,
+        "rate_per_evaluable_vehicle_hour": 0.0,
+        "rate_status": "evaluable_zero_events",
+        "left_continuing_risk_segments": 0,
+        "right_censored_unconfirmed": 0,
+        "confirmation_after_window": 0,
+        "unavailable_point_counts": {
+          "valid": 26931,
+          "not_applicable": 24652,
+          "missing": 5865
+        }
+      },
+      "candidate_window_separate_descriptive": {
+        "eligibility": "D1_contract_implemented",
+        "onset_events": 0,
+        "local_evaluable_s": 10280.0,
+        "rate_per_evaluable_vehicle_hour": 0.0,
+        "rate_status": "evaluable_zero_events",
+        "left_continuing_risk_segments": 0,
+        "right_censored_unconfirmed": 0,
+        "confirmation_after_window": 0,
+        "unavailable_point_counts": {
+          "valid": 64772,
+          "not_applicable": 38964,
+          "missing": 11968
+        }
+      },
+      "event_member_sets": {
+        "common": 0,
+        "old_only": 9,
+        "new_only": 2
+      },
+      "physical_support_counts": {
+        "observed_same_native_lane": 51583,
+        "unresolved_lane_boundary": 5865
+      },
+      "measured_states": 586673,
+      "max_FCD_time_s": 419.9,
+      "resource": {
+        "wall_s": 31.271944399995846,
+        "observed_rss_bytes": 786132992
+      },
+      "output_sha256": {
+        "current_candidate_window_events.json": "77479e44267c9d626de181ec7518f6b546502ba652d1b0d9d71eaf4c3f07bb09",
+        "current_frozen_window_events.json": "3471377bd97088578f05b48c434d9396b9cb9ac03e1eb75b318358206cef28ce",
+        "repaired_measured_state.parquet": "80a278e47c82f6910bc9382e0432514ae6f334e6e5a0b89cf5cacc456062fa73"
+      },
+      "interpretation": "Geometry, leader support and edge qualification may change together; event decrease is not risk disappearance",
+      "scientific_claim_eligible": false
+    },
+    {
+      "id": "timing_us101__0805_0820_E_s20261201",
+      "window": "us101__0805_0820",
+      "kind": "timing",
+      "arm": "E",
+      "seed": 20261201,
+      "status": "rechecked_current_interface_changed",
+      "published_legacy": {
+        "N": 2,
+        "rate": 1.4544573056178411,
+        "point_exposure_s": 4950.3
+      },
+      "old_table_current_D1": {
+        "eligibility": "D1_contract_implemented",
+        "onset_events": 2,
+        "local_evaluable_s": 4859.900000000001,
+        "rate_per_evaluable_vehicle_hour": 1.481511965266775,
+        "rate_status": "evaluable",
+        "left_continuing_risk_segments": 0,
+        "right_censored_unconfirmed": 2,
+        "confirmation_after_window": 0,
+        "unavailable_point_counts": {
+          "valid": 32373,
+          "not_applicable": 17130,
+          "invalid": 3
+        }
+      },
+      "repaired_frozen_window": {
+        "eligibility": "D1_contract_implemented",
+        "onset_events": 0,
+        "local_evaluable_s": 4353.7,
+        "rate_per_evaluable_vehicle_hour": 0.0,
+        "rate_status": "evaluable_zero_events",
+        "left_continuing_risk_segments": 0,
+        "right_censored_unconfirmed": 0,
+        "confirmation_after_window": 0,
+        "unavailable_point_counts": {
+          "valid": 28369,
+          "not_applicable": 15631,
+          "missing": 5506
+        }
+      },
+      "candidate_window_separate_descriptive": {
+        "eligibility": "D1_contract_implemented",
+        "onset_events": 0,
+        "local_evaluable_s": 8115.3,
+        "rate_per_evaluable_vehicle_hour": 0.0,
+        "rate_status": "evaluable_zero_events",
+        "left_continuing_risk_segments": 0,
+        "right_censored_unconfirmed": 0,
+        "confirmation_after_window": 0,
+        "unavailable_point_counts": {
+          "valid": 60126,
+          "not_applicable": 21870,
+          "missing": 10375
+        }
+      },
+      "event_member_sets": {
+        "common": 0,
+        "old_only": 8,
+        "new_only": 0
+      },
+      "physical_support_counts": {
+        "observed_same_native_lane": 44000,
+        "unresolved_lane_boundary": 5506
+      },
+      "measured_states": 555641,
+      "max_FCD_time_s": 419.9,
+      "resource": {
+        "wall_s": 27.352723699994385,
+        "observed_rss_bytes": 769916928
+      },
+      "output_sha256": {
+        "current_candidate_window_events.json": "29aa8a37757b1f4fa9a1d8c87d0bdfbeb82a1a8cf48adf58dfac5cf867fa4313",
+        "current_frozen_window_events.json": "0d5be703ba88d1b6c676e88c2b43407cae8dbad14054f630f1991a122fd3d272",
+        "repaired_measured_state.parquet": "87e2c68663e5dc88d40e58e367a576cf9ff14aadae9a087fcea9410e60301b6c"
+      },
+      "interpretation": "Geometry, leader support and edge qualification may change together; event decrease is not risk disappearance",
+      "scientific_claim_eligible": false
+    }
+  ],
+  "new_trajectories": 0,
+  "all_historical_P2_valid": false,
+  "Gate_changed": false,
+  "current_interface_scope": "six selected cases only; single seed per condition, no new mechanisms established",
+  "event_member_sets_scope": "full-context lists, distinct from local onset-attributed frozen-window N"
+}

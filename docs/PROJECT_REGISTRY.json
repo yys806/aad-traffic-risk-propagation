@@ -216,11 +216,24 @@
   "code/tests/test_stage_0_5_research_ledger.py",
   "docs/audits/stage_0_5_interaction_research_v2/execution_events.jsonl",
   "docs/audits/stage_0_5_interaction_research_v2/run_matrix.json",
-  "docs/audits/stage_0_5_interaction_research_v2/review_proposal.json"
+  "docs/audits/stage_0_5_interaction_research_v2/review_proposal.json",
+  "docs/STAGE_0_5_V2_ADMISSION_ENGINEERING_2026-10-25.md",
+  "docs/STAGE_0_5_V2_IDENTITY_CONTRACT.md",
+  "docs/STAGE_0_5_V2_ADMISSION_VALIDATION.md",
+  "code/scripts/stage_0_5_identity_observation.py",
+  "code/scripts/stage_0_5_input_fidelity.py",
+  "code/scripts/stage_0_5_isolation_v2.py",
+  "code/scripts/stage_0_5_execution_v2.py",
+  "code/scripts/review_stage_0_5_c6_admission_v1.py",
+  "code/scripts/verify_stage_0_5_c6_admission_v1.py",
+  "code/scripts/validate_stage_0_5_v2_admission.py",
+  "code/scripts/prepare_stage_0_5_v2_admission_evidence.py",
+  "code/scripts/export_stage_0_5_v2_admission_evidence.py",
+  "code/tests/test_stage_0_5_v2_admission.py"
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-0.5-INTERACTION-RESEARCH-V2: unlimited cumulative budget authorized; independent append-only ledger, audit and four-arm plan in offline preparation. Zero new trajectories; initialization and isolation block full batch; exact scientific plan unapproved.",
+  "active_task": "AAD-0.5-INTERACTION-RESEARCH-V2: identity/static input/locked adapter/isolation interfaces synthetically verified; six allowlisted historical C6 remeasurements independently verified, two baselines reused. No native launches or new trajectories; scientific plan Proposed and native isolation Not Accepted.",
   "why_now": "Researcher explicitly removed old three-attempt restriction for new research; historical ledgers and failed ID1 remain immutable. Need matched baseline and factorial contrasts under reviewed measurement.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
@@ -555,7 +568,16 @@
     "code/tests/test_stage_0_5_method_expansion.py",
     "code/scripts/prepare_stage_0_5_depart_speed_candidate.py",
     "code/scripts/export_depart_speed_candidate_evidence.py",
-    "code/scripts/stage_0_5_research_ledger.py"
+    "code/scripts/stage_0_5_research_ledger.py",
+    "code/scripts/stage_0_5_identity_observation.py",
+    "code/scripts/stage_0_5_input_fidelity.py",
+    "code/scripts/stage_0_5_isolation_v2.py",
+    "code/scripts/stage_0_5_execution_v2.py",
+    "code/scripts/review_stage_0_5_c6_admission_v1.py",
+    "code/scripts/verify_stage_0_5_c6_admission_v1.py",
+    "code/scripts/validate_stage_0_5_v2_admission.py",
+    "code/scripts/prepare_stage_0_5_v2_admission_evidence.py",
+    "code/scripts/export_stage_0_5_v2_admission_evidence.py"
    ],
    "entrypoints": [
     "code/scripts/prepare_stage_0_5_real_reference.py",
@@ -601,7 +623,12 @@
     "code/scripts/verify_stage_0_5_interaction_stop.py",
     "code/scripts/prepare_stage_0_5_depart_speed_candidate.py",
     "code/scripts/audit_stage_0_5_research_v2.py",
-    "code/scripts/stage_0_5_research_ledger.py"
+    "code/scripts/stage_0_5_research_ledger.py",
+    "code/scripts/review_stage_0_5_c6_admission_v1.py",
+    "code/scripts/verify_stage_0_5_c6_admission_v1.py",
+    "code/scripts/validate_stage_0_5_v2_admission.py",
+    "code/scripts/prepare_stage_0_5_v2_admission_evidence.py",
+    "code/scripts/export_stage_0_5_v2_admission_evidence.py"
    ],
    "test_paths": [
     "code/tests/test_simulation_real_coverage.py",
@@ -636,7 +663,8 @@
     "code/tests/test_interaction_task_boundary.py",
     "code/tests/test_project_evidence_scope.py",
     "code/tests/test_depart_speed_candidate.py",
-    "code/tests/test_stage_0_5_research_ledger.py"
+    "code/tests/test_stage_0_5_research_ledger.py",
+    "code/tests/test_stage_0_5_v2_admission.py"
    ],
    "configuration": "R2 real reference plus two no_message_baseline generic-highway engineering fixtures (baseline_mixed_demand, measurement_probe_queue_stop); US-101 primary, Lankershim auxiliary entry-only, pNEUMA urban kinematics entry-only; all network/demand/vType/behaviour/time settings are engineering_fixture_only",
    "parameters": {
@@ -830,7 +858,8 @@
     "RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1",
     "RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1",
     "RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1",
-    "RES-STAGE-0.5-INTERACTION-RESEARCH-V2"
+    "RES-STAGE-0.5-INTERACTION-RESEARCH-V2",
+    "RES-STAGE-0.5-V2-ADMISSION-ENGINEERING-V1"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -945,7 +974,7 @@
     "third_window_rows_materialised",
     "zotero_items_added"
    ],
-   "current_conclusion": "V2 audit/budget infrastructure prepared with no cumulative attempt cap under new authorization; independent ledger currently0. Four-arm/initialization/repetition/scientific choices Proposed. Old failure1/3 retained as history; isolation Not Accepted and Gate unchanged.",
+   "current_conclusion": "V2 cumulative cap removed by researcher; identity/input-fidelity/locked adapter/isolation interfaces implemented and synthetic-only validated. Six named historical FCDs remeasured under unchanged C6, independently verified; two current-C6 baselines reused. Actual insertion, native isolation and interaction compatibility remain unverified; matrix/initialization/repeats Proposed, all execution flags false, Gate unchanged.",
    "gate": {
     "status": "pending_simulation_sample",
     "portable_path": "evidence/results/RES-STAGE-0.5-REAL-REF-R2/audit.json"
@@ -3981,6 +4010,42 @@
     "candidate_initial_seed_cells": 8
    },
    "current_conclusion": "Budget authority Agreed, scientific matrix Proposed. No launch adapter; actual initialization and native isolation unverified. 0805 has8 additional main2 fixed speeds7.71-9.92 outside numeric10 candidate.",
+   "gate_status": "pending_simulation_sample",
+   "paper_locations": [
+    "docs/PAPER_AND_MATERIAL_SOURCES.md"
+   ],
+   "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-STAGE-0.5-V2-ADMISSION-ENGINEERING-V1",
+   "experiment_id": "stage_0_5",
+   "name": "V2 admission engineering and selected historical C6 review; no native execution",
+   "status": "engineering_synthetic_verified_historical_C6_rechecked_native_unverified",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-V2-ADMISSION-ENGINEERING-V1/identity_contract.json",
+    "evidence/results/RES-STAGE-0.5-V2-ADMISSION-ENGINEERING-V1/initialization_audit.json",
+    "evidence/results/RES-STAGE-0.5-V2-ADMISSION-ENGINEERING-V1/history_allowlist.json",
+    "evidence/results/RES-STAGE-0.5-V2-ADMISSION-ENGINEERING-V1/C6_comparison.json",
+    "evidence/results/RES-STAGE-0.5-V2-ADMISSION-ENGINEERING-V1/C6_independent_verification.json",
+    "evidence/results/RES-STAGE-0.5-V2-ADMISSION-ENGINEERING-V1/admission_profile.json",
+    "evidence/results/RES-STAGE-0.5-V2-ADMISSION-ENGINEERING-V1/provenance.json",
+    "evidence/results/RES-STAGE-0.5-V2-ADMISSION-ENGINEERING-V1/validation_record.json",
+    "evidence/results/RES-STAGE-0.5-V2-ADMISSION-ENGINEERING-V1/SHA256SUMS"
+   ],
+   "local_artifact_paths": [
+    "code/outputs/formal/calibration/stage_0_5_v2_admission_engineering_v1"
+   ],
+   "code_version_source": "provenance.json/source_sha256",
+   "configuration_source": "code/configs/stage_0_5_interaction_research_v2.json",
+   "data_version_source": "history_allowlist.json: six exact historical calibration FCD file groups, first current capture SHA; two C6 baseline derived results reused; no third window/locked holdout",
+   "core_metrics": {
+    "new_trajectory_attempts": 0,
+    "native_launches": 0,
+    "historical_C6_remeasured": 6,
+    "historical_C6_reused": 2,
+    "accepted_for_new_task": false
+   },
+   "current_conclusion": "Software interfaces and selected historical measurements verified at their declared scope; native isolation Unknown/Not Accepted, actual insertion unknown. Scientific plan remains Proposed and execution disabled.",
    "gate_status": "pending_simulation_sample",
    "paper_locations": [
     "docs/PAPER_AND_MATERIAL_SOURCES.md"

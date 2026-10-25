@@ -1,5 +1,11 @@
 # AAD Module Map
 
+## 2026-10-25 V2准入工程模块（最新）
+
+`code/scripts/stage_0_5_identity_observation.py`：纯身份状态机/连接getter；`stage_0_5_input_fidelity.py`：实际XML结构静态差分；`stage_0_5_isolation_v2.py`：路径/进程/哈希策略；`stage_0_5_execution_v2.py`：硬锁原生、数据Replay、资源监督、证据日志。`review_stage_0_5_c6_admission_v1.py`限定历史离线复测；`verify_stage_0_5_c6_admission_v1.py`独立核对；prepare/export/validate的V2 admission脚本负责证据和无数据验证。测试在`code/tests/test_stage_0_5_v2_admission.py`。旧绑定模块不改。
+
+依据：`docs/STAGE_0_5_V2_ADMISSION_ENGINEERING_2026-10-25.md`。下方保留历史时点。
+
 ## 2026-10-25 V2工程模块
 
 code/scripts/stage_0_5_research_ledger.py::ResearchLedger/resource_reason；audit_stage_0_5_research_v2.py::audit；validate_stage_0_5_research_v2.py（拒绝主工作区、无数据克隆软件审计）；export_stage_0_5_research_v2_evidence.py（限定导出，不改旧导出器）；code/tests/test_stage_0_5_research_ledger.py；code/configs/stage_0_5_interaction_research_v2.json。无科学算法更改。

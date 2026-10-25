@@ -1,5 +1,11 @@
 # AAD Architecture
 
+## 2026-10-25 V2准入适配架构（最新）
+
+新增独立脚本层IdentityObserver、InputFidelity、Scope与ExecutionAdapter，复用不改ResearchLedger及C6/D1。NativeBackend含未来连接/施加/资源/采集接口，但构建常量硬锁，不能靠proposal/环境解锁；只ReplayBackend在合成fixture中运行。测量对未证明保真/隔离保守拒绝。Python守卫不是OS/native认证。
+
+依据：`code/scripts/stage_0_5_execution_v2.py`；`docs/STAGE_0_5_V2_ADMISSION_ENGINEERING_2026-10-25.md`。下方旧描述保留历史时点。
+
 ## 2026-10-25 V2预算基础设施
 
 新增ResearchLedger，仅工程准入与追加式事件状态机，无累计attempt/wall上限、无launch API；精确提案/研究者确认/输入源码哈希/隔离/资源守卫。旧确认入口→旧监督器→worker调用链及三次限制保留，不接V2。当前未实现新SUMO执行器，不宣称实验隔离或动态初始化已验收。

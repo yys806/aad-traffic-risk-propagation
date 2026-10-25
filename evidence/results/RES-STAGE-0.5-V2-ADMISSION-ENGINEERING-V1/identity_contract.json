@@ -1,0 +1,71 @@
+{
+  "schema": "aad.identity-contract.v1",
+  "implementation": "code/scripts/stage_0_5_identity_observation.py",
+  "installed_API": {
+    "_simulation.py": {
+      "path": "C:\\Program Files (x86)\\Eclipse\\Sumo\\tools\\traci\\_simulation.py",
+      "sha256": "8b7f97ced4dd6774271e8e0da270d687aa9a5ff438c8090023a941beb4e8bbec",
+      "functions": {
+        "getTime": 252,
+        "getLoadedIDList": 300,
+        "getDepartedIDList": 314,
+        "getArrivedIDList": 329,
+        "getCollidingVehiclesNumber": 423,
+        "getStartingTeleportIDList": 488,
+        "getEndingTeleportIDList": 502,
+        "getPendingVehicles": 515,
+        "getDeltaT": 535
+      },
+      "matches_prior_tool_binding": true
+    },
+    "_vehicle.py": {
+      "path": "C:\\Program Files (x86)\\Eclipse\\Sumo\\tools\\traci\\_vehicle.py",
+      "sha256": "998b5579fc6df5380af5a315a2677d396460a9e8ecc58a8ba971d6f085b206eb",
+      "functions": {
+        "getSpeed": 277,
+        "getDeparture": 333,
+        "getDepartDelay": 340,
+        "getLaneID": 347
+      },
+      "matches_prior_tool_binding": true
+    },
+    "domain.py": {
+      "path": "C:\\Program Files (x86)\\Eclipse\\Sumo\\tools\\traci\\domain.py",
+      "sha256": "69e28e03cc7844c63049a7f177f73f927ea2ebef7065c47fcfbd388d52b7b8bd",
+      "functions": {
+        "getIDList": 171
+      },
+      "matches_prior_tool_binding": true
+    }
+  },
+  "installed_binary_sha256": "dcdbf4fe1f8268816cda2d0631d407fd8e63b0cad5f3e57fe9cf235d9dece926",
+  "version_evidence": "1.26.0 recorded in prior failed FCD header; binary/API hashes match prior bindings; no current native query",
+  "runtime_handshake": "Unknown; getVersion may only be checked after a future separately authorized connection",
+  "official_version_sources": [
+    "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_26_0/tools/traci/_simulation.py",
+    "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_26_0/tools/traci/_vehicle.py",
+    "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_26_0/src/libsumo/Vehicle.cpp"
+  ],
+  "semantics": {
+    "event_lists": "last completed simulation step, recorded with observation time and evidence interval",
+    "pending": "explicit getter identity snapshot",
+    "visible_IDs": "on-road, parking or remote-controlled; not the complete loaded set",
+    "on_road": "separate nonempty getLaneID observation",
+    "actual_departure": "getDeparture; no replacement by event observation time or FCD",
+    "actual_insertion_speed": "Unknown without native departure-speed output; post-step getSpeed is separately labelled",
+    "discard": "no verified native ID getter; explicit identity evidence required; absence/counts cannot establish it",
+    "initial_snapshot": "no completed-step interval; event lists unavailable, separate from subsequent coverage",
+    "None_vs_empty": "None unavailable; [] available empty",
+    "interruption": "nonterminal identities right censored; unknown remains unknown"
+  },
+  "states": [
+    "Unknown",
+    "pending_native",
+    "active_native",
+    "teleporting_native",
+    "arrived_native",
+    "discarded_explicit_evidence"
+  ],
+  "synthetic_validation_only": true,
+  "native_insertion_accepted": false
+}

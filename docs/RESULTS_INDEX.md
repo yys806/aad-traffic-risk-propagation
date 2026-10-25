@@ -1,5 +1,11 @@
 # AAD 结果索引
 
+## RES-STAGE-0.5-V2-ADMISSION-ENGINEERING-V1
+
+身份契约/状态机、XML保真校验、硬锁执行与隔离守卫、六份历史C6重测及独立核对、无数据软件测试；两份已有C6基线复用。全部为工程/历史离线证据，新轨迹0，原生隔离Unknown/Not Accepted，科学方案仍Proposed。
+
+依据：`docs/STAGE_0_5_V2_ADMISSION_ENGINEERING_2026-10-25.md`；`docs/STAGE_0_5_V2_ADMISSION_VALIDATION.md`；`evidence/results/RES-STAGE-0.5-V2-ADMISSION-ENGINEERING-V1/`。
+
 ## RES-STAGE-0.5-INTERACTION-RESEARCH-V2
 
 离线事实审计、独立追加预算/账本、四臂候选与工程测试记录；不是新科学实验。

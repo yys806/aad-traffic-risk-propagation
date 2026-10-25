@@ -1,5 +1,11 @@
 # AAD Data Flow
 
+## 2026-10-25 V2身份与历史重测流（最新）
+
+未来已连接TraCI→collect_snapshot（每0.05s身份事件/快照、来源与时钟）→IdentityObserver→独占hash链事件日志/FCD首末代理；原生路径未执行。六份明确允许历史FCD→既有parse_fcd/fcd_to_state_frame/measure_state_frame/local_d1_measurement→独立新表/事件→几何、标量事件与D1边复核。旧基线两份复用，未扫描第三窗口或raw holdout。缺失不补零；FCD首现非原生插入时刻。
+
+依据：`docs/STAGE_0_5_V2_IDENTITY_CONTRACT.md`；`evidence/results/RES-STAGE-0.5-V2-ADMISSION-ENGINEERING-V1/history_allowlist.json`。下方保留历史时点。
+
 ## 2026-10-25 V2离线审计与追加账本
 
 明确列举的便携摘要、C6源码、两份已绑定prepared routes→历史数量/旧窗seed波动/初始化范围审计；无原始真实/第三窗轨迹读取。新预算config→task_created→未来逐次reserved/running/terminal/measurement事件，当前0尝试；失败须追加明确复核。候选四臂矩阵/未批准提案→限定聚合证据导出；尚无新FCD。

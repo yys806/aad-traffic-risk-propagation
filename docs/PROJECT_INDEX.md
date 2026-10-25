@@ -1,5 +1,9 @@
 # AAD 项目索引
 
+## 2026-10-25 V2准入工程最新入口
+
+当前工程入口：`docs/STAGE_0_5_V2_ADMISSION_ENGINEERING_2026-10-25.md`、`docs/STAGE_0_5_V2_IDENTITY_CONTRACT.md`、`docs/STAGE_0_5_V2_ADMISSION_VALIDATION.md`；机器证据 `evidence/results/RES-STAGE-0.5-V2-ADMISSION-ENGINEERING-V1/`。实现与历史重测已有证据，真实原生启动仍硬锁，不能据此认定初始化或隔离通过。下方旧入口保留历史时点。
+
 ## 2026-10-25 V2当前入口
 
 当前入口为Stage0.5审计、追加式预算、新四臂配对计划及工程验证。预算解除已批准，科学矩阵未批准。旧“余2”仅为旧任务余额。

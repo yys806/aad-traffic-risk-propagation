@@ -1,5 +1,11 @@
 # AAD 阶段索引
 
+## 2026-10-25 Stage 0.5 V2准入工程闭环（最新）
+
+身份/静态保真/硬锁adapter/隔离守卫与六份历史C6复核已完成其离线工程范围；原生隔离与实际初始化Unknown/Not Accepted，科学矩阵仍Proposed，pending_simulation_sample及Stage1.1不变。本轮0次SUMO启动/0新轨迹，V2账本0次。
+
+依据：`docs/STAGE_0_5_V2_ADMISSION_ENGINEERING_2026-10-25.md`；`evidence/results/RES-STAGE-0.5-V2-ADMISSION-ENGINEERING-V1/`。下方保留历史时点。
+
 ## 2026-10-25 Stage 0.5 V2研究任务
 
 预算重构与四臂候选为工程准备，0次新轨迹；交互相容未通过，pending_simulation_sample不变。

@@ -1,5 +1,11 @@
 # AAD Current State Snapshot
 
+## 2026-10-25 V2准入工程闭环（最新）
+
+Verified：新增身份状态机/逐步getter适配、初始化静态保真校验、精确历史允许清单、锁定执行适配器与隔离守卫，仅合成软件验证；旧核心科学源/提案/输入/账本不改。六份历史FCD完成当前C6重测及独立几何/事件/D1核对，两份已有C6基线直接复用。原[300,420)结构N33/32→14/10，四时序样本N1/2/1/2→0/0/0/0且支持改变，不能解释为风险消失。0750仍仅DS38候选，0805潜在冲突52辆，i0007未解决。原生启动构建硬锁；本轮0启动/0新轨迹，V2真实账本0，无累计cap。四条件/初始化/重复仍Proposed；三个执行标志和accepted_for_new_task均false，原生隔离Unknown、历史偏差Not Accepted，Gate/δ/h/B/Stage1.1不变，WP2–WP5未整体完成。
+
+依据：`docs/STAGE_0_5_V2_ADMISSION_ENGINEERING_2026-10-25.md`；`docs/STAGE_0_5_V2_IDENTITY_CONTRACT.md`；`docs/STAGE_0_5_V2_ADMISSION_VALIDATION.md`；`evidence/results/RES-STAGE-0.5-V2-ADMISSION-ENGINEERING-V1/`。下方“尚缺适配器/仅两份重测”等描述仅保留历史时点，不代表最新工程状态。
+
 ## 2026-10-25 V2追加式研究任务（当前）
 
 Agreed：研究者取消新研究累计次数上限；新任务AAD-0.5-INTERACTION-RESEARCH-V2独立hash链追加账本，实际0次。旧任务一次failed_stop/3次上限及历史余2原字节保留，不再限制V2。已审计324响应、58条件状态、20到达时序；C6只重测两份旧FCD，其他旧P2未升级。四臂同政策基线/供给/匝道/联合为Proposed，未冻结、不执行。0750 DS38未获批，i0007未解决；0805 main_2另有8辆非10速度>5，不能照搬44辆策略。身份采集、实际执行适配器和新批次隔离证明尚缺，POLICY-A-VALIDATION-SCOPE-01仍Not Accepted。Gate、δ/h/B/Stage1.1不变，WP2–WP5未整体完成。

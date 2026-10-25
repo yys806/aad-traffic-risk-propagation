@@ -1,5 +1,11 @@
 # AAD Confirmed Decisions
 
+## 2026-10-25 V2工程任务授权边界（最新）
+
+Agreed：本轮可实施身份/静态保真/锁定适配/隔离守卫、合成测试和必要已列明历史C6复核，绝对禁止SUMO。本轮工程事实已完成，不产生科研批准。初始化三种范围、四条件/脉冲、seed/重复及判读仍Awaiting Researcher Decision；既有A历史决定不自动批准新DS38或0805政策。执行三个标志和accepted均false，构建锁true，δ/h/B与Gate不改。
+
+依据：`docs/STAGE_0_5_V2_ADMISSION_ENGINEERING_2026-10-25.md`；`evidence/results/RES-STAGE-0.5-V2-ADMISSION-ENGINEERING-V1/admission_profile.json`。下方保留历史时点。
+
 ## 2026-10-25 新研究预算授权与科学计划边界
 
 Agreed：研究者当前任务§I/IV/VIII取消新研究累计三次上限、允许最小预算工程/安全隔离测试/计划准备，禁止未确认计划SUMO运行。独立V2账本，不改旧3次账本或失败。Proposed：四臂因子化、A窗口迁移、供给/匝道参数复用、0750/0805初始化与重复规则；需研究者确认。旧C7任务级A已选定，B仍候选，A不自动批准DS10MAX。

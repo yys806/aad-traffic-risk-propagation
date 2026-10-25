@@ -1,0 +1,149 @@
+{
+  "status": "static_input_scope_verified_not_dynamic_acceptance",
+  "originals": {
+    "ID1_SUPPLY_0750": {
+      "total_count": 1150,
+      "initial_count": 117,
+      "noninitial_count": 1033,
+      "initial_by_start_edge": {
+        "main_2": 38,
+        "main_1": 37,
+        "main_0": 42
+      },
+      "numeric10_count": 38,
+      "potential_dynamic_pulse_conflicts": 38,
+      "static_start_speed_conflicts": 0,
+      "references": {
+        "net-file": "network.net.xml",
+        "route-files": "routes.rou.xml",
+        "fcd-output": "fcd.xml",
+        "summary-output": "summary.xml"
+      },
+      "actual_insertion": "Unknown; no safety/dynamic insertion proof"
+    },
+    "ID2_SUPPLY_0805": {
+      "total_count": 1031,
+      "initial_count": 131,
+      "noninitial_count": 900,
+      "initial_by_start_edge": {
+        "main_2": 52,
+        "main_1": 44,
+        "main_0": 35
+      },
+      "numeric10_count": 44,
+      "potential_dynamic_pulse_conflicts": 52,
+      "static_start_speed_conflicts": 0,
+      "references": {
+        "net-file": "network.net.xml",
+        "route-files": "routes.rou.xml",
+        "fcd-output": "fcd.xml",
+        "summary-output": "summary.xml"
+      },
+      "actual_insertion": "Unknown; no safety/dynamic insertion proof"
+    },
+    "ID3_RAMP_0750": {
+      "total_count": 1150,
+      "initial_count": 117,
+      "noninitial_count": 1033,
+      "initial_by_start_edge": {
+        "main_2": 38,
+        "main_1": 37,
+        "main_0": 42
+      },
+      "numeric10_count": 38,
+      "potential_dynamic_pulse_conflicts": 38,
+      "static_start_speed_conflicts": 0,
+      "references": {
+        "net-file": "network.net.xml",
+        "route-files": "routes.rou.xml",
+        "fcd-output": "fcd.xml",
+        "summary-output": "summary.xml"
+      },
+      "actual_insertion": "Unknown; no safety/dynamic insertion proof"
+    }
+  },
+  "candidates": [
+    {
+      "id": "ID1_SUPPLY_0750_DS10MAX_V1",
+      "comparison": {
+        "initial_count": 117,
+        "total_count": 1150,
+        "changed_initial_count": 38,
+        "unchanged_noninitial_count": 1033,
+        "exact_allowed_bytes_only": true,
+        "baseline_sha256": "4b1ee23fa4745d6c6b928f4a0f27bd752a6e057c4f8a50cf0221e1480167756e",
+        "candidate_sha256": "db9e2ea2250a00d3b0dded552d6aedbaf62a46a3dcbb2d778e9b43d71eaf9128",
+        "actual_insertion": "Unknown; static comparison only"
+      },
+      "potential_main2_dynamic_numeric_speed_conflicts": 0,
+      "actual_insertion": "Unknown; no trajectory generated"
+    },
+    {
+      "id": "ID3_RAMP_0750_DS10MAX_V1",
+      "comparison": {
+        "initial_count": 117,
+        "total_count": 1150,
+        "changed_initial_count": 38,
+        "unchanged_noninitial_count": 1033,
+        "exact_allowed_bytes_only": true,
+        "baseline_sha256": "90a8927fd96c6982ba3b6d88e4e76637d97b6f4dda9451b850d22ea66df04600",
+        "candidate_sha256": "eb624356e6f86da922e1cda4ba73479a0dbf3b0bc4ba33b667913ab41fca65c1",
+        "actual_insertion": "Unknown; static comparison only"
+      },
+      "potential_main2_dynamic_numeric_speed_conflicts": 0,
+      "actual_insertion": "Unknown; no trajectory generated"
+    }
+  ],
+  "main2_0805_other_numeric_speeds_mps": [
+    7.71,
+    7.73,
+    9.1,
+    9.14,
+    9.41,
+    9.75,
+    9.89,
+    9.92
+  ],
+  "i0007_0750": {
+    "id": "i0007_i0007",
+    "edge": "main_1",
+    "lane": "main_1_5",
+    "depart_s": 0.0,
+    "depart_speed": "15.23",
+    "start_lane_limit_mps": 27.78,
+    "remaining_start_edge_m": 0.12999999999999545,
+    "static_start_speed_exceeds_limit": false,
+    "potential_dynamic_pulse_speed_conflict": false,
+    "downstream_lane_limits_mps": {
+      "main_2": [
+        10.0
+      ]
+    }
+  },
+  "i0007_warning_still_unresolved": true,
+  "warning_source": "RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1/failure_review.json/native_errors",
+  "discarded_identity": "Unknown from existing total count alone",
+  "historical_discarded_total": 1,
+  "policy_options": [
+    {
+      "id": "DS38_0750_only",
+      "scope": "0750 38 initial vehicles; 0805 paused",
+      "status": "Proposed",
+      "dynamic_eligible": false
+    },
+    {
+      "id": "affected_start_edge",
+      "scope": "0750 38 /0805 52 on main_2; upstream anomalies remain",
+      "status": "Proposed_not_prepared",
+      "dynamic_eligible": false
+    },
+    {
+      "id": "broader_reconstruction",
+      "scope": "researcher-defined; all initial max not assumed",
+      "status": "Proposed_not_prepared",
+      "dynamic_eligible": false
+    }
+  ],
+  "new_formal_XML_written": false,
+  "Gate_changed": false
+}

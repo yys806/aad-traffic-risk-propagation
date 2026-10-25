@@ -1,0 +1,157 @@
+{
+  "status": "passed_software_and_selected_historical_measurement_checks_not_native_acceptance",
+  "task_id": "AAD-0.5-INTERACTION-RESEARCH-V2",
+  "git_base": "5899465f7c934c7544f04ef2ba290147e4999deb",
+  "validation_workspace": "code/tmp/v2_admission_engineering_validate_v1_20261025",
+  "main_workspace_pytest_runs": 0,
+  "environment": {
+    "platform": "Windows-11-10.0.26100-SP0",
+    "python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 16:37:03) [MSC v.1929 64 bit (AMD64)]",
+    "python_executable": "D:\\miniconda\\python.exe",
+    "package_metadata": {
+      "numpy": "2.3.2",
+      "pandas": "2.2.3",
+      "pytest": "8.4.1",
+      "psutil": "7.2.2"
+    },
+    "pyarrow_module_version": "25.0.1",
+    "pyarrow_distribution_metadata_version": null
+  },
+  "targeted": {
+    "path": "code/tmp/v2_admission_engineering_validate_v1_20261025/code/tmp/research_v2_validation/20261025T143320204375_27064/targeted_audit.json",
+    "sha256": "4171de863f7ee945a12f583d3047c709435dfcd880d574a086ff96fc481612de",
+    "exit_code": 0,
+    "audit_denied": 0,
+    "sumo_launches": 0,
+    "observed_child_processes": 7,
+    "command": "python -B code/scripts/validate_stage_0_5_v2_admission.py --source-workspace D:/shen/TJU/AAD",
+    "passed": 116,
+    "skipped": 1,
+    "deselected": 0,
+    "duration_s": 17.12
+  },
+  "full": {
+    "path": "code/tmp/v2_admission_engineering_validate_v1_20261025/code/tmp/research_v2_validation/20261025T143342858264_37600/full_audit.json",
+    "sha256": "740f8ba8ba0d1c156c7a1fcbca2d68ac50b06d486f4f6f8c6c91eeb3af798c4a",
+    "exit_code": 0,
+    "audit_denied": 0,
+    "sumo_launches": 0,
+    "observed_child_processes": 43,
+    "command": "python -B code/scripts/validate_stage_0_5_v2_admission.py --source-workspace D:/shen/TJU/AAD --full",
+    "passed": 1083,
+    "skipped": 15,
+    "deselected_simulation_tests": 7,
+    "warnings": 2,
+    "duration_s": 174.02
+  },
+  "new_synthetic_test_functions": [
+    "test_no_frames_cannot_establish_complete_accounting",
+    "test_identity_accounting_does_not_imply_exact_departure_clock",
+    "test_native_departure_and_FCD_observation_are_distinct",
+    "test_pending_is_a_direct_identity_snapshot_and_censored_at_stop",
+    "test_disappearance_without_arrival_is_unknown_even_with_equal_counts",
+    "test_teleport_roundtrip_and_explicit_discard_evidence",
+    "test_inconsistent_events_rejected_transactionally",
+    "test_duplicate_declaration_clock_FCD_and_terminal_reappearance",
+    "test_missing_event_APIs_degrade_without_zero_or_fabricated_state",
+    "test_read_only_collector_does_not_connect_or_start",
+    "test_static_DS_scope_preserves_noninitial_order_and_exact_bytes",
+    "test_forbidden_static_changes_fail",
+    "test_XML_path_escape_rejected",
+    "test_XML_external_entity_duplicate_ID_and_wrong_native_geometry",
+    "test_scope_exact_read_write_traversal_hash_drift_and_process",
+    "test_symlink_or_junction_guard_with_injected_filesystem_flag",
+    "test_real_symlink_escape_if_operating_system_permits",
+    "test_offline_output_namespace_does_not_accept_old_history",
+    "test_journal_hash_chain_and_partial_record_refused",
+    "test_FCD_sidecar_observation_and_partial_XML_preserve_known_rows",
+    "test_missing_approval_flags_refuse_before_process_or_attempt",
+    "test_native_build_lock_cannot_be_enabled_by_complete_fixture",
+    "test_unknown_or_untyped_gate_flag_is_not_approval",
+    "test_bound_drift_rejected_before_fake_start",
+    "test_replay_complete_identity_journal_artifacts_and_measurement",
+    "test_replay_failure_is_retained_and_censored",
+    "test_cleanup_error_cannot_hide_original_failure",
+    "test_additive_evidence_export_retains_historical_manifest",
+    "test_replay_resource_failure_retains_attempt_and_stops_fake",
+    "test_watchdog_only_calls_owned_stop_on_resource_violation",
+    "test_task_output_limit_is_per_capsule_not_historical_lifetime",
+    "test_C6_allowlist_rejects_third_window_path_and_duplicate_case",
+    "test_C6_reuse_cannot_extend_scope_and_case_ID_cannot_escape_output"
+  ],
+  "compileall": {
+    "command": "python -B -m compileall -q code/src code/scripts code/tests",
+    "exit_code": 0
+  },
+  "docs": {
+    "command": "python -B code/scripts/validate_project_docs.py --strict-git",
+    "exit_code": 0
+  },
+  "portable": {
+    "commands": [
+      "python -B code/scripts/export_project_evidence.py --repo-root . --verify",
+      "python -B code/scripts/export_stage_0_5_v2_admission_evidence.py --repo-root . --verify"
+    ],
+    "exit_code": 0
+  },
+  "skip_scope": {
+    "real_symlink": "Windows privilege unavailable; explicitly skipped; injected symlink/junction guard test passed",
+    "other_skips": "14 pre-existing skips: absent local/optional artifacts or separate -S capsule preflight; no real data copied",
+    "native_tests": "7 exact native SUMO tests deselected before execution"
+  },
+  "warnings": [
+    "pre-existing pandas incompatible lane_id dtype fixture",
+    "pre-existing pandas fillna future downcast in WP1 audit"
+  ],
+  "process_review": "Observed children are Git, Python help/synthetic CLI/artifact fixtures and resource failure workers; no SUMO/TraCI start. Parent audit is not native OS access certification.",
+  "history_preservation": {
+    "old_manifest_results": 56,
+    "DS_historical_bindings": 44,
+    "prior_V2_source_bindings": 10,
+    "core_scientific_source_changed": false,
+    "historical_ledgers_changed": false
+  },
+  "offline": {
+    "authorized_FCD_remeasured": 6,
+    "current_C6_reused": 2,
+    "independent_checks": 6,
+    "measurement_exit_code": 0,
+    "independent_exit_code": 0,
+    "initial_failed_measurements_retained": 6
+  },
+  "intermediate_records": [
+    "105 passed before additional cases",
+    "113 passed/1 skipped before final hardening",
+    "1082 passed/15 skipped/7 deselected: intermediate source, not final certification",
+    "initial prepare scope rejection preserved",
+    "measurements_v1 six pyarrow import failures preserved; old CLI returned0 despite failed items, final wrapper now exits1 on any case failure"
+  ],
+  "source_sha256": {
+    "code/scripts/stage_0_5_identity_observation.py": "e349ae70a622a378470a9c278d3ce9acf815fb0b108f4eeb65dbfdf0c5c0dd55",
+    "code/scripts/stage_0_5_input_fidelity.py": "de5b53079e02ad8221bb004318d74d294d2e32adeb1c00354a22b160dad1fcc6",
+    "code/scripts/stage_0_5_isolation_v2.py": "b10d5b91aaefe77cae0616ad08f4a0a9698fb150e16f167c792bdacf3b577e63",
+    "code/scripts/stage_0_5_execution_v2.py": "987ea1b9308299a24a44552b4733216f9f0f065233234eaf378252f9fbc7d87d",
+    "code/scripts/review_stage_0_5_c6_admission_v1.py": "8b08977096da70e9382597a4981b7cdd9c701c91c3bee97aa722f5a2b96a28b2",
+    "code/scripts/verify_stage_0_5_c6_admission_v1.py": "eac9bf46639450b2fa5ef440564f263611a90b480bd9925c6f18bedfc8c37c68",
+    "code/scripts/validate_stage_0_5_v2_admission.py": "d0fb7a9f9104a25a4c9ce90e67ec34d173cb087949141f23ff89355478b74273",
+    "code/scripts/prepare_stage_0_5_v2_admission_evidence.py": "536fb75bb95964e0c16b10272b230ffbef9aeeef75595396b0e14e5a9cfc98fc",
+    "code/scripts/export_stage_0_5_v2_admission_evidence.py": "fd662f32caea41a57f6c1fc67b447edf536b9ac03ee65081193356e67cebec92",
+    "code/tests/test_stage_0_5_v2_admission.py": "03fff165784e0ceffc0e0d2f53bba572742acf01b55e2e113a6b2277e564c25c",
+    "code/scripts/stage_0_5_research_ledger.py": "3ce76be53793a35e8380568a7d7cb2db103c5a354afab98597134c803d8feb2d",
+    "code/scripts/validate_stage_0_5_research_v2.py": "75f12630829ac5f13314c7b39c750988ad60689f407110c41129d6beb157a2bb",
+    "code/configs/stage_0_5_interaction_research_v2.json": "29a880cbb2a8acf71f34e092973ae92357d5f6056f809e74a1809fe50bcc72d8",
+    "code/src/riskprop/stage_0_5_state_support.py": "153f2672a01a17cc578b2d32ad49b8936239640cd065a0ed20bb8796f493c301",
+    "code/src/riskprop/stage_0_5_scene_reconstruction.py": "01ca2361ba1f5c53e626a830d5ef41c83dd6c68f5c756ce21e0c4084e5c3813a",
+    "code/src/riskprop/stage_0_5_d1_measurement.py": "affaf9984055b8673e6616310e4b0560f61b721747c33b47824f26172d36ad9c",
+    "code/src/riskprop/stage_0_5_sumo.py": "83f866f9647dc40e6f2012f759a3cad99d1e122b8933b2910afff594be7a797b"
+  },
+  "native_execution_tested": false,
+  "native_processes_created": 0,
+  "new_trajectories": 0,
+  "current_new_task_attempts": 0,
+  "accepted_for_new_task": false,
+  "historical_incident_status": "Not Accepted",
+  "Gate_changed": false,
+  "postcommit_record": "code/outputs/formal/calibration/stage_0_5_v2_admission_engineering_v1/postcommit_verification.json",
+  "workspace_observation": "One elevated git status warned about existing code/code/tmp/policy_a_boundary_pytest_cache access. Metadata only checked; no contents read or permissions/files changed. Subsequent normal git status --porcelain --untracked-files=all completed without warning. Independent validation clone unaffected."
+}

@@ -1,0 +1,379 @@
+{
+  "schema": "aad.c6-history-allowlist.v1",
+  "new_trajectory_attempts": 0,
+  "cases": [
+    {
+      "id": "structural_us101__0750_0805_L4_s20261201",
+      "kind": "structural",
+      "window": "us101__0750_0805",
+      "arm": null,
+      "seed": 20261201,
+      "origin_result_id": "RES-STAGE-0.5-STATE-SUPPORT-V1",
+      "purpose": "Re-evaluate historical lane-drop P2 under physical same-lane support",
+      "files": {
+        "fcd": {
+          "path": "code/outputs/formal/calibration/stage_0_5_state_support_v1/structural/B_het_us101__0750_0805_lane_drop_4lane/fcd.xml",
+          "sha256": "b7d94931c15e26ba85e106c46cd2c8005717e83fe35c6b274443ac7f3f022d3f",
+          "bytes": 75639656
+        },
+        "routes": {
+          "path": "code/outputs/formal/calibration/stage_0_5_state_support_v1/structural/B_het_us101__0750_0805_lane_drop_4lane/routes.rou.xml",
+          "sha256": "141559ca4922de188df9885913a62fee5cdba0736984e61eca44d78cd2354209",
+          "bytes": 153598
+        },
+        "network": {
+          "path": "code/outputs/formal/calibration/stage_0_5_state_support_v1/structural/B_het_us101__0750_0805_lane_drop_4lane/network/observed_geometry_supply_27p78_l4.net.xml",
+          "sha256": "e86892771d4d8ce113cb56fd3135b50dd1a94fbcf58df90734683fcca9777f62",
+          "bytes": 9403
+        },
+        "config": {
+          "path": "code/outputs/formal/calibration/stage_0_5_state_support_v1/structural/B_het_us101__0750_0805_lane_drop_4lane/run.sumocfg",
+          "sha256": "dd8e7b170372791bf42737db0396f9db0fdcd7a9332d8584426eaf49a17007a9",
+          "bytes": 513
+        },
+        "old_measurements": {
+          "path": "code/outputs/formal/calibration/stage_0_5_state_support_v1/structural/B_het_us101__0750_0805_lane_drop_4lane/measured_state.parquet",
+          "sha256": "3a44f00b2e86fee7cefc4b205ef15cb10697ebac71efa0d44842764b1b4c7335",
+          "bytes": 13394271
+        }
+      },
+      "current_C6_result_exists": false,
+      "action": "remeasure",
+      "historical_integrity": "first current-task SHA capture; pre-capture unchanged status Unknown",
+      "frozen_evaluation_window_s": [
+        300,
+        420
+      ],
+      "existing_candidate_diagnostic_window_s": [
+        120,
+        390
+      ],
+      "published_legacy": {
+        "N": 33,
+        "rate": 18.177923309973377,
+        "point_exposure_s": 6535.400000000001
+      }
+    },
+    {
+      "id": "structural_us101__0805_0820_L4_s20261201",
+      "kind": "structural",
+      "window": "us101__0805_0820",
+      "arm": null,
+      "seed": 20261201,
+      "origin_result_id": "RES-STAGE-0.5-STATE-SUPPORT-V1",
+      "purpose": "Re-evaluate historical lane-drop P2 under physical same-lane support",
+      "files": {
+        "fcd": {
+          "path": "code/outputs/formal/calibration/stage_0_5_state_support_v1/structural/B_het_us101__0805_0820_lane_drop_4lane/fcd.xml",
+          "sha256": "3c277dd1c6af9b2d92faf38229ae8c8e1ddb71511c821a007ac2429560f7f765",
+          "bytes": 78305766
+        },
+        "routes": {
+          "path": "code/outputs/formal/calibration/stage_0_5_state_support_v1/structural/B_het_us101__0805_0820_lane_drop_4lane/routes.rou.xml",
+          "sha256": "283b43d4d304d99c7e6f31018914b0a26a267c4e79ea812442fd01abfde4b562",
+          "bytes": 138437
+        },
+        "network": {
+          "path": "code/outputs/formal/calibration/stage_0_5_state_support_v1/structural/B_het_us101__0805_0820_lane_drop_4lane/network/observed_geometry_supply_27p78_l4.net.xml",
+          "sha256": "a4981aec3d0e25455d2e732ec1ec74b9f9ce386f92e8120756a4cd1d4886c10f",
+          "bytes": 9403
+        },
+        "config": {
+          "path": "code/outputs/formal/calibration/stage_0_5_state_support_v1/structural/B_het_us101__0805_0820_lane_drop_4lane/run.sumocfg",
+          "sha256": "dd8e7b170372791bf42737db0396f9db0fdcd7a9332d8584426eaf49a17007a9",
+          "bytes": 513
+        },
+        "old_measurements": {
+          "path": "code/outputs/formal/calibration/stage_0_5_state_support_v1/structural/B_het_us101__0805_0820_lane_drop_4lane/measured_state.parquet",
+          "sha256": "96fdb765ce0292c218bc90b0fb7f0f0213f379b987f4e52c86a9f211259ca8ca",
+          "bytes": 13724864
+        }
+      },
+      "current_C6_result_exists": false,
+      "action": "remeasure",
+      "historical_integrity": "first current-task SHA capture; pre-capture unchanged status Unknown",
+      "frozen_evaluation_window_s": [
+        300,
+        420
+      ],
+      "existing_candidate_diagnostic_window_s": [
+        120,
+        390
+      ],
+      "published_legacy": {
+        "N": 32,
+        "rate": 18.75824336866787,
+        "point_exposure_s": 6141.3
+      }
+    },
+    {
+      "id": "timing_us101__0750_0805_U_s20261201",
+      "kind": "timing",
+      "window": "us101__0750_0805",
+      "arm": "U",
+      "seed": 20261201,
+      "origin_result_id": "RES-STAGE-0.5-ARRIVAL-TIMING-V1",
+      "purpose": "Re-evaluate the existing paired arrival experiment, not a new timing experiment",
+      "files": {
+        "fcd": {
+          "path": "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0750_0805_U_s20261201/fcd.xml",
+          "sha256": "7428a2dc57cbe91693c9c728b06543c5342624b4f30d8c5f4f23292895e8769a",
+          "bytes": 95254658
+        },
+        "routes": {
+          "path": "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0750_0805_U_s20261201/routes.rou.xml",
+          "sha256": "05fc40be532425f90c58e9bdbae4762faa314fa931815bc5a4c1d09601cbfcbd",
+          "bytes": 164296
+        },
+        "network": {
+          "path": "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0750_0805_U_s20261201/network/observed_geometry_supply_10p0_l5.net.xml",
+          "sha256": "d38d442ebc0b8d412f28f9fac49e6cfc1933404606ccb7dec2b116d11bf1ac83",
+          "bytes": 9872
+        },
+        "config": {
+          "path": "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0750_0805_U_s20261201/run.sumocfg",
+          "sha256": "3bc19743a449153e8d778b66b80fa7159d8cd75a8667408b0bce47fc802b1e55",
+          "bytes": 512
+        },
+        "old_measurements": {
+          "path": "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0750_0805_U_s20261201/measured_state.parquet",
+          "sha256": "a01ac55b30d5829e1f987ba70f30b78f6165cfab7bdfd26e6d60053af999e28b",
+          "bytes": 16922298
+        }
+      },
+      "current_C6_result_exists": false,
+      "action": "remeasure",
+      "historical_integrity": "first current-task SHA capture; pre-capture unchanged status Unknown",
+      "frozen_evaluation_window_s": [
+        300,
+        420
+      ],
+      "existing_candidate_diagnostic_window_s": [
+        120,
+        390
+      ],
+      "published_legacy": {
+        "N": 1,
+        "rate": 0.629458665547629,
+        "point_exposure_s": 5719.200000000001
+      }
+    },
+    {
+      "id": "timing_us101__0750_0805_E_s20261201",
+      "kind": "timing",
+      "window": "us101__0750_0805",
+      "arm": "E",
+      "seed": 20261201,
+      "origin_result_id": "RES-STAGE-0.5-ARRIVAL-TIMING-V1",
+      "purpose": "Re-evaluate the existing paired arrival experiment, not a new timing experiment",
+      "files": {
+        "fcd": {
+          "path": "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0750_0805_E_s20261201/fcd.xml",
+          "sha256": "42c201310d7930788cf451e4035085090d2e2fb680ed4c5c1176d113f443792d",
+          "bytes": 95905960
+        },
+        "routes": {
+          "path": "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0750_0805_E_s20261201/routes.rou.xml",
+          "sha256": "b084b82e52207e64548de8d5fb426f1bb0d0a953b728fb1fa7685053e09b013d",
+          "bytes": 164280
+        },
+        "network": {
+          "path": "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0750_0805_E_s20261201/network/observed_geometry_supply_10p0_l5.net.xml",
+          "sha256": "12edd784ac75f5cbf52b6f5e6057c141c78b6dfdc72209b5b2f8e9d81fcbd435",
+          "bytes": 9872
+        },
+        "config": {
+          "path": "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0750_0805_E_s20261201/run.sumocfg",
+          "sha256": "3bc19743a449153e8d778b66b80fa7159d8cd75a8667408b0bce47fc802b1e55",
+          "bytes": 512
+        },
+        "old_measurements": {
+          "path": "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0750_0805_E_s20261201/measured_state.parquet",
+          "sha256": "15600262930ada402dfad34edb7446be47e3325209a33022096e1ccf0892882e",
+          "bytes": 17085304
+        }
+      },
+      "current_C6_result_exists": false,
+      "action": "remeasure",
+      "historical_integrity": "first current-task SHA capture; pre-capture unchanged status Unknown",
+      "frozen_evaluation_window_s": [
+        300,
+        420
+      ],
+      "existing_candidate_diagnostic_window_s": [
+        120,
+        390
+      ],
+      "published_legacy": {
+        "N": 2,
+        "rate": 1.2987012987012987,
+        "point_exposure_s": 5544.0
+      }
+    },
+    {
+      "id": "timing_us101__0805_0820_U_s20261201",
+      "kind": "timing",
+      "window": "us101__0805_0820",
+      "arm": "U",
+      "seed": 20261201,
+      "origin_result_id": "RES-STAGE-0.5-ARRIVAL-TIMING-V1",
+      "purpose": "Re-evaluate the existing paired arrival experiment, not a new timing experiment",
+      "files": {
+        "fcd": {
+          "path": "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0805_0820_U_s20261201/fcd.xml",
+          "sha256": "0d0b2e0b1aeb91bd7ec73c2508981cf3991deed1537657ba09bc2903f972da94",
+          "bytes": 90909627
+        },
+        "routes": {
+          "path": "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0805_0820_U_s20261201/routes.rou.xml",
+          "sha256": "c4107531f861ce84d3f46f7e373e02eca270004eede06e24027c8938ba732d29",
+          "bytes": 151450
+        },
+        "network": {
+          "path": "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0805_0820_U_s20261201/network/observed_geometry_supply_10p0_l5.net.xml",
+          "sha256": "b2e0e334531faaa6ae2c405391334c158fe4fb6d7d9d7388662728c104c6236f",
+          "bytes": 9872
+        },
+        "config": {
+          "path": "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0805_0820_U_s20261201/run.sumocfg",
+          "sha256": "3bc19743a449153e8d778b66b80fa7159d8cd75a8667408b0bce47fc802b1e55",
+          "bytes": 512
+        },
+        "old_measurements": {
+          "path": "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0805_0820_U_s20261201/measured_state.parquet",
+          "sha256": "cd85f4f7f2b18a6606df1fadcc45de1d7032192b489eb1c7694cd209da0f2069",
+          "bytes": 16494891
+        }
+      },
+      "current_C6_result_exists": false,
+      "action": "remeasure",
+      "historical_integrity": "first current-task SHA capture; pre-capture unchanged status Unknown",
+      "frozen_evaluation_window_s": [
+        300,
+        420
+      ],
+      "existing_candidate_diagnostic_window_s": [
+        120,
+        390
+      ],
+      "published_legacy": {
+        "N": 1,
+        "rate": 0.6266536694053753,
+        "point_exposure_s": 5744.8
+      }
+    },
+    {
+      "id": "timing_us101__0805_0820_E_s20261201",
+      "kind": "timing",
+      "window": "us101__0805_0820",
+      "arm": "E",
+      "seed": 20261201,
+      "origin_result_id": "RES-STAGE-0.5-ARRIVAL-TIMING-V1",
+      "purpose": "Re-evaluate the existing paired arrival experiment, not a new timing experiment",
+      "files": {
+        "fcd": {
+          "path": "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0805_0820_E_s20261201/fcd.xml",
+          "sha256": "530036a82848df5036f1830d1e11909865d563bd5a693eed91787ed2378c9c14",
+          "bytes": 86131111
+        },
+        "routes": {
+          "path": "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0805_0820_E_s20261201/routes.rou.xml",
+          "sha256": "b74f4a3a96f2c0afb129487738792dd5d3cc0cf1d7c0920958fab3f88f21b031",
+          "bytes": 151419
+        },
+        "network": {
+          "path": "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0805_0820_E_s20261201/network/observed_geometry_supply_10p0_l5.net.xml",
+          "sha256": "3f87bc5c88ddde507514e7c927957358fdde8cfcaefc083df993e0d91f85e579",
+          "bytes": 9872
+        },
+        "config": {
+          "path": "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0805_0820_E_s20261201/run.sumocfg",
+          "sha256": "3bc19743a449153e8d778b66b80fa7159d8cd75a8667408b0bce47fc802b1e55",
+          "bytes": 512
+        },
+        "old_measurements": {
+          "path": "code/outputs/formal/calibration/stage_0_5_boundary_timing_v1/runs/us101__0805_0820_E_s20261201/measured_state.parquet",
+          "sha256": "b25aae87158cca6b9a871ec788fb8b12c92f2c90ce1f7bca26a06878f19280e5",
+          "bytes": 15924704
+        }
+      },
+      "current_C6_result_exists": false,
+      "action": "remeasure",
+      "historical_integrity": "first current-task SHA capture; pre-capture unchanged status Unknown",
+      "frozen_evaluation_window_s": [
+        300,
+        420
+      ],
+      "existing_candidate_diagnostic_window_s": [
+        120,
+        390
+      ],
+      "published_legacy": {
+        "N": 2,
+        "rate": 1.4544573056178411,
+        "point_exposure_s": 4950.3
+      }
+    }
+  ],
+  "reuses": [
+    {
+      "window": "us101__0750_0805",
+      "seed": 20261201,
+      "action": "reuse_current_C6_no_remeasurement",
+      "origin_result_id": "RES-STAGE-0.5-C6-C7-OFFLINE-V1",
+      "files": {
+        "repaired_measured_state.parquet": {
+          "path": "code/outputs/formal/calibration/stage_0_5_c6_c7_offline_v1/us101__0750_0805/repaired_measured_state.parquet",
+          "sha256": "fb4926293b50c0508eff2412ac05cf8fe419becbcd311680ff84940c1c063656"
+        },
+        "after_events.json": {
+          "path": "code/outputs/formal/calibration/stage_0_5_c6_c7_offline_v1/us101__0750_0805/after_events.json",
+          "sha256": "8896f32f68db03953674177427588100d2c976bd4abcb4e1c751aeee5efd430b"
+        }
+      },
+      "original_FCD": {
+        "path": "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_het_us101__0750_0805_vlim10.00_s20261201/fcd.xml",
+        "sha256": "247b30d2772007c856daa21622c7b7022ffa96989f0dc15c5852d54aad8b0e99",
+        "opened_again": false
+      },
+      "purpose": "Existing current-interface matched historical reference"
+    },
+    {
+      "window": "us101__0805_0820",
+      "seed": 20261201,
+      "action": "reuse_current_C6_no_remeasurement",
+      "origin_result_id": "RES-STAGE-0.5-C6-C7-OFFLINE-V1",
+      "files": {
+        "repaired_measured_state.parquet": {
+          "path": "code/outputs/formal/calibration/stage_0_5_c6_c7_offline_v1/us101__0805_0820/repaired_measured_state.parquet",
+          "sha256": "3db3f80bcdf357f67340f14decb943f27aa0b75cbc0adba3d2e9479350062ba1"
+        },
+        "after_events.json": {
+          "path": "code/outputs/formal/calibration/stage_0_5_c6_c7_offline_v1/us101__0805_0820/after_events.json",
+          "sha256": "5109d28048996548410852528e2d164448bb924dcc45fc29abe42dd288bda9a7"
+        }
+      },
+      "original_FCD": {
+        "path": "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_het_us101__0805_0820_vlim10.00_s20261201/fcd.xml",
+        "sha256": "b832275b153a8fe8a66723796afa87b24fdbe6ef9b3189a8dc6e9286dbcb04a4",
+        "opened_again": false
+      },
+      "purpose": "Existing current-interface matched historical reference"
+    }
+  ],
+  "skipped": [],
+  "core_sha256": {
+    "code/src/riskprop/stage_0_5_state_support.py": "153f2672a01a17cc578b2d32ad49b8936239640cd065a0ed20bb8796f493c301",
+    "code/src/riskprop/stage_0_5_scene_reconstruction.py": "01ca2361ba1f5c53e626a830d5ef41c83dd6c68f5c756ce21e0c4084e5c3813a",
+    "code/src/riskprop/stage_0_5_d1_measurement.py": "affaf9984055b8673e6616310e4b0560f61b721747c33b47824f26172d36ad9c",
+    "code/src/riskprop/stage_0_5_sumo.py": "83f866f9647dc40e6f2012f759a3cad99d1e122b8933b2910afff594be7a797b"
+  },
+  "origin_core_sha256": {
+    "code/src/riskprop/stage_0_5_state_support.py": "153f2672a01a17cc578b2d32ad49b8936239640cd065a0ed20bb8796f493c301",
+    "code/src/riskprop/stage_0_5_scene_reconstruction.py": "01ca2361ba1f5c53e626a830d5ef41c83dd6c68f5c756ce21e0c4084e5c3813a",
+    "code/src/riskprop/stage_0_5_d1_measurement.py": "affaf9984055b8673e6616310e4b0560f61b721747c33b47824f26172d36ad9c",
+    "code/src/riskprop/stage_0_5_sumo.py": "83f866f9647dc40e6f2012f759a3cad99d1e122b8933b2910afff594be7a797b"
+  },
+  "scientific_windows_unchanged": true,
+  "source_access": "two approved calibration conditions only; no raw real/third-window/holdout"
+}

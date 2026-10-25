@@ -1,5 +1,11 @@
 # AAD Known Issues
 
+## 2026-10-25 V2剩余准入阻断（最新）
+
+身份/适配器/守卫已实现但仅合成验证；原生OS访问、实际插入/丢弃身份、精确插入速度、实际匝道到达及18单元仍Unknown。Python audit不覆盖所有native访问或恶意并发路径替换；真实symlink测试当前权限下skip，模拟越界已测。i0007警告未解决；0805 main_2为52潜在冲突而非仅44。六份历史重测不构成同初始化基线，也不证明零风险。POLICY-A-VALIDATION-SCOPE-01仍Not Accepted；未证明保真/隔离的adapter测量验收保守false，后续原生分支需单独审查和授权，不能只翻标志。
+
+依据：`docs/STAGE_0_5_V2_ADMISSION_ENGINEERING_2026-10-25.md`；`docs/STAGE_0_5_V2_ADMISSION_VALIDATION.md`。下方保留历史时点。
+
 ## 2026-10-25 V2当前阻断
 
 交互相容未解决；历史结构/时序P2未整体经C6重测。0750 DS38实际插入未验证、i0007警告保留；0805 main2共52辆而44辆为10，另8辆7.71–9.92>5。旧worker只保存depart/pending数量，不能完成逐车契约；新预算API无launch，执行适配器待完成。旧隔离事故Not Accepted；纯Git软件审计不能证明原生实验隔离，新完整批次阻断。预算不再是V2阻断。
