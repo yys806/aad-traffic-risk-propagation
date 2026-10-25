@@ -1,5 +1,23 @@
 # AAD 项目信息结构变更记录
 
+## 2026-10-25 政策A首次运行与停止归档
+
+精确批准方案不变；增加任务文件白名单、只读哈希和按次预算。首次SUMO在180s输入冲突失败，停止余下两次；保留历史和隔离偏差，软件验证不作科学通过。
+
+依据：`docs/STAGE_0_5_INTERACTION_DIAGNOSTICS_POLICY_A_EXECUTION_2026-10-25.md`；`evidence/results/RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1/`。以下旧状态保留为历史时点。
+
+## 2026-10-25 POLICY-A-VALIDATION-SCOPE-01（当前执行阻断）
+
+补充全量回归误在主工作区运行，13项本地历史/原始数据测试变为可执行。998 passed的该次记录不计为有效隔离验证；任务级零验证资源访问不可认证、数据隔离不Accepted，Status: Awaiting Researcher Decision。源码审计详见 `docs/STAGE_0_5_POLICY_A_VALIDATION.md` 与便携 `validation_scope_incident.json`，不重读相关数据。先前独立纯Git回归985 passed保留其有限效力；最终源码在无数据Git克隆另获987 passed / 14 skipped / 7 deselected，定向9项及compileall通过，仍不能逆转隔离偏差。政策A仍Agreed；最终计划Proposed，新轨迹0/3，Gate不变。工程准备不能代替研究者对偏差及运行资格的裁决；未决前不按有效完成任务提交/推送。
+
+
+## 2026-10-25 政策A与最终计划预检
+
+2026-10-25：政策A决定、真实共同支持复核、三份输入准备和源码/工具绑定、资源监督合成测试；未运行SUMO。
+
+依据：`docs/plans/2026-10-25-stage-0-5-interaction-diagnostics-policy-a-final.md`；`evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/`。
+
+
 ## 2026-10-25 C6/C7 offline phase
 
 2026-10-25：C6物理测量修复与C7离线决策材料，0次新轨迹；历史结果保留，Gate不变。

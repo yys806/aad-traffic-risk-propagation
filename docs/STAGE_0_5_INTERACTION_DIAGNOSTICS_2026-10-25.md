@@ -1,5 +1,7 @@
 # Stage 0.5 interaction diagnostics：执行前阻断报告
 
+> 2026-10-25 最新执行：研究者已确认政策A最终计划并裁决隔离偏差允许有限继续。精确绑定与任务白名单后，ID1在180s因待插入初态的声明出发速度与5m/s供给限速冲突失败；累计1/3，ID2/ID3按停止规则未执行。当前报告见 `docs/STAGE_0_5_INTERACTION_DIAGNOSTICS_POLICY_A_EXECUTION_2026-10-25.md`，证据 `evidence/results/RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1/`。隔离Not Accepted保留，Gate不变；以下是历史阻断时点，不代表当前权限或预算。
+
 > 后续授权与当前状态：C6已获批进行离线修复；当前决策材料见 `docs/STAGE_0_5_C6_C7_OFFLINE_DECISION_2026-10-25.md`。C7政策和对应时序未确认，禁止新轨迹。本文件以下保留原草案/阻断时点，不作为当前运行授权。
 
 

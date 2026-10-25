@@ -1,5 +1,18 @@
 # AAD Module Map
 
+## 2026-10-25 政策A隔离与核验入口
+
+新增code/scripts/interaction_task_boundary.py、run_stage_0_5_policy_a_confirmed.py、review_stage_0_5_interaction_failure.py、verify_stage_0_5_interaction_stop.py；测试test_interaction_task_boundary.py、test_project_evidence_scope.py。export_project_evidence.py支持--result-id避免读取无关历史源。
+
+依据：`docs/STAGE_0_5_INTERACTION_DIAGNOSTICS_POLICY_A_EXECUTION_2026-10-25.md`；`evidence/results/RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1/`。以下旧状态保留为历史时点。
+
+## 2026-10-25 政策A与最终计划预检
+
+prepare_stage_0_5_policy_a.py：无仿真的支持/配置预检；verify_stage_0_5_policy_a.py：便携/源码及可选本机绑定核验；supervise_stage_0_5_diagnostic.py：默认暂停的预算/资源监督API，不自动运行或确认方案。
+
+依据：`docs/plans/2026-10-25-stage-0-5-interaction-diagnostics-policy-a-final.md`；`evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/`。
+
+
 ## 2026-10-25 C6/C7 offline phase
 
 新增stage_0_5_d1_measurement.py（连续边与offset100）；review_stage_0_5_c6_c7_offline.py（零轨迹离线对照）；verify_stage_0_5_c6_c7_offline.py（独立物理/事件成员核验）。interaction_diagnostic_worker.py是未冻结运行草案，当前禁止运行。

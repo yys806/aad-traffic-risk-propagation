@@ -1,0 +1,93 @@
+{
+  "id": "POLICY-A-VALIDATION-SCOPE-01",
+  "status": "Awaiting Researcher Decision",
+  "Documented Intent": "Full software regression only in a pure Git clone with no local historical/sealed resources; zero new trajectory generation.",
+  "Actual Implementation": "An additional regression ran in the main code directory with seven trajectory tests deselected but local-data tests enabled. Ctrl-C was sent after discovery; the process had already completed.",
+  "Evidence": {
+    "cwd": "D:/shen/TJU/AAD/code",
+    "basetemp": "tmp/policy_a_full_final",
+    "tool_session_id": 4877,
+    "reported_exit_code": 0,
+    "passed": 998,
+    "skipped": 1,
+    "deselected": 7,
+    "warnings": 2,
+    "wall_s": 150.83,
+    "runtime_file_access_audit": "not installed; exact complete access set Unverified",
+    "source_only_affected_test_groups": [
+      {
+        "source": "code/tests/test_stage_0_2_task_2_5_threshold_validation.py",
+        "source_sha256": "59f37241eb758298e2199894012b122cf28ff662840341cddb0efccd755bcfc2",
+        "test_ids": [
+          "test_grid_has_complete_6x4_and_baseline",
+          "test_duration_monotonicity_is_explicitly_observed",
+          "test_confirmation_is_causal_and_delayed",
+          "test_sampling_sensitivity_does_not_interpolate",
+          "test_case_pool_preserves_lankershim_row_31245",
+          "test_audit_keeps_scientific_rule_unfrozen"
+        ]
+      },
+      {
+        "source": "code/tests/test_stage_0_2_task_2_5_2_key_difference_cases.py",
+        "source_sha256": "1034ff3de27da68c2154b54605e05942e35e0022d73671a20a96051e089f2d67",
+        "test_ids": [
+          "test_center_event_and_nearby_are_distinct",
+          "test_difference_pools_are_present",
+          "test_new_casebook_pages_and_unverified_truth",
+          "test_all_confirmation_times_are_observed_member_times"
+        ]
+      },
+      {
+        "source": "code/tests/test_stage_0_2_task_2_5_1_targeted_validation.py",
+        "source_sha256": "d5d1bf1e932a9ae95f348a727482d0fc3082be572b279e17405c91f5c4a9afdd",
+        "test_ids": [
+          "test_new_casebook_has_24_pages_and_metrics_match_locked_counts"
+        ]
+      },
+      {
+        "source": "code/tests/test_simulation_real_coverage.py",
+        "source_sha256": "09fe93c427cc5cfaa4f683f0a55a4ede3ced6ff5aa59e07521a8cf3d03adaceb",
+        "test_ids": [
+          "test_sealed_stage_0_3_canonical_parquet_directly_reaches_writer"
+        ]
+      },
+      {
+        "source": "code/tests/test_see_v2x_reaudit.py",
+        "source_sha256": "e3fb814e787f0d41c0a0b4150ee9860ca63775dbc89e248e799542d9324f02dc",
+        "test_ids": [
+          "test_pairing_identity_unique_in_raw"
+        ]
+      }
+    ]
+  },
+  "Conflict": "Local historical/sealed artifacts and a raw SEE-V2X sample were reachable and read by tests outside this task access scope. This regression is invalid as task-isolated validation; whole-task zero validation-resource access cannot be certified.",
+  "Affected Files": [
+    "code/tests/test_stage_0_2_task_2_5_threshold_validation.py",
+    "code/tests/test_stage_0_2_task_2_5_2_key_difference_cases.py",
+    "code/tests/test_stage_0_2_task_2_5_1_targeted_validation.py",
+    "code/tests/test_simulation_real_coverage.py",
+    "code/tests/test_see_v2x_reaudit.py"
+  ],
+  "source_declared_read_targets": [
+    "code/outputs/formal/calibration/stage_0_2_task_2_5_20261011_r1/{threshold_duration_grid.csv,event_characteristics.parquet,temporal_sampling_sensitivity.csv,selected_review_cases.csv,audit.json}",
+    "code/outputs/formal/calibration/stage_0_2_task_2_5_1_20261011_r2/{case_analysis_24.csv,casebook_24.pdf,candidate_rule_metrics.csv}",
+    "code/outputs/formal/calibration/stage_0_2_task_2_5_2_20261011_r1/{key_difference_cases.csv,key_difference_casebook.pdf}",
+    "code/outputs/formal/calibration/stage_0_3_pneuma_boundary_repair_20261016_r2/stage_0_5_reference_states.parquet",
+    "dataset/.tmp_downloads/parkinglot_extracted/outdoor_parkinglot/1_tx/*/tx_t1.csv"
+  ],
+  "audit_method": "Read test source and skip predicates only; no re-execution or inspection of historical/sealed contents. Thirteen additional passes match 14->1 skipped delta; source-based attribution, not a runtime file trace.",
+  "derived_outputs": "Test temporary products remain under code/tmp/policy_a_full_final; not promoted into scientific results or portable evidence. Historical artifact byte-level immutability is not independently certified by this audit.",
+  "new_trajectory_attempts": 0,
+  "SUMO_assessment": "Seven known generating tests deselected; no trajectory launch observed in tool output. No root-run subprocess audit, so do not extend earlier clone launch-guard coverage to this run.",
+  "valid_separate_regression": {
+    "workspace": "code/tmp/policy_a_git_validation",
+    "passed": 985,
+    "skipped": 14,
+    "deselected": 7,
+    "warnings": 2,
+    "SUMO_launch_guard_blocked": []
+  },
+  "containment": "No further full regression in main workspace. No threshold, window, seed, Gate or scientific conclusion changed using accidental access. Preserve incident and all temporary products. Future software regression in data-free Git clones only.",
+  "decision_needed": "Researcher assessment of validation-scope deviation and eligibility to resume/freeze the exploratory execution plan. Engineering preparation does not certify task isolation accepted.",
+  "task_data_isolation_accepted": false
+}

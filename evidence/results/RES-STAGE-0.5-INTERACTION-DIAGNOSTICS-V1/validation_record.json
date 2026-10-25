@@ -1,0 +1,41 @@
+{
+  "prior_full_regression": {
+    "passed": 987,
+    "skipped": 14,
+    "deselected": 7,
+    "scope": "Existing no-data Git clone; not actual runtime isolation proof"
+  },
+  "invalid_main_workspace_regression": {
+    "passed": 998,
+    "isolation_valid": false,
+    "incident": "POLICY-A-VALIDATION-SCOPE-01"
+  },
+  "new_targeted_tests": {
+    "passed": 43,
+    "failed": 0,
+    "command": "python -m pytest code/tests/test_interaction_task_boundary.py code/tests/test_project_evidence_scope.py code/tests/test_stage_0_5_policy_a_preflight.py code/tests/test_stage_0_5_d1_measurement.py code/tests/test_project_docs.py -q --basetemp=code/tmp/policy_a_stop_targeted_v1 -p no:cacheprovider"
+  },
+  "compileall": "passed code/src code/scripts code/tests",
+  "import_only_preflight": "passed after narrowly permitting package parent directory enumeration; no SUMO launch",
+  "failed_prechecks": [
+    "restricted pytest temp permissions (twice)",
+    "pyarrow unavailable only in restricted sandbox",
+    "initial tool parent directory enumeration blocked",
+    "UTF8 approval decode failed before reserve/launch"
+  ],
+  "offline_v2": "passed; no Python allowlist denials",
+  "full_regression_rerun": false,
+  "scientific_comparison": "failed_stop, incomplete",
+  "portable_and_clean_clone": {
+    "precommit_no_data_Git_clone": "passed; strict docs, all portable evidence, exact source/plan bindings,43 targeted tests and compileall",
+    "clone_path": "code/tmp/policy_a_stop_git_review_v1",
+    "postcommit_clean_clone": "Required after commit; reported separately in final response"
+  },
+  "Gate_changed": false,
+  "verification_failures_retained": [
+    "early verification invoked before asynchronous clone completed; no tests ran",
+    "git apply working-copy CRLF materialization mismatched4 artifacts and10 bound files; index byte hashes were correct; exact filtered index materialization fixed before successful checks"
+  ],
+  "main_strict_docs": "PROJECT_DOCS_OK",
+  "task_local_hashes": "verified including raw FCD/summary/measurement audits"
+}

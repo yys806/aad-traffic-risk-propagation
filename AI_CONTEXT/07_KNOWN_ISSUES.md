@@ -1,5 +1,23 @@
 # AAD Known Issues
 
+## 2026-10-25 供给脉冲与待插入初态冲突（新阻断）
+
+Documented Intent：原routes不变、180s将main_2降至5m/s。Actual Implementation：i0063_i0063声明depart=0/speed10，直到180仍未出现在FCD；降速后SUMO报出发速度过高并退出。Evidence：新结果failure_review.json、原生日志/SHA。Affected Files：冻结输入/输入政策及三次对照。Conflict：完整输入不能实现，18单元不可用。Status: Awaiting Researcher Decision；停止余2次，不自动改departSpeed/初始化/窗口。原隔离偏差仍Not Accepted。
+
+依据：`docs/STAGE_0_5_INTERACTION_DIAGNOSTICS_POLICY_A_EXECUTION_2026-10-25.md`；`evidence/results/RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1/`。以下旧状态保留为历史时点。
+
+## 2026-10-25 POLICY-A-VALIDATION-SCOPE-01（当前执行阻断）
+
+补充全量回归误在主工作区运行，13项本地历史/原始数据测试变为可执行。998 passed的该次记录不计为有效隔离验证；任务级零验证资源访问不可认证、数据隔离不Accepted，Status: Awaiting Researcher Decision。源码审计详见 `docs/STAGE_0_5_POLICY_A_VALIDATION.md` 与便携 `validation_scope_incident.json`，不重读相关数据。先前独立纯Git回归985 passed保留其有限效力；最终源码在无数据Git克隆另获987 passed / 14 skipped / 7 deselected，定向9项及compileall通过，仍不能逆转隔离偏差。政策A仍Agreed；最终计划Proposed，新轨迹0/3，Gate不变。工程准备不能代替研究者对偏差及运行资格的裁决；未决前不按有效完成任务提交/推送。
+
+
+## 2026-10-25 政策A与最终计划预检
+
+C7选择已Resolved为任务级A；全面正式初始化/验收未冻结。两侧18/18共同观察单元不证明物理可观测性或状态分布等价。C6跨路段/连接段降级保留。新运行的实际输入/支持/初始化与资源性能仍Unverified，必须逐次核验后才能放行下一次。
+
+依据：`docs/plans/2026-10-25-stage-0-5-interaction-diagnostics-policy-a-final.md`；`evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/`。
+
+
 ## 2026-10-25 C6/C7 offline phase
 
 C6在新版本同原生车道可观测支持上修复并独立核验；跨路段/连接段物理关系仍不可重建，旧结果未升级。C7不是基线自动作废：A保留[120,390)显式披露残留；B候选[180,390)减少支持并重排脉冲。政策和草案均Awaiting Researcher Decision；原窗P2已见。

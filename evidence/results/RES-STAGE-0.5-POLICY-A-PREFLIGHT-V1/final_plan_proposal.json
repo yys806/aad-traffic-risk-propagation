@@ -1,0 +1,177 @@
+{
+  "task_id": "AAD-0.5-INTERACTION-DIAGNOSTICS-V1",
+  "policy": "A",
+  "status": "Proposed / Awaiting Researcher Confirmation",
+  "protocol_frozen": false,
+  "execution_allowed": false,
+  "attempts": 0,
+  "runs": [
+    {
+      "id": "ID1_SUPPLY_0750",
+      "window": "us101__0750_0805",
+      "role": "supply",
+      "evaluation_elapsed_s": [
+        120,
+        390
+      ],
+      "supply_pulse_s": [
+        180,
+        240
+      ],
+      "supply_base_mps": 10,
+      "supply_pulse_mps": 5,
+      "declared_noninitial_route_vehicle_counts": {
+        "through": 932,
+        "entering": 60,
+        "exiting": 41
+      },
+      "actual_insertion_status": "Unknown until authorized run; not internal section demand",
+      "route_check": {
+        "route_attributes_unchanged": true
+      },
+      "seed": 20261201,
+      "duration_s": 420,
+      "attempt_status": "not_attempted",
+      "prepared_input_sha256": {
+        "network.net.xml": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+        "routes.rou.xml": "4b1ee23fa4745d6c6b928f4a0f27bd752a6e057c4f8a50cf0221e1480167756e",
+        "run.sumocfg": "2eb1cc9ec8a306cd497d43cfd856d965bf7af77b8c3382992e24bba8d538617a"
+      }
+    },
+    {
+      "id": "ID2_SUPPLY_0805",
+      "window": "us101__0805_0820",
+      "role": "supply",
+      "evaluation_elapsed_s": [
+        120,
+        390
+      ],
+      "supply_pulse_s": [
+        180,
+        240
+      ],
+      "supply_base_mps": 10,
+      "supply_pulse_mps": 5,
+      "declared_noninitial_route_vehicle_counts": {
+        "through": 801,
+        "entering": 57,
+        "exiting": 42
+      },
+      "actual_insertion_status": "Unknown until authorized run; not internal section demand",
+      "route_check": {
+        "route_attributes_unchanged": true
+      },
+      "seed": 20261201,
+      "duration_s": 420,
+      "attempt_status": "not_attempted",
+      "prepared_input_sha256": {
+        "network.net.xml": "a2ceaa9e6cd26fe7269400fb51ee5e200d5af63c72ce2ecc266e91100ea76683",
+        "routes.rou.xml": "c51e1d4e5347bc860498b623441f8743aebc48378343344aec31f9b5cdbebaf3",
+        "run.sumocfg": "2eb1cc9ec8a306cd497d43cfd856d965bf7af77b8c3382992e24bba8d538617a"
+      }
+    },
+    {
+      "id": "ID3_RAMP_0750",
+      "window": "us101__0750_0805",
+      "role": "ramp",
+      "evaluation_elapsed_s": [
+        120,
+        390
+      ],
+      "supply_pulse_s": null,
+      "supply_base_mps": 10,
+      "supply_pulse_mps": null,
+      "declared_noninitial_route_vehicle_counts": {
+        "through": 932,
+        "entering": 60,
+        "exiting": 41
+      },
+      "actual_insertion_status": "Unknown until authorized run; not internal section demand",
+      "route_check": {
+        "changed_departures": 60,
+        "all_other_vehicle_attributes_unchanged": true,
+        "ramp_counts_by_60s_block": {
+          "0": 9,
+          "1": 8,
+          "2": 9,
+          "3": 8,
+          "4": 9,
+          "5": 9,
+          "6": 8
+        }
+      },
+      "seed": 20261201,
+      "duration_s": 420,
+      "attempt_status": "not_attempted",
+      "prepared_input_sha256": {
+        "network.net.xml": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+        "routes.rou.xml": "90a8927fd96c6982ba3b6d88e4e76637d97b6f4dda9451b850d22ea66df04600",
+        "run.sumocfg": "2eb1cc9ec8a306cd497d43cfd856d965bf7af77b8c3382992e24bba8d538617a"
+      }
+    }
+  ],
+  "phase_elapsed_s": [
+    [
+      120,
+      180
+    ],
+    [
+      180,
+      240
+    ],
+    [
+      240,
+      300
+    ],
+    [
+      300,
+      360
+    ],
+    [
+      360,
+      390
+    ]
+  ],
+  "source_sha256": {
+    "code/scripts/prepare_stage_0_5_policy_a.py": "aa012f6d08cb5bab91a6f3724745f36bc9afb21bf55af905de63a2d62d4d80ac",
+    "code/scripts/interaction_diagnostic_worker.py": "bde7cbdf5cc74a5c526d7ccbcc3c45771710af5591e87d3ed5be196f9486f523",
+    "code/src/riskprop/stage_0_5_state_support.py": "153f2672a01a17cc578b2d32ad49b8936239640cd065a0ed20bb8796f493c301",
+    "code/src/riskprop/stage_0_5_d1_measurement.py": "affaf9984055b8673e6616310e4b0560f61b721747c33b47824f26172d36ad9c",
+    "code/src/riskprop/stage_0_5_scene_reconstruction.py": "01ca2361ba1f5c53e626a830d5ef41c83dd6c68f5c756ce21e0c4084e5c3813a",
+    "code/src/riskprop/stage_0_5_sumo.py": "83f866f9647dc40e6f2012f759a3cad99d1e122b8933b2910afff594be7a797b",
+    "code/src/riskprop/stage_0_5_final_closure.py": "aab5fa44fe1c0f18eeed727947f80c6d4d6211281b729091e9265af858c3fb02",
+    "code/src/riskprop/formal_risk_measurement.py": "4e15e67e35911fdd4d50d26f41784bde05a8cd9983edc42c572fa51b00686c58"
+  },
+  "input_sha256": {
+    "code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r4/states/ngsim_us101__0750_0805.parquet": "684a5f0b96dc48116f16d581c278d7039c0554bf1c3cea8d6eda3e605e3e8644",
+    "code/outputs/formal/calibration/stage_0_5_c6_c7_offline_v1/us101__0750_0805/repaired_measured_state.parquet": "fb4926293b50c0508eff2412ac05cf8fe419becbcd311680ff84940c1c063656",
+    "code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r4/states/ngsim_us101__0805_0820.parquet": "7b0ef830c97a981da018d4e24b029e38aa2630387c728ea87b57926745880a9f",
+    "code/outputs/formal/calibration/stage_0_5_c6_c7_offline_v1/us101__0805_0820/repaired_measured_state.parquet": "3db3f80bcdf357f67340f14decb943f27aa0b75cbc0adba3d2e9479350062ba1",
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_het_us101__0750_0805_vlim10.00_s20261201/network/observed_geometry_supply_10p0_l5.net.xml": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_het_us101__0750_0805_vlim10.00_s20261201/routes.rou.xml": "4b1ee23fa4745d6c6b928f4a0f27bd752a6e057c4f8a50cf0221e1480167756e",
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_het_us101__0750_0805_vlim10.00_s20261201/run.sumocfg": "3bc19743a449153e8d778b66b80fa7159d8cd75a8667408b0bce47fc802b1e55",
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_het_us101__0805_0820_vlim10.00_s20261201/network/observed_geometry_supply_10p0_l5.net.xml": "a2ceaa9e6cd26fe7269400fb51ee5e200d5af63c72ce2ecc266e91100ea76683",
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_het_us101__0805_0820_vlim10.00_s20261201/routes.rou.xml": "c51e1d4e5347bc860498b623441f8743aebc48378343344aec31f9b5cdbebaf3",
+    "code/outputs/formal/calibration/stage_0_5_state_support_v1/seeds/B_het_us101__0805_0820_vlim10.00_s20261201/run.sumocfg": "3bc19743a449153e8d778b66b80fa7159d8cd75a8667408b0bce47fc802b1e55"
+  },
+  "git_baseline_sha": "6fc8958842b975054cc8c4903aa9fdee1263cb45",
+  "worktree": [
+    "?? code/scripts/prepare_stage_0_5_policy_a.py",
+    "?? code/scripts/supervise_stage_0_5_diagnostic.py",
+    "?? code/tests/test_stage_0_5_policy_a_preflight.py"
+  ],
+  "all_baseline_cells_observed": true,
+  "resource_snapshot_pass": true,
+  "initialization": "measure each new run; retain all initial vehicles; disclose local count at120, last local observation, records/vehicle-s, global remaining and pending; do not assert equal initialization",
+  "comparison_limits": "Same spatial/time support does not equate real and simulator physical observability or traffic distributions. New runs cannot be verified before execution.",
+  "supervision_required": "Single process tree; record attempt before launch; enforce wall/RSS/disk/output caps; stop only owned tree; failures and retries consume budget; no automatic retry.",
+  "stop_rules": [
+    "identity/clock/source/hash failure",
+    "no effective common qualified support",
+    "input fidelity failure",
+    "resource cap",
+    "budget insufficient"
+  ],
+  "scientific_claim_eligible": false,
+  "protocol_lock_allowed": false
+}

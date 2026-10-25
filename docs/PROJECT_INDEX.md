@@ -1,5 +1,18 @@
 # AAD 项目索引
 
+## 2026-10-25 政策A执行入口
+
+当前停止报告、隔离入口、离线核验、便携验证见下方依据；历史最终计划保持批准字节，其Proposed措辞是批准前快照。
+
+依据：`docs/STAGE_0_5_INTERACTION_DIAGNOSTICS_POLICY_A_EXECUTION_2026-10-25.md`；`evidence/results/RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1/`。以下旧状态保留为历史时点。
+
+## 2026-10-25 政策A与最终计划预检
+
+当前入口：政策A三次运行最终待确认计划。A已批准，运行计划未批准；预检证据RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1。另有POLICY-A-VALIDATION-SCOPE-01隔离偏差待研究者裁决，执行保持阻断。
+
+依据：`docs/plans/2026-10-25-stage-0-5-interaction-diagnostics-policy-a-final.md`；`evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/`。
+
+
 ## 2026-10-25 C6/C7 offline phase
 
 C6修复与C7决策入口：docs/STAGE_0_5_C6_C7_OFFLINE_DECISION_2026-10-25.md；验证：docs/STAGE_0_5_C6_C7_VALIDATION.md。

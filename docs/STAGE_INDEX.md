@@ -1,5 +1,18 @@
 # AAD 阶段索引
 
+## 2026-10-25 Stage0.5政策A首次失败
+
+诊断设计已批准并任务绑定；ID1在180s失败，1/3，ID2/ID3按停止规则未执行；不代表科学Gate或三次对照完成。
+
+依据：`docs/STAGE_0_5_INTERACTION_DIAGNOSTICS_POLICY_A_EXECUTION_2026-10-25.md`；`evidence/results/RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1/`。以下旧状态保留为历史时点。
+
+## 2026-10-25 政策A与最终计划预检
+
+Stage0.5新增政策A预检：共同支持及资源快照通过，运行计划仍待确认，未冻结且0次新轨迹。
+
+依据：`docs/plans/2026-10-25-stage-0-5-interaction-diagnostics-policy-a-final.md`；`evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/`。
+
+
 ## 2026-10-25 C6/C7 offline phase
 
 Stage0.5新增C6/C7离线工程证据，初始化政策待研究者确认；不解锁后续阶段。

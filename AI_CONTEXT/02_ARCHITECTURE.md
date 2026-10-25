@@ -1,5 +1,18 @@
 # AAD Architecture
 
+## 2026-10-25 任务级隔离入口
+
+run_stage_0_5_policy_a_confirmed.py经interaction_task_boundary.py限制文件/写入/单一进程；原批准执行和测量源码保持字节，新增入口绑定隔离工程。Python审计不等于OS/native完整隔离。review_stage_0_5_interaction_failure.py只离线核验失败轨迹。
+
+依据：`docs/STAGE_0_5_INTERACTION_DIAGNOSTICS_POLICY_A_EXECUTION_2026-10-25.md`；`evidence/results/RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1/`。以下旧状态保留为历史时点。
+
+## 2026-10-25 政策A与最终计划预检
+
+新增政策A离线准备/绑定验证脚本和监督器。准备器不导入TraCI、不启动SUMO；监督器CLI暂停，API需要精确提案SHA的研究者确认，启动前登记尝试并检查输入/源码/工具/依赖/预算/资源，前次未核验则停止。
+
+依据：`docs/plans/2026-10-25-stage-0-5-interaction-diagnostics-policy-a-final.md`；`evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/`。
+
+
 ## 2026-10-25 C6/C7 offline phase
 
 物理FCD测量路径：parse_fcd同时输出映射y_m和native_position_m/native_lane_id；state_support用后者重建同原生车道物理净间距，前者只用于区域/offset100；D1测量入口由stage_0_5_sumo.compute_local_d1_measurement转入stage_0_5_d1_measurement。

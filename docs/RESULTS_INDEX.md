@@ -1,5 +1,11 @@
 # AAD 结果索引
 
+## RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1
+
+Stopped / Evidence Insufficient；一次失败、两次未尝试；便携证据为精确授权、账本、失败测量/18单元、来源SHA及验证记录。
+
+依据：`docs/STAGE_0_5_INTERACTION_DIAGNOSTICS_POLICY_A_EXECUTION_2026-10-25.md`；`evidence/results/RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1/`。以下旧状态保留为历史时点。
+
 ## 2026-10-25 C6/C7 offline phase
 
 RES-STAGE-0.5-C6-C7-OFFLINE-V1：两基线物理测量离线修复、初始化A/B比较；纯工程证据，新轨迹0，Gate未变。
@@ -333,3 +339,7 @@ B1.2前置接入工程阻断，主矩阵未冻结/未运行；报告`docs/STAGE_
 ## RES-STAGE-0.5-C6-C7-OFFLINE-V1
 
 离线物理测量修复与初始化决策材料；0次新轨迹，政策未确认，Gate不变。报告 `docs/STAGE_0_5_C6_C7_OFFLINE_DECISION_2026-10-25.md`；便携证据 `evidence/results/RES-STAGE-0.5-C6-C7-OFFLINE-V1/`。
+
+## RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1
+
+政策A共同支持、输入与资源预检；18/18单元各两条件，0次新轨迹。最终计划 `docs/plans/2026-10-25-stage-0-5-interaction-diagnostics-policy-a-final.md` 待确认；证据 `evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/`。POLICY-A-VALIDATION-SCOPE-01：任务级数据隔离不 Accepted，执行阻断，须研究者裁决；软件检查通过不能消除此偏差。

@@ -8,10 +8,21 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import os
 from pathlib import Path
 import socket
 import subprocess
 import sys
+
+
+def audit_process_launch(args, binary, processes):
+    # The worker passes executable explicitly: Windows audits argv as a string.
+    # A missing executable with a string command is deliberately not inferred.
+    command = args[1]
+    candidate = args[0] or (command[0] if isinstance(command, (list, tuple)) and command else None)
+    if candidate is None or Path(os.fsdecode(candidate)).resolve() != binary or processes:
+        raise PermissionError("only_one_fixed_SUMO_process")
+    processes.append(str(binary))
 
 
 def execute(work: Path, binary: Path, tools: Path, supply_pulse: bool):
@@ -28,16 +39,15 @@ def execute(work: Path, binary: Path, tools: Path, supply_pulse: bool):
             if any(marker in str(path).lower() for marker in ["locked_holdout", "0820_0835"]):
                 denied.append(str(path));raise PermissionError("worker_denied_validation")
         if event == "subprocess.Popen":
-            if Path(args[0]).resolve() != binary or processes:
-                raise PermissionError("only_one_fixed_SUMO_process")
-            processes.append(str(binary))
+            audit_process_launch(args, binary, processes)
 
     sys.addaudithook(audit)
     import traci
     with socket.socket() as listener:
         listener.bind(("127.0.0.1", 0));port = listener.getsockname()[1]
     native = subprocess.Popen([str(binary), "-c", str(work / "run.sumocfg"),
-                               "--remote-port", str(port), "--no-step-log", "true"])
+                               "--remote-port", str(port), "--no-step-log", "true"],
+                              executable=str(binary))
     connection = None
     result = {"sumo_process_attempts": 1, "python_file_denials": denied,
               "isolation_limit": "Python audit only; no claim of OS/native complete monitoring"}

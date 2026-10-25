@@ -1,5 +1,23 @@
 # AAD 当前科研状态
 
+## 2026-10-25 政策A执行停止（当前）
+
+有限科学设计已获批准；首次尝试180s失败，累计1/3，剩余停止。共同18单元支持未达成，无法比较三种机制。隔离偏差Not Accepted保留，WP2–WP5未整体完成，Gate不变。
+
+依据：`docs/STAGE_0_5_INTERACTION_DIAGNOSTICS_POLICY_A_EXECUTION_2026-10-25.md`；`evidence/results/RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1/`。以下旧状态保留为历史时点。
+
+## 2026-10-25 POLICY-A-VALIDATION-SCOPE-01（当前执行阻断）
+
+补充全量回归误在主工作区运行，13项本地历史/原始数据测试变为可执行。998 passed的该次记录不计为有效隔离验证；任务级零验证资源访问不可认证、数据隔离不Accepted，Status: Awaiting Researcher Decision。源码审计详见 `docs/STAGE_0_5_POLICY_A_VALIDATION.md` 与便携 `validation_scope_incident.json`，不重读相关数据。先前独立纯Git回归985 passed保留其有限效力；最终源码在无数据Git克隆另获987 passed / 14 skipped / 7 deselected，定向9项及compileall通过，仍不能逆转隔离偏差。政策A仍Agreed；最终计划Proposed，新轨迹0/3，Gate不变。工程准备不能代替研究者对偏差及运行资格的裁决；未决前不按有效完成任务提交/推送。
+
+
+## 2026-10-25 政策A与最终计划预检
+
+政策A已获研究者选择，固定270s有限动态窗与180–240s供给脉冲；共同支持/输入/资源预检已形成最终待确认计划。未冻结、0/3次、未启动SUMO，Gate不变。下面历史A/B待选状态不再是当前决定。
+
+依据：`docs/plans/2026-10-25-stage-0-5-interaction-diagnostics-policy-a-final.md`；`evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/`。
+
+
 ## 2026-10-25 C6/C7 offline phase
 
 2026-10-25最新：研究者批准C6/C7离线阶段。C6两基线修复与降级证据已形成；C7政策与三次运行草案待确认。0次新轨迹；三次额度已获重分配但暂停。历史下文的未授权状态属于历史时点，Gate仍不变。

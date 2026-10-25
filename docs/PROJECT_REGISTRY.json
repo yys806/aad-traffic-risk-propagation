@@ -578,7 +578,11 @@
     "code/scripts/supervise_stage_0_5_closure.py",
     "code/scripts/audit_stage_0_5_closure_statistics.py",
     "code/scripts/package_stage_0_5_final_closure.py",
-    "code/scripts/verify_stage_0_5_final_closure.py"
+    "code/scripts/verify_stage_0_5_final_closure.py",
+    "code/scripts/interaction_task_boundary.py",
+    "code/scripts/run_stage_0_5_policy_a_confirmed.py",
+    "code/scripts/review_stage_0_5_interaction_failure.py",
+    "code/scripts/verify_stage_0_5_interaction_stop.py"
    ],
    "test_paths": [
     "code/tests/test_simulation_real_coverage.py",
@@ -609,7 +613,9 @@
     "code/tests/test_stage_0_5_lf_protocol_preparation.py",
     "code/tests/test_stage_0_5_final_closure.py",
     "code/tests/test_stage_0_5_closure_supervisor.py",
-    "code/tests/test_stage_0_5_final_closure_evidence.py"
+    "code/tests/test_stage_0_5_final_closure_evidence.py",
+    "code/tests/test_interaction_task_boundary.py",
+    "code/tests/test_project_evidence_scope.py"
    ],
    "configuration": "R2 real reference plus two no_message_baseline generic-highway engineering fixtures (baseline_mixed_demand, measurement_probe_queue_stop); US-101 primary, Lankershim auxiliary entry-only, pNEUMA urban kinematics entry-only; all network/demand/vType/behaviour/time settings are engineering_fixture_only",
    "parameters": {
@@ -799,7 +805,9 @@
     "RES-STAGE-0.5-METHOD-EXPANSION-V1",
     "RES-STAGE-0.5-STATE-SUPPORT-V1",
     "RES-STAGE-0.5-ARRIVAL-TIMING-V1",
-    "RES-STAGE-0.5-C6-C7-OFFLINE-V1"
+    "RES-STAGE-0.5-C6-C7-OFFLINE-V1",
+    "RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1",
+    "RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -3772,6 +3780,111 @@
     ]
    },
    "current_conclusion": "Physical gaps repaired on explicitly observable same-native-lane support; unresolved connections downgraded. No scientific equivalence or zero-risk conclusion. Initialization A/B and three-run draft require researcher confirmation.",
+   "gate_status": "pending_simulation_sample",
+   "paper_locations": [
+    "docs/PAPER_AND_MATERIAL_SOURCES.md"
+   ],
+   "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1",
+   "experiment_id": "stage_0_5",
+   "name": "Policy A common-support and input/resource preflight; final proposal awaiting confirmation",
+   "status": "engineering_preflight_verified_isolation_not_accepted_execution_not_authorized",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/authorization.json",
+    "evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/common_support_summary.json",
+    "evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/final_plan_proposal.json",
+    "evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/PROPOSAL_SHA256",
+    "evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/resource_preflight.json",
+    "evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/REVIEW_PROPOSAL_SHA256",
+    "evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/review_ready_plan.json",
+    "evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/SHA256SUMS",
+    "evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/test_record.json",
+    "evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/us101__0750_0805_baseline_offset100.csv",
+    "evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/us101__0750_0805_common_support.csv",
+    "evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/us101__0750_0805_real_offset100.csv",
+    "evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/us101__0805_0820_baseline_offset100.csv",
+    "evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/us101__0805_0820_common_support.csv",
+    "evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/us101__0805_0820_real_offset100.csv",
+    "evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/static_input_audit.json",
+    "evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/validation_scope_incident.json"
+   ],
+   "local_artifact_paths": [
+    "code/outputs/formal/calibration/stage_0_5_policy_a_preflight_v1"
+   ],
+   "code_version_source": "review_ready_plan.json source_sha256 and external_file_sha256; baseline Git SHA plus recorded dirty sources",
+   "configuration_source": "review_ready_plan.json, REVIEW_PROPOSAL_SHA256 (proposal only, not frozen)",
+   "data_version_source": "Two approved canonical calibration windows and repaired seed20261201 baselines; input SHA bound",
+   "core_metrics": {
+    "attempts": 0,
+    "common_cells": [
+     18,
+     18
+    ],
+    "planned_cells_per_condition": 18,
+    "real_N": [
+     38,
+     50
+    ],
+    "real_E_veh_s": [
+     11794.3,
+     12431.4
+    ],
+    "policy": "A",
+    "evaluation_elapsed_s": [
+     120,
+     390
+    ],
+    "supply_pulse_s": [
+     180,
+     240
+    ]
+   },
+   "current_conclusion": "Common observed geometric/time support and resource snapshot pass. Initialization A approved; final three-run proposal still awaiting researcher confirmation. POLICY-A-VALIDATION-SCOPE-01 leaves task data isolation not accepted and execution blocked pending researcher decision. Real/sim distributions and physical observability are not equivalent; future realized input/support remain unverified.",
+   "gate_status": "pending_simulation_sample",
+   "paper_locations": [
+    "docs/PAPER_AND_MATERIAL_SOURCES.md"
+   ],
+   "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1",
+   "experiment_id": "stage_0_5",
+   "name": "Policy A approved finite diagnostics: first attempt failed, remaining stopped",
+   "status": "stopped_evidence_insufficient_after_one_failed_attempt",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1/common_support_18_cells.csv",
+    "evidence/results/RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1/execution_freeze.json",
+    "evidence/results/RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1/execution_freeze_before_utf8_fix.json",
+    "evidence/results/RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1/execution_freeze_engineering_precheck.json",
+    "evidence/results/RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1/execution_ledger.json",
+    "evidence/results/RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1/failure_review.json",
+    "evidence/results/RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1/provenance.json",
+    "evidence/results/RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1/raw_artifact_sha256.json",
+    "evidence/results/RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1/readonly_hash_verification.json",
+    "evidence/results/RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1/researcher_ruling.json",
+    "evidence/results/RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1/SHA256SUMS",
+    "evidence/results/RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1/validation_record.json"
+   ],
+   "local_artifact_paths": [
+    "code/outputs/formal/calibration/stage_0_5_interaction_diagnostics_v1"
+   ],
+   "code_version_source": "provenance.json, execution_freeze.json; Git baseline plus exact dirty source SHA",
+   "configuration_source": "Exact approved review_ready_plan.json and immutable final plan; additive engineering freeze",
+   "data_version_source": "Approved two calibration reference windows and matched baseline hashes; new failed ID1 capsule only",
+   "core_metrics": {
+    "attempts": 1,
+    "failed": 1,
+    "not_attempted": 2,
+    "budget": 3,
+    "common_complete_D1_cells": 2,
+    "required_cells": 18,
+    "partial_N": 0,
+    "partial_E_veh_s": 1933.0,
+    "full_window_rate": null
+   },
+   "current_conclusion": "Plan approved; ID1 failed at180 due pending initial numerical departure speed incompatible with dynamic lane limit. No full pulse/recovery or three-run contrast. Remaining stopped; isolation incident Not Accepted; no scientific equivalence.",
    "gate_status": "pending_simulation_sample",
    "paper_locations": [
     "docs/PAPER_AND_MATERIAL_SOURCES.md"

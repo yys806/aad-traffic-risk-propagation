@@ -1,5 +1,23 @@
 # AAD Current State Snapshot
 
+## 2026-10-25 政策A首次尝试失败，后续停止
+
+研究者已批准最终诊断设计，精确计划/提案及隔离工程哈希已绑定。ID1_SUPPLY_0750在180s因待插入初态departSpeed=10与main_2限速5冲突退出，累计1/3；ID2/ID3未执行，余2未动用。18单元仅2个完整D1支持，另2个仅状态完整；完整270s比较不可评价。POLICY-A-VALIDATION-SCOPE-01仍Not Accepted，研究者允许有限继续的裁决保留；不重跑主工作区全量。Gate不变，WP2–WP5不标整体完成。
+
+依据：`docs/STAGE_0_5_INTERACTION_DIAGNOSTICS_POLICY_A_EXECUTION_2026-10-25.md`；`evidence/results/RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1/`。以下旧状态保留为历史时点。
+
+## 2026-10-25 POLICY-A-VALIDATION-SCOPE-01（当前执行阻断）
+
+补充全量回归误在主工作区运行，13项本地历史/原始数据测试变为可执行。998 passed的该次记录不计为有效隔离验证；任务级零验证资源访问不可认证、数据隔离不Accepted，Status: Awaiting Researcher Decision。源码审计详见 `docs/STAGE_0_5_POLICY_A_VALIDATION.md` 与便携 `validation_scope_incident.json`，不重读相关数据。先前独立纯Git回归985 passed保留其有限效力；最终源码在无数据Git克隆另获987 passed / 14 skipped / 7 deselected，定向9项及compileall通过，仍不能逆转隔离偏差。政策A仍Agreed；最终计划Proposed，新轨迹0/3，Gate不变。工程准备不能代替研究者对偏差及运行资格的裁决；未决前不按有效完成任务提交/推送。
+
+
+## 2026-10-25 政策A与最终计划预检
+
+Agreed：研究者选择政策A，保留elapsed[120,390)、供给扰动[180,240)，披露0750残留初态，不声称稳态。两条件18/18共同单元、真实N/E38/11794.3和50/12431.4独立复核；输入/资源快照通过。最终运行计划仍Proposed，未冻结，0/3次，未启动SUMO，Gate不变。以下旧状态块保留为历史时点。
+
+依据：`docs/plans/2026-10-25-stage-0-5-interaction-diagnostics-policy-a-final.md`；`evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/`。
+
+
 ## 2026-10-25 C6/C7 offline phase
 
 C6修复获研究者明确授权并完成两份旧FCD离线重测；物理间距与映射空间分离，跨路段/连接段不可观测关系降级。C7政策A/B待研究者确认，运行计划未冻结，0/3次新轨迹；不是WP2–WP5整体完成。

@@ -1,5 +1,8 @@
 # AAD-0.5-INTERACTION-DIAGNOSTICS-V1：WP2–WP5执行计划
 
+> 当前：研究者已选择A。最终待确认计划见 `docs/plans/2026-10-25-stage-0-5-interaction-diagnostics-policy-a-final.md`；本文件以下保留历史草案，不是运行授权。
+
+
 > 后续授权与当前状态：C6已获批进行离线修复；当前决策材料见 `docs/STAGE_0_5_C6_C7_OFFLINE_DECISION_2026-10-25.md`。C7政策和对应时序未确认，禁止新轨迹。本文件以下保留原草案/阻断时点，不作为当前运行授权。
 
 

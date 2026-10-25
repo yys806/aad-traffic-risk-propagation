@@ -1,5 +1,23 @@
 # AAD Confirmed Decisions
 
+## 2026-10-25 研究者批准最终政策A计划并裁决隔离偏差
+
+Agreed：2026-10-25研究者确认最终计划及确切机器提案，隔离整改/哈希绑定后允许逐次执行；偏差保留Not Accepted，998 passed无隔离效力，缺少完整追踪不证明全范围零访问；无需重跑全量/全面历史审计。科学Gate、δ/h/B和后续阶段不变。ID1失败后按既定规则停止，并未批准替代输入或重试。
+
+依据：`docs/STAGE_0_5_INTERACTION_DIAGNOSTICS_POLICY_A_EXECUTION_2026-10-25.md`；`evidence/results/RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1/`。以下旧状态保留为历史时点。
+
+## 2026-10-25 政策A后续执行资格仍待决定
+
+POLICY-A-VALIDATION-SCOPE-01为执行偏差，不是研究者新批准：主工作区补充回归触达范围外本地测试资源，数据隔离不Accepted。研究者已批准政策A的事实不变；运行计划未冻结、0/3、Gate不变。后续运行资格与偏差处理Awaiting Researcher Decision，不能自行补批。证据：`docs/STAGE_0_5_POLICY_A_VALIDATION.md`。
+
+
+## 2026-10-25 政策A与最终计划预检
+
+2026-10-25研究者明确确认政策A：elapsed[120,390)、供给[180,240)，0750的1辆残留/130.5s/106记录/10.6veh-s保留披露，0805 t120局部初态0；不删除、不宣称同初始化或稳态。只授权A及计划调整/离线预检；最终计划需另行确认，确认前禁止SUMO、新轨迹0/3、Gate不变。
+
+依据：`docs/plans/2026-10-25-stage-0-5-interaction-diagnostics-policy-a-final.md`；`evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/`。
+
+
 ## 2026-10-25 C6/C7 offline phase
 
 Agreed task authorization（2026-10-25研究者后续指令）：先修复C6并用既有FCD离线验证，跨路段无法可靠重建则降级；C7仅比较保留窗与规则选共同起点，禁止用P2选择。新轨迹预算0，三次额度暂停，需研究者确认初始化政策与草案后再冻结。未授权Gate、阈值、科学协议或后续阶段变化。

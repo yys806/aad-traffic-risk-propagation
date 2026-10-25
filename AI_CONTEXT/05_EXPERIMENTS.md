@@ -1,5 +1,23 @@
 # AAD Experiments
 
+## 2026-10-25 政策A执行停止事实
+
+RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1：1次失败/3次上限，ID1原始FCD至179.9s、getter180s；P2部分N=0/E=1933.0veh-s，非完整窗风险率。局部初态t120为1、全网在场初态2、局部106条/10.6veh-s；pending初态身份Unknown。ID2/ID3停止未执行。
+
+依据：`docs/STAGE_0_5_INTERACTION_DIAGNOSTICS_POLICY_A_EXECUTION_2026-10-25.md`；`evidence/results/RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1/`。以下旧状态保留为历史时点。
+
+## 2026-10-25 POLICY-A-VALIDATION-SCOPE-01（当前执行阻断）
+
+补充全量回归误在主工作区运行，13项本地历史/原始数据测试变为可执行。998 passed的该次记录不计为有效隔离验证；任务级零验证资源访问不可认证、数据隔离不Accepted，Status: Awaiting Researcher Decision。源码审计详见 `docs/STAGE_0_5_POLICY_A_VALIDATION.md` 与便携 `validation_scope_incident.json`，不重读相关数据。先前独立纯Git回归985 passed保留其有限效力；最终源码在无数据Git克隆另获987 passed / 14 skipped / 7 deselected，定向9项及compileall通过，仍不能逆转隔离偏差。政策A仍Agreed；最终计划Proposed，新轨迹0/3，Gate不变。工程准备不能代替研究者对偏差及运行资格的裁决；未决前不按有效完成任务提交/推送。
+
+
+## 2026-10-25 政策A与最终计划预检
+
+RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1：政策A共同支持和输入/资源预检。三份独立配置准备完成，ID3仅60辆非初态匝道depart改变。实际插入、输入保真及新运行自身初始化状态尚Unknown；三次全部not_attempted，计划未冻结。
+
+依据：`docs/plans/2026-10-25-stage-0-5-interaction-diagnostics-policy-a-final.md`；`evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/`。
+
+
 ## 2026-10-25 C6/C7 offline phase
 
 新增RES-STAGE-0.5-C6-C7-OFFLINE-V1，仅离线工程证据。0750 N/E 7/10904.0→0/9754.8；0805 5/11633.0→0/10456.7，资格支持改变，不能推出零风险。初始化共同候选起点180s仅Proposed；A仍可选。

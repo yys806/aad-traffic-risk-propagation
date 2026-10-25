@@ -1,0 +1,651 @@
+{
+  "status": "failed_stop; scientific contrast not completed",
+  "attempts": 1,
+  "remaining_unspent": 2,
+  "not_attempted": [
+    "ID2_SUPPLY_0805",
+    "ID3_RAMP_0750"
+  ],
+  "fcd_time_s": [
+    0.0,
+    179.9
+  ],
+  "observed_states": 243369,
+  "full_frozen_window_complete": false,
+  "common_cells": 2,
+  "required_cells": 18,
+  "state_complete_cells": 4,
+  "positive_partial_D1_cells": 4,
+  "supersedes_offline_v1": "v1 conflated half-open state completeness with D1 right-endpoint edge support; retained, not used for final comparison",
+  "partial_D1": {
+    "onset_events": 0,
+    "local_evaluable_s": 1933.0,
+    "right_censored_unconfirmed": 0,
+    "confirmation_after_window": 0,
+    "left_continuing_risk_segments": 0
+  },
+  "full_window_P2_rate": null,
+  "rate_status": "not_evaluable_full_window_due_run_failure; partial exposure is not a 270s denominator",
+  "physical_support_counts": {
+    "observed_same_native_lane": 207590,
+    "unresolved_lane_boundary": 31988,
+    "unresolved_internal_connection": 3791
+  },
+  "initialization": {
+    "initial_route_count": 117,
+    "local_at_120": 1,
+    "global_at_120": 2,
+    "last_observed_local_s": 130.5,
+    "observed_window_records": 106,
+    "observed_window_vehicle_s": 10.600000000000001,
+    "initial_never_observed_by_stop": [
+      "i0007_i0007",
+      "i0039_i0039",
+      "i0040_i0040",
+      "i0041_i0041",
+      "i0042_i0042",
+      "i0043_i0043",
+      "i0044_i0044",
+      "i0063_i0063",
+      "i0064_i0064"
+    ],
+    "pending_initial_identities": "Unknown; getter only records total pending, no inferred identity completion",
+    "full_window_status": "Unknown beyond failure; do not equate local absence with no pending initial vehicles"
+  },
+  "input": {
+    "declared_noninitial": {
+      "through": 932,
+      "entering": 60,
+      "exiting": 41
+    },
+    "lane_getter_matches_recorded_targets": true,
+    "last_getter": {
+      "time_s": 180.0,
+      "running": 149.0,
+      "inserted_cumulative": 496.0,
+      "arrived_cumulative": 347.0,
+      "pending": 63.0,
+      "main2_limit_min_mps": 5.0,
+      "main2_limit_max_mps": 5.0
+    },
+    "full_pulse_applied": false,
+    "getter_vehicle_conservation": true,
+    "summary_last": {
+      "time": "179.95",
+      "loaded": "611",
+      "inserted": "496",
+      "running": "149",
+      "waiting": "63",
+      "ended": "348",
+      "arrived": "347",
+      "collisions": "0",
+      "teleports": "0",
+      "halting": "0",
+      "stopped": "0",
+      "meanWaitingTime": "9.35",
+      "meanTravelTime": "55.14",
+      "meanSpeed": "9.49",
+      "meanSpeedRelative": "0.57",
+      "discarded": "1",
+      "duration": "2"
+    },
+    "error_vehicle_declared": {
+      "id": "i0063_i0063",
+      "type": "B_het_c4_passenger",
+      "route": "from_main_2_through",
+      "depart": "0.0",
+      "departLane": "2",
+      "departPos": "28.63",
+      "departSpeed": "10.00"
+    },
+    "error_vehicle_ever_observed": false,
+    "native_errors": [
+      "i0007_i0007 cannot depart given velocity, slow lane ahead at0",
+      "i0063_i0063 departure speed too high for main_2 at180; SUMO quits"
+    ],
+    "native_discarded": 1,
+    "teleports": 0,
+    "collisions": 0
+  },
+  "isolation": {
+    "worker_boundary_audit.json": {
+      "denied": [
+        {
+          "path": "D:\\miniconda",
+          "write": false
+        },
+        {
+          "path": "D:\\miniconda",
+          "write": false
+        }
+      ],
+      "launched": [
+        [
+          "C:\\Program Files (x86)\\Eclipse\\Sumo\\bin\\sumo.exe",
+          "-c",
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_interaction_diagnostics_v1\\ID1_SUPPLY_0750\\run.sumocfg",
+          "--remote-port",
+          "9209",
+          "--no-step-log",
+          "true"
+        ]
+      ]
+    },
+    "supervisor_boundary_audit.json": {
+      "denied": [],
+      "launched": [
+        [
+          "D:\\miniconda\\python.exe",
+          "-I",
+          "-S",
+          "D:\\shen\\TJU\\AAD\\code\\scripts\\interaction_task_boundary.py",
+          "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\stage_0_5_interaction_diagnostics_v1\\ID1_SUPPLY_0750\\boundary_spec.json"
+        ]
+      ]
+    }
+  },
+  "isolation_limit": "Python only; blocked runtime directory probes occurred; no OS/native zero-access proof; task incident Not Accepted retained",
+  "phases": [
+    {
+      "window_s": [
+        120,
+        180
+      ],
+      "complete": false,
+      "state_points_complete": true,
+      "run": {
+        "window_s": [
+          120,
+          180
+        ],
+        "states": 22315,
+        "vehicle_s": 2231.5,
+        "density_veh_km_lane": 37.19166666666667,
+        "unavailable_measurement": {
+          "valid": 12691,
+          "not_applicable": 6931,
+          "missing": 2693
+        },
+        "speed_mps": {
+          "n": 22315,
+          "mean": 11.471101949361417,
+          "sd": 3.3620308380096353,
+          "p05": 4.93,
+          "p95": 16.58
+        },
+        "net_gap_m": {
+          "n": 19622,
+          "mean": 23.5541478340638,
+          "sd": 12.799106635576388,
+          "p05": 9.490399999999994,
+          "p95": 46.1999
+        },
+        "closing_speed_mps": {
+          "n": 19622,
+          "mean": 0.3477780042809092,
+          "sd": 1.8043233863498895,
+          "p05": -3.0600000000000005,
+          "p95": 3.0700000000000003
+        },
+        "ttc_s": {
+          "n": 12691,
+          "mean": 75.68324186065193,
+          "sd": 210.84879388026386,
+          "p05": 7.925271360357616,
+          "p95": 301.4007142857103
+        },
+        "D1": {
+          "version": "stage-0.5-d1-local-v1",
+          "eligibility": "D1_contract_implemented",
+          "window_s": [
+            120.0,
+            180.0
+          ],
+          "region_m": [
+            150.0,
+            350.0
+          ],
+          "local_evaluable_s": 1933.0,
+          "local_links": 19330,
+          "reliable_local_s": 1933.0,
+          "onset_events": 0,
+          "confirmation_position_events": 0,
+          "through_confirmation_events": 0,
+          "confirmation_time_sensitivity_events": 0,
+          "left_continuing_risk_segments": 0,
+          "confirmation_after_window": 0,
+          "right_censored_unconfirmed": 0,
+          "rate_status": "evaluable_zero_events",
+          "rate_per_evaluable_vehicle_hour": 0.0,
+          "legacy_point_evaluable_s": 1962.2,
+          "no_reliable_leader_point_s": 0.0,
+          "unavailable_point_counts": {
+            "valid": 12691,
+            "not_applicable": 6931,
+            "missing": 2693
+          },
+          "formal_equivalence_accepted": false,
+          "scientific_claim_eligible": false
+        }
+      },
+      "baseline": {
+        "window_s": [
+          120,
+          180
+        ],
+        "states": 22315,
+        "vehicle_s": 2231.5,
+        "density_veh_km_lane": 37.19166666666667,
+        "unavailable_measurement": {
+          "valid": 12691,
+          "not_applicable": 6931,
+          "missing": 2693
+        },
+        "speed_mps": {
+          "n": 22315,
+          "mean": 11.471101949361417,
+          "sd": 3.3620308380096353,
+          "p05": 4.93,
+          "p95": 16.58
+        },
+        "net_gap_m": {
+          "n": 19622,
+          "mean": 23.5541478340638,
+          "sd": 12.799106635576388,
+          "p05": 9.490399999999994,
+          "p95": 46.1999
+        },
+        "closing_speed_mps": {
+          "n": 19622,
+          "mean": 0.3477780042809092,
+          "sd": 1.8043233863498895,
+          "p05": -3.0600000000000005,
+          "p95": 3.0700000000000003
+        },
+        "ttc_s": {
+          "n": 12691,
+          "mean": 75.68324186065193,
+          "sd": 210.84879388026386,
+          "p05": 7.925271360357616,
+          "p95": 301.4007142857103
+        },
+        "D1": {
+          "version": "stage-0.5-d1-local-v1",
+          "eligibility": "D1_contract_implemented",
+          "window_s": [
+            120.0,
+            180.0
+          ],
+          "region_m": [
+            150.0,
+            350.0
+          ],
+          "local_evaluable_s": 1936.6000000000001,
+          "local_links": 19366,
+          "reliable_local_s": 1936.6000000000001,
+          "onset_events": 0,
+          "confirmation_position_events": 0,
+          "through_confirmation_events": 0,
+          "confirmation_time_sensitivity_events": 0,
+          "left_continuing_risk_segments": 0,
+          "confirmation_after_window": 0,
+          "right_censored_unconfirmed": 0,
+          "rate_status": "evaluable_zero_events",
+          "rate_per_evaluable_vehicle_hour": 0.0,
+          "legacy_point_evaluable_s": 1962.2,
+          "no_reliable_leader_point_s": 0.0,
+          "unavailable_point_counts": {
+            "valid": 12691,
+            "not_applicable": 6931,
+            "missing": 2693
+          },
+          "formal_equivalence_accepted": false,
+          "scientific_claim_eligible": false
+        }
+      },
+      "comparison_status": "state_descriptors_only_D1_endpoint_missing"
+    },
+    {
+      "window_s": [
+        180,
+        240
+      ],
+      "complete": false,
+      "state_points_complete": false,
+      "run": null,
+      "baseline": {
+        "window_s": [
+          180,
+          240
+        ],
+        "states": 24780,
+        "vehicle_s": 2478.0,
+        "density_veh_km_lane": 41.3,
+        "unavailable_measurement": {
+          "valid": 14146,
+          "not_applicable": 7850,
+          "missing": 2784
+        },
+        "speed_mps": {
+          "n": 24780,
+          "mean": 10.53595520581114,
+          "sd": 2.7872546533161526,
+          "p05": 5.4,
+          "p95": 15.410499999999994
+        },
+        "net_gap_m": {
+          "n": 21996,
+          "mean": 20.87483126022913,
+          "sd": 9.734321824140343,
+          "p05": 9.030399999999986,
+          "p95": 39.6429
+        },
+        "closing_speed_mps": {
+          "n": 21996,
+          "mean": 0.20549463538825244,
+          "sd": 1.482343781294136,
+          "p05": -2.42,
+          "p95": 2.2099999999999995
+        },
+        "ttc_s": {
+          "n": 14146,
+          "mean": 74.22243996893401,
+          "sd": 201.18254585992437,
+          "p05": 9.195903187721367,
+          "p95": 246.3024999999986
+        },
+        "D1": {
+          "version": "stage-0.5-d1-local-v1",
+          "eligibility": "D1_contract_implemented",
+          "window_s": [
+            180.0,
+            240.0
+          ],
+          "region_m": [
+            150.0,
+            350.0
+          ],
+          "local_evaluable_s": 2174.4,
+          "local_links": 21744,
+          "reliable_local_s": 2174.4,
+          "onset_events": 0,
+          "confirmation_position_events": 0,
+          "through_confirmation_events": 0,
+          "confirmation_time_sensitivity_events": 0,
+          "left_continuing_risk_segments": 0,
+          "confirmation_after_window": 0,
+          "right_censored_unconfirmed": 0,
+          "rate_status": "evaluable_zero_events",
+          "rate_per_evaluable_vehicle_hour": 0.0,
+          "legacy_point_evaluable_s": 2199.6,
+          "no_reliable_leader_point_s": 0.0,
+          "unavailable_point_counts": {
+            "valid": 14146,
+            "not_applicable": 7850,
+            "missing": 2784
+          },
+          "formal_equivalence_accepted": false,
+          "scientific_claim_eligible": false
+        }
+      },
+      "comparison_status": "not_comparable_missing_run_support"
+    },
+    {
+      "window_s": [
+        240,
+        300
+      ],
+      "complete": false,
+      "state_points_complete": false,
+      "run": null,
+      "baseline": {
+        "window_s": [
+          240,
+          300
+        ],
+        "states": 25207,
+        "vehicle_s": 2520.7000000000003,
+        "density_veh_km_lane": 42.01166666666667,
+        "unavailable_measurement": {
+          "valid": 13888,
+          "not_applicable": 8545,
+          "missing": 2774
+        },
+        "speed_mps": {
+          "n": 25207,
+          "mean": 10.06934502320784,
+          "sd": 2.3805120416180503,
+          "p05": 5.56,
+          "p95": 14.47
+        },
+        "net_gap_m": {
+          "n": 22433,
+          "mean": 20.43439099540855,
+          "sd": 9.300584092302701,
+          "p05": 9.210399999999993,
+          "p95": 37.93839999999995
+        },
+        "closing_speed_mps": {
+          "n": 22433,
+          "mean": 0.17972317567868765,
+          "sd": 1.26579696796597,
+          "p05": -1.9299999999999997,
+          "p95": 1.843999999999979
+        },
+        "ttc_s": {
+          "n": 13888,
+          "mean": 92.07811117916609,
+          "sd": 227.88958670252597,
+          "p05": 10.065657519600853,
+          "p95": 324.15400000000074
+        },
+        "D1": {
+          "version": "stage-0.5-d1-local-v1",
+          "eligibility": "D1_contract_implemented",
+          "window_s": [
+            240.0,
+            300.0
+          ],
+          "region_m": [
+            150.0,
+            350.0
+          ],
+          "local_evaluable_s": 2220.6,
+          "local_links": 22206,
+          "reliable_local_s": 2220.6,
+          "onset_events": 0,
+          "confirmation_position_events": 0,
+          "through_confirmation_events": 0,
+          "confirmation_time_sensitivity_events": 0,
+          "left_continuing_risk_segments": 0,
+          "confirmation_after_window": 0,
+          "right_censored_unconfirmed": 0,
+          "rate_status": "evaluable_zero_events",
+          "rate_per_evaluable_vehicle_hour": 0.0,
+          "legacy_point_evaluable_s": 2243.3,
+          "no_reliable_leader_point_s": 0.0,
+          "unavailable_point_counts": {
+            "valid": 13888,
+            "not_applicable": 8545,
+            "missing": 2774
+          },
+          "formal_equivalence_accepted": false,
+          "scientific_claim_eligible": false
+        }
+      },
+      "comparison_status": "not_comparable_missing_run_support"
+    },
+    {
+      "window_s": [
+        300,
+        360
+      ],
+      "complete": false,
+      "state_points_complete": false,
+      "run": null,
+      "baseline": {
+        "window_s": [
+          300,
+          360
+        ],
+        "states": 26031,
+        "vehicle_s": 2603.1000000000004,
+        "density_veh_km_lane": 43.385000000000005,
+        "unavailable_measurement": {
+          "valid": 13660,
+          "not_applicable": 9555,
+          "missing": 2816
+        },
+        "speed_mps": {
+          "n": 26031,
+          "mean": 9.742366025123891,
+          "sd": 2.3598195463887257,
+          "p05": 5.22,
+          "p95": 14.0
+        },
+        "net_gap_m": {
+          "n": 23215,
+          "mean": 19.75764790006461,
+          "sd": 8.94769161545277,
+          "p05": 8.987399999999997,
+          "p95": 36.28339999999999
+        },
+        "closing_speed_mps": {
+          "n": 23215,
+          "mean": 0.1119185871203963,
+          "sd": 1.3091578586167256,
+          "p05": -2.16,
+          "p95": 1.7029999999999932
+        },
+        "ttc_s": {
+          "n": 13660,
+          "mean": 93.44694297516818,
+          "sd": 225.29387414226883,
+          "p05": 10.214786096256683,
+          "p95": 347.77249999999265
+        },
+        "D1": {
+          "version": "stage-0.5-d1-local-v1",
+          "eligibility": "D1_contract_implemented",
+          "window_s": [
+            300.0,
+            360.0
+          ],
+          "region_m": [
+            150.0,
+            350.0
+          ],
+          "local_evaluable_s": 2297.0,
+          "local_links": 22970,
+          "reliable_local_s": 2297.0,
+          "onset_events": 0,
+          "confirmation_position_events": 0,
+          "through_confirmation_events": 0,
+          "confirmation_time_sensitivity_events": 0,
+          "left_continuing_risk_segments": 0,
+          "confirmation_after_window": 0,
+          "right_censored_unconfirmed": 0,
+          "rate_status": "evaluable_zero_events",
+          "rate_per_evaluable_vehicle_hour": 0.0,
+          "legacy_point_evaluable_s": 2321.5,
+          "no_reliable_leader_point_s": 0.0,
+          "unavailable_point_counts": {
+            "valid": 13660,
+            "not_applicable": 9555,
+            "missing": 2816
+          },
+          "formal_equivalence_accepted": false,
+          "scientific_claim_eligible": false
+        }
+      },
+      "comparison_status": "not_comparable_missing_run_support"
+    },
+    {
+      "window_s": [
+        360,
+        390
+      ],
+      "complete": false,
+      "state_points_complete": false,
+      "run": null,
+      "baseline": {
+        "window_s": [
+          360,
+          390
+        ],
+        "states": 12845,
+        "vehicle_s": 1284.5,
+        "density_veh_km_lane": 42.81666666666667,
+        "unavailable_measurement": {
+          "valid": 6617,
+          "not_applicable": 4774,
+          "missing": 1454
+        },
+        "speed_mps": {
+          "n": 12845,
+          "mean": 9.870248345659789,
+          "sd": 2.1686377236218752,
+          "p05": 5.27,
+          "p95": 13.227999999999993
+        },
+        "net_gap_m": {
+          "n": 11391,
+          "mean": 20.539416767623564,
+          "sd": 9.400448161295365,
+          "p05": 9.190399999999997,
+          "p95": 40.3154
+        },
+        "closing_speed_mps": {
+          "n": 11391,
+          "mean": -0.002782020893687999,
+          "sd": 1.1987958410448918,
+          "p05": -2.1400000000000006,
+          "p95": 1.4749999999999996
+        },
+        "ttc_s": {
+          "n": 6617,
+          "mean": 98.49989064221344,
+          "sd": 233.37333214149174,
+          "p05": 13.762128851540613,
+          "p95": 336.5066666666636
+        },
+        "D1": {
+          "version": "stage-0.5-d1-local-v1",
+          "eligibility": "D1_contract_implemented",
+          "window_s": [
+            360.0,
+            390.0
+          ],
+          "region_m": [
+            150.0,
+            350.0
+          ],
+          "local_evaluable_s": 1126.2,
+          "local_links": 11262,
+          "reliable_local_s": 1126.2,
+          "onset_events": 0,
+          "confirmation_position_events": 0,
+          "through_confirmation_events": 0,
+          "confirmation_time_sensitivity_events": 0,
+          "left_continuing_risk_segments": 0,
+          "confirmation_after_window": 0,
+          "right_censored_unconfirmed": 0,
+          "rate_status": "evaluable_zero_events",
+          "rate_per_evaluable_vehicle_hour": 0.0,
+          "legacy_point_evaluable_s": 1139.1000000000001,
+          "no_reliable_leader_point_s": 0.0,
+          "unavailable_point_counts": {
+            "valid": 6617,
+            "not_applicable": 4774,
+            "missing": 1454
+          },
+          "formal_equivalence_accepted": false,
+          "scientific_claim_eligible": false
+        }
+      },
+      "comparison_status": "not_comparable_missing_run_support"
+    }
+  ],
+  "Gate_changed": false,
+  "scientific_claim_eligible": false
+}

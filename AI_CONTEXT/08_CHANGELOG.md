@@ -1,5 +1,23 @@
 # AAD AI Context Changelog
 
+## 2026-10-25 政策A精确确认、隔离及失败归档
+
+新增任务白名单、精确确认/只读哈希绑定、首次失败的原始与便携证据、D1端点完整性离线v2及范围限定证据导出。43项定向测试通过，沿用既有有效无数据克隆全量记录。1/3失败停止，Gate不变。
+
+依据：`docs/STAGE_0_5_INTERACTION_DIAGNOSTICS_POLICY_A_EXECUTION_2026-10-25.md`；`evidence/results/RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1/`。以下旧状态保留为历史时点。
+
+## 2026-10-25 POLICY-A-VALIDATION-SCOPE-01（当前执行阻断）
+
+补充全量回归误在主工作区运行，13项本地历史/原始数据测试变为可执行。998 passed的该次记录不计为有效隔离验证；任务级零验证资源访问不可认证、数据隔离不Accepted，Status: Awaiting Researcher Decision。源码审计详见 `docs/STAGE_0_5_POLICY_A_VALIDATION.md` 与便携 `validation_scope_incident.json`，不重读相关数据。先前独立纯Git回归985 passed保留其有限效力；最终源码在无数据Git克隆另获987 passed / 14 skipped / 7 deselected，定向9项及compileall通过，仍不能逆转隔离偏差。政策A仍Agreed；最终计划Proposed，新轨迹0/3，Gate不变。工程准备不能代替研究者对偏差及运行资格的裁决；未决前不按有效完成任务提交/推送。
+
+
+## 2026-10-25 政策A与最终计划预检
+
+2026-10-25政策A：记录研究者选择、复核真实A窗及offset100、准备三份输入、绑定源码/工具/SHA、检查资源；增加默认暂停的监督器和合成测试。Context Consistency Check更新00/02/03/04/05/06/07/08、注册表及相关索引。仅提案，无冻结/新轨迹/Gate变化。
+
+依据：`docs/plans/2026-10-25-stage-0-5-interaction-diagnostics-policy-a-final.md`；`evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/`。
+
+
 ## 2026-10-25 C6/C7 offline phase
 
 2026-10-25 C6/C7授权离线阶段：原生物理坐标保留、跟驰测量限定、D1接入、逐状态TTC/事件成员对照与独立校验；新便携工程证据登记。0次新轨迹，历史证据不改。Context Consistency Check同步00/02/03/04/05/06/07/08及注册表/研究状态/索引；整体诊断仍待初始化决策。

@@ -1,5 +1,18 @@
 # AAD Data Flow
 
+## 2026-10-25 政策A失败证据数据流
+
+批准提案→只读输入哈希→独立运行capsule→SUMO在180s失败→保留FCD/getter/summary→D1离线v2/18单元缺失→便携汇总。未观测未来不能补零；完整率不可评价。
+
+依据：`docs/STAGE_0_5_INTERACTION_DIAGNOSTICS_POLICY_A_EXECUTION_2026-10-25.md`；`evidence/results/RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1/`。以下旧状态保留为历史时点。
+
+## 2026-10-25 政策A与最终计划预检
+
+政策A：两真实canonical源SHA→完整上下文正式D1及独立审计→A绝对窗[240,510)/[300,570)→18个offset100单元；与修复基线对应共同单元核验。配置副本和资源快照→review_ready_plan及提案SHA，非协议锁。
+
+依据：`docs/plans/2026-10-25-stage-0-5-interaction-diagnostics-policy-a-final.md`；`evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/`。
+
+
 ## 2026-10-25 C6/C7 offline phase
 
 C6离线链：两份授权历史FCD→双坐标解析→同原生车道物理跟驰/无法重建则missing→不变风险核心→完整事件上下文→D1时间空间裁切；新目录保存逐状态TTC及事件成员，便携目录仅聚合与SHA。C7选择仅用FCD身份/位置/时间，不读P2。

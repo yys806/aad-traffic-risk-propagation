@@ -1,0 +1,177 @@
+{
+  "status": "engineering_preflight_verified_isolation_not_accepted_execution_not_authorized",
+  "scope": "Policy A preparation, offline support review and software validation only; no trajectory generation",
+  "SUMO_processes_started": 0,
+  "new_trajectory_attempts": 0,
+  "targeted_tests": {
+    "command": "python -m pytest tests/test_stage_0_5_policy_a_preflight.py -q -p no:cacheprovider --basetemp=tmp/policy_a_targeted_v5",
+    "passed": 9,
+    "failed": 0,
+    "workspace": "data-free Git clone",
+    "wall_s": 1.54
+  },
+  "full_regression": {
+    "passed": 987,
+    "skipped": 14,
+    "deselected": 7,
+    "warnings": 2,
+    "failed": 0,
+    "trajectory_generation_tests_started": 0,
+    "workspace": "code/tmp/policy_a_review_validation_v2; data-free Git clone with staged task source overlay",
+    "root_regression_excluded": true,
+    "wall_s": 148.34,
+    "guard_source_sha256": "27e372e978cde994e6e8f901fdb8dff692c0acae55f0ae30463e03a431d93cba",
+    "log_sha256": "e0df5d08dbdf434b5e7b75080b96dc2711e82611f97cccafb97190578720124c",
+    "local_log": "code/tmp/policy_a_review_validation_v2/code/tmp/policy_a_guarded_regression_v5.log",
+    "pytest_arguments": [
+      "-q",
+      "-rs",
+      "-p",
+      "no:cacheprovider",
+      "--basetemp=tmp/policy_a_final_software_tests_v5"
+    ],
+    "deselected_test_ids": [
+      "tests/test_stage_0_1_sumo.py::test_real_sumo_stage_0_1_seals_nonempty_four_cell_package_and_read_only_audit",
+      "tests/test_stage_0_5_sumo.py::test_sumo_baseline_engineering_run_is_sealed_and_contract_complete",
+      "tests/test_stage_0_5_sumo.py::test_sumo_probe_fixture_confirms_a_p2_event_in_both_adapters",
+      "tests/test_stage_0_5_sumo.py::test_sumo_run_is_reproducible_for_the_same_seed_and_config",
+      "tests/test_stage_0_5_sumo.py::test_sumo_internal_and_recorded_steps_are_separately_configurable",
+      "tests/test_stage_0_5_sumo.py::test_sumo_warmup_window_is_respected_and_unbuilt_scenarios_are_refused",
+      "tests/test_stage_0_5_sumo.py::test_sumo_smoke_runs_never_change_the_stage_gate"
+    ]
+  },
+  "launch_guard": {
+    "blocked_attempts": [],
+    "pytest_exit_code": 0,
+    "scope": "Python parent audit only; not OS/native full monitoring"
+  },
+  "compileall": "passed on final staged task sources in data-free clone",
+  "local_binding_verification": {
+    "status": "passed",
+    "scope": "Two approved calibration sources, repaired baselines, prepared inputs, source files, fixed tools and actual dependency versions; no SUMO launch",
+    "restricted_sandbox_check": "failed: pyarrow not importable under sandbox user-site permissions",
+    "native_environment_check": "passed with existing dependency read access; no dependency installation or change"
+  },
+  "static_input_audit": "passed",
+  "common_support": {
+    "us101__0750_0805": "18/18 cells",
+    "us101__0805_0820": "18/18 cells"
+  },
+  "portable_evidence": {
+    "exported_static_input_audit": true,
+    "source_snapshot_hash_check": "passed after final export"
+  },
+  "pure_git_clone": {
+    "software_regression": "passed",
+    "SUMO_launch_guard": "passed",
+    "raw_inputs_copied": false,
+    "historical_outputs_copied": false,
+    "final_software_passed": 987,
+    "final_software_skipped": 14,
+    "final_software_deselected": 7,
+    "scope": "Git clone plus staged task overlay; not a committed clean checkout; no dataset or historical code/outputs"
+  },
+  "limitations": [
+    "The final proposal is not frozen and requires researcher confirmation.",
+    "Future insertion, realized support, runtime resources and post-run D1 qualification remain unverified.",
+    "This record does not authorize SUMO, change a Gate, or establish scientific equivalence."
+  ],
+  "validation_scope_incident": "validation_scope_incident.json",
+  "task_data_isolation_accepted": false,
+  "SUMO_count_evidence_limit": "Declared/observed zero; root supplemental regression had no subprocess audit. See incident.",
+  "software_validation_history": [
+    {
+      "attempt": "clone_v2_initial_harness",
+      "status": "failed",
+      "reason": "Windows subprocess audit executable=None was not handled; no blocked resource access reported. Source binding CLI also failed after overlay left CRLF files despite eol=lf; rematerialized bound files from Git index.",
+      "audit": {
+        "blocked_attempts": [],
+        "pytest_exit_code": 1,
+        "scope": "Python parent audit only; not OS/native full monitoring"
+      },
+      "failed_harness_sha256": "497c91488f3184a847cb8a07a14362893c64cd84386fc7d933e6d86df29f23e4"
+    },
+    {
+      "attempt": "clone_v2_premature_repeat",
+      "status": "interrupted",
+      "reason": "Started before temporary harness repair succeeded; Ctrl-C stopped it. Not counted as completed validation.",
+      "local_log": "code/tmp/policy_a_review_validation_v2/code/tmp/policy_a_guarded_regression_v2.log"
+    },
+    {
+      "attempt": "clone_v2_corrected_harness_v3",
+      "status": "passed",
+      "passed": 986,
+      "skipped": 14,
+      "deselected": 7,
+      "warnings": 2,
+      "wall_s": 145.67,
+      "audit": {
+        "blocked_attempts": [],
+        "pytest_exit_code": 0,
+        "scope": "Python parent audit only; not OS/native full monitoring"
+      },
+      "log_sha256": "1f1e7e93d36d1c0e74ab00dee01d4ade838509ae6190899692b8529158f7adfc",
+      "scope": "Before final worker Windows audit fix; superseded for final code coverage by v4."
+    },
+    {
+      "attempt": "clone_v2_worker_helper_v4",
+      "status": "passed",
+      "passed": 987,
+      "skipped": 14,
+      "deselected": 7,
+      "warnings": 2,
+      "wall_s": 147.49,
+      "audit": {
+        "blocked_attempts": [],
+        "pytest_exit_code": 0,
+        "scope": "Python parent audit only; not OS/native full monitoring"
+      },
+      "log_sha256": "e3fcd532132d6f1ad818316842b37c98c33d21fcc12d0f2bf5143d4f502de250",
+      "scope": "Before explicit Popen executable binding; superseded for final code coverage by v5."
+    }
+  ],
+  "final_software_regression": "passed",
+  "windows_subprocess_audit_probe": {
+    "scope": "Two Python child processes running pass only; no simulator",
+    "default_executable": null,
+    "default_argv_audit_type": "str",
+    "explicit_executable_audited_as": "D:/miniconda/python.exe",
+    "worker_fix": "Pass bound executable explicitly; reject ambiguous missing executable/string command and duplicate or unexpected binary."
+  },
+  "context_consistency_check": {
+    "status": "passed",
+    "existing_registry_gate_and_scientific_fields_compared": 117,
+    "changed_existing_fields": 0,
+    "policy": "A agreed; final proposal not frozen; validation isolation incident awaiting researcher decision; no commit/push as completed task"
+  },
+  "final_proposal_sha256": "0f0d84aec6881c957d10331a96dfd22c809980e53f8726af72599a27d2219f97",
+  "verified_source_sha256": {
+    "code/scripts/prepare_stage_0_5_policy_a.py": "aa012f6d08cb5bab91a6f3724745f36bc9afb21bf55af905de63a2d62d4d80ac",
+    "code/scripts/interaction_diagnostic_worker.py": "5593588a5fe09cb4b5bf1a1e666a128ea35cd24f46bfcab0af061f3f74e33d3c",
+    "code/src/riskprop/stage_0_5_state_support.py": "153f2672a01a17cc578b2d32ad49b8936239640cd065a0ed20bb8796f493c301",
+    "code/src/riskprop/stage_0_5_d1_measurement.py": "affaf9984055b8673e6616310e4b0560f61b721747c33b47824f26172d36ad9c",
+    "code/src/riskprop/stage_0_5_scene_reconstruction.py": "01ca2361ba1f5c53e626a830d5ef41c83dd6c68f5c756ce21e0c4084e5c3813a",
+    "code/src/riskprop/stage_0_5_sumo.py": "83f866f9647dc40e6f2012f759a3cad99d1e122b8933b2910afff594be7a797b",
+    "code/src/riskprop/stage_0_5_final_closure.py": "aab5fa44fe1c0f18eeed727947f80c6d4d6211281b729091e9265af858c3fb02",
+    "code/src/riskprop/formal_risk_measurement.py": "4e15e67e35911fdd4d50d26f41784bde05a8cd9983edc42c572fa51b00686c58",
+    "code/scripts/supervise_stage_0_5_diagnostic.py": "611be4d9c7a67eb919a3df03e388207016fb0a34a9b5ec3a4838bb4689db8365",
+    "code/scripts/verify_stage_0_5_policy_a.py": "73ef81622103391cdb65a1c0266b4659bb4a9a0d9147dff1371678953386deda",
+    "code/scripts/audit_stage_0_5_work_package_1.py": "4e9b79d1057922d953b1f09a8cede2032c2c254a223995d4e13bc023f6f12518",
+    "code/src/riskprop/ngsim_risk_calibration.py": "ba49f4a4d2e9762f5d31a6858b84ed5f314c16c2d5e404df93cb36b550d00a36",
+    "docs/plans/2026-10-25-stage-0-5-interaction-diagnostics-policy-a-final.md": "ba79b36733fcb93b37898250c5c12dbe074efa36af8798ac0cc3644a7bbd39a7"
+  },
+  "final_document_and_portable_checks": {
+    "strict_git_docs_original": "PROJECT_DOCS_OK",
+    "strict_git_docs_data_free_clone": "PROJECT_DOCS_OK",
+    "portable_original": "PORTABLE_EVIDENCE_OK",
+    "portable_data_free_clone": "PORTABLE_EVIDENCE_OK",
+    "source_bindings_data_free_clone": "verified",
+    "project_docs_tests": {
+      "passed": 13,
+      "failed": 0,
+      "wall_s": 4.66,
+      "workspace": "data-free Git clone"
+    },
+    "require_clean": "not run: no commit; isolation decision and final plan confirmation pending"
+  }
+}

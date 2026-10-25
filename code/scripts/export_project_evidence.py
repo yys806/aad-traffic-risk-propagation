@@ -61,6 +61,16 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         "RES-STAGE-0.3-PNEUMA-KINEMATICS-R1": [],
     }
 
+    # Policy A preflight proposals, not a frozen execution protocol.
+    pairs['RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1'] = [
+        ('code/outputs/formal/calibration/stage_0_5_interaction_diagnostics_v1/portable/' + name, name)
+        for name in ['execution_freeze.json', 'execution_freeze_engineering_precheck.json',
+                     'execution_freeze_before_utf8_fix.json', 'readonly_hash_verification.json',
+                     'researcher_ruling.json', 'execution_ledger.json', 'failure_review.json',
+                     'common_support_18_cells.csv', 'provenance.json', 'raw_artifact_sha256.json',
+                     'validation_record.json', 'SHA256SUMS']]
+    pairs["RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1"] = [("code/outputs/formal/calibration/stage_0_5_policy_a_preflight_v1/portable/" + name, name) for name in ['authorization.json', 'common_support_summary.json', 'final_plan_proposal.json', 'PROPOSAL_SHA256', 'resource_preflight.json', 'REVIEW_PROPOSAL_SHA256', 'review_ready_plan.json', 'SHA256SUMS', 'static_input_audit.json', 'validation_scope_incident.json', 'test_record.json', 'us101__0750_0805_baseline_offset100.csv', 'us101__0750_0805_common_support.csv', 'us101__0750_0805_real_offset100.csv', 'us101__0805_0820_baseline_offset100.csv', 'us101__0805_0820_common_support.csv', 'us101__0805_0820_real_offset100.csv']]
+
     # Zero-trajectory C6 repair and C7 initialization decision evidence.
     pairs["RES-STAGE-0.5-C6-C7-OFFLINE-V1"] = [("code/outputs/formal/calibration/stage_0_5_c6_c7_offline_v1/portable/" + name, name) for name in ['comparison_summary.json', 'execution_ledger.json', 'independent_verification.json', 'initialization_evidence.json', 'initialization_policy.json', 'provenance.json', 'raw_artifact_SHA256SUMS.txt', 'SHA256SUMS', 'test_record.json']]
 
@@ -723,7 +733,7 @@ def _validate_source(source: Path) -> None:
     if "sealed_sampling_key" in lowered:
         raise ValueError(f"refusing sealed sampling key: {source}")
     # B0 exports only these aggregate tables, never arbitrary trajectory CSVs.
-    aggregate_names={"SHA256SUMS","PLAN_SHA256","run_metrics.csv","time_bins_60s.csv","time_series_5s.csv",
+    aggregate_names={"common_support_18_cells.csv","PROPOSAL_SHA256","REVIEW_PROPOSAL_SHA256",'us101__0750_0805_baseline_offset100.csv','us101__0750_0805_common_support.csv','us101__0750_0805_real_offset100.csv','us101__0805_0820_baseline_offset100.csv','us101__0805_0820_common_support.csv','us101__0805_0820_real_offset100.csv',"SHA256SUMS","PLAN_SHA256","run_metrics.csv","time_bins_60s.csv","time_series_5s.csv",
         "event_attribution_audit.csv","traffic_state_1s.csv","traffic_state_30s.csv",
         "member_support_audit.csv","cluster_exposure_audit.csv",
         "candidate_PLAN_SHA256","reference_REFERENCE_PLAN_SHA256",
@@ -739,10 +749,12 @@ def _validate_source(source: Path) -> None:
         raise ValueError(f"unsupported evidence file type: {source}")
 
 
-def export_evidence(repo_root: Path) -> dict[str, object]:
+def export_evidence(repo_root: Path, result_ids: set[str] | None = None) -> dict[str, object]:
     evidence_root = repo_root / "evidence"
     result_entries: list[dict[str, object]] = []
     for result_id, pairs in _source_pairs().items():
+        if result_ids is not None and result_id not in result_ids:
+            continue
         files: list[dict[str, object]] = []
         for source_raw, destination_tail in pairs:
             source = repo_root / source_raw
@@ -759,6 +771,16 @@ def export_evidence(repo_root: Path) -> dict[str, object]:
                 }
             )
         result_entries.append({"result_id": result_id, "files": files})
+
+    if result_ids is not None:
+        unknown = result_ids - {entry['result_id'] for entry in result_entries}
+        if unknown:
+            raise ValueError('unknown scoped result IDs: ' + ','.join(sorted(unknown)))
+        previous_path = evidence_root / 'EVIDENCE_MANIFEST.json'
+        previous = json.loads(previous_path.read_text(encoding='utf-8')) if previous_path.exists() else {'results': []}
+        replacements = {entry['result_id']: entry for entry in result_entries}
+        merged = [replacements.pop(entry['result_id'], entry) for entry in previous['results']]
+        result_entries = merged + list(replacements.values())
 
     manifest: dict[str, object] = {
         "schema_version": "aad.evidence-manifest.v1",
@@ -783,13 +805,15 @@ def export_evidence(repo_root: Path) -> dict[str, object]:
     return manifest
 
 
-def verify_evidence(repo_root: Path) -> list[str]:
+def verify_evidence(repo_root: Path, result_ids: set[str] | None = None) -> list[str]:
     issues: list[str] = []
     manifest_path = repo_root / "evidence/EVIDENCE_MANIFEST.json"
     if not manifest_path.is_file():
         return ["missing evidence/EVIDENCE_MANIFEST.json"]
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     for result in manifest.get("results", []):
+        if result_ids is not None and result['result_id'] not in result_ids:
+            continue
         result_id = result.get("result_id", "unknown")
         for entry in result.get("files", []):
             source = repo_root / entry["source_path"]
@@ -810,10 +834,11 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Export or verify portable AAD evidence.")
     parser.add_argument("--repo-root", type=Path, default=REPO_ROOT)
     parser.add_argument("--verify", action="store_true")
+    parser.add_argument('--result-id', action='append', help='Restrict local source access to named results; preserve other manifest entries.')
     args = parser.parse_args()
     repo_root = args.repo_root.resolve()
     if args.verify:
-        issues = verify_evidence(repo_root)
+        issues = verify_evidence(repo_root, set(args.result_id) if args.result_id else None)
         if issues:
             print("PORTABLE_EVIDENCE_INVALID")
             for issue in issues:
@@ -821,7 +846,7 @@ def main() -> int:
             return 1
         print("PORTABLE_EVIDENCE_OK")
         return 0
-    manifest = export_evidence(repo_root)
+    manifest = export_evidence(repo_root, set(args.result_id) if args.result_id else None)
     file_count = sum(len(item["files"]) for item in manifest["results"])
     print(f"PORTABLE_EVIDENCE_EXPORTED results={len(manifest['results'])} files={file_count}")
     return 0
