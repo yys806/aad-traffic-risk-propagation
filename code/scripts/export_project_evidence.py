@@ -61,6 +61,9 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         "RES-STAGE-0.3-PNEUMA-KINEMATICS-R1": [],
     }
 
+    # Zero-trajectory C6 repair and C7 initialization decision evidence.
+    pairs["RES-STAGE-0.5-C6-C7-OFFLINE-V1"] = [("code/outputs/formal/calibration/stage_0_5_c6_c7_offline_v1/portable/" + name, name) for name in ['comparison_summary.json', 'execution_ledger.json', 'independent_verification.json', 'initialization_evidence.json', 'initialization_policy.json', 'provenance.json', 'raw_artifact_SHA256SUMS.txt', 'SHA256SUMS', 'test_record.json']]
+
     # Stage 0.5 real-traffic reconstruction and conditional scene diagnostics.
     pairs.setdefault("RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1", [])
     for name in (

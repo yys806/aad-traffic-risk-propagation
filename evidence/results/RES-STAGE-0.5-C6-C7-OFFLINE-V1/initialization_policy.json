@@ -1,0 +1,23 @@
+{
+  "status": "Proposed / Awaiting Researcher Decision",
+  "fixed_end_s": 390,
+  "A": "retain [120,390); explicitly describe initial vehicles, no steady-state claim",
+  "B": "first shared 30s boundary >=120 and <=360 with zero locally observed initial vehicles in the preceding 30s in BOTH baseline FCDs; no interpolation; not automatically adopted",
+  "selection_inputs": [
+    "FCD time",
+    "vehicle identity",
+    "mapped lane/position"
+  ],
+  "state_descriptors_only": [
+    "density",
+    "speed",
+    "initial vehicle counts"
+  ],
+  "excluded_selection_inputs": [
+    "TTC",
+    "P2",
+    "risk rate"
+  ],
+  "old_candidate_P2_already_seen": true,
+  "new_trajectory_budget": 0
+}

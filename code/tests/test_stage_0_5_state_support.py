@@ -177,6 +177,8 @@ def test_fcd_leader_is_ahead_and_gap_is_positive():
         "lane_id": ["5", "5", "5", "5"],
     })
     lengths = {"lead": 4.0, "follow": 4.0}
+    frame["native_position_m"] = frame.y_m
+    frame["native_lane_id"] = frame.edge + "_" + frame.lane_index.astype(str)
     states = ss.fcd_to_state_frame(frame, lengths, run_id="r", scenario_id="s", seed=1)
     follower = states[states.vehicle_id == "follow"].sort_values("time_s")
     assert follower.leader_id.tolist() == ["lead", "lead"]
@@ -196,6 +198,8 @@ def test_measure_state_frame_marks_non_closing_as_not_applicable():
         "speed_mps": [10.0, 9.0, 10.0, 9.5],
         "lane_id": ["5", "5", "5", "5"],
     })
+    frame["native_position_m"] = frame.y_m
+    frame["native_lane_id"] = frame.edge + "_" + frame.lane_index.astype(str)
     states = ss.fcd_to_state_frame(frame, {"lead": 4.0, "follow": 4.0},
                                    run_id="r", scenario_id="s", seed=1)
     measured = ss.measure_state_frame(states)

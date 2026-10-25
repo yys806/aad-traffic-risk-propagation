@@ -1,5 +1,20 @@
 # AAD Confirmed Decisions
 
+## 2026-10-25 C6/C7 offline phase
+
+Agreed task authorization（2026-10-25研究者后续指令）：先修复C6并用既有FCD离线验证，跨路段无法可靠重建则降级；C7仅比较保留窗与规则选共同起点，禁止用P2选择。新轨迹预算0，三次额度暂停，需研究者确认初始化政策与草案后再冻结。未授权Gate、阈值、科学协议或后续阶段变化。
+
+依据：`docs/STAGE_0_5_C6_C7_OFFLINE_DECISION_2026-10-25.md`；`evidence/results/RES-STAGE-0.5-C6-C7-OFFLINE-V1/`。
+
+
+## 2026-10-25 — WP2–WP5有限交互诊断授权
+
+状态：`Approved Task Authorization`，来源为研究者本会话任务书v1.0（2026-10-25）。批准将原FINAL-CLOSURE历史剩余3次额度显式重新分配到AAD-0.5-INTERACTION-DIAGNOSTICS-V1；本任务最多3次新轨迹尝试，失败/中断/重试计数，不再解释为原独立验证保留池。旧计划/账本“剩3”字节保留，新预算独立记录来源和实际消耗。
+
+本任务可自主完成D1测量整改、独立测试、既有输出离线复核，在既有通用高速/局部跟驰框架及拓扑内冻结具体配置、seed、有限动态窗、offset100共同空间支持（[150,250)、[250,350)m）、职责分配与停止规则后执行；普通工程参数无需重复请示。详见 `docs/plans/2026-10-25-stage-0-5-interaction-diagnostics.md`。
+
+这不是完整WP1验收协议批准。delta/h/B数值、最终正式暖机/评价窗、第三窗盲验证角色、locked holdout/密封或新验证资源、实质性拓扑/上游存储、新科研主张、ABCD、通信干预、Protocol Lock、Stage1.1均未批准。R1–R5仅上述任务级有限部分被批准，其他问题保持待决；Gate及全部科学/现实覆盖/锁/Stage1资格不变。
+
 本文件只记录研究者明确决定或已存在的稳定项目约束，不把 Codex 分析写成科研决策。
 
 ## 2026-10-16 — Stage 0.3 最终科学验收五项决定（AAD-0.3.3）

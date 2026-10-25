@@ -427,18 +427,11 @@ def run_arrival(work: Path, window: str, arm: str, seed: int, table: pd.DataFram
     measured.to_parquet(work / "measured_state.parquet", index=False)
     descriptors = ss.block_descriptors(measured, window=EVALUATION_WINDOW_S)
     membership = _membership(descriptors, domain, window)
-    events, _ = build_sumo_p2_events(measured)
-    low, high = EVALUATION_WINDOW_S
-    in_window = events[events.event_start_s.ge(low) & events.event_start_s.lt(high)]
-    lookup = measured.set_index(["vehicle_id", "time_s"])[["y_m", "lane_id"]]
-    local_events = 0
-    for event in in_window.itertuples():
-        try:
-            position, lane = lookup.loc[(str(event.vehicle_id), round(float(event.event_start_s), 1))]
-        except KeyError:
-            continue
-        if str(lane) in ss.MAINLINE_LANES and ss.REGION_START_M <= float(position) < ss.REGION_END_M:
-            local_events += 1
+    risk = descriptors["local_d1"]
+    if risk["eligibility"] != "D1_contract_implemented":
+        raise ss.StateSupportError("new_run_missing_D1_qualification")
+    in_window_count = sum(event["onset_in_window"] for event in risk["events"])
+    local_events = risk["onset_events"]
     first_seen = states.groupby("vehicle_id").time_s.min().to_dict() if len(states) else {}
     audit = []
     for item in routes["event_vehicle_ids"]:
@@ -464,11 +457,9 @@ def run_arrival(work: Path, window: str, arm: str, seed: int, table: pd.DataFram
                        "event_vehicles": routes["event_vehicles"]},
         "descriptors": descriptors,
         "membership": membership,
-        "p2_events_eval_window": int(len(in_window)),
+        "p2_events_eval_window": int(in_window_count),
         "p2_events_eval_window_local": int(local_events),
-        "p2_local_rate_per_vehicle_hour": (
-            local_events / (descriptors["p2_evaluable_exposure_veh_s"] / 3600.0)
-            if descriptors["p2_evaluable_exposure_veh_s"] > 0 else None),
+        "p2_local_rate_per_vehicle_hour": risk["rate_per_evaluable_vehicle_hour"],
         "insertion_audit": {
             "events": int(len(audit_frame)),
             "never_inserted": missing,

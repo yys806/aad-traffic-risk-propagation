@@ -1,5 +1,12 @@
 # AAD 阶段索引
 
+## 2026-10-25 C6/C7 offline phase
+
+Stage0.5新增C6/C7离线工程证据，初始化政策待研究者确认；不解锁后续阶段。
+
+依据：`docs/STAGE_0_5_C6_C7_OFFLINE_DECISION_2026-10-25.md`；`evidence/results/RES-STAGE-0.5-C6-C7-OFFLINE-V1/`。
+
+
 > 核对日期：2026-09-10。机器标识统一使用 `stage_X_Y`；旧实验编号仅保留在历史映射和旧证据中。
 
 ## 当前顺序

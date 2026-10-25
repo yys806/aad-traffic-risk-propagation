@@ -1,5 +1,19 @@
 # AAD Known Issues
 
+## 2026-10-25 C6/C7 offline phase
+
+C6在新版本同原生车道可观测支持上修复并独立核验；跨路段/连接段物理关系仍不可重建，旧结果未升级。C7不是基线自动作废：A保留[120,390)显式披露残留；B候选[180,390)减少支持并重排脉冲。政策和草案均Awaiting Researcher Decision；原窗P2已见。
+
+依据：`docs/STAGE_0_5_C6_C7_OFFLINE_DECISION_2026-10-25.md`；`evidence/results/RES-STAGE-0.5-C6-C7-OFFLINE-V1/`。
+
+
+## 2026-10-25 Interaction diagnostics preflight
+
+New C6/C7: parse_fcd scales longitudinal coordinates while fcd_to_state_frame subtracts an unscaled leader length from their difference; measured gaps therefore differ from same-native-lane physical position gaps. Existing0750 baseline also fails the proposed120s initialization criterion (1 residual initial vehicle). **Awaiting Researcher Decision** under AGENTS§4. No geometry/risk-core correction, window change or new trajectory performed.
+
+Evidence: `docs/STAGE_0_5_INTERACTION_DIAGNOSTICS_2026-10-25.md`; `docs/audits/stage_0_5_interaction_preflight_v1/preflight.json`; `execution_ledger.json` in the same directory.
+
+
 ## 2026-10-24 Issue #1：C1–C5当前处置（覆盖下方原审计时态）
 
 [证据审计](../docs/STAGE_0_5_WP1_EVIDENCE_AUDIT.md)记录逐项完整冲突与影响；[冻结候选](../docs/STAGE_0_5_ACCEPTANCE_FREEZE_CANDIDATE_V1.md)集中R1–R5，未批准新科研口径：

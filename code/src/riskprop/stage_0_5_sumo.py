@@ -1465,6 +1465,12 @@ def build_sumo_p2_events(
 EVALUABLE_MEASUREMENT_STATUS = ("valid", "not_applicable")
 
 
+def compute_local_d1_measurement(states, window, *, region=(150., 350.), strict=False):
+    """The D1 local entry point; no scientific-equivalence or Gate promotion."""
+    from .stage_0_5_d1_measurement import local_d1_measurement
+    return local_d1_measurement(states, window, region=region, strict=strict)
+
+
 def compute_exposure(
     states: pd.DataFrame,
     *,

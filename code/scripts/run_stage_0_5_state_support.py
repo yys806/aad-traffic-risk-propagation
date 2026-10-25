@@ -283,26 +283,11 @@ def run_cell(work: Path, cell: dict[str, object], relation: dict[str, object],
     descriptors = ss.block_descriptors(measured, window=ss.DECLARED_EVALUATION_WINDOW_S)
     initial_descriptors = ss.block_descriptors(
         measured, window=(0.0, ss.BLOCK_S))
-    p2_count = None
-    p2_local = None
-    if with_p2:
-        from riskprop.stage_0_5_sumo import build_sumo_p2_events
-        events, _ = build_sumo_p2_events(measured)
-        eval_low, eval_high = ss.DECLARED_EVALUATION_WINDOW_S
-        in_window = events[events.event_start_s.ge(eval_low) & events.event_start_s.lt(eval_high)]
-        p2_count = int(len(in_window))
-        lookup = measured.set_index(["vehicle_id", "time_s"])[["y_m", "lane_id"]]
-        local = 0
-        for ev in in_window.itertuples():
-            key = (str(ev.vehicle_id), round(float(ev.event_start_s), 1))
-            try:
-                position, lane = lookup.loc[key]
-            except KeyError:
-                continue
-            if (str(lane) in ss.MAINLINE_LANES
-                    and ss.REGION_START_M <= float(position) < ss.REGION_END_M):
-                local += 1
-        p2_local = local
+    risk = descriptors["local_d1"]
+    if risk["eligibility"] != "D1_contract_implemented":
+        raise ss.StateSupportError("new_run_missing_D1_qualification")
+    p2_count = sum(event["onset_in_window"] for event in risk["events"])
+    p2_local = risk["onset_events"]
     measured.to_parquet(work / "measured_state.parquet", index=False)
     return {
         "cell": cell,
@@ -325,12 +310,9 @@ def run_cell(work: Path, cell: dict[str, object], relation: dict[str, object],
         "initial_window_descriptors": initial_descriptors,
         "p2_events_eval_window": p2_count,
         "p2_events_eval_window_local": p2_local,
-        "p2_local_rate_per_vehicle_hour": (
-            (p2_local / (descriptors["p2_evaluable_exposure_veh_s"] / 3600.0))
-            if p2_local is not None and descriptors["p2_evaluable_exposure_veh_s"] > 0 else None),
-        "p2_network_rate_per_vehicle_hour": (
-            (p2_count / (descriptors["local_vehicle_s"] / 3600.0))
-            if p2_count is not None and descriptors["local_vehicle_s"] > 0 else None),
+        "p2_local_rate_per_vehicle_hour": risk["rate_per_evaluable_vehicle_hour"],
+        "p2_network_rate_per_vehicle_hour": None,
+        "p2_network_rate_status": "not_calculated_no_network_D1_denominator",
         "states": int(len(measured)),
     }
 

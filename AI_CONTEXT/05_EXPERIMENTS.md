@@ -1,5 +1,19 @@
 # AAD Experiments
 
+## 2026-10-25 C6/C7 offline phase
+
+新增RES-STAGE-0.5-C6-C7-OFFLINE-V1，仅离线工程证据。0750 N/E 7/10904.0→0/9754.8；0805 5/11633.0→0/10456.7，资格支持改变，不能推出零风险。初始化共同候选起点180s仅Proposed；A仍可选。
+
+依据：`docs/STAGE_0_5_C6_C7_OFFLINE_DECISION_2026-10-25.md`；`evidence/results/RES-STAGE-0.5-C6-C7-OFFLINE-V1/`。
+
+
+## 2026-10-25 Interaction diagnostics preflight
+
+AAD-0.5-INTERACTION-DIAGNOSTICS-V1: researcher authorized reallocation of3 historical remaining attempts. Actual new trajectories0; all3 draft roles not_attempted. Offline preflight only; no formal result registration. Initialization and physical measurement conflicts prevent freeze/execution. Two historical D1 pairs at[120,390):0750 N7/E10904.0;0805 N5/E11633.0; not physically corrected reference results.
+
+Evidence: `docs/STAGE_0_5_INTERACTION_DIAGNOSTICS_2026-10-25.md`; `docs/audits/stage_0_5_interaction_preflight_v1/preflight.json`; `execution_ledger.json` in the same directory.
+
+
 > 这里只记录客观状态。完整字段以 `docs/PROJECT_REGISTRY.json` 为准，原始数字以 audit/manifest/表为准。
 
 ## 最近一次 Stage 0.5 实验（2026-10-21，AAD-0.5-ARRIVAL-TIMING）

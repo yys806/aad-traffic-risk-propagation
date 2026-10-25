@@ -1,5 +1,12 @@
 # AAD 项目索引
 
+## 2026-10-25 C6/C7 offline phase
+
+C6修复与C7决策入口：docs/STAGE_0_5_C6_C7_OFFLINE_DECISION_2026-10-25.md；验证：docs/STAGE_0_5_C6_C7_VALIDATION.md。
+
+依据：`docs/STAGE_0_5_C6_C7_OFFLINE_DECISION_2026-10-25.md`；`evidence/results/RES-STAGE-0.5-C6-C7-OFFLINE-V1/`。
+
+
 ## AI 快速恢复
 
 - 当前快照：`AI_CONTEXT/00_PROJECT_STATE.md`

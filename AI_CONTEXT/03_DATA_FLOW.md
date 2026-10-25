@@ -1,5 +1,12 @@
 # AAD Data Flow
 
+## 2026-10-25 C6/C7 offline phase
+
+C6离线链：两份授权历史FCD→双坐标解析→同原生车道物理跟驰/无法重建则missing→不变风险核心→完整事件上下文→D1时间空间裁切；新目录保存逐状态TTC及事件成员，便携目录仅聚合与SHA。C7选择仅用FCD身份/位置/时间，不读P2。
+
+依据：`docs/STAGE_0_5_C6_C7_OFFLINE_DECISION_2026-10-25.md`；`evidence/results/RES-STAGE-0.5-C6-C7-OFFLINE-V1/`。
+
+
 ## 总览
 
 ```text

@@ -434,7 +434,16 @@ def pair_metrics(record: dict[str, object], *, settle_s: float = 0.0) -> dict[st
     closing_simulated = simulated_v - leader_v_simulated
     headway_observed = np.where(closing_observed > 0, observed_gap / np.where(closing_observed > 0, closing_observed, np.nan), np.nan)
     headway_simulated = np.where(closing_simulated > 0, simulated_gap / np.where(closing_simulated > 0, closing_simulated, np.nan), np.nan)
+    from .stage_0_5_d1_measurement import time_gap_values
+    observed_gaps = time_gap_values(observed_gap, observed_v, closing_observed, record.get("vehicle_length_m"))
+    simulated_gaps = time_gap_values(simulated_gap, simulated_v, closing_simulated, record.get("vehicle_length_m"))
     return {
+        "measurement_schema": "explicit-time-gap-v1",
+        "legacy_field_replacements": {"time_headway_mean_observed_s": "closing_time_proxy_mean_observed_s", "time_headway_mean_simulated_s": "closing_time_proxy_mean_simulated_s"},
+        "legacy_observed_time_gap_definition": "mean(g/max(v_f,0.1)); retained for old stratification consumers only",
+        "net_time_gap_mean_observed_s": float(np.nanmean(observed_gaps["net_time_gap_s"])) if np.isfinite(observed_gaps["net_time_gap_s"]).any() else None,
+        "front_bumper_time_headway_mean_observed_s": float(np.nanmean(observed_gaps["front_bumper_time_headway_s"])) if np.isfinite(observed_gaps["front_bumper_time_headway_s"]).any() else None,
+        "net_time_gap_mean_simulated_s": float(np.nanmean(simulated_gaps["net_time_gap_s"])) if np.isfinite(simulated_gaps["net_time_gap_s"]).any() else None,
         "run_id": record["run_id"],
         "trajectory_id": record["trajectory_id"],
         "lane_id": record["lane_id"],
@@ -455,8 +464,8 @@ def pair_metrics(record: dict[str, object], *, settle_s: float = 0.0) -> dict[st
         "closing_negative_share_simulated": float(np.nanmean(closing_simulated < 0)),
         "observed_time_gap_mean_s": float(np.mean(observed_gap / np.maximum(observed_v, 0.1))),
         "observed_speed_mean_mps": float(np.mean(observed_v)),
-        "time_headway_mean_observed_s": float(np.nanmean(headway_observed)) if np.isfinite(headway_observed).any() else None,
-        "time_headway_mean_simulated_s": float(np.nanmean(headway_simulated)) if np.isfinite(headway_simulated).any() else None,
+        "closing_time_proxy_mean_observed_s": float(np.nanmean(headway_observed)) if np.isfinite(headway_observed).any() else None,
+        "closing_time_proxy_mean_simulated_s": float(np.nanmean(headway_simulated)) if np.isfinite(headway_simulated).any() else None,
         "leader_target_max_abs_deviation_m": record["leader_target_max_abs_deviation_m"],
         "gap_definition_residual_abs_max_m": float(np.max(np.abs(observed.gap_definition_residual_m))),
         "vehicle_length_m": record["vehicle_length_m"],

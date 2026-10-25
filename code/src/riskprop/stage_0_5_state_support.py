@@ -212,36 +212,15 @@ def following_relation(states: pd.DataFrame, *, gap_cap_m: float = GAP_FIT_CAP_M
 # --------------------------------------------------------------------------
 def block_cloud(states: pd.DataFrame, *, block_s: float = BLOCK_S,
                 y_step_m: float = BLOCK_Y_M) -> pd.DataFrame:
-    """Local 30 s x 100 m block speed/density cloud of one real window.
-
-    The blocks are non-overlapping in time and space; each block must contain
-    at least two 0.1 s rows per lane to be reported, which only excludes empty
-    space-time cells.
-    """
-    subset = local_region_mask(states)
-    region_states = states[subset].copy()
-    origin = float(region_states.time_s.min())
-    region_states["t_block"] = np.floor((region_states.time_s - origin) / block_s).astype(int)
-    region_states["y_block"] = np.floor(region_states.y_m / y_step_m).astype(int)
-    lane_km = y_step_m / 1000.0 * len(MAINLINE_LANES)
-    rows: list[dict[str, object]] = []
-    for (t_block, y_block), part in region_states.groupby(["t_block", "y_block"], sort=True):
-        if len(part) < 2 * len(MAINLINE_LANES):
-            continue
-        vehicle_s = len(part) * 0.1
-        rows.append({
-            "t_block": int(t_block),
-            "y_block": int(y_block),
-            "block_start_s": float(origin + t_block * block_s),
-            "y_start_m": float(y_block * y_step_m),
-            "states": int(len(part)),
-            "speed_mean_mps": float(part.speed_mps.mean()),
-            "density_veh_km_lane": vehicle_s / block_s / lane_km,
-            "flow_veh_h_lane": float(part.speed_mps.mean()) * vehicle_s / block_s / lane_km * 3.6,
-            "low_speed_share": float((part.speed_mps < LOW_SPEED_MPS).mean()),
-            "closing_speed_mean_mps": float(part.closing_speed_mps.mean()),
-        })
-    return pd.DataFrame(rows)
+    """Task-authorised offset100 diagnostic support; old sealed clouds stay unchanged."""
+    from .stage_0_5_d1_measurement import offset100_cloud
+    if y_step_m != 100.0:
+        raise StateSupportError("offset100_requires_100m")
+    window_id = str(states.window_id.iloc[0])
+    span = next((span for key, span in APPROVED_SPANS.items() if key.endswith(window_id)), None)
+    if span is None:
+        raise StateSupportError("explicit_known_window_required")
+    return offset100_cloud(states, span, block_s=block_s)
 
 
 def support_envelope(cloud: pd.DataFrame, *, band_veh_km_lane: float = 7.5,
@@ -744,26 +723,33 @@ def run_sumo(config: Path, *, wall_limit_s: float = 900.0) -> dict[str, object]:
 # --------------------------------------------------------------------------
 def fcd_to_state_frame(fcd: pd.DataFrame, lengths: dict[str, float], *, run_id: str,
                        scenario_id: str, seed: int) -> pd.DataFrame:
-    """Same-lane leader relation from the native FCD record.
+    """Physical same-native-lane gaps; mapped y is only spatial support.
 
-    ``pos`` in SUMO FCD is the front-bumper position, so the physical net gap is
-    ``leader_front - leader_length - follower_front``.  This is the same
-    definition the approved Stage 0.2 following link uses (verified there against
-    TraCI ``getLeader`` with a 0.0 m residual).
+    No cross-edge/internal-junction leader reconstruction is attempted. A vehicle
+    with no observed same-lane successor has unknown boundary support, not zero
+    risk. Historical tables and mapped-coordinate gaps are never repaired in place.
     """
     frame = fcd.copy()
+    required = {"native_position_m", "native_lane_id", "edge"}
+    if required - set(frame):
+        raise StateSupportError("missing_native_physical_coordinates")
+    if frame[list(required)].isna().any().any() or not np.isfinite(frame.native_position_m.to_numpy(float)).all():
+        raise StateSupportError("invalid_native_physical_coordinates")
+    if frame.duplicated(["time_s", "vehicle_id"]).any():
+        raise StateSupportError("duplicate_native_vehicle_clock")
     frame["length_m"] = frame.vehicle_id.map(lengths).astype(float)
-    if frame.length_m.isna().any():
+    if frame.length_m.isna().any() or not frame.length_m.gt(0).all():
         raise StateSupportError("unknown_vehicle_length")
-    frame = frame.sort_values(["time_s", "lane_id", "y_m"], ascending=[True, True, True],
-                              kind="stable").reset_index(drop=True)
-    keys = [frame.time_s.to_numpy(), frame.lane_id.to_numpy()]
-    grouped = frame.groupby(keys, sort=False)
+    frame = frame.sort_values(["time_s", "native_lane_id", "native_position_m"], kind="stable").reset_index(drop=True)
+    grouped = frame.groupby(["time_s", "native_lane_id", "edge"], sort=False)
     frame["leader_id"] = grouped["vehicle_id"].shift(-1)
     frame["leader_speed_mps"] = grouped["speed_mps"].shift(-1)
-    leader_front = grouped["y_m"].shift(-1)
+    leader_front = grouped["native_position_m"].shift(-1)
     leader_length = grouped["length_m"].shift(-1)
-    frame["net_gap_m"] = leader_front - leader_length - frame.y_m
+    internal = frame.edge.str.startswith(":")
+    frame.loc[internal, ["leader_id", "leader_speed_mps"]] = [None, np.nan]
+    leader_length = leader_length.mask(internal)
+    frame["net_gap_m"] = (leader_front - leader_length - frame.native_position_m).mask(internal)
     out = pd.DataFrame({
         "run_id": run_id,
         "scenario_id": scenario_id,
@@ -782,6 +768,10 @@ def fcd_to_state_frame(fcd: pd.DataFrame, lengths: dict[str, float], *, run_id: 
         "leader_identity_status": np.where(frame.leader_id.notna(), "observed", "not_applicable"),
         "leader_speed_mps": frame.leader_speed_mps,
         "net_gap_m": frame.net_gap_m,
+        "leader_length_m": leader_length,
+        "native_position_m": frame.native_position_m,
+        "native_lane_id": frame.native_lane_id,
+        "physical_support_status": np.where(internal, "unresolved_internal_connection", np.where(frame.leader_id.notna(), "observed_same_native_lane", "unresolved_lane_boundary")),
         "lane_id": frame.lane_id.astype(str),
         "y_m": frame.y_m.astype(float),
     })
@@ -794,55 +784,54 @@ def measure_state_frame(states: pd.DataFrame) -> pd.DataFrame:
     frame["acceleration_mps2"] = frame.groupby("vehicle_id")["speed_mps"].transform(
         lambda series: series.diff() / DECLARED_FCD_PERIOD_S)
     frame["acceleration_mps2"] = frame.acceleration_mps2.fillna(0.0)
-    return compute_sumo_measurements(frame)
+    measured = compute_sumo_measurements(frame)
+    if "physical_support_status" in measured:
+        unresolved = measured.physical_support_status.ne("observed_same_native_lane")
+        measured.loc[unresolved, "measurement_status"] = "missing"
+        measured.loc[unresolved, "missing_reason"] = measured.loc[unresolved, "physical_support_status"]
+        measured.loc[unresolved, "reliable_following_eligible"] = False
+    return measured
 
 
 def block_descriptors(measured: pd.DataFrame, *, window: tuple[float, float],
                       block_s: float = BLOCK_S) -> dict[str, object]:
-    """Local state descriptors of a simulated run over the declared window."""
+    """Local point descriptors, common offset100 blocks, and D1 edge measurement.
+
+    Point exposure is retained only under an explicitly legacy field. Missing
+    historical identity columns produce an ineligible D1 result, never a rate.
+    """
+    from .stage_0_5_d1_measurement import offset100_cloud, inside_region, time_gap_values
+    from .stage_0_5_sumo import compute_local_d1_measurement
     low, high = window
-    lane_km = (REGION_END_M - REGION_START_M) / 1000.0 * len(MAINLINE_LANES)
-    subset = measured[
-        measured.lane_id.isin(list(MAINLINE_LANES))
-        & measured.y_m.ge(REGION_START_M) & measured.y_m.lt(REGION_END_M)
-        & measured.time_s.between(low, high, inclusive="left")
-    ]
+    subset = measured[inside_region(measured) & measured.time_s.ge(low) & measured.time_s.lt(high)]
     if subset.empty:
         raise StateSupportError("empty_simulated_local_state")
-    span = high - low
+    risk = compute_local_d1_measurement(measured, window)
     vehicle_s = len(subset) * DECLARED_FCD_PERIOD_S
-    blocks: list[dict[str, object]] = []
-    block_index = ((subset.time_s - low) // block_s).astype(int)
-    for index, part in subset.groupby(block_index, sort=True):
-        blocks.append({
-            "block_start_s": float(low + index * block_s),
-            "speed_mean_mps": float(part.speed_mps.mean()),
-            "density_veh_km_lane": len(part) * DECLARED_FCD_PERIOD_S / block_s / lane_km,
-            "low_speed_share": float((part.speed_mps < LOW_SPEED_MPS).mean()),
-            "closing_speed_mean_mps": float(part.closing_speed_mps.mean()),
-            "closing_speed_negative_share": float((part.closing_speed_mps < 0).mean()),
-        })
-    density = vehicle_s / span / lane_km
-    speed = float(subset.speed_mps.mean())
-    evaluable = subset[subset.measurement_status.isin(["valid", "not_applicable"])]
+    gaps = time_gap_values(subset.net_gap_m, subset.speed_mps, subset.closing_speed_mps,
+                           subset.leader_length_m if "leader_length_m" in subset else None)
+    time_gaps = {key: {"mean_s": float(np.nanmean(value)) if np.isfinite(value).any() else None,
+                       "defined_states": int(np.isfinite(value).sum()),
+                       "undefined_states": int((~np.isfinite(value)).sum())}
+                 for key, value in gaps.items()}
     return {
-        "status": "Observation",
-        "window_s": [low, high],
-        "states": int(len(subset)),
-        "local_vehicle_s": vehicle_s,
-        "density_veh_km_lane": density,
-        "speed_mean_mps": speed,
+        "status": "Observation", "measurement_version": "D1-offset100-v1",
+        "window_s": [low, high], "states": int(len(subset)), "local_vehicle_s": vehicle_s,
+        "density_veh_km_lane": vehicle_s / (high-low),
+        "speed_mean_mps": float(subset.speed_mps.mean()),
         "speed_sd_mps": float(subset.speed_mps.std(ddof=1)),
-        "flow_veh_h_lane_consistency": density * speed * 3.6,
-        "low_speed_share": float((subset.speed_mps < LOW_SPEED_MPS).mean()),
+        "flow_veh_h_lane_consistency": vehicle_s / (high-low) * float(subset.speed_mps.mean()) * 3.6,
+        "low_speed_share": float(subset.speed_mps.lt(LOW_SPEED_MPS).mean()),
         "closing_speed_mean_mps": float(subset.closing_speed_mps.mean()),
-        "closing_speed_negative_share": float((subset.closing_speed_mps < 0).mean()),
-        "net_gap_mean_m": float(subset.net_gap_m.mean()),
-        "net_gap_median_m": float(subset.net_gap_m.median()),
-        "tau_eff_ratio_s": (float((subset.net_gap_m.sum() - len(subset) * MIN_GAP_M)
-                                  / subset.speed_mps.sum())
-                            if subset.speed_mps.sum() > 0 else None),
-        "p2_evaluable_exposure_veh_s": float(len(evaluable) * DECLARED_FCD_PERIOD_S),
-        "blocks": blocks,
+        "closing_speed_negative_share": float(subset.closing_speed_mps.dropna().lt(0).mean()),
+        "closing_speed_defined_states": int(subset.closing_speed_mps.notna().sum()),
+        "net_gap_mean_m": float(subset.net_gap_m.mean()), "net_gap_median_m": float(subset.net_gap_m.median()),
+        "tau_eff_ratio_s": float((subset.net_gap_m.sum()-len(subset)*MIN_GAP_M)/subset.speed_mps.sum()) if subset.speed_mps.sum()>0 else None,
+        "p2_evaluable_exposure_veh_s": risk["local_evaluable_s"],
+        "legacy_point_evaluable_exposure_veh_s": float(subset.measurement_status.isin(["valid","not_applicable"]).sum())*.1,
+        "p2_local_rate_per_vehicle_hour": risk["rate_per_evaluable_vehicle_hour"],
+        "time_gaps": time_gaps, "local_d1": risk,
+        "blocks": offset100_cloud(measured, window, block_s=block_s).to_dict("records"),
+        "scientific_claim_eligible": False,
     }
       

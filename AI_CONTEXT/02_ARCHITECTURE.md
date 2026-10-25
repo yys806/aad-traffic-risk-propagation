@@ -1,5 +1,12 @@
 # AAD Architecture
 
+## 2026-10-25 C6/C7 offline phase
+
+物理FCD测量路径：parse_fcd同时输出映射y_m和native_position_m/native_lane_id；state_support用后者重建同原生车道物理净间距，前者只用于区域/offset100；D1测量入口由stage_0_5_sumo.compute_local_d1_measurement转入stage_0_5_d1_measurement。
+
+依据：`docs/STAGE_0_5_C6_C7_OFFLINE_DECISION_2026-10-25.md`；`evidence/results/RES-STAGE-0.5-C6-C7-OFFLINE-V1/`。
+
+
 ## 模型总体结构
 
 当前不存在已实现的可训练模型架构。正式系统是一个分阶段的确定性科研工程管线：

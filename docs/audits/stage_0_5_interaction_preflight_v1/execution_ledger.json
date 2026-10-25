@@ -1,0 +1,43 @@
+{
+  "task_id": "AAD-0.5-INTERACTION-DIAGNOSTICS-V1",
+  "authorization_date": "2026-10-25",
+  "authorization_source": "Researcher task specification v1.0 in this conversation",
+  "budget_source": "Explicit reallocation of historical FINAL-CLOSURE remaining three attempts; original ledgers unchanged",
+  "maximum_new_trajectory_attempts": 3,
+  "actual_attempts": 0,
+  "remaining_attempts": 3,
+  "protocol_frozen": false,
+  "status": "Awaiting Researcher Decision",
+  "software_tests": {
+    "latest_command": "python -m pytest tests/test_stage_0_5_d1_measurement.py tests/test_stage_0_5_state_support.py tests/test_stage_0_5_leader_replay.py tests/test_stage_0_5_trajectory_reconstruction.py -q -p no:cacheprovider --basetemp=tmp/interaction_measurement_03",
+    "passed": 50,
+    "failed": 0,
+    "new_trajectories": 0
+  },
+  "runs": [
+    {
+      "id": "ID1_SUPPLY_0750",
+      "status": "not_attempted",
+      "reason": "C6 measurement conflict and C7 baseline initialization preflight failure; draft not frozen"
+    },
+    {
+      "id": "ID2_SUPPLY_0805",
+      "status": "not_attempted",
+      "reason": "C6 measurement conflict and C7 baseline initialization preflight failure; draft not frozen"
+    },
+    {
+      "id": "ID3_RAMP_0750",
+      "status": "not_attempted",
+      "reason": "C6 measurement conflict and C7 baseline initialization preflight failure; draft not frozen"
+    }
+  ],
+  "additional_checks": {
+    "compileall_changed_new_modules": "passed",
+    "git_diff_check": "passed",
+    "validate_project_docs_strict_git": "PROJECT_DOCS_OK",
+    "existing_portable_evidence_verify": "PORTABLE_EVIDENCE_OK",
+    "full_pytest": "not_run_task_paused",
+    "pure_git_clone": "not_run_task_paused",
+    "new_result_registered": false
+  }
+}

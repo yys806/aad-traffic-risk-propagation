@@ -798,7 +798,8 @@
     "RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1",
     "RES-STAGE-0.5-METHOD-EXPANSION-V1",
     "RES-STAGE-0.5-STATE-SUPPORT-V1",
-    "RES-STAGE-0.5-ARRIVAL-TIMING-V1"
+    "RES-STAGE-0.5-ARRIVAL-TIMING-V1",
+    "RES-STAGE-0.5-C6-C7-OFFLINE-V1"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -3723,6 +3724,54 @@
     "H3_reading": "Supported"
    },
    "current_conclusion": "Restoring the real boundary arrival times does not close the interaction-compatibility gap. The mainline entry is queue-limited: declared mainline inter-arrival CV 0.25 vs 0.86 (0750) and 0.20 vs 0.91 (0805) collapses to realised 0.820 vs 0.831 and 0.788 vs 0.851, with mean insertion delays of 25-30 s and 4.5-5.6 s, so mainline arrival timing cannot be imposed at all. On-ramp arrival timing is imposed almost exactly (realised CV 1.397/1.412 vs 0.006/0.008). Under that de facto on-ramp-only contrast, speed dispersion moves toward the real value consistently (5/5 in both windows) but the closing-speed negative share worsens, the local P2 rate conflicts across windows, and no run reaches a corroborated upstream wave. Stage 0.5 therefore remains blocked by the interaction-compatibility layer, and boundary arrival structure is removed from the list of sufficient explanations. The corrected relative-speed wave diagnostic is validated and now discriminates real from simulated frames.",
+   "gate_status": "pending_simulation_sample",
+   "paper_locations": [
+    "docs/PAPER_AND_MATERIAL_SOURCES.md"
+   ],
+   "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-STAGE-0.5-C6-C7-OFFLINE-V1",
+   "experiment_id": "stage_0_5",
+   "name": "Offline physical gap repair and initialization policy comparison",
+   "status": "offline_measurement_verified_initialization_awaiting_decision",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-C6-C7-OFFLINE-V1/comparison_summary.json",
+    "evidence/results/RES-STAGE-0.5-C6-C7-OFFLINE-V1/execution_ledger.json",
+    "evidence/results/RES-STAGE-0.5-C6-C7-OFFLINE-V1/independent_verification.json",
+    "evidence/results/RES-STAGE-0.5-C6-C7-OFFLINE-V1/initialization_evidence.json",
+    "evidence/results/RES-STAGE-0.5-C6-C7-OFFLINE-V1/initialization_policy.json",
+    "evidence/results/RES-STAGE-0.5-C6-C7-OFFLINE-V1/provenance.json",
+    "evidence/results/RES-STAGE-0.5-C6-C7-OFFLINE-V1/raw_artifact_SHA256SUMS.txt",
+    "evidence/results/RES-STAGE-0.5-C6-C7-OFFLINE-V1/SHA256SUMS",
+    "evidence/results/RES-STAGE-0.5-C6-C7-OFFLINE-V1/test_record.json"
+   ],
+   "local_artifact_paths": [
+    "code/outputs/formal/calibration/stage_0_5_c6_c7_offline_v1"
+   ],
+   "code_version_source": "code/scripts/review_stage_0_5_c6_c7_offline.py; code/scripts/verify_stage_0_5_c6_c7_offline.py; source hashes in provenance.json",
+   "configuration_source": "initialization_policy.json (Proposed; no simulation protocol freeze)",
+   "data_version_source": "Two existing B_het seed20261201 FCDs only; input SHA256 in provenance.json",
+   "core_metrics": {
+    "new_trajectory_attempts": 0,
+    "before_N": [
+     7,
+     5
+    ],
+    "after_N": [
+     0,
+     0
+    ],
+    "before_E_veh_s": [
+     10904.0,
+     11633.0
+    ],
+    "after_E_veh_s": [
+     9754.8,
+     10456.7
+    ]
+   },
+   "current_conclusion": "Physical gaps repaired on explicitly observable same-native-lane support; unresolved connections downgraded. No scientific equivalence or zero-risk conclusion. Initialization A/B and three-run draft require researcher confirmation.",
    "gate_status": "pending_simulation_sample",
    "paper_locations": [
     "docs/PAPER_AND_MATERIAL_SOURCES.md"

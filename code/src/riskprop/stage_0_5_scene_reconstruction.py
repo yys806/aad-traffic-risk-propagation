@@ -485,19 +485,20 @@ def parse_fcd(path: Path, edge_lengths: dict[str, float] | None = None) -> pd.Da
         elif event == "end" and element.tag == "vehicle":
             lane = element.get("lane", "")
             edge, _, index_text = lane.rpartition("_")
-            position = float(element.get("pos"))
+            native_position = float(element.get("pos"))
+            position = native_position
             if edge in REAL_SPAN_M and edge in edge_lengths and edge_lengths[edge] > 0:
                 low, high = REAL_SPAN_M[edge]
                 position = low + position * (high - low) / edge_lengths[edge]
             elif edge == "onramp":
                 position = position + ONRAMP_OBSERVED_START_M
             records.append(
-                (current, element.get("id"), edge, int(index_text), position, float(element.get("speed")))
+                (current, element.get("id"), edge, int(index_text), position, float(element.get("speed")), native_position, lane)
             )
             element.clear()
         elif event == "end" and element.tag == "timestep":
             element.clear()
-    frame = pd.DataFrame(records, columns=["time_s", "vehicle_id", "edge", "lane_index", "y_m", "speed_mps"])
+    frame = pd.DataFrame(records, columns=["time_s", "vehicle_id", "edge", "lane_index", "y_m", "speed_mps", "native_position_m", "native_lane_id"])
     frame["lane_id"] = None
     for prefix, width in (("main_0", 5), ("main_1", 6), ("main_2", 5)):
         subset = frame[frame.edge == prefix]

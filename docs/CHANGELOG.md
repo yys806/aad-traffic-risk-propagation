@@ -1,5 +1,12 @@
 # AAD 项目信息结构变更记录
 
+## 2026-10-25 C6/C7 offline phase
+
+2026-10-25：C6物理测量修复与C7离线决策材料，0次新轨迹；历史结果保留，Gate不变。
+
+依据：`docs/STAGE_0_5_C6_C7_OFFLINE_DECISION_2026-10-25.md`；`evidence/results/RES-STAGE-0.5-C6-C7-OFFLINE-V1/`。
+
+
 ## 2026-10-24 — Issue #1 工作包1证据审计与冻结候选
 
 新增[专项审计](STAGE_0_5_WP1_EVIDENCE_AUDIT.md)、[冻结候选v1](STAGE_0_5_ACCEPTANCE_FREEZE_CANDIDATE_V1.md)与新版本聚合证据/离线脚本/边界测试。C4两源支持域冲突由复算关闭，其余C项部分解决但科研选择未批；R1–R5压缩为明确选项。修正活动入口和已知问题内部矛盾，原草案验证区分历史时态。无生产算法/科研决定/Gate变化、无新轨迹与正式结果覆盖；验证见[记录](STAGE_0_5_WP1_VALIDATION.md)。

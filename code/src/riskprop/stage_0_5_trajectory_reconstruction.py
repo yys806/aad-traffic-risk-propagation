@@ -606,8 +606,9 @@ def interaction_stats(
     subset = frame[frame.lane_id.isin(lanes) & frame.y_m.ge(region[0]) & frame.y_m.lt(region[1]) & frame.time_s.between(low, high, inclusive="left")]
     gap = subset.net_gap_m.dropna()
     closing = subset.closing_speed_mps.dropna()
-    time_headway = np.where(closing.to_numpy() > 0, gap.to_numpy()[: len(closing)] / np.where(closing.to_numpy() > 0, closing.to_numpy(), np.nan), np.nan)
-    time_headway = time_headway[np.isfinite(time_headway)]
+    from .stage_0_5_d1_measurement import time_gap_values
+    values = time_gap_values(subset.net_gap_m, subset.speed_mps, subset.closing_speed_mps,
+                             subset.leader_length_m if "leader_length_m" in subset else None)
     return {
         "status": "Observation",
         "region_m": list(region),
@@ -622,7 +623,10 @@ def interaction_stats(
         "net_gap_m": _describe(gap),
         "closing_speed_mps": _describe(closing),
         "closing_speed_negative_share": float((closing < 0).mean()),
-        "net_gap_over_speed_s": _describe(pd.Series(time_headway)) if len(time_headway) else None,
+        "time_gap_schema": "explicit-time-gap-v1",
+        "legacy_field_replacements": {"net_gap_over_speed_s": "closing_time_proxy_s"},
+        **{key: _describe(pd.Series(value)) for key, value in values.items()},
+        "time_gap_undefined_counts": {key: int((~np.isfinite(value)).sum()) for key, value in values.items()},
     }
 
 

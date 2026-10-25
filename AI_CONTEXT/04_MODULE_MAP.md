@@ -1,5 +1,12 @@
 # AAD Module Map
 
+## 2026-10-25 C6/C7 offline phase
+
+新增stage_0_5_d1_measurement.py（连续边与offset100）；review_stage_0_5_c6_c7_offline.py（零轨迹离线对照）；verify_stage_0_5_c6_c7_offline.py（独立物理/事件成员核验）。interaction_diagnostic_worker.py是未冻结运行草案，当前禁止运行。
+
+依据：`docs/STAGE_0_5_C6_C7_OFFLINE_DECISION_2026-10-25.md`；`evidence/results/RES-STAGE-0.5-C6-C7-OFFLINE-V1/`。
+
+
 ## 导航表
 
 | 模块分类 | 核心文件 | 职责 | 核心类 | 核心函数 | 调用关系 | 主要依赖 |

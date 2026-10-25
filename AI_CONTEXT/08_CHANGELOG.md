@@ -1,5 +1,19 @@
 # AAD AI Context Changelog
 
+## 2026-10-25 C6/C7 offline phase
+
+2026-10-25 C6/C7授权离线阶段：原生物理坐标保留、跟驰测量限定、D1接入、逐状态TTC/事件成员对照与独立校验；新便携工程证据登记。0次新轨迹，历史证据不改。Context Consistency Check同步00/02/03/04/05/06/07/08及注册表/研究状态/索引；整体诊断仍待初始化决策。
+
+依据：`docs/STAGE_0_5_C6_C7_OFFLINE_DECISION_2026-10-25.md`；`evidence/results/RES-STAGE-0.5-C6-C7-OFFLINE-V1/`。
+
+
+## 2026-10-25 Interaction diagnostics preflight
+
+2026-10-25 interaction diagnostics preflight (incomplete, uncommitted): task authorization/3-attempt budget recorded; continuous-edge/offset100 and explicit time-gap engineering changes have50 passing related tests. Offline evidence identifies C6/C7 and stops protocol freeze/new trajectories (0/3). Context Consistency Check:00/05/06/07/08 updated for authorization, facts and blockers; existing architecture remains the committed baseline until engineering changes are accepted. No formal result, Gate or historical artifact rewritten.
+
+Evidence: `docs/STAGE_0_5_INTERACTION_DIAGNOSTICS_2026-10-25.md`; `docs/audits/stage_0_5_interaction_preflight_v1/preflight.json`; `execution_ledger.json` in the same directory.
+
+
 ## 2026-10-24 — Issue #1 工作包1证据审计与冻结候选
 
 新增离线审计入口/7项合成边界测试、新版本聚合审计（104输入SHA，2真实+74既有模拟表），C1真实N/E和既有模拟N/点E复现、C2三种共同分块敏感性、C3公式映射、C4全采集/内部窗混用erratum、C5计划/执行反事实。C4两源Resolved by evidence；其他四项Partially resolved，科研选择/生产修复待决。补充源码freeze SHA不一致与48/43历史进程计数不确定性，不覆盖旧产物。

@@ -1,5 +1,12 @@
 # AAD 结果索引
 
+## 2026-10-25 C6/C7 offline phase
+
+RES-STAGE-0.5-C6-C7-OFFLINE-V1：两基线物理测量离线修复、初始化A/B比较；纯工程证据，新轨迹0，Gate未变。
+
+依据：`docs/STAGE_0_5_C6_C7_OFFLINE_DECISION_2026-10-25.md`；`evidence/results/RES-STAGE-0.5-C6-C7-OFFLINE-V1/`。
+
+
 > 核对日期：2026-09-10。以下结果均不能支持核心科学效应声明。
 
 ## RES-STAGE-0.1-INFRASTRUCTURE-V3
@@ -322,3 +329,7 @@ B1.2前置接入工程阻断，主矩阵未冻结/未运行；报告`docs/STAGE_
 第三窗口读取 0 次、locked holdout 0 次。Gate 保持 `pending_simulation_sample`；`protocol_lock_allowed=false`、`stage_1_1_allowed=false`。
 
 报告 `docs/STAGE_0_5_ARRIVAL_TIMING_DIAGNOSTICS.md`；计划 `docs/plans/2026-10-21-stage-0-5-arrival-timing.md`；证据 `evidence/results/RES-STAGE-0.5-ARRIVAL-TIMING-V1/`。
+
+## RES-STAGE-0.5-C6-C7-OFFLINE-V1
+
+离线物理测量修复与初始化决策材料；0次新轨迹，政策未确认，Gate不变。报告 `docs/STAGE_0_5_C6_C7_OFFLINE_DECISION_2026-10-25.md`；便携证据 `evidence/results/RES-STAGE-0.5-C6-C7-OFFLINE-V1/`。

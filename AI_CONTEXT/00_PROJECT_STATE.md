@@ -1,5 +1,19 @@
 # AAD Current State Snapshot
 
+## 2026-10-25 C6/C7 offline phase
+
+C6修复获研究者明确授权并完成两份旧FCD离线重测；物理间距与映射空间分离，跨路段/连接段不可观测关系降级。C7政策A/B待研究者确认，运行计划未冻结，0/3次新轨迹；不是WP2–WP5整体完成。
+
+依据：`docs/STAGE_0_5_C6_C7_OFFLINE_DECISION_2026-10-25.md`；`evidence/results/RES-STAGE-0.5-C6-C7-OFFLINE-V1/`。
+
+
+## 2026-10-25 Interaction diagnostics preflight
+
+Current task AAD-0.5-INTERACTION-DIAGNOSTICS-V1: **Awaiting Researcher Decision**. D1 engineering edits are uncommitted; 50 related software tests pass and two historical baseline N/E checks match the independent oracle. Preflight confirms C6 (scaled spatial coordinates used as physical gaps) and C7 (one initial vehicle remains locally at120s in0750). Protocol not frozen; new trajectory attempts0/3; WP2–WP5 not complete. Gate unchanged.
+
+Evidence: `docs/STAGE_0_5_INTERACTION_DIAGNOSTICS_2026-10-25.md`; `docs/audits/stage_0_5_interaction_preflight_v1/preflight.json`; `execution_ledger.json` in the same directory.
+
+
 ## 2026-10-24 Issue #1：工作包1证据审计与冻结候选（优先入口）
 
 新增 [证据审计与非覆盖式更正](../docs/STAGE_0_5_WP1_EVIDENCE_AUDIT.md) 和 [冻结候选 WP1-FC-v1](../docs/STAGE_0_5_ACCEPTANCE_FREEZE_CANDIDATE_V1.md)，状态 **Proposed / Awaiting Researcher Decision，未正式冻结**。在基线 `c94e6cc` 上离线核验2个已访问真实校准源与74份既有模拟输出，无新轨迹/额度消耗、第三窗轨迹/locked holdout访问。
