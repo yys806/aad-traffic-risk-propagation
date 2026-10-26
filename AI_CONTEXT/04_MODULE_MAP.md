@@ -1,5 +1,9 @@
 # AAD Module Map
 
+## 2026-10-26 WSL隔离扩展
+
+新增stage_0_5_linux_isolation（内核broker）、probe_stage_0_5_linux_isolation（合成原生探针）、stage_0_5_isolation_admission（重算/拒绝）、prepare_stage_0_5_wsl_b00（重绑）及test_stage_0_5_linux_isolation。前七项测量/核心算法不变，能力证据不等于当前任务Accepted。依据：`docs/STAGE_0_5_WSL_ISOLATION_2026-10-26.md`。
+
 ## 2026-10-26 V3模块
 
 新增`stage_0_5_acceptance_v3.py`（八项真实证据验收）、`stage_0_5_admission_v3.py`（技术预检/精确因子保真）、`prepare_stage_0_5_admission_v3.py`（不可覆盖版本化包/依赖绑定/验证）、`validate_stage_0_5_admission_v3.py`（无数据测试入口）、`run_stage_0_5_admission_v3.py`（明确preflight/锁定execute入口）；测试`test_stage_0_5_admission_v3.py`。修改execution/identity/input_fidelity/research_ledger工程层，核心riskprop科学算法不改。OS后端未配置，不能因接口实现宣称Ready。

@@ -1,5 +1,9 @@
 # AAD Current State Snapshot
 
+## 2026-10-26 WSL限范围解阻（最新：仍未Ready）
+
+显式授权后，WSL工作目录固定/home/shen/AAD（非Git checkout），只新增code/tmp独立临时探针。Linux namespace/Landlock3/seccomp/systemd-cgroup六组14判据成立，含文件/子进程/网络/资源及失败保留；证据已接入预检和第八项验收。现有Linux SUMO1.18不同于提案Windows1.26，Python缺必要依赖，完整控制器capsule未成立。四false、硬锁、历史Not Accepted和全部科研Gate不变，0 SUMO/netconvert/真实TraCI/新轨迹。只做相关回归，不重跑1130项；candidate-v3仍BLOCKED_ENGINEERING。依据：`docs/STAGE_0_5_WSL_ISOLATION_2026-10-26.md`；下方为历史时点。
+
 ## 2026-10-26 V3首次准入工程（当前：未Ready）
 
 任务AAD-0.5-READY-TO-ADMIT-V3：八项验收已改为实际封存产物/身份日志重建/正式C6-D1/逐格时间与右端点/供给回读/资源/隔离证据推导，增加TripInfo未完成/未出发输出。0750四臂有独立具体输入候选，首个建议B00 DS38 seed20261201；仍Proposed，0805暂停。新预算/账本独立、实际0次；旧C6、账本、提案和既有manifest未改。Windows无已配置容器入口，WSL启动能力探针被自动审批按AGENTS拒绝，未执行；OS隔离仍Unknown/Blocked，原生硬锁保留，不能报告READY_FOR_RESEARCHER_APPROVAL。三个执行标志及accepted_for_new_task均false，历史事故Not Accepted，Gate/δ/h/B/Stage1.1不变，0 SUMO/0真实TraCI/0新轨迹。

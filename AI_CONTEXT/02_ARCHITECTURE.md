@@ -1,5 +1,9 @@
 # AAD Architecture
 
+## 2026-10-26 WSL OS守卫（最新）
+
+新增Linux namespace/Landlock/seccomp/cgroup限容broker，真实无害进程验证；capability binder从原始观测/内核计数重算，预检区分Linux能力和Windows运行时适用性。第八项缺真实单次receipt仍Unknown；NativeBackend未来解除锁后仍拒绝裸宿主。完整控制器接线因1.26运行时/依赖缺失未成立，锁不变。依据：`docs/STAGE_0_5_WSL_ISOLATION_2026-10-26.md`；下方为历史时点。
+
 ## 2026-10-26 V3证据验收链
 
 execution_v2调用新增acceptance_v3，八项Pass/Reject/Unknown由实际产物和原测量器推导，移除八项硬编码；admission_v3把工程阻断与授权未决分开。IdentityObserver增加TripInfo对照，NativeBackend增加逐步原生时钟/五车道回读及错误早停、资源采样历史与最终验收绑定；ResearchLedger新增显式task_id参数以保留旧账本默认语义并支持独立V3。原生OS执行器/证明仍缺，构建锁True，软件Replay不是原生证书。

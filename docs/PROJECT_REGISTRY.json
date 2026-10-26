@@ -248,11 +248,17 @@
   "docs/audits/stage_0_5_ready_to_admit_v3/final_blockers.json",
   "docs/audits/stage_0_5_ready_to_admit_v3/package_verification_environment.json",
   "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v2/proposal.json",
-  "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v2/manifest.json"
+  "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v2/manifest.json",
+  "docs/STAGE_0_5_WSL_ISOLATION_2026-10-26.md",
+  "docs/audits/stage_0_5_wsl_isolation_v1/probe/record.json",
+  "docs/audits/stage_0_5_wsl_isolation_v1/validation_record.json",
+  "docs/audits/stage_0_5_wsl_isolation_v1/manifest.json",
+  "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v3/proposal.json",
+  "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v3/manifest.json"
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-0.5-READY-TO-ADMIT-V3: evidence-derived acceptance chain and concrete four-arm input preparation; BLOCKED_ENGINEERING because no admitted OS isolation. WSL start probe rejected before execution. Zero SUMO/real TraCI/new trajectories; no Gate change.",
+  "active_task": "AAD-0.5-READY-TO-ADMIT-V3 isolation unblock: authorized Ubuntu harmless kernel probes verified; Windows SUMO1.26 / Linux1.18 runtime and controller capsule incompatible; BLOCKED_ENGINEERING. Zero SUMO/netconvert/real TraCI/new trajectories.",
   "why_now": "Researcher explicitly removed old three-attempt restriction for new research; historical ledgers and failed ID1 remain immutable. Need matched baseline and factorial contrasts under reviewed measurement.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
@@ -297,13 +303,13 @@
   ],
   "admission_v3": {
    "status": "BLOCKED_ENGINEERING",
-   "audit_root": "docs/audits/stage_0_5_ready_to_admit_v3",
+   "audit_root": "docs/audits/stage_0_5_wsl_isolation_v1",
    "candidate_root": "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3",
    "accepted_for_new_task": false,
-   "latest_candidate": "candidate-v2",
-   "proposal_sha256": "978fe0222a3fc00bb7a92b8c9065a204df0233449c6f778070628876864f6edc",
+   "latest_candidate": "candidate-v3",
+   "proposal_sha256": "80d9805c01b919193f22fd7cf759f7fb1f9f882010f2f0de385e193f915e2379",
    "first_proposed_run_id": "V3_0750_B00_DS38_s20261201",
-   "software_validation": "163 passed / 1 skipped targeted; 1130 passed / 15 skipped / 7 native deselected full; native isolation remains blocked"
+   "software_validation": "150 passed / 1 skipped targeted; old 1130-pass full regression reused only for unchanged scientific sources, not rerun; Linux capability14/14 verified, runtime admission remains blocked"
   }
  },
  "experiments": [
@@ -1012,7 +1018,7 @@
     "third_window_rows_materialised",
     "zotero_items_added"
    ],
-   "current_conclusion": "V3 evidence-derived acceptance and exact 0750 candidate inputs prepared; no native simulation. OS isolation remains unproved and WSL capability probe was rejected by approval review, so NOT READY_FOR_RESEARCHER_APPROVAL. DS38/B00-first and later factorial design remain Proposed; scientific Gate unchanged.",
+   "current_conclusion": "Authorized WSL harmless native isolation probes verified14/14; current Windows1.26 proposal cannot reuse Linux1.18 runtime/controller. candidate-v3 remains BLOCKED_ENGINEERING, flags false, scientific Gate unchanged, no new simulation.",
    "gate": {
     "status": "pending_simulation_sample",
     "portable_path": "evidence/results/RES-STAGE-0.5-REAL-REF-R2/audit.json"

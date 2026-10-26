@@ -1,5 +1,9 @@
 # AAD 当前科研状态
 
+## 2026-10-26 WSL解阻（最新）
+
+获准启动后完成真实无害Linux隔离验证，六组14判据成立。Linux1.18与已绑定Windows1.26及控制器不相容，仍未Ready；没有科研实验，四false/硬锁/Gate/δ/h/B/Stage1.1和历史Not Accepted不变。依据：`docs/STAGE_0_5_WSL_ISOLATION_2026-10-26.md`；下方为历史时点。
+
 ## 2026-10-26 V3首次准入工程（当前）
 
 八项证据验收/TripInfo/逐步控制/精确四臂输入/独立账本已接线；只作软件验证，无新实验。OS隔离能力探针被自动审批依据WSL启停限制拒绝，未执行；原生隔离Unknown、硬锁保留，未达到READY_FOR_RESEARCHER_APPROVAL。DS38/B00先行仍Proposed，i0007去向未证；Gate/δ/h/B/Stage1.1与历史事故Not Accepted不变。

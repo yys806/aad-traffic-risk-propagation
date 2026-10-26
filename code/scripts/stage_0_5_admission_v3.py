@@ -15,6 +15,7 @@ TASK = "AAD-0.5-READY-TO-ADMIT-V3"
 MANDATORY_SOURCES = ["code/scripts/" + n + ".py" for n in [
     "stage_0_5_execution_v2", "stage_0_5_identity_observation", "stage_0_5_input_fidelity", "stage_0_5_isolation_v2",
     "stage_0_5_research_ledger", "stage_0_5_acceptance_v3", "stage_0_5_admission_v3", "prepare_stage_0_5_admission_v3", "validate_stage_0_5_admission_v3", "validate_stage_0_5_research_v2", "run_stage_0_5_admission_v3"]]
+MANDATORY_SOURCES += ["code/scripts/"+n+".py" for n in ["stage_0_5_linux_isolation","stage_0_5_isolation_admission","probe_stage_0_5_linux_isolation","prepare_stage_0_5_wsl_b00"]]
 MANDATORY_SOURCES += ["code/src/riskprop/" + n + ".py" for n in ["stage_0_5_scene_reconstruction", "stage_0_5_state_support",
     "stage_0_5_d1_measurement", "stage_0_5_sumo", "formal_risk_measurement"]]
 
@@ -81,7 +82,7 @@ def technical_preflight(repo, proposal_path, run_id, *, resource_sample=None):
     try:
         if not set(MANDATORY_SOURCES) <= set(p["source_sha256"]):
             raise ValueError("missing_execution_or_measurement_source_binding")
-        extra=set(p["source_sha256"])-set(MANDATORY_SOURCES)-{"code/tests/test_stage_0_5_admission_v3.py","AGENTS.md"}
+        extra=set(p["source_sha256"])-set(MANDATORY_SOURCES)-{"code/tests/test_stage_0_5_admission_v3.py","code/tests/test_stage_0_5_linux_isolation.py","AGENTS.md"}
         if any(not n.startswith("code/src/riskprop/") or not n.endswith(".py") for n in extra):
             raise ValueError("unregistered_source_role")
         if not p.get("external_file_sha256") or p.get("native_binary") not in p["external_file_sha256"]:
@@ -101,8 +102,13 @@ def technical_preflight(repo, proposal_path, run_id, *, resource_sample=None):
         scope = Scope(repo, bindings, run["artifact_path"])
         snapshots = {n:scope.read_bound(n) for n in bindings}
         software=json.loads(snapshots[p["software_validation_path"]])
-        if (software.get("source_sha256")!=p["source_sha256"] or software.get("targeted",{}).get("exit_code")!=0
-                or software.get("full",{}).get("exit_code")!=0):raise ValueError("software_validation_source_mismatch")
+        if software.get("validation_mode")=="isolation_targeted_extension":
+            from stage_0_5_isolation_admission import software_extension_verified
+            software_valid=software_extension_verified(repo,software,p["source_sha256"])
+        else:
+            software_valid=(software.get("source_sha256")==p["source_sha256"] and software.get("targeted",{}).get("exit_code")==0
+                            and software.get("full",{}).get("exit_code")==0)
+        if not software_valid:raise ValueError("software_validation_source_mismatch")
         if set(run["input_files"]) != {"network.net.xml","routes.rou.xml","run.sumocfg"} or set(run["input_files"].values()) != set(run["input_sha256"]):
             raise ValueError("inexact_input_file_map")
         validate_config(snapshots[run["input_files"]["run.sumocfg"]],run)
@@ -139,6 +145,10 @@ def technical_preflight(repo, proposal_path, run_id, *, resource_sample=None):
             errors.append("fresh_resource_preflight_required")
         if p["isolation"].get("accepted_for_new_task") is not True:
             errors.append("OS_native_isolation_not_accepted")
+        if p["isolation"].get("capability_evidence_path"):
+            from stage_0_5_isolation_admission import capability_report,runtime_reasons
+            capability=capability_report(repo,p["isolation"]["capability_evidence_path"],p["isolation"]["capability_evidence_sha256"])
+            errors.extend(runtime_reasons(p,capability))
         if NATIVE_LAUNCH_LOCKED:
             errors.append("native_build_remains_locked_pending_OS_acceptance_and_review")
     except (KeyError, ValueError, OSError) as error:

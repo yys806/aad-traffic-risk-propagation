@@ -1,5 +1,9 @@
 # AAD AI Context Changelog
 
+## 2026-10-26 WSL隔离能力解阻
+
+限范围授权后完成六组真实无害Linux内核探针/14判据，新增broker/能力绑定/拒绝接线/B00重绑与回归。0 SUMO/netconvert/真实TraCI/新轨迹，无包/权限/系统配置变化。能力Verified不替代Windows1.26隔离，任务仍BLOCKED_ENGINEERING；科研状态不变。依据：`docs/STAGE_0_5_WSL_ISOLATION_2026-10-26.md`。
+
 ## 2026-10-26 V3准入工程与OS阻断
 
 增加真实八项验收、身份日志重建/TripInfo、完整帧与18单元右端点/参考核对、供给回读/错误早停、资源历史、独立V3预算账本和精确四臂输入/依赖包。首轮失败记录保留后修复；验证记录另存。旧C6/旧账本/旧提案/既有manifest不改。原生OS探针未获准执行、Ready未达到；0 SUMO/0 TraCI/0新轨迹，全部科学Gate与未决项保留。

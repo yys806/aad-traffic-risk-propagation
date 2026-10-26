@@ -1,5 +1,9 @@
 # AAD 项目索引
 
+## 2026-10-26 WSL解阻入口（最新）
+
+`docs/STAGE_0_5_WSL_ISOLATION_2026-10-26.md`；`docs/audits/stage_0_5_wsl_isolation_v1/`；`evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v3/`。Linux无害证据Verified，当前运行时/控制器不兼容，仍未Ready；下方为历史时点。
+
 ## 2026-10-26 V3准入工程入口
 
 `docs/STAGE_0_5_READY_TO_ADMIT_V3_2026-10-26.md`；`docs/plans/2026-10-26-stage-0-5-ready-to-admit-v3.md`；`docs/audits/stage_0_5_ready_to_admit_v3/`；独立版本化包`evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/`。八项实际验收软件链与具体输入可审查，OS隔离为真实阻断，不是可翻转授权标志，当前不能Ready。既有manifest不改。

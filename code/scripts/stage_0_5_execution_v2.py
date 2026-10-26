@@ -264,6 +264,8 @@ class NativeBackend:
         # Defense in depth if a later reviewed build changes the constant.
         if gate_reasons(context["proposal"], context["approval"], context["run"]["id"], context["proposal_sha256"], task_id=context["budget_task_id"]):
             raise AdmissionRefused("native_backend_gate_failed")
+        from stage_0_5_isolation_admission import require_native_context
+        require_native_context(context)
         command = context["native_command"]
         if context["scope"].used:
             raise AdmissionRefused("single_process_only")

@@ -1,5 +1,9 @@
 # AAD Known Issues
 
+## 2026-10-26 WSL解阻后阻断（最新）
+
+Linux无害capsule已验证，仍缺与Windows SUMO1.26匹配的完整控制器：WSL只有SUMO1.18/TraCI20，系统Python缺numpy/pandas/pyarrow/psutil。未换版本或安装；新候选保持阻断、四false与硬锁。/home/shen/AAD非Git checkout，只作临时探针父目录；历史偏差/i0007未解决。依据：`docs/STAGE_0_5_WSL_ISOLATION_2026-10-26.md`；下方为历史时点。
+
 ## 2026-10-26 V3真实阻断
 
 OS级隔离仍Unknown/Blocked，WSL能力探针被审批拒绝且未执行；不存在已验收的原生隔离驱动/证书，硬锁True。因此不可报告Ready。TripInfo与完整时间/身份/干预/资源验收已实现但仅软件验证，实际插入/原生运行仍未知。i0007旧日志不证明discard归属，保留原输入的首个B00可能早停；不能通过丢弃该车或复用不合格基线消除问题。旧提案输入/环境占位不作当前绑定；新包变化会使旧候选SHA失效，历史manifest不重写。

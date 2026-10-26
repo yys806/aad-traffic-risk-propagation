@@ -1,0 +1,185 @@
+{
+  "b": {
+    "cases": [
+      {
+        "elapsed_s": 0.6319482040000004,
+        "exit_code": 1,
+        "mode": "basic",
+        "stderr_sha256": "3ecaf8c40c948e7d6942f172cec94d6c57ca8916d58ad3447151e4fc2685b1b8"
+      },
+      {
+        "elapsed_s": 0.526282032000001,
+        "exit_code": 1,
+        "mode": "output",
+        "stderr_sha256": "3ecaf8c40c948e7d6942f172cec94d6c57ca8916d58ad3447151e4fc2685b1b8"
+      },
+      {
+        "elapsed_s": 0.5558582050000016,
+        "exit_code": 1,
+        "mode": "pids",
+        "stderr_sha256": "3ecaf8c40c948e7d6942f172cec94d6c57ca8916d58ad3447151e4fc2685b1b8"
+      },
+      {
+        "elapsed_s": 0.5319953569999996,
+        "exit_code": 1,
+        "mode": "memory",
+        "stderr_sha256": "3ecaf8c40c948e7d6942f172cec94d6c57ca8916d58ad3447151e4fc2685b1b8"
+      },
+      {
+        "elapsed_s": 0.6319228050000003,
+        "exit_code": 1,
+        "mode": "timeout",
+        "stderr_sha256": "3ecaf8c40c948e7d6942f172cec94d6c57ca8916d58ad3447151e4fc2685b1b8"
+      }
+    ],
+    "first_stderr": "ISOLATION_CHILD_ERROR=PermissionError(13, 'Permission denied')\nTraceback (most recent call last):\n  File \"/home/shen/AAD/code/tmp/v3_isolation_20261026_b/stage_0_5_linux_isolation.py\", line 254, in <module>\n    raise SystemExit(child(sys.argv[2],sys.argv[3]))\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/shen/AAD/code/tmp/v3_isolation_20261026_b/stage_0_5_linux_isolation.py\", line 223, in child\n    os.kill(-1,signal.SIGKILL)\nProcessLookupError: [Errno 3] No such process\n",
+    "record_sha256": "0eb70c036f8ba9e8c81521ae725878238b4018a0280eb94355ef1cfbcfbe60b2"
+  },
+  "c": {
+    "cases": [
+      {
+        "elapsed_s": 0.5808517090000009,
+        "exit_code": 125,
+        "mode": "basic",
+        "stderr_sha256": "3849bbd66384819dc9c9bfa091bf5a5c9b70ededcc7ee850ff632bd7ad6dd700"
+      },
+      {
+        "elapsed_s": 0.5597295179999833,
+        "exit_code": 125,
+        "mode": "output",
+        "stderr_sha256": "3849bbd66384819dc9c9bfa091bf5a5c9b70ededcc7ee850ff632bd7ad6dd700"
+      },
+      {
+        "elapsed_s": 0.5323846340000102,
+        "exit_code": 125,
+        "mode": "pids",
+        "stderr_sha256": "3849bbd66384819dc9c9bfa091bf5a5c9b70ededcc7ee850ff632bd7ad6dd700"
+      },
+      {
+        "elapsed_s": 0.4646434850000105,
+        "exit_code": 125,
+        "mode": "memory",
+        "stderr_sha256": "3849bbd66384819dc9c9bfa091bf5a5c9b70ededcc7ee850ff632bd7ad6dd700"
+      },
+      {
+        "elapsed_s": 0.46149059399999715,
+        "exit_code": 125,
+        "mode": "timeout",
+        "stderr_sha256": "3849bbd66384819dc9c9bfa091bf5a5c9b70ededcc7ee850ff632bd7ad6dd700"
+      }
+    ],
+    "first_stderr": "ISOLATION_CHILD_ERROR=PermissionError(13, 'Permission denied')\nTraceback (most recent call last):\n  File \"/home/shen/AAD/code/tmp/v3_isolation_20261026_c/stage_0_5_linux_isolation.py\", line 218, in child\n    os.execv(policy[\"argv\"][0],policy[\"argv\"])\nPermissionError: [Errno 13] Permission denied\n",
+    "record_sha256": "6e29217df3b8abd12232cb2109f99d588355118c29a448459db1393ec1f460ca"
+  },
+  "d": {
+    "cases": [
+      {
+        "elapsed_s": 0.6560260379999932,
+        "exit_code": 0,
+        "mode": "basic",
+        "observations": {
+          "allowed_read": true,
+          "allowed_write": true,
+          "child_inherits_denial": true,
+          "external_network": {
+            "denied": true,
+            "errno": 101
+          },
+          "forbidden_read": {
+            "denied": true,
+            "errno": 13
+          },
+          "forbidden_write": {
+            "denied": true,
+            "errno": 13
+          },
+          "host_loopback": {
+            "denied": true,
+            "errno": 111
+          },
+          "host_unix_socket": {
+            "denied": true,
+            "errno": 1
+          },
+          "isolated_loopback_works": true,
+          "namespace_escape": {
+            "denied": true,
+            "errno": 1
+          },
+          "namespace_ids": {
+            "ipc": "ipc:[4026532291]",
+            "mnt": "mnt:[4026532289]",
+            "net": "net:[4026532293]",
+            "pid": "pid:[4026532292]",
+            "user": "user:[4026532288]"
+          },
+          "output_symlink": {
+            "denied": true,
+            "errno": 13
+          },
+          "readonly_input": {
+            "denied": true,
+            "errno": 30
+          },
+          "status": {
+            "CapEff": "0000000000000000",
+            "NoNewPrivs": "1",
+            "Seccomp": "2"
+          },
+          "unregistered_exec": {
+            "denied": true,
+            "errno": 13
+          },
+          "vsock": {
+            "denied": true,
+            "errno": 1
+          }
+        },
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "elapsed_s": 0.6300624840000069,
+        "exit_code": 0,
+        "mode": "output",
+        "observations": {
+          "aggregate_tmpfs_limit": {
+            "denied": true,
+            "errno": 28
+          },
+          "per_file_limit": {
+            "denied": true,
+            "errno": 27
+          }
+        },
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "elapsed_s": 0.650029021999984,
+        "exit_code": 0,
+        "mode": "pids",
+        "observations": {
+          "pids_limit": {
+            "denied": true,
+            "errno": 11,
+            "spawned": 5
+          }
+        },
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "elapsed_s": 0.6641257810000241,
+        "exit_code": 1,
+        "mode": "memory",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "elapsed_s": 2.2975225859999853,
+        "exit_code": 1,
+        "mode": "timeout",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "first_stderr": "",
+    "record_sha256": "c346f7f798d18984108c3035cf5ac2eda133b2c47224e25b9e6cf87327f7192f"
+  }
+}

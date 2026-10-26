@@ -137,9 +137,17 @@ def resource_acceptance(context):
 
 
 def isolation_acceptance(context):
+    capability = None
+    declared = context.get("proposal", {}).get("isolation", {})
+    if declared.get("capability_evidence_path"):
+        from stage_0_5_isolation_admission import capability_report
+        try:
+            capability = capability_report(context["scope"].repo, declared["capability_evidence_path"], declared["capability_evidence_sha256"])
+        except (ValueError, KeyError, OSError) as error:
+            return verdict(dict(capability_binding=False), reason=str(error))
     report = context.get("runtime_evidence", {}).get("isolation")
     if not isinstance(report,dict) or not report:
-        return verdict(None, reason="OS_runtime_evidence_missing")
+        return verdict(None, reason="OS_runtime_evidence_missing", evidence=capability)
     native_kind = (report.get("kind") == "OS_enforced" and report.get("backend") in {"linux-userns", "windows-appcontainer"}
                    and context.get("native_enforcement_verified") is True)
     synthetic_kind = report.get("kind") == "synthetic_kernel_transcript" and context.get("synthetic_only") is True
@@ -149,7 +157,7 @@ def isolation_acceptance(context):
                         exact_bindings=bool(context.get("binding_sha256")) and report.get("binding_sha256") == context.get("binding_sha256"),
                         enforcement_probes=required == set(probes) and all(v is True for v in probes.values()),
                         transcript_bound=bool(report.get("transcript_sha256")) and report.get("transcript_sha256") in context.get("isolation_transcript_sha256", [])),
-                   evidence=dict(kind=report.get("kind"), native_certificate=native_kind))
+                   evidence=dict(kind=report.get("kind"), native_certificate=native_kind, capability=capability))
 
 
 def assess_capsule(context, identity):
