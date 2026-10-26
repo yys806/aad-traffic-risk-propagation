@@ -1,5 +1,9 @@
 # AAD Experiments
 
+## 2026-10-26 V4 r5合成准备，未执行smoke
+
+`SMOKE_V4_20261026_3`：3s/0.05s/seed1/单合成车，新proposal与false envelope已准备；授权不得继承_2。新六组无害Python隔离探针14判据成立；仅准备Linux1.26/TraCI22完整运行时和精确策略。本轮SUMO0、真实TraCI0、新科研轨迹0。candidate-v5原B00 run ID/seed20261201/420s/[120,390)及全部科研定义不变，只重绑Linux环境，仍工程阻断。依据：`docs/STAGE_0_5_V4_PREPARATION_2026-10-26.md`；旧实验保持历史。
+
 ## 2026-10-26 V3候选输入，不是实验
 
 0750 B00/S10/R01/SR11分别准备精确routes，均1150辆/117初态/60非初态entering；R两臂只按既有60s块规则改60辆depart，DS38与另外79初态不变。B00首个建议ID为V3_0750_B00_DS38_s20261201，420s/[120,390)，Proposed。i0007仍有旧错误未解决，错误早停不得复用为合格B00。0805未准备新输入。无新SUMO/TraCI/轨迹、无C6重测，V3真实账本0，累计预算无限；旧实验不重复执行。

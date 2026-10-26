@@ -1,5 +1,11 @@
 # AAD Known Issues
 
+## 2026-10-26 V4 r5当前阻断（最新）
+
+精确版本解析和新staging已准备，Linux1.26/TraCI22运行时已静态核验；r5当前生产smoke尚未授权/执行，无已验收生产回执。candidate-v5实际v4预检到达integration_not_accepted，不能报告工程Ready。后续需研究者对新proposal精确SHA一次性授权，且运行时/资源须届时复核；研究B00另需工程通过及科研确认。i0007/实际初始化/交互相容/历史隔离事故仍未解决，四false/硬锁/Gate不变。依据：`docs/STAGE_0_5_V4_PREPARATION_2026-10-26.md`；下方为历史时点。
+
+通用export_project_evidence重建manifest会漏三个独立扩展登记（depart-speed/V2 research/V2 admission）；本轮保留生成版本于code/tmp、恢复原manifest字节并verify通过，没有修改历史结果。导出器覆盖问题未在本任务修复，见同报告。
+
 ## 2026-10-26 WSL解阻后阻断（最新）
 
 Linux无害capsule已验证，仍缺与Windows SUMO1.26匹配的完整控制器：WSL只有SUMO1.18/TraCI20，系统Python缺numpy/pandas/pyarrow/psutil。未换版本或安装；新候选保持阻断、四false与硬锁。/home/shen/AAD非Git checkout，只作临时探针父目录；历史偏差/i0007未解决。依据：`docs/STAGE_0_5_WSL_ISOLATION_2026-10-26.md`；下方为历史时点。

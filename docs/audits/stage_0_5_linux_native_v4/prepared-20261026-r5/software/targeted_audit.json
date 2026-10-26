@@ -1,0 +1,43 @@
+{
+  "scope": "Python parent audit in no-data Git clone; not OS/native certification",
+  "denied": [],
+  "processes": [
+    {
+      "executable": "",
+      "command": "D:\\miniconda\\python.exe -I -B -c \"import runpy,sys\nm=runpy.run_path(sys.argv[1],run_name=\\\"isolated_broker_test\\\")\nchild=m[\\\"child\\\"]; g=child.__globals__\ng[\\\"os\\\"].getpid=lambda:1; g[\\\"os\\\"].getuid=lambda:0\ndef validate(policy):\n    from stage_0_5_isolation_admission import probe_checks\n    assert probe_checks({})=={}\n    raise RuntimeError(\\\"verified_import_stop_before_mount\\\")\ng[\\\"validate\\\"]=validate\ntry: child(sys.argv[2],m[\\\"sha\\\"](sys.argv[2]))\nexcept RuntimeError as error:\n    assert str(error)==\\\"verified_import_stop_before_mount\\\",str(error)\nelse: raise AssertionError(\\\"must stop before native isolation\\\")\nprint(\\\"isolated_import_verified_no_native_launch\\\")\n\" D:\\shen\\TJU\\AAD\\code\\tmp\\v4_finalize_validate_20261026_r1\\code\\tmp\\research_v2_validation\\20261026T120939109694_20736\\targeted_tmp\\test_isolated_broker_resolves_0\\stage_0_5_linux_isolation.py D:\\shen\\TJU\\AAD\\code\\tmp\\v4_finalize_validate_20261026_r1\\code\\tmp\\research_v2_validation\\20261026T120939109694_20736\\targeted_tmp\\test_isolated_broker_resolves_0\\policy.json"
+    },
+    {
+      "executable": "",
+      "command": "D:\\miniconda\\python.exe -B D:\\shen\\TJU\\AAD\\code\\tmp\\v4_finalize_validate_20261026_r1\\code\\scripts\\validate_stage_0_5_research_v2.py --source-workspace D:\\shen\\TJU\\AAD\\code\\tmp\\v4_finalize_validate_20261026_r1"
+    },
+    {
+      "executable": "",
+      "command": "git init -q D:\\shen\\TJU\\AAD\\code\\tmp\\v4_finalize_validate_20261026_r1\\code\\tmp\\research_v2_validation\\20261026T120939109694_20736\\targeted_tmp\\test_strict_git_reports_untrac0"
+    },
+    {
+      "executable": "",
+      "command": "git -C D:\\shen\\TJU\\AAD\\code\\tmp\\v4_finalize_validate_20261026_r1\\code\\tmp\\research_v2_validation\\20261026T120939109694_20736\\targeted_tmp\\test_strict_git_reports_untrac0 add -- AGENTS.md PROJECT_CONTEXT.md README.md AI_CONTEXT\\00_PROJECT_STATE.md AI_CONTEXT\\01_RESEARCH_CONTEXT.md AI_CONTEXT\\02_ARCHITECTURE.md AI_CONTEXT\\03_DATA_FLOW.md AI_CONTEXT\\04_MODULE_MAP.md AI_CONTEXT\\05_EXPERIMENTS.md AI_CONTEXT\\06_DECISIONS.md AI_CONTEXT\\07_KNOWN_ISSUES.md AI_CONTEXT\\08_CHANGELOG.md docs\\ARCHITECTURE.md docs\\CHANGELOG.md docs\\HISTORY_INDEX.md docs\\LEARNING_PATH.md docs\\METHOD_AND_ALGORITHM_GUIDE.md docs\\PROJECT_INDEX.md docs\\PROJECT_REGISTRY.json docs\\RESEARCH_STATUS.md docs\\RESULTS_INDEX.md docs\\STAGE_INDEX.md evidence\\EVIDENCE_MANIFEST.json evidence\\README.md code\\scripts\\example.py code\\src\\example.py code\\src\\legacy.py code\\tests\\test_example.py"
+    },
+    {
+      "executable": "",
+      "command": "git -C D:\\shen\\TJU\\AAD\\code\\tmp\\v4_finalize_validate_20261026_r1\\code\\tmp\\research_v2_validation\\20261026T120939109694_20736\\targeted_tmp\\test_strict_git_reports_untrac0 ls-files -z"
+    },
+    {
+      "executable": "",
+      "command": "git init -q D:\\shen\\TJU\\AAD\\code\\tmp\\v4_finalize_validate_20261026_r1\\code\\tmp\\research_v2_validation\\20261026T120939109694_20736\\targeted_tmp\\test_strict_git_accepts_fully_0"
+    },
+    {
+      "executable": "",
+      "command": "git -C D:\\shen\\TJU\\AAD\\code\\tmp\\v4_finalize_validate_20261026_r1\\code\\tmp\\research_v2_validation\\20261026T120939109694_20736\\targeted_tmp\\test_strict_git_accepts_fully_0 add -- ."
+    },
+    {
+      "executable": "",
+      "command": "git -C D:\\shen\\TJU\\AAD\\code\\tmp\\v4_finalize_validate_20261026_r1\\code\\tmp\\research_v2_validation\\20261026T120939109694_20736\\targeted_tmp\\test_strict_git_accepts_fully_0 ls-files -z"
+    }
+  ],
+  "source_workspace": "D:\\shen\\TJU\\AAD",
+  "clone": "D:\\shen\\TJU\\AAD\\code\\tmp\\v4_finalize_validate_20261026_r1",
+  "sumo_launches": 0,
+  "tests": "targeted",
+  "exit_code": 0
+}

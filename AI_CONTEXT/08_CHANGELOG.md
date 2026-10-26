@@ -1,5 +1,9 @@
 # AAD AI Context Changelog
 
+## 2026-10-26 V4 r5严格版本校验与准备
+
+CLI整行release与错误版本启动前拒绝测试；新不可覆盖r5/六组探针/完整runtime清单/SMOKE_V4_20261026_3 proposal和false envelope；新Linux v4 schema candidate-v5保留B00全部科研定义。最终V4离线122通过，精确字节定向288通过/1跳过、全量1275通过/15跳过/7原生项排除，38绑定源码与无数据克隆一致、compileall通过。0 SUMO/0真实TraCI/0新科研轨迹，无旧授权迁移；生产回执未接受、仍Blocked，旧r3/r4/失败/candidate-v4及科学状态保留。Context Consistency Check更新00/02/03/04/05/07/08；01研究背景与06科研决策无需变化。依据：`docs/STAGE_0_5_V4_PREPARATION_2026-10-26.md`。
+
 ## 2026-10-26 WSL隔离能力解阻
 
 限范围授权后完成六组真实无害Linux内核探针/14判据，新增broker/能力绑定/拒绝接线/B00重绑与回归。0 SUMO/netconvert/真实TraCI/新轨迹，无包/权限/系统配置变化。能力Verified不替代Windows1.26隔离，任务仍BLOCKED_ENGINEERING；科研状态不变。依据：`docs/STAGE_0_5_WSL_ISOLATION_2026-10-26.md`。

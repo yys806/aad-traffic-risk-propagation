@@ -83,12 +83,68 @@ def test_exact_runtime_version_and_protocol():
     assert capsule.version_matches([22,"SUMO 1.26.0"],dict(traci_protocol=22,sumo_release="1.26.0"))
 
 
-def test_sumo_cli_version_formats_are_parsed_without_relaxing_release_match():
-    actual="Eclipse SUMO sumo 1.26.0\n Build features: Linux"
-    assert capsule.sumo_version_output_matches(actual,"1.26.0")
-    assert capsule.sumo_version_output_matches("Eclipse SUMO sumo Version 1.26.0\n","1.26.0")
-    assert not capsule.sumo_version_output_matches(actual,"1.18.0")
-    assert not capsule.sumo_version_output_matches("Eclipse SUMO sumo 1.26.0.1\n","1.26.0")
+@pytest.mark.parametrize("prefix",["Eclipse SUMO sumo ","Eclipse SUMO sumo Version "])
+@pytest.mark.parametrize("surround",[("",""),("","\n"),("","\r\n Build features: Linux"),
+                                     ("License text\n","\nOther build text")])
+def test_sumo_cli_exact_release_line(prefix,surround):
+    assert capsule.sumo_version_output_matches(surround[0]+prefix+"1.26.0"+surround[1],"1.26.0")
+
+
+INVALID_RELEASE_LINES=["1.26.0.1","1.26.0-dev","1.26.0+custom","1.26.0rc1",
+    "1.26.00","1.26.01","11.26.0","1.26.0 extra","1.26.0 Version 1.18.0",
+    "1.26.0 (custom)","1.26.0\tcustom","1.26.0 ","1.26.0\x00","1.26.0\vBuild",
+    "\n1.26.0","\t1.26.0","1x26x0","1.18.0",""]
+
+
+@pytest.mark.parametrize("prefix",["Eclipse SUMO sumo ","Eclipse SUMO sumo Version "])
+@pytest.mark.parametrize("release_text",INVALID_RELEASE_LINES)
+def test_sumo_cli_rejects_nonrelease_or_extra_inline_text(prefix,release_text):
+    assert not capsule.sumo_version_output_matches(prefix+release_text+"\nBuild features: Linux","1.26.0")
+
+
+@pytest.mark.parametrize("output",[None,b"Eclipse SUMO sumo 1.26.0",123,
+    "Version 1.26.0","sumo 1.26.0","prefix Eclipse SUMO sumo 1.26.0",
+    " Eclipse SUMO sumo 1.26.0","Eclipse SUMO sumo\nVersion 1.26.0"])
+def test_sumo_cli_requires_complete_independent_version_line(output):
+    assert not capsule.sumo_version_output_matches(output,"1.26.0")
+
+
+@pytest.mark.parametrize("version_text",INVALID_RELEASE_LINES[:4]+["1.26.0 extra"])
+def test_controller_wrong_cli_release_stops_before_socket_or_native_start(tmp_path,monkeypatch,version_text):
+    from types import SimpleNamespace
+    import stage_0_5_linux_controller_v4 as controller
+    monkeypatch.chdir(tmp_path)
+    binary=tmp_path/"synthetic-binary";binary.write_bytes(b"never executed")
+    context=dict(schema="synthetic-test",run={},input_sha256={"routes.rou.xml":"unused"},
+        runtime=dict(sumo_binary=str(binary),sumo_release="1.26.0",sumo_sha256=capsule.sha(binary)),native_environment={},
+        proposal_sha256="p",policy_sha256="q")
+    (tmp_path/"broker_context.json").write_bytes(capsule.canonical(context))
+    (tmp_path/"routes.rou.xml").write_bytes(b"synthetic")
+    monkeypatch.setattr(controller,"verify_live_context",lambda c:None)
+    monkeypatch.setattr(controller,"inventory",lambda b:(None,{},None,None,None))
+    monkeypatch.setattr(controller,"IdentityObserver",lambda rows:SimpleNamespace(finish=lambda **kw:{}))
+    monkeypatch.setattr(controller,"Scope",lambda *a,**kw:SimpleNamespace(create=lambda path,data:path.write_bytes(data)))
+    stopped=[]
+    monkeypatch.setattr(controller,"NativeBackend",lambda:SimpleNamespace(
+        start=lambda c:pytest.fail("native start forbidden"),stop=lambda:stopped.append(True)))
+    monkeypatch.setattr(controller.os,"readlink",lambda p:"synthetic-namespace")
+    read_text=Path.read_text
+    def text(path,*args,**kwargs):
+        if str(path).replace("\\","/")=="/proc/self/status":
+            return "NoNewPrivs: 1\nSeccomp: 2\nCapEff: 0000000000000000"
+        if str(path).replace("\\","/")=="/proc/net/dev":return "header\nheader\nlo: synthetic"
+        return read_text(path,*args,**kwargs)
+    monkeypatch.setattr(Path,"read_text",text)
+    commands=[]
+    def version(command,**kwargs):
+        commands.append(command)
+        return SimpleNamespace(returncode=0,stdout=("Eclipse SUMO sumo "+version_text+"\n").encode())
+    monkeypatch.setattr(controller.subprocess,"run",version)
+    monkeypatch.setattr(controller.socket,"socket",lambda *a,**k:pytest.fail("TraCI socket forbidden"))
+    with pytest.raises(ValueError,match="SUMO_release_mismatch"):controller.main()
+    assert commands==[[str(binary),"--version"]] and stopped==[True]
+    receipt=json.loads((tmp_path/"controller_receipt.json").read_bytes())
+    assert receipt["error"]=="ValueError:SUMO_release_mismatch" and receipt["controls"]==[]
 
 
 def synthetic_receipt(tmp_path):
@@ -281,6 +337,7 @@ print("isolated_import_verified_no_native_launch")
 def test_smoke_preparation_uses_controller_identity_contract_and_never_reauthorizes(tmp_path,monkeypatch):
     import os
     import prepare_stage_0_5_linux_stage_v4 as staging
+    import stage_0_5_linux_runtime_v4 as runtime_module
     from stage_0_5_input_fidelity import inventory
     archive=tmp_path/"synthetic_receipts";archive.mkdir();synthetic_receipt(archive)
     base=tmp_path/"stage05_v4_synthetic";base.mkdir()
@@ -293,12 +350,17 @@ def test_smoke_preparation_uses_controller_identity_contract_and_never_reauthori
     runtime=dict(files={},executables=["/synthetic/python","/synthetic/sumo"],readonly_paths=[],
         python_executable="/synthetic/python",sumo_binary="/synthetic/sumo",sumo_home="/synthetic")
     (base/"runtime_manifest.json").write_bytes(capsule.canonical(runtime))
+    (base/"staging_record.json").write_bytes(capsule.canonical(dict(
+        source_sha256={n:capsule.sha(base/n) for n in staging.SOURCES},
+        runtime_manifest_sha256=capsule.sha(base/"runtime_manifest.json"))))
+    monkeypatch.setattr(runtime_module,"check_runtime",lambda manifest:True)
     staging.smoke(base,"SMOKE_V4_SYNTHETIC_PREPARATION_ONLY")
     _,vehicles,initial,_,_=inventory((base/"smoke_inputs/routes.rou.xml").read_bytes())
     assert list(vehicles)==["synth_vehicle"] and not initial
     envelope=json.loads((base/"smoke_envelope.json").read_bytes())
     proposal=json.loads((base/"smoke_proposal.json").read_bytes())
     assert envelope["approval"]["engineering_authorized"] is False
+    assert proposal["execution_plan"]["maximum_attempts"]==1 and proposal["execution_plan"]["automatic_retry"] is False
     assert capsule.authorization_reasons(proposal,envelope["approval"],envelope["proposal_sha256"],envelope["run_id"])==["engineering_smoke_authorization_missing"]
 
 
@@ -417,3 +479,31 @@ def test_linux_preflight_response_must_match_exact_proposal_sha(monkeypatch):
     p=dict(linux_distribution="Ubuntu",runtime=dict(python_executable="/synthetic/python"),linux_driver="synthetic.py",linux_proposal_path="p.json")
     monkeypatch.setattr(execution.subprocess,"run",lambda *a,**k:SimpleNamespace(returncode=0,stderr=b"",stdout=b'{"proposal_sha256":"wrong"}'))
     with pytest.raises(ValueError,match="Linux_proposal_copy_drift"):execution.inspect_linux(p,"exact")
+
+
+def test_v4_engineering_pass_waits_for_approval_without_enabling_execution(tmp_path,monkeypatch):
+    """Synthetic proof injection tests status semantics, never OS acceptance."""
+    import stage_0_5_linux_execution_v4 as execution
+    import stage_0_5_isolation_admission as admission
+    p=preflight_fixture(tmp_path)
+    proof=dict(accepted_for_new_task=True,input_and_test_resource_scope_accepted=True,
+        controller_source_sha256=p["controller_source_sha256"],runtime_manifest_sha256=p["runtime_manifest_sha256"],
+        smoke_proposal_path="smoke.json",smoke_archive_path="archive")
+    smoke=dict(controller_source_sha256=p["controller_source_sha256"],runtime_manifest_sha256=p["runtime_manifest_sha256"],capsule_policy_sha256="synthetic")
+    (tmp_path/"smoke.json").write_bytes(capsule.canonical(smoke))
+    proof["smoke_proposal_sha256"]=capsule.sha(tmp_path/"smoke.json")
+    (tmp_path/"archive").mkdir();(tmp_path/"archive/controller_receipt.json").write_text("{}")
+    (tmp_path/"integration.json").write_bytes(capsule.canonical(proof))
+    p["isolation"].update(accepted_for_new_task=True,report_sha256=capsule.sha(tmp_path/"integration.json"))
+    (tmp_path/"proposal.json").write_bytes(capsule.canonical(p))
+    before=(tmp_path/"proposal.json").read_bytes()
+    monkeypatch.setattr(execution,"verify_receipt",lambda *a:dict(status="Pass"))
+    monkeypatch.setattr(admission,"runtime_reasons",lambda *a:[])
+    monkeypatch.setattr(execution,"inspect_linux",lambda *a:dict(linux_runtime_verified=True))
+    monkeypatch.setattr(execution.subprocess,"Popen",lambda *a,**k:pytest.fail("launch forbidden"))
+    report=execution.technical_preflight_v4(tmp_path,"proposal.json","B00_SYNTHETIC")
+    assert report["status"]=="READY_FOR_RESEARCHER_APPROVAL" and report["ready"]
+    assert report["technical_errors"]==[] and report["authorization_pending"]
+    assert "capsule_build_not_accepted" not in report["authorization_pending"]
+    assert (tmp_path/"proposal.json").read_bytes()==before
+    assert not p["execution_allowed"] and not p["researcher_confirmed"] and not p["protocol_frozen"]

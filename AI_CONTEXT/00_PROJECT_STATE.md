@@ -1,5 +1,9 @@
 # AAD Current State Snapshot
 
+## 2026-10-26 V4 r5 严格校验与新准备（最新）
+
+`PREPARED / AWAITING_EXPLICIT_AUTHORIZATION`；研究准入仍 `BLOCKED_ENGINEERING`。版本解析改为独立整行精确 release，拒绝 `.1/-dev/+custom/rc1` 及同行附加文本；最终V4离线122项通过。全新 `/home/shen/AAD/code/tmp/stage05_v4_20261026_r5` 绑定本轮修复、重新生成的完整Linux1.26/TraCI22运行时清单与新六组内核探针，不复用r4生产接线证据。新 `SMOKE_V4_20261026_3` proposal SHA=`a5f419029a7dc3ddc527d9b7e7e824c9f0f3779f4f3e17e769d87d472ca4a550`，envelope SHA=`6b37149d000f28258ee22bb499d7db7ee0e7a1255d4195c4bb7658f5aae8a463`，`engineering_authorized=false`，未启动。新candidate-v5使用 `aad.native-admission.v4` 与Linux绑定，保留全部B00科研定义；实际预检因当前生产回执未验收阻断，正常待研究者批准另列。四false/硬锁/历史Not Accepted/Gate/δ/h/B/Stage1.1不变，本轮0 SUMO/0真实TraCI/0新科研轨迹。依据：`docs/STAGE_0_5_V4_PREPARATION_2026-10-26.md`；新审计 `docs/audits/stage_0_5_linux_native_v4/prepared-20261026-r5/`；验证数字以其中validation_record为准。Context Consistency Check已完成；下方为历史时点。
+
 ## 2026-10-26 Linux V4 合成集成（最新：仍未Ready）
 
 明确授权的一次 `SMOKE_V4_20261026_2` 在真实 Linux capsule 中完成了生产 broker/controller 接线，但在控制器版本预检阶段因 SUMO 1.26 CLI 输出格式解析过窄而失败；未建立 TraCI 连接，也未启动合成仿真步。失败证据、六组 r4 原生隔离探针和固定 runtime allowlist 见 `docs/audits/stage_0_5_linux_native_v4/collection-20261026-r3/`，工程记录见 `docs/STAGE_0_5_LINUX_NATIVE_V4_2026-10-26.md`。控制器/回执解析已修正并有 63 项定向回归，但 r4 staging 仍绑定修复前源码，不能把修复后的代码写成已通过原生 smoke；新任务仍 `BLOCKED_ENGINEERING`，需要新 staging 和新的单次授权。候选包 `evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v4/` 保留 `execution_allowed=false`、`researcher_confirmed=false`、`protocol_frozen=false`、`accepted_for_new_task=false`。本轮合成 SUMO 版本进程 1、真实 TraCI 0、新科研轨迹 0；历史隔离事故 `Not Accepted`、Gate、δ/h/B、Stage 1.1 不变。

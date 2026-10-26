@@ -1,5 +1,9 @@
 # AAD 阶段索引
 
+## 2026-10-26 V4 r5仅准备
+
+新合成smoke提案待精确授权，未运行；Linux v4研究准入候选仍BLOCKED_ENGINEERING，缺当前生产回执。四false、硬锁、pending_simulation_sample及科学Gate/δ/h/B/Stage1.1不变。新六组无害Python探针不构成生产smoke通过。依据：`docs/STAGE_0_5_V4_PREPARATION_2026-10-26.md`。下方为历史时点。
+
 ## 2026-10-26 V3工程准入未Ready
 
 新真实证据验收与具体首批输入属于工程准备；0 SUMO/0真实TraCI/0新轨迹。OS隔离未获证明，原生锁True；不改变pending_simulation_sample、科学效应资格、真实覆盖接受或Stage1.1。

@@ -1,5 +1,9 @@
 # AAD 项目索引
 
+## 2026-10-26 V4 r5准备入口（最新）
+
+`docs/STAGE_0_5_V4_PREPARATION_2026-10-26.md`；新审计 `docs/audits/stage_0_5_linux_native_v4/prepared-20261026-r5/`；新候选 `evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v5/`。严格release校验/当前源码重绑/新六组探针完成，新SMOKE_V4_20261026_3仅PREPARED / AWAITING_EXPLICIT_AUTHORIZATION。Linux v4候选仍BLOCKED_ENGINEERING：生产回执尚未验收。四false、硬锁、历史事故、科研Gate不变，本轮0 SUMO/0真实TraCI/0新科研轨迹；下方为历史时点。
+
 ## 2026-10-26 Linux V4 合成集成入口（最新：仍阻断）
 
 工程记录：`docs/STAGE_0_5_LINUX_NATIVE_V4_2026-10-26.md`；版本化收集：`docs/audits/stage_0_5_linux_native_v4/collection-20261026-r3/`；候选包：`evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v4/`。六组原生隔离探针通过；一次获授权的合成生产 smoke 在 SUMO 版本预检处失败并保留，当前源代码已修复解析但尚未有新 staging 的原生复验。因此仍 `BLOCKED_ENGINEERING`，不能报告 `READY_FOR_RESEARCHER_APPROVAL`。本轮合成 SUMO 版本进程 1、真实 TraCI 0、新科研轨迹 0，历史隔离事故仍 `Not Accepted`。

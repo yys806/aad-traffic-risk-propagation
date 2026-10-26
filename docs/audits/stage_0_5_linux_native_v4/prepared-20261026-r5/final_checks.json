@@ -1,0 +1,45 @@
+{
+  "status": "Offline checks passed; native admission remains BLOCKED_ENGINEERING",
+  "checks": [
+    {
+      "command": "python -B code/scripts/validate_project_docs.py --strict-git",
+      "exit_code": 0,
+      "result": "PROJECT_DOCS_OK"
+    },
+    {
+      "command": "python -B code/scripts/export_project_evidence.py --repo-root . --verify",
+      "exit_code": 0,
+      "result": "PORTABLE_EVIDENCE_OK"
+    },
+    {
+      "command": "python -B -m pytest tests/test_project_docs.py -q -p no:cacheprovider --basetemp=tmp/v4_final_docs_only",
+      "cwd": "code/tmp/v4_finalize_validate_20261026_r1/code",
+      "exit_code": 0,
+      "passed": 13
+    },
+    {
+      "command": "git diff --cached --check",
+      "exit_code": 0
+    }
+  ],
+  "context_consistency_check": {
+    "updated": [
+      "00",
+      "02",
+      "03",
+      "04",
+      "05",
+      "07",
+      "08"
+    ],
+    "unchanged": [
+      "01",
+      "06"
+    ],
+    "scientific_decisions_changed": false
+  },
+  "pure_Git_post_commit": "Required next; task-local record after commit; no claim here that it has already passed",
+  "SUMO_launches": 0,
+  "real_TraCI_connections": 0,
+  "new_research_trajectories": 0
+}

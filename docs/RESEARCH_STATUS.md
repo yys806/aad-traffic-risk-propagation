@@ -1,5 +1,9 @@
 # AAD 当前科研状态
 
+## 2026-10-26 V4 r5准备（最新，仍阻断）
+
+新staging与完整Linux1.26/TraCI22静态绑定、新六组隔离探针和SMOKE_V4_20261026_3提案/false envelope已准备，状态PREPARED / AWAITING_EXPLICIT_AUTHORIZATION；本轮SUMO/真实TraCI/新科研轨迹均0。新candidate-v5修正为Linux v4 schema并保留B00全部科研定义；生产回执尚未验收，仍BLOCKED_ENGINEERING。工程阻断与科研待批准分开；四false、硬锁、历史Not Accepted和所有科学Gate/δ/h/B/Stage1.1不变。依据：`docs/STAGE_0_5_V4_PREPARATION_2026-10-26.md`。下方为历史时点。
+
 ## 2026-10-26 WSL解阻（最新）
 
 获准启动后完成真实无害Linux隔离验证，六组14判据成立。Linux1.18与已绑定Windows1.26及控制器不相容，仍未Ready；没有科研实验，四false/硬锁/Gate/δ/h/B/Stage1.1和历史Not Accepted不变。依据：`docs/STAGE_0_5_WSL_ISOLATION_2026-10-26.md`；下方为历史时点。

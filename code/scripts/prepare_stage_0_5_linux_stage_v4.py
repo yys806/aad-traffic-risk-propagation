@@ -4,6 +4,7 @@ This script never starts SUMO or a capsule. Probe and smoke launches are separat
 explicit commands. Existing stages are immutable; failures are retained.
 """
 import argparse
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -34,7 +35,9 @@ def stage(destination,runtime_root):
     from stage_0_5_linux_runtime_v4 import runtime_manifest
     runtime=runtime_manifest(runtime_root)
     write(destination/"runtime_manifest.json",runtime)
-    record=dict(source_sha256={n:sha(destination/n) for n in SOURCES},runtime_manifest_sha256=sha(destination/"runtime_manifest.json"),
+    source_hashes={n:sha(destination/n) for n in SOURCES}
+    record=dict(source_sha256=source_hashes,source_closure_sha256=hashlib.sha256(canonical(source_hashes)).hexdigest(),
+        runtime_manifest_sha256=sha(destination/"runtime_manifest.json"),
         runtime_root=str(runtime_root),working_directory=os.getcwd(),SUMO_launches=0,TraCI_connections=0,new_research_trajectories=0)
     write(destination/"staging_record.json",record)
     print(json.dumps(record),flush=True)
@@ -46,6 +49,11 @@ def smoke(stage_path,run_id):
     import re
     require(re.fullmatch(r"SMOKE_V4_[A-Za-z0-9_]+",run_id) is not None,"unique_engineering_run_id_required")
     runtime_path=base/"runtime_manifest.json";runtime=json.loads(runtime_path.read_bytes())
+    record=json.loads((base/"staging_record.json").read_bytes())
+    require(record["source_sha256"]=={n:sha(base/n) for n in SOURCES},"staging_source_drift")
+    require(record["runtime_manifest_sha256"]==sha(runtime_path),"staging_runtime_manifest_drift")
+    from stage_0_5_linux_runtime_v4 import check_runtime
+    check_runtime(runtime)
     capability=base/"probe_results/record.json"
     from stage_0_5_isolation_admission import probe_checks
     probe=json.loads(capability.read_bytes())
@@ -77,6 +85,10 @@ def smoke(stage_path,run_id):
     from stage_0_5_linux_runtime_v4 import make_policy
     path,policy=make_policy(base/"smoke_capsule",runtime,runtime_path,sources,{n:str(inputs/n) for n in run["capsule_input_sha256"]},run,accepted_build=False,capability_record=capability)
     proposal=dict(schema=SMOKE_SCHEMA,task_id=SMOKE_TASK,runs=[run],capsule_policy_path=str(path),capsule_policy_sha256=sha(path),
+        status="PREPARED / AWAITING_EXPLICIT_AUTHORIZATION",
+        execution_plan=dict(maximum_attempts=1,automatic_retry=False,workers=1,
+            maximum_SUMO_version_processes=1,maximum_SUMO_simulation_processes=1,maximum_real_TraCI_connections=1,
+            version_timeout_s=10,broker_wall_s=30,coordinator_timeout_s=60),
         runtime_manifest_path=str(runtime_path),runtime_manifest_sha256=sha(runtime_path),runtime=runtime,
         controller_source_sha256={n:sha(p) for n,p in sources.items()},single_attempt_limits=limits,kernel_probe_sha256=sha(capability),
         native_environment=dict(policy["environment"],PYTHONDONTWRITEBYTECODE="1",PYTHONNOUSERSITE="1"))

@@ -1,5 +1,9 @@
 # AAD Architecture
 
+## 2026-10-26 V4当前准备链
+
+V4 stage → 当前六组Python隔离探针 → smoke准备（无launch）→ Linux研究策略/候选准备；staging源码/manifest漂移先拒绝。`stage_0_5_native_capsule_v4.py`整行版本解析同时保护controller与receipt；`prepare_stage_0_5_admission_v4.py`只准备Linux策略和v4 schema候选。`technical_preflight_v4`将生产构建未接受归技术阻断，授权未决独立返回；正常待批准可为READY_FOR_RESEARCHER_APPROVAL，但当前缺生产回执仍Blocked。源码/策略/输入/运行时/当前探针均精确绑定，硬锁和四false保留。依据：`docs/STAGE_0_5_V4_PREPARATION_2026-10-26.md`。下方保留历史时点。
+
 ## 2026-10-26 WSL OS守卫（最新）
 
 新增Linux namespace/Landlock/seccomp/cgroup限容broker，真实无害进程验证；capability binder从原始观测/内核计数重算，预检区分Linux能力和Windows运行时适用性。第八项缺真实单次receipt仍Unknown；NativeBackend未来解除锁后仍拒绝裸宿主。完整控制器接线因1.26运行时/依赖缺失未成立，锁不变。依据：`docs/STAGE_0_5_WSL_ISOLATION_2026-10-26.md`；下方为历史时点。

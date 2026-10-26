@@ -254,11 +254,26 @@
   "docs/audits/stage_0_5_wsl_isolation_v1/validation_record.json",
   "docs/audits/stage_0_5_wsl_isolation_v1/manifest.json",
   "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v3/proposal.json",
-  "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v3/manifest.json"
+  "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v3/manifest.json",
+  "docs/STAGE_0_5_V4_PREPARATION_2026-10-26.md",
+  "code/scripts/stage_0_5_native_capsule_v4.py",
+  "code/scripts/prepare_stage_0_5_admission_v4.py",
+  "code/scripts/prepare_stage_0_5_linux_stage_v4.py",
+  "code/scripts/stage_0_5_linux_controller_v4.py",
+  "code/scripts/stage_0_5_linux_execution_v4.py",
+  "code/scripts/stage_0_5_linux_runtime_v4.py",
+  "code/scripts/validate_stage_0_5_linux_v4.py",
+  "code/tests/test_stage_0_5_native_capsule_v4.py",
+  "docs/audits/stage_0_5_linux_native_v4/prepared-20261026-r5/preparation_summary.json",
+  "docs/audits/stage_0_5_linux_native_v4/prepared-20261026-r5/validation_record.json",
+  "docs/audits/stage_0_5_linux_native_v4/prepared-20261026-r5/collection.json",
+  "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v5/proposal.json",
+  "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v5/manifest.json",
+  "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v5/technical_preflight.json"
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-0.5-READY-TO-ADMIT-V3 isolation unblock: authorized Ubuntu harmless kernel probes verified; Windows SUMO1.26 / Linux1.18 runtime and controller capsule incompatible; BLOCKED_ENGINEERING. Zero SUMO/netconvert/real TraCI/new trajectories.",
+  "active_task": "AAD Stage 0.5 V4 r5: exact release validation and fresh Linux source/runtime/probe/input binding; SMOKE_V4_20261026_3 PREPARED / AWAITING_EXPLICIT_AUTHORIZATION. Candidate-v5 aad.native-admission.v4 remains BLOCKED_ENGINEERING pending verified production receipt. Zero SUMO/real TraCI/new research trajectories.",
   "why_now": "Researcher explicitly removed old three-attempt restriction for new research; historical ledgers and failed ID1 remain immutable. Need matched baseline and factorial contrasts under reviewed measurement.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
@@ -303,13 +318,25 @@
   ],
   "admission_v3": {
    "status": "BLOCKED_ENGINEERING",
-   "audit_root": "docs/audits/stage_0_5_wsl_isolation_v1",
+   "audit_root": "docs/audits/stage_0_5_linux_native_v4/prepared-20261026-r5",
    "candidate_root": "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3",
    "accepted_for_new_task": false,
-   "latest_candidate": "candidate-v3",
-   "proposal_sha256": "80d9805c01b919193f22fd7cf759f7fb1f9f882010f2f0de385e193f915e2379",
+   "latest_candidate": "candidate-v5",
+   "proposal_sha256": "e4b4dcf9e559b56be0ac50c143e3e327c336927f02d9c90c63f5c0463e93442f",
    "first_proposed_run_id": "V3_0750_B00_DS38_s20261201",
-   "software_validation": "150 passed / 1 skipped targeted; old 1130-pass full regression reused only for unchanged scientific sources, not rerun; Linux capability14/14 verified, runtime admission remains blocked"
+   "software_validation": "V4 122 passed; exact-byte targeted 288 passed / 1 skipped; full 1275 passed / 15 skipped / 7 native exclusions; fresh r5 guard 14/14; no production receipt accepted",
+   "schema": "aad.native-admission.v4"
+  },
+  "native_smoke_preparation": {
+   "status": "PREPARED / AWAITING_EXPLICIT_AUTHORIZATION",
+   "run_id": "SMOKE_V4_20261026_3",
+   "staging": "/home/shen/AAD/code/tmp/stage05_v4_20261026_r5",
+   "source_closure_sha256": "b1598d279e2665c1c902bae827022440a34f668377fc0544b30fbcf84f8015c2",
+   "runtime_manifest_sha256": "3afa1fdb8eac97acf875d1a816eac168bfd39d3318414e316c85b4136d0a4abc",
+   "proposal_sha256": "a5f419029a7dc3ddc527d9b7e7e824c9f0f3779f4f3e17e769d87d472ca4a550",
+   "envelope_sha256": "6b37149d000f28258ee22bb499d7db7ee0e7a1255d4195c4bb7658f5aae8a463",
+   "engineering_authorized": false,
+   "summary_path": "docs/audits/stage_0_5_linux_native_v4/prepared-20261026-r5/preparation_summary.json"
   }
  },
  "experiments": [
@@ -617,7 +644,14 @@
     "code/scripts/stage_0_5_admission_v3.py",
     "code/scripts/prepare_stage_0_5_admission_v3.py",
     "code/scripts/validate_stage_0_5_admission_v3.py",
-    "code/scripts/run_stage_0_5_admission_v3.py"
+    "code/scripts/run_stage_0_5_admission_v3.py",
+    "code/scripts/stage_0_5_native_capsule_v4.py",
+    "code/scripts/prepare_stage_0_5_admission_v4.py",
+    "code/scripts/prepare_stage_0_5_linux_stage_v4.py",
+    "code/scripts/stage_0_5_linux_controller_v4.py",
+    "code/scripts/stage_0_5_linux_execution_v4.py",
+    "code/scripts/stage_0_5_linux_runtime_v4.py",
+    "code/scripts/validate_stage_0_5_linux_v4.py"
    ],
    "entrypoints": [
     "code/scripts/prepare_stage_0_5_real_reference.py",
@@ -708,7 +742,8 @@
     "code/tests/test_depart_speed_candidate.py",
     "code/tests/test_stage_0_5_research_ledger.py",
     "code/tests/test_stage_0_5_v2_admission.py",
-    "code/tests/test_stage_0_5_admission_v3.py"
+    "code/tests/test_stage_0_5_admission_v3.py",
+    "code/tests/test_stage_0_5_native_capsule_v4.py"
    ],
    "configuration": "R2 real reference plus two no_message_baseline generic-highway engineering fixtures (baseline_mixed_demand, measurement_probe_queue_stop); US-101 primary, Lankershim auxiliary entry-only, pNEUMA urban kinematics entry-only; all network/demand/vType/behaviour/time settings are engineering_fixture_only",
    "parameters": {
@@ -1018,7 +1053,7 @@
     "third_window_rows_materialised",
     "zotero_items_added"
    ],
-   "current_conclusion": "Authorized WSL harmless native isolation probes verified14/14; current Windows1.26 proposal cannot reuse Linux1.18 runtime/controller. candidate-v3 remains BLOCKED_ENGINEERING, flags false, scientific Gate unchanged, no new simulation.",
+   "current_conclusion": "V4 r5 synthetic smoke only prepared and awaiting new exact authorization; fresh six-group harmless guard probes verified14/14. Linux candidate-v5 has v4 schema and preserved B00 scientific definition but remains BLOCKED_ENGINEERING without a verified current production receipt. All flags false; no scientific Gate change or new research trajectory.",
    "gate": {
     "status": "pending_simulation_sample",
     "portable_path": "evidence/results/RES-STAGE-0.5-REAL-REF-R2/audit.json"

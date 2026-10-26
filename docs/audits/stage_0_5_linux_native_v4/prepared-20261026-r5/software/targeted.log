@@ -1,0 +1,305 @@
+........................................................................ [ 24%]
+.FFFFF.................................................................. [ 49%]
+........................................................................ [ 74%]
+...s.................................................................... [ 99%]
+.                                                                        [100%]
+================================== FAILURES ===================================
+_ test_controller_wrong_cli_release_stops_before_socket_or_native_start[1.26.0.1] _
+
+tmp_path = WindowsPath('D:/shen/TJU/AAD/code/tmp/v4_finalize_validate_20261026_r1/code/tmp/research_v2_validation/20261026T115517936856_41416/targeted_tmp/test_controller_wrong_cli_rele0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001F4E2025950>
+version_text = '1.26.0.1'
+
+    @pytest.mark.parametrize("version_text",INVALID_RELEASE_LINES[:4]+["1.26.0 extra"])
+    def test_controller_wrong_cli_release_stops_before_socket_or_native_start(tmp_path,monkeypatch,version_text):
+        from types import SimpleNamespace
+        import stage_0_5_linux_controller_v4 as controller
+        monkeypatch.chdir(tmp_path)
+        binary=tmp_path/"synthetic-binary";binary.write_bytes(b"never executed")
+        context=dict(schema="synthetic-test",run={},input_sha256={"routes.rou.xml":"unused"},
+            runtime=dict(sumo_binary=str(binary),sumo_release="1.26.0"),native_environment={},
+            proposal_sha256="p",policy_sha256="q")
+        (tmp_path/"broker_context.json").write_bytes(capsule.canonical(context))
+        (tmp_path/"routes.rou.xml").write_bytes(b"synthetic")
+        monkeypatch.setattr(controller,"verify_live_context",lambda c:None)
+        monkeypatch.setattr(controller,"inventory",lambda b:(None,{},None,None,None))
+        monkeypatch.setattr(controller,"IdentityObserver",lambda rows:SimpleNamespace(finish=lambda **kw:{}))
+        monkeypatch.setattr(controller,"Scope",lambda *a,**kw:SimpleNamespace(create=lambda path,data:path.write_bytes(data)))
+        stopped=[]
+        monkeypatch.setattr(controller,"NativeBackend",lambda:SimpleNamespace(
+            start=lambda c:pytest.fail("native start forbidden"),stop=lambda:stopped.append(True)))
+        monkeypatch.setattr(controller.os,"readlink",lambda p:"synthetic-namespace")
+        read_text=Path.read_text
+        def text(path,*args,**kwargs):
+            if str(path).replace("\\","/")=="/proc/self/status":
+                return "NoNewPrivs: 1\nSeccomp: 2\nCapEff: 0000000000000000"
+            if str(path).replace("\\","/")=="/proc/net/dev":return "header\nheader\nlo: synthetic"
+            return read_text(path,*args,**kwargs)
+        monkeypatch.setattr(Path,"read_text",text)
+        commands=[]
+        def version(command,**kwargs):
+            commands.append(command)
+            return SimpleNamespace(returncode=0,stdout=("Eclipse SUMO sumo "+version_text+"\n").encode())
+        monkeypatch.setattr(controller.subprocess,"run",version)
+        monkeypatch.setattr(controller.socket,"socket",lambda *a,**k:pytest.fail("TraCI socket forbidden"))
+>       with pytest.raises(ValueError,match="SUMO_release_mismatch"):controller.main()
+                                                                     ^^^^^^^^^^^^^^^^^
+
+D:\shen\TJU\AAD\code\tmp\v4_finalize_validate_20261026_r1\code\tests\test_stage_0_5_native_capsule_v4.py:144: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def main():
+        work=Path.cwd()
+        context=json.loads((work/"broker_context.json").read_bytes())
+        verify_live_context(context)
+        run=context["run"]
+        inputs={n:(work/n).read_bytes() for n in context["input_sha256"]}
+        if context["schema"]==SMOKE_SCHEMA:smoke_inputs(run,inputs)
+        _,vehicles,_,_,_=inventory(inputs["routes.rou.xml"])
+        observer=IdentityObserver([dict(id=k,depart_s=float(v.get("depart"))) for k,v in vehicles.items()])
+>       scope=Scope(work.parent,{context["runtime"]["sumo_binary"]:context["runtime"]["sumo_sha256"]},work,native_allowed=True)
+                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'sumo_sha256'
+
+D:\shen\TJU\AAD\code\tmp\v4_finalize_validate_20261026_r1\code\scripts\stage_0_5_linux_controller_v4.py:62: KeyError
+_ test_controller_wrong_cli_release_stops_before_socket_or_native_start[1.26.0-dev] _
+
+tmp_path = WindowsPath('D:/shen/TJU/AAD/code/tmp/v4_finalize_validate_20261026_r1/code/tmp/research_v2_validation/20261026T115517936856_41416/targeted_tmp/test_controller_wrong_cli_rele1')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001F4E2055E50>
+version_text = '1.26.0-dev'
+
+    @pytest.mark.parametrize("version_text",INVALID_RELEASE_LINES[:4]+["1.26.0 extra"])
+    def test_controller_wrong_cli_release_stops_before_socket_or_native_start(tmp_path,monkeypatch,version_text):
+        from types import SimpleNamespace
+        import stage_0_5_linux_controller_v4 as controller
+        monkeypatch.chdir(tmp_path)
+        binary=tmp_path/"synthetic-binary";binary.write_bytes(b"never executed")
+        context=dict(schema="synthetic-test",run={},input_sha256={"routes.rou.xml":"unused"},
+            runtime=dict(sumo_binary=str(binary),sumo_release="1.26.0"),native_environment={},
+            proposal_sha256="p",policy_sha256="q")
+        (tmp_path/"broker_context.json").write_bytes(capsule.canonical(context))
+        (tmp_path/"routes.rou.xml").write_bytes(b"synthetic")
+        monkeypatch.setattr(controller,"verify_live_context",lambda c:None)
+        monkeypatch.setattr(controller,"inventory",lambda b:(None,{},None,None,None))
+        monkeypatch.setattr(controller,"IdentityObserver",lambda rows:SimpleNamespace(finish=lambda **kw:{}))
+        monkeypatch.setattr(controller,"Scope",lambda *a,**kw:SimpleNamespace(create=lambda path,data:path.write_bytes(data)))
+        stopped=[]
+        monkeypatch.setattr(controller,"NativeBackend",lambda:SimpleNamespace(
+            start=lambda c:pytest.fail("native start forbidden"),stop=lambda:stopped.append(True)))
+        monkeypatch.setattr(controller.os,"readlink",lambda p:"synthetic-namespace")
+        read_text=Path.read_text
+        def text(path,*args,**kwargs):
+            if str(path).replace("\\","/")=="/proc/self/status":
+                return "NoNewPrivs: 1\nSeccomp: 2\nCapEff: 0000000000000000"
+            if str(path).replace("\\","/")=="/proc/net/dev":return "header\nheader\nlo: synthetic"
+            return read_text(path,*args,**kwargs)
+        monkeypatch.setattr(Path,"read_text",text)
+        commands=[]
+        def version(command,**kwargs):
+            commands.append(command)
+            return SimpleNamespace(returncode=0,stdout=("Eclipse SUMO sumo "+version_text+"\n").encode())
+        monkeypatch.setattr(controller.subprocess,"run",version)
+        monkeypatch.setattr(controller.socket,"socket",lambda *a,**k:pytest.fail("TraCI socket forbidden"))
+>       with pytest.raises(ValueError,match="SUMO_release_mismatch"):controller.main()
+                                                                     ^^^^^^^^^^^^^^^^^
+
+D:\shen\TJU\AAD\code\tmp\v4_finalize_validate_20261026_r1\code\tests\test_stage_0_5_native_capsule_v4.py:144: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def main():
+        work=Path.cwd()
+        context=json.loads((work/"broker_context.json").read_bytes())
+        verify_live_context(context)
+        run=context["run"]
+        inputs={n:(work/n).read_bytes() for n in context["input_sha256"]}
+        if context["schema"]==SMOKE_SCHEMA:smoke_inputs(run,inputs)
+        _,vehicles,_,_,_=inventory(inputs["routes.rou.xml"])
+        observer=IdentityObserver([dict(id=k,depart_s=float(v.get("depart"))) for k,v in vehicles.items()])
+>       scope=Scope(work.parent,{context["runtime"]["sumo_binary"]:context["runtime"]["sumo_sha256"]},work,native_allowed=True)
+                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'sumo_sha256'
+
+D:\shen\TJU\AAD\code\tmp\v4_finalize_validate_20261026_r1\code\scripts\stage_0_5_linux_controller_v4.py:62: KeyError
+_ test_controller_wrong_cli_release_stops_before_socket_or_native_start[1.26.0+custom] _
+
+tmp_path = WindowsPath('D:/shen/TJU/AAD/code/tmp/v4_finalize_validate_20261026_r1/code/tmp/research_v2_validation/20261026T115517936856_41416/targeted_tmp/test_controller_wrong_cli_rele2')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001F4E20555E0>
+version_text = '1.26.0+custom'
+
+    @pytest.mark.parametrize("version_text",INVALID_RELEASE_LINES[:4]+["1.26.0 extra"])
+    def test_controller_wrong_cli_release_stops_before_socket_or_native_start(tmp_path,monkeypatch,version_text):
+        from types import SimpleNamespace
+        import stage_0_5_linux_controller_v4 as controller
+        monkeypatch.chdir(tmp_path)
+        binary=tmp_path/"synthetic-binary";binary.write_bytes(b"never executed")
+        context=dict(schema="synthetic-test",run={},input_sha256={"routes.rou.xml":"unused"},
+            runtime=dict(sumo_binary=str(binary),sumo_release="1.26.0"),native_environment={},
+            proposal_sha256="p",policy_sha256="q")
+        (tmp_path/"broker_context.json").write_bytes(capsule.canonical(context))
+        (tmp_path/"routes.rou.xml").write_bytes(b"synthetic")
+        monkeypatch.setattr(controller,"verify_live_context",lambda c:None)
+        monkeypatch.setattr(controller,"inventory",lambda b:(None,{},None,None,None))
+        monkeypatch.setattr(controller,"IdentityObserver",lambda rows:SimpleNamespace(finish=lambda **kw:{}))
+        monkeypatch.setattr(controller,"Scope",lambda *a,**kw:SimpleNamespace(create=lambda path,data:path.write_bytes(data)))
+        stopped=[]
+        monkeypatch.setattr(controller,"NativeBackend",lambda:SimpleNamespace(
+            start=lambda c:pytest.fail("native start forbidden"),stop=lambda:stopped.append(True)))
+        monkeypatch.setattr(controller.os,"readlink",lambda p:"synthetic-namespace")
+        read_text=Path.read_text
+        def text(path,*args,**kwargs):
+            if str(path).replace("\\","/")=="/proc/self/status":
+                return "NoNewPrivs: 1\nSeccomp: 2\nCapEff: 0000000000000000"
+            if str(path).replace("\\","/")=="/proc/net/dev":return "header\nheader\nlo: synthetic"
+            return read_text(path,*args,**kwargs)
+        monkeypatch.setattr(Path,"read_text",text)
+        commands=[]
+        def version(command,**kwargs):
+            commands.append(command)
+            return SimpleNamespace(returncode=0,stdout=("Eclipse SUMO sumo "+version_text+"\n").encode())
+        monkeypatch.setattr(controller.subprocess,"run",version)
+        monkeypatch.setattr(controller.socket,"socket",lambda *a,**k:pytest.fail("TraCI socket forbidden"))
+>       with pytest.raises(ValueError,match="SUMO_release_mismatch"):controller.main()
+                                                                     ^^^^^^^^^^^^^^^^^
+
+D:\shen\TJU\AAD\code\tmp\v4_finalize_validate_20261026_r1\code\tests\test_stage_0_5_native_capsule_v4.py:144: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def main():
+        work=Path.cwd()
+        context=json.loads((work/"broker_context.json").read_bytes())
+        verify_live_context(context)
+        run=context["run"]
+        inputs={n:(work/n).read_bytes() for n in context["input_sha256"]}
+        if context["schema"]==SMOKE_SCHEMA:smoke_inputs(run,inputs)
+        _,vehicles,_,_,_=inventory(inputs["routes.rou.xml"])
+        observer=IdentityObserver([dict(id=k,depart_s=float(v.get("depart"))) for k,v in vehicles.items()])
+>       scope=Scope(work.parent,{context["runtime"]["sumo_binary"]:context["runtime"]["sumo_sha256"]},work,native_allowed=True)
+                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'sumo_sha256'
+
+D:\shen\TJU\AAD\code\tmp\v4_finalize_validate_20261026_r1\code\scripts\stage_0_5_linux_controller_v4.py:62: KeyError
+_ test_controller_wrong_cli_release_stops_before_socket_or_native_start[1.26.0rc1] _
+
+tmp_path = WindowsPath('D:/shen/TJU/AAD/code/tmp/v4_finalize_validate_20261026_r1/code/tmp/research_v2_validation/20261026T115517936856_41416/targeted_tmp/test_controller_wrong_cli_rele3')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001F4E2138D70>
+version_text = '1.26.0rc1'
+
+    @pytest.mark.parametrize("version_text",INVALID_RELEASE_LINES[:4]+["1.26.0 extra"])
+    def test_controller_wrong_cli_release_stops_before_socket_or_native_start(tmp_path,monkeypatch,version_text):
+        from types import SimpleNamespace
+        import stage_0_5_linux_controller_v4 as controller
+        monkeypatch.chdir(tmp_path)
+        binary=tmp_path/"synthetic-binary";binary.write_bytes(b"never executed")
+        context=dict(schema="synthetic-test",run={},input_sha256={"routes.rou.xml":"unused"},
+            runtime=dict(sumo_binary=str(binary),sumo_release="1.26.0"),native_environment={},
+            proposal_sha256="p",policy_sha256="q")
+        (tmp_path/"broker_context.json").write_bytes(capsule.canonical(context))
+        (tmp_path/"routes.rou.xml").write_bytes(b"synthetic")
+        monkeypatch.setattr(controller,"verify_live_context",lambda c:None)
+        monkeypatch.setattr(controller,"inventory",lambda b:(None,{},None,None,None))
+        monkeypatch.setattr(controller,"IdentityObserver",lambda rows:SimpleNamespace(finish=lambda **kw:{}))
+        monkeypatch.setattr(controller,"Scope",lambda *a,**kw:SimpleNamespace(create=lambda path,data:path.write_bytes(data)))
+        stopped=[]
+        monkeypatch.setattr(controller,"NativeBackend",lambda:SimpleNamespace(
+            start=lambda c:pytest.fail("native start forbidden"),stop=lambda:stopped.append(True)))
+        monkeypatch.setattr(controller.os,"readlink",lambda p:"synthetic-namespace")
+        read_text=Path.read_text
+        def text(path,*args,**kwargs):
+            if str(path).replace("\\","/")=="/proc/self/status":
+                return "NoNewPrivs: 1\nSeccomp: 2\nCapEff: 0000000000000000"
+            if str(path).replace("\\","/")=="/proc/net/dev":return "header\nheader\nlo: synthetic"
+            return read_text(path,*args,**kwargs)
+        monkeypatch.setattr(Path,"read_text",text)
+        commands=[]
+        def version(command,**kwargs):
+            commands.append(command)
+            return SimpleNamespace(returncode=0,stdout=("Eclipse SUMO sumo "+version_text+"\n").encode())
+        monkeypatch.setattr(controller.subprocess,"run",version)
+        monkeypatch.setattr(controller.socket,"socket",lambda *a,**k:pytest.fail("TraCI socket forbidden"))
+>       with pytest.raises(ValueError,match="SUMO_release_mismatch"):controller.main()
+                                                                     ^^^^^^^^^^^^^^^^^
+
+D:\shen\TJU\AAD\code\tmp\v4_finalize_validate_20261026_r1\code\tests\test_stage_0_5_native_capsule_v4.py:144: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def main():
+        work=Path.cwd()
+        context=json.loads((work/"broker_context.json").read_bytes())
+        verify_live_context(context)
+        run=context["run"]
+        inputs={n:(work/n).read_bytes() for n in context["input_sha256"]}
+        if context["schema"]==SMOKE_SCHEMA:smoke_inputs(run,inputs)
+        _,vehicles,_,_,_=inventory(inputs["routes.rou.xml"])
+        observer=IdentityObserver([dict(id=k,depart_s=float(v.get("depart"))) for k,v in vehicles.items()])
+>       scope=Scope(work.parent,{context["runtime"]["sumo_binary"]:context["runtime"]["sumo_sha256"]},work,native_allowed=True)
+                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'sumo_sha256'
+
+D:\shen\TJU\AAD\code\tmp\v4_finalize_validate_20261026_r1\code\scripts\stage_0_5_linux_controller_v4.py:62: KeyError
+_ test_controller_wrong_cli_release_stops_before_socket_or_native_start[1.26.0 extra] _
+
+tmp_path = WindowsPath('D:/shen/TJU/AAD/code/tmp/v4_finalize_validate_20261026_r1/code/tmp/research_v2_validation/20261026T115517936856_41416/targeted_tmp/test_controller_wrong_cli_rele4')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000001F4E2139A90>
+version_text = '1.26.0 extra'
+
+    @pytest.mark.parametrize("version_text",INVALID_RELEASE_LINES[:4]+["1.26.0 extra"])
+    def test_controller_wrong_cli_release_stops_before_socket_or_native_start(tmp_path,monkeypatch,version_text):
+        from types import SimpleNamespace
+        import stage_0_5_linux_controller_v4 as controller
+        monkeypatch.chdir(tmp_path)
+        binary=tmp_path/"synthetic-binary";binary.write_bytes(b"never executed")
+        context=dict(schema="synthetic-test",run={},input_sha256={"routes.rou.xml":"unused"},
+            runtime=dict(sumo_binary=str(binary),sumo_release="1.26.0"),native_environment={},
+            proposal_sha256="p",policy_sha256="q")
+        (tmp_path/"broker_context.json").write_bytes(capsule.canonical(context))
+        (tmp_path/"routes.rou.xml").write_bytes(b"synthetic")
+        monkeypatch.setattr(controller,"verify_live_context",lambda c:None)
+        monkeypatch.setattr(controller,"inventory",lambda b:(None,{},None,None,None))
+        monkeypatch.setattr(controller,"IdentityObserver",lambda rows:SimpleNamespace(finish=lambda **kw:{}))
+        monkeypatch.setattr(controller,"Scope",lambda *a,**kw:SimpleNamespace(create=lambda path,data:path.write_bytes(data)))
+        stopped=[]
+        monkeypatch.setattr(controller,"NativeBackend",lambda:SimpleNamespace(
+            start=lambda c:pytest.fail("native start forbidden"),stop=lambda:stopped.append(True)))
+        monkeypatch.setattr(controller.os,"readlink",lambda p:"synthetic-namespace")
+        read_text=Path.read_text
+        def text(path,*args,**kwargs):
+            if str(path).replace("\\","/")=="/proc/self/status":
+                return "NoNewPrivs: 1\nSeccomp: 2\nCapEff: 0000000000000000"
+            if str(path).replace("\\","/")=="/proc/net/dev":return "header\nheader\nlo: synthetic"
+            return read_text(path,*args,**kwargs)
+        monkeypatch.setattr(Path,"read_text",text)
+        commands=[]
+        def version(command,**kwargs):
+            commands.append(command)
+            return SimpleNamespace(returncode=0,stdout=("Eclipse SUMO sumo "+version_text+"\n").encode())
+        monkeypatch.setattr(controller.subprocess,"run",version)
+        monkeypatch.setattr(controller.socket,"socket",lambda *a,**k:pytest.fail("TraCI socket forbidden"))
+>       with pytest.raises(ValueError,match="SUMO_release_mismatch"):controller.main()
+                                                                     ^^^^^^^^^^^^^^^^^
+
+D:\shen\TJU\AAD\code\tmp\v4_finalize_validate_20261026_r1\code\tests\test_stage_0_5_native_capsule_v4.py:144: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+    def main():
+        work=Path.cwd()
+        context=json.loads((work/"broker_context.json").read_bytes())
+        verify_live_context(context)
+        run=context["run"]
+        inputs={n:(work/n).read_bytes() for n in context["input_sha256"]}
+        if context["schema"]==SMOKE_SCHEMA:smoke_inputs(run,inputs)
+        _,vehicles,_,_,_=inventory(inputs["routes.rou.xml"])
+        observer=IdentityObserver([dict(id=k,depart_s=float(v.get("depart"))) for k,v in vehicles.items()])
+>       scope=Scope(work.parent,{context["runtime"]["sumo_binary"]:context["runtime"]["sumo_sha256"]},work,native_allowed=True)
+                                                                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'sumo_sha256'
+
+D:\shen\TJU\AAD\code\tmp\v4_finalize_validate_20261026_r1\code\scripts\stage_0_5_linux_controller_v4.py:62: KeyError
+=========================== short test summary info ===========================
+FAILED tests/test_stage_0_5_native_capsule_v4.py::test_controller_wrong_cli_release_stops_before_socket_or_native_start[1.26.0.1]
+FAILED tests/test_stage_0_5_native_capsule_v4.py::test_controller_wrong_cli_release_stops_before_socket_or_native_start[1.26.0-dev]
+FAILED tests/test_stage_0_5_native_capsule_v4.py::test_controller_wrong_cli_release_stops_before_socket_or_native_start[1.26.0+custom]
+FAILED tests/test_stage_0_5_native_capsule_v4.py::test_controller_wrong_cli_release_stops_before_socket_or_native_start[1.26.0rc1]
+FAILED tests/test_stage_0_5_native_capsule_v4.py::test_controller_wrong_cli_release_stops_before_socket_or_native_start[1.26.0 extra]
+5 failed, 283 passed, 1 skipped in 247.76s (0:04:07)
+VALIDATION_AUDIT_PATH=D:\shen\TJU\AAD\code\tmp\v4_finalize_validate_20261026_r1\code\tmp\research_v2_validation\20261026T115517936856_41416
+SOFTWARE_COUNTS={"deselected": 0, "error": 0, "exit_code": 1, "failed": 5, "passed": 283, "skipped": 1}

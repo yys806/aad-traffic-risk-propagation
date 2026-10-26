@@ -15,6 +15,8 @@ def main():
             self.record["exit_code"]=int(exitstatus)
     counts=Counts()
     def selected(args):
+        if "--full" in sys.argv:
+            return original(args,plugins=[counts])
         index=next(i for i,value in enumerate(args) if value.startswith("-"))
         names=["test_stage_0_5_native_capsule_v4","test_stage_0_5_linux_isolation","test_stage_0_5_admission_v3",
             "test_stage_0_5_v2_admission","test_stage_0_5_research_ledger","test_interaction_task_boundary","test_project_docs"]

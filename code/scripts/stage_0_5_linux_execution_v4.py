@@ -150,7 +150,10 @@ def technical_preflight_v4(repo,proposal_path,run_id,*,inspect_runtime=True):
         if linux is None:errors.append("live_Linux_runtime_and_resource_check_required")
     except (ValueError,KeyError,OSError,subprocess.SubprocessError) as error:
         errors.append(type(error).__name__+":"+str(error))
-    pending=authorization_reasons(p,{},sha(path),run_id)
+    # Build acceptance is an engineering prerequisite checked above. It must
+    # not be presented as a researcher decision or normal approval pending.
+    pending=[reason for reason in authorization_reasons(p,{},sha(path),run_id)
+             if reason!="capsule_build_not_accepted"]
     return dict(task_id=TASK,run_id=run_id,proposal_sha256=sha(path),technical_errors=errors,authorization_pending=pending,
         ready=not errors,status="READY_FOR_RESEARCHER_APPROVAL" if not errors else "BLOCKED_ENGINEERING")
 

@@ -125,11 +125,18 @@ def version_matches(actual,runtime):
 
 
 def sumo_version_output_matches(output, release):
-    """Match the exact release token in SUMO CLI output variants."""
+    """Accept a complete SUMO release line, never a version prefix or suffix.
+
+    Build/license text may occupy other lines. Only LF/CRLF separates the
+    release line; whitespace, annotations and prerelease/build suffixes on
+    that line are not part of an exact release.
+    """
     if not isinstance(output, str):
         return False
     token = re.escape(str(release))
-    return re.search(r"(?:\bVersion\s+|\bsumo\s+)" + token + r"(?![0-9.])", output) is not None
+    pattern = r"Eclipse SUMO sumo (?:Version )?" + token
+    return any(re.fullmatch(pattern, line.removesuffix("\r")) is not None
+               for line in output.split("\n"))
 
 
 def verify_receipt(archive,proposal,proposal_sha,policy_sha):

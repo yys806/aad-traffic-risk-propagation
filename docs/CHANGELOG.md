@@ -1,5 +1,9 @@
 # AAD 项目信息结构变更记录
 
+## 2026-10-26 V4 r5严格版本与准备
+
+整行精确release解析；新staging/当前源码/完整runtime清单/六组探针/SMOKE_V4_20261026_3 proposal与false envelope；新Linux v4 schema candidate-v5保留B00科研定义。0 SUMO/0真实TraCI/0新科研轨迹，不迁移旧授权，生产回执未验收仍Blocked。依据：`docs/STAGE_0_5_V4_PREPARATION_2026-10-26.md`。
+
 ## 2026-10-26 WSL隔离解阻
 
 显式授权后新增Linux内核broker、14项真实无害验证、运行时拒绝接线、第八项能力证据和B00重绑。0仿真；Windows1.26与Linux1.18不互换，仍BLOCKED_ENGINEERING。依据：`docs/STAGE_0_5_WSL_ISOLATION_2026-10-26.md`。

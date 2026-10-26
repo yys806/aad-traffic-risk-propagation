@@ -1,5 +1,9 @@
 # AAD Module Map
 
+## 2026-10-26 V4准备模块
+
+`code/scripts/stage_0_5_native_capsule_v4.py`：精确整行CLI版本/授权/回执核验；`prepare_stage_0_5_linux_stage_v4.py`：不可覆盖staging与synthetic proposal准备、漂移拒绝；`prepare_stage_0_5_admission_v4.py`：只准备Linux研究策略/v4候选；`stage_0_5_linux_execution_v4.py::technical_preflight_v4`：技术阻断/批准未决分离；`validate_stage_0_5_linux_v4.py`：无数据克隆定向或全量软件回归；测试 `code/tests/test_stage_0_5_native_capsule_v4.py`。依据：`docs/STAGE_0_5_V4_PREPARATION_2026-10-26.md`。
+
 ## 2026-10-26 WSL隔离扩展
 
 新增stage_0_5_linux_isolation（内核broker）、probe_stage_0_5_linux_isolation（合成原生探针）、stage_0_5_isolation_admission（重算/拒绝）、prepare_stage_0_5_wsl_b00（重绑）及test_stage_0_5_linux_isolation。前七项测量/核心算法不变，能力证据不等于当前任务Accepted。依据：`docs/STAGE_0_5_WSL_ISOLATION_2026-10-26.md`。

@@ -1,5 +1,9 @@
 # AAD 结果索引
 
+## 2026-10-26 V4 r5工程准备证据（非科研结果）
+
+新严格版本测试、r5运行时/源码/探针/输入绑定及未授权smoke proposal/envelope；新Linux candidate-v5，仍Blocked。没有新smoke通过或研究轨迹。审计：`docs/audits/stage_0_5_linux_native_v4/prepared-20261026-r5/`；候选：`evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v5/`；说明：`docs/STAGE_0_5_V4_PREPARATION_2026-10-26.md`。
+
 ## RES-STAGE-0.5-V2-ADMISSION-ENGINEERING-V1
 
 身份契约/状态机、XML保真校验、硬锁执行与隔离守卫、六份历史C6重测及独立核对、无数据软件测试；两份已有C6基线复用。全部为工程/历史离线证据，新轨迹0，原生隔离Unknown/Not Accepted，科学方案仍Proposed。

@@ -1,5 +1,9 @@
 # AAD Data Flow
 
+## 2026-10-26 V4 r5准备绑定
+
+当前控制器/broker十二源与固定Linux运行时经静态ELF/文件SHA核验进入新r5；r5新探针record绑定同一guard。三份synth输入→smoke只读策略→proposal→false envelope；三份既有B00候选XML仅逐字节复制→独立research策略（accepted_build=false），不执行。新collection收集精确白名单，candidate-v5将源/运行时/输入/软件验证绑定到Linux v4 schema。生产回执仍缺，不能产生准入证书。依据：`docs/STAGE_0_5_V4_PREPARATION_2026-10-26.md`；旧数据流保留历史。
+
 ## 2026-10-26 V3封存与核算
 
 新精确候选→技术预检/逐次授权→独占capsule字节快照→身份hash链/TripInfo/FCD/资源记录→从原日志重建身份→原C6/D1与18单元/右端点验收→追加账本。真实路径仍硬锁未运行；合成测试走真实验收函数。TripInfo出发速度/位置与完成步getSpeed/getLanePosition、FCD首现分别标记；缺失不推断discard。原始真实数据/历史FCD本轮不读取，参考使用已批准的0750便携18行支持摘要。
