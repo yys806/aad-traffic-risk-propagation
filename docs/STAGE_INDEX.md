@@ -1,5 +1,9 @@
 # AAD 阶段索引
 
+## 2026-10-26 V4合成集成工程Pass
+
+唯一原生smoke及独立回执验收Pass；这是工程证据，B00/candidate-v5四false与BLOCKED_ENGINEERING、pending_simulation_sample及Stage1.1不变。依据：`docs/STAGE_0_5_V4_SMOKE_3_CONTINUATION_2026-10-26.md`；下方为历史时点。
+
 ## 2026-10-26 smoke 3未启动
 
 PRELAUNCH BLOCKED，任务辅助预检异常后停止，0 SUMO版本/仿真/真实TraCI/科研轨迹；B00仍工程阻断、四false与科研Gate不变。依据：`docs/STAGE_0_5_V4_SMOKE_3_2026-10-26.md`。下方为历史时点。

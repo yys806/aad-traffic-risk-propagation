@@ -1,5 +1,9 @@
 # AAD 当前科研状态
 
+## 2026-10-26 合成V4 smoke工程Pass（最新）
+
+固定原r5通过完整实时检查后，唯一一次SMOKE_V4_20261026_3完成版本1/仿真1/真实TraCI1和60控制步，原协调器与独立verify_receipt均Pass；隔离、资源、清理及XML输出验收通过。仅工程集成，不是B00/科研结论。candidate-v5四false、B00工程阻断、历史Not Accepted、全部科研定义/Gate/δ/h/B/Stage1.1不变。依据：`docs/STAGE_0_5_V4_SMOKE_3_CONTINUATION_2026-10-26.md`；下方为历史时点。
+
 ## 2026-10-26 smoke 3 PRELAUNCH BLOCKED（最新）
 
 本次精确授权的工程smoke未启动：新纯Git135项通过，辅助预检错误要求WSL可选sysctl后停止，剩余实时隔离/资源验收未完成；无重试，无新授权envelope。SUMO版本/仿真/真实TraCI/科研轨迹0，B00/candidate-v5仍BLOCKED_ENGINEERING，四false/历史Not Accepted/硬锁及科研定义/Gate不变。依据：`docs/STAGE_0_5_V4_SMOKE_3_2026-10-26.md`；下方为历史时点。

@@ -1,5 +1,9 @@
 # AAD Architecture
 
+## 2026-10-26 V4生产capsule工程验证
+
+固定r5原broker/controller经精确新envelope执行唯一3s合成smoke，真实TraCI、60步调度/回读、完整原生回执及独立verify_receipt均Pass。辅助工具改为显式输出、实际启动/进程/unit检查、可选sysctl元数据及当前五namespace实际分离，生产源码/policy不改。工程证据Verified不等于B00准入；candidate-v5四false和裸宿主硬锁不变。依据：`docs/STAGE_0_5_V4_SMOKE_3_CONTINUATION_2026-10-26.md`；下方为历史时点。
+
 ## 2026-10-26 V4当前准备链
 
 V4 stage → 当前六组Python隔离探针 → smoke准备（无launch）→ Linux研究策略/候选准备；staging源码/manifest漂移先拒绝。`stage_0_5_native_capsule_v4.py`整行版本解析同时保护controller与receipt；`prepare_stage_0_5_admission_v4.py`只准备Linux策略和v4 schema候选。`technical_preflight_v4`将生产构建未接受归技术阻断，授权未决独立返回；正常待批准可为READY_FOR_RESEARCHER_APPROVAL，但当前缺生产回执仍Blocked。源码/策略/输入/运行时/当前探针均精确绑定，硬锁和四false保留。依据：`docs/STAGE_0_5_V4_PREPARATION_2026-10-26.md`。下方保留历史时点。

@@ -1,5 +1,9 @@
 # AAD 结果索引
 
+## 2026-10-26 V4 smoke 3工程验收Pass
+
+原r5精确授权一次合成生产smoke，60步真实TraCI/控制回读、三种XML和完整回执经原验收器独立核验Pass；版本/仿真/连接各1，无重试/新B00科研轨迹。证据：`docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/authorized-execution/`；说明：`docs/STAGE_0_5_V4_SMOKE_3_CONTINUATION_2026-10-26.md`。旧启动前失败独立保留，不改科研准入或Gate。
+
 ## 2026-10-26 smoke 3启动前阻断记录（无仿真结果）
 
 新纯Git135项通过后，任务辅助预检因可选sysctl缺失抛异常；原始脚本/日志/授权范围/停止事实归档，未生成授权envelope或launch记录，0 SUMO/真实TraCI/科研轨迹。依据：`docs/STAGE_0_5_V4_SMOKE_3_2026-10-26.md`；`docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/`。

@@ -1,0 +1,1 @@
+{"argv":["/usr/bin/unshare","--user","--map-root-user","--","/usr/bin/python3","-I","-B","-c","import json,os;print(json.dumps({'uid':os.getuid(),'user_namespace':os.readlink('/proc/self/ns/user')}))"],"cwd":null,"timeout_s":5}

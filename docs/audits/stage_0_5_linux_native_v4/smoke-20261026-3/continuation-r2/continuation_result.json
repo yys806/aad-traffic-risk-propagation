@@ -1,0 +1,42 @@
+{
+  "status": "SMOKE PASS",
+  "scope": "Continuation of same exact researcher authorization; first actual launch consumed now",
+  "historical_prelaunch": {
+    "result_path": "../result.json",
+    "result_sha256": "f106d4de368fd44b199f9f2362e72e23d2a7c9d694b71baeead8dfeb29f42e12",
+    "SHA256SUMS_sha256": "935401f62256bd6f8b706d36c3d6661ed184dce5df598b5bbfffdc48556956fe",
+    "preserved": true,
+    "actual_launches": 0
+  },
+  "helper_corrections": [
+    "Optional sysctls are metadata, not capability prerequisites",
+    "Historical audit directory allowed; actual launch/unit/process artifacts prevent reuse",
+    "Explicit exclusive output directories and safe raw-byte logging",
+    "Historical outer namespace ID equality removed; actual five fresh namespace separation verified"
+  ],
+  "r2_auxiliary_failure": {
+    "record": "prelaunch-r2/linux_preflight.json",
+    "classification": "HELPER_ERROR: overstrict historical outer namespace equality; no policy hash or actual capability failure"
+  },
+  "accepted_preflight": {
+    "record": "prelaunch-r3/linux_preflight.json",
+    "sha256": "608d5a41ac3a5c962b4a0a544cc5137302562a95a34577a3d83a03f11a7dba8f",
+    "status": "Pass"
+  },
+  "launch_result_path": "../authorized-execution/result.json",
+  "launch_result_sha256": "ae4ce45d42b37b4b42598987c9bae22c50f69641b80ee49c5c5d2449f2df0c64",
+  "authorized_envelope_sha256": "a9ce5a370957387690adfcfc953e7d20d5a877d3d73e628418bd73b816b1271d",
+  "actual_launches": 1,
+  "SUMO_version_processes": 1,
+  "SUMO_simulation_processes": 1,
+  "real_TraCI_connections": 1,
+  "new_B00_research_trajectories": 0,
+  "production_sources_changed": false,
+  "proposal_changed": false,
+  "runtime_changed": false,
+  "policy_changed": false,
+  "inputs_changed": false,
+  "B00_state": "BLOCKED_ENGINEERING; candidate-v5 untouched; no B00 authorization",
+  "historical_incident": "Not Accepted",
+  "scientific_Gate_changed": false
+}

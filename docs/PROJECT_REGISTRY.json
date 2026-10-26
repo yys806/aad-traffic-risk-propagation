@@ -277,11 +277,17 @@
   "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/prelaunch/linux_preflight.json",
   "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/preservation.json",
   "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/continuation-r2/README.md",
-  "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/continuation-r2/helper-validation/validation.json"
+  "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/continuation-r2/helper-validation/validation.json",
+  "docs/STAGE_0_5_V4_SMOKE_3_CONTINUATION_2026-10-26.md",
+  "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/authorized-execution/result.json",
+  "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/authorized-execution/authorized_envelope.json",
+  "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/authorized-execution/capsule/engineering_acceptance.json",
+  "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/authorized-execution/independent_receipt_acceptance.json",
+  "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/continuation-r2/continuation_result.json"
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "Active: continue exact-authorized SMOKE_V4_20261026_3 after auxiliary-only fixes. Old prelaunch evidence preserved; no native attempt consumed. Helper177 offline tests pass; fixed r5/production bindings unchanged; live preflight and one launch follow helper commit/push. B00 flags/Gate unchanged.",
+  "active_task": "SMOKE PASS: exact-authorized SMOKE_V4_20261026_3 completed one original-r5 native launch, one version process, one simulation and one real TraCI connection;60 control steps and native outputs independently accepted. No retry or B00 research trajectory. Candidate-v5/B00 flags and scientific Gate unchanged.",
   "why_now": "Researcher explicitly removed old three-attempt restriction for new research; historical ledgers and failed ID1 remain immutable. Need matched baseline and factorial contrasts under reviewed measurement.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
@@ -336,7 +342,7 @@
    "schema": "aad.native-admission.v4"
   },
   "native_smoke_preparation": {
-   "status": "PREPARED / AWAITING_EXPLICIT_AUTHORIZATION",
+   "status": "Historical prepared proposal; one exact-authorized smoke now passed; original false envelope retained",
    "run_id": "SMOKE_V4_20261026_3",
    "staging": "/home/shen/AAD/code/tmp/stage05_v4_20261026_r5",
    "source_closure_sha256": "b1598d279e2665c1c902bae827022440a34f668377fc0544b30fbcf84f8015c2",
@@ -347,27 +353,34 @@
    "summary_path": "docs/audits/stage_0_5_linux_native_v4/prepared-20261026-r5/preparation_summary.json"
   },
   "native_smoke_execution": {
-   "status": "Active / continuation",
+   "status": "SMOKE PASS",
    "task_id": "AAD-0.5-LINUX-INTEGRATION-V4-SMOKE",
    "run_id": "SMOKE_V4_20261026_3",
    "proposal_sha256": "a5f419029a7dc3ddc527d9b7e7e824c9f0f3779f4f3e17e769d87d472ca4a550",
-   "authorized_envelope_sha256": null,
-   "audit_root": "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3",
+   "authorized_envelope_sha256": "a9ce5a370957387690adfcfc953e7d20d5a877d3d73e628418bd73b816b1271d",
+   "audit_root": "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/authorized-execution",
    "prelaunch_code_commit": "6a8864372560712e4f127f93219edad073da0d9f",
    "actual_pure_Git_tests_passed": 135,
-   "SUMO_version_processes": 0,
-   "SUMO_simulation_processes": 0,
-   "real_TraCI_connections": 0,
+   "SUMO_version_processes": 1,
+   "SUMO_simulation_processes": 1,
+   "real_TraCI_connections": 1,
    "new_research_trajectories": 0,
-   "live_resource_acceptance": "Not reached",
-   "production_receipt_accepted": false,
+   "live_resource_acceptance": "Pass",
+   "production_receipt_accepted": true,
    "automatic_retry": false,
    "historical_prelaunch_result_sha256": "f106d4de368fd44b199f9f2362e72e23d2a7c9d694b71baeead8dfeb29f42e12",
    "continuation": {
     "path": "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/continuation-r2",
-    "helper_tests_passed": 177,
-    "actual_launch_attempts": 0
-   }
+    "helper_tests_passed": 180,
+    "actual_launch_attempts": 1,
+    "result_path": "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/continuation-r2/continuation_result.json"
+   },
+   "result_sha256": "ae4ce45d42b37b4b42598987c9bae22c50f69641b80ee49c5c5d2449f2df0c64",
+   "actual_launch_calls": 1,
+   "simulation_steps": 60,
+   "control_readbacks_verified": true,
+   "production_source_closure_sha256": "b1598d279e2665c1c902bae827022440a34f668377fc0544b30fbcf84f8015c2",
+   "execution_code_commit": "09918d16bc06fc1d72e8322da21e048aa1548317"
   }
  },
  "experiments": [
@@ -1084,7 +1097,7 @@
     "third_window_rows_materialised",
     "zotero_items_added"
    ],
-   "current_conclusion": "Exact-authorized V4 smoke3 stopped PRELAUNCH BLOCKED on task-local precheck optional-sysctl assumption; no native launch, SUMO version/simulation/real TraCI/new research trajectories. Fresh pure-Git135 passed but full live admission incomplete. Existing r5/candidate-v5 and B00 remain blocked and false; scientific definition/Gate unchanged.",
+   "current_conclusion": "V4 original-r5 synthetic production integration smoke independently passed after one authorized attempt; version/simulation/real TraCI each1,60 verified control steps. B00/candidate-v5 research admission still blocked and all four flags false; no new research trajectory or scientific Gate/definition change.",
    "gate": {
     "status": "pending_simulation_sample",
     "portable_path": "evidence/results/RES-STAGE-0.5-REAL-REF-R2/audit.json"

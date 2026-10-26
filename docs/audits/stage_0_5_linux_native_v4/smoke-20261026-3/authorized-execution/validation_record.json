@@ -1,0 +1,80 @@
+{
+  "phase": "Precommit closure after one actual SMOKE PASS; not postcommit checks",
+  "status": "Pass",
+  "helper_test_counts": [
+    177,
+    180
+  ],
+  "actual_prelaunch_Git_tests": 180,
+  "live_preflight_status": "Pass",
+  "live_preflight_record": "../continuation-r2/prelaunch-r3/linux_preflight.json",
+  "compileall": {
+    "cwd": "code/tmp/v4_smoke3_continuation_git_r3",
+    "argv": [
+      "python",
+      "-B",
+      "-m",
+      "compileall",
+      "-q",
+      "code/src",
+      "code/scripts",
+      "code/tests",
+      "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/continuation-r2/audit_tools"
+    ],
+    "exit_code": 0
+  },
+  "commands": [
+    {
+      "argv": [
+        "python",
+        "-B",
+        "code/scripts/validate_project_docs.py",
+        "--strict-git"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "code/scripts/export_project_evidence.py",
+        "--repo-root",
+        ".",
+        "--verify"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "independent_receipt_status": "Pass",
+  "production_sources_unchanged": true,
+  "old_failure_result_sha256": "f106d4de368fd44b199f9f2362e72e23d2a7c9d694b71baeead8dfeb29f42e12",
+  "old_failure_SHA256SUMS_sha256": "935401f62256bd6f8b706d36c3d6661ed184dce5df598b5bbfffdc48556956fe",
+  "context_consistency_check": {
+    "updated": [
+      "00",
+      "02",
+      "03",
+      "04",
+      "05",
+      "07",
+      "08"
+    ],
+    "unchanged": [
+      "01",
+      "06"
+    ],
+    "scientific_definitions_or_Gate_changed": false
+  },
+  "postcommit_verification": "Will execute on final committed SHA; actual command/log record at code/tmp/smoke3_continuation_postcommit_checks/verification.json",
+  "research_admission": "B00 BLOCKED_ENGINEERING; candidate-v5 four false flags unchanged",
+  "additional_native_launches": 0
+}

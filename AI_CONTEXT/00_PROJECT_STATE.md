@@ -1,5 +1,9 @@
 # AAD Current State Snapshot
 
+## 2026-10-26 SMOKE_V4_20261026_3：SMOKE PASS（最新）
+
+同一精确授权在辅助流程修复/提交推送及完整实时验收后实际执行一次：launch1/版本进程1/仿真1/真实TraCI1，3s合成60步，10/5/10限速施加/时钟/回读全验收；FCD/summary/tripinfo有效，原协调器和独立verify_receipt均Pass。66资源采样、峰值RSS100130816B、最大采样间隔0.345776584s，1GiB/16MiB预算及隔离/清理通过，无残留进程，无重试。新授权envelope SHA=`a9ce5a370957387690adfcfc953e7d20d5a877d3d73e628418bd73b816b1271d`；结果SHA=`ae4ce45d42b37b4b42598987c9bae22c50f69641b80ee49c5c5d2449f2df0c64`。原r5/proposal/runtime/12源/输入/policy与false envelope不改，旧失败result/SHA保留。仅工程SMOKE PASS，candidate-v5/B00仍BLOCKED_ENGINEERING、四false/历史Not Accepted/科研Gate/δ/h/B/Stage1.1不变，新B00科研轨迹0。依据：`docs/STAGE_0_5_V4_SMOKE_3_CONTINUATION_2026-10-26.md`；证据`docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/authorized-execution/`。下方为历史时点。
+
 ## 2026-10-26 smoke 3继续执行（Active）
 
 研究者明确继续同一精确授权：上次辅助预检异常、launch0不消耗唯一实际尝试。修正版在`docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/continuation-r2/`，旧脚本/result/SHA原字节保留。修复可选sysctl、已有审计目录判定、显式独占输出及安全日志；使用真实无害userns/Landlock/seccomp/systemd/cgroup检查与原生产预检。仅辅助脚本改变，r5/proposal/12源/输入/runtime/policy不改；本段登记时仍0 launch/0 SUMO/0 TraCI，完成测试及辅助修复提交后继续实时验收与唯一launch，不重复询问授权。科研Gate、candidate-v5四false、历史Not Accepted不变；本轮最终结果以后续continuation记录为准。

@@ -1,5 +1,9 @@
 # AAD Known Issues
 
+## 2026-10-26 辅助流程修复、合成smoke已Pass（最新）
+
+可选sysctl/已有审计目录/固定输出路径/GBK日志问题已由新辅助工具修复；额外历史host namespace ID相等假设也已纠正为实际新namespace分离。当前完整实时验收及唯一原生smoke均Pass，旧失败证据保留。B00/candidate-v5仍未准入，四false、实际研究初始化/i0007/交互相容/历史Not Accepted及科研Gate未解决、不自动升级。依据：`docs/STAGE_0_5_V4_SMOKE_3_CONTINUATION_2026-10-26.md`；下方为历史时点。
+
 ## 2026-10-26 smoke 3预检辅助脚本问题（最新）
 
 任务级helper把`/proc/sys/kernel/unprivileged_userns_clone`当必需文件，当前WSL不暴露该可选路径，触发FileNotFoundError。该错误不证明内核无userns能力；剩余实时隔离/资源检查未完成，PRELAUNCH BLOCKED。按本次任务停止规则未修后重跑、未生成授权envelope或调用launch，原r5不改。后续工程任务需使用实际内核能力判断并保留本次失败，不可自动继续本次smoke。依据：`docs/STAGE_0_5_V4_SMOKE_3_2026-10-26.md`。

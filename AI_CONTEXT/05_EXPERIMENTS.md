@@ -1,5 +1,9 @@
 # AAD Experiments
 
+## 2026-10-26 V4 smoke 3工程Pass
+
+精确SMOKE_V4_20261026_3实际launch1，SUMO版本1/合成仿真1/真实TraCI1，60步/3s/seed1，调度回读及输出/回执/隔离/资源/清理全验收，无重试。辅助修复180项离线回归通过，旧预检失败保留。仅合成工程验证，B00科研运行0、candidate-v5四false与科研Gate不变。依据：`docs/STAGE_0_5_V4_SMOKE_3_CONTINUATION_2026-10-26.md`；下方为历史时点。
+
 ## 2026-10-26 SMOKE_V4_20261026_3未启动
 
 获精确条件授权后，新纯Git135项通过；预检辅助脚本读取WSL未提供的可选sysctl时报错，实时资源/隔离验收未完成，PRELAUNCH BLOCKED。未生成授权envelope，launch/版本进程/仿真/真实TraCI/步数/新科研轨迹均0，无重试。原3s合成定义与B00/candidate-v5四false不改。依据：`docs/STAGE_0_5_V4_SMOKE_3_2026-10-26.md`；下方为历史时点。

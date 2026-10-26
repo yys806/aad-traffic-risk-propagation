@@ -1,5 +1,9 @@
 # AAD AI Context Changelog
 
+## 2026-10-26 同一授权续行：SMOKE PASS
+
+辅助流程修复先测试/提交/推送（177→180项），旧失败result/SHA/工具保留。原r5所有生产绑定不改，经新实时userns/Landlock/seccomp/cgroup/systemd/8031依赖与资源验收，唯一launch完成1版本/1仿真/1真实TraCI和60步调度。协调器及独立回执验收Pass，XML有效、隔离/资源/清理通过，无重试/B00科研轨迹。Context Consistency Check更新00/02/03/04/05/07/08；01/06及全部科研定义/Gate/四false不变。依据：`docs/STAGE_0_5_V4_SMOKE_3_CONTINUATION_2026-10-26.md`。
+
 ## 2026-10-26 smoke 3 PRELAUNCH BLOCKED
 
 实际重跑纯Git135项及20条预检命令、核对38源/12 Git生产源；辅助Linux预检错误要求可选sysctl，FileNotFoundError后停止。0 SUMO版本/0仿真/0真实TraCI/0新科研轨迹；无授权envelope或launch记录、无重试，完整原始日志与脚本独占归档。r5/candidate-v5/科研定义与四false及Gate保留。Context Consistency Check更新00/05/07/08；01/02/03/04/06无需变化。依据：`docs/STAGE_0_5_V4_SMOKE_3_2026-10-26.md`。

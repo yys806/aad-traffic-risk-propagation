@@ -1,5 +1,9 @@
 # AAD Module Map
 
+## 2026-10-26 smoke辅助工具修复
+
+新活动辅助工具在`docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/continuation-r2/audit_tools/`：audit_common负责独占日志/安全显示/实际进程判定，preflight_git负责新输出/纯Git校验，preflight_linux负责当前无害能力及原生产入口实时预检。旧工具作为失败证据保留。新增测试`code/tests/test_stage_0_5_smoke3_preflight.py`；生产绑定模块不改，真实smoke已工程Pass。依据：`docs/STAGE_0_5_V4_SMOKE_3_CONTINUATION_2026-10-26.md`。
+
 ## 2026-10-26 V4准备模块
 
 `code/scripts/stage_0_5_native_capsule_v4.py`：精确整行CLI版本/授权/回执核验；`prepare_stage_0_5_linux_stage_v4.py`：不可覆盖staging与synthetic proposal准备、漂移拒绝；`prepare_stage_0_5_admission_v4.py`：只准备Linux研究策略/v4候选；`stage_0_5_linux_execution_v4.py::technical_preflight_v4`：技术阻断/批准未决分离；`validate_stage_0_5_linux_v4.py`：无数据克隆定向或全量软件回归；测试 `code/tests/test_stage_0_5_native_capsule_v4.py`。依据：`docs/STAGE_0_5_V4_PREPARATION_2026-10-26.md`。

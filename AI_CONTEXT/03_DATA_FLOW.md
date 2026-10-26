@@ -1,5 +1,9 @@
 # AAD Data Flow
 
+## 2026-10-26 合成原生数据流Verified
+
+固定r5三份synth输入→原隔离policy/broker/controller→真实TraCI 60步→FCD/summary/tripinfo及OS/controller receipts→协调器验收和独立verify_receipt均Pass；原始输出按只读白名单收集至authorized-execution。输入/源/runtime/policy未重生成；没有B00/研究数据流。candidate-v5原准入证书/四false不自动升级。依据：`docs/STAGE_0_5_V4_SMOKE_3_CONTINUATION_2026-10-26.md`。
+
 ## 2026-10-26 V4 r5准备绑定
 
 当前控制器/broker十二源与固定Linux运行时经静态ELF/文件SHA核验进入新r5；r5新探针record绑定同一guard。三份synth输入→smoke只读策略→proposal→false envelope；三份既有B00候选XML仅逐字节复制→独立research策略（accepted_build=false），不执行。新collection收集精确白名单，candidate-v5将源/运行时/输入/软件验证绑定到Linux v4 schema。生产回执仍缺，不能产生准入证书。依据：`docs/STAGE_0_5_V4_PREPARATION_2026-10-26.md`；旧数据流保留历史。
