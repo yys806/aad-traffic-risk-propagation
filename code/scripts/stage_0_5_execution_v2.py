@@ -259,13 +259,13 @@ class NativeBackend:
         self._identity_lock = threading.RLock()
 
     def start(self, context):
-        if NATIVE_LAUNCH_LOCKED:
+        capsule_context=context.get("native_capsule_context")
+        if not isinstance(capsule_context,dict):
             raise AdmissionRefused("engineering_build_native_launch_locked")
-        # Defense in depth if a later reviewed build changes the constant.
-        if gate_reasons(context["proposal"], context["approval"], context["run"]["id"], context["proposal_sha256"], task_id=context["budget_task_id"]):
-            raise AdmissionRefused("native_backend_gate_failed")
-        from stage_0_5_isolation_admission import require_native_context
-        require_native_context(context)
+        # The legacy bare-host lock remains True. Native execution is admitted
+        # only by the exact capsule context plus live kernel checks, never a flag.
+        from stage_0_5_native_capsule_v4 import verify_live_context
+        verify_live_context(capsule_context)
         command = context["native_command"]
         if context["scope"].used:
             raise AdmissionRefused("single_process_only")
@@ -278,6 +278,8 @@ class NativeBackend:
             self.owner_creation_time = psutil.Process(self.process.pid).create_time()
         sys.path.insert(0, context["traci_tools_root"])
         import traci
+        if sha(Path(traci.__file__)) != capsule_context["runtime"]["traci_init_sha256"]:
+            raise RuntimeError("bound_TraCI_source_mismatch")
         traci.init(port=context["port"], numRetries=10, proc=self.process, label=context["run"]["id"])
         self.connection = traci.getConnection(context["run"]["id"])
         actual_version = self.connection.getVersion()
@@ -359,6 +361,19 @@ def measure_completed_capsule(context, identity):
     return assess_capsule(context, identity)
 
 
+def run_observation_loop(context,backend,observer,journal,supervisor,*,synthetic):
+    """Shared production/replay stepping; identity/scientific semantics unchanged."""
+    for _ in range(round(context["run"]["duration_s"]/observer.step)):
+        control=backend.before_step(observer.time,context) if not synthetic else None
+        frame=backend.step()
+        if control is not None:frame["controls"]=control
+        observer.ingest(frame)
+        journal.append(observer.frames[-1])
+        if frame.get("teleport_start") or (frame.get("collision_count") or 0)>0:
+            raise RuntimeError("collision_or_teleport_stop")
+        supervisor.observe()
+
+
 class ExecutionAdapter:
     def __init__(self, repo, ledger, report_root):
         self.repo, self.ledger = Path(repo).resolve(), ledger
@@ -425,6 +440,12 @@ class ExecutionAdapter:
             self.refuse([type(error).__name__ + ":" + str(error)], run_id)
 
     def execute(self, proposal_path, approval, run_id, *, backend=None, resource_probe=None, measurement=None):
+        candidate_path=self.report_scope._lexical(proposal_path)
+        if json.loads(candidate_path.read_bytes()).get("schema")=="aad.native-admission.v4":
+            if backend is not None or resource_probe is not None or measurement is not None:
+                self.refuse(["native_test_override_forbidden"],run_id)
+            from stage_0_5_linux_execution_v4 import execute_research
+            return execute_research(self,proposal_path,approval,run_id)
         backend = NativeBackend() if backend is None else backend
         synthetic = type(backend) is ReplayBackend
         if not synthetic and (resource_probe is not None or measurement is not None):
@@ -479,16 +500,7 @@ class ExecutionAdapter:
                 watchdog.start()
             observer.ingest(backend.start(context))
             journal.append(observer.frames[-1])
-            for _ in range(round(run["duration_s"] / observer.step)):
-                control = backend.before_step(observer.time, context) if not synthetic else None
-                frame = backend.step()
-                if control is not None:
-                    frame["controls"] = control
-                observer.ingest(frame)
-                journal.append(observer.frames[-1])
-                if frame.get("teleport_start") or (frame.get("collision_count") or 0) > 0:
-                    raise RuntimeError("collision_or_teleport_stop")
-                supervisor.observe()
+            run_observation_loop(context,backend,observer,journal,supervisor,synthetic=synthetic)
             backend.finish()
             if not synthetic or backend.outputs:
                 fcd_status = attach_FCD_observations(observer, work / "fcd.xml")

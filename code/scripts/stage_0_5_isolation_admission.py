@@ -53,6 +53,18 @@ def capability_report(repo, record_path, expected_sha):
 
 
 def runtime_reasons(proposal, capability):
+    if proposal.get("schema")=="aad.native-admission.v4":
+        from stage_0_5_native_capsule_v4 import version_matches
+        runtime=proposal.get("runtime",{});observed=capability.get("controller_receipt",{})
+        errors=[]
+        if not runtime or not observed:return ["bound_production_runtime_receipt_missing"]
+        if runtime.get("sumo_release")!="1.26.0" or not version_matches(observed.get("getVersion"),runtime):
+            errors.append("bound_Linux_SUMO_or_TraCI_version_mismatch")
+        for actual,expected in [("sumo_binary_sha256","sumo_sha256"),("traci_source_sha256","traci_init_sha256")]:
+            if not runtime.get(expected) or observed.get(actual)!=runtime[expected]:errors.append("bound_runtime_hash_mismatch:"+actual)
+        if not observed.get("controller_namespaces") or observed.get("controller_namespaces")!=observed.get("sumo_namespaces"):
+            errors.append("production_controller_and_SUMO_namespace_mismatch")
+        return errors
     errors=[]
     version=proposal["native_runtime_version"][1].removeprefix("SUMO ")
     packages=dict(row.split("\t",1) for row in capability["installed_versions"].splitlines() if "\t" in row)
@@ -89,7 +101,7 @@ def software_extension_verified(repo,record,sources):
     This is explicitly an isolation-only targeted extension, never a claim that
     the old 1130 tests were rerun on the new source tree.
     """
-    if record.get("validation_mode")!="isolation_targeted_extension" or record.get("source_sha256")!=sources:
+    if record.get("validation_mode") not in {"isolation_targeted_extension","production_capsule_targeted_extension"} or record.get("source_sha256")!=sources:
         return False
     if record.get("targeted",{}).get("exit_code")!=0:return False
     reuse=record["reused_full_regression"]
@@ -100,6 +112,10 @@ def software_extension_verified(repo,record,sources):
     previous=json.loads(data)
     if previous["full"]["exit_code"]!=0:return False
     permitted={"code/scripts/stage_0_5_execution_v2.py","code/scripts/stage_0_5_admission_v3.py","code/scripts/stage_0_5_acceptance_v3.py"}
+    if record["validation_mode"]=="production_capsule_targeted_extension":
+        permitted.update("code/scripts/"+n+".py" for n in ["stage_0_5_research_ledger","run_stage_0_5_admission_v3",
+            "stage_0_5_linux_isolation","stage_0_5_isolation_admission"])
+        permitted.add("code/tests/test_stage_0_5_linux_isolation.py")
     changed={n for n,h in previous["source_sha256"].items() if sources.get(n)!=h}
     if not changed<=permitted or changed!=set(record["modified_existing_sources"]):return False
     added=set(sources)-set(previous["source_sha256"])

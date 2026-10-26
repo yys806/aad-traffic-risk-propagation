@@ -173,10 +173,17 @@ class ResearchLedger:
         require(approval.get("researcher_confirmed") is True and approval.get("task_id") == self.task_id and
                 approval.get("proposal_sha256") == digest(path) and bool(approval.get("decision_record")),
                 "exact_researcher_confirmation_required")
-        require(p.get("task_id") == self.task_id and p.get("execution_allowed") is True and
-                p.get("researcher_confirmed") is True, "proposal_not_executable")
+        native_v4=p.get("schema")=="aad.native-admission.v4"
+        if native_v4:
+            # V4 keeps the reviewed proposal immutable and false until the human
+            # confirms its exact SHA. Authorization is a separate single-run record.
+            from stage_0_5_native_capsule_v4 import authorization_reasons
+            require(not authorization_reasons(p,approval,digest(path),run_id),"exact_v4_run_authorization_required")
+        else:
+            require(p.get("task_id") == self.task_id and p.get("execution_allowed") is True and
+                    p.get("researcher_confirmed") is True, "proposal_not_executable")
         require(p.get("budget_sha256") == digest(self.config_path), "proposal_budget_binding")
-        require(all(p.get("admission", {}).get(k) is True for k in
+        require(all((approval if native_v4 else p).get("admission", {}).get(k) is True for k in
                     ["initialization_policy_approved", "measurement_contract_approved", "input_fidelity_approved"]),
                 "scientific_admission_pending")
         require(p.get("isolation", {}).get("accepted_for_new_task") is True, "task_isolation_not_accepted")

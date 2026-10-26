@@ -1,6 +1,10 @@
 # AAD 项目索引
 
-## 2026-10-26 WSL解阻入口（最新）
+## 2026-10-26 Linux V4 合成集成入口（最新：仍阻断）
+
+工程记录：`docs/STAGE_0_5_LINUX_NATIVE_V4_2026-10-26.md`；版本化收集：`docs/audits/stage_0_5_linux_native_v4/collection-20261026-r3/`；候选包：`evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v4/`。六组原生隔离探针通过；一次获授权的合成生产 smoke 在 SUMO 版本预检处失败并保留，当前源代码已修复解析但尚未有新 staging 的原生复验。因此仍 `BLOCKED_ENGINEERING`，不能报告 `READY_FOR_RESEARCHER_APPROVAL`。本轮合成 SUMO 版本进程 1、真实 TraCI 0、新科研轨迹 0，历史隔离事故仍 `Not Accepted`。
+
+## 2026-10-26 WSL解阻入口（历史）
 
 `docs/STAGE_0_5_WSL_ISOLATION_2026-10-26.md`；`docs/audits/stage_0_5_wsl_isolation_v1/`；`evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v3/`。Linux无害证据Verified，当前运行时/控制器不兼容，仍未Ready；下方为历史时点。
 

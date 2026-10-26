@@ -21,11 +21,11 @@ PROBE="docs/audits/stage_0_5_wsl_isolation_v1/probe/record.json"
 def record():return json.loads((ROOT/PROBE).read_bytes())
 
 
-def test_actual_exported_kernel_observations_pass_without_accepting_native_task():
-    result=admission.capability_report(ROOT,PROBE,hashlib.sha256((ROOT/PROBE).read_bytes()).hexdigest())
-    assert result["capability_verified"] is True
-    assert len(result["checks"])==14 and all(result["checks"].values())
-    assert result["accepted_for_new_task"] is False
+def test_historical_kernel_observations_are_not_reused_after_guard_source_drift():
+    # The immutable historical probe records the guard hash that was exercised.
+    # A changed production guard invalidates that capability for current admission.
+    with pytest.raises(ValueError,match="kernel_guard_source_drift"):
+        admission.capability_report(ROOT,PROBE,hashlib.sha256((ROOT/PROBE).read_bytes()).hexdigest())
 
 
 @pytest.mark.parametrize("fault",["OOM","PID","CPU","negative_access","namespace","child","output","timeout","success_exit","failure_artifact"])
@@ -50,12 +50,12 @@ def test_probe_hash_drift_refused():
         admission.capability_report(ROOT,PROBE,"0"*64)
 
 
-def test_actual_eighth_acceptance_requires_run_receipt_despite_kernel_capability():
+def test_stale_historical_probe_cannot_support_current_eighth_acceptance():
     context=dict(scope=SimpleNamespace(repo=ROOT),proposal=dict(isolation=dict(capability_evidence_path=PROBE,
         capability_evidence_sha256=hashlib.sha256((ROOT/PROBE).read_bytes()).hexdigest())))
     result=acceptance.isolation_acceptance(context)
-    assert result["status"]=="Unknown" and result["passed"] is False
-    assert result["evidence"]["capability_verified"] is True
+    assert result["status"]=="Reject" and result["passed"] is False
+    assert result["reason"]=="kernel_guard_source_drift"
     context["proposal"]["isolation"]["capability_evidence_sha256"]="0"*64
     assert acceptance.isolation_acceptance(context)["status"]=="Reject"
 
@@ -88,7 +88,7 @@ def test_future_native_unlock_still_rejects_unisolated_host_before_Popen(monkeyp
     monkeypatch.setattr(execution,"gate_reasons",lambda *a,**k:[])
     monkeypatch.setattr(admission.sys,"platform","win32")
     monkeypatch.setattr(execution.subprocess,"Popen",lambda *a,**k:pytest.fail("process creation forbidden"))
-    with pytest.raises(PermissionError,match="native_controller_requires_OS_capsule"):
+    with pytest.raises(execution.AdmissionRefused,match="engineering_build_native_launch_locked"):
         execution.NativeBackend().start(dict(proposal={},approval={},run={"id":"fake"},proposal_sha256="a",budget_task_id="fake"))
 
 

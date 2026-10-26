@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/home/shen/AAD/code/tmp/stage05_v4_20261026_r4/smoke_capsule/controller_sources/stage_0_5_linux_controller_v4.py", line 78, in main
+    require(re.search(r"\bVersion\s+"+re.escape(context["runtime"]["sumo_release"])+r"\b",receipt["sumo_version_output"]),"SUMO_release_mismatch")
+  File "/home/shen/AAD/code/tmp/stage05_v4_20261026_r4/smoke_capsule/controller_sources/stage_0_5_native_capsule_v4.py", line 34, in require
+    if not condition:raise ValueError(reason)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: SUMO_release_mismatch

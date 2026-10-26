@@ -1,6 +1,10 @@
 # AAD Current State Snapshot
 
-## 2026-10-26 WSL限范围解阻（最新：仍未Ready）
+## 2026-10-26 Linux V4 合成集成（最新：仍未Ready）
+
+明确授权的一次 `SMOKE_V4_20261026_2` 在真实 Linux capsule 中完成了生产 broker/controller 接线，但在控制器版本预检阶段因 SUMO 1.26 CLI 输出格式解析过窄而失败；未建立 TraCI 连接，也未启动合成仿真步。失败证据、六组 r4 原生隔离探针和固定 runtime allowlist 见 `docs/audits/stage_0_5_linux_native_v4/collection-20261026-r3/`，工程记录见 `docs/STAGE_0_5_LINUX_NATIVE_V4_2026-10-26.md`。控制器/回执解析已修正并有 63 项定向回归，但 r4 staging 仍绑定修复前源码，不能把修复后的代码写成已通过原生 smoke；新任务仍 `BLOCKED_ENGINEERING`，需要新 staging 和新的单次授权。候选包 `evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v4/` 保留 `execution_allowed=false`、`researcher_confirmed=false`、`protocol_frozen=false`、`accepted_for_new_task=false`。本轮合成 SUMO 版本进程 1、真实 TraCI 0、新科研轨迹 0；历史隔离事故 `Not Accepted`、Gate、δ/h/B、Stage 1.1 不变。
+
+## 2026-10-26 WSL限范围解阻（历史：仍未Ready）
 
 显式授权后，WSL工作目录固定/home/shen/AAD（非Git checkout），只新增code/tmp独立临时探针。Linux namespace/Landlock3/seccomp/systemd-cgroup六组14判据成立，含文件/子进程/网络/资源及失败保留；证据已接入预检和第八项验收。现有Linux SUMO1.18不同于提案Windows1.26，Python缺必要依赖，完整控制器capsule未成立。四false、硬锁、历史Not Accepted和全部科研Gate不变，0 SUMO/netconvert/真实TraCI/新轨迹。只做相关回归，不重跑1130项；candidate-v3仍BLOCKED_ENGINEERING。依据：`docs/STAGE_0_5_WSL_ISOLATION_2026-10-26.md`；下方为历史时点。
 

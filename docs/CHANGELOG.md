@@ -319,3 +319,10 @@ B1.2-P收口：纯Git全量741 passed/14 skipped/0 failed；严格文档/compile
 - **结论更正**：上一任务「26/48 插入被拒绝」被证明是实现等待窗过短造成的误判（实为延迟插入）；已在 `docs/STAGE_0_5_INITIALIZATION_FIDELITY.md` 与 `AI_CONTEXT/07_KNOWN_ISSUES.md` 显式登记，旧报告正文不追溯改写。
 - `export_project_evidence.py` 增补本结果映射与 6 个新白名单文件。
 - 历史证据字节未改写：FC1/FC2、RC1/RC2/RC3、LF、CD、B1 系列与 Stage 0.2/0.3 全部保留；宏观阶段未执行。
+# 2026-10-26
+
+- Stage 0.5 Linux V4: six r4 OS guard probes passed; one explicitly authorized
+  synthetic production smoke was retained as a failure at SUMO 1.26 CLI version
+  parsing before TraCI. The parser now accepts the observed exact release
+  formats, with targeted regression coverage. Candidate-v4 remains
+  `BLOCKED_ENGINEERING`; no B00 or research trajectory was generated.
