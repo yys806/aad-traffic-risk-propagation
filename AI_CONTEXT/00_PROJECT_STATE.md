@@ -1,5 +1,11 @@
 # AAD Current State Snapshot
 
+## 2026-10-26 V2身份完整性最小修正（软件验证通过）
+
+`IdentityObserver.finish()`将非初始步的teleport_start/end不可用计数纳入完整性拒绝；初始快照按设计不可用仍单独记录。API_coverage为稀疏Counter快照，新增测试的零计数读取改为get(key,0)；首次117通过/10失败/1跳过审计保留。继续后定向127通过/1跳过、全量软件1094通过/15跳过/7原生测试排除，编译/文档/便携证据检查通过，仅合成软件验证。不改状态转移、初始化或测量定义。既有证据/账本和f6ca808源码绑定原样保留，不能视为绑定了当前修正；本轮0 SUMO/0新轨迹、无真实TraCI连接。四个准入标志false、Gate不变，原生隔离Unknown、历史偏差Not Accepted。
+
+依据：`code/scripts/stage_0_5_identity_observation.py::IdentityObserver.finish`；`code/tests/test_stage_0_5_v2_admission.py`；`docs/STAGE_0_5_V2_IDENTITY_CONTRACT.md`。
+
 ## 2026-10-25 V2准入工程闭环（最新）
 
 Verified：新增身份状态机/逐步getter适配、初始化静态保真校验、精确历史允许清单、锁定执行适配器与隔离守卫，仅合成软件验证；旧核心科学源/提案/输入/账本不改。六份历史FCD完成当前C6重测及独立几何/事件/D1核对，两份已有C6基线直接复用。原[300,420)结构N33/32→14/10，四时序样本N1/2/1/2→0/0/0/0且支持改变，不能解释为风险消失。0750仍仅DS38候选，0805潜在冲突52辆，i0007未解决。原生启动构建硬锁；本轮0启动/0新轨迹，V2真实账本0，无累计cap。四条件/初始化/重复仍Proposed；三个执行标志和accepted_for_new_task均false，原生隔离Unknown、历史偏差Not Accepted，Gate/δ/h/B/Stage1.1不变，WP2–WP5未整体完成。

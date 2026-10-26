@@ -80,6 +80,71 @@ def test_teleport_roundtrip_and_explicit_discard_evidence():
     assert o.finish()["vehicles"]["i1"]["state"] == "discarded_explicit_evidence"
 
 
+def test_initial_event_unavailability_allows_complete_teleport_roundtrip():
+    o = identity.IdentityObserver([dict(id="i1", depart_s=0)])
+    o.ingest(frame(0, loaded=None, departed=None, arrived=None, teleport_start=None, teleport_end=None))
+    o.ingest(frame(.05, loaded=["i1"], departed=["i1"], active=["i1"],
+                   native_departures={"i1": dict(actual_departure_s=0, depart_delay_s=0)}))
+    o.ingest(frame(.1, teleport_start=["i1"]))
+    o.ingest(frame(.15, teleport_end=["i1"], active=["i1"]))
+    o.ingest(frame(.2, arrived=["i1"]))
+    result = o.finish()
+    assert result["identity_accounting_complete"] is True
+    assert result["native_departure_clock_complete"] is True
+    assert result["vehicles"]["i1"]["state"] == "arrived_native"
+    # API_coverage is a sparse Counter snapshot: omitted count keys mean zero
+    # observations of that availability category, not zero vehicle events.
+    for key in ["departed", "arrived", "teleport_start", "teleport_end"]:
+        assert result["API_coverage"][key + "_initial_unavailable"] == 1
+        assert result["API_coverage"].get(key + "_unavailable", 0) == 0
+
+
+@pytest.mark.parametrize("missing", [("teleport_start",), ("teleport_end",), ("teleport_start", "teleport_end")])
+@pytest.mark.parametrize("when", ["first", "later", "all"])
+def test_missing_teleport_API_prevents_complete_accounting_despite_other_evidence(missing, when):
+    o = identity.IdentityObserver([dict(id="i1", depart_s=0)])
+    o.ingest(frame(0, loaded=None, departed=None, arrived=None, teleport_start=None, teleport_end=None))
+    missing_times = {"first": {.05}, "later": {.1}, "all": {.05, .1, .15}}[when]
+    for t in [.05, .1, .15]:
+        values = dict(active=["i1"])
+        if t == .05:
+            values.update(loaded=["i1"], departed=["i1"],
+                          native_departures={"i1": dict(actual_departure_s=0, depart_delay_s=0)})
+        if t in missing_times:
+            values.update(dict.fromkeys(missing, None))
+        o.ingest(frame(t, **values))
+    result = o.finish()
+    assert result["identity_accounting_complete"] is False
+    assert result["native_departure_clock_complete"] is False
+    # Current visible state still has independent active-ID evidence.
+    assert result["vehicles"]["i1"]["state"] == "active_native"
+    for key in ["departed", "arrived", "pending", "active"]:
+        assert result["API_coverage"].get(key + "_unavailable", 0) == 0
+    for key in missing:
+        assert result["API_coverage"][key + "_unavailable"] == len(missing_times)
+        assert result["API_coverage"].get(key + "_available", 0) == 3 - len(missing_times)
+        assert all(f[key] is None for f in o.frames[1:] if f["time_s"] in missing_times)
+
+
+def test_missing_teleport_getters_preserve_unknown_and_unavailable_evidence():
+    sim = SimpleNamespace(getTime=lambda: .05, getLoadedIDList=lambda: [], getDepartedIDList=lambda: [],
+                          getArrivedIDList=lambda: [], getPendingVehicles=lambda: [], getCollidingVehiclesNumber=lambda: 0)
+    snapshot = identity.collect_snapshot(SimpleNamespace(simulation=sim, vehicle=SimpleNamespace(getIDList=lambda: [])))
+    o = identity.IdentityObserver([dict(id="i1", depart_s=0)])
+    o.ingest(frame(0, loaded=None, departed=None, arrived=None, teleport_start=None, teleport_end=None))
+    o.ingest(snapshot)
+    result = o.finish()
+    assert result["identity_accounting_complete"] is False
+    for key in ["teleport_start", "teleport_end"]:
+        assert snapshot[key] is None and o.frames[-1][key] is None
+        assert key in snapshot["unavailable"]
+        assert result["API_coverage"][key + "_unavailable"] == 1
+        assert result["API_coverage"].get(key + "_available", 0) == 0
+    row = result["vehicles"]["i1"]
+    assert row["state"] == "Unknown" and row["native_insertion_status"] == "Unknown"
+    assert row["arrived_at"] is None and row["discarded_at"] is None and row["first_FCD_s"] is None
+
+
 @pytest.mark.parametrize("change,reason", [
     (dict(active=["unknown"]), "unknown_identity"),
     (dict(departed=["i1", "i1"]), "duplicate_event_identity"),

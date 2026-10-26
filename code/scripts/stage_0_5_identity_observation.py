@@ -183,7 +183,9 @@ class IdentityObserver:
             row["end_reason"] = "simulation_interrupted" if interrupted else "finite_observation_end"
         complete = self.time is not None and all(not r["unavailable_evidence"] and r["state"] != "Unknown" for r in rows.values()
                        if self.time is not None and r["declaration"]["depart_s"] <= self.time)
-        complete &= all(self.coverage[k + "_unavailable"] == 0 for k in ["departed", "arrived", "pending", "active"])
+        # Only completed-step gaps count here; *_initial_unavailable is separate.
+        complete &= all(self.coverage[k + "_unavailable"] == 0 for k in
+                        ["departed", "arrived", "pending", "active", "teleport_start", "teleport_end"])
         exact_departure_clock = complete and all(r["actual_departure_s"] is not None for r in rows.values()
                                                  if r["departed_event_observed_at"] is not None)
         return dict(version=VERSION, last_native_observation_s=self.time, observations=len(self.frames),
