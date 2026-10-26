@@ -275,11 +275,13 @@
   "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/authorization_scope.json",
   "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/prelaunch/git_preflight.json",
   "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/prelaunch/linux_preflight.json",
-  "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/preservation.json"
+  "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/preservation.json",
+  "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/continuation-r2/README.md",
+  "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/continuation-r2/helper-validation/validation.json"
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "Execute One Authorized V4 Native Integration Smoke: SMOKE_V4_20261026_3 PRELAUNCH BLOCKED. Fresh pure-Git135 passed; task-local helper incorrectly required optional WSL sysctl and raised FileNotFoundError before live resource checks. No authorized envelope, no launch, zero SUMO version/simulation/real TraCI/new research trajectories; no retry. B00/candidate-v5 remain BLOCKED_ENGINEERING and all flags false.",
+  "active_task": "Active: continue exact-authorized SMOKE_V4_20261026_3 after auxiliary-only fixes. Old prelaunch evidence preserved; no native attempt consumed. Helper177 offline tests pass; fixed r5/production bindings unchanged; live preflight and one launch follow helper commit/push. B00 flags/Gate unchanged.",
   "why_now": "Researcher explicitly removed old three-attempt restriction for new research; historical ledgers and failed ID1 remain immutable. Need matched baseline and factorial contrasts under reviewed measurement.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
@@ -345,13 +347,12 @@
    "summary_path": "docs/audits/stage_0_5_linux_native_v4/prepared-20261026-r5/preparation_summary.json"
   },
   "native_smoke_execution": {
-   "status": "PRELAUNCH BLOCKED",
+   "status": "Active / continuation",
    "task_id": "AAD-0.5-LINUX-INTEGRATION-V4-SMOKE",
    "run_id": "SMOKE_V4_20261026_3",
    "proposal_sha256": "a5f419029a7dc3ddc527d9b7e7e824c9f0f3779f4f3e17e769d87d472ca4a550",
    "authorized_envelope_sha256": null,
    "audit_root": "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3",
-   "result_sha256": "f106d4de368fd44b199f9f2362e72e23d2a7c9d694b71baeead8dfeb29f42e12",
    "prelaunch_code_commit": "6a8864372560712e4f127f93219edad073da0d9f",
    "actual_pure_Git_tests_passed": 135,
    "SUMO_version_processes": 0,
@@ -360,7 +361,13 @@
    "new_research_trajectories": 0,
    "live_resource_acceptance": "Not reached",
    "production_receipt_accepted": false,
-   "automatic_retry": false
+   "automatic_retry": false,
+   "historical_prelaunch_result_sha256": "f106d4de368fd44b199f9f2362e72e23d2a7c9d694b71baeead8dfeb29f42e12",
+   "continuation": {
+    "path": "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/continuation-r2",
+    "helper_tests_passed": 177,
+    "actual_launch_attempts": 0
+   }
   }
  },
  "experiments": [

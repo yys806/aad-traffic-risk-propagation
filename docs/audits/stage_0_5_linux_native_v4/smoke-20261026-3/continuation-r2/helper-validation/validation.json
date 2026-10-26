@@ -1,0 +1,35 @@
+{
+  "status": "Pass",
+  "tests_passed": 177,
+  "tests_exit_code": 0,
+  "tests": [
+    "test_stage_0_5_smoke3_preflight.py",
+    "test_stage_0_5_native_capsule_v4.py",
+    "test_stage_0_5_linux_isolation.py",
+    "test_project_docs.py"
+  ],
+  "clone": "D:\\shen\\TJU\\AAD\\code\\tmp\\smoke3_helper_fix_validate_20261026",
+  "test_stdout_sha256": "61cc17dd4c729dd2b25fa0c648f83a44c6e9e54e90381c79bea77c6e52b83500",
+  "test_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "compileall": {
+    "argv": [
+      "D:\\miniconda\\python.exe",
+      "-B",
+      "-m",
+      "compileall",
+      "-q",
+      "code/src",
+      "code/scripts",
+      "code/tests",
+      "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/continuation-r2/audit_tools"
+    ],
+    "exit_code": 0
+  },
+  "helper_source_sha256": {
+    "audit_common.py": "676dd55feb9196e7c60b3e07788d0c95e60c546f3047ab794f4fd9e20a5a7be4",
+    "preflight_git.py": "652ce4c6fafe843c8035794267d6db8ce9db8f944f377f79717f7b2c2f5a0985",
+    "preflight_linux.py": "5027cb14ed93208dbb7a8d4d6f33f388d21281ed4d0352e28933bbb6af9713fb"
+  },
+  "SUMO_launches": 0,
+  "real_TraCI_connections": 0
+}

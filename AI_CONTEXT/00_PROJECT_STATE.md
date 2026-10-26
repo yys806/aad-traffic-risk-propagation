@@ -1,5 +1,9 @@
 # AAD Current State Snapshot
 
+## 2026-10-26 smoke 3继续执行（Active）
+
+研究者明确继续同一精确授权：上次辅助预检异常、launch0不消耗唯一实际尝试。修正版在`docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/continuation-r2/`，旧脚本/result/SHA原字节保留。修复可选sysctl、已有审计目录判定、显式独占输出及安全日志；使用真实无害userns/Landlock/seccomp/systemd/cgroup检查与原生产预检。仅辅助脚本改变，r5/proposal/12源/输入/runtime/policy不改；本段登记时仍0 launch/0 SUMO/0 TraCI，完成测试及辅助修复提交后继续实时验收与唯一launch，不重复询问授权。科研Gate、candidate-v5四false、历史Not Accepted不变；本轮最终结果以后续continuation记录为准。
+
 ## 2026-10-26 V4 smoke 3启动前停止（最新）
 
 研究者精确授权SMOKE_V4_20261026_3后，本轮新纯Git检出实际135项通过、20条命令及38源码/12 Git生产源核验完成；r5绑定核验后，任务辅助预检脚本错误假定WSL必须提供`/proc/sys/kernel/unprivileged_userns_clone`，因该文件缺失抛FileNotFoundError，未完成实时隔离/资源验收。状态`PRELAUNCH BLOCKED`，按停止规则未重试、未创建新授权envelope、未调用launch；SUMO版本进程0/仿真0/真实TraCI0/步数0/科研轨迹0，无生产receipt/acceptance。不能把可选sysctl缺失解释成内核能力失败。原r5/false envelope/candidate-v5不改，B00仍BLOCKED_ENGINEERING、四false/硬锁/历史Not Accepted/Gate/δ/h/B/Stage1.1不变。依据：`docs/STAGE_0_5_V4_SMOKE_3_2026-10-26.md`；独占审计`docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/`。下方为历史时点。
