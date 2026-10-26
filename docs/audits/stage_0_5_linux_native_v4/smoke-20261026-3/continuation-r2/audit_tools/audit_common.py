@@ -54,6 +54,10 @@ def launch_artifacts(stage):
 def unit_is_absent(values):
     return values.get('LoadState')=='not-found' and values.get('ActiveState') in {'inactive','failed'} and not values.get('ControlGroup')
 
+def namespaces_separated(fresh,current,recorded):
+    names={'user','mnt','pid','net','ipc'}
+    return set(fresh)==set(current)==set(recorded)==names and all(fresh[n] not in {current[n],recorded[n]} for n in names)
+
 def native_processes(runtime,policy,processes):
     hits=[]
     controller=policy['binding']['source_files']['stage_0_5_linux_controller_v4.py']

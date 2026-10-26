@@ -1,0 +1,25 @@
+{
+  "status": "Pass",
+  "passed": 180,
+  "argv": [
+    "D:\\miniconda\\python.exe",
+    "-B",
+    "-m",
+    "pytest",
+    "tests/test_stage_0_5_smoke3_preflight.py",
+    "tests/test_stage_0_5_native_capsule_v4.py",
+    "tests/test_stage_0_5_linux_isolation.py",
+    "tests/test_project_docs.py",
+    "-q",
+    "-p",
+    "no:cacheprovider",
+    "--basetemp=tmp/helper_fix_namespace_tests"
+  ],
+  "exit_code": 0,
+  "stdout_sha256": "deea1be7de9b1f0c569d468e59db63b3678ba4a934cce569b489e162590ffe29",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "production_policy_changed": false,
+  "correction": "Historical outer namespace ID equality was an auxiliary assumption, not a changed policy binding; fresh namespace separation is checked instead",
+  "prior_r2_record": "code/tmp/smoke3_20261026_checks_r2/linux_preflight.json",
+  "prior_r2_interpretation": "HELPER_ERROR, not actual capability/binding failure"
+}

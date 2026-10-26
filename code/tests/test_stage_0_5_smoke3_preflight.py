@@ -72,3 +72,12 @@ def test_auxiliary_import_has_no_precheck_or_native_side_effects(monkeypatch):
     monkeypatch.setattr(subprocess,'run',lambda *a,**k:pytest.fail('imports cannot launch'))
     import preflight_linux
     assert preflight_linux.STAGE.as_posix()=='/home/shen/AAD/code/tmp/stage05_v4_20261026_r5'
+
+@pytest.mark.parametrize('fault',[None,'current','recorded'])
+def test_fresh_namespace_separation_uses_current_and_recorded_hosts(fault):
+    names=['user','mnt','pid','net','ipc']
+    current={n:'current:'+n for n in names};recorded={n:'historical:'+n for n in names}
+    fresh={n:'fresh:'+n for n in names}
+    if fault=='current':fresh['mnt']=current['mnt']
+    if fault=='recorded':fresh['pid']=recorded['pid']
+    assert common.namespaces_separated(fresh,current,recorded)==(fault is None)

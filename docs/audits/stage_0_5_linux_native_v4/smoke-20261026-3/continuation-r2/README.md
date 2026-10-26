@@ -27,3 +27,13 @@ defects are labeled `HELPER_ERROR`; genuine binding/capability/resource failures
 remain blocking. Production source, r5, proposal, policy, runtime and inputs
 are not changed by these repairs. This continuation still permits only one
 actual native launch, with no retry after that launch.
+
+The first corrected live precheck completed userns, Landlock/seccomp and cgroup
+tests, then an additional auxiliary assertion incorrectly required current WSL
+outer namespace IDs to equal the historical policy IDs. The policy bytes were
+unchanged; only outer mnt/pid IDs differed. That failed helper version is retained
+under `helper-history/`, and r2 logs are retained. The corrected test creates all
+five fresh namespaces and verifies they differ from both the current outer IDs
+and the policy-recorded IDs, matching and strengthening the production boundary
+without rewriting the fixed policy. Historical opaque namespace IDs are not
+required to equal the current WSL invocation's outer IDs.

@@ -7,7 +7,7 @@ import os
 from pathlib import Path
 import sys
 sys.path.insert(0,str(Path(__file__).resolve().parent))
-from audit_common import Runner,write,display,need,sha,canonical,optional_text,launch_artifacts,unit_is_absent,native_processes,BindingFailure,RequiredCheckFailure
+from audit_common import Runner,write,display,need,sha,canonical,optional_text,launch_artifacts,unit_is_absent,native_processes,namespaces_separated,BindingFailure,RequiredCheckFailure
 
 STAGE=Path('/home/shen/AAD/code/tmp/stage05_v4_20261026_r5')
 EXPECTED={'smoke_proposal.json':'a5f419029a7dc3ddc527d9b7e7e824c9f0f3779f4f3e17e769d87d472ca4a550',
@@ -57,11 +57,11 @@ def check(root,out,stage=STAGE):
         record['checks']['no_prior_launch']=dict(unit=unit,unit_properties=values,matching_processes=hits,processes_skipped=skipped)
         run.run('systemd_manager',['/usr/bin/systemctl','--user','show','--property=Version','--property=ControlGroup'],timeout=10)
         optional={n:optional_text(n) for n in ['/proc/sys/kernel/unprivileged_userns_clone','/proc/sys/user/max_user_namespaces']}
-        host_user=os.readlink('/proc/self/ns/user')
-        code="import json,os;print(json.dumps({'uid':os.getuid(),'user_namespace':os.readlink('/proc/self/ns/user')}))"
-        user=json.loads(run.run('live_user_namespace',['/usr/bin/unshare','--user','--map-root-user','--','/usr/bin/python3','-I','-B','-c',code],timeout=5))
-        need(user['uid']==0 and user['user_namespace']!=host_user,'actual_user_namespace_creation_failed')
-        record['checks']['live_user_namespace']=dict(result=user,host_user_namespace=host_user,optional_sysctls=optional)
+        current_ns={n:os.readlink('/proc/self/ns/'+n) for n in policy['host_namespaces']}
+        code="import json,os;print(json.dumps({'uid':os.getuid(),'namespaces':{n:os.readlink('/proc/self/ns/'+n) for n in ['user','mnt','pid','net','ipc']}}))"
+        user=json.loads(run.run('live_user_namespace',['/usr/bin/unshare','--user','--map-root-user','--mount','--pid','--fork','--net','--ipc','--uts','--mount-proc','--','/usr/bin/python3','-I','-B','-c',code],timeout=5))
+        need(user['uid']==0 and namespaces_separated(user['namespaces'],current_ns,policy['host_namespaces']),'actual_namespace_isolation_failed')
+        record['checks']['live_user_namespace']=dict(result=user,current_outer_namespaces=current_ns,policy_recorded_host_namespaces=policy['host_namespaces'],optional_sysctls=optional)
         abi=ctypes.CDLL(None,use_errno=True).syscall(444,0,0,1);need(abi>=3,'Landlock_ABI3_required')
         guard=stage/'stage_0_5_linux_isolation.py'
         code="""import json,runpy,sys,socket
@@ -87,7 +87,6 @@ print(json.dumps({n:(p/n).read_text().strip() for n in ['memory.max','memory.swa
         cg=json.loads(run.run('live_systemd_cgroup',['/usr/bin/systemd-run','--user','--wait','--pipe','--collect','--quiet','--unit='+test_unit,'-p','MemoryMax=67108864','-p','MemorySwapMax=0','-p','TasksMax=8','-p','CPUQuota=100%','-p','RuntimeMaxSec=5','-p','KillMode=control-group','/usr/bin/python3','-I','-B','-c',code],timeout=10))
         need(cg=={'memory.max':'67108864','memory.swap.max':'0','pids.max':'8','cpu.max':'100000 100000'},'live_cgroup_readback_failed')
         record['checks']['live_systemd_cgroup']=dict(unit=test_unit,controllers=controllers,readback=cg)
-        need(all(os.readlink('/proc/self/ns/'+n)==v for n,v in policy['host_namespaces'].items()),'policy_host_namespaces_changed',BindingFailure)
         try:verify_envelope(policy,stage/'smoke_envelope.json',EXPECTED['smoke_envelope.json'])
         except ValueError as e:need(str(e)=='engineering_smoke_authorization_missing','original_envelope_state_changed',BindingFailure)
         else:raise BindingFailure('original_envelope_authorized')
