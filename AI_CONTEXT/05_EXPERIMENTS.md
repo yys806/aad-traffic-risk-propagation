@@ -1,5 +1,9 @@
 # AAD Experiments
 
+## 2026-10-26 SMOKE_V4_20261026_3未启动
+
+获精确条件授权后，新纯Git135项通过；预检辅助脚本读取WSL未提供的可选sysctl时报错，实时资源/隔离验收未完成，PRELAUNCH BLOCKED。未生成授权envelope，launch/版本进程/仿真/真实TraCI/步数/新科研轨迹均0，无重试。原3s合成定义与B00/candidate-v5四false不改。依据：`docs/STAGE_0_5_V4_SMOKE_3_2026-10-26.md`；下方为历史时点。
+
 ## 2026-10-26 V4 r5合成准备，未执行smoke
 
 `SMOKE_V4_20261026_3`：3s/0.05s/seed1/单合成车，新proposal与false envelope已准备；授权不得继承_2。新六组无害Python隔离探针14判据成立；仅准备Linux1.26/TraCI22完整运行时和精确策略。本轮SUMO0、真实TraCI0、新科研轨迹0。candidate-v5原B00 run ID/seed20261201/420s/[120,390)及全部科研定义不变，只重绑Linux环境，仍工程阻断。依据：`docs/STAGE_0_5_V4_PREPARATION_2026-10-26.md`；旧实验保持历史。

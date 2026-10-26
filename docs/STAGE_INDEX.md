@@ -1,5 +1,9 @@
 # AAD 阶段索引
 
+## 2026-10-26 smoke 3未启动
+
+PRELAUNCH BLOCKED，任务辅助预检异常后停止，0 SUMO版本/仿真/真实TraCI/科研轨迹；B00仍工程阻断、四false与科研Gate不变。依据：`docs/STAGE_0_5_V4_SMOKE_3_2026-10-26.md`。下方为历史时点。
+
 ## 2026-10-26 V4 r5仅准备
 
 新合成smoke提案待精确授权，未运行；Linux v4研究准入候选仍BLOCKED_ENGINEERING，缺当前生产回执。四false、硬锁、pending_simulation_sample及科学Gate/δ/h/B/Stage1.1不变。新六组无害Python探针不构成生产smoke通过。依据：`docs/STAGE_0_5_V4_PREPARATION_2026-10-26.md`。下方为历史时点。

@@ -1,5 +1,9 @@
 # AAD 项目信息结构变更记录
 
+## 2026-10-26 smoke 3启动前停止
+
+新纯Git135项实际通过；任务辅助预检对可选sysctl作错误必需假设后报错，按停止规则PRELAUNCH BLOCKED，无envelope/launch/版本进程/仿真/真实TraCI/科研轨迹或重试。独占新审计保存原始记录；r5、candidate-v5、历史及科研状态不改。依据：`docs/STAGE_0_5_V4_SMOKE_3_2026-10-26.md`。
+
 ## 2026-10-26 V4 r5严格版本与准备
 
 整行精确release解析；新staging/当前源码/完整runtime清单/六组探针/SMOKE_V4_20261026_3 proposal与false envelope；新Linux v4 schema candidate-v5保留B00科研定义。0 SUMO/0真实TraCI/0新科研轨迹，不迁移旧授权，生产回执未验收仍Blocked。依据：`docs/STAGE_0_5_V4_PREPARATION_2026-10-26.md`。

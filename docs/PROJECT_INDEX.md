@@ -1,5 +1,9 @@
 # AAD 项目索引
 
+## 2026-10-26 smoke 3启动前停止（最新）
+
+`docs/STAGE_0_5_V4_SMOKE_3_2026-10-26.md`；`docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/`。状态PRELAUNCH BLOCKED：任务辅助预检假定可选sysctl存在而报错，尚未完成实时验收，未创建授权envelope、未launch，版本/仿真/真实TraCI/科研轨迹均0。不重试，r5/candidate-v5不改，B00仍Blocked。下方为历史时点。
+
 ## 2026-10-26 V4 r5准备入口（最新）
 
 `docs/STAGE_0_5_V4_PREPARATION_2026-10-26.md`；新审计 `docs/audits/stage_0_5_linux_native_v4/prepared-20261026-r5/`；新候选 `evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v5/`。严格release校验/当前源码重绑/新六组探针完成，新SMOKE_V4_20261026_3仅PREPARED / AWAITING_EXPLICIT_AUTHORIZATION。Linux v4候选仍BLOCKED_ENGINEERING：生产回执尚未验收。四false、硬锁、历史事故、科研Gate不变，本轮0 SUMO/0真实TraCI/0新科研轨迹；下方为历史时点。

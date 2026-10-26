@@ -1,5 +1,9 @@
 # AAD AI Context Changelog
 
+## 2026-10-26 smoke 3 PRELAUNCH BLOCKED
+
+实际重跑纯Git135项及20条预检命令、核对38源/12 Git生产源；辅助Linux预检错误要求可选sysctl，FileNotFoundError后停止。0 SUMO版本/0仿真/0真实TraCI/0新科研轨迹；无授权envelope或launch记录、无重试，完整原始日志与脚本独占归档。r5/candidate-v5/科研定义与四false及Gate保留。Context Consistency Check更新00/05/07/08；01/02/03/04/06无需变化。依据：`docs/STAGE_0_5_V4_SMOKE_3_2026-10-26.md`。
+
 ## 2026-10-26 V4 r5严格版本校验与准备
 
 CLI整行release与错误版本启动前拒绝测试；新不可覆盖r5/六组探针/完整runtime清单/SMOKE_V4_20261026_3 proposal和false envelope；新Linux v4 schema candidate-v5保留B00全部科研定义。最终V4离线122通过，精确字节定向288通过/1跳过、全量1275通过/15跳过/7原生项排除，38绑定源码与无数据克隆一致、compileall通过。0 SUMO/0真实TraCI/0新科研轨迹，无旧授权迁移；生产回执未接受、仍Blocked，旧r3/r4/失败/candidate-v4及科学状态保留。Context Consistency Check更新00/02/03/04/05/07/08；01研究背景与06科研决策无需变化。依据：`docs/STAGE_0_5_V4_PREPARATION_2026-10-26.md`。

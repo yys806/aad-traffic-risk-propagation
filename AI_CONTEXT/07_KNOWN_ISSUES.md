@@ -1,5 +1,9 @@
 # AAD Known Issues
 
+## 2026-10-26 smoke 3预检辅助脚本问题（最新）
+
+任务级helper把`/proc/sys/kernel/unprivileged_userns_clone`当必需文件，当前WSL不暴露该可选路径，触发FileNotFoundError。该错误不证明内核无userns能力；剩余实时隔离/资源检查未完成，PRELAUNCH BLOCKED。按本次任务停止规则未修后重跑、未生成授权envelope或调用launch，原r5不改。后续工程任务需使用实际内核能力判断并保留本次失败，不可自动继续本次smoke。依据：`docs/STAGE_0_5_V4_SMOKE_3_2026-10-26.md`。
+
 ## 2026-10-26 V4 r5当前阻断（最新）
 
 精确版本解析和新staging已准备，Linux1.26/TraCI22运行时已静态核验；r5当前生产smoke尚未授权/执行，无已验收生产回执。candidate-v5实际v4预检到达integration_not_accepted，不能报告工程Ready。后续需研究者对新proposal精确SHA一次性授权，且运行时/资源须届时复核；研究B00另需工程通过及科研确认。i0007/实际初始化/交互相容/历史隔离事故仍未解决，四false/硬锁/Gate不变。依据：`docs/STAGE_0_5_V4_PREPARATION_2026-10-26.md`；下方为历史时点。

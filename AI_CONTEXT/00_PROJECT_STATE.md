@@ -1,5 +1,9 @@
 # AAD Current State Snapshot
 
+## 2026-10-26 V4 smoke 3启动前停止（最新）
+
+研究者精确授权SMOKE_V4_20261026_3后，本轮新纯Git检出实际135项通过、20条命令及38源码/12 Git生产源核验完成；r5绑定核验后，任务辅助预检脚本错误假定WSL必须提供`/proc/sys/kernel/unprivileged_userns_clone`，因该文件缺失抛FileNotFoundError，未完成实时隔离/资源验收。状态`PRELAUNCH BLOCKED`，按停止规则未重试、未创建新授权envelope、未调用launch；SUMO版本进程0/仿真0/真实TraCI0/步数0/科研轨迹0，无生产receipt/acceptance。不能把可选sysctl缺失解释成内核能力失败。原r5/false envelope/candidate-v5不改，B00仍BLOCKED_ENGINEERING、四false/硬锁/历史Not Accepted/Gate/δ/h/B/Stage1.1不变。依据：`docs/STAGE_0_5_V4_SMOKE_3_2026-10-26.md`；独占审计`docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/`。下方为历史时点。
+
 ## 2026-10-26 V4 r5 严格校验与新准备（最新）
 
 `PREPARED / AWAITING_EXPLICIT_AUTHORIZATION`；研究准入仍 `BLOCKED_ENGINEERING`。版本解析改为独立整行精确 release，拒绝 `.1/-dev/+custom/rc1` 及同行附加文本；最终V4离线122项通过。全新 `/home/shen/AAD/code/tmp/stage05_v4_20261026_r5` 绑定本轮修复、重新生成的完整Linux1.26/TraCI22运行时清单与新六组内核探针，不复用r4生产接线证据。新 `SMOKE_V4_20261026_3` proposal SHA=`a5f419029a7dc3ddc527d9b7e7e824c9f0f3779f4f3e17e769d87d472ca4a550`，envelope SHA=`6b37149d000f28258ee22bb499d7db7ee0e7a1255d4195c4bb7658f5aae8a463`，`engineering_authorized=false`，未启动。新candidate-v5使用 `aad.native-admission.v4` 与Linux绑定，保留全部B00科研定义；实际预检因当前生产回执未验收阻断，正常待研究者批准另列。四false/硬锁/历史Not Accepted/Gate/δ/h/B/Stage1.1不变，本轮0 SUMO/0真实TraCI/0新科研轨迹。依据：`docs/STAGE_0_5_V4_PREPARATION_2026-10-26.md`；新审计 `docs/audits/stage_0_5_linux_native_v4/prepared-20261026-r5/`；验证数字以其中validation_record为准。Context Consistency Check已完成；下方为历史时点。

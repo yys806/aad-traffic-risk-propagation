@@ -269,11 +269,17 @@
   "docs/audits/stage_0_5_linux_native_v4/prepared-20261026-r5/collection.json",
   "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v5/proposal.json",
   "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v5/manifest.json",
-  "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v5/technical_preflight.json"
+  "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v5/technical_preflight.json",
+  "docs/STAGE_0_5_V4_SMOKE_3_2026-10-26.md",
+  "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/result.json",
+  "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/authorization_scope.json",
+  "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/prelaunch/git_preflight.json",
+  "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/prelaunch/linux_preflight.json",
+  "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/preservation.json"
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD Stage 0.5 V4 r5: exact release validation and fresh Linux source/runtime/probe/input binding; SMOKE_V4_20261026_3 PREPARED / AWAITING_EXPLICIT_AUTHORIZATION. Candidate-v5 aad.native-admission.v4 remains BLOCKED_ENGINEERING pending verified production receipt. Zero SUMO/real TraCI/new research trajectories.",
+  "active_task": "Execute One Authorized V4 Native Integration Smoke: SMOKE_V4_20261026_3 PRELAUNCH BLOCKED. Fresh pure-Git135 passed; task-local helper incorrectly required optional WSL sysctl and raised FileNotFoundError before live resource checks. No authorized envelope, no launch, zero SUMO version/simulation/real TraCI/new research trajectories; no retry. B00/candidate-v5 remain BLOCKED_ENGINEERING and all flags false.",
   "why_now": "Researcher explicitly removed old three-attempt restriction for new research; historical ledgers and failed ID1 remain immutable. Need matched baseline and factorial contrasts under reviewed measurement.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
@@ -337,6 +343,24 @@
    "envelope_sha256": "6b37149d000f28258ee22bb499d7db7ee0e7a1255d4195c4bb7658f5aae8a463",
    "engineering_authorized": false,
    "summary_path": "docs/audits/stage_0_5_linux_native_v4/prepared-20261026-r5/preparation_summary.json"
+  },
+  "native_smoke_execution": {
+   "status": "PRELAUNCH BLOCKED",
+   "task_id": "AAD-0.5-LINUX-INTEGRATION-V4-SMOKE",
+   "run_id": "SMOKE_V4_20261026_3",
+   "proposal_sha256": "a5f419029a7dc3ddc527d9b7e7e824c9f0f3779f4f3e17e769d87d472ca4a550",
+   "authorized_envelope_sha256": null,
+   "audit_root": "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3",
+   "result_sha256": "f106d4de368fd44b199f9f2362e72e23d2a7c9d694b71baeead8dfeb29f42e12",
+   "prelaunch_code_commit": "6a8864372560712e4f127f93219edad073da0d9f",
+   "actual_pure_Git_tests_passed": 135,
+   "SUMO_version_processes": 0,
+   "SUMO_simulation_processes": 0,
+   "real_TraCI_connections": 0,
+   "new_research_trajectories": 0,
+   "live_resource_acceptance": "Not reached",
+   "production_receipt_accepted": false,
+   "automatic_retry": false
   }
  },
  "experiments": [
@@ -1053,7 +1077,7 @@
     "third_window_rows_materialised",
     "zotero_items_added"
    ],
-   "current_conclusion": "V4 r5 synthetic smoke only prepared and awaiting new exact authorization; fresh six-group harmless guard probes verified14/14. Linux candidate-v5 has v4 schema and preserved B00 scientific definition but remains BLOCKED_ENGINEERING without a verified current production receipt. All flags false; no scientific Gate change or new research trajectory.",
+   "current_conclusion": "Exact-authorized V4 smoke3 stopped PRELAUNCH BLOCKED on task-local precheck optional-sysctl assumption; no native launch, SUMO version/simulation/real TraCI/new research trajectories. Fresh pure-Git135 passed but full live admission incomplete. Existing r5/candidate-v5 and B00 remain blocked and false; scientific definition/Gate unchanged.",
    "gate": {
     "status": "pending_simulation_sample",
     "portable_path": "evidence/results/RES-STAGE-0.5-REAL-REF-R2/audit.json"

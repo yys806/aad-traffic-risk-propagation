@@ -1,5 +1,9 @@
 # AAD 结果索引
 
+## 2026-10-26 smoke 3启动前阻断记录（无仿真结果）
+
+新纯Git135项通过后，任务辅助预检因可选sysctl缺失抛异常；原始脚本/日志/授权范围/停止事实归档，未生成授权envelope或launch记录，0 SUMO/真实TraCI/科研轨迹。依据：`docs/STAGE_0_5_V4_SMOKE_3_2026-10-26.md`；`docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/`。
+
 ## 2026-10-26 V4 r5工程准备证据（非科研结果）
 
 新严格版本测试、r5运行时/源码/探针/输入绑定及未授权smoke proposal/envelope；新Linux candidate-v5，仍Blocked。没有新smoke通过或研究轨迹。审计：`docs/audits/stage_0_5_linux_native_v4/prepared-20261026-r5/`；候选：`evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v5/`；说明：`docs/STAGE_0_5_V4_PREPARATION_2026-10-26.md`。

@@ -1,0 +1,66 @@
+{
+  "phase": "Precommit documentation/evidence closure; not postcommit checks",
+  "commands": [
+    {
+      "argv": [
+        "python",
+        "-B",
+        "code/scripts/validate_project_docs.py",
+        "--strict-git"
+      ],
+      "exit_code": 0,
+      "result": "PROJECT_DOCS_OK"
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "code/scripts/export_project_evidence.py",
+        "--repo-root",
+        ".",
+        "--verify"
+      ],
+      "exit_code": 0,
+      "result": "PORTABLE_EVIDENCE_OK"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "python",
+        "-B",
+        "-m",
+        "compileall",
+        "-q",
+        "D:\\shen\\TJU\\AAD\\docs\\audits\\stage_0_5_linux_native_v4\\smoke-20261026-3\\audit_tools"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "postcommit": "Will run after this evidence commit in new pure-Git clone; actual commit/commands/log hashes stored in code/tmp/v4_smoke3_postcommit_checks and reported separately",
+  "context_consistency_check": {
+    "updated": [
+      "00",
+      "05",
+      "07",
+      "08"
+    ],
+    "unchanged": [
+      "01",
+      "02",
+      "03",
+      "04",
+      "06"
+    ],
+    "scientific_Gate_changed": false
+  },
+  "production_sources_or_candidate_changed": false,
+  "smoke_retry": false
+}
