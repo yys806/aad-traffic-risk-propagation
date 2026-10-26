@@ -1,0 +1,48 @@
+{
+  "task_id": "AAD-0.5-READY-TO-ADMIT-V3",
+  "status": "BLOCKED_ENGINEERING",
+  "ready_for_researcher_approval": false,
+  "proposal_path": "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v2/proposal.json",
+  "proposal_sha256": "978fe0222a3fc00bb7a92b8c9065a204df0233449c6f778070628876864f6edc",
+  "first_proposed_run_id": "V3_0750_B00_DS38_s20261201",
+  "software_validation": {
+    "status": "Verified in synthetic software scope only",
+    "record": "docs/audits/stage_0_5_ready_to_admit_v3/validation_record.json",
+    "source_files_byte_matched": 25,
+    "targeted": {"passed": 163, "skipped": 1, "exit_code": 0},
+    "full": {"passed": 1130, "skipped": 15, "deselected_native_tests": 7, "warnings": 2, "exit_code": 0}
+  },
+  "engineering_blockers": [
+    {
+      "id": "OS_native_isolation_not_accepted",
+      "status": "Unknown / Blocked",
+      "evidence": "docs/audits/stage_0_5_ready_to_admit_v3/environment_probe.json",
+      "reason": "No admitted OS enforcement evidence. WSL capability probe was rejected before execution by automatic approval review; no WSL startup or workaround occurred.",
+      "required": "Authorize an environment capability check or provide an existing isolated executor; independently validate native process/files/network/resources without SUMO, implement its integration and bind a new exact proposal."
+    },
+    {
+      "id": "native_build_remains_locked_pending_OS_acceptance_and_review",
+      "status": "Locked",
+      "reason": "Current build has no reviewed OS enforcement integration; raw native launcher cannot be admitted by a proposal boolean, CLI argument or environment variable.",
+      "required": "Keep the hard lock until actual OS enforcement integration and evidence are reviewed; do not approve this package as runnable."
+    }
+  ],
+  "researcher_decisions": [
+    {"item": "0750 initialization", "status": "Proposed", "recommended": "DS38 B00 first as initialization/support diagnostic with strict native-error stop", "alternative": "Resolve i0007 under a new separately bound policy first", "consequence": "Known i0007 speed issue remains; a failed B00 cannot serve as matrix baseline."},
+    {"item": "initial run scope", "status": "Proposed", "recommended": "Authorize only the exact B00 run after engineering blockers are resolved", "alternative": "Confirm the four-arm candidate design, with separate authorization per run", "consequence": "R-arm pulse completeness still needs a scientific rule; no 90% threshold is automatically approved."}
+  ],
+  "preserved": {
+    "execution_allowed": false,
+    "researcher_confirmed": false,
+    "protocol_frozen": false,
+    "accepted_for_new_task": false,
+    "historical_POLICY_A_VALIDATION_SCOPE_01": "Not Accepted",
+    "Gate_changed": false,
+    "scientific_decisions_changed": false,
+    "historical_FCD_read_or_remeasured": false,
+    "historical_records_rewritten": false,
+    "SUMO_launches": 0,
+    "real_TraCI_connections": 0,
+    "new_trajectories": 0
+  }
+}

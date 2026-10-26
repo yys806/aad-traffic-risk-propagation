@@ -1,5 +1,11 @@
 # AAD Architecture
 
+## 2026-10-26 V3证据验收链
+
+execution_v2调用新增acceptance_v3，八项Pass/Reject/Unknown由实际产物和原测量器推导，移除八项硬编码；admission_v3把工程阻断与授权未决分开。IdentityObserver增加TripInfo对照，NativeBackend增加逐步原生时钟/五车道回读及错误早停、资源采样历史与最终验收绑定；ResearchLedger新增显式task_id参数以保留旧账本默认语义并支持独立V3。原生OS执行器/证明仍缺，构建锁True，软件Replay不是原生证书。
+
+依据：`code/scripts/stage_0_5_acceptance_v3.py`；`code/scripts/stage_0_5_admission_v3.py`；`docs/STAGE_0_5_READY_TO_ADMIT_V3_2026-10-26.md`。
+
 ## 2026-10-25 V2准入适配架构（最新）
 
 新增独立脚本层IdentityObserver、InputFidelity、Scope与ExecutionAdapter，复用不改ResearchLedger及C6/D1。NativeBackend含未来连接/施加/资源/采集接口，但构建常量硬锁，不能靠proposal/环境解锁；只ReplayBackend在合成fixture中运行。测量对未证明保真/隔离保守拒绝。Python守卫不是OS/native认证。

@@ -1,6 +1,6 @@
 {
  "schema_version": "aad.project-registry.v2",
- "last_verified": "2026-10-25",
+ "last_verified": "2026-10-26",
  "project": {
   "name": "AAD",
   "research_topic": "Connected-vehicle communication adoption and traffic-risk propagation",
@@ -229,11 +229,30 @@
   "code/scripts/validate_stage_0_5_v2_admission.py",
   "code/scripts/prepare_stage_0_5_v2_admission_evidence.py",
   "code/scripts/export_stage_0_5_v2_admission_evidence.py",
-  "code/tests/test_stage_0_5_v2_admission.py"
+  "code/tests/test_stage_0_5_v2_admission.py",
+  "code/scripts/stage_0_5_acceptance_v3.py",
+  "code/scripts/stage_0_5_admission_v3.py",
+  "code/scripts/prepare_stage_0_5_admission_v3.py",
+  "code/scripts/validate_stage_0_5_admission_v3.py",
+  "code/tests/test_stage_0_5_admission_v3.py",
+  "code/configs/stage_0_5_ready_to_admit_v3.json",
+  "docs/plans/2026-10-26-stage-0-5-ready-to-admit-v3.md",
+  "docs/STAGE_0_5_READY_TO_ADMIT_V3_2026-10-26.md",
+  "docs/audits/stage_0_5_ready_to_admit_v3/blockers_initial.json",
+  "docs/audits/stage_0_5_ready_to_admit_v3/environment_probe.json",
+  "docs/audits/stage_0_5_ready_to_admit_v3/execution_events.jsonl",
+  "code/scripts/run_stage_0_5_admission_v3.py",
+  "docs/audits/stage_0_5_ready_to_admit_v3/validation_record.json",
+  "docs/audits/stage_0_5_ready_to_admit_v3/software_targeted_audit.json",
+  "docs/audits/stage_0_5_ready_to_admit_v3/software_full_audit.json",
+  "docs/audits/stage_0_5_ready_to_admit_v3/final_blockers.json",
+  "docs/audits/stage_0_5_ready_to_admit_v3/package_verification_environment.json",
+  "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v2/proposal.json",
+  "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v2/manifest.json"
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-0.5-INTERACTION-RESEARCH-V2: identity/static input/locked adapter/isolation interfaces synthetically verified; six allowlisted historical C6 remeasurements independently verified, two baselines reused. No native launches or new trajectories; scientific plan Proposed and native isolation Not Accepted.",
+  "active_task": "AAD-0.5-READY-TO-ADMIT-V3: evidence-derived acceptance chain and concrete four-arm input preparation; BLOCKED_ENGINEERING because no admitted OS isolation. WSL start probe rejected before execution. Zero SUMO/real TraCI/new trajectories; no Gate change.",
   "why_now": "Researcher explicitly removed old three-attempt restriction for new research; historical ledgers and failed ID1 remain immutable. Need matched baseline and factorial contrasts under reviewed measurement.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
@@ -275,7 +294,17 @@
    "code/outputs/formal/calibration/stage_0_5_local_following_v1/summary/audit.json",
    "code/outputs/formal/calibration/stage_0_5_lf_protocol_v1/summary/audit.json",
    "code/outputs/formal/calibration/stage_0_5_final_closure_package/summary/audit.json"
-  ]
+  ],
+  "admission_v3": {
+   "status": "BLOCKED_ENGINEERING",
+   "audit_root": "docs/audits/stage_0_5_ready_to_admit_v3",
+   "candidate_root": "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3",
+   "accepted_for_new_task": false,
+   "latest_candidate": "candidate-v2",
+   "proposal_sha256": "978fe0222a3fc00bb7a92b8c9065a204df0233449c6f778070628876864f6edc",
+   "first_proposed_run_id": "V3_0750_B00_DS38_s20261201",
+   "software_validation": "163 passed / 1 skipped targeted; 1130 passed / 15 skipped / 7 native deselected full; native isolation remains blocked"
+  }
  },
  "experiments": [
   {
@@ -577,7 +606,12 @@
     "code/scripts/verify_stage_0_5_c6_admission_v1.py",
     "code/scripts/validate_stage_0_5_v2_admission.py",
     "code/scripts/prepare_stage_0_5_v2_admission_evidence.py",
-    "code/scripts/export_stage_0_5_v2_admission_evidence.py"
+    "code/scripts/export_stage_0_5_v2_admission_evidence.py",
+    "code/scripts/stage_0_5_acceptance_v3.py",
+    "code/scripts/stage_0_5_admission_v3.py",
+    "code/scripts/prepare_stage_0_5_admission_v3.py",
+    "code/scripts/validate_stage_0_5_admission_v3.py",
+    "code/scripts/run_stage_0_5_admission_v3.py"
    ],
    "entrypoints": [
     "code/scripts/prepare_stage_0_5_real_reference.py",
@@ -628,7 +662,10 @@
     "code/scripts/verify_stage_0_5_c6_admission_v1.py",
     "code/scripts/validate_stage_0_5_v2_admission.py",
     "code/scripts/prepare_stage_0_5_v2_admission_evidence.py",
-    "code/scripts/export_stage_0_5_v2_admission_evidence.py"
+    "code/scripts/export_stage_0_5_v2_admission_evidence.py",
+    "code/scripts/prepare_stage_0_5_admission_v3.py",
+    "code/scripts/validate_stage_0_5_admission_v3.py",
+    "code/scripts/run_stage_0_5_admission_v3.py"
    ],
    "test_paths": [
     "code/tests/test_simulation_real_coverage.py",
@@ -664,7 +701,8 @@
     "code/tests/test_project_evidence_scope.py",
     "code/tests/test_depart_speed_candidate.py",
     "code/tests/test_stage_0_5_research_ledger.py",
-    "code/tests/test_stage_0_5_v2_admission.py"
+    "code/tests/test_stage_0_5_v2_admission.py",
+    "code/tests/test_stage_0_5_admission_v3.py"
    ],
    "configuration": "R2 real reference plus two no_message_baseline generic-highway engineering fixtures (baseline_mixed_demand, measurement_probe_queue_stop); US-101 primary, Lankershim auxiliary entry-only, pNEUMA urban kinematics entry-only; all network/demand/vType/behaviour/time settings are engineering_fixture_only",
    "parameters": {
@@ -974,7 +1012,7 @@
     "third_window_rows_materialised",
     "zotero_items_added"
    ],
-   "current_conclusion": "V2 cumulative cap removed by researcher; identity/input-fidelity/locked adapter/isolation interfaces implemented and synthetic-only validated. Six named historical FCDs remeasured under unchanged C6, independently verified; two current-C6 baselines reused. Actual insertion, native isolation and interaction compatibility remain unverified; matrix/initialization/repeats Proposed, all execution flags false, Gate unchanged.",
+   "current_conclusion": "V3 evidence-derived acceptance and exact 0750 candidate inputs prepared; no native simulation. OS isolation remains unproved and WSL capability probe was rejected by approval review, so NOT READY_FOR_RESEARCHER_APPROVAL. DS38/B00-first and later factorial design remain Proposed; scientific Gate unchanged.",
    "gate": {
     "status": "pending_simulation_sample",
     "portable_path": "evidence/results/RES-STAGE-0.5-REAL-REF-R2/audit.json"

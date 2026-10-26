@@ -8,7 +8,10 @@ from __future__ import annotations
 import argparse
 import hashlib
 import importlib.metadata
+import importlib
+import platform
 import json
+import math
 import os
 from pathlib import Path
 import subprocess
@@ -30,7 +33,7 @@ class AdmissionRefused(PermissionError):
     pass
 
 
-def gate_reasons(proposal, approval, run_id, proposal_sha256):
+def gate_reasons(proposal, approval, run_id, proposal_sha256, *, task_id=TASK):
     if not isinstance(proposal, dict):
         return ["invalid_proposal_object"]
     if not isinstance(approval, dict):
@@ -39,7 +42,7 @@ def gate_reasons(proposal, approval, run_id, proposal_sha256):
     for flag in ["execution_allowed", "researcher_confirmed", "protocol_frozen"]:
         if proposal.get(flag) is not True:
             reasons.append(flag + "_not_true")
-    if approval.get("researcher_confirmed") is not True or approval.get("proposal_sha256") != proposal_sha256 or approval.get("task_id") != TASK or not approval.get("decision_record"):
+    if approval.get("researcher_confirmed") is not True or approval.get("proposal_sha256") != proposal_sha256 or approval.get("task_id") != task_id or not approval.get("decision_record"):
         reasons.append("exact_proposal_confirmation_missing")
     run_ids = approval.get("run_ids")
     if not isinstance(run_ids, list) or not all(isinstance(x, str) for x in run_ids) or run_id not in run_ids:
@@ -51,7 +54,7 @@ def gate_reasons(proposal, approval, run_id, proposal_sha256):
     isolation = proposal.get("isolation") if isinstance(proposal.get("isolation"), dict) else {}
     if isolation.get("accepted_for_new_task") is not True:
         reasons.append("accepted_for_new_task_not_true")
-    if proposal.get("task_id") != TASK:
+    if proposal.get("task_id") != task_id:
         reasons.append("wrong_task")
     return reasons
 
@@ -107,8 +110,16 @@ def attach_FCD_observations(observer, path, *, allow_partial=False):
 
 
 def environment_binding(packages=()):
+    versions = {}
+    modules = {}
+    for name in packages:
+        module = importlib.import_module(name)
+        versions[name] = importlib.metadata.version(name) or getattr(module, "__version__", None)
+        if not versions[name]:
+            raise ValueError("package_version_unavailable:" + name)
+        modules[name] = dict(path=module.__file__, sha256=sha(Path(module.__file__)))
     return dict(python_version=sys.version, python_executable_sha256=sha(Path(sys.executable)),
-                packages={name: importlib.metadata.version(name) for name in packages})
+                packages=versions, module_entries=modules, platform=platform.platform(), python_executable=sys.executable)
 
 
 def artifacts(scope, work):
@@ -135,6 +146,7 @@ class ResourceSupervisor:
         self.limits, self.scope, self.work, self.probe = limits, scope, work, probe
         self.peak_rss = 0
         self.last = None
+        self.samples = []
 
     def observe(self, *, startup=False):
         sample = dict(self.probe())
@@ -145,6 +157,7 @@ class ResourceSupervisor:
         reason = resource_reason(self.limits, sample, startup=startup)
         self.peak_rss = max(self.peak_rss, sample["process_tree_rss_bytes"])
         self.last = sample
+        self.samples.append(dict(sample))
         if reason:
             raise RuntimeError("resource_limit:" + reason)
         return sample
@@ -184,10 +197,12 @@ def native_resource_probe(backend):
     started = time.monotonic()
     def observe():
         rss = psutil.Process(os.getpid()).memory_info().rss
-        if backend.process is not None:
+        with backend._identity_lock:
+            process, birth = backend.process, backend.owner_creation_time
+        if process is not None:
             try:
-                parent = psutil.Process(backend.process.pid)
-                if parent.create_time() != backend.owner_creation_time:
+                parent = psutil.Process(process.pid)
+                if parent.create_time() != birth:
                     raise RuntimeError("owned_PID_reused")
                 for item in [parent] + parent.children(recursive=True):
                     try:
@@ -206,13 +221,17 @@ class ReplayBackend:
     """A data-only fake runner. It has no callable process factory."""
     synthetic_only = True
 
-    def __init__(self, frames, *, fail_at=None):
+    def __init__(self, frames, *, fail_at=None, outputs=None, runtime_evidence=None):
         self.frames = iter(frames)
         self.fail_at = fail_at
         self.steps = 0
         self.stopped = False
+        self.outputs = outputs or {}
+        self.runtime_evidence = runtime_evidence or {}
+        self.exit_code = None
 
-    def start(self, *_):
+    def start(self, context):
+        self.context = context
         return next(self.frames)
 
     def step(self):
@@ -224,6 +243,12 @@ class ReplayBackend:
     def stop(self):
         self.stopped = True
 
+    def finish(self):
+        for name, data in self.outputs.items():
+            self.context["scope"].create(self.context["work"] / name, data)
+        self.exit_code = 0
+        self.stop()
+
 
 class NativeBackend:
     synthetic_only = False
@@ -231,21 +256,24 @@ class NativeBackend:
     def __init__(self):
         self.process = self.connection = None
         self.owner_creation_time = None
+        self._identity_lock = threading.RLock()
 
     def start(self, context):
         if NATIVE_LAUNCH_LOCKED:
             raise AdmissionRefused("engineering_build_native_launch_locked")
         # Defense in depth if a later reviewed build changes the constant.
-        if gate_reasons(context["proposal"], context["approval"], context["run"]["id"], context["proposal_sha256"]):
+        if gate_reasons(context["proposal"], context["approval"], context["run"]["id"], context["proposal_sha256"], task_id=context["budget_task_id"]):
             raise AdmissionRefused("native_backend_gate_failed")
         command = context["native_command"]
         if context["scope"].used:
             raise AdmissionRefused("single_process_only")
         context["scope"].process(command, cwd=context["work"], shell=False)
-        self.process = subprocess.Popen(command, executable=command[0], cwd=context["work"], env=context["native_environment"],
-                                        stdout=context["native_log"], stderr=subprocess.STDOUT, shell=False)
         import psutil
-        self.owner_creation_time = psutil.Process(self.process.pid).create_time()
+        with self._identity_lock:
+            self.process = subprocess.Popen(command, executable=command[0], cwd=context["work"], env=context["native_environment"],
+                                            stdout=context["native_log"], stderr=subprocess.STDOUT, shell=False)
+            self.console_path = context["work"] / "native_console.log"
+            self.owner_creation_time = psutil.Process(self.process.pid).create_time()
         sys.path.insert(0, context["traci_tools_root"])
         import traci
         traci.init(port=context["port"], numRetries=10, proc=self.process, label=context["run"]["id"])
@@ -257,27 +285,50 @@ class NativeBackend:
 
     def step(self):
         self.connection.simulationStep()
+        # A native error is a stop condition, not identity-level discard proof.
+        if getattr(self, "console_path", None) and "Error:" in self.console_path.read_text(encoding="utf-8", errors="replace"):
+            raise RuntimeError("native_error_log_stop_preserve_identity_unknown")
         return collect_snapshot(self.connection)
 
     def before_step(self, now, context):
         schedule = context["run"]["lane_speed_schedule"]
         target = next(x["speed_mps"] for x in schedule if x["start_s"] <= now < x["end_s"])
-        limits = {}
+        record = dict(applied_before_step_s=now,target_mps=target,native_lane_limits={},failures=[])
+        self.last_control = record
+        try:
+            actual_clock = self.connection.simulation.getTime()
+            record["native_clock_before_s"] = actual_clock if math.isfinite(actual_clock) else None
+            if not math.isfinite(actual_clock) or abs(actual_clock-now)>1e-7: raise ValueError("control_native_clock_mismatch")
+        except Exception as error:
+            record["failures"].append(type(error).__name__+":"+str(error))
+            raise RuntimeError("supply_clock_unavailable_or_mismatched") from error
         for lane in context["run"]["supply_target_lanes"]:
-            self.connection.lane.setMaxSpeed(lane, target)
-            limits[lane] = self.connection.lane.getMaxSpeed(lane)
-        if any(abs(v - target) > 1e-9 for v in limits.values()):
+            try:
+                self.connection.lane.setMaxSpeed(lane, target)
+                value = self.connection.lane.getMaxSpeed(lane)
+                record["native_lane_limits"][lane] = value if math.isfinite(value) else None
+                if not math.isfinite(value) or abs(value-target)>1e-9: record["failures"].append(lane+":readback_mismatch_or_nonfinite")
+            except Exception as error:
+                record["failures"].append(lane+":"+type(error).__name__+":"+str(error))
+        if record["failures"]:
             raise RuntimeError("supply_not_imposed")
-        return dict(applied_before_step_s=now, target_mps=target, native_lane_limits=limits)
+        return record
 
     def finish(self):
         self.connection.close()
-        if self.process.wait(timeout=10) != 0:
+        self.exit_code = self.process.wait(timeout=10)
+        if self.exit_code != 0:
             raise RuntimeError("native_nonzero_exit")
 
     def stop(self):
         # Only the process created by this backend; PID reuse is rejected.
         if self.process is None:
+            return
+        if self.owner_creation_time is None:
+            # Popen's own handle is authoritative before PID metadata commits.
+            if self.process.poll() is None:
+                self.process.terminate()
+                self.process.wait(timeout=5)
             return
         import psutil
         try:
@@ -301,34 +352,9 @@ class NativeBackend:
 
 
 def measure_completed_capsule(context, identity):
-    """Current scientific functions, unchanged. A missing reference is rejection."""
-    import pandas as pd
-    from riskprop.stage_0_5_scene_reconstruction import parse_fcd, network_edge_lengths
-    from riskprop import stage_0_5_state_support as ss
-    from riskprop.stage_0_5_d1_measurement import local_d1_measurement, offset100_cloud
-    work, run = context["work"], context["run"]
-    fcd = parse_fcd(work / "fcd.xml", network_edge_lengths(work / "network.net.xml"))
-    measured = ss.measure_state_frame(ss.fcd_to_state_frame(fcd, ss.route_length_map(work / "routes.rou.xml"),
-        run_id=run["id"], scenario_id=run["condition"], seed=run["seed"]))
-    result = local_d1_measurement(measured, run["evaluation_elapsed_s"], strict=True)
-    cloud = offset100_cloud(measured, run["evaluation_elapsed_s"])
-    for i, row in cloud.iterrows():
-        sub = local_d1_measurement(measured, (row.block_start_s, row.block_end_s), region=(row.y_start_m, row.y_end_m), strict=True)
-        cloud.loc[i, "D1_E_veh_s"] = sub["local_evaluable_s"]
-    common = len(cloud) == 18 and cloud.states.ge(10).all() and cloud.D1_E_veh_s.gt(0).all() and fcd.time_s.max() >= max(run["evaluation_elapsed_s"])
-    for name in run.get("common_support_references", []):
-        data = context["scope"].read_bound(name)
-        import io
-        reference = pd.read_csv(io.BytesIO(data))
-        common = common and set(zip(reference.t_block, reference.y_block)) == set(zip(cloud.t_block, cloud.y_block)) and reference.D1_E_veh_s.gt(0).all()
-    common = common and bool(run.get("common_support_references"))
-    context["scope"].create(work / "D1_measurement.json", canonical(result) + b"\n")
-    context["scope"].create(work / "common_support.csv", cloud.to_csv(index=False).encode())
-    complete = identity["identity_accounting_complete"]
-    return dict(input_fidelity=False, initialization_accounting=complete, identity_clock=identity["native_departure_clock_complete"],
-                D1_contract=result["eligibility"] == "D1_contract_implemented", all18_common_cells=bool(common),
-                full_context_events=True, resource_limits=True, task_isolation=False,
-                pending_native_acceptance=["per-run input manipulation/initialization acceptance and native isolation require independent evidence"])
+    """Evidence-derived eight checks; core C6/P2/D1 algorithms remain unchanged."""
+    from stage_0_5_acceptance_v3 import assess_capsule
+    return assess_capsule(context, identity)
 
 
 class ExecutionAdapter:
@@ -337,7 +363,7 @@ class ExecutionAdapter:
         self.report_scope = Scope(self.repo, {}, report_root)
 
     def refuse(self, reasons, run_id):
-        report = {"task_id": TASK, "run_id": run_id, "status": "rejected_before_reservation_and_process",
+        report = {"task_id": self.ledger.task_id, "run_id": run_id, "status": "rejected_before_reservation_and_process",
                   "reasons": reasons, "native_processes_created": 0, "new_trajectories": 0}
         self.report_scope.create(self.report_scope.output / ("refusal_" + uuid.uuid4().hex + ".json"), canonical(report) + b"\n")
         raise AdmissionRefused(";".join(reasons))
@@ -349,7 +375,14 @@ class ExecutionAdapter:
         data = path.read_bytes()
         proposal = json.loads(data)
         proposal_sha = hashlib.sha256(data).hexdigest()
-        reasons = gate_reasons(proposal, approval, run_id, proposal_sha)
+        reasons = gate_reasons(proposal, approval, run_id, proposal_sha, task_id=self.ledger.task_id)
+        if not synthetic and self.ledger.config.get("execution_allowed") is not True:
+            reasons.append("budget_execution_not_allowed")
+        if proposal.get("task_id") == "AAD-0.5-READY-TO-ADMIT-V3" and not synthetic:
+            from stage_0_5_admission_v3 import technical_preflight
+            technical = technical_preflight(self.repo, path, run_id, resource_sample=native_resource_probe(NativeBackend())())
+            self.report_scope.create(self.report_scope.output / ("technical_" + uuid.uuid4().hex + ".json"), canonical(technical) + b"\n")
+            reasons.extend("technical:" + e for e in technical["technical_errors"])
         if not synthetic and NATIVE_LAUNCH_LOCKED:
             reasons.append("engineering_build_native_launch_locked")
         if synthetic and proposal.get("synthetic_test_only") is not True:
@@ -371,6 +404,7 @@ class ExecutionAdapter:
             bindings[proposal["isolation"]["report_path"]] = proposal["isolation"]["report_sha256"]
             bindings.update(proposal.get("external_file_sha256", {}))
             bindings.update(proposal.get("measurement_reference_sha256", {}))
+            bindings.update(proposal.get("support_input_sha256", {}))
             scope = Scope(self.repo, bindings, work, native_allowed=not NATIVE_LAUNCH_LOCKED)
             validated = {name: scope.read_bound(name) for name in bindings}
             actual_environment = environment_binding(proposal["environment"].get("packages", {}))
@@ -383,7 +417,7 @@ class ExecutionAdapter:
             cfg = xml(validated[inputs["run.sumocfg"]])
             if int(cfg.find(".//seed").get("value")) != run["seed"] or float(cfg.find("time/end").get("value")) != run["duration_s"]:
                 raise ValueError("config_seed_or_duration_mismatch")
-            return dict(proposal=proposal, approval=approval, run=run, proposal_path=proposal_path, proposal_sha256=proposal_sha,
+            return dict(proposal=proposal, approval=approval, run=run, proposal_path=proposal_path, proposal_sha256=proposal_sha, budget_task_id=self.ledger.task_id,
                         work=work, scope=scope, validated_inputs={name: validated[src] for name, src in inputs.items()})
         except (ValueError, KeyError, OSError) as error:
             self.refuse([type(error).__name__ + ":" + str(error)], run_id)
@@ -391,9 +425,14 @@ class ExecutionAdapter:
     def execute(self, proposal_path, approval, run_id, *, backend=None, resource_probe=None, measurement=None):
         backend = NativeBackend() if backend is None else backend
         synthetic = type(backend) is ReplayBackend
+        if not synthetic and (resource_probe is not None or measurement is not None):
+            self.refuse(["native_test_override_forbidden"],run_id)
         context = self.preflight(proposal_path, approval, run_id, synthetic=synthetic)
-        if synthetic and (resource_probe is None or measurement is None):
-            self.refuse(["synthetic_probe_and_measurement_required"], run_id)
+        if synthetic and resource_probe is None:
+            self.refuse(["synthetic_resource_probe_required"], run_id)
+        measurement = measure_completed_capsule if measurement is None else measurement
+        context.update(synthetic_only=synthetic, resource_limits=self.ledger.config["single_attempt_limits"],
+                       binding_sha256=hashlib.sha256(canonical(context["proposal"])).hexdigest())
         if not synthetic:
             resource_probe = native_resource_probe(backend) if resource_probe is None else resource_probe
             measurement = measure_completed_capsule if measurement is None else measurement
@@ -420,6 +459,7 @@ class ExecutionAdapter:
             self.ledger.transition(run_id, "running")
             if not synthetic:
                 import socket
+                scope.check(work / "tmp", writing=True).mkdir(exist_ok=False)
                 with socket.socket() as listener:
                     listener.bind(("127.0.0.1", 0))
                     port = listener.getsockname()[1]
@@ -428,7 +468,7 @@ class ExecutionAdapter:
                 if binary not in p["external_file_sha256"]:
                     raise ValueError("native_binary_not_bound")
                 context.update(port=port, traci_tools_root=p["traci_tools_root"], expected_runtime_version=p["native_runtime_version"],
-                               native_environment=p["native_environment"],
+                               native_environment=run.get("native_environment", p["native_environment"]),
                                native_command=[binary, "-c", str(work / "run.sumocfg"), "--remote-port", str(port), "--no-step-log", "true"])
                 scope.commands = [context["native_command"]]
                 scope.create(work / "native_console.log", b"")
@@ -447,28 +487,51 @@ class ExecutionAdapter:
                 if frame.get("teleport_start") or (frame.get("collision_count") or 0) > 0:
                     raise RuntimeError("collision_or_teleport_stop")
                 supervisor.observe()
-            if synthetic:
-                backend.stop()
-            else:
-                backend.finish()
+            backend.finish()
+            if not synthetic or backend.outputs:
                 fcd_status = attach_FCD_observations(observer, work / "fcd.xml")
                 scope.create(work / "FCD_observation_status.json", canonical(fcd_status) + b"\n")
+                trip_status = observer.observe_tripinfo((work / "tripinfo.xml").read_bytes())
+                scope.create(work / "TripInfo_observation_status.json", canonical(trip_status) + b"\n")
             summary = observer.finish()
             scope.create(work / "identity_summary.json", canonical(summary) + b"\n")
             verify_journal(work / "identity_events.jsonl")
+            supervisor.observe()
+            context.update(identity_frames=observer.frames, runtime_evidence=dict(
+                resource_samples=[dict(s) for s in supervisor.samples], run_finished_wall_s=supervisor.last["wall_s"],
+                exit_code=backend.exit_code, watchdog_failure=None if watchdog is None else watchdog.failure,
+                identity_journal_verified=True,
+                sealed_artifacts={name:sha(work / name) for name in ["fcd.xml", "tripinfo.xml", "identity_events.jsonl", "identity_summary.json"] if (work / name).exists()}))
+            if synthetic:
+                # Explicit fixture kernel transcript, never native certification.
+                for key in ["isolation"]:
+                    if key in backend.runtime_evidence:
+                        context["runtime_evidence"][key] = backend.runtime_evidence[key]
+                context["isolation_transcript_sha256"] = backend.runtime_evidence.get("transcript_sha256", [])
+            scope.create(work / "runtime_evidence.json", canonical(context["runtime_evidence"]) + b"\n")
             hashes, size = artifacts(scope, work)
             resource = dict(wall_s=supervisor.last["wall_s"], process_tree_rss_bytes=supervisor.peak_rss, artifact_bytes=size)
             self.ledger.transition(run_id, "completed", resources=resource)
             execution_completed = True
             checks = measurement(context, summary)
-            scope.create(work / "measurement_acceptance.json", canonical(checks) + b"\n")
             supervisor.observe()
             hashes, _ = artifacts(scope, work)
             if watchdog is not None:
                 watchdog.close()
+            if measurement is measure_completed_capsule:
+                from stage_0_5_acceptance_v3 import resource_acceptance
+                context["runtime_evidence"]["resource_samples"] = [dict(s) for s in supervisor.samples]
+                context["runtime_evidence"]["run_finished_wall_s"] = supervisor.last["wall_s"]
+                final_resources = resource_acceptance(context)
+                checks["resource_limits"] = final_resources["passed"]
+                checks["verdicts"]["resource_limits"] = final_resources
+                scope.create(work / "runtime_final_evidence.json", canonical(context["runtime_evidence"]) + b"\n")
+            scope.create(work / "measurement_acceptance.json", canonical(checks) + b"\n")
+            hashes, size = artifacts(scope, work)
+            resource = dict(wall_s=supervisor.last["wall_s"], process_tree_rss_bytes=supervisor.peak_rss, artifact_bytes=size)
             self.ledger.transition(run_id, "measurement_accepted" if all(checks.get(k) is True for k in CHECKS) else "measurement_rejected",
                                    checks=checks, reason=None if all(checks.get(k) is True for k in CHECKS) else "synthetic_measurement_contract_rejected",
-                                   artifact_sha256=hashes)
+                                   artifact_sha256=hashes, resources=resource)
             if "native_log" in context:
                 context["native_log"].close()
             return self.ledger.snapshot()
@@ -484,17 +547,27 @@ class ExecutionAdapter:
                 cleanup_errors.append(type(cleanup_error).__name__ + ":" + str(cleanup_error))
             if "native_log" in context:
                 context["native_log"].close()
-            if observer is not None:
-                scope.create(work / "interrupted_identity_summary.json", canonical(observer.finish(interrupted=True)) + b"\n")
-            if cleanup_errors:
-                scope.create(work / "cleanup_errors.json", canonical(cleanup_errors) + b"\n")
-            _, size = artifacts(scope, work) if work.exists() else ({}, 0)
+            try:
+                if observer is not None:
+                    scope.create(work / "interrupted_identity_summary.json", canonical(observer.finish(interrupted=True)) + b"\n")
+                if getattr(backend,"last_control",None) is not None:
+                    scope.create(work / "failed_or_last_control.json",canonical(backend.last_control)+b"\n")
+                if cleanup_errors:
+                    scope.create(work / "cleanup_errors.json", canonical(cleanup_errors) + b"\n")
+                failure_hashes, size = artifacts(scope, work) if work.exists() else ({}, 0)
+            except (OSError,ValueError) as artifact_error:
+                cleanup_errors.append("failure_artifact_collection:"+type(artifact_error).__name__+":"+str(artifact_error))
+                failure_hashes, size = {}, None
+                self.report_scope.create(self.report_scope.output/("failed_capsule_"+uuid.uuid4().hex+".json"),
+                    canonical(dict(run_id=run_id,original_error=type(error).__name__+":"+str(error),collection_errors=cleanup_errors))+b"\n")
             if execution_completed:
-                self.ledger.transition(run_id, "measurement_rejected", reason=type(error).__name__ + ":" + str(error), checks=dict.fromkeys(CHECKS, False))
+                self.ledger.transition(run_id, "measurement_rejected", reason=type(error).__name__ + ":" + str(error),
+                    checks=dict.fromkeys(CHECKS, False), artifact_sha256=failure_hashes,
+                    resources=dict(wall_s=supervisor.last["wall_s"], process_tree_rss_bytes=supervisor.peak_rss, artifact_bytes=size))
             else:
                 last = supervisor.last if supervisor is not None and supervisor.last is not None else {}
                 self.ledger.transition(run_id, "interrupted" if isinstance(error, (KeyboardInterrupt, SystemExit)) else "failed",
-                    reason=type(error).__name__ + ":" + str(error), resources=dict(wall_s=last.get("wall_s"), process_tree_rss_bytes=last.get("process_tree_rss_bytes"), artifact_bytes=size))
+                    reason=type(error).__name__ + ":" + str(error), resources=dict(wall_s=last.get("wall_s"), process_tree_rss_bytes=last.get("process_tree_rss_bytes"), artifact_bytes=size),artifact_sha256=failure_hashes)
             raise
 
 

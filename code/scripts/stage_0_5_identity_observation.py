@@ -9,6 +9,8 @@ from collections import Counter
 from copy import copy, deepcopy
 import math
 import re
+import hashlib
+import xml.etree.ElementTree as ET
 
 VERSION = "aad.identity-observation.v1"
 API = {
@@ -42,6 +44,7 @@ class IdentityObserver:
         self.rows = {r["id"]: dict(declaration=deepcopy(r), state="Unknown", loaded_at=None,
                      departed_event_observed_at=None, actual_departure_s=None, depart_delay_s=None,
                      actual_insertion_speed_mps=None, post_step_departure_speed_mps=None,
+                     actual_depart_lane=None, actual_depart_position_m=None, tripinfo=None,
                      arrived_at=None, discarded_at=None, teleporting=False,
                      first_FCD_s=None, last_FCD_s=None, last_native_active_s=None,
                      right_censored=None, unavailable_evidence=[]) for r in rows}
@@ -133,6 +136,8 @@ class IdentityObserver:
             if item.get("post_step_speed_mps") is not None:
                 check(finite(item["post_step_speed_mps"]) and item["post_step_speed_mps"] >= 0, "invalid_post_step_speed")
                 row["post_step_departure_speed_mps"] = item["post_step_speed_mps"]
+            row["post_step_departure_lane"] = item.get("post_step_lane")
+            row["post_step_departure_position_m"] = item.get("post_step_position_m")
         for ident, row in self.rows.items():
             if row["arrived_at"] is not None or row["discarded_at"] is not None:
                 check(ident not in (groups["active"] or set()) and ident not in (groups["pending"] or set()), "terminal_identity_reappeared:" + ident)
@@ -171,6 +176,43 @@ class IdentityObserver:
         if row["first_FCD_s"] is None:
             row["first_FCD_s"] = float(time_s)
         row["last_FCD_s"] = float(time_s)
+
+    def observe_tripinfo(self, data):
+        """Bound unfinished/undeparted output; never infer discard from absence."""
+        check(b"<!DOCTYPE" not in data.upper() and b"<!ENTITY" not in data.upper(), "unsafe_tripinfo_XML")
+        root = ET.fromstring(data)
+        check(root.tag == "tripinfos", "invalid_tripinfo_root")
+        updates, seen = {}, set()
+        for item in root.findall("tripinfo"):
+            ident = item.get("id")
+            check(ident in self.rows and ident not in seen, "unknown_or_duplicate_tripinfo_identity")
+            seen.add(ident)
+            row = deepcopy(self.rows[ident])
+            depart, arrival = float(item.get("depart")), float(item.get("arrival"))
+            check(finite(depart) and finite(arrival), "invalid_tripinfo_clock")
+            if depart >= 0:
+                delay, speed, position = (float(item.get(k)) for k in ["departDelay", "departSpeed", "departPos"])
+                check(all(finite(v) and v >= 0 for v in [delay, speed, position]), "invalid_tripinfo_departure")
+                check(abs(depart - row["declaration"]["depart_s"] - delay) < 1e-7, "tripinfo_delay_mismatch")
+                check(self.time is not None and depart <= self.time + 1e-8, "tripinfo_departure_beyond_observation")
+                check(row["actual_departure_s"] is None or abs(row["actual_departure_s"] - depart) < 1e-7, "tripinfo_departure_mismatch")
+                check(row["departed_event_observed_at"] is None or
+                      -1e-8 <= row["departed_event_observed_at"] - depart <= self.step + 1e-7, "tripinfo_departed_event_clock")
+                check(bool(item.get("departLane")), "tripinfo_depart_lane_missing")
+                check(row["first_FCD_s"] is None or row["first_FCD_s"] >= depart - 1e-8, "FCD_before_tripinfo_departure")
+                row.update(actual_departure_s=depart, depart_delay_s=delay, actual_insertion_speed_mps=speed,
+                           actual_depart_lane=item.get("departLane"), actual_depart_position_m=position)
+            else:
+                check(row["actual_departure_s"] is None and row["departed_event_observed_at"] is None, "tripinfo_undeparted_conflict")
+            if arrival >= 0:
+                check(row["arrived_at"] is not None and -1e-8 <= row["arrived_at"] - arrival <= self.step + 1e-7, "tripinfo_arrival_without_matching_event")
+            else:
+                check(row["arrived_at"] is None, "tripinfo_unfinished_conflict")
+            row["tripinfo"] = dict(attributes=dict(item.attrib), source="SUMO.tripinfo-output", sha256=hashlib.sha256(data).hexdigest(),
+                                    unfinished=arrival < 0, undeparted=depart < 0)
+            updates[ident] = row
+        self.rows.update(updates)
+        return dict(observed=len(seen), absent=sorted(set(self.rows) - seen), absence_semantics="Unknown, not discarded")
 
     def finish(self, *, interrupted=False):
         rows = deepcopy(self.rows)
@@ -221,6 +263,12 @@ def collect_snapshot(connection, *, initial=False):
                     raise ValueError("native_invalid_sentinel")
                 item[field] = value
             except Exception as error:
+                frame["unavailable"][ident + ":" + method] = type(error).__name__ + ":" + str(error)
+        for field, method in [("post_step_lane", "getLaneID"), ("post_step_position_m", "getLanePosition")]:
+            try:
+                item[field] = getattr(connection.vehicle, method)(ident)
+            except Exception as error:
+                item[field] = None
                 frame["unavailable"][ident + ":" + method] = type(error).__name__ + ":" + str(error)
         frame["native_departures"][ident] = item
     frame["on_road"] = None

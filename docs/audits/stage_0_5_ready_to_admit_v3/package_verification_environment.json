@@ -1,0 +1,37 @@
+{
+  "task_id": "AAD-0.5-READY-TO-ADMIT-V3",
+  "date": "2026-10-26",
+  "proposal_sha256": "978fe0222a3fc00bb7a92b8c9065a204df0233449c6f778070628876864f6edc",
+  "python_executable": "D:\\miniconda\\python.exe",
+  "python_version": "3.13.5",
+  "ambient_attempt": {
+    "command": "python -B code/scripts/prepare_stage_0_5_admission_v3.py --repo-root . --verify evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v2",
+    "context": "restricted tool session",
+    "exit_code": 1,
+    "error": "ModuleNotFoundError: No module named 'pyarrow'",
+    "user_site_in_sys_path": false,
+    "find_spec_pyarrow": null,
+    "counted_as_pass": false
+  },
+  "bound_environment_attempt": {
+    "command": "python -B code/scripts/prepare_stage_0_5_admission_v3.py --repo-root . --verify evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v2",
+    "context": "approved host tool session, same context as package preparation and software validation",
+    "exit_code": 0,
+    "user_site_in_sys_path": true,
+    "pyarrow_origin": "C:\\Users\\Lenovo\\AppData\\Roaming\\Python\\Python313\\site-packages\\pyarrow\\__init__.py",
+    "current_package_verified": true,
+    "status": "BLOCKED_ENGINEERING"
+  },
+  "portable_attempt": {
+    "command": "python -B code/scripts/prepare_stage_0_5_admission_v3.py --repo-root . --verify evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v2 --portable-only",
+    "context": "restricted tool session",
+    "exit_code": 0,
+    "current_package_verified": true
+  },
+  "conclusion": "The restricted ambient session lacks the bound user-site dependency. Full verification passed only in the recorded bound environment; portability does not establish runtime readiness or OS isolation.",
+  "dependencies_installed_or_changed": false,
+  "frozen_package_modified": false,
+  "SUMO_launches": 0,
+  "real_TraCI_connections": 0,
+  "new_trajectories": 0
+}

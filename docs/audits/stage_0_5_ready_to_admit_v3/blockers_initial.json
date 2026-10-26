@@ -1,0 +1,13 @@
+{
+  "task_id": "AAD-0.5-READY-TO-ADMIT-V3",
+  "baseline": "8327068c25b5a6da5a7f56d3aa659fac75efbc1b",
+  "new_SUMO_launches": 0,
+  "blockers": [
+    {"id":"BINDINGS", "kind":"technical", "status":"Open", "evidence":"V2 proposal has empty input_sha256, null worktree_sha256 and placeholder environment; execution/identity sources absent"},
+    {"id":"ACCEPTANCE", "kind":"technical", "status":"Open", "evidence":"measure_completed_capsule hardcodes input_fidelity/task_isolation false and full_context_events/resource_limits true"},
+    {"id":"TIME_SUPPORT", "kind":"technical", "status":"Open", "evidence":"old all18 check does not validate XML frame grid or right endpoint per cell"},
+    {"id":"LIFECYCLE", "kind":"technical", "status":"Open", "evidence":"post-step getSpeed is not insertion speed; no bound TripInfo unfinished output"},
+    {"id":"OS_ISOLATION", "kind":"environment", "status":"Unknown", "evidence":"Python guards are not an OS certificate; no running WSL distro or WindowsSandbox/docker/podman/bwrap executable found by read-only checks"},
+    {"id":"INITIALIZATION_AND_MATRIX", "kind":"researcher", "status":"Proposed", "evidence":"0750 DS38/B00-first, four arms and scientific acceptance decisions remain unapproved"}
+  ]
+}

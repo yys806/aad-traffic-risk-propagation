@@ -1,5 +1,11 @@
 # AAD 阶段索引
 
+## 2026-10-26 V3工程准入未Ready
+
+新真实证据验收与具体首批输入属于工程准备；0 SUMO/0真实TraCI/0新轨迹。OS隔离未获证明，原生锁True；不改变pending_simulation_sample、科学效应资格、真实覆盖接受或Stage1.1。
+
+依据：`docs/STAGE_0_5_READY_TO_ADMIT_V3_2026-10-26.md`。
+
 ## 2026-10-25 Stage 0.5 V2准入工程闭环（最新）
 
 身份/静态保真/硬锁adapter/隔离守卫与六份历史C6复核已完成其离线工程范围；原生隔离与实际初始化Unknown/Not Accepted，科学矩阵仍Proposed，pending_simulation_sample及Stage1.1不变。本轮0次SUMO启动/0新轨迹，V2账本0次。

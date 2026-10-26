@@ -67,11 +67,12 @@ def resource_reason(limits, sample, *, startup=False):
 
 
 class ResearchLedger:
-    def __init__(self, repo, config_path):
+    def __init__(self, repo, config_path, *, task_id=TASK):
         self.repo = Path(repo).resolve()
         self.config_path = relative(self.repo, config_path)
         self.config = json.loads(self.config_path.read_text(encoding="utf-8"))
-        require(self.config["task_id"] == TASK, "wrong_task")
+        self.task_id = task_id
+        require(self.config["task_id"] == self.task_id, "wrong_task")
         require(self.config["maximum_new_trajectory_attempts"] is None and
                 self.config["cumulative_wall_s"] is None and self.config["workers"] == 1, "budget_contract")
         require(self.config["automatic_retry"] is False, "automatic_retry_forbidden")
@@ -102,7 +103,7 @@ class ResearchLedger:
             event = json.loads(line)
             expected = event.pop("sha256")
             require(hashlib.sha256(canonical(event)).hexdigest() == expected, "journal_digest")
-            require(event["seq"] == len(events) and event["task_id"] == TASK, "journal_sequence_or_task")
+            require(event["seq"] == len(events) and event["task_id"] == self.task_id, "journal_sequence_or_task")
             require(event["previous_sha256"] == (events[-1]["sha256"] if events else None), "journal_chain")
             event["sha256"] = expected
             events.append(event)
@@ -140,14 +141,14 @@ class ResearchLedger:
                         a["run_finished_utc"] = e["utc"]
                     if kind in TERMINAL:
                         a["ended_utc"] = e["utc"]
-        return {"task_id": TASK, "maximum_new_trajectory_attempts": None,
+        return {"task_id": self.task_id, "maximum_new_trajectory_attempts": None,
                 "initialized": bool(self.events()), "attempt_count": len(attempts), "attempts": attempts,
                 "historical_attempts": "separate; never imported as new attempts",
                 "has_launch_API": False}
 
     def _append(self, kind, run, payload):
         events = self.events()
-        event = dict(seq=len(events), task_id=TASK, utc=datetime.now(timezone.utc).isoformat(),
+        event = dict(seq=len(events), task_id=self.task_id, utc=datetime.now(timezone.utc).isoformat(),
                      previous_sha256=events[-1]["sha256"] if events else None,
                      kind=kind, run_id=run, payload=payload)
         event["sha256"] = hashlib.sha256(canonical(event)).hexdigest()
@@ -169,10 +170,10 @@ class ResearchLedger:
         """Record one attempt before any future launcher. No process is started."""
         path = relative(self.repo, proposal_path)
         p = json.loads(path.read_text(encoding="utf-8"))
-        require(approval.get("researcher_confirmed") is True and approval.get("task_id") == TASK and
+        require(approval.get("researcher_confirmed") is True and approval.get("task_id") == self.task_id and
                 approval.get("proposal_sha256") == digest(path) and bool(approval.get("decision_record")),
                 "exact_researcher_confirmation_required")
-        require(p.get("task_id") == TASK and p.get("execution_allowed") is True and
+        require(p.get("task_id") == self.task_id and p.get("execution_allowed") is True and
                 p.get("researcher_confirmed") is True, "proposal_not_executable")
         require(p.get("budget_sha256") == digest(self.config_path), "proposal_budget_binding")
         require(all(p.get("admission", {}).get(k) is True for k in
@@ -182,7 +183,7 @@ class ResearchLedger:
         report = relative(self.repo, p["isolation"]["report_path"])
         require(digest(report) == p["isolation"]["report_sha256"], "isolation_report_binding")
         proof = json.loads(report.read_text(encoding="utf-8"))
-        require(proof.get("task_id") == TASK and proof.get("input_and_test_resource_scope_accepted") is True,
+        require(proof.get("task_id") == self.task_id and proof.get("input_and_test_resource_scope_accepted") is True,
                 "isolation_evidence_incomplete")
         require(p["plan_sha256"] == digest(relative(self.repo, p["plan_path"])), "plan_binding")
         require(bool(p.get("plan_version")) and re.fullmatch(r"[0-9a-f]{40}", p.get("git_commit", "")) and
@@ -215,7 +216,7 @@ class ResearchLedger:
             duplicates = [key for key, a in state["attempts"].items() if a["configuration_signature"] == signature]
             if duplicates:
                 require(run.get("replicate_of") in duplicates and bool(run.get("repeat_reason")), "duplicate_configuration_requires_reason")
-            self._append("reserved", run_id, dict(run, task_id=TASK, plan_version=p["plan_version"],
+            self._append("reserved", run_id, dict(run, task_id=self.task_id, plan_version=p["plan_version"],
                         plan_sha256=p["plan_sha256"], proposal_sha256=digest(path), source_sha256=p["source_sha256"],
                         git_commit=p["git_commit"], worktree_sha256=p["worktree_sha256"], environment=p["environment"],
                         decision_record=approval["decision_record"], resource_before=resource_sample,
@@ -238,13 +239,18 @@ class ResearchLedger:
             if kind in {"failed", "interrupted", "measurement_rejected"}:
                 require(bool(reason), "failure_reason_required")
                 payload["failure_reason"] = reason
+            if kind in {"failed","interrupted"}:
+                for name,expected in (artifact_sha256 or {}).items():
+                    path=relative(self.repo,name)
+                    require(path.is_relative_to(relative(self.repo,a["artifact_path"])) and digest(path)==expected,"failed_artifact_binding_changed")
+                payload["artifact_sha256"] = artifact_sha256 or {}
             if kind.startswith("measurement_"):
                 require(isinstance(checks, dict) and set(CHECKS).issubset(checks) and
                         all(type(checks[k]) is bool for k in CHECKS), "measurement_checks_required")
                 if kind == "measurement_accepted":
                     require(all(checks[k] for k in CHECKS) and bool(artifact_sha256), "measurement_acceptance_failed")
                     limits = self.config["single_attempt_limits"]
-                    actual = a["resources"]
+                    actual = resources if resources is not None else a["resources"]
                     require(all(number(actual.get(k)) for k in ["wall_s", "process_tree_rss_bytes", "artifact_bytes"]), "resource_observation_missing")
                     require(actual["wall_s"] <= limits["per_attempt_wall_s"] and
                             actual["process_tree_rss_bytes"] <= limits["process_tree_rss_bytes"] and
@@ -252,6 +258,10 @@ class ResearchLedger:
                     for name, expected in artifact_sha256.items():
                         path = relative(self.repo, name)
                         require(path.is_relative_to(relative(self.repo, a["artifact_path"])) and digest(path) == expected, "artifact_binding_changed")
+                if resources is not None:
+                    require(all(k in resources and (resources[k] is None or number(resources[k]))
+                                for k in ["wall_s", "process_tree_rss_bytes", "artifact_bytes"]), "final_resource_record_missing")
+                    payload["resources"] = resources
                 payload.update(measurement_acceptance=kind, measurement_checks=checks, artifact_sha256=artifact_sha256 or {})
             self._append(kind, run_id, payload)
         return self.snapshot()
@@ -260,7 +270,7 @@ class ResearchLedger:
         with self.lock():
             a = self.snapshot()["attempts"][run_id]
             require(a["status"] in {"failed", "interrupted", "measurement_rejected"}, "not_a_failed_attempt")
-            require(decision.get("researcher_confirmed") is True and decision.get("task_id") == TASK and
+            require(decision.get("researcher_confirmed") is True and decision.get("task_id") == self.task_id and
                     decision.get("run_id") == run_id and bool(decision.get("decision_record")), "continuation_decision_required")
             self._append("continuation_review", run_id, decision)
 

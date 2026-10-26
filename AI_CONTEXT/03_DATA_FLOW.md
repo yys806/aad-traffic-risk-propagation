@@ -1,5 +1,11 @@
 # AAD Data Flow
 
+## 2026-10-26 V3封存与核算
+
+新精确候选→技术预检/逐次授权→独占capsule字节快照→身份hash链/TripInfo/FCD/资源记录→从原日志重建身份→原C6/D1与18单元/右端点验收→追加账本。真实路径仍硬锁未运行；合成测试走真实验收函数。TripInfo出发速度/位置与完成步getSpeed/getLanePosition、FCD首现分别标记；缺失不推断discard。原始真实数据/历史FCD本轮不读取，参考使用已批准的0750便携18行支持摘要。
+
+依据：`docs/STAGE_0_5_READY_TO_ADMIT_V3_2026-10-26.md`；`code/scripts/stage_0_5_identity_observation.py`。
+
 ## 2026-10-25 V2身份与历史重测流（最新）
 
 未来已连接TraCI→collect_snapshot（每0.05s身份事件/快照、来源与时钟）→IdentityObserver→独占hash链事件日志/FCD首末代理；原生路径未执行。六份明确允许历史FCD→既有parse_fcd/fcd_to_state_frame/measure_state_frame/local_d1_measurement→独立新表/事件→几何、标量事件与D1边复核。旧基线两份复用，未扫描第三窗口或raw holdout。缺失不补零；FCD首现非原生插入时刻。

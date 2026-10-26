@@ -49,11 +49,15 @@ def inventory(routes):
 def config_references(config, *, expected_inputs=None):
     root = xml(config)
     refs = {}
-    allowed = {"net-file", "route-files", "fcd-output", "summary-output"}
+    allowed = {"net-file", "route-files", "fcd-output", "summary-output", "tripinfo-output",
+               "tripinfo-output.write-unfinished", "tripinfo-output.write-undeparted"}
     for node in root.iter():
         require(not any(k.lower() in ["href", "file"] for k in node.attrib), "nested_XML_file_reference")
         if ("file" in node.tag or "output" in node.tag) and "value" in node.attrib:
             require(node.tag in allowed and node.tag not in refs, "unregistered_or_duplicate_file_reference:" + node.tag)
+            if node.tag.startswith("tripinfo-output.write-"):
+                require(node.get("value") in {"true", "false"}, "invalid_output_boolean")
+                continue
             value = node.get("value", "")
             posix, windows = PurePosixPath(value.replace("\\", "/")), PureWindowsPath(value)
             require(bool(value) and not posix.is_absolute() and not windows.is_absolute() and not windows.drive and

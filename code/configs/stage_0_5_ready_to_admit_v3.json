@@ -1,0 +1,53 @@
+{
+  "schema": "aad.research-budget.v2",
+  "task_id": "AAD-0.5-READY-TO-ADMIT-V3",
+  "authorization": "2026-10-26 V3 engineering preparation only; no SUMO, real TraCI or new trajectories",
+  "maximum_new_trajectory_attempts": null,
+  "cumulative_wall_s": null,
+  "workers": 1,
+  "automatic_retry": false,
+  "execution_allowed": false,
+  "ledger_path": "docs/audits/stage_0_5_ready_to_admit_v3/execution_events.jsonl",
+  "output_root": "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs",
+  "single_attempt_limits": {
+    "per_attempt_wall_s": 600,
+    "process_tree_rss_bytes": 3221225472,
+    "task_output_bytes": 2147483648,
+    "min_free_c_bytes": 5368709120,
+    "min_free_d_bytes": 15032385536,
+    "min_available_memory_bytes": 4294967296,
+    "supervision_poll_s": 0.5
+  },
+  "historical_references": [
+    {
+      "path": "docs/audits/stage_0_5_interaction_preflight_v1/execution_ledger.json",
+      "sha256": "7192996ce0f2a143ea0239108ae48223f07322ae0a48de5d70d23524cd7f8950",
+      "role": "immutable historical snapshot; not a V2 budget cap"
+    },
+    {
+      "path": "evidence/results/RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1/execution_ledger.json",
+      "sha256": "295339b23daba074317c1dac19f2261b546025e32ba4a47ffe34885af7835b91",
+      "role": "immutable historical snapshot; not a V2 budget cap"
+    },
+    {
+      "path": "docs/plans/2026-10-25-stage-0-5-interaction-diagnostics-policy-a-final.md",
+      "sha256": "ba79b36733fcb93b37898250c5c12dbe074efa36af8798ac0cc3644a7bbd39a7",
+      "role": "immutable historical snapshot; not a V2 budget cap"
+    },
+    {
+      "path": "evidence/results/RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1/execution_freeze.json",
+      "sha256": "e046941c1c7a4e2ead21dfe99b8fd6211283859b001f49db22be6e2286f9e7bd",
+      "role": "immutable historical snapshot; not a V2 budget cap"
+    },
+    {
+      "path": "docs/plans/2026-10-25-stage-0-5-depart-speed-candidate-v1.md",
+      "sha256": "6a81e1a7bf34ccb81a13418f84e8d5a6138cc51b7ec9d09c554977380b47bc6e",
+      "role": "immutable historical snapshot; not a V2 budget cap"
+    },
+    {
+      "path": "evidence/results/RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1/review_proposal.json",
+      "sha256": "69646b039177e43d874701b2ada548717cdf4bdfeda5cc4f231aecf9193bcaff",
+      "role": "immutable historical snapshot; not a V2 budget cap"
+    }
+  ]
+}

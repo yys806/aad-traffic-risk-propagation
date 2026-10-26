@@ -43,6 +43,8 @@ finish为声明车辆分别记录原生插入状态、最后观测、来源cover
 
 ## 测试与限制
 
+V3补充（2026-10-26，合成软件验证范围）：`observe_tripinfo()`读取已绑定的TripInfo XML，交叉核对实际depart、departDelay、departSpeed、departLane、departPos及arrival；输出同时配置write-unfinished和write-undeparted。逐车保存原始属性、文件SHA、unfinished/undeparted标记。负depart不推定discard；缺少TripInfo也不推定discard。`collect_snapshot()`的完成步速度/车道/位置另存为post_step字段，不替代精确插入值。原生departed事件、TripInfo与FCD的时钟冲突拒绝；FCD首现仍是100ms观测代理。V3验收从封存hash链日志重建状态机再对照摘要；真实TraCI、实际插入与原生隔离仍未验证。依据：`stage_0_5_identity_observation.py::observe_tripinfo`、`stage_0_5_acceptance_v3.py::assess_capsule`、`test_stage_0_5_admission_v3.py`。
+
 `code/tests/test_stage_0_5_v2_admission.py` 使用虚拟事件覆盖正常/延迟/pending/未知、teleport/discard、晚FCD、丢FCD、重复/未知ID、时钟/事件顺序、来源缺失、中断删失等；没有SUMO import/start。`collect_snapshot`只接受已有connection，不创建连接。原生接口接通、日志完整性、实际安全插入及FCD对齐仍待未来获准验证；状态机通过不能追溯补全旧历史的缺失事件。
 
 新增回归使用合成frame和SimpleNamespace mock：初始事件不可用但后续完整的teleport往返；start/end分别或同时在首个/后续/所有观测步缺失；getter缺失保持None与Unknown。没有建立真实TraCI连接。

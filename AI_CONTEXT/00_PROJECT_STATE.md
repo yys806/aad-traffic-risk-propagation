@@ -1,5 +1,13 @@
 # AAD Current State Snapshot
 
+## 2026-10-26 V3首次准入工程（当前：未Ready）
+
+任务AAD-0.5-READY-TO-ADMIT-V3：八项验收已改为实际封存产物/身份日志重建/正式C6-D1/逐格时间与右端点/供给回读/资源/隔离证据推导，增加TripInfo未完成/未出发输出。0750四臂有独立具体输入候选，首个建议B00 DS38 seed20261201；仍Proposed，0805暂停。新预算/账本独立、实际0次；旧C6、账本、提案和既有manifest未改。Windows无已配置容器入口，WSL启动能力探针被自动审批按AGENTS拒绝，未执行；OS隔离仍Unknown/Blocked，原生硬锁保留，不能报告READY_FOR_RESEARCHER_APPROVAL。三个执行标志及accepted_for_new_task均false，历史事故Not Accepted，Gate/δ/h/B/Stage1.1不变，0 SUMO/0真实TraCI/0新轨迹。
+
+依据：`docs/STAGE_0_5_READY_TO_ADMIT_V3_2026-10-26.md`；`docs/plans/2026-10-26-stage-0-5-ready-to-admit-v3.md`；`docs/audits/stage_0_5_ready_to_admit_v3/`；`evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/`。最终版本/验证数字见本任务validation_record及final_blockers；下方保留历史时点。
+
+最终软件验证：定向163通过/1跳过，全量1130通过/15跳过/7原生测试排除，编译/strict docs/旧便携证据通过，25源码与无数据克隆字节一致。最终candidate-v2 proposal SHA `978fe0222a3fc00bb7a92b8c9065a204df0233449c6f778070628876864f6edc`；技术预检仍为OS隔离未接受及原生构建硬锁两项阻断，不可执行。candidate-v1为保留的中间快照，已源码漂移失效。最终机器矩阵：`docs/audits/stage_0_5_ready_to_admit_v3/final_blockers.json`。
+
 ## 2026-10-26 V2身份完整性最小修正（软件验证通过）
 
 `IdentityObserver.finish()`将非初始步的teleport_start/end不可用计数纳入完整性拒绝；初始快照按设计不可用仍单独记录。API_coverage为稀疏Counter快照，新增测试的零计数读取改为get(key,0)；首次117通过/10失败/1跳过审计保留。继续后定向127通过/1跳过、全量软件1094通过/15跳过/7原生测试排除，编译/文档/便携证据检查通过，仅合成软件验证。不改状态转移、初始化或测量定义。既有证据/账本和f6ca808源码绑定原样保留，不能视为绑定了当前修正；本轮0 SUMO/0新轨迹、无真实TraCI连接。四个准入标志false、Gate不变，原生隔离Unknown、历史偏差Not Accepted。

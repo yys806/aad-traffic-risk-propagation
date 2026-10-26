@@ -1,5 +1,11 @@
 # AAD Confirmed Decisions
 
+## 2026-10-26 V3边界
+
+本轮授权工程闭环与不启动SUMO的验证，未授权执行。DS38/B00先行/后续四臂仍Proposed；90%匝道检查仍为候选，未设新科学容差。现有WSL启动探针被自动审批拒绝，需研究者明确环境操作授权后才能继续该子任务；不得绕道、安装组件或改系统权限。OS证据缺失是工程阻断，不是科研确认可翻旗解决。Gate和δ/h/B不变，历史偏差Not Accepted。
+
+依据：`docs/audits/stage_0_5_ready_to_admit_v3/environment_probe.json`；`docs/STAGE_0_5_READY_TO_ADMIT_V3_2026-10-26.md`。
+
 ## 2026-10-25 V2工程任务授权边界（最新）
 
 Agreed：本轮可实施身份/静态保真/锁定适配/隔离守卫、合成测试和必要已列明历史C6复核，绝对禁止SUMO。本轮工程事实已完成，不产生科研批准。初始化三种范围、四条件/脉冲、seed/重复及判读仍Awaiting Researcher Decision；既有A历史决定不自动批准新DS38或0805政策。执行三个标志和accepted均false，构建锁true，δ/h/B与Gate不改。

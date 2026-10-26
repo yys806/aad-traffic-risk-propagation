@@ -1,5 +1,9 @@
 # AAD 项目索引
 
+## 2026-10-26 V3准入工程入口
+
+`docs/STAGE_0_5_READY_TO_ADMIT_V3_2026-10-26.md`；`docs/plans/2026-10-26-stage-0-5-ready-to-admit-v3.md`；`docs/audits/stage_0_5_ready_to_admit_v3/`；独立版本化包`evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/`。八项实际验收软件链与具体输入可审查，OS隔离为真实阻断，不是可翻转授权标志，当前不能Ready。既有manifest不改。
+
 ## 2026-10-25 V2准入工程最新入口
 
 当前工程入口：`docs/STAGE_0_5_V2_ADMISSION_ENGINEERING_2026-10-25.md`、`docs/STAGE_0_5_V2_IDENTITY_CONTRACT.md`、`docs/STAGE_0_5_V2_ADMISSION_VALIDATION.md`；机器证据 `evidence/results/RES-STAGE-0.5-V2-ADMISSION-ENGINEERING-V1/`。实现与历史重测已有证据，真实原生启动仍硬锁，不能据此认定初始化或隔离通过。下方旧入口保留历史时点。

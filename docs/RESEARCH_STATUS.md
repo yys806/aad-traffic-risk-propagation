@@ -1,5 +1,11 @@
 # AAD 当前科研状态
 
+## 2026-10-26 V3首次准入工程（当前）
+
+八项证据验收/TripInfo/逐步控制/精确四臂输入/独立账本已接线；只作软件验证，无新实验。OS隔离能力探针被自动审批依据WSL启停限制拒绝，未执行；原生隔离Unknown、硬锁保留，未达到READY_FOR_RESEARCHER_APPROVAL。DS38/B00先行仍Proposed，i0007去向未证；Gate/δ/h/B/Stage1.1与历史事故Not Accepted不变。
+
+依据：`docs/STAGE_0_5_READY_TO_ADMIT_V3_2026-10-26.md`；`docs/audits/stage_0_5_ready_to_admit_v3/`。下方保留历史时点。
+
 ## 2026-10-25 V2准入工程闭环（最新）
 
 身份/静态保真/硬锁adapter/隔离守卫已实现，仅合成验证；六份获准历史FCD完成当前C6与独立复核，两份已有基线复用。结构N33/32→14/10、时序四样本有效暴露内0，支持变化限制解释。实际初始化/原生隔离/交互相容仍未解决，矩阵仍Proposed、三个执行标志和accepted均false；本轮0启动/0新轨迹，V2无累计上限但实际0次。Gate/δ/h/B/Stage1.1不变。
