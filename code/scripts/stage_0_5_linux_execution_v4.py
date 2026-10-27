@@ -22,6 +22,14 @@ def linux_preflight(proposal,policy):
     runtime=json.loads(Path(proposal["runtime_manifest_path"]).read_bytes())
     require(sha(proposal["runtime_manifest_path"])==proposal["runtime_manifest_sha256"],"runtime_manifest_drift")
     check_runtime(runtime);validate(policy)
+    if proposal.get("schema") == SCHEMA:
+        require(policy.get("binding", {}).get("run_id") == proposal["runs"][0]["id"], "research_policy_run_binding")
+        require(policy.get("binding", {}).get("accepted_build") is True,
+                "research_policy_accepted_build_false")
+        require(policy.get("binding", {}).get("source_sha256") == proposal["controller_source_sha256"],
+                "research_policy_source_binding")
+        require(policy.get("binding", {}).get("runtime_manifest_sha256") == proposal["runtime_manifest_sha256"],
+                "research_policy_runtime_binding")
     require(proposal["runtime"]==runtime,"proposal_runtime_manifest_mismatch")
     for name,expected in proposal["controller_source_sha256"].items():
         require(Path(name).name==name and sha(Path(__file__).resolve().parent/name)==expected,"Linux_driver_source_drift:"+name)
@@ -95,6 +103,28 @@ def inspect_linux(proposal,expected_sha):
     return report
 
 
+def verify_bound_research_policy(root, proposal, run_id):
+    """Read and validate the policy mirror bound by one exact proposal.
+
+    This function is deliberately side-effect free.  Callers use it before
+    ledger reservation, attempt creation, envelope transfer, or process start.
+    """
+    root = Path(root).resolve()
+    require(proposal.get("policy_binding_required") is True, "bound_policy_binding_required")
+    name = proposal.get("capsule_policy_repo_path")
+    require(isinstance(name, str), "bound_policy_path_missing")
+    path = safe_relative(root, name)
+    require(path.exists(), "bound_policy_missing")
+    require(sha(path) == proposal.get("capsule_policy_sha256"), "bound_policy_hash_mismatch")
+    policy = json.loads(path.read_bytes())
+    binding = policy.get("binding", {})
+    require(binding.get("accepted_build") is True, "research_policy_accepted_build_false")
+    require(binding.get("source_sha256") == proposal.get("controller_source_sha256"), "research_policy_source_binding")
+    require(binding.get("runtime_manifest_sha256") == proposal.get("runtime_manifest_sha256"), "research_policy_runtime_binding")
+    require(binding.get("run_id") == run_id, "research_policy_run_binding")
+    return dict(path=str(path), policy=policy, policy_sha256=sha(path))
+
+
 def technical_preflight_v4(repo,proposal_path,run_id,*,inspect_runtime=True):
     root=Path(repo).resolve();path=Path(proposal_path)
     if not path.is_absolute():path=root/path
@@ -103,6 +133,9 @@ def technical_preflight_v4(repo,proposal_path,run_id,*,inspect_runtime=True):
         require(p["schema"]==SCHEMA and p["task_id"]==TASK,"wrong_v4_proposal")
         require(len(p["runs"])==1 and p["runs"][0]["id"]==run_id,"exact_B00_run_required")
         run=p["runs"][0]
+        # ENG-01: read the policy bound to this exact candidate before any
+        # ledger reserve, attempt record, envelope write, or native launch.
+        verify_bound_research_policy(root, p, run_id)
         from stage_0_5_admission_v3 import MANDATORY_SOURCES,validate_config,factor_routes
         require(set(MANDATORY_SOURCES)<=set(p["source_sha256"]),"mandatory_execution_and_measurement_bindings_missing")
         from prepare_stage_0_5_linux_stage_v4 import SOURCES
@@ -204,7 +237,7 @@ def _execute_authorized(adapter,p,proposal_path,approval,run_id):
         require(result.returncode==0,"native_process_failed")
         controller=json.loads((work/"controller_receipt.json").read_bytes());identity=json.loads((work/"identity_summary.json").read_bytes())
         runtime=dict(resource_samples=controller["resource_samples"],run_finished_wall_s=controller["resource_samples"][-1]["wall_s"],
-            exit_code=controller["exit_code"],watchdog_failure=controller["watchdog_failure"],sealed_artifacts={n:sha(work/n) for n in ["fcd.xml","tripinfo.xml","identity_events.jsonl","identity_summary.json"]})
+            exit_code=controller["exit_code"],watchdog_failure=controller["watchdog_failure"],sealed_artifacts={n:sha(work/n) for n in ["fcd.xml","summary.xml","tripinfo.xml","identity_events.jsonl","identity_summary.json"]})
         receipt_sha=acceptance["receipt_sha256"]
         proof=dict(kind="OS_enforced",backend="linux-userns",binding_sha256=sha(root/proposal_path),transcript_sha256=receipt_sha,
             probes=acceptance["probes"])

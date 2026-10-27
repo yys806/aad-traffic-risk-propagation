@@ -14,6 +14,7 @@ import xml.etree.ElementTree as ET
 
 from stage_0_5_input_fidelity import inventory, xml
 from stage_0_5_research_ledger import CHECKS, canonical, resource_reason
+from stage_0_5_native_capsule_v4 import summary_output_contract
 
 
 def verdict(conditions=None, *, reason=None, evidence=None):
@@ -160,6 +161,87 @@ def isolation_acceptance(context):
                    evidence=dict(kind=report.get("kind"), native_certificate=native_kind, capability=capability))
 
 
+def summary_identity_crosscheck(data, identity, declarations, frames, run, initial_ids):
+    """Cross-check SUMO aggregate summary counters against identity evidence.
+
+    SUMO's ``discarded`` counter is aggregate-only.  It is accepted as fully
+    resolved only when the identity journal contains the same number of
+    explicit, evidence-backed IDs; otherwise the result records the unresolved
+    aggregate and fails the completeness contract without guessing IDs.
+    """
+    summary = summary_output_contract(data, run["duration_s"], run.get("internal_step_s", .05))
+    final = summary["steps"][-1]
+    rows = identity.get("vehicles", {})
+    last = frames[-1] if frames else {}
+    active = set(last.get("active") or [])
+    pending = set(last.get("pending") or [])
+    arrived = {ident for ident, row in rows.items() if row.get("arrived_at") is not None}
+    explicit_discarded = {ident for ident, row in rows.items() if row.get("discarded_at") is not None}
+    actual_inserted = {ident for ident, row in rows.items() if row.get("actual_departure_s") is not None}
+    cumulative = {k: set() for k in ("loaded", "departed", "arrived", "discarded")}
+    if frames:
+        cumulative["loaded"].update(frames[0].get("loaded") or [])
+    mismatches = []
+    step_s = run.get("internal_step_s", .05)
+    for index, (aggregate, frame) in enumerate(zip(summary["steps"], frames[1:])):
+        for key in cumulative:
+            values = frame.get(key)
+            if values is not None:
+                cumulative[key].update(x["id"] if isinstance(x, dict) else x for x in values)
+        expected = dict(loaded=len(cumulative["loaded"]), inserted=len(cumulative["departed"]),
+            arrived=len(cumulative["arrived"]), discarded=len(cumulative["discarded"]),
+            running=len(frame["active"]) if frame.get("active") is not None else None,
+            waiting=len(frame["pending"]) if frame.get("pending") is not None else None,
+            ended=len(cumulative["arrived"]) + len(cumulative["discarded"]))
+        bad = {k: dict(summary=aggregate[k], identity=v) for k, v in expected.items() if aggregate[k] != v}
+        if abs(frame.get("time_s", -1) - aggregate["time_s"] - step_s) > 1e-7:
+            bad["clock"] = dict(summary=aggregate["time_s"], identity=frame.get("time_s"))
+        if bad:
+            mismatches.append(dict(step=index, differences=bad))
+    due = {i for i, v in declarations.items() if float(v.get("depart")) < run["duration_s"]}
+    unresolved_discarded = final["discarded"] - len(explicit_discarded)
+    checks = dict(
+        declared_identity_set=set(rows) == set(declarations),
+        initial_partition=set(initial_ids) <= set(declarations),
+        complete_summary_identity_clock=len(frames) == summary["step_count"] + 1,
+        all_summary_steps_match_identity=not mismatches,
+        due_population_accounted=due <= (actual_inserted | pending | explicit_discarded),
+        all_due_tripinfo=all(rows[i].get("tripinfo") is not None for i in due),
+        FCD_departure_and_terminal_consistency=all(
+            (r.get("first_FCD_s") is None or (r.get("actual_departure_s") is not None and
+             r["first_FCD_s"] + 1e-7 >= r["actual_departure_s"])) and
+            (r.get("last_FCD_s") is None or r.get("arrived_at") is None or r["last_FCD_s"] <= r["arrived_at"] + 1e-7)
+            for r in rows.values()),
+        collision_observation_complete=identity.get("collision_coverage_complete") is True,
+        summary_inserted_matches_identity=final["inserted"] == len(actual_inserted),
+        summary_arrived_matches_identity=final["arrived"] == len(arrived),
+        summary_running_matches_identity=final["running"] == len(active),
+        summary_waiting_matches_identity=final["waiting"] == len(pending),
+        summary_discarded_identity_resolved=(final["discarded"] == len(explicit_discarded)),
+        summary_ended_identity_resolved=final["ended"] == len(arrived) + len(explicit_discarded),
+        no_summary_collision_or_teleport=all(r["collisions"] == r["teleports"] == 0 for r in summary["steps"]),
+    )
+    statuses = {ident: dict(initial=ident in initial_ids, state=row.get("state"), actual_inserted=row.get("actual_departure_s") is not None,
+                            declared_departure_s=float(declarations[ident].get("depart")),
+                            actual_departure_s=row.get("actual_departure_s"), delay_s=row.get("depart_delay_s"),
+                            not_yet_scheduled=ident not in due and ident not in actual_inserted,
+                            tripinfo_present=row.get("tripinfo") is not None,
+                            removal_reason=(row.get("tripinfo") or {}).get("attributes", {}).get("vaporized"),
+                            in_network=ident in active, waiting_for_insertion=ident in pending,
+                            arrived=row.get("arrived_at") is not None,
+                            discarded=row.get("discarded_at") is not None,
+                            first_FCD_s=row.get("first_FCD_s"), end_reason=row.get("end_reason"))
+                for ident, row in rows.items()}
+    return verdict(checks, reason=None if all(checks.values()) else "summary_identity_crosscheck_failed",
+                   evidence=dict(final=final, summary_steps=summary["step_count"], initial_ids=len(initial_ids),
+                                 noninitial_ids=len(rows)-len(initial_ids), actual_inserted=len(actual_inserted),
+                                 active=len(active), pending=len(pending), arrived=len(arrived),
+                                 explicit_discarded=len(explicit_discarded), unresolved_discarded=unresolved_discarded,
+                                 unresolved_discarded_identity="unresolved aggregate; no ID inferred" if unresolved_discarded else None,
+                                 timeseries_mismatches=mismatches,
+                                 status_by_vehicle=statuses, summary_semantics=summary["semantics"]))
+
+
 def assess_capsule(context, identity):
     """All eight ledger fields come from inspectable evidence and core functions."""
     import pandas as pd
@@ -172,8 +254,12 @@ def assess_capsule(context, identity):
     journal_verified = False
     runtime = context.get("runtime_evidence", {})
     sealed = runtime.get("sealed_artifacts", {})
+    summary_report = verdict(dict(synthetic_fixture_exempt=True), evidence=dict(scope="synthetic_replay_only"))
     try:
-        for name in ["fcd.xml", "tripinfo.xml", "identity_events.jsonl", "identity_summary.json"]:
+        required_artifacts = ["fcd.xml", "tripinfo.xml", "identity_events.jsonl", "identity_summary.json"]
+        if context.get("synthetic_only") is not True:
+            required_artifacts.append("summary.xml")
+        for name in required_artifacts:
             if name not in sealed or hashlib.sha256((work / name).read_bytes()).hexdigest() != sealed[name]:
                 raise ValueError("artifact_not_sealed_or_hash_drift:" + name)
         structure = fcd_structure((work / "fcd.xml").read_bytes(), run["duration_s"])
@@ -239,13 +325,25 @@ def assess_capsule(context, identity):
         for name in ["D1_contract", "all18_common_cells", "full_context_events"]:
             reports[name] = verdict(dict(parse_and_artifact_contract=False), reason=type(error).__name__ + ":" + str(error))
     frames = context.get("identity_frames", [])
+    if context.get("synthetic_only") is not True:
+        try:
+            declared_rows = inventory(context["validated_inputs"]["routes.rou.xml"])[1]
+            initial_ids = inventory(context["validated_inputs"]["routes.rou.xml"])[2]
+            summary_report = summary_identity_crosscheck(
+                (work / "summary.xml").read_bytes(), identity, declared_rows,
+                frames, run, initial_ids)
+        except (ValueError, KeyError, OSError, ET.ParseError) as error:
+            summary_report = verdict(None, reason=type(error).__name__ + ":" + str(error))
     controls = control_acceptance(frames, run)
     reports["input_fidelity"] = input_acceptance(context, identity, controls)
     rows = identity.get("vehicles", {})
     reports["initialization_accounting"] = verdict(dict(native_identity_accounting=identity.get("identity_accounting_complete") is True,
         sealed_journal_summary_matches=identity_rebuilt,
         tripinfo_for_inserted=bool(rows) and all(r.get("tripinfo") is not None for r in rows.values() if r.get("actual_departure_s") is not None),
-        no_unaccounted_discard=all(r.get("state") != "discarded_explicit_evidence" for r in rows.values())), evidence=dict(states=identity.get("states"), declared=identity.get("declared_count")))
+        no_unaccounted_discard=all(r.get("state") != "discarded_explicit_evidence" for r in rows.values()),
+        summary_identity_crosscheck=summary_report["passed"]),
+        evidence=dict(states=identity.get("states"), declared=identity.get("declared_count"),
+                      summary=summary_report))
     reports["identity_clock"] = verdict(dict(native_clock=identity.get("native_departure_clock_complete") is True,
         complete_run_clock=identity.get("last_native_observation_s") == run["duration_s"],
         native_event_journal=journal_verified and identity_rebuilt))

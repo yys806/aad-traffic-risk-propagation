@@ -293,11 +293,14 @@
   "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/technical_preflight.json",
   "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/scientific_diff.json",
   "docs/audits/stage_0_5_ready_to_admit_v3/candidate-v6/independent_evidence_verification.json",
-  "docs/audits/stage_0_5_ready_to_admit_v3/candidate-v6/live/live_prerequisites.json"
+  "docs/audits/stage_0_5_ready_to_admit_v3/candidate-v6/live/live_prerequisites.json",
+  "docs/STAGE_0_5_B00_CLOSURE_2026-10-27.md",
+  "code/scripts/validate_stage_0_5_b00_closure_v1.py",
+  "code/tests/test_stage_0_5_b00_closure_v1.py"
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-0.5-B00-ADMISSION-V6: candidate-v6 READY_FOR_RESEARCHER_APPROVAL after independent sealed-smoke and B00 input/resource verification; no B00/SUMO/TraCI execution, no researcher authorization or scientific Gate change.",
+  "active_task": "AAD-0.5-B00-CLOSURE-AND-FIRST-NATIVE-RUN-V1",
   "why_now": "Researcher explicitly removed old three-attempt restriction for new research; historical ledgers and failed ID1 remain immutable. Need matched baseline and factorial contrasts under reviewed measurement.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
@@ -341,7 +344,7 @@
    "code/outputs/formal/calibration/stage_0_5_final_closure_package/summary/audit.json"
   ],
   "admission_v3": {
-   "status": "READY_FOR_RESEARCHER_APPROVAL",
+   "status": "Active: engineering repairs verified; exact B00 execution authorized after hard checks",
    "audit_root": "docs/audits/stage_0_5_ready_to_admit_v3/candidate-v6",
    "candidate_root": "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3",
    "accepted_for_new_task": false,
@@ -394,6 +397,14 @@
    "control_readbacks_verified": true,
    "production_source_closure_sha256": "b1598d279e2665c1c902bae827022440a34f668377fc0544b30fbcf84f8015c2",
    "execution_code_commit": "09918d16bc06fc1d72e8322da21e048aa1548317"
+  },
+  "b00_closure": {
+   "status": "Active",
+   "report_path": "docs/STAGE_0_5_B00_CLOSURE_2026-10-27.md",
+   "software_validation_path": "docs/audits/stage_0_5_b00_closure_20261027/software_validation.json",
+   "historical_incident": "Not Accepted",
+   "new_validation_scope_incident": "Not Accepted for admission; isolated replacement verification passed",
+   "B00_launches": 0
   }
  },
  "experiments": [

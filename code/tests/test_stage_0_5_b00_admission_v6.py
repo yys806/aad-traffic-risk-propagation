@@ -11,12 +11,7 @@ v6 = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(v6)
 
 
-@pytest.fixture(scope="module")
-def evidence():
-    return v6.verify_existing(ROOT)
-
-
-def test_actual_archived_receipt_and_B00_scope_without_any_process(evidence, monkeypatch):
+def test_historical_candidate_v6_is_preserved_and_rejected_after_source_closure_drift(monkeypatch):
     def forbidden(*args, **kwargs):
         raise AssertionError("process_or_research_execution_forbidden")
     monkeypatch.setattr(subprocess, "run", forbidden)
@@ -26,11 +21,8 @@ def test_actual_archived_receipt_and_B00_scope_without_any_process(evidence, mon
     monkeypatch.setattr(driver, "execute_research", forbidden)
     monkeypatch.setattr(driver, "_execute_authorized", forbidden)
     before = {p.name:v6.sha(p) for p in (ROOT / v6.V5).iterdir()}
-    report = v6.verify_existing(ROOT)
-    assert report["acceptance"]["status"] == "Pass"
-    assert report["measurement_reference_units"] == 18
-    assert len(report["production_source_sha256"]) == 12
-    assert report["SUMO_launches"] == report["real_TraCI_connections"] == report["new_B00_research_trajectories"] == 0
+    with pytest.raises(ValueError, match="bound_file_drift"):
+        v6.verify_existing(ROOT)
     assert before == {p.name:v6.sha(p) for p in (ROOT / v6.V5).iterdir()}
 
 

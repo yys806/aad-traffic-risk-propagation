@@ -1,5 +1,10 @@
 # AAD Known Issues
 
+## 2026-10-27 B00 closure status
+
+ENG-01/02/03 implementation and software/native integration Verified; actual B00 population and measurement support remain Unknown until this active task executes. Earlier primary-workspace full pytest scope is Not Accepted for admission (new incident record); task-wide retrospective zero validation-data access is not claimed. Historical POLICY-A-VALIDATION-SCOPE-01 remains Not Accepted. Aggregate discarded IDs cannot be guessed.
+
+
 ## 2026-10-27 B00科研准入审查V1（高优先级未决）
 
 ENG-01：technical_preflight_v4检查证书true而未检查研究policy accepted_build=false；V4绕过legacy/profile显示锁，后续reserve/running/launch_attempt在controller.verify_live_context晚拒绝之前，形成ready与实际可执行性不一致。属于fail-closed/副作用顺序风险，未证实未授权执行。ENG-02：collect_snapshot碰撞接口异常保存None，run_observation_loop却or 0，finish六类身份完整性不含碰撞；需另任务补缺失拒绝。ENG-03：verify_receipt只核summary封存/根，assess_capsule不作summary与逐车总量对账；原生pending可核算完整但未插入，初态插入/删失科学接受政策须先决定。当前精确候选不改，建议暂缓可执行批准；任何守卫/策略变化均需新绑定。本轮仅报告，不修改代码/科研审批/硬锁或历史事故。Git dirty为生成时点，38源/347文件及既定CRLF检出有双哈希证据；精确JSON字段检查依赖真实人类决策来源。详见主审查报告及authorization_boundary_audit.json；科研待决、动态行为unknown，0新轨迹。下方为历史时点。

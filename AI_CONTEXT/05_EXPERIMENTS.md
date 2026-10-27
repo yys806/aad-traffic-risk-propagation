@@ -1,5 +1,10 @@
 # AAD Experiments
 
+## 2026-10-27 B00 closure repairs (Active execution task)
+
+ENG-01/02/03 repaired; final no-data software regression 1361 passed / 16 skipped / 7 native deselections, compileall and current repaired-source native integration/independent receipt Pass. Startup loaded IDs and full summary/identity/TripInfo checks are included. The user explicitly authorized direct B00 after hard checks; no repeated approval is required. B00 not yet launched at this source commit; task continues. The earlier primary-workspace pytest is excluded as invalid scope; old POLICY-A Not Accepted and scientific Gate/thresholds unchanged. See docs/STAGE_0_5_B00_CLOSURE_2026-10-27.md and docs/audits/stage_0_5_b00_closure_20261027/.
+
+
 ## 2026-10-27 B00科研准入审查V1（审查产物，不是实验）
 
 新增研究者决策包，15项问题/9项需明确决定。静态复算1150=117初态+1033非初态，DS38仅38速度10→max，i0007仍15.23；network原字节相同、sumocfg只增TripInfo三项。现有18参考单元与正式C6/D1调用已核验，但新B00实际插入、逐车生命周期、完整支持与科学效应均未观察。A窗残留/另版B窗、初始化/输入保真/测量合同及有限可识别目标仍待研究者。账本仅task_created，无预约；本轮0原生启动/0真实TraCI/0新科研轨迹，不重跑SMOKE、不重测历史轨迹，不改科学政策或Gate。依据：docs/STAGE_0_5_B00_SCIENTIFIC_ADMISSION_REVIEW_V1_2026-10-27.md；docs/audits/stage_0_5_scientific_admission_review_v1/review_matrix.json。下方为历史时点。

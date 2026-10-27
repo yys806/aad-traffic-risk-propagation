@@ -179,6 +179,8 @@ class ResearchLedger:
             # confirms its exact SHA. Authorization is a separate single-run record.
             from stage_0_5_native_capsule_v4 import authorization_reasons
             require(not authorization_reasons(p,approval,digest(path),run_id),"exact_v4_run_authorization_required")
+            from stage_0_5_linux_execution_v4 import verify_bound_research_policy
+            verify_bound_research_policy(self.repo, p, run_id)
         else:
             require(p.get("task_id") == self.task_id and p.get("execution_allowed") is True and
                     p.get("researcher_confirmed") is True, "proposal_not_executable")

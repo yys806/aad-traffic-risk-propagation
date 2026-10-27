@@ -1,5 +1,10 @@
 # AAD Module Map
 
+## 2026-10-27 B00 engineering checks
+
+code/scripts/validate_stage_0_5_b00_closure_v1.py runs audited no-data software validation; code/tests/test_stage_0_5_b00_closure_v1.py covers policy refusal, collision missing/error/gap/recovery, explicit zero, teleport, startup loading, legal pending and summary crosscheck failures. No scientific measurement algorithm changed.
+
+
 ## 2026-10-26 smoke辅助工具修复
 
 新活动辅助工具在`docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/continuation-r2/audit_tools/`：audit_common负责独占日志/安全显示/实际进程判定，preflight_git负责新输出/纯Git校验，preflight_linux负责当前无害能力及原生产入口实时预检。旧工具作为失败证据保留。新增测试`code/tests/test_stage_0_5_smoke3_preflight.py`；生产绑定模块不改，真实smoke已工程Pass。依据：`docs/STAGE_0_5_V4_SMOKE_3_CONTINUATION_2026-10-26.md`。

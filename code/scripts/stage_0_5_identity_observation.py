@@ -51,6 +51,7 @@ class IdentityObserver:
         self.time = None
         self.frames = []
         self.coverage = Counter()
+        self.rejected_frames = []
 
     def _ids(self, values, kind):
         if values is None:
@@ -66,7 +67,11 @@ class IdentityObserver:
         candidate.rows = {ident: dict(row, unavailable_evidence=list(row["unavailable_evidence"])) for ident, row in self.rows.items()}
         candidate.coverage = self.coverage.copy()
         candidate.frames = list(self.frames)
-        candidate._ingest(frame)
+        try:
+            candidate._ingest(frame)
+        except Exception as error:
+            self.rejected_frames.append(dict(frame=deepcopy(frame), error=type(error).__name__ + ":" + str(error)))
+            raise
         self.__dict__.update(candidate.__dict__)
 
     def _ingest(self, frame):
@@ -84,6 +89,16 @@ class IdentityObserver:
                   {"SUMO.native_discard_log_identity", "synthetic_explicit_discard"} and
                   re.fullmatch(r"[0-9a-f]{64}", x.get("evidence_sha256", "")) for x in discarded), "discard_identity_evidence_required")
         groups["discarded"] = self._ids([x["id"] for x in discarded], "discarded") if discarded is not None else None
+        # A native controller can opt into a hard per-step collision contract.
+        # Synthetic replay fixtures intentionally omit this marker because they
+        # are data-only tests; native frames must distinguish an observed zero
+        # from a missing/invalid getter result.
+        if frame.get("collision_observation_required") is True and self.time is not None:
+            check(frame.get("collision_observation_status") == "available",
+                  "collision_observation_missing")
+            count = frame.get("collision_count")
+            check(type(count) is int and count >= 0, "collision_observation_invalid")
+            self.coverage["collision_required_available"] += 1
         on_road = self._ids(frame.get("on_road"), "on_road")
         if on_road is not None and groups["active"] is not None:
             check(on_road <= groups["active"], "on_road_not_in_visible_ID_set")
@@ -159,7 +174,7 @@ class IdentityObserver:
             elif row["teleporting"]:
                 row["state"] = "teleporting_native"
             else:
-                row["state"] = "Unknown"
+                row["state"] = "not_yet_scheduled" if row["declaration"]["depart_s"] > now else "Unknown"
                 if row["last_native_active_s"] is not None and "disappeared_without_terminal_evidence" not in row["unavailable_evidence"]:
                     row["unavailable_evidence"].append("disappeared_without_terminal_evidence")
         self.frames.append(dict(deepcopy(frame), evidence_window_s=[self.time, now], sources=dict(API),
@@ -223,14 +238,19 @@ class IdentityObserver:
                                               ("observed_departed_event" if row["departed_event_observed_at"] is not None else "Unknown"))
             row["FCD_observation_status"] = "observed" if row["first_FCD_s"] is not None else "not_observed"
             row["end_reason"] = "simulation_interrupted" if interrupted else "finite_observation_end"
-        complete = self.time is not None and all(not r["unavailable_evidence"] and r["state"] != "Unknown" for r in rows.values()
+        complete = not self.rejected_frames and self.time is not None and all(not r["unavailable_evidence"] and r["state"] != "Unknown" for r in rows.values()
                        if self.time is not None and r["declaration"]["depart_s"] <= self.time)
         # Only completed-step gaps count here; *_initial_unavailable is separate.
         complete &= all(self.coverage[k + "_unavailable"] == 0 for k in
-                        ["departed", "arrived", "pending", "active", "teleport_start", "teleport_end"])
+                        ["loaded", "departed", "arrived", "pending", "active", "teleport_start", "teleport_end"])
+        if self.coverage["collision_required_available"]:
+            complete &= self.coverage["loaded_initial_unavailable"] == 0
         exact_departure_clock = complete and all(r["actual_departure_s"] is not None for r in rows.values()
                                                  if r["departed_event_observed_at"] is not None)
         return dict(version=VERSION, last_native_observation_s=self.time, observations=len(self.frames),
+                    rejected_observations=deepcopy(self.rejected_frames),
+                    collision_coverage_complete=bool(not interrupted and not self.rejected_frames and self.time is not None and
+                        self.coverage["collision_required_available"] == round(self.time / self.step) and self.time > 0),
                     declared_count=len(rows), states=dict(Counter(r["state"] for r in rows.values())),
                     identity_accounting_complete=bool(complete),
                     native_departure_clock_complete=bool(exact_departure_clock),
@@ -244,7 +264,7 @@ def collect_snapshot(connection, *, initial=False):
     frame = dict(time_s=connection.simulation.getTime(), phase="initial_snapshot" if initial else "after_simulationStep",
                  discarded=None, native_departures={}, unavailable={})
     for key, source in API.items():
-        if initial and key not in {"active", "pending"}:
+        if initial and key not in {"loaded", "active", "pending"}:
             frame[key] = None
             frame["unavailable"][key] = "No completed step in initial snapshot; event interval is undefined"
             continue
@@ -277,9 +297,18 @@ def collect_snapshot(connection, *, initial=False):
             frame["on_road"] = [ident for ident in frame["active"] if connection.vehicle.getLaneID(ident)]
         except Exception as error:
             frame["unavailable"]["on_road"] = type(error).__name__ + ":" + str(error)
+    frame["collision_observation_required"] = not initial
+    frame["collision_count_semantics"] = "colliding_vehicle_count_current_step; not collision_event_count"
     try:
-        frame["collision_count"] = int(connection.simulation.getCollidingVehiclesNumber())
+        value = connection.simulation.getCollidingVehiclesNumber()
+        # TraCI returns an integer vehicle count.  Do not coerce None, bool,
+        # floats, strings, or negative sentinels into a plausible zero.
+        if type(value) is not int or value < 0:
+            raise ValueError("invalid_collision_vehicle_count:" + repr(value))
+        frame["collision_count"] = value
+        frame["collision_observation_status"] = "available"
     except Exception as error:
         frame["collision_count"] = None
+        frame["collision_observation_status"] = "invalid" if isinstance(error, ValueError) and str(error).startswith("invalid_collision_vehicle_count") else "unavailable"
         frame["unavailable"]["collision_count"] = type(error).__name__ + ":" + str(error)
     return frame

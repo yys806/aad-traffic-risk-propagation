@@ -86,6 +86,18 @@ def verify_envelope(policy,envelope_path,envelope_sha):
     require(run is not None,"launch_run_not_bound")
     reasons=authorization_reasons(proposal,envelope["approval"],envelope["proposal_sha256"],envelope["run_id"])
     require(not reasons,";".join(reasons))
+    # The research envelope is executable only when the exact policy that it
+    # hashes carries an accepted production build.  Engineering smoke keeps
+    # its historical false lock and is handled by the separate smoke schema.
+    if proposal["schema"] == SCHEMA:
+        require(policy.get("binding", {}).get("run_id") == envelope["run_id"],
+                "research_policy_run_binding")
+        require(policy.get("binding", {}).get("accepted_build") is True,
+                "research_policy_accepted_build_false")
+        require(policy.get("binding", {}).get("source_sha256") == proposal["controller_source_sha256"],
+                "research_policy_source_binding")
+        require(policy.get("binding", {}).get("runtime_manifest_sha256") == proposal["runtime_manifest_sha256"],
+                "research_policy_runtime_binding")
     inputs={name:Path(path).read_bytes() for name,path in policy["inputs"].items()}
     require({n:hashlib.sha256(v).hexdigest() for n,v in inputs.items()}==run["capsule_input_sha256"],"launch_input_binding")
     if proposal["schema"]==SMOKE_SCHEMA:smoke_inputs(run,inputs)
@@ -137,6 +149,59 @@ def sumo_version_output_matches(output, release):
     pattern = r"Eclipse SUMO sumo (?:Version )?" + token
     return any(re.fullmatch(pattern, line.removesuffix("\r")) is not None
                for line in output.split("\n"))
+
+
+SUMMARY_COUNTERS = ("loaded", "inserted", "running", "waiting", "ended", "arrived", "discarded")
+
+
+def summary_output_contract(data, duration_s, step_s=0.05):
+    """Validate the full native summary step grid and nonnegative counters.
+
+    Loaded, inserted, ended, arrived, discarded, collisions and teleports are
+    cumulative SUMO counters. Running and waiting are current populations.
+    Summary collision counters differ from TraCI colliding-vehicle counts.
+    Release 1.26.0 defines ended=arrived+discarded and inserted=running+arrived.
+    """
+    root = ET.fromstring(data)
+    require(root.tag == "summary", "native_summary_XML_root")
+    expected = round(float(duration_s) / float(step_s))
+    steps = root.findall("step")
+    require(len(steps) == expected, "native_summary_step_count")
+    rows = []
+    previous = {name: 0 for name in ("loaded", "inserted", "ended", "arrived", "discarded", "collisions", "teleports")}
+    for index, step in enumerate(steps):
+        try:
+            actual_time = float(step.get("time"))
+        except (TypeError, ValueError):
+            raise ValueError("native_summary_invalid_time")
+        require(math.isfinite(actual_time) and abs(actual_time - index * step_s) <= 1e-7,
+                "native_summary_clock")
+        values = {}
+        for name in SUMMARY_COUNTERS + ("collisions", "teleports"):
+            raw = step.get(name)
+            require(raw is not None and re.fullmatch(r"[0-9]+", raw) is not None,
+                    "native_summary_invalid_counter:" + name)
+            values[name] = int(raw)
+        for name in previous:
+            require(values[name] >= previous[name], "native_summary_counter_decreased:" + name)
+            previous[name] = values[name]
+        require(values["inserted"] <= values["loaded"], "native_summary_inserted_exceeds_loaded")
+        require(values["running"] <= values["inserted"], "native_summary_running_exceeds_inserted")
+        require(values["arrived"] <= values["ended"] <= values["loaded"], "native_summary_terminal_counter_invalid")
+        require(values["discarded"] <= values["loaded"], "native_summary_discarded_exceeds_loaded")
+        require(values["ended"] == values["arrived"] + values["discarded"], "native_summary_ended_balance")
+        require(values["inserted"] == values["running"] + values["arrived"], "native_summary_inserted_balance")
+        require(values["inserted"] + values["discarded"] + values["waiting"] <= values["loaded"], "native_summary_loaded_balance")
+        rows.append(dict(time_s=actual_time, **values))
+    return dict(parse_complete=True, step_count=len(rows), steps=rows,
+                semantics=dict(loaded="cumulative vehicles loaded from input",
+                    inserted="cumulative vehicles inserted", running="vehicles running in reported step",
+                    waiting="vehicles waiting for insertion in reported step",
+                    ended="cumulative vehicles reaching destination or otherwise removed",
+                    arrived="cumulative ended minus discarded; includes post-departure removals",
+                    discarded="cumulative never-inserted vehicles permanently discarded",
+                    collisions="cumulative registered collisions; not TraCI colliding vehicle count",
+                    teleports="cumulative SUMO teleport counter across causes"))
 
 
 def verify_receipt(archive,proposal,proposal_sha,policy_sha):
@@ -199,9 +264,55 @@ def verify_receipt(archive,proposal,proposal_sha,policy_sha):
     outputs={}
     for name,tag in [("fcd.xml","fcd-export"),("summary.xml","summary"),("tripinfo.xml","tripinfos")]:
         require(name in receipt["artifact_sha256"],"required_native_output_missing:"+name)
-        root=ET.parse(archive/name).getroot();require(root.tag==tag,"native_output_XML_root")
+        data=(archive/name).read_bytes()
+        root=ET.fromstring(data);require(root.tag==tag,"native_output_XML_root")
+        if name == "summary.xml" and proposal.get("schema") in {SCHEMA, SMOKE_SCHEMA}:
+            summary_output_contract(data, proposal["runs"][0]["duration_s"], proposal["runs"][0].get("internal_step_s", .05))
         outputs[name]=receipt["artifact_sha256"][name]
+    identity_check = None
+    if proposal.get("schema") in {SCHEMA, SMOKE_SCHEMA}:
+        from stage_0_5_identity_observation import IdentityObserver
+        from stage_0_5_execution_v2 import verify_journal, attach_FCD_observations
+        from stage_0_5_input_fidelity import inventory
+        input_data = {}
+        for name, expected in run["capsule_input_sha256"].items():
+            path = archive/name if (archive/name).exists() else Path(policy["inputs"][name])
+            require(sha(path) == expected, "receipt_input_binding:" + name)
+            input_data[name] = path.read_bytes()
+        _, declarations, initial_ids, _, _ = inventory(input_data["routes.rou.xml"])
+        journal = verify_journal(archive/"identity_events.jsonl")
+        observer = IdentityObserver([dict(id=i, depart_s=float(v.get("depart"))) for i, v in declarations.items()], step_s=step)
+        for line in (archive/"identity_events.jsonl").read_bytes().splitlines():
+            frame = json.loads(line)["payload"]
+            require(frame.get("phase") == "initial_snapshot" or frame.get("collision_observation_required") is True,
+                    "native_collision_contract_marker_missing")
+            observer.ingest(frame)
+        attach_FCD_observations(observer, archive/"fcd.xml")
+        observer.observe_tripinfo((archive/"tripinfo.xml").read_bytes())
+        rebuilt = observer.finish()
+        require(rebuilt == json.loads((archive/"identity_summary.json").read_bytes()), "receipt_identity_summary_mismatch")
+        require(journal["events"] == round(run["duration_s"]/step)+1, "receipt_identity_clock_missing")
+        require(rebuilt["identity_accounting_complete"] and rebuilt["native_departure_clock_complete"] and
+                rebuilt["collision_coverage_complete"], "receipt_identity_observation_incomplete")
+        summary = summary_output_contract((archive/"summary.xml").read_bytes(), run["duration_s"], step)
+        seen = {k:set() for k in ("loaded", "departed", "arrived", "discarded")}
+        seen["loaded"].update(observer.frames[0].get("loaded") or [])
+        for aggregate, frame in zip(summary["steps"], observer.frames[1:]):
+            for key in seen:
+                require(frame.get(key) is not None or key == "discarded", "receipt_missing_identity_getter:"+key)
+                seen[key].update(x["id"] if isinstance(x,dict) else x for x in frame.get(key) or [])
+            require(all(aggregate[key] == value for key,value in dict(loaded=len(seen["loaded"]),
+                inserted=len(seen["departed"]), arrived=len(seen["arrived"]), discarded=len(seen["discarded"]),
+                ended=len(seen["arrived"])+len(seen["discarded"]), running=len(frame["active"]), waiting=len(frame["pending"])).items()),
+                "receipt_summary_identity_counter_mismatch")
+            require(abs(frame["time_s"]-aggregate["time_s"]-step)<1e-7, "receipt_summary_identity_clock")
+            require(aggregate["collisions"] == aggregate["teleports"] == 0, "receipt_collision_or_teleport")
+        require(all(r["tripinfo"] is not None for r in rebuilt["vehicles"].values()
+                    if r["declaration"]["depart_s"] < run["duration_s"]), "receipt_tripinfo_missing_identity")
+        identity_check = dict(conditions=dict(replayed_identity=True, all_summary_steps=True,
+            collision_coverage=True, tripinfo_identity=True))
     return dict(status="Pass",kind="OS_enforced",backend="linux-userns",proposal_sha256=proposal_sha,
+        identity_checks=None if identity_check is None else identity_check["conditions"],
         policy_sha256=policy_sha,runtime_manifest_sha256=proposal["runtime_manifest_sha256"],outputs=outputs,
         receipt_sha256=sha(archive/"isolation_runtime.json"),controller_sha256=sha(archive/"controller_receipt.json"),
         probes=dict(files_read_only=capability["positive_file_controls"] and all("ro" in r.split()[5].split(",") for r in receipt["input_mounts"].values()),

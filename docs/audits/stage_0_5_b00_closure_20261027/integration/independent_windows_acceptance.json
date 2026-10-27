@@ -1,0 +1,30 @@
+{
+  "status": "Pass",
+  "kind": "OS_enforced",
+  "backend": "linux-userns",
+  "proposal_sha256": "2d936bccde14ab946ee09b80388b8955be3dacb9bd8c51f9a62442ee84b47956",
+  "identity_checks": {
+    "replayed_identity": true,
+    "all_summary_steps": true,
+    "collision_coverage": true,
+    "tripinfo_identity": true
+  },
+  "policy_sha256": "a6556b80830b1debfbdb32813ec39e85433b0155050886c43cc5f2629aeba383",
+  "runtime_manifest_sha256": "703c433d85647e3b100ec407a0dfd9a629059905476ec544a320f56cd18a67c7",
+  "outputs": {
+    "fcd.xml": "865fe4d56fc2a38b4347edf4e360572dd11ebcd8b2b98f4a0288df06580199fc",
+    "summary.xml": "2e0909b7a4a72fe116268adab62a78e9c42a7f63fbadfa16cf95b993acfc87cb",
+    "tripinfo.xml": "4754be5107a9e86fa6cd30c933cbe5ebd755dc2e3890084314ec2b93d1466a3a"
+  },
+  "receipt_sha256": "c1a81895f3e163a6f90346c5bb32ec53db35363cd59ee6df056e4b14a7c27ce9",
+  "controller_sha256": "00eeaa707d702929c1191c8317145ff88f7610d7226b7c0c89cebd3b2eddd9aa",
+  "probes": {
+    "files_read_only": true,
+    "exclusive_output": true,
+    "forbidden_resources_denied": true,
+    "children_confined": true,
+    "process_tree_limited": true,
+    "network_confined": true
+  },
+  "scope": "Engineering runtime/control/isolation acceptance, no scientific support claim"
+}

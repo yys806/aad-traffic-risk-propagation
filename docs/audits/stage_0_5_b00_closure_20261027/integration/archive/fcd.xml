@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 2026-10-27T17:48:56.200368+08:00 by Eclipse SUMO sumo 1.26.0
+<sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+
+    <input>
+        <net-file value="/home/shen/AAD/code/tmp/stage05_v4_20261027_closure_r7/smoke_capsule/scratch/network.net.xml"/>
+        <route-files value="/home/shen/AAD/code/tmp/stage05_v4_20261027_closure_r7/smoke_capsule/scratch/routes.rou.xml"/>
+    </input>
+
+    <output>
+        <fcd-output value="/home/shen/AAD/code/tmp/stage05_v4_20261027_closure_r7/smoke_capsule/scratch/fcd.xml"/>
+        <summary-output value="/home/shen/AAD/code/tmp/stage05_v4_20261027_closure_r7/smoke_capsule/scratch/summary.xml"/>
+        <tripinfo-output value="/home/shen/AAD/code/tmp/stage05_v4_20261027_closure_r7/smoke_capsule/scratch/tripinfo.xml"/>
+        <tripinfo-output.write-undeparted value="true"/>
+    </output>
+
+    <time>
+        <begin value="0"/>
+        <end value="3"/>
+        <step-length value="0.05"/>
+    </time>
+
+    <processing>
+        <step-method.ballistic value="true"/>
+        <threads value="1"/>
+    </processing>
+
+    <report>
+        <no-step-log value="true"/>
+    </report>
+
+    <fcd_device>
+        <device.fcd.period value="0.1"/>
+    </fcd_device>
+
+    <traci_server>
+        <remote-port value="54927"/>
+    </traci_server>
+
+    <random_number>
+        <seed value="1"/>
+    </random_number>
+
+</sumoConfiguration>
+-->
+
+<fcd-export xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/fcd_file.xsd">
+    <timestep time="0.00"/>
+    <timestep time="0.10">
+        <vehicle id="synth_vehicle" x="0.00" y="0.00" angle="90.00" type="synth_type" speed="0.13" pos="0.00" lane="synth_main_0" slope="0.00"/>
+    </timestep>
+    <timestep time="0.20">
+        <vehicle id="synth_vehicle" x="0.03" y="0.00" angle="90.00" type="synth_type" speed="0.39" pos="0.03" lane="synth_main_0" slope="0.00"/>
+    </timestep>
+    <timestep time="0.30">
+        <vehicle id="synth_vehicle" x="0.08" y="0.00" angle="90.00" type="synth_type" speed="0.65" pos="0.08" lane="synth_main_0" slope="0.00"/>
+    </timestep>
+    <timestep time="0.40">
+        <vehicle id="synth_vehicle" x="0.16" y="0.00" angle="90.00" type="synth_type" speed="0.91" pos="0.16" lane="synth_main_0" slope="0.00"/>
+    </timestep>
+    <timestep time="0.50">
+        <vehicle id="synth_vehicle" x="0.26" y="0.00" angle="90.00" type="synth_type" speed="1.17" pos="0.26" lane="synth_main_0" slope="0.00"/>
+    </timestep>
+    <timestep time="0.60">
+        <vehicle id="synth_vehicle" x="0.39" y="0.00" angle="90.00" type="synth_type" speed="1.43" pos="0.39" lane="synth_main_0" slope="0.00"/>
+    </timestep>
+    <timestep time="0.70">
+        <vehicle id="synth_vehicle" x="0.55" y="0.00" angle="90.00" type="synth_type" speed="1.69" pos="0.55" lane="synth_main_0" slope="0.00"/>
+    </timestep>
+    <timestep time="0.80">
+        <vehicle id="synth_vehicle" x="0.73" y="0.00" angle="90.00" type="synth_type" speed="1.95" pos="0.73" lane="synth_main_0" slope="0.00"/>
+    </timestep>
+    <timestep time="0.90">
+        <vehicle id="synth_vehicle" x="0.94" y="0.00" angle="90.00" type="synth_type" speed="2.21" pos="0.94" lane="synth_main_0" slope="0.00"/>
+    </timestep>
+    <timestep time="1.00">
+        <vehicle id="synth_vehicle" x="1.17" y="0.00" angle="90.00" type="synth_type" speed="2.47" pos="1.17" lane="synth_main_0" slope="0.00"/>
+    </timestep>
+    <timestep time="1.10">
+        <vehicle id="synth_vehicle" x="1.43" y="0.00" angle="90.00" type="synth_type" speed="2.73" pos="1.43" lane="synth_main_0" slope="0.00"/>
+    </timestep>
+    <timestep time="1.20">
+        <vehicle id="synth_vehicle" x="1.72" y="0.00" angle="90.00" type="synth_type" speed="2.99" pos="1.72" lane="synth_main_0" slope="0.00"/>
+    </timestep>
+    <timestep time="1.30">
+        <vehicle id="synth_vehicle" x="2.03" y="0.00" angle="90.00" type="synth_type" speed="3.25" pos="2.03" lane="synth_main_0" slope="0.00"/>
+    </timestep>
+    <timestep time="1.40">
+        <vehicle id="synth_vehicle" x="2.37" y="0.00" angle="90.00" type="synth_type" speed="3.51" pos="2.37" lane="synth_main_0" slope="0.00"/>
+    </timestep>
+    <timestep time="1.50">
+        <vehicle id="synth_vehicle" x="2.73" y="0.00" angle="90.00" type="synth_type" speed="3.77" pos="2.73" lane="synth_main_0" slope="0.00"/>
+    </timestep>
+    <timestep time="1.60">
+        <vehicle id="synth_vehicle" x="3.12" y="0.00" angle="90.00" type="synth_type" speed="4.03" pos="3.12" lane="synth_main_0" slope="0.00"/>
+    </timestep>
+    <timestep time="1.70">
+        <vehicle id="synth_vehicle" x="3.54" y="0.00" angle="90.00" type="synth_type" speed="4.29" pos="3.54" lane="synth_main_0" slope="0.00"/>
+    </timestep>
+    <timestep time="1.80">
+        <vehicle id="synth_vehicle" x="3.98" y="0.00" angle="90.00" type="synth_type" speed="4.55" pos="3.98" lane="synth_main_0" slope="0.00"/>
+    </timestep>
+    <timestep time="1.90">
+        <vehicle id="synth_vehicle" x="4.45" y="0.00" angle="90.00" type="synth_type" speed="4.81" pos="4.45" lane="synth_main_0" slope="0.00"/>
+    </timestep>
+    <timestep time="2.00">
+        <vehicle id="synth_vehicle" x="4.94" y="0.00" angle="90.00" type="synth_type" speed="5.07" pos="4.94" lane="synth_main_0" slope="0.00"/>
+    </timestep>
+    <timestep time="2.10">
+        <vehicle id="synth_vehicle" x="5.46" y="0.00" angle="90.00" type="synth_type" speed="5.33" pos="5.46" lane="synth_main_0" slope="0.00"/>
+    </timestep>
+    <timestep time="2.20">
+        <vehicle id="synth_vehicle" x="6.01" y="0.00" angle="90.00" type="synth_type" speed="5.59" pos="6.01" lane="synth_main_0" slope="0.00"/>
+    </timestep>
+    <timestep time="2.30">
+        <vehicle id="synth_vehicle" x="6.58" y="0.00" angle="90.00" type="synth_type" speed="5.85" pos="6.58" lane="synth_main_0" slope="0.00"/>
+    </timestep>
+    <timestep time="2.40">
+        <vehicle id="synth_vehicle" x="7.18" y="0.00" angle="90.00" type="synth_type" speed="6.11" pos="7.18" lane="synth_main_0" slope="0.00"/>
+    </timestep>
+    <timestep time="2.50">
+        <vehicle id="synth_vehicle" x="7.80" y="0.00" angle="90.00" type="synth_type" speed="6.37" pos="7.80" lane="synth_main_0" slope="0.00"/>
+    </timestep>
+    <timestep time="2.60">
+        <vehicle id="synth_vehicle" x="8.45" y="0.00" angle="90.00" type="synth_type" speed="6.63" pos="8.45" lane="synth_main_0" slope="0.00"/>
+    </timestep>
+    <timestep time="2.70">
+        <vehicle id="synth_vehicle" x="9.13" y="0.00" angle="90.00" type="synth_type" speed="6.89" pos="9.13" lane="synth_main_0" slope="0.00"/>
+    </timestep>
+    <timestep time="2.80">
+        <vehicle id="synth_vehicle" x="9.83" y="0.00" angle="90.00" type="synth_type" speed="7.15" pos="9.83" lane="synth_main_0" slope="0.00"/>
+    </timestep>
+    <timestep time="2.90">
+        <vehicle id="synth_vehicle" x="10.56" y="0.00" angle="90.00" type="synth_type" speed="7.41" pos="10.56" lane="synth_main_0" slope="0.00"/>
+    </timestep>
+</fcd-export>

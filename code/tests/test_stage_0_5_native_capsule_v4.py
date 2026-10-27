@@ -364,12 +364,24 @@ def test_smoke_preparation_uses_controller_identity_contract_and_never_reauthori
     assert capsule.authorization_reasons(proposal,envelope["approval"],envelope["proposal_sha256"],envelope["run_id"])==["engineering_smoke_authorization_missing"]
 
 
+def bind_research_policy(tmp_path, proposal):
+    proposal.setdefault("controller_source_sha256", {"synthetic.py": "a"*64})
+    proposal.setdefault("runtime_manifest_sha256", "b"*64)
+    policy = dict(binding=dict(accepted_build=True, source_sha256=proposal["controller_source_sha256"],
+        runtime_manifest_sha256=proposal["runtime_manifest_sha256"], run_id=proposal["runs"][0]["id"]))
+    (tmp_path/"policy.json").write_bytes(capsule.canonical(policy))
+    proposal.update(policy_binding_required=True, capsule_policy_repo_path="policy.json",
+                    capsule_policy_sha256=capsule.sha(tmp_path/"policy.json"))
+
+
 def v4_ledger_fixture(tmp_path):
     from stage_0_5_research_ledger import ResearchLedger
     root=Path(__file__).resolve().parents[2]
     config=json.loads((root/"code/configs/stage_0_5_ready_to_admit_v3.json").read_bytes())
     config.update(ledger_path="journal/events.jsonl",output_root="outputs",historical_references=[])
     def write(name,value):
+        if name == "proposal.json":
+            bind_research_policy(tmp_path, value)
         (tmp_path/name).write_bytes(value if isinstance(value,bytes) else capsule.canonical(value))
     write("budget.json",config);write("plan.md",b"synthetic plan")
     write("source.py",b"# synthetic");write("input.xml",b"<synthetic/>")
@@ -448,12 +460,13 @@ def preflight_fixture(tmp_path):
         worktree_sha256=hashlib.sha256(capsule.canonical(sources)).hexdigest(),
         isolation=dict(accepted_for_new_task=False,report_path="integration.json",report_sha256=write("integration.json",dict(accepted_for_new_task=False))),
         execution_allowed=False,researcher_confirmed=False,protocol_frozen=False)
+    bind_research_policy(tmp_path, p)
     write("proposal.json",p)
     return p
 
 
 @pytest.mark.parametrize("fault,reason",[(None,"integration_not_accepted"),("source","bound_file_drift"),
-    ("controller","controller_source_closure_mismatch"),("input","scientific_input_drift"),("map","inexact_scientific_input_map"),
+    ("controller","research_policy_source_binding"),("input","scientific_input_drift"),("map","inexact_scientific_input_map"),
     ("reference","measurement_reference_drift"),("environment","Linux_environment_binding_missing"),("budget","single_attempt_budget_drift")])
 def test_actual_v4_preflight_distinguishes_engineering_defect_from_authorization(tmp_path,monkeypatch,fault,reason):
     import stage_0_5_linux_execution_v4 as execution

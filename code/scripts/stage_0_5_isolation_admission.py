@@ -101,6 +101,18 @@ def software_extension_verified(repo,record,sources):
     This is explicitly an isolation-only targeted extension, never a claim that
     the old 1130 tests were rerun on the new source tree.
     """
+    if record.get("validation_mode") == "isolated_full_regression":
+        if record.get("source_sha256") != sources:
+            return False
+        if any(record.get(k, {}).get("exit_code") != 0 for k in ("full", "targeted", "compileall")):
+            return False
+        if record["full"].get("passed", 0) <= 0 or record["full"].get("failed", 0) or record["full"].get("error", 0):
+            return False
+        audit_path = (Path(repo)/record["audit_path"]).resolve()
+        if not audit_path.is_relative_to(Path(repo).resolve()) or hashlib.sha256(audit_path.read_bytes()).hexdigest() != record["audit_sha256"]:
+            return False
+        audit = json.loads(audit_path.read_bytes())
+        return audit.get("exit_code") == 0 and audit.get("denied") == [] and audit.get("sumo_launches") == 0 and audit.get("tests") == "full software"
     if record.get("validation_mode") not in {"isolation_targeted_extension","production_capsule_targeted_extension"} or record.get("source_sha256")!=sources:
         return False
     if record.get("targeted",{}).get("exit_code")!=0:return False
@@ -114,7 +126,10 @@ def software_extension_verified(repo,record,sources):
     permitted={"code/scripts/stage_0_5_execution_v2.py","code/scripts/stage_0_5_admission_v3.py","code/scripts/stage_0_5_acceptance_v3.py"}
     if record["validation_mode"]=="production_capsule_targeted_extension":
         permitted.update("code/scripts/"+n+".py" for n in ["stage_0_5_research_ledger","run_stage_0_5_admission_v3",
-            "stage_0_5_linux_isolation","stage_0_5_isolation_admission"])
+            "stage_0_5_linux_isolation","stage_0_5_isolation_admission",
+            "stage_0_5_identity_observation","stage_0_5_native_capsule_v4",
+            "stage_0_5_linux_execution_v4","stage_0_5_linux_controller_v4",
+            "stage_0_5_linux_runtime_v4"])
         permitted.add("code/tests/test_stage_0_5_linux_isolation.py")
     changed={n for n,h in previous["source_sha256"].items() if sources.get(n)!=h}
     if not changed<=permitted or changed!=set(record["modified_existing_sources"]):return False

@@ -1,5 +1,10 @@
 # AAD Current State Snapshot
 
+## 2026-10-27 B00 closure repairs (Active execution task)
+
+ENG-01/02/03 repaired; final no-data software regression 1361 passed / 16 skipped / 7 native deselections, compileall and current repaired-source native integration/independent receipt Pass. Startup loaded IDs and full summary/identity/TripInfo checks are included. The user explicitly authorized direct B00 after hard checks; no repeated approval is required. B00 not yet launched at this source commit; task continues. The earlier primary-workspace pytest is excluded as invalid scope; old POLICY-A Not Accepted and scientific Gate/thresholds unchanged. See docs/STAGE_0_5_B00_CLOSURE_2026-10-27.md and docs/audits/stage_0_5_b00_closure_20261027/.
+
+
 ## 2026-10-27 B00科研准入审查V1（Verified audit / Research approval pending）
 
 只读优先审查基线origin/main=753b666a3c9e4b8d88add2ead1973ff8e2d4439f。candidate-v6精确三SHA、347历史文件、38源按Git属性检出及12生产源闭包复核一致，现有SMOKE独立verify_receipt通过；没有新的live环境认证。工程accepted与科研approval分层，不自动授权。新增15项矩阵/9项研究者决定；高优先级待审：预检ready未检查policy accepted_build=false，可能先预约/attempt后晚拒绝；collision getter缺失在循环被or 0处理；summary缺逐车数值交叉核算且accounted pending不等于全部插入。Research Proposal：暂缓可执行批准，先另任务复核/修复并重绑；本轮不改守卫、候选、输入或锁。DS38确认为仅38初态速度10→max，其余79初态及1033非初态不变，实际插入/i0007/测量支持仍未知。科研审批、历史Not Accepted、Gate/δ/h/B/Stage1.1均保留；本轮SUMO0/真实TraCI0/新科研轨迹0。报告：docs/STAGE_0_5_B00_SCIENTIFIC_ADMISSION_REVIEW_V1_2026-10-27.md；审计：docs/audits/stage_0_5_scientific_admission_review_v1/。下方为历史时点。

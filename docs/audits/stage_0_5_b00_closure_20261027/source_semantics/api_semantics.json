@@ -1,0 +1,28 @@
+{
+  "version": "SUMO 1.26.0 / TraCI 22",
+  "source_files": {
+    "MSNet.cpp": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_26_0/src/microsim/MSNet.cpp",
+      "sha256": "fdf62a7626e2d1b31edaf695198e27f4690c2a86a1925e0142852a80449cd6f8"
+    },
+    "MSVehicleControl.cpp": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_26_0/src/microsim/MSVehicleControl.cpp",
+      "sha256": "3d8e6631aee0f128d0d033a2ebd84f138bb8c65343a8ac625dbedb341eb72a0a"
+    },
+    "MSVehicleControl.h": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_26_0/src/microsim/MSVehicleControl.h",
+      "sha256": "51bae41367dca34ea2de40fff63af61c31e6dbb1ede5d21d18e3434b20a5b5ff"
+    },
+    "_simulation.py": {
+      "url": "https://raw.githubusercontent.com/eclipse-sumo/sumo/v1_26_0/tools/traci/_simulation.py",
+      "sha256": "8b7f97ced4dd6774271e8e0da270d687aa9a5ff438c8090023a941beb4e8bbec"
+    }
+  },
+  "verified_semantics": {
+    "collision_getter": "simulation.getCollidingVehiclesNumber returns last-step involved vehicles (typically 2 per collision); never event count",
+    "summary": "MSNet writes summary after step at pre-increment label; aligns with TraCI time label +0.05",
+    "counter_identities": "ended=arrived+discarded; inserted=running+arrived; discarded is never-inserted permanent removal",
+    "pending": "getPendingVehicles is explicit IDs waiting for insertion with delay",
+    "identity_limit": "Aggregate discarded count alone cannot resolve IDs"
+  }
+}

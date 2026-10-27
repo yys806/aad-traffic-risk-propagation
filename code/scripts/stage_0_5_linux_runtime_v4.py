@@ -117,9 +117,9 @@ def make_policy(capsule,runtime,runtime_path,source_files,inputs,run,*,accepted_
         environment=dict(PATH=str(Path(runtime["sumo_binary"]).parent)+":/usr/bin",SUMO_HOME=runtime["sumo_home"],
             OMP_NUM_THREADS="1",OPENBLAS_NUM_THREADS="1",NUMEXPR_NUM_THREADS="1",LANG="C.UTF-8",LC_ALL="C.UTF-8"),
         host_namespaces={n:os.readlink("/proc/self/ns/"+n) for n in ["user","mnt","pid","net","ipc"]},
-        binding=dict(runtime_manifest_path=str(runtime_path),runtime_manifest_sha256=sha(runtime_path),source_files=source_files,
-            capability_record_path=str(capability_record),capability_record_sha256=sha(capability_record),
-            source_sha256={n:sha(p) for n,p in source_files.items()},accepted_build=accepted_build))
+         binding=dict(runtime_manifest_path=str(runtime_path),runtime_manifest_sha256=sha(runtime_path),source_files=source_files,
+             capability_record_path=str(capability_record),capability_record_sha256=sha(capability_record),
+             source_sha256={n:sha(p) for n,p in source_files.items()},run_id=run.get("id"),accepted_build=accepted_build))
     path=capsule/"policy.json"
     with path.open("xb") as f:f.write(policy_bytes(policy))
     return path,policy

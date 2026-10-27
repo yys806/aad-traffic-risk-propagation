@@ -367,9 +367,27 @@ def run_observation_loop(context,backend,observer,journal,supervisor,*,synthetic
         control=backend.before_step(observer.time,context) if not synthetic else None
         frame=backend.step()
         if control is not None:frame["controls"]=control
-        observer.ingest(frame)
+        if not synthetic:
+            # The native collector marks every post-step frame as requiring a
+            # valid collision getter result.  Keep the check at the execution
+            # boundary as well so a custom/native backend cannot silently turn
+            # an unavailable value into a zero.
+            frame["collision_observation_required"] = True
+        try:
+            observer.ingest(frame)
+        except Exception as error:
+            journal.append(dict(frame, observation_rejected=type(error).__name__ + ":" + str(error)))
+            raise
         journal.append(observer.frames[-1])
-        if frame.get("teleport_start") or (frame.get("collision_count") or 0)>0:
+        if not synthetic:
+            for kind in ("teleport_start", "teleport_end"):
+                if frame.get(kind) is None:
+                    raise RuntimeError("identity_observation_missing:" + kind)
+            status = frame.get("collision_observation_status")
+            count = frame.get("collision_count")
+            if status != "available" or type(count) is not int or count < 0:
+                raise RuntimeError("collision_observation_missing_or_invalid")
+        if frame.get("teleport_start") or (frame.get("collision_count") is not None and frame.get("collision_count") > 0):
             raise RuntimeError("collision_or_teleport_stop")
         supervisor.observe()
 
@@ -515,7 +533,7 @@ class ExecutionAdapter:
                 resource_samples=[dict(s) for s in supervisor.samples], run_finished_wall_s=supervisor.last["wall_s"],
                 exit_code=backend.exit_code, watchdog_failure=None if watchdog is None else watchdog.failure,
                 identity_journal_verified=True,
-                sealed_artifacts={name:sha(work / name) for name in ["fcd.xml", "tripinfo.xml", "identity_events.jsonl", "identity_summary.json"] if (work / name).exists()}))
+                 sealed_artifacts={name:sha(work / name) for name in ["fcd.xml", "summary.xml", "tripinfo.xml", "identity_events.jsonl", "identity_summary.json"] if (work / name).exists()}))
             if synthetic:
                 # Explicit fixture kernel transcript, never native certification.
                 for key in ["isolation"]:

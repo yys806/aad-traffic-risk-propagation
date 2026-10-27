@@ -1,5 +1,10 @@
 # AAD AI Context Changelog
 
+## 2026-10-27 B00 closure repairs (Active execution task)
+
+ENG-01/02/03 repaired; final no-data software regression 1361 passed / 16 skipped / 7 native deselections, compileall and current repaired-source native integration/independent receipt Pass. Startup loaded IDs and full summary/identity/TripInfo checks are included. The user explicitly authorized direct B00 after hard checks; no repeated approval is required. B00 not yet launched at this source commit; task continues. The earlier primary-workspace pytest is excluded as invalid scope; old POLICY-A Not Accepted and scientific Gate/thresholds unchanged. See docs/STAGE_0_5_B00_CLOSURE_2026-10-27.md and docs/audits/stage_0_5_b00_closure_20261027/.
+
+
 ## 2026-10-27 B00科研准入审查与研究者决策包V1
 
 完成精确候选/封存SMOKE/347文件与38源核验，静态DS38、输入保真、C6/D1/18单元、授权守卫和相关C1–C7历史问题逐项审查；新增主报告、15项矩阵/9项决定、证据/边界/验证记录及纯审查helper。确认ENG-01/02/03待另任务处理，研究者决定和动态未知分列，不改变候选READY历史记录或任何科研批准。Context Consistency Check仅00/05/07/08受影响，06正式决策与registry历史状态保留；本轮不是新结果登记。首次审查器换行假设失败及受限网络诊断均保留。没有SUMO/真实TraCI/B00/新轨迹，没有生产代码、参数、Gate、锁或历史证据修改。依据：docs/STAGE_0_5_B00_SCIENTIFIC_ADMISSION_REVIEW_V1_2026-10-27.md；docs/audits/stage_0_5_scientific_admission_review_v1/。下方为历史时点。
