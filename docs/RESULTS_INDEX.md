@@ -1,5 +1,10 @@
 # AAD 结果索引
 
+## RES-STAGE-0.5-B00-NATIVE-V1
+
+Verified：ENG-01/02/03修复、无数据全量1361通过/16跳过/7原生排除、compileall、修复后3s原生集成及独立回执Pass；纯Git定向165通过。新candidate-v8及聊天来源授权、实时硬检查完成后已直接执行一次B00（版本/仿真/真实TraCI各1）。最终状态BLOCKED_BY_VERIFIED_HARD_FAILURE：首个simulationStep发生i0007_i0007 slow lane ahead原生Error；冻结输入为15.23m/s、位置233.91m，下游main_2限速10m/s，按既定停止规则终止，420s未完成。仅t=0初始身份快照有效，末态插入/pending/discarded及全程碰撞/teleport均Unknown；三XML截断，18格测量不验收。capsule退出1，SUMO退出码未成功观测；后代已清理且无残留PID。未重复相同失败。具体初态/下游限速/原生Error停止规则冲突需科研决定，不能伪装成工程修复。旧Not Accepted及Gate不变。依据：docs/STAGE_0_5_B00_CLOSURE_2026-10-27.md；evidence/results/RES-STAGE-0.5-B00-NATIVE-V1/。下方为历史时点。
+
+
 ## 2026-10-26 V4 smoke 3工程验收Pass
 
 原r5精确授权一次合成生产smoke，60步真实TraCI/控制回读、三种XML和完整回执经原验收器独立核验Pass；版本/仿真/连接各1，无重试/新B00科研轨迹。证据：`docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/authorized-execution/`；说明：`docs/STAGE_0_5_V4_SMOKE_3_CONTINUATION_2026-10-26.md`。旧启动前失败独立保留，不改科研准入或Gate。

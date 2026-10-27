@@ -1,9 +1,8 @@
 # AAD Module Map
 
-## 2026-10-27 B00 engineering checks
+## 2026-10-27 B00工程模块与结果导出
 
-code/scripts/validate_stage_0_5_b00_closure_v1.py runs audited no-data software validation; code/tests/test_stage_0_5_b00_closure_v1.py covers policy refusal, collision missing/error/gap/recovery, explicit zero, teleport, startup loading, legal pending and summary crosscheck failures. No scientific measurement algorithm changed.
-
+ENG-01/02/03涉及Linux预检/授权/账本、身份观测、执行循环、native capsule和acceptance模块；合成与当前原生集成验证通过。首次B00因冻结i0007原生Error终止，未测量通过。export_project_evidence.py补入本次结果及原先漏登的三个历史映射，旧快照字节不变。
 
 ## 2026-10-26 smoke辅助工具修复
 

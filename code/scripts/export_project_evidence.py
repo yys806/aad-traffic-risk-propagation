@@ -713,6 +713,28 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         pairs.setdefault('RES-STAGE-0.5-FINAL-CLOSURE-V1', []).append(
             (f'code/outputs/formal/calibration/stage_0_5_final_closure_package/summary/{name}', name)
         )
+    # Preserve the independently registered Stage 0.5 extensions in full exports.
+    for result_id, directory, names in [
+        ('RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1', 'stage_0_5_depart_speed_candidate_v1',
+         ['impact_summary.json', 'official_semantics.json', 'review_proposal.json',
+          'provenance.json', 'validation_record.json', 'boundary_summary.json',
+          'PROPOSAL_SHA256', 'SHA256SUMS']),
+        ('RES-STAGE-0.5-INTERACTION-RESEARCH-V2', 'stage_0_5_interaction_research_v2',
+         ['audit.json', 'budget_config.json', 'run_matrix.json', 'review_proposal.json',
+          'ledger_snapshot.json', 'provenance.json', 'validation_record.json', 'SHA256SUMS']),
+        ('RES-STAGE-0.5-V2-ADMISSION-ENGINEERING-V1', 'stage_0_5_v2_admission_engineering_v1',
+         ['identity_contract.json', 'initialization_audit.json', 'history_allowlist.json',
+          'C6_comparison.json', 'C6_independent_verification.json', 'admission_profile.json',
+          'provenance.json', 'validation_record.json', 'SHA256SUMS']),
+        ('RES-STAGE-0.5-B00-NATIVE-V1', 'stage_0_5_b00_native_v1',
+         ['execution_result.json', 'population_accounting.json', 'measurement_acceptance.json',
+          'scientific_conflict.json', 'ledger_snapshot.json', 'provenance.json',
+          'artifact_sha256.json', 'validation_record.json', 'SHA256SUMS']),
+    ]:
+        pairs[result_id] = [
+            ('code/outputs/formal/calibration/' + directory + '/portable/' + name, name)
+            for name in names
+        ]
     return pairs
 
 

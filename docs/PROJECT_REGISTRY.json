@@ -301,7 +301,7 @@
  "current": {
   "active_experiment_id": "stage_0_5",
   "active_task": "AAD-0.5-B00-CLOSURE-AND-FIRST-NATIVE-RUN-V1",
-  "why_now": "Researcher explicitly removed old three-attempt restriction for new research; historical ledgers and failed ID1 remain immutable. Need matched baseline and factorial contrasts under reviewed measurement.",
+  "why_now": "One authorized actual B00 reveals the specific frozen i0007/downstream-limit/native-error-stop conflict; repairs validated, no baseline measurement accepted.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
    "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",
@@ -344,18 +344,19 @@
    "code/outputs/formal/calibration/stage_0_5_final_closure_package/summary/audit.json"
   ],
   "admission_v3": {
-   "status": "Active: engineering repairs verified; exact B00 execution authorized after hard checks",
-   "audit_root": "docs/audits/stage_0_5_ready_to_admit_v3/candidate-v6",
+   "status": "BLOCKED_BY_VERIFIED_HARD_FAILURE",
+   "audit_root": "docs/audits/stage_0_5_b00_closure_20261027",
    "candidate_root": "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3",
-   "accepted_for_new_task": false,
-   "latest_candidate": "candidate-v6",
-   "proposal_sha256": "b43e2d3af03dd53dd23bee3abd027725f298f58c97a2ae73d868ca9168a229b3",
+   "accepted_for_new_task": true,
+   "latest_candidate": "candidate-v8-closure-20261027",
+   "proposal_sha256": "685f934a5bf12685ce600155b599fe808bb77bfce571d6894c319fceb389aa67",
    "first_proposed_run_id": "V3_0750_B00_DS38_s20261201",
-   "software_validation": "Current auxiliary targeted 34 passed / 1 skipped; V4 targeted 288 passed / 1 skipped; full no-data Git software 1331 passed / 16 skipped / 7 native deselections; compile/docs/evidence/receipt/live preflight exit0. 38 bound production/scientific sources unchanged.",
+   "software_validation": "1361 passed/16 skipped/7 native deselected; compileall Pass; pure-Git targeted165 Pass; repaired-source native3s integration Pass",
    "schema": "aad.native-admission.v4",
-   "manifest_sha256": "afddd83c77e1f7b9eaf64c3b5059f9d29f740b9bf003ed36d22325c93eee4978",
-   "integration_certificate_sha256": "342ed54cccedcaf0d477ec72b70b98e956140179961dec2d59904d4648a71528",
-   "technical_preflight_path": "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/technical_preflight.json"
+   "manifest_sha256": "188c77662bdc31057c5a29e3f016cca08a032d66b44995df95efe53d6cd5cdd7",
+   "integration_certificate_sha256": "df705a1238b53d9b29bc396fe8c3f1e12c9ef4782d23c46c2299bd2343237326",
+   "technical_preflight_path": "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v8-closure-20261027/technical_preflight.json",
+   "measurement_accepted": false
   },
   "native_smoke_preparation": {
    "status": "Historical prepared proposal; one exact-authorized smoke now passed; original false envelope retained",
@@ -399,12 +400,24 @@
    "execution_code_commit": "09918d16bc06fc1d72e8322da21e048aa1548317"
   },
   "b00_closure": {
-   "status": "Active",
+   "status": "BLOCKED_BY_VERIFIED_HARD_FAILURE",
    "report_path": "docs/STAGE_0_5_B00_CLOSURE_2026-10-27.md",
    "software_validation_path": "docs/audits/stage_0_5_b00_closure_20261027/software_validation.json",
    "historical_incident": "Not Accepted",
    "new_validation_scope_incident": "Not Accepted for admission; isolated replacement verification passed",
-   "B00_launches": 0
+   "B00_launches": 1,
+   "SUMO_simulation_processes": 1,
+   "real_TraCI_connections": 1,
+   "requested_duration_s": 420,
+   "full_duration_completed": false,
+   "measurement_accepted": false,
+   "result_id": "RES-STAGE-0.5-B00-NATIVE-V1",
+   "result_path": "evidence/results/RES-STAGE-0.5-B00-NATIVE-V1/execution_result.json",
+   "minimal_remaining_conflict": "Frozen i0007 speed15.23 at233.91m before downstream10m/s emits native Error; existing stop rule forbids continuation",
+   "scientific_conflict_status": "Awaiting Researcher Decision",
+   "candidate": "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v8-closure-20261027",
+   "proposal_sha256": "685f934a5bf12685ce600155b599fe808bb77bfce571d6894c319fceb389aa67",
+   "final_software_validation_path": "docs/audits/stage_0_5_b00_closure_20261027/post_execution_validation.json"
   }
  },
  "experiments": [
@@ -1006,7 +1019,8 @@
     "RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1",
     "RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1",
     "RES-STAGE-0.5-INTERACTION-RESEARCH-V2",
-    "RES-STAGE-0.5-V2-ADMISSION-ENGINEERING-V1"
+    "RES-STAGE-0.5-V2-ADMISSION-ENGINEERING-V1",
+    "RES-STAGE-0.5-B00-NATIVE-V1"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -4193,6 +4207,43 @@
     "accepted_for_new_task": false
    },
    "current_conclusion": "Software interfaces and selected historical measurements verified at their declared scope; native isolation Unknown/Not Accepted, actual insertion unknown. Scientific plan remains Proposed and execution disabled.",
+   "gate_status": "pending_simulation_sample",
+   "paper_locations": [
+    "docs/PAPER_AND_MATERIAL_SOURCES.md"
+   ],
+   "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-STAGE-0.5-B00-NATIVE-V1",
+   "experiment_id": "stage_0_5",
+   "name": "First real B00 attempt; verified frozen-input hard failure",
+   "status": "BLOCKED_BY_VERIFIED_HARD_FAILURE",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-B00-NATIVE-V1/execution_result.json",
+    "evidence/results/RES-STAGE-0.5-B00-NATIVE-V1/population_accounting.json",
+    "evidence/results/RES-STAGE-0.5-B00-NATIVE-V1/measurement_acceptance.json",
+    "evidence/results/RES-STAGE-0.5-B00-NATIVE-V1/scientific_conflict.json",
+    "evidence/results/RES-STAGE-0.5-B00-NATIVE-V1/ledger_snapshot.json",
+    "evidence/results/RES-STAGE-0.5-B00-NATIVE-V1/provenance.json",
+    "evidence/results/RES-STAGE-0.5-B00-NATIVE-V1/artifact_sha256.json",
+    "evidence/results/RES-STAGE-0.5-B00-NATIVE-V1/validation_record.json",
+    "evidence/results/RES-STAGE-0.5-B00-NATIVE-V1/SHA256SUMS"
+   ],
+   "local_artifact_paths": [
+    "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/V3_0750_B00_DS38_s20261201",
+    "code/outputs/formal/calibration/stage_0_5_b00_native_v1"
+   ],
+   "code_version_source": "provenance.json/source_sha256",
+   "configuration_source": "code/configs/stage_0_5_ready_to_admit_v3.json",
+   "data_version_source": "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v8-closure-20261027/proposal.json: exact unchanged v6 inputs/references",
+   "core_metrics": {
+    "B00_launches": 1,
+    "real_TraCI_connections": 1,
+    "requested_duration_s": 420,
+    "full_duration_completed": false,
+    "measurement_accepted": false
+   },
+   "current_conclusion": "One real first-step native error; incomplete outputs and unknown final identity counts; specific i0007 scientific conflict requires researcher decision.",
    "gate_status": "pending_simulation_sample",
    "paper_locations": [
     "docs/PAPER_AND_MATERIAL_SOURCES.md"

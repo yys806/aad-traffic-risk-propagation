@@ -1,9 +1,8 @@
 # AAD Data Flow
 
-## 2026-10-27 native observation closure
+## 2026-10-27 首次B00的实际证据流
 
-Native startup captures loaded IDs; every completed step requires valid collision vehicle-count observations. Rejected raw frames persist, and gaps cannot be erased by recovery. Sealed summary is checked stepwise against cumulative identity events, TripInfo departure/end states and FCD clocks; pending is explicit native evidence, never inferred from FCD absence. Sources: code/scripts/stage_0_5_identity_observation.py, stage_0_5_execution_v2.py, stage_0_5_native_capsule_v4.py and stage_0_5_acceptance_v3.py in code/scripts/.
-
+candidate-v8精确proposal→聊天委托授权→技术预检→ledger reserve/running→Linux隔离SUMO/TraCI→首步原生Error→封存interrupted_identity_summary及截断XML→ledger failed→独立失败验收与便携结果。不是完整测量链通过，末态计数不补零。完整原始产物留code/outputs；便携入口evidence/results/RES-STAGE-0.5-B00-NATIVE-V1/；旧链/失败/候选不覆盖。
 
 ## 2026-10-26 合成原生数据流Verified
 

@@ -1,5 +1,10 @@
 # AAD Confirmed Decisions
 
+## 2026-10-27 当前B00授权与具体科研冲突
+
+Agreed：当前用户任务授权必要工程修复后直接准入B00，不逐项重复审批；代理在实现/验证/最终SHA之后生成聊天来源绑定授权，无数字签名或独立身份认证主张。唯一实际启动已执行。Verified：冻结i0007出发15.23m/s、位置距main_1末端0.13m，下游10m/s，SUMO首步Error，现有规则立即停止。Status: Awaiting Researcher Decision，仅针对该初态/限速/停止语义冲突；不得擅改DS38范围、i0007、网络/seed/窗口或抑制原生错误。依据：evidence/results/RES-STAGE-0.5-B00-NATIVE-V1/scientific_conflict.json。旧Not Accepted保持。
+
+
 ## 2026-10-26 V3边界
 
 本轮授权工程闭环与不启动SUMO的验证，未授权执行。DS38/B00先行/后续四臂仍Proposed；90%匝道检查仍为候选，未设新科学容差。现有WSL启动探针被自动审批拒绝，需研究者明确环境操作授权后才能继续该子任务；不得绕道、安装组件或改系统权限。OS证据缺失是工程阻断，不是科研确认可翻旗解决。Gate和δ/h/B不变，历史偏差Not Accepted。

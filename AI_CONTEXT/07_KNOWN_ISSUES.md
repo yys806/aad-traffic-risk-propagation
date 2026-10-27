@@ -1,9 +1,8 @@
 # AAD Known Issues
 
-## 2026-10-27 B00 closure status
+## 2026-10-27 B00已真实启动：BLOCKED_BY_VERIFIED_HARD_FAILURE
 
-ENG-01/02/03 implementation and software/native integration Verified; actual B00 population and measurement support remain Unknown until this active task executes. Earlier primary-workspace full pytest scope is Not Accepted for admission (new incident record); task-wide retrospective zero validation-data access is not claimed. Historical POLICY-A-VALIDATION-SCOPE-01 remains Not Accepted. Aggregate discarded IDs cannot be guessed.
-
+Verified：ENG-01/02/03修复、无数据全量1361通过/16跳过/7原生排除、compileall、修复后3s原生集成及独立回执Pass；纯Git定向165通过。新candidate-v8及聊天来源授权、实时硬检查完成后已直接执行一次B00（版本/仿真/真实TraCI各1）。最终状态BLOCKED_BY_VERIFIED_HARD_FAILURE：首个simulationStep发生i0007_i0007 slow lane ahead原生Error；冻结输入为15.23m/s、位置233.91m，下游main_2限速10m/s，按既定停止规则终止，420s未完成。仅t=0初始身份快照有效，末态插入/pending/discarded及全程碰撞/teleport均Unknown；三XML截断，18格测量不验收。capsule退出1，SUMO退出码未成功观测；后代已清理且无残留PID。未重复相同失败。具体初态/下游限速/原生Error停止规则冲突需科研决定，不能伪装成工程修复。旧Not Accepted及Gate不变。依据：docs/STAGE_0_5_B00_CLOSURE_2026-10-27.md；evidence/results/RES-STAGE-0.5-B00-NATIVE-V1/。下方为历史时点。
 
 ## 2026-10-27 B00科研准入审查V1（高优先级未决）
 
@@ -25,7 +24,7 @@ ENG-01：technical_preflight_v4检查证书true而未检查研究policy accepted
 
 精确版本解析和新staging已准备，Linux1.26/TraCI22运行时已静态核验；r5当前生产smoke尚未授权/执行，无已验收生产回执。candidate-v5实际v4预检到达integration_not_accepted，不能报告工程Ready。后续需研究者对新proposal精确SHA一次性授权，且运行时/资源须届时复核；研究B00另需工程通过及科研确认。i0007/实际初始化/交互相容/历史隔离事故仍未解决，四false/硬锁/Gate不变。依据：`docs/STAGE_0_5_V4_PREPARATION_2026-10-26.md`；下方为历史时点。
 
-通用export_project_evidence重建manifest会漏三个独立扩展登记（depart-speed/V2 research/V2 admission）；本轮保留生成版本于code/tmp、恢复原manifest字节并verify通过，没有修改历史结果。导出器覆盖问题未在本任务修复，见同报告。
+Historical（本任务已补齐映射，旧快照哈希不变）：通用export_project_evidence重建manifest曾漏三个独立扩展登记（depart-speed/V2 research/V2 admission）；本轮保留生成版本于code/tmp、恢复原manifest字节并verify通过，没有修改历史结果。导出器覆盖问题未在本任务修复，见同报告。
 
 ## 2026-10-26 WSL解阻后阻断（最新）
 
