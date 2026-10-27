@@ -198,3 +198,13 @@ B0入口：`docs/STAGE_0_5_TASK_0_5_4B0_EXPLORATORY_RESPONSE_DIAGNOSTICS.md`、`
 报告 `docs/STAGE_0_5_LOCAL_FOLLOWING_PROTOCOL_DESIGN.md`；计划 `docs/plans/2026-10-20-lf-protocol-consolidation.md`；证据 `evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/`。
 
 Stage 0.5 真实交通重建与条件场景诊断（AAD-0.5-TR-RECON）：报告 `docs/STAGE_0_5_TRAJECTORY_RECONSTRUCTION.md`、`docs/STAGE_0_5_SUMO_SCENE_RECONSTRUCTION.md`；计划 `docs/plans/2026-10-21-stage-0-5-trajectory-reconstruction.md`；结果 `RES-STAGE-0.5-TRAJECTORY-RECONSTRUCTION-V1`；入口 `code/scripts/run_stage_0_5_trajectory_reconstruction.py`、`code/scripts/run_stage_0_5_scene_reconstruction.py`；模块 `code/src/riskprop/stage_0_5_trajectory_reconstruction.py`、`code/src/riskprop/stage_0_5_scene_reconstruction.py`；旁证配置 `code/configs/stage_0_5_ngsim_official_reference_v1.json`；测试 `code/tests/test_stage_0_5_trajectory_reconstruction.py`、`code/tests/test_stage_0_5_scene_reconstruction.py`。只读重建 + 运行前冻结的 3 项条件诊断；状态支持仍 Evidence Insufficient，Gate 保持 `pending_simulation_sample`。
+
+## Stage 0.5-R1 当前执行入口
+
+- 任务报告：`docs/STAGE_0_5_R1_EXECUTION_2026-10-28.md`
+- R1 证据：`evidence/results/RES-STAGE-0.5-R1-DIAGNOSTICS-20261028/`
+- 原始本地输出：`code/outputs/formal/calibration/stage_0_5_r1_diagnostics_20261028/`
+- 准备/执行：`code/scripts/prepare_stage_0_5_r1_execution.py`
+- 统一测量：`code/scripts/analyze_stage_0_5_r1.py`
+- 证据收口：`code/scripts/finalize_stage_0_5_r1_evidence.py`
+- 状态：三臂各一次有效运行；源 P2=0；R2 case A；Stage 0.5 Gate blocked；Stage 0.6 pending scientific tolerances/dynamic calibration；Stage I blocked until Protocol Lock。

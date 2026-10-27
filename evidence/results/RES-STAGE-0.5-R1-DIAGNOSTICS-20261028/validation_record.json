@@ -1,0 +1,30 @@
+{
+  "schema": "aad.r1.validation-record.v1",
+  "status": "Completed with environment-scoped full-suite blockers",
+  "native_runs": {
+    "B10": 1,
+    "B01": 1,
+    "B11": 1
+  },
+  "correction_runs": {
+    "B10": 0,
+    "B01": 0,
+    "B11": 0
+  },
+  "scientific_repeats": {
+    "B10": 1,
+    "B01": 1,
+    "B11": 1
+  },
+  "raw_failures_preserved": true,
+  "checks": {
+    "project_docs_strict_git": "Pass",
+    "portable_evidence_verify": "Pass",
+    "project_docs_pytest": "13 passed",
+    "source_compile": "224 Python files compile() without writing pyc",
+    "r1_unified_measurement": "B00/B10/B01/B11 completed; source P2 0 in all R1 arms",
+    "full_pytest_windows": "1390 passed, 35 failed, 4 skipped; failures are pre-existing dependency/environment scope (pyarrow absent in Windows Python; Parquet-dependent tests)",
+    "full_pytest_wsl": "collection blocked by environment-only missing PIL/matplotlib/pypdf; 9 collection errors before test execution",
+    "native_receipts": "B10/B01/B11 independent verify_receipt Pass"
+  }
+}

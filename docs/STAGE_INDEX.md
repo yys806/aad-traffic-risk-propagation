@@ -298,3 +298,7 @@ Stage0.5新增RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2（B1.2前置工程阻断）�
 结果 `RES-STAGE-0.5-METHOD-EXPANSION-V1`。覆盖与可辨识性：5,815 段 / 186,529 s，各行为阶段均存在（稳定 40%/52%、低速 9%/25%、贴近 18%/32%），H1 大部分被反驳；`tau` 与 `minGap` 效应高度相关（r=−0.94/+0.82）不可分别辨识。初始化：更正上一任务「插入被拒绝」的误判（实为延迟插入），验证两条原生路线并用控制实验证明 `insertion-checks=none` 不改变后续动力学。响应诊断：324 次独立运行（12 对 × 9 配置 × 3 共同 seed，0 失败）——`tau` 单调有害（+18.3/+40.7/+72.5 pp，三 seed 同号）、`minGap`↓与 `sigma=0` 改善、IDM(T=1.0) 最佳（−5.5 pp，增益在长期窗）、Newell 原型同量级。宏观阶段门控未开，未执行。Gate 保持 `pending_simulation_sample`。
 
 报告 `docs/STAGE_0_5_METHOD_EXPANSION_SUMMARY.md` 等四份；文献 `doc/literature-notes/STAGE_0_5_METHOD_EVIDENCE_MAP.md`（18 条 + 方法状态矩阵）；证据同结果 ID 目录。
+
+## 2026-10-28 Stage 0.5-R1 三臂诊断执行
+
+R1 已按确认设计完成 B10（主线速度脉冲）、B01（匝道供给脉冲）、B11（严格组合）各一次。固定 `US-101 0750`、seed `20261201`、420 s、0.05/0.1 s、`[120,390)`、`S_UPSTREAM_MAIN`、`C_INPUT_ROUTE` 均绑定并通过独立回执。三臂源 P2 均 0，D1 暴露分别 13667.8/9865.1/13553.6 veh-s；按停止规则不追加搜索。Gate blocked，Stage0.6/StageI状态不变。报告和证据见 `docs/STAGE_0_5_R1_EXECUTION_2026-10-28.md` 与 `RES-STAGE-0.5-R1-DIAGNOSTICS-20261028`。

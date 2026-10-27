@@ -392,3 +392,7 @@ B1.2前置接入工程阻断，主矩阵未冻结/未运行；报告`docs/STAGE_
 ## RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1
 
 政策A共同支持、输入与资源预检；18/18单元各两条件，0次新轨迹。最终计划 `docs/plans/2026-10-25-stage-0-5-interaction-diagnostics-policy-a-final.md` 待确认；证据 `evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/`。POLICY-A-VALIDATION-SCOPE-01：任务级数据隔离不 Accepted，执行阻断，须研究者裁决；软件检查通过不能消除此偏差。
+
+## RES-STAGE-0.5-R1-DIAGNOSTICS-20261028
+
+Stage 0.5-R1 三臂诊断已完成：B10、B01、B11 各一次 420 s / 8400 步有效原生运行；B00 A03 未重跑，仅复用接受证据。三臂独立回执与统一 D1/P2 测量通过；源区正式 P2 均 0，目标 D1 暴露为 B10 13667.8、B01 9865.1、B11 13553.6 veh-s。R2 为情况 A，Stage 0.5 Gate 继续 blocked。报告 `docs/STAGE_0_5_R1_EXECUTION_2026-10-28.md`；便携证据 `evidence/results/RES-STAGE-0.5-R1-DIAGNOSTICS-20261028/`；原始输出 `code/outputs/formal/calibration/stage_0_5_r1_diagnostics_20261028/`。

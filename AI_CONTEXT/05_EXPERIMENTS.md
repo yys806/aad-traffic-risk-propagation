@@ -287,3 +287,11 @@ RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2：B1.2前置阻断；v1冻结零尝试后�
 - 状态：`closed_level2_partial_plus_level3_unidentifiable`。
 - 客观实验结果：`tau` 配对恶化 +18.31/+40.70/+72.51 pp（1.3/1.6/2.0），三 seed 同号；`minGap`→1.0 −7.31、→5.0 +29.75；`sigma=0` −6.34；IDM(T=1.0) −5.52（长期窗 −8.09、局部窗 −0.09）；IDM(T=1.6) +26.50；Newell 原型 50.94/85.42%。`tau` 与 `minGap` 效应 r=−0.944/+0.818；seed 波动中位 2.35 pp，信号/噪声 13.5。
 - 输出目录：`code/outputs/formal/calibration/stage_0_5_method_expansion_v1/`；证据 `evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/`。
+
+## 2026-10-28 Stage 0.5-R1 三臂诊断执行（Verified）
+
+任务 `AAD-S0.5-R1-EXECUTE-20261028` 已完成一次 B10、一次 B01、一次 B11 原生 SUMO 运行；B00 A03 `WEEK_0750_B00_IC1_s20261201_A03` 只复用既有接受证据，未重跑。三臂均为 420 s / 8400 步、SUMO 1.26.0 / TraCI 22、独立工程回执 Pass、统一离线测量完成。B10 五条 `main_2` lane 的 180/240 s 限速设置和回读通过；B01 60 辆匝道车辆全体生命周期保留，原始块计数 `9/8/9/8/9/9/8` 保持；B11 为严格组合。
+
+观测：B10/B01/B11 源区正式 P2 均为 0，目标区正式 P2 均为 0；目标可靠 D1 暴露分别为 13667.8、9865.1、13553.6 veh-s。全体声明车辆均为 1150，实际插入 955/1009/956，pending 195/141/194，discarded/collision/teleport 均为 0。R1 `C_INPUT_ROUTE` 精确 cohort=1112（79 初态、1033 非初态），ID 哈希 `76db89e2ff2d9df997516b59a23bc4d88a85c7a0161dca6a222f2a8bfee277f8`。
+
+R2 结论：情况 A，三臂均未获得合格源事件；按停止规则不追加 seed/intensity/search。Stage 0.5 Gate 继续 blocked，Stage 0.6 仍 pending scientific tolerances/dynamic calibration，Stage I 仍 blocked until Protocol Lock。没有生成 Protocol Lock、没有访问 locked holdout。完整证据：`docs/STAGE_0_5_R1_EXECUTION_2026-10-28.md`、`evidence/results/RES-STAGE-0.5-R1-DIAGNOSTICS-20261028/`；原始输出在 `code/outputs/formal/calibration/stage_0_5_r1_diagnostics_20261028/`。

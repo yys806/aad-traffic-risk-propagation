@@ -438,3 +438,7 @@ B1.2-P收口：纯Git全量741 passed/14 skipped/0 failed；严格文档/compile
 Zotero 新增 3 条、集合 07/08/09 = 10/2/1；方法索引 18 条 + 状态矩阵；新增 Zotero 整理清单并记录附件上传失败。`export_project_evidence.py` 增补映射与白名单。
 
 同步更新：`00_PROJECT_STATE.md`、`03_DATA_FLOW.md`（未改，本次无新数据流）、`04_MODULE_MAP.md`、`05_EXPERIMENTS.md`、`07_KNOWN_ISSUES.md`、`docs/RESULTS_INDEX.md`、`docs/STAGE_INDEX.md`、`docs/CHANGELOG.md`、`docs/PROJECT_REGISTRY.json`、`doc/literature-notes/*`。
+
+## 2026-10-28 R1 execution and measurement closure
+
+新增 `prepare_stage_0_5_r1_execution.py`、`analyze_stage_0_5_r1.py`、`finalize_stage_0_5_r1_evidence.py`，完成独立 B10/B01/B11 capsule、policy、envelope、原生运行、独立 receipt、统一 D1/P2 测量和 R2 审查。R1 便携证据为 `RES-STAGE-0.5-R1-DIAGNOSTICS-20261028`，报告为 `docs/STAGE_0_5_R1_EXECUTION_2026-10-28.md`。两次准备期字典序列化错误已保留在 preparation-failed 目录，未产生 SUMO/TraCI；修复后正式执行一次/臂成功。没有算法、P2、cohort、seed、窗口或 Gate 语义改变。

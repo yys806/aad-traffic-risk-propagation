@@ -1,0 +1,37 @@
+{
+  "schema": "aad.r1.physical-path-audit.v1",
+  "task_id": "AAD-S0.5-R1-EXECUTE-20261028",
+  "rule": [
+    "identity continuity",
+    "<=0.11 s state continuity",
+    "verified native road/lane connection",
+    "leader-follower influence edge"
+  ],
+  "arms": {
+    "B00": {
+      "status": "uncertain_or_unobservable",
+      "source_event_count": 0,
+      "event_specific_physical_arrival_times": null,
+      "missing_support_is_uncertain": true
+    },
+    "B10": {
+      "status": "uncertain_or_unobservable",
+      "source_event_count": 0,
+      "event_specific_physical_arrival_times": null,
+      "missing_support_is_uncertain": true
+    },
+    "B01": {
+      "status": "uncertain_or_unobservable",
+      "source_event_count": 0,
+      "event_specific_physical_arrival_times": null,
+      "missing_support_is_uncertain": true
+    },
+    "B11": {
+      "status": "uncertain_or_unobservable",
+      "source_event_count": 0,
+      "event_specific_physical_arrival_times": null,
+      "missing_support_is_uncertain": true
+    }
+  },
+  "conclusion": "No event-specific physical arrival time is generated because no source event exists. This is not proof of physical unreachability."
+}

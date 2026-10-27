@@ -1,0 +1,55 @@
+{
+  "schema": "aad.r1.r2-gate-review.v1",
+  "task_id": "AAD-S0.5-R1-EXECUTE-20261028",
+  "review_layers": [
+    "basic_kinematics",
+    "following_interaction",
+    "risk_observability",
+    "formal_P2_and_reliable_exposure",
+    "state_and_sample_support"
+  ],
+  "source_event_case": "A",
+  "source_event_case_definition": "B10, B01 and B11 all lack qualified source P2 events",
+  "arm_status": {
+    "B00": {
+      "starts": 0,
+      "valid_runs": 1,
+      "P2_events": 0,
+      "source_P2_events": 0,
+      "D1_E_veh_s": 9778.4
+    },
+    "B10": {
+      "starts": 1,
+      "valid_runs": 1,
+      "P2_events": 0,
+      "source_P2_events": 0,
+      "D1_E_veh_s": 13667.800000000001
+    },
+    "B01": {
+      "starts": 1,
+      "valid_runs": 1,
+      "P2_events": 0,
+      "source_P2_events": 0,
+      "D1_E_veh_s": 9865.1
+    },
+    "B11": {
+      "starts": 1,
+      "valid_runs": 1,
+      "P2_events": 0,
+      "source_P2_events": 0,
+      "D1_E_veh_s": 13553.6
+    }
+  },
+  "conclusions": [
+    "All three R1 diagnostic arms completed and produced complete engineering/measurement evidence.",
+    "No qualified source P2 support was observed under the frozen formal rule and S_UPSTREAM_MAIN attribution.",
+    "Missing path support is retained as uncertain; no event-specific physical arrival was fabricated.",
+    "Observed traffic/lifecycle differences are diagnostics, not causal effect evidence."
+  ],
+  "stage_0_5_gate": "blocked",
+  "stage_0_6_status": "pending_scientific_tolerances_and_dynamic_calibration",
+  "stage_1_status": "blocked_until_protocol_lock",
+  "protocol_lock_generated": false,
+  "stop_rule": "Stop after the three one-run arms; no seed/intensity search or additional SUMO run authorized by this task.",
+  "M3_interaction_incompatibility": "Historical M3 evidence remains unchanged; R1 does not resolve the structural interaction-support limitation."
+}

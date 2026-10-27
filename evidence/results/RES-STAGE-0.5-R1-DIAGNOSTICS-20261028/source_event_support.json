@@ -1,0 +1,63 @@
+{
+  "schema": "aad.r1.source-event-support.v1",
+  "task_id": "AAD-S0.5-R1-EXECUTE-20261028",
+  "rule": {
+    "ttc_strictly_below_s": 2.0,
+    "minimum_observed_span_s": 0.2,
+    "maximum_allowed_gap_s": 0.11,
+    "confirmation": "first observed qualifying timestamp"
+  },
+  "region": {
+    "id": "S_UPSTREAM_MAIN",
+    "edges": [
+      "main_0"
+    ],
+    "lanes": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "y_m": [
+      0,
+      150
+    ],
+    "window_s": [
+      120,
+      390
+    ]
+  },
+  "arms": {
+    "B00": {
+      "source_P2_events": 0,
+      "events": [],
+      "incomplete_candidates": [],
+      "D1_E_veh_s": 8457.4,
+      "reliable_D1_E_veh_s": 8457.4
+    },
+    "B10": {
+      "source_P2_events": 0,
+      "events": [],
+      "incomplete_candidates": [],
+      "D1_E_veh_s": 10278.800000000001,
+      "reliable_D1_E_veh_s": 10278.800000000001
+    },
+    "B01": {
+      "source_P2_events": 0,
+      "events": [],
+      "incomplete_candidates": [],
+      "D1_E_veh_s": 8350.1,
+      "reliable_D1_E_veh_s": 8350.1
+    },
+    "B11": {
+      "source_P2_events": 0,
+      "events": [],
+      "incomplete_candidates": [],
+      "D1_E_veh_s": 10353.900000000001,
+      "reliable_D1_E_veh_s": 10353.900000000001
+    }
+  },
+  "conclusion": "No qualified source P2 event was observed in B10, B01 or B11; B00 A03 also has zero.",
+  "status": "NO_QUALIFIED_SOURCE_EVENT_SUPPORT"
+}

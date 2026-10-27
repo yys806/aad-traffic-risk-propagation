@@ -1,6 +1,6 @@
 {
  "schema_version": "aad.project-registry.v2",
- "last_verified": "2026-10-27",
+ "last_verified": "2026-10-28",
  "project": {
   "name": "AAD",
   "research_topic": "Connected-vehicle communication adoption and traffic-risk propagation",
@@ -316,10 +316,11 @@
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-S0.5-R0-20261028: offline design packet ready for review; R1 not executed",
+  "active_task": "AAD-S0.5-R1-EXECUTE-20261028: three-arm diagnostics completed; R2 source-event review case A; Stage 0.5 blocked",
   "why_now": "Prepare only Stage0.5-R0 offline design-freeze candidates from accepted A03 full context; explicit source/target/cohort/control decisions await researcher. R1 unexecuted; Stage0.6/StageI unchanged; no new simulation or Protocol Lock.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
+   "evidence/results/RES-STAGE-0.5-R1-DIAGNOSTICS-20261028/r2_gate_review.json",
    "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",
    "evidence/results/RES-PROTOCOL-READINESS-V1/protocol_lock_readiness_v1.json",
    "evidence/results/RES-STAGE-0.3-BOUNDARY-REPAIR-R2/audit.json",
@@ -345,6 +346,7 @@
    "evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/protocol_lock_readiness.json"
   ],
   "local_gate_paths": [
+   "code/outputs/formal/calibration/stage_0_5_r1_diagnostics_20261028",
    "code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r4/scientific_gate_report.json",
    "code/outputs/formal/calibration/stage_0_3_scientific_acceptance_20261016_r3/scientific_gate_report.json",
    "code/outputs/formal/calibration/stage_0_5_real_reference_r2/audit.json",
@@ -695,9 +697,9 @@
    "name": "阶段 0.5 仿真—现实覆盖",
    "purpose": "组合 NGSIM 跟驰风险参考和 pNEUMA 城市运动学参考，检查无消息作用的 SUMO 样本是否落在现实范围。",
    "research_question": "SUMO 基础运动与跟驰风险是否明显脱离真实交通范围？",
-   "date": "2026-09-07",
-   "status": "active_measurement_accepted_interaction_blocked",
-   "code_version": "canonical real reference R2, independent Stage 0.5.3 no-message SUMO engineering skeleton, and the Stage 0.5.4-A measurement-equivalence/calibration-readiness audit; no scientific calibration and no frozen scientific parameter; B0 bounded exploration with explicit ballistic and guarded batch inputs; no formal calibration; B1 capsule -S whitelist/stop supervisor with fixed-behaviour boundary mechanisms (closed early); B1.2 independent layered numerical/queue integration blocked before main matrix; B1.2-N restricted source-qualified near-zero contract;3 micro probes closed at missing positive-snap runtime coverage, C/D not admitted; B1.2-P positive-only native braking probes with independent seven-link admission; no integration/main command; AAD-0.5-FINAL-CLOSURE adds approved-D1 local attribution (stage_0_5_final_closure.py), the independent reference/candidate capsule runners with a finite process-tree supervisor, and the portable assembler/verifier; Stage 0.2 event core unchanged; AAD-0.5-TR-RECON adds the read-only real-traffic reconstruction module (lane geometry, boundary flows, conservation, space-time surfaces, jam-wave localisation, fundamental diagram, official NGSIM cross-check) and the conditional observed-geometry SUMO scene module with real-initial-state injection and native FCD recording",
+   "date": "2026-10-28",
+   "status": "r1_completed_r2_case_a_gate_blocked",
+   "code_version": "current main 33c3f31 plus R1 scripts",
    "code_paths": [
     "code/src/riskprop/simulation_real_coverage.py",
     "code/src/riskprop/stage_0_5_sumo.py",
@@ -788,7 +790,10 @@
     "code/scripts/package_aad_week_results_v1.py",
     "code/scripts/prepare_stage_0_5_initial_speed_v1.py",
     "code/scripts/assess_stage_0_5_existing_capsule_v1.py",
-    "code/scripts/prepare_stage_0_5_r0_design_packet.py"
+    "code/scripts/prepare_stage_0_5_r0_design_packet.py",
+    "code/scripts/prepare_stage_0_5_r1_execution.py",
+    "code/scripts/analyze_stage_0_5_r1.py",
+    "code/scripts/finalize_stage_0_5_r1_evidence.py"
    ],
    "entrypoints": [
     "code/scripts/prepare_stage_0_5_real_reference.py",
@@ -847,7 +852,8 @@
     "code/scripts/package_aad_week_results_v1.py",
     "code/scripts/prepare_stage_0_5_initial_speed_v1.py",
     "code/scripts/assess_stage_0_5_existing_capsule_v1.py",
-    "code/scripts/prepare_stage_0_5_r0_design_packet.py"
+    "code/scripts/prepare_stage_0_5_r0_design_packet.py",
+    "docs/STAGE_0_5_R1_EXECUTION_2026-10-28.md"
    ],
    "test_paths": [
     "code/tests/test_simulation_real_coverage.py",
@@ -1098,7 +1104,8 @@
     "RES-STAGE-0.5-V2-ADMISSION-ENGINEERING-V1",
     "RES-STAGE-0.5-B00-NATIVE-V1",
     "RES-AAD-WEEK-20261027-V1",
-    "RES-STAGE-0.5-R0-DESIGN-PACKET-20261028"
+    "RES-STAGE-0.5-R0-DESIGN-PACKET-20261028",
+    "RES-STAGE-0.5-R1-DIAGNOSTICS-20261028"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -1213,10 +1220,10 @@
     "third_window_rows_materialised",
     "zotero_items_added"
    ],
-   "current_conclusion": "A03 complete420s/8400steps; eight evidence checks/18support pass;1005inserted145pending0discard/collision/teleport; localP2=0 blocks source-triggered confirmatory effects. Historical Not Accepted unchanged.",
+   "current_conclusion": "B10/B01/B11 each completed one valid 420 s run; all three lacked qualified source P2; stop rule applied; Gate remains blocked",
    "gate": {
     "status": "blocked",
-    "portable_path": "evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/stage_0_5_gate.json"
+    "portable_path": "evidence/results/RES-STAGE-0.5-R1-DIAGNOSTICS-20261028/r2_gate_review.json"
    },
    "scientific_claim_eligible": false
   },
@@ -4453,6 +4460,52 @@
    "scientific_claim_eligible": false,
    "paper_locations": [
     "docs/plans/2026-10-28-stage-0-5-r0-design-freeze.md"
+   ]
+  },
+  {
+   "id": "RES-STAGE-0.5-R1-DIAGNOSTICS-20261028",
+   "experiment_id": "stage_0_5",
+   "name": "Stage 0.5-R1 three-arm supply-ramp diagnostics",
+   "status": "COMPLETED_DIAGNOSTICS_GATE_BLOCKED",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-R1-DIAGNOSTICS-20261028/r1_design_freeze.json",
+    "evidence/results/RES-STAGE-0.5-R1-DIAGNOSTICS-20261028/run_admission_B10.json",
+    "evidence/results/RES-STAGE-0.5-R1-DIAGNOSTICS-20261028/run_admission_B01.json",
+    "evidence/results/RES-STAGE-0.5-R1-DIAGNOSTICS-20261028/run_admission_B11.json",
+    "evidence/results/RES-STAGE-0.5-R1-DIAGNOSTICS-20261028/measurement_acceptance.json",
+    "evidence/results/RES-STAGE-0.5-R1-DIAGNOSTICS-20261028/arm_comparison.json",
+    "evidence/results/RES-STAGE-0.5-R1-DIAGNOSTICS-20261028/source_event_support.json",
+    "evidence/results/RES-STAGE-0.5-R1-DIAGNOSTICS-20261028/physical_path_audit.json",
+    "evidence/results/RES-STAGE-0.5-R1-DIAGNOSTICS-20261028/r2_gate_review.json",
+    "evidence/results/RES-STAGE-0.5-R1-DIAGNOSTICS-20261028/manifest.json",
+    "evidence/results/RES-STAGE-0.5-R1-DIAGNOSTICS-20261028/SHA256SUMS",
+    "evidence/results/RES-STAGE-0.5-R1-DIAGNOSTICS-20261028/validation_record.json"
+   ],
+   "local_artifact_paths": [
+    "code/outputs/formal/calibration/stage_0_5_r1_diagnostics_20261028"
+   ],
+   "code_version_source": "R1 proposal controller source hashes and runtime manifest; current Git HEAD 33c3f31",
+   "configuration_source": "r1_design_freeze.json and per-arm proposals/envelopes",
+   "data_version_source": "raw capsule outputs in local artifact path, portable SHA256 bindings; no holdout",
+   "core_metrics": {
+    "B10_starts": 1,
+    "B01_starts": 1,
+    "B11_starts": 1,
+    "B10_valid_runs": 1,
+    "B01_valid_runs": 1,
+    "B11_valid_runs": 1,
+    "source_P2_B10": 0,
+    "source_P2_B01": 0,
+    "source_P2_B11": 0,
+    "D1_B10_veh_s": 13667.8,
+    "D1_B01_veh_s": 9865.1,
+    "D1_B11_veh_s": 13553.6
+   },
+   "current_conclusion": "All three diagnostic arms completed with complete engineering/measurement evidence; no qualified source P2 support; R2 case A stop rule applied",
+   "gate_status": "blocked",
+   "scientific_claim_eligible": false,
+   "paper_locations": [
+    "docs/STAGE_0_5_R1_EXECUTION_2026-10-28.md"
    ]
   }
  ],

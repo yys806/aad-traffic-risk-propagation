@@ -267,3 +267,7 @@ B1.2（RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2）工程接入阻断：10047精确�
 按冻结失败分支停止：不追加第 3 次构造（单次变更边界无法覆盖两个目标条件）、不动用保留的 2 次独立 seed 重复、不访问第三窗口。五层必要条件合取 = **Evidence Insufficient**（阻断层 1/2/5，层 3 Engineering Consistent，层 4 Measurement Closed）。δ 与 h 的独立依据审计结论为"无依据"，保持 Awaiting Researcher Decision，未编造数值；集中决策包 R1–R5 一次性提交。
 
 Gate 保持 `pending_simulation_sample`；`scientific_claim_eligible=false`、`ready_to_start_stage_0_5_4b=false`、`reality_coverage_accepted=false`、`protocol_lock_allowed=false`、`stage_1_1_allowed=false`；容差 `Tolerance Not Yet Justified`；ED real-real 上界 `Not Identifiable`；C 完整入口回溢 `Evidence Insufficient`。新增 2 次轨迹运行（累计 5/8，剩 3），4 次空网软件冒烟单独登记。报告 `docs/STAGE_0_5_FINAL_CLOSURE_2026-10-20.md`；证据 `evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/`。
+
+## 2026-10-28 Stage 0.5-R1 执行收口
+
+Verified：B10、B01、B11 各一次完整原生 SUMO 运行，均通过工程回执与统一离线测量；B00 A03 未重跑。Observation：三臂源区正式 P2 均为 0，目标 D1 暴露为 13667.8、9865.1、13553.6 veh-s；车辆生命周期、实际匝道插入和 B10 lane 控制回读均有逐臂证据。Interpretation：操纵确实执行且交通状态变化可观测，但没有源事件支持，不能形成事件特定物理路径或效应结论。Blocked：R2 case A，Stage 0.5 Gate 继续 blocked；Stage 0.6 与 Stage I 保持原状态，不追加 seed/intensity/search。
