@@ -1,0 +1,718 @@
+{
+  "schema": "aad.r0.baseline-binding.v1",
+  "status": "Verified",
+  "task_id": "AAD-S0.5-R0-20261028",
+  "repository_entry_commit": "4a7c204ba6e83296f6fd657cfe4ce82b35a5ec07",
+  "origin_main_at_entry": "4a7c204ba6e83296f6fd657cfe4ce82b35a5ec07",
+  "native_execution_base_commit": "e38f5240a6542ceb12ec7325a59899dd834132be",
+  "native_execution_dirty_source_semantics": "Explicit source bindings below; base commit alone is not claimed as executed source",
+  "source_roadmap": {
+    "path": "D:/shen/OB/科研/TJU/AAD/AAD/Stage0后续路线.md",
+    "sha256": "d54a6d47225e698acebb1ad4920e0314f35e5b36a1024ef4911540e10a775dc3"
+  },
+  "run_id": "WEEK_0750_B00_IC1_s20261201_A03",
+  "scene_id": "US-101 0750",
+  "condition": "us101__0750_0805",
+  "seed": 20261201,
+  "duration_s": 420,
+  "internal_step_s": 0.05,
+  "recording_step_s": 0.1,
+  "evaluation_window_s": [
+    120,
+    390
+  ],
+  "input_files": {
+    "network.net.xml": "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v2/inputs/network.net.xml",
+    "routes.rou.xml": "evidence/admission/AAD-WEEK-2026-10-27-TO-STAGE-I-V1/candidate-v1/routes.rou.xml",
+    "run.sumocfg": "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v2/inputs/run.sumocfg"
+  },
+  "input_sha256": {
+    "network.net.xml": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+    "routes.rou.xml": "b6df8d9ce52b56fac50899cc2e6d1329c7858325aae0f0c86c76d77f796a7574",
+    "run.sumocfg": "c55b242f09b6a86527852bf686f06f3347abc44aa1c16c199c51935ce93dc6c6"
+  },
+  "actual_config": {
+    "net-file": {
+      "value": "network.net.xml"
+    },
+    "route-files": {
+      "value": "routes.rou.xml"
+    },
+    "begin": {
+      "value": "0"
+    },
+    "end": {
+      "value": "420.0"
+    },
+    "step-length": {
+      "value": "0.05"
+    },
+    "step-method.ballistic": {
+      "value": "true"
+    },
+    "threads": {
+      "value": "1"
+    },
+    "time-to-teleport": {
+      "value": "-1"
+    },
+    "collision.action": {
+      "value": "warn"
+    },
+    "fcd-output": {
+      "value": "fcd.xml"
+    },
+    "device.fcd.period": {
+      "value": "0.1"
+    },
+    "summary-output": {
+      "value": "summary.xml"
+    },
+    "tripinfo-output": {
+      "value": "tripinfo.xml"
+    },
+    "tripinfo-output.write-unfinished": {
+      "value": "true"
+    },
+    "tripinfo-output.write-undeparted": {
+      "value": "true"
+    },
+    "seed": {
+      "value": "20261201"
+    }
+  },
+  "network_edges": [
+    {
+      "id": "main_0",
+      "from": "hwy_w",
+      "to": "hwy_m1",
+      "priority": "2",
+      "lanes": [
+        {
+          "id": "main_0_0",
+          "index": "0",
+          "speed": "27.78",
+          "length": "172.90",
+          "shape": "0.00,145.60 172.90,145.60"
+        },
+        {
+          "id": "main_0_1",
+          "index": "1",
+          "speed": "27.78",
+          "length": "172.90",
+          "shape": "0.00,148.80 172.90,148.80"
+        },
+        {
+          "id": "main_0_2",
+          "index": "2",
+          "speed": "27.78",
+          "length": "172.90",
+          "shape": "0.00,152.00 172.90,152.00"
+        },
+        {
+          "id": "main_0_3",
+          "index": "3",
+          "speed": "27.78",
+          "length": "172.90",
+          "shape": "0.00,155.20 172.90,155.20"
+        },
+        {
+          "id": "main_0_4",
+          "index": "4",
+          "speed": "27.78",
+          "length": "172.90",
+          "shape": "0.00,158.40 172.90,158.40"
+        }
+      ]
+    },
+    {
+      "id": "main_1",
+      "from": "hwy_m1",
+      "to": "hwy_m2",
+      "priority": "2",
+      "lanes": [
+        {
+          "id": "main_1_0",
+          "index": "0",
+          "speed": "27.78",
+          "length": "234.04",
+          "acceleration": "1",
+          "shape": "178.29,142.40 412.33,142.40"
+        },
+        {
+          "id": "main_1_1",
+          "index": "1",
+          "speed": "27.78",
+          "length": "234.04",
+          "shape": "178.29,145.60 412.33,145.60"
+        },
+        {
+          "id": "main_1_2",
+          "index": "2",
+          "speed": "27.78",
+          "length": "234.04",
+          "shape": "178.29,148.80 412.33,148.80"
+        },
+        {
+          "id": "main_1_3",
+          "index": "3",
+          "speed": "27.78",
+          "length": "234.04",
+          "shape": "178.29,152.00 412.33,152.00"
+        },
+        {
+          "id": "main_1_4",
+          "index": "4",
+          "speed": "27.78",
+          "length": "234.04",
+          "shape": "178.29,155.20 412.33,155.20"
+        },
+        {
+          "id": "main_1_5",
+          "index": "5",
+          "speed": "27.78",
+          "length": "234.04",
+          "shape": "178.29,158.40 412.33,158.40"
+        }
+      ]
+    },
+    {
+      "id": "main_2",
+      "from": "hwy_m2",
+      "to": "hwy_e",
+      "priority": "2",
+      "lanes": [
+        {
+          "id": "main_2_0",
+          "index": "0",
+          "speed": "10.00",
+          "length": "252.23",
+          "shape": "416.95,145.60 669.18,145.60"
+        },
+        {
+          "id": "main_2_1",
+          "index": "1",
+          "speed": "10.00",
+          "length": "252.23",
+          "shape": "416.95,148.80 669.18,148.80"
+        },
+        {
+          "id": "main_2_2",
+          "index": "2",
+          "speed": "10.00",
+          "length": "252.23",
+          "shape": "416.95,152.00 669.18,152.00"
+        },
+        {
+          "id": "main_2_3",
+          "index": "3",
+          "speed": "10.00",
+          "length": "252.23",
+          "shape": "416.95,155.20 669.18,155.20"
+        },
+        {
+          "id": "main_2_4",
+          "index": "4",
+          "speed": "10.00",
+          "length": "252.23",
+          "shape": "416.95,158.40 669.18,158.40"
+        }
+      ]
+    },
+    {
+      "id": "offramp",
+      "from": "hwy_m2",
+      "to": "hwy_off",
+      "priority": "1",
+      "lanes": [
+        {
+          "id": "offramp_0",
+          "index": "0",
+          "speed": "13.89",
+          "length": "201.17",
+          "shape": "416.28,140.77 558.87,-1.13"
+        }
+      ]
+    },
+    {
+      "id": "onramp",
+      "from": "hwy_on",
+      "to": "hwy_m1",
+      "priority": "1",
+      "lanes": [
+        {
+          "id": "onramp_0",
+          "index": "0",
+          "speed": "13.89",
+          "length": "180.71",
+          "shape": "61.25,-1.00 173.91,140.29"
+        }
+      ]
+    }
+  ],
+  "network_connections": [
+    {
+      "from": "main_0",
+      "to": "main_1",
+      "fromLane": "0",
+      "toLane": "1",
+      "via": ":hwy_m1_1_0",
+      "dir": "s",
+      "state": "M"
+    },
+    {
+      "from": "main_0",
+      "to": "main_1",
+      "fromLane": "1",
+      "toLane": "2",
+      "via": ":hwy_m1_1_1",
+      "dir": "s",
+      "state": "M"
+    },
+    {
+      "from": "main_0",
+      "to": "main_1",
+      "fromLane": "2",
+      "toLane": "3",
+      "via": ":hwy_m1_1_2",
+      "dir": "s",
+      "state": "M"
+    },
+    {
+      "from": "main_0",
+      "to": "main_1",
+      "fromLane": "3",
+      "toLane": "4",
+      "via": ":hwy_m1_1_3",
+      "dir": "s",
+      "state": "M"
+    },
+    {
+      "from": "main_0",
+      "to": "main_1",
+      "fromLane": "4",
+      "toLane": "5",
+      "via": ":hwy_m1_1_4",
+      "dir": "s",
+      "state": "M"
+    },
+    {
+      "from": "main_1",
+      "to": "offramp",
+      "fromLane": "0",
+      "toLane": "0",
+      "via": ":hwy_m2_0_0",
+      "dir": "r",
+      "state": "M"
+    },
+    {
+      "from": "main_1",
+      "to": "main_2",
+      "fromLane": "1",
+      "toLane": "0",
+      "via": ":hwy_m2_1_0",
+      "dir": "s",
+      "state": "M"
+    },
+    {
+      "from": "main_1",
+      "to": "main_2",
+      "fromLane": "2",
+      "toLane": "1",
+      "via": ":hwy_m2_1_1",
+      "dir": "s",
+      "state": "M"
+    },
+    {
+      "from": "main_1",
+      "to": "main_2",
+      "fromLane": "3",
+      "toLane": "2",
+      "via": ":hwy_m2_1_2",
+      "dir": "s",
+      "state": "M"
+    },
+    {
+      "from": "main_1",
+      "to": "main_2",
+      "fromLane": "4",
+      "toLane": "3",
+      "via": ":hwy_m2_1_3",
+      "dir": "s",
+      "state": "M"
+    },
+    {
+      "from": "main_1",
+      "to": "main_2",
+      "fromLane": "5",
+      "toLane": "4",
+      "via": ":hwy_m2_1_4",
+      "dir": "s",
+      "state": "M"
+    },
+    {
+      "from": "onramp",
+      "to": "main_1",
+      "fromLane": "0",
+      "toLane": "0",
+      "via": ":hwy_m1_0_0",
+      "dir": "r",
+      "state": "M"
+    }
+  ],
+  "vehicle_types": [
+    {
+      "id": "B_het_c0_passenger",
+      "vClass": "passenger",
+      "length": "4.4196",
+      "tau": "0.7389146576529666",
+      "sigma": "0.5",
+      "maxSpeed": "27.78",
+      "speedFactor": "1.0",
+      "speedDev": "0.0",
+      "carFollowModel": "Krauss",
+      "minGap": "2.5",
+      "accel": "2.6",
+      "decel": "4.5",
+      "apparentDecel": "4.5",
+      "emergencyDecel": "9.0",
+      "actionStepLength": "0.1",
+      "sigmaStep": "1.0",
+      "laneChangeModel": "LC2013"
+    },
+    {
+      "id": "B_het_c1_passenger",
+      "vClass": "passenger",
+      "length": "4.4196",
+      "tau": "1.093342856277335",
+      "sigma": "0.5",
+      "maxSpeed": "27.78",
+      "speedFactor": "1.0",
+      "speedDev": "0.0",
+      "carFollowModel": "Krauss",
+      "minGap": "2.5",
+      "accel": "2.6",
+      "decel": "4.5",
+      "apparentDecel": "4.5",
+      "emergencyDecel": "9.0",
+      "actionStepLength": "0.1",
+      "sigmaStep": "1.0",
+      "laneChangeModel": "LC2013"
+    },
+    {
+      "id": "B_het_c2_passenger",
+      "vClass": "passenger",
+      "length": "4.4196",
+      "tau": "1.3877275660721775",
+      "sigma": "0.5",
+      "maxSpeed": "27.78",
+      "speedFactor": "1.0",
+      "speedDev": "0.0",
+      "carFollowModel": "Krauss",
+      "minGap": "2.5",
+      "accel": "2.6",
+      "decel": "4.5",
+      "apparentDecel": "4.5",
+      "emergencyDecel": "9.0",
+      "actionStepLength": "0.1",
+      "sigmaStep": "1.0",
+      "laneChangeModel": "LC2013"
+    },
+    {
+      "id": "B_het_c3_passenger",
+      "vClass": "passenger",
+      "length": "4.4196",
+      "tau": "1.8288599276236361",
+      "sigma": "0.5",
+      "maxSpeed": "27.78",
+      "speedFactor": "1.0",
+      "speedDev": "0.0",
+      "carFollowModel": "Krauss",
+      "minGap": "2.5",
+      "accel": "2.6",
+      "decel": "4.5",
+      "apparentDecel": "4.5",
+      "emergencyDecel": "9.0",
+      "actionStepLength": "0.1",
+      "sigmaStep": "1.0",
+      "laneChangeModel": "LC2013"
+    },
+    {
+      "id": "B_het_c4_passenger",
+      "vClass": "passenger",
+      "length": "4.4196",
+      "tau": "2.5614676647488244",
+      "sigma": "0.5",
+      "maxSpeed": "27.78",
+      "speedFactor": "1.0",
+      "speedDev": "0.0",
+      "carFollowModel": "Krauss",
+      "minGap": "2.5",
+      "accel": "2.6",
+      "decel": "4.5",
+      "apparentDecel": "4.5",
+      "emergencyDecel": "9.0",
+      "actionStepLength": "0.1",
+      "sigmaStep": "1.0",
+      "laneChangeModel": "LC2013"
+    }
+  ],
+  "route_definitions": [
+    {
+      "id": "through",
+      "edges": "main_0 main_1 main_2"
+    },
+    {
+      "id": "entering",
+      "edges": "onramp main_1 main_2"
+    },
+    {
+      "id": "exiting",
+      "edges": "main_0 main_1 offramp"
+    },
+    {
+      "id": "from_main_0_through",
+      "edges": "main_0 main_1 main_2"
+    },
+    {
+      "id": "from_main_0_exiting",
+      "edges": "main_0 main_1 offramp"
+    },
+    {
+      "id": "from_main_1_through",
+      "edges": "main_1 main_2"
+    },
+    {
+      "id": "from_main_1_exiting",
+      "edges": "main_1 offramp"
+    },
+    {
+      "id": "from_main_2_through",
+      "edges": "main_2"
+    },
+    {
+      "id": "from_onramp_entering",
+      "edges": "onramp main_1 main_2"
+    }
+  ],
+  "declared_population": {
+    "total": 1150,
+    "initial": 117,
+    "noninitial": 1033,
+    "noninitial_entering": 60
+  },
+  "population_accounting": {
+    "arrived": 857,
+    "collisions": 0,
+    "discarded": 0,
+    "ended": 857,
+    "inserted": 1005,
+    "loaded": 1150,
+    "running": 148,
+    "teleports": 0,
+    "time_s": 419.95,
+    "waiting": 145
+  },
+  "native_controller_source_sha256": {
+    "probe_stage_0_5_linux_isolation.py": "31eb0cc954daf62beaa004abb616b8f910cacf40461ea6a675f9c3ad96b7b9e4",
+    "stage_0_5_execution_v2.py": "5be4532afb959b3f02237e70081f4c3e651a8f745e4f6f915563ef36f1fd476b",
+    "stage_0_5_identity_observation.py": "9dbefcc21e24a8288a06d1d6d36ff4b3f61510ab9171981f9a515e012b71178c",
+    "stage_0_5_input_fidelity.py": "bd8c8a9f9cd9d0b91fbf9fee5ff42fd4dfdf60763a3df573d995613cb7cbb8cc",
+    "stage_0_5_isolation_admission.py": "c655af37c4a345ded4de92ddc3e5b06e2fcc71b9767ca290a2651fe15cf3457b",
+    "stage_0_5_isolation_v2.py": "b10d5b91aaefe77cae0616ad08f4a0a9698fb150e16f167c792bdacf3b577e63",
+    "stage_0_5_linux_controller_v4.py": "c6252a9de0a78b817a0d98ebb397a19811bb17353a048c082fd8f22268c37221",
+    "stage_0_5_linux_execution_v4.py": "98bab9342975d6a8c9873c89ac8bd7e541b9f74811a3c3dee0986269e1022b6d",
+    "stage_0_5_linux_isolation.py": "8aaa25fe0d989b530e6e433d8f12058c6558ce95304e67f397aac634976f8e88",
+    "stage_0_5_linux_runtime_v4.py": "9cd8a6165bd9f6f5aeffd6ced94a8fa7e7da190d16a144464d538b63b1956e4d",
+    "stage_0_5_native_capsule_v4.py": "41abc89f3947630e0f69a33bf1497ee4a951dfe90ec1954dccacbd958281edd9",
+    "stage_0_5_research_ledger.py": "579d41591c00c8017f8ed4252f3256c09f0c613db52bdbfca00dd3880dd08260"
+  },
+  "executed_coordinator_snapshot": "docs/audits/aad_week_20261027/a03_executed_coordinator_source.py",
+  "executed_coordinator_sha256": "6d296c99892afcc0d8766d78fa798e3d6af81dad0bdc62217ea7102668eb7316",
+  "current_analyzer": "code/scripts/analyze_stage_0_5_week_scene_v1.py",
+  "accepted_analyzer_sha256": "48aa20eed35667012c66b518304f459a7f23aaa4c29e8b63b1fce9eeead32300",
+  "runtime": {
+    "SUMO": "1.26.0",
+    "TraCI_protocol": 22,
+    "getVersion": [
+      22,
+      "SUMO 1.26.0"
+    ],
+    "sumo_binary_sha256": "50784ce4efb9cc3deb16c4540b74ed3d2c34422a509bd253447981113d18d3bc",
+    "traci_source_sha256": "0c216f53345d2301e3c46dda03dd9ee97622db103a8ab132fc47c2fe44181fda",
+    "environment": {
+      "linux_runtime_manifest_sha256": "703c433d85647e3b100ec407a0dfd9a629059905476ec544a320f56cd18a67c7",
+      "packages": {
+        "eclipse-sumo": "1.26.0",
+        "iniconfig": "2.1.0",
+        "numpy": "2.3.2",
+        "packaging": "24.2",
+        "pandas": "2.2.3",
+        "pip": "25.2",
+        "pluggy": "1.5.0",
+        "psutil": "7.2.2",
+        "pyarrow": "25.0.1",
+        "pygments": "2.19.1",
+        "pytest": "8.4.1",
+        "python-dateutil": "2.9.0.post0",
+        "pytz": "2025.2",
+        "six": "1.17.0",
+        "tzdata": "2025.2"
+      },
+      "platform": "PRETTY_NAME=\"Ubuntu 24.04.3 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"24.04\"\nVERSION=\"24.04.3 LTS (Noble Numbat)\"\nVERSION_CODENAME=noble\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=noble\nLOGO=ubuntu-logo\n",
+      "python_executable": "/home/shen/AAD/code/runtime/stage_0_5_sumo126_v4_r2/env/bin/python3",
+      "python_executable_sha256": "1643dacd9feaedc58f3cc581e4d22577dfe25c09b10282936186ccf0f2e61118",
+      "python_version": "3.12.3 (main, Jun 19 2026, 12:46:00) [GCC 13.3.0]"
+    },
+    "runtime_manifest_sha256": "703c433d85647e3b100ec407a0dfd9a629059905476ec544a320f56cd18a67c7",
+    "evidence": "accepted raw controller_receipt version and sealed independent execution receipt"
+  },
+  "execution_receipt": {
+    "backend": "linux-userns",
+    "controller_sha256": "5a95c008f1d67a38385e56dbe85d1b87e24bb698d4a77800fa974a61f8bc9db1",
+    "identity_checks": {
+      "all_summary_steps": true,
+      "collision_coverage": true,
+      "replayed_identity": true,
+      "tripinfo_identity": true
+    },
+    "kind": "OS_enforced",
+    "outputs": {
+      "fcd.xml": "1dc274082f4ea14949979d0c925903bbb5b9668d1124dabb79799b59a55fa304",
+      "summary.xml": "d0210a2c68b763bc6cb0b5bd3b63becf66836d3899b29eb4e1c499ee96a85de8",
+      "tripinfo.xml": "a9df43dba65d7bfeb7f1268bdb9ca34558b3eb1f24d097443852e9bc9c7d6d1f"
+    },
+    "policy_sha256": "8da5c25bd86d81fa1110b7ab96f4db4cffc81368aadeebf144b95b3989d0c053",
+    "probes": {
+      "children_confined": true,
+      "exclusive_output": true,
+      "files_read_only": true,
+      "forbidden_resources_denied": true,
+      "network_confined": true,
+      "process_tree_limited": true
+    },
+    "proposal_sha256": "dec7658aa38f06b9a8182941344cc6d16ae1b268219415539f624961d04c7d86",
+    "receipt_sha256": "4c1d7cea9f3dc221ee5b52c206d33adfb763a15d07c5a91b757ce0c51eed928f",
+    "runtime_manifest_sha256": "703c433d85647e3b100ec407a0dfd9a629059905476ec544a320f56cd18a67c7",
+    "scope": "Engineering runtime/control/isolation acceptance, no scientific support claim",
+    "status": "Pass"
+  },
+  "accepted_execution": {
+    "duration_s": 420,
+    "internal_step_s": 0.05,
+    "recording_step_s": 0.1,
+    "evaluation_window_s": [
+      120,
+      390
+    ],
+    "seed": 20261201,
+    "internal_steps": 8400,
+    "native_exit_code": 0,
+    "capsule_exit_code": 0,
+    "postrun_assessment_native_launches": 0,
+    "resource_samples": 3483,
+    "max_sample_gap_s": 0.1541457320000177,
+    "max_allowed_gap_s": 0.5,
+    "peak_process_tree_rss_bytes": 275808256,
+    "peak_cgroup_memory_bytes": 388612096,
+    "last_resource_wall_s": 390.661674249,
+    "disk_free_min_bytes": {
+      "free_c_bytes": 113104584704,
+      "free_d_bytes": 248815017984,
+      "free_wsl_bytes": 14282080256,
+      "capsule_fs_free_bytes": 2008797184
+    },
+    "output_bytes": 143411683,
+    "watchdog_failure": null,
+    "descendants_reaped": true,
+    "remaining_pids": [],
+    "resource_supervision_mode": "independent_process"
+  },
+  "accepted_measurement_checks": {
+    "D1_contract": true,
+    "all18_common_cells": true,
+    "full_context_events": true,
+    "identity_clock": true,
+    "initialization_accounting": true,
+    "input_fidelity": true,
+    "resource_limits": true,
+    "task_isolation": true
+  },
+  "measured_state": {
+    "path": "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/WEEK_0750_B00_IC1_s20261201_A03/measured_state.parquet",
+    "sha256": "48b20ff458ff1dce4559a762d6965b6747a940d537b1460d74e33d739a3cf63a"
+  },
+  "raw_artifact_sha256": {
+    "broker_context.json": "78be039bee50efde2d03e998eb95ce7ae806d512aaf5caff9d2df12295ae316d",
+    "capability_record.json": "26a4427717abfa93a3be05c4368d8ce2558018715694eb34e70c559247fd0105",
+    "controller_receipt.json": "5a95c008f1d67a38385e56dbe85d1b87e24bb698d4a77800fa974a61f8bc9db1",
+    "executed_policy.json": "8da5c25bd86d81fa1110b7ab96f4db4cffc81368aadeebf144b95b3989d0c053",
+    "fcd.xml": "1dc274082f4ea14949979d0c925903bbb5b9668d1124dabb79799b59a55fa304",
+    "identity_events.jsonl": "a97b2d82cf70d1cead798e6dd591bd1e107e7e3347eb8450739ebb4d459ba995",
+    "identity_summary.json": "7eeae27a85baf7d71dcf32755417ed765b6e7ba0b46c9d45fc2fdf9f646246f6",
+    "native_console.log": "79b4afa5c78e1650315b40fd564154ced3f71d6e2392ef08bbbfa51dfca38297",
+    "resource_samples.jsonl": "6cb6350ac1e5dd9471ed4f70c6824bc2e5c24e4299d5422d891f905c867b6241",
+    "summary.xml": "d0210a2c68b763bc6cb0b5bd3b63becf66836d3899b29eb4e1c499ee96a85de8",
+    "tripinfo.xml": "a9df43dba65d7bfeb7f1268bdb9ca34558b3eb1f24d097443852e9bc9c7d6d1f"
+  },
+  "verified_bindings": {
+    "evidence/results/RES-AAD-WEEK-20261027-V1/audit.json": "54ac6ad248f424a963c030e2cd3062594aa458c7a1977aacf19c67c56c105317",
+    "evidence/results/RES-AAD-WEEK-20261027-V1/failure_archive.json": "6661316113a075a7681b59e805aa628695b2dcc1e3f1af868a6c7b3b58cd0209",
+    "evidence/results/RES-AAD-WEEK-20261027-V1/independent_execution_receipt.json": "3da0494196616154508b0e8fc2e97ac26bc2b707d5d96003e709c167c109f864",
+    "evidence/results/RES-AAD-WEEK-20261027-V1/ledger_snapshot.json": "8097bf661fbef8c6e92a60f85994618e2829041763167ac5f3e847b2d830eee9",
+    "evidence/results/RES-AAD-WEEK-20261027-V1/manifest.json": "57a5c92e7c9754907eedc0eaf4133ed815548b479f0afc9db0d42be6f2a337a7",
+    "evidence/results/RES-AAD-WEEK-20261027-V1/matched18.csv": "f76f26a7989ead9b8e880d679b26e3fb36784410ce0382ea01a207ef612547a3",
+    "evidence/results/RES-AAD-WEEK-20261027-V1/measurement_acceptance.json": "4c4c8351af7473ed2a690e740ca8b7d0f857eaf7430c3f70eb53c3b9d627fb85",
+    "evidence/results/RES-AAD-WEEK-20261027-V1/population_accounting.json": "331729230e6599e94e37c1fb830c9fc45ea1a42c004d65ed3028fde0aac750c5",
+    "evidence/results/RES-AAD-WEEK-20261027-V1/provenance.json": "0c050a58fa9eba3b75e7dc5930c62a2be7ee2afb2d03aacc0e1fdb107322bacc",
+    "evidence/results/RES-AAD-WEEK-20261027-V1/scene_audit.json": "e619899bc4bdbe1de12d61166c488b31c79d5cebf4cedd2e9e62823810992997",
+    "evidence/results/RES-AAD-WEEK-20261027-V1/SHA256SUMS": "9989606e05df653d015e29f0a8fa5ebf1e2a4ac9630990580bb8914a344f1d09",
+    "evidence/results/RES-AAD-WEEK-20261027-V1/validation_record.json": "046e1b62584cce4c36ab037e27ae903ef2c94607a8b2f69ee997d14b3a4c427b",
+    "evidence/admission/AAD-WEEK-2026-10-27-TO-STAGE-I-V1/candidate-v3/proposal.json": "dec7658aa38f06b9a8182941344cc6d16ae1b268219415539f624961d04c7d86",
+    "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/WEEK_0750_B00_IC1_s20261201_A03/network.net.xml": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+    "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v2/inputs/network.net.xml": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+    "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/WEEK_0750_B00_IC1_s20261201_A03/routes.rou.xml": "b6df8d9ce52b56fac50899cc2e6d1329c7858325aae0f0c86c76d77f796a7574",
+    "evidence/admission/AAD-WEEK-2026-10-27-TO-STAGE-I-V1/candidate-v1/routes.rou.xml": "b6df8d9ce52b56fac50899cc2e6d1329c7858325aae0f0c86c76d77f796a7574",
+    "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/WEEK_0750_B00_IC1_s20261201_A03/run.sumocfg": "c55b242f09b6a86527852bf686f06f3347abc44aa1c16c199c51935ce93dc6c6",
+    "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v2/inputs/run.sumocfg": "c55b242f09b6a86527852bf686f06f3347abc44aa1c16c199c51935ce93dc6c6",
+    "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/WEEK_0750_B00_IC1_s20261201_A03/broker_context.json": "78be039bee50efde2d03e998eb95ce7ae806d512aaf5caff9d2df12295ae316d",
+    "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/WEEK_0750_B00_IC1_s20261201_A03/capability_record.json": "26a4427717abfa93a3be05c4368d8ce2558018715694eb34e70c559247fd0105",
+    "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/WEEK_0750_B00_IC1_s20261201_A03/controller_receipt.json": "5a95c008f1d67a38385e56dbe85d1b87e24bb698d4a77800fa974a61f8bc9db1",
+    "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/WEEK_0750_B00_IC1_s20261201_A03/executed_policy.json": "8da5c25bd86d81fa1110b7ab96f4db4cffc81368aadeebf144b95b3989d0c053",
+    "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/WEEK_0750_B00_IC1_s20261201_A03/fcd.xml": "1dc274082f4ea14949979d0c925903bbb5b9668d1124dabb79799b59a55fa304",
+    "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/WEEK_0750_B00_IC1_s20261201_A03/identity_events.jsonl": "a97b2d82cf70d1cead798e6dd591bd1e107e7e3347eb8450739ebb4d459ba995",
+    "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/WEEK_0750_B00_IC1_s20261201_A03/identity_summary.json": "7eeae27a85baf7d71dcf32755417ed765b6e7ba0b46c9d45fc2fdf9f646246f6",
+    "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/WEEK_0750_B00_IC1_s20261201_A03/native_console.log": "79b4afa5c78e1650315b40fd564154ced3f71d6e2392ef08bbbfa51dfca38297",
+    "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/WEEK_0750_B00_IC1_s20261201_A03/resource_samples.jsonl": "6cb6350ac1e5dd9471ed4f70c6824bc2e5c24e4299d5422d891f905c867b6241",
+    "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/WEEK_0750_B00_IC1_s20261201_A03/summary.xml": "d0210a2c68b763bc6cb0b5bd3b63becf66836d3899b29eb4e1c499ee96a85de8",
+    "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/WEEK_0750_B00_IC1_s20261201_A03/tripinfo.xml": "a9df43dba65d7bfeb7f1268bdb9ca34558b3eb1f24d097443852e9bc9c7d6d1f",
+    "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/WEEK_0750_B00_IC1_s20261201_A03/measured_state.parquet": "48b20ff458ff1dce4559a762d6965b6747a940d537b1460d74e33d739a3cf63a",
+    "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/WEEK_0750_B00_IC1_s20261201_A03/isolation_runtime.json": "4c1d7cea9f3dc221ee5b52c206d33adfb763a15d07c5a91b757ce0c51eed928f",
+    "code/scripts/probe_stage_0_5_linux_isolation.py": "31eb0cc954daf62beaa004abb616b8f910cacf40461ea6a675f9c3ad96b7b9e4",
+    "code/scripts/stage_0_5_execution_v2.py": "5be4532afb959b3f02237e70081f4c3e651a8f745e4f6f915563ef36f1fd476b",
+    "code/scripts/stage_0_5_identity_observation.py": "9dbefcc21e24a8288a06d1d6d36ff4b3f61510ab9171981f9a515e012b71178c",
+    "code/scripts/stage_0_5_input_fidelity.py": "bd8c8a9f9cd9d0b91fbf9fee5ff42fd4dfdf60763a3df573d995613cb7cbb8cc",
+    "code/scripts/stage_0_5_isolation_admission.py": "c655af37c4a345ded4de92ddc3e5b06e2fcc71b9767ca290a2651fe15cf3457b",
+    "code/scripts/stage_0_5_isolation_v2.py": "b10d5b91aaefe77cae0616ad08f4a0a9698fb150e16f167c792bdacf3b577e63",
+    "code/scripts/stage_0_5_linux_controller_v4.py": "c6252a9de0a78b817a0d98ebb397a19811bb17353a048c082fd8f22268c37221",
+    "code/scripts/stage_0_5_linux_execution_v4.py": "98bab9342975d6a8c9873c89ac8bd7e541b9f74811a3c3dee0986269e1022b6d",
+    "code/scripts/stage_0_5_linux_isolation.py": "8aaa25fe0d989b530e6e433d8f12058c6558ce95304e67f397aac634976f8e88",
+    "code/scripts/stage_0_5_linux_runtime_v4.py": "9cd8a6165bd9f6f5aeffd6ced94a8fa7e7da190d16a144464d538b63b1956e4d",
+    "code/scripts/stage_0_5_native_capsule_v4.py": "41abc89f3947630e0f69a33bf1497ee4a951dfe90ec1954dccacbd958281edd9",
+    "code/scripts/stage_0_5_research_ledger.py": "579d41591c00c8017f8ed4252f3256c09f0c613db52bdbfca00dd3880dd08260",
+    "code/scripts/analyze_stage_0_5_week_scene_v1.py": "48aa20eed35667012c66b518304f459a7f23aaa4c29e8b63b1fce9eeead32300",
+    "code/scripts/assess_stage_0_5_existing_capsule_v1.py": "5e9313a4e869bc7fe5a99f799b68d7f746921906012b3495fc699e2b5ed88ae3",
+    "evidence/admission/AAD-WEEK-2026-10-27-TO-STAGE-I-V1/candidate-v4-measurement/proposal.json": "c06e5655186be507ff488dc31b029be232373a74ea7b912fd6fe9d6a8eab1cef",
+    "code/src/riskprop/stage_0_5_d1_measurement.py": "affaf9984055b8673e6616310e4b0560f61b721747c33b47824f26172d36ad9c",
+    "code/src/riskprop/stage_0_5_scene_reconstruction.py": "01ca2361ba1f5c53e626a830d5ef41c83dd6c68f5c756ce21e0c4084e5c3813a",
+    "code/src/riskprop/stage_0_5_state_support.py": "153f2672a01a17cc578b2d32ad49b8936239640cd065a0ed20bb8796f493c301",
+    "code/src/riskprop/stage_0_5_sumo.py": "83f866f9647dc40e6f2012f759a3cad99d1e122b8933b2910afff594be7a797b",
+    "docs/audits/aad_week_20261027/a03_executed_coordinator_source.py": "6d296c99892afcc0d8766d78fa798e3d6af81dad0bdc62217ea7102668eb7316"
+  },
+  "historical_run_distinction": {
+    "A03": "Accepted only after zero-launch independent postrun measurement; original ledger rejection retained",
+    "A01_A02": "Full420s but resource-gap acceptance failed; never substituted for A03",
+    "earlier_candidate_v8": "Initial slow-lane-ahead failure retained; not accepted baseline",
+    "B10_B01_B11": "Unexecuted candidates in this R0 task"
+  }
+}

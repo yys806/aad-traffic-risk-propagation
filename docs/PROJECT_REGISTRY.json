@@ -316,8 +316,8 @@
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-WEEK-2026-10-27-TO-STAGE-I-V1",
-  "why_now": "Full420s B00 A03 and eight measurement checks accepted; no local P2 source event. Close practical scene scope, error-budget and protocol candidate; no scientific Gate override.",
+  "active_task": "AAD-S0.5-R0-20261028: offline design packet ready for review; R1 not executed",
+  "why_now": "Prepare only Stage0.5-R0 offline design-freeze candidates from accepted A03 full context; explicit source/target/cohort/control decisions await researcher. R1 unexecuted; Stage0.6/StageI unchanged; no new simulation or Protocol Lock.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
    "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",
@@ -456,6 +456,19 @@
    "native_candidate": "evidence/admission/AAD-WEEK-2026-10-27-TO-STAGE-I-V1/candidate-v3",
    "offline_candidate": "evidence/admission/AAD-WEEK-2026-10-27-TO-STAGE-I-V1/candidate-v4-measurement",
    "historical_incident": "Not Accepted; unchanged"
+  },
+  "r0_design_packet": {
+   "task_id": "AAD-S0.5-R0-20261028",
+   "status": "READY_FOR_RESEARCHER_REVIEW",
+   "design_freeze_status": "AWAITING_RESEARCHER_DECISION",
+   "result_id": "RES-STAGE-0.5-R0-DESIGN-PACKET-20261028",
+   "report": "docs/plans/2026-10-28-stage-0-5-r0-design-freeze.md",
+   "baseline_run": "WEEK_0750_B00_IC1_s20261201_A03",
+   "full_context_P2": 0,
+   "new_SUMO_launches": 0,
+   "R1_executed": false,
+   "R1_execution_allowed": false,
+   "scientific_Gates_changed": false
   }
  },
  "experiments": [
@@ -774,7 +787,8 @@
     "code/scripts/analyze_stage_0_5_week_scene_v1.py",
     "code/scripts/package_aad_week_results_v1.py",
     "code/scripts/prepare_stage_0_5_initial_speed_v1.py",
-    "code/scripts/assess_stage_0_5_existing_capsule_v1.py"
+    "code/scripts/assess_stage_0_5_existing_capsule_v1.py",
+    "code/scripts/prepare_stage_0_5_r0_design_packet.py"
    ],
    "entrypoints": [
     "code/scripts/prepare_stage_0_5_real_reference.py",
@@ -832,7 +846,8 @@
     "code/scripts/analyze_stage_0_5_week_scene_v1.py",
     "code/scripts/package_aad_week_results_v1.py",
     "code/scripts/prepare_stage_0_5_initial_speed_v1.py",
-    "code/scripts/assess_stage_0_5_existing_capsule_v1.py"
+    "code/scripts/assess_stage_0_5_existing_capsule_v1.py",
+    "code/scripts/prepare_stage_0_5_r0_design_packet.py"
    ],
    "test_paths": [
     "code/tests/test_simulation_real_coverage.py",
@@ -875,7 +890,8 @@
     "code/tests/test_stage_0_5_existing_capsule_v1.py",
     "code/tests/test_stage_0_5_postprocessing_supervision.py",
     "code/tests/test_stage_0_5_process_supervision.py",
-    "code/tests/test_aad_week_scene_v1.py"
+    "code/tests/test_aad_week_scene_v1.py",
+    "code/tests/test_stage_0_5_r0_design_packet.py"
    ],
    "configuration": "R2 real reference plus two no_message_baseline generic-highway engineering fixtures (baseline_mixed_demand, measurement_probe_queue_stop); US-101 primary, Lankershim auxiliary entry-only, pNEUMA urban kinematics entry-only; all network/demand/vType/behaviour/time settings are engineering_fixture_only",
    "parameters": {
@@ -1081,7 +1097,8 @@
     "RES-STAGE-0.5-INTERACTION-RESEARCH-V2",
     "RES-STAGE-0.5-V2-ADMISSION-ENGINEERING-V1",
     "RES-STAGE-0.5-B00-NATIVE-V1",
-    "RES-AAD-WEEK-20261027-V1"
+    "RES-AAD-WEEK-20261027-V1",
+    "RES-STAGE-0.5-R0-DESIGN-PACKET-20261028"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -4396,6 +4413,46 @@
    "scientific_claim_eligible": false,
    "paper_locations": [
     "docs/AAD_WEEK_TO_STAGE_I_2026-10-27.md"
+   ]
+  },
+  {
+   "id": "RES-STAGE-0.5-R0-DESIGN-PACKET-20261028",
+   "experiment_id": "stage_0_5",
+   "name": "R0 offline design-freeze candidate packet",
+   "status": "READY_FOR_RESEARCHER_REVIEW",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-R0-DESIGN-PACKET-20261028/baseline_binding.json",
+    "evidence/results/RES-STAGE-0.5-R0-DESIGN-PACKET-20261028/source_event_support.json",
+    "evidence/results/RES-STAGE-0.5-R0-DESIGN-PACKET-20261028/source_target_candidates.json",
+    "evidence/results/RES-STAGE-0.5-R0-DESIGN-PACKET-20261028/scenario_diff_matrix.json",
+    "evidence/results/RES-STAGE-0.5-R0-DESIGN-PACKET-20261028/ramp_departure_map_candidate.csv",
+    "evidence/results/RES-STAGE-0.5-R0-DESIGN-PACKET-20261028/arm_input_candidates.json",
+    "evidence/results/RES-STAGE-0.5-R0-DESIGN-PACKET-20261028/topology_candidate_audit.json",
+    "evidence/results/RES-STAGE-0.5-R0-DESIGN-PACKET-20261028/decision_register.json",
+    "evidence/results/RES-STAGE-0.5-R0-DESIGN-PACKET-20261028/r0_gate_report.json",
+    "evidence/results/RES-STAGE-0.5-R0-DESIGN-PACKET-20261028/manifest.json",
+    "evidence/results/RES-STAGE-0.5-R0-DESIGN-PACKET-20261028/validation_record.json",
+    "evidence/results/RES-STAGE-0.5-R0-DESIGN-PACKET-20261028/SHA256SUMS"
+   ],
+   "local_artifact_paths": [
+    "code/outputs/formal/calibration/stage_0_5_r0_20261028_v2/portable"
+   ],
+   "code_version_source": "manifest.json exact source SHA256; baseline4a7c204; native A03 execution base e38f524 plus dirty closure",
+   "configuration_source": "baseline_binding.json; arm_input_candidates.json Proposed; decision_register.json not frozen",
+   "data_version_source": "A03 sealed FCD and measured_state exact hashes; no new trajectory or holdout access",
+   "core_metrics": {
+    "accepted_B00_state_rows": 610725,
+    "observed_vehicle_IDs": 1005,
+    "full_context_P2": 0,
+    "full_context_missing_points": 84227,
+    "ramp_candidate_IDs": 60,
+    "new_SUMO_launches": 0
+   },
+   "current_conclusion": "Complete offline review candidate; no confirmed source P2 in observed eligible full context; exact scientific choices await researcher; R1 unexecuted",
+   "gate_status": "not_a_scientific_gate",
+   "scientific_claim_eligible": false,
+   "paper_locations": [
+    "docs/plans/2026-10-28-stage-0-5-r0-design-freeze.md"
    ]
   }
  ],

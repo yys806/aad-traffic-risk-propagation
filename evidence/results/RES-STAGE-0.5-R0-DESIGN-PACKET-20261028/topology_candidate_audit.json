@@ -1,0 +1,94 @@
+{
+  "status": "Verified offline topology; scientific arrival rule pending",
+  "network_sha256": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+  "successor_edges": {
+    "main_0": [
+      "main_1"
+    ],
+    "main_1": [
+      "main_2",
+      "offramp"
+    ],
+    "main_2": [],
+    "offramp": [],
+    "onramp": [
+      "main_1"
+    ]
+  },
+  "candidates": [
+    {
+      "source_candidate": "S_UPSTREAM_MAIN",
+      "target_candidate": "lanes1-5 y[150,350)",
+      "road_travel_edge_paths": {
+        "main_0": [
+          "main_0"
+        ],
+        "main_1": [
+          "main_0",
+          "main_1"
+        ]
+      },
+      "road_travel_reachable": true,
+      "road_scope": "edge-level only; source and target physical lane/position qualification still required",
+      "native_lane_qualification": "same-edge longitudinal order or verified native lane connection required",
+      "influence_reachability": "Uncertain: no P2 source witness; contemporaneous leader->follower chain is distinct from forward road travel",
+      "downstream_source_note": null,
+      "actual_earliest_physical_arrival_s": null,
+      "reason": "No confirmed source event in B00; no source/target pair chosen",
+      "status": "Verified road paths / Proposed influence qualification"
+    },
+    {
+      "source_candidate": "S_DOWNSTREAM_MAIN",
+      "target_candidate": "lanes1-5 y[150,350)",
+      "road_travel_edge_paths": {
+        "main_0": null,
+        "main_1": null
+      },
+      "road_travel_reachable": false,
+      "road_scope": "edge-level only; source and target physical lane/position qualification still required",
+      "native_lane_qualification": "same-edge longitudinal order or verified native lane connection required",
+      "influence_reachability": "Uncertain: no P2 source witness; contemporaneous leader->follower chain is distinct from forward road travel",
+      "downstream_source_note": "No forward road path from main_2 to upstream target; this is not proof of absence of upstream leader/follower influence",
+      "actual_earliest_physical_arrival_s": null,
+      "reason": "No confirmed source event in B00; no source/target pair chosen",
+      "status": "Verified road paths / Proposed influence qualification"
+    },
+    {
+      "source_candidate": "S_ONRAMP",
+      "target_candidate": "lanes1-5 y[150,350)",
+      "road_travel_edge_paths": {
+        "main_0": null,
+        "main_1": [
+          "onramp",
+          "main_1"
+        ]
+      },
+      "road_travel_reachable": true,
+      "road_scope": "edge-level only; source and target physical lane/position qualification still required",
+      "native_lane_qualification": "onramp_0 connects to main_1_0 auxiliary, outside target lanes; observed later lane change is required",
+      "influence_reachability": "Uncertain: no P2 source witness; contemporaneous leader->follower chain is distinct from forward road travel",
+      "downstream_source_note": null,
+      "actual_earliest_physical_arrival_s": null,
+      "reason": "No confirmed source event in B00; no source/target pair chosen",
+      "status": "Verified road paths / Proposed influence qualification"
+    }
+  ],
+  "source_target_definition_file": "source_target_candidates.json",
+  "no_message_time_used": true,
+  "gap_and_identity_policy": {
+    "finite_arrival": "actual connected witness, earliest target clock >= chosen source onset/confirmation clock",
+    "uncertain_missing_identity": "source/target missing or unresolved incarnation",
+    "uncertain_missing_links": "identity present but unobserved/junction/gapped leader chain; not proof of unreachable",
+    "topology_disconnected": "Only verified disconnection of specified directed graph, with graph type explicitly stated",
+    "right_censored": "No observed target witness before observation end; incomplete graph remains uncertain"
+  },
+  "prior_unexported_manifest_sha256": "c214b1d7a6892ac45c86c90be8836dc135d1c8c2415c7b1098d1209be50ec52c",
+  "no_measurement_reexecution": true,
+  "guard": {
+    "process_attempts": [],
+    "network_attempts": [],
+    "forbidden_imports": [],
+    "external_writes": [],
+    "sumo_launches": 0
+  }
+}

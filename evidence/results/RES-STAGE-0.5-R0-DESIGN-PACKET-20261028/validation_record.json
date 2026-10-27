@@ -1,0 +1,50 @@
+{
+  "schema": "aad.r0.offline-validation.v1",
+  "recorded_at": "2026-10-27T14:49:04.478689+00:00",
+  "task_label_date": "2026-10-28",
+  "actual_clock_used": true,
+  "new_SUMO_launches": 0,
+  "new_TraCI_connections": 0,
+  "no_ledger_reserve": true,
+  "no_envelope_written": true,
+  "no_protocol_lock": true,
+  "guard": {
+    "process_attempts": [],
+    "network_attempts": [],
+    "forbidden_imports": [],
+    "external_writes": [],
+    "sumo_launches": 0
+  },
+  "exact_verified_bindings": 52,
+  "raw_full_context_crosscheck": true,
+  "candidate60_contract_pass": true,
+  "full_context_independent_event_scan_pass": true,
+  "candidate_inputs_not_executed": true,
+  "software_test_record": "docs/audits/stage_0_5_r0_20261028_v1/final_validation.json (written after isolated checks)",
+  "scientific_gates_changed": false,
+  "final_validation_sha256": "86b1498a404145dce7380b7ceda35646940282de8220117c9b8a692388286a39",
+  "final_validation_path": "docs/audits/stage_0_5_r0_20261028_v1/final_validation.json",
+  "software_checks": {
+    "targeted_offline_tests": "Pass",
+    "full_software_without_native": "Pass",
+    "compileall": "Pass",
+    "strict_documentation": "Pass",
+    "portable_evidence_hashes": "Pass",
+    "full_FCD_context_and_candidate_contracts": "Pass",
+    "zero_simulation_execution": "Pass"
+  },
+  "targeted_tests": {
+    "passed": 49,
+    "failed": 0,
+    "final_source_revision": "Final metadata clarification retested; no scientific logic changed"
+  },
+  "full_software_tests": {
+    "passed": 1405,
+    "skipped": 17,
+    "native_deselected": 7,
+    "failed": 0,
+    "warnings": 2,
+    "wall_s": 337.65,
+    "source_scope": "Complete no-data software suite; subsequent generator change only labels fixed decisions/diagnostic scope, covered by final49 targeted tests"
+  }
+}

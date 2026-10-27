@@ -1,0 +1,11 @@
+{
+  "status": "Verified unpublished Git-index repair required",
+  "unpublished_commit": "48aab07975cd1f52fc4070d96920c1f16398abcb",
+  "failed_check": "Pure Git packet verification: packet_bound_file_drift:docs/audits/stage_0_5_r0_20261028_v1/entry_baseline.json",
+  "expected_worktree_sha256": "3c6d3d8eadbd65689c5533ca68bb7a6432df7e75074b12aa4d79a9df59e14b11",
+  "old_index_sha256": "2682d356fec48d93affb47a5ee5b81c9037cb340ba7f92eb78d564f2ed8658db",
+  "cause": "File was first staged before the new binary attribute; unchanged stat cache preserved the normalized index blob after attribute addition. Working bytes and manifest were correct.",
+  "repair": "git add --renormalize only the new R0 audit/candidate/source paths; recheck index bytes, amend this unpublished single-task commit, and verify in a fresh pure Git checkout.",
+  "new_SUMO_launches": 0,
+  "no_accepted_baseline_or_scientific_change": true
+}

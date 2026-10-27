@@ -1,5 +1,9 @@
 # AAD AI Context Changelog
 
+## 2026-10-28 R0 offline design packet（任务标签；实际准备2026-10-27起）
+
+新增R0基线/全上下文源审计、三臂候选、60车保序映射、拓扑边界、待决表及零仿真验证证据。新增范围受控离线生成/验收工具和定向测试，沿用无数据Git检出守卫；不改变旧证据或科学Gate。Context Consistency Check覆盖本次入口、实验、决定、问题及结果索引。 证据：evidence/results/RES-STAGE-0.5-R0-DESIGN-PACKET-20261028/；审查报告：docs/plans/2026-10-28-stage-0-5-r0-design-freeze.md。
+
 ## 2026-10-27 Postcommit source-byte repair
 
 Git autocrlf changed newly bound numerical-source bytes. Four exact numerical/protocol source paths now pin LF; formal-risk existing CRLF binding preserved. Failure retained in docs/audits/aad_week_20261027/postcommit_eol_failure.json. Source bodies, native bindings and sealed measurements unchanged; no new SUMO. Independent repaired-checkout verification remains required before push.

@@ -735,6 +735,10 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
           'independent_execution_receipt.json', 'scene_audit.json', 'matched18.csv',
           'failure_archive.json', 'provenance.json', 'validation_record.json',
           'ledger_snapshot.json', 'manifest.json', 'SHA256SUMS']),
+        ('RES-STAGE-0.5-R0-DESIGN-PACKET-20261028', 'stage_0_5_r0_20261028_v2',
+         ['baseline_binding.json', 'source_event_support.json', 'source_target_candidates.json',
+          'scenario_diff_matrix.json', 'ramp_departure_map_candidate.csv', 'arm_input_candidates.json', 'topology_candidate_audit.json',
+          'decision_register.json', 'r0_gate_report.json', 'manifest.json', 'validation_record.json', 'SHA256SUMS']),
         ('RES-STAGE-0.6-WEEK-20261027-V1', 'stage_0_6_week_20261027_v1',
          ['audit.json', 'numerical_manifest.json', 'protocol_candidate.json',
           'current_gate_reports.json', 'stage_0_5_gate.json', 'stage_0_6_gate.json',
@@ -777,6 +781,8 @@ def _validate_source(source: Path) -> None:
         "STRUCTURAL_PLAN_SHA256","real_block_cloud.csv",
         "real_block_cloud_us101__0750_0805.csv","real_block_cloud_us101__0805_0820.csv",
         "fidelity_metrics.csv", "matched18.csv",
+        # Explicit R0 design input map, not a raw measured trajectory table.
+        "ramp_departure_map_candidate.csv",
         }
     if source.suffix.lower() not in {".json", ".md", ".txt", ".sha256"} and source.name not in aggregate_names:
         raise ValueError(f"unsupported evidence file type: {source}")

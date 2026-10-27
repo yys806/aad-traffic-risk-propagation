@@ -1,5 +1,9 @@
 # AAD 项目信息结构变更记录
 
+## 2026-10-28 R0 offline design packet（任务标签；实际准备2026-10-27起）
+
+登记RES-STAGE-0.5-R0-DESIGN-PACKET-20261028；新增离线生成/哈希复核、三臂差异与映射测试、源/目标/物理时间候选和人工审查报告。仅同步本任务状态，原Gate、历史失败、A03原始输入/输出及Not Accepted不改。 证据：evidence/results/RES-STAGE-0.5-R0-DESIGN-PACKET-20261028/；审查报告：docs/plans/2026-10-28-stage-0-5-r0-design-freeze.md。
+
 ## 2026-10-27 Weekly B00 accepted; Stage I remains BLOCKED
 
 Verified: A03 completed420s/8400native steps, independent receipt and all8 measurement checks Pass; B00_EXECUTED_MEASUREMENT_ACCEPTED. This task had3 real B00 starts: A01/A02 resource-coverage failures retained; A03 sealed trajectory independently remeasured with zero new launches after a coordinator import fix.1150declared=1005inserted+145native pending;857arrived/148active; collision/teleport/discard0 with complete required observation.18/18state/D1 support, E=9778.4veh-s, localP2=0. Final isolated software:1386passed/17skipped/7native excluded; audit denied0/SUMO0; compileall/docs/hash Pass. Scientific interaction Gate blocked; numerical budget/protocol candidate are Proposed, StageI BLOCKED. Historical Not Accepted unchanged. Evidence: docs/AAD_WEEK_TO_STAGE_I_2026-10-27.md; evidence/results/RES-AAD-WEEK-20261027-V1/; evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/. Older blocks below retain their historical time points.

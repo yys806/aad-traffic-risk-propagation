@@ -18,7 +18,10 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--source-workspace", type=Path, required=True)
     parser.add_argument("--full", action="store_true")
+    parser.add_argument("--test", action="append", help="Explicit offline tests/test_*.py selection; native exclusions and no-data audit still apply")
     args = parser.parse_args()
+    if args.test and (args.full or any(not p.startswith("tests/test_") or not p.endswith(".py") or ".." in p or "\\" in p for p in args.test)):
+        raise SystemExit("Refused: --test requires explicit relative tests/test_*.py files and cannot combine --full")
     repo = Path(__file__).resolve().parents[2]
     source = args.source_workspace.resolve()
     if repo == source or not (repo / ".git").is_dir() or (repo / "dataset").exists() or (repo / "code/outputs/formal").exists():
@@ -45,7 +48,7 @@ def main():
         os.environ[name] = str(temporary)
     import pytest
     audit = {"scope": "Python parent audit in no-data Git clone; not OS/native certification", "denied": [], "processes": [],
-             "source_workspace": str(source), "clone": str(repo), "sumo_launches": 0, "tests": "full software" if args.full else "targeted"}
+             "source_workspace": str(source), "clone": str(repo), "sumo_launches": 0, "tests": args.test or ("full software" if args.full else "targeted")}
     null_devices = {"nul", r"\\.\nul", r"\\?\nul", os.path.normcase(os.devnull)}
 
     def hook(event, values):
@@ -87,6 +90,8 @@ def main():
                 "test_sumo_smoke_runs_never_change_the_stage_gate"]
     tests = ["tests"] if args.full else ["tests/test_stage_0_5_research_ledger.py", "tests/test_interaction_task_boundary.py",
                                         "tests/test_stage_0_5_d1_measurement.py", "tests/test_project_docs.py"]
+    if args.test:
+        tests = args.test
     command = tests + ["-q", "-p", "no:cacheprovider", "--basetemp=" + str(out / ("full_tmp" if args.full else "targeted_tmp")),
                        "-k", "not (" + " or ".join(excluded) + ")"]
     status = 1

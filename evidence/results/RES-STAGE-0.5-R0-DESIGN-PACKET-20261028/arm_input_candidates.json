@@ -1,0 +1,207 @@
+{
+  "schema": "aad.r0.arm-candidates.v1",
+  "task_id": "AAD-S0.5-R0-20261028",
+  "arms": [
+    {
+      "arm": "B00",
+      "status": "Verified accepted evidence reused",
+      "execution_allowed": false,
+      "seed": 20261201,
+      "duration_s": 420,
+      "internal_step_s": 0.05,
+      "recording_step_s": 0.1,
+      "evaluation_window_s": [
+        120,
+        390
+      ],
+      "input_files": {
+        "network.net.xml": "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v2/inputs/network.net.xml",
+        "routes.rou.xml": "evidence/admission/AAD-WEEK-2026-10-27-TO-STAGE-I-V1/candidate-v1/routes.rou.xml",
+        "run.sumocfg": "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v2/inputs/run.sumocfg"
+      },
+      "input_sha256": {
+        "network.net.xml": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+        "routes.rou.xml": "b6df8d9ce52b56fac50899cc2e6d1329c7858325aae0f0c86c76d77f796a7574",
+        "run.sumocfg": "c55b242f09b6a86527852bf686f06f3347abc44aa1c16c199c51935ce93dc6c6"
+      },
+      "factors": {
+        "supply": false,
+        "ramp": false
+      },
+      "supply_target_lanes": [
+        "main_2_0",
+        "main_2_1",
+        "main_2_2",
+        "main_2_3",
+        "main_2_4"
+      ],
+      "lane_speed_schedule": [
+        {
+          "start_s": 0,
+          "end_s": 420,
+          "speed_mps": 10
+        }
+      ],
+      "controller": "NativeBackend.before_step: lane.setMaxSpeed then lane.getMaxSpeed on every native step",
+      "control_semantics": "Road lane maxSpeed only. At t180 apply5 before step180->180.05; at t240 restore10 before step240->240.05. Native vehicles entering/leaving/changing lanes follow current lane maxSpeed; no per-vehicle override or forced instantaneous actual speed. Preserve car-following/vehicle limits; future receipt must record set/get plus actual vehicle trajectories.",
+      "future_output_directory": "Required exclusive run directory at R1 admission; none reserved in R0",
+      "bound_baseline_run_id": "WEEK_0750_B00_IC1_s20261201_A03"
+    },
+    {
+      "arm": "B10",
+      "status": "Proposed",
+      "execution_allowed": false,
+      "seed": 20261201,
+      "duration_s": 420,
+      "internal_step_s": 0.05,
+      "recording_step_s": 0.1,
+      "evaluation_window_s": [
+        120,
+        390
+      ],
+      "input_files": {
+        "network.net.xml": "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v2/inputs/network.net.xml",
+        "routes.rou.xml": "evidence/admission/AAD-WEEK-2026-10-27-TO-STAGE-I-V1/candidate-v1/routes.rou.xml",
+        "run.sumocfg": "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v2/inputs/run.sumocfg"
+      },
+      "input_sha256": {
+        "network.net.xml": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+        "routes.rou.xml": "b6df8d9ce52b56fac50899cc2e6d1329c7858325aae0f0c86c76d77f796a7574",
+        "run.sumocfg": "c55b242f09b6a86527852bf686f06f3347abc44aa1c16c199c51935ce93dc6c6"
+      },
+      "factors": {
+        "supply": true,
+        "ramp": false
+      },
+      "supply_target_lanes": [
+        "main_2_0",
+        "main_2_1",
+        "main_2_2",
+        "main_2_3",
+        "main_2_4"
+      ],
+      "lane_speed_schedule": [
+        {
+          "start_s": 0,
+          "end_s": 180,
+          "speed_mps": 10
+        },
+        {
+          "start_s": 180,
+          "end_s": 240,
+          "speed_mps": 5
+        },
+        {
+          "start_s": 240,
+          "end_s": 420,
+          "speed_mps": 10
+        }
+      ],
+      "controller": "NativeBackend.before_step: lane.setMaxSpeed then lane.getMaxSpeed on every native step",
+      "control_semantics": "Road lane maxSpeed only. At t180 apply5 before step180->180.05; at t240 restore10 before step240->240.05. Native vehicles entering/leaving/changing lanes follow current lane maxSpeed; no per-vehicle override or forced instantaneous actual speed. Preserve car-following/vehicle limits; future receipt must record set/get plus actual vehicle trajectories.",
+      "future_output_directory": "Required exclusive run directory at R1 admission; none reserved in R0",
+      "bound_baseline_run_id": "WEEK_0750_B00_IC1_s20261201_A03"
+    },
+    {
+      "arm": "B01",
+      "status": "Proposed",
+      "execution_allowed": false,
+      "seed": 20261201,
+      "duration_s": 420,
+      "internal_step_s": 0.05,
+      "recording_step_s": 0.1,
+      "evaluation_window_s": [
+        120,
+        390
+      ],
+      "input_files": {
+        "network.net.xml": "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v2/inputs/network.net.xml",
+        "routes.rou.xml": "evidence/admission/AAD-S0.5-R0-20261028/candidate-v1/ramp_routes.rou.xml",
+        "run.sumocfg": "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v2/inputs/run.sumocfg"
+      },
+      "input_sha256": {
+        "network.net.xml": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+        "routes.rou.xml": "9ffb142a4dd28cd31d3ad8365f465f1daae45db1539f535c29e087747cfbdc91",
+        "run.sumocfg": "c55b242f09b6a86527852bf686f06f3347abc44aa1c16c199c51935ce93dc6c6"
+      },
+      "factors": {
+        "supply": false,
+        "ramp": true
+      },
+      "supply_target_lanes": [
+        "main_2_0",
+        "main_2_1",
+        "main_2_2",
+        "main_2_3",
+        "main_2_4"
+      ],
+      "lane_speed_schedule": [
+        {
+          "start_s": 0,
+          "end_s": 420,
+          "speed_mps": 10
+        }
+      ],
+      "controller": "NativeBackend.before_step: lane.setMaxSpeed then lane.getMaxSpeed on every native step",
+      "control_semantics": "Road lane maxSpeed only. At t180 apply5 before step180->180.05; at t240 restore10 before step240->240.05. Native vehicles entering/leaving/changing lanes follow current lane maxSpeed; no per-vehicle override or forced instantaneous actual speed. Preserve car-following/vehicle limits; future receipt must record set/get plus actual vehicle trajectories.",
+      "future_output_directory": "Required exclusive run directory at R1 admission; none reserved in R0",
+      "bound_baseline_run_id": "WEEK_0750_B00_IC1_s20261201_A03"
+    },
+    {
+      "arm": "B11",
+      "status": "Proposed",
+      "execution_allowed": false,
+      "seed": 20261201,
+      "duration_s": 420,
+      "internal_step_s": 0.05,
+      "recording_step_s": 0.1,
+      "evaluation_window_s": [
+        120,
+        390
+      ],
+      "input_files": {
+        "network.net.xml": "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v2/inputs/network.net.xml",
+        "routes.rou.xml": "evidence/admission/AAD-S0.5-R0-20261028/candidate-v1/ramp_routes.rou.xml",
+        "run.sumocfg": "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v2/inputs/run.sumocfg"
+      },
+      "input_sha256": {
+        "network.net.xml": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+        "routes.rou.xml": "9ffb142a4dd28cd31d3ad8365f465f1daae45db1539f535c29e087747cfbdc91",
+        "run.sumocfg": "c55b242f09b6a86527852bf686f06f3347abc44aa1c16c199c51935ce93dc6c6"
+      },
+      "factors": {
+        "supply": true,
+        "ramp": true
+      },
+      "supply_target_lanes": [
+        "main_2_0",
+        "main_2_1",
+        "main_2_2",
+        "main_2_3",
+        "main_2_4"
+      ],
+      "lane_speed_schedule": [
+        {
+          "start_s": 0,
+          "end_s": 180,
+          "speed_mps": 10
+        },
+        {
+          "start_s": 180,
+          "end_s": 240,
+          "speed_mps": 5
+        },
+        {
+          "start_s": 240,
+          "end_s": 420,
+          "speed_mps": 10
+        }
+      ],
+      "controller": "NativeBackend.before_step: lane.setMaxSpeed then lane.getMaxSpeed on every native step",
+      "control_semantics": "Road lane maxSpeed only. At t180 apply5 before step180->180.05; at t240 restore10 before step240->240.05. Native vehicles entering/leaving/changing lanes follow current lane maxSpeed; no per-vehicle override or forced instantaneous actual speed. Preserve car-following/vehicle limits; future receipt must record set/get plus actual vehicle trajectories.",
+      "future_output_directory": "Required exclusive run directory at R1 admission; none reserved in R0",
+      "bound_baseline_run_id": "WEEK_0750_B00_IC1_s20261201_A03"
+    }
+  ],
+  "warning": "Not an execution proposal, approval, envelope or Protocol Lock; no launch entrypoint."
+}

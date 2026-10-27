@@ -1,0 +1,59 @@
+{
+  "status": "READY_FOR_RESEARCHER_REVIEW",
+  "design_freeze_status": "AWAITING_RESEARCHER_DECISION",
+  "requirements": {
+    "baseline_exact": true,
+    "full_context_P2": true,
+    "source_target_separate": true,
+    "cohort_and_path_candidates_explicit": true,
+    "arm_diffs_audited": true,
+    "ramp60_mapping_complete": true,
+    "unresolved_decisions_explicit": true,
+    "offline_only": true
+  },
+  "R1_execution_allowed": false,
+  "R1_executed": false,
+  "source_event_support_in_B00": false,
+  "R1_release_conditions": [
+    "Researcher resolves listed source/target/cohort/path and exact manipulation candidates",
+    "New exact run-specific source/runtime/input/policy/envelope admission for R1, without reusing A03 approval",
+    "Roadmap diagnostic budget and stopping rules retained"
+  ],
+  "scientific_gate_snapshot_unchanged": {
+    "stage_0_1": {
+      "status": "engineering_pass_scientific_fail",
+      "portable_path": "evidence/results/RES-STAGE-0.1-INFRASTRUCTURE-V3/stage_0_1_report.json"
+    },
+    "stage_0_2": {
+      "status": "pass",
+      "portable_path": "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",
+      "scope": "limited_four_source_ngsim_descriptive_calibration_100ms"
+    },
+    "stage_0_3": {
+      "status": "pass",
+      "portable_path": "evidence/results/RES-STAGE-0.3-SCIENTIFIC-ACCEPTANCE-R3/scientific_gate_report.json",
+      "scope": "single_file_pneuma_descriptive_urban_kinematics_25hz"
+    },
+    "stage_0_4": {
+      "status": "pass_limited",
+      "portable_path": "evidence/results/RES-STAGE-0.4-LIMITED-SCIENTIFIC-ACCEPTANCE-V1/gate_report.json",
+      "scope": "observability_boundary_and_descriptive_evidence_and_parameter_uncertainty"
+    },
+    "stage_0_5": {
+      "status": "blocked",
+      "portable_path": "evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/stage_0_5_gate.json"
+    },
+    "stage_0_6": {
+      "status": "pending_scientific_tolerances_and_dynamic_calibration",
+      "portable_path": "evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/stage_0_6_gate.json"
+    },
+    "stage_1_1": {
+      "status": "blocked_until_protocol_lock",
+      "portable_path": "evidence/results/RES-PROTOCOL-READINESS-V1/protocol_lock_readiness_v1.json"
+    }
+  },
+  "no_scientific_effect_claim": true,
+  "no_Protocol_Lock": true,
+  "new_SUMO_launches": 0,
+  "review_scope": "Complete candidate packet for review only; no source-support or scientific Gate pass inferred"
+}

@@ -1,0 +1,230 @@
+{
+  "schema": "aad.r0.full-context-source-support.v1",
+  "status": "Verified",
+  "rule": {
+    "TTC_strictly_below_s": 2,
+    "minimum_observed_span_s": 0.2,
+    "maximum_allowed_gap_s": 0.11,
+    "native_record_grid_s": 0.1,
+    "confirmation": "first actual observation attaining .2s; not onset+.2 synthetic clock",
+    "attribution": "full-context extraction, then onset position and onset time; confirmation retained for sensitivity"
+  },
+  "full_context": {
+    "rows": 610725,
+    "vehicles": 1005,
+    "time_s": [
+      0.0,
+      419.9
+    ],
+    "recording_times": 4200,
+    "P2_events": 0,
+    "risk_points": 0,
+    "minimum_valid_reliable_TTC_s": 2.1578783958602834,
+    "support": {
+      "observed_states": 610725,
+      "observed_vehicle_count": 1005,
+      "D1_E_veh_s": 52326.100000000006,
+      "D1_links": 523261,
+      "measurement_status": {
+        "not_applicable": 281834,
+        "valid": 244664,
+        "missing": 84227
+      },
+      "physical_support_status": {
+        "observed_same_native_lane": 526498,
+        "unresolved_lane_boundary": 74611,
+        "unresolved_internal_connection": 9616
+      },
+      "missing_points": 84227,
+      "invalid_points": 0,
+      "without_reliable_following_points": 84227,
+      "scope": "Diagnostic same-native-lane both-end reliable exposure over all recorded lanes; not a new frozen global D1 estimand. Approved local D1 stays9778.4veh-s."
+    }
+  },
+  "events": [],
+  "incomplete_candidates": [],
+  "candidate_regions": [
+    {
+      "id": "S_UPSTREAM_MAIN",
+      "edges": [
+        "main_0"
+      ],
+      "lanes": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "y_m": [
+        0,
+        150
+      ],
+      "spatially_disjoint_from_target": true,
+      "window_s": [
+        120,
+        390
+      ],
+      "status": "Proposed",
+      "P2_onset_count": 0,
+      "event_ids": [],
+      "support": {
+        "observed_states": 86234,
+        "observed_vehicle_count": 566,
+        "D1_E_veh_s": 8457.4,
+        "D1_links": 84574,
+        "measurement_status": {
+          "not_applicable": 57798,
+          "valid": 27375,
+          "missing": 1061
+        },
+        "physical_support_status": {
+          "observed_same_native_lane": 85173,
+          "unresolved_lane_boundary": 1061
+        },
+        "missing_points": 1061,
+        "invalid_points": 0,
+        "without_reliable_following_points": 1061
+      },
+      "source_event_support": "Verified no confirmed event in observed eligible context",
+      "source_vehicle_selection": "No vehicle ID selected from outcomes"
+    },
+    {
+      "id": "S_DOWNSTREAM_MAIN",
+      "edges": [
+        "main_2"
+      ],
+      "lanes": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "y_m": [
+        399.22,
+        669.18
+      ],
+      "spatially_disjoint_from_target": true,
+      "window_s": [
+        120,
+        390
+      ],
+      "status": "Proposed",
+      "P2_onset_count": 0,
+      "event_ids": [],
+      "support": {
+        "observed_states": 150551,
+        "observed_vehicle_count": 605,
+        "D1_E_veh_s": 13650.1,
+        "D1_links": 136501,
+        "measurement_status": {
+          "not_applicable": 79360,
+          "valid": 57691,
+          "missing": 13500
+        },
+        "physical_support_status": {
+          "observed_same_native_lane": 137051,
+          "unresolved_lane_boundary": 13500
+        },
+        "missing_points": 13500,
+        "invalid_points": 0,
+        "without_reliable_following_points": 13500
+      },
+      "source_event_support": "Verified no confirmed event in observed eligible context",
+      "source_vehicle_selection": "No vehicle ID selected from outcomes"
+    },
+    {
+      "id": "S_ONRAMP",
+      "edges": [
+        "onramp"
+      ],
+      "lanes": [
+        "7"
+      ],
+      "y_m": null,
+      "spatially_disjoint_from_target": true,
+      "window_s": [
+        120,
+        390
+      ],
+      "status": "Proposed",
+      "P2_onset_count": 0,
+      "event_ids": [],
+      "support": {
+        "observed_states": 5288,
+        "observed_vehicle_count": 41,
+        "D1_E_veh_s": 254.9,
+        "D1_links": 2549,
+        "measurement_status": {
+          "missing": 2700,
+          "valid": 1767,
+          "not_applicable": 821
+        },
+        "physical_support_status": {
+          "unresolved_lane_boundary": 2700,
+          "observed_same_native_lane": 2588
+        },
+        "missing_points": 2700,
+        "invalid_points": 0,
+        "without_reliable_following_points": 2700
+      },
+      "source_event_support": "Verified no confirmed event in observed eligible context",
+      "source_vehicle_selection": "No vehicle ID selected from outcomes"
+    }
+  ],
+  "independent_event_reconstruction": {
+    "pass_": true,
+    "event_count": 0,
+    "method": "independent contiguous risk-run scan compared with official full-context event identities/times"
+  },
+  "existing_target_local_measurement": {
+    "version": "stage-0.5-d1-local-v1",
+    "eligibility": "D1_contract_implemented",
+    "window_s": [
+      120.0,
+      390.0
+    ],
+    "region_m": [
+      150.0,
+      350.0
+    ],
+    "local_evaluable_s": 9778.4,
+    "local_links": 97784,
+    "reliable_local_s": 9778.4,
+    "onset_events": 0,
+    "confirmation_position_events": 0,
+    "through_confirmation_events": 0,
+    "confirmation_time_sensitivity_events": 0,
+    "left_continuing_risk_segments": 0,
+    "confirmation_after_window": 0,
+    "right_censored_unconfirmed": 0,
+    "rate_status": "evaluable_zero_events",
+    "rate_per_evaluable_vehicle_hour": 0.0,
+    "legacy_point_evaluable_s": 9887.2,
+    "no_reliable_leader_point_s": 0.0,
+    "unavailable_point_counts": {
+      "valid": 62206,
+      "not_applicable": 36666,
+      "missing": 12452
+    },
+    "formal_equivalence_accepted": false,
+    "scientific_claim_eligible": false
+  },
+  "source_diagnosis_supported": false,
+  "interpretation": "Observed eligible trajectories only. Missing same-lane/junction support is not zero risk. No claim about unobserved pairs or future treated arms.",
+  "boundary": "An empty confirmed-event list does not establish absence of physical hazards or scientific equivalence; no source-specific tau_p can be assigned without an event.",
+  "raw_FCD_to_measured_state_crosscheck": {
+    "pass_": true,
+    "matched_rows": 610725,
+    "fields": [
+      "vehicle_id",
+      "time_s",
+      "native_lane_id",
+      "native_position_m",
+      "speed_mps",
+      "y_m"
+    ],
+    "method": "All raw FCD rows parsed by accepted coordinate adapter; exact equality before P2 extraction"
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "task_id": "AAD-S0.5-R0-20261028",
+  "status": "Pass",
+  "recorded_at": "2026-10-27T15:03:53.107542+00:00",
+  "task_label_date": "2026-10-28",
+  "checks": {
+    "targeted_offline_tests": "Pass",
+    "full_software_without_native": "Pass",
+    "compileall": "Pass",
+    "strict_documentation": "Pass",
+    "portable_evidence_hashes": "Pass",
+    "full_FCD_context_and_candidate_contracts": "Pass",
+    "zero_simulation_execution": "Pass"
+  },
+  "targeted_tests": {
+    "passed": 49,
+    "failed": 0,
+    "final_source_revision": "Final metadata clarification retested; no scientific logic changed"
+  },
+  "full_software_tests": {
+    "passed": 1405,
+    "skipped": 17,
+    "native_deselected": 7,
+    "failed": 0,
+    "warnings": 2,
+    "wall_s": 337.65,
+    "source_scope": "Complete no-data software suite; subsequent generator change only labels fixed decisions/diagnostic scope, covered by final49 targeted tests"
+  },
+  "new_SUMO_launches": 0,
+  "new_TraCI_connections": 0,
+  "new_R1_runs": 0,
+  "new_stage_0_6_experiments": 0,
+  "new_StageI_experiments": 0,
+  "protected_history_changes": [],
+  "scientific_gate_changes": [],
+  "protocol_lock_written": false,
+  "audit_scope": "Task-owned offline builder forbids all child processes/network/native TraCI imports; tests use established Python no-data audit and seven native exclusions. This is not new OS/runtime certification.",
+  "earlier_checks_preserved": {
+    "packet_generation_v1": "Failed before output creation: actual option is device.fcd.period; fixed offline reader",
+    "first_unexported_draft": "Retained locally; candidate cohort corrected to1112 from exact routes; draft_revision_record.json binds it",
+    "targeted_final_log": "3failed/46passed: one platform XML prolog newline expectation and two Git long-path fixture failures. XML semantic comparison corrected and process-local longpaths enabled; original log retained",
+    "strict_docs_preseal_log": "Missing exact result-ID heading, fixed without changing validation semantics"
+  },
+  "post_commit_verification": "Required after commit in fresh no-data pure Git checkout; separately reported from precommit evidence to avoid self-referential commit hashes",
+  "command_scope": {
+    "software": "validate_stage_0_5_research_v2.py --source-workspace D:/shen/TJU/AAD --test ... / --full",
+    "compileall": "python -m compileall -q isolated/code/src isolated/code/scripts isolated/code/tests; final changed generator compiled again",
+    "docs": "python code/scripts/validate_project_docs.py --strict-git",
+    "evidence": "python code/scripts/export_project_evidence.py --repo-root . --verify"
+  },
+  "evidence_sha256": {
+    "draft_revision_record.json": "eda1ddd23a7573d0cd5dbf997aa1c0fc39e160eba2d464da50b852cf3a632ba6",
+    "entry_baseline.json": "3c6d3d8eadbd65689c5533ca68bb7a6432df7e75074b12aa4d79a9df59e14b11",
+    "evidence_preseal.log": "0c69002e3db974ba19b1ea32d63389fc1f3a6495d116b6f622aa6081c4313f41",
+    "full_software.log": "70fa13567c91d3a37cf2af31f5fa375a323a1a05853fb6c26ac1ea8b3fb7a41d",
+    "full_software_audit.json": "35e1a70fd6696d27227246650019cb5623befc85f870bb820f51024cedb725e9",
+    "packet_generation_v1.log": "bf29b6276f061b0f0b05209940054fc3579c3a73b1d99afe0a84e1c898f78ea9",
+    "packet_generation_v2.log": "5cfe8490e0ffb24bfdc50da8196f7c83c448562a96cb5ae1e3c7ef7e1498314f",
+    "packet_generation_v3.log": "d9013ae73bcdab852e256f87e236459895ae7aca762a73bad3b2deeffd7bcceb",
+    "strict_docs_preseal.log": "c4a672369fa2d33d44ef63f175ac1c382a0b75a55c3e267028c63a294646b93b",
+    "strict_docs_preseal_v2.log": "534ed6a0d8980a186ca298cfacfa994aaa780aeed39761c4a1b6386dbdabee77",
+    "targeted_audit_failed.json": "4eea8d2266baa43c80782ffe0b08f66d7b8dd94288b8ebd7e314fdef02a50927",
+    "targeted_audit_final.json": "914d7ff48be2ae8b994212976eefbdb26430dfebe43528ee840e7a7e60bb7ee8",
+    "targeted_final.log": "e84a2c1609f64b5e67e833221961d0a12c7810794a2a794e0801b7ec594045ae",
+    "targeted_final_v2.log": "8c99fe4a96512bc85a9c9993aba5e90f3b6e5fc6d90c7aaad34e34dd26ca713b",
+    "targeted_seal_revision.log": "92228f437ce25f39c076a10cef7d38ee008fd1119ff02f0c122fc50423a836bc",
+    "topology_completion.log": "24f8edfff4cdf86e2ed92bfdf7d3a18eb812c131013325dc83d1743bc65b119e"
+  }
+}

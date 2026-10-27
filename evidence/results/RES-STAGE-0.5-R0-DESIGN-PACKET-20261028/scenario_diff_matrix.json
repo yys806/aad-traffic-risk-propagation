@@ -1,0 +1,330 @@
+{
+  "status": "Verified candidate deltas; scientific freeze pending",
+  "arms": [
+    {
+      "arm": "B00",
+      "allowed_differences": [],
+      "route_comparison": {
+        "verified": true,
+        "vehicle_count": 1150,
+        "initial_count": 117,
+        "ramp_count": 60,
+        "changed_departures": 0,
+        "changed_vehicle_ids": [],
+        "blocks": {
+          "0": 9,
+          "1": 8,
+          "2": 9,
+          "3": 8,
+          "4": 9,
+          "5": 9,
+          "6": 8
+        },
+        "nonvehicle_elements_equal": true,
+        "other_vehicle_attributes_equal": true,
+        "within_block_order_preserved": true,
+        "serialization": "Global vehicle XML order is (candidate declared depart,vehicle_id); not observed insertion order"
+      },
+      "network_sha256": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+      "config_sha256": "c55b242f09b6a86527852bf686f06f3347abc44aa1c16c199c51935ce93dc6c6",
+      "routes_sha256": "b6df8d9ce52b56fac50899cc2e6d1329c7858325aae0f0c86c76d77f796a7574",
+      "lane_speed_schedule": [
+        {
+          "start_s": 0,
+          "end_s": 420,
+          "speed_mps": 10
+        }
+      ],
+      "unchanged": [
+        "117 initial vehicles including DS38/IC1",
+        "all1150 identities/routes/types",
+        "seed/time/grid/window",
+        "network topology/vTypes/behaviour",
+        "stop/observation rules"
+      ],
+      "unexplained_extra_differences": []
+    },
+    {
+      "arm": "B10",
+      "allowed_differences": [
+        "lane_speed_schedule"
+      ],
+      "route_comparison": {
+        "verified": true,
+        "vehicle_count": 1150,
+        "initial_count": 117,
+        "ramp_count": 60,
+        "changed_departures": 0,
+        "changed_vehicle_ids": [],
+        "blocks": {
+          "0": 9,
+          "1": 8,
+          "2": 9,
+          "3": 8,
+          "4": 9,
+          "5": 9,
+          "6": 8
+        },
+        "nonvehicle_elements_equal": true,
+        "other_vehicle_attributes_equal": true,
+        "within_block_order_preserved": true,
+        "serialization": "Global vehicle XML order is (candidate declared depart,vehicle_id); not observed insertion order"
+      },
+      "network_sha256": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+      "config_sha256": "c55b242f09b6a86527852bf686f06f3347abc44aa1c16c199c51935ce93dc6c6",
+      "routes_sha256": "b6df8d9ce52b56fac50899cc2e6d1329c7858325aae0f0c86c76d77f796a7574",
+      "lane_speed_schedule": [
+        {
+          "start_s": 0,
+          "end_s": 180,
+          "speed_mps": 10
+        },
+        {
+          "start_s": 180,
+          "end_s": 240,
+          "speed_mps": 5
+        },
+        {
+          "start_s": 240,
+          "end_s": 420,
+          "speed_mps": 10
+        }
+      ],
+      "unchanged": [
+        "117 initial vehicles including DS38/IC1",
+        "all1150 identities/routes/types",
+        "seed/time/grid/window",
+        "network topology/vTypes/behaviour",
+        "stop/observation rules"
+      ],
+      "unexplained_extra_differences": []
+    },
+    {
+      "arm": "B01",
+      "allowed_differences": [
+        "noninitial entering vehicle declared depart; explicit XML resort"
+      ],
+      "route_comparison": {
+        "verified": true,
+        "vehicle_count": 1150,
+        "initial_count": 117,
+        "ramp_count": 60,
+        "changed_departures": 60,
+        "changed_vehicle_ids": [
+          "r00000",
+          "r00001",
+          "r00002",
+          "r00003",
+          "r00004",
+          "r00005",
+          "r00006",
+          "r00007",
+          "r00008",
+          "r00009",
+          "r00010",
+          "r00011",
+          "r00012",
+          "r00013",
+          "r00014",
+          "r00015",
+          "r00016",
+          "r00017",
+          "r00018",
+          "r00019",
+          "r00020",
+          "r00021",
+          "r00022",
+          "r00023",
+          "r00024",
+          "r00025",
+          "r00026",
+          "r00027",
+          "r00028",
+          "r00029",
+          "r00030",
+          "r00031",
+          "r00032",
+          "r00033",
+          "r00034",
+          "r00035",
+          "r00036",
+          "r00037",
+          "r00038",
+          "r00039",
+          "r00040",
+          "r00041",
+          "r00042",
+          "r00043",
+          "r00044",
+          "r00045",
+          "r00046",
+          "r00047",
+          "r00048",
+          "r00049",
+          "r00050",
+          "r00051",
+          "r00052",
+          "r00053",
+          "r00054",
+          "r00055",
+          "r00056",
+          "r00057",
+          "r00058",
+          "r00059"
+        ],
+        "blocks": {
+          "0": 9,
+          "1": 8,
+          "2": 9,
+          "3": 8,
+          "4": 9,
+          "5": 9,
+          "6": 8
+        },
+        "nonvehicle_elements_equal": true,
+        "other_vehicle_attributes_equal": true,
+        "within_block_order_preserved": true,
+        "serialization": "Global vehicle XML order is (candidate declared depart,vehicle_id); not observed insertion order"
+      },
+      "network_sha256": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+      "config_sha256": "c55b242f09b6a86527852bf686f06f3347abc44aa1c16c199c51935ce93dc6c6",
+      "routes_sha256": "9ffb142a4dd28cd31d3ad8365f465f1daae45db1539f535c29e087747cfbdc91",
+      "lane_speed_schedule": [
+        {
+          "start_s": 0,
+          "end_s": 420,
+          "speed_mps": 10
+        }
+      ],
+      "unchanged": [
+        "117 initial vehicles including DS38/IC1",
+        "all1150 identities/routes/types",
+        "seed/time/grid/window",
+        "network topology/vTypes/behaviour",
+        "stop/observation rules"
+      ],
+      "unexplained_extra_differences": []
+    },
+    {
+      "arm": "B11",
+      "allowed_differences": [
+        "lane_speed_schedule",
+        "noninitial entering vehicle declared depart; explicit XML resort"
+      ],
+      "route_comparison": {
+        "verified": true,
+        "vehicle_count": 1150,
+        "initial_count": 117,
+        "ramp_count": 60,
+        "changed_departures": 60,
+        "changed_vehicle_ids": [
+          "r00000",
+          "r00001",
+          "r00002",
+          "r00003",
+          "r00004",
+          "r00005",
+          "r00006",
+          "r00007",
+          "r00008",
+          "r00009",
+          "r00010",
+          "r00011",
+          "r00012",
+          "r00013",
+          "r00014",
+          "r00015",
+          "r00016",
+          "r00017",
+          "r00018",
+          "r00019",
+          "r00020",
+          "r00021",
+          "r00022",
+          "r00023",
+          "r00024",
+          "r00025",
+          "r00026",
+          "r00027",
+          "r00028",
+          "r00029",
+          "r00030",
+          "r00031",
+          "r00032",
+          "r00033",
+          "r00034",
+          "r00035",
+          "r00036",
+          "r00037",
+          "r00038",
+          "r00039",
+          "r00040",
+          "r00041",
+          "r00042",
+          "r00043",
+          "r00044",
+          "r00045",
+          "r00046",
+          "r00047",
+          "r00048",
+          "r00049",
+          "r00050",
+          "r00051",
+          "r00052",
+          "r00053",
+          "r00054",
+          "r00055",
+          "r00056",
+          "r00057",
+          "r00058",
+          "r00059"
+        ],
+        "blocks": {
+          "0": 9,
+          "1": 8,
+          "2": 9,
+          "3": 8,
+          "4": 9,
+          "5": 9,
+          "6": 8
+        },
+        "nonvehicle_elements_equal": true,
+        "other_vehicle_attributes_equal": true,
+        "within_block_order_preserved": true,
+        "serialization": "Global vehicle XML order is (candidate declared depart,vehicle_id); not observed insertion order"
+      },
+      "network_sha256": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+      "config_sha256": "c55b242f09b6a86527852bf686f06f3347abc44aa1c16c199c51935ce93dc6c6",
+      "routes_sha256": "9ffb142a4dd28cd31d3ad8365f465f1daae45db1539f535c29e087747cfbdc91",
+      "lane_speed_schedule": [
+        {
+          "start_s": 0,
+          "end_s": 180,
+          "speed_mps": 10
+        },
+        {
+          "start_s": 180,
+          "end_s": 240,
+          "speed_mps": 5
+        },
+        {
+          "start_s": 240,
+          "end_s": 420,
+          "speed_mps": 10
+        }
+      ],
+      "unchanged": [
+        "117 initial vehicles including DS38/IC1",
+        "all1150 identities/routes/types",
+        "seed/time/grid/window",
+        "network topology/vTypes/behaviour",
+        "stop/observation rules"
+      ],
+      "unexplained_extra_differences": []
+    }
+  ],
+  "B11_is_exact_union": true,
+  "ramp_mapping_status": "Proposed",
+  "no_new_run": true,
+  "design_identity": "Stage0.5 supply x ramp diagnosis, not StageI source x communication"
+}

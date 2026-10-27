@@ -1,0 +1,88 @@
+{
+  "status": "AWAITING_RESEARCHER_DECISION",
+  "scientific_parameters_frozen": false,
+  "fixed_high_level": {
+    "B10": "Five downstream mainline lanes10->5->10 within[180,240)",
+    "B01": "Same60 noninitial ramp IDs and60s block counts; proposed20..25s compression",
+    "B11": "Exact union only",
+    "R1_diagnostic_budget": {
+      "B10": 1,
+      "B01": 1,
+      "B11": 1,
+      "additional_parameter_search": false
+    },
+    "R1_stop_rule": "If all three diagnostic arms lack source P2, stop; no seed/intensity search",
+    "formal_P2_attribution": "Full context first, then onset position and onset time; confirmation sensitivity retained"
+  },
+  "decisions": [
+    {
+      "id": "SOURCE_REGION",
+      "status": "AWAITING_RESEARCHER_DECISION",
+      "candidate": "S_UPSTREAM_MAIN / S_DOWNSTREAM_MAIN / S_ONRAMP; none selected",
+      "basis": "Geometry-separated candidates all have0 observed confirmed events; choose mechanism-relevant region before R1 outcomes",
+      "approved_value": null
+    },
+    {
+      "id": "SOURCE_CLOCK",
+      "status": "AWAITING_RESEARCHER_DECISION",
+      "candidate": "onset attribution primary; confirmation sensitivity; physical-origin clock vs actionable clock explicit",
+      "basis": "Roadmap/P2: confirmation is first actual sustained observation; no message-clock substitution",
+      "approved_value": null
+    },
+    {
+      "id": "TARGET_REGION",
+      "status": "AWAITING_RESEARCHER_DECISION",
+      "candidate": "Existing lanes1-5 y[150,350) t[120,390) candidate",
+      "basis": "Accepted B00 local support18/18; default implementation is not a universal frozen scientific region",
+      "approved_value": null
+    },
+    {
+      "id": "COHORT",
+      "status": "AWAITING_RESEARCHER_DECISION",
+      "candidate": "Prefer C_INPUT_ROUTE; alternative C_PRE_PULSE_STATE",
+      "basis": "ID eligibility must precede treatment, report actual-entry/support separately",
+      "approved_value": null
+    },
+    {
+      "id": "PHYSICAL_PATH",
+      "status": "AWAITING_RESEARCHER_DECISION",
+      "candidate": "Qualified time-expanded influence witness and uncertainty rules; no helper output autoacceptance",
+      "basis": "Archived helper direction/gap limitations documented; no source-specific B00 witness possible",
+      "approved_value": null
+    },
+    {
+      "id": "B10_CONTROL",
+      "status": "AWAITING_RESEARCHER_DECISION",
+      "candidate": "Existing lane.setMaxSpeed on main_2_0..4, zero-order steps [0,180):10/[180,240):5/[240,420):10",
+      "basis": "Existing prepared schedule and NativeBackend set/get evidence; high-level pulse fixed, exact lane scope/boundary semantics await explicit freeze",
+      "approved_value": null
+    },
+    {
+      "id": "B01_COMPRESSION",
+      "status": "AWAITING_RESEARCHER_DECISION",
+      "candidate": "Stable (original_depart,id) endpoint interpolation [20,25] rounded ties-even to .05s",
+      "basis": "Existing pulse_routes implementation; mathematical algorithm is Proposed, not approved by code existence",
+      "approved_value": null
+    },
+    {
+      "id": "RAMP_REALIZATION_INTERPRETATION",
+      "status": "AWAITING_RESEARCHER_DECISION",
+      "candidate": "Prestate how actual insertion delay, pending/undeparted and missing support limit ramp diagnostic interpretation; do not automatically use legacy90percent threshold",
+      "basis": "Roadmap fixes the three-arm budget and all-zero-event stop already; this remaining decision concerns measurement interpretation only",
+      "approved_value": null
+    }
+  ],
+  "no_changes_to": [
+    "P2/D1",
+    "seed/time/window",
+    "delta_R/delta_plan/h/SESOI/alpha/n",
+    "scientific Gates",
+    "historical Not Accepted",
+    "Protocol Lock"
+  ],
+  "source_authority": {
+    "path": "D:/shen/OB/科研/TJU/AAD/AAD/Stage0后续路线.md",
+    "sha256": "d54a6d47225e698acebb1ad4920e0314f35e5b36a1024ef4911540e10a775dc3"
+  },
+  "authorization_source": "Current researcher chat: offline preparation only; no asserted signature or independent identity authentication"
+}

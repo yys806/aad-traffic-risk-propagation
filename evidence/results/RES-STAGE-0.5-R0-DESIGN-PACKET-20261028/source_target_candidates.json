@@ -1,0 +1,265 @@
+{
+  "status": "Proposed",
+  "source_candidates": [
+    {
+      "id": "S_UPSTREAM_MAIN",
+      "edges": [
+        "main_0"
+      ],
+      "lanes": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "y_m": [
+        0,
+        150
+      ],
+      "spatially_disjoint_from_target": true,
+      "window_s": [
+        120,
+        390
+      ],
+      "status": "Proposed",
+      "P2_onset_count": 0,
+      "event_ids": [],
+      "support": {
+        "observed_states": 86234,
+        "observed_vehicle_count": 566,
+        "D1_E_veh_s": 8457.4,
+        "D1_links": 84574,
+        "measurement_status": {
+          "not_applicable": 57798,
+          "valid": 27375,
+          "missing": 1061
+        },
+        "physical_support_status": {
+          "observed_same_native_lane": 85173,
+          "unresolved_lane_boundary": 1061
+        },
+        "missing_points": 1061,
+        "invalid_points": 0,
+        "without_reliable_following_points": 1061
+      },
+      "source_event_support": "Verified no confirmed event in observed eligible context",
+      "source_vehicle_selection": "No vehicle ID selected from outcomes"
+    },
+    {
+      "id": "S_DOWNSTREAM_MAIN",
+      "edges": [
+        "main_2"
+      ],
+      "lanes": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "y_m": [
+        399.22,
+        669.18
+      ],
+      "spatially_disjoint_from_target": true,
+      "window_s": [
+        120,
+        390
+      ],
+      "status": "Proposed",
+      "P2_onset_count": 0,
+      "event_ids": [],
+      "support": {
+        "observed_states": 150551,
+        "observed_vehicle_count": 605,
+        "D1_E_veh_s": 13650.1,
+        "D1_links": 136501,
+        "measurement_status": {
+          "not_applicable": 79360,
+          "valid": 57691,
+          "missing": 13500
+        },
+        "physical_support_status": {
+          "observed_same_native_lane": 137051,
+          "unresolved_lane_boundary": 13500
+        },
+        "missing_points": 13500,
+        "invalid_points": 0,
+        "without_reliable_following_points": 13500
+      },
+      "source_event_support": "Verified no confirmed event in observed eligible context",
+      "source_vehicle_selection": "No vehicle ID selected from outcomes"
+    },
+    {
+      "id": "S_ONRAMP",
+      "edges": [
+        "onramp"
+      ],
+      "lanes": [
+        "7"
+      ],
+      "y_m": null,
+      "spatially_disjoint_from_target": true,
+      "window_s": [
+        120,
+        390
+      ],
+      "status": "Proposed",
+      "P2_onset_count": 0,
+      "event_ids": [],
+      "support": {
+        "observed_states": 5288,
+        "observed_vehicle_count": 41,
+        "D1_E_veh_s": 254.9,
+        "D1_links": 2549,
+        "measurement_status": {
+          "missing": 2700,
+          "valid": 1767,
+          "not_applicable": 821
+        },
+        "physical_support_status": {
+          "unresolved_lane_boundary": 2700,
+          "observed_same_native_lane": 2588
+        },
+        "missing_points": 2700,
+        "invalid_points": 0,
+        "without_reliable_following_points": 2700
+      },
+      "source_event_support": "Verified no confirmed event in observed eligible context",
+      "source_vehicle_selection": "No vehicle ID selected from outcomes"
+    }
+  ],
+  "target_region": {
+    "status": "Proposed",
+    "real_lanes": [
+      "1",
+      "2",
+      "3",
+      "4",
+      "5"
+    ],
+    "y_m": [
+      150,
+      350
+    ],
+    "window_s": [
+      120,
+      390
+    ],
+    "actual_edges": {
+      "main_0": "mapped y [150,187.58)",
+      "main_1": "mapped y [187.58,350) excluding native lane0"
+    },
+    "coordinate_rule": "main_0/1/2 inverse native-edge scaling via parse_fcd REAL_SPAN_M; not raw SUMO x/y or lane-pos",
+    "not_formal_StageI_freeze": true
+  },
+  "source_vehicle_rule": "All predeclared vehicles satisfying prespecified region/time and formal P2; no favorable-ID selection; exact region/cohort not frozen",
+  "cohort_candidates": [
+    {
+      "id": "C_INPUT_ROUTE",
+      "status": "Proposed",
+      "primary_preferred": true,
+      "rule": "Before treatment, include every declared ID whose fixed route has main_0 or main_1 mainline support intersecting target, including eligible117 initial and1033 noninitial as route permits. Actual target-window observations determine measurement support, never ID eligibility.",
+      "pre_treatment_determinable": true,
+      "declared_ID_count": 1112,
+      "initial_ID_count": 79,
+      "noninitial_ID_count": 1033,
+      "included_sorted_IDs_sha256": "76db89e2ff2d9df997516b59a23bc4d88a85c7a0161dca6a222f2a8bfee277f8",
+      "route_only_excluded_count": 38,
+      "route_only_excluded_IDs": [
+        "i0000_i0000",
+        "i0001_i0001",
+        "i0002_i0002",
+        "i0003_i0003",
+        "i0004_i0004",
+        "i0005_i0005",
+        "i0006_i0006",
+        "i0027_i0027",
+        "i0028_i0028",
+        "i0029_i0029",
+        "i0030_i0030",
+        "i0031_i0031",
+        "i0032_i0032",
+        "i0033_i0033",
+        "i0034_i0034",
+        "i0054_i0054",
+        "i0055_i0055",
+        "i0056_i0056",
+        "i0057_i0057",
+        "i0058_i0058",
+        "i0059_i0059",
+        "i0060_i0060",
+        "i0061_i0061",
+        "i0062_i0062",
+        "i0063_i0063",
+        "i0064_i0064",
+        "i0077_i0077",
+        "i0078_i0078",
+        "i0079_i0079",
+        "i0080_i0080",
+        "i0081_i0081",
+        "i0082_i0082",
+        "i0098_i0098",
+        "i0099_i0099",
+        "i0100_i0100",
+        "i0101_i0101",
+        "i0102_i0102",
+        "i0103_i0103"
+      ],
+      "exclusion_reason": "Fixed input route contains neither main_0 nor main_1; cannot traverse proposed target; no outcome used",
+      "source_input_sha256": "b6df8d9ce52b56fac50899cc2e6d1329c7858325aae0f0c86c76d77f796a7574",
+      "exclusions": "No exclusions by P2/rho/outcome; entering route includes main_1 and exiting route includes main_0/main_1",
+      "missing_policy": "Retain planned IDs; report native pending/undeparted/no-target-entry separately; D1 only qualified observed links, missing never zero"
+    },
+    {
+      "id": "C_PRE_PULSE_STATE",
+      "status": "Proposed",
+      "primary_preferred": false,
+      "rule": "Fixed IDs present in prespecified region at an actual pre180s clock, same across paired arms before either manipulation; exact clock/region awaits decision",
+      "pre_treatment_determinable": true,
+      "declared_ID_count": null,
+      "limitation": "Excludes later entrants and changes estimand; do not select after inspecting treatment P2 or rho"
+    }
+  ],
+  "cohort_qualification": "Follower and leader incarnations resolved, reliable following, native lane continuity, both-end .1s observation; no valid following -> unevaluable, not zero event",
+  "route_geometry_map": {
+    "main_0": [
+      0.0,
+      187.58
+    ],
+    "main_1": [
+      187.58,
+      399.22
+    ],
+    "main_2": [
+      399.22,
+      669.18
+    ]
+  },
+  "physical_path": {
+    "status": "Proposed / Awaiting Researcher Decision",
+    "implementation": "code/src/riskprop/stage_0_1_sumo.py::analyze_physical_path_from_archived_tables",
+    "actual_semantics": "Forward road topology precheck; same-vehicle forward-time edges; contemporaneous leader -> follower edges. tau_p is absolute earliest visited target clock, not duration or message arrival.",
+    "limitations": [
+      "Existing helper does not enforce max temporal gap or incarnation/leader quality; a returned path is not by itself a qualified scientific physical arrival",
+      "Forward traffic reachability precheck rejects downstream->upstream before leader influence traversal; this cannot establish that an upstream shock path is physically impossible",
+      "Internal-junction lane and native boundary leaders in A03 measured state are unresolved; no cross-edge leader imputation",
+      "No confirmed B00 P2 source exists in observed eligible context; event-specific tau_p is undefined, never filled with zero"
+    ],
+    "proposed_qualified_rule": "Use archived incarnation-resolved, reliable both-end same-native-lane links at .1s (<=.11s), forward vehicle continuity only with verified lane connections; influence leader->follower at actual clock. Separate road reachability from influence reachability. No production change in R0.",
+    "statuses": {
+      "finite_arrival": "actual connected witness, earliest target clock >= chosen source onset/confirmation clock",
+      "uncertain_missing_identity": "source/target missing or unresolved incarnation",
+      "uncertain_missing_links": "identity present but unobserved/junction/gapped leader chain; not proof of unreachable",
+      "topology_disconnected": "Only verified disconnection of specified directed graph, with graph type explicitly stated",
+      "right_censored": "No observed target witness before observation end; incomplete graph remains uncertain"
+    },
+    "source_clock_candidates": [
+      "onset_s for physical-source origin; confirmation_s for usable detected source; retain both and never call message time physical"
+    ],
+    "actual_A03_event_specific_tau_p": null,
+    "source_event_available": false
+  },
+  "formal_selection": null
+}

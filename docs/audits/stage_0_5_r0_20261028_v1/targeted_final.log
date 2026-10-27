@@ -1,0 +1,222 @@
+.........F.....................................FF                        [100%]
+================================== FAILURES ===================================
+_____________ test_candidate_matches_existing_policy_a_algorithm ______________
+
+tmp_path = WindowsPath('C:/Users/Lenovo/.codex/visualizations/2026/10/27/01a17c26-147b-7392-9d31-a8de1dc463ad/r0_offline_clone/code/tmp/research_v2_validation/20261027T145441894023_40488/targeted_tmp/test_candidate_matches_existin0')
+
+    def test_candidate_matches_existing_policy_a_algorithm(tmp_path):
+        import sys
+        sys.path.insert(0, str(SCRIPT.parent))
+        from prepare_stage_0_5_policy_a import pulse_routes
+        source, target = tmp_path / "source.xml", tmp_path / "candidate.xml"
+        source.write_bytes(routes())
+        pulse_routes(source, target)
+>       assert target.read_bytes() == r0.ramp_candidate(source.read_bytes())[0]
+E       assert b'<?xml versi..." /></routes>' == b'<?xml versi..." /></routes>'
+E         
+E         At index 38 diff: b'\r' != b'\n'
+E         Use -v to get more diff
+
+tests\test_stage_0_5_r0_design_packet.py:83: AssertionError
+_____________ test_strict_git_reports_untracked_portable_evidence _____________
+
+tmp_path = WindowsPath('C:/Users/Lenovo/.codex/visualizations/2026/10/27/01a17c26-147b-7392-9d31-a8de1dc463ad/r0_offline_clone/code/tmp/research_v2_validation/20261027T145441894023_40488/targeted_tmp/test_strict_git_reports_untrac0')
+
+    def test_strict_git_reports_untracked_portable_evidence(tmp_path: Path) -> None:
+        repo = _valid_repo(tmp_path)
+        tracked_without_evidence = [
+            str(item.relative_to(repo))
+            for item in repo.rglob("*")
+            if item.is_file()
+            and not item.relative_to(repo).as_posix().startswith("evidence/results/")
+        ]
+>       _git_init_and_add(repo, tracked_without_evidence)
+
+tests\test_project_docs.py:308: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_project_docs.py:216: in _git_init_and_add
+    subprocess.run(["git", "-C", str(repo), "add", "--", *(paths or ["."])], check=True)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+input = None, capture_output = False, timeout = None, check = True
+popenargs = (['git', '-C', 'C:\\Users\\Lenovo\\.codex\\visualizations\\2026\\10\\27\\01a17c26-147b-7392-9d31-a8de1dc463ad\\r0_offl...lidation\\20261027T145441894023_40488\\targeted_tmp\\test_strict_git_reports_untrac0', 'add', '--', 'AGENTS.md', ...],)
+kwargs = {}
+process = <Popen: returncode: 128 args: ['git', '-C', 'C:\\Users\\Lenovo\\.codex\\visu...>
+stdout = None, stderr = None, retcode = 128
+
+    def run(*popenargs,
+            input=None, capture_output=False, timeout=None, check=False, **kwargs):
+        """Run command with arguments and return a CompletedProcess instance.
+    
+        The returned instance will have attributes args, returncode, stdout and
+        stderr. By default, stdout and stderr are not captured, and those attributes
+        will be None. Pass stdout=PIPE and/or stderr=PIPE in order to capture them,
+        or pass capture_output=True to capture both.
+    
+        If check is True and the exit code was non-zero, it raises a
+        CalledProcessError. The CalledProcessError object will have the return code
+        in the returncode attribute, and output & stderr attributes if those streams
+        were captured.
+    
+        If timeout (seconds) is given and the process takes too long,
+         a TimeoutExpired exception will be raised.
+    
+        There is an optional argument "input", allowing you to
+        pass bytes or a string to the subprocess's stdin.  If you use this argument
+        you may not also use the Popen constructor's "stdin" argument, as
+        it will be used internally.
+    
+        By default, all communication is in bytes, and therefore any "input" should
+        be bytes, and the stdout and stderr will be bytes. If in text mode, any
+        "input" should be a string, and stdout and stderr will be strings decoded
+        according to locale encoding, or by "encoding" if set. Text mode is
+        triggered by setting any of text, encoding, errors or universal_newlines.
+    
+        The other arguments are the same as for the Popen constructor.
+        """
+        if input is not None:
+            if kwargs.get('stdin') is not None:
+                raise ValueError('stdin and input arguments may not both be used.')
+            kwargs['stdin'] = PIPE
+    
+        if capture_output:
+            if kwargs.get('stdout') is not None or kwargs.get('stderr') is not None:
+                raise ValueError('stdout and stderr arguments may not be used '
+                                 'with capture_output.')
+            kwargs['stdout'] = PIPE
+            kwargs['stderr'] = PIPE
+    
+        with Popen(*popenargs, **kwargs) as process:
+            try:
+                stdout, stderr = process.communicate(input, timeout=timeout)
+            except TimeoutExpired as exc:
+                process.kill()
+                if _mswindows:
+                    # Windows accumulates the output in a single blocking
+                    # read() call run on child threads, with the timeout
+                    # being done in a join() on those threads.  communicate()
+                    # _after_ kill() is required to collect that and add it
+                    # to the exception.
+                    exc.stdout, exc.stderr = process.communicate()
+                else:
+                    # POSIX _communicate already populated the output so
+                    # far into the TimeoutExpired exception.
+                    process.wait()
+                raise
+            except:  # Including KeyboardInterrupt, communicate handled that.
+                process.kill()
+                # We don't call process.wait() as .__exit__ does that for us.
+                raise
+            retcode = process.poll()
+            if check and retcode:
+>               raise CalledProcessError(retcode, process.args,
+                                         output=stdout, stderr=stderr)
+E               subprocess.CalledProcessError: Command '['git', '-C', 'C:\\Users\\Lenovo\\.codex\\visualizations\\2026\\10\\27\\01a17c26-147b-7392-9d31-a8de1dc463ad\\r0_offline_clone\\code\\tmp\\research_v2_validation\\20261027T145441894023_40488\\targeted_tmp\\test_strict_git_reports_untrac0', 'add', '--', 'AGENTS.md', 'PROJECT_CONTEXT.md', 'README.md', 'AI_CONTEXT\\00_PROJECT_STATE.md', 'AI_CONTEXT\\01_RESEARCH_CONTEXT.md', 'AI_CONTEXT\\02_ARCHITECTURE.md', 'AI_CONTEXT\\03_DATA_FLOW.md', 'AI_CONTEXT\\04_MODULE_MAP.md', 'AI_CONTEXT\\05_EXPERIMENTS.md', 'AI_CONTEXT\\06_DECISIONS.md', 'AI_CONTEXT\\07_KNOWN_ISSUES.md', 'AI_CONTEXT\\08_CHANGELOG.md', 'docs\\ARCHITECTURE.md', 'docs\\CHANGELOG.md', 'docs\\HISTORY_INDEX.md', 'docs\\LEARNING_PATH.md', 'docs\\METHOD_AND_ALGORITHM_GUIDE.md', 'docs\\PROJECT_INDEX.md', 'docs\\PROJECT_REGISTRY.json', 'docs\\RESEARCH_STATUS.md', 'docs\\RESULTS_INDEX.md', 'docs\\STAGE_INDEX.md', 'evidence\\EVIDENCE_MANIFEST.json', 'evidence\\README.md', 'code\\scripts\\example.py', 'code\\src\\example.py', 'code\\src\\legacy.py', 'code\\tests\\test_example.py']' returned non-zero exit status 128.
+
+D:\miniconda\Lib\subprocess.py:577: CalledProcessError
+---------------------------- Captured stderr call -----------------------------
+error: unable to write file .git/objects/a9/4b9cff2bcf9d35b5c6bdd922e76a33f54d7b51: Filename too long
+error: AGENTS.md: failed to insert into database
+error: unable to index file 'AGENTS.md'
+fatal: adding files failed
+________________ test_strict_git_accepts_fully_tracked_fixture ________________
+
+tmp_path = WindowsPath('C:/Users/Lenovo/.codex/visualizations/2026/10/27/01a17c26-147b-7392-9d31-a8de1dc463ad/r0_offline_clone/code/tmp/research_v2_validation/20261027T145441894023_40488/targeted_tmp/test_strict_git_accepts_fully_0')
+
+    def test_strict_git_accepts_fully_tracked_fixture(tmp_path: Path) -> None:
+        repo = _valid_repo(tmp_path)
+>       _git_init_and_add(repo)
+
+tests\test_project_docs.py:315: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+tests\test_project_docs.py:216: in _git_init_and_add
+    subprocess.run(["git", "-C", str(repo), "add", "--", *(paths or ["."])], check=True)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+input = None, capture_output = False, timeout = None, check = True
+popenargs = (['git', '-C', 'C:\\Users\\Lenovo\\.codex\\visualizations\\2026\\10\\27\\01a17c26-147b-7392-9d31-a8de1dc463ad\\r0_offl...esearch_v2_validation\\20261027T145441894023_40488\\targeted_tmp\\test_strict_git_accepts_fully_0', 'add', '--', '.'],)
+kwargs = {}
+process = <Popen: returncode: 128 args: ['git', '-C', 'C:\\Users\\Lenovo\\.codex\\visu...>
+stdout = None, stderr = None, retcode = 128
+
+    def run(*popenargs,
+            input=None, capture_output=False, timeout=None, check=False, **kwargs):
+        """Run command with arguments and return a CompletedProcess instance.
+    
+        The returned instance will have attributes args, returncode, stdout and
+        stderr. By default, stdout and stderr are not captured, and those attributes
+        will be None. Pass stdout=PIPE and/or stderr=PIPE in order to capture them,
+        or pass capture_output=True to capture both.
+    
+        If check is True and the exit code was non-zero, it raises a
+        CalledProcessError. The CalledProcessError object will have the return code
+        in the returncode attribute, and output & stderr attributes if those streams
+        were captured.
+    
+        If timeout (seconds) is given and the process takes too long,
+         a TimeoutExpired exception will be raised.
+    
+        There is an optional argument "input", allowing you to
+        pass bytes or a string to the subprocess's stdin.  If you use this argument
+        you may not also use the Popen constructor's "stdin" argument, as
+        it will be used internally.
+    
+        By default, all communication is in bytes, and therefore any "input" should
+        be bytes, and the stdout and stderr will be bytes. If in text mode, any
+        "input" should be a string, and stdout and stderr will be strings decoded
+        according to locale encoding, or by "encoding" if set. Text mode is
+        triggered by setting any of text, encoding, errors or universal_newlines.
+    
+        The other arguments are the same as for the Popen constructor.
+        """
+        if input is not None:
+            if kwargs.get('stdin') is not None:
+                raise ValueError('stdin and input arguments may not both be used.')
+            kwargs['stdin'] = PIPE
+    
+        if capture_output:
+            if kwargs.get('stdout') is not None or kwargs.get('stderr') is not None:
+                raise ValueError('stdout and stderr arguments may not be used '
+                                 'with capture_output.')
+            kwargs['stdout'] = PIPE
+            kwargs['stderr'] = PIPE
+    
+        with Popen(*popenargs, **kwargs) as process:
+            try:
+                stdout, stderr = process.communicate(input, timeout=timeout)
+            except TimeoutExpired as exc:
+                process.kill()
+                if _mswindows:
+                    # Windows accumulates the output in a single blocking
+                    # read() call run on child threads, with the timeout
+                    # being done in a join() on those threads.  communicate()
+                    # _after_ kill() is required to collect that and add it
+                    # to the exception.
+                    exc.stdout, exc.stderr = process.communicate()
+                else:
+                    # POSIX _communicate already populated the output so
+                    # far into the TimeoutExpired exception.
+                    process.wait()
+                raise
+            except:  # Including KeyboardInterrupt, communicate handled that.
+                process.kill()
+                # We don't call process.wait() as .__exit__ does that for us.
+                raise
+            retcode = process.poll()
+            if check and retcode:
+>               raise CalledProcessError(retcode, process.args,
+                                         output=stdout, stderr=stderr)
+E               subprocess.CalledProcessError: Command '['git', '-C', 'C:\\Users\\Lenovo\\.codex\\visualizations\\2026\\10\\27\\01a17c26-147b-7392-9d31-a8de1dc463ad\\r0_offline_clone\\code\\tmp\\research_v2_validation\\20261027T145441894023_40488\\targeted_tmp\\test_strict_git_accepts_fully_0', 'add', '--', '.']' returned non-zero exit status 128.
+
+D:\miniconda\Lib\subprocess.py:577: CalledProcessError
+---------------------------- Captured stderr call -----------------------------
+error: unable to write file .git/objects/a9/4b9cff2bcf9d35b5c6bdd922e76a33f54d7b51: Filename too long
+error: AGENTS.md: failed to insert into database
+error: unable to index file 'AGENTS.md'
+fatal: adding files failed
+=========================== short test summary info ===========================
+FAILED tests/test_stage_0_5_r0_design_packet.py::test_candidate_matches_existing_policy_a_algorithm
+FAILED tests/test_project_docs.py::test_strict_git_reports_untracked_portable_evidence
+FAILED tests/test_project_docs.py::test_strict_git_accepts_fully_tracked_fixture
+3 failed, 46 passed in 6.27s
+VALIDATION_AUDIT_PATH=C:\Users\Lenovo\.codex\visualizations\2026\10\27\01a17c26-147b-7392-9d31-a8de1dc463ad\r0_offline_clone\code\tmp\research_v2_validation\20261027T145441894023_40488

@@ -1,0 +1,16 @@
+PROJECT_DOCS_OK
+PORTABLE_EVIDENCE_OK
+ValueError: packet_bound_file_drift:docs/audits/stage_0_5_r0_20261028_v1/entry_baseline.json
+Source: fresh no-data Git clone r0_pure_git_final at 48aab07975cd1f52fc4070d96920c1f16398abcb
+
+Original traceback from the tool result:
+Traceback (most recent call last):
+  File "C:\Users\Lenovo\.codex\visualizations\2026\10\27\01a17c26-147b-7392-9d31-a8de1dc463ad\r0_pure_git_final\code\scripts\prepare_stage_0_5_r0_design_packet.py", line 702, in <module>
+    print(json.dumps(verify_packet(args.repo_root, require_local=args.require_local)))
+                     ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\.codex\visualizations\2026\10\27\01a17c26-147b-7392-9d31-a8de1dc463ad\r0_pure_git_final\code\scripts\prepare_stage_0_5_r0_design_packet.py", line 179, in verify_packet
+    require(sha(p) == expected, "packet_bound_file_drift:" + name)
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Lenovo\.codex\visualizations\2026\10\27\01a17c26-147b-7392-9d31-a8de1dc463ad\r0_pure_git_final\code\scripts\prepare_stage_0_5_r0_design_packet.py", line 56, in require
+    raise ValueError(message)
+ValueError: packet_bound_file_drift:docs/audits/stage_0_5_r0_20261028_v1/entry_baseline.json

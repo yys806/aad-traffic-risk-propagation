@@ -1,5 +1,9 @@
 # AAD Known Issues
 
+## 2026-10-28 R0 offline design packet（任务标签；实际准备2026-10-27起）
+
+Verified：A03完整可评价上下文正式P2=0，无现成源事件见证；边界/连接84227点缺失不能补零。归档物理路径helper跨1s时间缺口且有前向道路早拒，不可直接当合格影响到达；本轮未修改科学实现，候选连续身份/链路规则待研究者决定。R1未放行，Stage0.5科学交互Gate仍blocked。 证据：evidence/results/RES-STAGE-0.5-R0-DESIGN-PACKET-20261028/；审查报告：docs/plans/2026-10-28-stage-0-5-r0-design-freeze.md。
+
 ## 2026-10-27 Weekly B00 accepted; Stage I remains BLOCKED
 
 Verified: A03 completed420s/8400native steps, independent receipt and all8 measurement checks Pass; B00_EXECUTED_MEASUREMENT_ACCEPTED. This task had3 real B00 starts: A01/A02 resource-coverage failures retained; A03 sealed trajectory independently remeasured with zero new launches after a coordinator import fix.1150declared=1005inserted+145native pending;857arrived/148active; collision/teleport/discard0 with complete required observation.18/18state/D1 support, E=9778.4veh-s, localP2=0. Final isolated software:1386passed/17skipped/7native excluded; audit denied0/SUMO0; compileall/docs/hash Pass. Scientific interaction Gate blocked; numerical budget/protocol candidate are Proposed, StageI BLOCKED. Historical Not Accepted unchanged. Evidence: docs/AAD_WEEK_TO_STAGE_I_2026-10-27.md; evidence/results/RES-AAD-WEEK-20261027-V1/; evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/. Older blocks below retain their historical time points.

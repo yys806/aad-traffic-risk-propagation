@@ -1,0 +1,79 @@
+{
+  "task_id": "AAD-S0.5-R0-20261028",
+  "recorded_at": "2026-10-27T22:33:34.752465+08:00",
+  "task_label_date": "2026-10-28",
+  "actual_entry_HEAD": "4a7c204ba6e83296f6fd657cfe4ce82b35a5ec07",
+  "origin_main": "4a7c204ba6e83296f6fd657cfe4ce82b35a5ec07",
+  "entry_git_porcelain": "",
+  "roadmap": {
+    "path": "D:/shen/OB/科研/TJU/AAD/AAD/Stage0后续路线.md",
+    "sha256": "d54a6d47225e698acebb1ad4920e0314f35e5b36a1024ef4911540e10a775dc3"
+  },
+  "accepted_B00_run_id": "WEEK_0750_B00_IC1_s20261201_A03",
+  "accepted_package_files": {
+    "audit.json": "54ac6ad248f424a963c030e2cd3062594aa458c7a1977aacf19c67c56c105317",
+    "failure_archive.json": "6661316113a075a7681b59e805aa628695b2dcc1e3f1af868a6c7b3b58cd0209",
+    "independent_execution_receipt.json": "3da0494196616154508b0e8fc2e97ac26bc2b707d5d96003e709c167c109f864",
+    "ledger_snapshot.json": "8097bf661fbef8c6e92a60f85994618e2829041763167ac5f3e847b2d830eee9",
+    "manifest.json": "57a5c92e7c9754907eedc0eaf4133ed815548b479f0afc9db0d42be6f2a337a7",
+    "matched18.csv": "f76f26a7989ead9b8e880d679b26e3fb36784410ce0382ea01a207ef612547a3",
+    "measurement_acceptance.json": "4c4c8351af7473ed2a690e740ca8b7d0f857eaf7430c3f70eb53c3b9d627fb85",
+    "population_accounting.json": "331729230e6599e94e37c1fb830c9fc45ea1a42c004d65ed3028fde0aac750c5",
+    "provenance.json": "0c050a58fa9eba3b75e7dc5930c62a2be7ee2afb2d03aacc0e1fdb107322bacc",
+    "scene_audit.json": "e619899bc4bdbe1de12d61166c488b31c79d5cebf4cedd2e9e62823810992997",
+    "SHA256SUMS": "9989606e05df653d015e29f0a8fa5ebf1e2a4ac9630990580bb8914a344f1d09",
+    "validation_record.json": "046e1b62584cce4c36ab037e27ae903ef2c94607a8b2f69ee997d14b3a4c427b"
+  },
+  "sealed_raw_artifact_sha256": {
+    "broker_context.json": "78be039bee50efde2d03e998eb95ce7ae806d512aaf5caff9d2df12295ae316d",
+    "capability_record.json": "26a4427717abfa93a3be05c4368d8ce2558018715694eb34e70c559247fd0105",
+    "controller_receipt.json": "5a95c008f1d67a38385e56dbe85d1b87e24bb698d4a77800fa974a61f8bc9db1",
+    "executed_policy.json": "8da5c25bd86d81fa1110b7ab96f4db4cffc81368aadeebf144b95b3989d0c053",
+    "fcd.xml": "1dc274082f4ea14949979d0c925903bbb5b9668d1124dabb79799b59a55fa304",
+    "identity_events.jsonl": "a97b2d82cf70d1cead798e6dd591bd1e107e7e3347eb8450739ebb4d459ba995",
+    "identity_summary.json": "7eeae27a85baf7d71dcf32755417ed765b6e7ba0b46c9d45fc2fdf9f646246f6",
+    "native_console.log": "79b4afa5c78e1650315b40fd564154ced3f71d6e2392ef08bbbfa51dfca38297",
+    "resource_samples.jsonl": "6cb6350ac1e5dd9471ed4f70c6824bc2e5c24e4299d5422d891f905c867b6241",
+    "summary.xml": "d0210a2c68b763bc6cb0b5bd3b63becf66836d3899b29eb4e1c499ee96a85de8",
+    "tripinfo.xml": "a9df43dba65d7bfeb7f1268bdb9ca34558b3eb1f24d097443852e9bc9c7d6d1f"
+  },
+  "derived_measured_state": {
+    "path": "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/WEEK_0750_B00_IC1_s20261201_A03/measured_state.parquet",
+    "sha256": "48b20ff458ff1dce4559a762d6965b6747a940d537b1460d74e33d739a3cf63a"
+  },
+  "gate_snapshot": {
+    "stage_0_1": {
+      "status": "engineering_pass_scientific_fail",
+      "portable_path": "evidence/results/RES-STAGE-0.1-INFRASTRUCTURE-V3/stage_0_1_report.json"
+    },
+    "stage_0_2": {
+      "status": "pass",
+      "portable_path": "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",
+      "scope": "limited_four_source_ngsim_descriptive_calibration_100ms"
+    },
+    "stage_0_3": {
+      "status": "pass",
+      "portable_path": "evidence/results/RES-STAGE-0.3-SCIENTIFIC-ACCEPTANCE-R3/scientific_gate_report.json",
+      "scope": "single_file_pneuma_descriptive_urban_kinematics_25hz"
+    },
+    "stage_0_4": {
+      "status": "pass_limited",
+      "portable_path": "evidence/results/RES-STAGE-0.4-LIMITED-SCIENTIFIC-ACCEPTANCE-V1/gate_report.json",
+      "scope": "observability_boundary_and_descriptive_evidence_and_parameter_uncertainty"
+    },
+    "stage_0_5": {
+      "status": "blocked",
+      "portable_path": "evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/stage_0_5_gate.json"
+    },
+    "stage_0_6": {
+      "status": "pending_scientific_tolerances_and_dynamic_calibration",
+      "portable_path": "evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/stage_0_6_gate.json"
+    },
+    "stage_1_1": {
+      "status": "blocked_until_protocol_lock",
+      "portable_path": "evidence/results/RES-PROTOCOL-READINESS-V1/protocol_lock_readiness_v1.json"
+    }
+  },
+  "new_simulations": 0,
+  "scope": "Offline R0 only; no R1/Stage0.6/StageI launch, lock write or ledger reservation"
+}

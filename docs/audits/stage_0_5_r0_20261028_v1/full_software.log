@@ -1,0 +1,32 @@
+........................................................................ [  5%]
+........................................................................ [ 10%]
+........................................................................ [ 15%]
+........................................s........s...................... [ 20%]
+.................................................sssssssssss............ [ 25%]
+.................................................s...................... [ 30%]
+........................................................................ [ 35%]
+...........................................s............................ [ 40%]
+........................................................................ [ 45%]
+........................................................................ [ 50%]
+........................................................................ [ 55%]
+........................................................................ [ 60%]
+........................................................................ [ 65%]
+........................................................................ [ 70%]
+........................................................................ [ 75%]
+................................................s....................... [ 81%]
+........................................................................ [ 86%]
+........................................................................ [ 91%]
+........................................................................ [ 96%]
+..........s...........................................                   [100%]
+============================== warnings summary ===============================
+tests/test_stage_0_5_final_closure.py::test_real_lane_storage_type_does_not_silently_empty_region
+  C:\Users\Lenovo\.codex\visualizations\2026\10\27\01a17c26-147b-7392-9d31-a8de1dc463ad\r0_offline_clone\code\tests\test_stage_0_5_final_closure.py:79: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1.5' has dtype incompatible with int64, please explicitly cast to a compatible dtype first.
+    d.loc[0,'lane_id']=1.5
+
+tests/test_stage_0_5_wp1_audit.py::test_missing_leader_points_are_not_following_time
+  C:\Users\Lenovo\.codex\visualizations\2026\10\27\01a17c26-147b-7392-9d31-a8de1dc463ad\r0_offline_clone\code\scripts\audit_stage_0_5_work_package_1.py:111: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
+    adjacent &= ~d[k].fillna(True) & ~p[k].fillna(True)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+1405 passed, 17 skipped, 7 deselected, 2 warnings in 337.65s (0:05:37)
+VALIDATION_AUDIT_PATH=C:\Users\Lenovo\.codex\visualizations\2026\10\27\01a17c26-147b-7392-9d31-a8de1dc463ad\r0_offline_clone\code\tmp\research_v2_validation\20261027T145621502874_1892
