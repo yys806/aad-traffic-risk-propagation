@@ -1,0 +1,779 @@
+{
+  "active_call_path": [
+    "run_stage_0_5_admission_v3.main (v4 skips legacy lock)",
+    "ExecutionAdapter.execute -> execute_research -> authorization_reasons -> technical_preflight_v4",
+    "_execute_authorized -> ResearchLedger.reserve -> envelope transfer -> running -> launch_linux",
+    "verify_envelope -> linux_preflight -> exclusive launch_attempt -> Linux broker payload",
+    "broker context accepted_build from immutable policy -> controller.main -> verify_live_context",
+    "authorization_reasons(proposal_stub accepted_build=false) -> capsule_build_not_accepted before SUMO version"
+  ],
+  "engineering_true_alone_authorizes": false,
+  "guard_changes_performed": false,
+  "human_origin_cryptographically_authenticated": false,
+  "new_research_trajectories": 0,
+  "objects": [
+    {
+      "field": "accepted_for_new_task",
+      "meaning": "engineering input/resource/runtime chain eligibility",
+      "path": "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/integration_acceptance.json",
+      "schema": "aad.native-integration-acceptance.v1",
+      "value": true
+    },
+    {
+      "field": "accepted_for_new_task",
+      "meaning": "research admission display; not directly read by v4 execute",
+      "path": "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/admission_profile.json",
+      "value": false
+    },
+    {
+      "field": "native_launch_locked",
+      "meaning": "profile display; actual v4 kernel lock is policy.accepted_build",
+      "path": "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/admission_profile.json",
+      "value": true
+    },
+    {
+      "field": "binding.accepted_build",
+      "meaning": "enforced inside native controller before SUMO version process",
+      "path": "docs/audits/stage_0_5_linux_native_v4/prepared-20261026-r5/research_policy.json",
+      "value": false
+    }
+  ],
+  "readers": [
+    {
+      "hits": [
+        {
+          "line": 119,
+          "text": "\"candidate_flags\": {k: candidate[k] for k in [\"execution_allowed\", \"researcher_confirmed\", \"protocol_frozen\"]},"
+        }
+      ],
+      "path": "code/scripts/audit_stage_0_5_research_v2.py",
+      "role": "preparation/verifier or legacy path; not automatic v4 research authority",
+      "sha256": "1ce927e22465a2ae7abf6516d445447495dc0959ed5093bbf67525445290fb13"
+    },
+    {
+      "hits": [
+        {
+          "line": 39,
+          "text": "if any(p[k] for k in [\"execution_allowed\", \"researcher_confirmed\", \"protocol_frozen\"]):"
+        }
+      ],
+      "path": "code/scripts/export_stage_0_5_research_v2_evidence.py",
+      "role": "preparation/verifier or legacy path; not automatic v4 research authority",
+      "sha256": "185b2331ca42130ef206c5f71f9d0602cd35510c48e27be840d24f6c8ddceb8c"
+    },
+    {
+      "hits": [
+        {
+          "line": 40,
+          "text": "if any(profile[k] is not False for k in [\"execution_allowed\", \"researcher_confirmed\", \"protocol_frozen\", \"accepted_for_new_task\"]):"
+        }
+      ],
+      "path": "code/scripts/export_stage_0_5_v2_admission_evidence.py",
+      "role": "preparation/verifier or legacy path; not automatic v4 research authority",
+      "sha256": "fd662f32caea41a57f6c1fc67b447edf536b9ac03ee65081193356e67cebec92"
+    },
+    {
+      "hits": [
+        {
+          "line": 154,
+          "text": "execution_allowed=False,researcher_confirmed=False,protocol_frozen=False,"
+        },
+        {
+          "line": 165,
+          "text": "isolation=dict(accepted_for_new_task=False,report_path=environment_report.relative_to(root).as_posix(),report_sha256=sha(environment_report),historical_incident=\"Not Accepted\"),"
+        },
+        {
+          "line": 173,
+          "text": "execution_allowed=False,researcher_confirmed=False,protocol_frozen=False,accepted_for_new_task=False,"
+        },
+        {
+          "line": 193,
+          "text": "if not all(p[k] is False for k in [\"execution_allowed\",\"researcher_confirmed\",\"protocol_frozen\"]):"
+        },
+        {
+          "line": 195,
+          "text": "if p[\"isolation\"][\"accepted_for_new_task\"] is not False:raise ValueError(\"unproved_native_isolation\")"
+        }
+      ],
+      "path": "code/scripts/prepare_stage_0_5_admission_v3.py",
+      "role": "preparation/verifier or legacy path; not automatic v4 research authority",
+      "sha256": "f15ad917f1d774f21b3738f2aeb76ec2c38f0261fc3d78d9a6e13a93ae108683"
+    },
+    {
+      "hits": [
+        {
+          "line": 50,
+          "text": "{n:str(inputs/n) for n in run[\"input_files\"]},run,accepted_build=False,"
+        },
+        {
+          "line": 88,
+          "text": "integration=dict(accepted_for_new_task=False,input_and_test_resource_scope_accepted=False,"
+        },
+        {
+          "line": 111,
+          "text": "execution_allowed=False,researcher_confirmed=False,protocol_frozen=False,"
+        },
+        {
+          "line": 116,
+          "text": "p[\"isolation\"]=dict(accepted_for_new_task=False,report_path=relative(folder/\"integration_pending.json\"),"
+        },
+        {
+          "line": 126,
+          "text": "write(folder/\"admission_profile.json\",dict(status=report[\"status\"],execution_allowed=False,researcher_confirmed=False,"
+        },
+        {
+          "line": 127,
+          "text": "protocol_frozen=False,accepted_for_new_task=False,native_launch_locked=True,historical_incident=\"Not Accepted\","
+        }
+      ],
+      "path": "code/scripts/prepare_stage_0_5_admission_v4.py",
+      "role": "preparation/verifier or legacy path; not automatic v4 research authority",
+      "sha256": "41cf48981333a265076ced1bc90cc88dbc5233a3d92993187137fefafe6cfa76"
+    },
+    {
+      "hits": [
+        {
+          "line": 113,
+          "text": "require(binding[\"accepted_build\"] is False, \"historical_build_lock_changed\")"
+        },
+        {
+          "line": 195,
+          "text": "require(all(p[k] is False for k in [\"execution_allowed\", \"researcher_confirmed\", \"protocol_frozen\"]) and"
+        },
+        {
+          "line": 211,
+          "text": "for key in [\"execution_allowed\", \"researcher_confirmed\", \"protocol_frozen\"]:"
+        },
+        {
+          "line": 221,
+          "text": "certificate[\"accepted_for_new_task\"] is True and certificate[\"input_and_test_resource_scope_accepted\"] is True,"
+        },
+        {
+          "line": 311,
+          "text": "accepted_for_new_task=True, input_and_test_resource_scope_accepted=True,"
+        },
+        {
+          "line": 337,
+          "text": "p[\"isolation\"].update(accepted_for_new_task=True, input_and_test_resource_scope_accepted=True,"
+        },
+        {
+          "line": 358,
+          "text": "write(target / \"admission_profile.json\", dict(status=full[\"status\"], accepted_for_new_task=False,"
+        },
+        {
+          "line": 359,
+          "text": "execution_allowed=False, researcher_confirmed=False, protocol_frozen=False, native_launch_locked=True,"
+        },
+        {
+          "line": 386,
+          "text": "require(load(root, V6 + \"/admission_profile.json\")[\"native_launch_locked\"] is True and"
+        },
+        {
+          "line": 388,
+          "text": "[\"accepted_for_new_task\", \"execution_allowed\", \"researcher_confirmed\", \"protocol_frozen\"]), \"research_profile_unlocked\")"
+        }
+      ],
+      "path": "code/scripts/prepare_stage_0_5_b00_admission_v6.py",
+      "role": "preparation/verifier or legacy path; not automatic v4 research authority",
+      "sha256": "2f378e4b69757b0f030d6fc1160364af9e462813052addd7e4520febf79ade3a"
+    },
+    {
+      "hits": [
+        {
+          "line": 304,
+          "text": "'status': 'Proposed / Awaiting exact researcher confirmation', 'execution_allowed': False,"
+        },
+        {
+          "line": 305,
+          "text": "'researcher_confirmed': False, 'protocol_frozen': False,"
+        },
+        {
+          "line": 352,
+          "text": "if p['execution_allowed'] or p['researcher_confirmed'] or p['budget']['already_spent'] != 1: raise ValueError('authorization_or_budget')"
+        }
+      ],
+      "path": "code/scripts/prepare_stage_0_5_depart_speed_candidate.py",
+      "role": "preparation/verifier or legacy path; not automatic v4 research authority",
+      "sha256": "63ee43e2bde0889bd7f067b81a9e7282b43c79bf16ed3cdfb7b60f76ae212d2e"
+    },
+    {
+      "hits": [
+        {
+          "line": 86,
+          "text": "path,policy=make_policy(base/\"smoke_capsule\",runtime,runtime_path,sources,{n:str(inputs/n) for n in run[\"capsule_input_sha256\"]},run,accepted_build=False,capability_record=capability)"
+        }
+      ],
+      "path": "code/scripts/prepare_stage_0_5_linux_stage_v4.py",
+      "role": "preparation/verifier or legacy path; not automatic v4 research authority",
+      "sha256": "bc2eb6b0eb0a00babb5763b2d53954df8e4d96ab26fa7e8b6fadbd58be243abc"
+    },
+    {
+      "hits": [
+        {
+          "line": 163,
+          "text": "'protocol_frozen':False,'execution_allowed':False,'attempts':0,'runs':run_entries,"
+        }
+      ],
+      "path": "code/scripts/prepare_stage_0_5_policy_a.py",
+      "role": "preparation/verifier or legacy path; not automatic v4 research authority",
+      "sha256": "aa012f6d08cb5bab91a6f3724745f36bc9afb21bf55af905de63a2d62d4d80ac"
+    },
+    {
+      "hits": [
+        {
+          "line": 128,
+          "text": "profile = dict(task_id=TASK, schema=\"aad.v2-admission-engineering.v1\", execution_allowed=False, researcher_confirmed=False,"
+        },
+        {
+          "line": 129,
+          "text": "protocol_frozen=False, accepted_for_new_task=False, native_launch_build_lock=True,"
+        }
+      ],
+      "path": "code/scripts/prepare_stage_0_5_v2_admission_evidence.py",
+      "role": "preparation/verifier or legacy path; not automatic v4 research authority",
+      "sha256": "536fb75bb95964e0c16b10272b230ffbef9aeeef75595396b0e14e5a9cfc98fc"
+    },
+    {
+      "hits": [
+        {
+          "line": 50,
+          "text": "accepted_for_new_task=False)"
+        },
+        {
+          "line": 60,
+          "text": "execution_allowed=False,researcher_confirmed=False,protocol_frozen=False,accepted_for_new_task=False,"
+        },
+        {
+          "line": 61,
+          "text": "native_launch_locked=True,historical_incident=\"Not Accepted\",SUMO_launches=0,real_TraCI_connections=0,new_trajectories=0))"
+        }
+      ],
+      "path": "code/scripts/prepare_stage_0_5_wsl_b00.py",
+      "role": "preparation/verifier or legacy path; not automatic v4 research authority",
+      "sha256": "cd84cd94da739c0476c1f5c916bf79095ac61f15f0ed8f0e152a6003d9a09ceb"
+    },
+    {
+      "hits": [
+        {
+          "line": 97,
+          "text": "approval = {'researcher_confirmed': True, 'proposal_sha256': PROPOSAL_SHA,"
+        }
+      ],
+      "path": "code/scripts/run_stage_0_5_policy_a_confirmed.py",
+      "role": "preparation/verifier or legacy path; not automatic v4 research authority",
+      "sha256": "a99c197387061a75d57f7db81f956c675c125a21061f7c23890772f64f9a9d59"
+    },
+    {
+      "hits": [
+        {
+          "line": 146,
+          "text": "if p[\"isolation\"].get(\"accepted_for_new_task\") is not True:"
+        }
+      ],
+      "path": "code/scripts/stage_0_5_admission_v3.py",
+      "role": "preparation/verifier or legacy path; not automatic v4 research authority",
+      "sha256": "a481f0dbfeae5a53539c4c5784cf4bd298ba48c29dfff3be09985543e26ab8ee"
+    },
+    {
+      "hits": [
+        {
+          "line": 42,
+          "text": "for flag in [\"execution_allowed\", \"researcher_confirmed\", \"protocol_frozen\"]:"
+        },
+        {
+          "line": 45,
+          "text": "if approval.get(\"researcher_confirmed\") is not True or approval.get(\"proposal_sha256\") != proposal_sha256 or approval.get(\"task_id\") != task_id or not approval.get(\"decision_record\"):"
+        },
+        {
+          "line": 55,
+          "text": "if isolation.get(\"accepted_for_new_task\") is not True:"
+        },
+        {
+          "line": 56,
+          "text": "reasons.append(\"accepted_for_new_task_not_true\")"
+        },
+        {
+          "line": 264,
+          "text": "raise AdmissionRefused(\"engineering_build_native_launch_locked\")"
+        },
+        {
+          "line": 396,
+          "text": "if not synthetic and self.ledger.config.get(\"execution_allowed\") is not True:"
+        },
+        {
+          "line": 404,
+          "text": "reasons.append(\"engineering_build_native_launch_locked\")"
+        },
+        {
+          "line": 595,
+          "text": "\"native_launch_locked\": NATIVE_LAUNCH_LOCKED, \"native_processes_created\": 0}, ensure_ascii=False))"
+        }
+      ],
+      "path": "code/scripts/stage_0_5_execution_v2.py",
+      "role": "active V4 guard/coordinator",
+      "sha256": "e3a3b64b259c691147a103f5cb7bece5cb8ef29032e98118cc0c001337e245d1"
+    },
+    {
+      "hits": [
+        {
+          "line": 52,
+          "text": "accepted_for_new_task=False)"
+        }
+      ],
+      "path": "code/scripts/stage_0_5_isolation_admission.py",
+      "role": "preparation/verifier or legacy path; not automatic v4 research authority",
+      "sha256": "8bc6b955feeb542bc1c3fd01ffd24a08209b7cc0fb361ab31022d7eebcccd17b"
+    },
+    {
+      "hits": [
+        {
+          "line": 90,
+          "text": "self.denied.append({\"process\": normalized, \"reason\": \"native_launch_locked_this_round\"})"
+        },
+        {
+          "line": 91,
+          "text": "raise ScopeViolation(\"native_launch_locked_this_round\")"
+        },
+        {
+          "line": 123,
+          "text": "\"accepted_for_new_task\": False}"
+        }
+      ],
+      "path": "code/scripts/stage_0_5_isolation_v2.py",
+      "role": "preparation/verifier or legacy path; not automatic v4 research authority",
+      "sha256": "b10d5b91aaefe77cae0616ad08f4a0a9698fb150e16f167c792bdacf3b577e63"
+    },
+    {
+      "hits": [
+        {
+          "line": 140,
+          "text": "require(proof[\"accepted_for_new_task\"] is True and proof[\"input_and_test_resource_scope_accepted\"] is True,\"integration_not_accepted\")"
+        },
+        {
+          "line": 148,
+          "text": "require(p[\"isolation\"][\"accepted_for_new_task\"] is True,\"new_task_OS_isolation_unaccepted\")"
+        }
+      ],
+      "path": "code/scripts/stage_0_5_linux_execution_v4.py",
+      "role": "active V4 guard/coordinator",
+      "sha256": "59e2e679185a5182284cdcbe7f1919d818d611f90a9987dd2506bad4696f30f7"
+    },
+    {
+      "hits": [
+        {
+          "line": 229,
+          "text": "context.update(source_files=policy[\"binding\"][\"source_files\"],accepted_build=policy[\"binding\"][\"accepted_build\"])"
+        }
+      ],
+      "path": "code/scripts/stage_0_5_linux_isolation.py",
+      "role": "active V4 guard/coordinator",
+      "sha256": "8aaa25fe0d989b530e6e433d8f12058c6558ce95304e67f397aac634976f8e88"
+    },
+    {
+      "hits": [
+        {
+          "line": 96,
+          "text": "def make_policy(capsule,runtime,runtime_path,source_files,inputs,run,*,accepted_build,capability_record):"
+        },
+        {
+          "line": 122,
+          "text": "source_sha256={n:sha(p) for n,p in source_files.items()},accepted_build=accepted_build))"
+        }
+      ],
+      "path": "code/scripts/stage_0_5_linux_runtime_v4.py",
+      "role": "preparation/verifier or legacy path; not automatic v4 research authority",
+      "sha256": "6e077a4cf20449ae01d2ebfb81e6e0a0cf4643dbbad366386f084a99a8b91e88"
+    },
+    {
+      "hits": [
+        {
+          "line": 69,
+          "text": "for field in [\"execution_allowed\",\"researcher_confirmed\",\"protocol_frozen\"]:"
+        },
+        {
+          "line": 73,
+          "text": "if proposal.get(\"isolation\",{}).get(\"accepted_for_new_task\") is not True:"
+        },
+        {
+          "line": 116,
+          "text": "proposal_stub=dict(schema=context[\"schema\"],task_id=context[\"task_id\"],isolation=dict(accepted_for_new_task=context[\"accepted_build\"]))"
+        }
+      ],
+      "path": "code/scripts/stage_0_5_native_capsule_v4.py",
+      "role": "active V4 guard/coordinator",
+      "sha256": "22ed677334290729038b8c30049637fb90af301760e9ee33a1aa7073e2cf26db"
+    },
+    {
+      "hits": [
+        {
+          "line": 167,
+          "text": "\"execution_allowed\": False, \"historical_references\": self.config[\"historical_references\"]})"
+        },
+        {
+          "line": 173,
+          "text": "require(approval.get(\"researcher_confirmed\") is True and approval.get(\"task_id\") == self.task_id and"
+        },
+        {
+          "line": 183,
+          "text": "require(p.get(\"task_id\") == self.task_id and p.get(\"execution_allowed\") is True and"
+        },
+        {
+          "line": 184,
+          "text": "p.get(\"researcher_confirmed\") is True, \"proposal_not_executable\")"
+        },
+        {
+          "line": 189,
+          "text": "require(p.get(\"isolation\", {}).get(\"accepted_for_new_task\") is True, \"task_isolation_not_accepted\")"
+        },
+        {
+          "line": 280,
+          "text": "require(decision.get(\"researcher_confirmed\") is True and decision.get(\"task_id\") == self.task_id and"
+        }
+      ],
+      "path": "code/scripts/stage_0_5_research_ledger.py",
+      "role": "active V4 guard/coordinator",
+      "sha256": "173a5693e98691aef0e8ae2d9a1e61ff26f7bb58a2f6111114af5abc62e3c2cd"
+    },
+    {
+      "hits": [
+        {
+          "line": 47,
+          "text": "if approval.get('researcher_confirmed') is not True or approval.get('proposal_sha256')!=digest or not approval.get('decision_record'):"
+        }
+      ],
+      "path": "code/scripts/supervise_stage_0_5_diagnostic.py",
+      "role": "preparation/verifier or legacy path; not automatic v4 research authority",
+      "sha256": "611be4d9c7a67eb919a3df03e388207016fb0a34a9b5ec3a4838bb4689db8365"
+    },
+    {
+      "hits": [
+        {
+          "line": 24,
+          "text": "assert proposal['execution_allowed'] is False and proposal['protocol_frozen'] is False and proposal['attempts']==0"
+        }
+      ],
+      "path": "code/scripts/verify_stage_0_5_policy_a.py",
+      "role": "preparation/verifier or legacy path; not automatic v4 research authority",
+      "sha256": "73ef81622103391cdb65a1c0266b4659bb4a9a0d9147dff1371678953386deda"
+    }
+  ],
+  "real_TraCI_connections": 0,
+  "research_flag_states": {
+    "admission": {
+      "initialization_policy_approved": false,
+      "input_fidelity_approved": false,
+      "measurement_contract_approved": false
+    },
+    "profile": {
+      "SUMO_launches": 0,
+      "accepted_for_new_task": false,
+      "execution_allowed": false,
+      "historical_incident": "Not Accepted",
+      "native_launch_locked": true,
+      "new_trajectories": 0,
+      "protocol_frozen": false,
+      "real_TraCI_connections": 0,
+      "researcher_confirmed": false,
+      "status": "READY_FOR_RESEARCHER_APPROVAL"
+    },
+    "proposal": {
+      "execution_allowed": false,
+      "protocol_frozen": false,
+      "researcher_confirmed": false
+    }
+  },
+  "risks": [
+    {
+      "available_options": [
+        {
+          "affected_measurements": "运行预约、attempt与native lock",
+          "introduced_assumption": "新代码/策略需重新绑定与验收",
+          "option": "暂停可执行审批，先另行工程修复",
+          "option_id": "ENG-01-O1",
+          "scientific_implications": "科学定义保持；旧精确SHA不能覆盖变更后的代码/策略",
+          "solves": "消除预检与执行策略不一致"
+        },
+        {
+          "affected_measurements": "审批范围",
+          "introduced_assumption": "承认可执行链尚有已知拒绝",
+          "option": "仅审议科学政策，暂不授权执行",
+          "option_id": "ENG-01-O2",
+          "scientific_implications": "不产生科研数据",
+          "solves": "保留研究者讨论进度"
+        }
+      ],
+      "classification": [
+        "ENGINEERING_AMBIGUITY_REQUIRES_REVIEW"
+      ],
+      "code_locations": [
+        {
+          "end_line": 158,
+          "function": "technical_preflight_v4",
+          "line": 98,
+          "path": "code/scripts/stage_0_5_linux_execution_v4.py"
+        },
+        {
+          "end_line": 233,
+          "function": "_execute_authorized",
+          "line": 171,
+          "path": "code/scripts/stage_0_5_linux_execution_v4.py"
+        },
+        {
+          "end_line": 119,
+          "function": "verify_live_context",
+          "line": 102,
+          "path": "code/scripts/stage_0_5_native_capsule_v4.py"
+        },
+        {
+          "end_line": 585,
+          "function": "execute",
+          "line": 442,
+          "path": "code/scripts/stage_0_5_execution_v2.py"
+        }
+      ],
+      "current_fact": "technical_preflight_v4不检查policy.binding.accepted_build；固定B00 policy仍false。V4 execute绕过legacy/profile显示锁，reserve和running在Linux controller verify_live_context之前；该函数从policy false重建isolation并拒绝capsule_build_not_accepted。",
+      "current_status": "OPEN_ENGINEERING_REVIEW",
+      "evidence_paths": [
+        "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/technical_preflight.json",
+        "docs/audits/stage_0_5_linux_native_v4/prepared-20261026-r5/research_policy.json",
+        "docs/audits/stage_0_5_scientific_admission_review_v1/static_facts.json"
+      ],
+      "evidence_sha256": {
+        "docs/audits/stage_0_5_linux_native_v4/prepared-20261026-r5/research_policy.json": "e7152b8ff703f23ed051ecc0fe9afae7b2b1190221338a79fddd822c08a54bf1",
+        "docs/audits/stage_0_5_scientific_admission_review_v1/static_facts.json": "7cdd232e01fff19cf4569b4ceb114e8628799fd0bc1fd63d358e1de5dde66e6a",
+        "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/technical_preflight.json": "6aae70c45f878b4be9484d51a0d1b16eabbb1e052b82fc12831b9e7d2728201f"
+      },
+      "interpretation": "Interpretation: 高优先级：暂缓执行授权，单独修复并重绑一致的预检/执行锁；本轮不改。",
+      "issue_id": "ENG-01",
+      "observation": "technical_preflight_v4不检查policy.binding.accepted_build；固定B00 policy仍false。V4 execute绕过legacy/profile显示锁，reserve和running在Linux controller verify_live_context之前；该函数从policy false重建isolation并拒绝capsule_build_not_accepted。",
+      "priority": "high",
+      "question": "工程ready与accepted_build=false是否一致？",
+      "recommended_next_step": {
+        "action": "高优先级：暂缓执行授权，单独修复并重绑一致的预检/执行锁；本轮不改。",
+        "kind": "Engineering review recommendation",
+        "owner": "Research engineer"
+      },
+      "remaining_uncertainty": "属fail-closed而非已证实未授权绕过；但未来即使有合法approval也可能先消耗预约/attempt后拒绝，ready不能解释为可直接执行。未启动验证。",
+      "required_validation": [
+        "另任务在无数据环境测试policy false在任何reserve/attempt前拒绝；policy变更后需新精确包，旧包不可翻锁。",
+        "同时测试profile true/false、legacy lock与v4上下文，不得用修改ready结果掩盖。"
+      ],
+      "researcher_decision_required": false,
+      "scientific_implications": [
+        "科学定义保持；旧精确SHA不能覆盖变更后的代码/策略",
+        "不产生科研数据"
+      ]
+    },
+    {
+      "available_options": [
+        {
+          "affected_measurements": "运行早停与最终验收",
+          "introduced_assumption": "要求getter每步可用",
+          "option": "先明确缺失即拒绝并另任务修复",
+          "option_id": "ENG-02-O1",
+          "scientific_implications": "保留零事故判断的证据边界",
+          "solves": "避免把不可观测当零碰撞"
+        }
+      ],
+      "classification": [
+        "ENGINEERING_AMBIGUITY_REQUIRES_REVIEW"
+      ],
+      "code_locations": [
+        {
+          "end_line": 285,
+          "function": "collect_snapshot",
+          "line": 242,
+          "path": "code/scripts/stage_0_5_identity_observation.py"
+        },
+        {
+          "end_line": 374,
+          "function": "run_observation_loop",
+          "line": 364,
+          "path": "code/scripts/stage_0_5_execution_v2.py"
+        },
+        {
+          "end_line": 239,
+          "function": "finish",
+          "line": 217,
+          "path": "code/scripts/stage_0_5_identity_observation.py"
+        }
+      ],
+      "current_fact": "collect_snapshot异常保留collision_count=None，但run_observation_loop用(frame.get(collision_count) or 0)>0；finish完整性仅检查六类身份API，不要求collision计数可用。",
+      "current_status": "OPEN_ENGINEERING_REVIEW",
+      "evidence_paths": [
+        "code/scripts/stage_0_5_identity_observation.py",
+        "code/scripts/stage_0_5_execution_v2.py",
+        "code/scripts/stage_0_5_acceptance_v3.py"
+      ],
+      "evidence_sha256": {
+        "code/scripts/stage_0_5_acceptance_v3.py": "fd90881f83a3659ce7554f0bc1c8104ef0cbea342757ba3c02db77575a8aa7e0",
+        "code/scripts/stage_0_5_execution_v2.py": "e3a3b64b259c691147a103f5cb7bece5cb8ef29032e98118cc0c001337e245d1",
+        "code/scripts/stage_0_5_identity_observation.py": "17b922c5966b23e58e4ef617cdb42347a7b40e74176a457c05a6d16041382c9e"
+      },
+      "interpretation": "Interpretation: 高优先级：在科研执行前完成缺失即拒绝的观测守卫审查及新软件绑定。",
+      "issue_id": "ENG-02",
+      "observation": "collect_snapshot异常保留collision_count=None，但run_observation_loop用(frame.get(collision_count) or 0)>0；finish完整性仅检查六类身份API，不要求collision计数可用。",
+      "priority": "high",
+      "question": "碰撞接口不可用时是否安全拒绝？",
+      "recommended_next_step": {
+        "action": "高优先级：在科研执行前完成缺失即拒绝的观测守卫审查及新软件绑定。",
+        "kind": "Engineering review recommendation",
+        "owner": "Research engineer"
+      },
+      "remaining_uncertainty": "静态缺失证据路径存在；未声称历史SMOKE碰撞getter失败，也未声称发生了碰撞。",
+      "required_validation": [
+        "无数据mock：getter不存在、抛错、中途缺失、恢复后仍拒绝；None不得补零；原始异常/hash保留。"
+      ],
+      "researcher_decision_required": false,
+      "scientific_implications": [
+        "保留零事故判断的证据边界"
+      ]
+    },
+    {
+      "available_options": [
+        {
+          "affected_measurements": "初态117与非初态1033、分母",
+          "introduced_assumption": "研究者接受此目标总体",
+          "option": "接受有限时域下明确pending/删失，但预先定义初态资格",
+          "option_id": "ENG-03-O1",
+          "scientific_implications": "供给和风险支持随实际进入变化，必须逐车披露",
+          "solves": "区分合法未出发与未知丢失"
+        },
+        {
+          "affected_measurements": "插入时刻、状态支持",
+          "introduced_assumption": "需要明确科学阈值，不得工程师自造",
+          "option": "要求特定初态/分组实际插入时限，缺失即失败",
+          "option_id": "ENG-03-O2",
+          "scientific_implications": "可能阻断候选；改变接受总体需新精确绑定",
+          "solves": "使实际初态更接近研究目标"
+        }
+      ],
+      "classification": [
+        "ENGINEERING_AMBIGUITY_REQUIRES_REVIEW",
+        "RESEARCHER_DECISION_REQUIRED",
+        "REQUIRES_FUTURE_DYNAMIC_EXPERIMENT"
+      ],
+      "code_locations": [
+        {
+          "end_line": 212,
+          "function": "verify_receipt",
+          "line": 142,
+          "path": "code/scripts/stage_0_5_native_capsule_v4.py"
+        },
+        {
+          "end_line": 257,
+          "function": "assess_capsule",
+          "line": 163,
+          "path": "code/scripts/stage_0_5_acceptance_v3.py"
+        },
+        {
+          "end_line": 117,
+          "function": "input_acceptance",
+          "line": 69,
+          "path": "code/scripts/stage_0_5_acceptance_v3.py"
+        }
+      ],
+      "current_fact": "verify_receipt对summary仅验根标签与封存hash；assess_capsule重建TripInfo/FCD/原生事件，但不将summary inserted/ended/discarded逐时对账。合法pending可保持identity_accounting_complete=true；B00非R臂也没有全车实际出发阈值。",
+      "current_status": "AWAITING_RESEARCHER_AND_ENGINEERING_REVIEW",
+      "evidence_paths": [
+        "code/scripts/stage_0_5_acceptance_v3.py",
+        "code/scripts/stage_0_5_native_capsule_v4.py",
+        "docs/audits/stage_0_5_scientific_admission_review_v1/validation/pure-guard-counterexamples/record.json"
+      ],
+      "evidence_sha256": {
+        "code/scripts/stage_0_5_acceptance_v3.py": "fd90881f83a3659ce7554f0bc1c8104ef0cbea342757ba3c02db77575a8aa7e0",
+        "code/scripts/stage_0_5_native_capsule_v4.py": "22ed677334290729038b8c30049637fb90af301760e9ee33a1aa7073e2cf26db",
+        "docs/audits/stage_0_5_scientific_admission_review_v1/validation/pure-guard-counterexamples/record.json": "f7a7e7832565effe0d9a354ab78aa624d40bffa347c3f325fcbc35a73d7eb0d9"
+      },
+      "interpretation": "Interpretation: 先确认实际插入与删失的科学接受条件，再另任务实现缺失/冲突拒绝；不得删异常车或事后改窗。",
+      "issue_id": "ENG-03",
+      "observation": "verify_receipt对summary仅验根标签与封存hash；assess_capsule重建TripInfo/FCD/原生事件，但不将summary inserted/ended/discarded逐时对账。合法pending可保持identity_accounting_complete=true；B00非R臂也没有全车实际出发阈值。",
+      "priority": "high",
+      "question": "summary、身份核算完整与全车实际插入是否混同？",
+      "recommended_next_step": {
+        "action": "先确认实际插入与删失的科学接受条件，再另任务实现缺失/冲突拒绝；不得删异常车或事后改窗。",
+        "kind": "Research Proposal",
+        "owner": "Researcher"
+      },
+      "remaining_uncertainty": "不能由accounted推导1150全部插入、117初态全在t0或summary已做身份对账；这些动态事实目前unknown。",
+      "required_validation": [
+        "研究者明确117初态与晚计划车辆的时限/删失政策；工程另任务补summary与事件/TripInfo计数交叉核算及冲突反例。"
+      ],
+      "researcher_decision_required": true,
+      "scientific_implications": [
+        "供给和风险支持随实际进入变化，必须逐车披露",
+        "可能阻断候选；改变接受总体需新精确绑定"
+      ]
+    },
+    {
+      "available_options": [
+        {
+          "affected_measurements": "未来授权来源",
+          "introduced_assumption": "执行者不得制造批准",
+          "option": "保留受信研究者决定+审计记录流程",
+          "option_id": "AUTH-02-O1",
+          "scientific_implications": "只对精确SHA/范围有效",
+          "solves": "明确当前信任边界"
+        },
+        {
+          "affected_measurements": "授权可审计性",
+          "introduced_assumption": "研究者决定所需认证强度",
+          "option": "另任务增加独立验证来源",
+          "option_id": "AUTH-02-O2",
+          "scientific_implications": "新守卫需新测试/闭包，不改科学定义",
+          "solves": "减少误写JSON的权限歧义"
+        }
+      ],
+      "classification": [
+        "ENGINEERING_AMBIGUITY_REQUIRES_REVIEW",
+        "RESEARCHER_DECISION_REQUIRED"
+      ],
+      "code_locations": [
+        {
+          "end_line": 75,
+          "function": "authorization_reasons",
+          "line": 57,
+          "path": "code/scripts/stage_0_5_native_capsule_v4.py"
+        },
+        {
+          "end_line": 45,
+          "function": "main",
+          "line": 11,
+          "path": "code/scripts/run_stage_0_5_admission_v3.py"
+        }
+      ],
+      "current_fact": "authorization_reasons核对JSON精确task/run/hash、非空decision_record、三审批及三政策。没有签名/独立身份认证；本地受信调用者负责将真实人类决定写入授权记录。工程证书不能完成该人类来源认证。",
+      "current_status": "AWAITING_TRUST_BOUNDARY_REVIEW",
+      "evidence_paths": [
+        "code/scripts/stage_0_5_native_capsule_v4.py",
+        "code/scripts/run_stage_0_5_admission_v3.py"
+      ],
+      "evidence_sha256": {
+        "code/scripts/run_stage_0_5_admission_v3.py": "6d296c99892afcc0d8766d78fa798e3d6af81dad0bdc62217ea7102668eb7316",
+        "code/scripts/stage_0_5_native_capsule_v4.py": "22ed677334290729038b8c30049637fb90af301760e9ee33a1aa7073e2cf26db"
+      },
+      "interpretation": "Interpretation: 由研究者确认审批来源与执行责任边界；本轮不创建任何授权envelope。",
+      "issue_id": "AUTH-02",
+      "observation": "authorization_reasons核对JSON精确task/run/hash、非空decision_record、三审批及三政策。没有签名/独立身份认证；本地受信调用者负责将真实人类决定写入授权记录。工程证书不能完成该人类来源认证。",
+      "priority": "normal",
+      "question": "精确proposal SHA能否认证研究者本人批准？",
+      "recommended_next_step": {
+        "action": "由研究者确认审批来源与执行责任边界；本轮不创建任何授权envelope。",
+        "kind": "Research Proposal",
+        "owner": "Researcher"
+      },
+      "remaining_uncertainty": "不是已证实外部攻击或当前未授权运行；准确边界是字段检查依赖受信操作者，不等于密码学人类批准。",
+      "required_validation": [
+        "未来授权必须引用真实研究者消息及精确新SHA；测试工程证书/旧SMOKE授权/空决定/错run均不能替代。"
+      ],
+      "researcher_decision_required": true,
+      "scientific_implications": [
+        "只对精确SHA/范围有效",
+        "新守卫需新测试/闭包，不改科学定义"
+      ]
+    }
+  ],
+  "schema": "aad.scientific-authorization-boundary-audit.v1",
+  "simulation_calls": 0,
+  "status": "REVIEW_COMPLETE_WITH_OPEN_RISKS"
+}

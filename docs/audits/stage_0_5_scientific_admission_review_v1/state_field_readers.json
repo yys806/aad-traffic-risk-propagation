@@ -1,0 +1,404 @@
+{
+  "readers": [
+    {
+      "hits": [
+        {
+          "line": 119,
+          "text": "\"candidate_flags\": {k: candidate[k] for k in [\"execution_allowed\", \"researcher_confirmed\", \"protocol_frozen\"]},"
+        }
+      ],
+      "path": "code/scripts/audit_stage_0_5_research_v2.py",
+      "sha256": "1ce927e22465a2ae7abf6516d445447495dc0959ed5093bbf67525445290fb13"
+    },
+    {
+      "hits": [
+        {
+          "line": 39,
+          "text": "if any(p[k] for k in [\"execution_allowed\", \"researcher_confirmed\", \"protocol_frozen\"]):"
+        }
+      ],
+      "path": "code/scripts/export_stage_0_5_research_v2_evidence.py",
+      "sha256": "185b2331ca42130ef206c5f71f9d0602cd35510c48e27be840d24f6c8ddceb8c"
+    },
+    {
+      "hits": [
+        {
+          "line": 40,
+          "text": "if any(profile[k] is not False for k in [\"execution_allowed\", \"researcher_confirmed\", \"protocol_frozen\", \"accepted_for_new_task\"]):"
+        }
+      ],
+      "path": "code/scripts/export_stage_0_5_v2_admission_evidence.py",
+      "sha256": "fd662f32caea41a57f6c1fc67b447edf536b9ac03ee65081193356e67cebec92"
+    },
+    {
+      "hits": [
+        {
+          "line": 154,
+          "text": "execution_allowed=False,researcher_confirmed=False,protocol_frozen=False,"
+        },
+        {
+          "line": 165,
+          "text": "isolation=dict(accepted_for_new_task=False,report_path=environment_report.relative_to(root).as_posix(),report_sha256=sha(environment_report),historical_incident=\"Not Accepted\"),"
+        },
+        {
+          "line": 173,
+          "text": "execution_allowed=False,researcher_confirmed=False,protocol_frozen=False,accepted_for_new_task=False,"
+        },
+        {
+          "line": 193,
+          "text": "if not all(p[k] is False for k in [\"execution_allowed\",\"researcher_confirmed\",\"protocol_frozen\"]):"
+        },
+        {
+          "line": 195,
+          "text": "if p[\"isolation\"][\"accepted_for_new_task\"] is not False:raise ValueError(\"unproved_native_isolation\")"
+        }
+      ],
+      "path": "code/scripts/prepare_stage_0_5_admission_v3.py",
+      "sha256": "f15ad917f1d774f21b3738f2aeb76ec2c38f0261fc3d78d9a6e13a93ae108683"
+    },
+    {
+      "hits": [
+        {
+          "line": 50,
+          "text": "{n:str(inputs/n) for n in run[\"input_files\"]},run,accepted_build=False,"
+        },
+        {
+          "line": 88,
+          "text": "integration=dict(accepted_for_new_task=False,input_and_test_resource_scope_accepted=False,"
+        },
+        {
+          "line": 111,
+          "text": "execution_allowed=False,researcher_confirmed=False,protocol_frozen=False,"
+        },
+        {
+          "line": 116,
+          "text": "p[\"isolation\"]=dict(accepted_for_new_task=False,report_path=relative(folder/\"integration_pending.json\"),"
+        },
+        {
+          "line": 126,
+          "text": "write(folder/\"admission_profile.json\",dict(status=report[\"status\"],execution_allowed=False,researcher_confirmed=False,"
+        },
+        {
+          "line": 127,
+          "text": "protocol_frozen=False,accepted_for_new_task=False,native_launch_locked=True,historical_incident=\"Not Accepted\","
+        }
+      ],
+      "path": "code/scripts/prepare_stage_0_5_admission_v4.py",
+      "sha256": "41cf48981333a265076ced1bc90cc88dbc5233a3d92993187137fefafe6cfa76"
+    },
+    {
+      "hits": [
+        {
+          "line": 113,
+          "text": "require(binding[\"accepted_build\"] is False, \"historical_build_lock_changed\")"
+        },
+        {
+          "line": 195,
+          "text": "require(all(p[k] is False for k in [\"execution_allowed\", \"researcher_confirmed\", \"protocol_frozen\"]) and"
+        },
+        {
+          "line": 211,
+          "text": "for key in [\"execution_allowed\", \"researcher_confirmed\", \"protocol_frozen\"]:"
+        },
+        {
+          "line": 221,
+          "text": "certificate[\"accepted_for_new_task\"] is True and certificate[\"input_and_test_resource_scope_accepted\"] is True,"
+        },
+        {
+          "line": 311,
+          "text": "accepted_for_new_task=True, input_and_test_resource_scope_accepted=True,"
+        },
+        {
+          "line": 337,
+          "text": "p[\"isolation\"].update(accepted_for_new_task=True, input_and_test_resource_scope_accepted=True,"
+        },
+        {
+          "line": 358,
+          "text": "write(target / \"admission_profile.json\", dict(status=full[\"status\"], accepted_for_new_task=False,"
+        },
+        {
+          "line": 359,
+          "text": "execution_allowed=False, researcher_confirmed=False, protocol_frozen=False, native_launch_locked=True,"
+        },
+        {
+          "line": 386,
+          "text": "require(load(root, V6 + \"/admission_profile.json\")[\"native_launch_locked\"] is True and"
+        },
+        {
+          "line": 388,
+          "text": "[\"accepted_for_new_task\", \"execution_allowed\", \"researcher_confirmed\", \"protocol_frozen\"]), \"research_profile_unlocked\")"
+        }
+      ],
+      "path": "code/scripts/prepare_stage_0_5_b00_admission_v6.py",
+      "sha256": "2f378e4b69757b0f030d6fc1160364af9e462813052addd7e4520febf79ade3a"
+    },
+    {
+      "hits": [
+        {
+          "line": 304,
+          "text": "'status': 'Proposed / Awaiting exact researcher confirmation', 'execution_allowed': False,"
+        },
+        {
+          "line": 305,
+          "text": "'researcher_confirmed': False, 'protocol_frozen': False,"
+        },
+        {
+          "line": 352,
+          "text": "if p['execution_allowed'] or p['researcher_confirmed'] or p['budget']['already_spent'] != 1: raise ValueError('authorization_or_budget')"
+        }
+      ],
+      "path": "code/scripts/prepare_stage_0_5_depart_speed_candidate.py",
+      "sha256": "63ee43e2bde0889bd7f067b81a9e7282b43c79bf16ed3cdfb7b60f76ae212d2e"
+    },
+    {
+      "hits": [
+        {
+          "line": 86,
+          "text": "path,policy=make_policy(base/\"smoke_capsule\",runtime,runtime_path,sources,{n:str(inputs/n) for n in run[\"capsule_input_sha256\"]},run,accepted_build=False,capability_record=capability)"
+        }
+      ],
+      "path": "code/scripts/prepare_stage_0_5_linux_stage_v4.py",
+      "sha256": "bc2eb6b0eb0a00babb5763b2d53954df8e4d96ab26fa7e8b6fadbd58be243abc"
+    },
+    {
+      "hits": [
+        {
+          "line": 163,
+          "text": "'protocol_frozen':False,'execution_allowed':False,'attempts':0,'runs':run_entries,"
+        }
+      ],
+      "path": "code/scripts/prepare_stage_0_5_policy_a.py",
+      "sha256": "aa012f6d08cb5bab91a6f3724745f36bc9afb21bf55af905de63a2d62d4d80ac"
+    },
+    {
+      "hits": [
+        {
+          "line": 128,
+          "text": "profile = dict(task_id=TASK, schema=\"aad.v2-admission-engineering.v1\", execution_allowed=False, researcher_confirmed=False,"
+        },
+        {
+          "line": 129,
+          "text": "protocol_frozen=False, accepted_for_new_task=False, native_launch_build_lock=True,"
+        }
+      ],
+      "path": "code/scripts/prepare_stage_0_5_v2_admission_evidence.py",
+      "sha256": "536fb75bb95964e0c16b10272b230ffbef9aeeef75595396b0e14e5a9cfc98fc"
+    },
+    {
+      "hits": [
+        {
+          "line": 50,
+          "text": "accepted_for_new_task=False)"
+        },
+        {
+          "line": 60,
+          "text": "execution_allowed=False,researcher_confirmed=False,protocol_frozen=False,accepted_for_new_task=False,"
+        },
+        {
+          "line": 61,
+          "text": "native_launch_locked=True,historical_incident=\"Not Accepted\",SUMO_launches=0,real_TraCI_connections=0,new_trajectories=0))"
+        }
+      ],
+      "path": "code/scripts/prepare_stage_0_5_wsl_b00.py",
+      "sha256": "cd84cd94da739c0476c1f5c916bf79095ac61f15f0ed8f0e152a6003d9a09ceb"
+    },
+    {
+      "hits": [
+        {
+          "line": 97,
+          "text": "approval = {'researcher_confirmed': True, 'proposal_sha256': PROPOSAL_SHA,"
+        }
+      ],
+      "path": "code/scripts/run_stage_0_5_policy_a_confirmed.py",
+      "sha256": "a99c197387061a75d57f7db81f956c675c125a21061f7c23890772f64f9a9d59"
+    },
+    {
+      "hits": [
+        {
+          "line": 146,
+          "text": "if p[\"isolation\"].get(\"accepted_for_new_task\") is not True:"
+        }
+      ],
+      "path": "code/scripts/stage_0_5_admission_v3.py",
+      "sha256": "a481f0dbfeae5a53539c4c5784cf4bd298ba48c29dfff3be09985543e26ab8ee"
+    },
+    {
+      "hits": [
+        {
+          "line": 42,
+          "text": "for flag in [\"execution_allowed\", \"researcher_confirmed\", \"protocol_frozen\"]:"
+        },
+        {
+          "line": 45,
+          "text": "if approval.get(\"researcher_confirmed\") is not True or approval.get(\"proposal_sha256\") != proposal_sha256 or approval.get(\"task_id\") != task_id or not approval.get(\"decision_record\"):"
+        },
+        {
+          "line": 55,
+          "text": "if isolation.get(\"accepted_for_new_task\") is not True:"
+        },
+        {
+          "line": 56,
+          "text": "reasons.append(\"accepted_for_new_task_not_true\")"
+        },
+        {
+          "line": 264,
+          "text": "raise AdmissionRefused(\"engineering_build_native_launch_locked\")"
+        },
+        {
+          "line": 396,
+          "text": "if not synthetic and self.ledger.config.get(\"execution_allowed\") is not True:"
+        },
+        {
+          "line": 404,
+          "text": "reasons.append(\"engineering_build_native_launch_locked\")"
+        },
+        {
+          "line": 595,
+          "text": "\"native_launch_locked\": NATIVE_LAUNCH_LOCKED, \"native_processes_created\": 0}, ensure_ascii=False))"
+        }
+      ],
+      "path": "code/scripts/stage_0_5_execution_v2.py",
+      "sha256": "e3a3b64b259c691147a103f5cb7bece5cb8ef29032e98118cc0c001337e245d1"
+    },
+    {
+      "hits": [
+        {
+          "line": 52,
+          "text": "accepted_for_new_task=False)"
+        }
+      ],
+      "path": "code/scripts/stage_0_5_isolation_admission.py",
+      "sha256": "8bc6b955feeb542bc1c3fd01ffd24a08209b7cc0fb361ab31022d7eebcccd17b"
+    },
+    {
+      "hits": [
+        {
+          "line": 90,
+          "text": "self.denied.append({\"process\": normalized, \"reason\": \"native_launch_locked_this_round\"})"
+        },
+        {
+          "line": 91,
+          "text": "raise ScopeViolation(\"native_launch_locked_this_round\")"
+        },
+        {
+          "line": 123,
+          "text": "\"accepted_for_new_task\": False}"
+        }
+      ],
+      "path": "code/scripts/stage_0_5_isolation_v2.py",
+      "sha256": "b10d5b91aaefe77cae0616ad08f4a0a9698fb150e16f167c792bdacf3b577e63"
+    },
+    {
+      "hits": [
+        {
+          "line": 140,
+          "text": "require(proof[\"accepted_for_new_task\"] is True and proof[\"input_and_test_resource_scope_accepted\"] is True,\"integration_not_accepted\")"
+        },
+        {
+          "line": 148,
+          "text": "require(p[\"isolation\"][\"accepted_for_new_task\"] is True,\"new_task_OS_isolation_unaccepted\")"
+        }
+      ],
+      "path": "code/scripts/stage_0_5_linux_execution_v4.py",
+      "sha256": "59e2e679185a5182284cdcbe7f1919d818d611f90a9987dd2506bad4696f30f7"
+    },
+    {
+      "hits": [
+        {
+          "line": 229,
+          "text": "context.update(source_files=policy[\"binding\"][\"source_files\"],accepted_build=policy[\"binding\"][\"accepted_build\"])"
+        }
+      ],
+      "path": "code/scripts/stage_0_5_linux_isolation.py",
+      "sha256": "8aaa25fe0d989b530e6e433d8f12058c6558ce95304e67f397aac634976f8e88"
+    },
+    {
+      "hits": [
+        {
+          "line": 96,
+          "text": "def make_policy(capsule,runtime,runtime_path,source_files,inputs,run,*,accepted_build,capability_record):"
+        },
+        {
+          "line": 122,
+          "text": "source_sha256={n:sha(p) for n,p in source_files.items()},accepted_build=accepted_build))"
+        }
+      ],
+      "path": "code/scripts/stage_0_5_linux_runtime_v4.py",
+      "sha256": "6e077a4cf20449ae01d2ebfb81e6e0a0cf4643dbbad366386f084a99a8b91e88"
+    },
+    {
+      "hits": [
+        {
+          "line": 69,
+          "text": "for field in [\"execution_allowed\",\"researcher_confirmed\",\"protocol_frozen\"]:"
+        },
+        {
+          "line": 73,
+          "text": "if proposal.get(\"isolation\",{}).get(\"accepted_for_new_task\") is not True:"
+        },
+        {
+          "line": 116,
+          "text": "proposal_stub=dict(schema=context[\"schema\"],task_id=context[\"task_id\"],isolation=dict(accepted_for_new_task=context[\"accepted_build\"]))"
+        }
+      ],
+      "path": "code/scripts/stage_0_5_native_capsule_v4.py",
+      "sha256": "22ed677334290729038b8c30049637fb90af301760e9ee33a1aa7073e2cf26db"
+    },
+    {
+      "hits": [
+        {
+          "line": 167,
+          "text": "\"execution_allowed\": False, \"historical_references\": self.config[\"historical_references\"]})"
+        },
+        {
+          "line": 173,
+          "text": "require(approval.get(\"researcher_confirmed\") is True and approval.get(\"task_id\") == self.task_id and"
+        },
+        {
+          "line": 183,
+          "text": "require(p.get(\"task_id\") == self.task_id and p.get(\"execution_allowed\") is True and"
+        },
+        {
+          "line": 184,
+          "text": "p.get(\"researcher_confirmed\") is True, \"proposal_not_executable\")"
+        },
+        {
+          "line": 189,
+          "text": "require(p.get(\"isolation\", {}).get(\"accepted_for_new_task\") is True, \"task_isolation_not_accepted\")"
+        },
+        {
+          "line": 280,
+          "text": "require(decision.get(\"researcher_confirmed\") is True and decision.get(\"task_id\") == self.task_id and"
+        }
+      ],
+      "path": "code/scripts/stage_0_5_research_ledger.py",
+      "sha256": "173a5693e98691aef0e8ae2d9a1e61ff26f7bb58a2f6111114af5abc62e3c2cd"
+    },
+    {
+      "hits": [
+        {
+          "line": 47,
+          "text": "if approval.get('researcher_confirmed') is not True or approval.get('proposal_sha256')!=digest or not approval.get('decision_record'):"
+        }
+      ],
+      "path": "code/scripts/supervise_stage_0_5_diagnostic.py",
+      "sha256": "611be4d9c7a67eb919a3df03e388207016fb0a34a9b5ec3a4838bb4689db8365"
+    },
+    {
+      "hits": [
+        {
+          "line": 24,
+          "text": "assert proposal['execution_allowed'] is False and proposal['protocol_frozen'] is False and proposal['attempts']==0"
+        }
+      ],
+      "path": "code/scripts/verify_stage_0_5_policy_a.py",
+      "sha256": "73ef81622103391cdb65a1c0266b4659bb4a9a0d9147dff1371678953386deda"
+    }
+  ],
+  "schema": "aad.state-field-reader-inventory.v1",
+  "scope": [
+    "code/scripts/*.py",
+    "code/src/riskprop/*.py"
+  ],
+  "semantics": "Lexical inventory includes writers/tests-as-evidence/historical code; active call paths are classified separately."
+}

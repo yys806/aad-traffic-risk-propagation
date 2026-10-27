@@ -1,0 +1,15 @@
+{
+  "command": [
+    "python",
+    "-B",
+    "-c",
+    "import sys,json,pathlib; sys.path.insert(0,'code/scripts'); from stage_0_5_linux_execution_v4 import technical_preflight_v4; r=technical_preflight_v4(pathlib.Path('.'),'evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/proposal.json','V3_0750_B00_DS38_s20261201',inspect_runtime=False); print(json.dumps(r)); assert r['technical_errors']==['live_Linux_runtime_and_resource_check_required']; assert r['authorization_pending']"
+  ],
+  "completed_utc": "2026-10-27T05:49:50.479499+00:00",
+  "cwd": "D:\\shen\\TJU\\AAD",
+  "exit_code": 0,
+  "schema": "aad.scientific-review-command.v1",
+  "started_utc": "2026-10-27T05:49:49.098269+00:00",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "9f4474c8b471531fea6f727176bbb3a464548116c75512b843d4a53d573a3642"
+}

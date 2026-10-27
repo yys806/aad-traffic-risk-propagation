@@ -1,0 +1,779 @@
+{
+  "candidate_sha256": "b43e2d3af03dd53dd23bee3abd027725f298f58c97a2ae73d868ca9168a229b3",
+  "decision_required_count": 9,
+  "decisions_recorded": [],
+  "execution_authorized": false,
+  "issues": [
+    {
+      "available_options": [
+        {
+          "affected_measurements": "所有下游状态展示",
+          "introduced_assumption": "未来执行仍需独立精确授权",
+          "option": "保留分层语义",
+          "option_id": "AUTH-01-O1",
+          "scientific_implications": "不产生科研结论",
+          "solves": "避免误把工程资格当科研批准"
+        }
+      ],
+      "classification": [
+        "RESOLVABLE_FROM_EXISTING_EVIDENCE"
+      ],
+      "current_fact": "不同对象、不同语义。证书schema aad.native-integration-acceptance.v1及proposal.isolation为工程前提；profile四false、proposal三false及admission三false保持。独立精确approval仍必需。",
+      "current_status": "RESOLVED_SCOPE_EXPLAINED",
+      "evidence_paths": [
+        "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/proposal.json",
+        "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/admission_profile.json",
+        "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/integration_acceptance.json",
+        "docs/audits/stage_0_5_scientific_admission_review_v1/state_field_readers.json"
+      ],
+      "evidence_sha256": {
+        "docs/audits/stage_0_5_scientific_admission_review_v1/state_field_readers.json": "1f5494266ed3a640e3b63b548b829766193d963d84255c293d38bd53018ebd09",
+        "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/admission_profile.json": "03791cb266c0e6c0dc6e13efdb07c104d561a31f51f1f854676aa8387c496102",
+        "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/integration_acceptance.json": "342ed54cccedcaf0d477ec72b70b98e956140179961dec2d59904d4648a71528",
+        "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/proposal.json": "b43e2d3af03dd53dd23bee3abd027725f298f58c97a2ae73d868ca9168a229b3"
+      },
+      "issue_id": "AUTH-01",
+      "priority": "normal",
+      "question": "工程accepted=true是否等于科研授权？",
+      "recommended_next_step": {
+        "action": "审批文书和界面同时展示engineering_ready与research_authorization_pending，禁止仅展示accepted。",
+        "kind": "Engineering review recommendation",
+        "owner": "Research engineer"
+      },
+      "remaining_uncertainty": "没有观察到工程true单独放行科研的路径；JSON决策来源的真实性另见AUTH-02。",
+      "required_validation": [
+        "无数据反例：缺任一精确字段/三审批/三政策即拒绝；5项纯测试已执行。"
+      ],
+      "researcher_decision_required": false,
+      "scientific_implications": [
+        "不产生科研结论"
+      ]
+    },
+    {
+      "available_options": [
+        {
+          "affected_measurements": "运行预约、attempt与native lock",
+          "introduced_assumption": "新代码/策略需重新绑定与验收",
+          "option": "暂停可执行审批，先另行工程修复",
+          "option_id": "ENG-01-O1",
+          "scientific_implications": "科学定义保持；旧精确SHA不能覆盖变更后的代码/策略",
+          "solves": "消除预检与执行策略不一致"
+        },
+        {
+          "affected_measurements": "审批范围",
+          "introduced_assumption": "承认可执行链尚有已知拒绝",
+          "option": "仅审议科学政策，暂不授权执行",
+          "option_id": "ENG-01-O2",
+          "scientific_implications": "不产生科研数据",
+          "solves": "保留研究者讨论进度"
+        }
+      ],
+      "classification": [
+        "ENGINEERING_AMBIGUITY_REQUIRES_REVIEW"
+      ],
+      "current_fact": "technical_preflight_v4不检查policy.binding.accepted_build；固定B00 policy仍false。V4 execute绕过legacy/profile显示锁，reserve和running在Linux controller verify_live_context之前；该函数从policy false重建isolation并拒绝capsule_build_not_accepted。",
+      "current_status": "OPEN_ENGINEERING_REVIEW",
+      "evidence_paths": [
+        "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/technical_preflight.json",
+        "docs/audits/stage_0_5_linux_native_v4/prepared-20261026-r5/research_policy.json",
+        "docs/audits/stage_0_5_scientific_admission_review_v1/static_facts.json"
+      ],
+      "evidence_sha256": {
+        "docs/audits/stage_0_5_linux_native_v4/prepared-20261026-r5/research_policy.json": "e7152b8ff703f23ed051ecc0fe9afae7b2b1190221338a79fddd822c08a54bf1",
+        "docs/audits/stage_0_5_scientific_admission_review_v1/static_facts.json": "7cdd232e01fff19cf4569b4ceb114e8628799fd0bc1fd63d358e1de5dde66e6a",
+        "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/technical_preflight.json": "6aae70c45f878b4be9484d51a0d1b16eabbb1e052b82fc12831b9e7d2728201f"
+      },
+      "issue_id": "ENG-01",
+      "priority": "high",
+      "question": "工程ready与accepted_build=false是否一致？",
+      "recommended_next_step": {
+        "action": "高优先级：暂缓执行授权，单独修复并重绑一致的预检/执行锁；本轮不改。",
+        "kind": "Engineering review recommendation",
+        "owner": "Research engineer"
+      },
+      "remaining_uncertainty": "属fail-closed而非已证实未授权绕过；但未来即使有合法approval也可能先消耗预约/attempt后拒绝，ready不能解释为可直接执行。未启动验证。",
+      "required_validation": [
+        "另任务在无数据环境测试policy false在任何reserve/attempt前拒绝；policy变更后需新精确包，旧包不可翻锁。",
+        "同时测试profile true/false、legacy lock与v4上下文，不得用修改ready结果掩盖。"
+      ],
+      "researcher_decision_required": false,
+      "scientific_implications": [
+        "科学定义保持；旧精确SHA不能覆盖变更后的代码/策略",
+        "不产生科研数据"
+      ]
+    },
+    {
+      "available_options": [
+        {
+          "affected_measurements": "运行早停与最终验收",
+          "introduced_assumption": "要求getter每步可用",
+          "option": "先明确缺失即拒绝并另任务修复",
+          "option_id": "ENG-02-O1",
+          "scientific_implications": "保留零事故判断的证据边界",
+          "solves": "避免把不可观测当零碰撞"
+        }
+      ],
+      "classification": [
+        "ENGINEERING_AMBIGUITY_REQUIRES_REVIEW"
+      ],
+      "current_fact": "collect_snapshot异常保留collision_count=None，但run_observation_loop用(frame.get(collision_count) or 0)>0；finish完整性仅检查六类身份API，不要求collision计数可用。",
+      "current_status": "OPEN_ENGINEERING_REVIEW",
+      "evidence_paths": [
+        "code/scripts/stage_0_5_identity_observation.py",
+        "code/scripts/stage_0_5_execution_v2.py",
+        "code/scripts/stage_0_5_acceptance_v3.py"
+      ],
+      "evidence_sha256": {
+        "code/scripts/stage_0_5_acceptance_v3.py": "fd90881f83a3659ce7554f0bc1c8104ef0cbea342757ba3c02db77575a8aa7e0",
+        "code/scripts/stage_0_5_execution_v2.py": "e3a3b64b259c691147a103f5cb7bece5cb8ef29032e98118cc0c001337e245d1",
+        "code/scripts/stage_0_5_identity_observation.py": "17b922c5966b23e58e4ef617cdb42347a7b40e74176a457c05a6d16041382c9e"
+      },
+      "issue_id": "ENG-02",
+      "priority": "high",
+      "question": "碰撞接口不可用时是否安全拒绝？",
+      "recommended_next_step": {
+        "action": "高优先级：在科研执行前完成缺失即拒绝的观测守卫审查及新软件绑定。",
+        "kind": "Engineering review recommendation",
+        "owner": "Research engineer"
+      },
+      "remaining_uncertainty": "静态缺失证据路径存在；未声称历史SMOKE碰撞getter失败，也未声称发生了碰撞。",
+      "required_validation": [
+        "无数据mock：getter不存在、抛错、中途缺失、恢复后仍拒绝；None不得补零；原始异常/hash保留。"
+      ],
+      "researcher_decision_required": false,
+      "scientific_implications": [
+        "保留零事故判断的证据边界"
+      ]
+    },
+    {
+      "available_options": [
+        {
+          "affected_measurements": "初态117与非初态1033、分母",
+          "introduced_assumption": "研究者接受此目标总体",
+          "option": "接受有限时域下明确pending/删失，但预先定义初态资格",
+          "option_id": "ENG-03-O1",
+          "scientific_implications": "供给和风险支持随实际进入变化，必须逐车披露",
+          "solves": "区分合法未出发与未知丢失"
+        },
+        {
+          "affected_measurements": "插入时刻、状态支持",
+          "introduced_assumption": "需要明确科学阈值，不得工程师自造",
+          "option": "要求特定初态/分组实际插入时限，缺失即失败",
+          "option_id": "ENG-03-O2",
+          "scientific_implications": "可能阻断候选；改变接受总体需新精确绑定",
+          "solves": "使实际初态更接近研究目标"
+        }
+      ],
+      "classification": [
+        "ENGINEERING_AMBIGUITY_REQUIRES_REVIEW",
+        "RESEARCHER_DECISION_REQUIRED",
+        "REQUIRES_FUTURE_DYNAMIC_EXPERIMENT"
+      ],
+      "current_fact": "verify_receipt对summary仅验根标签与封存hash；assess_capsule重建TripInfo/FCD/原生事件，但不将summary inserted/ended/discarded逐时对账。合法pending可保持identity_accounting_complete=true；B00非R臂也没有全车实际出发阈值。",
+      "current_status": "AWAITING_RESEARCHER_AND_ENGINEERING_REVIEW",
+      "evidence_paths": [
+        "code/scripts/stage_0_5_acceptance_v3.py",
+        "code/scripts/stage_0_5_native_capsule_v4.py",
+        "docs/audits/stage_0_5_scientific_admission_review_v1/validation/pure-guard-counterexamples/record.json"
+      ],
+      "evidence_sha256": {
+        "code/scripts/stage_0_5_acceptance_v3.py": "fd90881f83a3659ce7554f0bc1c8104ef0cbea342757ba3c02db77575a8aa7e0",
+        "code/scripts/stage_0_5_native_capsule_v4.py": "22ed677334290729038b8c30049637fb90af301760e9ee33a1aa7073e2cf26db",
+        "docs/audits/stage_0_5_scientific_admission_review_v1/validation/pure-guard-counterexamples/record.json": "f7a7e7832565effe0d9a354ab78aa624d40bffa347c3f325fcbc35a73d7eb0d9"
+      },
+      "issue_id": "ENG-03",
+      "priority": "high",
+      "question": "summary、身份核算完整与全车实际插入是否混同？",
+      "recommended_next_step": {
+        "action": "先确认实际插入与删失的科学接受条件，再另任务实现缺失/冲突拒绝；不得删异常车或事后改窗。",
+        "kind": "Research Proposal",
+        "owner": "Researcher"
+      },
+      "remaining_uncertainty": "不能由accounted推导1150全部插入、117初态全在t0或summary已做身份对账；这些动态事实目前unknown。",
+      "required_validation": [
+        "研究者明确117初态与晚计划车辆的时限/删失政策；工程另任务补summary与事件/TripInfo计数交叉核算及冲突反例。"
+      ],
+      "researcher_decision_required": true,
+      "scientific_implications": [
+        "供给和风险支持随实际进入变化，必须逐车披露",
+        "可能阻断候选；改变接受总体需新精确绑定"
+      ]
+    },
+    {
+      "available_options": [
+        {
+          "affected_measurements": "源闭包/可复现性",
+          "introduced_assumption": "按.gitattributes复现执行源字节",
+          "option": "保留历史生成快照及正式提交复核",
+          "option_id": "GIT-01-O1",
+          "scientific_implications": "不改变科学定义",
+          "solves": "保持证据不变"
+        }
+      ],
+      "classification": [
+        "RESOLVABLE_FROM_EXISTING_EVIDENCE",
+        "ENGINEERING_AMBIGUITY_REQUIRES_REVIEW"
+      ],
+      "current_fact": "proposal记录生成时735bab0与dirty=true；正式基线753b666。347历史文件复算通过；38源均匹配正式Git按.gitattributes检出字节，其中12生产源闭包匹配。formal_risk_measurement.py的Git原对象LF与绑定CRLF不同，由既定eol=crlf解释。helper未在12源闭包中，不参与native控制；软件验证记录另行绑定helper。",
+      "current_status": "RESOLVED_WITH_SCOPE_LIMIT",
+      "evidence_paths": [
+        "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/scientific_diff.json",
+        "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/proposal.json",
+        ".gitattributes",
+        "docs/audits/stage_0_5_scientific_admission_review_v1/static_facts.json",
+        "code/scripts/prepare_stage_0_5_b00_admission_v6.py"
+      ],
+      "evidence_sha256": {
+        ".gitattributes": "75835d0449ce0ef6f724273f6b52c8941aa04523325494a0fdaa817249e7c9f2",
+        "code/scripts/prepare_stage_0_5_b00_admission_v6.py": "2f378e4b69757b0f030d6fc1160364af9e462813052addd7e4520febf79ade3a",
+        "docs/audits/stage_0_5_scientific_admission_review_v1/static_facts.json": "7cdd232e01fff19cf4569b4ceb114e8628799fd0bc1fd63d358e1de5dde66e6a",
+        "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/proposal.json": "b43e2d3af03dd53dd23bee3abd027725f298f58c97a2ae73d868ca9168a229b3",
+        "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/scientific_diff.json": "fcf2d37d2e5767da334d9023884a54f5ff8dba6de8dc1d48295ce7a0073f38eb"
+      },
+      "issue_id": "GIT-01",
+      "priority": "normal",
+      "question": "dirty快照、347绑定及未提交helper是否破坏唯一绑定？",
+      "recommended_next_step": {
+        "action": "把生成时点与提交后证据明确分列，继续每次实际执行前哈希检查。",
+        "kind": "Engineering review recommendation",
+        "owner": "Research engineer"
+      },
+      "remaining_uncertainty": "精确SHA定义提案内容和传递哈希依赖，不认证人类来源，也不保证未来运行时无漂移；审查新报告不在原生闭包。原始Git blob不能不经属性还原就冒充执行字节。",
+      "required_validation": [
+        "347文件、38源、原始blob/属性检出双哈希复算；旧audit manifest在753b666匹配，新增context后按历史Git版本解释。"
+      ],
+      "researcher_decision_required": false,
+      "scientific_implications": [
+        "不改变科学定义"
+      ]
+    },
+    {
+      "available_options": [
+        {
+          "affected_measurements": "早期交通状态、插入和后续风险",
+          "introduced_assumption": "接受38辆原速度约束变化",
+          "option": "保留DS38，仅B00诊断",
+          "option_id": "INIT-01-O1",
+          "scientific_implications": "四臂需同DS38；不能与原初态直接归因供给效应",
+          "solves": "先核验已声明政策可运行与支持"
+        },
+        {
+          "affected_measurements": "初始化、全链支持",
+          "introduced_assumption": "接受原始速度不相容可能再次失败",
+          "option": "恢复原始数值速度另提案",
+          "option_id": "INIT-01-O2",
+          "scientific_implications": "当前proposal失效；历史失败不能当控制组成功",
+          "solves": "回到原始声明初态"
+        },
+        {
+          "affected_measurements": "所有初态与恢复过程",
+          "introduced_assumption": "需研究者定义修改范围",
+          "option": "另版统一安全初态政策",
+          "option_id": "INIT-01-O3",
+          "scientific_implications": "改变研究对象，全部后续对照需共同重建",
+          "solves": "系统处理包含i0007的相容性"
+        }
+      ],
+      "classification": [
+        "RESOLVABLE_FROM_EXISTING_EVIDENCE",
+        "RESEARCHER_DECISION_REQUIRED",
+        "REQUIRES_FUTURE_DYNAMIC_EXPERIMENT"
+      ],
+      "current_fact": "1150=117初态+1033非初态；117全声明t0。仅38个原始departSpeed数值10改为max；79初态及全部非初态属性/顺序不变，后者声明0.3至419.6s。i0007保持15.23。完整38辆before/after及79不变ID见static_facts。",
+      "current_status": "AWAITING_RESEARCHER_DECISION",
+      "evidence_paths": [
+        "docs/audits/stage_0_5_scientific_admission_review_v1/static_facts.json",
+        "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v2/initialization_static_audit.json",
+        "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/proposal.json"
+      ],
+      "evidence_sha256": {
+        "docs/audits/stage_0_5_scientific_admission_review_v1/static_facts.json": "7cdd232e01fff19cf4569b4ceb114e8628799fd0bc1fd63d358e1de5dde66e6a",
+        "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v2/initialization_static_audit.json": "1869bb05e532ad48883ba876d116e1023add02a2808f54df779d5ff290fc87aa",
+        "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/proposal.json": "b43e2d3af03dd53dd23bee3abd027725f298f58c97a2ae73d868ca9168a229b3"
+      },
+      "issue_id": "INIT-01",
+      "priority": "normal",
+      "question": "DS38应保留、恢复原始初态还是另版修改？",
+      "recommended_next_step": {
+        "action": "Research Proposal：先审议DS38作为有限初始化诊断的可接受性，禁止把max等同实际固定速度。",
+        "kind": "Research Proposal",
+        "owner": "Researcher"
+      },
+      "remaining_uncertainty": "max允许原生插入规则选值，不证明实际10m/s或t0成功；改变的是被研究的初态政策，动态有效性未证明。",
+      "required_validation": [
+        "静态差异已解决；获授权后逐车原生depart/TripInfo速度/位置/车道/时延与FCD/事件一致；原生错误立即失败。"
+      ],
+      "researcher_decision_required": true,
+      "scientific_implications": [
+        "四臂需同DS38；不能与原初态直接归因供给效应",
+        "当前proposal失效；历史失败不能当控制组成功",
+        "改变研究对象，全部后续对照需共同重建"
+      ]
+    },
+    {
+      "available_options": [
+        {
+          "affected_measurements": "输入保真验收",
+          "introduced_assumption": "场景合理性单列待判",
+          "option": "批准精确文件及DS38变换的文件保真范围",
+          "option_id": "INPUT-01-O1",
+          "scientific_implications": "可检查执行符合声明，但不能推出现实有效性",
+          "solves": "明确执行输入口径"
+        },
+        {
+          "affected_measurements": "场景级解释",
+          "introduced_assumption": "需要明确新的科研需求",
+          "option": "要求另版场景审议",
+          "option_id": "INPUT-01-O2",
+          "scientific_implications": "重绑后再审；不能修改当前输入哈希",
+          "solves": "在运行前解决研究对象不匹配"
+        }
+      ],
+      "classification": [
+        "RESOLVABLE_FROM_EXISTING_EVIDENCE",
+        "RESEARCHER_DECISION_REQUIRED"
+      ],
+      "current_fact": "network与原policy-A输入完全相同；routes只38速度变化；sumocfg只新增TripInfo路径及unfinished/undeparted三选项。B00未加匝道脉冲，五条main_2恒10；合成SMOKE输入从未被当成B00输入。",
+      "current_status": "AWAITING_RESEARCHER_DECISION",
+      "evidence_paths": [
+        "docs/audits/stage_0_5_scientific_admission_review_v1/static_facts.json",
+        "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/proposal.json",
+        "evidence/results/RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1/review_proposal.json"
+      ],
+      "evidence_sha256": {
+        "docs/audits/stage_0_5_scientific_admission_review_v1/static_facts.json": "7cdd232e01fff19cf4569b4ceb114e8628799fd0bc1fd63d358e1de5dde66e6a",
+        "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/proposal.json": "b43e2d3af03dd53dd23bee3abd027725f298f58c97a2ae73d868ca9168a229b3",
+        "evidence/results/RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1/review_proposal.json": "69646b039177e43d874701b2ada548717cdf4bdfeda5cc4f231aecf9193bcaff"
+      },
+      "issue_id": "INPUT-01",
+      "priority": "normal",
+      "question": "文件级保真是否足以批准交通场景？",
+      "recommended_next_step": {
+        "action": "分别签署文件级保真与场景选择，勿把技术证书当科学同意。",
+        "kind": "Research Proposal",
+        "owner": "Researcher"
+      },
+      "remaining_uncertainty": "输入来源是已登记的历史准备场景，不等于逐字节原NGSIM；未证明场景代表性/科学有效性。未显式SUMO默认仍依赖绑定1.26实现。",
+      "required_validation": [
+        "静态XML差异与三SHA已复算；实际运行后还须只读输入/hash/实际插入验收。"
+      ],
+      "researcher_decision_required": true,
+      "scientific_implications": [
+        "可检查执行符合声明，但不能推出现实有效性",
+        "重绑后再审；不能修改当前输入哈希"
+      ]
+    },
+    {
+      "available_options": [
+        {
+          "affected_measurements": "N/E、18单元、缺失份额",
+          "introduced_assumption": "接受同车道部分支持，非全网真实前车",
+          "option": "按现有局部可观测D1合同审议",
+          "option_id": "MEASURE-01-O1",
+          "scientific_implications": "可报告限定域风险率，不能宣布正式仿真等价",
+          "solves": "固定分母与onset口径"
+        },
+        {
+          "affected_measurements": "事件、暴露及跨域比较",
+          "introduced_assumption": "需要新科学合同及验证",
+          "option": "要求更强前车/支持定义另版",
+          "option_id": "MEASURE-01-O2",
+          "scientific_implications": "当前候选不可复用批准",
+          "solves": "解决目标测量范围不足"
+        }
+      ],
+      "classification": [
+        "RESOLVABLE_FROM_EXISTING_EVIDENCE",
+        "RESEARCHER_DECISION_REQUIRED",
+        "REQUIRES_FUTURE_DYNAMIC_EXPERIMENT"
+      ],
+      "current_fact": "当前v4协调器实际调用measure_completed_capsule->assess_capsule->C6物理状态->local_d1_measurement；TTC<2、连续跨度>=0.2，onset归属，E为可靠同前后身份/前车/原生车道100ms整边。窗口[120,390)、lane1-5、y[150,350)；9x2格30s/100m，参考min states5710、min D1_E562.8，均通过静态支持。",
+      "current_status": "AWAITING_RESEARCHER_DECISION",
+      "evidence_paths": [
+        "code/src/riskprop/stage_0_5_d1_measurement.py",
+        "code/src/riskprop/stage_0_5_state_support.py",
+        "evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/us101__0750_0805_real_offset100.csv",
+        "docs/audits/stage_0_5_scientific_admission_review_v1/static_facts.json"
+      ],
+      "evidence_sha256": {
+        "code/src/riskprop/stage_0_5_d1_measurement.py": "affaf9984055b8673e6616310e4b0560f61b721747c33b47824f26172d36ad9c",
+        "code/src/riskprop/stage_0_5_state_support.py": "153f2672a01a17cc578b2d32ad49b8936239640cd065a0ed20bb8796f493c301",
+        "docs/audits/stage_0_5_scientific_admission_review_v1/static_facts.json": "7cdd232e01fff19cf4569b4ceb114e8628799fd0bc1fd63d358e1de5dde66e6a",
+        "evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/us101__0750_0805_real_offset100.csv": "62b86fdc6a860e321dd29cb1e1c492c784ce9240974ca909b8be5cff1e788f17"
+      },
+      "issue_id": "MEASURE-01",
+      "priority": "normal",
+      "question": "D1/C6及18格测量契约能回答什么？",
+      "recommended_next_step": {
+        "action": "Research Proposal：批准前明确有限可观测合同；零暴露为不可评价，零事件不能证明无风险。",
+        "kind": "Research Proposal",
+        "owner": "Researcher"
+      },
+      "remaining_uncertainty": "实现与引用支持可核验，但B00实际每格>=10状态/正D1/右端点、完整事件/身份均未知。相同公式不保证真实/模拟可观测前车和break处理等价。",
+      "required_validation": [
+        "未来FCD4200帧0..419.9、原生8401快照0..420、8400控制、18格含右端点、TripInfo及hash链重建全部通过才具工程测量资格。"
+      ],
+      "researcher_decision_required": true,
+      "scientific_implications": [
+        "可报告限定域风险率，不能宣布正式仿真等价",
+        "当前候选不可复用批准"
+      ]
+    },
+    {
+      "available_options": [
+        {
+          "affected_measurements": "早期风险与支持",
+          "introduced_assumption": "接受有限初始化影响",
+          "option": "保留A窗并披露初态残留",
+          "option_id": "WINDOW-01-O1",
+          "scientific_implications": "不能声称稳态；不能删除初态车后称同一总体",
+          "solves": "保留270s/18格共同支持"
+        },
+        {
+          "affected_measurements": "测量目标与操纵时序",
+          "introduced_assumption": "接受210s/14格及恢复期缩短",
+          "option": "另版B窗/时序",
+          "option_id": "WINDOW-01-O2",
+          "scientific_implications": "必须新输入/参考/提案，不得运行后切窗",
+          "solves": "要求预声明清空规则"
+        }
+      ],
+      "classification": [
+        "RESEARCHER_DECISION_REQUIRED",
+        "REQUIRES_FUTURE_DYNAMIC_EXPERIMENT"
+      ],
+      "current_fact": "candidate固定A窗18格；历史C7的0750最后局部初态记录130.5s，A含106条/10.6veh-s。候选B共同起点180s、14格，改变支持且P2已接触；不具盲验证资格。",
+      "current_status": "AWAITING_RESEARCHER_DECISION",
+      "evidence_paths": [
+        "docs/STAGE_0_5_C6_C7_OFFLINE_DECISION_2026-10-25.md",
+        "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/proposal.json"
+      ],
+      "evidence_sha256": {
+        "docs/STAGE_0_5_C6_C7_OFFLINE_DECISION_2026-10-25.md": "ad365b3bc79428fa5fef61e76bd6d686cae47a6cc48914e88021334a9580360c",
+        "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/proposal.json": "b43e2d3af03dd53dd23bee3abd027725f298f58c97a2ae73d868ca9168a229b3"
+      },
+      "issue_id": "WINDOW-01",
+      "priority": "normal",
+      "question": "保留[120,390)还是另选初始化清空窗口？",
+      "recommended_next_step": {
+        "action": "明确选择A的有限时域目标或另版B；当前包不允许事后改窗。",
+        "kind": "Research Proposal",
+        "owner": "Researcher"
+      },
+      "remaining_uncertainty": "历史初态清空不保证DS38新运行清空；即便零初态记录，间接影响/稳态仍未证明。",
+      "required_validation": [
+        "研究者在任何运行前选窗；新运行逐车初态局部last_FCD与全轨迹支持核对，不由风险值选窗。"
+      ],
+      "researcher_decision_required": true,
+      "scientific_implications": [
+        "不能声称稳态；不能删除初态车后称同一总体",
+        "必须新输入/参考/提案，不得运行后切窗"
+      ]
+    },
+    {
+      "available_options": [
+        {
+          "affected_measurements": "身份、实际插入、输入资格",
+          "introduced_assumption": "不允许删除该车或容忍原生Error",
+          "option": "保留i0007并接受失败可发生的诊断目标",
+          "option_id": "DYNAMIC-01-O1",
+          "scientific_implications": "失败只得失败证据，不复用为B00对照",
+          "solves": "测试当前声明是否相容"
+        },
+        {
+          "affected_measurements": "初始化与可比性",
+          "introduced_assumption": "由研究者定义变换",
+          "option": "先另版处理i0007",
+          "option_id": "DYNAMIC-01-O2",
+          "scientific_implications": "改变初态；四臂及精确授权全部重绑",
+          "solves": "减少已知声明相容风险"
+        }
+      ],
+      "classification": [
+        "RESOLVABLE_FROM_EXISTING_EVIDENCE",
+        "RESEARCHER_DECISION_REQUIRED",
+        "REQUIRES_FUTURE_DYNAMIC_EXPERIMENT"
+      ],
+      "current_fact": "封存日志t0明确i0007慢下游速度不相容；t180明确i0063出发速度过高，随后TraCI关闭。DS38含i0063，i0007不变。aggregate discarded=1不能判定具体ID。",
+      "current_status": "AWAITING_RESEARCHER_DECISION_AND_DYNAMIC_EVIDENCE",
+      "evidence_paths": [
+        "code/outputs/formal/calibration/stage_0_5_interaction_diagnostics_v1/ID1_SUPPLY_0750/worker_console.log",
+        "docs/audits/stage_0_5_scientific_admission_review_v1/static_facts.json",
+        "docs/plans/2026-10-26-stage-0-5-ready-to-admit-v3.md"
+      ],
+      "evidence_sha256": {
+        "code/outputs/formal/calibration/stage_0_5_interaction_diagnostics_v1/ID1_SUPPLY_0750/worker_console.log": "2eaf711e946b275deb93cfba10660475ada7223f936ba2596f562b9b5ad4d258",
+        "docs/audits/stage_0_5_scientific_admission_review_v1/static_facts.json": "7cdd232e01fff19cf4569b4ceb114e8628799fd0bc1fd63d358e1de5dde66e6a",
+        "docs/plans/2026-10-26-stage-0-5-ready-to-admit-v3.md": "eefa794f4c5fe935ec1df4a249afbe46047ff54c31706ae7ec150f35fe89c197"
+      },
+      "issue_id": "DYNAMIC-01",
+      "priority": "normal",
+      "question": "i0007、i0063与discard归属能否静态解决？",
+      "recommended_next_step": {
+        "action": "Research Proposal：先决定是否接受该有限诊断风险；不能凭SMOKE或DS38静态差异保证成功。",
+        "kind": "Research Proposal",
+        "owner": "Researcher"
+      },
+      "remaining_uncertainty": "新B00无180s供给降速，不能把历史i0063失败直接推为B00必败；i0007实际插入/动态相容及discard身份仍unknown。",
+      "required_validation": [
+        "逐车计划/loaded/pending/departed/active/on-road/arrival/TripInfo/FCD/explicit discard证据；Error、Unknown、时钟冲突、teleport/collision即失败，不从FCD缺失推断discard。"
+      ],
+      "researcher_decision_required": true,
+      "scientific_implications": [
+        "失败只得失败证据，不复用为B00对照",
+        "改变初态；四臂及精确授权全部重绑"
+      ]
+    },
+    {
+      "available_options": [
+        {
+          "affected_measurements": "所有实际测量支持",
+          "introduced_assumption": "先解决ENG-01/02/03并冻结科学接受政策",
+          "option": "获得独立精确授权后只运行B00一次",
+          "option_id": "DYNAMIC-02-O1",
+          "scientific_implications": "成功仅有限诊断；失败保留，不自动换ID/重试",
+          "solves": "取得初始化和支持资格证据"
+        },
+        {
+          "affected_measurements": "研究进度",
+          "introduced_assumption": "接受继续未知",
+          "option": "暂缓实验",
+          "option_id": "DYNAMIC-02-O2",
+          "scientific_implications": "无新科学结论",
+          "solves": "等待政策或守卫修复"
+        }
+      ],
+      "classification": [
+        "REQUIRES_FUTURE_DYNAMIC_EXPERIMENT",
+        "RESEARCHER_DECISION_REQUIRED"
+      ],
+      "current_fact": "本轮零原生执行。现有代码可记录0.05s事件与0.1sFCD、TripInfo插入字段，实际动态值不存在；summary聚合不替代逐车证据。",
+      "current_status": "AWAITING_FUTURE_AUTHORIZATION",
+      "evidence_paths": [
+        "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/proposal.json",
+        "code/scripts/stage_0_5_identity_observation.py",
+        "code/scripts/stage_0_5_linux_controller_v4.py"
+      ],
+      "evidence_sha256": {
+        "code/scripts/stage_0_5_identity_observation.py": "17b922c5966b23e58e4ef617cdb42347a7b40e74176a457c05a6d16041382c9e",
+        "code/scripts/stage_0_5_linux_controller_v4.py": "8f68301d929a29b2fc31e7f85248867a734949cb3a9c7fb5190dc31b052e39fd",
+        "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/proposal.json": "b43e2d3af03dd53dd23bee3abd027725f298f58c97a2ae73d868ca9168a229b3"
+      },
+      "issue_id": "DYNAMIC-02",
+      "priority": "normal",
+      "question": "实际插入和交互相容性未来如何验收？",
+      "recommended_next_step": {
+        "action": "把逐车动态验收与失败归档清单随未来新授权冻结，当前不执行。",
+        "kind": "Research Proposal",
+        "owner": "Researcher"
+      },
+      "remaining_uncertainty": "无法静态确认实际depart、速度、排队、碰撞、残留、逐格暴露与时延；工程SMOKE只有1车3s。",
+      "required_validation": [
+        "事前清单：完整原始stdout/stderr/Error、控制/时钟、8401身份事件、逐车TripInfo/FCD、summary对账、18格支持、资源/隔离、清理和SHA；失败/中断也封存，不删异常车、不改窗。"
+      ],
+      "researcher_decision_required": true,
+      "scientific_implications": [
+        "成功仅有限诊断；失败保留，不自动换ID/重试",
+        "无新科学结论"
+      ]
+    },
+    {
+      "available_options": [
+        {
+          "affected_measurements": "事件N、暴露E、共同支持、状态响应",
+          "introduced_assumption": "不把B00通过当全部设计批准",
+          "option": "先B00资格，再同政策同seed四臂逐次审议",
+          "option_id": "IDENTIFY-01-O1",
+          "scientific_implications": "可形成S10-B00、R01-B00、SR11-R01-S10+B00条件性对比",
+          "solves": "先验证可比的参照"
+        },
+        {
+          "affected_measurements": "外推/随机不确定性/机制区分",
+          "introduced_assumption": "研究者明确估计量/多seed/消融和敏感性",
+          "option": "先完善机制与重复设计",
+          "option_id": "IDENTIFY-01-O2",
+          "scientific_implications": "需要成本与授权；不得挑seed或事后筛支持",
+          "solves": "为更强科学主张配对照"
+        }
+      ],
+      "classification": [
+        "RESEARCHER_DECISION_REQUIRED",
+        "REQUIRES_FUTURE_DYNAMIC_EXPERIMENT"
+      ],
+      "current_fact": "B00无供给/匝道干预，是0750/seed20261201/DS38初始化及支持诊断；单臂单seed没有处理差异。计划S10、R01、SR11未授权。",
+      "current_status": "AWAITING_RESEARCHER_DECISION",
+      "evidence_paths": [
+        "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/proposal.json",
+        "docs/plans/2026-10-26-stage-0-5-ready-to-admit-v3.md",
+        "docs/STAGE_0_5_C6_C7_OFFLINE_DECISION_2026-10-25.md"
+      ],
+      "evidence_sha256": {
+        "docs/STAGE_0_5_C6_C7_OFFLINE_DECISION_2026-10-25.md": "ad365b3bc79428fa5fef61e76bd6d686cae47a6cc48914e88021334a9580360c",
+        "docs/plans/2026-10-26-stage-0-5-ready-to-admit-v3.md": "eefa794f4c5fe935ec1df4a249afbe46047ff54c31706ae7ec150f35fe89c197",
+        "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/proposal.json": "b43e2d3af03dd53dd23bee3abd027725f298f58c97a2ae73d868ca9168a229b3"
+      },
+      "issue_id": "IDENTIFY-01",
+      "priority": "normal",
+      "question": "B00及后续四臂可以识别什么？",
+      "recommended_next_step": {
+        "action": "先确定B00只回答可运行/可观测问题，更强推断单独提出研究设计和Gate准则。",
+        "kind": "Research Proposal",
+        "owner": "Researcher"
+      },
+      "remaining_uncertainty": "初始化/供给人数与实际插入/有效支持/测量修复/随机过程均可能混杂；四臂有限差分也不是AAD机制因果证明。",
+      "required_validation": [
+        "后续Research Proposal：共同初态政策/匹配身份供给与支持；多预声明seed重复、窗口/初始化敏感性；若主张传播机制，另设传播/通信机制对照、相同局部状态与时延证据。"
+      ],
+      "researcher_decision_required": true,
+      "scientific_implications": [
+        "可形成S10-B00、R01-B00、SR11-R01-S10+B00条件性对比",
+        "需要成本与授权；不得挑seed或事后筛支持"
+      ]
+    },
+    {
+      "available_options": [
+        {
+          "affected_measurements": "历史比较与Gate",
+          "introduced_assumption": "研究者单独审议跨域等价",
+          "option": "保留历史资格标签并限定当前参考",
+          "option_id": "HISTORY-01-O1",
+          "scientific_implications": "新SMOKE/软件测试不能消除历史科学不一致",
+          "solves": "避免历史诊断数当正式真值"
+        }
+      ],
+      "classification": [
+        "RESOLVABLE_FROM_EXISTING_EVIDENCE",
+        "RESEARCHER_DECISION_REQUIRED"
+      ],
+      "current_fact": "当前B00调用新C6/D1/offset100而非旧runner点分母或错位分块。C3旧时距标签不在B00主验收；C4支持时点更正可解释；C5旧包络判据不进入本次八检查。历史结果不自动升级，C7与物理部分可观测/科学等价仍未决。历史POLICY-A-VALIDATION-SCOPE-01仍Not Accepted。",
+      "current_status": "RESOLVED_RELEVANCE_WITH_PENDING_SCIENCE",
+      "evidence_paths": [
+        "docs/STAGE_0_5_WP1_EVIDENCE_AUDIT.md",
+        "docs/STAGE_0_5_C6_C7_OFFLINE_DECISION_2026-10-25.md",
+        "AI_CONTEXT/06_DECISIONS.md",
+        "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/integration_acceptance.json"
+      ],
+      "evidence_sha256": {
+        "AI_CONTEXT/06_DECISIONS.md": "8d69105713ee0198b0f5d12acbb40613517a9acb3cf3f1490799454c24838663",
+        "docs/STAGE_0_5_C6_C7_OFFLINE_DECISION_2026-10-25.md": "ad365b3bc79428fa5fef61e76bd6d686cae47a6cc48914e88021334a9580360c",
+        "docs/STAGE_0_5_WP1_EVIDENCE_AUDIT.md": "ecb25067dd95ed21b74f4375be138983a40efc8fc95d8979076e2336fc3c2ab1",
+        "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/integration_acceptance.json": "342ed54cccedcaf0d477ec72b70b98e956140179961dec2d59904d4648a71528"
+      },
+      "issue_id": "HISTORY-01",
+      "priority": "normal",
+      "question": "C1-C5/C6-C7及Not Accepted哪些仍影响B00？",
+      "recommended_next_step": {
+        "action": "仅将相关旧问题作为当前科学接受的边界，不机械复验无关旧实验。",
+        "kind": "Engineering review recommendation",
+        "owner": "Research engineer"
+      },
+      "remaining_uncertainty": "本轮没有重算旧原始表/所有历史实验，引用其封存结论并验证相关当前调用；不重新裁定历史事故。",
+      "required_validation": [
+        "保留全部历史字节；当前直接证据与历史观察分列；不修改Gate/δ/h/B/Stage1.1。"
+      ],
+      "researcher_decision_required": false,
+      "scientific_implications": [
+        "新SMOKE/软件测试不能消除历史科学不一致"
+      ]
+    },
+    {
+      "available_options": [
+        {
+          "affected_measurements": "未来授权来源",
+          "introduced_assumption": "执行者不得制造批准",
+          "option": "保留受信研究者决定+审计记录流程",
+          "option_id": "AUTH-02-O1",
+          "scientific_implications": "只对精确SHA/范围有效",
+          "solves": "明确当前信任边界"
+        },
+        {
+          "affected_measurements": "授权可审计性",
+          "introduced_assumption": "研究者决定所需认证强度",
+          "option": "另任务增加独立验证来源",
+          "option_id": "AUTH-02-O2",
+          "scientific_implications": "新守卫需新测试/闭包，不改科学定义",
+          "solves": "减少误写JSON的权限歧义"
+        }
+      ],
+      "classification": [
+        "ENGINEERING_AMBIGUITY_REQUIRES_REVIEW",
+        "RESEARCHER_DECISION_REQUIRED"
+      ],
+      "current_fact": "authorization_reasons核对JSON精确task/run/hash、非空decision_record、三审批及三政策。没有签名/独立身份认证；本地受信调用者负责将真实人类决定写入授权记录。工程证书不能完成该人类来源认证。",
+      "current_status": "AWAITING_TRUST_BOUNDARY_REVIEW",
+      "evidence_paths": [
+        "code/scripts/stage_0_5_native_capsule_v4.py",
+        "code/scripts/run_stage_0_5_admission_v3.py"
+      ],
+      "evidence_sha256": {
+        "code/scripts/run_stage_0_5_admission_v3.py": "6d296c99892afcc0d8766d78fa798e3d6af81dad0bdc62217ea7102668eb7316",
+        "code/scripts/stage_0_5_native_capsule_v4.py": "22ed677334290729038b8c30049637fb90af301760e9ee33a1aa7073e2cf26db"
+      },
+      "issue_id": "AUTH-02",
+      "priority": "normal",
+      "question": "精确proposal SHA能否认证研究者本人批准？",
+      "recommended_next_step": {
+        "action": "由研究者确认审批来源与执行责任边界；本轮不创建任何授权envelope。",
+        "kind": "Research Proposal",
+        "owner": "Researcher"
+      },
+      "remaining_uncertainty": "不是已证实外部攻击或当前未授权运行；准确边界是字段检查依赖受信操作者，不等于密码学人类批准。",
+      "required_validation": [
+        "未来授权必须引用真实研究者消息及精确新SHA；测试工程证书/旧SMOKE授权/空决定/错run均不能替代。"
+      ],
+      "researcher_decision_required": true,
+      "scientific_implications": [
+        "只对精确SHA/范围有效",
+        "新守卫需新测试/闭包，不改科学定义"
+      ]
+    },
+    {
+      "available_options": [
+        {
+          "affected_measurements": "启动前实际环境",
+          "introduced_assumption": "仍保持原阈值与隔离要求",
+          "option": "未来授权后在启动前实时复核",
+          "option_id": "ENV-01-O1",
+          "scientific_implications": "不赋予科研资格",
+          "solves": "防止陈旧资源/运行时证据"
+        }
+      ],
+      "classification": [
+        "RESOLVABLE_FROM_EXISTING_EVIDENCE",
+        "REQUIRES_FUTURE_DYNAMIC_EXPERIMENT"
+      ],
+      "current_fact": "本轮复核8031文件运行时清单的封存绑定及原生回执；不重启WSL、不重新执行live技术预检。现有ready=true是先前时点实时证据，不能保证未来资源/内核/路径持续不变。",
+      "current_status": "HISTORICAL_PASS_CURRENT_LIVE_UNVERIFIED",
+      "evidence_paths": [
+        "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/technical_preflight.json",
+        "docs/audits/stage_0_5_linux_native_v4/prepared-20261026-r5/runtime_manifest.json",
+        "docs/audits/stage_0_5_ready_to_admit_v3/candidate-v6/validation_record.json"
+      ],
+      "evidence_sha256": {
+        "docs/audits/stage_0_5_linux_native_v4/prepared-20261026-r5/runtime_manifest.json": "3afa1fdb8eac97acf875d1a816eac168bfd39d3318414e316c85b4136d0a4abc",
+        "docs/audits/stage_0_5_ready_to_admit_v3/candidate-v6/validation_record.json": "8755f0d0750ff7f62d388a6635b85ab9a5ed1ae7e570dd28df764801a40c3ae2",
+        "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/technical_preflight.json": "6aae70c45f878b4be9484d51a0d1b16eabbb1e052b82fc12831b9e7d2728201f"
+      },
+      "issue_id": "ENV-01",
+      "priority": "normal",
+      "question": "历史实时检查能否证明未来启动环境仍有效？",
+      "recommended_next_step": {
+        "action": "无需重跑SMOKE；待科学决定及工程风险解决后，只做当次必要实时检查。",
+        "kind": "Engineering review recommendation",
+        "owner": "Research engineer"
+      },
+      "remaining_uncertainty": "当前Linux实时内核/资源/8031依赖文件未在本轮重新读取，明确unverified；本任务只读证据审查不要求宣称新的实时通过。",
+      "required_validation": [
+        "未来授权任务重验C5GiB/D14GiB/内存4GiB、WSL余量、namespace/Landlock/seccomp/cgroup/systemd与精确依赖；失败即停。"
+      ],
+      "researcher_decision_required": false,
+      "scientific_implications": [
+        "不赋予科研资格"
+      ]
+    }
+  ],
+  "recommendation": "Research Proposal: 暂缓执行授权；先解决ENG-01/02/03的工程/观测条件，同时逐项审议科学政策。",
+  "schema": "aad.scientific-admission-decision-packet.v1",
+  "status": "RESEARCH_APPROVAL_PENDING",
+  "total_issues": 15
+}

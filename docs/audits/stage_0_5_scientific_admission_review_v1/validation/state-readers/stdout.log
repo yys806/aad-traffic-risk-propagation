@@ -1,0 +1,64 @@
+code/scripts\audit_stage_0_5_research_v2.py:119:        "candidate_flags": {k: candidate[k] for k in ["execution_allowed", "researcher_confirmed", "protocol_frozen"]},
+code/scripts\export_stage_0_5_research_v2_evidence.py:39:    if any(p[k] for k in ["execution_allowed", "researcher_confirmed", "protocol_frozen"]):
+code/scripts\export_stage_0_5_v2_admission_evidence.py:40:    if any(profile[k] is not False for k in ["execution_allowed", "researcher_confirmed", "protocol_frozen", "accepted_for_new_task"]):
+code/scripts\prepare_stage_0_5_admission_v3.py:154:        execution_allowed=False,researcher_confirmed=False,protocol_frozen=False,
+code/scripts\prepare_stage_0_5_admission_v3.py:165:        isolation=dict(accepted_for_new_task=False,report_path=environment_report.relative_to(root).as_posix(),report_sha256=sha(environment_report),historical_incident="Not Accepted"),
+code/scripts\prepare_stage_0_5_admission_v3.py:173:        execution_allowed=False,researcher_confirmed=False,protocol_frozen=False,accepted_for_new_task=False,
+code/scripts\prepare_stage_0_5_admission_v3.py:193:    if not all(p[k] is False for k in ["execution_allowed","researcher_confirmed","protocol_frozen"]):
+code/scripts\prepare_stage_0_5_admission_v3.py:195:    if p["isolation"]["accepted_for_new_task"] is not False:raise ValueError("unproved_native_isolation")
+code/scripts\prepare_stage_0_5_admission_v4.py:50:        {n:str(inputs/n) for n in run["input_files"]},run,accepted_build=False,
+code/scripts\prepare_stage_0_5_admission_v4.py:88:    integration=dict(accepted_for_new_task=False,input_and_test_resource_scope_accepted=False,
+code/scripts\prepare_stage_0_5_admission_v4.py:111:        execution_allowed=False,researcher_confirmed=False,protocol_frozen=False,
+code/scripts\prepare_stage_0_5_admission_v4.py:116:    p["isolation"]=dict(accepted_for_new_task=False,report_path=relative(folder/"integration_pending.json"),
+code/scripts\prepare_stage_0_5_admission_v4.py:126:    write(folder/"admission_profile.json",dict(status=report["status"],execution_allowed=False,researcher_confirmed=False,
+code/scripts\prepare_stage_0_5_admission_v4.py:127:        protocol_frozen=False,accepted_for_new_task=False,native_launch_locked=True,historical_incident="Not Accepted",
+code/scripts\prepare_stage_0_5_b00_admission_v6.py:113:    require(binding["accepted_build"] is False, "historical_build_lock_changed")
+code/scripts\prepare_stage_0_5_b00_admission_v6.py:195:    require(all(p[k] is False for k in ["execution_allowed", "researcher_confirmed", "protocol_frozen"]) and
+code/scripts\prepare_stage_0_5_b00_admission_v6.py:211:    for key in ["execution_allowed", "researcher_confirmed", "protocol_frozen"]:
+code/scripts\prepare_stage_0_5_b00_admission_v6.py:221:            certificate["accepted_for_new_task"] is True and certificate["input_and_test_resource_scope_accepted"] is True,
+code/scripts\prepare_stage_0_5_b00_admission_v6.py:311:        accepted_for_new_task=True, input_and_test_resource_scope_accepted=True,
+code/scripts\prepare_stage_0_5_b00_admission_v6.py:337:    p["isolation"].update(accepted_for_new_task=True, input_and_test_resource_scope_accepted=True,
+code/scripts\prepare_stage_0_5_b00_admission_v6.py:358:    write(target / "admission_profile.json", dict(status=full["status"], accepted_for_new_task=False,
+code/scripts\prepare_stage_0_5_b00_admission_v6.py:359:        execution_allowed=False, researcher_confirmed=False, protocol_frozen=False, native_launch_locked=True,
+code/scripts\prepare_stage_0_5_b00_admission_v6.py:386:    require(load(root, V6 + "/admission_profile.json")["native_launch_locked"] is True and
+code/scripts\prepare_stage_0_5_b00_admission_v6.py:388:                ["accepted_for_new_task", "execution_allowed", "researcher_confirmed", "protocol_frozen"]), "research_profile_unlocked")
+code/scripts\prepare_stage_0_5_depart_speed_candidate.py:304:                    'status': 'Proposed / Awaiting exact researcher confirmation', 'execution_allowed': False,
+code/scripts\prepare_stage_0_5_depart_speed_candidate.py:305:                    'researcher_confirmed': False, 'protocol_frozen': False,
+code/scripts\prepare_stage_0_5_depart_speed_candidate.py:352:    if p['execution_allowed'] or p['researcher_confirmed'] or p['budget']['already_spent'] != 1: raise ValueError('authorization_or_budget')
+code/scripts\prepare_stage_0_5_linux_stage_v4.py:86:    path,policy=make_policy(base/"smoke_capsule",runtime,runtime_path,sources,{n:str(inputs/n) for n in run["capsule_input_sha256"]},run,accepted_build=False,capability_record=capability)
+code/scripts\prepare_stage_0_5_policy_a.py:163:        'protocol_frozen':False,'execution_allowed':False,'attempts':0,'runs':run_entries,
+code/scripts\prepare_stage_0_5_v2_admission_evidence.py:128:    profile = dict(task_id=TASK, schema="aad.v2-admission-engineering.v1", execution_allowed=False, researcher_confirmed=False,
+code/scripts\prepare_stage_0_5_v2_admission_evidence.py:129:        protocol_frozen=False, accepted_for_new_task=False, native_launch_build_lock=True,
+code/scripts\prepare_stage_0_5_wsl_b00.py:50:        accepted_for_new_task=False)
+code/scripts\prepare_stage_0_5_wsl_b00.py:60:        execution_allowed=False,researcher_confirmed=False,protocol_frozen=False,accepted_for_new_task=False,
+code/scripts\prepare_stage_0_5_wsl_b00.py:61:        native_launch_locked=True,historical_incident="Not Accepted",SUMO_launches=0,real_TraCI_connections=0,new_trajectories=0))
+code/scripts\run_stage_0_5_policy_a_confirmed.py:97:    approval = {'researcher_confirmed': True, 'proposal_sha256': PROPOSAL_SHA,
+code/scripts\stage_0_5_admission_v3.py:146:        if p["isolation"].get("accepted_for_new_task") is not True:
+code/scripts\stage_0_5_execution_v2.py:42:    for flag in ["execution_allowed", "researcher_confirmed", "protocol_frozen"]:
+code/scripts\stage_0_5_execution_v2.py:45:    if approval.get("researcher_confirmed") is not True or approval.get("proposal_sha256") != proposal_sha256 or approval.get("task_id") != task_id or not approval.get("decision_record"):
+code/scripts\stage_0_5_execution_v2.py:55:    if isolation.get("accepted_for_new_task") is not True:
+code/scripts\stage_0_5_execution_v2.py:56:        reasons.append("accepted_for_new_task_not_true")
+code/scripts\stage_0_5_execution_v2.py:264:            raise AdmissionRefused("engineering_build_native_launch_locked")
+code/scripts\stage_0_5_execution_v2.py:396:        if not synthetic and self.ledger.config.get("execution_allowed") is not True:
+code/scripts\stage_0_5_execution_v2.py:404:            reasons.append("engineering_build_native_launch_locked")
+code/scripts\stage_0_5_execution_v2.py:595:                      "native_launch_locked": NATIVE_LAUNCH_LOCKED, "native_processes_created": 0}, ensure_ascii=False))
+code/scripts\stage_0_5_isolation_admission.py:52:                accepted_for_new_task=False)
+code/scripts\stage_0_5_isolation_v2.py:90:            self.denied.append({"process": normalized, "reason": "native_launch_locked_this_round"})
+code/scripts\stage_0_5_isolation_v2.py:91:            raise ScopeViolation("native_launch_locked_this_round")
+code/scripts\stage_0_5_isolation_v2.py:123:                "accepted_for_new_task": False}
+code/scripts\stage_0_5_linux_execution_v4.py:140:        require(proof["accepted_for_new_task"] is True and proof["input_and_test_resource_scope_accepted"] is True,"integration_not_accepted")
+code/scripts\stage_0_5_linux_execution_v4.py:148:        require(p["isolation"]["accepted_for_new_task"] is True,"new_task_OS_isolation_unaccepted")
+code/scripts\stage_0_5_linux_isolation.py:229:        context.update(source_files=policy["binding"]["source_files"],accepted_build=policy["binding"]["accepted_build"])
+code/scripts\stage_0_5_linux_runtime_v4.py:96:def make_policy(capsule,runtime,runtime_path,source_files,inputs,run,*,accepted_build,capability_record):
+code/scripts\stage_0_5_linux_runtime_v4.py:122:            source_sha256={n:sha(p) for n,p in source_files.items()},accepted_build=accepted_build))
+code/scripts\stage_0_5_native_capsule_v4.py:69:        for field in ["execution_allowed","researcher_confirmed","protocol_frozen"]:
+code/scripts\stage_0_5_native_capsule_v4.py:73:        if proposal.get("isolation",{}).get("accepted_for_new_task") is not True:
+code/scripts\stage_0_5_native_capsule_v4.py:116:    proposal_stub=dict(schema=context["schema"],task_id=context["task_id"],isolation=dict(accepted_for_new_task=context["accepted_build"]))
+code/scripts\stage_0_5_research_ledger.py:167:                        "execution_allowed": False, "historical_references": self.config["historical_references"]})
+code/scripts\stage_0_5_research_ledger.py:173:        require(approval.get("researcher_confirmed") is True and approval.get("task_id") == self.task_id and
+code/scripts\stage_0_5_research_ledger.py:183:            require(p.get("task_id") == self.task_id and p.get("execution_allowed") is True and
+code/scripts\stage_0_5_research_ledger.py:184:                    p.get("researcher_confirmed") is True, "proposal_not_executable")
+code/scripts\stage_0_5_research_ledger.py:189:        require(p.get("isolation", {}).get("accepted_for_new_task") is True, "task_isolation_not_accepted")
+code/scripts\stage_0_5_research_ledger.py:280:            require(decision.get("researcher_confirmed") is True and decision.get("task_id") == self.task_id and
+code/scripts\supervise_stage_0_5_diagnostic.py:47:    if approval.get('researcher_confirmed') is not True or approval.get('proposal_sha256')!=digest or not approval.get('decision_record'):
+code/scripts\verify_stage_0_5_policy_a.py:24:    assert proposal['execution_allowed'] is False and proposal['protocol_frozen'] is False and proposal['attempts']==0

@@ -1,5 +1,9 @@
 # AAD Experiments
 
+## 2026-10-27 B00科研准入审查V1（审查产物，不是实验）
+
+新增研究者决策包，15项问题/9项需明确决定。静态复算1150=117初态+1033非初态，DS38仅38速度10→max，i0007仍15.23；network原字节相同、sumocfg只增TripInfo三项。现有18参考单元与正式C6/D1调用已核验，但新B00实际插入、逐车生命周期、完整支持与科学效应均未观察。A窗残留/另版B窗、初始化/输入保真/测量合同及有限可识别目标仍待研究者。账本仅task_created，无预约；本轮0原生启动/0真实TraCI/0新科研轨迹，不重跑SMOKE、不重测历史轨迹，不改科学政策或Gate。依据：docs/STAGE_0_5_B00_SCIENTIFIC_ADMISSION_REVIEW_V1_2026-10-27.md；docs/audits/stage_0_5_scientific_admission_review_v1/review_matrix.json。下方为历史时点。
+
 ## 2026-10-27 B00 candidate-v6 工程准入（Verified / 待研究者审批）
 
 新增不可覆盖 candidate-v6，独立复核347份封存文件、原生产 verify_receipt Pass、12源闭包/8031运行时文件及B00输入/支持/18测量参考/资源策略精确绑定。静态预检仅保留实时检查要求；当前无SUMO的完整Linux技术预检 technical_errors=[]、ready=true、READY_FOR_RESEARCHER_APPROVAL。proposal SHA=b43e2d3af03dd53dd23bee3abd027725f298f58c97a2ae73d868ca9168a229b3。工程证书的accepted仅表示静态输入/资源资格与工程链，不证明B00实际插入、测量支持或科学效应。科研execution_allowed/researcher_confirmed/protocol_frozen及profile accepted_for_new_task仍false，native_launch_locked=true，旧B00 policy accepted_build=false硬锁保留；没有科研授权迁移。candidate-v5/历史失败/SMOKE归档原字节保留，历史Not Accepted、Gate/δ/h/B/Stage1.1不变。本任务SUMO0/真实TraCI0/新B00轨迹0。依据：docs/STAGE_0_5_B00_ADMISSION_V6_2026-10-27.md；docs/audits/stage_0_5_ready_to_admit_v3/candidate-v6/；evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/technical_preflight.json。下方为历史时点。

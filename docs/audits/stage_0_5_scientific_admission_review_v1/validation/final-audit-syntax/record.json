@@ -1,0 +1,15 @@
+{
+  "command": [
+    "python",
+    "-B",
+    "-c",
+    "from pathlib import Path; p=Path('docs/audits/stage_0_5_scientific_admission_review_v1/audit_tools'); files=list(p.glob('*.py')); [compile(f.read_text(encoding='utf-8'),str(f),'exec') for f in files]; print('AUDIT_SYNTAX_OK',len(files))"
+  ],
+  "completed_utc": "2026-10-27T05:51:11.045945+00:00",
+  "cwd": "D:\\shen\\TJU\\AAD",
+  "exit_code": 0,
+  "schema": "aad.scientific-review-command.v1",
+  "started_utc": "2026-10-27T05:51:10.896654+00:00",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_sha256": "10f040fb81b377b27d53ac9e31b68595edbf730a27c48fbb6208f6333615d9f6"
+}

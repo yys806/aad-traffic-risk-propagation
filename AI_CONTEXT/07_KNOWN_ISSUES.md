@@ -1,5 +1,9 @@
 # AAD Known Issues
 
+## 2026-10-27 B00科研准入审查V1（高优先级未决）
+
+ENG-01：technical_preflight_v4检查证书true而未检查研究policy accepted_build=false；V4绕过legacy/profile显示锁，后续reserve/running/launch_attempt在controller.verify_live_context晚拒绝之前，形成ready与实际可执行性不一致。属于fail-closed/副作用顺序风险，未证实未授权执行。ENG-02：collect_snapshot碰撞接口异常保存None，run_observation_loop却or 0，finish六类身份完整性不含碰撞；需另任务补缺失拒绝。ENG-03：verify_receipt只核summary封存/根，assess_capsule不作summary与逐车总量对账；原生pending可核算完整但未插入，初态插入/删失科学接受政策须先决定。当前精确候选不改，建议暂缓可执行批准；任何守卫/策略变化均需新绑定。本轮仅报告，不修改代码/科研审批/硬锁或历史事故。Git dirty为生成时点，38源/347文件及既定CRLF检出有双哈希证据；精确JSON字段检查依赖真实人类决策来源。详见主审查报告及authorization_boundary_audit.json；科研待决、动态行为unknown，0新轨迹。下方为历史时点。
+
 ## 2026-10-27 B00 candidate-v6 工程准入（Verified / 待研究者审批）
 
 新增不可覆盖 candidate-v6，独立复核347份封存文件、原生产 verify_receipt Pass、12源闭包/8031运行时文件及B00输入/支持/18测量参考/资源策略精确绑定。静态预检仅保留实时检查要求；当前无SUMO的完整Linux技术预检 technical_errors=[]、ready=true、READY_FOR_RESEARCHER_APPROVAL。proposal SHA=b43e2d3af03dd53dd23bee3abd027725f298f58c97a2ae73d868ca9168a229b3。工程证书的accepted仅表示静态输入/资源资格与工程链，不证明B00实际插入、测量支持或科学效应。科研execution_allowed/researcher_confirmed/protocol_frozen及profile accepted_for_new_task仍false，native_launch_locked=true，旧B00 policy accepted_build=false硬锁保留；没有科研授权迁移。candidate-v5/历史失败/SMOKE归档原字节保留，历史Not Accepted、Gate/δ/h/B/Stage1.1不变。本任务SUMO0/真实TraCI0/新B00轨迹0。依据：docs/STAGE_0_5_B00_ADMISSION_V6_2026-10-27.md；docs/audits/stage_0_5_ready_to_admit_v3/candidate-v6/；evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/technical_preflight.json。下方为历史时点。
