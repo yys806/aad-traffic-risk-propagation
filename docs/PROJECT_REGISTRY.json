@@ -1,6 +1,6 @@
 {
  "schema_version": "aad.project-registry.v2",
- "last_verified": "2026-10-26",
+ "last_verified": "2026-10-27",
  "project": {
   "name": "AAD",
   "research_topic": "Connected-vehicle communication adoption and traffic-risk propagation",
@@ -283,11 +283,21 @@
   "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/authorized-execution/authorized_envelope.json",
   "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/authorized-execution/capsule/engineering_acceptance.json",
   "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/authorized-execution/independent_receipt_acceptance.json",
-  "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/continuation-r2/continuation_result.json"
+  "docs/audits/stage_0_5_linux_native_v4/smoke-20261026-3/continuation-r2/continuation_result.json",
+  "docs/STAGE_0_5_B00_ADMISSION_V6_2026-10-27.md",
+  "code/scripts/prepare_stage_0_5_b00_admission_v6.py",
+  "code/tests/test_stage_0_5_b00_admission_v6.py",
+  "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/proposal.json",
+  "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/manifest.json",
+  "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/integration_acceptance.json",
+  "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/technical_preflight.json",
+  "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/scientific_diff.json",
+  "docs/audits/stage_0_5_ready_to_admit_v3/candidate-v6/independent_evidence_verification.json",
+  "docs/audits/stage_0_5_ready_to_admit_v3/candidate-v6/live/live_prerequisites.json"
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "SMOKE PASS: exact-authorized SMOKE_V4_20261026_3 completed one original-r5 native launch, one version process, one simulation and one real TraCI connection;60 control steps and native outputs independently accepted. No retry or B00 research trajectory. Candidate-v5/B00 flags and scientific Gate unchanged.",
+  "active_task": "AAD-0.5-B00-ADMISSION-V6: candidate-v6 READY_FOR_RESEARCHER_APPROVAL after independent sealed-smoke and B00 input/resource verification; no B00/SUMO/TraCI execution, no researcher authorization or scientific Gate change.",
   "why_now": "Researcher explicitly removed old three-attempt restriction for new research; historical ledgers and failed ID1 remain immutable. Need matched baseline and factorial contrasts under reviewed measurement.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
@@ -331,15 +341,18 @@
    "code/outputs/formal/calibration/stage_0_5_final_closure_package/summary/audit.json"
   ],
   "admission_v3": {
-   "status": "BLOCKED_ENGINEERING",
-   "audit_root": "docs/audits/stage_0_5_linux_native_v4/prepared-20261026-r5",
+   "status": "READY_FOR_RESEARCHER_APPROVAL",
+   "audit_root": "docs/audits/stage_0_5_ready_to_admit_v3/candidate-v6",
    "candidate_root": "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3",
    "accepted_for_new_task": false,
-   "latest_candidate": "candidate-v5",
-   "proposal_sha256": "e4b4dcf9e559b56be0ac50c143e3e327c336927f02d9c90c63f5c0463e93442f",
+   "latest_candidate": "candidate-v6",
+   "proposal_sha256": "b43e2d3af03dd53dd23bee3abd027725f298f58c97a2ae73d868ca9168a229b3",
    "first_proposed_run_id": "V3_0750_B00_DS38_s20261201",
-   "software_validation": "V4 122 passed; exact-byte targeted 288 passed / 1 skipped; full 1275 passed / 15 skipped / 7 native exclusions; fresh r5 guard 14/14; no production receipt accepted",
-   "schema": "aad.native-admission.v4"
+   "software_validation": "Current auxiliary targeted 34 passed / 1 skipped; V4 targeted 288 passed / 1 skipped; full no-data Git software 1331 passed / 16 skipped / 7 native deselections; compile/docs/evidence/receipt/live preflight exit0. 38 bound production/scientific sources unchanged.",
+   "schema": "aad.native-admission.v4",
+   "manifest_sha256": "afddd83c77e1f7b9eaf64c3b5059f9d29f740b9bf003ed36d22325c93eee4978",
+   "integration_certificate_sha256": "342ed54cccedcaf0d477ec72b70b98e956140179961dec2d59904d4648a71528",
+   "technical_preflight_path": "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/technical_preflight.json"
   },
   "native_smoke_preparation": {
    "status": "Historical prepared proposal; one exact-authorized smoke now passed; original false envelope retained",
@@ -1097,7 +1110,7 @@
     "third_window_rows_materialised",
     "zotero_items_added"
    ],
-   "current_conclusion": "V4 original-r5 synthetic production integration smoke independently passed after one authorized attempt; version/simulation/real TraCI each1,60 verified control steps. B00/candidate-v5 research admission still blocked and all four flags false; no new research trajectory or scientific Gate/definition change.",
+   "current_conclusion": "B00 candidate-v6 engineering preflight ready for researcher approval; original smoke independently verified, B00 static input/resource scope bound. All research approval flags false and native launch locked. No new scientific trajectories or change to Gate, delta/h/B or Stage 1.1.",
    "gate": {
     "status": "pending_simulation_sample",
     "portable_path": "evidence/results/RES-STAGE-0.5-REAL-REF-R2/audit.json"

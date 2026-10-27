@@ -1,0 +1,32 @@
+........................................................................ [  5%]
+........................................................................ [ 10%]
+........................................................................ [ 16%]
+...............................s........s............................... [ 21%]
+........................................sssssssssss..................... [ 26%]
+........................................s............................... [ 32%]
+........................................................................ [ 37%]
+....s................................................................... [ 42%]
+........................................................................ [ 48%]
+........................................................................ [ 53%]
+........................................................................ [ 58%]
+........................................................................ [ 64%]
+........................................................................ [ 69%]
+........................................................................ [ 74%]
+........................................................................ [ 80%]
+........................................................................ [ 85%]
+........................................................................ [ 90%]
+........................................................................ [ 96%]
+...........s.......................................                      [100%]
+============================== warnings summary ===============================
+tests/test_stage_0_5_final_closure.py::test_real_lane_storage_type_does_not_silently_empty_region
+  D:\shen\TJU\AAD\code\tmp\admission_v6_work_20261027_r3\software_clone\code\tests\test_stage_0_5_final_closure.py:79: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1.5' has dtype incompatible with int64, please explicitly cast to a compatible dtype first.
+    d.loc[0,'lane_id']=1.5
+
+tests/test_stage_0_5_wp1_audit.py::test_missing_leader_points_are_not_following_time
+  D:\shen\TJU\AAD\code\tmp\admission_v6_work_20261027_r3\software_clone\code\scripts\audit_stage_0_5_work_package_1.py:111: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
+    adjacent &= ~d[k].fillna(True) & ~p[k].fillna(True)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+1331 passed, 16 skipped, 7 deselected, 2 warnings in 332.35s (0:05:32)
+VALIDATION_AUDIT_PATH=D:\shen\TJU\AAD\code\tmp\admission_v6_work_20261027_r3\software_clone\code\tmp\research_v2_validation\20261027T042159058725_31080
+SOFTWARE_COUNTS={"deselected": 7, "error": 0, "exit_code": 0, "failed": 0, "passed": 1331, "skipped": 16}

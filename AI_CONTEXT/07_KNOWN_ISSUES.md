@@ -1,5 +1,9 @@
 # AAD Known Issues
 
+## 2026-10-27 B00 candidate-v6 工程准入（Verified / 待研究者审批）
+
+新增不可覆盖 candidate-v6，独立复核347份封存文件、原生产 verify_receipt Pass、12源闭包/8031运行时文件及B00输入/支持/18测量参考/资源策略精确绑定。静态预检仅保留实时检查要求；当前无SUMO的完整Linux技术预检 technical_errors=[]、ready=true、READY_FOR_RESEARCHER_APPROVAL。proposal SHA=b43e2d3af03dd53dd23bee3abd027725f298f58c97a2ae73d868ca9168a229b3。工程证书的accepted仅表示静态输入/资源资格与工程链，不证明B00实际插入、测量支持或科学效应。科研execution_allowed/researcher_confirmed/protocol_frozen及profile accepted_for_new_task仍false，native_launch_locked=true，旧B00 policy accepted_build=false硬锁保留；没有科研授权迁移。candidate-v5/历史失败/SMOKE归档原字节保留，历史Not Accepted、Gate/δ/h/B/Stage1.1不变。本任务SUMO0/真实TraCI0/新B00轨迹0。依据：docs/STAGE_0_5_B00_ADMISSION_V6_2026-10-27.md；docs/audits/stage_0_5_ready_to_admit_v3/candidate-v6/；evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/technical_preflight.json。下方为历史时点。
+
 ## 2026-10-26 辅助流程修复、合成smoke已Pass（最新）
 
 可选sysctl/已有审计目录/固定输出路径/GBK日志问题已由新辅助工具修复；额外历史host namespace ID相等假设也已纠正为实际新namespace分离。当前完整实时验收及唯一原生smoke均Pass，旧失败证据保留。B00/candidate-v5仍未准入，四false、实际研究初始化/i0007/交互相容/历史Not Accepted及科研Gate未解决、不自动升级。依据：`docs/STAGE_0_5_V4_SMOKE_3_CONTINUATION_2026-10-26.md`；下方为历史时点。
