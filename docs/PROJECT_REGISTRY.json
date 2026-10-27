@@ -296,12 +296,28 @@
   "docs/audits/stage_0_5_ready_to_admit_v3/candidate-v6/live/live_prerequisites.json",
   "docs/STAGE_0_5_B00_CLOSURE_2026-10-27.md",
   "code/scripts/validate_stage_0_5_b00_closure_v1.py",
-  "code/tests/test_stage_0_5_b00_closure_v1.py"
+  "code/tests/test_stage_0_5_b00_closure_v1.py",
+  "docs/AAD_WEEK_TO_STAGE_I_2026-10-27.md",
+  "docs/plans/2026-10-27-week-to-stage-i-v1.md",
+  "docs/plans/2026-10-27-week-to-stage-i-v1-r3.md",
+  "code/scripts/analyze_stage_0_5_week_scene_v1.py",
+  "code/scripts/package_aad_week_results_v1.py",
+  "code/scripts/prepare_aad_week_protocol_v1.py",
+  "code/scripts/prepare_stage_0_5_initial_speed_v1.py",
+  "code/scripts/assess_stage_0_5_existing_capsule_v1.py",
+  "code/scripts/run_stage_0_6_error_budget_v1.py",
+  "code/tests/test_stage_0_5_initial_speed_v1.py",
+  "code/tests/test_stage_0_5_existing_capsule_v1.py",
+  "code/tests/test_stage_0_5_postprocessing_supervision.py",
+  "code/tests/test_stage_0_5_process_supervision.py",
+  "code/tests/test_aad_week_scene_v1.py",
+  "code/tests/test_aad_week_protocol_v1.py",
+  "code/tests/test_stage_0_6_error_budget_v1.py"
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-0.5-B00-CLOSURE-AND-FIRST-NATIVE-RUN-V1",
-  "why_now": "One authorized actual B00 reveals the specific frozen i0007/downstream-limit/native-error-stop conflict; repairs validated, no baseline measurement accepted.",
+  "active_task": "AAD-WEEK-2026-10-27-TO-STAGE-I-V1",
+  "why_now": "Full420s B00 A03 and eight measurement checks accepted; no local P2 source event. Close practical scene scope, error-budget and protocol candidate; no scientific Gate override.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
    "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",
@@ -322,7 +338,11 @@
    "evidence/results/RES-STAGE-0.5-CD-INTEGRATION-V1/audit.json",
    "evidence/results/RES-STAGE-0.5-LOCAL-FOLLOWING-EXPLORATION-V1/audit.json",
    "evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/audit.json",
-   "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/audit.json"
+   "evidence/results/RES-STAGE-0.5-FINAL-CLOSURE-V1/audit.json",
+   "evidence/results/RES-AAD-WEEK-20261027-V1/audit.json",
+   "evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/stage_0_5_gate.json",
+   "evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/stage_0_6_gate.json",
+   "evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/protocol_lock_readiness.json"
   ],
   "local_gate_paths": [
    "code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r4/scientific_gate_report.json",
@@ -418,6 +438,24 @@
    "candidate": "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v8-closure-20261027",
    "proposal_sha256": "685f934a5bf12685ce600155b599fe808bb77bfce571d6894c319fceb389aa67",
    "final_software_validation_path": "docs/audits/stage_0_5_b00_closure_20261027/post_execution_validation.json"
+  },
+  "weekly_stage_i": {
+   "status": "B00_EXECUTED_MEASUREMENT_ACCEPTED",
+   "report_path": "docs/AAD_WEEK_TO_STAGE_I_2026-10-27.md",
+   "B00_real_starts": 3,
+   "accepted_run_id": "WEEK_0750_B00_IC1_s20261201_A03",
+   "duration_s": 420,
+   "measurement_accepted": true,
+   "stage_0_5": "blocked_for_source_triggered_effects",
+   "stage_0_6": "pending_scientific_tolerances_and_dynamic_calibration",
+   "stage_I": "BLOCKED",
+   "results": [
+    "RES-AAD-WEEK-20261027-V1",
+    "RES-STAGE-0.6-WEEK-20261027-V1"
+   ],
+   "native_candidate": "evidence/admission/AAD-WEEK-2026-10-27-TO-STAGE-I-V1/candidate-v3",
+   "offline_candidate": "evidence/admission/AAD-WEEK-2026-10-27-TO-STAGE-I-V1/candidate-v4-measurement",
+   "historical_incident": "Not Accepted; unchanged"
   }
  },
  "experiments": [
@@ -645,7 +683,7 @@
    "purpose": "组合 NGSIM 跟驰风险参考和 pNEUMA 城市运动学参考，检查无消息作用的 SUMO 样本是否落在现实范围。",
    "research_question": "SUMO 基础运动与跟驰风险是否明显脱离真实交通范围？",
    "date": "2026-09-07",
-   "status": "active_pending_simulation_sample",
+   "status": "active_measurement_accepted_interaction_blocked",
    "code_version": "canonical real reference R2, independent Stage 0.5.3 no-message SUMO engineering skeleton, and the Stage 0.5.4-A measurement-equivalence/calibration-readiness audit; no scientific calibration and no frozen scientific parameter; B0 bounded exploration with explicit ballistic and guarded batch inputs; no formal calibration; B1 capsule -S whitelist/stop supervisor with fixed-behaviour boundary mechanisms (closed early); B1.2 independent layered numerical/queue integration blocked before main matrix; B1.2-N restricted source-qualified near-zero contract;3 micro probes closed at missing positive-snap runtime coverage, C/D not admitted; B1.2-P positive-only native braking probes with independent seven-link admission; no integration/main command; AAD-0.5-FINAL-CLOSURE adds approved-D1 local attribution (stage_0_5_final_closure.py), the independent reference/candidate capsule runners with a finite process-tree supervisor, and the portable assembler/verifier; Stage 0.2 event core unchanged; AAD-0.5-TR-RECON adds the read-only real-traffic reconstruction module (lane geometry, boundary flows, conservation, space-time surfaces, jam-wave localisation, fundamental diagram, official NGSIM cross-check) and the conditional observed-geometry SUMO scene module with real-initial-state injection and native FCD recording",
    "code_paths": [
     "code/src/riskprop/simulation_real_coverage.py",
@@ -732,7 +770,11 @@
     "code/scripts/stage_0_5_linux_controller_v4.py",
     "code/scripts/stage_0_5_linux_execution_v4.py",
     "code/scripts/stage_0_5_linux_runtime_v4.py",
-    "code/scripts/validate_stage_0_5_linux_v4.py"
+    "code/scripts/validate_stage_0_5_linux_v4.py",
+    "code/scripts/analyze_stage_0_5_week_scene_v1.py",
+    "code/scripts/package_aad_week_results_v1.py",
+    "code/scripts/prepare_stage_0_5_initial_speed_v1.py",
+    "code/scripts/assess_stage_0_5_existing_capsule_v1.py"
    ],
    "entrypoints": [
     "code/scripts/prepare_stage_0_5_real_reference.py",
@@ -786,7 +828,11 @@
     "code/scripts/export_stage_0_5_v2_admission_evidence.py",
     "code/scripts/prepare_stage_0_5_admission_v3.py",
     "code/scripts/validate_stage_0_5_admission_v3.py",
-    "code/scripts/run_stage_0_5_admission_v3.py"
+    "code/scripts/run_stage_0_5_admission_v3.py",
+    "code/scripts/analyze_stage_0_5_week_scene_v1.py",
+    "code/scripts/package_aad_week_results_v1.py",
+    "code/scripts/prepare_stage_0_5_initial_speed_v1.py",
+    "code/scripts/assess_stage_0_5_existing_capsule_v1.py"
    ],
    "test_paths": [
     "code/tests/test_simulation_real_coverage.py",
@@ -824,7 +870,12 @@
     "code/tests/test_stage_0_5_research_ledger.py",
     "code/tests/test_stage_0_5_v2_admission.py",
     "code/tests/test_stage_0_5_admission_v3.py",
-    "code/tests/test_stage_0_5_native_capsule_v4.py"
+    "code/tests/test_stage_0_5_native_capsule_v4.py",
+    "code/tests/test_stage_0_5_initial_speed_v1.py",
+    "code/tests/test_stage_0_5_existing_capsule_v1.py",
+    "code/tests/test_stage_0_5_postprocessing_supervision.py",
+    "code/tests/test_stage_0_5_process_supervision.py",
+    "code/tests/test_aad_week_scene_v1.py"
    ],
    "configuration": "R2 real reference plus two no_message_baseline generic-highway engineering fixtures (baseline_mixed_demand, measurement_probe_queue_stop); US-101 primary, Lankershim auxiliary entry-only, pNEUMA urban kinematics entry-only; all network/demand/vType/behaviour/time settings are engineering_fixture_only",
    "parameters": {
@@ -987,7 +1038,16 @@
     "closure_validation_window_reads": 0,
     "closure_holdout_reads": 0,
     "closure_reality_coverage_accepted": false,
-    "closure_ABCD_runs": 0
+    "closure_ABCD_runs": 0,
+    "weekly_result_id": "RES-AAD-WEEK-20261027-V1",
+    "weekly_B00_starts": 3,
+    "weekly_B00_accepted": 1,
+    "weekly_duration_s": 420,
+    "weekly_seed": 20261201,
+    "weekly_internal_step_s": 0.05,
+    "weekly_recording_step_s": 0.1,
+    "weekly_local_P2": 0,
+    "weekly_all18_support": true
    },
    "data_version": "RES-STAGE-0.5-REAL-REF-R2; Stage 0.2 R4 four states + final_r1 P2 + Stage 0.3 R2 canonical/R3 summaries",
    "model": "deterministic simulation-to-real coverage audit",
@@ -1020,7 +1080,8 @@
     "RES-STAGE-0.5-DEPART-SPEED-CANDIDATE-V1",
     "RES-STAGE-0.5-INTERACTION-RESEARCH-V2",
     "RES-STAGE-0.5-V2-ADMISSION-ENGINEERING-V1",
-    "RES-STAGE-0.5-B00-NATIVE-V1"
+    "RES-STAGE-0.5-B00-NATIVE-V1",
+    "RES-AAD-WEEK-20261027-V1"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -1135,10 +1196,10 @@
     "third_window_rows_materialised",
     "zotero_items_added"
    ],
-   "current_conclusion": "B00 candidate-v6 engineering preflight ready for researcher approval; original smoke independently verified, B00 static input/resource scope bound. All research approval flags false and native launch locked. No new scientific trajectories or change to Gate, delta/h/B or Stage 1.1.",
+   "current_conclusion": "A03 complete420s/8400steps; eight evidence checks/18support pass;1005inserted145pending0discard/collision/teleport; localP2=0 blocks source-triggered confirmatory effects. Historical Not Accepted unchanged.",
    "gate": {
-    "status": "pending_simulation_sample",
-    "portable_path": "evidence/results/RES-STAGE-0.5-REAL-REF-R2/audit.json"
+    "status": "blocked",
+    "portable_path": "evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/stage_0_5_gate.json"
    },
    "scientific_claim_eligible": false
   },
@@ -1148,32 +1209,40 @@
    "purpose": "验证解析真值、物理路径、方向和时间步差异，并在阶段 1.1 前冻结科学口径。",
    "research_question": "指标实现和数值离散是否满足协议锁定的最低条件？",
    "date": "2026-09-07",
-   "status": "active_pending_calibration_and_frozen_tolerances",
+   "status": "active_error_budget_candidate_scientific_freeze_pending",
    "code_version": "当前入口和机器 Gate 已改用 stage_0_6。",
    "code_paths": [
     "code/src/riskprop/prelock_metrics.py",
     "code/src/riskprop/prelock_validation.py",
-    "code/src/riskprop/protocol_lock.py"
+    "code/src/riskprop/protocol_lock.py",
+    "code/scripts/prepare_aad_week_protocol_v1.py",
+    "code/scripts/run_stage_0_6_error_budget_v1.py"
    ],
    "entrypoints": [
     "code/scripts/run_stage_0_6_prelock_validation.py",
-    "code/scripts/check_protocol_lock_readiness.py"
+    "code/scripts/check_protocol_lock_readiness.py",
+    "code/scripts/prepare_aad_week_protocol_v1.py",
+    "code/scripts/run_stage_0_6_error_budget_v1.py"
    ],
    "test_paths": [
     "code/tests/test_prelock_metrics.py",
     "code/tests/test_prelock_validation.py",
-    "code/tests/test_protocol_lock.py"
+    "code/tests/test_protocol_lock.py",
+    "code/tests/test_aad_week_protocol_v1.py",
+    "code/tests/test_stage_0_6_error_budget_v1.py"
    ],
    "configuration": "科学容差未冻结；阶段 0.2、0.4、0.5、0.6全部通过后才能签署协议锁。",
    "parameters": {
-    "scientific_tolerances_frozen": false
+    "scientific_tolerances_frozen": false,
+    "weekly_result_id": "RES-STAGE-0.6-WEEK-20261027-V1"
    },
    "data_version": "stage_0_6_prelock_validation_v2",
    "model": "analytic and deterministic numerical validation",
    "model_checkpoint": "not_applicable",
    "result_ids": [
     "RES-STAGE-0.6-PRELOCK-V2",
-    "RES-PROTOCOL-READINESS-V1"
+    "RES-PROTOCOL-READINESS-V1",
+    "RES-STAGE-0.6-WEEK-20261027-V1"
    ],
    "core_metrics": [
     "analytic_truth_pass",
@@ -1182,10 +1251,10 @@
     "protocol_lock_allowed",
     "stage_1_1_allowed"
    ],
-   "current_conclusion": "技术检查通过，但校准与科学容差未闭合，协议锁和阶段 1.1仍被阻断。",
+   "current_conclusion": "Analytic/path truth verified; four-source fixture budget and observed quantization sensitivity computed;32field candidate complete as a proposal; scientific approval, actual dynamic paired convergence and variance still missing. StageI BLOCKED.",
    "gate": {
-    "status": "blocked_by_calibration_and_tolerance_freeze",
-    "portable_path": "evidence/results/RES-PROTOCOL-READINESS-V1/protocol_lock_readiness_v1.json"
+    "status": "pending_scientific_tolerances_and_dynamic_calibration",
+    "portable_path": "evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/stage_0_6_gate.json"
    },
    "scientific_claim_eligible": false
   },
@@ -4249,6 +4318,85 @@
     "docs/PAPER_AND_MATERIAL_SOURCES.md"
    ],
    "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-AAD-WEEK-20261027-V1",
+   "experiment_id": "stage_0_5",
+   "name": "Weekly full B00 and finite scene diagnostic",
+   "status": "B00_EXECUTED_MEASUREMENT_ACCEPTED",
+   "portable_evidence_paths": [
+    "evidence/results/RES-AAD-WEEK-20261027-V1/audit.json",
+    "evidence/results/RES-AAD-WEEK-20261027-V1/population_accounting.json",
+    "evidence/results/RES-AAD-WEEK-20261027-V1/measurement_acceptance.json",
+    "evidence/results/RES-AAD-WEEK-20261027-V1/independent_execution_receipt.json",
+    "evidence/results/RES-AAD-WEEK-20261027-V1/scene_audit.json",
+    "evidence/results/RES-AAD-WEEK-20261027-V1/failure_archive.json",
+    "evidence/results/RES-AAD-WEEK-20261027-V1/provenance.json",
+    "evidence/results/RES-AAD-WEEK-20261027-V1/validation_record.json",
+    "evidence/results/RES-AAD-WEEK-20261027-V1/ledger_snapshot.json",
+    "evidence/results/RES-AAD-WEEK-20261027-V1/manifest.json",
+    "evidence/results/RES-AAD-WEEK-20261027-V1/SHA256SUMS",
+    "evidence/results/RES-AAD-WEEK-20261027-V1/matched18.csv"
+   ],
+   "local_artifact_paths": [
+    "code/outputs/formal/calibration/aad_week_20261027_v1"
+   ],
+   "code_version_source": "provenance.json exact native/postrun sources; executed coordinator archived separately",
+   "configuration_source": "candidate-v3/proposal.json and protocol_candidate.json with per-field source/status",
+   "data_version_source": "provenance.json input/raw-output SHA-256; no private or holdout data",
+   "core_metrics": {
+    "duration_s": 420,
+    "B00_real_starts": 3,
+    "accepted_native_run": 1,
+    "D1_E_veh_s": 9778.4,
+    "local_P2": 0,
+    "common_support": 18
+   },
+   "current_conclusion": "Finite420s baseline evidence accepted; no local source P2; interaction Gate blocked",
+   "gate_status": "blocked",
+   "scientific_claim_eligible": false,
+   "paper_locations": [
+    "docs/AAD_WEEK_TO_STAGE_I_2026-10-27.md"
+   ]
+  },
+  {
+   "id": "RES-STAGE-0.6-WEEK-20261027-V1",
+   "experiment_id": "stage_0_6",
+   "name": "Weekly Stage0.6 error budget and protocol candidate",
+   "status": "verified_numerical_candidate_pending_scientific_freeze",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/audit.json",
+    "evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/numerical_manifest.json",
+    "evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/protocol_candidate.json",
+    "evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/current_gate_reports.json",
+    "evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/stage_0_5_gate.json",
+    "evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/stage_0_6_gate.json",
+    "evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/protocol_lock_readiness.json",
+    "evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/protocol_lock_writer_check.json",
+    "evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/input_manifest.json",
+    "evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/provenance.json",
+    "evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/validation_record.json",
+    "evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/manifest.json",
+    "evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/SHA256SUMS"
+   ],
+   "local_artifact_paths": [
+    "code/outputs/formal/calibration/stage_0_6_week_20261027_v1"
+   ],
+   "code_version_source": "provenance.json exact native/postrun sources; executed coordinator archived separately",
+   "configuration_source": "candidate-v3/proposal.json and protocol_candidate.json with per-field source/status",
+   "data_version_source": "provenance.json input/raw-output SHA-256; no private or holdout data",
+   "core_metrics": {
+    "analytic_truth_pass": true,
+    "physical_path_truth_pass": true,
+    "scientific_approval": false,
+    "protocol_lock_allowed": false
+   },
+   "current_conclusion": "Fixture-scoped budget and32required-field proposal; dynamic contrast/approved tolerances/paired variance outstanding",
+   "gate_status": "pending_scientific_tolerances_and_dynamic_calibration",
+   "scientific_claim_eligible": false,
+   "paper_locations": [
+    "docs/AAD_WEEK_TO_STAGE_I_2026-10-27.md"
+   ]
   }
  ],
  "history": [

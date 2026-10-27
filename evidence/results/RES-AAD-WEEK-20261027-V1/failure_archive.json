@@ -1,0 +1,111 @@
+{
+  "task_id": "AAD-WEEK-2026-10-27-TO-STAGE-I-V1",
+  "B00_real_starts": 3,
+  "prior_task_start_excluded": "candidate-v8 first-step failure belongs to prior task; preserved separately",
+  "resource_rejected_attempts": [
+    {
+      "record_path": "docs/audits/aad_week_20261027/a01_execution_result.json",
+      "record_sha256": "e8fd3befabd7d66de384bdd6ba60d2a0489f1cfd2104872f1fdd28d89dee474d",
+      "result": {
+        "artifact_sha256": {
+          "broker_context.json": "59eea05f217d7fa444be4dd113734555f5927159211da6c04b0f072a9e59c44f",
+          "capability_record.json": "26a4427717abfa93a3be05c4368d8ce2558018715694eb34e70c559247fd0105",
+          "controller_receipt.json": "5402ff1d7aa0ec3cb19e46ef7cdbf3227ef6f7e942393b43119b96020d9573a6",
+          "coordinator.stderr": "0e6391785c548736834fe8d0cfb3d1723a72ae71350a61d0310c64a10a2c2f25",
+          "coordinator.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "executed_policy.json": "a00f85a534329f654a2e6a6e0b246ee085c9721dfa908be792a07d2c959fc376",
+          "fcd.xml": "9423eef0083dcc87894e37cb3f7090af4643b1d5b747bbad23b25e828f76ca55",
+          "identity_events.jsonl": "a97b2d82cf70d1cead798e6dd591bd1e107e7e3347eb8450739ebb4d459ba995",
+          "identity_summary.json": "a4b7f7cb1a3d20313fe187d74d3a8e202ff782d0828f5c6eb3731417de72ac67",
+          "isolation_runtime.json": "5ef5a80adb6d897508a6ebf98f2bffca2059b8d22ed808ffc1eb1b926ebbe0fd",
+          "native_console.log": "79b4afa5c78e1650315b40fd564154ced3f71d6e2392ef08bbbfa51dfca38297",
+          "network.net.xml": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+          "routes.rou.xml": "b6df8d9ce52b56fac50899cc2e6d1329c7858325aae0f0c86c76d77f796a7574",
+          "run.sumocfg": "c55b242f09b6a86527852bf686f06f3347abc44aa1c16c199c51935ce93dc6c6",
+          "summary.xml": "bec8c40b27722804c807d950baeef1dd5e0e92d78eb2970ff0a7409533b57044",
+          "tripinfo.xml": "b1a565e42bf7206ff6a1bae099cd41547b251fa37763edbeab462b41878dab42"
+        },
+        "automatic_retry": false,
+        "collision_coverage_complete": true,
+        "continuation_scope": "Only after repair, new exact source/policy/proposal/envelope and new run/output; old candidate/output immutable",
+        "duration_s": 420,
+        "failure": "resource_supervision_incomplete",
+        "final_identity_states": {
+          "active_native": 148,
+          "arrived_native": 857,
+          "pending_native": 145
+        },
+        "independently_measured_contract": false,
+        "internal_steps": 8400,
+        "limit_s": 0.5,
+        "max_sample_gap_s": 1.142993682999986,
+        "native_exit_code": 0,
+        "native_simulation_completed": true,
+        "payload_exit_code": 0,
+        "peak_rss_bytes": 256753664,
+        "raw_output_path": "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/WEEK_0750_B00_IC1_s20261201_A01",
+        "resource_samples": 10051,
+        "run_id": "WEEK_0750_B00_IC1_s20261201_A01",
+        "status": "B00_EXECUTED_MEASUREMENT_LIMITED",
+        "wall_s": 465.87590122200004
+      }
+    },
+    {
+      "record_path": "docs/audits/aad_week_20261027/a02_execution_result.json",
+      "record_sha256": "e0f3b858a601068af1002b98a75f3c9419e7a5677680bfcbe41e8f896c80999d",
+      "result": {
+        "artifact_sha256": {
+          "broker_context.json": "ca5838e971c8f6c32b6e2f4ca8174b520f65c64353698ecbbc0e0894fc459691",
+          "capability_record.json": "26a4427717abfa93a3be05c4368d8ce2558018715694eb34e70c559247fd0105",
+          "controller_receipt.json": "8c175fff68f4fc4b58e7035d3bf658d6a78dad69f944294466bc23aefa232cd5",
+          "coordinator.stderr": "3131e4dae4f3da4f3cccd3c050601e7c046c34921b330838e2cdca11f07a6878",
+          "coordinator.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "executed_policy.json": "dd4e3bdbc923ce0f092881a6bb24f8f50e16bf133c421076fe1d0387764f2467",
+          "fcd.xml": "1e852d177fa53d0e3db6a75597a459682b13bf833988816b5fb179a1628fad0a",
+          "identity_events.jsonl": "a97b2d82cf70d1cead798e6dd591bd1e107e7e3347eb8450739ebb4d459ba995",
+          "identity_summary.json": "c9d55342d15b1a15b53c9c5e913dff5550aa9edb39eef44d92858802fcf6e3e5",
+          "isolation_runtime.json": "3a2679b3d6cff621acd69cde80a1ec6d46060e360703c15ebf9c95a64a78843d",
+          "native_console.log": "79b4afa5c78e1650315b40fd564154ced3f71d6e2392ef08bbbfa51dfca38297",
+          "network.net.xml": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+          "routes.rou.xml": "b6df8d9ce52b56fac50899cc2e6d1329c7858325aae0f0c86c76d77f796a7574",
+          "run.sumocfg": "c55b242f09b6a86527852bf686f06f3347abc44aa1c16c199c51935ce93dc6c6",
+          "summary.xml": "5636a22417779e78a346f85816a0a1decfe7013b25908c4d2e29405d693776d9",
+          "tripinfo.xml": "e51c8b486b40fb8e70ff76b0447803780736a3c0118d30b2525246a1f7ebb948"
+        },
+        "automatic_retry": false,
+        "collision_coverage_complete": true,
+        "continuation_scope": "New process supervision source/policy/proposal/envelope required; A02 immutable; no claim of proved unique GC or filesystem root cause",
+        "duration_s": 420,
+        "failure": "resource_supervision_incomplete",
+        "final_identity_states": {
+          "active_native": 148,
+          "arrived_native": 857,
+          "pending_native": 145
+        },
+        "internal_steps": 8400,
+        "limit_s": 0.5,
+        "max_sample_gap_s": 1.1203485330000262,
+        "native_exit_code": 0,
+        "native_simulation_completed": true,
+        "payload_exit_code": 0,
+        "peak_rss_bytes": 261918720,
+        "raw_output_path": "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/WEEK_0750_B00_IC1_s20261201_A02",
+        "resource_samples": 12717,
+        "run_id": "WEEK_0750_B00_IC1_s20261201_A02",
+        "status": "B00_EXECUTED_MEASUREMENT_LIMITED",
+        "wall_s": 516.192668691
+      }
+    }
+  ],
+  "A03_coordinator_failure": {
+    "reason": "ModuleNotFoundError: riskprop after completed native receipt",
+    "original_ledger_status": "measurement_rejected",
+    "source_snapshot": "docs/audits/aad_week_20261027/a03_executed_coordinator_source.py",
+    "source_snapshot_sha256": "6d296c99892afcc0d8766d78fa798e3d6af81dad0bdc62217ea7102668eb7316",
+    "failure_log_sha256": "3c730e8431f30b173a727cde190e3283d07a1bf96f10857680da95b8ea18f9e7",
+    "remedy": "Direct entry src import fix; same sealed raw trajectory independently accepted under candidate-v4-measurement, native launches0"
+  },
+  "no_hidden_retries": true,
+  "no_same_failed_binding_restart": true,
+  "historical_Not_Accepted": "Unchanged; new validation does not reverse historical scope incidents"
+}

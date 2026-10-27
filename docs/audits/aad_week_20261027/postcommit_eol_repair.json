@@ -1,0 +1,17 @@
+{
+  "failed_unpushed_commit": "ade1879b402401500721ec5b5a54e0fe4a661258",
+  "failure_record": "docs/audits/aad_week_20261027/postcommit_eol_failure.json",
+  "cause": "Default Windows autocrlf conversion; all230 raw differences are equivalent after CRLF/LF normalization, including12 mixed-EOL legacy files",
+  "new_exact_source_EOL_pins": [
+    "code/src/riskprop/prelock_metrics.py",
+    "code/src/riskprop/prelock_validation.py",
+    "code/src/riskprop/stage_0_1_sumo.py",
+    "code/src/riskprop/protocol_lock.py"
+  ],
+  "preserved_existing_CRLF_binding": "formal_risk_measurement.py retains its pre-existing explicit eol=crlf and exact executed SHA",
+  "scope": "Git materialization only; no native/scientific source body, input, runtime, candidate, sealed result or raw output changed",
+  "extra_native_launches": 0,
+  "full_software_regression_reused": "1386passed/17skipped/7native excluded; all333 source bytes in original tested source workspace unchanged",
+  "pure_Git_policy": "Pin exact affected source bindings; other unmodified legacy source EOL differences are disclosed separately; never normalize a bound file to make its hash pass",
+  "status": "Repair applied; independent new-checkout validation required"
+}

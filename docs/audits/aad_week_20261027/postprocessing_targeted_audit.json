@@ -1,0 +1,15 @@
+{
+  "scope": "Python parent audit in no-data Git clone; not OS/native certification",
+  "denied": [],
+  "processes": [
+    {
+      "executable": "",
+      "command": "C:\\Users\\Lenovo\\.codex\\visualizations\\2026\\10\\27\\01a17c26-147b-7392-9d31-a8de1dc463ad\\test_env\\Scripts\\python.exe -I -B -c \"import runpy,sys\nm=runpy.run_path(sys.argv[1],run_name=\\\"isolated_broker_test\\\")\nchild=m[\\\"child\\\"]; g=child.__globals__\ng[\\\"os\\\"].getpid=lambda:1; g[\\\"os\\\"].getuid=lambda:0\ndef validate(policy):\n    from stage_0_5_isolation_admission import probe_checks\n    assert probe_checks({})=={}\n    raise RuntimeError(\\\"verified_import_stop_before_mount\\\")\ng[\\\"validate\\\"]=validate\ntry: child(sys.argv[2],m[\\\"sha\\\"](sys.argv[2]))\nexcept RuntimeError as error:\n    assert str(error)==\\\"verified_import_stop_before_mount\\\",str(error)\nelse: raise AssertionError(\\\"must stop before native isolation\\\")\nprint(\\\"isolated_import_verified_no_native_launch\\\")\n\" C:\\Users\\Lenovo\\.codex\\visualizations\\2026\\10\\27\\01a17c26-147b-7392-9d31-a8de1dc463ad\\postcommit_checkout\\code\\tmp\\research_v2_validation\\20261027T113644494233_46040\\targeted_tmp\\test_isolated_broker_resolves_0\\stage_0_5_linux_isolation.py C:\\Users\\Lenovo\\.codex\\visualizations\\2026\\10\\27\\01a17c26-147b-7392-9d31-a8de1dc463ad\\postcommit_checkout\\code\\tmp\\research_v2_validation\\20261027T113644494233_46040\\targeted_tmp\\test_isolated_broker_resolves_0\\policy.json"
+    }
+  ],
+  "source_workspace": "D:\\shen\\TJU\\AAD",
+  "clone": "C:\\Users\\Lenovo\\.codex\\visualizations\\2026\\10\\27\\01a17c26-147b-7392-9d31-a8de1dc463ad\\postcommit_checkout",
+  "sumo_launches": 0,
+  "tests": "targeted",
+  "exit_code": 0
+}

@@ -730,6 +730,17 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
          ['execution_result.json', 'population_accounting.json', 'measurement_acceptance.json',
           'scientific_conflict.json', 'ledger_snapshot.json', 'provenance.json',
           'artifact_sha256.json', 'validation_record.json', 'SHA256SUMS']),
+        ('RES-AAD-WEEK-20261027-V1', 'aad_week_20261027_v1',
+         ['audit.json', 'population_accounting.json', 'measurement_acceptance.json',
+          'independent_execution_receipt.json', 'scene_audit.json', 'matched18.csv',
+          'failure_archive.json', 'provenance.json', 'validation_record.json',
+          'ledger_snapshot.json', 'manifest.json', 'SHA256SUMS']),
+        ('RES-STAGE-0.6-WEEK-20261027-V1', 'stage_0_6_week_20261027_v1',
+         ['audit.json', 'numerical_manifest.json', 'protocol_candidate.json',
+          'current_gate_reports.json', 'stage_0_5_gate.json', 'stage_0_6_gate.json',
+          'protocol_lock_readiness.json', 'protocol_lock_writer_check.json',
+          'input_manifest.json', 'provenance.json', 'validation_record.json',
+          'manifest.json', 'SHA256SUMS']),
     ]:
         pairs[result_id] = [
             ('code/outputs/formal/calibration/' + directory + '/portable/' + name, name)
@@ -765,7 +776,7 @@ def _validate_source(source: Path) -> None:
         "init_routes.csv","newell_metrics.csv","response_metrics.csv",
         "STRUCTURAL_PLAN_SHA256","real_block_cloud.csv",
         "real_block_cloud_us101__0750_0805.csv","real_block_cloud_us101__0805_0820.csv",
-        "fidelity_metrics.csv",
+        "fidelity_metrics.csv", "matched18.csv",
         }
     if source.suffix.lower() not in {".json", ".md", ".txt", ".sha256"} and source.name not in aggregate_names:
         raise ValueError(f"unsupported evidence file type: {source}")

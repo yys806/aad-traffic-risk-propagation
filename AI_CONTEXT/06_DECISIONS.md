@@ -1,5 +1,11 @@
 # AAD Confirmed Decisions
 
+## 2026-10-27 Weekly B00 accepted; Stage I remains BLOCKED
+
+Verified: A03 completed420s/8400native steps, independent receipt and all8 measurement checks Pass; B00_EXECUTED_MEASUREMENT_ACCEPTED. This task had3 real B00 starts: A01/A02 resource-coverage failures retained; A03 sealed trajectory independently remeasured with zero new launches after a coordinator import fix.1150declared=1005inserted+145native pending;857arrived/148active; collision/teleport/discard0 with complete required observation.18/18state/D1 support, E=9778.4veh-s, localP2=0. Final isolated software:1386passed/17skipped/7native excluded; audit denied0/SUMO0; compileall/docs/hash Pass. Scientific interaction Gate blocked; numerical budget/protocol candidate are Proposed, StageI BLOCKED. Historical Not Accepted unchanged. Evidence: docs/AAD_WEEK_TO_STAGE_I_2026-10-27.md; evidence/results/RES-AAD-WEEK-20261027-V1/; evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/. Older blocks below retain their historical time points.
+
+Agreed: user authorized i0007 speed15.23->10 and same-class minimal repairs/direct B00. Verified audit found only this vehicle. Proposed only: endpoint/cohort/2s risk window, rho SESOI.05/planning.10/h.0125 and fixture delta. No scientific tolerance approval inferred.
+
 ## 2026-10-27 当前B00授权与具体科研冲突
 
 Agreed：当前用户任务授权必要工程修复后直接准入B00，不逐项重复审批；代理在实现/验证/最终SHA之后生成聊天来源绑定授权，无数字签名或独立身份认证主张。唯一实际启动已执行。Verified：冻结i0007出发15.23m/s、位置距main_1末端0.13m，下游10m/s，SUMO首步Error，现有规则立即停止。Status: Awaiting Researcher Decision，仅针对该初态/限速/停止语义冲突；不得擅改DS38范围、i0007、网络/seed/窗口或抑制原生错误。依据：evidence/results/RES-STAGE-0.5-B00-NATIVE-V1/scientific_conflict.json。旧Not Accepted保持。

@@ -91,7 +91,12 @@ def verify_journal(path):
     return dict(events=seq + 1, head_sha256=previous)
 
 
-def attach_FCD_observations(observer, path, *, allow_partial=False):
+def attach_FCD_observations(observer, path, *, allow_partial=False, heartbeat=None):
+    # A full FCD can take seconds to replay. Keep the production resource
+    # observer active in this phase, just as in the native stepping loop.
+    last_heartbeat = time.monotonic()
+    if heartbeat is not None:
+        heartbeat()
     count = 0
     try:
         for _, element in ET.iterparse(path, events=("end",)):
@@ -102,10 +107,15 @@ def attach_FCD_observations(observer, path, *, allow_partial=False):
                 observer.observe_fcd(vehicle.get("id"), time_s)
                 count += 1
             element.clear()
+            if heartbeat is not None and time.monotonic() - last_heartbeat >= .05:
+                heartbeat()
+                last_heartbeat = time.monotonic()
     except ET.ParseError as error:
         if not allow_partial:
             raise
         return dict(parse_complete=False, records_observed=count, reason=str(error), exact_insertion_time_inferred=False)
+    if heartbeat is not None:
+        heartbeat()
     return dict(parse_complete=True, records_observed=count, exact_insertion_time_inferred=False)
 
 
@@ -147,8 +157,15 @@ class ResourceSupervisor:
         self.peak_rss = 0
         self.last = None
         self.samples = []
+        self._sampling_lock = threading.RLock()
 
     def observe(self, *, startup=False):
+        # Stepping/postprocessing and the watchdog can observe concurrently.
+        # Serialize complete probes so sample clocks and append order agree.
+        with self._sampling_lock:
+            return self._observe(startup=startup)
+
+    def _observe(self, *, startup=False):
         sample = dict(self.probe())
         size = output_size(self.scope, self.work)
         # Compatibility name in the immutable budget config; this is ONE capsule,

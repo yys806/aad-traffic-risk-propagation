@@ -2,6 +2,10 @@
 import argparse
 import json
 from pathlib import Path
+import sys
+
+# Direct invocation must use this checkout, without an ambient editable install.
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'src'))
 from stage_0_5_admission_v3 import TASK,technical_preflight
 from stage_0_5_execution_v2 import NATIVE_LAUNCH_LOCKED,NativeBackend,ExecutionAdapter,native_resource_probe,AdmissionRefused
 from stage_0_5_research_ledger import ResearchLedger

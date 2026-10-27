@@ -7,6 +7,8 @@ import json
 import os
 from pathlib import Path
 import re
+import select
+import signal
 import shutil
 import socket
 import subprocess
@@ -33,8 +35,9 @@ def linux_resource_probe(backend,context):
                 matches[0].split(" - ")[1].split()[1].upper().startswith(drive),"Windows_volume_mount_unverified:"+drive)
         origins[drive]=dict(path=target,mountinfo=matches[0])
     cg=verify_live_context(context)
+    owner_pid=os.getpid()
     def observe():
-        current=psutil.Process(os.getpid())
+        current=psutil.Process(owner_pid)
         rss=sum(p.memory_info().rss for p in [current]+current.children(recursive=True) if p.is_running())
         wsl=shutil.disk_usage("/home/shen/AAD");output=os.statvfs(Path.cwd())
         require(output.f_blocks*output.f_frsize==context["output_filesystem_capacity_bytes"],"capsule_filesystem_capacity_mismatch")
@@ -48,6 +51,91 @@ def linux_resource_probe(backend,context):
         require(sample["capsule_fs_free_bytes"]>0,"capsule_output_filesystem_full")
         return sample
     return observe
+
+
+class ProcessResourceWatchdog:
+    """Sampler in the same capsule, independent of the controller's GIL.
+
+    Every sample is a fresh full probe. Nothing is interpolated or cached.
+    The controller checks child health at each step; kernel limits also remain
+    active while a controller call blocks. The broker reaps both processes.
+    """
+    def __init__(self,supervisor,path,*,interval_s=.1):
+        self.supervisor,self.path,self.interval=supervisor,Path(path),interval_s
+        self.pid=self.stop_fd=self.status=None
+        self.failure=None
+        self.closed=False
+
+    def start(self):
+        require(self.pid is None and not self.path.exists(),"exclusive_resource_sampler_required")
+        read_fd,write_fd=os.pipe()
+        owner=os.getpid()
+        self.pid=os.fork()
+        if self.pid==0:
+            os.close(write_fd)
+            status=0
+            try:
+                with self.path.open("xb",buffering=0) as log:
+                    while os.getppid()==owner:
+                        try:
+                            sample=self.supervisor.observe()
+                        except BaseException as error:
+                            log.write(canonical(dict(error=type(error).__name__+":"+str(error)))+b"\n")
+                            raise
+                        log.write(canonical(dict(sample=sample))+b"\n")
+                        if select.select([read_fd],[],[],self.interval)[0]:
+                            os.read(read_fd,1)
+                            break
+            except BaseException:
+                status=1
+            finally:
+                os.close(read_fd)
+            os._exit(status)
+        os.close(read_fd)
+        self.stop_fd=write_fd
+
+    def observe(self,**unused):
+        if self.status is None:
+            pid,status=os.waitpid(self.pid,os.WNOHANG)
+            if pid:
+                self.status=status
+                self.failure="resource_sampler_exited_before_stop:"+str(os.waitstatus_to_exitcode(status))
+        if self.failure:
+            raise RuntimeError(self.failure)
+        return self.supervisor.last
+
+    def close(self,*,raise_on_failure=True):
+        if not self.closed:
+            self.closed=True
+            if self.stop_fd is not None:
+                try:os.write(self.stop_fd,b"x")
+                except BrokenPipeError:pass
+                os.close(self.stop_fd)
+                self.stop_fd=None
+            deadline=time.monotonic()+2
+            while self.status is None and time.monotonic()<deadline:
+                pid,status=os.waitpid(self.pid,os.WNOHANG)
+                if pid:self.status=status
+                else:time.sleep(.01)
+            if self.status is None:
+                # Only the exact child created by this instance is targeted.
+                os.kill(self.pid,signal.SIGKILL)
+                _,self.status=os.waitpid(self.pid,0)
+                self.failure="resource_sampler_stop_timeout"
+            if os.waitstatus_to_exitcode(self.status)!=0:
+                self.failure=self.failure or "resource_sampler_failed"
+            try:
+                records=[json.loads(line) for line in self.path.read_bytes().splitlines()]
+                errors=[r["error"] for r in records if "error" in r]
+                if errors:self.failure=";".join(errors)
+                samples=[r["sample"] for r in records if "sample" in r]
+                require(bool(samples),"independent_resource_samples_missing")
+                self.supervisor.samples.extend(samples)
+                self.supervisor.last=samples[-1]
+            except BaseException as error:
+                self.failure=self.failure or type(error).__name__+":"+str(error)
+        if raise_on_failure and self.failure:
+            raise RuntimeError(self.failure)
 
 
 def main():
@@ -85,22 +173,23 @@ def main():
             native_capsule_context=context.copy())
         supervisor=ResourceSupervisor(context["resource_limits"],scope,work,linux_resource_probe(backend,context))
         supervisor.observe(startup=True)
-        watchdog=ResourceWatchdog(supervisor,backend.stop,interval_s=context["resource_limits"]["supervision_poll_s"]/2)
+        watchdog=ProcessResourceWatchdog(supervisor,work/"resource_samples.jsonl",interval_s=context["resource_limits"]["supervision_poll_s"]/5)
         watchdog.start()
+        receipt.update(resource_supervision_mode="independent_process",resource_sampler_pid=watchdog.pid)
         journal=EventJournal(scope,work/"identity_events.jsonl")
         frame=backend.start(context);observer.ingest(frame);journal.append(frame)
         import traci
         receipt.update(getVersion=list(backend.connection.getVersion()),traci_source_sha256=sha(traci.__file__),
             sumo_namespaces={n:os.readlink("/proc/"+str(backend.process.pid)+"/ns/"+n) for n in receipt["controller_namespaces"]},
             sumo_security=security_status(backend.process.pid))
-        run_observation_loop(context,backend,observer,journal,supervisor,synthetic=False)
+        run_observation_loop(context,backend,observer,journal,watchdog,synthetic=False)
         receipt["controls"]=[f["controls"] for f in observer.frames[1:]]
         backend.finish();receipt["exit_code"]=backend.exit_code
-        attach_FCD_observations(observer,work/"fcd.xml")
+        attach_FCD_observations(observer,work/"fcd.xml",heartbeat=watchdog.observe)
         observer.observe_tripinfo((work/"tripinfo.xml").read_bytes())
         scope.create(work/"identity_summary.json",canonical(observer.finish())+b"\n")
-        supervisor.observe()
         watchdog.close()
+        supervisor.observe()
     except BaseException as error:
         receipt["error"]=type(error).__name__+":"+str(error)
         (work/"controller_error.txt").write_text(traceback.format_exc())
@@ -110,8 +199,7 @@ def main():
         raise
     finally:
         if watchdog is not None:
-            watchdog.done.set()
-            if watchdog.thread is not None:watchdog.thread.join(timeout=2)
+            watchdog.close(raise_on_failure=False)
         if supervisor is not None:receipt["resource_samples"]=supervisor.samples
         receipt["watchdog_failure"]=None if watchdog is None else watchdog.failure
         log.close()

@@ -1,5 +1,11 @@
 # AAD Module Map
 
+## 2026-10-27 Weekly B00 accepted; Stage I remains BLOCKED
+
+Verified: A03 completed420s/8400native steps, independent receipt and all8 measurement checks Pass; B00_EXECUTED_MEASUREMENT_ACCEPTED. This task had3 real B00 starts: A01/A02 resource-coverage failures retained; A03 sealed trajectory independently remeasured with zero new launches after a coordinator import fix.1150declared=1005inserted+145native pending;857arrived/148active; collision/teleport/discard0 with complete required observation.18/18state/D1 support, E=9778.4veh-s, localP2=0. Final isolated software:1386passed/17skipped/7native excluded; audit denied0/SUMO0; compileall/docs/hash Pass. Scientific interaction Gate blocked; numerical budget/protocol candidate are Proposed, StageI BLOCKED. Historical Not Accepted unchanged. Evidence: docs/AAD_WEEK_TO_STAGE_I_2026-10-27.md; evidence/results/RES-AAD-WEEK-20261027-V1/; evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/. Older blocks below retain their historical time points.
+
+New entrypoints: prepare_stage_0_5_initial_speed_v1.py, assess_stage_0_5_existing_capsule_v1.py, analyze_stage_0_5_week_scene_v1.py, run_stage_0_6_error_budget_v1.py, prepare_aad_week_protocol_v1.py, package_aad_week_results_v1.py. No protocol_lock failure-semantic change.
+
 ## 2026-10-27 B00工程模块与结果导出
 
 ENG-01/02/03涉及Linux预检/授权/账本、身份观测、执行循环、native capsule和acceptance模块；合成与当前原生集成验证通过。首次B00因冻结i0007原生Error终止，未测量通过。export_project_evidence.py补入本次结果及原先漏登的三个历史映射，旧快照字节不变。

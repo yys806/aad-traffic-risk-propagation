@@ -1,0 +1,120 @@
+{
+  "conditions": {
+    "FCD_departure_and_terminal_consistency": true,
+    "all_due_tripinfo": true,
+    "all_summary_steps_match_identity": true,
+    "collision_observation_complete": true,
+    "complete_summary_identity_clock": true,
+    "declared_identity_set": true,
+    "due_population_accounted": true,
+    "initial_partition": true,
+    "no_summary_collision_or_teleport": true,
+    "summary_arrived_matches_identity": true,
+    "summary_discarded_identity_resolved": true,
+    "summary_ended_identity_resolved": true,
+    "summary_inserted_matches_identity": true,
+    "summary_running_matches_identity": true,
+    "summary_waiting_matches_identity": true
+  },
+  "evidence": {
+    "active": 148,
+    "actual_inserted": 1005,
+    "arrived": 857,
+    "explicit_discarded": 0,
+    "final": {
+      "arrived": 857,
+      "collisions": 0,
+      "discarded": 0,
+      "ended": 857,
+      "inserted": 1005,
+      "loaded": 1150,
+      "running": 148,
+      "teleports": 0,
+      "time_s": 419.95,
+      "waiting": 145
+    },
+    "initial_ids": 117,
+    "noninitial_ids": 1033,
+    "pending": 145,
+    "status_by_vehicle_count": 1150,
+    "status_by_vehicle_storage": "Full unchanged local source; SHA-256 in provenance.json",
+    "summary_semantics": {
+      "arrived": "cumulative ended minus discarded; includes post-departure removals",
+      "collisions": "cumulative registered collisions; not TraCI colliding vehicle count",
+      "discarded": "cumulative never-inserted vehicles permanently discarded",
+      "ended": "cumulative vehicles reaching destination or otherwise removed",
+      "inserted": "cumulative vehicles inserted",
+      "loaded": "cumulative vehicles loaded from input",
+      "running": "vehicles running in reported step",
+      "teleports": "cumulative SUMO teleport counter across causes",
+      "waiting": "vehicles waiting for insertion in reported step"
+    },
+    "summary_steps": 8400,
+    "timeseries_mismatches": [],
+    "unresolved_discarded": 0,
+    "unresolved_discarded_identity": null
+  },
+  "passed": true,
+  "reason": null,
+  "status": "Pass",
+  "lifecycle": {
+    "initial": {
+      "declared": 117,
+      "inserted": 112,
+      "states": {
+        "arrived_native": 112,
+        "pending_native": 5
+      },
+      "actual_departure_s": {
+        "n": 112,
+        "mean": 2.4566964285714286,
+        "quantiles": {
+          "0.05": 0.0,
+          "0.5": 0.0,
+          "0.95": 4.952499999999995
+        }
+      },
+      "depart_delay_s": {
+        "n": 112,
+        "mean": 2.4566964285714286,
+        "quantiles": {
+          "0.05": 0.0,
+          "0.5": 0.0,
+          "0.95": 4.952499999999995
+        }
+      }
+    },
+    "noninitial": {
+      "declared": 1033,
+      "inserted": 893,
+      "states": {
+        "arrived_native": 745,
+        "active_native": 148,
+        "pending_native": 140
+      },
+      "actual_departure_s": {
+        "n": 893,
+        "mean": 208.6777155655095,
+        "quantiles": {
+          "0.05": 20.18,
+          "0.5": 208.7,
+          "0.95": 397.68
+        }
+      },
+      "depart_delay_s": {
+        "n": 893,
+        "mean": 26.37670772676372,
+        "quantiles": {
+          "0.05": 0.0,
+          "0.5": 21.75,
+          "0.95": 62.50999999999998
+        }
+      }
+    }
+  },
+  "collision_coverage_complete": true,
+  "collision_required_available": 8400,
+  "identity_observations": 8401,
+  "discard_identity_limit": "SUMO provides no verified per-ID discard getter; current aggregate discarded=0 and all IDs accounted; never infer discarded IDs from FCD absence",
+  "pending_interpretation": "Native pending IDs at finite420s end; retained, not auto-failure or inferred from FCD absence"
+}

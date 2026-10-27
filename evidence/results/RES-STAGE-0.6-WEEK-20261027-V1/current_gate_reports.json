@@ -1,0 +1,165 @@
+{
+  "stage_0_2": {
+    "schema_version": "stage_0_2.scientific_acceptance.audit.v1",
+    "status": "pass",
+    "gate_status": "pass",
+    "stage_status": "Completed / Closed",
+    "scientific_scope": "four approved NGSIM sources; 100ms descriptive longitudinal following-risk proxy calibration",
+    "p2_event_count": 4545,
+    "reliable_following_exposure_s": 512043.2,
+    "reliable_closing_exposure_s": 208026.3,
+    "p2_rate_denominator": "P2-evaluable reliable following exposure time; both endpoints valid or not_applicable",
+    "physical_truth_status": "Unverified; declared limitation, not a blocker for this limited descriptive gate",
+    "sampling_transfer_status": "100ms accepted scope; 200ms non-equivalence retained as limitation",
+    "scientific_claim_eligible": true,
+    "not_evaluable_exposure_s": 8121.000000000001,
+    "accident_probability_claim_eligible": false,
+    "aad_causal_claim_eligible": false,
+    "protocol_lock_created": false,
+    "stage_I_run": false,
+    "locked_holdout_opened": false
+  },
+  "stage_0_4": {
+    "schema_version": "aad.stage-0-4.limited-acceptance.gate.v1",
+    "experiment_id": "stage_0_4",
+    "result_id": "RES-STAGE-0.4-LIMITED-SCIENTIFIC-ACCEPTANCE-V1",
+    "task_id": "AAD-0.4.8",
+    "created_utc": "2026-10-17T11:16:43.292971+00:00",
+    "gate_status": "pass_limited",
+    "stage_status": "Completed / Closed (Limited Scope)",
+    "accepted_scope": "observability boundary of real communication data + verified descriptive communication evidence + uncertainty-handling principle for downstream simulation parameters",
+    "excluded_from_acceptance": [
+      "real communication performance-model accuracy",
+      "real PDR/latency numerical calibration",
+      "distance-dependent communication functions",
+      "message/controller adoption",
+      "AAD core causal effect"
+    ],
+    "not_calibrated_declaration": "no real communication parameter (PDR/latency/distance) is frozen or marked as calibrated; uncalibrated parts become uncertainty-marked experimental/sensitivity parameters",
+    "extrapolation_limits": "controlled-PC5 results do not extend to natural-traffic V2V; descriptive reception ratio is NOT link PDR; recorded latency is NOT calibrated latency",
+    "researcher_approval": "task AAD-0.4.8 (2026-10-17), archived in AI_CONTEXT/06_DECISIONS.md",
+    "gate_matrix": [
+      [
+        "可观测性边界审计（RV_RX/RSE_BSM）",
+        "verified",
+        "receive-state continuity; RSE_BSM = vehicle-side received BSM content; receive time Not Observable",
+        "RES-STAGE-0.4-COMM-OBS-V3; RES-STAGE-0.4-RSE-BSM-V1"
+      ],
+      [
+        "消息身份关联方法",
+        "verified",
+        "SEE-V2X (tx_equipment_id, tx_seq_num) pairing rate 1.0 across 48 directed pairs",
+        "RES-STAGE-0.4-SEE-V2X-BSM-V1"
+      ],
+      [
+        "描述性日志接收比例",
+        "verified",
+        "indoor 0.998-1.0 / outdoor 0.22-1.0 (controlled PC5; denominator = run sends)",
+        "RES-STAGE-0.4-SEE-V2X-BSM-V1"
+      ],
+      [
+        "时延数值复算",
+        "verified",
+        "(rx-tx)/1000 == latency column, 0 negative, 30571 paired rows",
+        "RES-STAGE-0.4-SEE-V2X-MINIMAL-V1"
+      ],
+      [
+        "真实链路 PDR / 接收机会",
+        "unverified",
+        "GNSS presence does not prove wireless receiver online; receiver-online state absent",
+        "RES-STAGE-0.4-SEE-V2X-BSM-REAUDIT-V1"
+      ],
+      [
+        "真实绝对端到端时延",
+        "unverified",
+        "inter-device clock offset undocumented; cross-run offsets 8.8-32 ms; pooled percentiles not calibration-ready",
+        "RES-STAGE-0.4-SEE-V2X-REAUDIT-V1"
+      ],
+      [
+        "距离-PDR/距离-时延函数",
+        "unverified",
+        "t1/t2/t3 GNSS tracks point-for-point identical (replicated track); RSU static; indoor no GNSS",
+        "RES-STAGE-0.4-SEE-V2X-GNSS-REPAIR-V1"
+      ],
+      [
+        "消息采用/控制器采用",
+        "unverified",
+        "no adoption field anywhere; warning != adoption; controller adoption not observable in public data",
+        "RES-STAGE-0.4-COMM-OBS-V3; AAD-0.4.1"
+      ],
+      [
+        "自然交通 V2V 适用性",
+        "unverified",
+        "controlled-PC5 cannot be extrapolated to natural traffic",
+        "AAD-0.4.4"
+      ],
+      [
+        "受控 PC5 场景的可信参考",
+        "verified",
+        "pairing method, reception-ratio ranges, relative latency ordering, GNSS time alignment (outdoor)",
+        "AAD-0.4.7.1"
+      ]
+    ],
+    "history_traceability": {
+      "RES-STAGE-0.4-COMM-OBS-V3": {
+        "package": "code\\outputs\\formal\\calibration\\stage_0_4_observability_v3",
+        "audit_sha256": "42C12B36AA8E62FA1C6EF047AF16DB387D56AC32A4A1B712C0965388118A8CDE"
+      },
+      "RES-STAGE-0.4-RSE-BSM-V1": {
+        "package": "code\\outputs\\formal\\calibration\\stage_0_4_rse_bsm_v1",
+        "audit_sha256": "D75872AF6A2B2F6A19476CA9C649E7193530603D21DFA001643603DB7808E781"
+      },
+      "RES-STAGE-0.4-SEE-V2X-MINIMAL-V1": {
+        "package": "code\\outputs\\formal\\calibration\\stage_0_4_see_v2x_minimal_v1",
+        "audit_sha256": "44DFCFCF71CB042FE88D11CA4B9003D42CDF9BBA17A86E0EBAF2A6AF0C043962"
+      },
+      "RES-STAGE-0.4-SEE-V2X-REAUDIT-V1": {
+        "package": "code\\outputs\\formal\\calibration\\stage_0_4_see_v2x_reaudit_v1",
+        "audit_sha256": "29D947BE8EC0F2988BC7E64731BF7C981343F1F25CB48C5ADD3E5327984E7FD3"
+      },
+      "RES-STAGE-0.4-SEE-V2X-BSM-V1": {
+        "package": "code\\outputs\\formal\\calibration\\stage_0_4_see_v2x_bsm_v1",
+        "audit_sha256": "E3F404ACE3DE8359A45404B093EC4A0454646419C6A65784CEE5D58F6F83B2F4"
+      },
+      "RES-STAGE-0.4-SEE-V2X-BSM-REAUDIT-V1": {
+        "package": "code\\outputs\\formal\\calibration\\stage_0_4_see_v2x_bsm_reaudit_v1",
+        "audit_sha256": "27FC8769FA539E46607812F2F9EB0F9164E8A88442875C61FE6F563BFD60B88A"
+      },
+      "RES-STAGE-0.4-SEE-V2X-GNSS-REPAIR-V1": {
+        "package": "code\\outputs\\formal\\calibration\\stage_0_4_see_v2x_gnss_repair_v1",
+        "audit_sha256": "3A737A097F2A57B8A0811323DEDD77BFBFF9A05698C25DCD8EF4358F60F201EB"
+      }
+    },
+    "history_notes": "RV_RX V3 (gate pending_official_packet_access) preserved as historical fact and NOT rewritten; original Packet HTTP-403 record and packet_schema_evaluated=false remain; this Limited Acceptance is for the whole limited scientific objective of Stage 0.4, not a claim that the official Packet was downloaded",
+    "scientific_claim_eligible": false,
+    "protocol_lock_created": false,
+    "stage_I_run": false,
+    "locked_holdout_opened": false
+  },
+  "stage_0_5": {
+    "gate_status": "blocked",
+    "status": "Verified diagnostic scope; scientific interaction gate blocked",
+    "support18": true,
+    "local_source_events": 0,
+    "diagnostic_scope": {
+      "stage_0_5_gate_status": "blocked",
+      "accepted_diagnostic_scope": "Finite420s single-seed conditional traffic/reference profiling; legal pending reported, no all-trip-completion requirement",
+      "source_risk_support": "No confirmed local P2 source event in the existing evaluation window",
+      "limitation": "A successful baseline and positive exposure do not establish interaction equivalence, a treatment effect or model-discrepancy tolerance",
+      "minimum_next_design": "Use existing same-initialization B00/B10/B01/B11 factorial design only after meaningful source-event support and ramp pulse contract are explicitly set; calibrate paired seed variance separately; no StageI launch from this report"
+    },
+    "evidence_path": "code/outputs/formal/calibration/aad_week_scene_a03_v1/audit.json",
+    "evidence_sha256": "60d1b124f5923d47f6ba6875f5f53e389dfc83437016ed56897e82b971953f4f",
+    "reason": "No local P2 source event in the fixed B00 window; full state/exposure support does not supply event-triggered effect support or prove interaction equivalence"
+  },
+  "stage_0_6": {
+    "gate_status": "pending_scientific_tolerances_and_dynamic_calibration",
+    "analytic_truth": true,
+    "physical_path_truth": true,
+    "timestep_fixture": "computed; dynamic contrast not established",
+    "effect_direction": "Unknown for actual paired interventions; positive fixture-rho signs are not effect direction evidence",
+    "scientific_approval": false,
+    "evidence_path": "code/outputs/formal/calibration/stage_0_6_error_budget_week_v2/audit.json",
+    "evidence_sha256": "ed1f97152c0b5766fd7bd161bdc5ef0234c91910b16d0db623e30e03e9b44276"
+  }
+}

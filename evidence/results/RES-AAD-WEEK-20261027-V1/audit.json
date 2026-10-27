@@ -1,0 +1,113 @@
+{
+  "schema_version": "aad.week-native-result.v1",
+  "task_id": "AAD-WEEK-2026-10-27-TO-STAGE-I-V1",
+  "status": "B00_EXECUTED_MEASUREMENT_ACCEPTED",
+  "run_id": "WEEK_0750_B00_IC1_s20261201_A03",
+  "B00_real_starts": 3,
+  "B00_completed_duration_s": [
+    420,
+    420,
+    420
+  ],
+  "accepted_native_runs": 1,
+  "accepted_measurements": 1,
+  "affected_source_integration_smokes": {
+    "count": 2,
+    "duration_s_each": 3,
+    "stages": [
+      "r8",
+      "r9"
+    ]
+  },
+  "accepted_run": {
+    "duration_s": 420,
+    "internal_step_s": 0.05,
+    "recording_step_s": 0.1,
+    "evaluation_window_s": [
+      120,
+      390
+    ],
+    "seed": 20261201,
+    "internal_steps": 8400,
+    "native_exit_code": 0,
+    "capsule_exit_code": 0,
+    "postrun_assessment_native_launches": 0,
+    "resource_samples": 3483,
+    "max_sample_gap_s": 0.1541457320000177,
+    "max_allowed_gap_s": 0.5,
+    "peak_process_tree_rss_bytes": 275808256,
+    "peak_cgroup_memory_bytes": 388612096,
+    "last_resource_wall_s": 390.661674249,
+    "disk_free_min_bytes": {
+      "free_c_bytes": 113104584704,
+      "free_d_bytes": 248815017984,
+      "free_wsl_bytes": 14282080256,
+      "capsule_fs_free_bytes": 2008797184
+    },
+    "output_bytes": 143411683,
+    "watchdog_failure": null,
+    "descendants_reaped": true,
+    "remaining_pids": [],
+    "resource_supervision_mode": "independent_process"
+  },
+  "checks": {
+    "D1_contract": true,
+    "all18_common_cells": true,
+    "full_context_events": true,
+    "identity_clock": true,
+    "initialization_accounting": true,
+    "input_fidelity": true,
+    "resource_limits": true,
+    "task_isolation": true
+  },
+  "population": {
+    "arrived": 857,
+    "collisions": 0,
+    "discarded": 0,
+    "ended": 857,
+    "inserted": 1005,
+    "loaded": 1150,
+    "running": 148,
+    "teleports": 0,
+    "time_s": 419.95,
+    "waiting": 145
+  },
+  "D1": {
+    "version": "stage-0.5-d1-local-v1",
+    "eligibility": "D1_contract_implemented",
+    "window_s": [
+      120.0,
+      390.0
+    ],
+    "region_m": [
+      150.0,
+      350.0
+    ],
+    "local_evaluable_s": 9778.4,
+    "local_links": 97784,
+    "reliable_local_s": 9778.4,
+    "onset_events": 0,
+    "confirmation_position_events": 0,
+    "through_confirmation_events": 0,
+    "confirmation_time_sensitivity_events": 0,
+    "left_continuing_risk_segments": 0,
+    "confirmation_after_window": 0,
+    "right_censored_unconfirmed": 0,
+    "rate_status": "evaluable_zero_events",
+    "rate_per_evaluable_vehicle_hour": 0.0,
+    "legacy_point_evaluable_s": 9887.2,
+    "no_reliable_leader_point_s": 0.0,
+    "unavailable_point_counts": {
+      "valid": 62206,
+      "not_applicable": 36666,
+      "missing": 12452
+    },
+    "formal_equivalence_accepted": false,
+    "scientific_claim_eligible": false
+  },
+  "all18_common_support": true,
+  "stage_0_5_scientific_gate": "blocked",
+  "scientific_effect_demonstrated": false,
+  "initialization_amendment": "Only i0007_i0007 departSpeed15.23->10;117 initial audited, DS38 unchanged",
+  "result_boundary": "Native engineering and D1 measurement accepted; no local source P2 event, no scientific interaction equivalence or StageI admission"
+}

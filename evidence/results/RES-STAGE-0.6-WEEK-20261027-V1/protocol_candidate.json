@@ -1,0 +1,364 @@
+{
+  "schema_version": "aad.week.protocol-candidate.v1",
+  "status": "Proposed / not locked",
+  "fields": {
+    "data_manifest_sha256": {
+      "value": "9fe04ff3ee1a5cf9240365d890da247571badee30eef8139ba858ad149873ebf",
+      "status": "Verified B00 binding; not StageI data-manifest freeze",
+      "source": "code\\outputs\\formal\\calibration\\aad_week_protocol_v1\\input_manifest.json",
+      "remaining": null
+    },
+    "split_manifest_sha256": {
+      "value": null,
+      "status": "Unknown",
+      "source": "Current B00 is a calibration-only run",
+      "remaining": "Bind the actual StageI calibration/confirmatory split manifest after design approval"
+    },
+    "target_region_rule": {
+      "value": {
+        "mainline_lanes": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "y_m": [
+          150,
+          350
+        ]
+      },
+      "status": "Agreed B00 scope; Proposed for StageI",
+      "source": "evidence/admission/AAD-WEEK-2026-10-27-TO-STAGE-I-V1/candidate-v3/proposal.json",
+      "remaining": null
+    },
+    "target_vehicle_eligibility_rule": {
+      "value": "Pre-message fixed target cohort in the declared region; no post-treatment survival/observability selection",
+      "status": "Proposed",
+      "source": "existing target cohort interface",
+      "remaining": "Researcher must adopt the cohort rule in a valid StageI design"
+    },
+    "primary_risk_type": {
+      "value": "descriptive longitudinal following-risk proxy; exponential rho",
+      "status": "Agreed",
+      "source": "code/configs/stage_0_2_formal_risk_measurement_p2_v1.json",
+      "remaining": null
+    },
+    "primary_endpoint": {
+      "value": "Paired contrast of vehicle-equal fixed-window integrated formal rho before independently established physical arrival; missing intervals retain [0,1] bounds",
+      "status": "Proposed",
+      "source": "formal_risk_measurement.py + current project objective",
+      "remaining": "Freeze exact contrast, cohort and pre-physical-arrival estimand; B00 source support absent"
+    },
+    "secondary_endpoint": {
+      "value": "D1-attributed confirmed P2 events per evaluable vehicle-hour; never apply rho tolerance to this count rate",
+      "status": "Proposed",
+      "source": "stage_0_5_d1_measurement.py",
+      "remaining": null
+    },
+    "ttc_threshold_s": {
+      "value": 2.0,
+      "status": "Agreed",
+      "source": "formal risk config",
+      "remaining": null
+    },
+    "event_merge_rule": {
+      "value": {
+        "minimum_duration_s": 0.2,
+        "max_gap_s": 0.11,
+        "confirmation": "first observed timestamp meeting span"
+      },
+      "status": "Agreed",
+      "source": "formal risk config",
+      "remaining": null
+    },
+    "valid_observation_mask": {
+      "value": "Existing reliable identity/leader/clock/status mask; missing never zero; D1 requires both endpoint supports",
+      "status": "Agreed",
+      "source": "formal_risk_measurement.py + stage_0_5_d1_measurement.py",
+      "remaining": null
+    },
+    "time_step_s": {
+      "value": {
+        "native": 0.05,
+        "recording": 0.1
+      },
+      "status": "Agreed B00; StageI freeze pending",
+      "source": "evidence/admission/AAD-WEEK-2026-10-27-TO-STAGE-I-V1/candidate-v3/proposal.json",
+      "remaining": null
+    },
+    "risk_window_s": {
+      "value": 2.0,
+      "status": "Proposed",
+      "source": "Finite fixed-window endpoint interface",
+      "remaining": "2s candidate requires scientific choice; not applied to this B00 measurement"
+    },
+    "observation_window_s": {
+      "value": [
+        120,
+        390
+      ],
+      "status": "Agreed B00; Proposed for StageI",
+      "source": "evidence/admission/AAD-WEEK-2026-10-27-TO-STAGE-I-V1/candidate-v3/proposal.json",
+      "remaining": null
+    },
+    "epsilon_input": {
+      "value": {
+        "exact_input_hash_mismatch": 0,
+        "paired_untreated_input_difference": 0
+      },
+      "status": "Proposed exact matching",
+      "source": "current hash/paired-input engineering contract",
+      "remaining": null
+    },
+    "epsilon_state": {
+      "value": {
+        "position_difference_quantization_m": 0.01,
+        "speed_difference_quantization_mps": 0.01,
+        "clock_grid_s": 0.1
+      },
+      "status": "Proposed resolution floor only",
+      "source": "Actual FCD precision2, timestamp0.1; error-budget reconstruction fixtures",
+      "remaining": "Not a validated dynamical divergence tolerance; measure matched initial-state errors and sustain rule"
+    },
+    "physical_path_rule": {
+      "value": "Existing directed topology plus archived temporal leader chain; missing IDs => uncertain, unreachable topology distinct, earliest finite arrival only for complete path",
+      "status": "Verified implementation; scientific freeze pending",
+      "source": "stage_0_1_sumo.analyze_physical_path_from_archived_tables",
+      "remaining": null
+    },
+    "right_censoring_rule": {
+      "value": "Keep right-censored/uncertain paths and observation gaps; no inferring zero or infinite causal isolation; exclude unsupported attribution with counts retained",
+      "status": "Proposed preserving existing failure semantics",
+      "source": "physical path and D1 contracts",
+      "remaining": null
+    },
+    "delta_eq": {
+      "value": 0.021221388822810106,
+      "status": "Proposed fixture-only paired contrast floor",
+      "source": "code/outputs/formal/calibration/stage_0_6_error_budget_week_v2/audit.json",
+      "remaining": "Actual dynamic and endpoint-specific full budget required; four-arm contrast uses its own bound"
+    },
+    "delta_R": {
+      "value": 0.05,
+      "status": "Proposed scientific judgment",
+      "source": "threshold_proposals/preferred",
+      "remaining": "Researcher SESOI and planning-effect adoption required"
+    },
+    "delta_plan": {
+      "value": 0.1,
+      "status": "Proposed scientific judgment",
+      "source": "threshold_proposals/preferred",
+      "remaining": "Researcher SESOI and planning-effect adoption required"
+    },
+    "calibration_seeds": {
+      "value": [
+        20261201,
+        20261202,
+        20261203,
+        20261204,
+        20261205,
+        20261206,
+        20261207,
+        20261208,
+        20261209,
+        20261210,
+        20261211,
+        20261212,
+        20261213,
+        20261214,
+        20261215,
+        20261216,
+        20261217,
+        20261218,
+        20261219,
+        20261220
+      ],
+      "status": "Proposed; only20261201 B00 executed",
+      "source": "Predeclared consecutive seed proposal",
+      "remaining": "No pilot run launched"
+    },
+    "paired_variance": {
+      "value": null,
+      "status": "Unknown",
+      "source": "No approved paired treatment pilot",
+      "remaining": "Estimate from paired seed contrasts; deterministic A01/A02 repetition is not independent variance"
+    },
+    "stage_1_1_sample_size": {
+      "value": null,
+      "status": "Unknown",
+      "source": "prelock_metrics.paired_confirmatory_sample_size",
+      "remaining": "Compute after real paired variance and approved endpoint/SESOI; minimum100 is not the final n"
+    },
+    "communication_observability": {
+      "value": "observability boundary of real communication data + verified descriptive communication evidence + uncertainty-handling principle for downstream simulation parameters",
+      "status": "Agreed limited scope",
+      "source": "evidence/results/RES-STAGE-0.4-LIMITED-SCIENTIFIC-ACCEPTANCE-V1/gate_report.json",
+      "remaining": "PDR/latency/distance remain uncalibrated sensitivity parameters"
+    },
+    "simulation_applicability": {
+      "value": {
+        "gate_status": "blocked",
+        "status": "Verified diagnostic scope; scientific interaction gate blocked",
+        "support18": true,
+        "local_source_events": 0,
+        "diagnostic_scope": {
+          "stage_0_5_gate_status": "blocked",
+          "accepted_diagnostic_scope": "Finite420s single-seed conditional traffic/reference profiling; legal pending reported, no all-trip-completion requirement",
+          "source_risk_support": "No confirmed local P2 source event in the existing evaluation window",
+          "limitation": "A successful baseline and positive exposure do not establish interaction equivalence, a treatment effect or model-discrepancy tolerance",
+          "minimum_next_design": "Use existing same-initialization B00/B10/B01/B11 factorial design only after meaningful source-event support and ramp pulse contract are explicitly set; calibrate paired seed variance separately; no StageI launch from this report"
+        },
+        "evidence_path": "code/outputs/formal/calibration/aad_week_scene_a03_v1/audit.json",
+        "evidence_sha256": "60d1b124f5923d47f6ba6875f5f53e389dfc83437016ed56897e82b971953f4f",
+        "reason": "No local P2 source event in the fixed B00 window; full state/exposure support does not supply event-triggered effect support or prove interaction equivalence"
+      },
+      "status": "Blocked for confirmatory source-triggered effects",
+      "source": "code/outputs/formal/calibration/aad_week_scene_a03_v1/audit.json",
+      "remaining": null
+    },
+    "extrapolation_exclusions": {
+      "value": [
+        "real accident probability",
+        "natural-traffic V2V PDR/latency calibration",
+        "unobserved physical truth",
+        "unvalidated interaction regimes"
+      ],
+      "status": "Proposed retaining accepted limits",
+      "source": "Stage0.2/0.4 reports + current Stage0.5 evidence",
+      "remaining": null
+    },
+    "missing_failure_inclusion_rules": {
+      "value": "Register every start; retain failure, pending and censored evidence; no replacement zero or seed selection; no same-envelope restart",
+      "status": "Agreed engineering; scientific freeze pending",
+      "source": "Current task and native output/ledger contract",
+      "remaining": null
+    },
+    "runner_version": {
+      "value": {
+        "probe_stage_0_5_linux_isolation.py": "31eb0cc954daf62beaa004abb616b8f910cacf40461ea6a675f9c3ad96b7b9e4",
+        "stage_0_5_execution_v2.py": "5be4532afb959b3f02237e70081f4c3e651a8f745e4f6f915563ef36f1fd476b",
+        "stage_0_5_identity_observation.py": "9dbefcc21e24a8288a06d1d6d36ff4b3f61510ab9171981f9a515e012b71178c",
+        "stage_0_5_input_fidelity.py": "bd8c8a9f9cd9d0b91fbf9fee5ff42fd4dfdf60763a3df573d995613cb7cbb8cc",
+        "stage_0_5_isolation_admission.py": "c655af37c4a345ded4de92ddc3e5b06e2fcc71b9767ca290a2651fe15cf3457b",
+        "stage_0_5_isolation_v2.py": "b10d5b91aaefe77cae0616ad08f4a0a9698fb150e16f167c792bdacf3b577e63",
+        "stage_0_5_linux_controller_v4.py": "c6252a9de0a78b817a0d98ebb397a19811bb17353a048c082fd8f22268c37221",
+        "stage_0_5_linux_execution_v4.py": "98bab9342975d6a8c9873c89ac8bd7e541b9f74811a3c3dee0986269e1022b6d",
+        "stage_0_5_linux_isolation.py": "8aaa25fe0d989b530e6e433d8f12058c6558ce95304e67f397aac634976f8e88",
+        "stage_0_5_linux_runtime_v4.py": "9cd8a6165bd9f6f5aeffd6ced94a8fa7e7da190d16a144464d538b63b1956e4d",
+        "stage_0_5_native_capsule_v4.py": "41abc89f3947630e0f69a33bf1497ee4a951dfe90ec1954dccacbd958281edd9",
+        "stage_0_5_research_ledger.py": "579d41591c00c8017f8ed4252f3256c09f0c613db52bdbfca00dd3880dd08260"
+      },
+      "status": "Verified exact executed closure",
+      "source": "evidence/admission/AAD-WEEK-2026-10-27-TO-STAGE-I-V1/candidate-v3/proposal.json",
+      "remaining": null
+    },
+    "analyzer_version": {
+      "value": {
+        "stage_0_5_scene_reconstruction.py": "01ca2361ba1f5c53e626a830d5ef41c83dd6c68f5c756ce21e0c4084e5c3813a",
+        "stage_0_5_state_support.py": "153f2672a01a17cc578b2d32ad49b8936239640cd065a0ed20bb8796f493c301",
+        "stage_0_5_d1_measurement.py": "affaf9984055b8673e6616310e4b0560f61b721747c33b47824f26172d36ad9c"
+      },
+      "status": "Verified exact diagnostic closure",
+      "source": "code/outputs/formal/calibration/aad_week_scene_a03_v1/audit.json",
+      "remaining": null
+    },
+    "environment_version": {
+      "value": {
+        "runtime_manifest_sha256": "703c433d85647e3b100ec407a0dfd9a629059905476ec544a320f56cd18a67c7",
+        "SUMO": "1.26.0",
+        "TraCI": 22
+      },
+      "status": "Verified",
+      "source": "evidence/admission/AAD-WEEK-2026-10-27-TO-STAGE-I-V1/candidate-v3/proposal.json",
+      "remaining": null
+    },
+    "code_commit": {
+      "value": "e38f5240a6542ceb12ec7325a59899dd834132be",
+      "status": "Verified base SHA plus exact enumerated dirty closure; not a clean-run claim",
+      "source": "evidence/admission/AAD-WEEK-2026-10-27-TO-STAGE-I-V1/candidate-v3/proposal.json",
+      "remaining": null
+    }
+  },
+  "required_field_count": 31,
+  "missing_field_keys": [],
+  "unresolved_scientific_fields": [
+    "split_manifest_sha256",
+    "target_vehicle_eligibility_rule",
+    "primary_endpoint",
+    "risk_window_s",
+    "epsilon_state",
+    "delta_eq",
+    "delta_R",
+    "delta_plan",
+    "calibration_seeds",
+    "paired_variance",
+    "stage_1_1_sample_size",
+    "communication_observability"
+  ],
+  "thresholds": {
+    "status": "Proposed; no scientific approval inferred",
+    "metric": "dimensionless formal exponential-rho mean; not P2 events/veh-h",
+    "preferred": {
+      "delta_eq_per_arm_fixture": 0.010610694411405053,
+      "delta_eq_paired_fixture": 0.021221388822810106,
+      "delta_eq_four_arm_fixture": 0.04244277764562021,
+      "delta_R": 0.05,
+      "delta_plan": 0.1,
+      "h": 0.0125
+    },
+    "alternative": {
+      "delta_R": 0.1,
+      "delta_plan": 0.2,
+      "h": 0.025,
+      "meaning": "10 percentage points on the full [0,1] proxy scale; less sensitive scientific target, not a repair if preferred fails"
+    },
+    "basis": "Four source higher99% fixture quantiles summed conservatively; triangle bound for arm contrasts. SESOI5 percentage points is an explicit value judgment, not inferred from tests or real-world accident risk.",
+    "adoption_conditions": [
+      "Endpoint/cohort/window and actual dynamic error budget approved",
+      "No extrapolation beyond stated smooth/gap/closing/precision fixture domain",
+      "Do not raise delta_R automatically if measured total error reaches it"
+    ],
+    "B": {
+      "value": null,
+      "status": "Unknown",
+      "definition": "Independent simulator-to-world systematic bias bound for the chosen causal contrast; neither numerical tolerance nor confidence interval",
+      "implication": "No physical-world effect claim without independent evidence or explicitly restricted simulator-only estimand"
+    },
+    "planning": {
+      "alpha_one_sided": 0.025,
+      "power": 0.9,
+      "minimum_confirmatory_pairs": 100,
+      "h_rule": "min(0.25*delta_R,0.5*(delta_plan-delta_R))",
+      "paired_variance": null,
+      "confirmatory_sample_size": null,
+      "formula": "existing paired_confirmatory_sample_size; max(100,n_power,n_precision); one baseline seed and deterministic repeats do not estimate paired treatment variance",
+      "calibration_seed_proposal": [
+        20261201,
+        20261202,
+        20261203,
+        20261204,
+        20261205,
+        20261206,
+        20261207,
+        20261208,
+        20261209,
+        20261210,
+        20261211,
+        20261212,
+        20261213,
+        20261214,
+        20261215,
+        20261216,
+        20261217,
+        20261218,
+        20261219,
+        20261220
+      ],
+      "confirmatory_seed_rule": "Freeze a disjoint sequence before confirmatory access; independent of calibration; no seed picking",
+      "pilot_design": "After meaningful source support and a valid intervention design, use the same seed and identical pre-treatment inputs across paired arms; preserve every failed/missing run; do not launch from this proposal"
+    }
+  },
+  "actual_frozen": false,
+  "stage_I_launch_allowed": false
+}

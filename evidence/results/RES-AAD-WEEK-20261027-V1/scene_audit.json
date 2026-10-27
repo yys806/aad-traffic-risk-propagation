@@ -1,0 +1,764 @@
+{
+  "schema_version": "aad.week-scene-diagnostic.v1",
+  "run_id": "WEEK_0750_B00_IC1_s20261201_A03",
+  "proposal_sha256": "dec7658aa38f06b9a8182941344cc6d16ae1b268219415539f624961d04c7d86",
+  "window_s": [
+    120,
+    390
+  ],
+  "formal_D1": {
+    "version": "stage-0.5-d1-local-v1",
+    "eligibility": "D1_contract_implemented",
+    "window_s": [
+      120.0,
+      390.0
+    ],
+    "region_m": [
+      150.0,
+      350.0
+    ],
+    "local_evaluable_s": 9778.4,
+    "local_links": 97784,
+    "reliable_local_s": 9778.4,
+    "onset_events": 0,
+    "confirmation_position_events": 0,
+    "through_confirmation_events": 0,
+    "confirmation_time_sensitivity_events": 0,
+    "left_continuing_risk_segments": 0,
+    "confirmation_after_window": 0,
+    "right_censored_unconfirmed": 0,
+    "rate_status": "evaluable_zero_events",
+    "rate_per_evaluable_vehicle_hour": 0.0,
+    "legacy_point_evaluable_s": 9887.2,
+    "no_reliable_leader_point_s": 0.0,
+    "unavailable_point_counts": {
+      "valid": 62206,
+      "not_applicable": 36666,
+      "missing": 12452
+    },
+    "formal_equivalence_accepted": false,
+    "scientific_claim_eligible": false
+  },
+  "all18_positive_state_and_D1_support": true,
+  "common_cell_differences": {
+    "density_veh_km_lane": {
+      "sim": {
+        "n": 18,
+        "mean": 41.23111111111112,
+        "quantiles": {
+          "0.05": 37.50233333333333,
+          "0.5": 40.88666666666667,
+          "0.95": 44.616
+        }
+      },
+      "real": {
+        "n": 18,
+        "mean": 44.10037037037037,
+        "quantiles": {
+          "0.05": 38.17433333333334,
+          "0.5": 43.33,
+          "0.95": 50.50566666666667
+        }
+      },
+      "paired_cell_difference": {
+        "n": 18,
+        "mean": -2.8692592592592567,
+        "quantiles": {
+          "0.05": -11.73833333333333,
+          "0.5": -1.7833333333333314,
+          "0.95": 3.628333333333341
+        }
+      },
+      "scientific_equivalence": "not established; no approved margin or independent systematic-error bound"
+    },
+    "speed_mean_mps": {
+      "sim": {
+        "n": 18,
+        "mean": 10.489726239118566,
+        "quantiles": {
+          "0.05": 9.920360675602304,
+          "0.5": 10.342563870130162,
+          "0.95": 11.459264997000046
+        }
+      },
+      "real": {
+        "n": 18,
+        "mean": 10.459475215274756,
+        "quantiles": {
+          "0.05": 8.608211375047755,
+          "0.5": 10.753385455075541,
+          "0.95": 12.352876427031994
+        }
+      },
+      "paired_cell_difference": {
+        "n": 18,
+        "mean": 0.03025102384381177,
+        "quantiles": {
+          "0.05": -2.3357365522435503,
+          "0.5": -0.32832210927720595,
+          "0.95": 2.367686667637662
+        }
+      },
+      "scientific_equivalence": "not established; no approved margin or independent systematic-error bound"
+    },
+    "low_speed_share": {
+      "sim": {
+        "n": 18,
+        "mean": 0.04472251317695211,
+        "quantiles": {
+          "0.05": 0.0,
+          "0.5": 0.005367599219258295,
+          "0.95": 0.1378090866062334
+        }
+      },
+      "real": {
+        "n": 18,
+        "mean": 0.07599249965660684,
+        "quantiles": {
+          "0.05": 0.0,
+          "0.5": 0.03940811072722575,
+          "0.95": 0.1984253615516815
+        }
+      },
+      "paired_cell_difference": {
+        "n": 18,
+        "mean": -0.03126998647965474,
+        "quantiles": {
+          "0.05": -0.16187745067568385,
+          "0.5": -0.01840451478083804,
+          "0.95": 0.11767282819993634
+        }
+      },
+      "scientific_equivalence": "not established; no approved margin or independent systematic-error bound"
+    },
+    "closing_speed_mean_mps": {
+      "sim": {
+        "n": 18,
+        "mean": 0.16839856892490374,
+        "quantiles": {
+          "0.05": -0.35976577294778256,
+          "0.5": 0.1890400934234408,
+          "0.95": 0.7066972200974433
+        }
+      },
+      "real": {
+        "n": 18,
+        "mean": -0.19241184077740497,
+        "quantiles": {
+          "0.05": -0.7850284643391507,
+          "0.5": -0.20174933206158285,
+          "0.95": 0.36795769462337313
+        }
+      },
+      "paired_cell_difference": {
+        "n": 18,
+        "mean": 0.3608104097023087,
+        "quantiles": {
+          "0.05": -0.7212427044004096,
+          "0.5": 0.35664972569266795,
+          "0.95": 1.5128926836384398
+        }
+      },
+      "scientific_equivalence": "not established; no approved margin or independent systematic-error bound"
+    },
+    "D1_E_veh_s": {
+      "sim": {
+        "n": 18,
+        "mean": 540.2277777777778,
+        "quantiles": {
+          "0.05": 414.44,
+          "0.5": 527.45,
+          "0.95": 662.6
+        }
+      },
+      "real": {
+        "n": 18,
+        "mean": 651.8388888888888,
+        "quantiles": {
+          "0.05": 563.14,
+          "0.5": 640.8499999999999,
+          "0.95": 750.935
+        }
+      },
+      "paired_cell_difference": {
+        "n": 18,
+        "mean": -111.61111111111106,
+        "quantiles": {
+          "0.05": -317.53999999999996,
+          "0.5": -77.6,
+          "0.95": 27.515000000000004
+        }
+      },
+      "scientific_equivalence": "not established; no approved margin or independent systematic-error bound"
+    }
+  },
+  "local_states": 111324,
+  "local_vehicle_count": 611,
+  "measurement_status": {
+    "valid": 62206,
+    "not_applicable": 36666,
+    "missing": 12452
+  },
+  "interaction": {
+    "net_gap_m": {
+      "n": 98872,
+      "mean": 20.922339376163116,
+      "quantiles": {
+        "0.05": 9.090399999999988,
+        "0.5": 18.710399999999993,
+        "0.95": 39.69039999999998
+      }
+    },
+    "closing_speed_mps": {
+      "n": 98872,
+      "mean": 0.21732947649486206,
+      "quantiles": {
+        "0.05": -2.209999999999999,
+        "0.5": 0.1999999999999993,
+        "0.95": 2.25
+      }
+    },
+    "ttc_s": {
+      "n": 62206,
+      "mean": 89.40625962709757,
+      "quantiles": {
+        "0.05": 9.532044653349,
+        "0.5": 31.829451737451762,
+        "0.95": 308.85000000000144
+      }
+    },
+    "positive_closing_states": 62206,
+    "P2_risk_states": 0
+  },
+  "lifecycle": {
+    "initial": {
+      "declared": 117,
+      "inserted": 112,
+      "states": {
+        "arrived_native": 112,
+        "pending_native": 5
+      },
+      "actual_departure_s": {
+        "n": 112,
+        "mean": 2.4566964285714286,
+        "quantiles": {
+          "0.05": 0.0,
+          "0.5": 0.0,
+          "0.95": 4.952499999999995
+        }
+      },
+      "depart_delay_s": {
+        "n": 112,
+        "mean": 2.4566964285714286,
+        "quantiles": {
+          "0.05": 0.0,
+          "0.5": 0.0,
+          "0.95": 4.952499999999995
+        }
+      }
+    },
+    "noninitial": {
+      "declared": 1033,
+      "inserted": 893,
+      "states": {
+        "arrived_native": 745,
+        "active_native": 148,
+        "pending_native": 140
+      },
+      "actual_departure_s": {
+        "n": 893,
+        "mean": 208.6777155655095,
+        "quantiles": {
+          "0.05": 20.18,
+          "0.5": 208.7,
+          "0.95": 397.68
+        }
+      },
+      "depart_delay_s": {
+        "n": 893,
+        "mean": 26.37670772676372,
+        "quantiles": {
+          "0.05": 0.0,
+          "0.5": 21.75,
+          "0.95": 62.50999999999998
+        }
+      }
+    }
+  },
+  "identity_complete": true,
+  "measurement_acceptance": {
+    "D1_contract": true,
+    "acceptance_scope": "native_evidence",
+    "all18_common_cells": true,
+    "controls": {
+      "conditions": {
+        "all_internal_steps_and_five_lane_readbacks": true
+      },
+      "evidence": {
+        "records": 8400
+      },
+      "passed": true,
+      "reason": null,
+      "status": "Pass"
+    },
+    "formal_scientific_equivalence": false,
+    "full_context_events": true,
+    "identity_clock": true,
+    "initialization_accounting": true,
+    "input_fidelity": true,
+    "resource_limits": true,
+    "task_isolation": true,
+    "verdicts": {
+      "D1_contract": {
+        "conditions": {
+          "continuous_clock": true,
+          "current_contract": true,
+          "positive_qualified_exposure": true
+        },
+        "evidence": {
+          "confirmation_after_window": 0,
+          "confirmation_position_events": 0,
+          "confirmation_time_sensitivity_events": 0,
+          "eligibility": "D1_contract_implemented",
+          "formal_equivalence_accepted": false,
+          "incomplete_candidates": [],
+          "left_continuing_risk_segments": 0,
+          "legacy_point_evaluable_s": 9887.2,
+          "local_evaluable_s": 9778.4,
+          "local_links": 97784,
+          "no_reliable_leader_point_s": 0.0,
+          "onset_events": 0,
+          "rate_per_evaluable_vehicle_hour": 0.0,
+          "rate_status": "evaluable_zero_events",
+          "region_m": [
+            150.0,
+            350.0
+          ],
+          "reliable_local_s": 9778.4,
+          "right_censored_unconfirmed": 0,
+          "scientific_claim_eligible": false,
+          "through_confirmation_events": 0,
+          "unavailable_point_counts": {
+            "missing": 12452,
+            "not_applicable": 36666,
+            "valid": 62206
+          },
+          "version": "stage-0.5-d1-local-v1",
+          "window_s": [
+            120.0,
+            390.0
+          ]
+        },
+        "passed": true,
+        "reason": null,
+        "status": "Pass"
+      },
+      "all18_common_cells": {
+        "conditions": {
+          "all_cell_time_and_right_edges": true,
+          "every_bound_reference": true,
+          "exact_9_by_2": true,
+          "state_and_D1_support": true
+        },
+        "evidence": {
+          "cells": [
+            {
+              "D1_E_veh_s": 433.5,
+              "elapsed_start_s": 120.0,
+              "right_endpoint_observed": true,
+              "states": 5822,
+              "t_block": 0,
+              "time_support_complete": true,
+              "y_block": 0
+            },
+            {
+              "D1_E_veh_s": 573.1,
+              "elapsed_start_s": 120.0,
+              "right_endpoint_observed": true,
+              "states": 5817,
+              "t_block": 0,
+              "time_support_complete": true,
+              "y_block": 1
+            },
+            {
+              "D1_E_veh_s": 412.40000000000003,
+              "elapsed_start_s": 150.0,
+              "right_endpoint_observed": true,
+              "states": 5582,
+              "t_block": 1,
+              "time_support_complete": true,
+              "y_block": 0
+            },
+            {
+              "D1_E_veh_s": 580.6,
+              "elapsed_start_s": 150.0,
+              "right_endpoint_observed": true,
+              "states": 5869,
+              "t_block": 1,
+              "time_support_complete": true,
+              "y_block": 1
+            },
+            {
+              "D1_E_veh_s": 414.8,
+              "elapsed_start_s": 180.0,
+              "right_endpoint_observed": true,
+              "states": 5633,
+              "t_block": 2,
+              "time_support_complete": true,
+              "y_block": 0
+            },
+            {
+              "D1_E_veh_s": 616.3000000000001,
+              "elapsed_start_s": 180.0,
+              "right_endpoint_observed": true,
+              "states": 6224,
+              "t_block": 2,
+              "time_support_complete": true,
+              "y_block": 1
+            },
+            {
+              "D1_E_veh_s": 446.1,
+              "elapsed_start_s": 210.0,
+              "right_endpoint_observed": true,
+              "states": 5952,
+              "t_block": 3,
+              "time_support_complete": true,
+              "y_block": 0
+            },
+            {
+              "D1_E_veh_s": 659.0,
+              "elapsed_start_s": 210.0,
+              "right_endpoint_observed": true,
+              "states": 6652,
+              "t_block": 3,
+              "time_support_complete": true,
+              "y_block": 1
+            },
+            {
+              "D1_E_veh_s": 458.40000000000003,
+              "elapsed_start_s": 240.0,
+              "right_endpoint_observed": true,
+              "states": 6118,
+              "t_block": 4,
+              "time_support_complete": true,
+              "y_block": 0
+            },
+            {
+              "D1_E_veh_s": 640.2,
+              "elapsed_start_s": 240.0,
+              "right_endpoint_observed": true,
+              "states": 6466,
+              "t_block": 4,
+              "time_support_complete": true,
+              "y_block": 1
+            },
+            {
+              "D1_E_veh_s": 463.1,
+              "elapsed_start_s": 270.0,
+              "right_endpoint_observed": true,
+              "states": 6148,
+              "t_block": 5,
+              "time_support_complete": true,
+              "y_block": 0
+            },
+            {
+              "D1_E_veh_s": 638.1,
+              "elapsed_start_s": 270.0,
+              "right_endpoint_observed": true,
+              "states": 6451,
+              "t_block": 5,
+              "time_support_complete": true,
+              "y_block": 1
+            },
+            {
+              "D1_E_veh_s": 481.8,
+              "elapsed_start_s": 300.0,
+              "right_endpoint_observed": true,
+              "states": 6347,
+              "t_block": 6,
+              "time_support_complete": true,
+              "y_block": 0
+            },
+            {
+              "D1_E_veh_s": 649.9000000000001,
+              "elapsed_start_s": 300.0,
+              "right_endpoint_observed": true,
+              "states": 6565,
+              "t_block": 6,
+              "time_support_complete": true,
+              "y_block": 1
+            },
+            {
+              "D1_E_veh_s": 458.3,
+              "elapsed_start_s": 330.0,
+              "right_endpoint_observed": true,
+              "states": 6077,
+              "t_block": 7,
+              "time_support_complete": true,
+              "y_block": 0
+            },
+            {
+              "D1_E_veh_s": 659.6,
+              "elapsed_start_s": 330.0,
+              "right_endpoint_observed": true,
+              "states": 6663,
+              "t_block": 7,
+              "time_support_complete": true,
+              "y_block": 1
+            },
+            {
+              "D1_E_veh_s": 459.3,
+              "elapsed_start_s": 360.0,
+              "right_endpoint_observed": true,
+              "states": 6079,
+              "t_block": 8,
+              "time_support_complete": true,
+              "y_block": 0
+            },
+            {
+              "D1_E_veh_s": 679.6,
+              "elapsed_start_s": 360.0,
+              "right_endpoint_observed": true,
+              "states": 6859,
+              "t_block": 8,
+              "time_support_complete": true,
+              "y_block": 1
+            }
+          ],
+          "references": [
+            {
+              "path": "evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/us101__0750_0805_real_offset100.csv",
+              "support_valid": true
+            }
+          ]
+        },
+        "passed": true,
+        "reason": null,
+        "status": "Pass"
+      },
+      "full_context_events": {
+        "conditions": {
+          "XML_and_all_record_times_complete": true,
+          "full_context_members_match": true,
+          "onset_attribution": true
+        },
+        "evidence": {
+          "empty_frames": 0,
+          "extra_ticks": [],
+          "full_grid": true,
+          "identities_count": 1005,
+          "identities_storage": "Full unchanged local source; SHA-256 in provenance.json",
+          "missing_ticks": [],
+          "ordered": true,
+          "parse_complete": true,
+          "period_s": 0.1,
+          "ticks_count": 4200,
+          "ticks_storage": "Full unchanged local source; SHA-256 in provenance.json"
+        },
+        "passed": true,
+        "reason": null,
+        "status": "Pass"
+      },
+      "identity_clock": {
+        "conditions": {
+          "complete_run_clock": true,
+          "native_clock": true,
+          "native_event_journal": true
+        },
+        "evidence": null,
+        "passed": true,
+        "reason": null,
+        "status": "Pass"
+      },
+      "initialization_accounting": {
+        "conditions": {
+          "native_identity_accounting": true,
+          "no_unaccounted_discard": true,
+          "sealed_journal_summary_matches": true,
+          "summary_identity_crosscheck": true,
+          "tripinfo_for_inserted": true
+        },
+        "evidence": {
+          "declared": 1150,
+          "states": {
+            "active_native": 148,
+            "arrived_native": 857,
+            "pending_native": 145
+          },
+          "summary": {
+            "conditions": {
+              "FCD_departure_and_terminal_consistency": true,
+              "all_due_tripinfo": true,
+              "all_summary_steps_match_identity": true,
+              "collision_observation_complete": true,
+              "complete_summary_identity_clock": true,
+              "declared_identity_set": true,
+              "due_population_accounted": true,
+              "initial_partition": true,
+              "no_summary_collision_or_teleport": true,
+              "summary_arrived_matches_identity": true,
+              "summary_discarded_identity_resolved": true,
+              "summary_ended_identity_resolved": true,
+              "summary_inserted_matches_identity": true,
+              "summary_running_matches_identity": true,
+              "summary_waiting_matches_identity": true
+            },
+            "evidence": {
+              "active": 148,
+              "actual_inserted": 1005,
+              "arrived": 857,
+              "explicit_discarded": 0,
+              "final": {
+                "arrived": 857,
+                "collisions": 0,
+                "discarded": 0,
+                "ended": 857,
+                "inserted": 1005,
+                "loaded": 1150,
+                "running": 148,
+                "teleports": 0,
+                "time_s": 419.95,
+                "waiting": 145
+              },
+              "initial_ids": 117,
+              "noninitial_ids": 1033,
+              "pending": 145,
+              "status_by_vehicle_count": 1150,
+              "status_by_vehicle_storage": "Full unchanged local source; SHA-256 in provenance.json",
+              "summary_semantics": {
+                "arrived": "cumulative ended minus discarded; includes post-departure removals",
+                "collisions": "cumulative registered collisions; not TraCI colliding vehicle count",
+                "discarded": "cumulative never-inserted vehicles permanently discarded",
+                "ended": "cumulative vehicles reaching destination or otherwise removed",
+                "inserted": "cumulative vehicles inserted",
+                "loaded": "cumulative vehicles loaded from input",
+                "running": "vehicles running in reported step",
+                "teleports": "cumulative SUMO teleport counter across causes",
+                "waiting": "vehicles waiting for insertion in reported step"
+              },
+              "summary_steps": 8400,
+              "timeseries_mismatches": [],
+              "unresolved_discarded": 0,
+              "unresolved_discarded_identity": null
+            },
+            "passed": true,
+            "reason": null,
+            "status": "Pass"
+          }
+        },
+        "passed": true,
+        "reason": null,
+        "status": "Pass"
+      },
+      "input_fidelity": {
+        "conditions": {
+          "exact_identity_set": true,
+          "observed_insertion_geometry": true,
+          "ramp_contract_satisfied": true,
+          "staged_bytes_unchanged": true,
+          "supply_observed": true
+        },
+        "evidence": {
+          "entered_count": 60,
+          "ninety_percent_rule": "Proposed diagnostic only, not an acceptance threshold",
+          "not_entered_ids": [],
+          "planned_count": 60,
+          "vehicles_count": 60,
+          "vehicles_storage": "Full unchanged local source; SHA-256 in provenance.json"
+        },
+        "passed": true,
+        "reason": null,
+        "status": "Pass"
+      },
+      "resource_limits": {
+        "conditions": {
+          "all_samples_within_limits": true,
+          "clean_process_exit": true,
+          "supervision_covered": true
+        },
+        "evidence": {
+          "peak_rss": 275808256,
+          "samples": 3483
+        },
+        "passed": true,
+        "reason": null,
+        "status": "Pass"
+      },
+      "task_isolation": {
+        "conditions": {
+          "enforcement_probes": true,
+          "exact_bindings": true,
+          "provenance_kind_allowed": true,
+          "transcript_bound": true
+        },
+        "evidence": {
+          "capability": {
+            "accepted_for_new_task": false,
+            "capability_verified": true,
+            "checks": {
+              "CPU_enforced": true,
+              "all_namespaces_changed": true,
+              "all_negative_access_probes": true,
+              "children_confined": true,
+              "expected_resource_failures": true,
+              "failure_outputs_preserved": true,
+              "kernel_security_status": true,
+              "loopback_only": true,
+              "memory_enforced": true,
+              "output_enforced": true,
+              "pids_enforced": true,
+              "positive_file_controls": true,
+              "successful_controls": true,
+              "timeout_enforced": true
+            },
+            "installed_versions": "libseccomp2:amd64\t2.5.5-1ubuntu3.1\npython3\t3.12.3-0ubuntu2.1\nsumo\t1.18.0+dfsg-3build5\nsumo-tools\t1.18.0+dfsg-3build5\n",
+            "kernel": "6.6.87.2-microsoft-standard-WSL2",
+            "runtime_files_sha256_count": 1229,
+            "runtime_files_sha256_storage": "Full unchanged local source; SHA-256 in provenance.json",
+            "scope": "Linux harmless capsules only",
+            "source_sha256": "8aaa25fe0d989b530e6e433d8f12058c6558ce95304e67f397aac634976f8e88"
+          },
+          "kind": "OS_enforced",
+          "native_certificate": true
+        },
+        "passed": true,
+        "reason": null,
+        "status": "Pass"
+      }
+    }
+  },
+  "scientific_effect_demonstrated": false,
+  "applicability": {
+    "stage_0_5_gate_status": "blocked",
+    "accepted_diagnostic_scope": "Finite420s single-seed conditional traffic/reference profiling; legal pending reported, no all-trip-completion requirement",
+    "source_risk_support": "No confirmed local P2 source event in the existing evaluation window",
+    "limitation": "A successful baseline and positive exposure do not establish interaction equivalence, a treatment effect or model-discrepancy tolerance",
+    "minimum_next_design": "Use existing same-initialization B00/B10/B01/B11 factorial design only after meaningful source-event support and ramp pulse contract are explicitly set; calibrate paired seed variance separately; no StageI launch from this report"
+  },
+  "provenance": {
+    "input_sha256": {
+      "network.net.xml": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+      "routes.rou.xml": "b6df8d9ce52b56fac50899cc2e6d1329c7858325aae0f0c86c76d77f796a7574",
+      "run.sumocfg": "c55b242f09b6a86527852bf686f06f3347abc44aa1c16c199c51935ce93dc6c6"
+    },
+    "raw_artifact_sha256": {
+      "broker_context.json": "78be039bee50efde2d03e998eb95ce7ae806d512aaf5caff9d2df12295ae316d",
+      "capability_record.json": "26a4427717abfa93a3be05c4368d8ce2558018715694eb34e70c559247fd0105",
+      "controller_receipt.json": "5a95c008f1d67a38385e56dbe85d1b87e24bb698d4a77800fa974a61f8bc9db1",
+      "executed_policy.json": "8da5c25bd86d81fa1110b7ab96f4db4cffc81368aadeebf144b95b3989d0c053",
+      "fcd.xml": "1dc274082f4ea14949979d0c925903bbb5b9668d1124dabb79799b59a55fa304",
+      "identity_events.jsonl": "a97b2d82cf70d1cead798e6dd591bd1e107e7e3347eb8450739ebb4d459ba995",
+      "identity_summary.json": "7eeae27a85baf7d71dcf32755417ed765b6e7ba0b46c9d45fc2fdf9f646246f6",
+      "native_console.log": "79b4afa5c78e1650315b40fd564154ced3f71d6e2392ef08bbbfa51dfca38297",
+      "resource_samples.jsonl": "6cb6350ac1e5dd9471ed4f70c6824bc2e5c24e4299d5422d891f905c867b6241",
+      "summary.xml": "d0210a2c68b763bc6cb0b5bd3b63becf66836d3899b29eb4e1c499ee96a85de8",
+      "tripinfo.xml": "a9df43dba65d7bfeb7f1268bdb9ca34558b3eb1f24d097443852e9bc9c7d6d1f"
+    },
+    "analyzer_sha256": "48aa20eed35667012c66b518304f459a7f23aaa4c29e8b63b1fce9eeead32300",
+    "scientific_modules": {
+      "stage_0_5_scene_reconstruction.py": "01ca2361ba1f5c53e626a830d5ef41c83dd6c68f5c756ce21e0c4084e5c3813a",
+      "stage_0_5_state_support.py": "153f2672a01a17cc578b2d32ad49b8936239640cd065a0ed20bb8796f493c301",
+      "stage_0_5_d1_measurement.py": "affaf9984055b8673e6616310e4b0560f61b721747c33b47824f26172d36ad9c"
+    }
+  }
+}

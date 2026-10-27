@@ -1,0 +1,30 @@
+{
+  "backend": "linux-userns",
+  "controller_sha256": "5a95c008f1d67a38385e56dbe85d1b87e24bb698d4a77800fa974a61f8bc9db1",
+  "identity_checks": {
+    "all_summary_steps": true,
+    "collision_coverage": true,
+    "replayed_identity": true,
+    "tripinfo_identity": true
+  },
+  "kind": "OS_enforced",
+  "outputs": {
+    "fcd.xml": "1dc274082f4ea14949979d0c925903bbb5b9668d1124dabb79799b59a55fa304",
+    "summary.xml": "d0210a2c68b763bc6cb0b5bd3b63becf66836d3899b29eb4e1c499ee96a85de8",
+    "tripinfo.xml": "a9df43dba65d7bfeb7f1268bdb9ca34558b3eb1f24d097443852e9bc9c7d6d1f"
+  },
+  "policy_sha256": "8da5c25bd86d81fa1110b7ab96f4db4cffc81368aadeebf144b95b3989d0c053",
+  "probes": {
+    "children_confined": true,
+    "exclusive_output": true,
+    "files_read_only": true,
+    "forbidden_resources_denied": true,
+    "network_confined": true,
+    "process_tree_limited": true
+  },
+  "proposal_sha256": "dec7658aa38f06b9a8182941344cc6d16ae1b268219415539f624961d04c7d86",
+  "receipt_sha256": "4c1d7cea9f3dc221ee5b52c206d33adfb763a15d07c5a91b757ce0c51eed928f",
+  "runtime_manifest_sha256": "703c433d85647e3b100ec407a0dfd9a629059905476ec544a320f56cd18a67c7",
+  "scope": "Engineering runtime/control/isolation acceptance, no scientific support claim",
+  "status": "Pass"
+}

@@ -1,0 +1,441 @@
+{
+  "D1_contract": true,
+  "acceptance_scope": "native_evidence",
+  "all18_common_cells": true,
+  "controls": {
+    "conditions": {
+      "all_internal_steps_and_five_lane_readbacks": true
+    },
+    "evidence": {
+      "records": 8400
+    },
+    "passed": true,
+    "reason": null,
+    "status": "Pass"
+  },
+  "formal_scientific_equivalence": false,
+  "full_context_events": true,
+  "identity_clock": true,
+  "initialization_accounting": true,
+  "input_fidelity": true,
+  "resource_limits": true,
+  "task_isolation": true,
+  "verdicts": {
+    "D1_contract": {
+      "conditions": {
+        "continuous_clock": true,
+        "current_contract": true,
+        "positive_qualified_exposure": true
+      },
+      "evidence": {
+        "confirmation_after_window": 0,
+        "confirmation_position_events": 0,
+        "confirmation_time_sensitivity_events": 0,
+        "eligibility": "D1_contract_implemented",
+        "formal_equivalence_accepted": false,
+        "incomplete_candidates": [],
+        "left_continuing_risk_segments": 0,
+        "legacy_point_evaluable_s": 9887.2,
+        "local_evaluable_s": 9778.4,
+        "local_links": 97784,
+        "no_reliable_leader_point_s": 0.0,
+        "onset_events": 0,
+        "rate_per_evaluable_vehicle_hour": 0.0,
+        "rate_status": "evaluable_zero_events",
+        "region_m": [
+          150.0,
+          350.0
+        ],
+        "reliable_local_s": 9778.4,
+        "right_censored_unconfirmed": 0,
+        "scientific_claim_eligible": false,
+        "through_confirmation_events": 0,
+        "unavailable_point_counts": {
+          "missing": 12452,
+          "not_applicable": 36666,
+          "valid": 62206
+        },
+        "version": "stage-0.5-d1-local-v1",
+        "window_s": [
+          120.0,
+          390.0
+        ]
+      },
+      "passed": true,
+      "reason": null,
+      "status": "Pass"
+    },
+    "all18_common_cells": {
+      "conditions": {
+        "all_cell_time_and_right_edges": true,
+        "every_bound_reference": true,
+        "exact_9_by_2": true,
+        "state_and_D1_support": true
+      },
+      "evidence": {
+        "cells": [
+          {
+            "D1_E_veh_s": 433.5,
+            "elapsed_start_s": 120.0,
+            "right_endpoint_observed": true,
+            "states": 5822,
+            "t_block": 0,
+            "time_support_complete": true,
+            "y_block": 0
+          },
+          {
+            "D1_E_veh_s": 573.1,
+            "elapsed_start_s": 120.0,
+            "right_endpoint_observed": true,
+            "states": 5817,
+            "t_block": 0,
+            "time_support_complete": true,
+            "y_block": 1
+          },
+          {
+            "D1_E_veh_s": 412.40000000000003,
+            "elapsed_start_s": 150.0,
+            "right_endpoint_observed": true,
+            "states": 5582,
+            "t_block": 1,
+            "time_support_complete": true,
+            "y_block": 0
+          },
+          {
+            "D1_E_veh_s": 580.6,
+            "elapsed_start_s": 150.0,
+            "right_endpoint_observed": true,
+            "states": 5869,
+            "t_block": 1,
+            "time_support_complete": true,
+            "y_block": 1
+          },
+          {
+            "D1_E_veh_s": 414.8,
+            "elapsed_start_s": 180.0,
+            "right_endpoint_observed": true,
+            "states": 5633,
+            "t_block": 2,
+            "time_support_complete": true,
+            "y_block": 0
+          },
+          {
+            "D1_E_veh_s": 616.3000000000001,
+            "elapsed_start_s": 180.0,
+            "right_endpoint_observed": true,
+            "states": 6224,
+            "t_block": 2,
+            "time_support_complete": true,
+            "y_block": 1
+          },
+          {
+            "D1_E_veh_s": 446.1,
+            "elapsed_start_s": 210.0,
+            "right_endpoint_observed": true,
+            "states": 5952,
+            "t_block": 3,
+            "time_support_complete": true,
+            "y_block": 0
+          },
+          {
+            "D1_E_veh_s": 659.0,
+            "elapsed_start_s": 210.0,
+            "right_endpoint_observed": true,
+            "states": 6652,
+            "t_block": 3,
+            "time_support_complete": true,
+            "y_block": 1
+          },
+          {
+            "D1_E_veh_s": 458.40000000000003,
+            "elapsed_start_s": 240.0,
+            "right_endpoint_observed": true,
+            "states": 6118,
+            "t_block": 4,
+            "time_support_complete": true,
+            "y_block": 0
+          },
+          {
+            "D1_E_veh_s": 640.2,
+            "elapsed_start_s": 240.0,
+            "right_endpoint_observed": true,
+            "states": 6466,
+            "t_block": 4,
+            "time_support_complete": true,
+            "y_block": 1
+          },
+          {
+            "D1_E_veh_s": 463.1,
+            "elapsed_start_s": 270.0,
+            "right_endpoint_observed": true,
+            "states": 6148,
+            "t_block": 5,
+            "time_support_complete": true,
+            "y_block": 0
+          },
+          {
+            "D1_E_veh_s": 638.1,
+            "elapsed_start_s": 270.0,
+            "right_endpoint_observed": true,
+            "states": 6451,
+            "t_block": 5,
+            "time_support_complete": true,
+            "y_block": 1
+          },
+          {
+            "D1_E_veh_s": 481.8,
+            "elapsed_start_s": 300.0,
+            "right_endpoint_observed": true,
+            "states": 6347,
+            "t_block": 6,
+            "time_support_complete": true,
+            "y_block": 0
+          },
+          {
+            "D1_E_veh_s": 649.9000000000001,
+            "elapsed_start_s": 300.0,
+            "right_endpoint_observed": true,
+            "states": 6565,
+            "t_block": 6,
+            "time_support_complete": true,
+            "y_block": 1
+          },
+          {
+            "D1_E_veh_s": 458.3,
+            "elapsed_start_s": 330.0,
+            "right_endpoint_observed": true,
+            "states": 6077,
+            "t_block": 7,
+            "time_support_complete": true,
+            "y_block": 0
+          },
+          {
+            "D1_E_veh_s": 659.6,
+            "elapsed_start_s": 330.0,
+            "right_endpoint_observed": true,
+            "states": 6663,
+            "t_block": 7,
+            "time_support_complete": true,
+            "y_block": 1
+          },
+          {
+            "D1_E_veh_s": 459.3,
+            "elapsed_start_s": 360.0,
+            "right_endpoint_observed": true,
+            "states": 6079,
+            "t_block": 8,
+            "time_support_complete": true,
+            "y_block": 0
+          },
+          {
+            "D1_E_veh_s": 679.6,
+            "elapsed_start_s": 360.0,
+            "right_endpoint_observed": true,
+            "states": 6859,
+            "t_block": 8,
+            "time_support_complete": true,
+            "y_block": 1
+          }
+        ],
+        "references": [
+          {
+            "path": "evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/us101__0750_0805_real_offset100.csv",
+            "support_valid": true
+          }
+        ]
+      },
+      "passed": true,
+      "reason": null,
+      "status": "Pass"
+    },
+    "full_context_events": {
+      "conditions": {
+        "XML_and_all_record_times_complete": true,
+        "full_context_members_match": true,
+        "onset_attribution": true
+      },
+      "evidence": {
+        "empty_frames": 0,
+        "extra_ticks": [],
+        "full_grid": true,
+        "identities_count": 1005,
+        "identities_storage": "Full unchanged local source; SHA-256 in provenance.json",
+        "missing_ticks": [],
+        "ordered": true,
+        "parse_complete": true,
+        "period_s": 0.1,
+        "ticks_count": 4200,
+        "ticks_storage": "Full unchanged local source; SHA-256 in provenance.json"
+      },
+      "passed": true,
+      "reason": null,
+      "status": "Pass"
+    },
+    "identity_clock": {
+      "conditions": {
+        "complete_run_clock": true,
+        "native_clock": true,
+        "native_event_journal": true
+      },
+      "evidence": null,
+      "passed": true,
+      "reason": null,
+      "status": "Pass"
+    },
+    "initialization_accounting": {
+      "conditions": {
+        "native_identity_accounting": true,
+        "no_unaccounted_discard": true,
+        "sealed_journal_summary_matches": true,
+        "summary_identity_crosscheck": true,
+        "tripinfo_for_inserted": true
+      },
+      "evidence": {
+        "declared": 1150,
+        "states": {
+          "active_native": 148,
+          "arrived_native": 857,
+          "pending_native": 145
+        },
+        "summary": {
+          "conditions": {
+            "FCD_departure_and_terminal_consistency": true,
+            "all_due_tripinfo": true,
+            "all_summary_steps_match_identity": true,
+            "collision_observation_complete": true,
+            "complete_summary_identity_clock": true,
+            "declared_identity_set": true,
+            "due_population_accounted": true,
+            "initial_partition": true,
+            "no_summary_collision_or_teleport": true,
+            "summary_arrived_matches_identity": true,
+            "summary_discarded_identity_resolved": true,
+            "summary_ended_identity_resolved": true,
+            "summary_inserted_matches_identity": true,
+            "summary_running_matches_identity": true,
+            "summary_waiting_matches_identity": true
+          },
+          "evidence": {
+            "active": 148,
+            "actual_inserted": 1005,
+            "arrived": 857,
+            "explicit_discarded": 0,
+            "final": {
+              "arrived": 857,
+              "collisions": 0,
+              "discarded": 0,
+              "ended": 857,
+              "inserted": 1005,
+              "loaded": 1150,
+              "running": 148,
+              "teleports": 0,
+              "time_s": 419.95,
+              "waiting": 145
+            },
+            "initial_ids": 117,
+            "noninitial_ids": 1033,
+            "pending": 145,
+            "status_by_vehicle_count": 1150,
+            "status_by_vehicle_storage": "Full unchanged local source; SHA-256 in provenance.json",
+            "summary_semantics": {
+              "arrived": "cumulative ended minus discarded; includes post-departure removals",
+              "collisions": "cumulative registered collisions; not TraCI colliding vehicle count",
+              "discarded": "cumulative never-inserted vehicles permanently discarded",
+              "ended": "cumulative vehicles reaching destination or otherwise removed",
+              "inserted": "cumulative vehicles inserted",
+              "loaded": "cumulative vehicles loaded from input",
+              "running": "vehicles running in reported step",
+              "teleports": "cumulative SUMO teleport counter across causes",
+              "waiting": "vehicles waiting for insertion in reported step"
+            },
+            "summary_steps": 8400,
+            "timeseries_mismatches": [],
+            "unresolved_discarded": 0,
+            "unresolved_discarded_identity": null
+          },
+          "passed": true,
+          "reason": null,
+          "status": "Pass"
+        }
+      },
+      "passed": true,
+      "reason": null,
+      "status": "Pass"
+    },
+    "input_fidelity": {
+      "conditions": {
+        "exact_identity_set": true,
+        "observed_insertion_geometry": true,
+        "ramp_contract_satisfied": true,
+        "staged_bytes_unchanged": true,
+        "supply_observed": true
+      },
+      "evidence": {
+        "entered_count": 60,
+        "ninety_percent_rule": "Proposed diagnostic only, not an acceptance threshold",
+        "not_entered_ids": [],
+        "planned_count": 60,
+        "vehicles_count": 60,
+        "vehicles_storage": "Full unchanged local source; SHA-256 in provenance.json"
+      },
+      "passed": true,
+      "reason": null,
+      "status": "Pass"
+    },
+    "resource_limits": {
+      "conditions": {
+        "all_samples_within_limits": true,
+        "clean_process_exit": true,
+        "supervision_covered": true
+      },
+      "evidence": {
+        "peak_rss": 275808256,
+        "samples": 3483
+      },
+      "passed": true,
+      "reason": null,
+      "status": "Pass"
+    },
+    "task_isolation": {
+      "conditions": {
+        "enforcement_probes": true,
+        "exact_bindings": true,
+        "provenance_kind_allowed": true,
+        "transcript_bound": true
+      },
+      "evidence": {
+        "capability": {
+          "accepted_for_new_task": false,
+          "capability_verified": true,
+          "checks": {
+            "CPU_enforced": true,
+            "all_namespaces_changed": true,
+            "all_negative_access_probes": true,
+            "children_confined": true,
+            "expected_resource_failures": true,
+            "failure_outputs_preserved": true,
+            "kernel_security_status": true,
+            "loopback_only": true,
+            "memory_enforced": true,
+            "output_enforced": true,
+            "pids_enforced": true,
+            "positive_file_controls": true,
+            "successful_controls": true,
+            "timeout_enforced": true
+          },
+          "installed_versions": "libseccomp2:amd64\t2.5.5-1ubuntu3.1\npython3\t3.12.3-0ubuntu2.1\nsumo\t1.18.0+dfsg-3build5\nsumo-tools\t1.18.0+dfsg-3build5\n",
+          "kernel": "6.6.87.2-microsoft-standard-WSL2",
+          "runtime_files_sha256_count": 1229,
+          "runtime_files_sha256_storage": "Full unchanged local source; SHA-256 in provenance.json",
+          "scope": "Linux harmless capsules only",
+          "source_sha256": "8aaa25fe0d989b530e6e433d8f12058c6558ce95304e67f397aac634976f8e88"
+        },
+        "kind": "OS_enforced",
+        "native_certificate": true
+      },
+      "passed": true,
+      "reason": null,
+      "status": "Pass"
+    }
+  }
+}

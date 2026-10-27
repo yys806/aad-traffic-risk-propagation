@@ -1,5 +1,11 @@
 # AAD Architecture
 
+## 2026-10-27 Weekly B00 accepted; Stage I remains BLOCKED
+
+Verified: A03 completed420s/8400native steps, independent receipt and all8 measurement checks Pass; B00_EXECUTED_MEASUREMENT_ACCEPTED. This task had3 real B00 starts: A01/A02 resource-coverage failures retained; A03 sealed trajectory independently remeasured with zero new launches after a coordinator import fix.1150declared=1005inserted+145native pending;857arrived/148active; collision/teleport/discard0 with complete required observation.18/18state/D1 support, E=9778.4veh-s, localP2=0. Final isolated software:1386passed/17skipped/7native excluded; audit denied0/SUMO0; compileall/docs/hash Pass. Scientific interaction Gate blocked; numerical budget/protocol candidate are Proposed, StageI BLOCKED. Historical Not Accepted unchanged. Evidence: docs/AAD_WEEK_TO_STAGE_I_2026-10-27.md; evidence/results/RES-AAD-WEEK-20261027-V1/; evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/. Older blocks below retain their historical time points.
+
+Execution change: independent-process resource sampling inside the existing Linux capsule; kernel limits unchanged. Import-fixed coordinator is a later source version; archived executed CLI and separate zero-launch assessment candidate preserve provenance.
+
 ## 2026-10-26 V4生产capsule工程验证
 
 固定r5原broker/controller经精确新envelope执行唯一3s合成smoke，真实TraCI、60步调度/回读、完整原生回执及独立verify_receipt均Pass。辅助工具改为显式输出、实际启动/进程/unit检查、可选sysctl元数据及当前五namespace实际分离，生产源码/policy不改。工程证据Verified不等于B00准入；candidate-v5四false和裸宿主硬锁不变。依据：`docs/STAGE_0_5_V4_SMOKE_3_CONTINUATION_2026-10-26.md`；下方为历史时点。

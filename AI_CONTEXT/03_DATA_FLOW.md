@@ -1,5 +1,11 @@
 # AAD Data Flow
 
+## 2026-10-27 Weekly B00 accepted; Stage I remains BLOCKED
+
+Verified: A03 completed420s/8400native steps, independent receipt and all8 measurement checks Pass; B00_EXECUTED_MEASUREMENT_ACCEPTED. This task had3 real B00 starts: A01/A02 resource-coverage failures retained; A03 sealed trajectory independently remeasured with zero new launches after a coordinator import fix.1150declared=1005inserted+145native pending;857arrived/148active; collision/teleport/discard0 with complete required observation.18/18state/D1 support, E=9778.4veh-s, localP2=0. Final isolated software:1386passed/17skipped/7native excluded; audit denied0/SUMO0; compileall/docs/hash Pass. Scientific interaction Gate blocked; numerical budget/protocol candidate are Proposed, StageI BLOCKED. Historical Not Accepted unchanged. Evidence: docs/AAD_WEEK_TO_STAGE_I_2026-10-27.md; evidence/results/RES-AAD-WEEK-20261027-V1/; evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/. Older blocks below retain their historical time points.
+
+Data flow: immutable native FCD/summary/TripInfo/identity -> independent receipt -> same D1 assessor -> native-evidence acceptance ->18cell/reference diagnostics -> error budget -> actual readiness refusal. Portable packages omit raw ID tables/logs and bind their full local SHA.
+
 ## 2026-10-27 首次B00的实际证据流
 
 candidate-v8精确proposal→聊天委托授权→技术预检→ledger reserve/running→Linux隔离SUMO/TraCI→首步原生Error→封存interrupted_identity_summary及截断XML→ledger failed→独立失败验收与便携结果。不是完整测量链通过，末态计数不补零。完整原始产物留code/outputs；便携入口evidence/results/RES-STAGE-0.5-B00-NATIVE-V1/；旧链/失败/候选不覆盖。
