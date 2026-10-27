@@ -10,6 +10,15 @@
       "verification_status": "verified_bytes"
     },
     {
+      "checkout_provenance": {
+        "baseline_commit": "753b666a3c9e4b8d88add2ead1973ff8e2d4439f",
+        "git_blob_oid": "8fdbfcade647819f47ad338a33d9a77cb9d9d166",
+        "git_blob_sha256": "70092992c2e3089877f542e81af2811fe4e684ccc1e8cf43f48b2aaad10cc83b",
+        "relation": "reviewed_CRLF_equals_baseline_LF_with_CRLF_only",
+        "reviewed_bytes_sha256": "aabc7ac0edef0651b2f9d40027e4f59fceebd78f8d412933203f9f59932408b4",
+        "schema": "aad.reviewed-document-checkout.v1",
+        "scope": "Non-scientific Markdown checkout representation only; no change to any scientific binding SHA"
+      },
       "path": "AGENTS.md",
       "portable": true,
       "purpose": "Specific review claim, code reader, historical context or audit evidence",
@@ -58,6 +67,15 @@
       "verification_status": "verified_bytes"
     },
     {
+      "checkout_provenance": {
+        "baseline_commit": "753b666a3c9e4b8d88add2ead1973ff8e2d4439f",
+        "git_blob_oid": "c5108d4102aa83fb952507613658022b5cc85744",
+        "git_blob_sha256": "8b61782af42d3e4dbe784b7f303766e97934665713db40589a75e18e9618d759",
+        "relation": "reviewed_CRLF_equals_baseline_LF_with_CRLF_only",
+        "reviewed_bytes_sha256": "e77cd612641a931fa470b9178a4fc7d90548b3a2f2e80f7f13260d622529441a",
+        "schema": "aad.reviewed-document-checkout.v1",
+        "scope": "Non-scientific Markdown checkout representation only; no change to any scientific binding SHA"
+      },
       "path": "PROJECT_CONTEXT.md",
       "portable": true,
       "purpose": "Specific review claim, code reader, historical context or audit evidence",
@@ -3090,7 +3108,7 @@
       "verification_status": "verified_bytes"
     }
   ],
-  "hash_semantics": "Actual reviewed workspace bytes; Git attributes apply. Baseline AI_CONTEXT hashes refer to pre-review-increment version; later additions are covered by audit_manifest.",
+  "hash_semantics": "Actual reviewed workspace bytes; Git attributes apply. Baseline AI_CONTEXT hashes refer to pre-review-increment version; later additions are covered by audit_manifest. Two explicitly named non-scientific documents retain reviewed CRLF SHA plus baseline Git blob SHA/OID; pure Git permits only that exact LF/CRLF representation. Scientific bindings remain byte-exact.",
   "missing_evidence": [
     "B00 production receipt, per-vehicle runtime identities, actual 18-cell support: absent because not executed"
   ],

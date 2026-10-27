@@ -13,6 +13,23 @@
     {
       "command": [
         "python",
+        "-c",
+        "import ast,pathlib; p=pathlib.Path('docs/audits/stage_0_5_scientific_admission_review_v1/audit_tools'); files=sorted(p.glob('*.py')); [ast.parse(f.read_text(encoding='utf-8'),filename=str(f)) for f in files]; print('AUDIT_SYNTAX_OK',len(files))"
+      ],
+      "completed_utc": "2026-10-27T06:11:27.793713+00:00",
+      "cwd": "D:\\shen\\TJU\\AAD",
+      "exit_code": 0,
+      "record_path": "docs/audits/stage_0_5_scientific_admission_review_v1/validation/audit-syntax-delivery-r2/record.json",
+      "schema": "aad.scientific-review-command.v1",
+      "started_utc": "2026-10-27T06:11:27.642945+00:00",
+      "stderr_path": "docs/audits/stage_0_5_scientific_admission_review_v1/validation/audit-syntax-delivery-r2/stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "docs/audits/stage_0_5_scientific_admission_review_v1/validation/audit-syntax-delivery-r2/stdout.log",
+      "stdout_sha256": "67294869339e315dda1d0290f7d8fda23edeb691df09533882d730fc84ca324a"
+    },
+    {
+      "command": [
+        "python",
         "-B",
         "docs/audits/stage_0_5_scientific_admission_review_v1/audit_tools/build_packet.py"
       ],
@@ -45,6 +62,57 @@
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "stdout_path": "docs/audits/stage_0_5_scientific_admission_review_v1/validation/candidate-verification/stdout.log",
       "stdout_sha256": "0987363ce4c8529f4ec5b79b0cce06cc2cee95a001bc5f6c0af735aa109911d7"
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "docs/audits/stage_0_5_scientific_admission_review_v1/audit_tools/test_checkout_provenance.py"
+      ],
+      "completed_utc": "2026-10-27T06:10:32.299042+00:00",
+      "cwd": "D:\\shen\\TJU\\AAD",
+      "exit_code": 0,
+      "record_path": "docs/audits/stage_0_5_scientific_admission_review_v1/validation/checkout-provenance-tests/record.json",
+      "schema": "aad.scientific-review-command.v1",
+      "started_utc": "2026-10-27T06:10:32.090425+00:00",
+      "stderr_path": "docs/audits/stage_0_5_scientific_admission_review_v1/validation/checkout-provenance-tests/stderr.log",
+      "stderr_sha256": "728a36bd9c4446c5173295131bed32e2ee2126b782c441eac8a3a94f4ff41b70",
+      "stdout_path": "docs/audits/stage_0_5_scientific_admission_review_v1/validation/checkout-provenance-tests/stdout.log",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "docs/audits/stage_0_5_scientific_admission_review_v1/audit_tools/correct_delivery_review.py"
+      ],
+      "completed_utc": "2026-10-27T06:09:25.289716+00:00",
+      "cwd": "D:\\shen\\TJU\\AAD",
+      "exit_code": 1,
+      "record_path": "docs/audits/stage_0_5_scientific_admission_review_v1/validation/delivery-correction/record.json",
+      "schema": "aad.scientific-review-command.v1",
+      "started_utc": "2026-10-27T06:09:25.034477+00:00",
+      "stderr_path": "docs/audits/stage_0_5_scientific_admission_review_v1/validation/delivery-correction/stderr.log",
+      "stderr_sha256": "251f6ccb21f8ef2fa5d3933c8a5e62d4201e1542a95121b0502b203da11ece33",
+      "stdout_path": "docs/audits/stage_0_5_scientific_admission_review_v1/validation/delivery-correction/stdout.log",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "command": [
+        "python",
+        "-B",
+        "docs/audits/stage_0_5_scientific_admission_review_v1/audit_tools/correct_delivery_review.py"
+      ],
+      "completed_utc": "2026-10-27T06:10:05.853996+00:00",
+      "cwd": "D:\\shen\\TJU\\AAD",
+      "exit_code": 0,
+      "record_path": "docs/audits/stage_0_5_scientific_admission_review_v1/validation/delivery-correction-r2/record.json",
+      "schema": "aad.scientific-review-command.v1",
+      "started_utc": "2026-10-27T06:10:04.966167+00:00",
+      "stderr_path": "docs/audits/stage_0_5_scientific_admission_review_v1/validation/delivery-correction-r2/stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "docs/audits/stage_0_5_scientific_admission_review_v1/validation/delivery-correction-r2/stdout.log",
+      "stdout_sha256": "f61a23e2d30ec7e6fcf11fcae728f8050ada60986afeb17671684674a643ddee"
     },
     {
       "command": [
@@ -145,6 +213,41 @@
       "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
       "stdout_path": "docs/audits/stage_0_5_scientific_admission_review_v1/validation/portable-evidence/stdout.log",
       "stdout_sha256": "0c69002e3db974ba19b1ea32d63389fc1f3a6495d116b6f622aa6081c4313f41"
+    },
+    {
+      "command": [
+        "python",
+        "code/scripts/export_project_evidence.py",
+        "--repo-root",
+        ".",
+        "--verify"
+      ],
+      "completed_utc": "2026-10-27T06:10:41.770917+00:00",
+      "cwd": "D:\\shen\\TJU\\AAD",
+      "exit_code": 0,
+      "record_path": "docs/audits/stage_0_5_scientific_admission_review_v1/validation/portable-evidence-delivery-r2/record.json",
+      "schema": "aad.scientific-review-command.v1",
+      "started_utc": "2026-10-27T06:10:32.092431+00:00",
+      "stderr_path": "docs/audits/stage_0_5_scientific_admission_review_v1/validation/portable-evidence-delivery-r2/stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "docs/audits/stage_0_5_scientific_admission_review_v1/validation/portable-evidence-delivery-r2/stdout.log",
+      "stdout_sha256": "0c69002e3db974ba19b1ea32d63389fc1f3a6495d116b6f622aa6081c4313f41"
+    },
+    {
+      "command": [
+        "D:\\miniconda\\python.exe",
+        "-B",
+        "docs/audits/stage_0_5_scientific_admission_review_v1/audit_tools/validate_review.py"
+      ],
+      "commit": "92d3bee3bfe0225712b1e91eb9d2cf85d6317872",
+      "cwd": "D:\\shen\\TJU\\AAD\\code\\tmp\\scientific_review_v1_delivery_20261027\\git-checkout",
+      "exit_code": 1,
+      "record_path": "docs/audits/stage_0_5_scientific_admission_review_v1/validation/postcommit-review-initial-failure/record.json",
+      "started_utc": "2026-10-27T06:01:27.753426+00:00",
+      "stderr_path": "docs/audits/stage_0_5_scientific_admission_review_v1/validation/postcommit-review-initial-failure/stderr.log",
+      "stderr_sha256": "c830f4bf3a1339aa90be30c24e7bb5a7449f8b5d746163ddd6d8bdca0c9733a8",
+      "stdout_path": "docs/audits/stage_0_5_scientific_admission_review_v1/validation/postcommit-review-initial-failure/stdout.log",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
       "command": [
@@ -326,6 +429,23 @@
     {
       "command": [
         "python",
+        "code/scripts/validate_project_docs.py",
+        "--strict-git"
+      ],
+      "completed_utc": "2026-10-27T06:10:35.029878+00:00",
+      "cwd": "D:\\shen\\TJU\\AAD",
+      "exit_code": 0,
+      "record_path": "docs/audits/stage_0_5_scientific_admission_review_v1/validation/strict-docs-delivery-r2/record.json",
+      "schema": "aad.scientific-review-command.v1",
+      "started_utc": "2026-10-27T06:10:32.091378+00:00",
+      "stderr_path": "docs/audits/stage_0_5_scientific_admission_review_v1/validation/strict-docs-delivery-r2/stderr.log",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_path": "docs/audits/stage_0_5_scientific_admission_review_v1/validation/strict-docs-delivery-r2/stdout.log",
+      "stdout_sha256": "534ed6a0d8980a186ca298cfacfa994aaa780aeed39761c4a1b6386dbdabee77"
+    },
+    {
+      "command": [
+        "python",
         "-B",
         "docs/audits/stage_0_5_scientific_admission_review_v1/audit_tools/supplemental_checks.py"
       ],
@@ -342,8 +462,10 @@
     }
   ],
   "failures_retained": [
+    "docs/audits/stage_0_5_scientific_admission_review_v1/validation/delivery-correction/record.json",
     "docs/audits/stage_0_5_scientific_admission_review_v1/validation/docs-pytest/record.json",
     "docs/audits/stage_0_5_scientific_admission_review_v1/validation/docs-pytest-r2/record.json",
+    "docs/audits/stage_0_5_scientific_admission_review_v1/validation/postcommit-review-initial-failure/record.json",
     "docs/audits/stage_0_5_scientific_admission_review_v1/validation/remote-main/record.json",
     "docs/audits/stage_0_5_scientific_admission_review_v1/validation/static-facts/record.json"
   ],
@@ -360,11 +482,16 @@
     "static-preflight-only",
     "state-readers",
     "review-consistency-r2",
-    "final-audit-syntax"
+    "final-audit-syntax",
+    "delivery-correction-r2",
+    "checkout-provenance-tests",
+    "strict-docs-delivery-r2",
+    "portable-evidence-delivery-r2",
+    "audit-syntax-delivery-r2"
   ],
   "postcommit_validation": "Recorded separately under code/tmp/scientific_review_v1_delivery_20261027 to avoid commit/hash self-reference",
   "schema": "aad.scientific-review-validation.v1",
-  "sealed_utc": "2026-10-27T05:51:59.691171+00:00",
+  "sealed_utc": "2026-10-27T06:12:13.895733+00:00",
   "skipped": [
     {
       "check": "Full production pytest / native tests",

@@ -10,6 +10,7 @@ ROOT=Path(__file__).resolve().parents[4]
 AUD='docs/audits/stage_0_5_scientific_admission_review_v1'
 REPORT='docs/STAGE_0_5_B00_SCIENTIFIC_ADMISSION_REVIEW_V1_2026-10-27.md'
 CONTEXT=['AI_CONTEXT/'+n for n in ['00_PROJECT_STATE.md','05_EXPERIMENTS.md','07_KNOWN_ISSUES.md','08_CHANGELOG.md']]
+CHECKOUT_DOCS={'AGENTS.md','PROJECT_CONTEXT.md'}
 GIT='D:/Git/mingw64/bin/git.exe' if os.name=='nt' else 'git'
 
 
@@ -22,6 +23,20 @@ def safe(name):
     target=ROOT/p
     assert target.resolve().is_relative_to(ROOT) and not any(q.is_symlink() for q in [target,*target.parents]), name
     return target
+
+
+def verify_document_checkout(name, entry, actual, blob, object_id):
+    # This exception is deliberately limited to two non-scientific Markdown files.
+    assert name in CHECKOUT_DOCS and entry['path']==name,name
+    p=entry['checkout_provenance']
+    assert p['schema']=='aad.reviewed-document-checkout.v1'
+    assert p['relation']=='reviewed_CRLF_equals_baseline_LF_with_CRLF_only'
+    assert p['git_blob_oid']==object_id and p['git_blob_sha256']==digest(blob)
+    assert b'\r' not in blob and b'\n' in blob
+    reviewed=blob.replace(b'\n',b'\r\n')
+    assert digest(reviewed)==entry['sha256']==p['reviewed_bytes_sha256']
+    assert actual in (blob,reviewed),name
+    return 'reviewed_CRLF_bytes' if actual==reviewed else 'baseline_Git_LF_checkout'
 
 
 def main():
@@ -59,14 +74,21 @@ def main():
     assert packet['execution_authorized'] is False and packet['decisions_recorded']==[]
     baseline=evidence['baseline_commit']
     assert baseline=='753b666a3c9e4b8d88add2ead1973ff8e2d4439f'
-    historical_context=[]
+    historical_context=[];document_checkout_representations={}
     for entry in evidence['files']:
         path=safe(entry['path'])
         if not path.exists():
             assert entry['portable'] is False,entry['path']
             local_only_unavailable.add(entry['path'])
             continue
-        h=digest(path.read_bytes())
+        actual=path.read_bytes();h=digest(actual)
+        if 'checkout_provenance' in entry:
+            assert entry['path'] not in load(AUD+'/verified_inventory.json')['files'],entry['path']
+            assert entry['checkout_provenance']['baseline_commit']==baseline
+            spec=baseline+':'+entry['path']
+            document_checkout_representations[entry['path']]=verify_document_checkout(
+                entry['path'],entry,actual,git('cat-file','blob',spec),git('rev-parse',spec).decode().strip())
+            continue
         if h!=entry['sha256']:
             assert entry['path'] in CONTEXT,entry['path']
             assert digest(git('cat-file','--filters',baseline+':'+entry['path']))==entry['sha256']
@@ -99,8 +121,17 @@ def main():
     if manifest.exists():
         m=json.loads(manifest.read_bytes())
         for name,h in m['files'].items(): assert digest(safe(name).read_bytes())==h,name
+        expected={p.relative_to(ROOT).as_posix() for p in (ROOT/AUD).rglob('*') if p.is_file()
+            and '__pycache__' not in p.parts and p.name not in ['audit_manifest.json','SHA256SUMS']}
+        expected.update([REPORT,*CONTEXT])
+        assert set(m['files'])==expected,(set(m['files'])-expected,expected-set(m['files']))
+        pairs=[line.split('  ',1) for line in (ROOT/AUD/'SHA256SUMS').read_text().splitlines()]
+        sums={name:h for h,name in pairs}
+        assert len(sums)==len(pairs)
+        assert sums==dict(m['files'],**{AUD+'/audit_manifest.json':digest(manifest.read_bytes())})
     print(json.dumps(dict(status='Pass',issues=15,researcher_decisions=9,protected_tracked_files_unchanged=True,
         historical_manifest_files=len(old['files']),baseline_context_snapshots=historical_context,
+        document_checkout_representations=document_checkout_representations,
         local_raw_files_not_recomputed=sorted(local_only_unavailable),
         new_research_trajectories=0,native_launches=0,real_TraCI_connections=0),ensure_ascii=True))
 

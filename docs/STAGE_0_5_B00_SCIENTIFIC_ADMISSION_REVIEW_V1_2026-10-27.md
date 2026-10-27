@@ -77,7 +77,7 @@ proposal/scientific_diff记录git_commit=735bab0…、dirty=true，描述候选�
 
 formal_risk_measurement.py的Git原对象是LF，绑定执行字节是CRLF；.gitattributes明确eol=crlf，git cat-file --filters还原后SHA匹配。首次审查器错误按raw blob相等断言失败，按既定属性保存raw/filtered双哈希后通过，原失败日志保留。未修改生产源或Git属性。
 
-prepare_stage_0_5_b00_admission_v6.py独立登记在工程软件/审计中，未属于12源原生闭包，native路径不import准备器。本轮helper也不接执行链。精确proposal SHA定义文档与传递哈希对象，不认证人类来源，也不能保证未来运行时/资源无漂移。dirty是可解释的历史时点，不能据此单独断言无影响。
+prepare_stage_0_5_b00_admission_v6.py由工程集成证书的verifier_path/verifier_sha256及独立工程审计清单绑定，实际SHA为2f378e4b69757b0f030d6fc1160364af9e462813052addd7e4520febf79ade3a；它不在原生软件验证记录或12源原生闭包中，native路径不import准备器。本轮helper也不接执行链。精确proposal SHA定义文档与传递哈希对象，不认证人类来源，也不能保证未来运行时/资源无漂移。dirty是可解释的历史时点，不能据此单独断言无影响。
 
 四份context本轮增量会使其现值变化；旧audit manifest仍绑定753b666历史字节，后续按历史Git版本核验，不重写旧manifest。本轮最终字节由新审计清单另绑定。
 
@@ -185,11 +185,14 @@ D1：TTC>0且<2s、连续风险跨度>=0.2s；全上下文识别、onset归属�
 - 五项AST提取纯函数反例：exit0，空临时目录/纯内存合成对象，无科研数据、授权文件或原生入口导入。
 - 文档测试默认Temp及首次任务内临时目录各exit1（均13个setup权限错误，未运行测试断言）；不改ACL，使用新独占任务目录和工具权限后13 passed、exit0。两次失败及原始日志完整保留。
 - 远端核验首次exit128（受限环境schannel SEC_E_NO_CREDENTIALS），工具网络权限下重验exit0，仍753b666；失败保留。
+- 补充6项纯内存文档检出反例exit0：精确LF/CRLF可复核，内容、混合换行、对象ID/哈希和科学路径冒用均拒绝。更正辅助脚本首次exit1（decision_packet只保存current_fact，没有observation），按实际schema修正后exit0；保留失败及恢复依据，只修改本轮审查表述。
 - 文档严格检查、证据verify、文档测试、矩阵/哈希/受保护对象及提交后纯Git验证，以validation记录和最终回执的实际命令/退出码为准；skip与失败不计pass。没有生产代码修改，不重跑全量或原生软件测试。
 
 提交前实际严格文档与便携证据verify均exit0，矩阵/9决定/证据SHA/历史83项manifest和受保护对象检查exit0；完整routes允许字节变换及sumocfg三输出项全树比较exit0，审查helper语法检查通过。5项纯审查反例和13项文档测试均通过，无skip。最终提交SHA、push及提交后新纯Git检出的真实命令/日志SHA另存任务内交付回执，避免在被验证提交内自引用其自身SHA；不会将提交前日志当提交后结果。
 
 便携限制：7份本机原准备/DS输入或原始失败日志在本机实际读取/复算，清单明确portable=false；纯Git可复核当前候选、347封存文件、源码/报告/聚合静态核算，但不能冒充重新读取这7份本机文件。审查器显式列出其缺失，缺任何便携文件则拒绝。旧审计文档哈希按基线Git版本重建。新audit目录用局部.gitattributes固定原字节；提交后新检出显式core.autocrlf=false，仍遵循既定formal_risk_measurement.py的CRLF属性。
+
+首个审查提交92d3bee的纯Git审查器曾因AGENTS.md的CRLF/LF检出差异exit1，原始失败日志保留。进一步复核仅AGENTS.md、PROJECT_CONTEXT.md两份非科学绑定普通文档有此差异：清单保留实际读取字节SHA，另记基线Git对象ID/SHA，逐字节验证唯一的LF→CRLF关系。只对这两个明确路径接受对应检出表示，不推广到科学输入、源码、347文件闭包或候选哈希；后者仍要求精确匹配。此项是文档检出可复现性，不声称原始字节相同。辅助验证器归属表述也已纠正；更正依据和前次失败见delivery_correction.json。最终提交的纯Git复核另存交付回执，必须通过后才推送。
 
 本轮不是科研结果登记，未修改机器注册表/正式结果。通用exporter已知会漏三个独立扩展登记，为遵守历史原字节边界不执行其写入模式，仅执行既有便携证据--verify；不将这个范围限制冒充重新导出成功。纯审查helper做语法检查，不扩大到全量生产测试。
 

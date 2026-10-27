@@ -81,7 +81,7 @@ def main():
         ['研究者明确117初态与晚计划车辆的时限/删失政策；工程另任务补summary与事件/TripInfo计数交叉核算及冲突反例。'],
         '先确认实际插入与删失的科学接受条件，再另任务实现缺失/冲突拒绝；不得删异常车或事后改窗。',True,'AWAITING_RESEARCHER_AND_ENGINEERING_REVIEW','high')
     issue('GIT-01','dirty快照、347绑定及未提交helper是否破坏唯一绑定？',
-        'proposal记录生成时735bab0与dirty=true；正式基线753b666。347历史文件复算通过；38源均匹配正式Git按.gitattributes检出字节，其中12生产源闭包匹配。formal_risk_measurement.py的Git原对象LF与绑定CRLF不同，由既定eol=crlf解释。helper未在12源闭包中，不参与native控制；软件验证记录另行绑定helper。',
+        'proposal记录生成时735bab0与dirty=true；正式基线753b666。347历史文件复算通过；38源均匹配正式Git按.gitattributes检出字节，其中12生产源闭包匹配。formal_risk_measurement.py的Git原对象LF与绑定CRLF不同，由既定eol=crlf解释。helper未在12源闭包或原生软件验证记录中，不参与native控制；工程集成证书verifier路径/SHA和独立工程审计清单另行绑定helper。',
         [V6+'/scientific_diff.json',V6+'/proposal.json','.gitattributes',AUD+'/static_facts.json','code/scripts/prepare_stage_0_5_b00_admission_v6.py'],
         [('code/scripts/stage_0_5_linux_execution_v4.py','technical_preflight_v4'),('code/scripts/stage_0_5_native_capsule_v4.py','verify_live_context')],
         [E,A], '精确SHA定义提案内容和传递哈希依赖，不认证人类来源，也不保证未来运行时无漂移；审查新报告不在原生闭包。原始Git blob不能不经属性还原就冒充执行字节。',

@@ -1,4 +1,5 @@
 """Seal this task's audit files; no old candidate, result or ledger is written."""
+import argparse
 import datetime
 import hashlib
 import json
@@ -8,11 +9,13 @@ ROOT=Path(__file__).resolve().parents[4]
 OUT=Path(__file__).resolve().parents[1]
 AUD=OUT.relative_to(ROOT).as_posix()
 REPORT='docs/STAGE_0_5_B00_SCIENTIFIC_ADMISSION_REVIEW_V1_2026-10-27.md'
+REFRESH=False
 
 
 def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
 def write(name,value):
-    with (OUT/name).open('x',encoding='utf-8',newline='\n') as stream:
+    assert name in {'validation_record.json','audit_manifest.json'}
+    with (OUT/name).open('w' if REFRESH else 'x',encoding='utf-8',newline='\n') as stream:
         json.dump(value,stream,ensure_ascii=False,indent=2,sort_keys=True);stream.write('\n')
 
 
@@ -32,7 +35,9 @@ def main():
         commands=commands,failures_retained=[c['record_path'] for c in commands if c['exit_code']!=0],
         final_satisfied_checks=['candidate-verification','static-facts-r2','pure-guard-counterexamples',
             'remote-main-r2','review-consistency','strict-docs','portable-evidence','docs-pytest-r3',
-            'supplemental-input-syntax','static-preflight-only','state-readers','review-consistency-r2','final-audit-syntax'],
+            'supplemental-input-syntax','static-preflight-only','state-readers','review-consistency-r2','final-audit-syntax',
+            'delivery-correction-r2','checkout-provenance-tests','strict-docs-delivery-r2','portable-evidence-delivery-r2',
+            'audit-syntax-delivery-r2'],
         skipped=[dict(check='Full production pytest / native tests',reason='No production changes; audit-only task prohibits native simulation'),
             dict(check='New live Linux inspection',reason='This is a static evidence review; current live environment explicitly unverified'),
             dict(check='Generic evidence exporter write mode',reason='No new research result; preserve historical bytes and known independent extension registrations. Verify mode passed.')],
@@ -46,7 +51,7 @@ def main():
         exclusions=['This manifest and SHA256SUMS (no hash cycles)','Ignored pycache','Postcommit delivery receipt outside tracked tree'],
         status='REVIEW_COMPLETE_RESEARCH_APPROVAL_PENDING'))
     sums=dict(mapping);sums[AUD+'/audit_manifest.json']=sha(OUT/'audit_manifest.json')
-    with (OUT/'SHA256SUMS').open('x',encoding='utf-8',newline='\n') as stream:
+    with (OUT/'SHA256SUMS').open('w' if REFRESH else 'x',encoding='utf-8',newline='\n') as stream:
         stream.writelines(f'{h}  {n}\n' for n,h in sorted(sums.items()))
     print(json.dumps(dict(status='Sealed',files=len(mapping),commands=len(commands),
         failures_retained=sum(c['exit_code']!=0 for c in commands),
@@ -54,4 +59,12 @@ def main():
         report_sha256=sha(ROOT/REPORT))))
 
 
-if __name__=='__main__': main()
+if __name__=='__main__':
+    parser=argparse.ArgumentParser()
+    parser.add_argument('--refresh-own-derived-records',action='store_true',help='Refresh only this task own three derived lists; prior versions remain in Git and correction record.')
+    REFRESH=parser.parse_args().refresh_own_derived_records
+    if REFRESH:
+        assert AUD=='docs/audits/stage_0_5_scientific_admission_review_v1'
+        assert json.loads((OUT/'audit_manifest.json').read_bytes())['schema']=='aad.scientific-review-audit-manifest.v1'
+        assert (OUT/'delivery_correction.json').is_file()
+    main()

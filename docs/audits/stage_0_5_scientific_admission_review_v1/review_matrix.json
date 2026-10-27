@@ -314,7 +314,7 @@
           "path": "code/scripts/stage_0_5_native_capsule_v4.py"
         }
       ],
-      "current_fact": "proposal记录生成时735bab0与dirty=true；正式基线753b666。347历史文件复算通过；38源均匹配正式Git按.gitattributes检出字节，其中12生产源闭包匹配。formal_risk_measurement.py的Git原对象LF与绑定CRLF不同，由既定eol=crlf解释。helper未在12源闭包中，不参与native控制；软件验证记录另行绑定helper。",
+      "current_fact": "proposal记录生成时735bab0与dirty=true；正式基线753b666。347历史文件复算通过；38源均匹配正式Git按.gitattributes检出字节，其中12生产源闭包匹配。formal_risk_measurement.py的Git原对象LF与绑定CRLF不同，由既定eol=crlf解释。helper未在12源闭包或原生软件验证记录中，不参与native控制；工程集成证书verifier路径/SHA和独立工程审计清单另行绑定helper。",
       "current_status": "RESOLVED_WITH_SCOPE_LIMIT",
       "evidence_paths": [
         "evidence/admission/AAD-0.5-READY-TO-ADMIT-V3/candidate-v6/scientific_diff.json",
@@ -332,7 +332,7 @@
       },
       "interpretation": "Interpretation: 把生成时点与提交后证据明确分列，继续每次实际执行前哈希检查。",
       "issue_id": "GIT-01",
-      "observation": "proposal记录生成时735bab0与dirty=true；正式基线753b666。347历史文件复算通过；38源均匹配正式Git按.gitattributes检出字节，其中12生产源闭包匹配。formal_risk_measurement.py的Git原对象LF与绑定CRLF不同，由既定eol=crlf解释。helper未在12源闭包中，不参与native控制；软件验证记录另行绑定helper。",
+      "observation": "proposal记录生成时735bab0与dirty=true；正式基线753b666。347历史文件复算通过；38源均匹配正式Git按.gitattributes检出字节，其中12生产源闭包匹配。formal_risk_measurement.py的Git原对象LF与绑定CRLF不同，由既定eol=crlf解释。helper未在12源闭包或原生软件验证记录中，不参与native控制；工程集成证书verifier路径/SHA和独立工程审计清单另行绑定helper。",
       "priority": "normal",
       "question": "dirty快照、347绑定及未提交helper是否破坏唯一绑定？",
       "recommended_next_step": {
