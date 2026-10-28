@@ -2,9 +2,9 @@
 
 ## Status
 
-`ROUND1_ENGINEERING_AND_EVIDENCE_READY` and `ROUND1_AWAITING_RESEARCHER_DECISION`.
+`ROUND1_ENGINEERING_AND_EVIDENCE_READY` and `ROUND1_SCIENTIFIC_FREEZE_APPROVED`.
 
-The first-round engineering, offline analysis, evidence repair and static Round2 preparation are complete. This document does not declare `ROUND1_SCIENTIFIC_FREEZE_APPROVED`, does not open a Protocol Lock, and does not authorize SUMO/TraCI execution.
+The first-round engineering, offline analysis, evidence repair and static Round2 preparation are complete. Researcher approval update (2026-10-28): the researcher explicitly approved the listed source/target/window/cohort/auxiliary-lane/physical-path choices, Rule A, and the single `minGap=1.0 m` Round2 candidate. This approval updates the Round1 scientific decision status only; it does not open a Protocol Lock, change the Stage 0.5 Gate, freeze Stage 0.6, or authorize Stage I.
 
 ## Observation
 
