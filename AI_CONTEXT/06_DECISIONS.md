@@ -1,6 +1,10 @@
+## Current — 2026-10-28 Round2 Task1 researcher approval and engineering block
+
+Agreed by researcher for this task: preserve `S_UPSTREAM_MAIN`, mainline target lanes 1–5 `y[150,350)`, `[120,390) s`, `C_INPUT_ROUTE`, separate auxiliary diagnostics, time-indexed identity/lane/leader path witness, Rule A macro hard constraint, and one `minGap=1.0 m` candidate attempt. No independent seed was authorized. Engineering status is blocked before the candidate native start because the existing persistent admission guard has no reviewed minGap factor branch; no guard bypass was used. This is not a scientific failure result.
+
 # AAD Confirmed Decisions
 
-## Current — 2026-10-28 first-round evidence-consistency repair
+## Historical — 2026-10-28 first-round evidence-consistency repair
 
 Verified: no scientific decision changed. Awaiting Researcher Decision remains for auxiliary-lane role, source region, cohort, and physical-path semantics. Engineering evidence repair is complete; formal P2, Gate, Stage 0.6, Stage I, and historical records remain unchanged.
 

@@ -1,0 +1,103 @@
+{
+  "schema": "aad.stage05.round2.task1-prelaunch-validation.v1",
+  "status": "BLOCKED_BEFORE_CANDIDATE_NATIVE_LAUNCH",
+  "git_head": "95772fdc43f9d1a8bf7c9115ab189ad4359d799f",
+  "git_branch": "main",
+  "working_tree": "?? evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/",
+  "candidate_input_binding": {
+    "schema": "aad.stage05.round2.task1.candidate-inputs.v1",
+    "candidate_id": "AAD-S0.5-ROUND2-TASK1-20261028-candidate-v1",
+    "status": "Ready for Researcher Approval",
+    "base_run_id": "WEEK_0750_B00_IC1_s20261201_A03",
+    "base_input_hashes": {
+      "network.net.xml": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+      "routes.rou.xml": "b6df8d9ce52b56fac50899cc2e6d1329c7858325aae0f0c86c76d77f796a7574",
+      "run.sumocfg": "c55b242f09b6a86527852bf686f06f3347abc44aa1c16c199c51935ce93dc6c6"
+    },
+    "candidate_input_hashes": {
+      "network.net.xml": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+      "routes.rou.xml": "a4c78db55984cc8c320b06ec2e257bdf6d4902c0dfdf015348157e30cdb80e79",
+      "run.sumocfg": "c55b242f09b6a86527852bf686f06f3347abc44aa1c16c199c51935ce93dc6c6"
+    },
+    "only_xml_change": {
+      "file": "routes.rou.xml",
+      "vtype_ids": [
+        "B_het_c0_passenger",
+        "B_het_c1_passenger",
+        "B_het_c2_passenger",
+        "B_het_c3_passenger",
+        "B_het_c4_passenger"
+      ],
+      "attribute": "minGap",
+      "from": "2.5",
+      "to": "1.0",
+      "changed_occurrences": 5
+    },
+    "unchanged": [
+      "network.net.xml",
+      "run.sumocfg",
+      "vehicle IDs",
+      "vehicle routes",
+      "depart times/lanes/positions/speeds",
+      "seed",
+      "duration",
+      "step length",
+      "recording period",
+      "lane speed schedule"
+    ]
+  },
+  "macro_preflight": {
+    "schema": "aad.stage05.round2.task1-preflight.v1",
+    "status": "AWAITING_RESEARCHER_SCIENTIFIC_CONFIRMATION",
+    "current_git_head": "8219e43568a26a4c18f15c5bea7234ab40b34b90",
+    "candidate_id": "AAD-S0.5-ROUND2-TASK1-20261028-candidate-v1",
+    "macro_rule_recommendation": "A_strict_joint_support",
+    "macro_rule_comparison_source": "evidence/results/RES-STAGE-0.5-ROUND2-TASK1-PREFLIGHT-20261028/macro_rule_comparison.json",
+    "macro_rule_pass_counts": {
+      "rule_A_strict": 10,
+      "rule_B_macro_only": 11
+    },
+    "scientific_confirmation_required_before_native_launch": true,
+    "source_region": "S_UPSTREAM_MAIN",
+    "target_region": "mainline lanes1-5 y[150,350)",
+    "window_s": [
+      120,
+      390
+    ],
+    "cohort": "C_INPUT_ROUTE",
+    "auxiliary_lane_policy": "separate diagnostic",
+    "physical_path_policy": "identity/time/lane/leader witness; onset/confirmation/physical/message clocks separate",
+    "sumo_launches": 0,
+    "traci_connections": 0,
+    "holdout_reads": 0,
+    "round2_candidate_static_test": "14 passed",
+    "compileall": "pass"
+  },
+  "current_stage_source_closure_sha256": "15a30d0406e4a0bc6a7e3f5200315c04b56c9ce785c10c09e6c1a7da4c18ba41",
+  "current_runtime_manifest_sha256": "703c433d85647e3b100ec407a0dfd9a629059905476ec544a320f56cd18a67c7",
+  "engineering_smoke": {
+    "status": "Pass",
+    "backend": "linux-userns",
+    "proposal_sha256": "0cdbc562773bef4627ea098908dd3443743632cd3306eac212e6d45e610b9786",
+    "policy_sha256": "07ae645217b71c6116cb4012c9995cf352d9571513050b8b7b8dc2f5112c650a",
+    "runtime_manifest_sha256": "703c433d85647e3b100ec407a0dfd9a629059905476ec544a320f56cd18a67c7",
+    "receipt_sha256": "ac2ab178b967db779b512842012b9d484d6f60aff02f6a5f93ee6fd8cf8f6671",
+    "controller_sha256": "adc64cf6cd1dcf0d782acc2c88e53bd86826fc9297f0e77932f7b84a5279b900",
+    "outer_elapsed_s": 4.9678452690000015,
+    "probes": {
+      "children_confined": true,
+      "exclusive_output": true,
+      "files_read_only": true,
+      "forbidden_resources_denied": true,
+      "network_confined": true,
+      "process_tree_limited": true
+    }
+  },
+  "sumo_launches": 1,
+  "traci_connections": 1,
+  "candidate_sumo_launches": 0,
+  "candidate_traci_connections": 0,
+  "holdout_reads": 0,
+  "formal_measurement": "not run",
+  "reason": "Existing technical_preflight_v4 has no approved Round2 minGap factor contract; native candidate launch withheld"
+}

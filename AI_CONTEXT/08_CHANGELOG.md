@@ -456,5 +456,5 @@ Added final Round1 scientific decision report, static Round2 plan, candidate inp
 
 Static candidate test code/tests/test_stage_0_5_round2_task1_candidate.py added and passed with project-doc tests (14 passed); compileall passed without native launch.
 
-## 2026-10-28 Round2 Task1 prelaunch
-Added offline macro-rule comparison, prelaunch decision note and preflight evidence. No native launch or scientific state transition.
+## 2026-10-28 Round2 Task1 prelaunch and engineering block
+Added offline macro-rule comparison, researcher approval record, current-source synthetic smoke receipt, prelaunch evidence and the exact admission guard block. The approved candidate native launch was withheld; no candidate scientific state transition, formal P2 or Gate change.

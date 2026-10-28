@@ -1,0 +1,31 @@
+{
+  "schema": "aad.stage05.round2.task1-run-record.v1",
+  "commands": [
+    "git status --branch --short",
+    "git log -1 --oneline",
+    "wsl.exe -d Ubuntu --exec /bin/bash -lc 'pwd; ls /home/shen/AAD/code/tmp/stage05_v4_round2_task1_20261028'",
+    "wsl.exe -d Ubuntu --cd /mnt/d/shen/TJU/AAD --exec /home/shen/AAD/code/runtime/stage_0_5_sumo126_v4_r2/env/bin/python3 -I -B /mnt/d/shen/TJU/AAD/code/scripts/prepare_stage_0_5_linux_stage_v4.py stage /home/shen/AAD/code/tmp/stage05_v4_round2_task1_20261028 --runtime-root /home/shen/AAD/code/runtime/stage_0_5_sumo126_v4_r2",
+    "wsl.exe -d Ubuntu --exec /bin/bash -lc '... prepare synthetic smoke ...'",
+    "wsl.exe -d Ubuntu --exec /bin/bash -lc '... stage_0_5_linux_execution_v4.py launch ...'"
+  ],
+  "environment": {
+    "host": "Windows PowerShell",
+    "wsl_distribution": "Ubuntu",
+    "wsl_workspace": "/home/shen/AAD",
+    "runtime_python": "/home/shen/AAD/code/runtime/stage_0_5_sumo126_v4_r2/env/bin/python3",
+    "sumo_release": "1.26.0",
+    "traci_protocol": 22,
+    "seed_candidate": 20261201,
+    "candidate_duration_s": 420,
+    "candidate_internal_step_s": 0.05,
+    "candidate_recording_step_s": 0.1
+  },
+  "counts": {
+    "synthetic_smoke_sumo_launches": 1,
+    "synthetic_smoke_traci_connections": 1,
+    "candidate_sumo_launches": 0,
+    "candidate_traci_connections": 0,
+    "locked_holdout_reads": 0
+  },
+  "note": "The smoke is engineering-only; no research input or candidate trajectory was started."
+}

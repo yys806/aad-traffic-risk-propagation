@@ -1,3 +1,7 @@
+## RES-STAGE-0.5-ROUND2-TASK1-20261028
+
+Round2 Task1 researcher approval and current-source engineering prelaunch evidence. One synthetic smoke completed with an independent capsule receipt `Pass`; the approved 420 s candidate was not started because the existing admission guard lacks a reviewed vType-only minGap factor contract. Candidate P2, macro and micro outcomes are not available; no scientific interpretation is made. Evidence: `evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/`; report: `docs/STAGE_0_5_ROUND2_TASK1_EXECUTION.md`.
+
 # AAD 结果索引
 
 ## RES-STAGE-0.5-R0-DESIGN-PACKET-20261028

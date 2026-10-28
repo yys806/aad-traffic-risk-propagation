@@ -1,6 +1,10 @@
+## Current — 2026-10-28 Round2 Task1 prelaunch engineering block
+
+Verified: the researcher approved the frozen Round2 space, Rule A and one candidate with only five heterogeneous Krauss `minGap` values changed from 2.5 m to 1.0 m. A new current-source Linux staging was created and one synthetic engineering smoke completed with an independent capsule receipt `Pass` (one SUMO process/one TraCI connection; no research input). The 420 s candidate was not started: current `technical_preflight_v4` has no reviewed minGap factor contract, and a persistent guard extension was rejected by automatic review. Candidate P2, macro, micro and physical-path results are `Unknown`/not evaluated; locked holdout reads remain 0. Stage 0.5 remains blocked; Stage 0.6, Protocol Lock and Stage I are unchanged. Report: `docs/STAGE_0_5_ROUND2_TASK1_EXECUTION.md`; evidence: `evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/`.
+
 # AAD Current State Snapshot
 
-## Current — 2026-10-28 Round1 Task3 scientific decision and Round2 freeze candidate
+## Historical — 2026-10-28 Round1 Task3 scientific decision and Round2 freeze candidate
 
 Verified: Round1 engineering/evidence closure is ready. The recommended scientific space preserves S_UPSTREAM_MAIN, mainline target lanes 1–5 y[150,350), [120,390) s, C_INPUT_ROUTE and separate auxiliary diagnostics. A single static Round2 candidate is prepared: current B00 A03 heterogeneous Krauss vTypes with only minGap 2.5→1.0. Candidate inputs, decision matrix, acceptance matrix and SHA are bound in RES-STAGE-0.5-ROUND1-TASK3-DECISION-20261028. Status is ROUND1_AWAITING_RESEARCHER_DECISION; SUMO/TraCI=0, Stage 0.5 blocked, Stage 0.6 and Stage I unchanged.
 

@@ -312,7 +312,8 @@
   "code/tests/test_stage_0_5_process_supervision.py",
   "code/tests/test_aad_week_scene_v1.py",
   "code/tests/test_aad_week_protocol_v1.py",
-  "code/tests/test_stage_0_6_error_budget_v1.py"
+  "code/tests/test_stage_0_6_error_budget_v1.py",
+  "docs/STAGE_0_5_ROUND2_TASK1_EXECUTION.md"
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
@@ -701,7 +702,7 @@
    "purpose": "组合 NGSIM 跟驰风险参考和 pNEUMA 城市运动学参考，检查无消息作用的 SUMO 样本是否落在现实范围。",
    "research_question": "SUMO 基础运动与跟驰风险是否明显脱离真实交通范围？",
    "date": "2026-10-28",
-   "status": "r1_completed_offline_mechanism_audit_gate_blocked",
+   "status": "round2_task1_engineering_blocked_before_candidate_launch",
    "code_version": "current main 29dac1a plus offline audit script",
    "code_paths": [
     "code/src/riskprop/simulation_real_coverage.py",
@@ -1115,7 +1116,8 @@
     "RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028",
     "RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028",
     "RES-STAGE-0.5-ROUND1-TASK3-DECISION-20261028",
-    "RES-STAGE-0.5-ROUND2-TASK1-PREFLIGHT-20261028"
+    "RES-STAGE-0.5-ROUND2-TASK1-PREFLIGHT-20261028",
+    "RES-STAGE-0.5-ROUND2-TASK1-20261028"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -4665,6 +4667,57 @@
    "paper_locations": [
     "docs/STAGE_0_5_ROUND2_TASK1_PRELAUNCH_DECISION.md"
    ]
+  },
+  {
+   "id": "RES-STAGE-0.5-ROUND2-TASK1-20261028",
+   "experiment_id": "stage_0_5",
+   "name": "Stage 0.5 Round2 Task1 minGap candidate prelaunch and engineering block",
+   "status": "ENGINEERING_BLOCKED_BEFORE_CANDIDATE_NATIVE_LAUNCH",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/approval_record.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/decision_matrix.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/candidate_result.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/acceptance_matrix.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/prelaunch_validation.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/validation_record.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/verification_summary.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/run_record.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/engineering_block.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/manifest.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/SHA256SUMS",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/engineering_smoke/staging_record.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/engineering_smoke/launch_attempt.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/engineering_smoke/engineering_acceptance.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/engineering_smoke/controller_receipt.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/engineering_smoke/identity_summary.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/engineering_smoke/isolation_runtime.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/engineering_smoke/smoke_envelope.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/full_pytest_failures.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/full_pytest_output.txt"
+   ],
+   "local_artifact_paths": [
+    "code/tmp/stage05_v4_round2_task1_20261028"
+   ],
+   "code_version_source": "current Git HEAD 95772fd; current-source Round2 staging and synthetic smoke receipt",
+   "configuration_source": "Round1 Task3 candidate binding, researcher approval record and Rule A preflight",
+   "data_version_source": "accepted B00 A03 and static candidate inputs; synthetic smoke only; no candidate trajectory and no holdout",
+   "core_metrics": {
+    "researcher_approval": "Rule A plus one minGap=1.0 candidate",
+    "synthetic_smoke_sumo_launches": 1,
+    "synthetic_smoke_traci_connections": 1,
+    "candidate_sumo_launches": 0,
+    "candidate_traci_connections": 0,
+    "candidate_source_P2": "Unknown",
+    "candidate_macro": "Unknown",
+    "candidate_micro": "Unknown",
+    "holdout_reads": 0
+   },
+   "current_conclusion": "Current-source engineering smoke passed; candidate launch is withheld because the existing admission guard has no reviewed minGap-only factor contract. No scientific candidate result is inferred.",
+   "gate_status": "blocked",
+   "paper_locations": [
+    "docs/STAGE_0_5_ROUND2_TASK1_EXECUTION.md"
+   ],
+   "scientific_claim_eligible": false
   }
  ],
  "history": [

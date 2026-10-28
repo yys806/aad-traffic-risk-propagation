@@ -1,0 +1,19 @@
+{
+  "schema": "aad.stage05.round2.task1-researcher-approval.v1",
+  "approved_at": "2026-10-28",
+  "decision": "Approved by researcher via request_user_input_async",
+  "experiment_id": "AAD-S0.5-ROUND2-TASK1",
+  "macro_rule": "Rule A strict joint support",
+  "source_region": "S_UPSTREAM_MAIN",
+  "target_region": "mainline lanes 1-5 y[150,350)",
+  "evaluation_window_s": [
+    120,
+    390
+  ],
+  "cohort": "C_INPUT_ROUTE",
+  "auxiliary_lane_policy": "separate diagnostic",
+  "physical_path_policy": "identity/time/lane/leader witness",
+  "candidate_factor": "five B_het_*_passenger minGap 2.5 -> 1.0",
+  "primary_attempt_budget": 1,
+  "independent_seed_authorized": false
+}

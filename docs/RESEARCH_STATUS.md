@@ -1,12 +1,16 @@
+## 2026-10-28 Round2 Task1 current status
+
+`ROUND2_TASK1_ENGINEERING_BLOCKED_BEFORE_CANDIDATE_NATIVE_LAUNCH`: researcher approval is recorded for Rule A and the single `minGap=1.0 m` candidate. Current-source synthetic engineering smoke passed inside the existing capsule; the candidate was withheld because the current admission guard has no reviewed minGap factor contract and the attempted persistent-guard patch was rejected by automatic review. Candidate P2, macro and micro results are not observed. Stage 0.5 Gate, Stage 0.6, Protocol Lock and Stage I remain unchanged. Evidence: `evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/`; report: `docs/STAGE_0_5_ROUND2_TASK1_EXECUTION.md`.
+
 # AAD 当前科研状态
 
-## Current — 2026-10-28 Round1 Task3 scientific decision and Round2 freeze candidate
+## Historical — 2026-10-28 Round1 Task3 scientific decision and Round2 freeze candidate
 
 Verified: 第一轮工程与证据已收口，科学状态为 `ROUND1_AWAITING_RESEARCHER_DECISION`。推荐保留S_UPSTREAM_MAIN、主线目标区、[120,390)窗口、C_INPUT_ROUTE及辅助车道独立诊断；唯一第二轮候选为当前B00 A03异质Krauss配置仅将五类minGap从2.5改为1.0。候选输入和联合验收规则已静态准备，SUMO/TraCI=0，Stage0.5仍blocked，Stage0.6/StageI不变。
 
 报告：docs/STAGE_0_5_ROUND1_FINAL_DECISION.md；计划：docs/plans/STAGE_0_5_ROUND2_TASK1_FREEZE_CANDIDATE.md；证据：evidence/results/RES-STAGE-0.5-ROUND1-TASK3-DECISION-20261028/。
 
-## Current — 2026-10-28 first-round evidence-consistency repair
+## Historical — 2026-10-28 first-round evidence-consistency repair
 
 Verified: R1 已完成（B10/B01/B11 各一次，B00 复用 A03）；此前 R0 段落中的“R1 未执行”仅表示 R0 设计阶段，保留为 Historical。第一轮证据包已按源文件重算事件与正式测量摘要：B11 全量 16/19 辅助车道、评价窗 16/17；manifest 自引用已移除，SHA256SUMS 与 R0/R1/offline/week 原始证据包核验通过。离线回归 1353 passed、28 个因缺少 pyarrow/parquet 引擎失败、4 skipped，SUMO/TraCI=0。Stage 0.5 仍 blocked，Stage 0.6 与 Stage I 不变。
 

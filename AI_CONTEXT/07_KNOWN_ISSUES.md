@@ -1,3 +1,7 @@
+## Current — 2026-10-28 Round2 Task1 admission contract gap
+
+The current `technical_preflight_v4`/route-factor contract encodes the prior B00/R1 factor forms and cannot represent the approved five-vType `minGap`-only contrast without a persistent guard change. A current-source synthetic smoke passed, but the candidate remains unstarted. Automatic review rejected the attempted core-guard patch as a possible integrity-boundary weakening. Keep candidate scientific outcomes `Unknown` until a narrowly scoped guard extension is explicitly approved and validated.
+
 # AAD Known Issues
 
 ## Current — 2026-10-28 first-round evidence-consistency repair

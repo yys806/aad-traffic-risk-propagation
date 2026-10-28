@@ -1,0 +1,27 @@
+{
+  "schema": "aad.stage05.round2.task1-decision-matrix.v1",
+  "researcher_approval": "received",
+  "scientific_space": "approved as requested",
+  "candidate": {
+    "id": "AAD-S0.5-ROUND2-TASK1-20261028-candidate-v1",
+    "factor": "minGap",
+    "base_m": 2.5,
+    "candidate_m": 1.0,
+    "vtypes": [
+      "B_het_c0_passenger",
+      "B_het_c1_passenger",
+      "B_het_c2_passenger",
+      "B_het_c3_passenger",
+      "B_het_c4_passenger"
+    ],
+    "only_change_static": "verified by Round1 candidate binding"
+  },
+  "macro_rule": {
+    "id": "Rule A",
+    "status": "approved",
+    "definition": "mean inside pooled envelope AND pooled 30s coverage >= cross-window baseline AND closing coverage >= baseline",
+    "source": "preflight macro_rule_comparison.json"
+  },
+  "current_execution_status": "blocked_before_candidate_native_launch",
+  "reason": "existing v4 admission has no strict minGap factor contract"
+}

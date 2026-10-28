@@ -1,3 +1,7 @@
+## 2026-10-28 Round2 Task1 execution entry
+
+Approved candidate execution entry: `docs/STAGE_0_5_ROUND2_TASK1_EXECUTION.md`; machine evidence: `evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/`; static candidate input: `evidence/admission/AAD-S0.5-ROUND2-TASK1-20261028/candidate-v1/`. Current-source synthetic smoke passed, but the candidate native start is blocked by the existing minGap admission-contract gap. No formal P2 or Stage Gate status changed.
+
 # AAD 项目索引
 
 ## 2026-10-28 R0 offline design packet（任务标签；实际准备2026-10-27起）
