@@ -11,9 +11,131 @@ import subprocess
 import sys
 import time
 import traceback
+import xml.etree.ElementTree as ET
 
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 from stage_0_5_native_capsule_v4 import canonical,sha,require,authorization_reasons,verify_receipt,SCHEMA,SMOKE_SCHEMA,SMOKE_TASK,TASK,safe_relative
+
+
+# This contract is deliberately separate from the generic route-factor
+# validator.  It is enabled only by an exact Round2 Task1 proposal marker and
+# therefore cannot broaden any other admission path.
+ROUND2_TASK1_EXPERIMENT = "AAD-S0.5-ROUND2-TASK1"
+ROUND2_TASK1_CANDIDATE = "AAD-S0.5-ROUND2-TASK1-20261028-candidate-v1"
+ROUND2_TASK1_BASE_RUN = "WEEK_0750_B00_IC1_s20261201_A03"
+ROUND2_TASK1_TARGET_VTYPES = tuple(f"B_het_c{i}_passenger" for i in range(5))
+ROUND2_TASK1_BASE_INPUTS = {
+    "network.net.xml": "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/WEEK_0750_B00_IC1_s20261201_A03/network.net.xml",
+    "routes.rou.xml": "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/WEEK_0750_B00_IC1_s20261201_A03/routes.rou.xml",
+    "run.sumocfg": "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/WEEK_0750_B00_IC1_s20261201_A03/run.sumocfg",
+}
+ROUND2_TASK1_CANDIDATE_INPUTS = {
+    "network.net.xml": "evidence/admission/AAD-S0.5-ROUND2-TASK1-20261028/candidate-v1/inputs/network.net.xml",
+    "routes.rou.xml": "evidence/admission/AAD-S0.5-ROUND2-TASK1-20261028/candidate-v1/inputs/routes.rou.xml",
+    "run.sumocfg": "evidence/admission/AAD-S0.5-ROUND2-TASK1-20261028/candidate-v1/inputs/run.sumocfg",
+}
+ROUND2_TASK1_INPUT_SHA256 = {
+    "network.net.xml": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+    "routes.rou.xml": "a4c78db55984cc8c320b06ec2e257bdf6d4902c0dfdf015348157e30cdb80e79",
+    "run.sumocfg": "c55b242f09b6a86527852bf686f06f3347abc44aa1c16c199c51935ce93dc6c6",
+}
+ROUND2_TASK1_BASE_SHA256 = {
+    "network.net.xml": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+    "routes.rou.xml": "b6df8d9ce52b56fac50899cc2e6d1329c7858325aae0f0c86c76d77f796a7574",
+    "run.sumocfg": "c55b242f09b6a86527852bf686f06f3347abc44aa1c16c199c51935ce93dc6c6",
+}
+
+
+def _round2_task1_route_contract(base_bytes, candidate_bytes):
+    """Validate the exact five-vType minGap contrast, without generic factors."""
+    base = ET.fromstring(base_bytes)
+    candidate = ET.fromstring(candidate_bytes)
+    require(base.tag == candidate.tag and base.attrib == candidate.attrib,
+            "round2_minGap_route_root_changed")
+    base_children = list(base)
+    candidate_children = list(candidate)
+    require(len(base_children) == len(candidate_children), "round2_minGap_route_count_changed")
+    base_types = {n.get("id"): n for n in base.findall("vType")}
+    candidate_types = {n.get("id"): n for n in candidate.findall("vType")}
+    require(set(base_types) == set(candidate_types), "round2_minGap_vtype_identity_changed")
+    require(set(ROUND2_TASK1_TARGET_VTYPES) <= set(base_types), "round2_minGap_target_vtype_missing")
+    changes = []
+    for ident, old in base_types.items():
+        new = candidate_types[ident]
+        require(list(old) == list(new), "round2_minGap_vtype_nested_content_changed")
+        old_attrs, new_attrs = dict(old.attrib), dict(new.attrib)
+        changed = {k for k in set(old_attrs) | set(new_attrs) if old_attrs.get(k) != new_attrs.get(k)}
+        if ident in ROUND2_TASK1_TARGET_VTYPES:
+            require(changed == {"minGap"}, "round2_minGap_target_scope_changed:" + ident)
+            require(old_attrs.get("minGap") == "2.5" and new_attrs.get("minGap") == "1.0",
+                    "round2_minGap_value_changed:" + ident)
+            changes.append(ident)
+        else:
+            require(not changed, "round2_minGap_non_target_vtype_changed:" + ident)
+    # Preserve vehicle/route order and every attribute byte-for-attribute.
+    for old, new in zip(base_children, candidate_children):
+        if old.tag == "vType":
+            continue
+        require(old.tag == new.tag and old.attrib == new.attrib and
+                [ET.tostring(c) for c in old] == [ET.tostring(c) for c in new],
+                "round2_minGap_vehicle_or_route_changed")
+    require(sorted(changes) == sorted(ROUND2_TASK1_TARGET_VTYPES),
+            "round2_minGap_changed_vtype_count")
+    return dict(changed_vtypes=sorted(changes), only_attribute="minGap", before="2.5", after="1.0")
+
+
+def validate_round2_task1_min_gap_candidate(root, proposal, run, base_run):
+    """Task-specific admission contract; raises before reservation or launch."""
+    root = Path(root).resolve()
+    require(proposal.get("experiment_id") == ROUND2_TASK1_EXPERIMENT,
+            "round2_minGap_wrong_experiment")
+    require(proposal.get("candidate_id") == ROUND2_TASK1_CANDIDATE,
+            "round2_minGap_wrong_candidate_id")
+    require(proposal.get("round2_baseline_run_id") == ROUND2_TASK1_BASE_RUN,
+            "round2_minGap_wrong_baseline_run")
+    require(proposal.get("task_id") == TASK and run.get("task_id") == TASK,
+            "round2_minGap_wrong_task_id")
+    require(run.get("id") == ROUND2_TASK1_CANDIDATE,
+            "round2_minGap_wrong_run_id")
+    require(run.get("input_files") == ROUND2_TASK1_CANDIDATE_INPUTS,
+            "round2_minGap_candidate_input_paths_changed")
+    require(run.get("paired_base_routes") == ROUND2_TASK1_BASE_INPUTS["routes.rou.xml"],
+            "round2_minGap_base_route_binding_changed")
+    require(base_run.get("id") == ROUND2_TASK1_BASE_RUN,
+            "round2_minGap_previous_base_id_changed")
+    require(base_run.get("input_files") == ROUND2_TASK1_BASE_INPUTS,
+            "round2_minGap_previous_base_inputs_changed")
+    require(run.get("input_sha256") == {ROUND2_TASK1_CANDIDATE_INPUTS[k]: v
+                                         for k, v in ROUND2_TASK1_INPUT_SHA256.items()},
+            "round2_minGap_candidate_hash_binding_changed")
+    require({v: sha(safe_relative(root, v)) for v in run["input_files"].values()} ==
+            run["input_sha256"], "round2_minGap_candidate_input_hash_drift")
+    require({v: sha(safe_relative(root, v)) for v in base_run["input_files"].values()} ==
+            {v: ROUND2_TASK1_BASE_SHA256[k] for k, v in base_run["input_files"].items()},
+            "round2_minGap_base_input_hash_drift")
+    # These are the science-bearing fields that must remain identical to A03.
+    locked = ["condition", "seed", "duration_s", "internal_step_s", "evaluation_elapsed_s",
+              "common_support_references", "supply_target_lanes", "lane_speed_schedule",
+              "single_attempt_limits"]
+    for key in locked:
+        require(run.get(key) == base_run.get(key), "round2_minGap_locked_field_changed:" + key)
+    route_report = _round2_task1_route_contract(
+        safe_relative(root, ROUND2_TASK1_BASE_INPUTS["routes.rou.xml"]).read_bytes(),
+        safe_relative(root, run["input_files"]["routes.rou.xml"]).read_bytes())
+    approval_path = safe_relative(root, proposal.get("round2_approval_path"))
+    require(sha(approval_path) == proposal.get("round2_approval_sha256"),
+            "round2_minGap_approval_record_drift")
+    approval = json.loads(approval_path.read_bytes())
+    require(approval.get("experiment_id") == ROUND2_TASK1_EXPERIMENT and
+            approval.get("candidate_id") == ROUND2_TASK1_CANDIDATE and
+            approval.get("macro_rule") == "Rule A strict joint support" and
+            approval.get("decision") == "Approved by researcher via request_user_input_async",
+            "round2_minGap_approval_record_not_exact")
+    return dict(status="Pass", candidate_id=ROUND2_TASK1_CANDIDATE,
+                baseline_run_id=ROUND2_TASK1_BASE_RUN, route_contract=route_report,
+                locked_fields=locked, candidate_input_sha256=ROUND2_TASK1_INPUT_SHA256,
+                base_input_sha256=ROUND2_TASK1_BASE_SHA256,
+                approval_sha256=proposal["round2_approval_sha256"])
 
 
 def linux_preflight(proposal,policy):
@@ -149,11 +271,19 @@ def technical_preflight_v4(repo,proposal_path,run_id,*,inspect_runtime=True):
             set(run["input_files"].values())==set(run["input_sha256"]),"inexact_scientific_input_map")
         require(run["capsule_input_sha256"]=={n:run["input_sha256"][v] for n,v in run["input_files"].items()},"capsule_and_research_input_mismatch")
         validate_config(safe_relative(root,run["input_files"]["run.sumocfg"]).read_bytes(),run)
-        factor_routes(safe_relative(root,run["paired_base_routes"]).read_bytes(),safe_relative(root,run["input_files"]["routes.rou.xml"]).read_bytes(),ramp=run["factors"]["ramp"])
         previous=p["previous_proposal"]
         require(sha(safe_relative(root,previous["path"]))==previous["sha256"],"previous_candidate_drift")
         old=json.loads(safe_relative(root,previous["path"]).read_bytes())["runs"][0]
-        require(all(run.get(k)==v for k,v in old.items() if k!="native_environment"),"B00_scientific_definition_changed")
+        if p.get("experiment_id") == ROUND2_TASK1_EXPERIMENT:
+            p["round2_min_gap_validation"] = validate_round2_task1_min_gap_candidate(root, p, run, old)
+        else:
+            # Preserve the generic B00/R1 contract byte-for-byte for every
+            # other proposal. The generic factor validator is unchanged.
+            from stage_0_5_admission_v3 import factor_routes
+            factor_routes(safe_relative(root,run["paired_base_routes"]).read_bytes(),
+                          safe_relative(root,run["input_files"]["routes.rou.xml"]).read_bytes(),
+                          ramp=run["factors"]["ramp"])
+            require(all(run.get(k)==v for k,v in old.items() if k!="native_environment"),"B00_scientific_definition_changed")
         output=safe_relative(root,run["artifact_path"])
         require(not output.exists(),"research_output_already_exists")
         for n,h in p["measurement_reference_sha256"].items():require(sha(safe_relative(root,n))==h,"measurement_reference_drift")
@@ -167,7 +297,9 @@ def technical_preflight_v4(repo,proposal_path,run_id,*,inspect_runtime=True):
         require(p["worktree_sha256"]==hashlib.sha256(canonical(p["source_sha256"])).hexdigest(),"source_closure_digest_drift")
         software=json.loads((root/p["software_validation_path"]).read_bytes())
         from stage_0_5_isolation_admission import software_extension_verified
-        require(software_extension_verified(root,software,p["source_sha256"]),"software_verification_binding")
+        require(software_extension_verified(root,software,p["source_sha256"],
+                                            task_experiment=p.get("experiment_id")),
+                "software_verification_binding")
         proof=json.loads((root/p["isolation"]["report_path"]).read_bytes())
         require(sha(root/p["isolation"]["report_path"])==p["isolation"]["report_sha256"],"integration_certificate_drift")
         require(proof["accepted_for_new_task"] is True and proof["input_and_test_resource_scope_accepted"] is True,"integration_not_accepted")

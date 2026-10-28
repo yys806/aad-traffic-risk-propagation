@@ -95,7 +95,7 @@ def require_native_context(context):
     return True
 
 
-def software_extension_verified(repo,record,sources):
+def software_extension_verified(repo,record,sources,*,task_experiment=None):
     """Reuse the existing full regression only for unchanged scientific sources.
 
     This is explicitly an isolation-only targeted extension, never a claim that
@@ -131,6 +131,11 @@ def software_extension_verified(repo,record,sources):
             "stage_0_5_linux_execution_v4","stage_0_5_linux_controller_v4",
             "stage_0_5_linux_runtime_v4"])
         permitted.add("code/tests/test_stage_0_5_linux_isolation.py")
+        # The Round2 Task1 execution adapter explicitly binds this validator
+        # extension to its own experiment marker. Other admission paths keep
+        # the original permitted-source set unchanged.
+        if task_experiment == "AAD-S0.5-ROUND2-TASK1":
+            permitted.add("code/scripts/validate_stage_0_5_research_v2.py")
     changed={n for n,h in previous["source_sha256"].items() if sources.get(n)!=h}
     if not changed<=permitted or changed!=set(record["modified_existing_sources"]):return False
     added=set(sources)-set(previous["source_sha256"])
