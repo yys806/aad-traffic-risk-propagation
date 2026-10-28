@@ -228,8 +228,10 @@ def native_resource_probe(backend):
                         pass
             except psutil.NoSuchProcess:
                 pass
+        c_volume = "C:/" if os.name == "nt" else "/mnt/c"
+        d_volume = "D:/" if os.name == "nt" else "/mnt/d"
         return dict(wall_s=time.monotonic() - started, process_tree_rss_bytes=rss,
-                    free_c_bytes=shutil.disk_usage("C:/").free, free_d_bytes=shutil.disk_usage("D:/").free,
+                    free_c_bytes=shutil.disk_usage(c_volume).free, free_d_bytes=shutil.disk_usage(d_volume).free,
                     available_memory_bytes=psutil.virtual_memory().available, task_output_bytes=0)
     return observe
 
