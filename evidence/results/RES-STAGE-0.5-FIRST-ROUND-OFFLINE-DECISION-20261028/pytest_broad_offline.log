@@ -1,0 +1,532 @@
+COMMAND: python -m pytest -q --ignore=tests/test_stage_0_1_sumo.py --ignore=tests/test_stage_0_5_sumo.py --tb=short -p no:cacheprovider
+WORKDIR: D:\shen\TJU\AAD\code
+TEMP: D:\shen\TJU\AAD\.task_tmp
+PYTHON: Python 3.13.5
+
+
+...................................FFF.................................. [  5%]
+........................................FFF.FFFFFFFF.................... [ 10%]
+...............................................F........................ [ 15%]
+............................................FFFFFF...................... [ 20%]
+....................................................F................... [ 25%]
+.............................................s.......................... [ 31%]
+........................................................................ [ 36%]
+.......................................sF............................... [ 41%]
+...................F................................................F... [ 46%]
+........................................................................ [ 51%]
+........................................................................ [ 57%]
+........................................................................ [ 62%]
+....FF.................................................................. [ 67%]
+........................................................................ [ 72%]
+........................................................................ [ 77%]
+...............................................s........................ [ 83%]
+........................................................................ [ 88%]
+........................................................................ [ 93%]
+.............................................s.......................... [ 98%]
+..........F......                                                        [100%]
+================================== FAILURES ===================================
+_________ test_mapmatch_package_is_sealed_and_remains_candidate_only __________
+tests\legacy\test_pneuma_mapmatch.py:80: in test_mapmatch_package_is_sealed_and_remains_candidate_only
+    output = write_pneuma_mapmatch_package(
+src\riskprop\legacy\pneuma_mapmatch.py:337: in write_pneuma_mapmatch_package
+    matched.to_parquet(output_dir / "map_matched_states.parquet", index=False)
+D:\miniconda\Lib\site-packages\pandas\util\_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\core\frame.py:3113: in to_parquet
+    return to_parquet(
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:476: in to_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:67: in get_engine
+    raise ImportError(
+E   ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+E   A suitable version of pyarrow or fastparquet is required for parquet support.
+E   Trying to import the above resulted in these errors:
+E    - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+E    - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+________________ test_csv_mapmatch_package_streams_wide_tracks ________________
+tests\legacy\test_pneuma_mapmatch.py:103: in test_csv_mapmatch_package_streams_wide_tracks
+    output = write_pneuma_csv_mapmatch_package(
+src\riskprop\legacy\pneuma_mapmatch.py:263: in write_pneuma_csv_mapmatch_package
+    import pyarrow as pa
+E   ModuleNotFoundError: No module named 'pyarrow'
+___ test_pneuma_manual_qa_pack_is_balanced_reviewable_and_not_a_ttc_result ____
+tests\legacy\test_pneuma_qa.py:69: in test_pneuma_manual_qa_pack_is_balanced_reviewable_and_not_a_ttc_result
+    states.to_parquet(source / "map_matched_states.parquet", index=False)
+D:\miniconda\Lib\site-packages\pandas\util\_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\core\frame.py:3113: in to_parquet
+    return to_parquet(
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:476: in to_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:67: in get_engine
+    raise ImportError(
+E   ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+E   A suitable version of pyarrow or fastparquet is required for parquet support.
+E   Trying to import the above resulted in these errors:
+E    - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+E    - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+___________ test_manifest_rejects_a_run_missing_a_required_artifact ___________
+tests\test_formal_artifacts.py:35: in test_manifest_rejects_a_run_missing_a_required_artifact
+    _write_minimal_run(run_dir)
+tests\test_formal_artifacts.py:26: in _write_minimal_run
+    pd.DataFrame({"artifact": [name]}).to_parquet(path, index=False)
+D:\miniconda\Lib\site-packages\pandas\util\_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\core\frame.py:3113: in to_parquet
+    return to_parquet(
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:476: in to_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:67: in get_engine
+    raise ImportError(
+E   ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+E   A suitable version of pyarrow or fastparquet is required for parquet support.
+E   Trying to import the above resulted in these errors:
+E    - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+E    - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+_______ test_manifest_records_hashes_and_round_trips_all_run_artifacts ________
+tests\test_formal_artifacts.py:44: in test_manifest_records_hashes_and_round_trips_all_run_artifacts
+    _write_minimal_run(run_dir)
+tests\test_formal_artifacts.py:26: in _write_minimal_run
+    pd.DataFrame({"artifact": [name]}).to_parquet(path, index=False)
+D:\miniconda\Lib\site-packages\pandas\util\_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\core\frame.py:3113: in to_parquet
+    return to_parquet(
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:476: in to_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:67: in get_engine
+    raise ImportError(
+E   ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+E   A suitable version of pyarrow or fastparquet is required for parquet support.
+E   Trying to import the above resulted in these errors:
+E    - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+E    - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+__________ test_manifest_rejects_an_untracked_extra_file_after_build __________
+tests\test_formal_artifacts.py:63: in test_manifest_rejects_an_untracked_extra_file_after_build
+    _write_minimal_run(run_dir)
+tests\test_formal_artifacts.py:26: in _write_minimal_run
+    pd.DataFrame({"artifact": [name]}).to_parquet(path, index=False)
+D:\miniconda\Lib\site-packages\pandas\util\_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\core\frame.py:3113: in to_parquet
+    return to_parquet(
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:476: in to_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:67: in get_engine
+    raise ImportError(
+E   ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+E   A suitable version of pyarrow or fastparquet is required for parquet support.
+E   Trying to import the above resulted in these errors:
+E    - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+E    - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+_____________ test_manifest_rejects_non_parquet_tabular_artifacts _____________
+tests\test_formal_artifacts.py:93: in test_manifest_rejects_non_parquet_tabular_artifacts
+    _write_minimal_run(run_dir)
+tests\test_formal_artifacts.py:26: in _write_minimal_run
+    pd.DataFrame({"artifact": [name]}).to_parquet(path, index=False)
+D:\miniconda\Lib\site-packages\pandas\util\_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\core\frame.py:3113: in to_parquet
+    return to_parquet(
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:476: in to_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:67: in get_engine
+    raise ImportError(
+E   ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+E   A suitable version of pyarrow or fastparquet is required for parquet support.
+E   Trying to import the above resulted in these errors:
+E    - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+E    - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+____ test_theory_schema_requires_source_lifecycle_and_attribution_columns _____
+tests\test_formal_artifacts.py:104: in test_theory_schema_requires_source_lifecycle_and_attribution_columns
+    _write_minimal_run(run_dir)
+tests\test_formal_artifacts.py:26: in _write_minimal_run
+    pd.DataFrame({"artifact": [name]}).to_parquet(path, index=False)
+D:\miniconda\Lib\site-packages\pandas\util\_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\core\frame.py:3113: in to_parquet
+    return to_parquet(
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:476: in to_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:67: in get_engine
+    raise ImportError(
+E   ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+E   A suitable version of pyarrow or fastparquet is required for parquet support.
+E   Trying to import the above resulted in these errors:
+E    - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+E    - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+___ test_theory_schema_accepts_all_frozen_columns_even_for_an_empty_channel ___
+tests\test_formal_artifacts.py:120: in test_theory_schema_accepts_all_frozen_columns_even_for_an_empty_channel
+    _write_minimal_run(run_dir)
+tests\test_formal_artifacts.py:26: in _write_minimal_run
+    pd.DataFrame({"artifact": [name]}).to_parquet(path, index=False)
+D:\miniconda\Lib\site-packages\pandas\util\_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\core\frame.py:3113: in to_parquet
+    return to_parquet(
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:476: in to_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:67: in get_engine
+    raise ImportError(
+E   ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+E   A suitable version of pyarrow or fastparquet is required for parquet support.
+E   Trying to import the above resulted in these errors:
+E    - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+E    - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+______ test_stage_0_1_artifact_smoke_writes_a_sealed_theory_aligned_run _______
+tests\test_formal_artifacts.py:130: in test_stage_0_1_artifact_smoke_writes_a_sealed_theory_aligned_run
+    run_dir = run_artifact_smoke(
+src\riskprop\formal_runner.py:82: in run_artifact_smoke
+    pd.DataFrame(columns=columns).to_parquet(run_dir / name, index=False)
+D:\miniconda\Lib\site-packages\pandas\util\_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\core\frame.py:3113: in to_parquet
+    return to_parquet(
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:476: in to_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:67: in get_engine
+    raise ImportError(
+E   ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+E   A suitable version of pyarrow or fastparquet is required for parquet support.
+E   Trying to import the above resulted in these errors:
+E    - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+E    - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+_ test_stage_0_1_artifact_smoke_cli_is_a_one_command_reproducibility_entrypoint _
+tests\test_formal_artifacts.py:168: in test_stage_0_1_artifact_smoke_cli_is_a_one_command_reproducibility_entrypoint
+    assert process.returncode == 0, process.stderr
+E   AssertionError: Stage 0.1 artifact smoke failed: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+E     A suitable version of pyarrow or fastparquet is required for parquet support.
+E     Trying to import the above resulted in these errors:
+E      - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+E      - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+E     
+E   assert 1 == 0
+E    +  where 1 = CompletedProcess(args=['D:\\miniconda\\python.exe', 'D:\\shen\\TJU\\AAD\\code\\scripts\\run_stage_0_1_artifact_smoke.p...nal dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.\n").returncode
+_ test_stage_0_1_cli_records_a_failed_rerun_without_overwriting_the_first_run _
+tests\test_formal_artifacts.py:200: in test_stage_0_1_cli_records_a_failed_rerun_without_overwriting_the_first_run
+    manifest_before = (tmp_path / "immutable_run" / "manifest.json").read_bytes()
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\pathlib\_abc.py:625: in read_bytes
+    with self.open(mode='rb') as f:
+         ^^^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\pathlib\_local.py:537: in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   FileNotFoundError: [Errno 2] No such file or directory: 'D:\\shen\\TJU\\AAD\\.task_tmp\\pytest-of-Lenovo\\pytest-0\\test_stage_0_1_cli_records_a_f0\\immutable_run\\manifest.json'
+__ test_stage_0_1_contract_fixture_writes_four_nonempty_theory_audited_runs ___
+tests\test_formal_artifacts.py:228: in test_stage_0_1_contract_fixture_writes_four_nonempty_theory_audited_runs
+    fixture_dir = run_contract_fixture(
+src\riskprop\formal_runner.py:349: in run_contract_fixture
+    table.to_parquet(run_dir / name, index=False)
+D:\miniconda\Lib\site-packages\pandas\util\_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\core\frame.py:3113: in to_parquet
+    return to_parquet(
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:476: in to_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:67: in get_engine
+    raise ImportError(
+E   ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+E   A suitable version of pyarrow or fastparquet is required for parquet support.
+E   Trying to import the above resulted in these errors:
+E    - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+E    - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+_ test_stage_0_1_contract_fixture_cli_is_a_one_command_nonempty_contract_entrypoint _
+tests\test_formal_artifacts.py:288: in test_stage_0_1_contract_fixture_cli_is_a_one_command_nonempty_contract_entrypoint
+    assert process.returncode == 0, process.stderr
+E   AssertionError: Stage 0.1 contract fixture failed: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+E     A suitable version of pyarrow or fastparquet is required for parquet support.
+E     Trying to import the above resulted in these errors:
+E      - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+E      - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+E     
+E   assert 1 == 0
+E    +  where 1 = CompletedProcess(args=['D:\\miniconda\\python.exe', 'D:\\shen\\TJU\\AAD\\code\\scripts\\run_stage_0_1_contract_fixture...nal dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.\n").returncode
+_______ test_stage_0_2_package_reads_only_requested_calibration_member ________
+tests\test_ngsim_risk_calibration.py:374: in test_stage_0_2_package_reads_only_requested_calibration_member
+    output = write_stage_0_2_ngsim_package(
+src\riskprop\ngsim_risk_calibration.py:363: in write_stage_0_2_ngsim_package
+    states.to_parquet(states_dir / state_name, index=False)
+D:\miniconda\Lib\site-packages\pandas\util\_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\core\frame.py:3113: in to_parquet
+    return to_parquet(
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:476: in to_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:67: in get_engine
+    raise ImportError(
+E   ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+E   A suitable version of pyarrow or fastparquet is required for parquet support.
+E   Trying to import the above resulted in these errors:
+E    - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+E    - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+________ test_real_reference_package_propagates_pneuma_quality_fields _________
+tests\test_simulation_real_coverage.py:102: in test_real_reference_package_propagates_pneuma_quality_fields
+    ngsim_state.to_parquet(ngsim_path, index=False)
+D:\miniconda\Lib\site-packages\pandas\util\_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\core\frame.py:3113: in to_parquet
+    return to_parquet(
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:476: in to_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:67: in get_engine
+    raise ImportError(
+E   ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+E   A suitable version of pyarrow or fastparquet is required for parquet support.
+E   Trying to import the above resulted in these errors:
+E    - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+E    - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+____________ test_real_reference_package_keeps_pneuma_risk_pending ____________
+tests\test_simulation_real_coverage.py:169: in test_real_reference_package_keeps_pneuma_risk_pending
+    ngsim_state.to_parquet(ngsim_path, index=False)
+D:\miniconda\Lib\site-packages\pandas\util\_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\core\frame.py:3113: in to_parquet
+    return to_parquet(
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:476: in to_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:67: in get_engine
+    raise ImportError(
+E   ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+E   A suitable version of pyarrow or fastparquet is required for parquet support.
+E   Trying to import the above resulted in these errors:
+E    - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+E    - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+_______ test_canonical_pneuma_schema_is_consumed_directly_and_preserved _______
+tests\test_simulation_real_coverage.py:248: in test_canonical_pneuma_schema_is_consumed_directly_and_preserved
+    ngsim_state.to_parquet(ngsim_path, index=False)
+D:\miniconda\Lib\site-packages\pandas\util\_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\core\frame.py:3113: in to_parquet
+    return to_parquet(
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:476: in to_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:67: in get_engine
+    raise ImportError(
+E   ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+E   A suitable version of pyarrow or fastparquet is required for parquet support.
+E   Trying to import the above resulted in these errors:
+E    - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+E    - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+____________ test_canonical_pneuma_quality_contract_is_fail_closed ____________
+tests\test_simulation_real_coverage.py:300: in test_canonical_pneuma_quality_contract_is_fail_closed
+    ngsim_state.to_parquet(ngsim_path, index=False)
+D:\miniconda\Lib\site-packages\pandas\util\_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\core\frame.py:3113: in to_parquet
+    return to_parquet(
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:476: in to_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:67: in get_engine
+    raise ImportError(
+E   ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+E   A suitable version of pyarrow or fastparquet is required for parquet support.
+E   Trying to import the above resulted in these errors:
+E    - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+E    - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+______________ test_legacy_pneuma_schema_requires_explicit_mode _______________
+tests\test_simulation_real_coverage.py:334: in test_legacy_pneuma_schema_requires_explicit_mode
+    ngsim_state.to_parquet(ngsim_path, index=False)
+D:\miniconda\Lib\site-packages\pandas\util\_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\core\frame.py:3113: in to_parquet
+    return to_parquet(
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:476: in to_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:67: in get_engine
+    raise ImportError(
+E   ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+E   A suitable version of pyarrow or fastparquet is required for parquet support.
+E   Trying to import the above resulted in these errors:
+E    - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+E    - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+_______ test_sealed_stage_0_3_canonical_parquet_directly_reaches_writer _______
+tests\test_simulation_real_coverage.py:378: in test_sealed_stage_0_3_canonical_parquet_directly_reaches_writer
+    canonical = pd.read_parquet(canonical_path, columns=list(CANONICAL_PNEUMA_COLUMNS))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:651: in read_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:67: in get_engine
+    raise ImportError(
+E   ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+E   A suitable version of pyarrow or fastparquet is required for parquet support.
+E   Trying to import the above resulted in these errors:
+E    - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+E    - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+___________________ test_confirmation_is_causal_and_delayed ___________________
+tests\test_stage_0_2_task_2_5_threshold_validation.py:25: in test_confirmation_is_causal_and_delayed
+    d=pd.read_parquet(OUT/'event_characteristics.parquet')
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:651: in read_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:67: in get_engine
+    raise ImportError(
+E   ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+E   A suitable version of pyarrow or fastparquet is required for parquet support.
+E   Trying to import the above resulted in these errors:
+E    - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+E    - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+____________ test_synthetic_parquet_metadata_roundtrip_under_guard ____________
+tests\test_stage_0_5_boundary_bottleneck.py:82: in test_synthetic_parquet_metadata_roundtrip_under_guard
+    import pyarrow
+E   ModuleNotFoundError: No module named 'pyarrow'
+____ test_benchmark_plan_is_bounded_and_preserves_loads_before_simulation _____
+tests\test_stage_0_5_calibration_gaps.py:85: in test_benchmark_plan_is_bounded_and_preserves_loads_before_simulation
+    spec.loader.exec_module(module)
+<frozen importlib._bootstrap_external>:1026: in exec_module
+    ???
+<frozen importlib._bootstrap>:488: in _call_with_frames_removed
+    ???
+scripts\benchmark_stage_0_5_calibration_loads.py:14: in <module>
+    import pyarrow as pa
+E   ModuleNotFoundError: No module named 'pyarrow'
+_____________ test_actual_state_runner_uses_d1_not_point_exposure _____________
+tests\test_stage_0_5_d1_measurement.py:130: in test_actual_state_runner_uses_d1_not_point_exposure
+    record=runner.run_cell(tmp_path/"run",dict(cell_id="fixture",condition="us101__0750_0805",behaviour="B_frozen",downstream_free_speed_mps=10.),{},1,with_p2=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+scripts\run_stage_0_5_state_support.py:291: in run_cell
+    measured.to_parquet(work / "measured_state.parquet", index=False)
+D:\miniconda\Lib\site-packages\pandas\util\_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\core\frame.py:3113: in to_parquet
+    return to_parquet(
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:476: in to_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:67: in get_engine
+    raise ImportError(
+E   ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+E   A suitable version of pyarrow or fastparquet is required for parquet support.
+E   Trying to import the above resulted in these errors:
+E    - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+E    - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+_____ test_guard_denies_row_scoped_reads_outside_the_calibration_windows ______
+tests\test_stage_0_5_measurement_equivalence.py:248: in test_guard_denies_row_scoped_reads_outside_the_calibration_windows
+    events.to_parquet(path, index=False)
+D:\miniconda\Lib\site-packages\pandas\util\_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\core\frame.py:3113: in to_parquet
+    return to_parquet(
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:476: in to_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:67: in get_engine
+    raise ImportError(
+E   ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+E   A suitable version of pyarrow or fastparquet is required for parquet support.
+E   Trying to import the above resulted in these errors:
+E    - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+E    - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+________ test_calibration_states_read_helper_refuses_a_foreign_window _________
+tests\test_stage_0_5_measurement_equivalence.py:280: in test_calibration_states_read_helper_refuses_a_foreign_window
+    frame.to_parquet(path, index=False)
+D:\miniconda\Lib\site-packages\pandas\util\_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\core\frame.py:3113: in to_parquet
+    return to_parquet(
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:476: in to_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:67: in get_engine
+    raise ImportError(
+E   ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+E   A suitable version of pyarrow or fastparquet is required for parquet support.
+E   Trying to import the above resulted in these errors:
+E    - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+E    - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+_______ test_observed_sensitivity_reports_missing_and_boundary_support ________
+tests\test_stage_0_6_error_budget_v1.py:39: in test_observed_sensitivity_reports_missing_and_boundary_support
+    measurement_status=['valid','valid','not_applicable','missing'],ttc_valid=[True,True,False,False])).to_parquet(path)
+                                                                                                        ^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\util\_decorators.py:333: in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\core\frame.py:3113: in to_parquet
+    return to_parquet(
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:476: in to_parquet
+    impl = get_engine(engine)
+           ^^^^^^^^^^^^^^^^^^
+D:\miniconda\Lib\site-packages\pandas\io\parquet.py:67: in get_engine
+    raise ImportError(
+E   ImportError: Unable to find a usable engine; tried using: 'pyarrow', 'fastparquet'.
+E   A suitable version of pyarrow or fastparquet is required for parquet support.
+E   Trying to import the above resulted in these errors:
+E    - Missing optional dependency 'pyarrow'. pyarrow is required for parquet support. Use pip or conda to install pyarrow.
+E    - Missing optional dependency 'fastparquet'. fastparquet is required for parquet support. Use pip or conda to install fastparquet.
+============================== warnings summary ===============================
+tests/test_stage_0_5_final_closure.py::test_real_lane_storage_type_does_not_silently_empty_region
+  D:\shen\TJU\AAD\code\tests\test_stage_0_5_final_closure.py:79: FutureWarning: Setting an item of incompatible dtype is deprecated and will raise an error in a future version of pandas. Value '1.5' has dtype incompatible with int64, please explicitly cast to a compatible dtype first.
+    d.loc[0,'lane_id']=1.5
+
+tests/test_stage_0_5_wp1_audit.py::test_missing_leader_points_are_not_following_time
+  D:\shen\TJU\AAD\code\scripts\audit_stage_0_5_work_package_1.py:111: FutureWarning: Downcasting object dtype arrays on .fillna, .ffill, .bfill is deprecated and will change in a future version. Call result.infer_objects(copy=False) instead. To opt-in to the future behavior, set `pd.set_option('future.no_silent_downcasting', True)`
+    adjacent &= ~d[k].fillna(True) & ~p[k].fillna(True)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ===========================
+FAILED tests/legacy/test_pneuma_mapmatch.py::test_mapmatch_package_is_sealed_and_remains_candidate_only
+FAILED tests/legacy/test_pneuma_mapmatch.py::test_csv_mapmatch_package_streams_wide_tracks
+FAILED tests/legacy/test_pneuma_qa.py::test_pneuma_manual_qa_pack_is_balanced_reviewable_and_not_a_ttc_result
+FAILED tests/test_formal_artifacts.py::test_manifest_rejects_a_run_missing_a_required_artifact
+FAILED tests/test_formal_artifacts.py::test_manifest_records_hashes_and_round_trips_all_run_artifacts
+FAILED tests/test_formal_artifacts.py::test_manifest_rejects_an_untracked_extra_file_after_build
+FAILED tests/test_formal_artifacts.py::test_manifest_rejects_non_parquet_tabular_artifacts
+FAILED tests/test_formal_artifacts.py::test_theory_schema_requires_source_lifecycle_and_attribution_columns
+FAILED tests/test_formal_artifacts.py::test_theory_schema_accepts_all_frozen_columns_even_for_an_empty_channel
+FAILED tests/test_formal_artifacts.py::test_stage_0_1_artifact_smoke_writes_a_sealed_theory_aligned_run
+FAILED tests/test_formal_artifacts.py::test_stage_0_1_artifact_smoke_cli_is_a_one_command_reproducibility_entrypoint
+FAILED tests/test_formal_artifacts.py::test_stage_0_1_cli_records_a_failed_rerun_without_overwriting_the_first_run
+FAILED tests/test_formal_artifacts.py::test_stage_0_1_contract_fixture_writes_four_nonempty_theory_audited_runs
+FAILED tests/test_formal_artifacts.py::test_stage_0_1_contract_fixture_cli_is_a_one_command_nonempty_contract_entrypoint
+FAILED tests/test_ngsim_risk_calibration.py::test_stage_0_2_package_reads_only_requested_calibration_member
+FAILED tests/test_simulation_real_coverage.py::test_real_reference_package_propagates_pneuma_quality_fields
+FAILED tests/test_simulation_real_coverage.py::test_real_reference_package_keeps_pneuma_risk_pending
+FAILED tests/test_simulation_real_coverage.py::test_canonical_pneuma_schema_is_consumed_directly_and_preserved
+FAILED tests/test_simulation_real_coverage.py::test_canonical_pneuma_quality_contract_is_fail_closed
+FAILED tests/test_simulation_real_coverage.py::test_legacy_pneuma_schema_requires_explicit_mode
+FAILED tests/test_simulation_real_coverage.py::test_sealed_stage_0_3_canonical_parquet_directly_reaches_writer
+FAILED tests/test_stage_0_2_task_2_5_threshold_validation.py::test_confirmation_is_causal_and_delayed
+FAILED tests/test_stage_0_5_boundary_bottleneck.py::test_synthetic_parquet_metadata_roundtrip_under_guard
+FAILED tests/test_stage_0_5_calibration_gaps.py::test_benchmark_plan_is_bounded_and_preserves_loads_before_simulation
+FAILED tests/test_stage_0_5_d1_measurement.py::test_actual_state_runner_uses_d1_not_point_exposure
+FAILED tests/test_stage_0_5_measurement_equivalence.py::test_guard_denies_row_scoped_reads_outside_the_calibration_windows
+FAILED tests/test_stage_0_5_measurement_equivalence.py::test_calibration_states_read_helper_refuses_a_foreign_window
+FAILED tests/test_stage_0_6_error_budget_v1.py::test_observed_sensitivity_reports_missing_and_boundary_support
+28 failed, 1353 passed, 4 skipped, 2 warnings in 323.04s (0:05:23)

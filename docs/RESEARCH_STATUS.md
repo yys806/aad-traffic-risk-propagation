@@ -1,6 +1,12 @@
 # AAD 当前科研状态
 
-## 2026-10-28 R0 offline design packet（任务标签；实际准备2026-10-27起）
+## Current — 2026-10-28 first-round evidence-consistency repair
+
+Verified: R1 已完成（B10/B01/B11 各一次，B00 复用 A03）；此前 R0 段落中的“R1 未执行”仅表示 R0 设计阶段，保留为 Historical。第一轮证据包已按源文件重算事件与正式测量摘要：B11 全量 16/19 辅助车道、评价窗 16/17；manifest 自引用已移除，SHA256SUMS 与 R0/R1/offline/week 原始证据包核验通过。离线回归 1353 passed、28 个因缺少 pyarrow/parquet 引擎失败、4 skipped，SUMO/TraCI=0。Stage 0.5 仍 blocked，Stage 0.6 与 Stage I 不变。
+
+报告：docs/STAGE_0_5_FIRST_ROUND_OFFLINE_DECISION_20261028.md；证据：evidence/results/RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028/。
+
+## Historical — 2026-10-28 R0 offline design packet（任务标签；实际准备2026-10-27起）
 
 R0候选包审查就绪、科学参数未冻结；A03全轨迹离线审计P2=0，不同源候选均无已观测正式事件支持。B10/B01/B11输入候选准备完成，R1未执行且不自动放行。Stage0.5交互Gate、Stage0.6及StageI状态保持原样；新仿真0。 证据：evidence/results/RES-STAGE-0.5-R0-DESIGN-PACKET-20261028/；审查报告：docs/plans/2026-10-28-stage-0-5-r0-design-freeze.md。
 

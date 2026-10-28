@@ -1,10 +1,19 @@
 {
-  "schema": "aad.stage05.first-round-manifest.v1",
+  "schema": "aad.stage05.first-round-manifest.v2",
+  "self_reference": false,
+  "excluded_auxiliary_files": [
+    "validation_summary.json"
+  ],
   "files": [
     {
       "path": "candidate_comparison_matrix.json",
-      "sha256": "97316e4161aa5cdf4839b5523ccb8ec4100265a07fc55c32fc957ecc649878fa",
-      "bytes": 5018
+      "sha256": "5d36de62f9fe22ac7ad25868e7b1eaa6744b24d16358dc3526138cbedc119759",
+      "bytes": 6642
+    },
+    {
+      "path": "dependency_probe.json",
+      "sha256": "5b8b7fbc1c8ac2f6626fe9411c47d9b461ed59323eb1c138621930beca526e0b",
+      "bytes": 627
     },
     {
       "path": "file_audit.csv",
@@ -12,24 +21,29 @@
       "bytes": 194022
     },
     {
-      "path": "manifest.json",
-      "sha256": "3bc53fc04e538eab40b4961618ff21842106272515147b1406663747aeeda695",
-      "bytes": 1038
+      "path": "offline_reconciliation.json",
+      "sha256": "deddf2c05fa5bbe7516dfdbcb32c191574b752cbc7d117bed04b062fd1bc0063",
+      "bytes": 1704
     },
     {
-      "path": "offline_reconciliation.json",
-      "sha256": "6d1e5d796540314ae583b1543db8158404f892e8ddb6dfb0b8ffa86da6c76e4d",
-      "bytes": 471
+      "path": "pytest_broad_offline.log",
+      "sha256": "654c4d29d46fef8475f929c0a05713b7118325c453b0f84ba504ef17c84a4bbb",
+      "bytes": 38228
+    },
+    {
+      "path": "pytest_exit_code.txt",
+      "sha256": "f1b2f662800122bed0ff255693df89c4487fbdcf453d3524a42d4ec20c3d9c04",
+      "bytes": 3
     },
     {
       "path": "run_record.json",
-      "sha256": "cd1ca0bee2b5d8232a0cab002384169b2ad8655d275dbc02f45dd290ad3c2fbb",
+      "sha256": "ec353487dbc99f55dc83215aa54a402558c5d414529bc11a636d2af81c32cb17",
       "bytes": 616
     },
     {
-      "path": "validation_summary.json",
-      "sha256": "7a4454a784bd43b900292fa283e2ade229c3561d6c287996660a7438aa0c9dfb",
-      "bytes": 439
+      "path": "test_failure_inventory.json",
+      "sha256": "07455ad089465b512f406b97aa0dac21b8e97c0111d6a3b80cf380f10499c0fe",
+      "bytes": 23042
     }
   ]
 }

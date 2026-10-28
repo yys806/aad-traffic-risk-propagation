@@ -1,4 +1,5 @@
 {
+  "schema": "aad.stage05.first-round-offline-reconciliation.v2",
   "r1_event_counts": {
     "B00": 0,
     "B10": 7,
@@ -23,6 +24,42 @@
     "B01": 0,
     "B11": 0
   },
+  "target_D1_E_veh_s": {
+    "B00": 9778.4,
+    "B10": 13667.800000000001,
+    "B01": 9865.1,
+    "B11": 13553.6
+  },
+  "event_inventory_rows": 27,
+  "event_spatial_counts": {
+    "auxiliary_or_unmapped_lane": 23,
+    "target_main": 3,
+    "other_upstream_mainline": 1
+  },
+  "source_count_reconciliation_assertions": "passed",
+  "source_manifest_sha256_verification": {
+    "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028": {
+      "status": "pass",
+      "checked": 7,
+      "mismatches": []
+    },
+    "evidence/results/RES-STAGE-0.5-R0-DESIGN-PACKET-20261028": {
+      "status": "pass",
+      "checked": 11,
+      "mismatches": []
+    },
+    "evidence/results/RES-STAGE-0.5-R1-DIAGNOSTICS-20261028": {
+      "status": "pass",
+      "checked": 20,
+      "mismatches": []
+    },
+    "evidence/results/RES-AAD-WEEK-20261027-V1": {
+      "status": "pass",
+      "checked": 11,
+      "mismatches": []
+    }
+  },
+  "formal_measurement_source": "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/count_reconciliation.json and evidence/results/RES-STAGE-0.5-R1-DIAGNOSTICS-20261028/arm_comparison.json",
   "sumo_launches_this_task": 0,
   "locked_holdout_access": false,
   "formal_measurement_changed": false

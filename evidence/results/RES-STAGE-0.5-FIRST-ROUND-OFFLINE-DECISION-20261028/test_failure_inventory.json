@@ -1,0 +1,182 @@
+{
+  "command": "python -m pytest -q --ignore=tests/test_stage_0_1_sumo.py --ignore=tests/test_stage_0_5_sumo.py --tb=short -p no:cacheprovider",
+  "exit_code": 1,
+  "summary": "28 failed, 1353 passed, 4 skipped, 2 warnings",
+  "failures": [
+    {
+      "nodeid": "tests/legacy/test_pneuma_mapmatch.py::test_mapmatch_package_is_sealed_and_remains_candidate_only",
+      "root_cause": "pyarrow_missing",
+      "evidence_excerpt": "tests/legacy/test_pneuma_mapmatch.py::test_mapmatch_package_is_sealed_and_remains_candidate_only FAILED tests/legacy/test_pneuma_mapmatch.py::test_csv_mapmatch_package_streams_wide_tracks FAILED tests/legacy/test_pneuma_qa.py::test_pneuma_manual_qa_pack_is_balanced_reviewable_and_not_a_ttc_result FAILED tests/test_formal_artifacts.py::test_manifest_rejects_a_run_missing_a_required_artifact FAILED tests/test_formal_artifacts.py::test_manifest_records_hashes_and_round_trips_all_run_artifacts FAILE",
+      "evidence": "pytest_broad_offline.log traceback explicitly reports missing pyarrow or pandas parquet engine"
+    },
+    {
+      "nodeid": "tests/legacy/test_pneuma_mapmatch.py::test_csv_mapmatch_package_streams_wide_tracks",
+      "root_cause": "pyarrow_missing",
+      "evidence_excerpt": "tests/legacy/test_pneuma_mapmatch.py::test_csv_mapmatch_package_streams_wide_tracks FAILED tests/legacy/test_pneuma_qa.py::test_pneuma_manual_qa_pack_is_balanced_reviewable_and_not_a_ttc_result FAILED tests/test_formal_artifacts.py::test_manifest_rejects_a_run_missing_a_required_artifact FAILED tests/test_formal_artifacts.py::test_manifest_records_hashes_and_round_trips_all_run_artifacts FAILED tests/test_formal_artifacts.py::test_manifest_rejects_an_untracked_extra_file_after_build FAILED tests",
+      "evidence": "pytest_broad_offline.log traceback explicitly reports missing pyarrow or pandas parquet engine"
+    },
+    {
+      "nodeid": "tests/legacy/test_pneuma_qa.py::test_pneuma_manual_qa_pack_is_balanced_reviewable_and_not_a_ttc_result",
+      "root_cause": "pyarrow_missing",
+      "evidence_excerpt": "tests/legacy/test_pneuma_qa.py::test_pneuma_manual_qa_pack_is_balanced_reviewable_and_not_a_ttc_result FAILED tests/test_formal_artifacts.py::test_manifest_rejects_a_run_missing_a_required_artifact FAILED tests/test_formal_artifacts.py::test_manifest_records_hashes_and_round_trips_all_run_artifacts FAILED tests/test_formal_artifacts.py::test_manifest_rejects_an_untracked_extra_file_after_build FAILED tests/test_formal_artifacts.py::test_manifest_rejects_non_parquet_tabular_artifacts FAILED tests",
+      "evidence": "pytest_broad_offline.log traceback explicitly reports missing pyarrow or pandas parquet engine"
+    },
+    {
+      "nodeid": "tests/test_formal_artifacts.py::test_manifest_rejects_a_run_missing_a_required_artifact",
+      "root_cause": "pyarrow_missing",
+      "evidence_excerpt": "tests/test_formal_artifacts.py::test_manifest_rejects_a_run_missing_a_required_artifact FAILED tests/test_formal_artifacts.py::test_manifest_records_hashes_and_round_trips_all_run_artifacts FAILED tests/test_formal_artifacts.py::test_manifest_rejects_an_untracked_extra_file_after_build FAILED tests/test_formal_artifacts.py::test_manifest_rejects_non_parquet_tabular_artifacts FAILED tests/test_formal_artifacts.py::test_theory_schema_requires_source_lifecycle_and_attribution_columns FAILED tests/t",
+      "evidence": "pytest_broad_offline.log traceback explicitly reports missing pyarrow or pandas parquet engine"
+    },
+    {
+      "nodeid": "tests/test_formal_artifacts.py::test_manifest_records_hashes_and_round_trips_all_run_artifacts",
+      "root_cause": "pyarrow_missing",
+      "evidence_excerpt": "tests/test_formal_artifacts.py::test_manifest_records_hashes_and_round_trips_all_run_artifacts FAILED tests/test_formal_artifacts.py::test_manifest_rejects_an_untracked_extra_file_after_build FAILED tests/test_formal_artifacts.py::test_manifest_rejects_non_parquet_tabular_artifacts FAILED tests/test_formal_artifacts.py::test_theory_schema_requires_source_lifecycle_and_attribution_columns FAILED tests/test_formal_artifacts.py::test_theory_schema_accepts_all_frozen_columns_even_for_an_empty_channe",
+      "evidence": "pytest_broad_offline.log traceback explicitly reports missing pyarrow or pandas parquet engine"
+    },
+    {
+      "nodeid": "tests/test_formal_artifacts.py::test_manifest_rejects_an_untracked_extra_file_after_build",
+      "root_cause": "pyarrow_missing",
+      "evidence_excerpt": "tests/test_formal_artifacts.py::test_manifest_rejects_an_untracked_extra_file_after_build FAILED tests/test_formal_artifacts.py::test_manifest_rejects_non_parquet_tabular_artifacts FAILED tests/test_formal_artifacts.py::test_theory_schema_requires_source_lifecycle_and_attribution_columns FAILED tests/test_formal_artifacts.py::test_theory_schema_accepts_all_frozen_columns_even_for_an_empty_channel FAILED tests/test_formal_artifacts.py::test_stage_0_1_artifact_smoke_writes_a_sealed_theory_aligned_",
+      "evidence": "pytest_broad_offline.log traceback explicitly reports missing pyarrow or pandas parquet engine"
+    },
+    {
+      "nodeid": "tests/test_formal_artifacts.py::test_manifest_rejects_non_parquet_tabular_artifacts",
+      "root_cause": "pyarrow_missing",
+      "evidence_excerpt": "tests/test_formal_artifacts.py::test_manifest_rejects_non_parquet_tabular_artifacts FAILED tests/test_formal_artifacts.py::test_theory_schema_requires_source_lifecycle_and_attribution_columns FAILED tests/test_formal_artifacts.py::test_theory_schema_accepts_all_frozen_columns_even_for_an_empty_channel FAILED tests/test_formal_artifacts.py::test_stage_0_1_artifact_smoke_writes_a_sealed_theory_aligned_run FAILED tests/test_formal_artifacts.py::test_stage_0_1_artifact_smoke_cli_is_a_one_command_rep",
+      "evidence": "pytest_broad_offline.log traceback explicitly reports missing pyarrow or pandas parquet engine"
+    },
+    {
+      "nodeid": "tests/test_formal_artifacts.py::test_theory_schema_requires_source_lifecycle_and_attribution_columns",
+      "root_cause": "pyarrow_missing",
+      "evidence_excerpt": "tests/test_formal_artifacts.py::test_theory_schema_requires_source_lifecycle_and_attribution_columns FAILED tests/test_formal_artifacts.py::test_theory_schema_accepts_all_frozen_columns_even_for_an_empty_channel FAILED tests/test_formal_artifacts.py::test_stage_0_1_artifact_smoke_writes_a_sealed_theory_aligned_run FAILED tests/test_formal_artifacts.py::test_stage_0_1_artifact_smoke_cli_is_a_one_command_reproducibility_entrypoint FAILED tests/test_formal_artifacts.py::test_stage_0_1_cli_records_a",
+      "evidence": "pytest_broad_offline.log traceback explicitly reports missing pyarrow or pandas parquet engine"
+    },
+    {
+      "nodeid": "tests/test_formal_artifacts.py::test_theory_schema_accepts_all_frozen_columns_even_for_an_empty_channel",
+      "root_cause": "pyarrow_missing",
+      "evidence_excerpt": "tests/test_formal_artifacts.py::test_theory_schema_accepts_all_frozen_columns_even_for_an_empty_channel FAILED tests/test_formal_artifacts.py::test_stage_0_1_artifact_smoke_writes_a_sealed_theory_aligned_run FAILED tests/test_formal_artifacts.py::test_stage_0_1_artifact_smoke_cli_is_a_one_command_reproducibility_entrypoint FAILED tests/test_formal_artifacts.py::test_stage_0_1_cli_records_a_failed_rerun_without_overwriting_the_first_run FAILED tests/test_formal_artifacts.py::test_stage_0_1_contra",
+      "evidence": "pytest_broad_offline.log traceback explicitly reports missing pyarrow or pandas parquet engine"
+    },
+    {
+      "nodeid": "tests/test_formal_artifacts.py::test_stage_0_1_artifact_smoke_writes_a_sealed_theory_aligned_run",
+      "root_cause": "pyarrow_missing",
+      "evidence_excerpt": "tests/test_formal_artifacts.py::test_stage_0_1_artifact_smoke_writes_a_sealed_theory_aligned_run FAILED tests/test_formal_artifacts.py::test_stage_0_1_artifact_smoke_cli_is_a_one_command_reproducibility_entrypoint FAILED tests/test_formal_artifacts.py::test_stage_0_1_cli_records_a_failed_rerun_without_overwriting_the_first_run FAILED tests/test_formal_artifacts.py::test_stage_0_1_contract_fixture_writes_four_nonempty_theory_audited_runs FAILED tests/test_formal_artifacts.py::test_stage_0_1_contr",
+      "evidence": "pytest_broad_offline.log traceback explicitly reports missing pyarrow or pandas parquet engine"
+    },
+    {
+      "nodeid": "tests/test_formal_artifacts.py::test_stage_0_1_artifact_smoke_cli_is_a_one_command_reproducibility_entrypoint",
+      "root_cause": "pyarrow_missing",
+      "evidence_excerpt": "tests/test_formal_artifacts.py::test_stage_0_1_artifact_smoke_cli_is_a_one_command_reproducibility_entrypoint FAILED tests/test_formal_artifacts.py::test_stage_0_1_cli_records_a_failed_rerun_without_overwriting_the_first_run FAILED tests/test_formal_artifacts.py::test_stage_0_1_contract_fixture_writes_four_nonempty_theory_audited_runs FAILED tests/test_formal_artifacts.py::test_stage_0_1_contract_fixture_cli_is_a_one_command_nonempty_contract_entrypoint FAILED tests/test_ngsim_risk_calibration.p",
+      "evidence": "pytest_broad_offline.log traceback explicitly reports missing pyarrow or pandas parquet engine"
+    },
+    {
+      "nodeid": "tests/test_formal_artifacts.py::test_stage_0_1_cli_records_a_failed_rerun_without_overwriting_the_first_run",
+      "root_cause": "pyarrow_missing",
+      "evidence_excerpt": "tests/test_formal_artifacts.py::test_stage_0_1_cli_records_a_failed_rerun_without_overwriting_the_first_run FAILED tests/test_formal_artifacts.py::test_stage_0_1_contract_fixture_writes_four_nonempty_theory_audited_runs FAILED tests/test_formal_artifacts.py::test_stage_0_1_contract_fixture_cli_is_a_one_command_nonempty_contract_entrypoint FAILED tests/test_ngsim_risk_calibration.py::test_stage_0_2_package_reads_only_requested_calibration_member FAILED tests/test_simulation_real_coverage.py::test",
+      "evidence": "pytest_broad_offline.log traceback explicitly reports missing pyarrow or pandas parquet engine"
+    },
+    {
+      "nodeid": "tests/test_formal_artifacts.py::test_stage_0_1_contract_fixture_writes_four_nonempty_theory_audited_runs",
+      "root_cause": "pyarrow_missing",
+      "evidence_excerpt": "tests/test_formal_artifacts.py::test_stage_0_1_contract_fixture_writes_four_nonempty_theory_audited_runs FAILED tests/test_formal_artifacts.py::test_stage_0_1_contract_fixture_cli_is_a_one_command_nonempty_contract_entrypoint FAILED tests/test_ngsim_risk_calibration.py::test_stage_0_2_package_reads_only_requested_calibration_member FAILED tests/test_simulation_real_coverage.py::test_real_reference_package_propagates_pneuma_quality_fields FAILED tests/test_simulation_real_coverage.py::test_real_r",
+      "evidence": "pytest_broad_offline.log traceback explicitly reports missing pyarrow or pandas parquet engine"
+    },
+    {
+      "nodeid": "tests/test_formal_artifacts.py::test_stage_0_1_contract_fixture_cli_is_a_one_command_nonempty_contract_entrypoint",
+      "root_cause": "pyarrow_missing",
+      "evidence_excerpt": "tests/test_formal_artifacts.py::test_stage_0_1_contract_fixture_cli_is_a_one_command_nonempty_contract_entrypoint FAILED tests/test_ngsim_risk_calibration.py::test_stage_0_2_package_reads_only_requested_calibration_member FAILED tests/test_simulation_real_coverage.py::test_real_reference_package_propagates_pneuma_quality_fields FAILED tests/test_simulation_real_coverage.py::test_real_reference_package_keeps_pneuma_risk_pending FAILED tests/test_simulation_real_coverage.py::test_canonical_pneuma_",
+      "evidence": "pytest_broad_offline.log traceback explicitly reports missing pyarrow or pandas parquet engine"
+    },
+    {
+      "nodeid": "tests/test_ngsim_risk_calibration.py::test_stage_0_2_package_reads_only_requested_calibration_member",
+      "root_cause": "pyarrow_missing",
+      "evidence_excerpt": "tests/test_ngsim_risk_calibration.py::test_stage_0_2_package_reads_only_requested_calibration_member FAILED tests/test_simulation_real_coverage.py::test_real_reference_package_propagates_pneuma_quality_fields FAILED tests/test_simulation_real_coverage.py::test_real_reference_package_keeps_pneuma_risk_pending FAILED tests/test_simulation_real_coverage.py::test_canonical_pneuma_schema_is_consumed_directly_and_preserved FAILED tests/test_simulation_real_coverage.py::test_canonical_pneuma_quality_co",
+      "evidence": "pytest_broad_offline.log traceback explicitly reports missing pyarrow or pandas parquet engine"
+    },
+    {
+      "nodeid": "tests/test_simulation_real_coverage.py::test_real_reference_package_propagates_pneuma_quality_fields",
+      "root_cause": "pyarrow_missing",
+      "evidence_excerpt": "tests/test_simulation_real_coverage.py::test_real_reference_package_propagates_pneuma_quality_fields FAILED tests/test_simulation_real_coverage.py::test_real_reference_package_keeps_pneuma_risk_pending FAILED tests/test_simulation_real_coverage.py::test_canonical_pneuma_schema_is_consumed_directly_and_preserved FAILED tests/test_simulation_real_coverage.py::test_canonical_pneuma_quality_contract_is_fail_closed FAILED tests/test_simulation_real_coverage.py::test_legacy_pneuma_schema_requires_expl",
+      "evidence": "pytest_broad_offline.log traceback explicitly reports missing pyarrow or pandas parquet engine"
+    },
+    {
+      "nodeid": "tests/test_simulation_real_coverage.py::test_real_reference_package_keeps_pneuma_risk_pending",
+      "root_cause": "pyarrow_missing",
+      "evidence_excerpt": "tests/test_simulation_real_coverage.py::test_real_reference_package_keeps_pneuma_risk_pending FAILED tests/test_simulation_real_coverage.py::test_canonical_pneuma_schema_is_consumed_directly_and_preserved FAILED tests/test_simulation_real_coverage.py::test_canonical_pneuma_quality_contract_is_fail_closed FAILED tests/test_simulation_real_coverage.py::test_legacy_pneuma_schema_requires_explicit_mode FAILED tests/test_simulation_real_coverage.py::test_sealed_stage_0_3_canonical_parquet_directly_re",
+      "evidence": "pytest_broad_offline.log traceback explicitly reports missing pyarrow or pandas parquet engine"
+    },
+    {
+      "nodeid": "tests/test_simulation_real_coverage.py::test_canonical_pneuma_schema_is_consumed_directly_and_preserved",
+      "root_cause": "pyarrow_missing",
+      "evidence_excerpt": "tests/test_simulation_real_coverage.py::test_canonical_pneuma_schema_is_consumed_directly_and_preserved FAILED tests/test_simulation_real_coverage.py::test_canonical_pneuma_quality_contract_is_fail_closed FAILED tests/test_simulation_real_coverage.py::test_legacy_pneuma_schema_requires_explicit_mode FAILED tests/test_simulation_real_coverage.py::test_sealed_stage_0_3_canonical_parquet_directly_reaches_writer FAILED tests/test_stage_0_2_task_2_5_threshold_validation.py::test_confirmation_is_causa",
+      "evidence": "pytest_broad_offline.log traceback explicitly reports missing pyarrow or pandas parquet engine"
+    },
+    {
+      "nodeid": "tests/test_simulation_real_coverage.py::test_canonical_pneuma_quality_contract_is_fail_closed",
+      "root_cause": "pyarrow_missing",
+      "evidence_excerpt": "tests/test_simulation_real_coverage.py::test_canonical_pneuma_quality_contract_is_fail_closed FAILED tests/test_simulation_real_coverage.py::test_legacy_pneuma_schema_requires_explicit_mode FAILED tests/test_simulation_real_coverage.py::test_sealed_stage_0_3_canonical_parquet_directly_reaches_writer FAILED tests/test_stage_0_2_task_2_5_threshold_validation.py::test_confirmation_is_causal_and_delayed FAILED tests/test_stage_0_5_boundary_bottleneck.py::test_synthetic_parquet_metadata_roundtrip_und",
+      "evidence": "pytest_broad_offline.log traceback explicitly reports missing pyarrow or pandas parquet engine"
+    },
+    {
+      "nodeid": "tests/test_simulation_real_coverage.py::test_legacy_pneuma_schema_requires_explicit_mode",
+      "root_cause": "pyarrow_missing",
+      "evidence_excerpt": "tests/test_simulation_real_coverage.py::test_legacy_pneuma_schema_requires_explicit_mode FAILED tests/test_simulation_real_coverage.py::test_sealed_stage_0_3_canonical_parquet_directly_reaches_writer FAILED tests/test_stage_0_2_task_2_5_threshold_validation.py::test_confirmation_is_causal_and_delayed FAILED tests/test_stage_0_5_boundary_bottleneck.py::test_synthetic_parquet_metadata_roundtrip_under_guard FAILED tests/test_stage_0_5_calibration_gaps.py::test_benchmark_plan_is_bounded_and_preserve",
+      "evidence": "pytest_broad_offline.log traceback explicitly reports missing pyarrow or pandas parquet engine"
+    },
+    {
+      "nodeid": "tests/test_simulation_real_coverage.py::test_sealed_stage_0_3_canonical_parquet_directly_reaches_writer",
+      "root_cause": "pyarrow_missing",
+      "evidence_excerpt": "tests/test_simulation_real_coverage.py::test_sealed_stage_0_3_canonical_parquet_directly_reaches_writer FAILED tests/test_stage_0_2_task_2_5_threshold_validation.py::test_confirmation_is_causal_and_delayed FAILED tests/test_stage_0_5_boundary_bottleneck.py::test_synthetic_parquet_metadata_roundtrip_under_guard FAILED tests/test_stage_0_5_calibration_gaps.py::test_benchmark_plan_is_bounded_and_preserves_loads_before_simulation FAILED tests/test_stage_0_5_d1_measurement.py::test_actual_state_runne",
+      "evidence": "pytest_broad_offline.log traceback explicitly reports missing pyarrow or pandas parquet engine"
+    },
+    {
+      "nodeid": "tests/test_stage_0_2_task_2_5_threshold_validation.py::test_confirmation_is_causal_and_delayed",
+      "root_cause": "pyarrow_missing",
+      "evidence_excerpt": "tests/test_stage_0_2_task_2_5_threshold_validation.py::test_confirmation_is_causal_and_delayed FAILED tests/test_stage_0_5_boundary_bottleneck.py::test_synthetic_parquet_metadata_roundtrip_under_guard FAILED tests/test_stage_0_5_calibration_gaps.py::test_benchmark_plan_is_bounded_and_preserves_loads_before_simulation FAILED tests/test_stage_0_5_d1_measurement.py::test_actual_state_runner_uses_d1_not_point_exposure FAILED tests/test_stage_0_5_measurement_equivalence.py::test_guard_denies_row_scop",
+      "evidence": "pytest_broad_offline.log traceback explicitly reports missing pyarrow or pandas parquet engine"
+    },
+    {
+      "nodeid": "tests/test_stage_0_5_boundary_bottleneck.py::test_synthetic_parquet_metadata_roundtrip_under_guard",
+      "root_cause": "pyarrow_missing",
+      "evidence_excerpt": "tests/test_stage_0_5_boundary_bottleneck.py::test_synthetic_parquet_metadata_roundtrip_under_guard FAILED tests/test_stage_0_5_calibration_gaps.py::test_benchmark_plan_is_bounded_and_preserves_loads_before_simulation FAILED tests/test_stage_0_5_d1_measurement.py::test_actual_state_runner_uses_d1_not_point_exposure FAILED tests/test_stage_0_5_measurement_equivalence.py::test_guard_denies_row_scoped_reads_outside_the_calibration_windows FAILED tests/test_stage_0_5_measurement_equivalence.py::test_",
+      "evidence": "pytest_broad_offline.log traceback explicitly reports missing pyarrow or pandas parquet engine"
+    },
+    {
+      "nodeid": "tests/test_stage_0_5_calibration_gaps.py::test_benchmark_plan_is_bounded_and_preserves_loads_before_simulation",
+      "root_cause": "pyarrow_missing",
+      "evidence_excerpt": "tests/test_stage_0_5_calibration_gaps.py::test_benchmark_plan_is_bounded_and_preserves_loads_before_simulation FAILED tests/test_stage_0_5_d1_measurement.py::test_actual_state_runner_uses_d1_not_point_exposure FAILED tests/test_stage_0_5_measurement_equivalence.py::test_guard_denies_row_scoped_reads_outside_the_calibration_windows FAILED tests/test_stage_0_5_measurement_equivalence.py::test_calibration_states_read_helper_refuses_a_foreign_window FAILED tests/test_stage_0_6_error_budget_v1.py::te",
+      "evidence": "pytest_broad_offline.log traceback explicitly reports missing pyarrow or pandas parquet engine"
+    },
+    {
+      "nodeid": "tests/test_stage_0_5_d1_measurement.py::test_actual_state_runner_uses_d1_not_point_exposure",
+      "root_cause": "pyarrow_missing",
+      "evidence_excerpt": "tests/test_stage_0_5_d1_measurement.py::test_actual_state_runner_uses_d1_not_point_exposure FAILED tests/test_stage_0_5_measurement_equivalence.py::test_guard_denies_row_scoped_reads_outside_the_calibration_windows FAILED tests/test_stage_0_5_measurement_equivalence.py::test_calibration_states_read_helper_refuses_a_foreign_window FAILED tests/test_stage_0_6_error_budget_v1.py::test_observed_sensitivity_reports_missing_and_boundary_support 28 failed, 1353 passed, 4 skipped, 2 warnings in 323.04s ",
+      "evidence": "pytest_broad_offline.log traceback explicitly reports missing pyarrow or pandas parquet engine"
+    },
+    {
+      "nodeid": "tests/test_stage_0_5_measurement_equivalence.py::test_guard_denies_row_scoped_reads_outside_the_calibration_windows",
+      "root_cause": "pyarrow_missing",
+      "evidence_excerpt": "tests/test_stage_0_5_measurement_equivalence.py::test_guard_denies_row_scoped_reads_outside_the_calibration_windows FAILED tests/test_stage_0_5_measurement_equivalence.py::test_calibration_states_read_helper_refuses_a_foreign_window FAILED tests/test_stage_0_6_error_budget_v1.py::test_observed_sensitivity_reports_missing_and_boundary_support 28 failed, 1353 passed, 4 skipped, 2 warnings in 323.04s (0:05:23) ",
+      "evidence": "pytest_broad_offline.log traceback explicitly reports missing pyarrow or pandas parquet engine"
+    },
+    {
+      "nodeid": "tests/test_stage_0_5_measurement_equivalence.py::test_calibration_states_read_helper_refuses_a_foreign_window",
+      "root_cause": "pyarrow_missing",
+      "evidence_excerpt": "tests/test_stage_0_5_measurement_equivalence.py::test_calibration_states_read_helper_refuses_a_foreign_window FAILED tests/test_stage_0_6_error_budget_v1.py::test_observed_sensitivity_reports_missing_and_boundary_support 28 failed, 1353 passed, 4 skipped, 2 warnings in 323.04s (0:05:23) ",
+      "evidence": "pytest_broad_offline.log traceback explicitly reports missing pyarrow or pandas parquet engine"
+    },
+    {
+      "nodeid": "tests/test_stage_0_6_error_budget_v1.py::test_observed_sensitivity_reports_missing_and_boundary_support",
+      "root_cause": "pyarrow_missing",
+      "evidence_excerpt": "tests/test_stage_0_6_error_budget_v1.py::test_observed_sensitivity_reports_missing_and_boundary_support 28 failed, 1353 passed, 4 skipped, 2 warnings in 323.04s (0:05:23) ",
+      "evidence": "pytest_broad_offline.log traceback explicitly reports missing pyarrow or pandas parquet engine"
+    }
+  ],
+  "root_cause_verification": {
+    "pyarrow_import": "dependency_probe.json",
+    "fastparquet_import": "dependency_probe.json",
+    "traci_import": "dependency_probe.json",
+    "SUMO_filesystem_presence": "dependency_probe.json",
+    "classification_basis": "Each failure traceback was inspected in the saved log; all 28 failures terminate before the tested assertion at parquet/pyarrow access."
+  }
+}

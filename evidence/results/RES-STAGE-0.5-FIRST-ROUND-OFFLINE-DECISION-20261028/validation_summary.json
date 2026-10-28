@@ -1,10 +1,43 @@
 {
-  "project_docs_strict_git": "pass",
-  "portable_evidence_verify": "pass",
+  "schema": "aad.stage05.first-round-validation-summary.v3",
+  "status": "verified_with_environment_blockers",
+  "event_source_assertions": "pass",
+  "event_source_counts": {
+    "B00": 0,
+    "B10": 7,
+    "B01": 1,
+    "B11": 19
+  },
+  "b11_auxiliary_full_events": 16,
+  "b11_full_events": 19,
+  "b11_auxiliary_window_onsets": 16,
+  "b11_window_onsets": 17,
+  "manifest_self_reference": false,
+  "manifest_payload_files": 8,
+  "manifest_excluded_auxiliary_files": [
+    "validation_summary.json"
+  ],
+  "sha256sums_self_reference": false,
+  "sha256sums_entries_checked": 9,
+  "sha256sums_mismatches": [],
+  "file_audit_status_counts": {
+    "parsed_json_and_hashed": 517,
+    "hashed_and_enumerated": 493,
+    "parsed_delimited_and_hashed": 10
+  },
+  "source_manifest_sha256_verification": "pass",
   "targeted_project_docs_pytest": "13 passed",
   "compileall": "pass",
-  "broad_offline_regression": "1389 passed, 34 failed, 4 skipped; failures are environment-dependent missing pyarrow/traci and SUMO-dependent tests were not treated as scientific evidence",
+  "broad_offline_regression": "28 failed, 1353 passed, 4 skipped, 2 warnings",
+  "failure_inventory": "test_failure_inventory.json",
+  "test_log": "pytest_broad_offline.log",
+  "dependency_probe": "dependency_probe.json",
   "sumo_launches_this_task": 0,
   "traci_connections_this_task": 0,
-  "holdout_reads": 0
+  "holdout_reads": 0,
+  "environment": {
+    "python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 16:37:03) [MSC v.1929 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26100-SP0",
+    "git_head": "be24d89d98b75748ef4d157924cfea9f764747af"
+  }
 }

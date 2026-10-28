@@ -1,6 +1,10 @@
 # AAD Experiments
 
-## 2026-10-28 R0 offline design packet（任务标签；实际准备2026-10-27起）
+## Current — 2026-10-28 first-round evidence-consistency repair
+
+Verified: R1 is executed and sealed; the earlier R0 “R1未执行” sentence is historical design-stage wording. The repair recomputed event and formal-measurement summaries from source evidence, corrected B11 auxiliary counts to 16/19 full and 16/17 window, and saved the no-launch regression log and failure inventory.
+
+## Historical — 2026-10-28 R0 offline design packet（任务标签；实际准备2026-10-27起）
 
 R0为离线设计产物，不是新实验轨迹。A03仍为唯一accepted B00；A01/A02资源覆盖失败与更早原生失败保留。源区域分开审计、三臂差异可追踪；R1仍未执行，本轮SUMO0。 证据：evidence/results/RES-STAGE-0.5-R0-DESIGN-PACKET-20261028/；审查报告：docs/plans/2026-10-28-stage-0-5-r0-design-freeze.md。
 

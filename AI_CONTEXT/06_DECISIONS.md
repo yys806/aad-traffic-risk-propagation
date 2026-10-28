@@ -1,6 +1,10 @@
 # AAD Confirmed Decisions
 
-## 2026-10-28 R0 offline design packet（任务标签；实际准备2026-10-27起）
+## Current — 2026-10-28 first-round evidence-consistency repair
+
+Verified: no scientific decision changed. Awaiting Researcher Decision remains for auxiliary-lane role, source region, cohort, and physical-path semantics. Engineering evidence repair is complete; formal P2, Gate, Stage 0.6, Stage I, and historical records remain unchanged.
+
+## Historical — 2026-10-28 R0 offline design packet（任务标签；实际准备2026-10-27起）
 
 Agreed：按研究者指定路线图，仅准备0750的R0，不执行R1/Stage0.6/StageI，不写Protocol Lock。Proposed：三源区域、目标[150,350)、路线先验cohort1112ID、物理时间资格、B10限速步骤及B01保序20..25s压缩；均未擅自冻结。既定seed/时间/预算/停止规则不变。 证据：evidence/results/RES-STAGE-0.5-R0-DESIGN-PACKET-20261028/；审查报告：docs/plans/2026-10-28-stage-0-5-r0-design-freeze.md。
 

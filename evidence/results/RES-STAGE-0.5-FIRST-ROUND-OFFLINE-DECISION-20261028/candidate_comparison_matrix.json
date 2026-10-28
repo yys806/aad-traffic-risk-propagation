@@ -1,12 +1,12 @@
 {
-  "schema": "aad.stage05.first-round-candidate-matrix.v1",
+  "schema": "aad.stage05.first-round-candidate-matrix.v2",
   "status": "Exploratory/non-authoritative",
   "rows": [
     {
       "question": "Auxiliary lane role",
       "candidate": "A: exclude from formal mainline estimand; mechanism diagnostic only",
       "source": "R0 target definition; offline event_inventory",
-      "offline_result": "B10 7/7 and B11 18/19 events auxiliary; no formal P2",
+      "offline_result": "B10 7/7 full events auxiliary (5 window onsets); B11 16/19 full events auxiliary (16 window onsets); no formal P2",
       "risk": "misses auxiliary interaction mechanism",
       "formal_semantics_change": false,
       "decision": "Awaiting Researcher Decision"
@@ -68,8 +68,8 @@
     {
       "question": "Cohort",
       "candidate": "C_PRE_PULSE_STATE (pre-180 observed IDs)",
-      "source": "source_target_candidates.json",
-      "offline_result": "Can be defined pre-treatment, but count and exact clock remain unfrozen; no post-outcome selection performed",
+      "source": "source_target_candidates.json; sealed measured_state.parquet paths",
+      "offline_result": "Count/support Uncomputed: the portable package has no pre-pulse ID list, raw row-level parquet reading requires unavailable pyarrow, and exact clock/region are scientifically unfrozen; this is not zero support and no post-outcome selection was performed",
       "risk": "changes estimand and excludes later entrants",
       "formal_semantics_change": true,
       "decision": "Awaiting Researcher Decision"
@@ -106,5 +106,56 @@
     "auxiliary_or_unmapped_lane": 23,
     "target_main": 3,
     "other_upstream_mainline": 1
+  },
+  "event_counts_by_arm": {
+    "B00": {
+      "full_event_count": 0,
+      "window_onset_count": 0,
+      "full_spatial_counts": {},
+      "window_spatial_counts": {},
+      "formal_source_p2": 0,
+      "formal_target_p2": 0,
+      "target_D1_E_veh_s": 9778.4
+    },
+    "B10": {
+      "full_event_count": 7,
+      "window_onset_count": 5,
+      "full_spatial_counts": {
+        "auxiliary_or_unmapped_lane": 7
+      },
+      "window_spatial_counts": {
+        "auxiliary_or_unmapped_lane": 5
+      },
+      "formal_source_p2": 0,
+      "formal_target_p2": 0,
+      "target_D1_E_veh_s": 13667.800000000001
+    },
+    "B01": {
+      "full_event_count": 1,
+      "window_onset_count": 0,
+      "full_spatial_counts": {
+        "target_main": 1
+      },
+      "window_spatial_counts": {},
+      "formal_source_p2": 0,
+      "formal_target_p2": 0,
+      "target_D1_E_veh_s": 9865.1
+    },
+    "B11": {
+      "full_event_count": 19,
+      "window_onset_count": 17,
+      "full_spatial_counts": {
+        "auxiliary_or_unmapped_lane": 16,
+        "other_upstream_mainline": 1,
+        "target_main": 2
+      },
+      "window_spatial_counts": {
+        "auxiliary_or_unmapped_lane": 16,
+        "other_upstream_mainline": 1
+      },
+      "formal_source_p2": 0,
+      "formal_target_p2": 0,
+      "target_D1_E_veh_s": 13553.6
+    }
   }
 }

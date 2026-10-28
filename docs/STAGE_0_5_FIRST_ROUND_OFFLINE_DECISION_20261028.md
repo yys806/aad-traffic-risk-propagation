@@ -2,11 +2,11 @@
 
 ## Observation
 
-本轮基线为 `HEAD=353e88a`，工作区任务前为干净状态。R0 是离线设计包，登记了 B10/B01/B11 候选、源/目标/cohort 与物理路径规则，未执行新仿真。R1 真实执行了 B10、B01、B11 各 1 次；B00 复用已接受 A03，未重新启动。四臂均完成 420 s/8400 原生步，独立回执和统一测量通过；本轮离线分析没有 SUMO/TraCI 启动。
+本轮基线为 `HEAD=be24d89`，工作区任务前为干净状态。R0 是离线设计包，登记了 B10/B01/B11 候选、源/目标/cohort 与物理路径规则，未执行新仿真。R1 真实执行了 B10、B01、B11 各 1 次；B00 复用已接受 A03，未重新启动。四臂均完成 420 s/8400 原生步，独立回执和统一测量通过；本轮离线分析没有 SUMO/TraCI 启动。
 
 R1 的正式结果是：B00/B10/B01/B11 源 P2 均 0、目标 P2 均 0；目标 D1 暴露分别为 9778.4、13667.8、9865.1、13553.6 veh-s。B10 五条 `main_2_0..4` 的 10→5→10 m/s 脉冲、B01 60 辆匝道车供给、B11 组合操纵均有回读证据。B10/B01/B11 的声明/插入/末态 pending 为 1150/955/195、1150/1009/141、1150/956/194；B00 为 1150/1005/145。
 
-逐事件重算与 R1 事件数组完全一致：B10 7 段（窗口内 5），B01 1 段（窗口内 0），B11 19 段（窗口内 17），B00 0。窗口内 B10 的 5 段全部在 `main_1_0` 映射 lane 6 辅助/未映射车道；B11 的 16 段在同一辅助车道，另 1 段在 `main_1_1` lane 5、y=384.44 m，位于目标区 `[150,350)` 外。B01 的唯一段在 y=213.63 m，但 onset=114.8 s，早于评价窗。事件总数因此不能写成正式 P2 数。
+逐事件重算与 R1 事件数组完全一致：B10 7 段（窗口内 5），B01 1 段（窗口内 0），B11 19 段（窗口内 17），B00 0。窗口内 B10 的 5 段全部在 `main_1_0` 映射 lane 6 辅助/未映射车道；B11 的全量 19 段中 16 段位于同一辅助/未映射车道，另 2 段为 `target_main`（分别在窗口外），1 段位于 `main_1_1` lane 5、y=384.44 m 的目标区外；评价窗内 onset 为 17 段，其中辅助车道 16 段、目标区外主线 1 段。B01 的唯一段在 y=213.63 m，但 onset=114.8 s，早于评价窗。事件总数因此不能写成正式 P2 数。
 
 源区 `S_UPSTREAM_MAIN` 四臂均有可靠跟驰暴露，但有效观测中没有 TTC<2 s 状态；B00/B10/B01/B11 的源区可靠暴露为 8457.4/10278.8/8350.1/10353.9 veh-s。缺失点仍为 1061/548/1194/542，故“有效状态无风险”不等于“未观测部分无风险”。没有源事件，事件特定物理到达时刻为未定义；缺失身份、断链、右删失均只能标记 uncertain/unobservable。只有在未来出现实际源事件并满足身份连续、≤0.11 s 连续、验证过的车道连接和 leader→follower 见证时，才可报告有限到达时刻。`main_0→main_1` 与 `onramp→main_1` 的道路级可达性已验证；`main_2→target` 的正向道路路径不成立，但这不证明上游影响不可达。
 
@@ -20,7 +20,7 @@ R1 的正式结果是：B00/B10/B01/B11 源 P2 均 0、目标 P2 均 0；目标 
 
 ## Proposal
 
-候选方案及离线比较见 [candidate_comparison_matrix.json](/D:/shen/TJU/AAD/evidence/results/RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028/candidate_comparison_matrix.json)。辅助车道可继续排除并作机制诊断、作为不与主线混池的次级空间、或另行作为替代研究范围；现有数据只支持事件分类和拓扑比较，不能支持正式 P2 重算。源区候选为上游主线、下游主线和匝道；它们分别表现为无源事件、方向不匹配或辅助连接及高缺失。cohort 方面，`C_INPUT_ROUTE` 是唯一已跨臂实际应用且处理前可确定的规则；`C_PRE_PULSE_STATE` 会改变估计对象，精确时钟和规模仍未冻结。物理路径应优先采用时间化身份连续/车道连接/跟驰见证规则；道路可达性或确认/消息时刻不能替代影响见证。
+候选方案及离线比较见 [candidate_comparison_matrix.json](../evidence/results/RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028/candidate_comparison_matrix.json)。辅助车道可继续排除并作机制诊断、作为不与主线混池的次级空间、或另行作为替代研究范围；现有数据只支持事件分类和拓扑比较，不能支持正式 P2 重算。源区候选为上游主线、下游主线和匝道；它们分别表现为无源事件、方向不匹配或辅助连接及高缺失。cohort 方面，`C_INPUT_ROUTE` 是唯一已跨臂实际应用且处理前可确定的规则；`C_PRE_PULSE_STATE` 的预处理 ID 数量和支持量本轮未计算：便携包没有预脉冲 ID 清单，行级 parquet 读取需要当前环境缺少的 `pyarrow`，且时钟/区域尚未冻结；这不是零支持结论。物理路径应优先采用时间化身份连续/车道连接/跟驰见证规则；道路可达性或确认/消息时刻不能替代影响见证。
 
 ## Awaiting Researcher Decision
 
@@ -36,10 +36,12 @@ R1 的正式结果是：B00/B10/B01/B11 源 P2 均 0、目标 P2 均 0；目标 
 
 ## Reproducibility and evidence
 
-机器证据包位于 [RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028](/D:/shen/TJU/AAD/evidence/results/RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028/)，含逐文件审计清单、候选矩阵、离线复算、运行记录、manifest 与 SHA256SUMS。输入证据的原始 manifest/SHA 未覆盖或改写。生成命令：`python code/scripts/build_stage_0_5_first_round_decision.py`。
+机器证据包位于 [RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028](../evidence/results/RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028/)，含逐文件审计清单、候选矩阵、离线复算、运行记录、manifest 与 SHA256SUMS。输入证据的原始 manifest/SHA 未覆盖或改写。生成命令：`python code/scripts/build_stage_0_5_first_round_decision.py`。
 
 ## Verification status
 
-Strict project-doc validation, portable evidence verification, the 13-case project-doc test module, and compileall passed. A broader offline regression attempt completed with 1,389 passed, 34 failed, and 4 skipped because this environment lacks optional pyarrow and 	raci; those failures are retained as environment limitations. No test started SUMO or opened TraCI in this task.
+The corrected run performed strict project-doc validation, portable evidence verification, the 13-case project-doc test module, compileall, source SHA checks, and independent package hash checks. The saved offline regression command completed with 1,353 passed, 28 failed, and 4 skipped; all 28 traceback blocks terminate at missing `pyarrow`/parquet support, verified by the dependency probe. SUMO and TraCI test files were excluded from this run to honor the no-launch boundary; no test started SUMO or opened TraCI.
 
 The file audit includes the requested R0/R1/audit evidence trees, linked admission and docs/audits records, listed Stage 0.5 reports, and the specified measurement/source modules and formal config.
+
+The corrected machine package records the exact command and environment in `pytest_broad_offline.log`, all failed node IDs in `test_failure_inventory.json`, dependency checks in `dependency_probe.json`, and independent manifest/SHA results in `validation_summary.json`.

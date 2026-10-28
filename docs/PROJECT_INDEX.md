@@ -219,3 +219,5 @@ Stage 0.5 真实交通重建与条件场景诊断（AAD-0.5-TR-RECON）：报告
 
 ## 2026-10-28 First-round offline decision package
 Report: docs/STAGE_0_5_FIRST_ROUND_OFFLINE_DECISION_20261028.md. Generator: code/scripts/build_stage_0_5_first_round_decision.py. Evidence: evidence/results/RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028/. This is offline exploratory decision support; no formal P2, Gate, or protocol changes.
+
+First-round repair verification: source-derived event assertions, source SHA bundle checks, manifest/SHA independent verification and saved no-launch regression failure inventory are in evidence/results/RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028/.

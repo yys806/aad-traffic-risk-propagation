@@ -404,3 +404,5 @@ Stage 0.5-R1 三臂诊断已完成：B10、B01、B11 各一次 420 s / 8400 步�
 ## RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028
 
 第一轮离线决策包完成：逐文件审计、R0/R1/B00交叉核验、事件空间分类、源/目标/cohort/物理路径候选比较均已完成。比较均为 exploratory/non-authoritative；未重算正式P2，SUMO/TraCI=0，未访问holdout。Stage 0.5仍blocked。报告 docs/STAGE_0_5_FIRST_ROUND_OFFLINE_DECISION_20261028.md；证据 evidence/results/RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028/。
+
+First-round repair update: B11 is verified from event_inventory.csv as 16/19 auxiliary full events and 16/17 auxiliary window onsets; local manifest self-reference is false and independent SHA validation is recorded in validation_summary.json. Regression evidence records 1353 passed, 28 pyarrow/parquet failures, 4 skipped, with SUMO/TraCI=0.

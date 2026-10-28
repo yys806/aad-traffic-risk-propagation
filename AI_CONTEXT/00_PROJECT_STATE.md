@@ -1,6 +1,12 @@
 # AAD Current State Snapshot
 
-## 2026-10-28 R0 offline design packet（任务标签；实际准备2026-10-27起）
+## Current — 2026-10-28 first-round evidence-consistency repair
+
+Verified: R1 B10/B01/B11 were each executed once and B00 A03 was reused; the first-round package now computes event counts from `event_inventory.csv`, `count_reconciliation.json`, and R1 `arm_comparison.json`. Corrected classification is B11 full 16/19 auxiliary and window 16/17 auxiliary; the remaining full events are two window-outside `target_main` events and one window `other_upstream_mainline` event. Local manifest self-reference is false, SHA256SUMS independently checks all listed payload files plus manifest, and source R0/R1/offline/week SHA bundles pass. Offline regression evidence is saved with 1,353 passed, 28 pyarrow/parquet dependency failures, and 4 skipped; SUMO/TraCI launches remain 0. Stage 0.5 remains blocked; Stage 0.6 and Stage I are unchanged.
+
+Evidence: `evidence/results/RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028/`; report: `docs/STAGE_0_5_FIRST_ROUND_OFFLINE_DECISION_20261028.md`.
+
+## Historical — 2026-10-28 R0 offline design packet（任务标签；实际准备2026-10-27起）
 
 Verified：R0离线候选包READY_FOR_RESEARCHER_REVIEW，科学冻结AWAITING_RESEARCHER_DECISION；基线HEAD4a7c204、accepted A03精确绑定。完整610725状态与raw FCD逐项核对，正式全上下文P2=0（84227缺失点仍缺失），不推断未观测风险。B10/B01/B11候选与60辆匝道映射完成、未执行；新SUMO/TraCI0。源/目标/cohort/合格物理路径和精确操纵待决；Stage0.5科学Gate仍blocked，Stage0.6/StageI/历史Not Accepted不变。 证据：evidence/results/RES-STAGE-0.5-R0-DESIGN-PACKET-20261028/；审查报告：docs/plans/2026-10-28-stage-0-5-r0-design-freeze.md。
 

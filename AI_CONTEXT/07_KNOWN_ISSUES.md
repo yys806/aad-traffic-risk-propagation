@@ -1,6 +1,10 @@
 # AAD Known Issues
 
-## 2026-10-28 R0 offline design packet（任务标签；实际准备2026-10-27起）
+## Current — 2026-10-28 first-round evidence-consistency repair
+
+Verified: B11 event classification and package hash evidence were corrected. Remaining blockers are scientific source support and environment dependencies for parquet-based regression (`pyarrow`/`fastparquet` absent); no test was allowed to start SUMO or TraCI.
+
+## Historical — 2026-10-28 R0 offline design packet（任务标签；实际准备2026-10-27起）
 
 Verified：A03完整可评价上下文正式P2=0，无现成源事件见证；边界/连接84227点缺失不能补零。归档物理路径helper跨1s时间缺口且有前向道路早拒，不可直接当合格影响到达；本轮未修改科学实现，候选连续身份/链路规则待研究者决定。R1未放行，Stage0.5科学交互Gate仍blocked。 证据：evidence/results/RES-STAGE-0.5-R0-DESIGN-PACKET-20261028/；审查报告：docs/plans/2026-10-28-stage-0-5-r0-design-freeze.md。
 
