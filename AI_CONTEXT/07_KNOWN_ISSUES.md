@@ -361,3 +361,6 @@ Verified: no qualified source P2 in any R1 arm; full event counts are not formal
 ## 2026-10-28 Round1 Task3 blockers
 
 The historical minGap=1.0 improvement is from homogeneous K_tau1.0 pair replays and is not a direct network-level B00 A03 validation. Current B00 uses heterogeneous tau; Round2 must test the preserved-heterogeneity candidate. Macro tolerances, physical-path approval and researcher authorization remain pending.
+
+## 2026-10-28 Round2 Task1 prelaunch blocker
+Candidate inputs are statically valid. Native execution is blocked only by required researcher scientific confirmation; macro Rule A is recommended from existing state-support envelopes, while δ/h/B remain unapproved.

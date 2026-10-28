@@ -1114,7 +1114,8 @@
     "RES-STAGE-0.5-R1-DIAGNOSTICS-20261028",
     "RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028",
     "RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028",
-    "RES-STAGE-0.5-ROUND1-TASK3-DECISION-20261028"
+    "RES-STAGE-0.5-ROUND1-TASK3-DECISION-20261028",
+    "RES-STAGE-0.5-ROUND2-TASK1-PREFLIGHT-20261028"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -4633,6 +4634,36 @@
    "paper_locations": [
     "docs/STAGE_0_5_ROUND1_FINAL_DECISION.md",
     "docs/plans/STAGE_0_5_ROUND2_TASK1_FREEZE_CANDIDATE.md"
+   ]
+  },
+  {
+   "id": "RES-STAGE-0.5-ROUND2-TASK1-PREFLIGHT-20261028",
+   "experiment_id": "stage_0_5",
+   "name": "Stage 0.5 Round2 Task1 prelaunch macro-rule decision",
+   "status": "AWAITING_RESEARCHER_SCIENTIFIC_CONFIRMATION",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK1-PREFLIGHT-20261028/macro_rule_comparison.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK1-PREFLIGHT-20261028/preflight_record.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK1-PREFLIGHT-20261028/manifest.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK1-PREFLIGHT-20261028/SHA256SUMS"
+   ],
+   "local_artifact_paths": [
+    "evidence/admission/AAD-S0.5-ROUND2-TASK1-20261028/candidate-v1"
+   ],
+   "code_version_source": "current Git HEAD 8219e43 and existing Stage 0.5 measurement chain",
+   "configuration_source": "Round2 Task1 freeze candidate and real-domain state-support envelopes",
+   "data_version_source": "sealed state-support, Round1 Task3 and candidate input evidence; no new trajectory",
+   "core_metrics": {
+    "macro_rule_A_pass_cells": 10,
+    "macro_rule_B_pass_cells": 11,
+    "sumo_launches": 0,
+    "holdout_reads": 0
+   },
+   "current_conclusion": "Macro Rule A is the unique prelaunch recommendation; researcher confirmation is required before native execution",
+   "gate_status": "blocked",
+   "scientific_claim_eligible": false,
+   "paper_locations": [
+    "docs/STAGE_0_5_ROUND2_TASK1_PRELAUNCH_DECISION.md"
    ]
   }
  ],

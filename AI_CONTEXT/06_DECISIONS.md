@@ -329,3 +329,6 @@ Awaiting Researcher Decision: auxiliary lane role; source region among S_UPSTREA
 ## 2026-10-28 Round1 Task3 decisions pending
 
 Recommendation ready for researcher approval: preserve S_UPSTREAM_MAIN, mainline target, [120,390), C_INPUT_ROUTE, separate auxiliary lane diagnostic, time-indexed physical-path witness, and the unique current-B00 minGap=1.0 candidate. This is Proposed/Ready for Researcher Approval, not Agreed; Stage 0.6 δ/h/B remain unapproved.
+
+## 2026-10-28 Round2 Task1 prelaunch decision pending
+Researcher must confirm preserved source/target/window/cohort, separate auxiliary lane, time-indexed physical-path witness, Rule A macro gate and one primary current-B00 minGap=1.0 run before native launch.

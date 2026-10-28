@@ -455,3 +455,6 @@ Added docs/STAGE_0_5_FIRST_ROUND_OFFLINE_DECISION_20261028.md, build_stage_0_5_f
 Added final Round1 scientific decision report, static Round2 plan, candidate input binding, decision/candidate/acceptance matrices, validation record, manifest and SHA. No SUMO/TraCI launch, formal P2 change, Gate transition or Stage 0.6 freeze.
 
 Static candidate test code/tests/test_stage_0_5_round2_task1_candidate.py added and passed with project-doc tests (14 passed); compileall passed without native launch.
+
+## 2026-10-28 Round2 Task1 prelaunch
+Added offline macro-rule comparison, prelaunch decision note and preflight evidence. No native launch or scientific state transition.

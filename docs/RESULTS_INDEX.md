@@ -410,3 +410,7 @@ First-round repair update: B11 is verified from event_inventory.csv as 16/19 aux
 ## RES-STAGE-0.5-ROUND1-TASK3-DECISION-20261028
 
 第一轮任务3完成科学决策建议与第二轮冻结候选：推荐保留S_UPSTREAM_MAIN、主线目标区、[120,390)窗口、C_INPUT_ROUTE，辅助车道独立诊断；唯一Round2首选为当前B00异质Krauss配置仅将五类minGap从2.5改为1.0。静态候选输入、联合验收矩阵、决策矩阵和SHA已生成，状态为ROUND1_ENGINEERING_AND_EVIDENCE_READY_AWAITING_RESEARCHER_DECISION；SUMO/TraCI=0，Stage0.5 Gate仍blocked。报告 docs/STAGE_0_5_ROUND1_FINAL_DECISION.md；计划 docs/plans/STAGE_0_5_ROUND2_TASK1_FREEZE_CANDIDATE.md；证据 evidence/results/RES-STAGE-0.5-ROUND1-TASK3-DECISION-20261028/。
+
+## RES-STAGE-0.5-ROUND2-TASK1-PREFLIGHT-20261028
+
+第二轮首个原生实验的启动前宏观规则比较已完成：Rule A 严格联合状态支持在30个既有状态单元中10个通过，Rule B宽松规则11个通过，Rule C不设数值门槛为INSUFFICIENT_EVIDENCE。推荐Rule A；研究者确认空间、物理路径、宏观规则和唯一minGap=1.0候选后才能启动原生运行。SUMO/TraCI=0。报告 docs/STAGE_0_5_ROUND2_TASK1_PRELAUNCH_DECISION.md；证据 evidence/results/RES-STAGE-0.5-ROUND2-TASK1-PREFLIGHT-20261028/。

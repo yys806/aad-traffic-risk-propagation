@@ -290,3 +290,6 @@ Verified：离线读取 B00/B10/B01/B11 封存轨迹，27 个全量事件段均�
 
 ## 2026-10-28 First-round offline decision package
 Verified offline audit complete. R1 B10/B01/B11 were real completed runs and B00 is accepted A03 reuse; all formal source/target P2 are 0. Event-space audit and candidate comparisons are exploratory/non-authoritative. No new SUMO/TraCI, no holdout, no P2 change. Stage 0.5 remains blocked; Stage 0.6 and Stage I unchanged. Report/docs and evidence package are registered below.
+
+## Current — 2026-10-28 Round2 Task1 prelaunch
+离线宏观验收比较完成，推荐Rule A严格联合状态/闭合支持；已有30个状态单元中10个通过，宽松Rule B为11个，Rule C为INSUFFICIENT_EVIDENCE。第一次原生启动前等待研究者一次性确认。

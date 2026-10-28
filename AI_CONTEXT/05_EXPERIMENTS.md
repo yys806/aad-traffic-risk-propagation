@@ -306,3 +306,6 @@ Completed offline-only R0/R1/B00 reconciliation and candidate comparison. No new
 ## 2026-10-28 Round1 Task3 / Round2 freeze candidate
 
 Completed static Round2 preparation only. Preferred candidate is current B00 A03 heterogeneous Krauss with minGap 2.5→1.0 on all five vTypes; seed20261201, 420s, [120,390), original source/target/cohort and formal P2 unchanged. One primary attempt is proposed; independent seed is conditional and separately authorized. No new trajectory was run.
+
+## 2026-10-28 Round2 Task1 prelaunch
+Completed offline macro-rule comparison only. Rule A strict joint state/closing support is recommended (10/30 prior cells pass); Rule B permissive is 11/30; Rule C is insufficient. Candidate native launch awaits researcher confirmation; SUMO/TraCI=0.

@@ -1,0 +1,27 @@
+{
+  "schema": "aad.stage05.round2.task1-preflight.v1",
+  "status": "AWAITING_RESEARCHER_SCIENTIFIC_CONFIRMATION",
+  "current_git_head": "8219e43568a26a4c18f15c5bea7234ab40b34b90",
+  "candidate_id": "AAD-S0.5-ROUND2-TASK1-20261028-candidate-v1",
+  "macro_rule_recommendation": "A_strict_joint_support",
+  "macro_rule_comparison_source": "evidence/results/RES-STAGE-0.5-ROUND2-TASK1-PREFLIGHT-20261028/macro_rule_comparison.json",
+  "macro_rule_pass_counts": {
+    "rule_A_strict": 10,
+    "rule_B_macro_only": 11
+  },
+  "scientific_confirmation_required_before_native_launch": true,
+  "source_region": "S_UPSTREAM_MAIN",
+  "target_region": "mainline lanes1-5 y[150,350)",
+  "window_s": [
+    120,
+    390
+  ],
+  "cohort": "C_INPUT_ROUTE",
+  "auxiliary_lane_policy": "separate diagnostic",
+  "physical_path_policy": "identity/time/lane/leader witness; onset/confirmation/physical/message clocks separate",
+  "sumo_launches": 0,
+  "traci_connections": 0,
+  "holdout_reads": 0,
+  "round2_candidate_static_test": "14 passed",
+  "compileall": "pass"
+}
