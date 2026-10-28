@@ -151,7 +151,7 @@ def prepare(root: Path, stage: Path, destination: Path) -> dict:
     smoke_proposal = destination / "smoke_proposal.json"
     smoke_archive = destination / "smoke_archive"
     integration = dict(
-        schema="aad.native-integration-acceptance.v1", status="Pass",
+        schema="aad.native-integration-acceptance.v1", task_id=TASK, status="Pass",
         accepted_for_new_task=True, input_and_test_resource_scope_accepted=True,
         scientific_run=False, new_research_trajectories=0,
         controller_source_sha256=controller_source_sha,
