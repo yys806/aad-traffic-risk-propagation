@@ -302,3 +302,7 @@ Stage0.5新增RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2（B1.2前置工程阻断）�
 ## 2026-10-28 Stage 0.5-R1 三臂诊断执行
 
 R1 已按确认设计完成 B10（主线速度脉冲）、B01（匝道供给脉冲）、B11（严格组合）各一次。固定 `US-101 0750`、seed `20261201`、420 s、0.05/0.1 s、`[120,390)`、`S_UPSTREAM_MAIN`、`C_INPUT_ROUTE` 均绑定并通过独立回执。三臂源 P2 均 0，D1 暴露分别 13667.8/9865.1/13553.6 veh-s；按停止规则不追加搜索。Gate blocked，Stage0.6/StageI状态不变。报告和证据见 `docs/STAGE_0_5_R1_EXECUTION_2026-10-28.md` 与 `RES-STAGE-0.5-R1-DIAGNOSTICS-20261028`。
+
+## 2026-10-28 Stage 0.5-R1 封存轨迹离线机制审计
+
+结果 `RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028`：只读复核 B00/B10/B01/B11 封存状态表，完成全量事件数组、窗口 onset、源区/目标区正式 P2、事件空间、源区可观测性和 30 s 时间块审计。B10/B01/B11 全量事件段 7/1/19，窗口 onset 5/0/17；正式源/目标 P2 均 0。B10/B11 事件主要位于辅助 lane，B01 事件早于窗口。Stage 0.5 Gate 继续 blocked；无新 SUMO。

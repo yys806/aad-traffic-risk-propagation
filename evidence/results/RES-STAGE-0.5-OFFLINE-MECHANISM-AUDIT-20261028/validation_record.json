@@ -1,0 +1,28 @@
+{
+  "schema": "aad.offline-mechanism-validation.v1",
+  "task_id": "AAD-S0.5-OFFLINE-MECHANISM-AUDIT-20261028",
+  "status": "Completed offline audit; no SUMO launched",
+  "repository_head": "29dac1a164a81dfdc61bf73f8e53895689d7813e",
+  "formal_measurement_implementation_unchanged": true,
+  "raw_hash_integrity": true,
+  "count_reconciliation_differences": {
+    "B00": [],
+    "B10": [],
+    "B01": [],
+    "B11": []
+  },
+  "event_inventory_rows": 27,
+  "source_observability_rows": 4,
+  "state_block_rows": 72,
+  "notes": [
+    "all_vehicle_reference event arrays are not equivalent to source/target formal P2 counts",
+    "unknown spatial associations are retained as unknown",
+    "no AI_CONTEXT modification performed"
+  ],
+  "checks": {
+    "project_docs_strict_git": "Pass",
+    "portable_evidence_verify": "Pass",
+    "targeted_tests": "16 passed (project docs + offline audit)",
+    "offline_sources_compile": "Pass"
+  }
+}

@@ -316,10 +316,11 @@
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-S0.5-R1-EXECUTE-20261028: three-arm diagnostics completed; R2 source-event review case A; Stage 0.5 blocked",
-  "why_now": "Prepare only Stage0.5-R0 offline design-freeze candidates from accepted A03 full context; explicit source/target/cohort/control decisions await researcher. R1 unexecuted; Stage0.6/StageI unchanged; no new simulation or Protocol Lock.",
+  "active_task": "AAD-S0.5-OFFLINE-MECHANISM-AUDIT-20261028: sealed R1 mechanism audit completed; Stage 0.5 blocked",
+  "why_now": "Offline audit of sealed B00/B10/B01/B11 trajectories reconciles full event arrays with formal source/target P2 counts and quantifies source observability; no new simulation or Gate transition.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
+   "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/count_reconciliation.json",
    "evidence/results/RES-STAGE-0.5-R1-DIAGNOSTICS-20261028/r2_gate_review.json",
    "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",
    "evidence/results/RES-PROTOCOL-READINESS-V1/protocol_lock_readiness_v1.json",
@@ -346,6 +347,7 @@
    "evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/protocol_lock_readiness.json"
   ],
   "local_gate_paths": [
+   "code/outputs/formal/calibration/stage_0_5_offline_mechanism_audit_20261028",
    "code/outputs/formal/calibration/stage_0_5_r1_diagnostics_20261028",
    "code/outputs/formal/calibration/stage_0_2_scientific_acceptance_20261012_r4/scientific_gate_report.json",
    "code/outputs/formal/calibration/stage_0_3_scientific_acceptance_20261016_r3/scientific_gate_report.json",
@@ -698,8 +700,8 @@
    "purpose": "组合 NGSIM 跟驰风险参考和 pNEUMA 城市运动学参考，检查无消息作用的 SUMO 样本是否落在现实范围。",
    "research_question": "SUMO 基础运动与跟驰风险是否明显脱离真实交通范围？",
    "date": "2026-10-28",
-   "status": "r1_completed_r2_case_a_gate_blocked",
-   "code_version": "current main 33c3f31 plus R1 scripts",
+   "status": "r1_completed_offline_mechanism_audit_gate_blocked",
+   "code_version": "current main 29dac1a plus offline audit script",
    "code_paths": [
     "code/src/riskprop/simulation_real_coverage.py",
     "code/src/riskprop/stage_0_5_sumo.py",
@@ -793,7 +795,8 @@
     "code/scripts/prepare_stage_0_5_r0_design_packet.py",
     "code/scripts/prepare_stage_0_5_r1_execution.py",
     "code/scripts/analyze_stage_0_5_r1.py",
-    "code/scripts/finalize_stage_0_5_r1_evidence.py"
+    "code/scripts/finalize_stage_0_5_r1_evidence.py",
+    "code/scripts/analyze_stage_0_5_offline_mechanism.py"
    ],
    "entrypoints": [
     "code/scripts/prepare_stage_0_5_real_reference.py",
@@ -853,7 +856,8 @@
     "code/scripts/prepare_stage_0_5_initial_speed_v1.py",
     "code/scripts/assess_stage_0_5_existing_capsule_v1.py",
     "code/scripts/prepare_stage_0_5_r0_design_packet.py",
-    "docs/STAGE_0_5_R1_EXECUTION_2026-10-28.md"
+    "docs/STAGE_0_5_R1_EXECUTION_2026-10-28.md",
+    "docs/STAGE_0_5_OFFLINE_MECHANISM_AUDIT_2026-10-28.md"
    ],
    "test_paths": [
     "code/tests/test_simulation_real_coverage.py",
@@ -897,7 +901,8 @@
     "code/tests/test_stage_0_5_postprocessing_supervision.py",
     "code/tests/test_stage_0_5_process_supervision.py",
     "code/tests/test_aad_week_scene_v1.py",
-    "code/tests/test_stage_0_5_r0_design_packet.py"
+    "code/tests/test_stage_0_5_r0_design_packet.py",
+    "code/tests/test_stage_0_5_offline_mechanism_audit.py"
    ],
    "configuration": "R2 real reference plus two no_message_baseline generic-highway engineering fixtures (baseline_mixed_demand, measurement_probe_queue_stop); US-101 primary, Lankershim auxiliary entry-only, pNEUMA urban kinematics entry-only; all network/demand/vType/behaviour/time settings are engineering_fixture_only",
    "parameters": {
@@ -1105,7 +1110,8 @@
     "RES-STAGE-0.5-B00-NATIVE-V1",
     "RES-AAD-WEEK-20261027-V1",
     "RES-STAGE-0.5-R0-DESIGN-PACKET-20261028",
-    "RES-STAGE-0.5-R1-DIAGNOSTICS-20261028"
+    "RES-STAGE-0.5-R1-DIAGNOSTICS-20261028",
+    "RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -1220,7 +1226,7 @@
     "third_window_rows_materialised",
     "zotero_items_added"
    ],
-   "current_conclusion": "B10/B01/B11 each completed one valid 420 s run; all three lacked qualified source P2; stop rule applied; Gate remains blocked",
+   "current_conclusion": "Full event-array counts were reconciled. B10/B11 window events are concentrated on auxiliary lane main_1_0; B01 event is pre-window; source and target formal P2 remain zero. Source observability is positive but formal threshold hits are absent; missing support remains a limitation.",
    "gate": {
     "status": "blocked",
     "portable_path": "evidence/results/RES-STAGE-0.5-R1-DIAGNOSTICS-20261028/r2_gate_review.json"
@@ -4506,6 +4512,50 @@
    "scientific_claim_eligible": false,
    "paper_locations": [
     "docs/STAGE_0_5_R1_EXECUTION_2026-10-28.md"
+   ]
+  },
+  {
+   "id": "RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028",
+   "experiment_id": "stage_0_5",
+   "name": "Stage 0.5-R1 sealed trajectory offline mechanism audit",
+   "status": "COMPLETED_OFFLINE_DIAGNOSTIC_GATE_BLOCKED",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/event_inventory.csv",
+    "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/spatial_counts.csv",
+    "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/source_observability.csv",
+    "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/arm_state_blocks.csv",
+    "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/count_reconciliation.json",
+    "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/validation_record.json",
+    "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/manifest.json",
+    "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/SHA256SUMS"
+   ],
+   "local_artifact_paths": [
+    "code/outputs/formal/calibration/stage_0_5_offline_mechanism_audit_20261028"
+   ],
+   "code_version_source": "repository HEAD 29dac1a; current formal measurement modules and independent offline analyzer SHA in manifest",
+   "configuration_source": "R1 formal source/target regions, window [120,390), existing P2/D1 implementation",
+   "data_version_source": "sealed R1/B00 measured_state parquet and route files; raw output SHA verified; no new simulation",
+   "core_metrics": {
+    "B00_full_events": 0,
+    "B10_full_events": 7,
+    "B01_full_events": 1,
+    "B11_full_events": 19,
+    "B10_window_onsets": 5,
+    "B01_window_onsets": 0,
+    "B11_window_onsets": 17,
+    "source_formal_P2_all_arms": 0,
+    "target_formal_P2_all_arms": 0,
+    "event_inventory_rows": 27,
+    "source_reliable_exposure_B00_veh_s": 8457.4,
+    "source_reliable_exposure_B10_veh_s": 10278.8,
+    "source_reliable_exposure_B01_veh_s": 8350.1,
+    "source_reliable_exposure_B11_veh_s": 10353.9
+   },
+   "current_conclusion": "Source regions have reliable following exposure but no observed TTC<2 s states under the frozen formal rule. Window event segments are concentrated on auxiliary lane main_1_0 or outside the fixed target; missing support remains unable to distinguish absence from unobserved risk.",
+   "gate_status": "blocked",
+   "scientific_claim_eligible": false,
+   "paper_locations": [
+    "docs/STAGE_0_5_OFFLINE_MECHANISM_AUDIT_2026-10-28.md"
    ]
   }
  ],

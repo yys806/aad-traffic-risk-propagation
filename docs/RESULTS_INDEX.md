@@ -396,3 +396,7 @@ B1.2前置接入工程阻断，主矩阵未冻结/未运行；报告`docs/STAGE_
 ## RES-STAGE-0.5-R1-DIAGNOSTICS-20261028
 
 Stage 0.5-R1 三臂诊断已完成：B10、B01、B11 各一次 420 s / 8400 步有效原生运行；B00 A03 未重跑，仅复用接受证据。三臂独立回执与统一 D1/P2 测量通过；源区正式 P2 均 0，目标 D1 暴露为 B10 13667.8、B01 9865.1、B11 13553.6 veh-s。R2 为情况 A，Stage 0.5 Gate 继续 blocked。报告 `docs/STAGE_0_5_R1_EXECUTION_2026-10-28.md`；便携证据 `evidence/results/RES-STAGE-0.5-R1-DIAGNOSTICS-20261028/`；原始输出 `code/outputs/formal/calibration/stage_0_5_r1_diagnostics_20261028/`。
+
+## RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028
+
+封存 R1 轨迹离线机制审计。B10/B01/B11 全量事件数组为 7/1/19，评价窗口 onset 为 5/0/17；正式源区与目标区 P2 均为 0。27 个事件段完成原始状态关联：B10/B11 窗口事件主要位于辅助 `main_1_0` lane 6，B01 唯一事件早于窗口。源区均有可靠跟驰暴露，但有效 TTC 样本没有 `<2 s` 状态；缺失观测仍保留为限制。报告 `docs/STAGE_0_5_OFFLINE_MECHANISM_AUDIT_2026-10-28.md`；证据 `evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/`。

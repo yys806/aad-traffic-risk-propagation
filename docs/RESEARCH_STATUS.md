@@ -271,3 +271,7 @@ Gate 保持 `pending_simulation_sample`；`scientific_claim_eligible=false`、`r
 ## 2026-10-28 Stage 0.5-R1 执行收口
 
 Verified：B10、B01、B11 各一次完整原生 SUMO 运行，均通过工程回执与统一离线测量；B00 A03 未重跑。Observation：三臂源区正式 P2 均为 0，目标 D1 暴露为 13667.8、9865.1、13553.6 veh-s；车辆生命周期、实际匝道插入和 B10 lane 控制回读均有逐臂证据。Interpretation：操纵确实执行且交通状态变化可观测，但没有源事件支持，不能形成事件特定物理路径或效应结论。Blocked：R2 case A，Stage 0.5 Gate 继续 blocked；Stage 0.6 与 Stage I 保持原状态，不追加 seed/intensity/search。
+
+## 2026-10-28 Stage 0.5-R1 封存轨迹离线机制诊断
+
+Verified：离线读取 B00/B10/B01/B11 封存轨迹，27 个全量事件段均完成状态关联；B10/B01/B11 全量事件数组 7/1/19，窗口 onset 5/0/17，正式源区和目标区 P2 均 0。源区具有 8,350.1–10,353.9 veh-s 可靠跟驰暴露，但有效 TTC 样本未出现 `<2 s` 状态。Interpretation：零源 P2 由“已观测状态未达正式风险阈值”和“事件空间偏向辅助车道/固定区外”共同解释；缺失观测限制仍存在，不能完全排除未观测风险。Stage 0.5 Gate、Stage 0.6 和 Stage I 状态不变。报告与证据见 `docs/STAGE_0_5_OFFLINE_MECHANISM_AUDIT_2026-10-28.md` 和对应结果目录。

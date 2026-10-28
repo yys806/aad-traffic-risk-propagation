@@ -208,3 +208,11 @@ Stage 0.5 真实交通重建与条件场景诊断（AAD-0.5-TR-RECON）：报告
 - 统一测量：`code/scripts/analyze_stage_0_5_r1.py`
 - 证据收口：`code/scripts/finalize_stage_0_5_r1_evidence.py`
 - 状态：三臂各一次有效运行；源 P2=0；R2 case A；Stage 0.5 Gate blocked；Stage 0.6 pending scientific tolerances/dynamic calibration；Stage I blocked until Protocol Lock。
+
+## Stage 0.5 封存轨迹离线机制审计入口
+
+- 报告：`docs/STAGE_0_5_OFFLINE_MECHANISM_AUDIT_2026-10-28.md`
+- 便携证据：`evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/`
+- 离线脚本：`code/scripts/analyze_stage_0_5_offline_mechanism.py`
+- 本地派生结果：`code/outputs/formal/calibration/stage_0_5_offline_mechanism_audit_20261028/`
+- 结论边界：源区有可靠暴露，但无正式阈值命中；窗口事件主要在辅助车道或固定目标区之外；Stage 0.5 Gate 仍 blocked。

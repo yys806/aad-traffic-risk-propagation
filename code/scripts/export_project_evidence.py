@@ -746,6 +746,9 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
           'B10_independent_receipt.json', 'B10_execution_summary.json', 'B10_measurement_acceptance.json',
           'B01_independent_receipt.json', 'B01_execution_summary.json', 'B01_measurement_acceptance.json',
           'B11_independent_receipt.json', 'B11_execution_summary.json', 'B11_measurement_acceptance.json']),
+        ('RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028', 'stage_0_5_offline_mechanism_audit_20261028',
+         ['event_inventory.csv', 'spatial_counts.csv', 'source_observability.csv', 'arm_state_blocks.csv',
+          'count_reconciliation.json', 'validation_record.json', 'manifest.json', 'SHA256SUMS']),
         ('RES-STAGE-0.6-WEEK-20261027-V1', 'stage_0_6_week_20261027_v1',
          ['audit.json', 'numerical_manifest.json', 'protocol_candidate.json',
           'current_gate_reports.json', 'stage_0_5_gate.json', 'stage_0_6_gate.json',
@@ -790,6 +793,8 @@ def _validate_source(source: Path) -> None:
         "fidelity_metrics.csv", "matched18.csv",
         # Explicit R0 design input map, not a raw measured trajectory table.
         "ramp_departure_map_candidate.csv",
+        # Stage 0.5 offline mechanism audit aggregate tables.
+        "event_inventory.csv", "spatial_counts.csv", "source_observability.csv", "arm_state_blocks.csv",
         }
     if source.suffix.lower() not in {".json", ".md", ".txt", ".sha256"} and source.name not in aggregate_names:
         raise ValueError(f"unsupported evidence file type: {source}")
