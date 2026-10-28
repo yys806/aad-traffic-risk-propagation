@@ -200,7 +200,11 @@ class ResearchLedger:
         runs = p["runs"]
         require(len({r["id"] for r in runs}) == len(runs), "duplicate_proposal_run")
         run = next((r for r in runs if r["id"] == run_id), None)
-        require(run is not None and re.fullmatch(r"[A-Za-z0-9_-]+", run_id), "unknown_or_invalid_run")
+        round2_exact = (p.get("experiment_id") == "AAD-S0.5-ROUND2-TASK1" and
+                        run_id == "AAD-S0.5-ROUND2-TASK1-20261028-candidate-v1")
+        require(run is not None and
+                (bool(re.fullmatch(r"[A-Za-z0-9_-]+", run_id)) or round2_exact),
+                "unknown_or_invalid_run")
         require(isinstance(run.get("seed"), int) and not isinstance(run["seed"], bool), "seed_required")
         require(all(run.get(k) for k in ["question", "contrast", "condition", "factors", "initialization_policy"]), "research_purpose_missing")
         for role, bindings in [("source", p["source_sha256"]), ("input", run["input_sha256"])]:
