@@ -316,11 +316,12 @@
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-S0.5-OFFLINE-MECHANISM-AUDIT-20261028: sealed R1 mechanism audit completed; Stage 0.5 blocked",
-  "why_now": "Offline audit of sealed B00/B10/B01/B11 trajectories reconciles full event arrays with formal source/target P2 counts and quantifies source observability; no new simulation or Gate transition.",
+  "active_task": "AAD-S0.5-FIRST-ROUND-OFFLINE-DECISION-20261028: complete offline audit and candidate decision package; Stage 0.5 remains blocked",
+  "why_now": "First-round offline audit reconciles R0/R1/B00 sealed evidence, classifies all R1 risk segments, and compares source/target/cohort/path candidates without new simulation.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
    "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/count_reconciliation.json",
+   "evidence/results/RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028/offline_reconciliation.json",
    "evidence/results/RES-STAGE-0.5-R1-DIAGNOSTICS-20261028/r2_gate_review.json",
    "evidence/results/RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4/scientific_gate_report.json",
    "evidence/results/RES-PROTOCOL-READINESS-V1/protocol_lock_readiness_v1.json",
@@ -1111,7 +1112,8 @@
     "RES-AAD-WEEK-20261027-V1",
     "RES-STAGE-0.5-R0-DESIGN-PACKET-20261028",
     "RES-STAGE-0.5-R1-DIAGNOSTICS-20261028",
-    "RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028"
+    "RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028",
+    "RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -4556,6 +4558,41 @@
    "scientific_claim_eligible": false,
    "paper_locations": [
     "docs/STAGE_0_5_OFFLINE_MECHANISM_AUDIT_2026-10-28.md"
+   ]
+  },
+  {
+   "id": "RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028",
+   "experiment_id": "stage_0_5",
+   "name": "Stage 0.5 first-round offline decision and candidate comparison",
+   "status": "COMPLETED_OFFLINE_DECISION_PACKAGE_GATE_BLOCKED",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028/candidate_comparison_matrix.json",
+    "evidence/results/RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028/file_audit.csv",
+    "evidence/results/RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028/offline_reconciliation.json",
+    "evidence/results/RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028/run_record.json",
+    "evidence/results/RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028/validation_summary.json",
+    "evidence/results/RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028/manifest.json",
+    "evidence/results/RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028/SHA256SUMS"
+   ],
+   "local_artifact_paths": [
+    "code/outputs/formal/calibration/stage_0_5_r1_diagnostics_20261028"
+   ],
+   "code_version_source": "current Git HEAD and build_stage_0_5_first_round_decision.py",
+   "configuration_source": "sealed R0/R1 candidate, region, cohort and path definitions",
+   "data_version_source": "sealed R0/R1/B00 evidence and directly linked admission/audit files; no holdout",
+   "core_metrics": {
+    "R1_full_events": "B00=0; B10=7; B01=1; B11=19",
+    "R1_window_onsets": "B00=0; B10=5; B01=0; B11=17",
+    "formal_source_P2_all_arms": 0,
+    "formal_target_P2_all_arms": 0,
+    "sumo_launches": 0,
+    "holdout_reads": 0
+   },
+   "current_conclusion": "All directly executable offline reconciliation and candidate comparisons completed; unresolved source support and scientific scope decisions remain",
+   "gate_status": "blocked",
+   "scientific_claim_eligible": false,
+   "paper_locations": [
+    "docs/STAGE_0_5_FIRST_ROUND_OFFLINE_DECISION_20261028.md"
    ]
   }
  ],

@@ -350,3 +350,6 @@ P1：历史83是开始到结束而非确认；全源543/732不能作局部率目
 ## 2026-10-28 R1 已知问题与边界
 
 R1 工程执行链已通过三臂独立回执，但科学支持仍受源事件缺失限制：B10/B01/B11 正式源 P2 均为 0，不能形成事件特定物理路径或传播到达结论。目标 D1 暴露、速度和生命周期差异只作观测，不作因果效应。原始 capsule/FCD/parquet 不进入便携 evidence，位于 `code/outputs/formal/calibration/stage_0_5_r1_diagnostics_20261028/` 并由便携 manifest 哈希绑定。历史 M3 结构性限制、Stage 0.5 blocked、Stage 0.6/Stage I 状态不变。
+
+## 2026-10-28 First-round offline blockers
+Verified: no qualified source P2 in any R1 arm; full event counts are not formal P2. Auxiliary lane events, target-outside event and pre-window event are classified. Missing identity/link/boundary observations remain uncertain, not unreachable; event-specific arrival is undefined without a source witness. Stage 0.5 blocked.

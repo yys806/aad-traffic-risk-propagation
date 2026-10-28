@@ -216,3 +216,6 @@ Stage 0.5 真实交通重建与条件场景诊断（AAD-0.5-TR-RECON）：报告
 - 离线脚本：`code/scripts/analyze_stage_0_5_offline_mechanism.py`
 - 本地派生结果：`code/outputs/formal/calibration/stage_0_5_offline_mechanism_audit_20261028/`
 - 结论边界：源区有可靠暴露，但无正式阈值命中；窗口事件主要在辅助车道或固定目标区之外；Stage 0.5 Gate 仍 blocked。
+
+## 2026-10-28 First-round offline decision package
+Report: docs/STAGE_0_5_FIRST_ROUND_OFFLINE_DECISION_20261028.md. Generator: code/scripts/build_stage_0_5_first_round_decision.py. Evidence: evidence/results/RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028/. This is offline exploratory decision support; no formal P2, Gate, or protocol changes.

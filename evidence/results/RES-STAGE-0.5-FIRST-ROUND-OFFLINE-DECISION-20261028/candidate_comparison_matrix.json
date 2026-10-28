@@ -1,0 +1,110 @@
+{
+  "schema": "aad.stage05.first-round-candidate-matrix.v1",
+  "status": "Exploratory/non-authoritative",
+  "rows": [
+    {
+      "question": "Auxiliary lane role",
+      "candidate": "A: exclude from formal mainline estimand; mechanism diagnostic only",
+      "source": "R0 target definition; offline event_inventory",
+      "offline_result": "B10 7/7 and B11 18/19 events auxiliary; no formal P2",
+      "risk": "misses auxiliary interaction mechanism",
+      "formal_semantics_change": false,
+      "decision": "Awaiting Researcher Decision"
+    },
+    {
+      "question": "Auxiliary lane role",
+      "candidate": "B: separate secondary mechanism candidate space",
+      "source": "R0 S_ONRAMP/topology; R1 event classification",
+      "offline_result": "Exploratory classification is complete; events remain separated, no P2 recomputed",
+      "risk": "changes estimand if pooled",
+      "formal_semantics_change": true,
+      "decision": "Awaiting Researcher Decision"
+    },
+    {
+      "question": "Auxiliary lane role",
+      "candidate": "C: replacement study scope",
+      "source": "R0 candidates; R1 topology",
+      "offline_result": "Offline data can describe events but cannot validate causal path or recalibrate",
+      "risk": "replaces primary question",
+      "formal_semantics_change": true,
+      "decision": "Awaiting Researcher Decision"
+    },
+    {
+      "question": "Source region",
+      "candidate": "S_UPSTREAM_MAIN main_0 lanes1-5 y[0,150)",
+      "source": "source_target_candidates.json",
+      "offline_result": "0 formal source events; 8,457.4 veh-s B00 exposure; missing 1,061",
+      "risk": "zero event support; unobserved risk unresolved",
+      "formal_semantics_change": false,
+      "decision": "Awaiting Researcher Decision"
+    },
+    {
+      "question": "Source region",
+      "candidate": "S_DOWNSTREAM_MAIN main_2 lanes1-5 y[399.22,669.18)",
+      "source": "source_target_candidates.json/topology_candidate_audit.json",
+      "offline_result": "0 confirmed source events in sealed evidence; road path upstream->target not applicable",
+      "risk": "directional mismatch for upstream propagation",
+      "formal_semantics_change": true,
+      "decision": "Awaiting Researcher Decision"
+    },
+    {
+      "question": "Source region",
+      "candidate": "S_ONRAMP onramp lane7",
+      "source": "source_target_candidates.json/topology_candidate_audit.json",
+      "offline_result": "254.9 veh-s and 2,700 missing; connects to auxiliary main_1_0; no source P2",
+      "risk": "lane-change and missing-link confounding",
+      "formal_semantics_change": true,
+      "decision": "Awaiting Researcher Decision"
+    },
+    {
+      "question": "Cohort",
+      "candidate": "C_INPUT_ROUTE (1112 IDs, pre-treatment route rule)",
+      "source": "source_target_candidates.json; R1 cohort SHA",
+      "offline_result": "Applied unchanged across arms; lifecycle differences reported separately",
+      "risk": "pending/undeparted observations reduce support",
+      "formal_semantics_change": false,
+      "decision": "Awaiting Researcher Decision"
+    },
+    {
+      "question": "Cohort",
+      "candidate": "C_PRE_PULSE_STATE (pre-180 observed IDs)",
+      "source": "source_target_candidates.json",
+      "offline_result": "Can be defined pre-treatment, but count and exact clock remain unfrozen; no post-outcome selection performed",
+      "risk": "changes estimand and excludes later entrants",
+      "formal_semantics_change": true,
+      "decision": "Awaiting Researcher Decision"
+    },
+    {
+      "question": "Physical path/time",
+      "candidate": "Identity + <=0.11s continuity + verified lane connection + leader-follower witness",
+      "source": "physical_path_audit.json; topology_candidate_audit.json",
+      "offline_result": "No source event, so arrival undefined; missing links retained uncertain",
+      "risk": "requires future source witness",
+      "formal_semantics_change": false,
+      "decision": "Awaiting Researcher Decision"
+    },
+    {
+      "question": "Physical path/time",
+      "candidate": "Road reachability only",
+      "source": "topology_candidate_audit.json",
+      "offline_result": "main_0→main_1 reachable; onramp→main_1 reachable; main_2→target false",
+      "risk": "does not establish influence or arrival",
+      "formal_semantics_change": true,
+      "decision": "Awaiting Researcher Decision"
+    },
+    {
+      "question": "Physical path/time",
+      "candidate": "Message/confirmation clock as arrival",
+      "source": "decision_register.json; physical_path_audit.json",
+      "offline_result": "Not used; would conflate detection with physical influence",
+      "risk": "semantic leakage",
+      "formal_semantics_change": true,
+      "decision": "Reject for formal use"
+    }
+  ],
+  "event_spatial_counts": {
+    "auxiliary_or_unmapped_lane": 23,
+    "target_main": 3,
+    "other_upstream_mainline": 1
+  }
+}

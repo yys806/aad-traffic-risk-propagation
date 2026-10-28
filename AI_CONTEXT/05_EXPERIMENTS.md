@@ -295,3 +295,6 @@ RES-STAGE-0.5-BOUNDARY-BOTTLENECK-R2：B1.2前置阻断；v1冻结零尝试后�
 观测：B10/B01/B11 源区正式 P2 均为 0，目标区正式 P2 均为 0；目标可靠 D1 暴露分别为 13667.8、9865.1、13553.6 veh-s。全体声明车辆均为 1150，实际插入 955/1009/956，pending 195/141/194，discarded/collision/teleport 均为 0。R1 `C_INPUT_ROUTE` 精确 cohort=1112（79 初态、1033 非初态），ID 哈希 `76db89e2ff2d9df997516b59a23bc4d88a85c7a0161dca6a222f2a8bfee277f8`。
 
 R2 结论：情况 A，三臂均未获得合格源事件；按停止规则不追加 seed/intensity/search。Stage 0.5 Gate 继续 blocked，Stage 0.6 仍 pending scientific tolerances/dynamic calibration，Stage I 仍 blocked until Protocol Lock。没有生成 Protocol Lock、没有访问 locked holdout。完整证据：`docs/STAGE_0_5_R1_EXECUTION_2026-10-28.md`、`evidence/results/RES-STAGE-0.5-R1-DIAGNOSTICS-20261028/`；原始输出在 `code/outputs/formal/calibration/stage_0_5_r1_diagnostics_20261028/`。
+
+## 2026-10-28 First-round offline decision package
+Completed offline-only R0/R1/B00 reconciliation and candidate comparison. No new trajectory, no formal P2 re-execution, no threshold/window/cohort semantic change. Machine evidence includes file audit, candidate matrix, reconciliation, run record, manifest and SHA256SUMS.

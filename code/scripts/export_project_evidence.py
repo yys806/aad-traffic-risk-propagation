@@ -749,6 +749,8 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         ('RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028', 'stage_0_5_offline_mechanism_audit_20261028',
          ['event_inventory.csv', 'spatial_counts.csv', 'source_observability.csv', 'arm_state_blocks.csv',
           'count_reconciliation.json', 'validation_record.json', 'manifest.json', 'SHA256SUMS']),
+        ('RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028', 'stage_0_5_first_round_offline_decision_20261028',
+         ['candidate_comparison_matrix.json', 'file_audit.csv', 'offline_reconciliation.json', 'run_record.json', 'validation_summary.json', 'manifest.json', 'SHA256SUMS']),
         ('RES-STAGE-0.6-WEEK-20261027-V1', 'stage_0_6_week_20261027_v1',
          ['audit.json', 'numerical_manifest.json', 'protocol_candidate.json',
           'current_gate_reports.json', 'stage_0_5_gate.json', 'stage_0_6_gate.json',

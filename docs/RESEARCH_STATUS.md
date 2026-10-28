@@ -275,3 +275,6 @@ Verified：B10、B01、B11 各一次完整原生 SUMO 运行，均通过工程�
 ## 2026-10-28 Stage 0.5-R1 封存轨迹离线机制诊断
 
 Verified：离线读取 B00/B10/B01/B11 封存轨迹，27 个全量事件段均完成状态关联；B10/B01/B11 全量事件数组 7/1/19，窗口 onset 5/0/17，正式源区和目标区 P2 均 0。源区具有 8,350.1–10,353.9 veh-s 可靠跟驰暴露，但有效 TTC 样本未出现 `<2 s` 状态。Interpretation：零源 P2 由“已观测状态未达正式风险阈值”和“事件空间偏向辅助车道/固定区外”共同解释；缺失观测限制仍存在，不能完全排除未观测风险。Stage 0.5 Gate、Stage 0.6 和 Stage I 状态不变。报告与证据见 `docs/STAGE_0_5_OFFLINE_MECHANISM_AUDIT_2026-10-28.md` 和对应结果目录。
+
+## 2026-10-28 First-round offline decision package
+Verified offline audit complete. R1 B10/B01/B11 were real completed runs and B00 is accepted A03 reuse; all formal source/target P2 are 0. Event-space audit and candidate comparisons are exploratory/non-authoritative. No new SUMO/TraCI, no holdout, no P2 change. Stage 0.5 remains blocked; Stage 0.6 and Stage I unchanged. Report/docs and evidence package are registered below.

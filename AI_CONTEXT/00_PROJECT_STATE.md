@@ -496,3 +496,6 @@ B1（RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1）按阻断提前结束：V1失败A后
 Gate=pending_simulation_sample、scientific_claim_eligible=false、ready_to_start_stage_0_5_4b=false、reality_coverage_accepted=false；容差Tolerance Not Yet Justified，ED上界Not Identifiable，ProtocolLock/StageI禁止。仅推荐下一项B1.1停车数值/队列回溢观测契约整改，未启动。
 
 依据：`docs/STAGE_0_5_TASK_0_5_4B1_BOUNDARY_BOTTLENECK_CONTRAST.md`、`evidence/results/RES-STAGE-0.5-BOUNDARY-BOTTLENECK-V1/`中的preflight、execution_stop_observation、numerical_stop_diagnostic、queue_diagnostics、run_manifest和SHA256SUMS。
+
+## 2026-10-28 Stage 0.5 first-round offline decision package
+Verified: R0/R1/B00 evidence and all directly linked admission/audit files were enumerated and hashed. R1 event arrays reconcile 7/1/19/0, window onsets 5/0/17/0, while formal source/target P2 remain 0. B10/B11 window events are chiefly auxiliary lane 6; B01 event is pre-window; one B11 mainline event is outside target. Candidate comparisons are exploratory only; SUMO/TraCI=0, holdout=0, formal P2 unchanged. Stage 0.5 blocked; Stage 0.6 and Stage I unchanged. Report: docs/STAGE_0_5_FIRST_ROUND_OFFLINE_DECISION_20261028.md; evidence: evidence/results/RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028/.

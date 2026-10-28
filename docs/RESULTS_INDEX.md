@@ -400,3 +400,7 @@ Stage 0.5-R1 三臂诊断已完成：B10、B01、B11 各一次 420 s / 8400 步�
 ## RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028
 
 封存 R1 轨迹离线机制审计。B10/B01/B11 全量事件数组为 7/1/19，评价窗口 onset 为 5/0/17；正式源区与目标区 P2 均为 0。27 个事件段完成原始状态关联：B10/B11 窗口事件主要位于辅助 `main_1_0` lane 6，B01 唯一事件早于窗口。源区均有可靠跟驰暴露，但有效 TTC 样本没有 `<2 s` 状态；缺失观测仍保留为限制。报告 `docs/STAGE_0_5_OFFLINE_MECHANISM_AUDIT_2026-10-28.md`；证据 `evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/`。
+
+## RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028
+
+第一轮离线决策包完成：逐文件审计、R0/R1/B00交叉核验、事件空间分类、源/目标/cohort/物理路径候选比较均已完成。比较均为 exploratory/non-authoritative；未重算正式P2，SUMO/TraCI=0，未访问holdout。Stage 0.5仍blocked。报告 docs/STAGE_0_5_FIRST_ROUND_OFFLINE_DECISION_20261028.md；证据 evidence/results/RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028/。

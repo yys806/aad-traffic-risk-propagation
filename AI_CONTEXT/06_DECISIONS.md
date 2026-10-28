@@ -318,3 +318,6 @@ Agreed：本次获准协议设计、现有证据整合及必要有限诊断；�
 ## 2026-10-28 R1 三臂诊断决策登记
 
 Agreed：执行 R1 已确认的 `S_UPSTREAM_MAIN`、目标 `[150,350)` m、评价 `[120,390)` s、`C_INPUT_ROUTE`、正式 P2 规则、B10 10→5→10 lane pulse、B01 60 辆确定性 depart 映射和 B11 exact union。Verified：三臂各一次有效运行，R1 不重跑 B00、不换 seed、不追加搜索。R2 为情况 A：三臂均无合格源 P2；科学 Gate 保持 blocked。事件特定物理到达时间未生成，缺失路径支持保持 uncertain。
+
+## 2026-10-28 First-round offline decisions pending
+Awaiting Researcher Decision: auxiliary lane role; source region among S_UPSTREAM_MAIN/S_DOWNSTREAM_MAIN/S_ONRAMP; C_INPUT_ROUTE versus pre-treatment state cohort; time-expanded physical path witness and onset/confirmation clock semantics. Exploratory comparisons do not freeze any option or change formal P2. No new SUMO authorized or run.
