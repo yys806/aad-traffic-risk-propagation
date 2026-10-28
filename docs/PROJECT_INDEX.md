@@ -221,3 +221,6 @@ Stage 0.5 真实交通重建与条件场景诊断（AAD-0.5-TR-RECON）：报告
 Report: docs/STAGE_0_5_FIRST_ROUND_OFFLINE_DECISION_20261028.md. Generator: code/scripts/build_stage_0_5_first_round_decision.py. Evidence: evidence/results/RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028/. This is offline exploratory decision support; no formal P2, Gate, or protocol changes.
 
 First-round repair verification: source-derived event assertions, source SHA bundle checks, manifest/SHA independent verification and saved no-launch regression failure inventory are in evidence/results/RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028/.
+
+## 2026-10-28 Round1 Task3 / Round2 freeze candidate
+报告：docs/STAGE_0_5_ROUND1_FINAL_DECISION.md；冻结候选：docs/plans/STAGE_0_5_ROUND2_TASK1_FREEZE_CANDIDATE.md；机器证据：evidence/results/RES-STAGE-0.5-ROUND1-TASK3-DECISION-20261028/；候选输入：evidence/admission/AAD-S0.5-ROUND2-TASK1-20261028/candidate-v1/. 本任务仅完成静态准备，未启动SUMO/TraCI。

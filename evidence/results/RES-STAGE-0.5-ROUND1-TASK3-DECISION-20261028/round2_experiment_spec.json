@@ -1,0 +1,143 @@
+{
+  "schema": "aad.stage05.round2.task1-experiment-spec.v1",
+  "experiment_id": "AAD-S0.5-ROUND2-TASK1",
+  "status": "ROUND1_AWAITING_RESEARCHER_DECISION",
+  "approval_required": true,
+  "candidate_id": "AAD-S0.5-ROUND2-TASK1-20261028-candidate-v1",
+  "base_run": {
+    "run_id": "WEEK_0750_B00_IC1_s20261201_A03",
+    "accepted_measurement": "B00_EXECUTED_MEASUREMENT_ACCEPTED",
+    "seed": 20261201,
+    "duration_s": 420,
+    "internal_step_s": 0.05,
+    "recording_step_s": 0.1,
+    "evaluation_window_s": [
+      120,
+      390
+    ],
+    "scene": "US-101 0750",
+    "source_region": {
+      "id": "S_UPSTREAM_MAIN",
+      "edge": "main_0",
+      "lanes": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "y_m": [
+        0,
+        150
+      ]
+    },
+    "target_region": {
+      "lanes": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "y_m": [
+        150,
+        350
+      ]
+    },
+    "cohort": {
+      "id": "C_INPUT_ROUTE",
+      "count": 1112,
+      "sha256": "76db89e2ff2d9df997516b59a23bc4d88a85c7a016cda6a222f2a8bfee277f8"
+    },
+    "input_sha256": {
+      "network.net.xml": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+      "routes.rou.xml": "b6df8d9ce52b56fac50899cc2e6d1329c7858325aae0f0c86c76d77f796a7574",
+      "run.sumocfg": "c55b242f09b6a86527852bf686f06f3347abc44aa1c16c199c51935ce93dc6c6"
+    }
+  },
+  "candidate_input": {
+    "path": "evidence/admission/AAD-S0.5-ROUND2-TASK1-20261028/candidate-v1/inputs",
+    "sha256": {
+      "network.net.xml": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+      "routes.rou.xml": "a4c78db55984cc8c320b06ec2e257bdf6d4902c0dfdf015348157e30cdb80e79",
+      "run.sumocfg": "c55b242f09b6a86527852bf686f06f3347abc44aa1c16c199c51935ce93dc6c6"
+    },
+    "only_change": "routes.rou.xml minGap on five B_het vTypes 2.5→1.0"
+  },
+  "behavior_baseline": {
+    "carFollowModel": "Krauss",
+    "tau_by_vtype": {
+      "B_het_c0_passenger": 0.7389146576529666,
+      "B_het_c1_passenger": 1.093342856277335,
+      "B_het_c2_passenger": 1.3877275660721775,
+      "B_het_c3_passenger": 1.8288599276236361,
+      "B_het_c4_passenger": 2.5614676647488244
+    },
+    "minGap_m": 2.5,
+    "sigma": 0.5,
+    "actionStepLength_s": 0.1,
+    "sigmaStep": 1.0,
+    "laneChangeModel": "LC2013"
+  },
+  "candidate_behavior": {
+    "minGap_m": 1.0,
+    "tau_by_vtype": "unchanged",
+    "all_other_vtype_fields": "unchanged"
+  },
+  "execution_entrypoint": "Existing Stage 0.5 native admission/capsule and current measurement chain; do not create a parallel simulator framework. Native launch remains locked until explicit approval.",
+  "budget": {
+    "primary_attempts": 1,
+    "seed": 20261201,
+    "independent_confirmation": "Proposed only after primary run passes engineering, source-event, macro hard-constraint and measurement checks; separate researcher approval and new seed required",
+    "additional_search": false
+  },
+  "reuse_policy": {
+    "reuse_without_new_run": [
+      "accepted B00 A03 baseline inputs, baseline measurement, source/target/cohort definitions, historical evidence"
+    ],
+    "new_trajectory_required": [
+      "one candidate trajectory under minGap1.0"
+    ],
+    "do_not_rerun": [
+      "B00 baseline",
+      "R0/R1 arms",
+      "historical 324 experiments"
+    ]
+  },
+  "early_stop": [
+    "native error",
+    "identity/time/lifecycle mismatch",
+    "collision/teleport/discard or incomplete receipt",
+    "resource/isolation failure",
+    "formal measurement missing/invalid",
+    "macro hard-constraint failure",
+    "any unapproved parameter drift"
+  ],
+  "forbidden_rescue": [
+    "change TTC threshold",
+    "change minimum duration or continuity gap",
+    "move window",
+    "change source/target/cohort after outcome",
+    "use favorable seed",
+    "pool auxiliary events",
+    "increase perturbation/search after failure"
+  ],
+  "outcome_branches": [
+    "qualified source P2 + macro hard constraints pass: eligible for independent confirmation decision",
+    "qualified source P2 + macro hard constraints fail: mechanism result not accepted as joint success; stop",
+    "no qualified source P2: record no-source result; no parameter search",
+    "engineering failure: retain failure and do not interpret science",
+    "observation insufficiency: retain unknown and stop"
+  ],
+  "prepared_at_git_head": "54545f1d0f5e57db461577b67fcecbb7f6c551bf",
+  "source_sha256": {
+    "code/scripts/stage_0_5_execution_v2.py": "5be4532afb959b3f02237e70081f4c3e651a8f745e4f6f915563ef36f1fd476b",
+    "code/scripts/prepare_stage_0_5_r1_execution.py": "807ff1cce117d91619379ff7ff257cd6fb4f63c8dd35dda4144da5e39214b849",
+    "code/scripts/analyze_stage_0_5_r1.py": "72059cbfe4f385d3cf03aa2ec0daa8386487c26faf21aa7fa160fb4f3f7d4bf9",
+    "code/src/riskprop/stage_0_5_d1_measurement.py": "affaf9984055b8673e6616310e4b0560f61b721747c33b47824f26172d36ad9c",
+    "code/src/riskprop/stage_0_5_state_support.py": "153f2672a01a17cc578b2d32ad49b8936239640cd065a0ed20bb8796f493c301",
+    "code/src/riskprop/stage_0_5_scene_reconstruction.py": "01ca2361ba1f5c53e626a830d5ef41c83dd6c68f5c756ce21e0c4084e5c3813a",
+    "code/src/riskprop/stage_0_5_sumo.py": "83f866f9647dc40e6f2012f759a3cad99d1e122b8933b2910afff594be7a797b",
+    "code/scripts/analyze_stage_0_5_offline_mechanism.py": "d1f7740713e046645635d5ed459122efb5914612ed80e8b7ffeae311751a2917"
+  }
+}

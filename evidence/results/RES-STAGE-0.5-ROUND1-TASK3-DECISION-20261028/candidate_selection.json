@@ -1,0 +1,63 @@
+{
+  "schema": "aad.stage05.round1-task3-candidate-selection.v1",
+  "status": "Ready for Researcher Approval",
+  "preferred": {
+    "id": "B00_Krauss_heterogeneous_minGap1.0",
+    "model": "Krauss",
+    "change": "all five B_het_* passenger vTypes minGap 2.5→1.0",
+    "preserved": [
+      "tau per class",
+      "sigma=0.5",
+      "actionStepLength=0.1",
+      "sigmaStep=1.0",
+      "LC2013",
+      "accel/decel/apparentDecel/emergencyDecel",
+      "network/routes/vehicle identities/seed/window/duration"
+    ]
+  },
+  "historical_comparison": {
+    "K_tau1.0_minGap1.0": {
+      "scope": "324 SUMO pair replays; two real windows; 36 paired rows for this config",
+      "brockfeld_gap_error_mean_change_pp": -7.307530861111114,
+      "nrmse_gap_mean_change": -0.07020125,
+      "gap_bias_mean_change_m": -1.3312545,
+      "seed_mean_changes_pp": [
+        -7.695135698393941,
+        -7.047809769868205,
+        -7.179647070749575
+      ],
+      "source": "RES-STAGE-0.5-METHOD-EXPANSION-V1/identifiability_summary.json"
+    },
+    "K_tau1.0_minGap5.0": {
+      "brockfeld_gap_error_mean_change_pp": 29.752376944444443,
+      "source": "same"
+    },
+    "tau_profiles": {
+      "tau1.3": 18.31195041666667,
+      "tau1.6": 40.702854277777774,
+      "tau2.0": 72.51292614521273,
+      "unit": "paired Brockfeld gap-error pp increase vs historical K_tau1.0"
+    },
+    "alternatives": {
+      "sigma0": {
+        "evidence": "historical response summary: approximately -6.34 pp; changes stochasticity rather than physical gap",
+        "decision": "not preferred"
+      },
+      "IDM_T1.0": {
+        "evidence": "historical response summary: approximately -5.52 pp; changes model family and is not a one-factor current-B00 modification",
+        "decision": "not preferred"
+      }
+    }
+  },
+  "limitations": [
+    "Historical K_tau1.0 baseline has homogeneous tau=1.0, whereas current B00 A03 has five heterogeneous tau values; therefore the historical minGap effect is not a direct network-level A03 contrast.",
+    "Real standstill minGap is explicitly not identified; candidate is a mechanism diagnostic, not a physical calibration claim.",
+    "No macro pass or formal source P2 support has been demonstrated for this candidate."
+  ],
+  "rejected_or_deferred": [
+    "minGap5.0: historical micro metric worsened",
+    "tau changes: historical paired metric worsened monotonically",
+    "sigma0: not the requested gap mechanism and changes randomness",
+    "IDM/Newell: structural/model-family comparison requires separate approved task"
+  ]
+}

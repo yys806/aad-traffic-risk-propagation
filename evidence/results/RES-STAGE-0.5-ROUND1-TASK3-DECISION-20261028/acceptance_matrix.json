@@ -1,0 +1,84 @@
+{
+  "schema": "aad.stage05.round2.task1-acceptance-matrix.v1",
+  "no_weighted_average": true,
+  "rows": [
+    {
+      "layer": "macro_state_support",
+      "status": "Proposed hard constraint; numeric tolerance not frozen",
+      "metrics": [
+        "30 s block speed mean/SD",
+        "density",
+        "low-speed share",
+        "speed dispersion",
+        "closing-speed distribution",
+        "target-region time support"
+      ],
+      "reference": "state_support_v1 real_domain pooled/per-window envelopes; 2.5/97.5 quantiles and 7.5 veh/km/lane blocks are observed descriptors, not newly approved tolerances",
+      "decision": "No weighted compensation; if existing approved state-support verdict is false or undecidable, stop and report."
+    },
+    {
+      "layer": "micro_interaction",
+      "status": "Engineering/formal measurement fields available; scientific interpretation candidate",
+      "metrics": [
+        "net gap",
+        "closing speed",
+        "relative-motion sign/share",
+        "leader identity",
+        "time continuity <=0.11 s",
+        "same-native-lane/verified connection"
+      ],
+      "reference": "stage_0_5_d1_measurement.py, state-support descriptors, physical-path proposal",
+      "decision": "Require identity-resolved, quality-valid time series; missing is unknown, not zero."
+    },
+    {
+      "layer": "formal_risk",
+      "status": "Formal P2 definition frozen at measurement level; source/target/window still awaiting protocol approval",
+      "metrics": [
+        "source P2 count",
+        "target P2 count",
+        "event duration >=0.2 s",
+        "TTC 0<TTC<2 s",
+        "max gap <=0.11 s",
+        "reliable evaluable exposure",
+        "measurement status"
+      ],
+      "reference": "stage_0_2 formal config and R1 measurement chain",
+      "decision": "Do not alter threshold, duration, continuity, region, window or cohort."
+    },
+    {
+      "layer": "engineering",
+      "status": "Previously accepted B00/R1 checks reusable; candidate must pass anew",
+      "metrics": [
+        "420 s / 8400 native steps",
+        "identity journal",
+        "clock",
+        "vehicle lifecycle",
+        "SUMO receipt",
+        "collision/teleport/discard",
+        "resource limits",
+        "isolation",
+        "input SHA"
+      ],
+      "reference": "B00 A03/R1 independent receipt and admission checks",
+      "decision": "Any hard failure stops the run."
+    },
+    {
+      "layer": "scientific_eligibility",
+      "status": "Proposed gate; requires researcher approval",
+      "metrics": [
+        "all necessary layers above",
+        "source-event physical-path witness",
+        "no post-outcome selection",
+        "independent confirmation eligibility"
+      ],
+      "reference": "five-layer Stage 0.5 protocol design",
+      "decision": "Candidate is eligible for next decision only; not a Stage 0.5 pass or Stage I authorization."
+    }
+  ],
+  "unapproved_tolerances": [
+    "macro delta/coverage tolerance",
+    "Stage 0.6 delta/h/B",
+    "independent-seed confirmation rule"
+  ],
+  "formal_p2_unchanged": true
+}

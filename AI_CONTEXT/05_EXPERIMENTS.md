@@ -302,3 +302,7 @@ R2 结论：情况 A，三臂均未获得合格源事件；按停止规则不追
 
 ## 2026-10-28 First-round offline decision package
 Completed offline-only R0/R1/B00 reconciliation and candidate comparison. No new trajectory, no formal P2 re-execution, no threshold/window/cohort semantic change. Machine evidence includes file audit, candidate matrix, reconciliation, run record, manifest and SHA256SUMS.
+
+## 2026-10-28 Round1 Task3 / Round2 freeze candidate
+
+Completed static Round2 preparation only. Preferred candidate is current B00 A03 heterogeneous Krauss with minGap 2.5→1.0 on all five vTypes; seed20261201, 420s, [120,390), original source/target/cohort and formal P2 unchanged. One primary attempt is proposed; independent seed is conditional and separately authorized. No new trajectory was run.

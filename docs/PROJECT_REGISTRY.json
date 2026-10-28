@@ -316,8 +316,8 @@
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-S0.5-FIRST-ROUND-OFFLINE-DECISION-20261028: complete offline audit and candidate decision package; Stage 0.5 remains blocked",
-  "why_now": "First-round offline audit reconciles R0/R1/B00 sealed evidence, classifies all R1 risk segments, and compares source/target/cohort/path candidates without new simulation.",
+  "active_task": "AAD-S0.5-ROUND1-TASK3: final scientific decision and Round2 freeze candidate prepared; Stage 0.5 remains blocked",
+  "why_now": "Round1 Task3 selects a single minGap=1.0 current-B00 proposal, freezes static Round2 inputs and acceptance rules, and awaits researcher approval without new simulation.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
    "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/count_reconciliation.json",
@@ -1113,7 +1113,8 @@
     "RES-STAGE-0.5-R0-DESIGN-PACKET-20261028",
     "RES-STAGE-0.5-R1-DIAGNOSTICS-20261028",
     "RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028",
-    "RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028"
+    "RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028",
+    "RES-STAGE-0.5-ROUND1-TASK3-DECISION-20261028"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -4597,6 +4598,41 @@
    "scientific_claim_eligible": false,
    "paper_locations": [
     "docs/STAGE_0_5_FIRST_ROUND_OFFLINE_DECISION_20261028.md"
+   ]
+  },
+  {
+   "id": "RES-STAGE-0.5-ROUND1-TASK3-DECISION-20261028",
+   "experiment_id": "stage_0_5",
+   "name": "Stage 0.5 Round1 Task3 scientific decision and Round2 freeze candidate",
+   "status": "ROUND1_ENGINEERING_AND_EVIDENCE_READY_AWAITING_RESEARCHER_DECISION",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-ROUND1-TASK3-DECISION-20261028/decision_matrix.json",
+    "evidence/results/RES-STAGE-0.5-ROUND1-TASK3-DECISION-20261028/candidate_selection.json",
+    "evidence/results/RES-STAGE-0.5-ROUND1-TASK3-DECISION-20261028/round2_experiment_spec.json",
+    "evidence/results/RES-STAGE-0.5-ROUND1-TASK3-DECISION-20261028/acceptance_matrix.json",
+    "evidence/results/RES-STAGE-0.5-ROUND1-TASK3-DECISION-20261028/validation_record.json",
+    "evidence/results/RES-STAGE-0.5-ROUND1-TASK3-DECISION-20261028/manifest.json",
+    "evidence/results/RES-STAGE-0.5-ROUND1-TASK3-DECISION-20261028/SHA256SUMS"
+   ],
+   "local_artifact_paths": [
+    "evidence/admission/AAD-S0.5-ROUND2-TASK1-20261028/candidate-v1"
+   ],
+   "code_version_source": "current Git HEAD 54545f1 and existing Stage 0.5 admission/measurement chain",
+   "configuration_source": "accepted B00 A03 binding plus candidate input binding and round2_experiment_spec.json",
+   "data_version_source": "R0/R1/B00 and first-round decision evidence; no new trajectory and no holdout",
+   "core_metrics": {
+    "historical_micro_runs": 324,
+    "preferred_minGap_m": 1.0,
+    "candidate_primary_attempts": 1,
+    "sumo_launches_this_task": 0,
+    "holdout_reads": 0
+   },
+   "current_conclusion": "Round1 engineering and evidence closure is ready; one current-B00 minGap=1.0 candidate is prepared for researcher approval",
+   "gate_status": "blocked",
+   "scientific_claim_eligible": false,
+   "paper_locations": [
+    "docs/STAGE_0_5_ROUND1_FINAL_DECISION.md",
+    "docs/plans/STAGE_0_5_ROUND2_TASK1_FREEZE_CANDIDATE.md"
    ]
   }
  ],

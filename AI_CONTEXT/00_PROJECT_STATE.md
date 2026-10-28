@@ -1,5 +1,9 @@
 # AAD Current State Snapshot
 
+## Current — 2026-10-28 Round1 Task3 scientific decision and Round2 freeze candidate
+
+Verified: Round1 engineering/evidence closure is ready. The recommended scientific space preserves S_UPSTREAM_MAIN, mainline target lanes 1–5 y[150,350), [120,390) s, C_INPUT_ROUTE and separate auxiliary diagnostics. A single static Round2 candidate is prepared: current B00 A03 heterogeneous Krauss vTypes with only minGap 2.5→1.0. Candidate inputs, decision matrix, acceptance matrix and SHA are bound in RES-STAGE-0.5-ROUND1-TASK3-DECISION-20261028. Status is ROUND1_AWAITING_RESEARCHER_DECISION; SUMO/TraCI=0, Stage 0.5 blocked, Stage 0.6 and Stage I unchanged.
+
 ## Current — 2026-10-28 first-round evidence-consistency repair
 
 Verified: R1 B10/B01/B11 were each executed once and B00 A03 was reused; the first-round package now computes event counts from `event_inventory.csv`, `count_reconciliation.json`, and R1 `arm_comparison.json`. Corrected classification is B11 full 16/19 auxiliary and window 16/17 auxiliary; the remaining full events are two window-outside `target_main` events and one window `other_upstream_mainline` event. Local manifest self-reference is false, SHA256SUMS independently checks all listed payload files plus manifest, and source R0/R1/offline/week SHA bundles pass. Offline regression evidence is saved with 1,353 passed, 28 pyarrow/parquet dependency failures, and 4 skipped; SUMO/TraCI launches remain 0. Stage 0.5 remains blocked; Stage 0.6 and Stage I are unchanged.

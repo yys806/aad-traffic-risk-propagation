@@ -357,3 +357,7 @@ R1 工程执行链已通过三臂独立回执，但科学支持仍受源事件�
 
 ## 2026-10-28 First-round offline blockers
 Verified: no qualified source P2 in any R1 arm; full event counts are not formal P2. Auxiliary lane events, target-outside event and pre-window event are classified. Missing identity/link/boundary observations remain uncertain, not unreachable; event-specific arrival is undefined without a source witness. Stage 0.5 blocked.
+
+## 2026-10-28 Round1 Task3 blockers
+
+The historical minGap=1.0 improvement is from homogeneous K_tau1.0 pair replays and is not a direct network-level B00 A03 validation. Current B00 uses heterogeneous tau; Round2 must test the preserved-heterogeneity candidate. Macro tolerances, physical-path approval and researcher authorization remain pending.

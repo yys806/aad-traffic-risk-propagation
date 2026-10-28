@@ -449,3 +449,9 @@ Zotero 新增 3 条、集合 07/08/09 = 10/2/1；方法索引 18 条 + 状态矩
 
 ## 2026-10-28 First-round offline decision package
 Added docs/STAGE_0_5_FIRST_ROUND_OFFLINE_DECISION_20261028.md, build_stage_0_5_first_round_decision.py, candidate matrix and file/hash audit evidence. Registered result in export_project_evidence.py, PROJECT_REGISTRY.json and RESULTS_INDEX.md. Formal measurement and historical evidence unchanged.
+
+## 2026-10-28 Round1 Task3 / Round2 freeze candidate
+
+Added final Round1 scientific decision report, static Round2 plan, candidate input binding, decision/candidate/acceptance matrices, validation record, manifest and SHA. No SUMO/TraCI launch, formal P2 change, Gate transition or Stage 0.6 freeze.
+
+Static candidate test code/tests/test_stage_0_5_round2_task1_candidate.py added and passed with project-doc tests (14 passed); compileall passed without native launch.

@@ -325,3 +325,7 @@ Agreed：执行 R1 已确认的 `S_UPSTREAM_MAIN`、目标 `[150,350)` m、评�
 
 ## 2026-10-28 First-round offline decisions pending
 Awaiting Researcher Decision: auxiliary lane role; source region among S_UPSTREAM_MAIN/S_DOWNSTREAM_MAIN/S_ONRAMP; C_INPUT_ROUTE versus pre-treatment state cohort; time-expanded physical path witness and onset/confirmation clock semantics. Exploratory comparisons do not freeze any option or change formal P2. No new SUMO authorized or run.
+
+## 2026-10-28 Round1 Task3 decisions pending
+
+Recommendation ready for researcher approval: preserve S_UPSTREAM_MAIN, mainline target, [120,390), C_INPUT_ROUTE, separate auxiliary lane diagnostic, time-indexed physical-path witness, and the unique current-B00 minGap=1.0 candidate. This is Proposed/Ready for Researcher Approval, not Agreed; Stage 0.6 δ/h/B remain unapproved.

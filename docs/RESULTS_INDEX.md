@@ -406,3 +406,7 @@ Stage 0.5-R1 三臂诊断已完成：B10、B01、B11 各一次 420 s / 8400 步�
 第一轮离线决策包完成：逐文件审计、R0/R1/B00交叉核验、事件空间分类、源/目标/cohort/物理路径候选比较均已完成。比较均为 exploratory/non-authoritative；未重算正式P2，SUMO/TraCI=0，未访问holdout。Stage 0.5仍blocked。报告 docs/STAGE_0_5_FIRST_ROUND_OFFLINE_DECISION_20261028.md；证据 evidence/results/RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028/。
 
 First-round repair update: B11 is verified from event_inventory.csv as 16/19 auxiliary full events and 16/17 auxiliary window onsets; local manifest self-reference is false and independent SHA validation is recorded in validation_summary.json. Regression evidence records 1353 passed, 28 pyarrow/parquet failures, 4 skipped, with SUMO/TraCI=0.
+
+## RES-STAGE-0.5-ROUND1-TASK3-DECISION-20261028
+
+第一轮任务3完成科学决策建议与第二轮冻结候选：推荐保留S_UPSTREAM_MAIN、主线目标区、[120,390)窗口、C_INPUT_ROUTE，辅助车道独立诊断；唯一Round2首选为当前B00异质Krauss配置仅将五类minGap从2.5改为1.0。静态候选输入、联合验收矩阵、决策矩阵和SHA已生成，状态为ROUND1_ENGINEERING_AND_EVIDENCE_READY_AWAITING_RESEARCHER_DECISION；SUMO/TraCI=0，Stage0.5 Gate仍blocked。报告 docs/STAGE_0_5_ROUND1_FINAL_DECISION.md；计划 docs/plans/STAGE_0_5_ROUND2_TASK1_FREEZE_CANDIDATE.md；证据 evidence/results/RES-STAGE-0.5-ROUND1-TASK3-DECISION-20261028/。

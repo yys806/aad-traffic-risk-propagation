@@ -1,0 +1,89 @@
+{
+  "schema": "aad.stage05.round1-task3-decision-matrix.v1",
+  "status": "ROUND1_AWAITING_RESEARCHER_DECISION",
+  "rows": [
+    {
+      "item": "formal_source_region",
+      "current_status": "Proposed / Awaiting Researcher Decision",
+      "recommendation": "S_UPSTREAM_MAIN: main_0, lanes 1-5, y[0,150), window [120,390)",
+      "evidence": [
+        "R0 source_target_candidates.json",
+        "R1/offline reconciliation: all arms source P2=0 with reliable exposure; no source event"
+      ],
+      "reason": "Preserves the predeclared upstream estimand and avoids post-outcome spatial expansion; zero source events is retained as a result, not repaired by changing scope.",
+      "researcher_approval_required": true
+    },
+    {
+      "item": "formal_target_region",
+      "current_status": "Proposed diagnostic definition; used unchanged in R1",
+      "recommendation": "mainline lanes 1-5, mapped y[150,350), window [120,390)",
+      "evidence": [
+        "R0 target definition",
+        "R1 measurement acceptance",
+        "state-support real domain"
+      ],
+      "reason": "Existing target is spatially disjoint from source and has accepted 18/18 local support in B00; changing it would alter estimand.",
+      "researcher_approval_required": true
+    },
+    {
+      "item": "evaluation_window",
+      "current_status": "Fixed for R1 diagnostic; not a Stage 0.5 protocol lock",
+      "recommendation": "[120,390) s",
+      "evidence": [
+        "R0/R1 design freeze",
+        "B00/R1 run configs"
+      ],
+      "reason": "Reuses accepted 420 s run and avoids moving the window to capture favorable events.",
+      "researcher_approval_required": true
+    },
+    {
+      "item": "main_cohort",
+      "current_status": "Proposed / used in R1",
+      "recommendation": "C_INPUT_ROUTE, 1112 pre-treatment route-eligible IDs",
+      "evidence": [
+        "source_target_candidates.json",
+        "R1 cohort SHA 76db89e2ff2d9df997516b59a23bc4d88a85c7a016cda6a222f2a8bfee277f8"
+      ],
+      "reason": "Eligibility is pre-treatment and identical across arms; pending/undeparted support remains reported, never zero-filled.",
+      "researcher_approval_required": true
+    },
+    {
+      "item": "auxiliary_lane_role",
+      "current_status": "Awaiting Researcher Decision",
+      "recommendation": "Independent secondary mechanism diagnostic; never pooled into formal mainline P2",
+      "evidence": [
+        "event_inventory.csv: B10 7/7 full auxiliary; B11 16/19 full and 16/17 window auxiliary",
+        "R0 topology candidates"
+      ],
+      "reason": "Explains where observed risk segments occur without changing the primary estimand.",
+      "researcher_approval_required": true
+    },
+    {
+      "item": "physical_path_rule",
+      "current_status": "Proposed / Awaiting Researcher Decision",
+      "recommendation": "Identity continuity + <=0.11 s continuity + verified native lane connection + time-indexed leader→follower witness; report onset, confirmation, physical witness and message clock separately",
+      "evidence": [
+        "R1 physical_path_audit.json",
+        "R0 topology_candidate_audit.json",
+        "formal config source_event"
+      ],
+      "reason": "Separates road reachability from influence evidence and preserves missing/uncertain states. No event-specific arrival can be generated without a source witness.",
+      "researcher_approval_required": true
+    },
+    {
+      "item": "round2_candidate",
+      "current_status": "Proposed / Ready for Researcher Approval",
+      "recommendation": "Current B00 A03 heterogeneous Krauss vTypes, only minGap 2.5→1.0 for all five B_het classes",
+      "evidence": [
+        "A03 routes.rou.xml actual vTypes",
+        "METHOD-EXPANSION response_plan/identifiability_summary",
+        "candidate input binding"
+      ],
+      "reason": "Strongest existing single-factor micro diagnostic signal, while preserving current B00 heterogeneity; historical minGap result is not itself a network-level validation.",
+      "researcher_approval_required": true
+    }
+  ],
+  "formal_semantics_unchanged": true,
+  "new_sumo_launches": 0,
+  "holdout_reads": 0
+}
