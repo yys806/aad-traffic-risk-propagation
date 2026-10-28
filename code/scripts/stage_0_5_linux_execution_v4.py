@@ -93,6 +93,9 @@ def validate_round2_task1_min_gap_candidate(root, proposal, run, base_run):
             "round2_minGap_wrong_candidate_id")
     require(proposal.get("round2_baseline_run_id") == ROUND2_TASK1_BASE_RUN,
             "round2_minGap_wrong_baseline_run")
+    require(proposal.get("round2_factor") == dict(
+        attribute="minGap", from_m=2.5, to_m=1.0,
+        vtypes=list(ROUND2_TASK1_TARGET_VTYPES)), "round2_minGap_factor_definition_changed")
     require(proposal.get("task_id") == TASK and run.get("task_id") == TASK,
             "round2_minGap_wrong_task_id")
     require(run.get("id") == ROUND2_TASK1_CANDIDATE,
