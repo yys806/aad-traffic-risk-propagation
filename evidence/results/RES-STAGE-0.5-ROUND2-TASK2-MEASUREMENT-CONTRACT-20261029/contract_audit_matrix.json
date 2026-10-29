@@ -1,0 +1,87 @@
+{
+  "rows": [
+    {
+      "D1": "requires ttc_valid, status=valid and TTC>0",
+      "SUMO_native": "compute_sumo_measurements requires finite gap/closing and ttc_valid",
+      "dimension": "ttc_positive_finite_direction",
+      "evidence": "synthetic/non_positive_ttc; source report rule table",
+      "formal_P2": "positive finite TTC from positive gap and positive closing",
+      "formal_aligned": "reuses projected ttc_valid but does not repair inconsistent input",
+      "verdict": "interface_difference_reproduced"
+    },
+    {
+      "D1": "100ms grid and 0.2 span with 1e-9 tolerance",
+      "SUMO_native": "same threshold/span and cadence guard",
+      "dimension": "threshold_duration_cadence",
+      "evidence": "existing_boundary_matrix + synthetic threshold/duration/missing-frame cases",
+      "formal_P2": "0<TTC<2; span>=0.2; 100ms; max gap 0.11s",
+      "formal_aligned": "same extractor; nonstandard cadence explicitly non-comparable",
+      "verdict": "engineering_consistent_only"
+    },
+    {
+      "D1": "run/scenario/vehicle/incarnation plus leader pair",
+      "SUMO_native": "run-scoped incarnation and resolved leader",
+      "dimension": "identity_pair_incarnation",
+      "evidence": "leader_switch and incarnation_change cases",
+      "formal_P2": "trajectory/leader trajectory scope",
+      "formal_aligned": "incarnation mapped to trajectory_id",
+      "verdict": "continuity_split_verified"
+    },
+    {
+      "D1": "both endpoints must be false",
+      "SUMO_native": "flags are consumed by following_link_is_valid",
+      "dimension": "explicit_flags",
+      "evidence": "identity_break and observation_gap cases",
+      "formal_P2": "identity_break/observation_gap block links",
+      "formal_aligned": "build_sumo_formal_source_frame resets both flags false",
+      "verdict": "not_equivalent_pending_researcher"
+    },
+    {
+      "D1": "requires ordered 100ms grid and frame increments",
+      "SUMO_native": "observation_index and time_s are checked",
+      "dimension": "clock_frame_order",
+      "evidence": "late-entry/missing-frame existing matrix; task2 inputs",
+      "formal_P2": "original row/frame and absolute clock are auditable",
+      "formal_aligned": "row/frame are adapter-defined and renumbered",
+      "verdict": "time_delta_comparable_absolute_origin_different"
+    },
+    {
+      "D1": "same native lane required",
+      "SUMO_native": "general pair continuity does not require same native lane",
+      "dimension": "lane_and_path",
+      "evidence": "native_lane_id_change and connected_road_boundary cases",
+      "formal_P2": "formal source does not silently infer physical path",
+      "formal_aligned": "lane is mapped but no path witness is created",
+      "verdict": "candidate_A_B_C_pending"
+    },
+    {
+      "D1": "missing and not_applicable excluded from reliable risk",
+      "SUMO_native": "no leader=not_applicable; unresolved identity=missing",
+      "dimension": "missing_unknown",
+      "evidence": "no_leader_boundary_missing; source 1061/1409 boundary missing",
+      "formal_P2": "missing/no leader/boundary remain unknown",
+      "formal_aligned": "field projection preserves status but not all provenance",
+      "verdict": "unknown_preserved"
+    },
+    {
+      "D1": "local same-lane evaluable links and onset attribution",
+      "SUMO_native": "compute_exposure reports engineering exposure",
+      "dimension": "P2_vs_D1_exposure",
+      "evidence": "all synthetic outputs and post-R2 exposure 8457.4/8900.0 veh-s",
+      "formal_P2": "formal event qualification is separate from local D1 denominator",
+      "formal_aligned": "formal event count only; no scientific rate acceptance",
+      "verdict": "not_interchangeable"
+    },
+    {
+      "D1": "short/right-censored incomplete candidates retained; no universal exit reason",
+      "SUMO_native": "exit_reason vocabulary emitted",
+      "dimension": "censoring_and_reentry",
+      "evidence": "right-censored and risk_exit_then_reentry existing cases plus task2 cases",
+      "formal_P2": "threshold exit/leader switch/continuity break/right censoring separated",
+      "formal_aligned": "extractor emits exit_reason",
+      "verdict": "native_detail_exceeds_D1"
+    }
+  ],
+  "schema_version": "aad.stage0.5.round2.task2.contract-audit.v1",
+  "status": "verified_offline_scientific_equivalence_pending"
+}

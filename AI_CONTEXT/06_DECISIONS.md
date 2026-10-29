@@ -1,3 +1,7 @@
+## AAD-S0.5-ROUND2-TASK2-MEASUREMENT-CONTRACT-20261029
+
+Agreed scope: offline contract audit only. Proposed choices A/B/C are evidence for researcher decision, not a scientific freeze; production rules, thresholds, Rule A and Gate states are unchanged.
+
 ## Current — 2026-10-29 Post-R2 diagnostic decision boundary
 
 Verified: no scientific design decision or execution authorization changed. Existing Rule A and research space remain Agreed. Proposal only: independent offline measurement-contract review before any new mechanism experiment. Formal/native/D1 continuity counterexamples require researcher adjudication; no scientific equivalence approval, new seed or third-round authority inferred. docs/STAGE_0_5_POST_R2_OFFLINE_DIAGNOSTIC_20261029.md

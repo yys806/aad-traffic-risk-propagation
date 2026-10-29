@@ -317,12 +317,16 @@
   "docs/STAGE_0_5_POST_R2_OFFLINE_DIAGNOSTIC_20261029.md",
   "code/scripts/analyze_stage_0_5_post_r2_offline_diagnostic.py",
   "code/scripts/verify_stage_0_5_post_r2_offline_diagnostic.py",
-  "code/tests/test_stage_0_5_post_r2_offline_diagnostic.py"
+  "code/tests/test_stage_0_5_post_r2_offline_diagnostic.py",
+  "docs/STAGE_0_5_ROUND2_TASK2_MEASUREMENT_CONTRACT_20261029.md",
+  "code/scripts/audit_stage_0_5_round2_task2_measurement_contract.py",
+  "code/scripts/register_stage_0_5_round2_task2_literature.py",
+  "code/scripts/synchronize_stage_0_5_round2_task2_context.py"
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-S0.5-POST-R2-TASK1-20261029: offline diagnostic complete; source threshold hits absent; scientific equivalence pending",
-  "why_now": "Completed Round2 candidate has no source P2; exact sealed-state diagnosis distinguishes absent threshold states from duration and measurement-contract gaps.",
+  "active_task": "AAD-S0.5-ROUND2-TASK2-MEASUREMENT-CONTRACT-20261029: offline audit complete; scientific equivalence and A/B/C choice pending researcher decision",
+  "why_now": "Round2 Task2 reused sealed post-R2 evidence to audit formal P2, SUMO-native, formal-aligned and D1 measurement contracts without new simulation.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
    "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/count_reconciliation.json",
@@ -1127,7 +1131,8 @@
     "RES-STAGE-0.5-ROUND1-TASK3-DECISION-20261028",
     "RES-STAGE-0.5-ROUND2-TASK1-PREFLIGHT-20261028",
     "RES-STAGE-0.5-ROUND2-TASK1-20261028",
-    "RES-STAGE-0.5-POST-R2-OFFLINE-DIAG-20261029"
+    "RES-STAGE-0.5-POST-R2-OFFLINE-DIAG-20261029",
+    "RES-STAGE-0.5-ROUND2-TASK2-MEASUREMENT-CONTRACT-20261029"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -4767,6 +4772,44 @@
    "gate_status": "blocked",
    "paper_locations": [
     "docs/STAGE_0_5_POST_R2_OFFLINE_DIAGNOSTIC_20261029.md"
+   ],
+   "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-STAGE-0.5-ROUND2-TASK2-MEASUREMENT-CONTRACT-20261029",
+   "experiment_id": "stage_0_5",
+   "name": "Round2 Task2 offline measurement-contract audit and scientific-equivalence evidence",
+   "status": "verified_offline_scientific_decision_pending",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK2-MEASUREMENT-CONTRACT-20261029/manifest.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK2-MEASUREMENT-CONTRACT-20261029/SHA256SUMS",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK2-MEASUREMENT-CONTRACT-20261029/validation_record.json"
+   ],
+   "local_artifact_paths": [
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK2-MEASUREMENT-CONTRACT-20261029"
+   ],
+   "code_version_source": "source_bindings.json in the task evidence package",
+   "configuration_source": "unchanged stage_0_2_formal_risk_measurement_p2_v1.json and current Stage 0.5 adapters",
+   "data_version_source": "sealed post-R2 B00/candidate evidence; no new trajectories",
+   "core_metrics": {
+    "synthetic_cases": 16,
+    "candidate_rules": [
+     "A_strict_native_lane",
+     "B_connected_boundary",
+     "C_pair_time_continuity"
+    ],
+    "new_native_launches": 0,
+    "new_trajectories": 0,
+    "holdout_reads": 0,
+    "formal_equivalence_accepted": false,
+    "zotero_new_items": 8,
+    "zotero_existing_reused": 1,
+    "full_text_attachments_created": 0
+   },
+   "current_conclusion": "Synthetic cases reproduce interface differences and candidate-rule impacts. Sealed source evidence still has zero observed formal P2 states; no interface difference is established as its cause. A/B/C and flag/time provenance remain for researcher decision.",
+   "gate_status": "blocked",
+   "paper_locations": [
+    "docs/STAGE_0_5_ROUND2_TASK2_MEASUREMENT_CONTRACT_20261029.md"
    ],
    "scientific_claim_eligible": false
   }

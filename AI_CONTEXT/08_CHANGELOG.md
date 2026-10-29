@@ -1,3 +1,7 @@
+## AAD-S0.5-ROUND2-TASK2-MEASUREMENT-CONTRACT-20261029
+
+Added the offline contract-audit evidence package, 16-case synthetic inputs/results, candidate A/B/C comparison, sealed-evidence reuse index and Zotero dedup/acquisition ledger. No formal implementation or Gate state changed.
+
 ## 2026-10-29 Post-R2 offline diagnostic
 - Post-R2 supplemental provenance: explicitly named authorized OB roadmap read-only crosscheck agrees with conditional third-round stop rule; actual committed Git-only checks pass. No science or authorization change.
 

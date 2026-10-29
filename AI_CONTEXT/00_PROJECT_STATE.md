@@ -1,3 +1,8 @@
+## Current — AAD-S0.5-ROUND2-TASK2-MEASUREMENT-CONTRACT-20261029
+
+Verified offline measurement-contract audit: 16 deterministic synthetic cases reproduce formal P2, SUMO-native, formal-aligned and D1 differences; candidate A/B/C remain pending researcher adjudication. Reused post-R2 sealed evidence; no SUMO/TraCI/new trajectories/holdout. Stage 0.5 Gate, Stage 0.6, Protocol Lock, Stage I and Round3 unchanged.
+Report: docs/STAGE_0_5_ROUND2_TASK2_MEASUREMENT_CONTRACT_20261029.md; evidence: evidence/results/RES-STAGE-0.5-ROUND2-TASK2-MEASUREMENT-CONTRACT-20261029/.
+
 ## Current — 2026-10-29 Post-R2 offline mechanism diagnostic
 
 Verified offline reconstruction of all 610725/645369 sealed states reproduces source D1 exactly: 86234/91058 source observations; 8457.4/8900.0 evaluable veh-s; no 0<TTC<2 state and no source onset. [2,3) diagnostic support is 30/29 states in 4/3 segments; minimum TTC 2.157878/2.673198 s. No observed short formal-risk segment was blocked by duration. Missing lane-boundary support remains Unknown. Target m00485/r00036 remains one target-only event, not source propagation. D1/native/formal-aligned lane and explicit-flag contracts differ in new synthetic counterexamples; formal_equivalence_accepted remains false. SUMO/TraCI/new trajectories/holdout=0. Stage 0.5 Gate, Stage 0.6, Protocol Lock and Stage I unchanged. Report: docs/STAGE_0_5_POST_R2_OFFLINE_DIAGNOSTIC_20261029.md; evidence: evidence/results/RES-STAGE-0.5-POST-R2-OFFLINE-DIAG-20261029/. Full offline regression: 1415 passed, 28 failed, 4 skipped, 7 native tests excluded; individual dependency evidence retained. Older entries below are historical snapshots.

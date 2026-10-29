@@ -1,0 +1,1015 @@
+{
+  "candidates": {
+    "A": "strict same native lane; conservative path proxy; candidate only",
+    "B": "allow connected road boundary with continuous pair/time witness; candidate only",
+    "C": "general pair/time continuity for P2, lane/path qualification reported separately; candidate only"
+  },
+  "recommendation": "No formal recommendation is accepted by this package. Preserve current Rule A and ask the researcher to choose whether B or C is scientifically estimand-aligned before any production change.",
+  "rows": [
+    {
+      "A": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.2,
+            "end_s": 0.4,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 5,
+            "onset_s": 0.0
+          }
+        ],
+        "exposure_s": 0.4,
+        "incomplete": [],
+        "physical_path_qualification": "same_native_lane",
+        "unknown_boundary_links": 0
+      },
+      "B": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.2,
+            "end_s": 0.4,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 5,
+            "onset_s": 0.0
+          }
+        ],
+        "exposure_s": 0.4,
+        "incomplete": [],
+        "physical_path_qualification": "connected_boundary_witness",
+        "unknown_boundary_links": 0
+      },
+      "C": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.2,
+            "end_s": 0.4,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 5,
+            "onset_s": 0.0
+          }
+        ],
+        "exposure_s": 0.4,
+        "incomplete": [],
+        "physical_path_qualification": "separate_from_pair_P2",
+        "unknown_boundary_links": 0
+      },
+      "case": "normal_continuous_following",
+      "interpretation": "B admits only an explicit connected-boundary witness; C keeps physical-path qualification separate"
+    },
+    {
+      "A": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.2,
+            "end_s": 0.2,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 3,
+            "onset_s": 0.0
+          }
+        ],
+        "exposure_s": 0.30000000000000004,
+        "incomplete": [
+          {
+            "end_s": 0.4,
+            "onset_s": 0.3,
+            "status": "observed_short_risk"
+          }
+        ],
+        "physical_path_qualification": "same_native_lane",
+        "unknown_boundary_links": 1
+      },
+      "B": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.2,
+            "end_s": 0.2,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 3,
+            "onset_s": 0.0
+          }
+        ],
+        "exposure_s": 0.30000000000000004,
+        "incomplete": [
+          {
+            "end_s": 0.4,
+            "onset_s": 0.3,
+            "status": "observed_short_risk"
+          }
+        ],
+        "physical_path_qualification": "connected_boundary_witness",
+        "unknown_boundary_links": 1
+      },
+      "C": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.2,
+            "end_s": 0.4,
+            "lane_end": "main_0_1",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 5,
+            "onset_s": 0.0
+          }
+        ],
+        "exposure_s": 0.4,
+        "incomplete": [],
+        "physical_path_qualification": "separate_from_pair_P2",
+        "unknown_boundary_links": 0
+      },
+      "case": "native_lane_id_change_no_connection",
+      "interpretation": "B admits only an explicit connected-boundary witness; C keeps physical-path qualification separate"
+    },
+    {
+      "A": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.2,
+            "end_s": 0.2,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 3,
+            "onset_s": 0.0
+          }
+        ],
+        "exposure_s": 0.30000000000000004,
+        "incomplete": [
+          {
+            "end_s": 0.4,
+            "onset_s": 0.3,
+            "status": "observed_short_risk"
+          }
+        ],
+        "physical_path_qualification": "same_native_lane",
+        "unknown_boundary_links": 1
+      },
+      "B": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.2,
+            "end_s": 0.4,
+            "lane_end": "main_1_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 5,
+            "onset_s": 0.0
+          }
+        ],
+        "exposure_s": 0.4,
+        "incomplete": [],
+        "physical_path_qualification": "connected_boundary_witness",
+        "unknown_boundary_links": 0
+      },
+      "C": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.2,
+            "end_s": 0.4,
+            "lane_end": "main_1_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 5,
+            "onset_s": 0.0
+          }
+        ],
+        "exposure_s": 0.4,
+        "incomplete": [],
+        "physical_path_qualification": "separate_from_pair_P2",
+        "unknown_boundary_links": 0
+      },
+      "case": "connected_road_boundary",
+      "interpretation": "B admits only an explicit connected-boundary witness; C keeps physical-path qualification separate"
+    },
+    {
+      "A": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.4,
+            "end_s": 0.4,
+            "lane_end": "main_0_1",
+            "lane_start": "main_0_1",
+            "leader_id": "l",
+            "members": 3,
+            "onset_s": 0.2
+          }
+        ],
+        "exposure_s": 0.30000000000000004,
+        "incomplete": [
+          {
+            "end_s": 0.1,
+            "onset_s": 0.0,
+            "status": "observed_short_risk"
+          }
+        ],
+        "physical_path_qualification": "same_native_lane",
+        "unknown_boundary_links": 1
+      },
+      "B": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.4,
+            "end_s": 0.4,
+            "lane_end": "main_0_1",
+            "lane_start": "main_0_1",
+            "leader_id": "l",
+            "members": 3,
+            "onset_s": 0.2
+          }
+        ],
+        "exposure_s": 0.30000000000000004,
+        "incomplete": [
+          {
+            "end_s": 0.1,
+            "onset_s": 0.0,
+            "status": "observed_short_risk"
+          }
+        ],
+        "physical_path_qualification": "connected_boundary_witness",
+        "unknown_boundary_links": 1
+      },
+      "C": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.2,
+            "end_s": 0.4,
+            "lane_end": "main_0_1",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 5,
+            "onset_s": 0.0
+          }
+        ],
+        "exposure_s": 0.4,
+        "incomplete": [],
+        "physical_path_qualification": "separate_from_pair_P2",
+        "unknown_boundary_links": 0
+      },
+      "case": "real_lane_change",
+      "interpretation": "B admits only an explicit connected-boundary witness; C keeps physical-path qualification separate"
+    },
+    {
+      "A": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.4,
+            "end_s": 0.4,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l2",
+            "members": 3,
+            "onset_s": 0.2
+          }
+        ],
+        "exposure_s": 0.30000000000000004,
+        "incomplete": [
+          {
+            "end_s": 0.1,
+            "onset_s": 0.0,
+            "status": "observed_short_risk"
+          }
+        ],
+        "physical_path_qualification": "same_native_lane",
+        "unknown_boundary_links": 0
+      },
+      "B": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.4,
+            "end_s": 0.4,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l2",
+            "members": 3,
+            "onset_s": 0.2
+          }
+        ],
+        "exposure_s": 0.30000000000000004,
+        "incomplete": [
+          {
+            "end_s": 0.1,
+            "onset_s": 0.0,
+            "status": "observed_short_risk"
+          }
+        ],
+        "physical_path_qualification": "connected_boundary_witness",
+        "unknown_boundary_links": 0
+      },
+      "C": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.4,
+            "end_s": 0.4,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l2",
+            "members": 3,
+            "onset_s": 0.2
+          }
+        ],
+        "exposure_s": 0.30000000000000004,
+        "incomplete": [
+          {
+            "end_s": 0.1,
+            "onset_s": 0.0,
+            "status": "observed_short_risk"
+          }
+        ],
+        "physical_path_qualification": "separate_from_pair_P2",
+        "unknown_boundary_links": 0
+      },
+      "case": "leader_switch",
+      "interpretation": "B admits only an explicit connected-boundary witness; C keeps physical-path qualification separate"
+    },
+    {
+      "A": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.2,
+            "end_s": 0.2,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 3,
+            "onset_s": 0.0
+          }
+        ],
+        "exposure_s": 0.30000000000000004,
+        "incomplete": [
+          {
+            "end_s": 0.4,
+            "onset_s": 0.3,
+            "status": "observed_short_risk"
+          }
+        ],
+        "physical_path_qualification": "same_native_lane",
+        "unknown_boundary_links": 0
+      },
+      "B": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.2,
+            "end_s": 0.2,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 3,
+            "onset_s": 0.0
+          }
+        ],
+        "exposure_s": 0.30000000000000004,
+        "incomplete": [
+          {
+            "end_s": 0.4,
+            "onset_s": 0.3,
+            "status": "observed_short_risk"
+          }
+        ],
+        "physical_path_qualification": "connected_boundary_witness",
+        "unknown_boundary_links": 0
+      },
+      "C": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.2,
+            "end_s": 0.2,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 3,
+            "onset_s": 0.0
+          }
+        ],
+        "exposure_s": 0.30000000000000004,
+        "incomplete": [
+          {
+            "end_s": 0.4,
+            "onset_s": 0.3,
+            "status": "observed_short_risk"
+          }
+        ],
+        "physical_path_qualification": "separate_from_pair_P2",
+        "unknown_boundary_links": 0
+      },
+      "case": "incarnation_change",
+      "interpretation": "B admits only an explicit connected-boundary witness; C keeps physical-path qualification separate"
+    },
+    {
+      "A": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.2,
+            "end_s": 0.2,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 3,
+            "onset_s": 0.0
+          }
+        ],
+        "exposure_s": 0.2,
+        "incomplete": [
+          {
+            "end_s": 0.3,
+            "onset_s": 0.3,
+            "status": "observed_short_risk"
+          },
+          {
+            "end_s": 0.4,
+            "onset_s": 0.4,
+            "status": "observed_short_risk"
+          }
+        ],
+        "physical_path_qualification": "same_native_lane",
+        "unknown_boundary_links": 0
+      },
+      "B": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.2,
+            "end_s": 0.2,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 3,
+            "onset_s": 0.0
+          }
+        ],
+        "exposure_s": 0.2,
+        "incomplete": [
+          {
+            "end_s": 0.3,
+            "onset_s": 0.3,
+            "status": "observed_short_risk"
+          },
+          {
+            "end_s": 0.4,
+            "onset_s": 0.4,
+            "status": "observed_short_risk"
+          }
+        ],
+        "physical_path_qualification": "connected_boundary_witness",
+        "unknown_boundary_links": 0
+      },
+      "C": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.2,
+            "end_s": 0.2,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 3,
+            "onset_s": 0.0
+          }
+        ],
+        "exposure_s": 0.2,
+        "incomplete": [
+          {
+            "end_s": 0.3,
+            "onset_s": 0.3,
+            "status": "observed_short_risk"
+          },
+          {
+            "end_s": 0.4,
+            "onset_s": 0.4,
+            "status": "observed_short_risk"
+          }
+        ],
+        "physical_path_qualification": "separate_from_pair_P2",
+        "unknown_boundary_links": 0
+      },
+      "case": "identity_break",
+      "interpretation": "B admits only an explicit connected-boundary witness; C keeps physical-path qualification separate"
+    },
+    {
+      "A": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.2,
+            "end_s": 0.2,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 3,
+            "onset_s": 0.0
+          }
+        ],
+        "exposure_s": 0.2,
+        "incomplete": [
+          {
+            "end_s": 0.3,
+            "onset_s": 0.3,
+            "status": "observed_short_risk"
+          },
+          {
+            "end_s": 0.4,
+            "onset_s": 0.4,
+            "status": "observed_short_risk"
+          }
+        ],
+        "physical_path_qualification": "same_native_lane",
+        "unknown_boundary_links": 0
+      },
+      "B": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.2,
+            "end_s": 0.2,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 3,
+            "onset_s": 0.0
+          }
+        ],
+        "exposure_s": 0.2,
+        "incomplete": [
+          {
+            "end_s": 0.3,
+            "onset_s": 0.3,
+            "status": "observed_short_risk"
+          },
+          {
+            "end_s": 0.4,
+            "onset_s": 0.4,
+            "status": "observed_short_risk"
+          }
+        ],
+        "physical_path_qualification": "connected_boundary_witness",
+        "unknown_boundary_links": 0
+      },
+      "C": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.2,
+            "end_s": 0.2,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 3,
+            "onset_s": 0.0
+          }
+        ],
+        "exposure_s": 0.2,
+        "incomplete": [
+          {
+            "end_s": 0.3,
+            "onset_s": 0.3,
+            "status": "observed_short_risk"
+          },
+          {
+            "end_s": 0.4,
+            "onset_s": 0.4,
+            "status": "observed_short_risk"
+          }
+        ],
+        "physical_path_qualification": "separate_from_pair_P2",
+        "unknown_boundary_links": 0
+      },
+      "case": "observation_gap_flag",
+      "interpretation": "B admits only an explicit connected-boundary witness; C keeps physical-path qualification separate"
+    },
+    {
+      "A": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.5,
+            "end_s": 0.5,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 3,
+            "onset_s": 0.3
+          }
+        ],
+        "exposure_s": 0.30000000000000004,
+        "incomplete": [
+          {
+            "end_s": 0.1,
+            "onset_s": 0.0,
+            "status": "observed_short_risk"
+          }
+        ],
+        "physical_path_qualification": "same_native_lane",
+        "unknown_boundary_links": 0
+      },
+      "B": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.5,
+            "end_s": 0.5,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 3,
+            "onset_s": 0.3
+          }
+        ],
+        "exposure_s": 0.30000000000000004,
+        "incomplete": [
+          {
+            "end_s": 0.1,
+            "onset_s": 0.0,
+            "status": "observed_short_risk"
+          }
+        ],
+        "physical_path_qualification": "connected_boundary_witness",
+        "unknown_boundary_links": 0
+      },
+      "C": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.5,
+            "end_s": 0.5,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 3,
+            "onset_s": 0.3
+          }
+        ],
+        "exposure_s": 0.30000000000000004,
+        "incomplete": [
+          {
+            "end_s": 0.1,
+            "onset_s": 0.0,
+            "status": "observed_short_risk"
+          }
+        ],
+        "physical_path_qualification": "separate_from_pair_P2",
+        "unknown_boundary_links": 0
+      },
+      "case": "missing_recorded_frame",
+      "interpretation": "B admits only an explicit connected-boundary witness; C keeps physical-path qualification separate"
+    },
+    {
+      "A": {
+        "event_count": 0,
+        "events": [],
+        "exposure_s": 0.30000000000000004,
+        "incomplete": [],
+        "physical_path_qualification": "same_native_lane",
+        "unknown_boundary_links": 0
+      },
+      "B": {
+        "event_count": 0,
+        "events": [],
+        "exposure_s": 0.30000000000000004,
+        "incomplete": [],
+        "physical_path_qualification": "connected_boundary_witness",
+        "unknown_boundary_links": 0
+      },
+      "C": {
+        "event_count": 0,
+        "events": [],
+        "exposure_s": 0.30000000000000004,
+        "incomplete": [],
+        "physical_path_qualification": "separate_from_pair_P2",
+        "unknown_boundary_links": 0
+      },
+      "case": "non_positive_ttc_input",
+      "interpretation": "B admits only an explicit connected-boundary witness; C keeps physical-path qualification separate"
+    },
+    {
+      "A": {
+        "event_count": 0,
+        "events": [],
+        "exposure_s": 0.30000000000000004,
+        "incomplete": [],
+        "physical_path_qualification": "same_native_lane",
+        "unknown_boundary_links": 0
+      },
+      "B": {
+        "event_count": 0,
+        "events": [],
+        "exposure_s": 0.30000000000000004,
+        "incomplete": [],
+        "physical_path_qualification": "connected_boundary_witness",
+        "unknown_boundary_links": 0
+      },
+      "C": {
+        "event_count": 0,
+        "events": [],
+        "exposure_s": 0.30000000000000004,
+        "incomplete": [],
+        "physical_path_qualification": "separate_from_pair_P2",
+        "unknown_boundary_links": 0
+      },
+      "case": "threshold_exactly_2s",
+      "interpretation": "B admits only an explicit connected-boundary witness; C keeps physical-path qualification separate"
+    },
+    {
+      "A": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.2,
+            "end_s": 0.2,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 3,
+            "onset_s": 0.0
+          }
+        ],
+        "exposure_s": 0.2,
+        "incomplete": [],
+        "physical_path_qualification": "same_native_lane",
+        "unknown_boundary_links": 0
+      },
+      "B": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.2,
+            "end_s": 0.2,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 3,
+            "onset_s": 0.0
+          }
+        ],
+        "exposure_s": 0.2,
+        "incomplete": [],
+        "physical_path_qualification": "connected_boundary_witness",
+        "unknown_boundary_links": 0
+      },
+      "C": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.2,
+            "end_s": 0.2,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 3,
+            "onset_s": 0.0
+          }
+        ],
+        "exposure_s": 0.2,
+        "incomplete": [],
+        "physical_path_qualification": "separate_from_pair_P2",
+        "unknown_boundary_links": 0
+      },
+      "case": "minimum_duration_exactly_0_2s",
+      "interpretation": "B admits only an explicit connected-boundary witness; C keeps physical-path qualification separate"
+    },
+    {
+      "A": {
+        "event_count": 0,
+        "events": [],
+        "exposure_s": 0.1,
+        "incomplete": [
+          {
+            "end_s": 0.1,
+            "onset_s": 0.0,
+            "status": "observed_short_risk"
+          }
+        ],
+        "physical_path_qualification": "same_native_lane",
+        "unknown_boundary_links": 0
+      },
+      "B": {
+        "event_count": 0,
+        "events": [],
+        "exposure_s": 0.1,
+        "incomplete": [
+          {
+            "end_s": 0.1,
+            "onset_s": 0.0,
+            "status": "observed_short_risk"
+          }
+        ],
+        "physical_path_qualification": "connected_boundary_witness",
+        "unknown_boundary_links": 0
+      },
+      "C": {
+        "event_count": 0,
+        "events": [],
+        "exposure_s": 0.1,
+        "incomplete": [
+          {
+            "end_s": 0.1,
+            "onset_s": 0.0,
+            "status": "observed_short_risk"
+          }
+        ],
+        "physical_path_qualification": "separate_from_pair_P2",
+        "unknown_boundary_links": 0
+      },
+      "case": "minimum_duration_below_0_2s",
+      "interpretation": "B admits only an explicit connected-boundary witness; C keeps physical-path qualification separate"
+    },
+    {
+      "A": {
+        "event_count": 2,
+        "events": [
+          {
+            "confirmation_s": 0.2,
+            "end_s": 0.2,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 3,
+            "onset_s": 0.0
+          },
+          {
+            "confirmation_s": 0.7,
+            "end_s": 0.8,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 4,
+            "onset_s": 0.5
+          }
+        ],
+        "exposure_s": 0.8,
+        "incomplete": [],
+        "physical_path_qualification": "same_native_lane",
+        "unknown_boundary_links": 0
+      },
+      "B": {
+        "event_count": 2,
+        "events": [
+          {
+            "confirmation_s": 0.2,
+            "end_s": 0.2,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 3,
+            "onset_s": 0.0
+          },
+          {
+            "confirmation_s": 0.7,
+            "end_s": 0.8,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 4,
+            "onset_s": 0.5
+          }
+        ],
+        "exposure_s": 0.8,
+        "incomplete": [],
+        "physical_path_qualification": "connected_boundary_witness",
+        "unknown_boundary_links": 0
+      },
+      "C": {
+        "event_count": 2,
+        "events": [
+          {
+            "confirmation_s": 0.2,
+            "end_s": 0.2,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 3,
+            "onset_s": 0.0
+          },
+          {
+            "confirmation_s": 0.7,
+            "end_s": 0.8,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 4,
+            "onset_s": 0.5
+          }
+        ],
+        "exposure_s": 0.8,
+        "incomplete": [],
+        "physical_path_qualification": "separate_from_pair_P2",
+        "unknown_boundary_links": 0
+      },
+      "case": "risk_exit_then_reentry",
+      "interpretation": "B admits only an explicit connected-boundary witness; C keeps physical-path qualification separate"
+    },
+    {
+      "A": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.2,
+            "end_s": 0.4,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 5,
+            "onset_s": 0.0
+          }
+        ],
+        "exposure_s": 0.4,
+        "incomplete": [],
+        "physical_path_qualification": "same_native_lane",
+        "unknown_boundary_links": 0
+      },
+      "B": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.2,
+            "end_s": 0.4,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 5,
+            "onset_s": 0.0
+          }
+        ],
+        "exposure_s": 0.4,
+        "incomplete": [],
+        "physical_path_qualification": "connected_boundary_witness",
+        "unknown_boundary_links": 0
+      },
+      "C": {
+        "event_count": 1,
+        "events": [
+          {
+            "confirmation_s": 0.2,
+            "end_s": 0.4,
+            "lane_end": "main_0_0",
+            "lane_start": "main_0_0",
+            "leader_id": "l",
+            "members": 5,
+            "onset_s": 0.0
+          }
+        ],
+        "exposure_s": 0.4,
+        "incomplete": [],
+        "physical_path_qualification": "separate_from_pair_P2",
+        "unknown_boundary_links": 0
+      },
+      "case": "window_boundary_onset_outside",
+      "interpretation": "B admits only an explicit connected-boundary witness; C keeps physical-path qualification separate"
+    },
+    {
+      "A": {
+        "event_count": 0,
+        "events": [],
+        "exposure_s": 0.0,
+        "incomplete": [],
+        "physical_path_qualification": "same_native_lane",
+        "unknown_boundary_links": 0
+      },
+      "B": {
+        "event_count": 0,
+        "events": [],
+        "exposure_s": 0.0,
+        "incomplete": [],
+        "physical_path_qualification": "connected_boundary_witness",
+        "unknown_boundary_links": 0
+      },
+      "C": {
+        "event_count": 0,
+        "events": [],
+        "exposure_s": 0.0,
+        "incomplete": [],
+        "physical_path_qualification": "separate_from_pair_P2",
+        "unknown_boundary_links": 0
+      },
+      "case": "no_leader_boundary_missing",
+      "interpretation": "B admits only an explicit connected-boundary witness; C keeps physical-path qualification separate"
+    }
+  ],
+  "schema_version": "aad.stage0.5.round2.task2.candidate-rules.v1",
+  "scientific_equivalence_accepted": false
+}

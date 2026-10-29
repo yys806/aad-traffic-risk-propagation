@@ -1,0 +1,4320 @@
+{
+  "cases": [
+    {
+      "D1": {
+        "error": null,
+        "events": [
+          {
+            "confirm_s": 0.2,
+            "confirmation_after_window": false,
+            "confirmation_in_window": true,
+            "confirmation_inside": true,
+            "end_s": 0.4,
+            "event_id": "d1_255fe9b514a77c080d56",
+            "leader_id": "l",
+            "member_sha256": "6864096e9b7acb439a3710f8f292de4460a6ad4e6c48dd55ee72138f230a4860",
+            "members": 5,
+            "message_earliest_s": 0.2,
+            "onset_in_window": true,
+            "onset_inside": true,
+            "onset_s": 0.0,
+            "through_confirmation_inside": true,
+            "through_end_inside": true,
+            "vehicle_id": "f"
+          }
+        ],
+        "incomplete_candidates": [],
+        "local_evaluable_s": 0.4,
+        "local_links": 4,
+        "onset_events": 1,
+        "unavailable_point_counts": {
+          "not_applicable": 5,
+          "valid": 5
+        }
+      },
+      "candidate_rules": {
+        "A_strict_native_lane": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.2,
+              "end_s": 0.4,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 5,
+              "onset_s": 0.0
+            }
+          ],
+          "exposure_s": 0.4,
+          "incomplete": [],
+          "physical_path_qualification": "same_native_lane",
+          "unknown_boundary_links": 0
+        },
+        "B_connected_boundary": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.2,
+              "end_s": 0.4,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 5,
+              "onset_s": 0.0
+            }
+          ],
+          "exposure_s": 0.4,
+          "incomplete": [],
+          "physical_path_qualification": "connected_boundary_witness",
+          "unknown_boundary_links": 0
+        },
+        "C_pair_time_continuity": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.2,
+              "end_s": 0.4,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 5,
+              "onset_s": 0.0
+            }
+          ],
+          "exposure_s": 0.4,
+          "incomplete": [],
+          "physical_path_qualification": "separate_from_pair_P2",
+          "unknown_boundary_links": 0
+        }
+      },
+      "case": "normal_continuous_following",
+      "formal_aligned": {
+        "audit": {
+          "algorithm_version": "stage_0_2.formal_risk_measurement.v2",
+          "equivalence_status": "pending_measurement_equivalence_review",
+          "field_map": {
+            "dataset": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "constant 'sumo'"
+            },
+            "diagnostic_clock_anchor_ms": {
+              "note": "SUMO has one monotonic simulator clock per process; NGSIM clock-conflict categories are not_applicable_to_simulator_observation",
+              "status": "definitional_constant",
+              "sumo_source": "constant 0 for every recorded state"
+            },
+            "drac_mps2": {
+              "note": "identical closed form to the approved NGSIM pipeline; severity/diagnostic only and never an input to P2 event identity, confirmation or the rate denominator",
+              "status": "adapter_reuses_approved_closed_form_pending_review",
+              "sumo_source": "closing_speed_mps^2 / (2 * net_gap_m), computed only on valid closing rows"
+            },
+            "frame_id": {
+              "note": "increments by exactly one per recorded observation of the same incarnation",
+              "status": "adapter_defined_simulator_frame_index",
+              "sumo_source": "observation_index (per-incarnation recorded observation counter)"
+            },
+            "global_time_ms": {
+              "note": "absolute, not reset per incarnation; late entry therefore keeps real clock time",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "round(time_s * 1000) of the recorded simulator clock"
+            },
+            "identity_break": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation change detection"
+            },
+            "identity_uncertain": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "constant False"
+            },
+            "leader_frame_id": {
+              "note": "joined on the resolved leader incarnation and millisecond clock; missing join fails closed",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "the leader's own observation_index at the same recorded instant"
+            },
+            "leader_identity_uncertain": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader_identity_status != 'observed'"
+            },
+            "leader_matched": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader observed and incarnation-resolved"
+            },
+            "leader_trajectory_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader_incarnation_id"
+            },
+            "measurement_status": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "Stage 0.5 unified quality state"
+            },
+            "observation_gap": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "recorded cadence break detection"
+            },
+            "original_row_number": {
+              "note": "not an NGSIM original row number; never claimed as one",
+              "status": "adapter_defined_simulator_frame_index",
+              "sumo_source": "observation_index (adapter-defined recorded observation counter)"
+            },
+            "site": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "scenario_id"
+            },
+            "source_member": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation_id (run-scoped vehicle identity)"
+            },
+            "source_period": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "experiment_mode"
+            },
+            "time_s": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "traci.simulation.getTime()"
+            },
+            "trajectory_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation_id"
+            },
+            "ttc_s": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "net_gap_m / closing_speed_mps"
+            },
+            "ttc_valid": {
+              "note": "the epsilon is inherited from add_ngsim_leader_ttc(closing_epsilon_mps=1e-3)",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "matched leader, net_gap_m > 0 and closing_speed_mps > NGSIM_CLOSING_EPSILON_MPS (1e-3 m/s)"
+            },
+            "window_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "run_id"
+            }
+          },
+          "formal_comparability": false,
+          "ngsim_only_fields": {
+            "camera_occlusion_or_dropout": "not_applicable_to_simulator_observation",
+            "diagnostic_clock_conflict": "not_applicable_to_simulator_observation",
+            "original_frame_identity_break": "not_applicable_to_simulator_observation",
+            "original_row_ambiguity": "not_applicable_to_simulator_observation"
+          },
+          "raw_candidate_events": 1,
+          "recorded_observation_step_s": 0.1,
+          "rejected_candidate_events": 0,
+          "reliable_candidate_events": 1,
+          "schema_version": "stage_0_5.sumo-engineering.v2.formal-adapter-audit.v1",
+          "scientific_claim_eligible": false
+        },
+        "error": null,
+        "events": [
+          {
+            "event_confirm_s": 0.2,
+            "event_duration_s": 0.4,
+            "event_end_s": 0.4,
+            "event_id": "stage_0_2_e35d1a06157fc902",
+            "event_start_s": 0.0,
+            "exit_reason": "observation_end_right_censored",
+            "leader_id": "l",
+            "leader_trajectory_id": "run|l|0",
+            "raw_frame_count": 5,
+            "trajectory_id": "run|f|0",
+            "vehicle_id": "f"
+          }
+        ]
+      },
+      "interface_semantics": {
+        "D1": "local onset attribution plus same-native-lane exposure; physical path not inferred",
+        "SUMO_native": "engineering event/exposure adapter; native exit reasons retained",
+        "formal_P2": "approved source estimator; formal-aligned adapter is a simulator field projection and remains pending"
+      },
+      "native": {
+        "events": [
+          {
+            "event_confirm_s": 0.2,
+            "event_end_s": 0.4,
+            "event_id": "sumo_p2_engineering::synthetic|us101_highway_baseline|task2_normal_continuous_following|f|run|f|0::0",
+            "event_observed_span_s": 0.4,
+            "event_start_s": 0.0,
+            "exit_reason": "observation_end_right_censored",
+            "incarnation_id": "run|f|0",
+            "inclusion_status": "engineering_only",
+            "leader_id": "l",
+            "leader_incarnation_id": "run|l|0",
+            "raw_frame_count": 5,
+            "ttc_min_s": 1.6666666666666676,
+            "vehicle_id": "f"
+          }
+        ],
+        "exposure": {
+          "adjacency_checks_applied": [
+            "same_follower_incarnation",
+            "same_resolved_leader_identity",
+            "time_delta_equals_cadence",
+            "observation_index_delta",
+            "identity_break",
+            "observation_gap"
+          ],
+          "evaluable_rule": "reliable follower/leader/time link with both endpoint measurement_status in {valid, not_applicable}; excluded links carry no zero-risk interpretation",
+          "exposure_unit": "vehicle-second (converted to vehicle-hour for the event rate)",
+          "externally_audited_adjacency": {
+            "reliable_closing_edge_seconds": null,
+            "reliable_following_edge_seconds": null,
+            "source": "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4 / stage_0_2_exposure_edge_audit"
+          },
+          "formal_rate_eligible": false,
+          "link_max_gap_s": 0.10999999999999999,
+          "not_evaluable_following_exposure_s": 0.0,
+          "not_evaluable_fraction_of_reliable_following": 0.0,
+          "p2_evaluable_following_exposure_s": 0.4,
+          "p2_evaluable_following_vehicle_hours": 0.00011111111111111112,
+          "rate_formula": "p2_event_count / p2_evaluable_following_vehicle_hours",
+          "recorded_observation_step_s": 0.1,
+          "reliable_closing_exposure_s": 0.4,
+          "reliable_following_exposure_s": 0.4,
+          "schema_version": "stage_0_5.sumo-engineering.v2.p2-exposure.v2",
+          "scientific_claim_eligible": false,
+          "status": "pending_measurement_equivalence"
+        }
+      }
+    },
+    {
+      "D1": {
+        "error": null,
+        "events": [
+          {
+            "confirm_s": 0.2,
+            "confirmation_after_window": false,
+            "confirmation_in_window": true,
+            "confirmation_inside": true,
+            "end_s": 0.2,
+            "event_id": "d1_255fe9b514a77c080d56",
+            "leader_id": "l",
+            "member_sha256": "99f772e1ef2bca416bdfa8ab5bf392c838e3a9bc5dd99122677d35a77f99d0cb",
+            "members": 3,
+            "message_earliest_s": 0.2,
+            "onset_in_window": true,
+            "onset_inside": true,
+            "onset_s": 0.0,
+            "through_confirmation_inside": true,
+            "through_end_inside": true,
+            "vehicle_id": "f"
+          }
+        ],
+        "incomplete_candidates": [
+          {
+            "last_s": 0.4,
+            "onset_s": 0.3,
+            "status": "right_censored_unconfirmed"
+          }
+        ],
+        "local_evaluable_s": 0.30000000000000004,
+        "local_links": 3,
+        "onset_events": 1,
+        "unavailable_point_counts": {
+          "not_applicable": 5,
+          "valid": 5
+        }
+      },
+      "candidate_rules": {
+        "A_strict_native_lane": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.2,
+              "end_s": 0.2,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 3,
+              "onset_s": 0.0
+            }
+          ],
+          "exposure_s": 0.30000000000000004,
+          "incomplete": [
+            {
+              "end_s": 0.4,
+              "onset_s": 0.3,
+              "status": "observed_short_risk"
+            }
+          ],
+          "physical_path_qualification": "same_native_lane",
+          "unknown_boundary_links": 1
+        },
+        "B_connected_boundary": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.2,
+              "end_s": 0.2,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 3,
+              "onset_s": 0.0
+            }
+          ],
+          "exposure_s": 0.30000000000000004,
+          "incomplete": [
+            {
+              "end_s": 0.4,
+              "onset_s": 0.3,
+              "status": "observed_short_risk"
+            }
+          ],
+          "physical_path_qualification": "connected_boundary_witness",
+          "unknown_boundary_links": 1
+        },
+        "C_pair_time_continuity": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.2,
+              "end_s": 0.4,
+              "lane_end": "main_0_1",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 5,
+              "onset_s": 0.0
+            }
+          ],
+          "exposure_s": 0.4,
+          "incomplete": [],
+          "physical_path_qualification": "separate_from_pair_P2",
+          "unknown_boundary_links": 0
+        }
+      },
+      "case": "native_lane_id_change_no_connection",
+      "formal_aligned": {
+        "audit": {
+          "algorithm_version": "stage_0_2.formal_risk_measurement.v2",
+          "equivalence_status": "pending_measurement_equivalence_review",
+          "field_map": {
+            "dataset": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "constant 'sumo'"
+            },
+            "diagnostic_clock_anchor_ms": {
+              "note": "SUMO has one monotonic simulator clock per process; NGSIM clock-conflict categories are not_applicable_to_simulator_observation",
+              "status": "definitional_constant",
+              "sumo_source": "constant 0 for every recorded state"
+            },
+            "drac_mps2": {
+              "note": "identical closed form to the approved NGSIM pipeline; severity/diagnostic only and never an input to P2 event identity, confirmation or the rate denominator",
+              "status": "adapter_reuses_approved_closed_form_pending_review",
+              "sumo_source": "closing_speed_mps^2 / (2 * net_gap_m), computed only on valid closing rows"
+            },
+            "frame_id": {
+              "note": "increments by exactly one per recorded observation of the same incarnation",
+              "status": "adapter_defined_simulator_frame_index",
+              "sumo_source": "observation_index (per-incarnation recorded observation counter)"
+            },
+            "global_time_ms": {
+              "note": "absolute, not reset per incarnation; late entry therefore keeps real clock time",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "round(time_s * 1000) of the recorded simulator clock"
+            },
+            "identity_break": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation change detection"
+            },
+            "identity_uncertain": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "constant False"
+            },
+            "leader_frame_id": {
+              "note": "joined on the resolved leader incarnation and millisecond clock; missing join fails closed",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "the leader's own observation_index at the same recorded instant"
+            },
+            "leader_identity_uncertain": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader_identity_status != 'observed'"
+            },
+            "leader_matched": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader observed and incarnation-resolved"
+            },
+            "leader_trajectory_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader_incarnation_id"
+            },
+            "measurement_status": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "Stage 0.5 unified quality state"
+            },
+            "observation_gap": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "recorded cadence break detection"
+            },
+            "original_row_number": {
+              "note": "not an NGSIM original row number; never claimed as one",
+              "status": "adapter_defined_simulator_frame_index",
+              "sumo_source": "observation_index (adapter-defined recorded observation counter)"
+            },
+            "site": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "scenario_id"
+            },
+            "source_member": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation_id (run-scoped vehicle identity)"
+            },
+            "source_period": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "experiment_mode"
+            },
+            "time_s": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "traci.simulation.getTime()"
+            },
+            "trajectory_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation_id"
+            },
+            "ttc_s": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "net_gap_m / closing_speed_mps"
+            },
+            "ttc_valid": {
+              "note": "the epsilon is inherited from add_ngsim_leader_ttc(closing_epsilon_mps=1e-3)",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "matched leader, net_gap_m > 0 and closing_speed_mps > NGSIM_CLOSING_EPSILON_MPS (1e-3 m/s)"
+            },
+            "window_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "run_id"
+            }
+          },
+          "formal_comparability": false,
+          "ngsim_only_fields": {
+            "camera_occlusion_or_dropout": "not_applicable_to_simulator_observation",
+            "diagnostic_clock_conflict": "not_applicable_to_simulator_observation",
+            "original_frame_identity_break": "not_applicable_to_simulator_observation",
+            "original_row_ambiguity": "not_applicable_to_simulator_observation"
+          },
+          "raw_candidate_events": 1,
+          "recorded_observation_step_s": 0.1,
+          "rejected_candidate_events": 0,
+          "reliable_candidate_events": 1,
+          "schema_version": "stage_0_5.sumo-engineering.v2.formal-adapter-audit.v1",
+          "scientific_claim_eligible": false
+        },
+        "error": null,
+        "events": [
+          {
+            "event_confirm_s": 0.2,
+            "event_duration_s": 0.4,
+            "event_end_s": 0.4,
+            "event_id": "stage_0_2_e35d1a06157fc902",
+            "event_start_s": 0.0,
+            "exit_reason": "observation_end_right_censored",
+            "leader_id": "l",
+            "leader_trajectory_id": "run|l|0",
+            "raw_frame_count": 5,
+            "trajectory_id": "run|f|0",
+            "vehicle_id": "f"
+          }
+        ]
+      },
+      "interface_semantics": {
+        "D1": "local onset attribution plus same-native-lane exposure; physical path not inferred",
+        "SUMO_native": "engineering event/exposure adapter; native exit reasons retained",
+        "formal_P2": "approved source estimator; formal-aligned adapter is a simulator field projection and remains pending"
+      },
+      "native": {
+        "events": [
+          {
+            "event_confirm_s": 0.2,
+            "event_end_s": 0.4,
+            "event_id": "sumo_p2_engineering::synthetic|us101_highway_baseline|task2_native_lane_id_change_no_connection|f|run|f|0::0",
+            "event_observed_span_s": 0.4,
+            "event_start_s": 0.0,
+            "exit_reason": "observation_end_right_censored",
+            "incarnation_id": "run|f|0",
+            "inclusion_status": "engineering_only",
+            "leader_id": "l",
+            "leader_incarnation_id": "run|l|0",
+            "raw_frame_count": 5,
+            "ttc_min_s": 1.6666666666666676,
+            "vehicle_id": "f"
+          }
+        ],
+        "exposure": {
+          "adjacency_checks_applied": [
+            "same_follower_incarnation",
+            "same_resolved_leader_identity",
+            "time_delta_equals_cadence",
+            "observation_index_delta",
+            "identity_break",
+            "observation_gap"
+          ],
+          "evaluable_rule": "reliable follower/leader/time link with both endpoint measurement_status in {valid, not_applicable}; excluded links carry no zero-risk interpretation",
+          "exposure_unit": "vehicle-second (converted to vehicle-hour for the event rate)",
+          "externally_audited_adjacency": {
+            "reliable_closing_edge_seconds": null,
+            "reliable_following_edge_seconds": null,
+            "source": "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4 / stage_0_2_exposure_edge_audit"
+          },
+          "formal_rate_eligible": false,
+          "link_max_gap_s": 0.10999999999999999,
+          "not_evaluable_following_exposure_s": 0.0,
+          "not_evaluable_fraction_of_reliable_following": 0.0,
+          "p2_evaluable_following_exposure_s": 0.4,
+          "p2_evaluable_following_vehicle_hours": 0.00011111111111111112,
+          "rate_formula": "p2_event_count / p2_evaluable_following_vehicle_hours",
+          "recorded_observation_step_s": 0.1,
+          "reliable_closing_exposure_s": 0.4,
+          "reliable_following_exposure_s": 0.4,
+          "schema_version": "stage_0_5.sumo-engineering.v2.p2-exposure.v2",
+          "scientific_claim_eligible": false,
+          "status": "pending_measurement_equivalence"
+        }
+      }
+    },
+    {
+      "D1": {
+        "error": null,
+        "events": [
+          {
+            "confirm_s": 0.2,
+            "confirmation_after_window": false,
+            "confirmation_in_window": true,
+            "confirmation_inside": true,
+            "end_s": 0.2,
+            "event_id": "d1_255fe9b514a77c080d56",
+            "leader_id": "l",
+            "member_sha256": "99f772e1ef2bca416bdfa8ab5bf392c838e3a9bc5dd99122677d35a77f99d0cb",
+            "members": 3,
+            "message_earliest_s": 0.2,
+            "onset_in_window": true,
+            "onset_inside": true,
+            "onset_s": 0.0,
+            "through_confirmation_inside": true,
+            "through_end_inside": true,
+            "vehicle_id": "f"
+          }
+        ],
+        "incomplete_candidates": [
+          {
+            "last_s": 0.4,
+            "onset_s": 0.3,
+            "status": "right_censored_unconfirmed"
+          }
+        ],
+        "local_evaluable_s": 0.30000000000000004,
+        "local_links": 3,
+        "onset_events": 1,
+        "unavailable_point_counts": {
+          "not_applicable": 5,
+          "valid": 5
+        }
+      },
+      "candidate_rules": {
+        "A_strict_native_lane": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.2,
+              "end_s": 0.2,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 3,
+              "onset_s": 0.0
+            }
+          ],
+          "exposure_s": 0.30000000000000004,
+          "incomplete": [
+            {
+              "end_s": 0.4,
+              "onset_s": 0.3,
+              "status": "observed_short_risk"
+            }
+          ],
+          "physical_path_qualification": "same_native_lane",
+          "unknown_boundary_links": 1
+        },
+        "B_connected_boundary": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.2,
+              "end_s": 0.4,
+              "lane_end": "main_1_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 5,
+              "onset_s": 0.0
+            }
+          ],
+          "exposure_s": 0.4,
+          "incomplete": [],
+          "physical_path_qualification": "connected_boundary_witness",
+          "unknown_boundary_links": 0
+        },
+        "C_pair_time_continuity": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.2,
+              "end_s": 0.4,
+              "lane_end": "main_1_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 5,
+              "onset_s": 0.0
+            }
+          ],
+          "exposure_s": 0.4,
+          "incomplete": [],
+          "physical_path_qualification": "separate_from_pair_P2",
+          "unknown_boundary_links": 0
+        }
+      },
+      "case": "connected_road_boundary",
+      "formal_aligned": {
+        "audit": {
+          "algorithm_version": "stage_0_2.formal_risk_measurement.v2",
+          "equivalence_status": "pending_measurement_equivalence_review",
+          "field_map": {
+            "dataset": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "constant 'sumo'"
+            },
+            "diagnostic_clock_anchor_ms": {
+              "note": "SUMO has one monotonic simulator clock per process; NGSIM clock-conflict categories are not_applicable_to_simulator_observation",
+              "status": "definitional_constant",
+              "sumo_source": "constant 0 for every recorded state"
+            },
+            "drac_mps2": {
+              "note": "identical closed form to the approved NGSIM pipeline; severity/diagnostic only and never an input to P2 event identity, confirmation or the rate denominator",
+              "status": "adapter_reuses_approved_closed_form_pending_review",
+              "sumo_source": "closing_speed_mps^2 / (2 * net_gap_m), computed only on valid closing rows"
+            },
+            "frame_id": {
+              "note": "increments by exactly one per recorded observation of the same incarnation",
+              "status": "adapter_defined_simulator_frame_index",
+              "sumo_source": "observation_index (per-incarnation recorded observation counter)"
+            },
+            "global_time_ms": {
+              "note": "absolute, not reset per incarnation; late entry therefore keeps real clock time",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "round(time_s * 1000) of the recorded simulator clock"
+            },
+            "identity_break": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation change detection"
+            },
+            "identity_uncertain": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "constant False"
+            },
+            "leader_frame_id": {
+              "note": "joined on the resolved leader incarnation and millisecond clock; missing join fails closed",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "the leader's own observation_index at the same recorded instant"
+            },
+            "leader_identity_uncertain": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader_identity_status != 'observed'"
+            },
+            "leader_matched": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader observed and incarnation-resolved"
+            },
+            "leader_trajectory_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader_incarnation_id"
+            },
+            "measurement_status": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "Stage 0.5 unified quality state"
+            },
+            "observation_gap": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "recorded cadence break detection"
+            },
+            "original_row_number": {
+              "note": "not an NGSIM original row number; never claimed as one",
+              "status": "adapter_defined_simulator_frame_index",
+              "sumo_source": "observation_index (adapter-defined recorded observation counter)"
+            },
+            "site": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "scenario_id"
+            },
+            "source_member": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation_id (run-scoped vehicle identity)"
+            },
+            "source_period": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "experiment_mode"
+            },
+            "time_s": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "traci.simulation.getTime()"
+            },
+            "trajectory_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation_id"
+            },
+            "ttc_s": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "net_gap_m / closing_speed_mps"
+            },
+            "ttc_valid": {
+              "note": "the epsilon is inherited from add_ngsim_leader_ttc(closing_epsilon_mps=1e-3)",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "matched leader, net_gap_m > 0 and closing_speed_mps > NGSIM_CLOSING_EPSILON_MPS (1e-3 m/s)"
+            },
+            "window_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "run_id"
+            }
+          },
+          "formal_comparability": false,
+          "ngsim_only_fields": {
+            "camera_occlusion_or_dropout": "not_applicable_to_simulator_observation",
+            "diagnostic_clock_conflict": "not_applicable_to_simulator_observation",
+            "original_frame_identity_break": "not_applicable_to_simulator_observation",
+            "original_row_ambiguity": "not_applicable_to_simulator_observation"
+          },
+          "raw_candidate_events": 1,
+          "recorded_observation_step_s": 0.1,
+          "rejected_candidate_events": 0,
+          "reliable_candidate_events": 1,
+          "schema_version": "stage_0_5.sumo-engineering.v2.formal-adapter-audit.v1",
+          "scientific_claim_eligible": false
+        },
+        "error": null,
+        "events": [
+          {
+            "event_confirm_s": 0.2,
+            "event_duration_s": 0.4,
+            "event_end_s": 0.4,
+            "event_id": "stage_0_2_e35d1a06157fc902",
+            "event_start_s": 0.0,
+            "exit_reason": "observation_end_right_censored",
+            "leader_id": "l",
+            "leader_trajectory_id": "run|l|0",
+            "raw_frame_count": 5,
+            "trajectory_id": "run|f|0",
+            "vehicle_id": "f"
+          }
+        ]
+      },
+      "interface_semantics": {
+        "D1": "local onset attribution plus same-native-lane exposure; physical path not inferred",
+        "SUMO_native": "engineering event/exposure adapter; native exit reasons retained",
+        "formal_P2": "approved source estimator; formal-aligned adapter is a simulator field projection and remains pending"
+      },
+      "native": {
+        "events": [
+          {
+            "event_confirm_s": 0.2,
+            "event_end_s": 0.4,
+            "event_id": "sumo_p2_engineering::synthetic|us101_highway_baseline|task2_connected_road_boundary|f|run|f|0::0",
+            "event_observed_span_s": 0.4,
+            "event_start_s": 0.0,
+            "exit_reason": "observation_end_right_censored",
+            "incarnation_id": "run|f|0",
+            "inclusion_status": "engineering_only",
+            "leader_id": "l",
+            "leader_incarnation_id": "run|l|0",
+            "raw_frame_count": 5,
+            "ttc_min_s": 1.6666666666666676,
+            "vehicle_id": "f"
+          }
+        ],
+        "exposure": {
+          "adjacency_checks_applied": [
+            "same_follower_incarnation",
+            "same_resolved_leader_identity",
+            "time_delta_equals_cadence",
+            "observation_index_delta",
+            "identity_break",
+            "observation_gap"
+          ],
+          "evaluable_rule": "reliable follower/leader/time link with both endpoint measurement_status in {valid, not_applicable}; excluded links carry no zero-risk interpretation",
+          "exposure_unit": "vehicle-second (converted to vehicle-hour for the event rate)",
+          "externally_audited_adjacency": {
+            "reliable_closing_edge_seconds": null,
+            "reliable_following_edge_seconds": null,
+            "source": "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4 / stage_0_2_exposure_edge_audit"
+          },
+          "formal_rate_eligible": false,
+          "link_max_gap_s": 0.10999999999999999,
+          "not_evaluable_following_exposure_s": 0.0,
+          "not_evaluable_fraction_of_reliable_following": 0.0,
+          "p2_evaluable_following_exposure_s": 0.4,
+          "p2_evaluable_following_vehicle_hours": 0.00011111111111111112,
+          "rate_formula": "p2_event_count / p2_evaluable_following_vehicle_hours",
+          "recorded_observation_step_s": 0.1,
+          "reliable_closing_exposure_s": 0.4,
+          "reliable_following_exposure_s": 0.4,
+          "schema_version": "stage_0_5.sumo-engineering.v2.p2-exposure.v2",
+          "scientific_claim_eligible": false,
+          "status": "pending_measurement_equivalence"
+        }
+      }
+    },
+    {
+      "D1": {
+        "error": null,
+        "events": [
+          {
+            "confirm_s": 0.4,
+            "confirmation_after_window": false,
+            "confirmation_in_window": true,
+            "confirmation_inside": true,
+            "end_s": 0.4,
+            "event_id": "d1_8ff836bffe29ee9a3ea4",
+            "leader_id": "l",
+            "member_sha256": "12a84184745fb16c72e318237f4de39d40370170fb5351cfbc386b5fcc436ab5",
+            "members": 3,
+            "message_earliest_s": 0.4,
+            "onset_in_window": true,
+            "onset_inside": true,
+            "onset_s": 0.2,
+            "through_confirmation_inside": true,
+            "through_end_inside": true,
+            "vehicle_id": "f"
+          }
+        ],
+        "incomplete_candidates": [
+          {
+            "last_s": 0.1,
+            "onset_s": 0.0,
+            "status": "right_censored_unconfirmed"
+          }
+        ],
+        "local_evaluable_s": 0.30000000000000004,
+        "local_links": 3,
+        "onset_events": 1,
+        "unavailable_point_counts": {
+          "not_applicable": 5,
+          "valid": 5
+        }
+      },
+      "candidate_rules": {
+        "A_strict_native_lane": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.4,
+              "end_s": 0.4,
+              "lane_end": "main_0_1",
+              "lane_start": "main_0_1",
+              "leader_id": "l",
+              "members": 3,
+              "onset_s": 0.2
+            }
+          ],
+          "exposure_s": 0.30000000000000004,
+          "incomplete": [
+            {
+              "end_s": 0.1,
+              "onset_s": 0.0,
+              "status": "observed_short_risk"
+            }
+          ],
+          "physical_path_qualification": "same_native_lane",
+          "unknown_boundary_links": 1
+        },
+        "B_connected_boundary": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.4,
+              "end_s": 0.4,
+              "lane_end": "main_0_1",
+              "lane_start": "main_0_1",
+              "leader_id": "l",
+              "members": 3,
+              "onset_s": 0.2
+            }
+          ],
+          "exposure_s": 0.30000000000000004,
+          "incomplete": [
+            {
+              "end_s": 0.1,
+              "onset_s": 0.0,
+              "status": "observed_short_risk"
+            }
+          ],
+          "physical_path_qualification": "connected_boundary_witness",
+          "unknown_boundary_links": 1
+        },
+        "C_pair_time_continuity": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.2,
+              "end_s": 0.4,
+              "lane_end": "main_0_1",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 5,
+              "onset_s": 0.0
+            }
+          ],
+          "exposure_s": 0.4,
+          "incomplete": [],
+          "physical_path_qualification": "separate_from_pair_P2",
+          "unknown_boundary_links": 0
+        }
+      },
+      "case": "real_lane_change",
+      "formal_aligned": {
+        "audit": {
+          "algorithm_version": "stage_0_2.formal_risk_measurement.v2",
+          "equivalence_status": "pending_measurement_equivalence_review",
+          "field_map": {
+            "dataset": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "constant 'sumo'"
+            },
+            "diagnostic_clock_anchor_ms": {
+              "note": "SUMO has one monotonic simulator clock per process; NGSIM clock-conflict categories are not_applicable_to_simulator_observation",
+              "status": "definitional_constant",
+              "sumo_source": "constant 0 for every recorded state"
+            },
+            "drac_mps2": {
+              "note": "identical closed form to the approved NGSIM pipeline; severity/diagnostic only and never an input to P2 event identity, confirmation or the rate denominator",
+              "status": "adapter_reuses_approved_closed_form_pending_review",
+              "sumo_source": "closing_speed_mps^2 / (2 * net_gap_m), computed only on valid closing rows"
+            },
+            "frame_id": {
+              "note": "increments by exactly one per recorded observation of the same incarnation",
+              "status": "adapter_defined_simulator_frame_index",
+              "sumo_source": "observation_index (per-incarnation recorded observation counter)"
+            },
+            "global_time_ms": {
+              "note": "absolute, not reset per incarnation; late entry therefore keeps real clock time",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "round(time_s * 1000) of the recorded simulator clock"
+            },
+            "identity_break": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation change detection"
+            },
+            "identity_uncertain": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "constant False"
+            },
+            "leader_frame_id": {
+              "note": "joined on the resolved leader incarnation and millisecond clock; missing join fails closed",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "the leader's own observation_index at the same recorded instant"
+            },
+            "leader_identity_uncertain": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader_identity_status != 'observed'"
+            },
+            "leader_matched": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader observed and incarnation-resolved"
+            },
+            "leader_trajectory_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader_incarnation_id"
+            },
+            "measurement_status": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "Stage 0.5 unified quality state"
+            },
+            "observation_gap": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "recorded cadence break detection"
+            },
+            "original_row_number": {
+              "note": "not an NGSIM original row number; never claimed as one",
+              "status": "adapter_defined_simulator_frame_index",
+              "sumo_source": "observation_index (adapter-defined recorded observation counter)"
+            },
+            "site": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "scenario_id"
+            },
+            "source_member": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation_id (run-scoped vehicle identity)"
+            },
+            "source_period": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "experiment_mode"
+            },
+            "time_s": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "traci.simulation.getTime()"
+            },
+            "trajectory_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation_id"
+            },
+            "ttc_s": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "net_gap_m / closing_speed_mps"
+            },
+            "ttc_valid": {
+              "note": "the epsilon is inherited from add_ngsim_leader_ttc(closing_epsilon_mps=1e-3)",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "matched leader, net_gap_m > 0 and closing_speed_mps > NGSIM_CLOSING_EPSILON_MPS (1e-3 m/s)"
+            },
+            "window_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "run_id"
+            }
+          },
+          "formal_comparability": false,
+          "ngsim_only_fields": {
+            "camera_occlusion_or_dropout": "not_applicable_to_simulator_observation",
+            "diagnostic_clock_conflict": "not_applicable_to_simulator_observation",
+            "original_frame_identity_break": "not_applicable_to_simulator_observation",
+            "original_row_ambiguity": "not_applicable_to_simulator_observation"
+          },
+          "raw_candidate_events": 1,
+          "recorded_observation_step_s": 0.1,
+          "rejected_candidate_events": 0,
+          "reliable_candidate_events": 1,
+          "schema_version": "stage_0_5.sumo-engineering.v2.formal-adapter-audit.v1",
+          "scientific_claim_eligible": false
+        },
+        "error": null,
+        "events": [
+          {
+            "event_confirm_s": 0.2,
+            "event_duration_s": 0.4,
+            "event_end_s": 0.4,
+            "event_id": "stage_0_2_e35d1a06157fc902",
+            "event_start_s": 0.0,
+            "exit_reason": "observation_end_right_censored",
+            "leader_id": "l",
+            "leader_trajectory_id": "run|l|0",
+            "raw_frame_count": 5,
+            "trajectory_id": "run|f|0",
+            "vehicle_id": "f"
+          }
+        ]
+      },
+      "interface_semantics": {
+        "D1": "local onset attribution plus same-native-lane exposure; physical path not inferred",
+        "SUMO_native": "engineering event/exposure adapter; native exit reasons retained",
+        "formal_P2": "approved source estimator; formal-aligned adapter is a simulator field projection and remains pending"
+      },
+      "native": {
+        "events": [
+          {
+            "event_confirm_s": 0.2,
+            "event_end_s": 0.4,
+            "event_id": "sumo_p2_engineering::synthetic|us101_highway_baseline|task2_real_lane_change|f|run|f|0::0",
+            "event_observed_span_s": 0.4,
+            "event_start_s": 0.0,
+            "exit_reason": "observation_end_right_censored",
+            "incarnation_id": "run|f|0",
+            "inclusion_status": "engineering_only",
+            "leader_id": "l",
+            "leader_incarnation_id": "run|l|0",
+            "raw_frame_count": 5,
+            "ttc_min_s": 1.6666666666666676,
+            "vehicle_id": "f"
+          }
+        ],
+        "exposure": {
+          "adjacency_checks_applied": [
+            "same_follower_incarnation",
+            "same_resolved_leader_identity",
+            "time_delta_equals_cadence",
+            "observation_index_delta",
+            "identity_break",
+            "observation_gap"
+          ],
+          "evaluable_rule": "reliable follower/leader/time link with both endpoint measurement_status in {valid, not_applicable}; excluded links carry no zero-risk interpretation",
+          "exposure_unit": "vehicle-second (converted to vehicle-hour for the event rate)",
+          "externally_audited_adjacency": {
+            "reliable_closing_edge_seconds": null,
+            "reliable_following_edge_seconds": null,
+            "source": "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4 / stage_0_2_exposure_edge_audit"
+          },
+          "formal_rate_eligible": false,
+          "link_max_gap_s": 0.10999999999999999,
+          "not_evaluable_following_exposure_s": 0.0,
+          "not_evaluable_fraction_of_reliable_following": 0.0,
+          "p2_evaluable_following_exposure_s": 0.4,
+          "p2_evaluable_following_vehicle_hours": 0.00011111111111111112,
+          "rate_formula": "p2_event_count / p2_evaluable_following_vehicle_hours",
+          "recorded_observation_step_s": 0.1,
+          "reliable_closing_exposure_s": 0.4,
+          "reliable_following_exposure_s": 0.4,
+          "schema_version": "stage_0_5.sumo-engineering.v2.p2-exposure.v2",
+          "scientific_claim_eligible": false,
+          "status": "pending_measurement_equivalence"
+        }
+      }
+    },
+    {
+      "D1": {
+        "error": null,
+        "events": [
+          {
+            "confirm_s": 0.4,
+            "confirmation_after_window": false,
+            "confirmation_in_window": true,
+            "confirmation_inside": true,
+            "end_s": 0.4,
+            "event_id": "d1_0cde86a9c6725289938b",
+            "leader_id": "l2",
+            "member_sha256": "1e8d6547f457e648ea3cb9b55fd3e6f5c10eb3f53795735e9a66ebb30311a711",
+            "members": 3,
+            "message_earliest_s": 0.4,
+            "onset_in_window": true,
+            "onset_inside": true,
+            "onset_s": 0.2,
+            "through_confirmation_inside": true,
+            "through_end_inside": true,
+            "vehicle_id": "f"
+          }
+        ],
+        "incomplete_candidates": [
+          {
+            "last_s": 0.1,
+            "onset_s": 0.0,
+            "status": "right_censored_unconfirmed"
+          }
+        ],
+        "local_evaluable_s": 0.30000000000000004,
+        "local_links": 3,
+        "onset_events": 1,
+        "unavailable_point_counts": {
+          "not_applicable": 5,
+          "valid": 5
+        }
+      },
+      "candidate_rules": {
+        "A_strict_native_lane": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.4,
+              "end_s": 0.4,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l2",
+              "members": 3,
+              "onset_s": 0.2
+            }
+          ],
+          "exposure_s": 0.30000000000000004,
+          "incomplete": [
+            {
+              "end_s": 0.1,
+              "onset_s": 0.0,
+              "status": "observed_short_risk"
+            }
+          ],
+          "physical_path_qualification": "same_native_lane",
+          "unknown_boundary_links": 0
+        },
+        "B_connected_boundary": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.4,
+              "end_s": 0.4,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l2",
+              "members": 3,
+              "onset_s": 0.2
+            }
+          ],
+          "exposure_s": 0.30000000000000004,
+          "incomplete": [
+            {
+              "end_s": 0.1,
+              "onset_s": 0.0,
+              "status": "observed_short_risk"
+            }
+          ],
+          "physical_path_qualification": "connected_boundary_witness",
+          "unknown_boundary_links": 0
+        },
+        "C_pair_time_continuity": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.4,
+              "end_s": 0.4,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l2",
+              "members": 3,
+              "onset_s": 0.2
+            }
+          ],
+          "exposure_s": 0.30000000000000004,
+          "incomplete": [
+            {
+              "end_s": 0.1,
+              "onset_s": 0.0,
+              "status": "observed_short_risk"
+            }
+          ],
+          "physical_path_qualification": "separate_from_pair_P2",
+          "unknown_boundary_links": 0
+        }
+      },
+      "case": "leader_switch",
+      "formal_aligned": {
+        "audit": {
+          "algorithm_version": "stage_0_2.formal_risk_measurement.v2",
+          "equivalence_status": "pending_measurement_equivalence_review",
+          "field_map": {
+            "dataset": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "constant 'sumo'"
+            },
+            "diagnostic_clock_anchor_ms": {
+              "note": "SUMO has one monotonic simulator clock per process; NGSIM clock-conflict categories are not_applicable_to_simulator_observation",
+              "status": "definitional_constant",
+              "sumo_source": "constant 0 for every recorded state"
+            },
+            "drac_mps2": {
+              "note": "identical closed form to the approved NGSIM pipeline; severity/diagnostic only and never an input to P2 event identity, confirmation or the rate denominator",
+              "status": "adapter_reuses_approved_closed_form_pending_review",
+              "sumo_source": "closing_speed_mps^2 / (2 * net_gap_m), computed only on valid closing rows"
+            },
+            "frame_id": {
+              "note": "increments by exactly one per recorded observation of the same incarnation",
+              "status": "adapter_defined_simulator_frame_index",
+              "sumo_source": "observation_index (per-incarnation recorded observation counter)"
+            },
+            "global_time_ms": {
+              "note": "absolute, not reset per incarnation; late entry therefore keeps real clock time",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "round(time_s * 1000) of the recorded simulator clock"
+            },
+            "identity_break": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation change detection"
+            },
+            "identity_uncertain": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "constant False"
+            },
+            "leader_frame_id": {
+              "note": "joined on the resolved leader incarnation and millisecond clock; missing join fails closed",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "the leader's own observation_index at the same recorded instant"
+            },
+            "leader_identity_uncertain": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader_identity_status != 'observed'"
+            },
+            "leader_matched": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader observed and incarnation-resolved"
+            },
+            "leader_trajectory_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader_incarnation_id"
+            },
+            "measurement_status": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "Stage 0.5 unified quality state"
+            },
+            "observation_gap": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "recorded cadence break detection"
+            },
+            "original_row_number": {
+              "note": "not an NGSIM original row number; never claimed as one",
+              "status": "adapter_defined_simulator_frame_index",
+              "sumo_source": "observation_index (adapter-defined recorded observation counter)"
+            },
+            "site": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "scenario_id"
+            },
+            "source_member": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation_id (run-scoped vehicle identity)"
+            },
+            "source_period": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "experiment_mode"
+            },
+            "time_s": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "traci.simulation.getTime()"
+            },
+            "trajectory_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation_id"
+            },
+            "ttc_s": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "net_gap_m / closing_speed_mps"
+            },
+            "ttc_valid": {
+              "note": "the epsilon is inherited from add_ngsim_leader_ttc(closing_epsilon_mps=1e-3)",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "matched leader, net_gap_m > 0 and closing_speed_mps > NGSIM_CLOSING_EPSILON_MPS (1e-3 m/s)"
+            },
+            "window_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "run_id"
+            }
+          },
+          "formal_comparability": false,
+          "ngsim_only_fields": {
+            "camera_occlusion_or_dropout": "not_applicable_to_simulator_observation",
+            "diagnostic_clock_conflict": "not_applicable_to_simulator_observation",
+            "original_frame_identity_break": "not_applicable_to_simulator_observation",
+            "original_row_ambiguity": "not_applicable_to_simulator_observation"
+          },
+          "raw_candidate_events": 1,
+          "recorded_observation_step_s": 0.1,
+          "rejected_candidate_events": 0,
+          "reliable_candidate_events": 1,
+          "schema_version": "stage_0_5.sumo-engineering.v2.formal-adapter-audit.v1",
+          "scientific_claim_eligible": false
+        },
+        "error": null,
+        "events": [
+          {
+            "event_confirm_s": 0.4,
+            "event_duration_s": 0.2,
+            "event_end_s": 0.4,
+            "event_id": "stage_0_2_ce9221ba15153689",
+            "event_start_s": 0.2,
+            "exit_reason": "observation_end_right_censored",
+            "leader_id": "l2",
+            "leader_trajectory_id": "run|l2|0",
+            "raw_frame_count": 3,
+            "trajectory_id": "run|f|0",
+            "vehicle_id": "f"
+          }
+        ]
+      },
+      "interface_semantics": {
+        "D1": "local onset attribution plus same-native-lane exposure; physical path not inferred",
+        "SUMO_native": "engineering event/exposure adapter; native exit reasons retained",
+        "formal_P2": "approved source estimator; formal-aligned adapter is a simulator field projection and remains pending"
+      },
+      "native": {
+        "events": [
+          {
+            "event_confirm_s": 0.4,
+            "event_end_s": 0.4,
+            "event_id": "sumo_p2_engineering::synthetic|us101_highway_baseline|task2_leader_switch|f|run|f|0::0",
+            "event_observed_span_s": 0.2,
+            "event_start_s": 0.2,
+            "exit_reason": "observation_end_right_censored",
+            "incarnation_id": "run|f|0",
+            "inclusion_status": "engineering_only",
+            "leader_id": "l2",
+            "leader_incarnation_id": "run|l2|0",
+            "raw_frame_count": 3,
+            "ttc_min_s": 1.6666666666666676,
+            "vehicle_id": "f"
+          }
+        ],
+        "exposure": {
+          "adjacency_checks_applied": [
+            "same_follower_incarnation",
+            "same_resolved_leader_identity",
+            "time_delta_equals_cadence",
+            "observation_index_delta",
+            "identity_break",
+            "observation_gap"
+          ],
+          "evaluable_rule": "reliable follower/leader/time link with both endpoint measurement_status in {valid, not_applicable}; excluded links carry no zero-risk interpretation",
+          "exposure_unit": "vehicle-second (converted to vehicle-hour for the event rate)",
+          "externally_audited_adjacency": {
+            "reliable_closing_edge_seconds": null,
+            "reliable_following_edge_seconds": null,
+            "source": "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4 / stage_0_2_exposure_edge_audit"
+          },
+          "formal_rate_eligible": false,
+          "link_max_gap_s": 0.10999999999999999,
+          "not_evaluable_following_exposure_s": 0.0,
+          "not_evaluable_fraction_of_reliable_following": 0.0,
+          "p2_evaluable_following_exposure_s": 0.30000000000000004,
+          "p2_evaluable_following_vehicle_hours": 8.333333333333334e-05,
+          "rate_formula": "p2_event_count / p2_evaluable_following_vehicle_hours",
+          "recorded_observation_step_s": 0.1,
+          "reliable_closing_exposure_s": 0.30000000000000004,
+          "reliable_following_exposure_s": 0.30000000000000004,
+          "schema_version": "stage_0_5.sumo-engineering.v2.p2-exposure.v2",
+          "scientific_claim_eligible": false,
+          "status": "pending_measurement_equivalence"
+        }
+      }
+    },
+    {
+      "D1": {
+        "error": null,
+        "events": [
+          {
+            "confirm_s": 0.2,
+            "confirmation_after_window": false,
+            "confirmation_in_window": true,
+            "confirmation_inside": true,
+            "end_s": 0.2,
+            "event_id": "d1_255fe9b514a77c080d56",
+            "leader_id": "l",
+            "member_sha256": "99f772e1ef2bca416bdfa8ab5bf392c838e3a9bc5dd99122677d35a77f99d0cb",
+            "members": 3,
+            "message_earliest_s": 0.2,
+            "onset_in_window": true,
+            "onset_inside": true,
+            "onset_s": 0.0,
+            "through_confirmation_inside": true,
+            "through_end_inside": true,
+            "vehicle_id": "f"
+          }
+        ],
+        "incomplete_candidates": [
+          {
+            "last_s": 0.4,
+            "onset_s": 0.3,
+            "status": "right_censored_unconfirmed"
+          }
+        ],
+        "local_evaluable_s": 0.30000000000000004,
+        "local_links": 3,
+        "onset_events": 1,
+        "unavailable_point_counts": {
+          "not_applicable": 5,
+          "valid": 5
+        }
+      },
+      "candidate_rules": {
+        "A_strict_native_lane": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.2,
+              "end_s": 0.2,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 3,
+              "onset_s": 0.0
+            }
+          ],
+          "exposure_s": 0.30000000000000004,
+          "incomplete": [
+            {
+              "end_s": 0.4,
+              "onset_s": 0.3,
+              "status": "observed_short_risk"
+            }
+          ],
+          "physical_path_qualification": "same_native_lane",
+          "unknown_boundary_links": 0
+        },
+        "B_connected_boundary": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.2,
+              "end_s": 0.2,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 3,
+              "onset_s": 0.0
+            }
+          ],
+          "exposure_s": 0.30000000000000004,
+          "incomplete": [
+            {
+              "end_s": 0.4,
+              "onset_s": 0.3,
+              "status": "observed_short_risk"
+            }
+          ],
+          "physical_path_qualification": "connected_boundary_witness",
+          "unknown_boundary_links": 0
+        },
+        "C_pair_time_continuity": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.2,
+              "end_s": 0.2,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 3,
+              "onset_s": 0.0
+            }
+          ],
+          "exposure_s": 0.30000000000000004,
+          "incomplete": [
+            {
+              "end_s": 0.4,
+              "onset_s": 0.3,
+              "status": "observed_short_risk"
+            }
+          ],
+          "physical_path_qualification": "separate_from_pair_P2",
+          "unknown_boundary_links": 0
+        }
+      },
+      "case": "incarnation_change",
+      "formal_aligned": {
+        "audit": {
+          "algorithm_version": "stage_0_2.formal_risk_measurement.v2",
+          "equivalence_status": "pending_measurement_equivalence_review",
+          "field_map": {
+            "dataset": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "constant 'sumo'"
+            },
+            "diagnostic_clock_anchor_ms": {
+              "note": "SUMO has one monotonic simulator clock per process; NGSIM clock-conflict categories are not_applicable_to_simulator_observation",
+              "status": "definitional_constant",
+              "sumo_source": "constant 0 for every recorded state"
+            },
+            "drac_mps2": {
+              "note": "identical closed form to the approved NGSIM pipeline; severity/diagnostic only and never an input to P2 event identity, confirmation or the rate denominator",
+              "status": "adapter_reuses_approved_closed_form_pending_review",
+              "sumo_source": "closing_speed_mps^2 / (2 * net_gap_m), computed only on valid closing rows"
+            },
+            "frame_id": {
+              "note": "increments by exactly one per recorded observation of the same incarnation",
+              "status": "adapter_defined_simulator_frame_index",
+              "sumo_source": "observation_index (per-incarnation recorded observation counter)"
+            },
+            "global_time_ms": {
+              "note": "absolute, not reset per incarnation; late entry therefore keeps real clock time",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "round(time_s * 1000) of the recorded simulator clock"
+            },
+            "identity_break": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation change detection"
+            },
+            "identity_uncertain": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "constant False"
+            },
+            "leader_frame_id": {
+              "note": "joined on the resolved leader incarnation and millisecond clock; missing join fails closed",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "the leader's own observation_index at the same recorded instant"
+            },
+            "leader_identity_uncertain": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader_identity_status != 'observed'"
+            },
+            "leader_matched": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader observed and incarnation-resolved"
+            },
+            "leader_trajectory_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader_incarnation_id"
+            },
+            "measurement_status": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "Stage 0.5 unified quality state"
+            },
+            "observation_gap": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "recorded cadence break detection"
+            },
+            "original_row_number": {
+              "note": "not an NGSIM original row number; never claimed as one",
+              "status": "adapter_defined_simulator_frame_index",
+              "sumo_source": "observation_index (adapter-defined recorded observation counter)"
+            },
+            "site": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "scenario_id"
+            },
+            "source_member": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation_id (run-scoped vehicle identity)"
+            },
+            "source_period": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "experiment_mode"
+            },
+            "time_s": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "traci.simulation.getTime()"
+            },
+            "trajectory_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation_id"
+            },
+            "ttc_s": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "net_gap_m / closing_speed_mps"
+            },
+            "ttc_valid": {
+              "note": "the epsilon is inherited from add_ngsim_leader_ttc(closing_epsilon_mps=1e-3)",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "matched leader, net_gap_m > 0 and closing_speed_mps > NGSIM_CLOSING_EPSILON_MPS (1e-3 m/s)"
+            },
+            "window_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "run_id"
+            }
+          },
+          "formal_comparability": false,
+          "ngsim_only_fields": {
+            "camera_occlusion_or_dropout": "not_applicable_to_simulator_observation",
+            "diagnostic_clock_conflict": "not_applicable_to_simulator_observation",
+            "original_frame_identity_break": "not_applicable_to_simulator_observation",
+            "original_row_ambiguity": "not_applicable_to_simulator_observation"
+          },
+          "raw_candidate_events": 1,
+          "recorded_observation_step_s": 0.1,
+          "rejected_candidate_events": 0,
+          "reliable_candidate_events": 1,
+          "schema_version": "stage_0_5.sumo-engineering.v2.formal-adapter-audit.v1",
+          "scientific_claim_eligible": false
+        },
+        "error": null,
+        "events": [
+          {
+            "event_confirm_s": 0.2,
+            "event_duration_s": 0.2,
+            "event_end_s": 0.2,
+            "event_id": "stage_0_2_e35d1a06157fc902",
+            "event_start_s": 0.0,
+            "exit_reason": "observation_end_right_censored",
+            "leader_id": "l",
+            "leader_trajectory_id": "run|l|0",
+            "raw_frame_count": 3,
+            "trajectory_id": "run|f|0",
+            "vehicle_id": "f"
+          }
+        ]
+      },
+      "interface_semantics": {
+        "D1": "local onset attribution plus same-native-lane exposure; physical path not inferred",
+        "SUMO_native": "engineering event/exposure adapter; native exit reasons retained",
+        "formal_P2": "approved source estimator; formal-aligned adapter is a simulator field projection and remains pending"
+      },
+      "native": {
+        "events": [
+          {
+            "event_confirm_s": 0.2,
+            "event_end_s": 0.2,
+            "event_id": "sumo_p2_engineering::synthetic|us101_highway_baseline|task2_incarnation_change|f|run|f|0::0",
+            "event_observed_span_s": 0.2,
+            "event_start_s": 0.0,
+            "exit_reason": "observation_end_right_censored",
+            "incarnation_id": "run|f|0",
+            "inclusion_status": "engineering_only",
+            "leader_id": "l",
+            "leader_incarnation_id": "run|l|0",
+            "raw_frame_count": 3,
+            "ttc_min_s": 1.6666666666666676,
+            "vehicle_id": "f"
+          }
+        ],
+        "exposure": {
+          "adjacency_checks_applied": [
+            "same_follower_incarnation",
+            "same_resolved_leader_identity",
+            "time_delta_equals_cadence",
+            "observation_index_delta",
+            "identity_break",
+            "observation_gap"
+          ],
+          "evaluable_rule": "reliable follower/leader/time link with both endpoint measurement_status in {valid, not_applicable}; excluded links carry no zero-risk interpretation",
+          "exposure_unit": "vehicle-second (converted to vehicle-hour for the event rate)",
+          "externally_audited_adjacency": {
+            "reliable_closing_edge_seconds": null,
+            "reliable_following_edge_seconds": null,
+            "source": "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4 / stage_0_2_exposure_edge_audit"
+          },
+          "formal_rate_eligible": false,
+          "link_max_gap_s": 0.10999999999999999,
+          "not_evaluable_following_exposure_s": 0.0,
+          "not_evaluable_fraction_of_reliable_following": 0.0,
+          "p2_evaluable_following_exposure_s": 0.30000000000000004,
+          "p2_evaluable_following_vehicle_hours": 8.333333333333334e-05,
+          "rate_formula": "p2_event_count / p2_evaluable_following_vehicle_hours",
+          "recorded_observation_step_s": 0.1,
+          "reliable_closing_exposure_s": 0.30000000000000004,
+          "reliable_following_exposure_s": 0.30000000000000004,
+          "schema_version": "stage_0_5.sumo-engineering.v2.p2-exposure.v2",
+          "scientific_claim_eligible": false,
+          "status": "pending_measurement_equivalence"
+        }
+      }
+    },
+    {
+      "D1": {
+        "error": null,
+        "events": [
+          {
+            "confirm_s": 0.2,
+            "confirmation_after_window": false,
+            "confirmation_in_window": true,
+            "confirmation_inside": true,
+            "end_s": 0.2,
+            "event_id": "d1_255fe9b514a77c080d56",
+            "leader_id": "l",
+            "member_sha256": "99f772e1ef2bca416bdfa8ab5bf392c838e3a9bc5dd99122677d35a77f99d0cb",
+            "members": 3,
+            "message_earliest_s": 0.2,
+            "onset_in_window": true,
+            "onset_inside": true,
+            "onset_s": 0.0,
+            "through_confirmation_inside": true,
+            "through_end_inside": true,
+            "vehicle_id": "f"
+          }
+        ],
+        "incomplete_candidates": [
+          {
+            "last_s": 0.3,
+            "onset_s": 0.3,
+            "status": "right_censored_unconfirmed"
+          },
+          {
+            "last_s": 0.4,
+            "onset_s": 0.4,
+            "status": "right_censored_unconfirmed"
+          }
+        ],
+        "local_evaluable_s": 0.2,
+        "local_links": 2,
+        "onset_events": 1,
+        "unavailable_point_counts": {
+          "not_applicable": 5,
+          "valid": 5
+        }
+      },
+      "candidate_rules": {
+        "A_strict_native_lane": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.2,
+              "end_s": 0.2,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 3,
+              "onset_s": 0.0
+            }
+          ],
+          "exposure_s": 0.2,
+          "incomplete": [
+            {
+              "end_s": 0.3,
+              "onset_s": 0.3,
+              "status": "observed_short_risk"
+            },
+            {
+              "end_s": 0.4,
+              "onset_s": 0.4,
+              "status": "observed_short_risk"
+            }
+          ],
+          "physical_path_qualification": "same_native_lane",
+          "unknown_boundary_links": 0
+        },
+        "B_connected_boundary": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.2,
+              "end_s": 0.2,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 3,
+              "onset_s": 0.0
+            }
+          ],
+          "exposure_s": 0.2,
+          "incomplete": [
+            {
+              "end_s": 0.3,
+              "onset_s": 0.3,
+              "status": "observed_short_risk"
+            },
+            {
+              "end_s": 0.4,
+              "onset_s": 0.4,
+              "status": "observed_short_risk"
+            }
+          ],
+          "physical_path_qualification": "connected_boundary_witness",
+          "unknown_boundary_links": 0
+        },
+        "C_pair_time_continuity": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.2,
+              "end_s": 0.2,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 3,
+              "onset_s": 0.0
+            }
+          ],
+          "exposure_s": 0.2,
+          "incomplete": [
+            {
+              "end_s": 0.3,
+              "onset_s": 0.3,
+              "status": "observed_short_risk"
+            },
+            {
+              "end_s": 0.4,
+              "onset_s": 0.4,
+              "status": "observed_short_risk"
+            }
+          ],
+          "physical_path_qualification": "separate_from_pair_P2",
+          "unknown_boundary_links": 0
+        }
+      },
+      "case": "identity_break",
+      "formal_aligned": {
+        "audit": {
+          "algorithm_version": "stage_0_2.formal_risk_measurement.v2",
+          "equivalence_status": "pending_measurement_equivalence_review",
+          "field_map": {
+            "dataset": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "constant 'sumo'"
+            },
+            "diagnostic_clock_anchor_ms": {
+              "note": "SUMO has one monotonic simulator clock per process; NGSIM clock-conflict categories are not_applicable_to_simulator_observation",
+              "status": "definitional_constant",
+              "sumo_source": "constant 0 for every recorded state"
+            },
+            "drac_mps2": {
+              "note": "identical closed form to the approved NGSIM pipeline; severity/diagnostic only and never an input to P2 event identity, confirmation or the rate denominator",
+              "status": "adapter_reuses_approved_closed_form_pending_review",
+              "sumo_source": "closing_speed_mps^2 / (2 * net_gap_m), computed only on valid closing rows"
+            },
+            "frame_id": {
+              "note": "increments by exactly one per recorded observation of the same incarnation",
+              "status": "adapter_defined_simulator_frame_index",
+              "sumo_source": "observation_index (per-incarnation recorded observation counter)"
+            },
+            "global_time_ms": {
+              "note": "absolute, not reset per incarnation; late entry therefore keeps real clock time",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "round(time_s * 1000) of the recorded simulator clock"
+            },
+            "identity_break": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation change detection"
+            },
+            "identity_uncertain": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "constant False"
+            },
+            "leader_frame_id": {
+              "note": "joined on the resolved leader incarnation and millisecond clock; missing join fails closed",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "the leader's own observation_index at the same recorded instant"
+            },
+            "leader_identity_uncertain": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader_identity_status != 'observed'"
+            },
+            "leader_matched": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader observed and incarnation-resolved"
+            },
+            "leader_trajectory_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader_incarnation_id"
+            },
+            "measurement_status": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "Stage 0.5 unified quality state"
+            },
+            "observation_gap": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "recorded cadence break detection"
+            },
+            "original_row_number": {
+              "note": "not an NGSIM original row number; never claimed as one",
+              "status": "adapter_defined_simulator_frame_index",
+              "sumo_source": "observation_index (adapter-defined recorded observation counter)"
+            },
+            "site": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "scenario_id"
+            },
+            "source_member": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation_id (run-scoped vehicle identity)"
+            },
+            "source_period": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "experiment_mode"
+            },
+            "time_s": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "traci.simulation.getTime()"
+            },
+            "trajectory_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation_id"
+            },
+            "ttc_s": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "net_gap_m / closing_speed_mps"
+            },
+            "ttc_valid": {
+              "note": "the epsilon is inherited from add_ngsim_leader_ttc(closing_epsilon_mps=1e-3)",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "matched leader, net_gap_m > 0 and closing_speed_mps > NGSIM_CLOSING_EPSILON_MPS (1e-3 m/s)"
+            },
+            "window_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "run_id"
+            }
+          },
+          "formal_comparability": false,
+          "ngsim_only_fields": {
+            "camera_occlusion_or_dropout": "not_applicable_to_simulator_observation",
+            "diagnostic_clock_conflict": "not_applicable_to_simulator_observation",
+            "original_frame_identity_break": "not_applicable_to_simulator_observation",
+            "original_row_ambiguity": "not_applicable_to_simulator_observation"
+          },
+          "raw_candidate_events": 1,
+          "recorded_observation_step_s": 0.1,
+          "rejected_candidate_events": 0,
+          "reliable_candidate_events": 1,
+          "schema_version": "stage_0_5.sumo-engineering.v2.formal-adapter-audit.v1",
+          "scientific_claim_eligible": false
+        },
+        "error": null,
+        "events": [
+          {
+            "event_confirm_s": 0.2,
+            "event_duration_s": 0.4,
+            "event_end_s": 0.4,
+            "event_id": "stage_0_2_e35d1a06157fc902",
+            "event_start_s": 0.0,
+            "exit_reason": "observation_end_right_censored",
+            "leader_id": "l",
+            "leader_trajectory_id": "run|l|0",
+            "raw_frame_count": 5,
+            "trajectory_id": "run|f|0",
+            "vehicle_id": "f"
+          }
+        ]
+      },
+      "interface_semantics": {
+        "D1": "local onset attribution plus same-native-lane exposure; physical path not inferred",
+        "SUMO_native": "engineering event/exposure adapter; native exit reasons retained",
+        "formal_P2": "approved source estimator; formal-aligned adapter is a simulator field projection and remains pending"
+      },
+      "native": {
+        "events": [
+          {
+            "event_confirm_s": 0.2,
+            "event_end_s": 0.2,
+            "event_id": "sumo_p2_engineering::synthetic|us101_highway_baseline|task2_identity_break|f|run|f|0::0",
+            "event_observed_span_s": 0.2,
+            "event_start_s": 0.0,
+            "exit_reason": "continuity_break_unknown_risk",
+            "incarnation_id": "run|f|0",
+            "inclusion_status": "engineering_only",
+            "leader_id": "l",
+            "leader_incarnation_id": "run|l|0",
+            "raw_frame_count": 3,
+            "ttc_min_s": 1.6666666666666676,
+            "vehicle_id": "f"
+          }
+        ],
+        "exposure": {
+          "adjacency_checks_applied": [
+            "same_follower_incarnation",
+            "same_resolved_leader_identity",
+            "time_delta_equals_cadence",
+            "observation_index_delta",
+            "identity_break",
+            "observation_gap"
+          ],
+          "evaluable_rule": "reliable follower/leader/time link with both endpoint measurement_status in {valid, not_applicable}; excluded links carry no zero-risk interpretation",
+          "exposure_unit": "vehicle-second (converted to vehicle-hour for the event rate)",
+          "externally_audited_adjacency": {
+            "reliable_closing_edge_seconds": null,
+            "reliable_following_edge_seconds": null,
+            "source": "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4 / stage_0_2_exposure_edge_audit"
+          },
+          "formal_rate_eligible": false,
+          "link_max_gap_s": 0.10999999999999999,
+          "not_evaluable_following_exposure_s": 0.0,
+          "not_evaluable_fraction_of_reliable_following": 0.0,
+          "p2_evaluable_following_exposure_s": 0.2,
+          "p2_evaluable_following_vehicle_hours": 5.555555555555556e-05,
+          "rate_formula": "p2_event_count / p2_evaluable_following_vehicle_hours",
+          "recorded_observation_step_s": 0.1,
+          "reliable_closing_exposure_s": 0.2,
+          "reliable_following_exposure_s": 0.2,
+          "schema_version": "stage_0_5.sumo-engineering.v2.p2-exposure.v2",
+          "scientific_claim_eligible": false,
+          "status": "pending_measurement_equivalence"
+        }
+      }
+    },
+    {
+      "D1": {
+        "error": null,
+        "events": [
+          {
+            "confirm_s": 0.2,
+            "confirmation_after_window": false,
+            "confirmation_in_window": true,
+            "confirmation_inside": true,
+            "end_s": 0.2,
+            "event_id": "d1_255fe9b514a77c080d56",
+            "leader_id": "l",
+            "member_sha256": "99f772e1ef2bca416bdfa8ab5bf392c838e3a9bc5dd99122677d35a77f99d0cb",
+            "members": 3,
+            "message_earliest_s": 0.2,
+            "onset_in_window": true,
+            "onset_inside": true,
+            "onset_s": 0.0,
+            "through_confirmation_inside": true,
+            "through_end_inside": true,
+            "vehicle_id": "f"
+          }
+        ],
+        "incomplete_candidates": [
+          {
+            "last_s": 0.3,
+            "onset_s": 0.3,
+            "status": "right_censored_unconfirmed"
+          },
+          {
+            "last_s": 0.4,
+            "onset_s": 0.4,
+            "status": "right_censored_unconfirmed"
+          }
+        ],
+        "local_evaluable_s": 0.2,
+        "local_links": 2,
+        "onset_events": 1,
+        "unavailable_point_counts": {
+          "not_applicable": 5,
+          "valid": 5
+        }
+      },
+      "candidate_rules": {
+        "A_strict_native_lane": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.2,
+              "end_s": 0.2,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 3,
+              "onset_s": 0.0
+            }
+          ],
+          "exposure_s": 0.2,
+          "incomplete": [
+            {
+              "end_s": 0.3,
+              "onset_s": 0.3,
+              "status": "observed_short_risk"
+            },
+            {
+              "end_s": 0.4,
+              "onset_s": 0.4,
+              "status": "observed_short_risk"
+            }
+          ],
+          "physical_path_qualification": "same_native_lane",
+          "unknown_boundary_links": 0
+        },
+        "B_connected_boundary": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.2,
+              "end_s": 0.2,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 3,
+              "onset_s": 0.0
+            }
+          ],
+          "exposure_s": 0.2,
+          "incomplete": [
+            {
+              "end_s": 0.3,
+              "onset_s": 0.3,
+              "status": "observed_short_risk"
+            },
+            {
+              "end_s": 0.4,
+              "onset_s": 0.4,
+              "status": "observed_short_risk"
+            }
+          ],
+          "physical_path_qualification": "connected_boundary_witness",
+          "unknown_boundary_links": 0
+        },
+        "C_pair_time_continuity": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.2,
+              "end_s": 0.2,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 3,
+              "onset_s": 0.0
+            }
+          ],
+          "exposure_s": 0.2,
+          "incomplete": [
+            {
+              "end_s": 0.3,
+              "onset_s": 0.3,
+              "status": "observed_short_risk"
+            },
+            {
+              "end_s": 0.4,
+              "onset_s": 0.4,
+              "status": "observed_short_risk"
+            }
+          ],
+          "physical_path_qualification": "separate_from_pair_P2",
+          "unknown_boundary_links": 0
+        }
+      },
+      "case": "observation_gap_flag",
+      "formal_aligned": {
+        "audit": {
+          "algorithm_version": "stage_0_2.formal_risk_measurement.v2",
+          "equivalence_status": "pending_measurement_equivalence_review",
+          "field_map": {
+            "dataset": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "constant 'sumo'"
+            },
+            "diagnostic_clock_anchor_ms": {
+              "note": "SUMO has one monotonic simulator clock per process; NGSIM clock-conflict categories are not_applicable_to_simulator_observation",
+              "status": "definitional_constant",
+              "sumo_source": "constant 0 for every recorded state"
+            },
+            "drac_mps2": {
+              "note": "identical closed form to the approved NGSIM pipeline; severity/diagnostic only and never an input to P2 event identity, confirmation or the rate denominator",
+              "status": "adapter_reuses_approved_closed_form_pending_review",
+              "sumo_source": "closing_speed_mps^2 / (2 * net_gap_m), computed only on valid closing rows"
+            },
+            "frame_id": {
+              "note": "increments by exactly one per recorded observation of the same incarnation",
+              "status": "adapter_defined_simulator_frame_index",
+              "sumo_source": "observation_index (per-incarnation recorded observation counter)"
+            },
+            "global_time_ms": {
+              "note": "absolute, not reset per incarnation; late entry therefore keeps real clock time",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "round(time_s * 1000) of the recorded simulator clock"
+            },
+            "identity_break": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation change detection"
+            },
+            "identity_uncertain": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "constant False"
+            },
+            "leader_frame_id": {
+              "note": "joined on the resolved leader incarnation and millisecond clock; missing join fails closed",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "the leader's own observation_index at the same recorded instant"
+            },
+            "leader_identity_uncertain": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader_identity_status != 'observed'"
+            },
+            "leader_matched": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader observed and incarnation-resolved"
+            },
+            "leader_trajectory_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader_incarnation_id"
+            },
+            "measurement_status": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "Stage 0.5 unified quality state"
+            },
+            "observation_gap": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "recorded cadence break detection"
+            },
+            "original_row_number": {
+              "note": "not an NGSIM original row number; never claimed as one",
+              "status": "adapter_defined_simulator_frame_index",
+              "sumo_source": "observation_index (adapter-defined recorded observation counter)"
+            },
+            "site": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "scenario_id"
+            },
+            "source_member": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation_id (run-scoped vehicle identity)"
+            },
+            "source_period": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "experiment_mode"
+            },
+            "time_s": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "traci.simulation.getTime()"
+            },
+            "trajectory_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation_id"
+            },
+            "ttc_s": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "net_gap_m / closing_speed_mps"
+            },
+            "ttc_valid": {
+              "note": "the epsilon is inherited from add_ngsim_leader_ttc(closing_epsilon_mps=1e-3)",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "matched leader, net_gap_m > 0 and closing_speed_mps > NGSIM_CLOSING_EPSILON_MPS (1e-3 m/s)"
+            },
+            "window_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "run_id"
+            }
+          },
+          "formal_comparability": false,
+          "ngsim_only_fields": {
+            "camera_occlusion_or_dropout": "not_applicable_to_simulator_observation",
+            "diagnostic_clock_conflict": "not_applicable_to_simulator_observation",
+            "original_frame_identity_break": "not_applicable_to_simulator_observation",
+            "original_row_ambiguity": "not_applicable_to_simulator_observation"
+          },
+          "raw_candidate_events": 1,
+          "recorded_observation_step_s": 0.1,
+          "rejected_candidate_events": 0,
+          "reliable_candidate_events": 1,
+          "schema_version": "stage_0_5.sumo-engineering.v2.formal-adapter-audit.v1",
+          "scientific_claim_eligible": false
+        },
+        "error": null,
+        "events": [
+          {
+            "event_confirm_s": 0.2,
+            "event_duration_s": 0.4,
+            "event_end_s": 0.4,
+            "event_id": "stage_0_2_e35d1a06157fc902",
+            "event_start_s": 0.0,
+            "exit_reason": "observation_end_right_censored",
+            "leader_id": "l",
+            "leader_trajectory_id": "run|l|0",
+            "raw_frame_count": 5,
+            "trajectory_id": "run|f|0",
+            "vehicle_id": "f"
+          }
+        ]
+      },
+      "interface_semantics": {
+        "D1": "local onset attribution plus same-native-lane exposure; physical path not inferred",
+        "SUMO_native": "engineering event/exposure adapter; native exit reasons retained",
+        "formal_P2": "approved source estimator; formal-aligned adapter is a simulator field projection and remains pending"
+      },
+      "native": {
+        "events": [
+          {
+            "event_confirm_s": 0.2,
+            "event_end_s": 0.2,
+            "event_id": "sumo_p2_engineering::synthetic|us101_highway_baseline|task2_observation_gap_flag|f|run|f|0::0",
+            "event_observed_span_s": 0.2,
+            "event_start_s": 0.0,
+            "exit_reason": "continuity_break_unknown_risk",
+            "incarnation_id": "run|f|0",
+            "inclusion_status": "engineering_only",
+            "leader_id": "l",
+            "leader_incarnation_id": "run|l|0",
+            "raw_frame_count": 3,
+            "ttc_min_s": 1.6666666666666676,
+            "vehicle_id": "f"
+          }
+        ],
+        "exposure": {
+          "adjacency_checks_applied": [
+            "same_follower_incarnation",
+            "same_resolved_leader_identity",
+            "time_delta_equals_cadence",
+            "observation_index_delta",
+            "identity_break",
+            "observation_gap"
+          ],
+          "evaluable_rule": "reliable follower/leader/time link with both endpoint measurement_status in {valid, not_applicable}; excluded links carry no zero-risk interpretation",
+          "exposure_unit": "vehicle-second (converted to vehicle-hour for the event rate)",
+          "externally_audited_adjacency": {
+            "reliable_closing_edge_seconds": null,
+            "reliable_following_edge_seconds": null,
+            "source": "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4 / stage_0_2_exposure_edge_audit"
+          },
+          "formal_rate_eligible": false,
+          "link_max_gap_s": 0.10999999999999999,
+          "not_evaluable_following_exposure_s": 0.0,
+          "not_evaluable_fraction_of_reliable_following": 0.0,
+          "p2_evaluable_following_exposure_s": 0.2,
+          "p2_evaluable_following_vehicle_hours": 5.555555555555556e-05,
+          "rate_formula": "p2_event_count / p2_evaluable_following_vehicle_hours",
+          "recorded_observation_step_s": 0.1,
+          "reliable_closing_exposure_s": 0.2,
+          "reliable_following_exposure_s": 0.2,
+          "schema_version": "stage_0_5.sumo-engineering.v2.p2-exposure.v2",
+          "scientific_claim_eligible": false,
+          "status": "pending_measurement_equivalence"
+        }
+      }
+    },
+    {
+      "D1": {
+        "error": null,
+        "events": [
+          {
+            "confirm_s": 0.5,
+            "confirmation_after_window": false,
+            "confirmation_in_window": true,
+            "confirmation_inside": true,
+            "end_s": 0.5,
+            "event_id": "d1_0a816a64be9f9be555b8",
+            "leader_id": "l",
+            "member_sha256": "5c01d64097ecd52d13d09b10d43869413433f179c6929560dd9582bd934e38bf",
+            "members": 3,
+            "message_earliest_s": 0.5,
+            "onset_in_window": true,
+            "onset_inside": true,
+            "onset_s": 0.3,
+            "through_confirmation_inside": true,
+            "through_end_inside": true,
+            "vehicle_id": "f"
+          }
+        ],
+        "incomplete_candidates": [
+          {
+            "last_s": 0.1,
+            "onset_s": 0.0,
+            "status": "right_censored_unconfirmed"
+          }
+        ],
+        "local_evaluable_s": 0.30000000000000004,
+        "local_links": 3,
+        "onset_events": 1,
+        "unavailable_point_counts": {
+          "not_applicable": 5,
+          "valid": 5
+        }
+      },
+      "candidate_rules": {
+        "A_strict_native_lane": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.5,
+              "end_s": 0.5,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 3,
+              "onset_s": 0.3
+            }
+          ],
+          "exposure_s": 0.30000000000000004,
+          "incomplete": [
+            {
+              "end_s": 0.1,
+              "onset_s": 0.0,
+              "status": "observed_short_risk"
+            }
+          ],
+          "physical_path_qualification": "same_native_lane",
+          "unknown_boundary_links": 0
+        },
+        "B_connected_boundary": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.5,
+              "end_s": 0.5,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 3,
+              "onset_s": 0.3
+            }
+          ],
+          "exposure_s": 0.30000000000000004,
+          "incomplete": [
+            {
+              "end_s": 0.1,
+              "onset_s": 0.0,
+              "status": "observed_short_risk"
+            }
+          ],
+          "physical_path_qualification": "connected_boundary_witness",
+          "unknown_boundary_links": 0
+        },
+        "C_pair_time_continuity": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.5,
+              "end_s": 0.5,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 3,
+              "onset_s": 0.3
+            }
+          ],
+          "exposure_s": 0.30000000000000004,
+          "incomplete": [
+            {
+              "end_s": 0.1,
+              "onset_s": 0.0,
+              "status": "observed_short_risk"
+            }
+          ],
+          "physical_path_qualification": "separate_from_pair_P2",
+          "unknown_boundary_links": 0
+        }
+      },
+      "case": "missing_recorded_frame",
+      "formal_aligned": {
+        "audit": {
+          "algorithm_version": "stage_0_2.formal_risk_measurement.v2",
+          "equivalence_status": "pending_measurement_equivalence_review",
+          "field_map": {
+            "dataset": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "constant 'sumo'"
+            },
+            "diagnostic_clock_anchor_ms": {
+              "note": "SUMO has one monotonic simulator clock per process; NGSIM clock-conflict categories are not_applicable_to_simulator_observation",
+              "status": "definitional_constant",
+              "sumo_source": "constant 0 for every recorded state"
+            },
+            "drac_mps2": {
+              "note": "identical closed form to the approved NGSIM pipeline; severity/diagnostic only and never an input to P2 event identity, confirmation or the rate denominator",
+              "status": "adapter_reuses_approved_closed_form_pending_review",
+              "sumo_source": "closing_speed_mps^2 / (2 * net_gap_m), computed only on valid closing rows"
+            },
+            "frame_id": {
+              "note": "increments by exactly one per recorded observation of the same incarnation",
+              "status": "adapter_defined_simulator_frame_index",
+              "sumo_source": "observation_index (per-incarnation recorded observation counter)"
+            },
+            "global_time_ms": {
+              "note": "absolute, not reset per incarnation; late entry therefore keeps real clock time",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "round(time_s * 1000) of the recorded simulator clock"
+            },
+            "identity_break": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation change detection"
+            },
+            "identity_uncertain": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "constant False"
+            },
+            "leader_frame_id": {
+              "note": "joined on the resolved leader incarnation and millisecond clock; missing join fails closed",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "the leader's own observation_index at the same recorded instant"
+            },
+            "leader_identity_uncertain": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader_identity_status != 'observed'"
+            },
+            "leader_matched": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader observed and incarnation-resolved"
+            },
+            "leader_trajectory_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader_incarnation_id"
+            },
+            "measurement_status": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "Stage 0.5 unified quality state"
+            },
+            "observation_gap": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "recorded cadence break detection"
+            },
+            "original_row_number": {
+              "note": "not an NGSIM original row number; never claimed as one",
+              "status": "adapter_defined_simulator_frame_index",
+              "sumo_source": "observation_index (adapter-defined recorded observation counter)"
+            },
+            "site": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "scenario_id"
+            },
+            "source_member": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation_id (run-scoped vehicle identity)"
+            },
+            "source_period": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "experiment_mode"
+            },
+            "time_s": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "traci.simulation.getTime()"
+            },
+            "trajectory_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation_id"
+            },
+            "ttc_s": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "net_gap_m / closing_speed_mps"
+            },
+            "ttc_valid": {
+              "note": "the epsilon is inherited from add_ngsim_leader_ttc(closing_epsilon_mps=1e-3)",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "matched leader, net_gap_m > 0 and closing_speed_mps > NGSIM_CLOSING_EPSILON_MPS (1e-3 m/s)"
+            },
+            "window_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "run_id"
+            }
+          },
+          "formal_comparability": false,
+          "ngsim_only_fields": {
+            "camera_occlusion_or_dropout": "not_applicable_to_simulator_observation",
+            "diagnostic_clock_conflict": "not_applicable_to_simulator_observation",
+            "original_frame_identity_break": "not_applicable_to_simulator_observation",
+            "original_row_ambiguity": "not_applicable_to_simulator_observation"
+          },
+          "raw_candidate_events": 1,
+          "recorded_observation_step_s": 0.1,
+          "rejected_candidate_events": 0,
+          "reliable_candidate_events": 1,
+          "schema_version": "stage_0_5.sumo-engineering.v2.formal-adapter-audit.v1",
+          "scientific_claim_eligible": false
+        },
+        "error": null,
+        "events": [
+          {
+            "event_confirm_s": 0.5,
+            "event_duration_s": 0.2,
+            "event_end_s": 0.5,
+            "event_id": "stage_0_2_77af23110f34c601",
+            "event_start_s": 0.3,
+            "exit_reason": "observation_end_right_censored",
+            "leader_id": "l",
+            "leader_trajectory_id": "run|l|0",
+            "raw_frame_count": 3,
+            "trajectory_id": "run|f|0",
+            "vehicle_id": "f"
+          }
+        ]
+      },
+      "interface_semantics": {
+        "D1": "local onset attribution plus same-native-lane exposure; physical path not inferred",
+        "SUMO_native": "engineering event/exposure adapter; native exit reasons retained",
+        "formal_P2": "approved source estimator; formal-aligned adapter is a simulator field projection and remains pending"
+      },
+      "native": {
+        "events": [
+          {
+            "event_confirm_s": 0.5,
+            "event_end_s": 0.5,
+            "event_id": "sumo_p2_engineering::synthetic|us101_highway_baseline|task2_missing_recorded_frame|f|run|f|0::0",
+            "event_observed_span_s": 0.2,
+            "event_start_s": 0.3,
+            "exit_reason": "observation_end_right_censored",
+            "incarnation_id": "run|f|0",
+            "inclusion_status": "engineering_only",
+            "leader_id": "l",
+            "leader_incarnation_id": "run|l|0",
+            "raw_frame_count": 3,
+            "ttc_min_s": 1.6666666666666676,
+            "vehicle_id": "f"
+          }
+        ],
+        "exposure": {
+          "adjacency_checks_applied": [
+            "same_follower_incarnation",
+            "same_resolved_leader_identity",
+            "time_delta_equals_cadence",
+            "observation_index_delta",
+            "identity_break",
+            "observation_gap"
+          ],
+          "evaluable_rule": "reliable follower/leader/time link with both endpoint measurement_status in {valid, not_applicable}; excluded links carry no zero-risk interpretation",
+          "exposure_unit": "vehicle-second (converted to vehicle-hour for the event rate)",
+          "externally_audited_adjacency": {
+            "reliable_closing_edge_seconds": null,
+            "reliable_following_edge_seconds": null,
+            "source": "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4 / stage_0_2_exposure_edge_audit"
+          },
+          "formal_rate_eligible": false,
+          "link_max_gap_s": 0.10999999999999999,
+          "not_evaluable_following_exposure_s": 0.0,
+          "not_evaluable_fraction_of_reliable_following": 0.0,
+          "p2_evaluable_following_exposure_s": 0.30000000000000004,
+          "p2_evaluable_following_vehicle_hours": 8.333333333333334e-05,
+          "rate_formula": "p2_event_count / p2_evaluable_following_vehicle_hours",
+          "recorded_observation_step_s": 0.1,
+          "reliable_closing_exposure_s": 0.30000000000000004,
+          "reliable_following_exposure_s": 0.30000000000000004,
+          "schema_version": "stage_0_5.sumo-engineering.v2.p2-exposure.v2",
+          "scientific_claim_eligible": false,
+          "status": "pending_measurement_equivalence"
+        }
+      }
+    },
+    {
+      "D1": {
+        "error": null,
+        "events": [],
+        "incomplete_candidates": [],
+        "local_evaluable_s": 0.30000000000000004,
+        "local_links": 3,
+        "onset_events": 0,
+        "unavailable_point_counts": {
+          "not_applicable": 4,
+          "valid": 4
+        }
+      },
+      "candidate_rules": {
+        "A_strict_native_lane": {
+          "event_count": 0,
+          "events": [],
+          "exposure_s": 0.30000000000000004,
+          "incomplete": [],
+          "physical_path_qualification": "same_native_lane",
+          "unknown_boundary_links": 0
+        },
+        "B_connected_boundary": {
+          "event_count": 0,
+          "events": [],
+          "exposure_s": 0.30000000000000004,
+          "incomplete": [],
+          "physical_path_qualification": "connected_boundary_witness",
+          "unknown_boundary_links": 0
+        },
+        "C_pair_time_continuity": {
+          "event_count": 0,
+          "events": [],
+          "exposure_s": 0.30000000000000004,
+          "incomplete": [],
+          "physical_path_qualification": "separate_from_pair_P2",
+          "unknown_boundary_links": 0
+        }
+      },
+      "case": "non_positive_ttc_input",
+      "formal_aligned": {
+        "audit": {
+          "equivalence_status": "error",
+          "error": "ValueError:non-risk event member"
+        },
+        "error": "ValueError:non-risk event member",
+        "events": []
+      },
+      "interface_semantics": {
+        "D1": "local onset attribution plus same-native-lane exposure; physical path not inferred",
+        "SUMO_native": "engineering event/exposure adapter; native exit reasons retained",
+        "formal_P2": "approved source estimator; formal-aligned adapter is a simulator field projection and remains pending"
+      },
+      "native": {
+        "events": [
+          {
+            "event_confirm_s": 0.2,
+            "event_end_s": 0.3,
+            "event_id": "sumo_p2_engineering::synthetic|us101_highway_baseline|task2_non_positive_ttc_input|f|run|f|0::0",
+            "event_observed_span_s": 0.3,
+            "event_start_s": 0.0,
+            "exit_reason": "observation_end_right_censored",
+            "incarnation_id": "run|f|0",
+            "inclusion_status": "engineering_only",
+            "leader_id": "l",
+            "leader_incarnation_id": "run|l|0",
+            "raw_frame_count": 4,
+            "ttc_min_s": -1.0,
+            "vehicle_id": "f"
+          }
+        ],
+        "exposure": {
+          "adjacency_checks_applied": [
+            "same_follower_incarnation",
+            "same_resolved_leader_identity",
+            "time_delta_equals_cadence",
+            "observation_index_delta",
+            "identity_break",
+            "observation_gap"
+          ],
+          "evaluable_rule": "reliable follower/leader/time link with both endpoint measurement_status in {valid, not_applicable}; excluded links carry no zero-risk interpretation",
+          "exposure_unit": "vehicle-second (converted to vehicle-hour for the event rate)",
+          "externally_audited_adjacency": {
+            "reliable_closing_edge_seconds": null,
+            "reliable_following_edge_seconds": null,
+            "source": "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4 / stage_0_2_exposure_edge_audit"
+          },
+          "formal_rate_eligible": false,
+          "link_max_gap_s": 0.10999999999999999,
+          "not_evaluable_following_exposure_s": 0.0,
+          "not_evaluable_fraction_of_reliable_following": 0.0,
+          "p2_evaluable_following_exposure_s": 0.30000000000000004,
+          "p2_evaluable_following_vehicle_hours": 8.333333333333334e-05,
+          "rate_formula": "p2_event_count / p2_evaluable_following_vehicle_hours",
+          "recorded_observation_step_s": 0.1,
+          "reliable_closing_exposure_s": 0.30000000000000004,
+          "reliable_following_exposure_s": 0.30000000000000004,
+          "schema_version": "stage_0_5.sumo-engineering.v2.p2-exposure.v2",
+          "scientific_claim_eligible": false,
+          "status": "pending_measurement_equivalence"
+        }
+      }
+    },
+    {
+      "D1": {
+        "error": null,
+        "events": [],
+        "incomplete_candidates": [],
+        "local_evaluable_s": 0.30000000000000004,
+        "local_links": 3,
+        "onset_events": 0,
+        "unavailable_point_counts": {
+          "not_applicable": 4,
+          "valid": 4
+        }
+      },
+      "candidate_rules": {
+        "A_strict_native_lane": {
+          "event_count": 0,
+          "events": [],
+          "exposure_s": 0.30000000000000004,
+          "incomplete": [],
+          "physical_path_qualification": "same_native_lane",
+          "unknown_boundary_links": 0
+        },
+        "B_connected_boundary": {
+          "event_count": 0,
+          "events": [],
+          "exposure_s": 0.30000000000000004,
+          "incomplete": [],
+          "physical_path_qualification": "connected_boundary_witness",
+          "unknown_boundary_links": 0
+        },
+        "C_pair_time_continuity": {
+          "event_count": 0,
+          "events": [],
+          "exposure_s": 0.30000000000000004,
+          "incomplete": [],
+          "physical_path_qualification": "separate_from_pair_P2",
+          "unknown_boundary_links": 0
+        }
+      },
+      "case": "threshold_exactly_2s",
+      "formal_aligned": {
+        "audit": {
+          "algorithm_version": "stage_0_2.formal_risk_measurement.v2",
+          "equivalence_status": "pending_measurement_equivalence_review",
+          "field_map": {
+            "dataset": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "constant 'sumo'"
+            },
+            "diagnostic_clock_anchor_ms": {
+              "note": "SUMO has one monotonic simulator clock per process; NGSIM clock-conflict categories are not_applicable_to_simulator_observation",
+              "status": "definitional_constant",
+              "sumo_source": "constant 0 for every recorded state"
+            },
+            "drac_mps2": {
+              "note": "identical closed form to the approved NGSIM pipeline; severity/diagnostic only and never an input to P2 event identity, confirmation or the rate denominator",
+              "status": "adapter_reuses_approved_closed_form_pending_review",
+              "sumo_source": "closing_speed_mps^2 / (2 * net_gap_m), computed only on valid closing rows"
+            },
+            "frame_id": {
+              "note": "increments by exactly one per recorded observation of the same incarnation",
+              "status": "adapter_defined_simulator_frame_index",
+              "sumo_source": "observation_index (per-incarnation recorded observation counter)"
+            },
+            "global_time_ms": {
+              "note": "absolute, not reset per incarnation; late entry therefore keeps real clock time",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "round(time_s * 1000) of the recorded simulator clock"
+            },
+            "identity_break": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation change detection"
+            },
+            "identity_uncertain": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "constant False"
+            },
+            "leader_frame_id": {
+              "note": "joined on the resolved leader incarnation and millisecond clock; missing join fails closed",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "the leader's own observation_index at the same recorded instant"
+            },
+            "leader_identity_uncertain": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader_identity_status != 'observed'"
+            },
+            "leader_matched": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader observed and incarnation-resolved"
+            },
+            "leader_trajectory_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader_incarnation_id"
+            },
+            "measurement_status": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "Stage 0.5 unified quality state"
+            },
+            "observation_gap": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "recorded cadence break detection"
+            },
+            "original_row_number": {
+              "note": "not an NGSIM original row number; never claimed as one",
+              "status": "adapter_defined_simulator_frame_index",
+              "sumo_source": "observation_index (adapter-defined recorded observation counter)"
+            },
+            "site": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "scenario_id"
+            },
+            "source_member": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation_id (run-scoped vehicle identity)"
+            },
+            "source_period": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "experiment_mode"
+            },
+            "time_s": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "traci.simulation.getTime()"
+            },
+            "trajectory_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation_id"
+            },
+            "ttc_s": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "net_gap_m / closing_speed_mps"
+            },
+            "ttc_valid": {
+              "note": "the epsilon is inherited from add_ngsim_leader_ttc(closing_epsilon_mps=1e-3)",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "matched leader, net_gap_m > 0 and closing_speed_mps > NGSIM_CLOSING_EPSILON_MPS (1e-3 m/s)"
+            },
+            "window_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "run_id"
+            }
+          },
+          "formal_comparability": false,
+          "ngsim_only_fields": {
+            "camera_occlusion_or_dropout": "not_applicable_to_simulator_observation",
+            "diagnostic_clock_conflict": "not_applicable_to_simulator_observation",
+            "original_frame_identity_break": "not_applicable_to_simulator_observation",
+            "original_row_ambiguity": "not_applicable_to_simulator_observation"
+          },
+          "raw_candidate_events": 0,
+          "recorded_observation_step_s": 0.1,
+          "rejected_candidate_events": 0,
+          "reliable_candidate_events": 0,
+          "schema_version": "stage_0_5.sumo-engineering.v2.formal-adapter-audit.v1",
+          "scientific_claim_eligible": false
+        },
+        "error": null,
+        "events": []
+      },
+      "interface_semantics": {
+        "D1": "local onset attribution plus same-native-lane exposure; physical path not inferred",
+        "SUMO_native": "engineering event/exposure adapter; native exit reasons retained",
+        "formal_P2": "approved source estimator; formal-aligned adapter is a simulator field projection and remains pending"
+      },
+      "native": {
+        "events": [],
+        "exposure": {
+          "adjacency_checks_applied": [
+            "same_follower_incarnation",
+            "same_resolved_leader_identity",
+            "time_delta_equals_cadence",
+            "observation_index_delta",
+            "identity_break",
+            "observation_gap"
+          ],
+          "evaluable_rule": "reliable follower/leader/time link with both endpoint measurement_status in {valid, not_applicable}; excluded links carry no zero-risk interpretation",
+          "exposure_unit": "vehicle-second (converted to vehicle-hour for the event rate)",
+          "externally_audited_adjacency": {
+            "reliable_closing_edge_seconds": null,
+            "reliable_following_edge_seconds": null,
+            "source": "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4 / stage_0_2_exposure_edge_audit"
+          },
+          "formal_rate_eligible": false,
+          "link_max_gap_s": 0.10999999999999999,
+          "not_evaluable_following_exposure_s": 0.0,
+          "not_evaluable_fraction_of_reliable_following": 0.0,
+          "p2_evaluable_following_exposure_s": 0.30000000000000004,
+          "p2_evaluable_following_vehicle_hours": 8.333333333333334e-05,
+          "rate_formula": "p2_event_count / p2_evaluable_following_vehicle_hours",
+          "recorded_observation_step_s": 0.1,
+          "reliable_closing_exposure_s": 0.30000000000000004,
+          "reliable_following_exposure_s": 0.30000000000000004,
+          "schema_version": "stage_0_5.sumo-engineering.v2.p2-exposure.v2",
+          "scientific_claim_eligible": false,
+          "status": "pending_measurement_equivalence"
+        }
+      }
+    },
+    {
+      "D1": {
+        "error": null,
+        "events": [
+          {
+            "confirm_s": 0.2,
+            "confirmation_after_window": false,
+            "confirmation_in_window": true,
+            "confirmation_inside": true,
+            "end_s": 0.2,
+            "event_id": "d1_255fe9b514a77c080d56",
+            "leader_id": "l",
+            "member_sha256": "99f772e1ef2bca416bdfa8ab5bf392c838e3a9bc5dd99122677d35a77f99d0cb",
+            "members": 3,
+            "message_earliest_s": 0.2,
+            "onset_in_window": true,
+            "onset_inside": true,
+            "onset_s": 0.0,
+            "through_confirmation_inside": true,
+            "through_end_inside": true,
+            "vehicle_id": "f"
+          }
+        ],
+        "incomplete_candidates": [],
+        "local_evaluable_s": 0.2,
+        "local_links": 2,
+        "onset_events": 1,
+        "unavailable_point_counts": {
+          "not_applicable": 3,
+          "valid": 3
+        }
+      },
+      "candidate_rules": {
+        "A_strict_native_lane": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.2,
+              "end_s": 0.2,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 3,
+              "onset_s": 0.0
+            }
+          ],
+          "exposure_s": 0.2,
+          "incomplete": [],
+          "physical_path_qualification": "same_native_lane",
+          "unknown_boundary_links": 0
+        },
+        "B_connected_boundary": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.2,
+              "end_s": 0.2,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 3,
+              "onset_s": 0.0
+            }
+          ],
+          "exposure_s": 0.2,
+          "incomplete": [],
+          "physical_path_qualification": "connected_boundary_witness",
+          "unknown_boundary_links": 0
+        },
+        "C_pair_time_continuity": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.2,
+              "end_s": 0.2,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 3,
+              "onset_s": 0.0
+            }
+          ],
+          "exposure_s": 0.2,
+          "incomplete": [],
+          "physical_path_qualification": "separate_from_pair_P2",
+          "unknown_boundary_links": 0
+        }
+      },
+      "case": "minimum_duration_exactly_0_2s",
+      "formal_aligned": {
+        "audit": {
+          "algorithm_version": "stage_0_2.formal_risk_measurement.v2",
+          "equivalence_status": "pending_measurement_equivalence_review",
+          "field_map": {
+            "dataset": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "constant 'sumo'"
+            },
+            "diagnostic_clock_anchor_ms": {
+              "note": "SUMO has one monotonic simulator clock per process; NGSIM clock-conflict categories are not_applicable_to_simulator_observation",
+              "status": "definitional_constant",
+              "sumo_source": "constant 0 for every recorded state"
+            },
+            "drac_mps2": {
+              "note": "identical closed form to the approved NGSIM pipeline; severity/diagnostic only and never an input to P2 event identity, confirmation or the rate denominator",
+              "status": "adapter_reuses_approved_closed_form_pending_review",
+              "sumo_source": "closing_speed_mps^2 / (2 * net_gap_m), computed only on valid closing rows"
+            },
+            "frame_id": {
+              "note": "increments by exactly one per recorded observation of the same incarnation",
+              "status": "adapter_defined_simulator_frame_index",
+              "sumo_source": "observation_index (per-incarnation recorded observation counter)"
+            },
+            "global_time_ms": {
+              "note": "absolute, not reset per incarnation; late entry therefore keeps real clock time",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "round(time_s * 1000) of the recorded simulator clock"
+            },
+            "identity_break": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation change detection"
+            },
+            "identity_uncertain": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "constant False"
+            },
+            "leader_frame_id": {
+              "note": "joined on the resolved leader incarnation and millisecond clock; missing join fails closed",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "the leader's own observation_index at the same recorded instant"
+            },
+            "leader_identity_uncertain": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader_identity_status != 'observed'"
+            },
+            "leader_matched": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader observed and incarnation-resolved"
+            },
+            "leader_trajectory_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader_incarnation_id"
+            },
+            "measurement_status": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "Stage 0.5 unified quality state"
+            },
+            "observation_gap": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "recorded cadence break detection"
+            },
+            "original_row_number": {
+              "note": "not an NGSIM original row number; never claimed as one",
+              "status": "adapter_defined_simulator_frame_index",
+              "sumo_source": "observation_index (adapter-defined recorded observation counter)"
+            },
+            "site": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "scenario_id"
+            },
+            "source_member": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation_id (run-scoped vehicle identity)"
+            },
+            "source_period": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "experiment_mode"
+            },
+            "time_s": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "traci.simulation.getTime()"
+            },
+            "trajectory_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation_id"
+            },
+            "ttc_s": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "net_gap_m / closing_speed_mps"
+            },
+            "ttc_valid": {
+              "note": "the epsilon is inherited from add_ngsim_leader_ttc(closing_epsilon_mps=1e-3)",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "matched leader, net_gap_m > 0 and closing_speed_mps > NGSIM_CLOSING_EPSILON_MPS (1e-3 m/s)"
+            },
+            "window_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "run_id"
+            }
+          },
+          "formal_comparability": false,
+          "ngsim_only_fields": {
+            "camera_occlusion_or_dropout": "not_applicable_to_simulator_observation",
+            "diagnostic_clock_conflict": "not_applicable_to_simulator_observation",
+            "original_frame_identity_break": "not_applicable_to_simulator_observation",
+            "original_row_ambiguity": "not_applicable_to_simulator_observation"
+          },
+          "raw_candidate_events": 1,
+          "recorded_observation_step_s": 0.1,
+          "rejected_candidate_events": 0,
+          "reliable_candidate_events": 1,
+          "schema_version": "stage_0_5.sumo-engineering.v2.formal-adapter-audit.v1",
+          "scientific_claim_eligible": false
+        },
+        "error": null,
+        "events": [
+          {
+            "event_confirm_s": 0.2,
+            "event_duration_s": 0.2,
+            "event_end_s": 0.2,
+            "event_id": "stage_0_2_e35d1a06157fc902",
+            "event_start_s": 0.0,
+            "exit_reason": "observation_end_right_censored",
+            "leader_id": "l",
+            "leader_trajectory_id": "run|l|0",
+            "raw_frame_count": 3,
+            "trajectory_id": "run|f|0",
+            "vehicle_id": "f"
+          }
+        ]
+      },
+      "interface_semantics": {
+        "D1": "local onset attribution plus same-native-lane exposure; physical path not inferred",
+        "SUMO_native": "engineering event/exposure adapter; native exit reasons retained",
+        "formal_P2": "approved source estimator; formal-aligned adapter is a simulator field projection and remains pending"
+      },
+      "native": {
+        "events": [
+          {
+            "event_confirm_s": 0.2,
+            "event_end_s": 0.2,
+            "event_id": "sumo_p2_engineering::synthetic|us101_highway_baseline|task2_minimum_duration_exactly_0_2s|f|run|f|0::0",
+            "event_observed_span_s": 0.2,
+            "event_start_s": 0.0,
+            "exit_reason": "observation_end_right_censored",
+            "incarnation_id": "run|f|0",
+            "inclusion_status": "engineering_only",
+            "leader_id": "l",
+            "leader_incarnation_id": "run|l|0",
+            "raw_frame_count": 3,
+            "ttc_min_s": 1.6666666666666676,
+            "vehicle_id": "f"
+          }
+        ],
+        "exposure": {
+          "adjacency_checks_applied": [
+            "same_follower_incarnation",
+            "same_resolved_leader_identity",
+            "time_delta_equals_cadence",
+            "observation_index_delta",
+            "identity_break",
+            "observation_gap"
+          ],
+          "evaluable_rule": "reliable follower/leader/time link with both endpoint measurement_status in {valid, not_applicable}; excluded links carry no zero-risk interpretation",
+          "exposure_unit": "vehicle-second (converted to vehicle-hour for the event rate)",
+          "externally_audited_adjacency": {
+            "reliable_closing_edge_seconds": null,
+            "reliable_following_edge_seconds": null,
+            "source": "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4 / stage_0_2_exposure_edge_audit"
+          },
+          "formal_rate_eligible": false,
+          "link_max_gap_s": 0.10999999999999999,
+          "not_evaluable_following_exposure_s": 0.0,
+          "not_evaluable_fraction_of_reliable_following": 0.0,
+          "p2_evaluable_following_exposure_s": 0.2,
+          "p2_evaluable_following_vehicle_hours": 5.555555555555556e-05,
+          "rate_formula": "p2_event_count / p2_evaluable_following_vehicle_hours",
+          "recorded_observation_step_s": 0.1,
+          "reliable_closing_exposure_s": 0.2,
+          "reliable_following_exposure_s": 0.2,
+          "schema_version": "stage_0_5.sumo-engineering.v2.p2-exposure.v2",
+          "scientific_claim_eligible": false,
+          "status": "pending_measurement_equivalence"
+        }
+      }
+    },
+    {
+      "D1": {
+        "error": null,
+        "events": [],
+        "incomplete_candidates": [
+          {
+            "last_s": 0.1,
+            "onset_s": 0.0,
+            "status": "right_censored_unconfirmed"
+          }
+        ],
+        "local_evaluable_s": 0.1,
+        "local_links": 1,
+        "onset_events": 0,
+        "unavailable_point_counts": {
+          "not_applicable": 2,
+          "valid": 2
+        }
+      },
+      "candidate_rules": {
+        "A_strict_native_lane": {
+          "event_count": 0,
+          "events": [],
+          "exposure_s": 0.1,
+          "incomplete": [
+            {
+              "end_s": 0.1,
+              "onset_s": 0.0,
+              "status": "observed_short_risk"
+            }
+          ],
+          "physical_path_qualification": "same_native_lane",
+          "unknown_boundary_links": 0
+        },
+        "B_connected_boundary": {
+          "event_count": 0,
+          "events": [],
+          "exposure_s": 0.1,
+          "incomplete": [
+            {
+              "end_s": 0.1,
+              "onset_s": 0.0,
+              "status": "observed_short_risk"
+            }
+          ],
+          "physical_path_qualification": "connected_boundary_witness",
+          "unknown_boundary_links": 0
+        },
+        "C_pair_time_continuity": {
+          "event_count": 0,
+          "events": [],
+          "exposure_s": 0.1,
+          "incomplete": [
+            {
+              "end_s": 0.1,
+              "onset_s": 0.0,
+              "status": "observed_short_risk"
+            }
+          ],
+          "physical_path_qualification": "separate_from_pair_P2",
+          "unknown_boundary_links": 0
+        }
+      },
+      "case": "minimum_duration_below_0_2s",
+      "formal_aligned": {
+        "audit": {
+          "algorithm_version": "stage_0_2.formal_risk_measurement.v2",
+          "equivalence_status": "pending_measurement_equivalence_review",
+          "field_map": {
+            "dataset": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "constant 'sumo'"
+            },
+            "diagnostic_clock_anchor_ms": {
+              "note": "SUMO has one monotonic simulator clock per process; NGSIM clock-conflict categories are not_applicable_to_simulator_observation",
+              "status": "definitional_constant",
+              "sumo_source": "constant 0 for every recorded state"
+            },
+            "drac_mps2": {
+              "note": "identical closed form to the approved NGSIM pipeline; severity/diagnostic only and never an input to P2 event identity, confirmation or the rate denominator",
+              "status": "adapter_reuses_approved_closed_form_pending_review",
+              "sumo_source": "closing_speed_mps^2 / (2 * net_gap_m), computed only on valid closing rows"
+            },
+            "frame_id": {
+              "note": "increments by exactly one per recorded observation of the same incarnation",
+              "status": "adapter_defined_simulator_frame_index",
+              "sumo_source": "observation_index (per-incarnation recorded observation counter)"
+            },
+            "global_time_ms": {
+              "note": "absolute, not reset per incarnation; late entry therefore keeps real clock time",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "round(time_s * 1000) of the recorded simulator clock"
+            },
+            "identity_break": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation change detection"
+            },
+            "identity_uncertain": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "constant False"
+            },
+            "leader_frame_id": {
+              "note": "joined on the resolved leader incarnation and millisecond clock; missing join fails closed",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "the leader's own observation_index at the same recorded instant"
+            },
+            "leader_identity_uncertain": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader_identity_status != 'observed'"
+            },
+            "leader_matched": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader observed and incarnation-resolved"
+            },
+            "leader_trajectory_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader_incarnation_id"
+            },
+            "measurement_status": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "Stage 0.5 unified quality state"
+            },
+            "observation_gap": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "recorded cadence break detection"
+            },
+            "original_row_number": {
+              "note": "not an NGSIM original row number; never claimed as one",
+              "status": "adapter_defined_simulator_frame_index",
+              "sumo_source": "observation_index (adapter-defined recorded observation counter)"
+            },
+            "site": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "scenario_id"
+            },
+            "source_member": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation_id (run-scoped vehicle identity)"
+            },
+            "source_period": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "experiment_mode"
+            },
+            "time_s": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "traci.simulation.getTime()"
+            },
+            "trajectory_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation_id"
+            },
+            "ttc_s": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "net_gap_m / closing_speed_mps"
+            },
+            "ttc_valid": {
+              "note": "the epsilon is inherited from add_ngsim_leader_ttc(closing_epsilon_mps=1e-3)",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "matched leader, net_gap_m > 0 and closing_speed_mps > NGSIM_CLOSING_EPSILON_MPS (1e-3 m/s)"
+            },
+            "window_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "run_id"
+            }
+          },
+          "formal_comparability": false,
+          "ngsim_only_fields": {
+            "camera_occlusion_or_dropout": "not_applicable_to_simulator_observation",
+            "diagnostic_clock_conflict": "not_applicable_to_simulator_observation",
+            "original_frame_identity_break": "not_applicable_to_simulator_observation",
+            "original_row_ambiguity": "not_applicable_to_simulator_observation"
+          },
+          "raw_candidate_events": 0,
+          "recorded_observation_step_s": 0.1,
+          "rejected_candidate_events": 0,
+          "reliable_candidate_events": 0,
+          "schema_version": "stage_0_5.sumo-engineering.v2.formal-adapter-audit.v1",
+          "scientific_claim_eligible": false
+        },
+        "error": null,
+        "events": []
+      },
+      "interface_semantics": {
+        "D1": "local onset attribution plus same-native-lane exposure; physical path not inferred",
+        "SUMO_native": "engineering event/exposure adapter; native exit reasons retained",
+        "formal_P2": "approved source estimator; formal-aligned adapter is a simulator field projection and remains pending"
+      },
+      "native": {
+        "events": [],
+        "exposure": {
+          "adjacency_checks_applied": [
+            "same_follower_incarnation",
+            "same_resolved_leader_identity",
+            "time_delta_equals_cadence",
+            "observation_index_delta",
+            "identity_break",
+            "observation_gap"
+          ],
+          "evaluable_rule": "reliable follower/leader/time link with both endpoint measurement_status in {valid, not_applicable}; excluded links carry no zero-risk interpretation",
+          "exposure_unit": "vehicle-second (converted to vehicle-hour for the event rate)",
+          "externally_audited_adjacency": {
+            "reliable_closing_edge_seconds": null,
+            "reliable_following_edge_seconds": null,
+            "source": "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4 / stage_0_2_exposure_edge_audit"
+          },
+          "formal_rate_eligible": false,
+          "link_max_gap_s": 0.10999999999999999,
+          "not_evaluable_following_exposure_s": 0.0,
+          "not_evaluable_fraction_of_reliable_following": 0.0,
+          "p2_evaluable_following_exposure_s": 0.1,
+          "p2_evaluable_following_vehicle_hours": 2.777777777777778e-05,
+          "rate_formula": "p2_event_count / p2_evaluable_following_vehicle_hours",
+          "recorded_observation_step_s": 0.1,
+          "reliable_closing_exposure_s": 0.1,
+          "reliable_following_exposure_s": 0.1,
+          "schema_version": "stage_0_5.sumo-engineering.v2.p2-exposure.v2",
+          "scientific_claim_eligible": false,
+          "status": "pending_measurement_equivalence"
+        }
+      }
+    },
+    {
+      "D1": {
+        "error": null,
+        "events": [
+          {
+            "confirm_s": 0.2,
+            "confirmation_after_window": false,
+            "confirmation_in_window": true,
+            "confirmation_inside": true,
+            "end_s": 0.2,
+            "event_id": "d1_255fe9b514a77c080d56",
+            "leader_id": "l",
+            "member_sha256": "99f772e1ef2bca416bdfa8ab5bf392c838e3a9bc5dd99122677d35a77f99d0cb",
+            "members": 3,
+            "message_earliest_s": 0.2,
+            "onset_in_window": true,
+            "onset_inside": true,
+            "onset_s": 0.0,
+            "through_confirmation_inside": true,
+            "through_end_inside": true,
+            "vehicle_id": "f"
+          },
+          {
+            "confirm_s": 0.7,
+            "confirmation_after_window": false,
+            "confirmation_in_window": true,
+            "confirmation_inside": true,
+            "end_s": 0.8,
+            "event_id": "d1_67bb8d4008626762032b",
+            "leader_id": "l",
+            "member_sha256": "bee18e462286a1e091e58e285d6a4f8aa320ff12975c2a1eb87269e32479243b",
+            "members": 4,
+            "message_earliest_s": 0.7,
+            "onset_in_window": true,
+            "onset_inside": true,
+            "onset_s": 0.5,
+            "through_confirmation_inside": true,
+            "through_end_inside": true,
+            "vehicle_id": "f"
+          }
+        ],
+        "incomplete_candidates": [],
+        "local_evaluable_s": 0.8,
+        "local_links": 8,
+        "onset_events": 2,
+        "unavailable_point_counts": {
+          "not_applicable": 11,
+          "valid": 7
+        }
+      },
+      "candidate_rules": {
+        "A_strict_native_lane": {
+          "event_count": 2,
+          "events": [
+            {
+              "confirmation_s": 0.2,
+              "end_s": 0.2,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 3,
+              "onset_s": 0.0
+            },
+            {
+              "confirmation_s": 0.7,
+              "end_s": 0.8,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 4,
+              "onset_s": 0.5
+            }
+          ],
+          "exposure_s": 0.8,
+          "incomplete": [],
+          "physical_path_qualification": "same_native_lane",
+          "unknown_boundary_links": 0
+        },
+        "B_connected_boundary": {
+          "event_count": 2,
+          "events": [
+            {
+              "confirmation_s": 0.2,
+              "end_s": 0.2,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 3,
+              "onset_s": 0.0
+            },
+            {
+              "confirmation_s": 0.7,
+              "end_s": 0.8,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 4,
+              "onset_s": 0.5
+            }
+          ],
+          "exposure_s": 0.8,
+          "incomplete": [],
+          "physical_path_qualification": "connected_boundary_witness",
+          "unknown_boundary_links": 0
+        },
+        "C_pair_time_continuity": {
+          "event_count": 2,
+          "events": [
+            {
+              "confirmation_s": 0.2,
+              "end_s": 0.2,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 3,
+              "onset_s": 0.0
+            },
+            {
+              "confirmation_s": 0.7,
+              "end_s": 0.8,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 4,
+              "onset_s": 0.5
+            }
+          ],
+          "exposure_s": 0.8,
+          "incomplete": [],
+          "physical_path_qualification": "separate_from_pair_P2",
+          "unknown_boundary_links": 0
+        }
+      },
+      "case": "risk_exit_then_reentry",
+      "formal_aligned": {
+        "audit": {
+          "algorithm_version": "stage_0_2.formal_risk_measurement.v2",
+          "equivalence_status": "pending_measurement_equivalence_review",
+          "field_map": {
+            "dataset": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "constant 'sumo'"
+            },
+            "diagnostic_clock_anchor_ms": {
+              "note": "SUMO has one monotonic simulator clock per process; NGSIM clock-conflict categories are not_applicable_to_simulator_observation",
+              "status": "definitional_constant",
+              "sumo_source": "constant 0 for every recorded state"
+            },
+            "drac_mps2": {
+              "note": "identical closed form to the approved NGSIM pipeline; severity/diagnostic only and never an input to P2 event identity, confirmation or the rate denominator",
+              "status": "adapter_reuses_approved_closed_form_pending_review",
+              "sumo_source": "closing_speed_mps^2 / (2 * net_gap_m), computed only on valid closing rows"
+            },
+            "frame_id": {
+              "note": "increments by exactly one per recorded observation of the same incarnation",
+              "status": "adapter_defined_simulator_frame_index",
+              "sumo_source": "observation_index (per-incarnation recorded observation counter)"
+            },
+            "global_time_ms": {
+              "note": "absolute, not reset per incarnation; late entry therefore keeps real clock time",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "round(time_s * 1000) of the recorded simulator clock"
+            },
+            "identity_break": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation change detection"
+            },
+            "identity_uncertain": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "constant False"
+            },
+            "leader_frame_id": {
+              "note": "joined on the resolved leader incarnation and millisecond clock; missing join fails closed",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "the leader's own observation_index at the same recorded instant"
+            },
+            "leader_identity_uncertain": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader_identity_status != 'observed'"
+            },
+            "leader_matched": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader observed and incarnation-resolved"
+            },
+            "leader_trajectory_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader_incarnation_id"
+            },
+            "measurement_status": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "Stage 0.5 unified quality state"
+            },
+            "observation_gap": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "recorded cadence break detection"
+            },
+            "original_row_number": {
+              "note": "not an NGSIM original row number; never claimed as one",
+              "status": "adapter_defined_simulator_frame_index",
+              "sumo_source": "observation_index (adapter-defined recorded observation counter)"
+            },
+            "site": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "scenario_id"
+            },
+            "source_member": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation_id (run-scoped vehicle identity)"
+            },
+            "source_period": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "experiment_mode"
+            },
+            "time_s": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "traci.simulation.getTime()"
+            },
+            "trajectory_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation_id"
+            },
+            "ttc_s": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "net_gap_m / closing_speed_mps"
+            },
+            "ttc_valid": {
+              "note": "the epsilon is inherited from add_ngsim_leader_ttc(closing_epsilon_mps=1e-3)",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "matched leader, net_gap_m > 0 and closing_speed_mps > NGSIM_CLOSING_EPSILON_MPS (1e-3 m/s)"
+            },
+            "window_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "run_id"
+            }
+          },
+          "formal_comparability": false,
+          "ngsim_only_fields": {
+            "camera_occlusion_or_dropout": "not_applicable_to_simulator_observation",
+            "diagnostic_clock_conflict": "not_applicable_to_simulator_observation",
+            "original_frame_identity_break": "not_applicable_to_simulator_observation",
+            "original_row_ambiguity": "not_applicable_to_simulator_observation"
+          },
+          "raw_candidate_events": 2,
+          "recorded_observation_step_s": 0.1,
+          "rejected_candidate_events": 0,
+          "reliable_candidate_events": 2,
+          "schema_version": "stage_0_5.sumo-engineering.v2.formal-adapter-audit.v1",
+          "scientific_claim_eligible": false
+        },
+        "error": null,
+        "events": [
+          {
+            "event_confirm_s": 0.2,
+            "event_duration_s": 0.2,
+            "event_end_s": 0.2,
+            "event_id": "stage_0_2_e35d1a06157fc902",
+            "event_start_s": 0.0,
+            "exit_reason": "measurement_unavailable_unknown_risk",
+            "leader_id": "l",
+            "leader_trajectory_id": "run|l|0",
+            "raw_frame_count": 3,
+            "trajectory_id": "run|f|0",
+            "vehicle_id": "f"
+          },
+          {
+            "event_confirm_s": 0.7,
+            "event_duration_s": 0.30000000000000004,
+            "event_end_s": 0.8,
+            "event_id": "stage_0_2_647b8dcdefe8c4d3",
+            "event_start_s": 0.5,
+            "exit_reason": "observation_end_right_censored",
+            "leader_id": "l",
+            "leader_trajectory_id": "run|l|0",
+            "raw_frame_count": 4,
+            "trajectory_id": "run|f|0",
+            "vehicle_id": "f"
+          }
+        ]
+      },
+      "interface_semantics": {
+        "D1": "local onset attribution plus same-native-lane exposure; physical path not inferred",
+        "SUMO_native": "engineering event/exposure adapter; native exit reasons retained",
+        "formal_P2": "approved source estimator; formal-aligned adapter is a simulator field projection and remains pending"
+      },
+      "native": {
+        "events": [
+          {
+            "event_confirm_s": 0.2,
+            "event_end_s": 0.2,
+            "event_id": "sumo_p2_engineering::synthetic|us101_highway_baseline|task2_risk_exit_then_reentry|f|run|f|0::0",
+            "event_observed_span_s": 0.2,
+            "event_start_s": 0.0,
+            "exit_reason": "measurement_unavailable_unknown_risk",
+            "incarnation_id": "run|f|0",
+            "inclusion_status": "engineering_only",
+            "leader_id": "l",
+            "leader_incarnation_id": "run|l|0",
+            "raw_frame_count": 3,
+            "ttc_min_s": 1.6666666666666676,
+            "vehicle_id": "f"
+          },
+          {
+            "event_confirm_s": 0.7,
+            "event_end_s": 0.8,
+            "event_id": "sumo_p2_engineering::synthetic|us101_highway_baseline|task2_risk_exit_then_reentry|f|run|f|0::1",
+            "event_observed_span_s": 0.30000000000000004,
+            "event_start_s": 0.5,
+            "exit_reason": "observation_end_right_censored",
+            "incarnation_id": "run|f|0",
+            "inclusion_status": "engineering_only",
+            "leader_id": "l",
+            "leader_incarnation_id": "run|l|0",
+            "raw_frame_count": 4,
+            "ttc_min_s": 1.6666666666666676,
+            "vehicle_id": "f"
+          }
+        ],
+        "exposure": {
+          "adjacency_checks_applied": [
+            "same_follower_incarnation",
+            "same_resolved_leader_identity",
+            "time_delta_equals_cadence",
+            "observation_index_delta",
+            "identity_break",
+            "observation_gap"
+          ],
+          "evaluable_rule": "reliable follower/leader/time link with both endpoint measurement_status in {valid, not_applicable}; excluded links carry no zero-risk interpretation",
+          "exposure_unit": "vehicle-second (converted to vehicle-hour for the event rate)",
+          "externally_audited_adjacency": {
+            "reliable_closing_edge_seconds": null,
+            "reliable_following_edge_seconds": null,
+            "source": "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4 / stage_0_2_exposure_edge_audit"
+          },
+          "formal_rate_eligible": false,
+          "link_max_gap_s": 0.10999999999999999,
+          "not_evaluable_following_exposure_s": 0.0,
+          "not_evaluable_fraction_of_reliable_following": 0.0,
+          "p2_evaluable_following_exposure_s": 0.7999999999999999,
+          "p2_evaluable_following_vehicle_hours": 0.0002222222222222222,
+          "rate_formula": "p2_event_count / p2_evaluable_following_vehicle_hours",
+          "recorded_observation_step_s": 0.1,
+          "reliable_closing_exposure_s": 0.5,
+          "reliable_following_exposure_s": 0.7999999999999999,
+          "schema_version": "stage_0_5.sumo-engineering.v2.p2-exposure.v2",
+          "scientific_claim_eligible": false,
+          "status": "pending_measurement_equivalence"
+        }
+      }
+    },
+    {
+      "D1": {
+        "error": null,
+        "events": [
+          {
+            "confirm_s": 0.2,
+            "confirmation_after_window": false,
+            "confirmation_in_window": true,
+            "confirmation_inside": true,
+            "end_s": 0.4,
+            "event_id": "d1_255fe9b514a77c080d56",
+            "leader_id": "l",
+            "member_sha256": "6864096e9b7acb439a3710f8f292de4460a6ad4e6c48dd55ee72138f230a4860",
+            "members": 5,
+            "message_earliest_s": 0.2,
+            "onset_in_window": false,
+            "onset_inside": true,
+            "onset_s": 0.0,
+            "through_confirmation_inside": true,
+            "through_end_inside": true,
+            "vehicle_id": "f"
+          }
+        ],
+        "incomplete_candidates": [],
+        "local_evaluable_s": 0.30000000000000004,
+        "local_links": 3,
+        "onset_events": 0,
+        "unavailable_point_counts": {
+          "not_applicable": 4,
+          "valid": 4
+        }
+      },
+      "candidate_rules": {
+        "A_strict_native_lane": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.2,
+              "end_s": 0.4,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 5,
+              "onset_s": 0.0
+            }
+          ],
+          "exposure_s": 0.4,
+          "incomplete": [],
+          "physical_path_qualification": "same_native_lane",
+          "unknown_boundary_links": 0
+        },
+        "B_connected_boundary": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.2,
+              "end_s": 0.4,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 5,
+              "onset_s": 0.0
+            }
+          ],
+          "exposure_s": 0.4,
+          "incomplete": [],
+          "physical_path_qualification": "connected_boundary_witness",
+          "unknown_boundary_links": 0
+        },
+        "C_pair_time_continuity": {
+          "event_count": 1,
+          "events": [
+            {
+              "confirmation_s": 0.2,
+              "end_s": 0.4,
+              "lane_end": "main_0_0",
+              "lane_start": "main_0_0",
+              "leader_id": "l",
+              "members": 5,
+              "onset_s": 0.0
+            }
+          ],
+          "exposure_s": 0.4,
+          "incomplete": [],
+          "physical_path_qualification": "separate_from_pair_P2",
+          "unknown_boundary_links": 0
+        }
+      },
+      "case": "window_boundary_onset_outside",
+      "formal_aligned": {
+        "audit": {
+          "algorithm_version": "stage_0_2.formal_risk_measurement.v2",
+          "equivalence_status": "pending_measurement_equivalence_review",
+          "field_map": {
+            "dataset": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "constant 'sumo'"
+            },
+            "diagnostic_clock_anchor_ms": {
+              "note": "SUMO has one monotonic simulator clock per process; NGSIM clock-conflict categories are not_applicable_to_simulator_observation",
+              "status": "definitional_constant",
+              "sumo_source": "constant 0 for every recorded state"
+            },
+            "drac_mps2": {
+              "note": "identical closed form to the approved NGSIM pipeline; severity/diagnostic only and never an input to P2 event identity, confirmation or the rate denominator",
+              "status": "adapter_reuses_approved_closed_form_pending_review",
+              "sumo_source": "closing_speed_mps^2 / (2 * net_gap_m), computed only on valid closing rows"
+            },
+            "frame_id": {
+              "note": "increments by exactly one per recorded observation of the same incarnation",
+              "status": "adapter_defined_simulator_frame_index",
+              "sumo_source": "observation_index (per-incarnation recorded observation counter)"
+            },
+            "global_time_ms": {
+              "note": "absolute, not reset per incarnation; late entry therefore keeps real clock time",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "round(time_s * 1000) of the recorded simulator clock"
+            },
+            "identity_break": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation change detection"
+            },
+            "identity_uncertain": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "constant False"
+            },
+            "leader_frame_id": {
+              "note": "joined on the resolved leader incarnation and millisecond clock; missing join fails closed",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "the leader's own observation_index at the same recorded instant"
+            },
+            "leader_identity_uncertain": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader_identity_status != 'observed'"
+            },
+            "leader_matched": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader observed and incarnation-resolved"
+            },
+            "leader_trajectory_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader_incarnation_id"
+            },
+            "measurement_status": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "Stage 0.5 unified quality state"
+            },
+            "observation_gap": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "recorded cadence break detection"
+            },
+            "original_row_number": {
+              "note": "not an NGSIM original row number; never claimed as one",
+              "status": "adapter_defined_simulator_frame_index",
+              "sumo_source": "observation_index (adapter-defined recorded observation counter)"
+            },
+            "site": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "scenario_id"
+            },
+            "source_member": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation_id (run-scoped vehicle identity)"
+            },
+            "source_period": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "experiment_mode"
+            },
+            "time_s": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "traci.simulation.getTime()"
+            },
+            "trajectory_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation_id"
+            },
+            "ttc_s": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "net_gap_m / closing_speed_mps"
+            },
+            "ttc_valid": {
+              "note": "the epsilon is inherited from add_ngsim_leader_ttc(closing_epsilon_mps=1e-3)",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "matched leader, net_gap_m > 0 and closing_speed_mps > NGSIM_CLOSING_EPSILON_MPS (1e-3 m/s)"
+            },
+            "window_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "run_id"
+            }
+          },
+          "formal_comparability": false,
+          "ngsim_only_fields": {
+            "camera_occlusion_or_dropout": "not_applicable_to_simulator_observation",
+            "diagnostic_clock_conflict": "not_applicable_to_simulator_observation",
+            "original_frame_identity_break": "not_applicable_to_simulator_observation",
+            "original_row_ambiguity": "not_applicable_to_simulator_observation"
+          },
+          "raw_candidate_events": 1,
+          "recorded_observation_step_s": 0.1,
+          "rejected_candidate_events": 0,
+          "reliable_candidate_events": 1,
+          "schema_version": "stage_0_5.sumo-engineering.v2.formal-adapter-audit.v1",
+          "scientific_claim_eligible": false
+        },
+        "error": null,
+        "events": [
+          {
+            "event_confirm_s": 0.2,
+            "event_duration_s": 0.4,
+            "event_end_s": 0.4,
+            "event_id": "stage_0_2_e35d1a06157fc902",
+            "event_start_s": 0.0,
+            "exit_reason": "observation_end_right_censored",
+            "leader_id": "l",
+            "leader_trajectory_id": "run|l|0",
+            "raw_frame_count": 5,
+            "trajectory_id": "run|f|0",
+            "vehicle_id": "f"
+          }
+        ]
+      },
+      "interface_semantics": {
+        "D1": "local onset attribution plus same-native-lane exposure; physical path not inferred",
+        "SUMO_native": "engineering event/exposure adapter; native exit reasons retained",
+        "formal_P2": "approved source estimator; formal-aligned adapter is a simulator field projection and remains pending"
+      },
+      "native": {
+        "events": [
+          {
+            "event_confirm_s": 0.2,
+            "event_end_s": 0.4,
+            "event_id": "sumo_p2_engineering::synthetic|us101_highway_baseline|task2_window_boundary_onset_outside|f|run|f|0::0",
+            "event_observed_span_s": 0.4,
+            "event_start_s": 0.0,
+            "exit_reason": "observation_end_right_censored",
+            "incarnation_id": "run|f|0",
+            "inclusion_status": "engineering_only",
+            "leader_id": "l",
+            "leader_incarnation_id": "run|l|0",
+            "raw_frame_count": 5,
+            "ttc_min_s": 1.6666666666666676,
+            "vehicle_id": "f"
+          }
+        ],
+        "exposure": {
+          "adjacency_checks_applied": [
+            "same_follower_incarnation",
+            "same_resolved_leader_identity",
+            "time_delta_equals_cadence",
+            "observation_index_delta",
+            "identity_break",
+            "observation_gap"
+          ],
+          "evaluable_rule": "reliable follower/leader/time link with both endpoint measurement_status in {valid, not_applicable}; excluded links carry no zero-risk interpretation",
+          "exposure_unit": "vehicle-second (converted to vehicle-hour for the event rate)",
+          "externally_audited_adjacency": {
+            "reliable_closing_edge_seconds": null,
+            "reliable_following_edge_seconds": null,
+            "source": "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4 / stage_0_2_exposure_edge_audit"
+          },
+          "formal_rate_eligible": false,
+          "link_max_gap_s": 0.10999999999999999,
+          "not_evaluable_following_exposure_s": 0.0,
+          "not_evaluable_fraction_of_reliable_following": 0.0,
+          "p2_evaluable_following_exposure_s": 0.4,
+          "p2_evaluable_following_vehicle_hours": 0.00011111111111111112,
+          "rate_formula": "p2_event_count / p2_evaluable_following_vehicle_hours",
+          "recorded_observation_step_s": 0.1,
+          "reliable_closing_exposure_s": 0.4,
+          "reliable_following_exposure_s": 0.4,
+          "schema_version": "stage_0_5.sumo-engineering.v2.p2-exposure.v2",
+          "scientific_claim_eligible": false,
+          "status": "pending_measurement_equivalence"
+        }
+      }
+    },
+    {
+      "D1": {
+        "error": null,
+        "events": [],
+        "incomplete_candidates": [],
+        "local_evaluable_s": 0.0,
+        "local_links": 0,
+        "onset_events": 0,
+        "unavailable_point_counts": {
+          "not_applicable": 3
+        }
+      },
+      "candidate_rules": {
+        "A_strict_native_lane": {
+          "event_count": 0,
+          "events": [],
+          "exposure_s": 0.0,
+          "incomplete": [],
+          "physical_path_qualification": "same_native_lane",
+          "unknown_boundary_links": 0
+        },
+        "B_connected_boundary": {
+          "event_count": 0,
+          "events": [],
+          "exposure_s": 0.0,
+          "incomplete": [],
+          "physical_path_qualification": "connected_boundary_witness",
+          "unknown_boundary_links": 0
+        },
+        "C_pair_time_continuity": {
+          "event_count": 0,
+          "events": [],
+          "exposure_s": 0.0,
+          "incomplete": [],
+          "physical_path_qualification": "separate_from_pair_P2",
+          "unknown_boundary_links": 0
+        }
+      },
+      "case": "no_leader_boundary_missing",
+      "formal_aligned": {
+        "audit": {
+          "algorithm_version": "stage_0_2.formal_risk_measurement.v2",
+          "equivalence_status": "pending_measurement_equivalence_review",
+          "field_map": {
+            "dataset": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "constant 'sumo'"
+            },
+            "diagnostic_clock_anchor_ms": {
+              "note": "SUMO has one monotonic simulator clock per process; NGSIM clock-conflict categories are not_applicable_to_simulator_observation",
+              "status": "definitional_constant",
+              "sumo_source": "constant 0 for every recorded state"
+            },
+            "drac_mps2": {
+              "note": "identical closed form to the approved NGSIM pipeline; severity/diagnostic only and never an input to P2 event identity, confirmation or the rate denominator",
+              "status": "adapter_reuses_approved_closed_form_pending_review",
+              "sumo_source": "closing_speed_mps^2 / (2 * net_gap_m), computed only on valid closing rows"
+            },
+            "frame_id": {
+              "note": "increments by exactly one per recorded observation of the same incarnation",
+              "status": "adapter_defined_simulator_frame_index",
+              "sumo_source": "observation_index (per-incarnation recorded observation counter)"
+            },
+            "global_time_ms": {
+              "note": "absolute, not reset per incarnation; late entry therefore keeps real clock time",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "round(time_s * 1000) of the recorded simulator clock"
+            },
+            "identity_break": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation change detection"
+            },
+            "identity_uncertain": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "constant False"
+            },
+            "leader_frame_id": {
+              "note": "joined on the resolved leader incarnation and millisecond clock; missing join fails closed",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "the leader's own observation_index at the same recorded instant"
+            },
+            "leader_identity_uncertain": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader_identity_status != 'observed'"
+            },
+            "leader_matched": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader observed and incarnation-resolved"
+            },
+            "leader_trajectory_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "leader_incarnation_id"
+            },
+            "measurement_status": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "Stage 0.5 unified quality state"
+            },
+            "observation_gap": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "recorded cadence break detection"
+            },
+            "original_row_number": {
+              "note": "not an NGSIM original row number; never claimed as one",
+              "status": "adapter_defined_simulator_frame_index",
+              "sumo_source": "observation_index (adapter-defined recorded observation counter)"
+            },
+            "site": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "scenario_id"
+            },
+            "source_member": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation_id (run-scoped vehicle identity)"
+            },
+            "source_period": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "experiment_mode"
+            },
+            "time_s": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "traci.simulation.getTime()"
+            },
+            "trajectory_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "incarnation_id"
+            },
+            "ttc_s": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "net_gap_m / closing_speed_mps"
+            },
+            "ttc_valid": {
+              "note": "the epsilon is inherited from add_ngsim_leader_ttc(closing_epsilon_mps=1e-3)",
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "matched leader, net_gap_m > 0 and closing_speed_mps > NGSIM_CLOSING_EPSILON_MPS (1e-3 m/s)"
+            },
+            "window_id": {
+              "status": "provided_by_sumo_adapter",
+              "sumo_source": "run_id"
+            }
+          },
+          "formal_comparability": false,
+          "ngsim_only_fields": {
+            "camera_occlusion_or_dropout": "not_applicable_to_simulator_observation",
+            "diagnostic_clock_conflict": "not_applicable_to_simulator_observation",
+            "original_frame_identity_break": "not_applicable_to_simulator_observation",
+            "original_row_ambiguity": "not_applicable_to_simulator_observation"
+          },
+          "raw_candidate_events": 0,
+          "recorded_observation_step_s": 0.1,
+          "rejected_candidate_events": 0,
+          "reliable_candidate_events": 0,
+          "schema_version": "stage_0_5.sumo-engineering.v2.formal-adapter-audit.v1",
+          "scientific_claim_eligible": false
+        },
+        "error": null,
+        "events": []
+      },
+      "interface_semantics": {
+        "D1": "local onset attribution plus same-native-lane exposure; physical path not inferred",
+        "SUMO_native": "engineering event/exposure adapter; native exit reasons retained",
+        "formal_P2": "approved source estimator; formal-aligned adapter is a simulator field projection and remains pending"
+      },
+      "native": {
+        "events": [],
+        "exposure": {
+          "adjacency_checks_applied": [
+            "same_follower_incarnation",
+            "same_resolved_leader_identity",
+            "time_delta_equals_cadence",
+            "observation_index_delta",
+            "identity_break",
+            "observation_gap"
+          ],
+          "evaluable_rule": "reliable follower/leader/time link with both endpoint measurement_status in {valid, not_applicable}; excluded links carry no zero-risk interpretation",
+          "exposure_unit": "vehicle-second (converted to vehicle-hour for the event rate)",
+          "externally_audited_adjacency": {
+            "reliable_closing_edge_seconds": null,
+            "reliable_following_edge_seconds": null,
+            "source": "RES-STAGE-0.2-SCIENTIFIC-ACCEPTANCE-R4 / stage_0_2_exposure_edge_audit"
+          },
+          "formal_rate_eligible": false,
+          "link_max_gap_s": 0.10999999999999999,
+          "not_evaluable_following_exposure_s": 0.0,
+          "not_evaluable_fraction_of_reliable_following": null,
+          "p2_evaluable_following_exposure_s": 0.0,
+          "p2_evaluable_following_vehicle_hours": 0.0,
+          "rate_formula": "p2_event_count / p2_evaluable_following_vehicle_hours",
+          "recorded_observation_step_s": 0.1,
+          "reliable_closing_exposure_s": 0.0,
+          "reliable_following_exposure_s": 0.0,
+          "schema_version": "stage_0_5.sumo-engineering.v2.p2-exposure.v2",
+          "scientific_claim_eligible": false,
+          "status": "pending_measurement_equivalence"
+        }
+      }
+    }
+  ],
+  "interfaces": [
+    "SUMO_native",
+    "formal_aligned",
+    "D1"
+  ],
+  "schema_version": "aad.stage0.5.round2.task2.synthetic-results.v1"
+}

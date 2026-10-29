@@ -61,6 +61,20 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         "RES-STAGE-0.3-PNEUMA-KINEMATICS-R1": [],
     }
 
+    # Round2 Task2 is a self-contained offline contract-audit package.  Its
+    # evidence files are already portable snapshots; register them in the
+    # manifest without reaching into sealed trajectories or raw outputs.
+    task2_root = "evidence/results/RES-STAGE-0.5-ROUND2-TASK2-MEASUREMENT-CONTRACT-20261029"
+    pairs["RES-STAGE-0.5-ROUND2-TASK2-MEASUREMENT-CONTRACT-20261029"] = [
+        (f"{task2_root}/{name}", name)
+        for name in (
+            "candidate_rule_comparison.json", "contract_audit_matrix.json",
+            "literature_dedup_acquisition.json", "manifest.json", "sealed_trace_reuse.json",
+            "SHA256SUMS", "source_bindings.json", "synthetic_case_inputs.json",
+            "synthetic_case_results.json", "validation_record.json", "full_pytest_failure_inventory.json", "zotero_registration_result.json",
+        )
+    ]
+
     # Policy A preflight proposals, not a frozen execution protocol.
     pairs['RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1'] = [
         ('code/outputs/formal/calibration/stage_0_5_interaction_diagnostics_v1/portable/' + name, name)

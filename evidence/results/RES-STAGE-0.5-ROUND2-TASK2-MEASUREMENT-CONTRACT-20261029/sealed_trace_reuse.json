@@ -1,0 +1,27 @@
+{
+  "impact_statement": "Synthetic cases establish interface behavior only. They do not attribute the current source zero-event result to lane, flag, or invalid-TTC differences; sealed source risk states remain zero with all observed valid TTC >= 2 s.",
+  "report": "docs/STAGE_0_5_POST_R2_OFFLINE_DIAGNOSTIC_20261029.md",
+  "reused_artifacts": [
+    "diagnostic.json",
+    "existing_boundary_matrix.json",
+    "existing_equivalence_matrix.json",
+    "adapter_counterexamples.json",
+    "B00_A03_source_segments.csv",
+    "Round2_minGap1.0_source_segments.csv",
+    "source_time_space_blocks.csv"
+  ],
+  "schema_version": "aad.stage0.5.round2.task2.sealed-reuse.v1",
+  "source_package": "evidence/results/RES-STAGE-0.5-POST-R2-OFFLINE-DIAG-20261029/",
+  "verified_metrics": {
+    "B00_D1_exposure_s": 8457.4,
+    "B00_formal_risk_states": 0,
+    "B00_near_threshold_states_2_to_3s": 30,
+    "B00_source_observations": 86234,
+    "candidate_D1_exposure_s": 8900.0,
+    "candidate_formal_risk_states": 0,
+    "candidate_near_threshold_states_2_to_3s": 29,
+    "candidate_source_observations": 91058,
+    "holdout_reads": 0,
+    "new_SUMO_launches": 0
+  }
+}

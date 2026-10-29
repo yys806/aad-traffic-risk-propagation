@@ -1,3 +1,9 @@
+## AAD-S0.5-ROUND2-TASK2-MEASUREMENT-CONTRACT-20261029
+
+Report: `docs/STAGE_0_5_ROUND2_TASK2_MEASUREMENT_CONTRACT_20261029.md`; generator: `code/scripts/audit_stage_0_5_round2_task2_measurement_contract.py`; context synchronizer: `code/scripts/synchronize_stage_0_5_round2_task2_context.py`; evidence: `evidence/results/RES-STAGE-0.5-ROUND2-TASK2-MEASUREMENT-CONTRACT-20261029/`.
+
+Verified offline measurement-contract audit: 16 deterministic synthetic cases reproduce formal P2, SUMO-native, formal-aligned and D1 differences; candidate A/B/C remain pending researcher adjudication. Reused post-R2 sealed evidence; no SUMO/TraCI/new trajectories/holdout. Stage 0.5 Gate, Stage 0.6, Protocol Lock, Stage I and Round3 unchanged.
+
 ## 2026-10-29 Post-R2 offline diagnostic entry
 
 Report: docs/STAGE_0_5_POST_R2_OFFLINE_DIAGNOSTIC_20261029.md; script: code/scripts/analyze_stage_0_5_post_r2_offline_diagnostic.py; independent verifier: code/scripts/verify_stage_0_5_post_r2_offline_diagnostic.py; tests: code/tests/test_stage_0_5_post_r2_offline_diagnostic.py. Uses sealed FCD and production D1 only, no new native execution. Evidence: evidence/results/RES-STAGE-0.5-POST-R2-OFFLINE-DIAG-20261029/ .
