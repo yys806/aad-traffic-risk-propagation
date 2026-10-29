@@ -1,6 +1,6 @@
-## Current — 2026-10-28 Round2 Task1
+## Current — 2026-10-29 Round2 Task1 result
 
-Verified: the approved minGap candidate was statically bound but not scientifically launched. A current-source synthetic smoke passed in the existing Linux capsule; it used synthetic inputs only and is engineering evidence. Candidate SUMO/TraCI starts are 0, so no candidate trajectory, C6/D1 result or formal P2 exists. The launch is blocked by the existing admission contract's lack of a strict vType-only minGap factor. See `docs/STAGE_0_5_ROUND2_TASK1_EXECUTION.md` and `evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/`.
+Verified: the exact minGap-only candidate ran once and completed 420 s. The existing measurement chain, after a zero-launch capability-record binding repair, passes all eight checks. Rule A passes; source P2 is 0; target cohort has one target_main event (m00485/r00036, onset 271.8 s, confirmation 272.0 s, end 272.1 s); no auxiliary event was mixed. The micro tail tightened (net-gap mean 20.9223→18.7783 m; valid TTC risk states 0→4) while macro support remained inside the existing evidence envelope. No independent seed was authorized or run. Evidence: `evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/execution_final_v1/`.
 
 # AAD Experiments
 

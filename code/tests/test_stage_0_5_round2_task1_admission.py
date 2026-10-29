@@ -58,7 +58,9 @@ def _proposal_runs():
     proposal = dict(experiment_id=ROUND2_TASK1_EXPERIMENT, candidate_id=ROUND2_TASK1_CANDIDATE,
                     task_id=TASK, round2_baseline_run_id=ROUND2_TASK1_BASE_RUN,
                     round2_approval_path="evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/approval_record.json",
-                    round2_approval_sha256=approval_sha)
+                    round2_approval_sha256=approval_sha,
+                    round2_factor=dict(attribute="minGap", from_m=2.5, to_m=1.0,
+                                       vtypes=[f"B_het_c{i}_passenger" for i in range(5)]))
     return proposal, candidate, base
 
 

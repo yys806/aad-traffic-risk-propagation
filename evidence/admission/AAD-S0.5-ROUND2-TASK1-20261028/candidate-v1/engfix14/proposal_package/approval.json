@@ -1,0 +1,31 @@
+{
+  "schema": "aad.stage05.round2.task1-execution-approval.v1",
+  "task_id": "AAD-0.5-READY-TO-ADMIT-V3",
+  "experiment_id": "AAD-S0.5-ROUND2-TASK1",
+  "candidate_id": "AAD-S0.5-ROUND2-TASK1-20261028-candidate-v1",
+  "run_id": "AAD-S0.5-ROUND2-TASK1-20261028-candidate-v1",
+  "run_ids": [
+    "AAD-S0.5-ROUND2-TASK1-20261028-candidate-v1"
+  ],
+  "proposal_sha256": "2d310bf07e4dd38b3a321756a16f20b60897c6ee227c0a154983710839346ec3",
+  "decision_record": "Researcher explicitly authorized ENG-FIX: strict task-specific minGap admission only and one formal candidate run. The v4 protocol_frozen execution flag is task-local authorization and does not create or modify Stage 0.6 Protocol Lock.",
+  "researcher_confirmed": true,
+  "execution_allowed": true,
+  "protocol_frozen": true,
+  "admission": {
+    "initialization_policy_approved": true,
+    "measurement_contract_approved": true,
+    "input_fidelity_approved": true
+  },
+  "independent_seed_authorized": false,
+  "macro_rule": "Rule A strict joint support",
+  "source_region": "S_UPSTREAM_MAIN",
+  "target_region": "mainline lanes 1-5 y[150,350)",
+  "evaluation_window_s": [
+    120,
+    390
+  ],
+  "cohort": "C_INPUT_ROUTE",
+  "auxiliary_lane_policy": "separate diagnostic",
+  "physical_path_policy": "identity/time/lane/leader witness"
+}

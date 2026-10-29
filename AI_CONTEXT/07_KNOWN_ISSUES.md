@@ -1,4 +1,8 @@
-## Current — 2026-10-28 Round2 Task1 admission contract gap
+## Current — 2026-10-29 Round2 Task1 result and retained engineering issue
+
+Verified: the strict task-specific minGap branch admitted exactly one candidate and the native run completed. The original post-run `task_isolation` rejection was caused by a capability-record path binding and was repaired offline without a new launch; the ledger rejection remains retained. Scientific unresolved items are source P2=0, no physical arrival-time witness, and adapter `formal_equivalence_accepted=false`; no parameter search or independent seed is allowed.
+
+## Historical — 2026-10-28 Round2 Task1 admission contract gap
 
 The current `technical_preflight_v4`/route-factor contract encodes the prior B00/R1 factor forms and cannot represent the approved five-vType `minGap`-only contrast without a persistent guard change. A current-source synthetic smoke passed, but the candidate remains unstarted. Automatic review rejected the attempted core-guard patch as a possible integrity-boundary weakening. Keep candidate scientific outcomes `Unknown` until a narrowly scoped guard extension is explicitly approved and validated.
 

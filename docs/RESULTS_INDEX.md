@@ -1,6 +1,6 @@
 ## RES-STAGE-0.5-ROUND2-TASK1-20261028
 
-Round2 Task1 researcher approval and current-source engineering prelaunch evidence. One synthetic smoke completed with an independent capsule receipt `Pass`; the approved 420 s candidate was not started because the existing admission guard lacks a reviewed vType-only minGap factor contract. Candidate P2, macro and micro outcomes are not available; no scientific interpretation is made. Evidence: `evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/`; report: `docs/STAGE_0_5_ROUND2_TASK1_EXECUTION.md`.
+Verified final Round2 Task1 result: the exact candidate ran once and completed. Rule A strict macro support passed; fixed source P2=0; one target_main target-cohort event occurred; auxiliary events were kept separate. The first measurement rejection due capability-record binding is retained, and a zero-launch remeasurement passed all eight checks. No independent seed or Gate/Stage0.6/StageI promotion. Final evidence: `evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/execution_final_v1/`; report: `docs/STAGE_0_5_ROUND2_TASK1_EXECUTION.md`.
 
 # AAD 结果索引
 

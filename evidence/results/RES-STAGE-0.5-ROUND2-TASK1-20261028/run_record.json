@@ -1,31 +1,29 @@
 {
-  "schema": "aad.stage05.round2.task1-run-record.v1",
-  "commands": [
-    "git status --branch --short",
-    "git log -1 --oneline",
-    "wsl.exe -d Ubuntu --exec /bin/bash -lc 'pwd; ls /home/shen/AAD/code/tmp/stage05_v4_round2_task1_20261028'",
-    "wsl.exe -d Ubuntu --cd /mnt/d/shen/TJU/AAD --exec /home/shen/AAD/code/runtime/stage_0_5_sumo126_v4_r2/env/bin/python3 -I -B /mnt/d/shen/TJU/AAD/code/scripts/prepare_stage_0_5_linux_stage_v4.py stage /home/shen/AAD/code/tmp/stage05_v4_round2_task1_20261028 --runtime-root /home/shen/AAD/code/runtime/stage_0_5_sumo126_v4_r2",
-    "wsl.exe -d Ubuntu --exec /bin/bash -lc '... prepare synthetic smoke ...'",
-    "wsl.exe -d Ubuntu --exec /bin/bash -lc '... stage_0_5_linux_execution_v4.py launch ...'"
+  "schema": "aad.stage05.round2.task1-run-record.v2",
+  "status": "CANDIDATE_COMPLETED_SOURCE_P2_ZERO",
+  "candidate_id": "AAD-S0.5-ROUND2-TASK1-20261028-candidate-v1",
+  "seed": 20261201,
+  "duration_s": 420,
+  "internal_step_s": 0.05,
+  "recording_step_s": 0.1,
+  "native_candidate_runs": 1,
+  "native_candidate_traci_connections": 1,
+  "synthetic_smoke_sumo_launches": 1,
+  "synthetic_smoke_traci_connections": 1,
+  "offline_remeasurement_launches": 0,
+  "locked_holdout_reads": 0,
+  "ledger_status_sequence": [
+    "reserved",
+    "running",
+    "completed",
+    "measurement_rejected"
   ],
-  "environment": {
-    "host": "Windows PowerShell",
-    "wsl_distribution": "Ubuntu",
-    "wsl_workspace": "/home/shen/AAD",
-    "runtime_python": "/home/shen/AAD/code/runtime/stage_0_5_sumo126_v4_r2/env/bin/python3",
-    "sumo_release": "1.26.0",
-    "traci_protocol": 22,
-    "seed_candidate": 20261201,
-    "candidate_duration_s": 420,
-    "candidate_internal_step_s": 0.05,
-    "candidate_recording_step_s": 0.1
-  },
-  "counts": {
-    "synthetic_smoke_sumo_launches": 1,
-    "synthetic_smoke_traci_connections": 1,
-    "candidate_sumo_launches": 0,
-    "candidate_traci_connections": 0,
-    "locked_holdout_reads": 0
-  },
-  "note": "The smoke is engineering-only; no research input or candidate trajectory was started."
+  "initial_measurement_rejection": "task_isolation capability_evidence_path bound to staging_record.json",
+  "zero_launch_remeasurement": "all eight checks Pass; original ledger rejection preserved",
+  "formal_source_p2": 0,
+  "formal_target_cohort_p2": 1,
+  "macro_rule_A": "PASS",
+  "independent_seed_authorized": false,
+  "raw_output_root": "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/AAD-S0.5-ROUND2-TASK1-20261028-candidate-v1",
+  "final_evidence": "evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/execution_final_v1/"
 }

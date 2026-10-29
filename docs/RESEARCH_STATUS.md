@@ -1,6 +1,6 @@
-## 2026-10-28 Round2 Task1 current status
+## 2026-10-29 Round2 Task1 current status
 
-`ROUND2_TASK1_ENGINEERING_BLOCKED_BEFORE_CANDIDATE_NATIVE_LAUNCH`: researcher approval is recorded for Rule A and the single `minGap=1.0 m` candidate. Current-source synthetic engineering smoke passed inside the existing capsule; the candidate was withheld because the current admission guard has no reviewed minGap factor contract and the attempted persistent-guard patch was rejected by automatic review. Candidate P2, macro and micro results are not observed. Stage 0.5 Gate, Stage 0.6, Protocol Lock and Stage I remain unchanged. Evidence: `evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/`; report: `docs/STAGE_0_5_ROUND2_TASK1_EXECUTION.md`.
+`ROUND2_TASK1_ENGINEERING_AND_EVIDENCE_READY`: the exact approved candidate completed once. Rule A passed; source-region formal P2 remained zero; the target cohort produced one target_main event and no auxiliary event was pooled. A zero-launch remeasurement passed all eight checks after correcting only the capability-record path; the original `measurement_rejected` ledger event is preserved as history. No independent seed, locked holdout, Stage 0.5 Gate promotion, Stage 0.6 freeze, Protocol Lock or Stage I authorization occurred. Evidence: `evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/execution_final_v1/`; report: `docs/STAGE_0_5_ROUND2_TASK1_EXECUTION.md`.
 
 # AAD 当前科研状态
 

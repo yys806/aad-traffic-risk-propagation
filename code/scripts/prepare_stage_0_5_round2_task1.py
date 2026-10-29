@@ -124,6 +124,12 @@ def prepare(root: Path, stage: Path, destination: Path) -> dict:
     policy_copy = destination / "research_policy.json"
     policy_copy.write_bytes(policy_path.read_bytes())
     policy_sha = sha(policy_copy)
+    # Bind the immutable kernel capability transcript itself.  The staging
+    # record describes source/input preparation and is not a probe record; it
+    # cannot satisfy capability_report()'s guard/check recomputation.
+    capability_copy = destination / "capability_record.json"
+    capability_copy.write_bytes(probe.read_bytes())
+    capability_sha = sha(capability_copy)
     # A minimal predecessor proposal binds the accepted A03 run for the
     # task-specific validator; it is not an executable historical proposal.
     base_proposal = dict(schema=SCHEMA, task_id=TASK, runs=[base_run],
@@ -207,8 +213,8 @@ def prepare(root: Path, stage: Path, destination: Path) -> dict:
         isolation=dict(accepted_for_new_task=True,
                        report_path=f"{package_rel}/integration_acceptance.json",
                        report_sha256=sha(destination / "integration_acceptance.json"),
-                       capability_evidence_path=f"{package_rel}/staging_record.json",
-                       capability_evidence_sha256=sha(destination / "staging_record.json"),
+                       capability_evidence_path=f"{package_rel}/capability_record.json",
+                       capability_evidence_sha256=capability_sha,
                        controller_capsule_policy=str(policy_path), controller_capsule_status="current-source smoke Pass",
                        historical_incident="Not Accepted"),
         candidate_run_order=[ROUND2_TASK1_CANDIDATE], first_approval_candidate_run_ids=[ROUND2_TASK1_CANDIDATE],

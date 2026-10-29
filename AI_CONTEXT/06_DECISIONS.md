@@ -1,6 +1,6 @@
-## Current — 2026-10-28 Round2 Task1 researcher approval and engineering block
+## Current — 2026-10-29 Round2 Task1 result
 
-Agreed by researcher for this task: preserve `S_UPSTREAM_MAIN`, mainline target lanes 1–5 `y[150,350)`, `[120,390) s`, `C_INPUT_ROUTE`, separate auxiliary diagnostics, time-indexed identity/lane/leader path witness, Rule A macro hard constraint, and one `minGap=1.0 m` candidate attempt. No independent seed was authorized. Engineering status is blocked before the candidate native start because the existing persistent admission guard has no reviewed minGap factor branch; no guard bypass was used. This is not a scientific failure result.
+Agreed researcher bindings were used unchanged. Verified result: one exact candidate run; Rule A PASS; source P2=0; one target_main event; no auxiliary pooling; no independent seed. The candidate is not eligible for confirmation because the approved source-event condition failed. The zero-launch remeasurement repaired only the capability evidence path and leaves the original ledger rejection intact. Any future estimand or candidate change requires a new researcher decision; Stage 0.5/0.6/Stage I states are unchanged.
 
 # AAD Confirmed Decisions
 

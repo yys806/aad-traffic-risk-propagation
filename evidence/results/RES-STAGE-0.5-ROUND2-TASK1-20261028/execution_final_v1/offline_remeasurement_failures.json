@@ -1,0 +1,14 @@
+{
+  "schema": "aad.stage05.round2.task1.offline-remeasurement-failures.v1",
+  "failures": [
+    {
+      "attempt": 1,
+      "native_launches": 0,
+      "stage": "zero-launch remeasurement wrapper",
+      "error": "FileNotFoundError: assessor result was not materialized before export",
+      "cause": "new wrapper omitted the explicit measurement_acceptance.json write; no raw capsule or scientific input was changed",
+      "repaired": true,
+      "retry_kind": "offline analysis implementation repair only"
+    }
+  ]
+}

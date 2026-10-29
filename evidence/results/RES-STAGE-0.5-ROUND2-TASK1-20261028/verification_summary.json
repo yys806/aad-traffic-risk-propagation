@@ -1,69 +1,36 @@
 {
-  "schema": "aad.stage05.round2.task1-verification-summary.v1",
-  "status": "OFFLINE_VERIFICATION_PARTIAL_NATIVE_BLOCK",
-  "commands": [
-    {
-      "command": "python -B -m pytest tests/test_stage_0_5_round2_task1_candidate.py tests/test_project_docs.py -q -p no:cacheprovider --basetemp=tmp/round2_task1_tests",
-      "cwd": "code",
-      "exit_code": 1,
-      "result": "1 passed, 13 errors",
-      "reason": "Windows ACL denied creation of code/tmp/round2_task1_tests; no test assertion failure."
-    },
-    {
-      "command": "python -B -m pytest tests/test_stage_0_5_round2_task1_candidate.py -q -p no:cacheprovider",
-      "cwd": "code",
-      "exit_code": 0,
-      "result": "1 passed"
-    },
-    {
-      "command": "python -B -m pytest tests/test_project_docs.py -q -p no:cacheprovider --basetemp=C:/Users/Lenovo/.codex/visualizations/2026/10/28/01a18194-fb3b-7643-898c-afd76f45e2a9/round2_task1_tests",
-      "cwd": "code",
-      "exit_code": 0,
-      "result": "13 passed"
-    },
-    {
-      "command": "python -B -m compileall -q src scripts tests",
-      "cwd": "code",
-      "exit_code": 1,
-      "result": "PermissionError writing scripts/__pycache__",
-      "reason": "existing protected pycache path; not a source compile error"
-    },
-    {
-      "command": "$env:PYTHONPYCACHEPREFIX='C:/Users/Lenovo/.codex/visualizations/2026/10/28/01a18194-fb3b-7643-898c-afd76f45e2a9/pycache2'; python -B -m compileall -q src scripts tests",
-      "cwd": "code",
-      "exit_code": 0,
-      "result": "compileall passed"
-    },
-    {
-      "command": "python -B scripts/validate_project_docs.py --strict-git",
-      "cwd": "code",
-      "exit_code": 1,
-      "result": "untracked new report/evidence paths",
-      "reason": "expected before staging; rerun after git add"
-    },
-    {
-      "command": "python -B -m pytest -q -p no:cacheprovider --basetemp=C:/Users/Lenovo/.codex/visualizations/2026/10/28/01a18194-fb3b-7643-898c-afd76f45e2a9/round2_task1_full_pytest",
-      "cwd": "code",
-      "exit_code": 1,
-      "result": "35 failed, 1394 passed, 4 skipped, 2 warnings in 261.76s",
-      "failure_inventory": "full_pytest_failures.json",
-      "full_log": "full_pytest_output.txt",
-      "reason": "Existing full-regression failures retained; no candidate science was run."
-    }
-  ],
+  "schema": "aad.stage05.round2.task1-verification-summary.v2",
+  "status": "EXECUTED_SOURCE_P2_ZERO_MACRO_RULE_A_PASS",
   "native": {
     "synthetic_smoke_sumo_launches": 1,
     "synthetic_smoke_traci_connections": 1,
-    "candidate_sumo_launches": 0,
-    "candidate_traci_connections": 0,
+    "candidate_sumo_launches": 1,
+    "candidate_traci_connections": 1,
+    "offline_remeasurement_launches": 0,
     "locked_holdout_reads": 0
   },
-  "no_claim_of_candidate_science": true,
-  "final_checks": {
+  "candidate": {
+    "source_P2": 0,
+    "target_cohort_P2": 1,
+    "macro_Rule_A": "PASS",
+    "independent_seed_eligible": false,
+    "physical_path": "Unknown",
+    "measurement_all_eight_after_repair": true,
+    "original_ledger_rejection_preserved": true
+  },
+  "tests": {
+    "round2_admission_capsule_isolation": "153 passed",
+    "compileall": "pass",
     "strict_docs": "PROJECT_DOCS_OK",
-    "portable_evidence_scoped": "PORTABLE_EVIDENCE_OK",
-    "project_docs_tests": "13 passed",
-    "round2_candidate_test": "1 passed",
-    "compileall": "pass with PYTHONPYCACHEPREFIX"
-  }
+    "portable_evidence_verify": "PORTABLE_EVIDENCE_OK"
+  },
+  "full_regression": {
+    "failed": 35,
+    "passed": 1394,
+    "skipped": 4,
+    "failure_inventory": "full_pytest_failures.json"
+  },
+  "gate_status": "unchanged blocked",
+  "stage_0_6": "unchanged unapproved",
+  "stage_I": "unchanged blocked"
 }

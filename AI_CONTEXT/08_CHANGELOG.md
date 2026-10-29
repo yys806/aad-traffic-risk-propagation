@@ -1,5 +1,10 @@
 # AAD AI Context Changelog
 
+## 2026-10-29 Round2 Task1 native result and zero-launch measurement repair
+
+Recorded one exact minGap-only candidate run: native execution completed, Rule A passed, source P2 remained zero, and one target_main event appeared. Preserved the original measurement rejection, repaired only the capability-record binding in a zero-launch remeasurement, and recorded all eight checks passing. Added final compact machine evidence, raw-output hashes, candidate/baseline comparison and stopping-rule interpretation. No Gate, Stage 0.6, Protocol Lock, Stage I or independent seed state changed.
+
+
 ## 2026-10-28 First-round evidence-consistency repair
 
 Corrected B11 event classification from source inventory, replaced hardcoded counts with source-derived assertions, removed local manifest self-reference, independently verified SHA256SUMS and source evidence bundles, saved exact offline regression failures and dependency probes, fixed report links, and corrected current-state entry wording. No formal measurement or scientific state changed.

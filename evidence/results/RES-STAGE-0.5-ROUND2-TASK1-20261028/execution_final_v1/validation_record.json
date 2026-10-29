@@ -1,0 +1,23 @@
+{
+  "commands": {
+    "compileall": "python -m compileall -q ... with PYTHONPYCACHEPREFIX=<writable-root>/pycache_round2_compile; result=pass",
+    "final_package_hash": "independent Python manifest/SHA256SUMS/link check; result=PASS (15 payload files, 16 SHA lines, 9 report links)",
+    "portable_evidence_verify": "python code/scripts/export_project_evidence.py --repo-root . --verify; result=PORTABLE_EVIDENCE_OK",
+    "strict_docs": "python code/scripts/validate_project_docs.py --strict-git; result=PROJECT_DOCS_OK",
+    "targeted_pytest": "python -m pytest tests/test_stage_0_5_round2_task1_admission.py tests/test_stage_0_5_native_capsule_v4.py tests/test_stage_0_5_linux_isolation.py -q --basetemp=<writable-root>/pytest_round2_all; result=153 passed"
+  },
+  "formal_definitions_changed": false,
+  "full_regression": "35 failed, 1394 passed, 4 skipped; all failures retained in parent evidence",
+  "gate_status_unchanged": true,
+  "independent_seed_eligible": false,
+  "locked_holdout_reads": 0,
+  "macro_Rule_A": "PASS",
+  "native_candidate_runs": 1,
+  "offline_remeasurement_launches": 0,
+  "original_measurement_rejection_retained": true,
+  "schema": "aad.stage05.round2.task1-final-validation.v2",
+  "source_P2": 0,
+  "status": "VERIFIED",
+  "synthetic_smoke_runs": 1,
+  "target_cohort_P2": 1
+}
