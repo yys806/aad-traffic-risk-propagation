@@ -38,8 +38,11 @@
       "27 offline new-code/docs tests passed"
     ],
     "initial_failure": "development_failure_record.json:pure_git_initial_checkout",
-    "final_commit_checkout_check": "required after commit; recorded in final execution output, not assumed here"
+    "final_commit_checkout_check": "actual committed checkout checked; supplementary provenance-only package will be resealed and independently verified",
+    "committed_checkout": "PASS 788337a789253cca73724879b70a6788fd556fdd; actual hashes, clean strict docs and 27 offline tests",
+    "record": "committed_checkout_validation.json"
   },
   "context_consistency_check": "PASS context_consistency_check.json",
-  "final_validation_scope": "scientific acceptance and full regression are not declared Pass; manifest excludes its own controls and final verification is read-only"
+  "final_validation_scope": "scientific acceptance and full regression are not declared Pass; manifest excludes its own controls and final verification is read-only",
+  "authorized_roadmap": "Verified named authorized path; no private scan or approval change"
 }

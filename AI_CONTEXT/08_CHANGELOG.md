@@ -1,4 +1,5 @@
 ## 2026-10-29 Post-R2 offline diagnostic
+- Post-R2 supplemental provenance: explicitly named authorized OB roadmap read-only crosscheck agrees with conditional third-round stop rule; actual committed Git-only checks pass. No science or authorization change.
 
 Added production-chain FCD diagnostics, continuity/quality counterexamples, directed tests and independent package verifier. Preserved failed provisional coordinate reconstruction and test/setup failures. Added final-result navigation and repaired only parent manifest/SHA controls. Current indices synchronized; no formal logic or Gate changed. docs/STAGE_0_5_POST_R2_OFFLINE_DIAGNOSTIC_20261029.md
 

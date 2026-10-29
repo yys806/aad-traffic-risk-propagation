@@ -24,6 +24,8 @@ def seal(p):
 
 data=json.loads((PACK/'diagnostic.json').read_bytes())
 head=subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
+old_run=json.loads((PACK/'run_record.json').read_bytes()) if (PACK/'run_record.json').exists() else {}
+input_head=old_run.get('input_HEAD',head)
 commands=dict(
  analysis='python code/scripts/analyze_stage_0_5_post_r2_offline_diagnostic.py --repo-root . --output evidence/results/RES-STAGE-0.5-POST-R2-OFFLINE-DIAG-20261029',
  independent='python code/scripts/verify_stage_0_5_post_r2_offline_diagnostic.py --repo-root . --package evidence/results/RES-STAGE-0.5-POST-R2-OFFLINE-DIAG-20261029 --raw-inputs',
@@ -36,7 +38,7 @@ commands=dict(
 source_paths=[ROOT/p for p in data['source_sha256']]
 source_paths += [ROOT/'code/scripts/verify_stage_0_5_post_r2_offline_diagnostic.py',ROOT/'code/scripts/export_project_evidence.py',ROOT/'code/tests/test_stage_0_5_post_r2_offline_diagnostic.py']
 write(PACK/'run_record.json',dict(schema='aad.stage05.post-r2.run-record.v1',task='AAD-S0.5-POST-R2-TASK1-20261029',date='2026-10-29',
- input_HEAD=head,input_origin_main=head,git_attributes_sha256=sha(ROOT/'.gitattributes'),uncommitted_task_sources_sha256={p.relative_to(ROOT).as_posix():sha(p) for p in source_paths},
+ input_HEAD=input_head,input_origin_main=old_run.get('input_origin_main',input_head),packaging_HEAD=head,git_attributes_sha256=sha(ROOT/'.gitattributes'),uncommitted_task_sources_sha256={p.relative_to(ROOT).as_posix():sha(p) for p in source_paths},
  commands=commands,environment='environment.json',large_input_bindings='diagnostic.json:runs.*.inputs',
  source_reconciliation='exact sealed D1 counts/exposure/quality/events asserted; all FCD/lifecycle records inspected',
  formal_measurement_code_modified=False,source_target_window_cohort_changed=False,native_launches=0,traci_connections=0,holdout_reads=0,new_trajectories=0,
@@ -57,6 +59,11 @@ for p in source_paths:
     inventory.append(dict(path=p.relative_to(ROOT).as_posix(),type=p.suffix,arm='shared',
         read_status='targeted_function_and_callgraph_semantic_review',sha256=sha(p),manifest_check='source_binding',
         supports='definition/implementation/boundary-test distinctions; formal logic unchanged'))
+if (PACK/'authorized_roadmap_check.json').exists():
+    roadmap=json.loads((PACK/'authorized_roadmap_check.json').read_bytes())
+    inventory.append(dict(path=roadmap['path'],type='.md',arm='authorized_auxiliary_context',
+        read_status='full_named_file_read_only_semantic_crosscheck',sha256=roadmap['sha256'],
+        manifest_check='actual_file_hash_not_Git_evidence',supports='original conditional third-round stop rule; no new scientific approval'))
 with (PACK/'file_audit.csv').open('w',encoding='utf-8',newline='') as stream:
     writer=csv.DictWriter(stream,fieldnames=list(inventory[0]));writer.writeheader();writer.writerows(inventory)
 

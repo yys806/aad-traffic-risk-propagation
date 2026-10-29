@@ -1,0 +1,152 @@
+{
+  "commit": "788337a789253cca73724879b70a6788fd556fdd",
+  "raw_data_copied": false,
+  "clone_core_longpaths": true,
+  "previous_failure": "committed_clone_checks_attempt1.json",
+  "checks": [
+    {
+      "name": "bundle",
+      "command": [
+        "D:\\miniconda\\python.exe",
+        "code/scripts/verify_stage_0_5_post_r2_offline_diagnostic.py",
+        "--repo-root",
+        ".",
+        "--package",
+        "evidence/results/RES-STAGE-0.5-POST-R2-OFFLINE-DIAG-20261029"
+      ],
+      "cwd": "C:\\Users\\Lenovo\\.codex\\visualizations\\2026\\10\\28\\01a18194-fb3b-7643-898c-afd76f45e2a9\\post_r2_committed_git_validation",
+      "exit_code": 0,
+      "log": "code\\outputs\\diagnostics\\post_r2_validation_logs_20261029\\committed_clone_bundle.log",
+      "sha256": "2cf40329f4edd994cd5e4ee3f6b0ed39e30617b6198f4c0ba9ad5c2ad0d7cad1",
+      "ending": [
+        "  }",
+        "}"
+      ]
+    },
+    {
+      "name": "evidence",
+      "command": [
+        "D:\\miniconda\\python.exe",
+        "code/scripts/export_project_evidence.py",
+        "--repo-root",
+        ".",
+        "--verify"
+      ],
+      "cwd": "C:\\Users\\Lenovo\\.codex\\visualizations\\2026\\10\\28\\01a18194-fb3b-7643-898c-afd76f45e2a9\\post_r2_committed_git_validation",
+      "exit_code": 0,
+      "log": "code\\outputs\\diagnostics\\post_r2_validation_logs_20261029\\committed_clone_evidence.log",
+      "sha256": "0c69002e3db974ba19b1ea32d63389fc1f3a6495d116b6f622aa6081c4313f41",
+      "ending": [
+        "PORTABLE_EVIDENCE_OK"
+      ]
+    },
+    {
+      "name": "docs_longpaths",
+      "command": [
+        "D:\\miniconda\\python.exe",
+        "code/scripts/validate_project_docs.py",
+        "--strict-git",
+        "--require-clean"
+      ],
+      "cwd": "C:\\Users\\Lenovo\\.codex\\visualizations\\2026\\10\\28\\01a18194-fb3b-7643-898c-afd76f45e2a9\\post_r2_committed_git_validation",
+      "exit_code": 0,
+      "log": "code\\outputs\\diagnostics\\post_r2_validation_logs_20261029\\committed_clone_docs_longpaths.log",
+      "sha256": "534ed6a0d8980a186ca298cfacfa994aaa780aeed39761c4a1b6386dbdabee77",
+      "ending": [
+        "PROJECT_DOCS_OK"
+      ]
+    },
+    {
+      "name": "tests",
+      "command": [
+        "D:\\miniconda\\python.exe",
+        "-B",
+        "-m",
+        "pytest",
+        "tests/test_stage_0_5_post_r2_offline_diagnostic.py",
+        "tests/test_project_docs.py",
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--basetemp=C:\\Users\\Lenovo\\.codex\\visualizations\\2026\\10\\28\\01a18194-fb3b-7643-898c-afd76f45e2a9\\post_r2_committed_tests"
+      ],
+      "cwd": "C:\\Users\\Lenovo\\.codex\\visualizations\\2026\\10\\28\\01a18194-fb3b-7643-898c-afd76f45e2a9\\post_r2_committed_git_validation\\code",
+      "exit_code": 0,
+      "log": "code\\outputs\\diagnostics\\post_r2_validation_logs_20261029\\committed_clone_tests.log",
+      "sha256": "4869675f8d3954033140d85090793795202041b131b2e919a0a603bc760e7976",
+      "ending": [
+        "...........................                                              [100%]",
+        "27 passed in 5.83s"
+      ]
+    }
+  ],
+  "all_pass": true,
+  "initial_checkout_failure": {
+    "clone_checkout_exit": 128,
+    "initial_error": "Filename too long on four historical audit JSON paths",
+    "recovery_attempt_1": "checkout-index rejected because aborted clone left no cache; no files changed",
+    "recovery_attempt_2": "read-tree HEAD in disposable clone only, then exact four-file checkout with core.longpaths=true",
+    "scientific_or_raw_data_changed": false
+  },
+  "first_docs_failure": {
+    "commit": "788337a789253cca73724879b70a6788fd556fdd",
+    "raw_data_copied": false,
+    "checks": [
+      {
+        "name": "bundle",
+        "command": [
+          "D:\\miniconda\\python.exe",
+          "code/scripts/verify_stage_0_5_post_r2_offline_diagnostic.py",
+          "--repo-root",
+          ".",
+          "--package",
+          "evidence/results/RES-STAGE-0.5-POST-R2-OFFLINE-DIAG-20261029"
+        ],
+        "cwd": "C:\\Users\\Lenovo\\.codex\\visualizations\\2026\\10\\28\\01a18194-fb3b-7643-898c-afd76f45e2a9\\post_r2_committed_git_validation",
+        "exit_code": 0,
+        "log": "code\\outputs\\diagnostics\\post_r2_validation_logs_20261029\\committed_clone_bundle.log",
+        "sha256": "2cf40329f4edd994cd5e4ee3f6b0ed39e30617b6198f4c0ba9ad5c2ad0d7cad1",
+        "ending": [
+          "  }",
+          "}"
+        ]
+      },
+      {
+        "name": "evidence",
+        "command": [
+          "D:\\miniconda\\python.exe",
+          "code/scripts/export_project_evidence.py",
+          "--repo-root",
+          ".",
+          "--verify"
+        ],
+        "cwd": "C:\\Users\\Lenovo\\.codex\\visualizations\\2026\\10\\28\\01a18194-fb3b-7643-898c-afd76f45e2a9\\post_r2_committed_git_validation",
+        "exit_code": 0,
+        "log": "code\\outputs\\diagnostics\\post_r2_validation_logs_20261029\\committed_clone_evidence.log",
+        "sha256": "0c69002e3db974ba19b1ea32d63389fc1f3a6495d116b6f622aa6081c4313f41",
+        "ending": [
+          "PORTABLE_EVIDENCE_OK"
+        ]
+      },
+      {
+        "name": "docs",
+        "command": [
+          "D:\\miniconda\\python.exe",
+          "code/scripts/validate_project_docs.py",
+          "--strict-git",
+          "--require-clean"
+        ],
+        "cwd": "C:\\Users\\Lenovo\\.codex\\visualizations\\2026\\10\\28\\01a18194-fb3b-7643-898c-afd76f45e2a9\\post_r2_committed_git_validation",
+        "exit_code": 1,
+        "log": "code\\outputs\\diagnostics\\post_r2_validation_logs_20261029\\committed_clone_docs.log",
+        "sha256": "ec76fed5f11e15b6d174b9dec071580be136af6038856ab7c0b877401066c9bb",
+        "ending": [
+          "PROJECT_DOCS_INVALID",
+          "- Git worktree is not clean"
+        ]
+      }
+    ],
+    "all_pass": false
+  },
+  "scope": "actual committed Git clone 788337a; supplementary provenance-only reseal is validated separately without repeating scientific analysis"
+}

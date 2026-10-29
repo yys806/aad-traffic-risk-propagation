@@ -112,7 +112,7 @@ valid是可靠闭合正TTC，不等于所有可评价跟驰。候选gap更小、
 
 独立核验发现父manifest的execution_final_v1/validation_record.json哈希过时，父SHA仍有旧child manifest/validation哈希；**子包本身15个payload/16条SHA通过**。旧父控制文件完整保存在本诊断包prior_round2_manifest.json、prior_round2_SHA256SUMS.txt；漂移见prior_round2_manifest_drift.json。只新增导航、重封父清单，未覆盖科学JSON/轨迹/失败；[修复后独立核验](../evidence/results/RES-STAGE-0.5-POST-R2-OFFLINE-DIAG-20261029/prior_packages_independent_verification.json)区分父包和未改子包。
 
-早期手写坐标诊断源状态错为92525/97252，已标INVALID_SUPERSEDED、保存脚本/产物SHA和本地路径；最终生产重建精确回到86234/91058。负TTC探针初次抛错、临时目录权限、父manifest过时等见[开发失败记录](../evidence/results/RES-STAGE-0.5-POST-R2-OFFLINE-DIAG-20261029/development_failure_record.json)。可选Research-Local路线图未从当前工具获得，没有扫描私人笔记或假称已读。
+早期手写坐标诊断源状态错为92525/97252，已标INVALID_SUPERSEDED、保存脚本/产物SHA和本地路径；最终生产重建精确回到86234/91058。负TTC探针初次抛错、临时目录权限、父manifest过时等见[开发失败记录](../evidence/results/RES-STAGE-0.5-POST-R2-OFFLINE-DIAG-20261029/development_failure_record.json)。指定的辅助路线图已按唯一授权文件路径只读核验；其“第二轮无源P2即停止、第三轮条件执行”与本结论一致。仅作辅助上下文，不作为新批准；实际SHA及逐项核对见[路线图核验](../evidence/results/RES-STAGE-0.5-POST-R2-OFFLINE-DIAG-20261029/authorized_roadmap_check.json)，未扫描私人目录或复制笔记正文。
 
 ### 验证与重现
 
