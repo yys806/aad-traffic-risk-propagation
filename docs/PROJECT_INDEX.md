@@ -1,3 +1,7 @@
+## 2026-10-29 Post-R2 offline diagnostic entry
+
+Report: docs/STAGE_0_5_POST_R2_OFFLINE_DIAGNOSTIC_20261029.md; script: code/scripts/analyze_stage_0_5_post_r2_offline_diagnostic.py; independent verifier: code/scripts/verify_stage_0_5_post_r2_offline_diagnostic.py; tests: code/tests/test_stage_0_5_post_r2_offline_diagnostic.py. Uses sealed FCD and production D1 only, no new native execution. Evidence: evidence/results/RES-STAGE-0.5-POST-R2-OFFLINE-DIAG-20261029/ .
+
 ## 2026-10-29 Round2 Task1 execution entry
 
 Final execution entry: `docs/STAGE_0_5_ROUND2_TASK1_EXECUTION.md`; machine evidence: `evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/execution_final_v1/`; candidate output remains at the bound formal run path. One exact candidate completed with Rule A PASS, source P2=0 and one target_main event; the initial measurement rejection and zero-launch repair are both recorded. No independent seed or Gate/Stage0.6/StageI status changed.

@@ -1,0 +1,143 @@
+{
+  "rows": [
+    {
+      "field": "TTC/方向/单位",
+      "formal_definition": "正净距、正闭合；秒",
+      "actual_implementation": "compute_sumo_measurements: closing=后车速−前车速；gap>0、closing>0.001m/s、finite、leader可解析；TTC=gap/closing",
+      "existing_validation": "closing epsilon、非闭合、非正距测试",
+      "unresolved_difference_scientific_impact": "0.001是已有数值容差，非新科学阈值；真实测量误差等价性未认可",
+      "recommendation": "计算规则可核实"
+    },
+    {
+      "field": "净间距",
+      "formal_definition": "前车尾至后车前，m",
+      "actual_implementation": "当前胶囊同native_lane的leader_pos−leader_length−follower_pos，不用映射y求距",
+      "existing_validation": "既有物理坐标测试、全量分布",
+      "unresolved_difference_scientific_impact": "不重建跨edge/lane前车；通用TraCI距离说明不代表本次调用getLeader",
+      "recommendation": "边界保留missing"
+    },
+    {
+      "field": "阈值",
+      "formal_definition": "0<TTC<2s",
+      "actual_implementation": "D1显式检查正值、valid、可靠；native _risk_mask信任ttc_valid，未再检查正值/status",
+      "existing_validation": "原边界矩阵、本轮负TTC反例",
+      "unresolved_difference_scientific_impact": "不一致预测量输入可使native生成事件；formal拒绝non-risk member；生产compute禁止有效非正TTC",
+      "recommendation": "接口契约缺口，不是本源零事件的已证原因"
+    },
+    {
+      "field": "持续时间",
+      "formal_definition": "首末观测跨度≥0.2s",
+      "actual_implementation": "三接口按跨度，D1带1e-9比较容差",
+      "existing_validation": "exactly/below minimum",
+      "unresolved_difference_scientific_impact": "成员数×0.1不是跨度；三帧才可能0.2s",
+      "recommendation": "可核实"
+    },
+    {
+      "field": "确认时刻",
+      "formal_definition": "首个实际观测满足持续门槛",
+      "actual_implementation": "native取实际成员；formal复用observed_confirmation_time；D1同观测时钟",
+      "existing_validation": "既有因果确认、迟入/warmup测试",
+      "unresolved_difference_scientific_impact": "onset、confirmation、message、物理arrival不同",
+      "recommendation": "物理到达Unknown"
+    },
+    {
+      "field": "cadence/max gap",
+      "formal_definition": "100ms；maxgap0.11s",
+      "actual_implementation": "native要求0.1±1e-6；D1要求0.1±1e-9且100ms网格；formal检查frame/clock",
+      "existing_validation": "missing-frame/非标准cadence、全量FCD grid",
+      "unresolved_difference_scientific_impact": "≤0.11不等于任意间隔均可；数值容差不完全一致",
+      "recommendation": "当前grid满足；一般等价性需审查"
+    },
+    {
+      "field": "follower/leader身份",
+      "formal_definition": "连续pair、incarnation、run/source作用域",
+      "actual_implementation": "D1按run/scenario/follower/incarnation排序；leader ID与incarnation均相同；native检查incarnation及已知ID",
+      "existing_validation": "identity/leader switch、两臂生命周期",
+      "unresolved_difference_scientific_impact": "FCD重建incarnation=vehicle ID别名，非通用重入身份算法",
+      "recommendation": "当前生命周期核验不外推一般等价"
+    },
+    {
+      "field": "flags、row/frame",
+      "formal_definition": "不跨identity_break/observation_gap；clock/原始row可信",
+      "actual_implementation": "native/D1检查两端；build_sumo_formal_source_frame重编号并将两flag和identity_uncertain置false",
+      "existing_validation": "既有身份测试、本轮显式flag反例",
+      "unresolved_difference_scientific_impact": "显式中断可在formal映射丢失，影响事件与暴露",
+      "recommendation": "记录冲突，待契约裁决；不改正式实现"
+    },
+    {
+      "field": "native lane",
+      "formal_definition": "已批准物理路径需真实车道/连接见证",
+      "actual_implementation": "D1邻接额外要求native_lane相同；native/formal一般不检查",
+      "existing_validation": "lane-change反例：1/1/0",
+      "unresolved_difference_scientific_impact": "D1保守切断与通用P2不等价；影响事件/暴露；换道不等于不可达",
+      "recommendation": "分开定义接口，跨连接仍Unknown"
+    },
+    {
+      "field": "空间归属",
+      "formal_definition": "固定主线1–5、半开源/目标范围",
+      "actual_implementation": "D1全上下文提取后按onset归属；confirmation/全程位置另列",
+      "existing_validation": "区域/left continuation测试、目标局部逐帧",
+      "unresolved_difference_scientific_impact": "全量事件表不是正式源/目标计数；数组可含onset_inside=false",
+      "recommendation": "用onset_events；辅助事件独立"
+    },
+    {
+      "field": "窗口/原点",
+      "formal_definition": "[120,390)s；时钟各有来源原点",
+      "actual_implementation": "D1 onset半开窗，可用窗后confirmation上下文；formal用absolute ms",
+      "existing_validation": "warmup/late-entry/window测试",
+      "unresolved_difference_scientific_impact": "仿真absolute秒不等于NGSIM原absolute时刻",
+      "recommendation": "仅同口径持续/相对时钟可比"
+    },
+    {
+      "field": "missing/无前车",
+      "formal_definition": "未知不补零；真实无前车可not_applicable",
+      "actual_implementation": "core无前车not_applicable且不可靠；state_support把无同lane successor标unresolved_lane_boundary/missing",
+      "existing_validation": "no-leader/质量测试、本轮完整missing reason统计",
+      "unresolved_difference_scientific_impact": "本次57798/65376个not_applicable为可靠非闭合，不是没有前车",
+      "recommendation": "边界missing的真实TTC仍Unknown"
+    },
+    {
+      "field": "invalid",
+      "formal_definition": "非正gap/无效观测不作风险",
+      "actual_implementation": "core非正距标invalid；D1仅valid/not_applicable入合格边",
+      "existing_validation": "原非正距/布尔契约测试",
+      "unresolved_difference_scientific_impact": "本源invalid=0不表示全部物理风险可见",
+      "recommendation": "限定结论范围"
+    },
+    {
+      "field": "暴露/率/零事件",
+      "formal_definition": "可靠且P2可评价的相邻边",
+      "actual_implementation": "D1两端可靠、质量、区内、clock合格才累加0.1；非闭合仍入分母；rate=3600n/E",
+      "existing_validation": "原exposure测试、源E精确复现",
+      "unresolved_difference_scientific_impact": "compute_exposure没有D1额外lane/region条件；点数×0.1非D1；E>0不证明missing安全",
+      "recommendation": "条件观测率，不是总体风险为0"
+    },
+    {
+      "field": "右删失/事件结束",
+      "formal_definition": "未满0.2未确认；右删失、前车切换、阈值退出区分",
+      "actual_implementation": "D1有observed_short/right_censored_unconfirmed，但完成事件无exit_reason；native/formal有exit vocabulary",
+      "existing_validation": "原right-censored测试、本轮目标272.2s行",
+      "unresolved_difference_scientific_impact": "D1单独不能说明所有结束原因；末端之后未知",
+      "recommendation": "后继观测单列诊断，不补写正式事件"
+    },
+    {
+      "field": "rho",
+      "formal_definition": "exp(−TTC/15.364279197080283)，无事件阈值截断",
+      "actual_implementation": "formal rho_from_ttc；不参与P2身份",
+      "existing_validation": "原指数映射测试",
+      "unresolved_difference_scientific_impact": "rho一致不证明事件/暴露/路径等价",
+      "recommendation": "不变"
+    },
+    {
+      "field": "总体等价性",
+      "formal_definition": "身份/时间/质量/暴露真实参考证据与正式认可",
+      "actual_implementation": "D1 formal_equivalence_accepted=false；aligned formal_comparability=false",
+      "existing_validation": "旧矩阵pending、本轮反例与真实重建",
+      "unresolved_difference_scientific_impact": "工程Pass、定义一致、科学等价是三件事",
+      "recommendation": "不升级状态"
+    }
+  ],
+  "overall_scientific_equivalence_accepted": false,
+  "evidence": "existing_boundary_matrix.json + adapter_counterexamples.json + source_sha256",
+  "status": "software facts verified; general continuity contract awaiting researcher decision"
+}

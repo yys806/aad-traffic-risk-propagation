@@ -1,0 +1,23 @@
+[
+  {
+    "Documented_Intent": "Preserve pair continuity and explicit flags",
+    "Actual_Implementation": "formal source frame resets explicit flags and row/frame identity",
+    "Evidence": "adapter_counterexamples identity_break and observation_gap",
+    "Affected_Files": [
+      "code/src/riskprop/stage_0_5_sumo.py"
+    ],
+    "Conflict": "0/1/0 adapter counts",
+    "Status": "Awaiting Researcher Decision"
+  },
+  {
+    "Documented_Intent": "Distinguish pair events from genuine physical lane-path continuity",
+    "Actual_Implementation": "D1 additionally requires same native lane; generic native/formal do not",
+    "Evidence": "native_lane_change counterexample",
+    "Affected_Files": [
+      "code/src/riskprop/stage_0_5_d1_measurement.py",
+      "code/src/riskprop/stage_0_5_sumo.py"
+    ],
+    "Conflict": "1/1/0 counts; event/exposure universality not demonstrated",
+    "Status": "Awaiting Researcher Decision"
+  }
+]

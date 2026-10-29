@@ -804,9 +804,21 @@ def _validate_source(source: Path) -> None:
 
 def export_evidence(repo_root: Path, result_ids: set[str] | None = None) -> dict[str, object]:
     evidence_root = repo_root / "evidence"
+    previous_path = evidence_root / "EVIDENCE_MANIFEST.json"
+    previous = json.loads(previous_path.read_text(encoding="utf-8")) if previous_path.exists() else {"results": []}
+    # Later sealed bundles are deliberately registered in place. Never replace
+    # them with an older output/portable source or drop them on a full export.
+    # Registration/authorized resealing is separate: drift must fail here.
+    self_managed = {
+        entry["result_id"]: entry for entry in previous["results"]
+        if entry.get("files") and all(f.get("source_path") == f.get("snapshot_path")
+                                      for f in entry["files"])
+    }
     result_entries: list[dict[str, object]] = []
     for result_id, pairs in _source_pairs().items():
         if result_ids is not None and result_id not in result_ids:
+            continue
+        if result_id in self_managed:
             continue
         files: list[dict[str, object]] = []
         for source_raw, destination_tail in pairs:
@@ -814,7 +826,10 @@ def export_evidence(repo_root: Path, result_ids: set[str] | None = None) -> dict
             _validate_source(source)
             destination = evidence_root / "results" / result_id / destination_tail
             destination.parent.mkdir(parents=True, exist_ok=True)
-            shutil.copyfile(source, destination)
+            # Sealed history may be read-only. Equal snapshots need no write;
+            # different bytes still require the existing explicit copy path.
+            if not destination.is_file() or _sha256(source) != _sha256(destination):
+                shutil.copyfile(source, destination)
             files.append(
                 {
                     "source_path": source_raw,
@@ -824,6 +839,17 @@ def export_evidence(repo_root: Path, result_ids: set[str] | None = None) -> dict
                 }
             )
         result_entries.append({"result_id": result_id, "files": files})
+
+    for result_id, entry in self_managed.items():
+        if result_ids is not None and result_id not in result_ids:
+            continue
+        for item in entry["files"]:
+            source = (repo_root / item["snapshot_path"]).resolve()
+            if not source.is_relative_to(evidence_root.resolve()) or not source.is_file():
+                raise ValueError("invalid self-managed evidence path: " + item["snapshot_path"])
+            if source.stat().st_size != item["size_bytes"] or _sha256(source) != item["sha256"]:
+                raise ValueError("self-managed evidence drift; explicit resealing required: " + item["snapshot_path"])
+        result_entries.append(entry)
 
     if result_ids is not None:
         unknown = result_ids - {entry['result_id'] for entry in result_entries}

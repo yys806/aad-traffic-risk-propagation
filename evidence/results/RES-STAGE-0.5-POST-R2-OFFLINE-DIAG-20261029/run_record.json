@@ -1,0 +1,43 @@
+{
+  "schema": "aad.stage05.post-r2.run-record.v1",
+  "task": "AAD-S0.5-POST-R2-TASK1-20261029",
+  "date": "2026-10-29",
+  "input_HEAD": "d698d9d64c2acb8fa31c3841a08d22d129353cf5",
+  "input_origin_main": "d698d9d64c2acb8fa31c3841a08d22d129353cf5",
+  "git_attributes_sha256": "e5ddc0d7353055b09afb8709987be4478d3a6a208664e0ff912d4a14495d2738",
+  "uncommitted_task_sources_sha256": {
+    "code/scripts/analyze_stage_0_5_post_r2_offline_diagnostic.py": "7a29c015d81cafb3ed6a9923cd6b615fc37f1835cba7268eea50144764dbe368",
+    "code/src/riskprop/stage_0_5_scene_reconstruction.py": "01ca2361ba1f5c53e626a830d5ef41c83dd6c68f5c756ce21e0c4084e5c3813a",
+    "code/src/riskprop/stage_0_5_state_support.py": "153f2672a01a17cc578b2d32ad49b8936239640cd065a0ed20bb8796f493c301",
+    "code/src/riskprop/stage_0_5_sumo.py": "83f866f9647dc40e6f2012f759a3cad99d1e122b8933b2910afff594be7a797b",
+    "code/src/riskprop/stage_0_5_d1_measurement.py": "affaf9984055b8673e6616310e4b0560f61b721747c33b47824f26172d36ad9c",
+    "code/src/riskprop/formal_risk_measurement.py": "4e15e67e35911fdd4d50d26f41784bde05a8cd9983edc42c572fa51b00686c58",
+    "code/scripts/stage_0_5_acceptance_v3.py": "0ca8795bf82659ddffa0e5a54f8c93ef50f31896792b361cf06b1d6318e4ab95",
+    "code/scripts/analyze_stage_0_5_round2_task1.py": "f273f356d69d076242d3eed04136d678d76da6c2e0cc75e6cc50ea516cdd9d42",
+    "code/configs/stage_0_2_formal_risk_measurement_p2_v1.json": "00687de2a88b914e8123259ecb6d8fe1fbc66824fab49b1d3a7e634e97db1fb7",
+    "code/scripts/verify_stage_0_5_post_r2_offline_diagnostic.py": "d9fa6f37c881fbb52bc5ce6efd92c16da2d117faa8829536f1535ec70d6d61ed",
+    "code/scripts/export_project_evidence.py": "88086ab98ca958f84a564640816872047a50d234bd345cc51689a7f4c93ae61b",
+    "code/tests/test_stage_0_5_post_r2_offline_diagnostic.py": "880f7503bb23c1eb0148cd729baeec34ac5e7fb17ef94560b29cfd344d3fcd80"
+  },
+  "commands": {
+    "analysis": "python code/scripts/analyze_stage_0_5_post_r2_offline_diagnostic.py --repo-root . --output evidence/results/RES-STAGE-0.5-POST-R2-OFFLINE-DIAG-20261029",
+    "independent": "python code/scripts/verify_stage_0_5_post_r2_offline_diagnostic.py --repo-root . --package evidence/results/RES-STAGE-0.5-POST-R2-OFFLINE-DIAG-20261029 --raw-inputs",
+    "regression": "python -B code/outputs/diagnostics/post_r2_offline_test_runner_final.py (exact runner copied as offline_regression_runner.py)",
+    "targeted": "python -B -m pytest tests/test_stage_0_5_post_r2_offline_diagnostic.py tests/test_stage_0_5_d1_measurement.py tests/test_formal_risk_measurement.py tests/test_stage_0_5_measurement_equivalence.py tests/test_project_docs.py -q --tb=short -p no:cacheprovider --deselect=tests/test_stage_0_5_d1_measurement.py::test_actual_state_runner_uses_d1_not_point_exposure --deselect=tests/test_stage_0_5_measurement_equivalence.py::test_guard_denies_row_scoped_reads_outside_the_calibration_windows --deselect=tests/test_stage_0_5_measurement_equivalence.py::test_calibration_states_read_helper_refuses_a_foreign_window --basetemp=<authorized-write-root>/post_r2_final_checks",
+    "docs": "python code/scripts/validate_project_docs.py --strict-git",
+    "export": "python code/scripts/export_project_evidence.py --repo-root .",
+    "export_verify": "python code/scripts/export_project_evidence.py --repo-root . --verify",
+    "compile": "PYTHONPYCACHEPREFIX=<authorized-write-root>/post_r2_compile_cache python -m compileall -q code/src code/scripts code/tests"
+  },
+  "environment": "environment.json",
+  "large_input_bindings": "diagnostic.json:runs.*.inputs",
+  "source_reconciliation": "exact sealed D1 counts/exposure/quality/events asserted; all FCD/lifecycle records inspected",
+  "formal_measurement_code_modified": false,
+  "source_target_window_cohort_changed": false,
+  "native_launches": 0,
+  "traci_connections": 0,
+  "holdout_reads": 0,
+  "new_trajectories": 0,
+  "scientific_equivalence_accepted": false,
+  "Gate_Stage06_ProtocolLock_StageI_changed": false
+}

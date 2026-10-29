@@ -1,0 +1,61 @@
+{
+  "policy": "raw logs remain local per AGENTS; portable failure JSONs retain specific tracebacks and receipts",
+  "logs": [
+    {
+      "path": "code/outputs/diagnostics/post_r2_validation_logs_20261029/analysis_run.log",
+      "sha256": "169ff69756ce03ce15a4679049bf33387aaa432704256f67c6c503bee3ac0adb",
+      "bytes": 3188,
+      "ending": [
+        "{\"B00_A03\": {\"source\": {\"state_rows\": 86234, \"vehicles\": 566, \"quality_counts\": {\"not_applicable\": 57798, \"valid\": 27375, \"missing\": 1061}, \"reliable_following_rows\": 85173, \"evaluable_point_rows\": 85173, \"valid_ttc_rows\": 27375, \"risk_rows_0_lt_ttc_lt_2\": 0, \"near_rows_2_le_ttc_lt_3\": 30, \"ttc_ge_3_rows\": 27345, \"ttc_s\": {\"n\": 27375, \"min\": 2.1578783958602834, \"max\": 5668.039999999111, \"mean\": 96.83228610566613, \"sd\": 229.0804028440048, \"p01\": 6.015301782661784, \"p05\": 10.184616974632004, \"p25\": 19.920605655526998, \"p50\": 35.86545454545444, \"p75\": 80.27263157894728, \"p95\": 353.07639999999253, \"p99\": 1100.253119999992}, \"net_gap_m\": {\"n\": 85173, \"min\": 2.5004, \"max\": 96.51039999999999, \"mean\": 18.142418127810455, \"sd\": 11.065861049144885, \"p01\": 3.0204, \"p05\": 5.1604, \"p25\": 9.710399999999993, \"p50\": 15.450399999999998, \"p75\": 23.910399999999996, \"p95\": 40.0504, \"p99\": 50.473199999999984}, \"closing_speed_mps\": {\"n\": 85173, \"min\": -11.77, \"max\": 11.45, \"mean\": -1.35849259741937, \"sd\": 2.2256774858534376, \"p01\": -6.92, \"p05\": -5.57, \"p25\": -2.95, \"p50\": -0.5700000000000003, \"p75\": 0.16000000000000014, \"p95\": 1.33, \"p99\": 2.9700000000000006}, \"closing_positive_rows\": 27375, \"opening_rows\": 57436, \"steady_rows_abs_closing_le_epsilon\": 362, \"speed_mps\": {\"n\": 86234, \"min\": 0.26, \"max\": 19.0, \"mean\": 8.306832919730036, \"sd\": 4.252148982686166, \"p01\": 1.01, \"p05\": 2.04, \"p25\": 5.06, \"p50\": 7.5, \"p75\": 11.51, \"p95\": 15.97, \"p99\": 16.75}, \"low_speed_lt5_share\": 0.240902660203632}, \"E\": 8457.4, \"risk_segments\": 0, \"near_segments\": 4}, \"Round2_minGap1.0\": {\"source\": {\"state_rows\": 91058, \"vehicles\": 598, \"quality_counts\": {\"not_applicable\": 65376, \"valid\": 24273, \"missing\": 1409}, \"reliable_following_rows\": 89649, \"evaluable_point_rows\": 89649, \"valid_ttc_rows\": 24273, \"risk_rows_0_lt_ttc_lt_2\": 0, \"near_rows_2_le_ttc_lt_3\": 29, \"ttc_ge_3_rows\": 24244, \"ttc_s\": {\"n\": 24273, \"min\": 2.6731975199291402, \"max\": 6060.039999999052, \"mean\": 80.11950934424473, \"sd\": 226.10375208983868, \"p01\": 6.0443296969696965, \"p05\": 8.73863326621023, \"p25\": 15.661428571428573, \"p50\": 26.819393939393937, \"p75\": 57.70823529411768, \"p95\": 297.6479999999943, \"p99\": 967.6399999999915}, \"net_gap_m\": {\"n\": 89649, \"min\": 1.0004, \"max\": 85.03039999999999, \"mean\": 17.056261749712768, \"sd\": 12.126631422437933, \"p01\": 1.4803999999999995, \"p05\": 3.3704, \"p25\": 7.930400000000002, \"p50\": 13.520400000000002, \"p75\": 23.590399999999995, \"p95\": 42.610400000000006, \"p99\": 52.77560000000004}, \"closing_speed_mps\": {\"n\": 89649, \"min\": -11.559999999999999, \"max\": 13.14, \"mean\": -1.519599103169026, \"sd\": 2.187699072280253, \"p01\": -6.789999999999999, \"p05\": -5.579999999999998, \"p25\": -3.1199999999999974, \"p50\": -0.9000000000000004, \"p75\": 0.07000000000000028, \"p95\": 1.2199999999999989, \"p99\": 2.66}, \"closing_positive_rows\": 24273, \"opening_rows\": 65096, \"steady_rows_abs_closing_le_epsilon\": 280, \"speed_mps\": {\"n\": 91058, \"min\": 0.2, \"max\": 20.96, \"mean\": 8.327291286872104, \"sd\": 4.698093989990002, \"p01\": 0.79, \"p05\": 1.71, \"p25\": 4.38, \"p50\": 7.59, \"p75\": 12.17, \"p95\": 16.5, \"p99\": 18.09}, \"low_speed_lt5_share\": 0.31685299479452655}, \"E\": 8900.0, \"risk_segments\": 0, \"near_segments\": 3}}"
+      ]
+    },
+    {
+      "path": "code/outputs/diagnostics/post_r2_validation_logs_20261029/final_targeted_tests.log",
+      "sha256": "be0fabeaa72a7bbf1d93426decd0a478e7b405b47339f92ae62c3281ba574303",
+      "bytes": 197,
+      "ending": [
+        "96 passed, 3 deselected in 15.49s"
+      ]
+    },
+    {
+      "path": "code/outputs/diagnostics/post_r2_validation_logs_20261029/newcode_final_tests.log",
+      "sha256": "2d84c4c21c4970829960fd35c73df389ec5b2b929e3b2bf3f481f510edbad1ac",
+      "bytes": 101,
+      "ending": [
+        "26 passed in 4.02s"
+      ]
+    },
+    {
+      "path": "code/outputs/diagnostics/post_r2_validation_logs_20261029/offline_regression.log",
+      "sha256": "dee260f8f7954bb28a64025f866b9b5e091bd03b541445a7bb81a20c78c0a943",
+      "bytes": 38165,
+      "ending": [
+        "28 failed, 1415 passed, 4 skipped, 7 deselected, 2 warnings in 316.76s (0:05:16)"
+      ]
+    },
+    {
+      "path": "code/outputs/diagnostics/post_r2_validation_logs_20261029/offline_regression_attempt1.log",
+      "sha256": "bb4689a3af6892ec93e3646dd7c2e696df9cc7da602c9a51dddb8bcc576d25cb",
+      "bytes": 38159,
+      "ending": [
+        "28 failed, 1413 passed, 4 skipped, 7 deselected, 2 warnings in 321.36s (0:05:21)"
+      ]
+    },
+    {
+      "path": "code/outputs/diagnostics/post_r2_validation_logs_20261029/targeted_tests.log",
+      "sha256": "aa289f440ab03bd793b6db844ca29f061c0561e7db2820c9beb37423b4fd1fa0",
+      "bytes": 4708,
+      "ending": [
+        "3 failed, 82 passed in 13.30s"
+      ]
+    },
+    {
+      "path": "code/outputs/diagnostics/post_r2_validation_logs_20261029/targeted_tests_attempt1.log",
+      "sha256": "9460a40ccf1acb6a86911f22af23f18b707b08363e2e071a386e7fd37039c5c5",
+      "bytes": 637,
+      "ending": [
+        "34 passed, 1 error in 3.02s"
+      ]
+    }
+  ]
+}

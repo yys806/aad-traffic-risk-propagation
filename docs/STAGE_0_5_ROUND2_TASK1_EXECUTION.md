@@ -1,3 +1,5 @@
+> Final-result navigation (2026-10-29 offline follow-up): [final_result_index.json](../evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/final_result_index.json) marks root candidate_result/acceptance_matrix/decision_matrix as preserved prelaunch snapshots. Final result remains execution_final_v1. [Post-R2 diagnostic](STAGE_0_5_POST_R2_OFFLINE_DIAGNOSTIC_20261029.md) records source threshold support and the parent manifest-only repair; no historical scientific payload changed.
+
 # AAD Stage 0.5 Round2 Task1 Execution
 
 ## Status

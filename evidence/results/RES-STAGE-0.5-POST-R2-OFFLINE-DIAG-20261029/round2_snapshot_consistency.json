@@ -1,0 +1,72 @@
+{
+  "prelaunch_snapshots": {
+    "candidate_result.json": {
+      "sha256": "5edd46f4e919898e1a695a8fc2933727d1d9ea8ad359b7374d15abfd3f7f14dc",
+      "role": "historical_prelaunch_snapshot",
+      "actual": {
+        "schema": "aad.stage05.round2.task1-candidate-result.v1",
+        "candidate_id": "AAD-S0.5-ROUND2-TASK1-20261028-candidate-v1",
+        "status": "NOT_RUN_ENGINEERING_BLOCK",
+        "source_p2": "Unknown",
+        "macro": "Unknown",
+        "micro": "Unknown",
+        "d1": "Unknown",
+        "physical_path": "Unknown",
+        "no_inference_from_missing": true
+      }
+    },
+    "acceptance_matrix.json": {
+      "sha256": "0c0f37f67cf308376e2e6afff796a2d968ee839d597332aa476cb9d8a66db230",
+      "role": "historical_prelaunch_snapshot",
+      "actual": {
+        "schema": "aad.stage05.round2.task1-acceptance-matrix.v1",
+        "status": "INSUFFICIENT_EVIDENCE",
+        "macro_rule_A": "NOT_EVALUATED",
+        "micro_interaction": "NOT_EVALUATED",
+        "formal_p2": "NOT_EVALUATED",
+        "engineering": "FAIL_PRELAUNCH",
+        "scientific_eligibility": "NOT_ELIGIBLE_TO_ASSESS",
+        "required_evidence": [
+          "candidate native receipt",
+          "candidate identity/lifecycle",
+          "candidate C6/D1/P2 measurement",
+          "candidate macro Rule A comparison",
+          "candidate micro interaction distributions"
+        ]
+      }
+    },
+    "decision_matrix.json": {
+      "sha256": "c4ff7bb8265cd3fd4af3cac045600594f3ffb3267ab2cfbe20e300f2950b67f8",
+      "role": "historical_prelaunch_snapshot",
+      "actual": {
+        "schema": "aad.stage05.round2.task1-decision-matrix.v1",
+        "researcher_approval": "received",
+        "scientific_space": "approved as requested",
+        "candidate": {
+          "id": "AAD-S0.5-ROUND2-TASK1-20261028-candidate-v1",
+          "factor": "minGap",
+          "base_m": 2.5,
+          "candidate_m": 1.0,
+          "vtypes": [
+            "B_het_c0_passenger",
+            "B_het_c1_passenger",
+            "B_het_c2_passenger",
+            "B_het_c3_passenger",
+            "B_het_c4_passenger"
+          ],
+          "only_change_static": "verified by Round1 candidate binding"
+        },
+        "macro_rule": {
+          "id": "Rule A",
+          "status": "approved",
+          "definition": "mean inside pooled envelope AND pooled 30s coverage >= cross-window baseline AND closing coverage >= baseline",
+          "source": "preflight macro_rule_comparison.json"
+        },
+        "current_execution_status": "blocked_before_candidate_native_launch",
+        "reason": "existing v4 admission has no strict minGap factor contract"
+      }
+    }
+  },
+  "final_index": "evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/final_result_index.json",
+  "historical_scientific_payloads_modified": false
+}

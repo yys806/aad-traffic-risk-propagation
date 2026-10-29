@@ -1,0 +1,45 @@
+{
+  "schema": "aad.stage05.post-r2.validation.v2",
+  "status": "OFFLINE_DIAGNOSTIC_VERIFIED_FULL_REGRESSION_NOT_PASS",
+  "production_reconstruction": "PASS exact sealed source/target count, exposure, quality and membership assertions",
+  "raw_input_hash_and_identity_journal": "PASS both complete runs",
+  "compileall": "PASS code/src code/scripts code/tests after final code edits",
+  "targeted_measurement_and_docs": "96 passed; 3 known dependency tests deselected after failures retained",
+  "final_newcode_and_docs": "27 passed, including no-op sealed-export test",
+  "full_offline_regression": {
+    "passed": 1415,
+    "failed": 28,
+    "skipped": 4,
+    "native_deselected": 7,
+    "status": "FAIL_DEPENDENCY_TRACEBACKS_RETAINED",
+    "failure_inventory": "offline_regression_failures.json",
+    "all_failures_individually_traced": true,
+    "source_scope": "full regression before final exporter identical-file no-op patch; subsequent affected exporter and docs regression 27 passed",
+    "exporter_sha256_during_run": "4fd5501ed4baec3db1ac804fac6b149053489075f79b650ba3428d2b3db8a2a4"
+  },
+  "native_launches": 0,
+  "traci_connections": 0,
+  "holdout_reads": 0,
+  "new_trajectories": 0,
+  "formal_scientific_equivalence_accepted": false,
+  "formal_implementation_unchanged": true,
+  "Gate_Stage06_ProtocolLock_StageI_changed": false,
+  "strict_docs": "PASS PROJECT_DOCS_OK after staging",
+  "portable_evidence": "PASS PORTABLE_EVIDENCE_OK",
+  "independent_package_and_raw_hashes": "PASS both trajectories and all package payloads",
+  "parent_final_package": "PASS 39 parent payloads, child preserved",
+  "pure_git_clone": {
+    "status": "PASS",
+    "scope": "Git-only clone plus staged task patch, actual index byte check and restored Git attributes; no raw data copied",
+    "checks": [
+      "independent bundle and source hashes PASS",
+      "PORTABLE_EVIDENCE_OK",
+      "PROJECT_DOCS_OK",
+      "27 offline new-code/docs tests passed"
+    ],
+    "initial_failure": "development_failure_record.json:pure_git_initial_checkout",
+    "final_commit_checkout_check": "required after commit; recorded in final execution output, not assumed here"
+  },
+  "context_consistency_check": "PASS context_consistency_check.json",
+  "final_validation_scope": "scientific acceptance and full regression are not declared Pass; manifest excludes its own controls and final verification is read-only"
+}

@@ -1,4 +1,8 @@
-## Current — 2026-10-29 Round2 Task1 result
+## Current — 2026-10-29 Post-R2 diagnostic decision boundary
+
+Verified: no scientific design decision or execution authorization changed. Existing Rule A and research space remain Agreed. Proposal only: independent offline measurement-contract review before any new mechanism experiment. Formal/native/D1 continuity counterexamples require researcher adjudication; no scientific equivalence approval, new seed or third-round authority inferred. docs/STAGE_0_5_POST_R2_OFFLINE_DIAGNOSTIC_20261029.md
+
+## Historical — 2026-10-29 Round2 Task1 result
 
 Agreed researcher bindings were used unchanged. Verified result: one exact candidate run; Rule A PASS; source P2=0; one target_main event; no auxiliary pooling; no independent seed. The candidate is not eligible for confirmation because the approved source-event condition failed. The zero-launch remeasurement repaired only the capability evidence path and leaves the original ledger rejection intact. Any future estimand or candidate change requires a new researcher decision; Stage 0.5/0.6/Stage I states are unchanged.
 

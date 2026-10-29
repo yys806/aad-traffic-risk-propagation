@@ -1,3 +1,7 @@
+## RES-STAGE-0.5-POST-R2-OFFLINE-DIAG-20261029
+
+Verified offline reconstruction of all 610725/645369 sealed states reproduces source D1 exactly: 86234/91058 source observations; 8457.4/8900.0 evaluable veh-s; no 0<TTC<2 state and no source onset. [2,3) diagnostic support is 30/29 states in 4/3 segments; minimum TTC 2.157878/2.673198 s. No observed short formal-risk segment was blocked by duration. Missing lane-boundary support remains Unknown. Target m00485/r00036 remains one target-only event, not source propagation. D1/native/formal-aligned lane and explicit-flag contracts differ in new synthetic counterexamples; formal_equivalence_accepted remains false. SUMO/TraCI/new trajectories/holdout=0. Stage 0.5 Gate, Stage 0.6, Protocol Lock and Stage I unchanged. Report: docs/STAGE_0_5_POST_R2_OFFLINE_DIAGNOSTIC_20261029.md; evidence: evidence/results/RES-STAGE-0.5-POST-R2-OFFLINE-DIAG-20261029/.
+
 ## RES-STAGE-0.5-ROUND2-TASK1-20261028
 
 Verified final Round2 Task1 result: the exact candidate ran once and completed. Rule A strict macro support passed; fixed source P2=0; one target_main target-cohort event occurred; auxiliary events were kept separate. The first measurement rejection due capability-record binding is retained, and a zero-launch remeasurement passed all eight checks. No independent seed or Gate/Stage0.6/StageI promotion. Final evidence: `evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/execution_final_v1/`; report: `docs/STAGE_0_5_ROUND2_TASK1_EXECUTION.md`.

@@ -1,4 +1,8 @@
-## Current — 2026-10-29 Round2 Task1 result
+## Current — 2026-10-29 Post-R2 zero-launch diagnostic
+
+Verified offline reconstruction of all 610725/645369 sealed states reproduces source D1 exactly: 86234/91058 source observations; 8457.4/8900.0 evaluable veh-s; no 0<TTC<2 state and no source onset. [2,3) diagnostic support is 30/29 states in 4/3 segments; minimum TTC 2.157878/2.673198 s. No observed short formal-risk segment was blocked by duration. Missing lane-boundary support remains Unknown. Target m00485/r00036 remains one target-only event, not source propagation. D1/native/formal-aligned lane and explicit-flag contracts differ in new synthetic counterexamples; formal_equivalence_accepted remains false. SUMO/TraCI/new trajectories/holdout=0. Stage 0.5 Gate, Stage 0.6, Protocol Lock and Stage I unchanged. Report: docs/STAGE_0_5_POST_R2_OFFLINE_DIAGNOSTIC_20261029.md; evidence: evidence/results/RES-STAGE-0.5-POST-R2-OFFLINE-DIAG-20261029/.
+
+## Historical — 2026-10-29 Round2 Task1 result
 
 Verified: the exact minGap-only candidate ran once and completed 420 s. The existing measurement chain, after a zero-launch capability-record binding repair, passes all eight checks. Rule A passes; source P2 is 0; target cohort has one target_main event (m00485/r00036, onset 271.8 s, confirmation 272.0 s, end 272.1 s); no auxiliary event was mixed. The micro tail tightened (net-gap mean 20.9223→18.7783 m; valid TTC risk states 0→4) while macro support remained inside the existing evidence envelope. No independent seed was authorized or run. Evidence: `evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/execution_final_v1/`.
 

@@ -1,4 +1,8 @@
-## Current — 2026-10-29 Round2 Task1 completed candidate result
+## Current — 2026-10-29 Post-R2 offline mechanism diagnostic
+
+Verified offline reconstruction of all 610725/645369 sealed states reproduces source D1 exactly: 86234/91058 source observations; 8457.4/8900.0 evaluable veh-s; no 0<TTC<2 state and no source onset. [2,3) diagnostic support is 30/29 states in 4/3 segments; minimum TTC 2.157878/2.673198 s. No observed short formal-risk segment was blocked by duration. Missing lane-boundary support remains Unknown. Target m00485/r00036 remains one target-only event, not source propagation. D1/native/formal-aligned lane and explicit-flag contracts differ in new synthetic counterexamples; formal_equivalence_accepted remains false. SUMO/TraCI/new trajectories/holdout=0. Stage 0.5 Gate, Stage 0.6, Protocol Lock and Stage I unchanged. Report: docs/STAGE_0_5_POST_R2_OFFLINE_DIAGNOSTIC_20261029.md; evidence: evidence/results/RES-STAGE-0.5-POST-R2-OFFLINE-DIAG-20261029/. Full offline regression: 1415 passed, 28 failed, 4 skipped, 7 native tests excluded; individual dependency evidence retained. Older entries below are historical snapshots.
+
+## Historical — 2026-10-29 Round2 Task1 completed candidate result
 
 Verified: the researcher-approved candidate started exactly once (seed 20261201, 420 s, 8400 native steps, one SUMO/TraCI pair) and completed. Rule A strict joint macro support passed: mean density 44.0526 veh/km/lane, mean speed 10.3333 m/s, 18/18 block speed support and 18/18 closing support against the existing 0.63636 baseline. The fixed formal source-region P2 count is 0. One target-cohort event occurred at 271.8–272.1 s on main_1_1, with target D1 exposure 10572.4 veh-s; auxiliary events were not pooled. Zero-launch remeasurement repaired only the capability-record path binding and passed all eight engineering/measurement checks; the original ledger measurement_rejected event remains preserved. No independent seed or holdout read. Stage 0.5 Gate, Stage 0.6, Protocol Lock and Stage I remain unchanged. Report: `docs/STAGE_0_5_ROUND2_TASK1_EXECUTION.md`; final evidence: `evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/execution_final_v1/`.
 
@@ -8,7 +12,7 @@ Verified: the researcher-approved candidate started exactly once (seed 20261201,
 
 Verified: Round1 engineering/evidence closure is ready. The recommended scientific space preserves S_UPSTREAM_MAIN, mainline target lanes 1–5 y[150,350), [120,390) s, C_INPUT_ROUTE and separate auxiliary diagnostics. A single static Round2 candidate is prepared: current B00 A03 heterogeneous Krauss vTypes with only minGap 2.5→1.0. Candidate inputs, decision matrix, acceptance matrix and SHA are bound in RES-STAGE-0.5-ROUND1-TASK3-DECISION-20261028. Status is ROUND1_AWAITING_RESEARCHER_DECISION; SUMO/TraCI=0, Stage 0.5 blocked, Stage 0.6 and Stage I unchanged.
 
-## Current — 2026-10-28 first-round evidence-consistency repair
+## Historical — 2026-10-28 first-round evidence-consistency repair
 
 Verified: R1 B10/B01/B11 were each executed once and B00 A03 was reused; the first-round package now computes event counts from `event_inventory.csv`, `count_reconciliation.json`, and R1 `arm_comparison.json`. Corrected classification is B11 full 16/19 auxiliary and window 16/17 auxiliary; the remaining full events are two window-outside `target_main` events and one window `other_upstream_mainline` event. Local manifest self-reference is false, SHA256SUMS independently checks all listed payload files plus manifest, and source R0/R1/offline/week SHA bundles pass. Offline regression evidence is saved with 1,353 passed, 28 pyarrow/parquet dependency failures, and 4 skipped; SUMO/TraCI launches remain 0. Stage 0.5 remains blocked; Stage 0.6 and Stage I are unchanged.
 

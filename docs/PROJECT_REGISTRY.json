@@ -1,6 +1,6 @@
 {
  "schema_version": "aad.project-registry.v2",
- "last_verified": "2026-10-28",
+ "last_verified": "2026-10-29",
  "project": {
   "name": "AAD",
   "research_topic": "Connected-vehicle communication adoption and traffic-risk propagation",
@@ -313,12 +313,16 @@
   "code/tests/test_aad_week_scene_v1.py",
   "code/tests/test_aad_week_protocol_v1.py",
   "code/tests/test_stage_0_6_error_budget_v1.py",
-  "docs/STAGE_0_5_ROUND2_TASK1_EXECUTION.md"
+  "docs/STAGE_0_5_ROUND2_TASK1_EXECUTION.md",
+  "docs/STAGE_0_5_POST_R2_OFFLINE_DIAGNOSTIC_20261029.md",
+  "code/scripts/analyze_stage_0_5_post_r2_offline_diagnostic.py",
+  "code/scripts/verify_stage_0_5_post_r2_offline_diagnostic.py",
+  "code/tests/test_stage_0_5_post_r2_offline_diagnostic.py"
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-S0.5-ROUND1-TASK3: final scientific decision and Round2 freeze candidate prepared; Stage 0.5 remains blocked",
-  "why_now": "Round1 Task3 selects a single minGap=1.0 current-B00 proposal, freezes static Round2 inputs and acceptance rules, and awaits researcher approval without new simulation.",
+  "active_task": "AAD-S0.5-POST-R2-TASK1-20261029: offline diagnostic complete; source threshold hits absent; scientific equivalence pending",
+  "why_now": "Completed Round2 candidate has no source P2; exact sealed-state diagnosis distinguishes absent threshold states from duration and measurement-contract gaps.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
    "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/count_reconciliation.json",
@@ -798,7 +802,9 @@
     "code/scripts/prepare_stage_0_5_r1_execution.py",
     "code/scripts/analyze_stage_0_5_r1.py",
     "code/scripts/finalize_stage_0_5_r1_evidence.py",
-    "code/scripts/analyze_stage_0_5_offline_mechanism.py"
+    "code/scripts/analyze_stage_0_5_offline_mechanism.py",
+    "code/scripts/analyze_stage_0_5_post_r2_offline_diagnostic.py",
+    "code/scripts/verify_stage_0_5_post_r2_offline_diagnostic.py"
    ],
    "entrypoints": [
     "code/scripts/prepare_stage_0_5_real_reference.py",
@@ -859,7 +865,9 @@
     "code/scripts/assess_stage_0_5_existing_capsule_v1.py",
     "code/scripts/prepare_stage_0_5_r0_design_packet.py",
     "docs/STAGE_0_5_R1_EXECUTION_2026-10-28.md",
-    "docs/STAGE_0_5_OFFLINE_MECHANISM_AUDIT_2026-10-28.md"
+    "docs/STAGE_0_5_OFFLINE_MECHANISM_AUDIT_2026-10-28.md",
+    "code/scripts/analyze_stage_0_5_post_r2_offline_diagnostic.py",
+    "code/scripts/verify_stage_0_5_post_r2_offline_diagnostic.py"
    ],
    "test_paths": [
     "code/tests/test_simulation_real_coverage.py",
@@ -904,7 +912,8 @@
     "code/tests/test_stage_0_5_process_supervision.py",
     "code/tests/test_aad_week_scene_v1.py",
     "code/tests/test_stage_0_5_r0_design_packet.py",
-    "code/tests/test_stage_0_5_offline_mechanism_audit.py"
+    "code/tests/test_stage_0_5_offline_mechanism_audit.py",
+    "code/tests/test_stage_0_5_post_r2_offline_diagnostic.py"
    ],
    "configuration": "R2 real reference plus two no_message_baseline generic-highway engineering fixtures (baseline_mixed_demand, measurement_probe_queue_stop); US-101 primary, Lankershim auxiliary entry-only, pNEUMA urban kinematics entry-only; all network/demand/vType/behaviour/time settings are engineering_fixture_only",
    "parameters": {
@@ -1117,7 +1126,8 @@
     "RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028",
     "RES-STAGE-0.5-ROUND1-TASK3-DECISION-20261028",
     "RES-STAGE-0.5-ROUND2-TASK1-PREFLIGHT-20261028",
-    "RES-STAGE-0.5-ROUND2-TASK1-20261028"
+    "RES-STAGE-0.5-ROUND2-TASK1-20261028",
+    "RES-STAGE-0.5-POST-R2-OFFLINE-DIAG-20261029"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -1232,7 +1242,7 @@
     "third_window_rows_materialised",
     "zotero_items_added"
    ],
-   "current_conclusion": "Full event-array counts were reconciled. B10/B11 window events are concentrated on auxiliary lane main_1_0; B01 event is pre-window; source and target formal P2 remain zero. Source observability is positive but formal threshold hits are absent; missing support remains a limitation.",
+   "current_conclusion": "Post-R2 full offline reconstruction confirms no source TTC<2 state (not duration-censored); near-threshold support exists. Current lifecycle/D1 counts agree with sealed results. Native/formal/D1 input contracts differ; scientific equivalence and Stage 0.5 Gate remain unaccepted.",
    "gate": {
     "status": "blocked",
     "portable_path": "evidence/results/RES-STAGE-0.5-R1-DIAGNOSTICS-20261028/r2_gate_review.json"
@@ -4724,6 +4734,39 @@
    "gate_status": "blocked",
    "paper_locations": [
     "docs/STAGE_0_5_ROUND2_TASK1_EXECUTION.md"
+   ],
+   "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-STAGE-0.5-POST-R2-OFFLINE-DIAG-20261029",
+   "experiment_id": "stage_0_5",
+   "name": "Post-R2 offline mechanism and P2/D1 contract diagnostic",
+   "status": "verified_offline_diagnostic_scientific_equivalence_pending",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-POST-R2-OFFLINE-DIAG-20261029/diagnostic.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-OFFLINE-DIAG-20261029/manifest.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-OFFLINE-DIAG-20261029/SHA256SUMS"
+   ],
+   "local_artifact_paths": [
+    "code/outputs/diagnostics/post_r2_failed_development_20261029"
+   ],
+   "code_version_source": "input HEAD d698d9d64c2acb8fa31c3841a08d22d129353cf5 plus task source SHA",
+   "configuration_source": "unchanged approved P2/D1, Rule A, source/target/window/cohort",
+   "data_version_source": "sealed B00 A03 and Round2 candidate FCD, no new trajectories",
+   "core_metrics": {
+    "source_risk_states_B00": 0,
+    "source_risk_states_candidate": 0,
+    "near_states_B00": 30,
+    "near_states_candidate": 29,
+    "source_exposure_B00": 8457.4,
+    "source_exposure_candidate": 8900.0,
+    "new_native_launches": 0,
+    "holdout_reads": 0
+   },
+   "current_conclusion": "Post-R2 full offline reconstruction confirms no source TTC<2 state (not duration-censored); near-threshold support exists. Current lifecycle/D1 counts agree with sealed results. Native/formal/D1 input contracts differ; scientific equivalence and Stage 0.5 Gate remain unaccepted.",
+   "gate_status": "blocked",
+   "paper_locations": [
+    "docs/STAGE_0_5_POST_R2_OFFLINE_DIAGNOSTIC_20261029.md"
    ],
    "scientific_claim_eligible": false
   }

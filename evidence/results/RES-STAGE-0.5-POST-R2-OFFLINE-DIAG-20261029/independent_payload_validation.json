@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "diagnostic": {
+    "status": "PASS",
+    "raw_inputs_rehashed": true,
+    "arms": 2,
+    "scientific_equivalence_accepted": false
+  },
+  "actual_raw_bindings": {
+    "B00_A03": {
+      "fcd.xml": "1dc274082f4ea14949979d0c925903bbb5b9668d1124dabb79799b59a55fa304",
+      "network.net.xml": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+      "routes.rou.xml": "b6df8d9ce52b56fac50899cc2e6d1329c7858325aae0f0c86c76d77f796a7574",
+      "run.sumocfg": "c55b242f09b6a86527852bf686f06f3347abc44aa1c16c199c51935ce93dc6c6",
+      "measured_state.parquet": "48b20ff458ff1dce4559a762d6965b6747a940d537b1460d74e33d739a3cf63a",
+      "D1_measurement.json": "fd274890d7cac3d308cf36e4cc3edc3c94c51f72dcb880358779fed7c6ca820d",
+      "identity_summary.json": "7eeae27a85baf7d71dcf32755417ed765b6e7ba0b46c9d45fc2fdf9f646246f6",
+      "identity_events.jsonl": "a97b2d82cf70d1cead798e6dd591bd1e107e7e3347eb8450739ebb4d459ba995",
+      "isolation_runtime.json": "4c1d7cea9f3dc221ee5b52c206d33adfb763a15d07c5a91b757ce0c51eed928f"
+    },
+    "Round2_minGap1.0": {
+      "fcd.xml": "434f1c2500cdf06d069d7eae1c86e064ad76af61f478379943bbefab70b2ac3e",
+      "network.net.xml": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+      "routes.rou.xml": "a4c78db55984cc8c320b06ec2e257bdf6d4902c0dfdf015348157e30cdb80e79",
+      "run.sumocfg": "c55b242f09b6a86527852bf686f06f3347abc44aa1c16c199c51935ce93dc6c6",
+      "measured_state.parquet": "31426640954e6e8ea883f82dce139df130d7f83a8db4300ceb38842d4ee716b8",
+      "D1_measurement.json": "8b7d398e49b8c51f98ab0619482f122cb95ace48ef10717b5a37bab68a0065d3",
+      "identity_summary.json": "70f596f575505ac69665a664bf2d071f1755df7486a5e39d50138288c33d0000",
+      "identity_events.jsonl": "af3adc1bd9b56e066b31b95ba1dcd72fd9ce5e51c152a70abb390bb978c5be0d",
+      "isolation_runtime.json": "5cb351ac85b634c58e74e6bd8019f3c0f0812d7102b6c887c8deeae1b28f7754"
+    }
+  },
+  "scope": "raw inputs, source bindings, count identities; excludes this record and later manifest by construction",
+  "final_complete_command": "python code/scripts/verify_stage_0_5_post_r2_offline_diagnostic.py --repo-root . --package evidence/results/RES-STAGE-0.5-POST-R2-OFFLINE-DIAG-20261029 --raw-inputs"
+}

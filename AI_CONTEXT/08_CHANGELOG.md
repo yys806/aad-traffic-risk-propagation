@@ -1,3 +1,7 @@
+## 2026-10-29 Post-R2 offline diagnostic
+
+Added production-chain FCD diagnostics, continuity/quality counterexamples, directed tests and independent package verifier. Preserved failed provisional coordinate reconstruction and test/setup failures. Added final-result navigation and repaired only parent manifest/SHA controls. Current indices synchronized; no formal logic or Gate changed. docs/STAGE_0_5_POST_R2_OFFLINE_DIAGNOSTIC_20261029.md
+
 # AAD AI Context Changelog
 
 ## 2026-10-29 Round2 Task1 native result and zero-launch measurement repair

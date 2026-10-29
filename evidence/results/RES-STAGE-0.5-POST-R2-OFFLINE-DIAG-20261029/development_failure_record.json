@@ -1,0 +1,59 @@
+{
+  "initial_provisional": {
+    "status": "INVALID_SUPERSEDED",
+    "reason": "handmade native-coordinate mapping omitted production inverse scaling; 92525/97252 source rows instead of 86234/91058",
+    "script_sha256": "3053a6c3793f26de0ce15239ebe161b4ca1c41bc2c43fdd4e77d57ad1d9c3632",
+    "output_sha256": "a89b0b7bda45cfb8edb344ee74d72c9ceba266db7773b63e0265c99713d0e853",
+    "original_path": "code\\outputs\\diagnostics\\post_r2_failed_development_20261029",
+    "fix": "reuse original parse_fcd, fcd_to_state_frame, measure_state_frame with sealed reconciliation assertions"
+  },
+  "negative_TTC_probe_initial": {
+    "status": "FIXED_DIAGNOSTIC_WRAPPER",
+    "error": "ValueError: non-risk event member",
+    "fix": "record the formal extractor rejection as probe evidence; formal implementation unchanged"
+  },
+  "first_targeted_tests": {
+    "status": "FAILED_SETUP",
+    "passed": 34,
+    "errors": 1,
+    "reason": "WinError5 creating code/tmp/post_r2_targeted",
+    "evidence": "local_log_index.json -> targeted_tests_attempt1.log",
+    "fix": "use authorized writable test temp root; later 3 explicit Parquet errors retained"
+  },
+  "verifier_initial": {
+    "status": "CONSERVATIVE_FAILURE",
+    "reason": "nested control-file scope then actual parent validation_record hash drift",
+    "fix": "verify nested child independently; retain old parent controls and repair parent only"
+  },
+  "command_path_error": {
+    "error": "attempted code/code/scripts verifier from code working directory",
+    "effect": "no input or scientific result touched; corrected repository-root command succeeded"
+  },
+  "dependency_checks": {
+    "default_python": "no Parquet engine",
+    "bundled_python": "no Parquet engine",
+    "WSL_probe": "Access denied; not bypassed; not needed for FCD reconstruction",
+    "installations": 0
+  },
+  "initial_docs_validation": {
+    "status": "FAIL_BEFORE_REGISTRATION",
+    "reason": "new untracked paths, missing new package controls, parent/global manifest not yet refreshed",
+    "resolution": "complete package registration, stage task files, then rerun strict docs"
+  },
+  "export_noop_permission_failure": {
+    "status": "FIXED_WITHOUT_PERMISSION_BYPASS",
+    "path": "evidence/results/RES-STAGE-0.5-POLICY-A-PREFLIGHT-V1/authorization.json",
+    "error": "PermissionError on redundant copy to identical sealed history",
+    "resolution": "skip copying only if actual source and destination SHA256 are equal; regression test forbids copy; export then succeeded"
+  },
+  "pure_git_initial_checkout": {
+    "status": "FAILED_THEN_CORRECTED_CHECKOUT_ONLY",
+    "observed": "packaging_recipe.py 7446 CRLF bytes versus exact index/manifest 7352 LF bytes; five bound source checkouts also CRLF while their index blobs are exact LF",
+    "reason": "initial clone and staged patch working-tree conversion differed from the bound source bytes",
+    "fix": "bind the reused analyze_stage_0_5_round2_task1.py to LF; preserve converted clone files separately; restore exact index files with current attributes",
+    "original_payload_index_sha256": "e7d25af507c9b0c69dd5c532a23e42275a89e605723b471b280e25bfd1636979",
+    "original_payload_converted_worktree_sha256": "f529ac9ea49804dd553c4c68e5d34a1a13c3c27388bc7b97660e289a1991a98f",
+    "followup": "independent bundle/source checks PASS, PORTABLE_EVIDENCE_OK, PROJECT_DOCS_OK",
+    "scientific_data_or_measurement_changed": false
+  }
+}

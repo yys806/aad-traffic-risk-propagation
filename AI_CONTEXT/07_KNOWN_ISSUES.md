@@ -1,4 +1,8 @@
-## Current — 2026-10-29 Round2 Task1 result and retained engineering issue
+## Current — 2026-10-29 Post-R2 measurement contract gaps
+
+Documented Intent: approved continuous pair/clock/quality semantics and explicit flags must be respected; physical paths require genuine lane connections. Actual Implementation: local_d1_measurement also cuts native-lane transitions; following_link_is_valid does not; build_sumo_formal_source_frame resets identity_break/observation_gap and row indices. Evidence: adapter_counterexamples.json yields lane case native/formal/D1=1/1/0 and explicit-break case=0/1/0. Affected Files: code/src/riskprop/stage_0_5_sumo.py, code/src/riskprop/stage_0_5_d1_measurement.py. Conflict: generic premeasured-input continuity equivalence is not established. Status: Awaiting Researcher Decision. Formal implementation unchanged; these counterexamples do not explain current source zero because no reliable source TTC reaches <2. Boundary missing remains 1061/1409 points; unknown risk/arrival not inferred. Parent Round2 manifest stale validation hash repaired with old controls preserved; prelaunch science JSONs unchanged. Full regression 28 failures individually traced to missing Parquet engine, including one indirect CLI receipt; not reported as Pass. docs/STAGE_0_5_POST_R2_OFFLINE_DIAGNOSTIC_20261029.md
+
+## Historical — 2026-10-29 Round2 Task1 result and retained engineering issue
 
 Verified: the strict task-specific minGap branch admitted exactly one candidate and the native run completed. The original post-run `task_isolation` rejection was caused by a capability-record path binding and was repaired offline without a new launch; the ledger rejection remains retained. Scientific unresolved items are source P2=0, no physical arrival-time witness, and adapter `formal_equivalence_accepted=false`; no parameter search or independent seed is allowed.
 
