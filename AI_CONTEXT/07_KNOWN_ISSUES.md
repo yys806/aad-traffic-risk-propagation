@@ -1,3 +1,7 @@
+## AAD-S0.5-ROUND2-TASK3-MEASUREMENT-CONTRACT-ALIGNMENT-20261029
+
+Resolved implementation issue: build_sumo_formal_source_frame no longer erases supplied identity_break/observation_gap/identity quality flags. Remaining issues: simulator-vs-NGSIM scientific equivalence and time-indexed physical-path witness. Status: Awaiting Researcher Decision.
+
 ## AAD-S0.5-ROUND2-TASK2-MEASUREMENT-CONTRACT-20261029
 
 Documented Intent: measurement interfaces should preserve TTC quality, identity, flags, time and path semantics. Actual Implementation: lane, explicit-flag and inconsistent-TTC counterexamples remain. Evidence: RES-STAGE-0.5-ROUND2-TASK2-MEASUREMENT-CONTRACT-20261029. Conflict: candidate A/B/C and flag provenance require researcher adjudication. Status: Awaiting Researcher Decision.

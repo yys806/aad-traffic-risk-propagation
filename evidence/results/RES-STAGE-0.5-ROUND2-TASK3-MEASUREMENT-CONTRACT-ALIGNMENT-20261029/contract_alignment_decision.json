@@ -1,0 +1,22 @@
+{
+  "adopted_alignment": {
+    "D1": "Retain same-native-lane as local diagnostic exposure/path-support condition; it is not formal P2 event identity or formal P2 rate denominator.",
+    "formal_P2_estimand": "C/pair-time continuity already matches the existing formal extractor; native_lane_id is not added to formal event qualification.",
+    "formal_aligned": "Preserve supplied identity_uncertain, identity_break, observation_gap, leader_identity_uncertain and leader_matched evidence; default only absent recorder fields in deterministic SUMO frames.",
+    "physical_path": "Remain separate and Unknown without time-indexed road-connection and interaction evidence."
+  },
+  "formal_reference": "stage_0_2_formal_risk_measurement.v2: pair/trajectory/leader/time continuity, 0<TTC<2s, span>=0.2s, fail-closed continuity flags",
+  "researcher_decision_required": [
+    "whether simulator-vs-NGSIM formal comparability can be accepted after input-flag alignment",
+    "what evidence qualifies a physical path across native-lane/edge boundaries"
+  ],
+  "schema_version": "aad.stage0.5.round2.task3.alignment-decision.v1",
+  "scientific_equivalence_accepted": false,
+  "unchanged_scientific_parameters": [
+    "TTC threshold 2s",
+    "minimum duration 0.2s",
+    "100ms cadence and 0.11s max gap",
+    "source/target/window/cohort",
+    "Rule A"
+  ]
+}

@@ -1,3 +1,9 @@
+## AAD-S0.5-ROUND2-TASK3-MEASUREMENT-CONTRACT-ALIGNMENT-20261029
+
+Report: `docs/STAGE_0_5_ROUND2_TASK3_MEASUREMENT_CONTRACT_ALIGNMENT_20261029.md`; alignment script: `code/scripts/align_stage_0_5_round2_task3_measurement_contract.py`; evidence: `evidence/results/RES-STAGE-0.5-ROUND2-TASK3-MEASUREMENT-CONTRACT-ALIGNMENT-20261029/`.
+
+Verified minimal formal-alignment repair preserves explicit identity/continuity flags; formal pair/time qualification remains separate from D1 same-native-lane diagnostics. B00 and Round2 candidate sealed source P2 remain zero; no SUMO/TraCI/new trajectories/holdout. Stage 0.5 Gate, Stage 0.6, Protocol Lock, Stage I and Round3 unchanged.
+
 ## AAD-S0.5-ROUND2-TASK2-MEASUREMENT-CONTRACT-20261029
 
 Report: `docs/STAGE_0_5_ROUND2_TASK2_MEASUREMENT_CONTRACT_20261029.md`; generator: `code/scripts/audit_stage_0_5_round2_task2_measurement_contract.py`; context synchronizer: `code/scripts/synchronize_stage_0_5_round2_task2_context.py`; evidence: `evidence/results/RES-STAGE-0.5-ROUND2-TASK2-MEASUREMENT-CONTRACT-20261029/`.

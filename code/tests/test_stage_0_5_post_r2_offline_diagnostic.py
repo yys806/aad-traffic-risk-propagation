@@ -68,8 +68,8 @@ def test_adapter_counterexamples_are_not_scientific_equivalence():
     assert probes["native_lane_change"]["D1_onsets"] == 0
     for name in ["identity_break", "observation_gap"]:
         assert probes[name]["native_events"] == probes[name]["D1_onsets"] == 0
-        assert probes[name]["formal_aligned_events"] == 1
-        assert probes[name]["mapped_flag_true_rows"][name] == 0
+        assert probes[name]["formal_aligned_events"] == 0
+        assert probes[name]["mapped_flag_true_rows"][name] == 1
     assert probes["inconsistent_negative_ttc"]["native_events"] == 1
     assert probes["inconsistent_negative_ttc"]["D1_onsets"] == 0
     assert probes["inconsistent_negative_ttc"]["formal_aligned_error"] == "non-risk event member"

@@ -1,6 +1,6 @@
 {
  "schema_version": "aad.project-registry.v2",
- "last_verified": "2026-10-29",
+ "last_verified": "2026-10-30",
  "project": {
   "name": "AAD",
   "research_topic": "Connected-vehicle communication adoption and traffic-risk propagation",
@@ -321,12 +321,15 @@
   "docs/STAGE_0_5_ROUND2_TASK2_MEASUREMENT_CONTRACT_20261029.md",
   "code/scripts/audit_stage_0_5_round2_task2_measurement_contract.py",
   "code/scripts/register_stage_0_5_round2_task2_literature.py",
-  "code/scripts/synchronize_stage_0_5_round2_task2_context.py"
+  "code/scripts/synchronize_stage_0_5_round2_task2_context.py",
+  "docs/STAGE_0_5_ROUND2_TASK3_MEASUREMENT_CONTRACT_ALIGNMENT_20261029.md",
+  "code/scripts/align_stage_0_5_round2_task3_measurement_contract.py",
+  "code/scripts/synchronize_stage_0_5_round2_task3_context.py"
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-S0.5-ROUND2-TASK2-MEASUREMENT-CONTRACT-20261029: offline audit complete; scientific equivalence and A/B/C choice pending researcher decision",
-  "why_now": "Round2 Task2 reused sealed post-R2 evidence to audit formal P2, SUMO-native, formal-aligned and D1 measurement contracts without new simulation.",
+  "active_task": "AAD-S0.5-ROUND2-TASK3-MEASUREMENT-CONTRACT-ALIGNMENT-20261029: minimal flag-preservation repair complete; sealed source P2 remains zero; researcher decision pending",
+  "why_now": "Task2 identified an implementation-level formal-aligned flag-loss bug; Task3 repaired it without changing formal scientific parameters and rechecked sealed source qualification.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
    "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/count_reconciliation.json",
@@ -1132,7 +1135,8 @@
     "RES-STAGE-0.5-ROUND2-TASK1-PREFLIGHT-20261028",
     "RES-STAGE-0.5-ROUND2-TASK1-20261028",
     "RES-STAGE-0.5-POST-R2-OFFLINE-DIAG-20261029",
-    "RES-STAGE-0.5-ROUND2-TASK2-MEASUREMENT-CONTRACT-20261029"
+    "RES-STAGE-0.5-ROUND2-TASK2-MEASUREMENT-CONTRACT-20261029",
+    "RES-STAGE-0.5-ROUND2-TASK3-MEASUREMENT-CONTRACT-ALIGNMENT-20261029"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -4810,6 +4814,42 @@
    "gate_status": "blocked",
    "paper_locations": [
     "docs/STAGE_0_5_ROUND2_TASK2_MEASUREMENT_CONTRACT_20261029.md"
+   ],
+   "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-STAGE-0.5-ROUND2-TASK3-MEASUREMENT-CONTRACT-ALIGNMENT-20261029",
+   "experiment_id": "stage_0_5",
+   "name": "Round2 Task3 minimal measurement-contract alignment and sealed source-P2 recheck",
+   "status": "verified_minimal_alignment_source_zero_researcher_decision_pending",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK3-MEASUREMENT-CONTRACT-ALIGNMENT-20261029/manifest.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK3-MEASUREMENT-CONTRACT-ALIGNMENT-20261029/SHA256SUMS",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK3-MEASUREMENT-CONTRACT-ALIGNMENT-20261029/validation_record.json"
+   ],
+   "local_artifact_paths": [
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK3-MEASUREMENT-CONTRACT-ALIGNMENT-20261029/"
+   ],
+   "code_version_source": "source_bindings.json in Task3 evidence package",
+   "configuration_source": "unchanged formal P2 config and existing Rule A/source/target/window/cohort",
+   "data_version_source": "reused B00 A03 and Round2 candidate sealed post-R2 diagnostic; no new trajectories",
+   "core_metrics": {
+    "flag_preservation_fixed": true,
+    "formal_source_P2_B00": 0,
+    "formal_source_P2_candidate": 0,
+    "source_onsets_B00": 0,
+    "source_onsets_candidate": 0,
+    "new_native_launches": 0,
+    "new_trajectories": 0,
+    "holdout_reads": 0,
+    "round2_candidate_passes_original_source_condition": false,
+    "physical_arrival_time": "Unknown",
+    "scientific_equivalence_accepted": false
+   },
+   "current_conclusion": "Explicit continuity flags are now preserved. The formal pair/time estimator remains separate from D1 lane/path diagnostics. Sealed B00 and candidate source P2 remain zero; the candidate does not pass the original source-event condition.",
+   "gate_status": "blocked",
+   "paper_locations": [
+    "docs/STAGE_0_5_ROUND2_TASK3_MEASUREMENT_CONTRACT_ALIGNMENT_20261029.md"
    ],
    "scientific_claim_eligible": false
   }

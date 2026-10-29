@@ -1,3 +1,7 @@
+## AAD-S0.5-ROUND2-TASK3-MEASUREMENT-CONTRACT-ALIGNMENT-20261029
+
+Agreed engineering alignment: preserve explicit continuity flags in formal-aligned mapping. Existing formal P2 pair/time semantics and D1 lane diagnostic separation remain unchanged. Scientific simulator comparability and physical-path evidence remain AWAITING_RESEARCHER_DECISION.
+
 ## AAD-S0.5-ROUND2-TASK2-MEASUREMENT-CONTRACT-20261029
 
 Agreed scope: offline contract audit only. Proposed choices A/B/C are evidence for researcher decision, not a scientific freeze; production rules, thresholds, Rule A and Gate states are unchanged.

@@ -1,3 +1,7 @@
+## AAD-S0.5-ROUND2-TASK3-MEASUREMENT-CONTRACT-ALIGNMENT-20261029
+
+Preserved explicit formal-aligned continuity evidence, updated targeted regression expectations, and packaged sealed source-zero recheck. No scientific thresholds, cohort, window, Rule A or Gate state changed.
+
 ## AAD-S0.5-ROUND2-TASK2-MEASUREMENT-CONTRACT-20261029
 
 Added the offline contract-audit evidence package, 16-case synthetic inputs/results, candidate A/B/C comparison, sealed-evidence reuse index and Zotero dedup/acquisition ledger. No formal implementation or Gate state changed.

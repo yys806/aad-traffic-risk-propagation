@@ -74,6 +74,15 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
             "synthetic_case_results.json", "validation_record.json", "full_pytest_failure_inventory.json", "zotero_registration_result.json",
         )
     ]
+    task3_root = "evidence/results/RES-STAGE-0.5-ROUND2-TASK3-MEASUREMENT-CONTRACT-ALIGNMENT-20261029"
+    pairs["RES-STAGE-0.5-ROUND2-TASK3-MEASUREMENT-CONTRACT-ALIGNMENT-20261029"] = [
+        (f"{task3_root}/{name}", name)
+        for name in (
+            "contract_alignment_decision.json", "flag_preservation_before_after.json",
+            "lane_path_separation_recheck.json", "manifest.json", "sealed_trace_reanalysis_reuse.json",
+            "SHA256SUMS", "source_bindings.json", "validation_record.json",
+        )
+    ]
 
     # Policy A preflight proposals, not a frozen execution protocol.
     pairs['RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1'] = [

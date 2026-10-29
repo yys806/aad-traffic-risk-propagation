@@ -1620,7 +1620,15 @@ SUMO_FORMAL_EQUIVALENCE_STATUS = "pending_measurement_equivalence_review"
 def build_sumo_formal_source_frame(
     states: pd.DataFrame, *, recorded_observation_step_s: float = FORMAL_OBSERVATION_STEP_S
 ) -> pd.DataFrame:
-    """Map SUMO states onto the Stage 0.2 formal field contract, item by item."""
+    """Map SUMO states onto the Stage 0.2 formal field contract, item by item.
+
+    Explicit identity/continuity evidence supplied by an upstream recorder is
+    preserved.  The formal extractor treats ``identity_break`` and
+    ``observation_gap`` as fail-closed link boundaries; replacing either with
+    ``False`` would turn an unknown continuation into an apparently continuous
+    P2 event.  Deterministic SUMO frames that do not expose these fields receive
+    the recorder-domain default ``False``.
+    """
 
     measured = states if "measurement_status" in states.columns else compute_sumo_measurements(states)
     measured = measured.reset_index(drop=True)
@@ -1652,11 +1660,21 @@ def build_sumo_formal_source_frame(
     ordered["source_period"] = ordered["experiment_mode"].astype(str)
     ordered["trajectory_id"] = ordered["incarnation_id"].astype(str)
     ordered["leader_trajectory_id"] = ordered["leader_incarnation_id"].astype("string")
-    ordered["identity_uncertain"] = False
-    ordered["identity_break"] = False
-    ordered["observation_gap"] = False
-    ordered["leader_identity_uncertain"] = ~ordered["leader_identity_status"].astype("string").eq("observed")
-    ordered["leader_matched"] = ordered["leader_id"].notna() & ~ordered["leader_identity_uncertain"]
+    def bool_evidence(name: str, default: bool = False) -> pd.Series:
+        if name not in ordered.columns:
+            return pd.Series(default, index=ordered.index, dtype=bool)
+        values = ordered[name]
+        if not values.map(lambda value: isinstance(value, (bool, np.bool_))).all():
+            raise Stage05EngineeringError(f"{name}_must_be_explicit_boolean")
+        return values.astype(bool)
+
+    ordered["identity_uncertain"] = bool_evidence("identity_uncertain")
+    ordered["identity_break"] = bool_evidence("identity_break")
+    ordered["observation_gap"] = bool_evidence("observation_gap")
+    computed_leader_uncertain = ~ordered["leader_identity_status"].astype("string").eq("observed")
+    ordered["leader_identity_uncertain"] = bool_evidence("leader_identity_uncertain") | computed_leader_uncertain
+    computed_leader_matched = ordered["leader_id"].notna() & ~ordered["leader_identity_uncertain"]
+    ordered["leader_matched"] = bool_evidence("leader_matched", True) & computed_leader_matched
     if "drac_mps2" in ordered.columns:
         ordered["drac_mps2"] = pd.to_numeric(ordered["drac_mps2"], errors="coerce")
     else:  # pragma: no cover - defensive for externally supplied frames

@@ -1,0 +1,41 @@
+{
+  "cases": [
+    {
+      "after_task3": {
+        "formal_aligned_events": 0,
+        "mapped_flag_true_rows": {
+          "identity_break": 1,
+          "observation_gap": 0
+        }
+      },
+      "before_task2": {
+        "formal_aligned_events": 1,
+        "mapped_flag_true_rows": {
+          "identity_break": 0,
+          "observation_gap": 0
+        }
+      },
+      "case": "identity_break",
+      "expected": "explicit flag remains true; a three-frame probe with the break in the middle produces no confirmed formal event"
+    },
+    {
+      "after_task3": {
+        "formal_aligned_events": 0,
+        "mapped_flag_true_rows": {
+          "identity_break": 0,
+          "observation_gap": 1
+        }
+      },
+      "before_task2": {
+        "formal_aligned_events": 1,
+        "mapped_flag_true_rows": {
+          "identity_break": 0,
+          "observation_gap": 0
+        }
+      },
+      "case": "observation_gap",
+      "expected": "explicit flag remains true; a three-frame probe with the break in the middle produces no confirmed formal event"
+    }
+  ],
+  "schema_version": "aad.stage0.5.round2.task3.flag-preservation.v1"
+}

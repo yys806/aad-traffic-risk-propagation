@@ -1,3 +1,7 @@
+## AAD-S0.5-ROUND2-TASK3-MEASUREMENT-CONTRACT-ALIGNMENT-20261029
+
+Verified minimal formal-alignment repair preserves explicit identity/continuity flags; formal pair/time qualification remains separate from D1 same-native-lane diagnostics. B00 and Round2 candidate sealed source P2 remain zero; no SUMO/TraCI/new trajectories/holdout. Stage 0.5 Gate, Stage 0.6, Protocol Lock, Stage I and Round3 unchanged. The required source condition is still not met; candidate confirmation remains closed.
+
 ## AAD-S0.5-ROUND2-TASK2-MEASUREMENT-CONTRACT-20261029
 
 Verified offline measurement-contract audit: 16 deterministic synthetic cases reproduce formal P2, SUMO-native, formal-aligned and D1 differences; candidate A/B/C remain pending researcher adjudication. Reused post-R2 sealed evidence; no SUMO/TraCI/new trajectories/holdout. Stage 0.5 Gate, Stage 0.6, Protocol Lock, Stage I and Round3 unchanged. Synthetic native/formal-aligned/D1 outputs and A/B/C candidate comparison are in the evidence package.

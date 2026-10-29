@@ -18,6 +18,7 @@ from riskprop.stage_0_5_sumo import (
     EQUIVALENCE_VERDICTS,
     Stage05AccessDenied,
     build_sumo_p2_events,
+    build_sumo_formal_source_frame,
     compute_exposure,
     compute_sumo_measurements,
     extract_sumo_formal_p2_events,
@@ -221,6 +222,21 @@ def test_formal_frame_clock_is_absolute_and_leader_frame_is_resolved() -> None:
     assert follower["frame_id"].tolist() == follower["observation_index"].tolist()
     assert follower["leader_frame_id"].tolist() == follower["observation_index"].tolist()
     assert follower["global_time_ms"].diff().dropna().eq(100).all()
+
+
+@pytest.mark.parametrize("flag", ["identity_break", "observation_gap"])
+def test_formal_alignment_preserves_explicit_continuity_flags(flag: str) -> None:
+    """An upstream break must remain a fail-closed formal link boundary."""
+
+    frame, _ = _case_frame("normal_sustained_closing")
+    frame[flag] = False
+    frame.loc[frame.vehicle_id.eq("f") & frame.time_s.eq(0.2), flag] = True
+    measured = compute_sumo_measurements(frame)
+    formal_frame = build_sumo_formal_source_frame(measured, recorded_observation_step_s=0.1)
+    assert int(formal_frame.loc[formal_frame.vehicle_id.eq("f"), flag].sum()) == 1
+    aligned, _ = extract_sumo_formal_p2_events(measured, recorded_observation_step_s=0.1)
+    assert len(aligned) == 1
+    assert aligned.iloc[0]["event_start_s"] == pytest.approx(0.2)
 
 
 def test_missing_leader_row_fails_closed_in_the_formal_adapter() -> None:
