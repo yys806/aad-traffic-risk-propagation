@@ -1,0 +1,86 @@
+{
+  "engineering_status": "PASS_SCOPED_VALIDATION",
+  "task_status": "COMPLETED_WITH_BLOCKERS",
+  "physical_review_status": "BLOCKED_NO_VERIFIED_INDEPENDENT_PHYSICAL_REFERENCE",
+  "validated_at_utc": "2026-10-30T12:34:51.356749+00:00",
+  "budget_minutes": 15,
+  "scope": "New standalone metadata/spatial script; exact exporter allowlist; new evidence and documentation only; no scientific core change",
+  "checks": [
+    {
+      "name": "targeted_synthetic_and_export_scope_tests",
+      "command": "cd code; python -m pytest tests/test_stage_0_5_round2_task7_2_resources.py tests/test_project_evidence_scope.py -q -p no:cacheprovider --basetemp=<ignored-task72-dir>/pytest_tmp",
+      "status": "PASS",
+      "result": "4 passed in 0.34s; 3 new synthetic tests and 1 scope regression; no network/media/traffic data"
+    },
+    {
+      "name": "changed_python_syntax",
+      "command": "python -m py_compile code/scripts/audit_stage_0_5_round2_task7_2_resources.py code/tests/test_stage_0_5_round2_task7_2_resources.py code/scripts/export_project_evidence.py",
+      "status": "PASS"
+    },
+    {
+      "name": "strict_project_docs",
+      "command": "python code/scripts/validate_project_docs.py --strict-git",
+      "status": "PASS",
+      "result": "PROJECT_DOCS_OK"
+    },
+    {
+      "name": "scoped_evidence_export_and_verify",
+      "command": "python code/scripts/export_project_evidence.py --repo-root . [--verify] --result-id RES-STAGE-0.5-ROUND2-TASK7.2-RESOURCE-METADATA-AND-ACQUISITION-FEASIBILITY-20261030",
+      "status": "PASS",
+      "result": "76 results; 75 previous entries unchanged; new result has exactly10 files; PORTABLE_EVIDENCE_OK"
+    },
+    {
+      "name": "independent_bundle_metadata_and_hash_check",
+      "status": "PASS",
+      "result": "4 unique raw members, exact byte/CRC comparison to saved central directory, 6452 exact206 bytes, all bound small inputs,8 payload hashes and9 SHA256SUMS entries; explicit result-presence assertion"
+    },
+    {
+      "name": "historical_and_context_consistency",
+      "status": "PASS",
+      "result": "75 old evidence entries and all other registry fields equal baseline; only new result and stage result-id added. AI_CONTEXT00/05/07/08 and human indexes agree; AGENTS/06_DECISIONS/core/Gate/history unchanged"
+    },
+    {
+      "name": "git_whitespace",
+      "command": "git diff --check",
+      "status": "PASS"
+    }
+  ],
+  "failures_preserved": [
+    {
+      "stage": "initial_zip_HEAD",
+      "result": "40s timeout; no body read",
+      "evidence": "local http_probe_record.json"
+    },
+    {
+      "stage": "three_alternate_HEAD_endpoints",
+      "result": "timeout / HTTP400 / timeout; no archive body read",
+      "evidence": "local alternate_head_record.json"
+    },
+    {
+      "stage": "first_directory_target_match",
+      "result": "Old raw-video logical paths matched zero current flat members; corrected exact-basename parser preserves duplicates; final four unique",
+      "evidence": "local range_continuation_record.json retains initial0; directory_inventory.json records corrected4"
+    },
+    {
+      "stage": "compressed_metadata_decode",
+      "result": "Gzip wire response initially not UTF8/PDF; decoded saved bytes locally without another transfer",
+      "evidence": "source_bindings.json binds original and decoded responses"
+    }
+  ],
+  "remaining_engineering_failures": [],
+  "not_run_by_design": [
+    "full pytest",
+    "whole-repository compileall",
+    "historical experiment/P2 rerun",
+    "full historical large-input SHA sweep",
+    "full pure-Git clone"
+  ],
+  "remaining_scientific_unknowns": [
+    "Per-file applicable video license",
+    "Actual raw start/end/PTS/trajectory anchors and measured camera synchronization",
+    "Origin/cause of near-translation and full-source camera visibility",
+    "Video stream usability,CRC and SHA256 without approved acquisition"
+  ],
+  "context_consistency_check": "PASS; current result supersedes only metadata-size uncertainty, not historical conclusions or scientific decisions",
+  "validation_limit": "Scoped checks establish metadata/package consistency, not video payload integrity or physical event truth"
+}

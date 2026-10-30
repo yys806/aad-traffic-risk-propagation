@@ -1,0 +1,15 @@
+quantity,value,status,evidence,limitation_or_next_requirement
+Global_Time,Epoch milliseconds since1970; convert to Pacific for local interpretation,Verified documentary definition,https://data.transportation.gov/api/views/8ect-6jqj/files/50459f5f-c40b-4eec-b9a0-72dfef577f15?download=true&filename=US_101_Metadata_Documentation.pdf p11,No video PTS inference
+Frame_ID,Dataset internal frame identifier,Verified documentary field; raw-frame relation Unknown,Task7/7.1 identity/time audit,Ask whether/how it maps to raw frame index
+Trajectory sampling,One observation every0.1s,Verified trajectory metadata,https://data.transportation.gov/api/views/8ect-6jqj/files/50459f5f-c40b-4eec-b9a0-72dfef577f15?download=true&filename=US_101_Metadata_Documentation.pdf p1,Not evidence of raw video10fps
+0750 trajectory support,2005-06-15T07:49:39.700-07:00 through08:05:32.500-07:00,Reused Verified trajectory support,Task7.1 video_time_alignment_status.json,Not actual file bounds
+0805 trajectory support,2005-06-15T08:04:03-07:00 through08:20:42-07:00,Reused Verified trajectory support,Task7.1 video_time_alignment_status.json,Keep windows separate
+Video PTS/time base,Unknown,Unknown,No stream or provider technical metadata,ffprobe only after acquisition approval
+Actual raw file start/end and timezone,Unknown,Unknown,Only nominal names and metadata period descriptions,Provider must confirm support beyond nominal boundaries
+Raw FPS and fixed/variable rate,Unknown,Unknown,No raw stream inspected,Do not transfer I80 or trajectory10Hz assumption
+Absolute frame timestamps,Unknown,Unknown,No verified per-camera anchors,Need multiple distributed anchors per file
+Camera synchronization declaration,Eight synchronized cameras described,"Verified statement, not measured alignment",https://data.transportation.gov/api/views/8ect-6jqj/files/50459f5f-c40b-4eec-b9a0-72dfef577f15?download=true&filename=US_101_Metadata_Documentation.pdf p1,Need calibration records/offset/drift
+Camera offset/drift and dropped/repeated frames,Unknown,Unknown,No technical log supplied,Need provider records and later per-frame check
+Filename time versus frame0,Unverified; nominal period only,Unknown,Current ZIP basename,No constructed offset/nearest-frame matching
+ZIP DOS modified timestamps,2026-10-01 times; timezone unspecified,Verified directory literals only,Current central directory,"Not2005 capture times, stream PTS or proof of archive update"
+Global_Time-100*Frame_ID,Identity diagnostic clock anchor,Verified implementation meaning,ngsim_risk_calibration.py viaTask7.1,Not verified video synchronization

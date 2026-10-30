@@ -1,0 +1,81 @@
+{
+  "task_status": "COMPLETED_WITH_BLOCKERS",
+  "READY_FOR_RESEARCHER_DECISION": true,
+  "acquisition_ready": false,
+  "BLOCKED_LICENSE": true,
+  "BLOCKED_TIME_METADATA": true,
+  "BLOCKED_RESOURCE_AVAILABILITY": false,
+  "BLOCKED_SPATIAL_MAPPING": true,
+  "status_scope": {
+    "READY_FOR_RESEARCHER_DECISION": "Decision packet complete, not approval to acquire",
+    "BLOCKED_RESOURCE_AVAILABILITY": "False for identified four ZIP members and demonstrated exact metadata Range; standalone URLs not found and stream usability untested",
+    "BLOCKED_SPATIAL_MAPPING": "Active for precise event/frame physical review, not for proposing camera7/8 acquisition; near-translation characterized but origin/all-lane visibility unverified"
+  },
+  "unique_current_raw_members": 4,
+  "compressed_member_bytes": 1248582779,
+  "uncompressed_file_bytes": 1248560044,
+  "cost_scope": "Exact member/file byte sums, excluding HTTP/local-ZIP-header overhead; not a measured video acquisition",
+  "official_file_sha256": null,
+  "crc32_is_not_sha256": true,
+  "crc_payload_validation_performed": false,
+  "published_access": "Whole ZIP link found; individual AVI URLs not found in inspected current official records",
+  "future_minimum_option": "After separate approval, provider four-file subset or selective ZIP-member retrieval limited to these four raw files; do not acquire whole12.539GB archive",
+  "range_audit": {
+    "limit_bytes": 8388608,
+    "body_bytes_read": 6452,
+    "requests": [
+      {
+        "start": 12539460844,
+        "end": 12539460865,
+        "bytes": 22,
+        "status": 206
+      },
+      {
+        "start": 12539460824,
+        "end": 12539460843,
+        "bytes": 20,
+        "status": 206
+      },
+      {
+        "start": 12539460768,
+        "end": 12539460823,
+        "bytes": 56,
+        "status": 206
+      },
+      {
+        "start": 12539454414,
+        "end": 12539460767,
+        "bytes": 6354,
+        "status": 206
+      }
+    ],
+    "regions": "22-byte EOCD,20-byte ZIP64 locator,56-byte ZIP64 EOCD,6354-byte central directory; no local header/member payload"
+  },
+  "geographic_candidate_camera_set": [
+    7,
+    8
+  ],
+  "minimum_camera_set": null,
+  "next_required_researcher_decision": "Whether to authorize sending the prepared provider inquiry. Actual video acquisition remains a later separate decision after license/time answers",
+  "minimum_post_acquisition_validation": [
+    "Bind sources and compute SHA256; verify expected CRC if ZIP extracted",
+    "Verify actual containers/codecs/duration/fps and frame PTS",
+    "Establish beginning/middle/end anchors per file; test offsets/drift/drop/repetition",
+    "Verify camera coverage and per-window coordinate mapping before fixed case selection"
+  ],
+  "protected_state": {
+    "source_formal_p2": [
+      167,
+      159
+    ],
+    "historical_results_modified": false,
+    "Gate_changed": false,
+    "later_stages_changed": false
+  },
+  "videos_acquired": 0,
+  "outbound_messages_sent": 0,
+  "new_controls": 0,
+  "trajectory_or_holdout_reads": 0,
+  "new_simulations": 0,
+  "literature_reuse": "Task7.1 assessment reused; no new search/training; Coifman2017 remains full-text blocked"
+}

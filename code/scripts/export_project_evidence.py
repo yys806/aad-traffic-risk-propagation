@@ -152,6 +152,19 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         )
     ]
 
+    # Task7.2: directory/permission/time metadata and old-control diagnostics only.
+    task72_root = "evidence/results/RES-STAGE-0.5-ROUND2-TASK7.2-RESOURCE-METADATA-AND-ACQUISITION-FEASIBILITY-20261030"
+    pairs["RES-STAGE-0.5-ROUND2-TASK7.2-RESOURCE-METADATA-AND-ACQUISITION-FEASIBILITY-20261030"] = [
+        (f"{task72_root}/{name}", name)
+        for name in (
+            "resource_inventory.csv", "license_scope_matrix.csv",
+            "time_metadata_matrix.csv", "spatial_shift_diagnostic.json",
+            "provider_inquiry_draft.md", "decision_summary.json",
+            "source_bindings.json", "validation_record.json",
+            "manifest.json", "SHA256SUMS",
+        )
+    ]
+
     # Policy A preflight proposals, not a frozen execution protocol.
     pairs['RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1'] = [
         ('code/outputs/formal/calibration/stage_0_5_interaction_diagnostics_v1/portable/' + name, name)
@@ -903,6 +916,8 @@ def _validate_source(source: Path) -> None:
         # Task7.1 metadata/coverage and 130 ID-free, risk-independent controls only.
         "camera_localy_coverage.csv", "spatial_control_points.csv",
         "license_resource_matrix.csv",
+        # Task7.2: four raw-file inventory and official license/time statements.
+        "resource_inventory.csv", "license_scope_matrix.csv", "time_metadata_matrix.csv",
         }
     if source.suffix.lower() not in {".json", ".md", ".txt", ".sha256"} and source.name not in aggregate_names:
         raise ValueError(f"unsupported evidence file type: {source}")

@@ -1,3 +1,9 @@
+## 2026-10-30 Round2 Task7.2 - resource and mapping conditions
+
+Task7.2 COMPLETED_WITH_BLOCKERS. Four unique current raw AVI members verified from 6,452 bytes of exact ZIP metadata Ranges; compressed total 1,248,582,779 bytes, extracted total 1,248,560,044 bytes. Per-file license and PTS/time anchors remain unresolved. Existing 130 controls show a predominantly near-constant correspondence difference (mean norm 12.29247 m), not verified physical displacement. Camera7/8 remain geographic candidates, minimum_camera_set null. Provider inquiry drafted but not sent; acquisition and physical review remain unapproved/blocked. Formal P2 167/159, historical evidence, AGENTS,06_DECISIONS and scientific Gate/later stages unchanged. No videos, cases, simulations or new trajectory/holdout reads.
+
+Report: docs/STAGE_0_5_ROUND2_TASK7_2_RESOURCE_METADATA_AND_ACQUISITION_FEASIBILITY_20261030.md; evidence: evidence/results/RES-STAGE-0.5-ROUND2-TASK7.2-RESOURCE-METADATA-AND-ACQUISITION-FEASIBILITY-20261030/.
+
 ## 2026-10-30 Round2 Task7.1 — metadata and mapping feasibility
 
 Task7.1 bounded investigation COMPLETED_WITH_BLOCKERS. Per-window Local_Y/Global/ortho mapping supports geographic camera candidates7/8 (EPSG:2229), not certified full-source visibility; minimum_camera_set remains null. PTS mapping, per-file license/size and Coifman2017 full-text access remain unresolved. PreciseNGSIM two-window structure is useful auxiliary evidence with inherited fields, shorter time support and malformed last records; not independent truth or formal replacement. Source Formal P2 167/159, Task1–Task7 evidence, AGENTS,06_DECISIONS and scientific Gate/later stages unchanged. No video acquisition, event sampling, SUMO/TraCI, third window or holdout.

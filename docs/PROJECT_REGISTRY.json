@@ -1158,7 +1158,8 @@
     "RES-STAGE-0.5-ROUND2-TASK5-TASK4-EVIDENCE-INTEGRITY-20261030",
     "RES-STAGE-0.5-ROUND2-TASK6-REAL-SIM-MICRO-INTERACTION-20261030",
     "RES-STAGE-0.5-ROUND2-TASK7-INDEPENDENT-PHYSICAL-QUALITY-REVIEW-20261030",
-    "RES-STAGE-0.5-ROUND2-TASK7.1-VIDEO-METADATA-AND-MAPPING-FEASIBILITY-20261030"
+    "RES-STAGE-0.5-ROUND2-TASK7.1-VIDEO-METADATA-AND-MAPPING-FEASIBILITY-20261030",
+    "RES-STAGE-0.5-ROUND2-TASK7.2-RESOURCE-METADATA-AND-ACQUISITION-FEASIBILITY-20261030"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -5124,6 +5125,56 @@
    "gate_status": "blocked",
    "paper_locations": [
     "docs/STAGE_0_5_ROUND2_TASK7_1_VIDEO_METADATA_AND_MAPPING_FEASIBILITY_20261030.md"
+   ],
+   "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-STAGE-0.5-ROUND2-TASK7.2-RESOURCE-METADATA-AND-ACQUISITION-FEASIBILITY-20261030",
+   "experiment_id": "stage_0_5",
+   "name": "Round2 Task7.2 resource metadata and acquisition feasibility",
+   "status": "completed_with_blockers",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK7.2-RESOURCE-METADATA-AND-ACQUISITION-FEASIBILITY-20261030/manifest.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK7.2-RESOURCE-METADATA-AND-ACQUISITION-FEASIBILITY-20261030/SHA256SUMS",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK7.2-RESOURCE-METADATA-AND-ACQUISITION-FEASIBILITY-20261030/validation_record.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK7.2-RESOURCE-METADATA-AND-ACQUISITION-FEASIBILITY-20261030/source_bindings.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK7.2-RESOURCE-METADATA-AND-ACQUISITION-FEASIBILITY-20261030/resource_inventory.csv",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK7.2-RESOURCE-METADATA-AND-ACQUISITION-FEASIBILITY-20261030/license_scope_matrix.csv",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK7.2-RESOURCE-METADATA-AND-ACQUISITION-FEASIBILITY-20261030/time_metadata_matrix.csv",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK7.2-RESOURCE-METADATA-AND-ACQUISITION-FEASIBILITY-20261030/spatial_shift_diagnostic.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK7.2-RESOURCE-METADATA-AND-ACQUISITION-FEASIBILITY-20261030/provider_inquiry_draft.md",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK7.2-RESOURCE-METADATA-AND-ACQUISITION-FEASIBILITY-20261030/decision_summary.json"
+   ],
+   "local_artifact_paths": [
+    "local_research/literature-work/task7_2_20261030/"
+   ],
+   "code_version_source": "Baseline 0bf62d49252aae23caf16fee74d5d41ce976e8b8; exact analysis/exporter source bindings in source_bindings.json",
+   "configuration_source": "Task7.2 metadata-only scope, 8MiB cumulative ZIP Range cap; old130-control affine difference only",
+   "data_version_source": "Current official4qzi-thur/8ect-6jqj metadata, exact6,452-byte ZIP metadata ranges; Task7.1 controls and literature reused",
+   "core_metrics": {
+    "source_formal_p2_reused": [
+     167,
+     159
+    ],
+    "unique_raw_members": 4,
+    "compressed_member_bytes": 1248582779,
+    "uncompressed_file_bytes": 1248560044,
+    "zip_metadata_range_bytes": 6452,
+    "spatial_controls_reused": 130,
+    "geographic_candidate_camera_set": [
+     7,
+     8
+    ],
+    "minimum_camera_set": null,
+    "video_downloads": 0,
+    "cases_selected": 0,
+    "new_native_launches": 0,
+    "holdout_reads": 0
+   },
+   "current_conclusion": "Task7.2 COMPLETED_WITH_BLOCKERS. Four unique current raw AVI members verified from 6,452 bytes of exact ZIP metadata Ranges; compressed total 1,248,582,779 bytes, extracted total 1,248,560,044 bytes. Per-file license and PTS/time anchors remain unresolved. Existing 130 controls show a predominantly near-constant correspondence difference (mean norm 12.29247 m), not verified physical displacement. Camera7/8 remain geographic candidates, minimum_camera_set null. Provider inquiry drafted but not sent; acquisition and physical review remain unapproved/blocked. Formal P2 167/159, historical evidence, AGENTS,06_DECISIONS and scientific Gate/later stages unchanged. No videos, cases, simulations or new trajectory/holdout reads.",
+   "gate_status": "blocked",
+   "paper_locations": [
+    "docs/STAGE_0_5_ROUND2_TASK7_2_RESOURCE_METADATA_AND_ACQUISITION_FEASIBILITY_20261030.md"
    ],
    "scientific_claim_eligible": false
   }
