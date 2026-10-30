@@ -1,0 +1,126 @@
+{
+  "engineering_status": "PASS_SCOPED_METADATA_AUDIT_WITH_RESEARCH_BLOCKERS",
+  "task_status": "COMPLETED_WITH_BLOCKERS",
+  "physical_review_status": "BLOCKED_NO_VERIFIED_INDEPENDENT_PHYSICAL_REFERENCE",
+  "scope": "Isolated metadata script/tests/report/registry/exact evidence-file lists; no core scientific logic changed",
+  "not_run_by_design": [
+    "Full pytest",
+    "Repository compileall",
+    "Historical experiments/large-input hashes",
+    "Video download/ffprobe"
+  ],
+  "scientific_acceptance": {
+    "spatial_mapping": "APPROXIMATE_GEOGRAPHIC_MAPPING_WITH_LIMITS",
+    "time_mapping": "MISSING_ANCHORS_AND_REQUIREMENTS_DOCUMENTED_NOT_SYNCHRONIZED",
+    "resource_license": "DIFFERENCES_AND_CONDITIONAL_FILES_DOCUMENTED_TERMS_UNKNOWN",
+    "literature_fulltext_2017": "BLOCKED_FULL_TEXT_ACCESS",
+    "literature_2024_and_public_code": "READ_WITH_REPRODUCTION_LIMITS",
+    "formal_source_p2": "REUSED_UNCHANGED_167_159"
+  },
+  "checks": [
+    {
+      "check": "Changed Python syntax",
+      "command": "python -m py_compile task7_1 script, test and exporter",
+      "status": "PASS"
+    },
+    {
+      "check": "Synthetic spatial checks + directly related exporter scope regression",
+      "command": "python -m pytest code/tests/test_stage_0_5_round2_task7_1_video_mapping.py code/tests/test_project_evidence_scope.py -q -p no:cacheprovider --basetemp=local_research/literature-work/task7_1_20261030/pytest_tmp_retry",
+      "status": "PASS",
+      "tests_passed": 4,
+      "duration_s": 0.54
+    },
+    {
+      "check": "Strict project docs",
+      "command": "python code/scripts/validate_project_docs.py --strict-git",
+      "status": "PASS",
+      "output": "PROJECT_DOCS_OK"
+    },
+    {
+      "check": "Scoped export and integrity",
+      "command": "export_project_evidence.py --repo-root . [--verify] --result-id newTask7.1RID",
+      "status": "PASS",
+      "output": "PORTABLE_EVIDENCE_EXPORTED results=75 files=1139; PORTABLE_EVIDENCE_OK",
+      "new_result_presence_independently_asserted": true
+    },
+    {
+      "check": "Strict JSON/CSV and independent payload/manifest/SHA256SUMS",
+      "status": "PASS",
+      "csv_rows": {
+        "spatial_control_points.csv": 130,
+        "camera_localy_coverage.csv": 80,
+        "license_resource_matrix.csv": 8,
+        "evidence_reuse_matrix.csv": 8
+      },
+      "package_files": 13
+    },
+    {
+      "check": "History and protected state",
+      "status": "PASS",
+      "historical_global_manifest_entries_unchanged": 74,
+      "historical_result_records_unchanged": true,
+      "registry_current_gate_unchanged": true,
+      "core_scientific_modules_config_unchanged": true,
+      "AGENTS_and_decisions_unchanged": true
+    },
+    {
+      "check": "Context Consistency Check",
+      "status": "PASS",
+      "updated_context": [
+        "00_PROJECT_STATE",
+        "05_EXPERIMENTS",
+        "07_KNOWN_ISSUES",
+        "08_CHANGELOG"
+      ],
+      "retained_source_p2": [
+        167,
+        159
+      ],
+      "minimum_camera_set": null
+    },
+    {
+      "check": "Static ortho overlay review",
+      "status": "PASS_GEOGRAPHIC_FEATURES_ONLY",
+      "two_window_boundaries_shown": true,
+      "video_or_vehicle_physical_validation": false
+    },
+    {
+      "check": "Staged portable bytes and bound code",
+      "status": "PASS",
+      "output": "STAGED_PORTABLE_BYTES_AND_BOUND_CODE_OK",
+      "method": "git show staged payload/manifest/SHA256SUMS; normalized-LF code SHA; exact staged diff check"
+    }
+  ],
+  "failures_preserved": [
+    {
+      "stage": "First targeted pytest",
+      "result": "3 passed,1 setup error,2 cache warnings",
+      "cause": "Windows temp/cache access PermissionError",
+      "resolution": "One bounded retry with explicit task-local basetemp and cache provider disabled;4 passed. No test/code semantics changed"
+    },
+    {
+      "stage": "Initial packaging attempt",
+      "result": "Python inline script serialization SyntaxError; export then failed missing manifest",
+      "resolution": "Moved exact logic to task-local script; produced13-file package and asserted new RID presence. Premature verify output with absent RID was not accepted"
+    },
+    {
+      "stage": "First independent format/history check",
+      "result": "UnicodeDecodeError from implicit Windows GBK read",
+      "resolution": "Explicit UTF8 reads in local check script; passed"
+    },
+    {
+      "stage": "Initial staged diff check",
+      "result": "Trailing whitespace in new spatial script",
+      "resolution": "Removed that whitespace only; final staged diff rechecked"
+    }
+  ],
+  "recorded_at_utc": "2026-10-30T12:01:43.653956+00:00",
+  "validation_budget": "Scoped checks only; no full-suite/compileall or historical-input hashes; under30min engineering verification",
+  "remaining_blockers": [
+    "Video PTS/frame-to-epoch anchors unavailable",
+    "Applicable per-video license and file sizes Unknown",
+    "Full-source/all-lane visibility unverified",
+    "Coifman2017 mandatory full text unavailable",
+    "PreciseNGSIM data-specific license and malformed final records not resolved"
+  ]
+}

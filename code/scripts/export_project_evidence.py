@@ -138,6 +138,20 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         )
     ]
 
+    # Task7.1 spatial controls are a small ID-free, risk-independent sample.
+    task71_root = "evidence/results/RES-STAGE-0.5-ROUND2-TASK7.1-VIDEO-METADATA-AND-MAPPING-FEASIBILITY-20261030"
+    pairs["RES-STAGE-0.5-ROUND2-TASK7.1-VIDEO-METADATA-AND-MAPPING-FEASIBILITY-20261030"] = [
+        (f"{task71_root}/{name}", name)
+        for name in (
+            "spatial_mapping_audit.json", "camera_localy_coverage.csv",
+            "spatial_control_points.csv", "video_time_alignment_status.json",
+            "license_resource_matrix.csv", "literature_reuse_assessment.md",
+            "candidate_acquisition_manifest.json", "alternative_reference_assessment.json",
+            "evidence_reuse_matrix.csv", "source_bindings.json",
+            "validation_record.json", "manifest.json", "SHA256SUMS",
+        )
+    ]
+
     # Policy A preflight proposals, not a frozen execution protocol.
     pairs['RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1'] = [
         ('code/outputs/formal/calibration/stage_0_5_interaction_diagnostics_v1/portable/' + name, name)
@@ -886,6 +900,9 @@ def _validate_source(source: Path) -> None:
         "macro_common_support_cells.csv",
         # Task7 official file metadata, not traffic observations or case identities.
         "documented_video_resources.csv",
+        # Task7.1 metadata/coverage and 130 ID-free, risk-independent controls only.
+        "camera_localy_coverage.csv", "spatial_control_points.csv",
+        "license_resource_matrix.csv",
         }
     if source.suffix.lower() not in {".json", ".md", ".txt", ".sha256"} and source.name not in aggregate_names:
         raise ValueError(f"unsupported evidence file type: {source}")

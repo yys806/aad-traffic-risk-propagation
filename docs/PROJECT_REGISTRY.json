@@ -1157,7 +1157,8 @@
     "RES-STAGE-0.5-ROUND2-TASK4-REAL-SOURCE-SUPPORT-AND-MULTISCALE-CROSSWALK-20261030",
     "RES-STAGE-0.5-ROUND2-TASK5-TASK4-EVIDENCE-INTEGRITY-20261030",
     "RES-STAGE-0.5-ROUND2-TASK6-REAL-SIM-MICRO-INTERACTION-20261030",
-    "RES-STAGE-0.5-ROUND2-TASK7-INDEPENDENT-PHYSICAL-QUALITY-REVIEW-20261030"
+    "RES-STAGE-0.5-ROUND2-TASK7-INDEPENDENT-PHYSICAL-QUALITY-REVIEW-20261030",
+    "RES-STAGE-0.5-ROUND2-TASK7.1-VIDEO-METADATA-AND-MAPPING-FEASIBILITY-20261030"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -5079,6 +5080,50 @@
    "gate_status": "blocked",
    "paper_locations": [
     "docs/STAGE_0_5_ROUND2_TASK7_INDEPENDENT_PHYSICAL_QUALITY_REVIEW_20261030.md"
+   ],
+   "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-STAGE-0.5-ROUND2-TASK7.1-VIDEO-METADATA-AND-MAPPING-FEASIBILITY-20261030",
+   "experiment_id": "stage_0_5",
+   "name": "Round2 Task7.1 video metadata and mapping feasibility",
+   "status": "completed_with_blockers",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK7.1-VIDEO-METADATA-AND-MAPPING-FEASIBILITY-20261030/manifest.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK7.1-VIDEO-METADATA-AND-MAPPING-FEASIBILITY-20261030/SHA256SUMS",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK7.1-VIDEO-METADATA-AND-MAPPING-FEASIBILITY-20261030/validation_record.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK7.1-VIDEO-METADATA-AND-MAPPING-FEASIBILITY-20261030/source_bindings.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK7.1-VIDEO-METADATA-AND-MAPPING-FEASIBILITY-20261030/spatial_mapping_audit.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK7.1-VIDEO-METADATA-AND-MAPPING-FEASIBILITY-20261030/video_time_alignment_status.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK7.1-VIDEO-METADATA-AND-MAPPING-FEASIBILITY-20261030/candidate_acquisition_manifest.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK7.1-VIDEO-METADATA-AND-MAPPING-FEASIBILITY-20261030/alternative_reference_assessment.json"
+   ],
+   "local_artifact_paths": [
+    "local_research/literature-work/task7_1_20261030/"
+   ],
+   "code_version_source": "Baseline668b88376e0d84c257c4ee7392291a501167add2; exact task script/source SHA in source_bindings.json",
+   "configuration_source": "Task7.1 metadata-only scope; independent per-window affine; deterministic spatial controls, no risk-based selection",
+   "data_version_source": "Task7 geometry/time/license reuse; existing two-window spatial controls; fixed public PreciseNGSIM commit6c8e38ea20458761290327799db1acf676586094",
+   "core_metrics": {
+    "source_formal_p2_reused": [
+     167,
+     159
+    ],
+    "geographic_candidate_camera_set": [
+     7,
+     8
+    ],
+    "minimum_camera_set": null,
+    "spatial_controls": 130,
+    "video_downloads": 0,
+    "cases_selected": 0,
+    "new_native_launches": 0,
+    "holdout_reads": 0
+   },
+   "current_conclusion": "Task7.1 bounded investigation COMPLETED_WITH_BLOCKERS. Per-window Local_Y/Global/ortho mapping supports geographic camera candidates7/8 (EPSG:2229), not certified full-source visibility; minimum_camera_set remains null. PTS mapping, per-file license/size and Coifman2017 full-text access remain unresolved. PreciseNGSIM two-window structure is useful auxiliary evidence with inherited fields, shorter time support and malformed last records; not independent truth or formal replacement. Source Formal P2 167/159, Task1–Task7 evidence, AGENTS,06_DECISIONS and scientific Gate/later stages unchanged. No video acquisition, event sampling, SUMO/TraCI, third window or holdout.",
+   "gate_status": "blocked",
+   "paper_locations": [
+    "docs/STAGE_0_5_ROUND2_TASK7_1_VIDEO_METADATA_AND_MAPPING_FEASIBILITY_20261030.md"
    ],
    "scientific_claim_eligible": false
   }

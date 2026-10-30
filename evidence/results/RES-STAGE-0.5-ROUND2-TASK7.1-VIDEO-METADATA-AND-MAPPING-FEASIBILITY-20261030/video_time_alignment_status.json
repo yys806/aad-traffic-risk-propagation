@@ -1,0 +1,59 @@
+{
+  "status": "UNVERIFIED_VIDEO_TRAJECTORY_MAPPING",
+  "physical_review_status": "BLOCKED_NO_VERIFIED_INDEPENDENT_PHYSICAL_REFERENCE",
+  "source": "evidence/results/RES-STAGE-0.5-ROUND2-TASK7-INDEPENDENT-PHYSICAL-QUALITY-REVIEW-20261030/video_time_alignment_audit.json",
+  "official_global_time_definition": "Epoch milliseconds since 1970-01-01T00:00:00 GMT; US Pacific conversion for local time (official attachment pp.2-3).",
+  "camera_synchronization_statement": "Local US-101 metadata p.1 describes eight synchronized cameras; it does not supply movie frame/PTS to Global_Time anchors.",
+  "epoch_conversions_only": {
+    "0750_0805": {
+      "global_time_min_ms": 1118846979700,
+      "global_time_max_ms": 1118847932500,
+      "global_time_min_ms_utc": "2005-06-15T14:49:39.700000+00:00",
+      "global_time_min_ms_pacific": "2005-06-15T07:49:39.700000-07:00",
+      "global_time_max_ms_utc": "2005-06-15T15:05:32.500000+00:00",
+      "global_time_max_ms_pacific": "2005-06-15T08:05:32.500000-07:00"
+    },
+    "0805_0820": {
+      "global_time_min_ms": 1118847843000,
+      "global_time_max_ms": 1118848842000,
+      "global_time_min_ms_utc": "2005-06-15T15:04:03+00:00",
+      "global_time_min_ms_pacific": "2005-06-15T08:04:03-07:00",
+      "global_time_max_ms_utc": "2005-06-15T15:20:42+00:00",
+      "global_time_max_ms_pacific": "2005-06-15T08:20:42-07:00"
+    }
+  },
+  "windows_overlap_s": 89.5,
+  "nominal_filename_time_is_not_frame_zero": true,
+  "verified_video_offset_s": null,
+  "verified_pts_rate": null,
+  "verified_frame_anchor_pairs": [],
+  "sync_drift_or_frame_loss_verified": null,
+  "event_to_video_mappings_verified": 0,
+  "next_required": "Obtain independent raw reference, timestamp/frame origin and rate evidence, then verify multiple physical anchors and any camera transitions; no arbitrary offset or nearest-frame matching.",
+  "geographic_candidate_camera_set": [
+    7,
+    8
+  ],
+  "existing_diagnostic_anchor": {
+    "formula": "Global_Time - 100 * Frame_ID",
+    "meaning": "Identity diagnostic clock anchor only; not video PTS synchronization"
+  },
+  "separate_clock_quantities": {
+    "Global_Time": "Epoch milliseconds; documentary definition and reused Task5 ranges",
+    "Frame_ID": "Dataset internal frame index; no verified raw-video-index relation for these cameras",
+    "raw_video_PTS": null,
+    "raw_video_measured_frame_rate": null,
+    "file_start_epoch_ms": null,
+    "per_camera_offset_and_drift": null
+  },
+  "minimum_future_evidence": [
+    "Raw camera7/8 for each authorized period with verified source/license",
+    "ffprobe stream metadata and individual frame PTS after acquisition approval",
+    "Multiple reliable anchors near beginning/middle/end for each camera and period",
+    "Check offset/rate/drift/dropped or repeated frames/inter-camera consistency",
+    "Processed overlays optional for localization only, not independent identity truth",
+    "Provider must clarify temporal coverage beyond nominal filenames where epoch support extends"
+  ],
+  "method_limit": "Coifman & Li2024 verifies no temporal offset before spatial alignment; it does not supply the missing PTS mapping",
+  "videos_downloaded": 0
+}

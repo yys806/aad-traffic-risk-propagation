@@ -1,0 +1,135 @@
+{
+  "status": "VALUABLE_AUXILIARY_REFERENCE_CONDITIONAL_NOT_INDEPENDENT_TRUTH",
+  "repository": "https://github.com/TeRyZh/Spatial-Temporal-Deep-Embedding-for-Vehicle-Trajectory-Reconstruction-from-High-Angle-Video",
+  "commit": "6c8e38ea20458761290327799db1acf676586094",
+  "access_scope": "Only authorized0750/0805 trajectory ZIPs; no third-window file content",
+  "license": {
+    "source_code_readme": "Academic/research, non-commercial use",
+    "data_zip_specific_license": "Unknown"
+  },
+  "columns": [
+    "Vehicle_ID",
+    "Frame_ID",
+    "Total_Frames",
+    "Global_Time",
+    "Local_X",
+    "Local_Y",
+    "Global_X",
+    "Global_Y",
+    "v_Length",
+    "v_Width",
+    "v_Class",
+    "v_Vel",
+    "v_Acc",
+    "Lane_ID",
+    "Preceeding",
+    "Following",
+    "Space_Hdwy",
+    "Time_Hdwy"
+  ],
+  "unit_status": "Original NGSIM-style ft,ft/s,ft/s2 layout; labels do not validate independence",
+  "windows": [
+    {
+      "period": "0750am-0805am",
+      "zip_bytes": 64434905,
+      "zip_sha256": "a0dfdcdf4809034fe184eb880846e179d436ef3015ed41f9c4f93bcbd4aadb55",
+      "member": "final_US101_trajectories-0750am-0805am.csv",
+      "records_reported_by_csv_parser": 1033810,
+      "source_spatial_support": true,
+      "local_y_range_ft": [
+        -32.6739867119045,
+        2188.794
+      ],
+      "first500_field_equality": {
+        "Vehicle_ID": true,
+        "Frame_ID": true,
+        "Total_Frames": true,
+        "Global_Time": true,
+        "Local_X": true,
+        "Local_Y": false,
+        "Global_X": true,
+        "Global_Y": true,
+        "v_Length": true,
+        "v_Width": true,
+        "v_Class": true,
+        "v_Vel": false,
+        "v_Acc": false,
+        "Lane_ID": true,
+        "Preceeding": true,
+        "Following": true,
+        "Space_Hdwy": true,
+        "Time_Hdwy": true
+      },
+      "diagnostic_epoch_supported_range_ms": [
+        1118846979700,
+        1118847869500
+      ],
+      "semantic_flag_count": 1,
+      "semantic_flags": [
+        {
+          "csv_line": 1033811,
+          "global_time_value": 6452613.145,
+          "lane_value": 56.75
+        }
+      ],
+      "diagnostic_flag_is_not_a_repair_or_new_formal_filter": true
+    },
+    {
+      "period": "0805am-0820am",
+      "zip_bytes": 64689172,
+      "zip_sha256": "e5b3d40f34eecdae8fa0483791d148912e2c0d81c74157bd02ac9923db10d34b",
+      "member": "final_US101_trajectories-0805am-0820am.csv",
+      "records_reported_by_csv_parser": 1045913,
+      "source_spatial_support": true,
+      "local_y_range_ft": [
+        -5.78225106958334,
+        2216.95671086191
+      ],
+      "first500_field_equality": {
+        "Vehicle_ID": true,
+        "Frame_ID": true,
+        "Total_Frames": true,
+        "Global_Time": true,
+        "Local_X": true,
+        "Local_Y": false,
+        "Global_X": true,
+        "Global_Y": true,
+        "v_Length": true,
+        "v_Width": true,
+        "v_Class": true,
+        "v_Vel": false,
+        "v_Acc": false,
+        "Lane_ID": true,
+        "Preceeding": true,
+        "Following": true,
+        "Space_Hdwy": true,
+        "Time_Hdwy": true
+      },
+      "diagnostic_epoch_supported_range_ms": [
+        1118847843000,
+        1118848631600
+      ],
+      "semantic_flag_count": 1,
+      "semantic_flags": [
+        {
+          "csv_line": 1045914,
+          "global_time_value": 6451748.816,
+          "lane_value": 36.15
+        }
+      ],
+      "diagnostic_flag_is_not_a_repair_or_new_formal_filter": true
+    }
+  ],
+  "method_limitations": [
+    "STMap scanlines and embeddings may provide separately reconstructed longitudinal reference",
+    "Paper calibration uses about100 image/original-NGSIM coordinate anchors and overlaps; not fully independent",
+    "I80 single-camera manual reference does not validate US101 source events",
+    "Public post-processing/evaluation is not complete training/all-camera calibration/synchronization",
+    "First500-row preservation does not establish event-wise identity mapping",
+    "Inherited Global_X/Y and headway fields are not independent position/gap truth",
+    "Malformed last records and shorter epoch support need clarification before future event-wise comparison"
+  ],
+  "recommendation": "Potential bounded auxiliary correspondence/quality study after license/schema/coverage clarification; independent raw video still needed for physical adjudication",
+  "formal_dataset_replaced": false,
+  "p2_recomputed": false
+}

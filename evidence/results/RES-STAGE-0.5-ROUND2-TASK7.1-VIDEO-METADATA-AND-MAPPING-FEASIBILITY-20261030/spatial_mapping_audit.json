@@ -1,0 +1,1009 @@
+{
+  "control_selection": {
+    "0750am-0805am": {
+      "rows_scanned_until_stop": 3881,
+      "spatial_controls": 65,
+      "member": "vehicle-trajectory-data/0750am-0805am/trajectories-0750am-0805am.csv",
+      "selection": "first original row in each lane 1..5 x 50m y bin [0,650); cap 50000 scanned rows; no risk fields used"
+    },
+    "0805am-0820am": {
+      "rows_scanned_until_stop": 3326,
+      "spatial_controls": 65,
+      "member": "vehicle-trajectory-data/0805am-0820am/trajectories-0805am-0820am.csv",
+      "selection": "first original row in each lane 1..5 x 50m y bin [0,650); cap 50000 scanned rows; no risk fields used"
+    }
+  },
+  "rejected_pooled_fit": {
+    "coefficients_rows_intercept_localx_localy_cols_globalx_globaly": [
+      [
+        6451095.451208769,
+        1873382.268324373
+      ],
+      [
+        -0.6719455401553306,
+        -0.7643686881075061
+      ],
+      [
+        0.7467477114838599,
+        -0.6669184197618353
+      ]
+    ],
+    "all": {
+      "n": 130,
+      "rmse_m": 6.497695486609573,
+      "max_m": 8.47339741703566
+    },
+    "train0750_test0805": {
+      "n": 65,
+      "rmse_m": 12.475660882728228,
+      "max_m": 14.00821448367374
+    },
+    "train0805_test0750": {
+      "n": 65,
+      "rmse_m": 12.468832090754557,
+      "max_m": 13.690034964557677
+    }
+  },
+  "per_window_fit": {
+    "0750am-0805am": {
+      "coefficients": [
+        [
+          6451110.342256766,
+          1873367.994479076
+        ],
+        [
+          -0.682687686545623,
+          -0.751305286838456
+        ],
+        [
+          0.7471906543093194,
+          -0.6664991618270296
+        ]
+      ],
+      "residuals": {
+        "n": 65,
+        "rmse_m": 2.0883180925351885,
+        "max_m": 5.451094243256328
+      },
+      "alternating_holdout": {
+        "n": 32,
+        "rmse_m": 2.0193307786007693,
+        "max_m": 5.32282328890851
+      }
+    },
+    "0805am-0820am": {
+      "coefficients": [
+        [
+          6451081.267542532,
+          1873395.9396064605
+        ],
+        [
+          -0.6884303677800718,
+          -0.7536791413853207
+        ],
+        [
+          0.7464192324788633,
+          -0.6674525560766087
+        ]
+      ],
+      "residuals": {
+        "n": 65,
+        "rmse_m": 2.13136692159096,
+        "max_m": 5.57502535193015
+      },
+      "alternating_holdout": {
+        "n": 32,
+        "rmse_m": 2.079737732280465,
+        "max_m": 5.176135374096013
+      }
+    }
+  },
+  "ortho": {
+    "tfw_values": [
+      0.5,
+      0.0,
+      0.0,
+      -0.5,
+      6448541.880999999,
+      1877048.179
+    ],
+    "tfw_sha256": "12eaf3aec55252895956652333822d794451e609e4163b25f48c20f236e1f607",
+    "actual_pixel_size_native_ft": 0.5,
+    "tiff_size": [
+      17288,
+      16292
+    ],
+    "native_units": "US survey feet per official ortho metadata",
+    "crop_pixel_bounds": [
+      4824,
+      7082,
+      8619,
+      10550
+    ],
+    "geotiff_crs_tags_present": false
+  },
+  "coverage": [
+    {
+      "period": "0750am-0805am",
+      "camera_id": 8,
+      "local_y_min_m": -18.753291901031897,
+      "local_y_max_m": 84.34403915551205,
+      "intersects_source": true,
+      "closure_edge_m": 0.5232571332214409,
+      "lane_spans": [
+        {
+          "lane": 1,
+          "representative_local_x_ft": 7.583,
+          "local_y_min_m": -17.211865804273167,
+          "local_y_max_m": 84.34403915551205
+        },
+        {
+          "lane": 2,
+          "representative_local_x_ft": 18.979,
+          "local_y_min_m": -17.724265658371564,
+          "local_y_max_m": 84.29430409074857
+        },
+        {
+          "lane": 3,
+          "representative_local_x_ft": 31.063,
+          "local_y_min_m": -18.267600147427327,
+          "local_y_max_m": 84.24156641770543
+        },
+        {
+          "lane": 4,
+          "representative_local_x_ft": 41.865,
+          "local_y_min_m": -18.753291901031897,
+          "local_y_max_m": 84.19442372120473
+        },
+        {
+          "lane": 5,
+          "representative_local_x_ft": 53.379,
+          "local_y_min_m": 10.312863824429725,
+          "local_y_max_m": 84.14417367420648
+        }
+      ],
+      "interpretation": "implicitly close four-corner footprint; camera8 close near-coincident endpoints; geographic footprint is not certified visibility"
+    },
+    {
+      "period": "0750am-0805am",
+      "camera_id": 7,
+      "local_y_min_m": 83.87981388903721,
+      "local_y_max_m": 169.5220318479985,
+      "intersects_source": true,
+      "closure_edge_m": 23.821133723875604,
+      "lane_spans": [
+        {
+          "lane": 1,
+          "representative_local_x_ft": 7.583,
+          "local_y_min_m": 84.09015761633536,
+          "local_y_max_m": 168.56639671874467
+        },
+        {
+          "lane": 2,
+          "representative_local_x_ft": 18.979,
+          "local_y_min_m": 84.0378151166502,
+          "local_y_max_m": 168.8041995384443
+        },
+        {
+          "lane": 3,
+          "representative_local_x_ft": 31.063,
+          "local_y_min_m": 83.98231259236591,
+          "local_y_max_m": 169.05635900428715
+        },
+        {
+          "lane": 4,
+          "representative_local_x_ft": 41.865,
+          "local_y_min_m": 83.93269836975567,
+          "local_y_max_m": 169.28176669647192
+        },
+        {
+          "lane": 5,
+          "representative_local_x_ft": 53.379,
+          "local_y_min_m": 83.87981388903721,
+          "local_y_max_m": 169.5220318479985
+        }
+      ],
+      "interpretation": "implicitly close four-corner footprint; camera8 close near-coincident endpoints; geographic footprint is not certified visibility"
+    },
+    {
+      "period": "0750am-0805am",
+      "camera_id": 6,
+      "local_y_min_m": 168.6661094689469,
+      "local_y_max_m": 241.4066853679442,
+      "intersects_source": false,
+      "closure_edge_m": 24.827264196549883,
+      "lane_spans": [
+        {
+          "lane": 1,
+          "representative_local_x_ft": 7.583,
+          "local_y_min_m": 182.66869968107133,
+          "local_y_max_m": 241.01325093556744
+        },
+        {
+          "lane": 2,
+          "representative_local_x_ft": 18.979,
+          "local_y_min_m": 168.6661094689469,
+          "local_y_max_m": 241.11115421948733
+        },
+        {
+          "lane": 3,
+          "representative_local_x_ft": 31.063,
+          "local_y_min_m": 169.03451558242364,
+          "local_y_max_m": 241.21496812632998
+        },
+        {
+          "lane": 4,
+          "representative_local_x_ft": 41.865,
+          "local_y_min_m": 169.36383723396597,
+          "local_y_max_m": 241.3077683435133
+        },
+        {
+          "lane": 5,
+          "representative_local_x_ft": 53.379,
+          "local_y_min_m": 169.7148657007025,
+          "local_y_max_m": 241.4066853679442
+        }
+      ],
+      "interpretation": "implicitly close four-corner footprint; camera8 close near-coincident endpoints; geographic footprint is not certified visibility"
+    },
+    {
+      "period": "0750am-0805am",
+      "camera_id": 5,
+      "local_y_min_m": 241.01325093556744,
+      "local_y_max_m": 300.64480564846434,
+      "intersects_source": false,
+      "closure_edge_m": 25.205509585273948,
+      "lane_spans": [
+        {
+          "lane": 1,
+          "representative_local_x_ft": 7.583,
+          "local_y_min_m": 241.01325093556744,
+          "local_y_max_m": 300.07916948502117
+        },
+        {
+          "lane": 2,
+          "representative_local_x_ft": 18.979,
+          "local_y_min_m": 241.11115421948733,
+          "local_y_max_m": 300.2199239115354
+        },
+        {
+          "lane": 3,
+          "representative_local_x_ft": 31.063,
+          "local_y_min_m": 241.21496812632998,
+          "local_y_max_m": 300.3691759727646
+        },
+        {
+          "lane": 4,
+          "representative_local_x_ft": 41.865,
+          "local_y_min_m": 241.3077683435133,
+          "local_y_max_m": 300.5025937786834
+        },
+        {
+          "lane": 5,
+          "representative_local_x_ft": 53.379,
+          "local_y_min_m": 241.4066853679442,
+          "local_y_max_m": 300.64480564846434
+        }
+      ],
+      "interpretation": "implicitly close four-corner footprint; camera8 close near-coincident endpoints; geographic footprint is not certified visibility"
+    },
+    {
+      "period": "0750am-0805am",
+      "camera_id": 4,
+      "local_y_min_m": 299.79706968885904,
+      "local_y_max_m": 381.4294317296649,
+      "intersects_source": false,
+      "closure_edge_m": 23.787810417304996,
+      "lane_spans": [
+        {
+          "lane": 1,
+          "representative_local_x_ft": 7.583,
+          "local_y_min_m": 299.79706968885904,
+          "local_y_max_m": 380.47946958035334
+        },
+        {
+          "lane": 2,
+          "representative_local_x_ft": 18.979,
+          "local_y_min_m": 299.9356506586708,
+          "local_y_max_m": 380.71586072047336
+        },
+        {
+          "lane": 3,
+          "representative_local_x_ft": 31.063,
+          "local_y_min_m": 300.0825980471954,
+          "local_y_max_m": 380.9665232808816
+        },
+        {
+          "lane": 4,
+          "representative_local_x_ft": 41.865,
+          "local_y_min_m": 300.21395568458803,
+          "local_y_max_m": 381.1905928749088
+        },
+        {
+          "lane": 5,
+          "representative_local_x_ft": 53.379,
+          "local_y_min_m": 300.35397159253927,
+          "local_y_max_m": 381.4294317296649
+        }
+      ],
+      "interpretation": "implicitly close four-corner footprint; camera8 close near-coincident endpoints; geographic footprint is not certified visibility"
+    },
+    {
+      "period": "0750am-0805am",
+      "camera_id": 3,
+      "local_y_min_m": 380.46177706559246,
+      "local_y_max_m": 479.095871259978,
+      "intersects_source": false,
+      "closure_edge_m": 24.28986691966734,
+      "lane_spans": [
+        {
+          "lane": 1,
+          "representative_local_x_ft": 7.583,
+          "local_y_min_m": 380.46177706559246,
+          "local_y_max_m": 477.9942602994556
+        },
+        {
+          "lane": 2,
+          "representative_local_x_ft": 18.979,
+          "local_y_min_m": 380.6611052445439,
+          "local_y_max_m": 478.2683881383513
+        },
+        {
+          "lane": 3,
+          "representative_local_x_ft": 31.063,
+          "local_y_min_m": 380.8724672766255,
+          "local_y_max_m": 478.55906563965857
+        },
+        {
+          "lane": 4,
+          "representative_local_x_ft": 41.865,
+          "local_y_min_m": 381.06140576297025,
+          "local_y_max_m": 478.81890496166193
+        },
+        {
+          "lane": 5,
+          "representative_local_x_ft": 53.379,
+          "local_y_min_m": 381.26279788781784,
+          "local_y_max_m": 479.095871259978
+        }
+      ],
+      "interpretation": "implicitly close four-corner footprint; camera8 close near-coincident endpoints; geographic footprint is not certified visibility"
+    },
+    {
+      "period": "0750am-0805am",
+      "camera_id": 2,
+      "local_y_min_m": 477.8554072487532,
+      "local_y_max_m": 574.2230985309319,
+      "intersects_source": false,
+      "closure_edge_m": 24.180807528047744,
+      "lane_spans": [
+        {
+          "lane": 1,
+          "representative_local_x_ft": 7.583,
+          "local_y_min_m": 477.8554072487532,
+          "local_y_max_m": 573.460259057098
+        },
+        {
+          "lane": 2,
+          "representative_local_x_ft": 18.979,
+          "local_y_min_m": 478.06921668338407,
+          "local_y_max_m": 573.6500860864869
+        },
+        {
+          "lane": 3,
+          "representative_local_x_ft": 31.063,
+          "local_y_min_m": 478.29593423445397,
+          "local_y_max_m": 573.8513733649853
+        },
+        {
+          "lane": 4,
+          "representative_local_x_ft": 41.865,
+          "local_y_min_m": 478.4985991618396,
+          "local_y_max_m": 574.0313059354337
+        },
+        {
+          "lane": 5,
+          "representative_local_x_ft": 53.379,
+          "local_y_min_m": 478.7146224886141,
+          "local_y_max_m": 574.2230985309319
+        }
+      ],
+      "interpretation": "implicitly close four-corner footprint; camera8 close near-coincident endpoints; geographic footprint is not certified visibility"
+    },
+    {
+      "period": "0750am-0805am",
+      "camera_id": 1,
+      "local_y_min_m": 573.385136556073,
+      "local_y_max_m": 674.4411648094592,
+      "intersects_source": false,
+      "closure_edge_m": 22.711859653304412,
+      "lane_spans": [
+        {
+          "lane": 1,
+          "representative_local_x_ft": 7.583,
+          "local_y_min_m": 573.385136556073,
+          "local_y_max_m": 672.5926145128559
+        },
+        {
+          "lane": 2,
+          "representative_local_x_ft": 18.979,
+          "local_y_min_m": 573.549445984974,
+          "local_y_max_m": 673.2071083923994
+        },
+        {
+          "lane": 3,
+          "representative_local_x_ft": 31.063,
+          "local_y_min_m": 573.7236751126779,
+          "local_y_max_m": 673.8587005336154
+        },
+        {
+          "lane": 4,
+          "representative_local_x_ft": 41.865,
+          "local_y_min_m": 573.879420150536,
+          "local_y_max_m": 674.4411648094592
+        },
+        {
+          "lane": 5,
+          "representative_local_x_ft": 53.379,
+          "local_y_min_m": 574.0454309231818,
+          "local_y_max_m": 667.5387710640877
+        }
+      ],
+      "interpretation": "implicitly close four-corner footprint; camera8 close near-coincident endpoints; geographic footprint is not certified visibility"
+    },
+    {
+      "period": "0805am-0820am",
+      "camera_id": 8,
+      "local_y_min_m": -6.3769797924993625,
+      "local_y_max_m": 96.62280165084887,
+      "intersects_source": true,
+      "closure_edge_m": 0.5232571332214409,
+      "lane_spans": [
+        {
+          "lane": 1,
+          "representative_local_x_ft": 6.784,
+          "local_y_min_m": -4.8325365045681385,
+          "local_y_max_m": 96.62280165084887
+        },
+        {
+          "lane": 2,
+          "representative_local_x_ft": 18.813,
+          "local_y_min_m": -5.366528292992694,
+          "local_y_max_m": 96.57973633605008
+        },
+        {
+          "lane": 3,
+          "representative_local_x_ft": 29.808,
+          "local_y_min_m": -5.854618717200704,
+          "local_y_max_m": 96.5403728699783
+        },
+        {
+          "lane": 4,
+          "representative_local_x_ft": 41.575,
+          "local_y_min_m": -6.3769797924993625,
+          "local_y_max_m": 96.49824554791681
+        },
+        {
+          "lane": 5,
+          "representative_local_x_ft": 53.294,
+          "local_y_min_m": 18.954577719164817,
+          "local_y_max_m": 96.45629007172255
+        }
+      ],
+      "interpretation": "implicitly close four-corner footprint; camera8 close near-coincident endpoints; geographic footprint is not certified visibility"
+    },
+    {
+      "period": "0805am-0820am",
+      "camera_id": 7,
+      "local_y_min_m": 96.19215662863125,
+      "local_y_max_m": 181.81282532560726,
+      "intersects_source": true,
+      "closure_edge_m": 23.821133723875604,
+      "lane_spans": [
+        {
+          "lane": 1,
+          "representative_local_x_ft": 6.784,
+          "local_y_min_m": 96.3693673679507,
+          "local_y_max_m": 160.92306628814242
+        },
+        {
+          "lane": 2,
+          "representative_local_x_ft": 18.813,
+          "local_y_min_m": 96.3235349021964,
+          "local_y_max_m": 181.06147197646936
+        },
+        {
+          "lane": 3,
+          "representative_local_x_ft": 29.808,
+          "local_y_min_m": 96.28164214632814,
+          "local_y_max_m": 181.30105696734185
+        },
+        {
+          "lane": 4,
+          "representative_local_x_ft": 41.575,
+          "local_y_min_m": 96.23680794351506,
+          "local_y_max_m": 181.55746411502764
+        },
+        {
+          "lane": 5,
+          "representative_local_x_ft": 53.294,
+          "local_y_min_m": 96.19215662863125,
+          "local_y_max_m": 181.81282532560726
+        }
+      ],
+      "interpretation": "implicitly close four-corner footprint; camera8 close near-coincident endpoints; geographic footprint is not certified visibility"
+    },
+    {
+      "period": "0805am-0820am",
+      "camera_id": 6,
+      "local_y_min_m": 180.91545419304975,
+      "local_y_max_m": 253.70162484963242,
+      "intersects_source": false,
+      "closure_edge_m": 24.827264196549883,
+      "lane_spans": [
+        {
+          "lane": 1,
+          "representative_local_x_ft": 6.784,
+          "local_y_min_m": 217.40444675119076,
+          "local_y_max_m": 253.2622962562408
+        },
+        {
+          "lane": 2,
+          "representative_local_x_ft": 18.813,
+          "local_y_min_m": 180.91545419304975,
+          "local_y_max_m": 253.37592093139065
+        },
+        {
+          "lane": 3,
+          "representative_local_x_ft": 29.808,
+          "local_y_min_m": 181.26140717957847,
+          "local_y_max_m": 253.47977855104443
+        },
+        {
+          "lane": 4,
+          "representative_local_x_ft": 41.575,
+          "local_y_min_m": 181.63165081686336,
+          "local_y_max_m": 253.59092840184294
+        },
+        {
+          "lane": 5,
+          "representative_local_x_ft": 53.294,
+          "local_y_min_m": 182.00038415454904,
+          "local_y_max_m": 253.70162484963242
+        }
+      ],
+      "interpretation": "implicitly close four-corner footprint; camera8 close near-coincident endpoints; geographic footprint is not certified visibility"
+    },
+    {
+      "period": "0805am-0820am",
+      "camera_id": 5,
+      "local_y_min_m": 253.2622962562408,
+      "local_y_max_m": 312.93749113328454,
+      "intersects_source": false,
+      "closure_edge_m": 25.205509585273948,
+      "lane_spans": [
+        {
+          "lane": 1,
+          "representative_local_x_ft": 6.784,
+          "local_y_min_m": 253.2622962562408,
+          "local_y_max_m": 312.32230943752813
+        },
+        {
+          "lane": 2,
+          "representative_local_x_ft": 18.813,
+          "local_y_min_m": 253.37592093139065,
+          "local_y_max_m": 312.4814154495953
+        },
+        {
+          "lane": 3,
+          "representative_local_x_ft": 29.808,
+          "local_y_min_m": 253.47977855104443,
+          "local_y_max_m": 312.62684487854216
+        },
+        {
+          "lane": 4,
+          "representative_local_x_ft": 41.575,
+          "local_y_min_m": 253.59092840184294,
+          "local_y_max_m": 312.782485450819
+        },
+        {
+          "lane": 5,
+          "representative_local_x_ft": 53.294,
+          "local_y_min_m": 253.70162484963242,
+          "local_y_max_m": 312.93749113328454
+        }
+      ],
+      "interpretation": "implicitly close four-corner footprint; camera8 close near-coincident endpoints; geographic footprint is not certified visibility"
+    },
+    {
+      "period": "0805am-0820am",
+      "camera_id": 4,
+      "local_y_min_m": 312.0404071251354,
+      "local_y_max_m": 393.7228315319029,
+      "intersects_source": false,
+      "closure_edge_m": 23.787810417304996,
+      "lane_spans": [
+        {
+          "lane": 1,
+          "representative_local_x_ft": 6.784,
+          "local_y_min_m": 312.0404071251354,
+          "local_y_max_m": 392.7151557054048
+        },
+        {
+          "lane": 2,
+          "representative_local_x_ft": 18.813,
+          "local_y_min_m": 312.197206241573,
+          "local_y_max_m": 392.9757734762078
+        },
+        {
+          "lane": 3,
+          "representative_local_x_ft": 29.808,
+          "local_y_min_m": 312.3405270734606,
+          "local_y_max_m": 393.21398882149776
+        },
+        {
+          "lane": 4,
+          "representative_local_x_ft": 41.575,
+          "local_y_min_m": 312.49391099577537,
+          "local_y_max_m": 393.46893015575074
+        },
+        {
+          "lane": 5,
+          "representative_local_x_ft": 53.294,
+          "local_y_min_m": 312.6466692337744,
+          "local_y_max_m": 393.7228315319029
+        }
+      ],
+      "interpretation": "implicitly close four-corner footprint; camera8 close near-coincident endpoints; geographic footprint is not certified visibility"
+    },
+    {
+      "period": "0805am-0820am",
+      "camera_id": 3,
+      "local_y_min_m": 392.69968987228145,
+      "local_y_max_m": 491.39268061262266,
+      "intersects_source": false,
+      "closure_edge_m": 24.28986691966734,
+      "lane_spans": [
+        {
+          "lane": 1,
+          "representative_local_x_ft": 6.784,
+          "local_y_min_m": 392.69968987228145,
+          "local_y_max_m": 490.230125780762
+        },
+        {
+          "lane": 2,
+          "representative_local_x_ft": 18.813,
+          "local_y_min_m": 392.9209670721125,
+          "local_y_max_m": 490.53080030391317
+        },
+        {
+          "lane": 3,
+          "representative_local_x_ft": 29.808,
+          "local_y_min_m": 393.12322351993055,
+          "local_y_max_m": 490.80562916597273
+        },
+        {
+          "lane": 4,
+          "representative_local_x_ft": 41.575,
+          "local_y_min_m": 393.33968114820857,
+          "local_y_max_m": 491.09975478862646
+        },
+        {
+          "lane": 5,
+          "representative_local_x_ft": 53.294,
+          "local_y_min_m": 393.5552558013592,
+          "local_y_max_m": 491.39268061262266
+        }
+      ],
+      "interpretation": "implicitly close four-corner footprint; camera8 close near-coincident endpoints; geographic footprint is not certified visibility"
+    },
+    {
+      "period": "0805am-0820am",
+      "camera_id": 2,
+      "local_y_min_m": 490.0928524808896,
+      "local_y_max_m": 586.5145052522446,
+      "intersects_source": false,
+      "closure_edge_m": 24.180807528047744,
+      "lane_spans": [
+        {
+          "lane": 1,
+          "representative_local_x_ft": 6.784,
+          "local_y_min_m": 490.0928524808896,
+          "local_y_max_m": 585.6979323086313
+        },
+        {
+          "lane": 2,
+          "representative_local_x_ft": 18.813,
+          "local_y_min_m": 490.3295007243915,
+          "local_y_max_m": 585.9091246530196
+        },
+        {
+          "lane": 3,
+          "representative_local_x_ft": 29.808,
+          "local_y_min_m": 490.5458069375572,
+          "local_y_max_m": 586.1021631289204
+        },
+        {
+          "lane": 4,
+          "representative_local_x_ft": 41.575,
+          "local_y_min_m": 490.7773008175621,
+          "local_y_max_m": 586.3087555568347
+        },
+        {
+          "lane": 5,
+          "representative_local_x_ft": 53.294,
+          "local_y_min_m": 491.0078503866808,
+          "local_y_max_m": 586.5145052522446
+        }
+      ],
+      "interpretation": "implicitly close four-corner footprint; camera8 close near-coincident endpoints; geographic footprint is not certified visibility"
+    },
+    {
+      "period": "0805am-0820am",
+      "camera_id": 1,
+      "local_y_min_m": 585.6226329961844,
+      "local_y_max_m": 686.7621746205881,
+      "intersects_source": false,
+      "closure_edge_m": 22.711859653304412,
+      "lane_spans": [
+        {
+          "lane": 1,
+          "representative_local_x_ft": 6.784,
+          "local_y_min_m": 585.6226329961844,
+          "local_y_max_m": 684.8474584937267
+        },
+        {
+          "lane": 2,
+          "representative_local_x_ft": 18.813,
+          "local_y_min_m": 585.8067403885242,
+          "local_y_max_m": 685.5094722414482
+        },
+        {
+          "lane": 3,
+          "representative_local_x_ft": 29.808,
+          "local_y_min_m": 585.975022105892,
+          "local_y_max_m": 686.1145799938037
+        },
+        {
+          "lane": 4,
+          "representative_local_x_ft": 41.575,
+          "local_y_min_m": 586.1551195108716,
+          "local_y_max_m": 686.7621746205881
+        },
+        {
+          "lane": 5,
+          "representative_local_x_ft": 53.294,
+          "local_y_min_m": 586.3344822616921,
+          "local_y_max_m": 671.4908756341329
+        }
+      ],
+      "interpretation": "implicitly close four-corner footprint; camera8 close near-coincident endpoints; geographic footprint is not certified visibility"
+    }
+  ],
+  "geographic_candidate_camera_set": [
+    7,
+    8
+  ],
+  "minimum_camera_set": null,
+  "minimum_camera_set_reason": "Geographic footprints and approximate lane lines do not verify full source visibility, video occlusion, or usable synchronized frames.",
+  "schema": "aad.task7_1.spatial-mapping.v1",
+  "status": "APPROXIMATE_GEOGRAPHIC_MAPPING_ESTABLISHED_VISIBILITY_UNVERIFIED",
+  "crs": {
+    "adopted": "EPSG:2229 NAD83 / California zone 5 (ftUS)",
+    "status": "Evidence-supported operational interpretation; GIS has no .prj",
+    "evidence": [
+      "Official overall and ortho metadata specify zone5, NAD83, US survey feet",
+      "TFW/GIS/raw Global coordinates co-register over US101 road features",
+      "Candidate inverse projections place zone5 at Universal Studios and zone3 away from the site"
+    ],
+    "candidate_test_native_point_xy": [
+      6451175,
+      1873276
+    ],
+    "candidate_tests": [
+      {
+        "epsg": 2229,
+        "name": "NAD83 / California zone 5 (ftUS)",
+        "camera8_midpoint_lat_lon": [
+          34.139297832608,
+          -118.36514542392298
+        ],
+        "parameters": {
+          "name": "SPCS83 California zone 5 (US survey foot)",
+          "method": {
+            "name": "Lambert Conic Conformal (2SP)",
+            "id": {
+              "authority": "EPSG",
+              "code": 9802
+            }
+          },
+          "parameters": [
+            {
+              "name": "Latitude of false origin",
+              "value": 33.5,
+              "unit": "degree",
+              "id": {
+                "authority": "EPSG",
+                "code": 8821
+              }
+            },
+            {
+              "name": "Longitude of false origin",
+              "value": -118,
+              "unit": "degree",
+              "id": {
+                "authority": "EPSG",
+                "code": 8822
+              }
+            },
+            {
+              "name": "Latitude of 1st standard parallel",
+              "value": 35.4666666666667,
+              "unit": "degree",
+              "id": {
+                "authority": "EPSG",
+                "code": 8823
+              }
+            },
+            {
+              "name": "Latitude of 2nd standard parallel",
+              "value": 34.0333333333333,
+              "unit": "degree",
+              "id": {
+                "authority": "EPSG",
+                "code": 8824
+              }
+            },
+            {
+              "name": "Easting at false origin",
+              "value": 6561666.667,
+              "unit": {
+                "type": "LinearUnit",
+                "name": "US survey foot",
+                "conversion_factor": 0.304800609601219
+              },
+              "id": {
+                "authority": "EPSG",
+                "code": 8826
+              }
+            },
+            {
+              "name": "Northing at false origin",
+              "value": 1640416.667,
+              "unit": {
+                "type": "LinearUnit",
+                "name": "US survey foot",
+                "conversion_factor": 0.304800609601219
+              },
+              "id": {
+                "authority": "EPSG",
+                "code": 8827
+              }
+            }
+          ]
+        },
+        "ellipsoid": "GRS80"
+      },
+      {
+        "epsg": 2227,
+        "name": "NAD83 / California zone 3 (ftUS)",
+        "camera8_midpoint_lat_lon": [
+          37.13891235484756,
+          -120.87905111671664
+        ],
+        "parameters": {
+          "name": "SPCS83 California zone 3 (US survey foot)",
+          "method": {
+            "name": "Lambert Conic Conformal (2SP)",
+            "id": {
+              "authority": "EPSG",
+              "code": 9802
+            }
+          },
+          "parameters": [
+            {
+              "name": "Latitude of false origin",
+              "value": 36.5,
+              "unit": "degree",
+              "id": {
+                "authority": "EPSG",
+                "code": 8821
+              }
+            },
+            {
+              "name": "Longitude of false origin",
+              "value": -120.5,
+              "unit": "degree",
+              "id": {
+                "authority": "EPSG",
+                "code": 8822
+              }
+            },
+            {
+              "name": "Latitude of 1st standard parallel",
+              "value": 38.4333333333333,
+              "unit": "degree",
+              "id": {
+                "authority": "EPSG",
+                "code": 8823
+              }
+            },
+            {
+              "name": "Latitude of 2nd standard parallel",
+              "value": 37.0666666666667,
+              "unit": "degree",
+              "id": {
+                "authority": "EPSG",
+                "code": 8824
+              }
+            },
+            {
+              "name": "Easting at false origin",
+              "value": 6561666.667,
+              "unit": {
+                "type": "LinearUnit",
+                "name": "US survey foot",
+                "conversion_factor": 0.304800609601219
+              },
+              "id": {
+                "authority": "EPSG",
+                "code": 8826
+              }
+            },
+            {
+              "name": "Northing at false origin",
+              "value": 1640416.667,
+              "unit": {
+                "type": "LinearUnit",
+                "name": "US survey foot",
+                "conversion_factor": 0.304800609601219
+              },
+              "id": {
+                "authority": "EPSG",
+                "code": 8827
+              }
+            }
+          ]
+        },
+        "ellipsoid": "GRS80"
+      }
+    ],
+    "historical_zoneIII_wording_cause": "Unknown; inconsistency is not proof of a typographical error",
+    "canonical_local_ft_to_m": 0.3048,
+    "projected_us_survey_ft_to_m": 0.3048006096012192,
+    "formal_unit_conversion_changed": false
+  },
+  "canonical_control_crosscheck": [
+    {
+      "period": "0750am-0805am",
+      "requested": 65,
+      "matched": 65,
+      "max_unit_mapping_difference_m": 0.0
+    },
+    {
+      "period": "0805am-0820am",
+      "requested": 65,
+      "matched": 65,
+      "max_unit_mapping_difference_m": 0.0
+    }
+  ],
+  "geometry_method": {
+    "input": "Task7 SHA-bound eight PolyLine geometries; DBF Id only; no .prj",
+    "footprint_interpretation": "Close perimeter vertices as a geographic polygon; never use perimeter as coverage length",
+    "camera8_near_closure_m": 0.5232571332214409,
+    "other_closing_edges": "About23-25m transverse edges, not missing longitudinal coverage",
+    "local_mapping": "[Global_X,Global_Y]=[1,Local_X_ft,Local_Y_ft] @ per-window3x2 coefficients",
+    "lane_test": "Polygon intersected by lane median Local_X line; invert affine and convert Local_Y by0.3048",
+    "road_check": "Ortho overlay checked for mainline, median, ramps; no vehicle physical validation",
+    "cad": "AC1015 DWG headers and legend inspected; no installed geometry decoder; DWG geometry not independently validated"
+  },
+  "uncertainties": [
+    "65 early deterministic controls/window; alternating holdout is internal consistency, not external truth",
+    "About2.1m RMSE/max5.6m residuals are not calibrated confidence intervals for footprint boundaries",
+    "Cross-window prediction RMSE about12.47m; no pooling/manual translation; cause Unknown",
+    "Representative lane lines do not certify all-lane visibility, particularly near source y=0",
+    "TFW0.5ft/pixel conflicts with document0.25ft/pixel; cause Unknown",
+    "Documentary ortho relative accuracy2.5ft(about0.762m) is not vehicle-position/TTC accuracy",
+    "No video occlusion, image-to-world calibration or event-to-frame validation"
+  ]
+}

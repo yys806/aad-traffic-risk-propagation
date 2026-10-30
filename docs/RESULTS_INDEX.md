@@ -1,3 +1,9 @@
+## RES-STAGE-0.5-ROUND2-TASK7.1-VIDEO-METADATA-AND-MAPPING-FEASIBILITY-20261030 | Task7.1 mapping feasibility
+
+Task7.1 bounded investigation COMPLETED_WITH_BLOCKERS. Per-window Local_Y/Global/ortho mapping supports geographic camera candidates7/8 (EPSG:2229), not certified full-source visibility; minimum_camera_set remains null. PTS mapping, per-file license/size and Coifman2017 full-text access remain unresolved. PreciseNGSIM two-window structure is useful auxiliary evidence with inherited fields, shorter time support and malformed last records; not independent truth or formal replacement. Source Formal P2 167/159, Task1–Task7 evidence, AGENTS,06_DECISIONS and scientific Gate/later stages unchanged. No video acquisition, event sampling, SUMO/TraCI, third window or holdout.
+
+Report: docs/STAGE_0_5_ROUND2_TASK7_1_VIDEO_METADATA_AND_MAPPING_FEASIBILITY_20261030.md; evidence: evidence/results/RES-STAGE-0.5-ROUND2-TASK7.1-VIDEO-METADATA-AND-MAPPING-FEASIBILITY-20261030/.
+
 ## RES-STAGE-0.5-ROUND2-TASK7-INDEPENDENT-PHYSICAL-QUALITY-REVIEW-20261030 | Task7 availability completed; physical review blocked
 
 Verified bounded Task7 evidence-availability investigation is complete; physical review remains BLOCKED_NO_VERIFIED_INDEPENDENT_PHYSICAL_REFERENCE. Official raw/processed camera files are documented, but no local independent raw video, source-camera/Local_Y mapping or video-PTS/Global_Time mapping is verified. No event selection or human review occurred. Source Formal P2 167/159 and Task1–Task6 history remain unchanged; Task6 controls are row-distinct, not vehicle-independent (131/165 and 115/149 source followers/rows). AGENTS section8 alone adopts risk-based validation. No new video/trajectory/SUMO/TraCI/third-window/holdout; Gate and later stages unchanged.
