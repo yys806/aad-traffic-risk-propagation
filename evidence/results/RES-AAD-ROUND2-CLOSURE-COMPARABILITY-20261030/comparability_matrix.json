@@ -1,0 +1,72 @@
+{
+  "formal_equivalence_accepted": false,
+  "rows": [
+    {
+      "counterexamples": "Task2 native_lane_id_change_no_connection, real_lane_change, threshold and duration cases",
+      "current_implementation": "C pair/time qualification is already implemented; lane changes alone do not disqualify a general P2 event.",
+      "dimension": "Event qualification",
+      "final_status": "Verified",
+      "limits": "Only declared valid, identity-resolved, continuous 100 ms inputs share event semantics; flag endpoints and corrupt premeasured inputs differ.",
+      "source_functions": "formal_risk_measurement.extract_formal_source_events; stage_0_5_sumo.build_sumo_p2_events/extract_sumo_formal_p2_events"
+    },
+    {
+      "counterexamples": "Task2 leader_switch/incarnation_change; missing_leader_self_rows probe",
+      "current_implementation": "Scoped follower/leader incarnation and formal trajectory identities; no physical identity certification.",
+      "dimension": "Identity",
+      "final_status": "Verified",
+      "limits": "Native/D1 accept externally resolved leader labels without self rows; formal alignment needs leader frame evidence. Actual physical identities remain Unknown.",
+      "source_functions": "formal_risk_measurement.PAIR_KEYS/continuity_is_valid; stage_0_5_sumo.following_link_is_valid/build_sumo_formal_source_frame"
+    },
+    {
+      "counterexamples": "identity_break and observation_gap probes at 0.2 s",
+      "current_implementation": "Explicit flags survive alignment, but native/D1 test both endpoints while formal continuity tests the current flag.",
+      "dimension": "Continuity",
+      "final_status": "Unknown",
+      "limits": "Same count, different onset/confirmation/membership: native/D1 0.3/0.5/4 versus formal 0.2/0.4/5. No semantic repair is authorized here.",
+      "source_functions": "formal_risk_measurement.continuity_is_valid; stage_0_5_sumo.following_link_is_valid; stage_0_5_d1_measurement.local_d1_measurement"
+    },
+    {
+      "counterexamples": "source_frame_discontinuity/source_clock_discontinuity; existing late_entry_absolute_clock and coarse cadence cases",
+      "current_implementation": "NGSIM raw row/frame/anchor and simulator-derived observation/frame/clock are different support domains.",
+      "dimension": "Time",
+      "final_status": "Unknown",
+      "limits": "Formal projection regenerates frame/clock from time_s and cannot certify supplied raw clocks. Cross-source absolute origins/video PTS mappings remain Unknown.",
+      "source_functions": "formal_risk_measurement.continuity_is_valid; stage_0_5_sumo.build_sumo_formal_source_frame"
+    },
+    {
+      "counterexamples": "Task2 lane change with and without road_connection_witness",
+      "current_implementation": "C and D1 are separate. B physical paths require trackable pair identities, timed lane/edge observations, interaction continuity, physical road connection and ordered transitions.",
+      "dimension": "Lane/path",
+      "final_status": "Unknown",
+      "limits": "A lane token, topology or a synthetic boolean witness cannot establish real traveled paths. No independently verified physical path/arrival is available.",
+      "source_functions": "formal_risk_measurement.PAIR_KEYS; stage_0_5_d1_measurement.local_d1_measurement; Task7.1/7.2 mapping evidence"
+    },
+    {
+      "counterexamples": "Task2 threshold/duration boundary cases and negative_ttc_premeasured probe",
+      "current_implementation": "Valid positive gap/closing inputs use TTC=gap/closing, 0<TTC<2 s, observed span>=0.2 s, 100 ms cadence.",
+      "dimension": "Measurement",
+      "final_status": "Verified",
+      "limits": "Native mask trusts ttc_valid and accepts contradictory negative premeasured TTC; formal raises and D1 excludes it. Verified common algebra is not physical measurement equivalence.",
+      "source_functions": "real_trajectory.add_ngsim_leader_ttc; stage_0_5_sumo.compute_sumo_measurements/_risk_mask; formal_risk_measurement.observed_confirmation_time"
+    },
+    {
+      "counterexamples": "Task2 lane changes and window_boundary_onset_outside; existing D1 boundary tests",
+      "current_implementation": "D1 local onset and same-native-lane evaluable links are separate from general Formal P2 events/exposure.",
+      "dimension": "Exposure",
+      "final_status": "Verified",
+      "limits": "Never divide C event counts by a D1 denominator. Historical NGSIM source 167/159 and sealed SUMO source 0/0 remain separately attributed.",
+      "source_functions": "stage_0_5_d1_measurement.local_d1_measurement; stage_0_5_sumo.compute_exposure; Task4/5 attribution evidence"
+    },
+    {
+      "counterexamples": "Task2 no_leader_boundary_missing; unknown_flag/missing_leader_self_rows probes",
+      "current_implementation": "Unknown identity, missing observations and not-applicable non-closing/no-leader states are retained, never imputed as safe/zero.",
+      "dimension": "Missingness",
+      "final_status": "Unknown",
+      "limits": "Unknown booleans are rejected by formal/D1; native truthiness and deterministic absent-field defaults differ. NGSIM boundary missing and simulator no-leader support are not the same observation.",
+      "source_functions": "real_trajectory.add_ngsim_leader_ttc; stage_0_5_sumo.compute_sumo_measurements/build_sumo_formal_source_frame; stage_0_5_d1_measurement.local_d1_measurement"
+    }
+  ],
+  "schema_version": "aad.round2.closure.comparability.v1",
+  "scientific_equivalence_status": "Unknown",
+  "status_meaning": "Verified describes only the stated implementation/interface scope, never scientific equivalence; Unknown describes unresolved comparability or physical support."
+}

@@ -1,0 +1,124 @@
+{
+  "additional_probes": 8,
+  "command": [
+    "D:\\miniconda\\python.exe",
+    "code\\scripts\\audit_stage_0_5_round2_closure_comparability.py",
+    "--run-tests",
+    "--exclude-known-parquet-tests"
+  ],
+  "environment": {
+    "executable": "D:\\miniconda\\python.exe",
+    "numpy": "2.3.2",
+    "pandas": "2.2.3",
+    "platform": "Windows-11-10.0.26100-SP0",
+    "python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 16:37:03) [MSC v.1929 64 bit (AMD64)]"
+  },
+  "generated_utc": "2026-10-30T13:34:26.295152+00:00",
+  "historical_evidence_unchanged": true,
+  "historical_integrity": [
+    {
+      "errors": [],
+      "files_checked": 11,
+      "result_id": "RES-STAGE-0.5-ROUND2-TASK2-MEASUREMENT-CONTRACT-20261029",
+      "sha256sums_sha256": "605054637c8984a70dfe92f85053b80f4c777c79d882a2f250eb476083f903c6",
+      "status": "Passed"
+    },
+    {
+      "errors": [],
+      "files_checked": 7,
+      "result_id": "RES-STAGE-0.5-ROUND2-TASK3-MEASUREMENT-CONTRACT-ALIGNMENT-20261029",
+      "sha256sums_sha256": "a3e95cead164d92d4e6d9ccb8c5833fa00941a6c1e1ec39e3696527ed105a740",
+      "status": "Passed"
+    },
+    {
+      "errors": [],
+      "files_checked": 11,
+      "result_id": "RES-STAGE-0.5-ROUND2-TASK4-REAL-SOURCE-SUPPORT-AND-MULTISCALE-CROSSWALK-20261030",
+      "sha256sums_sha256": "68facf2568921d7618cce42f150ce85256f37b36346872f2c1d2c76450307d94",
+      "status": "Passed"
+    },
+    {
+      "errors": [],
+      "files_checked": 8,
+      "result_id": "RES-STAGE-0.5-ROUND2-TASK5-TASK4-EVIDENCE-INTEGRITY-20261030",
+      "sha256sums_sha256": "e210fcf7499b361f930fa0fa9058a5d6f61e5f1a0f24537b476670158ef47a73",
+      "status": "Passed"
+    },
+    {
+      "errors": [],
+      "files_checked": 20,
+      "result_id": "RES-STAGE-0.5-ROUND2-TASK6-REAL-SIM-MICRO-INTERACTION-20261030",
+      "sha256sums_sha256": "72d7bf8d248185f0a0a680d492138bf47ed4b5aa13585971e5a0be32ae82dc77",
+      "status": "Passed"
+    },
+    {
+      "errors": [],
+      "files_checked": 17,
+      "result_id": "RES-STAGE-0.5-ROUND2-TASK7-INDEPENDENT-PHYSICAL-QUALITY-REVIEW-20261030",
+      "sha256sums_sha256": "da44e5efbc2adb90036f6a10359067339e706dcc9f985535da3a0d90f3804198",
+      "status": "Passed"
+    },
+    {
+      "errors": [],
+      "files_checked": 12,
+      "result_id": "RES-STAGE-0.5-ROUND2-TASK7.1-VIDEO-METADATA-AND-MAPPING-FEASIBILITY-20261030",
+      "sha256sums_sha256": "f0b700e6ef221a4acba82eac7b02b6bcf908b6348e5a19a525e2f73b20964a82",
+      "status": "Passed"
+    },
+    {
+      "errors": [],
+      "files_checked": 9,
+      "result_id": "RES-STAGE-0.5-ROUND2-TASK7.2-RESOURCE-METADATA-AND-ACQUISITION-FEASIBILITY-20261030",
+      "sha256sums_sha256": "8b33a25af2b8cfd82db713116e434dedeb78e7227b0b1696d45110d144031f6b",
+      "status": "Passed"
+    }
+  ],
+  "locked_holdout_reads": 0,
+  "native_launches": 0,
+  "new_trajectory_reads": 0,
+  "production_source_changed": false,
+  "repetitions": 1,
+  "schema_version": "aad.round2.closure.validation.v1",
+  "scientific_equivalence_accepted": false,
+  "seed": "Not Applicable: deterministic synthetic fixtures, not randomized experiments",
+  "syntax": {
+    "errors": [],
+    "status": "Passed"
+  },
+  "task2_synthetic_cases": 16,
+  "tests": {
+    "blocked_not_passed": [
+      "code/tests/test_stage_0_5_measurement_equivalence.py::test_guard_denies_row_scoped_reads_outside_the_calibration_windows",
+      "code/tests/test_stage_0_5_measurement_equivalence.py::test_calibration_states_read_helper_refuses_a_foreign_window",
+      "code/tests/test_stage_0_5_d1_measurement.py::test_actual_state_runner_uses_d1_not_point_exposure"
+    ],
+    "blocked_reason": "Historical tests require pyarrow/fastparquet, unavailable in this interpreter",
+    "command": [
+      "D:\\miniconda\\python.exe",
+      "-m",
+      "pytest",
+      "-q",
+      "-c",
+      "code/pyproject.toml",
+      "code/tests/test_stage_0_5_round2_closure_comparability.py",
+      "code/tests/test_formal_risk_measurement.py",
+      "code/tests/test_stage_0_5_measurement_equivalence.py",
+      "code/tests/test_stage_0_5_d1_measurement.py",
+      "code/tests/test_stage_0_5_post_r2_offline_diagnostic.py",
+      "-p",
+      "no:cacheprovider",
+      "--basetemp",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\round2_closure_comparability_20261030\\pytest_tmp_3",
+      "-k",
+      "not test_guard_denies_row_scoped_reads_outside_the_calibration_windows and not test_calibration_states_read_helper_refuses_a_foreign_window and not test_actual_state_runner_uses_d1_not_point_exposure"
+    ],
+    "exit_code": 0,
+    "local_log": "code\\outputs\\formal\\calibration\\round2_closure_comparability_20261030\\pytest_stdout_attempt_3.txt",
+    "raw_log_in_portable_evidence": false,
+    "status": "Passed",
+    "summary": [
+      "100 passed, 3 deselected in 16.38s"
+    ]
+  },
+  "traci_connections": 0
+}

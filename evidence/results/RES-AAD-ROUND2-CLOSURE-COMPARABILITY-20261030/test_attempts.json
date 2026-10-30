@@ -1,0 +1,98 @@
+[
+  {
+    "command": [
+      "D:\\miniconda\\python.exe",
+      "-m",
+      "pytest",
+      "-q",
+      "-c",
+      "code/pyproject.toml",
+      "code/tests/test_stage_0_5_round2_closure_comparability.py",
+      "code/tests/test_formal_risk_measurement.py",
+      "code/tests/test_stage_0_5_measurement_equivalence.py",
+      "code/tests/test_stage_0_5_d1_measurement.py",
+      "code/tests/test_stage_0_5_post_r2_offline_diagnostic.py",
+      "--basetemp",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\round2_closure_comparability_20261030\\pytest_tmp"
+    ],
+    "exit_code": 1,
+    "local_log": "code\\outputs\\formal\\calibration\\round2_closure_comparability_20261030\\pytest_stdout.txt",
+    "raw_log_in_portable_evidence": false,
+    "status": "Failed",
+    "summary": [
+      "3 failed, 100 passed, 2 warnings in 15.01s"
+    ]
+  },
+  {
+    "blocked_not_passed": [
+      "code/tests/test_stage_0_5_measurement_equivalence.py::test_guard_denies_row_scoped_reads_outside_the_calibration_windows",
+      "code/tests/test_stage_0_5_measurement_equivalence.py::test_calibration_states_read_helper_refuses_a_foreign_window",
+      "code/tests/test_stage_0_5_d1_measurement.py::test_actual_state_runner_uses_d1_not_point_exposure"
+    ],
+    "blocked_reason": "Historical tests require pyarrow/fastparquet, unavailable in this interpreter",
+    "command": [
+      "D:\\miniconda\\python.exe",
+      "-m",
+      "pytest",
+      "-q",
+      "-c",
+      "code/pyproject.toml",
+      "code/tests/test_stage_0_5_round2_closure_comparability.py",
+      "code/tests/test_formal_risk_measurement.py",
+      "code/tests/test_stage_0_5_measurement_equivalence.py",
+      "code/tests/test_stage_0_5_d1_measurement.py",
+      "code/tests/test_stage_0_5_post_r2_offline_diagnostic.py",
+      "-p",
+      "no:cacheprovider",
+      "--basetemp",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\round2_closure_comparability_20261030\\pytest_tmp_2",
+      "--deselect",
+      "code/tests/test_stage_0_5_measurement_equivalence.py::test_guard_denies_row_scoped_reads_outside_the_calibration_windows",
+      "--deselect",
+      "code/tests/test_stage_0_5_measurement_equivalence.py::test_calibration_states_read_helper_refuses_a_foreign_window",
+      "--deselect",
+      "code/tests/test_stage_0_5_d1_measurement.py::test_actual_state_runner_uses_d1_not_point_exposure"
+    ],
+    "exit_code": 1,
+    "local_log": "code\\outputs\\formal\\calibration\\round2_closure_comparability_20261030\\pytest_stdout_attempt_2.txt",
+    "raw_log_in_portable_evidence": false,
+    "status": "Failed",
+    "summary": [
+      "3 failed, 100 passed in 20.25s"
+    ]
+  },
+  {
+    "blocked_not_passed": [
+      "code/tests/test_stage_0_5_measurement_equivalence.py::test_guard_denies_row_scoped_reads_outside_the_calibration_windows",
+      "code/tests/test_stage_0_5_measurement_equivalence.py::test_calibration_states_read_helper_refuses_a_foreign_window",
+      "code/tests/test_stage_0_5_d1_measurement.py::test_actual_state_runner_uses_d1_not_point_exposure"
+    ],
+    "blocked_reason": "Historical tests require pyarrow/fastparquet, unavailable in this interpreter",
+    "command": [
+      "D:\\miniconda\\python.exe",
+      "-m",
+      "pytest",
+      "-q",
+      "-c",
+      "code/pyproject.toml",
+      "code/tests/test_stage_0_5_round2_closure_comparability.py",
+      "code/tests/test_formal_risk_measurement.py",
+      "code/tests/test_stage_0_5_measurement_equivalence.py",
+      "code/tests/test_stage_0_5_d1_measurement.py",
+      "code/tests/test_stage_0_5_post_r2_offline_diagnostic.py",
+      "-p",
+      "no:cacheprovider",
+      "--basetemp",
+      "D:\\shen\\TJU\\AAD\\code\\outputs\\formal\\calibration\\round2_closure_comparability_20261030\\pytest_tmp_3",
+      "-k",
+      "not test_guard_denies_row_scoped_reads_outside_the_calibration_windows and not test_calibration_states_read_helper_refuses_a_foreign_window and not test_actual_state_runner_uses_d1_not_point_exposure"
+    ],
+    "exit_code": 0,
+    "local_log": "code\\outputs\\formal\\calibration\\round2_closure_comparability_20261030\\pytest_stdout_attempt_3.txt",
+    "raw_log_in_portable_evidence": false,
+    "status": "Passed",
+    "summary": [
+      "100 passed, 3 deselected in 16.38s"
+    ]
+  }
+]
