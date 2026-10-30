@@ -1,0 +1,55 @@
+{
+  "schema_version": "aad.validation-record.v1",
+  "scope": "WP3 draft/channel availability; documentation and local unsent handoff, no scientific change",
+  "passed": [
+    "Original recipient/scope checked.",
+    "Original draft unchanged-byte/SHA256 checks.",
+    "Local EML exact To/Subject/X-Unsent=1, no From/Message-ID."
+  ],
+  "failed": [
+    {
+      "operation": "Existing Edge state read",
+      "error": "Computer Use app approval timed out",
+      "effect": "No authenticated mail session inspected; no mail sent."
+    },
+    {
+      "operation": "Initial in-memory audit builder",
+      "error": "SyntaxError: unterminated string literal (line 14)",
+      "effect": "No artifacts written; corrected by task-local script."
+    },
+    {
+      "operation": "First builder patch transport",
+      "error": "Script error: SyntaxError: missing ) after argument list",
+      "effect": "No patch or command executed; corrected by task-local script."
+    }
+  ],
+  "blocked": [
+    "Actual dispatch and receipt."
+  ],
+  "not_run": [
+    "SMTP/API send",
+    "Email compose/send",
+    "Sent-folder/receipt verification",
+    "Provider response review"
+  ],
+  "not_applicable": [
+    "Scientific tests",
+    "SUMO/TraCI",
+    "Video integrity checks"
+  ],
+  "commands_and_tools": [
+    "Read Task7.2 registered evidence draft.",
+    "Read computer-use SKILL/guidance/confirmations/API.",
+    "Initialize @oai/sky; sky.list_apps(): only Edge in task-specific filter.",
+    "sky.get_window()/sky.get_window_state(include_screenshot=false,include_text=true): Computer Use app approval timed out.",
+    "Run task-local build_dispatch_record.py; email.parser.BytesParser and SHA256 assertions."
+  ],
+  "environment": {
+    "python": "3.13.5",
+    "platform": "Windows-11-10.0.26100-SP0",
+    "git_head": "80abab044063803219f6ceadfeb3562c3939aaa1"
+  },
+  "seed": null,
+  "repetitions": 0,
+  "limitation": "No global claim that user lacks mail accounts; only available channels checked once."
+}
