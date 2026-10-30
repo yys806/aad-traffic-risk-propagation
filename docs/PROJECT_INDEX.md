@@ -1,3 +1,9 @@
+# 2026-10-30 Round2 Task6：微观交互差异分析
+
+入口：`code/scripts/analyze_stage_0_5_round2_task6_micro_interaction.py`；封包：`code/scripts/package_stage_0_5_round2_task6_micro_interaction.py`；独立核验：`code/scripts/verify_stage_0_5_round2_task6_micro_interaction.py`；测试：`code/tests/test_stage_0_5_round2_task6_micro_interaction.py`。只读封存数据，联合分布、事件上下文及质量诊断不改变正式测量。
+
+Report: `docs/STAGE_0_5_ROUND2_TASK6_REAL_SIM_MICRO_INTERACTION_ANALYSIS_20261030.md`; evidence: `evidence/results/RES-STAGE-0.5-ROUND2-TASK6-REAL-SIM-MICRO-INTERACTION-20261030/`.
+
 ## AAD-S0.5-ROUND2-TASK3-MEASUREMENT-CONTRACT-ALIGNMENT-20261029
 
 Report: `docs/STAGE_0_5_ROUND2_TASK3_MEASUREMENT_CONTRACT_ALIGNMENT_20261029.md`; alignment script: `code/scripts/align_stage_0_5_round2_task3_measurement_contract.py`; evidence: `evidence/results/RES-STAGE-0.5-ROUND2-TASK3-MEASUREMENT-CONTRACT-ALIGNMENT-20261029/`.

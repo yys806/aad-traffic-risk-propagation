@@ -28,3 +28,7 @@
 - 7 对 AAD↔DRIFT 同 DOI 重复条目按研究者 2026-10-16 决定暂不合并，双方 item key 原样保留；后续合并需单独批准。
 - 写入授权：如需程序化写入，使用 Zotero 10 本机 API 官方授权流程（`POST /api/local/authorize`，研究者在客户端内确认）；禁止读取或改动 Zotero 数据库文件本身。
 - PDF 口径：退役本地 `literature/` 曾有 59 份 PDF；当前 Zotero AAD 集合为 56 条 × 各 1 个 PDF 附件。3 份差额未核实（`Unverified`），以 Zotero 条目为准，不做补导。
+
+## 2026-10-30 Task6 文献复用入口
+
+Task6 复用 Zotero 既有条目及项目已读全文笔记；未新增 PDF 库或重复条目。逐条区分作者发现、解释、项目借鉴与待验证假设，见 `docs/STAGE_0_5_ROUND2_TASK6_REAL_SIM_MICRO_INTERACTION_ANALYSIS_20261030.md` 及 `evidence/results/RES-STAGE-0.5-ROUND2-TASK6-REAL-SIM-MICRO-INTERACTION-20261030/literature_review.json`。

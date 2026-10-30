@@ -1,0 +1,147 @@
+{
+  "aggregate_packaging": "Analysis produces full quantiles; this stage retains count and IQR/median profiles only. Full aggregate profiles remain in ignored local output.",
+  "base_head": "8311336779f77cd18b1411ab299959d463a2dffc",
+  "historical_evidence": {
+    "RES-STAGE-0.5-ARRIVAL-TIMING-V1": {
+      "files_checked": 11,
+      "mismatches": [],
+      "pass": true,
+      "sha256sums": "15592fc5b61b75823c0b5e3c483a9a2c5b975ec6afcf78cc8ab6e193c540112c",
+      "verified_payload_files": [
+        "PLAN_SHA256",
+        "experiment_plan.json",
+        "phase_a_audit_summary.json",
+        "arrival_summary.json",
+        "phase_b_wave_diagnostic.json",
+        "event_manifest.json",
+        "run_results.json",
+        "run_metrics.csv",
+        "paired_analysis.json",
+        "fidelity_metrics.csv",
+        "verdict.json"
+      ]
+    },
+    "RES-STAGE-0.5-METHOD-EXPANSION-V1": {
+      "files_checked": 19,
+      "mismatches": [
+        {
+          "actual_sha256": "ddd865b0431692d071ea13d3d33035acca2956b529a697cd049c79e60da89560",
+          "expected_sha256": "87edd35d42b8a4ed3f6f694adbfdb2d0cf8c8979dd95474b6d733f3f5952377c",
+          "name": "run_metadata.json"
+        },
+        {
+          "actual_sha256": null,
+          "expected_sha256": "e402a5e5b75ef1f50519bffb84b0670f885b6cdda7fb34ee4f99101e4f5bb55c",
+          "name": "trajectory_coverage_matrix.json"
+        }
+      ],
+      "pass": false,
+      "sha256sums": "c7baeb59a9b9f85aec55244af85d9e2b13c9ef9e3029f923bf2ed419d16afc4a",
+      "verified_payload_files": [
+        "INIT_PLAN_SHA256",
+        "NEWELL_PLAN_SHA256",
+        "RESPONSE_PLAN_SHA256",
+        "identifiability_summary.json",
+        "init_plan.json",
+        "init_routes.csv",
+        "init_summary.json",
+        "macro_decision.json",
+        "newell_metrics.csv",
+        "newell_plan.json",
+        "newell_summary.json",
+        "response_metrics.csv",
+        "response_plan.json",
+        "response_summary.json",
+        "selection_manifest.json",
+        "source_audit.json",
+        "trajectory_coverage_summary.json"
+      ]
+    },
+    "RES-STAGE-0.5-ROUND2-TASK4-REAL-SOURCE-SUPPORT-AND-MULTISCALE-CROSSWALK-20261030": {
+      "files_checked": 11,
+      "mismatches": [],
+      "pass": true,
+      "sha256sums": "68facf2568921d7618cce42f150ce85256f37b36346872f2c1d2c76450307d94",
+      "verified_payload_files": [
+        "decision_matrix.json",
+        "population_scope_crosswalk.json",
+        "real_source_target_exposure.csv",
+        "real_source_target_p2_summary.json",
+        "real_source_target_state_metrics.csv",
+        "risk_event_attribution_summary.csv",
+        "simulation_source_target_metrics.csv",
+        "source_bindings.json",
+        "time_alignment_audit.json",
+        "validation_record.json",
+        "manifest.json"
+      ]
+    },
+    "RES-STAGE-0.5-ROUND2-TASK5-TASK4-EVIDENCE-INTEGRITY-20261030": {
+      "files_checked": 8,
+      "mismatches": [],
+      "pass": true,
+      "sha256sums": "e210fcf7499b361f930fa0fa9058a5d6f61e5f1a0f24537b476670158ef47a73",
+      "verified_payload_files": [
+        "corrected_real_source_target_state_metrics.csv",
+        "corrected_simulation_source_target_metrics.csv",
+        "event_onset_attribution_audit.json",
+        "source_bindings.json",
+        "time_block_statistics_diff.csv",
+        "validation_record.json",
+        "window_overlap_audit.json",
+        "manifest.json"
+      ]
+    }
+  },
+  "inputs": {
+    "code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r4/states/ngsim_us101__0750_0805.parquet": {
+      "actual_sha256": "684a5f0b96dc48116f16d581c278d7039c0554bf1c3cea8d6eda3e605e3e8644",
+      "expected_sha256": "684a5f0b96dc48116f16d581c278d7039c0554bf1c3cea8d6eda3e605e3e8644"
+    },
+    "code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r4/states/ngsim_us101__0805_0820.parquet": {
+      "actual_sha256": "7b0ef830c97a981da018d4e24b029e38aa2630387c728ea87b57926745880a9f",
+      "expected_sha256": "7b0ef830c97a981da018d4e24b029e38aa2630387c728ea87b57926745880a9f"
+    },
+    "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/AAD-S0.5-ROUND2-TASK1-20261028-candidate-v1/fcd.xml": {
+      "actual_sha256": "434f1c2500cdf06d069d7eae1c86e064ad76af61f478379943bbefab70b2ac3e",
+      "expected_sha256": "434f1c2500cdf06d069d7eae1c86e064ad76af61f478379943bbefab70b2ac3e"
+    },
+    "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/AAD-S0.5-ROUND2-TASK1-20261028-candidate-v1/measured_state.parquet": {
+      "actual_sha256": "31426640954e6e8ea883f82dce139df130d7f83a8db4300ceb38842d4ee716b8",
+      "expected_sha256": "31426640954e6e8ea883f82dce139df130d7f83a8db4300ceb38842d4ee716b8"
+    },
+    "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/AAD-S0.5-ROUND2-TASK1-20261028-candidate-v1/routes.rou.xml": {
+      "actual_sha256": "a4c78db55984cc8c320b06ec2e257bdf6d4902c0dfdf015348157e30cdb80e79",
+      "purpose": "existing declared class/length/cohort only"
+    },
+    "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/WEEK_0750_B00_IC1_s20261201_A03/fcd.xml": {
+      "actual_sha256": "1dc274082f4ea14949979d0c925903bbb5b9668d1124dabb79799b59a55fa304",
+      "expected_sha256": "1dc274082f4ea14949979d0c925903bbb5b9668d1124dabb79799b59a55fa304"
+    },
+    "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/WEEK_0750_B00_IC1_s20261201_A03/measured_state.parquet": {
+      "actual_sha256": "48b20ff458ff1dce4559a762d6965b6747a940d537b1460d74e33d739a3cf63a",
+      "expected_sha256": "48b20ff458ff1dce4559a762d6965b6747a940d537b1460d74e33d739a3cf63a"
+    },
+    "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/WEEK_0750_B00_IC1_s20261201_A03/routes.rou.xml": {
+      "actual_sha256": "b6df8d9ce52b56fac50899cc2e6d1329c7858325aae0f0c86c76d77f796a7574",
+      "purpose": "existing declared class/length/cohort only"
+    }
+  },
+  "reader": {
+    "executable": "D:\\miniconda\\python.exe",
+    "pandas": "2.2.3",
+    "python": "3.13.5"
+  },
+  "source_sha256": {
+    "code/configs/stage_0_2_formal_risk_measurement_p2_v1.json": "00687de2a88b914e8123259ecb6d8fe1fbc66824fab49b1d3a7e634e97db1fb7",
+    "code/scripts/analyze_stage_0_5_round2_task4_real_source_support.py": "e73ccf1f0610b265bef2486b49a9d0238010df0845503001b8e59fda90cbdfaa",
+    "code/scripts/analyze_stage_0_5_round2_task6_micro_interaction.py": "6b69d5f7f0331435b8c125bd5334f2ce008b5310077fdb93b79b439a3b11a5bf",
+    "code/scripts/package_stage_0_5_round2_task6_micro_interaction.py": "fa429da65ca1bb6a322a029de3222a114e45d877fae544fe8cb1b1e147dadfa8",
+    "code/scripts/verify_stage_0_5_round2_task6_micro_interaction.py": "728f5cd270cdbe3baed2579bf60813fb3787af23cbea98d2fbfb32acacead508",
+    "code/src/riskprop/formal_risk_measurement.py": "4e15e67e35911fdd4d50d26f41784bde05a8cd9983edc42c572fa51b00686c58",
+    "code/src/riskprop/ngsim_risk_calibration.py": "ba49f4a4d2e9762f5d31a6858b84ed5f314c16c2d5e404df93cb36b550d00a36",
+    "code/src/riskprop/real_trajectory.py": "9acbc515004dcf5e531c547b97bb6a9c1b7bb6e8d186262fdc8e3edccd01120f",
+    "code/src/riskprop/stage_0_5_sumo.py": "043137344177060e1bbbf50e3b39bfc9da20b0fdaa49f5f1dcac07e712a4b632",
+    "code/tests/test_stage_0_5_round2_task6_micro_interaction.py": "13dae4a3a253827f6ccac6bce691d4df1a6d7b9b48bd2dbf63a20c82d4300620"
+  }
+}

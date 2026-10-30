@@ -1,3 +1,9 @@
+## 2026-10-30 — Task6 offline joint and event-context evidence
+
+Verified offline Task6 reproduces NGSIM source Formal P2 167/159 and sealed SUMO source zero. Small gaps alone do not explain the difference: low-speed positive closing tails and gap-closing joint structure differ, including coarse common macro support. Lane/leader transitions occur near a subset of real events, but most complete source contexts show no observed transition. Measurement artifacts, precise causal mechanism and scientific equivalence remain Unknown. No new SUMO/TraCI/trajectory/holdout; scientific definitions and Gate/Stage 0.6/Protocol Lock/Stage I unchanged.
+
+Report: `docs/STAGE_0_5_ROUND2_TASK6_REAL_SIM_MICRO_INTERACTION_ANALYSIS_20261030.md`; evidence: `evidence/results/RES-STAGE-0.5-ROUND2-TASK6-REAL-SIM-MICRO-INTERACTION-20261030/`.
+
 ## 2026-10-30 Round2 Task 5
 
 Added bounded integrity audit and repair for Task 4: cross-window overlap/key audit, unique/unmatched/ambiguous onset attribution with conservation checks, and effective-duration partial 30 s block statistics. Task 4 historical evidence remains byte/SHA unchanged; no new SUMO/TraCI/trajectory/holdout. Added Task 5 report, script, tests and independent evidence package.

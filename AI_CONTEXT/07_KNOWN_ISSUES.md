@@ -1,3 +1,9 @@
+## 2026-10-30 Task6 — verified limits and retained Unknowns
+
+Event physical truth and causal attribution remain Unknown; canonical NGSIM lacks follower class/length, exact NGSIM–SUMO time/vehicle mapping is unproven, and SUMO already has five tau classes. Historical METHOD-EXPANSION bundle has a run_metadata.json hash mismatch and missing trajectory_coverage_matrix.json; only separately SHA-verified summaries are reused. Task4/5 evidence remains unchanged. No automatic repair, model choice, new seed or Gate advance.
+
+Report: `docs/STAGE_0_5_ROUND2_TASK6_REAL_SIM_MICRO_INTERACTION_ANALYSIS_20261030.md`; evidence: `evidence/results/RES-STAGE-0.5-ROUND2-TASK6-REAL-SIM-MICRO-INTERACTION-20261030/`.
+
 ## 2026-10-30 Task 5 closure boundaries
 
 - Cross-window `Global_Time` overlap is real, but exact raw-record and Formal P2 onset-key intersections are zero. Shared original vehicle IDs do not establish cross-window physical identity; no merge is allowed.

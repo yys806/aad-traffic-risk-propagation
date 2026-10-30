@@ -328,12 +328,17 @@
   "docs/STAGE_0_5_ROUND2_TASK4_REAL_SOURCE_SUPPORT_AND_MULTISCALE_CROSSWALK_20261030.md",
   "code/scripts/analyze_stage_0_5_round2_task4_real_source_support.py",
   "docs/STAGE_0_5_ROUND2_TASK5_TASK4_EVIDENCE_INTEGRITY_20261030.md",
-  "code/scripts/audit_stage_0_5_round2_task5_task4_evidence_integrity.py"
+  "code/scripts/audit_stage_0_5_round2_task5_task4_evidence_integrity.py",
+  "docs/STAGE_0_5_ROUND2_TASK6_REAL_SIM_MICRO_INTERACTION_ANALYSIS_20261030.md",
+  "code/scripts/analyze_stage_0_5_round2_task6_micro_interaction.py",
+  "code/scripts/package_stage_0_5_round2_task6_micro_interaction.py",
+  "code/scripts/verify_stage_0_5_round2_task6_micro_interaction.py",
+  "code/tests/test_stage_0_5_round2_task6_micro_interaction.py"
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-S0.5-ROUND2-TASK5-TASK4-EVIDENCE-INTEGRITY-CLOSURE-20261030: Task 4 evidence integrity audited and bounded repairs verified",
-  "why_now": "Task5 closed the bounded overlap, onset-attribution and partial-block denominator issues without changing Task 4 science definitions or Gate state.",
+  "active_task": "AAD-S0.5-ROUND2-TASK6: verified offline real–simulation micro-interaction analysis; causal mechanism remains Unknown",
+  "why_now": "Joint state support and event-centered evidence are complete; researcher decides physical-quality adjudication and any separately authorized response experiment.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
    "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/count_reconciliation.json",
@@ -717,7 +722,7 @@
    "purpose": "组合 NGSIM 跟驰风险参考和 pNEUMA 城市运动学参考，检查无消息作用的 SUMO 样本是否落在现实范围。",
    "research_question": "SUMO 基础运动与跟驰风险是否明显脱离真实交通范围？",
    "date": "2026-10-28",
-   "status": "round2_task1_engineering_blocked_before_candidate_launch",
+   "status": "round2_task6_offline_analysis_completed_interaction_gate_blocked",
    "code_version": "current main 29dac1a plus offline audit script",
    "code_paths": [
     "code/src/riskprop/simulation_real_coverage.py",
@@ -815,7 +820,10 @@
     "code/scripts/finalize_stage_0_5_r1_evidence.py",
     "code/scripts/analyze_stage_0_5_offline_mechanism.py",
     "code/scripts/analyze_stage_0_5_post_r2_offline_diagnostic.py",
-    "code/scripts/verify_stage_0_5_post_r2_offline_diagnostic.py"
+    "code/scripts/verify_stage_0_5_post_r2_offline_diagnostic.py",
+    "code/scripts/analyze_stage_0_5_round2_task6_micro_interaction.py",
+    "code/scripts/package_stage_0_5_round2_task6_micro_interaction.py",
+    "code/scripts/verify_stage_0_5_round2_task6_micro_interaction.py"
    ],
    "entrypoints": [
     "code/scripts/prepare_stage_0_5_real_reference.py",
@@ -878,7 +886,10 @@
     "docs/STAGE_0_5_R1_EXECUTION_2026-10-28.md",
     "docs/STAGE_0_5_OFFLINE_MECHANISM_AUDIT_2026-10-28.md",
     "code/scripts/analyze_stage_0_5_post_r2_offline_diagnostic.py",
-    "code/scripts/verify_stage_0_5_post_r2_offline_diagnostic.py"
+    "code/scripts/verify_stage_0_5_post_r2_offline_diagnostic.py",
+    "code/scripts/analyze_stage_0_5_round2_task6_micro_interaction.py",
+    "code/scripts/package_stage_0_5_round2_task6_micro_interaction.py",
+    "code/scripts/verify_stage_0_5_round2_task6_micro_interaction.py"
    ],
    "test_paths": [
     "code/tests/test_simulation_real_coverage.py",
@@ -924,7 +935,8 @@
     "code/tests/test_aad_week_scene_v1.py",
     "code/tests/test_stage_0_5_r0_design_packet.py",
     "code/tests/test_stage_0_5_offline_mechanism_audit.py",
-    "code/tests/test_stage_0_5_post_r2_offline_diagnostic.py"
+    "code/tests/test_stage_0_5_post_r2_offline_diagnostic.py",
+    "code/tests/test_stage_0_5_round2_task6_micro_interaction.py"
    ],
    "configuration": "R2 real reference plus two no_message_baseline generic-highway engineering fixtures (baseline_mixed_demand, measurement_probe_queue_stop); US-101 primary, Lankershim auxiliary entry-only, pNEUMA urban kinematics entry-only; all network/demand/vType/behaviour/time settings are engineering_fixture_only",
    "parameters": {
@@ -1142,7 +1154,8 @@
     "RES-STAGE-0.5-ROUND2-TASK2-MEASUREMENT-CONTRACT-20261029",
     "RES-STAGE-0.5-ROUND2-TASK3-MEASUREMENT-CONTRACT-ALIGNMENT-20261029",
     "RES-STAGE-0.5-ROUND2-TASK4-REAL-SOURCE-SUPPORT-AND-MULTISCALE-CROSSWALK-20261030",
-    "RES-STAGE-0.5-ROUND2-TASK5-TASK4-EVIDENCE-INTEGRITY-20261030"
+    "RES-STAGE-0.5-ROUND2-TASK5-TASK4-EVIDENCE-INTEGRITY-20261030",
+    "RES-STAGE-0.5-ROUND2-TASK6-REAL-SIM-MICRO-INTERACTION-20261030"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -1257,7 +1270,7 @@
     "third_window_rows_materialised",
     "zotero_items_added"
    ],
-   "current_conclusion": "Post-R2 full offline reconstruction confirms no source TTC<2 state (not duration-censored); near-threshold support exists. Current lifecycle/D1 counts agree with sealed results. Native/formal/D1 input contracts differ; scientific equivalence and Stage 0.5 Gate remain unaccepted.",
+   "current_conclusion": "Verified offline Task6 reproduces NGSIM source Formal P2 167/159 and sealed SUMO source zero. Small gaps alone do not explain the difference: low-speed positive closing tails and gap-closing joint structure differ, including coarse common macro support. Lane/leader transitions occur near a subset of real events, but most complete source contexts show no observed transition. Measurement artifacts, precise causal mechanism and scientific equivalence remain Unknown. No new SUMO/TraCI/trajectory/holdout; scientific definitions and Gate/Stage 0.6/Protocol Lock/Stage I unchanged.",
    "gate": {
     "status": "blocked",
     "portable_path": "evidence/results/RES-STAGE-0.5-R1-DIAGNOSTICS-20261028/r2_gate_review.json"
@@ -4877,11 +4890,26 @@
    "configuration_source": "unchanged stage_0_2_formal_risk_measurement_p2_v1.json and existing Stage 0.5 source/target/window/cohort",
    "data_version_source": "two authorized canonical NGSIM windows plus sealed B00/Round2 measured states; no third window or holdout",
    "core_metrics": {
-    "ngsim_full_source_p2_events": [543, 732],
-    "ngsim_full_source_p2_evaluable_exposure_s": [111425.9, 133505.6],
-    "ngsim_source_onsets": [167, 159],
-    "ngsim_source_p2_evaluable_exposure_s": [30519.4, 30560.7],
-    "ngsim_target_onsets": [174, 252],
+    "ngsim_full_source_p2_events": [
+     543,
+     732
+    ],
+    "ngsim_full_source_p2_evaluable_exposure_s": [
+     111425.9,
+     133505.6
+    ],
+    "ngsim_source_onsets": [
+     167,
+     159
+    ],
+    "ngsim_source_p2_evaluable_exposure_s": [
+     30519.4,
+     30560.7
+    ],
+    "ngsim_target_onsets": [
+     174,
+     252
+    ],
     "sumo_source_formal_aligned_p2_B00": 0,
     "sumo_source_formal_aligned_p2_candidate": 0,
     "sumo_source_D1_B00": 0,
@@ -4924,12 +4952,30 @@
     "exact_raw_record_matches": 0,
     "exact_onset_key_intersection": 0,
     "shared_original_vehicle_ids": 1430,
-    "ngsim_unique_onsets": [543, 732],
-    "ngsim_unmatched_onsets": [0, 0],
-    "ngsim_ambiguous_onsets": [0, 0],
-    "ngsim_source_onsets": [167, 159],
-    "ngsim_target_onsets": [174, 252],
-    "partial_tail_durations_s": [22.9, 9.1],
+    "ngsim_unique_onsets": [
+     543,
+     732
+    ],
+    "ngsim_unmatched_onsets": [
+     0,
+     0
+    ],
+    "ngsim_ambiguous_onsets": [
+     0,
+     0
+    ],
+    "ngsim_source_onsets": [
+     167,
+     159
+    ],
+    "ngsim_target_onsets": [
+     174,
+     252
+    ],
+    "partial_tail_durations_s": [
+     22.9,
+     9.1
+    ],
     "task4_historical_sha256_unchanged": true,
     "new_native_launches": 0,
     "new_trajectories": 0,
@@ -4939,6 +4985,57 @@
    "gate_status": "blocked",
    "paper_locations": [
     "docs/STAGE_0_5_ROUND2_TASK5_TASK4_EVIDENCE_INTEGRITY_20261030.md"
+   ],
+   "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-STAGE-0.5-ROUND2-TASK6-REAL-SIM-MICRO-INTERACTION-20261030",
+   "experiment_id": "stage_0_5",
+   "name": "Round2 Task6 real–simulation micro-interaction discrepancy diagnostics",
+   "status": "verified_offline_descriptive_analysis_causal_mechanism_unknown",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK6-REAL-SIM-MICRO-INTERACTION-20261030/manifest.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK6-REAL-SIM-MICRO-INTERACTION-20261030/SHA256SUMS",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK6-REAL-SIM-MICRO-INTERACTION-20261030/validation_record.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK6-REAL-SIM-MICRO-INTERACTION-20261030/source_bindings.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK6-REAL-SIM-MICRO-INTERACTION-20261030/mechanism_matrix.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK6-REAL-SIM-MICRO-INTERACTION-20261030/engineering_validation.json"
+   ],
+   "local_artifact_paths": [
+    "code/outputs/diagnostics/round2_task6_20261030/"
+   ],
+   "code_version_source": "source_bindings.json exact source SHA and baseline 8311336779f77cd18b1411ab299959d463a2dffc",
+   "configuration_source": "analysis_config.json; Formal P2/D1/source/target/cohort/window unchanged",
+   "data_version_source": "Two authorized canonical NGSIM windows and sealed B00/Round2 measured states; exact input SHA in source_bindings.json",
+   "core_metrics": {
+    "ngsim_source_formal_p2": [
+     167,
+     159
+    ],
+    "sumo_source_formal_aligned_p2": [
+     0,
+     0
+    ],
+    "ngsim_source_risk_point_rows": [
+     1363,
+     1459
+    ],
+    "sumo_source_risk_point_rows": [
+     0,
+     0
+    ],
+    "near_ttc_segments": [
+     4,
+     3
+    ],
+    "new_native_launches": 0,
+    "new_trajectories": 0,
+    "holdout_reads": 0
+   },
+   "current_conclusion": "Verified offline Task6 reproduces NGSIM source Formal P2 167/159 and sealed SUMO source zero. Small gaps alone do not explain the difference: low-speed positive closing tails and gap-closing joint structure differ, including coarse common macro support. Lane/leader transitions occur near a subset of real events, but most complete source contexts show no observed transition. Measurement artifacts, precise causal mechanism and scientific equivalence remain Unknown. No new SUMO/TraCI/trajectory/holdout; scientific definitions and Gate/Stage 0.6/Protocol Lock/Stage I unchanged.",
+   "gate_status": "blocked",
+   "paper_locations": [
+    "docs/STAGE_0_5_ROUND2_TASK6_REAL_SIM_MICRO_INTERACTION_ANALYSIS_20261030.md"
    ],
    "scientific_claim_eligible": false
   }

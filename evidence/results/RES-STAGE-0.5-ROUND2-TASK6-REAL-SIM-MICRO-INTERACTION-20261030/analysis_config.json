@@ -1,0 +1,19 @@
+{
+  "task_id": "AAD-S0.5-ROUND2-TASK6",
+  "base_head": "8311336779f77cd18b1411ab299959d463a2dffc",
+  "source_m": [0,150], "target_m": [150,350], "mainline_lanes": [1,2,3,4,5],
+  "simulation_window_s": [120,390],
+  "event_horizon_s": 2, "event_horizon_sensitivity_s": [1,3],
+  "horizon_rationale": "20 adjacent 100ms observations each side balances immediate interaction context and boundary censoring; 1/3s show sensitivity. Diagnostic only, not a response-time or Formal P2 threshold.",
+  "gap_bin_edges_m": [0,1,2,5,10,20,40,80,"inf"],
+  "positive_closing_bin_edges_mps": [0,0.25,0.5,1,2,4,8,"inf"],
+  "speed_bin_edges_mps": [0,5,10,15,"inf"],
+  "macro_density_bin_width_veh_km_lane": 7.5,
+  "macro_speed_bin_width_mps": 5,
+  "bin_rationale": "Descriptive bins include every observation and unbounded upper tails; density width reuses existing state-support convention. No bin is an acceptance criterion.",
+  "control_policy": "Within dataset and region: same mapped lane, independent 30s block, 5mps speed stratum; nearest speed then time then identity; different follower, without replacement; evaluable nonrisk state outside all official event intervals plus/minus 3s for that follower. Unmatched remains Unknown.",
+  "bootstrap": {"unit": "observed follower trajectory within each separate dataset/region", "replicates": 500, "seed": 20261030, "purpose": "descriptive source-window cluster variability only; not independent-day or simulator-seed uncertainty"},
+  "common_support_policy": "Report all macro cells and their population weights; shared cell comparisons describe support, never align clocks or reweight the official populations.",
+  "contracts": {"real": "NGSIM Formal P2 unchanged", "simulation": "SUMO formal-aligned diagnostic and D1 remain distinct; common point diagnostics are not a new formal measurement contract"},
+  "native_launches": 0, "third_window_reads": 0, "holdout_reads": 0
+}

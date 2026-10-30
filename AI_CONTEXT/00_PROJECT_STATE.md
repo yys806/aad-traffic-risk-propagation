@@ -1,3 +1,9 @@
+## Current — AAD-S0.5-ROUND2-TASK6 (2026-10-30)
+
+Verified offline Task6 reproduces NGSIM source Formal P2 167/159 and sealed SUMO source zero. Small gaps alone do not explain the difference: low-speed positive closing tails and gap-closing joint structure differ, including coarse common macro support. Lane/leader transitions occur near a subset of real events, but most complete source contexts show no observed transition. Measurement artifacts, precise causal mechanism and scientific equivalence remain Unknown. No new SUMO/TraCI/trajectory/holdout; scientific definitions and Gate/Stage 0.6/Protocol Lock/Stage I unchanged.
+
+Report: `docs/STAGE_0_5_ROUND2_TASK6_REAL_SIM_MICRO_INTERACTION_ANALYSIS_20261030.md`; evidence: `evidence/results/RES-STAGE-0.5-ROUND2-TASK6-REAL-SIM-MICRO-INTERACTION-20261030/`.
+
 ## Current — AAD-S0.5-ROUND2-TASK5-TASK4-EVIDENCE-INTEGRITY-CLOSURE-20261030
 
 Verified offline integrity closure for Task 4. The two authorized NGSIM windows overlap in `Global_Time` for 89.5 s, but exact `(original_vehicle_id, Global_Time, Frame_ID)` record intersection is 0, trajectory ID intersection is 0, and Formal P2 onset-key intersection is 0; 1430 shared raw vehicle IDs do not prove cross-window identity, so statistics remain separate. Onset attribution is unique and conserved: NGSIM 543/732 events have 543/732 unique matches and 0 unmatched/ambiguous; source/target remain 167/159 and 174/252. SUMO formal-aligned B00 has 0 events and Round2 has 1 unique target event. Real NGSIM partial 30 s tails now use effective durations 22.9 s and 9.1 s; SUMO full blocks unchanged. Task 4 historical evidence SHA256 remains unchanged; Stage 0.5 Gate, Stage 0.6, Protocol Lock and Stage I unchanged. Report: `docs/STAGE_0_5_ROUND2_TASK5_TASK4_EVIDENCE_INTEGRITY_20261030.md`; evidence: `evidence/results/RES-STAGE-0.5-ROUND2-TASK5-TASK4-EVIDENCE-INTEGRITY-20261030/`.

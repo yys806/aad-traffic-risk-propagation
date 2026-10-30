@@ -104,6 +104,24 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         )
     ]
 
+    # Task6 aggregates are already portable; never read sealed trajectories here.
+    task6_root = "evidence/results/RES-STAGE-0.5-ROUND2-TASK6-REAL-SIM-MICRO-INTERACTION-20261030"
+    pairs["RES-STAGE-0.5-ROUND2-TASK6-REAL-SIM-MICRO-INTERACTION-20261030"] = [
+        (f"{task6_root}/{name}", name)
+        for name in (
+            "analysis_config.json", "analysis_validation.json",
+            "common_support_crosswalk.json", "context_consistency_check.json",
+            "control_matching_audit.json", "engineering_validation.json",
+            "event_concentration.json", "event_context_summary.csv",
+            "event_relative_profiles.csv", "evidence_reuse_matrix.csv",
+            "gap_closing_joint_histogram.csv", "independent_time_block_joint_metrics.csv",
+            "joint_distribution_summary.csv", "literature_review.json",
+            "macro_common_support_cells.csv", "mechanism_matrix.json",
+            "population_and_quality.json", "source_bindings.json",
+            "validation_record.json", "manifest.json", "SHA256SUMS",
+        )
+    ]
+
     # Policy A preflight proposals, not a frozen execution protocol.
     pairs['RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1'] = [
         ('code/outputs/formal/calibration/stage_0_5_interaction_diagnostics_v1/portable/' + name, name)
@@ -845,6 +863,11 @@ def _validate_source(source: Path) -> None:
         "risk_event_attribution_summary.csv", "simulation_source_target_metrics.csv",
         "corrected_real_source_target_state_metrics.csv", "corrected_simulation_source_target_metrics.csv",
         "time_block_statistics_diff.csv",
+        # Task6 counts, quantiles and joint histograms; never identity-level rows.
+        "event_context_summary.csv", "event_relative_profiles.csv",
+        "evidence_reuse_matrix.csv", "gap_closing_joint_histogram.csv",
+        "independent_time_block_joint_metrics.csv", "joint_distribution_summary.csv",
+        "macro_common_support_cells.csv",
         }
     if source.suffix.lower() not in {".json", ".md", ".txt", ".sha256"} and source.name not in aggregate_names:
         raise ValueError(f"unsupported evidence file type: {source}")

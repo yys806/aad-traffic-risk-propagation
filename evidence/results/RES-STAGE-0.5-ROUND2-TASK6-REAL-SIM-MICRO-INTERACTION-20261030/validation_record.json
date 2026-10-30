@@ -1,0 +1,369 @@
+{
+  "analysis": {
+    "cohort_ids": 1112,
+    "datasets": [
+      {
+        "attribution": {
+          "ambiguous": 0,
+          "auxiliary_or_other": 13,
+          "conservation_pass": true,
+          "extracted_events": 543,
+          "other_mainline": 189,
+          "source": 167,
+          "target": 174,
+          "unique": 543,
+          "unknown": 0,
+          "unmatched": 0
+        },
+        "full_extracted_events": 543,
+        "full_p2_exposure_s": 111425.90000000001,
+        "raw_rows": 1180598,
+        "scope": "0750_0805"
+      },
+      {
+        "attribution": {
+          "ambiguous": 0,
+          "auxiliary_or_other": 10,
+          "conservation_pass": true,
+          "extracted_events": 732,
+          "other_mainline": 311,
+          "source": 159,
+          "target": 252,
+          "unique": 732,
+          "unknown": 0,
+          "unmatched": 0
+        },
+        "full_extracted_events": 732,
+        "full_p2_exposure_s": 133505.6,
+        "raw_rows": 1403095,
+        "scope": "0805_0820"
+      },
+      {
+        "attribution": {
+          "ambiguous": 0,
+          "auxiliary_or_other": 0,
+          "conservation_pass": true,
+          "extracted_events": 0,
+          "other_mainline": 0,
+          "source": 0,
+          "target": 0,
+          "unique": 0,
+          "unknown": 0,
+          "unmatched": 0
+        },
+        "full_extracted_events": 0,
+        "raw_rows": 610725,
+        "scope": "B00_A03"
+      },
+      {
+        "attribution": {
+          "ambiguous": 0,
+          "auxiliary_or_other": 0,
+          "conservation_pass": true,
+          "extracted_events": 1,
+          "other_mainline": 0,
+          "source": 0,
+          "target": 1,
+          "unique": 1,
+          "unknown": 0,
+          "unmatched": 0
+        },
+        "full_extracted_events": 1,
+        "raw_rows": 645369,
+        "scope": "Round2_minGap1.0"
+      }
+    ],
+    "formal_equivalence_accepted": false,
+    "holdout_reads": 0,
+    "independent_ngsim_windows": true,
+    "native_launches": 0,
+    "status": "PASS",
+    "third_window_reads": 0,
+    "traci_connections": 0
+  },
+  "engineering": {
+    "compileall": {
+      "phase": "compileall",
+      "roots": [
+        "code/src",
+        "code/scripts",
+        "code/tests"
+      ],
+      "status": "PASS"
+    },
+    "current_workspace": {
+      "AGENTS_diff": "empty",
+      "Gate_Stage06_ProtocolLock_StageI_Round3": "unchanged",
+      "historical_task4_task5": "PASS immutable full bundles",
+      "production_source_and_config_diff": "empty",
+      "strict_docs": "PASS PROJECT_DOCS_OK",
+      "unsealed_independent_with_all_local_input_hashes": "PASS 8 inputs; all six mandatory FCD/measured-state/canonical SHA match"
+    },
+    "development_attempts_retained": [
+      "Initial targeted run: 17 passed, 2 tmp_path permission setup errors; authorized filesystem retry: 19 passed. Final new-test count 20 is covered in 61-pass targeted regression.",
+      "Initial exporter rejected the new aggregate CSV names; explicit aggregate whitelist added and tested.",
+      "Initial RESULTS_INDEX heading did not match exact result-ID requirement; corrected, strict docs passed.",
+      "Initial clone source binding differed only in config LF/CRLF; explicit eol=crlf preserves original SHA without changing config content.",
+      "First recovery attempt stopped at SHA assertions before all fixtures existed; nine tests still missing fixtures failed again. Final recovery uses only exact-SHA Git blob/filtered representation and passes all nine.",
+      "Analysis development SciPy import attempted a system-version subprocess; guard blocked it before launch. Replaced dependency with direct average-rank Pearson.",
+      "Actual committed checkout with core.autocrlf=true exposed missing LF attribute on the reused Task4 dependency. Added exact LF checkout attribute; original Task4 source and historical evidence bytes are unchanged. The previous staged-snapshot verification used core.autocrlf=false and had correctly passed. Final committed checkout is independently rechecked after this correction."
+    ],
+    "environment": {
+      "dependencies": {
+        "numpy": "2.3.2",
+        "pandas": "2.2.3",
+        "pyarrow": "25.0.1",
+        "pytest": "8.4.1"
+      },
+      "installed_dependencies": false,
+      "python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 16:37:03) [MSC v.1929 64 bit (AMD64)]"
+    },
+    "final_artifact_checks": {
+      "current_full_export_and_verify": "PASS",
+      "current_strict_docs": "PASS",
+      "historical_task4_task5_complete_sha": "PASS",
+      "prior_global_evidence_registrations_semantically_unchanged": true,
+      "pure_git_sealed_verifier_strict_docs_and_evidence_verify": "PASS",
+      "task6_sealed_and_all_eight_local_input_hashes": "PASS"
+    },
+    "full_offline_regression": {
+      "distinct_tests_passed_after_recovery": 1459,
+      "full_arguments": [
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--basetemp=D:\\shen\\TJU\\AAD\\code\\outputs\\diagnostics\\round2_task6_20261030\\validation_support\\full_tmp",
+        "--junitxml=D:\\shen\\TJU\\AAD\\code\\outputs\\diagnostics\\round2_task6_20261030\\validation_support\\full.xml",
+        "tests",
+        "--deselect=tests/test_stage_0_1_sumo.py::test_real_sumo_stage_0_1_seals_nonempty_four_cell_package_and_read_only_audit",
+        "--deselect=tests/test_stage_0_5_sumo.py::test_sumo_baseline_engineering_run_is_sealed_and_contract_complete",
+        "--deselect=tests/test_stage_0_5_sumo.py::test_sumo_probe_fixture_confirms_a_p2_event_in_both_adapters",
+        "--deselect=tests/test_stage_0_5_sumo.py::test_sumo_run_is_reproducible_for_the_same_seed_and_config",
+        "--deselect=tests/test_stage_0_5_sumo.py::test_sumo_internal_and_recorded_steps_are_separately_configurable",
+        "--deselect=tests/test_stage_0_5_sumo.py::test_sumo_warmup_window_is_respected_and_unbuilt_scenarios_are_refused",
+        "--deselect=tests/test_stage_0_5_sumo.py::test_sumo_smoke_runs_never_change_the_stage_gate"
+      ],
+      "initial_failed_nodes": [
+        "tests/test_stage_0_5_round2_task1_admission.py::test_round2_exact_candidate_passes_task_specific_contract",
+        "tests/test_stage_0_5_round2_task1_admission.py::test_round2_rejects_extra_vtype_change",
+        "tests/test_stage_0_5_round2_task1_admission.py::test_round2_rejects_non_target_vehicle_type_and_identity_changes",
+        "tests/test_stage_0_5_round2_task1_admission.py::test_round2_rejects_route_or_departure_change",
+        "tests/test_stage_0_5_round2_task1_admission.py::test_round2_rejects_candidate_or_task_identity[candidate_id-other-candidate]",
+        "tests/test_stage_0_5_round2_task1_admission.py::test_round2_rejects_candidate_or_task_identity[experiment_id-other-task]",
+        "tests/test_stage_0_5_round2_task1_admission.py::test_round2_rejects_input_hash_drift_and_locked_field_change",
+        "tests/test_stage_0_5_round2_task1_admission.py::test_round2_negative_contract_is_prelaunch_only",
+        "tests/test_stage_0_5_round2_task1_candidate.py::test_round2_candidate_is_a_static_single_factor_input"
+      ],
+      "initial_failure_reason": "FileNotFoundError: three B00 static XML inputs are local output paths, not checked out automatically. No Task6 computation failure.",
+      "initial_run": {
+        "collection_errors": 0,
+        "elapsed_s": 454.27,
+        "failed": 9,
+        "passed": 1450
+      },
+      "native_deselected": [
+        "tests/test_stage_0_1_sumo.py::test_real_sumo_stage_0_1_seals_nonempty_four_cell_package_and_read_only_audit",
+        "tests/test_stage_0_5_sumo.py::test_sumo_baseline_engineering_run_is_sealed_and_contract_complete",
+        "tests/test_stage_0_5_sumo.py::test_sumo_probe_fixture_confirms_a_p2_event_in_both_adapters",
+        "tests/test_stage_0_5_sumo.py::test_sumo_run_is_reproducible_for_the_same_seed_and_config",
+        "tests/test_stage_0_5_sumo.py::test_sumo_internal_and_recorded_steps_are_separately_configurable",
+        "tests/test_stage_0_5_sumo.py::test_sumo_warmup_window_is_respected_and_unbuilt_scenarios_are_refused",
+        "tests/test_stage_0_5_sumo.py::test_sumo_smoke_runs_never_change_the_stage_gate"
+      ],
+      "note": "No second full-suite run is claimed. Initial failures are retained; all nine failed nodes were rerun successfully after Git-only fixture preparation. No historical test was modified or disabled.",
+      "recovery": {
+        "arguments": [
+          "-q",
+          "-p",
+          "no:cacheprovider",
+          "--basetemp=D:\\shen\\TJU\\AAD\\code\\outputs\\diagnostics\\round2_task6_20261030\\validation_support\\recovery_final_tmp",
+          "--junitxml=D:\\shen\\TJU\\AAD\\code\\outputs\\diagnostics\\round2_task6_20261030\\validation_support\\recovery_final.xml",
+          "tests/test_stage_0_5_round2_task1_admission.py::test_round2_exact_candidate_passes_task_specific_contract",
+          "tests/test_stage_0_5_round2_task1_admission.py::test_round2_rejects_extra_vtype_change",
+          "tests/test_stage_0_5_round2_task1_admission.py::test_round2_rejects_non_target_vehicle_type_and_identity_changes",
+          "tests/test_stage_0_5_round2_task1_admission.py::test_round2_rejects_route_or_departure_change",
+          "tests/test_stage_0_5_round2_task1_admission.py::test_round2_rejects_candidate_or_task_identity[candidate_id-other-candidate]",
+          "tests/test_stage_0_5_round2_task1_admission.py::test_round2_rejects_candidate_or_task_identity[experiment_id-other-task]",
+          "tests/test_stage_0_5_round2_task1_admission.py::test_round2_rejects_input_hash_drift_and_locked_field_change",
+          "tests/test_stage_0_5_round2_task1_admission.py::test_round2_negative_contract_is_prelaunch_only",
+          "tests/test_stage_0_5_round2_task1_candidate.py::test_round2_candidate_is_a_static_single_factor_input"
+        ],
+        "passed": 9,
+        "status": "PASS"
+      },
+      "skipped": [
+        {
+          "nodeid": "tests/test_see_v2x_reaudit.py::test_pairing_identity_unique_in_raw",
+          "reason": "('D:\\\\shen\\\\TJU\\\\AAD\\\\code\\\\tmp\\\\task6_git_20261030_final\\\\code\\\\tests\\\\test_see_v2x_reaudit.py', 75, 'Skipped: raw sample not present (pure-clone mode)')"
+        },
+        {
+          "nodeid": "tests/test_simulation_real_coverage.py::test_sealed_stage_0_3_canonical_parquet_directly_reaches_writer",
+          "reason": "('D:\\\\shen\\\\TJU\\\\AAD\\\\code\\\\tmp\\\\task6_git_20261030_final\\\\code\\\\tests\\\\test_simulation_real_coverage.py', 377, 'Skipped: sealed Stage 0.3 canonical pNEUMA input is not available in this clone')"
+        },
+        {
+          "nodeid": "tests/test_stage_0_2_task_2_5_1_targeted_validation.py::test_new_casebook_has_24_pages_and_metrics_match_locked_counts",
+          "reason": "('D:\\\\shen\\\\TJU\\\\AAD\\\\code\\\\tmp\\\\task6_git_20261030_final\\\\code\\\\tests\\\\test_stage_0_2_task_2_5_1_targeted_validation.py', 55, 'Skipped: requires sealed local Task 2.5.1 CSV/PDF package; unit tests above remain portable')"
+        },
+        {
+          "nodeid": "tests/test_stage_0_2_task_2_5_2_key_difference_cases.py::test_center_event_and_nearby_are_distinct",
+          "reason": "('D:\\\\shen\\\\TJU\\\\AAD\\\\code\\\\tmp\\\\task6_git_20261030_final\\\\code\\\\tests\\\\test_stage_0_2_task_2_5_2_key_difference_cases.py', 9, 'Skipped: requires sealed local Task 2.5.2 CSV/PDF package; excluded from portable Git evidence')"
+        },
+        {
+          "nodeid": "tests/test_stage_0_2_task_2_5_2_key_difference_cases.py::test_difference_pools_are_present",
+          "reason": "('D:\\\\shen\\\\TJU\\\\AAD\\\\code\\\\tmp\\\\task6_git_20261030_final\\\\code\\\\tests\\\\test_stage_0_2_task_2_5_2_key_difference_cases.py', 15, 'Skipped: requires sealed local Task 2.5.2 CSV/PDF package; excluded from portable Git evidence')"
+        },
+        {
+          "nodeid": "tests/test_stage_0_2_task_2_5_2_key_difference_cases.py::test_new_casebook_pages_and_unverified_truth",
+          "reason": "('D:\\\\shen\\\\TJU\\\\AAD\\\\code\\\\tmp\\\\task6_git_20261030_final\\\\code\\\\tests\\\\test_stage_0_2_task_2_5_2_key_difference_cases.py', 23, 'Skipped: requires sealed local Task 2.5.2 CSV/PDF package; excluded from portable Git evidence')"
+        },
+        {
+          "nodeid": "tests/test_stage_0_2_task_2_5_2_key_difference_cases.py::test_all_confirmation_times_are_observed_member_times",
+          "reason": "('D:\\\\shen\\\\TJU\\\\AAD\\\\code\\\\tmp\\\\task6_git_20261030_final\\\\code\\\\tests\\\\test_stage_0_2_task_2_5_2_key_difference_cases.py', 28, 'Skipped: requires sealed local Task 2.5.2 CSV/PDF package; excluded from portable Git evidence')"
+        },
+        {
+          "nodeid": "tests/test_stage_0_2_task_2_5_threshold_validation.py::test_grid_has_complete_6x4_and_baseline",
+          "reason": "('D:\\\\shen\\\\TJU\\\\AAD\\\\code\\\\tmp\\\\task6_git_20261030_final\\\\code\\\\tests\\\\test_stage_0_2_task_2_5_threshold_validation.py', 10, 'Skipped: requires sealed local Task 2.5 outputs; excluded from portable Git evidence')"
+        },
+        {
+          "nodeid": "tests/test_stage_0_2_task_2_5_threshold_validation.py::test_duration_monotonicity_is_explicitly_observed",
+          "reason": "('D:\\\\shen\\\\TJU\\\\AAD\\\\code\\\\tmp\\\\task6_git_20261030_final\\\\code\\\\tests\\\\test_stage_0_2_task_2_5_threshold_validation.py', 17, 'Skipped: requires sealed local Task 2.5 outputs; excluded from portable Git evidence')"
+        },
+        {
+          "nodeid": "tests/test_stage_0_2_task_2_5_threshold_validation.py::test_confirmation_is_causal_and_delayed",
+          "reason": "('D:\\\\shen\\\\TJU\\\\AAD\\\\code\\\\tmp\\\\task6_git_20261030_final\\\\code\\\\tests\\\\test_stage_0_2_task_2_5_threshold_validation.py', 24, 'Skipped: requires sealed local Task 2.5 outputs; excluded from portable Git evidence')"
+        },
+        {
+          "nodeid": "tests/test_stage_0_2_task_2_5_threshold_validation.py::test_sampling_sensitivity_does_not_interpolate",
+          "reason": "('D:\\\\shen\\\\TJU\\\\AAD\\\\code\\\\tmp\\\\task6_git_20261030_final\\\\code\\\\tests\\\\test_stage_0_2_task_2_5_threshold_validation.py', 31, 'Skipped: requires sealed local Task 2.5 outputs; excluded from portable Git evidence')"
+        },
+        {
+          "nodeid": "tests/test_stage_0_2_task_2_5_threshold_validation.py::test_case_pool_preserves_lankershim_row_31245",
+          "reason": "('D:\\\\shen\\\\TJU\\\\AAD\\\\code\\\\tmp\\\\task6_git_20261030_final\\\\code\\\\tests\\\\test_stage_0_2_task_2_5_threshold_validation.py', 38, 'Skipped: requires sealed local Task 2.5 outputs; excluded from portable Git evidence')"
+        },
+        {
+          "nodeid": "tests/test_stage_0_2_task_2_5_threshold_validation.py::test_audit_keeps_scientific_rule_unfrozen",
+          "reason": "('D:\\\\shen\\\\TJU\\\\AAD\\\\code\\\\tmp\\\\task6_git_20261030_final\\\\code\\\\tests\\\\test_stage_0_2_task_2_5_threshold_validation.py', 44, 'Skipped: requires sealed local Task 2.5 outputs; excluded from portable Git evidence')"
+        },
+        {
+          "nodeid": "tests/test_stage_0_5_b00_admission_v6.py::test_symlink_path_refused",
+          "reason": "('D:\\\\shen\\\\TJU\\\\AAD\\\\code\\\\tmp\\\\task6_git_20261030_final\\\\code\\\\tests\\\\test_stage_0_5_b00_admission_v6.py', 48, 'Skipped: OS symlink privilege unavailable; path traversal rejection tested separately')"
+        },
+        {
+          "nodeid": "tests/test_stage_0_5_boundary_bottleneck.py::test_capsule_bootstrap_avoids_ambient_site_paths",
+          "reason": "('D:\\\\shen\\\\TJU\\\\AAD\\\\code\\\\tmp\\\\task6_git_20261030_final\\\\code\\\\tests\\\\test_stage_0_5_boundary_bottleneck.py', 72, 'Skipped: bootstrap contract is exercised by the dedicated -S capsule preflight')"
+        },
+        {
+          "nodeid": "tests/test_stage_0_5_process_supervision.py::test_real_sampler_continues_while_controller_holds_gil",
+          "reason": "('D:\\\\shen\\\\TJU\\\\AAD\\\\code\\\\tmp\\\\task6_git_20261030_final\\\\code\\\\tests\\\\test_stage_0_5_process_supervision.py', 36, 'Skipped: real fork/GIL check requires Linux; no SUMO')"
+        },
+        {
+          "nodeid": "tests/test_stage_0_5_v2_admission.py::test_real_symlink_escape_if_operating_system_permits",
+          "reason": "('D:\\\\shen\\\\TJU\\\\AAD\\\\code\\\\tmp\\\\task6_git_20261030_final\\\\code\\\\tests\\\\test_stage_0_5_v2_admission.py', 271, \"Skipped: OS symlink creation unavailable: [WinError 1314] 客户端没有所需的特权。: 'D:\\\\\\\\shen\\\\\\\\TJU\\\\\\\\AAD\\\\\\\\code\\\\\\\\outputs\\\\\\\\diagnostics\\\\\\\\round2_task6_20261030\\\\\\\\validation_support\\\\\\\\full_tmp\\\\\\\\test_real_symlink_escape_if_op0\\\\\\\\outside' -> 'D:\\\\\\\\shen\\\\\\\\TJU\\\\\\\\AAD\\\\\\\\code\\\\\\\\outputs\\\\\\\\diagnostics\\\\\\\\round2_task6_20261030\\\\\\\\validation_support\\\\\\\\full_tmp\\\\\\\\test_real_symlink_escape_if_op0\\\\\\\\repo\\\\\\\\outputs\\\\\\\\link'\")"
+        }
+      ],
+      "status": "PASS_AFTER_EXACT_STATIC_FIXTURE_RESTORATION_AND_FAILED_NODE_RETEST",
+      "unresolved_failures": 0,
+      "warnings": [
+        "Existing pandas incompatible-dtype assignment FutureWarning in test_stage_0_5_final_closure.py:79",
+        "Existing pandas fillna downcasting FutureWarning in audit_stage_0_5_work_package_1.py:111; retained, no unrelated fix"
+      ]
+    },
+    "guard": {
+      "denied_operations": 0,
+      "native_processes_started": 0,
+      "real_data_copy_to_validation_clone": 0,
+      "runner_sha256": "c8575f2fa81bd16083570e246395756922bdbe8e65f0bc263ab183a61012aa16",
+      "sitecustomize_sha256": "bcc510cebe3ef81fa4c31553b4219f478bb6364321f97db31cc91d0d856478f9",
+      "traci_connections": 0
+    },
+    "pure_git": {
+      "base_head": "8311336779f77cd18b1411ab299959d463a2dffc",
+      "checkout_rules": "Formal P2 JSON and formal measurement source retain CRLF; Task4 dependency and Task6 sources explicitly LF; all runtime SHA bindings unchanged.",
+      "independent_source_and_aggregate_check": "PASS after restoring Git line-ending representation",
+      "portable_evidence": "PASS PORTABLE_EVIDENCE_OK",
+      "scope": "Local Git clone plus staged task patch and SHA-exact static XML reconstructed solely from existing Git objects. No trajectory/raw data copied.",
+      "sealed_independent_package_and_source_verifier": "PASS",
+      "staged_task_files_exact_git_object_match": 40,
+      "status": "PASS_SEALED_STAGED_INDEX",
+      "strict_docs": "PASS PROJECT_DOCS_OK"
+    },
+    "scope": "Task6 engineering checks; descriptive analysis only, not a scientific Gate",
+    "static_fixture_restoration": {
+      "external_data_copied": false,
+      "files": [
+        {
+          "representation": "attribute_filtered",
+          "sha256": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+          "snapshot_fixture_path": "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/WEEK_0750_B00_IC1_s20261201_A03/network.net.xml",
+          "source_git_path": "evidence/admission/AAD-S0.5-ROUND2-TASK1-20261028/candidate-v1/inputs/network.net.xml"
+        },
+        {
+          "representation": "attribute_filtered",
+          "sha256": "d69c79c4c2303125e696d86b5907cbd1e043f21971dde4c4903eb3ccf84dbdcf",
+          "snapshot_fixture_path": "evidence/admission/AAD-S0.5-ROUND2-TASK1-20261028/candidate-v1/inputs/network.net.xml",
+          "source_git_path": "evidence/admission/AAD-S0.5-ROUND2-TASK1-20261028/candidate-v1/inputs/network.net.xml"
+        },
+        {
+          "representation": "git_blob",
+          "sha256": "c55b242f09b6a86527852bf686f06f3347abc44aa1c16c199c51935ce93dc6c6",
+          "snapshot_fixture_path": "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/WEEK_0750_B00_IC1_s20261201_A03/run.sumocfg",
+          "source_git_path": "evidence/admission/AAD-S0.5-ROUND2-TASK1-20261028/candidate-v1/inputs/run.sumocfg"
+        },
+        {
+          "representation": "git_blob",
+          "sha256": "c55b242f09b6a86527852bf686f06f3347abc44aa1c16c199c51935ce93dc6c6",
+          "snapshot_fixture_path": "evidence/admission/AAD-S0.5-ROUND2-TASK1-20261028/candidate-v1/inputs/run.sumocfg",
+          "source_git_path": "evidence/admission/AAD-S0.5-ROUND2-TASK1-20261028/candidate-v1/inputs/run.sumocfg"
+        },
+        {
+          "representation": "git_blob",
+          "sha256": "b6df8d9ce52b56fac50899cc2e6d1329c7858325aae0f0c86c76d77f796a7574",
+          "snapshot_fixture_path": "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/WEEK_0750_B00_IC1_s20261201_A03/routes.rou.xml",
+          "source_git_path": "evidence/admission/AAD-WEEK-2026-10-27-TO-STAGE-I-V1/candidate-v1/routes.rou.xml"
+        },
+        {
+          "representation": "attribute_filtered",
+          "sha256": "a4c78db55984cc8c320b06ec2e257bdf6d4902c0dfdf015348157e30cdb80e79",
+          "snapshot_fixture_path": "evidence/admission/AAD-S0.5-ROUND2-TASK1-20261028/candidate-v1/inputs/routes.rou.xml",
+          "source_git_path": "evidence/admission/AAD-S0.5-ROUND2-TASK1-20261028/candidate-v1/inputs/routes.rou.xml"
+        }
+      ],
+      "git_checkout": "Choose only Git blob or Git-attribute-filtered bytes with exact sealed SHA; source content unchanged. P2 config has explicit CRLF checkout.",
+      "only_static_xml": true
+    },
+    "status": "PASS",
+    "targeted_regression": {
+      "arguments": [
+        "-q",
+        "-p",
+        "no:cacheprovider",
+        "--basetemp=D:\\shen\\TJU\\AAD\\code\\outputs\\diagnostics\\round2_task6_20261030\\validation_support\\targeted_tmp",
+        "--junitxml=D:\\shen\\TJU\\AAD\\code\\outputs\\diagnostics\\round2_task6_20261030\\validation_support\\targeted.xml",
+        "tests/test_stage_0_5_round2_task6_micro_interaction.py",
+        "tests/test_stage_0_5_round2_task5_task4_evidence_integrity.py",
+        "tests/test_stage_0_5_round2_task4_real_source_support.py",
+        "tests/test_formal_risk_measurement.py",
+        "tests/test_stage_0_5_post_r2_offline_diagnostic.py",
+        "tests/test_project_evidence_scope.py",
+        "tests/test_project_docs.py"
+      ],
+      "new_task6_test_count": 20,
+      "passed": 61,
+      "status": "PASS"
+    },
+    "unrelated_historical_integrity_limit": "METHOD-EXPANSION run_metadata mismatch and missing trajectory_coverage_matrix retained as non-Pass historical limitation; only separately SHA-verified summaries reused."
+  },
+  "historical_limitation": "METHOD-EXPANSION run_metadata hash mismatch and missing trajectory_coverage_matrix retained; only separately SHA-verified result summaries reused",
+  "independent_aggregate_validation": {
+    "context_groups": 32,
+    "historical_task4_task5_unchanged": true,
+    "identity_level_csv_columns": 0,
+    "joint_groups": 8,
+    "local_input_hashes_verified": 0,
+    "official_events_and_exposures_reproduced": true,
+    "sealed": false,
+    "status": "PASS"
+  },
+  "science_boundary": "descriptive findings only; no equivalence, Model Discrepancy, physical propagation or Gate acceptance",
+  "status": "PASS_OFFLINE_TASK6"
+}

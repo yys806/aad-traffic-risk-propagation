@@ -1,3 +1,9 @@
+## Current — 2026-10-30 Round2 Task6
+
+Verified offline Task6 reproduces NGSIM source Formal P2 167/159 and sealed SUMO source zero. Small gaps alone do not explain the difference: low-speed positive closing tails and gap-closing joint structure differ, including coarse common macro support. Lane/leader transitions occur near a subset of real events, but most complete source contexts show no observed transition. Measurement artifacts, precise causal mechanism and scientific equivalence remain Unknown. No new SUMO/TraCI/trajectory/holdout; scientific definitions and Gate/Stage 0.6/Protocol Lock/Stage I unchanged.
+
+Report: `docs/STAGE_0_5_ROUND2_TASK6_REAL_SIM_MICRO_INTERACTION_ANALYSIS_20261030.md`; evidence: `evidence/results/RES-STAGE-0.5-ROUND2-TASK6-REAL-SIM-MICRO-INTERACTION-20261030/`.
+
 ## AAD-S0.5-ROUND2-TASK3-MEASUREMENT-CONTRACT-ALIGNMENT-20261029
 
 Verified minimal formal-alignment repair preserves explicit identity/continuity flags; formal pair/time qualification remains separate from D1 same-native-lane diagnostics. B00 and Round2 candidate sealed source P2 remain zero; no SUMO/TraCI/new trajectories/holdout. Stage 0.5 Gate, Stage 0.6, Protocol Lock, Stage I and Round3 unchanged.
