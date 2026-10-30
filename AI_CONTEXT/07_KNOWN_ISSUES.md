@@ -1,3 +1,9 @@
+## Current — 2026-10-30 Round2 Task7: physical-reference availability
+
+Verified bounded Task7 evidence-availability investigation is complete; physical review remains BLOCKED_NO_VERIFIED_INDEPENDENT_PHYSICAL_REFERENCE. Official raw/processed camera files are documented, but no local independent raw video, source-camera/Local_Y mapping or video-PTS/Global_Time mapping is verified. No event selection or human review occurred. Source Formal P2 167/159 and Task1–Task6 history remain unchanged; Task6 controls are row-distinct, not vehicle-independent (131/165 and 115/149 source followers/rows). AGENTS section8 alone adopts risk-based validation. No new video/trajectory/SUMO/TraCI/third-window/holdout; Gate and later stages unchanged.
+
+Report: `docs/STAGE_0_5_ROUND2_TASK7_INDEPENDENT_PHYSICAL_QUALITY_REVIEW_20261030.md`; evidence: `evidence/results/RES-STAGE-0.5-ROUND2-TASK7-INDEPENDENT-PHYSICAL-QUALITY-REVIEW-20261030/`.
+
 ## 2026-10-30 Task6 — verified limits and retained Unknowns
 
 Event physical truth and causal attribution remain Unknown; canonical NGSIM lacks follower class/length, exact NGSIM–SUMO time/vehicle mapping is unproven, and SUMO already has five tau classes. Historical METHOD-EXPANSION bundle has a run_metadata.json hash mismatch and missing trajectory_coverage_matrix.json; only separately SHA-verified summaries are reused. Task4/5 evidence remains unchanged. No automatic repair, model choice, new seed or Gate advance.

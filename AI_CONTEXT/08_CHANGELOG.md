@@ -1,3 +1,9 @@
+## Current — 2026-10-30 Round2 Task7: physical-reference availability
+
+Verified bounded Task7 evidence-availability investigation is complete; physical review remains BLOCKED_NO_VERIFIED_INDEPENDENT_PHYSICAL_REFERENCE. Official raw/processed camera files are documented, but no local independent raw video, source-camera/Local_Y mapping or video-PTS/Global_Time mapping is verified. No event selection or human review occurred. Source Formal P2 167/159 and Task1–Task6 history remain unchanged; Task6 controls are row-distinct, not vehicle-independent (131/165 and 115/149 source followers/rows). AGENTS section8 alone adopts risk-based validation. No new video/trajectory/SUMO/TraCI/third-window/holdout; Gate and later stages unchanged.
+
+Report: `docs/STAGE_0_5_ROUND2_TASK7_INDEPENDENT_PHYSICAL_QUALITY_REVIEW_20261030.md`; evidence: `evidence/results/RES-STAGE-0.5-ROUND2-TASK7-INDEPENDENT-PHYSICAL-QUALITY-REVIEW-20261030/`.
+
 ## 2026-10-30 — Task6 offline joint and event-context evidence
 
 Verified offline Task6 reproduces NGSIM source Formal P2 167/159 and sealed SUMO source zero. Small gaps alone do not explain the difference: low-speed positive closing tails and gap-closing joint structure differ, including coarse common macro support. Lane/leader transitions occur near a subset of real events, but most complete source contexts show no observed transition. Measurement artifacts, precise causal mechanism and scientific equivalence remain Unknown. No new SUMO/TraCI/trajectory/holdout; scientific definitions and Gate/Stage 0.6/Protocol Lock/Stage I unchanged.

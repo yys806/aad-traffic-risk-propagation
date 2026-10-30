@@ -1,0 +1,93 @@
+{
+  "engineering_status": "PASS_SCOPED_AVAILABILITY_INVESTIGATION",
+  "physical_review_status": "BLOCKED_NO_VERIFIED_INDEPENDENT_PHYSICAL_REFERENCE",
+  "initial_research_access_failures": [
+    {
+      "scope": "Sandbox official metadata GET",
+      "result": "Network socket permission denied; same authorized metadata request succeeded with normal escalation; no media request"
+    },
+    {
+      "scope": "Exploratory metadata snippets",
+      "result": "Path escaping and syntax quoting errors corrected locally; failed snippets did not execute analysis or alter scientific artifacts"
+    }
+  ],
+  "task_scope": "Availability investigation only; zero event selection, visual adjudication or trajectory re-extraction",
+  "tests": {
+    "command": "python -m pytest tests/test_project_docs.py tests/test_project_evidence_scope.py -q -p no:cacheprovider",
+    "passed": 14,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "elapsed_s": 3.497,
+    "junit_sha256": "9fe6d4b2912b28233e1340b8bfe7381a7c00aba4919c5de74357d023bab1ae19",
+    "status": "PASS"
+  },
+  "notes": "Final results populated before sealing and commit.",
+  "initial_engineering_failures": [
+    {
+      "command": "python code/scripts/validate_project_docs.py --strict-git",
+      "result": "PROJECT_DOCS_INVALID: new Task7 result not synchronized to RESULTS_INDEX",
+      "cause": "Task7 introduction used task name rather than required result-ID heading",
+      "repair": "Only the newly added RESULTS_INDEX heading corrected; no historical entries/tests changed"
+    },
+    {
+      "command": "Intermediate strict-docs check after adding failure history",
+      "result": "Validation record size/SHA stale in exported index",
+      "repair": "Re-seal local package and refresh only Task7 exported entry before final read-only verification; no unrelated changes"
+    },
+    {
+      "command": "Scoped exporter after intermediate validation-record update",
+      "result": "Self-managed evidence drift rejected automatic resealing",
+      "repair": "Explicit authorized Task7-only index resealing; 73 historical entries preserved exactly; exporter drift guard unchanged"
+    },
+    {
+      "command": "Post-commit git status --short",
+      "result": "Task7 local research working directory was not yet covered by existing Task6-specific ignore rule",
+      "repair": "Add exactly /local_research/literature-work/task7_20261030/ to .gitignore; keep local metadata/PDF/renders and amend only unpublished Task7 commit; no deletion or broad ignore"
+    }
+  ],
+  "independent_boundary_validation": {
+    "status": "PASS",
+    "historical_payloads": 39,
+    "historical_export_entries_preserved": 73,
+    "fail_closed_review_status": true,
+    "empty_case_artifacts_not_created": true,
+    "authorized_metadata_only_resources": 32,
+    "AGENTS_outside_section8_byte_unchanged": true,
+    "source_bindings_verified": true
+  },
+  "syntax_check": {
+    "file": "code/scripts/export_project_evidence.py",
+    "method": "python -m py_compile",
+    "status": "PASS"
+  },
+  "strict_docs": {
+    "status": "PASS",
+    "command": "python code/scripts/validate_project_docs.py --strict-git",
+    "result": "PROJECT_DOCS_OK after own result-ID heading correction and explicit reseal"
+  },
+  "full_pytest_executed": false,
+  "whole_repository_compileall_executed": false,
+  "validation_boundary": "Only task-relevant checks, no historical input or line-ending recovery",
+  "portable_git_entry_check": {
+    "status": "PASS",
+    "scope": "18 staged Git metadata objects plus changed exporter only; isolated empty fixture; not a full clone/suite",
+    "media_or_trajectories_copied": 0,
+    "AGENTS_other_sections_equal_in_Git_objects": true,
+    "metadata_phase": "Pre-final validation-record reseal; final blob identity checked again before commit",
+    "exporter_sha256": "57ce0fbaebe67445f5b5a3e98d159c82bc7312aa85966887232a48065d602669"
+  },
+  "explicit_resealing": "Only Task7 local manifest/SHA256SUMS and global Task7 entry refreshed; 73 older exported entries retained; no drift guard bypass or production change",
+  "scope_protection": {
+    "SUMO_starts": 0,
+    "TraCI_connections": 0,
+    "new_trajectories": 0,
+    "canonical_parquet_reads": 0,
+    "third_window_trajectory_reads": 0,
+    "holdout_reads": 0,
+    "video_downloads": 0,
+    "formal_measurement_changes": 0
+  },
+  "verification_coverage_limit": "Metadata/evidence registration only; no actual video, visual adjudication, geometric calibration or scientific Gate validation claimed.",
+  "local_working_area_rule": "Task7-only .gitignore entry; local original metadata, rendered pages, snapshots and temporary validation objects excluded from Git"
+}

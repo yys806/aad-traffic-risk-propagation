@@ -122,6 +122,22 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         )
     ]
 
+    # Task7 availability metadata only; no videos or identity-level cases.
+    task7_root = "evidence/results/RES-STAGE-0.5-ROUND2-TASK7-INDEPENDENT-PHYSICAL-QUALITY-REVIEW-20261030"
+    pairs["RES-STAGE-0.5-ROUND2-TASK7-INDEPENDENT-PHYSICAL-QUALITY-REVIEW-20261030"] = [
+        (f"{task7_root}/{name}", name)
+        for name in (
+            "agents_section8_change.txt", "agents_section8_scope.json",
+            "camera_coverage_audit.json", "conditional_review_plan.json",
+            "context_consistency_check.json", "documented_video_resources.csv",
+            "evidence_reuse_matrix.csv", "literature_reuse.json",
+            "official_video_catalog_metadata.json", "resource_request.json",
+            "review_summary.json", "source_availability.json", "source_bindings.json",
+            "validation_scope.json", "video_time_alignment_audit.json",
+            "validation_record.json", "manifest.json", "SHA256SUMS",
+        )
+    ]
+
     # Policy A preflight proposals, not a frozen execution protocol.
     pairs['RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1'] = [
         ('code/outputs/formal/calibration/stage_0_5_interaction_diagnostics_v1/portable/' + name, name)
@@ -868,6 +884,8 @@ def _validate_source(source: Path) -> None:
         "evidence_reuse_matrix.csv", "gap_closing_joint_histogram.csv",
         "independent_time_block_joint_metrics.csv", "joint_distribution_summary.csv",
         "macro_common_support_cells.csv",
+        # Task7 official file metadata, not traffic observations or case identities.
+        "documented_video_resources.csv",
         }
     if source.suffix.lower() not in {".json", ".md", ".txt", ".sha256"} and source.name not in aggregate_names:
         raise ValueError(f"unsupported evidence file type: {source}")

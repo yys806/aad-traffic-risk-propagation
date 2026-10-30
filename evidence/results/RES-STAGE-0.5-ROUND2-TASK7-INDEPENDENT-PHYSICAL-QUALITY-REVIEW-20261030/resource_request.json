@@ -1,0 +1,27 @@
+{
+  "status": "PROPOSED_NOT_APPROVED_NOT_EXECUTED",
+  "whole_archive": {
+    "name": "NGSIM US-101 Videos.zip",
+    "bytes": 12539460866,
+    "default_download_allowed": false,
+    "reason": "Contains third window and excessive raw/processed media; no bulk acquisition authorized"
+  },
+  "candidate_files": "documented_video_resources.csv: 16 raw candidates for only two authorized windows; processed counterparts are localization aids only",
+  "minimum_camera_set": null,
+  "minimum_camera_set_reason": "Cannot truthfully specify source-covering camera IDs until the GIS-to-Local_Y relation is verified",
+  "individual_file_sizes": null,
+  "request_order": [
+    "Clarify source/Local_Y camera coverage and original movie PTS/frame-to-epoch anchors; reconcile catalog/attachment license terms",
+    "Ask provider for per-file inventory/sizes/checksums and only the source-covering camera/time subset",
+    "Researcher decides any video acquisition; bind source/SHA and verify timing before selecting <=36 cases"
+  ],
+  "future_clip_budget": {
+    "cases_max": 36,
+    "seconds_per_case_max": 10,
+    "one_view_total_seconds_max": 360,
+    "multiple_camera_factor": "Unknown",
+    "codec_bitrate_bps": null,
+    "disk_or_network_bytes": null,
+    "notes": "Duration bound only, not a guaranteed size or download request. Full-file acquisition overhead unknown."
+  }
+}

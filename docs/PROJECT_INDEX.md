@@ -1,3 +1,9 @@
+## 2026-10-30 Round2 Task7 — investigation complete; physical review blocked
+
+Verified bounded Task7 evidence-availability investigation is complete; physical review remains BLOCKED_NO_VERIFIED_INDEPENDENT_PHYSICAL_REFERENCE. Official raw/processed camera files are documented, but no local independent raw video, source-camera/Local_Y mapping or video-PTS/Global_Time mapping is verified. No event selection or human review occurred. Source Formal P2 167/159 and Task1–Task6 history remain unchanged; Task6 controls are row-distinct, not vehicle-independent (131/165 and 115/149 source followers/rows). AGENTS section8 alone adopts risk-based validation. No new video/trajectory/SUMO/TraCI/third-window/holdout; Gate and later stages unchanged.
+
+Report: `docs/STAGE_0_5_ROUND2_TASK7_INDEPENDENT_PHYSICAL_QUALITY_REVIEW_20261030.md`; evidence: `evidence/results/RES-STAGE-0.5-ROUND2-TASK7-INDEPENDENT-PHYSICAL-QUALITY-REVIEW-20261030/`.
+
 # 2026-10-30 Round2 Task6：微观交互差异分析
 
 入口：`code/scripts/analyze_stage_0_5_round2_task6_micro_interaction.py`；封包：`code/scripts/package_stage_0_5_round2_task6_micro_interaction.py`；独立核验：`code/scripts/verify_stage_0_5_round2_task6_micro_interaction.py`；测试：`code/tests/test_stage_0_5_round2_task6_micro_interaction.py`。只读封存数据，联合分布、事件上下文及质量诊断不改变正式测量。

@@ -333,12 +333,13 @@
   "code/scripts/analyze_stage_0_5_round2_task6_micro_interaction.py",
   "code/scripts/package_stage_0_5_round2_task6_micro_interaction.py",
   "code/scripts/verify_stage_0_5_round2_task6_micro_interaction.py",
-  "code/tests/test_stage_0_5_round2_task6_micro_interaction.py"
+  "code/tests/test_stage_0_5_round2_task6_micro_interaction.py",
+  "docs/STAGE_0_5_ROUND2_TASK7_INDEPENDENT_PHYSICAL_QUALITY_REVIEW_20261030.md"
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-S0.5-ROUND2-TASK6: verified offline real–simulation micro-interaction analysis; causal mechanism remains Unknown",
-  "why_now": "Joint state support and event-centered evidence are complete; researcher decides physical-quality adjudication and any separately authorized response experiment.",
+  "active_task": "AAD-S0.5-ROUND2-TASK7: availability investigation completed; physical review blocked without verified independent reference",
+  "why_now": "Independent physical evidence must be established before event visual review or stronger mechanism claims; no new experimental authority.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
    "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/count_reconciliation.json",
@@ -1155,7 +1156,8 @@
     "RES-STAGE-0.5-ROUND2-TASK3-MEASUREMENT-CONTRACT-ALIGNMENT-20261029",
     "RES-STAGE-0.5-ROUND2-TASK4-REAL-SOURCE-SUPPORT-AND-MULTISCALE-CROSSWALK-20261030",
     "RES-STAGE-0.5-ROUND2-TASK5-TASK4-EVIDENCE-INTEGRITY-20261030",
-    "RES-STAGE-0.5-ROUND2-TASK6-REAL-SIM-MICRO-INTERACTION-20261030"
+    "RES-STAGE-0.5-ROUND2-TASK6-REAL-SIM-MICRO-INTERACTION-20261030",
+    "RES-STAGE-0.5-ROUND2-TASK7-INDEPENDENT-PHYSICAL-QUALITY-REVIEW-20261030"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -5036,6 +5038,47 @@
    "gate_status": "blocked",
    "paper_locations": [
     "docs/STAGE_0_5_ROUND2_TASK6_REAL_SIM_MICRO_INTERACTION_ANALYSIS_20261030.md"
+   ],
+   "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-STAGE-0.5-ROUND2-TASK7-INDEPENDENT-PHYSICAL-QUALITY-REVIEW-20261030",
+   "experiment_id": "stage_0_5",
+   "name": "Round2 Task7 independent physical-reference availability investigation",
+   "status": "availability_investigation_completed_physical_review_blocked",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK7-INDEPENDENT-PHYSICAL-QUALITY-REVIEW-20261030/manifest.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK7-INDEPENDENT-PHYSICAL-QUALITY-REVIEW-20261030/SHA256SUMS",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK7-INDEPENDENT-PHYSICAL-QUALITY-REVIEW-20261030/validation_record.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK7-INDEPENDENT-PHYSICAL-QUALITY-REVIEW-20261030/source_bindings.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK7-INDEPENDENT-PHYSICAL-QUALITY-REVIEW-20261030/source_availability.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK7-INDEPENDENT-PHYSICAL-QUALITY-REVIEW-20261030/video_time_alignment_audit.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK7-INDEPENDENT-PHYSICAL-QUALITY-REVIEW-20261030/review_summary.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK7-INDEPENDENT-PHYSICAL-QUALITY-REVIEW-20261030/agents_section8_scope.json"
+   ],
+   "local_artifact_paths": [
+    "local_research/literature-work/task7_20261030/"
+   ],
+   "code_version_source": "Task7 baseline e586f301977898b05fe851da57328f97c691c85d; source_bindings.json and AGENTS section8 scope audit",
+   "configuration_source": "Task7 v1.0 metadata-only investigation; physical-review stop conditions enforced; conditional_review_plan.json is unactivated Proposal",
+   "data_version_source": "Existing quality/context summaries plus SHA-bound official US-101 metadata and local camera GIS; no traffic trajectory data reread",
+   "core_metrics": {
+    "source_formal_p2_reused": [
+     167,
+     159
+    ],
+    "verified_local_independent_raw_videos": 0,
+    "cases_selected": 0,
+    "human_reviews_completed": 0,
+    "video_downloads": 0,
+    "new_native_launches": 0,
+    "new_trajectories": 0,
+    "holdout_reads": 0
+   },
+   "current_conclusion": "Verified bounded Task7 evidence-availability investigation is complete; physical review remains BLOCKED_NO_VERIFIED_INDEPENDENT_PHYSICAL_REFERENCE. Official raw/processed camera files are documented, but no local independent raw video, source-camera/Local_Y mapping or video-PTS/Global_Time mapping is verified. No event selection or human review occurred. Source Formal P2 167/159 and Task1–Task6 history remain unchanged; Task6 controls are row-distinct, not vehicle-independent (131/165 and 115/149 source followers/rows). AGENTS section8 alone adopts risk-based validation. No new video/trajectory/SUMO/TraCI/third-window/holdout; Gate and later stages unchanged.",
+   "gate_status": "blocked",
+   "paper_locations": [
+    "docs/STAGE_0_5_ROUND2_TASK7_INDEPENDENT_PHYSICAL_QUALITY_REVIEW_20261030.md"
    ],
    "scientific_claim_eligible": false
   }

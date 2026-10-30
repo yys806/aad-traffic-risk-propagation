@@ -1,0 +1,23 @@
+{
+  "risk_class": "bounded documentation/metadata evidence and exporter allowlist only",
+  "formal_scientific_logic_changed": false,
+  "shared_production_modules_changed": false,
+  "planned_checks": [
+    "AGENTS bytes outside section8 equal baseline",
+    "Task4/5/6 package SHA conservation",
+    "Task7 fail-closed status and manifest/SHA inventory",
+    "Scoped evidence-export registration and preservation regression",
+    "Project document validator and documentation tests",
+    "Syntax of changed exporter only",
+    "Small Git-object portability check for new evidence entry, no full-clone suite"
+  ],
+  "not_planned": [
+    "Full pytest",
+    "whole-code compileall",
+    "historical fixture recovery",
+    "SUMO/native integration",
+    "full trajectory analysis"
+  ],
+  "engineering_validation_budget": "<=20% total task time and normally <=30 minutes; unrelated failures recorded, not repaired",
+  "task_specific_ignore_rule": "/local_research/literature-work/task7_20261030/"
+}

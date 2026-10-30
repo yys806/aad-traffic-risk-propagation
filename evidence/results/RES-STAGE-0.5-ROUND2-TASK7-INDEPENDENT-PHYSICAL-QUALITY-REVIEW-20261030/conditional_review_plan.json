@@ -1,0 +1,29 @@
+{
+  "status": "PROPOSAL_ONLY_NOT_ACTIVATED",
+  "precondition": "Verified independent raw video, reliable event-video time/camera mapping and applicable terms; all Task7-A stop conditions resolved",
+  "selected_risk_events": 0,
+  "selected_controls": 0,
+  "freeze_performed": false,
+  "maximum_cases": {
+    "risk_per_window": 12,
+    "control_per_window": 6,
+    "total": 36
+  },
+  "future_preregistered_rule": {
+    "severity_field": "Existing sealed event minimum TTC; do not replace with onset TTC or re-extract full trajectories",
+    "ordering": "Within each window order by event minimum TTC ascending then SHA256(window|sealed_event_id|20261030)",
+    "extreme": "First 4 in severity order",
+    "middle": "4 contiguous central order statistics, excluding already selected events",
+    "representative": "First 4 remaining by SHA256 order, record unavailable contextual strata rather than invent cases",
+    "contextual_coverage": "Before selection freeze, record stable-leader/observed-transition/incomplete-or-quality-flag support in each severity layer; any deterministic quota refinement requires a versioned pre-video plan, never post-view replacement",
+    "controls": "Same window, lane/independent30s block/speed layer where available; at most one appearance of each follower trajectory; no inference from repeated Task6 control rows",
+    "blind_order": "Domain-separated SHA256(Review|window|case_key|20261030) order after fixed list; secret event/control mapping only locally"
+  },
+  "future_media_context": "Onset +/-5s where supported, actual available context recorded",
+  "no_fake_outputs": [
+    "case_selection.csv",
+    "blind_review_index.csv",
+    "manual_adjudication_template.csv"
+  ],
+  "not_created_reason": "No prerequisite has been established; no samples selected or review performed."
+}
