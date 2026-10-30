@@ -18,6 +18,10 @@ Report: docs/STAGE_0_5_POST_R2_OFFLINE_DIAGNOSTIC_20261029.md; script: code/scri
 
 Final execution entry: `docs/STAGE_0_5_ROUND2_TASK1_EXECUTION.md`; machine evidence: `evidence/results/RES-STAGE-0.5-ROUND2-TASK1-20261028/execution_final_v1/`; candidate output remains at the bound formal run path. One exact candidate completed with Rule A PASS, source P2=0 and one target_main event; the initial measurement rejection and zero-launch repair are both recorded. No independent seed or Gate/Stage0.6/StageI status changed.
 
+# 2026-10-30 Round2 Task 5：Task 4 证据完整性闭环
+
+入口：`code/scripts/audit_stage_0_5_round2_task5_task4_evidence_integrity.py`；报告：`docs/STAGE_0_5_ROUND2_TASK5_TASK4_EVIDENCE_INTEGRITY_20261030.md`；证据：`evidence/results/RES-STAGE-0.5-ROUND2-TASK5-TASK4-EVIDENCE-INTEGRITY-20261030/`。Task 4 两窗口不合并，onset unique/unmatched/ambiguous 守恒通过，NGSIM 尾块使用实际有效时长；Task 4 历史证据保持原 SHA。
+
 # 2026-10-30 Round2 Task 4：真实源区支持与多尺度对照
 
 入口：`code/scripts/analyze_stage_0_5_round2_task4_real_source_support.py`；报告：`docs/STAGE_0_5_ROUND2_TASK4_REAL_SOURCE_SUPPORT_AND_MULTISCALE_CROSSWALK_20261030.md`；证据：`evidence/results/RES-STAGE-0.5-ROUND2-TASK4-REAL-SOURCE-SUPPORT-AND-MULTISCALE-CROSSWALK-20261030/`。两个授权 NGSIM 窗口 Formal P2 全来源 543/732 和暴露 111425.9/133505.6 s 精确复现；source onset 167/159，target 174/252。仿真仅复用 B00/Round2 封存结果；无新轨迹、无 holdout、Gate 不变。

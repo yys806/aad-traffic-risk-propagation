@@ -1,3 +1,7 @@
+# Stage 0.5 Round2 Task 5：Task 4 证据完整性闭环（2026-10-30）
+
+有限离线审计修复了三个 Task 4 证据问题：跨窗口时间戳重叠与精确记录/事件交集核查、Formal P2 onset unique/unmatched/ambiguous 守恒审计、真实不完整 30 s block 有效时长分母。Task 4 历史证据 SHA 不变，Gate/Stage 0.6/Protocol Lock/Stage I 不变。报告：`docs/STAGE_0_5_ROUND2_TASK5_TASK4_EVIDENCE_INTEGRITY_20261030.md`；证据：`evidence/results/RES-STAGE-0.5-ROUND2-TASK5-TASK4-EVIDENCE-INTEGRITY-20261030/`。
+
 # Stage 0.5 Round2 Task 4：真实源区支持与多尺度对照（2026-10-30）
 
 离线重建两个授权 NGSIM US-101 窗口的 Formal P2 和固定 source/target onset 归属，复用封存 B00/Round2 measured state 做宏观、微观和风险对照。真实 source 有 167/159 个 Formal P2，B00/Round2 source formal-aligned/D1 均为 0；时间原点、cohort 和 simulator equivalence 仍未闭合。任务未启动新 SUMO/TraCI，Stage 0.5 Gate、Stage 0.6、Protocol Lock、Stage I 不变。报告：`docs/STAGE_0_5_ROUND2_TASK4_REAL_SOURCE_SUPPORT_AND_MULTISCALE_CROSSWALK_20261030.md`；证据：`evidence/results/RES-STAGE-0.5-ROUND2-TASK4-REAL-SOURCE-SUPPORT-AND-MULTISCALE-CROSSWALK-20261030/`。

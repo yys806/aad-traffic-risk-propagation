@@ -94,6 +94,15 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
             "time_alignment_audit.json", "validation_record.json",
         )
     ]
+    task5_root = "evidence/results/RES-STAGE-0.5-ROUND2-TASK5-TASK4-EVIDENCE-INTEGRITY-20261030"
+    pairs["RES-STAGE-0.5-ROUND2-TASK5-TASK4-EVIDENCE-INTEGRITY-20261030"] = [
+        (f"{task5_root}/{name}", name)
+        for name in (
+            "corrected_real_source_target_state_metrics.csv", "corrected_simulation_source_target_metrics.csv",
+            "event_onset_attribution_audit.json", "manifest.json", "SHA256SUMS", "source_bindings.json",
+            "time_block_statistics_diff.csv", "validation_record.json", "window_overlap_audit.json",
+        )
+    ]
 
     # Policy A preflight proposals, not a frozen execution protocol.
     pairs['RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1'] = [
@@ -834,6 +843,8 @@ def _validate_source(source: Path) -> None:
         # Task 4 derived descriptive summaries; these are not raw trajectory tables.
         "real_source_target_exposure.csv", "real_source_target_state_metrics.csv",
         "risk_event_attribution_summary.csv", "simulation_source_target_metrics.csv",
+        "corrected_real_source_target_state_metrics.csv", "corrected_simulation_source_target_metrics.csv",
+        "time_block_statistics_diff.csv",
         }
     if source.suffix.lower() not in {".json", ".md", ".txt", ".sha256"} and source.name not in aggregate_names:
         raise ValueError(f"unsupported evidence file type: {source}")

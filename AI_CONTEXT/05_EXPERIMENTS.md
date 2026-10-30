@@ -1,3 +1,7 @@
+## Current — 2026-10-30 Round2 Task 5 Task 4 evidence integrity closure
+
+Verified bounded offline audit: 89.5 s Global_Time overlap has zero exact raw-record and event-onset-key intersections; shared vehicle IDs remain identity Unknown and windows are not merged. NGSIM Formal P2 onset matching is unique/conserved (543/732) with source/target 167/159 and 174/252; SUMO formal-aligned is separately audited. Real incomplete tail blocks use effective 22.9 s / 9.1 s durations; only one NGSIM target tail density/flow changes. Task 4 historical package is SHA-preserved; no new trajectory or native launch.
+
 ## Current — 2026-10-30 Round2 Task 4 real-source support
 
 Verified offline read-only reconstruction. Two authorized NGSIM windows reproduce full Formal P2 543/732 and P2-evaluable exposure 111425.9/133505.6 s. Fixed source onset attribution is 167/159 with 30519.4/30560.7 s local P2-evaluable exposure; target is 174/252. B00/Round2 sealed SUMO source formal-aligned and D1 are both zero, while Round2 target has one D1/formal-aligned diagnostic event. The macro/micro crosswalk is descriptive because time-origin and cohort alignment are unverified and formal equivalence is not accepted. No new native launch or trajectory.

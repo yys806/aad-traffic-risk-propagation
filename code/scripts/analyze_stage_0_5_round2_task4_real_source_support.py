@@ -57,6 +57,7 @@ MAINLINE_LANES = frozenset({"1", "2", "3", "4", "5"})
 SIM_WINDOW = (120.0, 390.0)
 CADENCE = 0.1
 EVALUABLE_STATUS = frozenset({"valid", "not_applicable"})
+ATTRIBUTION_CLASSES = ("source", "target", "other_mainline", "auxiliary_or_other")
 
 
 def sha256_file(path: Path) -> str:
@@ -169,7 +170,7 @@ def exposure_summary(frame: pd.DataFrame, *, real: bool, region: tuple[float, fl
     }
 
 
-def state_metrics(frame: pd.DataFrame, *, dataset: str, scope: str, region_name: str, region: tuple[float, float], window_start: float, window_end: float, time_block: int | None = None, block_start: float | None = None, block_end: float | None = None) -> dict[str, Any]:
+def state_metrics(frame: pd.DataFrame, *, dataset: str, scope: str, region_name: str, region: tuple[float, float], window_start: float, window_end: float, time_block: int | None = None, block_start: float | None = None, block_end: float | None = None, nominal_block_start: float | None = None, nominal_block_end: float | None = None) -> dict[str, Any]:
     d = frame.loc[point_region(frame, region) & frame["time_s"].ge(window_start) & frame["time_s"].lt(window_end)].copy()
     duration = float(window_end - window_start)
     if not d.empty:
@@ -190,6 +191,8 @@ def state_metrics(frame: pd.DataFrame, *, dataset: str, scope: str, region_name:
     row = {
         "dataset": dataset, "scope": scope, "region": region_name,
         "time_block": time_block, "block_start_s": block_start, "block_end_s": block_end,
+        "nominal_block_start_s": nominal_block_start, "nominal_block_end_s": nominal_block_end,
+        "effective_duration_s": float(window_end - window_start) if time_block is not None else None,
         "state_rows": int(len(d)), "vehicle_count": int(d["vehicle_id"].nunique()) if not d.empty else 0,
         "density_veh_km_lane": density, "flow_veh_h_lane": flow,
         "speed_mean_mps": speed_mean, "speed_sd_mps": speed["sd"],
@@ -212,13 +215,58 @@ def block_rows(frame: pd.DataFrame, *, dataset: str, scope: str, region_name: st
     block = 0
     t = start
     while t < end - 1e-9:
-        block_end = min(t + 30.0, end)
+        nominal_end = min(t + 30.0, end)
+        effective_start = max(t, float(frame["time_s"].min()))
+        effective_end = min(nominal_end, float(frame["time_s"].max()) + CADENCE)
+        if effective_end <= effective_start:
+            t += 30.0
+            block += 1
+            continue
         edges = [region[0], min(region[0] + 100.0, region[1]), region[1]]
         for sub in range(len(edges) - 1):
-            rows.append(state_metrics(frame, dataset=dataset, scope=scope, region_name=f"{region_name}_{sub}", region=(edges[sub], edges[sub + 1]), window_start=t, window_end=block_end, time_block=block, block_start=t, block_end=block_end))
+            rows.append(state_metrics(frame, dataset=dataset, scope=scope, region_name=f"{region_name}_{sub}", region=(edges[sub], edges[sub + 1]), window_start=effective_start, window_end=effective_end, time_block=block, block_start=effective_start, block_end=effective_end, nominal_block_start=t, nominal_block_end=nominal_end))
         t += 30.0
         block += 1
     return rows
+
+
+def attribute_event_onsets(frame: pd.DataFrame, events: pd.DataFrame | list[dict[str, Any]], *, time_window: tuple[float, float] | None = None) -> dict[str, Any]:
+    """Match each event onset exactly once; unmatched/ambiguous stays Unknown."""
+    records = events.to_dict("records") if isinstance(events, pd.DataFrame) else list(events)
+    if time_window is not None:
+        records = [event for event in records if time_window[0] <= float(event["event_start_s"]) < time_window[1]]
+    lookup: dict[tuple[str, float], list[dict[str, Any]]] = {}
+    for row in frame[["trajectory_id", "time_s", "lane_id", "y_m"]].to_dict("records"):
+        lookup.setdefault((str(row["trajectory_id"]), float(row["time_s"])), []).append(row)
+    classified: dict[str, list[dict[str, Any]]] = {name: [] for name in ATTRIBUTION_CLASSES}
+    unknown: list[dict[str, Any]] = []
+    unique = unmatched = ambiguous = 0
+    for event in records:
+        key = (str(event["trajectory_id"]), float(event["event_start_s"]))
+        candidates = lookup.get(key, [])
+        if not candidates:
+            unmatched += 1
+            unknown.append({"event_id": event.get("event_id"), "reason": "unmatched_onset"})
+            continue
+        if len(candidates) != 1:
+            ambiguous += 1
+            unknown.append({"event_id": event.get("event_id"), "reason": "ambiguous_onset", "candidate_count": len(candidates)})
+            continue
+        unique += 1
+        row = candidates[0]
+        lane = str(row["lane_id"]); y = float(row["y_m"])
+        category = "source" if lane in MAINLINE_LANES and SOURCE[0] <= y < SOURCE[1] else ("target" if lane in MAINLINE_LANES and TARGET[0] <= y < TARGET[1] else ("other_mainline" if lane in MAINLINE_LANES else "auxiliary_or_other"))
+        classified[category].append(event)
+    extracted = len(records)
+    counts = {name: len(classified[name]) for name in ATTRIBUTION_CLASSES}
+    counts["unknown"] = len(unknown)
+    return {
+        "extracted_events": extracted, "unique": unique, "unmatched": unmatched, "ambiguous": ambiguous,
+        "source": counts["source"], "target": counts["target"], "other_mainline": counts["other_mainline"],
+        "auxiliary_or_other": counts["auxiliary_or_other"], "unknown": counts["unknown"],
+        "conservation_pass": sum(counts.values()) == extracted,
+        "classified_events": classified, "unknown_events": unknown,
+    }
 
 
 def real_window(window: str, states: pd.DataFrame) -> tuple[dict[str, Any], list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]]]:
@@ -226,20 +274,8 @@ def real_window(window: str, states: pd.DataFrame) -> tuple[dict[str, Any], list
 
     events = extract_rear_end_events(states, provisional_ttc_threshold_s=2.0, max_gap_s=0.11, minimum_duration_s=0.2)
     exposure = exposure_summary(states, real=True)
-    attribution = {"source": [], "target": [], "other_mainline": [], "auxiliary_or_other": []}
-    lookup = states.set_index(["trajectory_id", "time_s"], drop=False)
-    for event in events.to_dict("records"):
-        key = (event["trajectory_id"], float(event["event_start_s"]))
-        row = lookup.loc[key] if key in lookup.index else None
-        if isinstance(row, pd.DataFrame):
-            row = row.iloc[0]
-        if row is None:
-            cls = "auxiliary_or_other"
-        else:
-            lane = str(row["lane_id"])
-            y = float(row["y_m"])
-            cls = "source" if lane in MAINLINE_LANES and SOURCE[0] <= y < SOURCE[1] else ("target" if lane in MAINLINE_LANES and TARGET[0] <= y < TARGET[1] else ("other_mainline" if lane in MAINLINE_LANES else "auxiliary_or_other"))
-        attribution[cls].append(event)
+    attribution_audit = attribute_event_onsets(states, events)
+    attribution = attribution_audit["classified_events"]
     rows: list[dict[str, Any]] = []
     for region_name, region in (("source", SOURCE), ("target", TARGET)):
         ex = exposure_summary(states, real=True, region=region)
@@ -252,14 +288,14 @@ def real_window(window: str, states: pd.DataFrame) -> tuple[dict[str, Any], list
             "event_rate_per_p2_evaluable_vehicle_hour": (len(ev) / (ex["p2_evaluable_exposure_s"] / 3600.0)) if ex["p2_evaluable_exposure_s"] else None,
             "event_duration_median_s": float(durations.median()) if len(durations) else None, "event_duration_p90_s": float(durations.quantile(.9)) if len(durations) else None, "event_duration_max_s": float(durations.max()) if len(durations) else None,
             "event_ttc_min_median_s": float(ttcs.median()) if len(ttcs) else None, "event_ttc_min_p05_s": float(ttcs.quantile(.05)) if len(ttcs) else None, "event_ttc_min_min_s": float(ttcs.min()) if len(ttcs) else None,
-            "formal_equivalence_accepted": True, "event_attribution_unknown": 0,
+            "formal_equivalence_accepted": True, "event_attribution_unknown": attribution_audit["unknown"],
         })
     start = float(states["time_s"].min())
     end = float(states["time_s"].max() + CADENCE)
     macro = [state_metrics(states, dataset="NGSIM", scope=window, region_name="source", region=SOURCE, window_start=start, window_end=end), state_metrics(states, dataset="NGSIM", scope=window, region_name="target", region=TARGET, window_start=start, window_end=end)]
     blocks = block_rows(states, dataset="NGSIM", scope=window, region_name="source", region=SOURCE, start=math.floor(start / 30) * 30.0, end=math.ceil(end / 30) * 30.0) + block_rows(states, dataset="NGSIM", scope=window, region_name="target", region=TARGET, start=math.floor(start / 30) * 30.0, end=math.ceil(end / 30) * 30.0)
     metrics = macro + blocks
-    full = {"window_id": window, "full_events": len(events), "expected_events": REAL_EXPECTED[window]["events"], "full_event_reproduction_pass": len(events) == REAL_EXPECTED[window]["events"], "full_exposure": exposure, "expected_p2_evaluable_s": REAL_EXPECTED[window]["p2_evaluable_s"], "full_exposure_reproduction_pass": abs(exposure["p2_evaluable_exposure_s"] - REAL_EXPECTED[window]["p2_evaluable_s"]) < 1e-9, "spatial_attribution_counts": {k: len(v) for k, v in attribution.items()}, "source_target_rows": rows}
+    full = {"window_id": window, "full_events": len(events), "expected_events": REAL_EXPECTED[window]["events"], "full_event_reproduction_pass": len(events) == REAL_EXPECTED[window]["events"], "full_exposure": exposure, "expected_p2_evaluable_s": REAL_EXPECTED[window]["p2_evaluable_s"], "full_exposure_reproduction_pass": abs(exposure["p2_evaluable_exposure_s"] - REAL_EXPECTED[window]["p2_evaluable_s"]) < 1e-9, "spatial_attribution_counts": {k: len(v) for k, v in attribution.items()}, "event_attribution_audit": {k: v for k, v in attribution_audit.items() if k not in {"classified_events", "unknown_events"}}, "source_target_rows": rows}
     return full, rows, metrics, events
 
 
@@ -284,21 +320,8 @@ def simulation_run(label: str, states: pd.DataFrame, cohort: set[str]) -> tuple[
     mapped = build_sumo_formal_source_frame(states)
     formal_events, formal_audit = extract_sumo_formal_p2_events(states)
     mapped_window = mapped.loc[mapped["time_s"].ge(SIM_WINDOW[0]) & mapped["time_s"].lt(SIM_WINDOW[1])].copy()
-    lookup = mapped.set_index(["trajectory_id", "time_s"], drop=False)
-    attributed_formal: dict[str, list[dict[str, Any]]] = {"source": [], "target": []}
-    for event in formal_events.to_dict("records"):
-        if not (SIM_WINDOW[0] <= float(event["event_start_s"]) < SIM_WINDOW[1]):
-            continue
-        key = (event["trajectory_id"], float(event["event_start_s"]))
-        row = lookup.loc[key] if key in lookup.index else None
-        if isinstance(row, pd.DataFrame):
-            row = row.iloc[0]
-        if row is None:
-            continue
-        lane = str(row["lane_id"]); y = float(row["y_m"])
-        region_name = "source" if lane in MAINLINE_LANES and SOURCE[0] <= y < SOURCE[1] else ("target" if lane in MAINLINE_LANES and TARGET[0] <= y < TARGET[1] else None)
-        if region_name:
-            attributed_formal[region_name].append(event)
+    formal_attribution_audit = attribute_event_onsets(mapped_window, formal_events, time_window=SIM_WINDOW)
+    attributed_formal = formal_attribution_audit["classified_events"]
     for region_name, region in (("source", SOURCE), ("target", TARGET)):
         ex = exposure_summary(mapped_window, real=True, region=region)
         ev = attributed_formal[region_name]
@@ -310,7 +333,7 @@ def simulation_run(label: str, states: pd.DataFrame, cohort: set[str]) -> tuple[
             "event_rate_per_p2_evaluable_vehicle_hour": (len(ev) / (ex["p2_evaluable_exposure_s"] / 3600.0)) if ex["p2_evaluable_exposure_s"] else None,
             "event_duration_median_s": float(durations.median()) if len(durations) else None, "event_duration_p90_s": float(durations.quantile(.9)) if len(durations) else None, "event_duration_max_s": float(durations.max()) if len(durations) else None,
             "event_ttc_min_median_s": float(ttcs.median()) if len(ttcs) else None, "event_ttc_min_p05_s": float(ttcs.quantile(.05)) if len(ttcs) else None, "event_ttc_min_min_s": float(ttcs.min()) if len(ttcs) else None,
-            "formal_equivalence_accepted": False, "event_attribution_unknown": 0, "formal_adapter_status": formal_audit["equivalence_status"],
+            "formal_equivalence_accepted": False, "event_attribution_unknown": formal_attribution_audit["unknown"], "formal_adapter_status": formal_audit["equivalence_status"],
         })
     for region_name, region in (("source", SOURCE), ("target", TARGET)):
         all_frame = states if region_name == "source" else states.loc[states["vehicle_id"].astype(str).isin(cohort)]

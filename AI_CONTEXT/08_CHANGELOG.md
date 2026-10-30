@@ -1,3 +1,7 @@
+## 2026-10-30 Round2 Task 5
+
+Added bounded integrity audit and repair for Task 4: cross-window overlap/key audit, unique/unmatched/ambiguous onset attribution with conservation checks, and effective-duration partial 30 s block statistics. Task 4 historical evidence remains byte/SHA unchanged; no new SUMO/TraCI/trajectory/holdout. Added Task 5 report, script, tests and independent evidence package.
+
 ## 2026-10-30 Round2 Task 4
 
 Added `analyze_stage_0_5_round2_task4_real_source_support.py`, the Task 4 report, and portable evidence package. Reproduced the two authorized NGSIM full-source Formal P2 counts/exposures, attributed onset events to fixed source/target regions, and generated descriptive real-vs-sealed-SUMO macro/micro/risk crosswalks. Formal-aligned SUMO and D1 remain separately labelled; no new SUMO/TraCI/trajectory/holdout. Updated project/result/stage indexes and preserved all Stage 0.5/Stage 0.6/Protocol Lock/Stage I status.

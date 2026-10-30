@@ -1,0 +1,60 @@
+{
+  "event_match": {
+    "duplicate_event_count": 0,
+    "duplicate_event_status": "none_observed_under_original_vehicle_id+Global_Time+Frame_ID onset key",
+    "exact_onset_record_key_intersection": 0,
+    "window_event_counts": {
+      "0750_0805": {
+        "extracted_events": 543,
+        "onset_ambiguous": 0,
+        "onset_unmatched": 0
+      },
+      "0805_0820": {
+        "extracted_events": 732,
+        "onset_ambiguous": 0,
+        "onset_unmatched": 0
+      }
+    }
+  },
+  "identity_boundary": {
+    "same_original_vehicle_id_does_not_prove_same_physical_identity": true,
+    "trajectory_id_cross_window_mapping_proven": false,
+    "unresolved_identity_correspondence": true
+  },
+  "merge_policy": "do_not_merge_window_statistics_or_event totals; timestamp overlap alone is not duplicate evidence",
+  "record_match": {
+    "duplicate_key_rows_window_a": 0,
+    "duplicate_key_rows_window_b": 0,
+    "exact_raw_record_matches": 0,
+    "exact_trajectory_id_intersection": 0,
+    "key": [
+      "original_vehicle_id",
+      "global_time_ms",
+      "frame_id"
+    ],
+    "shared_original_vehicle_ids": 1430
+  },
+  "schema": "aad.stage05.round2.task5.window-overlap-audit.v1",
+  "timestamp_overlap": {
+    "common_global_time_values": 896,
+    "overlap_duration_s": 89.5,
+    "overlap_end_ms": 1118847932500,
+    "overlap_rows_window_a": 81680,
+    "overlap_rows_window_b": 47715,
+    "overlap_start_ms": 1118847843000
+  },
+  "windows": {
+    "0750_0805": {
+      "global_time_max_ms": 1118847932500,
+      "global_time_min_ms": 1118846979700,
+      "rows": 1180598,
+      "vehicle_ids": 2169
+    },
+    "0805_0820": {
+      "global_time_max_ms": 1118848842000,
+      "global_time_min_ms": 1118847843000,
+      "rows": 1403095,
+      "vehicle_ids": 2017
+    }
+  }
+}

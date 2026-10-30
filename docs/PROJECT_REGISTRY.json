@@ -326,12 +326,14 @@
   "code/scripts/align_stage_0_5_round2_task3_measurement_contract.py",
   "code/scripts/synchronize_stage_0_5_round2_task3_context.py",
   "docs/STAGE_0_5_ROUND2_TASK4_REAL_SOURCE_SUPPORT_AND_MULTISCALE_CROSSWALK_20261030.md",
-  "code/scripts/analyze_stage_0_5_round2_task4_real_source_support.py"
+  "code/scripts/analyze_stage_0_5_round2_task4_real_source_support.py",
+  "docs/STAGE_0_5_ROUND2_TASK5_TASK4_EVIDENCE_INTEGRITY_20261030.md",
+  "code/scripts/audit_stage_0_5_round2_task5_task4_evidence_integrity.py"
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-S0.5-ROUND2-TASK4-REAL-SOURCE-SUPPORT-AND-MULTISCALE-CROSSWALK-20261030: real source Formal P2 support verified; sealed simulator source remains zero; researcher decision pending",
-  "why_now": "Task4 closed the fixed-source evidence gap with two authorized NGSIM windows and a descriptive real-vs-sealed-SUMO crosswalk without changing formal parameters or Gate state.",
+  "active_task": "AAD-S0.5-ROUND2-TASK5-TASK4-EVIDENCE-INTEGRITY-CLOSURE-20261030: Task 4 evidence integrity audited and bounded repairs verified",
+  "why_now": "Task5 closed the bounded overlap, onset-attribution and partial-block denominator issues without changing Task 4 science definitions or Gate state.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
    "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/count_reconciliation.json",
@@ -1139,7 +1141,8 @@
     "RES-STAGE-0.5-POST-R2-OFFLINE-DIAG-20261029",
     "RES-STAGE-0.5-ROUND2-TASK2-MEASUREMENT-CONTRACT-20261029",
     "RES-STAGE-0.5-ROUND2-TASK3-MEASUREMENT-CONTRACT-ALIGNMENT-20261029",
-    "RES-STAGE-0.5-ROUND2-TASK4-REAL-SOURCE-SUPPORT-AND-MULTISCALE-CROSSWALK-20261030"
+    "RES-STAGE-0.5-ROUND2-TASK4-REAL-SOURCE-SUPPORT-AND-MULTISCALE-CROSSWALK-20261030",
+    "RES-STAGE-0.5-ROUND2-TASK5-TASK4-EVIDENCE-INTEGRITY-20261030"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -4896,6 +4899,46 @@
    "gate_status": "blocked",
    "paper_locations": [
     "docs/STAGE_0_5_ROUND2_TASK4_REAL_SOURCE_SUPPORT_AND_MULTISCALE_CROSSWALK_20261030.md"
+   ],
+   "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-STAGE-0.5-ROUND2-TASK5-TASK4-EVIDENCE-INTEGRITY-20261030",
+   "experiment_id": "stage_0_5",
+   "name": "Round2 Task5 Task4 evidence integrity audit and bounded closure",
+   "status": "verified_offline_integrity_closure",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK5-TASK4-EVIDENCE-INTEGRITY-20261030/manifest.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK5-TASK4-EVIDENCE-INTEGRITY-20261030/SHA256SUMS",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK5-TASK4-EVIDENCE-INTEGRITY-20261030/validation_record.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK5-TASK4-EVIDENCE-INTEGRITY-20261030/source_bindings.json"
+   ],
+   "local_artifact_paths": [
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK5-TASK4-EVIDENCE-INTEGRITY-20261030/"
+   ],
+   "code_version_source": "source_bindings.json in Task5 evidence package; bounded repair in Task4 analysis script",
+   "configuration_source": "unchanged Formal P2/D1/source/target/cohort/window definitions",
+   "data_version_source": "two authorized NGSIM windows, sealed SUMO measured states and immutable Task4 evidence package",
+   "core_metrics": {
+    "global_time_overlap_s": 89.5,
+    "exact_raw_record_matches": 0,
+    "exact_onset_key_intersection": 0,
+    "shared_original_vehicle_ids": 1430,
+    "ngsim_unique_onsets": [543, 732],
+    "ngsim_unmatched_onsets": [0, 0],
+    "ngsim_ambiguous_onsets": [0, 0],
+    "ngsim_source_onsets": [167, 159],
+    "ngsim_target_onsets": [174, 252],
+    "partial_tail_durations_s": [22.9, 9.1],
+    "task4_historical_sha256_unchanged": true,
+    "new_native_launches": 0,
+    "new_trajectories": 0,
+    "holdout_reads": 0
+   },
+   "current_conclusion": "Task4 evidence integrity is closed within scope. Timestamp overlap does not imply duplicate records or events; onset attribution is unique and conserved; real partial 30 s tails use effective durations. Task4 science counts/exposures remain unchanged and windows are not merged.",
+   "gate_status": "blocked",
+   "paper_locations": [
+    "docs/STAGE_0_5_ROUND2_TASK5_TASK4_EVIDENCE_INTEGRITY_20261030.md"
    ],
    "scientific_claim_eligible": false
   }

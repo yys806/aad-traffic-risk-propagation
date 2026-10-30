@@ -1,3 +1,10 @@
+## 2026-10-30 Task 5 closure boundaries
+
+- Cross-window `Global_Time` overlap is real, but exact raw-record and Formal P2 onset-key intersections are zero. Shared original vehicle IDs do not establish cross-window physical identity; no merge is allowed.
+- Formal onset matching now reports unique/unmatched/ambiguous explicitly and keeps unresolved matches Unknown.
+- NGSIM partial 30 s tails use effective observation duration; SUMO complete blocks are unchanged.
+- Remaining simulator equivalence, time-origin semantics and physical-path questions are unchanged and outside Task 5.
+
 ## 2026-10-30 Task 4 confirmed boundaries
 
 - NGSIM fixed source has positive Formal P2 support in both authorized windows; the prior sealed simulator source-zero result cannot be treated as evidence that the real source has no observable support.
