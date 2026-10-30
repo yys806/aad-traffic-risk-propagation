@@ -1,3 +1,7 @@
+## Current — AAD-ROUND2-CLOSURE-20261030
+
+Agreed: original Round2 single-factor source candidate CLOSED_FAILED_ORIGINAL_SOURCE_CONDITION; preserve seed20261201, Rule A PASS, source0, target diagnostic1 and all failures/evidence. No independent confirmation. New fixed-leader direction is separately conditional; proposed complete seed set20261101/20261102/20261103 gives3 repeats/arm/qualified segment (6N runs), not yet approved or executed. Actual sealed routes differ only in five minGap2.5→1.0 attributes; network and run.sumocfg are byte-identical. Historical homogeneous12-pair×9-config×3-seed results do not establish current heterogeneous-B00 precision. Segment count and costs remain conditional. See docs/FIXED_LEADER_PAIRED_EXPERIMENT_PROPOSAL_20261030.md.
+
 ## 2026-10-30 Round2 Task7.2 - resource and mapping conditions
 
 Task7.2 COMPLETED_WITH_BLOCKERS. Four unique current raw AVI members verified from 6,452 bytes of exact ZIP metadata Ranges; compressed total 1,248,582,779 bytes, extracted total 1,248,560,044 bytes. Per-file license and PTS/time anchors remain unresolved. Existing 130 controls show a predominantly near-constant correspondence difference (mean norm 12.29247 m), not verified physical displacement. Camera7/8 remain geographic candidates, minimum_camera_set null. Provider inquiry drafted but not sent; acquisition and physical review remain unapproved/blocked. Formal P2 167/159, historical evidence, AGENTS,06_DECISIONS and scientific Gate/later stages unchanged. No videos, cases, simulations or new trajectory/holdout reads.

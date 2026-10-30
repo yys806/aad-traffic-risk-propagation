@@ -1,0 +1,95 @@
+{
+  "schema_version": "aad.round2.closure.validation.v1",
+  "impact_scope": "Affected: independent closure preparation script, targeted tests, decisions, conditional reports, indexes/context and self-managed evidence. Interfaces: sealed XML and small aggregate JSON/CSV only. No production measurement, scientific thresholds, identity, Rule A, Gate or native execution changes. Sufficient verification: configuration-diff and B-completeness unit guards; comparability synthetic/measurement regression; strict docs, bounded evidence integrity and Git-object portability. No full pytest or repository compileall.",
+  "wp1_tests": {
+    "command": "python -m pytest code/tests/test_stage_0_5_round2_closure.py -q -p no:cacheprovider",
+    "status": "Passed",
+    "passed": 7,
+    "seconds": 0.14,
+    "local_log": "code/outputs/formal/calibration/aad_round2_closure_20261030/wp1_tests.log"
+  },
+  "syntax": {
+    "command": "python -m py_compile code/scripts/prepare_stage_0_5_round2_closure.py code/tests/test_stage_0_5_round2_closure.py",
+    "status": "Passed"
+  },
+  "wp2_tests": "See RES-AAD-ROUND2-CLOSURE-COMPARABILITY-20261030/validation_record.json; 100 passed, 3 historical dependency-blocked",
+  "prior_failures": [
+    {
+      "phase": "remote_baseline",
+      "command": "git ls-remote origin refs/heads/main",
+      "error": "schannel AcquireCredentialsHandle SEC_E_NO_CREDENTIALS (0x8009030E)",
+      "resolution": "GitHub API and command-level http.sslBackend=openssl query both verified baseline; no persistent Git config edit"
+    },
+    {
+      "phase": "context_read",
+      "error": "Python gbk UnicodeEncodeError printing U+26A0",
+      "resolution": "PYTHONIOENCODING=utf-8; no source document change"
+    },
+    {
+      "phase": "scoped_search",
+      "error": "rg Windows wildcard positional path invalid syntax",
+      "resolution": "Use directory plus -g filename pattern, or exact known file"
+    },
+    {
+      "phase": "initial_git_staging",
+      "error": "Unable to create .git/index.lock: Permission denied",
+      "effect": "Initial strict-git reported new references untracked; no commit attempted",
+      "resolution": "User-authorized exact git add executed with required .git write escalation; strict docs thenPassed"
+    },
+    {
+      "phase": "first_git_object_checkout",
+      "error": "Windows text-mode stdin added CR to path lines; checkout-index paths not in cache",
+      "effect": "No source changes or deletion; failed isolated directory preserved",
+      "resolution": "NUL-separated binary stdin to a new isolated directory;38files equal"
+    },
+    {
+      "phase": "final_seal_transport",
+      "error": "SyntaxError: Unexpected identifier Unable",
+      "effect": "Client JavaScript parse failed; no command or mutation ran",
+      "resolution": "Raw template literal transport; exact same task-scoped mutation"
+    },
+    {
+      "phase": "final_inventory_assembly",
+      "error": "KeyError for newly generated WP3 SHA256SUMS inventory reason",
+      "effect": "Report and validation draft updated before failure; no Git commit or historical mutation",
+      "resolution": "Inventory regenerated after all package names existed;52 task files listed"
+    }
+  ],
+  "final_engineering_checks": {
+    "strict_docs": {
+      "command": "python code/scripts/validate_project_docs.py --strict-git",
+      "status": "Passed",
+      "result": "PROJECT_DOCS_OK"
+    },
+    "portable_export": {
+      "command": "python code/scripts/export_project_evidence.py --repo-root . --result-id RES-AAD-ROUND2-CLOSURE-20261030 --result-id RES-AAD-ROUND2-CLOSURE-COMPARABILITY-20261030 --result-id RES-AAD-ROUND2-PROVIDER-INQUIRY-20261030",
+      "status": "Passed",
+      "history_scope": "Preserve76 existing manifest entries; no old snapshot regeneration"
+    },
+    "portable_verify": {
+      "command": "python code/scripts/export_project_evidence.py --repo-root . --verify --result-id RES-AAD-ROUND2-CLOSURE-20261030 --result-id RES-AAD-ROUND2-CLOSURE-COMPARABILITY-20261030 --result-id RES-AAD-ROUND2-PROVIDER-INQUIRY-20261030",
+      "status": "Passed"
+    },
+    "git_object_checkout": {
+      "status": "Passed",
+      "new_files_checked": 38,
+      "byte_mismatches": 0,
+      "method": "Explicit checkout-index to isolated local directory; NUL binary stdin; no raw/media copy"
+    },
+    "context_consistency": "Passed",
+    "protected_scope": "AGENTS, production source/config, old results/Gate and old evidence unchanged"
+  },
+  "not_run": [
+    "new_SUMO",
+    "TraCI",
+    "new_trajectory",
+    "third_window",
+    "locked_holdout",
+    "video_acquisition",
+    "human_review",
+    "fixed_leader",
+    "full_pytest",
+    "repository_compileall"
+  ],
+  "final_recorded_utc": "2026-10-30T13:45:35.785952+00:00"
+}

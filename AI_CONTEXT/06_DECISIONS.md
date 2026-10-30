@@ -1,3 +1,11 @@
+## Current — AAD-ROUND2-CLOSURE-20261030
+
+Agreed researcher decisions (2026-10-30): close the original minGap=1.0 Round2 source candidate as CLOSED_FAILED_ORIGINAL_SOURCE_CONDITION, preserving its one seed20261201 outcome (Rule A PASS/sourceP2=0/one target diagnostic) and forbidding independent-seed rescue. General Formal P2 uses C pair/time continuity; D1 keeps its independent same-native-lane local diagnostic denominator. Physical-path eligibility independently requires B time-indexed identity/interaction/road-connection/order witnesses; missing witnesses remain Unknown. A is sensitivity only. formal_equivalence_accepted remains false.
+
+Agreed immediate work: bounded comparability validation and dispatch of the unchanged Task7.2 official inquiry. Four raw AVI acquisition, at most24 risk+12 unique-follower blind review, and actual-B00 versus minGap1.0 fixed-leader comparison are conditionally authorized only after their stated gates. Seed/repetition approval for that new experiment is separate and remains pending; the concrete minimum matrix is Proposed. No original candidate confirmation, third window, holdout, Protocol Lock, Stage0.6 freeze or StageI.
+
+Decision record: docs/AAD_ROUND2_RESEARCH_DECISIONS_20261030.md. Earlier dated entries below are historical snapshots; their A/B/C or acquisition-authorization pending text is superseded prospectively by this agreed record, not erased. C does not resolve native/formal endpoint/clock differences beyond its scope; those retain Awaiting Researcher Decision. The task's numbered list ends at Decision7; its “Decision8” cross-reference refers by content to the independently gated minGap control, not an invented extra decision.
+
 ## AAD-S0.5-ROUND2-TASK3-MEASUREMENT-CONTRACT-ALIGNMENT-20261029
 
 Agreed engineering alignment: preserve explicit continuity flags in formal-aligned mapping. Existing formal P2 pair/time semantics and D1 lane diagnostic separation remain unchanged. Scientific simulator comparability and physical-path evidence remain AWAITING_RESEARCHER_DECISION.

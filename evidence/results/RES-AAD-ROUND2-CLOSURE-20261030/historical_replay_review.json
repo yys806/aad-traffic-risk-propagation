@@ -1,0 +1,64 @@
+{
+  "historical_seeds": [
+    20261101,
+    20261102,
+    20261103
+  ],
+  "n_rows": 324,
+  "duration_s": [
+    20.0
+  ],
+  "scope": "Historical homogeneous 12-pair replay; not current heterogeneous-B00 power evidence",
+  "configurations": {
+    "K_tau1.0": {
+      "pairs": 12,
+      "metrics": {
+        "brockfeld_gap_error_pct": {
+          "pairs": 12,
+          "median_within_pair_seed_sd": 1.4713183351080694,
+          "max_within_pair_seed_sd": 3.8741108343533934
+        },
+        "nrmse_gap": {
+          "pairs": 12,
+          "median_within_pair_seed_sd": 0.01818585508893679,
+          "max_within_pair_seed_sd": 0.0407369208622023
+        },
+        "nrmse_speed": {
+          "pairs": 12,
+          "median_within_pair_seed_sd": 0.005033151132493102,
+          "max_within_pair_seed_sd": 0.014463117172080616
+        },
+        "response_lag_difference_s": {
+          "pairs": 12,
+          "median_within_pair_seed_sd": 0.30310889132455354,
+          "max_within_pair_seed_sd": 0.8736894948054105
+        }
+      }
+    },
+    "K_tau1.0_minGap1.0": {
+      "pairs": 12,
+      "metrics": {
+        "brockfeld_gap_error_pct": {
+          "pairs": 12,
+          "median_within_pair_seed_sd": 1.8310769273539709,
+          "max_within_pair_seed_sd": 3.9891750743310723
+        },
+        "nrmse_gap": {
+          "pairs": 12,
+          "median_within_pair_seed_sd": 0.02023859091864667,
+          "max_within_pair_seed_sd": 0.040668119336076176
+        },
+        "nrmse_speed": {
+          "pairs": 12,
+          "median_within_pair_seed_sd": 0.004984556876852424,
+          "max_within_pair_seed_sd": 0.01340753408846434
+        },
+        "response_lag_difference_s": {
+          "pairs": 12,
+          "median_within_pair_seed_sd": 0.3103257696894239,
+          "max_within_pair_seed_sd": 0.8736894948054105
+        }
+      }
+    }
+  }
+}

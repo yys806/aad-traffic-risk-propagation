@@ -1,3 +1,9 @@
+## Current — AAD-ROUND2-CLOSURE-20261030
+
+Agreed original Round2 minGap1.0 source candidate closed; C general P2, independent D1 and B physical-path standards recorded. Bounded comparison verifies C already implemented but retains three C-external conflicts and formal_equivalence_accepted=false. Video acquisition NO_GO; blind review and fixed-leader experiment Blocked; finite seed matrix Proposed. No new SUMO/TraCI/trajectory/holdout; Gate/Stage0.6/Protocol Lock/StageI unchanged.
+
+Reports: docs/AAD_ROUND2_RESEARCH_DECISIONS_20261030.md; docs/SIMULATOR_NGSIM_FORMAL_COMPARABILITY_MATRIX_20261030.md; docs/VIDEO_ACQUISITION_GO_NO_GO_20261030.md; docs/FIXED_LEADER_PAIRED_EXPERIMENT_PROPOSAL_20261030.md; docs/ROUND3_CANDIDATE_READINESS_REPORT_20261030.md. Final campaign and official dispatch reports complete the current status; older entries remain historical.
+
 ## 2026-10-30 Round2 Task7 — investigation complete; physical review blocked
 
 Verified bounded Task7 evidence-availability investigation is complete; physical review remains BLOCKED_NO_VERIFIED_INDEPENDENT_PHYSICAL_REFERENCE. Official raw/processed camera files are documented, but no local independent raw video, source-camera/Local_Y mapping or video-PTS/Global_Time mapping is verified. No event selection or human review occurred. Source Formal P2 167/159 and Task1–Task6 history remain unchanged; Task6 controls are row-distinct, not vehicle-independent (131/165 and 115/149 source followers/rows). AGENTS section8 alone adopts risk-based validation. No new video/trajectory/SUMO/TraCI/third-window/holdout; Gate and later stages unchanged.

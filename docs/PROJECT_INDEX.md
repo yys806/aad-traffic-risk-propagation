@@ -1,3 +1,9 @@
+## Current — AAD-ROUND2-CLOSURE-20261030
+
+Agreed original Round2 minGap1.0 source candidate closed; C general P2, independent D1 and B physical-path standards recorded. Bounded comparison verifies C already implemented but retains three C-external conflicts and formal_equivalence_accepted=false. Video acquisition NO_GO; blind review and fixed-leader experiment Blocked; finite seed matrix Proposed. No new SUMO/TraCI/trajectory/holdout; Gate/Stage0.6/Protocol Lock/StageI unchanged.
+
+Reports: docs/AAD_ROUND2_RESEARCH_DECISIONS_20261030.md; docs/SIMULATOR_NGSIM_FORMAL_COMPARABILITY_MATRIX_20261030.md; docs/VIDEO_ACQUISITION_GO_NO_GO_20261030.md; docs/FIXED_LEADER_PAIRED_EXPERIMENT_PROPOSAL_20261030.md; docs/ROUND3_CANDIDATE_READINESS_REPORT_20261030.md. Final campaign and official dispatch reports complete the current status; older entries remain historical.
+
 ## 2026-10-30 Round2 Task7.2 - resource and mapping conditions
 
 Task7.2 COMPLETED_WITH_BLOCKERS. Four unique current raw AVI members verified from 6,452 bytes of exact ZIP metadata Ranges; compressed total 1,248,582,779 bytes, extracted total 1,248,560,044 bytes. Per-file license and PTS/time anchors remain unresolved. Existing 130 controls show a predominantly near-constant correspondence difference (mean norm 12.29247 m), not verified physical displacement. Camera7/8 remain geographic candidates, minimum_camera_set null. Provider inquiry drafted but not sent; acquisition and physical review remain unapproved/blocked. Formal P2 167/159, historical evidence, AGENTS,06_DECISIONS and scientific Gate/later stages unchanged. No videos, cases, simulations or new trajectory/holdout reads.

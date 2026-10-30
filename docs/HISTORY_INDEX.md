@@ -1,3 +1,7 @@
+## HIST-ROUND2-MINGAP1-SOURCE-CANDIDATE-CLOSED-20261030
+
+Agreed closure of the completed single-factor source-condition failure; seed20261201, Rule A PASS, source Formal P2=0, one target diagnostic and original failures remain in docs/STAGE_0_5_ROUND2_TASK1_EXECUTION.md and its unchanged sealed evidence. No independent confirmation or rescue by changing estimand/threshold/window/seed. A future separately gated fixed-leader control is distinct. Decision: docs/AAD_ROUND2_RESEARCH_DECISIONS_20261030.md.
+
 # AAD 历史资产索引
 
 历史材料用于回答“曾做过什么、为何被替代”，不得为当前结论补证据。项目过程记录统一位于 `docs/归档/项目记录/`；旧编号材料位于 `docs/归档/旧实验编号材料/`；旧代码位于各 `legacy/`；旧输出和便携证据分别位于 `code/outputs/history/`、`evidence/history/`。

@@ -1,3 +1,7 @@
+## Current — AAD-ROUND2-CLOSURE-20261030
+
+Offline-only tools: code/scripts/prepare_stage_0_5_round2_closure.py audits the sealed actual-arm XML, historical replay seeds, B witness-documentation completeness and conditional gates; code/scripts/audit_stage_0_5_round2_closure_comparability.py compares existing FormalRisk/native/formal-aligned/D1 interfaces with deterministic fixtures and verifies reused small evidence. Targeted tests are their matching test_stage_0_5_round2_closure*.py files. No production call path, schema, runtime guard or measurement implementation changed. The documentation checker cannot establish physical truth.
+
 # AAD Module Map
 
 ## 2026-10-27 Weekly B00 accepted; Stage I remains BLOCKED

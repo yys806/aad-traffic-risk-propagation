@@ -334,12 +334,23 @@
   "code/scripts/package_stage_0_5_round2_task6_micro_interaction.py",
   "code/scripts/verify_stage_0_5_round2_task6_micro_interaction.py",
   "code/tests/test_stage_0_5_round2_task6_micro_interaction.py",
-  "docs/STAGE_0_5_ROUND2_TASK7_INDEPENDENT_PHYSICAL_QUALITY_REVIEW_20261030.md"
+  "docs/STAGE_0_5_ROUND2_TASK7_INDEPENDENT_PHYSICAL_QUALITY_REVIEW_20261030.md",
+  "docs/AAD_ROUND2_RESEARCH_DECISIONS_20261030.md",
+  "docs/SIMULATOR_NGSIM_FORMAL_COMPARABILITY_MATRIX_20261030.md",
+  "docs/AAD_ROUND2_PROVIDER_INQUIRY_DISPATCH_20261030.md",
+  "docs/VIDEO_ACQUISITION_GO_NO_GO_20261030.md",
+  "docs/FIXED_LEADER_PAIRED_EXPERIMENT_PROPOSAL_20261030.md",
+  "docs/ROUND3_CANDIDATE_READINESS_REPORT_20261030.md",
+  "docs/AAD_ROUND2_CLOSURE_AND_CONDITIONAL_VALIDATION_REPORT_20261030.md",
+  "code/scripts/prepare_stage_0_5_round2_closure.py",
+  "code/scripts/audit_stage_0_5_round2_closure_comparability.py",
+  "code/tests/test_stage_0_5_round2_closure.py",
+  "code/tests/test_stage_0_5_round2_closure_comparability.py"
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-S0.5-ROUND2-TASK7: availability investigation completed; physical review blocked without verified independent reference",
-  "why_now": "Independent physical evidence must be established before event visual review or stronger mechanism claims; no new experimental authority.",
+  "active_task": "AAD-ROUND2-CLOSURE-20261030: completed with explicit conditional blockers; original source branch closed",
+  "why_now": "Researcher approved C/D1/B decisions and conditional follow-up; close failed original source candidate and establish bounded comparability without promoting scientific gates.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
    "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/count_reconciliation.json",
@@ -496,6 +507,22 @@
    "R1_executed": false,
    "R1_execution_allowed": false,
    "scientific_Gates_changed": false
+  },
+  "round2_closure": {
+   "status": "completed_with_blockers",
+   "decision_record": "docs/AAD_ROUND2_RESEARCH_DECISIONS_20261030.md",
+   "campaign_report": "docs/AAD_ROUND2_CLOSURE_AND_CONDITIONAL_VALIDATION_REPORT_20261030.md",
+   "original_candidate_status": "CLOSED_FAILED_ORIGINAL_SOURCE_CONDITION",
+   "original_candidate_confirmation_allowed": false,
+   "formal_rule": "C",
+   "d1_independent": true,
+   "physical_path_rule": "B",
+   "physical_path_status": "Unknown",
+   "formal_equivalence_accepted": false,
+   "video_acquisition_go": false,
+   "official_inquiry_sent": false,
+   "fixed_leader_seed_plan": "Proposed_Awaiting_Researcher_Decision",
+   "round3_readiness": "NOT_READY"
   }
  },
  "experiments": [
@@ -723,7 +750,7 @@
    "purpose": "组合 NGSIM 跟驰风险参考和 pNEUMA 城市运动学参考，检查无消息作用的 SUMO 样本是否落在现实范围。",
    "research_question": "SUMO 基础运动与跟驰风险是否明显脱离真实交通范围？",
    "date": "2026-10-28",
-   "status": "round2_task6_offline_analysis_completed_interaction_gate_blocked",
+   "status": "round2_original_candidate_closed_conditional_validation_blocked",
    "code_version": "current main 29dac1a plus offline audit script",
    "code_paths": [
     "code/src/riskprop/simulation_real_coverage.py",
@@ -824,7 +851,9 @@
     "code/scripts/verify_stage_0_5_post_r2_offline_diagnostic.py",
     "code/scripts/analyze_stage_0_5_round2_task6_micro_interaction.py",
     "code/scripts/package_stage_0_5_round2_task6_micro_interaction.py",
-    "code/scripts/verify_stage_0_5_round2_task6_micro_interaction.py"
+    "code/scripts/verify_stage_0_5_round2_task6_micro_interaction.py",
+    "code/scripts/prepare_stage_0_5_round2_closure.py",
+    "code/scripts/audit_stage_0_5_round2_closure_comparability.py"
    ],
    "entrypoints": [
     "code/scripts/prepare_stage_0_5_real_reference.py",
@@ -890,7 +919,9 @@
     "code/scripts/verify_stage_0_5_post_r2_offline_diagnostic.py",
     "code/scripts/analyze_stage_0_5_round2_task6_micro_interaction.py",
     "code/scripts/package_stage_0_5_round2_task6_micro_interaction.py",
-    "code/scripts/verify_stage_0_5_round2_task6_micro_interaction.py"
+    "code/scripts/verify_stage_0_5_round2_task6_micro_interaction.py",
+    "code/scripts/prepare_stage_0_5_round2_closure.py",
+    "code/scripts/audit_stage_0_5_round2_closure_comparability.py"
    ],
    "test_paths": [
     "code/tests/test_simulation_real_coverage.py",
@@ -937,7 +968,9 @@
     "code/tests/test_stage_0_5_r0_design_packet.py",
     "code/tests/test_stage_0_5_offline_mechanism_audit.py",
     "code/tests/test_stage_0_5_post_r2_offline_diagnostic.py",
-    "code/tests/test_stage_0_5_round2_task6_micro_interaction.py"
+    "code/tests/test_stage_0_5_round2_task6_micro_interaction.py",
+    "code/tests/test_stage_0_5_round2_closure.py",
+    "code/tests/test_stage_0_5_round2_closure_comparability.py"
    ],
    "configuration": "R2 real reference plus two no_message_baseline generic-highway engineering fixtures (baseline_mixed_demand, measurement_probe_queue_stop); US-101 primary, Lankershim auxiliary entry-only, pNEUMA urban kinematics entry-only; all network/demand/vType/behaviour/time settings are engineering_fixture_only",
    "parameters": {
@@ -1159,7 +1192,10 @@
     "RES-STAGE-0.5-ROUND2-TASK6-REAL-SIM-MICRO-INTERACTION-20261030",
     "RES-STAGE-0.5-ROUND2-TASK7-INDEPENDENT-PHYSICAL-QUALITY-REVIEW-20261030",
     "RES-STAGE-0.5-ROUND2-TASK7.1-VIDEO-METADATA-AND-MAPPING-FEASIBILITY-20261030",
-    "RES-STAGE-0.5-ROUND2-TASK7.2-RESOURCE-METADATA-AND-ACQUISITION-FEASIBILITY-20261030"
+    "RES-STAGE-0.5-ROUND2-TASK7.2-RESOURCE-METADATA-AND-ACQUISITION-FEASIBILITY-20261030",
+    "RES-AAD-ROUND2-CLOSURE-20261030",
+    "RES-AAD-ROUND2-CLOSURE-COMPARABILITY-20261030",
+    "RES-AAD-ROUND2-PROVIDER-INQUIRY-20261030"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -1274,7 +1310,7 @@
     "third_window_rows_materialised",
     "zotero_items_added"
    ],
-   "current_conclusion": "Verified offline Task6 reproduces NGSIM source Formal P2 167/159 and sealed SUMO source zero. Small gaps alone do not explain the difference: low-speed positive closing tails and gap-closing joint structure differ, including coarse common macro support. Lane/leader transitions occur near a subset of real events, but most complete source contexts show no observed transition. Measurement artifacts, precise causal mechanism and scientific equivalence remain Unknown. No new SUMO/TraCI/trajectory/holdout; scientific definitions and Gate/Stage 0.6/Protocol Lock/Stage I unchanged.",
+   "current_conclusion": "Original Round2 minGap1.0 source branch closed by researcher decision; C general P2 and independent D1/B standards recorded. Bounded comparison verifies C without production changes and retains three C-external conflicts. Scientific equivalence remains false. Official inquiry dispatch is independently recorded; video/physical review/fixed-leader remain Blocked and Round3NOT_READY.",
    "gate": {
     "status": "blocked",
     "portable_path": "evidence/results/RES-STAGE-0.5-R1-DIAGNOSTICS-20261028/r2_gate_review.json"
@@ -5175,6 +5211,105 @@
    "gate_status": "blocked",
    "paper_locations": [
     "docs/STAGE_0_5_ROUND2_TASK7_2_RESOURCE_METADATA_AND_ACQUISITION_FEASIBILITY_20261030.md"
+   ],
+   "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-AAD-ROUND2-CLOSURE-20261030",
+   "experiment_id": "stage_0_5",
+   "name": "Round2 source-candidate closure and conditional validation campaign",
+   "status": "completed_with_blockers",
+   "portable_evidence_paths": [
+    "evidence/results/RES-AAD-ROUND2-CLOSURE-20261030/manifest.json",
+    "evidence/results/RES-AAD-ROUND2-CLOSURE-20261030/SHA256SUMS",
+    "evidence/results/RES-AAD-ROUND2-CLOSURE-20261030/validation_record.json",
+    "evidence/results/RES-AAD-ROUND2-CLOSURE-20261030/source_bindings.json"
+   ],
+   "local_artifact_paths": [
+    "code/outputs/formal/calibration/aad_round2_closure_20261030/"
+   ],
+   "code_version_source": "Baseline main80abab044063803219f6ceadfeb3562c3939aaa1 and exact source_bindings in this result; final commits derived live",
+   "configuration_source": "Researcher campaign decisions; C/D1/B separation; unchanged formal P2/Rule A/source/target/cohort/windows; conditional seeds Proposed only",
+   "data_version_source": "Reused sealed Task1-7.2 metadata/evidence plus deterministic synthetic fixtures; no new trajectories or media",
+   "core_metrics": {
+    "original_candidate_closed": true,
+    "original_confirmation_allowed": false,
+    "formal_rule": "C",
+    "d1_independent": true,
+    "physical_path_rule": "B",
+    "physical_path_status": "Unknown",
+    "scientific_equivalence_accepted": false,
+    "new_native_launches": 0,
+    "holdout_reads": 0
+   },
+   "current_conclusion": "Original Round2 minGap1.0 source branch closed by researcher decision; C general P2 and independent D1/B standards recorded. Bounded comparison verifies C without production changes and retains three C-external conflicts. Scientific equivalence remains false. Official inquiry dispatch is independently recorded; video/physical review/fixed-leader remain Blocked and Round3NOT_READY.",
+   "gate_status": "blocked",
+   "paper_locations": [
+    "docs/AAD_ROUND2_CLOSURE_AND_CONDITIONAL_VALIDATION_REPORT_20261030.md"
+   ],
+   "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-AAD-ROUND2-CLOSURE-COMPARABILITY-20261030",
+   "experiment_id": "stage_0_5",
+   "name": "Simulator-NGSIM bounded formal comparability matrix",
+   "status": "completed_with_scientific_conflicts_and_dependency_blockers",
+   "portable_evidence_paths": [
+    "evidence/results/RES-AAD-ROUND2-CLOSURE-COMPARABILITY-20261030/manifest.json",
+    "evidence/results/RES-AAD-ROUND2-CLOSURE-COMPARABILITY-20261030/SHA256SUMS",
+    "evidence/results/RES-AAD-ROUND2-CLOSURE-COMPARABILITY-20261030/validation_record.json",
+    "evidence/results/RES-AAD-ROUND2-CLOSURE-COMPARABILITY-20261030/source_bindings.json"
+   ],
+   "local_artifact_paths": [
+    "code/outputs/formal/calibration/round2_closure_comparability_20261030/"
+   ],
+   "code_version_source": "Baseline main80abab044063803219f6ceadfeb3562c3939aaa1 and exact source_bindings in this result; final commits derived live",
+   "configuration_source": "Researcher campaign decisions; C/D1/B separation; unchanged formal P2/Rule A/source/target/cohort/windows; conditional seeds Proposed only",
+   "data_version_source": "Reused sealed Task1-7.2 metadata/evidence plus deterministic synthetic fixtures; no new trajectories or media",
+   "core_metrics": {
+    "matrix_dimensions": 8,
+    "synthetic_task2_cases": 16,
+    "additional_probes": 8,
+    "targeted_tests_passed": 100,
+    "historical_parquet_tests_blocked": 3,
+    "historical_hash_files_verified": 95,
+    "production_changed": false,
+    "scientific_equivalence_accepted": false
+   },
+   "current_conclusion": "Original Round2 minGap1.0 source branch closed by researcher decision; C general P2 and independent D1/B standards recorded. Bounded comparison verifies C without production changes and retains three C-external conflicts. Scientific equivalence remains false. Official inquiry dispatch is independently recorded; video/physical review/fixed-leader remain Blocked and Round3NOT_READY.",
+   "gate_status": "blocked",
+   "paper_locations": [
+    "docs/SIMULATOR_NGSIM_FORMAL_COMPARABILITY_MATRIX_20261030.md"
+   ],
+   "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-AAD-ROUND2-PROVIDER-INQUIRY-20261030",
+   "experiment_id": "stage_0_5",
+   "name": "Authorized official provider inquiry dispatch attempt",
+   "status": "blocked_not_sent",
+   "portable_evidence_paths": [
+    "evidence/results/RES-AAD-ROUND2-PROVIDER-INQUIRY-20261030/manifest.json",
+    "evidence/results/RES-AAD-ROUND2-PROVIDER-INQUIRY-20261030/SHA256SUMS",
+    "evidence/results/RES-AAD-ROUND2-PROVIDER-INQUIRY-20261030/validation_record.json",
+    "evidence/results/RES-AAD-ROUND2-PROVIDER-INQUIRY-20261030/source_bindings.json"
+   ],
+   "local_artifact_paths": [
+    "code/outputs/formal/calibration/aad_round2_closure_20261030/"
+   ],
+   "code_version_source": "Baseline main80abab044063803219f6ceadfeb3562c3939aaa1 and exact source_bindings in this result; final commits derived live",
+   "configuration_source": "Researcher campaign decisions; C/D1/B separation; unchanged formal P2/Rule A/source/target/cohort/windows; conditional seeds Proposed only",
+   "data_version_source": "Reused sealed Task1-7.2 metadata/evidence plus deterministic synthetic fixtures; no new trajectories or media",
+   "core_metrics": {
+    "dispatch_authorized": true,
+    "email_sent": false,
+    "send_receipt": null,
+    "video_files_downloaded": 0
+   },
+   "current_conclusion": "Not Sent: app access approval timed out; authenticated sending session and sender signature unverified; original inquiry preserved with no new commitment.",
+   "gate_status": "blocked",
+   "paper_locations": [
+    "docs/AAD_ROUND2_PROVIDER_INQUIRY_DISPATCH_20261030.md"
    ],
    "scientific_claim_eligible": false
   }

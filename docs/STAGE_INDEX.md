@@ -1,3 +1,9 @@
+## Current — AAD-ROUND2-CLOSURE-20261030
+
+Agreed original Round2 minGap1.0 source candidate closed; C general P2, independent D1 and B physical-path standards recorded. Bounded comparison verifies C already implemented but retains three C-external conflicts and formal_equivalence_accepted=false. Video acquisition NO_GO; blind review and fixed-leader experiment Blocked; finite seed matrix Proposed. No new SUMO/TraCI/trajectory/holdout; Gate/Stage0.6/Protocol Lock/StageI unchanged.
+
+Reports: docs/AAD_ROUND2_RESEARCH_DECISIONS_20261030.md; docs/SIMULATOR_NGSIM_FORMAL_COMPARABILITY_MATRIX_20261030.md; docs/VIDEO_ACQUISITION_GO_NO_GO_20261030.md; docs/FIXED_LEADER_PAIRED_EXPERIMENT_PROPOSAL_20261030.md; docs/ROUND3_CANDIDATE_READINESS_REPORT_20261030.md. Final campaign and official dispatch reports complete the current status; older entries remain historical.
+
 # Stage 0.5 Round2 Task 5：Task 4 证据完整性闭环（2026-10-30）
 
 有限离线审计修复了三个 Task 4 证据问题：跨窗口时间戳重叠与精确记录/事件交集核查、Formal P2 onset unique/unmatched/ambiguous 守恒审计、真实不完整 30 s block 有效时长分母。Task 4 历史证据 SHA 不变，Gate/Stage 0.6/Protocol Lock/Stage I 不变。报告：`docs/STAGE_0_5_ROUND2_TASK5_TASK4_EVIDENCE_INTEGRITY_20261030.md`；证据：`evidence/results/RES-STAGE-0.5-ROUND2-TASK5-TASK4-EVIDENCE-INTEGRITY-20261030/`。

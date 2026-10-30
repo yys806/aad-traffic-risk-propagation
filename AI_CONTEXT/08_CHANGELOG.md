@@ -1,3 +1,7 @@
+## Current — AAD-ROUND2-CLOSURE-20261030
+
+Recorded researcher-approved source-candidate closure, C/D1/B separation and conditional resource/review/fixed-leader authority. Added independent metadata preparation with fail-closed arm-difference and B-documentation checks, videoNO_GO, minimum paired-repeat proposal and Round3NOT_READY. No production scientific code/config/Gate changes; no media/trajectory/simulation/holdout. B checker tests document completeness only and cannot certify physical truth. Bounded comparison delivered8 dimensions/16+8 fixtures/100 passed and3 dependency-blocked;95 old payloads unchanged. Official inquiry remainsNotSent after exact app-approval timeout, with original draft and local unsent EML preserved.
+
 ## 2026-10-30 Round2 Task7.2 - resource and mapping conditions
 
 Task7.2 COMPLETED_WITH_BLOCKERS. Four unique current raw AVI members verified from 6,452 bytes of exact ZIP metadata Ranges; compressed total 1,248,582,779 bytes, extracted total 1,248,560,044 bytes. Per-file license and PTS/time anchors remain unresolved. Existing 130 controls show a predominantly near-constant correspondence difference (mean norm 12.29247 m), not verified physical displacement. Camera7/8 remain geographic candidates, minimum_camera_set null. Provider inquiry drafted but not sent; acquisition and physical review remain unapproved/blocked. Formal P2 167/159, historical evidence, AGENTS,06_DECISIONS and scientific Gate/later stages unchanged. No videos, cases, simulations or new trajectory/holdout reads.

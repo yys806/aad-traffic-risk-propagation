@@ -1,3 +1,15 @@
+## RES-AAD-ROUND2-CLOSURE-20261030
+
+Round2 source-candidate closure and conditional validation campaign; status completed_with_blockers. Report: docs/AAD_ROUND2_CLOSURE_AND_CONDITIONAL_VALIDATION_REPORT_20261030.md. Evidence: evidence/results/RES-AAD-ROUND2-CLOSURE-20261030/. Scientific claim eligible=false.
+
+## RES-AAD-ROUND2-CLOSURE-COMPARABILITY-20261030
+
+Simulator-NGSIM bounded formal comparability matrix; status completed_with_scientific_conflicts_and_dependency_blockers. Report: docs/SIMULATOR_NGSIM_FORMAL_COMPARABILITY_MATRIX_20261030.md. Evidence: evidence/results/RES-AAD-ROUND2-CLOSURE-COMPARABILITY-20261030/. Scientific claim eligible=false.
+
+## RES-AAD-ROUND2-PROVIDER-INQUIRY-20261030
+
+Authorized official provider inquiry dispatch attempt; status blocked_not_sent. Report: docs/AAD_ROUND2_PROVIDER_INQUIRY_DISPATCH_20261030.md. Evidence: evidence/results/RES-AAD-ROUND2-PROVIDER-INQUIRY-20261030/. Scientific claim eligible=false.
+
 ## RES-STAGE-0.5-ROUND2-TASK7.2-RESOURCE-METADATA-AND-ACQUISITION-FEASIBILITY-20261030 | Task7.2 resource metadata and acquisition feasibility
 
 Task7.2 COMPLETED_WITH_BLOCKERS. Four unique current raw AVI members verified from 6,452 bytes of exact ZIP metadata Ranges; compressed total 1,248,582,779 bytes, extracted total 1,248,560,044 bytes. Per-file license and PTS/time anchors remain unresolved. Existing 130 controls show a predominantly near-constant correspondence difference (mean norm 12.29247 m), not verified physical displacement. Camera7/8 remain geographic candidates, minimum_camera_set null. Provider inquiry drafted but not sent; acquisition and physical review remain unapproved/blocked. Formal P2 167/159, historical evidence, AGENTS,06_DECISIONS and scientific Gate/later stages unchanged. No videos, cases, simulations or new trajectory/holdout reads.
