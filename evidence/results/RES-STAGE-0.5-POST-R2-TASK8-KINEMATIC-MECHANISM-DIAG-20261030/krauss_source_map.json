@@ -1,0 +1,210 @@
+{
+  "additional_files_sha256": {
+    "MSAbstractLaneChangeModel.cpp": "f5021c46f7103b598866cc64c41742cdbde0f99b65da18962f17000064722673",
+    "MSAbstractLaneChangeModel.h": "20deb482cb44bbfbf50dbdd37614f15e5b9e987a08cb09dfaa145b58692d6297",
+    "MSCFModel.cpp": "b4a2b50b679c7772dc81ec5585410cedfdea2110961cc445731627ef3cb1d769",
+    "MSCFModel.h": "8976c24e4ca347bb75034248758efea084c9250d433d74c424900bb3060c39b8",
+    "MSCFModel_Krauss.cpp": "0722e1a44c56e430e40c2b661d1ccfb74df1095cd9f6ffeb4e4ceb4da983af36",
+    "MSCFModel_Krauss.h": "e620cab2e119b56b94b933658c7357cc4f2c05b71d58ca23f469c74dbcd58236",
+    "MSCFModel_KraussOrig1.cpp": "415b5045f5b137710c3e308297a12e2a22d7d2065f50ff689ef764cfc2179347",
+    "MSCFModel_KraussOrig1.h": "52e9866f62d9ff6c41624b6cfaaf2389783c516c31297cbb30063e0b51aecd82",
+    "MSLCM_LC2013.cpp": "fd5df2f80ba135f00fb69b1328daa3de3fb91edecda6fced192b9edaf7ad1861",
+    "MSLane.cpp": "f3594649417bc0e2e94ae0e9c8d16b1f5811c4df17cac0a18d078d97af9099bf",
+    "MSLaneChanger.cpp": "86e1cd80a9499066ba95ee19ef1336c6524287f053776df42a468a5d640fb452",
+    "MSLeaderInfo.cpp": "bd2da3a15e79647a77becf9c126601ec17c3d2dd0289c6330513f738faeb4fc4",
+    "MSVehicle.cpp": "8499ebe445906b19395d5c70945b012f320a439327e9cb3c20f0abd26d15a6a4",
+    "MSVehicle.h": "0732c3019037c0171d58c0d231ba68183c971cccb726eef7efd2394b33c794e1",
+    "MSVehicleType.cpp": "3ed0ac68e71f1c97984735fe640ae695e2ed2552a5af6b77f5bfad8f23a2c46b",
+    "SUMOTime.h": "e7897a565fe9def68e838881a9687f6cec4332fd572b25e0fb9a08066b58b13b",
+    "StdDefs.h": "27f577de8f8879d4a192b31582c1ebb095f16204832178fe5debd7f7b93c6bc9",
+    "tag_object.json": "059bbd4a270ff0bf9c84e28748b2de8f8dd1f3a07b5fead4e9d27c3ff6020bf9",
+    "tag_ref.json": "6423a992ca5f5503b3cc0fa5ad15ed6c27fa849f807250bde2a3485206f3ead2"
+  },
+  "commit": "fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3",
+  "current_step_safe_speed_not_an_absolute_historical_state_feasibility_test": true,
+  "files": [
+    {
+      "bytes": 7409,
+      "functions": [
+        {
+          "end_line": 126,
+          "function": "MSCFModel_Krauss::followSpeed",
+          "start_line": 112
+        },
+        {
+          "end_line": 97,
+          "function": "MSCFModel_Krauss::patchSpeedBeforeLC",
+          "start_line": 68
+        },
+        {
+          "end_line": 150,
+          "function": "MSCFModel_Krauss::dawdle2",
+          "start_line": 129
+        }
+      ],
+      "sha256": "0722e1a44c56e430e40c2b661d1ccfb74df1095cd9f6ffeb4e4ceb4da983af36",
+      "source_path": "src/microsim/cfmodels/MSCFModel_Krauss.cpp",
+      "url": "https://github.com/eclipse-sumo/sumo/blob/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/microsim/cfmodels/MSCFModel_Krauss.cpp"
+    },
+    {
+      "bytes": 49766,
+      "functions": [
+        {
+          "end_line": 1023,
+          "function": "MSCFModel::maximumSafeFollowSpeed",
+          "start_line": 947
+        },
+        {
+          "end_line": 942,
+          "function": "MSCFModel::maximumSafeStopSpeedBallistic",
+          "start_line": 877
+        },
+        {
+          "end_line": 88,
+          "function": "MSCFModel::brakeGap",
+          "start_line": 77
+        },
+        {
+          "end_line": 185,
+          "function": "MSCFModel::getSecureGap",
+          "start_line": 168
+        },
+        {
+          "end_line": 361,
+          "function": "MSCFModel::insertionFollowSpeed",
+          "start_line": 354
+        },
+        {
+          "end_line": 1075,
+          "function": "MSCFModel::calculateEmergencyDeceleration",
+          "start_line": 1027
+        },
+        {
+          "end_line": 255,
+          "function": "MSCFModel::finalizeSpeed",
+          "start_line": 189
+        },
+        {
+          "end_line": 316,
+          "function": "MSCFModel::maxNextSpeed",
+          "start_line": 314
+        },
+        {
+          "end_line": 338,
+          "function": "MSCFModel::minNextSpeedEmergency",
+          "start_line": 331
+        }
+      ],
+      "sha256": "b4a2b50b679c7772dc81ec5585410cedfdea2110961cc445731627ef3cb1d769",
+      "source_path": "src/microsim/cfmodels/MSCFModel.cpp",
+      "url": "https://github.com/eclipse-sumo/sumo/blob/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/microsim/cfmodels/MSCFModel.cpp"
+    },
+    {
+      "bytes": 4910,
+      "functions": [
+        {
+          "end_line": 45,
+          "function": "MSCFModel_KraussOrig1::MSCFModel_KraussOrig1",
+          "start_line": 41
+        }
+      ],
+      "sha256": "415b5045f5b137710c3e308297a12e2a22d7d2065f50ff689ef764cfc2179347",
+      "source_path": "src/microsim/cfmodels/MSCFModel_KraussOrig1.cpp",
+      "url": "https://github.com/eclipse-sumo/sumo/blob/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/microsim/cfmodels/MSCFModel_KraussOrig1.cpp"
+    },
+    {
+      "bytes": 381688,
+      "functions": [
+        {
+          "end_line": 3201,
+          "function": "MSVehicle::adaptToLeaders",
+          "start_line": 3124
+        },
+        {
+          "end_line": 3318,
+          "function": "MSVehicle::adaptToLeader",
+          "start_line": 3236
+        },
+        {
+          "end_line": 2078,
+          "function": "MSVehicle::checkActionStep",
+          "start_line": 2072
+        },
+        {
+          "end_line": 7876,
+          "function": "MSVehicle::getCurrentApparentDecel",
+          "start_line": 7873
+        }
+      ],
+      "sha256": "8499ebe445906b19395d5c70945b012f320a439327e9cb3c20f0abd26d15a6a4",
+      "source_path": "src/microsim/MSVehicle.cpp",
+      "url": "https://github.com/eclipse-sumo/sumo/blob/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/microsim/MSVehicle.cpp"
+    },
+    {
+      "bytes": 209149,
+      "functions": [
+        {
+          "end_line": 1447,
+          "function": "MSLane::safeInsertionSpeed",
+          "start_line": 1410
+        }
+      ],
+      "sha256": "f3594649417bc0e2e94ae0e9c8d16b1f5811c4df17cac0a18d078d97af9099bf",
+      "source_path": "src/microsim/MSLane.cpp",
+      "url": "https://github.com/eclipse-sumo/sumo/blob/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/microsim/MSLane.cpp"
+    },
+    {
+      "bytes": 126927,
+      "functions": [
+        {
+          "end_line": 1168,
+          "function": "MSLaneChanger::checkChange",
+          "start_line": 799
+        }
+      ],
+      "sha256": "86e1cd80a9499066ba95ee19ef1336c6524287f053776df42a468a5d640fb452",
+      "source_path": "src/microsim/MSLaneChanger.cpp",
+      "url": "https://github.com/eclipse-sumo/sumo/blob/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/microsim/MSLaneChanger.cpp"
+    },
+    {
+      "bytes": 113954,
+      "functions": [
+        {
+          "end_line": 226,
+          "function": "MSLCM_LC2013::patchSpeed",
+          "start_line": 197
+        },
+        {
+          "end_line": 428,
+          "function": "MSLCM_LC2013::_patchSpeed",
+          "start_line": 230
+        }
+      ],
+      "sha256": "fd5df2f80ba135f00fb69b1328daa3de3fb91edecda6fced192b9edaf7ad1861",
+      "source_path": "src/microsim/lcmodels/MSLCM_LC2013.cpp",
+      "url": "https://github.com/eclipse-sumo/sumo/blob/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3/src/microsim/lcmodels/MSLCM_LC2013.cpp"
+    }
+  ],
+  "insertion_chain": [
+    "MSLane::safeInsertionSpeed subtracts minGap, rejects negative space if collision check enabled",
+    "insertionFollowSpeed calls maximumSafeFollowSpeed with onInsertion=true and egoSpeed=0 for ballistic",
+    "ballistic insertion branch solves constant insertion speed plus subsequent braking; it does not use the normal dynamic branch"
+  ],
+  "lc_chain": [
+    "MSLaneChanger::checkChange extrapolates front/back speeds using tauRemainder when action step differs from native step",
+    "front/back secure gaps use car-follow getSecureGap and lane-change safety factor",
+    "LC2013 advice can alter wanted speed within the finalizeSpeed bounds; it can generate leader changes and disturbances"
+  ],
+  "normal_follow_chain": [
+    "MSVehicle::adaptToLeaders subtracts follower minGap from physical net gap",
+    "MSVehicle::adaptToLeader passes current speed, adjusted gap, leader speed and current apparent decel",
+    "Krauss::followSpeed applies optional driver perception then maximumSafeFollowSpeed",
+    "maximumSafeFollowSpeed uses tau and leader brakeGap, including emergency correction outside lane-change calculation",
+    "followSpeed clips to maxNextSpeed and the ballistic emergency deceleration floor",
+    "finalizeSpeed applies stops/deceleration/speed limits then dawdling then lane-change speed coordination",
+    "non-action internal steps continue the previously chosen acceleration"
+  ],
+  "status": "Verified official tagged source, not a documentation-only interpretation",
+  "tag": "v1_26_0",
+  "tag_object_sha": "de3c3f37a2908397bc398a2bfe3b98232252ba8f"
+}

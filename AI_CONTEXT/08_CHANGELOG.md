@@ -1,3 +1,7 @@
+## Current — AAD-S0.5-POST-R2-TASK8 (2026-10-30)
+
+Added standalone five-second precursor integration and original-pair contrasts, explicit identity/missingness/repeated-unit accounting, five local figures, seven SUMO case profiles, official fixed-tag Krauss call-chain map, competing-mechanism and fixed-leader discrimination matrices. Added targeted numerical/identity tests. Recorded historical summary conflicts without modifying sealed history. Updated active indexes/registry and bounded portable evidence registration; production risk code/config and06_DECISIONS/AGENTS unchanged. Validation details: evidence/results/RES-STAGE-0.5-POST-R2-TASK8-KINEMATIC-MECHANISM-DIAG-20261030/validation_record.json.
+
 ## Current — AAD-ROUND2-CLOSURE-20261030
 
 Recorded researcher-approved source-candidate closure, C/D1/B separation and conditional resource/review/fixed-leader authority. Added independent metadata preparation with fail-closed arm-difference and B-documentation checks, videoNO_GO, minimum paired-repeat proposal and Round3NOT_READY. No production scientific code/config/Gate changes; no media/trajectory/simulation/holdout. B checker tests document completeness only and cannot certify physical truth. Bounded comparison delivered8 dimensions/16+8 fixtures/100 passed and3 dependency-blocked;95 old payloads unchanged. Official inquiry remainsNotSent after exact app-approval timeout, with original draft and local unsent EML preserved.

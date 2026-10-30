@@ -1,3 +1,11 @@
+## Current — AAD-S0.5-POST-R2-TASK8 (2026-10-30)
+
+Verified offline Task8 extends every Task6 source/target event and original control to five-second precursor diagnostics: source strict events105/167 and107/159, original paired strict contrasts94/89. Leader-speed-change contributions are substantial; generic initial-positive-closing or follower-acceleration-only explanations are weakened, not causally rejected. Official SUMO1.26.0 tagged source distinguishes dynamic ballistic follow from insertion and LC constraints. Seven existing near-threshold cases remain non-P2; five change leader and only two allow full fixed-pair decomposition. Physical truth and unique mechanism attribution remain Unknown.
+
+Original Round2 candidate remains CLOSED_FAILED_ORIGINAL_SOURCE_CONDITION; Formal P2 and independent D1/B standards unchanged; scientific equivalence false; physical reference/path insufficient; Stage0.5 blocked, Stage0.6/Protocol Lock/StageI unchanged, Round3 not started. No simulation, TraCI, new seed, third-window trajectory, holdout, video or OB access.
+
+Report: docs/STAGE_0_5_POST_R2_TASK8_KINEMATIC_MECHANISM_DIAGNOSIS_20261030.md; evidence: evidence/results/RES-STAGE-0.5-POST-R2-TASK8-KINEMATIC-MECHANISM-DIAG-20261030/. Older dated entries remain historical.
+
 ## Current — AAD-ROUND2-CLOSURE-20261030
 
 Agreed original Round2 minGap1.0 source candidate closed; C general P2, independent D1 and B physical-path standards recorded. Bounded comparison verifies C already implemented but retains three C-external conflicts and formal_equivalence_accepted=false. Video acquisition NO_GO; blind review and fixed-leader experiment Blocked; finite seed matrix Proposed. No new SUMO/TraCI/trajectory/holdout; Gate/Stage0.6/Protocol Lock/StageI unchanged.

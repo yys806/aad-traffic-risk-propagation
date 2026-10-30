@@ -1,3 +1,7 @@
+## RES-STAGE-0.5-POST-R2-TASK8-KINEMATIC-MECHANISM-DIAG-20261030
+
+Verified offline Task8 extends every Task6 source/target event and original control to five-second precursor diagnostics: source strict events105/167 and107/159, original paired strict contrasts94/89. Leader-speed-change contributions are substantial; generic initial-positive-closing or follower-acceleration-only explanations are weakened, not causally rejected. Official SUMO1.26.0 tagged source distinguishes dynamic ballistic follow from insertion and LC constraints. Seven existing near-threshold cases remain non-P2; five change leader and only two allow full fixed-pair decomposition. Physical truth and unique mechanism attribution remain Unknown. Report: docs/STAGE_0_5_POST_R2_TASK8_KINEMATIC_MECHANISM_DIAGNOSIS_20261030.md. Evidence: evidence/results/RES-STAGE-0.5-POST-R2-TASK8-KINEMATIC-MECHANISM-DIAG-20261030/. Local figures and identity bindings: code/outputs/diagnostics/post_r2_task8_20261030/. Status completed_offline_with_identification_limits; scientific_claim_eligible=false.
+
 ## RES-AAD-ROUND2-CLOSURE-20261030
 
 Round2 source-candidate closure and conditional validation campaign; status completed_with_blockers. Report: docs/AAD_ROUND2_CLOSURE_AND_CONDITIONAL_VALIDATION_REPORT_20261030.md. Evidence: evidence/results/RES-AAD-ROUND2-CLOSURE-20261030/. Scientific claim eligible=false.

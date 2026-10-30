@@ -122,6 +122,24 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         )
     ]
 
+    # Task8: bounded anonymous derived rows/profiles, no native IDs or raw tables.
+    task8_root = 'evidence/results/RES-STAGE-0.5-POST-R2-TASK8-KINEMATIC-MECHANISM-DIAG-20261030'
+    pairs['RES-STAGE-0.5-POST-R2-TASK8-KINEMATIC-MECHANISM-DIAG-20261030'] = [
+        (f'{task8_root}/{name}', name) for name in (
+            'analysis_config.json', 'analysis_validation.json',
+            'event_precursor_decomposition.csv', 'control_precursor_decomposition.csv',
+            'precursor_summary.csv', 'event_control_comparison.csv', 'precursor_profiles.csv',
+            'sumo_near_threshold_profiles.csv', 'sumo_near_threshold_cases.csv',
+            'sample_coverage.json', 'overlap_and_repeated_units.json', 'precursor_window_caveats.json',
+            'contribution_signs.json', 'representative_profile_selection.json', 'figure_index.json',
+            'krauss_source_map.json', 'sealed_configuration_audit.json', 'krauss_constraint_scope.json',
+            'historical_evidence_review.json', 'literature_reuse_review.json',
+            'mechanism_evidence_matrix.json', 'fixed_leader_design_assessment.json',
+            'evidence_reuse_matrix.csv', 'source_bindings.json', 'context_consistency_check.json',
+            'validation_record.json', 'manifest.json', 'SHA256SUMS',
+        )
+    ]
+
     # Task7 availability metadata only; no videos or identity-level cases.
     task7_root = "evidence/results/RES-STAGE-0.5-ROUND2-TASK7-INDEPENDENT-PHYSICAL-QUALITY-REVIEW-20261030"
     pairs["RES-STAGE-0.5-ROUND2-TASK7-INDEPENDENT-PHYSICAL-QUALITY-REVIEW-20261030"] = [
@@ -916,6 +934,10 @@ def _validate_source(source: Path) -> None:
         # Task7.1 metadata/coverage and 130 ID-free, risk-independent controls only.
         "camera_localy_coverage.csv", "spatial_control_points.csv",
         "license_resource_matrix.csv",
+        # Task8: ordinal event/control derived diagnostics and seven anonymous cases.
+        'event_precursor_decomposition.csv', 'control_precursor_decomposition.csv',
+        'precursor_summary.csv', 'event_control_comparison.csv', 'precursor_profiles.csv',
+        'sumo_near_threshold_profiles.csv', 'sumo_near_threshold_cases.csv',
         # Task7.2: four raw-file inventory and official license/time statements.
         "resource_inventory.csv", "license_scope_matrix.csv", "time_metadata_matrix.csv",
         }

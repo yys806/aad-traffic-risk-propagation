@@ -37,3 +37,11 @@ Proposed uncertainty: per-segment paired A/B differences for all three seeds wit
 ## Failure and stop rules
 
 Stop before launch if license/time/space/physical quality, stable identity, leader-input extraction, fair matching, environment/resources, exact seed approval or frozen metrics are missing. Stop the affected pair/campaign on identity/time discontinuity, unverifiable enforced leader input, unmatched initial conditions, any non-minGap arm difference, collision/teleport, native error, resource limit or incomplete measurement. Preserve failed attempts and diagnostics; no seed replacement, hidden exclusion, automatic retry or modified scientific threshold. Report observations only; interpretation and next candidate choice remain with the researcher.
+
+## Task8 diagnostic addendum — Proposed, not an execution amendment
+
+Task8 report: `docs/STAGE_0_5_POST_R2_TASK8_KINEMATIC_MECHANISM_DIAGNOSIS_20261030.md`, section9; machine discriminator: `evidence/results/RES-STAGE-0.5-POST-R2-TASK8-KINEMATIC-MECHANISM-DIAG-20261030/fixed_leader_design_assessment.json`. Existing proposed seeds, repetitions, unknown N and all physical gates remain unchanged. No replay or Round3 starts.
+
+With common enforced leader speeds and equal achieved initial follower/leader speeds, delta Cinitial=delta Cl=0, hence delta C=delta Cf. Add signed Cinitial/Cf/Cl/Cgap/R to the existing speed, gap, closing, event and evaluable-exposure outputs. Match the same physical net gap, not each arm's minGap-adjusted gap.
+
+Before any execution freeze, clarify how the existing five B00 vTypes apply to physically qualified real segments: NGSIM tau identity is unobserved. This is not authority to add a new five-type repetition matrix or select a favorable type. Freeze common disturbance anchors/horizons and separate absolute amplitude, undefined ratios and descriptive minimum-time lags; historical separate episode extraction from differentiated leader positions is not the new frozen reaction-time estimator. Flat input, multiple minima, censoring and failed initialization remain Unknown or failed support. Two minGap arms can test conditional response, but cannot alone uniquely separate all network-input, initial-state, driver/model and measurement mechanisms.

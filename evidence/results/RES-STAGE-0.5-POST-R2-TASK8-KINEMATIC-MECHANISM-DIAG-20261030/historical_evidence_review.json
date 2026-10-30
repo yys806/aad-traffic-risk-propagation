@@ -1,0 +1,479 @@
+{
+  "historical_conflicts": [
+    {
+      "Actual Implementation": "Saved replay_summary records 26/48 rejection entries =54.1667%, 48 planned invocations and 43 reported executed invocations; 43 scored pair/config combinations and 23 distinct pairs.",
+      "Affected Files": [
+        "docs/STAGE_0_5_LEADER_REPLAY_BEHAVIOUR_DIAGNOSTICS.md",
+        "evidence/results/RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1/replay_summary.json"
+      ],
+      "Conflict": "Arithmetic discrepancy is verified; actual native process count cannot be re-certified from this summary alone. No re-execution or historical correction.",
+      "Documented Intent": "Historical narrative says 44% of initial pair/config states rejected and 48 independent process invocations.",
+      "Evidence": "RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1/replay_summary.json; STAGE_0_5_LEADER_REPLAY_BEHAVIOUR_DIAGNOSTICS.md sections1,3",
+      "Status": "Awaiting Researcher Decision"
+    }
+  ],
+  "new_historical_experiment_runs": 0,
+  "newell": "Existing prototype summaries only; not SUMO-native Newell and not a model-selection result.",
+  "old_replay": {
+    "budget_used": {
+      "sumo_process_invocations_executed": 43,
+      "sumo_process_invocations_planned": 48
+    },
+    "distinct_pairs_replayed": 23,
+    "insertion_rejection_count": 26,
+    "insertion_rejection_share": 0.5416666666666666,
+    "pair_config_combinations_replayed": 43,
+    "paired_difference": {
+      "baseline_tau": 1.0,
+      "brockfeld_gap_error_pct": {
+        "ci95": [
+          4.254330537462512,
+          35.505329149601316
+        ],
+        "direction": "lower_is_better",
+        "improved_pairs": 7,
+        "mean_difference": 19.573641792176595,
+        "worsened_pairs": 13
+      },
+      "candidate_tau": 1.6,
+      "gap_bias_m": {
+        "ci95": [
+          4.900658348235836,
+          6.325824548096676
+        ],
+        "direction": "lower_is_better",
+        "improved_pairs": 0,
+        "mean_difference": 5.622753529002795,
+        "worsened_pairs": 20
+      },
+      "gap_mae_m": {
+        "ci95": [
+          -0.8530497321817326,
+          3.4394461056956147
+        ],
+        "direction": "lower_is_better",
+        "improved_pairs": 7,
+        "mean_difference": 1.283838763509955,
+        "worsened_pairs": 13
+      },
+      "interval_note": "paired bootstrap over leader-follower pairs, within-source sampling sensitivity only; this is not a science tolerance and not a validation result",
+      "nrmse_gap": {
+        "ci95": [
+          0.045230519491969885,
+          0.35604435829640635
+        ],
+        "direction": "lower_is_better",
+        "improved_pairs": 7,
+        "mean_difference": 0.19278409321358989,
+        "worsened_pairs": 13
+      },
+      "nrmse_speed": {
+        "ci95": [
+          -0.010197655813122966,
+          0.016782175108899625
+        ],
+        "direction": "lower_is_better",
+        "improved_pairs": 11,
+        "mean_difference": 0.003044232716781544,
+        "worsened_pairs": 9
+      },
+      "observed_time_gap_mean_s": {
+        "ci95": [
+          -0.0009548207152086152,
+          0.006846279682929336
+        ],
+        "direction": "lower_is_better",
+        "improved_pairs": 1,
+        "mean_difference": 0.002301014758655795,
+        "worsened_pairs": 3
+      },
+      "paired_pairs": 20,
+      "speed_bias_mps": {
+        "ci95": [
+          -0.31617826931834,
+          -0.17918926539987876
+        ],
+        "direction": "lower_is_better",
+        "improved_pairs": 18,
+        "mean_difference": -0.25165983172192896,
+        "worsened_pairs": 2
+      },
+      "speed_mae_mps": {
+        "ci95": [
+          -0.07789204703446329,
+          0.12256819619645228
+        ],
+        "direction": "lower_is_better",
+        "improved_pairs": 11,
+        "mean_difference": 0.019928318762730036,
+        "worsened_pairs": 9
+      }
+    },
+    "pairs_selected": 24
+  },
+  "response_grid": {
+    "configuration_summaries": {
+      "IDM_T1.0": {
+        "brockfeld_gap_error_pct": {
+          "max": 141.48737043360836,
+          "mean": 47.561502133705226,
+          "median": 32.67898367910365,
+          "min": 11.792573059559894,
+          "n": 36
+        },
+        "model": "IDM",
+        "nrmse_speed": {
+          "max": 0.24481676368653654,
+          "mean": 0.15224552772040192,
+          "median": 0.14485054333272615,
+          "min": 0.06943112136566695,
+          "n": 36
+        },
+        "pairs": 12,
+        "response_amplitude_ratio": {
+          "max": 35.03302138429673,
+          "mean": 3.7285135173340627,
+          "median": 0.8750261806205915,
+          "min": 0.5735839237160485,
+          "n": 36
+        },
+        "response_lag_difference_s": {
+          "max": 2.200000000000017,
+          "mean": 0.5127777777777818,
+          "median": 0.48333333333335804,
+          "min": -0.34166666666666856,
+          "n": 36
+        },
+        "rows": 36,
+        "seeds": 3
+      },
+      "IDM_T1.6": {
+        "brockfeld_gap_error_pct": {
+          "max": 239.2478321750505,
+          "mean": 79.58510228039373,
+          "median": 52.69775093675149,
+          "min": 10.715838436698135,
+          "n": 36
+        },
+        "model": "IDM",
+        "nrmse_speed": {
+          "max": 0.3285720203941414,
+          "mean": 0.18448651308389644,
+          "median": 0.19182484747672301,
+          "min": 0.06081148597496015,
+          "n": 36
+        },
+        "pairs": 12,
+        "response_amplitude_ratio": {
+          "max": 4.784204932619944,
+          "mean": 1.0543673257902781,
+          "median": 0.6916192775761205,
+          "min": 0.42107948629098174,
+          "n": 36
+        },
+        "response_lag_difference_s": {
+          "max": 2.200000000000017,
+          "mean": 0.36930555555556166,
+          "median": 0.32916666666669414,
+          "min": -1.0,
+          "n": 36
+        },
+        "rows": 36,
+        "seeds": 3
+      },
+      "K_tau1.0": {
+        "brockfeld_gap_error_pct": {
+          "max": 169.16746047579116,
+          "mean": 53.08463787809475,
+          "median": 38.15312523741956,
+          "min": 5.950795313856059,
+          "n": 36
+        },
+        "model": "Krauss",
+        "nrmse_speed": {
+          "max": 0.26974172926471424,
+          "mean": 0.1573531723559534,
+          "median": 0.1485040007971324,
+          "min": 0.06266660610848251,
+          "n": 36
+        },
+        "pairs": 12,
+        "response_amplitude_ratio": {
+          "max": 60.191799655762615,
+          "mean": 4.64008246833737,
+          "median": 0.877347457235781,
+          "min": 0.4388252089176181,
+          "n": 36
+        },
+        "response_lag_difference_s": {
+          "max": 2.200000000000017,
+          "mean": 0.37490740740741857,
+          "median": 0.25499999999998413,
+          "min": -1.1333333333333258,
+          "n": 36
+        },
+        "rows": 36,
+        "seeds": 3
+      },
+      "K_tau1.0_minGap1.0": {
+        "brockfeld_gap_error_pct": {
+          "max": 137.62532424228698,
+          "mean": 45.77710703175752,
+          "median": 38.1431524469417,
+          "min": 13.645863560130032,
+          "n": 36
+        },
+        "model": "Krauss",
+        "nrmse_speed": {
+          "max": 0.26777298403313,
+          "mean": 0.1479087445988139,
+          "median": 0.13712983069356824,
+          "min": 0.06795271285402009,
+          "n": 36
+        },
+        "pairs": 12,
+        "response_amplitude_ratio": {
+          "max": 63.82764809841736,
+          "mean": 4.93988570514608,
+          "median": 0.9297926888944371,
+          "min": 0.4675211851069435,
+          "n": 36
+        },
+        "response_lag_difference_s": {
+          "max": 2.200000000000017,
+          "mean": 0.44087962962964056,
+          "median": 0.4333333333333751,
+          "min": -0.8333333333333237,
+          "n": 36
+        },
+        "rows": 36,
+        "seeds": 3
+      },
+      "K_tau1.0_minGap5.0": {
+        "brockfeld_gap_error_pct": {
+          "max": 222.0623650473687,
+          "mean": 82.83701482847549,
+          "median": 56.27330001990211,
+          "min": 9.830120025217083,
+          "n": 36
+        },
+        "model": "Krauss",
+        "nrmse_speed": {
+          "max": 0.4181436911241088,
+          "mean": 0.1954309683378676,
+          "median": 0.16971571966410265,
+          "min": 0.06273464572568822,
+          "n": 36
+        },
+        "pairs": 12,
+        "response_amplitude_ratio": {
+          "max": 52.89386466786817,
+          "mean": 4.028871680521209,
+          "median": 0.854117389880277,
+          "min": 0.4368483666527189,
+          "n": 36
+        },
+        "response_lag_difference_s": {
+          "max": 2.200000000000017,
+          "mean": 0.31842592592593744,
+          "median": 0.25499999999998413,
+          "min": -1.999999999999981,
+          "n": 36
+        },
+        "rows": 36,
+        "seeds": 3
+      },
+      "K_tau1.0_sigma0.0": {
+        "brockfeld_gap_error_pct": {
+          "max": 140.01861474638048,
+          "mean": 46.74272522027638,
+          "median": 33.368073671969846,
+          "min": 10.406235815349095,
+          "n": 36
+        },
+        "model": "Krauss",
+        "nrmse_speed": {
+          "max": 0.2613420233537264,
+          "mean": 0.15142967679815025,
+          "median": 0.1374151368837987,
+          "min": 0.0636651804647442,
+          "n": 36
+        },
+        "pairs": 12,
+        "response_amplitude_ratio": {
+          "max": 45.497556305205116,
+          "mean": 4.618300212468296,
+          "median": 0.9458239879948693,
+          "min": 0.60538191239202,
+          "n": 36
+        },
+        "response_lag_difference_s": {
+          "max": 2.200000000000017,
+          "mean": 0.4741666666666735,
+          "median": 0.3750000000000029,
+          "min": -0.6666666666666856,
+          "n": 36
+        },
+        "rows": 36,
+        "seeds": 3
+      },
+      "K_tau1.3": {
+        "brockfeld_gap_error_pct": {
+          "max": 224.04048944417966,
+          "mean": 71.3965883151314,
+          "median": 47.683467772901416,
+          "min": 8.618209206280367,
+          "n": 36
+        },
+        "model": "Krauss",
+        "nrmse_speed": {
+          "max": 0.27346594898160786,
+          "mean": 0.17083961702871225,
+          "median": 0.17064689777061573,
+          "min": 0.05403456720874799,
+          "n": 36
+        },
+        "pairs": 12,
+        "response_amplitude_ratio": {
+          "max": 35.74115474492801,
+          "mean": 1.9774587592190744,
+          "median": 0.7668470840340718,
+          "min": 0.0,
+          "n": 36
+        },
+        "response_lag_difference_s": {
+          "max": 2.200000000000017,
+          "mean": 0.2347685185185297,
+          "median": 0.1458333333333286,
+          "min": -0.8666666666666364,
+          "n": 36
+        },
+        "rows": 36,
+        "seeds": 3
+      },
+      "K_tau1.6": {
+        "brockfeld_gap_error_pct": {
+          "max": 278.7632618609517,
+          "mean": 93.78749223151458,
+          "median": 63.49351948262158,
+          "min": 12.042119339441964,
+          "n": 36
+        },
+        "model": "Krauss",
+        "nrmse_speed": {
+          "max": 0.31518483736978053,
+          "mean": 0.19626066261311167,
+          "median": 0.19715499358861088,
+          "min": 0.08208546379134882,
+          "n": 36
+        },
+        "pairs": 12,
+        "response_amplitude_ratio": {
+          "max": 25.26501360175115,
+          "mean": 1.4514950904072552,
+          "median": 0.7148483825550821,
+          "min": 0.0,
+          "n": 36
+        },
+        "response_lag_difference_s": {
+          "max": 2.200000000000017,
+          "mean": -0.18319444444443347,
+          "median": 0.033333333333340986,
+          "min": -2.2999999999999923,
+          "n": 36
+        },
+        "rows": 36,
+        "seeds": 3
+      },
+      "K_tau2.0": {
+        "brockfeld_gap_error_pct": {
+          "max": 350.8825911459801,
+          "mean": 125.59756402330751,
+          "median": 92.32721290138761,
+          "min": 15.26706458348364,
+          "n": 36
+        },
+        "model": "Krauss",
+        "nrmse_speed": {
+          "max": 0.37342655336743075,
+          "mean": 0.23570156755640762,
+          "median": 0.22999067409052448,
+          "min": 0.1323060099796693,
+          "n": 36
+        },
+        "pairs": 12,
+        "response_amplitude_ratio": {
+          "max": 17.051539495588422,
+          "mean": 1.1021470272723837,
+          "median": 0.6583804512294901,
+          "min": 0.0,
+          "n": 36
+        },
+        "response_lag_difference_s": {
+          "max": 2.200000000000017,
+          "mean": -0.18449074074073143,
+          "median": 0.033333333333350534,
+          "min": -2.2999999999999923,
+          "n": 36
+        },
+        "rows": 36,
+        "seeds": 3
+      }
+    },
+    "configurations": 9,
+    "duration_s": [
+      20.0
+    ],
+    "pairs": 12,
+    "rows": 324,
+    "seeds": [
+      20261101,
+      20261102,
+      20261103
+    ]
+  },
+  "retained_limitations": [
+    "METHOD-EXPANSION run_metadata hash mismatch and missing trajectory_coverage_matrix were already reported in Task6; no new full-bundle Pass is claimed.",
+    "Old homogeneous tau replay and selected pair strata are not current B00 or a population-level network causal comparison.",
+    "Primary exact-initial-state and secondary clamped-initial-state outcomes must remain separate.",
+    "Historical response lag/amplitude uses episodes selected from differentiated leader positions separately in observed and simulated series; not an independent measured reaction-time truth."
+  ],
+  "status": "Verified named payloads only; no historical experiment repeated",
+  "verified_named_payloads": [
+    {
+      "actual_sha256": "2c4b4c561a08af54e80fa12a650f30980aa1c78960e7d2b059fbc0c61e1f1687",
+      "expected_sha256": "2c4b4c561a08af54e80fa12a650f30980aa1c78960e7d2b059fbc0c61e1f1687",
+      "path": "evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/response_plan.json"
+    },
+    {
+      "actual_sha256": "ddaf4e8de556624c4db749574dd932128462e3aba326a5b7d73b9f8dbd9ff19e",
+      "expected_sha256": "ddaf4e8de556624c4db749574dd932128462e3aba326a5b7d73b9f8dbd9ff19e",
+      "path": "evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/response_metrics.csv"
+    },
+    {
+      "actual_sha256": "4b56918d132ad27623f17a8cf5f7ad03b5436d40faaae1b1524dd5f1f227b4bb",
+      "expected_sha256": "4b56918d132ad27623f17a8cf5f7ad03b5436d40faaae1b1524dd5f1f227b4bb",
+      "path": "evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/response_summary.json"
+    },
+    {
+      "actual_sha256": "4aff24ad5139aa2c52b1121ff4f202592696f95a0472b6e4c4f1729a75f9e153",
+      "expected_sha256": "4aff24ad5139aa2c52b1121ff4f202592696f95a0472b6e4c4f1729a75f9e153",
+      "path": "evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/newell_summary.json"
+    },
+    {
+      "actual_sha256": "2e5ed6f2d71fb03b64f29a32b943af744afc3b2bfba0803028423d65f9a06eff",
+      "expected_sha256": "2e5ed6f2d71fb03b64f29a32b943af744afc3b2bfba0803028423d65f9a06eff",
+      "path": "evidence/results/RES-STAGE-0.5-METHOD-EXPANSION-V1/init_summary.json"
+    },
+    {
+      "actual_sha256": "31c2c1cc0ab2618e3a3885d573595026b386c8b5a2490598e9cb0b007527cbc9",
+      "expected_sha256": "31c2c1cc0ab2618e3a3885d573595026b386c8b5a2490598e9cb0b007527cbc9",
+      "path": "evidence/results/RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1/replay_plan.json"
+    },
+    {
+      "actual_sha256": "877e4fbd3283396f33b9e9a58725e12ef7bb1c73a92cd57bc307b025bfec3489",
+      "expected_sha256": "877e4fbd3283396f33b9e9a58725e12ef7bb1c73a92cd57bc307b025bfec3489",
+      "path": "evidence/results/RES-STAGE-0.5-METHOD-DIAGNOSTICS-V1/replay_summary.json"
+    }
+  ]
+}

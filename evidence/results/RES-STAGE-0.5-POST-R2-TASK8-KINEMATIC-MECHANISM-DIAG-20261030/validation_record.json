@@ -1,0 +1,107 @@
+{
+  "context_consistency": "context_consistency_check.json",
+  "date": "2026-10-30",
+  "discovery_scope_caveat": "One existing mixed historical reliable_risk_events Parquet metadata/schema/first-row preview was inspected during discovery and unused. No third-window canonical trajectory or locked holdout was read for analysis.",
+  "document_validation": {
+    "command": [
+      "D:\\miniconda\\python.exe",
+      "-X",
+      "utf8",
+      "code/scripts/validate_project_docs.py",
+      "--strict-git"
+    ],
+    "exit_code": 0,
+    "log": "code/outputs/diagnostics/post_r2_task8_20261030/docs_validation.log",
+    "log_sha256": "534ed6a0d8980a186ca298cfacfa994aaa780aeed39761c4a1b6386dbdabee77"
+  },
+  "final_targeted_test_run": {
+    "command": "python -X utf8 -m pytest -q -p no:cacheprovider code/tests/test_stage_0_5_post_r2_task8_kinematic_mechanism.py code/tests/test_stage_0_5_round2_task6_micro_interaction.py --basetemp=code/outputs/diagnostics/post_r2_task8_20261030/test_tmp_02 --junitxml=code/outputs/diagnostics/post_r2_task8_20261030/targeted_tests_02.xml",
+    "errors": 0,
+    "failures": 0,
+    "receipt": "code/outputs/diagnostics/post_r2_task8_20261030/targeted_tests_02.xml",
+    "receipt_sha256": "2b9b518b80588c656769c3b7d13994173a767899df29ecaeb68f874a15716ad3",
+    "skipped": 0,
+    "status": "PASS",
+    "tests": 40
+  },
+  "formal_equivalence_accepted": false,
+  "impact_assessment": {
+    "files": "Standalone analysis/packager/test; bounded evidence-export registration; report, indexes and four AI_CONTEXT entries",
+    "formal_research_logic_changed": false,
+    "interfaces": "Reads existing Task6 anchors, four authorized state tables, seven saved SUMO segments, historical summaries and official source",
+    "production_measurement_or_config_changed": false,
+    "sufficient_tests": "Signed integration, missing observation rejection, identity/frame continuity, leader-switch separation, offline guard and bounded export plus direct Task6 dependency"
+  },
+  "independent_saved_output_verification": {
+    "canonical_trajectory_reads_in_this_check": 0,
+    "complete_fixed_pair_integrations": 1197,
+    "figures": "Five local figures reviewed; updated seven-case plot preserves 1/51 and11/51 fixed-pair support",
+    "formal_event_rows": 752,
+    "four_large_input_hashes": "Existing completed Task8 verification receipts reused; no redundant full-state rehash",
+    "integral_components_checked": 7182,
+    "maximum_saved_vs_independent_integration_difference_m": 9.999778782798785e-13,
+    "new_simulations": 0,
+    "no_nonstrict_decomposition_filled": true,
+    "original_control_rows": 724,
+    "paired_summary_fields_checked": 304,
+    "portable_csv_identity_and_clock_columns_absent": true,
+    "portable_file_size_cap_bytes": 262144,
+    "samples": 1483,
+    "source_hashes_current": true,
+    "status": "PASS_SAVED_OUTPUT_NUMERICAL_RECHECK",
+    "syntax_checked": [
+      "code/scripts/analyze_stage_0_5_post_r2_task8_kinematic_mechanism.py",
+      "code/scripts/package_stage_0_5_post_r2_task8_mechanism.py",
+      "code/tests/test_stage_0_5_post_r2_task8_kinematic_mechanism.py",
+      "code/scripts/export_project_evidence.py"
+    ]
+  },
+  "independent_verifier": {
+    "local_path": "code/outputs/diagnostics/post_r2_task8_20261030/verify_saved_results.py",
+    "sha256": "babc5193ce8185fcfb1dcdc5e0907cae8289a86241ce093061c9504e6800b602"
+  },
+  "initial_targeted_test_run": {
+    "receipt": "code/outputs/diagnostics/post_r2_task8_20261030/targeted_tests_01.xml",
+    "tests_passed": 36
+  },
+  "not_run": [
+    "New SUMO/TraCI simulation",
+    "Historical response/replay reruns",
+    "New parameter/seed search",
+    "Full pytest",
+    "Whole-repository compileall",
+    "Whole-repository hash audit",
+    "Video or physical manual review"
+  ],
+  "post_seal_export_checks": {
+    "commands": [
+      "python code/scripts/export_project_evidence.py --repo-root .",
+      "python code/scripts/export_project_evidence.py --repo-root . --verify"
+    ],
+    "receipt_location": "code/outputs/diagnostics/post_r2_task8_20261030/final_repository_checks.json",
+    "scope": "Post-seal checks are recorded outside this package to avoid changing already-hashed validation; final completion reports actual results."
+  },
+  "preserved_historical_limitations": [
+    "Replay narrative44% versus26/48=54.1667%;48 planned versus43 reported executed; actual native count not re-certified.",
+    "Existing METHOD-EXPANSION run_metadata hash mismatch and missing trajectory_coverage_matrix retained; no whole-bundle Pass."
+  ],
+  "registration_order_note": "First strict-docs attempt preceded Task8 global evidence registration and reported only missing Task8 entries. Task8 pending-validation draft then explicitly registered; final Task8-only reseal preserves all baseline manifest entries.",
+  "retained_development_failures": [
+    "Sandbox Git/network access initially denied; explicitly authorized elevated fetch and requested official source acquisition succeeded.",
+    "Default and bundled Python lacked a Parquet engine; installed pyarrow25.0.1 only in task-local ignored deps, no global dependency changes.",
+    "Auxiliary inspection commands had path escaping, UTF8, regex or plotting shell quote errors; corrected without research-output changes.",
+    "One-time context synchronization first assumed core_metrics dict, but registry uses list; failure occurred before registry write, corrected helper completed.",
+    "Initial saved-output verifier compared raw Windows checkout bytes to Git blobs; pre-existing AGENTS EOL conversion caused a false alarm. Corrected to Git-filtered hash comparison; no AGENTS or unrelated EOL cleanup."
+  ],
+  "round3": "Not started",
+  "scientific_limits": [
+    "No independent physical truth",
+    "Selective complete-pair support",
+    "Original nonrisk anchors need not have risk-free five-second histories",
+    "No unique causal attribution or native active-bound telemetry",
+    "No exact native counterfactual speed envelope computed"
+  ],
+  "stage_0_5_gate": "blocked",
+  "status": "PASS_TARGETED_OFFLINE_TASK8",
+  "task_id": "AAD-S0.5-POST-R2-TASK8"
+}

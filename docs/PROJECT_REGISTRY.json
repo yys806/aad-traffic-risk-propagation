@@ -349,8 +349,8 @@
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-ROUND2-CLOSURE-20261030: completed with explicit conditional blockers; original source branch closed",
-  "why_now": "Researcher approved C/D1/B decisions and conditional follow-up; close failed original source candidate and establish bounded comparability without promoting scientific gates.",
+  "active_task": "AAD-S0.5-POST-R2-TASK8: Verified offline diagnosis complete; causal and physical-reference limitations retained",
+  "why_now": "Explain five-second real risk formation and official model constraints within Stage0.5, without new experiments or Gate changes.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
    "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/count_reconciliation.json",
@@ -853,7 +853,9 @@
     "code/scripts/package_stage_0_5_round2_task6_micro_interaction.py",
     "code/scripts/verify_stage_0_5_round2_task6_micro_interaction.py",
     "code/scripts/prepare_stage_0_5_round2_closure.py",
-    "code/scripts/audit_stage_0_5_round2_closure_comparability.py"
+    "code/scripts/audit_stage_0_5_round2_closure_comparability.py",
+    "code/scripts/analyze_stage_0_5_post_r2_task8_kinematic_mechanism.py",
+    "code/scripts/package_stage_0_5_post_r2_task8_mechanism.py"
    ],
    "entrypoints": [
     "code/scripts/prepare_stage_0_5_real_reference.py",
@@ -921,7 +923,8 @@
     "code/scripts/package_stage_0_5_round2_task6_micro_interaction.py",
     "code/scripts/verify_stage_0_5_round2_task6_micro_interaction.py",
     "code/scripts/prepare_stage_0_5_round2_closure.py",
-    "code/scripts/audit_stage_0_5_round2_closure_comparability.py"
+    "code/scripts/audit_stage_0_5_round2_closure_comparability.py",
+    "code/scripts/analyze_stage_0_5_post_r2_task8_kinematic_mechanism.py"
    ],
    "test_paths": [
     "code/tests/test_simulation_real_coverage.py",
@@ -970,7 +973,8 @@
     "code/tests/test_stage_0_5_post_r2_offline_diagnostic.py",
     "code/tests/test_stage_0_5_round2_task6_micro_interaction.py",
     "code/tests/test_stage_0_5_round2_closure.py",
-    "code/tests/test_stage_0_5_round2_closure_comparability.py"
+    "code/tests/test_stage_0_5_round2_closure_comparability.py",
+    "code/tests/test_stage_0_5_post_r2_task8_kinematic_mechanism.py"
    ],
    "configuration": "R2 real reference plus two no_message_baseline generic-highway engineering fixtures (baseline_mixed_demand, measurement_probe_queue_stop); US-101 primary, Lankershim auxiliary entry-only, pNEUMA urban kinematics entry-only; all network/demand/vType/behaviour/time settings are engineering_fixture_only",
    "parameters": {
@@ -1195,7 +1199,8 @@
     "RES-STAGE-0.5-ROUND2-TASK7.2-RESOURCE-METADATA-AND-ACQUISITION-FEASIBILITY-20261030",
     "RES-AAD-ROUND2-CLOSURE-20261030",
     "RES-AAD-ROUND2-CLOSURE-COMPARABILITY-20261030",
-    "RES-AAD-ROUND2-PROVIDER-INQUIRY-20261030"
+    "RES-AAD-ROUND2-PROVIDER-INQUIRY-20261030",
+    "RES-STAGE-0.5-POST-R2-TASK8-KINEMATIC-MECHANISM-DIAG-20261030"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -1310,7 +1315,7 @@
     "third_window_rows_materialised",
     "zotero_items_added"
    ],
-   "current_conclusion": "Original Round2 minGap1.0 source branch closed by researcher decision; C general P2 and independent D1/B standards recorded. Bounded comparison verifies C without production changes and retains three C-external conflicts. Scientific equivalence remains false. Official inquiry dispatch is independently recorded; video/physical review/fixed-leader remain Blocked and Round3NOT_READY.",
+   "current_conclusion": "Original Round2 minGap1.0 source branch closed by researcher decision; C general P2 and independent D1/B standards recorded. Bounded comparison verifies C without production changes and retains three C-external conflicts. Scientific equivalence remains false. Official inquiry dispatch is independently recorded; video/physical review/fixed-leader remain Blocked and Round3NOT_READY. Task8 adds five-second kinematic mechanism diagnosis and direct official Krauss source analysis; causal attribution and physical truth remain Unknown; no Gate acceptance.",
    "gate": {
     "status": "blocked",
     "portable_path": "evidence/results/RES-STAGE-0.5-R1-DIAGNOSTICS-20261028/r2_gate_review.json"
@@ -5310,6 +5315,59 @@
    "gate_status": "blocked",
    "paper_locations": [
     "docs/AAD_ROUND2_PROVIDER_INQUIRY_DISPATCH_20261030.md"
+   ],
+   "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-STAGE-0.5-POST-R2-TASK8-KINEMATIC-MECHANISM-DIAG-20261030",
+   "experiment_id": "stage_0_5",
+   "name": "Five-second kinematic risk formation and official Krauss mechanism diagnosis",
+   "status": "completed_offline_with_identification_limits",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK8-KINEMATIC-MECHANISM-DIAG-20261030/manifest.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK8-KINEMATIC-MECHANISM-DIAG-20261030/SHA256SUMS",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK8-KINEMATIC-MECHANISM-DIAG-20261030/validation_record.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK8-KINEMATIC-MECHANISM-DIAG-20261030/source_bindings.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK8-KINEMATIC-MECHANISM-DIAG-20261030/precursor_summary.csv",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK8-KINEMATIC-MECHANISM-DIAG-20261030/event_control_comparison.csv",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK8-KINEMATIC-MECHANISM-DIAG-20261030/krauss_source_map.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK8-KINEMATIC-MECHANISM-DIAG-20261030/mechanism_evidence_matrix.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK8-KINEMATIC-MECHANISM-DIAG-20261030/fixed_leader_design_assessment.json"
+   ],
+   "local_artifact_paths": [
+    "code/outputs/diagnostics/post_r2_task8_20261030/"
+   ],
+   "code_version_source": "Baseline main832e09520eaac68b5cef898372b664c880b10bdc; exact source_sha256 in Task8 bindings; completed commit recorded by Git",
+   "configuration_source": "Original Task6 anchors/controls and unchanged formal definitions; sealed B00/Round2 XML; official SUMOv1_26_0/fa7df22d7f1c4ae245192ecc32410a49f1ffb2a3",
+   "data_version_source": "Two authorized SHA-bound canonical100ms windows and two sealed measured_state tables; no new trajectories",
+   "core_metrics": {
+    "formal_source_events_unchanged": [
+     167,
+     159
+    ],
+    "formal_target_events_unchanged": [
+     174,
+     252
+    ],
+    "source_strict_events": [
+     105,
+     107
+    ],
+    "source_original_paired_strict": [
+     94,
+     89
+    ],
+    "task6_event_anchors": 752,
+    "original_control_anchors": 724,
+    "sumo_near_threshold_cases": 7,
+    "sumo_full_fixed_pair_cases": 2,
+    "new_simulations": 0,
+    "formal_equivalence_accepted": false
+   },
+   "current_conclusion": "Verified offline Task8 extends every Task6 source/target event and original control to five-second precursor diagnostics: source strict events105/167 and107/159, original paired strict contrasts94/89. Leader-speed-change contributions are substantial; generic initial-positive-closing or follower-acceleration-only explanations are weakened, not causally rejected. Official SUMO1.26.0 tagged source distinguishes dynamic ballistic follow from insertion and LC constraints. Seven existing near-threshold cases remain non-P2; five change leader and only two allow full fixed-pair decomposition. Physical truth and unique mechanism attribution remain Unknown. Original Round2 candidate remains CLOSED_FAILED_ORIGINAL_SOURCE_CONDITION; Formal P2 and independent D1/B standards unchanged; scientific equivalence false; physical reference/path insufficient; Stage0.5 blocked, Stage0.6/Protocol Lock/StageI unchanged, Round3 not started. No simulation, TraCI, new seed, third-window trajectory, holdout, video or OB access.",
+   "gate_status": "blocked",
+   "paper_locations": [
+    "docs/STAGE_0_5_POST_R2_TASK8_KINEMATIC_MECHANISM_DIAGNOSIS_20261030.md"
    ],
    "scientific_claim_eligible": false
   }

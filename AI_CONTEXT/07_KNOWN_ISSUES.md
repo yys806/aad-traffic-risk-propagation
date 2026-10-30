@@ -1,3 +1,11 @@
+## Current — AAD-S0.5-POST-R2-TASK8 (2026-10-30)
+
+Unknown: independent physical truth, NGSIM tau identity, exact network disturbance source, current native active-bound histories, and unique causal attribution. Full five-second strict support is selective; Task6 nonrisk anchors do not imply risk-free five-second histories (source controls7/132 and3/123 have prior threshold points). No rematching or event deletion.
+
+Historical conflict: old replay narrative44% versus26/48=54.1667%; old summary48planned/43reported-executed and43scored combinations. Actual old native invocation total not re-certified. Original files preserved; Status: Awaiting Researcher Decision. Existing METHOD-EXPANSION hash/missing-file limitations retained.
+
+Original Round2 candidate remains CLOSED_FAILED_ORIGINAL_SOURCE_CONDITION; Formal P2 and independent D1/B standards unchanged; scientific equivalence false; physical reference/path insufficient; Stage0.5 blocked, Stage0.6/Protocol Lock/StageI unchanged, Round3 not started. No simulation, TraCI, new seed, third-window trajectory, holdout, video or OB access. Full evidence: docs/STAGE_0_5_POST_R2_TASK8_KINEMATIC_MECHANISM_DIAGNOSIS_20261030.md.
+
 ## Current — AAD-ROUND2-CLOSURE-20261030
 
 B path evidence, file-specific video permission, PTS/Global_Time mapping/offset/drift and complete Camera7/8 source-lane coverage remain Unknown/Blocked. NO_GO, no video download or blind review. Native/formal endpoints after explicit flags, clock/frame projection and leader-row support are not generally equivalent; do not silently repair C-external semantics. Scientific equivalence stays false. Three-seed matrix is Proposed and requires approval for the new fixed-leader experiment; no fully specified physically verified inputs exist. Historical Task6 row-level controls and METHOD-EXPANSION hash/missing-file limitations remain unchanged. Official inquiry BLOCKED_NOT_SENT: Computer Use app approval timed out; authenticated sending session and actual sender/signature unverified. No compose/send or real receipt. Local unsent handoff exists; sending authorization persists.
