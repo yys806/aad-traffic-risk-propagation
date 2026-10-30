@@ -1,3 +1,7 @@
+## Current — AAD-S0.5-ROUND2-TASK4-REAL-SOURCE-SUPPORT-AND-MULTISCALE-CROSSWALK-20261030
+
+Verified offline real-source support: the two authorized NGSIM US-101 windows reproduce full-source Formal P2 `543/732` and full-source P2-evaluable exposure `111425.9/133505.6 s`. Full-context onset attribution gives fixed source-region Formal P2 `167/159` with local evaluable exposure `30519.4/30560.7 s`; target-region `174/252`. B00 and Round2 sealed SUMO formal-aligned/D1 source remain zero; Round2 retains one target event. Macro/micro state differences are descriptive only: NGSIM and SUMO time origins are not proven identical, `C_INPUT_ROUTE=1112` is not vehicle-matched to NGSIM, and simulator formal equivalence remains false/pending. No new SUMO/TraCI/trajectory/holdout; Stage 0.5 Gate, Stage 0.6, Protocol Lock, Stage I and Round3 unchanged. Report: `docs/STAGE_0_5_ROUND2_TASK4_REAL_SOURCE_SUPPORT_AND_MULTISCALE_CROSSWALK_20261030.md`; evidence: `evidence/results/RES-STAGE-0.5-ROUND2-TASK4-REAL-SOURCE-SUPPORT-AND-MULTISCALE-CROSSWALK-20261030/`.
+
 ## Current — AAD-S0.5-ROUND2-TASK3-MEASUREMENT-CONTRACT-ALIGNMENT-20261029
 
 Verified minimal formal-alignment repair preserves explicit identity/continuity flags; formal pair/time qualification remains separate from D1 same-native-lane diagnostics. B00 and Round2 candidate sealed source P2 remain zero; no SUMO/TraCI/new trajectories/holdout. Stage 0.5 Gate, Stage 0.6, Protocol Lock, Stage I and Round3 unchanged.

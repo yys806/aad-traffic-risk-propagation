@@ -83,6 +83,17 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
             "SHA256SUMS", "source_bindings.json", "validation_record.json",
         )
     ]
+    task4_root = "evidence/results/RES-STAGE-0.5-ROUND2-TASK4-REAL-SOURCE-SUPPORT-AND-MULTISCALE-CROSSWALK-20261030"
+    pairs["RES-STAGE-0.5-ROUND2-TASK4-REAL-SOURCE-SUPPORT-AND-MULTISCALE-CROSSWALK-20261030"] = [
+        (f"{task4_root}/{name}", name)
+        for name in (
+            "decision_matrix.json", "manifest.json", "population_scope_crosswalk.json",
+            "real_source_target_exposure.csv", "real_source_target_p2_summary.json",
+            "real_source_target_state_metrics.csv", "risk_event_attribution_summary.csv",
+            "SHA256SUMS", "simulation_source_target_metrics.csv", "source_bindings.json",
+            "time_alignment_audit.json", "validation_record.json",
+        )
+    ]
 
     # Policy A preflight proposals, not a frozen execution protocol.
     pairs['RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1'] = [
@@ -820,6 +831,9 @@ def _validate_source(source: Path) -> None:
         "ramp_departure_map_candidate.csv",
         # Stage 0.5 offline mechanism audit aggregate tables.
         "event_inventory.csv", "spatial_counts.csv", "source_observability.csv", "arm_state_blocks.csv",
+        # Task 4 derived descriptive summaries; these are not raw trajectory tables.
+        "real_source_target_exposure.csv", "real_source_target_state_metrics.csv",
+        "risk_event_attribution_summary.csv", "simulation_source_target_metrics.csv",
         }
     if source.suffix.lower() not in {".json", ".md", ".txt", ".sha256"} and source.name not in aggregate_names:
         raise ValueError(f"unsupported evidence file type: {source}")

@@ -1,3 +1,10 @@
+## 2026-10-30 Task 4 confirmed boundaries
+
+- NGSIM fixed source has positive Formal P2 support in both authorized windows; the prior sealed simulator source-zero result cannot be treated as evidence that the real source has no observable support.
+- NGSIM relative `time_s` and SUMO absolute `time_s` have no proven exact origin mapping; block-level values are independent descriptive windows.
+- Real NGSIM trajectory IDs and SUMO `C_INPUT_ROUTE=1112` are different populations; no vehicle-level crosswalk exists.
+- SUMO formal-aligned P2 and D1 remain separate engineering contracts with `formal_equivalence_accepted=false`; source/target counts do not establish physical propagation or Model Discrepancy.
+
 ## AAD-S0.5-ROUND2-TASK3-MEASUREMENT-CONTRACT-ALIGNMENT-20261029
 
 Resolved implementation issue: build_sumo_formal_source_frame no longer erases supplied identity_break/observation_gap/identity quality flags. Remaining issues: simulator-vs-NGSIM scientific equivalence and time-indexed physical-path witness. Status: Awaiting Researcher Decision.

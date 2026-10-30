@@ -324,12 +324,14 @@
   "code/scripts/synchronize_stage_0_5_round2_task2_context.py",
   "docs/STAGE_0_5_ROUND2_TASK3_MEASUREMENT_CONTRACT_ALIGNMENT_20261029.md",
   "code/scripts/align_stage_0_5_round2_task3_measurement_contract.py",
-  "code/scripts/synchronize_stage_0_5_round2_task3_context.py"
+  "code/scripts/synchronize_stage_0_5_round2_task3_context.py",
+  "docs/STAGE_0_5_ROUND2_TASK4_REAL_SOURCE_SUPPORT_AND_MULTISCALE_CROSSWALK_20261030.md",
+  "code/scripts/analyze_stage_0_5_round2_task4_real_source_support.py"
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-S0.5-ROUND2-TASK3-MEASUREMENT-CONTRACT-ALIGNMENT-20261029: minimal flag-preservation repair complete; sealed source P2 remains zero; researcher decision pending",
-  "why_now": "Task2 identified an implementation-level formal-aligned flag-loss bug; Task3 repaired it without changing formal scientific parameters and rechecked sealed source qualification.",
+  "active_task": "AAD-S0.5-ROUND2-TASK4-REAL-SOURCE-SUPPORT-AND-MULTISCALE-CROSSWALK-20261030: real source Formal P2 support verified; sealed simulator source remains zero; researcher decision pending",
+  "why_now": "Task4 closed the fixed-source evidence gap with two authorized NGSIM windows and a descriptive real-vs-sealed-SUMO crosswalk without changing formal parameters or Gate state.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
    "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/count_reconciliation.json",
@@ -1136,7 +1138,8 @@
     "RES-STAGE-0.5-ROUND2-TASK1-20261028",
     "RES-STAGE-0.5-POST-R2-OFFLINE-DIAG-20261029",
     "RES-STAGE-0.5-ROUND2-TASK2-MEASUREMENT-CONTRACT-20261029",
-    "RES-STAGE-0.5-ROUND2-TASK3-MEASUREMENT-CONTRACT-ALIGNMENT-20261029"
+    "RES-STAGE-0.5-ROUND2-TASK3-MEASUREMENT-CONTRACT-ALIGNMENT-20261029",
+    "RES-STAGE-0.5-ROUND2-TASK4-REAL-SOURCE-SUPPORT-AND-MULTISCALE-CROSSWALK-20261030"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -4850,6 +4853,49 @@
    "gate_status": "blocked",
    "paper_locations": [
     "docs/STAGE_0_5_ROUND2_TASK3_MEASUREMENT_CONTRACT_ALIGNMENT_20261029.md"
+   ],
+   "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-STAGE-0.5-ROUND2-TASK4-REAL-SOURCE-SUPPORT-AND-MULTISCALE-CROSSWALK-20261030",
+   "experiment_id": "stage_0_5",
+   "name": "Round2 Task4 real source Formal P2 support and macro-micro-risk crosswalk",
+   "status": "verified_offline_real_source_support_researcher_decision_pending",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK4-REAL-SOURCE-SUPPORT-AND-MULTISCALE-CROSSWALK-20261030/manifest.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK4-REAL-SOURCE-SUPPORT-AND-MULTISCALE-CROSSWALK-20261030/SHA256SUMS",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK4-REAL-SOURCE-SUPPORT-AND-MULTISCALE-CROSSWALK-20261030/validation_record.json",
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK4-REAL-SOURCE-SUPPORT-AND-MULTISCALE-CROSSWALK-20261030/decision_matrix.json"
+   ],
+   "local_artifact_paths": [
+    "evidence/results/RES-STAGE-0.5-ROUND2-TASK4-REAL-SOURCE-SUPPORT-AND-MULTISCALE-CROSSWALK-20261030/"
+   ],
+   "code_version_source": "source_bindings.json in Task4 evidence package",
+   "configuration_source": "unchanged stage_0_2_formal_risk_measurement_p2_v1.json and existing Stage 0.5 source/target/window/cohort",
+   "data_version_source": "two authorized canonical NGSIM windows plus sealed B00/Round2 measured states; no third window or holdout",
+   "core_metrics": {
+    "ngsim_full_source_p2_events": [543, 732],
+    "ngsim_full_source_p2_evaluable_exposure_s": [111425.9, 133505.6],
+    "ngsim_source_onsets": [167, 159],
+    "ngsim_source_p2_evaluable_exposure_s": [30519.4, 30560.7],
+    "ngsim_target_onsets": [174, 252],
+    "sumo_source_formal_aligned_p2_B00": 0,
+    "sumo_source_formal_aligned_p2_candidate": 0,
+    "sumo_source_D1_B00": 0,
+    "sumo_source_D1_candidate": 0,
+    "sumo_target_D1_B00": 0,
+    "sumo_target_D1_candidate": 1,
+    "new_native_launches": 0,
+    "new_trajectories": 0,
+    "holdout_reads": 0,
+    "formal_equivalence_accepted": false,
+    "time_origin_mapping_proven": false,
+    "cohort_crosswalk_proven": false
+   },
+   "current_conclusion": "Both authorized real windows contain positive fixed-source Formal P2 support with positive evaluable exposure. Sealed B00/Round2 source formal-aligned and D1 remain zero. Macro/micro differences are descriptive and cannot establish simulator-vs-NGSIM equivalence, Model Discrepancy or physical propagation.",
+   "gate_status": "blocked",
+   "paper_locations": [
+    "docs/STAGE_0_5_ROUND2_TASK4_REAL_SOURCE_SUPPORT_AND_MULTISCALE_CROSSWALK_20261030.md"
    ],
    "scientific_claim_eligible": false
   }

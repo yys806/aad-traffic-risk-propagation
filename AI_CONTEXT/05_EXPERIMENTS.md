@@ -1,3 +1,7 @@
+## Current — 2026-10-30 Round2 Task 4 real-source support
+
+Verified offline read-only reconstruction. Two authorized NGSIM windows reproduce full Formal P2 543/732 and P2-evaluable exposure 111425.9/133505.6 s. Fixed source onset attribution is 167/159 with 30519.4/30560.7 s local P2-evaluable exposure; target is 174/252. B00/Round2 sealed SUMO source formal-aligned and D1 are both zero, while Round2 target has one D1/formal-aligned diagnostic event. The macro/micro crosswalk is descriptive because time-origin and cohort alignment are unverified and formal equivalence is not accepted. No new native launch or trajectory.
+
 ## AAD-S0.5-ROUND2-TASK3-MEASUREMENT-CONTRACT-ALIGNMENT-20261029
 
 Verified minimal formal-alignment repair preserves explicit identity/continuity flags; formal pair/time qualification remains separate from D1 same-native-lane diagnostics. B00 and Round2 candidate sealed source P2 remain zero; no SUMO/TraCI/new trajectories/holdout. Stage 0.5 Gate, Stage 0.6, Protocol Lock, Stage I and Round3 unchanged. The required source condition is still not met; candidate confirmation remains closed.

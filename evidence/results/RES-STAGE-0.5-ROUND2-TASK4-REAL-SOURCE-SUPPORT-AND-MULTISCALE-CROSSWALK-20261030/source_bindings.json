@@ -1,0 +1,57 @@
+{
+  "implementation_sha256": {
+    "code/configs/stage_0_2_formal_risk_measurement_p2_v1.json": "00687de2a88b914e8123259ecb6d8fe1fbc66824fab49b1d3a7e634e97db1fb7",
+    "code/scripts/analyze_stage_0_5_round2_task4_real_source_support.py": "c9cf04520446a0f5cf6719cf2ef823c8739a603b2fc45491b2e32486067a0a84",
+    "code/src/riskprop/formal_risk_measurement.py": "4e15e67e35911fdd4d50d26f41784bde05a8cd9983edc42c572fa51b00686c58",
+    "code/src/riskprop/ngsim_risk_calibration.py": "ba49f4a4d2e9762f5d31a6858b84ed5f314c16c2d5e404df93cb36b550d00a36",
+    "code/src/riskprop/stage_0_5_d1_measurement.py": "affaf9984055b8673e6616310e4b0560f61b721747c33b47824f26172d36ad9c",
+    "code/src/riskprop/stage_0_5_sumo.py": "043137344177060e1bbbf50e3b39bfc9da20b0fdaa49f5f1dcac07e712a4b632"
+  },
+  "reader": {
+    "pandas": "2.2.3",
+    "python": "D:\\miniconda\\python.exe",
+    "python_version": "3.13.5"
+  },
+  "real": {
+    "0750_0805": {
+      "actual_sha256": "684a5f0b96dc48116f16d581c278d7039c0554bf1c3cea8d6eda3e605e3e8644",
+      "authorized": true,
+      "expected_sha256": "684a5f0b96dc48116f16d581c278d7039c0554bf1c3cea8d6eda3e605e3e8644",
+      "path": "code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r4/states/ngsim_us101__0750_0805.parquet",
+      "sha_pass": true
+    },
+    "0805_0820": {
+      "actual_sha256": "7b0ef830c97a981da018d4e24b029e38aa2630387c728ea87b57926745880a9f",
+      "authorized": true,
+      "expected_sha256": "7b0ef830c97a981da018d4e24b029e38aa2630387c728ea87b57926745880a9f",
+      "path": "code/outputs/formal/calibration/stage_0_2_task_1_5_20261010_r4/states/ngsim_us101__0805_0820.parquet",
+      "sha_pass": true
+    }
+  },
+  "simulation": {
+    "B00_A03": {
+      "authorized": true,
+      "fcd_actual_sha256": "1dc274082f4ea14949979d0c925903bbb5b9668d1124dabb79799b59a55fa304",
+      "fcd_expected_sha256": "1dc274082f4ea14949979d0c925903bbb5b9668d1124dabb79799b59a55fa304",
+      "fcd_path": "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/WEEK_0750_B00_IC1_s20261201_A03/fcd.xml",
+      "fcd_sha_pass": true,
+      "measured_state_actual_sha256": "48b20ff458ff1dce4559a762d6965b6747a940d537b1460d74e33d739a3cf63a",
+      "measured_state_expected_sha256": "48b20ff458ff1dce4559a762d6965b6747a940d537b1460d74e33d739a3cf63a",
+      "measured_state_path": "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/WEEK_0750_B00_IC1_s20261201_A03/measured_state.parquet",
+      "measured_state_sha_pass": true,
+      "run_id": "WEEK_0750_B00_IC1_s20261201_A03"
+    },
+    "Round2_minGap1.0": {
+      "authorized": true,
+      "fcd_actual_sha256": "434f1c2500cdf06d069d7eae1c86e064ad76af61f478379943bbefab70b2ac3e",
+      "fcd_expected_sha256": "434f1c2500cdf06d069d7eae1c86e064ad76af61f478379943bbefab70b2ac3e",
+      "fcd_path": "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/AAD-S0.5-ROUND2-TASK1-20261028-candidate-v1/fcd.xml",
+      "fcd_sha_pass": true,
+      "measured_state_actual_sha256": "31426640954e6e8ea883f82dce139df130d7f83a8db4300ceb38842d4ee716b8",
+      "measured_state_expected_sha256": "31426640954e6e8ea883f82dce139df130d7f83a8db4300ceb38842d4ee716b8",
+      "measured_state_path": "code/outputs/formal/calibration/stage_0_5_ready_to_admit_v3/runs/AAD-S0.5-ROUND2-TASK1-20261028-candidate-v1/measured_state.parquet",
+      "measured_state_sha_pass": true,
+      "run_id": "AAD-S0.5-ROUND2-TASK1-20261028-candidate-v1"
+    }
+  }
+}

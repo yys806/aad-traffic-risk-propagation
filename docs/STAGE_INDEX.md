@@ -1,3 +1,7 @@
+# Stage 0.5 Round2 Task 4：真实源区支持与多尺度对照（2026-10-30）
+
+离线重建两个授权 NGSIM US-101 窗口的 Formal P2 和固定 source/target onset 归属，复用封存 B00/Round2 measured state 做宏观、微观和风险对照。真实 source 有 167/159 个 Formal P2，B00/Round2 source formal-aligned/D1 均为 0；时间原点、cohort 和 simulator equivalence 仍未闭合。任务未启动新 SUMO/TraCI，Stage 0.5 Gate、Stage 0.6、Protocol Lock、Stage I 不变。报告：`docs/STAGE_0_5_ROUND2_TASK4_REAL_SOURCE_SUPPORT_AND_MULTISCALE_CROSSWALK_20261030.md`；证据：`evidence/results/RES-STAGE-0.5-ROUND2-TASK4-REAL-SOURCE-SUPPORT-AND-MULTISCALE-CROSSWALK-20261030/`。
+
 # AAD 阶段索引
 
 ## Stage 0.5-R0：候选包审查就绪，R1未执行

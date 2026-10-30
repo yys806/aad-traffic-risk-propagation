@@ -1,3 +1,7 @@
+## RES-STAGE-0.5-ROUND2-TASK4-REAL-SOURCE-SUPPORT-AND-MULTISCALE-CROSSWALK-20261030
+
+Verified offline real-source support reconstruction. NGSIM Formal P2 reproduces 543/732 full-source events and 111425.9/133505.6 s P2-evaluable exposure. Fixed source onset attribution is 167/159 events with 30519.4/30560.7 s local P2-evaluable exposure; target is 174/252. B00 and Round2 sealed SUMO source formal-aligned/D1 remain zero; Round2 retains one target event. Macro/micro crosswalk is descriptive only because time origin, cohort and scientific equivalence remain unresolved. No new SUMO/TraCI/new trajectories/holdout. Report: `docs/STAGE_0_5_ROUND2_TASK4_REAL_SOURCE_SUPPORT_AND_MULTISCALE_CROSSWALK_20261030.md`; evidence: `evidence/results/RES-STAGE-0.5-ROUND2-TASK4-REAL-SOURCE-SUPPORT-AND-MULTISCALE-CROSSWALK-20261030/`.
+
 ## RES-STAGE-0.5-ROUND2-TASK3-MEASUREMENT-CONTRACT-ALIGNMENT-20261029
 
 Verified minimal formal-alignment repair preserves explicit identity/continuity flags; formal pair/time qualification remains separate from D1 same-native-lane diagnostics. B00 and Round2 candidate sealed source P2 remain zero; no SUMO/TraCI/new trajectories/holdout. Stage 0.5 Gate, Stage 0.6, Protocol Lock, Stage I and Round3 unchanged. See `docs/STAGE_0_5_ROUND2_TASK3_MEASUREMENT_CONTRACT_ALIGNMENT_20261029.md` and the portable evidence package.
