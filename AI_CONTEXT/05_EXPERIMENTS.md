@@ -1,3 +1,9 @@
+## Current — AAD-S0.5-POST-R2-TASK9 (2026-10-31)
+
+Task9 fixed-leader preparation is `Blocked by physical input`. The Task7 provider inquiry was reused unchanged but actual dispatch remains unverified and no video/physical cases exist. Static B00/Round2 comparison confirms five `minGap`-only differences and preserves the heterogeneous tau values. The authorized matrix is three seeds (20261101/02/03), two arms, 6N runs after qualified physical segment selection. New fail-closed checks require identical leader time/position/speed inputs, equal achieved follower speed and physical net gap at the initial anchor, and signed `C_initial/C_f/C_l/C/C_gap/R` decomposition with residual verification. Formal execution and physical review are 0; Stage 0.5 and later gates remain unchanged.
+
+Evidence: `evidence/results/RES-STAGE-0.5-POST-R2-TASK9-FIXED-LEADER-PREP-20261031/`.
+
 ## Current — AAD-S0.5-POST-R2-TASK8 (2026-10-30)
 
 Verified offline Task8 extends every Task6 source/target event and original control to five-second precursor diagnostics: source strict events105/167 and107/159, original paired strict contrasts94/89. Leader-speed-change contributions are substantial; generic initial-positive-closing or follower-acceleration-only explanations are weakened, not causally rejected. Official SUMO1.26.0 tagged source distinguishes dynamic ballistic follow from insertion and LC constraints. Seven existing near-threshold cases remain non-P2; five change leader and only two allow full fixed-pair decomposition. Physical truth and unique mechanism attribution remain Unknown.
@@ -8,7 +14,7 @@ Report: docs/STAGE_0_5_POST_R2_TASK8_KINEMATIC_MECHANISM_DIAGNOSIS_20261030.md; 
 
 ## Current — AAD-ROUND2-CLOSURE-20261030
 
-Agreed: original Round2 single-factor source candidate CLOSED_FAILED_ORIGINAL_SOURCE_CONDITION; preserve seed20261201, Rule A PASS, source0, target diagnostic1 and all failures/evidence. No independent confirmation. New fixed-leader direction is separately conditional; proposed complete seed set20261101/20261102/20261103 gives3 repeats/arm/qualified segment (6N runs), not yet approved or executed. Actual sealed routes differ only in five minGap2.5→1.0 attributes; network and run.sumocfg are byte-identical. Historical homogeneous12-pair×9-config×3-seed results do not establish current heterogeneous-B00 precision. Segment count and costs remain conditional. See docs/FIXED_LEADER_PAIRED_EXPERIMENT_PROPOSAL_20261030.md.
+Agreed: original Round2 single-factor source candidate CLOSED_FAILED_ORIGINAL_SOURCE_CONDITION; preserve seed20261201, Rule A PASS, source0, target diagnostic1 and all failures/evidence. No independent confirmation. Task9 now approves the fixed-leader seed set20261101/20261102/20261103 for3 repeats/arm/qualified segment (6N runs), but no qualified physical segment exists and no run was executed. Actual sealed routes differ only in five minGap2.5→1.0 attributes; network and run.sumocfg are byte-identical. Historical homogeneous12-pair×9-config×3-seed results do not establish current heterogeneous-B00 precision. Segment count and costs remain conditional. See docs/STAGE_0_5_POST_R2_TASK9_FIXED_LEADER_AND_PHYSICAL_REFERENCE_20261031.md.
 
 ## 2026-10-30 Round2 Task7.2 - resource and mapping conditions
 

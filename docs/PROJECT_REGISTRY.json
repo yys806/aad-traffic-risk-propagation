@@ -1,6 +1,6 @@
 {
  "schema_version": "aad.project-registry.v2",
- "last_verified": "2026-10-30",
+ "last_verified": "2026-10-31",
  "project": {
   "name": "AAD",
   "research_topic": "Connected-vehicle communication adoption and traffic-risk propagation",
@@ -340,6 +340,10 @@
   "docs/AAD_ROUND2_PROVIDER_INQUIRY_DISPATCH_20261030.md",
   "docs/VIDEO_ACQUISITION_GO_NO_GO_20261030.md",
   "docs/FIXED_LEADER_PAIRED_EXPERIMENT_PROPOSAL_20261030.md",
+  "docs/STAGE_0_5_POST_R2_TASK9_FIXED_LEADER_AND_PHYSICAL_REFERENCE_20261031.md",
+  "code/src/riskprop/stage_0_5_fixed_leader_pair.py",
+  "code/scripts/audit_stage_0_5_task9_fixed_leader.py",
+  "code/tests/test_stage_0_5_fixed_leader_pair.py",
   "docs/ROUND3_CANDIDATE_READINESS_REPORT_20261030.md",
   "docs/AAD_ROUND2_CLOSURE_AND_CONDITIONAL_VALIDATION_REPORT_20261030.md",
   "code/scripts/prepare_stage_0_5_round2_closure.py",
@@ -349,8 +353,8 @@
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-S0.5-POST-R2-TASK8: Verified offline diagnosis complete; causal and physical-reference limitations retained",
-  "why_now": "Explain five-second real risk formation and official model constraints within Stage0.5, without new experiments or Gate changes.",
+  "active_task": "AAD-S0.5-POST-R2-TASK9: physical-reference dispatch blocked; fixed-leader paired preparation complete",
+  "why_now": "Complete the authorized independent-physical-reference and fixed-leader preparation work without bypassing license, timing, spatial or Gate conditions.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
    "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/count_reconciliation.json",
@@ -521,7 +525,10 @@
    "formal_equivalence_accepted": false,
    "video_acquisition_go": false,
    "official_inquiry_sent": false,
-   "fixed_leader_seed_plan": "Proposed_Awaiting_Researcher_Decision",
+   "fixed_leader_seed_plan": "Agreed_for_Task9_20261101_20261102_20261103",
+   "fixed_leader_execution_status": "Blocked_by_physical_input",
+   "fixed_leader_runs": 0,
+   "task9_result": "RES-STAGE-0.5-POST-R2-TASK9-FIXED-LEADER-PREP-20261031",
    "round3_readiness": "NOT_READY"
   }
  },
@@ -1200,7 +1207,8 @@
     "RES-AAD-ROUND2-CLOSURE-20261030",
     "RES-AAD-ROUND2-CLOSURE-COMPARABILITY-20261030",
     "RES-AAD-ROUND2-PROVIDER-INQUIRY-20261030",
-    "RES-STAGE-0.5-POST-R2-TASK8-KINEMATIC-MECHANISM-DIAG-20261030"
+    "RES-STAGE-0.5-POST-R2-TASK8-KINEMATIC-MECHANISM-DIAG-20261030",
+    "RES-STAGE-0.5-POST-R2-TASK9-FIXED-LEADER-PREP-20261031"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -5368,6 +5376,48 @@
    "gate_status": "blocked",
    "paper_locations": [
     "docs/STAGE_0_5_POST_R2_TASK8_KINEMATIC_MECHANISM_DIAGNOSIS_20261030.md"
+   ],
+   "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-STAGE-0.5-POST-R2-TASK9-FIXED-LEADER-PREP-20261031",
+   "experiment_id": "stage_0_5",
+   "name": "Independent physical-reference dispatch and fixed-leader paired preparation",
+   "status": "completed_with_blockers",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK9-FIXED-LEADER-PREP-20261031/manifest.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK9-FIXED-LEADER-PREP-20261031/SHA256SUMS",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK9-FIXED-LEADER-PREP-20261031/source_bindings.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK9-FIXED-LEADER-PREP-20261031/arm_config_audit.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK9-FIXED-LEADER-PREP-20261031/historical_seed_audit.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK9-FIXED-LEADER-PREP-20261031/provider_dispatch_status.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK9-FIXED-LEADER-PREP-20261031/task9_protocol.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK9-FIXED-LEADER-PREP-20261031/validation_record.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK9-FIXED-LEADER-PREP-20261031/context_consistency_check.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK9-FIXED-LEADER-PREP-20261031/manifest.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK9-FIXED-LEADER-PREP-20261031/SHA256SUMS"
+   ],
+   "local_artifact_paths": [
+    "code/outputs/diagnostics/task9_fixed_leader_20261031/"
+   ],
+   "code_version_source": "code/src/riskprop/stage_0_5_fixed_leader_pair.py; code/scripts/audit_stage_0_5_task9_fixed_leader.py",
+   "configuration_source": "Sealed B00 A03/Round2 candidate-v1 XML; Task9 approved two-arm minGap-only contrast",
+   "data_version_source": "Task7.2 provider inquiry metadata and historical METHOD-EXPANSION response summary; no new video or trajectory",
+   "core_metrics": {
+    "official_inquiry_sent": false,
+    "video_files_acquired": 0,
+    "physical_review_cases": 0,
+    "fixed_leader_runs": 0,
+    "historical_response_rows_reused": 324,
+    "historical_seeds": [20261101, 20261102, 20261103],
+    "new_simulations": 0,
+    "holdout_reads": 0,
+    "formal_equivalence_accepted": false
+   },
+   "current_conclusion": "Task9 engineering preparation is complete, but the provider inquiry was not sent because no authorized mail channel could be safely observed and a Gmail authentication origin was rejected by automatic review. No independent physical reference or qualified segment exists; fixed-leader execution is blocked by physical input. Stage0.5, Stage0.6, Protocol Lock, StageI and Round3 remain unchanged.",
+   "gate_status": "blocked",
+   "paper_locations": [
+    "docs/STAGE_0_5_POST_R2_TASK9_FIXED_LEADER_AND_PHYSICAL_REFERENCE_20261031.md"
    ],
    "scientific_claim_eligible": false
   }

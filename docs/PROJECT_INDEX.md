@@ -1,3 +1,9 @@
+## Current — AAD-S0.5-POST-R2-TASK9 (2026-10-31)
+
+Task9 completed the authorized physical-reference dispatch attempt and fixed-leader engineering preparation with blockers. The original provider inquiry remains unsent with no receipt; no video or independent physical reference was obtained. Static B00/Round2 fairness checks, approved seeds 20261101/02/03, common leader input and initial-state checks, and `C_initial/C_f/C_l/C/C_gap/R` residual checks are implemented and targeted-tested. Formal paired execution remains `Blocked by physical input`; Stage 0.5, Stage 0.6, Protocol Lock, Stage I and Round3 remain unchanged.
+
+Report: `docs/STAGE_0_5_POST-R2_TASK9_FIXED_LEADER_AND_PHYSICAL_REFERENCE_20261031.md`; evidence: `evidence/results/RES-STAGE-0.5-POST-R2-TASK9-FIXED-LEADER-PREP-20261031/`.
+
 ## Current — AAD-S0.5-POST-R2-TASK8 (2026-10-30)
 
 Verified offline Task8 extends every Task6 source/target event and original control to five-second precursor diagnostics: source strict events105/167 and107/159, original paired strict contrasts94/89. Leader-speed-change contributions are substantial; generic initial-positive-closing or follower-acceleration-only explanations are weakened, not causally rejected. Official SUMO1.26.0 tagged source distinguishes dynamic ballistic follow from insertion and LC constraints. Seven existing near-threshold cases remain non-P2; five change leader and only two allow full fixed-pair decomposition. Physical truth and unique mechanism attribution remain Unknown.
@@ -10,7 +16,7 @@ Offline analysis: code/scripts/analyze_stage_0_5_post_r2_task8_kinematic_mechani
 
 ## Current — AAD-ROUND2-CLOSURE-20261030
 
-Agreed original Round2 minGap1.0 source candidate closed; C general P2, independent D1 and B physical-path standards recorded. Bounded comparison verifies C already implemented but retains three C-external conflicts and formal_equivalence_accepted=false. Video acquisition NO_GO; blind review and fixed-leader experiment Blocked; finite seed matrix Proposed. No new SUMO/TraCI/trajectory/holdout; Gate/Stage0.6/Protocol Lock/StageI unchanged.
+Agreed original Round2 minGap1.0 source candidate closed; C general P2, independent D1 and B physical-path standards recorded. Bounded comparison verifies C already implemented but retains three C-external conflicts and formal_equivalence_accepted=false. Video acquisition NO_GO; blind review and fixed-leader experiment Blocked by physical input; Task9 approves the finite seed matrix but no qualified segment exists. No new SUMO/TraCI/trajectory/holdout; Gate/Stage0.6/Protocol Lock/StageI unchanged.
 
 Reports: docs/AAD_ROUND2_RESEARCH_DECISIONS_20261030.md; docs/SIMULATOR_NGSIM_FORMAL_COMPARABILITY_MATRIX_20261030.md; docs/VIDEO_ACQUISITION_GO_NO_GO_20261030.md; docs/FIXED_LEADER_PAIRED_EXPERIMENT_PROPOSAL_20261030.md; docs/ROUND3_CANDIDATE_READINESS_REPORT_20261030.md. Final campaign and official dispatch reports complete the current status; older entries remain historical.
 

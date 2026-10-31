@@ -8,7 +8,7 @@ Report: docs/STAGE_0_5_POST_R2_TASK8_KINEMATIC_MECHANISM_DIAGNOSIS_20261030.md; 
 
 ## Current — AAD-ROUND2-CLOSURE-20261030
 
-Agreed original Round2 minGap1.0 source candidate closed; C general P2, independent D1 and B physical-path standards recorded. Bounded comparison verifies C already implemented but retains three C-external conflicts and formal_equivalence_accepted=false. Video acquisition NO_GO; blind review and fixed-leader experiment Blocked; finite seed matrix Proposed. No new SUMO/TraCI/trajectory/holdout; Gate/Stage0.6/Protocol Lock/StageI unchanged.
+Agreed original Round2 minGap1.0 source candidate closed; C general P2, independent D1 and B physical-path standards recorded. Bounded comparison verifies C already implemented but retains three C-external conflicts and formal_equivalence_accepted=false. Video acquisition NO_GO; blind review and fixed-leader experiment Blocked by physical input; Task9 approves the finite seed matrix but no qualified segment exists. No new SUMO/TraCI/trajectory/holdout; Gate/Stage0.6/Protocol Lock/StageI unchanged.
 
 Reports: docs/AAD_ROUND2_RESEARCH_DECISIONS_20261030.md; docs/SIMULATOR_NGSIM_FORMAL_COMPARABILITY_MATRIX_20261030.md; docs/VIDEO_ACQUISITION_GO_NO_GO_20261030.md; docs/FIXED_LEADER_PAIRED_EXPERIMENT_PROPOSAL_20261030.md; docs/ROUND3_CANDIDATE_READINESS_REPORT_20261030.md. Final campaign and official dispatch reports complete the current status; older entries remain historical.
 
@@ -19,6 +19,12 @@ Reports: docs/AAD_ROUND2_RESEARCH_DECISIONS_20261030.md; docs/SIMULATOR_NGSIM_FO
 # Stage 0.5 Round2 Task 4：真实源区支持与多尺度对照（2026-10-30）
 
 离线重建两个授权 NGSIM US-101 窗口的 Formal P2 和固定 source/target onset 归属，复用封存 B00/Round2 measured state 做宏观、微观和风险对照。真实 source 有 167/159 个 Formal P2，B00/Round2 source formal-aligned/D1 均为 0；时间原点、cohort 和 simulator equivalence 仍未闭合。任务未启动新 SUMO/TraCI，Stage 0.5 Gate、Stage 0.6、Protocol Lock、Stage I 不变。报告：`docs/STAGE_0_5_ROUND2_TASK4_REAL_SOURCE_SUPPORT_AND_MULTISCALE_CROSSWALK_20261030.md`；证据：`evidence/results/RES-STAGE-0.5-ROUND2-TASK4-REAL-SOURCE-SUPPORT-AND-MULTISCALE-CROSSWALK-20261030/`。
+
+## Current — AAD-S0.5-POST-R2-TASK9 (2026-10-31)
+
+Independent physical-reference acquisition remains blocked: the Task7 inquiry was not sent, the four raw AVI payloads were not downloaded, and no PTS/Global_Time or source-lane coverage was verified. Fixed-leader preparation is complete but no qualified physical segment exists; the approved 20261101/02/03 matrix is therefore not executed. Static configuration and kinematic contract checks passed, while Stage 0.5 remains `blocked`, scientific equivalence remains false, and Stage 0.6/Protocol Lock/Stage I/Round3 remain unchanged.
+
+Report: `docs/STAGE_0_5_POST-R2_TASK9_FIXED_LEADER_AND_PHYSICAL_REFERENCE_20261031.md`; evidence: `evidence/results/RES-STAGE-0.5-POST-R2-TASK9-FIXED-LEADER-PREP-20261031/`.
 
 # AAD 阶段索引
 

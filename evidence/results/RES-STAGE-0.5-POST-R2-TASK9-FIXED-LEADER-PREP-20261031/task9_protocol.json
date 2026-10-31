@@ -1,0 +1,66 @@
+{
+  "task": "AAD-S0.5-POST-R2-TASK9",
+  "status": "Blocked by physical input",
+  "physical_reference_status": "Not acquired; license, PTS/Global_Time mapping and source-lane coverage unresolved",
+  "arms": [
+    {
+      "label": "A",
+      "model": "original heterogeneous B00",
+      "minGap_m": 2.5
+    },
+    {
+      "label": "B",
+      "model": "same heterogeneous B00; minGap only",
+      "minGap_m": 1.0
+    }
+  ],
+  "tau_values_s": [
+    0.7389146576529666,
+    1.093342856277335,
+    1.3877275660721775,
+    1.8288599276236361,
+    2.5614676647488244
+  ],
+  "seeds": [
+    20261101,
+    20261102,
+    20261103
+  ],
+  "runs_per_qualified_segment": 6,
+  "total_runs": "6*N",
+  "N": null,
+  "physical_segment_selection": "Not started",
+  "leader_input": "Same external leader speed/position sequence and same physical time anchor in both arms",
+  "initial_matching": [
+    "follower_speed_mps",
+    "leader_speed_mps",
+    "physical_net_gap_m"
+  ],
+  "disallowed_repairs": [
+    "time shifting",
+    "arm-specific post-hoc deletion",
+    "seed replacement",
+    "minGap-adjusted-gap matching"
+  ],
+  "metrics": [
+    "physical_net_gap_m",
+    "follower_speed_mps",
+    "leader_speed_mps",
+    "closing_speed_mps",
+    "TTC",
+    "C_initial_m",
+    "C_f_m",
+    "C_l_m",
+    "C_m",
+    "C_gap_m",
+    "R_m",
+    "response_timing",
+    "Formal_P2",
+    "D1_local_exposure_when_applicable"
+  ],
+  "kinematic_relation": "Under common leader input and matched initial follower speed, delta_C_initial=0 and delta_C_l=0, so delta_C=delta_C_f; verify R_m rather than assume closure.",
+  "formal_runs_executed": 0,
+  "synthetic_or_arbitrary_segments_used": 0,
+  "round3_started": false,
+  "stage_0_5_gate": "blocked"
+}

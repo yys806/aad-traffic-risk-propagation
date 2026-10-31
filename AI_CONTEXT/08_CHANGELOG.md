@@ -1,3 +1,7 @@
+## Current — AAD-S0.5-POST-R2-TASK9 (2026-10-31)
+
+Added the Task9 fixed-leader pair contract, static B00/Round2 arm audit, historical seed audit, and targeted fail-closed tests. Preserved the original Task7 provider inquiry and recorded that actual dispatch was blocked by unavailable safe mail observation and automatic review rejection of an unbound Gmail authentication origin. No video, trajectory, SUMO/TraCI, holdout or physical review was added. Registered the Task9 report/evidence and kept Stage 0.5 blocked, scientific equivalence false, Stage 0.6/Protocol Lock/Stage I unchanged and Round3 unstarted.
+
 ## Current — AAD-S0.5-POST-R2-TASK8 (2026-10-30)
 
 Added standalone five-second precursor integration and original-pair contrasts, explicit identity/missingness/repeated-unit accounting, five local figures, seven SUMO case profiles, official fixed-tag Krauss call-chain map, competing-mechanism and fixed-leader discrimination matrices. Added targeted numerical/identity tests. Recorded historical summary conflicts without modifying sealed history. Updated active indexes/registry and bounded portable evidence registration; production risk code/config and06_DECISIONS/AGENTS unchanged. Validation details: evidence/results/RES-STAGE-0.5-POST-R2-TASK8-KINEMATIC-MECHANISM-DIAG-20261030/validation_record.json.

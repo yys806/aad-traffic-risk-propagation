@@ -1,3 +1,9 @@
+## Current — AAD-S0.5-POST-R2-TASK9 (2026-10-31)
+
+External mail access remains blocked. The original provider inquiry is preserved as unsent; Windows Edge could not be safely observed and an application-browser Gmail authentication origin was rejected by automatic review. Actual sender, Message-ID, receipt and provider response remain Unknown. Consequently license applicability, raw-video payload access, PTS/Global_Time mapping, camera synchronization, source-lane coverage and physical review remain blocked. The fixed-leader module is statically ready but cannot select or run formal segments without an independent physical reference; no synthetic segment is substituted.
+
+Status: `Blocked by physical input`; report `docs/STAGE_0_5_POST_R2_TASK9_FIXED_LEADER_AND_PHYSICAL_REFERENCE_20261031.md`.
+
 ## Current — AAD-S0.5-POST-R2-TASK8 (2026-10-30)
 
 Unknown: independent physical truth, NGSIM tau identity, exact network disturbance source, current native active-bound histories, and unique causal attribution. Full five-second strict support is selective; Task6 nonrisk anchors do not imply risk-free five-second histories (source controls7/132 and3/123 have prior threshold points). No rematching or event deletion.
@@ -8,7 +14,7 @@ Original Round2 candidate remains CLOSED_FAILED_ORIGINAL_SOURCE_CONDITION; Forma
 
 ## Current — AAD-ROUND2-CLOSURE-20261030
 
-B path evidence, file-specific video permission, PTS/Global_Time mapping/offset/drift and complete Camera7/8 source-lane coverage remain Unknown/Blocked. NO_GO, no video download or blind review. Native/formal endpoints after explicit flags, clock/frame projection and leader-row support are not generally equivalent; do not silently repair C-external semantics. Scientific equivalence stays false. Three-seed matrix is Proposed and requires approval for the new fixed-leader experiment; no fully specified physically verified inputs exist. Historical Task6 row-level controls and METHOD-EXPANSION hash/missing-file limitations remain unchanged. Official inquiry BLOCKED_NOT_SENT: Computer Use app approval timed out; authenticated sending session and actual sender/signature unverified. No compose/send or real receipt. Local unsent handoff exists; sending authorization persists.
+B path evidence, file-specific video permission, PTS/Global_Time mapping/offset/drift and complete Camera7/8 source-lane coverage remain Unknown/Blocked. NO_GO, no video download or blind review. Native/formal endpoints after explicit flags, clock/frame projection and leader-row support are not generally equivalent; do not silently repair C-external semantics. Scientific equivalence stays false. Task9 approves the three-seed matrix for the new fixed-leader experiment, but no fully specified physically verified inputs exist and no run is allowed yet. Historical Task6 row-level controls and METHOD-EXPANSION hash/missing-file limitations remain unchanged. Official inquiry remains NOT_SENT_BLOCKED after safe mail observation failed and Gmail authentication origin review was rejected; no compose/send or real receipt. Local unsent handoff exists; sending authorization persists.
 
 ## 2026-10-30 Round2 Task7.2 - resource and mapping conditions
 

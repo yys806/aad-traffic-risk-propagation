@@ -183,6 +183,18 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         )
     ]
 
+    # Task9: fixed-leader preparation and provider-dispatch status only; no video,
+    # identity-level physical cases or simulation payloads.
+    task9_root = "evidence/results/RES-STAGE-0.5-POST-R2-TASK9-FIXED-LEADER-PREP-20261031"
+    pairs["RES-STAGE-0.5-POST-R2-TASK9-FIXED-LEADER-PREP-20261031"] = [
+        (f"{task9_root}/{name}", name)
+        for name in (
+            "arm_config_audit.json", "historical_seed_audit.json", "provider_dispatch_status.json",
+            "source_bindings.json", "task9_protocol.json", "validation_record.json",
+            "context_consistency_check.json", "manifest.json", "SHA256SUMS",
+        )
+    ]
+
     # Policy A preflight proposals, not a frozen execution protocol.
     pairs['RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1'] = [
         ('code/outputs/formal/calibration/stage_0_5_interaction_diagnostics_v1/portable/' + name, name)

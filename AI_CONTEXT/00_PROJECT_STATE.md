@@ -1,3 +1,9 @@
+## Current — AAD-S0.5-POST-R2-TASK9 (2026-10-31)
+
+Task9 engineering preparation is complete with external blockers. The unchanged Task7 provider inquiry was not sent because the available Edge state could not be safely observed and a Gmail authentication origin was rejected by automatic review; no sender, receipt or provider response exists. No raw AVI was downloaded, no ffprobe/time-space mapping or physical review occurred. Sealed B00/Round2 static inputs confirm only five heterogeneous passenger `minGap` changes (2.5→1.0) with the five tau values retained. The approved fixed-leader seeds are 20261101/20261102/20261103; a fail-closed module now checks common leader input, matched physical initial state and `C_initial/C_f/C_l/C/C_gap/R` closure. Formal runs: 0; qualified segments: 0; B status: `Blocked by physical input`. Stage 0.5 `blocked`, scientific equivalence `false`, Stage 0.6/Protocol Lock/Stage I unchanged, Round3 not started.
+
+Report: `docs/STAGE_0_5_POST-R2_TASK9_FIXED_LEADER_AND_PHYSICAL_REFERENCE_20261031.md`; evidence: `evidence/results/RES-STAGE-0.5-POST-R2-TASK9-FIXED-LEADER-PREP-20261031/`.
+
 ## Current — AAD-S0.5-POST-R2-TASK8 (2026-10-30)
 
 Verified offline Task8 extends every Task6 source/target event and original control to five-second precursor diagnostics: source strict events105/167 and107/159, original paired strict contrasts94/89. Leader-speed-change contributions are substantial; generic initial-positive-closing or follower-acceleration-only explanations are weakened, not causally rejected. Official SUMO1.26.0 tagged source distinguishes dynamic ballistic follow from insertion and LC constraints. Seven existing near-threshold cases remain non-P2; five change leader and only two allow full fixed-pair decomposition. Physical truth and unique mechanism attribution remain Unknown.
