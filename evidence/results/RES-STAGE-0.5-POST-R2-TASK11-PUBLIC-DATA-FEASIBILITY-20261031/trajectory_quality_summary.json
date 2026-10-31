@@ -1,0 +1,115 @@
+{
+  "status": "PARSED_LOCAL_MITRA_T1_DALL_AND_TELEPORTING_JUMPS",
+  "source": "MiTra-T1",
+  "archive": "Data_T1.zip",
+  "rows": 1578393,
+  "unique_vehicle_ids": 1456,
+  "vehicle_types_by_row": {
+    "Bus": 1352,
+    "Car": 1034605,
+    "Heavy Vehicle": 230036,
+    "Medium Vehicle": 287193,
+    "Motorcycle": 25207
+  },
+  "lane_values_by_row": {
+    "0": 27002,
+    "1": 208607,
+    "10": 83953,
+    "11": 47289,
+    "2": 244708,
+    "20": 56918,
+    "21": 47939,
+    "3": 230518,
+    "4": 139581,
+    "5": 182900,
+    "6": 210081,
+    "7": 98897
+  },
+  "vehicle_ids_with_leader_rows": 1435,
+  "vehicle_ids_with_follower_rows": 1428,
+  "rows_with_leader_id": 1308347,
+  "rows_with_follower_id": 1308347,
+  "vehicle_ids_with_multiple_lanes": 752,
+  "time_s": {
+    "min": 0.0,
+    "max": 439.873633,
+    "nominal_fps": 30,
+    "dt_s": {
+      "min": 0.03336599999994405,
+      "p50": 0.03336699999999837,
+      "p95": 0.03336700000000192,
+      "max": 0.033367000000055214
+    },
+    "dt_not_approx_1_30": 0
+  },
+  "duration_s": {
+    "vehicles": 1456,
+    "p05": 11.978657,
+    "p50": 36.33637199999998,
+    "p95": 53.92063999999999,
+    "max": 97.564326,
+    "vehicles_ge_5s": 1423,
+    "vehicles_ge_20s": 1340
+  },
+  "core_nonfinite_values": 0,
+  "screening_step_jump_counts": {
+    "abs_delta_x_gt_2m": 0,
+    "abs_delta_y_gt_0_5m": 25922,
+    "warning": "rough global x/y screening only; not the README's stitched teleport audit"
+  },
+  "teleporting_jumps_csv": {
+    "rows": 940,
+    "unique_vehicle_ids": 547,
+    "long_flags": 26,
+    "lateral_flags": 914,
+    "time_s": {
+      "min": 0.4004,
+      "max": 1004.837232
+    }
+  },
+  "interpretation": "The T1 file supplies dense time-indexed vehicle tracks and leader/follower fields. The parsed trajectory is a processed tracking output; no independent video review was performed.",
+  "zip_members": [
+    {
+      "name": "T1_D1.csv",
+      "uncompressed_bytes": 46775028,
+      "compressed_bytes": 8621354,
+      "crc32": 2715413348
+    },
+    {
+      "name": "T1_D2.csv",
+      "uncompressed_bytes": 42552451,
+      "compressed_bytes": 7904895,
+      "crc32": 708108904
+    },
+    {
+      "name": "T1_D3.csv",
+      "uncompressed_bytes": 50096530,
+      "compressed_bytes": 9441899,
+      "crc32": 2343986344
+    },
+    {
+      "name": "T1_D4.csv",
+      "uncompressed_bytes": 55895075,
+      "compressed_bytes": 10691126,
+      "crc32": 525958816
+    },
+    {
+      "name": "T1_D5.csv",
+      "uncompressed_bytes": 47026122,
+      "compressed_bytes": 8850631,
+      "crc32": 2623966599
+    },
+    {
+      "name": "T1_D6.csv",
+      "uncompressed_bytes": 36542324,
+      "compressed_bytes": 6635903,
+      "crc32": 550705719
+    },
+    {
+      "name": "T1_DAll.csv",
+      "uncompressed_bytes": 173431315,
+      "compressed_bytes": 32485262,
+      "crc32": 2942526082
+    }
+  ]
+}

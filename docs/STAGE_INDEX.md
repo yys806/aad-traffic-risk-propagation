@@ -1,3 +1,9 @@
+## Current — AAD-S0.5-POST-R2-TASK11 (2026-10-31)
+
+The public-source audit distinguishes direct NGSIM path verification, independent physical reference, and Task9 input use. MiTra T1 supplied a real 30 Hz trajectory package for conditional input screening; paired video/log and physical-gap validation are still required. I24V endpoint access was not closed. NGSIM raw video remains the only direct route to current US-101 candidate review, with Task7.2 license/time/space blockers retained. Stage 0.5 remains blocked and no formal Task9 run occurred.
+
+Report: docs/STAGE_0_5_POST_R2_TASK11_PUBLIC_DATA_ACQUISITION_FEASIBILITY_20261031.md; evidence: evidence/results/RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031/.
+
 ## Current — AAD-S0.5-POST-R2-TASK8 (2026-10-30)
 
 Verified offline Task8 extends every Task6 source/target event and original control to five-second precursor diagnostics: source strict events105/167 and107/159, original paired strict contrasts94/89. Leader-speed-change contributions are substantial; generic initial-positive-closing or follower-acceleration-only explanations are weakened, not causally rejected. Official SUMO1.26.0 tagged source distinguishes dynamic ballistic follow from insertion and LC constraints. Seven existing near-threshold cases remain non-P2; five change leader and only two allow full fixed-pair decomposition. Physical truth and unique mechanism attribution remain Unknown.

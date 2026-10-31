@@ -1,0 +1,107 @@
+{
+  "schema": "aad.task11.source_inventory.v1",
+  "task_id": "AAD-S0.5-POST-R2-TASK11",
+  "captured_at_utc": "2026-10-31T07:50:29.142413+00:00",
+  "sources": [
+    {
+      "source_id": "I24V",
+      "name": "I-24 MOTION / I24V",
+      "official_pages": [
+        "https://i24motion.org/data",
+        "https://github.com/I24-MOTION/i24-video-dataset-utils"
+      ],
+      "documented_release_facts": {
+        "published_camera_count": 234,
+        "documented_video_duration_hours": 234,
+        "road_coverage_miles": 4.2,
+        "manually_corrected_gps_vehicle_passes": 270,
+        "video_format_documented": "MKV per camera; millisecond frame timestamps and nanosecond global offset in filenames",
+        "annotation_families": [
+          "GPS.cpkl",
+          "final_gps.csv",
+          "final_manual.csv",
+          "homography matrices",
+          "detections"
+        ]
+      },
+      "license_status": "DOCUMENTED_DATA_USE_AGREEMENT",
+      "license_scope": [
+        "free academic and commercial use",
+        "anonymous vehicles; no re-identification or harm",
+        "I24V and I24-MOTION citations required for publication",
+        "derivatives may be created/shared while retaining terms",
+        "provided as-is without warranty"
+      ],
+      "access_status": "PUBLIC_ENTRY_NOT_REACHED_IN_THIS_ENVIRONMENT",
+      "use1_existing_ngsim_path_verification": "NO-GO",
+      "use2_independent_physical_reference": "CONDITIONAL",
+      "use3_task9_fixed_leader_input": "CONDITIONAL",
+      "caveats": [
+        "I24V is a different roadway and cannot directly verify the 40 US-101 candidates.",
+        "The published README documents GPS and video resources, but a complete follower/leader pairing contract was not established here.",
+        "The data page returned an access failure during this bounded check; no I24V payload was downloaded."
+      ]
+    },
+    {
+      "source_id": "MiTra-T1",
+      "name": "MiTra: Drone-Based Trajectory Data for an All-Traffic-State Inclusive Freeway with Ramps",
+      "official_pages": [
+        "https://opara.zih.tu-dresden.de/items/68482417-ddc5-40ac-885a-83124bd459e8",
+        "https://doi.org/10.25532/OPARA-881",
+        "https://www.nature.com/articles/s41597-025-05472-0"
+      ],
+      "documented_release_facts": {
+        "site": "A50 urban freeway, Milan, Italy",
+        "road_length_m": 900,
+        "flight_campaigns": 9,
+        "drones": 6,
+        "raw_video_fps": 30,
+        "single_drone_trajectories": 124641,
+        "stitched_trajectories": 24161,
+        "opara_license": "Creative Commons Attribution 4.0 International"
+      },
+      "license_status": "PUBLIC_CC_BY_4_0",
+      "access_status": "PARTIAL_SMALL_FILE_SUCCESS",
+      "use1_existing_ngsim_path_verification": "NO-GO",
+      "use2_independent_physical_reference": "CONDITIONAL",
+      "use3_task9_fixed_leader_input": "CONDITIONAL-GO",
+      "caveats": [
+        "T1 trajectories are processed DataFromSky outputs; trajectory-only files are not independent visual truth.",
+        "A paired tracking-log/video subset is needed to independently review identity, occlusion and physical gap.",
+        "T1 is one campaign and is not merged into the NGSIM formal sample."
+      ]
+    },
+    {
+      "source_id": "NGSIM-US101",
+      "name": "NGSIM US-101 videos and supporting data",
+      "official_pages": [
+        "https://catalog.data.gov/dataset/next-generation-simulation-ngsim-vehicle-trajectories-and-supporting-data",
+        "https://data.transportation.gov/Automobiles/Next-Generation-Simulation-NGSIM-Program-US-101-Videos/4qzi-thur",
+        "https://data.transportation.gov/download/4qzi-thur/application/x-zip-compressed"
+      ],
+      "documented_release_facts": {
+        "trajectory_sampling": "0.1 s transcription from synchronized digital video",
+        "catalog_license": "CC BY 3.0 for the public trajectory/supporting-data catalog",
+        "task7_2_raw_avi_members": [
+          "sb-camera7-0750am-0805am.avi",
+          "sb-camera8-0750am-0805am.avi",
+          "sb-camera7-0805am-0820am.avi",
+          "sb-camera8-0805am-0820am.avi"
+        ],
+        "task7_2_compressed_bytes": 1248582779,
+        "task7_2_extracted_bytes": 1248560044
+      },
+      "license_status": "MIXED_DECLARATIONS_REQUIRE_FILE_SPECIFIC_CLOSURE",
+      "access_status": "PUBLIC_CATALOG_REUSED; VIDEO_PAYLOAD_NOT_RETESTED",
+      "use1_existing_ngsim_path_verification": "CONDITIONAL",
+      "use2_independent_physical_reference": "NO-GO",
+      "use3_task9_fixed_leader_input": "CONDITIONAL",
+      "caveats": [
+        "This is the source of the current trajectory transcription, not an independent acquisition.",
+        "Task7.2 already established directory metadata but not payload, PTS/Global_Time mapping, camera coverage or physical review.",
+        "The historical and current license statements differ in scope; public availability does not close per-file permission."
+      ]
+    }
+  ],
+  "interpretation_boundary": "Published counts and declarations are recorded as source facts; only MiTra T1 fields below were parsed locally."
+}

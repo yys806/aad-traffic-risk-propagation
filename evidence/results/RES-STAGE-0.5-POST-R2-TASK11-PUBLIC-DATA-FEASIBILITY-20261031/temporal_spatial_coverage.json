@@ -1,0 +1,50 @@
+{
+  "MiTra-T1": {
+    "time": {
+      "min": 0.0,
+      "max": 439.873633,
+      "nominal_fps": 30,
+      "dt_s": {
+        "min": 0.03336599999994405,
+        "p50": 0.03336699999999837,
+        "p95": 0.03336700000000192,
+        "max": 0.033367000000055214
+      },
+      "dt_not_approx_1_30": 0
+    },
+    "coordinate_fields": [
+      "x [m]",
+      "y [m]"
+    ],
+    "coordinate_semantics": "UTM metres per README; EPSG zone not independently re-derived here",
+    "lanes": {
+      "0": 27002,
+      "1": 208607,
+      "10": 83953,
+      "11": 47289,
+      "2": 244708,
+      "20": 56918,
+      "21": 47939,
+      "3": 230518,
+      "4": 139581,
+      "5": 182900,
+      "6": 210081,
+      "7": 98897
+    },
+    "camera_or_drone_sync": "six-drone campaign and 30 fps documented; local video/log pairing not acquired",
+    "physical_overlap": "Documented stitched trajectories exist; local T1 file alone does not certify cross-drone identity"
+  },
+  "I24V": {
+    "status": "NOT_LOCALLY_VERIFIED",
+    "documented": [
+      "millisecond frame timestamps",
+      "nanosecond global offset in filenames",
+      "homography/GPS resources"
+    ]
+  },
+  "NGSIM-US101": {
+    "status": "REUSED_TASK7_2_METADATA_ONLY",
+    "pts_global_time_mapping": "Unknown",
+    "camera_source_lane_coverage": "Unknown"
+  }
+}

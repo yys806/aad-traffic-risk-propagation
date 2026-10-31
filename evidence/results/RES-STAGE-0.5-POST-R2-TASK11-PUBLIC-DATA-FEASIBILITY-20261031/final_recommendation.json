@@ -1,0 +1,35 @@
+{
+  "status": "COMPLETED_WITH_EXTERNAL_AND_PHYSICAL_BLOCKERS",
+  "best_current_candidate": "MiTra-T1 for conditional Task9 input preparation",
+  "independent_reference_candidate": "I24V or MiTra paired raw video/log subset; neither was locally closed as an independent physical truth in this task",
+  "ngsim_path_verification": "Only NGSIM US-101 raw video can directly test existing 40 candidates; Task7.2 blockers remain",
+  "minimal_next_acquisition": [
+    {
+      "source": "MiTra",
+      "files": [
+        "Data_T1.zip already staged",
+        "one selected T1 tracking-log/video subset",
+        "Readme and teleport audit"
+      ],
+      "expected_video_cost": "avoid full 30.83 GB archive; select a physically continuous paired segment"
+    },
+    {
+      "source": "I24V",
+      "files": [
+        "270 GPS/manual reference subset plus matching camera files if endpoint and terms are closed"
+      ],
+      "expected_video_cost": "do not acquire full 234-hour release"
+    },
+    {
+      "source": "NGSIM",
+      "files": [
+        "only Camera 7/8 four raw AVI members if license/endpoint/time-space conditions close"
+      ],
+      "expected_video_cost": "approximately 1.249 GB compressed from Task7.2 metadata"
+    }
+  ],
+  "formal_task9_runs": 0,
+  "stage_0_5": "blocked",
+  "scientific_equivalence": false,
+  "decision_owner": "researcher"
+}

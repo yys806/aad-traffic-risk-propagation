@@ -1,3 +1,9 @@
+## Current — AAD-S0.5-POST-R2-TASK11 (2026-10-31)
+
+Public data acquisition feasibility audit completed. MiTra T1 was actually downloaded and parsed as a conditional Task9 candidate; I24V was documented but not downloaded; NGSIM video remains a conditional direct path-verification source under Task7.2 blockers. No formal experiment, new simulation, third window or holdout read occurred. Stage 0.5 remains blocked.
+
+Report: docs/STAGE_0_5_POST_R2_TASK11_PUBLIC_DATA_ACQUISITION_FEASIBILITY_20261031.md; evidence: evidence/results/RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031/.
+
 ## Current — AAD-S0.5-POST-R2-TASK10 (2026-10-31)
 
 Round2 final offline diagnostic is complete with Case B blockers. Task6 contexts were used for event/control quality comparison, Task7.1 PreciseNGSIM evidence remains insufficient for event-level crosswalk, and 40 same-trajectory source→target candidates were audited without a qualified B witness because physical connection basis is Unknown. Task9 remains execution-blocked by physical input; Stage 0.5 and all later gates remain unchanged.

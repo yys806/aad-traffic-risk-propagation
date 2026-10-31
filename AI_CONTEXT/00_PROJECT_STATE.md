@@ -1,3 +1,9 @@
+## Current — AAD-S0.5-POST-R2-TASK11 (2026-10-31)
+
+Task11 completed a bounded public-data feasibility audit. MiTra T1 small files were downloaded, SHA/CRC checked and parsed: 1,578,393 rows, 1,456 vehicle IDs, nominal 30 Hz, 1,340 vehicles with at least 20 s, and 1,308,347 leader/follower rows per relation. MiTra is a conditional Task9 input candidate pending paired video/tracking-log and physical-gap review. I24V public README and Data Use Agreement were reviewed but the data endpoint was not reached; no I24V payload was obtained. NGSIM video directory facts were reused from Task7.2; no raw AVI payload, PTS/Global_Time mapping or camera coverage was closed. Stage 0.5 remains blocked, scientific equivalence false, Task9 formal runs 0, and Round3/Stage 0.6/Protocol Lock/Stage I remain unchanged.
+
+Evidence: `evidence/results/RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031/`.
+
 ## Current — AAD-S0.5-POST-R2-TASK10 (2026-10-31)
 
 Round2 final offline diagnostic is complete with Case B blockers. Task4/5/6/8/9 evidence was reused; the new event/control quality audit remains descriptive, PreciseNGSIM event-level crosswalk is `BLOCKED_EVENT_LEVEL_CROSSWALK`, and 40 same-trajectory source→target candidates were found with 0 qualified B witnesses and 40 `Unknown` due missing independent physical connection basis. Task9 formal runs remain 0 and readiness is `BLOCKED_BY_PHYSICAL_INPUT`. Stage 0.5 `blocked`, scientific equivalence `false`, Stage 0.6/Protocol Lock/Stage I unchanged, Round3 not started.

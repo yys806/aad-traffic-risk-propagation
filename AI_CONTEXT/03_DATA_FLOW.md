@@ -1,3 +1,7 @@
+## Current — AAD-S0.5-POST-R2-TASK11 public-source boundary
+
+MiTra T1 was staged under `local_research/staging/task11_20261031/mitra/` and consumed only by `code/scripts/audit_stage_0_5_task11_public_data.py`. The raw archive, Readme and teleport CSV remain staging inputs and are not copied into portable evidence. Portable evidence stores source metadata, local hashes, ZIP member CRCs, aggregate trajectory summaries and applicability decisions. No external data was merged into the NGSIM canonical flow or Task9 formal inputs.
+
 # AAD Data Flow
 
 ## 2026-10-27 Weekly B00 accepted; Stage I remains BLOCKED

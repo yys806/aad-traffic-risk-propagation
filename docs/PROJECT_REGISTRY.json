@@ -345,6 +345,8 @@
   "code/src/riskprop/stage_0_5_fixed_leader_pair.py",
   "code/scripts/audit_stage_0_5_task9_fixed_leader.py",
   "code/scripts/audit_stage_0_5_task10_final_diagnostic.py",
+  "docs/STAGE_0_5_POST_R2_TASK11_PUBLIC_DATA_ACQUISITION_FEASIBILITY_20261031.md",
+  "code/scripts/audit_stage_0_5_task11_public_data.py",
   "code/tests/test_stage_0_5_fixed_leader_pair.py",
   "docs/ROUND3_CANDIDATE_READINESS_REPORT_20261030.md",
   "docs/AAD_ROUND2_CLOSURE_AND_CONDITIONAL_VALIDATION_REPORT_20261030.md",
@@ -355,8 +357,8 @@
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-S0.5-POST-R2-TASK10: final offline diagnostic complete; physical path and Task9 readiness remain blocked",
-  "why_now": "Close Round2 with the final bounded trajectory-quality, physical-path and fixed-leader readiness diagnosis without new simulations or data acquisition.",
+  "active_task": "AAD-S0.5-POST-R2-TASK11: public independent physical-reference source audit complete with MiTra T1 parsed and access/physical blockers retained",
+  "why_now": "Audit I24V, MiTra and NGSIM public acquisition feasibility with one small MiTra trajectory package, without changing definitions or starting Task9.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
    "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/count_reconciliation.json",
@@ -531,6 +533,8 @@
    "fixed_leader_execution_status": "Blocked_by_physical_input",
    "fixed_leader_runs": 0,
    "task9_result": "RES-STAGE-0.5-POST-R2-TASK9-FIXED-LEADER-PREP-20261031",
+   "task11_result": "RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031",
+   "public_data_status": "MiTra T1 small files parsed; I24V endpoint not reached; NGSIM video payload and file-specific license/time-space closure remain Unknown",
    "round3_readiness": "NOT_READY"
   }
  },
@@ -1211,7 +1215,8 @@
     "RES-AAD-ROUND2-PROVIDER-INQUIRY-20261030",
     "RES-STAGE-0.5-POST-R2-TASK8-KINEMATIC-MECHANISM-DIAG-20261030",
     "RES-STAGE-0.5-POST-R2-TASK9-FIXED-LEADER-PREP-20261031",
-    "RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC"
+    "RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC",
+    "RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -5468,6 +5473,53 @@
    "gate_status": "blocked",
    "paper_locations": [
     "docs/STAGE_0_5_POST_R2_TASK10_FINAL_DIAGNOSTIC_20261031.md"
+   ],
+   "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031",
+   "experiment_id": "stage_0_5",
+   "name": "Public independent physical-reference source acquisition feasibility audit",
+   "status": "completed_with_external_and_physical_blockers",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031/source_inventory.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031/license_scope_matrix.csv",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031/download_manifest.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031/file_integrity.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031/trajectory_quality_summary.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031/temporal_spatial_coverage.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031/candidate_segment_summary.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031/research_applicability_matrix.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031/final_recommendation.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031/source_bindings.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031/validation_record.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031/context_consistency_check.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031/manifest.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031/SHA256SUMS"
+   ],
+   "local_artifact_paths": [
+    "local_research/staging/task11_20261031/mitra/"
+   ],
+   "code_version_source": "code/scripts/audit_stage_0_5_task11_public_data.py",
+   "configuration_source": "Unchanged Formal P2/D1/B definitions and Task9 protocol; no formal experiment started",
+   "data_version_source": "Official I24V/MiTra/NGSIM public pages; locally parsed MiTra T1 small files; Task7.2 NGSIM metadata reused",
+   "core_metrics": {
+    "mitra_t1_rows": 1578393,
+    "mitra_t1_vehicle_ids": 1456,
+    "mitra_t1_vehicles_ge_20s": 1340,
+    "mitra_t1_leader_rows": 1308347,
+    "mitra_t1_follower_rows": 1308347,
+    "mitra_formal_task9_segments_admitted": 0,
+    "i24v_payload_files_downloaded": 0,
+    "ngsim_raw_video_files_downloaded": 0,
+    "new_simulations": 0,
+    "holdout_reads": 0,
+    "scientific_equivalence_accepted": false
+   },
+   "current_conclusion": "MiTra T1 is the best current conditional candidate for Task9 input preparation, but paired video/log and physical-gap review are still required. I24V remains a conditional independent-reference candidate with endpoint access unresolved. NGSIM is the only direct source for existing US-101 path verification, with Task7.2 license/time/space blockers retained. Stage 0.5 remains blocked.",
+   "gate_status": "blocked",
+   "paper_locations": [
+    "docs/STAGE_0_5_POST_R2_TASK11_PUBLIC_DATA_ACQUISITION_FEASIBILITY_20261031.md"
    ],
    "scientific_claim_eligible": false
   }

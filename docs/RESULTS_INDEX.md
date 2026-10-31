@@ -1,3 +1,7 @@
+## RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031
+
+Bounded public-source audit for I24V, MiTra and NGSIM US-101. MiTra T1 small files were downloaded and parsed; I24V endpoint access and NGSIM video payload/time-space closure remain blocked. MiTra is `CONDITIONAL-GO` for Task9 input preparation only after paired video/log review; no formal segments or simulations were run. Report: docs/STAGE_0_5_POST_R2_TASK11_PUBLIC_DATA_ACQUISITION_FEASIBILITY_20261031.md. Evidence: evidence/results/RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031/.
+
 ## RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC
 
 Round2 final diagnostic completed with blockers. Existing Task4/6/8/9 evidence was reused; no new SUMO/TraCI, video, third window or holdout was accessed. Event/control quality contrasts remain descriptive, PreciseNGSIM event-level crosswalk is blocked, and 40 source→target same-trajectory candidates were audited with 0 qualified B witnesses and 40 `Unknown` because physical connection basis is not independently verified. Task9 remains blocked by physical input. Report: docs/STAGE_0_5_POST_R2_TASK10_FINAL_DIAGNOSTIC_20261031.md. Evidence: evidence/results/RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC/.

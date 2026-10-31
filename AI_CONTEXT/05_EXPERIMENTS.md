@@ -1,3 +1,7 @@
+## Current — AAD-S0.5-POST-R2-TASK11
+
+Task11 performed no SUMO/TraCI or fixed-leader formal run. MiTra T1 is a conditional candidate for future Task9 input screening only; formal admitted segments remain 0 until paired video/log and physical initial-gap checks pass. I24V and NGSIM were audited as source options with separate roles. Existing Task9 protocol and seed matrix are unchanged.
+
 ## Current — AAD-S0.5-POST-R2-TASK10 (2026-10-31)
 
 Task10 is the final bounded Round2 diagnostic. It reuses Task6/Task8 residuals and Task9 readiness, adds event/control quality comparisons and a time-expanded source→target audit, and preserves Unknown where physical connection evidence is absent. Forty same-trajectory ordered candidates were found across the two windows; qualified B witnesses remain 0. PreciseNGSIM cannot support an independent event crosswalk. Task9 remains `Blocked by physical input`; no formal fixed-leader run, new simulation or holdout read occurred.

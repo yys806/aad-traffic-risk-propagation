@@ -1,3 +1,10 @@
+## Current — AAD-S0.5-POST-R2-TASK11 public-source blockers
+
+- MiTra T1 trajectories are processed DataFromSky outputs; no paired raw video/tracking-log review was obtained, so independent physical truth and Task9 physical-gap admission remain Unknown.
+- I24V official public endpoint was not reached in the bounded environment; payload access and GPS/video binding remain Unknown.
+- NGSIM US-101 raw AVI payload, file-specific permission, PTS/Global_Time mapping and Camera 7/8 effective coverage remain unresolved from Task7.2.
+- External datasets cannot directly verify the 40 US-101 source→target candidates; only NGSIM US-101 video can serve that direct role.
+
 ## Current — AAD-S0.5-POST-R2-TASK10 (2026-10-31)
 
 The final Round2 audit found 40 descriptive source→target same-trajectory candidates, but no qualified B witness: all 40 lack an independently verified physical connection basis. PreciseNGSIM event-level crosswalk remains blocked because inherited identity/time fields and differing Local_Y/v_Vel/v_Acc cannot establish independent correspondence. Internal residual diagnostics remain usable within their limits; they do not establish physical truth. Task9 execution remains blocked by physical input.

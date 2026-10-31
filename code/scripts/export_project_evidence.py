@@ -209,6 +209,21 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         )
     ]
 
+    # Task11: bounded public-data source audit; raw archives remain outside
+    # portable evidence and only small-file summaries/hashes are registered.
+    task11_root = "evidence/results/RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031"
+    pairs["RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031"] = [
+        (f"{task11_root}/{name}", name)
+        for name in (
+            "source_inventory.json", "license_scope_matrix.csv", "download_manifest.json",
+            "file_integrity.json", "trajectory_quality_summary.json",
+            "temporal_spatial_coverage.json", "candidate_segment_summary.json",
+            "research_applicability_matrix.json", "final_recommendation.json",
+            "source_bindings.json", "validation_record.json", "context_consistency_check.json",
+            "manifest.json", "SHA256SUMS",
+        )
+    ]
+
     # Policy A preflight proposals, not a frozen execution protocol.
     pairs['RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1'] = [
         ('code/outputs/formal/calibration/stage_0_5_interaction_diagnostics_v1/portable/' + name, name)

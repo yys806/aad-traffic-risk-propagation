@@ -1,3 +1,7 @@
+## Current — AAD-S0.5-POST-R2-TASK11 (2026-10-31)
+
+Added a bounded public-source audit for I24V, MiTra and NGSIM US-101. Downloaded and parsed MiTra T1 Readme/Data/teleport files, recorded hashes and ZIP CRCs, and produced source-specific license/applicability evidence. I24V endpoint access and NGSIM raw-video closure remain blocked. No scientific definitions, Task9 protocol, simulation, holdout or formal dataset were changed.
+
 ## Current — AAD-S0.5-POST-R2-TASK10 (2026-10-31)
 
 Added the final bounded Round2 diagnostic: Task6 event/control quality comparison, PreciseNGSIM event-crosswalk feasibility decision, anonymised source→target physical-path candidates, B witness audit and Task9 readiness decision. No new simulation, video, third window, holdout or data request. Final Case B decision preserves Stage 0.5 blocked and all later gates unchanged.

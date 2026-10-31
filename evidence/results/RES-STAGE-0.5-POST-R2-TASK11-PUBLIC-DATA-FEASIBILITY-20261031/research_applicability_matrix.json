@@ -1,0 +1,25 @@
+{
+  "status": "COMPLETED_SOURCE_SPECIFIC_AUDIT",
+  "uses": {
+    "existing_ngsim_path_verification": {
+      "I24V": "NO-GO",
+      "MiTra-T1": "NO-GO",
+      "NGSIM-US101": "CONDITIONAL"
+    },
+    "independent_physical_reference": {
+      "I24V": "CONDITIONAL",
+      "MiTra-T1": "CONDITIONAL",
+      "NGSIM-US101": "NO-GO"
+    },
+    "task9_fixed_leader_input": {
+      "I24V": "CONDITIONAL",
+      "MiTra-T1": "CONDITIONAL-GO",
+      "NGSIM-US101": "CONDITIONAL"
+    }
+  },
+  "recommended_priority": [
+    "MiTra-T1 trajectory plus a small paired tracking/video subset",
+    "I24V endpoint/license closure for independent video/GPS reference",
+    "NGSIM US-101 raw AVI only for direct candidate review after file-specific permission/time mapping closure"
+  ]
+}
