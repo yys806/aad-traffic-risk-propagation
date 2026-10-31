@@ -1,3 +1,10 @@
+## Current — AAD-S0.5-POST-R2-TASK13 blockers
+
+- Video and DataFromSky Viewer were unavailable in the bounded environment; DAll vehicle IDs remain unbound to MP4s.
+- Exact vehicle reference-point semantics remain Unknown, so gap values are approximate sensitivity intervals rather than physical net-gap truth.
+- MiTra Vehicle_type to the five heterogeneous B00 tau values remains Unknown and requires researcher decision before any formal input freeze.
+- Task13 input-review levels do not alter Stage 0.5, B-witness or scientific-equivalence standards.
+
 ## Current — AAD-S0.5-POST-R2-TASK12 MiTra blockers
 
 - `Teleporting_jumps_Dall.csv` is described by the README but absent from the complete public T1 tracking/video ZIP central directory; single-drone `Teleporting_jumps.csv` cannot be used as DAll evidence.

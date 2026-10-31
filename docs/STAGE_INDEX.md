@@ -1,3 +1,9 @@
+## Current — AAD-S0.5-POST-R2-TASK13 (2026-10-31)
+
+The minimum-sufficient authenticity review identifies `962-958-1` and `926-924-1` as ready for researcher Task9 input review and `857-851-1` as conditional. Positive gap classification is stable under the common-reference sensitivity interval; video review was not possible. Stage 0.5 and Task9 formal execution remain blocked.
+
+Report: docs/STAGE_0_5_POST_R2_TASK13_MITRA_T1_MINIMUM_SUFFICIENT_INPUT_ASSESSMENT_20261031.md; evidence: evidence/results/RES-STAGE-0.5-POST-R2-TASK13-MITRA-T1-MINIMUM-SUFFICIENT-INPUT-ASSESSMENT-20261031/.
+
 ## Current — AAD-S0.5-POST-R2-TASK12 (2026-10-31)
 
 MiTra T1 field-consistent front/rear candidates were screened without changing Task9. The complete public tracking archive has no separate DAll teleport CSV; local heading-relative continuity screening produced no threshold flags, while calibrated road s, vehicle reference point, physical net gap and video binding remain Unknown. No formal Task9 input or experiment was admitted.

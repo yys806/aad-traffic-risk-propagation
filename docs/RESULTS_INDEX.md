@@ -1,3 +1,7 @@
+## RES-STAGE-0.5-POST-R2-TASK13-MITRA-T1-MINIMUM-SUFFICIENT-INPUT-ASSESSMENT-20261031
+
+Candidate-level minimum-sufficient input assessment completed. `962-958-1` and `926-924-1` are ready for researcher Task9 input review; `857-851-1` is conditional. No video was downloaded, no formal input was frozen and no Task9 run occurred. Report: docs/STAGE_0_5_POST_R2_TASK13_MITRA_T1_MINIMUM_SUFFICIENT_INPUT_ASSESSMENT_20261031.md. Evidence: evidence/results/RES-STAGE-0.5-POST-R2-TASK13-MITRA-T1-MINIMUM-SUFFICIENT-INPUT-ASSESSMENT-20261031/.
+
 ## RES-STAGE-0.5-POST-R2-TASK12-MITRA-T1-CANDIDATE-PHYSICAL-ADMISSION-20261031
 
 MiTra T1 pre-audit found 1,308,347 reciprocal leader/follower rows, 3,791 vehicle pairs and 2,414 at-least-5-second candidate segments. The official DAll teleport audit file is absent from the complete public T1 archive; the 54.3 MB DAll tracking log was acquired without video. Provisional gaps, video binding and vehicle reference point remain Unknown, so formal Task9 admission is blocked. Report: docs/STAGE_0_5_POST_R2_TASK12_MITRA_T1_CANDIDATE_PHYSICAL_ADMISSION_20261031.md. Evidence: evidence/results/RES-STAGE-0.5-POST-R2-TASK12-MITRA-T1-CANDIDATE-PHYSICAL-ADMISSION-20261031/.

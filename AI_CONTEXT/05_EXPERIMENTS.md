@@ -1,3 +1,7 @@
+## Current — AAD-S0.5-POST-R2-TASK13
+
+Two MiTra T1 segments (`962-958-1`, `926-924-1`) are ready for researcher Task9 input review under a proposed minimum-sufficient standard; `857-851-1` is conditional. This does not admit a formal segment, freeze interpolation, resolve tau mapping or authorize a run. Task9 formal runs remain 0.
+
 ## Current — AAD-S0.5-POST-R2-TASK12
 
 Task12 produced a MiTra T1 candidate inventory only. Continuous leader/follower sequences exist, but physical admission is blocked by missing DAll anomaly records, vehicle reference-point semantics, calibrated road coordinate, decoded video binding and unresolved MiTra vehicle-type to B00 tau mapping. Task9 protocol, seeds, arms and formal run count remain unchanged at 0.

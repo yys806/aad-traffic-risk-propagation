@@ -1,3 +1,9 @@
+## Current — AAD-S0.5-POST-R2-TASK13 (2026-10-31)
+
+Task13 found two MiTra T1 segments suitable for researcher review as approximate Task9 inputs, with one conditional backup. This is an input-review recommendation only; video binding, exact reference-point semantics and Vehicle_type-to-tau mapping remain unresolved, and no formal Task9 run is authorized.
+
+Report: docs/STAGE_0_5_POST_R2_TASK13_MITRA_T1_MINIMUM_SUFFICIENT_INPUT_ASSESSMENT_20261031.md; evidence: evidence/results/RES-STAGE-0.5-POST-R2-TASK13-MITRA-T1-MINIMUM-SUFFICIENT-INPUT-ASSESSMENT-20261031/.
+
 ## Current — AAD-S0.5-POST-R2-TASK12 (2026-10-31)
 
 MiTra T1 now has a ranked candidate leader/follower inventory and a heading-relative continuity screen. The DAll tracking log was acquired by bounded Range, but the official DAll teleport audit file and video/ID binding remain unavailable. Candidates are not Task9 inputs; Stage 0.5 remains blocked.

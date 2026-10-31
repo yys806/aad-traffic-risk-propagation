@@ -349,6 +349,8 @@
   "code/scripts/audit_stage_0_5_task11_public_data.py",
   "docs/STAGE_0_5_POST_R2_TASK12_MITRA_T1_CANDIDATE_PHYSICAL_ADMISSION_20261031.md",
   "code/scripts/audit_stage_0_5_task12_mitra_t1.py",
+  "docs/STAGE_0_5_POST_R2_TASK13_MITRA_T1_MINIMUM_SUFFICIENT_INPUT_ASSESSMENT_20261031.md",
+  "code/scripts/audit_stage_0_5_task13_mitra_minimum_sufficient.py",
   "code/tests/test_stage_0_5_fixed_leader_pair.py",
   "docs/ROUND3_CANDIDATE_READINESS_REPORT_20261030.md",
   "docs/AAD_ROUND2_CLOSURE_AND_CONDITIONAL_VALIDATION_REPORT_20261030.md",
@@ -359,8 +361,8 @@
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-S0.5-POST-R2-TASK12: MiTra T1 candidate interaction and physical-admission pre-audit complete; formal Task9 input remains blocked",
-  "why_now": "Validate MiTra T1 DAll anomaly provenance, rank continuous leader/follower candidates and test physical-input readiness without changing Task9 or running simulation.",
+  "active_task": "AAD-S0.5-POST-R2-TASK13: MiTra T1 minimum-sufficient input assessment complete; researcher Task9 input review candidates identified",
+  "why_now": "Assess whether representative MiTra T1 segments are sufficiently realistic for Task9 input review without formal admission, video over-download or simulation.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
    "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/count_reconciliation.json",
@@ -537,6 +539,8 @@
    "task9_result": "RES-STAGE-0.5-POST-R2-TASK9-FIXED-LEADER-PREP-20261031",
    "task11_result": "RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031",
    "task12_result": "RES-STAGE-0.5-POST-R2-TASK12-MITRA-T1-CANDIDATE-PHYSICAL-ADMISSION-20261031",
+   "task13_result": "RES-STAGE-0.5-POST-R2-TASK13-MITRA-T1-MINIMUM-SUFFICIENT-INPUT-ASSESSMENT-20261031",
+   "mitra_t1_minimum_sufficient_status": "962-958-1 and 926-924-1 ready for researcher Task9 input review; formal admission/runs remain 0",
    "public_data_status": "MiTra T1 small files parsed; I24V endpoint not reached; NGSIM video payload and file-specific license/time-space closure remain Unknown",
    "mitra_t1_physical_admission_status": "Conditional candidate inventory; DAll audit file absent, vehicle reference point/video binding Unknown, formal Task9 segments 0",
    "round3_readiness": "NOT_READY"
@@ -1221,7 +1225,8 @@
     "RES-STAGE-0.5-POST-R2-TASK9-FIXED-LEADER-PREP-20261031",
     "RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC",
     "RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031",
-    "RES-STAGE-0.5-POST-R2-TASK12-MITRA-T1-CANDIDATE-PHYSICAL-ADMISSION-20261031"
+    "RES-STAGE-0.5-POST-R2-TASK12-MITRA-T1-CANDIDATE-PHYSICAL-ADMISSION-20261031",
+    "RES-STAGE-0.5-POST-R2-TASK13-MITRA-T1-MINIMUM-SUFFICIENT-INPUT-ASSESSMENT-20261031"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -5571,6 +5576,46 @@
    "gate_status": "blocked",
    "paper_locations": [
     "docs/STAGE_0_5_POST_R2_TASK12_MITRA_T1_CANDIDATE_PHYSICAL_ADMISSION_20261031.md"
+   ],
+   "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-STAGE-0.5-POST-R2-TASK13-MITRA-T1-MINIMUM-SUFFICIENT-INPUT-ASSESSMENT-20261031",
+   "experiment_id": "stage_0_5",
+   "name": "MiTra T1 minimum-sufficient authenticity and Task9 input assessment",
+   "status": "completed_with_input_review_candidates_and_blockers",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK13-MITRA-T1-MINIMUM-SUFFICIENT-INPUT-ASSESSMENT-20261031/candidate_evaluation.csv",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK13-MITRA-T1-MINIMUM-SUFFICIENT-INPUT-ASSESSMENT-20261031/input_coverage.csv",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK13-MITRA-T1-MINIMUM-SUFFICIENT-INPUT-ASSESSMENT-20261031/approximate_gap_sensitivity.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK13-MITRA-T1-MINIMUM-SUFFICIENT-INPUT-ASSESSMENT-20261031/video_review_status.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK13-MITRA-T1-MINIMUM-SUFFICIENT-INPUT-ASSESSMENT-20261031/task9_minimum_sufficient_assessment.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK13-MITRA-T1-MINIMUM-SUFFICIENT-INPUT-ASSESSMENT-20261031/source_bindings.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK13-MITRA-T1-MINIMUM-SUFFICIENT-INPUT-ASSESSMENT-20261031/validation_record.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK13-MITRA-T1-MINIMUM-SUFFICIENT-INPUT-ASSESSMENT-20261031/context_consistency_check.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK13-MITRA-T1-MINIMUM-SUFFICIENT-INPUT-ASSESSMENT-20261031/manifest.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK13-MITRA-T1-MINIMUM-SUFFICIENT-INPUT-ASSESSMENT-20261031/SHA256SUMS"
+   ],
+   "local_artifact_paths": [
+    "local_research/staging/task12_20261031/mitra/T1_DAll.ftlgx"
+   ],
+   "code_version_source": "code/scripts/audit_stage_0_5_task13_mitra_minimum_sufficient.py",
+   "configuration_source": "Unchanged Task9 protocol; minimum-sufficient input-review proposal only; no formal input frozen",
+   "data_version_source": "MiTra T1_DAll archive and Task12 Range-acquired T1_DAll.ftlgx",
+   "core_metrics": {
+    "candidates_evaluated": 3,
+    "ready_for_task9_input_review": 2,
+    "conditional_with_sensitivity": 1,
+    "formal_task9_segments_admitted": 0,
+    "formal_task9_runs": 0,
+    "video_files_downloaded": 0,
+    "new_simulations": 0,
+    "scientific_equivalence_accepted": false
+   },
+   "current_conclusion": "962-958-1 and 926-924-1 meet the proposed minimum-sufficient field, continuity and positive-gap conditions for researcher Task9 input review; 857-851-1 remains conditional. Video/ID binding, exact reference point and Vehicle_type-to-tau mapping remain unresolved. Stage 0.5 remains blocked and no formal Task9 run was started.",
+   "gate_status": "blocked",
+   "paper_locations": [
+    "docs/STAGE_0_5_POST_R2_TASK13_MITRA_T1_MINIMUM_SUFFICIENT_INPUT_ASSESSMENT_20261031.md"
    ],
    "scientific_claim_eligible": false
   }

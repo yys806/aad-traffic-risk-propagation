@@ -1,3 +1,9 @@
+## Current — AAD-S0.5-POST-R2-TASK13 (2026-10-31)
+
+MiTra T1 minimum-sufficient authenticity assessment completed for three representative candidates. `962-958-1` and `926-924-1` satisfy the proposed field-consistency, continuity, positive-gap and duration conditions for researcher Task9 input review; `857-851-1` remains conditional with sensitivity. DataFromSky Viewer was not found locally, no MP4 was downloaded, and DAll ID/video binding remains Unknown. Approximate reference-point intervals do not change positive initial-gap classification for any of the three candidates. Formal Task9 segments/runs remain 0; Stage 0.5 remains blocked, scientific equivalence false, and later gates unchanged.
+
+Report: docs/STAGE_0_5_POST_R2_TASK13_MITRA_T1_MINIMUM_SUFFICIENT_INPUT_ASSESSMENT_20261031.md; evidence: evidence/results/RES-STAGE-0.5-POST-R2-TASK13-MITRA-T1-MINIMUM-SUFFICIENT-INPUT-ASSESSMENT-20261031/.
+
 ## Current — AAD-S0.5-POST-R2-TASK12 (2026-10-31)
 
 MiTra T1 candidate pre-audit completed. The complete T1 tracking/video ZIP central directory contains six MP4s, six single-drone `.tlgx` files and `T1_DAll.ftlgx`, but no `Teleporting_jumps_Dall.csv`. The single-drone `Teleporting_jumps.csv` is therefore not assigned to DAll. A 54,345,650-byte DAll tracking-log member was Range-acquired and hash-bound; no video was downloaded or decoded. T1_DAll field checks found 1,308,347 reciprocal leader/follower rows, 3,791 vehicle pairs, 4,335 continuous same-lane segments, 2,414 segments at least 5 s and 760 at least 20 s. A heading-relative continuity screen found zero local steps above the README's 2 m/0.5 m thresholds, but the road coordinate, vehicle reference point, video binding and physical net gap remain Unknown. All candidates are pre-screen only; Task9 formal segments/runs remain 0. Stage 0.5 remains blocked, scientific equivalence false, Round3/Stage 0.6/Protocol Lock/Stage I unchanged.

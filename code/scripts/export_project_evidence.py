@@ -240,6 +240,19 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         )
     ]
 
+    # Task13: candidate-level minimum-sufficient input assessment; no raw
+    # trajectory, video or decoded tracking-log payload is portable.
+    task13_root = "evidence/results/RES-STAGE-0.5-POST-R2-TASK13-MITRA-T1-MINIMUM-SUFFICIENT-INPUT-ASSESSMENT-20261031"
+    pairs["RES-STAGE-0.5-POST-R2-TASK13-MITRA-T1-MINIMUM-SUFFICIENT-INPUT-ASSESSMENT-20261031"] = [
+        (f"{task13_root}/{name}", name)
+        for name in (
+            "candidate_evaluation.csv", "input_coverage.csv", "approximate_gap_sensitivity.json",
+            "video_review_status.json", "task9_minimum_sufficient_assessment.json",
+            "source_bindings.json", "validation_record.json", "context_consistency_check.json",
+            "manifest.json", "SHA256SUMS",
+        )
+    ]
+
     # Policy A preflight proposals, not a frozen execution protocol.
     pairs['RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1'] = [
         ('code/outputs/formal/calibration/stage_0_5_interaction_diagnostics_v1/portable/' + name, name)
@@ -999,6 +1012,7 @@ def _validate_source(source: Path) -> None:
         "resource_inventory.csv", "license_scope_matrix.csv", "time_metadata_matrix.csv",
         "event_control_quality_comparison.csv", "physical_path_candidates.csv",
         "candidate_pair_inventory.csv", "candidate_segment_summary.csv",
+        "candidate_evaluation.csv", "input_coverage.csv",
         }
     if source.suffix.lower() not in {".json", ".md", ".txt", ".sha256"} and source.name not in aggregate_names:
         raise ValueError(f"unsupported evidence file type: {source}")

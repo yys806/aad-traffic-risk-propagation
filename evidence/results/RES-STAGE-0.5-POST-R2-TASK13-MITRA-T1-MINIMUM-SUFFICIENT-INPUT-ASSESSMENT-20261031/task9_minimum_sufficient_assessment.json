@@ -1,0 +1,34 @@
+{
+  "status": "INPUT_REVIEW_CANDIDATES_AVAILABLE_FORMAL_ADMISSION_BLOCKED",
+  "minimum_sufficient_input_proposal": [
+    "reciprocal leader/follower fields",
+    "continuous >=20 s same-lane segment",
+    "positive lower-bound gap under common-reference sensitivity interval",
+    "no order reversal or long observation gap",
+    "finite speed/acceleration and reproducible 30 Hz to 0.05 s diagnostic"
+  ],
+  "candidate_levels": [
+    {
+      "segment_id": "857-851-1",
+      "task9_input_level": "CONDITIONAL_WITH_SENSITIVITY",
+      "formal_task9_admitted": false
+    },
+    {
+      "segment_id": "926-924-1",
+      "task9_input_level": "READY_FOR_TASK9_INPUT_REVIEW",
+      "formal_task9_admitted": false
+    },
+    {
+      "segment_id": "962-958-1",
+      "task9_input_level": "READY_FOR_TASK9_INPUT_REVIEW",
+      "formal_task9_admitted": false
+    }
+  ],
+  "recommended_order": [
+    "962-958-1",
+    "926-924-1",
+    "857-851-1"
+  ],
+  "recommendation": "Submit 962-958-1 and 926-924-1 to researcher Task9 input review; retain 857-851-1 as a conditional backup. Do not generate formal Task9 input or run the experiment until researcher review resolves the remaining reference-point, video-binding and vehicle-type/tau questions.",
+  "global_gate": "Stage 0.5 remains blocked; scientific equivalence remains false."
+}

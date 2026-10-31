@@ -1,3 +1,7 @@
+## Current — AAD-S0.5-POST-R2-TASK13 (2026-10-31)
+
+Added candidate-level minimum-sufficient authenticity assessment for three MiTra T1 segments, common-reference gap sensitivity, speed/acceleration and 30 Hz-to-0.05 s diagnostics, Viewer/video bounded status and Task9 input-review recommendations. No formal input, tau mapping, simulation or Gate state changed.
+
 ## Current — AAD-S0.5-POST-R2-TASK12 (2026-10-31)
 
 Added MiTra T1 candidate leader/follower screening, complete T1 archive central-directory reconciliation, a Range-acquired and hash-bound `T1_DAll.ftlgx`, heading-relative continuity diagnostics, provisional gap summaries, video-binding status and Task9 compatibility evidence. No formal input, interpolation rule, tau mapping, simulation or Gate state changed.

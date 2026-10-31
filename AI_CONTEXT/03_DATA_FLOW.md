@@ -1,3 +1,7 @@
+## Current — AAD-S0.5-POST-R2-TASK13 input-review boundary
+
+Task13 reads only the three Task12-ranked candidate segments from the staged T1_DAll archive and the hash-bound DAll log. It writes candidate evaluation, time coverage, reference-point sensitivity and input-review decisions. No formal Task9 input file is created and no MiTra data enters the NGSIM formal flow.
+
 ## Current — AAD-S0.5-POST-R2-TASK12 MiTra pre-audit boundary
 
 The Task12 script reads the ignored Task11 T1 trajectory archive and the ignored Range-acquired `T1_DAll.ftlgx`. It writes only aggregate candidate inventories, provisional coordinate/gap summaries, archive-member metadata, source hashes and compatibility decisions to portable evidence. No raw video, tracking-log payload or MiTra trajectory table is copied into evidence, and no MiTra candidate is merged into the NGSIM or Task9 formal data flow.
