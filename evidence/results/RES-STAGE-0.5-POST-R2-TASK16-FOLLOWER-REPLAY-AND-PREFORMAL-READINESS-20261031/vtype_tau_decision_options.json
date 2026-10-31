@@ -1,0 +1,28 @@
+{
+  "tau_values": [
+    0.7389146576529666,
+    1.093342856277335,
+    1.3877275660721775,
+    1.8288599276236361,
+    2.5614676647488244
+  ],
+  "observed_policy": "retain B00 heterogeneous tau values; do not infer from MiTra Vehicle_type",
+  "options": [
+    {
+      "id": "A",
+      "description": "retain existing B00 heterogeneous assignment",
+      "effect": "best protocol continuity; target vType still requires researcher selection"
+    },
+    {
+      "id": "B",
+      "description": "map MiTra Vehicle_type to B00 vType",
+      "effect": "adds unvalidated category-to-behavior assumption"
+    },
+    {
+      "id": "C",
+      "description": "treat target tau as an independent factor",
+      "effect": "changes formal matrix and is outside current authorization"
+    }
+  ],
+  "decision_status": "Awaiting Researcher Decision"
+}

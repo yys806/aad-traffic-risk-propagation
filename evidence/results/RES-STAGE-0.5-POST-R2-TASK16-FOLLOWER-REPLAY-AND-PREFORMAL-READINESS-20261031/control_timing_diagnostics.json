@@ -1,0 +1,297 @@
+{
+  "status": "COMPLETED_CONTROL_PHASE_DIAGNOSTIC",
+  "control_method_A": "Task15 adapter retained for engineering; previous-sample setSpeed, post-step moveTo",
+  "alternative_B": "offline position-difference speed comparator",
+  "alternative_C": "offline current-sample speed phase comparator",
+  "interpretation_boundary": "exact position/speed readback is conditional on external moveTo/setSpeed commands and is not natural SUMO integration truth",
+  "candidates": [
+    {
+      "candidate": "962-958-1",
+      "status": "PASS_READBACK",
+      "control_steps": 918,
+      "position_correction_m": {
+        "count": 918,
+        "mae": 0.0041086330182720674,
+        "p50_abs": 0.0026470259340953817,
+        "p95_abs": 0.00805926265622645,
+        "max_abs": 0.7699396691117215,
+        "signed_mean": 0.0009194831547260256,
+        "signed_sum": 0.8440855360384916
+      },
+      "pre_move_position_error_m": {
+        "count": 918,
+        "mae": 0.0041086330182720674,
+        "p50_abs": 0.0026470259340953817,
+        "p95_abs": 0.00805926265622645,
+        "max_abs": 0.7699396691117215,
+        "signed_mean": 0.0009194831547260256,
+        "signed_sum": 0.8440855360384916
+      },
+      "cumulative_absolute_position_correction_m": 3.771725110773758,
+      "cumulative_signed_position_correction_m": 0.8440855360384916,
+      "readback_position_error_m": 0.0,
+      "readback_speed_error_mps": 0.0,
+      "native_or_external_control": {
+        "position": "external moveTo after simulationStep",
+        "speed": "setSpeed command for preceding integration interval",
+        "speed_phase_lag_s": 0.05
+      },
+      "method_comparison": {
+        "A_previous_sample_speed_command": {
+          "command_minus_current_observed_speed_mps": {
+            "count": 918,
+            "mae": 0.015223692290334191,
+            "p50_abs": 0.012918142159573875,
+            "p95_abs": 0.03613945044671442,
+            "max_abs": 0.052298998787911444,
+            "signed_mean": -0.002473705676729104,
+            "signed_sum": -2.2708618112373173
+          },
+          "command_minus_previous_observed_speed_mps": {
+            "count": 918,
+            "mae": 0.0,
+            "p50_abs": 0.0,
+            "p95_abs": 0.0,
+            "max_abs": 0.0,
+            "signed_mean": 0.0,
+            "signed_sum": 0.0
+          },
+          "observed_readback_minus_command_mps": 0.0
+        },
+        "B_position_difference_speed": {
+          "position_difference_minus_current_speed_mps": {
+            "count": 918,
+            "mae": 0.06601546900121545,
+            "p50_abs": 0.053234500851394806,
+            "p95_abs": 0.16842478683415502,
+            "max_abs": 0.35080290445007023,
+            "signed_mean": -0.0008163107981267423,
+            "signed_sum": -0.7493733126803495
+          },
+          "position_difference_minus_previous_speed_mps": {
+            "count": 918,
+            "mae": 0.06544039214951702,
+            "p50_abs": 0.05289039475924362,
+            "p95_abs": 0.15937876857927866,
+            "max_abs": 0.34339313831386775,
+            "signed_mean": 0.0016573948786023616,
+            "signed_sum": 1.5214884985569679
+          }
+        },
+        "C_current_sample_speed_command": {
+          "command_minus_current_observed_speed_mps": {
+            "count": 918,
+            "mae": 0.0,
+            "p50_abs": 0.0,
+            "p95_abs": 0.0,
+            "max_abs": 0.0,
+            "signed_mean": 0.0,
+            "signed_sum": 0.0
+          },
+          "current_minus_previous_speed_phase_difference_mps": {
+            "count": 918,
+            "mae": 0.015223692290334191,
+            "p50_abs": 0.012918142159573875,
+            "p95_abs": 0.03613945044671442,
+            "max_abs": 0.052298998787911444,
+            "signed_mean": 0.002473705676729104,
+            "signed_sum": 2.2708618112373173
+          },
+          "status": "offline timing comparator; not inserted into formal replay"
+        }
+      }
+    },
+    {
+      "candidate": "926-924-1",
+      "status": "PASS_READBACK",
+      "control_steps": 931,
+      "position_correction_m": {
+        "count": 931,
+        "mae": 0.004536165813124443,
+        "p50_abs": 0.002448992969277697,
+        "p95_abs": 0.009388515076750537,
+        "max_abs": 0.8846325574633838,
+        "signed_mean": 0.0008930855290428697,
+        "signed_sum": 0.8314626275389116
+      },
+      "pre_move_position_error_m": {
+        "count": 931,
+        "mae": 0.004536165813124443,
+        "p50_abs": 0.002448992969277697,
+        "p95_abs": 0.009388515076750537,
+        "max_abs": 0.8846325574633838,
+        "signed_mean": 0.0008930855290428697,
+        "signed_sum": 0.8314626275389116
+      },
+      "cumulative_absolute_position_correction_m": 4.223170372018856,
+      "cumulative_signed_position_correction_m": 0.8314626275389116,
+      "readback_position_error_m": 0.0,
+      "readback_speed_error_mps": 0.0,
+      "native_or_external_control": {
+        "position": "external moveTo after simulationStep",
+        "speed": "setSpeed command for preceding integration interval",
+        "speed_phase_lag_s": 0.05
+      },
+      "method_comparison": {
+        "A_previous_sample_speed_command": {
+          "command_minus_current_observed_speed_mps": {
+            "count": 931,
+            "mae": 0.016823227386489458,
+            "p50_abs": 0.012387338936132863,
+            "p95_abs": 0.040530897056235915,
+            "max_abs": 0.22073562407141623,
+            "signed_mean": 0.0005274357074077911,
+            "signed_sum": 0.4910426435966535
+          },
+          "command_minus_previous_observed_speed_mps": {
+            "count": 931,
+            "mae": 0.0,
+            "p50_abs": 0.0,
+            "p95_abs": 0.0,
+            "max_abs": 0.0,
+            "signed_mean": 0.0,
+            "signed_sum": 0.0
+          },
+          "observed_readback_minus_command_mps": 0.0
+        },
+        "B_position_difference_speed": {
+          "position_difference_minus_current_speed_mps": {
+            "count": 931,
+            "mae": 0.07276335476364139,
+            "p50_abs": 0.050673796583684094,
+            "p95_abs": 0.1836953762369653,
+            "max_abs": 0.7268825611683098,
+            "signed_mean": -0.0005391864483267286,
+            "signed_sum": -0.5019825833921843
+          },
+          "position_difference_minus_previous_speed_mps": {
+            "count": 931,
+            "mae": 0.07179498352586987,
+            "p50_abs": 0.048979859385173796,
+            "p95_abs": 0.1870697869319784,
+            "max_abs": 0.8295613024974706,
+            "signed_mean": -0.0010666221557345196,
+            "signed_sum": -0.9930252269888378
+          }
+        },
+        "C_current_sample_speed_command": {
+          "command_minus_current_observed_speed_mps": {
+            "count": 931,
+            "mae": 0.0,
+            "p50_abs": 0.0,
+            "p95_abs": 0.0,
+            "max_abs": 0.0,
+            "signed_mean": 0.0,
+            "signed_sum": 0.0
+          },
+          "current_minus_previous_speed_phase_difference_mps": {
+            "count": 931,
+            "mae": 0.016823227386489458,
+            "p50_abs": 0.012387338936132863,
+            "p95_abs": 0.040530897056235915,
+            "max_abs": 0.22073562407141623,
+            "signed_mean": -0.0005274357074077911,
+            "signed_sum": -0.4910426435966535
+          },
+          "status": "offline timing comparator; not inserted into formal replay"
+        }
+      }
+    },
+    {
+      "candidate": "857-851-1",
+      "status": "PASS_READBACK",
+      "control_steps": 970,
+      "position_correction_m": {
+        "count": 970,
+        "mae": 0.0037723224098812273,
+        "p50_abs": 0.002637634920347409,
+        "p95_abs": 0.008627565287295623,
+        "max_abs": 0.3753977971481106,
+        "signed_mean": 0.0006902605679740921,
+        "signed_sum": 0.6695527509348693
+      },
+      "pre_move_position_error_m": {
+        "count": 970,
+        "mae": 0.0037723224098812273,
+        "p50_abs": 0.002637634920347409,
+        "p95_abs": 0.008627565287295623,
+        "max_abs": 0.3753977971481106,
+        "signed_mean": 0.0006902605679740921,
+        "signed_sum": 0.6695527509348693
+      },
+      "cumulative_absolute_position_correction_m": 3.6591527375847903,
+      "cumulative_signed_position_correction_m": 0.6695527509348693,
+      "readback_position_error_m": 0.0,
+      "readback_speed_error_mps": 0.0,
+      "native_or_external_control": {
+        "position": "external moveTo after simulationStep",
+        "speed": "setSpeed command for preceding integration interval",
+        "speed_phase_lag_s": 0.05
+      },
+      "method_comparison": {
+        "A_previous_sample_speed_command": {
+          "command_minus_current_observed_speed_mps": {
+            "count": 970,
+            "mae": 0.025848858092474492,
+            "p50_abs": 0.021535337492674778,
+            "p95_abs": 0.0564577010177444,
+            "max_abs": 0.09412335532825367,
+            "signed_mean": -0.016224310366562404,
+            "signed_sum": -15.737581055565531
+          },
+          "command_minus_previous_observed_speed_mps": {
+            "count": 970,
+            "mae": 0.0,
+            "p50_abs": 0.0,
+            "p95_abs": 0.0,
+            "max_abs": 0.0,
+            "signed_mean": 0.0,
+            "signed_sum": 0.0
+          },
+          "observed_readback_minus_command_mps": 0.0
+        },
+        "B_position_difference_speed": {
+          "position_difference_minus_current_speed_mps": {
+            "count": 970,
+            "mae": 0.06830375266388876,
+            "p50_abs": 0.05468582015623191,
+            "p95_abs": 0.18025006650742675,
+            "max_abs": 0.6039738537018735,
+            "signed_mean": -0.010292380794008986,
+            "signed_sum": -9.983609370188717
+          },
+          "position_difference_minus_previous_speed_mps": {
+            "count": 970,
+            "mae": 0.06783940845267963,
+            "p50_abs": 0.052752698407459775,
+            "p95_abs": 0.17164290752433434,
+            "max_abs": 0.5481470787445772,
+            "signed_mean": 0.005931929572553418,
+            "signed_sum": 5.753971685376815
+          }
+        },
+        "C_current_sample_speed_command": {
+          "command_minus_current_observed_speed_mps": {
+            "count": 970,
+            "mae": 0.0,
+            "p50_abs": 0.0,
+            "p95_abs": 0.0,
+            "max_abs": 0.0,
+            "signed_mean": 0.0,
+            "signed_sum": 0.0
+          },
+          "current_minus_previous_speed_phase_difference_mps": {
+            "count": 970,
+            "mae": 0.025848858092474492,
+            "p50_abs": 0.021535337492674778,
+            "p95_abs": 0.0564577010177444,
+            "max_abs": 0.09412335532825367,
+            "signed_mean": 0.016224310366562404,
+            "signed_sum": 15.737581055565531
+          },
+          "status": "offline timing comparator; not inserted into formal replay"
+        }
+      }
+    }
+  ]
+}

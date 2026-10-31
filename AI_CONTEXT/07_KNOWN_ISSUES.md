@@ -1,3 +1,7 @@
+## Current — AAD-S0.5-POST-R2-TASK16
+
+The isolated network passes all joint engineering replays but is not proven equivalent to the sealed B00 background. SUMO direct insertion obeys an insertion safety constraint and fails closed for candidates 926/857 at the observed initial gaps; `safe_then_move` is a one-time position relocation that must be reviewed before formal execution. Leader readback is exact only after external `moveTo`; `setSpeed` carries a documented 0.05 s phase. MiTra/B00 lengths change initial approximate gaps, MiTra Vehicle_type is not mapped to tau, and resampling tail policy remains unresolved. Formal Task9 runs remain 0.
+
 ## Current — AAD-S0.5-POST-R2-TASK15
 
 - Sealed B00 network cannot contain the complete MiTra leader traces; the isolated prototype passes geometry but is not background-equivalent by default.

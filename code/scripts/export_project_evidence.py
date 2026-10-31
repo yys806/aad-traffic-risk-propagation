@@ -284,6 +284,22 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         )
     ]
 
+    # Task16: bounded Leader/Follower joint replay and preformal readiness.
+    # Full replay traces remain in ignored staging; only aggregate summaries
+    # and diagnostics are exported.
+    task16_root = "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031"
+    pairs["RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031"] = [
+        (f"{task16_root}/{name}", name)
+        for name in (
+            "control_timing_diagnostics.json", "formal_execution_chain_preflight.json",
+            "initialization_probe.json", "joint_replay_summary.csv", "joint_replay_validation.json",
+            "manifest.json", "network_background_assessment.json", "paired_input_validation.json",
+            "resampling_tail_diagnostics.json", "source_bindings.json", "task16_execution_readiness.json",
+            "traci_environment.json", "validation_record.json", "vehicle_geometry_comparison.json",
+            "vtype_tau_decision_options.json", "SHA256SUMS",
+        )
+    ]
+
     # Policy A preflight proposals, not a frozen execution protocol.
     pairs['RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1'] = [
         ('code/outputs/formal/calibration/stage_0_5_interaction_diagnostics_v1/portable/' + name, name)
@@ -1044,6 +1060,7 @@ def _validate_source(source: Path) -> None:
         "event_control_quality_comparison.csv", "physical_path_candidates.csv",
         "candidate_pair_inventory.csv", "candidate_segment_summary.csv",
         "candidate_evaluation.csv", "input_coverage.csv",
+        "joint_replay_summary.csv",
         }
     if source.suffix.lower() not in {".json", ".md", ".txt", ".sha256"} and source.name not in aggregate_names:
         raise ValueError(f"unsupported evidence file type: {source}")

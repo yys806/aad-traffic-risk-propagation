@@ -1,3 +1,9 @@
+## Current — AAD-S0.5-POST-R2-TASK16 (2026-10-31)
+
+Task16 completed real SUMO/TraCI Leader–Follower engineering replay for all three MiTra candidates across 60 geometry/tau/minGap combinations on the isolated prototype. Follower remained native SUMO-controlled; zero teleport/collision rows were observed. Direct insertion failed closed for two candidates and safe initialization is disclosed. No formal Task9 run occurred; researcher decisions remain pending.
+
+Report: docs/STAGE_0_5_POST_R2_TASK16_FOLLOWER_REPLAY_AND_TASK9_PREFORMAL_READINESS_20261031.md; evidence: evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/.
+
 ## Current — AAD-S0.5-POST-R2-TASK15 (2026-10-31)
 
 Task15 completed real SUMO/TraCI Leader replay in an isolated engineering prototype. All three candidates replayed with exact position/speed readback and no safety events; sealed B00 network horizon and researcher choices on geometry/tau/tail remain blockers. No formal Task9 run occurred.

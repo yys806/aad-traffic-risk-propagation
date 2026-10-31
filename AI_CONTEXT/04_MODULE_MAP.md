@@ -1,3 +1,7 @@
+## Current — AAD-S0.5-POST-R2-TASK16
+
+Task16 adds `code/src/riskprop/stage_0_5_fixed_leader_follower_traci.py` for joint replay and `code/scripts/run_stage_0_5_task16_joint_replay.py` for the 60-combination engineering matrix. `code/scripts/prepare_stage_0_5_task16_evidence.py` packages bounded diagnostics. The existing Leader adapter remains in `stage_0_5_fixed_leader_traci.py`; `stage_0_5_fixed_leader_pair.py` remains the fail-closed static A/B contract. No formal measurement or Gate module changed.
+
 ## Current — AAD-S0.5-POST-R2-TASK15
 
 Task15 additions: `code/scripts/prepare_stage_0_5_task15_network.py` builds an isolated replay prototype; `code/scripts/audit_stage_0_5_task15_network_traci_validation.py` assembles geometry/replay evidence; `code/src/riskprop/stage_0_5_fixed_leader_traci.py` implements the engineering-only SUMO adapter. The sealed fixed-leader contract remains in `stage_0_5_fixed_leader_pair.py`; no formal measurement module changed.

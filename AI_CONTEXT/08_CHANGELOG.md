@@ -1,3 +1,7 @@
+## Current — AAD-S0.5-POST-R2-TASK16 (2026-10-31)
+
+Added SUMO-native Leader–Follower joint replay, explicit initialization-mode diagnostics, 60 engineering-only geometry/tau/minGap combinations, Leader control correction statistics and a Task9 preformal evidence package. Fixed a timing bug that skipped the first post-initialization interval and added fail-closed direct-insertion detection. Formal Task9, scientific metrics, Gate states and sealed B00 inputs were unchanged. Evidence: `evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/`.
+
 ## Current — AAD-S0.5-POST-R2-TASK15 (2026-10-31)
 
 Completed sealed/prototype network geometry audit, isolated 1,000 m replay network, real SUMO 1.26.0 TraCI leader adapter, synthetic and three actual Leader replays, vehicle-geometry comparison, tail/position-speed diagnostics and independent A/B input hash checks. Formal Task9 remains unrun; network/background-equivalence, geometry, tau and tail decisions remain pending.

@@ -1,3 +1,7 @@
+## Pending — AAD-S0.5-POST-R2-TASK16 researcher decisions (2026-10-31)
+
+Task16 engineering evidence is complete but does not freeze: (1) acceptance of the isolated prototype for a controlled local experiment, (2) MiTra versus B00 vehicle geometry, (3) target Follower B00 vType/tau while retaining the five values, (4) one-time `safe_then_move` and current Leader `setSpeed`/`moveTo` policy, (5) fixed-grid tail handling, (6) formal candidate admission and (7) formal Task9 launch. The 60 joint replays are engineering-only; no decision is Agreed by Codex.
+
 ## Pending — AAD-S0.5-POST-R2-TASK15 researcher decisions
 
 Task15 does not create a new Agreed scientific decision. Researcher review is needed for: (1) whether the isolated straight-line prototype is acceptable for controlled Task9 replay despite changed background geometry, (2) B00 versus MiTra vehicle lengths, (3) target B00 vType/tau assignment while retaining five tau values, and (4) handling the sub-step resampling tail. Formal Task9 execution remains unauthorized.

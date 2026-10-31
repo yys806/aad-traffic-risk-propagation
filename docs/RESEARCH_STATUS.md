@@ -1,3 +1,9 @@
+## Current — AAD-S0.5-POST-R2-TASK16 (2026-10-31)
+
+Task16 completed bounded Leader–Follower engineering validation on the isolated Task15 prototype. All 60 combinations (three candidates, two geometries, five retained tau values and two minGap arms) passed joint replay with zero teleport/collision rows and positive evaluated gaps. Direct insertion failed closed for 926/857; the matrix used a disclosed one-time `safe_then_move` initialization. Leader control correction and 0.05 s phase diagnostics are recorded. This remains engineering-only: Task9 formal runs 0, Stage 0.5 blocked, scientific equivalence false, and network/geometry/vType/tau/control/tail/formal-launch decisions remain with the researcher.
+
+Report: docs/STAGE_0_5_POST_R2_TASK16_FOLLOWER_REPLAY_AND_TASK9_PREFORMAL_READINESS_20261031.md; evidence: evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/.
+
 ## Current — AAD-S0.5-POST-R2-TASK15 (2026-10-31)
 
 Task15 engineering validation completed with blockers. SUMO 1.26.0 and matching official TraCI tools were used through the installed tools path. An isolated 1,000 m/3-lane prototype passed synthetic and three actual MiTra Leader replays with exact position/speed readback, zero teleport and zero collision. The sealed B00 network remains 103–225 m too short for complete traces; the prototype is not background-equivalent by default. Vehicle geometry, tau/vType assignment and resampling-tail policy remain researcher decisions. Task9 formal runs remain 0; Stage 0.5 blocked, scientific equivalence false, later gates unchanged.

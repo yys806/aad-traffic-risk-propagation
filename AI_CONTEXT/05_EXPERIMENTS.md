@@ -1,3 +1,7 @@
+## Current — AAD-S0.5-POST-R2-TASK16 (2026-10-31)
+
+Task16 engineering-only joint replay completed 60/60 combinations (962, 926, 857 × MiTra/B00 geometry × five retained tau values × minGap arms A/B) on the isolated prototype. All returned `PASS_JOINT_ENGINEERING`; teleport and collision rows were zero and formal Task9 runs stayed 0. Direct insertion failed closed for 926/857, so the matrix used the explicitly recorded one-time `safe_then_move` initialization. This is an engineering validation result, not a formal A/B experiment or scientific effect estimate.
+
 ## Current — AAD-S0.5-POST-R2-TASK15
 
 Task15 engineering replay is complete. The isolated prototype and real SUMO/TraCI leader readback pass for all three candidates. This is not a Task9 paired run: no follower response, Formal P2, D1 or scientific metric was evaluated. Sealed B00 network horizon, geometry choice, tau/vType assignment and tail policy remain blockers; formal runs remain 0.

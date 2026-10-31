@@ -1,3 +1,9 @@
+## Current — AAD-S0.5-POST-R2-TASK16 (completed preformal engineering with researcher-decision blockers, 2026-10-31)
+
+Task16 added SUMO-native Follower joint replay to the Task15 isolated 1,000 m/3-lane prototype. The 3-candidate × 2-geometry × 5-tau × 2-arm engineering matrix completed 60/60 with zero teleport/collision rows and positive evaluated gaps. Direct insertion passes for 962 but fails closed for 926/857; the matrix therefore uses a disclosed one-time `safe_then_move` initialization before native Follower evolution. Leader `setSpeed`/post-step `moveTo` phase and correction quantities are quantified; exact readback remains conditional on external control. Formal Task9 runs remain 0. Network/background equivalence, vehicle geometry, target vType/tau, control/initialization policy, tail policy and formal launch remain researcher decisions. Stage 0.5 remains blocked; scientific equivalence false; later gates unchanged.
+
+Report: `docs/STAGE_0_5_POST_R2_TASK16_FOLLOWER_REPLAY_AND_TASK9_PREFORMAL_READINESS_20261031.md`; evidence: `evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/`.
+
 ## Current — AAD-S0.5-POST-R2-TASK15 (completed with blockers, 2026-10-31)
 
 Task15 completed network/TraCI engineering validation. SUMO 1.26.0 and matching official tools were found; a real TraCI adapter was tested on an isolated 1,000 m/3-lane prototype. Synthetic replay and all three actual MiTra Leader traces passed stepwise readback with zero position/speed error under the recorded one-step speed-command phase, zero teleport and zero collision. The sealed B00 network remains too short for complete candidates by 103–225 m; the prototype does not claim background-traffic equivalence. Vehicle-length alternatives, tau/vType assignment and tail policy remain researcher decisions. Task9 formal runs remain 0; Stage 0.5 blocked; scientific equivalence false; later gates unchanged.

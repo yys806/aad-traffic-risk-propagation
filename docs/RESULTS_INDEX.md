@@ -1,3 +1,7 @@
+## RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031
+
+Task16 engineering-only joint replay completed 60/60 combinations on the isolated prototype. The native Follower was not externally position-controlled; zero teleport/collision rows and positive evaluated gaps were recorded. Direct insertion failed closed for 926/857, so `safe_then_move` was used and disclosed. Leader control timing/correction diagnostics and formal execution-chain checks are included. Formal Task9 runs remain 0; network/background, geometry, vType/tau, control, tail and launch decisions remain pending. Report: docs/STAGE_0_5_POST_R2_TASK16_FOLLOWER_REPLAY_AND_TASK9_PREFORMAL_READINESS_20261031.md; evidence: evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/.
+
 ## RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031
 
 Engineering-only Task15 validation: isolated network prototype, SUMO 1.26.0 TraCI adapter, synthetic replay and three actual Leader replays passed readback and safety checks. Sealed B00 horizon, vehicle geometry, tau/vType and tail policy remain unresolved; formal Task9 runs remain 0. Report: docs/STAGE_0_5_POST_R2_TASK15_TASK9_NETWORK_AND_TRACI_ENGINEERING_VALIDATION_20261031.md. Evidence: evidence/results/RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031/.

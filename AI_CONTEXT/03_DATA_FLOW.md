@@ -1,3 +1,7 @@
+## Current — AAD-S0.5-POST-R2-TASK16
+
+Task16 flow: Task14 resampled candidate CSV → isolated Task15 prototype → TraCI Leader external control + native Follower → per-step joint state readback → ignored engineering summary → portable aggregate evidence. The one-time `safe_then_move` initialization and 0.05 s simulation-time anchor are recorded. No MiTra raw table, full replay trace, formal risk metric or formal Task9 output enters the portable package.
+
 ## Current — AAD-S0.5-POST-R2-TASK15
 
 Task15 flow: Task14 staged candidate resampled CSV → isolated 1,000 m prototype network → real SUMO 1.26.0/TraCI leader-only engineering replay → readback JSON in ignored staging → aggregate evidence. No raw MiTra data, candidate replay logs or prototype network payloads enter portable evidence; hashes and summaries do. Formal Task9 data flow remains unchanged.

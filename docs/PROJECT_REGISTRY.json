@@ -366,12 +366,33 @@
   "code/scripts/prepare_stage_0_5_round2_closure.py",
   "code/scripts/audit_stage_0_5_round2_closure_comparability.py",
   "code/tests/test_stage_0_5_round2_closure.py",
-  "code/tests/test_stage_0_5_round2_closure_comparability.py"
+  "code/tests/test_stage_0_5_round2_closure_comparability.py",
+  "docs/STAGE_0_5_POST_R2_TASK16_FOLLOWER_REPLAY_AND_TASK9_PREFORMAL_READINESS_20261031.md",
+  "code/src/riskprop/stage_0_5_fixed_leader_follower_traci.py",
+  "code/scripts/run_stage_0_5_task16_joint_replay.py",
+  "code/scripts/prepare_stage_0_5_task16_evidence.py",
+  "code/tests/test_stage_0_5_fixed_leader_follower_traci.py",
+  "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/control_timing_diagnostics.json",
+  "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/formal_execution_chain_preflight.json",
+  "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/initialization_probe.json",
+  "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/joint_replay_summary.csv",
+  "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/joint_replay_validation.json",
+  "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/manifest.json",
+  "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/network_background_assessment.json",
+  "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/paired_input_validation.json",
+  "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/resampling_tail_diagnostics.json",
+  "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/source_bindings.json",
+  "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/task16_execution_readiness.json",
+  "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/traci_environment.json",
+  "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/validation_record.json",
+  "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/vehicle_geometry_comparison.json",
+  "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/vtype_tau_decision_options.json",
+  "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/SHA256SUMS"
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-S0.5-POST-R2-TASK15: network and real TraCI engineering validation complete with researcher-decision blockers",
-  "why_now": "Record isolated network compatibility and real SUMO/TraCI Leader replay evidence before any formal Task9 authorization.",
+  "active_task": "AAD-S0.5-POST-R2-TASK16: Leader–Follower joint replay and preformal Task9 readiness complete with researcher-decision blockers",
+  "why_now": "Record native Follower response, control timing and engineering execution-chain evidence before any formal Task9 authorization.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
    "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/count_reconciliation.json",
@@ -1241,7 +1262,8 @@
     "RES-STAGE-0.5-POST-R2-TASK12-MITRA-T1-CANDIDATE-PHYSICAL-ADMISSION-20261031",
     "RES-STAGE-0.5-POST-R2-TASK13-MITRA-T1-MINIMUM-SUFFICIENT-INPUT-ASSESSMENT-20261031",
     "RES-STAGE-0.5-POST-R2-TASK14-MITRA-TASK9-INPUT-PREFLIGHT-20261031",
-    "RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031"
+    "RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031",
+    "RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -1356,7 +1378,7 @@
     "third_window_rows_materialised",
     "zotero_items_added"
    ],
-   "current_conclusion": "Original Round2 minGap1.0 source branch closed by researcher decision; C general P2 and independent D1/B standards recorded. Bounded comparison verifies C without production changes and retains three C-external conflicts. Scientific equivalence remains false. Official inquiry dispatch is independently recorded; video/physical review/fixed-leader remain Blocked and Round3NOT_READY. Task8 adds five-second kinematic mechanism diagnosis and direct official Krauss source analysis; causal attribution and physical truth remain Unknown; no Gate acceptance.",
+   "current_conclusion": "Task16 joint engineering replay completed 60/60 on the isolated prototype; formal Task9 remains pending researcher decisions and authorization.",
    "gate": {
     "status": "blocked",
     "portable_path": "evidence/results/RES-STAGE-0.5-R1-DIAGNOSTICS-20261028/r2_gate_review.json"
@@ -5442,7 +5464,11 @@
     "physical_review_cases": 0,
     "fixed_leader_runs": 0,
     "historical_response_rows_reused": 324,
-    "historical_seeds": [20261101, 20261102, 20261103],
+    "historical_seeds": [
+     20261101,
+     20261102,
+     20261103
+    ],
     "new_simulations": 0,
     "holdout_reads": 0,
     "formal_equivalence_accepted": false
@@ -5482,8 +5508,14 @@
    "configuration_source": "Unchanged Formal P2/D1/B definitions; Task9 two-arm readiness contract",
    "data_version_source": "Two authorized canonical NGSIM windows, existing Task6 contexts, Task7.1 PreciseNGSIM metadata and Task9 evidence",
    "core_metrics": {
-    "formal_source_events_reused": [167, 159],
-    "formal_target_events_reused": [174, 252],
+    "formal_source_events_reused": [
+     167,
+     159
+    ],
+    "formal_target_events_reused": [
+     174,
+     252
+    ],
     "event_control_quality_windows": 2,
     "precise_event_crosswalk_rows": 0,
     "physical_path_candidates": 40,
@@ -5726,6 +5758,53 @@
    "gate_status": "blocked",
    "paper_locations": [
     "docs/STAGE_0_5_POST_R2_TASK15_TASK9_NETWORK_AND_TRACI_ENGINEERING_VALIDATION_20261031.md"
+   ],
+   "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031",
+   "experiment_id": "stage_0_5",
+   "name": "Task9 Leader–Follower joint replay and preformal readiness validation",
+   "status": "completed_preformal_engineering_ready_pending_researcher_decisions",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/control_timing_diagnostics.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/formal_execution_chain_preflight.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/initialization_probe.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/joint_replay_summary.csv",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/joint_replay_validation.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/manifest.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/network_background_assessment.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/paired_input_validation.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/resampling_tail_diagnostics.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/source_bindings.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/task16_execution_readiness.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/traci_environment.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/validation_record.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/vehicle_geometry_comparison.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/vtype_tau_decision_options.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/SHA256SUMS"
+   ],
+   "local_artifact_paths": [
+    "local_research/staging/task16_20261031/"
+   ],
+   "code_version_source": "code/src/riskprop/stage_0_5_fixed_leader_follower_traci.py; code/scripts/run_stage_0_5_task16_joint_replay.py; code/scripts/prepare_stage_0_5_task16_evidence.py",
+   "configuration_source": "Task15 isolated prototype; Task9 two-arm minGap-only contract and five retained tau values; no formal seeds executed",
+   "data_version_source": "Task14 MiTra T1 candidate resampled inputs and Task15 prototype",
+   "core_metrics": {
+    "engineering_matrix_attempted": 60,
+    "engineering_matrix_completed": 60,
+    "teleport_rows": 0,
+    "collision_rows": 0,
+    "formal_task9_runs": 0,
+    "joint_replay_candidates": 3,
+    "direct_insertion_failures": 2,
+    "safe_initialization_used": true,
+    "scientific_equivalence_accepted": false
+   },
+   "current_conclusion": "Native SUMO Follower joint replay is executable on the isolated prototype for all three candidates and both arms across the engineering matrix. Direct insertion fails closed for 926/857; one-time safe initialization is required. This is not formal Task9 evidence and does not establish B00 background equivalence or a scientific effect.",
+   "gate_status": "blocked_pending_researcher_decisions",
+   "paper_locations": [
+    "docs/STAGE_0_5_POST_R2_TASK16_FOLLOWER_REPLAY_AND_TASK9_PREFORMAL_READINESS_20261031.md"
    ],
    "scientific_claim_eligible": false
   }

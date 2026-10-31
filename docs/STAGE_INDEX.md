@@ -1,3 +1,9 @@
+## Current — AAD-S0.5-POST-R2-TASK16 (2026-10-31)
+
+Task16 completed bounded Leader–Follower joint replay and preformal readiness checks. Engineering-only 60/60 matrix pass; formal Task9 remains 0 and Stage 0.5 remains blocked pending researcher decisions.
+
+Report: docs/STAGE_0_5_POST_R2_TASK16_FOLLOWER_REPLAY_AND_TASK9_PREFORMAL_READINESS_20261031.md; evidence: evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/.
+
 ## Current — AAD-S0.5-POST-R2-TASK15 (2026-10-31)
 
 Network and real TraCI engineering validation completed in an isolated prototype. Complete candidates do not fit sealed B00 geometry; formal Task9 remains blocked pending network/background-equivalence, vehicle geometry, tau and tail decisions.
