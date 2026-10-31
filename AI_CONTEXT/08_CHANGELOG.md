@@ -1,3 +1,7 @@
+## Current — AAD-S0.5-POST-R2-TASK14 (Active, 2026-10-31)
+
+登记研究者 Agreed 的 Minimum Sufficient Authenticity 决策，启动三候选 Task9 输入构建和配对工程预检。初步检查发现现有 SUMO 主线总长度可能小于三个完整 MiTra leader 运动范围；该事实待输入构建脚本定量确认。无正式实验启动。
+
 ## Current — AAD-S0.5-POST-R2-TASK13 (2026-10-31)
 
 Added candidate-level minimum-sufficient authenticity assessment for three MiTra T1 segments, common-reference gap sensitivity, speed/acceleration and 30 Hz-to-0.05 s diagnostics, Viewer/video bounded status and Task9 input-review recommendations. No formal input, tau mapping, simulation or Gate state changed.

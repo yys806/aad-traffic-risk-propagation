@@ -1,0 +1,68 @@
+{
+  "status": "Awaiting Researcher Decision",
+  "b00_vtypes": [
+    {
+      "id": "B_het_c0_passenger",
+      "tau": 0.7389146576529666,
+      "minGap": 2.5,
+      "length": 4.4196
+    },
+    {
+      "id": "B_het_c1_passenger",
+      "tau": 1.093342856277335,
+      "minGap": 2.5,
+      "length": 4.4196
+    },
+    {
+      "id": "B_het_c2_passenger",
+      "tau": 1.3877275660721775,
+      "minGap": 2.5,
+      "length": 4.4196
+    },
+    {
+      "id": "B_het_c3_passenger",
+      "tau": 1.8288599276236361,
+      "minGap": 2.5,
+      "length": 4.4196
+    },
+    {
+      "id": "B_het_c4_passenger",
+      "tau": 2.5614676647488244,
+      "minGap": 2.5,
+      "length": 4.4196
+    }
+  ],
+  "mitra_candidate_types": {
+    "962-958-1": {
+      "follower": "Car",
+      "leader": "Car"
+    },
+    "926-924-1": {
+      "follower": "Car",
+      "leader": "Car"
+    },
+    "857-851-1": {
+      "follower": "Car",
+      "leader": "Medium Vehicle"
+    }
+  },
+  "options": [
+    {
+      "id": "A",
+      "label": "Preserve B00 heterogeneous assignment",
+      "effect": "Best preserves existing experiment fairness; MiTra vehicle class does not determine tau.",
+      "recommendation": "Recommended for review"
+    },
+    {
+      "id": "B",
+      "label": "Deterministic Vehicle_type-to-vType mapping",
+      "effect": "Adds an unapproved behavioral/vehicle-class assumption and may change heterogeneity semantics."
+    },
+    {
+      "id": "C",
+      "label": "Treat target tau as independent",
+      "effect": "Requires a new factor or matrix and is outside Task14 authorization."
+    }
+  ],
+  "codex_decision": "None; no tau mapping or B00 modification performed."
+}

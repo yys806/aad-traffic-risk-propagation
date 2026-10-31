@@ -1,3 +1,11 @@
+## Current — AAD-S0.5-POST-R2-TASK14 (2026-10-31)
+
+Task14 输入构建与配对预检已完成，网络范围和 tau 决策仍阻塞正式执行。将登记三候选标准化输入、重采样、局部坐标和工程回放检查；不产生正式 Task9 结果。
+
+## RES-STAGE-0.5-POST-R2-TASK14-MITRA-TASK9-INPUT-PREFLIGHT-20261031
+
+Three MiTra candidate input packages were built with linear 0.05 s resampling. Static A/B common-input checks and synthetic trace/readback checks pass. All complete candidate traces exceed the current SUMO route horizon; tau mapping remains Awaiting Researcher Decision and formal Task9 runs remain 0. Evidence: evidence/results/RES-STAGE-0.5-POST-R2-TASK14-MITRA-TASK9-INPUT-PREFLIGHT-20261031/.
+
 ## RES-STAGE-0.5-POST-R2-TASK13-MITRA-T1-MINIMUM-SUFFICIENT-INPUT-ASSESSMENT-20261031
 
 Candidate-level minimum-sufficient input assessment completed. `962-958-1` and `926-924-1` are ready for researcher Task9 input review; `857-851-1` is conditional. No video was downloaded, no formal input was frozen and no Task9 run occurred. Report: docs/STAGE_0_5_POST_R2_TASK13_MITRA_T1_MINIMUM_SUFFICIENT_INPUT_ASSESSMENT_20261031.md. Evidence: evidence/results/RES-STAGE-0.5-POST-R2-TASK13-MITRA-T1-MINIMUM-SUFFICIENT-INPUT-ASSESSMENT-20261031/.

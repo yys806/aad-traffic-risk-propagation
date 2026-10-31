@@ -1,3 +1,7 @@
+## Current — AAD-S0.5-POST-R2-TASK14 (2026-10-31)
+
+Task14 完成候选输入构建和固定前车配对工程预检。研究者已批准最低充分真实性原则；正式运行仍为 0，Stage 0.5 继续 blocked。
+
 ## Current — AAD-S0.5-POST-R2-TASK13 (2026-10-31)
 
 The minimum-sufficient authenticity review identifies `962-958-1` and `926-924-1` as ready for researcher Task9 input review and `857-851-1` as conditional. Positive gap classification is stable under the common-reference sensitivity interval; video review was not possible. Stage 0.5 and Task9 formal execution remain blocked.

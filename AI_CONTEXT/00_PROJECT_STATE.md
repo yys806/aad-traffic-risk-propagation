@@ -1,3 +1,9 @@
+## Current — AAD-S0.5-POST-R2-TASK14 (completed with blockers, 2026-10-31)
+
+Task14 输入构建与配对预检已完成。研究者已 Agreed `AAD-S0.5-DEC-MINIMUM-SUFFICIENT-AUTHENTICITY-20261031`，仅用于 Task9 真实输入适用性，不改变 Formal P2/D1/B、Scientific Equivalence 或 Stage 0.5 Gate。当前主候选 962-958-1、次候选 926-924-1、备用 857-851-1；Task9 formal runs 仍 0。三个标准化输入、30 Hz→0.05 s 重采样、现有 SUMO 局部坐标容纳性、A/B common-input 预检和固定前车 trace/readback 工程检查均已完成；不得启动正式实验或自行决定 tau 映射。
+
+状态：`COMPLETED_WITH_NETWORK_AND_RESEARCH_DECISION_BLOCKERS`。Task13 的两个 Level-1 输入审查候选已形成局部输入包；完整轨迹超出当前 SUMO 网络范围，tau 映射和末端尾差仍需研究者决定。视频/精确物理参考仍不作为 Task9 普遍前置条件，但主要不确定性必须披露。
+
 ## Current — AAD-S0.5-POST-R2-TASK13 (2026-10-31)
 
 Task13 assessed three representative MiTra T1_DAll candidates under a minimum-sufficient authenticity principle. `962-958-1` and `926-924-1` satisfy the proposed continuous reciprocal-field, same-lane, positive-gap-sensitivity and duration conditions for researcher Task9 input review; `857-851-1` remains conditional. DataFromSky Viewer was not found locally, no MP4 was downloaded, and DAll ID/video binding remains Unknown. Reference-point sensitivity does not change positive initial-gap classification for these candidates. Formal Task9 segments/runs remain 0; Stage 0.5 blocked; scientific equivalence false; later gates unchanged.

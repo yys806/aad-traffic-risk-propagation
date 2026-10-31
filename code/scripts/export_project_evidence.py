@@ -253,6 +253,21 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         )
     ]
 
+    # Task14: local MiTra candidate input construction and paired preflight.
+    # Candidate CSVs remain in ignored staging; portable evidence keeps hashes,
+    # diagnostics and fairness/readback summaries only.
+    task14_root = "evidence/results/RES-STAGE-0.5-POST-R2-TASK14-MITRA-TASK9-INPUT-PREFLIGHT-20261031"
+    pairs["RES-STAGE-0.5-POST-R2-TASK14-MITRA-TASK9-INPUT-PREFLIGHT-20261031"] = [
+        (f"{task14_root}/{name}", name)
+        for name in (
+            "decision_record.json", "candidate_input_manifest.json", "resampling_diagnostics.json",
+            "coordinate_mapping.json", "initial_state_audit.json", "vtype_tau_decision_options.json",
+            "paired_input_validation.json", "leader_replay_validation.json",
+            "candidate_execution_readiness.json", "source_bindings.json", "validation_record.json",
+            "context_consistency_check.json", "manifest.json", "SHA256SUMS",
+        )
+    ]
+
     # Policy A preflight proposals, not a frozen execution protocol.
     pairs['RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1'] = [
         ('code/outputs/formal/calibration/stage_0_5_interaction_diagnostics_v1/portable/' + name, name)

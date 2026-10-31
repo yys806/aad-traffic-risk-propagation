@@ -351,6 +351,10 @@
   "code/scripts/audit_stage_0_5_task12_mitra_t1.py",
   "docs/STAGE_0_5_POST_R2_TASK13_MITRA_T1_MINIMUM_SUFFICIENT_INPUT_ASSESSMENT_20261031.md",
   "code/scripts/audit_stage_0_5_task13_mitra_minimum_sufficient.py",
+  "docs/STAGE_0_5_POST_R2_TASK14_MITRA_T1_TASK9_INPUT_BUILD_AND_PAIR_PREFLIGHT_20261031.md",
+  "code/scripts/prepare_stage_0_5_task14_mitra_task9_inputs.py",
+  "code/src/riskprop/stage_0_5_fixed_leader_replay.py",
+  "code/tests/test_stage_0_5_fixed_leader_replay.py",
   "code/tests/test_stage_0_5_fixed_leader_pair.py",
   "docs/ROUND3_CANDIDATE_READINESS_REPORT_20261030.md",
   "docs/AAD_ROUND2_CLOSURE_AND_CONDITIONAL_VALIDATION_REPORT_20261030.md",
@@ -361,8 +365,8 @@
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-S0.5-POST-R2-TASK13: MiTra T1 minimum-sufficient input assessment complete; researcher Task9 input review candidates identified",
-  "why_now": "Assess whether representative MiTra T1 segments are sufficiently realistic for Task9 input review without formal admission, video over-download or simulation.",
+  "active_task": "AAD-S0.5-POST-R2-TASK14: MiTra T1 input construction and paired preflight complete with network/tau blockers",
+  "why_now": "Record reproducible candidate inputs and fairness checks while awaiting network-horizon and tau-mapping decisions before any formal Task9 run.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
    "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/count_reconciliation.json",
@@ -540,6 +544,8 @@
    "task11_result": "RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031",
    "task12_result": "RES-STAGE-0.5-POST-R2-TASK12-MITRA-T1-CANDIDATE-PHYSICAL-ADMISSION-20261031",
    "task13_result": "RES-STAGE-0.5-POST-R2-TASK13-MITRA-T1-MINIMUM-SUFFICIENT-INPUT-ASSESSMENT-20261031",
+   "task14_result": "RES-STAGE-0.5-POST-R2-TASK14-MITRA-TASK9-INPUT-PREFLIGHT-20261031",
+   "task14_status": "Input packages and A/B preflight complete; all formal candidates blocked by network horizon and tau decision",
    "mitra_t1_minimum_sufficient_status": "962-958-1 and 926-924-1 ready for researcher Task9 input review; formal admission/runs remain 0",
    "public_data_status": "MiTra T1 small files parsed; I24V endpoint not reached; NGSIM video payload and file-specific license/time-space closure remain Unknown",
    "mitra_t1_physical_admission_status": "Conditional candidate inventory; DAll audit file absent, vehicle reference point/video binding Unknown, formal Task9 segments 0",
@@ -1226,7 +1232,8 @@
     "RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC",
     "RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031",
     "RES-STAGE-0.5-POST-R2-TASK12-MITRA-T1-CANDIDATE-PHYSICAL-ADMISSION-20261031",
-    "RES-STAGE-0.5-POST-R2-TASK13-MITRA-T1-MINIMUM-SUFFICIENT-INPUT-ASSESSMENT-20261031"
+    "RES-STAGE-0.5-POST-R2-TASK13-MITRA-T1-MINIMUM-SUFFICIENT-INPUT-ASSESSMENT-20261031",
+    "RES-STAGE-0.5-POST-R2-TASK14-MITRA-TASK9-INPUT-PREFLIGHT-20261031"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -5616,6 +5623,51 @@
    "gate_status": "blocked",
    "paper_locations": [
     "docs/STAGE_0_5_POST_R2_TASK13_MITRA_T1_MINIMUM_SUFFICIENT_INPUT_ASSESSMENT_20261031.md"
+   ],
+   "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-STAGE-0.5-POST-R2-TASK14-MITRA-TASK9-INPUT-PREFLIGHT-20261031",
+   "experiment_id": "stage_0_5",
+   "name": "MiTra T1 Task9 input construction and paired engineering preflight",
+   "status": "completed_with_network_and_research_decision_blockers",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK14-MITRA-TASK9-INPUT-PREFLIGHT-20261031/decision_record.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK14-MITRA-TASK9-INPUT-PREFLIGHT-20261031/candidate_input_manifest.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK14-MITRA-TASK9-INPUT-PREFLIGHT-20261031/resampling_diagnostics.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK14-MITRA-TASK9-INPUT-PREFLIGHT-20261031/coordinate_mapping.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK14-MITRA-TASK9-INPUT-PREFLIGHT-20261031/initial_state_audit.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK14-MITRA-TASK9-INPUT-PREFLIGHT-20261031/vtype_tau_decision_options.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK14-MITRA-TASK9-INPUT-PREFLIGHT-20261031/paired_input_validation.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK14-MITRA-TASK9-INPUT-PREFLIGHT-20261031/leader_replay_validation.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK14-MITRA-TASK9-INPUT-PREFLIGHT-20261031/candidate_execution_readiness.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK14-MITRA-TASK9-INPUT-PREFLIGHT-20261031/source_bindings.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK14-MITRA-TASK9-INPUT-PREFLIGHT-20261031/validation_record.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK14-MITRA-TASK9-INPUT-PREFLIGHT-20261031/context_consistency_check.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK14-MITRA-TASK9-INPUT-PREFLIGHT-20261031/manifest.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK14-MITRA-TASK9-INPUT-PREFLIGHT-20261031/SHA256SUMS"
+   ],
+   "local_artifact_paths": [
+    "local_research/staging/task14_20261031/candidate_inputs/"
+   ],
+   "code_version_source": "code/scripts/prepare_stage_0_5_task14_mitra_task9_inputs.py; code/src/riskprop/stage_0_5_fixed_leader_replay.py",
+   "configuration_source": "Unchanged Task9 two-arm minGap-only protocol and five heterogeneous tau values; no formal run",
+   "data_version_source": "MiTra T1_DAll archive, Task12 T1_DAll.ftlgx, existing B00/Round2 sealed inputs and network",
+   "core_metrics": {
+    "candidate_input_packages": 3,
+    "resampling_method": "linear_0.05_s",
+    "paired_common_input_checks_passed": 3,
+    "network_horizon_blocked_candidates": 3,
+    "traci_available": false,
+    "formal_task9_segments_admitted": 0,
+    "formal_task9_runs": 0,
+    "new_simulations": 0,
+    "scientific_equivalence_accepted": false
+   },
+   "current_conclusion": "Three reproducible candidate input packages and static A/B common-input checks were completed. Complete leader traces exceed the existing SUMO mainline horizon by approximately 103–225 m; tau mapping remains Awaiting Researcher Decision; the replay component is engineering-only because traci/sumolib are unavailable. No formal Task9 execution is allowed.",
+   "gate_status": "blocked",
+   "paper_locations": [
+    "docs/STAGE_0_5_POST_R2_TASK14_MITRA_T1_TASK9_INPUT_BUILD_AND_PAIR_PREFLIGHT_20261031.md"
    ],
    "scientific_claim_eligible": false
   }

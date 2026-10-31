@@ -1,3 +1,9 @@
+## Current — AAD-S0.5-POST-R2-TASK14
+
+- 当前 SUMO 网络主线车道总纵向长度约 659.17 m；三个完整 MiTra 候选 leader 轨迹位移约 752–875 m，完整局部映射可能超出网络范围，需先核实并保持 Blocked，不得擅自裁剪或改网。
+- `traci`/`sumolib` 当前 Python 环境不可用；固定前车实际控制/逐步回读尚未证明。可先实现纯输入/回读工程组件和合成 smoke test，有限记录环境阻塞。
+- Minimum Sufficient Authenticity 已 Agreed，仅适用于 Task9 输入适用性；不改变 tau 映射决策、Formal P2/D1/B 或 Gate。
+
 ## Current — AAD-S0.5-POST-R2-TASK13 blockers
 
 - Video and DataFromSky Viewer were unavailable in the bounded environment; DAll vehicle IDs remain unbound to MP4s.

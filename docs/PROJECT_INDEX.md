@@ -1,3 +1,7 @@
+## Current — AAD-S0.5-POST-R2-TASK14 (2026-10-31)
+
+Task14 已将三个 MiTra 候选转换为 Task9 预检输入。Minimum Sufficient Authenticity 已登记为 Agreed，仅适用于输入适用性判断。当前不执行正式 Task9；完整候选轨迹与 SUMO 现有网络长度的兼容性正在检查。
+
 ## Current — AAD-S0.5-POST-R2-TASK13 (2026-10-31)
 
 Task13 found two MiTra T1 segments suitable for researcher review as approximate Task9 inputs, with one conditional backup. This is an input-review recommendation only; video binding, exact reference-point semantics and Vehicle_type-to-tau mapping remain unresolved, and no formal Task9 run is authorized.

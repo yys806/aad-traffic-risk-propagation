@@ -1,0 +1,90 @@
+{
+  "status": "PASS_COMMON_INPUT_STATIC_AND_SYNTHETIC",
+  "arm_config_audit": {
+    "differences": [
+      {
+        "path": "root/vType[0]",
+        "field": "minGap",
+        "arm_a": "2.5",
+        "arm_b": "1.0"
+      },
+      {
+        "path": "root/vType[1]",
+        "field": "minGap",
+        "arm_a": "2.5",
+        "arm_b": "1.0"
+      },
+      {
+        "path": "root/vType[2]",
+        "field": "minGap",
+        "arm_a": "2.5",
+        "arm_b": "1.0"
+      },
+      {
+        "path": "root/vType[3]",
+        "field": "minGap",
+        "arm_a": "2.5",
+        "arm_b": "1.0"
+      },
+      {
+        "path": "root/vType[4]",
+        "field": "minGap",
+        "arm_a": "2.5",
+        "arm_b": "1.0"
+      }
+    ],
+    "equal_files": {
+      "network.net.xml": true,
+      "run.sumocfg": true
+    },
+    "tau_heterogeneity": [
+      0.7389146576529666,
+      1.093342856277335,
+      1.3877275660721775,
+      1.8288599276236361,
+      2.5614676647488244
+    ],
+    "arms": {
+      "A": "B00_minGap2.5",
+      "B": "B00_minGap1.0"
+    },
+    "status": "Verified_static_configuration_only"
+  },
+  "candidates": [
+    {
+      "candidate": "962-958-1",
+      "arm_config_status": "Verified_static_configuration_only",
+      "common_input_status": "Verified_common_leader_and_initial_state",
+      "leader_input_equal": true,
+      "initial_follower_speed_equal": true,
+      "initial_leader_speed_equal": true,
+      "initial_gap_equal": true,
+      "time_anchor_equal": true,
+      "formal_execution": false
+    },
+    {
+      "candidate": "926-924-1",
+      "arm_config_status": "Verified_static_configuration_only",
+      "common_input_status": "Verified_common_leader_and_initial_state",
+      "leader_input_equal": true,
+      "initial_follower_speed_equal": true,
+      "initial_leader_speed_equal": true,
+      "initial_gap_equal": true,
+      "time_anchor_equal": true,
+      "formal_execution": false
+    },
+    {
+      "candidate": "857-851-1",
+      "arm_config_status": "Verified_static_configuration_only",
+      "common_input_status": "Verified_common_leader_and_initial_state",
+      "leader_input_equal": true,
+      "initial_follower_speed_equal": true,
+      "initial_leader_speed_equal": true,
+      "initial_gap_equal": true,
+      "time_anchor_equal": true,
+      "formal_execution": false
+    }
+  ],
+  "formal_task9_runs": 0,
+  "network_horizon_is_separate_blocker": true
+}

@@ -1,0 +1,159 @@
+{
+  "status": "COMPLETED_LINEAR_CHOSEN_FOR_ENGINEERING_INPUT",
+  "candidates": [
+    {
+      "candidate": "962-958-1",
+      "method_comparison": {
+        "linear": {
+          "position_error_m": {
+            "p50": 0.001131775491899134,
+            "p95": 0.004371024778311045,
+            "max": 0.2233450808547559
+          },
+          "speed_error_mps": {
+            "p50": 7.571326485233953e-05,
+            "p95": 0.00048734833682217987,
+            "max": 0.002715078350465916
+          },
+          "resampled_speed_range_mps": [
+            12.80835201669031,
+            18.145247757197946
+          ],
+          "resampled_acc_range_mps2": [
+            -0.9043679574550723,
+            1.045562640066926
+          ],
+          "speed_overshoot_beyond_raw": false
+        },
+        "pchip": {
+          "position_error_m": {
+            "p50": 0.00088937091706498,
+            "p95": 0.004267936500025371,
+            "max": 0.22387421892483417
+          },
+          "speed_error_mps": {
+            "p50": 5.238138832730499e-05,
+            "p95": 0.0003591714549877168,
+            "max": 0.002261239626836442
+          },
+          "resampled_speed_range_mps": [
+            12.808190523814535,
+            18.145326764009095
+          ],
+          "resampled_acc_range_mps2": [
+            -0.9046168397357235,
+            1.04608632687885
+          ],
+          "speed_overshoot_beyond_raw": false
+        }
+      },
+      "chosen_method": "linear",
+      "source_dt_p50_s": 0.03336699999999837,
+      "target_step_s": 0.05,
+      "unrepresented_tail_s": 0.0126239999999882
+    },
+    {
+      "candidate": "926-924-1",
+      "method_comparison": {
+        "linear": {
+          "position_error_m": {
+            "p50": 0.0011469442471252478,
+            "p95": 0.0035942940520953936,
+            "max": 0.5139428063736204
+          },
+          "speed_error_mps": {
+            "p50": 7.296945919677e-05,
+            "p95": 0.000626130140881287,
+            "max": 0.029179578625566194
+          },
+          "resampled_speed_range_mps": [
+            16.548788039913024,
+            21.42172560390817
+          ],
+          "resampled_acc_range_mps2": [
+            -4.401597211816224,
+            1.0186888340323463
+          ],
+          "speed_overshoot_beyond_raw": false
+        },
+        "pchip": {
+          "position_error_m": {
+            "p50": 0.0009091178845039849,
+            "p95": 0.003741790685930369,
+            "max": 0.5141472096528332
+          },
+          "speed_error_mps": {
+            "p50": 5.057541098452134e-05,
+            "p95": 0.0004555613144638927,
+            "max": 0.02899990754249515
+          },
+          "resampled_speed_range_mps": [
+            16.548779373933765,
+            21.421891488994408
+          ],
+          "resampled_acc_range_mps2": [
+            -4.404337617860499,
+            1.0247990670165308
+          ],
+          "speed_overshoot_beyond_raw": false
+        }
+      },
+      "chosen_method": "linear",
+      "source_dt_p50_s": 0.03336699999999837,
+      "target_step_s": 0.05,
+      "unrepresented_tail_s": 0.029958000000029017
+    },
+    {
+      "candidate": "857-851-1",
+      "method_comparison": {
+        "linear": {
+          "position_error_m": {
+            "p50": 0.0011609566507218005,
+            "p95": 0.003972265263521457,
+            "max": 1.1402203902059682
+          },
+          "speed_error_mps": {
+            "p50": 7.612792043421024e-05,
+            "p95": 0.0006753470249512006,
+            "max": 0.03963661112108241
+          },
+          "resampled_speed_range_mps": [
+            5.70299766735597,
+            25.75678981847789
+          ],
+          "resampled_acc_range_mps2": [
+            -1.7449581256265212,
+            1.8793440450191667
+          ],
+          "speed_overshoot_beyond_raw": false
+        },
+        "pchip": {
+          "position_error_m": {
+            "p50": 0.0009261402797697826,
+            "p95": 0.0037983053834764746,
+            "max": 1.139898588688311
+          },
+          "speed_error_mps": {
+            "p50": 5.059367547577409e-05,
+            "p95": 0.0004902052194442064,
+            "max": 0.04036568903292448
+          },
+          "resampled_speed_range_mps": [
+            5.702958699719011,
+            25.756979690196264
+          ],
+          "resampled_acc_range_mps2": [
+            -1.7520650429489315,
+            1.8839239225650672
+          ],
+          "speed_overshoot_beyond_raw": false
+        }
+      },
+      "chosen_method": "linear",
+      "source_dt_p50_s": 0.03336699999999837,
+      "target_step_s": 0.05,
+      "unrepresented_tail_s": 0.04859599999997499
+    }
+  ],
+  "method_selection": "Linear interpolation is simplest and no PCHIP advantage requiring a different scientific decision was observed; raw observation and physical errors remain separate Unknowns."
+}

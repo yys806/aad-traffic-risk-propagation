@@ -1,0 +1,100 @@
+{
+  "status": "LOCAL_MAPPING_BUILT_NETWORK_HORIZON_CHECKED",
+  "network": "code\\outputs\\formal\\calibration\\stage_0_5_ready_to_admit_v3\\runs\\WEEK_0750_B00_IC1_s20261201_A03\\network.net.xml",
+  "candidates": [
+    {
+      "candidate": "962-958-1",
+      "mapping": {
+        "status": "BLOCKED_NETWORK_HORIZON",
+        "route_edges": [
+          "main_0",
+          "main_1",
+          "main_2"
+        ],
+        "lane_index": 1,
+        "lane_lengths_m": {
+          "main_0_1": 172.9,
+          "main_1_1": 234.04,
+          "main_2_1": 252.23
+        },
+        "route_length_m": 659.17,
+        "leader_start_y_m": 10.0,
+        "leader_end_y_m": 761.8405561653151,
+        "leader_overflow_m": 102.67055616531513,
+        "mapping_semantics": "local longitudinal motion only; not geographic reconstruction"
+      },
+      "initial": {
+        "source_time_s": 282.516123,
+        "follower_speed_mps": 14.10061111111111,
+        "leader_speed_mps": 15.360222222222221,
+        "net_gap_m": 10.252793247211759,
+        "leader_y_m": 10.0,
+        "follower_y_m": -5.252793247211759
+      },
+      "input_rows": 919
+    },
+    {
+      "candidate": "926-924-1",
+      "mapping": {
+        "status": "BLOCKED_NETWORK_HORIZON",
+        "route_edges": [
+          "main_0",
+          "main_1",
+          "main_2"
+        ],
+        "lane_index": 2,
+        "lane_lengths_m": {
+          "main_0_2": 172.9,
+          "main_1_2": 234.04,
+          "main_2_2": 252.23
+        },
+        "route_length_m": 659.17,
+        "leader_start_y_m": 10.0,
+        "leader_end_y_m": 884.5725167323126,
+        "leader_overflow_m": 225.40251673231262,
+        "mapping_semantics": "local longitudinal motion only; not geographic reconstruction"
+      },
+      "initial": {
+        "source_time_s": 268.502096,
+        "follower_speed_mps": 16.79375,
+        "leader_speed_mps": 17.622277777777775,
+        "net_gap_m": 4.859361845522001,
+        "leader_y_m": 10.0,
+        "follower_y_m": 0.14063815447799932
+      },
+      "input_rows": 932
+    },
+    {
+      "candidate": "857-851-1",
+      "mapping": {
+        "status": "BLOCKED_NETWORK_HORIZON",
+        "route_edges": [
+          "main_0",
+          "main_1",
+          "main_2"
+        ],
+        "lane_index": 1,
+        "lane_lengths_m": {
+          "main_0_1": 172.9,
+          "main_1_1": 234.04,
+          "main_2_1": 252.23
+        },
+        "route_length_m": 659.17,
+        "leader_start_y_m": 10.0,
+        "leader_end_y_m": 828.0164263379437,
+        "leader_overflow_m": 168.84642633794374,
+        "mapping_semantics": "local longitudinal motion only; not geographic reconstruction"
+      },
+      "initial": {
+        "source_time_s": 248.081655,
+        "follower_speed_mps": 10.0185,
+        "leader_speed_mps": 7.637083333333333,
+        "net_gap_m": 11.028432457660184,
+        "leader_y_m": 10.0,
+        "follower_y_m": -6.445082457660185
+      },
+      "input_rows": 971
+    }
+  ],
+  "overall_interpretation": "Local longitudinal mapping is reproducible but complete candidate leader ranges exceed the existing mainline route horizon; no network or route change was made."
+}

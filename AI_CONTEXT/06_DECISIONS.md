@@ -1,3 +1,9 @@
+## Agreed — AAD-S0.5-DEC-MINIMUM-SUFFICIENT-AUTHENTICITY-20261031
+
+研究者于 2026-10-31 明确确认：Task9 的真实交通输入采用 Minimum Sufficient Authenticity。输入不要求完美物理还原，只需具备基本可靠的 reciprocal leader/follower 关系、至少20秒连续同车道交互、无明显身份跳变/时间断档/顺序反转、合理速度/加速度、共同参考点假设下的正初始间距、可复现时间序列和可转换到0.05秒的处理链。允许局部坐标投影、参考点近似、间距敏感性分析和数值重采样。
+
+该决定仅适用于 Task9 输入适用性判断，不改变 Formal P2、D1、B witness、信息/物理影响链区分、Scientific Equivalence、Stage 0.5 Gate 或后续阶段准入。近似输入可用于受控机制实验准备，不构成独立物理真值、物理传播路径或 AAD 因果假设证明。状态：`Agreed`。
+
 ## Current — AAD-ROUND2-CLOSURE-20261030
 
 Agreed researcher decisions (2026-10-30): close the original minGap=1.0 Round2 source candidate as CLOSED_FAILED_ORIGINAL_SOURCE_CONDITION, preserving its one seed20261201 outcome (Rule A PASS/sourceP2=0/one target diagnostic) and forbidding independent-seed rescue. General Formal P2 uses C pair/time continuity; D1 keeps its independent same-native-lane local diagnostic denominator. Physical-path eligibility independently requires B time-indexed identity/interaction/road-connection/order witnesses; missing witnesses remain Unknown. A is sensitivity only. formal_equivalence_accepted remains false.

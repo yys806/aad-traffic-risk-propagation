@@ -1,3 +1,9 @@
+## Current — AAD-S0.5-POST-R2-TASK14 (2026-10-31)
+
+研究者已 Agreed Minimum Sufficient Authenticity 作为 Task9 输入准入原则。三个候选的标准化输入、30 Hz→0.05 s 重采样、SUMO 局部坐标容纳、A/B common-input 和固定前车 trace/readback 工程检查已完成。Task9 formal runs 仍 0；Stage 0.5 blocked、scientific equivalence false、Round3/Stage 0.6/Protocol Lock/Stage I 未启动。完整 MiTra leader 位移已确认超过现有主线长度约 103–225 m，tau 映射和末端尾差待研究者决定。
+
+状态：`COMPLETED_WITH_NETWORK_AND_RESEARCH_DECISION_BLOCKERS`。
+
 ## Current — AAD-S0.5-POST-R2-TASK13 (2026-10-31)
 
 MiTra T1 minimum-sufficient authenticity assessment completed for three representative candidates. `962-958-1` and `926-924-1` satisfy the proposed field-consistency, continuity, positive-gap and duration conditions for researcher Task9 input review; `857-851-1` remains conditional with sensitivity. DataFromSky Viewer was not found locally, no MP4 was downloaded, and DAll ID/video binding remains Unknown. Approximate reference-point intervals do not change positive initial-gap classification for any of the three candidates. Formal Task9 segments/runs remain 0; Stage 0.5 remains blocked, scientific equivalence false, and later gates unchanged.

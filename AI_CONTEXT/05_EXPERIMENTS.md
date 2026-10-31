@@ -1,3 +1,7 @@
+## Current — AAD-S0.5-POST-R2-TASK14 (completed with blockers)
+
+Task14 已完成主要输入构建：已批准最低充分真实性输入原则，三个 MiTra 候选的标准化/重采样/局部 SUMO 坐标预检和 A/B 配对公平性审计均有证据。当前完整 leader 轨迹超过网络范围，固定前车仅完成 trace/readback 工程 smoke test；候选输入包准备不等于正式 Task9 执行批准。五档 tau 保持原值，MiTra Vehicle_type 映射仍由研究者决定，formal runs 仍 0。
+
 ## Current — AAD-S0.5-POST-R2-TASK13
 
 Two MiTra T1 segments (`962-958-1`, `926-924-1`) are ready for researcher Task9 input review under a proposed minimum-sufficient standard; `857-851-1` is conditional. This does not admit a formal segment, freeze interpolation, resolve tau mapping or authorize a run. Task9 formal runs remain 0.
