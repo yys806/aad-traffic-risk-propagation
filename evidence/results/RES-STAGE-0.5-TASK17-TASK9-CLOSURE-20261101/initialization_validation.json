@@ -1,0 +1,80 @@
+{
+  "status": "PASS_INITIALIZATION_CLASSIFICATION",
+  "results": [
+    {
+      "candidate": "962-958-1",
+      "mode": "safe_then_move",
+      "status": "PASS",
+      "expected_class": "PASS",
+      "expected_met": true,
+      "failure_reason": null,
+      "applied_rows": 919,
+      "expected_rows": 919,
+      "initialization_move_m": 9.747206752788237,
+      "invalid_state_rows": 0
+    },
+    {
+      "candidate": "962-958-1",
+      "mode": "direct",
+      "status": "PASS",
+      "expected_class": "PASS",
+      "expected_met": true,
+      "failure_reason": null,
+      "applied_rows": 919,
+      "expected_rows": 919,
+      "initialization_move_m": 0.0,
+      "invalid_state_rows": 0
+    },
+    {
+      "candidate": "926-924-1",
+      "mode": "safe_then_move",
+      "status": "PASS",
+      "expected_class": "PASS",
+      "expected_met": true,
+      "failure_reason": null,
+      "applied_rows": 932,
+      "expected_rows": 932,
+      "initialization_move_m": 15.140638154477998,
+      "invalid_state_rows": 0
+    },
+    {
+      "candidate": "926-924-1",
+      "mode": "direct",
+      "status": "FAIL",
+      "expected_class": "FAIL",
+      "expected_met": true,
+      "failure_reason": "missing_vehicle_after_initial_step",
+      "applied_rows": 0,
+      "expected_rows": 932,
+      "initialization_move_m": 0.0,
+      "invalid_state_rows": 0
+    },
+    {
+      "candidate": "857-851-1",
+      "mode": "safe_then_move",
+      "status": "PASS",
+      "expected_class": "PASS",
+      "expected_met": true,
+      "failure_reason": null,
+      "applied_rows": 971,
+      "expected_rows": 971,
+      "initialization_move_m": 8.971567542339812,
+      "invalid_state_rows": 0
+    },
+    {
+      "candidate": "857-851-1",
+      "mode": "direct",
+      "status": "FAIL",
+      "expected_class": "FAIL",
+      "expected_met": true,
+      "failure_reason": "missing_vehicle_after_initial_step",
+      "applied_rows": 0,
+      "expected_rows": 971,
+      "initialization_move_m": 0.0,
+      "invalid_state_rows": 0
+    }
+  ],
+  "safe_then_move_is_one_time_only": true,
+  "follower_dynamic_moveTo": false,
+  "formal_t0_after_warmup": true
+}

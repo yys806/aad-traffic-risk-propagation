@@ -32,6 +32,7 @@ def main() -> None:
     cfg = prepare_cfg()
     rows = []
     errors = []
+    details = []
     for candidate, lane in CANDIDATES:
         trace = pd.read_csv(INPUTS / f"{candidate}_resampled_0p05.csv")
         raw = pd.read_csv(INPUTS / f"{candidate}_raw.csv")
@@ -43,11 +44,13 @@ def main() -> None:
                     run_id = f"{candidate}|geometry={geometry}|tau_index={tau_index}|arm={arm}"
                     try:
                         result = run_joint_replay(trace, sumo_cfg=cfg, lane_id=f"main_ext_{lane}", geometry_follower_length_m=follower_length, geometry_leader_length_m=leader_length, follower_tau_s=tau, follower_min_gap_m=min_gap, start_offset_m=40.0, sumo_binary=SUMO_BINARY, save_trace=False, initialization_mode="safe_then_move")
-                        rows.append({"run_id": run_id, "candidate": candidate, "geometry": geometry, "tau_index": tau_index, "tau_s": tau, "arm": arm, "minGap_m": min_gap, **{k: v for k, v in result.items() if k not in {"rows"}}})
+                        rows.append({"run_id": run_id, "candidate": candidate, "geometry": geometry, "tau_index": tau_index, "tau_s": tau, "arm": arm, "minGap_m": min_gap, **{k: v for k, v in result.items() if k not in {"rows", "lifecycle_events", "invalid_state_rows"}}})
+                        details.append({"run_id": run_id, "lifecycle_events": result.get("lifecycle_events", []), "invalid_state_rows": result.get("invalid_state_rows", [])})
                     except Exception as exc:
                         errors.append({"run_id": run_id, "candidate": candidate, "geometry": geometry, "tau_index": tau_index, "tau_s": tau, "arm": arm, "minGap_m": min_gap, "error": repr(exc)})
     pd.DataFrame(rows).to_csv(STAGING / "joint_replay_summary.csv", index=False)
     (STAGING / "joint_replay_failures.json").write_text(json.dumps(errors, indent=2) + "\n", encoding="utf-8")
+    (STAGING / "joint_replay_details.json").write_text(json.dumps(details, indent=2) + "\n", encoding="utf-8")
     summary = {"status": "COMPLETED_ENGINEERING_MATRIX", "attempted": 60, "completed": len(rows), "failed": len(errors), "formal_task9_runs": 0, "geometries": ["M", "B"], "tau_values": list(TAU), "arms": ["A", "B"], "candidate_replays": [c[0] for c in CANDIDATES]}
     (STAGING / "joint_replay_manifest.json").write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(summary))

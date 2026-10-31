@@ -1,4 +1,10 @@
-## Current — AAD-S0.5-POST-R2-TASK16 (2026-10-31)
+## Current — AAD-S0.5-TASK17 / Task9 formal execution (2026-11-01)
+
+Task17 engineering matrix: 3 candidates × 2 geometry settings × 5 tau × 2 arms = 60, classified PASS=56, FAIL=4 collision, INCOMPLETE=0, INVALID=0. Formal Task9 matrix: 2 fixed candidates × 5 tau × 2 arms × 3 seeds = 60; results PASS=54, FAIL=6 collision, INCOMPLETE=0, INVALID=0. All 60 run records and trajectories are preserved. Pairing is by candidate, tau and seed; 27 pairs are PASS and 3 are Unknown because both arms failed. These are local conditional response results and are not a global AAD causal effect.
+
+Evidence: `evidence/results/RES-STAGE-0.5-TASK17-TASK9-CLOSURE-20261101/`; outputs: `code/outputs/formal/task9_20261101/`.
+
+## Historical — AAD-S0.5-POST-R2-TASK16 (2026-10-31)
 
 Task16 engineering-only joint replay completed 60/60 combinations (962, 926, 857 × MiTra/B00 geometry × five retained tau values × minGap arms A/B) on the isolated prototype. All returned `PASS_JOINT_ENGINEERING`; teleport and collision rows were zero and formal Task9 runs stayed 0. Direct insertion failed closed for 926/857, so the matrix used the explicitly recorded one-time `safe_then_move` initialization. This is an engineering validation result, not a formal A/B experiment or scientific effect estimate.
 

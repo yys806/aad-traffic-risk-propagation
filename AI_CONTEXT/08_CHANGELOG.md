@@ -1,4 +1,8 @@
-## Current — AAD-S0.5-POST-R2-TASK16 (2026-10-31)
+## Current — AAD-S0.5-TASK17 (2026-11-01)
+
+Repaired Task16 TraCI lifecycle and invalid-state handling; removed the previous 0.05 s speed phase from the recorded Leader control contract; added strict complete-trace PASS logic and one-time safe initialization checks. Re-ran the 60 engineering matrix and preserved classified failures. Froze the approved Task9 inputs/configuration and directly launched the 60-run formal matrix. Added per-run trajectories, metrics, paired analysis, evidence manifests and Task17/Task9 reports.
+
+## Historical — AAD-S0.5-POST-R2-TASK16 (2026-10-31)
 
 Added SUMO-native Leader–Follower joint replay, explicit initialization-mode diagnostics, 60 engineering-only geometry/tau/minGap combinations, Leader control correction statistics and a Task9 preformal evidence package. Fixed a timing bug that skipped the first post-initialization interval and added fail-closed direct-insertion detection. Formal Task9, scientific metrics, Gate states and sealed B00 inputs were unchanged. Evidence: `evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/`.
 

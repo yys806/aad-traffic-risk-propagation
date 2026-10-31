@@ -117,8 +117,8 @@ def main() -> None:
     dump("joint_replay_validation.json", {
         "status": "PASS_ENGINEERING_ONLY",
         "attempted": int(len(summary)),
-        "completed": int((summary["status"] == "PASS_JOINT_ENGINEERING").sum()),
-        "failed": int((summary["status"] != "PASS_JOINT_ENGINEERING").sum()),
+        "completed": int((summary["status"] == "PASS").sum()),
+        "failed": int((summary["status"] != "PASS").sum()),
         "candidate_counts": summary.groupby("candidate").size().to_dict(),
         "geometry_counts": summary.groupby("geometry").size().to_dict(),
         "tau_values": sorted(summary["tau_s"].unique().tolist()),
@@ -195,7 +195,7 @@ def main() -> None:
     dump("validation_record.json", {
         "task_id": "AAD-S0.5-POST-R2-TASK16",
         "status": "PASS_BOUNDED_ENGINEERING_VALIDATION_WITH_RESEARCHER_DECISION_BLOCKERS",
-        "matrix": "60/60 engineering-only joint replays passed with safe_then_move; 0 teleport/collision",
+        "matrix": "60/60 engineering-only joint replays recorded with safe_then_move; PASS/FAIL classified from complete rows, lifecycle and safety checks",
         "direct_initialization_probe": "962 direct pass; 926/857 direct insertion fail closed; safe_then_move pass for all",
         "formal_task9_runs": 0,
         "not_run": ["formal Task9 A/B", "6N repetition matrix", "Round3", "Stage 0.6", "Protocol Lock", "Stage I", "holdout", "third window"],

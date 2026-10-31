@@ -1,4 +1,8 @@
-## Current — AAD-S0.5-POST-R2-TASK16 (2026-10-31)
+## Current — AAD-S0.5-TASK17 (2026-11-01)
+
+Task17 is completed and Task9 is ready/launched under the approved local conditional protocol. Stage 0.5 scientific Gate remains governed by its existing definitions. Evidence: `evidence/results/RES-STAGE-0.5-TASK17-TASK9-CLOSURE-20261101/`.
+
+## Historical — AAD-S0.5-POST-R2-TASK16 (2026-10-31)
 
 Task16 completed bounded Leader–Follower joint replay and preformal readiness checks. Engineering-only 60/60 matrix pass; formal Task9 remains 0 and Stage 0.5 remains blocked pending researcher decisions.
 

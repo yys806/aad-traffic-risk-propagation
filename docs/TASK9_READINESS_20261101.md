@@ -1,0 +1,13 @@
+# Task9 最终准入
+
+`TASK17_STATUS = COMPLETED`
+
+`TASK9_READINESS = READY_FOR_TASK9`
+
+`TASK9_LAUNCH_AUTHORIZED = TRUE`
+
+`TASK9_FORMAL_MATRIX = 60`
+
+`TASK9_ADDITIONAL_PRETASKS_REQUIRED = FALSE`
+
+正式执行结果分类：{"PASS": 54, "FAIL": 6}。结果、失败和未知均逐组保存；配对分析按 Candidate × tau × Seed 生成，未把不可用臂强行纳入差异。

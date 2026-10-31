@@ -1,3 +1,7 @@
+## Current — AAD-S0.5-TASK17 decisions implemented (2026-11-01)
+
+Implemented the researcher-approved Minimum Sufficient Authenticity admission; formal candidates 962-958-1 and 926-924-1; five original heterogeneous tau values; B00 passenger geometry; 0.05 s internal and 0.1 s measurement grids; linear interpolation; Arm A/B minGap 2.5/1.0; seeds 20261101–20261103; prototype network; one-time safe initialization; direct Task9 launch after Task17 acceptance. No MiTra Vehicle_type-to-tau mapping was introduced. No Formal P2, D1, B witness, Stage 0.5 Gate or scientific-equivalence definition was changed.
+
 ## Pending — AAD-S0.5-POST-R2-TASK16 researcher decisions (2026-10-31)
 
 Task16 engineering evidence is complete but does not freeze: (1) acceptance of the isolated prototype for a controlled local experiment, (2) MiTra versus B00 vehicle geometry, (3) target Follower B00 vType/tau while retaining the five values, (4) one-time `safe_then_move` and current Leader `setSpeed`/`moveTo` policy, (5) fixed-grid tail handling, (6) formal candidate admission and (7) formal Task9 launch. The 60 joint replays are engineering-only; no decision is Agreed by Codex.

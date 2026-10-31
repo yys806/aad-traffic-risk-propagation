@@ -1,3 +1,7 @@
+## RES-STAGE-0.5-TASK17-TASK9-CLOSURE-20261101
+
+Task17 engineering closure and direct Task9 launch. Task16 engineering records: 60; formal Task9 records: 60 (54 PASS, 6 collision FAIL); 27 paired A/B records PASS and 3 Unknown. Evidence: `evidence/results/RES-STAGE-0.5-TASK17-TASK9-CLOSURE-20261101/`; formal output: `code/outputs/formal/task9_20261101/`; report: `docs/TASK17_COMPLETE_20261101.md`.
+
 ## RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031
 
 Task16 engineering-only joint replay completed 60/60 combinations on the isolated prototype. The native Follower was not externally position-controlled; zero teleport/collision rows and positive evaluated gaps were recorded. Direct insertion failed closed for 926/857, so `safe_then_move` was used and disclosed. Leader control timing/correction diagnostics and formal execution-chain checks are included. Formal Task9 runs remain 0; network/background, geometry, vType/tau, control, tail and launch decisions remain pending. Report: docs/STAGE_0_5_POST_R2_TASK16_FOLLOWER_REPLAY_AND_TASK9_PREFORMAL_READINESS_20261031.md; evidence: evidence/results/RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031/.

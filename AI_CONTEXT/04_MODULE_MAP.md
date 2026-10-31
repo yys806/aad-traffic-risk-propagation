@@ -1,4 +1,12 @@
-## Current — AAD-S0.5-POST-R2-TASK16
+## Current — Task17 module map (2026-11-01)
+
+- `code/src/riskprop/stage_0_5_fixed_leader_follower_traci.py`: repaired TraCI joint replay and lifecycle/state validation.
+- `code/scripts/run_stage_0_5_task16_joint_replay.py`: original 60-case engineering matrix with per-run details.
+- `code/scripts/run_task17_closure_and_task9.py`: Task17 closure, input/config freeze, formal Task9 runner, metric computation and paired analysis.
+- `code/outputs/formal/task9_20261101/`: frozen matrix, per-run trajectories, Task9 result tables and strata summaries.
+- `evidence/results/RES-STAGE-0.5-TASK17-TASK9-CLOSURE-20261101/`: portable Task17 and Task9 evidence.
+
+## Historical — AAD-S0.5-POST-R2-TASK16
 
 Task16 adds `code/src/riskprop/stage_0_5_fixed_leader_follower_traci.py` for joint replay and `code/scripts/run_stage_0_5_task16_joint_replay.py` for the 60-combination engineering matrix. `code/scripts/prepare_stage_0_5_task16_evidence.py` packages bounded diagnostics. The existing Leader adapter remains in `stage_0_5_fixed_leader_traci.py`; `stage_0_5_fixed_leader_pair.py` remains the fail-closed static A/B contract. No formal measurement or Gate module changed.
 

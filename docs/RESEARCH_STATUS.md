@@ -1,4 +1,8 @@
-## Current — AAD-S0.5-POST-R2-TASK16 (2026-10-31)
+## Current — AAD-S0.5-TASK17 / Task9 (2026-11-01)
+
+Task17 completed engineering closure and directly launched the authorized Task9 matrix. Task16 repaired matrix: 56 PASS, 4 collision FAIL; formal Task9: 60 records with 54 PASS and 6 collision FAIL. Inputs, configs and hashes are frozen; all failures remain visible. Stage 0.5 scientific Gate and equivalence status are unchanged; Task9 is a local conditional response experiment. Evidence: `evidence/results/RES-STAGE-0.5-TASK17-TASK9-CLOSURE-20261101/`; reports: `docs/TASK17_COMPLETE_20261101.md`, `docs/TASK9_READINESS_20261101.md`.
+
+## Historical — AAD-S0.5-POST-R2-TASK16 (2026-10-31)
 
 Task16 completed bounded Leader–Follower engineering validation on the isolated Task15 prototype. All 60 combinations (three candidates, two geometries, five retained tau values and two minGap arms) passed joint replay with zero teleport/collision rows and positive evaluated gaps. Direct insertion failed closed for 926/857; the matrix used a disclosed one-time `safe_then_move` initialization. Leader control correction and 0.05 s phase diagnostics are recorded. This remains engineering-only: Task9 formal runs 0, Stage 0.5 blocked, scientific equivalence false, and network/geometry/vType/tau/control/tail/formal-launch decisions remain with the researcher.
 

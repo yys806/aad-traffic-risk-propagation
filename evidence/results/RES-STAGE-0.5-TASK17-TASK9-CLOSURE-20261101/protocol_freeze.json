@@ -1,0 +1,43 @@
+{
+  "status": "FROZEN",
+  "network": "local_research/staging/task15_20261031/network_prototype/network.net.xml",
+  "network_sha256": "e4525a784de9928191532c1f6bc542f7f61dabe4c752e3d414beb4fb6ecd0484",
+  "network_length_m": 1000.0,
+  "lanes": 3,
+  "lane_width_m": 3.2,
+  "speed_limit_mps": 30.0,
+  "internal_step_s": 0.05,
+  "measurement_step_s": 0.1,
+  "resampling": "linear",
+  "tail_policy": "unrepresented tail retained in raw/audit; no endpoint extrapolation or hold",
+  "vehicle_length_m": 4.4196,
+  "carFollowModel": "Krauss",
+  "sigma": 0.5,
+  "accel": 2.6,
+  "decel": 4.5,
+  "apparentDecel": 4.5,
+  "emergencyDecel": 9.0,
+  "actionStepLength_s": 0.1,
+  "sigmaStep_s": 1.0,
+  "maxSpeed_mps": 27.78,
+  "laneChangeModel": "LC2013",
+  "tau_values": [
+    0.7389146576529666,
+    1.093342856277335,
+    1.3877275660721775,
+    1.8288599276236361,
+    2.5614676647488244
+  ],
+  "arms": {
+    "A": 2.5,
+    "B": 1.0
+  },
+  "seeds": [
+    20261101,
+    20261102,
+    20261103
+  ],
+  "leader_external_position_control": true,
+  "follower_external_position_control": false,
+  "initialization": "safe_then_move once before formal t=0"
+}

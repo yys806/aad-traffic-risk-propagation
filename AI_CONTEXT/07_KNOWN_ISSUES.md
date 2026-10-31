@@ -1,4 +1,8 @@
-## Current — AAD-S0.5-POST-R2-TASK16
+## Current — Task17 known issues (2026-11-01)
+
+MiTra trajectories remain non-independent physical truth and initial gaps remain reference-point estimates. The isolated prototype is not claimed background-equivalent to sealed B00. Six formal runs and four Task16 engineering rows have collision FAIL status at the 926-924-1 high-tau condition; their evidence is retained and their pairs are Unknown where required. Descriptive minimum lag is Unknown for non-unique minima and is never interpreted as real driver reaction time. Task9 cannot establish the AAD remote-message causal hypothesis or population-wide vehicle behavior.
+
+## Historical — AAD-S0.5-POST-R2-TASK16
 
 The isolated network passes all joint engineering replays but is not proven equivalent to the sealed B00 background. SUMO direct insertion obeys an insertion safety constraint and fails closed for candidates 926/857 at the observed initial gaps; `safe_then_move` is a one-time position relocation that must be reviewed before formal execution. Leader readback is exact only after external `moveTo`; `setSpeed` carries a documented 0.05 s phase. MiTra/B00 lengths change initial approximate gaps, MiTra Vehicle_type is not mapped to tau, and resampling tail policy remains unresolved. Formal Task9 runs remain 0.
 

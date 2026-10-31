@@ -1,4 +1,8 @@
-## Current — AAD-S0.5-POST-R2-TASK16 (2026-10-31)
+## Current — AAD-S0.5-TASK17 (2026-11-01)
+
+Task17 closure and Task9 launch are complete. Use `code/scripts/run_task17_closure_and_task9.py`, `code/outputs/formal/task9_20261101/` and `evidence/results/RES-STAGE-0.5-TASK17-TASK9-CLOSURE-20261101/`. Formal matrix is 60; status counts are PASS=54 and FAIL=6 collision.
+
+## Historical — AAD-S0.5-POST-R2-TASK16 (2026-10-31)
 
 Task16 completed real SUMO/TraCI Leader–Follower engineering replay for all three MiTra candidates across 60 geometry/tau/minGap combinations on the isolated prototype. Follower remained native SUMO-controlled; zero teleport/collision rows were observed. Direct insertion failed closed for two candidates and safe initialization is disclosed. No formal Task9 run occurred; researcher decisions remain pending.
 

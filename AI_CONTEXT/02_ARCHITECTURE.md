@@ -1,4 +1,8 @@
-## Current — AAD-S0.5-POST-R2-TASK16
+## Current — Task17 execution architecture (2026-11-01)
+
+Task16/Task9 use the isolated 1,000 m, 3-lane prototype for a fixed Leader and native SUMO Krauss Follower. `stage_0_5_fixed_leader_follower_traci.py` owns TraCI lifecycle checks, one-time `safe_then_move` initialization, current-sample Leader control/readback, and fail-closed status classification. `run_task17_closure_and_task9.py` freezes inputs/configs, generates the 60-row matrix, launches formal runs, writes trajectories, computes metrics and paired contrasts. The Follower is never externally moved during the dynamic phase.
+
+## Historical — AAD-S0.5-POST-R2-TASK16
 
 Task16 adds an engineering-only joint replay layer: externally controlled Leader plus native SUMO Krauss Follower, with one-time safe initialization for candidates that fail SUMO insertion at the observed gap. `stage_0_5_fixed_leader_follower_traci.py` does not alter Formal P2/D1 or the sealed B00 model. The isolated prototype remains a local replay network, not a claim of B00 background equivalence. Formal Task9 authorization is still separate.
 

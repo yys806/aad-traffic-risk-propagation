@@ -1,0 +1,28 @@
+{
+  "status": "PASS_ZERO_PHASE_AUDIT",
+  "records": [
+    {
+      "candidate": "962-958-1",
+      "status": "PASS",
+      "rows": 40,
+      "expected_rows": 40,
+      "max_abs_position_error_m": 0.0,
+      "max_abs_speed_error_mps": 0.0,
+      "speed_phase_lag_s": 0.0,
+      "position_control": "leader moveTo at current sample after step; follower never moveTo",
+      "speed_control": "current sample speed command is issued for the interval ending at that sample; readback is checked at the same input timestamp"
+    },
+    {
+      "candidate": "926-924-1",
+      "status": "PASS",
+      "rows": 40,
+      "expected_rows": 40,
+      "max_abs_position_error_m": 0.0,
+      "max_abs_speed_error_mps": 0.0,
+      "speed_phase_lag_s": 0.0,
+      "position_control": "leader moveTo at current sample after step; follower never moveTo",
+      "speed_control": "current sample speed command is issued for the interval ending at that sample; readback is checked at the same input timestamp"
+    }
+  ],
+  "phase_definition": "No 0.05 s hidden speed phase: each recorded leader speed equals the same input sample and command lag field is 0.0 s."
+}
