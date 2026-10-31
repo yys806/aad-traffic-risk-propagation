@@ -347,6 +347,8 @@
   "code/scripts/audit_stage_0_5_task10_final_diagnostic.py",
   "docs/STAGE_0_5_POST_R2_TASK11_PUBLIC_DATA_ACQUISITION_FEASIBILITY_20261031.md",
   "code/scripts/audit_stage_0_5_task11_public_data.py",
+  "docs/STAGE_0_5_POST_R2_TASK12_MITRA_T1_CANDIDATE_PHYSICAL_ADMISSION_20261031.md",
+  "code/scripts/audit_stage_0_5_task12_mitra_t1.py",
   "code/tests/test_stage_0_5_fixed_leader_pair.py",
   "docs/ROUND3_CANDIDATE_READINESS_REPORT_20261030.md",
   "docs/AAD_ROUND2_CLOSURE_AND_CONDITIONAL_VALIDATION_REPORT_20261030.md",
@@ -357,8 +359,8 @@
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-S0.5-POST-R2-TASK11: public independent physical-reference source audit complete with MiTra T1 parsed and access/physical blockers retained",
-  "why_now": "Audit I24V, MiTra and NGSIM public acquisition feasibility with one small MiTra trajectory package, without changing definitions or starting Task9.",
+  "active_task": "AAD-S0.5-POST-R2-TASK12: MiTra T1 candidate interaction and physical-admission pre-audit complete; formal Task9 input remains blocked",
+  "why_now": "Validate MiTra T1 DAll anomaly provenance, rank continuous leader/follower candidates and test physical-input readiness without changing Task9 or running simulation.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
    "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/count_reconciliation.json",
@@ -534,7 +536,9 @@
    "fixed_leader_runs": 0,
    "task9_result": "RES-STAGE-0.5-POST-R2-TASK9-FIXED-LEADER-PREP-20261031",
    "task11_result": "RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031",
+   "task12_result": "RES-STAGE-0.5-POST-R2-TASK12-MITRA-T1-CANDIDATE-PHYSICAL-ADMISSION-20261031",
    "public_data_status": "MiTra T1 small files parsed; I24V endpoint not reached; NGSIM video payload and file-specific license/time-space closure remain Unknown",
+   "mitra_t1_physical_admission_status": "Conditional candidate inventory; DAll audit file absent, vehicle reference point/video binding Unknown, formal Task9 segments 0",
    "round3_readiness": "NOT_READY"
   }
  },
@@ -1216,7 +1220,8 @@
     "RES-STAGE-0.5-POST-R2-TASK8-KINEMATIC-MECHANISM-DIAG-20261030",
     "RES-STAGE-0.5-POST-R2-TASK9-FIXED-LEADER-PREP-20261031",
     "RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC",
-    "RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031"
+    "RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031",
+    "RES-STAGE-0.5-POST-R2-TASK12-MITRA-T1-CANDIDATE-PHYSICAL-ADMISSION-20261031"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -5520,6 +5525,52 @@
    "gate_status": "blocked",
    "paper_locations": [
     "docs/STAGE_0_5_POST_R2_TASK11_PUBLIC_DATA_ACQUISITION_FEASIBILITY_20261031.md"
+   ],
+   "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-STAGE-0.5-POST-R2-TASK12-MITRA-T1-CANDIDATE-PHYSICAL-ADMISSION-20261031",
+   "experiment_id": "stage_0_5",
+   "name": "MiTra T1 candidate leader-follower interaction and physical-admission pre-audit",
+   "status": "completed_with_physical_admission_blockers",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK12-MITRA-T1-CANDIDATE-PHYSICAL-ADMISSION-20261031/teleport_audit_reconciliation.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK12-MITRA-T1-CANDIDATE-PHYSICAL-ADMISSION-20261031/candidate_pair_inventory.csv",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK12-MITRA-T1-CANDIDATE-PHYSICAL-ADMISSION-20261031/candidate_segment_summary.csv",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK12-MITRA-T1-CANDIDATE-PHYSICAL-ADMISSION-20261031/coordinate_frame_audit.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK12-MITRA-T1-CANDIDATE-PHYSICAL-ADMISSION-20261031/physical_gap_quality.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK12-MITRA-T1-CANDIDATE-PHYSICAL-ADMISSION-20261031/video_tracking_binding.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK12-MITRA-T1-CANDIDATE-PHYSICAL-ADMISSION-20261031/task9_input_compatibility.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK12-MITRA-T1-CANDIDATE-PHYSICAL-ADMISSION-20261031/source_bindings.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK12-MITRA-T1-CANDIDATE-PHYSICAL-ADMISSION-20261031/validation_record.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK12-MITRA-T1-CANDIDATE-PHYSICAL-ADMISSION-20261031/context_consistency_check.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK12-MITRA-T1-CANDIDATE-PHYSICAL-ADMISSION-20261031/manifest.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK12-MITRA-T1-CANDIDATE-PHYSICAL-ADMISSION-20261031/SHA256SUMS"
+   ],
+   "local_artifact_paths": [
+    "local_research/staging/task12_20261031/mitra/T1_DAll.ftlgx"
+   ],
+   "code_version_source": "code/scripts/audit_stage_0_5_task12_mitra_t1.py",
+   "configuration_source": "Unchanged Task9 protocol; no formal Task9 input or interpolation rule frozen",
+   "data_version_source": "MiTra T1_DAll trajectory archive, single-drone jumps file, and exact Range-acquired T1_DAll.ftlgx",
+   "core_metrics": {
+    "reciprocal_relation_rows": 1308347,
+    "vehicle_pairs": 3791,
+    "continuous_segments": 4335,
+    "segments_ge_5s": 2414,
+    "segments_ge_20s": 760,
+    "dall_official_audit_records_matched": 0,
+    "dall_tracking_log_bytes": 54345650,
+    "video_files_downloaded": 0,
+    "formal_task9_segments_admitted": 0,
+    "formal_task9_runs": 0,
+    "new_simulations": 0,
+    "scientific_equivalence_accepted": false
+   },
+   "current_conclusion": "MiTra T1 now has a ranked candidate leader/follower inventory and a heading-relative continuity screen, but DAll anomaly records, vehicle reference point, calibrated road s, video binding and physical net gap remain unresolved. Candidates remain pre-screen only; Task9 formal input is blocked.",
+   "gate_status": "blocked",
+   "paper_locations": [
+    "docs/STAGE_0_5_POST_R2_TASK12_MITRA_T1_CANDIDATE_PHYSICAL_ADMISSION_20261031.md"
    ],
    "scientific_claim_eligible": false
   }

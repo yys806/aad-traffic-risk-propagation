@@ -1,3 +1,7 @@
+## RES-STAGE-0.5-POST-R2-TASK12-MITRA-T1-CANDIDATE-PHYSICAL-ADMISSION-20261031
+
+MiTra T1 pre-audit found 1,308,347 reciprocal leader/follower rows, 3,791 vehicle pairs and 2,414 at-least-5-second candidate segments. The official DAll teleport audit file is absent from the complete public T1 archive; the 54.3 MB DAll tracking log was acquired without video. Provisional gaps, video binding and vehicle reference point remain Unknown, so formal Task9 admission is blocked. Report: docs/STAGE_0_5_POST_R2_TASK12_MITRA_T1_CANDIDATE_PHYSICAL_ADMISSION_20261031.md. Evidence: evidence/results/RES-STAGE-0.5-POST-R2-TASK12-MITRA-T1-CANDIDATE-PHYSICAL-ADMISSION-20261031/.
+
 ## RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031
 
 Bounded public-source audit for I24V, MiTra and NGSIM US-101. MiTra T1 small files were downloaded and parsed; I24V endpoint access and NGSIM video payload/time-space closure remain blocked. MiTra is `CONDITIONAL-GO` for Task9 input preparation only after paired video/log review; no formal segments or simulations were run. Report: docs/STAGE_0_5_POST_R2_TASK11_PUBLIC_DATA_ACQUISITION_FEASIBILITY_20261031.md. Evidence: evidence/results/RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031/.

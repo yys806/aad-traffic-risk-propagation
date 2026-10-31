@@ -1,3 +1,9 @@
+## Current — AAD-S0.5-POST-R2-TASK12 (2026-10-31)
+
+MiTra T1 candidate pre-audit completed. The complete T1 tracking/video ZIP directory has six MP4s, six single-drone logs and `T1_DAll.ftlgx`, but no `Teleporting_jumps_Dall.csv`; the single-drone jump file is not assigned to DAll. A 54.3 MB DAll log was Range-acquired and hash-bound, with no video download or decode. T1_DAll has 1,308,347 reciprocal leader/follower rows, 3,791 vehicle pairs, 4,335 continuous same-lane segments and 2,414 segments at least 5 s. Heading-relative screening found no README-threshold local jumps, but road s, vehicle reference point, physical net gap and video binding remain Unknown. Task9 formal segments/runs remain 0; Stage 0.5 blocked; scientific equivalence false; later gates unchanged.
+
+Evidence: `evidence/results/RES-STAGE-0.5-POST-R2-TASK12-MITRA-T1-CANDIDATE-PHYSICAL-ADMISSION-20261031/`.
+
 ## Current — AAD-S0.5-POST-R2-TASK11 (2026-10-31)
 
 Task11 completed a bounded public-data feasibility audit. MiTra T1 small files were downloaded, SHA/CRC checked and parsed: 1,578,393 rows, 1,456 vehicle IDs, nominal 30 Hz, 1,340 vehicles with at least 20 s, and 1,308,347 leader/follower rows per relation. MiTra is a conditional Task9 input candidate pending paired video/tracking-log and physical-gap review. I24V public README and Data Use Agreement were reviewed but the data endpoint was not reached; no I24V payload was obtained. NGSIM video directory facts were reused from Task7.2; no raw AVI payload, PTS/Global_Time mapping or camera coverage was closed. Stage 0.5 remains blocked, scientific equivalence false, Task9 formal runs 0, and Round3/Stage 0.6/Protocol Lock/Stage I remain unchanged.

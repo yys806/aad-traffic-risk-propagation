@@ -224,6 +224,22 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         )
     ]
 
+    # Task12: MiTra T1 candidate interaction and physical-admission pre-audit;
+    # only aggregate CSVs and hash-bound metadata are portable, not video/log
+    # payloads or raw trajectory tables.
+    task12_root = "evidence/results/RES-STAGE-0.5-POST-R2-TASK12-MITRA-T1-CANDIDATE-PHYSICAL-ADMISSION-20261031"
+    pairs["RES-STAGE-0.5-POST-R2-TASK12-MITRA-T1-CANDIDATE-PHYSICAL-ADMISSION-20261031"] = [
+        (f"{task12_root}/{name}", name)
+        for name in (
+            "teleport_audit_reconciliation.json", "candidate_pair_inventory.csv",
+            "candidate_segment_summary.csv", "coordinate_frame_audit.json",
+            "physical_gap_quality.json", "video_tracking_binding.json",
+            "task9_input_compatibility.json", "source_bindings.json",
+            "validation_record.json", "context_consistency_check.json",
+            "manifest.json", "SHA256SUMS",
+        )
+    ]
+
     # Policy A preflight proposals, not a frozen execution protocol.
     pairs['RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1'] = [
         ('code/outputs/formal/calibration/stage_0_5_interaction_diagnostics_v1/portable/' + name, name)
@@ -982,6 +998,7 @@ def _validate_source(source: Path) -> None:
         # Task7.2: four raw-file inventory and official license/time statements.
         "resource_inventory.csv", "license_scope_matrix.csv", "time_metadata_matrix.csv",
         "event_control_quality_comparison.csv", "physical_path_candidates.csv",
+        "candidate_pair_inventory.csv", "candidate_segment_summary.csv",
         }
     if source.suffix.lower() not in {".json", ".md", ".txt", ".sha256"} and source.name not in aggregate_names:
         raise ValueError(f"unsupported evidence file type: {source}")

@@ -1,0 +1,31 @@
+{
+  "status": "BLOCKED_PHYSICAL_ADMISSION_CONDITIONAL_INPUT_CANDIDATES_EXIST",
+  "candidate_segments_ge_5s": 2414,
+  "candidate_segments_ge_20s": 760,
+  "stable_leader_follower_field_sequence": true,
+  "reciprocal_relation_rows": 1308347,
+  "same_lane_relation_rows": 1308347,
+  "continuous_leader_position_speed_available": true,
+  "initial_follower_speed_available": true,
+  "physical_net_gap_available_for_admission": false,
+  "video_review_available": false,
+  "vehicle_type_to_heterogeneous_b00_tau_mapping": "Unknown and not assigned",
+  "time_resampling": {
+    "status": "DIAGNOSTIC_ONLY_NOT_FROZEN",
+    "segment_id": "857-851-1",
+    "source_sampling_dt_p50_s": 0.03336699999999837,
+    "target_step_s": 0.05,
+    "leader_speed_linear_interp_error_mps": {
+      "p50": 0.0002740605135773677,
+      "p95": 0.0024312492874187797,
+      "max": 0.011640044253482529
+    },
+    "interpretation": "A numerical feasibility check for the highest-ranked candidate only; it does not authorize or freeze the formal Task9 resampling rule."
+  },
+  "formal_task9_segments_admitted": 0,
+  "formal_task9_runs": 0,
+  "protocol_changed": false,
+  "decision": "Retain candidates as pre-screen only; researcher must decide whether to obtain a decodable paired video/log subset and how to resolve coordinate/reference-point and vehicle-type issues before formal admission.",
+  "portable_pair_rows": 500,
+  "portable_segment_rows": 500
+}

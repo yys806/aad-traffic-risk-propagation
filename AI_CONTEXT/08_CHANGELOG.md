@@ -1,3 +1,7 @@
+## Current — AAD-S0.5-POST-R2-TASK12 (2026-10-31)
+
+Added MiTra T1 candidate leader/follower screening, complete T1 archive central-directory reconciliation, a Range-acquired and hash-bound `T1_DAll.ftlgx`, heading-relative continuity diagnostics, provisional gap summaries, video-binding status and Task9 compatibility evidence. No formal input, interpolation rule, tau mapping, simulation or Gate state changed.
+
 ## Current — AAD-S0.5-POST-R2-TASK11 (2026-10-31)
 
 Added a bounded public-source audit for I24V, MiTra and NGSIM US-101. Downloaded and parsed MiTra T1 Readme/Data/teleport files, recorded hashes and ZIP CRCs, and produced source-specific license/applicability evidence. I24V endpoint access and NGSIM raw-video closure remain blocked. No scientific definitions, Task9 protocol, simulation, holdout or formal dataset were changed.

@@ -1,3 +1,10 @@
+## Current — AAD-S0.5-POST-R2-TASK12 MiTra blockers
+
+- `Teleporting_jumps_Dall.csv` is described by the README but absent from the complete public T1 tracking/video ZIP central directory; single-drone `Teleporting_jumps.csv` cannot be used as DAll evidence.
+- `T1_DAll.ftlgx` is acquired but its DataFromSky binary format is not decoded; no DAll vehicle ID is bound to a specific MP4.
+- MiTra x/y reference-point semantics and calibrated road longitudinal s remain Unknown; provisional center-gap values cannot be used for Task9 admission.
+- MiTra `Vehicle_type` to the five heterogeneous B00 tau values remains Unknown and was not assigned.
+
 ## Current — AAD-S0.5-POST-R2-TASK11 public-source blockers
 
 - MiTra T1 trajectories are processed DataFromSky outputs; no paired raw video/tracking-log review was obtained, so independent physical truth and Task9 physical-gap admission remain Unknown.

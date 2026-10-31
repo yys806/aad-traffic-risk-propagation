@@ -1,3 +1,7 @@
+## Current — AAD-S0.5-POST-R2-TASK12
+
+Task12 produced a MiTra T1 candidate inventory only. Continuous leader/follower sequences exist, but physical admission is blocked by missing DAll anomaly records, vehicle reference-point semantics, calibrated road coordinate, decoded video binding and unresolved MiTra vehicle-type to B00 tau mapping. Task9 protocol, seeds, arms and formal run count remain unchanged at 0.
+
 ## Current — AAD-S0.5-POST-R2-TASK11
 
 Task11 performed no SUMO/TraCI or fixed-leader formal run. MiTra T1 is a conditional candidate for future Task9 input screening only; formal admitted segments remain 0 until paired video/log and physical initial-gap checks pass. I24V and NGSIM were audited as source options with separate roles. Existing Task9 protocol and seed matrix are unchanged.

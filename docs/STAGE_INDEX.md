@@ -1,3 +1,9 @@
+## Current — AAD-S0.5-POST-R2-TASK12 (2026-10-31)
+
+MiTra T1 field-consistent front/rear candidates were screened without changing Task9. The complete public tracking archive has no separate DAll teleport CSV; local heading-relative continuity screening produced no threshold flags, while calibrated road s, vehicle reference point, physical net gap and video binding remain Unknown. No formal Task9 input or experiment was admitted.
+
+Report: docs/STAGE_0_5_POST_R2_TASK12_MITRA_T1_CANDIDATE_PHYSICAL_ADMISSION_20261031.md; evidence: evidence/results/RES-STAGE-0.5-POST-R2-TASK12-MITRA-T1-CANDIDATE-PHYSICAL-ADMISSION-20261031/.
+
 ## Current — AAD-S0.5-POST-R2-TASK11 (2026-10-31)
 
 The public-source audit distinguishes direct NGSIM path verification, independent physical reference, and Task9 input use. MiTra T1 supplied a real 30 Hz trajectory package for conditional input screening; paired video/log and physical-gap validation are still required. I24V endpoint access was not closed. NGSIM raw video remains the only direct route to current US-101 candidate review, with Task7.2 license/time/space blockers retained. Stage 0.5 remains blocked and no formal Task9 run occurred.
