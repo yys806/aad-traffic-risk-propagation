@@ -1,0 +1,21 @@
+{
+  "task_id": "AAD-S0.5-POST-R2-TASK15",
+  "status": "PASS_BOUNDED_NETWORK_AND_REAL_TRACI_ENGINEERING_VALIDATION",
+  "network_geometry": "PASS",
+  "prototype_space": "PASS",
+  "synthetic_traci": "PASS",
+  "candidate_traci_replays": "3 PASS",
+  "paired_input_validation": "PASS",
+  "formal_task9_runs": 0,
+  "not_run": [
+    "formal Task9 A/B",
+    "6N matrix",
+    "Round3",
+    "Stage 0.6",
+    "Protocol Lock",
+    "Stage I",
+    "holdout",
+    "third window"
+  ],
+  "targeted_tests": "python -m pytest -q code/tests/test_stage_0_5_fixed_leader_pair.py code/tests/test_stage_0_5_fixed_leader_replay.py code/tests/test_stage_0_5_fixed_leader_traci.py (7 passed)"
+}

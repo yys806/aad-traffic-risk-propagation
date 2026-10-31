@@ -1,3 +1,12 @@
+## Current — AAD-S0.5-POST-R2-TASK15
+
+- Sealed B00 network cannot contain the complete MiTra leader traces; the isolated prototype passes geometry but is not background-equivalent by default.
+- Real TraCI works through the installed SUMO 1.26.0 tools path; `SUMO_HOME` remains unset, so the adapter records the explicit tools-path binding.
+- `setSpeed` controls the next integration interval, creating a documented 0.05 s command phase; this is not a scientific reaction-time estimate.
+- B00/MiTra vehicle lengths alter approximate initial gaps; no geometry choice is Agreed.
+- MiTra Vehicle_type to B00 vType/tau remains researcher decision; no mapping was selected.
+- Fixed-grid tails remain 0.0126/0.0300/0.0486 s; no formal tail policy selected.
+
 ## Current — AAD-S0.5-POST-R2-TASK14
 
 - 当前 SUMO 网络主线车道总纵向长度约 659.17 m；三个完整 MiTra 候选 leader 轨迹位移约 752–875 m，完整局部映射可能超出网络范围，需先核实并保持 Blocked，不得擅自裁剪或改网。

@@ -1,3 +1,9 @@
+## Current — AAD-S0.5-POST-R2-TASK15 (2026-10-31)
+
+Task15 engineering validation completed with blockers. SUMO 1.26.0 and matching official TraCI tools were used through the installed tools path. An isolated 1,000 m/3-lane prototype passed synthetic and three actual MiTra Leader replays with exact position/speed readback, zero teleport and zero collision. The sealed B00 network remains 103–225 m too short for complete traces; the prototype is not background-equivalent by default. Vehicle geometry, tau/vType assignment and resampling-tail policy remain researcher decisions. Task9 formal runs remain 0; Stage 0.5 blocked, scientific equivalence false, later gates unchanged.
+
+Report: docs/STAGE_0_5_POST_R2_TASK15_TASK9_NETWORK_AND_TRACI_ENGINEERING_VALIDATION_20261031.md; evidence: evidence/results/RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031/.
+
 ## Current — AAD-S0.5-POST-R2-TASK14 (2026-10-31)
 
 研究者已 Agreed Minimum Sufficient Authenticity 作为 Task9 输入准入原则。三个候选的标准化输入、30 Hz→0.05 s 重采样、SUMO 局部坐标容纳、A/B common-input 和固定前车 trace/readback 工程检查已完成。Task9 formal runs 仍 0；Stage 0.5 blocked、scientific equivalence false、Round3/Stage 0.6/Protocol Lock/Stage I 未启动。完整 MiTra leader 位移已确认超过现有主线长度约 103–225 m，tau 映射和末端尾差待研究者决定。

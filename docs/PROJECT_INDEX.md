@@ -1,3 +1,9 @@
+## Current — AAD-S0.5-POST-R2-TASK15 (2026-10-31)
+
+Task15 completed real SUMO/TraCI Leader replay in an isolated engineering prototype. All three candidates replayed with exact position/speed readback and no safety events; sealed B00 network horizon and researcher choices on geometry/tau/tail remain blockers. No formal Task9 run occurred.
+
+Report: docs/STAGE_0_5_POST_R2_TASK15_TASK9_NETWORK_AND_TRACI_ENGINEERING_VALIDATION_20261031.md; evidence: evidence/results/RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031/.
+
 ## Current — AAD-S0.5-POST-R2-TASK14 (2026-10-31)
 
 Task14 已将三个 MiTra 候选转换为 Task9 预检输入。Minimum Sufficient Authenticity 已登记为 Agreed，仅适用于输入适用性判断。当前不执行正式 Task9；完整候选轨迹与 SUMO 现有网络长度的兼容性正在检查。

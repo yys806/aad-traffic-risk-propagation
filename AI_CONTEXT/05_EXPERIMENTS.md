@@ -1,3 +1,7 @@
+## Current — AAD-S0.5-POST-R2-TASK15
+
+Task15 engineering replay is complete. The isolated prototype and real SUMO/TraCI leader readback pass for all three candidates. This is not a Task9 paired run: no follower response, Formal P2, D1 or scientific metric was evaluated. Sealed B00 network horizon, geometry choice, tau/vType assignment and tail policy remain blockers; formal runs remain 0.
+
 ## Current — AAD-S0.5-POST-R2-TASK14 (completed with blockers)
 
 Task14 已完成主要输入构建：已批准最低充分真实性输入原则，三个 MiTra 候选的标准化/重采样/局部 SUMO 坐标预检和 A/B 配对公平性审计均有证据。当前完整 leader 轨迹超过网络范围，固定前车仅完成 trace/readback 工程 smoke test；候选输入包准备不等于正式 Task9 执行批准。五档 tau 保持原值，MiTra Vehicle_type 映射仍由研究者决定，formal runs 仍 0。

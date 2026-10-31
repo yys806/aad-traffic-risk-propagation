@@ -268,6 +268,22 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         )
     ]
 
+    # Task15: isolated network and real TraCI engineering validation summaries.
+    task15_root = "evidence/results/RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031"
+    pairs["RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031"] = [
+        (f"{task15_root}/{name}", name)
+        for name in (
+            "network_geometry_audit.json", "candidate_spatial_envelope.json",
+            "network_prototype_manifest.json", "vehicle_geometry_comparison.json",
+            "resampling_kinematic_diagnostics.json", "tail_policy_comparison.json",
+            "traci_environment.json", "synthetic_replay_validation.json",
+            "candidate_leader_replay_validation.json", "paired_input_validation.json",
+            "vtype_tau_decision_options.json", "task15_execution_readiness.json",
+            "source_bindings.json", "validation_record.json", "context_consistency_check.json",
+            "manifest.json", "SHA256SUMS",
+        )
+    ]
+
     # Policy A preflight proposals, not a frozen execution protocol.
     pairs['RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1'] = [
         ('code/outputs/formal/calibration/stage_0_5_interaction_diagnostics_v1/portable/' + name, name)

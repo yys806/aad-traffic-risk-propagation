@@ -1,3 +1,7 @@
+## Current — AAD-S0.5-POST-R2-TASK15
+
+Task15 additions: `code/scripts/prepare_stage_0_5_task15_network.py` builds an isolated replay prototype; `code/scripts/audit_stage_0_5_task15_network_traci_validation.py` assembles geometry/replay evidence; `code/src/riskprop/stage_0_5_fixed_leader_traci.py` implements the engineering-only SUMO adapter. The sealed fixed-leader contract remains in `stage_0_5_fixed_leader_pair.py`; no formal measurement module changed.
+
 ## Current — AAD-ROUND2-CLOSURE-20261030
 
 Offline-only tools: code/scripts/prepare_stage_0_5_round2_closure.py audits the sealed actual-arm XML, historical replay seeds, B witness-documentation completeness and conditional gates; code/scripts/audit_stage_0_5_round2_closure_comparability.py compares existing FormalRisk/native/formal-aligned/D1 interfaces with deterministic fixtures and verifies reused small evidence. Targeted tests are their matching test_stage_0_5_round2_closure*.py files. No production call path, schema, runtime guard or measurement implementation changed. The documentation checker cannot establish physical truth.

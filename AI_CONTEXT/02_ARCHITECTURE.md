@@ -1,3 +1,7 @@
+## Current — AAD-S0.5-POST-R2-TASK15
+
+Added an engineering-only TraCI leader replay adapter (`riskprop.stage_0_5_fixed_leader_traci`) and an isolated straight-line SUMO prototype. The adapter controls position and next-step speed, records immediate readback, and logs teleport/collision status. It does not alter the sealed B00 network or follower model and is not a formal Task9 execution path.
+
 # AAD Architecture
 
 ## 2026-10-27 Weekly B00 accepted; Stage I remains BLOCKED

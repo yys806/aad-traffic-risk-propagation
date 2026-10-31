@@ -1,3 +1,7 @@
+## Current — AAD-S0.5-POST-R2-TASK15
+
+Task15 flow: Task14 staged candidate resampled CSV → isolated 1,000 m prototype network → real SUMO 1.26.0/TraCI leader-only engineering replay → readback JSON in ignored staging → aggregate evidence. No raw MiTra data, candidate replay logs or prototype network payloads enter portable evidence; hashes and summaries do. Formal Task9 data flow remains unchanged.
+
 ## Current — AAD-S0.5-POST-R2-TASK13 input-review boundary
 
 Task13 reads only the three Task12-ranked candidate segments from the staged T1_DAll archive and the hash-bound DAll log. It writes candidate evaluation, time coverage, reference-point sensitivity and input-review decisions. No formal Task9 input file is created and no MiTra data enters the NGSIM formal flow.

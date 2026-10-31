@@ -1,0 +1,25 @@
+{
+  "status": "COMPLETED_POLICY_COMPARISON_NOT_SELECTED",
+  "options": [
+    {
+      "policy": "fixed_grid_only",
+      "effect": "uniform 0.05 s, leaves the recorded tail outside grid",
+      "formal_choice": false
+    },
+    {
+      "policy": "retain_raw_endpoint",
+      "effect": "preserves full observation but breaks uniform fixed-step contract",
+      "formal_choice": false
+    },
+    {
+      "policy": "endpoint_extrapolation_or_hold",
+      "effect": "adds unobserved state and requires researcher decision",
+      "formal_choice": false
+    }
+  ],
+  "candidate_tails_s": {
+    "962-958-1": 45.900000000000006,
+    "926-924-1": 46.55,
+    "857-851-1": 48.5
+  }
+}

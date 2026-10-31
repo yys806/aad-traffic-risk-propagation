@@ -1,3 +1,7 @@
+## Pending — AAD-S0.5-POST-R2-TASK15 researcher decisions
+
+Task15 does not create a new Agreed scientific decision. Researcher review is needed for: (1) whether the isolated straight-line prototype is acceptable for controlled Task9 replay despite changed background geometry, (2) B00 versus MiTra vehicle lengths, (3) target B00 vType/tau assignment while retaining five tau values, and (4) handling the sub-step resampling tail. Formal Task9 execution remains unauthorized.
+
 ## Agreed — AAD-S0.5-DEC-MINIMUM-SUFFICIENT-AUTHENTICITY-20261031
 
 研究者于 2026-10-31 明确确认：Task9 的真实交通输入采用 Minimum Sufficient Authenticity。输入不要求完美物理还原，只需具备基本可靠的 reciprocal leader/follower 关系、至少20秒连续同车道交互、无明显身份跳变/时间断档/顺序反转、合理速度/加速度、共同参考点假设下的正初始间距、可复现时间序列和可转换到0.05秒的处理链。允许局部坐标投影、参考点近似、间距敏感性分析和数值重采样。

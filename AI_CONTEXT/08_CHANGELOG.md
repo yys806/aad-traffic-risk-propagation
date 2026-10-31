@@ -1,3 +1,7 @@
+## Current — AAD-S0.5-POST-R2-TASK15 (2026-10-31)
+
+Completed sealed/prototype network geometry audit, isolated 1,000 m replay network, real SUMO 1.26.0 TraCI leader adapter, synthetic and three actual Leader replays, vehicle-geometry comparison, tail/position-speed diagnostics and independent A/B input hash checks. Formal Task9 remains unrun; network/background-equivalence, geometry, tau and tail decisions remain pending.
+
 ## Current — AAD-S0.5-POST-R2-TASK14 (Active, 2026-10-31)
 
 登记研究者 Agreed 的 Minimum Sufficient Authenticity 决策，启动三候选 Task9 输入构建和配对工程预检。初步检查发现现有 SUMO 主线总长度可能小于三个完整 MiTra leader 运动范围；该事实待输入构建脚本定量确认。无正式实验启动。

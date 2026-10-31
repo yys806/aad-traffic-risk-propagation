@@ -1,3 +1,9 @@
+## Current — AAD-S0.5-POST-R2-TASK15 (2026-10-31)
+
+Network and real TraCI engineering validation completed in an isolated prototype. Complete candidates do not fit sealed B00 geometry; formal Task9 remains blocked pending network/background-equivalence, vehicle geometry, tau and tail decisions.
+
+Report: docs/STAGE_0_5_POST_R2_TASK15_TASK9_NETWORK_AND_TRACI_ENGINEERING_VALIDATION_20261031.md; evidence: evidence/results/RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031/.
+
 ## Current — AAD-S0.5-POST-R2-TASK14 (2026-10-31)
 
 Task14 完成候选输入构建和固定前车配对工程预检。研究者已批准最低充分真实性原则；正式运行仍为 0，Stage 0.5 继续 blocked。

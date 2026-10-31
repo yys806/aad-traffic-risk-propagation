@@ -1,3 +1,9 @@
+## Current — AAD-S0.5-POST-R2-TASK15 (completed with blockers, 2026-10-31)
+
+Task15 completed network/TraCI engineering validation. SUMO 1.26.0 and matching official tools were found; a real TraCI adapter was tested on an isolated 1,000 m/3-lane prototype. Synthetic replay and all three actual MiTra Leader traces passed stepwise readback with zero position/speed error under the recorded one-step speed-command phase, zero teleport and zero collision. The sealed B00 network remains too short for complete candidates by 103–225 m; the prototype does not claim background-traffic equivalence. Vehicle-length alternatives, tau/vType assignment and tail policy remain researcher decisions. Task9 formal runs remain 0; Stage 0.5 blocked; scientific equivalence false; later gates unchanged.
+
+Evidence: `evidence/results/RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031/`.
+
 ## Current — AAD-S0.5-POST-R2-TASK14 (completed with blockers, 2026-10-31)
 
 Task14 输入构建与配对预检已完成。研究者已 Agreed `AAD-S0.5-DEC-MINIMUM-SUFFICIENT-AUTHENTICITY-20261031`，仅用于 Task9 真实输入适用性，不改变 Formal P2/D1/B、Scientific Equivalence 或 Stage 0.5 Gate。当前主候选 962-958-1、次候选 926-924-1、备用 857-851-1；Task9 formal runs 仍 0。三个标准化输入、30 Hz→0.05 s 重采样、现有 SUMO 局部坐标容纳性、A/B common-input 预检和固定前车 trace/readback 工程检查均已完成；不得启动正式实验或自行决定 tau 映射。

@@ -1,3 +1,7 @@
+## RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031
+
+Engineering-only Task15 validation: isolated network prototype, SUMO 1.26.0 TraCI adapter, synthetic replay and three actual Leader replays passed readback and safety checks. Sealed B00 horizon, vehicle geometry, tau/vType and tail policy remain unresolved; formal Task9 runs remain 0. Report: docs/STAGE_0_5_POST_R2_TASK15_TASK9_NETWORK_AND_TRACI_ENGINEERING_VALIDATION_20261031.md. Evidence: evidence/results/RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031/.
+
 ## Current — AAD-S0.5-POST-R2-TASK14 (2026-10-31)
 
 Task14 输入构建与配对预检已完成，网络范围和 tau 决策仍阻塞正式执行。将登记三候选标准化输入、重采样、局部坐标和工程回放检查；不产生正式 Task9 结果。

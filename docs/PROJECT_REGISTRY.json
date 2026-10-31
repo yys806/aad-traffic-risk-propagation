@@ -354,6 +354,11 @@
   "docs/STAGE_0_5_POST_R2_TASK14_MITRA_T1_TASK9_INPUT_BUILD_AND_PAIR_PREFLIGHT_20261031.md",
   "code/scripts/prepare_stage_0_5_task14_mitra_task9_inputs.py",
   "code/src/riskprop/stage_0_5_fixed_leader_replay.py",
+  "docs/STAGE_0_5_POST_R2_TASK15_TASK9_NETWORK_AND_TRACI_ENGINEERING_VALIDATION_20261031.md",
+  "code/scripts/prepare_stage_0_5_task15_network.py",
+  "code/scripts/audit_stage_0_5_task15_network_traci_validation.py",
+  "code/src/riskprop/stage_0_5_fixed_leader_traci.py",
+  "code/tests/test_stage_0_5_fixed_leader_traci.py",
   "code/tests/test_stage_0_5_fixed_leader_replay.py",
   "code/tests/test_stage_0_5_fixed_leader_pair.py",
   "docs/ROUND3_CANDIDATE_READINESS_REPORT_20261030.md",
@@ -365,8 +370,8 @@
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-S0.5-POST-R2-TASK14: MiTra T1 input construction and paired preflight complete with network/tau blockers",
-  "why_now": "Record reproducible candidate inputs and fairness checks while awaiting network-horizon and tau-mapping decisions before any formal Task9 run.",
+  "active_task": "AAD-S0.5-POST-R2-TASK15: network and real TraCI engineering validation complete with researcher-decision blockers",
+  "why_now": "Record isolated network compatibility and real SUMO/TraCI Leader replay evidence before any formal Task9 authorization.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
    "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/count_reconciliation.json",
@@ -545,6 +550,8 @@
    "task12_result": "RES-STAGE-0.5-POST-R2-TASK12-MITRA-T1-CANDIDATE-PHYSICAL-ADMISSION-20261031",
    "task13_result": "RES-STAGE-0.5-POST-R2-TASK13-MITRA-T1-MINIMUM-SUFFICIENT-INPUT-ASSESSMENT-20261031",
    "task14_result": "RES-STAGE-0.5-POST-R2-TASK14-MITRA-TASK9-INPUT-PREFLIGHT-20261031",
+   "task15_result": "RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031",
+   "task15_status": "Engineering replay PASS in isolated prototype; sealed network, geometry, tau and tail decisions remain pending",
    "task14_status": "Input packages and A/B preflight complete; all formal candidates blocked by network horizon and tau decision",
    "mitra_t1_minimum_sufficient_status": "962-958-1 and 926-924-1 ready for researcher Task9 input review; formal admission/runs remain 0",
    "public_data_status": "MiTra T1 small files parsed; I24V endpoint not reached; NGSIM video payload and file-specific license/time-space closure remain Unknown",
@@ -1233,7 +1240,8 @@
     "RES-STAGE-0.5-POST-R2-TASK11-PUBLIC-DATA-FEASIBILITY-20261031",
     "RES-STAGE-0.5-POST-R2-TASK12-MITRA-T1-CANDIDATE-PHYSICAL-ADMISSION-20261031",
     "RES-STAGE-0.5-POST-R2-TASK13-MITRA-T1-MINIMUM-SUFFICIENT-INPUT-ASSESSMENT-20261031",
-    "RES-STAGE-0.5-POST-R2-TASK14-MITRA-TASK9-INPUT-PREFLIGHT-20261031"
+    "RES-STAGE-0.5-POST-R2-TASK14-MITRA-TASK9-INPUT-PREFLIGHT-20261031",
+    "RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -5668,6 +5676,56 @@
    "gate_status": "blocked",
    "paper_locations": [
     "docs/STAGE_0_5_POST_R2_TASK14_MITRA_T1_TASK9_INPUT_BUILD_AND_PAIR_PREFLIGHT_20261031.md"
+   ],
+   "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031",
+   "experiment_id": "stage_0_5",
+   "name": "Task9 network adaptation and real TraCI leader replay engineering validation",
+   "status": "completed_with_network_decision_and_tau_blockers",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031/network_geometry_audit.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031/candidate_spatial_envelope.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031/network_prototype_manifest.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031/vehicle_geometry_comparison.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031/resampling_kinematic_diagnostics.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031/tail_policy_comparison.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031/traci_environment.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031/synthetic_replay_validation.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031/candidate_leader_replay_validation.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031/paired_input_validation.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031/vtype_tau_decision_options.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031/task15_execution_readiness.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031/source_bindings.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031/validation_record.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031/context_consistency_check.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031/manifest.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031/SHA256SUMS"
+   ],
+   "local_artifact_paths": [
+    "local_research/staging/task15_20261031/"
+   ],
+   "code_version_source": "code/scripts/prepare_stage_0_5_task15_network.py; code/scripts/audit_stage_0_5_task15_network_traci_validation.py; code/src/riskprop/stage_0_5_fixed_leader_traci.py",
+   "configuration_source": "Isolated engineering prototype only; sealed B00 network unchanged; no formal Task9 protocol changes",
+   "data_version_source": "Task14 local candidate inputs, sealed B00 network, SUMO 1.26.0 official tools",
+   "core_metrics": {
+    "prototype_network_length_m": 1000.0,
+    "synthetic_replay_status": "PASS_READBACK",
+    "candidate_leader_replays_passed": 3,
+    "candidate_replay_teleports": 0,
+    "candidate_replay_collisions": 0,
+    "candidate_replay_max_position_error_m": 0.0,
+    "candidate_replay_max_speed_error_mps": 0.0,
+    "paired_input_checks_passed": 3,
+    "formal_task9_runs": 0,
+    "new_simulations": 0,
+    "scientific_equivalence_accepted": false
+   },
+   "current_conclusion": "Real SUMO 1.26.0/TraCI successfully replayed the three complete MiTra Leader traces in an isolated 1,000 m prototype with exact readback and no safety events. The sealed B00 network remains too short by 103–225 m and the prototype is not background-equivalent by default. Vehicle geometry, tau/vType assignment and tail policy remain researcher decisions; formal Task9 is not authorized.",
+   "gate_status": "blocked",
+   "paper_locations": [
+    "docs/STAGE_0_5_POST_R2_TASK15_TASK9_NETWORK_AND_TRACI_ENGINEERING_VALIDATION_20261031.md"
    ],
    "scientific_claim_eligible": false
   }
