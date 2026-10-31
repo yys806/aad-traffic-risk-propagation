@@ -1,3 +1,9 @@
+## Current — AAD-S0.5-POST-R2-TASK10 (2026-10-31)
+
+Round2 final offline diagnostic is complete with Case B blockers. Task6 contexts were used for event/control quality comparison, Task7.1 PreciseNGSIM evidence remains insufficient for event-level crosswalk, and 40 same-trajectory source→target candidates were audited without a qualified B witness because physical connection basis is Unknown. Task9 remains execution-blocked by physical input; Stage 0.5 and all later gates remain unchanged.
+
+Report: `docs/STAGE_0_5_POST_R2_TASK10_FINAL_DIAGNOSTIC_20261031.md`; evidence: `evidence/results/RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC/`.
+
 ## Current — AAD-S0.5-POST-R2-TASK9 (2026-10-31)
 
 Task9 completed the authorized physical-reference dispatch attempt and fixed-leader engineering preparation with blockers. The original provider inquiry remains unsent with no receipt; no video or independent physical reference was obtained. Static B00/Round2 fairness checks, approved seeds 20261101/02/03, common leader input and initial-state checks, and `C_initial/C_f/C_l/C/C_gap/R` residual checks are implemented and targeted-tested. Formal paired execution remains `Blocked by physical input`; Stage 0.5, Stage 0.6, Protocol Lock, Stage I and Round3 remain unchanged.

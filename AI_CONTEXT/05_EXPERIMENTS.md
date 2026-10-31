@@ -1,3 +1,9 @@
+## Current — AAD-S0.5-POST-R2-TASK10 (2026-10-31)
+
+Task10 is the final bounded Round2 diagnostic. It reuses Task6/Task8 residuals and Task9 readiness, adds event/control quality comparisons and a time-expanded source→target audit, and preserves Unknown where physical connection evidence is absent. Forty same-trajectory ordered candidates were found across the two windows; qualified B witnesses remain 0. PreciseNGSIM cannot support an independent event crosswalk. Task9 remains `Blocked by physical input`; no formal fixed-leader run, new simulation or holdout read occurred.
+
+Evidence: `evidence/results/RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC/`.
+
 ## Current — AAD-S0.5-POST-R2-TASK9 (2026-10-31)
 
 Task9 fixed-leader preparation is `Blocked by physical input`. The Task7 provider inquiry was reused unchanged but actual dispatch remains unverified and no video/physical cases exist. Static B00/Round2 comparison confirms five `minGap`-only differences and preserves the heterogeneous tau values. The authorized matrix is three seeds (20261101/02/03), two arms, 6N runs after qualified physical segment selection. New fail-closed checks require identical leader time/position/speed inputs, equal achieved follower speed and physical net gap at the initial anchor, and signed `C_initial/C_f/C_l/C/C_gap/R` decomposition with residual verification. Formal execution and physical review are 0; Stage 0.5 and later gates remain unchanged.

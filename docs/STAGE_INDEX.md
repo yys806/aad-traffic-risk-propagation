@@ -20,6 +20,12 @@ Reports: docs/AAD_ROUND2_RESEARCH_DECISIONS_20261030.md; docs/SIMULATOR_NGSIM_FO
 
 离线重建两个授权 NGSIM US-101 窗口的 Formal P2 和固定 source/target onset 归属，复用封存 B00/Round2 measured state 做宏观、微观和风险对照。真实 source 有 167/159 个 Formal P2，B00/Round2 source formal-aligned/D1 均为 0；时间原点、cohort 和 simulator equivalence 仍未闭合。任务未启动新 SUMO/TraCI，Stage 0.5 Gate、Stage 0.6、Protocol Lock、Stage I 不变。报告：`docs/STAGE_0_5_ROUND2_TASK4_REAL_SOURCE_SUPPORT_AND_MULTISCALE_CROSSWALK_20261030.md`；证据：`evidence/results/RES-STAGE-0.5-ROUND2-TASK4-REAL-SOURCE-SUPPORT-AND-MULTISCALE-CROSSWALK-20261030/`。
 
+## Current — AAD-S0.5-POST-R2-TASK10 (2026-10-31)
+
+Task10 closes Round2's bounded offline diagnostic. Internal trajectory consistency remains usable for descriptive interaction analysis, PreciseNGSIM event crosswalk is blocked, and 40 source→target path candidates yield 0 qualified B witnesses because physical connection basis remains Unknown. Task9 fixed-leader execution remains blocked by physical input. Stage 0.5 remains blocked; Stage 0.6, Protocol Lock, Stage I and Round3 are unchanged.
+
+Report: `docs/STAGE_0_5_POST_R2_TASK10_FINAL_DIAGNOSTIC_20261031.md`; evidence: `evidence/results/RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC/`.
+
 ## Current — AAD-S0.5-POST-R2-TASK9 (2026-10-31)
 
 Independent physical-reference acquisition remains blocked: the Task7 inquiry was not sent, the four raw AVI payloads were not downloaded, and no PTS/Global_Time or source-lane coverage was verified. Fixed-leader preparation is complete but no qualified physical segment exists; the approved 20261101/02/03 matrix is therefore not executed. Static configuration and kinematic contract checks passed, while Stage 0.5 remains `blocked`, scientific equivalence remains false, and Stage 0.6/Protocol Lock/Stage I/Round3 remain unchanged.

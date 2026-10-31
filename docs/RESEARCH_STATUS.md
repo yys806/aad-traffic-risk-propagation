@@ -1,3 +1,9 @@
+## Current — AAD-S0.5-POST-R2-TASK10 (2026-10-31)
+
+Round2 final offline diagnostic completed with blockers. Reused Task4/5/6/8/9 evidence and added an event/control trajectory-quality comparison, a bounded PreciseNGSIM event-crosswalk feasibility decision, and a two-window source→target interaction-path audit. Formal source counts remain 167/159 and target counts 174/252. Forty same-trajectory source→target ordered candidates were found, but all lack an independent physical connection basis, so qualified B witnesses remain 0 and 40 are `Unknown`. PreciseNGSIM event-level crosswalk remains blocked. Task9 engineering is ready but physical input is absent; formal fixed-leader runs remain 0. Final decision is Case B; Stage 0.5 remains blocked, scientific equivalence false, Stage 0.6/Protocol Lock/Stage I/Round3 unchanged.
+
+Report: docs/STAGE_0_5_POST_R2_TASK10_FINAL_DIAGNOSTIC_20261031.md; evidence: evidence/results/RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC/.
+
 ## Current — AAD-S0.5-POST-R2-TASK9 (2026-10-31)
 
 Task9 completed authorized engineering preparation with blockers. The original Task7 provider inquiry was reused unchanged but was not sent: Edge URL observation was blocked by the Computer Use safety layer and a Gmail authentication origin was rejected by automatic review; no sender, recipient, Message-ID or receipt exists. No video was acquired, no ffprobe/time mapping or physical review occurred. The sealed B00/Round2 routes differ only in five heterogeneous passenger `minGap` values 2.5→1.0; heterogeneous tau and byte-identical network/run config were verified. Task9 now records the approved seeds 20261101/20261102/20261103 and a fail-closed common-leader/initial-state/kinematic-residual contract, but fixed-leader execution is `Blocked by physical input` with 0 formal runs and 0 qualified segments. Stage 0.5 remains blocked; scientific equivalence false; Stage 0.6, Protocol Lock, Stage I and Round3 unchanged.

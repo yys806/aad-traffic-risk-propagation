@@ -341,8 +341,10 @@
   "docs/VIDEO_ACQUISITION_GO_NO_GO_20261030.md",
   "docs/FIXED_LEADER_PAIRED_EXPERIMENT_PROPOSAL_20261030.md",
   "docs/STAGE_0_5_POST_R2_TASK9_FIXED_LEADER_AND_PHYSICAL_REFERENCE_20261031.md",
+  "docs/STAGE_0_5_POST_R2_TASK10_FINAL_DIAGNOSTIC_20261031.md",
   "code/src/riskprop/stage_0_5_fixed_leader_pair.py",
   "code/scripts/audit_stage_0_5_task9_fixed_leader.py",
+  "code/scripts/audit_stage_0_5_task10_final_diagnostic.py",
   "code/tests/test_stage_0_5_fixed_leader_pair.py",
   "docs/ROUND3_CANDIDATE_READINESS_REPORT_20261030.md",
   "docs/AAD_ROUND2_CLOSURE_AND_CONDITIONAL_VALIDATION_REPORT_20261030.md",
@@ -353,8 +355,8 @@
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-S0.5-POST-R2-TASK9: physical-reference dispatch blocked; fixed-leader paired preparation complete",
-  "why_now": "Complete the authorized independent-physical-reference and fixed-leader preparation work without bypassing license, timing, spatial or Gate conditions.",
+  "active_task": "AAD-S0.5-POST-R2-TASK10: final offline diagnostic complete; physical path and Task9 readiness remain blocked",
+  "why_now": "Close Round2 with the final bounded trajectory-quality, physical-path and fixed-leader readiness diagnosis without new simulations or data acquisition.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
    "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/count_reconciliation.json",
@@ -1208,7 +1210,8 @@
     "RES-AAD-ROUND2-CLOSURE-COMPARABILITY-20261030",
     "RES-AAD-ROUND2-PROVIDER-INQUIRY-20261030",
     "RES-STAGE-0.5-POST-R2-TASK8-KINEMATIC-MECHANISM-DIAG-20261030",
-    "RES-STAGE-0.5-POST-R2-TASK9-FIXED-LEADER-PREP-20261031"
+    "RES-STAGE-0.5-POST-R2-TASK9-FIXED-LEADER-PREP-20261031",
+    "RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -5418,6 +5421,53 @@
    "gate_status": "blocked",
    "paper_locations": [
     "docs/STAGE_0_5_POST_R2_TASK9_FIXED_LEADER_AND_PHYSICAL_REFERENCE_20261031.md"
+   ],
+   "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC",
+   "experiment_id": "stage_0_5",
+   "name": "Round2 final trajectory quality, physical-path and fixed-leader readiness diagnostic",
+   "status": "completed_with_blockers",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC/task10_historical_reuse_audit.md",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC/trajectory_quality_summary.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC/event_control_quality_comparison.csv",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC/precise_ngsim_feasibility.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC/physical_path_candidates.csv",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC/physical_path_witness_audit.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC/interaction_graph_summary.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC/task9_readiness_decision.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC/task10_final_decision.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC/source_bindings.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC/validation_record.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC/context_consistency_check.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC/manifest.json",
+    "evidence/results/RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC/SHA256SUMS"
+   ],
+   "local_artifact_paths": [
+    "code/outputs/diagnostics/task10_final_diagnostic_20261031/"
+   ],
+   "code_version_source": "code/scripts/audit_stage_0_5_task10_final_diagnostic.py; Task6/Task8/Task9 source bindings",
+   "configuration_source": "Unchanged Formal P2/D1/B definitions; Task9 two-arm readiness contract",
+   "data_version_source": "Two authorized canonical NGSIM windows, existing Task6 contexts, Task7.1 PreciseNGSIM metadata and Task9 evidence",
+   "core_metrics": {
+    "formal_source_events_reused": [167, 159],
+    "formal_target_events_reused": [174, 252],
+    "event_control_quality_windows": 2,
+    "precise_event_crosswalk_rows": 0,
+    "physical_path_candidates": 40,
+    "qualified_b_paths": 0,
+    "unknown_b_paths": 40,
+    "task9_fixed_leader_runs": 0,
+    "new_simulations": 0,
+    "holdout_reads": 0,
+    "formal_equivalence_accepted": false
+   },
+   "current_conclusion": "Case B: internal trajectory diagnostics remain usable for bounded descriptive interaction analysis, but PreciseNGSIM cannot provide an independent event crosswalk, all 40 source-to-target path candidates lack an independent physical connection basis, and Task9 remains blocked by physical input. Stage0.5 stays blocked; no Round3, Stage0.6, Protocol Lock or StageI transition.",
+   "gate_status": "blocked",
+   "paper_locations": [
+    "docs/STAGE_0_5_POST_R2_TASK10_FINAL_DIAGNOSTIC_20261031.md"
    ],
    "scientific_claim_eligible": false
   }

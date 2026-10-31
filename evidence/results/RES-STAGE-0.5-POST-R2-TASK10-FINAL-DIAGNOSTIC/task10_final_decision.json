@@ -1,0 +1,59 @@
+{
+  "status": "CASE_B_PARTIAL_EVIDENCE_PHYSICAL_PATH_INSUFFICIENT",
+  "research_observations": {
+    "formal_source_counts": {
+      "0750_0805": 167,
+      "0805_0820": 159
+    },
+    "formal_target_counts": {
+      "0750_0805": 174,
+      "0805_0820": 252
+    },
+    "quality_audit": "COMPLETED_REUSE_PLUS_EVENT_CONTROL_QUALITY_AUDIT",
+    "precise_ngsim": "BLOCKED_EVENT_LEVEL_CROSSWALK",
+    "physical_candidates": 40,
+    "qualified_b_paths": 0,
+    "task9_formal_runs": 0
+  },
+  "trajectory_measurement_robustness": {
+    "judgement": "Partially usable for descriptive interaction diagnostics; insufficient for independent physical truth certification.",
+    "supports": [
+      "internal residual and continuity diagnostics are available for event/control comparison",
+      "formal event definitions and counts remain unchanged"
+    ],
+    "limits": [
+      "internal consistency is not independent physical truth",
+      "jerk/spectral diagnostics were not newly computed",
+      "PreciseNGSIM cannot provide a reliable event-level independent crosswalk"
+    ]
+  },
+  "physical_interaction_path": {
+    "qualified_b_paths": 0,
+    "unknown_b_paths": 40,
+    "decision": "No qualified B witness; source-to-target same-trajectory ordering is descriptive and physical connection basis remains Unknown."
+  },
+  "task9": {
+    "execution_ready": false,
+    "decision": "Keep blocked; engineering interface is ready but no qualified physical input exists."
+  },
+  "scientific_interpretation": {
+    "supported": [
+      "Task6/Task8 descriptive micro-interaction differences remain usable within their measurement limits"
+    ],
+    "weakened": [
+      "claims that current trajectory records alone establish physical propagation"
+    ],
+    "unresolved": [
+      "network disturbance supply versus longitudinal response versus measurement error versus multi-vehicle/lane interaction"
+    ]
+  },
+  "stage_0_5": "blocked",
+  "scientific_equivalence": false,
+  "next_required_evidence": [
+    "independent physical reference with license, time and spatial coverage",
+    "verified B physical connection basis or equivalent independent path witness",
+    "qualified fixed-leader input segment before any formal Task9 execution"
+  ],
+  "new_simulations": 0,
+  "holdout_reads": 0
+}

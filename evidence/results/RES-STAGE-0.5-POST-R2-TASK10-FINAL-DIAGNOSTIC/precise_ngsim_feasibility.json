@@ -1,0 +1,153 @@
+{
+  "status": "BLOCKED_EVENT_LEVEL_CROSSWALK",
+  "decision": "Do not recompute auxiliary P2/TTC/gap metrics from PreciseNGSIM",
+  "existing_two_windows": [
+    "0750am-0805am",
+    "0805am-0820am"
+  ],
+  "full_file_correspondence_verified": false,
+  "event_level_crosswalk_rows": 0,
+  "formal_counts_modified": false,
+  "reasons": [
+    "Existing inspection only established schema/range metadata and first-500 provenance checks; it did not establish full event identity correspondence.",
+    "Vehicle_ID, Frame_ID and Global_Time are inherited fields and therefore cannot serve as independent identity/time truth.",
+    "Local_Y, v_Vel and v_Acc differ in the existing first-500 field comparison for both windows.",
+    "Each window retains a flagged malformed/suspect final row and shorter effective time support; no event-level repair is authorized."
+  ],
+  "existing_inspection_sha256": {
+    "precise_data_inspection.json": "294e09346f6440872846282965c8cc8a0836146b4f3b989418fa526f5220a442",
+    "precise_structure_check.json": "abe0ed52e66f83949524e613f58438a7f09b1e46fb90f52855437ee5fd90b802",
+    "precise_semantic_layout_flags.json": "c4a2e363a464e954906484809d96a93b98b5d62c02a4c329634eef87e3f8bb6e"
+  },
+  "structure_summary": [
+    {
+      "period": "0750am-0805am",
+      "total_records": 1033810,
+      "structurally_18_field_records": 1033810,
+      "malformed_records": [],
+      "structural_only_global_time_range_ms": [
+        6452613,
+        1118847869500
+      ],
+      "structural_only_local_y_range_ft": [
+        -32.6739867119045,
+        2188.794
+      ],
+      "structural_only_vehicle_labels": 1965,
+      "structural_only_lane_labels": [
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        56.75
+      ],
+      "action": "No file edited, no repair, no risk recomputed. Ranges conditional on exact 18-field layout; not independent truth."
+    },
+    {
+      "period": "0805am-0820am",
+      "total_records": 1045913,
+      "structurally_18_field_records": 1045913,
+      "malformed_records": [],
+      "structural_only_global_time_range_ms": [
+        6451748,
+        1118848631600
+      ],
+      "structural_only_local_y_range_ft": [
+        -5.78225106958334,
+        2216.95671086191
+      ],
+      "structural_only_vehicle_labels": 1528,
+      "structural_only_lane_labels": [
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0,
+        7.0,
+        8.0,
+        36.15
+      ],
+      "action": "No file edited, no repair, no risk recomputed. Ranges conditional on exact 18-field layout; not independent truth."
+    }
+  ],
+  "semantic_flags_summary": [
+    {
+      "period": "0750am-0805am",
+      "suspect_rows": [
+        {
+          "csv_line": 1033811,
+          "global_time_value": 6452613.145,
+          "lane_value": 56.75,
+          "row_values_local_only": [
+            18847799800.0,
+            18.848,
+            2016.22806690805,
+            6452613.145,
+            1872013.341,
+            12.5,
+            5.0,
+            2.0,
+            28.78,
+            4.29,
+            2.0,
+            NaN,
+            NaN,
+            56.75,
+            0.0,
+            0.0,
+            NaN,
+            NaN
+          ]
+        }
+      ],
+      "n_after_diagnostic_flag": 1033809,
+      "epoch_supported_range_ms": [
+        1118846979700,
+        1118847869500
+      ],
+      "flags_only_not_repair": true
+    },
+    {
+      "period": "0805am-0820am",
+      "suspect_rows": [
+        {
+          "csv_line": 1045914,
+          "global_time_value": 6451748.816,
+          "lane_value": 36.15,
+          "row_values_local_only": [
+            198100.0,
+            28.938,
+            925.259211258193,
+            6451748.816,
+            1872751.077,
+            17.0,
+            5.9,
+            2.0,
+            5.0,
+            0.0,
+            3.0,
+            NaN,
+            NaN,
+            36.15,
+            0.0,
+            0.0,
+            NaN,
+            NaN
+          ]
+        }
+      ],
+      "n_after_diagnostic_flag": 1045912,
+      "epoch_supported_range_ms": [
+        1118847843000,
+        1118848631600
+      ],
+      "flags_only_not_repair": true
+    }
+  ],
+  "independent_physical_truth": "Unknown"
+}

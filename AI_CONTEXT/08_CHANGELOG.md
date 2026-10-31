@@ -1,3 +1,7 @@
+## Current — AAD-S0.5-POST-R2-TASK10 (2026-10-31)
+
+Added the final bounded Round2 diagnostic: Task6 event/control quality comparison, PreciseNGSIM event-crosswalk feasibility decision, anonymised source→target physical-path candidates, B witness audit and Task9 readiness decision. No new simulation, video, third window, holdout or data request. Final Case B decision preserves Stage 0.5 blocked and all later gates unchanged.
+
 ## Current — AAD-S0.5-POST-R2-TASK9 (2026-10-31)
 
 Added the Task9 fixed-leader pair contract, static B00/Round2 arm audit, historical seed audit, and targeted fail-closed tests. Preserved the original Task7 provider inquiry and recorded that actual dispatch was blocked by unavailable safe mail observation and automatic review rejection of an unbound Gmail authentication origin. No video, trajectory, SUMO/TraCI, holdout or physical review was added. Registered the Task9 report/evidence and kept Stage 0.5 blocked, scientific equivalence false, Stage 0.6/Protocol Lock/Stage I unchanged and Round3 unstarted.

@@ -195,6 +195,20 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         )
     ]
 
+    # Task10: final offline diagnostic; no raw trajectory, identity map, video or simulation payload.
+    task10_root = "evidence/results/RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC"
+    pairs["RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC"] = [
+        (f"{task10_root}/{name}", name)
+        for name in (
+            "task10_historical_reuse_audit.md", "trajectory_quality_summary.json",
+            "event_control_quality_comparison.csv", "precise_ngsim_feasibility.json",
+            "physical_path_candidates.csv", "physical_path_witness_audit.json",
+            "interaction_graph_summary.json", "task9_readiness_decision.json",
+            "task10_final_decision.json", "source_bindings.json", "validation_record.json",
+            "context_consistency_check.json", "manifest.json", "SHA256SUMS",
+        )
+    ]
+
     # Policy A preflight proposals, not a frozen execution protocol.
     pairs['RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1'] = [
         ('code/outputs/formal/calibration/stage_0_5_interaction_diagnostics_v1/portable/' + name, name)
@@ -952,6 +966,7 @@ def _validate_source(source: Path) -> None:
         'sumo_near_threshold_profiles.csv', 'sumo_near_threshold_cases.csv',
         # Task7.2: four raw-file inventory and official license/time statements.
         "resource_inventory.csv", "license_scope_matrix.csv", "time_metadata_matrix.csv",
+        "event_control_quality_comparison.csv", "physical_path_candidates.csv",
         }
     if source.suffix.lower() not in {".json", ".md", ".txt", ".sha256"} and source.name not in aggregate_names:
         raise ValueError(f"unsupported evidence file type: {source}")

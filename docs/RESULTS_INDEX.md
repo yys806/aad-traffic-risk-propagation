@@ -1,3 +1,7 @@
+## RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC
+
+Round2 final diagnostic completed with blockers. Existing Task4/6/8/9 evidence was reused; no new SUMO/TraCI, video, third window or holdout was accessed. Event/control quality contrasts remain descriptive, PreciseNGSIM event-level crosswalk is blocked, and 40 source→target same-trajectory candidates were audited with 0 qualified B witnesses and 40 `Unknown` because physical connection basis is not independently verified. Task9 remains blocked by physical input. Report: docs/STAGE_0_5_POST_R2_TASK10_FINAL_DIAGNOSTIC_20261031.md. Evidence: evidence/results/RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC/.
+
 ## RES-STAGE-0.5-POST-R2-TASK9-FIXED-LEADER-PREP-20261031
 
 Task9 engineering preparation completed with blockers. The Task7 provider inquiry was preserved but not sent because no authorized mail channel could be safely observed; no video, license response, time mapping, physical review or simulation was produced. Sealed B00/Round2 input auditing confirms five `minGap`-only differences with the five heterogeneous tau values retained. The approved three-seed fixed-leader protocol and fail-closed common-input/initial-state/`C` decomposition checks are ready, but no qualified physical segment exists, so fixed-leader execution is `Blocked by physical input` and `scientific_claim_eligible=false`. Report: docs/STAGE_0_5_POST-R2_TASK9_FIXED_LEADER_AND_PHYSICAL_REFERENCE_20261031.md. Evidence: evidence/results/RES-STAGE-0.5-POST-R2-TASK9-FIXED-LEADER-PREP-20261031/.

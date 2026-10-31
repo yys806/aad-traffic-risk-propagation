@@ -1,3 +1,9 @@
+## Current — AAD-S0.5-POST-R2-TASK10 (2026-10-31)
+
+Round2 final offline diagnostic is complete with Case B blockers. Task4/5/6/8/9 evidence was reused; the new event/control quality audit remains descriptive, PreciseNGSIM event-level crosswalk is `BLOCKED_EVENT_LEVEL_CROSSWALK`, and 40 same-trajectory source→target candidates were found with 0 qualified B witnesses and 40 `Unknown` due missing independent physical connection basis. Task9 formal runs remain 0 and readiness is `BLOCKED_BY_PHYSICAL_INPUT`. Stage 0.5 `blocked`, scientific equivalence `false`, Stage 0.6/Protocol Lock/Stage I unchanged, Round3 not started.
+
+Report: `docs/STAGE_0_5_POST_R2_TASK10_FINAL_DIAGNOSTIC_20261031.md`; evidence: `evidence/results/RES-STAGE-0.5-POST-R2-TASK10-FINAL-DIAGNOSTIC/`.
+
 ## Current — AAD-S0.5-POST-R2-TASK9 (2026-10-31)
 
 Task9 engineering preparation is complete with external blockers. The unchanged Task7 provider inquiry was not sent because the available Edge state could not be safely observed and a Gmail authentication origin was rejected by automatic review; no sender, receipt or provider response exists. No raw AVI was downloaded, no ffprobe/time-space mapping or physical review occurred. Sealed B00/Round2 static inputs confirm only five heterogeneous passenger `minGap` changes (2.5→1.0) with the five tau values retained. The approved fixed-leader seeds are 20261101/20261102/20261103; a fail-closed module now checks common leader input, matched physical initial state and `C_initial/C_f/C_l/C/C_gap/R` closure. Formal runs: 0; qualified segments: 0; B status: `Blocked by physical input`. Stage 0.5 `blocked`, scientific equivalence `false`, Stage 0.6/Protocol Lock/Stage I unchanged, Round3 not started.
