@@ -355,3 +355,6 @@ Round2 Task1 prelaunch decision: docs/STAGE_0_5_ROUND2_TASK1_PRELAUNCH_DECISION.
 ## Current — AAD-S0.5-TASK20 (2026-11-01)
 
 Use `docs/TASK20_STAGE0_CLOSURE_AND_STAGEI_READINESS_20261101.md` for the final Stage 0.5 disposition, Stage 0.6 Pre-Lock readiness and Stage I handoff. Engineering fixture entry: `code/scripts/run_task20_stagei_engineering_fixture.py`; module: `code/src/riskprop/stage_i_mechanism.py`; focused tests: `code/tests/test_stage_i_mechanism.py`. Task20 output and portable evidence are under `code/outputs/analysis/task20_20261101/` and `evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/`.
+## P0 Task 1 文献调研与创新性审计（2026-11-01）
+
+治理规范：`docs/research/RESEARCH_GOVERNANCE.md`；P0 交付物：`docs/research/P0/`。核心入口为 `P0_TASK1_FINAL_REPORT.md`、`SEARCH_PROTOCOL.md`、`PAPER_REGISTER.csv`、`RELATED_WORK_MATRIX.md`、`NOVELTY_GAP_ANALYSIS.md`、`NC_POSITIONING_AND_RISK_ASSESSMENT.md` 和 `RESEARCH_DIRECTION_DECISION_MEMO.md`。本任务没有改变 Stage 0.5/0.6、Protocol Lock、Stage I 或 Stage 1.1 状态。

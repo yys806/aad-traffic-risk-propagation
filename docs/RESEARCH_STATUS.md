@@ -414,3 +414,6 @@ Task20 is complete. Stage 0.5 is finite-closed as `CLOSED_WITH_LIMITATIONS`, whi
 Stage 0.6 analytic/path fixtures and deterministic error-budget calculations pass their declared scopes. Scientific tolerances, paired variance, confirmatory sample size and systematic bias remain Proposed/Unknown. Protocol Lock writer refusal is verified. Stage I is `READY_ENGINEERING_ONLY` through a synthetic four-cell/lifecycle/joint-timeline fixture; formal Stage 1.1 remains `NOT_AUTHORIZED`.
 
 Report: `docs/TASK20_STAGE0_CLOSURE_AND_STAGEI_READINESS_20261101.md`; output: `code/outputs/analysis/task20_20261101/`; evidence: `evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/`.
+## Current — P0 Task 1 文献调研与创新性审计 (2026-11-01)
+
+P0 Task 1 已完成治理规范、检索协议、Zotero 结构复核、候选论文注册表、逐篇精读记录、最近邻矩阵、创新性威胁分析和 NC 风险评估。六篇外部最近邻已导入 Zotero AAD/主题集合，其中两篇获得 PDF 附件；一个与既有 Wang 冲突图条目的重复记录已标记并保留。结论为 Proposal：信息—物理耦合、非局部控制、网络拥堵传播、BLOS/驾驶响应和代理指标均已有先行研究；AAD 仍可能成立的增量是可审计的双传播事件级因果链、采用—动作中介和干扰感知的区域 estimand。Stage 0.5、Stage 0.6、Protocol Lock、Stage I、Stage 1.1 状态均未改变。报告入口：`docs/research/P0/P0_TASK1_FINAL_REPORT.md`。
