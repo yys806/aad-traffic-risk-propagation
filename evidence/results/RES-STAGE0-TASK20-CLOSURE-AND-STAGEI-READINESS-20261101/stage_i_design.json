@@ -1,0 +1,52 @@
+{
+  "engineering_fixture": {
+    "locked_holdout_read": false,
+    "path": "stage_i_engineering_fixture/",
+    "scientific_claim_eligible": false,
+    "status": "PASS",
+    "sumo_runs": 0
+  },
+  "estimand_status": "Proposed_not_Agreed",
+  "event_fields": [
+    "run_id",
+    "pair_id",
+    "event_id",
+    "event_type",
+    "time_s",
+    "vehicle_id",
+    "region",
+    "source"
+  ],
+  "failure_conditions": [
+    "missing lifecycle field",
+    "reversed lifecycle time",
+    "adopted without delivered/valid/fresh",
+    "pre-treatment mismatch",
+    "unobservable physical arrival"
+  ],
+  "formal_authorization": "NOT_AUTHORIZED",
+  "four_cell_candidate": [
+    "s0c0",
+    "s0c1",
+    "s1c0",
+    "s1c1"
+  ],
+  "information_chain": [
+    "risk_event_generated",
+    "message_generated",
+    "sent",
+    "delivered",
+    "validated",
+    "adopted",
+    "action_change",
+    "regional_risk_observation"
+  ],
+  "physical_arrival_policy": "Unknown unless independently evidenced event-specific time is supplied",
+  "physical_chain": [
+    "source_risk_state",
+    "vehicle_motion_interaction",
+    "physical_propagation",
+    "target_state_risk"
+  ],
+  "schema_version": "aad.task20.stage-i-design.v1"
+}

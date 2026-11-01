@@ -300,6 +300,40 @@ def _source_pairs() -> dict[str, list[tuple[str, str]]]:
         )
     ]
 
+    # Task20: bounded Stage 0 closure, Stage 0.6 Pre-Lock package and the
+    # synthetic Stage I mechanism fixture.  No raw trajectories, media or
+    # locked-holdout material are exported.
+    task20_root = "code/outputs/analysis/task20_20261101"
+    pairs["RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101"] = [
+        (f"{task20_root}/{name}", destination)
+        for name, destination in (
+            ("task20_summary.json", "task20_summary.json"),
+            ("stage_0_5_layered_assessment.json", "stage_0_5_layered_assessment.json"),
+            ("stage_0_6_readiness.json", "stage_0_6_readiness.json"),
+            ("stage_i_design.json", "stage_i_design.json"),
+            ("stage0_to_stagei_handoff.json", "stage0_to_stagei_handoff.json"),
+            ("protocol_lock_readiness.json", "protocol_lock_readiness.json"),
+            ("protocol_lock_writer_check.json", "protocol_lock_writer_check.json"),
+            ("source_bindings.json", "source_bindings.json"),
+            ("analysis_manifest.json", "analysis_manifest.json"),
+            ("manifest.json", "manifest.json"),
+            ("SHA256SUMS", "SHA256SUMS"),
+            ("stage_0_6_prelock_validation/audit.json", "stage_0_6_prelock_validation_audit.json"),
+            ("stage_0_6_prelock_validation/manifest.json", "stage_0_6_prelock_validation_manifest.json"),
+            ("stage_0_6_prelock_validation/SHA256SUMS", "stage_0_6_prelock_validation_SHA256SUMS"),
+            ("error_budget/audit.json", "error_budget_audit.json"),
+            ("error_budget/manifest.json", "error_budget_manifest.json"),
+            ("error_budget/SHA256SUMS", "error_budget_SHA256SUMS"),
+            ("stage_i_engineering_fixture/four_cell_contract_audit.json", "stage_i_four_cell_contract_audit.json"),
+            ("stage_i_engineering_fixture/action_change_audit.json", "stage_i_action_change_audit.json"),
+            ("stage_i_engineering_fixture/joint_timeline.json", "stage_i_joint_timeline.json"),
+            ("stage_i_engineering_fixture/provenance.json", "stage_i_provenance.json"),
+            ("stage_i_engineering_fixture/source_bindings.json", "stage_i_source_bindings.json"),
+            ("stage_i_engineering_fixture/manifest.json", "stage_i_manifest.json"),
+            ("stage_i_engineering_fixture/SHA256SUMS", "stage_i_SHA256SUMS"),
+        )
+    ]
+
     # Policy A preflight proposals, not a frozen execution protocol.
     pairs['RES-STAGE-0.5-INTERACTION-DIAGNOSTICS-V1'] = [
         ('code/outputs/formal/calibration/stage_0_5_interaction_diagnostics_v1/portable/' + name, name)

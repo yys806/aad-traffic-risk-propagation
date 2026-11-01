@@ -378,3 +378,8 @@ Recommendation ready for researcher approval: preserve S_UPSTREAM_MAIN, mainline
 
 ## 2026-10-28 Round2 Task1 prelaunch decision pending
 Researcher must confirm preserved source/target/window/cohort, separate auxiliary lane, time-indexed physical-path witness, Rule A macro gate and one primary current-B00 minGap=1.0 run before native launch.
+## Task20 status boundary — no new scientific approval (2026-11-01)
+
+Task20 recommends finite closure of Stage 0.5 as `CLOSED_WITH_LIMITATIONS` while retaining the strict scientific Gate as blocked. This is a status recommendation and does not approve a new risk-source definition, intervention arm, seed set, tolerance, or Gate rule.
+
+Task20 identifies the existing Stage I four-cell/lifecycle design as reusable engineering infrastructure. The synthetic joint timeline is permitted for wiring checks only. Formal Stage 1.1 remains unauthorized until Stage 0.5/0.6 requirements and all protocol fields are scientifically approved and a verified Protocol Lock exists. `delta_eq` max-rule and joint-sum/paired candidates remain Proposed; physical arrival remains Unknown without an independent time-indexed witness.

@@ -386,3 +386,6 @@ R1 已按确认设计完成 B10（主线速度脉冲）、B01（匝道供给脉�
 ## 2026-10-28 Stage 0.5-R1 封存轨迹离线机制审计
 
 结果 `RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028`：只读复核 B00/B10/B01/B11 封存状态表，完成全量事件数组、窗口 onset、源区/目标区正式 P2、事件空间、源区可观测性和 30 s 时间块审计。B10/B01/B11 全量事件段 7/1/19，窗口 onset 5/0/17；正式源/目标 P2 均 0。B10/B11 事件主要位于辅助 lane，B01 事件早于窗口。Stage 0.5 Gate 继续 blocked；无新 SUMO。
+## Current — AAD-S0.5-TASK20 (2026-11-01)
+
+Task20 completed bounded Stage 0.5 closure, Stage 0.6 Pre-Lock readiness and Stage I engineering-only mechanism preparation. Stage 0.5 disposition is `CLOSED_WITH_LIMITATIONS`; strict scientific Gate remains blocked because source-triggered support, interaction equivalence, independent B physical-path witnesses and scientific tolerances are incomplete. Protocol Lock and formal Stage 1.1 remain blocked. Report: `docs/TASK20_STAGE0_CLOSURE_AND_STAGEI_READINESS_20261101.md`; output: `code/outputs/analysis/task20_20261101/`; evidence: `evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/`.

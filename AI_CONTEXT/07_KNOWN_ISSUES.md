@@ -498,3 +498,10 @@ The historical minGap=1.0 improvement is from homogeneous K_tau1.0 pair replays 
 
 ## 2026-10-28 Round2 Task1 prelaunch blocker
 Candidate inputs are statically valid. Native execution is blocked only by required researcher scientific confirmation; macro Rule A is recommended from existing state-support envelopes, while δ/h/B remain unapproved.
+## Current — Task20 closure blockers (2026-11-01)
+
+- Stage 0.5 is finite-closed with limitations, but strict scientific equivalence is still false: source-triggered SUMO support is absent, real/simulation interaction mismatch remains, and no qualified B physical-path witness exists.
+- Task9/Task19 are local conditional fixed-Leader responses. They do not identify message adoption, regional risk effects, network propagation or real-world behavior.
+- Stage 0.6 candidate values are not scientific approvals. `delta_eq` has distinct max and joint-sum/paired aggregation candidates; `delta_R`, `delta_plan`, `h`, `epsilon_state`, paired variance, sample size and systematic bias `B` remain Proposed/Unknown.
+- Physical arrival time is Unknown. Event ordering, road distance, topology or an arbitrary speed cannot be used as an independent ordinary-physics arrival witness.
+- Stage I engineering wiring is available through the synthetic fixture, but production controller adoption receipts and regional-risk linkage still need scientific validation after Protocol Lock.

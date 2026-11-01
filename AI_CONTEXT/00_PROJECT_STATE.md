@@ -643,3 +643,14 @@ Gate=pending_simulation_sample、scientific_claim_eligible=false、ready_to_star
 
 ## 2026-10-28 Stage 0.5 first-round offline decision package
 Verified: R0/R1/B00 evidence and all directly linked admission/audit files were enumerated and hashed. R1 event arrays reconcile 7/1/19/0, window onsets 5/0/17/0, while formal source/target P2 remain 0. B10/B11 window events are chiefly auxiliary lane 6; B01 event is pre-window; one B11 mainline event is outside target. Candidate comparisons are exploratory only; SUMO/TraCI=0, holdout=0, formal P2 unchanged. Stage 0.5 blocked; Stage 0.6 and Stage I unchanged. Report: docs/STAGE_0_5_FIRST_ROUND_OFFLINE_DECISION_20261028.md; evidence: evidence/results/RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028/.
+## Current — AAD-S0.5-TASK20 (completed Stage 0 closure and Stage I readiness, 2026-11-01)
+
+Task20 completed the bounded Stage 0.5 scientific closure, Stage 0.6 numerical/pre-lock package, and Stage I engineering-only mechanism preparation. Final dispositions are: `TASK20_STATUS=COMPLETED`, `STAGE_0_5_FINAL_DISPOSITION=CLOSED_WITH_LIMITATIONS`, `STAGE_0_6_READINESS=PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS`, `PROTOCOL_LOCK_STATUS=BLOCKED`, `STAGE_I_ENGINEERING_READINESS=READY_ENGINEERING_ONLY`, and `STAGE_1_1_FORMAL_AUTHORIZATION=NOT_AUTHORIZED`.
+
+Stage 0.5 engineering and descriptive responsibilities are closed for the supported scope, but the strict scientific Gate remains blocked: B00/Round2 source-triggered P2 support is absent, scientific equivalence is false, qualified B physical-path witnesses are 0 (40 ordered source→target candidates remain Unknown), and independent physical arrival time is Unknown. Task9/Task19 remain local conditional Follower-response evidence only.
+
+Stage 0.6 analytic truth, physical-path fixtures, time-step diagnostics and deterministic error-budget calculations pass their declared fixture scope. `delta_eq`, `delta_R`, `delta_plan`, `h`, `epsilon_state`, paired variance, Stage 1.1 sample size and systematic bias `B` remain Proposed or Unknown; the existing protocol writer correctly refuses to create a lock.
+
+Stage I engineering preparation now includes `code/src/riskprop/stage_i_mechanism.py`, `code/scripts/run_task20_stagei_engineering_fixture.py` and `code/tests/test_stage_i_mechanism.py`. The synthetic fixture reuses the existing four-cell and message-lifecycle contracts, records information/action/risk timestamps, and preserves `information_before_physical=Unknown` when no independent physical arrival time is supplied. No SUMO run, message-effect experiment or locked-holdout read was added.
+
+Task20 report: `docs/TASK20_STAGE0_CLOSURE_AND_STAGEI_READINESS_20261101.md`; outputs: `code/outputs/analysis/task20_20261101/`; portable evidence: `evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/`.

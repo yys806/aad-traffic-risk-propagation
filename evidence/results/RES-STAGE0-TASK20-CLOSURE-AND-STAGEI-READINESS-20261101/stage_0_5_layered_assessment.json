@@ -1,0 +1,96 @@
+{
+  "disposition": "CLOSED_WITH_LIMITATIONS",
+  "layers": [
+    {
+      "evidence": [
+        "Stage 0.2 R4",
+        "Task4/5/6/10"
+      ],
+      "impact": "descriptive/internal only",
+      "layer": "data_measurement",
+      "recommendation": "close measurement execution; retain independent-physical limitation",
+      "status": "Verified_limited"
+    },
+    {
+      "evidence": [
+        "Task17",
+        "Task18",
+        "Task19"
+      ],
+      "impact": "reuse executor/A-B/hash chain; no network effect claim",
+      "layer": "simulation_execution",
+      "recommendation": "do not rerun completed matrices",
+      "status": "Verified_engineering"
+    },
+    {
+      "evidence": [
+        "Stage 0.3",
+        "Stage 0.5 state support diagnostics"
+      ],
+      "impact": "restricted simulator-only estimand",
+      "layer": "traffic_state_kinematics",
+      "recommendation": "retain interaction-compatibility blocker",
+      "status": "Partial"
+    },
+    {
+      "evidence": [
+        "Task9",
+        "Task19"
+      ],
+      "impact": "local action-response module only",
+      "layer": "microscopic_following",
+      "recommendation": "carry into mechanism engineering",
+      "status": "Supported_local_conditional"
+    },
+    {
+      "evidence": [
+        "NGSIM source 167/159; SUMO source 0"
+      ],
+      "impact": "no source-triggered equivalence",
+      "layer": "formal_P2_exposure",
+      "recommendation": "keep contracts separate",
+      "status": "Real_sim_contracts_differ"
+    },
+    {
+      "evidence": [
+        "Task10: B=0, Unknown=40"
+      ],
+      "impact": "physical arrival time Unknown",
+      "layer": "physical_path_observability",
+      "recommendation": "no distance/speed proxy",
+      "status": "Blocked"
+    },
+    {
+      "evidence": [
+        "formal_design.py; Task20 fixture"
+      ],
+      "impact": "formal Stage1.1 blocked",
+      "layer": "information_mechanism_applicability",
+      "recommendation": "complete interface wiring under synthetic inputs",
+      "status": "Engineering_ready_only"
+    },
+    {
+      "evidence": [
+        "no independent physical truth/adoption/PDR calibration"
+      ],
+      "impact": "no real-world causal claim",
+      "layer": "real_world_extrapolation",
+      "recommendation": "retain exclusion",
+      "status": "Not_eligible"
+    }
+  ],
+  "schema_version": "aad.task20.stage05-layered-assessment.v1",
+  "scientific_gate": "blocked",
+  "task9_nonanswers": [
+    "network equivalence",
+    "message adoption",
+    "regional risk effect",
+    "physical arrival",
+    "AAD core causal hypothesis"
+  ],
+  "task9_value": [
+    "native follower release",
+    "common initial state and paired A/B",
+    "reproducible local response"
+  ]
+}

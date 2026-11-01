@@ -407,3 +407,10 @@ Verified offline audit complete. R1 B10/B01/B11 were real completed runs and B00
 
 ## Current — 2026-10-28 Round2 Task1 prelaunch
 离线宏观验收比较完成，推荐Rule A严格联合状态/闭合支持；已有30个状态单元中10个通过，宽松Rule B为11个，Rule C为INSUFFICIENT_EVIDENCE。第一次原生启动前等待研究者一次性确认。
+## 2026-11-01 Task20 — Stage 0 closure and Stage I engineering readiness
+
+Task20 is complete. Stage 0.5 is finite-closed as `CLOSED_WITH_LIMITATIONS`, while the strict scientific Gate remains blocked: B00/Round2 source-triggered support is absent, reality–simulation interaction equivalence is false, qualified B physical-path witnesses are 0 (40 ordered candidates remain Unknown), and physical arrival time is Unknown. Task9/19 remain local conditional Follower-response evidence only.
+
+Stage 0.6 analytic/path fixtures and deterministic error-budget calculations pass their declared scopes. Scientific tolerances, paired variance, confirmatory sample size and systematic bias remain Proposed/Unknown. Protocol Lock writer refusal is verified. Stage I is `READY_ENGINEERING_ONLY` through a synthetic four-cell/lifecycle/joint-timeline fixture; formal Stage 1.1 remains `NOT_AUTHORIZED`.
+
+Report: `docs/TASK20_STAGE0_CLOSURE_AND_STAGEI_READINESS_20261101.md`; output: `code/outputs/analysis/task20_20261101/`; evidence: `evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/`.

@@ -464,9 +464,20 @@
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-S0.5-TASK18 completed execution integrity closure and Primary/Supplementary Task9 repeats",
-  "why_now": "Task18 repaired native Follower control release and initialization, then completed the authorized 174-run execution plan.",
+  "active_task": "AAD-S0.5-TASK20 completed Stage 0 closure, Stage 0.6 Pre-Lock readiness and Stage I engineering preparation",
+  "why_now": "Task20 completed bounded Stage 0.5 closure, reused Task9–19 evidence, produced a Stage 0.6 Pre-Lock package and added an engineering-only Stage I mechanism fixture.",
   "next_decision_owner": "researcher",
+  "task20_status": "COMPLETED",
+  "stage_0_5_final_disposition": "CLOSED_WITH_LIMITATIONS",
+  "stage_0_5_scientific_gate": "blocked",
+  "stage_0_6_readiness": "PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS",
+  "protocol_lock_status": "BLOCKED",
+  "stage_i_engineering_readiness": "READY_ENGINEERING_ONLY",
+  "stage_1_1_formal_authorization": "NOT_AUTHORIZED",
+  "scientific_equivalence": false,
+  "task20_report": "docs/TASK20_STAGE0_CLOSURE_AND_STAGEI_READINESS_20261101.md",
+  "task20_output": "code/outputs/analysis/task20_20261101/",
+  "task20_evidence": "evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/",
   "portable_gate_paths": [
    "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/count_reconciliation.json",
    "evidence/results/RES-STAGE-0.5-FIRST-ROUND-OFFLINE-DECISION-20261028/offline_reconciliation.json",
@@ -1366,6 +1377,7 @@
     "RES-STAGE-0.5-TASK17-TASK9-CLOSURE-20261101",
     "RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101",
     "RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101"
+    ,"RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -6084,6 +6096,59 @@
     "docs/TASK19_SCIENTIFIC_RESULT_ANALYSIS_20261101.md"
    ],
    "scientific_claim_eligible": false
+  },
+  {
+    "id": "RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101",
+    "experiment_id": "stage_0_5",
+    "name": "Task20 Stage 0 closure, Stage 0.6 Pre-Lock and Stage I mechanism readiness",
+    "status": "completed_with_scientific_blockers",
+    "portable_evidence_paths": [
+      "evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/task20_summary.json",
+      "evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/stage_0_5_layered_assessment.json",
+      "evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/stage_0_6_readiness.json",
+      "evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/stage_i_design.json",
+      "evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/stage0_to_stagei_handoff.json",
+      "evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/protocol_lock_readiness.json",
+      "evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/protocol_lock_writer_check.json",
+      "evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/source_bindings.json",
+      "evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/analysis_manifest.json",
+      "evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/stage_0_6_prelock_validation_audit.json",
+      "evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/stage_0_6_prelock_validation_manifest.json",
+      "evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/stage_0_6_prelock_validation_SHA256SUMS",
+      "evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/error_budget_audit.json",
+      "evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/error_budget_manifest.json",
+      "evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/error_budget_SHA256SUMS",
+      "evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/stage_i_four_cell_contract_audit.json",
+      "evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/stage_i_action_change_audit.json",
+      "evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/stage_i_joint_timeline.json",
+      "evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/stage_i_provenance.json",
+      "evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/stage_i_source_bindings.json",
+      "evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/stage_i_manifest.json",
+      "evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/stage_i_SHA256SUMS"
+    ],
+    "local_artifact_paths": [
+      "code/outputs/analysis/task20_20261101/"
+    ],
+    "code_version_source": "code/src/riskprop/stage_i_mechanism.py; code/src/riskprop/formal_design.py; code/src/riskprop/prelock_metrics.py; code/src/riskprop/protocol_lock.py",
+    "configuration_source": "Existing Stage 0.2/0.4/0.5/0.6 contracts; no formal configuration changes",
+    "data_version_source": "Task9–19 sealed evidence plus synthetic engineering fixture; no locked holdout",
+    "core_metrics": {
+      "stage_0_5_disposition": "CLOSED_WITH_LIMITATIONS",
+      "analytic_truth": "pass",
+      "physical_path_fixture": "pass",
+      "protocol_lock_allowed": false,
+      "stage_1_1_allowed": false,
+      "sumo_runs": 0,
+      "locked_holdout_reads": 0,
+      "b_witness_qualified": 0,
+      "b_candidates_unknown": 40
+    },
+    "current_conclusion": "Task20 closes Stage 0 engineering/descriptive responsibilities with limitations. Stage 0.5 scientific Gate remains blocked, Stage 0.6 is Pre-Lock-ready with scientific blockers, and Stage I is engineering-ready only.",
+    "gate_status": "blocked",
+    "paper_locations": [
+      "docs/TASK20_STAGE0_CLOSURE_AND_STAGEI_READINESS_20261101.md"
+    ],
+    "scientific_claim_eligible": false
   }
  ],
  "history": [

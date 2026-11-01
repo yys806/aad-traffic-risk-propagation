@@ -526,3 +526,6 @@ First-round repair update: B11 is verified from event_inventory.csv as 16/19 aux
 ## RES-STAGE-0.5-ROUND2-TASK1-PREFLIGHT-20261028
 
 第二轮首个原生实验的启动前宏观规则比较已完成：Rule A 严格联合状态支持在30个既有状态单元中10个通过，Rule B宽松规则11个通过，Rule C不设数值门槛为INSUFFICIENT_EVIDENCE。推荐Rule A；研究者确认空间、物理路径、宏观规则和唯一minGap=1.0候选后才能启动原生运行。SUMO/TraCI=0。报告 docs/STAGE_0_5_ROUND2_TASK1_PRELAUNCH_DECISION.md；证据 evidence/results/RES-STAGE-0.5-ROUND2-TASK1-PREFLIGHT-20261028/。
+## RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101
+
+Task20 closure package: layered Stage 0.5 assessment, deterministic Stage 0.6 numerical/pre-lock checks, protocol-lock refusal, Stage I information/physical chain design, and synthetic four-cell joint-timeline fixture. No new formal SUMO runs and no locked-holdout access. Report: `docs/TASK20_STAGE0_CLOSURE_AND_STAGEI_READINESS_20261101.md`; local output: `code/outputs/analysis/task20_20261101/`; portable evidence: `evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/`.

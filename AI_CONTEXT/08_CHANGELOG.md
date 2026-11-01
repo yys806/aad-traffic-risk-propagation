@@ -560,3 +560,6 @@ Static candidate test code/tests/test_stage_0_5_round2_task1_candidate.py added 
 
 ## 2026-10-28 Round2 Task1 prelaunch and engineering block
 Added offline macro-rule comparison, researcher approval record, current-source synthetic smoke receipt, prelaunch evidence and the exact admission guard block. The approved candidate native launch was withheld; no candidate scientific state transition, formal P2 or Gate change.
+## Current — AAD-S0.5-TASK20 (2026-11-01)
+
+Added the Task20 Stage 0.5 layered closure report, Stage 0.6 numerical/pre-lock readiness package, source/code hash bindings and Stage 0→I handoff. Added the engineering-only `stage_i_mechanism` timeline/action contracts, deterministic four-cell fixture runner and focused tests. No Formal P2/D1/B rule, scientific tolerance, Gate logic, formal config, SUMO matrix or holdout access changed. Stage 0.5 is recorded as `CLOSED_WITH_LIMITATIONS`; Protocol Lock and Stage 1.1 remain blocked.

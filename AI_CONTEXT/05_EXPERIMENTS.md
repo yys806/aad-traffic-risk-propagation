@@ -419,3 +419,8 @@ Completed static Round2 preparation only. Preferred candidate is current B00 A03
 
 ## 2026-10-28 Round2 Task1 prelaunch
 Completed offline macro-rule comparison only. Rule A strict joint state/closing support is recommended (10/30 prior cells pass); Rule B permissive is 11/30; Rule C is insufficient. Candidate native launch awaits researcher confirmation; SUMO/TraCI=0.
+## Current — AAD-S0.5-TASK20 closure and Stage I engineering readiness (2026-11-01)
+
+Task20 did not rerun Task9/18/19. It reused their frozen outputs, completed the layered Stage 0.5 disposition `CLOSED_WITH_LIMITATIONS`, and produced a Stage 0.6 Pre-Lock package. Analytic/path fixtures and the deterministic error budget pass in their declared domains; scientific tolerances, paired variance and system bias remain pending. Protocol Lock and formal Stage 1.1 remain blocked.
+
+The Stage I engineering fixture reuses `formal_design.py` four-cell, lifecycle and pre-treatment contracts. It records message generated/sent/delivered/validated/adopted, action change and regional risk events in one ordered timeline. It is synthetic only (`sumo_runs=0`, `scientific_claim_eligible=false`) and keeps physical arrival `Unknown` without an independent witness.

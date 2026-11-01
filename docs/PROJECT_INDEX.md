@@ -352,3 +352,6 @@ First-round repair verification: source-derived event assertions, source SHA bun
 报告：docs/STAGE_0_5_ROUND1_FINAL_DECISION.md；冻结候选：docs/plans/STAGE_0_5_ROUND2_TASK1_FREEZE_CANDIDATE.md；机器证据：evidence/results/RES-STAGE-0.5-ROUND1-TASK3-DECISION-20261028/；候选输入：evidence/admission/AAD-S0.5-ROUND2-TASK1-20261028/candidate-v1/. 本任务仅完成静态准备，未启动SUMO/TraCI。
 
 Round2 Task1 prelaunch decision: docs/STAGE_0_5_ROUND2_TASK1_PRELAUNCH_DECISION.md；Rule A strict macro support recommended, awaiting one-time researcher confirmation before native launch.
+## Current — AAD-S0.5-TASK20 (2026-11-01)
+
+Use `docs/TASK20_STAGE0_CLOSURE_AND_STAGEI_READINESS_20261101.md` for the final Stage 0.5 disposition, Stage 0.6 Pre-Lock readiness and Stage I handoff. Engineering fixture entry: `code/scripts/run_task20_stagei_engineering_fixture.py`; module: `code/src/riskprop/stage_i_mechanism.py`; focused tests: `code/tests/test_stage_i_mechanism.py`. Task20 output and portable evidence are under `code/outputs/analysis/task20_20261101/` and `evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/`.

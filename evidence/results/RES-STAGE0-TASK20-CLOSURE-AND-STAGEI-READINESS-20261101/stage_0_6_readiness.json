@@ -1,0 +1,54 @@
+{
+  "analytic_truth": "pass",
+  "blockers": [
+    "stage_0_5=blocked",
+    "stage_0_6=pending_scientific_tolerances_and_dynamic_calibration"
+  ],
+  "error_budget_fixture": {
+    "delta_eq_max_rule_candidate": 0.007484070781639929,
+    "four_arm_candidate_from_existing_protocol": 0.04244277764562021,
+    "group_bounds": {
+      "analyzer_errors": 3.3306690738754696e-16,
+      "numerical_errors": 0.0,
+      "reconstruction_errors": 0.007484070781639929,
+      "timestep_errors": 0.003126623629764791
+    },
+    "paired_candidate_from_existing_protocol": 0.021221388822810106,
+    "status": "Proposed_not_approved"
+  },
+  "field_status": {
+    "delta_R": "Proposed",
+    "delta_eq": "Proposed",
+    "delta_plan": "Proposed",
+    "epsilon_input": "Proposed",
+    "epsilon_state": "Proposed_resolution_floor",
+    "h": "Proposed",
+    "paired_variance": "Unknown",
+    "physical_arrival_time": "Unknown",
+    "stage_1_1_sample_size": "Unknown",
+    "systematic_bias_B": "Unknown"
+  },
+  "gate_status": "pending_scientific_tolerances_and_dynamic_calibration",
+  "observed_quantization_sensitivity_reused": {
+    "higher99_absolute_rho_sensitivity": 0.009846098292511804,
+    "maximum_absolute_rho_sensitivity": 0.017363312053241375,
+    "status": "conditional_precision_sensitivity_only",
+    "supported_states": 240620
+  },
+  "physical_path_truth": "pass_fixture_only",
+  "protocol_lock_allowed": false,
+  "schema_version": "aad.task20.stage06-readiness.v1",
+  "stage_1_1_allowed": false,
+  "time_step_fixture": {
+    "delta_eq_status": "pending",
+    "difference_005_002": 0.0029869451697126514,
+    "direction_consistent": true,
+    "steps_s": [
+      0.1,
+      0.05,
+      0.02,
+      0.01
+    ]
+  },
+  "writer_check": "Correctly refused"
+}
