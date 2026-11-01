@@ -28,3 +28,10 @@ AAD 目前具备 NC 级问题的候选重要性和工程审计基础，但不具
 - 代理安全指标在适用域外失效；
 - 跨状态/跨道路效应不稳定；
 - 仿真与现实的 micro-interaction 不等价。
+## P0 Task 2 审计更新
+
+NC 竞争力目前应标为 **候选问题重要，但科学证据未闭环**。Peng 的随机模拟器研究降低了“远端 warning 是否能改变动作”的新颖性空间；Schönhof、Wang 和 Jerath 分别降低了“信息—物理耦合、信息波和作用边界”的新颖性空间。AAD 必须证明的是可审计的事件级机制和网络级因果效应，而不是把这些结果串在一起。
+
+最小不可替代证据是 message strategy ITT/policy effect 加同源 no-message physical reference。Delivery、adoption 和自然 mediation 都是处理后过程，除非有随机鼓励或 interventional design，不能作为首要因果结果。若区域风险效应不可识别，仍可形成 action-level response 或 failure-boundary 论文，但不能保留区域总体因果主张。
+
+NC 评估仍不构成发表保证；阶段状态和 Gate 不因本附录改变。

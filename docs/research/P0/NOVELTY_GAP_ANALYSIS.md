@@ -38,3 +38,13 @@ Jerath 的 ZOI 针对瓶颈总延误，Peng 的 BLOS 研究针对驾驶反应。
 ## 现阶段判断
 
 AAD 最可能形成的原创性不是“类超距”现象本身，而是一个可失败、可审计、可因果识别的双传播机制：消息链与物理链在同一事件级时间轴上竞争，并通过采用—动作—风险路径影响网络级 outcome。该判断是 `Proposal`，不是 Agreed scientific contribution。
+## P0 Task 2 可识别性更新
+
+全文核对后，创新性威胁进一步具体化：
+
+1. Schönhof 已在同一模型中说明车辆运动和消息拓扑相互耦合，并给出 1 km 上游消息到达概率/时间分布；AAD 不能把“信息早到”作为新现象。
+2. Peng 已在随机化被试内模拟器中估计 BLOS warning 的 ORS +6.73 points（95% CI [1.36, 11.99]）和 response-conditioned RT −2.28 s（95% CI [−3.17, −1.14]），并报告瞬时控制状态异质性；AAD 不能把远端警告改变动作作为首次因果发现。
+3. Jerath 已在 LWR 瓶颈模型中定义联网车辆的 ZOI、event horizon 和 null horizon；AAD 只能提出风险时序和独立物理基准上的可检验增量。
+4. Hudgens–Halloran 与 Aronow–Samii 已提供 interference estimand、assignment design 和 exposure mapping；AAD 不能声称发明一般网络干扰因果理论。
+
+因此，Proposal A–D 只有在同源随机 assignment、完整消息生命周期、独立 no-message physical witness、双暴露映射和区域 risk burden 同时成立时才有可能成为科学贡献。现有 NGSIM、MiTra、SPMD、Task9/19 和 SUMO fixture 均不能单独满足这些条件，详见 Task2 可识别性审计。

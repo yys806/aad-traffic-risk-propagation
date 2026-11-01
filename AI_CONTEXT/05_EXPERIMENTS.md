@@ -424,3 +424,6 @@ Completed offline macro-rule comparison only. Rule A strict joint state/closing 
 Task20 did not rerun Task9/18/19. It reused their frozen outputs, completed the layered Stage 0.5 disposition `CLOSED_WITH_LIMITATIONS`, and produced a Stage 0.6 Pre-Lock package. Analytic/path fixtures and the deterministic error budget pass in their declared domains; scientific tolerances, paired variance and system bias remain pending. Protocol Lock and formal Stage 1.1 remain blocked.
 
 The Stage I engineering fixture reuses `formal_design.py` four-cell, lifecycle and pre-treatment contracts. It records message generated/sent/delivered/validated/adopted, action change and regional risk events in one ordered timeline. It is synthetic only (`sumo_runs=0`, `scientific_claim_eligible=false`) and keeps physical arrival `Unknown` without an independent witness.
+## 2026-11-01 P0 Task 2 未执行正式实验
+
+P0 Task2 只完成文献、因果识别、物理反事实和证据契约审计。新 SUMO 运行次数为 0，现实数据采集为 0，locked holdout 读取为 0。Task9/Task19 结果仍仅作 fixed Leader–Follower local conditional response；SUMO stage_i fixture 仍 synthetic、scientific_claim_eligible=false。未来最小设计为 Proposal，需研究者先确认 message ITT、no-message physical witness、区域结果和时钟/身份契约。

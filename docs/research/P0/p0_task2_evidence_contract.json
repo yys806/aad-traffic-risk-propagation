@@ -1,0 +1,150 @@
+{
+  "schema_version": "p0_task2_v1",
+  "status": "Proposal",
+  "time_convention": {
+    "timestamp_unit": "seconds",
+    "required_fields": ["clock_id", "clock_unit", "timestamp"],
+    "order_rule": "generation <= transmission <= delivery <= verification <= adoption",
+    "unknown_policy": "retain UNKNOWN; no interpolation or zero fill"
+  },
+  "quality_status": [
+    "OBSERVED",
+    "DERIVED",
+    "PROXY",
+    "MISSING",
+    "INVALID",
+    "UNOBSERVABLE",
+    "NOT_APPLICABLE",
+    "UNKNOWN"
+  ],
+  "record_types": {
+    "event": {
+      "required": [
+        "event_id",
+        "source_vehicle_id",
+        "event_time",
+        "event_location",
+        "event_type",
+        "event_quality",
+        "clock_id",
+        "clock_unit",
+        "source_uri",
+        "source_sha256"
+      ]
+    },
+    "message": {
+      "required": [
+        "message_id",
+        "event_id",
+        "generation_time",
+        "message_version",
+        "quality_status",
+        "missing_reason"
+      ],
+      "optional_lifecycle": [
+        "sender_id",
+        "receiver_id",
+        "transmission_time",
+        "delivery_time",
+        "verification_time",
+        "validation_result",
+        "channel_state"
+      ]
+    },
+    "controller": {
+      "required": [
+        "vehicle_id",
+        "message_id",
+        "adoption_status",
+        "controller_clock_id",
+        "quality_status"
+      ],
+      "conditional": [
+        "adoption_time",
+        "rejection_reason",
+        "controller_decision",
+        "commanded_action"
+      ]
+    },
+    "vehicle_action": {
+      "required": [
+        "vehicle_id",
+        "timestamp",
+        "position",
+        "trajectory_quality",
+        "action_change_status"
+      ],
+      "conditional": [
+        "speed",
+        "acceleration",
+        "leader_id",
+        "net_gap",
+        "action_change_rule_version"
+      ]
+    },
+    "physical_propagation": {
+      "required": [
+        "event_id",
+        "physical_witness_id",
+        "source_time",
+        "observation_time",
+        "physical_state",
+        "propagation_status",
+        "reference_condition"
+      ],
+      "conditional": [
+        "arrival_time",
+        "independence_basis"
+      ]
+    },
+    "risk": {
+      "required": [
+        "vehicle_id",
+        "timestamp",
+        "risk_metric",
+        "validity_status",
+        "evaluation_window"
+      ],
+      "conditional": [
+        "risk_value",
+        "region_id",
+        "exposure_time",
+        "missing_reason"
+      ]
+    },
+    "exposure_assignment": {
+      "required": [
+        "assignment_id",
+        "vehicle_id",
+        "message_assignment",
+        "message_exposure",
+        "physical_exposure",
+        "network_cluster",
+        "exposure_mapping_version",
+        "assignment_probability",
+        "spillover_status"
+      ]
+    }
+  },
+  "provenance": {
+    "raw_and_derived_separate": true,
+    "required_trace_fields": [
+      "source_uri",
+      "source_row_id",
+      "source_artifact",
+      "source_sha256",
+      "derivation_version"
+    ],
+    "missing_values_are_not_zero": true,
+    "independent_witness_requires_basis": true
+  },
+  "validation_rules": [
+    "foreign_keys_event_message_vehicle_must_resolve",
+    "lifecycle_timestamps_must_be_monotone_when_observed",
+    "adoption_cannot_precede_delivery_or_verification",
+    "reference_condition_must_match_assignment",
+    "quality_status_and_missing_reason_must_be_consistent",
+    "region_result_reports_valid_vehicle_time_and_unknown_counts",
+    "exposure_mapping_version_is_immutable_for_analyzed_artifact"
+  ]
+}

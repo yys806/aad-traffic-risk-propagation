@@ -505,3 +505,14 @@ Candidate inputs are statically valid. Native execution is blocked only by requi
 - Stage 0.6 candidate values are not scientific approvals. `delta_eq` has distinct max and joint-sum/paired aggregation candidates; `delta_R`, `delta_plan`, `h`, `epsilon_state`, paired variance, sample size and systematic bias `B` remain Proposed/Unknown.
 - Physical arrival time is Unknown. Event ordering, road distance, topology or an arbitrary speed cannot be used as an independent ordinary-physics arrival witness.
 - Stage I engineering wiring is available through the synthetic fixture, but production controller adoption receipts and regional-risk linkage still need scientific validation after Protocol Lock.
+## 2026-11-01 P0 Task 2 新增已知问题
+
+1. 同一源事件的 message assignment、generation、transmission、delivery、verification、adoption 和 controller action 尚未在现实数据中形成可追溯链。
+2. SPMD 的 RV_RX 只说明接收状态连续性，不能作为逐包 delivery、丢包或采用证据。
+3. MiTra T1/NGSIM 没有独立 no-message physical witness；Tphysical 与 Tinformation 的同源差值当前 Not identifiable。
+4. 区域 risk outcome 的固定 cohort、region、window、vehicle-time 和缺失界限尚未形成现实结果。
+5. Task9/Task19 仍是局部 fixed Leader–Follower conditional response，不是信息处理、区域风险或双传播因果证据。
+6. SUMO 工程 fixture 可验证字段/状态机，但 scientific_claim_eligible=false，不能替代现实因果。
+7. Peng 论文的模拟器结果限定于年轻驾驶者和预配置 warning；Schönhof 结果限定于简化 IVC/微观仿真。两者都不能填补 AAD 现实双链缺口。
+
+详细记录：docs/research/P0/P0_TASK2_CAUSAL_IDENTIFIABILITY_AUDIT.md、P0_TASK2_DATA_SOURCE_CAPABILITY_AUDIT.md、P0_TASK2_PHYSICAL_COUNTERFACTUAL_AUDIT.md。

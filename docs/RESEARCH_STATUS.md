@@ -417,3 +417,6 @@ Report: `docs/TASK20_STAGE0_CLOSURE_AND_STAGEI_READINESS_20261101.md`; output: `
 ## Current — P0 Task 1 文献调研与创新性审计 (2026-11-01)
 
 P0 Task 1 已完成治理规范、检索协议、Zotero 结构复核、候选论文注册表、逐篇精读记录、最近邻矩阵、创新性威胁分析和 NC 风险评估。六篇外部最近邻已导入 Zotero AAD/主题集合，其中两篇获得 PDF 附件；一个与既有 Wang 冲突图条目的重复记录已标记并保留。结论为 Proposal：信息—物理耦合、非局部控制、网络拥堵传播、BLOS/驾驶响应和代理指标均已有先行研究；AAD 仍可能成立的增量是可审计的双传播事件级因果链、采用—动作中介和干扰感知的区域 estimand。Stage 0.5、Stage 0.6、Protocol Lock、Stage I、Stage 1.1 状态均未改变。报告入口：`docs/research/P0/P0_TASK1_FINAL_REPORT.md`。
+## 2026-11-01 P0 Task 2 双传播因果审计
+
+P0 Task2 完成，状态为 COMPLETED_WITH_LIMITATIONS。交付：双传播动态 DAG、可识别性/estimand/interference 规范、物理反事实审计、区域风险中介审计、NGSIM/MiTra/SPMD/SUMO 能力审计、统一证据契约、最小/扩展研究设计和研究者决策清单。指定六篇最近邻的全文/合法访问状态已核实；Peng、Schönhof 研究者 PDF 已导入 Zotero AAD。结论是 C1–C3 当前不可识别，推荐的下一步是研究者先决定最小 message ITT 和独立物理 witness 可执行性。Stage 0.5/0.6、Protocol Lock、Stage I、Stage 1.1 状态不变。

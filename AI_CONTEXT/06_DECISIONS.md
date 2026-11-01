@@ -386,3 +386,10 @@ Task20 identifies the existing Stage I four-cell/lifecycle design as reusable en
 ## 2026-11-01 — P0 Task 1 literature and novelty audit boundary
 
 Verified: P0 Task 1 established the long-term literature governance and completed a bounded nearest-neighbor audit. Proposal: do not claim novelty for information faster than physical propagation, V2X/BLOS behavior change, nonlocal control, information–physical coupling, network congestion propagation, ZOI-like action boundaries, or TTC/DRAC/PET risk aggregation alone. Proposal: the next scientific question should be the auditable event-level dual propagation chain with controller adoption/action mediation and interference-aware regional estimands. No new scientific definition, metric, tolerance, intervention, Gate, Protocol Lock or Stage 1.1 authorization was approved. Stage boundaries remain unchanged.
+## 2026-11-01 P0 Task 2 因果识别决策审计
+
+P0 Task2 只形成 Proposal，未写入 Agreed Research Decision。推荐的首要处理是随机 message availability/strategy，首要目标是固定源事件、target cohort、region 和 window 下相对于 no-message 的 ITT/policy effect。Delivery、controller adoption 和 mediation 均为处理后变量，不能直接比较 adopted/not-adopted；IV、partial interference 和自然中介均需额外假设。
+
+新增明确边界：Schönhof 已覆盖信息—车辆流耦合，Wang 已覆盖队列—LWR 信息波，Jerath 已覆盖 ZOI/action boundary，Peng 已给出随机 BLOS warning 的动作因果效应；AAD 不再把这些内容单独主张为首次创新。若无法获得独立物理 witness 或真实消息链，可收窄为可审计不可识别性、动作响应或失败边界研究。
+
+Task2 报告：docs/research/P0/P0_TASK2_FINAL_REPORT.md；研究者决定清单：docs/research/P0/P0_TASK2_RESEARCHER_DECISIONS.md。

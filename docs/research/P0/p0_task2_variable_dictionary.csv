@@ -1,0 +1,27 @@
+variable,record_type,role,definition,current_status,minimum_source,missing_impact
+event_id,event,source key,stable source-event identifier,Proxy,trajectory/event detector,without it no same-event linkage
+source_vehicle_id,event,source identifier,vehicle that generated or physically initiated event,Unknown,trajectory identity,physical and message chains cannot be joined
+event_time,event,source time,event timestamp in declared clock,Proxy,trajectory or sensor,arrival times become Unknown
+message_assignment,exposure_assignment,treatment,message strategy or no-message assignment,Unobservable,randomization log,no ITT/policy effect
+message_id,message,lifecycle key,one message instance/version,Unobservable,message logger,no delivery/verification audit
+generation_time,message,post-treatment time,message generation timestamp,Unobservable,message logger,no information-arrival time
+transmission_time,message,post-treatment time,send timestamp,Unobservable,radio/controller logger,no transmission latency
+delivery_time,message,post-treatment mediator,receiver confirmation timestamp,Unobservable,receiver message log,no delivery effect
+verification_time,message,post-treatment mediator,source/freshness/content validation timestamp,Unobservable,controller log,no verified-message estimand
+adoption_status,controller,post-treatment mediator,adopted/rejected/not received/not verified/unknown,Unobservable,controller log,no complier effect
+commanded_action,controller,post-treatment mediator,controller command or driver prompt,Unobservable,controller log,no action attribution
+position,vehicle_action,observed state,vehicle position and spatial reference,Directly Observed,NGSIM/MiTra/SUMO,physical mapping uncertain
+speed,vehicle_action,observed state,longitudinal speed,Directly Observed,NGSIM/MiTra/SUMO,action and risk incomplete
+acceleration,vehicle_action,derived state,acceleration under declared derivative rule,Derivable,trajectory,action timing uncertain
+leader_id,vehicle_action,interaction state,leader identity under lane/continuity rule,Derivable,MiTra/NGSIM/SUMO,follower exposure uncertain
+net_gap,vehicle_action,interaction state,clearance with declared reference point,Proxy,trajectory plus geometry,physical risk uncertain
+physical_witness_id,physical_propagation,reference identifier,independent sensor/vehicle/model path,Unobservable,paired no-message design,no physical counterfactual
+arrival_time,physical_propagation,physical time,first qualified arrival of declared state,Unknown,physical witness,Delta-T not identifiable
+risk_metric,risk,measurement,approved TTC/DRAC/PET or other metric,Agreed by project,formal measurement config,metric validity boundary
+risk_value,risk,outcome,metric value under validity rule,Derivable,trajectory and risk code,individual risk missing/invalid
+region_id,risk,outcome scope,predefined spatial region identifier,Not identifiable,region mapping,regional effect unavailable
+evaluation_window,risk,outcome scope,fixed start/end relative to event,Proposal,design protocol,results not comparable
+message_exposure,exposure_assignment,interference exposure,assignment-to-message neighborhood mapping,Unobservable,network log and mapping,spillover not estimable
+physical_exposure,exposure_assignment,interference exposure,leader/follower and physical-neighborhood mapping,Proxy,trajectory and propagation witness,interference bias
+network_cluster,exposure_assignment,design unit,predefined road/time cluster,Proposal,randomization protocol,partial interference unverified
+source_sha256,all,provenance,hash of source artifact,Directly Observed,manifest,integrity cannot be checked

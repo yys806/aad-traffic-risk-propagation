@@ -29,3 +29,8 @@
 `P0 Task 2：双传播因果链的可识别性与证据契约审计`。
 
 输入是本 Task 的最近邻矩阵、现有 Stage 0.5 证据和研究者对上面五个问题的决定。输出应是：变量/时间戳字典、消息—物理双链 DAG、interference exposure mapping、最小可识别 estimand、必需现实证据、失败时收窄方案。未完成前不启动新的正式 SUMO/Stage 1.1 实验。
+## P0 Task 2 完成更新
+
+Task2 已完成上述审计并将结果分为 Fact、Inference、Hypothesis 和 Proposal。推荐的最小目标是道路区段—时间簇随机 message availability 相对于同源 no-message 的 ITT/policy effect；delivery、adoption 和 mediation 只能作为有附加设计的次级效应。当前真实数据仍缺 message lifecycle、controller adoption、独立物理 witness 和区域 risk outcome，因此 C1–C3 均为 Not identifiable。
+
+建议下一步由研究者决定是否启动 P0 Task 3：只做最小消息实验/物理 witness 的可执行性设计审查，不启动 Stage 1.1 或正式 SUMO。若无法获得同源随机 assignment 和物理 witness，则保留“可审计不可识别性与失败边界”作为收窄方向。

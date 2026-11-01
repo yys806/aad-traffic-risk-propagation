@@ -233,3 +233,6 @@ P2 覆盖：canonical 状态 → `leader_replay.prepare_pairs`（沿用 Stage 0.
 P3 初始化：同一批 12 对 × 两条路线（`native` 等待并记录插入延迟后按后车自身时间对齐 / `none` 使用官方 `--insertion-checks none` 在观测时刻精确进入）→ `init_routes.csv`（含每对轨迹 SHA 以支持逐字节一致性对照）→ `init_summary.json`。
 
 P4 响应：9 个单因素配置 × 3 个共同 seed × 12 对 → `replay_pair`（共享 1200 m 单车道网络，TraCI 驱动前车、后车纯模型、记录点用观测时钟标签对齐）→ `pair_metrics` + `slice_record`（局部 5 s / 长期 ≥10 s）+ `response_metrics`（制动事件幅值与滞后）→ `response_metrics.csv`/`response_summary.json`（含 seed 变异、配对差异、seed 稳定性）→ `identifiability_summary.json`（局部灵敏度、参数相关、信号/噪声、tau 剖面）。Newell 原型离线复用同一指标。P5 由 `macro_decision.json` 记录为门控未开。三批运行前各自写 `response_plan.json`/`init_plan.json`/`newell_plan.json` 并绑定 SHA；插入检查与等待策略、配置目录与单因素守卫、共享网络、局部/长期窗与扰动指标定义都在计划中冻结。
+## 2026-11-01 P0 Task 2 双传播证据流边界
+
+Task2 证据契约把信息链拆为 assignment → generation → transmission → delivery → verification → adoption → command → observed action，把物理链拆为 source motion → leader/follower interaction → physical arrival，并用 event_id、message_id、vehicle_id、clock_id 和 source_sha256 关联。当前 SPMD 仅 RV_RX 接收状态连续性；NGSIM/MiTra 仅轨迹；SUMO fixture 为合成字段。现实双链不连通，不能将跨数据集相关性当作同源因果链。

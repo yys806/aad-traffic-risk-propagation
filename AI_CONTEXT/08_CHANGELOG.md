@@ -566,3 +566,8 @@ Added the Task20 Stage 0.5 layered closure report, Stage 0.6 numerical/pre-lock 
 ## 2026-11-01 — P0 Task 1 literature governance and novelty audit
 
 Added `docs/research/RESEARCH_GOVERNANCE.md` and the P0 literature audit package under `docs/research/P0/`: search protocol, paper register, independent paper notes, nearest-neighbor matrix, novelty-gap analysis, conditional contribution memo, NC risk assessment, direction decision memo and final report. Reused existing Zotero attachments before external search, recorded the live nine-collection AAD structure, imported six verified nearest-neighbor metadata records into Zotero AAD/主题集合, attached two available PDFs, and preserved the historical six-collection/56-item statement. One duplicate Wang conflict-graph record was marked and retained without merge/delete. No algorithm, scientific metric, Gate, formal experiment, holdout, Protocol Lock or Stage 1.1 status changed.
+## 2026-11-01 P0 Task 2 因果审计完成
+
+完成 P0 Task2：六篇核心最近邻全文/合法访问审计；双传播动态 DAG；ITT、delivery、adoption、mediation 和 network interference estimand；独立物理反事实审计；区域风险中介链；NGSIM、MiTra T1、SPMD、SUMO 能力矩阵；事件/消息/控制器/动作/物理传播/风险/暴露证据契约。新增报告位于 docs/research/P0/P0_TASK2_*.md，机器可读契约和变量字典同步登记。
+
+本任务只更新文献、因果识别和证据治理，不启动新正式 SUMO/现实采集，不访问 locked holdout，不改变风险指标、Gate、Protocol Lock、Stage I 或 Stage 1.1。Peng 和 Schönhof PDF 由研究者提供并导入 Zotero；附件 SHA256 已写入逐篇精读记录。
