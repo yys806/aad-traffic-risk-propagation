@@ -1,3 +1,11 @@
+## Current — Task18 module map (2026-11-01)
+
+- `code/src/riskprop/stage_0_5_fixed_leader_follower_traci.py`: native Follower release, 80 m initialization, state/lifecycle/collision diagnostics.
+- `code/scripts/run_task18_closure_and_repeats.py`: 174-run executor, resume-safe result finalization, actual pair audit and seed audits.
+- `code/tests/test_task18_execution.py`: Task18 status and offset/pair contract tests.
+- `code/outputs/formal/task18_20261101/`: full trajectories, configs and execution JSON.
+- `evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/`: portable Task18 evidence.
+
 ## Current — Task17 module map (2026-11-01)
 
 - `code/src/riskprop/stage_0_5_fixed_leader_follower_traci.py`: repaired TraCI joint replay and lifecycle/state validation.

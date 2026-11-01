@@ -414,12 +414,41 @@
   "evidence/results/RES-STAGE-0.5-TASK17-TASK9-CLOSURE-20261101/task9_readiness.json",
   "evidence/results/RES-STAGE-0.5-TASK17-TASK9-CLOSURE-20261101/task9_results.csv",
   "evidence/results/RES-STAGE-0.5-TASK17-TASK9-CLOSURE-20261101/task9_stratified_summary.csv",
-  "evidence/results/RES-STAGE-0.5-TASK17-TASK9-CLOSURE-20261101/vehicle_lifecycle_audit.json"
+  "evidence/results/RES-STAGE-0.5-TASK17-TASK9-CLOSURE-20261101/vehicle_lifecycle_audit.json",
+  "code/scripts/run_task18_closure_and_repeats.py",
+  "code/tests/test_task18_execution.py",
+  "docs/TASK18_COMPLETE_20261101.md",
+  "docs/TASK18_EXECUTION_AUDIT_20261101.md",
+  "docs/TASK18_FAILURE_ANALYSIS_20261101.md",
+  "docs/TASK18_PRIMARY_SUPPLEMENTARY_RESULTS_20261101.md",
+  "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/arm_config_audit.json",
+  "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/collision_audit.json",
+  "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/execution_manifest.json",
+  "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/follower_control_audit.json",
+  "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/frozen_primary_matrix.csv",
+  "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/initialization_audit.json",
+  "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/initialization_results.csv",
+  "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/input_audit.json",
+  "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/leader_timing_audit.json",
+  "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/paired_analysis_primary.csv",
+  "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/paired_analysis_supplementary.csv",
+  "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/paired_initial_state_audit.json",
+  "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/primary_results.csv",
+  "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/result_status_summary.json",
+  "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/seed_reproducibility_audit.json",
+  "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/sha256_manifest.json",
+  "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/SHA256SUMS",
+  "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/stratified_summary.csv",
+  "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/supplementary_matrix.csv",
+  "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/supplementary_results.csv",
+  "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/task16_regression_results.csv",
+  "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/task16_regression_summary.json",
+  "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/timing_results.csv"
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
-  "active_task": "AAD-S0.5-TASK17 completed; Task9 formal local conditional matrix executed on 2026-11-01",
-  "why_now": "Task17 engineering closure and researcher-authorized Task9 execution are complete; retain all formal run records for scientific review.",
+  "active_task": "AAD-S0.5-TASK18 completed execution integrity closure and Primary/Supplementary Task9 repeats",
+  "why_now": "Task18 repaired native Follower control release and initialization, then completed the authorized 174-run execution plan.",
   "next_decision_owner": "researcher",
   "portable_gate_paths": [
    "evidence/results/RES-STAGE-0.5-OFFLINE-MECHANISM-AUDIT-20261028/count_reconciliation.json",
@@ -619,7 +648,18 @@
    "task9_pair_records": 30,
    "task9_pass_pairs": 27,
    "task9_unknown_pairs": 3,
-   "task9_scientific_interpretation": "local conditional response only; no AAD core causal conclusion"
+   "task9_scientific_interpretation": "local conditional response only; no AAD core causal conclusion",
+   "task18_result": "RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101",
+   "task18_status": "completed_execution_integrity_closure",
+   "task18_runs": 174,
+   "task18_primary_status": "60 PASS",
+   "task18_supplementary_status": "40 PASS",
+   "task18_task16_regression_status": "60 PASS",
+   "task18_determinism": "6 exact trajectory repeats",
+   "task18_pairing": "Primary 30/30; Supplementary 20/20",
+   "task18_collisions": 0,
+   "task18_teleports": 0,
+   "task18_arrived": 0
   }
  },
  "experiments": [
@@ -1306,7 +1346,8 @@
     "RES-STAGE-0.5-POST-R2-TASK14-MITRA-TASK9-INPUT-PREFLIGHT-20261031",
     "RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031",
     "RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031",
-    "RES-STAGE-0.5-TASK17-TASK9-CLOSURE-20261101"
+    "RES-STAGE-0.5-TASK17-TASK9-CLOSURE-20261101",
+    "RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -5911,6 +5952,70 @@
    "paper_locations": [
     "docs/TASK17_COMPLETE_20261101.md",
     "docs/TASK9_READINESS_20261101.md"
+   ],
+   "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101",
+   "experiment_id": "stage_0_5",
+   "name": "Task18 Task9 execution integrity correction, full repeats and audit",
+   "status": "completed_execution_integrity_closure",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/arm_config_audit.json",
+    "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/collision_audit.json",
+    "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/execution_manifest.json",
+    "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/follower_control_audit.json",
+    "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/frozen_primary_matrix.csv",
+    "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/initialization_audit.json",
+    "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/initialization_results.csv",
+    "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/input_audit.json",
+    "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/leader_timing_audit.json",
+    "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/paired_analysis_primary.csv",
+    "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/paired_analysis_supplementary.csv",
+    "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/paired_initial_state_audit.json",
+    "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/primary_results.csv",
+    "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/result_status_summary.json",
+    "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/seed_reproducibility_audit.json",
+    "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/sha256_manifest.json",
+    "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/SHA256SUMS",
+    "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/stratified_summary.csv",
+    "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/supplementary_matrix.csv",
+    "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/supplementary_results.csv",
+    "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/task16_regression_results.csv",
+    "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/task16_regression_summary.json",
+    "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/timing_results.csv"
+   ],
+   "local_artifact_paths": [
+    "code/outputs/formal/task18_20261101/"
+   ],
+   "code_version_source": "code/src/riskprop/stage_0_5_fixed_leader_follower_traci.py; code/scripts/run_task18_closure_and_repeats.py",
+   "configuration_source": "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/frozen_primary_matrix.csv and supplementary_matrix.csv",
+   "data_version_source": "Task14 Minimum Sufficient Authenticity input packages; Task17 frozen protocol",
+   "core_metrics": {
+    "planned_runs": 174,
+    "actual_runs": 174,
+    "task16_regression_pass": 60,
+    "primary_pass": 60,
+    "supplementary_pass": 40,
+    "determinism_exact": 6,
+    "initialization_pass": 5,
+    "initialization_expected_incomplete": 1,
+    "timing_pass": 2,
+    "primary_pairs_pass": 30,
+    "supplementary_pairs_pass": 20,
+    "collision_runs": 0,
+    "teleport_rows": 0,
+    "arrived_rows": 0,
+    "native_follower_control_release_verified": true,
+    "seed_variability_groups": 20
+   },
+   "current_conclusion": "Task18 establishes that the repaired local fixed-Leader execution chain is complete, reproducible and auditable under the frozen protocol. It does not establish the AAD core causal hypothesis or full-network equivalence.",
+   "gate_status": "blocked",
+   "paper_locations": [
+    "docs/TASK18_COMPLETE_20261101.md",
+    "docs/TASK18_EXECUTION_AUDIT_20261101.md",
+    "docs/TASK18_FAILURE_ANALYSIS_20261101.md",
+    "docs/TASK18_PRIMARY_SUPPLEMENTARY_RESULTS_20261101.md"
    ],
    "scientific_claim_eligible": false
   }

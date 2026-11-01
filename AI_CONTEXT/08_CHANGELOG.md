@@ -1,4 +1,8 @@
-## Current — AAD-S0.5-TASK17 (2026-11-01)
+## Current — AAD-S0.5-TASK18 (2026-11-01)
+
+Released Follower TraCI speed control before dynamic evolution, added native speed diagnostics, fixed formal coordinate translation to 80 m with boundary checks, audited collisions and actual A/B trajectories, and executed Primary/Supplementary/determinism/initialization/timing/Task16 matrices. Added isolated Task18 outputs, evidence and reports.
+
+## Historical — AAD-S0.5-TASK17 (2026-11-01)
 
 Repaired Task16 TraCI lifecycle and invalid-state handling; removed the previous 0.05 s speed phase from the recorded Leader control contract; added strict complete-trace PASS logic and one-time safe initialization checks. Re-ran the 60 engineering matrix and preserved classified failures. Froze the approved Task9 inputs/configuration and directly launched the 60-run formal matrix. Added per-run trajectories, metrics, paired analysis, evidence manifests and Task17/Task9 reports.
 

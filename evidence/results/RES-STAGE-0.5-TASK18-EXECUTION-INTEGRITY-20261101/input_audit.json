@@ -1,0 +1,103 @@
+{
+  "status": "PASS_FROZEN_MINIMUM_SUFFICIENT_AUTHENTICITY",
+  "decision_id": "AAD-S0.5-DEC-MINIMUM-SUFFICIENT-AUTHENTICITY-20261031",
+  "formal_candidates": [
+    "962-958-1",
+    "926-924-1"
+  ],
+  "excluded_candidates": [
+    {
+      "candidate": "857-851-1",
+      "reason": "approved formal matrix contains exactly two candidates"
+    }
+  ],
+  "candidates": [
+    {
+      "candidate": "962-958-1",
+      "follower": 962,
+      "leader": 958,
+      "lane": 1,
+      "initial_gap_estimate_m": 10.25279324721176,
+      "raw_rows": 1377,
+      "resampled_rows": 919,
+      "raw_duration_s": 45.912624,
+      "fixed_grid_end_s": 45.900000000000006,
+      "unrepresented_tail_s": 0.012623999999995306,
+      "raw_file": "local_research\\staging\\task14_20261031\\candidate_inputs\\962-958-1_raw.csv",
+      "resampled_file": "local_research\\staging\\task14_20261031\\candidate_inputs\\962-958-1_resampled_0p05.csv",
+      "raw_sha256": "a14034d8e3c29ef0a057ff526834aa606fe4e1808d3fecf6c0539da059663ac9",
+      "resampled_sha256": "3ec7647b26c7f41bdf9796831ea1fd80a1fac65f85e9c501061777ca899d16a2",
+      "raw_checks": {
+        "rows_positive": true,
+        "ids_constant": true,
+        "leader_follower_relation": true,
+        "lane_constant": true,
+        "raw_time_strict": true,
+        "raw_nominal_30hz": true,
+        "raw_finite": true,
+        "raw_gap_positive": true
+      },
+      "resampled_checks": {
+        "resampled_time_strict": true,
+        "resampled_uniform_0p05": true,
+        "resampled_finite": true,
+        "resampled_gap_positive": true,
+        "linear_only": true
+      },
+      "sensitivity": {
+        "reference_point_assumption": "MiTra center-separation minus half of recorded follower+leader lengths; local longitudinal projection",
+        "center_based_gap_m": 10.25279324721176,
+        "follower_reference_plus_0p5m_gap_m": 9.75279324721176,
+        "leader_reference_plus_0p5m_gap_m": 10.75279324721176,
+        "all_sensitivity_values_positive": true
+      },
+      "status": "PASS"
+    },
+    {
+      "candidate": "926-924-1",
+      "follower": 926,
+      "leader": 924,
+      "lane": 2,
+      "initial_gap_estimate_m": 4.859361845522001,
+      "raw_rows": 1397,
+      "resampled_rows": 932,
+      "raw_duration_s": 46.57995800000003,
+      "fixed_grid_end_s": 46.55,
+      "unrepresented_tail_s": 0.029958000000036122,
+      "raw_file": "local_research\\staging\\task14_20261031\\candidate_inputs\\926-924-1_raw.csv",
+      "resampled_file": "local_research\\staging\\task14_20261031\\candidate_inputs\\926-924-1_resampled_0p05.csv",
+      "raw_sha256": "ca326515220c43391f03cfcb5ffbf6f74819c7c7f35996f3585af0aef6358552",
+      "resampled_sha256": "d989fd408e5671138ab6a1da10e22f673815022cbdcd3d23e0f6e2dd758ab249",
+      "raw_checks": {
+        "rows_positive": true,
+        "ids_constant": true,
+        "leader_follower_relation": true,
+        "lane_constant": true,
+        "raw_time_strict": true,
+        "raw_nominal_30hz": true,
+        "raw_finite": true,
+        "raw_gap_positive": true
+      },
+      "resampled_checks": {
+        "resampled_time_strict": true,
+        "resampled_uniform_0p05": true,
+        "resampled_finite": true,
+        "resampled_gap_positive": true,
+        "linear_only": true
+      },
+      "sensitivity": {
+        "reference_point_assumption": "MiTra center-separation minus half of recorded follower+leader lengths; local longitudinal projection",
+        "center_based_gap_m": 4.859361845522001,
+        "follower_reference_plus_0p5m_gap_m": 4.359361845522001,
+        "leader_reference_plus_0p5m_gap_m": 5.359361845522001,
+        "all_sensitivity_values_positive": true
+      },
+      "status": "PASS"
+    }
+  ],
+  "physical_truth_boundary": [
+    "MiTra trajectories are not independent physical truth",
+    "initial gap is an estimate under the stated reference-point assumption",
+    "no extra video or physical-truth claim is required for this admission"
+  ]
+}

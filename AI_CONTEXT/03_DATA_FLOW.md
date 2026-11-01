@@ -1,3 +1,7 @@
+## Current — Task18 execution data flow (2026-11-01)
+
+Frozen MiTra input → 0.05 s Leader/Follower replay with 80 m coordinate translation → t=0 state and native-control release audit → full internal trajectory plus 0.1 s measurement trajectory → execution status/lifecycle/collision audit → actual A/B trajectory comparison → Primary/Supplementary stratified summaries. Full trajectories and per-run execution JSON remain in the local Task18 output tree; portable evidence contains scalar summaries and result tables.
+
 ## Current — Task17/Task9 data flow (2026-11-01)
 
 MiTra T1 raw candidate CSV → linear 0.05 s resampled input → frozen candidate/input hashes → per-run SUMO config and seed → internal 0.05 s trajectory → 0.1 s measurement trajectory → `C_initial`, `C_f`, `C_l`, `C`, `C_gap`, `R`, TTC and amplitude metrics → Candidate × tau × Seed paired A/B analysis. Raw tails remain in input/audit; no endpoint extrapolation or hold is applied. Execution status is preserved as PASS, FAIL, INCOMPLETE or INVALID.

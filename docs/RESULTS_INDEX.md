@@ -1,3 +1,7 @@
+## RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101
+
+Task18 repaired Follower control release and initialization, completed 174 planned runs, verified Primary/Supplementary matrices, same-seed determinism, seed variability and actual A/B pairing. Evidence: `evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/`; outputs: `code/outputs/formal/task18_20261101/`; report: `docs/TASK18_COMPLETE_20261101.md`.
+
 ## RES-STAGE-0.5-TASK17-TASK9-CLOSURE-20261101
 
 Task17 engineering closure and direct Task9 launch. Task16 engineering records: 60; formal Task9 records: 60 (54 PASS, 6 collision FAIL); 27 paired A/B records PASS and 3 Unknown. Evidence: `evidence/results/RES-STAGE-0.5-TASK17-TASK9-CLOSURE-20261101/`; formal output: `code/outputs/formal/task9_20261101/`; report: `docs/TASK17_COMPLETE_20261101.md`.

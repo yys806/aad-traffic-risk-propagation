@@ -1,4 +1,8 @@
-## Current — AAD-S0.5-TASK17 (2026-11-01)
+## Current — AAD-S0.5-TASK18 (2026-11-01)
+
+Task18 execution integrity closure is complete. Task9 remains a local conditional response experiment and Stage 0.5 scientific Gate definitions are unchanged. Evidence: `evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/`.
+
+## Historical — AAD-S0.5-TASK17 (2026-11-01)
 
 Task17 is completed and Task9 is ready/launched under the approved local conditional protocol. Stage 0.5 scientific Gate remains governed by its existing definitions. Evidence: `evidence/results/RES-STAGE-0.5-TASK17-TASK9-CLOSURE-20261101/`.
 

@@ -1,4 +1,12 @@
-## Current — AAD-S0.5-TASK17 (completed; Task9 launched, 2026-11-01)
+## Current — AAD-S0.5-TASK18 (completed execution integrity closure, 2026-11-01)
+
+Task18 corrected the Task9 executor by releasing Follower control with `setSpeed(-1)` before dynamic evolution, recording `getSpeedWithoutTraCI()`, and moving the local coordinate offset to 80 m after explicit boundary checks. The repaired chain completed 174/174 planned SUMO runs. Task16 regression was 60/60 PASS; Task9 Primary was 60/60 PASS; Supplementary was 40/40 PASS; six same-seed repeats were bitwise trajectory-consistent; initialization was 5 PASS plus one expected direct-mode INCOMPLETE; two timing checks PASS. No collision, teleport or arrived event was recorded. Primary and Supplementary A/B pairing passed on actual trajectory comparisons for 30/30 and 20/20 pairs.
+
+All dynamic eligible runs released Follower control, issued no dynamic Follower speed setters, and had native-speed diagnostics available with zero difference from actual speed. Five tau layers, two approved candidates, A/B minGap arms and frozen model parameters are unchanged. Task9 remains a local conditional response experiment; no AAD causal conclusion or Formal P2/D1/B definition changed.
+
+Task18 evidence: `evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/`; outputs: `code/outputs/formal/task18_20261101/`; reports: `docs/TASK18_COMPLETE_20261101.md`, `docs/TASK18_EXECUTION_AUDIT_20261101.md`, `docs/TASK18_FAILURE_ANALYSIS_20261101.md`, `docs/TASK18_PRIMARY_SUPPLEMENTARY_RESULTS_20261101.md`.
+
+## Historical — AAD-S0.5-TASK17 (completed; Task9 launched, 2026-11-01)
 
 Task17 repaired the Task16 SUMO/TraCI joint replay executor and re-ran the original 60 engineering combinations. The repaired executor now fail-closes missing vehicles, invalid SUMO sentinel states, teleports, collisions and incomplete traces; 56 rows are PASS and 4 collision rows are FAIL, with no false PASS. The Task9 protocol is frozen under the researcher-approved Minimum Sufficient Authenticity decision: candidates `962-958-1` and `926-924-1`, B00 passenger length 4.4196 m, five retained heterogeneous tau values, Arm A/B minGap 2.5/1.0 m and seeds 20261101/20261102/20261103. Task9 launched directly after prelaunch acceptance and produced 60 preserved run records: 54 PASS and 6 collision FAIL. Twenty-seven A/B pairs are usable; three are Unknown because both arms failed the same collision condition. Task9 remains a local conditional response experiment; no AAD core causal conclusion, Formal P2/D1/B change, or scientific equivalence claim is made.
 

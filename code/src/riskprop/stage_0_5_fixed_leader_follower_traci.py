@@ -18,7 +18,7 @@ def run_joint_replay(
     geometry_leader_length_m: float,
     follower_tau_s: float,
     follower_min_gap_m: float,
-    start_offset_m: float = 40.0,
+    start_offset_m: float = 80.0,
     sumo_binary: str = "sumo",
     seed: int | None = None,
     step_s: float = 0.05,
@@ -46,6 +46,11 @@ def run_joint_replay(
         cmd.extend(["--seed", str(int(seed)), "--random", "false"])
     rows = []
     initialization_move_m = 0.0
+    control_events: list[dict[str, object]] = []
+    collision_events: list[dict[str, object]] = []
+    arrived_events: list[dict[str, object]] = []
+    initial_state_errors: dict[str, float] = {}
+    road_length_m = None
     traci.start(cmd)
     execution_status = "PASS"
     failure_reason = None
@@ -65,6 +70,13 @@ def run_joint_replay(
             speed = float(traci.vehicle.getSpeed(vehicle_id))
             accel = float(traci.vehicle.getAcceleration(vehicle_id))
             lane = str(traci.vehicle.getLaneID(vehicle_id))
+            native_speed = None
+            if vehicle_id == "follower" and hasattr(traci.vehicle, "getSpeedWithoutTraCI"):
+                try:
+                    native_speed = float(traci.vehicle.getSpeedWithoutTraCI(vehicle_id))
+                except Exception as exc:
+                    native_speed = None
+                    invalid_state_rows.append({"input_time_s": input_time_s, "vehicle_id": vehicle_id, "phase": phase, "reason": f"native_speed_read_error:{exc!r}"})
         except Exception as exc:  # TraCI lifecycle can change between calls.
             invalid_state_rows.append({"input_time_s": input_time_s, "vehicle_id": vehicle_id, "phase": phase, "reason": f"read_error:{exc!r}"})
             return None
@@ -73,7 +85,7 @@ def run_joint_replay(
         if not all(np.isfinite(values)) or any(abs(v) > 1.0e6 for v in values) or speed < -1.0e-6:
             invalid_state_rows.append({"input_time_s": input_time_s, "vehicle_id": vehicle_id, "phase": phase, "position_m": position, "speed_mps": speed, "acceleration_mps2": accel, "reason": "nonfinite_or_invalid_sentinel"})
             return None
-        return {"position_m": position, "speed_mps": speed, "acceleration_mps2": accel, "lane": lane}
+        return {"position_m": position, "speed_mps": speed, "acceleration_mps2": accel, "lane": lane, "native_speed_without_traci_mps": native_speed}
 
     def _lifecycle_snapshot(input_time_s: float, phase: str) -> dict[str, object]:
         return {
@@ -99,6 +111,12 @@ def run_joint_replay(
         lane_index = lane_id.rsplit("_", 1)[-1]
         safe_insertion_gap = max(20.0, gap0 + 5.0, float(follower_tau_s) * follower_speed0 + float(follower_min_gap_m) + 5.0)
         follower_depart_pos = follower_front0 if initialization_mode == "direct" else float(leader_front[0] - geometry_leader_length_m - safe_insertion_gap)
+        try:
+            road_length_m = float(traci.lane.getLength(lane_id))
+        except Exception:
+            road_length_m = None
+        if follower_depart_pos < 0.0 or (road_length_m is not None and follower_depart_pos > road_length_m):
+            return {"status": "FAIL", "execution_status": "FAIL", "failure_reason": "illegal_follower_depart_pos", "rows": [], "formal_task9": False, "initialization_mode": initialization_mode, "expected_rows": expected_rows, "applied_rows": 0, "evaluated_rows": 0, "follower_depart_pos_m": follower_depart_pos, "road_length_m": road_length_m, "safe_insertion_gap_m": safe_insertion_gap, "control_events": control_events, "collision_events": collision_events, "arrived_events": arrived_events, "invalid_state_rows": invalid_state_rows}
         # Use the observed initial speed even for the safe-depart position;
         # the vehicle is inserted sufficiently far behind the leader, so this
         # does not compromise insertion safety and preserves the t[0] speed
@@ -114,6 +132,10 @@ def run_joint_replay(
         # and only applies setSpeed after the next simulation step.
         traci.vehicle.setSpeed("leader", float(max(0.0, leader_speed[0])))
         traci.vehicle.setSpeed("follower", float(max(0.0, follower_speed0)))
+        control_events.extend([
+            {"vehicle_id": "leader", "command": "setSpeed", "value_mps": float(max(0.0, leader_speed[0])), "phase": "initialization"},
+            {"vehicle_id": "follower", "command": "setSpeed", "value_mps": float(max(0.0, follower_speed0)), "phase": "initialization"},
+        ])
         traci.simulationStep()
         initial_ids = _ids()
         if not {"leader", "follower"}.issubset(initial_ids):
@@ -134,6 +156,19 @@ def run_joint_replay(
         traci.vehicle.setSpeed("follower", float(max(0.0, follower_speed0)))
         traci.vehicle.moveTo("leader", lane_id, float(leader_front[0]))
         traci.vehicle.setSpeed("leader", float(max(0.0, leader_speed[0])))
+        post_init_follower = _state("follower", float(t[0]), "after_initial_move")
+        post_init_leader = _state("leader", float(t[0]), "after_initial_move")
+        if post_init_follower is None or post_init_leader is None:
+            _fail("invalid_state_after_initial_move")
+        else:
+            initial_state_errors = {
+                "follower_speed_error_mps": float(post_init_follower["speed_mps"] - follower_speed0),
+                "leader_speed_error_mps": float(post_init_leader["speed_mps"] - leader_speed[0]),
+                "initial_gap_error_m": float((post_init_leader["position_m"] - geometry_leader_length_m - post_init_follower["position_m"]) - gap0),
+                "leader_position_error_m": float(post_init_leader["position_m"] - leader_front[0]),
+            }
+            if any(abs(v) > 1e-6 for v in initial_state_errors.values()):
+                _fail("initial_state_mismatch")
         # Formal t=0 is the first post-insertion state after the one-time
         # initialization move.  SUMO applies setSpeed over the following
         # integration interval, so the speed for sample i is issued before
@@ -156,12 +191,29 @@ def run_joint_replay(
             lp = float(leader_state["position_m"]); lv = float(leader_state["speed_mps"])
             fp = float(follower_state["position_m"]); fv = float(follower_state["speed_mps"])
             gap = lp - geometry_leader_length_m - fp
-            rows.append({"input_time_s": current, "simulation_time_s": float(traci.simulation.getTime()), "leader_position_m": lp, "leader_speed_mps": lv, "follower_position_m": fp, "follower_speed_mps": fv, "follower_acc_mps2": float(follower_state["acceleration_mps2"]), "net_gap_m": gap, "closing_speed_mps": fv - lv, "leader_lane": leader_state["lane"], "follower_lane": follower_state["lane"], "initialization_warmup": warmup, "starting_teleports": list(traci.simulation.getStartingTeleportIDList()), "ending_teleports": list(traci.simulation.getEndingTeleportIDList()), "arrived_ids": list(traci.simulation.getArrivedIDList()), "collisions": list(traci.simulation.getCollidingVehiclesIDList())})
+            starting_teleports = list(traci.simulation.getStartingTeleportIDList())
+            ending_teleports = list(traci.simulation.getEndingTeleportIDList())
+            arrived_ids = list(traci.simulation.getArrivedIDList())
+            collisions = list(traci.simulation.getCollidingVehiclesIDList())
+            overlap = bool(gap <= 0.0)
+            if arrived_ids:
+                arrived_events.append({"input_time_s": current, "phase": "initialization" if warmup else "dynamic", "arrived_ids": arrived_ids})
+            if collisions or overlap:
+                collision_events.append({"input_time_s": current, "phase": "initialization" if warmup else "dynamic", "collision_ids": collisions, "overlap_detected": overlap, "leader_position_m": lp, "follower_position_m": fp, "leader_speed_mps": lv, "follower_speed_mps": fv, "leader_length_m": geometry_leader_length_m, "follower_length_m": geometry_follower_length_m, "net_gap_m": gap})
+            rows.append({"input_time_s": current, "simulation_time_s": float(traci.simulation.getTime()), "leader_position_m": lp, "leader_speed_mps": lv, "follower_position_m": fp, "follower_speed_mps": fv, "follower_speed_without_traci_mps": follower_state.get("native_speed_without_traci_mps"), "follower_acc_mps2": float(follower_state["acceleration_mps2"]), "net_gap_m": gap, "closing_speed_mps": fv - lv, "leader_lane": leader_state["lane"], "follower_lane": follower_state["lane"], "initialization_warmup": warmup, "follower_control_released": any(e.get("command") == "setSpeed" and e.get("value_mps") == -1.0 for e in control_events), "starting_teleports": starting_teleports, "ending_teleports": ending_teleports, "arrived_ids": arrived_ids, "collisions": collisions})
             lifecycle_events.append(_lifecycle_snapshot(current, "sample_recorded"))
             return True
 
         if not _append_sample(0, warmup=True):
             return {"status": "FAIL", "execution_status": execution_status, "failure_reason": failure_reason, "rows": rows if save_trace else [], "formal_task9": False, "initialization_mode": initialization_mode, "expected_rows": expected_rows, "applied_rows": len(rows), "evaluated_rows": 0, "lifecycle_events": lifecycle_events, "invalid_state_rows": invalid_state_rows}
+        # Release the Follower to SUMO's native Krauss controller before any
+        # formal dynamic interval.  No subsequent Follower speed setter is
+        # allowed; only the Leader receives external speed commands.
+        traci.vehicle.setSpeed("follower", -1.0)
+        control_events.append({"vehicle_id": "follower", "command": "setSpeed", "value_mps": -1.0, "phase": "before_dynamic", "meaning": "release_to_native_SUMO_control"})
+        native_after_release = _state("follower", float(t[0]), "after_control_release")
+        if native_after_release is None:
+            _fail("invalid_state_after_follower_control_release")
         for i in range(1, len(t)):
             target = float(t[i])
             if not {"leader", "follower"}.issubset(_ids()):
@@ -169,6 +221,7 @@ def run_joint_replay(
                 _fail("vehicle_missing_before_dynamic_step")
                 break
             traci.vehicle.setSpeed("leader", float(max(0.0, leader_speed[i])))
+            control_events.append({"vehicle_id": "leader", "command": "setSpeed", "value_mps": float(max(0.0, leader_speed[i])), "phase": "dynamic", "input_time_s": target})
             traci.simulationStep(target + time_anchor_offset_s)
             if not {"leader", "follower"}.issubset(_ids()):
                 lifecycle_events.append(_lifecycle_snapshot(target, "after_dynamic_step"))
@@ -195,7 +248,18 @@ def run_joint_replay(
         _fail("collision_event")
     if not np.isfinite(gaps).all() or gaps.min() <= 0:
         _fail("invalid_or_nonpositive_gap")
+    if arrived_events:
+        _fail("arrived_event")
     if invalid_state_rows:
         _fail("invalid_state_readback")
+    if not any(e.get("command") == "setSpeed" and e.get("vehicle_id") == "follower" and e.get("value_mps") == -1.0 for e in control_events):
+        _fail("follower_control_not_released")
+    if any(e.get("vehicle_id") == "follower" and e.get("phase") == "dynamic" for e in control_events):
+        _fail("follower_dynamic_speed_command")
+    end_margin = None
+    if road_length_m is not None and frame_rows:
+        end_margin = float(min(road_length_m - frame_rows[-1]["leader_position_m"], road_length_m - frame_rows[-1]["follower_position_m"]))
+        if end_margin < 20.0:
+            _fail("road_end_margin_below_20m")
     status = "PASS" if execution_status == "PASS" else execution_status
-    return {"status": status, "execution_status": execution_status, "failure_reason": failure_reason, "rows": frame_rows if save_trace else [], "expected_rows": expected_rows, "applied_rows": len(frame_rows), "evaluated_rows": len(eval_rows), "initialization_mode": initialization_mode, "initialization_move_m": initialization_move_m, "safe_insertion_gap_m": safe_insertion_gap, "time_anchor_offset_s": time_anchor_offset_s, "min_net_gap_m": float(gaps.min()), "p50_net_gap_m": float(np.quantile(gaps, 0.5)), "max_net_gap_m": float(gaps.max()), "follower_speed_range_mps": [float(min(r["follower_speed_mps"] for r in eval_rows)), float(max(r["follower_speed_mps"] for r in eval_rows))], "teleport_rows": len(tele), "collision_rows": len(coll), "formal_task9": False, "geometry_follower_length_m": geometry_follower_length_m, "geometry_leader_length_m": geometry_leader_length_m, "follower_tau_s": follower_tau_s, "follower_min_gap_m": follower_min_gap_m, "lifecycle_events": lifecycle_events, "invalid_state_rows": invalid_state_rows}
+    return {"status": status, "execution_status": execution_status, "failure_reason": failure_reason, "rows": frame_rows if save_trace else [], "expected_rows": expected_rows, "applied_rows": len(frame_rows), "evaluated_rows": len(eval_rows), "initialization_mode": initialization_mode, "initialization_move_m": initialization_move_m, "follower_depart_pos_m": follower_depart_pos, "leader_initial_position_m": float(leader_front[0]), "follower_target_position_m": float(follower_front0), "safe_insertion_gap_m": safe_insertion_gap, "road_length_m": road_length_m, "road_end_margin_m": end_margin, "time_anchor_offset_s": time_anchor_offset_s, "min_net_gap_m": float(gaps.min()), "p50_net_gap_m": float(np.quantile(gaps, 0.5)), "max_net_gap_m": float(gaps.max()), "follower_speed_range_mps": [float(min(r["follower_speed_mps"] for r in eval_rows)), float(max(r["follower_speed_mps"] for r in eval_rows))], "teleport_rows": len(tele), "collision_rows": len(coll), "arrived_rows": len(arrived_events), "collision_events": collision_events, "arrived_events": arrived_events, "control_events": control_events, "initial_state_errors": initial_state_errors, "follower_control_released": any(e.get("command") == "setSpeed" and e.get("vehicle_id") == "follower" and e.get("value_mps") == -1.0 for e in control_events), "follower_dynamic_speed_commands": [e for e in control_events if e.get("vehicle_id") == "follower" and e.get("phase") == "dynamic"], "formal_task9": False, "geometry_follower_length_m": geometry_follower_length_m, "geometry_leader_length_m": geometry_leader_length_m, "follower_tau_s": follower_tau_s, "follower_min_gap_m": follower_min_gap_m, "lifecycle_events": lifecycle_events, "invalid_state_rows": invalid_state_rows}

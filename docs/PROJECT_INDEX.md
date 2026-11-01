@@ -1,4 +1,8 @@
-## Current — AAD-S0.5-TASK17 (2026-11-01)
+## Current — AAD-S0.5-TASK18 (2026-11-01)
+
+Use `code/scripts/run_task18_closure_and_repeats.py`, `code/outputs/formal/task18_20261101/` and `evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/`. Task18 preserves Task17 and verifies native Follower release, 80 m initialization, seed variability and actual A/B pairing.
+
+## Historical — AAD-S0.5-TASK17 (2026-11-01)
 
 Task17 closure and Task9 launch are complete. Use `code/scripts/run_task17_closure_and_task9.py`, `code/outputs/formal/task9_20261101/` and `evidence/results/RES-STAGE-0.5-TASK17-TASK9-CLOSURE-20261101/`. Formal matrix is 60; status counts are PASS=54 and FAIL=6 collision.
 

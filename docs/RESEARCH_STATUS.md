@@ -1,4 +1,8 @@
-## Current — AAD-S0.5-TASK17 / Task9 (2026-11-01)
+## Current — AAD-S0.5-TASK18 (2026-11-01)
+
+Task18 completed the repaired execution chain and 174-run plan. Primary 60/60 PASS, Supplementary 40/40 PASS, Task16 regression 60/60 PASS, six deterministic repeats exact, five initialization PASS plus one expected direct INCOMPLETE, two timing PASS. No collision/teleport/arrived event occurred. Evidence: `evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/`.
+
+## Historical — AAD-S0.5-TASK17 / Task9 (2026-11-01)
 
 Task17 completed engineering closure and directly launched the authorized Task9 matrix. Task16 repaired matrix: 56 PASS, 4 collision FAIL; formal Task9: 60 records with 54 PASS and 6 collision FAIL. Inputs, configs and hashes are frozen; all failures remain visible. Stage 0.5 scientific Gate and equivalence status are unchanged; Task9 is a local conditional response experiment. Evidence: `evidence/results/RES-STAGE-0.5-TASK17-TASK9-CLOSURE-20261101/`; reports: `docs/TASK17_COMPLETE_20261101.md`, `docs/TASK9_READINESS_20261101.md`.
 

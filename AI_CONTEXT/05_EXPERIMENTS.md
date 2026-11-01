@@ -1,4 +1,8 @@
-## Current — AAD-S0.5-TASK17 / Task9 formal execution (2026-11-01)
+## Current — AAD-S0.5-TASK18 / Task9 repeats (2026-11-01)
+
+Task18 executed 174/174 planned runs. Task16 regression 60 PASS; Primary 60 PASS; Supplementary 40 PASS; determinism 6/6 exact; initialization 5 PASS + 1 expected direct INCOMPLETE; timing 2 PASS. Primary and Supplementary actual A/B pairing passed 30/30 and 20/20. Five unique trajectory hashes occurred across all 20 candidate/tau/arm seed groups. No collision, teleport or arrived event occurred.
+
+## Historical — AAD-S0.5-TASK17 / Task9 formal execution (2026-11-01)
 
 Task17 engineering matrix: 3 candidates × 2 geometry settings × 5 tau × 2 arms = 60, classified PASS=56, FAIL=4 collision, INCOMPLETE=0, INVALID=0. Formal Task9 matrix: 2 fixed candidates × 5 tau × 2 arms × 3 seeds = 60; results PASS=54, FAIL=6 collision, INCOMPLETE=0, INVALID=0. All 60 run records and trajectories are preserved. Pairing is by candidate, tau and seed; 27 pairs are PASS and 3 are Unknown because both arms failed. These are local conditional response results and are not a global AAD causal effect.
 

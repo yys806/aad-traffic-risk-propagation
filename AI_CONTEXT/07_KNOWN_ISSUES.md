@@ -1,3 +1,7 @@
+## Current — Task18 known issues (2026-11-01)
+
+Task18 establishes execution integrity for the local fixed-Leader experiment, not causal validity for the AAD hypothesis. MiTra physical-truth and reference-point limitations remain. The 926 direct/high-tau initialization check remains expected INCOMPLETE because SUMO rejects direct insertion; safe_then_move is the approved dynamic path. The 80 m prototype has positive initialization and end margins for formal candidates, but the prototype is not claimed background-equivalent to sealed B00.
+
 ## Current — Task17 known issues (2026-11-01)
 
 MiTra trajectories remain non-independent physical truth and initial gaps remain reference-point estimates. The isolated prototype is not claimed background-equivalent to sealed B00. Six formal runs and four Task16 engineering rows have collision FAIL status at the 926-924-1 high-tau condition; their evidence is retained and their pairs are Unknown where required. Descriptive minimum lag is Unknown for non-unique minima and is never interpreted as real driver reaction time. Task9 cannot establish the AAD remote-message causal hypothesis or population-wide vehicle behavior.

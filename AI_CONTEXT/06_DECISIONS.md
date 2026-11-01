@@ -1,4 +1,8 @@
-## Current — AAD-S0.5-TASK17 decisions implemented (2026-11-01)
+## Current — AAD-S0.5-TASK18 decisions implemented (2026-11-01)
+
+Engineering decisions authorized for Task18: release Follower speed control before dynamic evolution; use 80 m local coordinate translation after boundary verification; run the frozen Primary 60 plus Supplementary seeds 20261104/20261105; run six same-seed repeats, six initialization checks and two timing checks; retain direct-mode failure as a classified result. No core scientific design, candidate, tau, arm, model parameter or formal definition changed.
+
+## Historical — AAD-S0.5-TASK17 decisions implemented (2026-11-01)
 
 Implemented the researcher-approved Minimum Sufficient Authenticity admission; formal candidates 962-958-1 and 926-924-1; five original heterogeneous tau values; B00 passenger geometry; 0.05 s internal and 0.1 s measurement grids; linear interpolation; Arm A/B minGap 2.5/1.0; seeds 20261101–20261103; prototype network; one-time safe initialization; direct Task9 launch after Task17 acceptance. No MiTra Vehicle_type-to-tau mapping was introduced. No Formal P2, D1, B witness, Stage 0.5 Gate or scientific-equivalence definition was changed.
 

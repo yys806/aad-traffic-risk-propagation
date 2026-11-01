@@ -1,3 +1,7 @@
+## Current — Task18 execution architecture (2026-11-01)
+
+The repaired TraCI adapter constructs safe initial positions at an 80 m translation, records t=0 state, releases the Follower with `setSpeed(-1)`, and then controls only the Leader. It records native Follower speed diagnostics, lifecycle, collision context and road-boundary margins. `run_task18_closure_and_repeats.py` runs Primary, Supplementary, determinism, initialization, timing and Task16 regression matrices into an isolated Task18 output tree.
+
 ## Current — Task17 execution architecture (2026-11-01)
 
 Task16/Task9 use the isolated 1,000 m, 3-lane prototype for a fixed Leader and native SUMO Krauss Follower. `stage_0_5_fixed_leader_follower_traci.py` owns TraCI lifecycle checks, one-time `safe_then_move` initialization, current-sample Leader control/readback, and fail-closed status classification. `run_task17_closure_and_task9.py` freezes inputs/configs, generates the 60-row matrix, launches formal runs, writes trajectories, computes metrics and paired contrasts. The Follower is never externally moved during the dynamic phase.
