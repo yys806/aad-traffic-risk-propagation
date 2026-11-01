@@ -1,6 +1,6 @@
 # Zotero local API notes
 
-The supported interface for this workflow is the local Zotero HTTP API. Use the user library base URL from the authorization cache and send these headers:
+The supported interface for this workflow is the local Zotero HTTP API. Set `ZOTERO_LOCAL_BASE` (or pass `--base`) to the target library base URL, for example `http://127.0.0.1:23119/api/users/<library-id>`. Do not hard-code another project's library ID. Send these headers:
 
 - `Zotero-API-Version: 3`
 - `Zotero-API-Key: <local key>`
@@ -18,6 +18,8 @@ Read an item with `GET /items/{itemKey}`. Update only collection membership with
 ```
 
 The item key and version come from the immediately preceding GET. A version conflict is a stop condition: refetch, reassess the plan, and do not overwrite a concurrent change. Collection names and counts come from `GET /collections` and collection contents from `GET /collections/{collectionKey}/items`.
+
+Read lists with `limit=100&start=...`, advancing by the number of returned rows until an empty page. Traverse descendants from the selected root; include root-only and inbox-only items in project inventories. If pages repeat item/collection keys, stop and report an incomplete inventory. The helper reports exact-match/metadata candidates; it does not independently verify publisher records, retractions or orphan attachments.
 
 The local key is a credential. Keep it outside Git, logs, manifests, and generated indexes.
 

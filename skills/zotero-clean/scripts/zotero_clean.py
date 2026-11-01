@@ -21,14 +21,21 @@ from typing import Any
 
 
 DEFAULT_KEY_PATH = Path(r"D:\hermes\cache\zotero-local-key.json")
-DEFAULT_BASE = "http://127.0.0.1:23119/api/users/18841865"
+DEFAULT_LOCAL_API = "http://127.0.0.1:23119/api"
 
 
 class ZoteroLocal:
-    def __init__(self, key_path: Path | None = None, base: str = DEFAULT_BASE) -> None:
+    def __init__(self, key_path: Path | None = None, base: str | None = None) -> None:
         cache_path = key_path or Path(os.environ.get("ZOTERO_LOCAL_KEY_PATH", DEFAULT_KEY_PATH))
         cache = json.loads(cache_path.read_text(encoding="utf-8"))
-        self.base = base.rstrip("/")
+        resolved_base = base or os.environ.get("ZOTERO_LOCAL_BASE")
+        if not resolved_base:
+            library_id = os.environ.get("ZOTERO_LIBRARY_ID")
+            if library_id:
+                resolved_base = f"{DEFAULT_LOCAL_API}/users/{library_id}"
+        if not resolved_base:
+            raise ValueError("set --base, ZOTERO_LOCAL_BASE, or ZOTERO_LIBRARY_ID for the Zotero library")
+        self.base = resolved_base.rstrip("/")
         self.headers = {
             "Zotero-API-Version": "3",
             "Zotero-API-Key": cache["key"],
@@ -51,14 +58,29 @@ class ZoteroLocal:
         return self.request("GET", f"/items/{urllib.parse.quote(key)}")["data"]
 
     def collections(self) -> list[dict[str, Any]]:
-        response = self.request("GET", "/collections?limit=1000")
-        rows = response if isinstance(response, list) else response.get("collections", [])
-        return [row.get("data", row) for row in rows]
+        return self._pages("/collections", "collections")
 
     def collection_items(self, key: str) -> list[dict[str, Any]]:
-        response = self.request("GET", f"/collections/{urllib.parse.quote(key)}/items?limit=1000")
-        rows = response if isinstance(response, list) else response.get("items", [])
-        return [row.get("data", row) for row in rows]
+        return self._pages(f"/collections/{urllib.parse.quote(key)}/items", "items")
+
+    def _pages(self, path: str, field: str) -> list[dict[str, Any]]:
+        rows: list[dict[str, Any]] = []
+        seen_keys: set[str] = set()
+        start = 0
+        while True:
+            response = self.request("GET", f"{path}?limit=100&start={start}")
+            page = response if isinstance(response, list) else response[field]
+            if not isinstance(page, list):
+                raise ValueError(f"unexpected Zotero list response for {path}")
+            if not page:
+                return rows
+            normalized = [row.get("data", row) for row in page]
+            page_keys = {row["key"] for row in normalized}
+            if seen_keys & page_keys or len(page_keys) != len(normalized):
+                raise ValueError(f"Zotero pagination repeated keys for {path}; inventory incomplete")
+            seen_keys.update(page_keys)
+            rows.extend(normalized)
+            start += len(page)
 
     def patch_membership(self, item: dict[str, Any], collections: set[str]) -> Any:
         payload = {"key": item["key"], "version": item["version"], "collections": sorted(collections)}
@@ -111,6 +133,7 @@ def apply_plan(client: ZoteroLocal, plan: dict[str, Any], manifest_path: Path, d
         "schema_version": "zotero-clean.execution.v1",
         "executed_utc": started,
         "toolchain": "Zotero local HTTP API; Computer Use disabled",
+        "project_name": plan.get("project_name", "Zotero project"),
         "root_collection_key": plan["root_collection_key"],
         "inbox_collection_key": plan["inbox_collection_key"],
         "plan_source": str(plan.get("plan_source", "")),
@@ -122,38 +145,63 @@ def apply_plan(client: ZoteroLocal, plan: dict[str, Any], manifest_path: Path, d
     return manifest
 
 
-def export_index(client: ZoteroLocal, root_key: str, output_dir: Path) -> tuple[Path, Path]:
+def project_inventory(
+    client: ZoteroLocal, root_key: str, inbox_key: str | None = None
+) -> tuple[dict[str, dict[str, Any]], dict[str, set[str]], dict[str, dict[str, Any]], set[str]]:
     collections = {row["key"]: row for row in client.collections()}
-    topic = [row for row in collections.values() if row.get("parentCollection") == root_key]
-    membership: dict[str, list[str]] = {}
-    titles: dict[str, str] = {}
-    for collection in topic:
-        for brief in client.collection_items(collection["key"]):
-            if brief.get("itemType") in {"attachment", "note"} or brief.get("parentItem"):
+    if root_key not in collections:
+        raise ValueError(f"project root collection not found: {root_key}")
+    project_keys = {root_key}
+    while True:
+        descendants = {key for key, row in collections.items() if row.get("parentCollection") in project_keys}
+        if descendants.issubset(project_keys):
+            break
+        project_keys.update(descendants)
+    if inbox_key and (inbox_key == root_key or inbox_key not in project_keys):
+        raise ValueError("inbox must be a descendant of the project root")
+    memberships: dict[str, set[str]] = {}
+    items: dict[str, dict[str, Any]] = {}
+    for collection_key in sorted(project_keys):
+        for item in client.collection_items(collection_key):
+            if item.get("itemType") in {"attachment", "note"} or item.get("parentItem"):
                 continue
-            key = brief["key"]
-            membership.setdefault(key, []).append(collection["key"])
-            titles[key] = brief.get("title", "")
+            memberships.setdefault(item["key"], set()).add(collection_key)
+            items[item["key"]] = item
+    return collections, memberships, items, project_keys
+
+
+def export_index(
+    client: ZoteroLocal,
+    root_key: str,
+    output_dir: Path,
+    project_name: str = "Zotero project",
+    inbox_key: str | None = None,
+    stamp: str | None = None,
+) -> tuple[Path, Path]:
+    collections, membership, items, _ = project_inventory(client, root_key, inbox_key)
+    titles = {key: item.get("title", "") for key, item in items.items()}
     rows = []
     for key in sorted(membership, key=lambda k: titles.get(k, "").casefold()):
         names = [collections[c]["name"] for c in sorted(membership[key], key=lambda c: collections[c]["name"])]
         rows.append({"item_key": key, "title": titles[key], "collections": names})
     output_dir.mkdir(parents=True, exist_ok=True)
-    csv_path = output_dir / "AAD_ZOTERO_INDEX_2026-11-01.csv"
-    md_path = output_dir / "AAD_ZOTERO_INDEX_2026-11-01.md"
+    stamp = stamp or datetime.now(timezone.utc).strftime("%Y%m%d")
+    safe_project = re.sub(r"[^A-Za-z0-9_-]+", "_", project_name).strip("_") or "zotero_project"
+    csv_path = output_dir / f"{safe_project}_ZOTERO_INDEX_{stamp}.csv"
+    md_path = output_dir / f"{safe_project}_ZOTERO_INDEX_{stamp}.md"
     with csv_path.open("w", newline="", encoding="utf-8-sig") as fh:
         writer = csv.DictWriter(fh, fieldnames=["item_key", "title", "collections"])
         writer.writeheader()
         for row in rows:
             writer.writerow({**row, "collections": " | ".join(row["collections"])})
     lines = [
-        "# AAD Zotero 文献索引（2026-11-01）",
+        f"# {project_name} Zotero 文献索引（{stamp}）",
         "",
-        "> 来源：Zotero `TJU → AAD` 实时集合；索引由 Zotero 本机 HTTP API 生成。`补充文献-未分类` 保留为收件箱，不作为主题集合计入。",
+        "> 来源：Zotero 项目根集合及全部嵌套集合；仅挂根集合或收件箱的条目也保留，收件箱不作为主题集合计数。",
         "",
         f"共 {len(rows)} 个唯一 item key。",
         "",
-        "| item key | 题名 | 所属主题集合 |",
+        "| item key | 题名 | 所属项目集合 |",
         "|---|---|---|",
     ]
     for row in rows:
@@ -178,19 +226,23 @@ def _year(value: str) -> str:
     return match.group(0) if match else ""
 
 
-def audit_project(client: ZoteroLocal, root_key: str, output_dir: Path) -> tuple[Path, Path]:
-    collections = {row["key"]: row for row in client.collections()}
-    children = [row for row in collections.values() if row.get("parentCollection") == root_key]
-    topic_children = [row for row in children if row.get("name") != "补充文献-未分类"]
-    memberships: dict[str, set[str]] = {}
-    brief: dict[str, dict[str, Any]] = {}
-    for collection in topic_children:
-        for row in client.collection_items(collection["key"]):
-            if row.get("itemType") in {"attachment", "note"} or row.get("parentItem"):
-                continue
-            key = row["key"]
-            memberships.setdefault(key, set()).add(collection["key"])
-            brief[key] = row
+def audit_project(
+    client: ZoteroLocal,
+    root_key: str,
+    output_dir: Path,
+    project_name: str = "Zotero project",
+    inbox_key: str | None = None,
+    inbox_name: str | None = None,
+    stamp: str | None = None,
+) -> tuple[Path, Path]:
+    collections, memberships, brief, project_keys = project_inventory(client, root_key, inbox_key)
+    resolved_inbox = inbox_key
+    if not resolved_inbox and inbox_name:
+        matches = [key for key in sorted(project_keys - {root_key}) if collections[key].get("name") == inbox_name]
+        if len(matches) != 1:
+            raise ValueError("inbox name must identify exactly one project collection; use --inbox-key")
+        resolved_inbox = matches[0]
+    topic_keys = project_keys - {root_key, resolved_inbox}
     records: list[dict[str, Any]] = []
     for key in sorted(memberships):
         item = client.item(key)
@@ -246,13 +298,24 @@ def audit_project(client: ZoteroLocal, root_key: str, output_dir: Path) -> tuple
         if missing or flags:
             invalid_candidates.append({"item_key": record["item_key"], "title": record["title"], "missing_core_fields": missing, "status_keywords": flags, "action": "review"})
 
-    inbox_keys = {row["key"] for row in client.collection_items(next((c["key"] for c in children if c["name"] == "补充文献-未分类"), "__missing__")) if row.get("itemType") not in {"attachment", "note"} and not row.get("parentItem")} if any(c["name"] == "补充文献-未分类" for c in children) else set()
+    inbox_keys = set()
+    if resolved_inbox:
+        inbox_keys = {
+            row["key"]
+            for row in client.collection_items(resolved_inbox)
+            if row.get("itemType") not in {"attachment", "note"} and not row.get("parentItem")
+        }
+    stamp = stamp or datetime.now(timezone.utc).strftime("%Y%m%d")
     report = {
         "schema_version": "zotero-clean.audit.v1",
         "toolchain": "Zotero local HTTP API; Computer Use disabled",
+        "project_name": project_name,
         "root_collection_key": root_key,
-        "topic_collection_count": len(topic_children),
-        "inbox_collection_present": any(c.get("name") == "补充文献-未分类" for c in children),
+        "topic_collection_count": len(topic_keys),
+        "inventory_scope": "project root and all descendant collections, including inbox-only items",
+        "root_only_item_keys": sorted(key for key, membership in memberships.items() if membership == {root_key}),
+        "inbox_collection_key": resolved_inbox,
+        "inbox_collection_present": resolved_inbox is not None,
         "top_level_item_count": len(records),
         "inbox_item_keys": sorted(inbox_keys),
         "exact_doi_duplicate_candidates": exact_doi,
@@ -262,20 +325,19 @@ def audit_project(client: ZoteroLocal, root_key: str, output_dir: Path) -> tuple
         "records": records,
     }
     output_dir.mkdir(parents=True, exist_ok=True)
-    stamp = datetime.now(timezone.utc).strftime("%Y%m%d")
     json_path = output_dir / f"zotero_clean_audit_{stamp}.json"
     md_path = output_dir / f"zotero_clean_audit_{stamp}.md"
     json_path.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     lines = [
-        f"# Zotero 项目审计（{stamp}）",
+        f"# {project_name} Zotero 项目审计（{stamp}）",
         "",
         "> 只读审计；重复、冲突和失效候选不会自动合并、删除或退役。",
         "",
         f"- 顶层条目：{len(records)}",
-        f"- 主题集合：{len(topic_children)}",
+        f"- 主题集合：{len(topic_keys)}",
         f"- 收件箱条目：{len(inbox_keys)}",
         f"- DOI 重复候选：{len(exact_doi)}",
-        f"- 无 DOI 的题名/作者/年份候选：{len(exact_identity)}",
+        f"- 题名/作者/年份候选（可与 DOI 候选重叠）：{len(exact_identity)}",
         f"- 元数据冲突：{len(conflicts)}",
         f"- 失效或元数据复核候选：{len(invalid_candidates)}",
         "",
@@ -343,19 +405,39 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--audit", action="store_true")
     parser.add_argument("--verify", action="store_true")
     parser.add_argument("--root-key")
+    parser.add_argument("--inbox-key")
+    parser.add_argument("--inbox-name")
+    parser.add_argument("--project-name", default="Zotero project")
+    parser.add_argument("--stamp")
+    parser.add_argument("--base")
     parser.add_argument("--output-dir", type=Path)
     args = parser.parse_args(argv)
-    client = ZoteroLocal()
+    client = ZoteroLocal(base=args.base)
     if args.export_index:
         if not args.root_key or not args.output_dir:
             parser.error("--export-index requires --root-key and --output-dir")
-        md, csv_path = export_index(client, args.root_key, args.output_dir)
+        md, csv_path = export_index(
+            client,
+            args.root_key,
+            args.output_dir,
+            project_name=args.project_name,
+            inbox_key=args.inbox_key,
+            stamp=args.stamp,
+        )
         print(json.dumps({"markdown": str(md), "csv": str(csv_path)}, ensure_ascii=False))
         return 0
     if args.audit:
         if not args.root_key or not args.output_dir:
             parser.error("--audit requires --root-key and --output-dir")
-        md, json_path = audit_project(client, args.root_key, args.output_dir)
+        md, json_path = audit_project(
+            client,
+            args.root_key,
+            args.output_dir,
+            project_name=args.project_name,
+            inbox_key=args.inbox_key,
+            inbox_name=args.inbox_name,
+            stamp=args.stamp,
+        )
         print(json.dumps({"markdown": str(md), "json": str(json_path)}, ensure_ascii=False))
         return 0
     if args.verify:

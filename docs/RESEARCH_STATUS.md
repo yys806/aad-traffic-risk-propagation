@@ -426,3 +426,7 @@ P0 Task2 完成，状态为 COMPLETED_WITH_LIMITATIONS。交付：双传播动�
 已按当前 P0 Task 1/2 与 Stage 0.5 文献主线，整理 Zotero `TJU → AAD → 补充文献-未分类` 的 7 条记录。2 条补入主题集合（V2V 信息流 → `02_混合自动驾驶传播与控制`；冲突风险图重复记录 → `01_风险事件与安全指标`），其余 5 条保留原有主题挂载并移出收件箱。收件箱集合保留，当前为 0 条；主题集合去重后 85 个唯一 item key。所有 item key、附件、元数据、标签与既有主题挂载均保留，未合并或删除条目。
 
 计划与逐条理由：`doc/literature-notes/zotero_clean_2026-11-01_plan.json`；执行前后集合：`doc/literature-notes/zotero_clean_2026-11-01_execution.json`；全量索引：`doc/literature-notes/AAD_ZOTERO_INDEX_2026-11-01.md` / `.csv`；只读审计：`doc/literature-notes/zotero_clean_audit_20261101.md` / `.json`；通用流程：`skills/zotero-clean/`。审计发现 1 个 AAD 内 DOI 重复候选、1 个无 DOI 同题名候选和 6 个缺期刊字段复核候选，均保留待深层 Level 4/元数据复核，不在本次任务自动处理。写入和验证均通过 Zotero 本机 HTTP API，Computer Use 未使用；本次只改变文献集合归属，不改变任何科研 Gate、实验状态或研究结论。
+
+全局工具链续接：`zotero-clean` 已全局安装至 `C:/Users/Lenovo/.codex/skills/zotero-clean/`，仓库维护副本位于 `skills/zotero-clean/`。库、项目名、根/收件箱、输出目录和日期均可参数化；读取支持分页及嵌套集合。AAD 连接与凭据配置见 `doc/literature-notes/README.md`。本次续接未重复执行文献分类写入。
+
+续接实时状态（Verified，2026-11-01）：9 个主题集合、84 个唯一条目、收件箱 0 条；7/7 归类结果回读通过。当前精确 DOI/题名作者年份候选为 0，元数据复核候选为 6。首轮快照多出的 `BYCXQ5A3` 当前 API 返回 `deleted=true`；删除时间与执行者 Unknown，本次续接没有 Zotero 写入。旧 85 条快照保留，新索引为 `doc/literature-notes/AAD_ZOTERO_INDEX_20261101-global.md` / `.csv`；审计为 `doc/literature-notes/zotero_clean_audit_20261101-global.md` / `.json`；续接核验记录为 `doc/literature-notes/zotero_clean_2026-11-01_continuation.json`。旧审计的题名/作者/年份匹配可与 DOI 候选重叠，不据旧标题断言“无 DOI”。
