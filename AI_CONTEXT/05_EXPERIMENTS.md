@@ -1,3 +1,7 @@
+## Current — P2 Task1 theory-only boundary (2026-11-02)
+
+P2 Task1 did not run SUMO or change an experiment. Formal P2 source count zero, existing physical-witness gaps, Task9/19 local-response boundaries and Task20 fixture limitations remain preserved. The package only prepares P2 Task2 definitions and evidence contracts.
+
 ## Current — P1 Task2 decision and experiment boundary (2026-11-01)
 
 The researcher has confirmed SUMO as the current priority, source-present two-arm regional-risk ITT as the entry design, final four-cell completion, direct single-hop messaging and an automatic controller. This task only refined theory and decision records; it did not run SUMO, Pilot, Task9/18/19, HIL, vehicle tests or reality data collection. Formal P2/rho, historical results and Gate states remain unchanged.

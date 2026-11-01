@@ -1,3 +1,9 @@
+## Current — P2 Task1 Source Event and Physical Propagation (2026-11-02)
+
+P2 Task1 completed the operational definition package for Formal P2 A events, safe controlled perturbation B events, time-respecting physical paths, physical-arrival candidates and SUMO Observer evidence. Formal P2, thresholds, \(\phi\), path admission and experiment states remain unchanged. No SUMO/TraCI run, Pilot or Stage 1.1 was started.
+
+Reports: docs/research/P2/P2_TASK1_SOURCE_EVENT_AND_PHYSICAL_PROPAGATION_SPEC.md; docs/research/P2/P2_TASK1_RESEARCHER_DECISIONS.md; docs/research/P2/P2_TASK1_FINAL_REPORT.md.
+
 ## Current — AAD-S0.5-TASK19 (2026-11-01)
 
 Task19 completed offline analysis only; scientific Gate and equivalence status remain unchanged.

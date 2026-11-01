@@ -1,3 +1,9 @@
+## Current — P2 Task1 Source Event and Physical Propagation operationalization (2026-11-02)
+
+P2 Task1 completed the model-internal operational specification for Formal P2 A events, separate safe controlled perturbation B events, time-respecting physical paths, Qualified Physical Propagation Witness states, candidate \(T_P\) functions, arrival censoring and the SUMO read-only Observer contract. Current recommendation: use relative-baseline sustained speed change as the leading \(\phi\) candidate, with net gap/density as auxiliary evidence; do not use Formal rho/P2 as the direct arrival definition. Parameters remain Awaiting Researcher Decision. No SUMO run or production code change occurred.
+
+Deliverables: [P2_TASK1_SOURCE_EVENT_AND_PHYSICAL_PROPAGATION_SPEC.md](research/P2/P2_TASK1_SOURCE_EVENT_AND_PHYSICAL_PROPAGATION_SPEC.md), [P2_TASK1_RESEARCHER_DECISIONS.md](research/P2/P2_TASK1_RESEARCHER_DECISIONS.md), and [P2_TASK1_FINAL_REPORT.md](research/P2/P2_TASK1_FINAL_REPORT.md). P2 Task2 has documentation readiness, but no Gate, experiment or Protocol Lock was opened.
+
 ## Current — P1 Task2 decision synchronization and causal refinement (2026-11-01)
 
 Researcher-confirmed D1–D10 directions are recorded in [P1_TASK2_RESEARCHER_DECISIONS_20261101.md](research/P1/P1_TASK2_RESEARCHER_DECISIONS_20261101.md). Current scope is SUMO model-internal causal mechanism work, source-present two-arm regional-risk ITT with a required final four-cell design, Formal P2/B source separation, fixed cohort/region/window principle, read-only Observer, population-level temporal precedence, single-hop direct communication, automatic controller, Pilot-before-power planning and evidence-based claim narrowing. Operational parameters remain Awaiting Researcher Decision.

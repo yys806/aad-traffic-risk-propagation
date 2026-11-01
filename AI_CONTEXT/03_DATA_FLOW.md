@@ -1,3 +1,7 @@
+## Current — P2 Task1 source/physical evidence flow (2026-11-02)
+
+Source assignment Z_S → actual source state S* → source qualification/confirmation → physical-edge records → time-respecting path → target state function phi → arrival onset/confirmation interval. In parallel, SUMO Observer produces read-only records with run/event/vehicle/clock/quality/version keys. No-message physical reference remains a separate Z_C=0, Z_S=1 run distribution; message-arm trajectories are not relabeled as its counterfactual.
+
 ## Current — P1 Task2 true/observed data flow (2026-11-01)
 
 The current model has parallel assignment and execution paths: Z_S → actual source state S* and Z_C → actual single-hop strategy C* → message lifecycle → automatic-controller adoption/decision/command/action. The physical path is S* → physical interaction → state propagation → target state/risk. Observer, message logs, controller logs, trajectory records and risk tables are observations of the true process with clock, identity, quality and missingness fields; they do not feed back into the true process. SUMO Observer is model-internal read-only evidence, not a real roadside witness. No production execution flow changed.

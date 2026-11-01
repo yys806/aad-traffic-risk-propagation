@@ -1,3 +1,7 @@
+## Current — P2 Task1 physical architecture (2026-11-02)
+
+The physical side now has an explicit source qualification layer, time-varying edge records, time-respecting path qualification, a physical-arrival state function and a read-only Observer record layer. Formal P2 and safe perturbation are separate namespaces. Observer output cannot feed the controller or alter the simulation. No production code contract changed.
+
 ## Current — Task18 execution architecture (2026-11-01)
 
 The repaired TraCI adapter constructs safe initial positions at an 80 m translation, records t=0 state, releases the Follower with `setSpeed(-1)`, and then controls only the Leader. It records native Follower speed diagnostics, lifecycle, collision context and road-boundary margins. `run_task18_closure_and_repeats.py` runs Primary, Supplementary, determinism, initialization, timing and Task16 regression matrices into an isolated Task18 output tree.

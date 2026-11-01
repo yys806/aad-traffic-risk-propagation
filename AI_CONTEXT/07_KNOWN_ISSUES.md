@@ -1,3 +1,11 @@
+## Current — P2 Task1 physical propagation limitations (2026-11-02)
+
+- SUMO source Formal P2 is currently zero; no threshold change is allowed.
+- Existing NGSIM/MiTra/SPMD evidence cannot provide a qualified independent physical witness for the AAD chain.
+- Potential paths and observed interactions do not establish Qualified Physical Propagation Witness without identity, time, state, quality and competition checks.
+- phi, threshold, persistence, maximum gap, path admission, multi-source attribution, clock tolerance and region boundaries remain undecided.
+- Read-only Observer is model-internal and does not provide a no-message counterfactual or real roadside independence.
+
 ## Current — P1 Task2 causal-model limitations (2026-11-01)
 
 - formal_design.py currently validates configured source_present/channel_enabled cells and lifecycle flags; it does not yet provide a production contract that joins Z_S/Z_C, actual S*/C* and observation records.

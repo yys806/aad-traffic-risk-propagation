@@ -1,3 +1,9 @@
+## Current — P2 Task1 Source Event and Physical Propagation operationalization (2026-11-02)
+
+P2 Task1 is COMPLETED_WITH_LIMITATIONS. Formal P2 A and safe controlled perturbation B are kept as separate routes; source qualification records first eligible observation, actual confirmation, message-generation eligibility and failure/censoring. Physical propagation uses time-respecting paths with Potential, Observed and Qualified Witness states. \(T_P\) is defined from a future physical state function \(\phi\), with relative-baseline sustained speed change as the leading candidate and net gap/density as auxiliary evidence. SUMO Observer remains read-only and model-internal. \(\phi\), thresholds, persistence, path admission, clock/error tolerances and region boundaries remain Awaiting Researcher Decision. No experiment, SUMO run, production code change, Pilot, holdout read or Push occurred.
+
+Reports: docs/research/P2/P2_TASK1_SOURCE_EVENT_AND_PHYSICAL_PROPAGATION_SPEC.md, docs/research/P2/P2_TASK1_RESEARCHER_DECISIONS.md and docs/research/P2/P2_TASK1_FINAL_REPORT.md. P2 Task2 has documentation readiness; Stage/Gate/Protocol Lock/Stage 1.1 states are unchanged.
+
 ## Current — P1 Task2 decision synchronization and causal refinement (2026-11-01)
 
 Researcher direction is now Agreed for D1–D10: SUMO priority with model-internal claims; source-present two-arm regional-risk ITT now and final four-cell design; Formal P2 plus a separate safe-perturbation mechanism route; fixed cohort/region/window and regional Formal rho/P2; read-only SUMO Observer; population-level temporal precedence; single-hop direct communication with physical interference retained; automatic controller; Pilot before SESOI/power/sample-size planning; and evidence-based claim narrowing. Operational parameters remain Awaiting Researcher Decision.

@@ -1,3 +1,7 @@
+## Current — P2 Task1 operational decisions (2026-11-02)
+
+P2 Task1 confirms the existing researcher directions: Formal P2 A route unchanged; safe perturbation B remains a separate model domain; SUMO Observer is read-only; first T_P candidate is sustained relative-baseline speed change with gap/density auxiliary evidence; no direct Formal rho/P2 arrival definition; no-message reference remains a separate Z_C=0, Z_S=1 run distribution. A/B scenarios, t_E, phi, thresholds, persistence, path admission, clocks, missingness and region boundaries remain Awaiting Researcher Decision. Decision/specification files are under docs/research/P2/.
+
 ## Current — P1 Task2 Agreed direction synchronization (2026-11-01)
 
 The researcher confirmed D1–D10 directions in AAD-P1-TASK2. Agreed directions: SUMO priority with model-internal claims; source-present two-arm ITT now and final four-cell design; Formal P2 A route plus separate B mechanism route; pre-fixed cohort/region/window and regional Formal rho/P2 outcome; read-only SUMO Observer and future independent roadside route; population-level temporal precedence; single-hop direct messaging with physical interference retained; automatic controller only; Pilot before SESOI/power/sample-size planning; evidence-based claim narrowing. Operational parameters remain Awaiting Researcher Decision. Formal definitions, Gate, Protocol Lock and Stage 1.1 are unchanged. Decision record: docs/research/P1/P1_TASK2_RESEARCHER_DECISIONS_20261101.md.

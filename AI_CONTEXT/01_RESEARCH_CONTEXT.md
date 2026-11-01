@@ -1,3 +1,9 @@
+## Current — P2 Task1 physical operationalization (2026-11-02)
+
+P2 defines Source Event A as the unchanged Formal P2 route and B as an explicitly separate safe controlled perturbation mechanism domain. Physical propagation is a time-respecting path in G_P(t), with Potential Physical Path, Observed Physical Interaction and Qualified Physical Propagation Witness as separate statuses. Physical arrival is \(T_P=\inf\{t\geq t_E:\phi(X^*_{\mathcal T}(t),B_{\mathcal T})=1\text{ with persistence}\}\); the leading candidate is a sustained relative-baseline speed state, while gap/density are auxiliary and Formal rho/P2 is not the direct arrival definition.
+
+SUMO Observer is read-only model evidence and does not create no-message counterfactuals. The ordinary physical reference is a future Z_C=0, Z_S=1 run distribution. All thresholds, persistence, path admission, clock/error tolerances, source scenarios and region boundaries remain Awaiting Researcher Decision. See docs/research/P2/P2_TASK1_FINAL_REPORT.md.
+
 ## Current — P1 Task2 decision synchronization and causal refinement (2026-11-01)
 
 The researcher has confirmed the D1–D10 directions in AAD-P1-TASK2. Current scope is SUMO model-internal causal mechanism work with an automatic controller, source-present two-arm regional-risk ITT as the entry analysis and a required final four-cell design. Formal P2 and safe controlled perturbation remain separate source domains; target cohort/region/window are pre-fixed in principle; the SUMO Observer is read-only and is not a real roadside sensor; communication is direct single-hop; the first temporal claim is population-level; Pilot comes before SESOI/power/sample-size planning.

@@ -1,3 +1,7 @@
+## Current — P2 Task1 Source Event and Physical Propagation (2026-11-02)
+
+Added P2 Source Event/Physical Propagation specification, researcher-decision register and final report. Defined Formal P2 A versus safe perturbation B, time-respecting physical paths, Qualified Witness states, T_P candidates/censoring and SUMO Observer fields. Updated project indexes, registry and AI_CONTEXT. No experiment, code/configuration change, holdout read, Protocol Lock or Push.
+
 ## Current — P1 Task2 decision synchronization and causal refinement (2026-11-01)
 
 Added the Agreed D1–D10 synchronization record and P1 Task2 final report. Refined the theory/DAG/estimands/hypotheses to separate assignments from actual states, true process from observations, SUMO Observer from real roadside sensing, Adoption rate/reduced-form/IV, Action–Risk identification candidates and population temporal precedence. Updated P1 dependency registration, project indexes, registry and AI_CONTEXT. No experiments, Pilot, production code/configuration changes, locked holdout reads, Protocol Lock or Push.

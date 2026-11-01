@@ -1,4 +1,4 @@
-## Current — P1 Task2 research-document map (2026-11-01)
+## Current — P2 Task1 source/physical document map (2026-11-02)\r\n\r\n- docs/research/P2/P2_TASK1_SOURCE_EVENT_AND_PHYSICAL_PROPAGATION_SPEC.md: Formal P2 A and safe perturbation B routes, time-respecting physical paths, T_P candidates, censoring and the SUMO Observer evidence contract.\r\n- docs/research/P2/P2_TASK1_RESEARCHER_DECISIONS.md: confirmed directions, proposals and Awaiting Researcher Decision parameters.\r\n- docs/research/P2/P2_TASK1_FINAL_REPORT.md: P2 Task1 completion status and limitations.\r\n\r\nNo production module was modified; Formal P2, Formal rho, experiment configuration and Gate states remain unchanged.\r\n\r\n## Current — P1 Task2 research-document map (2026-11-01)
 
 - docs/research/P1/P1_TASK2_RESEARCHER_DECISIONS_20261101.md: Agreed D1–D10 directions and Awaiting operational parameters.
 - docs/research/P1/P1_TASK2_FINAL_REPORT.md: decision synchronization, true/observed model, IV/mediation and temporal refinement report.
