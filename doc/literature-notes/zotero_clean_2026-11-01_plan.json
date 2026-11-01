@@ -1,0 +1,68 @@
+{
+  "schema_version": "zotero-clean.plan.v1",
+  "project": "AAD",
+  "created_utc": "2026-11-01T11:51:07Z",
+  "toolchain": "Zotero local HTTP API; Computer Use disabled",
+  "root_collection_key": "TGJP2TIA",
+  "root_collection_path": "TJU/AAD",
+  "inbox_collection_key": "BXMY8MBN",
+  "inbox_collection_name": "补充文献-未分类",
+  "classification_basis": [
+    "当前 Zotero 实际集合结构与 item metadata",
+    "doc/literature-notes/README.md 2026-11-01 P0 Task 1 结构复核",
+    "docs/research/P0/RELATED_WORK_MATRIX.md",
+    "docs/research/P0/P0_TASK2_ESTIMAND_AND_INTERFERENCE_SPEC.md"
+  ],
+  "preservation_policy": "保留 item key、附件、元数据、标签和已有主题集合；仅在确认目标后移出收件箱。不合并、不删除、不重写条目。",
+  "items": [
+    {
+      "item_key": "H8GFNS8U",
+      "title": "Toward causal inference with interference",
+      "destination_collection_keys": ["QPEI5PQP"],
+      "destination_collection_names": ["06_类超距与因果理论"],
+      "reason": "部分干扰、直接/间接/总效应与 exposure 设计是 AAD 当前因果识别与网络干扰的基础方法。"
+    },
+    {
+      "item_key": "HP4DIXED",
+      "title": "The state-dependent causal effect of a V2X-based beyond-line-of-sight warning system on young driver response: A causal machine learning approach",
+      "destination_collection_keys": ["NXNARCWW", "8PR6RF36", "QPEI5PQP"],
+      "destination_collection_names": ["01_风险事件与安全指标", "04_人类行为交互与轨迹预测", "06_类超距与因果理论"],
+      "reason": "当前 P0 最近邻矩阵中的 BLOS 警告、驾驶响应与状态异质性同时对应风险响应、人类交互和因果识别；保留已有三主题挂载。"
+    },
+    {
+      "item_key": "ISLCP3ID",
+      "title": "Multiclass information flow propagation control under vehicle-to-vehicle communication environments",
+      "destination_collection_keys": ["P4SI7DRD"],
+      "destination_collection_names": ["02_混合自动驾驶传播与控制"],
+      "reason": "论文核心是 V2V 多类别信息流传播波与传播控制，属于 AAD 的信息传播与控制主线；不归入非局部交通流模型。"
+    },
+    {
+      "item_key": "ZAHRLZ56",
+      "title": "Mitigating delay due to capacity drop near freeway bottlenecks: Zones of influence of connected vehicles",
+      "destination_collection_keys": ["P4SI7DRD", "LHV4VHW7"],
+      "destination_collection_names": ["02_混合自动驾驶传播与控制", "08_拥堵状态识别与时空传播"],
+      "reason": "连接车辆的作用区域与事件/空白视界连接信息控制和瓶颈拥堵传播；保留已有双主题挂载。"
+    },
+    {
+      "item_key": "T6SFNY5I",
+      "title": "Estimating average causal effects under general interference, with application to a social network experiment",
+      "destination_collection_keys": ["QPEI5PQP"],
+      "destination_collection_names": ["06_类超距与因果理论"],
+      "reason": "一般干扰下的 assignment、exposure mapping、IPW 与方差估计直接支撑 AAD 的干扰与 estimand 规范。"
+    },
+    {
+      "item_key": "98IN4WAI",
+      "title": "Coupled vehicle and information flows: Message transport on a dynamic vehicle network",
+      "destination_collection_keys": ["P4SI7DRD", "WCC9X92Q"],
+      "destination_collection_names": ["02_混合自动驾驶传播与控制", "05_非局部交通流模型"],
+      "reason": "论文研究动态车辆网络中的消息传输与车辆流耦合，既是信息传播基础，也与非局部交通流的跨车辆作用相邻；保留已有双主题挂载。"
+    },
+    {
+      "item_key": "BYCXQ5A3",
+      "title": "A conflict risk graph approach to modeling spatio-temporal dynamics of intersection safety",
+      "destination_collection_keys": ["NXNARCWW"],
+      "destination_collection_names": ["01_风险事件与安全指标"],
+      "reason": "该条目带有 P0/DUPLICATE_OF_5LYN24YV；canonical 条目 5LYN24YV 已在 01_风险事件与安全指标，故将重复记录挂到同一主题但不合并或删除。"
+    }
+  ]
+}

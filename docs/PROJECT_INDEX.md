@@ -361,3 +361,7 @@ Use `docs/TASK20_STAGE0_CLOSURE_AND_STAGEI_READINESS_20261101.md` for the final 
 ## P0 Task 2 入口（2026-11-01）
 
 因果识别审计总报告：docs/research/P0/P0_TASK2_FINAL_REPORT.md；核心文件：P0_TASK2_CAUSAL_IDENTIFIABILITY_AUDIT.md、P0_TASK2_DUAL_PROPAGATION_CAUSAL_MODEL.md、P0_TASK2_ESTIMAND_AND_INTERFERENCE_SPEC.md、P0_TASK2_PHYSICAL_COUNTERFACTUAL_AUDIT.md、P0_TASK2_REGIONAL_RISK_MEDIATION.md、P0_TASK2_DATA_SOURCE_CAPABILITY_AUDIT.md、P0_TASK2_EVIDENCE_CONTRACT.md、P0_TASK2_RESEARCH_DESIGN.md、P0_TASK2_RESEARCHER_DECISIONS.md；机器可读契约：p0_task2_evidence_contract.json、p0_task2_variable_dictionary.csv。状态为 COMPLETED_WITH_LIMITATIONS；未改变 Gate、Protocol Lock 或 Stage 1.1。
+
+## 2026-11-01 Zotero AAD 收件箱整理
+
+通过 Zotero 本机 HTTP API 整理 `TJU → AAD → 补充文献-未分类` 的 7 条记录：2 条补入 `01_风险事件与安全指标`/`02_混合自动驾驶传播与控制`，5 条保留已有主题挂载并移出收件箱。收件箱保留且为 0 条；当前 9 个主题集合去重后 85 个唯一 item key。只读审计发现 1 个 AAD 内 DOI 重复候选、1 个无 DOI 同题名候选和 6 个缺期刊字段复核候选，按深层 Level 4 规则保留待复核。计划、执行 manifest、全量 item-key 索引、审计报告和通用 `zotero-clean` skill 见 `doc/literature-notes/zotero_clean_2026-11-01_plan.json`、`doc/literature-notes/zotero_clean_2026-11-01_execution.json`、`doc/literature-notes/AAD_ZOTERO_INDEX_2026-11-01.md`、`doc/literature-notes/zotero_clean_audit_20261101.md`、`skills/zotero-clean/`。未使用 Computer Use；未改变科研 Gate 或实验状态。

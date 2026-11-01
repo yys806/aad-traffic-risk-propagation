@@ -664,3 +664,7 @@ Task2 状态：COMPLETED_WITH_LIMITATIONS。已补齐 Schönhof、Wang、Jerath�
 科学判断：当前 NGSIM、MiTra T1、SPMD、Task9/19 和 SUMO fixture 不能识别 C1–C3。缺失同源随机 message assignment、逐包 delivery/verification/adoption/controller action、独立 no-message physical witness、固定区域 cohort/window 和真实区域 risk outcome。推荐未来最小 estimand 是道路区段—时间簇随机 message availability 相对于同源 no-message 的 ITT/policy effect；delivery、adoption、mediation 只能作为有附加设计的次级效应。以上均为 Proposal，不改变研究者决策。
 
 阶段状态保持：Stage 0.5=CLOSED_WITH_LIMITATIONS；Stage 0.6=PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS；Protocol Lock=BLOCKED；Stage I=READY_ENGINEERING_ONLY；Stage 1.1=NOT_AUTHORIZED。Task2 未启动新 SUMO、未访问 locked holdout、未修改正式风险指标或固定主线规划文件。
+
+## Current — 2026-11-01 Zotero 收件箱整理
+
+按当前 P0 Task 1/2 与 Stage 0.5 项目主线，已通过 Zotero 本机 HTTP API 整理 `TJU → AAD → 补充文献-未分类` 的 7 条记录。2 条补入主题集合，5 条保留已有主题挂载并移出收件箱；收件箱集合保留且为 0 条。当前 9 个主题集合去重后共有 85 个唯一 item key。item key、附件、元数据、标签和已有主题挂载均保留；没有合并或删除条目。只读审计发现 1 个 AAD 内 DOI 重复候选、1 个无 DOI 同题名候选和 6 个缺期刊字段复核候选，按深层 Level 4 规则保留待复核。计划/执行记录/全量索引/审计报告位于 `doc/literature-notes/zotero_clean_2026-11-01_plan.json`、`doc/literature-notes/zotero_clean_2026-11-01_execution.json`、`doc/literature-notes/AAD_ZOTERO_INDEX_2026-11-01.md`、`doc/literature-notes/zotero_clean_audit_20261101.md` 与相应 JSON；通用流程位于 `skills/zotero-clean/`。本次未使用 Computer Use，未改变任何科研 Gate、实验阶段或科学结论。

@@ -420,3 +420,9 @@ P0 Task 1 已完成治理规范、检索协议、Zotero 结构复核、候选论
 ## 2026-11-01 P0 Task 2 双传播因果审计
 
 P0 Task2 完成，状态为 COMPLETED_WITH_LIMITATIONS。交付：双传播动态 DAG、可识别性/estimand/interference 规范、物理反事实审计、区域风险中介审计、NGSIM/MiTra/SPMD/SUMO 能力审计、统一证据契约、最小/扩展研究设计和研究者决策清单。指定六篇最近邻的全文/合法访问状态已核实；Peng、Schönhof 研究者 PDF 已导入 Zotero AAD。结论是 C1–C3 当前不可识别，推荐的下一步是研究者先决定最小 message ITT 和独立物理 witness 可执行性。Stage 0.5/0.6、Protocol Lock、Stage I、Stage 1.1 状态不变。
+
+## Current — 2026-11-01 Zotero AAD 收件箱整理
+
+已按当前 P0 Task 1/2 与 Stage 0.5 文献主线，整理 Zotero `TJU → AAD → 补充文献-未分类` 的 7 条记录。2 条补入主题集合（V2V 信息流 → `02_混合自动驾驶传播与控制`；冲突风险图重复记录 → `01_风险事件与安全指标`），其余 5 条保留原有主题挂载并移出收件箱。收件箱集合保留，当前为 0 条；主题集合去重后 85 个唯一 item key。所有 item key、附件、元数据、标签与既有主题挂载均保留，未合并或删除条目。
+
+计划与逐条理由：`doc/literature-notes/zotero_clean_2026-11-01_plan.json`；执行前后集合：`doc/literature-notes/zotero_clean_2026-11-01_execution.json`；全量索引：`doc/literature-notes/AAD_ZOTERO_INDEX_2026-11-01.md` / `.csv`；只读审计：`doc/literature-notes/zotero_clean_audit_20261101.md` / `.json`；通用流程：`skills/zotero-clean/`。审计发现 1 个 AAD 内 DOI 重复候选、1 个无 DOI 同题名候选和 6 个缺期刊字段复核候选，均保留待深层 Level 4/元数据复核，不在本次任务自动处理。写入和验证均通过 Zotero 本机 HTTP API，Computer Use 未使用；本次只改变文献集合归属，不改变任何科研 Gate、实验状态或研究结论。

@@ -1,0 +1,93 @@
+# AAD Zotero 文献索引（2026-11-01）
+
+> 来源：Zotero `TJU → AAD` 实时集合；索引由 Zotero 本机 HTTP API 生成。`补充文献-未分类` 保留为收件箱，不作为主题集合计入。
+
+共 85 个唯一 item key。
+
+| item key | 题名 | 所属主题集合 |
+|---|---|---|
+| `BYCXQ5A3` | A conflict risk graph approach to modeling spatio-temporal dynamics of intersection safety | 01_风险事件与安全指标 |
+| `5LYN24YV` | A conflict risk graph approach to modeling spatio-temporal dynamics of intersection safety | 01_风险事件与安全指标 |
+| `VKDEG6AW` | A conflicts-free, speed-lossless KAN-based reinforcement learning decision system for interactive driving in roundabouts | 03_闭环仿真与场景测试 |
+| `7JHH37JY` | A critical evaluation of the next generation simulation (NGSIM) vehicle trajectory dataset | 07_微观跟驰校准与轨迹重放 |
+| `TS3V86BN` | A driver-vehicle model for ADS scenario-based testing | 03_闭环仿真与场景测试 |
+| `ACHCD2XZ` | A non-local traffic flow model for 1-to-1 junctions with buffer | 05_非局部交通流模型 |
+| `2ST8W9E7` | A nonlocal lagrangian traffic flow model and the zero-filter limit | 05_非局部交通流模型 |
+| `QL5UQZWU` | A quantum causal discovery algorithm | 06_类超距与因果理论 |
+| `WFHAM457` | A quantum probability explanation for violations of ‘rational’ decision theory | 06_类超距与因果理论 |
+| `L6DLWJRL` | A quantum-like model of selection behavior | 06_类超距与因果理论 |
+| `VGEWHVL9` | A real-time conflict risk prediction modeling based on causal inference and graph-model: Applied to multi-configuration expressway diversion zones | 01_风险事件与安全指标 |
+| `YA2ACMZV` | A simple contagion process describes spreading of traffic jams in urban networks | 05_非局部交通流模型；08_拥堵状态识别与时空传播 |
+| `DIVRKX7J` | A simplified car-following theory: A lower order model | 07_微观跟驰校准与轨迹重放 |
+| `XVNDBFHV` | A systematic review of traffic conflict-based safety measures with a focus on application context | 01_风险事件与安全指标 |
+| `2KK54KZM` | Active inference as a model of collision avoidance behavior in human drivers | 04_人类行为交互与轨迹预测 |
+| `DFAFL48E` | An anisotropic traffic flow model with look-ahead effect for mixed autonomy traffic | 05_非局部交通流模型 |
+| `G4RN4E2L` | An efficient high-risk lane-changing scenario edge cases generation method for autonomous vehicle safety testing | 01_风险事件与安全指标 |
+| `U9X6T495` | Bell nonlocality | 06_类超距与因果理论 |
+| `2WNYVK2N` | Big-data empowered traffic signal control could reduce urban carbon emission | 03_闭环仿真与场景测试 |
+| `HYBIMN5F` | Breaking through safety performance stagnation in autonomous vehicles with dense learning | 03_闭环仿真与场景测试 |
+| `GSJPFHJK` | Calibrating car-following models by using trajectory data: Methodological study | 07_微观跟驰校准与轨迹重放 |
+| `LIUYDEMK` | Calibrating car-following models using SUMO-in-the-loop and vehicle trajectories from roadside radar | 07_微观跟驰校准与轨迹重放 |
+| `GMF4LZDC` | Calibration and validation of microscopic traffic flow models | 07_微观跟驰校准与轨迹重放 |
+| `4ABZDRVU` | Calibration of nonlinear car-following laws for traffic oscillation prediction | 07_微观跟驰校准与轨迹重放 |
+| `ZJGB2X68` | Can results of car-following model calibration based on trajectory data be trusted? | 07_微观跟驰校准与轨迹重放 |
+| `2T5ZPT7R` | Coexisting automated and human-driven vehicles: Well-posedness of a mixed nonlocal-local traffic model | 05_非局部交通流模型 |
+| `6PUKMHEZ` | Context effects produced by question orders reveal quantum nature of human judgments | 06_类超距与因果理论 |
+| `98IN4WAI` | Coupled vehicle and information flows: Message transport on a dynamic vehicle network | 02_混合自动驾驶传播与控制；05_非局部交通流模型 |
+| `SQYZHHPM` | Deep spatial‐temporal embedding for vehicle trajectory validation and refinement | 07_微观跟驰校准与轨迹重放 |
+| `N47NR5PG` | Detecting and quantifying causal associations in large nonlinear time series datasets | 06_类超距与因果理论 |
+| `JAEYQ62C` | Enhancing safety in mixed traffic: Learning-based modeling and efficient control of autonomous and human-driven vehicles | 02_混合自动驾驶传播与控制 |
+| `C5CMBLYV` | Enhancing vehicle platoon safety assessment: A novel cascading risk measure | 01_风险事件与安全指标 |
+| `T6SFNY5I` | Estimating average causal effects under general interference, with application to a social network experiment | 06_类超距与因果理论 |
+| `4SPKNB6R` | GA2AD: A generalized adaptive adversarial training framework considering surrounding hybrid risk field for autonomous driving | 03_闭环仿真与场景测试 |
+| `9XZTIZ2S` | Human-like driving behaviour emerges from a risk-based driver model | 04_人类行为交互与轨迹预测 |
+| `HQUD47EN` | Hybrid system stability analysis of multilane mixed-autonomy traffic | 02_混合自动驾驶传播与控制 |
+| `4J5V4A3I` | Identifiability of car-following dynamics | 07_微观跟驰校准与轨迹重放 |
+| `BHJHC96X` | Impact of basic network motifs on the collective response to perturbations | 06_类超距与因果理论 |
+| `N9BTZUBY` | Impacts of platooning of connected automated vehicles on highways | 02_混合自动驾驶传播与控制 |
+| `J24MWAMC` | Interaction-aware and driving style-aware trajectory prediction for heterogeneous vehicles in mixed traffic environment | 04_人类行为交互与轨迹预测 |
+| `B8J8W6P2` | Is more always better? The impact of vehicular trajectory completeness on car-following model calibration and validation | 07_微观跟驰校准与轨迹重放 |
+| `2KPG72P3` | Jam propagation in mixed traffic of autonomous and human-driven vehicles: A random walk-based analysis | 02_混合自动驾驶传播与控制 |
+| `S9WRQAUZ` | Knowledge-guided self-learning control strategy for mixed vehicle platoons with delays | 02_混合自动驾驶传播与控制 |
+| `YP2SETEG` | Learning to control and coordinate mixed traffic through robot vehicles at complex and unsignalized intersections | 02_混合自动驾驶传播与控制 |
+| `D3AXYTAG` | Learning-based modeling of human-autonomous vehicle interaction for improved safety in mixed-vehicle platooning control | 02_混合自动驾驶传播与控制 |
+| `HK4HMBLF` | Loophole-free bell inequality violation using electron spins separated by 1.3 kilometres | 06_类超距与因果理论 |
+| `I4NU8C5G` | Metastable states in a microscopic model of traffic flow | 07_微观跟驰校准与轨迹重放 |
+| `XHLWGAC3` | Microscopic modeling of traffic flow: Investigation of collision free vehicle dynamics | 07_微观跟驰校准与轨迹重放 |
+| `ZAHRLZ56` | Mitigating delay due to capacity drop near freeway bottlenecks: Zones of influence of connected vehicles | 02_混合自动驾驶传播与控制；08_拥堵状态识别与时空传播 |
+| `TWCEFISL` | Modeling and robust H ∞ control synthesis of the CAV-HDV heterogeneous traffic system with different car-following modes | 02_混合自动驾驶传播与控制 |
+| `3EGJM6N6` | Modeling conflict risk with real-time traffic data for road safety assessment: A copula-based joint approach | 01_风险事件与安全指标 |
+| `45WJW8HT` | Modeling lead-vehicle kinematics for rear-end crash scenario generation | 01_风险事件与安全指标 |
+| `TLXAH3L6` | Modelling two-dimensional driving behaviours at unsignalised intersection using multi-agent imitation learning | 04_人类行为交互与轨迹预测 |
+| `ISLCP3ID` | Multiclass information flow propagation control under vehicle-to-vehicle communication environments | 02_混合自动驾驶传播与控制 |
+| `R52FEKEP` | Network isolators inhibit failure spreading in complex networks | 06_类超距与因果理论 |
+| `VSH9Q4PG` | Network models for nonlocal traffic flow | 05_非局部交通流模型 |
+| `VIPIJ222` | On a class of new nonlocal traffic flow models with look-ahead rules | 05_非局部交通流模型 |
+| `M2S823IP` | On the einstein podolsky rosen paradox | 06_类超距与因果理论 |
+| `SZL54NKN` | Partial trajectory method to align and validate successive video cameras for vehicle tracking | 07_微观跟驰校准与轨迹重放 |
+| `ANN7E2VL` | Percolation of heterogeneous flows uncovers the bottlenecks of infrastructure networks | 05_非局部交通流模型 |
+| `Q9NQASFD` | Performance evaluation of surrogate measures of safety with naturalistic driving data | 01_风险事件与安全指标 |
+| `Q65YUJ89` | Physics-informed graph modeling for traffic shockwave analysis through optimized change-point detection | 05_非局部交通流模型 |
+| `IB6JHJ3P` | Predictive model-based and control-aware communication strategies for cooperative adaptive cruise control | 02_混合自动驾驶传播与控制 |
+| `7XL7PTAX` | Progressive virtual risk-based vehicle trajectory optimization in mixed traffic flow | 01_风险事件与安全指标 |
+| `6K5N6XDR` | Quantum causal modelling | 06_类超距与因果理论 |
+| `8TGYGMNC` | Quantum common causes and quantum causal models | 06_类超距与因果理论 |
+| `CFAYC4B7` | Quantum decision making in automatic driving | 06_类超距与因果理论 |
+| `XLY3WEK4` | Quantum dynamics of human decision-making | 06_类超距与因果理论 |
+| `NAXTE7WM` | Reasoning graph-based reinforcement learning to cooperate mixed connected and autonomous traffic at unsignalized intersections | 02_混合自动驾驶传播与控制 |
+| `MV5WEAF6` | Research on quantum cognition in autonomous driving | 06_类超距与因果理论 |
+| `5L9WDLE3` | Smart mobility digital twin based automated vehicle navigation system: A proof of concept | 03_闭环仿真与场景测试 |
+| `FMMYZFGH` | Sparse traffic accident risk forecasting with spatial-temporal knowledge graphs | 01_风险事件与安全指标 |
+| `5DE6L9RS` | Spatiotemporal dynamics of traffic bottlenecks yields an early signal of heavy congestions | 05_非局部交通流模型；08_拥堵状态识别与时空传播 |
+| `72VETG8V` | Stability and safety analysis of connected and automated vehicle platoon considering dynamic communication topology | 02_混合自动驾驶传播与控制 |
+| `ZTEPXKBA` | Stability of a nonlocal traffic flow model for connected vehicles | 05_非局部交通流模型 |
+| `SLTMG63B` | Surrogate safety assessment model (SSAM)—software user manual | 01_风险事件与安全指标 |
+| `9LCCTDGZ` | Surrogate safety assessment model and validation: Final report | 01_风险事件与安全指标 |
+| `4H9FNF5K` | Surrogate safety measures from traffic simulation models | 01_风险事件与安全指标 |
+| `HP4DIXED` | The state-dependent causal effect of a V2X-based beyond-line-of-sight warning system on young driver response: A causal machine learning approach | 01_风险事件与安全指标；04_人类行为交互与轨迹预测；06_类超距与因果理论 |
+| `H8GFNS8U` | Toward causal inference with interference | 06_类超距与因果理论 |
+| `5I4RXXWY` | Towards a formulation of quantum theory as a causally neutral theory of bayesian inference | 06_类超距与因果理论 |
+| `IQR7YZBZ` | Traffic analysis toolbox volume III: Guidelines for applying traffic microsimulation modeling software - 2019 update to the 2004 version | 09_仿真校准规范与验证 |
+| `7NL3NJ6F` | TrafficMCTS: A closed-loop traffic flow generation framework with group-based monte carlo tree search | 03_闭环仿真与场景测试 |
+| `MIYY2V2Q` | Trajectory investigation for enhanced calibration of microsimulation models | 07_微观跟驰校准与轨迹重放 |
+| `VBRW3ZMR` | Two-dimensional ETTC-labeled longitudinal and lateral conflicts for interpretable real-time crash risk prediction in freeway interchange diverging areas | 01_风险事件与安全指标 |
