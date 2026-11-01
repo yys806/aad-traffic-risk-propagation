@@ -1,3 +1,9 @@
+## Current — P1 Task1 theory and causal model (2026-11-01)
+
+P0 Task1–3 has been formally closed with unresolved researcher decisions; no P0 Task4 is added. P1 Task1 established the general dual-propagation theory, time-indexed joint dynamics, message lifecycle, acyclic causal DAG, four-cell and source-present estimands, interference boundaries, H1–H4 falsification rules and the D1–D10 dependency register. These are proposed theory/design inputs, not a Protocol Lock or experiment authorization. Stage 0.5 remains CLOSED_WITH_LIMITATIONS with scientific Gate blocked; Stage 0.6 is PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS; Protocol Lock is BLOCKED; Stage I is READY_ENGINEERING_ONLY; Stage 1.1 is NOT_AUTHORIZED.
+
+P0 closeout: [P0_CLOSEOUT_AND_P1_ENTRY_NOTE.md](research/P0/P0_CLOSEOUT_AND_P1_ENTRY_NOTE.md). P1 deliverables: [P1_TASK1_FINAL_REPORT.md](research/P1/P1_TASK1_FINAL_REPORT.md), [THEORY_AND_CAUSAL_MODEL.md](research/P1/THEORY_AND_CAUSAL_MODEL.md), [CAUSAL_DAG.md](research/P1/CAUSAL_DAG.md), [ESTIMAND_SPECIFICATION.md](research/P1/ESTIMAND_SPECIFICATION.md), [HYPOTHESIS_AND_FALSIFICATION.md](research/P1/HYPOTHESIS_AND_FALSIFICATION.md), and [P1_TASK1_DECISION_DEPENDENCY_REGISTER.md](research/P1/P1_TASK1_DECISION_DEPENDENCY_REGISTER.md). No formal experiment, locked holdout read, Protocol Lock or Push occurred.
+
 ## Current — P0 Task 3 design entry (2026-11-01)
 
 最小消息干预与独立物理基准可行性：[`P0_TASK3_FINAL_REPORT.md`](research/P0/P0_TASK3_FINAL_REPORT.md)；[`平台矩阵`](research/P0/P0_TASK3_FEASIBILITY_MATRIX.md) / [`48 项 CSV`](research/P0/p0_task3_feasibility_matrix.csv)；[`研究者决策`](research/P0/P0_TASK3_RESEARCHER_DECISIONS.md)；[`来源登记`](research/P0/p0_task3_source_register.json)；[`77 项功效敏感性`](research/P0/p0_task3_power_sensitivity.csv)；[`验证记录`](research/P0/P0_TASK3_VALIDATION.md)。任务完成但科研设计仍 Proposal：首选现实路线为封闭测试场整场事件随机化+独立路侧测量+随机 no-message；当前现实实验启动 NO-GO，资源和 n Unknown。保留现有 Gate/阶段/四格设计边界，不运行新实验，不 Push。

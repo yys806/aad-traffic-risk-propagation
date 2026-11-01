@@ -1,3 +1,9 @@
+## Current — P1 Task1 theory and causal model (2026-11-01)
+
+P1 formalizes AAD with two coupled but distinct networks: physical interaction G_P(t)=(V,E_P(t)) and information propagation G_I(t)=(V,E_I(t)). The joint state uses physical state x, message/lifecycle state m, controller decision/command/actual input and fixed-region Formal rho/P2 risk. Message generation, transmission, delivery, verification, adoption, command, action and regional risk remain separate events with times T_G,T_S,T_D,T_V,T_A,T_C,T_U,T_R; ordinary physical arrival T_P needs an independent time-indexed witness.
+
+The causal framework preserves the planning four-cell interaction tau_SC and the P0 source-present two-arm tau_ITT^(S=1) as different estimands. Under interference, potential outcomes depend on the full assignment vector; adoption/action are post-treatment mechanism variables and are not identified by subgroup comparisons. H1–H4 are falsifiable, but all substantive D1–D10 choices remain Proposed / Awaiting Researcher Decision. See docs/research/P1/P1_TASK1_FINAL_REPORT.md.
+
 # AAD Research Context
 
 ## Current — P0 Task 3 design boundary (2026-11-01)

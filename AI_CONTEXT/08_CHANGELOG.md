@@ -1,3 +1,7 @@
+## Current — P1 Task1 theory and causal model (2026-11-01)
+
+Added P0 closeout/P1 entry note and P1 theory, DAG, estimand, hypothesis/falsification, decision-dependency and final-report documents. Updated project index, research status and registry with the P1 package. Synchronized research context, architecture, conceptual data flow, module map, experiment boundary, decisions and changelog. Formal code/configuration and experiment outputs were not modified; no experiment, locked holdout read, Protocol Lock, Stage 1.1 or Push occurred.
+
 ## Current — P0 Task 3 (2026-11-01)
 
 Added minimum message-policy experimental feasibility report, 12-dimension/4-platform matrix (48 machine-readable judgments), researcher decisions/dependencies, 9 official technical sources with local input/planning hashes, and 77 illustrative power scenarios. Checked the authorized OB planning baseline read-only. Updated research/index/context entries without changing formal stages, metrics, experiments or evidence packages. No new experiments/fixture runs/holdout reads, external contacts, recruitment or Push. All scientific recommendations remain Proposal; design Conditional Go does not authorize launch.

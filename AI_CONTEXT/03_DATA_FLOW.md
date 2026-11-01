@@ -1,3 +1,7 @@
+## Current — P1 conceptual causal data flow (2026-11-01)
+
+The P1 conceptual flow is Source Event → Message Generation → Transmission → Delivery → Verification → Controller Adoption → Controller Decision → Control Command → Actual Action → Physical Interaction/Target State → Regional Risk, alongside Source Event → Physical Interaction → Physical State Propagation → Physical Arrival → Target Region State. Every event retains event/message/run/vehicle identity, source and quality fields, and a time or interval; missing physical arrival remains Unknown. This is a theory contract for later P2–P5 evidence work and does not alter the existing SUMO/Task9–19 execution flows.
+
 ## Current — Task18 execution data flow (2026-11-01)
 
 Frozen MiTra input → 0.05 s Leader/Follower replay with 80 m coordinate translation → t=0 state and native-control release audit → full internal trajectory plus 0.1 s measurement trajectory → execution status/lifecycle/collision audit → actual A/B trajectory comparison → Primary/Supplementary stratified summaries. Full trajectories and per-run execution JSON remain in the local Task18 output tree; portable evidence contains scalar summaries and result tables.

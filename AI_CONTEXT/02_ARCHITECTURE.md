@@ -16,6 +16,12 @@ Added an engineering-only TraCI leader replay adapter (`riskprop.stage_0_5_fixed
 
 # AAD Architecture
 
+## Current — P1 theory architecture (2026-11-01)
+
+The conceptual architecture now has two time-varying graphs. G_P(t) carries road connectivity, vehicle interactions and physical state propagation; G_I(t) carries message reachability and lifecycle. They share entities but not edge semantics. The joint model is x(t+1)=F_P(...), m(t+1)=F_I(...), controller decision d=pi(x,m,q), command u_cmd, actual input u, and fixed-region risk R_T(t). Feedback is represented with distinct time-step nodes, so the causal DAG remains acyclic.
+
+Existing implementation contracts remain unchanged: formal_risk_measurement.py supplies rho, Formal P2, bounded contributions, fixed-window integration and equal-vehicle aggregation; formal_design.py validates the four-cell and message lifecycle contracts; stage_i_mechanism.py compares paired actions and preserves Unknown when no independent physical arrival is supplied; protocol_lock.py remains fail-closed. The P1 documents are theory/design inputs only and do not add production code or unlock Stage 1.1.
+
 ## 2026-10-27 Weekly B00 accepted; Stage I remains BLOCKED
 
 Verified: A03 completed420s/8400native steps, independent receipt and all8 measurement checks Pass; B00_EXECUTED_MEASUREMENT_ACCEPTED. This task had3 real B00 starts: A01/A02 resource-coverage failures retained; A03 sealed trajectory independently remeasured with zero new launches after a coordinator import fix.1150declared=1005inserted+145native pending;857arrived/148active; collision/teleport/discard0 with complete required observation.18/18state/D1 support, E=9778.4veh-s, localP2=0. Final isolated software:1386passed/17skipped/7native excluded; audit denied0/SUMO0; compileall/docs/hash Pass. Scientific interaction Gate blocked; numerical budget/protocol candidate are Proposed, StageI BLOCKED. Historical Not Accepted unchanged. Evidence: docs/AAD_WEEK_TO_STAGE_I_2026-10-27.md; evidence/results/RES-AAD-WEEK-20261027-V1/; evidence/results/RES-STAGE-0.6-WEEK-20261027-V1/. Older blocks below retain their historical time points.

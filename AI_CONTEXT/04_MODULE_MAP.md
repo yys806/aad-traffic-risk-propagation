@@ -1,3 +1,15 @@
+## Current — P1 research-document map (2026-11-01)
+
+- docs/research/P0/P0_CLOSEOUT_AND_P1_ENTRY_NOTE.md: P0 Task1–3 closeout and P1 entry boundary.
+- docs/research/P1/THEORY_AND_CAUSAL_MODEL.md: dual networks, joint dynamics, lifecycle and Formal risk coupling.
+- docs/research/P1/CAUSAL_DAG.md: time-indexed acyclic causal DAG, confounding, interference and identification limits.
+- docs/research/P1/ESTIMAND_SPECIFICATION.md: four-cell, source-present ITT, interference and temporal estimands.
+- docs/research/P1/HYPOTHESIS_AND_FALSIFICATION.md: H1–H4 mathematical hypotheses and falsification/Unknown rules.
+- docs/research/P1/P1_TASK1_DECISION_DEPENDENCY_REGISTER.md: D1–D10 researcher-decision dependencies.
+- docs/research/P1/P1_TASK1_FINAL_REPORT.md: task-level summary and next-stage boundaries.
+
+These are documentation-level research artifacts. No production module or formal experiment entry point was changed.
+
 ## Current — Task18 module map (2026-11-01)
 
 - `code/src/riskprop/stage_0_5_fixed_leader_follower_traci.py`: native Follower release, 80 m initialization, state/lifecycle/collision diagnostics.

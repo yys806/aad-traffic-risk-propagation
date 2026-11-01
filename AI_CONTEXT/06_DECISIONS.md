@@ -1,3 +1,9 @@
+## Current — P1 Task1 decision dependencies (2026-11-01)
+
+P1 Task1 records D1–D10 from P0 Task3 in docs/research/P1/P1_TASK1_DECISION_DEPENDENCY_REGISTER.md. Every item remains Proposed / Awaiting Researcher Decision. P1 keeps multiple options through general symbols: platform/claim level, Source Event, target cohort/region/window, physical arrival rule, population versus individual temporal claim, randomization/interference, controller versus human subject, SESOI/sample size and failure-boundary route. No Codex recommendation is an Agreed Research Decision.
+
+The P1 theory reuses existing Agreed definitions and engineering contracts without changing Formal P2, rho, D1, B witness, Scientific Equivalence, Gate, Protocol Lock or Stage 1.1 authorization.
+
 ## Current — AAD-S0.5-TASK18 decisions implemented (2026-11-01)
 
 Engineering decisions authorized for Task18: release Follower speed control before dynamic evolution; use 80 m local coordinate translation after boundary verification; run the frozen Primary 60 plus Supplementary seeds 20261104/20261105; run six same-seed repeats, six initialization checks and two timing checks; retain direct-mode failure as a classified result. No core scientific design, candidate, tau, arm, model parameter or formal definition changed.

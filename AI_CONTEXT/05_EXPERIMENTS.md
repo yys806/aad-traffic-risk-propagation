@@ -1,3 +1,7 @@
+## Current — P1 Task1 theory-only boundary (2026-11-01)
+
+P1 Task1 did not run or authorize an experiment. Task18/19 history remains preserved as local engineering/descriptive evidence and is not reinterpreted as the P1 estimand or H1–H4 result. The P1 framework is the input for future P2–P6 evidence and design work; Stage 0.5 scientific Gate, Stage 0.6, Protocol Lock and Stage 1.1 remain unchanged.
+
 ## Current — P0 Task 3 design review only (2026-11-01)
 
 Completed platform feasibility, whole-event randomized policy design, roadside witness/no-message reference, evidence acquisition mapping and illustrative power sensitivity. These are Proposal, not an experiment or launch permission. No Task20 fixture/Task9–19 rerun, new SUMO, traffic collection, human recruitment, vehicle test or locked holdout read. Final independent event/session counts and participants remain Unknown; Task9/19 local response variance and historical minimum=100 are not treatment-power inputs. Report and reproducible formulas/tables: `docs/research/P0/P0_TASK3_FINAL_REPORT.md`; implementation/stage states unchanged.
