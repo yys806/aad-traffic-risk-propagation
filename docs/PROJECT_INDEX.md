@@ -1,3 +1,7 @@
+## Current — P0 Task 3 design entry (2026-11-01)
+
+最小消息干预与独立物理基准可行性：[`P0_TASK3_FINAL_REPORT.md`](research/P0/P0_TASK3_FINAL_REPORT.md)；[`平台矩阵`](research/P0/P0_TASK3_FEASIBILITY_MATRIX.md) / [`48 项 CSV`](research/P0/p0_task3_feasibility_matrix.csv)；[`研究者决策`](research/P0/P0_TASK3_RESEARCHER_DECISIONS.md)；[`来源登记`](research/P0/p0_task3_source_register.json)；[`77 项功效敏感性`](research/P0/p0_task3_power_sensitivity.csv)；[`验证记录`](research/P0/P0_TASK3_VALIDATION.md)。任务完成但科研设计仍 Proposal：首选现实路线为封闭测试场整场事件随机化+独立路侧测量+随机 no-message；当前现实实验启动 NO-GO，资源和 n Unknown。保留现有 Gate/阶段/四格设计边界，不运行新实验，不 Push。
+
 ## Current — AAD-S0.5-TASK19 (2026-11-01)
 
 Task19 scientific analysis entry: `code/scripts/analyze_task19_task9.py`, output `code/outputs/analysis/task19_20261101/`, evidence `evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/`, report `docs/TASK19_SCIENTIFIC_RESULT_ANALYSIS_20261101.md`.

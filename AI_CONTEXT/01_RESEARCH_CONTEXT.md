@@ -1,5 +1,9 @@
 # AAD Research Context
 
+## Current — P0 Task 3 design boundary (2026-11-01)
+
+Task3 recommends, as Proposal, whole-event/closed-network randomized message strategy ITT with independent roadside observation and randomized no-message events for controlled real-world evidence. Existing SUMO supports future model-only mechanism preparation; HIL provides real driver behavior in simulated traffic. Access and final sample size are Unknown. Measurement independence, randomized counterfactual reference and model counterfactual are distinct. Population-level early-window comparisons do not identify individual cross-world arrival differences, and policy ITT plus lifecycle logs does not identify adoption/action mediation. The two-arm minimum complements the proposed four-cell design; no approved definition or Gate changed. See `docs/research/P0/P0_TASK3_FINAL_REPORT.md`.
+
 ## 研究背景
 
 联网车辆可以接收来自远端的风险信息，但消息生成、发送、交付、验证、采用、动作变化和区域风险变化是不同事件，必须逐层记录和验证。

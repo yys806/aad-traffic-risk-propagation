@@ -1,3 +1,7 @@
+## Current — P0 Task 3 (2026-11-01)
+
+Added minimum message-policy experimental feasibility report, 12-dimension/4-platform matrix (48 machine-readable judgments), researcher decisions/dependencies, 9 official technical sources with local input/planning hashes, and 77 illustrative power scenarios. Checked the authorized OB planning baseline read-only. Updated research/index/context entries without changing formal stages, metrics, experiments or evidence packages. No new experiments/fixture runs/holdout reads, external contacts, recruitment or Push. All scientific recommendations remain Proposal; design Conditional Go does not authorize launch.
+
 ## Current — AAD-S0.5-TASK19 (2026-11-01)
 
 Added offline scientific analysis for all Primary/Supplementary Task9 runs: trajectory-derived response features, tau trends, actual A/B paired effects, candidate comparison, seed/source consistency, C-decomposition checks, five academic figures and a bounded scientific report. No SUMO runs or frozen configuration changes.

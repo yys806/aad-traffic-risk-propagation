@@ -1,3 +1,7 @@
+## 2026-11-01 — P0 Task 3 feasibility design
+
+Added the minimum randomized message-policy experiment/independent physical reference proposal, four-platform 12-dimension matrix, researcher decision list, source/hash ledger and power sensitivity table under `docs/research/P0/`. Reused Task2/Task9–20 evidence and checked the original OB planning file read-only. Registered as a research audit, not a formal experiment/result; synchronized AI_CONTEXT and current navigation. All scientific choices remain Proposal. No risk metric, Gate, stage authorization, registered result manifest or evidence package changed; no new simulation, data collection, recruitment, vehicle test, holdout read or Push.
+
 ## Current — AAD-ROUND2-CLOSURE-20261030
 
 Agreed original Round2 minGap1.0 source candidate closed; C general P2, independent D1 and B physical-path standards recorded. Bounded comparison verifies C already implemented but retains three C-external conflicts and formal_equivalence_accepted=false. Video acquisition NO_GO; blind review and fixed-leader experiment Blocked; finite seed matrix Proposed. No new SUMO/TraCI/trajectory/holdout; Gate/Stage0.6/Protocol Lock/StageI unchanged.

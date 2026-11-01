@@ -1,3 +1,11 @@
+## Current — P0 Task 3 feasibility design (2026-11-01)
+
+P0 Task3 is `COMPLETED_WITH_LIMITATIONS`; its experimental recommendations remain **Proposal / Awaiting Researcher Decision**. Verdict: **CONDITIONAL GO for the proposed design**, **NO-GO for current real-world confirmatory launch**. Preferred real-evidence target: closed-track multi-vehicle whole-event message-policy randomization, independent roadside measurement and randomized no-message events. SUMO is the nearest existing engineering preparation platform, with structural counterfactual scope only; HIL is an optional driver-response route. AAD access to facilities/vehicles/sensors, safety/ethics, event variance/SESOI and final sample size remain Unknown.
+
+Independent measurement is not a no-message counterfactual. Randomization identifies population policy means/arrival distributions, not a treated event's unobserved Tphys(0); complete adoption logs do not by themselves identify mediation. The minimal two-arm source-present ITT does not replace the planning baseline's four-cell interaction design. All new choices remain Proposed. Long-term planning file was accessed at its original authorized OB path and left unchanged.
+
+Report: `docs/research/P0/P0_TASK3_FINAL_REPORT.md`; matrix: `P0_TASK3_FEASIBILITY_MATRIX.md` / `p0_task3_feasibility_matrix.csv`; decisions: `P0_TASK3_RESEARCHER_DECISIONS.md`; source/power/validation records are indexed there. Context Consistency Check completed. No new simulation, fixture rerun, traffic collection, recruitment, vehicle test, locked holdout read or Push. Stage 0.5=`CLOSED_WITH_LIMITATIONS` with scientific Gate blocked; Stage 0.6=`PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS`; Protocol Lock=`BLOCKED`; Stage I=`READY_ENGINEERING_ONLY`; Stage 1.1=`NOT_AUTHORIZED`. Older dated blocks below are retained history.
+
 ## Current — AAD-S0.5-TASK19 (completed scientific result analysis, 2026-11-01)
 
 Task19 completed offline analysis of the 100 Task9 results (Primary 60, Supplementary 40) and their full trajectories. All 50 actual A/B pair records passed. The analysis found repeatable local Follower responses, candidate-dependent tau patterns, high-tau A/B differences, and consistent qualitative direction between Primary and Supplementary. It does not establish the AAD causal hypothesis, Formal P2/D1/B change or network equivalence.

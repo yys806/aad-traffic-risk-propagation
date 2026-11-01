@@ -1,3 +1,7 @@
+## Current — P0 Task 3 feasibility design (2026-11-01)
+
+Status `COMPLETED_WITH_LIMITATIONS`; design **Proposal / Awaiting Researcher Decision**. Verdict **CONDITIONAL GO for design; current real-world confirmation NO-GO**. Preferred real-evidence target is whole-event randomized closed-track message strategy with independent roadside witness and randomized no-message events. SUMO supports future model-only preparation; HIL is a behavior alternative. Facility/vehicle/sensor/logging access, ethics/safety, endpoint choices, variance/SESOI and final n remain Unknown. Randomization identifies population policy effects/arrival distributions, not each event's two potential paths. No risk definition, stage, Gate, Protocol Lock or authorization changed; no new experiment or Push. Report: `docs/research/P0/P0_TASK3_FINAL_REPORT.md`; matrix/decisions/source/power/validation records indexed there. Task20's scientific boundaries continue to apply; older dated blocks are preserved.
+
 ## Current — AAD-S0.5-TASK19 (2026-11-01)
 
 Task19 completed offline scientific analysis of 100 Task9 results. It found repeatable local Follower responses, candidate-dependent tau patterns, high-tau minGap effects and broad Primary/Supplementary consistency. No causal AAD conclusion or Gate change. Report: `docs/TASK19_SCIENTIFIC_RESULT_ANALYSIS_20261101.md`; evidence: `evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/`.

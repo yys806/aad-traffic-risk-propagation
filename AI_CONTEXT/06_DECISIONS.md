@@ -393,3 +393,7 @@ P0 Task2 只形成 Proposal，未写入 Agreed Research Decision。推荐的首�
 新增明确边界：Schönhof 已覆盖信息—车辆流耦合，Wang 已覆盖队列—LWR 信息波，Jerath 已覆盖 ZOI/action boundary，Peng 已给出随机 BLOS warning 的动作因果效应；AAD 不再把这些内容单独主张为首次创新。若无法获得独立物理 witness 或真实消息链，可收窄为可审计不可识别性、动作响应或失败边界研究。
 
 Task2 报告：docs/research/P0/P0_TASK2_FINAL_REPORT.md；研究者决定清单：docs/research/P0/P0_TASK2_RESEARCHER_DECISIONS.md。
+
+## 2026-11-01 — P0 Task 3 Proposal boundary; no new Agreed Decision
+
+Task3 only recommends a closed-track whole-event message-policy randomized design with independent roadside measurement and randomized no-message events; SUMO remains model-only preparation, HIL an optional behavior route. All source/cohort/region/window/outcome/physical-threshold/interference/SESOI choices await researcher decision. The minimal source-present ITT does not supersede the long-term proposed four-cell interaction or approve adoption mediation. Conditional Go is a feasibility recommendation, not Gate approval or experiment authorization. Real resource access and final n are Unknown. Decisions/dependencies: `docs/research/P0/P0_TASK3_RESEARCHER_DECISIONS.md`. No existing scientific decision, risk definition, Gate or stage authorization changed.

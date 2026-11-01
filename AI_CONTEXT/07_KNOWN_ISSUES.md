@@ -1,3 +1,7 @@
+## Current — P0 Task 3 feasibility blockers (2026-11-01)
+
+Closed-track/HIL resource access, controller log permissions, full-region roadside coverage, clocks, safety/ethics and sufficient independent events are Unknown. A safe controlled disturbance may not qualify as Formal P2; do not change the threshold or claim source support. Independent sensors observe the treated physical path too; only randomized no-message events identify the target population's ordinary arrival distribution, not each treated event's Tphys(0). Unknown cross-run interference can invalidate even whole-network policy inference. Event variance, SESOI, arrival precision and final sample size remain Unknown. Human acknowledgment/action is not observed psychological adoption; complete logs do not prove causal mediation. Task20's risk_observation ordering is not risk-effect onset. See `docs/research/P0/P0_TASK3_FINAL_REPORT.md` §§5–10; no fixes to formal code are authorized by this design.
+
 ## Current — Task19 scientific limitations (2026-11-01)
 
 Task19 cannot separate candidate Leader-input effects from initial-gap effects with only two approved candidates. Five seed values per combination are descriptive only. `follower_response_amplitude_mps`, TTC, gap and C terms are correlated/definition-dependent; descriptive lag remains Unknown for all runs. MiTra reference-point and physical-truth limitations, prototype background mismatch and absence of communication/controller adoption remain.

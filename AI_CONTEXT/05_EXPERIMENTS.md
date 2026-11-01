@@ -1,3 +1,7 @@
+## Current — P0 Task 3 design review only (2026-11-01)
+
+Completed platform feasibility, whole-event randomized policy design, roadside witness/no-message reference, evidence acquisition mapping and illustrative power sensitivity. These are Proposal, not an experiment or launch permission. No Task20 fixture/Task9–19 rerun, new SUMO, traffic collection, human recruitment, vehicle test or locked holdout read. Final independent event/session counts and participants remain Unknown; Task9/19 local response variance and historical minimum=100 are not treatment-power inputs. Report and reproducible formulas/tables: `docs/research/P0/P0_TASK3_FINAL_REPORT.md`; implementation/stage states unchanged.
+
 ## Current — AAD-S0.5-TASK19 scientific analysis (2026-11-01)
 
 Analyzed 100 Task9 results without new SUMO runs: Primary 60 and Supplementary 40. Actual A/B pairing passed 50/50. Follower responses are repeatable; tau effects are candidate-dependent; minGap effects appear mainly at high tau; Primary/Supplementary direction is broadly consistent. All findings are descriptive local-response results, not AAD causal evidence.
