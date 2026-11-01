@@ -1,4 +1,8 @@
-## Current — AAD-S0.5-TASK18 (2026-11-01)
+## Current — AAD-S0.5-TASK19 (2026-11-01)
+
+Task19 scientific analysis entry: `code/scripts/analyze_task19_task9.py`, output `code/outputs/analysis/task19_20261101/`, evidence `evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/`, report `docs/TASK19_SCIENTIFIC_RESULT_ANALYSIS_20261101.md`.
+
+## Historical — AAD-S0.5-TASK18 (2026-11-01)
 
 Use `code/scripts/run_task18_closure_and_repeats.py`, `code/outputs/formal/task18_20261101/` and `evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/`. Task18 preserves Task17 and verifies native Follower release, 80 m initialization, seed variability and actual A/B pairing.
 

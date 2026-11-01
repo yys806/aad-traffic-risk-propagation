@@ -1,4 +1,8 @@
-## Current — AAD-S0.5-TASK18 (2026-11-01)
+## Current — AAD-S0.5-TASK19 (2026-11-01)
+
+Task19 completed offline analysis only; scientific Gate and equivalence status remain unchanged.
+
+## Historical — AAD-S0.5-TASK18 (2026-11-01)
 
 Task18 execution integrity closure is complete. Task9 remains a local conditional response experiment and Stage 0.5 scientific Gate definitions are unchanged. Evidence: `evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/`.
 

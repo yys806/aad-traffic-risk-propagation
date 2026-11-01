@@ -1,4 +1,12 @@
-## Current — AAD-S0.5-TASK18 (completed execution integrity closure, 2026-11-01)
+## Current — AAD-S0.5-TASK19 (completed scientific result analysis, 2026-11-01)
+
+Task19 completed offline analysis of the 100 Task9 results (Primary 60, Supplementary 40) and their full trajectories. All 50 actual A/B pair records passed. The analysis found repeatable local Follower responses, candidate-dependent tau patterns, high-tau A/B differences, and consistent qualitative direction between Primary and Supplementary. It does not establish the AAD causal hypothesis, Formal P2/D1/B change or network equivalence.
+
+Main result boundary: `962-958-1` shows a mostly gradual response-amplitude increase across tau; `926-924-1` is non-monotonic, with the largest amplitude at the highest tau. A/B amplitude differences are near zero at low/mid tau and negative at selected high-tau conditions. Gap/TTC and C-decomposition findings are descriptive and algebraically dependent.
+
+Task19 outputs: `code/outputs/analysis/task19_20261101/`; evidence: `evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/`; report: `docs/TASK19_SCIENTIFIC_RESULT_ANALYSIS_20261101.md`.
+
+## Historical — AAD-S0.5-TASK18 (completed execution integrity closure, 2026-11-01)
 
 Task18 corrected the Task9 executor by releasing Follower control with `setSpeed(-1)` before dynamic evolution, recording `getSpeedWithoutTraCI()`, and moving the local coordinate offset to 80 m after explicit boundary checks. The repaired chain completed 174/174 planned SUMO runs. Task16 regression was 60/60 PASS; Task9 Primary was 60/60 PASS; Supplementary was 40/40 PASS; six same-seed repeats were bitwise trajectory-consistent; initialization was 5 PASS plus one expected direct-mode INCOMPLETE; two timing checks PASS. No collision, teleport or arrived event was recorded. Primary and Supplementary A/B pairing passed on actual trajectory comparisons for 30/30 and 20/20 pairs.
 

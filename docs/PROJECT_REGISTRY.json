@@ -443,7 +443,24 @@
   "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/supplementary_results.csv",
   "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/task16_regression_results.csv",
   "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/task16_regression_summary.json",
-  "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/timing_results.csv"
+  "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/timing_results.csv",
+  "code/scripts/analyze_task19_task9.py",
+  "docs/TASK19_SCIENTIFIC_RESULT_ANALYSIS_20261101.md",
+  "evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/analysis_dataset_run_level.csv",
+  "evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/analysis_manifest.json",
+  "evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/analysis_trajectory_features.csv",
+  "evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/gap_ttc_by_tau.png",
+  "evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/paired_all_sources.csv",
+  "evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/paired_amplitude_delta.png",
+  "evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/primary_supplementary_consistency.csv",
+  "evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/primary_supplementary_consistency.png",
+  "evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/seed_level_results.csv",
+  "evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/seed_variability.png",
+  "evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/sha256_manifest.json",
+  "evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/SHA256SUMS",
+  "evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/speed_response_profiles_primary.png",
+  "evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/stratified_descriptive_summary.csv",
+  "evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/tau_trend_diagnostics.csv"
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
@@ -1347,7 +1364,8 @@
     "RES-STAGE-0.5-POST-R2-TASK15-TASK9-NETWORK-TRACI-VALIDATION-20261031",
     "RES-STAGE-0.5-POST-R2-TASK16-FOLLOWER-REPLAY-AND-PREFORMAL-READINESS-20261031",
     "RES-STAGE-0.5-TASK17-TASK9-CLOSURE-20261101",
-    "RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101"
+    "RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101",
+    "RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101"
    ],
    "core_metrics": [
     "formal_input_manifest",
@@ -6016,6 +6034,54 @@
     "docs/TASK18_EXECUTION_AUDIT_20261101.md",
     "docs/TASK18_FAILURE_ANALYSIS_20261101.md",
     "docs/TASK18_PRIMARY_SUPPLEMENTARY_RESULTS_20261101.md"
+   ],
+   "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101",
+   "experiment_id": "stage_0_5",
+   "name": "Task9 offline scientific result analysis",
+   "status": "completed_offline_analysis",
+   "portable_evidence_paths": [
+    "evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/analysis_dataset_run_level.csv",
+    "evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/analysis_manifest.json",
+    "evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/analysis_trajectory_features.csv",
+    "evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/gap_ttc_by_tau.png",
+    "evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/paired_all_sources.csv",
+    "evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/paired_amplitude_delta.png",
+    "evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/primary_supplementary_consistency.csv",
+    "evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/primary_supplementary_consistency.png",
+    "evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/seed_level_results.csv",
+    "evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/seed_variability.png",
+    "evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/sha256_manifest.json",
+    "evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/SHA256SUMS",
+    "evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/speed_response_profiles_primary.png",
+    "evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/stratified_descriptive_summary.csv",
+    "evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/tau_trend_diagnostics.csv"
+   ],
+   "local_artifact_paths": [
+    "code/outputs/analysis/task19_20261101/"
+   ],
+   "code_version_source": "code/scripts/analyze_task19_task9.py; Task18 frozen result tables and trajectories",
+   "configuration_source": "Task18 frozen Primary/Supplementary matrices; no configuration changes",
+   "data_version_source": "evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/",
+   "core_metrics": {
+    "runs_analyzed": 100,
+    "primary_runs": 60,
+    "supplementary_runs": 40,
+    "paired_records": 50,
+    "new_sumo_runs": 0,
+    "tau_layers": 5,
+    "candidates": 2,
+    "arms": 2,
+    "seed_repeats_per_cell": 5,
+    "figures": 5,
+    "descriptive_lag_identifiable_runs": 0
+   },
+   "current_conclusion": "Task9 shows repeatable local Follower responses with candidate-dependent tau patterns and high-tau A/B differences. Results remain descriptive and do not establish AAD causal effects or scientific equivalence.",
+   "gate_status": "blocked",
+   "paper_locations": [
+    "docs/TASK19_SCIENTIFIC_RESULT_ANALYSIS_20261101.md"
    ],
    "scientific_claim_eligible": false
   }

@@ -1,4 +1,8 @@
-## Current — AAD-S0.5-TASK18 (2026-11-01)
+## Current — AAD-S0.5-TASK19 (2026-11-01)
+
+Added offline scientific analysis for all Primary/Supplementary Task9 runs: trajectory-derived response features, tau trends, actual A/B paired effects, candidate comparison, seed/source consistency, C-decomposition checks, five academic figures and a bounded scientific report. No SUMO runs or frozen configuration changes.
+
+## Historical — AAD-S0.5-TASK18 (2026-11-01)
 
 Released Follower TraCI speed control before dynamic evolution, added native speed diagnostics, fixed formal coordinate translation to 80 m with boundary checks, audited collisions and actual A/B trajectories, and executed Primary/Supplementary/determinism/initialization/timing/Task16 matrices. Added isolated Task18 outputs, evidence and reports.
 

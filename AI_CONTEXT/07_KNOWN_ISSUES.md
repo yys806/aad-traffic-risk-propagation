@@ -1,3 +1,7 @@
+## Current — Task19 scientific limitations (2026-11-01)
+
+Task19 cannot separate candidate Leader-input effects from initial-gap effects with only two approved candidates. Five seed values per combination are descriptive only. `follower_response_amplitude_mps`, TTC, gap and C terms are correlated/definition-dependent; descriptive lag remains Unknown for all runs. MiTra reference-point and physical-truth limitations, prototype background mismatch and absence of communication/controller adoption remain.
+
 ## Current — Task18 known issues (2026-11-01)
 
 Task18 establishes execution integrity for the local fixed-Leader experiment, not causal validity for the AAD hypothesis. MiTra physical-truth and reference-point limitations remain. The 926 direct/high-tau initialization check remains expected INCOMPLETE because SUMO rejects direct insertion; safe_then_move is the approved dynamic path. The 80 m prototype has positive initialization and end margins for formal candidates, but the prototype is not claimed background-equivalent to sealed B00.

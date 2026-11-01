@@ -1,4 +1,8 @@
-## Current — AAD-S0.5-TASK18 / Task9 repeats (2026-11-01)
+## Current — AAD-S0.5-TASK19 scientific analysis (2026-11-01)
+
+Analyzed 100 Task9 results without new SUMO runs: Primary 60 and Supplementary 40. Actual A/B pairing passed 50/50. Follower responses are repeatable; tau effects are candidate-dependent; minGap effects appear mainly at high tau; Primary/Supplementary direction is broadly consistent. All findings are descriptive local-response results, not AAD causal evidence.
+
+## Historical — AAD-S0.5-TASK18 / Task9 repeats (2026-11-01)
 
 Task18 executed 174/174 planned runs. Task16 regression 60 PASS; Primary 60 PASS; Supplementary 40 PASS; determinism 6/6 exact; initialization 5 PASS + 1 expected direct INCOMPLETE; timing 2 PASS. Primary and Supplementary actual A/B pairing passed 30/30 and 20/20. Five unique trajectory hashes occurred across all 20 candidate/tau/arm seed groups. No collision, teleport or arrived event occurred.
 

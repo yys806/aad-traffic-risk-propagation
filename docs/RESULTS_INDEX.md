@@ -1,3 +1,7 @@
+## RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101
+
+Offline scientific analysis of 100 Task9 Primary/Supplementary runs: trajectory responses, tau/minGap/candidate effects, actual paired A/B differences, seed/source consistency and five figures. No new SUMO runs. Report: `docs/TASK19_SCIENTIFIC_RESULT_ANALYSIS_20261101.md`; evidence: `evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/`.
+
 ## RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101
 
 Task18 repaired Follower control release and initialization, completed 174 planned runs, verified Primary/Supplementary matrices, same-seed determinism, seed variability and actual A/B pairing. Evidence: `evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/`; outputs: `code/outputs/formal/task18_20261101/`; report: `docs/TASK18_COMPLETE_20261101.md`.

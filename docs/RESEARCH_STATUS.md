@@ -1,4 +1,8 @@
-## Current — AAD-S0.5-TASK18 (2026-11-01)
+## Current — AAD-S0.5-TASK19 (2026-11-01)
+
+Task19 completed offline scientific analysis of 100 Task9 results. It found repeatable local Follower responses, candidate-dependent tau patterns, high-tau minGap effects and broad Primary/Supplementary consistency. No causal AAD conclusion or Gate change. Report: `docs/TASK19_SCIENTIFIC_RESULT_ANALYSIS_20261101.md`; evidence: `evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/`.
+
+## Historical — AAD-S0.5-TASK18 (2026-11-01)
 
 Task18 completed the repaired execution chain and 174-run plan. Primary 60/60 PASS, Supplementary 40/40 PASS, Task16 regression 60/60 PASS, six deterministic repeats exact, five initialization PASS plus one expected direct INCOMPLETE, two timing PASS. No collision/teleport/arrived event occurred. Evidence: `evidence/results/RES-STAGE-0.5-TASK18-EXECUTION-INTEGRITY-20261101/`.
 
