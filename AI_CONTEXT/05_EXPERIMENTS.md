@@ -1,4 +1,8 @@
-## Current — P1 Task1 theory-only boundary (2026-11-01)
+## Current — P1 Task2 decision and experiment boundary (2026-11-01)
+
+The researcher has confirmed SUMO as the current priority, source-present two-arm regional-risk ITT as the entry design, final four-cell completion, direct single-hop messaging and an automatic controller. This task only refined theory and decision records; it did not run SUMO, Pilot, Task9/18/19, HIL, vehicle tests or reality data collection. Formal P2/rho, historical results and Gate states remain unchanged.
+
+## Historical — P1 Task1 theory-only boundary (2026-11-01)
 
 P1 Task1 did not run or authorize an experiment. Task18/19 history remains preserved as local engineering/descriptive evidence and is not reinterpreted as the P1 estimand or H1–H4 result. The P1 framework is the input for future P2–P6 evidence and design work; Stage 0.5 scientific Gate, Stage 0.6, Protocol Lock and Stage 1.1 remain unchanged.
 

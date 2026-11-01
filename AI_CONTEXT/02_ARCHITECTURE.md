@@ -16,7 +16,13 @@ Added an engineering-only TraCI leader replay adapter (`riskprop.stage_0_5_fixed
 
 # AAD Architecture
 
-## Current — P1 theory architecture (2026-11-01)
+## Current — P1 Task2 refined architecture (2026-11-01)
+
+P1 now distinguishes assignment nodes Z_S/Z_C, actual states S*/C*, true physical/information/controller process and observed records. The current causal route is SUMO model-internal, single-hop direct messaging, automatic controller, fixed cohort/region/window principle and read-only Observer. Observer output is a measurement record and does not feed message handling, adoption, command or action.
+
+Adoption has separate descriptive, reduced-form encouragement and IV/LATE objects; Action–Risk requires an explicit action intervention, IV, longitudinal g-formula or interventional indirect-effect assumption set. The population temporal object uses a risk-curve onset and no-message physical-arrival distribution. Existing formal_risk_measurement.py, formal_design.py, stage_i_mechanism.py and protocol_lock.py contracts remain unchanged.
+
+## Historical — P1 theory architecture (2026-11-01)
 
 The conceptual architecture now has two time-varying graphs. G_P(t) carries road connectivity, vehicle interactions and physical state propagation; G_I(t) carries message reachability and lifecycle. They share entities but not edge semantics. The joint model is x(t+1)=F_P(...), m(t+1)=F_I(...), controller decision d=pi(x,m,q), command u_cmd, actual input u, and fixed-region risk R_T(t). Feedback is represented with distinct time-step nodes, so the causal DAG remains acyclic.
 

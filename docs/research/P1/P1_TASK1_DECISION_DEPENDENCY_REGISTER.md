@@ -1,71 +1,53 @@
-# P1 Task1 决策依赖登记
+# P1 Task1–2 决策依赖登记
 
 日期：2026-11-01
-登记原则：P0 Task3 的 D1–D10 全部保持 **Proposed / Awaiting Researcher Decision**。本登记把“理论必须保留什么”和“后续何时冻结什么”分开，不把 Codex 推荐改写为 Agreed。
+状态：P1 Task2 已同步研究者确认的方向；操作参数继续 Awaiting Researcher Decision
 
-## 1. 分类规则
+## 1. 登记规则
 
-- **P1 structural**：影响理论变量或 DAG 基本结构，P1 必须用一般化符号保留；
-- **P1 generalizable**：可在多个方案下建模，当前不需要选唯一实现；
-- **P2–P6**：属于源事件、消息证据、风险测量、实验设计、统计规划或资源出口；
-- **需要研究者确认**：涉及核心研究对象、主 estimand、适用域或主张层级，不能由本文冻结。
+P1 Task1 原始版本把 D1–D10 整体保留为 Proposed。P1 Task2 根据研究者明确提交的任务书，将已经确认的研究方向和仍未冻结的操作参数分开登记。历史 P0/P1 报告保留原状态；本文件作为当前依赖入口。
 
-## 2. D1–D10 登记
+- Agreed：研究者已经确认的方向或原则。
+- Awaiting Researcher Decision：尚未给出正式数值、边界、阈值、精度、随机化或停止规则。
+- Unknown：需要未来数据、资源或观测才能判断，不能由文档决定。
 
-| ID | 当前状态 | 理论变量/结构 | 是否影响本次 P1 | 可否暂留多方案 | 所属阶段 | 推荐 Proposal 及理由 | 需要研究者确认？ |
-|---|---|---|---|---|---|---|---|
-| D1 | Proposed / Awaiting | 平台适用域 \(H_e\)、证据层级和外推边界 | 是，但只影响适用域，不改变双网络结构 | 可以；模型同时容纳现实封闭场、SUMO、HIL | P1 入口；最终属 P2–P8 | 现实封闭场整场事件随机化作为现实证据目标；SUMO 只作模型准备，避免把仿真写成现实证据 | 是 |
-| D2 | Proposed / Awaiting | \(S,C,A\)、四格 \(Y(s,c)\) 与 source-present ITT | 是，决定估计对象层次 | 可以；P1 同时定义四格和两臂 | P1 结构；主次关系属 P5 | 保留长期四格；把两臂作为源存在时的 policy ITT，不把它升级为交互 | 是 |
-| D3 | Proposed / Awaiting | Source Event \(S_e,T_E\)、物理链起点 | 是，必须允许 Formal P2 与安全受控扰动两类输入 | 可以；区分真实事件和受控机制域 | P2 | 优先既有 Formal P2；若安全条件不能满足，明确收窄为受控扰动机制研究或停止现实主张，不能降阈值 | 是 |
-| D4 | Proposed / Awaiting | \(C,R,W\)、\(Y_\mathcal T\) 和区域 exposure | 是，决定结果节点 | 可以；用固定预列 cohort/region/window 参数化 | P4 | 固定完整实验车队和区域，Formal rho 固定窗、车辆等权作为候选主结果；具体边界待定 | 是 |
-| D5 | Proposed / Awaiting | \(T_P,\phi(S_R(t))\)、路径和删失 | 是，决定时间优先性变量 | 可以；P1 保留速度、密度、间距和 Formal 风险候选 | P2/P4 | 独立路侧持续速度变化作为首选候选，间距/密度/rho 辅助；不从距离或假速生成 \(T_P\) | 是 |
-| D6 | Proposed / Awaiting | \(T_R,T_P,F_0(t),\eta,H\) | 是，决定总体 vs 个体时间对象 | 可以；P1 同时保留区间与删失 | P2/P5/P6 | 先做总体 early-window effect 与 no-message arrival distribution；个体跨世界提前秒数保持不可识别，除非另有设计 | 是 |
-| D7 | Proposed / Awaiting | \(\mathbf A_e\)、\(g_I,g_P\)、干扰域 | 是，决定潜在结果写法 | 可以；整场、车辆级、两阶段均保留 | P5 | 首版单跳/整场或 session assignment，明确域内干扰；未知域外影响时不声称独立车辆效应 | 是 |
-| D8 | Proposed / Awaiting | \(D,V,A,U^{cmd},U,T_U\)；人类/控制器对象 | 是，决定机制节点，但不改变 ITT 结构 | 可以；自动可审计控制器与人类代理分别建模 | P3/P5 | 若优先可审计性，候选为自动控制器；主分析仍 ITT，adoption/action 机制需额外鼓励或 IV | 是 |
-| D9 | Proposed / Awaiting | SESOI \(\delta\)、方差、样本量和精度 | 不影响 P1 数学结构，但决定可证伪门槛 | 可以；P1 只用符号和敏感性占位 | P6 | 由独立 pilot 估事件/配对方差、ICC、缺失、到达分布后制定；不采用历史 minimum=100 | 是 |
-| D10 | Proposed / Awaiting | 结果层级、失败边界、适用域收窄 | 是，决定结果解释和停止规则 | 可以；分别保留 ITT、机制、模型内和 failure-boundary 出口 | P2–P8 | witness 缺失则放弃现实时间优先；缺 adoption 则保留动作/风险 ITT；只有模型则 simulator-only | 是 |
+## 2. D1–D10 当前登记
 
-## 3. 哪些问题 P1 已经解决
+| ID | 当前状态 | 已确认研究方向 | 理论变量/结构 | 仍需决定的参数或证据 | 后续归属 |
+|---|---|---|---|---|---|
+| D1 | Agreed 方向；参数 Awaiting | 当前优先 SUMO；现实封闭场/实车不是前置条件；结论限于模型内 | \(H_e\)、模型内 \(X^*,M^*,Y^*\) 与外推边界 | 场景、模型适用域、未来现实扩展验证 | P1 已同步；P2–P8 |
+| D2 | Agreed 方向；参数 Awaiting | 当前 source-present 两臂 ITT；最终保留四格；两者不混淆 | \((Z_S,S^*,Z_C,C^*)\)、\(Y(s,c)\)、\(\tau_{SC}\)、\(\tau_{\mathrm{ITT}}^{S=1}\) | 四格执行时机、分配概率、主次终点、正式统计计划 | P1/P5 |
+| D3 | Agreed 方向；参数 Awaiting | Formal P2 为 A 路线优先；B 为独立安全受控扰动机制路线 | \((S^*,T_E)\)、Formal P2 qualification、B mechanism domain | A/B 场景、触发、窗口和适用域 | P2 |
+| D4 | Agreed 方向；参数 Awaiting | 固定目标 cohort、region、window；区域总体 Formal rho/P2 为主结果候选 | \((C,R,W,Y_{\mathcal T})\) | 车辆成员、空间边界、窗口、进出规则、辅助指标 | P4 |
+| D5 | Agreed 方向；参数 Awaiting | SUMO 只读 Observer；现实扩展用独立路侧传感器；Observer 不参与控制 | \((X^*,\widetilde X,\phi,T_P)\)、观测误差和缺失 | 物理状态函数、阈值、持续性、路径资格、删失 | P2/P4 |
+| D6 | Agreed 方向；参数 Awaiting | 首版只研究总体时间优先性；不主张个体跨世界提前秒数 | \(\tau_R(t)\)、\(F_0(t\mid H)\)、\(T_R^{upper}<T_P^{lower}\) | horizon、\(\eta\)、分位数、同时置信水平、持续性 | P2/P5/P6 |
+| D7 | Agreed 方向；参数 Awaiting | 单跳直接消息、不转发；保留物理网络干扰和区域 policy effect | \((Z_C,C^*,G_I(t))\)、\((g_I,g_P)\)、\(\mathbf A\) | 链路覆盖、超时/过期、随机化域、exposure mapping | P3/P5 |
+| D8 | Agreed 方向；参数 Awaiting | 研究自动控制器；不纳入人类驾驶者心理采用 | \((D^*,V^*,A^*,U^{cmd,*},U^*)\) 与日志观测 | 控制器版本、日志、覆盖/接管、机制鼓励 | P3/P5 |
+| D9 | Agreed 方向；参数 Awaiting | 先 Pilot 后功效/样本量；本任务不运行 Pilot | 事件方差、配对方差、ICC、缺失和 \(F_0\) | SESOI、α、power、独立单位、样本量、多重检验 | P6 |
+| D10 | Agreed 方向；触发参数 Awaiting | 按 witness、adoption、action、区域覆盖和平台证据收窄主张 | 结果层级、失败边界、适用域 | 缺失比例、停止阈值、替代主线准入 | P2–P8 |
 
-P1 可以在不选择 D1–D10 的情况下完成以下内容：
+## 3. P1 已经可以执行的理论约束
 
-1. 用 \(G_P(t)\) 和 \(G_I(t)\) 分开定义物理交互与信息可达；
-2. 把消息生命周期、控制器采用、命令、实际动作和区域风险拆成不同变量；
-3. 用时间层展开反馈并保留 Unknown/区间/删失；
-4. 同时给出四格交互与 source-present 两臂 ITT，并证明二者不等价；
-5. 把网络干扰写入 \(Y_i(\mathbf A)\) 或 \(Y_e(\mathbf A_e)\)；
-6. 规定 H1–H4 的可证伪出口，而不提前选择正向结果。
+1. 分配变量和真实状态分开：\(Z_S/Z_C\) 不是 \(S^*/C^*\)。
+2. 真实过程和观测记录分开：Observer、日志和风险表带有质量、时钟、身份和缺失语义。
+3. SUMO Observer 只能支持模型内物理观测，不升级为现实独立传感器。
+4. 当前两臂 ITT 是 assignment-level policy effect；四格交互仍保留且不能由两臂直接替代。
+5. Adoption、Command、Action 和区域风险仍是不同的处理后变量；IV/中介需要额外条件。
+6. 总体时间优先性使用风险曲线与无消息到达分布，个体处理事件的 \(T_P(0)\) 仍不可观测。
+7. 单跳通信不消除物理交互网络中的 spillover 和区域 policy effect。
 
-## 4. 哪些问题可暂留多个方案
+## 4. 仍需研究者决定或未来证据关闭的内容
 
-平台、源事件类别、目标区域和物理状态函数都可以先用带索引的泛化模型表示。P1 使用 \(C,R,W,\phi,F_0\) 等符号，并记录每个候选的识别条件；P2–P6 再根据真实证据、资源和研究者决定收窄。
+- SUMO 场景、源事件实例、目标车辆成员、区域边界和窗口；
+- 物理到达状态函数 \(\phi\)、阈值、持续性、路径资格、时钟和删失；
+- 消息覆盖、有效期、链路失败和实际 exposure mapping；
+- 是否部署 adoption encouragement/IV，以及 IV 的可辩护条件；
+- Action–Risk 采用何种干预性或 longitudinal 识别方案；
+- SESOI、α、power、ICC、样本量、缺失准入和多重检验；
+- D10 的失败边界触发数值和正式停止规则。
 
-控制器和人类驾驶者也可以共用消息—决策—动作链，但采用的观测语义不同：自动控制器可有 decision receipt；人类只能在明确设计下提供 acknowledgement 或动作代理，不能混称心理采用。
+## 5. 边界和历史记录
 
-## 5. 属于 P2–P6 的决定
+本登记不修改 P0 Task3 原始决策清单的历史内容，不修改 Formal P2、Formal rho、D1/B witness、Scientific Equivalence、Gate 或正式实验配置。它不授权实验、Pilot、locked holdout、Protocol Lock 或 Stage 1.1。
 
-- P2：Formal P2 是否是首版 Source Event、物理路径 witness、\(T_P\) 的状态函数和删失；
-- P3：消息端点、验证规则、控制器对象和 adoption 日志；
-- P4：目标 cohort/region/window、Formal rho 主结果、动作和风险 onset；
-- P5：四格与两臂主次、整场/车辆级/两阶段随机化、干扰 exposure mapping、中介鼓励；
-- P6：\(\delta\)、α、power、方差、ICC、样本量、多重时间窗和缺失界限。
-
-## 6. 研究者需要明确确认的最小集合
-
-无需重新批准公式排版、变量命名或文件组织；但以下实质选择必须在未来形成真实 Agreed Decision 后才能冻结：
-
-1. 首版适用平台和主张层级（D1）；
-2. 两臂与四格的正式主次关系（D2）；
-3. Source Event 和 \(T_P\) 的最终操作定义（D3、D5）；
-4. Target Cohort/Region/Window 与主要风险结果（D4）；
-5. 是否允许个体时间优先性主张（D6）；
-6. 随机化单位和干扰策略（D7）；
-7. 自动控制器或人类驾驶者作为首版研究对象（D8）；
-8. SESOI、精度和样本量（D9）；
-9. 资源或证据失败时的主线收窄（D10）。
-
-## 7. 状态与边界
-
-本登记不改变现有 Agreed 决策，不写 Protocol Lock，不授权新实验，不访问 locked holdout，不启动 Stage 1.1。D1–D10 的推荐只用于组织后续理论和研究者审阅。
-
-依据：[P0_TASK3_RESEARCHER_DECISIONS.md](../P0/P0_TASK3_RESEARCHER_DECISIONS.md)、[P0_CLOSEOUT_AND_P1_ENTRY_NOTE.md](../P0/P0_CLOSEOUT_AND_P1_ENTRY_NOTE.md)。
+最新同步记录：[P1_TASK2_RESEARCHER_DECISIONS_20261101.md](P1_TASK2_RESEARCHER_DECISIONS_20261101.md)。

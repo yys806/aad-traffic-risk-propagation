@@ -1,7 +1,7 @@
 # AAD P1 因果估计对象与识别条件
 
 日期：2026-11-01
-状态：**P1_ESTIMANDS_PROPOSED**。本文件统一长期规划的四格对象和 P0 Task3 的 source-present 两臂对象；未冻结正式主次关系。
+状态：**P1_TASK2_REFINED_ESTIMANDS**。研究者已确认 SUMO 优先、source-present 两臂当前主分析、最终四格、单跳通信和自动控制器；操作参数与正式统计准入仍待决定。
 
 ## 1. 结果和潜在结果的共同定义
 
@@ -21,6 +21,14 @@ Y_{i,e}(\mathbf A_e),
 \]
 
 其中 \(\mathbf A_e\) 是同一事件/簇/整网的处理向量。只有在明确干扰域和 exposure mapping 后，才可写成 \(Y_i(a_i,g_i)\)。
+
+当前首版把分配和实际状态分开：
+
+\[
+Z_S\to S^*,\qquad Z_C\to C^*\to (D^*,V^*,A^*,U^{cmd,*},U^*).
+\]
+
+SUMO 只读 Observer 产生 \(\widetilde X,\widetilde R,\widetilde T_P\) 等模型观测；它不成为消息策略或控制器的处理变量，也不等同现实路侧 witness。
 
 ## 2. 长期规划的四格交互效应
 
@@ -112,11 +120,67 @@ A=1\;\not\Rightarrow\;U\text{ 改变}.
 
 这些对象均需新的设计、假设和正支持，不能在 P1 把 adopted 子集平均差写成机制因果效应。
 
+### 6.1 Adoption encouragement、reduced form 与 IV/LATE
+
+若未来增加随机化的 adoption encouragement 或工具变量 \(Z_A\)，机制链写成
+
+\[
+Z_A\longrightarrow A^*\longrightarrow U^{cmd,*}\longrightarrow U^*.
+\]
+
+需要区分三个对象：
+
+1. **Adoption rate**：在已送达/已验证消息中，\(P(A^*=1\mid D^*=1,V^*=1)\)。这是链路描述量，不是采用的因果效应。
+2. **Reduced-form effect**：鼓励对实际动作的 assignment-level ITT，
+\[
+\tau_{\mathrm{RF}}
+=E[U^*\mid Z_A=1]-E[U^*\mid Z_A=0].
+\]
+3. **IV/LATE**：在工具变量条件成立时，采用对动作的局部平均因果效应，
+\[
+\tau_{\mathrm{IV}}
+=\frac{E[U^*\mid Z_A=1]-E[U^*\mid Z_A=0]}
+{E[A^*\mid Z_A=1]-E[A^*\mid Z_A=0]}.
+\]
+
+\(\tau_{\mathrm{IV}}\) 需要随机分配/独立性、相关性（第一阶段非零）、排除限制、单调性、well-defined adoption 和正支持。网络干扰下还需要对整场分配向量、信息/物理 exposure 和域外泄漏作相应限制；普通车辆级 Wald 比值不能自动解决干扰。
+
+排除限制尤其需要审查：\(Z_A\) 只能通过 \(A^*\) 影响 \(U^*\)，不能同时改变消息内容、延迟、安全覆盖、控制器其他模式或物理邻车动作。完整 adoption 日志不能证明排除限制。若条件不能辩护，只报告 adoption rate、日志审计和鼓励 reduced form，不声称 LATE。本任务不新增 adoption encouragement 实验。
+
+### 6.2 Action–Risk 的候选识别对象
+
+动作机制的理论路径为
+
+\[
+U^*\longrightarrow X^*_{\mathcal T}\longrightarrow Y^*_{\mathcal T}.
+\]
+
+普通动作—风险回归或 adopted/not-adopted 比较不识别动作介导因果效应，因为动作受处理前状态、控制器状态、网络邻车动作和时间变化暴露影响。候选方法和条件如下：
+
+| 方法 | 目标对象 | 关键识别条件 | 当前定位 |
+|---|---|---|---|
+| 随机化动作干预/鼓励 | 动作 assignment effect 或动作 ITT | 动作鼓励有正支持，排除限制可辩护，区域结果固定 | 候选；本任务不运行 |
+| 有效 IV | \(U^*\) 对 \(Y^*\) 的 complier effect | 相关性、排除限制、单调性、干扰域和稳定处理 | 候选；不能假定 |
+| longitudinal g-formula | 时间变化动作策略下的风险结果 | 顺序可交换性、时间变化混杂可测、正支持、正确模型/稳健估计 | 候选；需 P4–P6 |
+| interventional indirect effect | 通过动作分布改变的风险效应 | 中介混杂条件、干预性中介定义、干扰和时间顺序明确 | 候选；不等于自然中介 |
+
+H1 的区域 ITT 可以在 H2/H3 机制尚未完全识别时独立报告。不能把 H1 ITT 代数拆成 H2 与 H3 两个因果效应，也不能把命令日志或动作差异自动升级为中介因果证据。
+
+### 6.3 测量误差、Observer 与缺失
+
+对真实结果 \(Y^*\) 和观测结果 \(\widetilde Y\)，报告
+
+\[
+\widetilde Y=h_Y(Y^*,Q,\varepsilon).
+\]
+
+Observer、控制器日志和风险提取各自保留 quality、clock、identity、missing_reason 和 derivation_version。误差可能造成 attenuation、身份错配、时间区间和信息性缺失；不能默认它只增加独立同分布噪声。缺失/Invalid/Unobservable/Unknown 保留上下界或删失，不补零。
+
 ## 7. 时间优先性对象
 
 ### 7.1 事件级时间变量
 
-\(T_R\) 是消息介导的区域风险因果效应 onset；\(T_P\) 是普通物理状态的独立到达时间。理论条件为
+\(T_U\) 是配对轨迹/执行记录中的实际动作变化时间，\(T_R\) 是消息策略引起的总体区域风险因果效应 onset，\(T_P\) 是普通物理状态的独立到达时间。三者不能互相替代。stage_i_mechanism.py 的 first_action_change_time_s 只对应 \(T_U\) 的工程候选。
 
 \[
 T_R<T_P.
@@ -128,23 +192,45 @@ T_R<T_P.
 T_R^{upper}<T_P^{lower}.
 \]
 
-\(T_R\) 必须来自预定早期风险曲线、同时置信带和持续性规则；第一次观察到风险下降、第一次 action event 或消息生成时间都不能直接替代它。\(T_P\) 必须由独立时间化物理 witness 给出。
+\(T_R\) 必须来自预定早期风险曲线、同时置信带和持续性规则；第一次观察到风险下降、第一次命令变化、第一次 \(T_U\) 或消息生成时间都不能直接替代它。\(T_P\) 必须由独立时间化物理 witness 或当前 SUMO 只读 Observer 的模型内记录给出，并明确适用域。
+
+### 7.1.1 \(T_R\) 的统计定义
+
+在当前 source-present 两臂设计中，先对预先定义的时间网格估计
+
+\[
+\tau_R(t)
+=E[\widetilde R_{\mathcal T}(t)\mid Z_C=1,Z_S=1]
+-E[\widetilde R_{\mathcal T}(t)\mid Z_C=0,Z_S=1].
+\]
+
+风险越低越好。给定未来由研究者确定的 SESOI \(\delta\)，总体风险效应 onset 的一般定义为
+
+\[
+\widehat T_R
+=\inf\left\{t\in\mathcal H:
+UCB_{\mathrm{sim}}\bigl(\widehat\tau_R(t)\bigr)<-\delta
+\ \text{并在预定持续性规则下保持}\right\}.
+\]
+
+其中 \(UCB_{\mathrm{sim}}\) 是覆盖整个时间网格的同时上置信带。当前不冻结 \(\delta\)、\(\alpha\)、时间网格、持续时长、基线风险、horizon 或多重检验规则。若没有通过预定质量和持续性条件，\(\widehat T_R\) 为 Unknown，而不是把第一次下降当成 onset。
 
 ### 7.2 总体层面可识别的时间对象
 
-无消息随机事件可估计
+在无消息随机事件中，可估计总体物理到达分布
 
 \[
-F_0(t\mid H)=P\{T_P(0)\le t\mid H\},
+F_0(t\mid H,Z_S=1)
+=P\{\widetilde T_P\le t\mid Z_C=0,Z_S=1,H\},
 \]
 
-其中 \(H\) 是处理前分层。早期窗口效应可写成
+其中 \(H\) 是处理前分层，\(\widetilde T_P\) 的质量、区间删失和 witness 类型必须一起报告。若使用 \(T_P(0)\) 记号，它表示该无消息总体下的潜在到达分布，不表示已观察到同一处理事件的反事实路径。早期窗口效应可写成
 
 \[
-\tau_R(H)=E[Y_{\mathcal T}(1,1;H)-Y_{\mathcal T}(1,0;H)]
+\tau_R(H)=E[Y_{\mathcal T}(Z_C=1;H)-Y_{\mathcal T}(Z_C=0;H)\mid Z_S=1]
 \]
 
-或对每个 \(h\) 的时间曲线差 \(\tau_R(h,t)\)。若预注册 horizon \(H^\star\) 内的 \(F_0(H^\star)\) 上界低于允许的物理到达比例 \(\eta\)，且 \(\tau_R(h,t)\) 的同时置信带/持续性判定支持早期差异，只能表述为“在总体上物理状态通常尚未达到的窗口存在策略效应”。
+或对每个 \(h\) 的时间曲线差 \(\tau_R(h,t)\)。若预注册 horizon \(H^\star\) 内的 \(F_0(H^\star)\) 上界低于允许的物理到达比例 \(\eta\)，且 \(\widehat\tau_R(h,t)\) 的同时置信带/持续性判定支持早期差异，只能表述为“在总体上物理状态通常尚未达到的窗口存在策略效应”。这仍是总体层面的 early-window effect，不是每个处理事件的提前秒数。
 
 ### 7.3 个体事件的反事实限制
 
@@ -183,4 +269,4 @@ T_P(0)-T_R(1).
 
 ## 10. 当前不冻结的事项
 
-正式主 estimand 的主次关系、Source Event、Target Cohort、Region、Window、物理到达 \(\phi\)、随机化单位、interference strategy、SESOI、样本量和多重比较规则都属于后续研究者决定。P1 只提供可复用的定义和识别边界。
+SUMO 优先、当前 source-present 两臂 ITT、最终四格、单跳通信、自动控制器、固定 cohort/region/window 原则和总体时间优先性已经确认。仍未冻结的是 Source Event 的具体实例、Target Cohort/Region/Window 的数值边界、物理到达 \(\phi\)、随机化概率、interference exposure mapping、Adoption IV 是否实际部署、SESOI、样本量和多重比较规则。P1 只提供可复用的定义和识别边界。

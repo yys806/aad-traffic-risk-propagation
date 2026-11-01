@@ -1,4 +1,10 @@
-## Current — P1 Task1 theory and causal model (2026-11-01)
+## Current — P1 Task2 decision synchronization and causal refinement (2026-11-01)
+
+The researcher has confirmed the D1–D10 directions in AAD-P1-TASK2. Current scope is SUMO model-internal causal mechanism work with an automatic controller, source-present two-arm regional-risk ITT as the entry analysis and a required final four-cell design. Formal P2 and safe controlled perturbation remain separate source domains; target cohort/region/window are pre-fixed in principle; the SUMO Observer is read-only and is not a real roadside sensor; communication is direct single-hop; the first temporal claim is population-level; Pilot comes before SESOI/power/sample-size planning.
+
+The refined theory separates assignment Z_S/Z_C from actual S*/C* states and true process from observed logs/Observer records. H2 distinguishes adoption rate, encouragement reduced form and IV/LATE; H3 lists action-intervention, IV, longitudinal g-formula and interventional indirect-effect candidates; H4 defines population risk-curve onset and no-message physical-arrival distributions. Operational parameters remain Awaiting Researcher Decision. See docs/research/P1/P1_TASK2_FINAL_REPORT.md.
+
+## Historical — P1 Task1 theory and causal model (2026-11-01)
 
 P1 formalizes AAD with two coupled but distinct networks: physical interaction G_P(t)=(V,E_P(t)) and information propagation G_I(t)=(V,E_I(t)). The joint state uses physical state x, message/lifecycle state m, controller decision/command/actual input and fixed-region Formal rho/P2 risk. Message generation, transmission, delivery, verification, adoption, command, action and regional risk remain separate events with times T_G,T_S,T_D,T_V,T_A,T_C,T_U,T_R; ordinary physical arrival T_P needs an independent time-indexed witness.
 

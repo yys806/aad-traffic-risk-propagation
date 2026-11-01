@@ -1,4 +1,15 @@
-## Current — P1 research-document map (2026-11-01)
+## Current — P1 Task2 research-document map (2026-11-01)
+
+- docs/research/P1/P1_TASK2_RESEARCHER_DECISIONS_20261101.md: Agreed D1–D10 directions and Awaiting operational parameters.
+- docs/research/P1/P1_TASK2_FINAL_REPORT.md: decision synchronization, true/observed model, IV/mediation and temporal refinement report.
+- docs/research/P1/THEORY_AND_CAUSAL_MODEL.md: assignment/actual/observation layers, SUMO Observer and automatic-controller dynamics.
+- docs/research/P1/CAUSAL_DAG.md: time-indexed DAG with Z_S/Z_C, S*/C*, true process and observation process.
+- docs/research/P1/ESTIMAND_SPECIFICATION.md: IV/LATE, Action–Risk candidates, measurement error and population timing estimands.
+- docs/research/P1/HYPOTHESIS_AND_FALSIFICATION.md: H1–H4 synchronized to the confirmed scope.
+
+No production module was modified; formal_design.py, formal_risk_measurement.py, stage_i_mechanism.py and protocol_lock.py remain unchanged.
+
+## Historical — P1 research-document map (2026-11-01)
 
 - docs/research/P0/P0_CLOSEOUT_AND_P1_ENTRY_NOTE.md: P0 Task1–3 closeout and P1 entry boundary.
 - docs/research/P1/THEORY_AND_CAUSAL_MODEL.md: dual networks, joint dynamics, lifecycle and Formal risk coupling.

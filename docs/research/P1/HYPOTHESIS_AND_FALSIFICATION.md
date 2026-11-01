@@ -1,7 +1,7 @@
 # AAD P1 科学假设与证伪规则
 
 日期：2026-11-01
-状态：**P1_HYPOTHESES_PROPOSED**。H1–H4 是待检验假设，不代表已有科学结论。
+状态：**P1_TASK2_REFINED_HYPOTHESES**。H1–H4 仍是待检验假设，不代表已有科学结论；研究者已确认 SUMO 优先、自动控制器、总体时间优先性和失败收窄原则。
 
 ## 1. 共同判定规则
 
@@ -18,11 +18,11 @@
 
 ### 数学表达
 
-Source-present 两臂对象为
+当前 source-present 两臂对象为
 
 \[
 \tau_{\mathrm{ITT}}^{S=1}
-=E[Y_{\mathcal T}(1,1)-Y_{\mathcal T}(1,0)].
+=E[Y_{\mathcal T}(Z_C=1;Z_S=1)-Y_{\mathcal T}(Z_C=0;Z_S=1)].
 \]
 
 四格版本为
@@ -33,7 +33,7 @@ Source-present 两臂对象为
 -\{E[Y(0,1)-Y(0,0)]\}.
 \]
 
-若风险越低越好，方向性候选为 \(\tau_{\mathrm{ITT}}^{S=1}<-\delta\) 或 \(\tau_{SC}<-\delta\)；两者的主次关系尚未批准。
+若风险越低越好，方向性候选为 \(\tau_{\mathrm{ITT}}^{S=1}<-\delta\) 或 \(\tau_{SC}<-\delta\)。当前两臂是主分析入口，四格仍是最终交互对象；\(\delta\) 和正式主次统计规则未冻结。
 
 ### 物理含义
 
@@ -41,15 +41,15 @@ Source-present 两臂对象为
 
 ### 对应可观测量
 
-- 随机化/外生分配及正概率；
-- 源事件资格和处理前平衡；
+- 随机化/外生分配 \(Z_C\) 及正概率；
+- \(Z_S\) 所定义的 source-present 场景和实际 \(S^*\) 资格记录；
 - 固定 \(C,R,W\) 的 Formal rho/P2 区域结果；
 - 事件/session 级聚类、缺失区间和泄漏记录；
 - 四格时保存四个 cell，source-present 两臂时保存两组全部运行。
 
 ### 识别条件
 
-分配机制可审计；处理前可比；区域 cohort/window 不由处理后结果选择；干扰域、exposure mapping 或整场 policy 定义明确；测量缺失和安全中止按 assignment 保留。
+分配机制可审计；处理前可比；区域 cohort/window 不由处理后结果选择；实际 \(S^*/C^*\) 与 assignment 分开记录；干扰域、exposure mapping 或整场 policy 定义明确；测量缺失和安全中止按 assignment 保留。
 
 ### 支持、证伪与不可判断
 
@@ -65,17 +65,25 @@ Source-present 两臂对象为
 描述性链路要求
 
 \[
-P(A=1\mid D=1,V=1)>0,
+P(A^*=1\mid D^*=1,V^*=1)>0,
 \]
 
 并且在一个被随机化的 adoption encouragement 或有效 IV \(Z_A\) 下，存在可识别的命令/动作差异，例如
 
 \[
-\tau_U^{A}
-=E[U\mid Z_A=1]-E[U\mid Z_A=0],
+\tau_{\mathrm{RF}}
+=E[U^*\mid Z_A=1]-E[U^*\mid Z_A=0],
 \]
 
-或在满足 IV 条件的 complier 总体中定义 \(E[U(1)-U(0)\mid C]\)。如果没有额外随机化，\(P(A=1)\) 和 adopted/not-adopted 的观察差异只是链路审计量，不是自然中介效应。
+或在满足 IV 条件的 complier 总体中定义
+
+\[
+\tau_{\mathrm{IV}}
+=\frac{E[U^*\mid Z_A=1]-E[U^*\mid Z_A=0]}
+{E[A^*\mid Z_A=1]-E[A^*\mid Z_A=0]}.
+\]
+
+如果没有额外随机化，\(P(A^*=1)\) 和 adopted/not-adopted 的观察差异只是链路审计量，不是自然中介效应。
 
 ### 物理含义
 
@@ -87,14 +95,14 @@ P(A=1\mid D=1,V=1)>0,
 
 ### 识别条件
 
-采用状态的定义在处理前写明；鼓励或 IV 具有正支持、相关性、排除限制和稳定版本；日志对所有 assignment arm 可用；安全覆盖保留而不是被删除。
+采用状态的定义在处理前写明；\(Z_A\) 具有随机分配/独立性、相关性、排除限制、单调性、well-defined treatment 和正支持；网络干扰域和域外泄漏有对应条件；日志对所有 assignment arm 可用；安全覆盖保留而不是被删除。
 
 ### 支持、证伪与不可判断
 
-- 支持：正交/随机鼓励下，采用和命令/实际动作有可重复、可归因的变化；
+- 支持：鼓励 ITT 可识别，且在 IV 条件成立时采用对动作的局部效应可识别；
 - 削弱/否定：送达和验证充分但采用率接近零，或有效采用下命令与实际输入无差异；
 - 处理链失败：消息端点或控制器日志断裂；
-- Unknown：只有 acknowledgement、按钮、凝视或动作代理，不能证明采用；中介混杂或 IV 条件未证实。
+- Unknown：只有 acknowledgement、按钮、凝视或动作代理，不能证明采用；排除限制、单调性、干扰或 IV 条件未证实。
 
 ## 4. H3：Action–Risk Mechanism
 
@@ -104,10 +112,10 @@ P(A=1\mid D=1,V=1)>0,
 
 \[
 \tau_{Y\leftarrow U}
-=E[Y_{\mathcal T}(U=u_1)-Y_{\mathcal T}(U=u_0)]
+=E[Y^*_{\mathcal T}(U^*=u_1)-Y^*_{\mathcal T}(U^*=u_0)]
 \]
 
-或在采用被有效鼓励且满足中介识别条件时的 interventional indirect effect。观察到 \(U\) 改变与 \(Y\) 同时改变，不能单独替代该对象。
+或在采用被有效鼓励且满足中介识别条件时的 interventional indirect effect。可选识别路线包括随机化动作鼓励、有效 IV、满足顺序可交换性和正支持的 longitudinal g-formula，以及明确干预性中介定义的 interventional indirect effect。观察到 \(U^*\) 改变与 \(Y^*\) 同时改变，不能单独替代这些对象。
 
 ### 物理含义
 
@@ -115,7 +123,7 @@ P(A=1\mid D=1,V=1)>0,
 
 ### 对应可观测量
 
-- 实际动作 \(U\) 的速度、加速度、车道和执行器反馈；
+- 实际动作 \(U^*\) 的速度、加速度、车道和执行器反馈；
 - 物理交互边 \(E_P(t)\) 和邻车状态；
 - 固定区域 \(R\) 中所有预列车辆的 Formal rho/P2 贡献；
 - 处理前条件、消息链和安全覆盖；
@@ -123,7 +131,7 @@ P(A=1\mid D=1,V=1)>0,
 
 ### 识别条件
 
-动作变化有可辩护的外生来源或随机鼓励；动作后的物理 exposure 和混杂可测或由设计控制；区域 cohort/window 不因动作而事后改变；干扰域有定义。
+动作变化有可辩护的外生来源或随机鼓励；动作后的物理 exposure 和时间变化混杂可测或由设计控制；区域 cohort/window 不因动作而事后改变；干扰域有定义。普通回归中加入 Adoption/Action 不是充分条件。
 
 ### 支持、证伪与不可判断
 
@@ -148,15 +156,18 @@ T_R<T_P,
 T_R^{upper}<T_P^{lower}.
 \]
 
-总体层面可检验的替代对象是早期窗口风险效应和无消息物理到达分布：
+总体层面可检验的对象是早期窗口风险效应和无消息物理到达分布：
 
 \[
-\tau_R(h,t)=E[Y(h,1,t)-Y(h,0,t)],
+\tau_R(h,t)
+=E[\widetilde R_{\mathcal T}(t)\mid Z_C=1,Z_S=1,H=h]
+-E[\widetilde R_{\mathcal T}(t)\mid Z_C=0,Z_S=1,H=h],
 \qquad
-F_0(t\mid h)=P\{T_P(0)\le t\mid h\}.
+F_0(t\mid h,Z_S=1)
+=P\{\widetilde T_P\le t\mid Z_C=0,Z_S=1,H=h\}.
 \]
 
-预定 horizon \(H\) 内，若 \(F_0(H)\) 的上界低于 \(\eta\)，同时 \(\tau_R(h,t)\) 在早期窗口有支持证据，结论只能是总体层面的 early-window effect。
+预定 horizon \(H\) 内，若 \(F_0(H)\) 的上界低于 \(\eta\)，同时 \(\widehat\tau_R(h,t)\) 的 simultaneous upper band 在预定持续性下低于 \(-\delta\)，结论只能是总体层面的 early-window effect。总体分布不能配成同一事件的跨世界时间差。
 
 ### 物理含义
 
@@ -164,9 +175,9 @@ F_0(t\mid h)=P\{T_P(0)\le t\mid h\}.
 
 ### 对应可观测量
 
-- 事件级消息生命周期和实际动作；
+- assignment、实际消息生命周期和自动控制器动作；
 - 固定区域风险曲线、同时置信带和持续性；
-- 独立路侧/物理路径 witness、来源/目标连接和时钟校准；
+- SUMO 只读 Observer 或未来独立路侧/物理路径 witness，并记录来源/目标连接和时钟校准；
 - randomized no-message events 的 \(F_0(t\mid h)\)；
 - 区间删失、右删失和测量误差。
 
@@ -193,6 +204,14 @@ F_0(t\mid h)=P\{T_P(0)\le t\mid h\}.
 | 动作变化但区域风险无效应 | H3 被削弱 | 消息一定无效 |
 | 区域效应存在但与物理时间重叠 | H1 可能支持、H4 Unknown/否定 | 已证明提前于物理 |
 
-## 7. 适用对象边界
+## 7. H1–H4 的逻辑关系
 
-自动/可审计控制器可直接记录 adoption、command 和 execution，但它是否是首版正式研究对象仍待 D8 决定。人类驾驶者的 acknowledgement、按钮、凝视或自报不能自动当作心理采用；若研究人类，必须把代理变量和真实动作分开，并记录伦理、学习和退出机制。无论对象是哪一种，H1–H4 都不能由 SUMO fixture 或 Task9/19 局部响应直接确认。
+- H1 可以在 H2/H3 机制尚未完全识别时独立获得支持，因为 H1 是 assignment-level 区域风险 ITT。
+- H2 支持只说明消息采用链路或采用—动作对象可识别，不自动推出 H3。
+- H3 支持说明动作到区域风险的因果机制在适用条件下成立，不自动推出 H4。
+- H4 不成立或保持 Unknown 不代表 H1 一定不成立；它只限制“早于普通物理影响”的主张。
+- 任一假设的处理链失败、测量失败和 Unknown 不得被写成其他假设的否定。
+
+## 8. 适用对象边界
+
+自动/可审计控制器是当前已确认的首版研究对象，可直接记录 adoption、command 和 execution。人类驾驶者的 acknowledgement、按钮、凝视或自报不属于当前主线，也不能自动当作心理采用。无论对象是哪一种，H1–H4 都不能由 SUMO fixture 或 Task9/19 局部响应直接确认。

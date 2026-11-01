@@ -1,4 +1,10 @@
-## Current — P1 Task1 theory and causal model (2026-11-01)
+## Current — P1 Task2 decision synchronization and causal refinement (2026-11-01)
+
+Researcher-confirmed D1–D10 directions are recorded in [P1_TASK2_RESEARCHER_DECISIONS_20261101.md](research/P1/P1_TASK2_RESEARCHER_DECISIONS_20261101.md). Current scope is SUMO model-internal causal mechanism work, source-present two-arm regional-risk ITT with a required final four-cell design, Formal P2/B source separation, fixed cohort/region/window principle, read-only Observer, population-level temporal precedence, single-hop direct communication, automatic controller, Pilot-before-power planning and evidence-based claim narrowing. Operational parameters remain Awaiting Researcher Decision.
+
+P1 Task2 report: [P1_TASK2_FINAL_REPORT.md](research/P1/P1_TASK2_FINAL_REPORT.md). The refined theory, DAG, estimands and hypotheses separate Z_S/Z_C from actual S*/C*, true process from observation, adoption rate/reduced form/IV, Action–Risk identification and T_U/T_R/T_P. No experiment or stage authorization changed.
+
+## Historical — P1 Task1 theory and causal model (2026-11-01)
 
 P0 Task1–3 has been formally closed with unresolved researcher decisions; no P0 Task4 is added. P1 Task1 established the general dual-propagation theory, time-indexed joint dynamics, message lifecycle, acyclic causal DAG, four-cell and source-present estimands, interference boundaries, H1–H4 falsification rules and the D1–D10 dependency register. These are proposed theory/design inputs, not a Protocol Lock or experiment authorization. Stage 0.5 remains CLOSED_WITH_LIMITATIONS with scientific Gate blocked; Stage 0.6 is PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS; Protocol Lock is BLOCKED; Stage I is READY_ENGINEERING_ONLY; Stage 1.1 is NOT_AUTHORIZED.
 

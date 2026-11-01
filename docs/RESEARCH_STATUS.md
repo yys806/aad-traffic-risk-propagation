@@ -1,4 +1,10 @@
-## Current — P1 Task1 theory and causal model (2026-11-01)
+## Current — P1 Task2 decision synchronization and causal refinement (2026-11-01)
+
+Researcher direction is now Agreed for D1–D10: SUMO priority with model-internal claims; source-present two-arm regional-risk ITT now and final four-cell design; Formal P2 plus a separate safe-perturbation mechanism route; fixed cohort/region/window and regional Formal rho/P2; read-only SUMO Observer; population-level temporal precedence; single-hop direct communication with physical interference retained; automatic controller; Pilot before SESOI/power/sample-size planning; and evidence-based claim narrowing. Operational parameters remain Awaiting Researcher Decision.
+
+P1 Task2 refined assignment versus actual state, true versus observed process, Adoption IV/reduced-form conditions, Action–Risk identification candidates and population temporal onset. Reports: docs/research/P1/P1_TASK2_RESEARCHER_DECISIONS_20261101.md and docs/research/P1/P1_TASK2_FINAL_REPORT.md. No experiment, Pilot, production code/configuration change, locked holdout read or Push occurred. Stage and Gate states remain unchanged.
+
+## Historical — P1 Task1 theory and causal model (2026-11-01)
 
 P0 Task1–3 is closed as COMPLETED_WITH_LIMITATIONS; D1–D10 remain Proposed / Awaiting Researcher Decision. P1 Task1 now provides the dual physical/information networks, a time-indexed joint dynamic model, lifecycle semantics for generation→transmission→delivery→verification→adoption→command→action, an acyclic DAG, the four-cell interaction and source-present ITT estimands, interference and mediation limits, and falsifiable H1–H4. Formal rho/P2 semantics and existing engineering interfaces were reused without modification. The theory is a design framework, not a scientific result, Protocol Lock or experiment authorization. Stage 0.5=CLOSED_WITH_LIMITATIONS with scientific Gate blocked; Stage 0.6=PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS; Protocol Lock=BLOCKED; Stage I=READY_ENGINEERING_ONLY; Stage 1.1=NOT_AUTHORIZED.
 

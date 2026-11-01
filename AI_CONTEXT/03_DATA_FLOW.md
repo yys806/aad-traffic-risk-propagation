@@ -1,3 +1,7 @@
+## Current — P1 Task2 true/observed data flow (2026-11-01)
+
+The current model has parallel assignment and execution paths: Z_S → actual source state S* and Z_C → actual single-hop strategy C* → message lifecycle → automatic-controller adoption/decision/command/action. The physical path is S* → physical interaction → state propagation → target state/risk. Observer, message logs, controller logs, trajectory records and risk tables are observations of the true process with clock, identity, quality and missingness fields; they do not feed back into the true process. SUMO Observer is model-internal read-only evidence, not a real roadside witness. No production execution flow changed.
+
 ## Current — P1 conceptual causal data flow (2026-11-01)
 
 The P1 conceptual flow is Source Event → Message Generation → Transmission → Delivery → Verification → Controller Adoption → Controller Decision → Control Command → Actual Action → Physical Interaction/Target State → Regional Risk, alongside Source Event → Physical Interaction → Physical State Propagation → Physical Arrival → Target Region State. Every event retains event/message/run/vehicle identity, source and quality fields, and a time or interval; missing physical arrival remains Unknown. This is a theory contract for later P2–P5 evidence work and does not alter the existing SUMO/Task9–19 execution flows.

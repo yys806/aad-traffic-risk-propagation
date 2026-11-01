@@ -1,3 +1,7 @@
+## Current — P1 Task2 decision synchronization and causal refinement (2026-11-01)
+
+Added the Agreed D1–D10 synchronization record and P1 Task2 final report. Refined the theory/DAG/estimands/hypotheses to separate assignments from actual states, true process from observations, SUMO Observer from real roadside sensing, Adoption rate/reduced-form/IV, Action–Risk identification candidates and population temporal precedence. Updated P1 dependency registration, project indexes, registry and AI_CONTEXT. No experiments, Pilot, production code/configuration changes, locked holdout reads, Protocol Lock or Push.
+
 ## Current — P1 Task1 theory and causal model (2026-11-01)
 
 Added P0 closeout/P1 entry note and P1 theory, DAG, estimand, hypothesis/falsification, decision-dependency and final-report documents. Updated project index, research status and registry with the P1 package. Synchronized research context, architecture, conceptual data flow, module map, experiment boundary, decisions and changelog. Formal code/configuration and experiment outputs were not modified; no experiment, locked holdout read, Protocol Lock, Stage 1.1 or Push occurred.

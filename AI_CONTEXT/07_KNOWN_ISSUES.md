@@ -1,3 +1,12 @@
+## Current — P1 Task2 causal-model limitations (2026-11-01)
+
+- formal_design.py currently validates configured source_present/channel_enabled cells and lifecycle flags; it does not yet provide a production contract that joins Z_S/Z_C, actual S*/C* and observation records.
+- SUMO Observer is read-only model evidence, not a real roadside witness; physical-arrival claims remain model-internal until P2 closes the witness/independence basis.
+- Adoption logs do not establish IV exclusion, relevance, monotonicity or no-interference conditions. H2 may remain descriptive or reduced-form.
+- Action–Risk mediation remains conditional on an action intervention/IV/longitudinal or interventional mediation design; ordinary regression is insufficient.
+- T_R is not first action change or first observed risk decrease. Population early-window timing is the current claim level; individual cross-world precedence remains unidentified.
+- Operational cohort/region/window, phi, thresholds, persistence, clock error, missingness, SESOI and sample size remain Awaiting Researcher Decision.
+
 ## Current — P0 Task 3 feasibility blockers (2026-11-01)
 
 Closed-track/HIL resource access, controller log permissions, full-region roadside coverage, clocks, safety/ethics and sufficient independent events are Unknown. A safe controlled disturbance may not qualify as Formal P2; do not change the threshold or claim source support. Independent sensors observe the treated physical path too; only randomized no-message events identify the target population's ordinary arrival distribution, not each treated event's Tphys(0). Unknown cross-run interference can invalidate even whole-network policy inference. Event variance, SESOI, arrival precision and final sample size remain Unknown. Human acknowledgment/action is not observed psychological adoption; complete logs do not prove causal mediation. Task20's risk_observation ordering is not risk-effect onset. See `docs/research/P0/P0_TASK3_FINAL_REPORT.md` §§5–10; no fixes to formal code are authorized by this design.

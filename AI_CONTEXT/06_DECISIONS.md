@@ -1,4 +1,8 @@
-## Current — P1 Task1 decision dependencies (2026-11-01)
+## Current — P1 Task2 Agreed direction synchronization (2026-11-01)
+
+The researcher confirmed D1–D10 directions in AAD-P1-TASK2. Agreed directions: SUMO priority with model-internal claims; source-present two-arm ITT now and final four-cell design; Formal P2 A route plus separate B mechanism route; pre-fixed cohort/region/window and regional Formal rho/P2 outcome; read-only SUMO Observer and future independent roadside route; population-level temporal precedence; single-hop direct messaging with physical interference retained; automatic controller only; Pilot before SESOI/power/sample-size planning; evidence-based claim narrowing. Operational parameters remain Awaiting Researcher Decision. Formal definitions, Gate, Protocol Lock and Stage 1.1 are unchanged. Decision record: docs/research/P1/P1_TASK2_RESEARCHER_DECISIONS_20261101.md.
+
+## Historical — P1 Task1 decision dependencies (2026-11-01)
 
 P1 Task1 records D1–D10 from P0 Task3 in docs/research/P1/P1_TASK1_DECISION_DEPENDENCY_REGISTER.md. Every item remains Proposed / Awaiting Researcher Decision. P1 keeps multiple options through general symbols: platform/claim level, Source Event, target cohort/region/window, physical arrival rule, population versus individual temporal claim, randomization/interference, controller versus human subject, SESOI/sample size and failure-boundary route. No Codex recommendation is an Agreed Research Decision.
 
