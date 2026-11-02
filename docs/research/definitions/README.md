@@ -94,3 +94,8 @@ Task7当前有限域证据：[最终报告](../P2/P2_TASK7_FINAL_REPORT.md)。v0
 ## Task8 有限支持与验证决策（2026-11-02）
 
 Task8当前有限支持证据见[最终报告](../P2/P2_TASK8_FINAL_REPORT.md)。v0.4/27项不变，状态与源归属分开，V未执行，无参数/稳定区域/严格桥接认证。
+
+
+## Task7源时间历史回溯（2026-11-02，独立更正附录）
+
+[Task7源时间独立更正附录](../P2/P2_TASK7_SOURCE_TIMESTAMP_BACKFILL_REPORT.md)：仅修正历史时间overlay及W6派生证据；27定义/v0.4、a1b1、W1–W9、正式参数与阶段不变。

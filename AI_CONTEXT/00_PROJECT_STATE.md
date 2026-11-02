@@ -1,4 +1,14 @@
-## Current — P2 Task8 bounded support / V decision (2026-11-02)
+## Current — P2 Task7 source timestamp backfill (2026-11-02)
+
+研究者已授权全575完成轨迹源时间回溯，576计划逐条保留（1原失败Unknown、72 N0 Not Applicable、503实际干预签名成立）；288区间提前1.75s。原359/47/0不改，本次版本化派生overlay359/119/0；Task8的119已独立逐单位复现。W8/Qualified未知资格不升级，1728原标签、原audit/detector/参数、V与双η结论不改；新增SUMO/seed/V均0。
+
+旧Task8“是否回溯待研究者”是历史状态，已被本次明确授权及完成记录接续；原executor仅作为历史字节输入保留，未改旧运行或触发新实验。
+
+统一定义仍[27项v0.4](../docs/research/definitions/README.md)。Formal A=0，独立Qualified=0，F0/总体TR-TP Unknown；Stage0.5 CLOSED_WITH_LIMITATIONS；Stage0.6 PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS；Protocol Lock BLOCKED；StageI READY_ENGINEERING_ONLY；Stage1.1 NOT_AUTHORIZED。
+
+[独立更正报告](../docs/research/P2/P2_TASK7_SOURCE_TIMESTAMP_BACKFILL_REPORT.md)
+
+## Historical — P2 Task8 bounded support / V decision (2026-11-02)
 
 Task8 bounded recovery：268计划/267完成/1失败或未执行；仅源端调整、原域/a1b1不变。Low Micro、Medium Macro、High Macro2a与High局部非Cohort支持恢复；Low Cohort/Macro、Medium Cohort仍缺支持。三中心配置仅候选，J78（state63）固定配置V NOT_EXECUTED_TRUTH_SUPPORT_INSUFFICIENT，seeds0；W8/Qualified/真实最早物理桥接不足，两η情景Not established。
 

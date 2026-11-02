@@ -1,0 +1,56 @@
+{
+  "task_id": "AAD-P2-TASK7-SOURCE-TIMESTAMP-BACKFILL-20261102",
+  "version": "AAD-P2T7-SOURCE-TIMESTAMP-BACKFILL-20261102-v1",
+  "frozen_utc": "2026-11-02T15:12:44.319617+00:00",
+  "authorization": "Researcher Approved, all575 completed traces",
+  "source_rule": "Reuse Task8 physical_source_interval unchanged: command execution lower, first source-only observed deceleration signature upper; pre realized acceleration envelope and speed decline, tolerance1e-6.",
+  "source_inputs_only": [
+    "t",
+    "actual actuator v/a",
+    "actual execution command record"
+  ],
+  "source_statuses": [
+    "Established",
+    "Unknown",
+    "Not Applicable (N0)"
+  ],
+  "no_target_feedback": true,
+  "truth_unchanged": true,
+  "no_detector_calls": true,
+  "main_W6": "U_parent < L_child exactly; missing/overlap remain Unknown, reverse intervals distinguished",
+  "clock_each_s": [
+    0.0,
+    0.05,
+    0.2
+  ],
+  "clock_formula": "U_parent+e < L_child-e; main e=0",
+  "Observed_scope": "Exact original Task7 source_ok and fixed truth-positive and all frozen original terminal-path W6. Replace only first parent source interval; original target response segments unchanged.",
+  "all_hop_scope": "all s0-specified/s0-actuated completed runs, all original leader followers; first a1b1 response per entity through50s. Separate horizon46s historical reaction sensitivity reproduced for original rep0/23 rows.",
+  "qualification": "retain legacy Unknown for359 specified-source candidates and1 failure; never promote W8 or Qualified",
+  "planned_units": 576,
+  "completed_expected_from_manifest": 575,
+  "new_SUMO_runs": 0,
+  "new_seeds": 0,
+  "new_V_runs": 0,
+  "historical_counts_comparison_only": [
+    359,
+    47,
+    0
+  ],
+  "Task8_119_is_comparison_not_selection_target": true,
+  "git_sha": "c65c3d40c914de5c3e4424820b67f47b21c9fc20",
+  "dirty_status": "?? code/scripts/backfill_p2_task7_source_timestamps.py",
+  "python": "3.13.5 | packaged by Anaconda, Inc. | (main, Jun 12 2025, 16:37:03) [MSC v.1929 64 bit (AMD64)]",
+  "numpy": "2.3.2",
+  "platform": "Windows-11-10.0.26100-SP0",
+  "impact_scope": "isolated offline scripts/tests/reports/index/evidence only; no production, config, truth, detector, formal definitions or Gates changed",
+  "source_sha256": {
+    "code/scripts/p2_task8_support_experiment.py": "4f9276155cf8c0f81aaebb1e61c3b1a1f418b382fc42748efc1752687c640da0",
+    "code/scripts/analyze_p2_task8_support.py": "b5b8a7c77a1661ca85443a8ab87f11f879d167e416f134b62aa8ae7982087c63",
+    "code/scripts/p2_task7_measurement.py": "49b02548d132334504fd8c7c0f8b38f350aa65c9d09e638df3d22da119a4b18b",
+    "code/scripts/analyze_p2_task7_parameter_experiment.py": "abbe86a699eb10f0876ce00c3a1800c76c2b78df896fefa7fca7d1645f15832c",
+    "code/scripts/run_p2_task7_parameter_experiment.py": "c40ce3fc37a84ee0a754b344da57f463e4647506f5586736966c66c04b3e4222",
+    "code/scripts/finalize_p2_task7.py": "e8fd51d75223607963412995f21715e35698ce360dd406a112397b47bc188134",
+    "code/scripts/backfill_p2_task7_source_timestamps.py": "68f911605b46aca1fc1d19c91f36b16355b1d40478089aa37d5fa18148619b62"
+  }
+}

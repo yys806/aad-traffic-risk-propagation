@@ -1,3 +1,7 @@
+## P2 Task7 source timestamp backfill — 2026-11-02
+
+隔离离线工具：backfill_p2_task7_source_timestamps.py, verify_p2_task7_timestamp_backfill.py, finalize_p2_task7_timestamp_backfill.py。复用Task8 source-only签名与witness，独立标量源/响应/W6核验；无SUMO调用、truth重建或生产接口变化。
+
 ## P2 Task8 — 2026-11-02
 
 Task8隔离脚本：p2_task8_support_experiment.py, run_p2_task8_serial_continuation.py, analyze_p2_task8_support.py, verify_p2_task8_results.py, finalize_p2_task8.py；复用Task7原生executor/Edie/三层detector/exact planning，不改生产riskprop。

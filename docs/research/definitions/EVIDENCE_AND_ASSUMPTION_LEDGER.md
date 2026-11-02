@@ -145,3 +145,16 @@ E01–53保留历史；E46/47/49/50的方向层由下表覆盖，不把其具体
 | E70 | Unknown/Not established | Low Cohort/Macro、Medium Cohort、W8、稳定margin及真实最早物理桥接仍不足 |
 
 来源：[Task8最终报告](../P2/P2_TASK8_FINAL_REPORT.md)、对应便携manifest/统计/验证记录。Proposal不升级Agreed，27定义ID与正式阶段不改。
+
+
+## Task7源时间历史回溯（2026-11-02，独立更正附录）
+
+历史Task8/E68“Unknown回溯决定”保持当时记录，现由以下授权及运行事实接续，不改科学定义。
+
+| ID | 类型/状态 | 证据与限制 |
+|---|---|---|
+| E71 | Agreed | 研究者明确批准Task7全部575完成轨迹源时间历史回溯；保留原raw/truth/audit/报告 |
+| E72 | Verified工程/Fact派生证据 | 503实际干预签名成立、72 N0 NA、1失败Unknown；288区间提前1.75s；原359/47/0保留，更正overlay359/119/0；无新独立样本 |
+| E73 | Unknown保持 | W8与来源资格未建立，Qualified仍0；物理绝对时钟/模型误差、V及双η桥接不由历史时间修正获得证书 |
+
+来源：[独立更正报告](../P2/P2_TASK7_SOURCE_TIMESTAMP_BACKFILL_REPORT.md)、对应冻结manifest、逐跳W6及4170保护文件SHA/1728标签哈希独立验证。

@@ -1,0 +1,119 @@
+{
+  "task_id": "AAD-P2-TASK7-SOURCE-TIMESTAMP-BACKFILL-20261102",
+  "date": "2026-11-02",
+  "status": "PASS",
+  "impact_scope": {
+    "files": "three isolated offline scripts, one targeted test, independent report, factual context and indexes, portable evidence and exact-byte attributes",
+    "formal_scientific_logic_changed": false,
+    "core_interfaces_changed": false,
+    "original_Task7_outputs_reports_truth_detectors_unchanged": true
+  },
+  "targeted_tests": {
+    "status": "PASS",
+    "command": "python -m pytest code/tests/test_p2_task7_timestamp_backfill.py code/tests/test_p2_task8_support_experiment.py code/tests/test_p2_task7_parameter_experiment.py -q",
+    "passed": 29,
+    "elapsed_s": 2.28
+  },
+  "syntax": {
+    "status": "PASS",
+    "command": "python -m py_compile code/scripts/backfill_p2_task7_source_timestamps.py code/scripts/verify_p2_task7_timestamp_backfill.py code/scripts/finalize_p2_task7_timestamp_backfill.py code/tests/test_p2_task7_timestamp_backfill.py"
+  },
+  "independent_computational_verification": {
+    "status": "PASS",
+    "completed": 575,
+    "failed": 1,
+    "labels_hash_checked": 1728,
+    "independent_Potential": 359,
+    "independent_Observed": 119,
+    "Qualified_count": 0,
+    "independent_source_method": "scalar source-only scan, separate from Task8 vector implementation",
+    "independent_response_method": "scalar first sustained1s span; no target detector or truth regeneration",
+    "all_hop_clock_rows_independently_checked": 44811,
+    "historical_clock_rows_independently_checked": 6000,
+    "legacy_target_segments_unchanged": true,
+    "Task8_saved_diagnostic_per_unit_matches": true,
+    "integrity": {
+      "status": "PASS",
+      "protected_files": 4170,
+      "planned_units": 576,
+      "original_labels_hash_checked": 1728,
+      "all_Task7_output_files_unchanged": true
+    },
+    "protected_code_and_reports_unchanged": true,
+    "new_SUMO_runs": 0,
+    "new_seeds": 0,
+    "script_sha256": "383a99ced958d3ce921b98e6ce211a4ee7f720f244ccad6d7616586e50ae7518"
+  },
+  "docs_strict_git": {
+    "status": "PASS",
+    "command": "python code/scripts/validate_project_docs.py --strict-git",
+    "result": "PROJECT_DOCS_OK"
+  },
+  "project_evidence_export": {
+    "status": "PASS",
+    "command": "python code/scripts/export_project_evidence.py --repo-root .",
+    "result": "PORTABLE_EVIDENCE_EXPORTED results=92 files=1391"
+  },
+  "project_evidence_verify": {
+    "status": "PASS",
+    "command": "python code/scripts/export_project_evidence.py --repo-root . --verify",
+    "result": "PORTABLE_EVIDENCE_OK"
+  },
+  "scoped_git_checkout_and_staged_bytes": {
+    "status": "PASS",
+    "portable_sha_entries": 21,
+    "delivery_source_bindings": 7,
+    "staged_and_git_checkout_files": 29,
+    "checkout_directory": "code/outputs/calibration/p2_task7_timestamp_backfill_20261102_v1/audit/git_only_delivery_qhx5m2j4",
+    "formal_registry_keys_unchanged": true,
+    "historical_reports_dependencies_and_core_unchanged": true,
+    "scope": "task portable evidence and explicitly SHA-bound delivery sources; temporary Git-only checkout in isolated ignored output",
+    "seal_note": "verification_record and SHA256SUMS finalized after the recorded check; the same staged/checkout/hash procedure is run again before commit"
+  },
+  "context_consistency_check": {
+    "status": "PASS",
+    "registry_non_task_keys_identical": true,
+    "formal_scientific_definitions_unchanged": "v0.4 /27 Definition IDs",
+    "updated": [
+      "AI_CONTEXT/00_PROJECT_STATE.md",
+      "AI_CONTEXT/04_MODULE_MAP.md",
+      "AI_CONTEXT/05_EXPERIMENTS.md",
+      "AI_CONTEXT/06_DECISIONS.md",
+      "AI_CONTEXT/07_KNOWN_ISSUES.md",
+      "AI_CONTEXT/08_CHANGELOG.md",
+      "PROJECT_CONTEXT.md",
+      "docs/RESEARCH_STATUS.md",
+      "docs/PROJECT_INDEX.md",
+      "docs/PROJECT_REGISTRY.json",
+      "docs/RESULTS_INDEX.md",
+      "docs/CHANGELOG.md",
+      "definitions README navigation and factual evidence ledger"
+    ],
+    "historical_Task7_and_Task8_reports_dependencies_core_configs_Gate_unchanged": true
+  },
+  "new_SUMO_runs": 0,
+  "new_seeds": 0,
+  "new_V_runs": 0,
+  "unchanged_conclusions": [
+    "Qualified0 and W8 Unknown",
+    "Independent V not executed",
+    "eta1pct and eta5pct Not established",
+    "definitions v0.4 /27 IDs",
+    "all Stage/Gate/Protocol Lock states"
+  ],
+  "final_commit": "derive from Git HEAD after commit; no self-referential hash",
+  "verification_attempts": [
+    {
+      "check": "scoped_delivery_bytes_and_context",
+      "status": "FAILED_ENVIRONMENT_ENCODING",
+      "reason": "Windows default GBK decoding of UTF-8 project registry failed after byte checks; no scientific artifacts altered",
+      "resolution": "retry using explicit UTF-8/UTF-8-SIG; passed"
+    }
+  ],
+  "remaining_limitations": [
+    "original executor remains an unchanged historical input; future authorized runs need separate implementation correction",
+    "W8 and source qualification remain Unknown",
+    "missing response intervals remain Unknown",
+    "source signature interval is finite-model operational evidence, not an absolute physical/clock/model error certificate"
+  ]
+}
