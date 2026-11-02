@@ -1,4 +1,12 @@
-## Current — P2 Task5 measurement / temporal identification (2026-11-02)
+## Current — P2 Task6 final design closure (2026-11-02)
+
+Task6 DESIGN_COMPLETE_WITH_LIMITATIONS；[统一定义v0.4](research/definitions/README.md)保留27定义，D1–D7方向Agreed；SAC数值/具体算子/估计器/运行授权分层待决。
+
+[最终报告](research/P2/P2_TASK6_FINAL_REPORT.md)、[参数确定实验协议v1.0](research/P2/P2_TASK6_PARAMETER_DETERMINATION_EXPERIMENT_PROTOCOL.md)、[集中决策T6-R1–R6](research/P2/P2_TASK6_RESEARCHER_DECISIONS.md)。设计完整；启动项一次接受后直接Parameter Determination Experiment，不增设计任务。0新运行/0holdout；原V2/B和Task9/18/19不重跑、不升级证据。
+
+Formal A=0、独立Qualified=0、F0/总体TR-TP Unknown；Stage0.5 CLOSED_WITH_LIMITATIONS，Stage0.6 PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS，Protocol Lock BLOCKED，StageI READY_ENGINEERING_ONLY，Stage1.1 NOT_AUTHORIZED。
+
+## Historical — P2 Task5 measurement / temporal identification (2026-11-02)
 
 P2 Task5 COMPLETED_WITH_LIMITATIONS；[统一定义v0.3](research/definitions/README.md)，27定义，A–D继续Agreed、新算子/主对象/统计规则Proposal、数值Unknown。[最终报告](research/P2/P2_TASK5_FINAL_REPORT.md)、[测量识别方案](research/P2/P2_TASK5_MEASUREMENT_AND_IDENTIFICATION_PROPOSAL.md)、[文献审计](research/P2/P2_TASK5_LITERATURE_AND_METHOD_AUDIT.md)、[Zhang正式版](research/P2/P2_TASK5_ZHANG_PUBLISHED_VERSION_AUDIT.md)、[论文差异](research/P2/P2_TASK5_OVERLEAF_AUDIT.md)、[待决清单](research/P2/P2_TASK5_RESEARCHER_DECISIONS.md)。
 

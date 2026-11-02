@@ -1,4 +1,14 @@
-## Current — P2 Task5 measurement and identification operationalization (2026-11-02)
+## Current — P2 Task6 final calibration protocol (2026-11-02)
+
+统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)，当前v0.4、27定义；下方旧任务块保留历史。
+
+当前科研方向：Micro/Macro/Cohort分别报告，Edie型同域分lane主要候选，Qpre后随机ZC的资格ITT/F0不替四格交互；onset/确认/观察分开。先SAC、逐项、关键交互和独立验证选择稳定参数区域。有限scope，未观察Witness不等无物理影响，采用/动作/风险不合并。
+
+Formal A=0、独立Qualified=0、F0/总体TR-TP Unknown；Stage0.5 CLOSED_WITH_LIMITATIONS，Stage0.6 PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS，Protocol Lock BLOCKED，StageI READY_ENGINEERING_ONLY，Stage1.1 NOT_AUTHORIZED。
+
+[最终报告](../docs/research/P2/P2_TASK6_FINAL_REPORT.md) · [参数实验协议](../docs/research/P2/P2_TASK6_PARAMETER_DETERMINATION_EXPERIMENT_PROTOCOL.md) · [集中决策](../docs/research/P2/P2_TASK6_RESEARCHER_DECISIONS.md)
+
+## Historical — P2 Task5 measurement and identification operationalization (2026-11-02)
 
 统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节只作摘要导航；下方旧任务块为历史。
 

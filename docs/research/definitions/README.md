@@ -1,7 +1,7 @@
 # AAD 统一科研定义事实源
 
 状态：`Active / Proposal-with-limitations`
-当前版本：`AAD-SCI-DEF-20261102-P2T5-v0.3`
+当前版本：`AAD-SCI-DEF-20261102-P2T6-v0.4`
 更新日期：2026-11-02
 
 `docs/research/definitions/` 是 AAD 当前科研定义、符号、参数、假设和证据状态的唯一统一入口。它承载当前定义，不替代源码、配置、实验产物、Overleaf 正文或研究者决策；这些事实源分别负责实现事实、运行事实和论文表述。其他 Task 报告可以保留历史记录，但不能另立一个与本目录冲突的最新定义版本。
@@ -31,7 +31,11 @@
 
 ## 当前入口
 
-- Task5当前[完整报告](../P2/P2_TASK5_FINAL_REPORT.md)、[操作化方案](../P2/P2_TASK5_MEASUREMENT_AND_IDENTIFICATION_PROPOSAL.md)、[集中决策](../P2/P2_TASK5_RESEARCHER_DECISIONS.md)。
+- Task6 当前：[最终报告](../P2/P2_TASK6_FINAL_REPORT.md)、[参数确定实验协议 v1.0](../P2/P2_TASK6_PARAMETER_DETERMINATION_EXPERIMENT_PROTOCOL.md)、[集中科研决策](../P2/P2_TASK6_RESEARCHER_DECISIONS.md)。
+- D1–D7方向已Agreed，27条Definition ID保留；具体数值/算子/估计器与执行授权分层登记。科学下限、参数十三字段和依赖矩阵见参数登记Task6；下一项直接为Parameter Determination Experiment，不增设计任务。
+
+
+- Task5历史[完整报告](../P2/P2_TASK5_FINAL_REPORT.md)、[操作化方案](../P2/P2_TASK5_MEASUREMENT_AND_IDENTIFICATION_PROPOSAL.md)、[集中决策](../P2/P2_TASK5_RESEARCHER_DECISIONS.md)。
 
 - 当前核心定义：[CORE_SCIENTIFIC_DEFINITIONS.md](CORE_SCIENTIFIC_DEFINITIONS.md)
 - 当前符号登记：[SYMBOL_REGISTER.md](SYMBOL_REGISTER.md)
@@ -73,3 +77,11 @@ Zhang正式18页已全文读取、关键页视觉复核并导入Q65YUJ89/9F39AWX
 | 版本 | 修订理由 / 原定义关系 | 状态 |
 |---|---|---|
 | AAD-SCI-DEF-20261102-P2T4-v0.2 → v0.3 | 保留26定义，新增时间族；旧TP单一φ限定cohort语义；macro时间与raw物理起点分开；补可执行统计充分条件 | 新方案Proposal，不是协议锁，不追溯改Task3/4 |
+
+## v0.4 — Task6 当前变更与历史映射（2026-11-02）
+
+从v0.3升级，保留全部27定义及旧版本：D1正式接受三层分别报告，D2接受Edie型主要候选基本操作，D3接受两臂/四格不同定位，D4接受onset/confirmation/observation区分，D5先SAC再单因素/交互/独立V，D6接受P1保守总体方向，D7本次不改论文。具体算子/数值/估计器未整体Agreed；E46/47/49等历史Proposal的方向层由E54–60覆盖。
+
+CORE当前细则Q–T、参数SAC/十三字段/11依赖、符号和证据账本同版。原v0.3的2J风险常数仅单侧上带；本版双侧全网格带明确4J。源码已证rho贡献/均值[0,1]、定长积分[0,L_Y]，不是改变正式定义；最终Y聚合仍待接受。Detector到真实物理onset桥接必须有独立同域漏检/延迟证书。
+
+本次0新交通/校准运行、0holdout读取；Formal A0、独立Qualified0、F0/总体TR-TP Unknown，Gate/Lock/Stage1.1不变。Task6只复用Task5论文快照，未重读在线最新版、未改正文；Edie原文仍缺，未虚称精读。协议设计完成，但执行需集中科学启动项与下一实验授权，不要求新前置任务。

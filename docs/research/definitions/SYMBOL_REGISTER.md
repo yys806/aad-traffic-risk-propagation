@@ -1,6 +1,6 @@
 # AAD Symbol Register
 
-版本：AAD-SCI-DEF-20261102-P2T5-v0.3。以下是当前入口及映射；新记号是Proposal。论文采用情况以OVERLEAF_ALIGNMENT.md为准。
+版本：AAD-SCI-DEF-20261102-P2T6-v0.4。以下是当前入口及映射；新记号是Proposal。论文采用情况以OVERLEAF_ALIGNMENT.md为准。
 
 | 符号 | 中文含义 | English | 单位 | 首次定义位置 | 当前定义来源 | 状态 |
 |---|---|---|---|---|---|---|
@@ -68,3 +68,22 @@ Qpre/F0^Q的设计方向现为Task4 C Agreed；v0.1表中Proposal只保留给符
 | \(H_0\) | 跨源分配前共同背景 / pre-source background | mixed | CORE M；区别已受源影响的pre-ZC背景H | Proposal辅助记号，不改P1既有H含义 |
 
 上述上标/下标不可省略导致重名。t_E推荐onset interval仍非Agreed；物理baseline与F0不同；g净间距、pair闭合速度及Formal rho/P2全部保留既有语义。
+
+## Task6当前增量与状态覆盖（v0.4）
+
+D1/D2/D4接受分层与基本测量/时间区分的方向，覆盖历史表对应方向Proposal；符号/具体算子及数值仍按下表和参数登记，未修改论文。
+
+| 符号/记号 | 定义 / 单位 | 来源与必要性 | 当前状态/旧映射 |
+|---|---|---|---|
+| ℓ∈{micro,macro,cohort}、T_P^ℓ、F0,ℓ^Q | 各层时间/同资格无消息CDF，s/probability | DEF-TIME-004；D1/D3，避免一个Physical Arrival | Agreed分层方向，层内参数Proposal；原φ只映射cohort |
+| D,V,A；q,k,u | 实际域内车距/车时/面积及同域比值 | DEF-PHY-009/CORE Q；单位veh·m/veh·s/m·s和veh/s,veh/m,m/s | D2接受主要候选及公式；V=0的u undefined |
+| SAC、p_F*、s*、m*、u*、f_A* | 科学验收表及误报/灵敏度/漏检/Unknown/归属标准，probability | 参数SAC/协议§9，分别给分母 | Proposal，非科学经验值；m*=1−s*仅同分母含Unknown时 |
+| a*、b*、e_truth | 独立物理真值最小信号、持续、误差，层内单位/s/同量纲 | 独立标签范围，不用θ/h自产truth | Unknown / Awaiting；不是Formal TTC或θ_P |
+| d*、m_delay | 可用检出延迟预算s、真到达无及时有效检出的概率界 | 真实CDF桥接F_true(t)≤F_det,available(t+d*)+m_delay | 数值Unknown；证书须独立同域，不跨A/B迁移 |
+| H_cal、L_Y、B_pre、r_u、Δ | 校准监测域s、风险固定积分窗长s、可用pre跨度s、独立速度误差m/s、名义步长s | 候选/范围/资源记号，不能与H*混用 | Proposal；L_Y在最终窗口接受后给积分范围 |
+| β_V、β_c、J_V、β_pow | 独立性能验证失败预算/单项预算/验收族规模/第二类错误，probability/count | 与正式α及其分项分开，β_c=β_V/J_V | Proposal；若用于α_measure证书须匹配失败预算 |
+| ε_stab、γ_int、D_i | 重要稳定差异/交互幅度、同run四角性能差分 | 需排除有意义不稳定，而非仅p不显著 | 数值Awaiting；D_i不是Edie D_A |
+| A_R,B_R、Y^L,Y^U | 风险范围/测量包络，risk单位 | 既有代码贡献[0,1]、积分[0,L_Y]；前后差须另推 | Verified算子界；最终聚合不自动定 |
+| h_R、Δ_R、J_R | 风险持续跨度s、网格步长s、同时检验族count | 与物理h_P、q_P分开；协议§12–13 | 数值Awaiting；全网格只保证预定离散支持 |
+
+所有相同字母依上下标/上下文区分：D_i交互、D_A车距；u_A速度、u* Unknown容忍；β_V验证错误非回归斜率；a*真值幅度非a_iℓ集合指标；H_cal不替H*，risk-state onset不替population T_R。

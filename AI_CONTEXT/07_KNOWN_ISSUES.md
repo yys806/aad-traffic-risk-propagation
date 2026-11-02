@@ -1,4 +1,14 @@
-## Current — P2 Task5 measurement and identification operationalization (2026-11-02)
+## Current — P2 Task6 final calibration protocol (2026-11-02)
+
+统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)，当前v0.4、27定义；下方旧任务块保留历史。
+
+仍缺独立交通目标阳性/onset/完整Qualified、同资格无消息分布、采样/漏检/clock证书及四格共同支持。所有traffic参数数值Unknown；严格FPR与联合验收需真实独立n，零误报最少n不是power。Unknown比例可能令到达上界必然≥η；B无阳性不能校灵敏度/延迟。源码已证rho贡献/均值[0,1]与定长积分[0,L_Y]，最终聚合仍待定。当前Overleaf仅复用Task5有时标快照，在线最新版未在Task6重读；Edie原文仍缺。
+
+Formal A=0、独立Qualified=0、F0/总体TR-TP Unknown；Stage0.5 CLOSED_WITH_LIMITATIONS，Stage0.6 PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS，Protocol Lock BLOCKED，StageI READY_ENGINEERING_ONLY，Stage1.1 NOT_AUTHORIZED。
+
+[最终报告](../docs/research/P2/P2_TASK6_FINAL_REPORT.md) · [参数实验协议](../docs/research/P2/P2_TASK6_PARAMETER_DETERMINATION_EXPERIMENT_PROTOCOL.md) · [集中决策](../docs/research/P2/P2_TASK6_RESEARCHER_DECISIONS.md)
+
+## Historical — P2 Task5 measurement and identification operationalization (2026-11-02)
 
 统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节只作摘要导航；下方旧任务块为历史。
 

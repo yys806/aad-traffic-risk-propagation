@@ -519,12 +519,17 @@
   "docs/research/P2/P2_TASK5_STATISTICAL_METHOD_NOTES.md",
   "docs/research/P2/P2_TASK5_ZHANG_PUBLISHED_VERSION_AUDIT.md",
   "doc/literature-notes/P2_TASK5_SOURCE_AUDIT_20261102.json",
-  "doc/literature-notes/AAD_ZOTERO_INDEX_20261102_TASK5.csv"
+  "doc/literature-notes/AAD_ZOTERO_INDEX_20261102_TASK5.csv",
+  "docs/research/P2/P2_TASK6_FINAL_REPORT.md",
+  "docs/research/P2/P2_TASK6_PARAMETER_DETERMINATION_EXPERIMENT_PROTOCOL.md",
+  "docs/research/P2/P2_TASK6_RESEARCHER_DECISIONS.md",
+  "docs/research/P2/task6_support/calculate_design_evidence.py",
+  "evidence/research/P2_TASK6_20261102/design_evidence.json"
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
   "active_task": "AAD-S0.5-TASK20 completed Stage 0 closure, Stage 0.6 Pre-Lock readiness and Stage I engineering preparation",
-  "active_research_task": "P2-TASK5 completed physical measurement and population temporal-identification operational proposals with limitations",
+  "active_research_task": "P2-TASK6 final design complete with limitations; parameter experiment protocol ready conditional on consolidated scientific choices and next-experiment authorization",
   "p1_task1_status": "COMPLETED_WITH_LIMITATIONS",
   "p1_task1_report": "docs/research/P1/P1_TASK1_FINAL_REPORT.md",
   "p1_task2_status": "COMPLETED_WITH_LIMITATIONS",
@@ -536,7 +541,7 @@
   "p2_task2_specification": "docs/research/P2/P2_TASK2_PHYSICAL_ARRIVAL_AND_NO_MESSAGE_REFERENCE_SPEC.md",
   "p2_task2_researcher_decisions": "docs/research/P2/P2_TASK2_RESEARCHER_DECISIONS.md",
   "p2_task2_literature_audit": "docs/research/P2/P2_TASK2_LITERATURE_AND_METHOD_AUDIT.md",
-  "why_now": "Task5 closes published-Zhang access gap and specifies independent layer endpoints, same-support eligible ITT/F0, censor/clock bounds and joint statistical workflow; no new experiments or Gate change.",
+  "why_now": "Task6 synchronizes agreed D1-D7, completes SAC/parameter dependencies/calibration matrix/sample-size and conservative inference; next work is parameter determination, no added design task or experiment in Task6.",
   "next_decision_owner": "researcher",
   "task20_status": "COMPLETED",
   "stage_0_5_final_disposition": "CLOSED_WITH_LIMITATIONS",
@@ -768,13 +773,19 @@
   "p2_task3_scientific_claim_eligible": false,
   "p2_task4_status": "COMPLETED_WITH_LIMITATIONS",
   "p2_task4_report": "docs/research/P2/P2_TASK4_FINAL_REPORT.md",
-  "canonical_scientific_definition_version": "AAD-SCI-DEF-20261102-P2T5-v0.3",
+  "canonical_scientific_definition_version": "AAD-SCI-DEF-20261102-P2T6-v0.4",
   "p2_task4_scientific_claim_eligible": false,
   "p2_task4_new_experiments": 0,
   "p2_task5_status": "COMPLETED_WITH_LIMITATIONS",
   "p2_task5_report": "docs/research/P2/P2_TASK5_FINAL_REPORT.md",
   "p2_task5_scientific_claim_eligible": false,
-  "p2_task5_new_experiments": 0
+  "p2_task5_new_experiments": 0,
+  "p2_task6_status": "DESIGN_COMPLETE_WITH_LIMITATIONS",
+  "p2_task6_report": "docs/research/P2/P2_TASK6_FINAL_REPORT.md",
+  "p2_task6_protocol": "docs/research/P2/P2_TASK6_PARAMETER_DETERMINATION_EXPERIMENT_PROTOCOL.md",
+  "p2_task6_execution_readiness": "CONDITIONAL_ON_RESEARCHER_SCIENTIFIC_CHOICES_AND_NEXT_EXPERIMENT_AUTHORIZATION",
+  "p2_task6_new_experiments": 0,
+  "p2_task6_scientific_claim_eligible": false
  },
  "experiments": [
   {
@@ -6479,6 +6490,42 @@
    "new_operational_rules": "Proposal/Awaiting Researcher Decision; Task4 Agreed A-D preserved",
    "production_code_changed": false,
    "next_research_task_started": false
+  },
+  "p2_task6": {
+   "status": "design_complete_with_limitations",
+   "date": "2026-11-02",
+   "report": "docs/research/P2/P2_TASK6_FINAL_REPORT.md",
+   "parameter_determination_protocol": "docs/research/P2/P2_TASK6_PARAMETER_DETERMINATION_EXPERIMENT_PROTOCOL.md",
+   "researcher_decisions": "docs/research/P2/P2_TASK6_RESEARCHER_DECISIONS.md",
+   "design_calculation_script": "docs/research/P2/task6_support/calculate_design_evidence.py",
+   "design_evidence": "evidence/research/P2_TASK6_20261102/design_evidence.json",
+   "definitions_root": "docs/research/definitions/README.md",
+   "definitions_version": "AAD-SCI-DEF-20261102-P2T6-v0.4",
+   "definitions_count": 27,
+   "agreed_directions": [
+    "D1",
+    "D2",
+    "D3",
+    "D4",
+    "D5",
+    "D6",
+    "D7"
+   ],
+   "operational_numbers": "Proposal / Unknown / Awaiting Researcher Decision; not automatically Agreed",
+   "new_experiments": 0,
+   "locked_holdout_reads": 0,
+   "formal_a_sources": 0,
+   "independent_qualified_witnesses": 0,
+   "f0_and_population_temporal_precedence": "Unknown",
+   "production_code_changed": false,
+   "formal_config_changed": false,
+   "overleaf_edited": false,
+   "stage_status_unchanged": true,
+   "scientific_claim_eligible": false,
+   "next_research_task": "P2 Parameter Determination Experiment",
+   "additional_design_task_required": false,
+   "execution_readiness": "conditional on T6-R1/R2/R3 calibration fields and R6 authorization/resources; formal R4/R5 before their own use",
+   "push_authorized": true
   }
  },
  "history": [

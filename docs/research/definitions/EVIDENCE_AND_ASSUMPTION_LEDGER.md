@@ -1,6 +1,6 @@
 # AAD Evidence and Assumption Ledger
 
-版本AAD-SCI-DEF-20261102-P2T5-v0.3。类型严格区分Fact、Inference、Hypothesis、Proposal、Agreed、Unknown；证据资格不由任务状态自动提升。L编号见Task3文献审计；H编号为历史复用矩阵；V为本轮测量校准，不是正式因果证据。
+版本AAD-SCI-DEF-20261102-P2T6-v0.4。类型严格区分Fact、Inference、Hypothesis、Proposal、Agreed、Unknown；证据资格不由任务状态自动提升。L编号见Task3文献审计；H编号为历史复用矩阵；V为本轮测量校准，不是正式因果证据。
 
 | ID | 判断 / 关联定义 | 类型 | 可追溯来源 | 适用范围 / 局限 | 状态 |
 |---|---|---|---|---|---|
@@ -98,3 +98,23 @@ E38的“正式全文未取得”保留为Task4历史事实，本轮由E44覆盖
 | E53 | 新增前本地全库281 top-level仅检出Q65YUJ89 parent，SSRN为其CLA3GKSX附件 | Fact | local Zotero API exact DOI/title+全部top-level回读；Task5安全来源清单 | 不推广到其他未连接库；不虚构独立parent key，不移动/删除旧附件 | Metadata hierarchy limitation |
 
 没有新Agreed科研量，没有新增实验。创新性仍限于待验证的联合识别贡献；Zhang正式版进一步排除了将事件图/变化点/波前重建本身视为新颖性证据的可能。
+
+## Task6 当前决定与证据（v0.4）
+
+E01–53保留历史；E46/47/49/50的方向层由下表覆盖，不把其具体算法/数值变Agreed。
+
+| ID | 判断/影响定义 | 类型 | 来源与证据 | 状态/边界 |
+|---|---|---|---|---|
+| E54 | D1 Micro/Macro/Cohort分别报告，W1–W9三级证据、固定N，不合成OR/AND | Agreed方向 | 研究者Task6 D1；CORE Q / TIME-004 | 覆盖E46方向；具体算子/参数仍Proposal |
+| E55 | D2同lane Edie型D/V/A及基本比值为主要候选，部分裁切/V=0 undefined | Agreed候选 | Task6 D2；Hall既有测量依据；CORE Q | 无AAD Macro参数验证，Edie原文仍未得 |
+| E56 | D3资格两臂与四格交互不同，不外推/补零/seed补齐 | Agreed识别边界 / Inference | Task6 D3、P1、F–R Task5原文；协议§11 | 不改矩阵，不接受新增principal-stratum假设 |
+| E57 | D4 onset/confirmation/observation/完整消息链及clock分开 | Agreed记录方向 | Task6 D4、CORE R；既有确认规则 | t_E最终映射及误差数值仍Awaiting，Formal P2不改 |
+| E58 | D5先SAC→逐项→关键交互→独立V→稳定区域 | Agreed原则 | Task6 D5；参数SAC/依赖矩阵；协议§5–10 | 数值损失/范围Proposal；V1不恢复，V2非交通经验 |
+| E59 | D6 P1风险ITT同时带/分层F0界及联合错误 | Agreed方向 / Proposal估计器 | Task6§四、P1§7、HF；CORE T | iid/SRS/设计条件需实际证据；未知保留 |
+| E60 | D7 Task6不修改论文正文 | Agreed任务边界 | Task6 D7；OVERLEAF_ALIGNMENT当前增量 | 只复用Task5快照，在线当前版未重读 |
+| E61 | 正式rho贡献/均值[0,1]，定长积分[0,L_Y]有源码依据 | Fact / 推界Inference | code/src/riskprop/formal_risk_measurement.py：rho_from_ttc/contribution_bounds/integrate_fixed_window；设计清单SHA | 覆盖E50“范围全未知”的宽泛表述；最终Y聚合/前后变换仍待定，不截断DRAC |
+| E62 | V2/B/T18/T19原始表计数重核；B无cohort阳性标签 | Fact | Task6 design_evidence.json，显式白名单及部分原SHA清单复核 | 不重跑/不新增实验；共享seed/源输入非iid，T9/18/19不重复计n |
+| E63 | CP最有利n、精确验收power与Unknown可行性可复算 | Mathematical derivation / Proposal规划值 | Task6 calculate_design_evidence.py、NIST e-Handbook §7.2.4.1、HF | 独立二项/设计条件，不给虚假正式n；全零n非power |
+| E64 | Detector-CDF到潜在真物理需独立同域漏检/延迟桥接 | Inference / Proposal保证 | CORE T、Task6协议§12，事件集合与迟检概率包含关系 | 无证书真实早窗Unknown；B灵敏度不无证迁至A/现实 |
+
+仍为Hypothesis：AAD核心风险因果效应及总体早窗；仍Unknown：F0、总体TR/TP、独立自然交通阳性/完整Qualified、参数交通经验范围/现实迁移。方向Agreed和设计交付均不改变这些状态。

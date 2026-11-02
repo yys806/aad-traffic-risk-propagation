@@ -1,6 +1,6 @@
 # AAD Core Scientific Definitions
 
-版本：AAD-SCI-DEF-20261102-P2T5-v0.3（研究者确认A–D；操作细节仍分层登记）。统一入口：README.md。
+版本：AAD-SCI-DEF-20261102-P2T6-v0.4（D1–D7方向Agreed；当前修订见文末v0.4，历史保留）。统一入口：README.md。
 
 每项列出13个必需字段。Fact指直接可核验事实，Agreed只指研究者明确接受的方向；本次新操作规则和参数没有自动获批。历史P0/P1/P2报告保留；本文件不反向改写它们。证据ID见本目录账本与P2_TASK3_LITERATURE_AND_METHOD_AUDIT.md。
 
@@ -1029,3 +1029,56 @@ U_R(t)=\overline Y_1^{\,U}(t)-\overline Y_0^{\,L}(t)+e_1+e_0.
 **当前状态：** Proposal / Awaiting Researcher Decision；双层方向Agreed并不冻结此时间族。
 
 **与现有定义关系：** 限定DEF-TIME-001旧单一φ写法；补DEF-PHY-009/010，不改Formal P2、rho或论文符号。
+
+## v0.4 当前约束 — Task6 D1–D7（2026-11-02）
+
+本节是当前修订，覆盖v0.1–v0.3同事项的Awaiting/Proposal，历史保留。研究者Task6明确接受D1分层报告、D2 Edie-type主要候选、D3两臂/四格不同定位、D4 onset与confirmation并存、D5科学下限→逐项→交互→独立验证、D6 P1保守总体统计、D7本次不改论文。方向不等数值/估计器/实验授权。27条Definition ID不增删。
+
+| 影响定义 | 当前修订与理由 | Agreed / 未定边界 |
+|---|---|---|
+| DEF-PHY-004/008–010、TIME-004 | 三层分别报告；旧“双层证据记录”名称留历史，当前记录包含Cohort补充状态 | 分层与W1–W9/三级证据Agreed；层内算子/质量数值Proposal，不机械OR/AND |
+| DEF-PHY-009 / 细则K | 同向分lane Edie型主要候选及D/V/A基本公式 | D2 Agreed候选；region/window/阈值/采样验证未冻结 |
+| DEF-POP-001 / REF / I/M | Qpre子总体ITT/F0与四格分开 | D3识别边界Agreed；共同opportunity/非Q政策/额外识别假设未接受 |
+| SRC/TIME/CENS/CLOCK | onset/首次观察/确认/可用/生命周期分开 | D4 Agreed区分；t_E映射/clock/延迟数值未定，Formal P2不改 |
+| 参数与统计细则 | 科学标准和算法参数分开，分阶段联合检查 | D5/D6原则Agreed；SAC数值/估计器/预算Proposal |
+| Overleaf alignment | 复用Task5有时标快照，记录未来修订 | D7不改正文Agreed；Task6未重读在线最新版 |
+
+### Q. 当前物理操作化与三层冲突
+
+Micro沿真实实体leader/follower逐跳审W1–W9；源变化、目标响应区间、身份/关系覆盖、gap/closing质量、W6严格区间顺序、竞争解释与同响应段连接均保留。拓扑/邻近/相似变化点不足Qualified；Qualified不自动为因果证明。没有合格链但覆盖不足，潜在物理到达Unknown，不是阴性。
+
+Macro沿细则K：R_l=[x_a,x_b]、过去窗(t_j−w_M,t_j]；逐轨迹/实际lane裁切域内部分片段，D=Σ车距、V=Σ车时、A=(x_b−x_a)w_M，q=D/A、k=V/A、u=D/V。D/V/A单位veh·m/veh·s/m·s，q/k/u为veh/s、veh/m、m/s。停止车辆V>0且D=0可得u=0；空域V=0则u undefined，不填0。换道分段/边界不双计，插值模型和长缺口/边界不确定记录；q=ku仅同域恒等式。
+
+完整普查为主；稀疏抽样只有正包含概率p_i已知且设计有效才考虑HT总量Σd_i/p_i、Σt_i/p_i，比值不是有限样本无偏。未知p只报observed traffic，不外推全域。记录空间/时间/lane/grid、车距/车时覆盖、采样机制。不同方向/异域/异窗不拼量；lane分别报，ΣD/ΣA等辅助lane归一量不能冒充总横断面流量。
+
+Cohort固定N/Region/Window及signed baseline-relative decline方向不变；full-N等车mean推荐、median/比例辅助，未自动接受具体算子。缺失/出区不动态补位，observed均值不等full-N，coverage不修复MNAR。
+
+Micro+/Macro−可能局部弱响应/稀释，Micro−/Macro+可能缺链/其他源/机制不同，Cohort−而其他层+可相容（Task3 B）。两阳性非因果证明，两阴性仅在验证能力/有限域未检出；Unknown不由别层填补。
+
+### R. 当前时间、资格与生命周期契约
+
+τ_Q/F0,ℓ^Q同资格/预定H权重/区域时间/版本，Qpre在ZC前且无提前通信，用实际概率和独立单位审计。按原assignment ITT，失败/缺失/确认前到达不删；不以未来delivery/validation/adoption/action/Witness纳入。Q(1)无源成员不可见，principal stratum定义非识别；τ_Q不代全有源ITT/四格，不补非Q0，不用seed补反事实，不改矩阵/新增假设。
+
+每字段记录native/reference时间、clock ID/单位、step/phase、允许集合、observation/availability、offset/drift误差依据及版本。至少分开planned perturbation、actual source onset、first positive observation、source confirmation、message eligibility、generation、sending、delivery、validation、adoption、actual action onset、regional risk-state onset、population risk-effect onset及各层physical onset/confirmation/observation。risk状态观测变化不是P1的T_R因果效应起点。
+
+各消息阶段保留success/failed/not-attempted/not-applicable/Unknown及原因、原assignment；缺日志不当false，sham单标。采用须有controller实际输入/版本证据，采用不自动证明动作改变或风险中介。计划不替实际onset，确认不反推精确onset，离线look-ahead计可用时间。
+
+exact/left/interval/right/Unknown允许集合遵细则N；长缺口后恢复/末端待确认/缺Qualified而覆盖不足不能右删失。Macro的窗口支持、算子crossing和raw物理起点分开，不减w_M伪修延迟。推荐t_E=source onset区间，但最终映射仍待T6-R1；两侧风险与物理时间均传clock/采样误差，误差抵消须证据。
+
+### S. 科学下限、独立标签与分阶段参数
+
+SAC、十三字段全参数、11类依赖的当前定义见PARAMETER_AND_CALIBRATION_REGISTER文末Task6；具体执行见Task6协议。δ不是速度θ，η不是c_P，α不是detector FPR，delay不是onset，算法参数不是科学下限。数值由研究者决定，不为TR<TP反调。
+
+Positive标签在detector前冻结，独立truth幅度a*、持续b*与误差，不用待调θ/h或同一change-point输出定标签。N0无源与N1有源未到达分别验；自然背景状态变化可为any-source positive/指定源归属negative，不当state误报。直接target sensor fixture不升级传播证据；planned运行和标签Unknown全保留。
+
+Agreed顺序：科学标准/可行域→固定其他参数逐项→依赖交互→独立V→稳定区域；旧联合扫描不得跳过逐项或当全积指令。V2网格/B无报警不推荐交通数值，只有独立V通过可Recommended-for-freeze，研究者接受才Agreed。
+
+### T. 风险范围、真实到达桥接与总体分类
+
+a/b集合给CDF识别界，Unknown留[0,1]；union不需跨time独立，但每个均值界须依实际独立/SRS/设计有效。未知簇/不均概率不可套iid。当前源码contribution_bounds∈[0,1]、定长integral∈[0,L_Y]、mean∈[0,1]为Verified实现事实；最终聚合/窗口/前后差按实际版本推界，无界DRAC不截断，不改风险定义。
+
+双侧风险族带e_z=(B_R−A_R)√[log(4J_R/α_R)/(2n_z)]；上下带分别mean(Y1^U)−mean(Y0^L)+e1+e0、mean(Y1^L)−mean(Y0^U)−e1−e0。旧O的2J仅支持单侧上带，不能当双侧。source/clock全部允许映射先包络。max-t/设计bootstrap效率方案需独立簇/矩/覆盖验证。
+
+Detector-defined时间CDF不等潜在真实F0；独立同域证书若给P(真到达但无d*内有效检出)≤m_delay及联合失败界，才可保守桥接F_true(t)≤F_det,available(t+d*)+m_delay，观察须至H*+d*；Unknown仍在b，漏检质量不漏计。条件性灵敏度非逐例无误差保证，不能从B无证迁至A/现实。无桥接则真实物理早窗Unknown。
+
+αR+αP+αclock+αmeasure≤α；确定性实证包络不机械耗概率，估计钟界/测量证书需联合失败预算，β_V=.05不能充α_measure=.005。各层在预定H*、SESOI/持续全网格风险带和同资格无消息真实到达上界下分别判Supported / Not established / Unknown，不创跨层标量或个体跨世界提前秒数。完整公式/分母/样本量在Task6协议§8–13。

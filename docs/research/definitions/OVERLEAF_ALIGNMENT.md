@@ -1,6 +1,6 @@
-# Overleaf Alignment — Current P2 Task5
+# Overleaf Alignment — Current P2 Task6
 
-版本：AAD-SCI-DEF-20261102-P2T5-v0.3；日期2026-11-02。Task5新取得同一AAD项目三文件快照，UTC 2026-11-02T10:07:46.887013+00:00；ZIP SHA256 7545186b7d040ea407432a7cdd8693846d24faf3d37457af7c6e5621265cf39b。三文件字节/SHA与下方Task4快照相同，故旧逐项位置继续有效，但Task5具体Proposal为本段增量，未在论文中采纳。
+版本：AAD-SCI-DEF-20261102-P2T6-v0.4；日期2026-11-02。Task5新取得同一AAD项目三文件快照，UTC 2026-11-02T10:07:46.887013+00:00；ZIP SHA256 7545186b7d040ea407432a7cdd8693846d24faf3d37457af7c6e5621265cf39b。三文件字节/SHA与下方Task4快照相同，故旧逐项位置继续有效，但Task5具体Proposal为本段增量，未在论文中采纳。
 
 [Task5完整差异表](../P2/P2_TASK5_OVERLEAF_AUDIT.md)给出文件字节、物理行号与审计范围。当前研究方向Agreed A–D不等于论文已修改；本任务无Overleaf写入。
 
@@ -124,3 +124,18 @@ Documented Intent：P1总体风险效应应先于普通物理到达。Actual Imp
 | main.tex early/prephysical主张，具体原句待重读 | 先前记录包含信息/物理响应和early risk比较；不伪引原句 | DEF-PHY-008/CORE细则F只测指定cohort阈值状态 | ASSUMPTION_CONFLICT / CLAIM_OVERSTATEMENT风险，非已证原句错误 | B中region内中间车辆先响应而cohort未报警；此T_P不能排除任意普通物理影响 | 后续核实原句、对齐risk/arrival支持域并明确限定claim；若保持强主张则补排除证据 | Awaiting Researcher Decision / Pending re-read |
 
 Documented Intent：在普通物理影响之前识别独立信息策略效应。Actual Implementation：新检测器只验证固定cohort指定阈值速度状态，B60run均无报警。Evidence：B scope_audit及E26–E29。Affected Files：CORE、参数/决策/结果、本审计及未来论文。Conflict：状态未触发不等于任意物理机制未进入区域。Status: Awaiting Researcher Decision。此登记不授权改论文或研究目标。
+
+## Task6 当前对照（v0.4；D7只登记、不改正文）
+
+Task6未重新连接/下载Overleaf，未读取新的在线正文；下述只复用Task5在2026-11-02T10:07:46.887013Z的三文件SHA/行号审计，不能宣称此后在线最新版仍相同。Task5全文读取/字节复核不由本任务重复冒称。main SHA 0d8951f34ea64db6b2d3d8489bc119d47166088a3c2ef04e0416cb5753e15225；其余SHA见Task5审计。
+
+| 章节/历史快照定位 | 当前统一定义/未来修改范围 | 影响 | 当前状态 |
+|---|---|---|---|
+| Methods：main673–680、871–950 | Qpre资格ITT与最终四格分别说明；处理后四运行完整性不作ITT筛选；共同opportunity/政策/positivity明确 | 总体与识别，不能只改符号 | Awaiting Researcher Decision / 后续授权修订 |
+| Methods：main323–367/物理传播、source/lifecycle | 三层分别，Edie裁切D/V/A、W1–W9、固定N；onset/confirmation/available与全部消息阶段及clock | 新测量定义/参数版本，未验证Proposal不能写已采用 | D1–D4方向Agreed；具体方法/数值Proposal |
+| Methods/主时间：main1033–1053、1134–1136 | 总体risk ITT同时带+同资格分层F0/允许集/联合预算为主；行为时差只描述 | 原主时间对象与当前方向冲突保留，不擅改 | D6方向Agreed；统计数值待定 |
+| Results | 只能写真正完成的数据/运行及独立n；A0、Qualified0、F0/总体TR-TP Unknown；Task3域不升级 | 不能将Task6设计或calibration性能写成核心科学结果 | 无本次新实验，不补虚构结果 |
+| Discussion/claims | 有限测量机制、漏检/时钟/迁移、Qpre总体/四格支持和个体反事实限制 | 不宣称排除任意普通物理影响或个体提前秒数 | 接受限定方向，不证明假设 |
+| supplementary/references | 将来仅补实际采用的协议、标签、验收、failure和对应方法引用 | 不把候选全部写成论文事实，不误引Edie为已精读 | 本次零正文/bib修改 |
+
+Documented Intent：P1总体早窗与匹配no-message参考。Actual Implementation：历史论文快照使用处理后完整单元和within-treated行为主时间；现有实现/实验尚无Formal A和F0。Evidence：Task5逐行审计、CORE当前D1–D7、Task3白名单、源码有界贡献。Affected Files：未来Overleaf main/supplementary/references及本对照。Conflict：纳入总体、主时间对象及有限物理范围尚未接线。Status: Awaiting Researcher Decision。相关正文逻辑修改停止，仅按授权完成本任务设计；不修改main.tex、supplementary.tex、references.bib。

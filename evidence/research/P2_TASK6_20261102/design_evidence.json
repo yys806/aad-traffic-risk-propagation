@@ -1,0 +1,914 @@
+{
+  "schema_version": "aad.p2.task6.design.v1",
+  "date": "2026-11-02",
+  "status": "DESIGN_COMPLETE_CONDITIONAL_EXECUTION_NOT_AUTHORIZED",
+  "scientific_status": "Formal A=0; independent Qualified=0; F0 and population TR/TP Unknown",
+  "new_simulation_or_calibration_runs": 0,
+  "locked_holdout_reads": 0,
+  "audit_base_git_sha": "084f0ec22ffe41c52d5a97400ede90ad528ebb6a",
+  "script_version_sha256": "630c0332e5e93de02565f94edadb2e133edea0b9d6499ec3592e68340e274ade",
+  "input_hashes": [
+    {
+      "path": "code/outputs/calibration/p2_task3_20261102_v2/calibration_runs.csv",
+      "bytes": 6108245,
+      "sha256": "c998e0cd525bb2e4da38bc7e828dbfe2d0c4ada3f0518d23d3f3ca1c64c5d21c"
+    },
+    {
+      "path": "code/outputs/calibration/p2_task3_20261102_v2/calibration_summary.csv",
+      "bytes": 493005,
+      "sha256": "156d3f1cd79e7cda4a5db2d964ac1606bbc8db02feee3b62d2116c4c6396d695"
+    },
+    {
+      "path": "code/outputs/calibration/p2_task3_20261102_v2/calibration_config.json",
+      "bytes": 13145,
+      "sha256": "7ce014c4d866222465517c6868cd393eacbe471188c0a3a43d32910c821d9709"
+    },
+    {
+      "path": "code/outputs/calibration/p2_task3_20261102_v2/provenance.json",
+      "bytes": 1807,
+      "sha256": "eb1a191e03919f9a6f0a45c9a7cc9ae46d7e71a26d0f73b186c74ba52bb8aef8"
+    },
+    {
+      "path": "code/outputs/calibration/p2_task3_20261102_v2/SHA256SUMS",
+      "bytes": 792,
+      "sha256": "4a6c48d5f02be8f110be3ea80b6ba286ecefb2e603c0bd9ad5cb61775dda8683"
+    },
+    {
+      "path": "code/outputs/calibration/p2_task3_sumo_b_20261102/detector_results.csv",
+      "bytes": 332340,
+      "sha256": "7c9f4552212132d03ce683e1e8e9338c9795b433f7710c431b2892bbf476c89f"
+    },
+    {
+      "path": "code/outputs/calibration/p2_task3_sumo_b_20261102/run_audits.csv",
+      "bytes": 6139,
+      "sha256": "186f9359e766f9b820b57d918e5f9c814846b4c8455a3e284c9a00b1e0d62fd2"
+    },
+    {
+      "path": "code/outputs/calibration/p2_task3_sumo_b_20261102/measurement_audit.json",
+      "bytes": 34065,
+      "sha256": "a4602d774ff31be4545ad799ff67d4635be613d0150c36c19f8bc52b1df7ed71"
+    },
+    {
+      "path": "code/outputs/calibration/p2_task3_sumo_b_20261102/provenance.json",
+      "bytes": 3250,
+      "sha256": "380f4ad687856071553373aa88887ff4174bd2bc6365a837febccaba6c9a3b42"
+    },
+    {
+      "path": "code/outputs/calibration/p2_task3_sumo_b_20261102/SHA256SUMS",
+      "bytes": 59654,
+      "sha256": "b4fedfee00a510d4c2de60bdb0d5545a4fbbd953d95781d4fc31d555a1369b3b"
+    },
+    {
+      "path": "code/outputs/formal/task18_20261101/primary_results.csv",
+      "bytes": 7113554,
+      "sha256": "b1e76ef6551d3c14f51d30d4d2c76a9e7ff389c2c56717ce113d33f0f8bafaa9"
+    },
+    {
+      "path": "code/outputs/formal/task18_20261101/supplementary_results.csv",
+      "bytes": 4744417,
+      "sha256": "082cdea745f99766d3ba33a2d33c4366c6beebcfda0505fd6c9d2243aec83745"
+    },
+    {
+      "path": "code/outputs/analysis/task19_20261101/analysis_dataset_run_level.csv",
+      "bytes": 149797,
+      "sha256": "35b36f3aec5a036a66dff51eaf0632bcff125d4fcc77d019e92b4da9a9a7978f"
+    },
+    {
+      "path": "code/outputs/analysis/task19_20261101/paired_all_sources.csv",
+      "bytes": 12976,
+      "sha256": "1ff92fe49e30f00512c5545406a54bf6668bc5318dd6976816a7d6094801a5a8"
+    },
+    {
+      "path": "code/src/riskprop/formal_risk_measurement.py",
+      "bytes": 15961,
+      "sha256": "4e15e67e35911fdd4d50d26f41784bde05a8cd9983edc42c572fa51b00686c58"
+    },
+    {
+      "path": "code/src/riskprop/formal_design.py",
+      "bytes": 21608,
+      "sha256": "026b343c222e8cf539aac6b099c19af1a7477332218594f89b877e48d80fa823"
+    },
+    {
+      "path": "docs/research/P1/ESTIMAND_SPECIFICATION.md",
+      "bytes": 14205,
+      "sha256": "5d8d5a21f2cca34c452c0b2b5bfecb8cb05269305cf09d0fadf5f775ca3699a8"
+    },
+    {
+      "path": "docs/research/P1/CAUSAL_DAG.md",
+      "bytes": 9896,
+      "sha256": "d169032a4caf4b69be257745fa1218c5348f4928fb51ee6172205a8683b17a5d"
+    },
+    {
+      "path": "docs/research/P1/THEORY_AND_CAUSAL_MODEL.md",
+      "bytes": 12426,
+      "sha256": "686ce7e3c2431505347852e7636edd811bd50bfcfc2d688dc5a808821a9b2c6e"
+    },
+    {
+      "path": "docs/research/P2/P2_TASK3_CALIBRATION_RESULTS.md",
+      "bytes": 8405,
+      "sha256": "4f30f4542000ba8b7c81146705838ca8d00637be68bca46118344df6b44c3573"
+    },
+    {
+      "path": "docs/research/P2/P2_TASK4_LITERATURE_AND_NOVELTY_AUDIT.md",
+      "bytes": 17949,
+      "sha256": "5d45f6ae7697f12a9472b9d7a8e14d391e429b14c03057bf08c0fe469b0ec12c"
+    },
+    {
+      "path": "docs/research/P2/P2_TASK5_STATISTICAL_METHOD_NOTES.md",
+      "bytes": 5503,
+      "sha256": "5df8cf399c1fed38aeb56ef2fe96d47cbf82c8c3d67193c5dd92e716986bd4b3"
+    },
+    {
+      "path": "docs/research/P2/P2_TASK5_OVERLEAF_AUDIT.md",
+      "bytes": 6668,
+      "sha256": "8a2ad76e6435c85854ed1e295599a01a00e90dadb4cd6689013051855e2497b1"
+    },
+    {
+      "path": "doc/literature-notes/P2_TASK5_SOURCE_AUDIT_20261102.json",
+      "bytes": 11816,
+      "sha256": "b1f8881aafb7500633cc5731a8189bae515bb80101e1716e2e813a13a6290ba7"
+    },
+    {
+      "path": "docs/research/P2/P2_TASK6_FINAL_REPORT.md",
+      "bytes": 18839,
+      "sha256": "820e410caf7f124f52ed2fcc15b0434399664ac96a112c6b2d2ffc3ae0cb3439"
+    },
+    {
+      "path": "docs/research/P2/P2_TASK6_PARAMETER_DETERMINATION_EXPERIMENT_PROTOCOL.md",
+      "bytes": 35591,
+      "sha256": "281d4e22cd3d6bf0d092100b9d89403a6517ead4c5d14d5d9e0dac978488dc7e"
+    },
+    {
+      "path": "docs/research/P2/P2_TASK6_RESEARCHER_DECISIONS.md",
+      "bytes": 10519,
+      "sha256": "4a03b6b99921589f3ad88cb4870ef083a8088c8fb40af93ea7eef73d6127e5b5"
+    },
+    {
+      "path": "docs/research/definitions/README.md",
+      "bytes": 8893,
+      "sha256": "8423d04202e26597d16a50301c359eb5543fcbbdda0301a7f1c9cbb328f3e376"
+    },
+    {
+      "path": "docs/research/definitions/CORE_SCIENTIFIC_DEFINITIONS.md",
+      "bytes": 78251,
+      "sha256": "09668a80c5b057759dc5e1d72b1669d1860a9b0bc46e0df57c07e25aa131acab"
+    },
+    {
+      "path": "docs/research/definitions/SYMBOL_REGISTER.md",
+      "bytes": 12239,
+      "sha256": "8ea799f7f52b663c9987bc67b8b93396dd9bb2339ffe2d717e1a9ff96b3431c0"
+    },
+    {
+      "path": "docs/research/definitions/PARAMETER_AND_CALIBRATION_REGISTER.md",
+      "bytes": 38765,
+      "sha256": "bfdb42042e8ec5f3c49f587f934d8024004c11d6ff36d567cb94e56a93d29e63"
+    },
+    {
+      "path": "docs/research/definitions/EVIDENCE_AND_ASSUMPTION_LEDGER.md",
+      "bytes": 17018,
+      "sha256": "12b026b545c542ee6bafe226ce16bc51e543aa577546a878eb4db6cc521d73c8"
+    },
+    {
+      "path": "docs/research/definitions/OVERLEAF_ALIGNMENT.md",
+      "bytes": 26476,
+      "sha256": "d49bd6c73286b89cf4e5c1bfa232b7d77ed2eee84612e31c69b063b4debc28c7"
+    },
+    {
+      "path": "docs/research/P2/task6_support/calculate_design_evidence.py",
+      "bytes": 11162,
+      "sha256": "630c0332e5e93de02565f94edadb2e133edea0b9d6499ec3592e68340e274ade"
+    }
+  ],
+  "historical_data_audit": {
+    "v2": {
+      "panels": 768,
+      "candidates": 42,
+      "evaluations": 32256,
+      "domain": "synthetic_measurement_verification"
+    },
+    "controlled_B": {
+      "run_records": 60,
+      "evaluations": 2520,
+      "alarms": 0,
+      "qualified_witnesses": 0,
+      "peak_mean_decline_mps": [
+        0.016238082423340277,
+        0.028062571711587953
+      ],
+      "independent_cohort_positive_labels": "not available",
+      "cross_condition_seed_reuse": true
+    },
+    "task9_18_19": {
+      "primary": 60,
+      "supplementary": 40,
+      "task19_same_runs": 100,
+      "pairs": 50,
+      "independence": "not three datasets; shared candidate/input/seed dependencies retained"
+    },
+    "historical_manifest_selected_files_verified": [
+      "code/outputs/calibration/p2_task3_20261102_v2/calibration_runs.csv",
+      "code/outputs/calibration/p2_task3_20261102_v2/calibration_summary.csv",
+      "code/outputs/calibration/p2_task3_20261102_v2/calibration_config.json",
+      "code/outputs/calibration/p2_task3_20261102_v2/provenance.json",
+      "code/outputs/calibration/p2_task3_sumo_b_20261102/detector_results.csv",
+      "code/outputs/calibration/p2_task3_sumo_b_20261102/run_audits.csv",
+      "code/outputs/calibration/p2_task3_sumo_b_20261102/measurement_audit.json",
+      "code/outputs/calibration/p2_task3_sumo_b_20261102/provenance.json"
+    ],
+    "historical_raw_trajectories_not_reprocessed": true
+  },
+  "design_calculations": {
+    "assumptions": "independent homogeneous Bernoulli units; no cluster/frame pooling; all numerical standards are proposals",
+    "family_sizes": "1,12,15 are planning illustrations; actual J_V includes all endpoints/strata/candidates/neighborhood claims",
+    "best_case_not_power": [
+      {
+        "family_failure": 0.05,
+        "family_size": 1,
+        "bad_rate_limit": 0.0025,
+        "per_claim_failure": 0.05,
+        "zero_bad_n": 1197,
+        "all_success_sensitivity": 0.9975,
+        "upper_zero_bad": 0.00249957116862958
+      },
+      {
+        "family_failure": 0.05,
+        "family_size": 1,
+        "bad_rate_limit": 0.005,
+        "per_claim_failure": 0.05,
+        "zero_bad_n": 598,
+        "all_success_sensitivity": 0.995,
+        "upper_zero_bad": 0.004997058694246508
+      },
+      {
+        "family_failure": 0.05,
+        "family_size": 1,
+        "bad_rate_limit": 0.01,
+        "per_claim_failure": 0.05,
+        "zero_bad_n": 299,
+        "all_success_sensitivity": 0.99,
+        "upper_zero_bad": 0.009969146792899272
+      },
+      {
+        "family_failure": 0.05,
+        "family_size": 1,
+        "bad_rate_limit": 0.05,
+        "per_claim_failure": 0.05,
+        "zero_bad_n": 59,
+        "all_success_sensitivity": 0.95,
+        "upper_zero_bad": 0.049507609888226944
+      },
+      {
+        "family_failure": 0.05,
+        "family_size": 1,
+        "bad_rate_limit": 0.1,
+        "per_claim_failure": 0.05,
+        "zero_bad_n": 29,
+        "all_success_sensitivity": 0.9,
+        "upper_zero_bad": 0.09814462767729573
+      },
+      {
+        "family_failure": 0.05,
+        "family_size": 12,
+        "bad_rate_limit": 0.0025,
+        "per_claim_failure": 0.004166666666666667,
+        "zero_bad_n": 2190,
+        "all_success_sensitivity": 0.9975,
+        "upper_zero_bad": 0.0024994460209869247
+      },
+      {
+        "family_failure": 0.05,
+        "family_size": 12,
+        "bad_rate_limit": 0.005,
+        "per_claim_failure": 0.004166666666666667,
+        "zero_bad_n": 1094,
+        "all_success_sensitivity": 0.995,
+        "upper_zero_bad": 0.004997197050478535
+      },
+      {
+        "family_failure": 0.05,
+        "family_size": 12,
+        "bad_rate_limit": 0.01,
+        "per_claim_failure": 0.004166666666666667,
+        "zero_bad_n": 546,
+        "all_success_sensitivity": 0.99,
+        "upper_zero_bad": 0.009987589650890052
+      },
+      {
+        "family_failure": 0.05,
+        "family_size": 12,
+        "bad_rate_limit": 0.05,
+        "per_claim_failure": 0.004166666666666667,
+        "zero_bad_n": 107,
+        "all_success_sensitivity": 0.95,
+        "upper_zero_bad": 0.04993124613535699
+      },
+      {
+        "family_failure": 0.05,
+        "family_size": 12,
+        "bad_rate_limit": 0.1,
+        "per_claim_failure": 0.004166666666666667,
+        "zero_bad_n": 53,
+        "all_success_sensitivity": 0.9,
+        "upper_zero_bad": 0.09824127315852857
+      },
+      {
+        "family_failure": 0.05,
+        "family_size": 15,
+        "bad_rate_limit": 0.0025,
+        "per_claim_failure": 0.0033333333333333335,
+        "zero_bad_n": 2279,
+        "all_success_sensitivity": 0.9975,
+        "upper_zero_bad": 0.002499627396066943
+      },
+      {
+        "family_failure": 0.05,
+        "family_size": 15,
+        "bad_rate_limit": 0.005,
+        "per_claim_failure": 0.0033333333333333335,
+        "zero_bad_n": 1138,
+        "all_success_sensitivity": 0.995,
+        "upper_zero_bad": 0.004999571467452089
+      },
+      {
+        "family_failure": 0.05,
+        "family_size": 15,
+        "bad_rate_limit": 0.01,
+        "per_claim_failure": 0.0033333333333333335,
+        "zero_bad_n": 568,
+        "all_success_sensitivity": 0.99,
+        "upper_zero_bad": 0.009991619317993597
+      },
+      {
+        "family_failure": 0.05,
+        "family_size": 15,
+        "bad_rate_limit": 0.05,
+        "per_claim_failure": 0.0033333333333333335,
+        "zero_bad_n": 112,
+        "all_success_sensitivity": 0.95,
+        "upper_zero_bad": 0.04965160423954018
+      },
+      {
+        "family_failure": 0.05,
+        "family_size": 15,
+        "bad_rate_limit": 0.1,
+        "per_claim_failure": 0.0033333333333333335,
+        "zero_bad_n": 55,
+        "all_success_sensitivity": 0.9,
+        "upper_zero_bad": 0.0985089244128396
+      },
+      {
+        "family_failure": 0.005,
+        "family_size": 1,
+        "bad_rate_limit": 0.0025,
+        "per_claim_failure": 0.005,
+        "zero_bad_n": 2117,
+        "all_success_sensitivity": 0.9975,
+        "upper_zero_bad": 0.0024996186669342573
+      },
+      {
+        "family_failure": 0.005,
+        "family_size": 1,
+        "bad_rate_limit": 0.005,
+        "per_claim_failure": 0.005,
+        "zero_bad_n": 1058,
+        "all_success_sensitivity": 0.995,
+        "upper_zero_bad": 0.004995342972704611
+      },
+      {
+        "family_failure": 0.005,
+        "family_size": 1,
+        "bad_rate_limit": 0.01,
+        "per_claim_failure": 0.005,
+        "zero_bad_n": 528,
+        "all_success_sensitivity": 0.99,
+        "upper_zero_bad": 0.009984512446168808
+      },
+      {
+        "family_failure": 0.005,
+        "family_size": 1,
+        "bad_rate_limit": 0.05,
+        "per_claim_failure": 0.005,
+        "zero_bad_n": 104,
+        "all_success_sensitivity": 0.95,
+        "upper_zero_bad": 0.04966940415125787
+      },
+      {
+        "family_failure": 0.005,
+        "family_size": 1,
+        "bad_rate_limit": 0.1,
+        "per_claim_failure": 0.005,
+        "zero_bad_n": 51,
+        "all_success_sensitivity": 0.9,
+        "upper_zero_bad": 0.09867427868950779
+      },
+      {
+        "family_failure": 0.005,
+        "family_size": 12,
+        "bad_rate_limit": 0.0025,
+        "per_claim_failure": 0.0004166666666666667,
+        "zero_bad_n": 3110,
+        "all_success_sensitivity": 0.9975,
+        "upper_zero_bad": 0.0024995153746065315
+      },
+      {
+        "family_failure": 0.005,
+        "family_size": 12,
+        "bad_rate_limit": 0.005,
+        "per_claim_failure": 0.0004166666666666667,
+        "zero_bad_n": 1553,
+        "all_success_sensitivity": 0.995,
+        "upper_zero_bad": 0.0049991969291993624
+      },
+      {
+        "family_failure": 0.005,
+        "family_size": 12,
+        "bad_rate_limit": 0.01,
+        "per_claim_failure": 0.0004166666666666667,
+        "zero_bad_n": 775,
+        "all_success_sensitivity": 0.99,
+        "upper_zero_bad": 0.009992608478953616
+      },
+      {
+        "family_failure": 0.005,
+        "family_size": 12,
+        "bad_rate_limit": 0.05,
+        "per_claim_failure": 0.0004166666666666667,
+        "zero_bad_n": 152,
+        "all_success_sensitivity": 0.95,
+        "upper_zero_bad": 0.04991651676601033
+      },
+      {
+        "family_failure": 0.005,
+        "family_size": 12,
+        "bad_rate_limit": 0.1,
+        "per_claim_failure": 0.0004166666666666667,
+        "zero_bad_n": 74,
+        "all_success_sensitivity": 0.9,
+        "upper_zero_bad": 0.09983635366302707
+      },
+      {
+        "family_failure": 0.005,
+        "family_size": 15,
+        "bad_rate_limit": 0.0025,
+        "per_claim_failure": 0.0003333333333333333,
+        "zero_bad_n": 3199,
+        "all_success_sensitivity": 0.9975,
+        "upper_zero_bad": 0.002499642658544729
+      },
+      {
+        "family_failure": 0.005,
+        "family_size": 15,
+        "bad_rate_limit": 0.005,
+        "per_claim_failure": 0.0003333333333333333,
+        "zero_bad_n": 1598,
+        "all_success_sensitivity": 0.995,
+        "upper_zero_bad": 0.004997712203226137
+      },
+      {
+        "family_failure": 0.005,
+        "family_size": 15,
+        "bad_rate_limit": 0.01,
+        "per_claim_failure": 0.0003333333333333333,
+        "zero_bad_n": 797,
+        "all_success_sensitivity": 0.99,
+        "upper_zero_bad": 0.009995341762548387
+      },
+      {
+        "family_failure": 0.005,
+        "family_size": 15,
+        "bad_rate_limit": 0.05,
+        "per_claim_failure": 0.0003333333333333333,
+        "zero_bad_n": 157,
+        "all_success_sensitivity": 0.95,
+        "upper_zero_bad": 0.04971750151736297
+      },
+      {
+        "family_failure": 0.005,
+        "family_size": 15,
+        "bad_rate_limit": 0.1,
+        "per_claim_failure": 0.0003333333333333333,
+        "zero_bad_n": 76,
+        "all_success_sensitivity": 0.9,
+        "upper_zero_bad": 0.09998778333668981
+      }
+    ],
+    "exact_acceptance_power": [
+      {
+        "n": 773,
+        "max_bad": 3,
+        "achieved_power": 0.9286430594930102,
+        "true_good_bad_rate": 0.002,
+        "acceptance_bad_rate": 0.01,
+        "per_claim_failure": 0.05,
+        "target_power": 0.9,
+        "family_failure": 0.05,
+        "family_size": 1
+      },
+      {
+        "n": 153,
+        "max_bad": 3,
+        "achieved_power": 0.9314926526628011,
+        "true_good_bad_rate": 0.01,
+        "acceptance_bad_rate": 0.05,
+        "per_claim_failure": 0.05,
+        "target_power": 0.9,
+        "family_failure": 0.05,
+        "family_size": 1
+      },
+      {
+        "n": 3100,
+        "max_bad": 3,
+        "achieved_power": 0.9279738018176455,
+        "true_good_bad_rate": 0.0005,
+        "acceptance_bad_rate": 0.0025,
+        "per_claim_failure": 0.05,
+        "target_power": 0.9,
+        "family_failure": 0.05,
+        "family_size": 1
+      },
+      {
+        "n": 1470,
+        "max_bad": 5,
+        "achieved_power": 0.9222093998679451,
+        "true_good_bad_rate": 0.002,
+        "acceptance_bad_rate": 0.01,
+        "per_claim_failure": 0.0033333333333333335,
+        "target_power": 0.9,
+        "family_failure": 0.05,
+        "family_size": 15
+      },
+      {
+        "n": 290,
+        "max_bad": 5,
+        "achieved_power": 0.9268193352667533,
+        "true_good_bad_rate": 0.01,
+        "acceptance_bad_rate": 0.05,
+        "per_claim_failure": 0.0033333333333333335,
+        "target_power": 0.9,
+        "family_failure": 0.05,
+        "family_size": 15
+      },
+      {
+        "n": 5893,
+        "max_bad": 5,
+        "achieved_power": 0.9214293233016576,
+        "true_good_bad_rate": 0.0005,
+        "acceptance_bad_rate": 0.0025,
+        "per_claim_failure": 0.0033333333333333335,
+        "target_power": 0.9,
+        "family_failure": 0.05,
+        "family_size": 15
+      },
+      {
+        "n": 1411,
+        "max_bad": 5,
+        "achieved_power": 0.9331478457916031,
+        "true_good_bad_rate": 0.002,
+        "acceptance_bad_rate": 0.01,
+        "per_claim_failure": 0.005,
+        "target_power": 0.9,
+        "family_failure": 0.005,
+        "family_size": 1
+      },
+      {
+        "n": 279,
+        "max_bad": 5,
+        "achieved_power": 0.9367194569519702,
+        "true_good_bad_rate": 0.01,
+        "acceptance_bad_rate": 0.05,
+        "per_claim_failure": 0.005,
+        "target_power": 0.9,
+        "family_failure": 0.005,
+        "family_size": 1
+      },
+      {
+        "n": 5656,
+        "max_bad": 5,
+        "achieved_power": 0.9324692622458965,
+        "true_good_bad_rate": 0.0005,
+        "acceptance_bad_rate": 0.0025,
+        "per_claim_failure": 0.005,
+        "target_power": 0.9,
+        "family_failure": 0.005,
+        "family_size": 1
+      },
+      {
+        "n": 2118,
+        "max_bad": 7,
+        "achieved_power": 0.9337519901014883,
+        "true_good_bad_rate": 0.002,
+        "acceptance_bad_rate": 0.01,
+        "per_claim_failure": 0.0003333333333333333,
+        "target_power": 0.9,
+        "family_failure": 0.005,
+        "family_size": 15
+      },
+      {
+        "n": 386,
+        "max_bad": 6,
+        "achieved_power": 0.9044393956462021,
+        "true_good_bad_rate": 0.01,
+        "acceptance_bad_rate": 0.05,
+        "per_claim_failure": 0.0003333333333333333,
+        "target_power": 0.9,
+        "family_failure": 0.005,
+        "family_size": 15
+      },
+      {
+        "n": 8491,
+        "max_bad": 7,
+        "achieved_power": 0.9329369925224252,
+        "true_good_bad_rate": 0.0005,
+        "acceptance_bad_rate": 0.0025,
+        "per_claim_failure": 0.0003333333333333333,
+        "target_power": 0.9,
+        "family_failure": 0.005,
+        "family_size": 15
+      }
+    ],
+    "exact_acceptance_power_scope": "per-claim power only, not joint-family success probability",
+    "conservative_joint_power_planning": [
+      {
+        "n": 2205,
+        "max_bad": 10,
+        "achieved_power": 0.9942711602989572,
+        "true_good_bad_rate": 0.002,
+        "acceptance_bad_rate": 0.01,
+        "per_claim_failure": 0.0033333333333333335,
+        "target_power": 0.9933333333333333,
+        "family_failure": 0.05,
+        "family_size": 15,
+        "joint_power_target": 0.9,
+        "power_method": "Bonferroni type-II allocation; all claims need their own adequate n"
+      },
+      {
+        "n": 437,
+        "max_bad": 10,
+        "achieved_power": 0.9948296156148752,
+        "true_good_bad_rate": 0.01,
+        "acceptance_bad_rate": 0.05,
+        "per_claim_failure": 0.0033333333333333335,
+        "target_power": 0.9933333333333333,
+        "family_failure": 0.05,
+        "family_size": 15,
+        "joint_power_target": 0.9,
+        "power_method": "Bonferroni type-II allocation; all claims need their own adequate n"
+      },
+      {
+        "n": 8837,
+        "max_bad": 10,
+        "achieved_power": 0.994152650918014,
+        "true_good_bad_rate": 0.0005,
+        "acceptance_bad_rate": 0.0025,
+        "per_claim_failure": 0.0033333333333333335,
+        "target_power": 0.9933333333333333,
+        "family_failure": 0.05,
+        "family_size": 15,
+        "joint_power_target": 0.9,
+        "power_method": "Bonferroni type-II allocation; all claims need their own adequate n"
+      },
+      {
+        "n": 2880,
+        "max_bad": 12,
+        "achieved_power": 0.9936233461499286,
+        "true_good_bad_rate": 0.002,
+        "acceptance_bad_rate": 0.01,
+        "per_claim_failure": 0.0003333333333333333,
+        "target_power": 0.9933333333333333,
+        "family_failure": 0.005,
+        "family_size": 15,
+        "joint_power_target": 0.9,
+        "power_method": "Bonferroni type-II allocation; all claims need their own adequate n"
+      },
+      {
+        "n": 570,
+        "max_bad": 12,
+        "achieved_power": 0.9943348841013985,
+        "true_good_bad_rate": 0.01,
+        "acceptance_bad_rate": 0.05,
+        "per_claim_failure": 0.0003333333333333333,
+        "target_power": 0.9933333333333333,
+        "family_failure": 0.005,
+        "family_size": 15,
+        "joint_power_target": 0.9,
+        "power_method": "Bonferroni type-II allocation; all claims need their own adequate n"
+      },
+      {
+        "n": 11543,
+        "max_bad": 12,
+        "achieved_power": 0.9934809802200578,
+        "true_good_bad_rate": 0.0005,
+        "acceptance_bad_rate": 0.0025,
+        "per_claim_failure": 0.0003333333333333333,
+        "target_power": 0.9933333333333333,
+        "family_failure": 0.005,
+        "family_size": 15,
+        "joint_power_target": 0.9,
+        "power_method": "Bonferroni type-II allocation; all claims need their own adequate n"
+      }
+    ],
+    "cdf_feasibility": [
+      {
+        "eta": 0.01,
+        "observed_possible_arrival_floor": 0,
+        "family_size": 1,
+        "alpha_P": 0.02,
+        "sufficient_hoeffding_n_for_strict_upper": 19561,
+        "status": "favorable-floor planning only"
+      },
+      {
+        "eta": 0.01,
+        "observed_possible_arrival_floor": 0,
+        "family_size": 3,
+        "alpha_P": 0.02,
+        "sufficient_hoeffding_n_for_strict_upper": 25054,
+        "status": "favorable-floor planning only"
+      },
+      {
+        "eta": 0.01,
+        "observed_possible_arrival_floor": 0,
+        "family_size": 603,
+        "alpha_P": 0.02,
+        "sufficient_hoeffding_n_for_strict_upper": 51570,
+        "status": "favorable-floor planning only"
+      },
+      {
+        "eta": 0.01,
+        "observed_possible_arrival_floor": 0.005,
+        "family_size": 1,
+        "alpha_P": 0.02,
+        "sufficient_hoeffding_n_for_strict_upper": 78241,
+        "status": "favorable-floor planning only"
+      },
+      {
+        "eta": 0.01,
+        "observed_possible_arrival_floor": 0.005,
+        "family_size": 3,
+        "alpha_P": 0.02,
+        "sufficient_hoeffding_n_for_strict_upper": 100213,
+        "status": "favorable-floor planning only"
+      },
+      {
+        "eta": 0.01,
+        "observed_possible_arrival_floor": 0.005,
+        "family_size": 603,
+        "alpha_P": 0.02,
+        "sufficient_hoeffding_n_for_strict_upper": 206279,
+        "status": "favorable-floor planning only"
+      },
+      {
+        "eta": 0.01,
+        "observed_possible_arrival_floor": 0.02,
+        "family_size": 1,
+        "alpha_P": 0.02,
+        "sufficient_hoeffding_n_for_strict_upper": null,
+        "status": "infeasible regardless of n"
+      },
+      {
+        "eta": 0.01,
+        "observed_possible_arrival_floor": 0.02,
+        "family_size": 3,
+        "alpha_P": 0.02,
+        "sufficient_hoeffding_n_for_strict_upper": null,
+        "status": "infeasible regardless of n"
+      },
+      {
+        "eta": 0.01,
+        "observed_possible_arrival_floor": 0.02,
+        "family_size": 603,
+        "alpha_P": 0.02,
+        "sufficient_hoeffding_n_for_strict_upper": null,
+        "status": "infeasible regardless of n"
+      },
+      {
+        "eta": 0.01,
+        "observed_possible_arrival_floor": 0.05,
+        "family_size": 1,
+        "alpha_P": 0.02,
+        "sufficient_hoeffding_n_for_strict_upper": null,
+        "status": "infeasible regardless of n"
+      },
+      {
+        "eta": 0.01,
+        "observed_possible_arrival_floor": 0.05,
+        "family_size": 3,
+        "alpha_P": 0.02,
+        "sufficient_hoeffding_n_for_strict_upper": null,
+        "status": "infeasible regardless of n"
+      },
+      {
+        "eta": 0.01,
+        "observed_possible_arrival_floor": 0.05,
+        "family_size": 603,
+        "alpha_P": 0.02,
+        "sufficient_hoeffding_n_for_strict_upper": null,
+        "status": "infeasible regardless of n"
+      },
+      {
+        "eta": 0.05,
+        "observed_possible_arrival_floor": 0,
+        "family_size": 1,
+        "alpha_P": 0.02,
+        "sufficient_hoeffding_n_for_strict_upper": 783,
+        "status": "favorable-floor planning only"
+      },
+      {
+        "eta": 0.05,
+        "observed_possible_arrival_floor": 0,
+        "family_size": 3,
+        "alpha_P": 0.02,
+        "sufficient_hoeffding_n_for_strict_upper": 1003,
+        "status": "favorable-floor planning only"
+      },
+      {
+        "eta": 0.05,
+        "observed_possible_arrival_floor": 0,
+        "family_size": 603,
+        "alpha_P": 0.02,
+        "sufficient_hoeffding_n_for_strict_upper": 2063,
+        "status": "favorable-floor planning only"
+      },
+      {
+        "eta": 0.05,
+        "observed_possible_arrival_floor": 0.005,
+        "family_size": 1,
+        "alpha_P": 0.02,
+        "sufficient_hoeffding_n_for_strict_upper": 966,
+        "status": "favorable-floor planning only"
+      },
+      {
+        "eta": 0.05,
+        "observed_possible_arrival_floor": 0.005,
+        "family_size": 3,
+        "alpha_P": 0.02,
+        "sufficient_hoeffding_n_for_strict_upper": 1238,
+        "status": "favorable-floor planning only"
+      },
+      {
+        "eta": 0.05,
+        "observed_possible_arrival_floor": 0.005,
+        "family_size": 603,
+        "alpha_P": 0.02,
+        "sufficient_hoeffding_n_for_strict_upper": 2547,
+        "status": "favorable-floor planning only"
+      },
+      {
+        "eta": 0.05,
+        "observed_possible_arrival_floor": 0.02,
+        "family_size": 1,
+        "alpha_P": 0.02,
+        "sufficient_hoeffding_n_for_strict_upper": 2174,
+        "status": "favorable-floor planning only"
+      },
+      {
+        "eta": 0.05,
+        "observed_possible_arrival_floor": 0.02,
+        "family_size": 3,
+        "alpha_P": 0.02,
+        "sufficient_hoeffding_n_for_strict_upper": 2784,
+        "status": "favorable-floor planning only"
+      },
+      {
+        "eta": 0.05,
+        "observed_possible_arrival_floor": 0.02,
+        "family_size": 603,
+        "alpha_P": 0.02,
+        "sufficient_hoeffding_n_for_strict_upper": 5730,
+        "status": "favorable-floor planning only"
+      },
+      {
+        "eta": 0.05,
+        "observed_possible_arrival_floor": 0.05,
+        "family_size": 1,
+        "alpha_P": 0.02,
+        "sufficient_hoeffding_n_for_strict_upper": null,
+        "status": "infeasible regardless of n"
+      },
+      {
+        "eta": 0.05,
+        "observed_possible_arrival_floor": 0.05,
+        "family_size": 3,
+        "alpha_P": 0.02,
+        "sufficient_hoeffding_n_for_strict_upper": null,
+        "status": "infeasible regardless of n"
+      },
+      {
+        "eta": 0.05,
+        "observed_possible_arrival_floor": 0.05,
+        "family_size": 603,
+        "alpha_P": 0.02,
+        "sufficient_hoeffding_n_for_strict_upper": null,
+        "status": "infeasible regardless of n"
+      }
+    ],
+    "historical_single_claim_zero_alarm_cp_upper_95": {
+      "6": 0.39303776899708276,
+      "24": 0.11734615615494876
+    },
+    "interaction_precision_formula": "n >= ceil(8*log(2*K_int/beta_int)/epsilon_int**2) for D in [-2,2]",
+    "risk_sufficient_power_formula": "balanced n > 2*R**2*(sqrt(log(4*J_R/alpha_R))+sqrt(log(2*J_R/beta_pow)))**2/g**2; floor+1 for strict acceptance, without measurement-width loss"
+  },
+  "source_read_scope": "explicit HIST and DOCS allowlist only; no recursive raw/holdout enumeration",
+  "reference_reading": "Task5 method/source audit reused; NIST official exact-binomial page targeted verification only",
+  "no_formal_gate_protocol_or_production_logic_changed": true
+}

@@ -1,4 +1,14 @@
-## Current — P2 Task5 measurement and identification operationalization (2026-11-02)
+## Current — P2 Task6 final calibration protocol (2026-11-02)
+
+统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)，当前v0.4、27定义；下方旧任务块保留历史。
+
+研究者Task6 D1–D7全部按方向登记Agreed；E54–60覆盖Task5同事项方向Awaiting，不升级具体数字/算子。T6-R1对象/truth时间、R2损失与稳定标准、R3统计预算、R4正式科学值、R5四格支持、R6资源/下一实验授权集中一次审阅。R4/R5不无限阻塞纯测量校准；不改论文。
+
+Formal A=0、独立Qualified=0、F0/总体TR-TP Unknown；Stage0.5 CLOSED_WITH_LIMITATIONS，Stage0.6 PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS，Protocol Lock BLOCKED，StageI READY_ENGINEERING_ONLY，Stage1.1 NOT_AUTHORIZED。
+
+[最终报告](../docs/research/P2/P2_TASK6_FINAL_REPORT.md) · [参数实验协议](../docs/research/P2/P2_TASK6_PARAMETER_DETERMINATION_EXPERIMENT_PROTOCOL.md) · [集中决策](../docs/research/P2/P2_TASK6_RESEARCHER_DECISIONS.md)
+
+## Historical — P2 Task5 measurement and identification operationalization (2026-11-02)
 
 统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节只作摘要导航；下方旧任务块为历史。
 
