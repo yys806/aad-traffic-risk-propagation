@@ -1,4 +1,16 @@
-## Current — P2 Task7 source timestamp backfill (2026-11-02)
+## Current — P3 Task1 decisions / proposals (2026-11-03)
+
+Agreed scope：研究者授权规划重构、只读实现审计和文档契约，且仅授权编辑指定OB规划一文件；不涉及生产修改或新实验。
+
+P3 Task1完成只读机制审计、三份Proposed v0.1契约和WP0–WP4路线修订。WP0=P0/P1；WP1=P2/P3/P4并行；WP2=P5/P6；WP3=P7/P8；WP4=P9；历史P编号/Task ID不变。P2阶段性收口，保留V/归属/严格桥接缺口，不自动追加实验。
+
+Proposed：v1.1五WP路线及P3三契约等待ratification；更细adoption边界、实际策略/安全层、机制对照与通信模型来源待科研决策。不能把本次交付自动写成Agreed实现或科学结果。
+
+[报告](../docs/research/P3/P3_TASK1_FINAL_REPORT.md) · [生命周期](../docs/research/P3/MESSAGE_LIFECYCLE_CONTRACT.md) · [采用契约](../docs/research/P3/CONTROLLER_ADOPTION_CONTRACT.md) · [通信登记](../docs/research/P3/COMMUNICATION_ASSUMPTIONS.md) · [规划迁移](../docs/research/P3/ROADMAP_REVISION_NOTE.md)。统一定义仍[27项v0.4](../docs/research/definitions/README.md)。
+
+Formal A=0；Independent Qualified Witness=0；F0/Overall TR–TP=Unknown；Stage0.5=CLOSED_WITH_LIMITATIONS；Stage0.6=PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS；Protocol Lock=BLOCKED；Stage I=READY_ENGINEERING_ONLY；Stage1.1=NOT_AUTHORIZED。
+
+## Historical — P2 Task7 source timestamp backfill (2026-11-02)
 
 研究者已授权全575完成轨迹源时间回溯，576计划逐条保留（1原失败Unknown、72 N0 Not Applicable、503实际干预签名成立）；288区间提前1.75s。原359/47/0不改，本次版本化派生overlay359/119/0；Task8的119已独立逐单位复现。W8/Qualified未知资格不升级，1728原标签、原audit/detector/参数、V与双η结论不改；新增SUMO/seed/V均0。
 

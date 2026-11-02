@@ -1,0 +1,96 @@
+{
+  "task_id": "AAD-P3-TASK1-20261102",
+  "method": "manual source audit with exact file bindings; no new event observations",
+  "stage_statuses": [
+    {
+      "stage": "Source Event Confirmed",
+      "statuses": [
+        "Documented",
+        "Missing"
+      ],
+      "scope": "source qualification/confirmation reference",
+      "evidence": "formal_artifacts.py:113-139"
+    },
+    {
+      "stage": "Message Generated",
+      "statuses": [
+        "Fixture Only"
+      ],
+      "scope": "real generator record, unique payload identity",
+      "evidence": "formal_design.py:122-237; stage_i_mechanism.py:241-329"
+    },
+    {
+      "stage": "Message Sent",
+      "statuses": [
+        "Fixture Only"
+      ],
+      "scope": "actual send attempt/transport receipt",
+      "evidence": "formal_runner.py:132-169"
+    },
+    {
+      "stage": "Message Delivered",
+      "statuses": [
+        "Fixture Only",
+        "Unknown"
+      ],
+      "scope": "receiver-side receipt and available_at",
+      "evidence": "stage_i_mechanism.py:275"
+    },
+    {
+      "stage": "Message Validated",
+      "statuses": [
+        "Fixture Only",
+        "Implemented"
+      ],
+      "scope": "validator execution/evidence, not boolean consistency alone",
+      "evidence": "formal_design.py:138-237"
+    },
+    {
+      "stage": "Message Adopted",
+      "statuses": [
+        "Fixture Only",
+        "Missing"
+      ],
+      "scope": "strategy consumption receipt with decision reference",
+      "evidence": "formal_runner.py:139; stage_0_1_sumo.py:252-256"
+    },
+    {
+      "stage": "Controller Decision",
+      "statuses": [
+        "Missing"
+      ],
+      "scope": "instance/version/policy/input/output/decision_id",
+      "evidence": "formal_artifacts.py:113-149"
+    },
+    {
+      "stage": "Control Command Issued",
+      "statuses": [
+        "Implemented",
+        "Missing"
+      ],
+      "scope": "isolated setter exists; chain-linked command receipt missing",
+      "evidence": "stage_0_1_sumo.py:247-256"
+    },
+    {
+      "stage": "Actual Action Executed",
+      "statuses": [
+        "Implemented",
+        "Missing"
+      ],
+      "scope": "native readback exists; execution/command/safety chain missing",
+      "evidence": "stage_0_1_sumo.py:267-324"
+    }
+  ],
+  "production_code_changed": false,
+  "formal_definitions_changed": false,
+  "scientific_claim_eligible": false,
+  "new_SUMO_runs": 0,
+  "new_seeds": 0,
+  "new_V_runs": 0,
+  "holdout_reads": 0,
+  "contract_status": "Proposed v0.1 / Awaiting Researcher Ratification",
+  "historical_task20_read_only": true,
+  "local_analysis_output": "code/outputs/analysis/p3_task1_20261102_v1",
+  "scope_of_preservation": "protected inputs and Git diff; no full raw-trajectory rehash or experiment rerun",
+  "impact_classification": "documentation and read-only verification helper only; no scientific runtime/data-interface changes"
+}

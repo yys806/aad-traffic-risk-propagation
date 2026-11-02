@@ -1,0 +1,30 @@
+{
+  "command": [
+    "D:\\miniconda\\python.exe",
+    "-X",
+    "utf8",
+    "-m",
+    "pytest",
+    "code/tests/test_formal_design.py",
+    "code/tests/test_stage_i_mechanism.py",
+    "code/tests/test_formal_artifacts.py",
+    "code/tests/test_communication_observability.py",
+    "-q",
+    "--tb=short",
+    "--basetemp=code\\outputs\\analysis\\p3_task1_20261102_v1\\pytest_tmp_retry1",
+    "--junitxml=code\\outputs\\analysis\\p3_task1_20261102_v1\\targeted_tests.xml"
+  ],
+  "exit_code": 0,
+  "elapsed_s": 20.305379299999913,
+  "initial_attempt": {
+    "status": "ENVIRONMENT_ERROR",
+    "passed": 29,
+    "errors": 13,
+    "reason": "WinError5 access denied to system pytest-of-Lenovo temporary directory"
+  },
+  "retry_scope": "same requested four test files, task-isolated temporary directory; no code or dependency changes",
+  "stdout_log": "code\\outputs\\analysis\\p3_task1_20261102_v1\\targeted_tests.log",
+  "pytest_result": "42 passed in 18.56s",
+  "local_log_sha256": "b850622315bc63d838283c7e0b3f8fa7291f33c3deb39a8e166d141c95386afe",
+  "local_junit_sha256": "82dae4448ccbaa958df2eaf7ad7b3b4537f1ff33994246989783ed7e3888579b"
+}

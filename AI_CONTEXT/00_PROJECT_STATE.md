@@ -1,4 +1,16 @@
-## Current — P2 Task7 source timestamp backfill (2026-11-02)
+## Current — P3 Task1 audit / WP roadmap (2026-11-03)
+
+P3 Task1完成只读机制审计、三份Proposed v0.1契约和WP0–WP4路线修订。WP0=P0/P1；WP1=P2/P3/P4并行；WP2=P5/P6；WP3=P7/P8；WP4=P9；历史P编号/Task ID不变。P2阶段性收口，保留V/归属/严格桥接缺口，不自动追加实验。
+
+现adopted由fixture设计条件或工程时程赋值，不是控制器消费凭证。Stage0.1已有孤立SUMO setter/native readback，但缺Message–Receipt–Decision–Command–Execution关联、controller/policy版本与实际安全层日志；时间排序/配对动作差异不足以证明采用因果作用。
+
+唯一授权OB规划v1.1为Revised Proposal / Awaiting Researcher Ratification；三契约未部署、未批准新科学定义。生产代码/config及历史证据未改；新增SUMO/seed/V/holdout读取均0。
+
+Formal A=0；Independent Qualified Witness=0；F0/Overall TR–TP=Unknown；Stage0.5=CLOSED_WITH_LIMITATIONS；Stage0.6=PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS；Protocol Lock=BLOCKED；Stage I=READY_ENGINEERING_ONLY；Stage1.1=NOT_AUTHORIZED。
+
+[报告](../docs/research/P3/P3_TASK1_FINAL_REPORT.md) · [生命周期](../docs/research/P3/MESSAGE_LIFECYCLE_CONTRACT.md) · [采用契约](../docs/research/P3/CONTROLLER_ADOPTION_CONTRACT.md) · [通信登记](../docs/research/P3/COMMUNICATION_ASSUMPTIONS.md) · [规划迁移](../docs/research/P3/ROADMAP_REVISION_NOTE.md)。统一定义仍[27项v0.4](../docs/research/definitions/README.md)。
+
+## Historical — P2 Task7 source timestamp backfill (2026-11-02)
 
 研究者已授权全575完成轨迹源时间回溯，576计划逐条保留（1原失败Unknown、72 N0 Not Applicable、503实际干预签名成立）；288区间提前1.75s。原359/47/0不改，本次版本化派生overlay359/119/0；Task8的119已独立逐单位复现。W8/Qualified未知资格不升级，1728原标签、原audit/detector/参数、V与双η结论不改；新增SUMO/seed/V均0。
 

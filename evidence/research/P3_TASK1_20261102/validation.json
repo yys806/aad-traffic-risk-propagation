@@ -1,0 +1,189 @@
+{
+  "task_id": "AAD-P3-TASK1-20261102",
+  "actual_date": "2026-11-03",
+  "status": "PASS",
+  "scoped_checks": {
+    "protected_input_hashes": {
+      "status": "PASS",
+      "count": 42
+    },
+    "scientific_state_and_historical_registration": {
+      "status": "PASS",
+      "prior_audits_unchanged": 14,
+      "all_existing_current_fields_unchanged_except": [
+        "active_research_task",
+        "why_now"
+      ]
+    },
+    "roadmap": {
+      "status": "PASS",
+      "lines": 2302,
+      "worklines": 10,
+      "work_packages": 5,
+      "admission_items_preserved": 42,
+      "formula_blocks_preserved": 12,
+      "sha256": "c36e6ed784bb60066bdad1c874593a57e860c644ef79cb945348fba89acb20fc"
+    },
+    "historical_task20_fixture": {
+      "status": "PASS",
+      "sha256sums_entries": 7,
+      "manifest_entries": 6,
+      "rerun": false
+    },
+    "requested_tests": {
+      "status": "PASS",
+      "passed": 42,
+      "initial_tmp_failure_retained": true,
+      "rerun_after_resume": false
+    },
+    "contract_fields_and_boundaries": {
+      "status": "PASS",
+      "stages": 9,
+      "contracts": 3,
+      "ratified": false
+    },
+    "new_document_links": {
+      "status": "PASS",
+      "count": 39
+    },
+    "change_scope": {
+      "status": "PASS",
+      "changed_paths": [
+        ".gitattributes",
+        "AI_CONTEXT/00_PROJECT_STATE.md",
+        "AI_CONTEXT/01_RESEARCH_CONTEXT.md",
+        "AI_CONTEXT/06_DECISIONS.md",
+        "AI_CONTEXT/07_KNOWN_ISSUES.md",
+        "AI_CONTEXT/08_CHANGELOG.md",
+        "docs/PROJECT_INDEX.md",
+        "docs/PROJECT_REGISTRY.json",
+        "docs/RESEARCH_STATUS.md",
+        "docs/research/P3/COMMUNICATION_ASSUMPTIONS.md",
+        "docs/research/P3/CONTROLLER_ADOPTION_CONTRACT.md",
+        "docs/research/P3/MESSAGE_LIFECYCLE_CONTRACT.md",
+        "docs/research/P3/P3_TASK1_FINAL_REPORT.md",
+        "docs/research/P3/README.md",
+        "docs/research/P3/ROADMAP_REVISION_NOTE.md",
+        "evidence/research/P3_TASK1_20261102/README.md",
+        "evidence/research/P3_TASK1_20261102/audit_summary.json",
+        "evidence/research/P3_TASK1_20261102/input_provenance.json",
+        "evidence/research/P3_TASK1_20261102/output_bindings.json",
+        "evidence/research/P3_TASK1_20261102/planning_revision.json",
+        "evidence/research/P3_TASK1_20261102/test_execution.json",
+        "evidence/research/P3_TASK1_20261102/validation.json",
+        "evidence/research/P3_TASK1_20261102/verify_evidence.py"
+      ],
+      "production_code_changed": false,
+      "formal_config_or_definition_changed": false,
+      "experiment_or_seed_added": false
+    },
+    "export_and_experiment_index_preservation": {
+      "status": "PASS",
+      "historical_evidence_manifest_unchanged": true,
+      "experiment_index_unchanged": true
+    }
+  },
+  "project_documentation": {
+    "command": [
+      "D:\\miniconda\\python.exe",
+      "-X",
+      "utf8",
+      "code/scripts/validate_project_docs.py",
+      "--strict-git"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "output": "PROJECT_DOCS_OK",
+    "stderr": ""
+  },
+  "diff_check_worktree": {
+    "command": [
+      "git",
+      "diff",
+      "--check"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "output": "",
+    "stderr": ""
+  },
+  "diff_check_staged": {
+    "command": [
+      "git",
+      "diff",
+      "--cached",
+      "--check"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "output": "",
+    "stderr": ""
+  },
+  "project_evidence_export": {
+    "status": "PASS",
+    "command": "python -X utf8 code/scripts/export_project_evidence.py --repo-root .",
+    "results": 92,
+    "files": 1391,
+    "historical_manifest_unchanged": true
+  },
+  "project_evidence_verification": {
+    "command": [
+      "D:\\miniconda\\python.exe",
+      "-X",
+      "utf8",
+      "code/scripts/export_project_evidence.py",
+      "--repo-root",
+      ".",
+      "--verify"
+    ],
+    "exit_code": 0,
+    "status": "PASS",
+    "output": "PORTABLE_EVIDENCE_OK",
+    "stderr": ""
+  },
+  "verification_scope": "Four requested test files plus documentation, exact source/output hashes, historical fixture and scoped portable byte verification; no full pytest or SUMO",
+  "initial_failure_preservation": [
+    "First pytest attempt 29 passed/13 setup errors from system tmp WinError5; one task-local basetemp retry passed 42.",
+    "Roadmap pre-write preservation guard found a risk formula in the removed state snapshot; retained the illustration before the first successful write.",
+    "Initial Git-only export used core.autocrlf=true and failed 16 protected-input byte checks due to checkout CRLF conversion. Fixed archive invocation to core.autocrlf=false; did not modify historical files or source hashes."
+  ],
+  "remaining_scientific_limits": [
+    "controller consumption receipt missing",
+    "decision/command/execution linkage missing",
+    "safety intervention evidence incomplete",
+    "P2 witness/V/early bridge remain not established"
+  ],
+  "formal_science_changed": false,
+  "native_bundle_verification": {
+    "status": "PASS",
+    "portable": false,
+    "counts": {
+      "bundle": 8,
+      "protected_inputs": 49,
+      "output_bindings": 15,
+      "local_skipped": 0,
+      "git_blob_byte_variants": 0
+    },
+    "errors": []
+  },
+  "portable_checkout_verification": {
+    "status": "PASS",
+    "method": "scoped git -c core.autocrlf=false archive of index tree; no outputs/raw data or OB copied",
+    "tree": "9731dfd1c2d526b86a61d8e71da2f454481ee57e",
+    "selected_files": 58,
+    "verifier": {
+      "status": "PASS",
+      "portable": true,
+      "counts": {
+        "bundle": 8,
+        "protected_inputs": 34,
+        "output_bindings": 14,
+        "local_skipped": 8,
+        "git_blob_byte_variants": 9
+      },
+      "errors": []
+    },
+    "local_directory": "D:\\shen\\TJU\\AAD\\code\\outputs\\analysis\\p3_task1_20261102_v1\\portable_controlled_z4x1ddg_",
+    "note": "Verified before final validation bookkeeping was sealed; final exact-tree result retained in local final_checkout_result.json."
+  }
+}

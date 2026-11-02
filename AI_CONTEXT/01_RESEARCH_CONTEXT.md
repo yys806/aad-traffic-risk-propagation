@@ -1,3 +1,17 @@
+## Current — P3 Task1 research focus (2026-11-03)
+
+P3 Task1完成只读机制审计、三份Proposed v0.1契约和WP0–WP4路线修订。WP0=P0/P1；WP1=P2/P3/P4并行；WP2=P5/P6；WP3=P7/P8；WP4=P9；历史P编号/Task ID不变。P2阶段性收口，保留V/归属/严格桥接缺口，不自动追加实验。
+
+物理链、信息链、动作—风险链分别建立证据。Message Validated、Controller Adopted和Adoption-induced Action Effect是不同层级。消费凭证支持机制可观测性，作用仍需P5适当干预；沿用P1的assignment ITT和最终四格，不按adopted筛选主分析。
+
+现adopted由fixture设计条件或工程时程赋值，不是控制器消费凭证。Stage0.1已有孤立SUMO setter/native readback，但缺Message–Receipt–Decision–Command–Execution关联、controller/policy版本与实际安全层日志；时间排序/配对动作差异不足以证明采用因果作用。
+
+下一项建议是一次有界凭证/引用接口与最小合成契约验证，再交P7；具体采用边界、controller/policy/安全层与Enabled/Disabled语义仍待研究者接受，不自动启动实验。
+
+[报告](../docs/research/P3/P3_TASK1_FINAL_REPORT.md) · [生命周期](../docs/research/P3/MESSAGE_LIFECYCLE_CONTRACT.md) · [采用契约](../docs/research/P3/CONTROLLER_ADOPTION_CONTRACT.md) · [通信登记](../docs/research/P3/COMMUNICATION_ASSUMPTIONS.md) · [规划迁移](../docs/research/P3/ROADMAP_REVISION_NOTE.md)。统一定义仍[27项v0.4](../docs/research/definitions/README.md)。
+
+Formal A=0；Independent Qualified Witness=0；F0/Overall TR–TP=Unknown；Stage0.5=CLOSED_WITH_LIMITATIONS；Stage0.6=PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS；Protocol Lock=BLOCKED；Stage I=READY_ENGINEERING_ONLY；Stage1.1=NOT_AUTHORIZED。
+
 ## Current — P2 Task6 final calibration protocol (2026-11-02)
 
 统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)，当前v0.4、27定义；下方旧任务块保留历史。

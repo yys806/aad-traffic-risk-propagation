@@ -1,6 +1,6 @@
 {
  "schema_version": "aad.project-registry.v2",
- "last_verified": "2026-11-02",
+ "last_verified": "2026-11-03",
  "project": {
   "name": "AAD",
   "research_topic": "Connected-vehicle communication adoption and traffic-risk propagation",
@@ -556,12 +556,19 @@
   "code/scripts/verify_p2_task7_timestamp_backfill.py",
   "code/scripts/finalize_p2_task7_timestamp_backfill.py",
   "code/tests/test_p2_task7_timestamp_backfill.py",
-  "evidence/research/P2_TASK7_SOURCE_TIMESTAMP_BACKFILL_20261102/README.md"
+  "evidence/research/P2_TASK7_SOURCE_TIMESTAMP_BACKFILL_20261102/README.md",
+  "docs/research/P3/README.md",
+  "docs/research/P3/P3_TASK1_FINAL_REPORT.md",
+  "docs/research/P3/MESSAGE_LIFECYCLE_CONTRACT.md",
+  "docs/research/P3/CONTROLLER_ADOPTION_CONTRACT.md",
+  "docs/research/P3/COMMUNICATION_ASSUMPTIONS.md",
+  "docs/research/P3/ROADMAP_REVISION_NOTE.md",
+  "evidence/research/P3_TASK1_20261102/README.md"
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
   "active_task": "AAD-S0.5-TASK20 completed Stage 0 closure, Stage 0.6 Pre-Lock readiness and Stage I engineering preparation",
-  "active_research_task": "P2-TASK7 source timestamp backfill complete; original history retained; overlay359/119/0",
+  "active_research_task": "P3-TASK1 information/adoption audit completed with limitations; WP0-WP4 roadmap and contracts Proposed",
   "p1_task1_status": "COMPLETED_WITH_LIMITATIONS",
   "p1_task1_report": "docs/research/P1/P1_TASK1_FINAL_REPORT.md",
   "p1_task2_status": "COMPLETED_WITH_LIMITATIONS",
@@ -573,7 +580,7 @@
   "p2_task2_specification": "docs/research/P2/P2_TASK2_PHYSICAL_ARRIVAL_AND_NO_MESSAGE_REFERENCE_SPEC.md",
   "p2_task2_researcher_decisions": "docs/research/P2/P2_TASK2_RESEARCHER_DECISIONS.md",
   "p2_task2_literature_audit": "docs/research/P2/P2_TASK2_LITERATURE_AND_METHOD_AUDIT.md",
-  "why_now": "Researcher authorized all575 completed traces. Source-only retrospective correction and independent W6 verification complete; no new experiment.",
+  "why_now": "P2 bounded work closed with limits; P3/P4 can progress in parallel. Controller consumption and event linkage gaps audited; no production or experiment change.",
   "next_decision_owner": "researcher",
   "task20_status": "COMPLETED",
   "stage_0_5_final_disposition": "CLOSED_WITH_LIMITATIONS",
@@ -835,7 +842,11 @@
   "p2_task7_timestamp_backfill_status": "COMPLETED_HISTORICAL_DERIVED_EVIDENCE_ONLY",
   "p2_task7_timestamp_backfill_report": "docs/research/P2/P2_TASK7_SOURCE_TIMESTAMP_BACKFILL_REPORT.md",
   "p2_task7_corrected_overlay_Observed": 119,
-  "p2_task7_historical_Observed_unchanged": 47
+  "p2_task7_historical_Observed_unchanged": 47,
+  "p3_task1_status": "COMPLETED_WITH_LIMITATIONS_DOCUMENTATION_AUDIT_ONLY",
+  "p3_task1_report": "docs/research/P3/P3_TASK1_FINAL_REPORT.md",
+  "p3_contract_status": "Proposed v0.1 / Awaiting Researcher Ratification",
+  "macro_work_package_roadmap_status": "v1.1 Revised Proposal / Awaiting Researcher Ratification"
  },
  "experiments": [
   {
@@ -6685,6 +6696,52 @@
    "formal_stage_gate_unchanged": true,
    "scientific_claim_eligible": false,
    "new_task_started": false
+  },
+  "p3_task1": {
+   "task_id": "AAD-P3-TASK1-20261102",
+   "date": "2026-11-03",
+   "status": "completed_with_limitations_documentation_audit_only",
+   "report": "docs/research/P3/P3_TASK1_FINAL_REPORT.md",
+   "contracts": [
+    "docs/research/P3/MESSAGE_LIFECYCLE_CONTRACT.md",
+    "docs/research/P3/CONTROLLER_ADOPTION_CONTRACT.md",
+    "docs/research/P3/COMMUNICATION_ASSUMPTIONS.md"
+   ],
+   "roadmap_revision": "docs/research/P3/ROADMAP_REVISION_NOTE.md",
+   "evidence": "evidence/research/P3_TASK1_20261102",
+   "contract_status": "Proposed / Awaiting Researcher Ratification",
+   "WP_mapping": {
+    "WP0": [
+     "P0",
+     "P1"
+    ],
+    "WP1": [
+     "P2",
+     "P3",
+     "P4"
+    ],
+    "WP2": [
+     "P5",
+     "P6"
+    ],
+    "WP3": [
+     "P7",
+     "P8"
+    ],
+    "WP4": [
+     "P9"
+    ]
+   },
+   "audited_lifecycle_stages": 9,
+   "targeted_tests_passed": 42,
+   "production_code_changed": false,
+   "formal_definitions_changed": false,
+   "new_SUMO_runs": 0,
+   "new_seeds": 0,
+   "new_V_runs": 0,
+   "locked_holdout_reads": 0,
+   "formal_stage_gate_unchanged": true,
+   "scientific_claim_eligible": false
   }
  },
  "history": [
