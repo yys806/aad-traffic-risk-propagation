@@ -1,4 +1,14 @@
-## Current — P2 Task1 physical operationalization (2026-11-02)
+## Current — P2 Task4 related work, claim boundaries and definition synchronization (2026-11-02)
+
+统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节仅摘要导航；下方旧任务区块保留为历史，冲突以统一定义当前版本和可核验证据为准。
+
+A–D are now Agreed, not all Awaiting: investigate information-mediated regional risk before arrival within a predeclared independently observable physical scope. Micro W1–W9 and macro traffic state are complementary; fixed-cohort signed decline remains important but cannot exclude all regional physical effects. Scope-specific evidence vector and Edie-type operator are proposals, not new binary arrival rules.
+
+Qpre is pre-ZC but can be post-ZS; qualified two-arm τQ and F0^Q cannot replace whole-source four-cell interaction/F0. P1 population time framework is retained. Jerath already covers information→control→macro delay/ZOI; Saberi/Duan/Zhang constrain propagation/early signal/event graph novelty. AAD joint identification remains Hypothesis, NC claim unsupported. See Task4 literature audit and CORE细则H/I.
+
+Stage0.5=CLOSED_WITH_LIMITATIONS；Stage0.6=PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS；Protocol Lock=BLOCKED；StageI=READY_ENGINEERING_ONLY；Stage1.1=NOT_AUTHORIZED。
+
+## Historical — P2 Task1 physical operationalization (2026-11-02)
 
 P2 defines Source Event A as the unchanged Formal P2 route and B as an explicitly separate safe controlled perturbation mechanism domain. Physical propagation is a time-respecting path in G_P(t), with Potential Physical Path, Observed Physical Interaction and Qualified Physical Propagation Witness as separate statuses. Physical arrival is \(T_P=\inf\{t\geq t_E:\phi(X^*_{\mathcal T}(t),B_{\mathcal T})=1\text{ with persistence}\}\); the leading candidate is a sustained relative-baseline speed state, while gap/density are auxiliary and Formal rho/P2 is not the direct arrival definition.
 
@@ -18,7 +28,7 @@ The causal framework preserves the planning four-cell interaction tau_SC and the
 
 # AAD Research Context
 
-## Current — P2 Task2 operational method package (2026-11-02)
+## Historical — P2 Task2 operational method package (2026-11-02)
 
 ### 研究背景
 
@@ -52,7 +62,7 @@ Separating onset from confirmation avoids a systematic physical-time delay. Sepa
 
 Source qualification → physical onset interval → time-respecting qualified edges → target-region state function → arrival onset/confirmation and censoring. In parallel, source confirmation → message eligibility → message lifecycle. The two clocks share audit fields but keep their meanings.
 
-## Current — P2 Task3 scientific scope and evidence (2026-11-02)
+## Historical — P2 Task3 scientific scope and evidence (2026-11-02)
 
 统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节只摘要，最新定义、参数与状态以该入口及对应证据为准。
 

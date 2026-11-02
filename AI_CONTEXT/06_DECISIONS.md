@@ -1,3 +1,11 @@
+## Current — P2 Task4 related work, claim boundaries and definition synchronization (2026-11-02)
+
+统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节仅摘要导航；下方旧任务区块保留为历史，冲突以统一定义当前版本和可核验证据为准。
+
+Researcher Task4 §四 A–D accepted on 2026-11-02 and recorded as Agreed E32–E35. They cover scope-limited claims, dual physical measurement, Qpre-before-communication ITT/F0 support and P1 joint population inference. Old Task3 Awaiting for these directions is superseded, not deleted. Concrete macro formula/fusion, tE, new notation, parameters, cross-source qualification and paper revision remain proposals/decisions. See P2_TASK4_RESEARCHER_DECISIONS.md and canonical ledger; no hypothesis or numerical recommendation was promoted by task completion.
+
+Stage0.5=CLOSED_WITH_LIMITATIONS；Stage0.6=PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS；Protocol Lock=BLOCKED；StageI=READY_ENGINEERING_ONLY；Stage1.1=NOT_AUTHORIZED。
+
 ## 2026-11-02 P2 Task3 decisions and unresolved scope
 
 统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。此处只摘要导航。
@@ -38,7 +46,7 @@ No code was changed. Existing Formal P2/rho and Observer-related interfaces rema
 
 None added by Codex in this task. `t_E`, \(\phi\), thresholds, persistence, maximum gap, coverage, clock tolerances, path admission, multi-source rules and region/cohort boundaries remain `Awaiting Researcher Decision`.
 
-## Current — P2 Task1 operational decisions (2026-11-02)
+## Historical — P2 Task1 operational decisions (2026-11-02)
 
 P2 Task1 confirms the existing researcher directions: Formal P2 A route unchanged; safe perturbation B remains a separate model domain; SUMO Observer is read-only; first T_P candidate is sustained relative-baseline speed change with gap/density auxiliary evidence; no direct Formal rho/P2 arrival definition; no-message reference remains a separate Z_C=0, Z_S=1 run distribution. A/B scenarios, t_E, phi, thresholds, persistence, path admission, clocks, missingness and region boundaries remain Awaiting Researcher Decision. Decision/specification files are under docs/research/P2/.
 

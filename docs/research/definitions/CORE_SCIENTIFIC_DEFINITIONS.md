@@ -1,8 +1,21 @@
 # AAD Core Scientific Definitions
 
-版本：AAD-SCI-DEF-20261102-P2T3-v0.1（Task3交付版；新Proposal未批准）。统一入口：README.md。
+版本：AAD-SCI-DEF-20261102-P2T4-v0.2（研究者确认A–D；操作细节仍分层登记）。统一入口：README.md。
 
 每项列出13个必需字段。Fact指直接可核验事实，Agreed只指研究者明确接受的方向；本次新操作规则和参数没有自动获批。历史P0/P1/P2报告保留；本文件不反向改写它们。证据ID见本目录账本与P2_TASK3_LITERATURE_AND_METHOD_AUDIT.md。
+
+## 当前约束 — P2 Task4 研究者确认 A–D（2026-11-02）
+
+来源：研究者P2 Task4任务书§四。以下四项为Agreed，覆盖本目录Task3遗留的同事项Awaiting状态；历史Task3报告不变。Agreed的是方向和统计原则，不是新增数值、微宏合并算子或已获得实证。
+
+| 决策 | Agreed当前定义 / 适用范围 | 仍未冻结 | 对旧定义的关系 |
+|---|---|---|---|
+| A 核心主张 | 信息介导的区域风险效应是否早于预先定义、能独立观测验证的物理传播范围内的物理状态到达；限定空间/时间/交通域，不排除全部可能物理影响 | 观测机制清单、覆盖/不可观测项、具体arrival对象 | 接受Task3 E28范围问题；替代“全部普通物理影响均未到达”的强解释 |
+| B 双层测量 | Micro采用既有W1–W9框架；Macro测预定区域速度/流量/密度及必要波前；固定cohort持续signed speed decline保留重要指标，不单独承担排除任务 | W1–W9数值质量门、macro算子/阈值、证据层级与融合规则 | 拓展DEF-PHY-007/008；不机械OR/AND，不抹去Task3指标 |
+| C 资格总体 | communication-blind Observer先确认源资格并固定Qpre，再随机ZC；主分析为合格source-present子总体ITT及匹配无消息分布，risk/F0支持一致；四格保留 | 实施机制、概率、干扰域、source-absent比较支持、参数 | Qpre子总体不能自动替代全部ZS=1；禁止按送达/采用/处理后Witness筛选 |
+| D 总体时间 | 沿用P1§7：预定H*、risk全网格同时带、no-message arrival上界、联合不确定性/SESOI/错误预算；非个体跨世界提前秒数 | 数值预算、SESOI、网格、持续、具体带估计器 | 接受总体框架；不另建竞争统计体系 |
+
+下文旧条目中的Proposal必须按此表分解：已确认原则现为Agreed；具体可执行规则仍Proposal/Unknown。本轮理论与文献更新在此目录增补，不以Task报告另设最新定义。
 
 ## DEF-SRC-001 — 源事件 / Source Event
 
@@ -224,9 +237,9 @@
 
 **局限性：** Qualified是证据资格，不是自动因果证明。
 
-**当前状态：** Proposal / Awaiting Researcher Decision
+**当前状态：** Agreed（Task4 B：采用既有W1–W9框架）；逐条可执行质量门与数值仍Proposal / Awaiting Researcher Decision
 
-**与现有定义关系：** 独立于Formal rho/P2风险结果；宏观前沿只能辅助。
+**与现有定义关系：** 独立于Formal rho/P2风险结果；macro现在是互补独立测量层，不能替代micro路径准入（Task4 B）。
 
 ## DEF-PHY-005 — 物理状态基线 / Physical State Baseline
 
@@ -368,11 +381,11 @@
 
 **与现有定义关系：** 下文给observed estimator与部分识别界；不用g以免net gap冲突。
 
-## DEF-PHY-008 — 物理到达 / Physical Arrival
+## DEF-PHY-008 — 固定cohort速度状态到达 / Fixed-cohort Speed-state Arrival
 
 **Definition ID：** DEF-PHY-008
 
-**中文 / English：** 物理到达 / Physical Arrival
+**中文 / English：** 固定cohort速度状态到达 / Fixed-cohort Speed-state Arrival（历史通用标题Physical Arrival保留映射）
 
 **数学表达：** \(\phi(t)=\mathbf1[\bar{\Delta u}^{B}_{\mathcal T}(t)\ge\theta_P]\)
 
@@ -394,7 +407,7 @@
 
 **当前状态：** Agreed physical direction; executable/numeric definition Proposal
 
-**与现有定义关系：** 保留原一般phi(X*,B)意义，不更改风险测量。
+**与现有定义关系：** v0.1原条目所测固定cohort对象与公式保留；Task4 B明确其不能单独排除区域普通物理传播。不是新增统一micro/macro OR或AND endpoint；广义物理到达须声明观测域与endpoint版本。
 
 ## DEF-REF-001 — 无消息参考 / No-Message Reference
 
@@ -448,7 +461,7 @@
 
 **局限性：** 不能把S*=0当TP=∞；确认后筛选不自动识别全部ZS=1总体。
 
-**当前状态：** Agreed object; design/estimator Proposal
+**当前状态：** Agreed对象及Task4 C的资格后通信随机化方向；具体估计器/实施规则Proposal，数值Unknown
 
 **与现有定义关系：** 与Physical State Baseline、个体跨世界差分开。
 
@@ -688,7 +701,7 @@ Fact（B域）：60run/42候选全部无固定cohort报警；validation__a5.0__d
 
 Inference：DEF-PHY-008识别的是“指定cohort达到指定强度与持续的速度状态”，不是“几何区域任何普通物理影响首次进入”。phi=0、缺Qualified链或低于阈值均不足以排除更早的非cohort、微小速度、gap/density或其他物理机制。不能由T_R早于此T_P自动推出所有普通物理影响被排除。
 
-Proposal：风险结局与arrival必须预先对齐车辆/空间/时域支持，初期结论明确限定为指定速度状态。若研究目标仍要求更强的普通物理机制排除，需额外独立证据与可辩护上界，不能仅调低θ或换更早报警指标。此项涉及核心claim，Status: Awaiting Researcher Decision；不自动改论文、假设或Gate。与P1总体层判据并存，但强调该判据的科学解释取决于T_P实际测量范围。
+Agreed（Task4 A–B，2026-11-02）：风险结局与arrival须预先对齐总体、空间和时间支持；核心主张限定在预定义且可独立观测验证的物理传播范围，采用micro/macro双层测量，cohort速度状态不能单独承担物理排除任务。不再主张已排除所有可能物理影响。具体机制清单、macro算子、质量门与证据层级仍Proposal；详见DEF-SCOPE-001及DEF-PHY-009/010。此为研究者接受方向，不证明时间优先性，不改论文或Gate。v0.1此方向的Awaiting已被E32/E33覆盖，历史Task3记录保留。
 
 ## 操作细则G：可计算基线与时钟界（Proposal）
 
@@ -700,3 +713,147 @@ u^B_{i,t}=\frac{1}{n_{i,B}}\sum_{k:\,t_k\in[t_{B,end}-W,t_{B,end}),\,valid_{ik}=
 其中参考窗口完全早于源onset下界、无源预兆，且n_i,B、实际时间跨度、最大缺口、identity/in-region支持逐车报告。不得把没有足够基线的成员填均值/补零。等间隔完整数据可用算术均值；不等间隔若要时间平均，应预定时间权重，不能将采样密集段自动超权。本轮V2/B只测试等间隔方案。线性趋势备选u^B_i,t=â_i+b̂_i t只能由处理前窗口拟合，并在独立无源窗口验证；未在本轮实现或声称去趋势有效。W2/5/10s为探索，不是合理交通范围。
 
 若本地timestamp满足t_local=t_ref+b(t)，使用同步估计b̂(t)校正为t_ref_hat=t_local-b̂(t)。有实证支持的offset/drift/step-phase界可形成e(t)≤e_offset+d_max|t-t_sync|+e_phase；各项未测量不能默认零。采样crossing区间另存，不能重复把同一采样间隔计两次。校正区间通过对允许b(t)取上下确界传播；简单保守实现可将端点各外扩e。共享时钟误差可能部分抵消，但须证明共同分量，不能擅自按独立误差相减或平方和缩小界。无有效界则时间比较Unknown。此为误差契约，不是已验证的时钟数值。
+
+
+## DEF-SCOPE-001 — 物理传播观测范围 / Physical Propagation Observation Scope
+
+**Definition ID：** DEF-SCOPE-001
+
+**中文 / English：** 物理传播观测范围 / Physical Propagation Observation Scope
+
+**数学表达：** \(\mathcal O_P=(\mathcal T,\mathcal W,\mathcal M,H,\mathcal Q,\nu)\)
+
+**通俗解释：** 声明在哪里、何时、哪些机制、何种交通背景和质量下能作物理到达判断；范围外保持不可排除。
+
+**适用范围：** 当前模型内；外推现实需额外验证。
+
+**必要输入：** 固定区域/窗口、机制列表、可观测字段、测量版本ν、质量与clock记录。
+
+**计算 / 判定：** 分析前登记观测清单；逐机制标measured / partially measured / unobserved，不以最终阴性倒推覆盖。
+
+**相关假设：** 盲于通信assignment；不按结果改变区域、机制或检测阈值。
+
+**文献 / 定义依据：** Task4 A；Jerath 2024 §3–6的目标/模型依赖边界；Task2宏微区分。
+
+**实验 / 实现依据：** Task3 B region内s1–s4响应而s5–s10cohort未报警（E27），不是新实验。
+
+**局限性：** 有限范围阴性不能推出不存在任何物理影响；噪声下“未检出”还受检测能力限制。
+
+**当前状态：** Agreed范围限定；本记号、具体清单和质量规则Proposal。
+
+**与现有定义关系：** 约束所有TP/F0与结论；不追溯改变Formal P2、rho或Task3原始记录。
+
+
+## DEF-PHY-009 — 宏观时空交通状态 / Macroscopic Space-time Traffic State
+
+**Definition ID：** DEF-PHY-009
+
+**中文 / English：** 宏观时空交通状态 / Macroscopic Space-time Traffic State
+
+**数学表达：** \(q_A=\sum_i d_i(A)/|A|,\ k_A=\sum_i t_i(A)/|A|,\ u_A=\sum_i d_i(A)/\sum_i t_i(A)\)
+
+**通俗解释：** 在预定lane-space-time域内累计所有有效轨迹的距离和驻留时间。流量、密度、速度须用同一支持域；不等于固定cohort均值。
+
+**适用范围：** 第一候选为同向单车道局部时空域；多lane分别计算或明确lane-normalized合并。
+
+**必要输入：** 道路纵向坐标、lane、真实timestamp、区域内轨迹片段、覆盖及质量；|A|单位m·s（多lane为lane长度时间之和）。
+
+**计算 / 判定：** 入口/出口按域边界裁切；部分穿越车辆保留域内距离/时间，不要求完整穿越。q为veh/s、k为veh/m、u为m/s；多lane合并为每lane归一尺度，不能当总横断面流量。k=0时u未定义，不能填零。
+
+**相关假设：** 轨迹完整普查或有独立可辩护的抽样权重；坐标/片段边界一致。q=ku在同域构造且k>0时是代数恒等，不证明均匀交通假设。
+
+**文献 / 定义依据：** Hall官方FHWA Traffic Flow Theory Chapter2 §2.1–2.2：点/空间/时空测量、部分穿越与平均速度区别；Edie型广义定义原始1963文献本轮未取得，不称原文已读。
+
+**实验 / 实现依据：** Task3 B支持必须覆盖非cohort车辆的必要性；本轮未计算或校准q/k/u。
+
+**局限性：** 稀疏轨迹、区域外传播、identity缺失可能使估计不可靠；不能无权重外推全交通，也不自动归属某个source。
+
+**当前状态：** Agreed宏观测量层；上述具体Edie型算子、空间分区/时间窗/变化阈值Proposal。
+
+**与现有定义关系：** 不替换DEF-PHY-007/008。完整瞬时空间普查的速度算术均值亦可作snapshot macro指标，但不与本时空u_A混称；临时任意观测子集均值须标采样支持。
+
+
+## DEF-PHY-010 — 双层物理证据记录 / Two-level Physical Evidence Record
+
+**Definition ID：** DEF-PHY-010
+
+**中文 / English：** 双层物理证据记录 / Two-level Physical Evidence Record
+
+**数学表达：** \(\mathcal E_P=(E_{micro},E_{macro},E_{cohort};\mathcal O_P)\)
+
+**通俗解释：** 分别保留路径证据、宏观状态变化和cohort状态，每项有独立质量、时间区间、源归属与Unknown。
+
+**适用范围：** 预定观测范围内的模型研究，尚无合格源总体实证。
+
+**必要输入：** W1–W9逐跳日志；预定义macro测量；固定cohort面板；共同clock/区域与版本。
+
+**计算 / 判定：** 先报告证据向量和冲突表，再讨论可支持主张；不默认OR/AND。任一层缺测不能由另一层强制填PASS或未到达。
+
+**相关假设：** 测量层独立于通信处理轨迹的事后筛选；source attribution与状态变化检测分开。
+
+**文献 / 定义依据：** Jerath micro→macro映射、Saberi宏观比例、Duan jam tree、Zhang预印本事件图；这些不能相互当同一对象。
+
+**实验 / 实现依据：** Task3 B的区域中间车辆响应与cohort阴性反例；Qualified独立路径仍0。
+
+**局限性：** micro+不保证macro强度达到；macro+不保证source-specific微观链；两阴性只表示在既定能力下未检出。
+
+**当前状态：** Agreed双层方向；向量式分层记录及冲突处理为Proposal，未形成新单一Physical Arrival二值定义。
+
+**与现有定义关系：** 补充而非覆写W1–W9与cohortφ。若未来选一个主要到达endpoint，须版本化，并使F0的endpoint/总体/支持域完全对应。
+
+
+## DEF-POP-001 — 通信前资格子总体 / Pre-communication Qualified Population
+
+**Definition ID：** DEF-POP-001
+
+**中文 / English：** 通信前资格子总体 / Pre-communication Qualified Population
+
+**数学表达：** \(\tau_Q(t)=E[Y_{\mathcal T}(1,1;t)-Y_{\mathcal T}(1,0;t)\mid Q(1)=1]\), \(F_0^Q(t\mid H)=P\{\widetilde T_P\le t\mid Z_S=1,Z_C=0,Q_{pre}=1,H\}\)
+
+**通俗解释：** 先盲法确认源和资格，再随机通信；估计这些事件的策略效应及同总体无消息物理到达分布。
+
+**适用范围：** 合格source-present事件。Q(1)表示源条件存在时、通信分配前的潜在资格；不是source-absent的实际可观测资格。
+
+**必要输入：** 资格规则/时刻/Observer盲法、Z_S/Z_C及概率、H、固定区域/窗口、所有失败/缺失。
+
+**计算 / 判定：** 在Qpre=1且ZS=1内随机ZC；按assignment估ITT，不因delivery/verification/adoption/处理后Witness失败剔除。风险/F0使用相同H分布和权重。
+
+**相关假设：** 无预先通信泄漏或anticipation，正概率、well-defined policy、独立run/干扰簇与可识别缺失。
+
+**文献 / 定义依据：** Task4 C、P1 Estimand §2/3/7；P0 Task2已读Hudgens–Halloran 2008与Aronow–Samii 2017的干扰边界。
+
+**实验 / 实现依据：** 当前没有Formal A合格事件或可估F0；仅设计兼容性推导。
+
+**局限性：** Qpre对ZC是pre-treatment，但对ZS可能是处理后变量；不能自动在source-absent臂筛同一Q或外推全部source-present。
+
+**当前状态：** Agreed资格顺序、子总体与匹配要求；Q(1)/τQ记号、具体实现/估计器Proposal；结果Unknown。
+
+**与现有定义关系：** 细化DEF-REF-002，不替代P1四格交互或全部ZS=1 F0；下文细则I给分解。
+
+
+## 操作细则H：微观 / 宏观不一致的解释（Task4 Proposal）
+
+| micro路径 | macro状态 | 允许解释与后续核查 | 禁止解释 |
+|---|---|---|---|
+| Qualified | 有合格变化 | 两层相容；核查源、空间/时间支持和其他源 | 两阳性自动证明source因果链 |
+| Qualified | 未检出 | 局部/弱响应、聚合稀释或尺度不合；报告macro检测能力 | micro必然错误，或macro阴性证明无物理影响 |
+| 缺Qualified | 有合格变化 | 未观测路径、身份缺口、区域外机制、其他源/需求变化；source归属Unknown | 用macro填补微观身份与竞争解释 |
+| 未检出 | 未检出 | 仅在已观测机制和检测能力下阴性 | 已排除所有普通物理传播 |
+| 任一Unknown | 任意 | 保留Unknown原因、覆盖和时间集合；不删除运行 | Unknown=未到达 |
+
+macro窗口内变化、波前斜率、车辆交互路径、cohort持续状态是四种对象。波前方向由状态和坐标决定，不恒向上游。macro可提供独立物理状态证据；micro提供实际交互联系证据。主张所需联合充分条件仍须按具体机制确定，本轮不发明一个最早OR或最晚AND到达时间。若物理状态在通信前已到达，记录实际到达，不按事后资格剔除以追求提前。
+
+## 操作细则I：四格与Qpre两臂的兼容性（Task4 Inference / Proposal）
+
+P1四格保持 \(\tau_{SC}=\mu_{11}-\mu_{10}-\mu_{01}+\mu_{00}=\tau_{\mathrm{ITT}}^{S=1}-\tau_{\mathrm{ITT}}^{S=0}\)。在同一源条件总体、共同结果定义和H权重下，令 \(p=P\{Q(1)=1\}\)，则由全期望
+\[
+\tau_{\mathrm{ITT}}^{S=1}=p\tau_Q+(1-p)\tau_{\neg Q},\qquad
+\tau_{SC}=p\tau_Q+(1-p)\tau_{\neg Q}-\tau_{\mathrm{ITT}}^{S=0}.
+\]
+跨四格共同H须定义在源分配之前；通信前、已受源影响的状态可作通信效应的背景，但不能作为跨源普通baseline直接调整。这说明τQ和四格交互可以共存但不是同一量。若非资格事件没有ZC随机化支持，τ非Q不可识别；此代数恒等不赋予数据识别，不能补零。source-absent没有实际源，Qpre=1没有天然共同支持。若要四格限制在Q(1)=1的principal stratum，需要跨源潜在资格识别假设；随机化ZS本身不显示source-absent单元的Q(1)。另一选择是源分配前、四格均可定义的共同资格，但那是不同资格对象，需要研究者决定。保留最终四格设计不等于已经实现所有条件四格estimand。
+
+源确认可先于ZC，但确认前的物理传播必须保留；不可用t_confirm或随机化时刻重新设物理onset。模拟在源确认后fork通信两臂可共享处理前段，仅为辅助模型配对；不能把该已受源影响状态fork成无源臂并称四格共同无源初态。source-absent的策略及公共clock需按预定协议定义；配对模型可借(1,0)的观测clock作公共比较索引，但不是source-absent真实onset，也不能自动解释为独立现实事件的个体反事实时间。
+
+随机化独立单位是完整运行/道路时间簇，不是车辆或帧；若跨簇message或物理链泄漏，须可辩护partial interference或预先定义assignment→exposure mapping及正支持。事后实际adoption或Witness是机制观测，不能作为主要ITT入组条件。
+
+Task4 D沿用P1 H*检验：在本资格总体中，风险全网格同时上带按预定持续规则低于−δ，且同endpoint的UCB[F0^Q(H*)]<η，联合错误受控。若同时选择多个macro/micro endpoint或H*，必须预先规定检验族与预算，不能事后选最晚physical arrival。α分配/具体带仍Proposal；clock界与删失按细则E/G传播。η允许的是总体到达比例，不能把统计结论改写成“每例绝无物理影响”。当前无F0/风险曲线，不能作经验时间分离结论。

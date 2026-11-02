@@ -1,6 +1,6 @@
 # AAD Parameter and Calibration Register
 
-版本：AAD-SCI-DEF-20261102-P2T3-v0.1。当前没有经交通数据验证的Physical Arrival数值推荐。Unknown是合法结论；下表明确区分“数学合理域”“合成探索网格”和“AAD经验合理范围”。后者尚不可识别，不能把前两者改名为推荐范围。
+版本：AAD-SCI-DEF-20261102-P2T4-v0.2。当前没有经交通数据验证的Physical Arrival数值推荐。Unknown是合法结论；下表明确区分“数学合理域”“合成探索网格”和“AAD经验合理范围”。后者尚不可识别，不能把前两者改名为推荐范围。
 
 | 参数 | 含义 / 单位 | 推荐值或规则 | 合理范围 / 探索范围 | 确定依据 | 敏感性与依赖 | 状态 |
 |---|---|---|---|---|---|---|
@@ -19,7 +19,7 @@
 | Observation quality | 速度、gap、道路坐标、phase质量 | 有效性逐字段判定，不插值充真 | 数值noise tolerances未定 | 当前正式测量validity；L8 | 去噪改变crossing/延迟；需保留raw+derived版本 | Awaiting |
 | Clock offset/drift tolerance | s,s/s | e(t)有同步/phase实证后才赋值 | 无AAD数值范围；同仿真钟也需step相位审计 | RFC5905 §8/11.1；Task18phase | 误差外扩可能消除时间分离 | Unknown |
 | Censoring handling | 事件时间估计 | ECDF/KM/Turnbull/界限按观察机制选 | 具体估计器/置信水平未定 | L14全文；P1 §7/8 | informative censoring使常规估计偏误 | Proposal |
-| No-message estimate | F0目标域/识别 | 主参考随机source-present no-message；Qpre子总体明示 | 资格、随机概率、H标准化待定 | P1/P2；本轮资格审计 | 资格筛选、竞争源、非独立单位可改变estimand | Proposal design |
+| No-message estimate | F0目标域/识别 | 主参考随机source-present no-message；Qpre子总体明示 | 资格、随机概率、H标准化待定 | P1/P2；本轮资格审计 | 资格筛选、竞争源、非独立单位可改变estimand | Agreed资格后通信随机化方向；估计器/数值Proposal或Unknown |
 | η,δ,α,H* | 早窗、SESOI、同时覆盖 | 沿用P1原则，不新增数值 | 未定，不由合成代理决定 | P1 Estimand §7 | 事后扫描需同时界；联合错误预算 | Awaiting |
 
 ## 联合校准选择流程（Proposal）
@@ -37,3 +37,10 @@ V1原5s、k=3、h1s、q2dt“起点推荐”已撤回：既未测试standardized
 B60run沿用42候选，没有根据validation重新调参。cohort峰值mean下降0.01623808–0.02806257m/s，所有候选无报警；该观察不是“合理阈值应该降至0.02”的依据，因为null也处于此范围，且无独立目标arrival阳性。每validation条件n6的0报警95% Wilson上界约0.3903，不能保证低FPR。θ/h/W/q/c的AAD经验合理范围仍Unknown。
 
 B固定cohort覆盖1.0并不意味着所有区域车辆都属于cohort；s1–s4在region内先响应的例子说明coverage与物理机制排除是不同问题。新增参数推荐须先明确claim支持域，不能用更细阈值解决对象错位。B域参数只为本次独立配置，不迁移正式vType、Formal P2/rho或真实交通。
+
+
+## Task4状态修订（2026-11-02）
+
+无新校准、无任何数值冻结。Qualified Witness继续采用W1–W9的方向为Agreed B，具体质量门仍Proposal。No-message主参考的Qpre后随机化与一致支持为Agreed C；H*/全时间带/联合错误/SESOI原则为Agreed D，具体数值和估计器仍Unknown/Proposal。旧Task3探索网格不因此变成合理推荐范围。
+
+新增待研究者确定的参数对象：macro空间分区/窗口长度、轨迹普查或抽样权重、各机制覆盖/检测强度、独立波前质量、micro/macro冲突处理与检验族预算。其数值推荐及经验合理范围均Unknown；窗口越大可降噪但稀释早期局部变化，越小增多重监测/缺测；稀疏抽样下扩大覆盖阈值不能修复选择。选择需独立标签与预定错误损失，不能为最早风险/最晚到达而优化。

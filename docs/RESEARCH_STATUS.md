@@ -1,4 +1,12 @@
-## Current — P2 Task3 Physical Arrival Calibration and Definition Governance (2026-11-02)
+## Current — P2 Task4 literature, claim and definition audit (2026-11-02)
+
+P2 Task4 is COMPLETED_WITH_LIMITATIONS. [Canonical definitions](research/definitions/README.md) v0.2 contains 26 definitions; researcher A–D are Agreed, concrete operators/fusion/numeric parameters remain Proposal/Unknown. [Final report](research/P2/P2_TASK4_FINAL_REPORT.md), [cross-paper audit](research/P2/P2_TASK4_LITERATURE_AND_NOVELTY_AUDIT.md), [Overleaf audit](research/P2/P2_TASK4_OVERLEAF_AUDIT.md), [decisions](research/P2/P2_TASK4_RESEARCHER_DECISIONS.md).
+
+Three journal bodies reread, Zhang final full text unavailable and distinct from SSRN; five source notes and Zotero metadata/readback indexed in doc/literature-notes. Current Overleaf main/supplementary/bib read-only snapshot has SHA and exact-location differences. Scoped physical claim, micro/macro measurement, blind Qpre then ZC, matched F0^Q and P1 population simultaneous inference are current directions; no automatic OR/AND arrival or Qpre-to-four-cell equivalence. Formal A=0, independent Qualified=0, F0/temporal precedence Unknown. No new experiment or paper/code/config/AGENTS edit. Older blocks are retained history.
+
+Stage0.5=CLOSED_WITH_LIMITATIONS；Stage0.6=PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS；Protocol Lock=BLOCKED；StageI=READY_ENGINEERING_ONLY；Stage1.1=NOT_AUTHORIZED。
+
+## Historical — P2 Task3 Physical Arrival Calibration and Definition Governance (2026-11-02)
 
 P2 Task3 is COMPLETED_WITH_LIMITATIONS. Canonical definitions: [research/definitions/README.md](research/definitions/README.md); final report: [P2_TASK3_FINAL_REPORT.md](research/P2/P2_TASK3_FINAL_REPORT.md), with protocol/results/literature/decisions in the same directory. Version AAD-SCI-DEF-20261102-P2T3-v0.1; signed-decline direction confirmed, specific operator and Δu^B mapping proposed, numeric parameters unknown.
 
@@ -6,13 +14,13 @@ V1 preserved/withdrawn; V2 completed 768 panels/42 detectors/32,256 evaluations.
 
 Outputs: code/outputs/calibration/p2_task3_20261102_v2/ and p2_task3_sumo_b_20261102/; compact evidence: evidence/research/P2_TASK3_20261102/. No formal run added; Formal P2/rho, configuration, Gate, Protocol Lock, Stage1.1 and long-term route unchanged. Research proposals are not Agreed.
 
-## Current — P2 Task2 Physical Arrival and No-Message Reference (2026-11-02)
+## Historical — P2 Task2 Physical Arrival and No-Message Reference (2026-11-02)
 
 P2 Task2 is `COMPLETED_WITH_LIMITATIONS`. The package separates source onset, confirmation and message eligibility; distinguishes micro vehicle paths from macro traffic-wave fronts; defines an auditable first-version Qualified Witness proposal; and recommends a fixed-cohort signed relative-baseline speed state as the leading \(\phi\) candidate. Physical State Baseline is separate from `F_0(t|H,Z_S=1)`. The preferred no-message reference is a source-present arm after communication-blind source qualification and before `Z_C` randomization; SUMO common-state pairing is auxiliary model evidence. Arrival onset, confirmation, observation time, right/interval censoring, Unknown and clock uncertainty remain separate. No numeric thresholds, persistence, path, clock or region parameters were frozen; no experiment, code/configuration change, holdout read, Gate change, Protocol Lock or Push occurred.
 
 Reports: `docs/research/P2/P2_TASK2_PHYSICAL_ARRIVAL_AND_NO_MESSAGE_REFERENCE_SPEC.md`, `docs/research/P2/P2_TASK2_RESEARCHER_DECISIONS.md`, `docs/research/P2/P2_TASK2_LITERATURE_AND_METHOD_AUDIT.md` and `docs/research/P2/P2_TASK2_FINAL_REPORT.md`. Stage 0.5, Stage 0.6, Protocol Lock and Stage 1.1 states are unchanged.
 
-## Current — P2 Task1 Source Event and Physical Propagation operationalization (2026-11-02)
+## Historical — P2 Task1 Source Event and Physical Propagation operationalization (2026-11-02)
 
 P2 Task1 is COMPLETED_WITH_LIMITATIONS. Formal P2 A and safe controlled perturbation B are kept as separate routes; source qualification records first eligible observation, actual confirmation, message-generation eligibility and failure/censoring. Physical propagation uses time-respecting paths with Potential, Observed and Qualified Witness states. \(T_P\) is defined from a future physical state function \(\phi\), with relative-baseline sustained speed change as the leading candidate and net gap/density as auxiliary evidence. SUMO Observer remains read-only and model-internal. \(\phi\), thresholds, persistence, path admission, clock/error tolerances and region boundaries remain Awaiting Researcher Decision. No experiment, SUMO run, production code change, Pilot, holdout read or Push occurred.
 

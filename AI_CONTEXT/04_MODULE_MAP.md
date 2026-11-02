@@ -1,4 +1,12 @@
-## Current — P2 Task3 definition and calibration module map (2026-11-02)
+## Current — P2 Task4 related work, claim boundaries and definition synchronization (2026-11-02)
+
+统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节仅摘要导航；下方旧任务区块保留为历史，冲突以统一定义当前版本和可核验证据为准。
+
+Canonical definition modules remain the six files under docs/research/definitions/; latest version v0.2 includes 26 definitions. Task4 final/literature/Overleaf/decisions plus five notes link into that entry. P0 PAPER_REGISTER and novelty matrices have dated supplements, with Zotero as only literature library. No source module, config, experiment executor or AGENTS rule changed. Current Overleaf source snapshot is audit-only, not a restored paper module.
+
+Stage0.5=CLOSED_WITH_LIMITATIONS；Stage0.6=PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS；Protocol Lock=BLOCKED；StageI=READY_ENGINEERING_ONLY；Stage1.1=NOT_AUTHORIZED。
+
+## Historical — P2 Task3 definition and calibration module map (2026-11-02)
 
 统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节只摘要，最新定义、参数与状态以该入口及对应证据为准。
 
@@ -18,7 +26,7 @@ Six canonical files in docs/research/definitions/; five Task3 reports in docs/re
 
 NumPy, local SUMO1.26.0/matching TraCI for B only. Versioned snapshots/provenance remain in isolated outputs. No code/src/riskprop production logic, formal configuration or paper source modified. Source→cohort Qualified Witness remains zero.
 
-## Current — P2 Task2 documentation module map (2026-11-02)
+## Historical — P2 Task2 documentation module map (2026-11-02)
 
 ### 核心文件
 
@@ -47,7 +55,7 @@ The intended later flow is source qualification → edge/path qualification → 
 
 P2 Task1, P1 Task2 theory/DAG/estimand documents, P0 Task3 physical-reference design and bounded literature sources. No external service, dataset or production dependency was changed.
 
-## Current — P2 Task1 source/physical document map (2026-11-02)\r\n\r\n- docs/research/P2/P2_TASK1_SOURCE_EVENT_AND_PHYSICAL_PROPAGATION_SPEC.md: Formal P2 A and safe perturbation B routes, time-respecting physical paths, T_P candidates, censoring and the SUMO Observer evidence contract.\r\n- docs/research/P2/P2_TASK1_RESEARCHER_DECISIONS.md: confirmed directions, proposals and Awaiting Researcher Decision parameters.\r\n- docs/research/P2/P2_TASK1_FINAL_REPORT.md: P2 Task1 completion status and limitations.\r\n\r\nNo production module was modified; Formal P2, Formal rho, experiment configuration and Gate states remain unchanged.\r\n\r\n## Current — P1 Task2 research-document map (2026-11-01)
+## Historical — P2 Task1 source/physical document map (2026-11-02)\r\n\r\n- docs/research/P2/P2_TASK1_SOURCE_EVENT_AND_PHYSICAL_PROPAGATION_SPEC.md: Formal P2 A and safe perturbation B routes, time-respecting physical paths, T_P candidates, censoring and the SUMO Observer evidence contract.\r\n- docs/research/P2/P2_TASK1_RESEARCHER_DECISIONS.md: confirmed directions, proposals and Awaiting Researcher Decision parameters.\r\n- docs/research/P2/P2_TASK1_FINAL_REPORT.md: P2 Task1 completion status and limitations.\r\n\r\nNo production module was modified; Formal P2, Formal rho, experiment configuration and Gate states remain unchanged.\r\n\r\n## Current — P1 Task2 research-document map (2026-11-01)
 
 - docs/research/P1/P1_TASK2_RESEARCHER_DECISIONS_20261101.md: Agreed D1–D10 directions and Awaiting operational parameters.
 - docs/research/P1/P1_TASK2_FINAL_REPORT.md: decision synchronization, true/observed model, IV/mediation and temporal refinement report.

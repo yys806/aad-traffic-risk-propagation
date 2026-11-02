@@ -1,3 +1,11 @@
+## Current — P2 Task4 related work, claim boundaries and definition synchronization (2026-11-02)
+
+统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节仅摘要导航；下方旧任务区块保留为历史，冲突以统一定义当前版本和可核验证据为准。
+
+P2 Task4 completed the scoped literature/theory/definition and paper audit with limitations. Added four reports, four core-paper notes and one macro-measurement note; canonical v0.2/26 definitions records Agreed A–D and retains proposals. Updated Zotero reading metadata, explicit SSRN title, one official measurement chapter, PAPER_REGISTER and P0 novelty supplements. Obtained a read-only current Overleaf three-file SHA snapshot and exact-location alignment; no paper edit. Context Consistency Check covers definitions, symbol/parameter status, evidence paths, experiment absence and unchanged gates. Commit/push and validation are reported in the final delivery.
+
+Stage0.5=CLOSED_WITH_LIMITATIONS；Stage0.6=PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS；Protocol Lock=BLOCKED；StageI=READY_ENGINEERING_ONLY；Stage1.1=NOT_AUTHORIZED。
+
 ## 2026-11-02 P2 Task3 definition governance and bounded calibration
 
 统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。此处只摘要导航。
@@ -8,7 +16,7 @@ Withdrew flawed V1 output/recommendations, retained original files; completed co
 
 Registered five Zotero sources and JSS original/bilingual attachments. Five Task3 reports and limited Overleaf alignment completed; snapshot/location limitation recorded, paper untouched. Synced AI_CONTEXT, registry/index/status/stages/results and compact portable research evidence. No production/formal configuration/Gate/Lock/Stage1.1/holdout/long-term-route changes.
 
-## Current — P2 Task2 Physical Arrival and No-Message Reference (2026-11-02)
+## Historical — P2 Task2 Physical Arrival and No-Message Reference (2026-11-02)
 
 ### 重要变化
 
@@ -18,7 +26,7 @@ Added the P2 Task2 physical-arrival/no-message specification, researcher decisio
 
 Synchronized `AI_CONTEXT/00_PROJECT_STATE.md` through `08_CHANGELOG.md`, project indexes, research status, stage index and registry. No code, configuration, experiment, holdout, Gate, Protocol Lock or Stage 1.1 state changed.
 
-## Current — P2 Task1 Source Event and Physical Propagation (2026-11-02)
+## Historical — P2 Task1 Source Event and Physical Propagation (2026-11-02)
 
 Added P2 Source Event/Physical Propagation specification, researcher-decision register and final report. Defined Formal P2 A versus safe perturbation B, time-respecting physical paths, Qualified Witness states, T_P candidates/censoring and SUMO Observer fields. Updated project indexes, registry and AI_CONTEXT. No experiment, code/configuration change, holdout read, Protocol Lock or Push.
 

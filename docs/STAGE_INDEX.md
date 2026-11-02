@@ -1,4 +1,12 @@
-## Current — P2 Task3 Physical Arrival Calibration and Definition Governance (2026-11-02)
+## Current — P2 Task4 literature, claim and definition audit (2026-11-02)
+
+P2 Task4 is COMPLETED_WITH_LIMITATIONS. [Canonical definitions](research/definitions/README.md) v0.2 contains 26 definitions; researcher A–D are Agreed, concrete operators/fusion/numeric parameters remain Proposal/Unknown. [Final report](research/P2/P2_TASK4_FINAL_REPORT.md), [cross-paper audit](research/P2/P2_TASK4_LITERATURE_AND_NOVELTY_AUDIT.md), [Overleaf audit](research/P2/P2_TASK4_OVERLEAF_AUDIT.md), [decisions](research/P2/P2_TASK4_RESEARCHER_DECISIONS.md).
+
+Three journal bodies reread, Zhang final full text unavailable and distinct from SSRN; five source notes and Zotero metadata/readback indexed in doc/literature-notes. Current Overleaf main/supplementary/bib read-only snapshot has SHA and exact-location differences. Scoped physical claim, micro/macro measurement, blind Qpre then ZC, matched F0^Q and P1 population simultaneous inference are current directions; no automatic OR/AND arrival or Qpre-to-four-cell equivalence. Formal A=0, independent Qualified=0, F0/temporal precedence Unknown. No new experiment or paper/code/config/AGENTS edit. Older blocks are retained history.
+
+Stage0.5=CLOSED_WITH_LIMITATIONS；Stage0.6=PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS；Protocol Lock=BLOCKED；StageI=READY_ENGINEERING_ONLY；Stage1.1=NOT_AUTHORIZED。
+
+## Historical — P2 Task3 Physical Arrival Calibration and Definition Governance (2026-11-02)
 
 P2 Task3 is COMPLETED_WITH_LIMITATIONS. Canonical definitions: [research/definitions/README.md](research/definitions/README.md); final report: [P2_TASK3_FINAL_REPORT.md](research/P2/P2_TASK3_FINAL_REPORT.md), with protocol/results/literature/decisions in the same directory. Version AAD-SCI-DEF-20261102-P2T3-v0.1; signed-decline direction confirmed, specific operator and Δu^B mapping proposed, numeric parameters unknown.
 
@@ -6,13 +14,13 @@ V1 preserved/withdrawn; V2 completed 768 panels/42 detectors/32,256 evaluations.
 
 Outputs: code/outputs/calibration/p2_task3_20261102_v2/ and p2_task3_sumo_b_20261102/; compact evidence: evidence/research/P2_TASK3_20261102/. No formal run added; Formal P2/rho, configuration, Gate, Protocol Lock, Stage1.1 and long-term route unchanged. Research proposals are not Agreed.
 
-## Current — P2 Task2 Physical Arrival and No-Message Reference (2026-11-02)
+## Historical — P2 Task2 Physical Arrival and No-Message Reference (2026-11-02)
 
 P2 Task2 completed a documentation-only operational package with limitations. It records onset/confirmation/generation timing, micro/macro direction semantics, directed physical edges, Qualified Witness admission, the leading fixed-cohort relative-speed \(\phi\) candidate, separate baseline and no-message reference meanings, source-confirm-before-communication randomization as the preferred design, and interval/right-censoring/Unknown/clock rules. No experiment, production code or formal configuration changed. All numeric and scientific operational choices remain Awaiting Researcher Decision.
 
 Deliverables are under `docs/research/P2/`; current Stage/Gate/Protocol Lock/Stage 1.1 states remain unchanged.
 
-## Current — P2 Task1 Source Event and Physical Propagation (2026-11-02)
+## Historical — P2 Task1 Source Event and Physical Propagation (2026-11-02)
 
 P2 Task1 completed the operational definition package for Formal P2 A events, safe controlled perturbation B events, time-respecting physical paths, physical-arrival candidates and SUMO Observer evidence. Formal P2, thresholds, \(\phi\), path admission and experiment states remain unchanged. No SUMO/TraCI run, Pilot or Stage 1.1 was started.
 

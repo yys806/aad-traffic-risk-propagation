@@ -48,3 +48,7 @@ AAD 最可能形成的原创性不是“类超距”现象本身，而是一个�
 4. Hudgens–Halloran 与 Aronow–Samii 已提供 interference estimand、assignment design 和 exposure mapping；AAD 不能声称发明一般网络干扰因果理论。
 
 因此，Proposal A–D 只有在同源随机 assignment、完整消息生命周期、独立 no-message physical witness、双暴露映射和区域 risk burden 同时成立时才有可能成为科学贡献。现有 NGSIM、MiTra、SPMD、Task9/19 和 SUMO fixture 均不能单独满足这些条件，详见 Task2 可识别性审计。
+
+## P2 Task4 supplement — 2026-11-02
+
+Researcher Agreed A–D now limit claims to predeclared independently observable physical mechanisms, adopt micro/macro measurements, Qpre-before-communication randomization and the P1 population temporal framework. Existing information/control/macroscopic state, event graphs and early prediction cannot be claimed as AAD inventions. A possible contribution is joint auditable same-source message lifecycle, actual adoption/action, regional-risk ITT and independent no-message physical reference. This remains Hypothesis, not an established novelty finding; the reviewed set cannot prove global firstness. Full synthesis and evidence requirements: [Task4 audit](../P2/P2_TASK4_LITERATURE_AND_NOVELTY_AUDIT.md). Formal A=0, independent Qualified=0, F0/temporal precedence Unknown; no new experiment.

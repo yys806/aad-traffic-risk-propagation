@@ -1,4 +1,12 @@
-## Current — P2 Task3 evidence and calibration data flow (2026-11-02)
+## Current — P2 Task4 related work, claim boundaries and definition synchronization (2026-11-02)
+
+统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节仅摘要导航；下方旧任务区块保留为历史，冲突以统一定义当前版本和可核验证据为准。
+
+Task4 flow is existing P0–P2 evidence + Zotero originals + official sources + read-only Overleaf ZIP → version-specific notes/theory audit → canonical definitions → context/index summaries. No experiment or dataset processing pipeline changed. Safe metadata/hash manifest is doc/literature-notes/P2_TASK4_SOURCE_AUDIT_20261102.json; PDF originals stay in Zotero, full text and isolated tex audit snapshots are local/Git-excluded. New recommendations do not become production inputs.
+
+Stage0.5=CLOSED_WITH_LIMITATIONS；Stage0.6=PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS；Protocol Lock=BLOCKED；StageI=READY_ENGINEERING_ONLY；Stage1.1=NOT_AUTHORIZED。
+
+## Historical — P2 Task3 evidence and calibration data flow (2026-11-02)
 
 统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节只摘要，最新定义、参数与状态以该入口及对应证据为准。
 
@@ -18,7 +26,7 @@ V2: panels→42 detectors→split-specific window alarm/detection/quality summar
 
 Full trajectories/logs/plots stay local under code/outputs/calibration/. Portable evidence contains only compact summaries/configuration/provenance/hashes, including five descriptive response locations. F0 and risk-effect timing are not estimated. Information/production data flow unchanged.
 
-## Current — P2 Task2 physical-arrival and reference data flow (2026-11-02)
+## Historical — P2 Task2 physical-arrival and reference data flow (2026-11-02)
 
 ### raw data / dataset
 
@@ -48,7 +56,7 @@ The leading metric is equal-vehicle signed relative-baseline speed decrease; med
 
 Minimum links are `event_id → assignment/run → vehicle/track → physical_edge/path → region/window`, with `clock_id`, onset interval, confirmation, observation, censoring and quality fields. Message-arm failures retain their `Z_C=1` assignment.
 
-## Current — P2 Task1 source/physical evidence flow (2026-11-02)
+## Historical — P2 Task1 source/physical evidence flow (2026-11-02)
 
 Source assignment Z_S → actual source state S* → source qualification/confirmation → physical-edge records → time-respecting path → target state function phi → arrival onset/confirmation interval. In parallel, SUMO Observer produces read-only records with run/event/vehicle/clock/quality/version keys. No-message physical reference remains a separate Z_C=0, Z_S=1 run distribution; message-arm trajectories are not relabeled as its counterfactual.
 

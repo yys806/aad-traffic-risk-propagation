@@ -1,4 +1,12 @@
-## Current — P2 Task3 CALIBRATION_ONLY evidence (2026-11-02)
+## Current — P2 Task4 related work, claim boundaries and definition synchronization (2026-11-02)
+
+统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节仅摘要导航；下方旧任务区块保留为历史，冲突以统一定义当前版本和可核验证据为准。
+
+Task4 ran zero new formal or CALIBRATION_ONLY experiments and did not rerun Task9/18/19. Reused Task3 V2: 768 panels/42 candidates/32,256 evaluations; B: 60 runs/2,520 evaluations, no fixed-cohort alarms. Regional noncohort responses can precede cohort threshold, so the negative detector state does not exclude all physical influence. Formal A=0 and independent Qualified=0; no F0/risk temporal result is available. No threshold was lowered or frozen.
+
+Stage0.5=CLOSED_WITH_LIMITATIONS；Stage0.6=PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS；Protocol Lock=BLOCKED；StageI=READY_ENGINEERING_ONLY；Stage1.1=NOT_AUTHORIZED。
+
+## Historical — P2 Task3 CALIBRATION_ONLY evidence (2026-11-02)
 
 统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节只摘要，最新定义、参数与状态以该入口及对应证据为准。
 
@@ -18,7 +26,7 @@ V1 preserved/withdrawn. V2 stationary-null reference 0/24 but 95% upper≈0.138,
 
 code/outputs/calibration/p2_task3_20261102_v2/; code/outputs/calibration/p2_task3_sumo_b_20261102/; portable summaries evidence/research/P2_TASK3_20261102/. Each has configuration/snapshots/provenance/SHA; raw logs and plots remain local. B automatic XSD checking was disabled by missing SUMO_HOME; postprocessing checked XML wellformedness only. Formal P2/rho/config/gates unchanged, no formal runs added.
 
-## Current — P2 Task2 documentation-only research package (2026-11-02)
+## Historical — P2 Task2 documentation-only research package (2026-11-02)
 
 ### 实验编号
 
@@ -60,7 +68,7 @@ No SUMO/TraCI/Pilot/formal run occurred. Existing facts retained: current SUMO F
 
 Documentation outputs are under `docs/research/P2/`; there is no new `code/outputs` or evidence result directory.
 
-## Current — P2 Task1 theory-only boundary (2026-11-02)
+## Historical — P2 Task1 theory-only boundary (2026-11-02)
 
 P2 Task1 did not run SUMO or change an experiment. Formal P2 source count zero, existing physical-witness gaps, Task9/19 local-response boundaries and Task20 fixture limitations remain preserved. The package only prepares P2 Task2 definitions and evidence contracts.
 

@@ -1,6 +1,6 @@
 # AAD Symbol Register
 
-版本：AAD-SCI-DEF-20261102-P2T3-v0.1。以下是当前入口及映射；新记号是Proposal。论文采用情况以OVERLEAF_ALIGNMENT.md为准。
+版本：AAD-SCI-DEF-20261102-P2T4-v0.2。以下是当前入口及映射；新记号是Proposal。论文采用情况以OVERLEAF_ALIGNMENT.md为准。
 
 | 符号 | 中文含义 | English | 单位 | 首次定义位置 | 当前定义来源 | 状态 |
 |---|---|---|---|---|---|---|
@@ -28,7 +28,7 @@
 | \(T_U,T_R,\widehat T_R\) | 动作时间、真风险效应起点、统计检测 | action/risk onset/estimator | s | P1 | P1 §7；DEF-TIME-002 | 不得互换 |
 | \(\tau_R(t),\delta,\mathcal H,U_{sim}\) | 策略风险曲线、SESOI、网格、同时上带 | policy curve/SESOI/grid/band | risk,risk,s,risk | P1 §7.1.1 | 不新增风险体系 | 参数待定 |
 | \(F_0(t\mid H,Z_S=1)\) | 无消息arrivalCDF | no-message arrival CDF | probability | P1 §7.2 | DEF-REF-002 | 有定义，无可估数据 |
-| \(Q_{pre},F_0^Q\) | 通信分配前资格及其子总体CDF | prequalification/subpopulation CDF | binary/CDF | 本轮识别审计 | 不与原F0悄然等同 | Proposal |
+| \(Q_{pre},F_0^Q\) | 通信分配前资格及其子总体CDF | prequalification/subpopulation CDF | binary/CDF | 本轮识别审计 | 不与原F0悄然等同 | Agreed资格方向；记号/实施细则Proposal |
 | \(H,H^\star,\eta,\alpha\) | 处理前背景、预定早窗、到达比例容许、错误率 | context/horizon/arrival allowance/error | mixed,s,probability,probability | P1 §7.2 | H不是h_P；均未冻结 | Awaiting |
 | \(T_R^{upper},T_P^{lower}\) | 总体时间比较界 | population comparison bounds | s | P1 §7 | TP下界须说明分位数/早窗对象 | 概念Agreed，构造Proposal |
 | \(\hat b(t),e(t)\) | offset校正及误差界 | clock correction/error bound | s | 本轮时钟契约 | DEF-CLOCK-001 | Proposal；值Unknown |
@@ -40,3 +40,15 @@ Task2的g_v^mean(t)是速度偏差的临时通用函数名，与论文net-gap g�
 论文t_ω^phy-resp是行为层物理响应候选，与区域状态TP对象不同，不擅自重命名为新的正式论文变量。论文risk baseline R^tgt,base与B_T物理基线用途不同，不因都叫baseline就认定数学冲突。代码既有speed、net_gap、closing_speed、event_confirm_s及Formal rho tau语义不变；tau标定值不复用于θP。
 
 操作细则G的W、t_B,end、n_i,B为基线窗长/窗末/逐车有效样本数；b(t)是local相对reference的offset，e_offset/d_max/e_phase分别为offset、drift上界及step-phase界（s、s/s、s），只为误差传播辅助记号，均Proposal，值Unknown。
+
+
+## Task4增量（不修改Overleaf符号）
+
+| 符号 | 中文 / English | 单位 | 首次 / 当前来源 | 状态与旧映射 |
+|---|---|---|---|---|
+| Q(1), τQ, τ非Q, p | 源存在时潜在通信前资格、两类效应、资格比例 / potential eligibility, conditional effects, share | binary,risk,probability | DEF-POP-001/细则I | Agreed资格设计；推导辅助记号Proposal，不替代τSC |
+| A, d_i(A), t_i(A), q_A,k_A,u_A | lane时空域、域内距离/驻留、宏观流/密度/速度 / space-time domain and traffic measures | m·s,m,s,veh/s,veh/m,m/s | DEF-PHY-009 | Proposal；复用u速度；q_A不是最大采样间隔q_P，k_A不是统计候选k |
+| O_P, M, W, Q, ν（带O_P上下文） | 观测域、机制、窗口、质量、版本 / observation scope components | sets/version | DEF-SCOPE-001 | Proposal；排版使用花体集合，W为窗口集合时不得与标量baseline W混用；Q不是Qpre资格 |
+| E_P, E_micro,E_macro,E_cohort | 双层及cohort证据记录 / evidence vector | structured record | DEF-PHY-010 | Proposal；不定义新二值到达 |
+
+Qpre/F0^Q的设计方向现为Task4 C Agreed；v0.1表中Proposal只保留给符号和具体估计实施。新增宏观符号服务不同测量对象而有必要；不得把u_A与固定cohort平均下降、g净间距或ρ风险混用。

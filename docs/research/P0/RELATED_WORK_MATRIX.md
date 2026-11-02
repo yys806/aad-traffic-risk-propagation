@@ -25,3 +25,7 @@
 六篇指定最近邻已完成全文或合法全文限制审计。Schönhof 的全文明确给出 Poisson 装备车辆网络、同向/反向消息跳转和到达时间分布；Wang 的全文给出队列—LWR 信息波和 NS-3 校准；Jerath 的全文给出 LWR 瓶颈 ZOI、event horizon 和 null horizon；Peng 的全文在 40 名驾驶者、239 条有效试次上给出随机 BLOS warning 的 ORS/RT ATE 和状态异质性；Hudgens–Halloran 与 Aronow–Samii 的全文分别给出 partial interference 与一般 exposure mapping 的设计式框架。
 
 因此矩阵中的“—”不是文献访问不足，而是这些工作确实没有同时提供 AAD 所需的 message lifecycle、controller adoption、独立 no-message physical witness 和区域风险因果结果。Task2 的最小 estimand、数据缺口和证据契约见 P0_TASK2_ESTIMAND_AND_INTERFERENCE_SPEC.md、P0_TASK2_DATA_SOURCE_CAPABILITY_AUDIT.md 和 P0_TASK2_EVIDENCE_CONTRACT.md。
+
+## P2 Task4 supplement — 2026-11-02
+
+Current cross-paper 10-dimension comparison: [Task4 literature and novelty audit](../P2/P2_TASK4_LITERATURE_AND_NOVELTY_AUDIT.md). Jerath information→CV action→macro delay/ZOI is established prior work; Saberi physical contagion and Duan early jam prediction are distinct from information-policy risk identification but remain novelty threats. Zhang official journal metadata has six authors; available four-author SSRN only supports a preprint-method comparison. No claim that journal methods/results were fully read. Hall official chapter supports explicit space-time measurement; Edie original not acquired. Existing rows and P0 judgments above are retained as history. PAPER_REGISTER.csv remains the reading/version registry; Zotero remains the only library.

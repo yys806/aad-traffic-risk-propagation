@@ -1,5 +1,9 @@
 # AAD 文献管理说明（Zotero 唯一文献库）
 
+## Current — P2 Task4 literature audit (2026-11-02)
+
+Task4 metadata-only snapshot: [AAD_ZOTERO_INDEX_20261102_TASK4.csv](AAD_ZOTERO_INDEX_20261102_TASK4.csv); verification/provenance: [P2_TASK4_SOURCE_AUDIT_20261102.json](P2_TASK4_SOURCE_AUDIT_20261102.json). Live AAD scope contains 89 unique top-level items and 11 collection nodes including root. Four target papers already existed; no duplicate parents, merge or deletion. Three journal bodies reread, Zhang journal PARTIAL_READ with existing SSRN explicitly labeled; necessary Hall official chapter added and measurement sections read. PDF originals remain in Zotero; source text/Overleaf snapshots stay local and excluded from Git. Full analysis: [Task4 audit](../../docs/research/P2/P2_TASK4_LITERATURE_AND_NOVELTY_AUDIT.md). Older dated inventories remain historical, not current counts.
+
 **唯一文献库 = Zotero，集合 `TJU → AAD`。** 本目录只保留轻量管理文档，不保存 PDF、不维护与 Zotero 竞争的第二数据库。
 
 ## 2026-11-01 P0 Task 1 结构复核与收件箱整理

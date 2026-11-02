@@ -35,3 +35,7 @@ NC 竞争力目前应标为 **候选问题重要，但科学证据未闭环**。
 最小不可替代证据是 message strategy ITT/policy effect 加同源 no-message physical reference。Delivery、adoption 和自然 mediation 都是处理后过程，除非有随机鼓励或 interventional design，不能作为首要因果结果。若区域风险效应不可识别，仍可形成 action-level response 或 failure-boundary 论文，但不能保留区域总体因果主张。
 
 NC 评估仍不构成发表保证；阶段状态和 Gate 不因本附录改变。
+
+## P2 Task4 supplement — 2026-11-02
+
+NC positioning remains a candidate scientific question without an empirical identification closure. Main risks are not solved by a lower speed threshold: regional response can precede fixed-cohort alarm; Qpre is pre-ZC but post-ZS; selected complete matched four-cell units may alter the target estimand; within-treated behavioral timing is not population risk-versus-no-message precedence. Jerath, Zhang (formal text still unavailable), Peng, Saberi and Duan constrain novelty. The potentially distinctive joint contract needs falsifiable transferable mechanism results, not only more complete engineering logs. See [Task4 final report](../P2/P2_TASK4_FINAL_REPORT.md) and its linked synthesis. No NC innovation or causal hypothesis is declared proven; Gate/Stage remain unchanged.

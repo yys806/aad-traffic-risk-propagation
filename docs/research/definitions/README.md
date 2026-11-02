@@ -1,7 +1,7 @@
 # AAD 统一科研定义事实源
 
 状态：`Active / Proposal-with-limitations`
-当前版本：`AAD-SCI-DEF-20261102-P2T3-v0.1`
+当前版本：`AAD-SCI-DEF-20261102-P2T4-v0.2`
 更新日期：2026-11-02
 
 `docs/research/definitions/` 是 AAD 当前科研定义、符号、参数、假设和证据状态的唯一统一入口。它承载当前定义，不替代源码、配置、实验产物、Overleaf 正文或研究者决策；这些事实源分别负责实现事实、运行事实和论文表述。其他 Task 报告可以保留历史记录，但不能另立一个与本目录冲突的最新定义版本。
@@ -12,7 +12,7 @@
 - `SYMBOL_REGISTER.md`：全项目符号、单位、首次定义位置、当前来源、旧符号映射和冲突状态。
 - `PARAMETER_AND_CALIBRATION_REGISTER.md`：参数推荐值/范围、确定依据、敏感性和冻结状态。
 - `EVIDENCE_AND_ASSUMPTION_LEDGER.md`：Fact、Inference、Hypothesis、Proposal、Agreed、Unknown 的证据登记。
-- `OVERLEAF_ALIGNMENT.md`：统一定义与 Overleaf `AAD` 项目本任务已读 `main.tex`、`supplementary.tex`、`references.bib` 的有限逐项对照（快照和精确位置限制见审计）。
+- `OVERLEAF_ALIGNMENT.md`：统一定义与 Overleaf `AAD` 项目本任务已读 `main.tex`、`supplementary.tex`、`references.bib` 的当前字节级快照逐项对照；Task3有限读取记录保留为历史。
 
 ## 状态含义
 
@@ -53,4 +53,11 @@
 | 同版科学范围澄清 | CORE细则F、E27–E29 | region内响应可先于cohort阈值状态；更强物理排除主张待研究者 |
 | 同版论文审计限制 | 已完整读取，未恢复可复核快照 | 不称提交时逐句/逐公式一致性全部验证；正文未修改 |
 
-新版正式修订须递增版本并登记接受依据。当前Agreed仅限任务书或既有明确决策中的方向；均值算子、tE、数值参数、子总体转换和claim范围仍Awaiting。定义目录不通过任何科研Gate。
+历史v0.1状态：当时均值算子、tE、数值参数、子总体转换和claim范围仍Awaiting。v0.2由Task4明确接受A–D方向，覆盖其中claim范围与资格顺序的等待；具体算子、跨总体转换与参数仍未定。定义目录不通过任何科研Gate。
+
+## v0.2 — Task4当前接受记录（2026-11-02）
+
+研究者已在Task4任务书§四明确接受A有限观测范围主张、B微观/宏观双层物理测量、C通信前盲法Qpre后随机化及资格子总体、D沿用P1总体早窗统计框架，均为Agreed。此记录覆盖v0.1末段对这些方向的Awaiting；tE、均值算子、具体符号映射/质量门/阈值/置信预算、微宏融合仍待定。不得把方向接受写成已有科学证据。详见CORE当前约束及证据账本；历史Task3文件和失败记录保留。
+
+
+当前共26定义：v0.1的22条保留，新增DEF-SCOPE-001、DEF-PHY-009/010和DEF-POP-001（13字段齐全）。宏观Edie型算子与证据向量是Proposal；原cohort φ保留公式并限定名称，不再承担全部物理排除。当前论文审计：[P2 Task4](../P2/P2_TASK4_OVERLEAF_AUDIT.md)；综合报告：[P2 Task4](../P2/P2_TASK4_FINAL_REPORT.md)。Task4未新增实验、未改论文或AGENTS。

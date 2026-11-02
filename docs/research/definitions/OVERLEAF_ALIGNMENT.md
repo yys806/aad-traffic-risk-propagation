@@ -1,3 +1,64 @@
+# Overleaf Alignment — Current P2 Task4
+
+版本：AAD-SCI-DEF-20261102-P2T4-v0.2；日期2026-11-02。当前审计取代下方Task3有限快照状态，保留历史，不修改任何Overleaf文件。
+
+## 快照、范围与定位
+
+通过已有合法登录的Edge打开当前AAD项目，使用项目列表Download .zip file只读下载。项目标识：6aa63dcd249d9edf8228ca51；获取时间2026-11-02T08:20:35.613795Z（16:20:35+08）。下载AAD.zip SHA256=3af7b76b05e089bd883a5d5dacc3c0fe83dcb5422b818c70111a4d7c8f7b8760。仅提取三文件到被Git排除的local_research/literature-work/p2_task4/overleaf_snapshot/，作为隔离审计快照，不恢复仓库活动论文编辑流程。
+
+| 文件 | bytes / lines | SHA256 |
+|---|---|---|
+| main.tex | 213343 / 1759 | 0d8951f34ea64db6b2d3d8489bc119d47166088a3c2ef04e0416cb5753e15225 |
+| supplementary.tex | 6892 / 254 | 79c3b5da82c25e02d900a60721375fe6a3eb44bd91acdc3c7c119bd64af9171d |
+| references.bib | 8111 / 217 | 1e4738af5d7ab115ca9ea38daa6a091d75e723e7f3395aa907e37ebf7d063904 |
+
+活动正文、公式、补充材料和全部bib已分段读完；导言与相关中文注释亦核查，未逐项审校所有历史注释或所有被引文献。行号为此字节快照1-based物理行，不保证后续Overleaf编辑后稳定。表中短引号为原文短片段，其余为释义；不是论文已经产生实证结果的判断。PDF/HTML/tex原文不入便携证据。
+
+## 当前逐项对照（正式差异入口）
+
+| 研究内容 / Overleaf文件位置 | 当前论文表述或定义 | 最新科研定义 | 差异类型 | 影响 / 冲突原因 | 建议后续修改 | 状态 |
+|---|---|---|---|---|---|---|
+| 核心主张；main80、87、90、96 | “after excluding ordinary physical propagation”；before ordinary influence | Task4 A / DEF-SCOPE-001：有限预定义且可独立验证物理域 | CLAIM_OVERSTATEMENT / ASSUMPTION_CONFLICT | 若读为排除任何影响，超出可观测支持；有限阴性不支持全称命题 | 加空间/时间/机制/检测能力限定，列未观测机制 | Agreed方向；论文修订待授权 |
+| 创新表述；main84 | “a directly attributable link … has not been established” | E36–38/E42：已有信息→动作→macro先例；联合风险证据候选未证 | CLAIM_OVERSTATEMENT风险 | 绝对不存在/首次主张不能由有限检索支持；Jerath与Peng需直接比较 | 限定具体联合缺口，增加最近邻而非泛称已有控制不足 | Awaiting Researcher Decision |
+| 四格分配；main614–628 | scr/opn四格、treatment≠event/execution | P1 τSC、ZS/S*/ZC/C* | CONSISTENT | 既有assignment语义可保留 | 显式code/变量映射 | Verified text |
+| Formal P2/rho；main247、294–300 | 风险映射/事件规则待lock，未列全部当前正式配置 | 既有正式测量与DEF-SRC-001/003 | PAPER_OUTDATED / NOT_YET_IN_PAPER | 不能称论文已采用当前TTC/持续参数；无证据说明公式相等 | 补实现版本与仍待lock的范围；不更改Formal定义 | Awaiting |
+| pair / net gap / TTC / DRAC；main188–215 | ordered vehicle pair；g为net gap，Δu为闭合速度 | SYMBOL_REGISTER保留原语义 | CONSISTENT | 新arrival不能改变这些量的符号与单位 | 新速度偏差保持B上标与车辆索引 | Verified mapping |
+| Source onset/confirmation；main294–300 | t_src-int为处理起始，t_evt为首次正式成立 | DEF-SRC-002/003：真实物理crossing区间与确认分开 | NOT_YET_IN_PAPER / PAPER_OUTDATED | intervention计划/启动不保证实际onset；确认前已可传播 | 加实际onset区间与时钟，保留确认 | Awaiting细则 |
+| 消息资格；main300 | 事件正式成立后才eligible to generate | DEF-INF-001 | CONSISTENT | 资格不等于实际gen时间 | 加独立eligibility字段 | Agreed约束 |
+| directed physical graph；main323–332 | 动态有向图，潜在交互边 | DEF-PHY-001/002 | CONSISTENT方向 | **活动正文已存在**，Task3“主要在注释”描述不再准确 | 保留并增candidate/observed/qualified区分 | Task4已纠正读取事实 |
+| 微观传播；main344–360 | 实际变化/响应、有序链；区域最早可归属车辆响应 | DEF-PHY-003/004 W1–W9 | CONSISTENT部分 / NOT_YET_IN_PAPER质量门 | topology不是充分证据；现有对象为micro，不同于cohort阈值 | 加身份/关系/clock/竞争解释与逐跳质量日志 | Framework Agreed；细则Proposal |
+| phy-resp与TP；main344–367 | 区域任一车辆最早实际物理响应；结构隔离可+∞ | DEF-PHY-008是cohort速度状态；DEF-PHY-010分层 | AWAITING_RESEARCHER_DECISION（对象映射） | 不同量，不能直接当同一个量而称数学矛盾；缺witness不可+∞ | 保留行为量与cohort量，另声明主arrival endpoint | Proposal |
+| 双层macro；main323–367、区域risk段 | 未见Edie型速度/流/密度及micro/macro独立质量体系 | Task4 B、DEF-PHY-009/010 | NOT_YET_IN_PAPER | cohort阴性不能排除region其他响应 | 补macro支持域、覆盖和冲突表；不机械OR/AND | 方向Agreed，算子Proposal |
+| φ与速度下降；main/supplementary全活动正文 | 未见可计算cohort baseline-relative持续φ | DEF-PHY-006–008 | NOT_YET_IN_PAPER | 未建立可复现arrival参数；不是将Formula rho重写 | 批准后列算子及未知数值状态 | Proposal |
+| g符号；main193及Stage II pair | g_t^(v′→v)为净间距 | 速度下降Δu^B候选，Task2 g_v历史映射 | NOTATION_CONFLICT风险 | 不是同一完整记号的已证重定义，但复用g易误读 | 保留g净间距；新记号需确认，未改论文 | Awaiting |
+| target cohort；main266 | 预先固定，不按后续采用/响应选成员 | DEF-COHORT/REGION、Task4 C | CONSISTENT原则 / PAPER_OUTDATED缺失 | 固定区域不自动保证固定车辆全程在区；缺失不能重分母 | 加退出结构性无定义、coverage与missing bounds | Awaiting细则 |
+| lifecycle；main442–461 | gen/send/del/adopt，保留未送达 | 完整generation→delivery→verification→adoption | CONSISTENT部分 / NOT_YET_IN_PAPER verification | 送达不等于验证、实际采用；失败留原assignment | 加verification状态/clock/unknown，不按失败剔除 | Agreed ITT方向 |
+| 动作链；main483–501 | adoption→command→actuation→motion→risk | TU≠TR；实际动作证据 | CONSISTENT | 轨迹变化不能自动归属信息 | 保留可审计链；日志不证明自然中介效应 | Verified text |
+| Qpre与纳入；main673–676 | 四格matched unit，要求(1,1)/(1,0)源匹配和四运行质量有效，不合格整组排除 | Task4 C / DEF-POP-001：通信前盲资格后ITT | ASSUMPTION_CONFLICT / PAPER_OUTDATED | 通信后的实际匹配/质量筛选可能选择处理后变量；预规定不保证无偏；source-absent无同一实际Q | 入组与处理后缺失分离，保留ITT/Unknown；分开τQ与τSC | 实质修订待研究者；未改正文 |
+| 公共时钟；main680 | 以(1,0)的t_evt给配对四格共同索引，并明确无源臂不代表真实事件 | onset/确认独立；模型公共比较索引可预定 | CONSISTENT其索引限定 / AWAITING_RESEARCHER_DECISION外推 | 模型配对可用此索引，但不是source-absent真实onset或独立现实事件的个体反事实 | 保留原限定，审计配对/clock映射与确认前物理段 | Awaiting实施 |
+| baseline；main684–706 | T_base=[t_evt−L_base,t_evt)，pre-information风险均值 | DEF-PHY-005源onset下界前的物理baseline | CONSISTENT不同对象 / NOT_YET_IN_PAPER | 风险baseline可含源确认前传播，不能冒充无扰动物理baseline | 明确两类baseline，不用F0当无源基线 | Awaiting |
+| early window；main155、731–776 | 固定早窗“remains unaffected” | P1 H*、F0^Q上界<η及scope | PAPER_OUTDATED / CLAIM_OVERSTATEMENT风险 | η是总体比例容许，不等于每例无物理效应 | 按scope/η限定总体早窗解释 | Agreed统计方向 |
+| 四格effect；main871–950 | δNL、ΔNL四格interaction，非before-after DiD | P1 τSC保留；τQ为另一对象 | CONSISTENT四格 / NOT_YET_IN_PAPER资格层 | τQ不等于τSC；没有非Q与source-absent效应不能恢复全体交互 | 明示细则I分解与支持域 | 代数推断，不冻结新设计 |
+| 主时间比较；main1033 | 主检验在同一次(1,1)提取info-resp与phy-resp | P1/Task4 D：风险总体带+无消息F0参考 | MATHEMATICAL_CONFLICT（主分析对象） / PAPER_OUTDATED | 两行为时间不是总体TR与无消息TP；信息也可改变处理组物理链 | 处理内比较降为描述性机制；总体H*判据作为主分析候选修订 | Agreed方向；论文修改待授权 |
+| no-message地位；main1036 | (1,0)仅sensitivity，不替代(1,1)主比较 | 同资格随机no-message为主物理参考 | ASSUMPTION_CONFLICT | 处理组物理时钟不能代无消息分布 | 写F0^Q与完整观察契约；同seed只辅助 | Awaiting修订 |
+| 个体lead；main1045–1053 | Δtlead=phy-resp−info-resp；明确仅行为层 | P1禁止个体TP(0)−TR(1)识别 | CONSISTENT其行为限定 / CLAIM_OVERSTATEMENT风险 | 可描述同运行两响应差，不能当个体反事实“提前秒数”或风险因果提前 | 明确描述量、区间/clock，保留风险层区别 | Verified distinction |
+| risk temporal；main1070–1089、1134–1136 | early四格contrast+物理窗有效性、跨单元汇总 | P1资格两臂TR全网格同时带/F0联合预算 | PAPER_OUTDATED / NOT_YET_IN_PAPER | 没有F0及同时界不能支持Agreed D；两总体不可混用 | 加H*/SESOI/联合覆盖和censor机制；不另建统计体系 | Awaiting |
+| physical提前失败；main1121 | 不事后缩窗、不删受影响运行重建四格 | Task4 C/D | CONSISTENT | 保留失败很必要，仍需scope及观察质量 | 保留并与ITT缺失策略协调 | Verified text |
+| censor/clock；main530–543、1033与全正文 | 保留未观察/删失；缺完整interval/right/Unknown/offset/drift契约 | DEF-CENS/CLOCK | CONSISTENT保留原则 / NOT_YET_IN_PAPER细则 | 确认不能代onset、不能中点排序或机械KM | 补独立时间对象和误差外扩、信息性缺失界 | Proposal |
+| Stage / lock；main1154、1721、1724 | Stage II条件性；calibration/statistics placeholders | 现有Gate和Stage状态不变 | CONSISTENT计划边界 | 论文结构不是Stage1.1授权或已验证结果 | 后续仅按批准内容完善 | 无状态变更 |
+| 数据角色；supplementary161–212 | NGSIM/pNEUMA/SPMD/SUMO角色 | 既有数据能力限制 | CONSISTENT高层 | pNEUMA不恢复正式leader/TTC；SPMD不是完整消息链 | 保留并补引用来源 | Verified reading |
+| 相关工作书目；references1–19及全217行 | 已有Saberi/Duan；无Jerath/Zhang | E36–38最近邻补充 | PAPER_OUTDATED / NOT_YET_IN_PAPER | 未直接比较最接近ZOI/车辆事件图；绝对创新语句风险 | 后续按真实版本加入；Zhang不借预印本冒称journal精读 | Awaiting bibliography revision |
+
+## 重大冲突登记（不自动修改）
+
+Documented Intent：研究者A–D与P1总体因果/时间设计。Actual Implementation：此处为当前论文活动设计文本，并非已运行实验；main676处理后整组筛选，1033–1036处理组内行为主比较、无消息仅辅助。Evidence：上述带hash快照、精确行号、CORE细则I及P1 §7。Affected Files：Overleaf main/supplementary/bib的未来修订、当前definitions与Task4报告。Conflict：主分析总体、筛选时序与时间对象未对齐；Status: Awaiting Researcher Decision（论文如何改），已接受A–D不再重复待确认。停止相关科研逻辑修改，继续完成本次只读审计与文档。
+
+下方历史Task3“快照不可恢复”“物理多跳主要注释”不再代表当前事实。当前活动正文323–367已确认包含physical graph/chain；保留历史以便审计，不抹去曾有限读取的记录。
+
+---
+
+## Historical — Task3 v0.1 audit retained verbatim
+
 # Overleaf Alignment Audit
 
 日期2026-11-02；项目AAD，先前连接器返回projectId=6aa63dcd249d9edf8228ca51，host=overleaf.com。本任务早段已分段读取main.tex、supplementary.tex及references.bib全文，未写入。当前工具集切换后原文缓存不可恢复，浏览器也没有已打开的Overleaf页，故下列是**本任务读取记录的审计**，不是提交时刻重新拉取的不可变快照；没有伪造hash、精确行号或完整句子引文。后续改论文前应重新读回并补快照hash。

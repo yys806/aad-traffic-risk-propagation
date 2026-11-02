@@ -1,4 +1,12 @@
-## Current — P2 Task3 definition and calibration architecture (2026-11-02)
+## Current — P2 Task4 related work, claim boundaries and definition synchronization (2026-11-02)
+
+统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节仅摘要导航；下方旧任务区块保留为历史，冲突以统一定义当前版本和可核验证据为准。
+
+Documentation governance only: canonical version v0.2 adds scope, macro measurement, evidence vector and qualification-population definitions. Existing Observer/production interfaces are unchanged; no macro detector or fusion operator has been implemented or connected. Overleaf is read-only paper truth, canonical directory is definition truth; discrepancies are registered rather than silently overwritten. Task4 artifacts are the four reports and paper_notes, not a new runtime module.
+
+Stage0.5=CLOSED_WITH_LIMITATIONS；Stage0.6=PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS；Protocol Lock=BLOCKED；StageI=READY_ENGINEERING_ONLY；Stage1.1=NOT_AUTHORIZED。
+
+## Historical — P2 Task3 definition and calibration architecture (2026-11-02)
 
 统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节只摘要，最新定义、参数与状态以该入口及对应证据为准。
 
@@ -14,7 +22,7 @@ Six canonical documents and five Task3 reports; isolated synthetic detector, plo
 
 Evidence → definitions/ledger → CALIBRATION_ONLY audit → researcher decision. V2 has generator truth; B has model motion but no target-cohort positive/Qualified chain; A has no qualified source. State-threshold absence cannot exclude all physical mechanisms. Production architecture and gates unchanged.
 
-## Current — P2 Task2 physical-arrival architecture (2026-11-02)
+## Historical — P2 Task2 physical-arrival architecture (2026-11-02)
 
 ### 模型总体结构
 
@@ -44,7 +52,7 @@ No numeric \(\theta_P\), \(h_P\), \(q_P\), coverage, recovery, clock tolerance o
 
 This task changed no code. Existing Formal P2/rho and Observer-related interfaces remain the implementation facts to be checked in later authorized work; the operational contracts are documented in `docs/research/P2/`.
 
-## Current — P2 Task1 physical architecture (2026-11-02)
+## Historical — P2 Task1 physical architecture (2026-11-02)
 
 The physical side now has an explicit source qualification layer, time-varying edge records, time-respecting path qualification, a physical-arrival state function and a read-only Observer record layer. Formal P2 and safe perturbation are separate namespaces. Observer output cannot feed the controller or alter the simulation. No production code contract changed.
 

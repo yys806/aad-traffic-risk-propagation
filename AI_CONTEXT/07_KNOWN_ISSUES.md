@@ -1,4 +1,14 @@
-## Current — P2 Task3 scientific and audit limitations (2026-11-02)
+## Current — P2 Task4 related work, claim boundaries and definition synchronization (2026-11-02)
+
+统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节仅摘要导航；下方旧任务区块保留为历史，冲突以统一定义当前版本和可核验证据为准。
+
+Task4 active limits: Zhang journal full text unavailable (six-author metadata versus four-author SSRN); final methods/results changes Unknown. Micro/macro scope, endpoint/fusion and quality thresholds remain unvalidated. Qpre source-present analysis does not identify all-source four-cell estimand without additional support; paper main676 post-treatment unit selection and main1033–1036 primary within-treated timing conflict with current C/D directions. F0/TR/TP remain Unknown; NC novelty not proven.
+
+Task3 Overleaf snapshot/line-location limitation is now resolved for the Task4 retrieval; active main323–367 does contain the physical graph/chain, correcting the old reading note. Earlier audits remain historical. External supplements not fully reread, Hall Edie-original/year/translation limits explicit. No automatic scientific Gate change.
+
+Stage0.5=CLOSED_WITH_LIMITATIONS；Stage0.6=PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS；Protocol Lock=BLOCKED；StageI=READY_ENGINEERING_ONLY；Stage1.1=NOT_AUTHORIZED。
+
+## Historical — P2 Task3 scientific and audit limitations (2026-11-02)
 
 统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。此处只摘要导航。
 
@@ -12,7 +22,7 @@
 
 None authorizes threshold lowering, more trials, Gate/Lock changes or Stage1.1. Failure history remains.
 
-## Current — P2 Task2 physical-arrival limitations (2026-11-02)
+## Historical — P2 Task2 physical-arrival limitations (2026-11-02)
 
 ### Documented Intent
 
@@ -38,7 +48,7 @@ No new implementation/document conflict was found. Researcher choices remain unr
 
 The package is complete with limitations and cannot be treated as a scientific Gate, experiment authorization or Protocol Lock.
 
-## Current — P2 Task1 physical propagation limitations (2026-11-02)
+## Historical — P2 Task1 physical propagation limitations (2026-11-02)
 
 - SUMO source Formal P2 is currently zero; no threshold change is allowed.
 - Existing NGSIM/MiTra/SPMD evidence cannot provide a qualified independent physical witness for the AAD chain.

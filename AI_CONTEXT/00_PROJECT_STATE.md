@@ -1,4 +1,14 @@
-## Current — P2 Task3 Physical Arrival Calibration and Definition Governance (2026-11-02)
+## Current — P2 Task4 related work, claim boundaries and definition synchronization (2026-11-02)
+
+统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节仅摘要导航；下方旧任务区块保留为历史，冲突以统一定义当前版本和可核验证据为准。
+
+P2 Task4 is COMPLETED_WITH_LIMITATIONS. Canonical v0.2 has 26 definitions; researcher A–D are Agreed: scoped physical claim, micro/macro dual measurements, blind Qpre before ZC randomization, and the P1 population H*/simultaneous-band/F0 framework. Macro operators, evidence fusion, numeric thresholds and cross-population extrapolation remain Proposal/Unknown.
+
+Three journal bodies reread; Zhang journal metadata/version verified but final full text unavailable, SSRN remains explicitly separate. Current Overleaf main/supplementary/bib snapshot acquired with SHA and line-specific audit. Main unresolved paper differences are post-treatment complete-unit selection and within-treated behavioral timing as primary. No paper edit. Formal A=0; independent Qualified=0; F0/temporal precedence Unknown. Reports: docs/research/P2/P2_TASK4_FINAL_REPORT.md and its linked literature/paper/decision audits. No experiments added.
+
+Stage0.5=CLOSED_WITH_LIMITATIONS；Stage0.6=PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS；Protocol Lock=BLOCKED；StageI=READY_ENGINEERING_ONLY；Stage1.1=NOT_AUTHORIZED。
+
+## Historical — P2 Task3 Physical Arrival Calibration and Definition Governance (2026-11-02)
 
 统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节只摘要，最新定义、参数与状态以该入口及对应证据为准。
 
@@ -10,13 +20,13 @@ Reports: docs/research/P2/P2_TASK3_FINAL_REPORT.md and related protocol/results/
 
 Stage0.5=CLOSED_WITH_LIMITATIONS; Stage0.6=PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS; Protocol Lock=BLOCKED; StageI=READY_ENGINEERING_ONLY; Stage1.1=NOT_AUTHORIZED. No formal measurement/configuration, Gate, long-term route, holdout or paper change. No subsequent research task auto-started.
 
-## Current — P2 Task2 Physical Arrival and No-Message Reference (2026-11-02)
+## Historical — P2 Task2 Physical Arrival and No-Message Reference (2026-11-02)
 
 P2 Task2 is `COMPLETED_WITH_LIMITATIONS`. The documentation package now separates Physical Source Onset interval, Source Confirmation and Message Generation Eligibility; distinguishes vehicle travel direction, road coordinate direction, candidate physical influence direction and macro traffic-wave direction; and defines a first-version Qualified Witness admission proposal centered on same-lane longitudinal leader/follower response evidence. The leading physical-arrival proposal is a sustained signed relative-baseline speed state over a pre-fixed cohort, with median/quantile/proportion, net gap and density as auxiliary evidence. Physical State Baseline is kept separate from the source-present no-message distribution.
 
 The preferred no-message reference is a source-present design in which a communication-blind source qualification is completed before `Z_C` randomization, so `Z_C=0, Z_S=1` estimates the ordinary physical-arrival distribution. SUMO same-state/common-randomness pairing is auxiliary model evidence only; equal seeds do not guarantee a valid event-level counterfactual. Arrival onset interval, confirmation, observation time, right censoring, interval censoring, Unknown and clock uncertainty remain separate. No numeric \(\phi\) threshold, persistence, maximum gap, coverage, clock tolerance, path rule or region boundary was frozen. No experiment, production code/configuration change, holdout read, Protocol Lock or Push occurred.
 
-## Current — P2 Task1 Source Event and Physical Propagation operationalization (2026-11-02)
+## Historical — P2 Task1 Source Event and Physical Propagation operationalization (2026-11-02)
 
 P2 Task1 completed a model-internal operational package for Formal P2 A source events, separate safe controlled perturbation B events, time-respecting physical paths, Potential/Observed/Qualified witness states, candidate physical-arrival functions and the SUMO read-only Observer contract. The leading \(T_P\) candidate is relative-baseline sustained speed change; net gap and density are auxiliary; Formal rho/P2 is not used as the direct arrival definition. First eligible observation, actual confirmation, message-generation eligibility, arrival onset/confirmation, right/interval censoring and Unknown are separated.
 

@@ -1,6 +1,6 @@
 # AAD Evidence and Assumption Ledger
 
-版本AAD-SCI-DEF-20261102-P2T3-v0.1。类型严格区分Fact、Inference、Hypothesis、Proposal、Agreed、Unknown；证据资格不由任务状态自动提升。L编号见Task3文献审计；H编号为历史复用矩阵；V为本轮测量校准，不是正式因果证据。
+版本AAD-SCI-DEF-20261102-P2T4-v0.2。类型严格区分Fact、Inference、Hypothesis、Proposal、Agreed、Unknown；证据资格不由任务状态自动提升。L编号见Task3文献审计；H编号为历史复用矩阵；V为本轮测量校准，不是正式因果证据。
 
 | ID | 判断 / 关联定义 | 类型 | 可追溯来源 | 适用范围 / 局限 | 状态 |
 |---|---|---|---|---|---|
@@ -52,3 +52,30 @@ A1身份/时钟/道路坐标足以判定方向；失败→Unknown。A2预定窗�
 上述为待检验识别条件或Proposal，不统一标Agreed。科研结论保持Unknown，Gate与阶段不变。
 
 A10（新增范围限制）：指定阈值速度状态与“任意物理机制进入region”不可等同。强主张需独立排除证据；当前该条件未满足，见E27–E29。
+
+## Task4研究者接受记录（覆盖同事项历史状态）
+
+| ID | 当前判断 | 类型 / 状态 | 日期与直接来源 | 适用范围与未决边界 |
+|---|---|---|---|---|
+| E32 | A 有限且独立可验证物理观测域下研究时间优先性 | Agreed | 2026-11-02，Task4任务书§四A | 接受E28所指出范围限制，不主张排除全部机制；不是实证支持 |
+| E33 | B W1–W9微观框架+宏观区域状态双层测量 | Agreed方向 | 同日§四B | cohort指标不单独排除；证据融合、数值与新macro定义仍Proposal |
+| E34 | C communication-blind Qpre后随机ZC，资格子总体ITT/F0 | Agreed | 同日§四C | risk/F0同支持，四格保留，不能用该子总体代全ZS=1；不按处理后链路/Witness筛选 |
+| E35 | D P1预定H*、同时带/arrival上界和联合错误控制 | Agreed原则 | 同日§四D、P1 Estimand§7 | 非个体提前秒数；δ/η/α等数值及具体估计器未定 |
+
+E08的W1–W9框架继续使用方向已被E33接受，逐条操作质量条件仍Proposal；E18/E29的原则层由E32/E35更新，不追溯改写Task3。E13的子总体不等同边界继续成立。
+
+
+## Task4直接证据与推断增量
+
+| ID | 判断 | 类型 | 来源、数据/代码/报告 | 边界 / 状态 |
+|---|---|---|---|---|
+| E36 | Jerath已完成信息→车辆控制→宏观延误及ZOI映射 | Fact | 2024期刊正文§3–6；ZAHRLZ56/HSQNJHQL；Task4 paper note | 模型结果，非AAD风险ITT或随机F0；Verified reading |
+| E37 | Saberi宏观拥堵contagion、Duan早期预测已有先例 | Fact | 两篇期刊正文/Methods；YA2ACMZV、5DE6L9RS；Task4 notes | 物理传播/预测不等于信息干预；不构成首次排他检索证明 |
+| E38 | Zhang正式六作者、现有附件四作者SSRN；正式全文未取得 | Fact / Unknown | DOI元数据、TDM coredata、CLA3GKSX SHA及Task4版本表 | 正式方法/数据/结论变更Unknown；PARTIAL_READ |
+| E39 | 宏观时空交通状态算子应明示支持/部分穿越与抽样 | Proposal / Inference | 官方Hall章§2.1–2.2，Zotero26RQQ7EE；DEF-PHY-009 | Edie1963原文未取得；未验证AAD数值 |
+| E40 | τQ不自动等于四格τSC；Q(1)在无源臂潜在不可见 | Inference | P1 Estimand§2/3/7；CORE细则I全期望分解；P0 interference审计 | 数学分解非经验识别；跨源principal strata仍未决 |
+| E41 | 当前论文post-treatment整组筛选与主时间分析不对齐Agreed C/D | Fact（文本）/Inference（后果） | Overleaf 2026-11-02快照main676、1033–1053；Task4论文审计 | 保留原文，不自行改论文结论；Awaiting revision decision |
+| E42 | 消息生命周期+实际采用/动作+区域风险ITT+独立F0联合证据可能有差异 | Hypothesis / Proposal | 最近邻矩阵、P0相关工作及Task4创新性审计 | 未发现完整覆盖组合不等于不存在；AAD尚无合格A/witness/F0，不称NC创新成立 |
+| E43 | Task4当前Overleaf三文件字节快照已取得并审计 | Fact | 快照时间/hash见P2_TASK4_OVERLEAF_AUDIT.md；只读下载 | 覆盖Task3快照缺失限制；不追溯改写Task3记录 |
+
+E32–E35为四项研究者接受方向；E36–E43不因此成为新的Agreed科研结论。当前Formal A=0、独立Qualified Witness=0、F0/TR/TP仍Unknown，Gate不变。
