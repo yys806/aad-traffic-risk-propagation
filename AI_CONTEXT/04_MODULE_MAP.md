@@ -1,3 +1,32 @@
+## Current — P2 Task2 documentation module map (2026-11-02)
+
+### 核心文件
+
+- `docs/research/P2/P2_TASK2_PHYSICAL_ARRIVAL_AND_NO_MESSAGE_REFERENCE_SPEC.md`
+- `docs/research/P2/P2_TASK2_RESEARCHER_DECISIONS.md`
+- `docs/research/P2/P2_TASK2_LITERATURE_AND_METHOD_AUDIT.md`
+- `docs/research/P2/P2_TASK2_FINAL_REPORT.md`
+
+### 职责
+
+The specification defines source-time anchors, directed physical edges, micro/macro separation, Qualified Witness admission, \(\phi\), baseline/cohort rules, no-message reference, censoring and clocks. The decision record preserves Fact/Inference/Proposal/Awaiting distinctions. The audit records six bounded sources and applicability. The final report records completion and limits.
+
+### 核心类
+
+No production class or module was added. The documented objects are `SourceEventTime`, `PhysicalEdge`, `PhysicalPath`, `TargetState`, `ArrivalRecord` and `NoMessageReference` as research-contract concepts only.
+
+### 核心函数
+
+No production function was changed. The research-level function is \(\phi(X^*_{\mathcal T}(t),B_{\mathcal T})=1[g(X,B)\ge\theta_P]\), with explicit persistence and observation-gap rules.
+
+### 调用关系
+
+The intended later flow is source qualification → edge/path qualification → target-state evaluation → arrival/censoring summary; it runs alongside confirmation → message eligibility. It is not an authorization to implement or execute.
+
+### 主要依赖
+
+P2 Task1, P1 Task2 theory/DAG/estimand documents, P0 Task3 physical-reference design and bounded literature sources. No external service, dataset or production dependency was changed.
+
 ## Current — P2 Task1 source/physical document map (2026-11-02)\r\n\r\n- docs/research/P2/P2_TASK1_SOURCE_EVENT_AND_PHYSICAL_PROPAGATION_SPEC.md: Formal P2 A and safe perturbation B routes, time-respecting physical paths, T_P candidates, censoring and the SUMO Observer evidence contract.\r\n- docs/research/P2/P2_TASK1_RESEARCHER_DECISIONS.md: confirmed directions, proposals and Awaiting Researcher Decision parameters.\r\n- docs/research/P2/P2_TASK1_FINAL_REPORT.md: P2 Task1 completion status and limitations.\r\n\r\nNo production module was modified; Formal P2, Formal rho, experiment configuration and Gate states remain unchanged.\r\n\r\n## Current — P1 Task2 research-document map (2026-11-01)
 
 - docs/research/P1/P1_TASK2_RESEARCHER_DECISIONS_20261101.md: Agreed D1–D10 directions and Awaiting operational parameters.

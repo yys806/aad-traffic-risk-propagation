@@ -1,3 +1,33 @@
+## Current — P2 Task2 physical-arrival and reference data flow (2026-11-02)
+
+### raw data / dataset
+
+Source qualification, vehicle identities, leader/follower relations, trajectories, clocks, assignments and fixed region/cohort definitions are the required raw inputs. No new dataset or experiment output was created.
+
+### preprocessing
+
+Preserve source onset intervals, confirmation timestamps, identity/leader continuity, clock offsets and observation gaps. Do not replace interval times with sample midpoints or fill missing vehicles with zeros.
+
+### model input
+
+The state function receives a fixed cohort, observed vehicle states and a separately defined Physical State Baseline. The no-message estimand uses source-present `Z_C=0, Z_S=1` assignments with pre-treatment stratum `H` when source qualification precedes communication randomization.
+
+### post-processing
+
+Build directed physical edges, time-respecting paths, micro/macro status fields and arrival onset/confirmation records. Keep right-censored, interval-censored and Unknown states distinct. Propagate source/arrival and clock intervals to elapsed propagation bounds.
+
+### evaluator
+
+The evaluator checks source qualification, edge order, identity continuity, target response, quality, competing sources and fixed-region membership. A Qualified Witness is an evidence status, not an automatic causal proof.
+
+### metrics
+
+The leading metric is equal-vehicle signed relative-baseline speed decrease; median, quantiles, exceedance proportion, net gap and density are auxiliary. `T_R` remains a population risk-curve onset and `T_P` a physical-state arrival object.
+
+### 数据结构
+
+Minimum links are `event_id → assignment/run → vehicle/track → physical_edge/path → region/window`, with `clock_id`, onset interval, confirmation, observation, censoring and quality fields. Message-arm failures retain their `Z_C=1` assignment.
+
 ## Current — P2 Task1 source/physical evidence flow (2026-11-02)
 
 Source assignment Z_S → actual source state S* → source qualification/confirmation → physical-edge records → time-respecting path → target state function phi → arrival onset/confirmation interval. In parallel, SUMO Observer produces read-only records with run/event/vehicle/clock/quality/version keys. No-message physical reference remains a separate Z_C=0, Z_S=1 run distribution; message-arm trajectories are not relabeled as its counterfactual.

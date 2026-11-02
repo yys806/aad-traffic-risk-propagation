@@ -1,6 +1,6 @@
 {
  "schema_version": "aad.project-registry.v2",
- "last_verified": "2026-11-01",
+ "last_verified": "2026-11-02",
  "project": {
   "name": "AAD",
   "research_topic": "Connected-vehicle communication adoption and traffic-risk propagation",
@@ -479,19 +479,28 @@
   "docs/research/P1/P1_TASK2_FINAL_REPORT.md",
   "docs/research/P2/P2_TASK1_SOURCE_EVENT_AND_PHYSICAL_PROPAGATION_SPEC.md",
   "docs/research/P2/P2_TASK1_RESEARCHER_DECISIONS.md",
-  "docs/research/P2/P2_TASK1_FINAL_REPORT.md"
+  "docs/research/P2/P2_TASK1_FINAL_REPORT.md",
+  "docs/research/P2/P2_TASK2_PHYSICAL_ARRIVAL_AND_NO_MESSAGE_REFERENCE_SPEC.md",
+  "docs/research/P2/P2_TASK2_RESEARCHER_DECISIONS.md",
+  "docs/research/P2/P2_TASK2_LITERATURE_AND_METHOD_AUDIT.md",
+  "docs/research/P2/P2_TASK2_FINAL_REPORT.md"
  ],
  "current": {
   "active_experiment_id": "stage_0_5",
   "active_task": "AAD-S0.5-TASK20 completed Stage 0 closure, Stage 0.6 Pre-Lock readiness and Stage I engineering preparation",
-  "active_research_task": "P2-TASK1 completed Source Event and Physical Propagation operationalization",
+  "active_research_task": "P2-TASK2 completed Physical Arrival and No-Message Reference operationalization",
   "p1_task1_status": "COMPLETED_WITH_LIMITATIONS",
   "p1_task1_report": "docs/research/P1/P1_TASK1_FINAL_REPORT.md",
   "p1_task2_status": "COMPLETED_WITH_LIMITATIONS",
   "p1_task2_report": "docs/research/P1/P1_TASK2_FINAL_REPORT.md",
   "p2_task1_status": "COMPLETED_WITH_LIMITATIONS",
   "p2_task1_report": "docs/research/P2/P2_TASK1_FINAL_REPORT.md",
-  "why_now": "Task20 completed bounded Stage 0.5 closure, reused Task9–19 evidence, produced a Stage 0.6 Pre-Lock package and added an engineering-only Stage I mechanism fixture.",
+  "p2_task2_status": "COMPLETED_WITH_LIMITATIONS",
+  "p2_task2_report": "docs/research/P2/P2_TASK2_FINAL_REPORT.md",
+  "p2_task2_specification": "docs/research/P2/P2_TASK2_PHYSICAL_ARRIVAL_AND_NO_MESSAGE_REFERENCE_SPEC.md",
+  "p2_task2_researcher_decisions": "docs/research/P2/P2_TASK2_RESEARCHER_DECISIONS.md",
+  "p2_task2_literature_audit": "docs/research/P2/P2_TASK2_LITERATURE_AND_METHOD_AUDIT.md",
+  "why_now": "Task20 completed bounded Stage 0.5 closure and produced a Stage 0.6 Pre-Lock package; P2 Task2 now documents physical-arrival operationalization and the source-present no-message reference while preserving all Gate and experiment boundaries.",
   "next_decision_owner": "researcher",
   "task20_status": "COMPLETED",
   "stage_0_5_final_disposition": "CLOSED_WITH_LIMITATIONS",
@@ -6275,6 +6284,23 @@
    "stage_status_unchanged": true,
    "scientific_claim_eligible": false,
    "push_authorized": false
+  },
+  "p2_task2": {
+   "status": "completed_with_limitations",
+   "physical_arrival_reference_specification": "docs/research/P2/P2_TASK2_PHYSICAL_ARRIVAL_AND_NO_MESSAGE_REFERENCE_SPEC.md",
+   "researcher_decisions": "docs/research/P2/P2_TASK2_RESEARCHER_DECISIONS.md",
+   "literature_method_audit": "docs/research/P2/P2_TASK2_LITERATURE_AND_METHOD_AUDIT.md",
+   "final_report": "docs/research/P2/P2_TASK2_FINAL_REPORT.md",
+   "formal_p2_modified": false,
+   "formal_experiments": 0,
+   "pilot_runs": 0,
+   "locked_holdout_reads": 0,
+   "production_code_changed": false,
+   "protocol_lock_generated": false,
+   "stage_status_unchanged": true,
+   "scientific_claim_eligible": false,
+   "push_authorized": false,
+   "researcher_decision_status": "Proposal package complete; t_E, phi, thresholds, persistence, path admission, clock/error tolerance, source-randomization order and cohort/region boundaries remain Awaiting Researcher Decision"
   }
  },
  "history": [

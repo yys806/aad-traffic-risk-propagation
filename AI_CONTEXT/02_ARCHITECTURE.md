@@ -1,3 +1,33 @@
+## Current — P2 Task2 physical-arrival architecture (2026-11-02)
+
+### 模型总体结构
+
+The architecture now has separate source-time, physical-path, target-state and no-message-reference layers. `t_S,onset` is an interval; `t_S,confirm` gates Formal eligibility and message generation; `T_P` is derived from a parameterized regional state function plus path evidence.
+
+### 主要模块
+
+- Source qualification: Formal P2 A records and separate B actual-perturbation records.
+- Physical graph: time-varying directed interaction edges with identity, relation, state, clock and alternative-explanation fields.
+- State function: fixed-cohort baseline-relative speed state, with gap/density auxiliary measures.
+- Reference design: source-present no-message distribution and model-paired auxiliary paths.
+- Arrival audit: onset interval, confirmation, observation, right/interval censoring and Unknown.
+
+### 模块输入输出
+
+Inputs are assignment/run/source/vehicle/clock/trajectory records and a pre-fixed cohort/region/window. Outputs are edge records, path status, \(g(X,B)\), \(\phi\), arrival intervals, censoring status, `F_0` eligibility and audit metadata. The Observer remains read-only.
+
+### 模块关系
+
+`source qualification → physical edges → time-respecting path → target state → arrival status`; `source qualification → confirmation → message eligibility` is a parallel information path. No-message reference is estimated from a separate assigned arm and is not produced by relabeling message trajectories.
+
+### 重要配置
+
+No numeric \(\theta_P\), \(h_P\), \(q_P\), coverage, recovery, clock tolerance or path-admission value is configured or frozen. Formal P2 configuration remains unchanged.
+
+### 关键代码位置
+
+This task changed no code. Existing Formal P2/rho and Observer-related interfaces remain the implementation facts to be checked in later authorized work; the operational contracts are documented in `docs/research/P2/`.
+
 ## Current — P2 Task1 physical architecture (2026-11-02)
 
 The physical side now has an explicit source qualification layer, time-varying edge records, time-respecting path qualification, a physical-arrival state function and a read-only Observer record layer. Formal P2 and safe perturbation are separate namespaces. Observer output cannot feed the controller or alter the simulation. No production code contract changed.

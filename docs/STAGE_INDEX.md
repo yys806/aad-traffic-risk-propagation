@@ -1,3 +1,9 @@
+## Current — P2 Task2 Physical Arrival and No-Message Reference (2026-11-02)
+
+P2 Task2 completed a documentation-only operational package with limitations. It records onset/confirmation/generation timing, micro/macro direction semantics, directed physical edges, Qualified Witness admission, the leading fixed-cohort relative-speed \(\phi\) candidate, separate baseline and no-message reference meanings, source-confirm-before-communication randomization as the preferred design, and interval/right-censoring/Unknown/clock rules. No experiment, production code or formal configuration changed. All numeric and scientific operational choices remain Awaiting Researcher Decision.
+
+Deliverables are under `docs/research/P2/`; current Stage/Gate/Protocol Lock/Stage 1.1 states remain unchanged.
+
 ## Current — P2 Task1 Source Event and Physical Propagation (2026-11-02)
 
 P2 Task1 completed the operational definition package for Formal P2 A events, safe controlled perturbation B events, time-respecting physical paths, physical-arrival candidates and SUMO Observer evidence. Formal P2, thresholds, \(\phi\), path admission and experiment states remain unchanged. No SUMO/TraCI run, Pilot or Stage 1.1 was started.

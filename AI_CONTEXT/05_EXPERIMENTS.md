@@ -1,3 +1,45 @@
+## Current — P2 Task2 documentation-only research package (2026-11-02)
+
+### 实验编号
+
+`P2-TASK2` is a documentation and method-operationalization task, not an experiment.
+
+### 实验目的
+
+Define physical arrival, physical witness admission, regional state candidates and a source-present no-message reference for later researcher review.
+
+### config
+
+No formal or production configuration changed. Formal P2 thresholds and existing experiment configurations remain unchanged.
+
+### baseline
+
+The leading Physical State Baseline proposal is the same-run pre-source window. The no-message reference is a separate `Z_C=0, Z_S=1` population and is not a baseline substitute.
+
+### 变量
+
+Unfrozen variables include `t_E`, \(\theta_P\), \(h_P\), \(q_P\), coverage, recovery, path admission, multi-source attribution, clock tolerance and cohort/region/window boundaries.
+
+### 数据集
+
+No new dataset was read or generated. Existing project documents and bounded public literature were inspected; no locked holdout was accessed.
+
+### 主要指标
+
+The leading \(\phi\) candidate is signed relative-baseline regional speed decrease; arrival onset interval, confirmation, censoring and Unknown are separate outputs. No `F_0` numeric estimate was produced.
+
+### 状态
+
+`COMPLETED_WITH_LIMITATIONS`; researcher decisions are Awaiting. Scientific Gate, Protocol Lock and Stage 1.1 status are unchanged.
+
+### 客观实验结果
+
+No SUMO/TraCI/Pilot/formal run occurred. Existing facts retained: current SUMO Formal P2 source count is zero and no qualified independent physical witness is closed.
+
+### 输出目录
+
+Documentation outputs are under `docs/research/P2/`; there is no new `code/outputs` or evidence result directory.
+
 ## Current — P2 Task1 theory-only boundary (2026-11-02)
 
 P2 Task1 did not run SUMO or change an experiment. Formal P2 source count zero, existing physical-witness gaps, Task9/19 local-response boundaries and Task20 fixture limitations remain preserved. The package only prepares P2 Task2 definitions and evidence contracts.

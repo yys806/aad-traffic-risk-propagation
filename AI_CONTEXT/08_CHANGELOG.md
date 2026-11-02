@@ -1,3 +1,13 @@
+## Current — P2 Task2 Physical Arrival and No-Message Reference (2026-11-02)
+
+### 重要变化
+
+Added the P2 Task2 physical-arrival/no-message specification, researcher decision record, bounded literature/method audit and final report. The package separates source onset, confirmation and message eligibility; distinguishes micro interaction paths from macro wave fronts; proposes directed edge and Qualified Witness admission; recommends signed relative-baseline speed as the leading regional \(\phi\); separates Physical State Baseline from `F_0`; defines the source-confirm-before-communication-randomization preference; and records censoring/clock propagation.
+
+### AI_CONTEXT
+
+Synchronized `AI_CONTEXT/00_PROJECT_STATE.md` through `08_CHANGELOG.md`, project indexes, research status, stage index and registry. No code, configuration, experiment, holdout, Gate, Protocol Lock or Stage 1.1 state changed.
+
 ## Current — P2 Task1 Source Event and Physical Propagation (2026-11-02)
 
 Added P2 Source Event/Physical Propagation specification, researcher-decision register and final report. Defined Formal P2 A versus safe perturbation B, time-respecting physical paths, Qualified Witness states, T_P candidates/censoring and SUMO Observer fields. Updated project indexes, registry and AI_CONTEXT. No experiment, code/configuration change, holdout read, Protocol Lock or Push.

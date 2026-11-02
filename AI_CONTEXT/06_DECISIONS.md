@@ -1,3 +1,29 @@
+## 2026-11-02 P2 Task2 Physical Arrival and No-Message Reference
+
+### 日期
+
+2026-11-02
+
+### 决策内容
+
+P2 Task2 produced recommendations, not new Agreed research decisions. The recommended physical anchor is `source_onset_interval`; source confirmation gates Formal eligibility and message generation. B uses actual perturbation time. Micro same-lane longitudinal interactions are the leading Qualified Witness candidate, while macro wave fronts are auxiliary. The leading \(\phi\) proposal is equal-vehicle signed relative-baseline speed decrease on a pre-fixed cohort. The primary no-message reference is source-present `Z_C=0, Z_S=1` after communication-blind source qualification and before communication randomization; SUMO common-state pairing is auxiliary model evidence.
+
+### 相关背景
+
+P1 defines population-level `T_R` versus physical `T_P` and disallows individual cross-world seconds. P2 Task1 already separated A/B source routes, Potential/Observed/Qualified paths, arrival censoring and the read-only Observer. The literature audit supports micro/macro separation and interval-censoring boundaries.
+
+### 影响范围
+
+This changes documentation, researcher-decision tracking and project context only. It does not change Formal P2/rho, D1/B, production code, formal configuration, Gate, Protocol Lock, Stage 1.1, experiments or results.
+
+### 对应代码
+
+No code was changed. Existing Formal P2/rho and Observer-related interfaces remain authoritative facts for any later authorized implementation.
+
+### 研究者明确决定
+
+None added by Codex in this task. `t_E`, \(\phi\), thresholds, persistence, maximum gap, coverage, clock tolerances, path admission, multi-source rules and region/cohort boundaries remain `Awaiting Researcher Decision`.
+
 ## Current — P2 Task1 operational decisions (2026-11-02)
 
 P2 Task1 confirms the existing researcher directions: Formal P2 A route unchanged; safe perturbation B remains a separate model domain; SUMO Observer is read-only; first T_P candidate is sustained relative-baseline speed change with gap/density auxiliary evidence; no direct Formal rho/P2 arrival definition; no-message reference remains a separate Z_C=0, Z_S=1 run distribution. A/B scenarios, t_E, phi, thresholds, persistence, path admission, clocks, missingness and region boundaries remain Awaiting Researcher Decision. Decision/specification files are under docs/research/P2/.

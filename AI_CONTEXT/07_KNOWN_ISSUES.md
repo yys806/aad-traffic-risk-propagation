@@ -1,3 +1,29 @@
+## Current — P2 Task2 physical-arrival limitations (2026-11-02)
+
+### Documented Intent
+
+Operationalize Physical Arrival and a source-present no-message reference while preserving P1's population-level temporal-precedence boundary.
+
+### Actual Implementation
+
+Four documentation files were added. The package separates onset/confirmation/generation times, micro/macro propagation, Qualified Witness criteria, baseline/reference distributions, \(\phi\) candidates, censoring and clocks. No production implementation was changed.
+
+### Evidence
+
+P2 Task1 files; P1 Task2 theory, DAG, estimand and hypothesis documents; P0 Task3 physical-reference report; bounded literature audit with DOI/official sources; current project registry facts.
+
+### Affected Files
+
+`docs/research/P2/P2_TASK2_*.md`, the eight `AI_CONTEXT` files, `docs/PROJECT_INDEX.md`, `docs/RESEARCH_STATUS.md`, `docs/STAGE_INDEX.md` and `docs/PROJECT_REGISTRY.json`.
+
+### Conflict
+
+No new implementation/document conflict was found. Researcher choices remain unresolved for `t_E`, \(\phi\), numerical thresholds, persistence, path admission, clock/error tolerance, source-randomization order and cohort/region boundaries.
+
+### Status: Awaiting Researcher Decision
+
+The package is complete with limitations and cannot be treated as a scientific Gate, experiment authorization or Protocol Lock.
+
 ## Current — P2 Task1 physical propagation limitations (2026-11-02)
 
 - SUMO source Formal P2 is currently zero; no threshold change is allowed.

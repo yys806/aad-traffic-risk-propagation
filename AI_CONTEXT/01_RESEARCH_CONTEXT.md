@@ -18,6 +18,40 @@ The causal framework preserves the planning four-cell interaction tau_SC and the
 
 # AAD Research Context
 
+## Current — P2 Task2 operational method package (2026-11-02)
+
+### 研究背景
+
+AAD 的研究问题仍是比较信息传播链与普通物理传播链在固定目标区域中的总体时间关系。P2 Task2 only operationalizes the physical-arrival and no-message reference definitions; it does not claim the AAD hypothesis is supported.
+
+### 研究问题
+
+The task asks when a physical source state begins, when it becomes formally confirmed, how physical influence paths are admitted, how a regional state function \(\phi\) is computed, and how \(F_0(t\mid H,Z_S=1)\) is identified without confusing no-message with no-source or delivery failure.
+
+### 问题建模
+
+The physical network remains \(G_P(t)=(V,E_P(t))\). Micro vehicle interaction paths and macro speed/density wave fronts are separate objects. `T_R` remains population-level risk-effect onset; `T_P` is a qualified physical-arrival onset with interval, censoring and clock uncertainty.
+
+### 现有方法
+
+Traffic-wave theory supports macro space-time fronts; trajectory methods support candidate state-change detection; interval-censoring methods support interval event times. None of these sources supplies AAD thresholds or causal witness status.
+
+### 当前项目采用的方法
+
+Use source-onset intervals for the physical chain and confirmation for Formal P2/message eligibility. Prefer micro same-lane longitudinal response evidence for Qualified Witness. Use equal-vehicle signed relative-baseline speed decrease as the leading \(\phi\) proposal, with pre-fixed cohort/region/window and explicit coverage. Estimate the no-message reference from source-present `Z_C=0` assignments when source qualification precedes communication randomization; retain SUMO paired paths as model-only auxiliary evidence.
+
+### 当前科研假设
+
+H4 remains a population-level temporal-precedence hypothesis only. The current work cannot identify a treated event's cross-world \(T_P(0)\), and interval overlap, missing witness, unresolved censoring or clock uncertainty returns Unknown.
+
+### Research Rationale
+
+Separating onset from confirmation avoids a systematic physical-time delay. Separating micro paths from macro fronts prevents a traffic-wave detector from being treated as vehicle-level causality. A source-present randomized no-message arm preserves the intended reference population; a model pair cannot replace it.
+
+### 核心研究逻辑
+
+Source qualification → physical onset interval → time-respecting qualified edges → target-region state function → arrival onset/confirmation and censoring. In parallel, source confirmation → message eligibility → message lifecycle. The two clocks share audit fields but keep their meanings.
+
 ## Current — P0 Task 3 design boundary (2026-11-01)
 
 Task3 recommends, as Proposal, whole-event/closed-network randomized message strategy ITT with independent roadside observation and randomized no-message events for controlled real-world evidence. Existing SUMO supports future model-only mechanism preparation; HIL provides real driver behavior in simulated traffic. Access and final sample size are Unknown. Measurement independence, randomized counterfactual reference and model counterfactual are distinct. Population-level early-window comparisons do not identify individual cross-world arrival differences, and policy ITT plus lifecycle logs does not identify adoption/action mediation. The two-arm minimum complements the proposed four-cell design; no approved definition or Gate changed. See `docs/research/P0/P0_TASK3_FINAL_REPORT.md`.
