@@ -1,4 +1,22 @@
-# Overleaf Alignment — Current P2 Task4
+# Overleaf Alignment — Current P2 Task5
+
+版本：AAD-SCI-DEF-20261102-P2T5-v0.3；日期2026-11-02。Task5新取得同一AAD项目三文件快照，UTC 2026-11-02T10:07:46.887013+00:00；ZIP SHA256 7545186b7d040ea407432a7cdd8693846d24faf3d37457af7c6e5621265cf39b。三文件字节/SHA与下方Task4快照相同，故旧逐项位置继续有效，但Task5具体Proposal为本段增量，未在论文中采纳。
+
+[Task5完整差异表](../P2/P2_TASK5_OVERLEAF_AUDIT.md)给出文件字节、物理行号与审计范围。当前研究方向Agreed A–D不等于论文已修改；本任务无Overleaf写入。
+
+| 位置 | 当前论文内容 | v0.3当前科研定义 | 差异类型 | 建议 / 状态 |
+|---|---|---|---|---|
+| main323–367 | directed chain与区域首车响应 | DEF-TIME-004独立micro/macro/cohort时间族 | AWAITING_RESEARCHER_DECISION / NOT_YET_IN_PAPER | 保留行为对象，待决主arrival；不机械OR/AND |
+| main323–367及区域risk段 | 无Edie同域量 | 细则K的D/V/A、lane裁切与operator onset限定 | NOT_YET_IN_PAPER | 补可复算支持，具体公式/窗仍Proposal |
+| main673–676 | 实际匹配/四臂QC后整组筛样 | 细则M通信前Qpre，ITT保留处理后失败 | ASSUMPTION_CONFLICT | 先改资格/缺失设计，再改论文；T5-D3 |
+| main871–950 | 全体四格interaction | τQ与τSC分解及缺失支持 | NOT_YET_IN_PAPER | Qpre不对ZS共同前定，不用principal名称掩盖识别 |
+| main1033、1036 | treated行为主时间，无消息sensitivity | 细则O/P风险同时带、同资格F0主参考 | MATHEMATICAL_CONFLICT / ASSUMPTION_CONFLICT | 主分析对象需实质调整，待另授权 |
+| main1134–1136 | early risk与窗validity | 允许集合、Unknown保守界、H*/SESOI、joint错误 | PAPER_OUTDATED / NOT_YET_IN_PAPER | 估计器/检验族仍Proposal，不能写已验证 |
+| main87/90/96与references.bib | 强排除措辞，Zhang正式版尚未纳入 | Agreed有限机制范围；正式版事件图非独立因果识别 | CLAIM_OVERSTATEMENT风险 / NOT_YET_IN_PAPER | 引入最近邻、检测范围与联合识别待验证边界 |
+
+## Historical — Task4快照与逐项审计（同字节，继续提供原位置证据）
+
+# Historical Task4 Alignment
 
 版本：AAD-SCI-DEF-20261102-P2T4-v0.2；日期2026-11-02。当前审计取代下方Task3有限快照状态，保留历史，不修改任何Overleaf文件。
 

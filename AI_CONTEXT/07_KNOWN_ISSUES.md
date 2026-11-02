@@ -1,4 +1,12 @@
-## Current — P2 Task4 related work, claim boundaries and definition synchronization (2026-11-02)
+## Current — P2 Task5 measurement and identification operationalization (2026-11-02)
+
+统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节只作摘要导航；下方旧任务块为历史。
+
+Resolved Task4 journal access gap: Zhang final original and bilingual archived with SHA; formal Eq9 and results differ from SSRN. Still Unknown: Edie original, some official abbreviations/metrics, traffic-valid physical numeric parameters, detection coverage/delay, Formal A/Qualified/F0. Connected Zotero shows SSRN as original attachment on journal parent, not separately observed parent. Main676 post-treatment whole-block selection and1033–1036 primary within-treated timing conflict with current C/D; no paper edits. PAPER-SKILL helper missing remains WARN/UNVERIFIED.
+
+[Task5 final report](../docs/research/P2/P2_TASK5_FINAL_REPORT.md) · [proposal](../docs/research/P2/P2_TASK5_MEASUREMENT_AND_IDENTIFICATION_PROPOSAL.md) · [decisions](../docs/research/P2/P2_TASK5_RESEARCHER_DECISIONS.md)。
+
+## Historical — P2 Task4 related work, claim boundaries and definition synchronization (2026-11-02)
 
 统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节仅摘要导航；下方旧任务区块保留为历史，冲突以统一定义当前版本和可核验证据为准。
 

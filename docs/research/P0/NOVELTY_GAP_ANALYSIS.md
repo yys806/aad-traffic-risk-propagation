@@ -52,3 +52,9 @@ AAD 最可能形成的原创性不是“类超距”现象本身，而是一个�
 ## P2 Task4 supplement — 2026-11-02
 
 Researcher Agreed A–D now limit claims to predeclared independently observable physical mechanisms, adopt micro/macro measurements, Qpre-before-communication randomization and the P1 population temporal framework. Existing information/control/macroscopic state, event graphs and early prediction cannot be claimed as AAD inventions. A possible contribution is joint auditable same-source message lifecycle, actual adoption/action, regional-risk ITT and independent no-message physical reference. This remains Hypothesis, not an established novelty finding; the reviewed set cannot prove global firstness. Full synthesis and evidence requirements: [Task4 audit](../P2/P2_TASK4_LITERATURE_AND_NOVELTY_AUDIT.md). Formal A=0, independent Qualified=0, F0/temporal precedence Unknown; no new experiment.
+
+## Task5补充审计（2026-11-02；不覆盖历史）
+
+正式Zhang18页现已FULL_TEXT_READ_PUBLISHED（Q65YUJ89/9F39AWXN），预印本CLA3GKSX保留；版本差异见[Task5正式版审计](../P2/P2_TASK5_ZHANG_PUBLISHED_VERSION_AUDIT.md)。旧100 events与正式120 STMaps单位不同；正式F1 .875、speed error2.20ft/s不与旧值混用。正式无向事件图/BFS、物理约束和波前重建不是独立随机因果识别，也不能直接成为W1–W9。变化点/事件图/波前本身不能继续当AAD新颖性。
+
+新增Frangakis–Rubin2002与Hoeffding1963分别支持资格分层识别边界和有条件保守同时界；不是新增交通效应。联合生命周期/采用动作/区域风险ITT/同资格无消息物理基准仍为待验证贡献候选，不是全球首次或NC创新已证。A0、独立Qualified0、F0/TR-TP Unknown保持。微观、宏观、cohort时间族、共同opportunity和具体统计规则均Proposal，见[统一定义v0.3](../definitions/README.md)。本轮0新实验，旧Task3/4结论及当时访问限制保留历史。

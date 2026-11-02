@@ -1,6 +1,6 @@
 # AAD Core Scientific Definitions
 
-版本：AAD-SCI-DEF-20261102-P2T4-v0.2（研究者确认A–D；操作细节仍分层登记）。统一入口：README.md。
+版本：AAD-SCI-DEF-20261102-P2T5-v0.3（研究者确认A–D；操作细节仍分层登记）。统一入口：README.md。
 
 每项列出13个必需字段。Fact指直接可核验事实，Agreed只指研究者明确接受的方向；本次新操作规则和参数没有自动获批。历史P0/P1/P2报告保留；本文件不反向改写它们。证据ID见本目录账本与P2_TASK3_LITERATURE_AND_METHOD_AUDIT.md。
 
@@ -791,7 +791,7 @@ u^B_{i,t}=\frac{1}{n_{i,B}}\sum_{k:\,t_k\in[t_{B,end}-W,t_{B,end}),\,valid_{ik}=
 
 **相关假设：** 测量层独立于通信处理轨迹的事后筛选；source attribution与状态变化检测分开。
 
-**文献 / 定义依据：** Jerath micro→macro映射、Saberi宏观比例、Duan jam tree、Zhang预印本事件图；这些不能相互当同一对象。
+**文献 / 定义依据：** Jerath micro→macro映射、Saberi宏观比例、Duan jam tree、Zhang正式版及预印本事件图（Task5版本核查）；这些不能相互当同一对象。
 
 **实验 / 实现依据：** Task3 B的区域中间车辆响应与cohort阴性反例；Qualified独立路径仍0。
 
@@ -857,3 +857,175 @@ P1四格保持 \(\tau_{SC}=\mu_{11}-\mu_{10}-\mu_{01}+\mu_{00}=\tau_{\mathrm{ITT
 随机化独立单位是完整运行/道路时间簇，不是车辆或帧；若跨簇message或物理链泄漏，须可辩护partial interference或预先定义assignment→exposure mapping及正支持。事后实际adoption或Witness是机制观测，不能作为主要ITT入组条件。
 
 Task4 D沿用P1 H*检验：在本资格总体中，风险全网格同时上带按预定持续规则低于−δ，且同endpoint的UCB[F0^Q(H*)]<η，联合错误受控。若同时选择多个macro/micro endpoint或H*，必须预先规定检验族与预算，不能事后选最晚physical arrival。α分配/具体带仍Proposal；clock界与删失按细则E/G传播。η允许的是总体到达比例，不能把统计结论改写成“每例绝无物理影响”。当前无F0/风险曲线，不能作经验时间分离结论。
+
+
+## v0.3 当前操作化增量与旧定义适用规则（2026-11-02）
+
+本节是Task5具体化的统一入口。Task4研究者A–D仍Agreed；以下具体算子、endpoint、质量门和统计实施都是Proposal，不因文档完成而冻结。原DEF-TIME-001和DEF-PHY-008单一φ写法保留历史数学含义，现只对应明确标注的cohort状态对象；不得把无上标TP解释成覆盖micro/macro的最早物理影响。DEF-REF-002的F0在本方案中须带相应endpoint及Q标记，原全集定义不被替代。
+
+### J. 主到达对象、层级与冲突（T5-P1 / Proposal）
+
+推荐保留三个时间对象，而不是强行给出统一标量：
+
+\[
+\mathbf T_P=(T_P^{micro},T_P^{macro},T_P^{cohort}),\qquad
+F_{0,\ell}^Q(t\mid H)=P\{T_P^\ell(0)\le t\mid Z_S=1,Q_{pre}=1,H\}.
+\]
+
+ℓ只取预先登记的endpoint版本。每个对象同时存onset允许集合、确认/可用时间、有效支持域、观察质量、source归属和Unknown原因。风险与三种F0共同的是独立事件/运行资格总体、区域、时间原点和标准化H权重；macro有意覆盖该区域所有交通，不要求与风险固定cohort拥有相同车辆成员。
+
+| 对象 | 精确定义候选 | 证据能力 | 不支持 |
+|---|---|---|---|
+| T_P^micro | 在预定机制内，从指定source经逐跳W1–W9路径到固定区域的首个合格终端响应onset；多条预列路径取首个终端响应集合并保留逐路径记录 | 真实身份/关系/时序和源联系的审计证据；算法检测候选本身不够 | 完整物理因果证明、未监测机制阴性、所有车辆已受影响 |
+| T_P^macro | 固定lane-space-time算子的预定baseline-relative状态规则首次形成合格持续段的operator onset | 区域聚合交通状态达到特定强度；独立于cohort构成 | 最早微小扰动进入、无源特异路径时自动归属source |
+| T_P^cohort | 原DEF-PHY-008固定cohort signed decline持续状态的首段onset | 指定车辆群的平均下降强度与持续性 | 排除非cohort区域响应或全部物理影响 |
+
+这里“首个”在一个预定义对象内部有意义，不授权跨层最小值。micro层的Qualified是证据等级，不是因果已识别；macro无源归属时保留any-source状态和归属Unknown。宏观波前是辅助结构量，不自动转成W1–W9路径。没有合格链不意味着没有链：只要路径覆盖、响应灵敏度或身份不够，就必须在潜在物理到达分析中保留Unknown，不能用未Qualified记无到达。
+
+方案比较：分别报告保持对象清楚，最适合当前A0/独立Qualified0；双层联合判定可验证相容性，但AND到达会延迟endpoint、OR会改变为任一类检出，均不是同一物理量；机制复合对象只有在机制清单穷尽该有限主张、各层检测能力/归属和时间映射明确后才可提出，当前尚不成立。对各层分别检验/同时报告是一种统计检验族，不等于定义一个AND/OR物理事件。
+
+沿用细则H：micro+/macro−可为局部弱响应/稀释；micro−/macro+可为缺链、其他源或范围外路径；两阳性只相容，不自动因果；两阴性只在已验证能力与有限范围内“未检出”；任一Unknown不得被另一层填补。cohort−而macro/micro+不构成反证，Task3 B已有区域中间车先响应的描述性实例。
+
+证据层级推荐：L0覆盖/身份/clock可用性 → L1可复算状态候选 → L2a逐跳Qualified路径、L2b合格宏观状态（并列，非相互排序） → L3跨层相容及竞争解释登记 → L4随机化总体风险/F0联合判断。L4仍不自动识别自然中介或个体反事实。
+
+### K. Edie型同域测量与macro onset（T5-P2 / Proposal）
+
+以同向车道l的道路弧长坐标定义R_l=[x_a,x_b]，L_l=x_b−x_a；在预定网格t_j使用过去窗口A_lj=R_l×(t_j−w_M,t_j]。对所有有效交通轨迹，裁切每条轨迹在域内的片段，计算
+
+\[
+d_i(A)=\int 1\{(x_i(s),s)\in A,\ lane_i(s)=l\}\,u_i(s)\,ds,\quad
+t_i(A)=\int 1\{(x_i(s),s)\in A,\ lane_i(s)=l\}\,ds,
+\]
+\[
+D_A=\sum_i d_i(A),\quad V_A=\sum_i t_i(A),\quad
+q_A=D_A/(L_lw_M),\quad k_A=V_A/(L_lw_M),\quad u_A=D_A/V_A\ (V_A>0).
+\]
+
+前进速度u_i≥0、同方向支持是此式的范围；逆行/不同方向需单列，不能正负抵消。D单位veh·m，V单位veh·s，面积m·s；q为veh/s、k为veh/m、u为m/s。V=0时u未定义，不填0，k=0与u不可用分开记录。q=ku在同域构造时是恒等式，不证明交通平稳/均匀。
+
+部分穿越车辆：进入前、离开后、窗前和窗后全部裁去，只累计域内行程和驻留，不要求全程穿越。换道时按真实lane切分，不双计边界零测度点；lane-id/坐标不确定的段不擅分配。多lane首选分层报告；合并采用ΣD/Σ(L_lw_M)、ΣV/Σ(L_lw_M)、ΣD/ΣV，是lane长度归一量，不能当总横断面流量。不同道路/方向/窗口不能混合q/k/u，更不能用点流量配异时密度构造速度。
+
+离散轨迹裁切：只对相邻有效观测段在声明的运动学模型下求边界交点；linear interpolation仅为数值模型，不是真实连续观测。保留原点、段长、裁切方法和边界/速度误差；长缺口不桥接。边界含混时报告D/V的上下界，不能只选方便的线性结果。若无法约束未见车辆总量，macro全交通状态Unknown。
+
+稀疏抽样：已知且可辩护的包含概率p_i(A)>0时，可研究Σd_i/p_i、Σt_i/p_i的HT型总量；二者比值并非有限样本无偏，不独立证明缺失可忽略。概率未知或按驾驶状态选择时只称observed-traffic statistic，不外推全交通。速度可见比例不等于车时/车距覆盖；分别登记空间时间传感覆盖、轨迹完整度、身份质量及抽样机制。
+
+对照量：完整瞬时空间普查可报k_snap=N(t)/L及u_snap=N(t)^{-1}Σu_i(t)，速度需同钟运动学信息，单张静态照片不能直接测速度。点车流算术平均是time-mean的采样对象；相同距离完整穿越的harmonic mean在相应条件下等于distance/mean journey time，但不普遍等于变速、部分穿越时的u_A。Hall §2.2明确讨论这些不同定义及部分穿越，不能机械使用一个harmonic公式。Hall的0.5km建议和常规15min流量窗口是其测量应用背景，不是AAD早窗参数。
+
+macro状态以\(\mathbf m_A(t)=(q_A,k_A,u_A)\)分别报告；基线\(\mathbf m_A^B(t)\)须同lane/区域/窗口算子，且全部基线支持早于L_S。推荐速度下降作为首要macro候选，q/k作为预定补充与一致性检查，具体多变量规则尚待决，不把q=ku的三个量当三份独立证据。归一速度变化、标准化阈值须另审计近零baseline和方差，不默认优于绝对有符号差。
+
+重要时间限定：rolling窗口末端t是数据可用索引。首次正窗口不是瞬时物理起点；相邻窗口可夹定“算子状态跨阈”的区间，但窗内最早车级响应可能更早。必须同时保存整段测量支持[t−w_M,t]、operator onset、确认与raw-response候选。仅减去w_M不能校正阈值/聚合造成的所有检测延迟；无独立延迟界时不把T_P^macro解释为原始最早物理影响。增大w_M可能降噪并延迟/稀释早期波，不能为了更晚到达选择窗口。
+
+### L. W1–W9实际提取流水线（T5-P1/P2 / Proposal）
+
+原W1–W9不替换。先做道路/lane坐标与实体映射 → 按换道、leader替换、身份断裂分段 → 仅在真实leader→follower持续关系上提取源/响应变化候选 → 把检测误差/clock传播成区间 → 对每跳逐项审核W1–W9 → 路径时间与实体连接 → 终端到区记录。真实关系证据优先使用当前只读Observer明确返回的leader ID和net gap；纯空间近邻只给Potential。若候选detector用事后全轨迹拟合，另记算法look-ahead/availability，不把离线检测当可在线确认。
+
+Zhang正式版（Q65YUJ89/9F39AWXN）CUSUM→候选PELT→事件图/BFS可作为候选提取、lane分段和波前辅助方法；其p5无向图及时间/距离/后向速度过滤不核验真实leader，不足W1–W9。正式版删去预印本第四spatial-deviation条件、增加明确同车道/换道段说明，参数变更详见Task5版本审计；不要照搬β=50、120ft、10s、[-25,-5]ft/s或70%波段覆盖为AAD质量门。候选集合上的PELT最优不等于在全部采样点上全局最优，CUSUM漏候选仍可能漏物理响应。
+
+W6依现有严格区间顺序U_source<L_response；重叠只记顺序Unknown，不能中点排序或人为加反应时。多跳中间实体既承接入边响应又提供出边作用，必须为同一已审计响应段，不能把该车更晚另一独立制动拼接。多源竞争不能凭最短路径择源；保留全部可行源、共同原因与未观测上游状态，source-specific归属Unknown可与any-source状态并存。W8包括信号、汇入/换道、需求波、其他制动、边界控制及通信引发动作；无消息臂也有普通物理传播。
+
+### M. Qpre两臂、四格与源机会（T5-P3 / Inference / Proposal）
+
+时间顺序为源前背景H0 → ZS/源过程 → source confirmation和Qpre → ZC随机化 → 消息/动作/结果；只在Qpre=1的source-present事件随机ZC，可识别\(\tau_Q(t)\)与\(F_{0,\ell}^Q\)，需要资格对ZC无提前暴露、可审计正概率、稳定policy、干扰簇与结果/缺失质量。source确认前已到达事件仍在该总体，不能事后删除；Qpre不得使用未来实际delivery/verification/adoption/action/Qualified状态。
+
+四格\(\tau_{SC}=\mu_{11}-\mu_{10}-\mu_{01}+\mu_{00}\)要求共同源前总体/结果支持及四格干预明确。细则I分解继续有效；τQ不是交互。若非Q不分配通信，则“启用通信只对Q送消息”的dynamic policy可能定义assignment-level效应，但要明确source-absent/no-Q的policy以及四格随机化，不能不加说明把τ非Q填0。source-present qualification是跨ZS的处理后量，Q(1)在ZS=0不可直接观察；即使设Q(0)=0也无法识别无源臂的Q(1)成员。Frangakis–Rubin2002 §2–3/6明确principal stratum定义与成员缺失估计不同，随机化不补齐潜在资格。
+
+推荐并列报告当前资格两臂与最终全体四格；不改矩阵。若未来要共享资格，候选为源分配前共同source-opportunity（路段、时段、预选车辆/场景）和公共clock，它是新的共同前变量，而非把已发生源确认回写到无源臂。须研究者另定其目标总体和支持。另一选项principal-stratum交互需额外可辩护模型/界限/假设；事后加权不能自动创造未测Q(1)及非Q通信支持。随机ZS/外生源机会若尚未成立，四格对比只是模型情景差分，不自动有一般随机化因果解释。
+
+独立单位为实际随机化的完整run/道路时间簇，或预设matched-block；四次同seed运行若构成同一block则是一个重复，不是四个独立样本。多个车辆/帧/事件共享运行背景时须保留簇。首版建议每独立单元按盲规则预列一个index source，或明确cluster-weighted事件结果；不能把事件池假设iid。事件数受通信影响时后续事件不能新增主样本。跨簇干扰需partial-interference证据/预定exposure mapping与正支持；复用P0方法，不新增随机矩阵。
+
+### N. onset、观察机制与允许时间集合（T5-P4 / Proposal）
+
+推荐物理原点tE为\([L_S,U_S]\)代表的source onset，而非confirmation；具体映射仍待研究者。clock先校正外扩，source与arrival相对时间允许集至少覆盖\([L_A-U_S,U_A-L_S]\)，保留共享误差可抵消的实证依据而非默认独立平方和。消息最早生成仍在正式source confirmation之后，Formal P2的持续阈值不变。风险时间网格也受source对齐误差，不能只扩TP一侧。
+
+每独立单元、endpoint存允许集合\(\mathcal S_{i\ell}\)（可为区间并集，含∞），使目标onset属于该集合；不把区间中点或上端点代精确时间。支持以下分类：
+
+| 观察情况 | 允许集合/规则 | 禁止操作 |
+|---|---|---|
+| 精确记录且有依据 | {t}，仍保留clock误差 | 把首次观察自动叫精确crossing |
+| 左阴性、右阳性且确认持续 | (L,U]外扩包络，可用闭区间保守包络 | 只用U |
+| 入场时已经阳性 | 左删失(−∞,U]或已知物理下界 | 设onset=首次样本 |
+| 到C可排除全部此前合格onset | (C,∞]，right-censored | 把最后时刻未确认的阳性记>C |
+| 持续段未完成/漏测可能藏住短段 | 更早可能onset区间或并集；必要时全域 | 用最后阴性抹去漏测历史 |
+| identity/coverage/clock/源归属不够 | 全允许域/Unknown，注明原因 | Unknown=∞，删样本或补0 |
+
+速度状态可恢复，后续阴性不等于之前从未发生；普通不可逆failure inspection模型只有在first-event历史可被可靠重建时适用。末端需为候选onset预留既定h及质量确认观察，不能仅将follow-up C减常数而忽略长缺口/变化点look-ahead。不得为未来结果追溯改窗口。竞争源不是普通独立删失；source归属不明用Unknown，预设first-cause对象才考虑cumulative incidence。
+
+### O. 保守CDF界与风险同时带（T5-P6 / Proposal；无本轮数值结果）
+
+在同一Qpre总体、H层和endpoint中，令
+\[
+a_{i\ell}(t)=1\{\mathcal S_{i\ell}\subseteq(-\infty,t]\},\quad
+b_{i\ell}(t)=1\{\mathcal S_{i\ell}\cap(-\infty,t]\ne\varnothing\}.
+\]
+若集合包含真实onset，则逐单位有a≤1{T≤t}≤b；样本CDF识别界是\([\bar a,\bar b]\)。Unknown贡献[0,1]，早于C的可靠右删失可贡献[0,0]，并不要求删失独立。这首先是测量识别界，不能直接叫置信区间。未Qualified而观察机制不够可靠时集合必须扩展，不能人为收窄为右删失。
+
+可执行保守首候选：K_P为预定endpoint×time×H层界限总数，n0为该独立层/臂单位数，在iid代表性独立事件抽样，或固定资格有限总体中按完整随机ZC进行简单无放回取样时，Hoeffding1963 Theorem1(2.3)/§6给出
+\[
+\epsilon_P=\sqrt{\log(K_P/\alpha_P)/(2n_0)},\quad
+U_{0\ell}(t)=\min\{1,\bar b_{\ell}(t)+\epsilon_P\}.
+\]
+n0=0或该H层没有随机支持时直接标Unknown，不计算该式。联合失败概率≤αP（union bound，不需各时间或层独立）。固定单个H*可只纳入预定endpoint/层数；扫描时间/区域/endpoint必须增加K或用另行验证的同时方法。分层H用预定共同权重Σw_hU_h，不把n相加冒充iid；簇内事件比例只识别相应cluster-weighted CDF，未加权事件CDF是另一对象。不同随机概率/受限分配不能直接套这条SRS公式，需设计相应HT/随机化界或按可辩护层处理。
+
+样本任意Unknown比例会抬高\(\bar b\)；若该比例已≥η，本保守流程不可能支持F0<η。完整精确独立数据、固定H*可使用单侧binomial exact上界；零arrival的上界为\(1-\alpha_P^{1/n_0}\)，非0；要求低于η意味着\(n_0>\log\alpha_P/\log(1-\eta)\)（各层预算相应替换）。这只是可行性约束，不给当前样本量或参数数值。
+
+Turnbull型NPMLE仅在可辩护非信息性inspection/coarsening机制、正确first-event历史及支持下作效率/描述备选；不把cube-root或非正则问题套普通正态bootstrap。KM仅限exact+独立/条件独立right censoring。信息性失访、unknown归属、可恢复状态整段缺失不能机械输入KM/Turnbull。已有JSS interval-censoring原文L14支持算法边界，本轮不重建体系或虚构F0。
+
+风险侧沿用P1\(\tau_Q(t)\)，不是行为首响应。若Formal结果已有经证据支持的有限范围[A_R,B_R]（不对未界定DRAC擅设上限），单元结果有有效测量包络[Y_i^L,Y_i^U]，每臂n_z且J_R为网格×结果×层数，保守候选为
+\[
+e_z=(B_R-A_R)\sqrt{\log(2J_R/\alpha_R)/(2n_z)},\quad
+U_R(t)=\overline Y_1^{\,U}(t)-\overline Y_0^{\,L}(t)+e_1+e_0.
+\]
+对完整随机分配的固定有限总体可按每臂无放回浓缩，或iid代表性单位按独立有界均值浓缩；目标分别是该有限总体ATE或超总体效应，不能悄然外推。测量包络代入保守方向来自其逐单元支配性，不要求missing-at-random。无有限结果界或有效包络时此路线不可用，不能任意clipping改变Formal rho/P2。效率替代是与实际设计相容的cluster max-t/bootstrap同时带，但需足够独立簇/矩条件与独立覆盖验证，当前无数据验证，不宣称已运行。Fisher sharp-null随机化检验可用真实分配重排获得exact p，不能不加假设把其反演当异质平均效应/SESOI全带。
+
+风险source对齐不确定时，对所有允许clock/source映射计算结果时间包络，再构造全网格带；若只能观测离散网格，则只作网格层持续判定。逐点CI、把帧当n、按最有利对齐或时间挑窗均不允许。
+
+### P. P1联合早窗判定与数据流程（T5-P6 / Proposal）
+
+预先指定H*、网格、持续跨度、SESOI δ、到达比例η、所有endpoint/层/结果/区域检验族，以及
+\[\alpha_R+\alpha_P+\alpha_{clock}+\alpha_{measure}\le\alpha.\]
+确定性有实证支持的clock/测量包络无需额外概率预算；估计的包络/检测漏报界需计其联合失败，不默认零。若容许的真实机制漏检率无上界，潜在物理到达结论Unknown；对detector-defined endpoint的推断不能自动替代对所有真实扰动的推断。
+
+对每个endpoint分别要求\(U_{0\ell}(H^*)<\eta\)，风险全网格同时上带在预定持续段均<−δ且该段完成于H*之前。报告每层能支持哪一种有限范围主张；不由这一检验族自动发明新的OR/AND arrival。若需跨层统一排除主张，必须先接受机制覆盖与联合endpoint定义，当前不批准。保守union预算即使层间相关也有效，可能较低效，具体分配尚未冻结。
+
+\(T_R^{upper}\)可取在同时带覆盖条件下首个合格持续段的开始网格点，因真效应该段已达到SESOI，真网格起点不晚于它；确认须等待整段，报告开始与确认不同。TP侧保留P1固定H*：F0(H*)<η仅说明该总体在该窗到达比例小，非每例未到达。若另用\(\sup\{t:U_{0\ell}(t)<\eta\}\)作η分位数下界，须说明有限网格和端点规则，仍Proposal，不是最早物理到达下界。重叠、clock无界、质量未知或同域不满足均为not established / Unknown，不是直接否定H1。
+
+| 步骤 | 必要输入 | 输出/质量门 |
+|---|---|---|
+| 0 预定设计 | scope、endpoint版本、Q规则、H/区域/窗口、分配与独立单位 | 不含处理后筛样的设计记录；未知项集中待决，不冒充Protocol Lock |
+| 1 原始QC | source、真实实体/leader、全区轨迹、消息/控制器、clock、assignment | 原始与derived版本/哈希、失败原因；所有assignment保留 |
+| 2 构建时间 | source/arrival crossing、持续、确认、look-ahead、误差 | 每层允许集合、删失/Unknown及全部支持；不取中点 |
+| 3 物理CDF | Qpre、无消息、集合、预定H权重 | [a,b]识别界；有条件有效上带；无法识别则Unknown |
+| 4 风险ITT | 两臂全部固定域风险曲线、随机概率、测量包络 | τQ及全网格同时带；post-delivery/adoption失败仍ITT |
+| 5 联合审核 | 同总体/同clock/支持、预定错误预算 | 效应持续、arrival罕见与联合覆盖；未通过原因分类 |
+| 6 最终结论 | 全部上述证据和scope限制 | endpoint-specific population early-window / not established / measurement failure / Unknown；无个体提前秒数 |
+
+本流程没有生成实验数据或统计结果。Formal A0、独立Qualified0，意味着现阶段只能交付流程和输入契约；不能把synthetic768或B60当这些步骤的正式样本。
+
+
+## DEF-TIME-004 — 分层物理到达时间族 / Layer-specific Physical Arrival Times
+
+**Definition ID：** DEF-TIME-004
+
+**中文 / English：** 分层物理到达时间族 / Layer-specific Physical Arrival Times
+
+**数学表达：** \(\mathbf T_P=(T_P^{micro},T_P^{macro},T_P^{cohort})\)，对应\(F_{0,\ell}^Q\)。
+
+**通俗解释：** 不同物理问题分别计时并报告资格、支持与Unknown，不创造一个含混的最早/最晚标量。
+
+**适用范围：** 预先定义的模型内机制、区域和资格总体。
+
+**必要输入：** 各层测量版本、W1–W9、同域macro轨迹、cohort面板、clock与允许时间集合。
+
+**计算 / 判定：** 按细则J–P；micro首个合格路径终端响应，macro首个合格算子状态，cohort沿用原φ。
+
+**相关假设：** 覆盖与检测能力、源归属及时间映射单独成立；不是互相代替。
+
+**文献 / 定义依据：** Zhang正式§3/4；Hall§2.1–2.2；P1§7；Task4 Agreed A–D。
+
+**实验 / 实现依据：** Task3 B的区域/cohort不一致支持分开测量的必要性；当前没有Formal A到达数据。
+
+**局限性：** 不能识别任意物理机制的第一到达，宏观聚合与阈值延迟不能靠减一个窗口完全校正。
+
+**当前状态：** Proposal / Awaiting Researcher Decision；双层方向Agreed并不冻结此时间族。
+
+**与现有定义关系：** 限定DEF-TIME-001旧单一φ写法；补DEF-PHY-009/010，不改Formal P2、rho或论文符号。

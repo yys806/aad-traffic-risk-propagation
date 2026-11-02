@@ -1,6 +1,6 @@
 # AAD Symbol Register
 
-版本：AAD-SCI-DEF-20261102-P2T4-v0.2。以下是当前入口及映射；新记号是Proposal。论文采用情况以OVERLEAF_ALIGNMENT.md为准。
+版本：AAD-SCI-DEF-20261102-P2T5-v0.3。以下是当前入口及映射；新记号是Proposal。论文采用情况以OVERLEAF_ALIGNMENT.md为准。
 
 | 符号 | 中文含义 | English | 单位 | 首次定义位置 | 当前定义来源 | 状态 |
 |---|---|---|---|---|---|---|
@@ -52,3 +52,19 @@ Task2的g_v^mean(t)是速度偏差的临时通用函数名，与论文net-gap g�
 | E_P, E_micro,E_macro,E_cohort | 双层及cohort证据记录 / evidence vector | structured record | DEF-PHY-010 | Proposal；不定义新二值到达 |
 
 Qpre/F0^Q的设计方向现为Task4 C Agreed；v0.1表中Proposal只保留给符号和具体估计实施。新增宏观符号服务不同测量对象而有必要；不得把u_A与固定cohort平均下降、g净间距或ρ风险混用。
+
+
+## Task5增量（v0.3，新增记号均Proposal）
+
+| 符号 | 中文 / English | 单位 | 首次/当前来源与创建理由 | 状态 / 旧映射 |
+|---|---|---|---|---|
+| \(\mathbf T_P,T_P^{micro},T_P^{macro},T_P^{cohort}\) | 分层时间族 / layer-specific arrival times | s / allowed set | DEF-TIME-004 / CORE J；区分三个物理问题 | Proposal；旧φ的TP仅映射cohort，未改论文phy-resp |
+| \(F_{0,\ell}^Q\) | 分层资格无消息CDF / endpoint-specific eligible no-message CDF | probability | CORE J/O；确保endpoint/总体不混 | Proposal；原全体F0不被覆盖 |
+| \(A_{lj},L_l,w_M,D_A,V_A,\mathbf m_A\) | lane时空域、长度、macro窗、车距/车时总量、状态向量 | m·s,m,s,veh·m,veh·s,vector | CORE K；复用q_A/k_A/u_A族而非新造速度符号 | Proposal；w_M不是baseline W；V_A为总车时非车辆集合 |
+| \(\mathcal S_{i\ell},a_{i\ell}(t),b_{i\ell}(t)\) | 允许时间集合与CDF测量界指标 / allowed-time set and bound indicators | set,binary,binary | CORE N/O；Unknown需显式上下界 | Proposal；b_iℓ不是clock offset b(t)，a_iℓ不是单车加速度a_v,t |
+| \(K_P,J_R,n_z,\epsilon_P,e_z\) | 预定界限族规模、风险族规模、独立臂单位数、浓缩半径 / family sizes, units, margins | count/count/count/probability/risk | CORE O；给出可执行同时覆盖充分条件 | Proposal；n不是车辆或帧数 |
+| \(A_R,B_R,Y_i^L,Y_i^U\) | 有依据风险范围及测量包络 / validated outcome range and observation envelope | risk | CORE O；不对DRAC假设任意上限 | Proposal；非采用A*、非physical baseline B_T |
+| \(\alpha_R,\alpha_P,\alpha_{clock},\alpha_{measure}\) | 联合错误分配 / joint error allocation | probability | CORE P，细化P1 α | Proposal，数值未定；确定性误差界不耗概率预算 |
+| \(H_0\) | 跨源分配前共同背景 / pre-source background | mixed | CORE M；区别已受源影响的pre-ZC背景H | Proposal辅助记号，不改P1既有H含义 |
+
+上述上标/下标不可省略导致重名。t_E推荐onset interval仍非Agreed；物理baseline与F0不同；g净间距、pair闭合速度及Formal rho/P2全部保留既有语义。

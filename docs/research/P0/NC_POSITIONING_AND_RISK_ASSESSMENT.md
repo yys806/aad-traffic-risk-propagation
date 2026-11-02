@@ -39,3 +39,9 @@ NC 评估仍不构成发表保证；阶段状态和 Gate 不因本附录改变�
 ## P2 Task4 supplement — 2026-11-02
 
 NC positioning remains a candidate scientific question without an empirical identification closure. Main risks are not solved by a lower speed threshold: regional response can precede fixed-cohort alarm; Qpre is pre-ZC but post-ZS; selected complete matched four-cell units may alter the target estimand; within-treated behavioral timing is not population risk-versus-no-message precedence. Jerath, Zhang (formal text still unavailable), Peng, Saberi and Duan constrain novelty. The potentially distinctive joint contract needs falsifiable transferable mechanism results, not only more complete engineering logs. See [Task4 final report](../P2/P2_TASK4_FINAL_REPORT.md) and its linked synthesis. No NC innovation or causal hypothesis is declared proven; Gate/Stage remain unchanged.
+
+## Task5补充审计（2026-11-02；不覆盖历史）
+
+正式Zhang18页现已FULL_TEXT_READ_PUBLISHED（Q65YUJ89/9F39AWXN），预印本CLA3GKSX保留；版本差异见[Task5正式版审计](../P2/P2_TASK5_ZHANG_PUBLISHED_VERSION_AUDIT.md)。旧100 events与正式120 STMaps单位不同；正式F1 .875、speed error2.20ft/s不与旧值混用。正式无向事件图/BFS、物理约束和波前重建不是独立随机因果识别，也不能直接成为W1–W9。变化点/事件图/波前本身不能继续当AAD新颖性。
+
+新增Frangakis–Rubin2002与Hoeffding1963分别支持资格分层识别边界和有条件保守同时界；不是新增交通效应。联合生命周期/采用动作/区域风险ITT/同资格无消息物理基准仍为待验证贡献候选，不是全球首次或NC创新已证。A0、独立Qualified0、F0/TR-TP Unknown保持。微观、宏观、cohort时间族、共同opportunity和具体统计规则均Proposal，见[统一定义v0.3](../definitions/README.md)。本轮0新实验，旧Task3/4结论及当时访问限制保留历史。

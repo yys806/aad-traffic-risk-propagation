@@ -1,4 +1,12 @@
-## Current — P2 Task4 related work, claim boundaries and definition synchronization (2026-11-02)
+## Current — P2 Task5 measurement and identification operationalization (2026-11-02)
+
+统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节只作摘要导航；下方旧任务块为历史。
+
+Recommend separate micro/macro/cohort arrival objects with endpoint-specific F0^Q, not an OR/AND scalar. Same lane-space-time D/V/A measurement distinguishes macro operator onset from first raw physical influence. Qpre precedes ZC but may follow ZS; qualified two-arm τQ and full four-cell τSC need different support. Allowed-time sets and design-valid simultaneous bounds retain Unknown/clock/multiplicity; no empirical time separation or numeric thresholds established. Joint lifecycle/risk/reference contribution remains Hypothesis.
+
+[Task5 final report](../docs/research/P2/P2_TASK5_FINAL_REPORT.md) · [proposal](../docs/research/P2/P2_TASK5_MEASUREMENT_AND_IDENTIFICATION_PROPOSAL.md) · [decisions](../docs/research/P2/P2_TASK5_RESEARCHER_DECISIONS.md)。
+
+## Historical — P2 Task4 related work, claim boundaries and definition synchronization (2026-11-02)
 
 统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节仅摘要导航；下方旧任务区块保留为历史，冲突以统一定义当前版本和可核验证据为准。
 

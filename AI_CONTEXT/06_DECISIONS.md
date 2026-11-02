@@ -1,4 +1,12 @@
-## Current — P2 Task4 related work, claim boundaries and definition synchronization (2026-11-02)
+## Current — P2 Task5 measurement and identification operationalization (2026-11-02)
+
+统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节只作摘要导航；下方旧任务块为历史。
+
+Task4 A–D remain Agreed. Task5 T5-D1–D7 are Proposal/Awaiting: primary arrival family, macro support/rule, eligible two-arm vs four-cell opportunity, source onset origin, parameter loss/calibration, estimator/family/joint budget, later paper revision. No new substantive choice is auto-Agreed. Concrete source opportunity, fusion and thresholds need researcher review; independent evidence supports method boundaries, not frozen parameters.
+
+[Task5 final report](../docs/research/P2/P2_TASK5_FINAL_REPORT.md) · [proposal](../docs/research/P2/P2_TASK5_MEASUREMENT_AND_IDENTIFICATION_PROPOSAL.md) · [decisions](../docs/research/P2/P2_TASK5_RESEARCHER_DECISIONS.md)。
+
+## Historical — P2 Task4 related work, claim boundaries and definition synchronization (2026-11-02)
 
 统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节仅摘要导航；下方旧任务区块保留为历史，冲突以统一定义当前版本和可核验证据为准。
 

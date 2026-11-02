@@ -1,4 +1,10 @@
-## Current — P2 Task4 literature, claim and definition audit (2026-11-02)
+## Current — P2 Task5 measurement / temporal identification (2026-11-02)
+
+P2 Task5 COMPLETED_WITH_LIMITATIONS；[统一定义v0.3](research/definitions/README.md)，27定义，A–D继续Agreed、新算子/主对象/统计规则Proposal、数值Unknown。[最终报告](research/P2/P2_TASK5_FINAL_REPORT.md)、[测量识别方案](research/P2/P2_TASK5_MEASUREMENT_AND_IDENTIFICATION_PROPOSAL.md)、[文献审计](research/P2/P2_TASK5_LITERATURE_AND_METHOD_AUDIT.md)、[Zhang正式版](research/P2/P2_TASK5_ZHANG_PUBLISHED_VERSION_AUDIT.md)、[论文差异](research/P2/P2_TASK5_OVERLEAF_AUDIT.md)、[待决清单](research/P2/P2_TASK5_RESEARCHER_DECISIONS.md)。
+
+正式Zhang全文已读并Zotero归档，新增2方法条目；91 unique AAD parents/11 nodes。0新实验；Task3 768合成/B60只限校准。Formal A0、独立Qualified0、F0/TR-TP Unknown。Stage0.5 CLOSED_WITH_LIMITATIONS；0.6 PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS；Protocol BLOCKED；StageI READY_ENGINEERING_ONLY；Stage1.1 NOT_AUTHORIZED。不改生产科研逻辑、阈值或Overleaf；旧报告/阶段记录保留历史。
+
+## Historical — P2 Task4 literature, claim and definition audit (2026-11-02)
 
 P2 Task4 is COMPLETED_WITH_LIMITATIONS. [Canonical definitions](research/definitions/README.md) v0.2 contains 26 definitions; researcher A–D are Agreed, concrete operators/fusion/numeric parameters remain Proposal/Unknown. [Final report](research/P2/P2_TASK4_FINAL_REPORT.md), [cross-paper audit](research/P2/P2_TASK4_LITERATURE_AND_NOVELTY_AUDIT.md), [Overleaf audit](research/P2/P2_TASK4_OVERLEAF_AUDIT.md), [decisions](research/P2/P2_TASK4_RESEARCHER_DECISIONS.md).
 

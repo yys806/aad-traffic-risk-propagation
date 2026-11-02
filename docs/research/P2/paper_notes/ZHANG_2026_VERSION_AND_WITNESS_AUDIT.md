@@ -1,3 +1,7 @@
+## Current — Task5正式版已取得并全文审计（2026-11-02）
+
+正式版FULL_TEXT_READ_PUBLISHED，18页；复用Q65YUJ89，新原件9F39AWXN、双语V72AJRHW，旧SSRN CLA3GKSX字节不变。完整[正式/预印本对照](../P2_TASK5_ZHANG_PUBLISHED_VERSION_AUDIT.md)及安全来源审计取代下方“正式版不可得”的当前限制；下文保留为Task4历史。波速Eq9由倒数修为位移/时间、第四约束列表变化、100 events与120 STMaps计数不同、正式F1 .875与speed error2.20ft/s均分别登记。图方法仍为undirected/BFS，不能自动通过W1–W9或证明因果。未审作者代码/原始标注复现。
+
 # Zhang 2026：正式版本核查与物理 Witness 审计
 
 日期：2026-11-02。状态：正式期刊版 **PARTIAL_READ / FULL_TEXT_UNAVAILABLE**；SSRN全文精读沿用Task3，Task4复核首页、摘要、引言及方法记录。不能将预印本阅读升级成期刊全文阅读。

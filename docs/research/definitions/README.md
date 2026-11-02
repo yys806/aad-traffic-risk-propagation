@@ -1,7 +1,7 @@
 # AAD 统一科研定义事实源
 
 状态：`Active / Proposal-with-limitations`
-当前版本：`AAD-SCI-DEF-20261102-P2T4-v0.2`
+当前版本：`AAD-SCI-DEF-20261102-P2T5-v0.3`
 更新日期：2026-11-02
 
 `docs/research/definitions/` 是 AAD 当前科研定义、符号、参数、假设和证据状态的唯一统一入口。它承载当前定义，不替代源码、配置、实验产物、Overleaf 正文或研究者决策；这些事实源分别负责实现事实、运行事实和论文表述。其他 Task 报告可以保留历史记录，但不能另立一个与本目录冲突的最新定义版本。
@@ -31,6 +31,8 @@
 
 ## 当前入口
 
+- Task5当前[完整报告](../P2/P2_TASK5_FINAL_REPORT.md)、[操作化方案](../P2/P2_TASK5_MEASUREMENT_AND_IDENTIFICATION_PROPOSAL.md)、[集中决策](../P2/P2_TASK5_RESEARCHER_DECISIONS.md)。
+
 - 当前核心定义：[CORE_SCIENTIFIC_DEFINITIONS.md](CORE_SCIENTIFIC_DEFINITIONS.md)
 - 当前符号登记：[SYMBOL_REGISTER.md](SYMBOL_REGISTER.md)
 - 当前参数和校准：[PARAMETER_AND_CALIBRATION_REGISTER.md](PARAMETER_AND_CALIBRATION_REGISTER.md)
@@ -55,9 +57,19 @@
 
 历史v0.1状态：当时均值算子、tE、数值参数、子总体转换和claim范围仍Awaiting。v0.2由Task4明确接受A–D方向，覆盖其中claim范围与资格顺序的等待；具体算子、跨总体转换与参数仍未定。定义目录不通过任何科研Gate。
 
-## v0.2 — Task4当前接受记录（2026-11-02）
+## 历史v0.2 — Task4接受记录（A–D继续有效）（2026-11-02）
 
 研究者已在Task4任务书§四明确接受A有限观测范围主张、B微观/宏观双层物理测量、C通信前盲法Qpre后随机化及资格子总体、D沿用P1总体早窗统计框架，均为Agreed。此记录覆盖v0.1末段对这些方向的Awaiting；tE、均值算子、具体符号映射/质量门/阈值/置信预算、微宏融合仍待定。不得把方向接受写成已有科学证据。详见CORE当前约束及证据账本；历史Task3文件和失败记录保留。
 
 
-当前共26定义：v0.1的22条保留，新增DEF-SCOPE-001、DEF-PHY-009/010和DEF-POP-001（13字段齐全）。宏观Edie型算子与证据向量是Proposal；原cohort φ保留公式并限定名称，不再承担全部物理排除。当前论文审计：[P2 Task4](../P2/P2_TASK4_OVERLEAF_AUDIT.md)；综合报告：[P2 Task4](../P2/P2_TASK4_FINAL_REPORT.md)。Task4未新增实验、未改论文或AGENTS。
+v0.2当时共26定义：v0.1的22条保留，新增DEF-SCOPE-001、DEF-PHY-009/010和DEF-POP-001（13字段齐全）。宏观Edie型算子与证据向量是Proposal；原cohort φ保留公式并限定名称，不再承担全部物理排除。v0.2论文审计：[P2 Task4](../P2/P2_TASK4_OVERLEAF_AUDIT.md)；综合报告：[P2 Task4](../P2/P2_TASK4_FINAL_REPORT.md)。Task4未新增实验、未改论文或AGENTS。
+
+## v0.3 — Task5当前增量（2026-11-02）
+
+当前27定义。DEF-TIME-004与CORE细则J–P具体化分层arrival、Edie型同域裁切、W1–W9候选流水线、Qpre/四格支持、允许时间集合、保守CDF和同时带、联合早窗判定。推荐分别报告三种时间，尚不形成统一标量或微宏融合；全部新具体方案为Proposal。Agreed A–D不变，数值参数Unknown。
+
+Zhang正式18页已全文读取、关键页视觉复核并导入Q65YUJ89/9F39AWXN，覆盖Task4的正式版全文获取限制；Task4当时记录保留。新增Frangakis–Rubin原文HTML、Hoeffding扫描原文关键定理；Edie1963原文仍未取得。完整交付与版本/来源/论文快照见[Task5最终报告](../P2/P2_TASK5_FINAL_REPORT.md)。Overleaf三文件重新下载且逐文件SHA与Task4一致，未改正文。无任何新实验或Gate改变。
+
+| 版本 | 修订理由 / 原定义关系 | 状态 |
+|---|---|---|
+| AAD-SCI-DEF-20261102-P2T4-v0.2 → v0.3 | 保留26定义，新增时间族；旧TP单一φ限定cohort语义；macro时间与raw物理起点分开；补可执行统计充分条件 | 新方案Proposal，不是协议锁，不追溯改Task3/4 |

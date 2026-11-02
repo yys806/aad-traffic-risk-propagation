@@ -1,6 +1,10 @@
 # AAD 文献管理说明（Zotero 唯一文献库）
 
-## Current — P2 Task4 literature audit (2026-11-02)
+## Current — P2 Task5（2026-11-02）
+
+Zotero唯一原件库，当前91 unique top-level / 11集合节点。新增2条TVEZQ3UT、ASAGL6D9；正式Zhang复用Q65YUJ89并挂原件9F39AWXN/双语V72AJRHW，SSRN CLA3GKSX未变。新的[轻量索引](AAD_ZOTERO_INDEX_20261102_TASK5.csv)与[安全来源读回](P2_TASK5_SOURCE_AUDIT_20261102.json)不替代Zotero。正式Zhang全文、principal作者手稿HTML全文、Hoeffding关键定理PARTIAL_READ分别标明；Edie原文仍缺、官方简称与部分指标Unknown。完整[Task5审计](../../docs/research/P2/P2_TASK5_LITERATURE_AND_METHOD_AUDIT.md)；旧数量/访问限制为历史，未清理或合并条目。
+
+## Historical — P2 Task4 literature audit (2026-11-02)
 
 Task4 metadata-only snapshot: [AAD_ZOTERO_INDEX_20261102_TASK4.csv](AAD_ZOTERO_INDEX_20261102_TASK4.csv); verification/provenance: [P2_TASK4_SOURCE_AUDIT_20261102.json](P2_TASK4_SOURCE_AUDIT_20261102.json). Live AAD scope contains 89 unique top-level items and 11 collection nodes including root. Four target papers already existed; no duplicate parents, merge or deletion. Three journal bodies reread, Zhang journal PARTIAL_READ with existing SSRN explicitly labeled; necessary Hall official chapter added and measurement sections read. PDF originals remain in Zotero; source text/Overleaf snapshots stay local and excluded from Git. Full analysis: [Task4 audit](../../docs/research/P2/P2_TASK4_LITERATURE_AND_NOVELTY_AUDIT.md). Older dated inventories remain historical, not current counts.
 

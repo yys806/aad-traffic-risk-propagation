@@ -1,6 +1,6 @@
 # AAD Evidence and Assumption Ledger
 
-版本AAD-SCI-DEF-20261102-P2T4-v0.2。类型严格区分Fact、Inference、Hypothesis、Proposal、Agreed、Unknown；证据资格不由任务状态自动提升。L编号见Task3文献审计；H编号为历史复用矩阵；V为本轮测量校准，不是正式因果证据。
+版本AAD-SCI-DEF-20261102-P2T5-v0.3。类型严格区分Fact、Inference、Hypothesis、Proposal、Agreed、Unknown；证据资格不由任务状态自动提升。L编号见Task3文献审计；H编号为历史复用矩阵；V为本轮测量校准，不是正式因果证据。
 
 | ID | 判断 / 关联定义 | 类型 | 可追溯来源 | 适用范围 / 局限 | 状态 |
 |---|---|---|---|---|---|
@@ -79,3 +79,22 @@ E08的W1–W9框架继续使用方向已被E33接受，逐条操作质量条件�
 | E43 | Task4当前Overleaf三文件字节快照已取得并审计 | Fact | 快照时间/hash见P2_TASK4_OVERLEAF_AUDIT.md；只读下载 | 覆盖Task3快照缺失限制；不追溯改写Task3记录 |
 
 E32–E35为四项研究者接受方向；E36–E43不因此成为新的Agreed科研结论。当前Formal A=0、独立Qualified Witness=0、F0/TR/TP仍Unknown，Gate不变。
+
+## Task5增量与历史覆盖关系
+
+E38的“正式全文未取得”保留为Task4历史事实，本轮由E44覆盖当前访问/阅读状态；不反向改旧报告。E32–35的Agreed A–D不变。
+
+| ID | 判断 / 关联定义 | 类型 | 可追溯来源 | 范围 / 局限 | 状态 |
+|---|---|---|---|---|---|
+| E44 | Zhang正式18页/六作者已全文读取和关键页视觉复核 | Fact | 用户PDF；Q65YUJ89/9F39AWXN；Task5版本审计与来源清单SHA | 原文作者结果不是AAD复现 | Verified；覆盖旧访问限制 |
+| E45 | 正式与SSRN在图约束、Eq9、数据/评价/数值有实质差异 | Fact | 两原PDF逐页/图表对照；正式Table1/2与预印本Table1 | 100events与120STMaps不可直接增量相减；代码实现未复核 | Verified text |
+| E46 | 分别报告三类arrival对象及证据层级 | Proposal | DEF-TIME-004、CORE J–L；Task3 B反例；Hall/Zhang | 不能合成任意最早物理影响，不机械OR/AND | Awaiting Researcher Decision |
+| E47 | Edie型同域q/k/u可计算，window末端不等真实首次物理响应 | Inference / Proposal | Hall原章§2.1–2.2；CORE K | 原Edie1963全文仍缺；无AAD macro数值校准 | Supported method / Proposal |
+| E48 | Qpre对ZC为前变量，对ZS可能后变量；principal stratum不自动识别 | Inference | Frangakis–Rubin2002全文HTML TVEZQ3UT；P1与CORE M | AAD需要自身随机化、机会域、缺失/干扰假设 | Mathematical boundary |
+| E49 | 允许时间集合构造CDF识别界并加预定族浓缩界 | Proposal / mathematical derivation | CORE N–P；Hoeffding1963 theorem1(2.3)/§6 ASAGL6D9；JSS L14复用 | 有效集合、独立/SRS与同域；非所有设计通用，无当前F0结果 | Awaiting estimator adoption |
+| E50 | bounded-risk simultaneous upper band具有明确充分条件 | Proposal | CORE O逐臂浓缩/测量支配；P1§7 | 正式风险范围未定，不能任意clipping；无数据覆盖验证 | Conditional recommendation |
+| E51 | 全部数值参数仍无真实交通唯一推荐，A0/Qualified0/F0 Unknown保持 | Fact / Unknown | Task3原summary、Task4注册；本轮0新实验 | V2/B不能当正式ITT样本或真实arrival标签 | Preserved |
+| E52 | Overleaf重新下载三文件SHA与Task4相同，主要冲突仍存在 | Fact | Task5只读快照2026-11-02T10:07:46.887013Z；OVERLEAF_ALIGNMENT | ZIP hash可变，不能以此声称正文改变；未改正文 | Verified byte snapshot |
+| E53 | 新增前本地全库281 top-level仅检出Q65YUJ89 parent，SSRN为其CLA3GKSX附件 | Fact | local Zotero API exact DOI/title+全部top-level回读；Task5安全来源清单 | 不推广到其他未连接库；不虚构独立parent key，不移动/删除旧附件 | Metadata hierarchy limitation |
+
+没有新Agreed科研量，没有新增实验。创新性仍限于待验证的联合识别贡献；Zhang正式版进一步排除了将事件图/变化点/波前重建本身视为新颖性证据的可能。

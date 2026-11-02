@@ -1,4 +1,12 @@
-## Current — P2 Task4 related work, claim boundaries and definition synchronization (2026-11-02)
+## Current — P2 Task5 measurement and identification operationalization (2026-11-02)
+
+统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节只作摘要导航；下方旧任务块为历史。
+
+Documentation-only operational design: W1–W9 candidate pipeline, lane-clipped macro measurement, allowed-time records and eligible ITT/F0 workflow are proposals in canonical J–P. No production Detector, Observer API, source event, config or executor changed. Formal pair/TTC/DRAC/rho semantics remain authoritative. Overleaf is paper truth, definitions are scientific-definition truth; discrepancies registered, no paper edits.
+
+[Task5 final report](../docs/research/P2/P2_TASK5_FINAL_REPORT.md) · [proposal](../docs/research/P2/P2_TASK5_MEASUREMENT_AND_IDENTIFICATION_PROPOSAL.md) · [decisions](../docs/research/P2/P2_TASK5_RESEARCHER_DECISIONS.md)。
+
+## Historical — P2 Task4 related work, claim boundaries and definition synchronization (2026-11-02)
 
 统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节仅摘要导航；下方旧任务区块保留为历史，冲突以统一定义当前版本和可核验证据为准。
 
