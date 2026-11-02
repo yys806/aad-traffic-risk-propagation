@@ -1,4 +1,14 @@
-## Current — P2 Task7 parameter experiment (2026-11-02)
+## Current — P2 Task8 bounded support / V decision (2026-11-02)
+
+Task8 bounded recovery：268计划/267完成/1失败或未执行；仅源端调整、原域/a1b1不变。Low Micro、Medium Macro、High Macro2a与High局部非Cohort支持恢复；Low Cohort/Macro、Medium Cohort仍缺支持。三中心配置仅候选，J78（state63）固定配置V NOT_EXECUTED_TRUTH_SUPPORT_INSUFFICIENT，seeds0；W8/Qualified/真实最早物理桥接不足，两η情景Not established。
+
+源日志AND条件延迟问题仅Task8诊断，新source签名区间先于detector冻结；旧Task7 359/47/0和truth不改，是否回溯待研究者。一次启动失败不重跑，单进程只首次执行未启动的预列seed；停止快照保留。
+
+统一定义仍[27项v0.4](../docs/research/definitions/README.md)。Formal A=0，独立Qualified=0，F0/总体TR-TP Unknown；Stage0.5 CLOSED_WITH_LIMITATIONS；Stage0.6 PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS；Protocol Lock BLOCKED；StageI READY_ENGINEERING_ONLY；Stage1.1 NOT_AUTHORIZED。
+
+[Task8最终报告](../docs/research/P2/P2_TASK8_FINAL_REPORT.md) · [V决策](../docs/research/P2/P2_TASK8_INDEPENDENT_V_DECISION.md)
+
+## Historical — P2 Task7 parameter experiment (2026-11-02)
 
 统一定义：[docs/research/definitions/README.md](../docs/research/definitions/README.md)，仍v0.4/27项；Task7不建立第二套定义。
 

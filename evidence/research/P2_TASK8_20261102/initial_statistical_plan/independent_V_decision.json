@@ -1,0 +1,182 @@
+{
+  "status": "NOT_EXECUTED_TRUTH_SUPPORT_INSUFFICIENT",
+  "additional_blockers": [
+    "exact fixed-candidate family costs exceed remaining two-hour/10GiB budget",
+    "independent source attribution truth missing; qualified sensitivity cannot be powered"
+  ],
+  "missing_state_support": [
+    {
+      "layer": "cohort",
+      "density": "low",
+      "reason": "no a1b1 positive under either bounded source design"
+    },
+    {
+      "layer": "cohort",
+      "density": "medium",
+      "reason": "no a1b1 positive under either bounded source design"
+    },
+    {
+      "layer": "macro",
+      "density": "low",
+      "reason": "no a1b1 positive under either bounded source design"
+    }
+  ],
+  "family_size": 78,
+  "state_only_family_size": 63,
+  "fixed_configurations_per_layer": 1,
+  "stability_region_claimed": false,
+  "local_pulse_validation_claimed": false,
+  "scope_reason": "fixed candidate and one bounded main source condition per density; all density/layer cells retained. Local pulse effects are calibration diagnostics; no stability or arbitrary source-dose extrapolation.",
+  "sensitivity_delay_miss_same_binary_endpoint": true,
+  "delay_budget_s": 4.0,
+  "beta_V": 0.05,
+  "alpha_measure_not_frozen": true,
+  "family_power_target": 0.9,
+  "good_rates": {
+    "FPR_FAR": 0.002,
+    "miss_unknown": 0.01
+  },
+  "full_power_supported": false,
+  "fixed_state_plus_attribution_cost": {
+    "independent_runs_favorable_lower_bound": 30672,
+    "negative_per_homogeneous_cell": 3197,
+    "positive_per_homogeneous_cell": 633,
+    "ideal_four_worker_wall_s": 28624.591260241767,
+    "serial_mitigation_wall_s": 114498.36504096707,
+    "raw_bytes_lower_bound": 44552510140,
+    "assumptions": "perfect positive yield, source truth and zero invalid runs; all three layers share runs; logs/config/temporary bytes and nonpositive yield increase cost"
+  },
+  "fixed_state_only_cost": {
+    "independent_runs_favorable_lower_bound": 28965,
+    "negative_per_homogeneous_cell": 3019,
+    "positive_per_homogeneous_cell": 598,
+    "ideal_four_worker_wall_s": 27031.536445386762,
+    "serial_mitigation_wall_s": 108126.14578154705,
+    "raw_bytes_lower_bound": 42073013048,
+    "assumptions": "perfect positive yield, source truth and zero invalid runs; all three layers share runs; logs/config/temporary bytes and nonpositive yield increase cost"
+  },
+  "remaining_wall_s": 5634.663254022598,
+  "remaining_output_bytes": 10341419922,
+  "Independent_V_namespace": [
+    20261102,
+    8,
+    303
+  ],
+  "V_seeds_consumed": 0,
+  "historical_or_supplementary_data_relabelled_V": false,
+  "parameters_for_freeze": false,
+  "strict_scenarios": [
+    {
+      "eta_scenario": 0.01,
+      "eta_frozen": false,
+      "timely_miss_max": 0.0025,
+      "unknown_max": 0.0025,
+      "timely_detection_target": 0.9975,
+      "J_measure": 78,
+      "alpha_measure_scenario": 0.005,
+      "measurement_plan": {
+        "n": 15571,
+        "max_bad": 17,
+        "power": 0.9988135193077057,
+        "limit": 0.0025,
+        "good": 0.0005,
+        "failure": 6.41025641025641e-05,
+        "target_power": 0.9987179487179487,
+        "scope": "fixed_state_plus_attribution",
+        "J": 78,
+        "family_failure": 0.005,
+        "endpoint": "eta1",
+        "zero_failure_n": 3858
+      },
+      "independent_runs_favorable_lower_bound": 81678,
+      "negative_per_homogeneous_cell": 3885,
+      "positive_per_homogeneous_cell": 15571,
+      "ideal_four_worker_wall_s": 76225.85305666494,
+      "serial_mitigation_wall_s": 304903.41222665977,
+      "raw_bytes_lower_bound": 118641103390,
+      "assumptions": "perfect positive yield, source truth and zero invalid runs; all three layers share runs; logs/config/temporary bytes and nonpositive yield increase cost",
+      "CDF_grid_J": 45,
+      "CDF_scope": "one frozen source design per density x3 layers x5 H_cal points; local pulses outside this restricted proposal, no F0 claim",
+      "CDF_alpha_scenario": 0.02,
+      "CDF_Hoeffding_zero_early_n": 154374,
+      "CDF_exact_good_rate_power_plan": {
+        "n": 6249,
+        "max_bad": 14,
+        "power": 0.9979563178013142,
+        "limit": 0.005,
+        "good": 0.001,
+        "failure": 0.00044444444444444447,
+        "target_power": 0.9977777777777778
+      },
+      "independent_V_positive": 0,
+      "independent_V_negative": 0,
+      "independent_V_timely_sensitivity": null,
+      "independent_V_unknown": null,
+      "independent_V_FPR": null,
+      "independent_V_FAR": null,
+      "physical_delay_mass_bound": null,
+      "truth_clock_measurement_error": null,
+      "Formal_F0": null,
+      "budget_expression": "detected_early + unknown + epsilon_sampling + m_delay + epsilon_truth_clock_measurement < eta",
+      "complete_budget_evaluable": false,
+      "verdict": "Not established / Unknown"
+    },
+    {
+      "eta_scenario": 0.05,
+      "eta_frozen": false,
+      "timely_miss_max": 0.0125,
+      "unknown_max": 0.0125,
+      "timely_detection_target": 0.9875,
+      "J_measure": 78,
+      "alpha_measure_scenario": 0.005,
+      "measurement_plan": {
+        "n": 3106,
+        "max_bad": 17,
+        "power": 0.9988618776567472,
+        "limit": 0.0125,
+        "good": 0.0025,
+        "failure": 6.41025641025641e-05,
+        "target_power": 0.9987179487179487,
+        "scope": "fixed_state_plus_attribution",
+        "J": 78,
+        "family_failure": 0.005,
+        "endpoint": "eta5",
+        "zero_failure_n": 768
+      },
+      "independent_runs_favorable_lower_bound": 44283,
+      "negative_per_homogeneous_cell": 3885,
+      "positive_per_homogeneous_cell": 3106,
+      "ideal_four_worker_wall_s": 41327.03360645821,
+      "serial_mitigation_wall_s": 165308.13442583283,
+      "raw_bytes_lower_bound": 64323122278,
+      "assumptions": "perfect positive yield, source truth and zero invalid runs; all three layers share runs; logs/config/temporary bytes and nonpositive yield increase cost",
+      "CDF_grid_J": 45,
+      "CDF_scope": "one frozen source design per density x3 layers x5 H_cal points; local pulses outside this restricted proposal, no F0 claim",
+      "CDF_alpha_scenario": 0.02,
+      "CDF_Hoeffding_zero_early_n": 6175,
+      "CDF_exact_good_rate_power_plan": {
+        "n": 1243,
+        "max_bad": 14,
+        "power": 0.998103435166772,
+        "limit": 0.025,
+        "good": 0.005,
+        "failure": 0.00044444444444444447,
+        "target_power": 0.9977777777777778
+      },
+      "independent_V_positive": 0,
+      "independent_V_negative": 0,
+      "independent_V_timely_sensitivity": null,
+      "independent_V_unknown": null,
+      "independent_V_FPR": null,
+      "independent_V_FAR": null,
+      "physical_delay_mass_bound": null,
+      "truth_clock_measurement_error": null,
+      "Formal_F0": null,
+      "budget_expression": "detected_early + unknown + epsilon_sampling + m_delay + epsilon_truth_clock_measurement < eta",
+      "complete_budget_evaluable": false,
+      "verdict": "Not established / Unknown"
+    }
+  ],
+  "pre_V_manifest_executed": false,
+  "family_manifest_sha256": "fff736ce0ba8ab1d23ee165dd5ecb9120e6d6a2c840c40695ade6689bc54b66f"
+}

@@ -1,0 +1,2243 @@
+{
+  "task_id": "AAD-P2-TASK8-BOUNDED-POSITIVE-SUPPORT-AND-V-DECISION-20261102",
+  "frozen_utc": "2026-11-02T14:00:59.718283+00:00",
+  "truth_version": "AAD-P2T8-TRUTH-20261102-v1",
+  "round": 1,
+  "designs": [
+    {
+      "density": "low",
+      "condition": "LONG",
+      "amplitude": 8.0,
+      "hold": 12.0,
+      "n": 8
+    },
+    {
+      "density": "low",
+      "condition": "MAX",
+      "amplitude": 10.0,
+      "hold": 12.0,
+      "n": 8
+    },
+    {
+      "density": "low",
+      "condition": "N0",
+      "amplitude": 0.0,
+      "hold": 0.0,
+      "n": 4
+    },
+    {
+      "density": "low",
+      "condition": "N1",
+      "amplitude": 10.0,
+      "hold": 12.0,
+      "n": 4
+    },
+    {
+      "density": "low",
+      "condition": "A0",
+      "amplitude": 10.0,
+      "hold": 12.0,
+      "n": 4
+    },
+    {
+      "density": "medium",
+      "condition": "LONG",
+      "amplitude": 8.0,
+      "hold": 12.0,
+      "n": 8
+    },
+    {
+      "density": "medium",
+      "condition": "MAX",
+      "amplitude": 10.0,
+      "hold": 12.0,
+      "n": 8
+    },
+    {
+      "density": "medium",
+      "condition": "N0",
+      "amplitude": 0.0,
+      "hold": 0.0,
+      "n": 4
+    },
+    {
+      "density": "medium",
+      "condition": "N1",
+      "amplitude": 10.0,
+      "hold": 12.0,
+      "n": 4
+    },
+    {
+      "density": "medium",
+      "condition": "A0",
+      "amplitude": 10.0,
+      "hold": 12.0,
+      "n": 4
+    },
+    {
+      "density": "high",
+      "condition": "LONG",
+      "amplitude": 8.0,
+      "hold": 12.0,
+      "n": 8
+    },
+    {
+      "density": "high",
+      "condition": "MAX",
+      "amplitude": 10.0,
+      "hold": 12.0,
+      "n": 8
+    },
+    {
+      "density": "high",
+      "condition": "N0",
+      "amplitude": 0.0,
+      "hold": 0.0,
+      "n": 4
+    },
+    {
+      "density": "high",
+      "condition": "N1",
+      "amplitude": 10.0,
+      "hold": 12.0,
+      "n": 4
+    },
+    {
+      "density": "high",
+      "condition": "A0",
+      "amplitude": 10.0,
+      "hold": 12.0,
+      "n": 4
+    },
+    {
+      "density": "high",
+      "condition": "LOCAL4",
+      "amplitude": 4.0,
+      "hold": 1.0,
+      "n": 8
+    },
+    {
+      "density": "high",
+      "condition": "LOCAL8",
+      "amplitude": 8.0,
+      "hold": 1.0,
+      "n": 8
+    }
+  ],
+  "units": [
+    {
+      "unit_id": "S1_low_LONG_00",
+      "dependency_block": "S1_low_LONG_00",
+      "split": "calibration_support_feasibility",
+      "density": "low",
+      "condition": "LONG",
+      "rep": 0,
+      "count": 24,
+      "spacing_m": 35.0,
+      "sumo_seed": 990428416,
+      "seed_spawn_key": [
+        0
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_low_LONG_01",
+      "dependency_block": "S1_low_LONG_01",
+      "split": "calibration_support_feasibility",
+      "density": "low",
+      "condition": "LONG",
+      "rep": 1,
+      "count": 24,
+      "spacing_m": 35.0,
+      "sumo_seed": 1358109255,
+      "seed_spawn_key": [
+        1
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_low_LONG_02",
+      "dependency_block": "S1_low_LONG_02",
+      "split": "calibration_support_feasibility",
+      "density": "low",
+      "condition": "LONG",
+      "rep": 2,
+      "count": 24,
+      "spacing_m": 35.0,
+      "sumo_seed": 594387652,
+      "seed_spawn_key": [
+        2
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_low_LONG_03",
+      "dependency_block": "S1_low_LONG_03",
+      "split": "calibration_support_feasibility",
+      "density": "low",
+      "condition": "LONG",
+      "rep": 3,
+      "count": 24,
+      "spacing_m": 35.0,
+      "sumo_seed": 507139589,
+      "seed_spawn_key": [
+        3
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_low_LONG_04",
+      "dependency_block": "S1_low_LONG_04",
+      "split": "calibration_support_feasibility",
+      "density": "low",
+      "condition": "LONG",
+      "rep": 4,
+      "count": 24,
+      "spacing_m": 35.0,
+      "sumo_seed": 1557431149,
+      "seed_spawn_key": [
+        4
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_low_LONG_05",
+      "dependency_block": "S1_low_LONG_05",
+      "split": "calibration_support_feasibility",
+      "density": "low",
+      "condition": "LONG",
+      "rep": 5,
+      "count": 24,
+      "spacing_m": 35.0,
+      "sumo_seed": 1933795361,
+      "seed_spawn_key": [
+        5
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_low_LONG_06",
+      "dependency_block": "S1_low_LONG_06",
+      "split": "calibration_support_feasibility",
+      "density": "low",
+      "condition": "LONG",
+      "rep": 6,
+      "count": 24,
+      "spacing_m": 35.0,
+      "sumo_seed": 114282912,
+      "seed_spawn_key": [
+        6
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_low_LONG_07",
+      "dependency_block": "S1_low_LONG_07",
+      "split": "calibration_support_feasibility",
+      "density": "low",
+      "condition": "LONG",
+      "rep": 7,
+      "count": 24,
+      "spacing_m": 35.0,
+      "sumo_seed": 694661190,
+      "seed_spawn_key": [
+        7
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_low_MAX_00",
+      "dependency_block": "S1_low_MAX_00",
+      "split": "calibration_support_feasibility",
+      "density": "low",
+      "condition": "MAX",
+      "rep": 0,
+      "count": 24,
+      "spacing_m": 35.0,
+      "sumo_seed": 1537389766,
+      "seed_spawn_key": [
+        8
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_low_MAX_01",
+      "dependency_block": "S1_low_MAX_01",
+      "split": "calibration_support_feasibility",
+      "density": "low",
+      "condition": "MAX",
+      "rep": 1,
+      "count": 24,
+      "spacing_m": 35.0,
+      "sumo_seed": 476417064,
+      "seed_spawn_key": [
+        9
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_low_MAX_02",
+      "dependency_block": "S1_low_MAX_02",
+      "split": "calibration_support_feasibility",
+      "density": "low",
+      "condition": "MAX",
+      "rep": 2,
+      "count": 24,
+      "spacing_m": 35.0,
+      "sumo_seed": 772501614,
+      "seed_spawn_key": [
+        10
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_low_MAX_03",
+      "dependency_block": "S1_low_MAX_03",
+      "split": "calibration_support_feasibility",
+      "density": "low",
+      "condition": "MAX",
+      "rep": 3,
+      "count": 24,
+      "spacing_m": 35.0,
+      "sumo_seed": 444154095,
+      "seed_spawn_key": [
+        11
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_low_MAX_04",
+      "dependency_block": "S1_low_MAX_04",
+      "split": "calibration_support_feasibility",
+      "density": "low",
+      "condition": "MAX",
+      "rep": 4,
+      "count": 24,
+      "spacing_m": 35.0,
+      "sumo_seed": 1448077115,
+      "seed_spawn_key": [
+        12
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_low_MAX_05",
+      "dependency_block": "S1_low_MAX_05",
+      "split": "calibration_support_feasibility",
+      "density": "low",
+      "condition": "MAX",
+      "rep": 5,
+      "count": 24,
+      "spacing_m": 35.0,
+      "sumo_seed": 1945989025,
+      "seed_spawn_key": [
+        13
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_low_MAX_06",
+      "dependency_block": "S1_low_MAX_06",
+      "split": "calibration_support_feasibility",
+      "density": "low",
+      "condition": "MAX",
+      "rep": 6,
+      "count": 24,
+      "spacing_m": 35.0,
+      "sumo_seed": 130387539,
+      "seed_spawn_key": [
+        14
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_low_MAX_07",
+      "dependency_block": "S1_low_MAX_07",
+      "split": "calibration_support_feasibility",
+      "density": "low",
+      "condition": "MAX",
+      "rep": 7,
+      "count": 24,
+      "spacing_m": 35.0,
+      "sumo_seed": 849553146,
+      "seed_spawn_key": [
+        15
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_low_N0_00",
+      "dependency_block": "S1_low_N0_00",
+      "split": "calibration_support_feasibility",
+      "density": "low",
+      "condition": "N0",
+      "rep": 0,
+      "count": 24,
+      "spacing_m": 35.0,
+      "sumo_seed": 331359649,
+      "seed_spawn_key": [
+        16
+      ],
+      "amplitude_mps": 0.0,
+      "hold_s": 0.0,
+      "specified_source": "s0",
+      "actuated_source": null,
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_low_N0_01",
+      "dependency_block": "S1_low_N0_01",
+      "split": "calibration_support_feasibility",
+      "density": "low",
+      "condition": "N0",
+      "rep": 1,
+      "count": 24,
+      "spacing_m": 35.0,
+      "sumo_seed": 212421260,
+      "seed_spawn_key": [
+        17
+      ],
+      "amplitude_mps": 0.0,
+      "hold_s": 0.0,
+      "specified_source": "s0",
+      "actuated_source": null,
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_low_N0_02",
+      "dependency_block": "S1_low_N0_02",
+      "split": "calibration_support_feasibility",
+      "density": "low",
+      "condition": "N0",
+      "rep": 2,
+      "count": 24,
+      "spacing_m": 35.0,
+      "sumo_seed": 443624798,
+      "seed_spawn_key": [
+        18
+      ],
+      "amplitude_mps": 0.0,
+      "hold_s": 0.0,
+      "specified_source": "s0",
+      "actuated_source": null,
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_low_N0_03",
+      "dependency_block": "S1_low_N0_03",
+      "split": "calibration_support_feasibility",
+      "density": "low",
+      "condition": "N0",
+      "rep": 3,
+      "count": 24,
+      "spacing_m": 35.0,
+      "sumo_seed": 167432151,
+      "seed_spawn_key": [
+        19
+      ],
+      "amplitude_mps": 0.0,
+      "hold_s": 0.0,
+      "specified_source": "s0",
+      "actuated_source": null,
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_low_N1_00",
+      "dependency_block": "S1_low_N1_00",
+      "split": "calibration_support_feasibility",
+      "density": "low",
+      "condition": "N1",
+      "rep": 0,
+      "count": 24,
+      "spacing_m": 35.0,
+      "sumo_seed": 1787041297,
+      "seed_spawn_key": [
+        20
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "decoy",
+      "actuated_source": "decoy",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_low_N1_01",
+      "dependency_block": "S1_low_N1_01",
+      "split": "calibration_support_feasibility",
+      "density": "low",
+      "condition": "N1",
+      "rep": 1,
+      "count": 24,
+      "spacing_m": 35.0,
+      "sumo_seed": 2087613943,
+      "seed_spawn_key": [
+        21
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "decoy",
+      "actuated_source": "decoy",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_low_N1_02",
+      "dependency_block": "S1_low_N1_02",
+      "split": "calibration_support_feasibility",
+      "density": "low",
+      "condition": "N1",
+      "rep": 2,
+      "count": 24,
+      "spacing_m": 35.0,
+      "sumo_seed": 1845941201,
+      "seed_spawn_key": [
+        22
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "decoy",
+      "actuated_source": "decoy",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_low_N1_03",
+      "dependency_block": "S1_low_N1_03",
+      "split": "calibration_support_feasibility",
+      "density": "low",
+      "condition": "N1",
+      "rep": 3,
+      "count": 24,
+      "spacing_m": 35.0,
+      "sumo_seed": 1137086354,
+      "seed_spawn_key": [
+        23
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "decoy",
+      "actuated_source": "decoy",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_low_A0_00",
+      "dependency_block": "S1_low_A0_00",
+      "split": "calibration_support_feasibility",
+      "density": "low",
+      "condition": "A0",
+      "rep": 0,
+      "count": 24,
+      "spacing_m": 35.0,
+      "sumo_seed": 1948622972,
+      "seed_spawn_key": [
+        24
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "decoy",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_low_A0_01",
+      "dependency_block": "S1_low_A0_01",
+      "split": "calibration_support_feasibility",
+      "density": "low",
+      "condition": "A0",
+      "rep": 1,
+      "count": 24,
+      "spacing_m": 35.0,
+      "sumo_seed": 1286971138,
+      "seed_spawn_key": [
+        25
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "decoy",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_low_A0_02",
+      "dependency_block": "S1_low_A0_02",
+      "split": "calibration_support_feasibility",
+      "density": "low",
+      "condition": "A0",
+      "rep": 2,
+      "count": 24,
+      "spacing_m": 35.0,
+      "sumo_seed": 1266854643,
+      "seed_spawn_key": [
+        26
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "decoy",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_low_A0_03",
+      "dependency_block": "S1_low_A0_03",
+      "split": "calibration_support_feasibility",
+      "density": "low",
+      "condition": "A0",
+      "rep": 3,
+      "count": 24,
+      "spacing_m": 35.0,
+      "sumo_seed": 1635002406,
+      "seed_spawn_key": [
+        27
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "decoy",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_medium_LONG_00",
+      "dependency_block": "S1_medium_LONG_00",
+      "split": "calibration_support_feasibility",
+      "density": "medium",
+      "condition": "LONG",
+      "rep": 0,
+      "count": 40,
+      "spacing_m": 23.0,
+      "sumo_seed": 33906608,
+      "seed_spawn_key": [
+        28
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_medium_LONG_01",
+      "dependency_block": "S1_medium_LONG_01",
+      "split": "calibration_support_feasibility",
+      "density": "medium",
+      "condition": "LONG",
+      "rep": 1,
+      "count": 40,
+      "spacing_m": 23.0,
+      "sumo_seed": 348093288,
+      "seed_spawn_key": [
+        29
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_medium_LONG_02",
+      "dependency_block": "S1_medium_LONG_02",
+      "split": "calibration_support_feasibility",
+      "density": "medium",
+      "condition": "LONG",
+      "rep": 2,
+      "count": 40,
+      "spacing_m": 23.0,
+      "sumo_seed": 1670118040,
+      "seed_spawn_key": [
+        30
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_medium_LONG_03",
+      "dependency_block": "S1_medium_LONG_03",
+      "split": "calibration_support_feasibility",
+      "density": "medium",
+      "condition": "LONG",
+      "rep": 3,
+      "count": 40,
+      "spacing_m": 23.0,
+      "sumo_seed": 1417694911,
+      "seed_spawn_key": [
+        31
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_medium_LONG_04",
+      "dependency_block": "S1_medium_LONG_04",
+      "split": "calibration_support_feasibility",
+      "density": "medium",
+      "condition": "LONG",
+      "rep": 4,
+      "count": 40,
+      "spacing_m": 23.0,
+      "sumo_seed": 725217871,
+      "seed_spawn_key": [
+        32
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_medium_LONG_05",
+      "dependency_block": "S1_medium_LONG_05",
+      "split": "calibration_support_feasibility",
+      "density": "medium",
+      "condition": "LONG",
+      "rep": 5,
+      "count": 40,
+      "spacing_m": 23.0,
+      "sumo_seed": 1366694533,
+      "seed_spawn_key": [
+        33
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_medium_LONG_06",
+      "dependency_block": "S1_medium_LONG_06",
+      "split": "calibration_support_feasibility",
+      "density": "medium",
+      "condition": "LONG",
+      "rep": 6,
+      "count": 40,
+      "spacing_m": 23.0,
+      "sumo_seed": 621121067,
+      "seed_spawn_key": [
+        34
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_medium_LONG_07",
+      "dependency_block": "S1_medium_LONG_07",
+      "split": "calibration_support_feasibility",
+      "density": "medium",
+      "condition": "LONG",
+      "rep": 7,
+      "count": 40,
+      "spacing_m": 23.0,
+      "sumo_seed": 901358959,
+      "seed_spawn_key": [
+        35
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_medium_MAX_00",
+      "dependency_block": "S1_medium_MAX_00",
+      "split": "calibration_support_feasibility",
+      "density": "medium",
+      "condition": "MAX",
+      "rep": 0,
+      "count": 40,
+      "spacing_m": 23.0,
+      "sumo_seed": 914659938,
+      "seed_spawn_key": [
+        36
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_medium_MAX_01",
+      "dependency_block": "S1_medium_MAX_01",
+      "split": "calibration_support_feasibility",
+      "density": "medium",
+      "condition": "MAX",
+      "rep": 1,
+      "count": 40,
+      "spacing_m": 23.0,
+      "sumo_seed": 119947188,
+      "seed_spawn_key": [
+        37
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_medium_MAX_02",
+      "dependency_block": "S1_medium_MAX_02",
+      "split": "calibration_support_feasibility",
+      "density": "medium",
+      "condition": "MAX",
+      "rep": 2,
+      "count": 40,
+      "spacing_m": 23.0,
+      "sumo_seed": 696201363,
+      "seed_spawn_key": [
+        38
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_medium_MAX_03",
+      "dependency_block": "S1_medium_MAX_03",
+      "split": "calibration_support_feasibility",
+      "density": "medium",
+      "condition": "MAX",
+      "rep": 3,
+      "count": 40,
+      "spacing_m": 23.0,
+      "sumo_seed": 1487300370,
+      "seed_spawn_key": [
+        39
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_medium_MAX_04",
+      "dependency_block": "S1_medium_MAX_04",
+      "split": "calibration_support_feasibility",
+      "density": "medium",
+      "condition": "MAX",
+      "rep": 4,
+      "count": 40,
+      "spacing_m": 23.0,
+      "sumo_seed": 1823239456,
+      "seed_spawn_key": [
+        40
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_medium_MAX_05",
+      "dependency_block": "S1_medium_MAX_05",
+      "split": "calibration_support_feasibility",
+      "density": "medium",
+      "condition": "MAX",
+      "rep": 5,
+      "count": 40,
+      "spacing_m": 23.0,
+      "sumo_seed": 838971421,
+      "seed_spawn_key": [
+        41
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_medium_MAX_06",
+      "dependency_block": "S1_medium_MAX_06",
+      "split": "calibration_support_feasibility",
+      "density": "medium",
+      "condition": "MAX",
+      "rep": 6,
+      "count": 40,
+      "spacing_m": 23.0,
+      "sumo_seed": 283785196,
+      "seed_spawn_key": [
+        42
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_medium_MAX_07",
+      "dependency_block": "S1_medium_MAX_07",
+      "split": "calibration_support_feasibility",
+      "density": "medium",
+      "condition": "MAX",
+      "rep": 7,
+      "count": 40,
+      "spacing_m": 23.0,
+      "sumo_seed": 2108847951,
+      "seed_spawn_key": [
+        43
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_medium_N0_00",
+      "dependency_block": "S1_medium_N0_00",
+      "split": "calibration_support_feasibility",
+      "density": "medium",
+      "condition": "N0",
+      "rep": 0,
+      "count": 40,
+      "spacing_m": 23.0,
+      "sumo_seed": 1950022010,
+      "seed_spawn_key": [
+        44
+      ],
+      "amplitude_mps": 0.0,
+      "hold_s": 0.0,
+      "specified_source": "s0",
+      "actuated_source": null,
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_medium_N0_01",
+      "dependency_block": "S1_medium_N0_01",
+      "split": "calibration_support_feasibility",
+      "density": "medium",
+      "condition": "N0",
+      "rep": 1,
+      "count": 40,
+      "spacing_m": 23.0,
+      "sumo_seed": 233792258,
+      "seed_spawn_key": [
+        45
+      ],
+      "amplitude_mps": 0.0,
+      "hold_s": 0.0,
+      "specified_source": "s0",
+      "actuated_source": null,
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_medium_N0_02",
+      "dependency_block": "S1_medium_N0_02",
+      "split": "calibration_support_feasibility",
+      "density": "medium",
+      "condition": "N0",
+      "rep": 2,
+      "count": 40,
+      "spacing_m": 23.0,
+      "sumo_seed": 1207314181,
+      "seed_spawn_key": [
+        46
+      ],
+      "amplitude_mps": 0.0,
+      "hold_s": 0.0,
+      "specified_source": "s0",
+      "actuated_source": null,
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_medium_N0_03",
+      "dependency_block": "S1_medium_N0_03",
+      "split": "calibration_support_feasibility",
+      "density": "medium",
+      "condition": "N0",
+      "rep": 3,
+      "count": 40,
+      "spacing_m": 23.0,
+      "sumo_seed": 219756456,
+      "seed_spawn_key": [
+        47
+      ],
+      "amplitude_mps": 0.0,
+      "hold_s": 0.0,
+      "specified_source": "s0",
+      "actuated_source": null,
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_medium_N1_00",
+      "dependency_block": "S1_medium_N1_00",
+      "split": "calibration_support_feasibility",
+      "density": "medium",
+      "condition": "N1",
+      "rep": 0,
+      "count": 40,
+      "spacing_m": 23.0,
+      "sumo_seed": 1589844391,
+      "seed_spawn_key": [
+        48
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "decoy",
+      "actuated_source": "decoy",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_medium_N1_01",
+      "dependency_block": "S1_medium_N1_01",
+      "split": "calibration_support_feasibility",
+      "density": "medium",
+      "condition": "N1",
+      "rep": 1,
+      "count": 40,
+      "spacing_m": 23.0,
+      "sumo_seed": 2042052008,
+      "seed_spawn_key": [
+        49
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "decoy",
+      "actuated_source": "decoy",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_medium_N1_02",
+      "dependency_block": "S1_medium_N1_02",
+      "split": "calibration_support_feasibility",
+      "density": "medium",
+      "condition": "N1",
+      "rep": 2,
+      "count": 40,
+      "spacing_m": 23.0,
+      "sumo_seed": 2116420894,
+      "seed_spawn_key": [
+        50
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "decoy",
+      "actuated_source": "decoy",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_medium_N1_03",
+      "dependency_block": "S1_medium_N1_03",
+      "split": "calibration_support_feasibility",
+      "density": "medium",
+      "condition": "N1",
+      "rep": 3,
+      "count": 40,
+      "spacing_m": 23.0,
+      "sumo_seed": 474142872,
+      "seed_spawn_key": [
+        51
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "decoy",
+      "actuated_source": "decoy",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_medium_A0_00",
+      "dependency_block": "S1_medium_A0_00",
+      "split": "calibration_support_feasibility",
+      "density": "medium",
+      "condition": "A0",
+      "rep": 0,
+      "count": 40,
+      "spacing_m": 23.0,
+      "sumo_seed": 1394337499,
+      "seed_spawn_key": [
+        52
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "decoy",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_medium_A0_01",
+      "dependency_block": "S1_medium_A0_01",
+      "split": "calibration_support_feasibility",
+      "density": "medium",
+      "condition": "A0",
+      "rep": 1,
+      "count": 40,
+      "spacing_m": 23.0,
+      "sumo_seed": 2132275087,
+      "seed_spawn_key": [
+        53
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "decoy",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_medium_A0_02",
+      "dependency_block": "S1_medium_A0_02",
+      "split": "calibration_support_feasibility",
+      "density": "medium",
+      "condition": "A0",
+      "rep": 2,
+      "count": 40,
+      "spacing_m": 23.0,
+      "sumo_seed": 710915825,
+      "seed_spawn_key": [
+        54
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "decoy",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_medium_A0_03",
+      "dependency_block": "S1_medium_A0_03",
+      "split": "calibration_support_feasibility",
+      "density": "medium",
+      "condition": "A0",
+      "rep": 3,
+      "count": 40,
+      "spacing_m": 23.0,
+      "sumo_seed": 1087401349,
+      "seed_spawn_key": [
+        55
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "decoy",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_LONG_00",
+      "dependency_block": "S1_high_LONG_00",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "LONG",
+      "rep": 0,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 1241373914,
+      "seed_spawn_key": [
+        56
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_LONG_01",
+      "dependency_block": "S1_high_LONG_01",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "LONG",
+      "rep": 1,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 1085235557,
+      "seed_spawn_key": [
+        57
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_LONG_02",
+      "dependency_block": "S1_high_LONG_02",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "LONG",
+      "rep": 2,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 839174679,
+      "seed_spawn_key": [
+        58
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_LONG_03",
+      "dependency_block": "S1_high_LONG_03",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "LONG",
+      "rep": 3,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 288952560,
+      "seed_spawn_key": [
+        59
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_LONG_04",
+      "dependency_block": "S1_high_LONG_04",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "LONG",
+      "rep": 4,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 558816096,
+      "seed_spawn_key": [
+        60
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_LONG_05",
+      "dependency_block": "S1_high_LONG_05",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "LONG",
+      "rep": 5,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 350396693,
+      "seed_spawn_key": [
+        61
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_LONG_06",
+      "dependency_block": "S1_high_LONG_06",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "LONG",
+      "rep": 6,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 1776105010,
+      "seed_spawn_key": [
+        62
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_LONG_07",
+      "dependency_block": "S1_high_LONG_07",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "LONG",
+      "rep": 7,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 232441506,
+      "seed_spawn_key": [
+        63
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_MAX_00",
+      "dependency_block": "S1_high_MAX_00",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "MAX",
+      "rep": 0,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 102522599,
+      "seed_spawn_key": [
+        64
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_MAX_01",
+      "dependency_block": "S1_high_MAX_01",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "MAX",
+      "rep": 1,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 537362741,
+      "seed_spawn_key": [
+        65
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_MAX_02",
+      "dependency_block": "S1_high_MAX_02",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "MAX",
+      "rep": 2,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 1159254819,
+      "seed_spawn_key": [
+        66
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_MAX_03",
+      "dependency_block": "S1_high_MAX_03",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "MAX",
+      "rep": 3,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 1738768103,
+      "seed_spawn_key": [
+        67
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_MAX_04",
+      "dependency_block": "S1_high_MAX_04",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "MAX",
+      "rep": 4,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 249961819,
+      "seed_spawn_key": [
+        68
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_MAX_05",
+      "dependency_block": "S1_high_MAX_05",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "MAX",
+      "rep": 5,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 1229924073,
+      "seed_spawn_key": [
+        69
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_MAX_06",
+      "dependency_block": "S1_high_MAX_06",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "MAX",
+      "rep": 6,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 708771005,
+      "seed_spawn_key": [
+        70
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_MAX_07",
+      "dependency_block": "S1_high_MAX_07",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "MAX",
+      "rep": 7,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 1903495483,
+      "seed_spawn_key": [
+        71
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_N0_00",
+      "dependency_block": "S1_high_N0_00",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "N0",
+      "rep": 0,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 955447719,
+      "seed_spawn_key": [
+        72
+      ],
+      "amplitude_mps": 0.0,
+      "hold_s": 0.0,
+      "specified_source": "s0",
+      "actuated_source": null,
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_N0_01",
+      "dependency_block": "S1_high_N0_01",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "N0",
+      "rep": 1,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 16932502,
+      "seed_spawn_key": [
+        73
+      ],
+      "amplitude_mps": 0.0,
+      "hold_s": 0.0,
+      "specified_source": "s0",
+      "actuated_source": null,
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_N0_02",
+      "dependency_block": "S1_high_N0_02",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "N0",
+      "rep": 2,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 1826362372,
+      "seed_spawn_key": [
+        74
+      ],
+      "amplitude_mps": 0.0,
+      "hold_s": 0.0,
+      "specified_source": "s0",
+      "actuated_source": null,
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_N0_03",
+      "dependency_block": "S1_high_N0_03",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "N0",
+      "rep": 3,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 1222311878,
+      "seed_spawn_key": [
+        75
+      ],
+      "amplitude_mps": 0.0,
+      "hold_s": 0.0,
+      "specified_source": "s0",
+      "actuated_source": null,
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_N1_00",
+      "dependency_block": "S1_high_N1_00",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "N1",
+      "rep": 0,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 57348397,
+      "seed_spawn_key": [
+        76
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "decoy",
+      "actuated_source": "decoy",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_N1_01",
+      "dependency_block": "S1_high_N1_01",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "N1",
+      "rep": 1,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 2115168413,
+      "seed_spawn_key": [
+        77
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "decoy",
+      "actuated_source": "decoy",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_N1_02",
+      "dependency_block": "S1_high_N1_02",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "N1",
+      "rep": 2,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 443796203,
+      "seed_spawn_key": [
+        78
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "decoy",
+      "actuated_source": "decoy",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_N1_03",
+      "dependency_block": "S1_high_N1_03",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "N1",
+      "rep": 3,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 383466462,
+      "seed_spawn_key": [
+        79
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "decoy",
+      "actuated_source": "decoy",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_A0_00",
+      "dependency_block": "S1_high_A0_00",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "A0",
+      "rep": 0,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 770341428,
+      "seed_spawn_key": [
+        80
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "decoy",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_A0_01",
+      "dependency_block": "S1_high_A0_01",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "A0",
+      "rep": 1,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 85106271,
+      "seed_spawn_key": [
+        81
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "decoy",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_A0_02",
+      "dependency_block": "S1_high_A0_02",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "A0",
+      "rep": 2,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 1788441071,
+      "seed_spawn_key": [
+        82
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "decoy",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_A0_03",
+      "dependency_block": "S1_high_A0_03",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "A0",
+      "rep": 3,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 2037615576,
+      "seed_spawn_key": [
+        83
+      ],
+      "amplitude_mps": 10.0,
+      "hold_s": 12.0,
+      "specified_source": "decoy",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_LOCAL4_00",
+      "dependency_block": "S1_high_LOCAL4_00",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "LOCAL4",
+      "rep": 0,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 1879687910,
+      "seed_spawn_key": [
+        84
+      ],
+      "amplitude_mps": 4.0,
+      "hold_s": 1.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_LOCAL4_01",
+      "dependency_block": "S1_high_LOCAL4_01",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "LOCAL4",
+      "rep": 1,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 1357749923,
+      "seed_spawn_key": [
+        85
+      ],
+      "amplitude_mps": 4.0,
+      "hold_s": 1.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_LOCAL4_02",
+      "dependency_block": "S1_high_LOCAL4_02",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "LOCAL4",
+      "rep": 2,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 975009266,
+      "seed_spawn_key": [
+        86
+      ],
+      "amplitude_mps": 4.0,
+      "hold_s": 1.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_LOCAL4_03",
+      "dependency_block": "S1_high_LOCAL4_03",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "LOCAL4",
+      "rep": 3,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 752955382,
+      "seed_spawn_key": [
+        87
+      ],
+      "amplitude_mps": 4.0,
+      "hold_s": 1.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_LOCAL4_04",
+      "dependency_block": "S1_high_LOCAL4_04",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "LOCAL4",
+      "rep": 4,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 1629467087,
+      "seed_spawn_key": [
+        88
+      ],
+      "amplitude_mps": 4.0,
+      "hold_s": 1.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_LOCAL4_05",
+      "dependency_block": "S1_high_LOCAL4_05",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "LOCAL4",
+      "rep": 5,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 1043039524,
+      "seed_spawn_key": [
+        89
+      ],
+      "amplitude_mps": 4.0,
+      "hold_s": 1.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_LOCAL4_06",
+      "dependency_block": "S1_high_LOCAL4_06",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "LOCAL4",
+      "rep": 6,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 1832648409,
+      "seed_spawn_key": [
+        90
+      ],
+      "amplitude_mps": 4.0,
+      "hold_s": 1.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_LOCAL4_07",
+      "dependency_block": "S1_high_LOCAL4_07",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "LOCAL4",
+      "rep": 7,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 1132865458,
+      "seed_spawn_key": [
+        91
+      ],
+      "amplitude_mps": 4.0,
+      "hold_s": 1.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_LOCAL8_00",
+      "dependency_block": "S1_high_LOCAL8_00",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "LOCAL8",
+      "rep": 0,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 2034272073,
+      "seed_spawn_key": [
+        92
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 1.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_LOCAL8_01",
+      "dependency_block": "S1_high_LOCAL8_01",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "LOCAL8",
+      "rep": 1,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 427972233,
+      "seed_spawn_key": [
+        93
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 1.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_LOCAL8_02",
+      "dependency_block": "S1_high_LOCAL8_02",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "LOCAL8",
+      "rep": 2,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 440712501,
+      "seed_spawn_key": [
+        94
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 1.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_LOCAL8_03",
+      "dependency_block": "S1_high_LOCAL8_03",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "LOCAL8",
+      "rep": 3,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 1146374034,
+      "seed_spawn_key": [
+        95
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 1.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_LOCAL8_04",
+      "dependency_block": "S1_high_LOCAL8_04",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "LOCAL8",
+      "rep": 4,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 133633498,
+      "seed_spawn_key": [
+        96
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 1.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_LOCAL8_05",
+      "dependency_block": "S1_high_LOCAL8_05",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "LOCAL8",
+      "rep": 5,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 658781811,
+      "seed_spawn_key": [
+        97
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 1.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_LOCAL8_06",
+      "dependency_block": "S1_high_LOCAL8_06",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "LOCAL8",
+      "rep": 6,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 109294717,
+      "seed_spawn_key": [
+        98
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 1.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    },
+    {
+      "unit_id": "S1_high_LOCAL8_07",
+      "dependency_block": "S1_high_LOCAL8_07",
+      "split": "calibration_support_feasibility",
+      "density": "high",
+      "condition": "LOCAL8",
+      "rep": 7,
+      "count": 64,
+      "spacing_m": 15.0,
+      "sumo_seed": 1607544282,
+      "seed_spawn_key": [
+        99
+      ],
+      "amplitude_mps": 8.0,
+      "hold_s": 1.0,
+      "specified_source": "s0",
+      "actuated_source": "s0",
+      "scenario_family": "straight_same_lane_native_Krauss_v1",
+      "input_trace": "new generated native traffic; no historical replay"
+    }
+  ],
+  "source_design_rationale": "Task7 8m/s x8s failed support. LONG extends hold to12s; MAX reaches nonnegative speed floor0 for12s; local4/8 x1s interpolate source dose without moving support.",
+  "strongest_allowed": {
+    "amplitude_mps": 10.0,
+    "hold_s": 12.0,
+    "minimum_speed_mps": 0.0,
+    "no_third_escalation": true
+  },
+  "curve": "Unchanged Task7 slowDown(1s) request, held speed, restoration and release; default SUMO speedMode enforces native 4.5 deceleration/2.6 acceleration. Requested ramp is not claimed realized.",
+  "fixed": {
+    "region": [
+      1600.0,
+      3080.0
+    ],
+    "cohort": [
+      14,
+      15,
+      16,
+      17
+    ],
+    "pre": [
+      10.0,
+      28.0
+    ],
+    "monitor": [
+      30.0,
+      46.0
+    ],
+    "followup_end": 50.0,
+    "source_plan": 30.0,
+    "raw_dt": 0.05,
+    "truth_a": 1.0,
+    "truth_b": 1.0,
+    "truth_d": 4.0,
+    "network_sha256": "ef46a018fa09a22832d6692a1051bf045e570f3396ae2920e4b8c136de3ba430"
+  },
+  "binary": "C:\\Program Files (x86)\\Eclipse\\Sumo\\bin\\sumo.EXE",
+  "source_hashes": {
+    "code/scripts/p2_task8_support_experiment.py": "4f9276155cf8c0f81aaebb1e61c3b1a1f418b382fc42748efc1752687c640da0",
+    "code/scripts/p2_task7_measurement.py": "49b02548d132334504fd8c7c0f8b38f350aa65c9d09e638df3d22da119a4b18b",
+    "code/scripts/analyze_p2_task7_parameter_experiment.py": "abbe86a699eb10f0876ce00c3a1800c76c2b78df896fefa7fca7d1645f15832c",
+    "code/scripts/run_p2_task7_parameter_experiment.py": "c40ce3fc37a84ee0a754b344da57f463e4647506f5586736966c66c04b3e4222"
+  },
+  "seed_namespaces": {
+    "calibration_R1": [
+      20261102,
+      8,
+      101
+    ],
+    "supplementary_R2": [
+      20261102,
+      8,
+      202
+    ],
+    "independent_V": [
+      20261102,
+      8,
+      303
+    ]
+  },
+  "round2_rule": "Truth-only: one LONG/MAX per density if any previously missing layer realized (high requires Macro2a); rank supported missing layers, then Macro2a count, then MAX fixed tie. One high local design if native Micro positive AND Cohort negative. Entire chosen design gets24 new seeds; no seed filtering. Controls8 per density/condition if any design selected.",
+  "detector_candidates": {
+    "center": {
+      "W": 9.0,
+      "model": "constant",
+      "theta": 1.0,
+      "h": 1.0,
+      "q": 0.05,
+      "coverage": 1.0,
+      "recovery": 0.0,
+      "hysteresis": 0.0,
+      "missing": "bounds",
+      "w": 2.0,
+      "stride": 1,
+      "cells": 1
+    },
+    "theta_neighbor": {
+      "W": 9.0,
+      "model": "constant",
+      "theta": 0.5,
+      "h": 1.0,
+      "q": 0.05,
+      "coverage": 1.0,
+      "recovery": 0.0,
+      "hysteresis": 0.0,
+      "missing": "bounds",
+      "w": 2.0,
+      "stride": 1,
+      "cells": 1
+    },
+    "h_neighbor": {
+      "W": 9.0,
+      "model": "constant",
+      "theta": 1.0,
+      "h": 2.0,
+      "q": 0.05,
+      "coverage": 1.0,
+      "recovery": 0.0,
+      "hysteresis": 0.0,
+      "missing": "bounds",
+      "w": 2.0,
+      "stride": 1,
+      "cells": 1
+    }
+  },
+  "epsilon_stab": null,
+  "gamma_int": null,
+  "resource_cap": {
+    "wall_s": 7200,
+    "bytes": 10737418240,
+    "workers": 4
+  },
+  "independent_V_requires_all_layers_all_densities": true,
+  "historical_data_not_V": true,
+  "locked_holdout_reads": 0
+}

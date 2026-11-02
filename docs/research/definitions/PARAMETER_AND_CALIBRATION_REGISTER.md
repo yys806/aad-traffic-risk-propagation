@@ -176,3 +176,8 @@ J=必须联合检查；C=混杂/支持或选择约束；E=可能改变科学 est
 v0.4/27定义保留。研究者Task7接受本次固定N等车signed mean、Macro同域速度主状态和Micro同lane有限机制的执行；不冻结正式参数。30行C01–09/U01–09/M01–10/T08–09结果见[参数结果](../P2/P2_TASK7_PARAMETER_RESULTS.md)，机器表evidence/research/P2_TASK7_20261102/parameter_register_results.csv。
 
 W9/constant/θ1/h1/q.05、Macro w2是C候选，575完成/1失败、J765、V0；没有Recommended-for-freeze。Low/Medium及Macro目标格缺支持，W8/Qualified/最弱信号/ε_stab/γ_int/正式物理delay证书Unknown。T01–07/T10未冻结，正式η/H*/δ/α不改。原Task6十三字段/数学域/探索范围/历史撤回保留。
+
+
+## Task8 有限支持与验证决策（2026-11-02）
+
+Task8 D1–D5已Agreed：仅源端有界补充，a1/b1有限坐标，2h/10GiB，ε_stab/γ_int不冻结。W9/constant/θ1/h1/q.05和Macro w2仍C候选；Low Cohort/Macro及Medium Cohort缺支持，J78/state63 V0。容差网格与成本见[参数建议](../P2/P2_TASK8_PARAMETER_RECOMMENDATIONS.md)，不修改T01–07/T10正式η/δ/H*/α。

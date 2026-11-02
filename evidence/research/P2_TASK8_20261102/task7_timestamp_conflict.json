@@ -1,0 +1,17 @@
+{
+  "Documented Intent": "Actual source physical onset, never planned time or first final-speed/native divergence",
+  "Actual Implementation": "Task7 onset required BOTH actual speed decline and speed != getSpeedWithoutTraCI; during clipped deceleration these readbacks were identical",
+  "Evidence": "C_low_P22_00: 30.05s speed9.7689848 and acceleration-4.5, both speed readbacks equal; legacy onset31.75–31.8s",
+  "Affected Files": [
+    "code/scripts/run_p2_task7_parameter_experiment.py",
+    "Task7 frozen audit/label source-time metadata",
+    "Task7 source-to-first-hop W6 audit"
+  ],
+  "Conflict": "Late legacy onset can fail strict W6; independent any-source state/onset labels do not change",
+  "Status": "Awaiting Researcher Decision for any retrospective Task7 correction; no Task7 file changed",
+  "Task8_local_handling": "Independent command-lower/observed-deceleration-signature-upper interval, kept separate from physical model error; frozen before detectors",
+  "legacy_Observed": 47,
+  "diagnostic_Observed_using_signature": 119,
+  "Qualified": 0,
+  "W8_unresolved": true
+}

@@ -130,3 +130,18 @@ E01–53保留历史；E46/47/49/50的方向层由下表覆盖，不把其具体
 | E65 | Unknown/Not established | W8/Qualified、正式F0与真实最早物理onset、独立V与稳定margin；不由calibration点估计或有限a1b1填补 |
 
 完整来源：[Task7最终报告](../P2/P2_TASK7_FINAL_REPORT.md)、便携manifest/原始hash索引和source脚本。没有将Proposal升级Agreed，没有新Formal A或科学Gate变化。
+
+
+## Task8 有限支持与验证决策（2026-11-02）
+
+历史ID说明：Task6与Task7表的E61–64重复，引用须使用Task6/E61或Task7/E61等任务命名空间；不重写历史内容。本任务条目：
+
+| ID | 类型/状态 | 证据与限制 |
+|---|---|---|
+| E66 | Agreed | Task8研究者D1–D5：固定域、只改源、W1–W9不放宽、a1b1有限坐标、资源硬限 |
+| E67 | Verified工程/Fact有限支持 | manifest、原始hash和truth：新增Low Micro/Medium Macro/High Macro2a及局部非Cohort；不是指定源Qualified |
+| E68 | Fact日志冲突/Unknown回溯决定 | Task7源onset AND条件晚于实际减速；Task8独立签名区间与旧字段并存，原Task7 truth及359/47/0不改 |
+| E69 | Mathematical planning/Proposal标准 | 固定候选state63/完整78声明、exact功效、βV与αmeasure分开，V0；Qualified真值缺失 |
+| E70 | Unknown/Not established | Low Cohort/Macro、Medium Cohort、W8、稳定margin及真实最早物理桥接仍不足 |
+
+来源：[Task8最终报告](../P2/P2_TASK8_FINAL_REPORT.md)、对应便携manifest/统计/验证记录。Proposal不升级Agreed，27定义ID与正式阶段不改。

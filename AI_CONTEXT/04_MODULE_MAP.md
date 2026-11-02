@@ -1,3 +1,7 @@
+## P2 Task8 — 2026-11-02
+
+Task8隔离脚本：p2_task8_support_experiment.py, run_p2_task8_serial_continuation.py, analyze_p2_task8_support.py, verify_p2_task8_results.py, finalize_p2_task8.py；复用Task7原生executor/Edie/三层detector/exact planning，不改生产riskprop。
+
 ## P2 Task7 — 2026-11-02
 
 隔离Task7代码入口：run_p2_task7_parameter_experiment.py、p2_task7_measurement.py、repair_p2_task7_truth.py、analyze_p2_task7_parameter_experiment.py、complete_p2_task7_diagnostics.py、plan_p2_task7_validation.py、verify_p2_task7_results.py、finalize_p2_task7.py（均code/scripts/）；定向测试code/tests/test_p2_task7_parameter_experiment.py。

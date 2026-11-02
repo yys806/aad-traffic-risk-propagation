@@ -1,3 +1,11 @@
+## P2 Task8 — 2026-11-02
+
+Task8 bounded recovery：268计划/267完成/1失败或未执行；仅源端调整、原域/a1b1不变。Low Micro、Medium Macro、High Macro2a与High局部非Cohort支持恢复；Low Cohort/Macro、Medium Cohort仍缺支持。三中心配置仅候选，J78（state63）固定配置V NOT_EXECUTED_TRUTH_SUPPORT_INSUFFICIENT，seeds0；W8/Qualified/真实最早物理桥接不足，两η情景Not established。
+
+Formal A=0，独立Qualified=0，F0/总体TR-TP Unknown；Stage0.5 CLOSED_WITH_LIMITATIONS；Stage0.6 PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS；Protocol Lock BLOCKED；StageI READY_ENGINEERING_ONLY；Stage1.1 NOT_AUTHORIZED。
+
+[报告](research/P2/P2_TASK8_FINAL_REPORT.md)；CALIBRATION/SUPPLEMENTARY_ONLY，不新增正式结果资格。
+
 ## P2 Task7 — 2026-11-02
 
 Task7探索576计划单位，575完成、1次TraCI启动失败保留Unknown；三层独立truth先冻结，83候选/47808主评价及条件单因素/交互/压力完成。W9/constant/θ1/h1/q.05、Macro w2仅C候选，无独立V或稳定性认证。J765下有限域乐观V需54534运行/14.6h/69.5GiB，未运行V、未消耗V seed。Macro目标强度格、局部点和低/中密度阳性支持不足；Qualified/F0及任意最早物理桥接仍Unknown。
