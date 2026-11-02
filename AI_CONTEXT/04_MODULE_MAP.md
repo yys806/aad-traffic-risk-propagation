@@ -1,3 +1,23 @@
+## Current — P2 Task3 definition and calibration module map (2026-11-02)
+
+统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节只摘要，最新定义、参数与状态以该入口及对应证据为准。
+
+### 核心文件
+
+Six canonical files in docs/research/definitions/; five Task3 reports in docs/research/P2/.
+
+### 核心函数与调用
+
+- code/scripts/run_p2_task3_calibration_only.py: synthetic panels, three aggregators, observed-span/onset/quality detection and summaries.
+- code/scripts/plot_p2_task3_calibration_only.py: local sensitivity curves, no production use.
+- code/scripts/run_p2_task3_sumo_b_calibration_only.py: isolated source-only controlled B executor and fixed-cohort measurement.
+- code/scripts/audit_p2_task3_sumo_b_calibration_only.py: read-only output audit and --scope-only response-location join; no new simulation.
+- code/tests/test_p2_task3_calibration_only.py: focused measurement and response-position contract tests.
+
+### 依赖与边界
+
+NumPy, local SUMO1.26.0/matching TraCI for B only. Versioned snapshots/provenance remain in isolated outputs. No code/src/riskprop production logic, formal configuration or paper source modified. Source→cohort Qualified Witness remains zero.
+
 ## Current — P2 Task2 documentation module map (2026-11-02)
 
 ### 核心文件
@@ -17,7 +37,7 @@ No production class or module was added. The documented objects are `SourceEvent
 
 ### 核心函数
 
-No production function was changed. The research-level function is \(\phi(X^*_{\mathcal T}(t),B_{\mathcal T})=1[g(X,B)\ge\theta_P]\), with explicit persistence and observation-gap rules.
+No production function was changed. The research-level function is \(\phi(X^*_{\mathcal T}(t),B_{\mathcal T})=1[g(X,B)\ge\theta_P\land c(t)\ge c_P\land q(t)\le q_P]\), with explicit persistence and recovery rules.
 
 ### 调用关系
 

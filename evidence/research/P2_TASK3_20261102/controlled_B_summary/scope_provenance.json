@@ -1,0 +1,30 @@
+{
+  "status": "CALIBRATION_ONLY",
+  "domain": "controlled_B_sumo",
+  "selection": "descriptive post-run scope illustration, no inferential sample selection",
+  "example_run": "validation__a5.0__d6.0__seed202711020",
+  "region_m": [
+    1300,
+    2240
+  ],
+  "cohort": [
+    "s5",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s10"
+  ],
+  "source_position_at_plan_m": 2247.3883681287552,
+  "trajectory_sha256": "41814049351e43ea8f1e515e509a8044d408db1a3a04d7f085cb432c58c28275",
+  "response_candidates_sha256": "8ab118ff310e3867310bf11607798b5ed48be00706719ff8163d589c594aed18",
+  "source_audit_sha256": "ff16761bc867851fa609442d3e9dc6d29e47a001a951bbecc4ee375ccef6a259",
+  "script_sha256": "e2710aa8e90667dd4a1dbad3663a4e9926634c983247941c2a97c39bf42bceba",
+  "command_argv": [
+    "code/scripts/audit_p2_task3_sumo_b_calibration_only.py",
+    "--input-dir",
+    "code/outputs/calibration/p2_task3_sumo_b_20261102",
+    "--scope-only"
+  ],
+  "interpretation": "candidate responses inside geometric region coexist with no fixed-cohort alarm; not Qualified or real-world causal proof"
+}

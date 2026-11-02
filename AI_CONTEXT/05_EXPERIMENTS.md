@@ -1,3 +1,23 @@
+## Current — P2 Task3 CALIBRATION_ONLY evidence (2026-11-02)
+
+统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节只摘要，最新定义、参数与状态以该入口及对应证据为准。
+
+### 实验编号与目的
+
+P2-TASK3-CALIBRATION-ONLY-20261102: measurement verification and bounded B-domain calibration; not a confirmatory experiment or Pilot.
+
+### 配置与数据划分
+
+V2: 16 scenarios, 24 calibration and 24 validation panels each, 42 shared detectors, seeds in distinct 202611020/202711020 families. 768 panels/32,256 evaluations. B: null plus two amplitudes×two durations, six calibration and six validation seeds per condition, 60 runs/2,520 evaluations. Candidate count is not independent n; validation not used to retune.
+
+### 结果与限制
+
+V1 preserved/withdrawn. V2 stationary-null reference 0/24 but 95% upper≈0.138, trend-null24/24. B 60/60 engineeringPASS, all detectors no cohort alarm; peak mean decline 0.01624–0.02806m/s. Per validation condition n6, 0 alarms upper≈0.3903. Source movement and intermediate in-region response candidates do not form a Qualified chain. No best traffic threshold, F0, temporal precedence or A/B transfer claim.
+
+### 输出与复现
+
+code/outputs/calibration/p2_task3_20261102_v2/; code/outputs/calibration/p2_task3_sumo_b_20261102/; portable summaries evidence/research/P2_TASK3_20261102/. Each has configuration/snapshots/provenance/SHA; raw logs and plots remain local. B automatic XSD checking was disabled by missing SUMO_HOME; postprocessing checked XML wellformedness only. Formal P2/rho/config/gates unchanged, no formal runs added.
+
 ## Current — P2 Task2 documentation-only research package (2026-11-02)
 
 ### 实验编号

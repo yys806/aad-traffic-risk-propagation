@@ -1,3 +1,19 @@
+## Current — P2 Task3 definition and calibration architecture (2026-11-02)
+
+统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节只摘要，最新定义、参数与状态以该入口及对应证据为准。
+
+### 模型总体结构
+
+The definitions directory governs current definitions and their status; source/config/output govern implementation and runs, Overleaf governs paper text. Conflicts are registered rather than silently overridden.
+
+### 主要模块
+
+Six canonical documents and five Task3 reports; isolated synthetic detector, plotting, controlled-B SUMO executor and read-only postprocessor. These scripts are not connected to production Physical Arrival or message-policy experiments.
+
+### 模块关系与限制
+
+Evidence → definitions/ledger → CALIBRATION_ONLY audit → researcher decision. V2 has generator truth; B has model motion but no target-cohort positive/Qualified chain; A has no qualified source. State-threshold absence cannot exclude all physical mechanisms. Production architecture and gates unchanged.
+
 ## Current — P2 Task2 physical-arrival architecture (2026-11-02)
 
 ### 模型总体结构

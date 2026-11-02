@@ -1,3 +1,17 @@
+## 2026-11-02 P2 Task3 decisions and unresolved scope
+
+统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。此处只摘要导航。
+
+### 已确认方向
+
+Task3 confirms fixed cohort/region/window and sustained baseline-relative signed speed-decline direction, A/B separation and governance. No new numeric parameter or specific operator has been accepted by completing the task.
+
+### Proposal / Awaiting Researcher Decision
+
+See docs/research/P2/P2_TASK3_RESEARCHER_DECISIONS.md D01–D14: onset origin, Δu^B mapping, mean/median/proportion, complete cohort×region support, baseline/trend, theta/h/q/W/coverage/recovery/clock, W1–W9, prequalified F0^Q versus assignment F0, population bounds and limited paper audit.
+
+D13 is critical: specified-cohort threshold absence cannot establish absence of every ordinary physical mechanism in the region. Recommend limiting interpretation and aligning risk/arrival support; stronger exclusion needs evidence. This is not an unauthorized hypothesis/paper change. V1 5s/k3/h1/q2dt recommendations are withdrawn, not Agreed. Historical decisions and gates preserved.
+
 ## 2026-11-02 P2 Task2 Physical Arrival and No-Message Reference
 
 ### 日期

@@ -1,3 +1,11 @@
+## Current — P2 Task3 Physical Arrival Calibration and Definition Governance (2026-11-02)
+
+P2 Task3 is COMPLETED_WITH_LIMITATIONS. Canonical definitions: [research/definitions/README.md](research/definitions/README.md); final report: [P2_TASK3_FINAL_REPORT.md](research/P2/P2_TASK3_FINAL_REPORT.md), with protocol/results/literature/decisions in the same directory. Version AAD-SCI-DEF-20261102-P2T3-v0.1; signed-decline direction confirmed, specific operator and Δu^B mapping proposed, numeric parameters unknown.
+
+V1 preserved/withdrawn; V2 completed 768 panels/42 detectors/32,256 evaluations. Controlled B completed 60 CALIBRATION_ONLY runs/2,520 evaluations with no fixed-cohort alarm. Noncohort response candidates already inside the region show that absence of the specified state does not exclude every physical mechanism; claim scope and risk/arrival support await decision. A source=0, independent Qualified source→cohort witness=0, F0/temporal precedence Unknown. Overleaf read earlier, audit snapshot/precise-location limitation explicit; paper not edited.
+
+Outputs: code/outputs/calibration/p2_task3_20261102_v2/ and p2_task3_sumo_b_20261102/; compact evidence: evidence/research/P2_TASK3_20261102/. No formal run added; Formal P2/rho, configuration, Gate, Protocol Lock, Stage1.1 and long-term route unchanged. Research proposals are not Agreed.
+
 ## Current — P2 Task2 Physical Arrival and No-Message Reference (2026-11-02)
 
 P2 Task2 is `COMPLETED_WITH_LIMITATIONS`. It operationalizes the separation of Physical Source Onset interval, Source Confirmation and Message Generation Eligibility; separates vehicle, coordinate, candidate influence and macro-front directions; proposes same-lane longitudinal Qualified Witness admission; compares regional speed-state candidates; distinguishes Physical State Baseline from the source-present no-message distribution; and defines censoring/clock handling. The leading \(\phi\) proposal is equal-vehicle signed relative-baseline speed decrease on a pre-fixed cohort, with gap/density and robust summaries as auxiliary evidence. The preferred \(F_0\) design confirms source eligibility before communication randomization and uses `Z_C=0, Z_S=1`; SUMO paired paths remain model-only auxiliary evidence. No numeric parameter, experiment, production code, Gate, Protocol Lock or Stage 1.1 state changed.

@@ -1,3 +1,17 @@
+## Current — P2 Task3 scientific and audit limitations (2026-11-02)
+
+统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。此处只摘要导航。
+
+- Formal A source=0, independent Qualified source→cohort witness=0; F0 and causal risk-effect onset unavailable.
+- B60run lacks target-cohort threshold positives. Synthetic curves and B movement cannot establish transportable theta/h/q/coverage/clock values.
+- In-region noncohort responses may precede cohort alarms; phi absence does not exclude all physical mechanisms. Claim scope and risk/arrival support need decision.
+- Fixed cohort×region becomes structurally unavailable on exit; coverage alone cannot solve selection or undefined outcomes.
+- Prequalification before ZC identifies a subpopulation, not automatically all ZS=1. Informative censoring/Unknown and clock errors need identification or bounds.
+- Overleaf was read earlier, but immutable snapshot/hash/exact-location refresh is unavailable with current connectors; audit limited, paper untouched.
+- Some recent trajectory sources are metadata/extracted-only. JSS original/bilingual import completed; missing metadata metrics remain Unknown. B XML is wellformed; automatic XSD check was disabled.
+
+None authorizes threshold lowering, more trials, Gate/Lock changes or Stage1.1. Failure history remains.
+
 ## Current — P2 Task2 physical-arrival limitations (2026-11-02)
 
 ### Documented Intent

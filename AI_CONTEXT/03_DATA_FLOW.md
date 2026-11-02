@@ -1,3 +1,23 @@
+## Current — P2 Task3 evidence and calibration data flow (2026-11-02)
+
+统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节只摘要，最新定义、参数与状态以该入口及对应证据为准。
+
+### raw data / dataset
+
+Bounded P0–P2/Task17–20 evidence, Zotero sources and earlier Overleaf reads; V2 synthetic panels and separately generated B SUMO trajectories. No locked holdout read.
+
+### preprocessing
+
+Fixed identities and region are preserved, with no exit deletion or replacement. Proposed Δu^B maps earlier g_v/Δv candidates while retaining paper net-gap g and pair closing speed. V1 outputs stay preserved as superseded failures.
+
+### measurement / output
+
+V2: panels→42 detectors→split-specific window alarm/detection/quality summaries. B: source-only command/native followers→step trajectories/controls→detectors plus response-position joins. Command condition is not target-arrival truth. Onset interval, actual confirmation and observation are distinct.
+
+### evidence / inference
+
+Full trajectories/logs/plots stay local under code/outputs/calibration/. Portable evidence contains only compact summaries/configuration/provenance/hashes, including five descriptive response locations. F0 and risk-effect timing are not estimated. Information/production data flow unchanged.
+
 ## Current — P2 Task2 physical-arrival and reference data flow (2026-11-02)
 
 ### raw data / dataset

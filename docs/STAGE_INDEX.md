@@ -1,3 +1,11 @@
+## Current — P2 Task3 Physical Arrival Calibration and Definition Governance (2026-11-02)
+
+P2 Task3 is COMPLETED_WITH_LIMITATIONS. Canonical definitions: [research/definitions/README.md](research/definitions/README.md); final report: [P2_TASK3_FINAL_REPORT.md](research/P2/P2_TASK3_FINAL_REPORT.md), with protocol/results/literature/decisions in the same directory. Version AAD-SCI-DEF-20261102-P2T3-v0.1; signed-decline direction confirmed, specific operator and Δu^B mapping proposed, numeric parameters unknown.
+
+V1 preserved/withdrawn; V2 completed 768 panels/42 detectors/32,256 evaluations. Controlled B completed 60 CALIBRATION_ONLY runs/2,520 evaluations with no fixed-cohort alarm. Noncohort response candidates already inside the region show that absence of the specified state does not exclude every physical mechanism; claim scope and risk/arrival support await decision. A source=0, independent Qualified source→cohort witness=0, F0/temporal precedence Unknown. Overleaf read earlier, audit snapshot/precise-location limitation explicit; paper not edited.
+
+Outputs: code/outputs/calibration/p2_task3_20261102_v2/ and p2_task3_sumo_b_20261102/; compact evidence: evidence/research/P2_TASK3_20261102/. No formal run added; Formal P2/rho, configuration, Gate, Protocol Lock, Stage1.1 and long-term route unchanged. Research proposals are not Agreed.
+
 ## Current — P2 Task2 Physical Arrival and No-Message Reference (2026-11-02)
 
 P2 Task2 completed a documentation-only operational package with limitations. It records onset/confirmation/generation timing, micro/macro direction semantics, directed physical edges, Qualified Witness admission, the leading fixed-cohort relative-speed \(\phi\) candidate, separate baseline and no-message reference meanings, source-confirm-before-communication randomization as the preferred design, and interval/right-censoring/Unknown/clock rules. No experiment, production code or formal configuration changed. All numeric and scientific operational choices remain Awaiting Researcher Decision.

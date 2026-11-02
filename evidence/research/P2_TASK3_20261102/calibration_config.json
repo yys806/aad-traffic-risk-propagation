@@ -1,0 +1,572 @@
+{
+  "status": "CALIBRATION_ONLY",
+  "domain": "synthetic_measurement_verification",
+  "scenarios": [
+    {
+      "name": "null_stationary",
+      "amplitude_mps": 0,
+      "duration_s": 0,
+      "affected": 0,
+      "dt_s": 0.1,
+      "noise_mps": 0.2,
+      "missing": "none",
+      "trend_mps2": 0.0,
+      "common_noise_mps": 0.0
+    },
+    {
+      "name": "null_trend",
+      "amplitude_mps": 0,
+      "duration_s": 0,
+      "affected": 0,
+      "dt_s": 0.1,
+      "noise_mps": 0.2,
+      "missing": "none",
+      "trend_mps2": 0.02,
+      "common_noise_mps": 0.0
+    },
+    {
+      "name": "broad_0.5_0.8",
+      "amplitude_mps": 0.5,
+      "duration_s": 0.8,
+      "affected": 20,
+      "dt_s": 0.1,
+      "noise_mps": 0.2,
+      "missing": "none",
+      "trend_mps2": 0.0,
+      "common_noise_mps": 0.0
+    },
+    {
+      "name": "broad_0.5_3.0",
+      "amplitude_mps": 0.5,
+      "duration_s": 3.0,
+      "affected": 20,
+      "dt_s": 0.1,
+      "noise_mps": 0.2,
+      "missing": "none",
+      "trend_mps2": 0.0,
+      "common_noise_mps": 0.0
+    },
+    {
+      "name": "broad_1.0_0.8",
+      "amplitude_mps": 1.0,
+      "duration_s": 0.8,
+      "affected": 20,
+      "dt_s": 0.1,
+      "noise_mps": 0.2,
+      "missing": "none",
+      "trend_mps2": 0.0,
+      "common_noise_mps": 0.0
+    },
+    {
+      "name": "broad_1.0_3.0",
+      "amplitude_mps": 1.0,
+      "duration_s": 3.0,
+      "affected": 20,
+      "dt_s": 0.1,
+      "noise_mps": 0.2,
+      "missing": "none",
+      "trend_mps2": 0.0,
+      "common_noise_mps": 0.0
+    },
+    {
+      "name": "single_outlier",
+      "amplitude_mps": 8,
+      "duration_s": 3,
+      "affected": 1,
+      "dt_s": 0.1,
+      "noise_mps": 0.2,
+      "missing": "none",
+      "trend_mps2": 0.0,
+      "common_noise_mps": 0.0
+    },
+    {
+      "name": "half_cohort",
+      "amplitude_mps": 1,
+      "duration_s": 3,
+      "affected": 10,
+      "dt_s": 0.1,
+      "noise_mps": 0.2,
+      "missing": "none",
+      "trend_mps2": 0.0,
+      "common_noise_mps": 0.0
+    },
+    {
+      "name": "dt_005",
+      "amplitude_mps": 1.0,
+      "duration_s": 3.0,
+      "affected": 20,
+      "dt_s": 0.05,
+      "noise_mps": 0.2,
+      "missing": "none",
+      "trend_mps2": 0.0,
+      "common_noise_mps": 0.0
+    },
+    {
+      "name": "dt_020",
+      "amplitude_mps": 1.0,
+      "duration_s": 3.0,
+      "affected": 20,
+      "dt_s": 0.2,
+      "noise_mps": 0.2,
+      "missing": "none",
+      "trend_mps2": 0.0,
+      "common_noise_mps": 0.0
+    },
+    {
+      "name": "noise_050",
+      "amplitude_mps": 1.0,
+      "duration_s": 3.0,
+      "affected": 20,
+      "dt_s": 0.1,
+      "noise_mps": 0.5,
+      "missing": "none",
+      "trend_mps2": 0.0,
+      "common_noise_mps": 0.0
+    },
+    {
+      "name": "mcar_020",
+      "amplitude_mps": 1.0,
+      "duration_s": 3.0,
+      "affected": 20,
+      "dt_s": 0.1,
+      "noise_mps": 0.2,
+      "missing": "mcar",
+      "trend_mps2": 0.0,
+      "common_noise_mps": 0.0
+    },
+    {
+      "name": "block_040",
+      "amplitude_mps": 1.0,
+      "duration_s": 3.0,
+      "affected": 20,
+      "dt_s": 0.1,
+      "noise_mps": 0.2,
+      "missing": "block",
+      "trend_mps2": 0.0,
+      "common_noise_mps": 0.0
+    },
+    {
+      "name": "selective_dropout",
+      "amplitude_mps": 1.0,
+      "duration_s": 3.0,
+      "affected": 20,
+      "dt_s": 0.1,
+      "noise_mps": 0.2,
+      "missing": "dropout",
+      "trend_mps2": 0.0,
+      "common_noise_mps": 0.0
+    },
+    {
+      "name": "common_ar1",
+      "amplitude_mps": 1.0,
+      "duration_s": 3.0,
+      "affected": 20,
+      "dt_s": 0.1,
+      "noise_mps": 0.2,
+      "missing": "none",
+      "trend_mps2": 0.0,
+      "common_noise_mps": 0.3
+    },
+    {
+      "name": "trend_drop",
+      "amplitude_mps": 1.0,
+      "duration_s": 3.0,
+      "affected": 20,
+      "dt_s": 0.1,
+      "noise_mps": 0.2,
+      "missing": "none",
+      "trend_mps2": 0.02,
+      "common_noise_mps": 0.0
+    }
+  ],
+  "detectors": [
+    {
+      "aggregator": "mean",
+      "theta": 0.25,
+      "h_s": 0.5,
+      "baseline_s": 5.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "mean",
+      "theta": 0.25,
+      "h_s": 1.0,
+      "baseline_s": 5.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "mean",
+      "theta": 0.25,
+      "h_s": 2.0,
+      "baseline_s": 5.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "mean",
+      "theta": 0.5,
+      "h_s": 0.5,
+      "baseline_s": 5.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "mean",
+      "theta": 0.5,
+      "h_s": 1.0,
+      "baseline_s": 5.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "mean",
+      "theta": 0.5,
+      "h_s": 2.0,
+      "baseline_s": 5.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "mean",
+      "theta": 1.0,
+      "h_s": 0.5,
+      "baseline_s": 5.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "mean",
+      "theta": 1.0,
+      "h_s": 1.0,
+      "baseline_s": 5.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "mean",
+      "theta": 1.0,
+      "h_s": 2.0,
+      "baseline_s": 5.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "mean",
+      "theta": 0.5,
+      "h_s": 1.0,
+      "baseline_s": 2.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "mean",
+      "theta": 0.5,
+      "h_s": 1.0,
+      "baseline_s": 10.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "mean",
+      "theta": 0.5,
+      "h_s": 1.0,
+      "baseline_s": 5.0,
+      "q_factor": 3.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "mean",
+      "theta": 0.5,
+      "h_s": 1.0,
+      "baseline_s": 5.0,
+      "q_factor": 5.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "mean",
+      "theta": 0.5,
+      "h_s": 1.0,
+      "baseline_s": 5.0,
+      "q_factor": 1.1,
+      "coverage_gate": 1.0,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "median",
+      "theta": 0.25,
+      "h_s": 0.5,
+      "baseline_s": 5.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "median",
+      "theta": 0.25,
+      "h_s": 1.0,
+      "baseline_s": 5.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "median",
+      "theta": 0.25,
+      "h_s": 2.0,
+      "baseline_s": 5.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "median",
+      "theta": 0.5,
+      "h_s": 0.5,
+      "baseline_s": 5.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "median",
+      "theta": 0.5,
+      "h_s": 1.0,
+      "baseline_s": 5.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "median",
+      "theta": 0.5,
+      "h_s": 2.0,
+      "baseline_s": 5.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "median",
+      "theta": 1.0,
+      "h_s": 0.5,
+      "baseline_s": 5.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "median",
+      "theta": 1.0,
+      "h_s": 1.0,
+      "baseline_s": 5.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "median",
+      "theta": 1.0,
+      "h_s": 2.0,
+      "baseline_s": 5.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "median",
+      "theta": 0.5,
+      "h_s": 1.0,
+      "baseline_s": 2.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "median",
+      "theta": 0.5,
+      "h_s": 1.0,
+      "baseline_s": 10.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "median",
+      "theta": 0.5,
+      "h_s": 1.0,
+      "baseline_s": 5.0,
+      "q_factor": 3.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "median",
+      "theta": 0.5,
+      "h_s": 1.0,
+      "baseline_s": 5.0,
+      "q_factor": 5.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "median",
+      "theta": 0.5,
+      "h_s": 1.0,
+      "baseline_s": 5.0,
+      "q_factor": 1.1,
+      "coverage_gate": 1.0,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "proportion",
+      "theta": 0.25,
+      "h_s": 0.5,
+      "baseline_s": 5.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "proportion",
+      "theta": 0.25,
+      "h_s": 1.0,
+      "baseline_s": 5.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "proportion",
+      "theta": 0.25,
+      "h_s": 2.0,
+      "baseline_s": 5.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "proportion",
+      "theta": 0.5,
+      "h_s": 0.5,
+      "baseline_s": 5.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "proportion",
+      "theta": 0.5,
+      "h_s": 1.0,
+      "baseline_s": 5.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "proportion",
+      "theta": 0.5,
+      "h_s": 2.0,
+      "baseline_s": 5.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "proportion",
+      "theta": 0.75,
+      "h_s": 0.5,
+      "baseline_s": 5.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "proportion",
+      "theta": 0.75,
+      "h_s": 1.0,
+      "baseline_s": 5.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "proportion",
+      "theta": 0.75,
+      "h_s": 2.0,
+      "baseline_s": 5.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "proportion",
+      "theta": 0.5,
+      "h_s": 1.0,
+      "baseline_s": 2.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "proportion",
+      "theta": 0.5,
+      "h_s": 1.0,
+      "baseline_s": 10.0,
+      "q_factor": 1.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "proportion",
+      "theta": 0.5,
+      "h_s": 1.0,
+      "baseline_s": 5.0,
+      "q_factor": 3.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "proportion",
+      "theta": 0.5,
+      "h_s": 1.0,
+      "baseline_s": 5.0,
+      "q_factor": 5.1,
+      "coverage_gate": 0.8,
+      "individual_threshold_mps": 0.5
+    },
+    {
+      "aggregator": "proportion",
+      "theta": 0.5,
+      "h_s": 1.0,
+      "baseline_s": 5.0,
+      "q_factor": 1.1,
+      "coverage_gate": 1.0,
+      "individual_threshold_mps": 0.5
+    }
+  ],
+  "seed": 202611020,
+  "validation_seed": 202711020,
+  "repetitions": 24,
+  "baseline": "[30-W,30); monitor>=30",
+  "source_onset_s": 30,
+  "n_vehicles": 20,
+  "horizon_s": 60,
+  "external_validity": "NONE",
+  "protocol_sha256": "308fa870486d8d3d979a1f73835cf4cdc413c665f22b3305854ab34b62fd2a0e",
+  "script_sha256": "bdd36cf610a05c1e5eab2a7da36b61d820eeeb63d7068e9d6e04ac976e51d430"
+}

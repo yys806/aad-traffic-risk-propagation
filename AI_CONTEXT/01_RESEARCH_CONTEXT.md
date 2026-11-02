@@ -52,6 +52,26 @@ Separating onset from confirmation avoids a systematic physical-time delay. Sepa
 
 Source qualification → physical onset interval → time-respecting qualified edges → target-region state function → arrival onset/confirmation and censoring. In parallel, source confirmation → message eligibility → message lifecycle. The two clocks share audit fields but keep their meanings.
 
+## Current — P2 Task3 scientific scope and evidence (2026-11-02)
+
+统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节只摘要，最新定义、参数与状态以该入口及对应证据为准。
+
+### 研究背景
+
+Task3 unifies source/onset/confirmation, state arrival, no-message reference and paper alignment without treating calibration as confirmation.
+
+### 研究问题与建模
+
+The proposed Δu^B full-cohort mean measures sustained baseline-relative decline, not the first entry of every physical mechanism into a geometric region. B-domain s1–s4 response candidates were inside the region while the pre-fixed s5–s10 cohort did not alarm. This is a material claim-scope limitation awaiting researcher review. Fixed cohort×region support can become structurally undefined on exit; observed-subset averages do not automatically represent fixed N.
+
+### 因果与统计边界
+
+TP is an event random time; F0 is its no-message population reference. TR is a population risk-effect onset. P1 §7 fixed-H* and jointly valid risk/arrival bounds remain the preferred comparison; no treated-event cross-world seconds are identified. Qualification before ZC randomization supports a prequalified subpopulation, not automatically the full ZS=1 population. A sources and independent Qualified paths remain zero, F0/temporal precedence Unknown.
+
+### 文献与论文
+
+PAPER-SKILL/Zotero workflow completed bounded reading and five new sources. Core full texts and chapter-only/background reads are distinguished. Overleaf was not edited; missing immutable snapshot and exact quotes/lines limit the completed alignment audit.
+
 ## Current — P0 Task 3 design boundary (2026-11-01)
 
 Task3 recommends, as Proposal, whole-event/closed-network randomized message strategy ITT with independent roadside observation and randomized no-message events for controlled real-world evidence. Existing SUMO supports future model-only mechanism preparation; HIL provides real driver behavior in simulated traffic. Access and final sample size are Unknown. Measurement independence, randomized counterfactual reference and model counterfactual are distinct. Population-level early-window comparisons do not identify individual cross-world arrival differences, and policy ITT plus lifecycle logs does not identify adoption/action mediation. The two-arm minimum complements the proposed four-cell design; no approved definition or Gate changed. See `docs/research/P0/P0_TASK3_FINAL_REPORT.md`.

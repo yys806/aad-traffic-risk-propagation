@@ -1,3 +1,15 @@
+## Current — P2 Task3 Physical Arrival Calibration and Definition Governance (2026-11-02)
+
+统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节只摘要，最新定义、参数与状态以该入口及对应证据为准。
+
+P2 Task3 is COMPLETED_WITH_LIMITATIONS. Canonical version AAD-SCI-DEF-20261102-P2T3-v0.1 contains six files and 22 definitions. Signed baseline-relative sustained speed decline on a fixed cohort is a researcher-confirmed direction; the equal-vehicle operator, proposed Δu^B notation, tE, numeric parameters and claim scope remain Awaiting Researcher Decision. Paper g remains net gap.
+
+V1 synthetic output is preserved and withdrawn. Corrected V2 completed 768 panels/42 candidates/32,256 evaluations; isolated SUMO controlled B completed 60 CALIBRATION_ONLY runs/2,520 evaluations, all without cohort alarms. B records show response candidates inside the region before the specified cohort reaches a threshold: absence of phi does not exclude all ordinary physical influence. Risk/arrival support and the strength of the temporal claim require researcher review. Formal A source=0; independent Qualified source→cohort witness=0; F0 and TR/TP temporal precedence remain Unknown.
+
+Reports: docs/research/P2/P2_TASK3_FINAL_REPORT.md and related protocol/results/literature/decisions. Outputs: code/outputs/calibration/p2_task3_20261102_v2/ and p2_task3_sumo_b_20261102/. Portable summaries: evidence/research/P2_TASK3_20261102/. Overleaf main/supplementary/bib were read earlier in this task but the immutable source snapshot and exact-location recheck are unavailable; the alignment audit is limited, paper unchanged.
+
+Stage0.5=CLOSED_WITH_LIMITATIONS; Stage0.6=PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS; Protocol Lock=BLOCKED; StageI=READY_ENGINEERING_ONLY; Stage1.1=NOT_AUTHORIZED. No formal measurement/configuration, Gate, long-term route, holdout or paper change. No subsequent research task auto-started.
+
 ## Current — P2 Task2 Physical Arrival and No-Message Reference (2026-11-02)
 
 P2 Task2 is `COMPLETED_WITH_LIMITATIONS`. The documentation package now separates Physical Source Onset interval, Source Confirmation and Message Generation Eligibility; distinguishes vehicle travel direction, road coordinate direction, candidate physical influence direction and macro traffic-wave direction; and defines a first-version Qualified Witness admission proposal centered on same-lane longitudinal leader/follower response evidence. The leading physical-arrival proposal is a sustained signed relative-baseline speed state over a pre-fixed cohort, with median/quantile/proportion, net gap and density as auxiliary evidence. Physical State Baseline is kept separate from the source-present no-message distribution.

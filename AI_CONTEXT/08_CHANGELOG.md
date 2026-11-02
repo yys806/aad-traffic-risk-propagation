@@ -1,3 +1,13 @@
+## 2026-11-02 P2 Task3 definition governance and bounded calibration
+
+统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。此处只摘要导航。
+
+Established six canonical files/22 definitions and only the authorized AGENTS chapter. Proposed Δu^B maps old g_v/Δv without formal deprecation. Preserved prior decisions.
+
+Withdrew flawed V1 output/recommendations, retained original files; completed corrected V2 (768 panels/42 candidates) and B (60 CALIBRATION_ONLY runs, no cohort alarms). Added read-only scope audit showing in-region responses before cohort threshold state. No further runs to chase detection.
+
+Registered five Zotero sources and JSS original/bilingual attachments. Five Task3 reports and limited Overleaf alignment completed; snapshot/location limitation recorded, paper untouched. Synced AI_CONTEXT, registry/index/status/stages/results and compact portable research evidence. No production/formal configuration/Gate/Lock/Stage1.1/holdout/long-term-route changes.
+
 ## Current — P2 Task2 Physical Arrival and No-Message Reference (2026-11-02)
 
 ### 重要变化

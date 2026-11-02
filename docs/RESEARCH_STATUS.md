@@ -1,3 +1,11 @@
+## Current — P2 Task3 Physical Arrival Calibration and Definition Governance (2026-11-02)
+
+P2 Task3 is COMPLETED_WITH_LIMITATIONS. Canonical definitions: [research/definitions/README.md](research/definitions/README.md); final report: [P2_TASK3_FINAL_REPORT.md](research/P2/P2_TASK3_FINAL_REPORT.md), with protocol/results/literature/decisions in the same directory. Version AAD-SCI-DEF-20261102-P2T3-v0.1; signed-decline direction confirmed, specific operator and Δu^B mapping proposed, numeric parameters unknown.
+
+V1 preserved/withdrawn; V2 completed 768 panels/42 detectors/32,256 evaluations. Controlled B completed 60 CALIBRATION_ONLY runs/2,520 evaluations with no fixed-cohort alarm. Noncohort response candidates already inside the region show that absence of the specified state does not exclude every physical mechanism; claim scope and risk/arrival support await decision. A source=0, independent Qualified source→cohort witness=0, F0/temporal precedence Unknown. Overleaf read earlier, audit snapshot/precise-location limitation explicit; paper not edited.
+
+Outputs: code/outputs/calibration/p2_task3_20261102_v2/ and p2_task3_sumo_b_20261102/; compact evidence: evidence/research/P2_TASK3_20261102/. No formal run added; Formal P2/rho, configuration, Gate, Protocol Lock, Stage1.1 and long-term route unchanged. Research proposals are not Agreed.
+
 ## Current — P2 Task2 Physical Arrival and No-Message Reference (2026-11-02)
 
 P2 Task2 is `COMPLETED_WITH_LIMITATIONS`. The package separates source onset, confirmation and message eligibility; distinguishes micro vehicle paths from macro traffic-wave fronts; defines an auditable first-version Qualified Witness proposal; and recommends a fixed-cohort signed relative-baseline speed state as the leading \(\phi\) candidate. Physical State Baseline is separate from `F_0(t|H,Z_S=1)`. The preferred no-message reference is a source-present arm after communication-blind source qualification and before `Z_C` randomization; SUMO common-state pairing is auxiliary model evidence. Arrival onset, confirmation, observation time, right/interval censoring, Unknown and clock uncertainty remain separate. No numeric thresholds, persistence, path, clock or region parameters were frozen; no experiment, code/configuration change, holdout read, Gate change, Protocol Lock or Push occurred.

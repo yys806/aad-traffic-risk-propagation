@@ -247,3 +247,16 @@ python code/scripts/export_project_evidence.py --repo-root . --verify
 - 本节是文献管理的**唯一操作口径**；后续接手本项目的 agent 按本节执行，不要另建本地文献库、不要把 PDF 塞回仓库。
 - 只改本节，勿改本文件其他章节（除非用户明确要求）。
 - Zotero 附件用**导入式附件 + 本地 API 写入**，不烧 zotero.org 云配额；Zotero 写入需 10.x + 本地 key（缓存在 `D:\hermes\cache\zotero-local-key.json`，失效时跑 `python D:\hermes\scripts\zotero_get_key.py` 重新授权）。
+
+## Canonical Scientific Definitions
+
+本节由研究者在 P2 Task3 任务中明确授权新增。只增加科研定义管理规则，不改动本文件其他长期规则。
+
+- `docs/research/definitions/` 是 AAD 当前科研定义、符号、参数、假设及其证据状态的统一事实源。入口为 [`docs/research/definitions/README.md`](docs/research/definitions/README.md)。
+- 开始新的科研任务时，先读取该目录的 README 及相关定义、符号、参数和证据账本，再回到源码、配置、实验产物和论文材料核验。
+- 任何定义、符号、参数、假设、识别条件或其证据状态发生变化，必须在同一任务中更新该目录；其他 Task 文档不得创建与统一入口冲突的“最新版本”。
+- 旧定义不得无痕删除。废弃、替代或修订必须登记版本、原因、影响文件和新旧映射。
+- `AI_CONTEXT/` 负责摘要和导航，不得与定义目录形成第二套科研定义。AI_CONTEXT 必须显著链接定义目录入口。
+- Overleaf 是论文正文、公式、章节结构和正式表述的事实源；`docs/research/definitions/` 是当前科研定义事实源。二者冲突时必须记录 `Overleaf Alignment`，不得擅自覆盖任一方，也不得未经研究者授权修改论文正文。
+- `Fact`、`Inference`、`Hypothesis`、`Proposal`、`Agreed`、`Unknown` 必须明确区分。Codex 完成任务、运行校准或更新文档，不得自动把 `Proposal` 升级为 `Agreed`。
+- Formal P2、Formal rho/P2、Gate、Protocol Lock 和 Stage 1.1 的既有语义继续由当前源码/config、项目注册表和研究者明确决定维护；定义目录的 Proposal 不改变这些事实。

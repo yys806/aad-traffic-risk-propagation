@@ -1,3 +1,7 @@
+## Research calibration — P2 Task3 (2026-11-02)
+
+CALIBRATION_ONLY, not a formal scientific result: [Task3 results](research/P2/P2_TASK3_CALIBRATION_RESULTS.md), [definition entry](research/definitions/README.md). V2 synthetic 768 panels; controlled B60run, no cohort alarm/Qualified chain. V1 is withdrawn and preserved. Portable summary: evidence/research/P2_TASK3_20261102/. F0 and temporal precedence not estimated. No changes to existing result counts or Gate.
+
 ## RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101
 
 Offline scientific analysis of 100 Task9 Primary/Supplementary runs: trajectory responses, tau/minGap/candidate effects, actual paired A/B differences, seed/source consistency and five figures. No new SUMO runs. Report: `docs/TASK19_SCIENTIFIC_RESULT_ANALYSIS_20261101.md`; evidence: `evidence/results/RES-STAGE-0.5-TASK19-SCIENTIFIC-RESULT-ANALYSIS-20261101/`.
