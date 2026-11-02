@@ -1,3 +1,7 @@
+## P2 Task7 — 2026-11-02
+
+隔离Task7代码入口：run_p2_task7_parameter_experiment.py、p2_task7_measurement.py、repair_p2_task7_truth.py、analyze_p2_task7_parameter_experiment.py、complete_p2_task7_diagnostics.py、plan_p2_task7_validation.py、verify_p2_task7_results.py、finalize_p2_task7.py（均code/scripts/）；定向测试code/tests/test_p2_task7_parameter_experiment.py。
+
 ## Current — P2 Task5 measurement and identification operationalization (2026-11-02)
 
 统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节只作摘要导航；下方旧任务块为历史。

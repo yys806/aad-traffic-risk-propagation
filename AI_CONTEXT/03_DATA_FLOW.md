@@ -1,3 +1,7 @@
+## P2 Task7 — 2026-11-02
+
+Task7：冻结source manifest/seed→SUMO raw+审计→独立truth v2/hash（失败Unknown）→candidate manifest→同raw离线三层曲线/压力→精确V/CDF规划→报告/证据。V没有执行，不能从C接回正式F0或risk结论。
+
 ## Current — P2 Task5 measurement and identification operationalization (2026-11-02)
 
 统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节只作摘要导航；下方旧任务块为历史。

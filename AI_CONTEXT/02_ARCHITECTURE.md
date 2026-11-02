@@ -1,3 +1,7 @@
+## P2 Task7 — 2026-11-02
+
+新增隔离校准辅助模块code/scripts/p2_task7_measurement.py与run/analyze/plan/verify/finalize脚本；不导入或替换生产riskprop模块。只有本任务离线工程，正式架构不改。
+
 ## Current — P2 Task5 measurement and identification operationalization (2026-11-02)
 
 统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)。本节只作摘要导航；下方旧任务块为历史。

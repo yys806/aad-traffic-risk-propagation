@@ -1,0 +1,1815 @@
+{
+  "algorithm_version": "P2T7-offline-v1",
+  "truth_freeze_sha256": "bf54eef7c8a608e2eee74386b635ead1de342ce1610100286b79314df6855f82",
+  "script_sha256": "abbe86a699eb10f0876ce00c3a1800c76c2b78df896fefa7fca7d1645f15832c",
+  "source_detector_sha256": "49b02548d132334504fd8c7c0f8b38f350aa65c9d09e638df3d22da119a4b18b",
+  "numeric_grid_floor_mps": 1e-06,
+  "numeric_floor_is_not_real_sensor_error": true,
+  "raw_observation": "complete simulator full state; sensor stress is separate",
+  "reference": {
+    "cohort": {
+      "W": 9.0,
+      "model": "constant",
+      "theta": 0.25,
+      "h": 2.0,
+      "q": 0.05,
+      "coverage": 1.0,
+      "recovery": 0.0,
+      "hysteresis": 0.0,
+      "missing": "bounds",
+      "w": 2.0,
+      "stride": 1,
+      "cells": 1
+    },
+    "macro": {
+      "W": 9.0,
+      "model": "constant",
+      "theta": 0.25,
+      "h": 2.0,
+      "q": 0.05,
+      "coverage": 1.0,
+      "recovery": 0.0,
+      "hysteresis": 0.0,
+      "missing": "bounds",
+      "w": 2.0,
+      "stride": 1,
+      "cells": 1
+    },
+    "micro": {
+      "W": 9.0,
+      "model": "constant",
+      "theta": 0.25,
+      "h": 2.0,
+      "q": 0.05,
+      "coverage": 1.0,
+      "recovery": 0.0,
+      "hysteresis": 0.0,
+      "missing": "bounds",
+      "w": 2.0,
+      "stride": 1,
+      "cells": 1
+    }
+  },
+  "grids": {
+    "cohort": {
+      "W": [
+        4.5,
+        9.0,
+        13.5
+      ],
+      "model": [
+        "constant",
+        "linear"
+      ],
+      "theta": [
+        0.013850612980783073,
+        0.01427150990730044,
+        0.014890710616642601,
+        0.25,
+        0.5,
+        1.0
+      ],
+      "h": [
+        1.0,
+        2.0,
+        4.0
+      ],
+      "q": [
+        0.05
+      ],
+      "coverage": [
+        0.6,
+        0.8,
+        0.9,
+        0.95,
+        1.0
+      ],
+      "recovery": [
+        0.0,
+        2.0
+      ],
+      "hysteresis": [
+        0.0,
+        1e-06
+      ],
+      "missing": [
+        "bounds",
+        "unknown"
+      ],
+      "w": [
+        1.0,
+        2.0,
+        4.0
+      ],
+      "stride": [
+        1,
+        2,
+        4
+      ],
+      "cells": [
+        1,
+        2,
+        4
+      ]
+    },
+    "macro": {
+      "W": [
+        4.5,
+        9.0,
+        13.5
+      ],
+      "model": [
+        "constant",
+        "linear"
+      ],
+      "theta": [
+        0.0008893179825243181,
+        0.0009386217480733982,
+        0.0010336447540787925,
+        0.25,
+        0.5,
+        1.0
+      ],
+      "h": [
+        1.0,
+        2.0,
+        4.0
+      ],
+      "q": [
+        0.05
+      ],
+      "coverage": [
+        0.6,
+        0.8,
+        0.9,
+        0.95,
+        1.0
+      ],
+      "recovery": [
+        0.0,
+        2.0
+      ],
+      "hysteresis": [
+        0.0,
+        1e-06
+      ],
+      "missing": [
+        "bounds",
+        "unknown"
+      ],
+      "w": [
+        1.0,
+        2.0,
+        4.0
+      ],
+      "stride": [
+        1,
+        2,
+        4
+      ],
+      "cells": [
+        1,
+        2,
+        4
+      ]
+    },
+    "micro": {
+      "W": [
+        4.5,
+        9.0,
+        13.5
+      ],
+      "model": [
+        "constant",
+        "linear"
+      ],
+      "theta": [
+        0.01805926035016441,
+        0.018184854767970736,
+        0.018549046201176988,
+        0.25,
+        0.5,
+        1.0
+      ],
+      "h": [
+        1.0,
+        2.0,
+        4.0
+      ],
+      "q": [
+        0.05
+      ],
+      "coverage": [
+        0.6,
+        0.8,
+        0.9,
+        0.95,
+        1.0
+      ],
+      "recovery": [
+        0.0,
+        2.0
+      ],
+      "hysteresis": [
+        0.0,
+        1e-06
+      ],
+      "missing": [
+        "bounds",
+        "unknown"
+      ],
+      "w": [
+        1.0,
+        2.0,
+        4.0
+      ],
+      "stride": [
+        1,
+        2,
+        4
+      ],
+      "cells": [
+        1,
+        2,
+        4
+      ]
+    }
+  },
+  "configs": {
+    "cohort": {
+      "223346c12f11": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "a4521476b45c": {
+        "W": 4.5,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "d50dd30f9a54": {
+        "W": 13.5,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "39ef6540b444": {
+        "W": 9.0,
+        "model": "linear",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "406c256c6e52": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.013850612980783073,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "62c371c1a694": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.01427150990730044,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "eaf0981bdb30": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.014890710616642601,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "b46d83045e9c": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.5,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "9cfa9c1d8268": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 1.0,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "a29038d830ee": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 1.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "3e3d9f5f05c6": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 4.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "1fbe96c6b0f1": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 0.6,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "0ef915e34452": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 0.8,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "7cb855f3f310": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 0.9,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "d1416a910fb7": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 0.95,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "9af501f1630a": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 2.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "39a3c7cc5197": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 1e-06,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "a4f8d377c251": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "unknown",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "dd2cfbedb530": {
+        "W": 4.5,
+        "model": "linear",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "f1708c53de04": {
+        "W": 13.5,
+        "model": "linear",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "170fa6985156": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.013850612980783073,
+        "h": 1.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "b60417df9a47": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.013850612980783073,
+        "h": 4.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "b0230e952e64": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 1.0,
+        "h": 1.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "dbc5c3db68bf": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 1.0,
+        "h": 4.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "b01ed358c7e9": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 2.0,
+        "hysteresis": 1e-06,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      }
+    },
+    "macro": {
+      "223346c12f11": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "a4521476b45c": {
+        "W": 4.5,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "d50dd30f9a54": {
+        "W": 13.5,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "39ef6540b444": {
+        "W": 9.0,
+        "model": "linear",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "c28becc588c9": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.0008893179825243181,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "4d537c3b978a": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.0009386217480733982,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "cfdeca8fda3a": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.0010336447540787925,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "b46d83045e9c": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.5,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "9cfa9c1d8268": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 1.0,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "a29038d830ee": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 1.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "3e3d9f5f05c6": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 4.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "1fbe96c6b0f1": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 0.6,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "0ef915e34452": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 0.8,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "7cb855f3f310": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 0.9,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "d1416a910fb7": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 0.95,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "9af501f1630a": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 2.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "39a3c7cc5197": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 1e-06,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "a4f8d377c251": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "unknown",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "675afee1d2d2": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 1.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "27891da33d84": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 4.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "0cdabf0cb1fc": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 2,
+        "cells": 1
+      },
+      "7df7639c5460": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 4,
+        "cells": 1
+      },
+      "50945cb24685": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 2
+      },
+      "6ef695114e8f": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 4
+      },
+      "dd2cfbedb530": {
+        "W": 4.5,
+        "model": "linear",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "f1708c53de04": {
+        "W": 13.5,
+        "model": "linear",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "7f3dd02bc862": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.0008893179825243181,
+        "h": 1.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "e2e36bb76c87": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.0008893179825243181,
+        "h": 4.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "b0230e952e64": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 1.0,
+        "h": 1.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "dbc5c3db68bf": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 1.0,
+        "h": 4.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "b01ed358c7e9": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 2.0,
+        "hysteresis": 1e-06,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "598570a4dea9": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.0008893179825243181,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 1.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "aba50497c17d": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 1.0,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 1.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "3ca1921e0542": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.0008893179825243181,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 4.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "cef745345823": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 1.0,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 4.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "cc978cfdb671": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 4,
+        "cells": 4
+      }
+    },
+    "micro": {
+      "223346c12f11": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "a4521476b45c": {
+        "W": 4.5,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "d50dd30f9a54": {
+        "W": 13.5,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "39ef6540b444": {
+        "W": 9.0,
+        "model": "linear",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "f71dcc275a94": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.01805926035016441,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "43775a710855": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.018184854767970736,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "59c531f8c6eb": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.018549046201176988,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "b46d83045e9c": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.5,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "9cfa9c1d8268": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 1.0,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "a29038d830ee": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 1.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "3e3d9f5f05c6": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 4.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "0cdabf0cb1fc": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 2,
+        "cells": 1
+      },
+      "7df7639c5460": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 4,
+        "cells": 1
+      },
+      "dd2cfbedb530": {
+        "W": 4.5,
+        "model": "linear",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "f1708c53de04": {
+        "W": 13.5,
+        "model": "linear",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "707712ee27d6": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.01805926035016441,
+        "h": 1.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "52a1d4734f04": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.01805926035016441,
+        "h": 4.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "b0230e952e64": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 1.0,
+        "h": 1.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "dbc5c3db68bf": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 1.0,
+        "h": 4.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "39a3c7cc5197": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 1e-06,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "9af501f1630a": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 2.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      "b01ed358c7e9": {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.25,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 2.0,
+        "hysteresis": 1e-06,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      }
+    }
+  },
+  "tags": {
+    "cohort": {
+      "223346c12f11": [
+        "reference",
+        "single:W",
+        "single:model",
+        "single:theta",
+        "single:h",
+        "single:q",
+        "single:coverage",
+        "single:recovery",
+        "single:hysteresis",
+        "single:missing",
+        "interaction:recoveryxhysteresis"
+      ],
+      "a4521476b45c": [
+        "single:W",
+        "interaction:Wxmodel"
+      ],
+      "d50dd30f9a54": [
+        "single:W",
+        "interaction:Wxmodel"
+      ],
+      "39ef6540b444": [
+        "single:model"
+      ],
+      "406c256c6e52": [
+        "single:theta"
+      ],
+      "62c371c1a694": [
+        "single:theta"
+      ],
+      "eaf0981bdb30": [
+        "single:theta"
+      ],
+      "b46d83045e9c": [
+        "single:theta"
+      ],
+      "9cfa9c1d8268": [
+        "single:theta"
+      ],
+      "a29038d830ee": [
+        "single:h",
+        "interaction:hxq",
+        "interaction:hxq"
+      ],
+      "3e3d9f5f05c6": [
+        "single:h",
+        "interaction:hxq",
+        "interaction:hxq"
+      ],
+      "1fbe96c6b0f1": [
+        "single:coverage"
+      ],
+      "0ef915e34452": [
+        "single:coverage"
+      ],
+      "7cb855f3f310": [
+        "single:coverage"
+      ],
+      "d1416a910fb7": [
+        "single:coverage"
+      ],
+      "9af501f1630a": [
+        "single:recovery",
+        "interaction:recoveryxhysteresis"
+      ],
+      "39a3c7cc5197": [
+        "single:hysteresis",
+        "interaction:recoveryxhysteresis"
+      ],
+      "a4f8d377c251": [
+        "single:missing"
+      ],
+      "dd2cfbedb530": [
+        "interaction:Wxmodel"
+      ],
+      "f1708c53de04": [
+        "interaction:Wxmodel"
+      ],
+      "170fa6985156": [
+        "interaction:thetaxh"
+      ],
+      "b60417df9a47": [
+        "interaction:thetaxh"
+      ],
+      "b0230e952e64": [
+        "interaction:thetaxh"
+      ],
+      "dbc5c3db68bf": [
+        "interaction:thetaxh"
+      ],
+      "b01ed358c7e9": [
+        "interaction:recoveryxhysteresis"
+      ]
+    },
+    "macro": {
+      "223346c12f11": [
+        "reference",
+        "single:W",
+        "single:model",
+        "single:theta",
+        "single:h",
+        "single:q",
+        "single:coverage",
+        "single:recovery",
+        "single:hysteresis",
+        "single:missing",
+        "single:w",
+        "single:stride",
+        "single:cells",
+        "interaction:recoveryxhysteresis",
+        "interaction:cellsxstride"
+      ],
+      "a4521476b45c": [
+        "single:W",
+        "interaction:Wxmodel"
+      ],
+      "d50dd30f9a54": [
+        "single:W",
+        "interaction:Wxmodel"
+      ],
+      "39ef6540b444": [
+        "single:model"
+      ],
+      "c28becc588c9": [
+        "single:theta"
+      ],
+      "4d537c3b978a": [
+        "single:theta"
+      ],
+      "cfdeca8fda3a": [
+        "single:theta"
+      ],
+      "b46d83045e9c": [
+        "single:theta"
+      ],
+      "9cfa9c1d8268": [
+        "single:theta"
+      ],
+      "a29038d830ee": [
+        "single:h",
+        "interaction:hxq",
+        "interaction:hxq"
+      ],
+      "3e3d9f5f05c6": [
+        "single:h",
+        "interaction:hxq",
+        "interaction:hxq"
+      ],
+      "1fbe96c6b0f1": [
+        "single:coverage"
+      ],
+      "0ef915e34452": [
+        "single:coverage"
+      ],
+      "7cb855f3f310": [
+        "single:coverage"
+      ],
+      "d1416a910fb7": [
+        "single:coverage"
+      ],
+      "9af501f1630a": [
+        "single:recovery",
+        "interaction:recoveryxhysteresis"
+      ],
+      "39a3c7cc5197": [
+        "single:hysteresis",
+        "interaction:recoveryxhysteresis"
+      ],
+      "a4f8d377c251": [
+        "single:missing"
+      ],
+      "675afee1d2d2": [
+        "single:w"
+      ],
+      "27891da33d84": [
+        "single:w"
+      ],
+      "0cdabf0cb1fc": [
+        "single:stride"
+      ],
+      "7df7639c5460": [
+        "single:stride",
+        "interaction:cellsxstride"
+      ],
+      "50945cb24685": [
+        "single:cells"
+      ],
+      "6ef695114e8f": [
+        "single:cells",
+        "interaction:cellsxstride"
+      ],
+      "dd2cfbedb530": [
+        "interaction:Wxmodel"
+      ],
+      "f1708c53de04": [
+        "interaction:Wxmodel"
+      ],
+      "7f3dd02bc862": [
+        "interaction:thetaxh"
+      ],
+      "e2e36bb76c87": [
+        "interaction:thetaxh"
+      ],
+      "b0230e952e64": [
+        "interaction:thetaxh"
+      ],
+      "dbc5c3db68bf": [
+        "interaction:thetaxh"
+      ],
+      "b01ed358c7e9": [
+        "interaction:recoveryxhysteresis"
+      ],
+      "598570a4dea9": [
+        "interaction:wxtheta"
+      ],
+      "aba50497c17d": [
+        "interaction:wxtheta"
+      ],
+      "3ca1921e0542": [
+        "interaction:wxtheta"
+      ],
+      "cef745345823": [
+        "interaction:wxtheta"
+      ],
+      "cc978cfdb671": [
+        "interaction:cellsxstride"
+      ]
+    },
+    "micro": {
+      "223346c12f11": [
+        "reference",
+        "single:W",
+        "single:model",
+        "single:theta",
+        "single:h",
+        "single:q",
+        "single:stride",
+        "interaction:recoveryxhysteresis"
+      ],
+      "a4521476b45c": [
+        "single:W",
+        "interaction:Wxmodel"
+      ],
+      "d50dd30f9a54": [
+        "single:W",
+        "interaction:Wxmodel"
+      ],
+      "39ef6540b444": [
+        "single:model"
+      ],
+      "f71dcc275a94": [
+        "single:theta"
+      ],
+      "43775a710855": [
+        "single:theta"
+      ],
+      "59c531f8c6eb": [
+        "single:theta"
+      ],
+      "b46d83045e9c": [
+        "single:theta"
+      ],
+      "9cfa9c1d8268": [
+        "single:theta"
+      ],
+      "a29038d830ee": [
+        "single:h",
+        "interaction:hxq",
+        "interaction:hxq"
+      ],
+      "3e3d9f5f05c6": [
+        "single:h",
+        "interaction:hxq",
+        "interaction:hxq"
+      ],
+      "0cdabf0cb1fc": [
+        "single:stride"
+      ],
+      "7df7639c5460": [
+        "single:stride"
+      ],
+      "dd2cfbedb530": [
+        "interaction:Wxmodel"
+      ],
+      "f1708c53de04": [
+        "interaction:Wxmodel"
+      ],
+      "707712ee27d6": [
+        "interaction:thetaxh"
+      ],
+      "52a1d4734f04": [
+        "interaction:thetaxh"
+      ],
+      "b0230e952e64": [
+        "interaction:thetaxh"
+      ],
+      "dbc5c3db68bf": [
+        "interaction:thetaxh"
+      ],
+      "39a3c7cc5197": [
+        "interaction:recoveryxhysteresis"
+      ],
+      "9af501f1630a": [
+        "interaction:recoveryxhysteresis"
+      ],
+      "b01ed358c7e9": [
+        "interaction:recoveryxhysteresis"
+      ]
+    }
+  },
+  "interactions": {
+    "cohort:Wxmodel": [
+      "a4521476b45c",
+      "dd2cfbedb530",
+      "d50dd30f9a54",
+      "f1708c53de04"
+    ],
+    "cohort:thetaxh": [
+      "170fa6985156",
+      "b60417df9a47",
+      "b0230e952e64",
+      "dbc5c3db68bf"
+    ],
+    "cohort:hxq": [
+      "a29038d830ee",
+      "a29038d830ee",
+      "3e3d9f5f05c6",
+      "3e3d9f5f05c6"
+    ],
+    "cohort:recoveryxhysteresis": [
+      "223346c12f11",
+      "39a3c7cc5197",
+      "9af501f1630a",
+      "b01ed358c7e9"
+    ],
+    "macro:Wxmodel": [
+      "a4521476b45c",
+      "dd2cfbedb530",
+      "d50dd30f9a54",
+      "f1708c53de04"
+    ],
+    "macro:thetaxh": [
+      "7f3dd02bc862",
+      "e2e36bb76c87",
+      "b0230e952e64",
+      "dbc5c3db68bf"
+    ],
+    "macro:hxq": [
+      "a29038d830ee",
+      "a29038d830ee",
+      "3e3d9f5f05c6",
+      "3e3d9f5f05c6"
+    ],
+    "macro:recoveryxhysteresis": [
+      "223346c12f11",
+      "39a3c7cc5197",
+      "9af501f1630a",
+      "b01ed358c7e9"
+    ],
+    "macro:wxtheta": [
+      "598570a4dea9",
+      "aba50497c17d",
+      "3ca1921e0542",
+      "cef745345823"
+    ],
+    "macro:cellsxstride": [
+      "223346c12f11",
+      "7df7639c5460",
+      "6ef695114e8f",
+      "cc978cfdb671"
+    ],
+    "micro:Wxmodel": [
+      "a4521476b45c",
+      "dd2cfbedb530",
+      "d50dd30f9a54",
+      "f1708c53de04"
+    ],
+    "micro:thetaxh": [
+      "707712ee27d6",
+      "52a1d4734f04",
+      "b0230e952e64",
+      "dbc5c3db68bf"
+    ],
+    "micro:hxq": [
+      "a29038d830ee",
+      "a29038d830ee",
+      "3e3d9f5f05c6",
+      "3e3d9f5f05c6"
+    ],
+    "micro:recoveryxhysteresis": [
+      "223346c12f11",
+      "39a3c7cc5197",
+      "9af501f1630a",
+      "b01ed358c7e9"
+    ]
+  },
+  "truth_a_b_d": [
+    1.0,
+    1.0,
+    4.0
+  ],
+  "stability_epsilon": null,
+  "important_interaction_gamma": null,
+  "stability_status": "Unknown; no researcher-frozen scientific equivalence margin",
+  "selection": "descriptive calibration screen only; no independent validation yet"
+}

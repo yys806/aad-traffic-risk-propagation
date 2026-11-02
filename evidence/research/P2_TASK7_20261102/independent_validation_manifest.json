@@ -1,0 +1,179 @@
+{
+  "status": "NOT_EXECUTED",
+  "reason": [
+    "Required finite-domain power/sample size exceeds declared V resource budget",
+    "Several predeclared density/positive cells lack actual target positives; more seeds cannot be assumed to fix support",
+    "Micro source-specific attribution truth and scientific equivalence margin remain Unknown"
+  ],
+  "family_size": 765,
+  "family_failure_budget": 0.05,
+  "family_manifest_sha256": "f418e4eb2b7b4ce6618526fc5cac2e2bcf62d4c3418a9a833b7503e0d73e8100",
+  "neighborhood": {
+    "cohort": [
+      {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 1.0,
+        "h": 1.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.5,
+        "h": 1.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 1.0,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      }
+    ],
+    "macro": [
+      {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 1.0,
+        "h": 1.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.5,
+        "h": 1.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 1.0,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      }
+    ],
+    "micro": [
+      {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 1.0,
+        "h": 1.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 0.5,
+        "h": 1.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      },
+      {
+        "W": 9.0,
+        "model": "constant",
+        "theta": 1.0,
+        "h": 2.0,
+        "q": 0.05,
+        "coverage": 1.0,
+        "recovery": 0.0,
+        "hysteresis": 0.0,
+        "missing": "bounds",
+        "w": 2.0,
+        "stride": 1,
+        "cells": 1
+      }
+    ]
+  },
+  "frozen_selection_sha256": "06834816bc857b53f35c4b1fb5181899d938936e219addb0a76b7de743dce15f",
+  "new_seed_namespace": [
+    20261102,
+    7,
+    271828
+  ],
+  "new_validation_seeds_consumed": 0,
+  "finite_domain_required": {
+    "planned_run_lower_bound": 54534,
+    "perfect_label_yield_assumption": true,
+    "wall_s_at_measured_4workers": 52684.05868627591,
+    "raw_bytes_at_measured_size": 74612210341.70833,
+    "required_negative_per_homogeneous_cell": 4591,
+    "required_positive_per_homogeneous_cell": 881
+  },
+  "V_wall_budget_s": 7200,
+  "V_output_budget_bytes": 10737418240,
+  "power_good_assumptions": {
+    "FPR_FAR": 0.002,
+    "finite_miss_unknown": 0.01,
+    "eta1": 0.0005,
+    "eta5": 0.0025
+  },
+  "historical_validation_reused": false,
+  "exploration_converted_to_validation": false,
+  "stability_margin": null,
+  "stability_required_n": "Unknown without researcher-frozen equivalence margin",
+  "binary_performance_claims": 459,
+  "stability_claims": 306,
+  "family_power_status": "type-II allocation for binary performance only; complete family not powered without stability margin/truth",
+  "independent_validation_performance": "Unknown",
+  "recommended_for_freeze": false,
+  "formal_parameters_frozen": [],
+  "script_sha256": "c76f44cf4b572202e16397b54a31f1ea97050deb3b165433897617e4588aca9a"
+}

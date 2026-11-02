@@ -1,5 +1,13 @@
 # Source snapshots are byte-for-byte copies whose SHA-256 is recorded.
 .gitattributes text eol=lf
+
+# P2 Task7: preserve runtime snapshots and portable evidence hashes exactly.
+evidence/research/P2_TASK7_20261102/** binary
+code/scripts/*p2_task7*.py text eol=lf
+code/tests/test_p2_task7_parameter_experiment.py text eol=lf
+docs/research/P2/P2_TASK7_*.md text eol=lf
+docs/research/definitions/PARAMETER_AND_CALIBRATION_REGISTER.md text eol=lf
+docs/research/definitions/EVIDENCE_AND_ASSUMPTION_LEDGER.md text eol=lf
 evidence/results/** binary
 evidence/history/** binary
 evidence/EVIDENCE_MANIFEST.json text eol=lf

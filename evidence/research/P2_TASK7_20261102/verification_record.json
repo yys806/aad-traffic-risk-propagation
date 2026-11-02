@@ -1,0 +1,98 @@
+{
+  "task_id": "AAD-P2-TASK7-PARAMETER-DETERMINATION-EXPERIMENT-20261102",
+  "recorded_utc": "2026-11-02T13:19:21.405Z",
+  "impact_assessment": {
+    "scope": "Eight isolated Task7 scripts, one targeted test file, reports, context/index/definition evidence additions and exact Git byte preservation",
+    "production_scientific_logic_changed": false,
+    "formal_configuration_changed": false,
+    "formal_stage_or_gate_changed": false,
+    "locked_holdout_read": false,
+    "verification_strategy": "Targeted invariants and all-run independent recompute; documentation and portable evidence verification; no unrelated historical cleanup"
+  },
+  "checks": [
+    {
+      "command": "py_compile on eight Task7 scripts and one targeted test file",
+      "exit_code": 0,
+      "result": "PASS: 9 final Task7 files"
+    },
+    {
+      "command": "python -m pytest code/tests/test_p2_task7_parameter_experiment.py -q",
+      "chunk_id": "268eb7",
+      "wall_time_seconds": 5.0007964,
+      "exit_code": 0,
+      "original_token_count": 26,
+      "output": ".............                                                            [100%]\r\n13 passed in 2.18s\r\n"
+    },
+    {
+      "command": "python code/scripts/verify_p2_task7_results.py --output-dir code/outputs/calibration/p2_task7_20261102_v2",
+      "chunk_id": "6bd0f8",
+      "wall_time_seconds": 7.003267,
+      "exit_code": 0,
+      "original_token_count": 234,
+      "output": "{\"status\": \"PASS\", \"scope\": \"raw/label hashes, all 576 attempts, selected metrics, independent math power, source setters, protected paths\", \"completed\": 575, \"failed\": [\"C_high_P12_15\"], \"label_hashes_checked\": 1728, \"planned_design_layer_records\": 1080, \"selected_metrics_recomputed\": {\"cohort\": {\"attempts\": 576, \"positive_n\": 119, \"negative_n\": 456, \"timely_n\": 119, \"false_positive_n\": 0, \"unknown_n\": 1, \"truth_unknown_n\": 1}, \"macro\": {\"attempts\": 576, \"positive_n\": 48, \"negative_n\": 527, \"timely_n\": 48, \"false_positive_n\": 0, \"unknown_n\": 1, \"truth_unknown_n\": 1}, \"micro\": {\"attempts\": 576, \"positive_n\": 167, \"negative_n\": 408, \"timely_n\": 167, \"false_positive_n\": 0, \"unknown_n\": 1, \"truth_unknown_n\": 1}}, \"exact_plans_independently_recomputed\": 16, \"independent_V\": \"NOT_EXECUTED\", \"verification_is_not_scientific_acceptance\": true, \"script_sha256\": \"dfa27c99cc84db244667804bdc11c26298dffe03013d2058ba39fb3d1941c807\"}\r\n"
+    },
+    {
+      "command": "python code/scripts/validate_project_docs.py --strict-git",
+      "chunk_id": "d607a5",
+      "wall_time_seconds": 4.8013638,
+      "original_token_count": 5,
+      "output": "PROJECT_DOCS_OK\r\n",
+      "exit_code": 0
+    },
+    {
+      "command": "python code/scripts/export_project_evidence.py --repo-root .",
+      "chunk_id": "d80454",
+      "wall_time_seconds": 7.3429926,
+      "exit_code": 0,
+      "original_token_count": 13,
+      "output": "PORTABLE_EVIDENCE_EXPORTED results=92 files=1391\r\n"
+    },
+    {
+      "command": "python code/scripts/export_project_evidence.py --repo-root . --verify",
+      "chunk_id": "246e67",
+      "wall_time_seconds": 2.2957099,
+      "exit_code": 0,
+      "original_token_count": 6,
+      "output": "PORTABLE_EVIDENCE_OK\r\n"
+    },
+    {
+      "command": "git checkout-index -z --prefix=<new task-local directory>/ --stdin; SHA256 verification from Git-only content",
+      "exit_code": 0,
+      "result": {
+        "status": "PASS",
+        "source": "Git index only; scoped checkout to new task-local directory; no raw outputs copied",
+        "source_hashes_checked": 16,
+        "portable_evidence_hashes_checked": 42,
+        "checked_paths": 59,
+        "checkout_location": "code/outputs/calibration/p2_task7_20261102_v2/audit/portable_git_checkout_v2",
+        "scientific_acceptance": false,
+        "git_attributes_verified": true,
+        "prior_attempt": {
+          "status": "FAILED_ENGINEERING_ONLY",
+          "cause": "Windows text stdin translated LF to CRLF; Git interpreted trailing CR as part of paths",
+          "record": "code/outputs/calibration/p2_task7_20261102_v2/audit/git_checkout_first_failure.txt",
+          "resolution": "NUL-delimited byte stdin; no source or experiment change"
+        }
+      }
+    }
+  ],
+  "not_run": [
+    "full pytest (isolated change; targeted coverage sufficient)",
+    "repository-wide compileall",
+    "additional SUMO runs or independent validation"
+  ],
+  "preserved_failure": {
+    "unit": "C_high_P12_15",
+    "result": "TraCI startup failure; no retry/replacement; retained in all attempted-unit denominators"
+  },
+  "context_consistency_check": "COMPLETE: actual outcomes synchronized; v0.4 and 27 definition IDs retained",
+  "scientific_acceptance": "Not established: independent V not executed; no parameter certification or strict physical early-window bridge",
+  "engineering_failures_preserved": [
+    {
+      "status": "FAILED_ENGINEERING_ONLY",
+      "cause": "Windows text stdin translated LF to CRLF; Git interpreted trailing CR as part of paths",
+      "record": "code/outputs/calibration/p2_task7_20261102_v2/audit/git_checkout_first_failure.txt",
+      "resolution": "NUL-delimited byte stdin; no source or experiment change"
+    }
+  ]
+}

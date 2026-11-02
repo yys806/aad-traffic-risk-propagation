@@ -1,0 +1,31 @@
+parameter_id,name,calibration_value_or_scope,status,independent_V,limitation,researcher_freeze
+C01,baseline W,9 s calibration center; 4.5/9/13.5 s conditional curves,Not established / structural model fact only,Unknown; not executed,pre-only fitting; no independent optimality proof,not_frozen
+C02,baseline model,constant center; linear compared,Not established / structural model fact only,Unknown; not executed,only pre-source data,not_frozen
+C03,theta_P,1 m/s calibration candidate,Not established / structural model fact only,Unknown; not executed,finite a=1 state; not earliest physical onset,not_frozen
+C04,h_P,1 s candidate; 1/2/4 s compared,Not established / structural model fact only,Unknown; not executed,actual last-first span; available delay <=4 s tested,not_frozen
+C05,q_P,0.05 s clean-grid candidate,Not established / structural model fact only,Unknown; not executed,clean q grid degenerates; missing-gap domain not calibrated,not_frozen
+C06,coverage,1 center; .6/.8/.9/.95/1 compared,Not established / structural model fact only,Unknown; not executed,full-N bounds; gate cannot repair MNAR,not_frozen
+C07,recovery,negative reset; exit persistence 0/2 s,Not established / structural model fact only,Unknown; not executed,event lifetime and re-entry recorded,not_frozen
+C08,hysteresis,off center; numeric-floor exit delta tested,Not established / structural model fact only,Unknown; not executed,physical sensor-error scale Unknown,not_frozen
+C09,missing,"fixed-N [0,10] model-speed bounds or Unknown",Not established / structural model fact only,Unknown; not executed,no survivor mean; exit/identity missing retained,not_frozen
+U01,actual leader relation,same-lane native leader IDs audited,Not established / structural model fact only,Unknown; not executed,no nearest-neighbor substitution,not_frozen
+U02,identity,0 unresolved switches in complete clean runs,Not established / structural model fact only,Unknown; not executed,identity stress causes Unknown,not_frozen
+U03,relation continuity,complete 50 s relation panel,Not established / structural model fact only,Unknown; not executed,no cross-leader segment stitching,not_frozen
+U04,source interval,actual state/TraCI readback bracket width .05 s,Not established / structural model fact only,Unknown; not executed,planned 30 s never substitutes actual onset,not_frozen
+U05,response candidate,"theta=1 m/s,h=1 s Observed-state candidate",Not established / structural model fact only,Unknown; not executed,not Qualified propagation sensitivity,not_frozen
+U06,reaction window,Unknown,Not established / structural model fact only,Unknown; not executed,threshold-lag/window x clock audit is not true reaction calibration,not_frozen
+U07,quality,geometric gap/native equality checks; .05 s grid,Not established / structural model fact only,Unknown; not executed,external sensor/noise tolerances Unknown,not_frozen
+U08,attribution,Unknown for affirmative source claims,Not established / structural model fact only,Unknown; not executed,"0 claims is abstention, not successful attribution",not_frozen
+U09,full witness,Not established; Qualified=0,Not established / structural model fact only,Unknown; not executed,W8/independent source-to-cohort evidence absent,not_frozen
+M01,region/lane,"[1600,3080] m, lane0 fixed",Not established / structural model fact only,Unknown; not executed,not optimized; other lane is disconnected control,not_frozen
+M02,macro window,2 s center; 1/2/4 s compared,Not established / structural model fact only,Unknown; not executed,"window is part of operator, not onset correction",not_frozen
+M03,spatial grid,"L/4,L/2,L; primary full region unchanged",Not established / structural model fact only,Unknown; not executed,partition integral identity checked,not_frozen
+M04,temporal grid,.05/.1/.2 s,Not established / structural model fact only,Unknown; not executed,fixed q causes loss of support after coarsening,not_frozen
+M05,Edie operator,"D/A,V/A,D/V with clipped segments",Not established / structural model fact only,Unknown; not executed,V=0 => undefined u; q=ku not independent evidence,not_frozen
+M06,coverage/sampling,complete census center; mask stresses,Not established / structural model fact only,Unknown; not executed,unknown p does not justify full-traffic ratio,not_frozen
+M07,macro theta,1 m/s calibration candidate,Not established / structural model fact only,Unknown; not executed,target 2a* positive design never realized,not_frozen
+M08,macro persistence,1 s calibration candidate,Not established / structural model fact only,Unknown; not executed,"delay from finite oracle state, not first physical effect",not_frozen
+M09,lane aggregation,lane0 separately; no lane union,Not established / structural model fact only,Unknown; not executed,no multilane/merging mechanism coverage,not_frozen
+M10,macro attribution,N/A for any-source endpoint; source-specific Unknown,Not established / structural model fact only,Unknown; not executed,never inferred from wave or detector state,not_frozen
+T08,clock/phase,"same simulation clock, .05 s phase bracket",Not established / structural model fact only,Unknown; not executed,external offset/drift/model numerical-time error Unknown,not_frozen
+T09,delay/measurement bound,Unknown for formal physical bridge,Not established / structural model fact only,Unknown; not executed,independent V absent; no alpha_measure certificate,not_frozen

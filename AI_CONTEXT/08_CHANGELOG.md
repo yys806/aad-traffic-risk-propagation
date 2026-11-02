@@ -1,4 +1,14 @@
-## Current — P2 Task6 final calibration protocol (2026-11-02)
+## Current — P2 Task7 parameter experiment (2026-11-02)
+
+统一定义：[docs/research/definitions/README.md](../docs/research/definitions/README.md)，仍v0.4/27项；Task7不建立第二套定义。
+
+完成隔离Task7执行器/独立truth/离线三层算子、参数/交互/压力、精确功效与η双情景、报告/便携证据；更新当前入口/定义证据/注册。正式代码/config、AGENTS、历史产物与论文未改。Task7探索576计划单位，575完成、1次TraCI启动失败保留Unknown；三层独立truth先冻结，83候选/47808主评价及条件单因素/交互/压力完成。W9/constant/θ1/h1/q.05、Macro w2仅C候选，无独立V或稳定性认证。J765下有限域乐观V需54534运行/14.6h/69.5GiB，未运行V、未消耗V seed。Macro目标强度格、局部点和低/中密度阳性支持不足；Qualified/F0及任意最早物理桥接仍Unknown。
+
+Formal A=0、独立Qualified=0、F0/总体TR-TP Unknown；Stage0.5 CLOSED_WITH_LIMITATIONS，Stage0.6 PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS，Protocol Lock BLOCKED，StageI READY_ENGINEERING_ONLY，Stage1.1 NOT_AUTHORIZED。
+
+[最终报告](../docs/research/P2/P2_TASK7_FINAL_REPORT.md) · [参数结果](../docs/research/P2/P2_TASK7_PARAMETER_RESULTS.md) · [实际协议](../docs/research/P2/P2_TASK7_EXPERIMENT_PROTOCOL.md)
+
+## Historical — P2 Task6 final calibration protocol (2026-11-02)
 
 统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)，当前v0.4、27定义；下方旧任务块保留历史。
 

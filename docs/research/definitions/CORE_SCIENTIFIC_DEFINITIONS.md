@@ -1082,3 +1082,7 @@ a/b集合给CDF识别界，Unknown留[0,1]；union不需跨time独立，但每�
 Detector-defined时间CDF不等潜在真实F0；独立同域证书若给P(真到达但无d*内有效检出)≤m_delay及联合失败界，才可保守桥接F_true(t)≤F_det,available(t+d*)+m_delay，观察须至H*+d*；Unknown仍在b，漏检质量不漏计。条件性灵敏度非逐例无误差保证，不能从B无证迁至A/现实。无桥接则真实物理早窗Unknown。
 
 αR+αP+αclock+αmeasure≤α；确定性实证包络不机械耗概率，估计钟界/测量证书需联合失败预算，β_V=.05不能充α_measure=.005。各层在预定H*、SESOI/持续全网格风险带和同资格无消息真实到达上界下分别判Supported / Not established / Unknown，不创跨层标量或个体跨世界提前秒数。完整公式/分母/样本量在Task6协议§8–13。
+
+## Task7 有限域执行/证据增量（2026-11-02）
+
+研究者Task7在本次隔离校准域接受固定N等车signed mean、Macro同域速度主状态及Micro同lane机制。575完成/1失败的有限a1b1状态校准不改变27定义、正式风险或最早真实物理arrival；W8/Qualified/独立V与桥接仍Unknown，详见[Task7报告](../P2/P2_TASK7_FINAL_REPORT.md)。

@@ -1,4 +1,14 @@
-## Current — P2 Task6 final calibration protocol (2026-11-02)
+## Current — P2 Task7 parameter experiment (2026-11-02)
+
+统一定义：[docs/research/definitions/README.md](../docs/research/definitions/README.md)，仍v0.4/27项；Task7不建立第二套定义。
+
+Unknown：W8指定源归属、Qualified、独立V、最小物理信号/任意最早onset、ε_stab/γ_int、正式H*/η/δ/α。目标信号未实现格见planned_signal_realization。唯一启动失败C_high_P12_15保留；truth恢复确认/CDF族修复均有原版存档。
+
+Formal A=0、独立Qualified=0、F0/总体TR-TP Unknown；Stage0.5 CLOSED_WITH_LIMITATIONS，Stage0.6 PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS，Protocol Lock BLOCKED，StageI READY_ENGINEERING_ONLY，Stage1.1 NOT_AUTHORIZED。
+
+[最终报告](../docs/research/P2/P2_TASK7_FINAL_REPORT.md) · [参数结果](../docs/research/P2/P2_TASK7_PARAMETER_RESULTS.md) · [实际协议](../docs/research/P2/P2_TASK7_EXPERIMENT_PROTOCOL.md)
+
+## Historical — P2 Task6 final calibration protocol (2026-11-02)
 
 统一科研定义入口：[docs/research/definitions/README.md](../docs/research/definitions/README.md)，当前v0.4、27定义；下方旧任务块保留历史。
 

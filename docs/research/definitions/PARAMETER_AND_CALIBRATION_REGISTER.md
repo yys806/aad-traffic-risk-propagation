@@ -170,3 +170,9 @@ J=必须联合检查；C=混杂/支持或选择约束；E=可能改变科学 est
 在用检测时间桥接真实物理CDF时，必须同时满足：已检出早期质量 + Unknown可能早到质量 + CDF抽样余量 + 未及时有效检出界 m_delay < η（重复计入只会更保守，但不能漏计）。因此95%灵敏度/5%Unknown即使各自达到一般测量验收，也不能用作η=1%的排除证书。面向早窗的推荐预算是m_delay≤η/4、Unknown≤η/4，并为detected mass+统计误差留严格余量；这只是可行性/损失分配Proposal，不声称真实域能达到，也不修改核心假设。η=1%对应99.75% timely sensitivity与0.25%Unknown目标；若独立样本量/真实能力无法支持，报告Unknown/Not established，由研究者决定成本/有限scope，不反调η追结论。
 
 正式risk的预定Δ_R/h_R和聚合窗口随T6-R4一并冻结；它们与物理h_P/q_P不同，选择它们改变时间判定/族，不能在验证曲线上选。协议已给源/钟映射包络与全网格条件，当前数值Unknown。
+
+## Task7 有限域实验结果增量（2026-11-02）
+
+v0.4/27定义保留。研究者Task7接受本次固定N等车signed mean、Macro同域速度主状态和Micro同lane有限机制的执行；不冻结正式参数。30行C01–09/U01–09/M01–10/T08–09结果见[参数结果](../P2/P2_TASK7_PARAMETER_RESULTS.md)，机器表evidence/research/P2_TASK7_20261102/parameter_register_results.csv。
+
+W9/constant/θ1/h1/q.05、Macro w2是C候选，575完成/1失败、J765、V0；没有Recommended-for-freeze。Low/Medium及Macro目标格缺支持，W8/Qualified/最弱信号/ε_stab/γ_int/正式物理delay证书Unknown。T01–07/T10未冻结，正式η/H*/δ/α不改。原Task6十三字段/数学域/探索范围/历史撤回保留。

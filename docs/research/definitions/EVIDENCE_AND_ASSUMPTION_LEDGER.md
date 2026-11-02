@@ -118,3 +118,15 @@ E01–53保留历史；E46/47/49/50的方向层由下表覆盖，不把其具体
 | E64 | Detector-CDF到潜在真物理需独立同域漏检/延迟桥接 | Inference / Proposal保证 | CORE T、Task6协议§12，事件集合与迟检概率包含关系 | 无证书真实早窗Unknown；B灵敏度不无证迁至A/现实 |
 
 仍为Hypothesis：AAD核心风险因果效应及总体早窗；仍Unknown：F0、总体TR/TP、独立自然交通阳性/完整Qualified、参数交通经验范围/现实迁移。方向Agreed和设计交付均不改变这些状态。
+
+## Task7 证据与授权增量（2026-11-02）
+
+| ID | 类型/状态 | 实际依据与限制 |
+|---|---|---|
+| E61 | Agreed, Task7有限校准授权 | 研究者Task7任务书接受固定cohort等车mean、Macro Edie同域速度和Micro纵向三层分别执行；不冻结正式值 |
+| E62 | Verified工程/运行事实 | 576计划、575完成、1启动失败；完整raw、independent truth/hash、source-only controls；生产与历史未改 |
+| E63 | Fact有限状态校准 | Cohort119/Macro48/Micro167 any-source状态阳性，含A0；不能计作Qualified或独立V |
+| E64 | Verified设计数学, Proposal标准 | J765、βV=.05/αmeasure=.005分开、exact power及η双情景成本；V未执行，good rates是规划假设 |
+| E65 | Unknown/Not established | W8/Qualified、正式F0与真实最早物理onset、独立V与稳定margin；不由calibration点估计或有限a1b1填补 |
+
+完整来源：[Task7最终报告](../P2/P2_TASK7_FINAL_REPORT.md)、便携manifest/原始hash索引和source脚本。没有将Proposal升级Agreed，没有新Formal A或科学Gate变化。
