@@ -1,3 +1,11 @@
+## Current — P4 Task1 measurement audit (2026-11-03)
+
+2026-11-03 AAD-P4-TASK1：完成测量规范、源码血缘审计、Proposal契约、247字段/18追溯项及集中待决；84定向测试+27语义例子。只读保护535项基线源/历史文件；同步研究审计登记与上下文，无新增交通实验或正式资格升级。
+
+P7 Task2.1工程验收保持ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS。Formal A/独立Qualified仍0；风险/F0/总体T_R–T_P Unknown；Gate/Protocol Lock不变，Stage1.1 NOT_AUTHORIZED。
+
+[最终报告](../docs/research/P4/P4_TASK1_FINAL_REPORT.md) · [测量规范](../docs/research/P4/P4_ACTION_AND_RISK_MEASUREMENT_SPEC.md) · [待决](../docs/research/P4/P4_RESEARCHER_DECISIONS.md) · [证据](../evidence/research/P4_TASK1_20261103/README.md)。统一定义仍[27项v0.4](../docs/research/definitions/README.md)。下方保留历史任务时点状态。
+
 ## Current — P7 Task2.1 (2026-11-03)
 
 ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS。单次v2实际复验和P3/P4闭环完成；最终143 passed/7 deselected。首次108 passed/42临时目录setup错误及选择修正保留，无额外仿真。同步当前工程接受状态，旧失败不改。

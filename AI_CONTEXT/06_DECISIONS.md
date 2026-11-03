@@ -1,3 +1,11 @@
+## Current — P4 Task1 measurement audit (2026-11-03)
+
+P7 D1–D8/Agreed Adoption及统一定义不变。P4新增8组Proposal待决：Action规则、对齐、区域总体覆盖、最终Y(Task6/E61)、空间/连续性、数据质量、固定时间支持、外部契约最小实现。推荐不等Agreed，不新增Definition ID，不选正式数值。
+
+P7 Task2.1工程验收保持ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS。Formal A/独立Qualified仍0；风险/F0/总体T_R–T_P Unknown；Gate/Protocol Lock不变，Stage1.1 NOT_AUTHORIZED。
+
+[最终报告](../docs/research/P4/P4_TASK1_FINAL_REPORT.md) · [测量规范](../docs/research/P4/P4_ACTION_AND_RISK_MEASUREMENT_SPEC.md) · [待决](../docs/research/P4/P4_RESEARCHER_DECISIONS.md) · [证据](../evidence/research/P4_TASK1_20261103/README.md)。统一定义仍[27项v0.4](../docs/research/definitions/README.md)。下方保留历史任务时点状态。
+
 ## Current — P7 Task2.1 (2026-11-03)
 
 ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS。Agreed D1–D8和Adoption边界不变。研究者明确授权的唯一一次Enabled v2额度已消耗，不换seed/参数、不再启动SUMO；参数仍ENGINEERING_CANDIDATE_NOT_FORMAL。

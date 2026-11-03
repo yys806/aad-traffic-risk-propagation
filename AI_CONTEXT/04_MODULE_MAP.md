@@ -1,3 +1,11 @@
+## Current — P4 Task1 measurement audit (2026-11-03)
+
+新增docs/research/P4/规范/审计/数据契约/待决/CSV与JSON；新增evidence/research/P4_TASK1_20261103/verify_evidence.py为独立离线核验。实际审计Formal、stage_0_5_sumo、stage_i_mechanism、prelock_metrics、P7/P3及NGSIM/pNEUMA模块，生产源代码/config均不改。
+
+P7 Task2.1工程验收保持ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS。Formal A/独立Qualified仍0；风险/F0/总体T_R–T_P Unknown；Gate/Protocol Lock不变，Stage1.1 NOT_AUTHORIZED。
+
+[最终报告](../docs/research/P4/P4_TASK1_FINAL_REPORT.md) · [测量规范](../docs/research/P4/P4_ACTION_AND_RISK_MEASUREMENT_SPEC.md) · [待决](../docs/research/P4/P4_RESEARCHER_DECISIONS.md) · [证据](../evidence/research/P4_TASK1_20261103/README.md)。统一定义仍[27项v0.4](../docs/research/definitions/README.md)。下方保留历史任务时点状态。
+
 ## Current — P7 Task2.1 (2026-11-03)
 
 ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS。新增只读finalize_p7_task2_1.py及独立verify_evidence.py；runner补single-start/身份/逐步事件，新增7项离线测试，无重复schema或新研究阶段。

@@ -1,0 +1,19 @@
+finding_id,status,source_path,line_start,line_end,function,verified_fact,delivery,verification,scientific_change
+A01,partial,code/src/riskprop/stage_i_mechanism.py,84,149,compare_paired_action,共同vehicle/time、绝对速度差；无incarnation/clock验证；持续性可跨缺口,P4_ACTION_AND_RISK_MEASUREMENT_SPEC.md,action_long_gap_is_bridged,none
+A02,partial,code/src/riskprop/prelock_metrics.py,125,154,first_sustained_divergence,末点中位步长外延；起点与确认时间不分,P4_RESEARCHER_DECISIONS.md,action_last_sample_gets_median_step_extension,none
+RHO,implemented,code/src/riskprop/formal_risk_measurement.py,22,54,rho_from_ttc,指数rho不被P2事件阈值截断；科学默认未冻结,P4_ACTION_AND_RISK_MEASUREMENT_SPEC.md,rho_no_P2_threshold_truncation,none
+BOUNDS,implemented,code/src/riskprop/formal_risk_measurement.py,171,186,contribution_bounds,区域与测量可靠性分开；未知贡献保留界,P4_ACTION_AND_RISK_MEASUREMENT_SPEC.md,unknown_region,none
+R01,partial,code/src/riskprop/formal_risk_measurement.py,233,251,equal_vehicle_average/did_interval,数值原语无固定名单/同窗/run守卫；非因果估计器,P4_RESEARCHER_DECISIONS.md,averager_has_no_external_roster_check,none
+R02,partial,code/src/riskprop/formal_risk_measurement.py,194,230,integrate_fixed_window,全时间分母、时间裁切；无几何clip,P4_ACTION_AND_RISK_MEASUREMENT_SPEC.md,gap_and_right_tail_keep_full_denominator,none
+CONTINUITY,implemented_with_limits,code/src/riskprop/formal_risk_measurement.py,269,298,continuity_is_valid,可靠leader/同clock/cadence；无leader和切换段未知,P4_IMPLEMENTATION_AND_DATA_LINEAGE_AUDIT.md,point_zero_no_leader_not_a_proven_time_link,none
+R03,partial,code/src/riskprop/prelock_metrics.py,13,33,integrated_ttc_exposure,valid=True但TTCNaN会输出0；辅助量不等Formal,P4_IMPLEMENTATION_AND_DATA_LINEAGE_AUDIT.md,auxiliary_valid_flag_with_nan_TTC_becomes_zero,none
+AUX,implemented_auxiliary,code/src/riskprop/prelock_metrics.py,36,89,PET/rear_end_analytic_truth,特定冲突占用间隔与解析测试真值，非Formal替代,P4_ACTION_AND_RISK_MEASUREMENT_SPEC.md,auxiliary_PET_overlap_zero,none
+SUMO,implemented,code/src/riskprop/stage_0_5_sumo.py,1042,1162,compute_sumo_measurements,实际leader/gap/closing→TTC/DRAC质量；contract不检查唯一键,P4_IMPLEMENTATION_AND_DATA_LINEAGE_AUDIT.md,targeted_pytest,none
+SOURCE_FRAME,implemented_stage_specific,code/src/riskprop/stage_0_5_sumo.py,1620,1694,build_sumo_formal_source_frame,clock/frame/leader关联，有leader侧drop_duplicates需上游检查,P4_IMPLEMENTATION_AND_DATA_LINEAGE_AUDIT.md,source_read_only,none
+L01,interface_only_for_regional_risk,code/src/riskprop/p7_sumo_integration.py,51,91,read_state/existing_measurement_attachment,实际状态及target-only TTC/quality；未调用rho/积分/区域汇总,P4_MEASUREMENT_DATA_CONTRACT.md,targeted_pytest,none
+L02,implemented_evidence_only,code/src/riskprop/p7_message_runtime.py,149,227,_issue/observe/risk_attachment,真实命令getter及poststep；Risk为打包引用而非完整测量支持,P4_MEASUREMENT_DATA_CONTRACT.md,targeted_pytest,none
+P3,implemented_schema,code/src/riskprop/controller_evidence.py,614,625,action/risk references,Action同vehicle；Risk允许多车但P4须额外支持检查,P4_MEASUREMENT_DATA_CONTRACT.md,targeted_pytest,none
+NGSIM,implemented_source_limited,code/src/riskprop/ngsim_risk_calibration.py,38,200,diagnostic identity/standardization,高速跟驰参考，身份/单位/缺口受QC限制,P4_IMPLEMENTATION_AND_DATA_LINEAGE_AUDIT.md,source_read_only,none
+PNEUMA,kinematics_only,code/src/riskprop/pneuma_urban_kinematics.py,1,113,urban kinematics,无可靠leader/TTC/DRAC/Formal风险,P4_IMPLEMENTATION_AND_DATA_LINEAGE_AUDIT.md,source_read_only,none
+E61,awaiting_researcher_decision,docs/research/definitions/EVIDENCE_AND_ASSUMPTION_LEDGER.md,115,137,Task6/E61 (distinct from Task7/E61),最终Y聚合与变换未批准，点贡献/积分范围有依据,P4_RESEARCHER_DECISIONS.md,canonical_read_only,none
+ASSEMBLER,missing,code/src/riskprop/formal_risk_measurement.py,233,241,fixed-roster regional assembler,原语存在，不存在已验证的P7完整固定名单区域Y链,P4_MEASUREMENT_DATA_CONTRACT.md,scoped_caller_search,none

@@ -1,3 +1,11 @@
+## Current — P4 Task1测量审计 (2026-11-03)
+
+AUDIT_AND_OPERATIONALIZATION_COMPLETE_WITH_LIMITATIONS。完成Action→Formal风险贡献→固定区域/窗口/名单的操作化；12表247字段契约仍Proposal。已复现动作持续性/名单守卫/辅助暴露输入限制，未改科学核心。84项定向测试及27项离线例子通过，新增交通运行0；不是新增正式实验结果。
+
+P7 Task2.1工程验收保持ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS。Formal A/独立Qualified仍0；风险/F0/总体T_R–T_P Unknown；Gate/Protocol Lock不变，Stage1.1 NOT_AUTHORIZED。统一定义仍[v0.4/27项](research/definitions/README.md)。
+
+[报告](research/P4/P4_TASK1_FINAL_REPORT.md) · [规范](research/P4/P4_ACTION_AND_RISK_MEASUREMENT_SPEC.md) · [数据契约](research/P4/P4_MEASUREMENT_DATA_CONTRACT.md) · [待决](research/P4/P4_RESEARCHER_DECISIONS.md) · [证据](../evidence/research/P4_TASK1_20261103/README.md)。下方保留历史任务状态。
+
 ## RES-P7-TASK2.1-20261103 — 单次v2工程验收
 
 属于既有p7_task2_engineering，不新增研究阶段；scientific_claim_eligible=false。

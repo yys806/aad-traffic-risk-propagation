@@ -1,0 +1,34 @@
+{
+  "task_id": "AAD-P4-TASK1-20261103",
+  "review": "current relevant sections, not exhaustive historical reread",
+  "project_entry_order": [
+    "AI_CONTEXT/00_PROJECT_STATE.md",
+    "docs/PROJECT_REGISTRY.json",
+    "docs/RESEARCH_STATUS.md",
+    "docs/PROJECT_INDEX.md",
+    "PROJECT_CONTEXT.md",
+    "git status --branch --short"
+  ],
+  "required_scope": [
+    "AI_CONTEXT/00-08",
+    "definitions current v0.4",
+    "P1 theory/DAG/estimand/hypotheses/Task2",
+    "P2 Task5-8 and prior method audit",
+    "P3 Task2 implementation and ratification",
+    "P7 Task2/Task2.1/spec/integration",
+    "nine named production modules and related tests"
+  ],
+  "caller_search": {
+    "command": "rg -n -F 'equal_vehicle_average(' code/src code/scripts",
+    "matches": [
+      "code/src/riskprop/formal_risk_measurement.py:233:def equal_vehicle_average"
+    ],
+    "conclusion": "No production caller found in this explicit search scope; not a claim about external consumers"
+  },
+  "raw_datasets_scanned": false,
+  "new_traffic_runs": 0,
+  "holdout_access": false,
+  "Overleaf_current_online_access": false,
+  "private_notes_access": false,
+  "upstream_DRIFT_access": false
+}

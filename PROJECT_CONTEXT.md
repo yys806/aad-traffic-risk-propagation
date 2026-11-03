@@ -1,3 +1,11 @@
+## Current — P4 Task1测量审计 (2026-11-03)
+
+AUDIT_AND_OPERATIONALIZATION_COMPLETE_WITH_LIMITATIONS。完成Action→Formal风险贡献→固定区域/窗口/名单的操作化；12表247字段契约仍Proposal。已复现动作持续性/名单守卫/辅助暴露输入限制，未改科学核心。84项定向测试及27项离线例子通过，新增交通运行0；不是新增正式实验结果。
+
+P7 Task2.1工程验收保持ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS。Formal A/独立Qualified仍0；风险/F0/总体T_R–T_P Unknown；Gate/Protocol Lock不变，Stage1.1 NOT_AUTHORIZED。统一定义仍[v0.4/27项](docs/research/definitions/README.md)。
+
+[报告](docs/research/P4/P4_TASK1_FINAL_REPORT.md) · [规范](docs/research/P4/P4_ACTION_AND_RISK_MEASUREMENT_SPEC.md) · [数据契约](docs/research/P4/P4_MEASUREMENT_DATA_CONTRACT.md) · [待决](docs/research/P4/P4_RESEARCHER_DECISIONS.md) · [证据](evidence/research/P4_TASK1_20261103/README.md)。下方保留历史任务状态。
+
 ## Current — P7 Task2.1工程验收 (2026-11-03)
 
 ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS。唯一Enabled v2复验通过（1次、seed20261103），基准未重跑。最大实际减速度1.0 m/s²，无emergency/碰撞/teleport；52次实际采用、39命令、326执行、352动作。首次命令2.8 s、首个实际差异2.9 s；8.0 s过期恢复20 m/s且后续无消息输入。共同351点比较有效，最大速度差2.649473720 m/s、加速度差2.719870887 m/s²，仅ENGINEERING_DIAGNOSTIC_ONLY。 v1失败不改，正式科研资格/阶段不升级。

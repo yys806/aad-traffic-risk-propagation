@@ -1,3 +1,11 @@
+## Current — P4 Task1 measurement audit (2026-11-03)
+
+拟议链：原始字节→身份/clockQC→实际state→TTC/DRAC→rho贡献界→空间支持→固定窗积分→完整固定N→待批准区域Y。显式state/action/execution/risk桥接，不凭近似时间。区域外可靠贡献零与位置未知[0,1]分开；缺整车仍保留全分母。
+
+P7 Task2.1工程验收保持ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS。Formal A/独立Qualified仍0；风险/F0/总体T_R–T_P Unknown；Gate/Protocol Lock不变，Stage1.1 NOT_AUTHORIZED。
+
+[最终报告](../docs/research/P4/P4_TASK1_FINAL_REPORT.md) · [测量规范](../docs/research/P4/P4_ACTION_AND_RISK_MEASUREMENT_SPEC.md) · [待决](../docs/research/P4/P4_RESEARCHER_DECISIONS.md) · [证据](../evidence/research/P4_TASK1_20261103/README.md)。统一定义仍[27项v0.4](../docs/research/definitions/README.md)。下方保留历史任务时点状态。
+
 ## Current — P7 Task2.1 (2026-11-03)
 
 ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS。实际收发/验证→52次Agreed消费→具体决策→39次setMaxSpeed→326个post-step执行→连续动作/Unknown风险引用。8.0 s起274个空消息策略输入。

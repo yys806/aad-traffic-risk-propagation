@@ -1,0 +1,38 @@
+{
+  "task_id": "AAD-P4-TASK1-20261103",
+  "targeted_pytest": {
+    "passed": 84,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "files": {
+      "tests.test_formal_risk_measurement": 7,
+      "tests.test_prelock_metrics": 8,
+      "tests.test_p7_sumo_evidence": 7,
+      "tests.test_controller_evidence": 50,
+      "tests.test_p7_task2_1_revalidation": 7,
+      "tests.test_stage_i_mechanism": 5
+    },
+    "wall_time_s": 44.61,
+    "junit_sha256": "263f77ba18f8fd8a6d45a8f6b0b03d0c960deba9238c189afa5f0df706a5e14d",
+    "log_sha256": "62b8860a02c351cf45db0d72776ffada5d73b00e9857f450c47538ccf2c3078d",
+    "raw_log": "code/outputs/audits/p4_task1_20261103/offline_tests.log",
+    "command": "python -X utf8 -m pytest code/tests/test_formal_risk_measurement.py code/tests/test_prelock_metrics.py code/tests/test_p7_sumo_evidence.py code/tests/test_controller_evidence.py code/tests/test_p7_task2_1_revalidation.py code/tests/test_stage_i_mechanism.py -p offline_no_process --basetemp code/outputs/audits/p4_task1_20261103/pytest_tmp_p4_01 --junitxml code/outputs/audits/p4_task1_20261103/offline_tests.xml -q",
+    "PYTHONPATH": "code/outputs/audits/p4_task1_20261103;code/src;code/tests",
+    "P7_ENGINEERING_CAPTURE": "code/outputs/engineering/p7_task2_20261103_v1"
+  },
+  "process_guard": {
+    "blocked_attempts": [],
+    "guard_active": true,
+    "exitstatus": 0,
+    "new_SUMO_processes": 0
+  },
+  "deterministic_probes": {
+    "passed": 27,
+    "failed": 0,
+    "kind": "OFFLINE_SOFTWARE_SEMANTICS_NOT_TRAFFIC_EXPERIMENT"
+  },
+  "historical_P7_143_tests_counted": false,
+  "old_native_SUMO_tests_not_selected": true,
+  "new_simulations": 0
+}

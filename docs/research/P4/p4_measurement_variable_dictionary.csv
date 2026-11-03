@@ -1,0 +1,248 @@
+table,field,type,unit,meaning,source,nullable_when,status
+support_manifest,schema_version,string,1,外部P4表schema版本,本契约,never,PROPOSAL_NOT_DEPLOYED
+support_manifest,record_status,enum,1,PROPOSED/OBSERVED/UNKNOWN/INVALID等记录状态,派生器,never,PROPOSAL_NOT_DEPLOYED
+support_manifest,source_ref,string,1,原始字节或输入manifest路径及记录选择器,来源manifest,never,PROPOSAL_NOT_DEPLOYED
+support_manifest,source_sha256,hex64,1,source_ref所指原始字节或输入manifest的SHA256,来源manifest,never,PROPOSAL_NOT_DEPLOYED
+support_manifest,derivation_version,string,1,解析/派生方法版本，不等于科研批准状态,派生器,never,PROPOSAL_NOT_DEPLOYED
+support_manifest,support_id,string,1,单run/事件固定测量支持唯一ID,预先测量计划/assignment/P3上下文,never,PROPOSAL_NOT_DEPLOYED
+support_manifest,provenance_id,string,1,来源与版本外键,预先测量计划/assignment/P3上下文,never,PROPOSAL_NOT_DEPLOYED
+support_manifest,run_id,string,1,实际运行ID,预先测量计划/assignment/P3上下文,never,PROPOSAL_NOT_DEPLOYED
+support_manifest,assignment_id,string,1,分配身份，不能按采用成功生成,预先测量计划/assignment/P3上下文,never,PROPOSAL_NOT_DEPLOYED
+support_manifest,assignment_source,string,1,工程指定/未来随机分配的真实来源,预先测量计划/assignment/P3上下文,never,PROPOSAL_NOT_DEPLOYED
+support_manifest,event_id,string,1,所测事件身份,预先测量计划/assignment/P3上下文,no source event or unidentifiable; event_status required,PROPOSAL_NOT_DEPLOYED
+support_manifest,event_status,enum,1,SOURCE_PRESENT/NOT_APPLICABLE/UNKNOWN,预先测量计划/assignment/P3上下文,never,PROPOSAL_NOT_DEPLOYED
+support_manifest,source_event_ref,string,1,原始来源事件证据，不等于风险资格,预先测量计划/assignment/P3上下文,no source or Unknown qualification,PROPOSAL_NOT_DEPLOYED
+support_manifest,pair_id,string,1,显式配对身份,预先测量计划/assignment/P3上下文,unpaired design,PROPOSAL_NOT_DEPLOYED
+support_manifest,pair_manifest_ref,string,1,角色和两run映射及hash,预先测量计划/assignment/P3上下文,unpaired design,PROPOSAL_NOT_DEPLOYED
+support_manifest,randomization_unit_id,string,1,真实独立分配单位,预先测量计划/assignment/P3上下文,engineering run or not yet approved,PROPOSAL_NOT_DEPLOYED
+support_manifest,design_status,enum,1,ENGINEERING_ONLY/PROPOSED_FORMAL等,预先测量计划/assignment/P3上下文,never,PROPOSAL_NOT_DEPLOYED
+support_manifest,population_scope,string,1,固定cohort或处理前全域资格集合的明确描述,预先测量计划/assignment/P3上下文,never,PROPOSAL_NOT_DEPLOYED
+support_manifest,declared_scope_status,enum,1,APPROVED/PROPOSED/UNKNOWN_MISSING_FORMAL_SCOPE,预先测量计划/assignment/P3上下文,never,PROPOSAL_NOT_DEPLOYED
+support_manifest,region_version,string,1,固定区域定义版本,预先测量计划/assignment/P3上下文,scope not approved; outcome unavailable,PROPOSAL_NOT_DEPLOYED
+support_manifest,geometry_ref,string,1,几何/边界规则来源,预先测量计划/assignment/P3上下文,scope unknown,PROPOSAL_NOT_DEPLOYED
+support_manifest,geometry_sha256,hex64,1,区域几何字节SHA256,预先测量计划/assignment/P3上下文,scope unknown,PROPOSAL_NOT_DEPLOYED
+support_manifest,coordinate_system,string,1,坐标系及原点，不默认跨源一致,预先测量计划/assignment/P3上下文,geometry unknown,PROPOSAL_NOT_DEPLOYED
+support_manifest,lane_ids,array[string],1,固定lane支持集合,预先测量计划/assignment/P3上下文,non-lane dataset or unknown scope,PROPOSAL_NOT_DEPLOYED
+support_manifest,cohort_version,string,1,预先固定名单版本,预先测量计划/assignment/P3上下文,scope unknown,PROPOSAL_NOT_DEPLOYED
+support_manifest,roster_ref,string,1,完整处理前成员名单引用,预先测量计划/assignment/P3上下文,scope unknown,PROPOSAL_NOT_DEPLOYED
+support_manifest,roster_sha256,hex64,1,完整名单字节哈希,预先测量计划/assignment/P3上下文,scope unknown,PROPOSAL_NOT_DEPLOYED
+support_manifest,roster_frozen_at,string,source clock,名单冻结时刻及clock,预先测量计划/assignment/P3上下文,not frozen,PROPOSAL_NOT_DEPLOYED
+support_manifest,window_version,string,1,固定观察窗口版本,预先测量计划/assignment/P3上下文,scope unknown,PROPOSAL_NOT_DEPLOYED
+support_manifest,window_start_s,float64,s,统一clock固定窗起点,预先测量计划/assignment/P3上下文,scope unknown,PROPOSAL_NOT_DEPLOYED
+support_manifest,window_end_s,float64,s,统一clock固定窗终点,预先测量计划/assignment/P3上下文,scope unknown,PROPOSAL_NOT_DEPLOYED
+support_manifest,time_origin_ref,string,1,处理前确定的对齐原点证据,预先测量计划/assignment/P3上下文,not defined,PROPOSAL_NOT_DEPLOYED
+support_manifest,clock_mapping_ref,string,1,原生到统一时间的映射和误差,预先测量计划/assignment/P3上下文,identity clock explicitly declared or mapping unknown,PROPOSAL_NOT_DEPLOYED
+support_manifest,measurement_version,string,1,Formal或辅助测量版本,预先测量计划/assignment/P3上下文,never,PROPOSAL_NOT_DEPLOYED
+support_manifest,config_sha256,hex64,1,实际测量配置字节哈希,预先测量计划/assignment/P3上下文,config not approved; status required,PROPOSAL_NOT_DEPLOYED
+support_manifest,expected_step_s,float64,s,已审计采样步长,预先测量计划/assignment/P3上下文,irregular sampling explicitly declared,PROPOSAL_NOT_DEPLOYED
+support_manifest,aggregation_version,string,1,最终Y算子版本,预先测量计划/assignment/P3上下文,not approved,PROPOSAL_NOT_DEPLOYED
+support_manifest,aggregation_status,enum,1,PROPOSED/APPROVED/UNSET,预先测量计划/assignment/P3上下文,never,PROPOSAL_NOT_DEPLOYED
+provenance,schema_version,string,1,外部P4表schema版本,本契约,never,PROPOSAL_NOT_DEPLOYED
+provenance,record_status,enum,1,PROPOSED/OBSERVED/UNKNOWN/INVALID等记录状态,派生器,never,PROPOSAL_NOT_DEPLOYED
+provenance,source_ref,string,1,原始字节或输入manifest路径及记录选择器,来源manifest,never,PROPOSAL_NOT_DEPLOYED
+provenance,source_sha256,hex64,1,source_ref所指原始字节或输入manifest的SHA256,来源manifest,never,PROPOSAL_NOT_DEPLOYED
+provenance,derivation_version,string,1,解析/派生方法版本，不等于科研批准状态,派生器,never,PROPOSAL_NOT_DEPLOYED
+provenance,provenance_id,string,1,来源记录唯一键,原始字节/版本控制/派生manifest,never,PROPOSAL_NOT_DEPLOYED
+provenance,input_refs,array[object],1,每项path/sha256/row或record selector,原始字节/版本控制/派生manifest,empty only for plan with no input,PROPOSAL_NOT_DEPLOYED
+provenance,git_commit,string,1,源码Git基线，不掩盖dirty diff,原始字节/版本控制/派生manifest,source not in Git,PROPOSAL_NOT_DEPLOYED
+provenance,dirty_source_manifest_ref,string,1,未提交源字节及差异清单,原始字节/版本控制/派生manifest,clean source declared,PROPOSAL_NOT_DEPLOYED
+provenance,parser_version,string,1,单位/身份/字段标准化版本,原始字节/版本控制/派生manifest,not parsed,PROPOSAL_NOT_DEPLOYED
+provenance,software_environment_ref,string,1,解释器与依赖版本,原始字节/版本控制/派生manifest,not executed,PROPOSAL_NOT_DEPLOYED
+provenance,measurement_config_ref,string,1,实际配置及hash,原始字节/版本控制/派生manifest,not measured,PROPOSAL_NOT_DEPLOYED
+cohort_member,schema_version,string,1,外部P4表schema版本,本契约,never,PROPOSAL_NOT_DEPLOYED
+cohort_member,record_status,enum,1,PROPOSED/OBSERVED/UNKNOWN/INVALID等记录状态,派生器,never,PROPOSAL_NOT_DEPLOYED
+cohort_member,source_ref,string,1,原始字节或输入manifest路径及记录选择器,来源manifest,never,PROPOSAL_NOT_DEPLOYED
+cohort_member,source_sha256,hex64,1,source_ref所指原始字节或输入manifest的SHA256,来源manifest,never,PROPOSAL_NOT_DEPLOYED
+cohort_member,derivation_version,string,1,解析/派生方法版本，不等于科研批准状态,派生器,never,PROPOSAL_NOT_DEPLOYED
+cohort_member,member_id,string,1,固定成员唯一ID,处理前名单/真实生命周期记录,never,PROPOSAL_NOT_DEPLOYED
+cohort_member,support_id,string,1,测量支持外键,处理前名单/真实生命周期记录,never,PROPOSAL_NOT_DEPLOYED
+cohort_member,pre_treatment_role,string,1,跨run显式车辆/需求角色,处理前名单/真实生命周期记录,never,PROPOSAL_NOT_DEPLOYED
+cohort_member,vehicle_id,string,1,该run实际车辆标识,处理前名单/真实生命周期记录,not yet entered or unobserved,PROPOSAL_NOT_DEPLOYED
+cohort_member,incarnation_id,string,1,该run实际入场生命周期,处理前名单/真实生命周期记录,not yet mapped; required before state join,PROPOSAL_NOT_DEPLOYED
+cohort_member,selection_ref,string,1,处理前入选规则及证据,处理前名单/真实生命周期记录,never,PROPOSAL_NOT_DEPLOYED
+cohort_member,entry_time_lower_s,float64,s,入场时刻下界,处理前名单/真实生命周期记录,unobserved entry,PROPOSAL_NOT_DEPLOYED
+cohort_member,entry_time_upper_s,float64,s,入场时刻上界,处理前名单/真实生命周期记录,unobserved entry,PROPOSAL_NOT_DEPLOYED
+cohort_member,exit_time_lower_s,float64,s,离开时刻下界,处理前名单/真实生命周期记录,not exited or unobserved,PROPOSAL_NOT_DEPLOYED
+cohort_member,exit_time_upper_s,float64,s,离开时刻上界,处理前名单/真实生命周期记录,not exited or unobserved,PROPOSAL_NOT_DEPLOYED
+cohort_member,position_observability,enum,1,OBSERVED/UNOBSERVABLE/UNKNOWN,处理前名单/真实生命周期记录,never,PROPOSAL_NOT_DEPLOYED
+state_observation,schema_version,string,1,外部P4表schema版本,本契约,never,PROPOSAL_NOT_DEPLOYED
+state_observation,record_status,enum,1,PROPOSED/OBSERVED/UNKNOWN/INVALID等记录状态,派生器,never,PROPOSAL_NOT_DEPLOYED
+state_observation,source_ref,string,1,原始字节或输入manifest路径及记录选择器,来源manifest,never,PROPOSAL_NOT_DEPLOYED
+state_observation,source_sha256,hex64,1,source_ref所指原始字节或输入manifest的SHA256,来源manifest,never,PROPOSAL_NOT_DEPLOYED
+state_observation,derivation_version,string,1,解析/派生方法版本，不等于科研批准状态,派生器,never,PROPOSAL_NOT_DEPLOYED
+state_observation,state_id,string,1,实际观测唯一ID,TraCI post-step/原生轨迹及身份时间QC,never,PROPOSAL_NOT_DEPLOYED
+state_observation,support_id,string,1,固定测量支持外键,TraCI post-step/原生轨迹及身份时间QC,never,PROPOSAL_NOT_DEPLOYED
+state_observation,member_id,string,1,预定成员外键,TraCI post-step/原生轨迹及身份时间QC,observed noncohort context vehicle; role required,PROPOSAL_NOT_DEPLOYED
+state_observation,vehicle_id,string,1,run内实际车辆ID,TraCI post-step/原生轨迹及身份时间QC,never,PROPOSAL_NOT_DEPLOYED
+state_observation,incarnation_id,string,1,真实生命周期，不能只按字符串猜测,TraCI post-step/原生轨迹及身份时间QC,identity unknown; no qualified pair/risk point,PROPOSAL_NOT_DEPLOYED
+state_observation,native_time,float64,native_time_unit,原始时刻,TraCI post-step/原生轨迹及身份时间QC,unobservable timestamp,PROPOSAL_NOT_DEPLOYED
+state_observation,native_time_unit,string,1,s/ms/frame等原生单位,TraCI post-step/原生轨迹及身份时间QC,native time missing,PROPOSAL_NOT_DEPLOYED
+state_observation,clock_id,string,1,原生时钟身份,TraCI post-step/原生轨迹及身份时间QC,unknown clock; no precise join,PROPOSAL_NOT_DEPLOYED
+state_observation,mapped_time_lower_s,float64,s,映射统一时刻下界,TraCI post-step/原生轨迹及身份时间QC,mapping unknown,PROPOSAL_NOT_DEPLOYED
+state_observation,mapped_time_upper_s,float64,s,映射统一时刻上界,TraCI post-step/原生轨迹及身份时间QC,mapping unknown,PROPOSAL_NOT_DEPLOYED
+state_observation,step,int64,step,实际仿真步或源frame,TraCI post-step/原生轨迹及身份时间QC,nonstep source,PROPOSAL_NOT_DEPLOYED
+state_observation,phase,string,1,实际调用phase，不由字母顺序推因果,TraCI post-step/原生轨迹及身份时间QC,source has no phase,PROPOSAL_NOT_DEPLOYED
+state_observation,sequence,int64,1,同step/phase序号,TraCI post-step/原生轨迹及身份时间QC,source has no sequencing evidence,PROPOSAL_NOT_DEPLOYED
+state_observation,observed_at,string,clock-tagged time,实际记录可观测时刻,TraCI post-step/原生轨迹及身份时间QC,not logged,PROPOSAL_NOT_DEPLOYED
+state_observation,available_at,string,clock-tagged time,对控制/测量可用时刻,TraCI post-step/原生轨迹及身份时间QC,not logged,PROPOSAL_NOT_DEPLOYED
+state_observation,x_m,float64,m,实际平面位置x,TraCI post-step/原生轨迹及身份时间QC,exited/missing/invalid,PROPOSAL_NOT_DEPLOYED
+state_observation,y_m,float64,m,实际平面位置y,TraCI post-step/原生轨迹及身份时间QC,exited/missing/invalid,PROPOSAL_NOT_DEPLOYED
+state_observation,coordinate_system,string,1,实际位置坐标原点/版本,TraCI post-step/原生轨迹及身份时间QC,unknown coordinates,PROPOSAL_NOT_DEPLOYED
+state_observation,road_id,string,1,实际道路ID,TraCI post-step/原生轨迹及身份时间QC,exited/unobserved,PROPOSAL_NOT_DEPLOYED
+state_observation,lane_id,string,1,实际车道ID,TraCI post-step/原生轨迹及身份时间QC,exited/unobserved or source not lane-resolved,PROPOSAL_NOT_DEPLOYED
+state_observation,lane_position_m,float64,m,沿当前lane实际位置,TraCI post-step/原生轨迹及身份时间QC,exited/unobserved,PROPOSAL_NOT_DEPLOYED
+state_observation,speed_mps,float64,m/s,实际速度，非参考值,TraCI post-step/原生轨迹及身份时间QC,exited/missing/invalid,PROPOSAL_NOT_DEPLOYED
+state_observation,acceleration_mps2,float64,m/s^2,实际纵向加速度，注明直接读回/派生,TraCI post-step/原生轨迹及身份时间QC,exited/missing/invalid,PROPOSAL_NOT_DEPLOYED
+state_observation,leader_vehicle_id,string,1,实际leader标识,TraCI post-step/原生轨迹及身份时间QC,no reliable leader,PROPOSAL_NOT_DEPLOYED
+state_observation,leader_incarnation_id,string,1,leader真实生命周期,TraCI post-step/原生轨迹及身份时间QC,no reliable leader or lifecycle unknown,PROPOSAL_NOT_DEPLOYED
+state_observation,leader_observed,boolean,1,是否确有leader观测,TraCI post-step/原生轨迹及身份时间QC,unknown observation mechanism,PROPOSAL_NOT_DEPLOYED
+state_observation,leader_observability_status,enum,1,PROVEN_NONE/OBSERVED/MISSING/UNOBSERVABLE/UNKNOWN,TraCI post-step/原生轨迹及身份时间QC,never,PROPOSAL_NOT_DEPLOYED
+state_observation,leader_speed_mps,float64,m/s,同clock同step实际leader速度,TraCI post-step/原生轨迹及身份时间QC,no reliable leader,PROPOSAL_NOT_DEPLOYED
+state_observation,net_gap_m,float64,m,净间距非中心距,TraCI post-step/原生轨迹及身份时间QC,not measurable or not applicable,PROPOSAL_NOT_DEPLOYED
+state_observation,closing_speed_mps,float64,m/s,follower minus leader实际速度,TraCI post-step/原生轨迹及身份时间QC,not measurable or not applicable,PROPOSAL_NOT_DEPLOYED
+state_observation,lifecycle_status,enum,1,PRESENT/EXITED/NOT_YET_ENTERED/UNKNOWN,TraCI post-step/原生轨迹及身份时间QC,never,PROPOSAL_NOT_DEPLOYED
+state_observation,measurement_status,enum,1,valid/invalid/missing/not_applicable/not_measurable,TraCI post-step/原生轨迹及身份时间QC,never,PROPOSAL_NOT_DEPLOYED
+state_observation,quality_flags,array[string],1,身份/leader/lane/时间/缺口/单位等质量信息,TraCI post-step/原生轨迹及身份时间QC,never; empty array means explicit checked,PROPOSAL_NOT_DEPLOYED
+action_execution_bridge,schema_version,string,1,外部P4表schema版本,本契约,never,PROPOSAL_NOT_DEPLOYED
+action_execution_bridge,record_status,enum,1,PROPOSED/OBSERVED/UNKNOWN/INVALID等记录状态,派生器,never,PROPOSAL_NOT_DEPLOYED
+action_execution_bridge,source_ref,string,1,原始字节或输入manifest路径及记录选择器,来源manifest,never,PROPOSAL_NOT_DEPLOYED
+action_execution_bridge,source_sha256,hex64,1,source_ref所指原始字节或输入manifest的SHA256,来源manifest,never,PROPOSAL_NOT_DEPLOYED
+action_execution_bridge,derivation_version,string,1,解析/派生方法版本，不等于科研批准状态,派生器,never,PROPOSAL_NOT_DEPLOYED
+action_execution_bridge,bridge_id,string,1,桥接行唯一键,P3显式Action/Execution/Command/Decision引用,never,PROPOSAL_NOT_DEPLOYED
+action_execution_bridge,state_id,string,1,实际state外键,P3显式Action/Execution/Command/Decision引用,exit observation with no motion; lifecycle reference required,PROPOSAL_NOT_DEPLOYED
+action_execution_bridge,action_observation_id,string,1,P3 Action外键,P3显式Action/Execution/Command/Decision引用,never,PROPOSAL_NOT_DEPLOYED
+action_execution_bridge,execution_id,string,1,P3 Execution外键,P3显式Action/Execution/Command/Decision引用,NATIVE_NO_COMMAND or lifecycle-only record,PROPOSAL_NOT_DEPLOYED
+action_execution_bridge,command_id,string,1,实际命令外键,P3显式Action/Execution/Command/Decision引用,NATIVE_NO_COMMAND,PROPOSAL_NOT_DEPLOYED
+action_execution_bridge,decision_id,string,1,具体决策外键,P3显式Action/Execution/Command/Decision引用,native historical state without controller decision,PROPOSAL_NOT_DEPLOYED
+action_execution_bridge,command_tenure_id,string,1,同一持久约束执行区间标识,P3显式Action/Execution/Command/Decision引用,no command,PROPOSAL_NOT_DEPLOYED
+action_execution_bridge,association_reason,string,1,显式ID/step/readback匹配依据,P3显式Action/Execution/Command/Decision引用,never,PROPOSAL_NOT_DEPLOYED
+action_comparison,schema_version,string,1,外部P4表schema版本,本契约,never,PROPOSAL_NOT_DEPLOYED
+action_comparison,record_status,enum,1,PROPOSED/OBSERVED/UNKNOWN/INVALID等记录状态,派生器,never,PROPOSAL_NOT_DEPLOYED
+action_comparison,source_ref,string,1,原始字节或输入manifest路径及记录选择器,来源manifest,never,PROPOSAL_NOT_DEPLOYED
+action_comparison,source_sha256,hex64,1,source_ref所指原始字节或输入manifest的SHA256,来源manifest,never,PROPOSAL_NOT_DEPLOYED
+action_comparison,derivation_version,string,1,解析/派生方法版本，不等于科研批准状态,派生器,never,PROPOSAL_NOT_DEPLOYED
+action_comparison,comparison_id,string,1,比较点或失败记录唯一ID,声明的pair映射和两实际state,never,PROPOSAL_NOT_DEPLOYED
+action_comparison,pair_id,string,1,配对设计外键,声明的pair映射和两实际state,never,PROPOSAL_NOT_DEPLOYED
+action_comparison,pair_manifest_sha256,hex64,1,角色/初始化/条件一致性证据哈希,声明的pair映射和两实际state,never,PROPOSAL_NOT_DEPLOYED
+action_comparison,baseline_state_id,string,1,基准实际观测外键,声明的pair映射和两实际state,no common valid support,PROPOSAL_NOT_DEPLOYED
+action_comparison,treatment_state_id,string,1,处理实际观测外键,声明的pair映射和两实际state,no common valid support,PROPOSAL_NOT_DEPLOYED
+action_comparison,same_role_ref,string,1,跨run角色/incarnation映射证据,声明的pair映射和两实际state,mapping unknown; comparison Unknown,PROPOSAL_NOT_DEPLOYED
+action_comparison,matching_policy_version,string,1,精确/重采样/误差处理版本,声明的pair映射和两实际state,never,PROPOSAL_NOT_DEPLOYED
+action_comparison,clock_compatibility,enum,1,COMPATIBLE/UNCERTAIN/INCOMPATIBLE,声明的pair映射和两实际state,never,PROPOSAL_NOT_DEPLOYED
+action_comparison,common_support_status,enum,1,VALID/NO_COMMON_OBSERVATION/INVALID/UNKNOWN,声明的pair映射和两实际state,never,PROPOSAL_NOT_DEPLOYED
+action_comparison,delta_speed_mps,float64,m/s,treatment minus baseline速度,声明的pair映射和两实际state,either input not valid or support invalid,PROPOSAL_NOT_DEPLOYED
+action_comparison,delta_acceleration_mps2,float64,m/s^2,treatment minus baseline加速度,声明的pair映射和两实际state,either input not valid or support invalid,PROPOSAL_NOT_DEPLOYED
+action_comparison,delta_position_m,float64,m,同坐标/route下位置差,声明的pair映射和两实际state,coordinate/route/support incompatible,PROPOSAL_NOT_DEPLOYED
+action_comparison,delta_gap_m,float64,m,合格同leader交互段gap差,声明的pair映射和两实际state,leader changed or gap/support invalid,PROPOSAL_NOT_DEPLOYED
+action_comparison,lane_change,enum,1,同角色车道关系分类，非字符串相减,声明的pair映射和两实际state,lane not measurable,PROPOSAL_NOT_DEPLOYED
+action_comparison,leader_relation_status,enum,1,SAME_MAPPED_ROLE/CHANGED/UNKNOWN,声明的pair映射和两实际state,never,PROPOSAL_NOT_DEPLOYED
+action_timing,schema_version,string,1,外部P4表schema版本,本契约,never,PROPOSAL_NOT_DEPLOYED
+action_timing,record_status,enum,1,PROPOSED/OBSERVED/UNKNOWN/INVALID等记录状态,派生器,never,PROPOSAL_NOT_DEPLOYED
+action_timing,source_ref,string,1,原始字节或输入manifest路径及记录选择器,来源manifest,never,PROPOSAL_NOT_DEPLOYED
+action_timing,source_sha256,hex64,1,source_ref所指原始字节或输入manifest的SHA256,来源manifest,never,PROPOSAL_NOT_DEPLOYED
+action_timing,derivation_version,string,1,解析/派生方法版本，不等于科研批准状态,派生器,never,PROPOSAL_NOT_DEPLOYED
+action_timing,action_timing_id,string,1,动作时间账本ID,真实P3时间及拟议连续支持比较,never,PROPOSAL_NOT_DEPLOYED
+action_timing,pair_id,string,1,配对外键,真实P3时间及拟议连续支持比较,unpaired descriptive observation,PROPOSAL_NOT_DEPLOYED
+action_timing,support_id,string,1,测量支持外键,真实P3时间及拟议连续支持比较,never,PROPOSAL_NOT_DEPLOYED
+action_timing,comparison_refs,array[string],1,实际比较证据列表,真实P3时间及拟议连续支持比较,empty if no qualified comparisons,PROPOSAL_NOT_DEPLOYED
+action_timing,adoption_consumption_time_lower_s,float64,s,实际POLICY_INPUT_INCLUDED消费时刻下界,真实P3时间及拟议连续支持比较,not adopted or unknown,PROPOSAL_NOT_DEPLOYED
+action_timing,adoption_consumption_time_upper_s,float64,s,消费时刻上界,真实P3时间及拟议连续支持比较,not adopted or unknown,PROPOSAL_NOT_DEPLOYED
+action_timing,command_change_time_s,float64,s,首次实际改变命令时间,真实P3时间及拟议连续支持比较,no command change or uncertain clock,PROPOSAL_NOT_DEPLOYED
+action_timing,first_execution_observed_time_s,float64,s,首次真实执行见证时间,真实P3时间及拟议连续支持比较,no execution evidence,PROPOSAL_NOT_DEPLOYED
+action_timing,first_observed_difference_time_s,float64,s,首次实际可比运动差异时间,真实P3时间及拟议连续支持比较,no demonstrated difference/insufficient support,PROPOSAL_NOT_DEPLOYED
+action_timing,candidate_onset_lower_s,float64,s,持续差异候选起点下界,真实P3时间及拟议连续支持比较,rule unset or not identified,PROPOSAL_NOT_DEPLOYED
+action_timing,candidate_onset_upper_s,float64,s,持续差异候选起点上界,真实P3时间及拟议连续支持比较,rule unset or not identified,PROPOSAL_NOT_DEPLOYED
+action_timing,persistence_confirmation_time_s,float64,s,实际支持首次满足持续规则的确认时间,真实P3时间及拟议连续支持比较,right censored/rule unset/not confirmed,PROPOSAL_NOT_DEPLOYED
+action_timing,right_censored,boolean,1,观察结束前无法完成确认,真实P3时间及拟议连续支持比较,never,PROPOSAL_NOT_DEPLOYED
+action_timing,threshold_spec_ref,string,1,已批准的Action误差/差异规则,真实P3时间及拟议连续支持比较,PROPOSED_UNSET,PROPOSAL_NOT_DEPLOYED
+action_timing,persistence_spec_ref,string,1,已批准连续支持与持续性规则,真实P3时间及拟议连续支持比较,PROPOSED_UNSET,PROPOSAL_NOT_DEPLOYED
+action_timing,coverage_ref,string,1,缺口/共同支持及连续段审计,真实P3时间及拟议连续支持比较,never,PROPOSAL_NOT_DEPLOYED
+risk_sample,schema_version,string,1,外部P4表schema版本,本契约,never,PROPOSAL_NOT_DEPLOYED
+risk_sample,record_status,enum,1,PROPOSED/OBSERVED/UNKNOWN/INVALID等记录状态,派生器,never,PROPOSAL_NOT_DEPLOYED
+risk_sample,source_ref,string,1,原始字节或输入manifest路径及记录选择器,来源manifest,never,PROPOSAL_NOT_DEPLOYED
+risk_sample,source_sha256,hex64,1,source_ref所指原始字节或输入manifest的SHA256,来源manifest,never,PROPOSAL_NOT_DEPLOYED
+risk_sample,derivation_version,string,1,解析/派生方法版本，不等于科研批准状态,派生器,never,PROPOSAL_NOT_DEPLOYED
+risk_sample,risk_sample_id,string,1,单车单时刻风险ID,实际state与现有Formal测量函数/空间支持,never,PROPOSAL_NOT_DEPLOYED
+risk_sample,state_id,string,1,实际状态外键,实际state与现有Formal测量函数/空间支持,never,PROPOSAL_NOT_DEPLOYED
+risk_sample,support_id,string,1,固定区域/名单/窗口支持外键,实际state与现有Formal测量函数/空间支持,never,PROPOSAL_NOT_DEPLOYED
+risk_sample,interaction_id,string,1,follower/leader/incarnation连续交互段,实际state与现有Formal测量函数/空间支持,no reliable applicable leader,PROPOSAL_NOT_DEPLOYED
+risk_sample,ttc_s,float64,s,可靠闭合正TTC,实际state与现有Formal测量函数/空间支持,not valid finite positive TTC,PROPOSAL_NOT_DEPLOYED
+risk_sample,drac_mps2,float64,m/s^2,辅助所需减速度，不替rho,实际state与现有Formal测量函数/空间支持,not valid finite measurement,PROPOSAL_NOT_DEPLOYED
+risk_sample,measurement_status,enum,1,原valid/invalid/missing/not_applicable等,实际state与现有Formal测量函数/空间支持,never,PROPOSAL_NOT_DEPLOYED
+risk_sample,measurement_reason,string,1,不适用/无效/缺失等具体依据,实际state与现有Formal测量函数/空间支持,never,PROPOSAL_NOT_DEPLOYED
+risk_sample,measurement_reliable,boolean,1,测量可信度独立于空间,实际state与现有Formal测量函数/空间支持,unknown reliability; yields Unknown contribution,PROPOSAL_NOT_DEPLOYED
+risk_sample,measurement_version,string,1,实际TTC/Formal或辅助版本,实际state与现有Formal测量函数/空间支持,never,PROPOSAL_NOT_DEPLOYED
+risk_sample,config_sha256,hex64,1,测量实际配置hash,实际state与现有Formal测量函数/空间支持,config unknown; not qualified point,PROPOSAL_NOT_DEPLOYED
+risk_sample,in_region,boolean,1,是否在固定区域,实际state与现有Formal测量函数/空间支持,unknown membership,PROPOSAL_NOT_DEPLOYED
+risk_sample,region_reliable,boolean,1,空间成员资格是否可靠,实际state与现有Formal测量函数/空间支持,unknown; fail closed,PROPOSAL_NOT_DEPLOYED
+risk_sample,rho,float64,1,exp(-TTC/tau)的可靠valid点值,实际state与现有Formal测量函数/空间支持,not valid reliable positive TTC,PROPOSAL_NOT_DEPLOYED
+risk_sample,lower_contribution,float64,1,对固定区域后向风险贡献下界,实际state与现有Formal测量函数/空间支持,scope/bound not defined,PROPOSAL_NOT_DEPLOYED
+risk_sample,upper_contribution,float64,1,贡献上界，Unknown不补0,实际state与现有Formal测量函数/空间支持,scope/bound not defined,PROPOSAL_NOT_DEPLOYED
+risk_sample,continuity_prev_state_ref,string,1,前一个实际观测外键,实际state与现有Formal测量函数/空间支持,first point/no previous point,PROPOSAL_NOT_DEPLOYED
+risk_sample,continuity_status,enum,1,PROVEN/UNPROVEN/BROKEN及原因,实际state与现有Formal测量函数/空间支持,never,PROPOSAL_NOT_DEPLOYED
+risk_action_bridge,schema_version,string,1,外部P4表schema版本,本契约,never,PROPOSAL_NOT_DEPLOYED
+risk_action_bridge,record_status,enum,1,PROPOSED/OBSERVED/UNKNOWN/INVALID等记录状态,派生器,never,PROPOSAL_NOT_DEPLOYED
+risk_action_bridge,source_ref,string,1,原始字节或输入manifest路径及记录选择器,来源manifest,never,PROPOSAL_NOT_DEPLOYED
+risk_action_bridge,source_sha256,hex64,1,source_ref所指原始字节或输入manifest的SHA256,来源manifest,never,PROPOSAL_NOT_DEPLOYED
+risk_action_bridge,derivation_version,string,1,解析/派生方法版本，不等于科研批准状态,派生器,never,PROPOSAL_NOT_DEPLOYED
+risk_action_bridge,risk_action_bridge_id,string,1,多对多桥接唯一键,明确state/action/execution关系及支持manifest,never,PROPOSAL_NOT_DEPLOYED
+risk_action_bridge,risk_sample_id,string,1,风险样本外键,明确state/action/execution关系及支持manifest,never,PROPOSAL_NOT_DEPLOYED
+risk_action_bridge,bridge_id,string,1,实际动作与执行桥接外键,明确state/action/execution关系及支持manifest,never,PROPOSAL_NOT_DEPLOYED
+risk_action_bridge,association_scope,enum,1,SAME_STATE/EXPLICIT_INTERVAL，不能最近时间匹配,明确state/action/execution关系及支持manifest,never,PROPOSAL_NOT_DEPLOYED
+risk_action_bridge,support_validation_ref,string,1,同run/assignment/entity/clock支持验证,明确state/action/execution关系及支持manifest,never,PROPOSAL_NOT_DEPLOYED
+vehicle_window,schema_version,string,1,外部P4表schema版本,本契约,never,PROPOSAL_NOT_DEPLOYED
+vehicle_window,record_status,enum,1,PROPOSED/OBSERVED/UNKNOWN/INVALID等记录状态,派生器,never,PROPOSAL_NOT_DEPLOYED
+vehicle_window,source_ref,string,1,原始字节或输入manifest路径及记录选择器,来源manifest,never,PROPOSAL_NOT_DEPLOYED
+vehicle_window,source_sha256,hex64,1,source_ref所指原始字节或输入manifest的SHA256,来源manifest,never,PROPOSAL_NOT_DEPLOYED
+vehicle_window,derivation_version,string,1,解析/派生方法版本，不等于科研批准状态,派生器,never,PROPOSAL_NOT_DEPLOYED
+vehicle_window,vehicle_window_id,string,1,预定成员固定窗积分ID,固定全窗积分/原始连续性与几何审计,never,PROPOSAL_NOT_DEPLOYED
+vehicle_window,support_id,string,1,固定支持外键,固定全窗积分/原始连续性与几何审计,never,PROPOSAL_NOT_DEPLOYED
+vehicle_window,member_id,string,1,预定名单成员外键,固定全窗积分/原始连续性与几何审计,never,PROPOSAL_NOT_DEPLOYED
+vehicle_window,risk_sample_refs,array[string],1,纳入点及来源manifest,固定全窗积分/原始连续性与几何审计,empty only fully unobserved member,PROPOSAL_NOT_DEPLOYED
+vehicle_window,window_start_s,float64,s,预先固定窗起点,固定全窗积分/原始连续性与几何审计,scope unknown,PROPOSAL_NOT_DEPLOYED
+vehicle_window,window_end_s,float64,s,预先固定窗终点,固定全窗积分/原始连续性与几何审计,scope unknown,PROPOSAL_NOT_DEPLOYED
+vehicle_window,fixed_window_s,float64,s,完整分母end-start,固定全窗积分/原始连续性与几何审计,scope unknown,PROPOSAL_NOT_DEPLOYED
+vehicle_window,lower_integral_s,float64,s,全窗贡献积分下界,固定全窗积分/原始连续性与几何审计,scope/bound unknown,PROPOSAL_NOT_DEPLOYED
+vehicle_window,upper_integral_s,float64,s,全窗贡献积分上界,固定全窗积分/原始连续性与几何审计,scope/bound unknown,PROPOSAL_NOT_DEPLOYED
+vehicle_window,lower_mean,float64,1,积分下界除完整窗长,固定全窗积分/原始连续性与几何审计,scope/bound unknown,PROPOSAL_NOT_DEPLOYED
+vehicle_window,upper_mean,float64,1,积分上界除完整窗长,固定全窗积分/原始连续性与几何审计,scope/bound unknown,PROPOSAL_NOT_DEPLOYED
+vehicle_window,known_time_s,float64,s,点界相同且连续支持的时长,固定全窗积分/原始连续性与几何审计,scope unknown,PROPOSAL_NOT_DEPLOYED
+vehicle_window,unknown_time_s,float64,s,全窗未点识别时长,固定全窗积分/原始连续性与几何审计,scope unknown,PROPOSAL_NOT_DEPLOYED
+vehicle_window,observed_pair_time_s,float64,s,合格相邻观测段支持，不等于known time,固定全窗积分/原始连续性与几何审计,scope unknown,PROPOSAL_NOT_DEPLOYED
+vehicle_window,coverage_status,enum,1,COMPLETE/PARTIAL/FULLY_UNOBSERVED/UNKNOWN_SCOPE,固定全窗积分/原始连续性与几何审计,never,PROPOSAL_NOT_DEPLOYED
+vehicle_window,boundary_gap_audit_ref,string,1,空间出入界/缺口/尾部/leader切换证明,固定全窗积分/原始连续性与几何审计,never,PROPOSAL_NOT_DEPLOYED
+regional_outcome,schema_version,string,1,外部P4表schema版本,本契约,never,PROPOSAL_NOT_DEPLOYED
+regional_outcome,record_status,enum,1,PROPOSED/OBSERVED/UNKNOWN/INVALID等记录状态,派生器,never,PROPOSAL_NOT_DEPLOYED
+regional_outcome,source_ref,string,1,原始字节或输入manifest路径及记录选择器,来源manifest,never,PROPOSAL_NOT_DEPLOYED
+regional_outcome,source_sha256,hex64,1,source_ref所指原始字节或输入manifest的SHA256,来源manifest,never,PROPOSAL_NOT_DEPLOYED
+regional_outcome,derivation_version,string,1,解析/派生方法版本，不等于科研批准状态,派生器,never,PROPOSAL_NOT_DEPLOYED
+regional_outcome,outcome_id,string,1,单分配单位事件区域结局ID,待批准聚合算子+完整固定成员窗口结果,never,PROPOSAL_NOT_DEPLOYED
+regional_outcome,support_id,string,1,固定支持外键,待批准聚合算子+完整固定成员窗口结果,never,PROPOSAL_NOT_DEPLOYED
+regional_outcome,unit_id,string,1,独立分配单位，不是车辆/采样点数,待批准聚合算子+完整固定成员窗口结果,engineering only or unknown design unit,PROPOSAL_NOT_DEPLOYED
+regional_outcome,vehicle_window_refs,array[string],1,完整预定名单每车积分引用,待批准聚合算子+完整固定成员窗口结果,empty if scope unknown,PROPOSAL_NOT_DEPLOYED
+regional_outcome,roster_sha256,hex64,1,处理前完整名单hash,待批准聚合算子+完整固定成员窗口结果,scope unknown,PROPOSAL_NOT_DEPLOYED
+regional_outcome,expected_N,int64,vehicle,固定分母人数,待批准聚合算子+完整固定成员窗口结果,scope unknown,PROPOSAL_NOT_DEPLOYED
+regional_outcome,received_N,int64,vehicle,接收积分记录数,待批准聚合算子+完整固定成员窗口结果,scope unknown,PROPOSAL_NOT_DEPLOYED
+regional_outcome,unique_N,int64,vehicle,唯一合格成员数,待批准聚合算子+完整固定成员窗口结果,scope unknown,PROPOSAL_NOT_DEPLOYED
+regional_outcome,lower_outcome,float64,aggregation_unit,正式算子批准后的区域结局下界,待批准聚合算子+完整固定成员窗口结果,aggregation/scope not approved or structural error,PROPOSAL_NOT_DEPLOYED
+regional_outcome,upper_outcome,float64,aggregation_unit,区域结局上界,待批准聚合算子+完整固定成员窗口结果,aggregation/scope not approved or structural error,PROPOSAL_NOT_DEPLOYED
+regional_outcome,aggregation_unit,string,1,normalized mean为1，integral为s；须批准,待批准聚合算子+完整固定成员窗口结果,aggregation not approved,PROPOSAL_NOT_DEPLOYED
+regional_outcome,aggregation_version,string,1,实际聚合方法版本,待批准聚合算子+完整固定成员窗口结果,not approved,PROPOSAL_NOT_DEPLOYED
+regional_outcome,outcome_status,enum,1,POINT/INTERVAL/UNKNOWN_SCOPE/STRUCTURAL_ERROR/PROPOSED,待批准聚合算子+完整固定成员窗口结果,never,PROPOSAL_NOT_DEPLOYED
+regional_outcome,missing_summary,object,1,逐类缺失/失效/删失及区间宽度,待批准聚合算子+完整固定成员窗口结果,never,PROPOSAL_NOT_DEPLOYED
+regional_outcome,time_resolved_refs,array[string],1,同预定时间网格的结局/界，非因果估计,待批准聚合算子+完整固定成员窗口结果,grid not approved or unavailable,PROPOSAL_NOT_DEPLOYED
+macro_observation,schema_version,string,1,外部P4表schema版本,本契约,never,PROPOSAL_NOT_DEPLOYED
+macro_observation,record_status,enum,1,PROPOSED/OBSERVED/UNKNOWN/INVALID等记录状态,派生器,never,PROPOSAL_NOT_DEPLOYED
+macro_observation,source_ref,string,1,原始字节或输入manifest路径及记录选择器,来源manifest,never,PROPOSAL_NOT_DEPLOYED
+macro_observation,source_sha256,hex64,1,source_ref所指原始字节或输入manifest的SHA256,来源manifest,never,PROPOSAL_NOT_DEPLOYED
+macro_observation,derivation_version,string,1,解析/派生方法版本，不等于科研批准状态,派生器,never,PROPOSAL_NOT_DEPLOYED
+macro_observation,macro_id,string,1,同域宏观观测ID,同域Edie-type原始轨迹片段，不是Formal rho,never,PROPOSAL_NOT_DEPLOYED
+macro_observation,support_id,string,1,区域时间支持外键,同域Edie-type原始轨迹片段，不是Formal rho,never,PROPOSAL_NOT_DEPLOYED
+macro_observation,area_length_time,float64,m*s,同lane或明确lane归一化的时空面积,同域Edie-type原始轨迹片段，不是Formal rho,scope unknown,PROPOSAL_NOT_DEPLOYED
+macro_observation,lane_normalization,string,1,分lane/总lane-length规则及版本,同域Edie-type原始轨迹片段，不是Formal rho,scope unknown,PROPOSAL_NOT_DEPLOYED
+macro_observation,distance_sum_m,float64,vehicle*m,域内所有合格轨迹片段距离D,同域Edie-type原始轨迹片段，不是Formal rho,unobservable coverage,PROPOSAL_NOT_DEPLOYED
+macro_observation,time_sum_s,float64,vehicle*s,域内车时V,同域Edie-type原始轨迹片段，不是Formal rho,unobservable coverage,PROPOSAL_NOT_DEPLOYED
+macro_observation,q,float64,vehicle/s,D除同域面积,同域Edie-type原始轨迹片段，不是Formal rho,invalid area or unobservable coverage,PROPOSAL_NOT_DEPLOYED
+macro_observation,k,float64,vehicle/m,V除同域面积,同域Edie-type原始轨迹片段，不是Formal rho,invalid area or unobservable coverage,PROPOSAL_NOT_DEPLOYED
+macro_observation,u,float64,m/s,D/V,同域Edie-type原始轨迹片段，不是Formal rho,V equals zero or unobservable coverage,PROPOSAL_NOT_DEPLOYED
+macro_observation,composition_coverage,string,1,全域/抽样/未知覆盖，不无依据外推,同域Edie-type原始轨迹片段，不是Formal rho,never,PROPOSAL_NOT_DEPLOYED

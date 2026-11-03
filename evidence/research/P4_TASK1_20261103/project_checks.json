@@ -1,0 +1,126 @@
+{
+  "evidence_export": {
+    "command": "python code/scripts/export_project_evidence.py --repo-root .",
+    "exit_code": 0,
+    "output": "PORTABLE_EVIDENCE_EXPORTED results=94 files=1458",
+    "scope": "Existing project exporter; P4 research bundle is directly tracked separately"
+  },
+  "strict_documentation": {
+    "command": [
+      "D:\\miniconda\\python.exe",
+      "-X",
+      "utf8",
+      "code/scripts/validate_project_docs.py",
+      "--repo-root",
+      ".",
+      "--strict-git"
+    ],
+    "exit_code": 0,
+    "output": "PROJECT_DOCS_OK",
+    "log_sha256": "534ed6a0d8980a186ca298cfacfa994aaa780aeed39761c4a1b6386dbdabee77"
+  },
+  "exporter_verify": {
+    "command": [
+      "D:\\miniconda\\python.exe",
+      "-X",
+      "utf8",
+      "code/scripts/export_project_evidence.py",
+      "--repo-root",
+      ".",
+      "--verify"
+    ],
+    "exit_code": 0,
+    "output": "PORTABLE_EVIDENCE_OK",
+    "log_sha256": "0c69002e3db974ba19b1ea32d63389fc1f3a6495d116b6f622aa6081c4313f41"
+  },
+  "git_diff_bytes": {
+    "command": [
+      "git",
+      "diff",
+      "--cached",
+      "--check"
+    ],
+    "exit_code": 0,
+    "output": "",
+    "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "targeted_syntax": {
+    "status": "PASSED",
+    "files": [
+      "verify_evidence.py",
+      "offline_no_process.py"
+    ],
+    "method": "ast.parse only; no full-repo compileall"
+  },
+  "initial_portable_verification": {
+    "exit_code": 1,
+    "error": "AssertionError: Python tuple containers compared directly with JSON lists",
+    "stage": "after all 27 numerical semantic assertions passed",
+    "fix": "Normalize tuple containers via JSON roundtrip; no numeric, source or hash tolerance changed"
+  },
+  "first_minimal_git_view": {
+    "exit_code": 1,
+    "error": "ModuleNotFoundError: riskprop.legacy",
+    "cause": "Minimal export omitted transitive package __init__ imports",
+    "fix": "Include actual package entry and its static import closure; no production source changed",
+    "original_view_retained_locally": true
+  },
+  "worktree_portable_verification": {
+    "status": "PASSED",
+    "source_bindings": 57,
+    "sealed_files": 13,
+    "deterministic_checks": 27,
+    "dictionary_fields": 247,
+    "traceability_findings": 18,
+    "local_links": 34
+  },
+  "minimal_git_view": {
+    "status": "PASSED",
+    "result": {
+      "status": "P4_TASK1_PORTABLE_VERIFIED",
+      "sealed_files": 13,
+      "source_files_verified": 57,
+      "deterministic_checks": 27,
+      "dictionary_fields": 247,
+      "traceability_findings": 18,
+      "local_document_links_checked": 34,
+      "explicit_git_line_ending_variants": [
+        "AGENTS.md",
+        "code/configs/stage_0_2_formal_risk_measurement_p2_v1.json",
+        "code/src/riskprop/formal_risk_measurement.py",
+        "code/tests/test_formal_risk_measurement.py",
+        "docs/research/P1/CAUSAL_DAG.md",
+        "docs/research/P1/ESTIMAND_SPECIFICATION.md",
+        "docs/research/P1/HYPOTHESIS_AND_FALSIFICATION.md",
+        "docs/research/P1/P1_TASK2_FINAL_REPORT.md",
+        "docs/research/P1/THEORY_AND_CAUSAL_MODEL.md",
+        "docs/research/P2/P2_TASK5_FINAL_REPORT.md",
+        "docs/research/P2/P2_TASK5_LITERATURE_AND_METHOD_AUDIT.md",
+        "docs/research/P2/P2_TASK5_MEASUREMENT_AND_IDENTIFICATION_PROPOSAL.md",
+        "docs/research/P4/P4_ACTION_AND_RISK_MEASUREMENT_SPEC.md",
+        "docs/research/P4/P4_IMPLEMENTATION_AND_DATA_LINEAGE_AUDIT.md",
+        "docs/research/P4/P4_MEASUREMENT_DATA_CONTRACT.md",
+        "docs/research/P4/P4_RESEARCHER_DECISIONS.md",
+        "docs/research/P4/P4_TASK1_FINAL_REPORT.md",
+        "docs/research/P4/README.md",
+        "docs/research/P4/p4_implementation_audit.json",
+        "docs/research/definitions/CORE_SCIENTIFIC_DEFINITIONS.md",
+        "docs/research/definitions/OVERLEAF_ALIGNMENT.md",
+        "docs/research/definitions/SYMBOL_REGISTER.md"
+      ],
+      "new_traffic_runs": 0,
+      "scientific_claim_eligible": false,
+      "materialized_files": 75,
+      "scope": "Minimal staged Git blobs only; no raw datasets/traffic outputs; not independent traffic validation"
+    },
+    "source": "staged Git blobs; no checkout of dirty source",
+    "no_new_traffic_runs": true
+  },
+  "second_minimal_git_view": {
+    "exit_code": 1,
+    "error": "ModuleNotFoundError: riskprop.formal_design",
+    "cause": "Relative imports omitted from temporary dependency closure",
+    "fix": "Resolve actual package-relative AST imports; third view passed",
+    "original_view_retained_locally": true
+  }
+}

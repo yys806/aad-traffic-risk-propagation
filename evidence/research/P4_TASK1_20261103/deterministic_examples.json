@@ -1,0 +1,374 @@
+{
+  "status": "OFFLINE_SEMANTICS_VERIFIED_WITH_LIMITATIONS",
+  "checks_passed": 27,
+  "failed": 0,
+  "examples": [
+    {
+      "id": "rho_no_P2_threshold_truncation",
+      "actual": 0.7222166104697617,
+      "expected": 0.7222166104697617,
+      "status": "VERIFIED_CURRENT_SEMANTICS"
+    },
+    {
+      "id": "rho_invalid_zero",
+      "actual": null,
+      "expected": null,
+      "status": "VERIFIED_CURRENT_SEMANTICS"
+    },
+    {
+      "id": "known_outside",
+      "actual": [
+        0.0,
+        0.0,
+        null
+      ],
+      "expected": [
+        0,
+        0,
+        null
+      ],
+      "status": "VERIFIED_CURRENT_SEMANTICS"
+    },
+    {
+      "id": "unknown_region",
+      "actual": [
+        0.0,
+        1.0,
+        null
+      ],
+      "expected": [
+        0,
+        1,
+        null
+      ],
+      "status": "VERIFIED_CURRENT_SEMANTICS"
+    },
+    {
+      "id": "unreliable_region",
+      "actual": [
+        0.0,
+        1.0,
+        null
+      ],
+      "expected": [
+        0,
+        1,
+        null
+      ],
+      "status": "VERIFIED_CURRENT_SEMANTICS"
+    },
+    {
+      "id": "inside_missing",
+      "actual": [
+        0.0,
+        1.0,
+        null
+      ],
+      "expected": [
+        0,
+        1,
+        null
+      ],
+      "status": "VERIFIED_CURRENT_SEMANTICS"
+    },
+    {
+      "id": "inside_invalid",
+      "actual": [
+        0.0,
+        1.0,
+        null
+      ],
+      "expected": [
+        0,
+        1,
+        null
+      ],
+      "status": "VERIFIED_CURRENT_SEMANTICS"
+    },
+    {
+      "id": "inside_reliable_not_applicable",
+      "actual": [
+        0.0,
+        0.0,
+        null
+      ],
+      "expected": [
+        0,
+        0,
+        null
+      ],
+      "status": "VERIFIED_CURRENT_SEMANTICS"
+    },
+    {
+      "id": "inside_unreliable_not_applicable",
+      "actual": [
+        0.0,
+        1.0,
+        null
+      ],
+      "expected": [
+        0,
+        1,
+        null
+      ],
+      "status": "VERIFIED_CURRENT_SEMANTICS"
+    },
+    {
+      "id": "complete_constant_window",
+      "actual": {
+        "lower_integral": 0.060000000000000005,
+        "upper_integral": 0.05999999999999997,
+        "lower_mean": 0.2,
+        "upper_mean": 0.1999999999999999,
+        "known_time_s": 0.3,
+        "unknown_time_s": 0.0,
+        "observed_pair_time_s": 0.3,
+        "fixed_window_s": 0.3
+      },
+      "expected": {
+        "lower_mean": 0.2,
+        "upper_mean": 0.2,
+        "known_time_s": 0.3
+      },
+      "status": "VERIFIED_CURRENT_SEMANTICS"
+    },
+    {
+      "id": "gap_and_right_tail_keep_full_denominator",
+      "actual": {
+        "lower_integral": 0.020000000000000004,
+        "upper_integral": 0.32,
+        "lower_mean": 0.05000000000000001,
+        "upper_mean": 0.7999999999999999,
+        "known_time_s": 0.09999999999999998,
+        "unknown_time_s": 0.30000000000000004,
+        "observed_pair_time_s": 0.1,
+        "fixed_window_s": 0.4
+      },
+      "expected": {
+        "lower_mean": 0.05,
+        "upper_mean": 0.8,
+        "known_time_s": 0.1,
+        "unknown_time_s": 0.3
+      },
+      "status": "VERIFIED_CURRENT_SEMANTICS"
+    },
+    {
+      "id": "time_clip_between_brackets",
+      "actual": {
+        "lower_integral": 0.02,
+        "upper_integral": 0.01999999999999999,
+        "lower_mean": 0.2,
+        "upper_mean": 0.19999999999999993,
+        "known_time_s": 0.09999999999999999,
+        "unknown_time_s": 0.0,
+        "observed_pair_time_s": 0.09999999999999999,
+        "fixed_window_s": 0.09999999999999999
+      },
+      "expected": {
+        "lower_mean": 0.2,
+        "upper_mean": 0.2
+      },
+      "status": "VERIFIED_CURRENT_SEMANTICS"
+    },
+    {
+      "id": "fully_unobserved_vehicle",
+      "actual": {
+        "lower_integral": 0.0,
+        "upper_integral": 1,
+        "lower_mean": 0.0,
+        "upper_mean": 1.0,
+        "known_time_s": 0,
+        "unknown_time_s": 1,
+        "observed_pair_time_s": 0.0,
+        "fixed_window_s": 1
+      },
+      "expected": {
+        "lower_mean": 0,
+        "upper_mean": 1,
+        "unknown_time_s": 1
+      },
+      "status": "VERIFIED_CURRENT_SEMANTICS"
+    },
+    {
+      "id": "leader_switch_conservative_interval",
+      "actual": {
+        "lower_integral": 0.0,
+        "upper_integral": 0.1,
+        "lower_mean": 0.0,
+        "upper_mean": 1.0,
+        "known_time_s": 0.0,
+        "unknown_time_s": 0.1,
+        "observed_pair_time_s": 0.0,
+        "fixed_window_s": 0.1
+      },
+      "expected": {
+        "lower_mean": 0,
+        "upper_mean": 1
+      },
+      "status": "VERIFIED_CURRENT_SEMANTICS"
+    },
+    {
+      "id": "point_zero_no_leader_not_a_proven_time_link",
+      "actual": {
+        "lower_integral": 0.0,
+        "upper_integral": 0.1,
+        "lower_mean": 0.0,
+        "upper_mean": 1.0,
+        "known_time_s": 0.0,
+        "unknown_time_s": 0.1,
+        "observed_pair_time_s": 0.0,
+        "fixed_window_s": 0.1
+      },
+      "expected": {
+        "lower_mean": 0,
+        "upper_mean": 1
+      },
+      "status": "VERIFIED_CURRENT_SEMANTICS"
+    },
+    {
+      "id": "duplicate_integration_time_rejected",
+      "actual": "duplicate observation timestamps",
+      "expected": "duplicate observation timestamps",
+      "status": "VERIFIED_CURRENT_SEMANTICS"
+    },
+    {
+      "id": "fixed_N_unknown_member_propagates",
+      "actual": {
+        "lower_mean": 0.1,
+        "upper_mean": 0.6,
+        "vehicle_count": 2.0
+      },
+      "expected": {
+        "lower_mean": 0.1,
+        "upper_mean": 0.6,
+        "vehicle_count": 2
+      },
+      "status": "VERIFIED_CURRENT_SEMANTICS"
+    },
+    {
+      "id": "averager_has_no_external_roster_check",
+      "actual": {
+        "lower_mean": 0.2,
+        "upper_mean": 0.2,
+        "vehicle_count": 1.0
+      },
+      "expected": {
+        "lower_mean": 0.2,
+        "upper_mean": 0.2,
+        "vehicle_count": 1
+      },
+      "status": "VERIFIED_LIMITATION_NOT_APPROVAL"
+    },
+    {
+      "id": "factorial_interval_not_an_estimator",
+      "actual": [
+        -2.0,
+        2.0
+      ],
+      "expected": [
+        -2,
+        2
+      ],
+      "status": "VERIFIED_CURRENT_SEMANTICS"
+    },
+    {
+      "id": "action_long_gap_is_bridged",
+      "actual": {
+        "status": "pass",
+        "common_observations": 3,
+        "first_action_change_time_s": 0.0,
+        "effect_observed": true,
+        "speed_tolerance_mps": 0.1,
+        "sustain_s": 0.3
+      },
+      "expected": {
+        "first_action_change_time_s": 0,
+        "effect_observed": true
+      },
+      "status": "VERIFIED_LIMITATION_NOT_APPROVAL"
+    },
+    {
+      "id": "action_missing_row_is_dropped_and_bridged",
+      "actual": {
+        "status": "pass",
+        "common_observations": 2,
+        "first_action_change_time_s": 0.0,
+        "effect_observed": true,
+        "speed_tolerance_mps": 0.1,
+        "sustain_s": 0.3
+      },
+      "expected": {
+        "first_action_change_time_s": 0,
+        "effect_observed": true
+      },
+      "status": "VERIFIED_LIMITATION_NOT_APPROVAL"
+    },
+    {
+      "id": "action_last_sample_gets_median_step_extension",
+      "actual": {
+        "status": "pass",
+        "common_observations": 3,
+        "first_action_change_time_s": 0.0,
+        "effect_observed": true,
+        "speed_tolerance_mps": 0.1,
+        "sustain_s": 0.3
+      },
+      "expected": {
+        "first_action_change_time_s": 0,
+        "effect_observed": true
+      },
+      "status": "VERIFIED_LIMITATION_NOT_APPROVAL"
+    },
+    {
+      "id": "action_incarnation_is_not_checked",
+      "actual": {
+        "status": "pass",
+        "common_observations": 3,
+        "first_action_change_time_s": 0.0,
+        "effect_observed": true,
+        "speed_tolerance_mps": 0.1,
+        "sustain_s": 0.3
+      },
+      "expected": {
+        "first_action_change_time_s": 0,
+        "effect_observed": true
+      },
+      "status": "VERIFIED_LIMITATION_NOT_APPROVAL"
+    },
+    {
+      "id": "action_different_grids_not_resampled",
+      "actual": {
+        "status": "unknown_no_common_observations",
+        "common_observations": 0,
+        "first_action_change_time_s": null,
+        "effect_observed": null
+      },
+      "expected": {
+        "status": "unknown_no_common_observations",
+        "effect_observed": null
+      },
+      "status": "VERIFIED_CURRENT_SEMANTICS"
+    },
+    {
+      "id": "action_duplicate_merge_fails_downstream",
+      "actual": "times must be strictly increasing",
+      "expected": "times must be strictly increasing",
+      "status": "VERIFIED_CURRENT_SEMANTICS"
+    },
+    {
+      "id": "auxiliary_valid_flag_with_nan_TTC_becomes_zero",
+      "actual": 0.0,
+      "expected": 0.0,
+      "status": "VERIFIED_LIMITATION_NOT_APPROVAL"
+    },
+    {
+      "id": "auxiliary_PET_overlap_zero",
+      "actual": 0.0,
+      "expected": 0.0,
+      "status": "VERIFIED_CURRENT_SEMANTICS"
+    }
+  ],
+  "new_traffic_runs": 0,
+  "scientific_parameters_selected": false,
+  "scientific_claim_eligible": false
+}

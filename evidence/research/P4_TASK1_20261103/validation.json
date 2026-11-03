@@ -1,0 +1,50 @@
+{
+  "task_id": "AAD-P4-TASK1-20261103",
+  "status": "AUDIT_AND_OPERATIONALIZATION_COMPLETE_WITH_LIMITATIONS",
+  "acceptance_scope": "Read-only audit and proposed measurement operationalization, not production regional risk readiness",
+  "new_SUMO_runs": 0,
+  "new_seeds": 0,
+  "new_experiments": 0,
+  "locked_holdout_reads": 0,
+  "production_changes": false,
+  "targeted_tests": {
+    "passed": 84,
+    "failed": 0,
+    "errors": 0
+  },
+  "deterministic_probes": {
+    "passed": 27,
+    "failed": 0
+  },
+  "dictionary_fields": 247,
+  "proposed_tables": 12,
+  "traceability_findings": 18,
+  "protected_files_unchanged": 535,
+  "facts_verified": [
+    "actual code lineage",
+    "rho versus P2 threshold",
+    "full-window bounds",
+    "action comparator limitations",
+    "P7 risk attachment scope",
+    "fixed-roster guard absent"
+  ],
+  "proposals_not_approved": [
+    "action endpoint/threshold/persistence",
+    "regional population and scope",
+    "final Y aggregation and transforms",
+    "12-table external contract",
+    "spatial/continuity and quality policies"
+  ],
+  "unknown": [
+    "formal source qualification",
+    "action causal effect",
+    "regional risk causal effect",
+    "F0",
+    "population T_R versus T_P"
+  ],
+  "p7_engineering_acceptance_unchanged": true,
+  "scientific_claim_eligible": false,
+  "core_findings_fixed": false,
+  "reason": "Read-only scope; scientific changes require researcher decision",
+  "project_validation_record": "project_checks.json"
+}

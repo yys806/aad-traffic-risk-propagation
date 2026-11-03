@@ -1,3 +1,11 @@
+## Current — P4 Task1 measurement audit (2026-11-03)
+
+本次是文档/源码审计，不是新交通实验：SUMO/TraCI/seed/Pilot/V/holdout读取均0。只读复用P7既有capture；84项定向测试通过，27个离线语义例子通过。进程守卫无启动尝试；不把历史P7测试/校准计为新独立证据。
+
+P7 Task2.1工程验收保持ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS。Formal A/独立Qualified仍0；风险/F0/总体T_R–T_P Unknown；Gate/Protocol Lock不变，Stage1.1 NOT_AUTHORIZED。
+
+[最终报告](../docs/research/P4/P4_TASK1_FINAL_REPORT.md) · [测量规范](../docs/research/P4/P4_ACTION_AND_RISK_MEASUREMENT_SPEC.md) · [待决](../docs/research/P4/P4_RESEARCHER_DECISIONS.md) · [证据](../evidence/research/P4_TASK1_20261103/README.md)。统一定义仍[27项v0.4](../docs/research/definitions/README.md)。下方保留历史任务时点状态。
+
 ## Current — P7 Task2.1 (2026-11-03)
 
 ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS。独立输出code/outputs/engineering/p7_task2_20261103_v2_revalidation；run_id=p7-task2.1-enabled-v2-20261103；assignment=AAD-P7-TASK2.1-ENABLED-V2-20261103。复核A/B全部702空输入snapshot后复用旧输出。
