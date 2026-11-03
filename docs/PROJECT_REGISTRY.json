@@ -578,12 +578,28 @@
   "evidence/research/P7_TASK1_20261103/source_manifest.json",
   "evidence/research/P7_TASK1_20261103/control_path_matrix.json",
   "evidence/research/P7_TASK1_20261103/integration_mapping.json",
-  "evidence/research/P7_TASK1_20261103/validation.json"
+  "evidence/research/P7_TASK1_20261103/validation.json",
+  "docs/research/P7/P7_TASK2_FINAL_REPORT.md",
+  "docs/research/P7/P7_RESEARCHER_DECISIONS_20261103.md",
+  "docs/research/P7/P7_LONGITUDINAL_CONTROLLER_SPEC.md",
+  "docs/research/P7/P7_CONTROLLER_EVIDENCE_INTEGRATION.md",
+  "docs/research/P3/CONTROLLER_ADOPTION_RATIFICATION_20261103.md",
+  "docs/research/P7/README.md",
+  "docs/research/P7/P7_TASK2_1_FINAL_REPORT.md"
  ],
  "current": {
+  "p7_task2_1_status": "ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS",
+  "p7_task2_1_report": "docs/research/P7/P7_TASK2_1_FINAL_REPORT.md",
+  "p7_task2_1_evidence": "evidence/research/P7_TASK2_1_20261103",
+  "p7_task2_report": "docs/research/P7/P7_TASK2_FINAL_REPORT.md",
+  "p7_task2_evidence": "evidence/research/P7_TASK2_20261103",
+  "p7_current_real_message_policy": true,
+  "current_adoption_boundary_version": "aad.p3.policy-input-adoption.agreed.v1",
+  "current_adoption_boundary_status": "AGREED",
+  "p3_task2_integration_field_scope": "Historical P3 Task2 execution; current actual integration accepted engineering-only in P7 Task2.1",
   "active_experiment_id": "stage_0_5",
   "active_task": "AAD-S0.5-TASK20 completed Stage 0 closure, Stage 0.6 Pre-Lock readiness and Stage I engineering preparation",
-  "active_research_task": "P7-TASK1 real SUMO control-path audit completed read-only; no existing message-driven target policy identified; P7 Task2 blocked on real policy selection",
+  "active_research_task": "P7 Task2.1 engineering acceptance complete with limitations; P5 not started",
   "p1_task1_status": "COMPLETED_WITH_LIMITATIONS",
   "p1_task1_report": "docs/research/P1/P1_TASK1_FINAL_REPORT.md",
   "p1_task2_status": "COMPLETED_WITH_LIMITATIONS",
@@ -595,7 +611,7 @@
   "p2_task2_specification": "docs/research/P2/P2_TASK2_PHYSICAL_ARRIVAL_AND_NO_MESSAGE_REFERENCE_SPEC.md",
   "p2_task2_researcher_decisions": "docs/research/P2/P2_TASK2_RESEARCHER_DECISIONS.md",
   "p2_task2_literature_audit": "docs/research/P2/P2_TASK2_LITERATURE_AND_METHOD_AUDIT.md",
-  "why_now": "P3 foundational interfaces verified on synthetic data; hand off real producer instrumentation to P7 under separate authorization. Scientific gates unchanged.",
+  "why_now": "P7 real message-driven execution chain accepted in one synthetic deterministic v2 revalidation; scientific gates unchanged",
   "next_decision_owner": "researcher",
   "task20_status": "COMPLETED",
   "stage_0_5_final_disposition": "CLOSED_WITH_LIMITATIONS",
@@ -860,7 +876,7 @@
   "p2_task7_historical_Observed_unchanged": 47,
   "p3_task1_status": "COMPLETED_WITH_LIMITATIONS_DOCUMENTATION_AUDIT_ONLY",
   "p3_task1_report": "docs/research/P3/P3_TASK1_FINAL_REPORT.md",
-  "p3_contract_status": "Proposed v0.1 / Awaiting Researcher Ratification",
+  "p3_contract_status": "Agreed policy-input boundary amendment 2026-11-03; other operational contracts remain Proposed",
   "macro_work_package_roadmap_status": "v1.1 Revised Proposal / Awaiting Researcher Ratification",
   "p3_task2_status": "COMPLETED_ENGINEERING_INTERFACE_SYNTHETIC_ONLY",
   "p3_task2_report": "docs/research/P3/P3_TASK2_FINAL_REPORT.md",
@@ -872,9 +888,56 @@
   "p7_task1_integration_blueprint": "docs/research/P7/P7_INTEGRATION_BLUEPRINT.md",
   "p7_task1_evidence": "evidence/research/P7_TASK1_20261103/",
   "p7_task1_real_message_policy": false,
-  "p7_task2_status": "BLOCKED_ON_RESEARCHER_IDENTIFICATION_OF_REAL_MESSAGE_DRIVEN_TARGET_POLICY"
+  "p7_task2_status": "ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS"
  },
  "experiments": [
+  {
+   "historical_v1_status": "BLOCKED_ABNORMAL_BRAKING",
+   "acceptance_amendment": "docs/research/P7/P7_TASK2_1_FINAL_REPORT.md",
+   "id": "p7_task2_engineering",
+   "name": "P7 Task2 独立消息驱动SUMO工程验证",
+   "purpose": "登记三种合成工程条件和实际控制证据，不新增正式科研实验或正式阶段",
+   "research_question": "消息能否通过门控进入策略并形成可追溯实际控制链？仅工程机制验证",
+   "date": "2026-11-03",
+   "status": "engineering_integration_complete_with_limitations",
+   "code_version": "baseline 2a6c388ff69e61840fc32ed5d058b343b3fd1519 + recorded dirty worktree; captured v1 and current source hashes separated",
+   "code_paths": [
+    "code/src/riskprop/message_driven_longitudinal_controller.py",
+    "code/src/riskprop/p7_message_runtime.py",
+    "code/src/riskprop/p7_sumo_integration.py",
+    "code/src/riskprop/p7_evidence_adapter.py"
+   ],
+   "entrypoints": [
+    "code/scripts/run_p7_task2_engineering.py",
+    "code/scripts/finalize_p7_task2_engineering.py"
+   ],
+   "test_paths": [
+    "code/tests/test_p7_message_controller.py",
+    "code/tests/test_p7_sumo_evidence.py"
+   ],
+   "configuration": "captured v1: three deterministic synthetic engineering conditions; current v2 corrected candidate unit-only",
+   "parameters": {
+    "status": "ENGINEERING_CANDIDATE_NOT_FORMAL",
+    "seed": 20261103,
+    "unique_conditions": 3,
+    "runs_after_emergency_detection": 0
+   },
+   "data_version": "synthetic engineering network/routes only; no dataset or holdout",
+   "model": "SUMO 1.26.0 native Krauss + candidate message-driven target-speed-reference policy",
+   "model_checkpoint": "not_applicable",
+   "result_ids": ["RES-P7-TASK2-20261103", "RES-P7-TASK2.1-20261103"],
+   "core_metrics": [
+    "p3_association_status",
+    "adoption_input_inclusion",
+    "actual_post_step_readback",
+    "abnormal_braking",
+    "collision_count",
+    "teleport_count"
+   ],
+   "current_conclusion": "v2 accepted after one authorized run; v1 failure retained; actual action response engineering-only; risk Unknown",
+   "gate": {"status": "ENGINEERING_ACCEPTED_NOT_RESEARCH_GATE", "portable_path": "evidence/research/P7_TASK2_1_20261103/validation.json"},
+   "scientific_claim_eligible": false
+  },
   {
    "id": "stage_0_1",
    "name": "阶段 0.1 正式实验基础设施",
@@ -1765,6 +1828,77 @@
   }
  ],
  "results": [
+  {
+   "id": "RES-P7-TASK2.1-20261103",
+   "experiment_id": "p7_task2_engineering",
+   "name": "P7 Task2.1 single v2 engineering revalidation",
+   "status": "ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS",
+   "portable_evidence_paths": [
+    "evidence/research/P7_TASK2_1_20261103/README.md",
+    "evidence/research/P7_TASK2_1_20261103/validation.json",
+    "evidence/research/P7_TASK2_1_20261103/comparison.json",
+    "evidence/research/P7_TASK2_1_20261103/anomaly_checks.json",
+    "evidence/research/P7_TASK2_1_20261103/p3_p4_validation.json",
+    "evidence/research/P7_TASK2_1_20261103/SHA256SUMS"
+   ],
+   "local_artifact_paths": [
+    "code/outputs/engineering/p7_task2_20261103_v2_revalidation"
+   ],
+   "code_version_source": "evidence/research/P7_TASK2_1_20261103/source_manifest.json",
+   "configuration_source": "evidence/research/P7_TASK2_1_20261103/controller_config.json",
+   "data_version_source": "Synthetic engineering only; Task2 No Message/Disabled reused without rerun",
+   "core_metrics": {
+    "starts": 1,
+    "max_actual_deceleration_mps2": 0.9999999999999964,
+    "policy_input_included": 52,
+    "commands": 39,
+    "execution": 326,
+    "actual_action_response": true
+   },
+   "current_conclusion": "Engineering integration complete; no scientific qualification or causal/regional-risk claim",
+   "gate_status": "EXISTING_RESEARCH_GATES_UNCHANGED",
+   "paper_locations": [
+    "docs/research/P7/P7_TASK2_1_FINAL_REPORT.md"
+   ],
+   "paper_locations_semantics": "Legacy narrative field links engineering report only; no paper edited",
+   "scientific_claim_eligible": false
+  },
+  {
+   "id": "RES-P7-TASK2-20261103",
+   "experiment_id": "p7_task2_engineering",
+   "name": "P7 Task2 三条件工程捕获及异常阻塞证据",
+   "status": "ENGINEERING_IMPLEMENTED_SUMO_ACCEPTANCE_BLOCKED",
+   "portable_evidence_paths": [
+    "evidence/research/P7_TASK2_20261103/README.md",
+    "evidence/research/P7_TASK2_20261103/validation.json",
+    "evidence/research/P7_TASK2_20261103/source_manifest.json",
+    "evidence/research/P7_TASK2_20261103/association_validation.json",
+    "evidence/research/P7_TASK2_20261103/controller_evidence_manifest.json",
+    "evidence/research/P7_TASK2_20261103/trajectory_summary.json",
+    "evidence/research/P7_TASK2_20261103/test_results.json",
+    "evidence/research/P7_TASK2_20261103/SHA256SUMS"
+   ],
+   "local_artifact_paths": [
+    "code/outputs/engineering/p7_task2_20261103_v1"
+   ],
+   "code_version_source": "evidence/research/P7_TASK2_20261103/source_manifest.json",
+   "configuration_source": "evidence/research/P7_TASK2_20261103/controller_config.json",
+   "data_version_source": "synthetic engineering source/routes only; captured run configs and provenance in portable conditions",
+   "core_metrics": {
+    "no_message": "PASS",
+    "disabled": "PASS",
+    "enabled": "BLOCKED_ABNORMAL_BRAKING",
+    "new_sumo_runs": 3,
+    "corrected_v2_sumo_verified": false,
+    "offline_passed": 136,
+    "native_launch_deselected": 7
+   },
+   "current_conclusion": "Engineering evidence only; no formal source qualification, action causal effect or regional risk claim",
+   "gate_status": "ENGINEERING_ACCEPTANCE_BLOCKED; existing research Gate unchanged",
+   "paper_locations": ["docs/research/P7/P7_TASK2_FINAL_REPORT.md"],
+   "paper_locations_semantics": "Legacy registry narrative link only: engineering report, no formal paper location or paper edit",
+   "scientific_claim_eligible": false
+  },
   {
    "id": "RES-STAGE-0.2-TASK-2",
    "experiment_id": "stage_0_2",
@@ -6336,6 +6470,81 @@
   }
  ],
  "research_audits": {
+  "p7_task2_1": {
+   "task_id": "AAD-P7-TASK2.1-20261103",
+   "date": "2026-11-03",
+   "status": "ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS",
+   "report": "docs/research/P7/P7_TASK2_1_FINAL_REPORT.md",
+   "evidence": "evidence/research/P7_TASK2_1_20261103",
+   "output": "code/outputs/engineering/p7_task2_20261103_v2_revalidation",
+   "new_sumo_starts": 1,
+   "baseline_runs_reused": 2,
+   "extra_sumo_starts": 0,
+   "seed": 20261103,
+   "policy_version": "aad.p7.longitudinal.engineering.v1.1",
+   "offline_passed": 143,
+   "offline_deselected": 7,
+   "initial_setup_errors": 42,
+   "max_actual_deceleration_mps2": 0.9999999999999964,
+   "included_receipts": 52,
+   "command_count": 39,
+   "execution_count": 326,
+   "action_observations": 352,
+   "restoration_time_s": 8.0,
+   "actual_action_response": "OBSERVED_ENGINEERING_ONLY",
+   "p3_status": "VALID_WITH_UNKNOWNS",
+   "formal_A": 0,
+   "Qualified": 0,
+   "regional_risk_effect": "UNKNOWN",
+   "scientific_claim_eligible": false,
+   "formal_config_changed": false,
+   "formal_definitions_changed": false,
+   "existing_research_gates_unchanged": true,
+   "stage1_1_authorized": false
+  },
+  "p7_task2": {
+   "status_scope": "Original Task2/v1 status; current acceptance superseded by p7_task2_1",
+   "current_disposition_via_p7_task2_1": "ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS",
+   "task_id": "AAD-P7-TASK2-20261103",
+   "date": "2026-11-03",
+   "status": "ENGINEERING_IMPLEMENTED_SUMO_ACCEPTANCE_BLOCKED",
+   "report": "docs/research/P7/P7_TASK2_FINAL_REPORT.md",
+   "decisions": "docs/research/P7/P7_RESEARCHER_DECISIONS_20261103.md",
+   "specification": "docs/research/P7/P7_LONGITUDINAL_CONTROLLER_SPEC.md",
+   "integration": "docs/research/P7/P7_CONTROLLER_EVIDENCE_INTEGRATION.md",
+   "evidence": "evidence/research/P7_TASK2_20261103",
+   "local_output": "code/outputs/engineering/p7_task2_20261103_v1",
+   "schema_version": "aad.p3.controller-evidence.v1",
+   "adoption_boundary_version": "aad.p3.policy-input-adoption.agreed.v1",
+   "adoption_boundary_status": "AGREED",
+   "real_message_policy_implemented": true,
+   "synthetic_source_only": true,
+   "new_SUMO_runs": 3,
+   "seeds": [
+    20261103
+   ],
+   "corrected_v2_SUMO_verified": false,
+   "smoke_acceptance": {
+    "no_message": "PASS",
+    "disabled": "PASS",
+    "enabled": "BLOCKED_ABNORMAL_BRAKING"
+   },
+   "offline_tests_passed": 136,
+   "native_launch_tests_deselected": 7,
+   "new_SUMO_runs_after_anomaly_detection": 0,
+   "independent_V_runs": 0,
+   "pilot_runs": 0,
+   "locked_holdout_reads": 0,
+   "formal_A": 0,
+   "Qualified": 0,
+   "risk_effect": "Unknown",
+   "formal_definitions_changed": false,
+   "formal_config_changed": false,
+   "formal_stage_gate_unchanged": true,
+   "scientific_claim_eligible": false,
+   "commit": null,
+   "push": null
+  },
   "p0_task1": {
    "status": "completed_with_limitations",
    "report": "docs/research/P0/P0_TASK1_FINAL_REPORT.md"

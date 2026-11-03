@@ -1,4 +1,24 @@
-## Current — P3 Task2 remaining evidence gaps (2026-11-03)
+## Current — P7 Task2.1 (2026-11-03)
+
+ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS。v1异常在当前固定场景经一次v2复验消除，不外推其他场景。过期后存在交通状态记忆，末样本残余速度差0.002836795 m/s，不等于继续消费过期消息。SUMO_HOME/XML schema validation环境warning保留。
+
+唯一Enabled v2复验通过（1次、seed20261103），基准未重跑。最大实际减速度1.0 m/s²，无emergency/碰撞/teleport；52次实际采用、39命令、326执行、352动作。首次命令2.8 s、首个实际差异2.9 s；8.0 s过期恢复20 m/s且后续无消息输入。共同351点比较有效，最大速度差2.649473720 m/s、加速度差2.719870887 m/s²，仅ENGINEERING_DIAGNOSTIC_ONLY。
+
+Formal A/Qualified仍0，风险/F0/总体TR–TP Unknown；科研Gate/Lock和Stage1.1授权不变。统一定义仍[27项v0.4](../docs/research/definitions/README.md)。[复验报告](../docs/research/P7/P7_TASK2_1_FINAL_REPORT.md) · [证据](../evidence/research/P7_TASK2_1_20261103/README.md)。下方为历史状态。
+
+## Historical — P7 Task2 original acceptance (2026-11-03)
+
+状态：ENGINEERING_IMPLEMENTED_SUMO_ACCEPTANCE_BLOCKED。
+
+P7-T2-ENG-001：Enabled v1 setMaxSpeed突降触发2.80 s emergency braking（9.00 vs wished4.50 m/s²），原入口漏检并写PASS；日志/摘要不改，独立验收拒绝。修正版增加策略内参考下降率及异常getter/实际减速度/日志停止检查，仅离线验证，真实SUMO表现Unknown；不得据测试通过宣布烟测通过。captured v1仅保存9个入口/直接依赖文件，不冒称完整传递闭包。当前正式Region/Cohort/Window不足，风险效应Unknown；无独立安全producer属于D6决定，不伪造记录。
+
+Formal A=0；独立Qualified=0；F0/总体TR–TP=Unknown。Stage0.5=CLOSED_WITH_LIMITATIONS；Stage0.6=PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS；Protocol Lock=BLOCKED；Stage I=READY_ENGINEERING_ONLY；Stage1.1=NOT_AUTHORIZED。Formal算法/config、统一定义v0.4/27项和历史Task7/8/16/20证据不改。
+
+[P7 Task2报告](../docs/research/P7/P7_TASK2_FINAL_REPORT.md) · [Agreed D1–D8](../docs/research/P7/P7_RESEARCHER_DECISIONS_20261103.md) · [Adoption修订](../docs/research/P3/CONTROLLER_ADOPTION_RATIFICATION_20261103.md) · [便携证据](../evidence/research/P7_TASK2_20261103/README.md)。统一科研定义入口仍为[27项v0.4](../docs/research/definitions/README.md)。
+
+下方保留各任务发生时的历史事实；不以旧块覆盖本节当前状态。
+
+## Historical — P3 Task2 remaining evidence gaps (2026-11-03)
 
 已解决基础结构缺口：独立消费/决策/命令/安全/执行记录与多对多外键、时间及Unknown校验。尚未解决真实producer接线和日志真实性，payload/snapshot外部字节需P7 manifest绑定；候选回执不能替代正式采用、严格时间或因果认证。
 

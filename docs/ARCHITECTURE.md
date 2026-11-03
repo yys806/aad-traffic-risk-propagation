@@ -1,3 +1,15 @@
+## Current — P7 Task2.1工程验收 (2026-11-03)
+
+ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS。唯一Enabled v2复验通过（1次、seed20261103），基准未重跑。最大实际减速度1.0 m/s²，无emergency/碰撞/teleport；52次实际采用、39命令、326执行、352动作。首次命令2.8 s、首个实际差异2.9 s；8.0 s过期恢复20 m/s且后续无消息输入。共同351点比较有效，最大速度差2.649473720 m/s、加速度差2.719870887 m/s²，仅ENGINEERING_DIAGNOSTIC_ONLY。 v1失败不改，正式科研资格/阶段不升级。
+
+[复验报告](../docs/research/P7/P7_TASK2_1_FINAL_REPORT.md) · [证据](../evidence/research/P7_TASK2_1_20261103/README.md)。后续P5等不在本任务启动；下方保留历史状态。
+
+## Current — P7 Task2 (2026-11-03)
+
+真实消息驱动纵向策略现已接入独立P7入口、P3 sidecar与post-step动作观测。原生Krauss执行正常跟驰，消息策略计算目标速度参考，唯一目标setter为setMaxSpeed；无独立Safety Layer。Enabled/Disabled只在实际策略输入门口区分，新Adoption边界Agreed v1、旧Proposed保持。三条件捕获中Enabled v1出现异常制动，整体验收阻塞；修正版仅离线验证。
+
+[当前控制器规格](research/P7/P7_LONGITUDINAL_CONTROLLER_SPEC.md) · [真实证据生产者](research/P7/P7_CONTROLLER_EVIDENCE_INTEGRATION.md) · [验收限制](research/P7/P7_TASK2_FINAL_REPORT.md)。下方P3 Task2仅合成验证的描述是历史阶段事实。
+
 # AAD 架构
 
 ## 2026-11-03 P3独立控制器证据接口

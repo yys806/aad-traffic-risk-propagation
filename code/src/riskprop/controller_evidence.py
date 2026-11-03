@@ -1,7 +1,8 @@
 """Independent P3 event evidence; no SUMO, causal inference, or Formal migration.
 
 Producer attestations are audited, not authenticated. The policy-input adoption
-boundary stays PROPOSED. Historical adopted flags never create receipts.
+boundary is versioned: P7 ratification does not rewrite Proposed history.
+Historical adopted flags never create receipts.
 """
 from __future__ import annotations
 
@@ -14,8 +15,18 @@ from pathlib import Path
 from typing import Any, Mapping
 
 SCHEMA_VERSION = "aad.p3.controller-evidence.v1"
-ADOPTION_BOUNDARY_VERSION = "aad.p3.policy-input-adoption.proposed.v0.1"
-ADOPTION_BOUNDARY_STATUS = "PROPOSED"
+LEGACY_ADOPTION_BOUNDARY_VERSION = "aad.p3.policy-input-adoption.proposed.v0.1"
+LEGACY_ADOPTION_BOUNDARY_STATUS = "PROPOSED"
+ADOPTION_BOUNDARY_VERSION = "aad.p3.policy-input-adoption.agreed.v1"
+ADOPTION_BOUNDARY_STATUS = "AGREED"
+SUPPORTED_ADOPTION_BOUNDARIES = {
+    LEGACY_ADOPTION_BOUNDARY_VERSION: LEGACY_ADOPTION_BOUNDARY_STATUS,
+    ADOPTION_BOUNDARY_VERSION: ADOPTION_BOUNDARY_STATUS,
+}
+
+
+def _supported_boundary(version: Any, status: Any) -> bool:
+    return isinstance(version, str) and isinstance(status, str) and SUPPORTED_ADOPTION_BOUNDARIES.get(version) == status
 
 
 class EvidenceError(ValueError):
@@ -237,8 +248,17 @@ class EvidenceJournal:
     Forward decision references are allowed while recording. Exact replay is
     opt-in. Returned records are deep copies, not writable journal internals.
     """
-    def __init__(self) -> None:
+    def __init__(self, *, adoption_boundary_version: str | None = None,
+                 adoption_boundary_status: str | None = None) -> None:
+        self._boundary_explicit = adoption_boundary_version is not None or adoption_boundary_status is not None
+        if not self._boundary_explicit:
+            adoption_boundary_version, adoption_boundary_status = ADOPTION_BOUNDARY_VERSION, ADOPTION_BOUNDARY_STATUS
+        if not _supported_boundary(adoption_boundary_version, adoption_boundary_status):
+            _fail("SCHEMA_MISMATCH", "unsupported adoption boundary version/status pair")
+        self.adoption_boundary_version = adoption_boundary_version
+        self.adoption_boundary_status = adoption_boundary_status
         self._records: dict[str, dict[str, Any]] = {}
+        self._has_consumption = False
 
     def append(self, kind: str, context: EventContext, time: TimeEvidence,
                *, idempotent: bool = False, **data: Any) -> str:
@@ -249,12 +269,22 @@ class EvidenceJournal:
     def append_record(self, record: Mapping[str, Any], *, idempotent: bool = False) -> str:
         record = deepcopy(dict(record))
         _validate_record(record)
+        if record["kind"] == "consumption" and not self._boundary_explicit and not self._has_consumption:
+            version, status = record["data"]["adoption_boundary_version"], record["data"]["adoption_boundary_status"]
+            if not _supported_boundary(version, status):
+                _fail("SCHEMA_MISMATCH", "unsupported adoption boundary version/status pair")
+            self.adoption_boundary_version, self.adoption_boundary_status = version, status
+        if record["kind"] == "consumption" and (
+            record["data"]["adoption_boundary_version"], record["data"]["adoption_boundary_status"]
+        ) != (self.adoption_boundary_version, self.adoption_boundary_status):
+            _fail("SCHEMA_MISMATCH", "receipt boundary differs from journal; no silent promotion")
         rid = record["context"]["record_id"]
         if rid in self._records:
             if idempotent and self._records[rid] == record:
                 return rid
             _fail("DUPLICATE_ID", rid)
         self._records[rid] = record
+        self._has_consumption |= record["kind"] == "consumption"
         return rid
 
     @property
@@ -262,23 +292,26 @@ class EvidenceJournal:
         return deepcopy(list(self._records.values()))
 
     def validate(self) -> dict[str, Any]:
-        return validate_records(self.records)
+        result = validate_records(self.records)
+        result.update(adoption_boundary_version=self.adoption_boundary_version,
+                      adoption_boundary_status=self.adoption_boundary_status)
+        return result
 
     def to_dict(self) -> dict[str, Any]:
-        return {"schema_version": SCHEMA_VERSION, "adoption_boundary_version": ADOPTION_BOUNDARY_VERSION,
-                "adoption_boundary_status": ADOPTION_BOUNDARY_STATUS, "scientific_claim_eligible": False,
+        return {"schema_version": SCHEMA_VERSION, "adoption_boundary_version": self.adoption_boundary_version,
+                "adoption_boundary_status": self.adoption_boundary_status, "scientific_claim_eligible": False,
                 "records": self.records}
 
     @classmethod
     def from_dict(cls, payload: Mapping[str, Any]) -> EvidenceJournal:
         if (set(payload) != {"schema_version", "scientific_claim_eligible", "adoption_boundary_version", "adoption_boundary_status", "records"} or
             payload.get("schema_version") != SCHEMA_VERSION or payload.get("scientific_claim_eligible") is not False or
-            payload.get("adoption_boundary_version") != ADOPTION_BOUNDARY_VERSION or
-            payload.get("adoption_boundary_status") != ADOPTION_BOUNDARY_STATUS):
+            not _supported_boundary(payload.get("adoption_boundary_version"), payload.get("adoption_boundary_status"))):
             _fail("SCHEMA_MISMATCH", "bundle version/boundary/claim")
         if not isinstance(payload["records"], list):
             _fail("INVALID_FIELD", "records must be a list")
-        journal = cls()
+        journal = cls(adoption_boundary_version=payload["adoption_boundary_version"],
+                      adoption_boundary_status=payload["adoption_boundary_status"])
         for record in payload["records"]:
             journal.append_record(record)
         return journal
@@ -444,8 +477,8 @@ def validate_records(records: list[dict[str, Any]]) -> dict[str, Any]:
                 same_controller(receipt, r)
                 if receipt["context"]["message_id"] != c["message_id"]:
                     _fail("CONTEXT_MISMATCH", "consumed input message")
-                if (d["adoption_boundary_version"], d["adoption_boundary_status"]) != (ADOPTION_BOUNDARY_VERSION, ADOPTION_BOUNDARY_STATUS):
-                    _fail("SCHEMA_MISMATCH", "adoption boundary is PROPOSED only")
+                if not _supported_boundary(d["adoption_boundary_version"], d["adoption_boundary_status"]):
+                    _fail("SCHEMA_MISMATCH", "unsupported adoption boundary version/status pair")
                 included = d["consumption_status"] == "POLICY_INPUT_INCLUDED"
                 if included and receipt["data"]["input_status"] != "AVAILABLE":
                     _fail("INVALID_STATE_TRANSITION", "policy input not available")
@@ -619,11 +652,15 @@ def validate_records(records: list[dict[str, Any]]) -> dict[str, Any]:
             visited.add(rid)
     for rid in adjacency:
         walk(rid)
+    boundaries = {(r["data"]["adoption_boundary_version"], r["data"]["adoption_boundary_status"])
+                  for r in records if r["kind"] == "consumption"}
+    version, status = next(iter(boundaries)) if len(boundaries) == 1 else (
+        ("MIXED", "MIXED") if boundaries else (ADOPTION_BOUNDARY_VERSION, ADOPTION_BOUNDARY_STATUS))
     return {"schema_version": SCHEMA_VERSION, "structural_status": "VALID_WITH_UNKNOWNS" if issues else "VALID",
             "record_count": len(records), "counts_by_kind": {k: len(v) for k, v in indices.items()},
             "fixture_only": all(r["context"]["fixture_only"] for r in records) if records else None,
-            "candidate_policy_input_receipts": candidates, "adoption_boundary_status": ADOPTION_BOUNDARY_STATUS,
+            "candidate_policy_input_receipts": candidates, "adoption_boundary_status": status,
             "recorded_policy_input_receipts": included_receipts,
-            "adoption_boundary_version": ADOPTION_BOUNDARY_VERSION, "scientific_claim_eligible": False,
+            "adoption_boundary_version": version, "scientific_claim_eligible": False,
             "issues": issues, "edges": edges, "timeline": deepcopy(records),
             "causal_effect_status": "NOT_EVALUATED", "physical_arrival_status": "UNKNOWN"}

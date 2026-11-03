@@ -1,3 +1,23 @@
+## Current — P7 Task2.1 (2026-11-03)
+
+ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS。实际收发/验证→52次Agreed消费→具体决策→39次setMaxSpeed→326个post-step执行→连续动作/Unknown风险引用。8.0 s起274个空消息策略输入。
+
+唯一Enabled v2复验通过（1次、seed20261103），基准未重跑。最大实际减速度1.0 m/s²，无emergency/碰撞/teleport；52次实际采用、39命令、326执行、352动作。首次命令2.8 s、首个实际差异2.9 s；8.0 s过期恢复20 m/s且后续无消息输入。共同351点比较有效，最大速度差2.649473720 m/s、加速度差2.719870887 m/s²，仅ENGINEERING_DIAGNOSTIC_ONLY。
+
+Formal A/Qualified仍0，风险/F0/总体TR–TP Unknown；科研Gate/Lock和Stage1.1授权不变。统一定义仍[27项v0.4](../docs/research/definitions/README.md)。[复验报告](../docs/research/P7/P7_TASK2_1_FINAL_REPORT.md) · [证据](../evidence/research/P7_TASK2_1_20261103/README.md)。下方为历史状态。
+
+## Historical — P7 Task2 original acceptance (2026-11-03)
+
+状态：ENGINEERING_IMPLEMENTED_SUMO_ACCEPTANCE_BLOCKED。
+
+合成Source→原始Payload字节/hash→实际单跳Send/Delivery→逐周期Validation→Input→门控/Consumption→实际Decision→setMaxSpeed Command→post-step Execution→连续Action→既有测量状态Risk reference。显式run/incarnation/phase和ID，允许一消息多决策/多消息一决策/无新命令/命令跨步。Disabled保留收发验证，策略messages=[]，REJECTED/ADOPTION_DISABLED关联真实decision。风险正式范围不足保持Unknown。
+
+Formal A=0；独立Qualified=0；F0/总体TR–TP=Unknown。Stage0.5=CLOSED_WITH_LIMITATIONS；Stage0.6=PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS；Protocol Lock=BLOCKED；Stage I=READY_ENGINEERING_ONLY；Stage1.1=NOT_AUTHORIZED。Formal算法/config、统一定义v0.4/27项和历史Task7/8/16/20证据不改。
+
+[P7 Task2报告](../docs/research/P7/P7_TASK2_FINAL_REPORT.md) · [Agreed D1–D8](../docs/research/P7/P7_RESEARCHER_DECISIONS_20261103.md) · [Adoption修订](../docs/research/P3/CONTROLLER_ADOPTION_RATIFICATION_20261103.md) · [便携证据](../evidence/research/P7_TASK2_20261103/README.md)。统一科研定义入口仍为[27项v0.4](../docs/research/definitions/README.md)。
+
+下方保留各任务发生时的历史事实；不以旧块覆盖本节当前状态。
+
 ## P3 Task2 — explicit event references (2026-11-03)
 
 Source→Message→Send/Delivery/Validation→Input→Consumption→Decision→Command→Safety/Execution→Action Observation→Risk Observation，采用显式ID与run/车辆incarnation关联。支持多消息/多决策/多命令/多执行区间。timeline无字段截断，不按最近时间补链；同step调用顺序与严格区间先后分开。当前仅合成输入，真实运行路径未接入。

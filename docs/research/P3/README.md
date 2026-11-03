@@ -1,3 +1,7 @@
+## 当前修订 — P7 Task2 Adoption ratification (2026-11-03)
+
+研究者已接受实际策略输入采用边界，见[Agreed amendment](CONTROLLER_ADOPTION_RATIFICATION_20261103.md)。新P7记录使用agreed.v1/AGREED，旧Task1/2 Proposed材料与sidecar原样保留。schema v1兼容双版本；不修改统一科研定义。实际接线见[P7 Task2报告](../P7/P7_TASK2_FINAL_REPORT.md)，Enabled烟测异常制动，整体验收阻塞。下方“当前”属于原任务历史描述。
+
 # P3 — 信息传播与控制器采用
 
 Task：AAD-P3-TASK1-20261102。执行跨日至2026-11-03（Asia/Shanghai）。

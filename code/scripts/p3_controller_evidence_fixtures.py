@@ -4,7 +4,8 @@ from __future__ import annotations
 from copy import deepcopy
 from dataclasses import asdict
 from riskprop.controller_evidence import (
-    ADOPTION_BOUNDARY_STATUS, ADOPTION_BOUNDARY_VERSION, EvidenceJournal,
+    LEGACY_ADOPTION_BOUNDARY_STATUS as ADOPTION_BOUNDARY_STATUS,
+    LEGACY_ADOPTION_BOUNDARY_VERSION as ADOPTION_BOUNDARY_VERSION, EvidenceJournal,
     EventContext, SPECS, TimeEvidence, canonical_hash,
 )
 
@@ -17,7 +18,8 @@ def stamp(t: float, *, phase: str = "fixture", sequence: int = 0) -> dict:
 
 
 def complete_fixture() -> EvidenceJournal:
-    journal = EvidenceJournal()
+    journal = EvidenceJournal(adoption_boundary_version=ADOPTION_BOUNDARY_VERSION,
+                              adoption_boundary_status=ADOPTION_BOUNDARY_STATUS)
     payload, snapshot = canonical_hash({"synthetic_risk": "example"}), canonical_hash({"input": "synthetic"})
 
     def add(kind: str, rid: str, t: float, data: dict, *, vehicle="target", message=None, source=None):
@@ -73,7 +75,8 @@ def by_kind(records: list[dict], kind: str) -> dict:
 
 
 def journal_from_records(records: list[dict]) -> EvidenceJournal:
-    journal = EvidenceJournal()
+    journal = EvidenceJournal(adoption_boundary_version=ADOPTION_BOUNDARY_VERSION,
+                              adoption_boundary_status=ADOPTION_BOUNDARY_STATUS)
     for r in records:
         journal.append_record(r)
     return journal

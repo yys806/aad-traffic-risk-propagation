@@ -1,3 +1,17 @@
+## Current — P7 Task2.1工程验收 (2026-11-03)
+
+ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS。唯一Enabled v2复验通过（1次、seed20261103），基准未重跑。最大实际减速度1.0 m/s²，无emergency/碰撞/teleport；52次实际采用、39命令、326执行、352动作。首次命令2.8 s、首个实际差异2.9 s；8.0 s过期恢复20 m/s且后续无消息输入。共同351点比较有效，最大速度差2.649473720 m/s、加速度差2.719870887 m/s²，仅ENGINEERING_DIAGNOSTIC_ONLY。 v1失败不改，正式科研资格/阶段不升级。
+
+[复验报告](../docs/research/P7/P7_TASK2_1_FINAL_REPORT.md) · [证据](../evidence/research/P7_TASK2_1_20261103/README.md)。后续P5等不在本任务启动；下方保留历史状态。
+
+## Current — P7 Task2消息驱动控制器 (2026-11-03)
+
+独立真实消息驱动策略、固定Enabled/Disabled、P3真实边界与P4实际动作/风险状态引用已实现；D1–D8及Agreed Adoption已同步。三条件各一次，A/B工程检查通过、C v1异常制动，原PASS保留但派生验收拒绝；v2修正仅离线测试。136 passed/7 deselected；无额外SUMO/Pilot/V/holdout。整体状态：ENGINEERING_IMPLEMENTED_SUMO_ACCEPTANCE_BLOCKED。
+
+Formal A=0；独立Qualified=0；F0/总体TR–TP=Unknown。Stage0.5=CLOSED_WITH_LIMITATIONS；Stage0.6=PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS；Protocol Lock=BLOCKED；Stage I=READY_ENGINEERING_ONLY；Stage1.1=NOT_AUTHORIZED。Formal算法/config、统一定义v0.4/27项和历史Task7/8/16/20证据不改。
+
+[最终报告](research/P7/P7_TASK2_FINAL_REPORT.md) · [研究者决策](research/P7/P7_RESEARCHER_DECISIONS_20261103.md) · [控制器规格](research/P7/P7_LONGITUDINAL_CONTROLLER_SPEC.md) · [证据接线](research/P7/P7_CONTROLLER_EVIDENCE_INTEGRATION.md) · [便携证据](../evidence/research/P7_TASK2_20261103/README.md)。下方旧任务条目保留历史状态。
+
 ## P7 Task1 — 真实 SUMO 控制路径审计与端到端集成方案 (2026-11-03)
 
 只读审计已完成。当前源码存在 Stage 0.1 固定时程 `setAcceleration`、Stage 0.5 lane supply、Leader/Follower 轨迹回放、SUMO 原生 Follower 和 post-step 状态读回，但未识别到真实消息驱动目标车辆策略，结论为 `NO_EXISTING_MESSAGE_DRIVEN_TARGET_POLICY_IDENTIFIED`。Stage 0.1 `adopted_time` 来自 `next_time >= 2.2` 时程赋值，不是控制器消费凭证；Task20 是 `fixture_only` 工程 Fixture。

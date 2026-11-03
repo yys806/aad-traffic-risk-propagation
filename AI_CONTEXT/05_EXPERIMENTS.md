@@ -1,4 +1,24 @@
-## Current — P3 Task2 synthetic engineering fixture only (2026-11-03)
+## Current — P7 Task2.1 (2026-11-03)
+
+ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS。独立输出code/outputs/engineering/p7_task2_20261103_v2_revalidation；run_id=p7-task2.1-enabled-v2-20261103；assignment=AAD-P7-TASK2.1-ENABLED-V2-20261103。复核A/B全部702空输入snapshot后复用旧输出。
+
+唯一Enabled v2复验通过（1次、seed20261103），基准未重跑。最大实际减速度1.0 m/s²，无emergency/碰撞/teleport；52次实际采用、39命令、326执行、352动作。首次命令2.8 s、首个实际差异2.9 s；8.0 s过期恢复20 m/s且后续无消息输入。共同351点比较有效，最大速度差2.649473720 m/s、加速度差2.719870887 m/s²，仅ENGINEERING_DIAGNOSTIC_ONLY。
+
+Formal A/Qualified仍0，风险/F0/总体TR–TP Unknown；科研Gate/Lock和Stage1.1授权不变。统一定义仍[27项v0.4](../docs/research/definitions/README.md)。[复验报告](../docs/research/P7/P7_TASK2_1_FINAL_REPORT.md) · [证据](../evidence/research/P7_TASK2_1_20261103/README.md)。下方为历史状态。
+
+## Historical — P7 Task2 original acceptance (2026-11-03)
+
+状态：ENGINEERING_IMPLEMENTED_SUMO_ACCEPTANCE_BLOCKED。
+
+仅三种确定性工程条件各一次，SUMO1.26.0/seed20261103，原始输出code/outputs/engineering/p7_task2_20261103_v1。A No Message、B Disabled轨迹/策略一致；C Enabled有52次输入采用、351决策、2命令、326执行、352动作观测。三者碰撞/teleport=0，Safety记录=0。C在2.80 s报告9.00 m/s² emergency braking；原运行结束后才发现原摘要误报PASS，派生验收BLOCKED_ABNORMAL_BRAKING；发现后SUMO=0。v2未重跑，无Pilot/V/holdout/参数搜索。
+
+Formal A=0；独立Qualified=0；F0/总体TR–TP=Unknown。Stage0.5=CLOSED_WITH_LIMITATIONS；Stage0.6=PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS；Protocol Lock=BLOCKED；Stage I=READY_ENGINEERING_ONLY；Stage1.1=NOT_AUTHORIZED。Formal算法/config、统一定义v0.4/27项和历史Task7/8/16/20证据不改。
+
+[P7 Task2报告](../docs/research/P7/P7_TASK2_FINAL_REPORT.md) · [Agreed D1–D8](../docs/research/P7/P7_RESEARCHER_DECISIONS_20261103.md) · [Adoption修订](../docs/research/P3/CONTROLLER_ADOPTION_RATIFICATION_20261103.md) · [便携证据](../evidence/research/P7_TASK2_20261103/README.md)。统一科研定义入口仍为[27项v0.4](../docs/research/definitions/README.md)。
+
+下方保留各任务发生时的历史事实；不以旧块覆盖本节当前状态。
+
+## Historical — P3 Task2 synthetic engineering fixture only (2026-11-03)
 
 本次不是交通实验、校准补充或Independent V。A/B/C/D/E/G/H七个有效合成场景与F七异常全通过；fixture_only=true、scientific_claim_eligible=false。输出code/outputs/analysis/p3_task2_20261103_v1/，保留开发/首次失败，封装使用synthetic_sealed。
 

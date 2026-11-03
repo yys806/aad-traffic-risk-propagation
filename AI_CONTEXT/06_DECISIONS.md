@@ -1,4 +1,24 @@
-## Current — P3 Task2 authorized interface implementation (2026-11-03)
+## Current — P7 Task2.1 (2026-11-03)
+
+ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS。Agreed D1–D8和Adoption边界不变。研究者明确授权的唯一一次Enabled v2额度已消耗，不换seed/参数、不再启动SUMO；参数仍ENGINEERING_CANDIDATE_NOT_FORMAL。
+
+唯一Enabled v2复验通过（1次、seed20261103），基准未重跑。最大实际减速度1.0 m/s²，无emergency/碰撞/teleport；52次实际采用、39命令、326执行、352动作。首次命令2.8 s、首个实际差异2.9 s；8.0 s过期恢复20 m/s且后续无消息输入。共同351点比较有效，最大速度差2.649473720 m/s、加速度差2.719870887 m/s²，仅ENGINEERING_DIAGNOSTIC_ONLY。
+
+Formal A/Qualified仍0，风险/F0/总体TR–TP Unknown；科研Gate/Lock和Stage1.1授权不变。统一定义仍[27项v0.4](../docs/research/definitions/README.md)。[复验报告](../docs/research/P7/P7_TASK2_1_FINAL_REPORT.md) · [证据](../evidence/research/P7_TASK2_1_20261103/README.md)。下方为历史状态。
+
+## Historical — P7 Task2 original acceptance (2026-11-03)
+
+状态：ENGINEERING_IMPLEMENTED_SUMO_ACCEPTANCE_BLOCKED。
+
+Agreed D1原生Krauss+消息纵向策略；D2消息提供风险、策略自主计算速度参考；D3有效消息实际进入具体决策输入即Adoption；D4两组接收验证、仅Enabled可使用；D5运行/交互组模式稳定，本次显式运行级assignment；D6不增加独立Safety Layer；D7连续实际v/a为主要动作观测；D8沿用Formal rho/P2。Adoption amendment ratifies agreed.v1/AGREED；原proposed.v0.1/PROPOSED保留可读。TTL/风险映射数值/参考下降率仅ENGINEERING_CANDIDATE_NOT_FORMAL，不冻结P5资格/概率或P4阈值。
+
+Formal A=0；独立Qualified=0；F0/总体TR–TP=Unknown。Stage0.5=CLOSED_WITH_LIMITATIONS；Stage0.6=PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS；Protocol Lock=BLOCKED；Stage I=READY_ENGINEERING_ONLY；Stage1.1=NOT_AUTHORIZED。Formal算法/config、统一定义v0.4/27项和历史Task7/8/16/20证据不改。
+
+[P7 Task2报告](../docs/research/P7/P7_TASK2_FINAL_REPORT.md) · [Agreed D1–D8](../docs/research/P7/P7_RESEARCHER_DECISIONS_20261103.md) · [Adoption修订](../docs/research/P3/CONTROLLER_ADOPTION_RATIFICATION_20261103.md) · [便携证据](../evidence/research/P7_TASK2_20261103/README.md)。统一科研定义入口仍为[27项v0.4](../docs/research/definitions/README.md)。
+
+下方保留各任务发生时的历史事实；不以旧块覆盖本节当前状态。
+
+## Historical — P3 Task2 authorized interface implementation (2026-11-03)
 
 Agreed execution scope：独立接口、关联校验、合成fixture/测试/文档与证据；未授权真实SUMO接线/运行。Implemented候选策略输入边界aad.p3.policy-input-adoption.proposed.v0.1保持PROPOSED，不升级统一科研定义。
 
