@@ -1,0 +1,44 @@
+{
+  "support_id": "support",
+  "run_id": "run",
+  "assignment_id": "assignment",
+  "event_id": "event",
+  "outcome_id": "support:Y",
+  "population_scope": "COMPLETE_ELIGIBLE_POPULATION",
+  "unit_id": "randomization-unit",
+  "region_id": "region",
+  "region_version": "synthetic-only.v1",
+  "window_version": "synthetic-only.v1",
+  "window_start_s": 0.0,
+  "window_end_s": 3.0,
+  "expected_N": 3,
+  "received_N": 3,
+  "unique_N": 3,
+  "roster_sha256": "0509fac5a1d90876fbb81038dca655f59da9d0bcb8b3d68b953d5841f84fb49c",
+  "vehicle_window_refs": [
+    "support:window:m1",
+    "support:window:m2",
+    "support:window:m3"
+  ],
+  "lower_outcome": 0.4166666666666667,
+  "upper_outcome": 0.4166666666666667,
+  "outcome_unit": "1",
+  "aggregation_version": "aad.p4.fixed-eligible-equal-vehicle-mean.v1",
+  "usage": "SYNTHETIC_VALIDATION_ONLY",
+  "provenance_id": "synthetic",
+  "scientific_claim_eligible": false,
+  "risk_causal_effect": "Unknown",
+  "formal_parameters_fully_frozen": false,
+  "outcome_status": "POINT_IDENTIFIED",
+  "missing_summary": {
+    "COMPLETE": 3
+  },
+  "schema_version": "aad.p4.measurement.v1",
+  "entity": "regional_outcome",
+  "derivation_version": "aad.p4.measurement-implementation.v1",
+  "record_sha256": "afe2df905cfbd812119ff6806e114d9a7510ae213af2a3c676f0b5b31747822c",
+  "source_hashes": [
+    "32714164ae494f61b585424c2f44c14d847c5f4c1d602d12c97f33689a289d40"
+  ],
+  "independent_unit": "ASSIGNMENT_NOT_VEHICLE_OR_SAMPLE"
+}

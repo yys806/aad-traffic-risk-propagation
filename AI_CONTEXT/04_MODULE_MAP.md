@@ -1,3 +1,11 @@
+## Current — P4 Task2 implementation (2026-11-04)
+
+code/src/riskprop/p4_*.py为独立最小测量实现；code/scripts/validate_p4_measurement.py为JSON入口，p4_validation_cases.py只合成，verify_p4_mathematical_examples.py为独立Fraction复算；test_p4_measurement.py有88项专项。macro工程表尚未实现。
+
+P7验收保持ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS；Formal A/Qualified仍0，F0/总体T_R–T_P Unknown；Gate/Protocol Lock不变，Stage1.1 NOT_AUTHORIZED。无新增SUMO/seed/Pilot/V/holdout读取。
+
+[报告](../docs/research/P4/P4_TASK2_FINAL_REPORT.md) · [当前P4入口](../docs/research/P4/README_v1.md) · [Agreed决定](../docs/research/P4/P4_RESEARCHER_DECISIONS_20261104.md) · [证据](../evidence/research/P4_TASK2_20261104/README.md)；统一定义仍[v0.4/27项](../docs/research/definitions/README.md)。下方保留历史任务时点状态。
+
 ## Current — P4 Task1 measurement audit (2026-11-03)
 
 新增docs/research/P4/规范/审计/数据契约/待决/CSV与JSON；新增evidence/research/P4_TASK1_20261103/verify_evidence.py为独立离线核验。实际审计Formal、stage_0_5_sumo、stage_i_mechanism、prelock_metrics、P7/P3及NGSIM/pNEUMA模块，生产源代码/config均不改。

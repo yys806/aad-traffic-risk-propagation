@@ -1,3 +1,11 @@
+## Current — P4 Task2最小实现 (2026-11-04)
+
+IMPLEMENTATION_COMPLETE_WITH_LIMITATIONS。D01–D08全Agreed；固定处理前完整资格名单、固定N等权Y上下界及严格Action/独立P4v1/P3外桥已实现。172项离线测试（88新+84历史）和15项独立数学检查通过；不发布缺乏完整真实scope的区域Y。
+
+P7验收保持ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS；Formal A/Qualified仍0，F0/总体T_R–T_P Unknown；Gate/Protocol Lock不变，Stage1.1 NOT_AUTHORIZED。无新增SUMO/seed/Pilot/V/holdout读取。统一定义仍v0.4/27项；正式region/window/Action数值未冻结。
+
+[报告](research/P4/P4_TASK2_FINAL_REPORT.md) · [规范/契约入口](research/P4/README_v1.md) · [决定](research/P4/P4_RESEARCHER_DECISIONS_20261104.md) · [便携证据](../evidence/research/P4_TASK2_20261104/README.md)。下方保留各历史时点记录，不据旧待决状态覆盖本次Agreed。
+
 ## Current — P4 Task1测量审计 (2026-11-03)
 
 AUDIT_AND_OPERATIONALIZATION_COMPLETE_WITH_LIMITATIONS。完成Action→Formal风险贡献→固定区域/窗口/名单的操作化；12表247字段契约仍Proposal。已复现动作持续性/名单守卫/辅助暴露输入限制，未改科学核心。84项定向测试及27项离线例子通过，新增交通运行0；不是新增正式实验结果。

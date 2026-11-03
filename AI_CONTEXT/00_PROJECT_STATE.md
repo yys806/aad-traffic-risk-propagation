@@ -1,3 +1,11 @@
+## Current — P4 Task2 implementation (2026-11-04)
+
+P4状态IMPLEMENTATION_COMPLETE_WITH_LIMITATIONS。独立v1实现严格动作Δv主/Δa辅、处理前完整资格名单、Formal贡献/同窗积分/固定N等权Y与P3外部桥。172项离线测试及15项独立数学检查通过；真实完整区域Y尚无合格输入。
+
+P7验收保持ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS；Formal A/Qualified仍0，F0/总体T_R–T_P Unknown；Gate/Protocol Lock不变，Stage1.1 NOT_AUTHORIZED。无新增SUMO/seed/Pilot/V/holdout读取。
+
+[报告](../docs/research/P4/P4_TASK2_FINAL_REPORT.md) · [当前P4入口](../docs/research/P4/README_v1.md) · [Agreed决定](../docs/research/P4/P4_RESEARCHER_DECISIONS_20261104.md) · [证据](../evidence/research/P4_TASK2_20261104/README.md)；统一定义仍[v0.4/27项](../docs/research/definitions/README.md)。下方保留历史任务时点状态。
+
 ## Current — P4 Task1 measurement audit (2026-11-03)
 
 P4只读审计与操作化已完成，状态AUDIT_AND_OPERATIONALIZATION_COMPLETE_WITH_LIMITATIONS。Action/单车Formal贡献/固定域与名单聚合/外部数据桥接方案已形成；最终Y聚合、Action规则及具体scope仍Proposal/Awaiting，未部署完整区域风险管线。

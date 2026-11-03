@@ -1,3 +1,11 @@
+## Current — P4 Task2 implementation (2026-11-04)
+
+本任务新增交通实验0，只用SYNTHETIC_VALIDATION_ONLY和历史P7。最终172=88新P4+84历史离线回归全部通过；15项独立数学断言，部分缺失三车Y=[7/36,3/4]，完整例5/12。首次两轮各1项开发失败留档后修正。P7现有target352行无完整资格总体/正式region-window，不能作完整Y样本。
+
+P7验收保持ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS；Formal A/Qualified仍0，F0/总体T_R–T_P Unknown；Gate/Protocol Lock不变，Stage1.1 NOT_AUTHORIZED。无新增SUMO/seed/Pilot/V/holdout读取。
+
+[报告](../docs/research/P4/P4_TASK2_FINAL_REPORT.md) · [当前P4入口](../docs/research/P4/README_v1.md) · [Agreed决定](../docs/research/P4/P4_RESEARCHER_DECISIONS_20261104.md) · [证据](../evidence/research/P4_TASK2_20261104/README.md)；统一定义仍[v0.4/27项](../docs/research/definitions/README.md)。下方保留历史任务时点状态。
+
 ## Current — P4 Task1 measurement audit (2026-11-03)
 
 本次是文档/源码审计，不是新交通实验：SUMO/TraCI/seed/Pilot/V/holdout读取均0。只读复用P7既有capture；84项定向测试通过，27个离线语义例子通过。进程守卫无启动尝试；不把历史P7测试/校准计为新独立证据。

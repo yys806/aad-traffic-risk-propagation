@@ -1,0 +1,290 @@
+entity,field,type,unit,nullable,status,meaning,source,constraint
+support_manifest,assignment_id,string,-,no,IMPLEMENTED,处理分配身份，不能按采用结果筛选,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+support_manifest,assignment_time_lower_s,number,s,no,IMPLEMENTED,分配发生时间下界,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+support_manifest,cadence,object,-,no,IMPLEMENTED,有来源的原生采样间隔/帧步,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+support_manifest,coordinate_system,string,-,no,IMPLEMENTED,空间成员资格证据的坐标基准,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+support_manifest,derivation_version,string,-,no,IMPLEMENTED,派生计算版本,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+support_manifest,entity,string,-,no,IMPLEMENTED,逻辑实体类型,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+support_manifest,event_id,string,-,conditional,IMPLEMENTED,预定研究事件，可空,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+support_manifest,provenance_id,string,-,no,IMPLEMENTED,明确来源外键,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+support_manifest,record_sha256,string,-,no,IMPLEMENTED,本条canonical JSON SHA256,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+support_manifest,reference_clock_id,string,-,no,IMPLEMENTED,统一参考时间基准,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+support_manifest,region_id,string,-,no,IMPLEMENTED,预先确定的区域标识,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+support_manifest,region_version,string,-,no,IMPLEMENTED,区域边界版本,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+support_manifest,run_id,string,-,no,IMPLEMENTED,独立运行身份,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+support_manifest,schema_version,string,-,no,IMPLEMENTED,独立P4 v1工程schema,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+support_manifest,scope_frozen_time_upper_s,number,s,no,IMPLEMENTED,域窗冻结时间上界，须先于分配下界,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+support_manifest,scope_provenance_id,string,-,no,IMPLEMENTED,处理前域窗来源证据,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+support_manifest,source_quality,object,-,no,IMPLEMENTED,数据源类型/QC版本/原生无leader证据能力,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+support_manifest,support_id,string,-,no,IMPLEMENTED,固定域窗与总体测量支持身份,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+support_manifest,unit_id,string,-,no,IMPLEMENTED,独立随机化单位，非车辆/采样点,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+support_manifest,usage,string,-,no,IMPLEMENTED,使用边界，合成例必须SYNTHETIC_VALIDATION_ONLY,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+support_manifest,window_end_s,number,s,no,IMPLEMENTED,固定半开观察窗终点,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+support_manifest,window_start_s,number,s,no,IMPLEMENTED,固定半开观察窗起点,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+support_manifest,window_version,string,-,no,IMPLEMENTED,固定观察窗版本,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+support_manifest,cadence.step_s,number,s,conditional,IMPLEMENTED,显式源采样间隔，不能使用默认Formal步长,upstream declared provenance,explicit; no inference
+support_manifest,cadence.frame_delta,integer,frame,conditional,IMPLEMENTED,原生采样帧步,upstream declared provenance,explicit; no inference
+support_manifest,cadence.provenance_id,string,-,conditional,IMPLEMENTED,采样配置来源,upstream declared provenance,explicit; no inference
+support_manifest,source_quality.source_type,string,-,conditional,IMPLEMENTED,源能力类型,upstream declared provenance,explicit; no inference
+support_manifest,source_quality.qc_version,string,-,conditional,IMPLEMENTED,源质量规则版本,upstream declared provenance,explicit; no inference
+support_manifest,source_quality.provenance_id,string,-,conditional,IMPLEMENTED,QC规则来源,upstream declared provenance,explicit; no inference
+support_manifest,source_quality.native_no_leader_proof,boolean,-,conditional,IMPLEMENTED,是否具备原生无leader证明能力,upstream declared provenance,explicit; no inference
+provenance,derivation_version,string,-,no,IMPLEMENTED,派生计算版本,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+provenance,entity,string,-,no,IMPLEMENTED,逻辑实体类型,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+provenance,provenance_id,string,-,no,IMPLEMENTED,明确来源外键,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+provenance,record_sha256,string,-,no,IMPLEMENTED,本条canonical JSON SHA256,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+provenance,schema_version,string,-,no,IMPLEMENTED,独立P4 v1工程schema,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+provenance,source_derivation_version,string,-,no,IMPLEMENTED,source derivation version；精确定义及约束见v1契约/输出示例,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+provenance,source_ref,string,-,no,IMPLEMENTED,可核验原始文件/声明来源相对路径,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+provenance,source_sha256,string,-,no,IMPLEMENTED,原始来源文件字节SHA256,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+cohort_member,assignment_id,string,-,no,IMPLEMENTED,处理分配身份，不能按采用结果筛选,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+cohort_member,bindings,array,-,no,IMPLEMENTED,预定角色→实际vehicle/incarnation显式关联,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+cohort_member,derivation_version,string,-,no,IMPLEMENTED,派生计算版本,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+cohort_member,entity,string,-,no,IMPLEMENTED,逻辑实体类型,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+cohort_member,event_id,string,-,conditional,IMPLEMENTED,预定研究事件，可空,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+cohort_member,member_id,string,-,no,IMPLEMENTED,处理前资格成员身份,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+cohort_member,qualification_provenance_id,string,-,no,IMPLEMENTED,处理前成员资格证据,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+cohort_member,record_sha256,string,-,no,IMPLEMENTED,本条canonical JSON SHA256,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+cohort_member,role_id,string,-,no,IMPLEMENTED,跨run预定需求角色,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+cohort_member,run_id,string,-,no,IMPLEMENTED,独立运行身份,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+cohort_member,schema_version,string,-,no,IMPLEMENTED,独立P4 v1工程schema,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+cohort_member,support_id,string,-,no,IMPLEMENTED,固定域窗与总体测量支持身份,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+cohort_member,bindings[].vehicle_id,string,-,conditional,IMPLEMENTED,绑定实际车辆,upstream declared provenance,explicit; no inference
+cohort_member,bindings[].incarnation_id,string,-,conditional,IMPLEMENTED,绑定实例,upstream declared provenance,explicit; no inference
+cohort_member,bindings[].provenance_id,string,-,conditional,IMPLEMENTED,预定绑定证明,upstream declared provenance,explicit; no inference
+state_observation,acceleration_mps2,number,m/s^2,conditional,IMPLEMENTED,车辆实际纵向加速度，非命令值,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,assignment_id,string,-,no,IMPLEMENTED,处理分配身份，不能按采用结果筛选,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,clock_id,string,-,no,IMPLEMENTED,该原始状态的时间基准,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,coordinate_system,string,-,no,IMPLEMENTED,空间成员资格证据的坐标基准,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,derivation_version,string,-,no,IMPLEMENTED,派生计算版本,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,diagnostic_clock_anchor_ms,integer,ms,no,IMPLEMENTED,真实时钟锚点，不能自动合成,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,drac_mps2,number,m/s^2,conditional,IMPLEMENTED,辅助所需减速度，不能替代Formal rho,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,entity,string,-,no,IMPLEMENTED,逻辑实体类型,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,event_id,string,-,conditional,IMPLEMENTED,预定研究事件，可空,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,frame_id,integer,-,no,IMPLEMENTED,原生帧/步身份,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,global_time_ms,integer,ms,no,IMPLEMENTED,原生时间毫秒读数,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,identity_break,boolean,-,no,IMPLEMENTED,源声明身份断链,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,identity_reliable,boolean,-,no,IMPLEMENTED,车辆实例身份可靠性,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,incarnation_id,string,-,no,IMPLEMENTED,该车辆出生/驻留实例,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,kinematics_reliable,boolean,-,no,IMPLEMENTED,实际运动学质量可靠性，不等于风险可靠性,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,lane_id,string,-,no,IMPLEMENTED,原生/核验车道身份,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,lane_position_m,number,m,no,IMPLEMENTED,原生车道坐标位置,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,leader_identity_reliable,boolean,-,no,IMPLEMENTED,前车实例身份可靠性,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,leader_incarnation_id,string,-,no,IMPLEMENTED,leader实例，用于切换分段,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,leader_observability,string,-,no,IMPLEMENTED,可靠观察/原生证明无leader/未观测区别,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,leader_speed_mps,number,m/s,no,IMPLEMENTED,前车实际速度,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,leader_vehicle_id,string,-,no,IMPLEMENTED,原生或已核验leader车辆ID,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,lifecycle_status,string,-,no,IMPLEMENTED,存在/退出/不可观测,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,measurement_reason,string,-,no,IMPLEMENTED,源QC或不可测原因,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,measurement_reliable,boolean,-,no,IMPLEMENTED,源专属风险测量质量,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,measurement_status,string,-,no,IMPLEMENTED,valid/invalid/missing/not_applicable/not_measurable,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,member_id,string,-,no,IMPLEMENTED,处理前资格成员身份,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,membership_provenance_id,string,-,no,IMPLEMENTED,点归属来源,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,net_gap_m,number,m,no,IMPLEMENTED,净车间距，不是中心距离,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,observation_basis,string,-,no,IMPLEMENTED,实际读回/源观测/明确合成，不接受插值估计态,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,observation_gap,boolean,-,no,IMPLEMENTED,源声明观测断链,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,phase,string,-,no,IMPLEMENTED,观测阶段，不能按名称推断因果顺序,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,previous_state_id,string,-,conditional,IMPLEMENTED,明确前驱实际状态，不按近邻时间推断,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,provenance_id,string,-,no,IMPLEMENTED,明确来源外键,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,qc_version,string,-,no,IMPLEMENTED,源专属质量规则版本,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,readback_ref,string,-,no,IMPLEMENTED,明确原始实际状态引用,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,record_sha256,string,-,no,IMPLEMENTED,本条canonical JSON SHA256,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,region_id,string,-,no,IMPLEMENTED,预先确定的区域标识,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,region_interval_provenance_id,string,-,no,IMPLEMENTED,整段同归属来源，不能用点替代,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,region_link_status,string,-,no,IMPLEMENTED,相邻区间区域归属是否证明不变,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,region_membership,string,-,no,IMPLEMENTED,可信域内/域外/未知,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,region_reliable,boolean,-,no,IMPLEMENTED,区域归属可靠性，与运动学质量独立,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,region_version,string,-,no,IMPLEMENTED,区域边界版本,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,run_id,string,-,no,IMPLEMENTED,独立运行身份,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,schema_version,string,-,no,IMPLEMENTED,独立P4 v1工程schema,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,source_scope,object,-,no,IMPLEMENTED,原Formal连续性五元来源范围,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,source_type,string,-,no,IMPLEMENTED,数据源能力类型,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,speed_mps,number,m/s,conditional,IMPLEMENTED,车辆实际纵向速度,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,state_id,string,-,no,IMPLEMENTED,实际状态唯一记录身份,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,support_id,string,-,no,IMPLEMENTED,固定域窗与总体测量支持身份,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,time_error_s,number,s,no,IMPLEMENTED,时钟映射/观测时间不确定性，非零不做exact配对,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,time_s,number,s,no,IMPLEMENTED,该参考/声明时钟的实际观测时间,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,ttc_s,number,s,conditional,IMPLEMENTED,可靠正闭合TTC，不是事件阈值,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,vehicle_id,string,-,no,IMPLEMENTED,该run实际车辆身份,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,source_scope.dataset,string,-,conditional,IMPLEMENTED,来源数据集,upstream declared provenance,explicit; no inference
+state_observation,source_scope.site,string,-,conditional,IMPLEMENTED,来源场地,upstream declared provenance,explicit; no inference
+state_observation,source_scope.window_id,string,-,conditional,IMPLEMENTED,来源轨迹批次窗口,upstream declared provenance,explicit; no inference
+state_observation,source_scope.source_member,string,-,conditional,IMPLEMENTED,来源文件成员,upstream declared provenance,explicit; no inference
+state_observation,source_scope.source_period,string,-,conditional,IMPLEMENTED,来源时段,upstream declared provenance,explicit; no inference
+action_execution_bridge,action_observation_id,number|null,-,conditional,IMPLEMENTED,P3实际动作记录ID,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_execution_bridge,assignment_id,string,-,no,IMPLEMENTED,处理分配身份，不能按采用结果筛选,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_execution_bridge,bridge_id,string,-,no,IMPLEMENTED,P4执行动作桥ID,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_execution_bridge,command_refs,array,-,no,IMPLEMENTED,明确ID外键数组：command,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_execution_bridge,command_status,string,-,no,IMPLEMENTED,显式命令链或NATIVE_NO_COMMAND，不等于实际行为改变,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_execution_bridge,consumption_refs,array,-,no,IMPLEMENTED,明确ID外键数组：consumption,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_execution_bridge,decision_refs,array,-,no,IMPLEMENTED,明确ID外键数组：decision,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_execution_bridge,derivation_version,string,-,no,IMPLEMENTED,派生计算版本,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_execution_bridge,entity,string,-,no,IMPLEMENTED,逻辑实体类型,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_execution_bridge,event_id,string,-,conditional,IMPLEMENTED,预定研究事件，可空,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_execution_bridge,execution_refs,array,-,no,IMPLEMENTED,明确ID外键数组：execution,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_execution_bridge,execution_statuses,object,-,no,IMPLEMENTED,按execution_id保留P3执行状态，含部分/未知/未执行,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_execution_bridge,message_refs,array,-,no,IMPLEMENTED,明确ID外键数组：message,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_execution_bridge,native_evidence_ref,string,-,no,IMPLEMENTED,无命令的实际原生行为来源引用,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_execution_bridge,provenance_id,string,-,no,IMPLEMENTED,明确来源外键,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_execution_bridge,record_sha256,string,-,no,IMPLEMENTED,本条canonical JSON SHA256,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_execution_bridge,run_id,string,-,no,IMPLEMENTED,独立运行身份,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_execution_bridge,schema_version,string,-,no,IMPLEMENTED,独立P4 v1工程schema,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_execution_bridge,state_id,string,-,no,IMPLEMENTED,实际状态唯一记录身份,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_execution_bridge,support_id,string,-,no,IMPLEMENTED,固定域窗与总体测量支持身份,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_comparison,absolute_delta_acceleration_mps2,number,m/s^2,no,IMPLEMENTED,加速度差绝对值，辅助描述,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_comparison,absolute_delta_speed_mps,number,m/s,no,IMPLEMENTED,速度差绝对值，辅助描述,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_comparison,acceleration_status,string,-,no,IMPLEMENTED,辅助加速度可观测/缺失,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_comparison,baseline_assignment_id,string,-,no,IMPLEMENTED,配对侧运行/分配身份：baseline_assignment_id,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_comparison,baseline_run_id,string,-,no,IMPLEMENTED,配对侧运行/分配身份：baseline_run_id,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_comparison,baseline_state_id,string,-,no,IMPLEMENTED,配对侧实际状态外键：baseline_state_id,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_comparison,comparison_id,string,-,no,IMPLEMENTED,配对观测差值记录ID,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_comparison,comparison_status,string,-,no,IMPLEMENTED,是否为可信真实共同观测,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_comparison,delta_acceleration_mps2,number,m/s^2,no,IMPLEMENTED,有符号实际加速度差，辅助指标,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_comparison,delta_speed_mps,number,m/s,no,IMPLEMENTED,有符号treatment-baseline速度差，主指标,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_comparison,derivation_version,string,-,no,IMPLEMENTED,派生计算版本,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_comparison,entity,string,-,no,IMPLEMENTED,逻辑实体类型,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_comparison,event_id,string,-,conditional,IMPLEMENTED,预定研究事件，可空,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_comparison,onset_status,string,-,no,IMPLEMENTED,THRESHOLD_UNSET，不宣布科学动作起点,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_comparison,pair_id,string,-,no,IMPLEMENTED,处理前预定配对身份,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_comparison,pair_manifest_sha256,string,-,no,IMPLEMENTED,角色/时钟配对声明绑定,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_comparison,provenance_id,string,-,no,IMPLEMENTED,明确来源外键,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_comparison,record_sha256,string,-,no,IMPLEMENTED,本条canonical JSON SHA256,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_comparison,role_id,string,-,no,IMPLEMENTED,跨run预定需求角色,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_comparison,schema_version,string,-,no,IMPLEMENTED,独立P4 v1工程schema,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_comparison,segment_break_reasons,array,-,no,IMPLEMENTED,缺口/换leader/换道/断链等分段理由,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_comparison,segment_id,integer,-,no,IMPLEMENTED,连续性核验后的观测段标识,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_comparison,time_s,number,s,no,IMPLEMENTED,该参考/声明时钟的实际观测时间,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_comparison,treatment_assignment_id,string,-,no,IMPLEMENTED,配对侧运行/分配身份：treatment_assignment_id,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_comparison,treatment_run_id,string,-,no,IMPLEMENTED,配对侧运行/分配身份：treatment_run_id,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_comparison,treatment_state_id,string,-,no,IMPLEMENTED,配对侧实际状态外键：treatment_state_id,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_timing,action_timing_id,string,-,no,IMPLEMENTED,配对动作时间描述ID,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_timing,candidate_onset_lower_s,number|null,s,conditional,IMPLEMENTED,未批准阈值时保持null的候选起点下界,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_timing,candidate_onset_upper_s,number|null,s,conditional,IMPLEMENTED,未批准阈值时保持null的候选起点上界,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_timing,common_observation_count,integer,count,no,IMPLEMENTED,可靠真实共同观测数量,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_timing,common_time_end_s,number,s,no,IMPLEMENTED,真实共同观测支持末点，不延长,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_timing,common_time_start_s,number,s,no,IMPLEMENTED,真实共同观测支持首点,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_timing,comparison_refs,array,-,no,IMPLEMENTED,明确ID外键数组：comparison,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_timing,derivation_version,string,-,no,IMPLEMENTED,派生计算版本,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_timing,entity,string,-,no,IMPLEMENTED,逻辑实体类型,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_timing,first_observed_nonzero_delta_a_time_s,number,s,no,IMPLEMENTED,首次非零加速度差数值描述,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_timing,first_observed_nonzero_delta_v_time_s,number,s,no,IMPLEMENTED,首次非零速度差数值描述，不是正式T_U,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_timing,formal_T_U_s,number|null,s,conditional,IMPLEMENTED,不输出未经批准的正式动作变化时间,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_timing,nonzero_description_is_scientific_action_change,boolean,-,no,IMPLEMENTED,明确false，浮点非零不自动定义科学变化,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_timing,observation_end_status,string,-,no,IMPLEMENTED,RIGHT_EDGE_NO_EXTENSION,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_timing,onset_status,string,-,no,IMPLEMENTED,THRESHOLD_UNSET，不宣布科学动作起点,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_timing,pair_id,string,-,no,IMPLEMENTED,处理前预定配对身份,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_timing,persistence_confirmation_time_s,number|null,s,conditional,IMPLEMENTED,未批准持续时间，保持null,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_timing,provenance_id,string,-,no,IMPLEMENTED,明确来源外键,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_timing,record_sha256,string,-,no,IMPLEMENTED,本条canonical JSON SHA256,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_timing,right_censored_onset,number|null,-,conditional,IMPLEMENTED,阈值未设时null，不能据末点推无效应,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_timing,role_id,string,-,no,IMPLEMENTED,跨run预定需求角色,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_timing,schema_version,string,-,no,IMPLEMENTED,独立P4 v1工程schema,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+action_timing,support_status,string,-,no,IMPLEMENTED,有共同支持或Unknown,pair manifest / paired actual states,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_sample,assignment_id,string,-,no,IMPLEMENTED,处理分配身份，不能按采用结果筛选,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_sample,derivation_version,string,-,no,IMPLEMENTED,派生计算版本,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_sample,drac_mps2,number,m/s^2,conditional,IMPLEMENTED,辅助所需减速度，不能替代Formal rho,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_sample,entity,string,-,no,IMPLEMENTED,逻辑实体类型,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_sample,event_id,string,-,conditional,IMPLEMENTED,预定研究事件，可空,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_sample,incarnation_id,string,-,no,IMPLEMENTED,该车辆出生/驻留实例,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_sample,lower_contribution,number,1,no,IMPLEMENTED,空间限定Formal贡献下界,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_sample,measurement_reason,string,-,no,IMPLEMENTED,源QC或不可测原因,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_sample,measurement_reliable,boolean,-,no,IMPLEMENTED,源专属风险测量质量,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_sample,measurement_status,string,-,no,IMPLEMENTED,valid/invalid/missing/not_applicable/not_measurable,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_sample,measurement_version,string,-,no,IMPLEMENTED,原Formal算法版本,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_sample,member_id,string,-,no,IMPLEMENTED,处理前资格成员身份,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_sample,provenance_id,string,-,no,IMPLEMENTED,明确来源外键,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_sample,record_sha256,string,-,no,IMPLEMENTED,本条canonical JSON SHA256,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_sample,region_membership,string,-,no,IMPLEMENTED,可信域内/域外/未知,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_sample,region_reliable,boolean,-,no,IMPLEMENTED,区域归属可靠性，与运动学质量独立,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_sample,rho,number,1,conditional,IMPLEMENTED,既有Formal exp(-TTC/tau)，不按P2阈值截断,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_sample,risk_sample_id,string,-,no,IMPLEMENTED,单时刻风险记录ID,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_sample,run_id,string,-,no,IMPLEMENTED,独立运行身份,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_sample,schema_version,string,-,no,IMPLEMENTED,独立P4 v1工程schema,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_sample,state_id,string,-,no,IMPLEMENTED,实际状态唯一记录身份,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_sample,support_id,string,-,no,IMPLEMENTED,固定域窗与总体测量支持身份,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_sample,time_s,number,s,no,IMPLEMENTED,该参考/声明时钟的实际观测时间,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_sample,ttc_s,number,s,conditional,IMPLEMENTED,可靠正闭合TTC，不是事件阈值,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_sample,upper_contribution,number,1,no,IMPLEMENTED,空间限定Formal贡献上界,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_action_bridge,assignment_id,string,-,no,IMPLEMENTED,处理分配身份，不能按采用结果筛选,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_action_bridge,association_scope,string,-,no,IMPLEMENTED,EXACT_STATE_ID显式关联,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_action_bridge,bridge_id,string,-,no,IMPLEMENTED,P4执行动作桥ID,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_action_bridge,derivation_version,string,-,no,IMPLEMENTED,派生计算版本,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_action_bridge,entity,string,-,no,IMPLEMENTED,逻辑实体类型,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_action_bridge,event_id,string,-,conditional,IMPLEMENTED,预定研究事件，可空,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_action_bridge,provenance_id,string,-,no,IMPLEMENTED,明确来源外键,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_action_bridge,record_sha256,string,-,no,IMPLEMENTED,本条canonical JSON SHA256,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_action_bridge,risk_action_bridge_id,string,-,no,IMPLEMENTED,风险动作多对多桥ID,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_action_bridge,risk_sample_id,string,-,no,IMPLEMENTED,单时刻风险记录ID,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_action_bridge,run_id,string,-,no,IMPLEMENTED,独立运行身份,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_action_bridge,schema_version,string,-,no,IMPLEMENTED,独立P4 v1工程schema,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+risk_action_bridge,support_id,string,-,no,IMPLEMENTED,固定域窗与总体测量支持身份,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+vehicle_window,assignment_id,string,-,no,IMPLEMENTED,处理分配身份，不能按采用结果筛选,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+vehicle_window,bindings,array,-,no,IMPLEMENTED,预定角色→实际vehicle/incarnation显式关联,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+vehicle_window,coverage_status,string,-,no,IMPLEMENTED,完整/部分/全无观测/未知scope,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+vehicle_window,derivation_version,string,-,no,IMPLEMENTED,派生计算版本,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+vehicle_window,entity,string,-,no,IMPLEMENTED,逻辑实体类型,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+vehicle_window,event_id,string,-,conditional,IMPLEMENTED,预定研究事件，可空,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+vehicle_window,fixed_window_s,number,s,no,IMPLEMENTED,完整固定分母L，不是有效时长,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+vehicle_window,known_time_s,number,s,no,IMPLEMENTED,上下界收缩成点的时长,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+vehicle_window,lower_integral,number,s,no,IMPLEMENTED,完整窗贡献积分下界,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+vehicle_window,lower_mean,number,1,no,IMPLEMENTED,单车J下界/L,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+vehicle_window,measurement_status,string,-,no,IMPLEMENTED,valid/invalid/missing/not_applicable/not_measurable,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+vehicle_window,member_id,string,-,no,IMPLEMENTED,处理前资格成员身份,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+vehicle_window,observed_pair_time_s,number,s,no,IMPLEMENTED,连续性证明通过的区间时长,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+vehicle_window,provenance_id,string,-,no,IMPLEMENTED,明确来源外键,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+vehicle_window,record_sha256,string,-,no,IMPLEMENTED,本条canonical JSON SHA256,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+vehicle_window,region_id,string,-,no,IMPLEMENTED,预先确定的区域标识,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+vehicle_window,region_version,string,-,no,IMPLEMENTED,区域边界版本,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+vehicle_window,risk_sample_refs,array,-,no,IMPLEMENTED,明确ID外键数组：risk_sample,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+vehicle_window,roster_sha256,string,-,no,IMPLEMENTED,固定处理前名单canonical JSON绑定,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+vehicle_window,run_id,string,-,no,IMPLEMENTED,独立运行身份,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+vehicle_window,schema_version,string,-,no,IMPLEMENTED,独立P4 v1工程schema,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+vehicle_window,support_id,string,-,no,IMPLEMENTED,固定域窗与总体测量支持身份,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+vehicle_window,unknown_time_s,number,s,no,IMPLEMENTED,完整L中尚未点识别时长,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+vehicle_window,upper_integral,number,s,no,IMPLEMENTED,完整窗贡献积分上界,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+vehicle_window,upper_mean,number,1,no,IMPLEMENTED,单车J上界/L,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+vehicle_window,vehicle_window_id,string,-,no,IMPLEMENTED,单车固定窗ID,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+vehicle_window,window_end_s,number,s,no,IMPLEMENTED,固定半开观察窗终点,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+vehicle_window,window_start_s,number,s,no,IMPLEMENTED,固定半开观察窗起点,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+vehicle_window,window_version,string,-,no,IMPLEMENTED,固定观察窗版本,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+vehicle_window,bindings[].vehicle_id,string,-,conditional,IMPLEMENTED,绑定实际车辆,upstream declared provenance,explicit; no inference
+vehicle_window,bindings[].incarnation_id,string,-,conditional,IMPLEMENTED,绑定实例,upstream declared provenance,explicit; no inference
+vehicle_window,bindings[].provenance_id,string,-,conditional,IMPLEMENTED,预定绑定证明,upstream declared provenance,explicit; no inference
+regional_outcome,aggregation_version,string,-,no,IMPLEMENTED,固定完整资格N等权聚合版本,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+regional_outcome,assignment_id,string,-,no,IMPLEMENTED,处理分配身份，不能按采用结果筛选,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+regional_outcome,derivation_version,string,-,no,IMPLEMENTED,派生计算版本,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+regional_outcome,entity,string,-,no,IMPLEMENTED,逻辑实体类型,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+regional_outcome,event_id,string,-,conditional,IMPLEMENTED,预定研究事件，可空,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+regional_outcome,expected_N,integer,count,conditional,IMPLEMENTED,预定完整资格名单N，未知名单则null,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+regional_outcome,formal_parameters_fully_frozen,boolean,-,no,IMPLEMENTED,全部Formal参数未因此冻结,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+regional_outcome,lower_outcome,number,1,conditional,IMPLEMENTED,固定N等权总体平均贡献下界,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+regional_outcome,missing_summary,object,-,no,IMPLEMENTED,缺失范围及覆盖计数，不删缺失车,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+regional_outcome,outcome_id,string,-,no,IMPLEMENTED,分配单位区域结果ID,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+regional_outcome,outcome_status,string,-,no,IMPLEMENTED,点/区间/未知scope/不完整名单,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+regional_outcome,outcome_unit,string,-,no,IMPLEMENTED,无量纲Formal贡献均值,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+regional_outcome,population_scope,string,-,no,IMPLEMENTED,完整资格总体证明状态，非动态可见车辆,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+regional_outcome,provenance_id,string,-,no,IMPLEMENTED,明确来源外键,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+regional_outcome,received_N,integer,count,no,IMPLEMENTED,收到的成员窗口条数,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+regional_outcome,record_sha256,string,-,no,IMPLEMENTED,本条canonical JSON SHA256,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+regional_outcome,region_id,string,-,no,IMPLEMENTED,预先确定的区域标识,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+regional_outcome,region_version,string,-,no,IMPLEMENTED,区域边界版本,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+regional_outcome,risk_causal_effect,string,-,no,IMPLEMENTED,因果风险效应仍Unknown,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+regional_outcome,roster_sha256,string,-,no,IMPLEMENTED,固定处理前名单canonical JSON绑定,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+regional_outcome,run_id,string,-,no,IMPLEMENTED,独立运行身份,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+regional_outcome,schema_version,string,-,no,IMPLEMENTED,独立P4 v1工程schema,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+regional_outcome,scientific_claim_eligible,boolean,-,no,IMPLEMENTED,本工程结果不授予科研效应资格,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+regional_outcome,support_id,string,-,no,IMPLEMENTED,固定域窗与总体测量支持身份,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+regional_outcome,unique_N,integer,count,no,IMPLEMENTED,唯一成员窗口数量,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+regional_outcome,unit_id,string,-,no,IMPLEMENTED,独立随机化单位，非车辆/采样点,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+regional_outcome,upper_outcome,number,1,conditional,IMPLEMENTED,固定N等权总体平均贡献上界,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+regional_outcome,usage,string,-,no,IMPLEMENTED,使用边界，合成例必须SYNTHETIC_VALIDATION_ONLY,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+regional_outcome,vehicle_window_refs,array,-,no,IMPLEMENTED,明确ID外键数组：vehicle_window,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+regional_outcome,window_end_s,number,s,no,IMPLEMENTED,固定半开观察窗终点,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+regional_outcome,window_start_s,number,s,no,IMPLEMENTED,固定半开观察窗起点,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+regional_outcome,window_version,string,-,no,IMPLEMENTED,固定观察窗版本,P4 v1 source/derived record; explicit provenance,PK/FK/scope/finite JSON and corresponding module validation; see contract
+state_observation,derive_native_measurement,boolean,-,yes,IMPLEMENTED_CONDITIONAL_INPUT,可选仅SUMO/合成纯函数派生TTC/DRAC,upstream source capability,never infer from missing leader
+state_observation,no_leader_provenance_id,string,-,yes,IMPLEMENTED_CONDITIONAL_INPUT,原生无leader证明来源,upstream source capability,never infer from missing leader
+macro_observation,*,not implemented,-,n/a,NOT_IMPLEMENTED,独立宏观通道，v1未实现,research boundary,no automatic promotion
+action_timing,scientific_onset_rule,not implemented,-,n/a,NOT_IMPLEMENTED,阈值/持续/容差未批准,research boundary,no automatic promotion
+support_manifest,automatic_geometry_clip,not implemented,-,n/a,NOT_IMPLEMENTED,不插值区域交点，消费上游成员资格,research boundary,no automatic promotion
+regional_outcome,causal_effect_estimator,not implemented,-,n/a,NOT_IMPLEMENTED,P5/P6职责，本任务不估计,research boundary,no automatic promotion

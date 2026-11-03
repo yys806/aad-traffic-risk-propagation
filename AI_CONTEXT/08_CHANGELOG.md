@@ -1,3 +1,11 @@
+## Current — P4 Task2 implementation (2026-11-04)
+
+完成AAD-P4-TASK2-20261104：D01–D08同步，5模块/3离线脚本/88专项测试；172定向测试与15独立数学检查通过，源码/文档/便携证据及注册表同步。Task1历史字节不改；四份统一定义只追加有日期决策。
+
+P7验收保持ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS；Formal A/Qualified仍0，F0/总体T_R–T_P Unknown；Gate/Protocol Lock不变，Stage1.1 NOT_AUTHORIZED。无新增SUMO/seed/Pilot/V/holdout读取。
+
+[报告](../docs/research/P4/P4_TASK2_FINAL_REPORT.md) · [当前P4入口](../docs/research/P4/README_v1.md) · [Agreed决定](../docs/research/P4/P4_RESEARCHER_DECISIONS_20261104.md) · [证据](../evidence/research/P4_TASK2_20261104/README.md)；统一定义仍[v0.4/27项](../docs/research/definitions/README.md)。下方保留历史任务时点状态。
+
 ## Current — P4 Task1 measurement audit (2026-11-03)
 
 2026-11-03 AAD-P4-TASK1：完成测量规范、源码血缘审计、Proposal契约、247字段/18追溯项及集中待决；84定向测试+27语义例子。只读保护535项基线源/历史文件；同步研究审计登记与上下文，无新增交通实验或正式资格升级。

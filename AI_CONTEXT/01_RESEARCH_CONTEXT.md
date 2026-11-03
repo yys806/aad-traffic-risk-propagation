@@ -1,3 +1,11 @@
+## Current — P4 Task2 implementation (2026-11-04)
+
+研究者P4 D01–D08全Agreed（A/A/B/A/A/A/A/A）。D03-B固定完整资格总体、D04-A固定N同窗平均贡献；最终Y算子确定不等于数值冻结。正式region/window/动作阈值/误差、现实覆盖及因果风险仍Unknown。
+
+P7验收保持ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS；Formal A/Qualified仍0，F0/总体T_R–T_P Unknown；Gate/Protocol Lock不变，Stage1.1 NOT_AUTHORIZED。无新增SUMO/seed/Pilot/V/holdout读取。
+
+[报告](../docs/research/P4/P4_TASK2_FINAL_REPORT.md) · [当前P4入口](../docs/research/P4/README_v1.md) · [Agreed决定](../docs/research/P4/P4_RESEARCHER_DECISIONS_20261104.md) · [证据](../evidence/research/P4_TASK2_20261104/README.md)；统一定义仍[v0.4/27项](../docs/research/definitions/README.md)。下方保留历史任务时点状态。
+
 ## Current — P4 Task1 measurement audit (2026-11-03)
 
 Command、Execution、实际输入U*与运动状态X*不可等同。消息后运动差异、风险贡献差异、总体区域风险因果效应分别识别；T_U不是T_R。固定cohort不自动覆盖区域全体车辆。P4向P5/P6提供测量支持与界，不实施因果或功效估计。

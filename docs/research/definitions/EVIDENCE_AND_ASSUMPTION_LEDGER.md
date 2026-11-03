@@ -158,3 +158,12 @@ E01–53保留历史；E46/47/49/50的方向层由下表覆盖，不把其具体
 | E73 | Unknown保持 | W8与来源资格未建立，Qualified仍0；物理绝对时钟/模型误差、V及双η桥接不由历史时间修正获得证书 |
 
 来源：[独立更正报告](../P2/P2_TASK7_SOURCE_TIMESTAMP_BACKFILL_REPORT.md)、对应冻结manifest、逐跳W6及4170保护文件SHA/1728标签哈希独立验证。
+
+
+## P4 Task2 决策增量（2026-11-04，v0.4 /27项不变）
+
+来源：[研究者D01–D08正式决定](../P4/P4_RESEARCHER_DECISIONS_20261104.md)，AAD-P4-TASK2-20261104。历史记录和Definition ID保持，此为有日期决策接续，不升级Gate/Lock/Stage1.1。
+
+Agreed / P4Task2 D01–D08：原始选择A/A/B/A/A/A/A/A；完整资格总体为处理前固定集合操作化，最终Y为同窗标准化贡献的固定N等权均值，上下界分别聚合。
+
+**Task6/E61状态接续**：原日期最终Y待决保留历史；自2026-11-04，上述最终聚合算子Agreed，额外变换/权重未批准。**Task7/E61**仅有限物理校准授权，与本决定分开。τ/正式region/window/Action数值不冻结。真实资格覆盖、现实测量、风险因果效应、F0/总体T_R–T_P仍Unknown。

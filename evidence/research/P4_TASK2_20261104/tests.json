@@ -1,0 +1,75 @@
+{
+  "task_id": "AAD-P4-TASK2-20261104",
+  "final": {
+    "passed": 172,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0,
+    "new_p4": 88,
+    "historical": 84,
+    "files": {
+      "tests.test_p4_measurement": 88,
+      "tests.test_formal_risk_measurement": 7,
+      "tests.test_prelock_metrics": 8,
+      "tests.test_p7_sumo_evidence": 7,
+      "tests.test_controller_evidence": 50,
+      "tests.test_p7_task2_1_revalidation": 7,
+      "tests.test_stage_i_mechanism": 5
+    }
+  },
+  "phases": [
+    {
+      "phase": "p4_tests_01",
+      "passed": 79,
+      "failed": 1,
+      "junit_sha256": "9bfec8b188f452359c48ed81abde807f2d983f8c58215af4517cbbe8871d10ff",
+      "log_sha256": "644ee996c08e66f681c9147d02aa8327ea8ee1b51bc30eafa4f768594e14bb04",
+      "local_log": "code/outputs/audits/p4_task2_20261104/p4_tests_01.log"
+    },
+    {
+      "phase": "p4_tests_02",
+      "passed": 79,
+      "failed": 1,
+      "junit_sha256": "411dbe4febcecedf64d6508d701b12039029b131b0513a1b3056c1121cd1083f",
+      "log_sha256": "0ae1cac5644819e83c9c757a3b0a2d1b4983cc4217946aa47a2d24f404a4d46e",
+      "local_log": "code/outputs/audits/p4_task2_20261104/p4_tests_02.log"
+    },
+    {
+      "phase": "acceptance_01",
+      "passed": 164,
+      "failed": 0,
+      "junit_sha256": "fed73f1109bf61589ce9f42bb070cf69b52fc788babbd504457352e3b86dea40",
+      "log_sha256": "b07c0177566fdd954423bcebc40dd229dd6b62ad96adc0362a1f65179f14a06d",
+      "local_log": "code/outputs/audits/p4_task2_20261104/acceptance_01.log"
+    },
+    {
+      "phase": "acceptance_02",
+      "passed": 172,
+      "failed": 0,
+      "junit_sha256": "b84a837c07c82d151531ea940a9bbe566b3ad58a6dea5108e1239b9bb0f0a4d6",
+      "log_sha256": "d2f180905fdff5f4c97d95cba5e86f0d04d1ccb8d22d98aff68ae9b4cb730b3e",
+      "local_log": "code/outputs/audits/p4_task2_20261104/acceptance_02.log"
+    },
+    {
+      "phase": "acceptance_03",
+      "passed": 172,
+      "failed": 0,
+      "junit_sha256": "4f5cab4e21a27dcd4271311ff2b7017fdd615edcc8bd45ab430d5fe923bf3878",
+      "log_sha256": "eb787c1153d52ce0532570a6acd455451d1389c2b1fb111321dba372a3e1ce6a",
+      "local_log": "code/outputs/audits/p4_task2_20261104/acceptance_03.log"
+    }
+  ],
+  "process_guard": {
+    "blocked_attempts": [],
+    "guard_active": true,
+    "exitstatus": 0,
+    "new_SUMO_processes": 0
+  },
+  "command": "python -X utf8 -m pytest code/tests/test_p4_measurement.py code/tests/test_formal_risk_measurement.py code/tests/test_prelock_metrics.py code/tests/test_p7_sumo_evidence.py code/tests/test_controller_evidence.py code/tests/test_p7_task2_1_revalidation.py code/tests/test_stage_i_mechanism.py -p offline_no_process --basetemp code/outputs/audits/p4_task2_20261104/pytest_acceptance_03 --junitxml code/outputs/audits/p4_task2_20261104/acceptance_03.xml -q",
+  "PYTHONPATH": "code/outputs/audits/p4_task2_20261104;code/src;code/tests;code/scripts",
+  "P7_ENGINEERING_CAPTURE": "code/outputs/engineering/p7_task2_20261103_v1",
+  "failure_history": [
+    "initial P3 context-owned source ID index corrected",
+    "fixture source event resolved by exact decision/receipt reference; guard unchanged"
+  ]
+}

@@ -87,3 +87,15 @@ D1/D2/D4接受分层与基本测量/时间区分的方向，覆盖历史表对�
 | h_R、Δ_R、J_R | 风险持续跨度s、网格步长s、同时检验族count | 与物理h_P、q_P分开；协议§12–13 | 数值Awaiting；全网格只保证预定离散支持 |
 
 所有相同字母依上下标/上下文区分：D_i交互、D_A车距；u_A速度、u* Unknown容忍；β_V验证错误非回归斜率；a*真值幅度非a_iℓ集合指标；H_cal不替H*，risk-state onset不替population T_R。
+
+
+## P4 Task2 决策增量（2026-11-04，v0.4 /27项不变）
+
+来源：[研究者D01–D08正式决定](../P4/P4_RESEARCHER_DECISIONS_20261104.md)，AAD-P4-TASK2-20261104。历史记录和Definition ID保持，此为有日期决策接续，不升级Gate/Lock/Stage1.1。
+
+| 既有记号的操作化 | 含义/单位 | 状态 |
+|---|---|---|
+| C_e^elig、N_e | 分配前完整区域资格集合与固定人数，set/count | D03-B Agreed，不新增Definition ID |
+| W_e、L_e | 处理前固定风险窗口/长度，s | D07-A原则Agreed，数值Unknown |
+| Y_e(a)、Y_e^L/Y_e^U | 固定N等权单车全窗平均贡献及界，1/[0,1] | D04-A算子Agreed，非总和/非因果效应 |
+| Δv、Δa | treatment−baseline实际共同观测差，m/s、m/s² | D01-A主/辅助Agreed，阈值/正式T_U未定 |

@@ -1,3 +1,11 @@
+## Current — P4 Task2 implementation (2026-11-04)
+
+新增五个独立P4模块：contract、action_measurement、regional_risk、evidence_bridge、measurement_bundle。复用原Formal五原语；P3 v1/原StageI/P7及Formal config保持原字节。只增加适配器与独立版本化JSON，不增加控制器/新实验。
+
+P7验收保持ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS；Formal A/Qualified仍0，F0/总体T_R–T_P Unknown；Gate/Protocol Lock不变，Stage1.1 NOT_AUTHORIZED。无新增SUMO/seed/Pilot/V/holdout读取。
+
+[报告](../docs/research/P4/P4_TASK2_FINAL_REPORT.md) · [当前P4入口](../docs/research/P4/README_v1.md) · [Agreed决定](../docs/research/P4/P4_RESEARCHER_DECISIONS_20261104.md) · [证据](../evidence/research/P4_TASK2_20261104/README.md)；统一定义仍[v0.4/27项](../docs/research/definitions/README.md)。下方保留历史任务时点状态。
+
 ## Current — P4 Task1 measurement audit (2026-11-03)
 
 架构事实澄清：Formal已有点贡献/固定窗积分/数值等车平均原语；P7只接实际状态→TTC/quality附件，未调用rho或区域Y。完整固定名单组装/几何支持适配尚缺；P4提议外部12表247字段，不修改P3schema或生产架构。

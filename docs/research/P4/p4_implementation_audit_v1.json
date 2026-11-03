@@ -1,0 +1,457 @@
+{
+  "task_id": "AAD-P4-TASK2-20261104",
+  "status": "IMPLEMENTATION_COMPLETE_WITH_LIMITATIONS",
+  "schema_version": "aad.p4.measurement.v1",
+  "definition_version": "AAD-SCI-DEF-20261102-P2T6-v0.4",
+  "definition_count": 27,
+  "decisions": {
+    "D01": {
+      "choice": "A",
+      "status": "Agreed"
+    },
+    "D02": {
+      "choice": "A",
+      "status": "Agreed"
+    },
+    "D03": {
+      "choice": "B",
+      "status": "Agreed"
+    },
+    "D04": {
+      "choice": "A",
+      "status": "Agreed"
+    },
+    "D05": {
+      "choice": "A",
+      "status": "Agreed"
+    },
+    "D06": {
+      "choice": "A",
+      "status": "Agreed"
+    },
+    "D07": {
+      "choice": "A",
+      "status": "Agreed"
+    },
+    "D08": {
+      "choice": "A",
+      "status": "Agreed"
+    }
+  },
+  "dictionary_rows": 289,
+  "implemented_entities": [
+    "support_manifest",
+    "provenance",
+    "cohort_member",
+    "state_observation",
+    "action_execution_bridge",
+    "action_comparison",
+    "action_timing",
+    "risk_sample",
+    "risk_action_bridge",
+    "vehicle_window",
+    "regional_outcome"
+  ],
+  "traceability": [
+    {
+      "path": "code/src/riskprop/p4_action_measurement.py",
+      "symbol": "validate_pair_manifest",
+      "line": 11,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_action_measurement.py",
+      "symbol": "compare_actions",
+      "line": 36,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_evidence_bridge.py",
+      "symbol": "p3_index",
+      "line": 7,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_evidence_bridge.py",
+      "symbol": "link_p3_state",
+      "line": 20,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_evidence_bridge.py",
+      "symbol": "native_state_bridge",
+      "line": 70,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_evidence_bridge.py",
+      "symbol": "link_risk_actions",
+      "line": 80,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_evidence_bridge.py",
+      "symbol": "fetch",
+      "line": 22,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_measurement_bundle.py",
+      "symbol": "unavailable_outcome",
+      "line": 19,
+      "status": "IMPLEMENTED",
+      "role": "No roster means no invented members/N. Keep every assignment visible.",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_measurement_bundle.py",
+      "symbol": "build_bundle",
+      "line": 31,
+      "status": "IMPLEMENTED",
+      "role": "One assignment per bundle; action comparisons may reference another bundle.",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_measurement_bundle.py",
+      "symbol": "validate_bundle",
+      "line": 77,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_measurement_bundle.py",
+      "symbol": "write_bundle",
+      "line": 154,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_measurement_bundle.py",
+      "symbol": "assignment_result",
+      "line": 159,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_measurement_bundle.py",
+      "symbol": "ref",
+      "line": 103,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_measurement_contract.py",
+      "symbol": "P4InputError",
+      "line": 21,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_measurement_contract.py",
+      "symbol": "require",
+      "line": 27,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_measurement_contract.py",
+      "symbol": "text",
+      "line": 32,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_measurement_contract.py",
+      "symbol": "finite",
+      "line": 36,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_measurement_contract.py",
+      "symbol": "sha256_json",
+      "line": 40,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_measurement_contract.py",
+      "symbol": "stamp",
+      "line": 45,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_measurement_contract.py",
+      "symbol": "check_record",
+      "line": 59,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_measurement_contract.py",
+      "symbol": "same_context",
+      "line": 66,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_measurement_contract.py",
+      "symbol": "provenance_index",
+      "line": 70,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_measurement_contract.py",
+      "symbol": "evidence_present",
+      "line": 88,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_measurement_contract.py",
+      "symbol": "validate_support",
+      "line": 92,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_measurement_contract.py",
+      "symbol": "scope_defined",
+      "line": 106,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_measurement_contract.py",
+      "symbol": "validate_states",
+      "line": 115,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_measurement_contract.py",
+      "symbol": "validate_bounds",
+      "line": 137,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_measurement_contract.py",
+      "symbol": "__init__",
+      "line": 22,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_regional_risk.py",
+      "symbol": "RegionalEligibilityRoster",
+      "line": 22,
+      "status": "IMPLEMENTED",
+      "role": "Defensive copy; completeness evidence is never inferred from observations.",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_regional_risk.py",
+      "symbol": "measure_vehicle_state",
+      "line": 80,
+      "status": "IMPLEMENTED",
+      "role": "Validate source-qualified TTC; optional native derivation uses existing core.",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_regional_risk.py",
+      "symbol": "RegionalRiskAssembler",
+      "line": 150,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_regional_risk.py",
+      "symbol": "validated_ttc_exposure",
+      "line": 273,
+      "status": "IMPLEMENTED",
+      "role": "Optional auxiliary adapter: fail closed on valid/NaN inconsistency.",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_regional_risk.py",
+      "symbol": "__init__",
+      "line": 24,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_regional_risk.py",
+      "symbol": "manifest",
+      "line": 40,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_regional_risk.py",
+      "symbol": "members",
+      "line": 44,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_regional_risk.py",
+      "symbol": "expected_N",
+      "line": 48,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_regional_risk.py",
+      "symbol": "scope_status",
+      "line": 51,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_regional_risk.py",
+      "symbol": "validate_state_bindings",
+      "line": 68,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_regional_risk.py",
+      "symbol": "__init__",
+      "line": 151,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_regional_risk.py",
+      "symbol": "vehicle_windows",
+      "line": 158,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_regional_risk.py",
+      "symbol": "aggregate",
+      "line": 221,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/p4_regional_risk.py",
+      "symbol": "measure",
+      "line": 268,
+      "status": "IMPLEMENTED",
+      "role": "Validated implementation; see implementation specification",
+      "validation": "code/tests/test_p4_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/formal_risk_measurement.py",
+      "symbol": "rho_from_ttc",
+      "line": 46,
+      "status": "REUSED_UNCHANGED",
+      "role": "Original Formal primitive; unchanged algorithm/config",
+      "validation": "code/tests/test_formal_risk_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/formal_risk_measurement.py",
+      "symbol": "contribution_bounds",
+      "line": 171,
+      "status": "REUSED_UNCHANGED",
+      "role": "Original Formal primitive; unchanged algorithm/config",
+      "validation": "code/tests/test_formal_risk_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/formal_risk_measurement.py",
+      "symbol": "integrate_fixed_window",
+      "line": 194,
+      "status": "REUSED_UNCHANGED",
+      "role": "Original Formal primitive; unchanged algorithm/config",
+      "validation": "code/tests/test_formal_risk_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/formal_risk_measurement.py",
+      "symbol": "equal_vehicle_average",
+      "line": 233,
+      "status": "REUSED_UNCHANGED",
+      "role": "Original Formal primitive; unchanged algorithm/config",
+      "validation": "code/tests/test_formal_risk_measurement.py"
+    },
+    {
+      "path": "code/src/riskprop/formal_risk_measurement.py",
+      "symbol": "continuity_is_valid",
+      "line": 269,
+      "status": "REUSED_UNCHANGED",
+      "role": "Original Formal primitive; unchanged algorithm/config",
+      "validation": "code/tests/test_formal_risk_measurement.py"
+    }
+  ],
+  "tests_passed": 172,
+  "new_p4_tests": 88,
+  "historical_regression_tests": 84,
+  "independent_math_checks": 15,
+  "formal_algorithm_changed": false,
+  "formal_config_changed": false,
+  "p3_schema_changed": false,
+  "new_traffic_runs": 0,
+  "locked_holdout_reads": 0,
+  "unknowns": [
+    "real complete population",
+    "formal geometry/window",
+    "action threshold/duration/error",
+    "real traffic observability",
+    "causal regional risk effect"
+  ],
+  "limitations": [
+    "upstream semantic completeness proof required",
+    "no nonzero clock uncertainty pairing",
+    "no automatic geometry inference",
+    "no-leader interval conservative",
+    "macro not implemented",
+    "old prelock direct caller not repaired"
+  ]
+}

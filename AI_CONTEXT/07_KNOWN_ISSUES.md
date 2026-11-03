@@ -1,3 +1,11 @@
+## Current — P4 Task2 implementation (2026-11-04)
+
+P4已用新guard解决名单/N、源QC、跨gap/末点及P3外桥问题。剩余：真实完整资格覆盖与正式域/窗不明；动作阈值/持续/误差未定；无leader点可0但旧Formal连续性不足时整段保守Unknown；未实现自动几何裁切/跨源全导入/macro。旧prelock直接valid/NaN限制保留，P4辅助调用须走新guard。
+
+P7验收保持ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS；Formal A/Qualified仍0，F0/总体T_R–T_P Unknown；Gate/Protocol Lock不变，Stage1.1 NOT_AUTHORIZED。无新增SUMO/seed/Pilot/V/holdout读取。
+
+[报告](../docs/research/P4/P4_TASK2_FINAL_REPORT.md) · [当前P4入口](../docs/research/P4/README_v1.md) · [Agreed决定](../docs/research/P4/P4_RESEARCHER_DECISIONS_20261104.md) · [证据](../evidence/research/P4_TASK2_20261104/README.md)；统一定义仍[v0.4/27项](../docs/research/definitions/README.md)。下方保留历史任务时点状态。
+
 ## Current — P4 Task1 measurement audit (2026-11-03)
 
 已复现：Action持续性可跨缺口/外延末点且不核incarnation；equal_vehicle_average无完整名单/同窗检查；辅助TTC暴露valid=True而TTCNaN可得0。Formal无通用几何clip，no-leader连续段保守Unknown；P7Risk仅质量引用。问题保留，未越权修科学核心。

@@ -1,3 +1,11 @@
+## Current — P4 Task2 implementation (2026-11-04)
+
+实际state+处理前support/roster+provenance→源QC/risk_sample→显式空间/时间连续性→每member完整vehicle_window→固定N上下界regional_outcome。state经P3显式ID桥；无命令NATIVE_NO_COMMAND。scope不明Y=null，缺整车[0,1]不减N，末端/边界不外推。
+
+P7验收保持ENGINEERING_INTEGRATION_COMPLETE_WITH_LIMITATIONS；Formal A/Qualified仍0，F0/总体T_R–T_P Unknown；Gate/Protocol Lock不变，Stage1.1 NOT_AUTHORIZED。无新增SUMO/seed/Pilot/V/holdout读取。
+
+[报告](../docs/research/P4/P4_TASK2_FINAL_REPORT.md) · [当前P4入口](../docs/research/P4/README_v1.md) · [Agreed决定](../docs/research/P4/P4_RESEARCHER_DECISIONS_20261104.md) · [证据](../evidence/research/P4_TASK2_20261104/README.md)；统一定义仍[v0.4/27项](../docs/research/definitions/README.md)。下方保留历史任务时点状态。
+
 ## Current — P4 Task1 measurement audit (2026-11-03)
 
 拟议链：原始字节→身份/clockQC→实际state→TTC/DRAC→rho贡献界→空间支持→固定窗积分→完整固定N→待批准区域Y。显式state/action/execution/risk桥接，不凭近似时间。区域外可靠贡献零与位置未知[0,1]分开；缺整车仍保留全分母。

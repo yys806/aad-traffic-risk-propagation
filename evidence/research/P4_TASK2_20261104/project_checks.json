@@ -1,0 +1,49 @@
+{
+  "strict_documentation": {
+    "status": "PASS",
+    "command": "python -X utf8 code/scripts/validate_project_docs.py --repo-root . --strict-git",
+    "log_sha256": "534ed6a0d8980a186ca298cfacfa994aaa780aeed39761c4a1b6386dbdabee77"
+  },
+  "exporter": {
+    "status": "PASS",
+    "results": 94,
+    "files": 1458,
+    "log_sha256": "589ad6457c2de5cca6d4a50a1094f1aca94e9f667a7c8d3ab173218471776edb"
+  },
+  "exporter_verify": {
+    "status": "PASS",
+    "log_sha256": "0c69002e3db974ba19b1ea32d63389fc1f3a6495d116b6f622aa6081c4313f41"
+  },
+  "targeted_syntax": {
+    "status": "PASS",
+    "files": 9
+  },
+  "git_diff_check": "PASS",
+  "git_index_source_bytes": {
+    "status": "PASS_WITH_DECLARED_EOL_PROFILES",
+    "files": 44,
+    "eol_only": [
+      "code/configs/stage_0_2_formal_risk_measurement_p2_v1.json",
+      "code/src/riskprop/formal_risk_measurement.py",
+      "docs/research/definitions/CORE_SCIENTIFIC_DEFINITIONS.md",
+      "docs/research/definitions/SYMBOL_REGISTER.md"
+    ],
+    "semantic_mismatches": []
+  },
+  "pure_Git_blob_view": {
+    "status": "PASS",
+    "files": 616,
+    "byte_profile": "git-blob",
+    "log_sha256": "666545731cb989005aae89e9d685f52148961ad5ac6a06a857d294920bd0815a",
+    "source_files_verified": 44,
+    "package_files_verified": 23
+  },
+  "new_traffic_runs": 0,
+  "verification_scope": "P4 offline implementation; no full suite or unrelated cleanup",
+  "initial_packaging_attempt": {
+    "status": "STOPPED_BEFORE_CHECKSUMS",
+    "issue": "four EOL-only native/blob byte differences",
+    "resolution": "explicit dual byte profile hashes; original files preserved",
+    "local_record": "code/outputs/audits/p4_task2_20261104/packaging_failures.json"
+  }
+}

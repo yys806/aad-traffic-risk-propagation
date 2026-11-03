@@ -181,3 +181,12 @@ W9/constant/θ1/h1/q.05、Macro w2是C候选，575完成/1失败、J765、V0；�
 ## Task8 有限支持与验证决策（2026-11-02）
 
 Task8 D1–D5已Agreed：仅源端有界补充，a1/b1有限坐标，2h/10GiB，ε_stab/γ_int不冻结。W9/constant/θ1/h1/q.05和Macro w2仍C候选；Low Cohort/Macro及Medium Cohort缺支持，J78/state63 V0。容差网格与成本见[参数建议](../P2/P2_TASK8_PARAMETER_RECOMMENDATIONS.md)，不修改T01–07/T10正式η/δ/H*/α。
+
+
+## P4 Task2 决策增量（2026-11-04，v0.4 /27项不变）
+
+来源：[研究者D01–D08正式决定](../P4/P4_RESEARCHER_DECISIONS_20261104.md)，AAD-P4-TASK2-20261104。历史记录和Definition ID保持，此为有日期决策接续，不升级Gate/Lock/Stage1.1。
+
+D04-A已批准最终Y固定N等权、同窗固定L标准化算子，接续Task6/E61/T05同事项待决；无额外权重/变换。缺车全窗[0,1]，总体名单无法证明完整则UNKNOWN_SCOPE。D01-A Δv主/Δa辅助；Action阈值/持续/误差仍Unknown，THRESHOLD_UNSET，不用浮点非零定正式T_U。
+
+D03-B/D07-A完整资格总体/固定窗原则已Agreed，具体资格规则/区域/W数值需来源和批准状态；合成例子只SYNTHETIC_VALIDATION_ONLY。Formal配置scientific_defaults_frozen、τ及P2参数保持原样，不搜索参数、不授权新实验。

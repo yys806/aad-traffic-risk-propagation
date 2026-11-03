@@ -1086,3 +1086,14 @@ Detector-defined时间CDF不等潜在真实F0；独立同域证书若给P(真到
 ## Task7 有限域执行/证据增量（2026-11-02）
 
 研究者Task7在本次隔离校准域接受固定N等车signed mean、Macro同域速度主状态及Micro同lane机制。575完成/1失败的有限a1b1状态校准不改变27定义、正式风险或最早真实物理arrival；W8/Qualified/独立V与桥接仍Unknown，详见[Task7报告](../P2/P2_TASK7_FINAL_REPORT.md)。
+
+
+## P4 Task2 决策增量（2026-11-04，v0.4 /27项不变）
+
+来源：[研究者D01–D08正式决定](../P4/P4_RESEARCHER_DECISIONS_20261104.md)，AAD-P4-TASK2-20261104。历史记录和Definition ID保持，此为有日期决策接续，不升级Gate/Lock/Stage1.1。
+
+D01-A Δv主要、Δa辅助，D02-A可靠真实共同观测，显式角色/身份/clock，不默认插值。Action阈值/持续/误差与正式T_U未定。
+
+D03-B将DEF-COHORT-001/DEF-REGION-001的固定集合操作化为分配前完整区域资格车辆/需求角色总体C_e^elig，来源/冻结/完整性/跨run映射须有证据，不按处理后进入者增删。D04-A正式批准 Y_e(a)=(1/N_e)Σ_i(1/L_e)∫_{W_e}b_ie(t;a)dt，N_e=|C_e^elig|、L_e=|W_e|。它是平均贡献不是总和；上下界分别等权聚合，缺车不减N。总体范围不明UNKNOWN_SCOPE，总体确定但数据缺失保留界。
+
+D05-A边界/断链保留界，D06-A源专属QC不插补，D07-A分配前固定窗口，D08-A P3v1不变/P4独立。区域/窗口数值、Action阈值/持续/误差未因此冻结，Formal rho/P2和P1因果模型不改。
