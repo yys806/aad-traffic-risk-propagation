@@ -1,3 +1,9 @@
+## P3 Task2 — isolated evidence sidecar (2026-11-03)
+
+新增code/src/riskprop/controller_evidence.py为独立标准库模块：EventContext/TimeEvidence→append-only EvidenceJournal→显式图/Unknown审计→独占JSON sidecar。非旧Formal Parquet schema迁移，未修改旧公共接口。生产者角色/引用只是溯源声明，P7实际边界仍需接线。
+
+[Task2报告](../docs/research/P3/P3_TASK2_FINAL_REPORT.md) · [接口/P7接入](../docs/research/P3/CONTROLLER_EVIDENCE_IMPLEMENTATION.md) · [证据](../evidence/research/P3_TASK2_20261103/README.md)。统一定义仍[27项v0.4](../docs/research/definitions/README.md)。
+
 ## P2 Task7 — 2026-11-02
 
 新增隔离校准辅助模块code/scripts/p2_task7_measurement.py与run/analyze/plan/verify/finalize脚本；不导入或替换生产riskprop模块。只有本任务离线工程，正式架构不改。

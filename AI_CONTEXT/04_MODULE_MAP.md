@@ -1,3 +1,9 @@
+## P3 Task2 — controller evidence modules (2026-11-03)
+
+code/src/riskprop/controller_evidence.py：独立schema/记录/关联与时间验证/legacy注释；code/scripts/p3_controller_evidence_fixtures.py：A–H确定性合成构造；code/scripts/run_p3_task2_controller_evidence_fixture.py：独立目录/manifest/hash输出；code/tests/test_controller_evidence.py：50项测试。evidence/research/P3_TASK2_20261103/verify_evidence.py：只读完整性与关联复算。无旧adopted转回执、无SUMO依赖。
+
+[Task2报告](../docs/research/P3/P3_TASK2_FINAL_REPORT.md) · [接口/P7接入](../docs/research/P3/CONTROLLER_EVIDENCE_IMPLEMENTATION.md) · [证据](../evidence/research/P3_TASK2_20261103/README.md)。统一定义仍[27项v0.4](../docs/research/definitions/README.md)。
+
 ## P2 Task7 source timestamp backfill — 2026-11-02
 
 隔离离线工具：backfill_p2_task7_source_timestamps.py, verify_p2_task7_timestamp_backfill.py, finalize_p2_task7_timestamp_backfill.py。复用Task8 source-only签名与witness，独立标量源/响应/W6核验；无SUMO调用、truth重建或生产接口变化。

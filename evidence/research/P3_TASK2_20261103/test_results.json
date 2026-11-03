@@ -1,0 +1,131 @@
+{
+  "task_id": "AAD-P3-TASK2-20261103",
+  "final_new_tests_passed": 50,
+  "legacy_regression_tests_passed": 42,
+  "coverage_total_across_runs": 92,
+  "single_92_test_run_claimed": false,
+  "executions": [
+    {
+      "local_xml": "code/outputs/analysis/p3_task2_20261103_v1/new_tests_final.xml",
+      "sha256": "057fa15098b78c567bcec1b58dc3454252676fc857cccb723408110024eb5595",
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "48",
+          "time": "2.308",
+          "timestamp": "2026-11-03T10:57:12.549368+08:00",
+          "hostname": "DESKTOP-EP60NIS"
+        }
+      ],
+      "cases_by_module": {
+        "tests.test_controller_evidence": 48
+      },
+      "failures_and_errors": []
+    },
+    {
+      "local_xml": "code/outputs/analysis/p3_task2_20261103_v1/new_tests_first.xml",
+      "sha256": "71fb32a2c06ebbc0489c090e92c50a2cdd5af0b6b8ccfd68da2236420e96f686",
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "1",
+          "failures": "1",
+          "skipped": "0",
+          "tests": "36",
+          "time": "2.354",
+          "timestamp": "2026-11-03T10:51:44.898280+08:00",
+          "hostname": "DESKTOP-EP60NIS"
+        }
+      ],
+      "cases_by_module": {
+        "tests.test_controller_evidence": 36
+      },
+      "failures_and_errors": [
+        {
+          "test": "test_idempotent_replay_is_explicit_and_conflicts_still_raise",
+          "kind": "failure",
+          "message": "AssertionError: assert 14 == 13\n +  where 14 = len([{'context': {'adoption_mode': 'UNKNOWN', 'adoption_mode_source': 'UNKNOWN', 'adoption_mode_version': 'UNKNOWN', 'assi...'validation_status': 'VALID', ...}, 'kind': 'validation', 'schema_version': 'aad.p3.controller-evidence.v1', ...}, ...])\n +    where [{'context': {'adoption_mode': 'UNKNOWN', 'adoption_mode_source': 'UNKNOWN', 'adoption_mode_version': 'UNKNOWN', 'assi...'validation_status': 'VALID', ...}, 'kind': 'validation', 'schema_version'"
+        },
+        {
+          "test": "test_json_roundtrip_separate_schema_and_no_overwrite",
+          "kind": "error",
+          "message": "failed on setup with \"FileNotFoundError: [WinError 3] 系统找不到指定的路径。: 'D:\\\\shen\\\\TJU\\\\AAD\\\\code\\\\outputs\\\\analysis\\\\p3_task2_20261103_v1\\\\pytest_tmp_first'\""
+        }
+      ]
+    },
+    {
+      "local_xml": "code/outputs/analysis/p3_task2_20261103_v1/new_tests_sealed.xml",
+      "sha256": "b853cbb8e4fe3044dc7f9ec3b083cf831591b6498b8c76395962a3554f53f496",
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "50",
+          "time": "2.526",
+          "timestamp": "2026-11-03T11:03:43.120084+08:00",
+          "hostname": "DESKTOP-EP60NIS"
+        }
+      ],
+      "cases_by_module": {
+        "tests.test_controller_evidence": 50
+      },
+      "failures_and_errors": []
+    },
+    {
+      "local_xml": "code/outputs/analysis/p3_task2_20261103_v1/new_tests_second.xml",
+      "sha256": "0c83cd6f6a454854cc1ce834d2649cc0d9e3d1d86bc2d216556ebe64ff2d9cce",
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "36",
+          "time": "2.158",
+          "timestamp": "2026-11-03T10:53:15.581361+08:00",
+          "hostname": "DESKTOP-EP60NIS"
+        }
+      ],
+      "cases_by_module": {
+        "tests.test_controller_evidence": 36
+      },
+      "failures_and_errors": []
+    },
+    {
+      "local_xml": "code/outputs/analysis/p3_task2_20261103_v1/targeted_final.xml",
+      "sha256": "397be1b18d53c9b71909829553f9fd3179b2bb23c3c8d08a44b58518ce9f96ad",
+      "suites": [
+        {
+          "name": "pytest",
+          "errors": "0",
+          "failures": "0",
+          "skipped": "0",
+          "tests": "86",
+          "time": "20.537",
+          "timestamp": "2026-11-03T10:54:48.312646+08:00",
+          "hostname": "DESKTOP-EP60NIS"
+        }
+      ],
+      "cases_by_module": {
+        "tests.test_controller_evidence": 44,
+        "tests.test_formal_design": 21,
+        "tests.test_stage_i_mechanism": 5,
+        "tests.test_formal_artifacts": 12,
+        "tests.test_communication_observability": 4
+      },
+      "failures_and_errors": []
+    }
+  ],
+  "initial_failure_explanation": [
+    "expected complete chain count 13 corrected to actual 14",
+    "Windows basetemp parent initially absent; used existing task output parent and fresh basetemp"
+  ],
+  "final_new_test_command": "python -X utf8 -m pytest code/tests/test_controller_evidence.py -q --tb=short --basetemp=code/outputs/analysis/p3_task2_20261103_v1/pytest_sealed --junitxml=code/outputs/analysis/p3_task2_20261103_v1/new_tests_sealed.xml",
+  "fixture_command": "python -X utf8 code/scripts/run_p3_task2_controller_evidence_fixture.py --output code/outputs/analysis/p3_task2_20261103_v1/synthetic_sealed",
+  "raw_xml_retained_locally": true
+}

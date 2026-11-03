@@ -1,0 +1,357 @@
+{
+  "schema_version": "aad.p3.controller-evidence.v1",
+  "adoption_boundary_version": "aad.p3.policy-input-adoption.proposed.v0.1",
+  "adoption_boundary_status": "PROPOSED",
+  "context_fields": [
+    "record_id",
+    "run_id",
+    "pair_id",
+    "cell_id",
+    "producer_id",
+    "producer_role",
+    "evidence_ref",
+    "fixture_only",
+    "vehicle_id",
+    "vehicle_incarnation_id",
+    "block_id",
+    "source_event_id",
+    "message_id",
+    "assignment_id",
+    "adoption_mode",
+    "adoption_mode_source",
+    "adoption_mode_version"
+  ],
+  "time_fields": [
+    "native_timestamp",
+    "clock_id",
+    "time_unit",
+    "simulation_step",
+    "phase",
+    "sequence",
+    "time_lower",
+    "time_upper",
+    "reference_clock_id",
+    "clock_mapping_version",
+    "observed_at",
+    "available_at",
+    "reason"
+  ],
+  "time_units": "native time uses time_unit; mapped bounds/observation/availability use reference seconds",
+  "kinds": {
+    "source": {
+      "id": "source_event_id",
+      "role": "source_observer",
+      "required": [
+        "source_type",
+        "qualification_status",
+        "confirmation_ref"
+      ],
+      "optional": [],
+      "statuses": null,
+      "primary_time": "confirmation_time"
+    },
+    "message": {
+      "id": "message_id",
+      "role": "message_generator",
+      "required": [
+        "sender_id",
+        "payload_hash",
+        "payload_type",
+        "payload_ref",
+        "message_kind",
+        "valid_from",
+        "valid_until",
+        "validity_rule_ref"
+      ],
+      "optional": [],
+      "statuses": null,
+      "primary_time": "generated_time"
+    },
+    "send": {
+      "id": "attempt_id",
+      "role": "sender",
+      "required": [
+        "attempt_id",
+        "send_status",
+        "transport_ref"
+      ],
+      "optional": [],
+      "status": "send_status",
+      "statuses": [
+        "SENT",
+        "FAILED",
+        "QUEUED",
+        "NOT_ATTEMPTED",
+        "UNKNOWN"
+      ],
+      "primary_time": "sent_time"
+    },
+    "delivery": {
+      "id": "delivery_id",
+      "role": "receiver",
+      "required": [
+        "delivery_id",
+        "attempt_id",
+        "delivery_status"
+      ],
+      "optional": [],
+      "status": "delivery_status",
+      "statuses": [
+        "RECEIVED",
+        "CONFIRMED_FAILURE",
+        "NOT_OBSERVED",
+        "UNKNOWN",
+        "RIGHT_CENSORED"
+      ],
+      "primary_time": "delivered_time"
+    },
+    "validation": {
+      "id": "validation_id",
+      "role": "validator",
+      "required": [
+        "validation_id",
+        "delivery_id",
+        "validator_id",
+        "validator_version",
+        "validation_status",
+        "reason"
+      ],
+      "optional": [],
+      "status": "validation_status",
+      "statuses": [
+        "VALID",
+        "INVALID",
+        "EXPIRED",
+        "UNKNOWN"
+      ],
+      "primary_time": "validation_time"
+    },
+    "controller": {
+      "id": "controller_instance_id",
+      "role": "controller_registry",
+      "required": [
+        "controller_id",
+        "controller_instance_id",
+        "controller_version",
+        "controller_code_hash",
+        "policy_version",
+        "policy_config_hash",
+        "controlled_vehicle_id"
+      ],
+      "optional": [],
+      "statuses": null,
+      "primary_time": "registered_time"
+    },
+    "input": {
+      "id": "receipt_id",
+      "role": "controller_input",
+      "required": [
+        "receipt_id",
+        "message_id",
+        "payload_hash",
+        "validation_id",
+        "controller_instance_id",
+        "available_time",
+        "input_schema_version",
+        "input_snapshot_ref",
+        "input_status"
+      ],
+      "optional": [],
+      "status": "input_status",
+      "statuses": [
+        "RECEIVED",
+        "QUEUED",
+        "AVAILABLE",
+        "NOT_RECEIVED",
+        "UNKNOWN",
+        "RIGHT_CENSORED"
+      ],
+      "primary_time": "received_time"
+    },
+    "consumption": {
+      "id": "consumption_receipt_id",
+      "role": "policy",
+      "required": [
+        "consumption_receipt_id",
+        "input_receipt_id",
+        "message_id",
+        "payload_hash",
+        "controller_instance_id",
+        "decision_id",
+        "policy_version",
+        "input_snapshot_hash",
+        "consumption_status",
+        "reason",
+        "adoption_boundary_version",
+        "adoption_boundary_status"
+      ],
+      "optional": [],
+      "status": "consumption_status",
+      "statuses": [
+        "RECEIVED",
+        "CONSIDERED",
+        "REJECTED",
+        "POLICY_INPUT_INCLUDED",
+        "UNKNOWN"
+      ],
+      "primary_time": "consumption_time"
+    },
+    "decision": {
+      "id": "decision_id",
+      "role": "policy",
+      "required": [
+        "decision_id",
+        "controller_instance_id",
+        "policy_version",
+        "input_snapshot_hash",
+        "consumed_message_refs",
+        "decision_status",
+        "decision_output_ref",
+        "control_intent",
+        "no_change_reason",
+        "command_disposition"
+      ],
+      "optional": [],
+      "status": "decision_status",
+      "statuses": [
+        "DECIDED",
+        "UNCHANGED",
+        "FAILED",
+        "UNKNOWN"
+      ],
+      "primary_time": "decision_time"
+    },
+    "command": {
+      "id": "command_id",
+      "role": "command_interface",
+      "required": [
+        "command_id",
+        "decision_id",
+        "controller_instance_id",
+        "target_vehicle_id",
+        "command_type",
+        "command_value",
+        "command_unit",
+        "valid_from",
+        "valid_until",
+        "command_status",
+        "execution_interface_ref",
+        "ack_time",
+        "failure_reason",
+        "execution_disposition"
+      ],
+      "optional": [
+        "superseded_by"
+      ],
+      "status": "command_status",
+      "statuses": [
+        "CREATED",
+        "ISSUED",
+        "ACKNOWLEDGED",
+        "REJECTED",
+        "CANCELLED",
+        "SUPERSEDED",
+        "UNKNOWN"
+      ],
+      "primary_time": "issue_time"
+    },
+    "safety": {
+      "id": "intervention_id",
+      "role": "safety_layer",
+      "required": [
+        "intervention_id",
+        "command_id",
+        "safety_layer_id",
+        "safety_layer_version",
+        "constraint_version",
+        "original_command",
+        "modified_command",
+        "intervention_status",
+        "intervention_reason"
+      ],
+      "optional": [
+        "previous_intervention_id"
+      ],
+      "status": "intervention_status",
+      "statuses": [
+        "NOT_OBSERVED",
+        "CONFIRMED_NONE",
+        "MODIFIED",
+        "REJECTED",
+        "UNKNOWN"
+      ],
+      "primary_time": "intervention_time"
+    },
+    "execution": {
+      "id": "execution_id",
+      "role": "execution_reader",
+      "required": [
+        "execution_id",
+        "command_id",
+        "target_vehicle_id",
+        "execution_end",
+        "execution_status",
+        "actual_acceleration",
+        "actual_speed",
+        "actual_position",
+        "state_readback_ref",
+        "execution_reason",
+        "safety_intervention_refs"
+      ],
+      "optional": [],
+      "status": "execution_status",
+      "statuses": [
+        "EXECUTED",
+        "PARTIAL",
+        "NOT_EXECUTED",
+        "MODIFIED_EXECUTED",
+        "UNKNOWN",
+        "VEHICLE_EXITED",
+        "UNOBSERVABLE",
+        "RIGHT_CENSORED"
+      ],
+      "primary_time": "execution_start"
+    },
+    "action_observation": {
+      "id": "action_observation_id",
+      "role": "action_observer",
+      "required": [
+        "action_observation_id",
+        "execution_refs",
+        "comparison_ref",
+        "action_change_status",
+        "observation_ref"
+      ],
+      "optional": [],
+      "status": "action_change_status",
+      "statuses": [
+        "OBSERVED_CHANGE",
+        "NO_CHANGE",
+        "UNKNOWN",
+        "NOT_APPLICABLE"
+      ],
+      "primary_time": "observation_time"
+    },
+    "risk_observation": {
+      "id": "risk_observation_id",
+      "role": "risk_observer",
+      "required": [
+        "risk_observation_id",
+        "action_observation_refs",
+        "measurement_version",
+        "observation_ref",
+        "risk_status"
+      ],
+      "optional": [],
+      "status": "risk_status",
+      "statuses": [
+        "OBSERVED",
+        "UNKNOWN",
+        "RIGHT_CENSORED",
+        "NOT_APPLICABLE"
+      ],
+      "primary_time": "observation_time"
+    }
+  },
+  "scientific_claim_eligible": false
+}

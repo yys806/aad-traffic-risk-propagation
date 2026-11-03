@@ -1,4 +1,14 @@
-## Current — P3 Task1 audit / WP roadmap (2026-11-03)
+## Current — P3 Task2 independent controller evidence (2026-11-03)
+
+P3 Task2已新增独立版本化controller evidence接口与14类记录、显式关联验证器和A–H合成契约验证。schema=aad.p3.controller-evidence.v1；候选策略输入采用边界仍PROPOSED，scientific_claim_eligible=false。真实接收/策略/安全/执行路径尚未接线；P3基础接口可阶段性收口，后续P7直接复用，P5负责采用因果识别。
+
+新增50项定向测试通过；旧四组42项回归已通过（不同运行合计92项，非一次92项）；七个有效合成场景及F七异常通过。首次测试失败/临时目录错误保留。无SUMO/seed/V/holdout读取，无旧Formal schema/生命周期/时间轴/生产控制逻辑变更。
+
+Formal A=0；Independent Qualified Witness=0；F0/Overall TR–TP=Unknown；Stage0.5=CLOSED_WITH_LIMITATIONS；Stage0.6=PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS；Protocol Lock=BLOCKED；Stage I=READY_ENGINEERING_ONLY；Stage1.1=NOT_AUTHORIZED。
+
+[Task2报告](../docs/research/P3/P3_TASK2_FINAL_REPORT.md) · [接口/P7接入](../docs/research/P3/CONTROLLER_EVIDENCE_IMPLEMENTATION.md) · [证据](../evidence/research/P3_TASK2_20261103/README.md)。统一定义仍[27项v0.4](../docs/research/definitions/README.md)。
+
+## Historical — P3 Task1 audit / WP roadmap (2026-11-03)
 
 P3 Task1完成只读机制审计、三份Proposed v0.1契约和WP0–WP4路线修订。WP0=P0/P1；WP1=P2/P3/P4并行；WP2=P5/P6；WP3=P7/P8；WP4=P9；历史P编号/Task ID不变。P2阶段性收口，保留V/归属/严格桥接缺口，不自动追加实验。
 

@@ -1,4 +1,14 @@
-## Current — P3 Task1 decisions / proposals (2026-11-03)
+## Current — P3 Task2 authorized interface implementation (2026-11-03)
+
+Agreed execution scope：独立接口、关联校验、合成fixture/测试/文档与证据；未授权真实SUMO接线/运行。Implemented候选策略输入边界aad.p3.policy-input-adoption.proposed.v0.1保持PROPOSED，不升级统一科研定义。
+
+P5 Enabled/Disabled路径、随机化和资格总体，正式采用定义与动作阈值均Awaiting Researcher Decision。P7后续接线是建议，不是自动实验授权。
+
+Formal A=0；Independent Qualified Witness=0；F0/Overall TR–TP=Unknown；Stage0.5=CLOSED_WITH_LIMITATIONS；Stage0.6=PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS；Protocol Lock=BLOCKED；Stage I=READY_ENGINEERING_ONLY；Stage1.1=NOT_AUTHORIZED。
+
+[Task2报告](../docs/research/P3/P3_TASK2_FINAL_REPORT.md) · [接口/P7接入](../docs/research/P3/CONTROLLER_EVIDENCE_IMPLEMENTATION.md) · [证据](../evidence/research/P3_TASK2_20261103/README.md)。统一定义仍[27项v0.4](../docs/research/definitions/README.md)。
+
+## Historical — P3 Task1 decisions / proposals (2026-11-03)
 
 Agreed scope：研究者授权规划重构、只读实现审计和文档契约，且仅授权编辑指定OB规划一文件；不涉及生产修改或新实验。
 

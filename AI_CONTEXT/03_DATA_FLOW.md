@@ -1,3 +1,9 @@
+## P3 Task2 — explicit event references (2026-11-03)
+
+Source→Message→Send/Delivery/Validation→Input→Consumption→Decision→Command→Safety/Execution→Action Observation→Risk Observation，采用显式ID与run/车辆incarnation关联。支持多消息/多决策/多命令/多执行区间。timeline无字段截断，不按最近时间补链；同step调用顺序与严格区间先后分开。当前仅合成输入，真实运行路径未接入。
+
+[Task2报告](../docs/research/P3/P3_TASK2_FINAL_REPORT.md) · [接口/P7接入](../docs/research/P3/CONTROLLER_EVIDENCE_IMPLEMENTATION.md) · [证据](../evidence/research/P3_TASK2_20261103/README.md)。统一定义仍[27项v0.4](../docs/research/definitions/README.md)。
+
 ## P2 Task7 — 2026-11-02
 
 Task7：冻结source manifest/seed→SUMO raw+审计→独立truth v2/hash（失败Unknown）→candidate manifest→同raw离线三层曲线/压力→精确V/CDF规划→报告/证据。V没有执行，不能从C接回正式F0或risk结论。

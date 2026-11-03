@@ -1,5 +1,9 @@
 # AAD 架构
 
+## 2026-11-03 P3独立控制器证据接口
+
+新增[controller_evidence.py](../code/src/riskprop/controller_evidence.py)作为独立版本化JSON sidecar：生产者边界记录→显式身份/消费/决策/命令/安全/执行图验证→Unknown审计和hash绑定。仅合成验证，真实P7接线未完成；旧Formal schema、Gate和SUMO控制路径不变。[接口说明](research/P3/CONTROLLER_EVIDENCE_IMPLEMENTATION.md)。
+
 ## 2026-10-26 V4 Linux准备与准入
 
 当前源码/固定Linux1.26运行时→不可覆盖staging→新六组Python隔离探针→精确synthetic proposal与false envelope。独立`prepare_stage_0_5_admission_v4.py`只准备Linux研究策略和aad.native-admission.v4候选；技术预检将生产回执未接受与科研待批准分开。整行版本函数同时保护controller/receipt，NativeBackend裸宿主硬锁及四false不变。依据：`docs/STAGE_0_5_V4_PREPARATION_2026-10-26.md`；下方为历史时点。

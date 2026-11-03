@@ -1,0 +1,167 @@
+{
+  "task_id": "AAD-P3-TASK2-20261103",
+  "status": "PASS",
+  "scope": "Independent sidecar interface; no existing production scientific interface changed",
+  "scientific_claim_eligible": false,
+  "fixture_only": true,
+  "new_tests_passed": 50,
+  "legacy_tests_passed_in_prior_targeted_run": 42,
+  "synthetic_scenarios": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H"
+  ],
+  "synthetic_status": "PASS",
+  "protected_input_count": 179,
+  "new_SUMO_runs": 0,
+  "new_seeds": 0,
+  "new_V_runs": 0,
+  "locked_holdout_reads": 0,
+  "checks": {
+    "targeted_syntax": {
+      "status": "PASS",
+      "files": [
+        "code/src/riskprop/controller_evidence.py",
+        "code/scripts/p3_controller_evidence_fixtures.py",
+        "code/scripts/run_p3_task2_controller_evidence_fixture.py",
+        "code/tests/test_controller_evidence.py",
+        "evidence/research/P3_TASK2_20261103/verify_evidence.py"
+      ]
+    },
+    "strict_docs": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": [
+        "D:\\miniconda\\python.exe",
+        "-X",
+        "utf8",
+        "code/scripts/validate_project_docs.py",
+        "--strict-git"
+      ],
+      "local_log": "code/outputs/analysis/p3_task2_20261103_v1/strict_docs.txt",
+      "log_sha256": "5db18e2a9034a539bae1b19daf3725bdeed8777d942aef31b4230598f11c82a3",
+      "output_tail": "PROJECT_DOCS_OK\n"
+    },
+    "diff_check": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "local_log": "code/outputs/analysis/p3_task2_20261103_v1/diff_check.txt",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_tail": ""
+    },
+    "staged_diff_check": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": [
+        "git",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "local_log": "code/outputs/analysis/p3_task2_20261103_v1/staged_diff_check.txt",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "output_tail": ""
+    },
+    "project_evidence_export": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": [
+        "D:\\miniconda\\python.exe",
+        "-X",
+        "utf8",
+        "code/scripts/export_project_evidence.py",
+        "--repo-root",
+        "."
+      ],
+      "local_log": "code/outputs/analysis/p3_task2_20261103_v1/project_evidence_export.txt",
+      "log_sha256": "344d36f7585ac084bf2390c6784ca8205aacafef4cd7b43330d69f5f389b06cd",
+      "output_tail": "PORTABLE_EVIDENCE_EXPORTED results=92 files=1391\n"
+    },
+    "project_evidence_verify": {
+      "status": "PASS",
+      "exit_code": 0,
+      "command": [
+        "D:\\miniconda\\python.exe",
+        "-X",
+        "utf8",
+        "code/scripts/export_project_evidence.py",
+        "--repo-root",
+        ".",
+        "--verify"
+      ],
+      "local_log": "code/outputs/analysis/p3_task2_20261103_v1/project_evidence_verify.txt",
+      "log_sha256": "533a7427e5ae087e1f25bdc6ea49b9c7781c435d698f982bf3f59653ae421758",
+      "output_tail": "PORTABLE_EVIDENCE_OK\n"
+    },
+    "native_evidence_recompute": {
+      "status": "PASS",
+      "portable": false,
+      "counts": {
+        "bundle": 17,
+        "protected_inputs": 186,
+        "output_bindings": 21,
+        "local_skipped": 0,
+        "git_blob_variants": 0,
+        "scenarios": 7,
+        "invalid_cases": 7
+      },
+      "fixture_only": true,
+      "scientific_claim_eligible": false,
+      "errors": []
+    },
+    "portable_git_snapshot": {
+      "staged_tree": "22d8d8d95fb61722667d0b3daeb40aaee45e3176",
+      "archive_sha256": "65c24a47772bec6877ccdd1a91ea07724164d2da6e2e035c59e9ce83a1c8310b",
+      "snapshot": "D:\\shen\\TJU\\AAD\\code\\outputs\\analysis\\p3_task2_20261103_v1\\portable_preseal",
+      "exit_code": 0,
+      "verification": {
+        "status": "PASS",
+        "portable": true,
+        "counts": {
+          "bundle": 17,
+          "protected_inputs": 171,
+          "output_bindings": 21,
+          "local_skipped": 8,
+          "git_blob_variants": 9,
+          "scenarios": 7,
+          "invalid_cases": 7
+        },
+        "fixture_only": true,
+        "scientific_claim_eligible": false,
+        "errors": []
+      },
+      "stderr": ""
+    },
+    "task_document_links": {
+      "status": "PASS",
+      "documents": [
+        "docs/research/P3/P3_TASK2_FINAL_REPORT.md",
+        "docs/research/P3/CONTROLLER_EVIDENCE_IMPLEMENTATION.md",
+        "docs/research/P3/README.md",
+        "evidence/research/P3_TASK2_20261103/README.md"
+      ],
+      "links_checked": 26
+    }
+  },
+  "remaining_scientific_limits": [
+    "Actual producer paths not connected",
+    "Proposed adoption boundary not ratified",
+    "Logging does not identify causal effect",
+    "P2 physical arrival and bridge limits unchanged"
+  ],
+  "context_consistency_check": "PASS: 00-08 architecture/dataflow/module/fixture/decision/issue summaries and project navigation synchronized; formal statuses and 27 definitions unchanged",
+  "packaging_incidents": [
+    "Inline PowerShell/Python finalization command had newline-escaping SyntaxError before any write; acceptance record then finalized using this saved helper. Existing snapshot checks remained intact."
+  ],
+  "git_finalization_note": "Preseal staged tree recorded here; final sealed tree and commit/push are checked after sealing to avoid self-referential hashes."
+}

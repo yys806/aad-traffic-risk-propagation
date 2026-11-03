@@ -1,4 +1,12 @@
-## Current — P2 Task7 source timestamp backfill (2026-11-02)
+## Current — P3 Task2 synthetic engineering fixture only (2026-11-03)
+
+本次不是交通实验、校准补充或Independent V。A/B/C/D/E/G/H七个有效合成场景与F七异常全通过；fixture_only=true、scientific_claim_eligible=false。输出code/outputs/analysis/p3_task2_20261103_v1/，保留开发/首次失败，封装使用synthetic_sealed。
+
+新增50项定向测试通过；旧四组42项回归已通过（不同运行合计92项，非一次92项）；七个有效合成场景及F七异常通过。首次测试失败/临时目录错误保留。无SUMO/seed/V/holdout读取，无旧Formal schema/生命周期/时间轴/生产控制逻辑变更。
+
+[Task2报告](../docs/research/P3/P3_TASK2_FINAL_REPORT.md) · [接口/P7接入](../docs/research/P3/CONTROLLER_EVIDENCE_IMPLEMENTATION.md) · [证据](../evidence/research/P3_TASK2_20261103/README.md)。统一定义仍[27项v0.4](../docs/research/definitions/README.md)。
+
+## Historical — P2 Task7 source timestamp backfill (2026-11-02)
 
 研究者已授权全575完成轨迹源时间回溯，576计划逐条保留（1原失败Unknown、72 N0 Not Applicable、503实际干预签名成立）；288区间提前1.75s。原359/47/0不改，本次版本化派生overlay359/119/0；Task8的119已独立逐单位复现。W8/Qualified未知资格不升级，1728原标签、原audit/detector/参数、V与双η结论不改；新增SUMO/seed/V均0。
 

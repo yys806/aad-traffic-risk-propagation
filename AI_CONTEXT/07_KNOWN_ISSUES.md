@@ -1,4 +1,12 @@
-## Current — P3 Task1 mechanism evidence gaps (2026-11-03)
+## Current — P3 Task2 remaining evidence gaps (2026-11-03)
+
+已解决基础结构缺口：独立消费/决策/命令/安全/执行记录与多对多外键、时间及Unknown校验。尚未解决真实producer接线和日志真实性，payload/snapshot外部字节需P7 manifest绑定；候选回执不能替代正式采用、严格时间或因果认证。
+
+旧Formal缺失布尔/八列投影/safety默认值问题仍限于旧接口，未改历史契约。P2物理归属、W8/Qualified/V/双η缺口保持；真实安全层和readback证据尚无。
+
+[Task2报告](../docs/research/P3/P3_TASK2_FINAL_REPORT.md) · [接口/P7接入](../docs/research/P3/CONTROLLER_EVIDENCE_IMPLEMENTATION.md) · [证据](../evidence/research/P3_TASK2_20261103/README.md)。统一定义仍[27项v0.4](../docs/research/definitions/README.md)。
+
+## Historical — P3 Task1 mechanism evidence gaps (2026-11-03)
 
 现adopted由fixture设计条件或工程时程赋值，不是控制器消费凭证。Stage0.1已有孤立SUMO setter/native readback，但缺Message–Receipt–Decision–Command–Execution关联、controller/policy版本与实际安全层日志；时间排序/配对动作差异不足以证明采用因果作用。
 

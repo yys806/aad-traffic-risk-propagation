@@ -1,0 +1,1499 @@
+{
+  "fixture_only": true,
+  "scientific_claim_eligible": false,
+  "scenarios": {
+    "A": {
+      "schema_version": "aad.p3.controller-evidence.v1",
+      "structural_status": "VALID",
+      "record_count": 14,
+      "counts_by_kind": {
+        "source": 1,
+        "message": 1,
+        "send": 1,
+        "delivery": 1,
+        "validation": 1,
+        "controller": 1,
+        "input": 1,
+        "consumption": 1,
+        "decision": 1,
+        "command": 1,
+        "safety": 1,
+        "execution": 1,
+        "action_observation": 1,
+        "risk_observation": 1
+      },
+      "fixture_only": true,
+      "candidate_policy_input_receipts": [
+        "c1"
+      ],
+      "adoption_boundary_status": "PROPOSED",
+      "recorded_policy_input_receipts": [
+        "c1"
+      ],
+      "adoption_boundary_version": "aad.p3.policy-input-adoption.proposed.v0.1",
+      "scientific_claim_eligible": false,
+      "issues": [],
+      "edges": [
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-message",
+          "relation": "source->message",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-send",
+          "relation": "source->send",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-send",
+          "relation": "message->send",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-delivery",
+          "relation": "source->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-delivery",
+          "relation": "message->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-send",
+          "to_record_id": "r-delivery",
+          "relation": "send->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-validation",
+          "relation": "source->validation",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-validation",
+          "relation": "message->validation",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-delivery",
+          "to_record_id": "r-validation",
+          "relation": "delivery->validation",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-input",
+          "relation": "source->input",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-input",
+          "relation": "message->input",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-controller",
+          "to_record_id": "r-input",
+          "relation": "controller->input",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-validation",
+          "to_record_id": "r-input",
+          "relation": "validation->input",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-consumption",
+          "relation": "source->consumption",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-consumption",
+          "relation": "message->consumption",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-controller",
+          "to_record_id": "r-consumption",
+          "relation": "controller->consumption",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-input",
+          "to_record_id": "r-consumption",
+          "relation": "input->consumption",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-consumption",
+          "to_record_id": "r-decision",
+          "relation": "consumption->decision",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-controller",
+          "to_record_id": "r-decision",
+          "relation": "controller->decision",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-controller",
+          "to_record_id": "r-command",
+          "relation": "controller->command",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-decision",
+          "to_record_id": "r-command",
+          "relation": "decision->command",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-command",
+          "to_record_id": "r-safety",
+          "relation": "command->safety",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-command",
+          "to_record_id": "r-execution",
+          "relation": "command->execution",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-safety",
+          "to_record_id": "r-execution",
+          "relation": "safety->execution",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-execution",
+          "to_record_id": "r-action",
+          "relation": "execution->action_observation",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-action",
+          "to_record_id": "r-risk",
+          "relation": "action_observation->risk_observation",
+          "time_relation": "BEFORE"
+        }
+      ],
+      "causal_effect_status": "NOT_EVALUATED",
+      "physical_arrival_status": "UNKNOWN"
+    },
+    "B": {
+      "schema_version": "aad.p3.controller-evidence.v1",
+      "structural_status": "VALID_WITH_UNKNOWNS",
+      "record_count": 7,
+      "counts_by_kind": {
+        "source": 1,
+        "message": 1,
+        "send": 1,
+        "delivery": 1,
+        "validation": 1,
+        "controller": 1,
+        "input": 1,
+        "consumption": 0,
+        "decision": 0,
+        "command": 0,
+        "safety": 0,
+        "execution": 0,
+        "action_observation": 0,
+        "risk_observation": 0
+      },
+      "fixture_only": true,
+      "candidate_policy_input_receipts": [],
+      "adoption_boundary_status": "PROPOSED",
+      "recorded_policy_input_receipts": [],
+      "adoption_boundary_version": "aad.p3.policy-input-adoption.proposed.v0.1",
+      "scientific_claim_eligible": false,
+      "issues": [
+        {
+          "code": "MISSING_CONSUMPTION_OBSERVATION",
+          "record_id": "r-input",
+          "status": "UNKNOWN",
+          "detail": "no policy-input receipt observed; not proof of non-adoption"
+        }
+      ],
+      "edges": [
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-message",
+          "relation": "source->message",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-send",
+          "relation": "source->send",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-send",
+          "relation": "message->send",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-delivery",
+          "relation": "source->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-delivery",
+          "relation": "message->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-send",
+          "to_record_id": "r-delivery",
+          "relation": "send->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-validation",
+          "relation": "source->validation",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-validation",
+          "relation": "message->validation",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-delivery",
+          "to_record_id": "r-validation",
+          "relation": "delivery->validation",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-input",
+          "relation": "source->input",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-input",
+          "relation": "message->input",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-controller",
+          "to_record_id": "r-input",
+          "relation": "controller->input",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-validation",
+          "to_record_id": "r-input",
+          "relation": "validation->input",
+          "time_relation": "BEFORE"
+        }
+      ],
+      "causal_effect_status": "NOT_EVALUATED",
+      "physical_arrival_status": "UNKNOWN"
+    },
+    "C": {
+      "schema_version": "aad.p3.controller-evidence.v1",
+      "structural_status": "VALID",
+      "record_count": 8,
+      "counts_by_kind": {
+        "source": 1,
+        "message": 1,
+        "send": 1,
+        "delivery": 1,
+        "validation": 1,
+        "controller": 1,
+        "input": 1,
+        "consumption": 1,
+        "decision": 0,
+        "command": 0,
+        "safety": 0,
+        "execution": 0,
+        "action_observation": 0,
+        "risk_observation": 0
+      },
+      "fixture_only": true,
+      "candidate_policy_input_receipts": [],
+      "adoption_boundary_status": "PROPOSED",
+      "recorded_policy_input_receipts": [],
+      "adoption_boundary_version": "aad.p3.policy-input-adoption.proposed.v0.1",
+      "scientific_claim_eligible": false,
+      "issues": [],
+      "edges": [
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-message",
+          "relation": "source->message",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-send",
+          "relation": "source->send",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-send",
+          "relation": "message->send",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-delivery",
+          "relation": "source->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-delivery",
+          "relation": "message->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-send",
+          "to_record_id": "r-delivery",
+          "relation": "send->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-validation",
+          "relation": "source->validation",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-validation",
+          "relation": "message->validation",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-delivery",
+          "to_record_id": "r-validation",
+          "relation": "delivery->validation",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-input",
+          "relation": "source->input",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-input",
+          "relation": "message->input",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-controller",
+          "to_record_id": "r-input",
+          "relation": "controller->input",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-validation",
+          "to_record_id": "r-input",
+          "relation": "validation->input",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-consumption",
+          "relation": "source->consumption",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-consumption",
+          "relation": "message->consumption",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-controller",
+          "to_record_id": "r-consumption",
+          "relation": "controller->consumption",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-input",
+          "to_record_id": "r-consumption",
+          "relation": "input->consumption",
+          "time_relation": "BEFORE"
+        }
+      ],
+      "causal_effect_status": "NOT_EVALUATED",
+      "physical_arrival_status": "UNKNOWN"
+    },
+    "D": {
+      "schema_version": "aad.p3.controller-evidence.v1",
+      "structural_status": "VALID",
+      "record_count": 9,
+      "counts_by_kind": {
+        "source": 1,
+        "message": 1,
+        "send": 1,
+        "delivery": 1,
+        "validation": 1,
+        "controller": 1,
+        "input": 1,
+        "consumption": 1,
+        "decision": 1,
+        "command": 0,
+        "safety": 0,
+        "execution": 0,
+        "action_observation": 0,
+        "risk_observation": 0
+      },
+      "fixture_only": true,
+      "candidate_policy_input_receipts": [
+        "c1"
+      ],
+      "adoption_boundary_status": "PROPOSED",
+      "recorded_policy_input_receipts": [
+        "c1"
+      ],
+      "adoption_boundary_version": "aad.p3.policy-input-adoption.proposed.v0.1",
+      "scientific_claim_eligible": false,
+      "issues": [],
+      "edges": [
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-message",
+          "relation": "source->message",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-send",
+          "relation": "source->send",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-send",
+          "relation": "message->send",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-delivery",
+          "relation": "source->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-delivery",
+          "relation": "message->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-send",
+          "to_record_id": "r-delivery",
+          "relation": "send->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-validation",
+          "relation": "source->validation",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-validation",
+          "relation": "message->validation",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-delivery",
+          "to_record_id": "r-validation",
+          "relation": "delivery->validation",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-input",
+          "relation": "source->input",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-input",
+          "relation": "message->input",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-controller",
+          "to_record_id": "r-input",
+          "relation": "controller->input",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-validation",
+          "to_record_id": "r-input",
+          "relation": "validation->input",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-consumption",
+          "relation": "source->consumption",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-consumption",
+          "relation": "message->consumption",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-controller",
+          "to_record_id": "r-consumption",
+          "relation": "controller->consumption",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-input",
+          "to_record_id": "r-consumption",
+          "relation": "input->consumption",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-consumption",
+          "to_record_id": "r-decision",
+          "relation": "consumption->decision",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-controller",
+          "to_record_id": "r-decision",
+          "relation": "controller->decision",
+          "time_relation": "BEFORE"
+        }
+      ],
+      "causal_effect_status": "NOT_EVALUATED",
+      "physical_arrival_status": "UNKNOWN"
+    },
+    "E": {
+      "schema_version": "aad.p3.controller-evidence.v1",
+      "structural_status": "VALID",
+      "record_count": 14,
+      "counts_by_kind": {
+        "source": 1,
+        "message": 1,
+        "send": 1,
+        "delivery": 1,
+        "validation": 1,
+        "controller": 1,
+        "input": 1,
+        "consumption": 1,
+        "decision": 1,
+        "command": 1,
+        "safety": 1,
+        "execution": 1,
+        "action_observation": 1,
+        "risk_observation": 1
+      },
+      "fixture_only": true,
+      "candidate_policy_input_receipts": [
+        "c1"
+      ],
+      "adoption_boundary_status": "PROPOSED",
+      "recorded_policy_input_receipts": [
+        "c1"
+      ],
+      "adoption_boundary_version": "aad.p3.policy-input-adoption.proposed.v0.1",
+      "scientific_claim_eligible": false,
+      "issues": [],
+      "edges": [
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-message",
+          "relation": "source->message",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-send",
+          "relation": "source->send",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-send",
+          "relation": "message->send",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-delivery",
+          "relation": "source->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-delivery",
+          "relation": "message->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-send",
+          "to_record_id": "r-delivery",
+          "relation": "send->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-validation",
+          "relation": "source->validation",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-validation",
+          "relation": "message->validation",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-delivery",
+          "to_record_id": "r-validation",
+          "relation": "delivery->validation",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-input",
+          "relation": "source->input",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-input",
+          "relation": "message->input",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-controller",
+          "to_record_id": "r-input",
+          "relation": "controller->input",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-validation",
+          "to_record_id": "r-input",
+          "relation": "validation->input",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-consumption",
+          "relation": "source->consumption",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-consumption",
+          "relation": "message->consumption",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-controller",
+          "to_record_id": "r-consumption",
+          "relation": "controller->consumption",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-input",
+          "to_record_id": "r-consumption",
+          "relation": "input->consumption",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-consumption",
+          "to_record_id": "r-decision",
+          "relation": "consumption->decision",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-controller",
+          "to_record_id": "r-decision",
+          "relation": "controller->decision",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-controller",
+          "to_record_id": "r-command",
+          "relation": "controller->command",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-decision",
+          "to_record_id": "r-command",
+          "relation": "decision->command",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-command",
+          "to_record_id": "r-safety",
+          "relation": "command->safety",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-command",
+          "to_record_id": "r-execution",
+          "relation": "command->execution",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-safety",
+          "to_record_id": "r-execution",
+          "relation": "safety->execution",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-execution",
+          "to_record_id": "r-action",
+          "relation": "execution->action_observation",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-action",
+          "to_record_id": "r-risk",
+          "relation": "action_observation->risk_observation",
+          "time_relation": "BEFORE"
+        }
+      ],
+      "causal_effect_status": "NOT_EVALUATED",
+      "physical_arrival_status": "UNKNOWN"
+    },
+    "G": {
+      "schema_version": "aad.p3.controller-evidence.v1",
+      "structural_status": "VALID",
+      "record_count": 29,
+      "counts_by_kind": {
+        "source": 1,
+        "message": 3,
+        "send": 4,
+        "delivery": 5,
+        "validation": 3,
+        "controller": 1,
+        "input": 2,
+        "consumption": 3,
+        "decision": 2,
+        "command": 1,
+        "safety": 1,
+        "execution": 1,
+        "action_observation": 1,
+        "risk_observation": 1
+      },
+      "fixture_only": true,
+      "candidate_policy_input_receipts": [
+        "c1",
+        "c-m2",
+        "c-cycle2"
+      ],
+      "adoption_boundary_status": "PROPOSED",
+      "recorded_policy_input_receipts": [
+        "c1",
+        "c-m2",
+        "c-cycle2"
+      ],
+      "adoption_boundary_version": "aad.p3.policy-input-adoption.proposed.v0.1",
+      "scientific_claim_eligible": false,
+      "issues": [],
+      "edges": [
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-message",
+          "relation": "source->message",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-send",
+          "relation": "source->send",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-send",
+          "relation": "message->send",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-delivery",
+          "relation": "source->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-delivery",
+          "relation": "message->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-send",
+          "to_record_id": "r-delivery",
+          "relation": "send->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-validation",
+          "relation": "source->validation",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-validation",
+          "relation": "message->validation",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-delivery",
+          "to_record_id": "r-validation",
+          "relation": "delivery->validation",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-input",
+          "relation": "source->input",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-input",
+          "relation": "message->input",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-controller",
+          "to_record_id": "r-input",
+          "relation": "controller->input",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-validation",
+          "to_record_id": "r-input",
+          "relation": "validation->input",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-consumption",
+          "relation": "source->consumption",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-consumption",
+          "relation": "message->consumption",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-controller",
+          "to_record_id": "r-consumption",
+          "relation": "controller->consumption",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-input",
+          "to_record_id": "r-consumption",
+          "relation": "input->consumption",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-consumption",
+          "to_record_id": "r-decision",
+          "relation": "consumption->decision",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-controller",
+          "to_record_id": "r-decision",
+          "relation": "controller->decision",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-consumption-m2",
+          "to_record_id": "r-decision",
+          "relation": "consumption->decision",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-controller",
+          "to_record_id": "r-command",
+          "relation": "controller->command",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-decision",
+          "to_record_id": "r-command",
+          "relation": "decision->command",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-command",
+          "to_record_id": "r-safety",
+          "relation": "command->safety",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-command",
+          "to_record_id": "r-execution",
+          "relation": "command->execution",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-safety",
+          "to_record_id": "r-execution",
+          "relation": "safety->execution",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-execution",
+          "to_record_id": "r-action",
+          "relation": "execution->action_observation",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-action",
+          "to_record_id": "r-risk",
+          "relation": "action_observation->risk_observation",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-send-retry",
+          "relation": "source->send",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-send-retry",
+          "relation": "message->send",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-delivery-repeat",
+          "relation": "source->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-delivery-repeat",
+          "relation": "message->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-send-retry",
+          "to_record_id": "r-delivery-repeat",
+          "relation": "send->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-delivery-other",
+          "relation": "source->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-delivery-other",
+          "relation": "message->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-send-retry",
+          "to_record_id": "r-delivery-other",
+          "relation": "send->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-message-m2",
+          "relation": "source->message",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-send-m2",
+          "relation": "source->send",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message-m2",
+          "to_record_id": "r-send-m2",
+          "relation": "message->send",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-delivery-m2",
+          "relation": "source->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message-m2",
+          "to_record_id": "r-delivery-m2",
+          "relation": "message->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-send-m2",
+          "to_record_id": "r-delivery-m2",
+          "relation": "send->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-validation-m2",
+          "relation": "source->validation",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message-m2",
+          "to_record_id": "r-validation-m2",
+          "relation": "message->validation",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-delivery-m2",
+          "to_record_id": "r-validation-m2",
+          "relation": "delivery->validation",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-input-m2",
+          "relation": "source->input",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message-m2",
+          "to_record_id": "r-input-m2",
+          "relation": "message->input",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-controller",
+          "to_record_id": "r-input-m2",
+          "relation": "controller->input",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-validation-m2",
+          "to_record_id": "r-input-m2",
+          "relation": "validation->input",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-consumption-m2",
+          "relation": "source->consumption",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message-m2",
+          "to_record_id": "r-consumption-m2",
+          "relation": "message->consumption",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-controller",
+          "to_record_id": "r-consumption-m2",
+          "relation": "controller->consumption",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-input-m2",
+          "to_record_id": "r-consumption-m2",
+          "relation": "input->consumption",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-consumption-cycle2",
+          "relation": "source->consumption",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-consumption-cycle2",
+          "relation": "message->consumption",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-controller",
+          "to_record_id": "r-consumption-cycle2",
+          "relation": "controller->consumption",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-input",
+          "to_record_id": "r-consumption-cycle2",
+          "relation": "input->consumption",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-consumption-cycle2",
+          "to_record_id": "r-decision-cycle2",
+          "relation": "consumption->decision",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-controller",
+          "to_record_id": "r-decision-cycle2",
+          "relation": "controller->decision",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-message-expired",
+          "relation": "source->message",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-send-expired",
+          "relation": "source->send",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message-expired",
+          "to_record_id": "r-send-expired",
+          "relation": "message->send",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-delivery-expired",
+          "relation": "source->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message-expired",
+          "to_record_id": "r-delivery-expired",
+          "relation": "message->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-send-expired",
+          "to_record_id": "r-delivery-expired",
+          "relation": "send->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-validation-expired",
+          "relation": "source->validation",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message-expired",
+          "to_record_id": "r-validation-expired",
+          "relation": "message->validation",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-delivery-expired",
+          "to_record_id": "r-validation-expired",
+          "relation": "delivery->validation",
+          "time_relation": "BEFORE"
+        }
+      ],
+      "causal_effect_status": "NOT_EVALUATED",
+      "physical_arrival_status": "UNKNOWN"
+    },
+    "H": {
+      "schema_version": "aad.p3.controller-evidence.v1",
+      "structural_status": "VALID_WITH_UNKNOWNS",
+      "record_count": 14,
+      "counts_by_kind": {
+        "source": 1,
+        "message": 1,
+        "send": 1,
+        "delivery": 1,
+        "validation": 1,
+        "controller": 1,
+        "input": 1,
+        "consumption": 1,
+        "decision": 1,
+        "command": 1,
+        "safety": 1,
+        "execution": 1,
+        "action_observation": 1,
+        "risk_observation": 1
+      },
+      "fixture_only": true,
+      "candidate_policy_input_receipts": [
+        "c1"
+      ],
+      "adoption_boundary_status": "PROPOSED",
+      "recorded_policy_input_receipts": [
+        "c1"
+      ],
+      "adoption_boundary_version": "aad.p3.policy-input-adoption.proposed.v0.1",
+      "scientific_claim_eligible": false,
+      "issues": [
+        {
+          "code": "UNKNOWN_TIMESTAMP",
+          "record_id": "r-risk",
+          "status": "UNKNOWN",
+          "detail": "missing clock/mapping/bounds; not filled with zero"
+        },
+        {
+          "code": "UNKNOWN_TEMPORAL_ORDER",
+          "record_id": "r-input",
+          "status": "UNKNOWN",
+          "detail": "validation->input: OVERLAP"
+        },
+        {
+          "code": "UNKNOWN_EXECUTION_END",
+          "record_id": "r-execution",
+          "status": "UNKNOWN",
+          "detail": "execution end not observed"
+        },
+        {
+          "code": "MISSING_STATE_READBACK",
+          "record_id": "r-execution",
+          "status": "UNKNOWN",
+          "detail": "actual state remains unknown"
+        },
+        {
+          "code": "UNKNOWN_EXECUTION",
+          "record_id": "r-execution",
+          "status": "UNKNOWN",
+          "detail": "RIGHT_CENSORED"
+        },
+        {
+          "code": "UNKNOWN_TEMPORAL_ORDER",
+          "record_id": "r-risk",
+          "status": "UNKNOWN",
+          "detail": "action_observation->risk_observation: UNKNOWN"
+        }
+      ],
+      "edges": [
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-message",
+          "relation": "source->message",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-send",
+          "relation": "source->send",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-send",
+          "relation": "message->send",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-delivery",
+          "relation": "source->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-delivery",
+          "relation": "message->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-send",
+          "to_record_id": "r-delivery",
+          "relation": "send->delivery",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-validation",
+          "relation": "source->validation",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-validation",
+          "relation": "message->validation",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-delivery",
+          "to_record_id": "r-validation",
+          "relation": "delivery->validation",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-input",
+          "relation": "source->input",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-input",
+          "relation": "message->input",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-controller",
+          "to_record_id": "r-input",
+          "relation": "controller->input",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-validation",
+          "to_record_id": "r-input",
+          "relation": "validation->input",
+          "time_relation": "OVERLAP"
+        },
+        {
+          "from_record_id": "r-source",
+          "to_record_id": "r-consumption",
+          "relation": "source->consumption",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-message",
+          "to_record_id": "r-consumption",
+          "relation": "message->consumption",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-controller",
+          "to_record_id": "r-consumption",
+          "relation": "controller->consumption",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-input",
+          "to_record_id": "r-consumption",
+          "relation": "input->consumption",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-consumption",
+          "to_record_id": "r-decision",
+          "relation": "consumption->decision",
+          "time_relation": "CALL_ORDER"
+        },
+        {
+          "from_record_id": "r-controller",
+          "to_record_id": "r-decision",
+          "relation": "controller->decision",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-controller",
+          "to_record_id": "r-command",
+          "relation": "controller->command",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-decision",
+          "to_record_id": "r-command",
+          "relation": "decision->command",
+          "time_relation": "CALL_ORDER"
+        },
+        {
+          "from_record_id": "r-command",
+          "to_record_id": "r-safety",
+          "relation": "command->safety",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-command",
+          "to_record_id": "r-execution",
+          "relation": "command->execution",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-safety",
+          "to_record_id": "r-execution",
+          "relation": "safety->execution",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-execution",
+          "to_record_id": "r-action",
+          "relation": "execution->action_observation",
+          "time_relation": "BEFORE"
+        },
+        {
+          "from_record_id": "r-action",
+          "to_record_id": "r-risk",
+          "relation": "action_observation->risk_observation",
+          "time_relation": "UNKNOWN"
+        }
+      ],
+      "causal_effect_status": "NOT_EVALUATED",
+      "physical_arrival_status": "UNKNOWN"
+    }
+  },
+  "F": {
+    "orphan_message": {
+      "expected": "ORPHAN_REFERENCE",
+      "actual": "ORPHAN_REFERENCE",
+      "status": "PASS"
+    },
+    "missing_decision": {
+      "expected": "MISSING_DECISION",
+      "actual": "MISSING_DECISION",
+      "status": "PASS"
+    },
+    "cross_run": {
+      "expected": "CROSS_RUN_REFERENCE",
+      "actual": "CROSS_RUN_REFERENCE",
+      "status": "PASS"
+    },
+    "cross_incarnation": {
+      "expected": "CROSS_VEHICLE_REFERENCE",
+      "actual": "CROSS_VEHICLE_REFERENCE",
+      "status": "PASS"
+    },
+    "payload_conflict": {
+      "expected": "CONFLICTING_PAYLOAD_HASH",
+      "actual": "CONFLICTING_PAYLOAD_HASH",
+      "status": "PASS"
+    },
+    "missing_command": {
+      "expected": "MISSING_COMMAND",
+      "actual": "MISSING_COMMAND",
+      "status": "PASS"
+    },
+    "duplicate_id": {
+      "expected": "DUPLICATE_ID",
+      "actual": "DUPLICATE_ID",
+      "status": "PASS"
+    }
+  }
+}
