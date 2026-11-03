@@ -685,3 +685,6 @@ Added `docs/research/RESEARCH_GOVERNANCE.md` and the P0 literature audit package
 完成 P0 Task2：六篇核心最近邻全文/合法访问审计；双传播动态 DAG；ITT、delivery、adoption、mediation 和 network interference estimand；独立物理反事实审计；区域风险中介链；NGSIM、MiTra T1、SPMD、SUMO 能力矩阵；事件/消息/控制器/动作/物理传播/风险/暴露证据契约。新增报告位于 docs/research/P0/P0_TASK2_*.md，机器可读契约和变量字典同步登记。
 
 本任务只更新文献、因果识别和证据治理，不启动新正式 SUMO/现实采集，不访问 locked holdout，不改变风险指标、Gate、Protocol Lock、Stage I 或 Stage 1.1。Peng 和 Schönhof PDF 由研究者提供并导入 Zotero；附件 SHA256 已写入逐篇精读记录。
+## Current — P7 Task1 real SUMO control-path audit (2026-11-03)
+
+完成只读控制路径审计、真实控制能力矩阵、P3/P4接入映射、SUMO时序/ID/manifest蓝图和便携证据。确认 `NO_EXISTING_MESSAGE_DRIVEN_TARGET_POLICY_IDENTIFIED`：Stage 0.1为固定时程控制，Stage 0.5 lane supply/replay/Observer不是消息策略，Task20是Fixture。同步00/02/03/04/06/07、项目索引/状态/阶段索引/结果索引/注册表。无SUMO/TraCI、seed、轨迹、holdout或生产代码修改；P7 Task2阻塞于真实策略识别。

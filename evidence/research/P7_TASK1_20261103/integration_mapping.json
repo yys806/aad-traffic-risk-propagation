@@ -1,0 +1,117 @@
+{
+  "schema_version": "aad.p7.task1.integration-mapping.v1",
+  "task_id": "AAD-P7-TASK1-20261103",
+  "p3_schema_version": "aad.p3.controller-evidence.v1",
+  "adoption_boundary_version": "aad.p3.policy-input-adoption.proposed.v0.1",
+  "adoption_boundary_status": "PROPOSED",
+  "conclusion": "REAL_PRODUCER_NOT_CONNECTED",
+  "six_insertion_points": [
+    {
+      "id": "A",
+      "name": "message_receive_and_validation",
+      "current_location": "No receiver/validator function identified; Stage 0.1 protocol fields are same-loop compatibility fields at code/src/riskprop/stage_0_1_sumo.py:L312-L325",
+      "p3_kinds": ["delivery", "validation", "input"],
+      "required_task2_hook": "Actual receiver callback or input boundary; append delivery, validation and input independently",
+      "status": "MISSING_REAL_PRODUCER",
+      "unknown_rule": "No receiver row is not evidence of permanent non-delivery"
+    },
+    {
+      "id": "B",
+      "name": "policy_input_and_consumption",
+      "current_location": "No real policy input assembly or consumption function identified",
+      "p3_kinds": ["consumption"],
+      "required_task2_hook": "Actual policy input assembly and policy inclusion boundary with snapshot hash",
+      "status": "MISSING_REAL_POLICY",
+      "unknown_rule": "Filter read/considered/rejected cannot be promoted to POLICY_INPUT_INCLUDED"
+    },
+    {
+      "id": "C",
+      "name": "controller_decision",
+      "current_location": "No independent decision record; Stage 0.1 target command is same-loop fixed schedule",
+      "p3_kinds": ["controller", "decision"],
+      "required_task2_hook": "Policy output boundary with decision_id, policy version, snapshot hash and command disposition",
+      "status": "MISSING_REAL_POLICY",
+      "unknown_rule": "Consumed message with unchanged output is a valid explicit outcome"
+    },
+    {
+      "id": "D",
+      "name": "control_command",
+      "current_location": "TraCI calls at stage_0_1_sumo.py:L249,L256; replay calls at fixed replay modules",
+      "p3_kinds": ["command"],
+      "required_task2_hook": "Thin wrapper around actual API call; preserve API name, args, unit, validity, return/exception",
+      "status": "ISOLATED_API_EXISTS_LINKAGE_MISSING",
+      "unknown_rule": "Setter value is not actual vehicle acceleration/speed"
+    },
+    {
+      "id": "E",
+      "name": "safety_processing",
+      "current_location": "No independent policy safety filter identified; stage_0_1_sumo.py:L291 writes safety_intervened=False",
+      "p3_kinds": ["safety"],
+      "required_task2_hook": "Only if a real safety layer exists; record original/modified command and reason",
+      "status": "NOT_IDENTIFIED",
+      "unknown_rule": "SUMO native constraints and collision handling are not automatically CONFIRMED_NONE"
+    },
+    {
+      "id": "F",
+      "name": "actual_execution",
+      "current_location": "Post-step getters in stage_0_1_sumo.py:L258-L285 and Stage 0.5 Observer/readback paths",
+      "p3_kinds": ["execution"],
+      "required_task2_hook": "Post-step readback bound to command_id and vehicle_incarnation_id",
+      "status": "READBACK_EXISTS_LINKAGE_MISSING",
+      "unknown_rule": "Exit, missing getter or incomplete step is UNKNOWN/RIGHT_CENSORED/VEHICLE_EXITED as observed"
+    }
+  ],
+  "p3_kind_mapping": [
+    {"kind":"source","producer_role":"source_observer","current_status":"legacy source_present/fixture only","future_hook":"source qualification boundary","scientific_status":"not qualified by current path"},
+    {"kind":"message","producer_role":"message_generator","current_status":"legacy protocol row only","future_hook":"message generation","scientific_status":"payload/validity not receiver evidence"},
+    {"kind":"send","producer_role":"sender","current_status":"missing","future_hook":"transport attempt","scientific_status":"unknown"},
+    {"kind":"delivery","producer_role":"receiver","current_status":"missing","future_hook":"receiver delivery observation","scientific_status":"unknown"},
+    {"kind":"validation","producer_role":"validator","current_status":"legacy booleans only","future_hook":"receiver validation function","scientific_status":"unknown"},
+    {"kind":"controller","producer_role":"controller_registry","current_status":"missing","future_hook":"controller initialization","scientific_status":"unknown"},
+    {"kind":"input","producer_role":"controller_input","current_status":"missing","future_hook":"policy input availability boundary","scientific_status":"unknown"},
+    {"kind":"consumption","producer_role":"policy","current_status":"missing real producer","future_hook":"actual strategy input inclusion","scientific_status":"PROPOSED boundary only"},
+    {"kind":"decision","producer_role":"policy","current_status":"missing","future_hook":"actual policy output","scientific_status":"unknown"},
+    {"kind":"command","producer_role":"command_interface","current_status":"isolated TraCI calls","future_hook":"command API wrapper","scientific_status":"not linked to decision"},
+    {"kind":"safety","producer_role":"safety_layer","current_status":"independent layer not identified","future_hook":"real safety filter if present","scientific_status":"NOT_OBSERVED/UNKNOWN"},
+    {"kind":"execution","producer_role":"execution_reader","current_status":"native readback partial","future_hook":"post-step execution reader","scientific_status":"readback exists; causal effect not inferred"},
+    {"kind":"action_observation","producer_role":"action_observer","current_status":"legacy action/replay outputs","future_hook":"P4 action adapter","scientific_status":"threshold not frozen"},
+    {"kind":"risk_observation","producer_role":"risk_observer","current_status":"legacy validation / versioned measurement outputs","future_hook":"P4 risk adapter","scientific_status":"Formal P2/rho unchanged"}
+  ],
+  "p4_mapping": {
+    "action_observation": {
+      "existing_outputs": [
+        "code/src/riskprop/formal_artifacts.py:L139-L148 action.parquet schema",
+        "code/src/riskprop/stage_0_1_sumo.py:L287-L294 action rows",
+        "fixed replay state/readback tables"
+      ],
+      "missing": ["execution_refs", "comparison_ref", "P3 observation hash"],
+      "task2_connection": "Reference existing action output by path/hash and preserve action_change_status without freezing threshold"
+    },
+    "risk_observation": {
+      "existing_outputs": [
+        "code/src/riskprop/formal_artifacts.py:L150-L160 risk.parquet schema",
+        "code/src/riskprop/stage_0_1_sumo.py:L295-L303 validation-only TTC burden",
+        "code/src/riskprop/stage_0_5_sumo.py:L1070-L1145 measurement_status/ttc_valid/missing_reason",
+        "code/src/riskprop/formal_risk_measurement.py:L21-L43 versioned Formal P2/rho config"
+      ],
+      "missing": ["action_observation_refs", "P3 observation hash", "real controller execution link"],
+      "task2_connection": "Reference existing measurement version and quality status; do not recompute or call risk observation an effect onset"
+    }
+  },
+  "timing_plan": {
+    "before_step": ["read native clock", "read message/policy input", "append decision/command/safety", "invoke TraCI API"],
+    "simulation_step": ["call traci.simulationStep()", "record simulation_step and native_timestamp"],
+    "after_step": ["read vehicle lifecycle and v/a/x", "append execution", "append P4 action/risk references"],
+    "epsilon_insertion": false,
+    "required_time_fields": ["native_timestamp", "clock_id", "time_unit", "simulation_step", "phase", "sequence", "time_lower", "time_upper", "reference_clock_id", "clock_mapping_version", "observed_at", "available_at"]
+  },
+  "identity_plan": {
+    "shared_context": ["run_id", "pair_id", "cell_id", "block_id", "assignment_id", "vehicle_id", "vehicle_incarnation_id", "source_event_id", "message_id"],
+    "controller_context": ["controller_instance_id", "controller_version", "policy_version", "policy_config_hash", "controller_code_hash"],
+    "natural_ids": ["source_event_id", "message_id", "attempt_id", "delivery_id", "validation_id", "controller_instance_id", "receipt_id", "consumption_receipt_id", "decision_id", "command_id", "intervention_id", "execution_id", "action_observation_id", "risk_observation_id"]
+  },
+  "manifest_plan": {
+    "existing_partial_capabilities": ["Stage 0.1 implementation hashes", "Stage 0.5 runtime/controller provenance", "P3 sidecar hash-format validation"],
+    "task2_required": ["controller source closure hash", "policy config hash and bytes", "SUMO version/hash", "TraCI binding hash", "network/route/config/demand hashes", "payload bytes/hash", "input snapshot bytes/hash", "raw controller/TraCI logs", "post-step readback hash", "P3 sidecar hash", "final manifest and SHA256SUMS", "Git SHA and dirty state"]
+  }
+}

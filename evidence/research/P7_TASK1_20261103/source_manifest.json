@@ -1,0 +1,205 @@
+{
+  "schema_version": "aad.p7.task1.source-manifest.v1",
+  "task_id": "AAD-P7-TASK1-20261103",
+  "audit_mode": "read_only",
+  "sumo_started": false,
+  "traci_started": false,
+  "sources": [
+    {
+      "path": "code/src/riskprop/stage_0_1_sumo.py",
+      "sha256": "a5d286e97206073eedbcac4fd364e53ed0dcf9ccc1c4a371cabbbef891bb2ca6",
+      "bytes": 34452,
+      "line_refs": "217-370",
+      "role": "Stage 0.1 real SUMO cell; fixed-time setters, adopted_time, post-step readback"
+    },
+    {
+      "path": "code/src/riskprop/stage_i_mechanism.py",
+      "sha256": "9108e455e8384513f437d27e0ee415ce8d46f02a8485e5d09803c59862b412fe",
+      "bytes": 15039,
+      "line_refs": "152-208,241-339",
+      "role": "Stage I timeline/action comparison/Task20 fixture"
+    },
+    {
+      "path": "code/scripts/run_task20_stagei_engineering_fixture.py",
+      "sha256": "66431ac6716f8df081751843a9250970c440fc57ab3fce797694dc389ac82d0d",
+      "bytes": 4680,
+      "line_refs": "18-58",
+      "role": "Task20 fixture runner/provenance"
+    },
+    {
+      "path": "code/scripts/stage_0_5_execution_v2.py",
+      "sha256": "aab9d03eea78ee7d80f27a3980583c2dd45bdde298e43f5297657f65db57a2c5",
+      "bytes": 33395,
+      "line_refs": "280-338,383-410",
+      "role": "NativeBackend lane supply, simulationStep and observation loop"
+    },
+    {
+      "path": "code/scripts/stage_0_5_linux_controller_v4.py",
+      "sha256": "c6252a9de0a78b817a0d98ebb397a19811bb17353a048c082fd8f22268c37221",
+      "bytes": 11281,
+      "line_refs": "141-209",
+      "role": "Linux controller broker; resource/identity execution, no risk policy"
+    },
+    {
+      "path": "code/scripts/stage_0_5_identity_observation.py",
+      "sha256": "9dbefcc21e24a8288a06d1d6d36ff4b3f61510ab9171981f9a515e012b71178c",
+      "bytes": 20611,
+      "line_refs": "15-21,37-120,232-260",
+      "role": "Identity/vehicle lifecycle observer"
+    },
+    {
+      "path": "code/scripts/stage_0_5_linux_isolation.py",
+      "sha256": "8aaa25fe0d989b530e6e433d8f12058c6558ce95304e67f397aac634976f8e88",
+      "bytes": 17626,
+      "line_refs": "1-114,206-249",
+      "role": "Linux capsule/isolation launcher; no vehicle policy"
+    },
+    {
+      "path": "code/scripts/stage_0_5_native_capsule_v4.py",
+      "sha256": "41abc89f3947630e0f69a33bf1497ee4a951dfe90ec1954dccacbd958281edd9",
+      "bytes": 23496,
+      "line_refs": "1-323",
+      "role": "Native runtime/capsule verification and launch binding; no target policy"
+    },
+    {
+      "path": "code/src/riskprop/stage_0_5_sumo.py",
+      "sha256": "043137344177060e1bbbf50e3b39bfc9da20b0fdaa49f5f1dcac07e712a4b632",
+      "bytes": 145745,
+      "line_refs": "2670-2756,2758-2839,2977-3048",
+      "role": "No-message SUMO baseline and read-only measurements"
+    },
+    {
+      "path": "code/scripts/run_stage_0_5_sumo_baseline.py",
+      "sha256": "854ecdba725d6224777b5235ed3ae45a1ac1d30c97803a58cf359132193155f2",
+      "bytes": 2493,
+      "line_refs": "1-63",
+      "role": "No-message baseline entry"
+    },
+    {
+      "path": "code/src/riskprop/stage_0_5_fixed_leader_traci.py",
+      "sha256": "611992a3a210634dbd5a09fa118bf8efec643d430efafbfde351a8e2a945dba7",
+      "bytes": 5061,
+      "line_refs": "28-85",
+      "role": "Fixed Leader trajectory replay"
+    },
+    {
+      "path": "code/src/riskprop/stage_0_5_fixed_leader_follower_traci.py",
+      "sha256": "fe6fcc171b5b98803f88488acab3beb054874843137ba46dbf070fb5083a948e",
+      "bytes": 19915,
+      "line_refs": "12-24,61-88,107-138,153-231",
+      "role": "Joint Leader/Follower replay; native Follower release"
+    },
+    {
+      "path": "code/src/riskprop/stage_0_5_leader_replay.py",
+      "sha256": "19ee8c8fca7a5a46df99a9b172868047a46edf8d2799d2c61210950ab2c2690a",
+      "bytes": 40122,
+      "line_refs": "300-359",
+      "role": "Historical Leader replay with native Follower"
+    },
+    {
+      "path": "code/scripts/run_stage_0_5_task16_joint_replay.py",
+      "sha256": "142186823673fa700d4a2fd21289984068f1259aa0f544f8e5c8dc6d62d64c89",
+      "bytes": 4232,
+      "line_refs": "30-55",
+      "role": "Task16 replay matrix entry"
+    },
+    {
+      "path": "code/src/riskprop/stage_0_5_b12_worker.py",
+      "sha256": "1630be51355aeb25f357a3a951bb3b36f9c106022f378115ebdedd2577bb8420",
+      "bytes": 22075,
+      "line_refs": "67-112",
+      "role": "B12 read-only worker; no_vehicle_control"
+    },
+    {
+      "path": "code/src/riskprop/stage_0_5_cd_worker.py",
+      "sha256": "4543eeb455103954412c5a2ef26a8bd74f0cfc1ba2dc413ee44ce9d556f5c74f",
+      "bytes": 20358,
+      "line_refs": "67-110",
+      "role": "CD read-only worker; no_vehicle_control"
+    },
+    {
+      "path": "code/src/riskprop/stage_0_5_lf_worker.py",
+      "sha256": "cfe4017320a0a102f65425f8a02963437d3826cff1e3c8e34f79b3d6df578a91",
+      "bytes": 21027,
+      "line_refs": "67-110",
+      "role": "LF read-only worker; no_vehicle_control"
+    },
+    {
+      "path": "code/scripts/interaction_diagnostic_worker.py",
+      "sha256": "5593588a5fe09cb4b5bf1a1e666a128ea35cd24f46bfcab0af061f3f74e33d3c",
+      "bytes": 5664,
+      "line_refs": "65-89",
+      "role": "Lane supply diagnostic"
+    },
+    {
+      "path": "code/scripts/run_p2_task3_sumo_b_calibration_only.py",
+      "sha256": "caca23455c710a34c43391f40c7198f0754df61af8ebd0783794d9e0b7949159",
+      "bytes": 12890,
+      "line_refs": "27-103",
+      "role": "CALIBRATION_ONLY source actuation; not target policy"
+    },
+    {
+      "path": "code/scripts/run_p2_task7_parameter_experiment.py",
+      "sha256": "c40ce3fc37a84ee0a754b344da57f463e4647506f5586736966c66c04b3e4222",
+      "bytes": 14146,
+      "line_refs": "90-158",
+      "role": "Parameter experiment source actuation; native target setters zero"
+    },
+    {
+      "path": "code/src/riskprop/controller_evidence.py",
+      "sha256": "d0ff13d45dbf3c4d7a40a2f829ba18ed5d53eb0b219b310f67852e2a868cdcf4",
+      "bytes": 41482,
+      "line_refs": "1-119,234-290,293-299,302-629",
+      "role": "P3 aad.p3.controller-evidence.v1 schema and validator"
+    },
+    {
+      "path": "code/src/riskprop/communication_observability.py",
+      "sha256": "08b741a2840bc19c07844bbcd61ee811c2cf4efc5290d2c7e20bd0bfe744342f",
+      "bytes": 10110,
+      "line_refs": "78-174,192-260",
+      "role": "SPMD receive-state observability boundary"
+    },
+    {
+      "path": "code/src/riskprop/formal_design.py",
+      "sha256": "026b343c222e8cf539aac6b099c19af1a7477332218594f89b877e48d80fa823",
+      "bytes": 21608,
+      "line_refs": "126-237,372-534",
+      "role": "Legacy lifecycle/time/vehicle contracts"
+    },
+    {
+      "path": "code/src/riskprop/formal_artifacts.py",
+      "sha256": "63d289a7840a2a0b1e4388cce9335eec1f65087b97998777455624a061187289",
+      "bytes": 13756,
+      "line_refs": "69-160",
+      "role": "Legacy state/protocol/action/risk artifact schema"
+    },
+    {
+      "path": "code/src/riskprop/formal_runner.py",
+      "sha256": "0f36937a47add84bb22f71011bc090dc15f6cf02d8066f4c9f4e8e0cb8b41e53",
+      "bytes": 18643,
+      "line_refs": "120-170,300-365",
+      "role": "Legacy synthetic four-cell fixture"
+    },
+    {
+      "path": "code/src/riskprop/formal_risk_measurement.py",
+      "sha256": "4e15e67e35911fdd4d50d26f41784bde05a8cd9983edc42c572fa51b00686c58",
+      "bytes": 15961,
+      "line_refs": "21-43,61-129,194-220",
+      "role": "Formal P2/rho measurement interface"
+    },
+    {
+      "path": "code/scripts/p3_controller_evidence_fixtures.py",
+      "sha256": "4ffd21d8887e7d04ea3f4a6be1d4d9c7fc35e1c32c0c18c926497813343c4d65",
+      "bytes": 12861,
+      "line_refs": "50-100",
+      "role": "P3 synthetic evidence scenarios"
+    },
+    {
+      "path": "code/scripts/run_p3_task2_controller_evidence_fixture.py",
+      "sha256": "fe9722de65faf96543454f520fec8ab6bb907ef7fb2d7b7c3b005f8883792609",
+      "bytes": 3142,
+      "line_refs": "18-58",
+      "role": "P3 synthetic runner/provenance"
+    }
+  ]
+}

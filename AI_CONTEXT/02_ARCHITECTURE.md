@@ -279,3 +279,8 @@ B1.2新增独立b12_observation/network/runtime/worker：全边.05s分层审计�
 ## 2026-10-20 LF候选协议整合
 
 新增独立候选分析模块stage_0_5_lf_protocol与design/package入口。正式Stage0.2/SUMO/LF核心不改；分析从封存全网点态和事件开始，不能先裁局部重提事件。报告 `docs/STAGE_0_5_LOCAL_FOLLOWING_PROTOCOL_DESIGN.md`；计划 `docs/plans/2026-10-20-lf-protocol-consolidation.md`；证据 `evidence/results/RES-STAGE-0.5-LF-PROTOCOL-CONSOLIDATION-V1/`。
+## Current — P7 Task1 control-path architecture audit (2026-11-03)
+
+P7审计确认现有架构包含四类不同边界：Stage 0.1 `_run_cell()` 的固定时程车辆setter与native readback；Stage 0.5 Linux `NativeBackend` 的lane speed supply与执行管理；fixed Leader/Follower replay与SUMO原生Follower；no-message/B12/CD/LF的只读Observer。以上没有组成真实消息驱动目标策略。
+
+P3 `controller_evidence.py` 是新增控制器证据接口的唯一复用对象，P7计划用薄Evidence Adapter把真实producer边界映射到14类sidecar；保留旧Formal Parquet、Task20八列timeline和P4测量。P7 Task2修改范围、六个插入点和manifest绑定见 [P7_INTEGRATION_BLUEPRINT.md](../docs/research/P7/P7_INTEGRATION_BLUEPRINT.md)。

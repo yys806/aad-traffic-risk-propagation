@@ -1,3 +1,11 @@
+## P7 Task1 — 真实 SUMO 控制路径审计与端到端集成方案 (2026-11-03)
+
+只读审计已完成。当前源码存在 Stage 0.1 固定时程 `setAcceleration`、Stage 0.5 lane supply、Leader/Follower 轨迹回放、SUMO 原生 Follower 和 post-step 状态读回，但未识别到真实消息驱动目标车辆策略，结论为 `NO_EXISTING_MESSAGE_DRIVEN_TARGET_POLICY_IDENTIFIED`。Stage 0.1 `adopted_time` 来自 `next_time >= 2.2` 时程赋值，不是控制器消费凭证；Task20 是 `fixture_only` 工程 Fixture。
+
+P3 `aad.p3.controller-evidence.v1` 的 14 类 sidecar、六个接入点、P4 引用、SUMO Before Step/`simulationStep`/After Step 时序和 P7 Task2 修改清单已形成。未启动 SUMO/TraCI，未产生新轨迹，未修改生产代码、Formal P2/rho、P4 指标、Gate 或 Protocol Lock。P7 Task2 当前阻塞于研究者指定真实目标车辆策略；基础证据 adapter/manifest 工程可直接按蓝图实施。
+
+[最终报告](research/P7/P7_TASK1_FINAL_REPORT.md) · [控制路径清单](research/P7/P7_REAL_CONTROL_PATH_AUDIT.md) · [集成蓝图](research/P7/P7_INTEGRATION_BLUEPRINT.md) · [便携证据](../evidence/research/P7_TASK1_20261103/README.md)。
+
 ## P3 Task2 — 控制器消费回执与合成验证 (2026-11-03)
 
 P3 Task2已新增独立版本化controller evidence接口与14类记录、显式关联验证器和A–H合成契约验证。schema=aad.p3.controller-evidence.v1；候选策略输入采用边界仍PROPOSED，scientific_claim_eligible=false。真实接收/策略/安全/执行路径尚未接线；P3基础接口可阶段性收口，后续P7直接复用，P5负责采用因果识别。

@@ -1,0 +1,180 @@
+{
+  "schema_version": "aad.p7.task1.control-path-matrix.v1",
+  "task_id": "AAD-P7-TASK1-20261103",
+  "audit_mode": "read_only",
+  "conclusion": "NO_EXISTING_MESSAGE_DRIVEN_TARGET_POLICY_IDENTIFIED",
+  "categories": [
+    {
+      "category": "real_vehicle_policy_decision",
+      "status": "NOT_IDENTIFIED",
+      "evidence": [
+        "No message input assembly, policy inference, decision output, or command builder was found in audited modules."
+      ]
+    },
+    {
+      "category": "fixed_time_or_condition_control",
+      "status": "IDENTIFIED",
+      "evidence": [
+        "code/src/riskprop/stage_0_1_sumo.py:L247-L256",
+        "adopted_time is assigned by next_time >= 2.2 and target setAcceleration is issued in the same loop"
+      ]
+    },
+    {
+      "category": "historical_trajectory_replay",
+      "status": "IDENTIFIED",
+      "evidence": [
+        "code/src/riskprop/stage_0_5_fixed_leader_traci.py:L64-L79",
+        "code/src/riskprop/stage_0_5_fixed_leader_follower_traci.py:L125-L158,L209-L231",
+        "code/src/riskprop/stage_0_5_leader_replay.py:L339-L357"
+      ]
+    },
+    {
+      "category": "native_sumo_model",
+      "status": "IDENTIFIED",
+      "evidence": [
+        "Follower is released with setSpeed(-1.0) before the dynamic interval: code/src/riskprop/stage_0_5_fixed_leader_follower_traci.py:L209-L214"
+      ]
+    },
+    {
+      "category": "environment_or_lane_control",
+      "status": "IDENTIFIED",
+      "evidence": [
+        "code/scripts/stage_0_5_execution_v2.py:L316-L338",
+        "code/scripts/interaction_diagnostic_worker.py:L65-L89"
+      ]
+    },
+    {
+      "category": "read_only_observer",
+      "status": "IDENTIFIED",
+      "evidence": [
+        "code/src/riskprop/stage_0_5_sumo.py:L2739-L2839",
+        "code/src/riskprop/stage_0_5_b12_worker.py:L67-L112",
+        "code/src/riskprop/stage_0_5_cd_worker.py:L67-L110",
+        "code/src/riskprop/stage_0_5_lf_worker.py:L67-L110"
+      ]
+    },
+    {
+      "category": "engineering_fixture",
+      "status": "IDENTIFIED",
+      "evidence": [
+        "code/src/riskprop/stage_i_mechanism.py:L241-L339",
+        "code/scripts/run_task20_stagei_engineering_fixture.py:L48-L123"
+      ]
+    }
+  ],
+  "control_calls": [
+    {
+      "source": "code/src/riskprop/stage_0_1_sumo.py",
+      "function": "_run_cell",
+      "lines": "247-250",
+      "api": "traci.vehicle.setAcceleration",
+      "object": "source_0",
+      "source_kind": "fixed_time_condition",
+      "phase": "before_step",
+      "readback": "state getters at 258-285",
+      "p3_association": "none",
+      "current_status": "engineering_schedule",
+      "reuse": "wrap_only_after_real_policy_is_identified"
+    },
+    {
+      "source": "code/src/riskprop/stage_0_1_sumo.py",
+      "function": "_run_cell",
+      "lines": "252-256",
+      "api": "traci.vehicle.setAcceleration",
+      "object": "target_0",
+      "source_kind": "fixed_time_condition_after_channel_flag",
+      "phase": "before_step",
+      "readback": "state/action getters at 258-294",
+      "p3_association": "none; adopted_time is same-loop schedule",
+      "current_status": "engineering_schedule_not_message_policy",
+      "reuse": "do_not_use_as_formal_policy"
+    },
+    {
+      "source": "code/scripts/stage_0_5_execution_v2.py",
+      "function": "NativeBackend.before_step",
+      "lines": "316-338",
+      "api": "connection.lane.setMaxSpeed / getMaxSpeed",
+      "object": "lane/environment",
+      "source_kind": "lane_speed_schedule",
+      "phase": "before_step",
+      "readback": "same-call lane getter",
+      "p3_association": "none",
+      "current_status": "environment_supply_control",
+      "reuse": "environment_adapter_only"
+    },
+    {
+      "source": "code/src/riskprop/stage_0_5_fixed_leader_traci.py",
+      "function": "replay_trace_in_sumo",
+      "lines": "64-79",
+      "api": "vehicle.add, setSpeedMode, setLaneChangeMode, setSpeed, moveTo",
+      "object": "replay leader",
+      "source_kind": "historical_trajectory_replay",
+      "phase": "initialization/before_step/after_step",
+      "readback": "position/speed/lane/collision getters",
+      "p3_association": "none",
+      "current_status": "replay",
+      "reuse": "replay/readback_adapter_only"
+    },
+    {
+      "source": "code/src/riskprop/stage_0_5_fixed_leader_follower_traci.py",
+      "function": "run_joint_replay",
+      "lines": "125-158,209-231",
+      "api": "vehicle.add, vehicle type setters, setSpeedMode, setLaneChangeMode, setSpeed, moveTo",
+      "object": "leader/follower",
+      "source_kind": "trajectory_replay_plus_native_follower",
+      "phase": "initialization/before_step/after_step",
+      "readback": "_state and _append_sample at 64-88 and 177-205",
+      "p3_association": "none",
+      "current_status": "replay_and_native_model",
+      "reuse": "execution_observation_only"
+    },
+    {
+      "source": "code/scripts/run_p2_task3_sumo_b_calibration_only.py",
+      "function": "run_one",
+      "lines": "74-86",
+      "api": "slowDown / setSpeed",
+      "object": "source s0",
+      "source_kind": "controlled_B_calibration",
+      "phase": "post_step_command_for_future_interval",
+      "readback": "subscription rows 45-70",
+      "p3_association": "none",
+      "current_status": "calibration_only_source_actuation",
+      "reuse": "not_target_policy"
+    },
+    {
+      "source": "code/scripts/run_p2_task7_parameter_experiment.py",
+      "function": "run_unit",
+      "lines": "132-147",
+      "api": "slowDown / setSpeed",
+      "object": "configured source vehicle",
+      "source_kind": "parameter_experiment_source_actuation",
+      "phase": "post_step_command_for_future_interval",
+      "readback": "subscription rows 111-130",
+      "p3_association": "none; native_target_setters=0",
+      "current_status": "calibration_or_exploration",
+      "reuse": "not_target_policy"
+    }
+  ],
+  "safety": {
+    "independent_safety_filter_identified": false,
+    "evidence": [
+      "stage_0_1_sumo.py:L287-L294 writes safety_intervened=False",
+      "SUMO native follower, speed modes, collision.action and collision getters are model/execution facts, not an identified policy safety layer"
+    ],
+    "p7_status": "NOT_OBSERVED_OR_UNKNOWN_UNTIL_REAL_LAYER_IS_FOUND"
+  },
+  "post_step_readback": {
+    "identified": true,
+    "locations": [
+      "code/src/riskprop/stage_0_1_sumo.py:L258-L285",
+      "code/scripts/stage_0_5_execution_v2.py:L309-L314",
+      "code/src/riskprop/stage_0_5_sumo.py:L2755-L2839",
+      "code/src/riskprop/stage_0_5_fixed_leader_follower_traci.py:L64-L88,L177-L205"
+    ],
+    "missing_for_p7": [
+      "execution_id to command_id linkage",
+      "vehicle_incarnation binding in P3 sidecar",
+      "raw readback file hash in final manifest"
+    ]
+  }
+}

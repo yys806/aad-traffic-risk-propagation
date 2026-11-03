@@ -397,3 +397,9 @@ B1.2-P收口：纯Git全量741 passed/14 skipped/0 failed；严格文档/compile
   parsing before TraCI. The parser now accepts the observed exact release
   formats, with targeted regression coverage. Candidate-v4 remains
   `BLOCKED_ENGINEERING`; no B00 or research trajectory was generated.
+## 2026-11-03 — P7 Task1 真实 SUMO 控制路径审计
+
+- 新增 `docs/research/P7/` 下的最终审计报告、真实控制路径清单和集成蓝图。
+- 新增 `evidence/research/P7_TASK1_20261103/`，包含源码 SHA256 manifest、控制路径矩阵、P3/P4 映射和验证记录。
+- 事实边界：未识别真实消息驱动目标策略；Stage 0.1 `adopted_time` 是固定时程；Stage 0.5 lane supply/replay/Observer 不等于消息策略；Task20 仍为 fixture。
+- 未启动 SUMO/TraCI，未修改生产代码、正式测量、Gate、Protocol Lock 或科研定义。

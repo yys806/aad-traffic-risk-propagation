@@ -331,3 +331,12 @@ code/src/riskprop/stage_0_5_positive_near_zero.py（classify_edge/admission/chec
 - 入口 `code/scripts/zotero_add_method_expansion_refs.py`：Zotero 本地 API 建条目；附件上传因 `HTTP 400 MD5 hash not provided` 失败，已记录。
 - 文献：`doc/literature-notes/STAGE_0_5_METHOD_EVIDENCE_MAP.md`（附录 A）、`stage_0_5_method_index.json`（`entries` + `method_status_matrix`）、`STAGE_0_5_ZOTERO_METHOD_EXPANSION_LOG.md`。
 - 测试：`code/tests/test_stage_0_5_method_expansion.py`（10）。
+## Current — P7 Task1 module map (2026-11-03)
+
+- `code/src/riskprop/stage_0_1_sumo.py:: _run_cell`：固定cell/time条件、`setAcceleration`、`simulationStep`后状态/action/risk读取；不是消息策略。
+- `code/scripts/stage_0_5_execution_v2.py::NativeBackend.before_step/step`：lane speed supply、SUMO step和资源/执行管理；不控制目标车辆策略。
+- `code/scripts/stage_0_5_linux_controller_v4.py::main`：Linux capsule内执行器、IdentityObserver、resource watchdog和controller receipt；没有risk policy。
+- `code/src/riskprop/stage_0_5_fixed_leader_traci.py`、`stage_0_5_fixed_leader_follower_traci.py`、`stage_0_5_leader_replay.py`：历史轨迹回放、SUMO原生Follower、post-step读回。
+- `code/src/riskprop/stage_0_5_sumo.py`、B12/CD/LF workers：no-message/read-only SUMO观察、leader/gap/TTC测量；无vehicle setter。
+- `code/src/riskprop/controller_evidence.py`：P3 14类版本化sidecar、外键和时间Unknown校验；当前未接真实SUMO producer。
+- `docs/research/P7/`：P7 Task1最终审计、控制路径清单和集成蓝图；`evidence/research/P7_TASK1_20261103/`：源码SHA、矩阵和映射。

@@ -324,3 +324,8 @@ P4 响应：9 个单因素配置 × 3 个共同 seed × 12 对 → `replay_pair`
 ## 2026-11-01 P0 Task 2 双传播证据流边界
 
 Task2 证据契约把信息链拆为 assignment → generation → transmission → delivery → verification → adoption → command → observed action，把物理链拆为 source motion → leader/follower interaction → physical arrival，并用 event_id、message_id、vehicle_id、clock_id 和 source_sha256 关联。当前 SPMD 仅 RV_RX 接收状态连续性；NGSIM/MiTra 仅轨迹；SUMO fixture 为合成字段。现实双链不连通，不能将跨数据集相关性当作同源因果链。
+## Current — P7 controller evidence data flow audit (2026-11-03)
+
+当前SUMO控制数据流有三种已实现路径：`Before Step → setAcceleration → simulationStep → post-step state`（Stage 0.1固定时程）；`Before Step → lane.setMaxSpeed → simulationStep → IdentityObserver`（Stage 0.5环境供给）；`Leader replay command → simulationStep → Follower native/readback`（fixed replay）。消息接收、验证、策略输入、消费、决策、命令外键、安全层和P3 execution sidecar尚未接线。
+
+P7目标数据流为 `Physical Source → Message → Send/Delivery → Validation → Controller Input → Policy Consumption → Decision → Command → Safety → SUMO Execution → Post-Step Readback → P4 Action → P4 Risk`。时间保留native timestamp、simulation step、phase、sequence、clock mapping和Unknown区间，不用epsilon制造顺序。P7蓝图和机器矩阵见 [P7 docs](../docs/research/P7/P7_INTEGRATION_BLUEPRINT.md) 与 [P7 evidence](../evidence/research/P7_TASK1_20261103/README.md)。

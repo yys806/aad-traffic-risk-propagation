@@ -655,3 +655,28 @@ Candidate inputs are statically valid. Native execution is blocked only by requi
 7. Peng 论文的模拟器结果限定于年轻驾驶者和预配置 warning；Schönhof 结果限定于简化 IVC/微观仿真。两者都不能填补 AAD 现实双链缺口。
 
 详细记录：docs/research/P0/P0_TASK2_CAUSAL_IDENTIFIABILITY_AUDIT.md、P0_TASK2_DATA_SOURCE_CAPABILITY_AUDIT.md、P0_TASK2_PHYSICAL_COUNTERFACTUAL_AUDIT.md。
+## Current — P7 Task1 real control-path blockers (2026-11-03)
+
+### Documented Intent
+
+建立来源可追溯的远端风险消息→控制器输入消费→决策→命令→实际动作→区域风险证据链，并复用P3 sidecar。
+
+### Actual Implementation
+
+Stage 0.1仅有固定时间/条件触发的source/target `setAcceleration`和post-step读回；`adopted_time`由时程直接赋值。Stage 0.5 Linux `controller`只做lane `setMaxSpeed`供给和SUMO执行/IdentityObserver；fixed replay直接驱动Leader，Follower使用SUMO原生控制；B12/CD/LF是只读Observer；Task20是synthetic fixture。
+
+### Evidence
+
+`code/src/riskprop/stage_0_1_sumo.py:L247-L294`; `code/scripts/stage_0_5_execution_v2.py:L309-L338,L383-L410`; `code/src/riskprop/stage_0_5_fixed_leader_follower_traci.py:L209-L231`; `code/src/riskprop/stage_i_mechanism.py:L241-L339`; P7 portable source manifest and control matrix.
+
+### Affected Files
+
+`code/src/riskprop/stage_0_1_sumo.py`, `code/scripts/stage_0_5_execution_v2.py`, `code/scripts/stage_0_5_linux_controller_v4.py`, fixed replay modules, `code/src/riskprop/controller_evidence.py`, `docs/research/P7/`, `evidence/research/P7_TASK1_20261103/`。
+
+### Conflict
+
+当前存在TraCI控制能力，但不存在可验证的真实消息驱动目标策略；孤立setter、fixture、replay、lane supply和native readback不能替代Message→Receipt→Decision→Command→Execution链。独立Safety Layer也未识别。
+
+### Status: Awaiting Researcher Decision
+
+P7 Task2需研究者指定/批准真实目标车辆策略、Proposed Adoption边界、P5 Enabled/Disabled语义、是否存在独立Safety Layer和P4动作/风险比较标准。工程上可先准备adapter、ID/时间/manifest和定向测试；不得把固定时程策略升级为正式控制器。

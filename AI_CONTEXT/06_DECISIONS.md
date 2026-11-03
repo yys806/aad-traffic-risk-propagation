@@ -529,3 +529,8 @@ Task2 报告：docs/research/P0/P0_TASK2_FINAL_REPORT.md；研究者决定清单
 ## 2026-11-01 — P0 Task 3 Proposal boundary; no new Agreed Decision
 
 Task3 only recommends a closed-track whole-event message-policy randomized design with independent roadside measurement and randomized no-message events; SUMO remains model-only preparation, HIL an optional behavior route. All source/cohort/region/window/outcome/physical-threshold/interference/SESOI choices await researcher decision. The minimal source-present ITT does not supersede the long-term proposed four-cell interaction or approve adoption mediation. Conditional Go is a feasibility recommendation, not Gate approval or experiment authorization. Real resource access and final n are Unknown. Decisions/dependencies: `docs/research/P0/P0_TASK3_RESEARCHER_DECISIONS.md`. No existing scientific decision, risk definition, Gate or stage authorization changed.
+## Current — P7 Task1 decision boundary (2026-11-03)
+
+| 日期 | 决策内容 | 相关背景 | 影响范围 | 对应代码 | 研究者明确决定 |
+|---|---|---|---|---|---|
+| 2026-11-03 | 只读完成真实SUMO控制路径审计；当前无已识别消息驱动目标策略 | Stage 0.1 `adopted_time`/target setter是固定时程；Stage 0.5 lane supply/replay/Observer分属环境/回放/观察；Task20是Fixture | P7 Task2需先指定真实策略；不改变Gate、Formal、P4或定义 | `stage_0_1_sumo.py`、`stage_0_5_execution_v2.py`、fixed replay、`controller_evidence.py` | 未批准新增策略、Adoption正式定义、P5开关语义或独立Safety机制；待后续研究者确认 |

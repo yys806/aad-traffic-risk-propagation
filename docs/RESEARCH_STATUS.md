@@ -532,3 +532,10 @@ P0 Task2 完成，状态为 COMPLETED_WITH_LIMITATIONS。交付：双传播动�
 全局工具链续接：`zotero-clean` 已全局安装至 `C:/Users/Lenovo/.codex/skills/zotero-clean/`，仓库维护副本位于 `skills/zotero-clean/`。库、项目名、根/收件箱、输出目录和日期均可参数化；读取支持分页及嵌套集合。AAD 连接与凭据配置见 `doc/literature-notes/README.md`。本次续接未重复执行文献分类写入。
 
 续接实时状态（Verified，2026-11-01）：9 个主题集合、84 个唯一条目、收件箱 0 条；7/7 归类结果回读通过。当前精确 DOI/题名作者年份候选为 0，元数据复核候选为 6。首轮快照多出的 `BYCXQ5A3` 当前 API 返回 `deleted=true`；删除时间与执行者 Unknown，本次续接没有 Zotero 写入。旧 85 条快照保留，新索引为 `doc/literature-notes/AAD_ZOTERO_INDEX_20261101-global.md` / `.csv`；审计为 `doc/literature-notes/zotero_clean_audit_20261101-global.md` / `.json`；续接核验记录为 `doc/literature-notes/zotero_clean_2026-11-01_continuation.json`。旧审计的题名/作者/年份匹配可与 DOI 候选重叠，不据旧标题断言“无 DOI”。
+## Current — P7 Task1 real SUMO control-path audit (2026-11-03)
+
+P7 Task1 is `COMPLETED_READ_ONLY_AUDIT_WITH_BLOCKER`. The audited repository contains real TraCI setter/readback interfaces, but no existing message-driven target policy was identified. Stage 0.1 `adopted_time` and target acceleration are fixed time/condition controls; Stage 0.5 Linux `NativeBackend` controls lane speed supply and observes SUMO state; fixed Leader/Follower paths are replay/native-model paths; Task20 remains a synthetic engineering fixture.
+
+P3 `aad.p3.controller-evidence.v1` is the sole planned sidecar interface. The Task1 report, control-path matrix, integration blueprint and SHA-bound portable evidence are under `docs/research/P7/` and `evidence/research/P7_TASK1_20261103/`. No SUMO/TraCI was launched and no production code, Formal P2/rho, P4 metric, Gate or Protocol Lock was changed. P7 Task2 is ready for engineering preparation but blocked on researcher identification/approval of the real target policy and adoption boundary remains Proposed.
+
+Formal A=0; Independent Qualified Witness=0; F0/Overall TR–TP=Unknown; Stage0.5=CLOSED_WITH_LIMITATIONS; Stage0.6=PRE_LOCK_PACKAGE_COMPLETE_WITH_BLOCKERS; Protocol Lock=BLOCKED; Stage I=READY_ENGINEERING_ONLY; Stage1.1=NOT_AUTHORIZED.

@@ -443,3 +443,8 @@ R1 已按确认设计完成 B10（主线速度脉冲）、B01（匝道供给脉�
 ## Current — AAD-S0.5-TASK20 (2026-11-01)
 
 Task20 completed bounded Stage 0.5 closure, Stage 0.6 Pre-Lock readiness and Stage I engineering-only mechanism preparation. Stage 0.5 disposition is `CLOSED_WITH_LIMITATIONS`; strict scientific Gate remains blocked because source-triggered support, interaction equivalence, independent B physical-path witnesses and scientific tolerances are incomplete. Protocol Lock and formal Stage 1.1 remain blocked. Report: `docs/TASK20_STAGE0_CLOSURE_AND_STAGEI_READINESS_20261101.md`; output: `code/outputs/analysis/task20_20261101/`; evidence: `evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/`.
+## P7 Task1 — 真实 SUMO 控制路径审计 (2026-11-03)
+
+WP3 工程审计完成，未运行 SUMO/TraCI。真实目标车辆消息驱动策略未识别；Stage 0.1 是固定时程控制，Stage 0.5 lane supply/Observer 与 replay/native Follower 分属环境控制、读回和轨迹回放。P3 sidecar 接入方案和 Task2 修改范围已就绪，下一步仍需研究者指定真实策略。
+
+报告：`docs/research/P7/P7_TASK1_FINAL_REPORT.md`；清单：`docs/research/P7/P7_REAL_CONTROL_PATH_AUDIT.md`；蓝图：`docs/research/P7/P7_INTEGRATION_BLUEPRINT.md`；证据：`evidence/research/P7_TASK1_20261103/`。

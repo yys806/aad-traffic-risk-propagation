@@ -557,3 +557,6 @@ First-round repair update: B11 is verified from event_inventory.csv as 16/19 aux
 ## RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101
 
 Task20 closure package: layered Stage 0.5 assessment, deterministic Stage 0.6 numerical/pre-lock checks, protocol-lock refusal, Stage I information/physical chain design, and synthetic four-cell joint-timeline fixture. No new formal SUMO runs and no locked-holdout access. Report: `docs/TASK20_STAGE0_CLOSURE_AND_STAGEI_READINESS_20261101.md`; local output: `code/outputs/analysis/task20_20261101/`; portable evidence: `evidence/results/RES-STAGE0-TASK20-CLOSURE-AND-STAGEI-READINESS-20261101/`.
+## P7 Task1 — 真实 SUMO 控制路径审计与集成方案 (2026-11-03)
+
+只读工程审计结果，不是交通实验或科学结果。当前发现 TraCI setter、lane supply、轨迹回放、SUMO 原生 Follower 和 post-step readback，但没有现有消息驱动目标车辆策略；`adopted_time` 在 Stage 0.1 中由固定时程赋值。无新 SUMO/TraCI、seed、轨迹、holdout 或 Formal/P4 结果。便携证据：`evidence/research/P7_TASK1_20261103/`。

@@ -796,3 +796,12 @@ Task2 状态：COMPLETED_WITH_LIMITATIONS。已补齐 Schönhof、Wang、Jerath�
 全局工具链续接：`zotero-clean` 已安装到 `C:/Users/Lenovo/.codex/skills/zotero-clean/`；仓库 `skills/zotero-clean/` 保存相同版本。脚本通过 `--base`/环境变量与项目名、根集合、收件箱和日期参数跨项目复用；索引/审计支持分页及根集合、全部嵌套集合、仅挂根集合/收件箱的条目。辅助审计只覆盖精确匹配与元数据/状态关键词候选，近似重复、出版商、撤稿和孤立附件仍需单独只读复核。AAD 库与 key、全局只读验证命令和凭据边界见 `doc/literature-notes/README.md`；未再次执行分类写入。
 
 续接实时状态（Verified，2026-11-01）：9 个主题集合、84 个唯一条目、收件箱 0 条；7/7 归类结果回读通过。当前精确 DOI/题名作者年份候选为 0，元数据复核候选为 6。首轮快照多出的 `BYCXQ5A3` 当前 API 返回 `deleted=true`；删除时间与执行者 Unknown，本次续接没有 Zotero 写入。旧 85 条快照保留，新索引为 `doc/literature-notes/AAD_ZOTERO_INDEX_20261101-global.md` / `.csv`；审计为 `doc/literature-notes/zotero_clean_audit_20261101-global.md` / `.json`；续接核验记录为 `doc/literature-notes/zotero_clean_2026-11-01_continuation.json`。旧审计的题名/作者/年份匹配可与 DOI 候选重叠，不据旧标题断言“无 DOI”。
+## Current — P7 Task1 real SUMO control-path audit (2026-11-03)
+
+P7 Task1完成只读审计与集成方案设计。源码中存在Stage 0.1固定时程`setAcceleration`、Stage 0.5 lane supply、Leader/Follower轨迹回放、SUMO原生Follower和post-step状态读回；未识别到真实“远端风险消息→策略输入消费→Controller Decision→目标车辆命令”的目标车辆策略，结论为`NO_EXISTING_MESSAGE_DRIVEN_TARGET_POLICY_IDENTIFIED`。
+
+Stage 0.1 `_run_cell()` 在 `next_time >= 2.2` 时直接赋 `adopted_time=2.2`，并在同一时程分支对 `target_0` 调用 `setAcceleration(-1.5, 0.2)`；这是工程时程控制，不是真实 Adoption。Stage 0.5 Linux controller 的 `NativeBackend.before_step()` 只调用 lane `setMaxSpeed/getMaxSpeed`，属于环境供给；固定回放和 Task20 Fixture 不能证明消息消费。P3 `aad.p3.controller-evidence.v1` 14类 sidecar可直接复用，但当前没有真实producer接线。
+
+交付：[P7最终审计](../docs/research/P7/P7_TASK1_FINAL_REPORT.md) · [控制路径清单](../docs/research/P7/P7_REAL_CONTROL_PATH_AUDIT.md) · [集成蓝图](../docs/research/P7/P7_INTEGRATION_BLUEPRINT.md) · [便携证据](../evidence/research/P7_TASK1_20261103/README.md)。无SUMO/TraCI启动、无新seed/轨迹/holdout；生产代码、Formal P2/rho、P4、Gate、Protocol Lock和定义v0.4未改变。
+
+P7 Task2可在研究者指定真实目标策略后一次性实施Evidence Adapter、真实接收/验证/输入/消费/决策/命令/安全（若存在）/执行/readback和P4引用；当前阻塞在真实策略识别及相关科研语义确认。
