@@ -1,3 +1,11 @@
+## Current — P5 Task1 因果识别设计 (2026-11-04)
+
+本次只有文档审计与11项标准库确定性识别数学检查（DETERMINISTIC_IDENTIFICATION_CHECK_ONLY / SYNTHETIC_VALIDATION_ONLY）；不是新交通实验或校准样本。P4历史172测试/15复算仅引用，未重跑；P7单次工程复验不成为随机化机制或完整区域Y样本。
+
+Formal A/Independent Qualified仍0，完整真实区域Y、F0及总体T_R–T_P Unknown；Protocol Lock BLOCKED，Stage1.1 NOT_AUTHORIZED，其他Gate不变。统一定义v0.4/27项、Formal参数、P3/P4/P7代码与历史证据不改。无新增交通实验/seed/Pilot/V/holdout读取。
+
+[核心设计](../docs/research/P5/P5_TASK1_CAUSAL_IDENTIFICATION_DESIGN.md) · [决策](../docs/research/P5/P5_TASK1_RESEARCHER_DECISION_REGISTER.md) · [报告](../docs/research/P5/P5_TASK1_FINAL_REPORT.md) · [证据](../evidence/research/P5_TASK1_20261104/README.md)。统一入口仍为[科研定义](../docs/research/definitions/README.md)。下方保留历史任务时点。
+
 ## Current — P4 Task2 implementation (2026-11-04)
 
 本任务新增交通实验0，只用SYNTHETIC_VALIDATION_ONLY和历史P7。最终172=88新P4+84历史离线回归全部通过；15项独立数学断言，部分缺失三车Y=[7/36,3/4]，完整例5/12。首次两轮各1项开发失败留档后修正。P7现有target352行无完整资格总体/正式region-window，不能作完整Y样本。

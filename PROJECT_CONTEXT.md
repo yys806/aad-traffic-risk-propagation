@@ -1,3 +1,11 @@
+## Current — P5 Task1 因果识别设计 (2026-11-04)
+
+DESIGN_COMPLETE_WITH_OPEN_IDENTIFICATION_DECISIONS。区分τQ、全部source-present ITT与最终四格；当前资格两臂与未来源前共同机会四格候选并存，机制/干扰/时间路线列为Proposal/Awaiting。11项确定性数学反例通过，不是实验。等待研究者审阅，不自动启动后续。
+
+Formal A/Independent Qualified仍0，完整真实区域Y、F0及总体T_R–T_P Unknown；Protocol Lock BLOCKED，Stage1.1 NOT_AUTHORIZED，其他Gate不变。统一定义v0.4/27项、Formal参数、P3/P4/P7代码与历史证据不改。无新增交通实验/seed/Pilot/V/holdout读取。
+
+[设计](docs/research/P5/P5_TASK1_CAUSAL_IDENTIFICATION_DESIGN.md) · [决策](docs/research/P5/P5_TASK1_RESEARCHER_DECISION_REGISTER.md) · [报告](docs/research/P5/P5_TASK1_FINAL_REPORT.md) · [证据](evidence/research/P5_TASK1_20261104/README.md)。本条为设计交付，不新增实验结果。下方历史记录保留。
+
 ## Current — P4 Task2最小实现 (2026-11-04)
 
 IMPLEMENTATION_COMPLETE_WITH_LIMITATIONS。D01–D08全Agreed；固定处理前完整资格名单、固定N等权Y上下界及严格Action/独立P4v1/P3外桥已实现。172项离线测试（88新+84历史）和15项独立数学检查通过；不发布缺乏完整真实scope的区域Y。

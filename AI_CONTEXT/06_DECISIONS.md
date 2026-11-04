@@ -1,3 +1,11 @@
+## Current — P5 Task1 因果识别设计 (2026-11-04)
+
+继承P1/P2资格顺序与最终四格、P3正式Adoption、P7 Enabled/Disabled方向及P4 D01–D08。新增11组设计Proposal/Awaiting集中登记：A/B/C兼容、源前总体、对照版本、run/block/干扰/index-source、Adoption及Action–Risk路线、H4与缺失。没有新的Agreed或实验授权。
+
+Formal A/Independent Qualified仍0，完整真实区域Y、F0及总体T_R–T_P Unknown；Protocol Lock BLOCKED，Stage1.1 NOT_AUTHORIZED，其他Gate不变。统一定义v0.4/27项、Formal参数、P3/P4/P7代码与历史证据不改。无新增交通实验/seed/Pilot/V/holdout读取。
+
+[核心设计](../docs/research/P5/P5_TASK1_CAUSAL_IDENTIFICATION_DESIGN.md) · [决策](../docs/research/P5/P5_TASK1_RESEARCHER_DECISION_REGISTER.md) · [报告](../docs/research/P5/P5_TASK1_FINAL_REPORT.md) · [证据](../evidence/research/P5_TASK1_20261104/README.md)。统一入口仍为[科研定义](../docs/research/definitions/README.md)。下方保留历史任务时点。
+
 ## Current — P4 Task2 implementation (2026-11-04)
 
 2026-11-04研究者正式批准P4 D01–D08=A/A/B/A/A/A/A/A，接续Task1 Proposal/Awaiting。Task6/E61最终Y等权算子Agreed，Task7/E61仍历史有限物理校准授权。统一定义v0.4/27项仅日期增量，不新增DEF ID；Action阈值/持续/容差仍未批准。

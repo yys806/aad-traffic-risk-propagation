@@ -1,0 +1,91 @@
+{
+  "task_id": "AAD-P5-TASK1-20261104",
+  "date": "2026-11-04",
+  "impact": "Documentation/navigation and standard-library design evidence only; no production code/shared interface/scientific algorithm changes.",
+  "status": "PASS_WITH_RETAINED_INITIAL_PACKAGING_FAILURE",
+  "new_math_checks_passed": 11,
+  "protected_files_at_start": 601,
+  "validation_policy": "No pytest, compileall or traffic executable; strict documentation, existing exporter, exact math, hashes and a minimal Git archive.",
+  "checks": [
+    {
+      "check": "validate_project_docs.py --strict-git",
+      "status": "PASS",
+      "output": "PROJECT_DOCS_OK"
+    },
+    {
+      "check": "export_project_evidence.py --repo-root . and --verify",
+      "status": "PASS",
+      "results": 94,
+      "files": 1458
+    },
+    {
+      "check": "verify_p5_evidence.py --view both",
+      "status": "PASS",
+      "native_protected": 601,
+      "git_protected": 601,
+      "baseline_sources": 36,
+      "definition_ids": 27,
+      "registry_and_gate_unchanged": true
+    },
+    {
+      "check": "Targeted local links and history/scope review",
+      "status": "PASS",
+      "internal_links": 44,
+      "preserved_context_bodies": 10,
+      "unexpected_changes": 0
+    },
+    {
+      "check": "git diff --cached --check",
+      "status": "PASS"
+    },
+    {
+      "check": "First minimal Git archive",
+      "status": "FAIL_RETAINED",
+      "reason": "core.autocrlf=true converted all 13 LF-bound payloads to CRLF; workspace/index hashes agree, archive differs.",
+      "correction": "Single git -c core.autocrlf=false archive invocation; no persistent config or historical byte changes."
+    },
+    {
+      "check": "Minimal staged Git archive, corrected per-command core.autocrlf=false",
+      "status": "PASS",
+      "package_payloads_sha256_verified": 13,
+      "exact_math_checks_passed": 11,
+      "datasets_or_runtime_outputs_required": false,
+      "reproduction": "git -c core.autocrlf=false archive --format=tar TREE docs/research/P5 evidence/research/P5_TASK1_20261104; extract; python evidence/research/P5_TASK1_20261104/verify_p5_evidence.py --repo-root ARCHIVE_ROOT --package-only"
+    }
+  ],
+  "limitations": [
+    "Not a causal experiment or empirical effect estimate",
+    "Zotero live API unavailable; historical collection index reused",
+    "NBER scanned original body not full-text read"
+  ],
+  "process_failures_retained": [
+    "Metadata print encoding failed after saving retrieval records; read the saved metadata without refetching",
+    "One client transport syntax error did not execute the command; payload corrected",
+    "First minimal archive SHA failure retained; 13 text files converted by existing Git core.autocrlf=true."
+  ],
+  "new_SUMO_runs": 0,
+  "new_seeds": 0,
+  "new_Pilot_runs": 0,
+  "new_V_runs": 0,
+  "locked_holdout_reads": 0,
+  "all_required_checks_passed": true,
+  "context_consistency": {
+    "updated": [
+      "00",
+      "01",
+      "05",
+      "06",
+      "07",
+      "08"
+    ],
+    "unchanged_with_reason": {
+      "02": "No implementation architecture change",
+      "03": "No production dataflow change",
+      "04": "No source module change"
+    },
+    "canonical_definitions_modified": false,
+    "inherited_decision_statuses_changed": false,
+    "new_proposals_approved": false
+  },
+  "commit_policy": "Only scoped P5 documentation/navigation/evidence; final commit and remote HEAD verified in actual Git output, not a self-referential field in the committed package."
+}

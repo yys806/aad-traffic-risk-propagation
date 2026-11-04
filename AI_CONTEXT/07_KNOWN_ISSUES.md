@@ -1,3 +1,11 @@
+## Current — P5 Task1 因果识别设计 (2026-11-04)
+
+识别缺口：nonQ及source-absent正支持/潜在Q(1)不可见；无共同源前四格总体/随机机制；NoMessage/Disabled对照语义未等价；跨域干扰/机制假设未证；P7无完整区域名单轨迹；独立F0/真实到达桥接缺失。分别记录Unknown/对象级Blocked，不通过补零、删run或未批准假设解决。
+
+Formal A/Independent Qualified仍0，完整真实区域Y、F0及总体T_R–T_P Unknown；Protocol Lock BLOCKED，Stage1.1 NOT_AUTHORIZED，其他Gate不变。统一定义v0.4/27项、Formal参数、P3/P4/P7代码与历史证据不改。无新增交通实验/seed/Pilot/V/holdout读取。
+
+[核心设计](../docs/research/P5/P5_TASK1_CAUSAL_IDENTIFICATION_DESIGN.md) · [决策](../docs/research/P5/P5_TASK1_RESEARCHER_DECISION_REGISTER.md) · [报告](../docs/research/P5/P5_TASK1_FINAL_REPORT.md) · [证据](../evidence/research/P5_TASK1_20261104/README.md)。统一入口仍为[科研定义](../docs/research/definitions/README.md)。下方保留历史任务时点。
+
 ## Current — P4 Task2 implementation (2026-11-04)
 
 P4已用新guard解决名单/N、源QC、跨gap/末点及P3外桥问题。剩余：真实完整资格覆盖与正式域/窗不明；动作阈值/持续/误差未定；无leader点可0但旧Formal连续性不足时整段保守Unknown；未实现自动几何裁切/跨源全导入/macro。旧prelock直接valid/NaN限制保留，P4辅助调用须走新guard。

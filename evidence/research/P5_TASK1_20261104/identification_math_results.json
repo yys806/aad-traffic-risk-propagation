@@ -1,0 +1,74 @@
+{
+  "task_id": "AAD-P5-TASK1-20261104",
+  "usage": "DETERMINISTIC_IDENTIFICATION_CHECK_ONLY",
+  "data_status": "SYNTHETIC_VALIDATION_ONLY",
+  "checks_passed": 11,
+  "checks": [
+    {
+      "name": "total_expectation",
+      "status": "PASS",
+      "tau_s1": "1/40"
+    },
+    {
+      "name": "interaction_decomposition",
+      "status": "PASS",
+      "tau_sc": "-1/40"
+    },
+    {
+      "name": "qualified_effect_not_interaction",
+      "status": "PASS",
+      "tau_q": "-1/5",
+      "tau_sc": "-1/40"
+    },
+    {
+      "name": "unobserved_nonq_not_zero_by_design",
+      "status": "PASS",
+      "same_qualified_effect": "-1/5",
+      "possible_interactions": [
+        "-1/10",
+        "11/40"
+      ]
+    },
+    {
+      "name": "principal_worlds_same_observed_distribution",
+      "status": "PASS"
+    },
+    {
+      "name": "principal_worlds_same_population_interaction",
+      "status": "PASS"
+    },
+    {
+      "name": "principal_worlds_same_qualified_effect",
+      "status": "PASS"
+    },
+    {
+      "name": "principal_interaction_not_identified",
+      "status": "PASS",
+      "possible_principal_interactions": [
+        "-1/2",
+        "1/2"
+      ]
+    },
+    {
+      "name": "latent_mean_bounds_feasible_and_attained",
+      "status": "PASS",
+      "lower": "1/4",
+      "upper": "1"
+    },
+    {
+      "name": "itt_interval_independent_endpoint_enumeration",
+      "status": "PASS",
+      "lower": "-3/5",
+      "upper": "0"
+    },
+    {
+      "name": "four_cell_interval_endpoint_enumeration",
+      "status": "PASS",
+      "lower": "-3/5",
+      "upper": "1/5"
+    }
+  ],
+  "new_traffic_runs": 0,
+  "new_seeds": 0,
+  "causal_effect_estimated": false
+}

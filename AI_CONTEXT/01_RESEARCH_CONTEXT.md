@@ -1,3 +1,11 @@
+## Current — P5 Task1 因果识别设计 (2026-11-04)
+
+Qpre对ZC为前、对ZS可为后；τQ不能代替τSC。Effect、Attribution、Temporal Precedence分别识别。H1可独立于机制报告；No Message与Disabled不自动等价。总体early-window须匹配同资格F0并有真实到达桥接，不识别单例提前秒数。推荐方案未升级Agreed。
+
+Formal A/Independent Qualified仍0，完整真实区域Y、F0及总体T_R–T_P Unknown；Protocol Lock BLOCKED，Stage1.1 NOT_AUTHORIZED，其他Gate不变。统一定义v0.4/27项、Formal参数、P3/P4/P7代码与历史证据不改。无新增交通实验/seed/Pilot/V/holdout读取。
+
+[核心设计](../docs/research/P5/P5_TASK1_CAUSAL_IDENTIFICATION_DESIGN.md) · [决策](../docs/research/P5/P5_TASK1_RESEARCHER_DECISION_REGISTER.md) · [报告](../docs/research/P5/P5_TASK1_FINAL_REPORT.md) · [证据](../evidence/research/P5_TASK1_20261104/README.md)。统一入口仍为[科研定义](../docs/research/definitions/README.md)。下方保留历史任务时点。
+
 ## Current — P4 Task2 implementation (2026-11-04)
 
 研究者P4 D01–D08全Agreed（A/A/B/A/A/A/A/A）。D03-B固定完整资格总体、D04-A固定N同窗平均贡献；最终Y算子确定不等于数值冻结。正式region/window/动作阈值/误差、现实覆盖及因果风险仍Unknown。

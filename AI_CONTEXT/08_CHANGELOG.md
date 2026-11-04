@@ -1,3 +1,11 @@
+## Current — P5 Task1 因果识别设计 (2026-11-04)
+
+完成P5 Task1三份核心文档、设计图和四组对照表、决策登记及便携来源/数学/字节证据；同步研究索引与Context。601既有文件保护，生产代码和定义不改。设计收口，实证因果效果仍Unknown，具体方案待研究者审阅。
+
+Formal A/Independent Qualified仍0，完整真实区域Y、F0及总体T_R–T_P Unknown；Protocol Lock BLOCKED，Stage1.1 NOT_AUTHORIZED，其他Gate不变。统一定义v0.4/27项、Formal参数、P3/P4/P7代码与历史证据不改。无新增交通实验/seed/Pilot/V/holdout读取。
+
+[核心设计](../docs/research/P5/P5_TASK1_CAUSAL_IDENTIFICATION_DESIGN.md) · [决策](../docs/research/P5/P5_TASK1_RESEARCHER_DECISION_REGISTER.md) · [报告](../docs/research/P5/P5_TASK1_FINAL_REPORT.md) · [证据](../evidence/research/P5_TASK1_20261104/README.md)。统一入口仍为[科研定义](../docs/research/definitions/README.md)。下方保留历史任务时点。
+
 ## Current — P4 Task2 implementation (2026-11-04)
 
 完成AAD-P4-TASK2-20261104：D01–D08同步，5模块/3离线脚本/88专项测试；172定向测试与15独立数学检查通过，源码/文档/便携证据及注册表同步。Task1历史字节不改；四份统一定义只追加有日期决策。

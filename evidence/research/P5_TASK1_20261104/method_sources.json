@@ -1,0 +1,156 @@
+{
+  "date": "2026-11-04",
+  "preference": "Existing P1/P2 and historical AAD Zotero source audit first; targeted primary-source checks only.",
+  "live_zotero_check": {
+    "collection": "TJU/AAD, TGJP2TIA",
+    "operation": "Read-only GET, timeout 5 s, no credentials read",
+    "status": "UNAVAILABLE_REQUEST_FAILED",
+    "library_modified": false,
+    "live_count_verified": false
+  },
+  "web_search_transport": "Search/open returned no usable body; actual originals read through bounded urllib requests.",
+  "methods": [
+    {
+      "id": "M1",
+      "zotero_historical_key": "H8GFNS8U",
+      "doi": "10.1198/016214508000000292",
+      "retrieval_id": "hudgens_halloran_2008",
+      "reading": "Targeted HTML sections on partial interference, treatment assignment strategies, and direct/indirect/total/overall effect levels."
+    },
+    {
+      "id": "M2",
+      "zotero_historical_key": "T6SFNY5I",
+      "doi": "10.1214/16-AOAS1005",
+      "retrieval_id": "aronow_pdf",
+      "reading": "arXiv 1305.6156v4 (2018 author version), PDF pp.2,4,5,8,9: design, mapping, nonzero exposure probabilities, Conditions 1/2 and estimands. Publisher access returned an Incapsula block despite HTTP 200; not used as full text."
+    },
+    {
+      "id": "M3",
+      "zotero_historical_key": "TVEZQ3UT",
+      "doi": "10.1111/j.0006-341X.2002.00021.x",
+      "retrieval_id": "frangakis_rubin_2002",
+      "reading": "Reuse 2026-11-02 Task5 full-HTML audit; targeted current HTML summary and principal-stratum definition/identification passages. No new claim of full reading."
+    },
+    {
+      "id": "M4",
+      "doi": "10.2307/2951620",
+      "retrieval_id": "angrist_imbens_1994",
+      "reading": "NBER author abstract and published-version pointer to March 1994. Page working-paper citation says 1995 and is not substituted for journal date. Scanned NBER PDF could not provide searchable original body; no full-text-reading claim. IV assumptions checked in M5."
+    },
+    {
+      "id": "M5",
+      "retrieval_id": "whatif_pdf",
+      "edition": "Author website actual linked 19aug26 PDF; bibliographic citation Hernan/Robins (2020)",
+      "reading": "Targeted chapter16 PDF pp.221,226-227; chapter19 pp.269-272 and chapter21 pp.286-288. Sequential exchangeability/positivity/consistency, time-dependent confounders, g-formula, monotonicity and complier interpretation. Not a full-book review."
+    },
+    {
+      "id": "M6",
+      "doi": "10.1097/EDE.0000000000000596",
+      "retrieval_id": "vansteelandt_daniel_2017",
+      "reading": "Targeted HTML interventional random-mediator definition, Assumptions (i)-(iii), natural-effect contrast and multiple-mediator scope. Not a proof for AAD longitudinal network mediation."
+    }
+  ],
+  "retrieval_metadata": [
+    {
+      "id": "hudgens_halloran_2008",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2600548/",
+      "resolved_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC2600548/",
+      "http_status": 200,
+      "bytes": 317679,
+      "sha256": "7ffa5e6956bb7f01e513a5d15760f8fd66157b1c00d499edd41ba3ed3570e2aa",
+      "title": [
+        "\n            Toward Causal Inference With Interference - PMC\n        "
+      ]
+    },
+    {
+      "id": "aronow_samii_2017",
+      "url": "https://projecteuclid.org/journals/annals-of-applied-statistics/volume-11/issue-4/Estimating-average-causal-effects-under-general-interference-with-application-to/10.1214/16-AOAS1005.full",
+      "resolved_url": "https://projecteuclid.org/journals/annals-of-applied-statistics/volume-11/issue-4/Estimating-average-causal-effects-under-general-interference-with-application-to/10.1214/16-AOAS1005.full",
+      "http_status": 200,
+      "bytes": 1161,
+      "sha256": "49edba27886bb020d2ea4e57bcb93c0fbd204492efeb2b0d0da6acbf616b748d",
+      "title": []
+    },
+    {
+      "id": "angrist_imbens_1994",
+      "url": "https://www.nber.org/papers/t0118",
+      "resolved_url": "https://www.nber.org/papers/t0118",
+      "http_status": 200,
+      "bytes": 87638,
+      "sha256": "b3cb3f34e33dafa17fd592676f1b93e12cc2fdcef318a53e2504c080e03aa8b8",
+      "title": [
+        "Identification and Estimation of Local Average Treatment Effects | NBER"
+      ]
+    },
+    {
+      "id": "hernan_robins_2020",
+      "url": "https://miguelhernan.org/whatifbook",
+      "resolved_url": "https://miguelhernan.org/whatifbook",
+      "http_status": 200,
+      "bytes": 540671,
+      "sha256": "5c6039ce5c32e32d09a6172bdbd1c994a70e46cf61ab7e1396e43e596095ece1",
+      "title": [
+        "Causal Inference: What If (the book) &mdash; Miguel Hernán"
+      ]
+    },
+    {
+      "id": "vansteelandt_daniel_2017",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5289540/",
+      "resolved_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5289540/",
+      "http_status": 200,
+      "bytes": 187990,
+      "sha256": "cdb9564bb0025d4d62245cfb94a093e267d840b35dfde1aed7e7b61bd13b0899",
+      "title": [
+        "\n            Interventional effects for mediation analysis with multiple mediators - PMC\n        "
+      ]
+    },
+    {
+      "id": "frangakis_rubin_2002",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4137767/",
+      "resolved_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4137767/",
+      "http_status": 200,
+      "bytes": 194727,
+      "sha256": "3a2f7b28df02547af8497fbf21d81536cde3b294897e18108209290202dbf827",
+      "title": [
+        "\n            Principal Stratification in Causal Inference - PMC\n        "
+      ]
+    },
+    {
+      "id": "aronow_arxiv",
+      "url": "https://arxiv.org/abs/1305.6156",
+      "resolved_url": "https://arxiv.org/abs/1305.6156",
+      "bytes": 44797,
+      "sha256": "6cc3f8ff8a9e1ca75ead5d9ef8a74f34b07f2c80480f2b5885cb40e1fe44d595",
+      "is_pdf": false
+    },
+    {
+      "id": "aronow_pdf",
+      "url": "https://arxiv.org/pdf/1305.6156",
+      "resolved_url": "https://arxiv.org/pdf/1305.6156",
+      "bytes": 1031502,
+      "sha256": "0e90860ec951314c117b018ae76acb5adb1c476aec0516315c4d6c34bc6cccbb",
+      "is_pdf": true,
+      "pages": 40
+    },
+    {
+      "id": "late_pdf",
+      "url": "https://www.nber.org/system/files/working_papers/t0118/t0118.pdf",
+      "resolved_url": "https://www.nber.org/system/files/working_papers/t0118/t0118.pdf",
+      "bytes": 1433633,
+      "sha256": "a1b35f31b63f0563de6fd0be2092ef62b5cede31d7b1fc2d8d859adc18a006e4",
+      "is_pdf": true,
+      "pages": 28
+    },
+    {
+      "id": "whatif_pdf",
+      "url": "https://miguelhernan.org/s/hernanrobins_WhatIf_19aug26.pdf",
+      "resolved_url": "https://static1.squarespace.com/static/675db8b0dd37046447128f5f/t/6a86cf7ecfcb6b4ca8eea5cb/1787219838424/hernanrobins_WhatIf_19aug26.pdf",
+      "bytes": 11315465,
+      "sha256": "a1067af923e9156bb95fbe4b0d18699bd0723e9c902bdc74465cf7782820b1b5",
+      "is_pdf": true,
+      "pages": 365
+    }
+  ],
+  "pdf_portable_copies": 0,
+  "raw_work_location": "local_research/literature-work/p5_task1_20261104 (ignored, not a local literature library)"
+}

@@ -1,3 +1,11 @@
+## Current — P5 Task1 因果识别设计 (2026-11-04)
+
+DESIGN_COMPLETE_WITH_OPEN_IDENTIFICATION_DECISIONS。P5 Task1完成只读因果设计审计：区分全部source-present ITT、Qpre资格ITT与最终四格；推荐当前资格两臂+未来共同源前机会四格候选，principal-stratum仅额外假设/部分识别备选。具体总体、随机化/干扰、机制及时间规则均Proposal/Awaiting；等待研究者审阅，不自动启动后续。
+
+Formal A/Independent Qualified仍0，完整真实区域Y、F0及总体T_R–T_P Unknown；Protocol Lock BLOCKED，Stage1.1 NOT_AUTHORIZED，其他Gate不变。统一定义v0.4/27项、Formal参数、P3/P4/P7代码与历史证据不改。无新增交通实验/seed/Pilot/V/holdout读取。
+
+[核心设计](../docs/research/P5/P5_TASK1_CAUSAL_IDENTIFICATION_DESIGN.md) · [决策](../docs/research/P5/P5_TASK1_RESEARCHER_DECISION_REGISTER.md) · [报告](../docs/research/P5/P5_TASK1_FINAL_REPORT.md) · [证据](../evidence/research/P5_TASK1_20261104/README.md)。统一入口仍为[科研定义](../docs/research/definitions/README.md)。下方保留历史任务时点。
+
 ## Current — P4 Task2 implementation (2026-11-04)
 
 P4状态IMPLEMENTATION_COMPLETE_WITH_LIMITATIONS。独立v1实现严格动作Δv主/Δa辅、处理前完整资格名单、Formal贡献/同窗积分/固定N等权Y与P3外部桥。172项离线测试及15项独立数学检查通过；真实完整区域Y尚无合格输入。
