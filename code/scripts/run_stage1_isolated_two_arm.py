@@ -109,8 +109,11 @@ def routes_xml() -> str:
     return f'<routes>{vt}<route id="rs" edges="src"/><route id="rt" edges="tgt"/>{"" .join(vehs)}</routes>'
 
 
-def run_arm(tmp: Path, seed: int, opn: int, policy_cfg: PolicyConfig):
-    cfg = tmp / f"run_opn{opn}.sumocfg"
+def run_arm(tmp: Path, seed: int, arm: str, policy_cfg: PolicyConfig):
+    """arm: "opn0" (no message) | "sham" (same speed cap, no source-event info) | "opn1" (real message)."""
+    opn = 1 if arm == "opn1" else 0
+    sham = arm == "sham"
+    cfg = tmp / f"run_{arm}.sumocfg"
     cfg.write_text(
         f"""<configuration>
     <input><net-file value="net.net.xml"/><route-files value="routes.rou.xml"/></input>
@@ -134,6 +137,7 @@ def run_arm(tmp: Path, seed: int, opn: int, policy_cfg: PolicyConfig):
     adopted_by: set[str] = set()
     applied_by: set[str] = set()
     adopted_msg: dict[str, tuple[Message, RiskPayload]] = {}
+    sham_done = False
 
     # --- per-step target-region risk accumulation ---
     risk_samples: list[float] = []
@@ -219,6 +223,67 @@ def run_arm(tmp: Path, seed: int, opn: int, policy_cfg: PolicyConfig):
             region_frac.append(n_in_region / len(roster) if roster else 0.0)
             mean_speed.append(float(np.mean([sp for _, _, sp in in_region])) if in_region else float("nan"))
 
+            # ---- sham arm: identical speed cap, applied on the identical schedule, but
+            # with NO message generated, delivered or adopted. If risk moves the same way
+            # as in the message arm, the effect is the deceleration itself, not information.
+            if sham and event_time is not None:
+                # Coverage must match the message arm exactly: every vehicle that enters
+                # the region after the event gets the same cap, every step, for the whole
+                # run. Applying it once to the vehicles present at the event instant would
+                # compare 60 vehicles against 76 and confound coverage with information.
+                if not sham_done:
+                    sham_done = True
+                    adopted_by.add("SHAM")
+                    lifecycle.append({"phase": "sham_started", "t": round(now, 3),
+                                      "note": "same speed cap as message arm, no message"})
+                for v, x, sp in in_region:
+                    try:
+                        # Identical control law to the message arm: the same policy function,
+                        # the same local state, the same HIGH risk level, the same rate limit.
+                        # The ONLY difference is that no source-event-derived message exists;
+                        # the payload is emitted locally with no remote event attached.
+                        lead = traci.vehicle.getLeader(v, 200.0)
+                        lid_, gap_ = (lead[0], float(lead[1])) if lead else (None, None)
+                        lsp_ = (traci.vehicle.getSpeed(lid_)
+                                if lid_ is not None and lid_ in present else None)
+                        pos_ = traci.vehicle.getPosition(v)
+                        st = LocalState(
+                            vehicle_id=v, vehicle_incarnation_id=f"{v}@0",
+                            simulation_time_s=now, simulation_step=k,
+                            edge_id="tgt", lane_id="tgt_0", lane_position_m=x,
+                            position_xy_m=(float(pos_[0]), float(pos_[1])),
+                            speed_mps=sp,
+                            acceleration_mps2=float(traci.vehicle.getAcceleration(v)),
+                            original_max_speed_mps=30.0, lane_max_speed_mps=30.0,
+                            leader_id=lid_, leader_speed_mps=lsp_,
+                            net_gap_m=(max(0.0, gap_) if gap_ is not None else None),
+                        )
+                        sham_payload = RiskPayload(
+                            payload_schema_version=PAYLOAD_SCHEMA,
+                            parameter_status=PARAMETER_STATUS,
+                            source_event_id="evt-SHAM-01",       # not a real source event
+                            event_type="SYNTHETIC_REMOTE_RISK",
+                            risk_level="HIGH",
+                            affected_edge_id="tgt",
+                            lane_position_min_m=TGT_REGION[0],
+                            lane_position_max_m=TGT_REGION[1],
+                            target_vehicle_ids=(v,),
+                            generated_time=round(event_time, 3),
+                            valid_from=round(event_time, 3),
+                            valid_until=round(event_time + 30.0, 3),
+                        )
+                        out = longitudinal_policy(
+                            PolicyInput(local_state=st,
+                                        messages=((f"msg-sham-{v}", sham_payload),)),
+                            policy_cfg)
+                        if out.target_speed_reference_mps is not None:
+                            traci.vehicle.setMaxSpeed(v, out.target_speed_reference_mps)
+                            applied_by.add(v)
+                    except Exception as exc:  # noqa: BLE001
+                        lifecycle.append({"phase": "sham_error", "t": round(now, 3),
+                                          "vehicle_id": v, "error": f"{type(exc).__name__}: {exc}"})
+
+
             # ---- controller adoption: only if the source event has been confirmed
             if opn == 1 and event_time is not None:
                 for v, x, sp in in_region:
@@ -298,7 +363,7 @@ def run_arm(tmp: Path, seed: int, opn: int, policy_cfg: PolicyConfig):
 
     risk = np.asarray(risk_samples, dtype=float)
     return {
-        "arm": f"opn{opn}",
+        "arm": arm,
         "seed": seed,
         "event_time_s": event_time,
         "roster_size": len(roster) if roster else 0,
@@ -336,17 +401,21 @@ def main() -> int:
         scratch.mkdir(parents=True, exist_ok=True)
         (scratch / "net.net.xml").write_text(net_xml(), encoding="utf-8")
         (scratch / "routes.rou.xml").write_text(routes_xml(), encoding="utf-8")
-        for opn in (0, 1):
-            r = run_arm(scratch, seed, opn, policy_cfg)
+        for arm in ("opn0", "sham", "opn1"):
+            r = run_arm(scratch, seed, arm, policy_cfg)
             results.append(r)
             print(f"seed={seed} arm={r['arm']} event_t={r['event_time_s']} "
                   f"risk_mean={r['risk_mean']:.6g} adopted={r['n_adopted']} applied={r['n_applied']}")
 
-        # paired contrast within this seed
-        a0 = next(x for x in results if x["seed"] == seed and x["arm"] == "opn0")
-        a1 = next(x for x in results if x["seed"] == seed and x["arm"] == "opn1")
-        if a0["risk_sum_s"] is not None and a1["risk_sum_s"] is not None:
-            print(f"  seed={seed} Δrisk_sum_s = {a1['risk_sum_s'] - a0['risk_sum_s']:+.6g}")
+        # three-way contrast within this seed
+        by_arm = {x["arm"]: x for x in results if x["seed"] == seed}
+        a0, sha, a1 = by_arm.get("opn0"), by_arm.get("sham"), by_arm.get("opn1")
+        if a0 and a1 and a0["risk_sum_s"] is not None and a1["risk_sum_s"] is not None:
+            print(f"  Δ(opn1 - opn0) = {a1['risk_sum_s'] - a0['risk_sum_s']:+.6g}")
+        if a0 and sha and a0["risk_sum_s"] is not None and sha["risk_sum_s"] is not None:
+            print(f"  Δ(sham - opn0) = {sha['risk_sum_s'] - a0['risk_sum_s']:+.6g}   <- 纯减速效应")
+        if sha and a1 and sha["risk_sum_s"] is not None and a1["risk_sum_s"] is not None:
+            print(f"  Δ(opn1 - sham) = {a1['risk_sum_s'] - sha['risk_sum_s']:+.6g}   <- 信息效应")
 
     # strip the heavy series from the summary file, keep it in a side file
     summary = [{k: v for k, v in r.items() if k != "tgt_series"} for r in results]
