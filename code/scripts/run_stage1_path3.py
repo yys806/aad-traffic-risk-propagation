@@ -144,9 +144,12 @@ class ArmResult:
     n_adopted: int
     n_applied: int
     lifecycle: list
+    tau_mean: float | None = None   # mean tau over in-region vehicles, averaged over steps
+    tau_p90: float | None = None
 
 
-def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str) -> ArmResult:
+def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
+            sham_delta: float = RISK_TAU_DELTA["HIGH"]) -> ArmResult:
     tmp.mkdir(parents=True, exist_ok=True)
     (tmp / "net.net.xml").write_text(base.net_xml(), encoding="utf-8")
     (tmp / "routes.rou.xml").write_text(base.routes_xml(), encoding="utf-8")
@@ -177,6 +180,8 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str) -> Ar
     src_speed0 = None
 
     roster: tuple[str, ...] | None = None
+    tau_applied_samples: list[float] = []     # mean tau actually set, per step
+    tau_native_samples: list[float] = []      # mean tau of in-region vehicles, per step
     risk_roster_samples: list[float] = []
     risk_meantime_sum = 0.0
     exposure_steps = 0
@@ -214,6 +219,13 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str) -> Ar
                                   "n_vehicles": len(roster)})
             if roster is None:
                 continue
+
+            # ---- record the actual headway state so the two arms can be compared on the
+            # SIZE of the action, not just its effect (a smaller action producing a larger
+            # effect is a content-targeting claim and must be evidenced, not assumed)
+            if in_region:
+                tau_now = [float(traci.vehicle.getTau(v)) for v, _, _ in in_region]
+                tau_native_samples.append(float(np.mean(tau_now)))
 
             # ---- risk, two normalisations computed from the same per-vehicle values
             per_veh: dict[str, float] = {}
@@ -253,12 +265,15 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str) -> Ar
                 if not sham_done:
                     sham_done = True
                     lifecycle.append({"phase": "sham_started", "t": round(now, 3),
-                                      "note": "blanket headway increase, no message content"})
+                                      "note": f"blanket headway increase delta={sham_delta}, "
+                                              f"no message content"})
                 for v, x, sp in in_region:
                     try:
-                        # Peak magnitude of the HIGH level, applied to everyone: deliberately
-                        # content-blind, so that D(opn1 - sham) isolates content.
-                        delta = RISK_TAU_DELTA["HIGH"]
+                        # Content-blind blanket increase. delta is either the HIGH peak
+                        # (unmatched dose, tests "more action vs graded action") or a
+                        # constant matched to the message arm's mean dose, which is the
+                        # only version that isolates content from dose.
+                        delta = sham_delta
                         traci.vehicle.setTau(v, min(TAU_CAP, NATIVE_TAU + delta))
                         applied_by.add(v)
                     except Exception as exc:  # noqa: BLE001 - record, never swallow
@@ -336,6 +351,8 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str) -> Ar
         n_in_region_mean=(float(np.mean(n_in_region_samples)) if n_in_region_samples else None),
         region_speed_mean=(float(np.mean(region_speed_samples)) if region_speed_samples else None),
         n_adopted=len(adopted_by), n_applied=len(applied_by), lifecycle=lifecycle,
+        tau_mean=(float(np.mean(tau_native_samples)) if tau_native_samples else None),
+        tau_p90=(float(np.percentile(tau_native_samples, 90)) if tau_native_samples else None),
     )
 
 
@@ -344,6 +361,9 @@ def main() -> int:
     ap.add_argument("--seeds", type=int, default=1)
     ap.add_argument("--risk-mode", choices=["braking", "instant"], default="braking")
     ap.add_argument("--response", choices=["headway", "none"], default="headway")
+    ap.add_argument("--sham-delta", type=float, default=RISK_TAU_DELTA["HIGH"],
+                    help="constant headway increase (s) for the content-blind sham arm; "
+                         "set it to the message arm's mean dose to isolate content from dose")
     ap.add_argument("--out", default="code/outputs/analysis/stage1_path3_20261116")
     args = ap.parse_args()
 
@@ -356,11 +376,13 @@ def main() -> int:
         arms = {}
         for arm in ("opn0", "sham", "opn1"):
             scratch = outdir / f"_scratch_{seed}_{arm}"
-            arms[arm] = run_arm(scratch, seed, arm, args.risk_mode, args.response)
+            arms[arm] = run_arm(scratch, seed, arm, args.risk_mode, args.response,
+                                sham_delta=args.sham_delta)
             r = arms[arm]
             print(f"seed={seed} arm={arm:<5} event_t={r.event_time_s} "
                   f"risk_meantime={r.risk_meantime} risk_roster={r.risk_roster} "
-                  f"exposure={r.exposure_veh_s} adopted={r.n_adopted} applied={r.n_applied}")
+                  f"exposure={r.exposure_veh_s} adopted={r.n_adopted} applied={r.n_applied} "
+                  f"tau_mean={r.tau_mean} tau_p90={r.tau_p90}")
         results[str(seed)] = arms
 
     print("\n--- contrasts (vehicle-time normalised) ---")
