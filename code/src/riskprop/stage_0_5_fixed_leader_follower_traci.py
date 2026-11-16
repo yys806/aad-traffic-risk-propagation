@@ -109,7 +109,20 @@ def run_joint_replay(
         traci.vehicletype.setTau("follower", float(follower_tau_s))
         traci.vehicletype.setMinGap("follower", float(follower_min_gap_m))
         lane_index = lane_id.rsplit("_", 1)[-1]
-        safe_insertion_gap = max(20.0, gap0 + 5.0, float(follower_tau_s) * follower_speed0 + float(follower_min_gap_m) + 5.0)
+        # SUMO's insertion test is a braking-distance test, not a tau*gap test: a vehicle
+        # may only be inserted if it can still decelerate safely before reaching the leader
+        # (v^2 / 2a <= gap - minGap). The previous `tau*v + minGap` heuristic is far too
+        # small at high speed and made every pair above ~16 m/s fail insertion. Use the
+        # braking distance, with the type's own decel, plus a margin.
+        _decel = 4.5
+        try:
+            _decel = max(0.1, float(traci.vehicletype.getDecel("follower")))
+        except Exception:  # noqa: BLE001 - fall back to the documented default
+            pass
+        insertion_brake_gap = (follower_speed0 ** 2) / (2.0 * _decel)
+        safe_insertion_gap = max(20.0, gap0 + 5.0,
+                                 float(follower_tau_s) * follower_speed0 + float(follower_min_gap_m) + 5.0,
+                                 insertion_brake_gap + float(follower_min_gap_m) + 5.0)
         follower_depart_pos = follower_front0 if initialization_mode == "direct" else float(leader_front[0] - geometry_leader_length_m - safe_insertion_gap)
         try:
             road_length_m = float(traci.lane.getLength(lane_id))
@@ -138,6 +151,26 @@ def run_joint_replay(
         ])
         traci.simulationStep()
         initial_ids = _ids()
+        # SUMO defers an insertion it considers marginal and retries on following steps
+        # (`MSLane::isInsertionSuccess()` false -> vehicle waits). Observed native delay is
+        # 0.05-0.70 s (AI_CONTEXT/07_KNOWN_ISSUES.md, 2026-10-20 entry). The leader is held
+        # in place with moveTo/setSpeed(0) while waiting so the t[0] anchor does not drift.
+        wait_steps = 0
+        while not {"leader", "follower"}.issubset(initial_ids) and wait_steps < 40:
+            wait_steps += 1
+            if "leader" in initial_ids:
+                try:
+                    traci.vehicle.moveTo("leader", lane_id, float(leader_front[0]))
+                    traci.vehicle.setSpeed("leader", 0.0)
+                except Exception:  # noqa: BLE001 - leader may not be placed yet
+                    pass
+            traci.simulationStep()
+            initial_ids = _ids()
+        if wait_steps:
+            lifecycle_events.append({"input_time_s": float(t[0]), "phase": "insertion_wait",
+                                     "wait_steps": wait_steps,
+                                     "wait_s": round(wait_steps * step_s, 3),
+                                     "present_ids": sorted(initial_ids)})
         if not {"leader", "follower"}.issubset(initial_ids):
             missing = sorted({"leader", "follower"} - initial_ids)
             lifecycle_events.append(_lifecycle_snapshot(float(t[0]), "after_initial_step"))

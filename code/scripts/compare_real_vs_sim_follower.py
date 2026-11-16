@@ -160,6 +160,8 @@ def main() -> int:
                 sim_ttc = ttc_of(gg, ff, ll)
                 sim_ev = count_p2(tt, sim_ttc)
                 rec.update({"sim_status": res.get("status"),
+                            "sim_failure_reason": res.get("failure_reason"),
+                            "sim_evaluated_rows": res.get("evaluated_rows"),
                             "sim_events": len(sim_ev),
                             "sim_min_ttc": round(float(np.nanmin(sim_ttc)), 3)
                             if np.isfinite(sim_ttc).any() else None,
@@ -168,6 +170,7 @@ def main() -> int:
             else:
                 rec.update({"sim_status": res.get("status"),
                             "sim_events": None,
+                            "failure_reason": res.get("failure_reason"),
                             "note": "no rows returned"})
         except Exception as exc:  # noqa: BLE001 - report, never swallow
             rec.update({"sim_status": "ERROR", "error": f"{type(exc).__name__}: {exc}"})
