@@ -64,8 +64,16 @@ def vtype_xml(awareness: float, with_device: bool, reaction_s: float = 1.5,
 
 def build_scene(folder: Path, density: str, seed: int, awareness: float, with_device: bool,
                 reaction_s: float = 1.5, min_awareness: float = 0.1,
-                headway_coef: float = 0.75) -> Path:
+                headway_coef: float = 0.75, fill_upstream: bool = False) -> Path:
     count, spacing = DENSITIES[density]
+    if fill_upstream:
+        # Fill the whole upstream stretch so the region is continuously replenished as
+        # vehicles leave downstream. Without this the region empties and measured
+        # density decays (v6: 41.6 -> 29.0 over 120 s).
+        # Spacing is set from the NGSIM target density (43.5 veh/km/lane -> 23.0 m),
+        # not the old 15 m platoon spacing which yields a different steady state.
+        spacing = 1000.0 / TARGET_DENSITY
+        count = int(round(FILL_LENGTH / spacing)) + 1
     ids = [f"s{i}" for i in range(count)] + ["decoy"]
     vehicles = "".join(
         f'<vehicle id="s{i}" type="native" route="r" depart="0" departLane="0" '
@@ -82,10 +90,10 @@ def build_scene(folder: Path, density: str, seed: int, awareness: float, with_de
 
 def simulate(folder: Path, density: str, seed: int, awareness: float, with_device: bool,
              reaction_s: float = 1.5, min_awareness: float = 0.1, headway_coef: float = 0.75,
-             end_s: float = END):
+             end_s: float = END, fill_upstream: bool = False):
     steps = int(round(end_s / STEP))
     route = build_scene(folder, density, seed, awareness, with_device, reaction_s,
-                        min_awareness, headway_coef)
+                        min_awareness, headway_coef, fill_upstream)
     os.environ["SUMO_HOME"] = str(SUMO_HOME)
     sys.path.insert(0, str(SUMO_HOME / "tools"))
     import traci  # noqa: E402
@@ -96,29 +104,40 @@ def simulate(folder: Path, density: str, seed: int, awareness: float, with_devic
                "--duration-log.disable", "true", "--collision.action", "warn",
                "--log", str(folder / "sumo.log"), "--error-log", str(folder / "error.log")]
 
-    count, _ = DENSITIES[density]
+    count, spacing_ = DENSITIES[density]
+    if fill_upstream:
+        spacing_ = 1000.0 / TARGET_DENSITY
+        count = int(round(FILL_LENGTH / spacing_)) + 1
     ids = [f"s{i}" for i in range(count)] + ["decoy"]
     n = len(ids)
     v = np.full((steps, n), np.nan)
     gap = np.full((steps, n), np.nan)
     v_lead = np.full((steps, n), np.nan)
     pos = np.full((steps, n), np.nan)
+    lane_arr = np.full((steps, n), np.nan)
 
     traci.start(command, label="scan", verbose=False)
     conn = traci.getConnection("scan")
     collisions = 0
     try:
+        # Bulk subscription: one call per step instead of 3 per vehicle.
+        import traci.constants as tc
+        for vid in ids:
+            conn.vehicle.subscribe(vid, (tc.VAR_SPEED, tc.VAR_POSITION, tc.VAR_LANE_INDEX))
         for k in range(steps):
             conn.simulationStep()
             try:
                 collisions += len(conn.simulation.getCollisions())
             except Exception:  # noqa: BLE001 - older TraCI without collision API
                 pass
+            sub = conn.vehicle.getAllSubscriptionResults()
             for j, vid in enumerate(ids):
-                if vid not in conn.vehicle.getIDList():
+                res = sub.get(vid)
+                if not res:
                     continue
-                v[k, j] = conn.vehicle.getSpeed(vid)
-                pos[k, j] = conn.vehicle.getPosition(vid)[0]
+                v[k, j] = res[tc.VAR_SPEED]
+                pos[k, j] = res[tc.VAR_POSITION][0]
+                lane_arr[k, j] = res[tc.VAR_LANE_INDEX]
                 lead = conn.vehicle.getLeader(vid, 100.0)
                 if lead:
                     gap[k, j] = lead[1]
@@ -126,10 +145,12 @@ def simulate(folder: Path, density: str, seed: int, awareness: float, with_devic
     finally:
         conn.close()
 
-    return v, gap, v_lead, pos, collisions
+    return v, gap, v_lead, pos, lane_arr, collisions
 
 
 REGION = (1600.0, 3080.0)
+TARGET_DENSITY = 43.5          # NGSIM us101__0750_0805, veh/km/lane
+FILL_LENGTH = 3000.0           # fill from 3000 m upstream down to the region exit
 REGION_KM = (REGION[1] - REGION[0]) / 1000.0
 
 
@@ -157,7 +178,7 @@ def p2_events(ttc, t, thresh=TTC_THRESH, persist=PERSIST, max_gap=MAX_GAP, step=
     return events
 
 
-def ttc_summary(v, gap, v_lead, pos, step=STEP):
+def ttc_summary(v, gap, v_lead, pos, lane_arr, step=STEP):
     t = np.arange(v.shape[0]) * step
     # True TTC: gap between vehicles minus the leader's minGap allowance is already
     # baked into SUMO's getLeader distance; closing speed = ego - leader.
@@ -177,7 +198,10 @@ def ttc_summary(v, gap, v_lead, pos, step=STEP):
     out["v_std_mean"] = float(np.nanmean(np.nanstd(v, axis=1)))
 
     # --- traffic state inside the fixed region (must stay realistic) ---
-    inside = np.isfinite(pos) & (pos >= REGION[0]) & (pos < REGION[1])
+    # p2_task7_measurement counts lane 0 only; keep the same definition so densities
+    # are comparable with the NGSIM reference (43.5 / 50.5 veh per km per lane).
+    inside = (np.isfinite(pos) & (pos >= REGION[0]) & (pos < REGION[1])
+              & (lane_arr == 0))
     counts = inside.sum(axis=1).astype(float)
     out["veh_in_region_mean"] = float(counts.mean())
     out["density_veh_per_km_lane"] = float(counts.mean() / REGION_KM)
@@ -206,6 +230,8 @@ def main() -> int:
     ap.add_argument("--headway-coef", type=float, default=0.75)
     ap.add_argument("--tag", default="", help="suffix for the summary file to avoid overwrite")
     ap.add_argument("--end", type=float, default=END, help="simulation horizon in seconds")
+    ap.add_argument("--fill-upstream", action="store_true",
+                    help="fill the whole upstream stretch so density stays constant")
     ap.add_argument("--density", default="high")
     args = ap.parse_args()
 
@@ -218,11 +244,12 @@ def main() -> int:
             folder = outdir / f"aw{aw:.2f}_seed{seed}"
             folder.mkdir(parents=True, exist_ok=True)
             try:
-                v, gap, v_lead, pos, coll = simulate(
+                v, gap, v_lead, pos, lane_arr, coll = simulate(
                     folder, args.density, seed, aw, with_device=(aw < 1.0),
                     reaction_s=args.reaction_time, min_awareness=args.min_awareness,
-                    headway_coef=args.headway_coef, end_s=args.end)
-                summary = ttc_summary(v, gap, v_lead, pos)
+                    headway_coef=args.headway_coef, end_s=args.end,
+                    fill_upstream=args.fill_upstream)
+                summary = ttc_summary(v, gap, v_lead, pos, lane_arr)
                 summary.update({"awareness": aw, "seed": seed, "collisions": coll,
                                 "status": "OK"})
             except Exception as exc:  # noqa: BLE001
