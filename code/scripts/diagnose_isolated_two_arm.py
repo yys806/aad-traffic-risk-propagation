@@ -70,12 +70,15 @@ def main() -> int:
 
     print(f"\n区内车数  全程均值  opn0={c0.mean():.1f}  opn1={c1.mean():.1f}")
     print(f"区内均速  全程均值  opn0={np.nanmean(v0):.2f}  opn1={np.nanmean(v1):.2f}")
-    pre = t < 12.2
-    post = t >= 12.2
-    print(f"\n事件前（t<12.2s）区内车数  opn0={c0[pre].mean():.1f}  opn1={c1[pre].mean():.1f}")
-    print(f"事件前（t<12.2s）区内均速  opn0={np.nanmean(v0[pre]):.2f}  opn1={np.nanmean(v1[pre]):.2f}")
-    print(f"事件后（t>=12.2s）区内车数 opn0={c0[post].mean():.1f}  opn1={c1[post].mean():.1f}")
-    print(f"事件后（t>=12.2s）区内均速 opn0={np.nanmean(v0[post]):.2f}  opn1={np.nanmean(v1[post]):.2f}")
+    ev = json.loads((OUT / "arms_summary.json").read_text(encoding="utf-8"))
+    event_t = next((x["event_time_s"] for x in ev if x.get("event_time_s") is not None), None)
+    print(f"\n事件时刻（从 summarizes 读）: {event_t}")
+    pre = t < (event_t if event_t is not None else 0.0)
+    post = t >= (event_t if event_t is not None else 0.0)
+    print(f"\n事件前区内车数  opn0={c0[pre].mean():.1f}  opn1={c1[pre].mean():.1f}")
+    print(f"事件前区内均速  opn0={np.nanmean(v0[pre]):.2f}  opn1={np.nanmean(v1[pre]):.2f}")
+    print(f"事件后区内车数  opn0={c0[post].mean():.1f}  opn1={c1[post].mean():.1f}")
+    print(f"事件后区内均速  opn0={np.nanmean(v0[post]):.2f}  opn1={np.nanmean(v1[post]):.2f}")
 
     # A: is the vehicle population identical between arms?
     same_pop = bool(np.array_equal(c0, c1))
