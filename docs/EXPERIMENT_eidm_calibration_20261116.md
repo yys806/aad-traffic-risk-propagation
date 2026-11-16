@@ -101,6 +101,22 @@ D:/hermes-yan/envs/aad/Scripts/python.exe code/scripts/eidm_calibration_sweep.py
 
 产物：`code/outputs/analysis/eidm_attr_probe_20261116/`、`code/outputs/analysis/eidm_calibration_20261116/`
 
+## 十、作废的中间版本（不要引用）
+
+这三轮跑出来的数字都不能用，列在这里防止以后误引：
+
+| 脚本/轮次 | 结果 | 为什么作废 |
+|---|---|---|
+| `verify_eidm_params.py` 首轮 | 0/13 参数生效 | **测试场景错了**：六辆车都在自由流（18 m/s、20 m 间距跑满全程），从不跟驰，跟驰参数本来就不起作用。不是参数的问题 |
+| `find_cf_param_prefix.py` 第一、二轮 | 全部 0 差异 / SUMO 崩溃 | 第一轮的 `<param key>` 写法本身就不对；第二轮在基础属性上重复追加 `minGap`/`decel`，造成 XML 属性重复，SUMO 直接退出，TraCI 只报 "Connection closed by SUMO" 掩盖了真实原因 |
+| `eidm_attr_probe.py` 首轮 | SUMO 崩溃 | 同上，属性重复 |
+
+**有效的是**：`eidm_attr_probe.py` 第二轮（12/12 生效）与 `eidm_calibration_sweep.py`（六组参数、卡在 3 米）。
+
+**两条工程教训**：
+1. 测跟驰参数必须构造"真的会跟驰"的场景（慢前车逼迫后车制动），自由流测不出任何差异。
+2. vType 属性不能重复出现，否则 SUMO 静默退出，TraCI 的报错信息完全指不到根因。改用"基础属性字典 + update"的方式合并。
+
 ## 九、还没做
 
 - 没测比 aggressive 更极端的参数（但受 3 米下限约束，再极端也无益）
