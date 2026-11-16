@@ -81,7 +81,9 @@ def build_scene(folder: Path, density: str, seed: int, awareness: float, with_de
 
 
 def simulate(folder: Path, density: str, seed: int, awareness: float, with_device: bool,
-             reaction_s: float = 1.5, min_awareness: float = 0.1, headway_coef: float = 0.75):
+             reaction_s: float = 1.5, min_awareness: float = 0.1, headway_coef: float = 0.75,
+             end_s: float = END):
+    steps = int(round(end_s / STEP))
     route = build_scene(folder, density, seed, awareness, with_device, reaction_s,
                         min_awareness, headway_coef)
     os.environ["SUMO_HOME"] = str(SUMO_HOME)
@@ -89,7 +91,7 @@ def simulate(folder: Path, density: str, seed: int, awareness: float, with_devic
     import traci  # noqa: E402
 
     command = [str(SUMO_BIN), "-n", str(NET), "-r", str(route),
-               "--step-length", str(STEP), "--end", str(END), "--seed", str(seed),
+               "--step-length", str(STEP), "--end", str(end_s), "--seed", str(seed),
                "--step-method.ballistic", "true", "--no-step-log", "true",
                "--duration-log.disable", "true", "--collision.action", "warn",
                "--log", str(folder / "sumo.log"), "--error-log", str(folder / "error.log")]
@@ -97,16 +99,16 @@ def simulate(folder: Path, density: str, seed: int, awareness: float, with_devic
     count, _ = DENSITIES[density]
     ids = [f"s{i}" for i in range(count)] + ["decoy"]
     n = len(ids)
-    v = np.full((STEPS, n), np.nan)
-    gap = np.full((STEPS, n), np.nan)
-    v_lead = np.full((STEPS, n), np.nan)
-    pos = np.full((STEPS, n), np.nan)
+    v = np.full((steps, n), np.nan)
+    gap = np.full((steps, n), np.nan)
+    v_lead = np.full((steps, n), np.nan)
+    pos = np.full((steps, n), np.nan)
 
     traci.start(command, label="scan", verbose=False)
     conn = traci.getConnection("scan")
     collisions = 0
     try:
-        for k in range(STEPS):
+        for k in range(steps):
             conn.simulationStep()
             try:
                 collisions += len(conn.simulation.getCollisions())
@@ -203,6 +205,7 @@ def main() -> int:
     ap.add_argument("--min-awareness", type=float, default=0.1)
     ap.add_argument("--headway-coef", type=float, default=0.75)
     ap.add_argument("--tag", default="", help="suffix for the summary file to avoid overwrite")
+    ap.add_argument("--end", type=float, default=END, help="simulation horizon in seconds")
     ap.add_argument("--density", default="high")
     args = ap.parse_args()
 
@@ -218,7 +221,7 @@ def main() -> int:
                 v, gap, v_lead, pos, coll = simulate(
                     folder, args.density, seed, aw, with_device=(aw < 1.0),
                     reaction_s=args.reaction_time, min_awareness=args.min_awareness,
-                    headway_coef=args.headway_coef)
+                    headway_coef=args.headway_coef, end_s=args.end)
                 summary = ttc_summary(v, gap, v_lead, pos)
                 summary.update({"awareness": aw, "seed": seed, "collisions": coll,
                                 "status": "OK"})
