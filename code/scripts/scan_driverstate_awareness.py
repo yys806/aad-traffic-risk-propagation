@@ -43,7 +43,8 @@ PERSIST = 0.2
 MAX_GAP = 0.11
 
 
-def vtype_xml(awareness: float, with_device: bool) -> str:
+def vtype_xml(awareness: float, with_device: bool, reaction_s: float = 1.5,
+              min_awareness: float = 0.1, headway_coef: float = 0.75) -> str:
     base = ('<vType id="native" carFollowModel="Krauss" accel="2.6" decel="4.5" '
             'emergencyDecel="9" length="5" minGap="2.5" tau="0.6" sigma="0.25" '
             'maxSpeed="10" speedFactor="1" speedDev="0" lcStrategic="-1" '
@@ -53,14 +54,17 @@ def vtype_xml(awareness: float, with_device: bool) -> str:
     params = (
         f'<param key="device.driverstate.probability" value="1"/>'
         f'<param key="device.driverstate.initialAwareness" value="{awareness}"/>'
-        f'<param key="device.driverstate.headwayErrorCoefficient" value="0.75"/>'
+        f'<param key="device.driverstate.headwayErrorCoefficient" value="{headway_coef}"/>'
         f'<param key="device.driverstate.speedDifferenceErrorCoefficient" value="0.15"/>'
-        f'<param key="device.driverstate.maximalReactionTime" value="1.5"/>'
+        f'<param key="device.driverstate.maximalReactionTime" value="{reaction_s}"/>'
+        f'<param key="device.driverstate.minAwareness" value="{min_awareness}"/>'
     )
     return base + ">" + params + "</vType>"
 
 
-def build_scene(folder: Path, density: str, seed: int, awareness: float, with_device: bool) -> Path:
+def build_scene(folder: Path, density: str, seed: int, awareness: float, with_device: bool,
+                reaction_s: float = 1.5, min_awareness: float = 0.1,
+                headway_coef: float = 0.75) -> Path:
     count, spacing = DENSITIES[density]
     ids = [f"s{i}" for i in range(count)] + ["decoy"]
     vehicles = "".join(
@@ -71,13 +75,15 @@ def build_scene(folder: Path, density: str, seed: int, awareness: float, with_de
                  'departLane="1" departPos="2800" departSpeed="10"/>')
     route = folder / "traffic.rou.xml"
     route.write_text(
-        "<routes>" + vtype_xml(awareness, with_device) +
+        "<routes>" + vtype_xml(awareness, with_device, reaction_s, min_awareness, headway_coef) +
         '<route id="r" edges="cal"/>' + vehicles + "</routes>", encoding="utf-8")
     return route
 
 
-def simulate(folder: Path, density: str, seed: int, awareness: float, with_device: bool):
-    route = build_scene(folder, density, seed, awareness, with_device)
+def simulate(folder: Path, density: str, seed: int, awareness: float, with_device: bool,
+             reaction_s: float = 1.5, min_awareness: float = 0.1, headway_coef: float = 0.75):
+    route = build_scene(folder, density, seed, awareness, with_device, reaction_s,
+                        min_awareness, headway_coef)
     os.environ["SUMO_HOME"] = str(SUMO_HOME)
     sys.path.insert(0, str(SUMO_HOME / "tools"))
     import traci  # noqa: E402
@@ -94,6 +100,7 @@ def simulate(folder: Path, density: str, seed: int, awareness: float, with_devic
     v = np.full((STEPS, n), np.nan)
     gap = np.full((STEPS, n), np.nan)
     v_lead = np.full((STEPS, n), np.nan)
+    pos = np.full((STEPS, n), np.nan)
 
     traci.start(command, label="scan", verbose=False)
     conn = traci.getConnection("scan")
@@ -101,11 +108,15 @@ def simulate(folder: Path, density: str, seed: int, awareness: float, with_devic
     try:
         for k in range(STEPS):
             conn.simulationStep()
-            collisions += len(conn.simulation.getCollisions()) if k == 0 else 0
+            try:
+                collisions += len(conn.simulation.getCollisions())
+            except Exception:  # noqa: BLE001 - older TraCI without collision API
+                pass
             for j, vid in enumerate(ids):
                 if vid not in conn.vehicle.getIDList():
                     continue
                 v[k, j] = conn.vehicle.getSpeed(vid)
+                pos[k, j] = conn.vehicle.getPosition(vid)[0]
                 lead = conn.vehicle.getLeader(vid, 100.0)
                 if lead:
                     gap[k, j] = lead[1]
@@ -113,10 +124,39 @@ def simulate(folder: Path, density: str, seed: int, awareness: float, with_devic
     finally:
         conn.close()
 
-    return v, gap, v_lead, collisions
+    return v, gap, v_lead, pos, collisions
 
 
-def ttc_summary(v, gap, v_lead, step=STEP):
+REGION = (1600.0, 3080.0)
+REGION_KM = (REGION[1] - REGION[0]) / 1000.0
+
+
+def p2_events(ttc, t, thresh=TTC_THRESH, persist=PERSIST, max_gap=MAX_GAP, step=STEP):
+    """Formal-P2-shaped event counting: TTC below threshold, observed span >= persist,
+    consecutive samples no further apart than max_gap. One event per qualifying segment."""
+    events = []
+    for j in range(ttc.shape[1]):
+        series = ttc[:, j]
+        below = np.isfinite(series) & (series < thresh)
+        if not below.any():
+            continue
+        idx = np.flatnonzero(below)
+        if idx.size == 1:
+            continue
+        breaks = np.flatnonzero(np.diff(idx) * step > max_gap + 1e-12)
+        for g in np.split(idx, breaks + 1):
+            if g.size < 2:
+                continue
+            span = float(t[g[-1]] - t[g[0]])
+            if span >= persist - 1e-12:
+                events.append({"vehicle_col": int(j), "onset_s": float(t[g[0]]),
+                               "span_s": span, "min_ttc_s": float(series[g].min()),
+                               "sample_count": int(g.size)})
+    return events
+
+
+def ttc_summary(v, gap, v_lead, pos, step=STEP):
+    t = np.arange(v.shape[0]) * step
     # True TTC: gap between vehicles minus the leader's minGap allowance is already
     # baked into SUMO's getLeader distance; closing speed = ego - leader.
     out = {}
@@ -133,6 +173,24 @@ def ttc_summary(v, gap, v_lead, step=STEP):
         out["ttc_min_s"] = None
     out["gap_min_m"] = float(np.nanmin(gap)) if np.isfinite(gap).any() else None
     out["v_std_mean"] = float(np.nanmean(np.nanstd(v, axis=1)))
+
+    # --- traffic state inside the fixed region (must stay realistic) ---
+    inside = np.isfinite(pos) & (pos >= REGION[0]) & (pos < REGION[1])
+    counts = inside.sum(axis=1).astype(float)
+    out["veh_in_region_mean"] = float(counts.mean())
+    out["density_veh_per_km_lane"] = float(counts.mean() / REGION_KM)
+    v_in = np.where(inside, v, np.nan)
+    out["v_mean_in_region"] = float(np.nanmean(v_in)) if np.isfinite(v_in).any() else None
+    out["v_std_in_region"] = float(np.nanstd(v_in)) if np.isfinite(v_in).any() else None
+
+    # --- P2-shaped events and rate per P2-evaluable following vehicle-hour ---
+    ev = p2_events(ttc, t)
+    exposure_veh_h = float(valid.sum()) * step / 3600.0
+    out["p2_events"] = len(ev)
+    out["exposure_veh_h"] = exposure_veh_h
+    out["p2_rate_per_veh_h"] = (len(ev) / exposure_veh_h) if exposure_veh_h > 0 else None
+    out["event_min_ttc"] = [round(e["min_ttc_s"], 3) for e in ev[:10]]
+    out["event_span"] = [round(e["span_s"], 2) for e in ev[:10]]
     return out
 
 
@@ -141,6 +199,10 @@ def main() -> int:
     ap.add_argument("--output", required=True)
     ap.add_argument("--awareness", type=float, nargs="+", default=[1.0, 0.6, 0.3])
     ap.add_argument("--seeds", type=int, default=3)
+    ap.add_argument("--reaction-time", type=float, default=1.5)
+    ap.add_argument("--min-awareness", type=float, default=0.1)
+    ap.add_argument("--headway-coef", type=float, default=0.75)
+    ap.add_argument("--tag", default="", help="suffix for the summary file to avoid overwrite")
     ap.add_argument("--density", default="high")
     args = ap.parse_args()
 
@@ -153,8 +215,11 @@ def main() -> int:
             folder = outdir / f"aw{aw:.2f}_seed{seed}"
             folder.mkdir(parents=True, exist_ok=True)
             try:
-                v, gap, v_lead, coll = simulate(folder, args.density, seed, aw, with_device=(aw < 1.0))
-                summary = ttc_summary(v, gap, v_lead)
+                v, gap, v_lead, pos, coll = simulate(
+                    folder, args.density, seed, aw, with_device=(aw < 1.0),
+                    reaction_s=args.reaction_time, min_awareness=args.min_awareness,
+                    headway_coef=args.headway_coef)
+                summary = ttc_summary(v, gap, v_lead, pos)
                 summary.update({"awareness": aw, "seed": seed, "collisions": coll,
                                 "status": "OK"})
             except Exception as exc:  # noqa: BLE001
@@ -162,7 +227,8 @@ def main() -> int:
             results.append(summary)
             print(json.dumps(summary, ensure_ascii=False), flush=True)
 
-    (outdir / "scan_summary.json").write_text(
+    tag = args.tag or f"aw{'-'.join(f'{a:g}' for a in args.awareness)}_rt{args.reaction_time:g}_mo{args.min_awareness:g}"
+    (outdir / f"scan_summary_{tag}.json").write_text(
         json.dumps(results, indent=2, ensure_ascii=False), encoding="utf-8")
     return 0
 
