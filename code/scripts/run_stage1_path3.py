@@ -65,8 +65,8 @@ sys.path.insert(0, str(ROOT / "code" / "scripts"))
 
 import run_stage1_isolated_two_arm as base  # isolation setup, already RNG-verified
 from riskprop.message_driven_longitudinal_controller import (  # noqa: E402
-    LocalState, Message, RiskPayload, byte_hash, validate_message,
-    PAYLOAD_SCHEMA, PARAMETER_STATUS,
+    LocalState, Message, RiskPayload, PolicyConfig, PolicyInput, longitudinal_policy,
+    byte_hash, validate_message, PAYLOAD_SCHEMA, PARAMETER_STATUS,
 )
 from riskprop.stage_0_5_fixed_leader_traci import load_traci  # noqa: E402
 
@@ -75,6 +75,13 @@ STEP = base.STEP
 WARMUP = base.WARMUP
 END = base.END
 TGT_REGION = base.TGT_REGION
+# P1-03: measurement window is wider than the treated window. Treatment still happens only
+# inside TGT_REGION, but risk is accumulated over MEAS_REGION, because the second wave born
+# at the upstream boundary of the treated zone otherwise falls entirely outside the window.
+# P1 first round measured upstream risk at 11x the mid-zone value -- that is the wave the
+# old window was dropping.
+MEAS_MARGIN = 1000.0
+MEAS_REGION = (TGT_REGION[0] - MEAS_MARGIN, TGT_REGION[1] + MEAS_MARGIN)
 TTC_TAU = base.TTC_TAU
 
 # Leader braking used in the risk measure. 4.5 m/s^2 is the vType's decel, i.e. the
@@ -156,6 +163,22 @@ def speed_factor(risk_level: str, x: float, now: float,
     return 1.0 - (1.0 - floor) * depth * validity
 
 
+def graded_level(x: float, now: float, valid_from: float, valid_until: float) -> str:
+    """Map the payload's own fields (position depth + remaining validity) to a risk level.
+
+    P1 change: the message-driven controller only reads risk_level, so "content grading"
+    has to be expressed as a level, not as a continuous multiplier. The mapping keeps the
+    old semantics (zone centre and early in the validity window -> harsher) but routes it
+    through the real policy instead of bypassing it.
+    """
+    fac = speed_factor("HIGH", x, now, valid_from, valid_until, content_graded=True)
+    if fac >= 0.9:
+        return "LOW"
+    if fac >= 0.7:
+        return "MEDIUM"
+    return "HIGH"
+
+
 @dataclass
 class ArmResult:
     arm: str
@@ -192,7 +215,15 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
             dump_ttc: list | None = None,
             sham_delta: float = RISK_TAU_DELTA["HIGH"],
             peak_scale: float = 1.0,
-            sham_factor: float | None = None) -> ArmResult:
+            sham_factor: float | None = None,
+            policy_cfg: PolicyConfig | None = None) -> ArmResult:
+    """One experimental arm.
+
+    P1 change: when `policy_cfg` is supplied, the speed channel goes through the real
+    message-driven longitudinal policy (`longitudinal_policy`) instead of writing a raw
+    multiplier to the speed ceiling. Before P1 both arms bypassed the policy entirely,
+    which is why the documented "controller parameters unchanged" claim did not hold.
+    """
     tmp.mkdir(parents=True, exist_ok=True)
     (tmp / "net.net.xml").write_text(base.net_xml(), encoding="utf-8")
     (tmp / "routes.rou.xml").write_text(base.routes_xml(), encoding="utf-8")
@@ -268,7 +299,8 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
                     lifecycle.append({"phase": "source_event_confirmed", "t": round(now, 3),
                                       "source_id": "S0", "speed_mps": round(s_spd, 3)})
 
-            in_region = []
+            in_region = []      # treated set: action is applied here
+            in_meas = []        # measured set: risk is accumulated here (P1-03)
             for v in tgt_ids:
                 if v not in present:
                     continue
@@ -276,9 +308,13 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
                 sp = traci.vehicle.getSpeed(v)
                 if TGT_REGION[0] <= x < TGT_REGION[1]:
                     in_region.append((v, x, sp))
+                if MEAS_REGION[0] <= x < MEAS_REGION[1]:
+                    in_meas.append((v, x, sp))
 
             if roster is None and now >= WARMUP:
-                roster = tuple(sorted(v for v, _, _ in in_region))
+                # P1-03: the roster is locked over the measured window, so the measured set
+                # and the treated set are no longer the same thing by construction.
+                roster = tuple(sorted(v for v, _, _ in in_meas))
                 lifecycle.append({"phase": "roster_locked", "t": round(now, 3),
                                   "n_vehicles": len(roster)})
             if roster is None:
@@ -306,7 +342,7 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
             # risk by position stratum: the untreated margin hypothesis says the difference
             # between graded and blanket action should concentrate where treatment is weakest
             strata_vals: dict[int, list[float]] = {0: [], 1: [], 2: []}
-            for v, _x_v, _sp_v in in_region:
+            for v, _x_v, _sp_v in in_meas:
                 if v not in present:
                     continue
                 sp = traci.vehicle.getSpeed(v)
@@ -328,16 +364,25 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
                     abs_dv_post.append(abs(sp - lsp))
                 if dump_ttc is not None and post_event:
                     # tau only enters the risk readout, never the simulation, so one run can
-                    # serve any tau by recomputing offline from these raw TTC values
-                    dump_ttc.append((float(now), v, float(ttc_braking(gap, sp, lsp))))
+                    # serve any tau by recomputing offline from these raw TTC values.
+                    # P1: dump whichever measure the run actually uses -- dumping the braking
+                    # TTC during an instant run silently mislabels every downstream file.
+                    if risk_mode == "braking":
+                        dump_ttc.append((float(now), v, float(ttc_braking(gap, sp, lsp))))
+                    else:
+                        _t_inst = ttc_instant(gap, sp, lsp)
+                        if _t_inst is not None:
+                            dump_ttc.append((float(now), v, float(_t_inst)))
                 if risk_mode == "braking":
                     per_veh[v] = rho_from_ttc(ttc_braking(gap, sp, lsp))
                 else:
                     t = ttc_instant(gap, sp, lsp)
                     per_veh[v] = 0.0 if t is None else rho_from_ttc(t)
                 if event_time is not None and event_time + 8.0 <= now <= event_time + 30.0:
-                    lo_, hi_ = TGT_REGION
-                    idx = min(2, int(3 * (_x_v - lo_) / (hi_ - lo_)))
+                    # P1-03: strata are taken over the measured window and clamped, because
+                    # vehicles upstream of the treated zone now have x < TGT_REGION[0].
+                    lo_, hi_ = MEAS_REGION
+                    idx = max(0, min(2, int(3 * (_x_v - lo_) / (hi_ - lo_))))
                     strata_vals[idx].append(per_veh[v])
                 # same vehicle, same step: record gap for the longitudinal comparison
                 if event_time is not None:
@@ -421,9 +466,56 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
                         # vehicle, independent of position and of message fields, so that
                         # D(opn1 - sham) isolates content rather than dose.
                         if response == "speedcap":
-                            ref = veh_ref_speed.setdefault(v, max(1.0, sp))
                             fac = SPEED_FLOOR["HIGH"] if sham_factor is None else sham_factor
-                            traci.vehicle.setMaxSpeed(v, ref * fac)
+                            used_policy = False
+                            if policy_cfg is not None:
+                                # Same policy, same rate limit, same local state as the
+                                # message arm. The ONLY difference is the payload: fixed
+                                # HIGH, fixed zone, fixed validity -- no event information.
+                                try:
+                                    lead = traci.vehicle.getLeader(v, 200.0)
+                                    lid, gap = (lead[0], float(lead[1])) if lead else (None, None)
+                                    lsp = (traci.vehicle.getSpeed(lid)
+                                           if lid is not None and lid in present else None)
+                                    pos = traci.vehicle.getPosition(v)
+                                    st = LocalState(
+                                        vehicle_id=v, vehicle_incarnation_id=f"{v}@0",
+                                        simulation_time_s=now, simulation_step=k,
+                                        edge_id="tgt", lane_id="tgt_0", lane_position_m=x,
+                                        position_xy_m=(float(pos[0]), float(pos[1])),
+                                        speed_mps=sp,
+                                        acceleration_mps2=float(traci.vehicle.getAcceleration(v)),
+                                        original_max_speed_mps=30.0, lane_max_speed_mps=30.0,
+                                        leader_id=lid, leader_speed_mps=lsp,
+                                        net_gap_m=(max(0.0, gap) if gap is not None else None),
+                                    )
+                                    p_sham = RiskPayload(
+                                        payload_schema_version=PAYLOAD_SCHEMA,
+                                        parameter_status=PARAMETER_STATUS,
+                                        source_event_id="evt-SHAM-01",
+                                        event_type="SYNTHETIC_REMOTE_RISK",
+                                        risk_level="HIGH",
+                                        affected_edge_id="tgt",
+                                        lane_position_min_m=TGT_REGION[0],
+                                        lane_position_max_m=TGT_REGION[1],
+                                        target_vehicle_ids=(v,),
+                                        generated_time=round(event_time, 3),
+                                        valid_from=round(event_time, 3),
+                                        valid_until=round(event_time + 45.0, 3),
+                                    )
+                                    out_sham = longitudinal_policy(
+                                        PolicyInput(st, ((f"msg-sham-{v}", p_sham),)), policy_cfg)
+                                    if out_sham.target_speed_reference_mps is not None:
+                                        traci.vehicle.setMaxSpeed(
+                                            v, out_sham.target_speed_reference_mps)
+                                        used_policy = True
+                                except Exception as exc:  # noqa: BLE001 - record and fall back
+                                    lifecycle.append({"phase": "sham_policy_fallback",
+                                                      "t": round(now, 3), "vehicle_id": v,
+                                                      "error": f"{type(exc).__name__}: {exc}"})
+                            if not used_policy:
+                                ref = veh_ref_speed.setdefault(v, max(1.0, sp))
+                                traci.vehicle.setMaxSpeed(v, ref * fac)
                             applied_factor[v].append(fac)
                         else:
                             delta = sham_delta
@@ -460,7 +552,12 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
                                 parameter_status=PARAMETER_STATUS,
                                 source_event_id="evt-S0-01",
                                 event_type="SYNTHETIC_REMOTE_RISK",
-                                risk_level="HIGH",
+                                # P1: the level itself now carries the payload's content
+                                # (zone depth x remaining validity), because the real policy
+                                # reads only risk_level. Before P1 the grading lived in a
+                                # continuous multiplier that bypassed the policy entirely.
+                                risk_level=graded_level(x, now, round(event_time, 3),
+                                                        round(event_time + 45.0, 3)),
                                 affected_edge_id="tgt",
                                 lane_position_min_m=TGT_REGION[0],
                                 lane_position_max_m=TGT_REGION[1],
@@ -486,11 +583,29 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
                             adopted_by.add(v)
                         _msg, payload = adopted_msg[v]
                         if response == "speedcap":
-                            ref = veh_ref_speed.setdefault(v, max(1.0, sp))
-                            fac = speed_factor(payload.risk_level, x, now,
-                                               payload.valid_from, payload.valid_until,
-                                               content_graded=True)
-                            traci.vehicle.setMaxSpeed(v, ref * fac)
+                            # fallback dose: old continuous grading, used only if the real
+                            # policy cannot be applied for this vehicle
+                            fac = speed_factor("HIGH", x, now, payload.valid_from,
+                                               payload.valid_until, content_graded=True)
+                            used_policy = False
+                            if policy_cfg is not None:
+                                try:
+                                    # the actual message-driven controller: risk level ->
+                                    # speed ceiling, with the a_ref rate limit applied
+                                    out = longitudinal_policy(
+                                        PolicyInput(state, ((_msg.message_id, payload),)),
+                                        policy_cfg)
+                                    if out.target_speed_reference_mps is not None:
+                                        traci.vehicle.setMaxSpeed(
+                                            v, out.target_speed_reference_mps)
+                                        used_policy = True
+                                except Exception as exc:  # noqa: BLE001 - record, then fall back
+                                    lifecycle.append({"phase": "policy_fallback",
+                                                      "t": round(now, 3), "vehicle_id": v,
+                                                      "error": f"{type(exc).__name__}: {exc}"})
+                            if not used_policy:
+                                ref = veh_ref_speed.setdefault(v, max(1.0, sp))
+                                traci.vehicle.setMaxSpeed(v, ref * fac)
                             applied_factor[v].append(fac)
                         else:
                             delta = headway_delta(payload.risk_level, x, now,
@@ -544,8 +659,12 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--seeds", type=int, default=1)
-    ap.add_argument("--risk-mode", choices=["braking", "instant"], default="braking")
+    # P1: 1105 原式（瞬时 TTC）是正式口径；刹车式只能显式指定，作敏感性变体
+    ap.add_argument("--risk-mode", choices=["braking", "instant"], default="instant")
     ap.add_argument("--response", choices=["headway", "speedcap", "none"], default="headway")
+    ap.add_argument("--no-policy", action="store_true",
+                    help="bypass the message-driven controller and write the raw multiplier "
+                         "(old behaviour, kept only for A/B comparison)")
     ap.add_argument("--sham-factor", type=float, default=None,
                     help="constant speed-cap multiplier for the content-blind sham arm in the "
                          "speedcap channel; set it to the message arm's mean factor to isolate "
@@ -562,6 +681,21 @@ def main() -> int:
     ap.add_argument("--out", default="code/outputs/analysis/stage1_path3_20261116")
     args = ap.parse_args()
 
+    # P1: load the real message-driven controller config. The shipped file assumes a
+    # 0.1 s policy step; the simulation runs at STEP, so the a_ref rate limit is rescaled
+    # to the simulation step -- otherwise the ceiling falls twice as fast as designed.
+    policy_cfg = None
+    if not args.no_policy:
+        raw_cfg = json.loads(
+            (ROOT / "code/configs/p7_task2_engineering_candidate_v2.json").read_text(encoding="utf-8"))
+        base_cfg = PolicyConfig.from_dict(raw_cfg)
+        policy_cfg = PolicyConfig(
+            base_cfg.policy_version, base_cfg.risk_speed_factors,
+            base_cfg.headway_reference_s, base_cfg.reference_deceleration_mps2, STEP)
+        print(f"policy: {policy_cfg.policy_version}  factors={policy_cfg.risk_speed_factors} "
+              f"h_ref={policy_cfg.headway_reference_s}s a_ref={policy_cfg.reference_deceleration_mps2} "
+              f"step={policy_cfg.step_s}s")
+
     outdir = ROOT / args.out
     outdir.mkdir(parents=True, exist_ok=True)
 
@@ -575,12 +709,12 @@ def main() -> int:
             arms[arm] = run_arm(scratch, seed, arm, args.risk_mode, args.response,
                                 dump_ttc=ttc_dump,
                                 sham_delta=args.sham_delta, peak_scale=args.peak_scale,
-                                sham_factor=args.sham_factor)
+                                sham_factor=args.sham_factor, policy_cfg=policy_cfg)
             if args.dump_ttc:
                 ttc_dir = outdir / f"ttc_{seed}"
                 ttc_dir.mkdir(parents=True, exist_ok=True)
                 with open(ttc_dir / f"{arm}.csv", "w", encoding="utf-8") as fh:
-                    fh.write("t,vehicle,ttc_braking\n")
+                    fh.write(f"t,vehicle,ttc_{args.risk_mode}\n")
                     for row in ttc_dump:
                         fh.write(f"{row[0]:.3f},{row[1]},{row[2]:.6f}\n")
             r = arms[arm]
@@ -639,6 +773,11 @@ def main() -> int:
     # standard deviation no claim about effect magnitude is supported.
     if summary:
         print("\n--- cross-seed summary (mean ± sd over seeds) ---")
+        # P1: 相对变化的分母。instant 口径下基数可能极小（大量时刻无接近），
+        # 此时相对值会被放大到不可解释，必须和基数一起报，不能单独引用相对值。
+        base_vals = [row["opn0"] for row in summary.values()]
+        print(f"  base (opn0 level)        {np.mean(base_vals):.6g}"
+              f"   <- 所有相对值的分母；基数小于 1e-3 时相对值不可解释")
         for key, label in (("d_opn1_opn0", "Δ(opn1-opn0) total"),
                            ("d_sham_opn0", "Δ(sham-opn0) no-content"),
                            ("d_opn1_sham", "Δ(opn1-sham) content")):
