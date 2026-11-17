@@ -189,6 +189,7 @@ class ArmResult:
 
 
 def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
+            dump_ttc: list | None = None,
             sham_delta: float = RISK_TAU_DELTA["HIGH"],
             peak_scale: float = 1.0,
             sham_factor: float | None = None) -> ArmResult:
@@ -298,6 +299,7 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
             # Measuring over in_region puts the treated set and the measured set in one-to-one
             # correspondence. The fixed-roster figure is still computed, from the same
             # per-vehicle values, so the old definition stays comparable.
+            post_event = event_time is not None and now >= event_time
             per_veh: dict[str, float] = {}
             n_no_leader = 0
             n_bad_gap = 0
@@ -324,6 +326,10 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
                 # risk measure responds to, so it is the quantity a gradient hypothesis must move
                 if event_time is not None and event_time + 8.0 <= now <= event_time + 30.0:
                     abs_dv_post.append(abs(sp - lsp))
+                if dump_ttc is not None and post_event:
+                    # tau only enters the risk readout, never the simulation, so one run can
+                    # serve any tau by recomputing offline from these raw TTC values
+                    dump_ttc.append((float(now), v, float(ttc_braking(gap, sp, lsp))))
                 if risk_mode == "braking":
                     per_veh[v] = rho_from_ttc(ttc_braking(gap, sp, lsp))
                 else:
@@ -347,7 +353,6 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
             # roster lock at t=WARMUP, while the event only fires around t=52 s, so roughly a
             # third of the window was pre-treatment and identical across arms. That diluted
             # every reported effect by about 1.4x without changing any sign.
-            post_event = event_time is not None and now >= event_time
             if per_veh and post_event:
                 risk_meantime_sum += float(np.mean(list(per_veh.values())))
                 exposure_steps += 1
@@ -545,6 +550,9 @@ def main() -> int:
                     help="constant speed-cap multiplier for the content-blind sham arm in the "
                          "speedcap channel; set it to the message arm's mean factor to isolate "
                          "content from dose")
+    ap.add_argument("--dump-ttc", action="store_true",
+                    help="write per-step per-vehicle raw TTC so rho can be recomputed for any "
+                         "tau offline (tau affects only the readout, never the simulation)")
     ap.add_argument("--peak-scale", type=float, default=1.0,
                     help="multiplier on the content-graded headway delta; used for the dose "
                          "sweep so that only the dose changes between conditions")
@@ -563,9 +571,18 @@ def main() -> int:
         arms = {}
         for arm in ("opn0", "sham", "opn1"):
             scratch = outdir / f"_scratch_{seed}_{arm}"
+            ttc_dump: list = []
             arms[arm] = run_arm(scratch, seed, arm, args.risk_mode, args.response,
+                                dump_ttc=ttc_dump,
                                 sham_delta=args.sham_delta, peak_scale=args.peak_scale,
                                 sham_factor=args.sham_factor)
+            if args.dump_ttc:
+                ttc_dir = outdir / f"ttc_{seed}"
+                ttc_dir.mkdir(parents=True, exist_ok=True)
+                with open(ttc_dir / f"{arm}.csv", "w", encoding="utf-8") as fh:
+                    fh.write("t,vehicle,ttc_braking\n")
+                    for row in ttc_dump:
+                        fh.write(f"{row[0]:.3f},{row[1]},{row[2]:.6f}\n")
             r = arms[arm]
             print(f"seed={seed} arm={arm:<5} event_t={r.event_time_s} "
                   f"risk_meantime={r.risk_meantime} risk_roster={r.risk_roster} "
