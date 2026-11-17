@@ -53,6 +53,7 @@ import argparse
 import json
 import math
 import sys
+from collections import defaultdict
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -82,6 +83,9 @@ LEADER_BRAKE = 4.5
 
 NATIVE_TAU = 0.6            # vType tau in routes_xml()
 RISK_TAU_DELTA = {"LOW": 0.3, "MEDIUM": 0.7, "HIGH": 1.2}   # seconds of extra headway
+# Speed-cap floors for the speed channel, taken from the paper's own response rule
+# (risk multipliers 0.9 / 0.7 / 0.5 on the speed ceiling).
+SPEED_FLOOR = {"LOW": 0.9, "MEDIUM": 0.7, "HIGH": 0.5}
 TAU_CAP = 3.0
 
 
@@ -131,6 +135,27 @@ def headway_delta(risk_level: str, x: float, now: float,
     return peak * depth * validity
 
 
+def speed_factor(risk_level: str, x: float, now: float,
+                 valid_from: float, valid_until: float,
+                 content_graded: bool = True, base_factor: float | None = None) -> float:
+    """Speed-cap multiplier in (0, 1]; content decides how hard a vehicle is capped.
+
+    This is the channel the paper actually describes (risk multipliers 0.9/0.7/0.5 written to a
+    speed ceiling), which the headway channel never implemented. Grading uses the payload's own
+    fields: risk level sets the floor, depth into the affected zone and remaining validity scale
+    between no cap and that floor.
+    """
+    floor = base_factor if base_factor is not None else SPEED_FLOOR[risk_level]
+    if not content_graded:
+        return floor
+    lo, hi = TGT_REGION
+    centre, half = 0.5 * (lo + hi), 0.5 * (hi - lo)
+    depth = min(1.0, max(0.2, 1.0 - abs(x - centre) / half))
+    span = max(1e-6, valid_until - valid_from)
+    validity = min(1.0, max(0.1, (valid_until - now) / span))
+    return 1.0 - (1.0 - floor) * depth * validity
+
+
 @dataclass
 class ArmResult:
     arm: str
@@ -152,11 +177,14 @@ class ArmResult:
     gap_post_mean: float | None = None     # mean gap 8-30 s after the event
     gap_n_paired: int = 0                  # vehicles measurable both before and after
     gap_delta_mean: float | None = None    # per-vehicle paired change in gap
+    factor_mean: float | None = None       # mean speed-cap multiplier actually applied
+    speed_post_mean: float | None = None   # mean in-region speed after the event
 
 
 def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
             sham_delta: float = RISK_TAU_DELTA["HIGH"],
-            peak_scale: float = 1.0) -> ArmResult:
+            peak_scale: float = 1.0,
+            sham_factor: float | None = None) -> ArmResult:
     tmp.mkdir(parents=True, exist_ok=True)
     (tmp / "net.net.xml").write_text(base.net_xml(), encoding="utf-8")
     (tmp / "routes.rou.xml").write_text(base.routes_xml(), encoding="utf-8")
@@ -194,10 +222,16 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
     exposure_steps = 0
     # per-vehicle gap, recorded over the SAME set the risk is measured on, so the gap
     # comparison cannot be contaminated by a different sample than the risk average
+    veh_ref_speed: dict[str, float] = {}       # speed at first treatment, the cap reference
+    # defaultdict, not a plain dict: a plain dict raises KeyError on first append, the
+    # exception is swallowed by the per-vehicle handler, and the action is applied but never
+    # recorded - which reads as "applied=0" while the vehicles visibly slow down.
+    applied_factor: dict[str, list[float]] = defaultdict(list)
     veh_gap_pre: dict[str, list[float]] = {}
     veh_gap_post: dict[str, list[float]] = {}
     n_measured_samples: list[float] = []      # how many vehicles had a usable leader
     n_no_leader_samples: list[float] = []      # in-region vehicles with no leader / bad gap
+    speed_post_samples: list[float] = []       # mean in-region speed after the event
     n_in_region_samples: list[float] = []
     region_speed_samples: list[float] = []
 
@@ -287,12 +321,14 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
                 float(sum(per_veh.get(v, 0.0) for v in roster) / len(roster))
                 if roster else 0.0)
             n_no_leader_samples.append(float(n_no_leader))
+            if event_time is not None and event_time + 8.0 <= now <= event_time + 30.0 and in_region:
+                speed_post_samples.append(float(np.mean([s for _, _, s in in_region])))
             n_in_region_samples.append(float(len(in_region)))
             if in_region:
                 region_speed_samples.append(float(np.mean([sp for _, _, sp in in_region])))
 
             # ---- sham: content-blind blanket headway increase, same schedule
-            if sham and event_time is not None and response == "headway":
+            if sham and event_time is not None and response in ("headway", "speedcap"):
                 if not sham_done:
                     sham_done = True
                     lifecycle.append({"phase": "sham_started", "t": round(now, 3),
@@ -300,12 +336,17 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
                                               f"no message content"})
                 for v, x, sp in in_region:
                     try:
-                        # Content-blind blanket increase. delta is either the HIGH peak
-                        # (unmatched dose, tests "more action vs graded action") or a
-                        # constant matched to the message arm's mean dose, which is the
-                        # only version that isolates content from dose.
-                        delta = sham_delta
-                        traci.vehicle.setTau(v, min(TAU_CAP, NATIVE_TAU + delta))
+                        # Content-blind blanket action. Same magnitude for every in-region
+                        # vehicle, independent of position and of message fields, so that
+                        # D(opn1 - sham) isolates content rather than dose.
+                        if response == "speedcap":
+                            ref = veh_ref_speed.setdefault(v, max(1.0, sp))
+                            fac = SPEED_FLOOR["HIGH"] if sham_factor is None else sham_factor
+                            traci.vehicle.setMaxSpeed(v, ref * fac)
+                            applied_factor[v].append(fac)
+                        else:
+                            delta = sham_delta
+                            traci.vehicle.setTau(v, min(TAU_CAP, NATIVE_TAU + delta))
                         applied_by.add(v)
                     except Exception as exc:  # noqa: BLE001 - record, never swallow
                         lifecycle.append({"phase": "sham_error", "t": round(now, 3),
@@ -362,10 +403,18 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
                             adopted_msg[v] = (msg, payload)
                             adopted_by.add(v)
                         _msg, payload = adopted_msg[v]
-                        delta = headway_delta(payload.risk_level, x, now,
-                                              payload.valid_from, payload.valid_until,
-                                              content_graded=True, peak_scale=peak_scale)
-                        traci.vehicle.setTau(v, min(TAU_CAP, NATIVE_TAU + delta))
+                        if response == "speedcap":
+                            ref = veh_ref_speed.setdefault(v, max(1.0, sp))
+                            fac = speed_factor(payload.risk_level, x, now,
+                                               payload.valid_from, payload.valid_until,
+                                               content_graded=True)
+                            traci.vehicle.setMaxSpeed(v, ref * fac)
+                            applied_factor[v].append(fac)
+                        else:
+                            delta = headway_delta(payload.risk_level, x, now,
+                                                  payload.valid_from, payload.valid_until,
+                                                  content_graded=True, peak_scale=peak_scale)
+                            traci.vehicle.setTau(v, min(TAU_CAP, NATIVE_TAU + delta))
                         applied_by.add(v)
                     except Exception as exc:  # noqa: BLE001
                         lifecycle.append({"phase": "policy_error", "t": round(now, 3),
@@ -394,6 +443,9 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
         gap_delta_mean=(float(np.mean([np.mean(veh_gap_post[v]) - np.mean(veh_gap_pre[v])
                                        for v in veh_gap_pre if v in veh_gap_post]))
                         if any(v in veh_gap_post for v in veh_gap_pre) else None),
+        factor_mean=(float(np.mean([x for xs in applied_factor.values() for x in xs]))
+                     if applied_factor else None),
+        speed_post_mean=(float(np.mean(speed_post_samples)) if speed_post_samples else None),
     )
 
 
@@ -401,7 +453,11 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--seeds", type=int, default=1)
     ap.add_argument("--risk-mode", choices=["braking", "instant"], default="braking")
-    ap.add_argument("--response", choices=["headway", "none"], default="headway")
+    ap.add_argument("--response", choices=["headway", "speedcap", "none"], default="headway")
+    ap.add_argument("--sham-factor", type=float, default=None,
+                    help="constant speed-cap multiplier for the content-blind sham arm in the "
+                         "speedcap channel; set it to the message arm's mean factor to isolate "
+                         "content from dose")
     ap.add_argument("--peak-scale", type=float, default=1.0,
                     help="multiplier on the content-graded headway delta; used for the dose "
                          "sweep so that only the dose changes between conditions")
@@ -421,14 +477,16 @@ def main() -> int:
         for arm in ("opn0", "sham", "opn1"):
             scratch = outdir / f"_scratch_{seed}_{arm}"
             arms[arm] = run_arm(scratch, seed, arm, args.risk_mode, args.response,
-                                sham_delta=args.sham_delta, peak_scale=args.peak_scale)
+                                sham_delta=args.sham_delta, peak_scale=args.peak_scale,
+                                sham_factor=args.sham_factor)
             r = arms[arm]
             print(f"seed={seed} arm={arm:<5} event_t={r.event_time_s} "
                   f"risk_meantime={r.risk_meantime} risk_roster={r.risk_roster} "
                   f"exposure={r.exposure_veh_s} adopted={r.n_adopted} applied={r.n_applied} "
                   f"tau_mean={r.tau_mean} tau_p90={r.tau_p90} "
                   f"measured={r.n_measured_mean} no_leader={r.n_no_leader_mean} "
-                  f"gap {r.gap_pre_mean}->{r.gap_post_mean} (Δ{r.gap_delta_mean}, n={r.gap_n_paired})")
+                  f"gap {r.gap_pre_mean}->{r.gap_post_mean} (Δ{r.gap_delta_mean}, n={r.gap_n_paired}) "
+                  f"factor={r.factor_mean} vpost={r.speed_post_mean}")
         results[str(seed)] = arms
 
     print("\n--- contrasts (vehicle-time normalised) ---")
@@ -456,7 +514,8 @@ def main() -> int:
     payload = {
         "config": {"seeds": args.seeds, "risk_mode": args.risk_mode,
                    "response": args.response, "peak_scale": args.peak_scale,
-                   "sham_delta": args.sham_delta, "leader_brake_mps2": LEADER_BRAKE,
+                   "sham_delta": args.sham_delta, "sham_factor": args.sham_factor,
+                   "leader_brake_mps2": LEADER_BRAKE,
                    "native_tau_s": NATIVE_TAU, "tau_cap_s": TAU_CAP,
                    "risk_tau_delta_s": RISK_TAU_DELTA, "ttc_tau": TTC_TAU},
         "arms": {s: {a: r.__dict__ for a, r in arms.items()} for s, arms in results.items()},
