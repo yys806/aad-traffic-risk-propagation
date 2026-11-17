@@ -183,6 +183,9 @@ class ArmResult:
     abs_dv_post_mean: float | None = None  # mean |v_follower - v_leader| after the event
     n_bad_gap_mean: float | None = None    # vehicles dropped per step for gap <= 0
     stratum_risk: dict[int, float | None] | None = None  # risk by upstream/mid/downstream third
+    cost_speed_mean: float | None = None   # event-onward mean in-region speed (cost side)
+    throughput_veh: int = 0                # vehicles that left the region downstream
+    distance_m: float | None = None        # total distance travelled in region, post-event
 
 
 def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
@@ -237,6 +240,11 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
     n_no_leader_samples: list[float] = []      # in-region vehicles with no leader
     n_bad_gap_samples: list[float] = []        # in-region vehicles dropped for gap <= 0
     speed_post_samples: list[float] = []       # mean in-region speed after the event
+    speeds_cost: list[float] = []              # event-onward mean speed (cost side)
+    distance_total = 0.0                       # total distance travelled in region, post-event
+    crossed_out: set[str] = set()               # vehicles that left the region downstream
+    seen_in_region: set[str] = set()            # vehicles currently inside the region
+    treated_now: set[str] = set()               # vehicles currently carrying the treatment
     speed_std_post_samples: list[float] = []   # cross-vehicle speed dispersion after the event
     abs_dv_post: list[float] = []              # |v_follower - v_leader| after the event
     stratum_sums: dict[int, list[float]] = {0: [], 1: [], 2: []}
@@ -334,7 +342,13 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
 
             # vehicle-time normalisation (D2 decision): mean over vehicles actually measured,
             # then averaged across steps. Denominator = measurable in-region vehicle-steps.
-            if per_veh:
+            #
+            # The window is gated on the event time. The earlier version accumulated from the
+            # roster lock at t=WARMUP, while the event only fires around t=52 s, so roughly a
+            # third of the window was pre-treatment and identical across arms. That diluted
+            # every reported effect by about 1.4x without changing any sign.
+            post_event = event_time is not None and now >= event_time
+            if per_veh and post_event:
                 risk_meantime_sum += float(np.mean(list(per_veh.values())))
                 exposure_steps += 1
                 n_measured_samples.append(float(len(per_veh)))
@@ -345,6 +359,12 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
                 if roster else 0.0)
             n_no_leader_samples.append(float(n_no_leader))
             n_bad_gap_samples.append(float(n_bad_gap))
+            # cost side: without a cost term "always slow everyone down" is trivially optimal
+            # and information can never look valuable.
+            if post_event and in_region:
+                speeds_cost.append(float(np.mean([s for _, _, s in in_region])))
+                dist_step = sum(s for _, _, s in in_region) * STEP
+                distance_total += dist_step
             for _i, _vals in strata_vals.items():
                 if _vals:
                     stratum_sums[_i].append(float(np.mean(_vals)))
@@ -359,6 +379,29 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
             n_in_region_samples.append(float(len(in_region)))
             if in_region:
                 region_speed_samples.append(float(np.mean([sp for _, _, sp in in_region])))
+
+            # ---- release the treatment for vehicles that have left the region.
+            # Without this a vehicle keeps its speed cap or headway for the rest of the run, so
+            # the pressure it causes gets pushed downstream, outside the measurement window,
+            # and the action silently keeps accumulating.
+            region_ids = {v for v, _, _ in in_region}
+            # throughput counts every vehicle that leaves the region downstream, treated or
+            # not; counting only treated vehicles would make the untreated arm read zero.
+            if event_time is not None and now > event_time:
+                for v in seen_in_region - region_ids:
+                    crossed_out.add(v)
+                seen_in_region &= region_ids
+                seen_in_region |= region_ids
+            for v in list(treated_now):
+                if v not in region_ids:
+                    try:
+                        if response == "speedcap":
+                            traci.vehicle.setMaxSpeed(v, 30.0)
+                        else:
+                            traci.vehicle.setTau(v, NATIVE_TAU)
+                    except Exception:  # noqa: BLE001 - vehicle may have left the network
+                        pass
+                    treated_now.discard(v)
 
             # ---- sham: content-blind blanket headway increase, same schedule
             if sham and event_time is not None and response in ("headway", "speedcap"):
@@ -381,6 +424,7 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
                             delta = sham_delta
                             traci.vehicle.setTau(v, min(TAU_CAP, NATIVE_TAU + delta))
                         applied_by.add(v)
+                        treated_now.add(v)
                     except Exception as exc:  # noqa: BLE001 - record, never swallow
                         lifecycle.append({"phase": "sham_error", "t": round(now, 3),
                                           "vehicle_id": v, "error": f"{type(exc).__name__}: {exc}"})
@@ -449,6 +493,7 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
                                                   content_graded=True, peak_scale=peak_scale)
                             traci.vehicle.setTau(v, min(TAU_CAP, NATIVE_TAU + delta))
                         applied_by.add(v)
+                        treated_now.add(v)
                     except Exception as exc:  # noqa: BLE001
                         lifecycle.append({"phase": "policy_error", "t": round(now, 3),
                                           "vehicle_id": v, "error": f"{type(exc).__name__}: {exc}"})
@@ -485,6 +530,9 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
         n_bad_gap_mean=(float(np.mean(n_bad_gap_samples)) if n_bad_gap_samples else None),
         stratum_risk={i: (float(np.mean(v)) if v else None)
                       for i, v in stratum_sums.items()},
+        cost_speed_mean=(float(np.mean(speeds_cost)) if speeds_cost else None),
+        throughput_veh=(len(crossed_out) if crossed_out else 0),
+        distance_m=(round(distance_total, 3) if distance_total else None),
     )
 
 
@@ -526,7 +574,8 @@ def main() -> int:
                   f"measured={r.n_measured_mean} no_leader={r.n_no_leader_mean} "
                   f"gap {r.gap_pre_mean}->{r.gap_post_mean} (Δ{r.gap_delta_mean}, n={r.gap_n_paired}) "
                   f"factor={r.factor_mean} vpost={r.speed_post_mean} sd={r.speed_std_post} "
-                  f"|dv|={r.abs_dv_post_mean} badgap={r.n_bad_gap_mean}")
+                  f"|dv|={r.abs_dv_post_mean} badgap={r.n_bad_gap_mean} "
+                  f"cost_v={r.cost_speed_mean} thru={r.throughput_veh} dist={r.distance_m}")
         results[str(seed)] = arms
 
     print("\n--- risk by position stratum (upstream / middle / downstream third) ---")
@@ -569,6 +618,33 @@ def main() -> int:
         "arms": {s: {a: r.__dict__ for a, r in arms.items()} for s, arms in results.items()},
         "contrasts": summary,
     }
+    # cross-seed dispersion: "N seeds all agree in sign" is not a quantity. Without the
+    # standard deviation no claim about effect magnitude is supported.
+    if summary:
+        print("\n--- cross-seed summary (mean ± sd over seeds) ---")
+        for key, label in (("d_opn1_opn0", "Δ(opn1-opn0) total"),
+                           ("d_sham_opn0", "Δ(sham-opn0) no-content"),
+                           ("d_opn1_sham", "Δ(opn1-sham) content")):
+            vals = [row[key] for row in summary.values()]
+            if len(vals) > 1:
+                m, sd = float(np.mean(vals)), float(np.std(vals, ddof=1))
+                print(f"  {label:<24} {m:+.6f} ± {sd:.2e}  (n={len(vals)})")
+            else:
+                print(f"  {label:<24} {vals[0]:+.6f}  (n=1, no sd)")
+        # cost side
+        for key, label in (("cost_v", "mean speed (cost)"),
+                           ("thru", "throughput veh")):
+            per_arm = {}
+            for seed_, arms_ in results.items():
+                for arm_ in ("opn0", "sham", "opn1"):
+                    val = getattr(arms_[arm_], "cost_speed_mean" if key == "cost_v"
+                                  else "throughput_veh", None)
+                    if val is not None:
+                        per_arm.setdefault(arm_, []).append(val)
+            print(f"  {label}:")
+            for arm_, vs in per_arm.items():
+                print(f"    {arm_:<5} {np.mean(vs):.3f}")
+
     (outdir / "path3_summary.json").write_text(
         json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
     print(f"\nwrote {outdir/'path3_summary.json'}")
