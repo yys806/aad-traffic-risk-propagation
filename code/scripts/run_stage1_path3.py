@@ -146,6 +146,8 @@ class ArmResult:
     lifecycle: list
     tau_mean: float | None = None   # mean tau over in-region vehicles, averaged over steps
     tau_p90: float | None = None
+    n_measured_mean: float | None = None   # vehicles per step entering the risk average
+    n_no_leader_mean: float | None = None  # in-region vehicles excluded for lack of a leader
 
 
 def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
@@ -185,6 +187,8 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
     risk_roster_samples: list[float] = []
     risk_meantime_sum = 0.0
     exposure_steps = 0
+    n_measured_samples: list[float] = []      # how many vehicles had a usable leader
+    n_no_leader_samples: list[float] = []      # in-region vehicles with no leader / bad gap
     n_in_region_samples: list[float] = []
     region_speed_samples: list[float] = []
 
@@ -227,20 +231,27 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
                 tau_now = [float(traci.vehicle.getTau(v)) for v, _, _ in in_region]
                 tau_native_samples.append(float(np.mean(tau_now)))
 
-            # ---- risk, two normalisations computed from the same per-vehicle values
+            # ---- risk over EVERY vehicle currently in the region.
+            # The earlier version measured risk only over the roster locked at t=WARMUP while
+            # the treatment was applied to whoever was in the region at each step. That left
+            # 27-29 treated vehicles per run outside the risk measurement entirely, which
+            # biases the effect downward and makes the reported coverage meaningless.
+            # Measuring over in_region puts the treated set and the measured set in one-to-one
+            # correspondence. The fixed-roster figure is still computed, from the same
+            # per-vehicle values, so the old definition stays comparable.
             per_veh: dict[str, float] = {}
-            for v in roster:
+            n_no_leader = 0
+            for v, _x_v, _sp_v in in_region:
                 if v not in present:
-                    continue
-                x = traci.vehicle.getLanePosition(v)
-                if not (TGT_REGION[0] <= x < TGT_REGION[1]):
                     continue
                 sp = traci.vehicle.getSpeed(v)
                 lead = traci.vehicle.getLeader(v, 200.0)
                 if not lead:
+                    n_no_leader += 1
                     continue
                 lid, gap = lead
                 if gap <= 0 or lid not in present:
+                    n_no_leader += 1
                     continue
                 lsp = traci.vehicle.getSpeed(lid)
                 if risk_mode == "braking":
@@ -249,13 +260,18 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
                     t = ttc_instant(gap, sp, lsp)
                     per_veh[v] = 0.0 if t is None else rho_from_ttc(t)
 
-            # fixed-roster normalisation (old): vehicle outside the region contributes 0
-            risk_roster_samples.append(
-                float(sum(per_veh.values()) / len(roster)) if roster else 0.0)
-            # vehicle-time normalisation (D2 decision): average over exposed vehicle-time
+            # vehicle-time normalisation (D2 decision): mean over vehicles actually measured,
+            # then averaged across steps. Denominator = measurable in-region vehicle-steps.
             if per_veh:
                 risk_meantime_sum += float(np.mean(list(per_veh.values())))
                 exposure_steps += 1
+                n_measured_samples.append(float(len(per_veh)))
+            # fixed-roster normalisation (old definition, kept for comparison):
+            # roster members outside the region or without a leader contribute 0.
+            risk_roster_samples.append(
+                float(sum(per_veh.get(v, 0.0) for v in roster) / len(roster))
+                if roster else 0.0)
+            n_no_leader_samples.append(float(n_no_leader))
             n_in_region_samples.append(float(len(in_region)))
             if in_region:
                 region_speed_samples.append(float(np.mean([sp for _, _, sp in in_region])))
@@ -353,6 +369,8 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
         n_adopted=len(adopted_by), n_applied=len(applied_by), lifecycle=lifecycle,
         tau_mean=(float(np.mean(tau_native_samples)) if tau_native_samples else None),
         tau_p90=(float(np.percentile(tau_native_samples, 90)) if tau_native_samples else None),
+        n_measured_mean=(float(np.mean(n_measured_samples)) if n_measured_samples else None),
+        n_no_leader_mean=(float(np.mean(n_no_leader_samples)) if n_no_leader_samples else None),
     )
 
 
@@ -382,7 +400,8 @@ def main() -> int:
             print(f"seed={seed} arm={arm:<5} event_t={r.event_time_s} "
                   f"risk_meantime={r.risk_meantime} risk_roster={r.risk_roster} "
                   f"exposure={r.exposure_veh_s} adopted={r.n_adopted} applied={r.n_applied} "
-                  f"tau_mean={r.tau_mean} tau_p90={r.tau_p90}")
+                  f"tau_mean={r.tau_mean} tau_p90={r.tau_p90} "
+                  f"measured={r.n_measured_mean} no_leader={r.n_no_leader_mean}")
         results[str(seed)] = arms
 
     print("\n--- contrasts (vehicle-time normalised) ---")
