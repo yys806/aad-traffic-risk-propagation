@@ -78,6 +78,8 @@ def run(seed: int, arm: str, sham_delta: float = 0.43) -> dict:
     veh_tau: dict[str, dict[float, float]] = defaultdict(dict)     # v -> {t: tau}
     veh_rho: dict[str, dict[float, float]] = defaultdict(dict)     # v -> {t: rho}
     veh_gap: dict[str, dict[float, float]] = defaultdict(dict)
+    veh_dv: dict[str, dict[float, float]] = defaultdict(dict)
+    veh_spd: dict[str, dict[float, float]] = defaultdict(dict)
     veh_in: dict[str, list[float]] = defaultdict(list)             # v -> times in region
     veh_applied: dict[str, float] = {}                             # v -> first time treated
     applied_delta: dict[str, list[float]] = defaultdict(list)
@@ -109,12 +111,10 @@ def run(seed: int, arm: str, sham_delta: float = 0.43) -> dict:
             if roster is None:
                 continue
 
-            # per-vehicle risk and state (same definition as the experiment)
-            for v in roster:
+            # per-vehicle risk and state over the SAME set the experiment measures
+            # (in-region vehicles), not the locked roster
+            for v, _xv, _spv in in_region:
                 if v not in present:
-                    continue
-                x = traci.vehicle.getLanePosition(v)
-                if not (TGT_REGION[0] <= x < TGT_REGION[1]):
                     continue
                 sp = traci.vehicle.getSpeed(v)
                 lead = traci.vehicle.getLeader(v, 200.0)
@@ -126,6 +126,8 @@ def run(seed: int, arm: str, sham_delta: float = 0.43) -> dict:
                 lsp = traci.vehicle.getSpeed(lid)
                 veh_rho[v][now] = p3.rho_from_ttc(p3.ttc_braking(gap, sp, lsp))
                 veh_gap[v][now] = gap
+                veh_dv[v][now] = sp - lsp          # closing speed: >0 means catching up
+                veh_spd[v][now] = sp
                 veh_tau[v][now] = float(traci.vehicle.getTau(v))
 
             # treatment (identical to the experiment)
@@ -154,6 +156,8 @@ def run(seed: int, arm: str, sham_delta: float = 0.43) -> dict:
         "veh_rho": {v: {round(t, 3): r for t, r in d.items()} for v, d in veh_rho.items()},
         "veh_tau": {v: {round(t, 3): x for t, x in d.items()} for v, d in veh_tau.items()},
         "veh_gap": {v: {round(t, 3): g for t, g in d.items()} for v, d in veh_gap.items()},
+        "veh_dv": {v: {round(t, 3): x for t, x in d.items()} for v, d in veh_dv.items()},
+        "veh_spd": {v: {round(t, 3): x for t, x in d.items()} for v, d in veh_spd.items()},
         "veh_in_region_times": {v: [round(t, 3) for t in ts] for v, ts in veh_in.items()},
         "veh_applied_at": veh_applied,
         "applied_delta": {v: ds for v, ds in applied_delta.items()},

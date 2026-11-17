@@ -112,14 +112,14 @@ def rho_from_ttc(ttc: float) -> float:
 
 def headway_delta(risk_level: str, x: float, now: float,
                   valid_from: float, valid_until: float,
-                  content_graded: bool) -> float:
+                  content_graded: bool, peak_scale: float = 1.0) -> float:
     """Extra safe time headway a vehicle takes on, in seconds.
 
     content_graded=True uses the payload's own content: the zone geometry and the remaining
     validity. content_graded=False is the blanket sham action: the same peak magnitude for
     every in-region vehicle, independent of position and of message fields.
     """
-    peak = RISK_TAU_DELTA[risk_level]
+    peak = RISK_TAU_DELTA[risk_level] * peak_scale
     if not content_graded:
         return peak
     lo, hi = TGT_REGION
@@ -148,10 +148,15 @@ class ArmResult:
     tau_p90: float | None = None
     n_measured_mean: float | None = None   # vehicles per step entering the risk average
     n_no_leader_mean: float | None = None  # in-region vehicles excluded for lack of a leader
+    gap_pre_mean: float | None = None      # mean gap 10 s before the event
+    gap_post_mean: float | None = None     # mean gap 8-30 s after the event
+    gap_n_paired: int = 0                  # vehicles measurable both before and after
+    gap_delta_mean: float | None = None    # per-vehicle paired change in gap
 
 
 def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
-            sham_delta: float = RISK_TAU_DELTA["HIGH"]) -> ArmResult:
+            sham_delta: float = RISK_TAU_DELTA["HIGH"],
+            peak_scale: float = 1.0) -> ArmResult:
     tmp.mkdir(parents=True, exist_ok=True)
     (tmp / "net.net.xml").write_text(base.net_xml(), encoding="utf-8")
     (tmp / "routes.rou.xml").write_text(base.routes_xml(), encoding="utf-8")
@@ -187,6 +192,10 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
     risk_roster_samples: list[float] = []
     risk_meantime_sum = 0.0
     exposure_steps = 0
+    # per-vehicle gap, recorded over the SAME set the risk is measured on, so the gap
+    # comparison cannot be contaminated by a different sample than the risk average
+    veh_gap_pre: dict[str, list[float]] = {}
+    veh_gap_post: dict[str, list[float]] = {}
     n_measured_samples: list[float] = []      # how many vehicles had a usable leader
     n_no_leader_samples: list[float] = []      # in-region vehicles with no leader / bad gap
     n_in_region_samples: list[float] = []
@@ -259,6 +268,12 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
                 else:
                     t = ttc_instant(gap, sp, lsp)
                     per_veh[v] = 0.0 if t is None else rho_from_ttc(t)
+                # same vehicle, same step: record gap for the longitudinal comparison
+                if event_time is not None:
+                    if event_time - 10.0 <= now <= event_time:
+                        veh_gap_pre.setdefault(v, []).append(float(gap))
+                    elif event_time + 8.0 <= now <= event_time + 30.0:
+                        veh_gap_post.setdefault(v, []).append(float(gap))
 
             # vehicle-time normalisation (D2 decision): mean over vehicles actually measured,
             # then averaged across steps. Denominator = measurable in-region vehicle-steps.
@@ -349,7 +364,7 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
                         _msg, payload = adopted_msg[v]
                         delta = headway_delta(payload.risk_level, x, now,
                                               payload.valid_from, payload.valid_until,
-                                              content_graded=True)
+                                              content_graded=True, peak_scale=peak_scale)
                         traci.vehicle.setTau(v, min(TAU_CAP, NATIVE_TAU + delta))
                         applied_by.add(v)
                     except Exception as exc:  # noqa: BLE001
@@ -371,6 +386,14 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
         tau_p90=(float(np.percentile(tau_native_samples, 90)) if tau_native_samples else None),
         n_measured_mean=(float(np.mean(n_measured_samples)) if n_measured_samples else None),
         n_no_leader_mean=(float(np.mean(n_no_leader_samples)) if n_no_leader_samples else None),
+        gap_pre_mean=(float(np.mean([np.mean(x) for x in veh_gap_pre.values()]))
+                      if veh_gap_pre else None),
+        gap_post_mean=(float(np.mean([np.mean(x) for x in veh_gap_post.values()]))
+                       if veh_gap_post else None),
+        gap_n_paired=len([v for v in veh_gap_pre if v in veh_gap_post]),
+        gap_delta_mean=(float(np.mean([np.mean(veh_gap_post[v]) - np.mean(veh_gap_pre[v])
+                                       for v in veh_gap_pre if v in veh_gap_post]))
+                        if any(v in veh_gap_post for v in veh_gap_pre) else None),
     )
 
 
@@ -379,6 +402,9 @@ def main() -> int:
     ap.add_argument("--seeds", type=int, default=1)
     ap.add_argument("--risk-mode", choices=["braking", "instant"], default="braking")
     ap.add_argument("--response", choices=["headway", "none"], default="headway")
+    ap.add_argument("--peak-scale", type=float, default=1.0,
+                    help="multiplier on the content-graded headway delta; used for the dose "
+                         "sweep so that only the dose changes between conditions")
     ap.add_argument("--sham-delta", type=float, default=RISK_TAU_DELTA["HIGH"],
                     help="constant headway increase (s) for the content-blind sham arm; "
                          "set it to the message arm's mean dose to isolate content from dose")
@@ -395,13 +421,14 @@ def main() -> int:
         for arm in ("opn0", "sham", "opn1"):
             scratch = outdir / f"_scratch_{seed}_{arm}"
             arms[arm] = run_arm(scratch, seed, arm, args.risk_mode, args.response,
-                                sham_delta=args.sham_delta)
+                                sham_delta=args.sham_delta, peak_scale=args.peak_scale)
             r = arms[arm]
             print(f"seed={seed} arm={arm:<5} event_t={r.event_time_s} "
                   f"risk_meantime={r.risk_meantime} risk_roster={r.risk_roster} "
                   f"exposure={r.exposure_veh_s} adopted={r.n_adopted} applied={r.n_applied} "
                   f"tau_mean={r.tau_mean} tau_p90={r.tau_p90} "
-                  f"measured={r.n_measured_mean} no_leader={r.n_no_leader_mean}")
+                  f"measured={r.n_measured_mean} no_leader={r.n_no_leader_mean} "
+                  f"gap {r.gap_pre_mean}->{r.gap_post_mean} (Δ{r.gap_delta_mean}, n={r.gap_n_paired})")
         results[str(seed)] = arms
 
     print("\n--- contrasts (vehicle-time normalised) ---")
@@ -428,7 +455,8 @@ def main() -> int:
 
     payload = {
         "config": {"seeds": args.seeds, "risk_mode": args.risk_mode,
-                   "response": args.response, "leader_brake_mps2": LEADER_BRAKE,
+                   "response": args.response, "peak_scale": args.peak_scale,
+                   "sham_delta": args.sham_delta, "leader_brake_mps2": LEADER_BRAKE,
                    "native_tau_s": NATIVE_TAU, "tau_cap_s": TAU_CAP,
                    "risk_tau_delta_s": RISK_TAU_DELTA, "ttc_tau": TTC_TAU},
         "arms": {s: {a: r.__dict__ for a, r in arms.items()} for s, arms in results.items()},
