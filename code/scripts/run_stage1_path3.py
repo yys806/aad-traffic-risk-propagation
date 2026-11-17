@@ -182,6 +182,7 @@ class ArmResult:
     speed_std_post: float | None = None    # cross-vehicle speed dispersion after the event
     abs_dv_post_mean: float | None = None  # mean |v_follower - v_leader| after the event
     n_bad_gap_mean: float | None = None    # vehicles dropped per step for gap <= 0
+    stratum_risk: dict[int, float | None] | None = None  # risk by upstream/mid/downstream third
 
 
 def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
@@ -238,6 +239,7 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
     speed_post_samples: list[float] = []       # mean in-region speed after the event
     speed_std_post_samples: list[float] = []   # cross-vehicle speed dispersion after the event
     abs_dv_post: list[float] = []              # |v_follower - v_leader| after the event
+    stratum_sums: dict[int, list[float]] = {0: [], 1: [], 2: []}
     n_in_region_samples: list[float] = []
     region_speed_samples: list[float] = []
 
@@ -291,6 +293,9 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
             per_veh: dict[str, float] = {}
             n_no_leader = 0
             n_bad_gap = 0
+            # risk by position stratum: the untreated margin hypothesis says the difference
+            # between graded and blanket action should concentrate where treatment is weakest
+            strata_vals: dict[int, list[float]] = {0: [], 1: [], 2: []}
             for v, _x_v, _sp_v in in_region:
                 if v not in present:
                     continue
@@ -316,6 +321,10 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
                 else:
                     t = ttc_instant(gap, sp, lsp)
                     per_veh[v] = 0.0 if t is None else rho_from_ttc(t)
+                if event_time is not None and event_time + 8.0 <= now <= event_time + 30.0:
+                    lo_, hi_ = TGT_REGION
+                    idx = min(2, int(3 * (_x_v - lo_) / (hi_ - lo_)))
+                    strata_vals[idx].append(per_veh[v])
                 # same vehicle, same step: record gap for the longitudinal comparison
                 if event_time is not None:
                     if event_time - 10.0 <= now <= event_time:
@@ -336,6 +345,9 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
                 if roster else 0.0)
             n_no_leader_samples.append(float(n_no_leader))
             n_bad_gap_samples.append(float(n_bad_gap))
+            for _i, _vals in strata_vals.items():
+                if _vals:
+                    stratum_sums[_i].append(float(np.mean(_vals)))
             if event_time is not None and event_time + 8.0 <= now <= event_time + 30.0 and in_region:
                 speeds_now = [s for _, _, s in in_region]
                 speed_post_samples.append(float(np.mean(speeds_now)))
@@ -471,6 +483,8 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
                         if speed_std_post_samples else None),
         abs_dv_post_mean=(float(np.mean(abs_dv_post)) if abs_dv_post else None),
         n_bad_gap_mean=(float(np.mean(n_bad_gap_samples)) if n_bad_gap_samples else None),
+        stratum_risk={i: (float(np.mean(v)) if v else None)
+                      for i, v in stratum_sums.items()},
     )
 
 
@@ -515,7 +529,15 @@ def main() -> int:
                   f"|dv|={r.abs_dv_post_mean} badgap={r.n_bad_gap_mean}")
         results[str(seed)] = arms
 
-    print("\n--- contrasts (vehicle-time normalised) ---")
+    print("\n--- risk by position stratum (upstream / middle / downstream third) ---")
+    for seed_, arms_ in results.items():
+        for arm_ in ("opn0", "sham", "opn1"):
+            s_ = arms_[arm_].stratum_risk or {}
+            vals = [s_.get(i) for i in (0, 1, 2)]
+            shown = "  ".join(f"{v:.6f}" if v is not None else "   n/a  " for v in vals)
+            print(f"  seed={seed_} {arm_:<5} {shown}")
+
+    print(f"\n--- contrasts (vehicle-time normalised) ---")
     summary = {}
     for seed, arms in results.items():
         o0 = arms["opn0"].risk_meantime
