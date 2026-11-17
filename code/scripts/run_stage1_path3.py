@@ -179,6 +179,9 @@ class ArmResult:
     gap_delta_mean: float | None = None    # per-vehicle paired change in gap
     factor_mean: float | None = None       # mean speed-cap multiplier actually applied
     speed_post_mean: float | None = None   # mean in-region speed after the event
+    speed_std_post: float | None = None    # cross-vehicle speed dispersion after the event
+    abs_dv_post_mean: float | None = None  # mean |v_follower - v_leader| after the event
+    n_bad_gap_mean: float | None = None    # vehicles dropped per step for gap <= 0
 
 
 def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
@@ -230,8 +233,11 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
     veh_gap_pre: dict[str, list[float]] = {}
     veh_gap_post: dict[str, list[float]] = {}
     n_measured_samples: list[float] = []      # how many vehicles had a usable leader
-    n_no_leader_samples: list[float] = []      # in-region vehicles with no leader / bad gap
+    n_no_leader_samples: list[float] = []      # in-region vehicles with no leader
+    n_bad_gap_samples: list[float] = []        # in-region vehicles dropped for gap <= 0
     speed_post_samples: list[float] = []       # mean in-region speed after the event
+    speed_std_post_samples: list[float] = []   # cross-vehicle speed dispersion after the event
+    abs_dv_post: list[float] = []              # |v_follower - v_leader| after the event
     n_in_region_samples: list[float] = []
     region_speed_samples: list[float] = []
 
@@ -284,6 +290,7 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
             # per-vehicle values, so the old definition stays comparable.
             per_veh: dict[str, float] = {}
             n_no_leader = 0
+            n_bad_gap = 0
             for v, _x_v, _sp_v in in_region:
                 if v not in present:
                     continue
@@ -293,10 +300,17 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
                     n_no_leader += 1
                     continue
                 lid, gap = lead
-                if gap <= 0 or lid not in present:
-                    n_no_leader += 1
+                if lid not in present or gap <= 0:
+                    # gap<=0 means overlapping vehicles. Those are the highest-risk cases, so
+                    # silently dropping them biases the mean DOWNWARD; the count must be
+                    # reported or the comparison is not trustworthy.
+                    n_bad_gap += 1
                     continue
                 lsp = traci.vehicle.getSpeed(lid)
+                # adjacent-pair closing speed: this, not region-wide dispersion, is what the
+                # risk measure responds to, so it is the quantity a gradient hypothesis must move
+                if event_time is not None and event_time + 8.0 <= now <= event_time + 30.0:
+                    abs_dv_post.append(abs(sp - lsp))
                 if risk_mode == "braking":
                     per_veh[v] = rho_from_ttc(ttc_braking(gap, sp, lsp))
                 else:
@@ -321,8 +335,15 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
                 float(sum(per_veh.get(v, 0.0) for v in roster) / len(roster))
                 if roster else 0.0)
             n_no_leader_samples.append(float(n_no_leader))
+            n_bad_gap_samples.append(float(n_bad_gap))
             if event_time is not None and event_time + 8.0 <= now <= event_time + 30.0 and in_region:
-                speed_post_samples.append(float(np.mean([s for _, _, s in in_region])))
+                speeds_now = [s for _, _, s in in_region]
+                speed_post_samples.append(float(np.mean(speeds_now)))
+                # speed dispersion: the mechanism behind the content-grading failure. A
+                # spatially graded action slows neighbours by different amounts, which raises
+                # closing speed and therefore risk, even at identical mean dose and mean speed.
+                if len(speeds_now) > 1:
+                    speed_std_post_samples.append(float(np.std(speeds_now)))
             n_in_region_samples.append(float(len(in_region)))
             if in_region:
                 region_speed_samples.append(float(np.mean([sp for _, _, sp in in_region])))
@@ -446,6 +467,10 @@ def run_arm(tmp: Path, seed: int, arm: str, risk_mode: str, response: str,
         factor_mean=(float(np.mean([x for xs in applied_factor.values() for x in xs]))
                      if applied_factor else None),
         speed_post_mean=(float(np.mean(speed_post_samples)) if speed_post_samples else None),
+        speed_std_post=(float(np.mean(speed_std_post_samples))
+                        if speed_std_post_samples else None),
+        abs_dv_post_mean=(float(np.mean(abs_dv_post)) if abs_dv_post else None),
+        n_bad_gap_mean=(float(np.mean(n_bad_gap_samples)) if n_bad_gap_samples else None),
     )
 
 
@@ -486,7 +511,8 @@ def main() -> int:
                   f"tau_mean={r.tau_mean} tau_p90={r.tau_p90} "
                   f"measured={r.n_measured_mean} no_leader={r.n_no_leader_mean} "
                   f"gap {r.gap_pre_mean}->{r.gap_post_mean} (Δ{r.gap_delta_mean}, n={r.gap_n_paired}) "
-                  f"factor={r.factor_mean} vpost={r.speed_post_mean}")
+                  f"factor={r.factor_mean} vpost={r.speed_post_mean} sd={r.speed_std_post} "
+                  f"|dv|={r.abs_dv_post_mean} badgap={r.n_bad_gap_mean}")
         results[str(seed)] = arms
 
     print("\n--- contrasts (vehicle-time normalised) ---")
