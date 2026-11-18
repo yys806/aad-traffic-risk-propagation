@@ -30,6 +30,7 @@ OUT = Path(r"D:\shen\TJU\AAD\code\outputs\analysis\P3B_candidates")
 # 质控参数（预先写定）
 SMOOTH = 5          # 速度平滑点数（0.033 s/点 → 约 0.17 s）
 ACC_BRAKE = -3.0    # 急刹门槛 m/s²
+ACC_FLOOR = -10.0   # 物理下限：干路面最大制动约 -8~-10；低于此值判为跟踪伪影或碰撞，排除
 GAP_MIN = 3.0
 CLOSING_MAX = 12.0
 D_MAX_CAP = 8.0
@@ -63,7 +64,7 @@ lead = df[["vid", "Time [s]", "x [m]", "y [m]", "v_s", "acc_calc", "Vehicle_leng
              "acc_calc": "lacc", "Vehicle_length [m]": "llen"})
 df2 = df[df["Leader_ID"] > 0]          # -1 表示无前车，必须排除，否则会配出幽灵车对
 m = df2.merge(lead, on=["lkey", "Time [s]"], how="inner")
-m["gap"] = np.hypot(m["lx"] - m["x [m]"], m["ly"] - m["y [m]"]) - m["llen"]
+m["gap"] = np.hypot(m["lx"] - m["x [m]"], m["ly"] - m["y [m]"]) - (m["Vehicle_length [m]"] + m["llen"]) / 2.0
 m["closing"] = m["v_s"] - m["lv"]
 m["D"] = np.where(m["gap"] > 0, np.maximum(m["closing"], 0) ** 2 / (2 * np.maximum(m["gap"], 0.1)), np.nan)
 
@@ -88,7 +89,18 @@ for _, g in m.groupby("seg"):
     dmax = g["D"].max()
     if dmax < D_ENTRY or dmax > D_MAX_CAP:
         continue
-    if g["lacc"].min() > ACC_BRAKE:
+    if g["lacc"].min() > ACC_BRAKE or g["lacc"].min() < ACC_FLOOR:
+        continue
+    # GPT 要求：换道与 Leader_ID 跳变必须单独排除，否则一维回放不成立
+    if g["Lane"].nunique() > 1:
+        continue
+    if g["lkey"].nunique() > 1:
+        continue
+    # 一维回放要求近直线：路径长与首末直线距之比 < 0.99 的片段（含转弯）排除
+    xy = g[["x [m]", "y [m]"]].to_numpy(dtype=float)
+    plen = float(np.sum(np.hypot(np.diff(xy[:, 0]), np.diff(xy[:, 1]))))
+    direct = float(np.hypot(xy[-1, 0] - xy[0, 0], xy[-1, 1] - xy[0, 1]))
+    if plen > 5.0 and direct / plen < 0.99:
         continue
     k = g["D"].idxmax()
     segs.append({
@@ -101,6 +113,7 @@ for _, g in m.groupby("seg"):
         "closing_max_mps": round(float(g["closing"].max()), 2),
         "leader_brake_min": round(float(g["lacc"].min()), 2),
         "follower_brake_min": round(float(g["acc_calc"].min()), 2),
+        "straightness": round(direct / plen, 4) if plen > 5 else None,
     })
 
 segs.sort(key=lambda s: -s["D_max"])

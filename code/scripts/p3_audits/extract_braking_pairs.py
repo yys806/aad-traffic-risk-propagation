@@ -54,7 +54,7 @@ m = df.merge(lead, on=["Leader_ID", "Time [s]"], how="inner")
 print(f"  与前车配对成功的行 {len(m):,}", flush=True)
 
 dist = np.hypot(m["lx"] - m["x [m]"], m["ly"] - m["y [m]"])
-m["gap"] = dist - m["llen"]
+m["gap"] = dist - (m["Vehicle_length [m]"] + m["llen"]) / 2.0
 m["closing"] = m["v"] - m["lv"]
 ok = (m["gap"] > MIN_GAP) & (m["gap"] < 200) & (m["closing"] > 0)
 m = m[ok].copy()

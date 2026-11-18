@@ -30,7 +30,7 @@ lead = df[["vid", "Time [s]", "x [m]", "y [m]", "v_s", "acc_calc", "Vehicle_leng
     columns={"vid": "lkey", "x [m]": "lx", "y [m]": "ly", "v_s": "lv", "acc_calc": "lacc",
              "Vehicle_length [m]": "llen"})
 m = df[df["Leader_ID"] > 0].merge(lead, on=["lkey", "Time [s]"], how="inner")
-m["gap"] = np.hypot(m["lx"] - m["x [m]"], m["ly"] - m["y [m]"]) - m["llen"]
+m["gap"] = np.hypot(m["lx"] - m["x [m]"], m["ly"] - m["y [m]"]) - (m["Vehicle_length [m]"] + m["llen"]) / 2.0
 m["closing"] = m["v_s"] - m["lv"]
 m["D"] = np.where(m["gap"] > 0, np.maximum(m["closing"], 0) ** 2 / (2 * np.maximum(m["gap"], 0.1)), np.nan)
 print(f"配对行 {len(m):,}")
