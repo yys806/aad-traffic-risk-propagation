@@ -62,14 +62,16 @@ def net_xml() -> str:
 </net>"""
 
 
-def routes_xml(sigma: float, headway: float = HEADWAY) -> str:
+def routes_xml(sigma: float, headway: float = HEADWAY, react_s: float = 0.0) -> str:
     n = int((EDGE_LEN - headway) / headway)
     v_req = (headway - 5.0 - 2.5) / 0.6
     v_eq = min(v_req, MAX_SPEED)
     period = headway / v_eq
     vt = (f'<vType id="cal" carFollowModel="Krauss" accel="2.6" decel="4.5" sigma="{sigma}"'
           f' tau="0.6" length="5" minGap="2.5" maxSpeed="{MAX_SPEED}" speedFactor="1"'
-          f' speedDev="0.12"/>')
+          f' speedDev="0.12"'
+          + (f' actionStepLength="{react_s}"' if react_s > 0 else '')
+          + '/>')
     vehs = []
     for i in range(n):
         pos = 10.0 + headway * i
@@ -85,9 +87,11 @@ def routes_xml(sigma: float, headway: float = HEADWAY) -> str:
 
 
 def run(tmp: Path, tag: str, sigma: float, stop: bool,
-        headway: float = HEADWAY, seed: int = 20261119) -> dict:
+        headway: float = HEADWAY, seed: int = 20261119,
+        react_s: float = 0.0) -> dict:
     (tmp / "net.net.xml").write_text(net_xml(), encoding="utf-8")
-    (tmp / f"routes_{tag}.rou.xml").write_text(routes_xml(sigma, headway), encoding="utf-8")
+    (tmp / f"routes_{tag}.rou.xml").write_text(
+        routes_xml(sigma, headway, react_s), encoding="utf-8")
     cfg = tmp / f"run_{tag}.sumocfg"
     cfg.write_text(
         f'<configuration><input><net-file value="net.net.xml"/>'
@@ -239,6 +243,8 @@ def main() -> int:
     ap.add_argument("--sigma", type=float, default=0.0)
     ap.add_argument("--headway", type=float, default=HEADWAY)
     ap.add_argument("--seed", type=int, default=20261119)
+    ap.add_argument("--react", type=float, default=0.0,
+                    help="驾驶员动作间隔（秒）：0=每步都判断（机器反应）；1.0≈人类反应时间")
     ap.add_argument("--pair", action="store_true")
     ap.add_argument("--out", default=None)
     args = ap.parse_args()
@@ -252,10 +258,10 @@ def main() -> int:
         raise SystemExit("this trial is always paired (plain + stop); pass --pair")
 
     print(f"running plain arm (sigma={args.sigma}) ...")
-    plain = run(tmp, "plain", args.sigma, False, args.headway, args.seed)
+    plain = run(tmp, "plain", args.sigma, False, args.headway, args.seed, args.react)
     print(f"  plain: {plain['n_slots_used']} vehicles, {plain['wall_seconds']:.1f}s")
     print("running stop arm ...")
-    stop = run(tmp, "stop", args.sigma, True, args.headway, args.seed)
+    stop = run(tmp, "stop", args.sigma, True, args.headway, args.seed, args.react)
     print(f"  stop : {stop['n_slots_used']} vehicles, {stop['wall_seconds']:.1f}s,"
           f" source={stop['source_id']} t0={stop['event_t0']}")
 
@@ -265,6 +271,7 @@ def main() -> int:
 
     res = {"event_t0": t0, "step_s": step, "headway": args.headway,
            "seed": args.seed, "decel": DECEL, "target_x": TARGET_X, "band": BAND,
+           "react_s": args.react,
            "arms": {}}
     for name, arm in (("plain", plain), ("stop", stop)):
         e = exposure_series(arm["pos"], arm["spd"], TARGET_X, BAND)
