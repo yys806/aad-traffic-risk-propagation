@@ -47,11 +47,16 @@ STATIONS = (5500.0, 5000.0, 4500.0, 4000.0)   # 0.5 / 1.0 / 1.5 / 2.0 km upstrea
 BAND = 50.0
 V0 = 15.0
 HEADWAY = 20.0
+# Krauss 的安全速度上限：(20 m 车头距 - 5 m 车长 - 2.5 m 最小间距) / tau 0.6 ≈ 20.83 m/s。
+# 实测平衡车速 20.78 m/s —— 初始投放 15 m/s 会先加速到它，若补给仍按 15 算间隔就会比预填稀。
+# 预填与补给都用平衡速度，密度才均匀。
+V_EQ = (HEADWAY - 5.0 - 2.5) / 0.6
+FILL_PERIOD = HEADWAY / V_EQ
 WARMUP = 120.0
 RAMP = 6.0            # seconds to reach the target speed
 HOLD = 120.0          # seconds held at the target speed
 OBS_AFTER = 660.0     # observation window after t0
-MAX_SLOTS = 1200
+MAX_SLOTS = 1600       # 预填 449 + 补给 ~843 ≈ 1292；原来的 1200 会把尾部车辆丢掉
 STRENGTH = {"strong": 3.0, "weak": 8.0}
 WAVE_MIN_DV = 0.75    # m/s, sustained 1 s, per-vehicle witness threshold
 GATE_IDS = 3          # distinct witnessing IDs inside the band
@@ -78,8 +83,8 @@ def routes_xml(sigma: float) -> str:
     for i in range(n):
         pos = 10.0 + HEADWAY * i
         vehs.append(f'<vehicle id="V{i}" type="cal" route="rc" depart="0"'
-                    f' departPos="{pos:.2f}" departSpeed="{V0}" departLane="0"/>')
-    period = HEADWAY / V0
+                    f' departPos="{pos:.2f}" departSpeed="{V_EQ:.3f}" departLane="0"/>')
+    period = FILL_PERIOD
     # vehicles first (depart=0), then the inflow flow (depart>0): SUMO requires the route
     # file to be sorted by departure time and silently drops vehicles otherwise
     return (f'<routes>{vt}'
@@ -87,7 +92,7 @@ def routes_xml(sigma: float) -> str:
             f'{"".join(vehs)}'
             f'<flow id="in" type="cal" route="rc" begin="{period:.3f}"'
             f' end="{WARMUP + OBS_AFTER:.1f}" period="{period:.3f}"'
-            f' departSpeed="{V0}" departLane="0"/>'
+            f' departSpeed="{V_EQ:.3f}" departLane="0"/>'
             f'</routes>')
 
 
@@ -112,13 +117,14 @@ def run(tmp: Path, tag: str, sigma: float, strength: str | None) -> dict:
     idx: dict[str, int] = {}
     pos = np.full((steps, MAX_SLOTS), np.nan, dtype=np.float32)
     spd = np.full((steps, MAX_SLOTS), np.nan, dtype=np.float32)
-    leader: dict[int, list[int]] = {}     # slot -> leader slot per step (for chain attribution)
+    leader = np.full((steps, MAX_SLOTS), -1, dtype=np.int32)   # slot -> leader slot
 
     event_t0 = None
     src_id = None
     src_slot = None
     src_target = STRENGTH.get(strength or "strong", 3.0)
     src_hist: list[tuple[float, float, float]] = []   # t, actual speed, commanded speed
+    src_v_start = V_EQ
     subscribed: set[str] = set()
     n_collision = 0
     n_teleport = 0
@@ -134,7 +140,7 @@ def run(tmp: Path, tag: str, sigma: float, strength: str | None) -> dict:
                 if src_id is not None and event_t0 is not None:
                     el = now - event_t0
                     if el < RAMP:
-                        cmd = V0 - (V0 - src_target) * (el / RAMP)
+                        cmd = src_v_start - (src_v_start - src_target) * (el / RAMP)
                         traci.vehicle.setSpeed(src_id, cmd)
                     elif el < RAMP + HOLD:
                         cmd = src_target
@@ -157,23 +163,30 @@ def run(tmp: Path, tag: str, sigma: float, strength: str | None) -> dict:
                     subscribed.add(v)
             res = traci.vehicle.getAllSubscriptionResults()
 
-            for v, val in res.items():
-                if v not in idx:
-                    if len(idx) >= MAX_SLOTS:
-                        continue
+            # two passes: allocate slots first, so leader ids can be resolved to slots
+            for v in res:
+                if v not in idx and len(idx) < MAX_SLOTS:
                     idx[v] = len(idx)
-                i = idx[v]
+            for v, val in res.items():
+                i = idx.get(v)
+                if i is None:
+                    continue
                 pos[k, i] = val.get(const.VAR_LANEPOSITION, np.nan)
                 spd[k, i] = val.get(const.VAR_SPEED, np.nan)
+                # Leader is NOT subscribed: VAR_LEADER requires an extra distance parameter
+                # and raises "Missing parameter for subscription". Because this corridor has
+                # one lane and no lane changes, the leader is exactly the next vehicle up in
+                # the position ordering -- the analysis rebuilds it from `pos`.
 
             # ---- trigger ----
             if strength is not None and src_id is None and now >= WARMUP:
                 cands = [(abs(res[v].get(const.VAR_LANEPOSITION, 1e9) - SOURCE_X), v)
-                         for v in res if v in res]
+                         for v in res]
                 if cands:
                     _, src_id = min(cands)
                     src_slot = idx.get(src_id)
                     event_t0 = now
+                    src_v_start = float(res[src_id].get(const.VAR_SPEED, V0))
     finally:
         traci.close()
     elapsed = time.time() - t_start
