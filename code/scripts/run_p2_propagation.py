@@ -41,7 +41,8 @@ from riskprop.stage_0_5_fixed_leader_traci import load_traci  # noqa: E402
 
 SUMO = "sumo"
 STEP = 0.05
-EDGE_LEN = 9000.0
+EDGE_LEN = 15000.0    # 从 9000 延到 15000：源在 6000，身后还有 9000 m。9000 m 时源车
+                      # 在 t0+392 s 就开到路尽头（x=8999），远站的观测窗被边界截断。
 SOURCE_X = 6000.0
 STATIONS = (5500.0, 5000.0, 4500.0, 4000.0)   # 0.5 / 1.0 / 1.5 / 2.0 km upstream of source
 BAND = 50.0
@@ -54,7 +55,9 @@ V_EQ = (HEADWAY - 5.0 - 2.5) / 0.6
 FILL_PERIOD = HEADWAY / V_EQ
 WARMUP = 120.0
 RAMP = 6.0            # seconds to reach the target speed
-HOLD = 120.0          # seconds held at the target speed
+HOLD = 660.0          # 保持到观测窗结束。之前试过 120 s 和 300 s，两次都是「恢复后源车
+                      # 加速开出道路尽头」（t0+235 s / t0+637 s），源车一走波就断源，
+                      # 远站的「未到达」全是边界假象。测到达时间不需要事件结束，P5 再管消散。
 OBS_AFTER = 660.0     # observation window after t0
 MAX_SLOTS = 1600       # 预填 449 + 补给 ~843 ≈ 1292；原来的 1200 会把尾部车辆丢掉
 STRENGTH = {"strong": 3.0, "weak": 8.0}
@@ -74,17 +77,20 @@ def net_xml() -> str:
 </net>"""
 
 
-def routes_xml(sigma: float) -> str:
-    n = int((EDGE_LEN - HEADWAY) / HEADWAY)
+def routes_xml(sigma: float, headway: float = HEADWAY) -> str:
+    n = int((EDGE_LEN - headway) / headway)
+    # Krauss 平衡车速 (headway - 车长 - minGap) / tau，但不得超过 lanespeed 30 m/s
+    v_req = (headway - 5.0 - 2.5) / 0.6
+    v_eq = min(v_req, MAX_SPEED)
+    period = headway / v_eq
     vt = (f'<vType id="cal" carFollowModel="Krauss" accel="2.6" decel="4.5" sigma="{sigma}"'
           f' tau="0.6" length="5" minGap="2.5" maxSpeed="{MAX_SPEED}" speedFactor="1"'
           f' speedDev="0.12"/>')
     vehs = []
     for i in range(n):
-        pos = 10.0 + HEADWAY * i
+        pos = 10.0 + headway * i
         vehs.append(f'<vehicle id="V{i}" type="cal" route="rc" depart="0"'
-                    f' departPos="{pos:.2f}" departSpeed="{V_EQ:.3f}" departLane="0"/>')
-    period = FILL_PERIOD
+                    f' departPos="{pos:.2f}" departSpeed="{v_eq:.3f}" departLane="0"/>')
     # vehicles first (depart=0), then the inflow flow (depart>0): SUMO requires the route
     # file to be sorted by departure time and silently drops vehicles otherwise
     return (f'<routes>{vt}'
@@ -92,13 +98,14 @@ def routes_xml(sigma: float) -> str:
             f'{"".join(vehs)}'
             f'<flow id="in" type="cal" route="rc" begin="{period:.3f}"'
             f' end="{WARMUP + OBS_AFTER:.1f}" period="{period:.3f}"'
-            f' departSpeed="{V_EQ:.3f}" departLane="0"/>'
+            f' departSpeed="{v_eq:.3f}" departLane="0"/>'
             f'</routes>')
 
 
-def run(tmp: Path, tag: str, sigma: float, strength: str | None) -> dict:
+def run(tmp: Path, tag: str, sigma: float, strength: str | None,
+        headway: float = HEADWAY, seed: int = 20261118) -> dict:
     (tmp / "net.net.xml").write_text(net_xml(), encoding="utf-8")
-    (tmp / f"routes_{tag}.rou.xml").write_text(routes_xml(sigma), encoding="utf-8")
+    (tmp / f"routes_{tag}.rou.xml").write_text(routes_xml(sigma, headway), encoding="utf-8")
     cfg = tmp / f"run_{tag}.sumocfg"
     cfg.write_text(
         f"""<configuration>
@@ -106,7 +113,7 @@ def run(tmp: Path, tag: str, sigma: float, strength: str | None) -> dict:
     <time><begin value="0"/><end value="{WARMUP + OBS_AFTER + 30:.1f}"/>
           <step-length value="{STEP}"/></time>
     <processing><time-to-teleport value="-1"/><no-step-log value="true"/></processing>
-    <random_number><seed value="20261118"/></random_number>
+    <random_number><seed value="{seed}"/></random_number>
 </configuration>""", encoding="utf-8")
 
     traci = load_traci()
@@ -255,6 +262,9 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--tag", default="plain")
     ap.add_argument("--sigma", type=float, default=0.0)
+    ap.add_argument("--headway", type=float, default=HEADWAY,
+                    help="车头间距 (m)：20 = 密，30 = 疏")
+    ap.add_argument("--seed", type=int, default=20261118)
     ap.add_argument("--strength", choices=["strong", "weak"], default=None)
     ap.add_argument("--pair", action="store_true", help="run plain then event and evaluate")
     ap.add_argument("--out", default=None)
@@ -268,10 +278,10 @@ def main() -> int:
     if args.pair:
         strength = args.strength or "strong"
         print(f"running plain arm (sigma={args.sigma}) ...")
-        plain = run(tmp, "plain", args.sigma, None)
+        plain = run(tmp, "plain", args.sigma, None, args.headway, args.seed)
         print(f"  plain: {plain['n_slots_used']} vehicles, {plain['wall_seconds']:.1f}s wall")
         print(f"running event arm (strength={strength}) ...")
-        event = run(tmp, "event", args.sigma, strength)
+        event = run(tmp, "event", args.sigma, strength, args.headway, args.seed)
         print(f"  event: {event['n_slots_used']} vehicles, {event['wall_seconds']:.1f}s wall,"
               f" source={event['source_id']} at t0={event['event_t0']}")
         ev = witnesses(plain, event)
@@ -299,7 +309,7 @@ def main() -> int:
         print(f"\nwrote {outdir/'result.json'} and arms.npz")
         return 0
 
-    r = run(tmp, args.tag, args.sigma, args.strength)
+    r = run(tmp, args.tag, args.sigma, args.strength, args.headway, args.seed)
     (outdir / f"{args.tag}.json").write_text(
         json.dumps({k: v for k, v in r.items() if k not in ("pos", "spd", "source_history")},
                    indent=2, ensure_ascii=False), encoding="utf-8")
