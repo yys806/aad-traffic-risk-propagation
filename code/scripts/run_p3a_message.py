@@ -106,7 +106,7 @@ def routes_xml(sigma: float, headway: float = HEADWAY) -> str:
 
 
 def run(tmp: Path, arm: str, sigma: float, strength: str | None,
-        headway: float = HEADWAY, seed: int = 20261119) -> dict:
+        headway: float = HEADWAY, seed: int = 20261119, equip: str = "alternate") -> dict:
     (tmp / "net.net.xml").write_text(net_xml(), encoding="utf-8")
     (tmp / f"routes_{arm}.rou.xml").write_text(routes_xml(sigma, headway), encoding="utf-8")
     cfg = tmp / f"run_{arm}.sumocfg"
@@ -132,6 +132,7 @@ def run(tmp: Path, arm: str, sigma: float, strength: str | None,
     src_target = STRENGTH.get(strength or "strong", 3.0)
     src_v_start = V0
     locked: set[str] = set()
+    equipped: set[str] = set()
     base_v: dict[str, float] = {}
     msg_sent_at = None
     subscribed: set[str] = set()
@@ -153,12 +154,12 @@ def run(tmp: Path, arm: str, sigma: float, strength: str | None,
                     elif el < RAMP + HOLD + 1.0:
                         traci.vehicle.setSpeed(src_id, -1)
                 # 消息动作
-                if arm == "message" and locked and event_t0 is not None:
+                if arm == "message" and equipped and event_t0 is not None:
                     el = now - (event_t0 + MSG_START)
                     if el >= 0:
                         if not base_v:
                             msg_sent_at = now
-                            for v in locked:
+                            for v in equipped:
                                 if v in traci.vehicle.getIDList():
                                     base_v[v] = traci.vehicle.getSpeed(v)
                         cap_f = None
@@ -206,13 +207,22 @@ def run(tmp: Path, arm: str, sigma: float, strength: str | None,
                         x = res[v].get(const.VAR_LANEPOSITION, np.nan)
                         if np.isfinite(x) and abs(x - TGT_X) <= TGT_BAND:
                             locked.add(v)
+                    # 装备名单：按位置排序（队头在前）交错取，保证每个相邻车对恰好一装一不装
+                    ordered = sorted(locked, key=lambda vv: -res[vv].get(const.VAR_LANEPOSITION, 0.0))
+                    if equip == "alternate":
+                        equipped = set(ordered[0::2])
+                    elif equip == "half_rear":
+                        equipped = set(ordered[len(ordered) // 2:])
+                    else:
+                        equipped = set(ordered)
     finally:
         traci.close()
 
     used = len(idx)
     return {"arm": arm, "sigma": sigma, "strength": strength, "seed": seed,
             "event_t0": event_t0, "source_id": src_id,
-            "locked_ids": sorted(locked), "msg_sent_at": msg_sent_at,
+            "locked_ids": sorted(locked), "equipped_ids": sorted(equipped),
+            "equip_rule": equip, "msg_sent_at": msg_sent_at,
             "n_locked": len(locked), "n_slots": used, "step_s": STEP,
             "pos": pos[:, :used], "spd": spd[:, :used], "ids": list(idx.keys())}
 
@@ -252,6 +262,8 @@ def main() -> int:
     ap.add_argument("--strength", default="strong")
     ap.add_argument("--headway", type=float, default=HEADWAY)
     ap.add_argument("--seed", type=int, default=20261119)
+    ap.add_argument("--equip", choices=["all", "alternate", "half_rear"], default="alternate",
+                    help="装备率规则：all=全装（队内不产生相对运动）；alternate=按位置交错，每个相邻车对一装一不装")
     ap.add_argument("--out", required=True)
     a = ap.parse_args()
 
@@ -268,7 +280,7 @@ def main() -> int:
     for arm in arms:
         t = time.time()
         print(f"[run] arm={arm} seed={a.seed} ...", flush=True)
-        d = run(tmp, arm, a.sigma, a.strength, a.headway, a.seed)
+        d = run(tmp, arm, a.sigma, a.strength, a.headway, a.seed, a.equip)
         print(f"[run] arm={arm} 完成，{time.time()-t:.1f}s，锁定 {d['n_locked']} 车，源 t0={d['event_t0']}", flush=True)
         data[arm] = d
 
@@ -278,6 +290,7 @@ def main() -> int:
                             pos=d["pos"], spd=d["spd"],
                             ids=np.array(d["ids"]),
                             locked=np.array(sorted(d["locked_ids"])) if d["locked_ids"] else np.array([]),
+                            equipped=np.array(sorted(d["equipped_ids"])) if d["equipped_ids"] else np.array([]),
                             event_t0=np.float64(d["event_t0"] or 0.0),
                             step_s=d["step_s"])
 
