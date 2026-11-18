@@ -21,7 +21,10 @@ import numpy as np
 SRC = Path(r"D:\shen\TJU\AAD\dataset\pNEUMA\20181101_d1_0800_0830.csv")
 MAX_GAP = 0.5
 GRID = 0.1              # 公共时间网格 s
-BRAKE_THR = -3.0        # 急刹阈值 m/s²
+BRAKE_THR = -3.0        # 急刹候选阈值 m/s²
+import os as _os
+ACC_FLOOR = None if _os.environ.get("ACC_FLOOR", "none") == "none" else float(_os.environ["ACC_FLOOR"])
+n_reject = 0
 SMOOTH = 5              # 平滑点数（0.5 s）
 NEAR_MAX = 60.0         # 前车最大距离 m
 LAT_M, LON_M = 110540.0, 111320.0
@@ -133,8 +136,9 @@ for u in np.unique(pair_uid):
     good = np.isfinite(v_lead)
     if good.sum() < 20:
         continue
+    t_g = grid[fr[good]]                     # 真实时间戳
     vs = np.convolve(v_lead[good], np.ones(SMOOTH) / SMOOTH, mode="same")
-    acc = np.gradient(vs, GRID)
+    acc = np.gradient(vs, t_g)               # 按实际间隔求梯度，避免 NaN 跳过后被放大
     kk = np.where(acc <= BRAKE_THR)[0]
     if len(kk) == 0:
         continue
@@ -146,7 +150,11 @@ for u in np.unique(pair_uid):
     k1 = int(after[0]) if len(after) else len(acc) - 1
     if k1 - k0 < int(1.0 / GRID):      # 太短，不算一次制动（<1 s）
         continue
-    brakes.append({"frame": fr[good][k0], "last": fr[good][k1], "lead": lid,
+    a_min = float(acc[k0:k1 + 1].min())
+    if ACC_FLOOR is not None and a_min < ACC_FLOOR:
+        n_reject += 1
+        continue
+    brakes.append({"a_min": round(a_min, 3), "frame": fr[good][k0], "last": fr[good][k1], "lead": lid,
                    "fol": int(P[m, 2][0]), "acc_min": float(acc[k0:k1+1].min()),
                    "gap": float(P[m, 3][good][k0])})
 
@@ -202,7 +210,8 @@ print(f"\n总计：急刹 {len(brakes)} 个；这是 1 架无人机 30 分钟的
 # ---------- 保存 20 s 合格候选事件（供车道验收） ----------
 import json as _json
 from pathlib import Path as _Path
-OUT = _Path("D:/shen/TJU/AAD/code/outputs/analysis/P3B_pneuma")
+_tier = _os.environ.get("TIER", "nodrop")
+OUT = _Path(f"D:/shen/TJU/AAD/code/outputs/analysis/P3B_pneuma_{_tier}")
 OUT.mkdir(parents=True, exist_ok=True)
 n_need = int(20.0 / GRID)
 saved = []

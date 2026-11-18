@@ -25,7 +25,9 @@ from pathlib import Path
 import numpy as np
 
 SRC = Path(r"D:\shen\TJU\AAD\dataset\pNEUMA\20181101_d1_0800_0830.csv")
-EV = Path(r"D:\shen\TJU\AAD\code\outputs\analysis\P3B_pneuma\events_20s_all.json")
+import os as _os
+_TIER = _os.environ.get("TIER", "m10")
+EV = Path("D:/shen/TJU/AAD/code/outputs/analysis/P3B_pneuma_" + _TIER + "/events_20s_all.json")
 OUT = EV.parent
 
 REF_BACK = 5.0        # 用前车 t0 之前多少秒的轨迹作参考曲线
