@@ -41,8 +41,9 @@ V_LIM = 30.0
 FORK_X = 3000.0
 BN_LO, BN_HI = 4900.0, 5100.0
 T_END_PAD = 900.0
-FREE_MAIN = 133.2      # 3000→7000 自由流
-FREE_DETOUR = 183.3    # 绕行自由流
+PENALTY = 55.7          # 绕行相对主路的自由流代价（实测 222.4 − 166.7）
+FREE_MAIN = 166.7      # 3000→8000 全程自由流（5 000 m / 30 m/s）
+FREE_DETOUR = 222.4    # 绕行全程自由流（实测，含汇合口 5.7 s）
 
 
 def one_run(net: Path, work: Path, demand: float, block_s: float, t0: float,
@@ -55,12 +56,12 @@ def one_run(net: Path, work: Path, demand: float, block_s: float, t0: float,
     rou = (f'<routes>{vt}'
            f'<route id="main" edges="in mid bn out tail"/>'
            f'<route id="byp"  edges="in bypass tail"/>'
-           f'<route id="pmain" edges="mid bn out tail"/>'
-           f'<route id="pbyp" edges="bypass tail"/>'
+           f'<route id="pmain" edges="in mid bn out tail"/>'
+           f'<route id="pbyp" edges="in bypass tail"/>'
            f'<flow id="f" type="c" route="main" begin="0" end="{t_end:.0f}"'
            f' period="{period:.3f}" departSpeed="max" departLane="0"/>'
            f'<vehicle id="probe" type="c" route="{("pmain") if probe_route=="main" else ("pbyp")}"'
-           f' depart="{decision_t:.1f}" departPos="0" departSpeed="max" departLane="0"/></routes>')
+           f' depart="{decision_t:.1f}" departPos="2900" departSpeed="max" departLane="0"/></routes>')
     (work / f"r_{probe_route}_{int(decision_t)}.rou.xml").write_text(rou, encoding="utf-8")
     cfg = work / f"run_{probe_route}_{int(decision_t)}.sumocfg"
     cfg.write_text(
@@ -128,7 +129,7 @@ def main() -> int:
                          seed + 20261120)["travelled_s"]
             td = one_run(net, work, args.demand, args.block, args.t0, dt, "byp",
                          seed + 20261120)["travelled_s"]
-            y = None if (tm is None or td is None) else round(tm - td + 50.1, 1)
+            y = None if (tm is None or td is None) else round(tm - td + PENALTY, 1)
             age = None if dt < args.t0 else round(dt - args.t0, 1)
             rows.append({"seed": seed + 20261120, "decision_t": dt, "age_s": age,
                          "t_main_s": tm, "t_detour_s": td, "Y": y})
@@ -155,7 +156,7 @@ def main() -> int:
         table.setdefault(b, []).append(r["Y"])
     frozen = {b: {"n": len(v), "Y_mean": round(float(np.mean(v)), 1),
                   "Y_median": round(float(np.median(v)), 1),
-                  "choose_detour": bool(np.mean(v) > 50.1)}
+                  "choose_detour": bool(np.mean(v) > PENALTY)}
               for b, v in table.items()}
     print(f"\n冻结查表（判据 Ê[Y|B] > 50.1 才绕行）：")
     for b, v in frozen.items():
