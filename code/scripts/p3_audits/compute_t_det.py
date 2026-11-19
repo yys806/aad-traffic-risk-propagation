@@ -92,42 +92,48 @@ def build_samples(pos, spd, t0, step, react_s):
     return out
 
 
-def calibrate(samples: dict[int, list], step: float, react_s: float) -> dict:
-    """在无事件回合上标定 θ_a 与 θ_c（用 min(a⁻, c⁺) 的最大值）。"""
-    dt = react_s if react_s > 0 else step
-    mvals = []
-    per_slot = {}
+def _pairs(seq: list, dt: float):
+    """产出同一前车、间隔正确、连续的两个样本：(t2, v_e2, v_p2, v_p_prev)。"""
+    for (t1, ve1, g1, vp1, l1), (t2, ve2, g2, vp2, l2) in zip(seq[:-1], seq[1:]):
+        if l1 != l2:
+            continue
+        if abs((t2 - t1) - dt) > 1e-6:
+            continue
+        yield t2, ve2, vp2, vp1
+
+
+def calibrate(samples: dict[int, list], dt: float) -> dict:
+    """标定：两个分支**分别**标定（量纲不同，不能混在一起比较）。
+
+    θ_a 单位 m/s²（前车减速度），θ_c 单位 m/s（闭合速度）。
+    GPT 第三十八轮指出：min(a⁻, c⁺) 是把加速度和速度放进同一个比较，量纲不一致，作废。
+    """
+    max_a, max_c = [], []
     for slot, seq in samples.items():
-        mmax = 0.0
-        for (t0_, ve0, g0, vp0, l0), (t1_, ve1, g1, vp1, l1) in zip(seq[:-1], seq[1:]):
-            if l0 != l1:
-                continue
-            if abs((t1_ - t0_) - dt) > 1e-6:
-                continue
-            a_minus = max(0.0, (vp0 - vp1) / dt)
-            c_plus = max(0.0, ve1 - vp1)
-            m = min(a_minus, c_plus)
-            if m > mmax:
-                mmax = m
-        per_slot[slot] = mmax
-        mvals.append(mmax)
-    if not mvals:
-        return {"theta": 0.0, "n_slots": 0}
-    arr = np.array(mvals)
+        ma = mc = 0.0
+        for t2, ve2, vp2, vp_prev in _pairs(seq, dt):
+            a_minus = max(0.0, (vp_prev - vp2) / dt)
+            c_plus = max(0.0, ve2 - vp2)
+            ma = max(ma, a_minus)
+            mc = max(mc, c_plus)
+        max_a.append(ma)
+        max_c.append(mc)
+    if not max_a:
+        return {"theta_a": 0.0, "theta_c": 0.0, "n_slots": 0}
+    A = np.array(max_a, dtype=float)
+    C = np.array(max_c, dtype=float)
     return {
-        "theta": float(arr.max()),
-        "theta_a": float(arr.max()),
-        "theta_c": float(arr.max()),
-        "n_slots": int(arr.size),
-        "p50": float(np.percentile(arr, 50)),
-        "p99": float(np.percentile(arr, 99)),
-        "note": "标定集内不因单次尖峰触发；不保证留出集零误报",
+        "theta_a": float(A.max()),      # m/s²
+        "theta_c": float(C.max()),      # m/s
+        "n_slots": int(A.size),
+        "a_p50": float(np.percentile(A, 50)), "a_p99": float(np.percentile(A, 99)),
+        "c_p50": float(np.percentile(C, 50)), "c_p99": float(np.percentile(C, 99)),
+        "note": "两分支分别标定；取标定集最大值，严格大于判越阈；不保证留出集零误报",
     }
 
 
-def detect(samples: dict[int, list], theta: float, step: float, react_s: float) -> dict:
-    """同一分支连续 NEED_CONSEC 次严格越阈，在第 N 次的采样时刻触发。"""
-    dt = react_s if react_s > 0 else step
+def detect(samples: dict[int, list], theta_a: float, theta_c: float, dt: float) -> dict:
+    """两分支各自独立：同一分支连续 NEED_CONSEC 次严格越阈，在第 N 次的采样时刻触发。"""
     res = {}
     for slot, seq in samples.items():
         hit = None
@@ -146,8 +152,8 @@ def detect(samples: dict[int, list], theta: float, step: float, react_s: float) 
                 continue
             a_minus = max(0.0, (vp0 - vp1) / dt)
             c_plus = max(0.0, ve1 - vp1)
-            run_a = run_a + 1 if a_minus > theta else 0
-            run_c = run_c + 1 if c_plus > theta else 0
+            run_a = run_a + 1 if a_minus > theta_a else 0
+            run_c = run_c + 1 if c_plus > theta_c else 0
             if hit is None and (run_a >= NEED_CONSEC or run_c >= NEED_CONSEC):
                 hit = t1
             prev = cur
@@ -162,6 +168,7 @@ def main() -> int:
     t0 = float(d["event_t0"])
     step = float(d["step_s"])
     react = float(d["react_s"]) if "react_s" in d.files else 0.6
+    dt = react if react > 0 else step
 
     print(f"源: {src}")
     print(f"事件 t0={t0}s  步长={step}s  反应/动作间隔={react}s  量程={RANGE_M}m")
@@ -171,14 +178,17 @@ def main() -> int:
 
     # ---- 1) 用 plain 臂（无事件）标定 ----
     plain_samples = build_samples(d["plain_pos"], d["plain_spd"], t0, step, react)
-    calib = calibrate(plain_samples, step, react)
+    calib = calibrate(plain_samples, dt)
     out["calibration"] = calib
     print(f"\n标定（plain 臂，{calib['n_slots']} 辆车有观测）：")
-    print(f"  θ = {calib['theta']:.4f}   p50={calib.get('p50',0):.4f}  p99={calib.get('p99',0):.4f}")
+    print(f"  θ_a = {calib['theta_a']:.4f} m/s²  "
+          f"(p50={calib.get('a_p50', 0):.4f}, p99={calib.get('a_p99', 0):.4f})")
+    print(f"  θ_c = {calib['theta_c']:.4f} m/s   "
+          f"(p50={calib.get('c_p50', 0):.4f}, p99={calib.get('c_p99', 0):.4f})")
 
     # ---- 2) 在 stop 臂上求 T_det ----
     stop_samples = build_samples(d["stop_pos"], d["stop_spd"], t0, step, react)
-    tdet = detect(stop_samples, calib["theta"], step, react)
+    tdet = detect(stop_samples, calib["theta_a"], calib["theta_c"], dt)
     stop_ids = [str(x) for x in d["stop_ids"]]
     tdet_named = {stop_ids[k]: v for k, v in tdet.items() if v is not None}
     out["tdet"] = {
@@ -192,7 +202,7 @@ def main() -> int:
         print(f"  {e['vehicle']:>10}  T_det = t0+{e['t_det_s']:.2f} s")
 
     # ---- 3) 误报检查：同一阈值跑 plain 臂，理论上应尽量少触发 ----
-    plain_det = detect(plain_samples, calib["theta"], step, react)
+    plain_det = detect(plain_samples, calib["theta_a"], calib["theta_c"], dt)
     n_fp = sum(1 for v in plain_det.values() if v is not None)
     out["false_positive"] = {
         "n_with_obs": len(plain_samples),
