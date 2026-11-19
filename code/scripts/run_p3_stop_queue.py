@@ -303,10 +303,14 @@ def main() -> int:
 
     (outdir / "p3_stop_queue.json").write_text(
         json.dumps(res, ensure_ascii=False, indent=1), encoding="utf-8")
+    # 保存车辆 ID：T_L（本地可观测时刻）必须按「同一辆车」跨臂配对计算
     np.savez_compressed(outdir / "arms.npz",
                         plain_pos=plain["pos"], plain_spd=plain["spd"],
+                        plain_ids=np.array(plain["ids"], dtype="U12"),
                         stop_pos=stop["pos"], stop_spd=stop["spd"],
-                        event_t0=t0, step_s=step)
+                        stop_ids=np.array(stop["ids"], dtype="U12"),
+                        event_t0=t0, step_s=step,
+                        react_s=float(args.react), headway=float(args.headway))
     print(f"\nwritten: {outdir}")
     return 0
 
