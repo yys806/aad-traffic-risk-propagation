@@ -41,6 +41,11 @@ T0 = 600.0
 BLOCK = 180.0
 DECIDE_POS = 2900.0     # in 边上距岔口 98.5 m 处定义为决策位置
 
+# 🔴 绕行相对主路的**自由流**代价。必须是**当前路网**实测值。
+# 单车道汇合时代价是 55.7 s（222.4 − 166.7）；
+# 改成两车道汇合后重新实测为 50.1 s（219.9 − 169.8）。用错会让每个 Y 偏 5.6 s。
+FREE_PENALTY = 50.1
+
 
 def build_rou(work: Path) -> int:
     period = 3600.0 / DEMAND
@@ -230,7 +235,7 @@ def main() -> int:
           f"{'✅' if 'mid' in r_main['roads_of_target'] else '❌'}")
     if a_main and a_det:
         print(f"  T主路 = {a_main - t_i:.1f} s, T绕行 = {a_det - t_i:.1f} s, "
-              f"Y = {a_main - a_det + 55.7:.1f} s")
+              f"Y = {a_main - a_det + FREE_PENALTY:.1f} s")
 
     (OUT / "module3.json").write_text(json.dumps(
         {"target": target, "decide_t": t_i, "decide_state": [pos_i, spd_i],
