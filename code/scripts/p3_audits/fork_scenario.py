@@ -53,16 +53,16 @@ def build_net(tier_s: float, work: Path) -> Path:
         <edge id="mid" from="n3"  to="n49" numLanes="1" speed="{V_LIM}" priority="2"/>
         <edge id="bn"  from="n49" to="n51" numLanes="1" speed="{V_LIM}" priority="2"/>
         <edge id="out" from="n51" to="n7"  numLanes="1" speed="{V_LIM}" priority="2"/>
-        <edge id="tail" from="n7" to="n8"  numLanes="1" speed="{V_LIM}" priority="2"/>
+        <edge id="tail" from="n7" to="n8"  numLanes="2" speed="{V_LIM}" priority="2"/>
         <edge id="bypass" from="n3" to="n7" numLanes="1" speed="{V_LIM}" priority="1" length="{bypass_len:.1f}"/>
     </edges>"""
     conns = """<connections>
-        <connection from="in"  to="mid"/>
-        <connection from="in"  to="bypass"/>
-        <connection from="mid" to="bn"/>
-        <connection from="bn"  to="out"/>
-        <connection from="out" to="tail"/>
-        <connection from="bypass" to="tail"/>
+        <connection from="in"  fromLane="0" to="mid"    toLane="0"/>
+        <connection from="in"  fromLane="0" to="bypass" toLane="0"/>
+        <connection from="mid" fromLane="0" to="bn"     toLane="0"/>
+        <connection from="bn"  fromLane="0" to="out"    toLane="0"/>
+        <connection from="out" fromLane="0" to="tail"   toLane="0"/>
+        <connection from="bypass" fromLane="0" to="tail" toLane="1"/>
     </connections>"""
     work.mkdir(parents=True, exist_ok=True)
     (work / "n.nod.xml").write_text(nodes, encoding="utf-8")
