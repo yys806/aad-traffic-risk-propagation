@@ -48,31 +48,42 @@ FREE_DETOUR = 222.4    # 绕行全程自由流（实测，含汇合口 5.7 s）
 
 def one_run(net: Path, work: Path, demand: float, block_s: float, t0: float,
             decision_t: float, probe_route: str, seed: int) -> dict:
-    """背景全走主路；在 decision_t 于改道点插入一辆探测车，走指定路由。"""
+    """背景全走主路；在 decision_t 于改道点上游 100 m 插入一辆探测车，走指定路由。
+
+    🔴 文件名只算一次（stem），路由文件、配置、行程记录三处共用，杜绝改名漏改引用。
+    """
+    stem = f"{probe_route}_d{int(demand)}_t{int(decision_t)}_s{seed % 10000}"
+    rou_file = f"r_{stem}.rou.xml"
+    cfg_file = f"run_{stem}.sumocfg"
+    trip_file = f"trip_{stem}.xml"
+
     period = 3600.0 / demand
     t_end = t0 + block_s + T_END_PAD
+    probe_rid = "pmain" if probe_route == "main" else "pbyp"
     vt = ('<vType id="c" carFollowModel="Krauss" accel="2.6" decel="4.5" sigma="0"'
           ' tau="1.584" length="5" minGap="2.5" maxSpeed="30" speedFactor="1"/>')
     rou = (f'<routes>{vt}'
            f'<route id="main" edges="in mid bn out tail"/>'
-           f'<route id="byp"  edges="in bypass tail"/>'
+           f'<route id="byp" edges="in bypass tail"/>'
            f'<route id="pmain" edges="in mid bn out tail"/>'
            f'<route id="pbyp" edges="in bypass tail"/>'
            f'<flow id="f" type="c" route="main" begin="0" end="{t_end:.0f}"'
            f' period="{period:.3f}" departSpeed="max" departLane="0"/>'
-           f'<vehicle id="probe" type="c" route="{("pmain") if probe_route=="main" else ("pbyp")}"'
-           f' depart="{decision_t:.1f}" departPos="2900" departSpeed="max" departLane="0"/></routes>')
-    (work / f"r_{probe_route}_{int(decision_t)}.rou.xml").write_text(rou, encoding="utf-8")
-    cfg = work / f"run_{probe_route}_{int(decision_t)}.sumocfg"
+           f'<vehicle id="probe" type="c" route="{probe_rid}"'
+           f' depart="{decision_t:.1f}" departPos="2900" departSpeed="max" departLane="0"/>'
+           f'</routes>')
+    (work / rou_file).write_text(rou, encoding="utf-8")
+
+    cfg = work / cfg_file
     cfg.write_text(
         f'<configuration><input><net-file value="net.net.xml"/>'
-        f'<route-files value="r_{probe_route}_{int(decision_t)}.rou.xml"/></input>'
+        f'<route-files value="{rou_file}"/></input>'
         f'<time><begin value="0"/><end value="{t_end:.0f}"/></time>'
         f'<processing><step-length value="{STEP}"/></processing>'
         f'<random_number><seed value="{seed}"/></random_number>'
         f'<report><no-step-log value="true"/></report>'
-        f'<output><tripinfo-output value="{work / f"trip_{probe_route}_{int(decision_t)}.xml"}"/>'
-        f'</output></configuration>', encoding="utf-8")
+        f'<output><tripinfo-output value="{trip_file}"/></output></configuration>',
+        encoding="utf-8")
 
     traci = load_traci()
     traci.start([SUMO, "-c", str(cfg), "--no-step-log", "true",
@@ -91,18 +102,20 @@ def one_run(net: Path, work: Path, demand: float, block_s: float, t0: float,
     finally:
         traci.close()
 
-    # 从 tripinfo 读探测车的实际行程时间（比用 ID 消失时刻可靠）
+    # 从 tripinfo 读探测车实际行程与出发等待（departDelay 是判断「没按时进网」的关键）
     import xml.etree.ElementTree as ET
-    tp = work / f"trip_{probe_route}_{int(decision_t)}.xml"
-    travelled = None
+    travelled = depart_delay = None
+    tp = work / trip_file
     if tp.exists():
         for tri in ET.parse(tp).getroot().iter("tripinfo"):
             if tri.get("id") == "probe":
                 travelled = round(float(tri.get("duration")), 1)
+                depart_delay = round(float(tri.get("departDelay", "nan")), 1)
                 break
     age = None if decision_t < t0 else round(decision_t - t0, 1)
     return {"decision_t": decision_t, "probe_route": probe_route, "age_s": age,
-            "travelled_s": travelled}
+            "travelled_s": travelled, "depart_delay_s": depart_delay}
+
 
 
 def main() -> int:
