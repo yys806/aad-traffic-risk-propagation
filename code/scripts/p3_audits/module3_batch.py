@@ -54,16 +54,22 @@ BLOCK = 180.0
 DECIDE_POS = 2900.0
 ENROLL_LO, ENROLL_HI = 600.0, 780.0
 FORK = 3000.0
-FREE_MAIN = 169.8
-FREE_DET = 219.9
-FREE_PENALTY = FREE_DET - FREE_MAIN      # 50.1，必须用当前路网实测值
+# 🔴 这两个数只在 speedDev="0"（所有车恒 30 m/s）时是常数。
+# 实测：主路 5101.6 m / 170.10 s；绕行 6603.0 m / 220.10 s；基准差 50.00 s。
+# 主分析（speedDev 默认 0.1）里每辆车期望车速不同，**不能用常数**，
+# 必须由 freeflow_baseline.py 逐车实测 T0。
+FREE_MAIN = 170.1
+FREE_DET = 220.1
+FREE_PENALTY = round(FREE_DET - FREE_MAIN, 1)   # 50.0
 
 
-def build_rou(work: Path) -> int:
+def build_rou(work: Path, speeddev0: bool = False) -> int:
     period = 3600.0 / DEMAND
     n = int(T_END / period)
+    dev = ' speedDev="0"' if speeddev0 else ''
     vt = ('<vType id="c" carFollowModel="Krauss" accel="2.6" decel="4.5" sigma="0"'
-          ' tau="1.584" length="5" minGap="2.5" maxSpeed="30" speedFactor="1" lcKeepRight="0"/>')
+          f' tau="1.584" length="5" minGap="2.5" maxSpeed="30" speedFactor="1"{dev}'
+          ' lcKeepRight="0"/>')
     vehs = "".join(
         f'<vehicle id="V{i:04d}" type="c" route="main" depart="{i*period:.3f}"'
         f' departSpeed="max" departLane="0"/>' for i in range(n))
@@ -183,12 +189,16 @@ def run_one(work: Path, tag: str, target: str | None, mode: str,
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--n", type=int, default=8, help="验收批车辆数（0=全跑 88 辆）")
+    ap.add_argument("--speeddev0", action="store_true",
+                    help="敏感性分析：speedDev=0，所有车期望车速恒为 30 m/s")
     args = ap.parse_args()
 
     OUT.mkdir(parents=True, exist_ok=True)
     build_net(50.0, OUT)
-    n_plan = build_rou(OUT)
-    print(f"计划车辆 {n_plan}", flush=True)
+    n_plan = build_rou(OUT, args.speeddev0)
+    print(f"计划车辆 {n_plan}；speedDev={'0（敏感性）' if args.speeddev0 else '默认 0.1（主分析）'}",
+          flush=True)
+    print(f"自由流：主 {FREE_MAIN} s / 绕 {FREE_DET} s，基准差 {FREE_PENALTY} s", flush=True)
 
     print("\n[1/4] 跑基线…", flush=True)
     base = run_one(OUT, "baseline", None, "baseline")
