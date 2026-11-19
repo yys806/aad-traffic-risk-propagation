@@ -34,10 +34,11 @@ def main() -> int:
     react, hw = 1.0, 130.0
     code = f"""
 import sys, json, numpy as np
+from pathlib import Path
 sys.path.insert(0, r"{Path(__file__).resolve().parent}")
 sys.path.insert(0, r"{Path(__file__).resolve().parents[1]}")
 import run_p3_stop_queue as sq
-r = sq.run(r"{OUT/'_scratch'}", "audit_stop", 0.0, True, {hw}, 20261120, {react})
+r = sq.run(Path(r"{OUT/'_scratch'}"), "audit_stop", 0.0, True, {hw}, 20261120, {react})
 np.savez_compressed(r"{OUT/'traj.npz'}", pos=r["pos"], spd=r["spd"],
                     ids=np.array(r["ids"], dtype=object),
                     event_t0=r["event_t0"], step=r["step_s"])
