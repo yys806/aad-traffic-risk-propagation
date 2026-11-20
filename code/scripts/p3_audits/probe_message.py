@@ -61,6 +61,7 @@ MSG_DIST = 300.0
 WRONG_NEAR = 100.0
 WRONG_FAR = 600.0
 GAP_INIT = 400.0
+MSG_DELIVER_T = 3.35     # 空路臂的报文投递时刻（与有前车臂 3.35 s 收包对齐）
 
 ARMS = {
     "a":         {"R": float("inf"), "msg": None,      "pre": True},
@@ -167,8 +168,11 @@ def run(arm: str, seed: int = 20261120) -> dict:
                 cue_t = round(t, 2)
 
             # ---- 报文：净距首次 ≤ MSG_DIST 时投递一次性快照 ----
-            if (msg_kind is not None) and (not snapped) and gap != float("inf") \
-                    and gap <= MSG_DIST:
+            # 空路臂没有前车（gap=inf），按固定时刻投递，否则永远送不到，
+            # 该臂就变成了空转（GPT 第七十五轮与 Claude 均指出这一缺陷）。
+            if (msg_kind is not None) and (not snapped) and (
+                    (gap != float("inf") and gap <= MSG_DIST)
+                    or (gap == float("inf") and t >= MSG_DELIVER_T)):
                 snapped = True
                 msg_t = round(t, 2)
                 if msg_kind == "true":
@@ -334,8 +338,12 @@ def main() -> int:
     for k in ("nopre", "nopre_msg"):
         if k in res:
             r = res[k]
-            chk(f"9_{k}_零制动", r["brake_t"] is None and abs(r["max_dec_actual"]) < 0.01,
-                f"brake={r['brake_t']} maxDec={r['max_dec_actual']} vEnd={r['v_end']}")
+            # 空路臂必须真的收到过报文，否则这一臂是空转（GPT75 与 Claude 均指出）
+            delivered = True if k == "nopre" else (r["msg_t"] is not None)
+            chk(f"9_{k}_零制动", delivered and r["brake_t"] is None
+                and abs(r["max_dec_actual"]) < 0.01,
+                f"msg_t={r['msg_t']} brake={r['brake_t']} maxDec={r['max_dec_actual']} "
+                f"vEnd={r['v_end']}")
 
     print("\n=== 判据 ===")
     for k, v in checks.items():
