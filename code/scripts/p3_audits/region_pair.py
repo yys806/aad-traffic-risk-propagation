@@ -68,7 +68,7 @@ def tau_pool() -> np.ndarray:
     return tau[m]
 
 
-def build_arm(work: Path, seed: int, hetero: bool, n: int) -> Path:
+def build_arm(work: Path, seed: int, hetero: bool, n: int, react: float) -> Path:
     period = 3600.0 / DEMAND
     rng = np.random.default_rng(seed)
     if hetero:
@@ -84,7 +84,7 @@ def build_arm(work: Path, seed: int, hetero: bool, n: int) -> Path:
         types.append(
             f'<vType id="t{key}" carFollowModel="Krauss" accel="2.6" decel="4.5"'
             f' sigma="0" tau="{key}" length="5" minGap="2.5" maxSpeed="{V_LIM}"'
-            f' speedFactor="1" lcKeepRight="0"/>')
+            f' speedFactor="1" lcKeepRight="0" actionStepLength="{react}"/>')
     vehs = [f'<vehicle id="V{i:04d}" type="t{round(float(taus[i]), 3)}" route="main"'
             f' depart="{i*period:.3f}" departSpeed="max" departLane="0"/>'
             for i in range(n)]
@@ -106,13 +106,13 @@ def build_cfg(work: Path, seed: int) -> Path:
     return cfg
 
 
-def run_arm(seed: int, hetero: bool, brake: bool) -> dict:
-    tag = f"{'D' if hetero else 'H'}_{'brake' if brake else 'nobrake'}"
+def run_arm(seed: int, hetero: bool, brake: bool, react: float) -> dict:
+    tag = f"{'D' if hetero else 'H'}_{'brake' if brake else 'nobrake'}_r{react}"
     work = OUT / f"{seed}_{tag}"
     work.mkdir(parents=True, exist_ok=True)
     build_net(50.0, work)
     n = int(T_END / (3600.0 / DEMAND)) + 50
-    build_arm(work, seed, hetero, n)
+    build_arm(work, seed, hetero, n, react)
     cfg = build_cfg(work, seed)
 
     traci = load_traci()
@@ -208,23 +208,26 @@ def run_arm(seed: int, hetero: bool, brake: bool) -> dict:
                             drac_int_all += drac * STEP
                             if drac > peak_all:
                                 peak_all, peak_all_at = drac, t
-                            # 合格帧（可比性分析，NGSIM 口径）
+                            # 【Bug1 修复 2026-11-21】事件计数移出 |a|<=ACC_MAX 筛选：
+                            # 原实现只在「后车几乎没刹车」的帧里数「需要猛刹车」的事件，
+                            # 逻辑自相矛盾，导致事件数恒为 0。
+                            if drac >= DRAC_THR and v_ego != src_id:
+                                r = active.get(v_ego)
+                                if r is None:
+                                    active[v_ego] = {"on_t": t, "peak": drac,
+                                                     "gap": gap, "c": cc,
+                                                     "miss": 0, "lead": v_lead}
+                                else:
+                                    r["peak"] = max(r["peak"], drac)
+                                    r["miss"] = 0
+                            elif v_ego in active:
+                                active[v_ego]["miss"] += 1
+                            # 合格帧（仅用于与 NGSIM 的可比性分析，不再承担事件计数）
                             if s_ego >= V_MIN and abs(a_ego) <= ACC_MAX:
                                 veh_km_qual += s_ego * STEP / 1000.0
                                 drac_int_qual += drac * STEP
                                 if drac > peak_qual:
                                     peak_qual, peak_qual_at = drac, t
-                                if drac >= DRAC_THR and v_ego != src_id:
-                                    r = active.get(v_ego)
-                                    if r is None:
-                                        active[v_ego] = {"on_t": t, "peak": drac,
-                                                         "gap": gap, "c": cc,
-                                                         "miss": 0, "lead": v_lead}
-                                    else:
-                                        r["peak"] = max(r["peak"], drac)
-                                        r["miss"] = 0
-                                elif v_ego in active:
-                                    active[v_ego]["miss"] += 1
             for v_ego in list(active):
                 if active[v_ego]["miss"] > MERGE_FRAMES:
                     r = active.pop(v_ego)
@@ -266,14 +269,18 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--seeds", nargs="+", type=int, required=True)
     ap.add_argument("--tag", default="pilot")
+    ap.add_argument("--react", type=float, default=0.8,
+                    help="司机的决策更新间隔（秒），等价于反应延迟。"
+                         "0.1=零延迟（旧设置）、0.8=文献区间下端、1.6=95分位")
     args = ap.parse_args()
     OUT.mkdir(parents=True, exist_ok=True)
+    print(f"=== 反应延迟 = {args.react} s ===", flush=True)
     all_res = []
     for s in args.seeds:
         print(f"=== 种子 {s} ===", flush=True)
         for hetero in (False, True):
             for brake in (True, False):
-                all_res.append(run_arm(s, hetero, brake))
+                all_res.append(run_arm(s, hetero, brake, args.react))
 
     print("\n=== 2×2 汇总（以种子为配对单位）===")
     print(f"{'种子':>10}{'臂':<12}{'全帧峰值':>10}{'合格帧峰值':>12}"
@@ -290,10 +297,11 @@ def main() -> int:
           f"{'均质ΔDRAC/公里':>16}{'异质ΔDRAC/公里':>16}")
     deltas = []
     for s in args.seeds:
-        hb = next(r for r in all_res if r["seed"] == s and r["arm"] == "H_brake")
-        hn = next(r for r in all_res if r["seed"] == s and r["arm"] == "H_nobrake")
-        db = next(r for r in all_res if r["seed"] == s and r["arm"] == "D_brake")
-        dn = next(r for r in all_res if r["seed"] == s and r["arm"] == "D_nobrake")
+        rtag = f"_r{args.react}"
+        hb = next(r for r in all_res if r["seed"] == s and r["arm"] == f"H_brake{rtag}")
+        hn = next(r for r in all_res if r["seed"] == s and r["arm"] == f"H_nobrake{rtag}")
+        db = next(r for r in all_res if r["seed"] == s and r["arm"] == f"D_brake{rtag}")
+        dn = next(r for r in all_res if r["seed"] == s and r["arm"] == f"D_nobrake{rtag}")
         d = {"seed": s,
              "dh_peak": round(hb["peak_all"] - hn["peak_all"], 4),
              "dd_peak": round(db["peak_all"] - dn["peak_all"], 4),
