@@ -80,7 +80,8 @@ def run(react: float) -> dict:
     traci = load_traci()
     traci.start([SUMO, "-c", str(config), "--no-step-log", "true",
                  "--collision.action", "warn", "--time-to-teleport", "-1",
-                 "--collision.mingap-factor", "0"])
+                 "--collision.mingap-factor", "0",
+                 "--step-method.ballistic", "true"])
     brake = False
     n_pulse = 0
     peak = 0.0
@@ -118,7 +119,8 @@ def run(react: float) -> dict:
             vf = traci.vehicle.getSpeed("foll")
             xl = traci.vehicle.getLanePosition("lead")
             vl = traci.vehicle.getSpeed("lead")
-            gap = (xl - xf) - VEH_LEN
+            # 净距 = 前车车头位置 - 后车车头位置 - 前车车长（Claude 指出原实现减了后车车长）
+            gap = (xl - xf) - traci.vehicle.getLength("lead")
             min_gap = min(min_gap, gap)
             cc = vf - vl
             if gap > 0 and cc > 0:
