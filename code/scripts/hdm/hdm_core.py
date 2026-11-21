@@ -231,5 +231,6 @@ def run(N=100, hw=45.0, n_a=1, Tprime=0.65, seed=0,
 
     return dict(v_eq=v_eq, s_eq=s_eq, max_drac=max_drac, min_gap=min_gap,
                 event=(drac_max_run >= 0.2), arrival=first_arrival,
+                hist_x=hist_x if record else None,
                 hist_v=hist_v if record else None, hist_a=hist_a if record else None,
                 preclip_min=preclip_min, preclip_steps=preclip_steps, preclip_max_cars=preclip_max_cars)
