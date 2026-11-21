@@ -59,21 +59,37 @@ def equilibrium_speed(hw):
 # ---------------- 车队仿真 ----------------
 def run(N=100, hw=45.0, n_a=1, Tprime=0.65, seed=0,
         v_target=None, ramp=6.0, warm=40.0, observe=300.0, noise=True,
-        bmax=None, record=True):
+        bmax=None, record=True, dt=None, v_init=None, s_init=None):
     """返回 dict：每车 max DRAC、最小净距、事件标记、到达时刻等"""
     rng = np.random.default_rng(seed)
-    dt = P.dt
+    dt = float(P.dt if dt is None else dt)
     hw = float(hw)
     s_eq = hw - P.L
     v_eq = equilibrium_speed(hw)
     bt = beta(n_a)
     s0r, Tr = P.s0 / bt, P.T / bt          # 式(20)
 
-    # 初始：平衡态，位置从队尾往前排
+    # 初始：默认平衡态；可传 v_init / s_init 覆盖（用于非平衡自检）
     x = -np.arange(N) * hw                 # x[0] 最前
     v = np.full(N, v_eq)
+    if v_init is not None:
+        v = np.asarray(v_init, dtype=float).copy()
+    if s_init is not None:                 # s_init[i] = 第 i 辆与其前车的净距
+        x = np.zeros(N)
+        for i in range(1, N):
+            x[i] = x[i - 1] - (s_init[i] + P.L)
     acc = np.zeros(N)
-    bmax = P.bmax if bmax is None else bmax
+    bmax_arr = None
+    if isinstance(bmax, str) and bmax == 'markkula':
+        # Markkula 2016 Fig.10：乘用车最大减速度 n=31, μ=-6.68, σ=1.69（负号为方向），截断 [3.5, 9.5]
+        samp = rng.normal(6.68, 1.69, N)
+        bmax_arr = np.clip(np.abs(samp), 3.5, 9.5)
+    elif bmax is None:
+        bmax_arr = np.full(N, float(P.bmax))
+    elif np.isscalar(bmax):
+        bmax_arr = np.full(N, float(bmax))
+    else:
+        bmax_arr = np.asarray(bmax, dtype=float)
 
     # OU 状态
     ws = rng.standard_normal(N)
@@ -93,6 +109,9 @@ def run(N=100, hw=45.0, n_a=1, Tprime=0.65, seed=0,
     hist_a = np.zeros((total + 1, N))
     hist_x[0], hist_v[0] = x, v
 
+    preclip_min = 0.0
+    preclip_steps = 0
+    preclip_max_cars = 0
     max_drac = np.zeros(N)
     min_gap = np.full(N, np.inf)
     drac_run = np.zeros(N)        # 连续超阈计时
@@ -161,8 +180,16 @@ def run(N=100, hw=45.0, n_a=1, Tprime=0.65, seed=0,
             for al in range(2, n_a + 1):
                 a_i += idm_acc(v_pr, s_list[al - 1], dv_list[al - 1], s0r, Tr) - P.a * (1.0 - (max(v_pr, 0.0) / P.v0) ** 4)
             new_acc[i] = a_i
+        # 记录裁剪前的制动请求（GPT 0.3.6 要求：判断某个 b_max 档是否真的会改变轨迹）
+        raw_min = float(np.min(new_acc[1:])) if N > 1 else 0.0
+        if raw_min < preclip_min:
+            preclip_min = raw_min
+        _ex = np.sum(new_acc[1:] < -bmax_arr[1:])
+        if _ex > 0:
+            preclip_steps += 1
+            preclip_max_cars = max(preclip_max_cars, int(_ex))
         # 限幅
-        new_acc = np.clip(new_acc, -bmax, P.a)
+        new_acc = np.minimum(np.maximum(new_acc, -bmax_arr), P.a)
         # ballistic 更新
         v_new = np.maximum(v + new_acc * dt, 0.0)
         x_new = x + 0.5 * (v + v_new) * dt
@@ -192,4 +219,5 @@ def run(N=100, hw=45.0, n_a=1, Tprime=0.65, seed=0,
 
     return dict(v_eq=v_eq, s_eq=s_eq, max_drac=max_drac, min_gap=min_gap,
                 event=(drac_max_run >= 0.2), arrival=first_arrival,
-                hist_v=hist_v if record else None)
+                hist_v=hist_v if record else None, hist_a=hist_a if record else None,
+                preclip_min=preclip_min, preclip_steps=preclip_steps, preclip_max_cars=preclip_max_cars)
