@@ -172,6 +172,9 @@ def run(N=100, hw=45.0, n_a=1, Tprime=0.65, seed=0,
                 s_est, dv_est = s_list[0], dv_list[0]
             # 时间前瞻（式9-11）：未来间距 = 当前间距 - 反应时间 × 接近速度
             s_pr = s_est - Tp[i] * dv_est
+            # 物理下界：司机预判的未来间距不可能为负；趋于零即"必然追上"，此时按最大制动处理
+            # 下界只取 0.1 m：未来间距不能为负；趋零即「必然追上」，由交互上限接住，不引入自由参数
+            s_pr = max(s_pr, 0.1)
             v_pr = vi + Tp[i] * ai
             dv_pr = dv_est
             # 多车前瞻累加（式13）：第一项用带误差的，其余用原始累计距
@@ -179,7 +182,12 @@ def run(N=100, hw=45.0, n_a=1, Tprime=0.65, seed=0,
             a_i += idm_acc(v_pr, max(s_pr, 1e-3), dv_pr, s0r, Tr) - P.a * (1.0 - (max(v_pr, 0.0) / P.v0) ** 4)
             for al in range(2, n_a + 1):
                 a_i += idm_acc(v_pr, s_list[al - 1], dv_list[al - 1], s0r, Tr) - P.a * (1.0 - (max(v_pr, 0.0) / P.v0) ** 4)
-            new_acc[i] = a_i
+            # 交互项物理上限：司机要求的减速度不会超过车辆能做到的上限
+            afree_i = P.a * (1.0 - (max(v_pr, 0.0) / P.v0) ** 4)
+            aint_i = a_i - afree_i
+            # 总加速度 a = afree + aint 不低于 -b_max  =>  aint 不低于 -(b_max + afree)
+            aint_i = max(aint_i, -(bmax_arr[i] + afree_i))
+            new_acc[i] = afree_i + aint_i
         # 记录裁剪前的制动请求（GPT 0.3.6 要求：判断某个 b_max 档是否真的会改变轨迹）
         raw_min = float(np.min(new_acc[1:])) if N > 1 else 0.0
         if raw_min < preclip_min:
