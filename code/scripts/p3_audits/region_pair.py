@@ -240,6 +240,16 @@ def run_arm(seed: int, hetero: bool, brake: bool, react: float) -> dict:
         events.append({"on_t": r["on_t"], "peak": round(r["peak"], 4),
                        "gap": round(r["gap"], 3), "c": round(r["c"], 3)})
 
+    # 【Bug2 修复 2026-11-21】分母必须外生：用「按计划需求应产生的车·公里」而非实际跑了多少。
+    # 原实现用 veh_km_all 当分母，刹车组因拥堵从 1324 塌到 252（缩水 5 倍），
+    # 会把「车堵住了、走不动」误读成「风险暴涨」。
+    # 外生分母 = 需求率 × 观测窗时长 × 路网长度（与干预无关）
+    # 需求 1600 veh/h、观测窗 OBS_H 秒、每车平均行驶距离按自由流 v*OBS_H 估
+    n_plan = DEMAND * OBS_H / 3600.0            # 计划进入的车辆数
+    km_plan = n_plan * (21.4 * OBS_H / 1000.0)  # 每车按自由流跑的公里数
+    # 与实测暴露的比例（用于判断塌缩程度）
+    collapse = (veh_km_all / km_plan) if km_plan > 0 else None
+
     res = {"seed": seed, "arm": tag, "hetero": hetero, "brake": brake,
            "src_id": src_id, "t0": t0, "src_pos": src_pos, "src_v": src_v,
            "triggered": triggered,
@@ -251,6 +261,11 @@ def run_arm(seed: int, hetero: bool, brake: bool, react: float) -> dict:
            "veh_km_all": round(veh_km_all, 3), "veh_km_qual": round(veh_km_qual, 3),
            "drac_int_all": round(drac_int_all, 3),
            "drac_int_qual": round(drac_int_qual, 3),
+           # 主口径：外生分母（不受干预影响）
+           "km_plan": round(km_plan, 3),
+           "drac_per_km_plan": (round(drac_int_all / km_plan, 5)
+                                if km_plan else None),
+           # 诊断口径：内生分母，仅用于暴露塌缩检查，不作主结果
            "drac_per_km_all": (round(drac_int_all / veh_km_all, 5)
                                if veh_km_all else None),
            "drac_per_km_qual": (round(drac_int_qual / veh_km_qual, 5)
@@ -283,18 +298,19 @@ def main() -> int:
                 all_res.append(run_arm(s, hetero, brake, args.react))
 
     print("\n=== 2×2 汇总（以种子为配对单位）===")
-    print(f"{'种子':>10}{'臂':<12}{'全帧峰值':>10}{'合格帧峰值':>12}"
-          f"{'事件':>6}{'最小净距':>10}{'碰撞':>6}{'DRAC/公里':>12}")
+    print(f"{'种子':>10}{'臂':<14}{'全帧峰值':>10}{'合格帧峰值':>12}"
+          f"{'事件':>6}{'最小净距':>10}{'DRAC/计划公里':>14}{'暴露比':>9}")
     for r in all_res:
-        print(f"{r['seed']:>10}{r['arm']:<12}{r['peak_all']:>10.4f}"
+        print(f"{r['seed']:>10}{r['arm']:<14}{r['peak_all']:>10.4f}"
               f"{r['peak_qual']:>12.4f}{r['n_events']:>6}"
-              f"{str(r['min_gap']):>10}{r['collisions']:>6}"
-              f"{str(r['drac_per_km_all']):>12}")
+              f"{str(r['min_gap']):>10}"
+              f"{str(r['drac_per_km_plan']):>14}"
+              f"{str(round(r['veh_km_all']/r['km_plan'],3)) if r['km_plan'] else '-':>9}")
 
     # 配对效应：ΔRisk = Risk(brake) − Risk(nobrake)
     print("\n=== 风险增量 ΔRisk（brake − nobrake，按种子配对）===")
     print(f"{'种子':>10}{'均质Δ峰值':>12}{'异质Δ峰值':>12}"
-          f"{'均质ΔDRAC/公里':>16}{'异质ΔDRAC/公里':>16}")
+          f"{'均质Δ(外生)':>16}{'异质Δ(外生)':>16}")
     deltas = []
     for s in args.seeds:
         rtag = f"_r{args.react}"
@@ -305,10 +321,10 @@ def main() -> int:
         d = {"seed": s,
              "dh_peak": round(hb["peak_all"] - hn["peak_all"], 4),
              "dd_peak": round(db["peak_all"] - dn["peak_all"], 4),
-             "dh_drac": round((hb["drac_per_km_all"] or 0)
-                              - (hn["drac_per_km_all"] or 0), 5),
-             "dd_drac": round((db["drac_per_km_all"] or 0)
-                              - (dn["drac_per_km_all"] or 0), 5)}
+             "dh_drac": round((hb["drac_per_km_plan"] or 0)
+                              - (hn["drac_per_km_plan"] or 0), 5),
+             "dd_drac": round((db["drac_per_km_plan"] or 0)
+                              - (dn["drac_per_km_plan"] or 0), 5)}
         deltas.append(d)
         print(f"{s:>10}{d['dh_peak']:>12.4f}{d['dd_peak']:>12.4f}"
               f"{d['dh_drac']:>16}{d['dd_drac']:>16}")
