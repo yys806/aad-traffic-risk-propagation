@@ -67,7 +67,9 @@ def run(N=100, hw=45.0, n_a=1, Tprime=0.65, seed=0,
     s_eq = hw - P.L
     v_eq = equilibrium_speed(hw)
     bt = beta(n_a)
-    s0r, Tr = P.s0 / bt, P.T / bt          # 式(20)
+    # 式(20) 重标定：由平衡条件 sqrt(beta)*(s0r + v*Tr) = s0 + v*T 得 s0r=s0/sqrt(beta)、Tr=T/sqrt(beta)
+    sb = np.sqrt(bt)
+    s0r, Tr = P.s0 / sb, P.T / sb
 
     # 初始：默认平衡态；可传 v_init / s_init 覆盖（用于非平衡自检）
     x = -np.arange(N) * hw                 # x[0] 最前
@@ -178,13 +180,15 @@ def run(N=100, hw=45.0, n_a=1, Tprime=0.65, seed=0,
             v_pr = vi + Tp[i] * ai
             dv_pr = dv_est
             # 多车前瞻累加（式13）：第一项用带误差的，其余用原始累计距
-            a_i = P.a * (1.0 - (max(v_pr, 0.0) / P.v0) ** 4)
-            a_i += idm_acc(v_pr, max(s_pr, 1e-3), dv_pr, s0r, Tr) - P.a * (1.0 - (max(v_pr, 0.0) / P.v0) ** 4)
-            for al in range(2, n_a + 1):
-                a_i += idm_acc(v_pr, s_list[al - 1], dv_list[al - 1], s0r, Tr) - P.a * (1.0 - (max(v_pr, 0.0) / P.v0) ** 4)
-            # 交互项物理上限：司机要求的减速度不会超过车辆能做到的上限
+            # 式(12)(13)：a = afree + Σ_α aint(α)，afree 只加一次
+            # 重标定按"本车实际能看到几辆前车"逐车计算（队首附近不足 n_a 辆）
+            nb = min(n_a, len(s_list))
+            bt_i = beta(nb); sb_i = np.sqrt(bt_i)
+            s0r_i, Tr_i = P.s0 / sb_i, P.T / sb_i
             afree_i = P.a * (1.0 - (max(v_pr, 0.0) / P.v0) ** 4)
-            aint_i = a_i - afree_i
+            aint_i = idm_acc(v_pr, max(s_pr, 1e-3), dv_pr, s0r_i, Tr_i) - afree_i
+            for al in range(1, len(s_list)):
+                aint_i += idm_acc(v_pr, s_list[al], dv_list[al], s0r_i, Tr_i) - afree_i
             # 总加速度 a = afree + aint 不低于 -b_max  =>  aint 不低于 -(b_max + afree)
             aint_i = max(aint_i, -(bmax_arr[i] + afree_i))
             new_acc[i] = afree_i + aint_i
