@@ -183,14 +183,19 @@ class Metrics:
 # ---------------- 车队仿真（只调用上面三件） ----------------
 def run(N=100, hw=45.0, n_a=1, Tprime=0.65, seed=0,
         v_target=None, ramp=6.0, warm=40.0, observe=300.0, noise=True,
-        bmax=None, record=True, dt=None, v_init=None, s_init=None):
+        bmax=None, record=True, dt=None, v_init=None, s_init=None,
+        msg_state=None, drac_log=False, x0=0.0):
+    """msg_state: hdm_msg.MsgState 实例或 None。None 时必须是**零副作用**（见 verify_msg_noop.py）。
+
+    drac_log=True 时额外返回逐帧 DRAC 数组（供事件切段用）。
+    """
     rng = np.random.default_rng(seed)
     dt = float(P.dt if dt is None else dt)
     hw = float(hw)
     s_eq = hw - P.L
     v_eq = equilibrium_speed(hw)
 
-    x = -np.arange(N) * hw
+    x = x0 - np.arange(N) * hw      # x0: 与 SUMO 侧同坐标系（0.5.0 用 5000）
     v = np.full(N, v_eq)
     if v_init is not None:
         v = np.asarray(v_init, dtype=float).copy()
@@ -228,6 +233,7 @@ def run(N=100, hw=45.0, n_a=1, Tprime=0.65, seed=0,
     preclip_steps = 0
     preclip_max_cars = 0
     M = Metrics(N, v_eq, dt)
+    drac_buf = np.zeros((total + 1, N)) if drac_log else None
 
     e = np.exp(-dt / P.taur)
     sq = np.sqrt(2.0 * dt / P.taur)
@@ -250,10 +256,26 @@ def run(N=100, hw=45.0, n_a=1, Tprime=0.65, seed=0,
 
         new_acc = np.minimum(np.maximum(new_acc, -bmax_arr), P.a)
         v_new = np.maximum(v + new_acc * dt, 0.0)
+        acc = new_acc
+        if msg_state is not None:
+            # 消息速度上限（柔和斜坡）。只改接收车，非接收车逐位不变。
+            v_new, modified = msg_state.apply(v_new, v, t, dt)
+            if modified.any():
+                # 只有被限速的车才用实际执行加速度回写，
+                # 否则前瞻项 v_pr = vi + T'*a 被污染（Gemini 0.5.0 评审第 4 条）；
+                # 未被限速的车保持 new_acc 原值，保证零副作用。
+                acc = new_acc.copy()
+                acc[modified] = (v_new[modified] - v[modified]) / dt
         x_new = x + 0.5 * (v + v_new) * dt
         v, x = v_new, x_new
-        acc = new_acc
         hist_x[k + 1], hist_v[k + 1], hist_a[k + 1] = x, v, acc
+
+        if drac_log and k >= steps_warm:
+            # 与 hist_*[k+1] 对齐：k 步末的状态写进索引 k+1
+            for i in range(1, N):
+                g = x[i - 1] - x[i] - P.L
+                dvv = v[i] - v[i - 1]
+                drac_buf[k + 1, i] = (dvv * dvv / (2.0 * g)) if (g > 0 and dvv > 0) else 0.0
 
         M.update(k, x, v, steps_warm)
 
@@ -263,4 +285,6 @@ def run(N=100, hw=45.0, n_a=1, Tprime=0.65, seed=0,
                hist_v=hist_v if record else None,
                hist_a=hist_a if record else None)
     out.update(M.as_dict())
+    if drac_log:
+        out["drac"] = drac_buf
     return out

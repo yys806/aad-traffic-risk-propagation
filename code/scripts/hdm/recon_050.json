@@ -1,0 +1,4783 @@
+{
+ "config": {
+  "N": 100,
+  "hw": 45.0,
+  "Tprime": 1.0,
+  "bmax": 9.0,
+  "warm": 40.0,
+  "ramp": 6.0,
+  "obs": 360.0,
+  "total": 400.0,
+  "dt": 0.05,
+  "x0": 5000.0,
+  "drac_th": 3.4,
+  "merge_gap": 0.3,
+  "zone": [
+   20,
+   99
+  ],
+  "target_acq": 0.5,
+  "act_dv": 0.5,
+  "act_dur": 0.2,
+  "min_lead": 2.0,
+  "firstwave_s": 30.0,
+  "arms": {
+   "C0": null,
+   "A0": null,
+   "A1": [
+    60
+   ],
+   "A2": [
+    20,
+    30,
+    40,
+    50,
+    60,
+    70,
+    80,
+    90
+   ],
+   "A3": [
+    20,
+    24,
+    28,
+    32,
+    36,
+    40,
+    44,
+    48,
+    52,
+    56,
+    60,
+    64,
+    68,
+    72,
+    76,
+    80,
+    84,
+    88,
+    92,
+    96
+   ]
+  }
+ },
+ "seeds": {
+  "0": {
+   "t_src": 40.25,
+   "t_deliver": 40.85,
+   "x_src": 5889.559975213891,
+   "v_src": 21.466084920756455,
+   "Tphys_20": 70.60000000000001,
+   "Tphys_60": 130.75,
+   "Tphys_99": 189.45000000000002,
+   "Tphys_20_sens01": 70.3,
+   "arms": {
+    "C0": {
+     "episodes_total": 0,
+     "episodes_pre": 0,
+     "episodes_post": 0,
+     "jam_exposure_car_sec": 0.0,
+     "episodes_per_100_car_sec": null,
+     "first_wave_self_anchored": 0,
+     "last_event_time": null,
+     "split": {
+      "all": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "recv_A3": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "nonrecv_A3": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "recv_A2": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "nonrecv_A2": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 0,
+     "episodes_highhalf": 0,
+     "veh_hit": 0,
+     "peak": 0.04063815053009112,
+     "min_gap": 28.085147460782537,
+     "delay": 107.20235523898539,
+     "drac_car_seconds": 0.0,
+     "first_wave_events": 0,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0
+    },
+    "A0": {
+     "episodes_total": 243,
+     "episodes_pre": 0,
+     "episodes_post": 243,
+     "jam_exposure_car_sec": 21127.600000000002,
+     "episodes_per_100_car_sec": 1.150154300535792,
+     "first_wave_self_anchored": 114,
+     "last_event_time": 397.45000000000005,
+     "split": {
+      "all": {
+       "events": 243,
+       "jam": 21127.600000000002,
+       "rate": 1.150154300535792
+      },
+      "recv_A3": {
+       "events": 60,
+       "jam": 5328.150000000001,
+       "rate": 1.12609442301737
+      },
+      "nonrecv_A3": {
+       "events": 183,
+       "jam": 15799.45,
+       "rate": 1.1582681675627948
+      },
+      "recv_A2": {
+       "events": 25,
+       "jam": 2165.8,
+       "rate": 1.1543078769969526
+      },
+      "nonrecv_A2": {
+       "events": 218,
+       "jam": 18961.8,
+       "rate": 1.1496798827115569
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 107,
+     "episodes_highhalf": 136,
+     "veh_hit": 78,
+     "peak": 7.366061202431695,
+     "min_gap": 2.4562273113906485,
+     "delay": 17803.004227747886,
+     "drac_car_seconds": 145.20000000000002,
+     "first_wave_events": 114,
+     "active_tail_segments": 2,
+     "open_tail_segments": 0,
+     "contact": 0
+    },
+    "A1": {
+     "episodes_total": 189,
+     "episodes_pre": 0,
+     "episodes_post": 189,
+     "jam_exposure_car_sec": 19224.4,
+     "episodes_per_100_car_sec": 0.9831256112024301,
+     "first_wave_self_anchored": 90,
+     "last_event_time": 396.75,
+     "split": {
+      "all": {
+       "events": 189,
+       "jam": 19224.4,
+       "rate": 0.9831256112024301
+      },
+      "recv": {
+       "events": 1,
+       "jam": 203.55,
+       "rate": 0.4912797838368951
+      },
+      "nonrecv": {
+       "events": 188,
+       "jam": 19020.850000000002,
+       "rate": 0.9883890572713626
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 107,
+     "episodes_highhalf": 82,
+     "veh_hit": 77,
+     "peak": 8.133495617056473,
+     "min_gap": 1.6806014145622612,
+     "delay": 17793.616608775104,
+     "drac_car_seconds": 120.55000000000001,
+     "first_wave_events": 72,
+     "active_tail_segments": 2,
+     "open_tail_segments": 0,
+     "contact": 0,
+     "msg": {
+      "receivers": [
+       60
+      ],
+      "t_action_cap": {
+       "60": 40.85
+      },
+      "cap_bind_frames": {
+       "60": 2900
+      },
+      "non_receiver_bound": 0,
+      "action": {
+       "60": {
+        "t_action": 41.45,
+        "lead": 89.3
+       }
+      }
+     },
+     "isolation_maxdiff": 0.0
+    },
+    "A2": {
+     "episodes_total": 104,
+     "episodes_pre": 0,
+     "episodes_post": 104,
+     "jam_exposure_car_sec": 17242.4,
+     "episodes_per_100_car_sec": 0.6031642926738736,
+     "first_wave_self_anchored": 81,
+     "last_event_time": 395.65000000000003,
+     "split": {
+      "all": {
+       "events": 104,
+       "jam": 17242.4,
+       "rate": 0.6031642926738736
+      },
+      "recv": {
+       "events": 6,
+       "jam": 1770.2,
+       "rate": 0.3389447520054231
+      },
+      "nonrecv": {
+       "events": 98,
+       "jam": 15472.2,
+       "rate": 0.6333940874600896
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 63,
+     "episodes_highhalf": 41,
+     "veh_hit": 67,
+     "peak": 7.931636142606796,
+     "min_gap": 1.7343315876887573,
+     "delay": 17767.21397326822,
+     "drac_car_seconds": 68.25,
+     "first_wave_events": 9,
+     "active_tail_segments": 2,
+     "open_tail_segments": 0,
+     "contact": 0,
+     "msg": {
+      "receivers": [
+       20,
+       30,
+       40,
+       50,
+       60,
+       70,
+       80,
+       90
+      ],
+      "t_action_cap": {
+       "20": 40.85,
+       "30": 40.85,
+       "40": 40.85,
+       "50": 40.85,
+       "60": 40.85,
+       "70": 40.85,
+       "80": 40.85,
+       "90": 40.85
+      },
+      "cap_bind_frames": {
+       "20": 783,
+       "30": 1371,
+       "40": 1779,
+       "50": 2257,
+       "60": 3075,
+       "70": 1758,
+       "80": 4040,
+       "90": 4362
+      },
+      "non_receiver_bound": 0,
+      "action": {
+       "20": {
+        "t_action": 41.400000000000006,
+        "lead": 29.200000000000003
+       },
+       "30": {
+        "t_action": 41.400000000000006,
+        "lead": 44.400000000000006
+       },
+       "40": {
+        "t_action": 41.300000000000004,
+        "lead": 59.75000000000001
+       },
+       "50": {
+        "t_action": 41.400000000000006,
+        "lead": 74.45
+       },
+       "60": {
+        "t_action": 41.45,
+        "lead": 89.3
+       },
+       "70": {
+        "t_action": 41.5,
+        "lead": 103.9
+       },
+       "80": {
+        "t_action": 41.35,
+        "lead": 118.80000000000001
+       },
+       "90": {
+        "t_action": 41.45,
+        "lead": 134.10000000000002
+       }
+      }
+     },
+     "isolation_maxdiff": 0.0
+    },
+    "A3": {
+     "episodes_total": 96,
+     "episodes_pre": 0,
+     "episodes_post": 96,
+     "jam_exposure_car_sec": 16585.95,
+     "episodes_per_100_car_sec": 0.5788031436245737,
+     "first_wave_self_anchored": 83,
+     "last_event_time": 395.35,
+     "split": {
+      "all": {
+       "events": 96,
+       "jam": 16585.95,
+       "rate": 0.5788031436245737
+      },
+      "recv": {
+       "events": 13,
+       "jam": 4184.55,
+       "rate": 0.3106666188718022
+      },
+      "nonrecv": {
+       "events": 83,
+       "jam": 12401.400000000001,
+       "rate": 0.6692792749205734
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 62,
+     "episodes_highhalf": 34,
+     "veh_hit": 63,
+     "peak": 6.971338735801052,
+     "min_gap": 2.4296414873051617,
+     "delay": 17758.5308508863,
+     "drac_car_seconds": 58.1,
+     "first_wave_events": 7,
+     "active_tail_segments": 2,
+     "open_tail_segments": 0,
+     "contact": 0,
+     "msg": {
+      "receivers": [
+       20,
+       24,
+       28,
+       32,
+       36,
+       40,
+       44,
+       48,
+       52,
+       56,
+       60,
+       64,
+       68,
+       72,
+       76,
+       80,
+       84,
+       88,
+       92,
+       96
+      ],
+      "t_action_cap": {
+       "20": 40.85,
+       "24": 40.85,
+       "28": 40.85,
+       "32": 40.85,
+       "36": 40.85,
+       "40": 40.85,
+       "44": 40.85,
+       "48": 40.85,
+       "52": 40.85,
+       "56": 40.85,
+       "60": 40.85,
+       "64": 40.85,
+       "68": 40.85,
+       "72": 40.85,
+       "76": 40.85,
+       "80": 40.85,
+       "84": 40.85,
+       "88": 40.85,
+       "92": 40.85,
+       "96": 40.85
+      },
+      "cap_bind_frames": {
+       "20": 783,
+       "24": 877,
+       "28": 1262,
+       "32": 1586,
+       "36": 994,
+       "40": 1942,
+       "44": 2111,
+       "48": 989,
+       "52": 2471,
+       "56": 2690,
+       "60": 3067,
+       "64": 1152,
+       "68": 3356,
+       "72": 996,
+       "76": 3737,
+       "80": 4047,
+       "84": 4185,
+       "88": 4763,
+       "92": 479,
+       "96": 1370
+      },
+      "non_receiver_bound": 0,
+      "action": {
+       "20": {
+        "t_action": 41.400000000000006,
+        "lead": 29.200000000000003
+       },
+       "24": {
+        "t_action": 41.400000000000006,
+        "lead": 35.25
+       },
+       "28": {
+        "t_action": 41.400000000000006,
+        "lead": 41.400000000000006
+       },
+       "32": {
+        "t_action": 41.45,
+        "lead": 47.35000000000001
+       },
+       "36": {
+        "t_action": 41.6,
+        "lead": 53.25000000000001
+       },
+       "40": {
+        "t_action": 41.300000000000004,
+        "lead": 59.75000000000001
+       },
+       "44": {
+        "t_action": 41.400000000000006,
+        "lead": 65.6
+       },
+       "48": {
+        "t_action": 41.35,
+        "lead": 71.6
+       },
+       "52": {
+        "t_action": 41.35,
+        "lead": 77.4
+       },
+       "56": {
+        "t_action": 41.300000000000004,
+        "lead": 83.4
+       },
+       "60": {
+        "t_action": 41.45,
+        "lead": 89.3
+       },
+       "64": {
+        "t_action": 41.400000000000006,
+        "lead": 95.25
+       },
+       "68": {
+        "t_action": 41.45,
+        "lead": 101.05
+       },
+       "72": {
+        "t_action": 41.300000000000004,
+        "lead": 107.1
+       },
+       "76": {
+        "t_action": 41.45,
+        "lead": 112.85000000000001
+       },
+       "80": {
+        "t_action": 41.35,
+        "lead": 118.80000000000001
+       },
+       "84": {
+        "t_action": 41.300000000000004,
+        "lead": 124.9
+       },
+       "88": {
+        "t_action": 41.45,
+        "lead": 130.85000000000002
+       },
+       "92": {
+        "t_action": 41.35,
+        "lead": 137.25000000000003
+       },
+       "96": {
+        "t_action": 41.300000000000004,
+        "lead": 143.6
+       }
+      }
+     },
+     "isolation_maxdiff": 0.0
+    }
+   }
+  },
+  "1": {
+   "t_src": 40.25,
+   "t_deliver": 40.85,
+   "x_src": 5889.559975213891,
+   "v_src": 21.466084920756455,
+   "Tphys_20": 70.25,
+   "Tphys_60": 130.05,
+   "Tphys_99": 188.9,
+   "Tphys_20_sens01": 69.95,
+   "arms": {
+    "C0": {
+     "episodes_total": 0,
+     "episodes_pre": 0,
+     "episodes_post": 0,
+     "jam_exposure_car_sec": 0.0,
+     "episodes_per_100_car_sec": null,
+     "first_wave_self_anchored": 0,
+     "last_event_time": null,
+     "split": {
+      "all": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "recv_A3": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "nonrecv_A3": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "recv_A2": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "nonrecv_A2": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 0,
+     "episodes_highhalf": 0,
+     "veh_hit": 0,
+     "peak": 0.044681390737055016,
+     "min_gap": 25.056412451067445,
+     "delay": 129.4656645785327,
+     "drac_car_seconds": 0.0,
+     "first_wave_events": 0,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0
+    },
+    "A0": {
+     "episodes_total": 215,
+     "episodes_pre": 0,
+     "episodes_post": 215,
+     "jam_exposure_car_sec": 20894.2,
+     "episodes_per_100_car_sec": 1.028993692029367,
+     "first_wave_self_anchored": 134,
+     "last_event_time": 390.35,
+     "split": {
+      "all": {
+       "events": 215,
+       "jam": 20894.2,
+       "rate": 1.028993692029367
+      },
+      "recv_A3": {
+       "events": 55,
+       "jam": 5275.1,
+       "rate": 1.042634262857576
+      },
+      "nonrecv_A3": {
+       "events": 160,
+       "jam": 15619.1,
+       "rate": 1.024386808458874
+      },
+      "recv_A2": {
+       "events": 23,
+       "jam": 2155.05,
+       "rate": 1.0672606204032389
+      },
+      "nonrecv_A2": {
+       "events": 192,
+       "jam": 18739.15,
+       "rate": 1.0245928977568353
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 109,
+     "episodes_highhalf": 106,
+     "veh_hit": 80,
+     "peak": 6.506779546183646,
+     "min_gap": 2.504023563087685,
+     "delay": 17682.88169694213,
+     "drac_car_seconds": 133.5,
+     "first_wave_events": 134,
+     "active_tail_segments": 1,
+     "open_tail_segments": 0,
+     "contact": 0
+    },
+    "A1": {
+     "episodes_total": 228,
+     "episodes_pre": 0,
+     "episodes_post": 228,
+     "jam_exposure_car_sec": 19204.25,
+     "episodes_per_100_car_sec": 1.1872372000989364,
+     "first_wave_self_anchored": 105,
+     "last_event_time": 390.35,
+     "split": {
+      "all": {
+       "events": 228,
+       "jam": 19204.25,
+       "rate": 1.1872372000989364
+      },
+      "recv": {
+       "events": 0,
+       "jam": 198.10000000000002,
+       "rate": 0.0
+      },
+      "nonrecv": {
+       "events": 228,
+       "jam": 19006.15,
+       "rate": 1.199611704632448
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 109,
+     "episodes_highhalf": 119,
+     "veh_hit": 78,
+     "peak": 7.425111561636404,
+     "min_gap": 2.431784735182191,
+     "delay": 17679.959579572947,
+     "drac_car_seconds": 150.35,
+     "first_wave_events": 72,
+     "active_tail_segments": 1,
+     "open_tail_segments": 0,
+     "contact": 0,
+     "msg": {
+      "receivers": [
+       60
+      ],
+      "t_action_cap": {
+       "60": 40.85
+      },
+      "cap_bind_frames": {
+       "60": 3122
+      },
+      "non_receiver_bound": 0,
+      "action": {
+       "60": {
+        "t_action": 41.400000000000006,
+        "lead": 88.65
+       }
+      }
+     },
+     "isolation_maxdiff": 0.0
+    },
+    "A2": {
+     "episodes_total": 104,
+     "episodes_pre": 0,
+     "episodes_post": 104,
+     "jam_exposure_car_sec": 17069.8,
+     "episodes_per_100_car_sec": 0.6092631430948224,
+     "first_wave_self_anchored": 78,
+     "last_event_time": 395.95000000000005,
+     "split": {
+      "all": {
+       "events": 104,
+       "jam": 17069.8,
+       "rate": 0.6092631430948224
+      },
+      "recv": {
+       "events": 6,
+       "jam": 1756.0500000000002,
+       "rate": 0.3416759203895105
+      },
+      "nonrecv": {
+       "events": 98,
+       "jam": 15313.75,
+       "rate": 0.6399477593665823
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 53,
+     "episodes_highhalf": 51,
+     "veh_hit": 70,
+     "peak": 7.653103321441598,
+     "min_gap": 2.222330645789043,
+     "delay": 17711.804997921427,
+     "drac_car_seconds": 68.10000000000001,
+     "first_wave_events": 9,
+     "active_tail_segments": 2,
+     "open_tail_segments": 0,
+     "contact": 0,
+     "msg": {
+      "receivers": [
+       20,
+       30,
+       40,
+       50,
+       60,
+       70,
+       80,
+       90
+      ],
+      "t_action_cap": {
+       "20": 40.85,
+       "30": 40.85,
+       "40": 40.85,
+       "50": 40.85,
+       "60": 40.85,
+       "70": 40.85,
+       "80": 40.85,
+       "90": 40.85
+      },
+      "cap_bind_frames": {
+       "20": 707,
+       "30": 1535,
+       "40": 2100,
+       "50": 2256,
+       "60": 3082,
+       "70": 3217,
+       "80": 3953,
+       "90": 4339
+      },
+      "non_receiver_bound": 0,
+      "action": {
+       "20": {
+        "t_action": 41.400000000000006,
+        "lead": 28.849999999999994
+       },
+       "30": {
+        "t_action": 41.400000000000006,
+        "lead": 43.75
+       },
+       "40": {
+        "t_action": 41.35,
+        "lead": 58.50000000000001
+       },
+       "50": {
+        "t_action": 41.35,
+        "lead": 73.25
+       },
+       "60": {
+        "t_action": 41.400000000000006,
+        "lead": 88.65
+       },
+       "70": {
+        "t_action": 41.400000000000006,
+        "lead": 103.9
+       },
+       "80": {
+        "t_action": 41.45,
+        "lead": 119.15000000000002
+       },
+       "90": {
+        "t_action": 41.5,
+        "lead": 134.35000000000002
+       }
+      }
+     },
+     "isolation_maxdiff": 0.0
+    },
+    "A3": {
+     "episodes_total": 89,
+     "episodes_pre": 0,
+     "episodes_post": 89,
+     "jam_exposure_car_sec": 16627.8,
+     "episodes_per_100_car_sec": 0.5352481987996007,
+     "first_wave_self_anchored": 69,
+     "last_event_time": 390.35,
+     "split": {
+      "all": {
+       "events": 89,
+       "jam": 16627.8,
+       "rate": 0.5352481987996007
+      },
+      "recv": {
+       "events": 17,
+       "jam": 4201.6,
+       "rate": 0.4046077684691546
+      },
+      "nonrecv": {
+       "events": 72,
+       "jam": 12426.2,
+       "rate": 0.579420900999501
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 51,
+     "episodes_highhalf": 38,
+     "veh_hit": 62,
+     "peak": 7.019039158716756,
+     "min_gap": 2.5040235573469545,
+     "delay": 17687.2158406577,
+     "drac_car_seconds": 49.2,
+     "first_wave_events": 6,
+     "active_tail_segments": 1,
+     "open_tail_segments": 0,
+     "contact": 0,
+     "msg": {
+      "receivers": [
+       20,
+       24,
+       28,
+       32,
+       36,
+       40,
+       44,
+       48,
+       52,
+       56,
+       60,
+       64,
+       68,
+       72,
+       76,
+       80,
+       84,
+       88,
+       92,
+       96
+      ],
+      "t_action_cap": {
+       "20": 40.85,
+       "24": 40.85,
+       "28": 40.85,
+       "32": 40.85,
+       "36": 40.85,
+       "40": 40.85,
+       "44": 40.85,
+       "48": 40.85,
+       "52": 40.85,
+       "56": 40.85,
+       "60": 40.85,
+       "64": 40.85,
+       "68": 40.85,
+       "72": 40.85,
+       "76": 40.85,
+       "80": 40.85,
+       "84": 40.85,
+       "88": 40.85,
+       "92": 40.85,
+       "96": 40.85
+      },
+      "cap_bind_frames": {
+       "20": 707,
+       "24": 1050,
+       "28": 1256,
+       "32": 1504,
+       "36": 1308,
+       "40": 2118,
+       "44": 2271,
+       "48": 1202,
+       "52": 2525,
+       "56": 2668,
+       "60": 3116,
+       "64": 1617,
+       "68": 2206,
+       "72": 3530,
+       "76": 3744,
+       "80": 4053,
+       "84": 4189,
+       "88": 4339,
+       "92": 2087,
+       "96": 4726
+      },
+      "non_receiver_bound": 0,
+      "action": {
+       "20": {
+        "t_action": 41.400000000000006,
+        "lead": 28.849999999999994
+       },
+       "24": {
+        "t_action": 41.300000000000004,
+        "lead": 34.99999999999999
+       },
+       "28": {
+        "t_action": 41.35,
+        "lead": 40.85
+       },
+       "32": {
+        "t_action": 41.400000000000006,
+        "lead": 46.650000000000006
+       },
+       "36": {
+        "t_action": 41.35,
+        "lead": 52.50000000000001
+       },
+       "40": {
+        "t_action": 41.35,
+        "lead": 58.50000000000001
+       },
+       "44": {
+        "t_action": 41.400000000000006,
+        "lead": 64.35
+       },
+       "48": {
+        "t_action": 41.300000000000004,
+        "lead": 70.30000000000001
+       },
+       "52": {
+        "t_action": 41.35,
+        "lead": 76.30000000000001
+       },
+       "56": {
+        "t_action": 41.300000000000004,
+        "lead": 82.6
+       },
+       "60": {
+        "t_action": 41.400000000000006,
+        "lead": 88.65
+       },
+       "64": {
+        "t_action": 41.45,
+        "lead": 94.8
+       },
+       "68": {
+        "t_action": 41.35,
+        "lead": 100.9
+       },
+       "72": {
+        "t_action": 41.400000000000006,
+        "lead": 107.0
+       },
+       "76": {
+        "t_action": 41.400000000000006,
+        "lead": 113.1
+       },
+       "80": {
+        "t_action": 41.45,
+        "lead": 119.15000000000002
+       },
+       "84": {
+        "t_action": 41.35,
+        "lead": 125.45000000000002
+       },
+       "88": {
+        "t_action": 41.300000000000004,
+        "lead": 131.6
+       },
+       "92": {
+        "t_action": 41.35,
+        "lead": 137.45000000000002
+       },
+       "96": {
+        "t_action": 41.400000000000006,
+        "lead": 143.20000000000002
+       }
+      }
+     },
+     "isolation_maxdiff": 0.0
+    }
+   }
+  },
+  "2": {
+   "t_src": 40.25,
+   "t_deliver": 40.85,
+   "x_src": 5889.559975213891,
+   "v_src": 21.466084920756455,
+   "Tphys_20": 71.0,
+   "Tphys_60": 131.20000000000002,
+   "Tphys_99": 189.35000000000002,
+   "Tphys_20_sens01": 70.65,
+   "arms": {
+    "C0": {
+     "episodes_total": 0,
+     "episodes_pre": 0,
+     "episodes_post": 0,
+     "jam_exposure_car_sec": 0.0,
+     "episodes_per_100_car_sec": null,
+     "first_wave_self_anchored": 0,
+     "last_event_time": null,
+     "split": {
+      "all": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "recv_A3": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "nonrecv_A3": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "recv_A2": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "nonrecv_A2": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 0,
+     "episodes_highhalf": 0,
+     "veh_hit": 0,
+     "peak": 0.08040665982746782,
+     "min_gap": 27.023338352769315,
+     "delay": 151.10526446800472,
+     "drac_car_seconds": 0.0,
+     "first_wave_events": 0,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0
+    },
+    "A0": {
+     "episodes_total": 164,
+     "episodes_pre": 0,
+     "episodes_post": 164,
+     "jam_exposure_car_sec": 21387.050000000003,
+     "episodes_per_100_car_sec": 0.766819173284768,
+     "first_wave_self_anchored": 112,
+     "last_event_time": 257.15000000000003,
+     "split": {
+      "all": {
+       "events": 164,
+       "jam": 21387.050000000003,
+       "rate": 0.766819173284768
+      },
+      "recv_A3": {
+       "events": 42,
+       "jam": 5390.25,
+       "rate": 0.7791846389314039
+      },
+      "nonrecv_A3": {
+       "events": 122,
+       "jam": 15996.800000000001,
+       "rate": 0.7626525305061012
+      },
+      "recv_A2": {
+       "events": 13,
+       "jam": 2191.05,
+       "rate": 0.5933228360831564
+      },
+      "nonrecv_A2": {
+       "events": 151,
+       "jam": 19196.0,
+       "rate": 0.7866222129610335
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 81,
+     "episodes_highhalf": 83,
+     "veh_hit": 79,
+     "peak": 8.963269496891636,
+     "min_gap": 0.8486765869047304,
+     "delay": 17869.382594159266,
+     "drac_car_seconds": 104.65,
+     "first_wave_events": 111,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0
+    },
+    "A1": {
+     "episodes_total": 159,
+     "episodes_pre": 0,
+     "episodes_post": 159,
+     "jam_exposure_car_sec": 19836.100000000002,
+     "episodes_per_100_car_sec": 0.8015688567813228,
+     "first_wave_self_anchored": 120,
+     "last_event_time": 253.75,
+     "split": {
+      "all": {
+       "events": 159,
+       "jam": 19836.100000000002,
+       "rate": 0.8015688567813228
+      },
+      "recv": {
+       "events": 0,
+       "jam": 226.35000000000002,
+       "rate": 0.0
+      },
+      "nonrecv": {
+       "events": 159,
+       "jam": 19609.75,
+       "rate": 0.8108211476433916
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 81,
+     "episodes_highhalf": 78,
+     "veh_hit": 77,
+     "peak": 7.686945201965816,
+     "min_gap": 2.410197967024942,
+     "delay": 17859.066602153045,
+     "drac_car_seconds": 107.5,
+     "first_wave_events": 55,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0,
+     "msg": {
+      "receivers": [
+       60
+      ],
+      "t_action_cap": {
+       "60": 40.85
+      },
+      "cap_bind_frames": {
+       "60": 2574
+      },
+      "non_receiver_bound": 0,
+      "action": {
+       "60": {
+        "t_action": 41.300000000000004,
+        "lead": 89.9
+       }
+      }
+     },
+     "isolation_maxdiff": 0.0
+    },
+    "A2": {
+     "episodes_total": 109,
+     "episodes_pre": 0,
+     "episodes_post": 109,
+     "jam_exposure_car_sec": 17208.15,
+     "episodes_per_100_car_sec": 0.6334207918922138,
+     "first_wave_self_anchored": 103,
+     "last_event_time": 383.90000000000003,
+     "split": {
+      "all": {
+       "events": 109,
+       "jam": 17208.15,
+       "rate": 0.6334207918922138
+      },
+      "recv": {
+       "events": 7,
+       "jam": 1768.0500000000002,
+       "rate": 0.39591640507904186
+      },
+      "nonrecv": {
+       "events": 102,
+       "jam": 15440.1,
+       "rate": 0.6606174830473895
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 63,
+     "episodes_highhalf": 46,
+     "veh_hit": 74,
+     "peak": 7.24691276587234,
+     "min_gap": 2.45312529410603,
+     "delay": 17778.43053029329,
+     "drac_car_seconds": 68.25,
+     "first_wave_events": 9,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0,
+     "msg": {
+      "receivers": [
+       20,
+       30,
+       40,
+       50,
+       60,
+       70,
+       80,
+       90
+      ],
+      "t_action_cap": {
+       "20": 40.85,
+       "30": 40.85,
+       "40": 40.85,
+       "50": 40.85,
+       "60": 40.85,
+       "70": 40.85,
+       "80": 40.85,
+       "90": 40.85
+      },
+      "cap_bind_frames": {
+       "20": 753,
+       "30": 1454,
+       "40": 1974,
+       "50": 2045,
+       "60": 2674,
+       "70": 2989,
+       "80": 4289,
+       "90": 2263
+      },
+      "non_receiver_bound": 0,
+      "action": {
+       "20": {
+        "t_action": 41.75,
+        "lead": 29.25
+       },
+       "30": {
+        "t_action": 41.35,
+        "lead": 44.6
+       },
+       "40": {
+        "t_action": 41.45,
+        "lead": 59.60000000000001
+       },
+       "50": {
+        "t_action": 41.400000000000006,
+        "lead": 74.85
+       },
+       "60": {
+        "t_action": 41.300000000000004,
+        "lead": 89.9
+       },
+       "70": {
+        "t_action": 41.300000000000004,
+        "lead": 105.29999999999998
+       },
+       "80": {
+        "t_action": 41.300000000000004,
+        "lead": 120.30000000000001
+       },
+       "90": {
+        "t_action": 41.35,
+        "lead": 134.8
+       }
+      }
+     },
+     "isolation_maxdiff": 0.0
+    },
+    "A3": {
+     "episodes_total": 103,
+     "episodes_pre": 0,
+     "episodes_post": 103,
+     "jam_exposure_car_sec": 16935.2,
+     "episodes_per_100_car_sec": 0.6082006707921961,
+     "first_wave_self_anchored": 78,
+     "last_event_time": 385.15000000000003,
+     "split": {
+      "all": {
+       "events": 103,
+       "jam": 16935.2,
+       "rate": 0.6082006707921961
+      },
+      "recv": {
+       "events": 19,
+       "jam": 4276.85,
+       "rate": 0.4442521949565685
+      },
+      "nonrecv": {
+       "events": 84,
+       "jam": 12658.35,
+       "rate": 0.6635935963217955
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 52,
+     "episodes_highhalf": 51,
+     "veh_hit": 65,
+     "peak": 6.920610715409943,
+     "min_gap": 2.615636512425226,
+     "delay": 17801.141159533137,
+     "drac_car_seconds": 60.800000000000004,
+     "first_wave_events": 7,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0,
+     "msg": {
+      "receivers": [
+       20,
+       24,
+       28,
+       32,
+       36,
+       40,
+       44,
+       48,
+       52,
+       56,
+       60,
+       64,
+       68,
+       72,
+       76,
+       80,
+       84,
+       88,
+       92,
+       96
+      ],
+      "t_action_cap": {
+       "20": 40.85,
+       "24": 40.85,
+       "28": 40.85,
+       "32": 40.85,
+       "36": 40.85,
+       "40": 40.85,
+       "44": 40.85,
+       "48": 40.85,
+       "52": 40.85,
+       "56": 40.85,
+       "60": 40.85,
+       "64": 40.85,
+       "68": 40.85,
+       "72": 40.85,
+       "76": 40.85,
+       "80": 40.85,
+       "84": 40.85,
+       "88": 40.85,
+       "92": 40.85,
+       "96": 40.85
+      },
+      "cap_bind_frames": {
+       "20": 753,
+       "24": 1101,
+       "28": 1275,
+       "32": 1497,
+       "36": 1809,
+       "40": 1950,
+       "44": 815,
+       "48": 2210,
+       "52": 1450,
+       "56": 2453,
+       "60": 2584,
+       "64": 2932,
+       "68": 683,
+       "72": 3204,
+       "76": 3971,
+       "80": 4292,
+       "84": 464,
+       "88": 793,
+       "92": 3878,
+       "96": 3515
+      },
+      "non_receiver_bound": 0,
+      "action": {
+       "20": {
+        "t_action": 41.75,
+        "lead": 29.25
+       },
+       "24": {
+        "t_action": 41.300000000000004,
+        "lead": 35.65
+       },
+       "28": {
+        "t_action": 41.35,
+        "lead": 41.6
+       },
+       "32": {
+        "t_action": 41.45,
+        "lead": 47.55
+       },
+       "36": {
+        "t_action": 41.5,
+        "lead": 53.35000000000001
+       },
+       "40": {
+        "t_action": 41.45,
+        "lead": 59.60000000000001
+       },
+       "44": {
+        "t_action": 41.45,
+        "lead": 65.8
+       },
+       "48": {
+        "t_action": 41.35,
+        "lead": 71.9
+       },
+       "52": {
+        "t_action": 41.400000000000006,
+        "lead": 77.9
+       },
+       "56": {
+        "t_action": 41.35,
+        "lead": 83.95000000000002
+       },
+       "60": {
+        "t_action": 41.300000000000004,
+        "lead": 89.9
+       },
+       "64": {
+        "t_action": 41.300000000000004,
+        "lead": 96.0
+       },
+       "68": {
+        "t_action": 41.550000000000004,
+        "lead": 101.94999999999999
+       },
+       "72": {
+        "t_action": 41.25,
+        "lead": 108.35
+       },
+       "76": {
+        "t_action": 41.45,
+        "lead": 114.15000000000002
+       },
+       "80": {
+        "t_action": 41.300000000000004,
+        "lead": 120.30000000000001
+       },
+       "84": {
+        "t_action": 42.35,
+        "lead": 125.15
+       },
+       "88": {
+        "t_action": 41.35,
+        "lead": 131.9
+       },
+       "92": {
+        "t_action": 41.400000000000006,
+        "lead": 137.6
+       },
+       "96": {
+        "t_action": 41.5,
+        "lead": 143.45000000000002
+       }
+      }
+     },
+     "isolation_maxdiff": 0.0
+    }
+   }
+  },
+  "3": {
+   "t_src": 40.25,
+   "t_deliver": 40.85,
+   "x_src": 5889.559975213891,
+   "v_src": 21.466084920756455,
+   "Tphys_20": 70.8,
+   "Tphys_60": 130.70000000000002,
+   "Tphys_99": 188.25,
+   "Tphys_20_sens01": 70.5,
+   "arms": {
+    "C0": {
+     "episodes_total": 0,
+     "episodes_pre": 0,
+     "episodes_post": 0,
+     "jam_exposure_car_sec": 0.0,
+     "episodes_per_100_car_sec": null,
+     "first_wave_self_anchored": 0,
+     "last_event_time": null,
+     "split": {
+      "all": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "recv_A3": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "nonrecv_A3": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "recv_A2": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "nonrecv_A2": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 0,
+     "episodes_highhalf": 0,
+     "veh_hit": 0,
+     "peak": 0.06365800264263752,
+     "min_gap": 27.038124819433506,
+     "delay": 128.9722082485406,
+     "drac_car_seconds": 0.0,
+     "first_wave_events": 0,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0
+    },
+    "A0": {
+     "episodes_total": 223,
+     "episodes_pre": 0,
+     "episodes_post": 223,
+     "jam_exposure_car_sec": 20812.4,
+     "episodes_per_100_car_sec": 1.071476619707482,
+     "first_wave_self_anchored": 149,
+     "last_event_time": 390.35,
+     "split": {
+      "all": {
+       "events": 223,
+       "jam": 20812.4,
+       "rate": 1.071476619707482
+      },
+      "recv_A3": {
+       "events": 58,
+       "jam": 5249.0,
+       "rate": 1.1049723756906078
+      },
+      "nonrecv_A3": {
+       "events": 165,
+       "jam": 15563.400000000001,
+       "rate": 1.060179652261074
+      },
+      "recv_A2": {
+       "events": 18,
+       "jam": 2132.75,
+       "rate": 0.8439807759934357
+      },
+      "nonrecv_A2": {
+       "events": 205,
+       "jam": 18679.65,
+       "rate": 1.097450969370411
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 111,
+     "episodes_highhalf": 112,
+     "veh_hit": 80,
+     "peak": 6.7050607172901975,
+     "min_gap": 2.5049380483633286,
+     "delay": 17771.31263879033,
+     "drac_car_seconds": 142.55,
+     "first_wave_events": 149,
+     "active_tail_segments": 1,
+     "open_tail_segments": 0,
+     "contact": 0
+    },
+    "A1": {
+     "episodes_total": 162,
+     "episodes_pre": 0,
+     "episodes_post": 162,
+     "jam_exposure_car_sec": 19900.15,
+     "episodes_per_100_car_sec": 0.8140642155963648,
+     "first_wave_self_anchored": 125,
+     "last_event_time": 390.35,
+     "split": {
+      "all": {
+       "events": 162,
+       "jam": 19900.15,
+       "rate": 0.8140642155963648
+      },
+      "recv": {
+       "events": 0,
+       "jam": 231.45000000000002,
+       "rate": 0.0
+      },
+      "nonrecv": {
+       "events": 162,
+       "jam": 19668.7,
+       "rate": 0.8236436571812067
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 111,
+     "episodes_highhalf": 51,
+     "veh_hit": 77,
+     "peak": 7.241884499469661,
+     "min_gap": 2.5049380483633286,
+     "delay": 17772.079340920947,
+     "drac_car_seconds": 106.95,
+     "first_wave_events": 74,
+     "active_tail_segments": 1,
+     "open_tail_segments": 0,
+     "contact": 0,
+     "msg": {
+      "receivers": [
+       60
+      ],
+      "t_action_cap": {
+       "60": 40.85
+      },
+      "cap_bind_frames": {
+       "60": 2282
+      },
+      "non_receiver_bound": 0,
+      "action": {
+       "60": {
+        "t_action": 41.5,
+        "lead": 89.20000000000002
+       }
+      }
+     },
+     "isolation_maxdiff": 0.0
+    },
+    "A2": {
+     "episodes_total": 73,
+     "episodes_pre": 0,
+     "episodes_post": 73,
+     "jam_exposure_car_sec": 17336.850000000002,
+     "episodes_per_100_car_sec": 0.42106841784984,
+     "first_wave_self_anchored": 69,
+     "last_event_time": 390.35,
+     "split": {
+      "all": {
+       "events": 73,
+       "jam": 17336.850000000002,
+       "rate": 0.42106841784984
+      },
+      "recv": {
+       "events": 3,
+       "jam": 1784.0,
+       "rate": 0.1681614349775785
+      },
+      "nonrecv": {
+       "events": 70,
+       "jam": 15552.85,
+       "rate": 0.45007828147252754
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 39,
+     "episodes_highhalf": 34,
+     "veh_hit": 68,
+     "peak": 9.118696834613681,
+     "min_gap": 0.6686925451385832,
+     "delay": 17795.605100656576,
+     "drac_car_seconds": 58.150000000000006,
+     "first_wave_events": 18,
+     "active_tail_segments": 1,
+     "open_tail_segments": 0,
+     "contact": 0,
+     "msg": {
+      "receivers": [
+       20,
+       30,
+       40,
+       50,
+       60,
+       70,
+       80,
+       90
+      ],
+      "t_action_cap": {
+       "20": 40.85,
+       "30": 40.85,
+       "40": 40.85,
+       "50": 40.85,
+       "60": 40.85,
+       "70": 40.85,
+       "80": 40.85,
+       "90": 40.85
+      },
+      "cap_bind_frames": {
+       "20": 916,
+       "30": 1269,
+       "40": 1955,
+       "50": 2513,
+       "60": 761,
+       "70": 3335,
+       "80": 3810,
+       "90": 4165
+      },
+      "non_receiver_bound": 0,
+      "action": {
+       "20": {
+        "t_action": 41.5,
+        "lead": 29.299999999999997
+       },
+       "30": {
+        "t_action": 41.300000000000004,
+        "lead": 44.6
+       },
+       "40": {
+        "t_action": 41.35,
+        "lead": 59.550000000000004
+       },
+       "50": {
+        "t_action": 41.300000000000004,
+        "lead": 74.55000000000001
+       },
+       "60": {
+        "t_action": 41.5,
+        "lead": 89.20000000000002
+       },
+       "70": {
+        "t_action": 41.400000000000006,
+        "lead": 104.0
+       },
+       "80": {
+        "t_action": 41.6,
+        "lead": 118.15
+       },
+       "90": {
+        "t_action": 41.45,
+        "lead": 133.05
+       }
+      }
+     },
+     "isolation_maxdiff": 0.0
+    },
+    "A3": {
+     "episodes_total": 80,
+     "episodes_pre": 0,
+     "episodes_post": 80,
+     "jam_exposure_car_sec": 16800.3,
+     "episodes_per_100_car_sec": 0.47618197294095943,
+     "first_wave_self_anchored": 76,
+     "last_event_time": 390.35,
+     "split": {
+      "all": {
+       "events": 80,
+       "jam": 16800.3,
+       "rate": 0.47618197294095943
+      },
+      "recv": {
+       "events": 14,
+       "jam": 4238.95,
+       "rate": 0.3302704679224808
+      },
+      "nonrecv": {
+       "events": 66,
+       "jam": 12561.35,
+       "rate": 0.525421232590446
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 47,
+     "episodes_highhalf": 33,
+     "veh_hit": 66,
+     "peak": 7.138975916483434,
+     "min_gap": 2.5069879425172985,
+     "delay": 17815.602497829073,
+     "drac_car_seconds": 49.35,
+     "first_wave_events": 12,
+     "active_tail_segments": 1,
+     "open_tail_segments": 0,
+     "contact": 0,
+     "msg": {
+      "receivers": [
+       20,
+       24,
+       28,
+       32,
+       36,
+       40,
+       44,
+       48,
+       52,
+       56,
+       60,
+       64,
+       68,
+       72,
+       76,
+       80,
+       84,
+       88,
+       92,
+       96
+      ],
+      "t_action_cap": {
+       "20": 40.85,
+       "24": 40.85,
+       "28": 40.85,
+       "32": 40.85,
+       "36": 40.85,
+       "40": 40.85,
+       "44": 40.85,
+       "48": 40.85,
+       "52": 40.85,
+       "56": 40.85,
+       "60": 40.85,
+       "64": 40.85,
+       "68": 40.85,
+       "72": 40.85,
+       "76": 40.85,
+       "80": 40.85,
+       "84": 40.85,
+       "88": 40.85,
+       "92": 40.85,
+       "96": 40.85
+      },
+      "cap_bind_frames": {
+       "20": 916,
+       "24": 1209,
+       "28": 693,
+       "32": 1422,
+       "36": 1597,
+       "40": 1971,
+       "44": 2113,
+       "48": 2254,
+       "52": 2696,
+       "56": 2877,
+       "60": 239,
+       "64": 1724,
+       "68": 3284,
+       "72": 3459,
+       "76": 3698,
+       "80": 3054,
+       "84": 4213,
+       "88": 2833,
+       "92": 4336,
+       "96": 4892
+      },
+      "non_receiver_bound": 0,
+      "action": {
+       "20": {
+        "t_action": 41.5,
+        "lead": 29.299999999999997
+       },
+       "24": {
+        "t_action": 41.35,
+        "lead": 35.550000000000004
+       },
+       "28": {
+        "t_action": 41.85,
+        "lead": 41.00000000000001
+       },
+       "32": {
+        "t_action": 41.300000000000004,
+        "lead": 47.699999999999996
+       },
+       "36": {
+        "t_action": 41.300000000000004,
+        "lead": 53.65
+       },
+       "40": {
+        "t_action": 41.35,
+        "lead": 59.550000000000004
+       },
+       "44": {
+        "t_action": 41.35,
+        "lead": 65.4
+       },
+       "48": {
+        "t_action": 41.35,
+        "lead": 71.5
+       },
+       "52": {
+        "t_action": 41.25,
+        "lead": 77.5
+       },
+       "56": {
+        "t_action": 41.400000000000006,
+        "lead": 83.4
+       },
+       "60": {
+        "t_action": 41.5,
+        "lead": 89.20000000000002
+       },
+       "64": {
+        "t_action": 41.300000000000004,
+        "lead": 95.25
+       },
+       "68": {
+        "t_action": 41.300000000000004,
+        "lead": 101.15
+       },
+       "72": {
+        "t_action": 41.400000000000006,
+        "lead": 106.94999999999999
+       },
+       "76": {
+        "t_action": 41.300000000000004,
+        "lead": 112.80000000000001
+       },
+       "80": {
+        "t_action": 41.6,
+        "lead": 118.15
+       },
+       "84": {
+        "t_action": 41.25,
+        "lead": 124.35000000000002
+       },
+       "88": {
+        "t_action": 41.5,
+        "lead": 130.0
+       },
+       "92": {
+        "t_action": 41.400000000000006,
+        "lead": 136.1
+       },
+       "96": {
+        "t_action": 41.25,
+        "lead": 142.35000000000002
+       }
+      }
+     },
+     "isolation_maxdiff": 0.0
+    }
+   }
+  },
+  "4": {
+   "t_src": 40.25,
+   "t_deliver": 40.85,
+   "x_src": 5889.559975213891,
+   "v_src": 21.466084920756455,
+   "Tphys_20": 70.9,
+   "Tphys_60": 130.3,
+   "Tphys_99": 188.35000000000002,
+   "Tphys_20_sens01": 70.55,
+   "arms": {
+    "C0": {
+     "episodes_total": 0,
+     "episodes_pre": 0,
+     "episodes_post": 0,
+     "jam_exposure_car_sec": 0.0,
+     "episodes_per_100_car_sec": null,
+     "first_wave_self_anchored": 0,
+     "last_event_time": null,
+     "split": {
+      "all": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "recv_A3": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "nonrecv_A3": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "recv_A2": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "nonrecv_A2": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 0,
+     "episodes_highhalf": 0,
+     "veh_hit": 0,
+     "peak": 0.03885603163366645,
+     "min_gap": 27.54891835055969,
+     "delay": 116.78472610339298,
+     "drac_car_seconds": 0.0,
+     "first_wave_events": 0,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0
+    },
+    "A0": {
+     "episodes_total": 160,
+     "episodes_pre": 0,
+     "episodes_post": 160,
+     "jam_exposure_car_sec": 21259.300000000003,
+     "episodes_per_100_car_sec": 0.7526117981307003,
+     "first_wave_self_anchored": 126,
+     "last_event_time": 390.15000000000003,
+     "split": {
+      "all": {
+       "events": 160,
+       "jam": 21259.300000000003,
+       "rate": 0.7526117981307003
+      },
+      "recv_A3": {
+       "events": 45,
+       "jam": 5359.900000000001,
+       "rate": 0.8395679023862385
+      },
+      "nonrecv_A3": {
+       "events": 115,
+       "jam": 15899.400000000001,
+       "rate": 0.7232977345057046
+      },
+      "recv_A2": {
+       "events": 20,
+       "jam": 2180.3,
+       "rate": 0.9173049580332981
+      },
+      "nonrecv_A2": {
+       "events": 140,
+       "jam": 19079.0,
+       "rate": 0.7337910791970229
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 79,
+     "episodes_highhalf": 81,
+     "veh_hit": 78,
+     "peak": 8.62174496398522,
+     "min_gap": 1.1012829052142479,
+     "delay": 17830.109515295757,
+     "drac_car_seconds": 95.45,
+     "first_wave_events": 126,
+     "active_tail_segments": 1,
+     "open_tail_segments": 0,
+     "contact": 0
+    },
+    "A1": {
+     "episodes_total": 148,
+     "episodes_pre": 1,
+     "episodes_post": 147,
+     "jam_exposure_car_sec": 19069.8,
+     "episodes_per_100_car_sec": 0.7760962359332557,
+     "first_wave_self_anchored": 95,
+     "last_event_time": 384.20000000000005,
+     "split": {
+      "all": {
+       "events": 148,
+       "jam": 19069.8,
+       "rate": 0.7760962359332557
+      },
+      "recv": {
+       "events": 0,
+       "jam": 196.0,
+       "rate": 0.0
+      },
+      "nonrecv": {
+       "events": 148,
+       "jam": 18873.8,
+       "rate": 0.7841558138795579
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 79,
+     "episodes_highhalf": 69,
+     "veh_hit": 78,
+     "peak": 8.62174496398522,
+     "min_gap": 1.1012829052142479,
+     "delay": 17837.109053792185,
+     "drac_car_seconds": 94.65,
+     "first_wave_events": 66,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0,
+     "msg": {
+      "receivers": [
+       60
+      ],
+      "t_action_cap": {
+       "60": 40.85
+      },
+      "cap_bind_frames": {
+       "60": 3232
+      },
+      "non_receiver_bound": 0,
+      "action": {
+       "60": {
+        "t_action": 41.400000000000006,
+        "lead": 88.9
+       }
+      }
+     },
+     "isolation_maxdiff": 0.0
+    },
+    "A2": {
+     "episodes_total": 87,
+     "episodes_pre": 0,
+     "episodes_post": 87,
+     "jam_exposure_car_sec": 16780.95,
+     "episodes_per_100_car_sec": 0.5184450224808488,
+     "first_wave_self_anchored": 70,
+     "last_event_time": 398.70000000000005,
+     "split": {
+      "all": {
+       "events": 87,
+       "jam": 16780.95,
+       "rate": 0.5184450224808488
+      },
+      "recv": {
+       "events": 6,
+       "jam": 1725.9,
+       "rate": 0.34764470710933426
+      },
+      "nonrecv": {
+       "events": 81,
+       "jam": 15055.050000000001,
+       "rate": 0.5380254466109379
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 42,
+     "episodes_highhalf": 45,
+     "veh_hit": 69,
+     "peak": 6.807440932096917,
+     "min_gap": 2.165372156833655,
+     "delay": 17744.495272836684,
+     "drac_car_seconds": 53.7,
+     "first_wave_events": 11,
+     "active_tail_segments": 1,
+     "open_tail_segments": 0,
+     "contact": 0,
+     "msg": {
+      "receivers": [
+       20,
+       30,
+       40,
+       50,
+       60,
+       70,
+       80,
+       90
+      ],
+      "t_action_cap": {
+       "20": 40.85,
+       "30": 40.85,
+       "40": 40.85,
+       "50": 40.85,
+       "60": 40.85,
+       "70": 40.85,
+       "80": 40.85,
+       "90": 40.85
+      },
+      "cap_bind_frames": {
+       "20": 781,
+       "30": 1367,
+       "40": 1972,
+       "50": 2411,
+       "60": 3218,
+       "70": 1320,
+       "80": 3921,
+       "90": 4365
+      },
+      "non_receiver_bound": 0,
+      "action": {
+       "20": {
+        "t_action": 41.35,
+        "lead": 29.550000000000004
+       },
+       "30": {
+        "t_action": 41.45,
+        "lead": 44.5
+       },
+       "40": {
+        "t_action": 41.400000000000006,
+        "lead": 59.400000000000006
+       },
+       "50": {
+        "t_action": 41.5,
+        "lead": 74.0
+       },
+       "60": {
+        "t_action": 41.400000000000006,
+        "lead": 88.9
+       },
+       "70": {
+        "t_action": 41.45,
+        "lead": 103.89999999999999
+       },
+       "80": {
+        "t_action": 41.45,
+        "lead": 118.75000000000001
+       },
+       "90": {
+        "t_action": 41.400000000000006,
+        "lead": 133.55
+       }
+      }
+     },
+     "isolation_maxdiff": 0.0
+    },
+    "A3": {
+     "episodes_total": 128,
+     "episodes_pre": 0,
+     "episodes_post": 128,
+     "jam_exposure_car_sec": 17009.0,
+     "episodes_per_100_car_sec": 0.7525427714739256,
+     "first_wave_self_anchored": 65,
+     "last_event_time": 398.5,
+     "split": {
+      "all": {
+       "events": 128,
+       "jam": 17009.0,
+       "rate": 0.7525427714739256
+      },
+      "recv": {
+       "events": 25,
+       "jam": 4297.5,
+       "rate": 0.5817335660267597
+      },
+      "nonrecv": {
+       "events": 103,
+       "jam": 12711.5,
+       "rate": 0.8102898949769893
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 37,
+     "episodes_highhalf": 91,
+     "veh_hit": 71,
+     "peak": 7.28506480908669,
+     "min_gap": 2.4761408138747356,
+     "delay": 17748.122140462743,
+     "drac_car_seconds": 71.45,
+     "first_wave_events": 7,
+     "active_tail_segments": 1,
+     "open_tail_segments": 0,
+     "contact": 0,
+     "msg": {
+      "receivers": [
+       20,
+       24,
+       28,
+       32,
+       36,
+       40,
+       44,
+       48,
+       52,
+       56,
+       60,
+       64,
+       68,
+       72,
+       76,
+       80,
+       84,
+       88,
+       92,
+       96
+      ],
+      "t_action_cap": {
+       "20": 40.85,
+       "24": 40.85,
+       "28": 40.85,
+       "32": 40.85,
+       "36": 40.85,
+       "40": 40.85,
+       "44": 40.85,
+       "48": 40.85,
+       "52": 40.85,
+       "56": 40.85,
+       "60": 40.85,
+       "64": 40.85,
+       "68": 40.85,
+       "72": 40.85,
+       "76": 40.85,
+       "80": 40.85,
+       "84": 40.85,
+       "88": 40.85,
+       "92": 40.85,
+       "96": 40.85
+      },
+      "cap_bind_frames": {
+       "20": 781,
+       "24": 1187,
+       "28": 1315,
+       "32": 1446,
+       "36": 1592,
+       "40": 1977,
+       "44": 1205,
+       "48": 2182,
+       "52": 2326,
+       "56": 2607,
+       "60": 3100,
+       "64": 817,
+       "68": 1800,
+       "72": 2896,
+       "76": 3656,
+       "80": 3825,
+       "84": 2652,
+       "88": 4113,
+       "92": 4275,
+       "96": 4547
+      },
+      "non_receiver_bound": 0,
+      "action": {
+       "20": {
+        "t_action": 41.35,
+        "lead": 29.550000000000004
+       },
+       "24": {
+        "t_action": 41.400000000000006,
+        "lead": 35.5
+       },
+       "28": {
+        "t_action": 41.35,
+        "lead": 41.6
+       },
+       "32": {
+        "t_action": 41.35,
+        "lead": 47.65
+       },
+       "36": {
+        "t_action": 41.35,
+        "lead": 53.65
+       },
+       "40": {
+        "t_action": 41.400000000000006,
+        "lead": 59.400000000000006
+       },
+       "44": {
+        "t_action": 41.35,
+        "lead": 65.35
+       },
+       "48": {
+        "t_action": 41.35,
+        "lead": 71.15
+       },
+       "52": {
+        "t_action": 41.35,
+        "lead": 77.1
+       },
+       "56": {
+        "t_action": 41.300000000000004,
+        "lead": 83.0
+       },
+       "60": {
+        "t_action": 41.400000000000006,
+        "lead": 88.9
+       },
+       "64": {
+        "t_action": 41.400000000000006,
+        "lead": 94.9
+       },
+       "68": {
+        "t_action": 41.400000000000006,
+        "lead": 100.94999999999999
+       },
+       "72": {
+        "t_action": 41.300000000000004,
+        "lead": 107.04999999999998
+       },
+       "76": {
+        "t_action": 41.35,
+        "lead": 112.85000000000002
+       },
+       "80": {
+        "t_action": 41.45,
+        "lead": 118.75000000000001
+       },
+       "84": {
+        "t_action": 41.5,
+        "lead": 124.60000000000002
+       },
+       "88": {
+        "t_action": 41.400000000000006,
+        "lead": 130.6
+       },
+       "92": {
+        "t_action": 41.300000000000004,
+        "lead": 136.65
+       },
+       "96": {
+        "t_action": 41.35,
+        "lead": 142.50000000000003
+       }
+      }
+     },
+     "isolation_maxdiff": 0.0
+    }
+   }
+  },
+  "5": {
+   "t_src": 40.25,
+   "t_deliver": 40.85,
+   "x_src": 5889.559975213891,
+   "v_src": 21.466084920756455,
+   "Tphys_20": 70.85000000000001,
+   "Tphys_60": 131.25,
+   "Tphys_99": 189.15,
+   "Tphys_20_sens01": 70.5,
+   "arms": {
+    "C0": {
+     "episodes_total": 0,
+     "episodes_pre": 0,
+     "episodes_post": 0,
+     "jam_exposure_car_sec": 0.0,
+     "episodes_per_100_car_sec": null,
+     "first_wave_self_anchored": 0,
+     "last_event_time": null,
+     "split": {
+      "all": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "recv_A3": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "nonrecv_A3": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "recv_A2": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "nonrecv_A2": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 0,
+     "episodes_highhalf": 0,
+     "veh_hit": 0,
+     "peak": 0.03309186490971068,
+     "min_gap": 27.07126057194182,
+     "delay": 105.81522136572639,
+     "drac_car_seconds": 0.0,
+     "first_wave_events": 0,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0
+    },
+    "A0": {
+     "episodes_total": 248,
+     "episodes_pre": 0,
+     "episodes_post": 248,
+     "jam_exposure_car_sec": 21205.850000000002,
+     "episodes_per_100_car_sec": 1.1694886080963507,
+     "first_wave_self_anchored": 101,
+     "last_event_time": 387.25,
+     "split": {
+      "all": {
+       "events": 248,
+       "jam": 21205.850000000002,
+       "rate": 1.1694886080963507
+      },
+      "recv_A3": {
+       "events": 60,
+       "jam": 5346.6,
+       "rate": 1.122208506340478
+      },
+      "nonrecv_A3": {
+       "events": 188,
+       "jam": 15859.25,
+       "rate": 1.185428062487192
+      },
+      "recv_A2": {
+       "events": 20,
+       "jam": 2178.0,
+       "rate": 0.9182736455463728
+      },
+      "nonrecv_A2": {
+       "events": 228,
+       "jam": 19027.850000000002,
+       "rate": 1.198243627104481
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 92,
+     "episodes_highhalf": 156,
+     "veh_hit": 77,
+     "peak": 8.40985007502584,
+     "min_gap": 1.3931340456110775,
+     "delay": 17803.637612540188,
+     "drac_car_seconds": 142.55,
+     "first_wave_events": 101,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0
+    },
+    "A1": {
+     "episodes_total": 222,
+     "episodes_pre": 6,
+     "episodes_post": 216,
+     "jam_exposure_car_sec": 19375.7,
+     "episodes_per_100_car_sec": 1.1457650562302264,
+     "first_wave_self_anchored": 76,
+     "last_event_time": 387.1,
+     "split": {
+      "all": {
+       "events": 222,
+       "jam": 19375.7,
+       "rate": 1.1457650562302264
+      },
+      "recv": {
+       "events": 0,
+       "jam": 201.25,
+       "rate": 0.0
+      },
+      "nonrecv": {
+       "events": 222,
+       "jam": 19174.45,
+       "rate": 1.157790705861185
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 92,
+     "episodes_highhalf": 130,
+     "veh_hit": 76,
+     "peak": 7.269061632377468,
+     "min_gap": 2.3586346596712247,
+     "delay": 17793.55206515935,
+     "drac_car_seconds": 135.70000000000002,
+     "first_wave_events": 54,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0,
+     "msg": {
+      "receivers": [
+       60
+      ],
+      "t_action_cap": {
+       "60": 40.85
+      },
+      "cap_bind_frames": {
+       "60": 3110
+      },
+      "non_receiver_bound": 0,
+      "action": {
+       "60": {
+        "t_action": 41.45,
+        "lead": 89.8
+       }
+      }
+     },
+     "isolation_maxdiff": 0.0
+    },
+    "A2": {
+     "episodes_total": 182,
+     "episodes_pre": 0,
+     "episodes_post": 182,
+     "jam_exposure_car_sec": 17144.45,
+     "episodes_per_100_car_sec": 1.0615680293039438,
+     "first_wave_self_anchored": 108,
+     "last_event_time": 383.45000000000005,
+     "split": {
+      "all": {
+       "events": 182,
+       "jam": 17144.45,
+       "rate": 1.0615680293039438
+      },
+      "recv": {
+       "events": 11,
+       "jam": 1759.3500000000001,
+       "rate": 0.6252309091425811
+      },
+      "nonrecv": {
+       "events": 171,
+       "jam": 15385.1,
+       "rate": 1.1114649888528512
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 85,
+     "episodes_highhalf": 97,
+     "veh_hit": 78,
+     "peak": 8.206721604553548,
+     "min_gap": 1.6466976498768418,
+     "delay": 17717.555203098946,
+     "drac_car_seconds": 109.7,
+     "first_wave_events": 7,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0,
+     "msg": {
+      "receivers": [
+       20,
+       30,
+       40,
+       50,
+       60,
+       70,
+       80,
+       90
+      ],
+      "t_action_cap": {
+       "20": 40.85,
+       "30": 40.85,
+       "40": 40.85,
+       "50": 40.85,
+       "60": 40.85,
+       "70": 40.85,
+       "80": 40.85,
+       "90": 40.85
+      },
+      "cap_bind_frames": {
+       "20": 731,
+       "30": 1618,
+       "40": 1324,
+       "50": 2217,
+       "60": 3109,
+       "70": 1646,
+       "80": 3371,
+       "90": 4171
+      },
+      "non_receiver_bound": 0,
+      "action": {
+       "20": {
+        "t_action": 41.45,
+        "lead": 29.400000000000006
+       },
+       "30": {
+        "t_action": 41.25,
+        "lead": 44.75
+       },
+       "40": {
+        "t_action": 41.35,
+        "lead": 59.800000000000004
+       },
+       "50": {
+        "t_action": 41.35,
+        "lead": 74.9
+       },
+       "60": {
+        "t_action": 41.45,
+        "lead": 89.8
+       },
+       "70": {
+        "t_action": 41.300000000000004,
+        "lead": 104.44999999999999
+       },
+       "80": {
+        "t_action": 41.35,
+        "lead": 119.10000000000002
+       },
+       "90": {
+        "t_action": 41.400000000000006,
+        "lead": 134.05
+       }
+      }
+     },
+     "isolation_maxdiff": 0.0
+    },
+    "A3": {
+     "episodes_total": 166,
+     "episodes_pre": 0,
+     "episodes_post": 166,
+     "jam_exposure_car_sec": 16700.95,
+     "episodes_per_100_car_sec": 0.9939554336729347,
+     "first_wave_self_anchored": 111,
+     "last_event_time": 383.55,
+     "split": {
+      "all": {
+       "events": 166,
+       "jam": 16700.95,
+       "rate": 0.9939554336729347
+      },
+      "recv": {
+       "events": 37,
+       "jam": 4219.05,
+       "rate": 0.8769746743935246
+      },
+      "nonrecv": {
+       "events": 129,
+       "jam": 12481.900000000001,
+       "rate": 1.0334965029362515
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 82,
+     "episodes_highhalf": 84,
+     "veh_hit": 78,
+     "peak": 6.787422564092875,
+     "min_gap": 2.3125487668712594,
+     "delay": 17726.33835291869,
+     "drac_car_seconds": 89.7,
+     "first_wave_events": 4,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0,
+     "msg": {
+      "receivers": [
+       20,
+       24,
+       28,
+       32,
+       36,
+       40,
+       44,
+       48,
+       52,
+       56,
+       60,
+       64,
+       68,
+       72,
+       76,
+       80,
+       84,
+       88,
+       92,
+       96
+      ],
+      "t_action_cap": {
+       "20": 40.85,
+       "24": 40.85,
+       "28": 40.85,
+       "32": 40.85,
+       "36": 40.85,
+       "40": 40.85,
+       "44": 40.85,
+       "48": 40.85,
+       "52": 40.85,
+       "56": 40.85,
+       "60": 40.85,
+       "64": 40.85,
+       "68": 40.85,
+       "72": 40.85,
+       "76": 40.85,
+       "80": 40.85,
+       "84": 40.85,
+       "88": 40.85,
+       "92": 40.85,
+       "96": 40.85
+      },
+      "cap_bind_frames": {
+       "20": 731,
+       "24": 1138,
+       "28": 1285,
+       "32": 1498,
+       "36": 1799,
+       "40": 631,
+       "44": 2047,
+       "48": 761,
+       "52": 2289,
+       "56": 2441,
+       "60": 3098,
+       "64": 633,
+       "68": 790,
+       "72": 2144,
+       "76": 2533,
+       "80": 3497,
+       "84": 3879,
+       "88": 4273,
+       "92": 4545,
+       "96": 5291
+      },
+      "non_receiver_bound": 0,
+      "action": {
+       "20": {
+        "t_action": 41.45,
+        "lead": 29.400000000000006
+       },
+       "24": {
+        "t_action": 41.35,
+        "lead": 35.65
+       },
+       "28": {
+        "t_action": 41.25,
+        "lead": 41.60000000000001
+       },
+       "32": {
+        "t_action": 41.6,
+        "lead": 47.50000000000001
+       },
+       "36": {
+        "t_action": 41.35,
+        "lead": 53.9
+       },
+       "40": {
+        "t_action": 41.35,
+        "lead": 59.800000000000004
+       },
+       "44": {
+        "t_action": 41.45,
+        "lead": 65.60000000000001
+       },
+       "48": {
+        "t_action": 41.45,
+        "lead": 71.65
+       },
+       "52": {
+        "t_action": 41.400000000000006,
+        "lead": 77.95
+       },
+       "56": {
+        "t_action": 41.300000000000004,
+        "lead": 84.05000000000001
+       },
+       "60": {
+        "t_action": 41.45,
+        "lead": 89.8
+       },
+       "64": {
+        "t_action": 41.400000000000006,
+        "lead": 95.75
+       },
+       "68": {
+        "t_action": 41.35,
+        "lead": 101.55000000000001
+       },
+       "72": {
+        "t_action": 41.6,
+        "lead": 107.0
+       },
+       "76": {
+        "t_action": 41.400000000000006,
+        "lead": 113.20000000000002
+       },
+       "80": {
+        "t_action": 41.35,
+        "lead": 119.10000000000002
+       },
+       "84": {
+        "t_action": 41.45,
+        "lead": 125.05
+       },
+       "88": {
+        "t_action": 41.35,
+        "lead": 131.20000000000002
+       },
+       "92": {
+        "t_action": 41.25,
+        "lead": 137.15
+       },
+       "96": {
+        "t_action": 41.35,
+        "lead": 143.20000000000002
+       }
+      }
+     },
+     "isolation_maxdiff": 0.0
+    }
+   }
+  },
+  "6": {
+   "t_src": 40.25,
+   "t_deliver": 40.85,
+   "x_src": 5889.559975213891,
+   "v_src": 21.466084920756455,
+   "Tphys_20": 70.85000000000001,
+   "Tphys_60": 131.15,
+   "Tphys_99": 189.05,
+   "Tphys_20_sens01": 70.5,
+   "arms": {
+    "C0": {
+     "episodes_total": 0,
+     "episodes_pre": 0,
+     "episodes_post": 0,
+     "jam_exposure_car_sec": 0.0,
+     "episodes_per_100_car_sec": null,
+     "first_wave_self_anchored": 0,
+     "last_event_time": null,
+     "split": {
+      "all": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "recv_A3": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "nonrecv_A3": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "recv_A2": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "nonrecv_A2": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 0,
+     "episodes_highhalf": 0,
+     "veh_hit": 0,
+     "peak": 0.05581443649978929,
+     "min_gap": 27.008417158760494,
+     "delay": 166.25897559903262,
+     "drac_car_seconds": 0.0,
+     "first_wave_events": 0,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0
+    },
+    "A0": {
+     "episodes_total": 232,
+     "episodes_pre": 0,
+     "episodes_post": 232,
+     "jam_exposure_car_sec": 21178.95,
+     "episodes_per_100_car_sec": 1.095427299275932,
+     "first_wave_self_anchored": 126,
+     "last_event_time": 382.25,
+     "split": {
+      "all": {
+       "events": 232,
+       "jam": 21178.95,
+       "rate": 1.095427299275932
+      },
+      "recv_A3": {
+       "events": 51,
+       "jam": 5340.25,
+       "rate": 0.9550114695004915
+      },
+      "nonrecv_A3": {
+       "events": 181,
+       "jam": 15838.7,
+       "rate": 1.1427705556642906
+      },
+      "recv_A2": {
+       "events": 22,
+       "jam": 2174.6,
+       "rate": 1.011680309022349
+      },
+      "nonrecv_A2": {
+       "events": 210,
+       "jam": 19004.350000000002,
+       "rate": 1.1050101687245288
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 111,
+     "episodes_highhalf": 121,
+     "veh_hit": 79,
+     "peak": 6.017779311651298,
+     "min_gap": 2.5537572407656626,
+     "delay": 17859.41232761435,
+     "drac_car_seconds": 136.35,
+     "first_wave_events": 126,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0
+    },
+    "A1": {
+     "episodes_total": 223,
+     "episodes_pre": 0,
+     "episodes_post": 223,
+     "jam_exposure_car_sec": 19641.25,
+     "episodes_per_100_car_sec": 1.1353656208235219,
+     "first_wave_self_anchored": 105,
+     "last_event_time": 381.3,
+     "split": {
+      "all": {
+       "events": 223,
+       "jam": 19641.25,
+       "rate": 1.1353656208235219
+      },
+      "recv": {
+       "events": 1,
+       "jam": 214.60000000000002,
+       "rate": 0.4659832246039142
+      },
+      "nonrecv": {
+       "events": 222,
+       "jam": 19426.65,
+       "rate": 1.1427600744338318
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 111,
+     "episodes_highhalf": 112,
+     "veh_hit": 79,
+     "peak": 7.387163967985529,
+     "min_gap": 2.5537572407656626,
+     "delay": 17825.24122124527,
+     "drac_car_seconds": 135.20000000000002,
+     "first_wave_events": 70,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0,
+     "msg": {
+      "receivers": [
+       60
+      ],
+      "t_action_cap": {
+       "60": 40.85
+      },
+      "cap_bind_frames": {
+       "60": 2603
+      },
+      "non_receiver_bound": 0,
+      "action": {
+       "60": {
+        "t_action": 41.35,
+        "lead": 89.80000000000001
+       }
+      }
+     },
+     "isolation_maxdiff": 0.0
+    },
+    "A2": {
+     "episodes_total": 125,
+     "episodes_pre": 0,
+     "episodes_post": 125,
+     "jam_exposure_car_sec": 17106.15,
+     "episodes_per_100_car_sec": 0.7307313451594893,
+     "first_wave_self_anchored": 86,
+     "last_event_time": 379.95000000000005,
+     "split": {
+      "all": {
+       "events": 125,
+       "jam": 17106.15,
+       "rate": 0.7307313451594893
+      },
+      "recv": {
+       "events": 5,
+       "jam": 1762.65,
+       "rate": 0.28366380166226984
+      },
+      "nonrecv": {
+       "events": 120,
+       "jam": 15343.5,
+       "rate": 0.7820901358881611
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 55,
+     "episodes_highhalf": 70,
+     "veh_hit": 69,
+     "peak": 7.740813812708431,
+     "min_gap": 2.1004331269477916,
+     "delay": 17793.33722462252,
+     "drac_car_seconds": 80.55000000000001,
+     "first_wave_events": 8,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0,
+     "msg": {
+      "receivers": [
+       20,
+       30,
+       40,
+       50,
+       60,
+       70,
+       80,
+       90
+      ],
+      "t_action_cap": {
+       "20": 40.85,
+       "30": 40.85,
+       "40": 40.85,
+       "50": 40.85,
+       "60": 40.85,
+       "70": 40.85,
+       "80": 40.85,
+       "90": 40.85
+      },
+      "cap_bind_frames": {
+       "20": 668,
+       "30": 1518,
+       "40": 1897,
+       "50": 2497,
+       "60": 2798,
+       "70": 3756,
+       "80": 3381,
+       "90": 4352
+      },
+      "non_receiver_bound": 0,
+      "action": {
+       "20": {
+        "t_action": 41.550000000000004,
+        "lead": 29.300000000000004
+       },
+       "30": {
+        "t_action": 41.550000000000004,
+        "lead": 44.199999999999996
+       },
+       "40": {
+        "t_action": 41.45,
+        "lead": 59.35000000000001
+       },
+       "50": {
+        "t_action": 41.35,
+        "lead": 74.6
+       },
+       "60": {
+        "t_action": 41.35,
+        "lead": 89.80000000000001
+       },
+       "70": {
+        "t_action": 41.35,
+        "lead": 104.65
+       },
+       "80": {
+        "t_action": 41.550000000000004,
+        "lead": 119.55000000000001
+       },
+       "90": {
+        "t_action": 41.35,
+        "lead": 134.60000000000002
+       }
+      }
+     },
+     "isolation_maxdiff": 0.0
+    },
+    "A3": {
+     "episodes_total": 104,
+     "episodes_pre": 0,
+     "episodes_post": 104,
+     "jam_exposure_car_sec": 16496.600000000002,
+     "episodes_per_100_car_sec": 0.6304329376962525,
+     "first_wave_self_anchored": 81,
+     "last_event_time": 376.85,
+     "split": {
+      "all": {
+       "events": 104,
+       "jam": 16496.600000000002,
+       "rate": 0.6304329376962525
+      },
+      "recv": {
+       "events": 21,
+       "jam": 4161.400000000001,
+       "rate": 0.5046378622578939
+      },
+      "nonrecv": {
+       "events": 83,
+       "jam": 12335.2,
+       "rate": 0.6728711330177054
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 58,
+     "episodes_highhalf": 46,
+     "veh_hit": 71,
+     "peak": 8.49232049695333,
+     "min_gap": 1.2570294081642714,
+     "delay": 17761.80839694961,
+     "drac_car_seconds": 63.5,
+     "first_wave_events": 7,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0,
+     "msg": {
+      "receivers": [
+       20,
+       24,
+       28,
+       32,
+       36,
+       40,
+       44,
+       48,
+       52,
+       56,
+       60,
+       64,
+       68,
+       72,
+       76,
+       80,
+       84,
+       88,
+       92,
+       96
+      ],
+      "t_action_cap": {
+       "20": 40.85,
+       "24": 40.85,
+       "28": 40.85,
+       "32": 40.85,
+       "36": 40.85,
+       "40": 40.85,
+       "44": 40.85,
+       "48": 40.85,
+       "52": 40.85,
+       "56": 40.85,
+       "60": 40.85,
+       "64": 40.85,
+       "68": 40.85,
+       "72": 40.85,
+       "76": 40.85,
+       "80": 40.85,
+       "84": 40.85,
+       "88": 40.85,
+       "92": 40.85,
+       "96": 40.85
+      },
+      "cap_bind_frames": {
+       "20": 668,
+       "24": 966,
+       "28": 1301,
+       "32": 1620,
+       "36": 1829,
+       "40": 681,
+       "44": 1755,
+       "48": 2251,
+       "52": 2573,
+       "56": 2700,
+       "60": 2241,
+       "64": 2947,
+       "68": 3751,
+       "72": 2680,
+       "76": 660,
+       "80": 3383,
+       "84": 1140,
+       "88": 3137,
+       "92": 4601,
+       "96": 4731
+      },
+      "non_receiver_bound": 0,
+      "action": {
+       "20": {
+        "t_action": 41.550000000000004,
+        "lead": 29.300000000000004
+       },
+       "24": {
+        "t_action": 41.300000000000004,
+        "lead": 35.4
+       },
+       "28": {
+        "t_action": 41.300000000000004,
+        "lead": 41.35
+       },
+       "32": {
+        "t_action": 41.400000000000006,
+        "lead": 47.45
+       },
+       "36": {
+        "t_action": 41.300000000000004,
+        "lead": 53.449999999999996
+       },
+       "40": {
+        "t_action": 41.45,
+        "lead": 59.35000000000001
+       },
+       "44": {
+        "t_action": 41.300000000000004,
+        "lead": 65.44999999999999
+       },
+       "48": {
+        "t_action": 41.35,
+        "lead": 71.45000000000002
+       },
+       "52": {
+        "t_action": 41.300000000000004,
+        "lead": 77.6
+       },
+       "56": {
+        "t_action": 41.550000000000004,
+        "lead": 83.5
+       },
+       "60": {
+        "t_action": 41.35,
+        "lead": 89.80000000000001
+       },
+       "64": {
+        "t_action": 41.300000000000004,
+        "lead": 95.75
+       },
+       "68": {
+        "t_action": 41.35,
+        "lead": 101.75
+       },
+       "72": {
+        "t_action": 41.5,
+        "lead": 107.45000000000002
+       },
+       "76": {
+        "t_action": 41.400000000000006,
+        "lead": 113.55000000000001
+       },
+       "80": {
+        "t_action": 41.550000000000004,
+        "lead": 119.55000000000001
+       },
+       "84": {
+        "t_action": 41.400000000000006,
+        "lead": 125.70000000000002
+       },
+       "88": {
+        "t_action": 41.35,
+        "lead": 131.60000000000002
+       },
+       "92": {
+        "t_action": 41.400000000000006,
+        "lead": 137.45000000000002
+       },
+       "96": {
+        "t_action": 41.400000000000006,
+        "lead": 143.3
+       }
+      }
+     },
+     "isolation_maxdiff": 0.0
+    }
+   }
+  },
+  "7": {
+   "t_src": 40.25,
+   "t_deliver": 40.85,
+   "x_src": 5889.559975213891,
+   "v_src": 21.466084920756455,
+   "Tphys_20": 71.15,
+   "Tphys_60": 130.65,
+   "Tphys_99": 188.55,
+   "Tphys_20_sens01": 70.8,
+   "arms": {
+    "C0": {
+     "episodes_total": 0,
+     "episodes_pre": 0,
+     "episodes_post": 0,
+     "jam_exposure_car_sec": 0.0,
+     "episodes_per_100_car_sec": null,
+     "first_wave_self_anchored": 0,
+     "last_event_time": null,
+     "split": {
+      "all": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "recv_A3": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "nonrecv_A3": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "recv_A2": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "nonrecv_A2": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 0,
+     "episodes_highhalf": 0,
+     "veh_hit": 0,
+     "peak": 0.043458436466533516,
+     "min_gap": 28.32793205352118,
+     "delay": 205.2875427787284,
+     "drac_car_seconds": 0.0,
+     "first_wave_events": 0,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0
+    },
+    "A0": {
+     "episodes_total": 204,
+     "episodes_pre": 0,
+     "episodes_post": 204,
+     "jam_exposure_car_sec": 20808.350000000002,
+     "episodes_per_100_car_sec": 0.9803756664992658,
+     "first_wave_self_anchored": 135,
+     "last_event_time": 306.15000000000003,
+     "split": {
+      "all": {
+       "events": 204,
+       "jam": 20808.350000000002,
+       "rate": 0.9803756664992658
+      },
+      "recv_A3": {
+       "events": 48,
+       "jam": 5251.35,
+       "rate": 0.9140506726841668
+      },
+      "nonrecv_A3": {
+       "events": 156,
+       "jam": 15557.0,
+       "rate": 1.0027640290544448
+      },
+      "recv_A2": {
+       "events": 20,
+       "jam": 2142.3,
+       "rate": 0.9335760631097418
+      },
+      "nonrecv_A2": {
+       "events": 184,
+       "jam": 18666.05,
+       "rate": 0.9857468505655991
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 96,
+     "episodes_highhalf": 108,
+     "veh_hit": 78,
+     "peak": 7.384813290096218,
+     "min_gap": 2.3860641126821065,
+     "delay": 17765.909623586216,
+     "drac_car_seconds": 134.6,
+     "first_wave_events": 135,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0
+    },
+    "A1": {
+     "episodes_total": 203,
+     "episodes_pre": 0,
+     "episodes_post": 203,
+     "jam_exposure_car_sec": 19784.800000000003,
+     "episodes_per_100_car_sec": 1.0260401924709877,
+     "first_wave_self_anchored": 102,
+     "last_event_time": 333.6,
+     "split": {
+      "all": {
+       "events": 203,
+       "jam": 19784.800000000003,
+       "rate": 1.0260401924709877
+      },
+      "recv": {
+       "events": 1,
+       "jam": 216.95000000000002,
+       "rate": 0.4609356994699239
+      },
+      "nonrecv": {
+       "events": 202,
+       "jam": 19567.850000000002,
+       "rate": 1.0323055419987377
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 96,
+     "episodes_highhalf": 107,
+     "veh_hit": 77,
+     "peak": 7.4751113621893905,
+     "min_gap": 2.3860641126821065,
+     "delay": 17766.555571656434,
+     "drac_car_seconds": 142.20000000000002,
+     "first_wave_events": 85,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0,
+     "msg": {
+      "receivers": [
+       60
+      ],
+      "t_action_cap": {
+       "60": 40.85
+      },
+      "cap_bind_frames": {
+       "60": 2745
+      },
+      "non_receiver_bound": 0,
+      "action": {
+       "60": {
+        "t_action": 41.300000000000004,
+        "lead": 89.35
+       }
+      }
+     },
+     "isolation_maxdiff": 0.0
+    },
+    "A2": {
+     "episodes_total": 104,
+     "episodes_pre": 0,
+     "episodes_post": 104,
+     "jam_exposure_car_sec": 17287.600000000002,
+     "episodes_per_100_car_sec": 0.6015872648603623,
+     "first_wave_self_anchored": 79,
+     "last_event_time": 322.8,
+     "split": {
+      "all": {
+       "events": 104,
+       "jam": 17287.600000000002,
+       "rate": 0.6015872648603623
+      },
+      "recv": {
+       "events": 6,
+       "jam": 1778.0500000000002,
+       "rate": 0.3374483282247406
+      },
+      "nonrecv": {
+       "events": 98,
+       "jam": 15509.550000000001,
+       "rate": 0.6318687518335476
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 54,
+     "episodes_highhalf": 50,
+     "veh_hit": 71,
+     "peak": 6.925434578018119,
+     "min_gap": 2.3860641132278033,
+     "delay": 17812.025319817018,
+     "drac_car_seconds": 63.5,
+     "first_wave_events": 22,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0,
+     "msg": {
+      "receivers": [
+       20,
+       30,
+       40,
+       50,
+       60,
+       70,
+       80,
+       90
+      ],
+      "t_action_cap": {
+       "20": 40.85,
+       "30": 40.85,
+       "40": 40.85,
+       "50": 40.85,
+       "60": 40.85,
+       "70": 40.85,
+       "80": 40.85,
+       "90": 40.85
+      },
+      "cap_bind_frames": {
+       "20": 745,
+       "30": 1401,
+       "40": 1714,
+       "50": 2035,
+       "60": 2602,
+       "70": 3346,
+       "80": 4142,
+       "90": 1606
+      },
+      "non_receiver_bound": 0,
+      "action": {
+       "20": {
+        "t_action": 41.35,
+        "lead": 29.800000000000004
+       },
+       "30": {
+        "t_action": 41.85,
+        "lead": 44.25000000000001
+       },
+       "40": {
+        "t_action": 41.400000000000006,
+        "lead": 59.45
+       },
+       "50": {
+        "t_action": 41.400000000000006,
+        "lead": 74.45
+       },
+       "60": {
+        "t_action": 41.300000000000004,
+        "lead": 89.35
+       },
+       "70": {
+        "t_action": 41.35,
+        "lead": 103.5
+       },
+       "80": {
+        "t_action": 41.35,
+        "lead": 118.15
+       },
+       "90": {
+        "t_action": 41.35,
+        "lead": 133.65
+       }
+      }
+     },
+     "isolation_maxdiff": 0.0
+    },
+    "A3": {
+     "episodes_total": 90,
+     "episodes_pre": 0,
+     "episodes_post": 90,
+     "jam_exposure_car_sec": 16586.95,
+     "episodes_per_100_car_sec": 0.5425952329994362,
+     "first_wave_self_anchored": 72,
+     "last_event_time": 288.90000000000003,
+     "split": {
+      "all": {
+       "events": 90,
+       "jam": 16586.95,
+       "rate": 0.5425952329994362
+      },
+      "recv": {
+       "events": 18,
+       "jam": 4188.150000000001,
+       "rate": 0.4297840335231546
+      },
+      "nonrecv": {
+       "events": 72,
+       "jam": 12398.800000000001,
+       "rate": 0.5807013581959544
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 49,
+     "episodes_highhalf": 41,
+     "veh_hit": 66,
+     "peak": 7.1236729962524965,
+     "min_gap": 2.3860641132278033,
+     "delay": 17749.184727642685,
+     "drac_car_seconds": 53.95,
+     "first_wave_events": 3,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0,
+     "msg": {
+      "receivers": [
+       20,
+       24,
+       28,
+       32,
+       36,
+       40,
+       44,
+       48,
+       52,
+       56,
+       60,
+       64,
+       68,
+       72,
+       76,
+       80,
+       84,
+       88,
+       92,
+       96
+      ],
+      "t_action_cap": {
+       "20": 40.85,
+       "24": 40.85,
+       "28": 40.85,
+       "32": 40.85,
+       "36": 40.85,
+       "40": 40.85,
+       "44": 40.85,
+       "48": 40.85,
+       "52": 40.85,
+       "56": 40.85,
+       "60": 40.85,
+       "64": 40.85,
+       "68": 40.85,
+       "72": 40.85,
+       "76": 40.85,
+       "80": 40.85,
+       "84": 40.85,
+       "88": 40.85,
+       "92": 40.85,
+       "96": 40.85
+      },
+      "cap_bind_frames": {
+       "20": 745,
+       "24": 1223,
+       "28": 1374,
+       "32": 632,
+       "36": 1205,
+       "40": 1382,
+       "44": 1978,
+       "48": 1173,
+       "52": 1487,
+       "56": 2555,
+       "60": 2764,
+       "64": 3159,
+       "68": 2015,
+       "72": 3518,
+       "76": 3965,
+       "80": 4251,
+       "84": 538,
+       "88": 1114,
+       "92": 2268,
+       "96": 4852
+      },
+      "non_receiver_bound": 0,
+      "action": {
+       "20": {
+        "t_action": 41.35,
+        "lead": 29.800000000000004
+       },
+       "24": {
+        "t_action": 41.35,
+        "lead": 35.75000000000001
+       },
+       "28": {
+        "t_action": 41.35,
+        "lead": 41.85
+       },
+       "32": {
+        "t_action": 41.400000000000006,
+        "lead": 47.599999999999994
+       },
+       "36": {
+        "t_action": 41.550000000000004,
+        "lead": 53.300000000000004
+       },
+       "40": {
+        "t_action": 41.400000000000006,
+        "lead": 59.45
+       },
+       "44": {
+        "t_action": 41.300000000000004,
+        "lead": 65.44999999999999
+       },
+       "48": {
+        "t_action": 41.5,
+        "lead": 71.30000000000001
+       },
+       "52": {
+        "t_action": 41.400000000000006,
+        "lead": 77.4
+       },
+       "56": {
+        "t_action": 41.35,
+        "lead": 83.35
+       },
+       "60": {
+        "t_action": 41.300000000000004,
+        "lead": 89.35
+       },
+       "64": {
+        "t_action": 41.400000000000006,
+        "lead": 95.0
+       },
+       "68": {
+        "t_action": 41.400000000000006,
+        "lead": 100.65
+       },
+       "72": {
+        "t_action": 41.45,
+        "lead": 106.2
+       },
+       "76": {
+        "t_action": 41.400000000000006,
+        "lead": 112.15
+       },
+       "80": {
+        "t_action": 41.35,
+        "lead": 118.15
+       },
+       "84": {
+        "t_action": 41.550000000000004,
+        "lead": 124.05000000000001
+       },
+       "88": {
+        "t_action": 41.35,
+        "lead": 130.50000000000003
+       },
+       "92": {
+        "t_action": 41.300000000000004,
+        "lead": 136.7
+       },
+       "96": {
+        "t_action": 41.35,
+        "lead": 142.70000000000002
+       }
+      }
+     },
+     "isolation_maxdiff": 0.0
+    }
+   }
+  },
+  "8": {
+   "t_src": 40.25,
+   "t_deliver": 40.85,
+   "x_src": 5889.559975213891,
+   "v_src": 21.466084920756455,
+   "Tphys_20": 70.4,
+   "Tphys_60": 131.25,
+   "Tphys_99": 189.3,
+   "Tphys_20_sens01": 70.10000000000001,
+   "arms": {
+    "C0": {
+     "episodes_total": 0,
+     "episodes_pre": 0,
+     "episodes_post": 0,
+     "jam_exposure_car_sec": 0.0,
+     "episodes_per_100_car_sec": null,
+     "first_wave_self_anchored": 0,
+     "last_event_time": null,
+     "split": {
+      "all": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "recv_A3": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "nonrecv_A3": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "recv_A2": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "nonrecv_A2": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 0,
+     "episodes_highhalf": 0,
+     "veh_hit": 0,
+     "peak": 0.046121617227723934,
+     "min_gap": 27.777370495529794,
+     "delay": 117.23240434913004,
+     "drac_car_seconds": 0.0,
+     "first_wave_events": 0,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0
+    },
+    "A0": {
+     "episodes_total": 175,
+     "episodes_pre": 0,
+     "episodes_post": 175,
+     "jam_exposure_car_sec": 21083.050000000003,
+     "episodes_per_100_car_sec": 0.8300506805229793,
+     "first_wave_self_anchored": 115,
+     "last_event_time": 352.55,
+     "split": {
+      "all": {
+       "events": 175,
+       "jam": 21083.050000000003,
+       "rate": 0.8300506805229793
+      },
+      "recv_A3": {
+       "events": 41,
+       "jam": 5317.400000000001,
+       "rate": 0.7710535223981645
+      },
+      "nonrecv_A3": {
+       "events": 134,
+       "jam": 15765.650000000001,
+       "rate": 0.8499490981976638
+      },
+      "recv_A2": {
+       "events": 24,
+       "jam": 2165.75,
+       "rate": 1.1081611450998499
+      },
+      "nonrecv_A2": {
+       "events": 151,
+       "jam": 18917.3,
+       "rate": 0.7982111612122238
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 61,
+     "episodes_highhalf": 114,
+     "veh_hit": 73,
+     "peak": 7.8070948075059095,
+     "min_gap": 2.225470200005475,
+     "delay": 17796.797543054323,
+     "drac_car_seconds": 105.80000000000001,
+     "first_wave_events": 115,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0
+    },
+    "A1": {
+     "episodes_total": 166,
+     "episodes_pre": 0,
+     "episodes_post": 166,
+     "jam_exposure_car_sec": 19634.45,
+     "episodes_per_100_car_sec": 0.8454527628734189,
+     "first_wave_self_anchored": 86,
+     "last_event_time": 352.70000000000005,
+     "split": {
+      "all": {
+       "events": 166,
+       "jam": 19634.45,
+       "rate": 0.8454527628734189
+      },
+      "recv": {
+       "events": 2,
+       "jam": 205.70000000000002,
+       "rate": 0.9722897423432182
+      },
+      "nonrecv": {
+       "events": 164,
+       "jam": 19428.75,
+       "rate": 0.844109888695876
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 61,
+     "episodes_highhalf": 105,
+     "veh_hit": 73,
+     "peak": 8.123375519083105,
+     "min_gap": 1.7592888287163078,
+     "delay": 17798.629184763216,
+     "drac_car_seconds": 104.45,
+     "first_wave_events": 52,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0,
+     "msg": {
+      "receivers": [
+       60
+      ],
+      "t_action_cap": {
+       "60": 40.85
+      },
+      "cap_bind_frames": {
+       "60": 2847
+      },
+      "non_receiver_bound": 0,
+      "action": {
+       "60": {
+        "t_action": 41.6,
+        "lead": 89.65
+       }
+      }
+     },
+     "isolation_maxdiff": 0.0
+    },
+    "A2": {
+     "episodes_total": 93,
+     "episodes_pre": 0,
+     "episodes_post": 93,
+     "jam_exposure_car_sec": 17277.55,
+     "episodes_per_100_car_sec": 0.5382707617688851,
+     "first_wave_self_anchored": 68,
+     "last_event_time": 351.85,
+     "split": {
+      "all": {
+       "events": 93,
+       "jam": 17277.55,
+       "rate": 0.5382707617688851
+      },
+      "recv": {
+       "events": 12,
+       "jam": 1773.0500000000002,
+       "rate": 0.676799864640027
+      },
+      "nonrecv": {
+       "events": 81,
+       "jam": 15504.5,
+       "rate": 0.5224289722338676
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 34,
+     "episodes_highhalf": 59,
+     "veh_hit": 68,
+     "peak": 7.998923686036152,
+     "min_gap": 1.9523915036797916,
+     "delay": 17771.982256845302,
+     "drac_car_seconds": 63.0,
+     "first_wave_events": 9,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0,
+     "msg": {
+      "receivers": [
+       20,
+       30,
+       40,
+       50,
+       60,
+       70,
+       80,
+       90
+      ],
+      "t_action_cap": {
+       "20": 40.85,
+       "30": 40.85,
+       "40": 40.85,
+       "50": 40.85,
+       "60": 40.85,
+       "70": 40.85,
+       "80": 40.85,
+       "90": 40.85
+      },
+      "cap_bind_frames": {
+       "20": 737,
+       "30": 1603,
+       "40": 1918,
+       "50": 2238,
+       "60": 2899,
+       "70": 3317,
+       "80": 4066,
+       "90": 1469
+      },
+      "non_receiver_bound": 0,
+      "action": {
+       "20": {
+        "t_action": 41.45,
+        "lead": 28.950000000000003
+       },
+       "30": {
+        "t_action": 41.35,
+        "lead": 44.300000000000004
+       },
+       "40": {
+        "t_action": 41.300000000000004,
+        "lead": 59.50000000000001
+       },
+       "50": {
+        "t_action": 41.400000000000006,
+        "lead": 74.6
+       },
+       "60": {
+        "t_action": 41.6,
+        "lead": 89.65
+       },
+       "70": {
+        "t_action": 41.5,
+        "lead": 104.70000000000002
+       },
+       "80": {
+        "t_action": 41.45,
+        "lead": 119.7
+       },
+       "90": {
+        "t_action": 41.35,
+        "lead": 134.65
+       }
+      }
+     },
+     "isolation_maxdiff": 0.0
+    },
+    "A3": {
+     "episodes_total": 83,
+     "episodes_pre": 0,
+     "episodes_post": 83,
+     "jam_exposure_car_sec": 16564.0,
+     "episodes_per_100_car_sec": 0.5010866940352572,
+     "first_wave_self_anchored": 72,
+     "last_event_time": 319.5,
+     "split": {
+      "all": {
+       "events": 83,
+       "jam": 16564.0,
+       "rate": 0.5010866940352572
+      },
+      "recv": {
+       "events": 13,
+       "jam": 4181.3,
+       "rate": 0.3109080907851625
+      },
+      "nonrecv": {
+       "events": 70,
+       "jam": 12382.7,
+       "rate": 0.5653048204349617
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 34,
+     "episodes_highhalf": 49,
+     "veh_hit": 62,
+     "peak": 7.778066809907725,
+     "min_gap": 1.6777018960428904,
+     "delay": 17758.13101474206,
+     "drac_car_seconds": 54.95,
+     "first_wave_events": 5,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0,
+     "msg": {
+      "receivers": [
+       20,
+       24,
+       28,
+       32,
+       36,
+       40,
+       44,
+       48,
+       52,
+       56,
+       60,
+       64,
+       68,
+       72,
+       76,
+       80,
+       84,
+       88,
+       92,
+       96
+      ],
+      "t_action_cap": {
+       "20": 40.85,
+       "24": 40.85,
+       "28": 40.85,
+       "32": 40.85,
+       "36": 40.85,
+       "40": 40.85,
+       "44": 40.85,
+       "48": 40.85,
+       "52": 40.85,
+       "56": 40.85,
+       "60": 40.85,
+       "64": 40.85,
+       "68": 40.85,
+       "72": 40.85,
+       "76": 40.85,
+       "80": 40.85,
+       "84": 40.85,
+       "88": 40.85,
+       "92": 40.85,
+       "96": 40.85
+      },
+      "cap_bind_frames": {
+       "20": 737,
+       "24": 1145,
+       "28": 1293,
+       "32": 1638,
+       "36": 1460,
+       "40": 1910,
+       "44": 2281,
+       "48": 2409,
+       "52": 2541,
+       "56": 2939,
+       "60": 1063,
+       "64": 1364,
+       "68": 3520,
+       "72": 841,
+       "76": 3864,
+       "80": 4053,
+       "84": 4201,
+       "88": 708,
+       "92": 4426,
+       "96": 2413
+      },
+      "non_receiver_bound": 0,
+      "action": {
+       "20": {
+        "t_action": 41.45,
+        "lead": 28.950000000000003
+       },
+       "24": {
+        "t_action": 41.35,
+        "lead": 35.1
+       },
+       "28": {
+        "t_action": 41.300000000000004,
+        "lead": 41.300000000000004
+       },
+       "32": {
+        "t_action": 41.6,
+        "lead": 47.1
+       },
+       "36": {
+        "t_action": 41.35,
+        "lead": 53.4
+       },
+       "40": {
+        "t_action": 41.300000000000004,
+        "lead": 59.50000000000001
+       },
+       "44": {
+        "t_action": 41.400000000000006,
+        "lead": 65.5
+       },
+       "48": {
+        "t_action": 41.45,
+        "lead": 71.55
+       },
+       "52": {
+        "t_action": 41.300000000000004,
+        "lead": 77.69999999999999
+       },
+       "56": {
+        "t_action": 41.300000000000004,
+        "lead": 83.85
+       },
+       "60": {
+        "t_action": 41.6,
+        "lead": 89.65
+       },
+       "64": {
+        "t_action": 41.300000000000004,
+        "lead": 96.1
+       },
+       "68": {
+        "t_action": 41.35,
+        "lead": 101.95000000000002
+       },
+       "72": {
+        "t_action": 41.300000000000004,
+        "lead": 107.79999999999998
+       },
+       "76": {
+        "t_action": 41.300000000000004,
+        "lead": 113.75
+       },
+       "80": {
+        "t_action": 41.45,
+        "lead": 119.7
+       },
+       "84": {
+        "t_action": 41.400000000000006,
+        "lead": 125.80000000000001
+       },
+       "88": {
+        "t_action": 41.35,
+        "lead": 131.70000000000002
+       },
+       "92": {
+        "t_action": 41.300000000000004,
+        "lead": 137.75
+       },
+       "96": {
+        "t_action": 41.45,
+        "lead": 143.5
+       }
+      }
+     },
+     "isolation_maxdiff": 0.0
+    }
+   }
+  },
+  "9": {
+   "t_src": 40.25,
+   "t_deliver": 40.85,
+   "x_src": 5889.559975213891,
+   "v_src": 21.466084920756455,
+   "Tphys_20": 70.9,
+   "Tphys_60": 131.20000000000002,
+   "Tphys_99": 189.70000000000002,
+   "Tphys_20_sens01": 70.60000000000001,
+   "arms": {
+    "C0": {
+     "episodes_total": 0,
+     "episodes_pre": 0,
+     "episodes_post": 0,
+     "jam_exposure_car_sec": 0.0,
+     "episodes_per_100_car_sec": null,
+     "first_wave_self_anchored": 0,
+     "last_event_time": null,
+     "split": {
+      "all": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "recv_A3": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "nonrecv_A3": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "recv_A2": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      },
+      "nonrecv_A2": {
+       "events": 0,
+       "jam": 0.0,
+       "rate": null
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 0,
+     "episodes_highhalf": 0,
+     "veh_hit": 0,
+     "peak": 0.04621168006107943,
+     "min_gap": 28.43344321481436,
+     "delay": 105.82294853738192,
+     "drac_car_seconds": 0.0,
+     "first_wave_events": 0,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0
+    },
+    "A0": {
+     "episodes_total": 247,
+     "episodes_pre": 0,
+     "episodes_post": 247,
+     "jam_exposure_car_sec": 20820.2,
+     "episodes_per_100_car_sec": 1.1863478736995803,
+     "first_wave_self_anchored": 135,
+     "last_event_time": 388.45000000000005,
+     "split": {
+      "all": {
+       "events": 247,
+       "jam": 20820.2,
+       "rate": 1.1863478736995803
+      },
+      "recv_A3": {
+       "events": 58,
+       "jam": 5250.150000000001,
+       "rate": 1.104730341037875
+      },
+      "nonrecv_A3": {
+       "events": 189,
+       "jam": 15570.050000000001,
+       "rate": 1.2138689342680338
+      },
+      "recv_A2": {
+       "events": 24,
+       "jam": 2142.55,
+       "rate": 1.1201605563464097
+      },
+      "nonrecv_A2": {
+       "events": 223,
+       "jam": 18677.65,
+       "rate": 1.193940351168375
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 91,
+     "episodes_highhalf": 156,
+     "veh_hit": 80,
+     "peak": 8.240955381533318,
+     "min_gap": 1.6871452454088285,
+     "delay": 17664.625484739256,
+     "drac_car_seconds": 142.8,
+     "first_wave_events": 135,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0
+    },
+    "A1": {
+     "episodes_total": 204,
+     "episodes_pre": 0,
+     "episodes_post": 204,
+     "jam_exposure_car_sec": 19155.95,
+     "episodes_per_100_car_sec": 1.0649432682795685,
+     "first_wave_self_anchored": 103,
+     "last_event_time": 388.85,
+     "split": {
+      "all": {
+       "events": 204,
+       "jam": 19155.95,
+       "rate": 1.0649432682795685
+      },
+      "recv": {
+       "events": 1,
+       "jam": 206.25,
+       "rate": 0.48484848484848486
+      },
+      "nonrecv": {
+       "events": 203,
+       "jam": 18949.7,
+       "rate": 1.0712570647556425
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 91,
+     "episodes_highhalf": 113,
+     "veh_hit": 77,
+     "peak": 8.240955381533318,
+     "min_gap": 1.6871452454088285,
+     "delay": 17669.666665938857,
+     "drac_car_seconds": 121.60000000000001,
+     "first_wave_events": 64,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0,
+     "msg": {
+      "receivers": [
+       60
+      ],
+      "t_action_cap": {
+       "60": 40.85
+      },
+      "cap_bind_frames": {
+       "60": 2871
+      },
+      "non_receiver_bound": 0,
+      "action": {
+       "60": {
+        "t_action": 41.5,
+        "lead": 89.70000000000002
+       }
+      }
+     },
+     "isolation_maxdiff": 0.0
+    },
+    "A2": {
+     "episodes_total": 123,
+     "episodes_pre": 0,
+     "episodes_post": 123,
+     "jam_exposure_car_sec": 17252.4,
+     "episodes_per_100_car_sec": 0.7129442860123808,
+     "first_wave_self_anchored": 77,
+     "last_event_time": 388.20000000000005,
+     "split": {
+      "all": {
+       "events": 123,
+       "jam": 17252.4,
+       "rate": 0.7129442860123808
+      },
+      "recv": {
+       "events": 7,
+       "jam": 1774.1000000000001,
+       "rate": 0.3945662589481991
+      },
+      "nonrecv": {
+       "events": 116,
+       "jam": 15478.300000000001,
+       "rate": 0.7494363076048403
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 47,
+     "episodes_highhalf": 76,
+     "veh_hit": 74,
+     "peak": 7.062472881537001,
+     "min_gap": 2.3342950056421614,
+     "delay": 17661.393827064603,
+     "drac_car_seconds": 71.8,
+     "first_wave_events": 7,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0,
+     "msg": {
+      "receivers": [
+       20,
+       30,
+       40,
+       50,
+       60,
+       70,
+       80,
+       90
+      ],
+      "t_action_cap": {
+       "20": 40.85,
+       "30": 40.85,
+       "40": 40.85,
+       "50": 40.85,
+       "60": 40.85,
+       "70": 40.85,
+       "80": 40.85,
+       "90": 40.85
+      },
+      "cap_bind_frames": {
+       "20": 931,
+       "30": 1405,
+       "40": 1870,
+       "50": 2481,
+       "60": 3000,
+       "70": 3297,
+       "80": 3615,
+       "90": 4397
+      },
+      "non_receiver_bound": 0,
+      "action": {
+       "20": {
+        "t_action": 41.5,
+        "lead": 29.400000000000006
+       },
+       "30": {
+        "t_action": 41.45,
+        "lead": 44.75
+       },
+       "40": {
+        "t_action": 41.400000000000006,
+        "lead": 59.95
+       },
+       "50": {
+        "t_action": 41.45,
+        "lead": 74.8
+       },
+       "60": {
+        "t_action": 41.5,
+        "lead": 89.70000000000002
+       },
+       "70": {
+        "t_action": 41.35,
+        "lead": 105.45000000000002
+       },
+       "80": {
+        "t_action": 41.45,
+        "lead": 120.25000000000001
+       },
+       "90": {
+        "t_action": 41.400000000000006,
+        "lead": 134.85
+       }
+      }
+     },
+     "isolation_maxdiff": 0.0
+    },
+    "A3": {
+     "episodes_total": 92,
+     "episodes_pre": 0,
+     "episodes_post": 92,
+     "jam_exposure_car_sec": 16497.15,
+     "episodes_per_100_car_sec": 0.5576720827536877,
+     "first_wave_self_anchored": 67,
+     "last_event_time": 387.1,
+     "split": {
+      "all": {
+       "events": 92,
+       "jam": 16497.15,
+       "rate": 0.5576720827536877
+      },
+      "recv": {
+       "events": 20,
+       "jam": 4160.05,
+       "rate": 0.4807634523623514
+      },
+      "nonrecv": {
+       "events": 72,
+       "jam": 12337.1,
+       "rate": 0.5836055474949542
+      }
+     },
+     "pre_plus_post_eq_total": true,
+     "episodes_lowhalf": 41,
+     "episodes_highhalf": 51,
+     "veh_hit": 65,
+     "peak": 6.918322868669437,
+     "min_gap": 2.335196545964209,
+     "delay": 17651.73073082455,
+     "drac_car_seconds": 52.45,
+     "first_wave_events": 1,
+     "active_tail_segments": 0,
+     "open_tail_segments": 0,
+     "contact": 0,
+     "msg": {
+      "receivers": [
+       20,
+       24,
+       28,
+       32,
+       36,
+       40,
+       44,
+       48,
+       52,
+       56,
+       60,
+       64,
+       68,
+       72,
+       76,
+       80,
+       84,
+       88,
+       92,
+       96
+      ],
+      "t_action_cap": {
+       "20": 40.85,
+       "24": 40.85,
+       "28": 40.85,
+       "32": 40.85,
+       "36": 40.85,
+       "40": 40.85,
+       "44": 40.85,
+       "48": 40.85,
+       "52": 40.85,
+       "56": 40.85,
+       "60": 40.85,
+       "64": 40.85,
+       "68": 40.85,
+       "72": 40.85,
+       "76": 40.85,
+       "80": 40.85,
+       "84": 40.85,
+       "88": 40.85,
+       "92": 40.85,
+       "96": 40.85
+      },
+      "cap_bind_frames": {
+       "20": 931,
+       "24": 1129,
+       "28": 1366,
+       "32": 1554,
+       "36": 1730,
+       "40": 1866,
+       "44": 2007,
+       "48": 2367,
+       "52": 2501,
+       "56": 2745,
+       "60": 2884,
+       "64": 3035,
+       "68": 3117,
+       "72": 3310,
+       "76": 3747,
+       "80": 1333,
+       "84": 4014,
+       "88": 4669,
+       "92": 973,
+       "96": 1968
+      },
+      "non_receiver_bound": 0,
+      "action": {
+       "20": {
+        "t_action": 41.5,
+        "lead": 29.400000000000006
+       },
+       "24": {
+        "t_action": 41.35,
+        "lead": 35.6
+       },
+       "28": {
+        "t_action": 41.400000000000006,
+        "lead": 41.75
+       },
+       "32": {
+        "t_action": 41.400000000000006,
+        "lead": 47.95
+       },
+       "36": {
+        "t_action": 41.300000000000004,
+        "lead": 54.050000000000004
+       },
+       "40": {
+        "t_action": 41.400000000000006,
+        "lead": 59.95
+       },
+       "44": {
+        "t_action": 41.5,
+        "lead": 65.75
+       },
+       "48": {
+        "t_action": 41.25,
+        "lead": 72.05000000000001
+       },
+       "52": {
+        "t_action": 41.400000000000006,
+        "lead": 77.75
+       },
+       "56": {
+        "t_action": 41.300000000000004,
+        "lead": 83.80000000000001
+       },
+       "60": {
+        "t_action": 41.5,
+        "lead": 89.70000000000002
+       },
+       "64": {
+        "t_action": 41.35,
+        "lead": 96.15
+       },
+       "68": {
+        "t_action": 41.550000000000004,
+        "lead": 102.15
+       },
+       "72": {
+        "t_action": 41.400000000000006,
+        "lead": 108.35
+       },
+       "76": {
+        "t_action": 41.400000000000006,
+        "lead": 114.35
+       },
+       "80": {
+        "t_action": 41.45,
+        "lead": 120.25000000000001
+       },
+       "84": {
+        "t_action": 41.300000000000004,
+        "lead": 126.15
+       },
+       "88": {
+        "t_action": 41.6,
+        "lead": 131.65
+       },
+       "92": {
+        "t_action": 41.400000000000006,
+        "lead": 137.85
+       },
+       "96": {
+        "t_action": 41.35,
+        "lead": 143.85000000000002
+       }
+      }
+     },
+     "isolation_maxdiff": 0.0
+    }
+   }
+  }
+ },
+ "summary": {
+  "A1": {
+   "median": 196.0,
+   "range": [
+    148,
+    228
+   ],
+   "diffs": [
+    -54,
+    13,
+    -5,
+    -61,
+    -12,
+    -26,
+    -9,
+    -1,
+    -9,
+    -43
+   ],
+   "diff_median": -10.5,
+   "rel": -0.04794520547945205,
+   "seeds_down": 9,
+   "seeds_up": 1,
+   "peak_median": 7.581028282077604,
+   "peak_rel": 0.026762851714100495,
+   "quadrant": "③ 实质无差",
+   "rate_median": 1.004582901836709,
+   "rate_rel": 0.018513244360421486,
+   "rate_seeds_down": 4,
+   "delay_median": 17793.58433696723,
+   "delay_diff_median": -1.138084649483062
+  },
+  "A2": {
+   "median": 104.0,
+   "range": [
+    73,
+    182
+   ],
+   "diffs": [
+    -139,
+    -111,
+    -55,
+    -150,
+    -73,
+    -66,
+    -107,
+    -100,
+    -82,
+    -124
+   ],
+   "diff_median": -103.5,
+   "rel": -0.4726027397260274,
+   "seeds_down": 10,
+   "seeds_up": 0,
+   "peak_median": 7.696958567075015,
+   "peak_rel": -0.0007437901723373932,
+   "quadrant": "① 降险信号",
+   "rate_median": 0.6062137178843481,
+   "rate_rel": -0.35396089704337186,
+   "rate_seeds_down": 10,
+   "delay_median": 17769.59811505676,
+   "delay_diff_median": -30.302770344344026
+  },
+  "A3": {
+   "median": 94.0,
+   "range": [
+    80,
+    166
+   ],
+   "diffs": [
+    -147,
+    -126,
+    -61,
+    -143,
+    -32,
+    -82,
+    -128,
+    -114,
+    -92,
+    -155
+   ],
+   "diff_median": -120.0,
+   "rel": -0.547945205479452,
+   "seeds_down": 10,
+   "seeds_up": 0,
+   "peak_median": 7.0713560774846265,
+   "peak_rel": -0.043171848872485215,
+   "quadrant": "① 降险信号",
+   "rate_median": 0.5682376131891307,
+   "rate_rel": -0.42979650320932994,
+   "rate_seeds_down": 10,
+   "delay_median": 17753.657871192372,
+   "delay_diff_median": -41.569952586924046
+  }
+ },
+ "A0": {
+  "median": 219.0,
+  "range": [
+   160,
+   248
+  ],
+  "peak_median": 7.5959540488010635
+ },
+ "gates": {
+  "fails": [],
+  "ok": true
+ }
+}
