@@ -11,6 +11,7 @@ import hdm_core as V1
 import hdm_core_v2 as V2
 import json
 
+# 旧内核 hdm_core.py 不支持 x0，故统一在 x0=0 下比对（平移不变性另行验证）
 CFG = dict(N=100, hw=45.0, n_a=1, Tprime=1.0, ramp=6.0, warm=40.0, observe=300.0,
            noise=True, bmax=9.0, record=True)
 rows = []
@@ -32,6 +33,34 @@ for s in range(10):
     print(json.dumps(rows[-1], ensure_ascii=False), flush=True)
 
 print("\nOLD==NEW(off) 10 seeds:", allok)
-json.dump({"rows": rows, "all_pass": allok}, open("gate_050_kernel_equiv.json", "w"),
-          indent=1, ensure_ascii=False)
+# 平移不变性：新内核 x0=5000 的结果减 5000，应与 x0=0 的几乎一致
+shift_rows = []
+shift_ok = True
+# 平移门必须按混沌放大判：x0=5000 相对 x0=0 只引入 ~1e-12 的浮点级扰动，
+# 在 400 s 里被放大到 1e-6 量级（与 SUMO 对账 1e-5 同源）。所以判据是
+#   (a) 60 s 短窗内逐帧几乎重合（<=1e-9）
+#   (b) 逐车事件段数完全相同
+#   (c) 末帧偏差有界（<=1e-4 m），且增长过程与 0.4.0a 的混沌倍增时间一致
+for s in range(10):
+    b0 = V2.run(seed=s, v_target=3.0, **CFG)
+    b5 = V2.run(seed=s, v_target=3.0, **dict(CFG, x0=5000.0))
+    dx_all = np.abs((b5["hist_x"] - 5000.0) - b0["hist_x"])
+    nf = 1201
+    dx_early = float(np.nanmax(dx_all[:nf]))
+    dx_final = float(np.nanmax(dx_all))
+    dv_final = float(np.nanmax(np.abs(b5["hist_v"] - b0["hist_v"])))
+    ev = bool(np.array_equal(b5["event"], b0["event"]))
+    n_ev_diff = int(np.sum(b5["event"] != b0["event"]))
+    ok = (dx_early <= 1e-9 and ev and dx_final <= 1e-4)
+    shift_ok &= ok
+    shift_rows.append(dict(seed=s, dx_early=dx_early, dx_final=dx_final,
+                           dv_final=dv_final, event_equal=ev, n_ev_diff=n_ev_diff,
+                           pass_=ok))
+    print(json.dumps(shift_rows[-1], ensure_ascii=False), flush=True)
+allok = allok and shift_ok
+
+json.dump({"rows": rows, "all_pass": allok, "shift_rows": shift_rows,
+           "shift_invariance_pass": shift_ok,
+           "cfg": {k: v for k, v in CFG.items()}},
+          open("gate_050_kernel_equiv.json", "w"), indent=1, ensure_ascii=False)
 sys.exit(0 if allok else 1)

@@ -15,7 +15,7 @@ import os, sys, json, time
 sys.path.insert(0, r"D:/shen/TJU/AAD/code/scripts/hdm")
 import numpy as np
 import hdm_core_v2 as H
-from hdm_msg import MsgState, count_episodes
+from hdm_msg import MsgState, Message, count_episodes
 from concurrent.futures import ProcessPoolExecutor
 
 DT = 0.05
@@ -23,9 +23,12 @@ N = 100
 HW = 45.0
 TP = 1.0
 BMAX = 9.0
-WARM, RAMP, OBS = 40.0, 6.0, 360.0
+WARM, RAMP = 40.0, 6.0
+OBS = float(os.environ.get("AAD050_OBS", "360.0"))   # 延长窗用 AAD050_OBS=560
 VTGT = 3.0
 X0 = 5000.0
+MAXSPEED = 50.0   # vType 锁定的 maxSpeed，用于速度上界硬门
+NET_LEN = 13000.0  # hdm_recon_long 路网长度；C0 不进 SUMO 故不受此限
 DRAC_TH = 3.4
 MERGE_GAP = 0.30
 ZONE = list(range(20, 100))
@@ -40,15 +43,24 @@ ARMS = {
     "A1": [60],
     "A2": [20, 30, 40, 50, 60, 70, 80, 90],
     "A3": list(range(20, 100, 4)),
+    # 晚到对照（GPT+Gemini 一致认为这是分离「信息提前量」与「减速动作本身」的关键臂）：
+    # 接收车与响应规则与 A2/A3 完全相同，唯一差别是消息在物理波到达该组第一辆车时才送达。
+    "A2L": [20, 30, 40, 50, 60, 70, 80, 90],
+    "A3L": list(range(20, 100, 4)),
 }
+MSG_ARMS = ("A1", "A2", "A3", "A2L", "A3L")
+LATE_ARMS = ("A2L", "A3L")
 COMMON = dict(N=N, hw=HW, n_a=1, Tprime=TP, ramp=RAMP, warm=WARM, observe=OBS,
               noise=True, bmax=BMAX, record=True, drac_log=True, x0=X0)
 
 
 def run_msg(args):
     """模块级函数，可被 ProcessPoolExecutor 序列化。"""
-    arm, seed, t_deliver = args
-    ms = MsgState(receivers=ARMS[arm], t_deliver=t_deliver, factor=0.70, rate=1.0, N=N)
+    arm, seed, t_deliver, t_src, x_src, v_src = args
+    msg = Message(event_id=seed, t_src=t_src, x_src=x_src, v_src=v_src,
+                  receivers=ARMS[arm], t_deliver=t_deliver, factor=0.70, rate=1.0)
+    ms = MsgState(receivers=ARMS[arm], t_deliver=t_deliver, factor=0.70, rate=1.0,
+                  N=N, message=msg)
     r = H.run(seed=seed, v_target=VTGT, msg_state=ms, **COMMON)
     return arm, seed, r, ms
 
@@ -78,7 +90,8 @@ def tphys_from(dv, thr, steps_warm):
     return out
 
 
-def main(out_json="recon_050.json"):
+def main(out_json=None):
+    out_json = out_json or os.environ.get("AAD050_OUT", "recon_050.json")
     t0 = time.time()
     steps_warm = int(round(WARM / DT))
 
@@ -105,7 +118,21 @@ def main(out_json="recon_050.json"):
                             v_src=float(rA0["hist_v"][m_src, 0]),
                             m_src=m_src, k_eff=int(np.ceil((t_src + 0.6) / DT)))
 
-    tasks2 = [(arm, s, timing[s]["t_deliver"]) for arm in ("A1", "A2", "A3") for s in range(10)]
+    # 晚到时刻：该组接收车中**最早**被波触及的那辆的 T_phys + 0.6 s（最宽松的晚到条件）
+    tasks2 = []
+    for s in range(10):
+        for arm in MSG_ARMS:
+            td = timing[s]["t_deliver"]
+            if arm in LATE_ARMS:
+                rA0s = res[("A0", s)][0]
+                rC0s = res[("C0", s)][0]
+                dv_s = rC0s["hist_v"] - rA0s["hist_v"]
+                tps = tphys_from(dv_s, TARGET_ACQ, steps_warm)
+                arr = [tps[i] for i in ARMS[arm] if tps[i] is not None]
+                timing[s][f"tphys_min_{arm}"] = min(arr) if arr else np.nan
+                td = (min(arr) if arr else td) + 0.6
+            tasks2.append((arm, s, td, timing[s]["t_src"],
+                           timing[s]["x_src"], timing[s]["v_src"]))
     with ProcessPoolExecutor(max_workers=6) as ex:
         for arm, seed, r, ms in ex.map(run_msg, tasks2):
             res[(arm, seed)] = (r, ms)
@@ -190,7 +217,8 @@ def main(out_json="recon_050.json"):
                 split["recv_A2"] = _rate([i for i in ZONE if i in set(ARMS["A2"])])
                 split["nonrecv_A2"] = _rate([i for i in ZONE if i not in set(ARMS["A2"])])
             last_ev = max([b for i in ZONE for (a, b, d) in ep_per[i]], default=-1)
-            arm_rec = dict(episodes_total=ep_all, episodes_pre=ep_pre, episodes_post=ep_post,
+            arm_rec = dict(safety=r.get("safety"), episodes_total=ep_all,
+                           episodes_pre=ep_pre, episodes_post=ep_post,
                            jam_exposure_car_sec=jam_exp, episodes_per_100_car_sec=rate_per_100,
                            first_wave_self_anchored=fw_self,
                            last_event_time=(last_ev * DT if last_ev >= 0 else None),
@@ -204,7 +232,7 @@ def main(out_json="recon_050.json"):
                            contact=int(r.get("contact_frames", 0)))
             if ms is not None:
                 arm_rec["msg"] = dict(
-                    receivers=ARMS[arm],
+                    receivers=ARMS[arm], t_deliver=float(ms.t_deliver),
                     t_action_cap={int(i): (None if np.isnan(ms.t_action[i]) else float(ms.t_action[i]))
                                   for i in ARMS[arm]},
                     cap_bind_frames={int(i): int(ms.cap_bind_frames[i]) for i in ARMS[arm]},
@@ -224,15 +252,34 @@ def main(out_json="recon_050.json"):
                                        lead=(Tp5[i] - t_act) if (t_act is not None and Tp5[i]) else None)
                 arm_rec["msg"]["action"] = act
                 lo = min(ARMS[arm])
-                arm_rec["isolation_maxdiff"] = float(
-                    np.max(np.abs(r["hist_x"][:, :lo] - rA0["hist_x"][:, :lo]))) if lo > 0 else 0.0
+                if lo > 0:
+                    arm_rec["isolation_maxdiff"] = float(
+                        np.max(np.abs(r["hist_x"][:, :lo] - rA0["hist_x"][:, :lo])))
+                    arm_rec["isolation_maxdiff_v"] = float(
+                        np.max(np.abs(r["hist_v"][:, :lo] - rA0["hist_v"][:, :lo])))
+                    arm_rec["isolation_maxdiff_a"] = float(
+                        np.max(np.abs(r["hist_a"][:, :lo] - rA0["hist_a"][:, :lo])))
+                else:
+                    arm_rec["isolation_maxdiff"] = 0.0
+                    arm_rec["isolation_maxdiff_v"] = 0.0
+                    arm_rec["isolation_maxdiff_a"] = 0.0
+                # 五环溯源（第 5 环用轨迹差分动作时刻，不用内核自报）
+                tr = ms.trace()
+                tr["ring5_action"] = {int(i): v["t_action"]
+                                      for i, v in arm_rec["msg"]["action"].items()}
+                tr["ring5_definition"] = "Δv>=0.5 m/s 持续>=0.2 s 且相对 C0-A0 差分（预锁）"
+                arm_rec["trace"] = tr
             rec["arms"][arm] = arm_rec
         out["seeds"][seed] = rec
+        try:                      # 增量落盘：任何后段异常都不会丢已完成的结果
+            json.dump(out, open(out_json + ".partial", "w"), indent=1, ensure_ascii=False)
+        except Exception:
+            pass
 
     base = [out["seeds"][s]["arms"]["A0"]["episodes_total"] for s in range(10)]
     base_peak = [out["seeds"][s]["arms"]["A0"]["peak"] for s in range(10)]
     ssum = {}
-    for arm in ("A1", "A2", "A3"):
+    for arm in MSG_ARMS:
         vals = [out["seeds"][s]["arms"][arm]["episodes_total"] for s in range(10)]
         pks = [out["seeds"][s]["arms"][arm]["peak"] for s in range(10)]
         diffs = [v - b for v, b in zip(vals, base)]
@@ -267,28 +314,87 @@ def main(out_json="recon_050.json"):
 
     for seed in range(10):
         s = out["seeds"][seed]
-        for arm in ("A1", "A2", "A3"):
+        # 硬门 7：五臂全程安全（含 C0/A0、含预热期、含非有限值与越界）
+        for arm in ARMS:
+            sf = s["arms"][arm].get("safety") or {}
+            if sf.get("contact_warm", 0) != 0:
+                fail.append(f"seed{seed} {arm}: 预热期接触 {sf['contact_warm']}")
+            if sf.get("contact_obs", 0) != 0:
+                fail.append(f"seed{seed} {arm}: 观测期接触 {sf['contact_obs']}")
+            if sf.get("nonfinite", 0) != 0:
+                fail.append(f"seed{seed} {arm}: 非有限值 {sf['nonfinite']}")
+            if sf.get("min_speed", 0) < -1e-9:
+                fail.append(f"seed{seed} {arm}: 负速度 {sf.get('min_speed')}")
+            if sf.get("max_speed", 0) > MAXSPEED + 1e-6:
+                fail.append(f"seed{seed} {arm}: 速度超上限 {sf.get('max_speed')}")
+            if arm != "C0" and sf.get("max_abs_x", 0) > NET_LEN:
+                fail.append(f"seed{seed} {arm}: 超出路网 {sf.get('max_abs_x'):.1f} > {NET_LEN}")
+            if sf.get("oob", 0) != 0:
+                fail.append(f"seed{seed} {arm}: 越界帧 {sf.get('oob')} min_x={sf.get('min_x')} max|x|={sf.get('max_abs_x')}")
+            if sf.get("teleport", 0) != 0:
+                fail.append(f"seed{seed} {arm}: 瞬移帧 {sf.get('teleport')}")
+            if s["arms"][arm]["open_tail_segments"] > 0:
+                fail.append(f"seed{seed} {arm}: 末帧未闭合段 {s['arms'][arm]['open_tail_segments']}")
+        for arm in MSG_ARMS:
             a = s["arms"][arm]
+            late = arm in LATE_ARMS
             if not a["pre_plus_post_eq_total"]:
                 fail.append(f"seed{seed} {arm}: 前段+后段 != 全窗")
             if a["msg"]["non_receiver_bound"] != 0:
                 fail.append(f"seed{seed} {arm}: 非接收车被限速 {a['msg']['non_receiver_bound']}")
-            if a.get("isolation_maxdiff", 0.0) > 1e-12:
-                fail.append(f"seed{seed} {arm}: 隔离区漂移 {a['isolation_maxdiff']:.3e}")
-            for i, act in a["msg"]["action"].items():
-                if act["t_action"] is None:
+            for key in ("isolation_maxdiff", "isolation_maxdiff_v", "isolation_maxdiff_a"):
+                if a.get(key, 0.0) > 1e-12:
+                    fail.append(f"seed{seed} {arm}: 隔离区{key} 漂移 {a[key]:.3e}")
+            # 硬门 1：五环溯源逐车闭合
+            tr = a.get("trace") or {}
+            pl = tr.get("ring2_payload") or {}
+            if not all(np.isfinite(pl.get(k, float("nan"))) for k in ("t_src", "x_src", "v_src")):
+                fail.append(f"seed{seed} {arm}: 载荷字段缺失 {pl}")
+            for i in ARMS[arm]:
+                d3 = (tr.get("ring3_delivered") or {}).get(i)
+                d4 = (tr.get("ring4_cap_bind") or {}).get(i, 0)
+                d5 = (tr.get("ring5_action") or {}).get(i)
+                if d3 is None:
+                    fail.append(f"seed{seed} {arm} 车{i}: 未记录送达时刻")
+                if d4 <= 0 and not late:
+                    fail.append(f"seed{seed} {arm} 车{i}: 控速从未介入")
+                if d5 is None and not late:
                     fail.append(f"seed{seed} {arm} 车{i}: 动作未确认")
-                elif act["lead"] is None or act["lead"] < MIN_LEAD:
-                    fail.append(f"seed{seed} {arm} 车{i}: 提前量 {act['lead']}")
-            if a["contact"]:
-                fail.append(f"seed{seed} {arm}: 接触 {a['contact']}")
-        for arm in ARMS:
-            if s["arms"][arm]["open_tail_segments"] > 0:
-                fail.append(f"seed{seed} {arm}: 末帧未闭合段 {s['arms'][arm]['open_tail_segments']}")
+                if not (tr.get("applicable") or {}).get(i, False):
+                    fail.append(f"seed{seed} {arm} 车{i}: 载荷适用性判定为否")
+            if not late:
+                for i, act in a["msg"]["action"].items():
+                    if act["t_action"] is None:
+                        fail.append(f"seed{seed} {arm} 车{i}: 动作未确认（差分判据）")
+                    elif act["lead"] is None or act["lead"] < MIN_LEAD:
+                        fail.append(f"seed{seed} {arm} 车{i}: 提前量 {act['lead']}")
+
+    # 早报 vs 晚报：同接收车、同规则，唯一差别是送达时刻
+    pairs = {}
+    for early, late in (("A2", "A2L"), ("A3", "A3L")):
+        e = [out["seeds"][s]["arms"][early]["episodes_total"] for s in range(10)]
+        l = [out["seeds"][s]["arms"][late]["episodes_total"] for s in range(10)]
+        b = [out["seeds"][s]["arms"]["A0"]["episodes_total"] for s in range(10)]
+        de = [x - y for x, y in zip(e, b)]
+        dl = [x - y for x, y in zip(l, b)]
+        d = [x - y for x, y in zip(e, l)]          # 早 − 晚（负 = 早报更好）
+        pairs[f"{early}_vs_{late}"] = dict(
+            early_median=float(np.median(e)), late_median=float(np.median(l)),
+            A0_median=float(np.median(b)),
+            early_rel=float(np.median(de)) / float(np.median(b)),
+            late_rel=float(np.median(dl)) / float(np.median(b)),
+            early_minus_late_median=float(np.median(d)),
+            early_minus_late_diffs=[int(x) for x in d],
+            early_better_seeds=int(sum(1 for x in d if x < 0)),
+            late_better_seeds=int(sum(1 for x in d if x > 0)),
+            tie_seeds=int(sum(1 for x in d if x == 0)),
+            late_deliver=[out["seeds"][s]["arms"][late]["msg"]["t_deliver"] for s in range(10)],
+            early_deliver=[out["seeds"][s]["arms"][early]["msg"]["t_deliver"] for s in range(10)])
+    out["early_vs_late"] = pairs
 
     out["gates"] = dict(fails=fail, ok=(len(fail) == 0))
     json.dump(out, open(out_json, "w"), indent=1, ensure_ascii=False)
-    print(json.dumps({"summary": ssum, "A0": out["A0"],
+    print(json.dumps({"summary": ssum, "early_vs_late": pairs, "A0": out["A0"],
                       "gate_pass": len(fail) == 0, "n_fail": len(fail)},
                      ensure_ascii=False, indent=1), flush=True)
     if fail:

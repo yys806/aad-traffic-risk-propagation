@@ -16,7 +16,7 @@ SUMO_HOME = r"C:\Program Files (x86)\Eclipse\Sumo"
 sys.path.insert(0, os.path.join(SUMO_HOME, "tools"))
 import numpy as np
 import hdm_core_v2 as H
-from hdm_msg import MsgState, count_episodes
+from hdm_msg import MsgState, Message, count_episodes
 import traci
 
 NET = r"D:/shen/TJU/AAD/code/networks/hdm_recon_long/hdm_recon_long.net.xml"
@@ -41,14 +41,18 @@ class GateFail(Exception):
     pass
 
 
-def run_sumo(arm, seed, t_deliver):
+def run_sumo(arm, seed, t_deliver, pay):
     v_eq = H.equilibrium_speed(HW)
     bmax_arr = np.full(N, BMAX); Tp = np.full(N, TP)
     rng = np.random.default_rng(seed)
     ws = rng.standard_normal(N); wv = rng.standard_normal(N)
     ms = None
     if ARMS[arm]:
-        ms = MsgState(receivers=ARMS[arm], t_deliver=t_deliver, factor=0.70, rate=1.0, N=N)
+        msg = Message(event_id=seed, t_src=pay["t_src"], x_src=pay["x_src"],
+                      v_src=pay["v_src"],
+                      receivers=ARMS[arm], t_deliver=t_deliver, factor=0.70, rate=1.0)
+        ms = MsgState(receivers=ARMS[arm], t_deliver=t_deliver, factor=0.70, rate=1.0,
+                      N=N, message=msg)
 
     cfg = [os.path.join(SUMO_HOME, "bin", "sumo.exe"), "-n", NET, "-a", VT,
            "--step-length", str(DT), "--step-method.ballistic", "true",
@@ -102,7 +106,7 @@ def run_sumo(arm, seed, t_deliver):
             v_new = np.maximum(v + na * DT, 0.0)
             acc = na
             if ms is not None:
-                v_new, modified = ms.apply(v_new, v, k * DT, DT)
+                v_new, modified = ms.apply(v_new, v, (k + 1) * DT, DT, x=x)
                 if modified.any():
                     acc = na.copy()
                     acc[modified] = (v_new[modified] - v[modified]) / DT
@@ -128,10 +132,14 @@ def run_sumo(arm, seed, t_deliver):
         traci.close()
 
 
-def run_py(arm, seed, t_deliver):
+def run_py(arm, seed, t_deliver, pay):
     ms = None
     if ARMS[arm]:
-        ms = MsgState(receivers=ARMS[arm], t_deliver=t_deliver, factor=0.70, rate=1.0, N=N)
+        msg = Message(event_id=seed, t_src=pay["t_src"], x_src=pay["x_src"],
+                      v_src=pay["v_src"],
+                      receivers=ARMS[arm], t_deliver=t_deliver, factor=0.70, rate=1.0)
+        ms = MsgState(receivers=ARMS[arm], t_deliver=t_deliver, factor=0.70, rate=1.0,
+                      N=N, message=msg)
     r = H.run(N=N, hw=HW, n_a=1, Tprime=TP, seed=seed, v_target=VTGT, ramp=RAMP,
               warm=WARM, observe=OBS, noise=True, bmax=BMAX, record=True,
               drac_log=True, msg_state=ms, x0=X0)
@@ -153,8 +161,11 @@ def main():
         m_src = next(m for m in range(800, hv0.shape[0]) if hv0[m] < rA0["v_eq"] - 0.5)
         t_deliver = m_src * DT + 0.6
 
-        S = run_sumo(arm, seed, t_deliver)
-        P, pms = run_py(arm, seed, t_deliver)
+        pay = dict(t_src=float(m_src * DT),
+                   x_src=float(rA0["hist_x"][m_src, 0]),
+                   v_src=float(rA0["hist_v"][m_src, 0]))
+        S = run_sumo(arm, seed, t_deliver, pay)
+        P, pms = run_py(arm, seed, t_deliver, pay)
         n = S["nsteps"]
         rx = P["hist_x"][:n + 1]; rv = P["hist_v"][:n + 1]
         ex = np.abs(S["hist_x"][:n + 1] - rx); ev = np.abs(S["hist_v"][:n + 1] - rv)
@@ -164,18 +175,24 @@ def main():
                    early_max_err_v=float(np.max(ev[:nf])),
                    max_err_x=float(np.nanmax(ex)), max_err_v=float(np.nanmax(ev)),
                    contact=S["bad"]["contact"])
-        # 逐车事件段数（两种合并容差）
+        # 逐车事件段数（两种合并容差）——必须逐车比，不能只比总段数
         for gname, gap in (("gap030", 0.30), ("gap000", 0.0)):
-            es, ep = 0, 0
+            per_s, per_p = {}, {}
             for i in ZONE:
-                es += len(count_episodes(S["drac"][m_src:, i], DT, DRAC_TH, merge_gap_s=gap))
-                ep += len(count_episodes(P["drac"][m_src:, i], DT, DRAC_TH, merge_gap_s=gap))
-            rec[gname] = dict(sumo=es, py=ep, equal=(es == ep))
-        # 逐车峰值/净距
-        pk = np.max(np.abs(S["M"].max_drac[ZONE] - np.asarray(P["max_drac"])[ZONE]))
-        gp = np.max(np.abs(S["M"].min_gap[ZONE] - np.asarray(P["min_gap"])[ZONE]))
-        pkl = max(abs(pk) / max(abs(np.asarray(P["max_drac"])[ZONE]).max(), 1e-12), 0)
-        rec.update(peak_rel=float(pkl), gap_abs=float(gp))
+                per_s[i] = len(count_episodes(S["drac"][m_src:, i], DT, DRAC_TH, merge_gap_s=gap))
+                per_p[i] = len(count_episodes(P["drac"][m_src:, i], DT, DRAC_TH, merge_gap_s=gap))
+            diff_cars = [i for i in ZONE if per_s[i] != per_p[i]]
+            rec[gname] = dict(sumo=int(sum(per_s.values())), py=int(sum(per_p.values())),
+                              per_car_equal=(len(diff_cars) == 0),
+                              diff_cars=diff_cars[:10], n_diff=len(diff_cars))
+        # 逐车峰值相对差（分母用**该车自身**的 Python 峰值）+ 逐车净距差
+        s_pk = np.asarray(S["M"].max_drac[ZONE]); p_pk = np.asarray(P["max_drac"])[ZONE]
+        rel_vec = np.abs(s_pk - p_pk) / np.maximum(np.abs(p_pk), 1e-12)
+        s_gp = np.asarray(S["M"].min_gap[ZONE]); p_gp = np.asarray(P["min_gap"])[ZONE]
+        rec.update(peak_rel=float(np.max(rel_vec)), gap_abs=float(np.max(np.abs(s_gp - p_gp))),
+                   worst_peak_car=int(ZONE[int(np.argmax(rel_vec))]))
+        # 观测期接触（原稿只查了预热期 bad["contact"]）
+        rec["contact_obs"] = int(getattr(S["M"], "contact_frames", 0))
         # 消息状态
         if pms is not None:
             ta_s = {i: (None if np.isnan(S["ms"].t_action[i]) else float(S["ms"].t_action[i])) for i in ARMS[arm]}
@@ -183,18 +200,44 @@ def main():
             rec["msg_equal"] = bool(ta_s == ta_p)
             rec["bind_equal"] = bool(all(int(S["ms"].cap_bind_frames[i]) == int(pms.cap_bind_frames[i])
                                          for i in ARMS[arm]))
+            rec["vcap_equal"] = bool(all(
+                (np.isnan(S["ms"].v_cap[i]) and np.isnan(pms.v_cap[i])) or
+                (abs(float(S["ms"].v_cap[i]) - float(pms.v_cap[i])) <= 1e-12)
+                for i in ARMS[arm]))
+            # 载荷字段两侧一致（Gemini：原稿漏比 t_src/x_src）
+            ps, pp = S["ms"].message.payload(), pms.message.payload()
+            rec["payload_equal"] = bool(all(
+                abs(float(ps[k]) - float(pp[k])) <= 1e-9
+                for k in ("t_src", "x_src", "v_src")) and ps["event_id"] == pp["event_id"])
+            rec["payload"] = pp
+            # 非接收车零限幅（SUMO 侧）
+            rec["nonrecv_bound"] = int(sum(int(S["ms"].cap_bind_frames[i])
+                                           for i in np.setdiff1d(ZONE, ARMS[arm])))
+            # 末帧有限性
+            rec["last_finite"] = bool(np.all(np.isfinite(S["hist_x"][-1])) and
+                                      np.all(np.isfinite(S["hist_v"][-1])))
         out["cases"].append(rec)
         print(json.dumps(rec, ensure_ascii=False), flush=True)
 
         if rec["early_max_err_x"] > 1e-9: out["fails"].append(f"{arm}/s{seed} 短窗位置 {rec['early_max_err_x']:.2e}")
         if rec["early_max_err_v"] > 1e-9: out["fails"].append(f"{arm}/s{seed} 短窗速度 {rec['early_max_err_v']:.2e}")
-        if not rec["gap030"]["equal"]: out["fails"].append(f"{arm}/s{seed} gap030 事件段数不等")
-        if not rec["gap000"]["equal"]: out["fails"].append(f"{arm}/s{seed} gap000 事件段数不等")
+        if not rec["gap030"]["per_car_equal"]:
+            out["fails"].append(f"{arm}/s{seed} gap030 逐车段数不等 {rec['gap030']['n_diff']} 辆 {rec['gap030']['diff_cars']}")
+        if not rec["gap000"]["per_car_equal"]:
+            out["fails"].append(f"{arm}/s{seed} gap000 逐车段数不等 {rec['gap000']['n_diff']} 辆 {rec['gap000']['diff_cars']}")
         if rec["peak_rel"] > 1e-6: out["fails"].append(f"{arm}/s{seed} 峰值相对差 {rec['peak_rel']:.2e}")
         if rec["gap_abs"] > 1e-6: out["fails"].append(f"{arm}/s{seed} 净距差 {rec['gap_abs']:.2e} m")
-        if rec["contact"]: out["fails"].append(f"{arm}/s{seed} 接触 {rec['contact']}")
-        if pms is not None and not (rec.get("msg_equal") and rec.get("bind_equal")):
-            out["fails"].append(f"{arm}/s{seed} 消息状态不一致")
+        if rec["contact"]: out["fails"].append(f"{arm}/s{seed} 预热期接触 {rec['contact']}")
+        if rec["contact_obs"]: out["fails"].append(f"{arm}/s{seed} 观测期接触 {rec['contact_obs']}")
+        if rec.get("payload_equal") is False:
+            out["fails"].append(f"{arm}/s{seed} 载荷字段两侧不一致")
+        if rec.get("nonrecv_bound", 0) != 0:
+            out["fails"].append(f"{arm}/s{seed} 非接收车被限幅 {rec['nonrecv_bound']}")
+        if not rec.get("last_finite", True):
+            out["fails"].append(f"{arm}/s{seed} 末帧非有限值")
+        if pms is not None and not (rec.get("msg_equal") and rec.get("bind_equal")
+                                    and rec.get("vcap_equal") and rec.get("payload_equal")):
+            out["fails"].append(f"{arm}/s{seed} 消息状态不一致 msg={rec.get('msg_equal')} bind={rec.get('bind_equal')} vcap={rec.get('vcap_equal')}")
 
     out["pass"] = len(out["fails"]) == 0
     json.dump(out, open("smoke_050.json", "w"), indent=1, ensure_ascii=False)

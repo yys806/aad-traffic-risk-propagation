@@ -234,6 +234,10 @@ def run(N=100, hw=45.0, n_a=1, Tprime=0.65, seed=0,
     preclip_max_cars = 0
     M = Metrics(N, v_eq, dt)
     drac_buf = np.zeros((total + 1, N)) if drac_log else None
+    # 全程安全检查（GPT/Gemini 审计：原稿只查观测期接触，漏预热期与瞬移/越界/非有限值）
+    safety = dict(contact_warm=0, contact_obs=0, nonfinite=0, oob=0, teleport=0,
+                  max_abs_x=0.0, min_x=float("inf"), min_speed=float("inf"), max_speed=0.0)
+    x_prev = x.copy(); v_prev = v.copy()
 
     e = np.exp(-dt / P.taur)
     sq = np.sqrt(2.0 * dt / P.taur)
@@ -259,7 +263,8 @@ def run(N=100, hw=45.0, n_a=1, Tprime=0.65, seed=0,
         acc = new_acc
         if msg_state is not None:
             # 消息速度上限（柔和斜坡）。只改接收车，非接收车逐位不变。
-            v_new, modified = msg_state.apply(v_new, v, t, dt)
+            # 时钟：传入**步末**时刻 (k+1)·dt，对齐目标书 v3 §2.2
+            v_new, modified = msg_state.apply(v_new, v, (k + 1) * dt, dt, x=x)
             if modified.any():
                 # 只有被限速的车才用实际执行加速度回写，
                 # 否则前瞻项 v_pr = vi + T'*a 被污染（Gemini 0.5.0 评审第 4 条）；
@@ -277,6 +282,31 @@ def run(N=100, hw=45.0, n_a=1, Tprime=0.65, seed=0,
                 dvv = v[i] - v[i - 1]
                 drac_buf[k + 1, i] = (dvv * dvv / (2.0 * g)) if (g > 0 and dvv > 0) else 0.0
 
+        # 全程安全检查（Gemini 审计：原 oob 是死字段、无瞬移检查）
+        if not (np.all(np.isfinite(x)) and np.all(np.isfinite(v))):
+            safety["nonfinite"] += 1
+        else:
+            ax = float(np.max(np.abs(x)))
+            if ax > safety["max_abs_x"]:
+                safety["max_abs_x"] = ax
+            if float(np.min(x)) < -1.0:      # 负位置=引擎级不合理；网界由调用方按臂判
+                safety["oob"] += 1
+            # 瞬移：单车单步位移不得超过 v_max·dt（留 5% 余量）
+            dx_step = np.abs(x - x_prev)
+            if float(np.max(dx_step)) > 1.05 * float(np.max(np.abs(v_prev))) * dt + 1e-9:
+                safety["teleport"] += 1
+            safety["min_speed"] = min(safety["min_speed"], float(np.min(v)))
+            safety["max_speed"] = max(safety["max_speed"], float(np.max(v)))
+            safety["min_x"] = min(safety.get("min_x", float("inf")), float(np.min(x)))
+            x_prev = x.copy(); v_prev = v.copy()
+        gaps = x[:-1] - x[1:] - P.L          # 向量化，避免 800k 次 Python 循环
+        n_contact = int(np.sum(gaps <= 0.0))
+        if n_contact:
+            if k < steps_warm:
+                safety["contact_warm"] += n_contact
+            else:
+                safety["contact_obs"] += n_contact
+
         M.update(k, x, v, steps_warm)
 
     out = dict(v_eq=v_eq, s_eq=s_eq, preclip_min=preclip_min,
@@ -285,6 +315,7 @@ def run(N=100, hw=45.0, n_a=1, Tprime=0.65, seed=0,
                hist_v=hist_v if record else None,
                hist_a=hist_a if record else None)
     out.update(M.as_dict())
+    out["safety"] = safety
     if drac_log:
         out["drac"] = drac_buf
     return out
