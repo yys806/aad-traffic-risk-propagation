@@ -1,0 +1,53 @@
+{
+ "config": {
+  "N": 100,
+  "hw": 45.0,
+  "Tprime": 1.0,
+  "bmax": 9.0,
+  "warm": 40.0,
+  "ramp": 6.0,
+  "obs": 300.0,
+  "v_target": 3.0,
+  "x0": 5000.0,
+  "dt": 0.05,
+  "seeds": [
+   0
+  ],
+  "kernel": "hdm_core_v2.py",
+  "gates": {
+   "src_min_events": 71,
+   "ctrl_max_events": 0,
+   "pair_abs_max": 2,
+   "pair_median_max": 1
+  }
+ },
+ "rows": [
+  {
+   "seed": 0,
+   "arm": "control",
+   "sumo_events": 0,
+   "py_events": 0,
+   "sumo_peak": 0.04063815053009112,
+   "py_peak": 0.04063815053004925,
+   "sumo_min_gap": 28.57222714488671,
+   "py_min_gap": 28.57222714488762,
+   "sumo_contact": 0,
+   "sumo_collisions": 0,
+   "sumo_teleports": 0
+  },
+  {
+   "seed": 0,
+   "arm": "source",
+   "sumo_events": 78,
+   "py_events": 78,
+   "sumo_peak": 7.366061202431695,
+   "py_peak": 7.366061202440451,
+   "sumo_min_gap": 2.3071506610549477,
+   "py_min_gap": 2.3071506610237975,
+   "sumo_contact": 0,
+   "sumo_collisions": 0,
+   "sumo_teleports": 0,
+   "pair_abs": 0
+  }
+ ]
+}
