@@ -137,10 +137,14 @@ def run_sumo(v_target, seed):
             raise GateFail("seed%d 碰撞 %d" % (seed, coll))
         if tele > 0:
             raise GateFail("seed%d 瞬移 %d" % (seed, tele))
+        # 口径统一为 i=20..99（80 辆）：事件数、峰值、最小净距都用同一批车
         return dict(events_80=int(M.event[20:].sum()),
                     events_all=int(M.event[1:].sum()),
-                    peak=float(np.nanmax(M.max_drac[1:])),
-                    min_gap=float(np.min(M.min_gap[1:])),
+                    peak=float(np.nanmax(M.max_drac[20:])),
+                    min_gap=float(np.min(M.min_gap[20:])),
+                    peak_all=float(np.nanmax(M.max_drac[1:])),
+                    min_gap_all=float(np.min(M.min_gap[1:])),
+                    event_ids=[int(i) for i in np.where(M.event[20:])[0] + 20],
                     contact=0, collisions=0, teleports=0)
     finally:
         traci.close()
