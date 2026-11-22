@@ -45,11 +45,16 @@ ARMS = {
     "A3": list(range(20, 100, 4)),
     # 晚到对照（GPT+Gemini 一致认为这是分离「信息提前量」与「减速动作本身」的关键臂）：
     # 接收车与响应规则与 A2/A3 完全相同，唯一差别是消息在物理波到达该组第一辆车时才送达。
+    # 晚到对照 A2L/A3L：组广播推迟到 T_phys(首车)+0.6（后排车仍大幅提前，不是真无提前量）
     "A2L": [20, 30, 40, 50, 60, 70, 80, 90],
     "A3L": list(range(20, 100, 4)),
+    # 真·无提前量对照 A2P/A3P：逐车在自己 T_phys[i]+0.6 时才收到（Gemini 第三轮审计要求）
+    "A2P": [20, 30, 40, 50, 60, 70, 80, 90],
+    "A3P": list(range(20, 100, 4)),
 }
-MSG_ARMS = ("A1", "A2", "A3", "A2L", "A3L")
-LATE_ARMS = ("A2L", "A3L")
+MSG_ARMS = ("A1", "A2", "A3", "A2L", "A3L", "A2P", "A3P")
+LATE_ARMS = ("A2L", "A3L", "A2P", "A3P")
+PERCAR_ARMS = ("A2P", "A3P")
 COMMON = dict(N=N, hw=HW, n_a=1, Tprime=TP, ramp=RAMP, warm=WARM, observe=OBS,
               noise=True, bmax=BMAX, record=True, drac_log=True, x0=X0)
 
@@ -118,19 +123,29 @@ def main(out_json=None):
                             v_src=float(rA0["hist_v"][m_src, 0]),
                             m_src=m_src, k_eff=int(np.ceil((t_src + 0.6) / DT)))
 
-    # 晚到时刻：该组接收车中**最早**被波触及的那辆的 T_phys + 0.6 s（最宽松的晚到条件）
+    # 逐车物理波到达时刻（用于两条晚到臂）
+    tphys = {}
+    for s in range(10):
+        dv_s = res[("C0", s)][0]["hist_v"] - res[("A0", s)][0]["hist_v"]
+        tphys[s] = tphys_from(dv_s, TARGET_ACQ, steps_warm)
+
     tasks2 = []
     for s in range(10):
         for arm in MSG_ARMS:
             td = timing[s]["t_deliver"]
             if arm in LATE_ARMS:
-                rA0s = res[("A0", s)][0]
-                rC0s = res[("C0", s)][0]
-                dv_s = rC0s["hist_v"] - rA0s["hist_v"]
-                tps = tphys_from(dv_s, TARGET_ACQ, steps_warm)
-                arr = [tps[i] for i in ARMS[arm] if tps[i] is not None]
+                arr = [tphys[s][i] for i in ARMS[arm] if tphys[s][i] is not None]
                 timing[s][f"tphys_min_{arm}"] = min(arr) if arr else np.nan
-                td = (min(arr) if arr else td) + 0.6
+                if arm in PERCAR_ARMS:
+                    # 真·无提前量：逐车在自身触波时刻 +0.6 s 收到
+                    td = np.full(N, np.nan)
+                    for i in ARMS[arm]:
+                        td[i] = (tphys[s][i] + 0.6) if tphys[s][i] is not None else np.nan
+                    for i in ARMS[arm]:          # 缺失回落到组广播，避免 NaN
+                        if np.isnan(td[i]):
+                            td[i] = timing[s]["t_deliver"]
+                else:
+                    td = (min(arr) if arr else td) + 0.6
             tasks2.append((arm, s, td, timing[s]["t_src"],
                            timing[s]["x_src"], timing[s]["v_src"]))
     with ProcessPoolExecutor(max_workers=6) as ex:
@@ -233,6 +248,8 @@ def main(out_json=None):
             if ms is not None:
                 arm_rec["msg"] = dict(
                     receivers=ARMS[arm], t_deliver=float(ms.t_deliver),
+                    t_deliver_per_car={int(i): (None if not np.isfinite(ms.t_deliver_arr[i])
+                                                else float(ms.t_deliver_arr[i])) for i in ARMS[arm]},
                     t_action_cap={int(i): (None if np.isnan(ms.t_action[i]) else float(ms.t_action[i]))
                                   for i in ARMS[arm]},
                     cap_bind_frames={int(i): int(ms.cap_bind_frames[i]) for i in ARMS[arm]},
@@ -267,7 +284,7 @@ def main(out_json=None):
                 tr = ms.trace()
                 tr["ring5_action"] = {int(i): v["t_action"]
                                       for i, v in arm_rec["msg"]["action"].items()}
-                tr["ring5_definition"] = "Δv>=0.5 m/s 持续>=0.2 s 且相对 C0-A0 差分（预锁）"
+                tr["ring5_definition"] = "该臂速度比同种子 A0 低 Δv>=0.5 m/s 且持续>=0.2 s（预锁）"
                 arm_rec["trace"] = tr
             rec["arms"][arm] = arm_rec
         out["seeds"][seed] = rec
@@ -371,7 +388,7 @@ def main(out_json=None):
 
     # 早报 vs 晚报：同接收车、同规则，唯一差别是送达时刻
     pairs = {}
-    for early, late in (("A2", "A2L"), ("A3", "A3L")):
+    for early, late in (("A2", "A2L"), ("A3", "A3L"), ("A2", "A2P"), ("A3", "A3P")):
         e = [out["seeds"][s]["arms"][early]["episodes_total"] for s in range(10)]
         l = [out["seeds"][s]["arms"][late]["episodes_total"] for s in range(10)]
         b = [out["seeds"][s]["arms"]["A0"]["episodes_total"] for s in range(10)]

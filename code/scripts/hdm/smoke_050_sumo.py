@@ -210,12 +210,18 @@ def main():
                 abs(float(ps[k]) - float(pp[k])) <= 1e-9
                 for k in ("t_src", "x_src", "v_src")) and ps["event_id"] == pp["event_id"])
             rec["payload"] = pp
+            rec["payload_matches_expected"] = bool(all(
+                abs(float(pp[k]) - float(pay[k])) <= 1e-9 for k in ("t_src", "x_src", "v_src")))
+            rec["sumo_receivers_bound"] = int(sum(int(S["ms"].cap_bind_frames[i]) > 0
+                                                  for i in ARMS[arm]))
             # 非接收车零限幅（SUMO 侧）
             rec["nonrecv_bound"] = int(sum(int(S["ms"].cap_bind_frames[i])
-                                           for i in np.setdiff1d(ZONE, ARMS[arm])))
-            # 末帧有限性
-            rec["last_finite"] = bool(np.all(np.isfinite(S["hist_x"][-1])) and
-                                      np.all(np.isfinite(S["hist_v"][-1])))
+                                           for i in range(N) if i not in ARMS[arm]))
+            # 末帧有限性：查**实际写入的最后一行** hist[nsteps]，
+            # 原版查 hist_x[-1]（索引 nsteps+1）是从未写入的零行（Gemini 第三轮）
+            rec["last_finite"] = bool(np.all(np.isfinite(S["hist_x"][n])) and
+                                      np.all(np.isfinite(S["hist_v"][n])))
+            rec["last_row_is_written"] = bool(np.any(S["hist_x"][n] != 0.0))
         out["cases"].append(rec)
         print(json.dumps(rec, ensure_ascii=False), flush=True)
 
@@ -231,6 +237,12 @@ def main():
         if rec["contact_obs"]: out["fails"].append(f"{arm}/s{seed} 观测期接触 {rec['contact_obs']}")
         if rec.get("payload_equal") is False:
             out["fails"].append(f"{arm}/s{seed} 载荷字段两侧不一致")
+        if rec.get("payload_matches_expected") is False:
+            out["fails"].append(f"{arm}/s{seed} 载荷与 A0 推出的事实不符")
+        if rec.get("sumo_receivers_bound", 0) < len(ARMS[arm]):
+            out["fails"].append(f"{arm}/s{seed} SUMO 侧只有 {rec.get('sumo_receivers_bound')}/{len(ARMS[arm])} 辆被限幅")
+        if rec.get("last_row_is_written") is False:
+            out["fails"].append(f"{arm}/s{seed} 末帧行未写入")
         if rec.get("nonrecv_bound", 0) != 0:
             out["fails"].append(f"{arm}/s{seed} 非接收车被限幅 {rec['nonrecv_bound']}")
         if not rec.get("last_finite", True):

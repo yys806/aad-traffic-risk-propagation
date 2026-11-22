@@ -30,7 +30,8 @@ class Message:
         self.x_src = float(x_src)
         self.v_src = float(v_src)
         self.receivers = list(receivers)
-        self.t_deliver = float(t_deliver)
+        _t = np.asarray(t_deliver, dtype=float)
+        self.t_deliver = float(_t) if _t.ndim == 0 else _t
         # 车端本地响应策略（不是载荷内容）
         self.factor = float(factor)
         self.rate = float(rate)
@@ -41,8 +42,9 @@ class Message:
                     x_src=self.x_src, v_src=self.v_src)
 
     def as_dict(self):
+        _t = self.t_deliver
         return dict(payload=self.payload(), receivers=self.receivers,
-                    t_deliver=self.t_deliver,
+                    t_deliver=(float(_t) if np.ndim(_t) == 0 else [float(x) for x in np.atleast_1d(_t)]),
                     local_policy=dict(factor=self.factor, rate=self.rate))
 
 
@@ -50,8 +52,20 @@ class MsgState:
     """消息状态机。一条消息 = 一批接收车 + 送达时刻 + 速度因子 + 下降速率上限。"""
 
     def __init__(self, receivers, t_deliver, factor=0.70, rate=1.0, N=100, message=None):
+        """t_deliver 可以是标量（广播，全组同时送达）或长度 N 的数组（逐车送达）。
+
+        逐车送达是「零提前量」对照的唯一正确做法（Gemini 2026-11-22 第三轮审计）：
+        组广播晚到 T_phys(#20)+0.6 时，后排车自身物理波要晚得多，它们仍有大量提前量；
+        只有 t_deliver[i] = T_phys[i] + 0.6 才是真正的无提前量臂。
+        """
         self.receivers = list(receivers)
-        self.t_deliver = float(t_deliver)
+        _td = np.asarray(t_deliver, dtype=float)
+        if _td.ndim == 0:
+            self.t_deliver_arr = np.full(N, float(_td))
+            self.t_deliver = float(_td)
+        else:
+            self.t_deliver_arr = _td.astype(float)
+            self.t_deliver = float(np.nanmin(_td))
         self.factor = float(factor)
         self.rate = float(rate)
         self.N = N
@@ -71,8 +85,22 @@ class MsgState:
         if message is not None:
             assert list(message.receivers) == list(receivers), \
                 f"载荷接收车 {message.receivers} 与状态机 {receivers} 不一致"
-            assert abs(message.t_deliver - t_deliver) < 1e-9, \
-                f"载荷送达时刻 {message.t_deliver} 与状态机 {t_deliver} 不一致"
+            # 载荷自身合法性（Gemini 第三轮：原版只用了 x_src 一个符号位，
+            # 把 t_src 改成未来、v_src 改成负数都不报错——等于载荷没有被真正消费）
+            assert np.isfinite(message.t_src) and np.isfinite(message.x_src) \
+                and np.isfinite(message.v_src), "载荷含非有限值"
+            _td_arr = np.atleast_1d(np.asarray(message.t_deliver, dtype=float))
+            _td_min = float(np.nanmin(_td_arr[np.isfinite(_td_arr)])) if np.any(np.isfinite(_td_arr)) else np.inf
+            assert message.t_src <= _td_min + 1e-9, \
+                f"载荷声称的源事件时刻 {message.t_src} 晚于最早送达时刻 {_td_min}（未来事件不合法）"
+            assert 0.0 < message.v_src <= 60.0, \
+                f"载荷源车速 {message.v_src} 超出物理合理区间 (0, 60] m/s"
+            _a = np.asarray(message.t_deliver, dtype=float)
+            _b = np.asarray(t_deliver, dtype=float)
+            assert _a.shape == _b.shape or _a.ndim == 0, \
+                f"载荷送达时刻形状 {_a.shape} 与状态机 {_b.shape} 不一致"
+            assert np.allclose(_a, _b, atol=1e-9, equal_nan=True), \
+                f"载荷送达时刻与状态机不一致"
 
     def apply(self, v_new, v_prev, t, dt, x=None):
         """在 HDM 算出 v_new 之后调用。t 必须是**步末时刻** (k+1)·dt。
@@ -88,17 +116,20 @@ class MsgState:
         modified = np.zeros(self.N, dtype=bool)
         if t < self.t_deliver - 1e-12:
             return v_new, modified
-        if not self.delivered:
-            if x is None:
-                raise ValueError("apply() 需要 x 才能做载荷适用性判定")
-            for i in self.receivers:
+        # 逐车送达：每辆车在自己的 t_deliver[i] 那一刻冻结 v_cap
+        for i in self.receivers:
+            if np.isnan(self.delivered_at[i]) and t + 1e-12 >= self.t_deliver_arr[i]:
+                if x is None:
+                    raise ValueError("apply() 需要 x 才能做载荷适用性判定")
                 self.applicable[i] = bool(self.message.x_src > float(x[i]) + 1.0)
                 if not self.applicable[i]:
                     self.rejected[i] = True
+                    self.delivered_at[i] = np.inf   # 标记已处理，不再重试
                     continue
                 self.v_cap[i] = self.factor * float(v_prev[i])
-                self.delivered_at[i] = t          # 第 3 环：送达回执
+                self.delivered_at[i] = t          # 第 3 环：该车送达回执
                 self.v_at_delivery[i] = float(v_prev[i])
+        if all(not np.isnan(self.delivered_at[i]) for i in self.receivers):
             self.delivered = True
         for i in self.receivers:
             if not self.applicable[i]:
@@ -117,7 +148,8 @@ class MsgState:
         return dict(
             ring1_event=dict(event_id=self.message.event_id),
             ring2_payload=self.message.payload(),
-            ring3_delivered={int(i): (None if np.isnan(self.delivered_at[i]) else float(self.delivered_at[i]))
+            ring3_delivered={int(i): (None if not np.isfinite(self.delivered_at[i])
+                                      else float(self.delivered_at[i]))
                              for i in self.receivers},
             ring4_cap_bind={int(i): int(self.cap_bind_frames[i]) for i in self.receivers},
             ring4_first_time={int(i): (None if np.isnan(self.t_action[i]) else float(self.t_action[i]))

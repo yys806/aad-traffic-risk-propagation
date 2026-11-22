@@ -292,9 +292,15 @@ def run(N=100, hw=45.0, n_a=1, Tprime=0.65, seed=0,
             if float(np.min(x)) < -1.0:      # 负位置=引擎级不合理；网界由调用方按臂判
                 safety["oob"] += 1
             # 瞬移：单车单步位移不得超过 v_max·dt（留 5% 余量）
+            # 逐车判：单车单步位移不得超过该车自身速度×dt（留 5% 余量），
+            # 原版用全队 max|v| 做统一阈值，慢车/停车瞬移会被快车掩盖（Gemini 第三轮）
+            # 位移上界必须用 max(旧速, 新速)：ballistic 积分 x_new = x + 0.5(v_old+v_new)dt，
+            # 加速车位移本就大于 v_old·dt，用 v_old 当界会把正常加速误判成瞬移。
             dx_step = np.abs(x - x_prev)
-            if float(np.max(dx_step)) > 1.05 * float(np.max(np.abs(v_prev))) * dt + 1e-9:
+            vlim = 1.05 * np.maximum(np.abs(v_prev), np.abs(v)) * dt + 1e-9
+            if int(np.sum(dx_step > vlim)) > 0:
                 safety["teleport"] += 1
+                safety["teleport_cars"] = safety.get("teleport_cars", 0) + int(np.sum(dx_step > vlim))
             safety["min_speed"] = min(safety["min_speed"], float(np.min(v)))
             safety["max_speed"] = max(safety["max_speed"], float(np.max(v)))
             safety["min_x"] = min(safety.get("min_x", float("inf")), float(np.min(x)))

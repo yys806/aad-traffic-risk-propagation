@@ -1,5 +1,67 @@
 {
  "case": "payload_causality",
+ "rows": [
+  {
+   "test": "T1_correct",
+   "cap_bind": [
+    784,
+    1184,
+    1184,
+    1184,
+    1184,
+    1184,
+    1184,
+    1184
+   ],
+   "all_bound": true,
+   "differs_from_no_message": true,
+   "v_cap": {
+    "20": 15.1049839730219,
+    "30": 14.98723350657842,
+    "40": 15.705661128973672,
+    "50": 16.089513133407326,
+    "60": 14.855207902037662,
+    "70": 16.564110910176893,
+    "80": 14.986204664852742,
+    "90": 15.272681019109685
+   }
+  },
+  {
+   "test": "T2_x_src_behind",
+   "cap_bind": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "all_rejected": true,
+   "equals_no_message": true
+  },
+  {
+   "test": "T3_t_src_future",
+   "raised": true,
+   "msg": "载荷声称的源事件时刻 999999.0 晚于送达时刻 40.85（未来事件不合法）"
+  },
+  {
+   "test": "T4_v_src_negative",
+   "raised": true,
+   "msg": "载荷源车速 -500.0 超出物理合理区间 (0, 60] m/s"
+  },
+  {
+   "test": "T5_v_src_absurd",
+   "raised": true,
+   "msg": "载荷源车速 10000.0 超出物理合理区间 (0, 60] m/s"
+  },
+  {
+   "test": "T6_t_deliver_mismatch",
+   "raised": true,
+   "msg": "载荷送达时刻与状态机不一致"
+  }
+ ],
  "fails": [],
  "ok": true
 }
