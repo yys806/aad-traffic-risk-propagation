@@ -33,8 +33,14 @@ NET_LEN = 13000.0
 DRAC_TH, MERGE_GAP = 3.4, 0.30
 ZONE = list(range(20, 100))
 ARMS = {"A0": None, "A1": [60], "A2": [20, 30, 40, 50, 60, 70, 80, 90],
+        "A3": list(range(20, 100, 4)),
+        "A2L": [20, 30, 40, 50, 60, 70, 80, 90],
+        "A3L": list(range(20, 100, 4)),
+        "A2P": [20, 30, 40, 50, 60, 70, 80, 90],
+        "A3P": list(range(20, 100, 4)),
         "A3": list(range(20, 100, 4))}
-CASES = [("A0", 0), ("A3", 0), ("A1", 2)]
+# 三例已通过（A0/A3/A1）；本轮补四条早晚对照臂，重点验逐车送达在 SUMO 侧一致
+CASES = [("A2P", 0), ("A3P", 0), ("A2L", 0), ("A3L", 0)]
 
 
 class GateFail(Exception):
@@ -164,13 +170,28 @@ def main():
         pay = dict(t_src=float(m_src * DT),
                    x_src=float(rA0["hist_x"][m_src, 0]),
                    v_src=float(rA0["hist_v"][m_src, 0]))
+        # 逐车物理波到达时刻（与主分析同判据：C0−A0 差分 ≥0.5 m/s）
+        if arm in ("A2P", "A3P"):
+            dv_all = rC0["hist_v"] - rA0["hist_v"]
+            steps_warm = int(round(WARM / DT))
+            tarr = np.full(N, np.nan)
+            for i in ARMS[arm]:
+                idx = np.where(dv_all[steps_warm:, i] >= 0.5)[0]
+                if len(idx):
+                    tarr[i] = (idx[0] + steps_warm) * DT + 0.6
+            for i in ARMS[arm]:
+                if np.isnan(tarr[i]):
+                    tarr[i] = t_deliver
+            t_deliver = tarr
         S = run_sumo(arm, seed, t_deliver, pay)
         P, pms = run_py(arm, seed, t_deliver, pay)
         n = S["nsteps"]
         rx = P["hist_x"][:n + 1]; rv = P["hist_v"][:n + 1]
         ex = np.abs(S["hist_x"][:n + 1] - rx); ev = np.abs(S["hist_v"][:n + 1] - rv)
         nf = 1201
-        rec = dict(arm=arm, seed=seed, t_deliver=t_deliver,
+        _td_rec = (float(t_deliver) if np.ndim(t_deliver) == 0
+                   else {int(i): float(t_deliver[i]) for i in ARMS[arm]})
+        rec = dict(arm=arm, seed=seed, t_deliver=_td_rec,
                    early_max_err_x=float(np.max(ex[:nf])),
                    early_max_err_v=float(np.max(ev[:nf])),
                    max_err_x=float(np.nanmax(ex)), max_err_v=float(np.nanmax(ev)),
@@ -239,8 +260,9 @@ def main():
             out["fails"].append(f"{arm}/s{seed} 载荷字段两侧不一致")
         if rec.get("payload_matches_expected") is False:
             out["fails"].append(f"{arm}/s{seed} 载荷与 A0 推出的事实不符")
-        if rec.get("sumo_receivers_bound", 0) < len(ARMS[arm]):
-            out["fails"].append(f"{arm}/s{seed} SUMO 侧只有 {rec.get('sumo_receivers_bound')}/{len(ARMS[arm])} 辆被限幅")
+        if ARMS[arm] and rec.get("sumo_receivers_bound", 0) < len(ARMS[arm]):
+            out["fails"].append(
+                f"{arm}/s{seed} SUMO 侧只有 {rec.get('sumo_receivers_bound')}/{len(ARMS[arm])} 辆被限幅")
         if rec.get("last_row_is_written") is False:
             out["fails"].append(f"{arm}/s{seed} 末帧行未写入")
         if rec.get("nonrecv_bound", 0) != 0:
