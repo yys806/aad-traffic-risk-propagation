@@ -171,18 +171,24 @@ def main():
                    x_src=float(rA0["hist_x"][m_src, 0]),
                    v_src=float(rA0["hist_v"][m_src, 0]))
         # 逐车物理波到达时刻（与主分析同判据：C0−A0 差分 ≥0.5 m/s）
-        if arm in ("A2P", "A3P"):
+        # 四条晚到臂都要在这里改送达时刻，否则会退化成早报 40.85（Gemini 第四轮抓到的 bug）
+        if arm in ("A2L", "A3L", "A2P", "A3P", "A2S"):
             dv_all = rC0["hist_v"] - rA0["hist_v"]
             steps_warm = int(round(WARM / DT))
-            tarr = np.full(N, np.nan)
+            tphys_i = {}
             for i in ARMS[arm]:
                 idx = np.where(dv_all[steps_warm:, i] >= 0.5)[0]
-                if len(idx):
-                    tarr[i] = (idx[0] + steps_warm) * DT + 0.6
-            for i in ARMS[arm]:
-                if np.isnan(tarr[i]):
-                    tarr[i] = t_deliver
-            t_deliver = tarr
+                tphys_i[i] = (idx[0] + steps_warm) * DT if len(idx) else None
+            arr = [tphys_i[i] for i in ARMS[arm] if tphys_i[i] is not None]
+            if arm in ("A2L", "A3L"):
+                # 组广播：全组统一在最早触波车 +0.6 s（与主分析同口径）
+                t_deliver = (min(arr) if arr else t_deliver) + 0.6
+            else:
+                off = -8.0 if arm == "A2S" else 0.6
+                tarr = np.full(N, np.nan)
+                for i in ARMS[arm]:
+                    tarr[i] = (tphys_i[i] + off) if tphys_i[i] is not None else t_deliver
+                t_deliver = tarr
         S = run_sumo(arm, seed, t_deliver, pay)
         P, pms = run_py(arm, seed, t_deliver, pay)
         n = S["nsteps"]
@@ -260,9 +266,13 @@ def main():
             out["fails"].append(f"{arm}/s{seed} 载荷字段两侧不一致")
         if rec.get("payload_matches_expected") is False:
             out["fails"].append(f"{arm}/s{seed} 载荷与 A0 推出的事实不符")
-        if ARMS[arm] and rec.get("sumo_receivers_bound", 0) < len(ARMS[arm]):
+        # 早报臂与等短提前量臂：接收车必须全部被限幅；
+        # 晚到臂（A2L/A3L/A2P/A3P）：最前沿车波已到、规则绑不住是设计使然，只要求"至少 1 辆被限幅"
+        _need = len(ARMS[arm]) if (ARMS[arm] and arm not in ("A2L", "A3L", "A2P", "A3P")) else 1
+        if ARMS[arm] and rec.get("sumo_receivers_bound", 0) < _need:
             out["fails"].append(
-                f"{arm}/s{seed} SUMO 侧只有 {rec.get('sumo_receivers_bound')}/{len(ARMS[arm])} 辆被限幅")
+                f"{arm}/s{seed} SUMO 侧只有 {rec.get('sumo_receivers_bound')}/{len(ARMS[arm])} 辆被限幅"
+                f"（该臂要求 ≥{_need}）")
         if rec.get("last_row_is_written") is False:
             out["fails"].append(f"{arm}/s{seed} 末帧行未写入")
         if rec.get("nonrecv_bound", 0) != 0:
@@ -274,7 +284,9 @@ def main():
             out["fails"].append(f"{arm}/s{seed} 消息状态不一致 msg={rec.get('msg_equal')} bind={rec.get('bind_equal')} vcap={rec.get('vcap_equal')}")
 
     out["pass"] = len(out["fails"]) == 0
-    json.dump(out, open("smoke_050.json", "w"), indent=1, ensure_ascii=False)
+    # 输出名可覆盖：短窗试跑不许污染正式回执（Gemini 第四轮指出过一次污染）
+    _out = os.environ.get("AAD050_SMOKE_OUT", "smoke_050.json")
+    json.dump(out, open(_out, "w"), indent=1, ensure_ascii=False)
     print(("ALL SMOKE PASS" if out["pass"] else "FAILS: " + str(out["fails"][:8])), flush=True)
     sys.exit(0 if out["pass"] else 1)
 

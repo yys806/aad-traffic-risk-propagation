@@ -51,10 +51,17 @@ ARMS = {
     # 真·无提前量对照 A2P/A3P：逐车在自己 T_phys[i]+0.6 时才收到（Gemini 第三轮审计要求）
     "A2P": [20, 30, 40, 50, 60, 70, 80, 90],
     "A3P": list(range(20, 100, 4)),
+    # 等短提前量对照（Gemini 第四轮建议的唯一关键臂）：
+    # 每辆车在自己物理波到达前 8 s 收到。22.1 m/s 以 1.0 m/s² 降到 15.5 m/s 需 6.6 s，
+    # 所以 8 s 足以让接收车在波到达前走完整个降速斜坡 —— 执行器状态与 A2/A3 完全对齐，
+    # 与 A2 的唯一差别是"提前量的长短"，从而把"执行器开启"这个混杂固定住。
+    "A2S": [20, 30, 40, 50, 60, 70, 80, 90],
 }
-MSG_ARMS = ("A1", "A2", "A3", "A2L", "A3L", "A2P", "A3P")
-LATE_ARMS = ("A2L", "A3L", "A2P", "A3P")
-PERCAR_ARMS = ("A2P", "A3P")
+MSG_ARMS = ("A1", "A2", "A3", "A2L", "A3L", "A2P", "A3P", "A2S")
+LATE_ARMS = ("A2L", "A3L", "A2P", "A3P")      # 这几条本就晚到，跳过提前量门
+SOFT_ARMS = LATE_ARMS                          # A2S 不在此列：它有 8 s 真实提前量，要过硬门
+PERCAR_ARMS = ("A2P", "A3P", "A2S")
+SHORT_LEAD_S = 8.0
 COMMON = dict(N=N, hw=HW, n_a=1, Tprime=TP, ramp=RAMP, warm=WARM, observe=OBS,
               noise=True, bmax=BMAX, record=True, drac_log=True, x0=X0)
 
@@ -137,10 +144,11 @@ def main(out_json=None):
                 arr = [tphys[s][i] for i in ARMS[arm] if tphys[s][i] is not None]
                 timing[s][f"tphys_min_{arm}"] = min(arr) if arr else np.nan
                 if arm in PERCAR_ARMS:
-                    # 真·无提前量：逐车在自身触波时刻 +0.6 s 收到
+                    # 逐车送达：A2P/A3P 在自身触波时刻 +0.6 s；A2S 在触波前 8 s
+                    off = -SHORT_LEAD_S if arm == "A2S" else 0.6
                     td = np.full(N, np.nan)
                     for i in ARMS[arm]:
-                        td[i] = (tphys[s][i] + 0.6) if tphys[s][i] is not None else np.nan
+                        td[i] = (tphys[s][i] + off) if tphys[s][i] is not None else np.nan
                     for i in ARMS[arm]:          # 缺失回落到组广播，避免 NaN
                         if np.isnan(td[i]):
                             td[i] = timing[s]["t_deliver"]
@@ -354,7 +362,7 @@ def main(out_json=None):
                 fail.append(f"seed{seed} {arm}: 末帧未闭合段 {s['arms'][arm]['open_tail_segments']}")
         for arm in MSG_ARMS:
             a = s["arms"][arm]
-            late = arm in LATE_ARMS
+            late = arm in SOFT_ARMS
             if not a["pre_plus_post_eq_total"]:
                 fail.append(f"seed{seed} {arm}: 前段+后段 != 全窗")
             if a["msg"]["non_receiver_bound"] != 0:
@@ -379,6 +387,13 @@ def main(out_json=None):
                     fail.append(f"seed{seed} {arm} 车{i}: 动作未确认")
                 if not (tr.get("applicable") or {}).get(i, False):
                     fail.append(f"seed{seed} {arm} 车{i}: 载荷适用性判定为否")
+            if arm == "A2S":
+                for i in ARMS[arm]:
+                    if int(tr.get("ring4_cap_bind", {}).get(i, 0)) <= 0:
+                        fail.append(f"seed{seed} A2S 车{i}: 等短提前量臂未被限幅（执行器未对齐）")
+                    ld = (tr.get("ring5_action") or {}).get(i)
+                    if ld is None:
+                        fail.append(f"seed{seed} A2S 车{i}: 动作未确认")
             if not late:
                 for i, act in a["msg"]["action"].items():
                     if act["t_action"] is None:
@@ -388,7 +403,8 @@ def main(out_json=None):
 
     # 早报 vs 晚报：同接收车、同规则，唯一差别是送达时刻
     pairs = {}
-    for early, late in (("A2", "A2L"), ("A3", "A3L"), ("A2", "A2P"), ("A3", "A3P")):
+    for early, late in (("A2", "A2L"), ("A3", "A3L"), ("A2", "A2P"), ("A3", "A3P"),
+                        ("A2", "A2S")):
         e = [out["seeds"][s]["arms"][early]["episodes_total"] for s in range(10)]
         l = [out["seeds"][s]["arms"][late]["episodes_total"] for s in range(10)]
         b = [out["seeds"][s]["arms"]["A0"]["episodes_total"] for s in range(10)]
