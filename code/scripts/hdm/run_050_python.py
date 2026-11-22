@@ -58,8 +58,11 @@ ARMS = {
     "A2S": [20, 30, 40, 50, 60, 70, 80, 90],
 }
 MSG_ARMS = ("A1", "A2", "A3", "A2L", "A3L", "A2P", "A3P", "A2S")
-LATE_ARMS = ("A2L", "A3L", "A2P", "A3P")      # 这几条本就晚到，跳过提前量门
-SOFT_ARMS = LATE_ARMS                          # A2S 不在此列：它有 8 s 真实提前量，要过硬门
+# 两个概念必须分开（2026-11-23 踩过坑：混用导致 A2S 退化成早报 40.85）：
+#   DELAYED_ARMS = 送达时刻要按 T_phys 特殊计算的臂（含等短提前量的 A2S）
+#   SOFT_ARMS    = 放宽"全员限幅/动作先行"硬门的臂（真晚到的四条，A2S 不在此列）
+DELAYED_ARMS = ("A2L", "A3L", "A2P", "A3P", "A2S")
+SOFT_ARMS = ("A2L", "A3L", "A2P", "A3P")
 PERCAR_ARMS = ("A2P", "A3P", "A2S")
 SHORT_LEAD_S = 8.0
 COMMON = dict(N=N, hw=HW, n_a=1, Tprime=TP, ramp=RAMP, warm=WARM, observe=OBS,
@@ -140,7 +143,7 @@ def main(out_json=None):
     for s in range(10):
         for arm in MSG_ARMS:
             td = timing[s]["t_deliver"]
-            if arm in LATE_ARMS:
+            if arm in DELAYED_ARMS:
                 arr = [tphys[s][i] for i in ARMS[arm] if tphys[s][i] is not None]
                 timing[s][f"tphys_min_{arm}"] = min(arr) if arr else np.nan
                 if arm in PERCAR_ARMS:
