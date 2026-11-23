@@ -1,4 +1,4 @@
-"""图 2：主结果全景（顶刊版 v3）
+"""图 1：主结果全景（顶刊版 v3）
 a  配对斜率：A0 → A2 → A3；Y 轴 0 起不截断；灰细线=单种子，粗横杠=该列中位数
 b  八条消息臂的配对差（Arm − A0）逐种子点 + 中位数 + IQR；零线置于数据下层
 c  独立的右侧标签栏（绘图区外），给出「10 个种子里有几个下降」与表头，不与数据争空间
@@ -108,4 +108,4 @@ for arm in order:
 axn.set_ylim(ax.get_ylim())
 
 fig.subplots_adjust(left=0.075, right=0.985, top=0.90, bottom=0.155)
-save(fig, "fig2_main_result", target_mm=183)
+save(fig, "fig1_main_result", target_mm=183)

@@ -1,4 +1,4 @@
-"""图 3：提前量判别（GPT + Gemini 两路共同裁决的版式）
+"""图 2：提前量判别（GPT + Gemini 两路共同裁决的版式）
 a  逐车「送达—动作—物理波到达—有效限幅」时间轴，早报臂 A2（29.0–134.9 s）
 b  同轴，等短提前量臂 A2S（8 s）—— 直接看出作用期塌缩
 c  三条处理条件的实际提前量分布（A2P = 0 s、A2S = 8 s、A2 = 29–134.9 s）
@@ -147,7 +147,7 @@ ax.set_ylim(0, tot["A2"] * 1.28)
 panel_tag(ax, "d")
 
 fig.subplots_adjust(left=0.075, right=0.955, top=0.945, bottom=0.075)
-save(fig, "fig3_leadtime", target_mm=183)
+save(fig, "fig2_leadtime", target_mm=183)
 
 # 打印基准区间，供图注引用（直接读 trace，与图内标注一致）
 for a in ("A2P", "A2S", "A2L", "A2"):

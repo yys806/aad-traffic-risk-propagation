@@ -1,4 +1,4 @@
-"""图 5：时间窗稳健性与代价（两路都认为必须补的一张）
+"""图 4：时间窗稳健性与代价（两路都认为必须补的一张）
 a  400 s vs 600 s：早报两臂的降幅方向是否稳住；同时露出剂量倒挂
 b  延误（车·秒）在 400 s 与 600 s 的配对差 —— 400 s 的优势是不是截断瞬态
 c  最小净距：A2 有个种子比对照最坏值更差
@@ -115,4 +115,4 @@ panel_tag(ax, "c", dy=0.995)
 ax.set_ylim(-2.35, 0.55)
 
 fig.subplots_adjust(left=0.085, right=0.985, top=0.90, bottom=0.165)
-save(fig, "fig5_window_cost", target_mm=183)
+save(fig, "fig4_window_cost", target_mm=183)

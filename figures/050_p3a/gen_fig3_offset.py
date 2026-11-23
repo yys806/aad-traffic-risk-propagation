@@ -1,4 +1,4 @@
-"""图 4：全队持平背后的抵消（逐种子配对拆分）
+"""图 3：全队持平背后的抵消（逐种子配对拆分）
 关键：中位数不可加（−5.0 + 2.5 ≠ 0.0），所以必须逐种子画，
       每根堆叠条满足 Δrecv + Δnonrecv = Δall（恒等，可当场核）。
 a  A2S（提前 8 s）：接收车 8 辆 vs 非接收车 72 辆
@@ -67,4 +67,4 @@ fig.legend(handles=[Line2D([], [], marker="s", ms=4, ls="none", color=OKABE["gre
            handlelength=1.2, columnspacing=1.6)
 
 fig.subplots_adjust(left=0.085, right=0.985, top=0.775, bottom=0.155)
-save(fig, "fig4_offset", target_mm=183)
+save(fig, "fig3_offset", target_mm=183)
