@@ -86,7 +86,10 @@ $P$ is a two-sided exact sign test over the 10 noise seeds within this single so
 it is not a cross-event statistic. Delivery: $t+0.6$ = broadcast 0.6\,s after source detection;
 grp.+0.6 = whole-group broadcast at the \emph{earliest} receiver's wave-arrival time plus 0.6\,s;
 $T_{\mathrm{phys}}-8$ = per-vehicle delivery 8\,s before its own wave arrival;
-$T_{\mathrm{phys}}+0.6$ = per-vehicle delivery 0.6\,s after its own wave arrival.
+$T_{\mathrm{phys}}+0.6$ = per-vehicle delivery 0.6\,s after its own wave arrival
+(i.e.\ a delivery lead time of $-0.6$\,s, so the physical wave has already passed and the frozen
+speed cap is set from a lower speed: 10.81--13.87\,m\,s$^{-1}$ versus 13.94--17.36\,m\,s$^{-1}$
+for the early-broadcast arms).
 Delay is the median paired difference in cumulative waiting time relative to A0, in
 vehicle-seconds, over the 80 target-zone vehicles.
 Quality is the number of event intervals still open at the last simulated frame, summed over the

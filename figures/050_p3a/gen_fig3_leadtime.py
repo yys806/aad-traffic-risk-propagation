@@ -5,7 +5,6 @@ c  三条处理条件的实际提前量分布（A2P = 0 s、A2S = 8 s、A2 = 29�
 d  有效限幅帧数（A2S 仅 A2 的 6.57%）
 数据：recon_050_a2s.json + probe_vcap.json
 """
-import json
 import sys
 
 sys.path.insert(0, r"D:/shen/TJU/AAD/figures/050_p3a")
@@ -16,7 +15,6 @@ from matplotlib.lines import Line2D
 
 d = load(F400)
 DT = d["config"]["dt"]
-VC = json.load(open(r"D:/shen/TJU/AAD/code/scripts/hdm/probe_vcap.json", encoding="utf-8"))
 
 
 def timeline(arm, s=0):
@@ -85,28 +83,34 @@ handles = [Line2D([], [], marker="v", ms=4.4, mfc="none", mec="#1A1A1A", mew=0.9
 fig.legend(handles=handles, frameon=False, ncol=4, loc="upper center",
            bbox_to_anchor=(0.5, 1.008), handlelength=1.4, columnspacing=1.6)
 
-# ---------------- c 实际提前量分布 ----------------
+# ---------------- c 送达提前量分布（离散有序横轴，不画连续趋势） ----------------
+# 定义：T_phys(i) − t_deliver(i)。A2P 为负（送达时物理波已过），必须如实画出。
 ax = fig.add_subplot(gs[2, 0])
-conds = [("A2P", "0 s\n(A2P)"), ("A2S", "8 s\n(A2S)"), ("A2", "29–135 s\n(A2)")]
+conds = [("A2P", "−0.6 s\n(A2P)"), ("A2S", "8 s\n(A2S)"),
+         ("A2L", "−0.6–105 s\n(A2L)"), ("A2", "29–135 s\n(A2)")]
 rng = np.random.default_rng(2)
+ax.axhline(0, color="#8C8C8C", lw=0.7, ls=(0, (2.5, 2)), zorder=0)
 for j, (arm, lab) in enumerate(conds):
-    leads = []
-    for s in range(NSEED):
-        a = d["seeds"][str(s)]["arms"][arm]
-        for i, v in a["msg"]["action"].items():
-            if v.get("lead") is not None:
-                leads.append(v["lead"])
+    leads = delivery_lead(d, arm)
     col = ARM_STYLE[arm][0]
-    ax.scatter(j + rng.uniform(-0.16, 0.16, len(leads)), leads, s=5, color=col,
-               alpha=0.55, edgecolors="none", zorder=3)
-    ax.hlines(float(np.median(leads)), j - 0.24, j + 0.24, color=col, lw=1.8, zorder=4)
-    ax.text(j + 0.30, float(np.median(leads)), f"{np.median(leads):.0f}", ha="left",
-            va="center", fontsize=BASE - 2.2, color=col, fontweight="bold")
+    ax.scatter(j + rng.uniform(-0.15, 0.15, len(leads)), leads, s=5, color=col,
+               alpha=0.5, edgecolors="none", zorder=3)
+    ax.hlines(float(np.median(leads)), j - 0.23, j + 0.23, color=col, lw=1.8, zorder=4)
+    ax.text(j, 146, f"{np.median(leads):.0f}", ha="center", va="top",
+            fontsize=BASE - 2.2, color=col, fontweight="bold")
+    ax.text(j, -9.5, f"n={len(leads)}", ha="center", va="top",
+            fontsize=BASE - 3, color="#666666")
+# 基准分界：A2P/A3P 的 v_cap 基准明显下移，必须摆在台面上
+ax.axvline(0.5, color="#B03A2E", lw=0.8, ls=(0, (3, 2)), zorder=1)
+ax.text(0.06, -0.30, "$v_{\mathrm{cap}}$ 10.8–13.9", transform=ax.transAxes,
+        ha="left", va="top", fontsize=BASE - 2.6, color="#B03A2E")
+ax.text(0.58, -0.30, "$v_{\mathrm{cap}}$ 13.6–17.4  m/s", transform=ax.transAxes,
+        ha="left", va="top", fontsize=BASE - 2.6, color="#117A65")
 ax.set_xticks(range(len(conds)))
 ax.set_xticklabels([c[1] for c in conds])
-ax.set_ylabel("Actual lead time (s)")
-ax.set_xlim(-0.5, len(conds) - 0.2)
-ax.set_ylim(-8, 150)
+ax.set_ylabel("Delivery lead time (s)")
+ax.set_xlim(-0.5, len(conds) - 0.5)
+ax.set_ylim(-16, 152)
 panel_tag(ax, "c")
 
 # ---------------- d 有效限幅帧 ----------------
@@ -128,7 +132,8 @@ panel_tag(ax, "d")
 fig.subplots_adjust(left=0.075, right=0.955, top=0.945, bottom=0.075)
 save(fig, "fig3_leadtime", target_mm=183)
 
-# 打印实测基准，供图注引用
-for a in ("A2", "A2S", "A2P"):
-    v = [x["v_cap"] for s in VC[a].values() for x in s.values()]
-    print(f"{a}: v_cap {min(v):.2f}–{max(v):.2f} m/s (median {np.median(v):.2f}), n={len(v)}")
+# 打印基准区间，供图注引用（直接读 trace，与图内标注一致）
+for a in ("A2P", "A2S", "A2L", "A2"):
+    lo, hi = v_cap_range(d, a)
+    ls = delivery_lead(d, a)
+    print(f"{a:4} v_cap {lo:.2f}–{hi:.2f} m/s | 送达提前量 {ls.min():+.2f} – {ls.max():+.2f} s (n={len(ls)})")

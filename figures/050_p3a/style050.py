@@ -124,6 +124,36 @@ def lead_times(d, arm):
     return np.array(out, dtype=float)
 
 
+def delivery_lead(d, arm):
+    """送达提前量 = T_phys(i) − t_deliver(i)，秒。
+
+    注意与 trace 里的 `action[i]["lead"]` 区分：后者是 T_phys − t_action
+    （动作确认到物理波到达），不是送达提前量。A2P 的送达提前量是 **−0.6 s**
+    （送达时物理波已过），用 action 的 lead 会错算成 −15…−86。
+    只统计真正触发过限幅的车（未触发的没有 T_phys 可算）。
+    """
+    out = []
+    for s in range(NSEED):
+        m = d["seeds"][str(s)]["arms"][arm]["msg"]
+        for i, t in (m.get("t_deliver_per_car") or {}).items():
+            if t is None:
+                continue
+            a = (m.get("action") or {}).get(i)
+            if not a or a.get("t_action") is None or a.get("lead") is None:
+                continue
+            out.append(float(a["t_action"] + a["lead"] - t))
+    return np.array(out, dtype=float)
+
+
+def v_cap_range(d, arm):
+    """该臂送达时刻冻结的限速上限区间（直接读 trace，不要自己用 A0 轨迹反推）。"""
+    v = []
+    for s in range(NSEED):
+        t = d["seeds"][str(s)]["arms"][arm]["trace"].get("v_cap") or {}
+        v += [x for x in t.values() if x is not None]
+    return (float(min(v)), float(max(v))) if v else (float("nan"), float("nan"))
+
+
 def split_events(d, arm, part, base_key):
     """part ∈ {recv, nonrecv}；base_key 是 A0 里对应的键。"""
     a = np.array([d["seeds"][str(s)]["arms"][arm]["split"][part]["events"] for s in range(NSEED)])
