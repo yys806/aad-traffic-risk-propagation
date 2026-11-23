@@ -1,0 +1,27 @@
+{
+  "canvas": {"width": 1000, "height": 395},
+  "nodes": [
+    {"id": "src", "label": "Source event\nlead vehicle brakes\n22.1 → 3.0 m/s", "x": 120, "y": 90, "width": 168, "height": 74, "shape": "rounded", "fill": "#FDECEA", "stroke": "#C0392B", "font_size": 13},
+    {"id": "det", "label": "On-board detection\n0.5 s", "x": 340, "y": 90, "width": 120, "height": 60, "shape": "rounded", "fill": "#F2F4F4", "stroke": "#7F8C8D", "font_size": 13},
+    {"id": "msg", "label": "Traceable message\n{source id, position, speed}\ntransfer 0.1 s", "x": 540, "y": 90, "width": 176, "height": 78, "shape": "rounded", "fill": "#EAF2F8", "stroke": "#2471A3", "font_size": 13},
+    {"id": "recv", "label": "Receiving vehicles\n8 or 20 of 100", "x": 760, "y": 90, "width": 150, "height": 62, "shape": "rounded", "fill": "#E8F8F5", "stroke": "#117A65", "font_size": 13},
+    {"id": "act", "label": "Local rule\nv_cap = 0.70 × v\nramp ≤ 1.0 m/s²\nnever released", "x": 760, "y": 226, "width": 176, "height": 82, "shape": "rounded", "fill": "#E8F8F5", "stroke": "#117A65", "font_size": 13},
+    {"id": "wave", "label": "Deceleration wave\npropagates upstream\n7–16 m/s", "x": 540, "y": 226, "width": 176, "height": 74, "shape": "rounded", "fill": "#FEF9E7", "stroke": "#B7950B", "font_size": 13},
+    {"id": "zone", "label": "Target zone\nvehicles 20–99\nDRAC ≥ 3.4 m/s²\nevents / run", "x": 300, "y": 226, "width": 176, "height": 78, "shape": "rounded", "fill": "#F4ECF7", "stroke": "#7D3C98", "font_size": 13},
+    {"id": "t1", "label": "t_src", "x": 120, "y": 226, "width": 70, "height": 40, "shape": "rounded", "fill": "#FFFFFF", "stroke": "#C0392B", "font_size": 13},
+    {"id": "t2", "label": "t_src + 0.6", "x": 340, "y": 320, "width": 96, "height": 36, "shape": "rounded", "fill": "#FFFFFF", "stroke": "#2471A3", "font_size": 12},
+    {"id": "t3", "label": "T_phys(i)", "x": 560, "y": 320, "width": 96, "height": 36, "shape": "rounded", "fill": "#FFFFFF", "stroke": "#B7950B", "font_size": 12},
+    {"id": "lead", "label": "Manipulated quantity:  lead time = T_phys(i) − t_deliver(i)", "x": 500, "y": 22, "width": 520, "height": 32, "shape": "rounded", "fill": "#FDFEFE", "stroke": "#566573", "font_size": 13}
+  ],
+  "edges": [
+    {"from": "src", "to": "det", "label": "detect"},
+    {"from": "det", "to": "msg", "label": "encode"},
+    {"from": "msg", "to": "recv", "label": "deliver"},
+    {"from": "recv", "to": "act", "label": "adopt"},
+    {"from": "act", "to": "wave", "label": "receivers slow first", "curve": true},
+    {"from": "wave", "to": "zone", "label": "reaches zone later"},
+    {"from": "t1", "to": "src", "style": "dotted", "color": "#999999"},
+    {"from": "t2", "to": "msg", "style": "dotted", "color": "#999999"},
+    {"from": "t3", "to": "wave", "style": "dotted", "color": "#999999"}
+  ]
+}
