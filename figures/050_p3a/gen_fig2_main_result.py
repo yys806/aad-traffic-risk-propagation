@@ -30,7 +30,7 @@ for j, c in enumerate(cols):
                edgecolors="white", linewidths=0.3)
     m = float(np.median(vals[c]))
     ax.hlines(m, j - 0.26, j + 0.26, color=col, lw=1.9, zorder=4)
-    ax.text(j, m + 7, f"{m:.0f}", ha="center", va="bottom", fontsize=BASE - 0.5,
+    ax.text(j, m + 7, f"{m:g}", ha="center", va="bottom", fontsize=BASE - 0.5,
             color=col, fontweight="bold",
             bbox=dict(facecolor="white", edgecolor="none", pad=0.9), zorder=5)
 
@@ -58,8 +58,9 @@ panel_tag(ax, "a")
 
 # ================= Panel b =================
 ax = fig.add_subplot(gs[0, 1])
-groups = [("Early (29–144 s)", ["A3", "A2", "A2L", "A3L"]),
-          ("Short lead (8 s)", ["A2S", "A1"]),
+# 分组必须与事实一致：A1 是早报（t_src+0.6、提前量约 90 s），不是短提前量臂
+groups = [("Early broadcast", ["A3", "A2", "A2L", "A3L", "A1"]),
+          ("Short lead (8 s)", ["A2S"]),
           ("At / after wave", ["A2P", "A3P"])]
 order = [a for _, g in groups for a in g]
 ypos, y = {}, 0.0
@@ -91,7 +92,7 @@ ax.set_xticks([-150, -100, -50, 0, 50])
 # 分组分隔与组名
 for name, g in groups:
     ax.axhline(ypos[g[-1]] + 0.52, color="#DDDDDD", lw=0.6, zorder=0)
-ax.text(-178, y - 0.80, "groups: early / short lead / at-or-after wave",
+ax.text(-178, y - 0.80, "groups (top to bottom): early broadcast / short lead / at-or-after wave",
         fontsize=BASE - 2, color="#666666", ha="left", va="top")
 panel_tag(ax, "b")
 

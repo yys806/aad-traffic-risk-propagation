@@ -4,36 +4,40 @@
 deterministic source event). Events are the number of de-duplicated intervals in which the
 required deceleration exceeds 3.4~m\,s$^{-2}$ for the 80 vehicles of the target zone.
 $P$ is a two-sided exact sign test over the 10 noise seeds within this single source event;
-it is not a cross-event statistic. Delivery: $t+0.6$ = broadcast 0.6\,s after source detection;
+it is not a cross-event statistic. Percentages are relative to the median paired change; in the
+600\,s window the raw medians of A2 and A3 are 115.5 and 119.0 events, i.e.\ the 20-receiver arm is
+not strictly better than the 8-receiver arm (dose inversion), although A3 is lower in 7/10 seeds. Delivery: $t+0.6$ = broadcast 0.6\,s after source detection;
 grp.+0.6 = whole-group broadcast at the \emph{earliest} receiver's wave-arrival time plus 0.6\,s;
 $T_{\mathrm{phys}}-8$ = per-vehicle delivery 8\,s before its own wave arrival;
 $T_{\mathrm{phys}}+0.6$ = per-vehicle delivery 0.6\,s after its own wave arrival
-(i.e.\ a delivery lead time of $-0.6$\,s, so the physical wave has already passed and the frozen
-speed cap is set from a lower speed: 10.81--13.87\,m\,s$^{-1}$ versus 13.94--17.36\,m\,s$^{-1}$
-for the early-broadcast arms).
-Delay is the median paired difference in cumulative waiting time relative to A0, in
-vehicle-seconds, over the 80 target-zone vehicles.
+(i.e.\ a delivery lead time of -0.60\,s, so the physical wave has already passed and the frozen
+speed cap is set from a lower speed: 10.81--13.87\,m\,s$^{-1}$ versus 13.94--17.36\,m\,s$^{-1}$ for the early-broadcast arms).
+Delay is the median paired difference, relative to A0, in the cumulative speed deficit
+$\int (v_{\mathrm{free}} - v)\,\mathrm{d}t$ summed over the 80 target-zone vehicles,
+in vehicle-seconds; it is not a stopped-vehicle waiting time.
 Quality is the number of event intervals still open at the last simulated frame, summed over the
 10 seeds; contacts are vehicle--vehicle collisions. Capping is the mean number of frames in which
 the local speed cap is the binding constraint, per receiver and per seed.}
 \label{tab:all_arms}
-\small
-\setlength{\tabcolsep}{3.2pt}
+\footnotesize
+\setlength{\tabcolsep}{2.6pt}
+
+\resizebox{\columnwidth}{!}{%
 \begin{tabular}{lcccccccccccc}
 \toprule
 Arm & $n_{\mathrm{recv}}$ & Delivery & Events & vs A0 & Lower & $P$ & vs A0 & Peak & Exposure & Delay & Capping & Quality \\
  & & & (400\,s) & (400\,s) & seeds & & (600\,s) & & norm. & veh$\cdot$s & frames/veh./seed & \\
 \midrule
-A0 & 0 & --- & 219.0 & --- & --- & --- & --- & --- & --- & --- & 0 & --- \\
+A0 & 0 & --- & 219.0 & --- & --- & --- & --- & --- & --- & --- & --- & --- \\
 \midrule
-A1 & 1 & t+0.6 & 192.0 & -4.57\% & 8/10 & 0.109 & -4.29\% & +2.96\% & +2.10\% & -0.02 & 2,829 & --- \\
-A2 & 8 & t+0.6 & 104.5 & -47.72\% & 10/10 & 0.002 & -40.70\% & -0.04\% & -35.95\% & -29.93 & 2,413 & --- \\
-A3 & 20 & t+0.6 & 93.0 & -55.48\% & 10/10 & 0.002 & -48.26\% & -4.41\% & -43.26\% & -41.28 & 2,290 & --- \\
-A2L & 8 & grp.+0.6 & 129.5 & -37.21\% & 10/10 & 0.002 & -33.33\% & -3.74\% & -29.90\% & -13.77 & 1,610 & 1 open \\
-A3L & 20 & grp.+0.6 & 122.5 & -41.55\% & 10/10 & 0.002 & -35.79\% & -12.03\% & -32.70\% & -1.83 & 1,524 & 1 open \\
-A2S & 8 & Tphys−8 & 214.5 & +0.00\% & 5/10 & 1.000 & +1.02\% & +0.22\% & +0.88\% & +1.45 & 158 & --- \\
-A2P & 8 & Tphys+0.6 & 224.0 & +0.00\% & 2/10 & 1.000 & +0.00\% & +0.00\% & -0.00\% & +0.63 & 27 & --- \\
-A3P & 20 & Tphys+0.6 & 210.0 & +0.00\% & 4/10 & 1.000 & +0.00\% & +0.00\% & +0.00\% & +1.24 & 29 & --- \\
+A1 & 1 & $t+0.6$ & 192.0 & -4.57\% & 8/10 & 0.109 & -4.29\% & +2.96\% & +2.10\% & -0.02 & 2,829 & --- \\
+A2 & 8 & $t+0.6$ & 104.5 & -47.72\% & 10/10 & 0.002 & -40.70\% & -0.04\% & -35.95\% & -29.93 & 2,413 & --- \\
+A3 & 20 & $t+0.6$ & 93.0 & -55.48\% & 10/10 & 0.002 & -48.26\% & -4.41\% & -43.26\% & -41.28 & 2,290 & --- \\
+A2L & 8 & grp.$+0.6$ & 129.5 & -37.21\% & 10/10 & 0.002 & -33.33\% & -3.74\% & -29.90\% & -13.77 & 1,610 & 1 open \\
+A3L & 20 & grp.$+0.6$ & 122.5 & -41.55\% & 10/10 & 0.002 & -35.79\% & -12.03\% & -32.70\% & -1.83 & 1,524 & 1 open \\
+A2S & 8 & $T_{\mathrm{phys}}-8$ & 214.5 & +0.00\% & 5/10 & 1.000 & +1.02\% & +0.22\% & +0.88\% & +1.45 & 158 & --- \\
+A2P & 8 & $T_{\mathrm{phys}}+0.6$ & 224.0 & +0.00\% & 2/10 & 1.000 & +0.00\% & +0.00\% & -0.00\% & +0.63 & 27 & --- \\
+A3P & 20 & $T_{\mathrm{phys}}+0.6$ & 210.0 & +0.00\% & 4/10 & 1.000 & +0.00\% & +0.00\% & +0.00\% & +1.24 & 29 & --- \\
 \bottomrule
-\end{tabular}
+\end{tabular}}
 \end{table}

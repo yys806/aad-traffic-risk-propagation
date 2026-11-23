@@ -18,8 +18,9 @@ d = load(F400)
 fig = plt.figure(figsize=(W2, 62 * MM))
 gs = fig.add_gridspec(1, 2, wspace=0.28)
 
+# 送达提前量取实测值：A2S = +8.00 s，A2P = −0.60 s（送达时物理波已过）
 CASES = [("A2S", "8 s lead", "recv_A2", "nonrecv_A2"),
-         ("A2P", "At-wave (0 s lead)", "recv_A2", "nonrecv_A2")]
+         ("A2P", "After wave (−0.6 s lead)", "recv_A2", "nonrecv_A2")]
 
 for k, (arm, label, bk, nk) in enumerate(CASES):
     ax = fig.add_subplot(gs[0, k])
@@ -61,9 +62,9 @@ fig.legend(handles=[Line2D([], [], marker="s", ms=4, ls="none", color=OKABE["gre
                                              hatch="///", lw=0.35,
                                              label="non-receivers (72 veh.)"),
                     Line2D([], [], marker="D", ms=3, ls="none", color="#111111",
-                           label="whole target zone (= receivers + non-receivers)")],
-           frameon=False, ncol=3, loc="upper center", bbox_to_anchor=(0.5, 1.06),
+                           label="whole target zone (= per-seed sum, not a sum of medians)")],
+           frameon=False, ncol=3, loc="upper center", bbox_to_anchor=(0.5, 0.995),
            handlelength=1.2, columnspacing=1.6)
 
-fig.subplots_adjust(left=0.085, right=0.985, top=0.86, bottom=0.155)
+fig.subplots_adjust(left=0.085, right=0.985, top=0.775, bottom=0.155)
 save(fig, "fig4_offset", target_mm=183)

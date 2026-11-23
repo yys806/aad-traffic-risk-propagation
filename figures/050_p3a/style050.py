@@ -79,7 +79,7 @@ ARM_STYLE = {
     "A3L": (OKABE["purple"],     "P", "--"),
     "A2S": (OKABE["green"],      "X", "-"),
     "A2P": (OKABE["orange"],     "*", ":"),
-    "A3P": (OKABE["yellow"],     "h", ":"),
+    "A3P": ("#8C6D1F",           "h", ":"),   # 原浅黄在白底不可见，改深褐
 }
 
 # ---------- 数据 ----------
@@ -161,7 +161,7 @@ def split_events(d, arm, part, base_key):
     return a - b
 
 
-def panel_tag(ax, letter, dx=-0.13, dy=1.04):
+def panel_tag(ax, letter, dx=-0.135, dy=1.005):
     ax.text(dx, dy, letter, transform=ax.transAxes,
             fontsize=BASE + 1, fontweight="bold", ha="left", va="bottom")
 

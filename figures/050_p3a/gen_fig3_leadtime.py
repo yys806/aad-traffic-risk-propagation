@@ -37,16 +37,19 @@ gs = fig.add_gridspec(3, 2, height_ratios=[1.00, 1.00, 0.92],
                       hspace=0.52, wspace=0.30)
 
 # ---------------- a / b 时间轴 ----------------
-for k, (arm, title) in enumerate((
-        ("A2", "Early broadcast: lead 29.0–134.9 s"),
-        ("A2S", "Short lead: 8 s by design"))):
+_a2 = delivery_lead(d, "A2")
+_title_a2 = f"Early broadcast (seed 0 shown; all seeds: {_a2.min():.1f}–{_a2.max():.1f} s lead)"
+_TITLE = {"A2": _title_a2, "A2S": "Short lead 8 s by design (seed 0 shown)"}
+for k, (arm, title) in enumerate((("A2", _TITLE["A2"]), ("A2S", _TITLE["A2S"]))):
     ax = fig.add_subplot(gs[k, :])
     rows = timeline(arm)
     col = ARM_STYLE[arm][0]
     for j, r in enumerate(rows):
-        if r["t_action"] is not None and r["cap"] > 0:
-            ax.barh(j, r["cap"], left=r["t_action"], height=0.52,
-                    color=col, alpha=0.26, edgecolor="none", zorder=1)
+        # 不画连续色条：cap_bind 是非连续帧的累计，画成从 t_action 起的连续段会
+        # 穿过物理波到达点、捏造一个并不存在的"连续有效窗口"（Gemini 审图指出）
+        if r["cap"] > 0:
+            ax.text(0.982, j, f"{r['cap']:.0f} s", transform=ax.get_yaxis_transform(),
+                    ha="right", va="center", fontsize=BASE - 2.8, color=col, alpha=0.95)
         if r["t_deliver"] is not None:
             ax.plot(r["t_deliver"], j, marker="v", ms=4.4, mfc="none",
                     mec="#1A1A1A", mew=0.9, zorder=5)
@@ -92,20 +95,34 @@ rng = np.random.default_rng(2)
 ax.axhline(0, color="#8C8C8C", lw=0.7, ls=(0, (2.5, 2)), zorder=0)
 for j, (arm, lab) in enumerate(conds):
     leads = delivery_lead(d, arm)
+    # n 必须是"真正被限过速的车·种子数"（cap_bind>0），不是 t_action 非空条数：
+    # 后者含 4 例假阳性、漏 2 例真限幅（Gemini 审图逐条核出）
+    n_bound = sum(1 for s in range(NSEED)
+                  for v in (d["seeds"][str(s)]["arms"][arm]["msg"]["cap_bind_frames"] or {}).values()
+                  if v > 0)
     col = ARM_STYLE[arm][0]
     ax.scatter(j + rng.uniform(-0.15, 0.15, len(leads)), leads, s=5, color=col,
                alpha=0.5, edgecolors="none", zorder=3)
     ax.hlines(float(np.median(leads)), j - 0.23, j + 0.23, color=col, lw=1.8, zorder=4)
-    ax.text(j, 146, f"{np.median(leads):.0f}", ha="center", va="top",
-            fontsize=BASE - 2.2, color=col, fontweight="bold")
-    ax.text(j, -9.5, f"n={len(leads)}", ha="center", va="top",
-            fontsize=BASE - 3, color="#666666")
+    _med = float(np.median(leads))
+    ax.text(j, 146, (f"{_med:.1f}" if abs(_med) < 10 else f"{_med:.0f}"),
+            ha="center", va="top", fontsize=6.0, color=col, fontweight="bold")
+    ax.text(j, -9.5, f"n={n_bound}", ha="center", va="top", fontsize=6.0, color="#666666")
 # 基准分界：A2P/A3P 的 v_cap 基准明显下移，必须摆在台面上
 ax.axvline(0.5, color="#B03A2E", lw=0.8, ls=(0, (3, 2)), zorder=1)
-ax.text(0.06, -0.30, "$v_{\mathrm{cap}}$ 10.8–13.9", transform=ax.transAxes,
-        ha="left", va="top", fontsize=BASE - 2.6, color="#B03A2E")
-ax.text(0.58, -0.30, "$v_{\mathrm{cap}}$ 13.6–17.4  m/s", transform=ax.transAxes,
-        ha="left", va="top", fontsize=BASE - 2.6, color="#117A65")
+# A2L 横跨两个基准（11.65–16.67），分界线只对 A2P/A2S 有意义，逐臂标实测区间
+_lo_p, _hi_p = v_cap_range(d, "A2P")
+_lo_s, _hi_s = v_cap_range(d, "A2S")
+_lo_l, _hi_l = v_cap_range(d, "A2L")
+_lo_a, _hi_a = v_cap_range(d, "A2")
+for _xx, _lab, _cc in ((0.01, f"A2P {_lo_p:.1f}–{_hi_p:.1f}", "#B03A2E"),
+                       (0.27, f"A2S {_lo_s:.1f}–{_hi_s:.1f}", "#117A65"),
+                       (0.53, f"A2L {_lo_l:.1f}–{_hi_l:.1f}", "#1F618D"),
+                       (0.80, f"A2 {_lo_a:.1f}–{_hi_a:.1f}", "#0072B2")):
+    ax.text(_xx, -0.30, _lab, transform=ax.transAxes, ha="left", va="top",
+            fontsize=6.0, color=_cc)
+ax.text(0.01, -0.44, "frozen speed cap $v_{\\mathrm{cap}}$ (m/s) per arm; A2L spans both regimes",
+        transform=ax.transAxes, ha="left", va="top", fontsize=6.0, color="#444444")
 ax.set_xticks(range(len(conds)))
 ax.set_xticklabels([c[1] for c in conds])
 ax.set_ylabel("Delivery lead time (s)")
@@ -117,16 +134,16 @@ panel_tag(ax, "c")
 ax = fig.add_subplot(gs[2, 1])
 arms_d = ["A2", "A2S", "A2P"]
 tot = {a: cap_bind_total(d, a).sum() for a in arms_d}
+# 线性坐标：对数柱会把 15 倍差距画成六成高度，掩盖"作用期塌缩"
 ax.bar(range(len(arms_d)), [tot[a] for a in arms_d],
        color=[ARM_STYLE[a][0] for a in arms_d], width=0.58)
-ax.set_yscale("log")
 ax.set_xticks(range(len(arms_d)))
 ax.set_xticklabels(arms_d)
-ax.set_ylabel("Effective capping frames\n(10 seeds, log scale)")
+ax.set_ylabel("Effective capping frames\n(10 seeds, total)")
 for i, a in enumerate(arms_d):
     lab = f"{tot[a]:,.0f}" if a == "A2" else f"{tot[a]:,.0f}\n({tot[a]/tot['A2']*100:.2f}%)"
-    ax.text(i, tot[a] * 1.18, lab, ha="center", va="bottom", fontsize=BASE - 2)
-ax.set_ylim(1e2, 2e6)
+    ax.text(i, tot[a] + tot["A2"] * 0.03, lab, ha="center", va="bottom", fontsize=BASE - 2)
+ax.set_ylim(0, tot["A2"] * 1.28)
 panel_tag(ax, "d")
 
 fig.subplots_adjust(left=0.075, right=0.955, top=0.945, bottom=0.075)
