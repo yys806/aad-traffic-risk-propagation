@@ -1,0 +1,18 @@
+\documentclass[oneside,doctype=proposal,fontset=windows]{tongjithesis}
+
+% ============================================================
+%  同 main.tex，唯一区别：fontset=windows（宋体 SimSun / 黑体 SimHei）。
+%
+%  用途：在本机（已装微软中文字体）编出**与官方 Word 模板逐项对齐**的定稿 PDF。
+%  ※ 这个文件在 Overleaf 上会编译失败（那边没有宋体/黑体），不要在那里选它当主文件。
+%  编译：本机命令行 latexmk -xelatex main-windows.tex
+% ============================================================
+
+\begin{document}
+\pagestyle{empty}
+
+\input{chapters/metadata}
+\MakeDocument
+\input{chapters/proposal_body}
+
+\end{document}

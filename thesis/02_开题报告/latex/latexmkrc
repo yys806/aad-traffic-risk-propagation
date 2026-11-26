@@ -1,0 +1,16 @@
+# Overleaf 用的 latexmk 配置。
+# 关键：文档类 tongjithesis.cls 在 style/ 子目录、正文在 chapters/ 子目录，
+# XeLaTeX 默认不会去这些子目录找，必须把它们加进 TEXINPUTS，否则报
+#   ! LaTeX Error: File `tongjithesis.cls' not found.
+# 用 ensure_path 是**追加**（保留 TeX 自身的搜索路径），不要用 $ENV{TEXINPUTS}=... 覆盖。
+$pdf_mode = 5;                # 5 = xelatex
+$max_repeat = 5;
+$bibtex_use = 2;
+
+ensure_path( 'TEXINPUTS', './style//' );
+ensure_path( 'TEXINPUTS', './style/font//' );
+ensure_path( 'TEXINPUTS', './chapters//' );
+ensure_path( 'TEXINPUTS', './figures//' );
+ensure_path( 'BIBINPUTS', './bib//' );
+
+$clean_ext = 'bbl glo gls gz hd loa run.xml thm xdv aux bcf fdb_latexmk fls out synctex.gz toc vrb';

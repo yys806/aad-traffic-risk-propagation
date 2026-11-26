@@ -1,0 +1,38 @@
+%%
+%% tongji-cjk-font-arphic.def — Overleaf 专用字体集
+%%
+%% 为什么需要它：Overleaf 上没有微软的宋体(SimSun)/黑体(SimHei)，
+%% 而模板自带的 fandol 只覆盖 GB2312 常用字，缺「珅」这类 GBK 字，
+%% 姓名会渲染成方框。本字体集改用 TeX Live 自带的文鼎字体（Arphic，自由授权）：
+%%   正文/宋体  → AR PL UMing CN（明体，字形接近宋体，覆盖 GBK，含「珅」）
+%%   黑体/标题  → FandolHei（标题用字都是常用字，够用）
+%%   楷体       → AR PL UKai CN
+%% 只在 main.tex（在线改稿预览）里使用；定稿 PDF 仍用 main-windows.tex 的
+%% fontset=windows（真·宋体/黑体，与官方 Word 一致）。
+%%
+\ProvidesFile{tongji-cjk-font-arphic.def}[v1.5.1 Arphic CJK fonts definition (TongjiThesis, Overleaf)]
+\setCJKmainfont{AR PL UMing CN}
+  [
+    BoldFont    = FandolSong-Bold.otf,
+    ItalicFont  = AR PL UKai CN
+  ]
+\setCJKsansfont{FandolHei}
+  [
+    Extension   = .otf,
+    UprightFont = *-Regular,
+    BoldFont    = *-Bold,
+    AutoFakeBold = 3
+  ]
+\setCJKmonofont{AR PL UKai CN}
+
+\setCJKfamilyfont{zhsong}{AR PL UMing CN}[BoldFont = FandolSong-Bold.otf]
+\setCJKfamilyfont{zhhei}{FandolHei}[Extension = .otf, UprightFont = *-Regular, BoldFont = *-Bold]
+\setCJKfamilyfont{zhkai}{AR PL UKai CN}
+\setCJKfamilyfont{zhfs}{AR PL UMing CN}
+
+% 以下定义体内不要加空格：本文件按普通 catcode 读入，空格会排进正文。
+\NewDocumentCommand{\songti}   {} {\CJKfamily{zhsong}}
+\NewDocumentCommand{\heiti}    {} {\CJKfamily{zhhei}}
+\NewDocumentCommand{\kaishu}   {} {\CJKfamily{zhkai}}
+\NewDocumentCommand{\fangsong} {} {\CJKfamily{zhfs}}
+\endinput
