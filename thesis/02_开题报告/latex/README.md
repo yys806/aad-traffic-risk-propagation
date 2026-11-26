@@ -24,10 +24,14 @@
 
 | 文件 | 字体集 | 用在哪 |
 |---|---|---|
-| `main.tex` | `fontset=fandol`（开源） | **Overleaf 上改稿 + 预览**用这个。本地也能编。 |
-| `main-windows.tex` | `fontset=windows`（宋体/黑体） | **定稿交学校的 PDF** 用这个，在本地编。Overleaf 上没有宋体/黑体，编译会失败，别选它。 |
+| `main.tex` | `fontset=arphic`（文鼎 AR PL UMing + FandolHei，TeX Live 自带） | **Overleaf 上改稿 + 预览**。本地也能编。 |
+| `main-windows.tex` | `fontset=windows`（宋体/黑体） | **定稿交学校的 PDF**，在本地编。Overleaf 上没有宋体/黑体，会编译失败，别选它。 |
 
-fandol 缺个别生僻字（如「珅」），所以 Overleaf 预览里的姓名可能显示成方框 —— 这是字体问题，不是内容问题；定稿用 `main-windows.tex` 就正常。
+为什么不用大家都熟的 fandol：fandol 只覆盖 GB2312，「珅」这类 GBK 字缺字形，姓名会显示方框。
+arphic 覆盖 GBK，「珅」正常显示（实测远端 PDF 里 `禹尧珅` 三个字齐全）。
+代价是明体字形与宋体略有差异 —— 只影响预览，不影响定稿。
+
+两版实测差：x 坐标完全一致，y 方向整体差约 1.8 pt（字体度量不同），在允许范围内。
 
 ## 本地编译
 
@@ -59,3 +63,26 @@ figures/tongji.pdf            封面校名图
 
 `D:/shen/TJU/AAD/thesis/00_学校原件/`（8 份官方 Word + 教务处通知原文），**只读**，
 要用就复制出去改，不要动原件。
+
+## 在 Overleaf 上改稿（工作流）
+
+Overleaf 项目「AAD-开题报告」，项目 ID `6b084c4b691e5b6f950a9514`。
+主文件是 `main.tex`（arphic 字体），编译器已设为 **XeLaTeX**（项目默认的 pdfLaTeX 排不了中文）。
+
+两条铁律：
+
+1. **`latexmkrc` 不能改名成 `.latexmkrc`**。Overleaf 不读隐藏配置，改名后立刻报
+   `File 'tongjithesis.cls' not found`——因为 cls 在 `style/` 子目录，
+   XeLaTeX 默认不去子目录找，必须靠 `ensure_path('TEXINPUTS','./style//')` 追加路径。
+   追加要用 `ensure_path`，不能写 `$ENV{TEXINPUTS}=...`，那会把 TeX 自己的搜索路径覆盖掉。
+2. **定稿别在 Overleaf 上出**。Overleaf 没有宋体/黑体，字体集只能用替代品。
+   定稿回本地跑 `latexmk -xelatex main-windows.tex`。
+
+本地与 Overleaf 同步用 olcli：
+`node D:/hermes/node/node_modules/@aloth/olcli/dist/cli.js push <本地目录> --project 6b084c4b691e5b6f950a9514 --all`
+
+## 改哪个文件
+
+- 改学院/专业/姓名/学号/题名/导师 → `chapters/metadata.tex`
+- 改正文内容 → `chapters/proposal_body.tex`
+- 改版式（间距、字号、表格） → `style/tongjithesis.cls`
