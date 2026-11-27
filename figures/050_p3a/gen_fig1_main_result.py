@@ -14,7 +14,7 @@ from matplotlib.lines import Line2D
 d = load(F400)
 
 fig = plt.figure(figsize=(W2, 72 * MM))
-gs = fig.add_gridspec(1, 3, width_ratios=[1.00, 1.05, 0.15], wspace=0.16)
+gs = fig.add_gridspec(1, 3, width_ratios=[1.00, 1.05, 0.20], wspace=0.14)
 
 # ================= Panel a =================
 ax = fig.add_subplot(gs[0, 0])
@@ -30,9 +30,10 @@ for j, c in enumerate(cols):
                edgecolors="white", linewidths=0.3)
     m = float(np.median(vals[c]))
     ax.hlines(m, j - 0.26, j + 0.26, color=col, lw=1.9, zorder=4)
-    ax.text(j, m + 7, f"{m:g}", ha="center", va="bottom", fontsize=BASE - 0.5,
-            color=col, fontweight="bold",
-            bbox=dict(facecolor="white", edgecolor="none", pad=0.9), zorder=5)
+    ax.text(j, m + (BASE * 0.55), f"{m:g}", ha="center", va="bottom",
+            fontsize=BASE - 0.5, color=col, fontweight="bold",
+            bbox=dict(facecolor="white", edgecolor="none", pad=1.4, alpha=0.95),
+            zorder=5)
 
 ax.set_xticks(xs)
 ax.set_xticklabels(["None", "8 vehicles", "20 vehicles"])
@@ -92,20 +93,25 @@ ax.set_xticks([-150, -100, -50, 0, 50])
 # 分组分隔与组名
 for name, g in groups:
     ax.axhline(ypos[g[-1]] + 0.52, color="#DDDDDD", lw=0.6, zorder=0)
-ax.text(-178, y - 0.80, "groups (top to bottom): early broadcast / short lead / at-or-after wave",
-        fontsize=BASE - 2, color="#666666", ha="left", va="top")
+# 注意：纵轴自上而下是 at-or-after → short lead → early，说明必须照此写，别再写反
+ax.text(-178, y - 0.80, "groups: at/after wave · short lead · early broadcast",
+        fontsize=BASE - 3.2, color="#666666", ha="left", va="top")
 panel_tag(ax, "b")
 
 # ================= Panel c：独立标签栏 =================
 axn = fig.add_subplot(gs[0, 2], sharey=ax)
 axn.axis("off")
-axn.text(1.0, 1.008, "seeds lower", transform=axn.transAxes, ha="right", va="bottom",
-         fontsize=BASE - 1.8, color="#333333")
+axn.text(0.96, 1.008, "seeds lower", transform=axn.transAxes, ha="right", va="bottom",
+         fontsize=BASE - 2.4, color="#333333")
 for arm in order:
     dl = paired(d, arm)
-    axn.text(1.0, ypos[arm], f"{int((dl<0).sum())}/10", ha="right", va="center",
-             fontsize=BASE - 1.2, color="#222222")
+    axn.text(0.96, ypos[arm], f"{int((dl<0).sum())}/10", ha="right", va="center",
+             fontsize=BASE - 1.0, color="#222222", fontweight="bold")
 axn.set_ylim(ax.get_ylim())
 
-fig.subplots_adjust(left=0.075, right=0.985, top=0.90, bottom=0.155)
+# PPT 模式字大，左右与底部留白都要放宽，否则轴标签出画布
+if PPT_MODE:
+    fig.subplots_adjust(left=0.105, right=0.975, top=0.865, bottom=0.20)
+else:
+    fig.subplots_adjust(left=0.075, right=0.985, top=0.90, bottom=0.155)
 save(fig, "fig1_main_result", target_mm=183)

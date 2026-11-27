@@ -48,23 +48,36 @@ for k, (arm, label, bk, nk) in enumerate(CASES):
     hi = float(max(rec.max(), non.max(), tot.max()))
     pad = max(3.0, 0.18 * (hi - lo))
     ax.set_ylim(lo - pad, hi + pad)
-    ax.text(0.02, 1.015, f"{arm} — {label}", transform=ax.transAxes,
-            ha="left", va="bottom", fontsize=BASE - 1.2, fontweight="bold")
-    # 一致性命中率
-    ax.text(0.98, 0.04,
-            f"receivers lower in {int((rec<0).sum())}/10;  whole zone median {np.median(tot):+.1f}",
-            transform=ax.transAxes, ha="right", va="bottom", fontsize=BASE - 2)
+    # 两面板纵轴范围不同，必须写明，否则并排会被误读成同一把尺
+    # 放在 x 轴标题上方，否则会与 "Seed" 重叠
+    # 放在 x 标签与 x 轴标题之间的空档里，既不压刻度数字也不压标题
+    ax.text(0.5, -0.215, f"axis range {lo - pad:.0f} to {hi + pad:.0f}",
+            transform=ax.transAxes, ha="center", va="top",
+            fontsize=BASE - 4.8, color="#666666")
+    _names = {"A2S": "A2S: 8 s early", "A2P": "A2P: 0.6 s after wave hit"}
+    ax.text(0.0, 1.015,
+            f"{_names.get(arm, arm)} · recv. lower {int((rec<0).sum())}/10",
+            transform=ax.transAxes, ha="left", va="bottom",
+            fontsize=BASE - 3.0, fontweight="bold")
+    # 一致性命中率：放面板右下内侧，不与标题行抢位置
     panel_tag(ax, "a" if k == 0 else "b")
 
-fig.legend(handles=[Line2D([], [], marker="s", ms=4, ls="none", color=OKABE["green"],
-                           label="receivers (8 veh.)"),
-                    matplotlib.patches.Patch(facecolor=OKABE["orange"], edgecolor="#333333",
-                                             hatch="///", lw=0.35,
-                                             label="non-receivers (72 veh.)"),
-                    Line2D([], [], marker="D", ms=3, ls="none", color="#111111",
-                           label="whole target zone (= per-seed sum, not a sum of medians)")],
-           frameon=False, ncol=3, loc="upper center", bbox_to_anchor=(0.5, 0.995),
-           handlelength=1.2, columnspacing=1.6)
+_leg = [Line2D([], [], marker="s", ms=4, ls="none", color=OKABE["green"],
+                label="receivers (8)"),
+        matplotlib.patches.Patch(facecolor=OKABE["orange"], edgecolor="#333333",
+                                 hatch="///", lw=0.35, label="non-receivers (72)"),
+        Line2D([], [], marker="D", ms=3, ls="none", color="#111111",
+               label="whole zone (per-seed sum)")]
+if PPT_MODE:      # 字大，图例分两行放，避免横向出画布
+    fig.legend(handles=_leg, frameon=False, ncol=2, loc="upper center",
+               bbox_to_anchor=(0.5, 1.005), handlelength=1.0, columnspacing=1.2,
+               fontsize=BASE - 2)
+else:
+    fig.legend(handles=_leg, frameon=False, ncol=3, loc="upper center",
+               bbox_to_anchor=(0.5, 0.995), handlelength=1.2, columnspacing=1.6)
 
-fig.subplots_adjust(left=0.085, right=0.985, top=0.775, bottom=0.155)
+if PPT_MODE:
+    fig.subplots_adjust(left=0.105, right=0.975, top=0.72, bottom=0.225)
+else:
+    fig.subplots_adjust(left=0.085, right=0.985, top=0.775, bottom=0.155)
 save(fig, "fig3_offset", target_mm=183)

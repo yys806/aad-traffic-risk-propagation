@@ -1839,167 +1839,213 @@
   {\centering{\tj@ctitlefont\heiti\selectfont\tjformheadertext{}#1}\par}%
 }
 
-% 说明性文字（此项成稿删除）与提示性文字（内容提示，不删除）——两种灰色，语义不同
-% 两类灰色文字的字号不同（2026-11-26 按官方 .doc 实测）：
-%  · \tjformnote —— 说明性文字（“此项成稿删除”），官方 9pt 宋体、首行缩进 0.635cm、
-%    固定行距 18pt。模板原先借用正文字号（12pt），比官方高 3pt、行高多 4pt。
-%  · \tjformhint —— 内容提示（“包括但不限于…”），官方 12pt 宋体、首行缩进 0，
-%    段前/段后各 6pt、固定行距 18pt。
-% #1（可选）首行缩进，官方第 50 段为 0、第 51 段为 18pt（0.635cm）
-\newcommand{\tjformnote}[2][0.635cm]{%
-  {\tjfontnotebody\color{tjnotegray}\selectfont
-   \par\noindent\hspace*{#1}#2\par}%
+% ═════════════════════════════════════════════════════════════
+%  表格类文档（任务书 / 开题报告 / 中期报告）正文排版引擎
+%
+%  为什么要有这一层（2026-11-27 重写，别改回逐个 \vspace 调坐标）：
+%    LaTeX 的行距是「基线到基线」；Word 的行距是「行盒高 + 段后 + 段前」。
+%    两者在字号变化处必然分叉，于是每处转场差 1–8pt、一页累积错位 50pt——
+%    靠量坐标去补，改一个字就要重调一遍，永远补不齐。
+%
+%  引擎规则与 Word 完全同构：
+%      本段首行基线 = 上一段末行基线 + 上一段行高 + 上一段段后 + 本段段前
+%    每个宏把自己的行高与段后记在 \tj@lastH / \tj@lastAfter 里供下一段查询，
+%    所以加字、删段、改字号都不会让版式跑偏，不需要重新对坐标。
+%
+%  官方 .doc 段落属性实测（Word COM 逐段读出，见 cache/thesis-baseline/
+%  proposal_paragraphs.json）：
+%    一级标题  段前 6bp / 段后 6bp；行高 一、四 = 18bp（固定值 18）、
+%              二、三 = 25.35bp（1.5 倍）
+%    二级标题  段前 6bp / 段后 6bp；行高 23.4bp（12pt × 1.5）
+%    正文、空段 段前 0 / 段后 0；行高 23.4bp
+%    9pt 说明  段前 0 / 段后 0；行高 17.55bp（9pt × 1.95）
+%    提示语    段前 6bp / 段后 6bp；行高 23.4bp
+%    参考文献  段前 0 / 段后 0；行高 23.4bp
+%
+%  「页首值」= 该段落在新页第一行时，基线距版心顶的距离。Word 在页首**保留**段前距，
+%  LaTeX 会吞掉，故单独给值：页首值 = 段前 + 该字号在 Word 行盒里的上升高度
+%  （12pt = 11.1、14pt = 12.95、9pt = 8.33；固定值 18 的行盒上升 = 14.38，实测自官方 p2）。
+% ═════════════════════════════════════════════════════════════
+\newdimen\tj@lastH     \setlength{\tj@lastH}{23.4bp}   % 上一段行高
+\newdimen\tj@lastAfter \setlength{\tj@lastAfter}{0pt}  % 上一段段后
+\newdimen\tj@tmpd
+\newdimen\tj@pinDist
+\newdimen\tj@ruleh  \setlength{\tj@ruleh}{23.4bp}
+\newif\iftj@pin
+\newif\iftj@pagefirst
+
+% 覆盖下一段的段间距离：只用于官方 Word 自身与段落属性不符的手工排版处，
+% 调用处必须写明「官方实测 xx → 属性算出 yy」，不许随手填数。
+\newcommand{\tjformgap}[1]{\tj@pinDist=#1\relax\tj@pintrue}
+
+% #1 本段段前  #2 本段行高  #3 页首基线距版心顶
+\newcommand{\tj@vplace}[3]{%
+  \par
+  \tj@tmpd=\prevdepth
+  \ifdim\pagegoal=\maxdimen                % 本页尚无内容 = 页首
+    \tj@tmpd=0pt\relax                             % 页首：不用胶，改撑行盒高度
+    \tj@ruleh=#3\relax
+    \tj@pagefirsttrue
+  \else
+    \iftj@pin
+      \tj@tmpd=\dimexpr\tj@pinDist-#2-\tj@tmpd\relax % 覆盖：直接给基线距
+    \else
+      \tj@tmpd=\dimexpr\tj@lastH+\tj@lastAfter+#1-#2-\tj@tmpd\relax
+    \fi
+  \fi
+  \tj@pinfalse
+  \nointerlineskip
+  \iftj@pagefirst\tj@pagefirstfalse
+  \else \tj@ruleh=#2\relax \vskip\tj@tmpd\fi
 }
 
-% 参考文献段前的说明（官方 12pt、宋体伪粗、灰色、首行缩进 24pt、行距 18pt）：
-% 2026-11-27 按官方 .doc 第 66 段实测 —— size=12pt、bold=True、color=11184814、
-% firstIndent=24pt（=2 字符）、lineRule=1（1.5 倍）、line=18pt。
-% 🔴 官方汉字是「宋体 + 粗体」，不是黑体。直接 \bfseries 会切到 SimHei（模板把宋体的
-%    BoldFont 设成了 SimHei），字体名就对不上。故单独定义 AutoFakeBold 的宋体族，
-%    让粗体表现为宋体伪粗，与 Word 的 SimSun Bold 一致。
-%    与上面 9pt 的 \tjformnote 不是同一类，别混用。
+% 记录本段参数，供下一段计算
+\newcommand{\tj@reg}[2]{\tj@lastH=#1\relax\tj@lastAfter=#2\relax}
+
+% ── 9pt 说明文字（“此项成稿删除”）──────────────────────────────
+% 官方 9pt 宋体、灰色、固定行距 18bp、首行缩进 0.635cm（第 50 段为 0，故可选）
+\newcommand{\tjformnote}[2][0.635cm]{%
+  \tj@vplace{0pt}{17.55bp}{8.33bp}%
+  {\tjfontnotebody\color{tjnotegray}\selectfont
+   \baselineskip=17.55bp
+   \noindent\hspace*{#1}\rule{0pt}{\tj@ruleh}#2\par}%
+  \tj@reg{17.55bp}{0pt}%
+}
+
+% ── 参考文献段前的说明（官方 12pt 宋体伪粗、灰色、行距 18bp、首行缩进 24pt）──
+% 🔴 官方汉字是「宋体 + 粗体」，不是黑体：模板把宋体 BoldFont 设成了 SimHei，
+%    直接 \bfseries 会切成黑体、字体名对不上，故用 AutoFakeBold 的宋体族。
 \IfFontExistsTF{SimSun}
   {\setCJKfamilyfont{zhsongfake}{SimSun}[AutoFakeBold=3]}
   {\setCJKfamilyfont{zhsongfake}{Noto Serif CJK SC}[AutoFakeBold=3]}
 \newcommand{\tjformrefnote}[1]{%
+  \tj@vplace{0pt}{23.4bp}{11.12bp}%
   {{\CJKfamily{zhsongfake}\bfseries\tjfontbody\color{tjnotegray}\selectfont
-    \par\noindent\hspace*{24pt}#1\par}}%
+    \baselineskip=23.4bp
+    \noindent\hspace*{24pt}\rule{0pt}{\tj@ruleh}#1\par}}%
+  \tj@reg{23.4bp}{0pt}%
 }
+
+% ── 内容提示语（“包括但不限于……”）：12pt 宋体、灰色、段前段后各 6bp ──
 \newcommand{\tjformhint}[1]{%
+  \tj@vplace{6bp}{23.4bp}{17.1bp}%
   {\tjfontbody\color{tjhintgray}\selectfont
-   \par\vspace*{6pt}\noindent #1\par\vspace{6pt}}%
+   \baselineskip=23.4bp
+   \noindent\rule{0pt}{\tj@ruleh}#1\par}%
+  \tj@reg{23.4bp}{6bp}%
 }
 
-% 一级小节标题：四号黑体，顶格（官方 Word 模板 x0 = 3.17cm，与正文左边界对齐，
-% 无首行缩进；2026-11-26 按官方 .doc 实测校准，原为缩进 2 字符）
-% 段前 6pt / 段后 6pt（官方 .doc：SpaceBefore=6pt、SpaceAfter=6pt，固定行距 18pt）。
-%
-% 🔴 页首特例（2026-11-26 实测，勿改回 \vspace*{6pt}）：官方 Word 里，一节若正好
-% 落在新页第一行，段前的 6pt **不会**被丢弃——首行文字顶端距上边距 65.2pt 处为
-% 73.5pt。LaTeX 的行为相反，页首的 \vspace 会被吞掉；而改用 \vspace*{6pt} 又会
-% 触发 TeX 在页顶额外补一整条基线，把标题推到 94.2pt（差 20.7pt）。
-% 故此处判断 \pagegoal 是否等于 \maxdimen（即本页尚无内容）：是则用
-% \vspace*{8.7pt-\baselineskip} 抵消那条额外基线，得到与官方一致的 73.5pt；
-% 否则用 \addvspace{6pt}，正常累积段前距。
-% 一级标题：四号黑体、顶格、段前段后各 6pt（官方 .doc SpaceBefore/After=6pt）。
-% 行距按官方 .doc 逐段实测：一、与 四、是「固定值 18pt」，二、与 三、是「1.5 倍」——
-% Word 原件本身就不统一，这里用可选参数复现，不统一成一种：
-%   \tjformsection{…}          固定值 18pt（默认，对应一、四、）
-%   \tjformsection[1.5]{…}     1.5 倍行距（对应二、三、）
+% ── 审核框内的提示语：固定行距 18bp、段前段后 0（官方框内全部 18bp）──
+% #1 可选：行距（官方框一 18bp、框二 15.6bp，两框本身不统一）
+\newcommand{\tjformhintbox}[2][18bp]{%
+  {\tjfontbody\color{tjhintgray}\selectfont\baselineskip=#1\relax
+   \parindent=0pt \noindent\hspace*{24bp}#2\par}%
+}
+
+% ── 一级小节标题：四号黑体、顶格、段前段后各 6bp ──
+% 行距按官方 .doc 逐段实测，Word 原件本身不统一，这里如实复现、不统一成一种：
+%   \tjformsection{…}        固定值 18bp（对应 一、四、）
+%   \tjformsection[1.5]{…}   1.5 倍行距（对应 二、三、）
 \newcommand{\tjformsection}[2][]{%
-  \par
-  \ifdim\pagegoal=\maxdimen
-    \vspace*{\dimexpr 8.7pt-1\baselineskip\relax}%
+  \def\tj@sec@mode{#1}%
+  \ifx\tj@sec@mode\@empty
+    \tj@vplace{6bp}{18bp}{20.38bp}%
+    \noindent{\zihao{4}\heiti\selectfont
+      \linespread{1}\selectfont\setlength{\baselineskip}{18bp}%
+      \rule{0pt}{\tj@ruleh}#2}\par
+    \tj@reg{18bp}{6bp}%
   \else
-    \addvspace{6pt}%
+    \tj@vplace{6bp}{25.35bp}{18.95bp}%
+    \noindent{\zihao{4}\heiti\selectfont
+      \linespread{#1}\selectfont
+      \rule{0pt}{\tj@ruleh}#2}\par
+    \tj@reg{25.35bp}{6bp}%
   \fi
-  \noindent{\zihao{4}\heiti
-    \def\tj@sec@mode{#1}%
-    \ifx\tj@sec@mode\@empty\linespread{1}\selectfont\setlength{\baselineskip}{18pt}%
-    \else\linespread{#1}\selectfont\fi
-    #2}\par
-  \vspace{\dimexpr 6pt-\prevdepth\relax}%
 }
 
-% 二级小节标题：小四号黑体，顶格，段前/段后各 0.5 行
-% （撰写规范：2 级标题小四号黑体，序号与题名之间空一格）。
-% 与 \tjformsection 一样采用手工编号——两级标题均不进入目录、不参与章节编号，
-% 故不使用 enumerate：列表环境无法把序号本身也置为黑体，且会额外引入列表缩进。
-% 段前/段后 6pt，页首特例同 \tjformsection（官方二级标题在页首同样保留段前距）
+% ── 二级小节标题：小四号黑体、顶格、段前段后各 6bp、行高 23.4bp ──
 \newcommand{\tjformsubsection}[1]{%
-  \par
-  \ifdim\pagegoal=\maxdimen
-    \vspace*{\dimexpr 8.7pt-1\baselineskip\relax}%
-  \else
-    \addvspace{6pt}%
-  \fi
-  \noindent{\tjfontbody\heiti\selectfont #1}\par
-  \vspace{6pt}%
+  \tj@vplace{6bp}{23.4bp}{17.1bp}%
+  \noindent{\tjfontbody\heiti\selectfont
+    \baselineskip=23.4bp
+    \rule{0pt}{\tj@ruleh}#1}\par
+  \tj@reg{23.4bp}{6bp}%
 }
 
-% 居中的说明性大标题（如中期报告首页的“填写说明”）：小二号黑体加粗
-% 官方（中期报告第 2 页实测）：「填写说明」标题 y=69.2pt、小二黑体居中；
-% 条目自 y=116.7 起、四号宋体、首行缩进 0、编号「1.」后空一格、行距 27.4pt；
-% 条目左边界 x=89.9（与版心左对齐），续行缩进到 x=110.9（2 字符）。
+% ── 居中说明性大标题（中期报告首页“填写说明”）────────────────
 \newcommand{\tjformnotice}[1]{%
   \par\vspace*{-15.7pt}%
   {\centering{\zihao{-2}\heiti\bfseries\selectfont #1}\par}%
   \vspace*{15.7pt}%
 }
 
-% 说明性正文（\tjformnotice 标题之下的条目）：四号宋体，比正文各节的小四号大一号
-% 说明条目的列表参数（官方实测）：编号「1.」起于版心左界 x=89.9，正文紧随其后空
-% 0.5 字，续行缩进到 x=110.9（2 字符）；条目基线间隔 27.4pt（与正文行距一致，不另加）。
 \newenvironment{tjformnoticebody}{%
   \par\zihao{4}\selectfont
-  \begin{enumerate}[label=\arabic*.,labelwidth=15pt,labelsep=6pt,
+  \begin{enumerate}[label=\arabic*.,labelwidth=15pt,labelsep=6bp,
                     leftmargin=21pt,itemindent=0pt,
                     topsep=0pt,partopsep=0pt,itemsep=0pt,parsep=0pt]
 }{%
   \end{enumerate}\par
 }
 
-% 审核意见框内的字段标签（如“指导教师意见：”）：小四黑体。
-% 标签单独成组，使紧随其后的灰色提示文字（\tjformnote/\tjformhint）保持宋体。
+% ── 审核意见框内的字段标签（如“指导教师意见：”）：小四黑体 ──
 \newcommand{\tjformlabel}[1]{{\tjfontbody\heiti\selectfont #1}}
 
-% ─────────────────────────────────────────────────────────────
-% 表格类文档（任务书/开题报告/中期报告）的正文填写区
-%
-% 官方模板只给了说明文字，正文段落本身是空的，所以下面这几个值里
-% 「首行缩进 2 字符、行距 1.5 倍」由官方说明文字直接规定；
-% 「段前段后各 0.5 行」按 12pt 字号 1.5 倍行距的 18pt 基线算得 9pt，
-% 属于由说明推得、官方 .doc 中无对应段落可实测，标为推算值。
-% ─────────────────────────────────────────────────────────────
-% 官方 .doc 实测：正文段落 SpaceBefore=0、SpaceAfter=0，段间视觉间距完全来自
-% 1.5 倍行距（12pt → 23.4pt）本身。原设 9pt 是「段前后各 0.5 行」的错误折算
-% （Word 存的是 0），会让每段多出 9pt、整篇比官方长一截，2026-11-27 改回 0。
-\newlength{\tjformparskip}
-\setlength{\tjformparskip}{0pt}
-
-% 正文段落环境：宋体小四、首行缩进 2 字符、段前段后各 0.5 行。
-% 行距沿用全文 \setstretch{\tjlinespread}（=Word 1.5 倍），此处不重复设置。
+% ── 正文段落环境：宋体小四、首行缩进 2 字符、行距 1.5 倍（行高 23.4bp）、
+%    段前段后 0（官方 .doc 实测：正文段 SpaceBefore/After 均为 0，
+%    视觉间距完全来自 1.5 倍行距本身）──
 \newenvironment{tjformbody}{%
-  \par\zihao{-4}\songti\selectfont
+  \tj@vplace{0pt}{23.4bp}{11.1bp}%
+  \zihao{-4}\songti\selectfont
+  \baselineskip=23.4bp
   \setlength{\parindent}{2em}%
-  \setlength{\parskip}{\tjformparskip}%
+  \setlength{\parskip}{0pt}%
+  \noindent\rule{0pt}{\tj@ruleh}\ignorespaces
 }{%
-  \par\setlength{\parskip}{0pt}%
+  \par\tj@reg{23.4bp}{0pt}%
 }
 
-% 框架占位标记：灰色方括号，写清「这一段要写什么」。
-% 只在搭骨架阶段使用；开始填正文时逐条替换成真实段落，成稿前必须全部删干净
-% （查漏：grep -n '\\tjformslot' chapters/proposal_body.tex 应为 0 条）。
+% ── 骨架占位标记（填正文时逐条替换掉，成稿前必须清零）──
 \newcommand{\tjformslot}[1]{%
   {\tjfontbody\color{tjhintgray}\selectfont
    \par\parindent=2em\relax 【待写】#1\par}%
 }
 
-% 图位：给「技术路线图」这类还没画的图留一个可见的占位框，
-% 画好后把整块替换成 \begin{figure}…\end{figure}。
+% ── 空正文段：官方 .doc 每个小节下都有一个「缩进 2 字符、1.5 倍行距」的空段落。
+%    它不是“留白”，是真实段落：占一整行高 23.4bp，并与前后段的段距相加。
+%    引擎下只需照常走一次 23.4bp 的行，段前段后均为 0。──
+\newcommand{\tjformblank}{%
+  \tj@vplace{0pt}{23.4bp}{11.1bp}%
+  {\tjfontbody\selectfont\baselineskip=23.4bp
+   \noindent\rule{0pt}{\tj@ruleh}\par}%
+  \tj@reg{23.4bp}{0pt}%
+}
+
+% ── 图位占位框（技术路线图未画时）──
 \newcommand{\tjformfigslot}[2][\linewidth]{%
-  \par\vspace*{6pt}%
-  {\centering\setlength{\fboxsep}{6pt}%
+  \par\vspace*{6bp}%
+  {\centering\setlength{\fboxsep}{6bp}%
    \fbox{\parbox[c][110pt][c]{#1}{\centering
      {\tjfontbody\color{tjhintgray}\selectfont 图位：#2}}}%
    \par}%
-  \vspace*{6pt}%
+  \vspace*{6bp}%
 }
 
-% 参考文献条目环境：官方要求「悬挂 0.74cm、按 GB/T 7714-2025 著录、正文首行缩进 2 字符」。
-% 这里 \parindent=0 覆盖正文缩进；\hangindent=0.74cm + \hangafter=1 实现悬挂：
-% 首行顶格，第二行起整体右移 0.74cm（=21.05pt），与 Word 的悬挂缩进一致。
+% ── 参考文献条目：悬挂 0.74cm、GB/T 7714-2025、12pt 宋体、行高 23.4bp ──
 \newenvironment{tjformrefs}{%
-  \par\zihao{-4}\songti\selectfont
+  \par\zihao{-4}\songti\selectfont\baselineskip=23.4bp
   \setlength{\parindent}{0pt}%
   \setlength{\parskip}{0pt}%
 }{%
   \par
 }
 
-% 单条参考文献：\tjformref{条目正文}（序号由调用方写在条目里，便于按 GB/T 7714 编号）
 \newcommand{\tjformref}[1]{%
-  \par\noindent\hangindent=0.74cm\hangafter=1\relax #1\par
+  \tj@vplace{0pt}{23.4bp}{11.12bp}%
+  {\tjfontbody\selectfont\baselineskip=23.4bp
+   \noindent\hangindent=0.74cm\hangafter=1\relax
+   \rule{0pt}{\tj@ruleh}#1\par}%
+  \tj@reg{23.4bp}{0pt}%
 }
 
 
@@ -2038,23 +2084,31 @@
 % 内容顶对齐；签字块用 \vfill 压到框底，因此提示语长短变化不会推动签字区位置。
 % \fbox 的参数须一次性完整给出，故仍用 lrbox 装入后再包裹。
 \newsavebox{\tj@reviewbox}
+% 框间距：官方两个框上边线紧贴（框一底 = 框二顶），且框一顶距「四、」基线 9.60bp。
+% \tjreviewgap 在 \begin{tjreviewbox} 之前调用，给本框上方的净距离（默认 6bp）。
+\newcommand{\tjreviewgap}[1]{\def\tj@rb@gap{#1}}
+\def\tj@rb@gap{6bp}
+% 框内顶部内边距：官方两个框的标签距各自框顶并不相同（框一 20.16bp、框二 21.74bp，
+% Word 手工排版），故做成参数，默认 4.7bp。
+\newcommand{\tjreviewtop}[1]{\def\tj@rb@top{#1}}
+\def\tj@rb@top{4.7bp}
 \newenvironment{tjreviewbox}[2][242.2pt]{%
-  \par\vspace{6pt}\noindent
+  \par\nointerlineskip\vspace*{\tj@rb@gap}\noindent
   \begingroup
   \def\tj@rb@bot{#2}%
   \setlength{\fboxsep}{5.4pt}%
   \setlength{\fboxrule}{0.5pt}%
   \begin{lrbox}{\tj@reviewbox}%
-  \begin{minipage}[t][#1][t]{\dimexpr\linewidth-2\fboxsep-2\fboxrule+10.1pt\relax}%
+  \begin{minipage}[t][#1][t]{\dimexpr\linewidth-2\fboxsep-2\fboxrule+9.1bp\relax}%
   \tjfontbody\selectfont\setlength{\baselineskip}{18pt}%
-  \vspace*{4.7pt}%
+  \vspace*{\tj@rb@top}%
 }{%
   \par\vspace*{\tj@rb@bot}%
   \end{minipage}%
   \end{lrbox}%
   \noindent\makebox[\linewidth][l]{\fbox{\usebox{\tj@reviewbox}}}%
   \endgroup
-  \par\vspace{6pt}%
+  \par
 }
 
 % 任务书/开题报告/中期报告全程不显示装订线：三者均为单独打印/提交的行政表格，

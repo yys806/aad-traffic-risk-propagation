@@ -1,0 +1,413 @@
+{
+ "config": {
+  "N": 100,
+  "hw": 45.0,
+  "Tprime": 1.0,
+  "bmax": 9.0,
+  "warm": 40.0,
+  "ramp": 6.0,
+  "obs": 360.0,
+  "dt": 0.05,
+  "x0": 5000.0,
+  "drac_th": 3.4,
+  "merge_gap": 0.3,
+  "zone": [
+   3981.1,
+   5879.6
+  ],
+  "arms": {
+   "A0": null,
+   "A2": [
+    20,
+    30,
+    40,
+    50,
+    60,
+    70,
+    80,
+    90
+   ],
+   "A3": [
+    20,
+    24,
+    28,
+    32,
+    36,
+    40,
+    44,
+    48,
+    52,
+    56,
+    60,
+    64,
+    68,
+    72,
+    76,
+    80,
+    84,
+    88,
+    92,
+    96
+   ]
+  },
+  "cars": "1..99 (源车除外)",
+  "legacy": "20..99"
+ },
+ "meta": {
+  "0": {
+   "t_src": 40.25,
+   "x_src": 5889.559975213891,
+   "v_src": 21.466084920756455,
+   "k_src": 805
+  }
+ },
+ "seeds": {
+  "0": {
+   "A0": {
+    "total_all": 256,
+    "in_zone": 247,
+    "overflow_up": 9,
+    "overflow_down": 0,
+    "total_legacy": 243,
+    "in_zone_legacy": 234,
+    "masked_only": 247,
+    "zone_carsec": 16275.400000000001,
+    "safety": {
+     "contact_warm": 0,
+     "contact_obs": 0,
+     "nonfinite": 0,
+     "oob": 0,
+     "teleport": 0,
+     "max_abs_x": 7021.899969358489,
+     "min_x": 546.1048792670417,
+     "min_speed": 0.0,
+     "max_speed": 23.8862718232744
+    }
+   },
+   "A2": {
+    "total_all": 117,
+    "in_zone": 109,
+    "overflow_up": 8,
+    "overflow_down": 0,
+    "total_legacy": 104,
+    "in_zone_legacy": 96,
+    "masked_only": 109,
+    "zone_carsec": 14802.95,
+    "safety": {
+     "contact_warm": 0,
+     "contact_obs": 0,
+     "nonfinite": 0,
+     "oob": 0,
+     "teleport": 0,
+     "max_abs_x": 7021.899969358489,
+     "min_x": 546.1048792670417,
+     "min_speed": 0.0,
+     "max_speed": 23.782386277143765
+    }
+   },
+   "A3": {
+    "total_all": 108,
+    "in_zone": 100,
+    "overflow_up": 8,
+    "overflow_down": 0,
+    "total_legacy": 95,
+    "in_zone_legacy": 87,
+    "masked_only": 100,
+    "zone_carsec": 14465.550000000001,
+    "safety": {
+     "contact_warm": 0,
+     "contact_obs": 0,
+     "nonfinite": 0,
+     "oob": 0,
+     "teleport": 0,
+     "max_abs_x": 7021.899969358489,
+     "min_x": 546.1048792670417,
+     "min_speed": 0.0,
+     "max_speed": 23.782386277143765
+    }
+   }
+  }
+ },
+ "summary": {
+  "A0": {
+   "total_all": {
+    "median": 256.0,
+    "range": [
+     256.0,
+     256.0
+    ],
+    "diffs": [
+     0
+    ],
+    "diff_median": 0.0,
+    "seeds_down": 0,
+    "seeds_up": 0
+   },
+   "in_zone": {
+    "median": 247.0,
+    "range": [
+     247.0,
+     247.0
+    ],
+    "diffs": [
+     0
+    ],
+    "diff_median": 0.0,
+    "seeds_down": 0,
+    "seeds_up": 0
+   },
+   "overflow_up": {
+    "median": 9.0,
+    "range": [
+     9.0,
+     9.0
+    ],
+    "diffs": [
+     0
+    ],
+    "diff_median": 0.0,
+    "seeds_down": 0,
+    "seeds_up": 0
+   },
+   "overflow_down": {
+    "median": 0.0,
+    "range": [
+     0.0,
+     0.0
+    ],
+    "diffs": [
+     0
+    ],
+    "diff_median": 0.0,
+    "seeds_down": 0,
+    "seeds_up": 0
+   },
+   "total_legacy": {
+    "median": 243.0,
+    "range": [
+     243.0,
+     243.0
+    ],
+    "diffs": [
+     0
+    ],
+    "diff_median": 0.0,
+    "seeds_down": 0,
+    "seeds_up": 0
+   },
+   "in_zone_legacy": {
+    "median": 234.0,
+    "range": [
+     234.0,
+     234.0
+    ],
+    "diffs": [
+     0
+    ],
+    "diff_median": 0.0,
+    "seeds_down": 0,
+    "seeds_up": 0
+   },
+   "masked_only": {
+    "median": 247.0,
+    "range": [
+     247.0,
+     247.0
+    ],
+    "diffs": [
+     0
+    ],
+    "diff_median": 0.0,
+    "seeds_down": 0,
+    "seeds_up": 0
+   }
+  },
+  "A2": {
+   "total_all": {
+    "median": 117.0,
+    "range": [
+     117.0,
+     117.0
+    ],
+    "diffs": [
+     -139
+    ],
+    "diff_median": -139.0,
+    "seeds_down": 1,
+    "seeds_up": 0
+   },
+   "in_zone": {
+    "median": 109.0,
+    "range": [
+     109.0,
+     109.0
+    ],
+    "diffs": [
+     -138
+    ],
+    "diff_median": -138.0,
+    "seeds_down": 1,
+    "seeds_up": 0
+   },
+   "overflow_up": {
+    "median": 8.0,
+    "range": [
+     8.0,
+     8.0
+    ],
+    "diffs": [
+     -1
+    ],
+    "diff_median": -1.0,
+    "seeds_down": 1,
+    "seeds_up": 0
+   },
+   "overflow_down": {
+    "median": 0.0,
+    "range": [
+     0.0,
+     0.0
+    ],
+    "diffs": [
+     0
+    ],
+    "diff_median": 0.0,
+    "seeds_down": 0,
+    "seeds_up": 0
+   },
+   "total_legacy": {
+    "median": 104.0,
+    "range": [
+     104.0,
+     104.0
+    ],
+    "diffs": [
+     -139
+    ],
+    "diff_median": -139.0,
+    "seeds_down": 1,
+    "seeds_up": 0
+   },
+   "in_zone_legacy": {
+    "median": 96.0,
+    "range": [
+     96.0,
+     96.0
+    ],
+    "diffs": [
+     -138
+    ],
+    "diff_median": -138.0,
+    "seeds_down": 1,
+    "seeds_up": 0
+   },
+   "masked_only": {
+    "median": 109.0,
+    "range": [
+     109.0,
+     109.0
+    ],
+    "diffs": [
+     -138
+    ],
+    "diff_median": -138.0,
+    "seeds_down": 1,
+    "seeds_up": 0
+   }
+  },
+  "A3": {
+   "total_all": {
+    "median": 108.0,
+    "range": [
+     108.0,
+     108.0
+    ],
+    "diffs": [
+     -148
+    ],
+    "diff_median": -148.0,
+    "seeds_down": 1,
+    "seeds_up": 0
+   },
+   "in_zone": {
+    "median": 100.0,
+    "range": [
+     100.0,
+     100.0
+    ],
+    "diffs": [
+     -147
+    ],
+    "diff_median": -147.0,
+    "seeds_down": 1,
+    "seeds_up": 0
+   },
+   "overflow_up": {
+    "median": 8.0,
+    "range": [
+     8.0,
+     8.0
+    ],
+    "diffs": [
+     -1
+    ],
+    "diff_median": -1.0,
+    "seeds_down": 1,
+    "seeds_up": 0
+   },
+   "overflow_down": {
+    "median": 0.0,
+    "range": [
+     0.0,
+     0.0
+    ],
+    "diffs": [
+     0
+    ],
+    "diff_median": 0.0,
+    "seeds_down": 0,
+    "seeds_up": 0
+   },
+   "total_legacy": {
+    "median": 95.0,
+    "range": [
+     95.0,
+     95.0
+    ],
+    "diffs": [
+     -148
+    ],
+    "diff_median": -148.0,
+    "seeds_down": 1,
+    "seeds_up": 0
+   },
+   "in_zone_legacy": {
+    "median": 87.0,
+    "range": [
+     87.0,
+     87.0
+    ],
+    "diffs": [
+     -147
+    ],
+    "diff_median": -147.0,
+    "seeds_down": 1,
+    "seeds_up": 0
+   },
+   "masked_only": {
+    "median": 100.0,
+    "range": [
+     100.0,
+     100.0
+    ],
+    "diffs": [
+     -147
+    ],
+    "diff_median": -147.0,
+    "seeds_down": 1,
+    "seeds_up": 0
+   }
+  }
+ },
+ "wall_s": 56.3
+}

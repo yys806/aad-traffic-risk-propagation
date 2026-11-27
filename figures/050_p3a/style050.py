@@ -22,7 +22,10 @@ W15 = 120 * MM        # 1.5 栏
 W2 = 183 * MM         # 双栏 7.20 in
 
 # ---------- 字体与刻度 ----------
-BASE = 8              # 正文字号（缩放后仍 ≥5 pt）
+# AAD_FIG_MODE=ppt 时放大字号与线宽，供投影/汇报用（论文版保持 8 pt）
+import os as _os
+PPT_MODE = _os.environ.get("AAD_FIG_MODE", "").lower() == "ppt"
+BASE = 13 if PPT_MODE else 8
 matplotlib.rcParams.update({
     "font.family": "serif",
     "font.serif": ["Times New Roman", "DejaVu Serif"],
@@ -45,13 +48,13 @@ matplotlib.rcParams.update({
     "axes.grid": False,
     "axes.spines.top": False,
     "axes.spines.right": False,
-    "axes.linewidth": 0.6,
-    "xtick.major.width": 0.6,
-    "ytick.major.width": 0.6,
-    "xtick.major.size": 2.5,
-    "ytick.major.size": 2.5,
-    "lines.linewidth": 0.8,
-    "lines.markersize": 2.2,
+    "axes.linewidth": 1.1 if PPT_MODE else 0.6,
+    "xtick.major.width": 1.1 if PPT_MODE else 0.6,
+    "ytick.major.width": 1.1 if PPT_MODE else 0.6,
+    "xtick.major.size": 4.0 if PPT_MODE else 2.5,
+    "ytick.major.size": 4.0 if PPT_MODE else 2.5,
+    "lines.linewidth": 1.6 if PPT_MODE else 0.8,
+    "lines.markersize": 4.5 if PPT_MODE else 2.2,
     "pdf.fonttype": 42,              # 内嵌 TrueType，投稿要求
     "ps.fonttype": 42,
 })
@@ -167,8 +170,11 @@ def panel_tag(ax, letter, dx=-0.135, dy=1.005):
 
 
 def save(fig, name, target_mm=None):
-    """保存矢量 PDF；页面尺寸严格等于 figsize（投稿按 89 / 183 mm 验收）。"""
+    """保存矢量 PDF；页面尺寸严格等于 figsize（投稿按 89 / 183 mm 验收）。
+    PPT 模式文件名加 _ppt 后缀，不覆盖论文版。"""
     os.makedirs(OUT, exist_ok=True)
+    if PPT_MODE:
+        name = name + "_ppt"
     p = os.path.join(OUT, name + ".pdf")
     fig.savefig(p, bbox_inches=None, pad_inches=0.0)
     plt.close(fig)

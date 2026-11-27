@@ -51,9 +51,12 @@ class Message:
 class MsgState:
     """消息状态机。一条消息 = 一批接收车 + 送达时刻 + 速度因子 + 下降速率上限。"""
 
-    def __init__(self, receivers, t_deliver, factor=0.70, rate=1.0, N=100, message=None):
+    def __init__(self, receivers, t_deliver, factor=0.70, rate=1.0, N=100, message=None, ttl=None):
         """t_deliver 可以是标量（广播，全组同时送达）或长度 N 的数组（逐车送达）。
 
+        ttl: 限时限速的有效期（秒），从**该车实际送达时刻**起算；None 表示永不撤销
+             （保持 0.5.0 原行为，零副作用）。到期后该车恢复原生 HDM，不再受 v_cap 约束。
+        
         逐车送达是「零提前量」对照的唯一正确做法（Gemini 2026-11-22 第三轮审计）：
         组广播晚到 T_phys(#20)+0.6 时，后排车自身物理波要晚得多，它们仍有大量提前量；
         只有 t_deliver[i] = T_phys[i] + 0.6 才是真正的无提前量臂。
@@ -69,6 +72,8 @@ class MsgState:
         self.factor = float(factor)
         self.rate = float(rate)
         self.N = N
+        self.ttl = None if ttl is None else float(ttl)
+        self.t_expire = np.full(N, np.nan)   # 逐车到期时刻（ttl=None 时全为 nan）
         self.v_cap = np.full(N, np.nan)      # 每辆接收车的速度上限，接收时刻冻结
         self.delivered = False
         self.t_action = np.full(N, np.nan)   # 首次"消息真的改变了指令"的时刻
@@ -129,10 +134,15 @@ class MsgState:
                 self.v_cap[i] = self.factor * float(v_prev[i])
                 self.delivered_at[i] = t          # 第 3 环：该车送达回执
                 self.v_at_delivery[i] = float(v_prev[i])
+                if self.ttl is not None:
+                    self.t_expire[i] = t + self.ttl
         if all(not np.isnan(self.delivered_at[i]) for i in self.receivers):
             self.delivered = True
         for i in self.receivers:
             if not self.applicable[i]:
+                continue
+            # 限时限速：到期的车恢复原生 HDM（不读任何真值，纯时间事件）
+            if self.ttl is not None and not np.isnan(self.t_expire[i]) and t > self.t_expire[i] + 1e-12:
                 continue
             v_allowed = max(self.v_cap[i], float(v_prev[i]) - self.rate * dt)
             if v_new[i] > v_allowed + 1e-15:
