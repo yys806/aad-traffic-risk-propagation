@@ -24,14 +24,18 @@
 
 | 文件 | 字体集 | 用在哪 |
 |---|---|---|
-| `main.tex` | `fontset=arphic`（文鼎 AR PL UMing + FandolHei，TeX Live 自带） | **Overleaf 上改稿 + 预览**。本地也能编。 |
+| `main.tex` | `fontset=noto`（Noto Serif/Sans CJK） | **Overleaf 上改稿 + 预览**。Overleaf 预装，加载快。 |
 | `main-windows.tex` | `fontset=windows`（宋体/黑体） | **定稿交学校的 PDF**，在本地编。Overleaf 上没有宋体/黑体，会编译失败，别选它。 |
 
-为什么不用大家都熟的 fandol：fandol 只覆盖 GB2312，「珅」这类 GBK 字缺字形，姓名会显示方框。
-arphic 覆盖 GBK，「珅」正常显示（实测远端 PDF 里 `禹尧珅` 三个字齐全）。
-代价是明体字形与宋体略有差异 —— 只影响预览，不影响定稿。
+字体集的三个坑，都实测踩过：
 
-两版实测差：x 坐标完全一致，y 方向整体差约 1.8 pt（字体度量不同），在允许范围内。
+- **fandol**（模板自带默认）只覆盖 GB2312，「珅」缺字形，姓名显示方框。
+- **arphic**（文鼎 AR PL UMing）字形齐全，但字体文件大，Overleaf 上加载极慢，
+  连续三次编译超时（日志停在加载字体那行）。已弃用。
+- **noto** 是 Overleaf（Ubuntu）预装的，覆盖完整、加载快，远端实测 122.5 KB / 5 页一次编译通过，
+  `禹尧珅` 三个字齐全、无缺字符。
+
+代价是字形与宋体略有差异 —— 只影响预览，不影响定稿。
 
 ## 本地编译
 
@@ -86,3 +90,27 @@ Overleaf 项目「AAD-开题报告」，项目 ID `6b084c4b691e5b6f950a9514`。
 - 改学院/专业/姓名/学号/题名/导师 → `chapters/metadata.tex`
 - 改正文内容 → `chapters/proposal_body.tex`
 - 改版式（间距、字号、表格） → `style/tongjithesis.cls`
+
+## 当前进度：骨架已搭好，正文未填
+
+`chapters/proposal_body.tex` 现在是**框架**，不是成稿：
+
+- 四节结构与两级标题完全照官方模板；
+- 每个小节下用灰色 `【待写】` 标出「这一段要写什么」，共 27 处；
+- 技术路线图用 `\tjformfigslot` 留了图位框；
+- 参考文献只留位置，没有编造条目。
+
+清理命令（成稿前必须跑，两条都应为 0）：
+
+```
+grep -c 'tjformslot\|tjformfigslot' chapters/proposal_body.tex
+grep -c 'tjformnote' chapters/proposal_body.tex
+```
+
+## cls 里新增的三个排版件
+
+| 命令 | 干什么 | 依据 |
+|---|---|---|
+| `tjformbody` 环境 | 正文段落：宋体小四、首行缩进 2 字符、段前后各 0.5 行 | 官方说明文字；段前后 0.5 行按 18pt 基线折算为 9pt，属推算值（官方 .doc 无正文段落可实测） |
+| `tjformslot{…}` | 灰色【待写】占位标记，成稿删 | 仅搭骨架用 |
+| `tjformref{…}` / `tjformrefs` 环境 | 参考文献悬挂缩进 0.74 cm | 模板原文规定 |

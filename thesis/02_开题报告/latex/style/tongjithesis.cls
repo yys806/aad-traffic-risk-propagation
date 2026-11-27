@@ -1907,6 +1907,62 @@
 % 标签单独成组，使紧随其后的灰色提示文字（\tjformnote/\tjformhint）保持宋体。
 \newcommand{\tjformlabel}[1]{{\tjfontbody\heiti\selectfont #1}}
 
+% ─────────────────────────────────────────────────────────────
+% 表格类文档（任务书/开题报告/中期报告）的正文填写区
+%
+% 官方模板只给了说明文字，正文段落本身是空的，所以下面这几个值里
+% 「首行缩进 2 字符、行距 1.5 倍」由官方说明文字直接规定；
+% 「段前段后各 0.5 行」按 12pt 字号 1.5 倍行距的 18pt 基线算得 9pt，
+% 属于由说明推得、官方 .doc 中无对应段落可实测，标为推算值。
+% ─────────────────────────────────────────────────────────────
+\newlength{\tjformparskip}
+\setlength{\tjformparskip}{9pt}
+
+% 正文段落环境：宋体小四、首行缩进 2 字符、段前段后各 0.5 行。
+% 行距沿用全文 \setstretch{\tjlinespread}（=Word 1.5 倍），此处不重复设置。
+\newenvironment{tjformbody}{%
+  \par\zihao{-4}\songti\selectfont
+  \setlength{\parindent}{2em}%
+  \setlength{\parskip}{\tjformparskip}%
+}{%
+  \par\setlength{\parskip}{0pt}%
+}
+
+% 框架占位标记：灰色方括号，写清「这一段要写什么」。
+% 只在搭骨架阶段使用；开始填正文时逐条替换成真实段落，成稿前必须全部删干净
+% （查漏：grep -n '\\tjformslot' chapters/proposal_body.tex 应为 0 条）。
+\newcommand{\tjformslot}[1]{%
+  {\tjfontbody\color{tjhintgray}\selectfont
+   \par\addvspace{3pt}\parindent=2em\relax 【待写】#1\par\addvspace{3pt}}%
+}
+
+% 图位：给「技术路线图」这类还没画的图留一个可见的占位框，
+% 画好后把整块替换成 \begin{figure}…\end{figure}。
+\newcommand{\tjformfigslot}[2][\linewidth]{%
+  \par\vspace*{6pt}%
+  {\centering\setlength{\fboxsep}{6pt}%
+   \fbox{\parbox[c][110pt][c]{#1}{\centering
+     {\tjfontbody\color{tjhintgray}\selectfont 图位：#2}}}%
+   \par}%
+  \vspace*{6pt}%
+}
+
+% 参考文献条目环境：官方要求「悬挂 0.74cm、按 GB/T 7714-2025 著录、正文首行缩进 2 字符」。
+% 这里 \parindent=0 覆盖正文缩进；\hangindent=0.74cm + \hangafter=1 实现悬挂：
+% 首行顶格，第二行起整体右移 0.74cm（=21.05pt），与 Word 的悬挂缩进一致。
+\newenvironment{tjformrefs}{%
+  \par\zihao{-4}\songti\selectfont
+  \setlength{\parindent}{0pt}%
+  \setlength{\parskip}{0pt}%
+}{%
+  \par
+}
+
+% 单条参考文献：\tjformref{条目正文}（序号由调用方写在条目里，便于按 GB/T 7714 编号）
+\newcommand{\tjformref}[1]{%
+  \par\noindent\hangindent=0.74cm\hangafter=1\relax #1\par
+}
+
 % 日期空白（年/月/日下划线填空）
 \newcommand{\tjdateblank}{\ulinebox{3em}~年~\ulinebox{2em}~月~\ulinebox{2em}~日}
 

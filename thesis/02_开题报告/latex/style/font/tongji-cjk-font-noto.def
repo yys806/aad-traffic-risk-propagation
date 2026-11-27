@@ -1,0 +1,30 @@
+%%
+%% tongji-cjk-font-noto.def — Noto CJK 字体集（Overleaf / Linux 专用）
+%%
+%% 为什么需要它：
+%%   · Overleaf 上没有微软的宋体(SimSun)/黑体(SimHei)；
+%%   · 模板自带的 fandol 只覆盖 GB2312，「珅」这类 GBK 字缺字形，姓名会显示方框；
+%%   · 文鼎 arphic（AR PL UMing）字形够，但字体文件大，Overleaf 上加载极慢，
+%%     实测连续三次编译超时（日志停在加载本字体处）。
+%%   Noto CJK 是 Overleaf（Ubuntu）预装的字体，覆盖完整、加载快，作为在线改稿字体。
+%%
+%% 用法：main.tex 里 fontset=noto。
+%% 定稿交学校仍用 main-windows.tex（fontset=windows，真宋体/黑体，与官方 Word 一致）。
+%%
+\ProvidesFile{tongji-cjk-font-noto.def}[v1.5.1 Noto CJK fonts definition (TongjiThesis, Overleaf)]
+\setCJKmainfont{Noto Serif CJK SC}
+  [ BoldFont = Noto Sans CJK SC ]
+\setCJKsansfont{Noto Sans CJK SC}[ AutoFakeBold = 3 ]
+\setCJKmonofont{Noto Sans Mono CJK SC}
+
+\setCJKfamilyfont{zhsong}{Noto Serif CJK SC}[ BoldFont = Noto Sans CJK SC ]
+\setCJKfamilyfont{zhhei}{Noto Sans CJK SC}[ AutoFakeBold = 3 ]
+\setCJKfamilyfont{zhkai}{Noto Serif CJK SC}
+\setCJKfamilyfont{zhfs}{Noto Serif CJK SC}
+
+% 以下定义体内不要加空格：本文件按普通 catcode 读入，空格会排进正文。
+\NewDocumentCommand{\songti}   {} {\CJKfamily{zhsong}}
+\NewDocumentCommand{\heiti}    {} {\CJKfamily{zhhei}}
+\NewDocumentCommand{\kaishu}   {} {\CJKfamily{zhkai}}
+\NewDocumentCommand{\fangsong} {} {\CJKfamily{zhfs}}
+\endinput
