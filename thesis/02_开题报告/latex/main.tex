@@ -56,64 +56,134 @@
 % ============================================================
 
 \tjformsection{一、\tjheadertext 课题背景}
-% 官方此处段间距 18.72pt，而段落属性算出 18+6=24pt（Word 手工排版痕迹）——按实测值覆盖
 \tjformgap{18.72bp}%
-\tjformnote[0pt]{2级标题：小四号，黑体，顶格，序号与题名之间空一格，正文  宋体小四号，行距1.5倍，段前0.5行，段后0.5行。首行缩进2字符，参考文献悬挂0.74厘米。}
-\tjformnote{根据实际情况写为毕业设计或毕业论文，下同（此项成稿删除）}
-
-% 官方此处段间距 26.52pt，段落属性算出 17.55+6=23.55pt——按实测值覆盖
-\tjformgap{26.52bp}%
 \tjformsubsection{1．选题背景与研究意义}
-% ▼ 写在这里（官方此段为空段落）。建议四层：混合交通的必然性 → 问题从哪来
-%   （两类车感知/决策/响应/行为差异，局部风险会经跟驰、制动、换道扩散）→ 缺口
-%   （单车独立分析刻画不了整体安全演化）→ 意义（安全机理、系统韧性、分析与运行管理依据）。
-\tjformblank
+\begin{tjformbody}
+自动驾驶车辆的渗透率不会一夜之间上去。按目前的分级推进节奏，在未来相当长一段时期内，同一路段上仍会同时跑着三类车：全人工驾驶车辆、带辅助驾驶的人工驾驶车辆，以及具备网联能力的高等级自动驾驶车辆。我国存量人工驾驶汽车的淘汰周期较长，这意味着混行状态将长期存在。三类车的差别不在车本身，在遇到同一件事时的反应。人工驾驶员依赖视觉判断，辅助驾驶系统受限于单车传感器视距，网联自动驾驶车辆则能接收超视距的车间通信消息。当这三类车混编在同一条车道上，交通流的运行规律就不再均一，车流内部的交互复杂度随之上升。
+
+这种反应差异在车流密集时会迅速放大。三类车在感知范围、决策逻辑、响应时延以及跟驰换道习惯上各不相同。人工驾驶员的制动反应存在明显延迟，而网联自动驾驶车辆通过车间通信获取前车状态后，控制指令的下发时延大幅缩短。当车流中某辆车突然急刹或强行切入时，后方车辆的减速幅度与时机就会出现错位。前车的异常动作先引发紧邻后车的避险制动，随后沿着车流向后传递，甚至在更远的上游路段诱发二次追尾或局部拥堵。风险不再停留在单辆车上，它会顺着车流向后扩散。
+
+现有的安全评价方法在这种跨车扩散面前不够用。目前已有研究多以单车或单车对作为基本评价单元，通过计算碰撞时间、后侵入时间等替代安全指标来衡量危险程度[1-4]。这类指标能较准确地判断某一对相邻车辆在同一时刻的危险程度，却难以描述风险沿车流传递的过程。它们把每对相邻车辆的交互孤立起来，忽略了上游车辆的扰动如何改变下游车群的跟驰间距与速度分布。一旦车流中同时存在网联消息广播与物理制动波，单车对指标就无法刻画多车连续响应所累积的区域性风险，也难以评估远端预警信息对下游车群的干预效果。
+
+评价视角的局限，暴露出当前研究中的两个缺口。一方面，现有工作缺少一个可测量的框架，把“远端风险信息—车辆动作改变—区域总体风险”这三个环节串起来。另一方面，在网联混行环境下，后车减速既可能是看到了前车的刹车灯和间距压缩，也可能是提前收到了远端车辆发出的预警消息，已有研究在分析风险传播时缺少区分“物理影响到达”与“信息影响到达”的手段。两种路径混在一起，就很难判断车辆动作改变的真正诱因，更谈不上定量评估网联通信对风险传播的抑制或放大效应。
+
+补齐这两个缺口，对混行交通的安全研究有直接作用。厘清物理冲击与网联信息在异质车流中的传递规律，可以解释风险为何在特定渗透率下被放大或衰减，把微观驾驶行为与宏观车流安全之间的链条接上。建立从远端信息事件到车辆动作响应、再到区域风险演化的可测量路径，可以突破单车对评价的局限，让跨车流的风险追踪变得可量化。明确信息到达与物理到达的时间差及作用边界，有助于调整车路协同预警的触发时机与路侧管控策略，减少因响应错位引发的连环碰撞。
+
+由此，本课题聚焦一个核心科学问题：在混合自动驾驶环境中，来源可追溯、且确实被控制器采用的远端风险消息，能否在物理影响到达目标区域之前，通过改变车辆动作改变区域总体风险。围绕这一问题，本课题拟结合微观交通仿真与因果检验方法，先检验远端消息是否被车辆控制器实际采用，再评估车辆动作改变对区域总体风险的作用。
+\end{tjformbody}
 
 \tjformsubsection{2．国内外研究现状（文献综述）}
-% ▼ 写在这里。建议按四条线索组织，每条讲清「做了什么 — 局限在哪 — 本研究补什么」：
-%   ① 混合交通风险评价（TTC、DRAC 等替代安全指标及适用条件）
-%   ② 交通扰动与风险传播（现有研究做到什么尺度、缺什么）
-%   ③ 微观交通仿真（SUMO 等平台场景构建与校核的用法与不足）
-%   ④ 面向风险抑制的控制（干预思路与评价维度：安全性、效率、平稳性）
-%   最后小结：指出现有研究在「风险跨车辆、跨区域传播的可测与可干预」上的空白。
-%   🔴 真实文献检索完成后逐条填充，不得凭印象引用。
-\tjformblank
+\begin{tjformbody}
+交通安全评价长期依赖事故统计数据，但事故样本稀疏且统计周期长，难以支撑混合交通流的风险推演。为此，学界引入了替代安全指标，其中碰撞时间（TTC）、减速度需求（DRAC）与后侵入时间（PET）应用最广。TTC 衡量两车保持当前速度时的碰撞剩余时间，DRAC 计算后车避免追尾所需的最小减速度，PET 则记录前车离开冲突区到后车进入该区域的时间差[1-3]。三类指标把事故结果转化为可连续观测的运动学状态。
 
-% 官方 空段→二、 实测 31.47bp，段落属性算出 29.40bp（Word 手工排版）——覆盖
+这些指标各自都有明确的适用边界。TTC 与 DRAC 主要针对同车道跟驰追尾场景，一旦后车速度低于前车，TTC 便趋于无穷大而失去判别力。PET 适用于交叉口或换道交织区的轨迹交叉冲突，却无法反映未发生轨迹重叠时的纵向逼近风险[3, 4]。在混合自动驾驶环境下，人工驾驶车辆与自动驾驶车辆的反应时间、制动特性及跟驰间距存在差异，此时沿用固定的 TTC 或 DRAC 危险阈值往往产生误报或漏报[4, 5]。
+
+现有替代指标大多停留在单车或双车交互层面，只能刻画局部瞬时冲突。当某辆车因前车急刹而采取避险动作时，这种局部冲突会向后方车流传递[6]。单车指标无法捕捉这种传递过程，也难以反映网联信息介入后风险在车队中的放大或衰减，因此需要把标度从车对扩展到车队乃至路段。
+
+风险在车队中的传递，与交通扰动的传播规律紧密相连。早期研究多采用宏观流体力学模型，将车流视作连续介质，通过激波理论解释拥堵波的向上游传播[7-9]。随后，微观跟驰模型被用于分析车队弦稳定性，揭示了微小速度扰动如何在人工驾驶车队中逐车放大并诱发幽灵拥堵。这类工作为扰动传播建立了动力学描述，但主要针对同质车流。
+
+近年来，高精轨迹数据与路侧感知设备的普及推动了数据驱动的风险传播研究。一类工作利用无人机或固定摄像头提取车辆轨迹，结合复杂网络或图模型识别路网中的风险热区与传播路径[10-12]。这些方法能够从海量历史数据中挖掘高风险路段与时空关联特征，为传播过程的实证刻画提供了手段。
+
+不过，宏观流体模型抹平了个体驾驶行为的异质性，难以刻画自动驾驶车辆与人工驾驶车辆混行时的交互差异。数据驱动模型虽然能拟合出风险热区，却往往缺乏行为机理的解释，无法回答某条预警消息如何改变下游风险分布这类因果问题，也难以在未观测到的高渗透率场景下外推。本课题拟结合微观跟驰动力学与时空传播分析，刻画混合车流中个体避险动作向区域风险演化的传导路径与衰减规律。
+
+要验证上述传导路径，离不开微观交通仿真平台。SUMO、VISSIM 等仿真工具已被广泛用于构建混合交通测试场景。研究者通常基于实测轨迹数据集（如 NGSIM 或 highD）对跟驰模型与换道模型进行参数标定[14]，通过调整最大减速度、期望车头时距与反应时间等参数，使仿真车流的宏观基本图与微观车头时距分布贴近真实道路状态[13]。
+
+当车路协同信息接入混合交通流后，仿真建模的复杂度上升。通信约束改变了车辆的感知边界，已有研究在仿真器中耦合通信网络模块，或直接引入通信时延与丢包率参数，来模拟网联车辆获取前车状态或路侧预警的过程[17]。部分工作还探讨了不同自动驾驶渗透率下，网联信息对车队通行能力与冲突频次的影响。
+
+现有仿真研究在建模网联信息时，多将其简化为理想广播或固定时延，忽略了消息在复杂交通流中的实际接收状态与时效衰减。同时，仿真中较少区分人工驾驶员与自动驾驶系统在收到消息后的差异化响应逻辑。本课题拟搭建混合交通仿真环境，把通信时延、丢包与车辆异质性响应耦合进同一闭环，并利用实测轨迹数据完成基础交通流参数的标定与校核。
+
+如何通过主动干预抑制风险传播，是另一条研究线索。现有的风险抑制手段主要包括路侧可变限速、动态路径诱导、车内碰撞预警以及协同自适应巡航等[18, 19, 21, 22]。预警与诱导侧重于改变驾驶员的认知与路径选择，可变限速与协同自适应巡航则直接调控车辆的纵向运动状态与车队间距。
+
+评价这些干预措施时，学界普遍关注安全性、通行效率与交通流平稳性三类指标的权衡。例如，过早或过于频繁的碰撞预警虽能降低追尾风险，却可能诱发驾驶员过度制动，导致后方车流速度剧烈波动并降低路段通行能力[19]。在混合交通流中，协同自适应巡航车队若频繁因人工驾驶车辆切入而退化为普通跟驰，其平稳性收益也会明显缩水。
+
+现有控制与消息机制研究大多聚焦于局部车队的弦稳定性优化[16, 20]，或宏观路段的流量均衡，较少追踪单条干预消息发出后，经由车辆动作调整再到区域风险重构的全过程。消息设计不当甚至会引发二次风险传播，例如局部急刹预警可能诱发下游车道的连锁换道冲突。本课题拟在混合交通仿真环境中，对比不同消息触发与控制策略下安全性、效率与平稳性的变化，识别能够有效阻断风险传播的干预条件与消息触发边界。
+
+上述四类工作在单车冲突判别、宏观扰动传播、仿真平台搭建以及局部控制优化方面已有相当积累，但各环节之间存在断层。现有研究多停留在单车级的替代安全指标计算，或直接面向宏观路段的流量与事故统计，从“消息”到“动作”再到“区域风险”的中间传导环节缺少可测量的刻画。网联消息如何改变个体车辆的决策动作，个体动作的叠加又如何重塑区域层面的风险分布，目前仍不清楚。本课题拟通过构建混合自动驾驶仿真环境，追踪消息触发、车辆响应与风险传播的完整过程，检验远端消息是否被车辆控制器实际采用，并评估其对区域总体风险的作用。
+\end{tjformbody}
+
 \tjformgap{31.47bp}%
 \tjformsection[1.5]{二、\tjheadertext 方案介绍}
-
 \tjformsubsection{1．主要研究内容}
-\tjformhint{（包括但不限于预期研究目标、研究内容要点等。）}
-% ▼ 写在这里，与任务书「二、毕业论文应完成的主要内容」五条一一对应：
-%   ① 研究综述 ② 风险测量方法 ③ 仿真环境构建 ④ 传播规律与影响因素 ⑤ 抑制方法探索
-\tjformblank
+\begin{tjformbody}
+混合交通流中，人工驾驶车辆、辅助驾驶车辆与网联自动驾驶车辆将长期共存。已有研究多关注宏观通行能力或单车碰撞概率，对微观风险在车队中的传递路径缺乏刻画[4]。本课题拟界定局部扰动向车队上游及相邻车道扩散的范围，把它作为分析对象而不是预先设定的结论。
+
+边界明确后，如何量化单车风险并追踪其跨车传递成为首要问题。传统碰撞次数统计在短时窗口内样本稀疏，难以捕捉未发生碰撞的险态演化。本课题拟选用减速度需求指标（DRAC）作为核心度量，结合实测制动分布校准风险阈值[2, 5]。在此基础上，拟建立风险事件在时间与空间上的连续性识别方法并做敏感性检验，用以剔除偶发制动噪声。
+
+真实道路中的高风险冲突样本极少，仅靠实测数据无法覆盖多变的混合交通工况。本课题拟利用高分辨率真实轨迹数据标定跟驰与换道模型参数[13]，并在微观仿真软件中搭建测试环境。仿真场景从单车道跟驰起步，逐步扩展至包含强制换道与汇入的多车道场景，通过调整自动驾驶渗透率复现不同车流结构下的典型冲突源事件。
+
+场景构建完成后，重点剖析风险波在混合车流中的演化规律。实验拟改变自动驾驶渗透率、期望车头时距及网联通信延迟等参数，测量风险波的传播速度与衰减率，通过对比不同工况下的风险扩散范围，识别导致风险放大的关键参数组合。
+
+针对高风险传播链，本课题拟从车辆控制与交通管理两个维度探索抑制手段。控制侧测试网联车辆采纳远端风险预警消息后的制动平滑效果，评估其对上游风险波的阻断能力[20]；管理侧结合仿真评估结果，提出面向混合交通路段的车速引导与车道管控建议[19]。
+\end{tjformbody}
 
 \tjformsubsection{2．研究方案}
-\tjformhint{（包括但不限于拟采取的研究方法、技术路线图、可行性分析等）}
-% ▼ 写在这里，按「数据 — 方法 — 平台 — 实验 — 控制 — 路线图 — 可行性」七块展开。
-%   技术路线图用代码画（数据 → 指标 → 仿真 → 实验 → 控制），图内不写核心算法细节；
-%   画好后在这里插 \begin{figure}…\end{figure}。
-% 官方 提示语→空段 实测 26.64bp（同结构在别处是 29.40bp，Word 自身不统一）——覆盖
-\tjformgap{26.64bp}%
-\tjformblank
+\begin{tjformbody}
+本课题拟采用公开的高分辨率车辆轨迹数据集作为实证与标定依据，所选数据具备较高的采样频率与完整的车辆运动学记录。数据处理遵循由简入繁的顺序：先提取单车道无换道片段，获取位置、速度、加速度及车头间距等变量，用于标定跟驰参数与基线运动学特征；单车道规律明确后，再提取包含换道切入与汇入行为的多车道片段，补充横向交互特征。所有轨迹数据均经过平滑滤波与异常值剔除，以保证速度与加速度导数的计算精度[14, 15]。
 
+有了清洗后的轨迹数据，本课题拟构建以 DRAC 为核心的替代安全指标体系。该指标对应车辆的制动物理极限，反映后车为避免追尾所需的最小减速度。利用前车与后车的瞬时速度差及净间距计算逐帧 DRAC 值，统计实测数据中的紧急制动分布，据此校准不同车型的风险阈值[5]。为区分孤立的急刹与真正的风险传播，拟建立风险事件在时间与空间上的连续性识别方法，并针对时空容差参数开展敏感性检验，检验识别结果的稳健性。
+
+指标体系确立后，搭建自研模型与微观仿真软件耦合的测试平台。人工驾驶与自动驾驶的跟驰、换道逻辑由外部脚本独立编写，通过外部步进接口接入微观仿真软件，以 0.1 秒为步长接管车辆的逐帧运动控制。为消除接口通信或积分步长带来的数值偏差，平台强制执行同源数据回放核对：把相同的初始状态与前车轨迹同时输入独立脚本与耦合平台，要求两者的轨迹输出误差落在预设容限之内。
+
+平台通过核对后，采用配对对照的实验设计剥离随机干扰。所有对比组与对照组使用同一组随机种子，确保背景车流的生成序列与初始扰动完全一致。实验拟设置多臂对照，分别对比纯人工车流、无网联混合车流与网联混合车流，并成组改变自动驾驶渗透率与源事件制动强度，观察风险波的响应差异。为防止观测窗口截断导致指标失真，另在不同时间窗口长度下做跨窗口复核。
+
+在多臂框架下引入网联控制干预。控制侧实验向网联车辆发送远端风险预警消息，每条消息具备可追溯的源头事件。实验拟检验远端消息是否被车辆控制器实际采用，并比较采用与未采用情况下车辆动作的差异，从而区分单纯的通信覆盖与真实控制干预各自的作用。
+
+上述环节构成完整的技术路线，如图 1 所示。研究从高分辨率真实轨迹数据出发，完成清洗与运动学特征提取，进而构建并校准以 DRAC 为主的指标与风险事件识别方法；随后依托同源回放核对后的耦合平台，开展配对种子与多臂对照实验，刻画风险传播规律；在此基础上引入可追溯的远端风险消息做控制侧干预测试，最后归纳混合交通流的风险传播机理与管控启示。
+
+\begin{center}
+\setlength{\fboxsep}{5pt}\setlength{\fboxrule}{0.4pt}%
+{\zihao{5}\songti
+\fbox{\parbox[c]{3.0cm}{\centering 高分辨率\\真实轨迹数据}}\;$\longrightarrow$\;
+\fbox{\parbox[c]{3.0cm}{\centering 清洗滤波与\\跟驰参数标定}}\;$\longrightarrow$\;
+\fbox{\parbox[c]{3.0cm}{\centering DRAC 指标与\\风险事件识别}}\\[9pt]
+\fbox{\parbox[c]{3.0cm}{\centering 耦合仿真平台\\同源回放核对}}\;$\longrightarrow$\;
+\fbox{\parbox[c]{3.0cm}{\centering 配对种子与\\多臂对照实验}}\;$\longrightarrow$\;
+\fbox{\parbox[c]{3.1cm}{\centering 可追溯消息\\控制侧干预}}\\[2pt]
+\rule{0.4pt}{9pt}\\[2pt]
+\fbox{\parbox[c]{8.2cm}{\centering 风险传播规律、机理与路段管控启示}}\par}
+\vspace{4pt}
+{\zihao{5}\songti 图 1\quad 研究技术路线}
+\end{center}
+
+本课题的推进具备三方面条件。数据方面，公开的高分辨率车辆轨迹数据集已下载并完成初步格式解析，能够满足单车道标定与多车道扩展的需求。平台方面，自研跟驰模型与微观仿真软件的外部步进接口已经跑通，并通过了同源数据回放核对，未出现步进丢帧或数值漂移。
+
+前期探索方面，在单车道、单一源事件、零延迟执行器的先导条件下，观察到前车急刹引发的 DRAC 超阈值事件沿车队向上游逐车传递。该现象说明指标选取与实验通路可用，但它出现在单车道、单一源事件与理想通信的条件下，能否推广到多车道与真实通信条件，仍需后续实验检验。
+\end{tjformbody}
 \tjformsubsection{3．工作进度安排}
-% ▼ 写在这里，照任务书「四、毕业论文的进度安排」七段填写，时间区间必须与任务书一致、不改。
-\tjformblank
+\begin{tjformbody}
+2026 年 11 月至 2027 年 1 月，完成混合交通风险传播相关文献的梳理与问题界定，明确研究边界；同时获取高分辨率真实轨迹数据集，完成异常值剔除与平滑滤波，提取单车道与多车道基线运动学特征；按期提交开题报告。
 
-% 官方 空段→三、 实测 28.68bp（同结构在二、处是 31.47bp，Word 自身不统一）——覆盖
+2027 年 1 月至 2027 年 3 月，基于实测制动分布完成 DRAC 阈值校准，建立风险事件的时间与空间连续性识别方法；编写自研跟驰与换道控制脚本，打通微观仿真软件的外部步进接口，完成同源数据回放核对，形成稳定的仿真测试平台。
+
+2027 年 3 月至 2027 年 4 月，依托耦合平台开展配对种子与多臂对照实验，完成跨窗口复核，量化不同渗透率下的风险波特征；在此基础上接入可追溯的远端风险消息，完成控制侧干预实验与抑制效果评估。
+
+2027 年 4 月至 2027 年 5 月，系统整理仿真数据与统计图表，归纳混合自动驾驶环境下的风险传播机理与路段管控启示；完成毕业设计论文的撰写、查重与修改定稿，并准备答辩材料。
+\end{tjformbody}
+
 \tjformgap{28.68bp}%
 \tjformsection[1.5]{三、\tjheadertext 主要参考文献}
-\tjformrefnote{正文首行缩进2字符。参考文献悬挂0.74厘米，参考文献格式请参考GB/T 7714-2025《信息与文献 参考文献著录规则》，以下为样例。成稿请删除。}
-% ▼ 成稿时把下面四条样例换成真实文献（预计 15–20 条），按 GB/T 7714-2025 著录，
-%   每条必须能点开验证（DOI / arXiv 编号 / 期刊卷期页）。
-\tjformref{[1]\ 于潇, 刘义, 柴跃廷, 等. 互联网药品可信交易环境中主体资质审核备案模式[J]. 清华大学学报(自然科学版), 2012, 52(11): 1518-1523.}
-\tjformref{[2]\ Des Maris D J, Strauss H, et al. Carbon isotope evidence for the stepwise oxidation of the Proterozoic environment[J]. Nature, 1992, 359: 605-609.}
-\tjformref{[3]\ 蒋有绪, 郭泉水, 马娟, 等. 中国森林群落分类及其群落学特征[M]. 北京: 科学出版社, 1998.}
-\tjformref{[4]\ International Federation of Library Association and Institutions. Names of persons: national usages for entry in catalogues[M]. 3rd ed. London: IFLA International Office for UBC, 1977.}
-\tjformblank
-\tjformblank
+\tjformref{[1]\ Minderhoud M M, Bovy P H L. Extended time-to-collision measures for road traffic safety assessment[J]. Accident Analysis \& Prevention, 2001, 33: 89-97.}
+\tjformref{[2]\ Tarko A P. Surrogate measures of safety[M]//Safe Mobility: Challenges, Methodology and Solutions. Bingley: Emerald Publishing, 2018: 383-405.}
+\tjformref{[3]\ Arun A, Haque M M, Bhaskar A, et al. A systematic mapping review of surrogate safety assessment using traffic conflict techniques[J]. Accident Analysis \& Prevention, 2021, 153: 106016.}
+\tjformref{[4]\ Wang C, Xie Y, Huang H, et al. A review of surrogate safety measures and their applications in connected and automated vehicles safety modeling[J]. Accident Analysis \& Prevention, 2021, 157: 106157.}
+\tjformref{[5]\ Fu C, Sayed T. Comparison of threshold determination methods for the deceleration rate to avoid a crash (DRAC)-based crash estimation[J]. Accident Analysis \& Prevention, 2021, 153: 106051.}
+\tjformref{[6]\ Li Z, Ahn S, Chung K, et al. Surrogate safety measure for evaluating rear-end collision risk related to kinematic waves near freeway recurrent bottlenecks[J]. Accident Analysis \& Prevention, 2014, 64: 52-61.}
+\tjformref{[7]\ Lighthill M J, Whitham G B. On kinematic waves II. A theory of traffic flow on long crowded roads[J]. Proceedings of the Royal Society of London. Series A. Mathematical and Physical Sciences, 1955, 229: 317-345.}
+\tjformref{[8]\ Richards P I. Shock Waves on the Highway[J]. Operations Research, 1956, 4: 42-51.}
+\tjformref{[9]\ Newell G. A simplified theory of kinematic waves in highway traffic, part I: General theory[J]. Transportation Research Part B: Methodological, 1993, 27: 281-287.}
+\tjformref{[10]\ Saberi M, Hamedmoghadam H, Ashfaq M, et al. A simple contagion process describes spreading of traffic jams in urban networks[J]. Nature Communications, 2020, 11: 1616.}
+\tjformref{[11]\ Duan J, Zeng G, Serok N, et al. Spatiotemporal dynamics of traffic bottlenecks yields an early signal of heavy congestions[J]. Nature Communications, 2023, 14: 8002.}
+\tjformref{[12]\ Hamedmoghadam H, Jalili M, Vu H L, et al. Percolation of heterogeneous flows uncovers the bottlenecks of infrastructure networks[J]. Nature Communications, 2021, 12: 1254.}
+\tjformref{[13]\ Cunto F, Saccomanno F F. Calibration and validation of simulated vehicle safety performance at signalized intersections[J]. Accident Analysis \& Prevention, 2008, 40: 1171-1179.}
+\tjformref{[14]\ Coifman B, Li L. A critical evaluation of the Next Generation Simulation (NGSIM) vehicle trajectory dataset[J]. Transportation Research Part B: Methodological, 2017, 105: 362-377.}
+\tjformref{[15]\ Coifman B, Li L. Partial trajectory method to align and validate successive video cameras for vehicle tracking[J]. Transportation Research Part C: Emerging Technologies, 2024, 158: 104416.}
+\tjformref{[16]\ Stern R E, Cui S, Delle Monache M L, et al. Dissipation of stop-and-go waves via control of autonomous vehicles: Field experiments[J]. Transportation Research Part C: Emerging Technologies, 2018, 89: 205-221.}
+\tjformref{[17]\ Orosz G. Connected cruise control: modelling, delay effects, and nonlinear behaviour[J]. Vehicle System Dynamics, 2016, 54: 1147-1176.}
+\tjformref{[18]\ Hegyi A, Hoogendoorn S. Dynamic speed limit control to resolve shock waves on freeways - Field test results of the SPECIALIST algorithm[C]//13th International IEEE Conference on Intelligent Transportation Systems. 2010: 519-524.}
+\tjformref{[19]\ Khondaker B, Kattan L. Variable speed limit: A microscopic analysis in a connected vehicle environment[J]. Transportation Research Part C: Emerging Technologies, 2015, 58: 146-159.}
+\tjformref{[20]\ Coifman B, Liu Y. Using connected and automated vehicles to attenuate disturbances in freeway traffic[J]. Transportation Research Part C: Emerging Technologies, 2026, 183: 105497.}
+\tjformref{[21]\ Ploeg J, Scheepers B T M, van Nunen E, et al. Design and experimental evaluation of cooperative adaptive cruise control[C]//2011 14th International IEEE Conference on Intelligent Transportation Systems (ITSC). 2011: 260-265.}
+\tjformref{[22]\ Milanés V, Shladover SE. Modeling cooperative and autonomous adaptive cruise control dynamic responses using experimental data[J]. Transportation Research Part C: Emerging Technologies, 2014, 48: 285-300.}
 
 % 官方 末条参考文献(76.32) → 经两个空段 → 四、(147.62)，末段间距 24.50bp（属性算出 29.40bp）
 \tjformgap{24.50bp}%
