@@ -1,27 +1,122 @@
-% ⛔ 已停用（2026-11-27）：本文件原为 Overleaf 在线预览用（fontset=noto），
-%    Overleaf 项目「AAD-开题报告」已删除，现全部在本地进行。
-%    定稿请编 main-windows.tex（真宋体/黑体/Times New Roman，与官方 Word 字体族一致）。
-%    本文件保留仅为历史留档，不要再编、不要再改。
-\documentclass[oneside,doctype=proposal,fontset=noto]{tongjithesis}
-
 % ============================================================
 %  同济大学 2027 届 本科毕业设计（论文）开题报告
 %  课题：面向未来混合自动驾驶环境的风险传播机理研究
 %  学生：禹尧珅（2352396）  指导教师：李王明卉
 %
-%  ⚠ 字体集说明（重要）
-%  本文件用 fontset=noto：Overleaf（Ubuntu）预装的 Noto CJK，覆盖完整、加载快，
-%  「珅」不会变成方框。字体集定义见 style/font/tongji-cjk-font-noto.def。
-%  字形与官方 Word 的宋体/黑体略有差异，仅供在线改稿预览。
-%  → 定稿交学校的 PDF，用同目录的 main-windows.tex 在本机编译（宋体/黑体，
-%    与官方 Word 逐项对齐）；本文件只承担“在线改稿 + 预览”。
+%  ── 怎么编 ──────────────────────────────────────────────
+%  编译器选 XeLaTeX（不要 pdfLaTeX，排不了中文）。
+%  命令行：latexmk -xelatex main.tex   或   xelatex main.tex 连跑两遍
+%  编辑器里把编译器设成 XeLaTeX 就能直接编，不需要配任何路径。
+%
+%  ── 下面这一段别删 ──────────────────────────────────────
+%  文档类 tongjithesis.cls 在 style/ 子目录，字体定义在 style/font/。
+%  TeX 默认不去子目录找文件，用 \input@path 告诉它去哪儿找，
+%  这样任何编辑器、任何工作目录都能编过。
 % ============================================================
+\makeatletter
+\def\input@path{{style/}{style/font/}}
+\makeatother
+
+\documentclass[oneside,doctype=proposal,fontset=windows,times=true]{tongjithesis}
+
+% ============================================================
+%  封面信息（要改就改这里）
+%  全部取自已定稿的《2027 届本科毕业论文任务书》，不另编造；
+%  与任务书不一致时以任务书原件为准。
+% ============================================================
+\school{电子与信息工程学院}
+\major{人工智能}
+\student{2352396}{禹尧珅}
+\thesistitle{面向未来混合自动驾驶环境的风险传播机理研究}{}
+\thesistitleeng{Research on Risk Propagation Mechanisms in Future Mixed Autonomous Driving Environments}{}
+\thesisadvisor{李王明卉}
+\thesisdate{\the\year}{\the\month}{\the\day}
+\taskbookperiod{2026}{9}{14}{2027}{5}{26}
 
 \begin{document}
 \pagestyle{empty}
 
-\input{chapters/metadata}
+% 封面
 \MakeDocument
-\input{chapters/proposal_body}
+
+% ============================================================
+%  正文骨架（AAD 毕设）
+%
+%  现在是**框架**，不是成稿：
+%    · 四节结构与两级标题完全照官方 2027 届模板，不动；
+%    · 每个小节下用 \tjformslot 标出「这一段要写什么」，灰色、【待写】开头；
+%    · 技术路线图用 \tjformfigslot 留图位，还没画；
+%    · 参考文献只留位置，真实条目等检索完再填。
+%
+%  🔴 成稿前必做两件清理（两条都应为 0）：
+%     grep -n 'tjformslot\|tjformfigslot' main.tex
+%     grep -n 'tjformnote' main.tex
+%
+%  🔴 防泄露（导师 2026-11 微信要求）：正文不得写入 AAD 论文未公开的核心创新点——
+%     消息可达性判据的具体定义、H1–H4 因果识别框架、十四类消息生命周期分类、
+%     区域风险聚合的具体公式、以及现有量化结论。只写研究问题、技术路线、公开指标。
+% ============================================================
+
+\tjformsection{一、\tjheadertext 课题背景}
+\tjformnote{根据实际情况写为毕业设计或毕业论文，下同（此项成稿删除）}
+
+\tjformsubsection{1．选题背景与研究意义}
+\tjformslot{开篇交代混合交通的必然性：自动驾驶、智能网联与人工智能技术发展，未来道路交通将长期是自动驾驶车辆与人工驾驶车辆共存。}
+\tjformslot{再讲问题从哪来：两类车在感知能力、决策方式、响应时间、驾驶行为上差异明显，局部风险不再局限于单车或单一冲突，可能通过跟驰、制动、换道与交互行为向其他车辆和局部区域传播，并在特定条件下放大成级联响应。}
+\tjformslot{然后指出缺口：只做单车风险独立分析，刻画不了整体安全演化；所以要研究局部风险如何产生、传播、累积，以及交通状态、车辆类型、交互关系对传播的影响。}
+\tjformslot{最后落到意义：理解混合交通的安全机理、提高系统韧性，并为安全分析与运行管理提供理论与实验依据。}
+
+\tjformsubsection{2．国内外研究现状（文献综述）}
+\tjformslot{本节按四条线索组织，每条讲清「做了什么 — 局限在哪 — 本研究因此补什么」。真实文献检索完成后逐条填充，不得凭印象引用。}
+\tjformslot{线索一 混合交通风险评价：替代安全指标（TTC、DRAC 等）的提出、适用条件与局限。}
+\tjformslot{线索二 交通扰动与风险传播：扰动如何在车流中传播、现有研究做到什么尺度、缺什么。}
+\tjformslot{线索三 微观交通仿真：SUMO 等平台在混合交通场景构建与校核中的用法与不足。}
+\tjformslot{线索四 面向风险抑制的控制：现有干预思路与评价维度（安全性、效率、平稳性）。}
+\tjformslot{小结：指出现有研究在「风险跨车辆、跨区域传播的可测与可干预」上的空白，由此引出本课题。}
+
+\tjformsection{二、\tjheadertext 方案介绍}
+
+\tjformsubsection{1．主要研究内容}
+\tjformslot{与任务书「二、毕业论文应完成的主要内容」五条一一对应，每条一两句写清做什么、产出什么。}
+\tjformslot{内容一 研究综述：调研混合交通、交通扰动传播、车辆交互风险、替代安全指标与交通仿真，梳理方法及适用范围，明确研究对象与技术路线。}
+\tjformslot{内容二 风险测量方法：基于真实轨迹整理速度、加速度、车间距离与交互关系，选适用于典型跟驰冲突场景的安全评价指标，研究风险事件识别方法，给出指标合理取值范围。}
+\tjformslot{内容三 仿真环境构建：基于 SUMO 等平台构建含自动驾驶与人工驾驶车辆的典型场景，设置车辆组成、交通流状态、驾驶行为与局部扰动，并用真实轨迹校核关键运动参数与风险状态。}
+\tjformslot{内容四 传播规律与影响因素：设计不同交通状态、车辆组成与局部扰动条件下的实验，记录风险时空演化，分析传播、累积、衰减特征与影响范围、速度、强度。}
+\tjformslot{内容五 抑制方法探索：依据传播规律研究利用车辆状态与风险信息提前干预的控制思路，对比安全性、效率与运行平稳性，评价抑制效果。}
+
+\tjformsubsection{2．研究方案}
+\tjformslot{本小节按「数据 — 方法 — 平台 — 实验 — 控制 — 路线图 — 可行性」七块展开。}
+\tjformslot{数据：真实车辆轨迹数据（来源、字段、覆盖场景、预处理与异常缺失处理口径）。}
+\tjformslot{方法：风险指标计算与风险事件识别；指标取值范围标定；不写论文未公开的判据定义。}
+\tjformslot{平台：SUMO 版本、路网与场景构建方式、车辆行为参数设置、与真实轨迹的校核方法。}
+\tjformslot{实验设计：交通状态、车辆组成、局部扰动三类因子如何组合；重复性与随机种子口径；评价指标与统计方法。}
+\tjformslot{控制方法：干预信号从哪来、如何作用到车辆、对照设置与评价维度。}
+\tjformfigslot{技术路线图（数据 → 指标 → 仿真 → 实验 → 控制，用代码画，图内不写核心算法细节）}
+\tjformslot{可行性分析：数据已有、平台已有、方法有前期基础、时间安排可行（对应任务书进度）。}
+
+\tjformsubsection{3．工作进度安排}
+\tjformslot{照任务书「四、毕业论文的进度安排」七段填写，可整理成表；时间区间必须与任务书一致，不改。}
+
+\tjformsection{三、\tjheadertext 主要参考文献}
+\tjformrefnote{正文首行缩进2字符。参考文献悬挂0.74厘米，参考文献格式请参考GB/T 7714-2025《信息与文献 参考文献著录规则》，以下为样例。成稿请删除。}
+\begin{tjformrefs}
+\tjformslot{真实文献检索完成后填入，按 GB/T 7714-2025 著录，预计 15–20 条；每条必须能点开验证（DOI / arXiv 编号 / 期刊卷期页）。}
+\end{tjformrefs}
+
+\tjformsection{四、审核意见}
+
+\begin{tjreviewbox}
+  \tjformlabel{指导教师意见：}\tjformhint{（课题难度是否适中、工作量是否饱满、进度安排是否合理、工作条件是否具备、是否同意开题等）}
+
+  \vspace{8\baselineskip}
+  \tjformsignature{指导教师签名}{8em}
+\end{tjreviewbox}
+
+\begin{tjreviewbox}
+  \tjformlabel{专业审核意见：}\tjformhint{（适当对各项内容给与意见和评价，字数不限。）}
+
+  \vspace{6\baselineskip}
+  \tjformsignature{负责人签名}{8em}
+\end{tjreviewbox}
 
 \end{document}

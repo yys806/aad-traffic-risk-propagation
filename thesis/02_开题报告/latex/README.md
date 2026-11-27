@@ -1,164 +1,92 @@
 # 开题报告 · LaTeX 工程（AAD 毕设）
 
-课题：**面向未来混合自动驾驶环境的风险传播机理研究**（取自 2027 届任务书定稿）
+课题：**面向未来混合自动驾驶环境的风险传播机理研究**
 学生：禹尧珅 2352396 ｜ 学院：电子与信息工程学院 ｜ 专业：人工智能 ｜ 指导教师：李王明卉
 
-> **2026-11-27 起全部本地进行。** Overleaf 上的「AAD-开题报告」项目已按研究者要求删除
-> （原 ID `6b084c4b691e5b6f950a9514`，删后访问返回 404）；论文项目「AAD」（`6aa63dcd249d9edf8228ca51`）保留未动。
-> 本地编出的 PDF 字体族与官方 Word 完全一致，云端替代字体反而更远，故在线预览已无必要。
-> **只编 `main-windows.tex`**，另一个主文件是历史产物。
+## 怎么编（唯一的操作方法）
 
-## 这份工程是什么
+**就编 `main.tex` 这一个文件，用 XeLaTeX。**
 
-把学校 2027 届官方 Word 模板（`2毕业设计(论文)开题报告.doc`）**逐项量测后**在 LaTeX 里重建，
-不是「看起来像」，而是按官方 PDF 的坐标对齐。下表是**用空标题实测**的结果（排除「题名长短」造成的行数差异），
-单位 pt，A4 595.32×842.04：
+- 编辑器（TeXstudio / VS Code / TeXworks 等）：打开 `main.tex`，编译器选 **XeLaTeX**，直接点编译即可。
+- 命令行：`latexmk -xelatex main.tex`，或 `xelatex main.tex` 连跑三遍。
 
-| 项 | 官方 Word | 本模板 | 差 |
-|---|---|---|---|
-| 校名图顶 / 高 | 127.6 / 49.2 | 127.6 / 47.9 | 0 |
-| 大标题 y（36pt 黑体） | 196.0 | 196.0 | 0 |
-| 课题名称标签 y / x | 336.4 / 116.3 | 336.4 / 116.9 | 0 / 0.6 |
-| 信息表五条底线 y | 353.0 / 395.8 / 438.8 / 481.6 / 524.6 | 353.5 / 396.4 / 439.2 / 482.1 / 524.9 | ≤0.5 |
-| 标签列 x / 值列 x | 116.3 / 204.2 | 116.9 / 204.5 | ≤0.6 |
-| 「学号」标签 x | 291.6 | 291.0 | 0.6 |
-| 底部年月日底线 y | 708.9 | 708.9 | 0 |
-| 正文一级标题 y / 字号 | 73.5 / 14pt 黑体 | 73.5 / 14pt | 0 |
-| 说明性小字 | 9pt 宋体、缩进 0.635cm | 同 | — |
+不需要配任何搜索路径、不需要改环境变量——`main.tex` 开头那段 `\input@path` 已经把 `style/` 和 `style/font/` 告诉了 TeX。
 
-⚠️ 填上真实题名（21 字）后题名折成两行，信息表整体下移一行高度，五条底线随之变为
-376.6 / 400.9 / 443.7 / 486.5 / 529.4。这是**内容长度**所致，不是版式误差。
-与内容无关的判据是「标签到下划线 16.4pt（官方 16.6）」与「行间距 42.8 / 42.8 / 42.9（官方 42.8–43.0）」。
-
-## 主文件只有一个
-
-| 文件 | 字体集 | 用在哪 |
-|---|---|---|
-| **`main-windows.tex`** | `fontset=windows`（真宋体 / 黑体 / Times New Roman） | **唯一在用的主文件，定稿就编它** |
-| `main.tex` | `fontset=noto` | 历史产物，原供 Overleaf 预览；**已不使用**，别编它、别改它 |
-
-字体集踩过的三个坑（留档）：
-
-- **fandol**（模板自带默认）只覆盖 GB2312，「珅」缺字形，姓名显示方框。
-- **arphic**（文鼎 AR PL UMing）字形齐全，但字体文件大，Overleaf 上加载极慢，连续三次编译超时。已弃用。
-- **noto** 曾用于 Overleaf（Ubuntu 预装），覆盖完整、加载快，但字形与宋体不同，**不能用于定稿**。
-
-## 本地编译
+## 目录（2026-11-27 清理后只剩这些）
 
 ```
-cd D:/shen/TJU/AAD/thesis/02_开题报告/latex
-latexmk -xelatex main-windows.tex     # 定稿 PDF
-latexmk -C main-windows.tex           # 清理（改过 cls 或字体后建议先清再编）
+main.tex                     唯一源文件：封面信息 + 正文，全在这里
+main.pdf                     编译产物（最近一次）
+latexmkrc                    编译配置（XeLaTeX、不碰 bibtex）
+README.md                    本文件
+figures/tongji.pdf           封面校名图（文档类引用，别删）
+style/tongjithesis.cls       文档类：封面几何、标题、审核框、信息表
+style/tongjithesis.cfg       文档类配置
+style/tongji-circled.def     带圈数字（二级标题用）
+style/font/tongji-cjk-font-*.def   各字体集定义（现在只用 windows 那个）
 ```
 
-编完把 `main-windows.pdf` 复制到 `../交付/` 下（骨架阶段文件名是 `开题报告-骨架-20261127.pdf`，填正文后改名）。
+中间文件（`.aux .log .xdv .fls .synctex.gz` 等）已经清空，编一次会自动生成一套，可以随时删。
 
-## 目录
+## 改哪里
 
-```
-main-windows.tex              唯一主文件
-main.tex                      历史：Overleaf 预览用，已不用
-chapters/metadata.tex         封面信息（学院/专业/姓名/学号/题名/导师）——改这里
-chapters/proposal_body.tex    正文四节（一、课题背景 二、方案介绍 三、参考文献 四、审核意见）
-style/tongjithesis.cls        文档类（封面几何、标题、审核框、信息表都在这里）
-style/font/tongji-cjk-font-*.def  各字体集定义
-figures/tongji.pdf            封面校名图
-latexmkrc                     编译配置（TEXINPUTS 追加 style/ 子目录、限轮数）
-```
+- 封面信息（学院/专业/姓名/学号/题名/导师）→ `main.tex` 上部 `\school` `\major` `\student` 那一段
+- 正文内容 → `main.tex` 里 `\MakeDocument` 之后
+- 版式（间距、字号、表格、审核框）→ `style/tongjithesis.cls`
 
-## 正文结构（学校 2027 届新版，四节固定）
+## 当前进度：骨架，正文未填
 
-- 一、毕业设计（论文）课题背景 → 1．选题背景与研究意义 ／ 2．国内外研究现状（文献综述）
-- 二、毕业设计（论文）方案介绍 → 1．主要研究内容 ／ 2．研究方案 ／ 3．工作进度安排
-- 三、毕业设计（论文）主要参考文献（GB/T 7714-2025 著录）
-- 四、审核意见（导师、专业负责人填，学生**不写**）
+`main.tex` 是**框架**不是成稿：
 
-## 学校原件在哪
-
-`D:/shen/TJU/AAD/thesis/00_学校原件/`（8 份官方 Word + 教务处通知原文），**只读**，
-要用就复制出去改，不要动原件。
-
-## `latexmkrc` 的两条硬约束（本地同样适用）
-
-1. **文件名必须叫 `latexmkrc`，不能是隐藏的 `.latexmkrc`**（当初为 Overleaf 改的名，本地沿用）。
-   cls 在 `style/` 子目录，XeLaTeX 默认不去子目录找，靠 `ensure_path('TEXINPUTS','./style//')` 追加路径。
-   追加要用 `ensure_path`，不能写 `$ENV{TEXINPUTS}=...`，那会把 TeX 自己的搜索路径覆盖掉。
-2. **`$max_repeat = 2`、`$bibtex_use = 0`、`$biber = ''` 不要放开**。本文档没有目录、交叉引用和 .bib，
-   两轮就稳定；默认设置会反复重跑到「日志不再变」，白等几十秒。**以后真加了 .bib 再改回来。**
-
-## 改哪个文件
-
-- 改学院/专业/姓名/学号/题名/导师 → `chapters/metadata.tex`
-- 改正文内容 → `chapters/proposal_body.tex`
-- 改版式（间距、字号、表格） → `style/tongjithesis.cls`
-
-## 当前进度：骨架已搭好，正文未填
-
-`chapters/proposal_body.tex` 现在是**框架**，不是成稿：
-
-- 四节结构与两级标题完全照官方模板；
-- 每个小节下用灰色 `【待写】` 标出「这一段要写什么」，共 27 处；
-- 技术路线图用 `\tjformfigslot` 留了图位框；
+- 四节结构与两级标题完全照官方 2027 届模板；
+- **25 处 `【待写】`**（`\tjformslot`）标出每段该写什么；另有 **1 个图位**（技术路线图，还没画）；
 - 参考文献只留位置，没有编造条目。
 
-清理命令（成稿前必须跑，两条都应为 0）：
+成稿前必查（两条都应为 0）：
 
 ```
-grep -c 'tjformslot\|tjformfigslot' chapters/proposal_body.tex
-grep -c 'tjformnote' chapters/proposal_body.tex
+grep -n 'tjformslot\|tjformfigslot' main.tex
+grep -n 'tjformnote' main.tex
 ```
 
-## cls 里新增的四个排版件
+⚠️ 上面两条 grep 会把文件开头注释里的同名字符串也算进去，实际数比显示值多 2，属正常。
 
-| 命令 | 干什么 | 依据 |
+🔴 **防泄露（导师 2026-11 微信要求）**：正文不得写 AAD 论文未公开的核心创新点——消息可达性判据的具体定义、H1–H4 因果识别框架、十四类消息生命周期分类、区域风险聚合的具体公式、现有量化结论。只写研究问题、技术路线、公开指标。
+
+## 与官方 Word 的一致性（2026-11-27 实测）
+
+判据是把官方 Word 导出的 PDF 与我方 PDF 里每个文字 span 的「字体名 + 字号」抓出来做集合比对，不靠肉眼。
+
+| 项 | 官方 Word | 本工程 |
 |---|---|---|
-| `tjformbody` 环境 | 正文段落：宋体小四、首行缩进 2 字符、段前后各 0.5 行 | 官方说明文字；段前后 0.5 行按 18pt 基线折算为 9pt，属推算值（官方 .doc 无正文段落可实测） |
-| `tjformslot{…}` | 灰色【待写】占位标记，成稿删 | 仅搭骨架用 |
-| `tjformref{…}` / `tjformrefs` 环境 | 参考文献悬挂缩进 0.74 cm | 模板原文规定 |
-| `tjformrefnote` | 参考文献那段灰色说明：12pt 宋体伪粗、首行缩进 24pt | 官方 .doc 实测（不是 9pt 黑体） |
+| 字体族 | SimHei / SimSun / TimesNewRomanPSMT / TimesNewRomanPS-BoldMT | **完全一致，一个不多一个不少** |
+| 大标题 y（36pt 黑体） | 196.0 | 196.0 |
+| 课题名称 y / x | 336.4 / 116.3 | 336.4 / 116.9 |
+| 底部年月日底线 y | 708.9 | 708.9 |
+| 标签到下划线间距 | 16.6 | 16.4 |
+| 信息表行间距 | 42.8–43.0 | 42.8 / 42.8 / 42.9 |
+| 页边距 | 左右 89.9、版心宽 415.6 | 同 |
+| 首行缩进 | 2 字符 | 24pt（= 2 × 12pt） |
+| 说明小字 | 9pt、缩进 0.635cm | 同 |
 
-## 字体核对：与官方 Word 逐 span 一致（2026-11-27 实测）
+用空标题实测的结果；填上真实 21 字题名后题名折两行、信息表整体下移一行，属内容长度而非版式误差。
 
-判据不是肉眼看，是把官方 PDF 与我方 PDF 里每个文字 span 的 `字体名 + 字号` 抓出来做**集合比对**。
+## 五个坑（都实测踩过，别再踩）
 
-| | 官方 Word 导出 PDF | 定稿 PDF（main-windows.tex） |
-|---|---|---|
-| 字体族 | SimHei / SimSun / TimesNewRomanPSMT / TimesNewRomanPS-BoldMT | **完全相同，一个不多一个不少** |
-
-逐项对应关系（官方 .doc 用 Word COM 逐字符读 `Font.Name / NameAscii / NameFarEast` 得到）：
-
-| 部位 | 中文 | 英文与数字 | 字号 |
-|---|---|---|---|
-| 封面大标题「毕业设计(论文)开题报告」 | 黑体 | 括号「(」「)」**是宋体**（三者 NameAscii 全为宋体，不是 Times） | 36 pt |
-| 封面信息表标签与值 | 宋体 | Times New Roman | 14 pt |
-| 一级标题（一、二、三、四） | 黑体 | Times New Roman | 14 pt |
-| 二级标题（1．2．3．） | 黑体 | Times New Roman | 12 pt |
-| 正文 | 宋体 | Times New Roman | 12 pt |
-| 说明小字 | 宋体 | Times New Roman | 9 pt |
-| 参考文献说明 | **宋体伪粗**（不是黑体） | Times New Roman **Bold** | 12 pt |
-
-### 两个必须知道的坑
-
-1. **`times=true` 必须开**。模板默认走 `newtx`，英文与数字用 TeX Gyre Termes —— 与 Times 度量兼容但**不是同一个字体**，字体名一比就露。
-   本机 `main-windows.tex` 已加该选项；开它之后字体度量变化会把封面整体顶偏 2–3 pt，
-   故 `ctitlegap` 24.1→22.3、`cbodygap` 93.6→98.0 已同步重校（大标题、首行标签均精确回到官方坐标）。
-2. **标题括号与参考文献说明不能用默认设置**。xeCJK 默认把 ASCII 括号码归西文字体，直接用 `(` 会变成 Times；
-   模板又把宋体的 BoldFont 设成 SimHei，`\bfseries` 会让「宋体粗」变成黑体。两处都已在 cls 里单独处理。
-
-## 编译速度
-
-| 场景 | 耗时 |
-|---|---|
-| 本机 clean + 全量编译 | 约 40 秒 |
-| （历史）Overleaf 冷编译 | 9.7 / 10.1 / 10.5 / 10.6 秒 —— 项目已删，仅留档 |
-
-本地慢是字体加载与两轮 xelatex 的固有开销；好处是不再受云端排队与超时影响，且能出真宋体。
+1. **`main.tex` 开头的 `\input@path` 不能删**。删了 TeX 找不到 `style/tongjithesis.cls`，报 `File 'tongjithesis.cls' not found`。
+2. **`times=true` 必须开**。不开会回退到 TeX Gyre Termes，看着像 Times 但**不是同一个字体**，字体名一比就露。
+   开它之后字体度量会变，`ctitlegap` 22.3 / `cbodygap` 98.0 是按开它之后重校过的，别照旧值调。
+3. **封面大标题的括号是宋体，不是 Times**。官方 `.doc` 逐字符读过，`(` `)` 的 NameAscii 也是宋体；xeCJK 默认把 ASCII 括号码归西文字体，cls 里已用字符类声明单独处理。
+4. **参考文献那段灰字是 12pt 宋体伪粗，不是 9pt 黑体**。模板把宋体 BoldFont 设成了 SimHei，直接 `\bfseries` 会变成黑体，cls 里用 AutoFakeBold 单独做，命令是 `\tjformrefnote`。
+5. **`latexmkrc` 里不要限制编译轮数**。从零开始编需要三轮才稳定，限死两轮会报 `xelatex needed too many passes`（当初为 Overleaf 超时限制过，Overleaf 已不用了）。
 
 ### 排查陷阱：首行缩进「测出来只有 18pt」是假象
 
-骨架里 `\tjformslot` 的文字都以「【待写】」开头，量 PDF 会看到首行 x0 = 107.95（左界 89.9 + **18.05**），
-像是缩进只做了 1.5 字符。**这不是 bug**：`\parindent` 确实是 2em = 24.09pt（编译期 `\typeout` 已证），
-是 xeCJK 的**行首标点挤压**把全角「【」向左挪了约 6pt。
+占位符都以「【待写】」开头，量 PDF 会看到首行 x0 = 107.95（左界 89.9 + **18.05**），像只缩进 1.5 字符。
+**不是 bug**：`\parindent` 确实是 2em = 24.09pt（编译期 `\typeout` 证过），是 xeCJK 的**行首标点挤压**把全角「【」左移了约 6pt。
+用普通汉字开头的段落实测 x0 = 113.86 = 89.86 + 24.0，正好 2 字符。**以后再看到 18pt 别去改 `\parindent`。**
 
-验证方法：写一段以普通汉字开头的 `tjformbody`，量得 x0 = 113.86 = 89.86 + 24.0，正好 2 字符。
-正式正文不会以「【」开头，所以不受影响。**以后再看到 18pt 别去改 `\parindent`。**
+## 交付
+
+编译出的 PDF 复制到 `../交付/` 下。学校 1 系统的上传框接受 **doc / docx / pdf 任一**、单文件 ≤10MB；
+导师意见与签名由系统在审核通过后自动带出，学生不填第四节。

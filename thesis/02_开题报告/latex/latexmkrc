@@ -1,24 +1,9 @@
-# Overleaf 用的 latexmk 配置。
-# 关键：文档类 tongjithesis.cls 在 style/ 子目录、正文在 chapters/ 子目录，
-# XeLaTeX 默认不会去这些子目录找，必须把它们加进 TEXINPUTS，否则报
-#   ! LaTeX Error: File `tongjithesis.cls' not found.
-# 用 ensure_path 是**追加**（保留 TeX 自身的搜索路径），不要用 $ENV{TEXINPUTS}=... 覆盖。
-$pdf_mode = 5;                # 5 = xelatex
-# 二、为什么限制编译轮数（2026-11-27 定，为了 Overleaf 上快速编译）
-# 本文档没有目录、没有交叉引用、没有参考文献库（biblatex/biber 都用不上），两轮就够。
-# latexmk 默认会重复到「日志不再变」，遇字体或时间戳波动会多跑好几轮，在 Overleaf 上
-# 就是几十秒额外等待甚至被判定超时。故锁定两轮并关掉 bibtex/biber：
-# 实测 Overleaf 冷编译 10 秒内完成（改一个字触发重编，10.2 s）。
-$max_repeat   = 2;            # 最多编译两轮，够了，别调高
-$bibtex_use   = 0;            # 本文档没有 .bib，不需要 bibtex/biber
-$biber        = '';           # 显式关掉 biber，避免被反复调用
-$preview_mode = 0;
-$silence_logfile_warnings = 1;
+# latexmk 配置：只做两件事——用 XeLaTeX、别去碰 bibtex/biber。
+# 轮数不要限制：从零开始编需要三轮才稳定（第一轮生成 aux、第二轮读 aux），
+# 限死两轮会报 'xelatex needed too many passes'。这份文档没有目录和交叉引用，
+# 稳定后 latexmk 自己就停，不会多跑。
+$pdf_mode  = 5;      # 5 = xelatex（中文必须用它，pdfLaTeX 排不了）
+$bibtex_use = 0;     # 没有 .bib，不需要 bibtex/biber
+$biber     = '';     # 显式关掉 biber
 
-ensure_path( 'TEXINPUTS', './style//' );
-ensure_path( 'TEXINPUTS', './style/font//' );
-ensure_path( 'TEXINPUTS', './chapters//' );
-ensure_path( 'TEXINPUTS', './figures//' );
-ensure_path( 'BIBINPUTS', './bib//' );
-
-$clean_ext = 'bbl glo gls gz hd loa run.xml thm xdv aux bcf fdb_latexmk fls out synctex.gz toc vrb';
+$clean_ext = 'bbl glo gls hd loa run.xml thm xdv aux bcf fdb_latexmk fls out synctex.gz toc vrb';
