@@ -3,16 +3,22 @@
 课题：**面向未来混合自动驾驶环境的风险传播机理研究**（取自 2027 届任务书定稿）
 学生：禹尧珅 2352396 ｜ 学院：电子与信息工程学院 ｜ 专业：人工智能 ｜ 指导教师：李王明卉
 
+> **2026-11-27 起全部本地进行。** Overleaf 上的「AAD-开题报告」项目已按研究者要求删除
+> （原 ID `6b084c4b691e5b6f950a9514`，删后访问返回 404）；论文项目「AAD」（`6aa63dcd249d9edf8228ca51`）保留未动。
+> 本地编出的 PDF 字体族与官方 Word 完全一致，云端替代字体反而更远，故在线预览已无必要。
+> **只编 `main-windows.tex`**，另一个主文件是历史产物。
+
 ## 这份工程是什么
 
 把学校 2027 届官方 Word 模板（`2毕业设计(论文)开题报告.doc`）**逐项量测后**在 LaTeX 里重建，
-不是「看起来像」，而是按官方 PDF 的坐标对齐。对齐结果见下表（全部单位 pt，A4 595.32×842.04）：
+不是「看起来像」，而是按官方 PDF 的坐标对齐。下表是**用空标题实测**的结果（排除「题名长短」造成的行数差异），
+单位 pt，A4 595.32×842.04：
 
 | 项 | 官方 Word | 本模板 | 差 |
 |---|---|---|---|
 | 校名图顶 / 高 | 127.6 / 49.2 | 127.6 / 47.9 | 0 |
-| 大标题 y（36pt 黑体） | 196.0 | 195.6 | 0.4 |
-| 课题名称标签 y | 336.4 | 336.4 | 0 |
+| 大标题 y（36pt 黑体） | 196.0 | 196.0 | 0 |
+| 课题名称标签 y / x | 336.4 / 116.3 | 336.4 / 116.9 | 0 / 0.6 |
 | 信息表五条底线 y | 353.0 / 395.8 / 438.8 / 481.6 / 524.6 | 353.5 / 396.4 / 439.2 / 482.1 / 524.9 | ≤0.5 |
 | 标签列 x / 值列 x | 116.3 / 204.2 | 116.9 / 204.5 | ≤0.6 |
 | 「学号」标签 x | 291.6 | 291.0 | 0.6 |
@@ -20,40 +26,44 @@
 | 正文一级标题 y / 字号 | 73.5 / 14pt 黑体 | 73.5 / 14pt | 0 |
 | 说明性小字 | 9pt 宋体、缩进 0.635cm | 同 | — |
 
-## 两个主文件（别搞混）
+⚠️ 填上真实题名（21 字）后题名折成两行，信息表整体下移一行高度，五条底线随之变为
+376.6 / 400.9 / 443.7 / 486.5 / 529.4。这是**内容长度**所致，不是版式误差。
+与内容无关的判据是「标签到下划线 16.4pt（官方 16.6）」与「行间距 42.8 / 42.8 / 42.9（官方 42.8–43.0）」。
+
+## 主文件只有一个
 
 | 文件 | 字体集 | 用在哪 |
 |---|---|---|
-| `main.tex` | `fontset=noto`（Noto Serif/Sans CJK） | **Overleaf 上改稿 + 预览**。Overleaf 预装，加载快。 |
-| `main-windows.tex` | `fontset=windows`（宋体/黑体） | **定稿交学校的 PDF**，在本地编。Overleaf 上没有宋体/黑体，会编译失败，别选它。 |
+| **`main-windows.tex`** | `fontset=windows`（真宋体 / 黑体 / Times New Roman） | **唯一在用的主文件，定稿就编它** |
+| `main.tex` | `fontset=noto` | 历史产物，原供 Overleaf 预览；**已不使用**，别编它、别改它 |
 
-字体集的三个坑，都实测踩过：
+字体集踩过的三个坑（留档）：
 
 - **fandol**（模板自带默认）只覆盖 GB2312，「珅」缺字形，姓名显示方框。
-- **arphic**（文鼎 AR PL UMing）字形齐全，但字体文件大，Overleaf 上加载极慢，
-  连续三次编译超时（日志停在加载字体那行）。已弃用。
-- **noto** 是 Overleaf（Ubuntu）预装的，覆盖完整、加载快，远端实测 122.5 KB / 5 页一次编译通过，
-  `禹尧珅` 三个字齐全、无缺字符。
-
-代价是字形与宋体略有差异 —— 只影响预览，不影响定稿。
+- **arphic**（文鼎 AR PL UMing）字形齐全，但字体文件大，Overleaf 上加载极慢，连续三次编译超时。已弃用。
+- **noto** 曾用于 Overleaf（Ubuntu 预装），覆盖完整、加载快，但字形与宋体不同，**不能用于定稿**。
 
 ## 本地编译
 
 ```
 cd D:/shen/TJU/AAD/thesis/02_开题报告/latex
 latexmk -xelatex main-windows.tex     # 定稿 PDF
-latexmk -xelatex main.tex             # 与 Overleaf 一致的预览版
+latexmk -C main-windows.tex           # 清理（改过 cls 或字体后建议先清再编）
 ```
+
+编完把 `main-windows.pdf` 复制到 `../交付/` 下（骨架阶段文件名是 `开题报告-骨架-20261127.pdf`，填正文后改名）。
 
 ## 目录
 
 ```
-main.tex / main-windows.tex   两个主文件
+main-windows.tex              唯一主文件
+main.tex                      历史：Overleaf 预览用，已不用
 chapters/metadata.tex         封面信息（学院/专业/姓名/学号/题名/导师）——改这里
 chapters/proposal_body.tex    正文四节（一、课题背景 二、方案介绍 三、参考文献 四、审核意见）
 style/tongjithesis.cls        文档类（封面几何、标题、审核框、信息表都在这里）
 style/font/tongji-cjk-font-*.def  各字体集定义
 figures/tongji.pdf            封面校名图
+latexmkrc                     编译配置（TEXINPUTS 追加 style/ 子目录、限轮数）
 ```
 
 ## 正文结构（学校 2027 届新版，四节固定）
@@ -68,22 +78,13 @@ figures/tongji.pdf            封面校名图
 `D:/shen/TJU/AAD/thesis/00_学校原件/`（8 份官方 Word + 教务处通知原文），**只读**，
 要用就复制出去改，不要动原件。
 
-## 在 Overleaf 上改稿（工作流）
+## `latexmkrc` 的两条硬约束（本地同样适用）
 
-Overleaf 项目「AAD-开题报告」，项目 ID `6b084c4b691e5b6f950a9514`。
-主文件是 `main.tex`（arphic 字体），编译器已设为 **XeLaTeX**（项目默认的 pdfLaTeX 排不了中文）。
-
-两条铁律：
-
-1. **`latexmkrc` 不能改名成 `.latexmkrc`**。Overleaf 不读隐藏配置，改名后立刻报
-   `File 'tongjithesis.cls' not found`——因为 cls 在 `style/` 子目录，
-   XeLaTeX 默认不去子目录找，必须靠 `ensure_path('TEXINPUTS','./style//')` 追加路径。
+1. **文件名必须叫 `latexmkrc`，不能是隐藏的 `.latexmkrc`**（当初为 Overleaf 改的名，本地沿用）。
+   cls 在 `style/` 子目录，XeLaTeX 默认不去子目录找，靠 `ensure_path('TEXINPUTS','./style//')` 追加路径。
    追加要用 `ensure_path`，不能写 `$ENV{TEXINPUTS}=...`，那会把 TeX 自己的搜索路径覆盖掉。
-2. **定稿别在 Overleaf 上出**。Overleaf 没有宋体/黑体，字体集只能用替代品。
-   定稿回本地跑 `latexmk -xelatex main-windows.tex`。
-
-本地与 Overleaf 同步用 olcli：
-`node D:/hermes/node/node_modules/@aloth/olcli/dist/cli.js push <本地目录> --project 6b084c4b691e5b6f950a9514 --all`
+2. **`$max_repeat = 2`、`$bibtex_use = 0`、`$biber = ''` 不要放开**。本文档没有目录、交叉引用和 .bib，
+   两轮就稳定；默认设置会反复重跑到「日志不再变」，白等几十秒。**以后真加了 .bib 再改回来。**
 
 ## 改哪个文件
 
@@ -107,13 +108,14 @@ grep -c 'tjformslot\|tjformfigslot' chapters/proposal_body.tex
 grep -c 'tjformnote' chapters/proposal_body.tex
 ```
 
-## cls 里新增的三个排版件
+## cls 里新增的四个排版件
 
 | 命令 | 干什么 | 依据 |
 |---|---|---|
 | `tjformbody` 环境 | 正文段落：宋体小四、首行缩进 2 字符、段前后各 0.5 行 | 官方说明文字；段前后 0.5 行按 18pt 基线折算为 9pt，属推算值（官方 .doc 无正文段落可实测） |
 | `tjformslot{…}` | 灰色【待写】占位标记，成稿删 | 仅搭骨架用 |
 | `tjformref{…}` / `tjformrefs` 环境 | 参考文献悬挂缩进 0.74 cm | 模板原文规定 |
+| `tjformrefnote` | 参考文献那段灰色说明：12pt 宋体伪粗、首行缩进 24pt | 官方 .doc 实测（不是 9pt 黑体） |
 
 ## 字体核对：与官方 Word 逐 span 一致（2026-11-27 实测）
 
@@ -143,30 +145,14 @@ grep -c 'tjformnote' chapters/proposal_body.tex
 2. **标题括号与参考文献说明不能用默认设置**。xeCJK 默认把 ASCII 括号码归西文字体，直接用 `(` 会变成 Times；
    模板又把宋体的 BoldFont 设成 SimHei，`\bfseries` 会让「宋体粗」变成黑体。两处都已在 cls 里单独处理。
 
-## 编译速度（2026-11-27 实测，解决“卡住编不出来”）
+## 编译速度
 
 | 场景 | 耗时 |
 |---|---|
-| Overleaf 冷编译（改一个字触发重编） | **9.7 / 10.1 / 10.5 / 10.6 秒**（四次） |
 | 本机 clean + 全量编译 | 约 40 秒 |
+| （历史）Overleaf 冷编译 | 9.7 / 10.1 / 10.5 / 10.6 秒 —— 项目已删，仅留档 |
 
-快的两个前提，别动：
-
-- `latexmkrc` 里 `$max_repeat = 2`、`$bibtex_use = 0`、`$biber = ''`。这份文档没有目录、交叉引用和 .bib，
-  两轮就稳定；默认设置会反复重跑到「日志不再变」，在 Overleaf 上白白多等几十秒甚至被判超时。
-- 字体集用 **noto**，不要用 arphic。arphic（文鼎 AR PL UMing）字形齐全但字体文件大，
-  Overleaf 上连续三次编译超时，日志就停在加载该字体那行。
-
-## 定稿工作流（重要）
-
-Overleaf 上编出来的是 **Noto 字体**，与宋体黑体不同形。所以：
-
-1. 在 Overleaf 上改内容（快、随时能看）；
-2. 拉回本地：`olcli pull 6b084c4b691e5b6f950a9514 <目录>`；
-3. 本机编 `main-windows.tex` 出定稿 PDF；
-4. **交学校的必须是第 3 步这份**。
-
-在线版与定稿版的实测差：x 坐标基本一致，y 方向整体差 1–2 pt（字体度量不同）。
+本地慢是字体加载与两轮 xelatex 的固有开销；好处是不再受云端排队与超时影响，且能出真宋体。
 
 ### 排查陷阱：首行缩进「测出来只有 18pt」是假象
 
