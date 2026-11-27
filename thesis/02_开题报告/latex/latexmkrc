@@ -1,9 +1,7 @@
-# latexmk 配置：只做两件事——用 XeLaTeX、别去碰 bibtex/biber。
-# 轮数不要限制：从零开始编需要三轮才稳定（第一轮生成 aux、第二轮读 aux），
-# 限死两轮会报 'xelatex needed too many passes'。这份文档没有目录和交叉引用，
-# 稳定后 latexmk 自己就停，不会多跑。
+# latexmk 配置：XeLaTeX + biber（参考文献走 biblatex/gb7714-2025）
+# 轮数不设上限：从零开始要 xelatex → biber → xelatex → xelatex 才稳定。
 $pdf_mode  = 5;      # 5 = xelatex（中文必须用它，pdfLaTeX 排不了）
-$bibtex_use = 0;     # 没有 .bib，不需要 bibtex/biber
-$biber     = '';     # 显式关掉 biber
+$bibtex_use = 2;     # 允许 bibtex/biber，并自动重跑
+$biber     = 'biber %O %S';
 
 $clean_ext = 'bbl glo gls hd loa run.xml thm xdv aux bcf fdb_latexmk fls out synctex.gz toc vrb';

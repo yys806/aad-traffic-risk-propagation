@@ -157,3 +157,24 @@ LaTeX 的行距是「基线到基线」，Word 的行距是「行盒高 + 段后
 
 编译出的 PDF 复制到 `../交付/` 下。学校 1 系统的上传框接受 **doc / docx / pdf 任一**、单文件 ≤10MB；
 导师意见与签名由系统在审核通过后自动带出，学生不填第四节。
+
+## 参考文献怎么加、怎么引（2026-11-27 改）
+
+**不再手写条目。** 条目全在 `refs.bib`（25 条，每条都有 DOI，来源经 CrossRef 核过作者、卷期页、文章号）。
+
+- 正文引用写 `\cite{key}`，一句里要引几篇就连写几个 `\cite{}`，**不要写成一个方括号里的 1-3 或 1,2,3**：
+  连写 `\cite{a}\cite{b}\cite{c}` 排出来是 上标 [1][2][3]。
+- 编号、顺序、文献表内容全由 biber 现算，删一条或插一条都不用改正文。
+- 参考文献格式由文档类的 `biblatex style=gb7714-2025` 出，标点半角、悬挂 0.74cm，与 Word 模板一致。
+- DOI 在 PDF 里是真链接，能点开；正文里的 [n] 也能点，跳到文献表对应条目。
+
+**编译顺序变了**（多一步 biber，`latexmkrc` 已经配好，直接 latexmk 就行）：
+
+```
+latexmk -xelatex main.tex          # 自动跑 xelatex → biber → xelatex ×2
+```
+
+编辑器里要选「XeLaTeX + Biber」，只选 XeLaTeX 会出现引用全是 [?]。
+
+**新增文献**：先把 DOI 丢给 CrossRef 拉元数据（作者给首字母、`journal` 或 `booktitle`、`year/volume/number/pages`、`doi`），
+写进 `refs.bib` 再加 `\cite`。不许凭记忆著录。
