@@ -2153,6 +2153,8 @@
 % 填空横线：把线画在文字基线下方固定 5.7pt 处（官方封面日期实测值），
 % 线宽 0.6pt、与文字刚性绑定。不用 ulem 的 \uline，因其下划线深度随字号变化且会撑深行盒。
 \newcommand{\tjformrule}[1]{\makebox[#1][c]{\raisebox{-6.3pt}{\rule{#1}{0.6pt}}}}
+% 带字的日期线：#1 线宽，#2 文字（居中压在线上，字基线在下划线之上 5.7pt，与官方一致）
+\newcommand{\tjformrulefill}[2]{\makebox[#1][c]{\raisebox{-6.3pt}{\rule{#1}{0.6pt}}}\llap{\makebox[#1][c]{\zihao{4}\selectfont #2}}}
 
 % 开题报告封面：课题信息表 + 填表日期（日期下划线 y=708.9pt，四号）
 \newcommand{\MakeProposal}{%
@@ -2171,7 +2173,7 @@
   % 直接画 0.6pt 细线，并用固定深度 6.3pt（＝官方实测线到基线距离）与文字刚性绑定；水平按版心左缘绝对定位
   % （官方整块比居中位置左移 2.2pt，是 Word 手工排版所致）。
   \par\noindent\hspace*{101.6pt}\zihao{4}\selectfont
-  \tjformrule{57pt}\hspace*{14pt}年\hspace*{13.7pt}\tjformrule{37.1pt}\hspace*{5.4pt}月\hspace*{2.2pt}\tjformrule{32.2pt}\hspace*{5.3pt}日
+  \tjformrulefill{57pt}{\tongjithesisyear}\hspace*{14pt}年\hspace*{13.7pt}\tjformrulefill{37.1pt}{\tongjithesismonth}\hspace*{5.4pt}月\hspace*{2.2pt}\tjformrulefill{32.2pt}{\tongjithesisday}\hspace*{5.3pt}日
   \vspace*{104.7pt}%
   \clearpage
 }
