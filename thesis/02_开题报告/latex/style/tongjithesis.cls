@@ -1845,9 +1845,10 @@
 %    固定行距 18pt。模板原先借用正文字号（12pt），比官方高 3pt、行高多 4pt。
 %  · \tjformhint —— 内容提示（“包括但不限于…”），官方 12pt 宋体、首行缩进 0，
 %    段前/段后各 6pt、固定行距 18pt。
-\newcommand{\tjformnote}[1]{%
+% #1（可选）首行缩进，官方第 50 段为 0、第 51 段为 18pt（0.635cm）
+\newcommand{\tjformnote}[2][0.635cm]{%
   {\tjfontnotebody\color{tjnotegray}\selectfont
-   \par\noindent\hspace*{0.635cm}#1\par}%
+   \par\noindent\hspace*{#1}#2\par}%
 }
 
 % 参考文献段前的说明（官方 12pt、宋体伪粗、灰色、首行缩进 24pt、行距 18pt）：
@@ -1880,15 +1881,24 @@
 % 故此处判断 \pagegoal 是否等于 \maxdimen（即本页尚无内容）：是则用
 % \vspace*{8.7pt-\baselineskip} 抵消那条额外基线，得到与官方一致的 73.5pt；
 % 否则用 \addvspace{6pt}，正常累积段前距。
-\newcommand{\tjformsection}[1]{%
+% 一级标题：四号黑体、顶格、段前段后各 6pt（官方 .doc SpaceBefore/After=6pt）。
+% 行距按官方 .doc 逐段实测：一、与 四、是「固定值 18pt」，二、与 三、是「1.5 倍」——
+% Word 原件本身就不统一，这里用可选参数复现，不统一成一种：
+%   \tjformsection{…}          固定值 18pt（默认，对应一、四、）
+%   \tjformsection[1.5]{…}     1.5 倍行距（对应二、三、）
+\newcommand{\tjformsection}[2][]{%
   \par
   \ifdim\pagegoal=\maxdimen
     \vspace*{\dimexpr 8.7pt-1\baselineskip\relax}%
   \else
     \addvspace{6pt}%
   \fi
-  \noindent{\zihao{4}\heiti\selectfont #1}\par
-  \vspace{6pt}%
+  \noindent{\zihao{4}\heiti
+    \def\tj@sec@mode{#1}%
+    \ifx\tj@sec@mode\@empty\linespread{1}\selectfont\setlength{\baselineskip}{18pt}%
+    \else\linespread{#1}\selectfont\fi
+    #2}\par
+  \vspace{\dimexpr 6pt-\prevdepth\relax}%
 }
 
 % 二级小节标题：小四号黑体，顶格，段前/段后各 0.5 行
@@ -1941,8 +1951,11 @@
 % 「段前段后各 0.5 行」按 12pt 字号 1.5 倍行距的 18pt 基线算得 9pt，
 % 属于由说明推得、官方 .doc 中无对应段落可实测，标为推算值。
 % ─────────────────────────────────────────────────────────────
+% 官方 .doc 实测：正文段落 SpaceBefore=0、SpaceAfter=0，段间视觉间距完全来自
+% 1.5 倍行距（12pt → 23.4pt）本身。原设 9pt 是「段前后各 0.5 行」的错误折算
+% （Word 存的是 0），会让每段多出 9pt、整篇比官方长一截，2026-11-27 改回 0。
 \newlength{\tjformparskip}
-\setlength{\tjformparskip}{9pt}
+\setlength{\tjformparskip}{0pt}
 
 % 正文段落环境：宋体小四、首行缩进 2 字符、段前段后各 0.5 行。
 % 行距沿用全文 \setstretch{\tjlinespread}（=Word 1.5 倍），此处不重复设置。
@@ -1959,7 +1972,7 @@
 % （查漏：grep -n '\\tjformslot' chapters/proposal_body.tex 应为 0 条）。
 \newcommand{\tjformslot}[1]{%
   {\tjfontbody\color{tjhintgray}\selectfont
-   \par\addvspace{3pt}\parindent=2em\relax 【待写】#1\par\addvspace{3pt}}%
+   \par\parindent=2em\relax 【待写】#1\par}%
 }
 
 % 图位：给「技术路线图」这类还没画的图留一个可见的占位框，
@@ -1989,59 +2002,57 @@
   \par\noindent\hangindent=0.74cm\hangafter=1\relax #1\par
 }
 
-% 日期空白（年/月/日下划线填空）
-\newcommand{\tjdateblank}{\ulinebox{3em}~年~\ulinebox{2em}~月~\ulinebox{2em}~日}
 
-% 签字行：签名标签 + 定宽下划线 + 日期填空，右对齐。整行（含年/月/日）取黑体——
-% 正文中的签字行（任务书末尾、开题/中期报告的审核意见框内）为黑体，与同框内的
-% 宋体提示文字不同；任务书封面的签字行则属于封面信息表的一部分，随 \tjformtable
-% 取四号宋体，不走本命令。
-% #1（可选）：字号，默认小四；任务书正文末尾的签字行为四号，故显式传 \zihao{4}。
-% #2：标签文字（如“指导教师签名”）；#3：签名下划线宽度。
-% 官方版式（实测官方 PDF 第 3 页，坐标为绝对 pt）：
-%   第一行  「指导教师签名」起于 x=311.3pt；
-%   第二行  36pt 签名线位于 x=383.4–419.4pt（抬起约 6pt 画在文字上方），
-%           「年 / 月 / 日」分别在 x=407.5 / 437.5 / 467.5pt。
-% 注意官方这处本身就是 Word 断行的结果：签名线与「年」在横向上有约 12pt 重叠，
-% 故这里用 \raisebox 单独画线、再回退 11.9pt 排「年」，以复现同一视觉位置。
-% 模板原先用 flushright 单行排（标签被推到 x=163.0，与官方差 148pt），且把年/月/日
-% 挤在同一行会溢出到版心外（实测 x=525pt > 版心右界 505.5pt）——已按官方改成两行。
-\newcommand{\tjformsignature}[3][\tjfontbody]{%
-  \par\noindent\hspace*{221.45pt}%
-  \mbox{#1\heiti\selectfont #2}%
-  \par\noindent\hspace*{287pt}%
-  \raisebox{6pt}{\rule{36pt}{0.5pt}}%
-  \hspace*{-11.9pt}\mbox{#1\heiti\selectfont 年\hspace*{18pt}月\hspace*{18pt}日}%
+% ─────────────────────────────────────────────────────────────
+%  审核意见区（四、审核意见）：版式全部由官方 PDF 第 3 页逐条线实测驱动
+%
+%  官方实测（绝对 pt）：
+%    框一 上 157.2 / 下 411.2（高 254.0），左 89.7 / 右 515.3
+%         「指导教师意见：」y0=167.1 x=95.3；提示语 185.1 / 203.1（行距 18pt）
+%         「指导教师签名」x=311.3–383.3 y0=363.7；签名线 383.4–419.4 y=375.6
+%         日期行 y0=379.3；三条 18pt 下划线 y=391.2，起点 389.5 / 419.5 / 449.5
+%         年/月/日 x=407.5 / 437.5 / 467.5（即线—字—线—字—线—字 连续排列）
+%    框二 上 411.6 / 下 610.1（高 198.5）
+%         「专业审核意见：」y0=422.6；「负责人签名」x=311.3–371.3 y0=564.9；
+%         签名线 371.4–413.4（42pt）y=576.9；日期行 y0=580.6，下划线 y=592.5，
+%         起点 395.5 / 425.5 / 455.5
+%
+%  两个框的内部行距不一样（提示语 18pt、签字块 15.6pt＝12pt 宋体单倍），这一点照官方来，
+%  不要在整框统一 \linespread——2026-11-27 就是因为整框用了 1.5 倍，签字行与日期行被撑开
+%  到 23.4pt，签名线又用 \raisebox 硬抬，结果线从「年」字中间穿过去。
+% ─────────────────────────────────────────────────────────────
+
+% 日期空白：三条 18pt 下划线夹年月日，线与字同基线、连续排列（官方结构）。
+\newcommand{\tjdateblank}{\ulinebox{18pt}年\ulinebox{18pt}月\ulinebox{18pt}日}
+
+% 签字块：#1 标签文字，#2 签名下划线宽度，#3 日期行左偏移（相对框内左缘）。
+% 签名线取签名行末尾空格的下划线，落在签名行基线下约 1.4pt、日期行之上，与日期文字不重叠。
+\newcommand{\tjformsignature}[3]{%
   \par
+  {\linespread{1.0}\selectfont\setlength{\baselineskip}{15.6pt}\setlength{\ULdepth}{1.4pt}%
+   \noindent\hspace*{216.3pt}#1\ulinebox{#2}\par
+   \noindent\hspace*{#3}\tjdateblank\par}%
 }
 
-% 数字填空：定宽下划线 + 居中数字（#2 为空则为纯下划线），使起讫日期等数字字段
-% 无论填写与否都保持等长下划线。用 ulem 的 \uline（同 \ulinebox/\ulinecentered），
-% 使全表下划线的粗细与位置一致。
-\newcommand{\tjnumline}[2]{\uline{\makebox[#1][c]{#2}}}
-
-% 审核意见方框（指导教师/专业负责人意见 + 签名 + 日期）
-% \fbox 的参数须一次性、完整地给出，不能跨 \newenvironment 的 begin/end 两段拆分
-% （\fbox 按普通花括号参数扫描，而非 \begingroup/\endgroup 式分组）；
-% 因此先用 lrbox 把 minipage 内容完整装入一个盒子寄存器，
-% 再在 end 段一次性用 \fbox 包裹已装入完毕的盒子。
-% 官方外框跨满版心（实测 x 89.7–515.3pt，即 425.6pt 宽、边框 0.5pt），框内左内边距
-% 5.4pt。模板原先用 \fbox 默认参数（\fboxsep=3pt、\fboxrule=0.4pt），比官方窄 10.7pt，
-% 且提示语会顶到框线外——2026-11-26 按官方实测改为满版心 + 0.5pt 框线 + 5.4pt 内边距。
+% 审核意见方框：#1 框高（minipage 内容高，外框另加 2×内边距 2×线宽），#2 框底留白。
+% 内容顶对齐；签字块用 \vfill 压到框底，因此提示语长短变化不会推动签字区位置。
+% \fbox 的参数须一次性完整给出，故仍用 lrbox 装入后再包裹。
 \newsavebox{\tj@reviewbox}
-\newenvironment{tjreviewbox}{%
+\newenvironment{tjreviewbox}[2][242.2pt]{%
   \par\vspace{6pt}\noindent
   \begingroup
+  \def\tj@rb@bot{#2}%
   \setlength{\fboxsep}{5.4pt}%
   \setlength{\fboxrule}{0.5pt}%
-  \begin{lrbox}{\tj@reviewbox}
-  \begin{minipage}[t]{\dimexpr\linewidth-2\fboxsep-2\fboxrule+8.1pt\relax}\tjfontbody
+  \begin{lrbox}{\tj@reviewbox}%
+  \begin{minipage}[t][#1][t]{\dimexpr\linewidth-2\fboxsep-2\fboxrule+10.1pt\relax}%
+  \tjfontbody\selectfont\setlength{\baselineskip}{18pt}%
+  \vspace*{4.7pt}%
 }{%
-  \end{minipage}
-  \end{lrbox}
-  % 官方外框 x 89.7–515.3pt（宽 425.6pt）：左缘贴版心左界，右缘比版心多 10pt。
-  % 以 \makebox[\linewidth][l] 承载，避免 fbox 超出 \linewidth 触发 Overfull \hbox。
-  \makebox[\linewidth][l]{\fbox{\usebox{\tj@reviewbox}}}%
+  \par\vspace*{\tj@rb@bot}%
+  \end{minipage}%
+  \end{lrbox}%
+  \noindent\makebox[\linewidth][l]{\fbox{\usebox{\tj@reviewbox}}}%
   \endgroup
   \par\vspace{6pt}%
 }
@@ -2085,6 +2096,10 @@
   \clearpage
 }
 
+% 填空横线：把线画在文字基线下方固定 5.7pt 处（官方封面日期实测值），
+% 线宽 0.6pt、与文字刚性绑定。不用 ulem 的 \uline，因其下划线深度随字号变化且会撑深行盒。
+\newcommand{\tjformrule}[1]{\makebox[#1][c]{\raisebox{-6.3pt}{\rule{#1}{0.6pt}}}}
+
 % 开题报告封面：课题信息表 + 填表日期（日期下划线 y=708.9pt，四号）
 \newcommand{\MakeProposal}{%
   \global\tjbindinglinefalse
@@ -2096,10 +2111,14 @@
   % 日期位置从页面底部反推（官方实测下划线 y=708.9pt，版心底 813.7pt → 距底 104.8pt）。
   % 用 \vfill 吸收信息表高度差：课题名称折行与否都不影响日期的绝对位置。
   \par\vfill
-  \begin{center}\zihao{4}\selectfont
-    \ulinebox[center]{57pt}\hspace*{14pt}年\hspace*{13.7pt}\ulinebox[center]{37.1pt}\hspace*{5.4pt}月\hspace*{2.2pt}\ulinebox[center]{32.2pt}\hspace*{5.3pt}日
-  \end{center}
-  \vspace*{91.8pt}%
+  % 官方 p1 实测：三条下划线 x=191.0 / 289.7 / 348.4，宽 57.0 / 37.1 / 32.2，y=708.9；
+  % 年 / 月 / 日 文字 y0=690.9（基线约 703.2），即文字基线比下划线高 5.7pt。
+  % 这里不用 ulem 的下划线（其深度随字号变化、且会把行盒撑深，位置算不准），
+  % 直接画 0.6pt 细线，并用固定深度 6.3pt（＝官方实测线到基线距离）与文字刚性绑定；水平按版心左缘绝对定位
+  % （官方整块比居中位置左移 2.2pt，是 Word 手工排版所致）。
+  \par\noindent\hspace*{101.6pt}\zihao{4}\selectfont
+  \tjformrule{57pt}\hspace*{14pt}年\hspace*{13.7pt}\tjformrule{37.1pt}\hspace*{5.4pt}月\hspace*{2.2pt}\tjformrule{32.2pt}\hspace*{5.3pt}日
+  \vspace*{104.7pt}%
   \clearpage
 }
 
