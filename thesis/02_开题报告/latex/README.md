@@ -114,3 +114,56 @@ grep -c 'tjformnote' chapters/proposal_body.tex
 | `tjformbody` 环境 | 正文段落：宋体小四、首行缩进 2 字符、段前后各 0.5 行 | 官方说明文字；段前后 0.5 行按 18pt 基线折算为 9pt，属推算值（官方 .doc 无正文段落可实测） |
 | `tjformslot{…}` | 灰色【待写】占位标记，成稿删 | 仅搭骨架用 |
 | `tjformref{…}` / `tjformrefs` 环境 | 参考文献悬挂缩进 0.74 cm | 模板原文规定 |
+
+## 字体核对：与官方 Word 逐 span 一致（2026-11-27 实测）
+
+判据不是肉眼看，是把官方 PDF 与我方 PDF 里每个文字 span 的 `字体名 + 字号` 抓出来做**集合比对**。
+
+| | 官方 Word 导出 PDF | 定稿 PDF（main-windows.tex） |
+|---|---|---|
+| 字体族 | SimHei / SimSun / TimesNewRomanPSMT / TimesNewRomanPS-BoldMT | **完全相同，一个不多一个不少** |
+
+逐项对应关系（官方 .doc 用 Word COM 逐字符读 `Font.Name / NameAscii / NameFarEast` 得到）：
+
+| 部位 | 中文 | 英文与数字 | 字号 |
+|---|---|---|---|
+| 封面大标题「毕业设计(论文)开题报告」 | 黑体 | 括号「(」「)」**是宋体**（三者 NameAscii 全为宋体，不是 Times） | 36 pt |
+| 封面信息表标签与值 | 宋体 | Times New Roman | 14 pt |
+| 一级标题（一、二、三、四） | 黑体 | Times New Roman | 14 pt |
+| 二级标题（1．2．3．） | 黑体 | Times New Roman | 12 pt |
+| 正文 | 宋体 | Times New Roman | 12 pt |
+| 说明小字 | 宋体 | Times New Roman | 9 pt |
+| 参考文献说明 | **宋体伪粗**（不是黑体） | Times New Roman **Bold** | 12 pt |
+
+### 两个必须知道的坑
+
+1. **`times=true` 必须开**。模板默认走 `newtx`，英文与数字用 TeX Gyre Termes —— 与 Times 度量兼容但**不是同一个字体**，字体名一比就露。
+   本机 `main-windows.tex` 已加该选项；开它之后字体度量变化会把封面整体顶偏 2–3 pt，
+   故 `ctitlegap` 24.1→22.3、`cbodygap` 93.6→98.0 已同步重校（大标题、首行标签均精确回到官方坐标）。
+2. **标题括号与参考文献说明不能用默认设置**。xeCJK 默认把 ASCII 括号码归西文字体，直接用 `(` 会变成 Times；
+   模板又把宋体的 BoldFont 设成 SimHei，`\bfseries` 会让「宋体粗」变成黑体。两处都已在 cls 里单独处理。
+
+## 编译速度（2026-11-27 实测，解决“卡住编不出来”）
+
+| 场景 | 耗时 |
+|---|---|
+| Overleaf 冷编译（改一个字触发重编） | **9.7 / 10.1 / 10.5 / 10.6 秒**（四次） |
+| 本机 clean + 全量编译 | 约 40 秒 |
+
+快的两个前提，别动：
+
+- `latexmkrc` 里 `$max_repeat = 2`、`$bibtex_use = 0`、`$biber = ''`。这份文档没有目录、交叉引用和 .bib，
+  两轮就稳定；默认设置会反复重跑到「日志不再变」，在 Overleaf 上白白多等几十秒甚至被判超时。
+- 字体集用 **noto**，不要用 arphic。arphic（文鼎 AR PL UMing）字形齐全但字体文件大，
+  Overleaf 上连续三次编译超时，日志就停在加载该字体那行。
+
+## 定稿工作流（重要）
+
+Overleaf 上编出来的是 **Noto 字体**，与宋体黑体不同形。所以：
+
+1. 在 Overleaf 上改内容（快、随时能看）；
+2. 拉回本地：`olcli pull 6b084c4b691e5b6f950a9514 <目录>`；
+3. 本机编 `main-windows.tex` 出定稿 PDF；
+4. **交学校的必须是第 3 步这份**。
+
+在线版与定稿版的实测差：x 坐标基本一致，y 方向整体差 1–2 pt（字体度量不同）。

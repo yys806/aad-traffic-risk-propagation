@@ -4,8 +4,16 @@
 #   ! LaTeX Error: File `tongjithesis.cls' not found.
 # 用 ensure_path 是**追加**（保留 TeX 自身的搜索路径），不要用 $ENV{TEXINPUTS}=... 覆盖。
 $pdf_mode = 5;                # 5 = xelatex
-$max_repeat = 5;
-$bibtex_use = 2;
+# 二、为什么限制编译轮数（2026-11-27 定，为了 Overleaf 上快速编译）
+# 本文档没有目录、没有交叉引用、没有参考文献库（biblatex/biber 都用不上），两轮就够。
+# latexmk 默认会重复到「日志不再变」，遇字体或时间戳波动会多跑好几轮，在 Overleaf 上
+# 就是几十秒额外等待甚至被判定超时。故锁定两轮并关掉 bibtex/biber：
+# 实测 Overleaf 冷编译 10 秒内完成（改一个字触发重编，10.2 s）。
+$max_repeat   = 2;            # 最多编译两轮，够了，别调高
+$bibtex_use   = 0;            # 本文档没有 .bib，不需要 bibtex/biber
+$biber        = '';           # 显式关掉 biber，避免被反复调用
+$preview_mode = 0;
+$silence_logfile_warnings = 1;
 
 ensure_path( 'TEXINPUTS', './style//' );
 ensure_path( 'TEXINPUTS', './style/font//' );

@@ -157,10 +157,18 @@
 \fi
 % 任务书/开题报告/中期报告封面大标题专用：与 \tjheadertext 同义，但括号取半角，
 % 使小初号（36pt）标题（如“毕业设计(论文)开题报告”）能在一行内排下。
+% 🔴 括号必须走中文字体（宋体），2026-11-27 按官方 .doc 逐字符实测：
+%    官方「(」「)」的 Font.Name / NameAscii / NameFarEast 三者全为「宋体」，汉字为「黑体」。
+%    xeCJK 默认把 ASCII 括号码归西文字体，故用 \xeCJKDeclareCharClass{CJK} 局部改字符类，
+%    声明放进 group 内即只对本命令生效，不污染正文里真正的半角括号。
 \iftongjithesis@humanities
-  \newcommand{\tjformheadertext}{毕业论文(设计)}
+  \newcommand{\tjformheadertext}{%
+    {\xeCJKDeclareCharClass{CJK}{"0028, "0029}%
+     毕业论文{\songti(}设计{\songti)}}}
 \else
-  \newcommand{\tjformheadertext}{毕业设计(论文)}
+  \newcommand{\tjformheadertext}{%
+    {\xeCJKDeclareCharClass{CJK}{"0028, "0029}%
+     毕业设计{\songti(}论文{\songti)}}}
 \fi
 
 % ==========================================
@@ -1768,7 +1776,10 @@
   \setlength{\tj@cnamew}{82.0pt}\setlength{\tj@cnumlabw}{65.4pt}%
   \setlength{\tj@cnumw}{133.3pt}\setlength{\tj@crowgap}{15.6pt}%
   \setlength{\tj@cimgtop}{50pt}\setlength{\tj@cimgw}{200pt}%
-  \setlength{\tj@ctitlegap}{24.1pt}\setlength{\tj@cbodygap}{93.6pt}%
+  % 2026-11-27 开 times=true 后西文字体从 TeX Gyre Termes 换成真 Times New Roman，
+  % 字体度量变化使大标题与信息表整体上移，故 ctitlegap 24.1→22.3、cbodygap 93.6→98.0，
+  % 重新对齐到官方（大标题 y0=196.0、首行标签 y0=336.4）。
+  \setlength{\tj@ctitlegap}{22.3pt}\setlength{\tj@cbodygap}{98.0pt}%
   \def\tj@ctitlefont{\zihao{-0}}%
   \tj@cgeom@update
 }
@@ -1837,6 +1848,21 @@
 \newcommand{\tjformnote}[1]{%
   {\tjfontnotebody\color{tjnotegray}\selectfont
    \par\noindent\hspace*{0.635cm}#1\par}%
+}
+
+% 参考文献段前的说明（官方 12pt、宋体伪粗、灰色、首行缩进 24pt、行距 18pt）：
+% 2026-11-27 按官方 .doc 第 66 段实测 —— size=12pt、bold=True、color=11184814、
+% firstIndent=24pt（=2 字符）、lineRule=1（1.5 倍）、line=18pt。
+% 🔴 官方汉字是「宋体 + 粗体」，不是黑体。直接 \bfseries 会切到 SimHei（模板把宋体的
+%    BoldFont 设成了 SimHei），字体名就对不上。故单独定义 AutoFakeBold 的宋体族，
+%    让粗体表现为宋体伪粗，与 Word 的 SimSun Bold 一致。
+%    与上面 9pt 的 \tjformnote 不是同一类，别混用。
+\IfFontExistsTF{SimSun}
+  {\setCJKfamilyfont{zhsongfake}{SimSun}[AutoFakeBold=3]}
+  {\setCJKfamilyfont{zhsongfake}{Noto Serif CJK SC}[AutoFakeBold=3]}
+\newcommand{\tjformrefnote}[1]{%
+  {{\CJKfamily{zhsongfake}\bfseries\tjfontbody\color{tjnotegray}\selectfont
+    \par\noindent\hspace*{24pt}#1\par}}%
 }
 \newcommand{\tjformhint}[1]{%
   {\tjfontbody\color{tjhintgray}\selectfont
