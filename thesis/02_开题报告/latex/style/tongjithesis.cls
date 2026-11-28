@@ -1966,9 +1966,22 @@
 % ── 二级小节标题：小四号黑体、顶格、段前段后各 6bp、行高 23.4bp ──
 \newcommand{\tjformsubsection}[1]{%
   \tj@vplace{6bp}{23.4bp}{17.1bp}%
-  \noindent{\tjfontbody\heiti\selectfont
-    \baselineskip=23.4bp
-    \rule{0pt}{\tj@ruleh}#1}\par
+  \noindent\hbox to\linewidth{%
+    {\tjfontbody\heiti\selectfont
+     \baselineskip=23.4bp
+     \rule{0pt}{\tj@ruleh}#1}\hfil}\par
+  \tj@reg{23.4bp}{6bp}%
+}
+
+% ── 三级标题（如“（一）替代安全指标及其适用边界”）：小四号黑体加粗、
+%    缩进 24bp（2 字符，与正文首行对齐）、段前 6bp、段后 0。
+%    官方模板只规定二级标题格式，三级标题自定，与正文同字号、不换字体族。
+\newcommand{\tjformsubsubsection}[1]{%
+  \tj@vplace{0pt}{23.4bp}{17.1bp}%
+  \noindent\hbox to\linewidth{\hspace*{24bp}%
+    {\tjfontbody\heiti\bfseries\selectfont
+     \baselineskip=23.4bp
+     \rule{0pt}{\tj@ruleh}#1}\hfil}\par
   \tj@reg{23.4bp}{6bp}%
 }
 
